@@ -45,7 +45,7 @@ public class BarCodeScannerFragment extends Fragment implements ZXingScannerView
             Ringtone r = RingtoneManager.getRingtone(getActivity().getApplicationContext(), notification);
             r.play();
         } catch (Exception e) {}
-        goToProduct(rawResult);
+        goToProduct(rawResult, mScannerView);
     }
 
     @Override
@@ -54,8 +54,8 @@ public class BarCodeScannerFragment extends Fragment implements ZXingScannerView
         mScannerView.stopCamera();
     }
 
-    private void goToProduct(Result rawResult){
+    private void goToProduct(Result rawResult, ZXingScannerView scannerView){
         FoodAPIRestClientUsage api = new FoodAPIRestClientUsage();
-        api.getProduct(rawResult.getText(), getActivity());
+        api.getProduct(rawResult.getText(), getActivity(), scannerView);
     }
 }
