@@ -43,5 +43,15 @@
     <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
     <string name="toast_retrieving">Retreiving data...</string>
 
+    <string name="txtBarcode">Barcode :</string>
+    <string name="txtQuantity">Quantity :</string>
+    <string name="txtPackaging">Packaging :</string>
+    <string name="txtBrands">Brands :</string>
+    <string name="txtCategories">Categories :</string>
+    <string name="txtManufacturing">Manufacturing or processing places :</string>
+    <string name="txtCity">City, state and country where purchased :</string>
+    <string name="txtStores">Stores :</string>
+    <string name="txtCountries">Countries where sold :</string>
+
 
 </resources>
