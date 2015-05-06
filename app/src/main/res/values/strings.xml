@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">OpenFood</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="action_find">Find</string>
+    <string name="text_barcode">Put the barcode :</string>
+
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <!-- Nav Drawer Main Menu Items -->
+    <string-array name="nav_drawer_items_main">
+        <item >Home</item>
+        <item >Search</item>
+        <item >Scan</item>
+    </string-array>
+
+    <!-- Nav Drawer Main Menu List Item Icons -->
+    <array name="nav_drawer_icons_main">
+        <item>@mipmap/ic_home</item>
+        <item>@mipmap/ic_search</item>
+        <item>@mipmap/ic_camera</item>
+    </array>
+
+    <!-- Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_items_product">
+        <item >Summary</item>
+        <item >Ingredients</item>
+        <item >Nutrition</item>
+    </string-array>
+
+    <!-- Nav Drawer Main Product List Item Icons -->
+    <array name="nav_drawer_icons_product">
+        <item>@mipmap/ic_home</item>
+        <item>@mipmap/ic_search</item>
+        <item>@mipmap/ic_camera</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+
+    <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
+    <string name="toast_retrieving">Retreiving data...</string>
+
+
+</resources>

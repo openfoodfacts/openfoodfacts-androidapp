@@ -1,1 +1,1 @@
-# OpenFoodFacts-android
+# open-food-facts-android

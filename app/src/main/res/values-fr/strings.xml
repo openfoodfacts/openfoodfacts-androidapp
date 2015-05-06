@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OpenFood</string>
+    <string name="action_find">Chercher</string>
+    <string name="action_settings">Paramètre</string>
+    <string name="desc_list_item_icon">Icône</string>
+    <string name="drawer_close">Menu Ouvert</string>
+    <string name="drawer_open">Menu Fermé</string>
+    <string name="hello_world">Coucou all!</string>
+    <string name="text_barcode">Ajoutez le code barre : </string>
+
+    <!-- Nav Drawer Main Menu Items -->
+    <string-array name="nav_drawer_items_main">
+        <item >Accueil</item>
+        <item >Rechercher</item>
+        <item >Scanner</item>
+    </string-array>
+
+    <!-- Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_items_product">
+        <item >Résumé</item>
+        <item >Ingrédients</item>
+        <item >Nutrition</item>
+    </string-array>
+    <string name="alert_dialog_product_error_msg">Produit non trouvé, veuillez recommencer</string>
+    <string name="toast_retrieving">Récupération des données...</string>
+</resources>
