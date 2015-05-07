@@ -18,9 +18,9 @@
 
     <!-- Nav Drawer Main Menu List Item Icons -->
     <array name="nav_drawer_icons_main">
-        <item>@mipmap/ic_home</item>
-        <item>@mipmap/ic_search</item>
-        <item>@mipmap/ic_camera</item>
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_search</item>
+        <item>@drawable/ic_camera</item>
     </array>
 
     <!-- Nav Drawer Product Menu Items -->
@@ -32,9 +32,9 @@
 
     <!-- Nav Drawer Main Product List Item Icons -->
     <array name="nav_drawer_icons_product">
-        <item>@mipmap/ic_home</item>
-        <item>@mipmap/ic_search</item>
-        <item>@mipmap/ic_camera</item>
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_search</item>
+        <item>@drawable/ic_camera</item>
     </array>
 
     <!-- Content Description -->
@@ -52,6 +52,11 @@
     <string name="txtCity">City, state and country where purchased :</string>
     <string name="txtStores">Stores :</string>
     <string name="txtCountries">Countries where sold :</string>
-
+    <string name="txtIngredients">Ingredients list :</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
+    <string name="txtAdditives">Additives :</string>
+    <string name="txtTraces">Traces :</string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil:</string>
+    <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
 
 </resources>

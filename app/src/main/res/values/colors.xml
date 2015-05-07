@@ -8,8 +8,8 @@
     <color name="black"     >#323232</color>
 
     <!-- basic colors -->
-    <color name="green">#27D34D</color>
-    <color name="blue">#2A91BD</color>
-    <color name="orange">#FF9D2F</color>
-    <color name="red">#FF432F</color>
+    <color name="green">#00D400</color>
+    <color name="blue">#0066FF</color>
+    <color name="orange">#FFCC00</color>
+    <color name="red">#FF0000</color>
 </resources>
