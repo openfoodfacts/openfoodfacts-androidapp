@@ -41,7 +41,7 @@
     <string name="desc_list_item_icon">Item Icon</string>
 
     <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
-    <string name="toast_retrieving">Retreiving data...</string>
+    <string name="toast_retrieving">Loading...</string>
 
     <string name="txtBarcode">Barcode :</string>
     <string name="txtQuantity">Quantity :</string>
@@ -56,7 +56,9 @@
     <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
     <string name="txtAdditives">Additives :</string>
     <string name="txtTraces">Traces :</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil:</string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
+    <string name="txtServingSize">Serving size :</string>
+    <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
 
 </resources>

@@ -23,7 +23,7 @@
         <item >Nutrition</item>
     </string-array>
     <string name="alert_dialog_product_error_msg">Produit non trouvé, veuillez recommencer</string>
-    <string name="toast_retrieving">Récupération des données…</string>
+    <string name="toast_retrieving">Chargement…</string>
     <string name="txtBarcode">Code barre :</string>
     <string name="txtBrands">Magasins : </string>
     <string name="txtCategories">Catégories :</string>
@@ -39,4 +39,6 @@
     <string name="txtMayBeFromPalmOilProduct">Ingrédients pouvant être issus de l\'huile de palme :</string>
     <string name="txtPalmOilProduct">Ingrédients issus de l\'huile de palme :</string>
     <string name="txtTraces">Traces :</string>
+    <string name="txtNutrientLevel100g">Repères nutritionnels pour 100g :</string>
+    <string name="txtServingSize">Taille d\'une portion :</string>
 </resources>
