@@ -1,32 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textBarcode"
-        android:text="@string/text_barcode"
-        android:layout_gravity="center_horizontal"
-        />
-
-    <EditText
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editTextBarcode"
-        android:layout_gravity="center_horizontal"
-        />
+        android:layout_height="match_parent"
+        android:gravity="center">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/action_find"
-        android:id="@+id/buttonBarcode"
-        android:layout_gravity="center_horizontal"
-        />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageSearch"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:src="@drawable/img_scan"/>
 
-</LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:inputType="number"
+            android:hint="@string/hintBarcode"
+            android:ems="10"
+            android:layout_margin="@dimen/spacing_normal"
+            android:background="@drawable/edittext_full"
+            android:drawableLeft="@drawable/ic_search_grey"
+            android:id="@+id/editTextBarcode"
+            android:drawablePadding="10dip"
+            android:paddingLeft="10dip"
+            android:singleLine="true"
+            />
+
+        <Button
+            android:layout_margin="@dimen/spacing_normal"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/action_find"
+            android:id="@+id/buttonBarcode"
+            android:background="@drawable/button_default_bg"
+            style="@style/DefaultButtonText"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>

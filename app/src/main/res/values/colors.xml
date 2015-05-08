@@ -7,6 +7,7 @@
     <color name="blue">#0066FF</color>
     <color name="orange">#FFCC00</color>
     <color name="red">#FF0000</color>
+    <color name="white">#FFFFFF</color>
 
     <!-- Material colors -->
     <color name="red_50">#fde0dc</color>

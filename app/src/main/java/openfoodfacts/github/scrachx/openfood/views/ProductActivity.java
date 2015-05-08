@@ -45,7 +45,7 @@ public class ProductActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_product);
 
         mTitle = mDrawerTitle = getTitle();
 
@@ -56,8 +56,8 @@ public class ProductActivity extends ActionBarActivity {
         navMenuIcons = getResources()
                 .obtainTypedArray(R.array.nav_drawer_icons_product);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_product);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer_product);
 
         navDrawerItems = new ArrayList<NavDrawerItem>();
 

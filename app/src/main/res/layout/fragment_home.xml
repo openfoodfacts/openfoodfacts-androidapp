@@ -3,4 +3,37 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_larger"
+        android:text="@string/txtTitleHome"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/textTitleHome"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/spacing_normal"
+        android:layout_gravity="center_horizontal" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageHome"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:src="@drawable/img_home"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/txtHome"
+        android:textSize="@dimen/font_normal"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_margin="@dimen/spacing_normal"
+        android:id="@+id/textHome"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>

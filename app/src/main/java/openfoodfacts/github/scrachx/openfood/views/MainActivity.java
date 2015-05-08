@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.UserFragment;
 import openfoodfacts.github.scrachx.openfood.models.NavDrawerItem;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NavDrawerListAdapter;
 
@@ -172,6 +173,9 @@ public class MainActivity extends ActionBarActivity {
             case 2:
                 Intent intent = new Intent(this, ScannerFragmentActivity.class);
                 startActivity(intent);
+                break;
+            case 3:
+                fragment = new UserFragment();
                 break;
 
             default:

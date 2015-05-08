@@ -43,4 +43,7 @@
     <string name="txtNutrientLevel100g">Repères nutritionnels pour 100g :</string>
     <string name="txtServingSize">Taille d\'une portion :</string>
     <string name="txtPass">Mot de passe :</string>
+    <string name="txtTitleHome">Ouvrez votre nourriture pour savoir ce que vous mangez</string>
+    <string name="txtHome">Open Food Facts est une base de données de produits alimentaires qui répertorie les ingrédients, les allergènes, la composition nutritionnelle et toutes les informations présentes sur les étiquettes des aliments.</string>
+    <string name="hintBarcode">Code barre</string>
 </resources>
