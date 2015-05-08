@@ -11,9 +11,10 @@
 
     <!-- Nav Drawer Main Menu Items -->
     <string-array name="nav_drawer_items_main">
-        <item >Home</item>
-        <item >Search</item>
-        <item >Scan</item>
+        <item>Home</item>
+        <item>Search</item>
+        <item>Scan</item>
+        <item>User</item>
     </string-array>
 
     <!-- Nav Drawer Main Menu List Item Icons -->
@@ -21,13 +22,14 @@
         <item>@drawable/ic_home</item>
         <item>@drawable/ic_search</item>
         <item>@drawable/ic_camera</item>
+        <item>@drawable/ic_user</item>
     </array>
 
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item >Summary</item>
-        <item >Ingredients</item>
-        <item >Nutrition</item>
+        <item>Summary</item>
+        <item>Ingredients</item>
+        <item>Nutrition</item>
     </string-array>
 
     <!-- Nav Drawer Main Product List Item Icons -->
@@ -60,5 +62,7 @@
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Serving size :</string>
     <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
+    <string name="txtLogin" translatable="false">Login :</string>
+    <string name="txtPass">Password :</string>
 
 </resources>

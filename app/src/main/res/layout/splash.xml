@@ -1,6 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="202dp"
+        android:layout_height="163dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/openfoodfacts_logo_en"
+        android:layout_gravity="center" />
+
+</FrameLayout>

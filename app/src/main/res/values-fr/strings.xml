@@ -14,13 +14,14 @@
         <item >Accueil</item>
         <item >Rechercher</item>
         <item >Scanner</item>
+        <item>Utilisateur</item>
     </string-array>
 
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item >Résumé</item>
-        <item >Ingrédients</item>
-        <item >Nutrition</item>
+        <item>Résumé</item>
+        <item>Ingrédients</item>
+        <item>Nutrition</item>
     </string-array>
     <string name="alert_dialog_product_error_msg">Produit non trouvé, veuillez recommencer</string>
     <string name="toast_retrieving">Chargement…</string>
@@ -41,4 +42,5 @@
     <string name="txtTraces">Traces :</string>
     <string name="txtNutrientLevel100g">Repères nutritionnels pour 100g :</string>
     <string name="txtServingSize">Taille d\'une portion :</string>
+    <string name="txtPass">Mot de passe :</string>
 </resources>
