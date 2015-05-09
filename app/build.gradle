@@ -62,4 +62,7 @@ dependencies {
     compile 'com.koushikdutta.ion:ion:2.+'
 
     compile 'net.steamcrafted:load-toast:1.0.6'
+
+    compile files('libs/jsoup-1.8.2.jar')
+
 }

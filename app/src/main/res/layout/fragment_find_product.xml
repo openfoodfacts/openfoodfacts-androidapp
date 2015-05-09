@@ -14,7 +14,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageSearch"
-            android:layout_marginTop="@dimen/spacing_normal"
             android:layout_marginEnd="@dimen/spacing_normal"
             android:layout_marginStart="@dimen/spacing_normal"
             android:src="@drawable/img_scan"/>
@@ -25,7 +24,9 @@
             android:inputType="number"
             android:hint="@string/hintBarcode"
             android:ems="10"
-            android:layout_margin="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
             android:background="@drawable/edittext_full"
             android:drawableLeft="@drawable/ic_search_grey"
             android:id="@+id/editTextBarcode"
@@ -35,9 +36,9 @@
             />
 
         <Button
-            android:layout_margin="@dimen/spacing_normal"
             android:layout_width="match_parent"
             android:layout_height="70dp"
+            android:layout_margin="@dimen/spacing_normal"
             android:text="@string/action_find"
             android:id="@+id/buttonBarcode"
             android:background="@drawable/button_default_bg"

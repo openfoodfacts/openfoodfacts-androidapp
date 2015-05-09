@@ -46,4 +46,12 @@
     <string name="txtTitleHome">Ouvrez votre nourriture pour savoir ce que vous mangez</string>
     <string name="txtHome">Open Food Facts est une base de données de produits alimentaires qui répertorie les ingrédients, les allergènes, la composition nutritionnelle et toutes les informations présentes sur les étiquettes des aliments.</string>
     <string name="hintBarcode">Code barre</string>
+    <string name="txtSave">Enregistrer</string>
+    <string name="hintLogin">Login</string>
+    <string name="hintPass">Mot de passe</string>
+    <string name="txtLogin">Login :</string>
+    <string name="txtUser">Panneau utilisateur</string>
+    <string name="txtToastSaved">Utilisateur enregistré</string>
+    <string name="errorLogin">Erreur de login/mdp</string>
+    <string name="errorWeb">Erreur internet</string>
 </resources>

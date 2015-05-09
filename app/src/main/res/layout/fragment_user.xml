@@ -1,50 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textLogin"
-        android:text="@string/txtLogin"
-        android:layout_gravity="center_horizontal"
-        />
-
-    <EditText
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editTextLogin"
-        android:layout_gravity="center_horizontal"
-        />
+        android:layout_height="match_parent"
+        android:gravity="center">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textPass"
-        android:text="@string/txtPass"
-        android:layout_gravity="center_horizontal"
-        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/editTextLogin"
+            android:hint="@string/hintLogin"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:background="@drawable/edittext_top"
+            android:drawableLeft="@drawable/ic_user_grey"
+            android:drawablePadding="10dip"
+            android:paddingLeft="10dip"
+            android:singleLine="true"
+            />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editTextPass"
-        android:layout_gravity="center_horizontal"
-        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:inputType="textPassword"
+            android:id="@+id/editTextPass"
+            android:layout_gravity="center_horizontal"
+            android:hint="@string/hintBarcode"
+            android:ems="10"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:background="@drawable/edittext_bottom"
+            android:drawableLeft="@drawable/ic_pass"
+            android:drawablePadding="10dip"
+            android:paddingLeft="10dip"
+            android:singleLine="true"
+            />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/action_find"
-        android:id="@+id/buttonSave"
-        android:layout_gravity="center_horizontal"
-        />
 
-</LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="@dimen/spacing_normal"
+            android:background="@drawable/button_default_bg"
+            style="@style/DefaultButtonText"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/txtSave"
+            android:id="@+id/buttonSave"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_small"
+            android:id="@+id/textInfoLogin"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
+</RelativeLayout>

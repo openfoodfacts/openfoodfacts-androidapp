@@ -12,6 +12,8 @@ public class FoodAPIRestClient {
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+        client.setTimeout(5000);
+        client.setResponseTimeout(70000);
         client.get(getAbsoluteUrl(url), params, responseHandler);
     }
 

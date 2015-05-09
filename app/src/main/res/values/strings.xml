@@ -62,12 +62,21 @@
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Serving size :</string>
     <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
-    <string name="txtLogin" translatable="false">Login :</string>
+    <string name="txtLogin">Login :</string>
     <string name="txtPass">Password :</string>
     <string name="txtTitleHome">Open your food and know what you eat</string>
     <string name="txtHome">Open Food Facts is a database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
+    <string name="txtSave">Save</string>
+    <string name="txtUser">User panel</string>
+    <string name="txtToastSaved">User saved</string>
 
     <string name="hintBarcode">Barcode</string>
+    <string name="hintLogin">Login</string>
+    <string name="hintPass">Password</string>
+    <string name="errorLogin">Login or password error</string>
+    <string name="errorWeb">Error internet</string>
+    <string name="txtInfoLoginOk">User saved</string>
+    <string name="txtInfoLoginNo">User not saved</string>
 
 
 
