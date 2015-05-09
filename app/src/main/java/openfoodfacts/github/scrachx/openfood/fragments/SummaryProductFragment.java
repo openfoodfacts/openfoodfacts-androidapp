@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,22 +46,22 @@ public class SummaryProductFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
 
-        if(state.getProduct().getImageUrl() == null){
+        if(state.getProduct().getImageUrl().isEmpty()){
             imgUrl = state.getProduct().getImageSmallUrl();
         }else{
             imgUrl = state.getProduct().getImageUrl();
         }
         setImageView(imgUrl);
         nameProduct.setText(state.getProduct().getProductName());
-        barCodeProduct.setText(getString(R.string.txtBarcode) + ' ' + state.getProduct().getCode());
-        quantityProduct.setText(getString(R.string.txtQuantity) + ' ' + state.getProduct().getQuantity());
-        packagingProduct.setText(getString(R.string.txtPackaging) + ' ' + state.getProduct().getPackaging());
-        brandProduct.setText(getString(R.string.txtBrands) + ' ' + state.getProduct().getBrands());
-        manufacturingProduct.setText(getString(R.string.txtManufacturing) + ' ' + state.getProduct().getManufacturingPlaces());
-        categoryProduct.setText(getString(R.string.txtCategories) + ' ' + state.getProduct().getCategories());
-        cityProduct.setText(getString(R.string.txtCity) + ' ' + state.getProduct().getCitiesTags().toString());
-        storeProduct.setText(getString(R.string.txtStores) + ' ' + state.getProduct().getStores());
-        countryProduct.setText(getString(R.string.txtCountries) + ' ' + state.getProduct().getCountries());
+        barCodeProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtBarcode) + "</b>" + ' ' + state.getProduct().getCode()));
+        quantityProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtQuantity) + "</b>" + ' ' + state.getProduct().getQuantity()));
+        packagingProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtPackaging) + "</b>" + ' ' + state.getProduct().getPackaging()));
+        brandProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtBrands) + "</b>" + ' ' + state.getProduct().getBrands()));
+        manufacturingProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtManufacturing) + "</b>" + ' ' + state.getProduct().getManufacturingPlaces()));
+        categoryProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCategories) + "</b>" + ' ' + state.getProduct().getCategories().replace(",",", ")));
+        cityProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCity) + "</b>" + ' ' + state.getProduct().getCitiesTags().toString().replace("[","").replace("]","")));
+        storeProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtStores) + "</b>" + ' ' + state.getProduct().getStores()));
+        countryProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCountries) + "</b>" + ' ' + state.getProduct().getCountries()));
 
         return rootView;
     }
@@ -69,6 +70,7 @@ public class SummaryProductFragment extends Fragment {
         Ion.with(imgProduct)
                 .placeholder(R.drawable.placeholder_thumb)
                 .error(R.drawable.error_image)
+                .resizeWidth(600)
                 .load(imgUrl);
     }
 }

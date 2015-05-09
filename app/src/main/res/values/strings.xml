@@ -30,6 +30,8 @@
         <item>Summary</item>
         <item>Ingredients</item>
         <item>Nutrition</item>
+        <item>Be careful</item>
+        <item>Back to menu</item>
     </string-array>
 
     <!-- Nav Drawer Main Product List Item Icons -->
@@ -37,6 +39,8 @@
         <item>@drawable/ic_home</item>
         <item>@drawable/ic_search</item>
         <item>@drawable/ic_camera</item>
+        <item>@drawable/ic_camera</item>
+        <item>@drawable/ic_home</item>
     </array>
 
     <!-- Content Description -->
@@ -69,7 +73,10 @@
     <string name="txtSave">Save</string>
     <string name="txtUser">User panel</string>
     <string name="txtToastSaved">User saved</string>
-
+    <string name="txtSalt">Salt :</string>
+    <string name="txtFat">Fat :</string>
+    <string name="txtSugars">Sugars :</string>
+    <string name="txtSaturedFat">Satured fat :</string>
     <string name="hintBarcode">Barcode</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="88dp"
+    android:layout_height="70dp"
     >
 
     <ImageView
         android:id="@+id/imgLevel"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="19dp"
-        android:layout_marginRight="19dp"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
         android:layout_centerVertical="true"
         />
 
@@ -22,7 +22,6 @@
         android:minHeight="?android:attr/listPreferredItemHeightSmall"
         android:textSize="@dimen/font_normal"
         android:gravity="center_vertical"
-        android:paddingRight="88dp"
         />
 
 

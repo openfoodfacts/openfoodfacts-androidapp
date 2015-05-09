@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import java.util.ArrayList;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.CarefulFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
@@ -62,12 +64,16 @@ public class ProductActivity extends ActionBarActivity {
         navDrawerItems = new ArrayList<NavDrawerItem>();
 
         // adding nav drawer items to array
-        // Home
+        // Summary
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-        // Find Product
+        // Ingredients
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-        // Scanner
+        // Nutrition
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+        // Be careful
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+        // Back to home
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 
 
         // Recycle the typed array
@@ -169,6 +175,14 @@ public class ProductActivity extends ActionBarActivity {
             case 2:
                 fragment = new NutritionProductFragment();
                 break;
+            case 3:
+                fragment = new CarefulFragment();
+                break;
+            case 4:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                this.finish();
+                break;
 
             default:
                 break;
@@ -177,7 +191,7 @@ public class ProductActivity extends ActionBarActivity {
         if (fragment != null) {
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, fragment).commit();
+                    .replace(R.id.content_frame_product, fragment).commit();
 
             // update selected item and title, then close the drawer
             mDrawerList.setItemChecked(position, true);

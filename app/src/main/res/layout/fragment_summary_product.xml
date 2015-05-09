@@ -17,76 +17,84 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:textSize="@dimen/font_larger"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_normal"
                 android:id="@+id/textNameProduct"/>
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageViewProduct" />
+                android:id="@+id/imageViewProduct"
+                android:layout_marginEnd="@dimen/spacing_normal"
+                android:layout_marginStart="@dimen/spacing_normal"
+                android:layout_gravity="center_horizontal"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textBarcodeProduct" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textQuantityProduct" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textPackagingProduct" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textBrandProduct" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textCategoryProduct" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textManufacturingProduct" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textCityProduct" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textStoreProduct" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textCountryProduct" />
 
         </LinearLayout>

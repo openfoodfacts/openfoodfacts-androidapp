@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,12 +35,12 @@ public class IngredientsProductFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
 
-        ingredientProduct.setText(getString(R.string.txtIngredients) + ' ' + state.getProduct().getIngredientsText());
-        substanceProduct.setText(getString(R.string.txtSubstances) + ' ' + state.getProduct().getAllergens());
-        traceProduct.setText(getString(R.string.txtTraces) + ' ' + state.getProduct().getTraces());
-        additiveProduct.setText(getString(R.string.txtAdditives) + ' ' + state.getProduct().getAdditivesTags().toString());
-        palmOilProduct.setText(getString(R.string.txtPalmOilProduct) + ' ' + state.getProduct().getIngredientsFromPalmOilTags().toString());
-        mayBeFromPalmOilProduct.setText(getString(R.string.txtMayBeFromPalmOilProduct) + ' ' + state.getProduct().getIngredientsThatMayBeFromPalmOilTags().toString());
+        ingredientProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtIngredients) + "</b>" + ' ' + state.getProduct().getIngredientsText()));
+        substanceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtSubstances) + "</b>" + ' ' + state.getProduct().getAllergens()));
+        traceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtTraces) + "</b>" + ' ' + state.getProduct().getTraces().replace(",", ", ")));
+        additiveProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtAdditives) + "</b>" + ' ' + state.getProduct().getAdditivesTags().toString().replace("[", "").replace("]","")));
+        palmOilProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtPalmOilProduct) + "</b>" + ' ' + state.getProduct().getIngredientsFromPalmOilTags().toString().replace("[","").replace("]","")));
+        mayBeFromPalmOilProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtMayBeFromPalmOilProduct) + "</b>" + ' ' + state.getProduct().getIngredientsThatMayBeFromPalmOilTags().toString().replace("[","").replace("]","")));
 
         return rootView;
     }

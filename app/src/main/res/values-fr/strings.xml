@@ -22,6 +22,8 @@
         <item>Résumé</item>
         <item>Ingrédients</item>
         <item>Nutrition</item>
+        <item>Attention</item>
+        <item>Retour menu</item>
     </string-array>
     <string name="alert_dialog_product_error_msg">Produit non trouvé, veuillez recommencer</string>
     <string name="toast_retrieving">Chargement…</string>
@@ -54,4 +56,10 @@
     <string name="txtToastSaved">Utilisateur enregistré</string>
     <string name="errorLogin">Erreur de login/mdp</string>
     <string name="errorWeb">Erreur internet</string>
+    <string name="txtSalt">Sel :</string>
+    <string name="txtSaturedFat">Acides gras saturés :</string>
+    <string name="txtSugars">Sucres :</string>
+    <string name="txtFat">Matières grasses / Lipides :</string>
+    <string name="txtInfoLoginNo">Utilisateur enregistré</string>
+    <string name="txtInfoLoginOk">Utilisateur non enregistré</string>
 </resources>

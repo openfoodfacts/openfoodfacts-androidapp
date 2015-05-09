@@ -4,14 +4,14 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
-
+import android.widget.TextView;
 import java.util.ArrayList;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -24,6 +24,7 @@ public class NutritionProductFragment extends Fragment {
 
     private ImageView img;
     private ListView lv;
+    private TextView serving;
     private ArrayList<NutrientLevelItem> levelItem;
     private NutrientLevelListAdapter adapter;
 
@@ -34,26 +35,33 @@ public class NutritionProductFragment extends Fragment {
 
         img = (ImageView) rootView.findViewById(R.id.imageGrade);
         lv = (ListView) rootView.findViewById(R.id.listNutrientLevels);
+        serving = (TextView) rootView.findViewById(R.id.textServingSize);
 
         Intent intent = getActivity().getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
 
-        String salt = state.getProduct().getNutrientLevels().getSalt();
-        String fat = state.getProduct().getNutrientLevels().getFat();
-        String sugars = state.getProduct().getNutrientLevels().getSugars();
-        String saturedFat = state.getProduct().getNutrientLevels().getSaturatedFat();
+        String saltTxt = Html.fromHtml("<b>" + getString(R.string.txtSalt) + "</b>" + ' ' + state.getProduct().getNutrientLevels().getSalt() + " (" + state.getProduct().getNutriments().getSalt100g() + state.getProduct().getNutriments().getSaltUnit() + ")").toString();
+        String fatTxt = Html.fromHtml("<b>" + getString(R.string.txtFat) + "</b>" + ' ' + state.getProduct().getNutrientLevels().getFat() + " (" + state.getProduct().getNutriments().getFat100g() + state.getProduct().getNutriments().getFatUnit() + ")").toString();
+        String sugarsTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + state.getProduct().getNutrientLevels().getSugars() + " (" + state.getProduct().getNutriments().getSugars100g() + state.getProduct().getNutriments().getSugarsUnit() + ")").toString();
+        String saturedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + state.getProduct().getNutrientLevels().getSaturatedFat() + " (" + state.getProduct().getNutriments().getSaturatedFat100g() + state.getProduct().getNutriments().getSaturatedFatUnit() + ")").toString();
+
+        String saltImg = state.getProduct().getNutrientLevels().getSalt();
+        String fatImg = state.getProduct().getNutrientLevels().getFat();
+        String sugarsImg = state.getProduct().getNutrientLevels().getSugars();
+        String saturedFatImg = state.getProduct().getNutrientLevels().getSaturatedFat();
 
         levelItem = new ArrayList<NutrientLevelItem>();
-        levelItem.add(new NutrientLevelItem(salt,getImageLevel(salt)));
-        levelItem.add(new NutrientLevelItem(fat,getImageLevel(fat)));
-        levelItem.add(new NutrientLevelItem(sugars, getImageLevel(sugars)));
-        levelItem.add(new NutrientLevelItem(saturedFat,getImageLevel(saturedFat)));
+        levelItem.add(new NutrientLevelItem(saltTxt,getImageLevel(saltImg)));
+        levelItem.add(new NutrientLevelItem(fatTxt,getImageLevel(fatImg)));
+        levelItem.add(new NutrientLevelItem(sugarsTxt, getImageLevel(sugarsImg)));
+        levelItem.add(new NutrientLevelItem(saturedFatTxt,getImageLevel(saturedFatImg)));
         System.out.println(levelItem.toString());
 
         adapter = new NutrientLevelListAdapter(rootView.getContext(),levelItem);
         lv.setAdapter(adapter);
 
         img.setImageResource(getImageGrade(state.getProduct().getNutritionGradeFr()));
+        serving.setText(Html.fromHtml("<b>" + getString(R.string.txtServingSize) + "</b>" + ' ' + state.getProduct().getServingSize()));
 
         return rootView;
     }

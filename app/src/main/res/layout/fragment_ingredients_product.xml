@@ -13,46 +13,55 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/imageViewProduct"
+                android:layout_margin="@dimen/spacing_normal"
+                android:src="@drawable/img_default_product"
+                android:layout_gravity="center_horizontal"
+                />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textIngredientProduct"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textSubstanceProduct" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textTraceProduct" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textAdditiveProduct" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textPalmOilProduct" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_normal"
-                android:text="Large Text"
+                android:layout_margin="@dimen/spacing_tiny"
                 android:id="@+id/textMayBeFromPalmOilProduct" />
 
         </LinearLayout>
