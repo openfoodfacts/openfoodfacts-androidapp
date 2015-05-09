@@ -71,7 +71,7 @@ public class ProductActivity extends ActionBarActivity {
         // Nutrition
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
         // Be careful
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+        //navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
         // Back to home
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 
@@ -175,10 +175,10 @@ public class ProductActivity extends ActionBarActivity {
             case 2:
                 fragment = new NutritionProductFragment();
                 break;
-            case 3:
+            /*case 3:
                 fragment = new CarefulFragment();
-                break;
-            case 4:
+                break;*/
+            case 3:
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 this.finish();

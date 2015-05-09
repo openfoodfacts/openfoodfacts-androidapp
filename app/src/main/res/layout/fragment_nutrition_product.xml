@@ -11,8 +11,11 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:weightSum="1"
+            android:layout_gravity="right|bottom">
+
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -21,6 +24,14 @@
                 android:layout_margin="@dimen/spacing_large"
                 android:gravity="center"
                 android:id="@+id/imageGrade" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_normal"
+                android:layout_margin="@dimen/spacing_normal"
+                android:text="@string/txtServingSize"
+                android:id="@+id/textServingSize" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -32,18 +43,11 @@
                 android:textStyle="bold"/>
 
             <ListView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_normal"
-                android:id="@+id/listNutrientLevels" />
-
-            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/font_normal"
+                android:layout_height="319dp"
                 android:layout_margin="@dimen/spacing_normal"
-                android:text="@string/txtServingSize"
-                android:id="@+id/textServingSize" />
+                android:id="@+id/listNutrientLevels"
+                android:layout_weight="0.65" />
 
         </LinearLayout>
 

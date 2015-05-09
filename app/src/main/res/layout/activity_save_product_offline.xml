@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+            <LinearLayout android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:inputType="text"
+                    android:ems="10"
+                    android:id="@+id/editTextName"
+                    android:hint="@string/hintNameProduct"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:background="@drawable/edittext_top"
+                    android:paddingLeft="50dp"
+                    android:singleLine="true"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:inputType="text"
+                    android:ems="10"
+                    android:id="@+id/editTextEnergy"
+                    android:hint="@string/hintEnergy"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:background="@drawable/edittext_top"
+                    android:paddingLeft="50dp"
+                    android:singleLine="true"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:inputType="text"
+                    android:ems="10"
+                    android:id="@+id/editTextWeight"
+                    android:hint="@string/hintWeight"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:background="@drawable/edittext_middle"
+                    android:paddingLeft="50dp"
+                    android:singleLine="true"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:inputType="text"
+                    android:ems="10"
+                    android:id="@+id/editTextStores"
+                    android:hint="@string/hintStores"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:background="@drawable/edittext_bottom"
+                    android:paddingLeft="50dp"
+                    android:singleLine="true"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageSave"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:src="@drawable/placeholder_thumb"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:background="@drawable/button_default_bg"
+                    style="@style/DefaultButtonText"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/txtTakePicture"
+                    android:id="@+id/buttonTakePicture"
+                    />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:background="@drawable/button_default_bg"
+                    style="@style/DefaultButtonText"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/txtSave"
+                    android:id="@+id/buttonSaveProduct"
+                    />
+
+
+            </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

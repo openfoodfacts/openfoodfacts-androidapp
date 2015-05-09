@@ -15,6 +15,7 @@
         <item>Search</item>
         <item>Scan</item>
         <item>User</item>
+        <item>Offline edit</item>
     </string-array>
 
     <!-- Nav Drawer Main Menu List Item Icons -->
@@ -23,6 +24,7 @@
         <item>@drawable/ic_search</item>
         <item>@drawable/ic_camera</item>
         <item>@drawable/ic_user</item>
+        <item>@drawable/ic_edit</item>
     </array>
 
     <!-- Nav Drawer Product Menu Items -->
@@ -45,10 +47,8 @@
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
-
     <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
     <string name="toast_retrieving">Loading...</string>
-
     <string name="txtBarcode">Barcode :</string>
     <string name="txtQuantity">Quantity :</string>
     <string name="txtPackaging">Packaging :</string>
@@ -84,8 +84,16 @@
     <string name="errorWeb">Error internet</string>
     <string name="txtInfoLoginOk">User saved</string>
     <string name="txtInfoLoginNo">User not saved</string>
-
-
+    <string name="txtDialogsTitle">Information</string>
+    <string name="txtDialogsContent">The product you scan does not exit on our database. Do you want to add it?</string>
+    <string name="txtYes">Yes</string>
+    <string name="txtNo">No</string>
+    <string name="hintNameProduct">Name</string>
+    <string name="hintEnergy">Energy in kJ</string>
+    <string name="hintEnergyUnit">Energy unit</string>
+    <string name="hintWeight">Weight</string>
+    <string name="hintStores">Store</string>
+    <string name="txtTakePicture">Take picture</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>
