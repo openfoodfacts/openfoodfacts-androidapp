@@ -32,7 +32,7 @@ public class FindProductFragment extends Fragment {
                 goToProduct();
             }
         });
-
+        barCode_text.setSelected(false);
         return rootView;
     }
 

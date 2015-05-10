@@ -42,6 +42,8 @@ public class UserFragment extends Fragment {
         save = (Button) rootView.findViewById(R.id.buttonSave);
         infoLogin = (TextView) rootView.findViewById(R.id.textInfoLogin);
 
+        login.setSelected(false);
+        pass.setSelected(false);
 
         String loginS = settings.getString("user", "");
         String passS = settings.getString("pass", "");

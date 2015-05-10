@@ -12,6 +12,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <ImageView
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:id="@+id/imageSave"
+                    android:src="@drawable/placeholder_thumb"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:background="@drawable/button_default_bg"
+                    style="@style/DefaultButtonText"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/txtTakePicture"
+                    android:id="@+id/buttonTakePicture"
+                    />
+
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
@@ -37,7 +57,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="@dimen/spacing_normal"
                     android:layout_marginRight="@dimen/spacing_normal"
-                    android:background="@drawable/edittext_top"
+                    android:background="@drawable/edittext_middle"
                     android:paddingLeft="50dp"
                     android:singleLine="true"
                     />
@@ -70,27 +90,6 @@
                     android:background="@drawable/edittext_bottom"
                     android:paddingLeft="50dp"
                     android:singleLine="true"
-                    />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageSave"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:src="@drawable/placeholder_thumb"
-                    android:layout_gravity="center_horizontal"
-                    android:visibility="gone"/>
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:background="@drawable/button_default_bg"
-                    style="@style/DefaultButtonText"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/txtTakePicture"
-                    android:id="@+id/buttonTakePicture"
                     />
 
                 <Button

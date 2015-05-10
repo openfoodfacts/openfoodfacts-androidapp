@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 
@@ -40,27 +41,34 @@ public class NutritionProductFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
 
-        String saltTxt = Html.fromHtml("<b>" + getString(R.string.txtSalt) + "</b>" + ' ' + state.getProduct().getNutrientLevels().getSalt() + " (" + state.getProduct().getNutriments().getSalt100g() + state.getProduct().getNutriments().getSaltUnit() + ")").toString();
-        String fatTxt = Html.fromHtml("<b>" + getString(R.string.txtFat) + "</b>" + ' ' + state.getProduct().getNutrientLevels().getFat() + " (" + state.getProduct().getNutriments().getFat100g() + state.getProduct().getNutriments().getFatUnit() + ")").toString();
-        String sugarsTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + state.getProduct().getNutrientLevels().getSugars() + " (" + state.getProduct().getNutriments().getSugars100g() + state.getProduct().getNutriments().getSugarsUnit() + ")").toString();
-        String saturedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + state.getProduct().getNutrientLevels().getSaturatedFat() + " (" + state.getProduct().getNutriments().getSaturatedFat100g() + state.getProduct().getNutriments().getSaturatedFatUnit() + ")").toString();
+        NutrientLevels nt = state.getProduct().getNutrientLevels();
+        if(nt == null){
+            levelItem = new ArrayList<NutrientLevelItem>();
+            levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData),R.drawable.error_image));
+            adapter = new NutrientLevelListAdapter(rootView.getContext(),levelItem);
+            lv.setAdapter(adapter);
+        }else{
+            String saltTxt = Html.fromHtml("<b>" + getString(R.string.txtSalt) + "</b>" + ' ' + nt.getSalt() + " (" + state.getProduct().getNutriments().getSalt100g() + state.getProduct().getNutriments().getSaltUnit() + ")").toString();
+            String fatTxt = Html.fromHtml("<b>" + getString(R.string.txtFat) + "</b>" + ' ' + nt.getFat() + " (" + state.getProduct().getNutriments().getFat100g() + state.getProduct().getNutriments().getFatUnit() + ")").toString();
+            String sugarsTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + nt.getSugars() + " (" + state.getProduct().getNutriments().getSugars100g() + state.getProduct().getNutriments().getSugarsUnit() + ")").toString();
+            String saturedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + nt.getSaturatedFat() + " (" + state.getProduct().getNutriments().getSaturatedFat100g() + state.getProduct().getNutriments().getSaturatedFatUnit() + ")").toString();
 
-        String saltImg = state.getProduct().getNutrientLevels().getSalt();
-        String fatImg = state.getProduct().getNutrientLevels().getFat();
-        String sugarsImg = state.getProduct().getNutrientLevels().getSugars();
-        String saturedFatImg = state.getProduct().getNutrientLevels().getSaturatedFat();
+            String saltImg = nt.getSalt();
+            String fatImg = nt.getFat();
+            String sugarsImg = nt.getSugars();
+            String saturedFatImg = nt.getSaturatedFat();
 
-        levelItem = new ArrayList<NutrientLevelItem>();
-        levelItem.add(new NutrientLevelItem(saltTxt,getImageLevel(saltImg)));
-        levelItem.add(new NutrientLevelItem(fatTxt,getImageLevel(fatImg)));
-        levelItem.add(new NutrientLevelItem(sugarsTxt, getImageLevel(sugarsImg)));
-        levelItem.add(new NutrientLevelItem(saturedFatTxt,getImageLevel(saturedFatImg)));
-        System.out.println(levelItem.toString());
+            levelItem = new ArrayList<NutrientLevelItem>();
+            levelItem.add(new NutrientLevelItem(saltTxt,getImageLevel(saltImg)));
+            levelItem.add(new NutrientLevelItem(fatTxt,getImageLevel(fatImg)));
+            levelItem.add(new NutrientLevelItem(sugarsTxt, getImageLevel(sugarsImg)));
+            levelItem.add(new NutrientLevelItem(saturedFatTxt,getImageLevel(saturedFatImg)));
 
-        adapter = new NutrientLevelListAdapter(rootView.getContext(),levelItem);
-        lv.setAdapter(adapter);
+            adapter = new NutrientLevelListAdapter(rootView.getContext(),levelItem);
+            lv.setAdapter(adapter);
+            img.setImageResource(getImageGrade(state.getProduct().getNutritionGradeFr()));
+        }
 
-        img.setImageResource(getImageGrade(state.getProduct().getNutritionGradeFr()));
         serving.setText(Html.fromHtml("<b>" + getString(R.string.txtServingSize) + "</b>" + ' ' + state.getProduct().getServingSize()));
 
         return rootView;

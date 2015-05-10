@@ -25,6 +25,12 @@ public class FoodUserClient {
         client.post(getAbsoluteUrl(url), params, responseHandler);
     }
 
+    public static void postImg(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+        client.setTimeout(5000);
+        client.setResponseTimeout(70000);
+        client.post(getAbsoluteUrl(url), params, responseHandler);
+    }
+
     private static String getAbsoluteUrl(String relativeUrl) {
         return BASE_URL + relativeUrl;
     }

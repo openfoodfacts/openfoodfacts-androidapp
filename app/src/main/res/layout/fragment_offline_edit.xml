@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <ListView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_margin="@dimen/spacing_normal"
-        android:id="@+id/listOfflineSave" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttonSendAll">
 
-</LinearLayout>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spacing_normal"
+            android:id="@+id/listOfflineSave" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="@dimen/spacing_normal"
+        android:background="@drawable/button_default_bg"
+        style="@style/DefaultButtonText"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:text="@string/txtSendAll"
+        android:id="@+id/buttonSendAll"
+            />
+</RelativeLayout>

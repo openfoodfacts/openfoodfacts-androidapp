@@ -11,7 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
@@ -23,16 +27,31 @@ import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
 
 public class BarCodeScannerFragment extends Fragment implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
+    private List<BarcodeFormat> formats;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mScannerView = new ZXingScannerView(getActivity());
+        formats = new ArrayList<BarcodeFormat>();
+        formats.add(BarcodeFormat.UPC_A);
+        formats.add(BarcodeFormat.UPC_E);
+        formats.add(BarcodeFormat.EAN_13);
+        formats.add(BarcodeFormat.EAN_8);
+        formats.add(BarcodeFormat.RSS_14);
+        formats.add(BarcodeFormat.CODE_39);
+        formats.add(BarcodeFormat.CODE_93);
+        formats.add(BarcodeFormat.CODE_128);
+        formats.add(BarcodeFormat.ITF);
+        mScannerView.setFormats(formats);
+        mScannerView.setResultHandler(this);
+        mScannerView.setAutoFocus(true);
         return mScannerView;
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        mScannerView.setFormats(formats);
         mScannerView.setResultHandler(this);
         mScannerView.setAutoFocus(true);
         mScannerView.startCamera();

@@ -66,5 +66,21 @@
     <string name="txtNo">Non</string>
     <string name="txtDialogsTitle">Information</string>
     <string name="txtYes">Oui</string>
-    <string name="txtDialogsContent">Le produit que vous recherchez n'existe pas dans notre database. Voulez-vous l'ajouter?</string>
+    <string name="txtDialogsContent">Le produit que vous recherchez n\'existe pas dans notre database. Voulez-vous l\'ajouter?</string>
+    <string name="hintEnergy">Energie en kJ</string>
+    <string name="hintEnergyUnit">Unité de l\'energie</string>
+    <string name="hintNameProduct">Nom</string>
+    <string name="hintStores">Magasin</string>
+    <string name="hintWeight">Poids / Quantité</string>
+    <string name="txtSendAll">Tout envoyer</string>
+    <string name="txtTakePicture">Prendre une photo</string>
+    <string name="txtNoData">Aucune données</string>
+    <string name="txtPictureNeeded">Prenez une photo et ajoutez le nom!</string>
+    <string name="dataSaved">Données enregistrées...</string>
+    <string name="toastSending">Envoie..</string>
+    <string name="txtDialogsContentSend">Voulez-vous envoyer les produits dans notre database?</string>
+    <string name="txtInfoAddUser">Veuillez ajouter un utilisateur</string>
+    <string name="txtDataUpdated">Données mis à jour</string>
+    <string name="txtLoading">Chargement...</string>
+    <string name="txtDialogsContentDelete">Voulez-vous supprimer cette ligne?</string>
 </resources>

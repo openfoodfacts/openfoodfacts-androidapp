@@ -20,7 +20,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodAPIRestClient;
 import openfoodfacts.github.scrachx.openfood.utils.MyNullKeySerializer;
 import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.SaveProductOffline;
+import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 
 /**
  * Created by scotscriven on 30/04/15.
@@ -44,9 +44,6 @@ public class FoodAPIRestClientUsage {
                 // called when response HTTP status is "200 OK"
                 try {
                     ObjectMapper objectMapper = new ObjectMapper();
-                    objectMapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
-                    objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-                    objectMapper.getSerializerProvider().setNullKeySerializer(new MyNullKeySerializer());
                     State s = objectMapper.readValue(response, State.class);
 
                     if(s.getStatus() == 0){
@@ -59,7 +56,7 @@ public class FoodAPIRestClientUsage {
                                 .callback(new MaterialDialog.ButtonCallback() {
                                     @Override
                                     public void onPositive(MaterialDialog dialog) {
-                                        Intent intent = new Intent(activity, SaveProductOffline.class);
+                                        Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
                                         intent.putExtra("barcode",barcode);
                                         activity.startActivity(intent);
                                         activity.finish();

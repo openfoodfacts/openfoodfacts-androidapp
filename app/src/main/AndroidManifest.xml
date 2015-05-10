@@ -3,6 +3,7 @@
     package="openfoodfacts.github.scrachx.openfood" >
 
     <application
+        android:name="com.orm.SugarApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,7 +20,9 @@
         <activity android:name=".views.MainActivity"></activity>
         <activity android:name=".views.ScannerFragmentActivity"></activity>
         <activity android:name=".views.ProductActivity"></activity>
-        <activity android:name=".views.SaveProductOffline"></activity>
+        <activity android:name=".views.SaveProductOfflineActivity">
+            <uses-feature android:name="android.hardware.camera" android:required="true" />
+        </activity>
 
         <meta-data android:name="DATABASE" android:value="offacts.db" />
         <meta-data android:name="VERSION" android:value="1" />
@@ -31,6 +34,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 </manifest>
