@@ -32,7 +32,7 @@
             android:inputType="textPassword"
             android:id="@+id/editTextPass"
             android:layout_gravity="center_horizontal"
-            android:hint="@string/hintBarcode"
+            android:hint="@string/hintPass"
             android:ems="10"
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
