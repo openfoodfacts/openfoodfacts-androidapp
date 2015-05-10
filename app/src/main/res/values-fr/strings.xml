@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">OpenFood</string>
     <string name="action_find">Chercher</string>
-    <string name="action_settings">Paramètre</string>
+    <string name="action_settings">Paramètres</string>
     <string name="desc_list_item_icon">Icône</string>
     <string name="drawer_close">Menu Ouvert</string>
     <string name="drawer_open">Menu Fermé</string>
@@ -83,4 +83,5 @@
     <string name="txtDataUpdated">Données mis à jour</string>
     <string name="txtLoading">Chargement...</string>
     <string name="txtDialogsContentDelete">Voulez-vous supprimer cette ligne?</string>
+    <string name="txtBarcodeRequire">Code barre requis</string>
 </resources>

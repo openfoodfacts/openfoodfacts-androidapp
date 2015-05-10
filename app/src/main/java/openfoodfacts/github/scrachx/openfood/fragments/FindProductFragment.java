@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
@@ -29,7 +30,11 @@ public class FindProductFragment extends Fragment {
         launch_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                goToProduct();
+                if(barCode_text.getText().toString().isEmpty()){
+                    Toast.makeText(getActivity(), getResources().getString(R.string.txtBarcodeRequire), Toast.LENGTH_LONG).show();
+                }else{
+                    goToProduct();
+                }
             }
         });
         barCode_text.setSelected(false);
