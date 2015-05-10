@@ -20,9 +20,7 @@
         <activity android:name=".views.MainActivity"></activity>
         <activity android:name=".views.ScannerFragmentActivity"></activity>
         <activity android:name=".views.ProductActivity"></activity>
-        <activity android:name=".views.SaveProductOfflineActivity">
-            <uses-feature android:name="android.hardware.camera" android:required="true" />
-        </activity>
+        <activity android:name=".views.SaveProductOfflineActivity"></activity>
 
         <meta-data android:name="DATABASE" android:value="offacts.db" />
         <meta-data android:name="VERSION" android:value="1" />
@@ -31,6 +29,7 @@
 
     </application>
 
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>

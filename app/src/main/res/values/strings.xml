@@ -38,9 +38,9 @@
 
     <!-- Nav Drawer Main Product List Item Icons -->
     <array name="nav_drawer_icons_product">
-        <item>@drawable/ic_home</item>
-        <item>@drawable/ic_search</item>
-        <item>@drawable/ic_camera</item>
+        <item>@drawable/ic_summary_product</item>
+        <item>@drawable/ic_ingredient</item>
+        <item>@drawable/ic_nutrition</item>
         <item>@drawable/ic_camera</item>
         <item>@drawable/ic_home</item>
     </array>
@@ -118,5 +118,27 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
     </style>
+
+    <!-- <string-array name="countries_array_id">
+        <item>world</item>
+        <item>de</item>
+        <item>es</item>
+        <item>us</item>
+        <item>fr</item>
+        <item>lu</item>
+        <item>mc</item>
+        <item>uk</item>
+    </string-array>
+
+    <string-array name="countries_array">
+        <item>World</item>
+        <item>Allemagne</item>
+        <item>Espagne</item>
+        <item>États-Unis</item>
+        <item>France</item>
+        <item>Luxembourg</item>
+        <item>Monaco</item>
+        <item>Royaume-Uni</item>
+    </string-array> -->
 
 </resources>

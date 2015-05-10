@@ -4,53 +4,62 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollViewSummaryProduct">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center">
 
-        <LinearLayout
-            android:orientation="vertical"
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:id="@+id/imageGrade" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:padding="@dimen/spacing_small"
+            android:background="@drawable/textview_full"
+            android:text="@string/txtServingSize"
+            android:id="@+id/textServingSize" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:padding="@dimen/spacing_small"
+            android:background="@drawable/textview_full"
+            android:text="@string/txtNutrientLevel100g"
+            android:id="@+id/textNutrientTxt"
+            android:textStyle="bold"/>
+
+        <ListView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:weightSum="1"
-            android:layout_gravity="right|bottom">
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:padding="@dimen/spacing_small"
+            android:background="@drawable/textview_full"
+            android:id="@+id/listNutrientLevels" />
 
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/spacing_large"
-                android:gravity="center"
-                android:id="@+id/imageGrade" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/font_normal"
-                android:layout_margin="@dimen/spacing_normal"
-                android:text="@string/txtServingSize"
-                android:id="@+id/textServingSize" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/font_normal"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:text="@string/txtNutrientLevel100g"
-                android:id="@+id/textNutrientTxt"
-                android:textStyle="bold"/>
-
-            <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="319dp"
-                android:layout_margin="@dimen/spacing_normal"
-                android:id="@+id/listNutrientLevels"
-                android:layout_weight="0.65" />
-
-        </LinearLayout>
-
-    </ScrollView>
+    </LinearLayout>
 
 </FrameLayout>

@@ -63,6 +63,8 @@ public class OfflineEditFragment extends Fragment {
         if(loginS.isEmpty() || passS.isEmpty()){
             Toast.makeText(rootView.getContext(), rootView.getContext().getString(R.string.txtInfoAddUser), Toast.LENGTH_LONG).show();
             buttonSend.setEnabled(false);
+        }else if(saveItems.size() == 0){
+            buttonSend.setEnabled(false);
         }else{
             buttonSend.setEnabled(true);
         }
@@ -94,10 +96,10 @@ public class OfflineEditFragment extends Fragment {
                         .callback(new MaterialDialog.ButtonCallback() {
                             @Override
                             public void onPositive(MaterialDialog dialog) {
-                                saveItems.remove(lapos);
                                 String barcode = saveItems.get(lapos).getBarcode();
                                 SendProduct.deleteAll(SendProduct.class, "barcode = ?", barcode);
                                 SaveListAdapter sl = (SaveListAdapter) laparent.getAdapter();
+                                saveItems.remove(lapos);
                                 sl.notifyDataSetChanged();
                             }
 
