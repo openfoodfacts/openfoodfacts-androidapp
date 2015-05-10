@@ -70,7 +70,7 @@
     <string name="txtPass">Password :</string>
     <string name="txtTitleHome">Open your food and know what you eat</string>
     <string name="txtHome">Open Food Facts is a database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
-    <string name="txtSave">Save</string>
+    <string name="txtSave">Store locally</string>
     <string name="txtUser">User panel</string>
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Salt :</string>
@@ -95,16 +95,18 @@
     <string name="hintWeight">Weight</string>
     <string name="hintStores">Store</string>
     <string name="txtTakePicture">Take picture</string>
-    <string name="txtSendAll">Send all</string>
+    <string name="txtSendAll">Upload all</string>
     <string name="txtNoData">No data</string>
     <string name="txtPictureNeeded">Take picture first and fill the name!</string>
-    <string name="toastSending">Sending...</string>
-    <string name="dataSaved">Data saved...</string>
-    <string name="txtInfoAddUser">Please add id and pass user</string>
+    <string name="toastSending">Uploading...</string>
+    <string name="dataSaved">Saved locally on your phone</string>
+    <string name="txtInfoAddUser">Please enter your login and password</string>
     <string name="txtDataUpdated">Data updated</string>
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Do you want to delete this entry?</string>
+    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it on "Offline edit" menu</string>
     <string name="txtBarcodeRequire">Barcode required</string>
+    <string name="txtOk">Ok</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>

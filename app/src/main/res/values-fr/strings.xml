@@ -49,14 +49,14 @@
     <string name="txtTitleHome">Ouvrez votre nourriture pour savoir ce que vous mangez</string>
     <string name="txtHome">Open Food Facts est une base de données de produits alimentaires qui répertorie les ingrédients, les allergènes, la composition nutritionnelle et toutes les informations présentes sur les étiquettes des aliments.</string>
     <string name="hintBarcode">Code barre</string>
-    <string name="txtSave">Enregistrer</string>
+    <string name="txtSave">Enregistrer localement</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Mot de passe</string>
     <string name="txtLogin">Login :</string>
     <string name="txtUser">Panneau utilisateur</string>
     <string name="txtToastSaved">Utilisateur enregistré</string>
     <string name="errorLogin">Erreur de login/mdp</string>
-    <string name="errorWeb">Erreur internet</string>
+    <string name="errorWeb">Erreur de connexion internet</string>
     <string name="txtSalt">Sel :</string>
     <string name="txtSaturedFat">Acides gras saturés :</string>
     <string name="txtSugars">Sucres :</string>
@@ -76,7 +76,7 @@
     <string name="txtTakePicture">Prendre une photo</string>
     <string name="txtNoData">Aucune données</string>
     <string name="txtPictureNeeded">Prenez une photo et ajoutez le nom!</string>
-    <string name="dataSaved">Données enregistrées...</string>
+    <string name="dataSaved">Données enregistrées localement...</string>
     <string name="toastSending">Envoie..</string>
     <string name="txtDialogsContentSend">Voulez-vous envoyer les produits dans notre database?</string>
     <string name="txtInfoAddUser">Veuillez ajouter un utilisateur</string>
@@ -84,4 +84,6 @@
     <string name="txtLoading">Chargement...</string>
     <string name="txtDialogsContentDelete">Voulez-vous supprimer cette ligne?</string>
     <string name="txtBarcodeRequire">Code barre requis</string>
+    <string name="txtDialogsContentInfoSave">Le produit a été sauvegardé localement, vous pouvez l\'éditer dans le menu "Edition hors ligne"</string>
+    <string name="txtOk">Ok</string>
 </resources>

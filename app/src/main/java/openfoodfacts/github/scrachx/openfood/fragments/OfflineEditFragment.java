@@ -63,12 +63,7 @@ public class OfflineEditFragment extends Fragment {
         if(loginS.isEmpty() || passS.isEmpty()){
             Toast.makeText(rootView.getContext(), rootView.getContext().getString(R.string.txtInfoAddUser), Toast.LENGTH_LONG).show();
             buttonSend.setEnabled(false);
-        }else if(saveItems.size() == 0){
-            buttonSend.setEnabled(false);
-        }else{
-            buttonSend.setEnabled(true);
         }
-
 
         new FillAdapter().execute(rootView.getContext());
 
@@ -196,6 +191,15 @@ public class OfflineEditFragment extends Fragment {
                 lt.success();
                 adapter = new SaveListAdapter(ctx,saveItems);
                 listView.setAdapter(adapter);
+                buttonSend.setEnabled(true);
+                for(int i = 0; i < listSaveProduct.size(); i++){
+                    SendProduct sp = listSaveProduct.get(i);
+                    if(sp.getBarcode().isEmpty() || sp.getEnergy().isEmpty() || sp.getImgupload_front().isEmpty()
+                            || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()){
+                        buttonSend.setEnabled(false);
+                    }
+
+                }
             }else{
                 lt.error();
             }
