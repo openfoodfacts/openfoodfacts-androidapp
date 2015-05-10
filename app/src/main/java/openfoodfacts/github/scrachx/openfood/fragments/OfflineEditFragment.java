@@ -60,10 +60,7 @@ public class OfflineEditFragment extends Fragment {
         loginS = settings.getString("user", "");
         passS = settings.getString("pass", "");
 
-        if(loginS.isEmpty() || passS.isEmpty()){
-            Toast.makeText(rootView.getContext(), rootView.getContext().getString(R.string.txtInfoAddUser), Toast.LENGTH_LONG).show();
-            buttonSend.setEnabled(false);
-        }
+        buttonSend.setEnabled(false);
 
         new FillAdapter().execute(rootView.getContext());
 
@@ -199,6 +196,10 @@ public class OfflineEditFragment extends Fragment {
                         buttonSend.setEnabled(false);
                     }
 
+                }
+                if(loginS.isEmpty() || passS.isEmpty()){
+                    Toast.makeText(ctx, ctx.getString(R.string.txtInfoAddUser), Toast.LENGTH_LONG).show();
+                    buttonSend.setEnabled(false);
                 }
             }else{
                 lt.error();
