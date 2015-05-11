@@ -24,7 +24,11 @@ import com.loopj.android.http.RequestParams;
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,7 +139,23 @@ public class OfflineEditFragment extends Fragment {
                                     params.put("nutriment_energy", sp.getEnergy());
                                     params.put("nutriment_energy_unit", sp.getEnergy_unit());
                                     params.put("nutrition_data_per", "serving");
-                                    user.post(getActivity(), params, sp.getImgupload_front(), sp.getBarcode());
+
+                                    File f = new File(sp.getImgupload_front());
+                                    Bitmap bt = decodeFile(f);
+                                    OutputStream fOut = null;
+                                    File smallFile = new File(sp.getImgupload_front().replace(".png", "_small.png"));
+                                    try {
+                                        fOut = new FileOutputStream(smallFile);
+                                        bt.compress(Bitmap.CompressFormat.PNG,100,fOut);
+                                        fOut.flush();
+                                        fOut.close();
+                                    } catch (FileNotFoundException e) {
+                                        e.printStackTrace();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    user.post(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getBarcode());
                                 }
                             }
                         }
@@ -204,9 +224,34 @@ public class OfflineEditFragment extends Fragment {
             }else{
                 lt.error();
             }
-
         }
 
+    }
+
+    // Decodes image and scales it to reduce memory consumption
+    private Bitmap decodeFile(File f) {
+        try {
+            // Decode image size
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            BitmapFactory.decodeStream(new FileInputStream(f), null, o);
+
+            // The new size we want to scale to
+            final int REQUIRED_SIZE=300;
+
+            // Find the correct scale value. It should be the power of 2.
+            int scale = 1;
+            while(o.outWidth / scale / 2 >= REQUIRED_SIZE &&
+                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+                scale *= 2;
+            }
+
+            // Decode with inSampleSize
+            BitmapFactory.Options o2 = new BitmapFactory.Options();
+            o2.inSampleSize = scale;
+            return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
+        } catch (FileNotFoundException e) {}
+        return null;
     }
 
 }

@@ -90,7 +90,7 @@
     <string name="txtYes">Yes</string>
     <string name="txtNo">No</string>
     <string name="hintNameProduct">Name</string>
-    <string name="hintEnergy">Energy in kJ</string>
+    <string name="hintEnergy">Energy in kJ per serving</string>
     <string name="hintEnergyUnit">Energy unit</string>
     <string name="hintWeight">Weight</string>
     <string name="hintStores">Store</string>
@@ -107,6 +107,8 @@
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it on "Offline edit" menu</string>
     <string name="txtBarcodeRequire">Barcode required</string>
     <string name="txtOk">Ok</string>
+    <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+    <string name="txtAllsent">Products sent</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>

@@ -51,16 +51,18 @@ public class FoodUserClientUsage {
                     int status = response.getInt("status");
                     if (status == 0) {
                         lt.error();
+                        Toast.makeText(activity, response.getString("error"), Toast.LENGTH_LONG).show();
                     } else {
                         lt.success();
                         RequestParams paramsImg = new RequestParams();
                         File myFile = new File(img);
+                        long length = myFile.length();
                         paramsImg.put("code", barcode);
                         paramsImg.put("imagefield", "front");
                         try {
                             paramsImg.put("imgupload_front", myFile);
                         } catch(FileNotFoundException e) {e.getMessage();}
-                        postImg(activity, paramsImg, barcode);
+                        postImg(activity, paramsImg, barcode, length);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -80,28 +82,37 @@ public class FoodUserClientUsage {
             });
     }
 
-    public void postImg(final Activity activity, final RequestParams params, final String barcode){
+    public void postImg(final Activity activity, final RequestParams params, final String barcode, final long length){
         FoodUserClient.post("/cgi/product_image_upload.pl", params, new JsonHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
+            MaterialDialog dialog;
 
             @Override
             public void onStart () {
                 // called before request is started
                 lt.setText(activity.getString(R.string.toastSending));
                 lt.show();
+                dialog = new MaterialDialog.Builder(activity)
+                        .title(R.string.toast_retrieving)
+                        .content(R.string.txtContentDialogUploading)
+                        .progress(false,(int)length, true)
+                        .show();
+                Log.d("Length", Long.toString(length));
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray
                 try {
-                    int status = response.getInt("status");
-                    if (status == 0) {
+                    String status = response.getString("status");
+                    if (status.contains("status not ok")) {
                         lt.error();
+                        Toast.makeText(activity, response.getString("error"), Toast.LENGTH_LONG).show();
+                        dialog.cancel();
                     } else {
                         lt.success();
-                        SendProduct.deleteAll(SendProduct.class,"barcode = ?", barcode);
+                        SendProduct.deleteAll(SendProduct.class, "barcode = ?", barcode);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -112,6 +123,14 @@ public class FoodUserClientUsage {
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
+                dialog.cancel();
+            }
+
+            @Override
+            public void onProgress(int bytesWritten, int totalSize) {
+                dialog.setProgress(bytesWritten);
+                Log.d("--------progress: ", String.valueOf(bytesWritten) + " of " + String.valueOf(totalSize));
+
             }
 
             @Override

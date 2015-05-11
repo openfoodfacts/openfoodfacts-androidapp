@@ -176,6 +176,7 @@ public class MainActivity extends ActionBarActivity {
             case 2:
                 Intent intent = new Intent(this, ScannerFragmentActivity.class);
                 startActivity(intent);
+                this.finish();
                 break;
             case 3:
                 fragment = new UserFragment();
