@@ -18,6 +18,19 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 
 - 
 
+## Libraries used
+
+- http://loopj.com/android-async-http/
+- http://jackson.codehaus.org
+- https://github.com/code-mc/loadtoast
+- https://github.com/dm77/barcodescanner
+- https://github.com/koush/ion
+- http://jsoup.org/
+- https://github.com/satyan/sugar
+- https://github.com/afollestad/material-dialogs
+
+Big thanks to them!
+
 ## Creators
 
 **Scot Scriven**
