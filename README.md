@@ -6,7 +6,7 @@ Open Food Facts is a database of food products with ingredients, allergens, nutr
 ### Made by everyone
 Open Food Facts is a non-profit association of volunteers.
 1800+ contributors like you have added 43 000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
-### Made by everyone
+### For everyone
 Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
 - <http://world.openfoodfacts.org>
 
