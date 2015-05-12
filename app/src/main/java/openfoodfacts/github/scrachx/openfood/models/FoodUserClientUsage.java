@@ -1,31 +1,20 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.widget.Toast;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
 import net.steamcrafted.loadtoast.LoadToast;
 import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
-import openfoodfacts.github.scrachx.openfood.utils.MyNullKeySerializer;
-import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 
 /**
  * Created by scotscriven on 10/05/15.
@@ -86,19 +75,12 @@ public class FoodUserClientUsage {
         FoodUserClient.post("/cgi/product_image_upload.pl", params, new JsonHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
-            MaterialDialog dialog;
 
             @Override
             public void onStart () {
                 // called before request is started
                 lt.setText(activity.getString(R.string.toastSending));
                 lt.show();
-                dialog = new MaterialDialog.Builder(activity)
-                        .title(R.string.toast_retrieving)
-                        .content(R.string.txtContentDialogUploading)
-                        .progress(false,(int)length, true)
-                        .show();
-                Log.d("Length", Long.toString(length));
             }
 
             @Override
@@ -109,7 +91,6 @@ public class FoodUserClientUsage {
                     if (status.contains("status not ok")) {
                         lt.error();
                         Toast.makeText(activity, response.getString("error"), Toast.LENGTH_LONG).show();
-                        dialog.cancel();
                     } else {
                         lt.success();
                         SendProduct.deleteAll(SendProduct.class, "barcode = ?", barcode);
@@ -123,13 +104,10 @@ public class FoodUserClientUsage {
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
-                dialog.cancel();
             }
 
             @Override
             public void onProgress(int bytesWritten, int totalSize) {
-                dialog.setProgress(bytesWritten);
-                Log.d("--------progress: ", String.valueOf(bytesWritten) + " of " + String.valueOf(totalSize));
 
             }
 

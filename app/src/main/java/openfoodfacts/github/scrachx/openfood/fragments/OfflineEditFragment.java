@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -66,7 +67,6 @@ public class OfflineEditFragment extends Fragment {
 
         buttonSend.setEnabled(false);
 
-        new FillAdapter().execute(rootView.getContext());
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -114,58 +114,63 @@ public class OfflineEditFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 new MaterialDialog.Builder(getActivity())
-                    .title(R.string.txtDialogsTitle)
-                    .content(R.string.txtDialogsContentSend)
-                    .positiveText(R.string.txtYes)
-                    .negativeText(R.string.txtNo)
-                    .callback(new MaterialDialog.ButtonCallback() {
-                        @Override
-                        public void onPositive(MaterialDialog dialog) {
-                            List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
-                            FoodUserClientUsage user = new FoodUserClientUsage();
-                            for (int i = 0; i < listSaveProduct.size(); i++) {
-                                SendProduct sp = listSaveProduct.get(i);
-                                if (sp.getBarcode().isEmpty() || sp.getEnergy().isEmpty() || sp.getImgupload_front().isEmpty()
-                                        || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
-                                    // Do nothing
-                                } else {
-                                    RequestParams params = new RequestParams();
-                                    params.put("code", sp.getBarcode());
-                                    params.put("user_id", loginS);
-                                    params.put("password", passS);
-                                    params.put("product_name", sp.getName());
-                                    params.put("quantity", sp.getWeight());
-                                    params.put("stores", sp.getStores());
-                                    params.put("nutriment_energy", sp.getEnergy());
-                                    params.put("nutriment_energy_unit", sp.getEnergy_unit());
-                                    params.put("nutrition_data_per", "serving");
+                        .title(R.string.txtDialogsTitle)
+                        .content(R.string.txtDialogsContentSend)
+                        .positiveText(R.string.txtYes)
+                        .negativeText(R.string.txtNo)
+                        .callback(new MaterialDialog.ButtonCallback() {
+                            @Override
+                            public void onPositive(MaterialDialog dialog) {
+                                List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
+                                FoodUserClientUsage user = new FoodUserClientUsage();
+                                for (int i = 0; i < listSaveProduct.size(); i++) {
+                                    SendProduct sp = listSaveProduct.get(i);
+                                    if (sp.getBarcode().isEmpty() || sp.getEnergy().isEmpty() || sp.getImgupload_front().isEmpty()
+                                            || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
+                                        // Do nothing
+                                    } else {
+                                        RequestParams params = new RequestParams();
+                                        params.put("code", sp.getBarcode());
+                                        params.put("user_id", loginS);
+                                        params.put("password", passS);
+                                        params.put("product_name", sp.getName());
+                                        params.put("quantity", sp.getWeight());
+                                        params.put("stores", sp.getStores());
+                                        params.put("nutriment_energy", sp.getEnergy());
+                                        params.put("nutriment_energy_unit", sp.getEnergy_unit());
+                                        params.put("nutrition_data_per", "serving");
 
-                                    File f = new File(sp.getImgupload_front());
-                                    Bitmap bt = decodeFile(f);
-                                    OutputStream fOut = null;
-                                    File smallFile = new File(sp.getImgupload_front().replace(".png", "_small.png"));
-                                    try {
-                                        fOut = new FileOutputStream(smallFile);
-                                        bt.compress(Bitmap.CompressFormat.PNG,100,fOut);
-                                        fOut.flush();
-                                        fOut.close();
-                                    } catch (FileNotFoundException e) {
-                                        e.printStackTrace();
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
+                                        File f = new File(sp.getImgupload_front());
+                                        Bitmap bt = decodeFile(f);
+                                        OutputStream fOut = null;
+                                        File smallFile = new File(sp.getImgupload_front().replace(".png", "_small.png"));
+                                        try {
+                                            fOut = new FileOutputStream(smallFile);
+                                            bt.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+                                            fOut.flush();
+                                            fOut.close();
+                                        } catch (FileNotFoundException e) {
+                                            e.printStackTrace();
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+
+                                        user.post(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getBarcode());
+                                        SaveListAdapter sl = (SaveListAdapter) listView.getAdapter();
+                                        saveItems.remove(i);
+                                        sl.notifyDataSetChanged();
+
                                     }
-
-                                    user.post(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getBarcode());
                                 }
-                            }
-                        }
 
-                        @Override
-                        public void onNegative(MaterialDialog dialog) {
-                            return;
-                        }
-                    })
-                    .show();
+                            }
+
+                            @Override
+                            public void onNegative(MaterialDialog dialog) {
+                                return;
+                            }
+                        })
+                        .show();
             }
         });
 
@@ -173,14 +178,16 @@ public class OfflineEditFragment extends Fragment {
         return rootView;
     }
 
-    private class FillAdapter extends AsyncTask<Context, Void, Context> {
+    @Override
+    public void onResume() {
+        super.onResume();
+        new FillAdapter().execute(getActivity());
+    }
 
-        LoadToast lt = new LoadToast(getActivity());
+    public class FillAdapter extends AsyncTask<Context, Void, Context> {
 
         @Override
         protected void onPreExecute() {
-            lt.setText(getResources().getString(R.string.txtLoading));
-            lt.show();
         }
 
         @Override
@@ -205,7 +212,6 @@ public class OfflineEditFragment extends Fragment {
         protected void onPostExecute(Context ctx) {
             List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
             if(listSaveProduct.size() > 0){
-                lt.success();
                 adapter = new SaveListAdapter(ctx,saveItems);
                 listView.setAdapter(adapter);
                 buttonSend.setEnabled(true);
@@ -215,14 +221,13 @@ public class OfflineEditFragment extends Fragment {
                             || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()){
                         buttonSend.setEnabled(false);
                     }
-
                 }
                 if(loginS.isEmpty() || passS.isEmpty()){
                     Toast.makeText(ctx, ctx.getString(R.string.txtInfoAddUser), Toast.LENGTH_LONG).show();
                     buttonSend.setEnabled(false);
                 }
             }else{
-                lt.error();
+                //Do nothing
             }
         }
 
