@@ -98,7 +98,6 @@ public class SaveProductOfflineActivity extends Activity{
                         SendProduct product = new SendProduct(barcode, name.getText().toString(), energy.getText().toString(),
                                 "kJ", weight.getText().toString(), settings.getString("imgUrl", ""), store.getText().toString());
                         product.save();
-                        Toast.makeText(getApplicationContext(), R.string.dataSaved, Toast.LENGTH_LONG).show();
                     }
                     Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);

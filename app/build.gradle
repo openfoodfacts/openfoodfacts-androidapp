@@ -8,8 +8,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 15
         targetSdkVersion 21
-        versionCode 1
-        versionName "0.1"
+        versionCode 2
+        versionName "0.1.1"
     }
     buildTypes {
         release {
@@ -54,8 +54,6 @@ dependencies {
     compile files('libs/jackson-core-2.5.0.jar')
 
     compile 'net.steamcrafted:load-toast:1.0.6'
-
-    compile 'uk.co.chrisjenx:calligraphy:2.1.0'
 
     compile 'me.dm7.barcodescanner:zxing:1.7'
 

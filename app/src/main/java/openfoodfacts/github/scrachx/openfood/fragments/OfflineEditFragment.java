@@ -155,10 +155,7 @@ public class OfflineEditFragment extends Fragment {
                                             e.printStackTrace();
                                         }
 
-                                        user.post(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getBarcode());
-                                        SaveListAdapter sl = (SaveListAdapter) listView.getAdapter();
-                                        saveItems.remove(i);
-                                        sl.notifyDataSetChanged();
+                                        user.post(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getBarcode(), listView, i, saveItems);
 
                                     }
                                 }
@@ -188,6 +185,12 @@ public class OfflineEditFragment extends Fragment {
 
         @Override
         protected void onPreExecute() {
+            List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
+            if(listSaveProduct.size() == 0){
+                Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
+            }else{
+                Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG).show();
+            }
         }
 
         @Override
