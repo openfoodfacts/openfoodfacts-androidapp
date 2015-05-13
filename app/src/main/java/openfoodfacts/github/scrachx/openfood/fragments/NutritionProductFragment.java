@@ -75,28 +75,32 @@ public class NutritionProductFragment extends Fragment {
     }
 
     public int getImageGrade(String grade){
-        grade.toLowerCase();
-        if(grade.compareToIgnoreCase("a") == 0){
-            return R.drawable.nnc_a;
-        }else if(grade.compareToIgnoreCase("b") == 0){
-            return R.drawable.nnc_b;
-        }else if(grade.compareToIgnoreCase("c") == 0){
-            return R.drawable.nnc_c;
-        }else if(grade.compareToIgnoreCase("d") == 0){
-            return R.drawable.nnc_d;
-        }else if(grade.compareToIgnoreCase("e") == 0){
-            return R.drawable.nnc_e;
+        if(grade != null){
+            grade.toLowerCase();
+            if(grade.compareToIgnoreCase("a") == 0){
+                return R.drawable.nnc_a;
+            }else if(grade.compareToIgnoreCase("b") == 0){
+                return R.drawable.nnc_b;
+            }else if(grade.compareToIgnoreCase("c") == 0){
+                return R.drawable.nnc_c;
+            }else if(grade.compareToIgnoreCase("d") == 0){
+                return R.drawable.nnc_d;
+            }else if(grade.compareToIgnoreCase("e") == 0){
+                return R.drawable.nnc_e;
+            }
         }
         return R.drawable.ic_error;
     }
 
     public int getImageLevel(String nutrient){
-        if(nutrient.compareToIgnoreCase("moderate") == 0){
-            return R.drawable.ic_circle_yellow;
-        }else if(nutrient.compareToIgnoreCase("low") == 0){
-            return R.drawable.ic_circle_green;
-        }else if(nutrient.compareToIgnoreCase("high") == 0){
-            return R.drawable.ic_circle_red;
+        if(nutrient != null){
+            if(nutrient.compareToIgnoreCase("moderate") == 0){
+                return R.drawable.ic_circle_yellow;
+            }else if(nutrient.compareToIgnoreCase("low") == 0){
+                return R.drawable.ic_circle_green;
+            }else if(nutrient.compareToIgnoreCase("high") == 0){
+                return R.drawable.ic_circle_red;
+            }
         }
         return R.drawable.ic_error;
     }
