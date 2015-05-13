@@ -14,6 +14,10 @@ Data about food is of public interest and has to be open. The complete database 
 
 Have a bug or a feature request? Please search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue.
 
+## Installation
+
+Android Studio packages must be updated by just clicking on install packages in package manager, to let the VCS cloning from the app or the forked app on github then to have it installed and in work on the virtual android device.
+
 ## TO-DO
 
 - 
