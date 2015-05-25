@@ -3,6 +3,7 @@
     <string name="app_name">OpenFood</string>
     <string name="action_find">Chercher</string>
     <string name="action_settings">Paramètres</string>
+    <string name="action_about">À propos</string>
     <string name="desc_list_item_icon">Icône</string>
     <string name="drawer_close">Menu Ouvert</string>
     <string name="drawer_open">Menu Fermé</string>
@@ -88,4 +89,5 @@
     <string name="txtOk">Ok</string>
     <string name="txtContentDialogUploading">Ne quittez pas durant l\'envoi...</string>
     <string name="txtAllsent">Produits envoyés</string>
+    <string name="txtAbout">Les photos que vous envoyez sont publiées sous la licence libre Creative Commons Attribution et partage à l\'identitque.</string>
 </resources>
