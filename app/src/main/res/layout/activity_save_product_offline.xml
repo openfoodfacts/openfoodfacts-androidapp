@@ -52,22 +52,6 @@
                     android:layout_height="70dp"
                     android:inputType="number"
                     android:ems="10"
-                    android:id="@+id/editTextEnergy"
-                    android:hint="@string/hintEnergy"
-                    android:numeric="signed"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:background="@drawable/edittext_middle"
-                    android:paddingLeft="50dp"
-                    android:singleLine="true"
-                    />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:inputType="number"
-                    android:ems="10"
                     android:id="@+id/editTextWeight"
                     android:numeric="signed"
                     android:hint="@string/hintWeight"

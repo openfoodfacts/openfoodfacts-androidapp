@@ -16,6 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.afollestad.materialdialogs.MaterialDialog;
+
 import java.util.ArrayList;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
@@ -142,7 +145,12 @@ public class MainActivity extends ActionBarActivity {
         }
         // Handle action bar actions click
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_about:
+                new MaterialDialog.Builder(this)
+                        .title(R.string.action_about)
+                        .content(R.string.txtAbout)
+                        .negativeText(R.string.txtOk)
+                        .show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -156,7 +164,7 @@ public class MainActivity extends ActionBarActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         // if nav drawer is opened, hide the action items
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+        menu.findItem(R.id.action_about).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 

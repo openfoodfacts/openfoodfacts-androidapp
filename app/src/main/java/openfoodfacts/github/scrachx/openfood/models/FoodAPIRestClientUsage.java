@@ -134,9 +134,6 @@ public class FoodAPIRestClientUsage {
                 // called when response HTTP status is "200 OK"
                 try {
                     ObjectMapper objectMapper = new ObjectMapper();
-                    objectMapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
-                    objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-                    objectMapper.getSerializerProvider().setNullKeySerializer(new MyNullKeySerializer());
                     State s = objectMapper.readValue(response, State.class);
 
                     if(s.getStatus() == 0){

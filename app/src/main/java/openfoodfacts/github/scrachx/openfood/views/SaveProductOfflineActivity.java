@@ -14,9 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import com.afollestad.materialdialogs.MaterialDialog;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -51,14 +48,12 @@ public class SaveProductOfflineActivity extends Activity{
 
         imgSave = (ImageView) findViewById(R.id.imageSave);
         name = (EditText) findViewById(R.id.editTextName);
-        energy = (EditText) findViewById(R.id.editTextEnergy);
         store = (EditText) findViewById(R.id.editTextStores);
         weight = (EditText) findViewById(R.id.editTextWeight);
         takePic = (Button) findViewById(R.id.buttonTakePicture);
         save = (Button) findViewById(R.id.buttonSaveProduct);
 
         name.setSelected(false);
-        energy.setSelected(false);
         store.setSelected(false);
         weight.setSelected(false);
 
@@ -68,7 +63,6 @@ public class SaveProductOfflineActivity extends Activity{
             Bitmap bt = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(product.getImgupload_front()), 400, 400, true);
             imgSave.setImageBitmap(bt);
             name.setText(product.getName());
-            energy.setText(product.getEnergy());
             store.setText(product.getStores());
             weight.setText(product.getWeight());
         }
@@ -84,19 +78,18 @@ public class SaveProductOfflineActivity extends Activity{
             @Override
             public void onClick(View v) {
 
-                if(!settings.getString("imgUrl", "").isEmpty() && !name.getText().toString().isEmpty()){
+                if(!settings.getString("imgUrl", "").isEmpty() && !name.getText().toString().isEmpty() && !store.getText().toString().isEmpty()){
                     List<SendProduct> sp = SendProduct.find(SendProduct.class,"barcode = ?", barcode);
                     if(sp.size() > 0){
                         SendProduct product = sp.get(0);
                         product.setName(name.getText().toString());
-                        product.setEnergy(energy.getText().toString());
                         product.setImgupload_front(settings.getString("imgUrl", ""));
                         product.setStores(store.getText().toString());
                         product.setWeight(weight.getText().toString());
                         product.save();
                     }else{
-                        SendProduct product = new SendProduct(barcode, name.getText().toString(), energy.getText().toString(),
-                                "kJ", weight.getText().toString(), settings.getString("imgUrl", ""), store.getText().toString());
+                        SendProduct product = new SendProduct(barcode, name.getText().toString(), "",
+                                "", weight.getText().toString(), settings.getString("imgUrl", ""), store.getText().toString());
                         product.save();
                     }
                     Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
