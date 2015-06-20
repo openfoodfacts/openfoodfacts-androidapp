@@ -18,7 +18,7 @@ import openfoodfacts.github.scrachx.openfood.models.State;
  */
 public class IngredientsProductFragment extends Fragment {
 
-    TextView ingredientProduct, substanceProduct, traceProduct, additiveProduct, palmOilProduct, mayBeFromPalmOilProduct;
+    TextView ingredientProduct, substanceProduct, traceProduct, additiveProduct;
 
     @Nullable
     @Override
@@ -29,8 +29,6 @@ public class IngredientsProductFragment extends Fragment {
         substanceProduct = (TextView) rootView.findViewById(R.id.textSubstanceProduct);
         traceProduct = (TextView) rootView.findViewById(R.id.textTraceProduct);
         additiveProduct = (TextView) rootView.findViewById(R.id.textAdditiveProduct);
-        palmOilProduct = (TextView) rootView.findViewById(R.id.textPalmOilProduct);
-        mayBeFromPalmOilProduct = (TextView) rootView.findViewById(R.id.textMayBeFromPalmOilProduct);
 
         Intent intent = getActivity().getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
@@ -45,8 +43,6 @@ public class IngredientsProductFragment extends Fragment {
         }
         traceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtTraces) + "</b>" + ' ' + traces));
         additiveProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtAdditives) + "</b>" + ' ' + state.getProduct().getAdditivesTags().toString().replace("[", "").replace("]","")));
-        palmOilProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtPalmOilProduct) + "</b>" + ' ' + state.getProduct().getIngredientsFromPalmOilTags().toString().replace("[","").replace("]","")));
-        mayBeFromPalmOilProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtMayBeFromPalmOilProduct) + "</b>" + ' ' + state.getProduct().getIngredientsThatMayBeFromPalmOilTags().toString().replace("[","").replace("]","")));
 
         return rootView;
     }
