@@ -51,7 +51,7 @@ public class NutritionProductFragment extends Fragment {
             String saltTxt = Html.fromHtml("<b>" + getString(R.string.txtSalt) + "</b>" + ' ' + nt.getSalt() + " (" + state.getProduct().getNutriments().getSalt100g() + state.getProduct().getNutriments().getSaltUnit() + ")").toString();
             String fatTxt = Html.fromHtml("<b>" + getString(R.string.txtFat) + "</b>" + ' ' + nt.getFat() + " (" + state.getProduct().getNutriments().getFat100g() + state.getProduct().getNutriments().getFatUnit() + ")").toString();
             String sugarsTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + nt.getSugars() + " (" + state.getProduct().getNutriments().getSugars100g() + state.getProduct().getNutriments().getSugarsUnit() + ")").toString();
-            String saturedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + nt.getSaturatedFat() + " (" + state.getProduct().getNutriments().getSaturatedFat100g() + state.getProduct().getNutriments().getSaturatedFatUnit() + ")").toString();
+            String saturedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSaturedFat) + "</b>" + ' ' + nt.getSaturatedFat() + " (" + state.getProduct().getNutriments().getSaturatedFat100g() + state.getProduct().getNutriments().getSaturatedFatUnit() + ")").toString();
 
             String saltImg = nt.getSalt();
             String fatImg = nt.getFat();
