@@ -51,18 +51,18 @@ public class NutritionProductFragment extends Fragment {
             String saltTxt = Html.fromHtml("<b>" + getString(R.string.txtSalt) + "</b>" + ' ' + nt.getSalt() + " (" + state.getProduct().getNutriments().getSalt100g() + state.getProduct().getNutriments().getSaltUnit() + ")").toString();
             String fatTxt = Html.fromHtml("<b>" + getString(R.string.txtFat) + "</b>" + ' ' + nt.getFat() + " (" + state.getProduct().getNutriments().getFat100g() + state.getProduct().getNutriments().getFatUnit() + ")").toString();
             String sugarsTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + nt.getSugars() + " (" + state.getProduct().getNutriments().getSugars100g() + state.getProduct().getNutriments().getSugarsUnit() + ")").toString();
-            String saturedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + nt.getSaturatedFat() + " (" + state.getProduct().getNutriments().getSaturatedFat100g() + state.getProduct().getNutriments().getSaturatedFatUnit() + ")").toString();
+            String saturatedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSaturatedFat) + "</b>" + ' ' + nt.getSaturatedFat() + " (" + state.getProduct().getNutriments().getSaturatedFat100g() + state.getProduct().getNutriments().getSaturatedFatUnit() + ")").toString();
 
             String saltImg = nt.getSalt();
             String fatImg = nt.getFat();
             String sugarsImg = nt.getSugars();
-            String saturedFatImg = nt.getSaturatedFat();
+            String saturatedFatImg = nt.getSaturatedFat();
 
             levelItem = new ArrayList<NutrientLevelItem>();
             levelItem.add(new NutrientLevelItem(saltTxt,getImageLevel(saltImg)));
             levelItem.add(new NutrientLevelItem(fatTxt,getImageLevel(fatImg)));
             levelItem.add(new NutrientLevelItem(sugarsTxt, getImageLevel(sugarsImg)));
-            levelItem.add(new NutrientLevelItem(saturedFatTxt,getImageLevel(saturedFatImg)));
+            levelItem.add(new NutrientLevelItem(saturatedFatTxt,getImageLevel(saturatedFatImg)));
 
             adapter = new NutrientLevelListAdapter(rootView.getContext(),levelItem);
             lv.setAdapter(adapter);
