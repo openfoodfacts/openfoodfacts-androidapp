@@ -59,7 +59,7 @@
     <string name="errorLogin">Erreur d\'identifiant/mdp</string>
     <string name="errorWeb">Erreur de connexion internet</string>
     <string name="txtSalt">Sel :</string>
-    <string name="txtSaturedFat">Acides gras saturés :</string>
+    <string name="txtSaturatedFat">Acides gras saturés :</string>
     <string name="txtSugars">Sucres :</string>
     <string name="txtFat">Matières grasses / Lipides :</string>
     <string name="txtInfoLoginOk">Utilisateur enregistré</string>
