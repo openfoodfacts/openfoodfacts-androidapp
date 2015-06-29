@@ -24,7 +24,6 @@
         <item>Résumé</item>
         <item>Ingrédients</item>
         <item>Nutrition</item>
-        <item>Huile de palme</item>
         <item>Retour menu</item>
     </string-array>
     <string name="alert_dialog_product_error_msg">Produit non trouvé, veuillez recommencer</string>

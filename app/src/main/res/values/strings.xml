@@ -33,7 +33,6 @@
         <item>Summary</item>
         <item>Ingredients</item>
         <item>Nutrition</item>
-        <item>Palm oil</item>
         <item>Back to menu</item>
     </string-array>
 
@@ -42,7 +41,6 @@
         <item>@drawable/ic_summary_product</item>
         <item>@drawable/ic_ingredient</item>
         <item>@drawable/ic_nutrition</item>
-        <item>@drawable/ic_palm</item>
         <item>@drawable/ic_home</item>
     </array>
 
