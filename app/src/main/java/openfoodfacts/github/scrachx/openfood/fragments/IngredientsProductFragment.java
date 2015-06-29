@@ -8,6 +8,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import openfoodfacts.github.scrachx.openfood.R;
@@ -19,6 +20,9 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 public class IngredientsProductFragment extends Fragment {
 
     TextView ingredientProduct, substanceProduct, traceProduct, additiveProduct;
+
+    private TextView palmOilProduct, mayBeFromPalmOilProduct;
+    private ImageView imageOkNo;
 
     @Nullable
     @Override
@@ -43,6 +47,28 @@ public class IngredientsProductFragment extends Fragment {
         }
         traceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtTraces) + "</b>" + ' ' + traces));
         additiveProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtAdditives) + "</b>" + ' ' + state.getProduct().getAdditivesTags().toString().replace("[", "").replace("]","")));
+
+        // Code for palm oil (and additional labels/awards/certs, in the future)
+        palmOilProduct = (TextView) rootView.findViewById(R.id.textPalmOilProduct);
+        mayBeFromPalmOilProduct = (TextView) rootView.findViewById(R.id.textMayBeFromPalmOilProduct);
+        imageOkNo = (ImageView) rootView.findViewById(R.id.imageOkNo);
+
+        if(state.getProduct().getIngredientsFromPalmOilN() == 0 && state.getProduct().getIngredientsFromOrThatMayBeFromPalmOilN() == 0){
+            imageOkNo.setImageResource(R.drawable.ok);
+            palmOilProduct.setVisibility(View.VISIBLE);
+            palmOilProduct.setText(getString(R.string.txtPalm));
+        } else {
+            imageOkNo.setImageResource(R.drawable.no);
+            if(!state.getProduct().getIngredientsFromPalmOilTags().toString().replace("[", "").replace("]", "").isEmpty()) {
+                palmOilProduct.setVisibility(View.VISIBLE);
+                palmOilProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtPalmOilProduct) + "</b>" + ' ' + state.getProduct().getIngredientsFromPalmOilTags().toString().replace("[", "").replace("]", "")));
+            }
+            if(!state.getProduct().getIngredientsThatMayBeFromPalmOilTags().toString().replace("[", "").replace("]", "").isEmpty()) {
+                mayBeFromPalmOilProduct.setVisibility(View.VISIBLE);
+                mayBeFromPalmOilProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtMayBeFromPalmOilProduct) + "</b>" + ' ' + state.getProduct().getIngredientsThatMayBeFromPalmOilTags().toString().replace("[","").replace("]","")));
+            }
+        }
+        
 
         return rootView;
     }

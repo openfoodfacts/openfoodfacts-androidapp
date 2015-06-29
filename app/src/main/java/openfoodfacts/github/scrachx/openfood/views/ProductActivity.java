@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.PalmProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.NavDrawerItem;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NavDrawerListAdapter;
@@ -69,10 +68,8 @@ public class ProductActivity extends ActionBarActivity {
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
         // Nutrition
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-        // Palm oil
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
         // Back to home
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
 
 
         // Recycle the typed array
@@ -153,9 +150,6 @@ public class ProductActivity extends ActionBarActivity {
                 fragment = new NutritionProductFragment();
                 break;
             case 3:
-                fragment = new PalmProductFragment();
-                break;
-            case 4:
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 this.finish();
