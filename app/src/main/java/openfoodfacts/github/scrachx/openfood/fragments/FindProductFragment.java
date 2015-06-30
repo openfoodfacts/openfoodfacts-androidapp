@@ -1,9 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.app.Activity;
+
 import android.app.Fragment;
-import android.content.Intent;
+import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +35,11 @@ public class FindProductFragment extends Fragment {
                 if(barCode_text.getText().toString().isEmpty()){
                     Toast.makeText(getActivity(), getResources().getString(R.string.txtBarcodeRequire), Toast.LENGTH_LONG).show();
                 }else{
-                    goToProduct();
+                    if(EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barCode_text.getText().toString()) && (!barCode_text.getText().toString().substring(0,3).contains("977") || !barCode_text.getText().toString().substring(0,3).contains("978") || !barCode_text.getText().toString().substring(0,3).contains("979"))) {
+                        goToProduct();
+                    }else{
+                        Toast.makeText(getActivity(), getResources().getString(R.string.txtBarcodeNotValid), Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });

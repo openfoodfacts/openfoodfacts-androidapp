@@ -110,6 +110,7 @@
     <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
     <string name="txtAllsent">Products sent</string>
     <string name="txtPalm">The product does not contain any palm oil</string>
+    <string name="txtBarcodeNotValid">Barcode not valid</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>
