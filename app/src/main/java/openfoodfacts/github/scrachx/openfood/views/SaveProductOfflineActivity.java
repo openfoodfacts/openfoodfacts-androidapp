@@ -10,9 +10,12 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 import java.io.File;
 import java.io.IOException;
@@ -46,6 +49,8 @@ public class SaveProductOfflineActivity extends Activity{
         Intent intent = getIntent();
         final String barcode = intent.getStringExtra("barcode");
 
+        final String[] unit = new String[1];
+
         imgSave = (ImageView) findViewById(R.id.imageSave);
         name = (EditText) findViewById(R.id.editTextName);
         store = (EditText) findViewById(R.id.editTextStores);
@@ -57,6 +62,20 @@ public class SaveProductOfflineActivity extends Activity{
         store.setSelected(false);
         weight.setSelected(false);
 
+        Spinner spinner = (Spinner) findViewById(R.id.spinnerUnitWeight);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.units_array, R.layout.custom_spinner_item);
+        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                unit[0] = parent.getItemAtPosition(pos).toString();
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Another interface callback
+            }
+        });
+
         List<SendProduct> sp = SendProduct.find(SendProduct.class,"barcode = ?", barcode);
         if(sp.size() > 0){
             SendProduct product = sp.get(0);
@@ -65,6 +84,9 @@ public class SaveProductOfflineActivity extends Activity{
             name.setText(product.getName());
             store.setText(product.getStores());
             weight.setText(product.getWeight());
+            ArrayAdapter unitAdapter = (ArrayAdapter) spinner.getAdapter(); //cast to an ArrayAdapter
+            int spinnerPosition = unitAdapter.getPosition(product.getWeight_unit());
+            spinner.setSelection(spinnerPosition);
         }
 
         takePic.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +100,7 @@ public class SaveProductOfflineActivity extends Activity{
             @Override
             public void onClick(View v) {
 
-                if(!settings.getString("imgUrl", "").isEmpty() && !name.getText().toString().isEmpty() && !store.getText().toString().isEmpty()){
+                if(!settings.getString("imgUrl", "").isEmpty() && !name.getText().toString().isEmpty()){
                     List<SendProduct> sp = SendProduct.find(SendProduct.class,"barcode = ?", barcode);
                     if(sp.size() > 0){
                         SendProduct product = sp.get(0);
@@ -86,10 +108,11 @@ public class SaveProductOfflineActivity extends Activity{
                         product.setImgupload_front(settings.getString("imgUrl", ""));
                         product.setStores(store.getText().toString());
                         product.setWeight(weight.getText().toString());
+                        product.setWeight_unit(unit[0]);
                         product.save();
                     }else{
                         SendProduct product = new SendProduct(barcode, name.getText().toString(), "",
-                                "", weight.getText().toString(), settings.getString("imgUrl", ""), store.getText().toString());
+                                "", weight.getText().toString(), unit[0], settings.getString("imgUrl", ""), store.getText().toString());
                         product.save();
                     }
                     Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();

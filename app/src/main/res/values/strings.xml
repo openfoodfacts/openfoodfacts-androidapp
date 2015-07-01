@@ -44,6 +44,15 @@
         <item>@drawable/ic_home</item>
     </array>
 
+    <!-- Text units -->
+    <string-array name="units_array">
+        <item>g</item>
+        <item>mg</item>
+        <item>kg</item>
+        <item>l</item>
+        <item>ml</item>
+    </string-array>
+
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="alert_dialog_product_error_msg">Product not found, please try again</string>

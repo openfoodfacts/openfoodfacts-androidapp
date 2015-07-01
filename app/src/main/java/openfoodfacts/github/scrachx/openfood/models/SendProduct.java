@@ -13,6 +13,7 @@ public class SendProduct extends SugarRecord<SendProduct> {
     String energy;
     String energy_unit;
     String weight;
+    String weight_unit;
     String imgupload_front;
     String stores;
 
@@ -20,14 +21,23 @@ public class SendProduct extends SugarRecord<SendProduct> {
 
     }
 
-    public SendProduct(String barcode, String name, String energy, String energy_unit, String weight, String imgupload_front, String stores) {
+    public SendProduct(String barcode, String name, String energy, String energy_unit, String weight, String weight_unit, String imgupload_front, String stores) {
         this.barcode = barcode;
         this.name = name;
         this.energy = energy;
         this.energy_unit = energy_unit;
         this.weight = weight;
+        this.weight_unit = weight_unit;
         this.imgupload_front = imgupload_front;
         this.stores = stores;
+    }
+
+    public String getWeight_unit() {
+        return weight_unit;
+    }
+
+    public void setWeight_unit(String weight_unit) {
+        this.weight_unit = weight_unit;
     }
 
     public String getBarcode() {

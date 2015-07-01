@@ -40,28 +40,47 @@
                     android:id="@+id/editTextName"
                     android:hint="@string/hintNameProduct"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
                     android:layout_marginLeft="@dimen/spacing_normal"
                     android:layout_marginRight="@dimen/spacing_normal"
-                    android:background="@drawable/edittext_top"
+                    android:background="@drawable/edittext_full"
                     android:paddingLeft="50dp"
                     android:singleLine="true"
                     />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:inputType="number"
-                    android:ems="10"
-                    android:id="@+id/editTextWeight"
-                    android:numeric="signed"
-                    android:hint="@string/hintWeight"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:background="@drawable/edittext_middle"
-                    android:paddingLeft="50dp"
-                    android:singleLine="true"
-                    />
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:inputType="number"
+                        android:ems="10"
+                        android:id="@+id/editTextWeight"
+                        android:numeric="signed"
+                        android:hint="@string/hintWeight"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginRight="@dimen/spacing_tiny"
+                        android:background="@drawable/edittext_full"
+                        android:paddingLeft="50dp"
+                        android:singleLine="true"
+                        />
+
+                    <Spinner
+                        android:id="@+id/spinnerUnitWeight"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/spinner_default"
+                        android:spinnerMode="dropdown"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:layout_marginLeft="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        />
+
+                </LinearLayout>
+
 
                 <EditText
                     android:layout_width="match_parent"
@@ -73,7 +92,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="@dimen/spacing_normal"
                     android:layout_marginRight="@dimen/spacing_normal"
-                    android:background="@drawable/edittext_bottom"
+                    android:background="@drawable/edittext_full"
                     android:paddingLeft="50dp"
                     android:singleLine="true"
                     />

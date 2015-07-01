@@ -134,7 +134,7 @@ public class OfflineEditFragment extends Fragment {
                                         params.put("user_id", loginS);
                                         params.put("password", passS);
                                         params.put("product_name", sp.getName());
-                                        params.put("quantity", sp.getWeight());
+                                        params.put("quantity", sp.getWeight() + " " + sp.getWeight_unit());
                                         params.put("stores", sp.getStores());
                                         params.put("nutriment_energy", sp.getEnergy());
                                         params.put("nutriment_energy_unit", sp.getEnergy_unit());
