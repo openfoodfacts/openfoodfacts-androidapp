@@ -106,8 +106,8 @@
     <orderEntry type="library" exported="" name="load-toast-1.0.6" level="project" />
     <orderEntry type="library" exported="" name="android-async-http-1.4.6" level="project" />
     <orderEntry type="library" exported="" name="jackson-annotations-2.5.0" level="project" />
-    <orderEntry type="library" exported="" name="core-3.2.0" level="project" />
     <orderEntry type="library" exported="" name="androidasync-2.1.6" level="project" />
+    <orderEntry type="library" exported="" name="core-3.2.0" level="project" />
     <orderEntry type="library" exported="" name="jackson-core-2.5.0" level="project" />
     <orderEntry type="library" exported="" name="core-1.7.2" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.2.0" level="project" />
