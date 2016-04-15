@@ -2,8 +2,6 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import com.orm.SugarRecord;
 
-import java.io.File;
-
 /**
  * Created by scotscriven on 09/05/15.
  */

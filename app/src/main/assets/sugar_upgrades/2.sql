@@ -1,0 +1,1 @@
+alter table SENDPRODUCT add COLUMN weight_unit TEXT;

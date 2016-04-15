@@ -101,4 +101,6 @@
     <string name="txtAbout">Les photos que vous envoyez sont publiées sous la licence libre Creative Commons Attribution et partage à l\'identitque.</string>
     <string name="txtPalm">Le produit ne contient pas d\'huile de palme</string>
     <string name="txtBarcodeNotValid">Code barre non valide</string>
+    <string name="alert_dialog_warning_title">Attention</string>
+    <string name="alert_dialog_warning_msg_user">Utilisateur/Mot de passe a changé, veuillez changer ces informations</string>
 </resources>

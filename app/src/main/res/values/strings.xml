@@ -55,6 +55,8 @@
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+    <string name="alert_dialog_warning_title">Warning</string>
+    <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
     <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
     <string name="toast_retrieving">Loading...</string>
     <string name="txtBarcode">Barcode :</string>
