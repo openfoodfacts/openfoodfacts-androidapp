@@ -40,11 +40,11 @@ public class FoodAPIRestClientUsage {
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] response) {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                 // called when response HTTP status is "200 OK"
                 try {
                     ObjectMapper objectMapper = new ObjectMapper();
-                    State s = objectMapper.readValue(response, State.class);
+                    State s = objectMapper.readValue(responseBody, State.class);
 
                     if(s.getStatus() == 0){
                         lt.error();
@@ -84,7 +84,7 @@ public class FoodAPIRestClientUsage {
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
                 new MaterialDialog.Builder(activity)
                         .title(R.string.txtDialogsTitle)
                         .content(R.string.txtDialogsContent)
@@ -130,11 +130,11 @@ public class FoodAPIRestClientUsage {
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] response) {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                 // called when response HTTP status is "200 OK"
                 try {
                     ObjectMapper objectMapper = new ObjectMapper();
-                    State s = objectMapper.readValue(response, State.class);
+                    State s = objectMapper.readValue(responseBody, State.class);
 
                     if(s.getStatus() == 0){
                         lt.error();
@@ -172,7 +172,7 @@ public class FoodAPIRestClientUsage {
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
                 new MaterialDialog.Builder(activity)
                         .title(R.string.txtDialogsTitle)
                         .content(R.string.txtDialogsContent)

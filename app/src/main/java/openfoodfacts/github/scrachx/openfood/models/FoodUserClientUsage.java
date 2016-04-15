@@ -38,7 +38,7 @@ public class FoodUserClientUsage {
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray
                 try {
                     int status = response.getInt("status");
@@ -63,7 +63,7 @@ public class FoodUserClientUsage {
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
             }
@@ -88,7 +88,7 @@ public class FoodUserClientUsage {
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray
                 try {
                     String status = response.getString("status");
@@ -108,14 +108,9 @@ public class FoodUserClientUsage {
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
-            }
-
-            @Override
-            public void onProgress(int bytesWritten, int totalSize) {
-
             }
 
             @Override

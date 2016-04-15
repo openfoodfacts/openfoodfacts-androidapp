@@ -7,7 +7,7 @@ import java.io.File;
 /**
  * Created by scotscriven on 09/05/15.
  */
-public class SendProduct extends SugarRecord<SendProduct> {
+public class SendProduct extends SugarRecord {
     String barcode;
     String name;
     String energy;
