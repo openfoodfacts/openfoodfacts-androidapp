@@ -13,7 +13,8 @@
     <!-- Nav Drawer Main Menu Items -->
     <string-array name="nav_drawer_items_main">
         <item>Home</item>
-        <item>Search</item>
+        <item>Search by barcode</item>
+        <item>Search by name</item>
         <item>Scan</item>
         <item>User</item>
         <item>Offline edit</item>
@@ -22,6 +23,7 @@
     <!-- Nav Drawer Main Menu List Item Icons -->
     <array name="nav_drawer_icons_main">
         <item>@drawable/ic_home</item>
+        <item>@drawable/ic_barcode_white_48dp</item>
         <item>@drawable/ic_search</item>
         <item>@drawable/ic_camera</item>
         <item>@drawable/ic_user</item>
@@ -54,6 +56,8 @@
     </string-array>
 
     <!-- Content Description -->
+    <string name="search_button">Search</string>
+    <string name="no_products">Products not found</string>
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>

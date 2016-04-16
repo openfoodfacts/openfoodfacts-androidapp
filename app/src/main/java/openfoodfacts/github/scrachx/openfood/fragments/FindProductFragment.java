@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 /**
  * Created by scotscriven on 03/05/15.
@@ -32,6 +33,7 @@ public class FindProductFragment extends Fragment {
         launch_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                Utils.hideKeyboard(getActivity());
                 if(barCode_text.getText().toString().isEmpty()){
                     Toast.makeText(getActivity(), getResources().getString(R.string.txtBarcodeRequire), Toast.LENGTH_LONG).show();
                 }else{

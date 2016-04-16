@@ -24,6 +24,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.UserFragment;
 import openfoodfacts.github.scrachx.openfood.models.NavDrawerItem;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NavDrawerListAdapter;
@@ -70,14 +71,15 @@ public class MainActivity extends ActionBarActivity {
         // adding nav drawer items to array
         // Home
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-        // Find Product
+        // Find Product barcode
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-        // Scanner
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-        // User
+        // Scanner
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
-        // Offline edit
+        // User
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+        // Offline edit
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 
 
         // Recycle the typed array
@@ -182,14 +184,17 @@ public class MainActivity extends ActionBarActivity {
                 fragment = new FindProductFragment();
                 break;
             case 2:
+                fragment = new SearchProductsFragment();
+                break;
+            case 3:
                 Intent intent = new Intent(this, ScannerFragmentActivity.class);
                 startActivity(intent);
                 this.finish();
                 break;
-            case 3:
+            case 4:
                 fragment = new UserFragment();
                 break;
-            case 4:
+            case 5:
                 fragment = new OfflineEditFragment();
                 break;
 

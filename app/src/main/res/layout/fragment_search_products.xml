@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+
+        <EditText
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:hint="@string/hintNameProduct"
+            android:ems="10"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:background="@drawable/edittext_full"
+            android:drawableLeft="@drawable/ic_search_grey"
+            android:id="@+id/editTextName"
+            android:drawablePadding="10dip"
+            android:paddingLeft="10dip"
+            android:singleLine="true"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_weight="0"
+            android:text="@string/search_button"
+            android:id="@+id/buttonSearchProducts"
+            android:background="@drawable/button_default_bg"
+            style="@style/DefaultButtonText"
+            android:layout_margin="@dimen/spacing_normal"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spacing_normal"
+            android:id="@+id/listProducts" />
+
+    </LinearLayout>
+
+</LinearLayout>

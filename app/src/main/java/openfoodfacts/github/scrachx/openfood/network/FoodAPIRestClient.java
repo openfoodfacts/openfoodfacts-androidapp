@@ -9,7 +9,7 @@ import java.util.Locale;
  */
 public class FoodAPIRestClient {
 
-    private static String BASE_URL = "http://world.openfoodfacts.org/api/v0/produit/";
+    private static String BASE_URL = "http://world.openfoodfacts.org/";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 
@@ -25,5 +25,6 @@ public class FoodAPIRestClient {
         }
         return BASE_URL + relativeUrl;
     }
+
 
 }

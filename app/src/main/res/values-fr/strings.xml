@@ -13,7 +13,8 @@
     <!-- Nav Drawer Main Menu Items -->
     <string-array name="nav_drawer_items_main">
         <item >Accueil</item>
-        <item >Rechercher</item>
+        <item >Rechercher par code-barre</item>
+        <item >Rechercher par nom</item>
         <item >Scanner</item>
         <item>Utilisateur</item>
         <item>Edition hors ligne</item>
@@ -103,4 +104,6 @@
     <string name="txtBarcodeNotValid">Code barre non valide</string>
     <string name="alert_dialog_warning_title">Attention</string>
     <string name="alert_dialog_warning_msg_user">Utilisateur/Mot de passe a changé, veuillez changer ces informations</string>
+    <string name="no_products">Produits non trouvés</string>
+    <string name="search_button">Rechercher</string>
 </resources>
