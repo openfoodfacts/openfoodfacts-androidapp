@@ -245,7 +245,7 @@ public class Product implements Serializable{
     @JsonProperty("purchase_places_tags")
     private List<Object> purchasePlacesTags = new ArrayList<Object>();
     @JsonProperty("fruits-vegetables-nuts_100g_estimate")
-    private long fruitsVegetablesNuts100gEstimate;
+    private double fruitsVegetablesNuts100gEstimate;
     @JsonProperty("interface_version_modified")
     private String interfaceVersionModified;
     @JsonProperty("sortkey")
@@ -1835,7 +1835,7 @@ public class Product implements Serializable{
      * The fruitsVegetablesNuts100gEstimate
      */
     @JsonProperty("fruits-vegetables-nuts_100g_estimate")
-    public long getFruitsVegetablesNuts100gEstimate() {
+    public double getFruitsVegetablesNuts100gEstimate() {
         return fruitsVegetablesNuts100gEstimate;
     }
 
@@ -1845,11 +1845,11 @@ public class Product implements Serializable{
      * The fruits-vegetables-nuts_100g_estimate
      */
     @JsonProperty("fruits-vegetables-nuts_100g_estimate")
-    public void setFruitsVegetablesNuts100gEstimate(long fruitsVegetablesNuts100gEstimate) {
+    public void setFruitsVegetablesNuts100gEstimate(double fruitsVegetablesNuts100gEstimate) {
         this.fruitsVegetablesNuts100gEstimate = fruitsVegetablesNuts100gEstimate;
     }
 
-    public Product withFruitsVegetablesNuts100gEstimate(long fruitsVegetablesNuts100gEstimate) {
+    public Product withFruitsVegetablesNuts100gEstimate(double fruitsVegetablesNuts100gEstimate) {
         this.fruitsVegetablesNuts100gEstimate = fruitsVegetablesNuts100gEstimate;
         return this;
     }
