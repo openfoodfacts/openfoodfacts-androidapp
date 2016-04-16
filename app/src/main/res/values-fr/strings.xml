@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OpenFood</string>
+    <string name="app_name">Open Food</string>
     <string name="action_find">Chercher</string>
     <string name="action_settings">Paramètres</string>
     <string name="action_about">À propos</string>
@@ -12,10 +12,10 @@
 
     <!-- Nav Drawer Main Menu Items -->
     <string-array name="nav_drawer_items_main">
-        <item >Accueil</item>
-        <item >Rechercher par code-barre</item>
-        <item >Rechercher par nom</item>
-        <item >Scanner</item>
+        <item>Accueil</item>
+        <item>Rechercher par code-barre</item>
+        <item>Rechercher par nom</item>
+        <item>Scanner</item>
         <item>Utilisateur</item>
         <item>Edition hors ligne</item>
     </string-array>
@@ -94,12 +94,12 @@
     <string name="txtDataUpdated">Données mises à jour</string>
     <string name="txtLoading">Chargement...</string>
     <string name="txtDialogsContentDelete">Voulez-vous supprimer cette ligne?</string>
-    <string name="txtBarcodeRequire">Code barre requis</string>
+    <string name="txtBarcodeRequire">Code-barre requis</string>
     <string name="txtDialogsContentInfoSave">Le produit a été sauvegardé localement, vous pouvez l\'éditer dans le menu "Edition hors ligne"</string>
     <string name="txtOk">Ok</string>
     <string name="txtContentDialogUploading">Ne quittez pas durant l\'envoi...</string>
     <string name="txtAllsent">Produits envoyés</string>
-    <string name="txtAbout">Les photos que vous envoyez sont publiées sous la licence libre Creative Commons Attribution et partage à l\'identitque.</string>
+    <string name="txtAbout">Les photos que vous envoyez sont publiées sous la licence libre Creative Commons Attribution et partage à l\'identique.</string>
     <string name="txtPalm">Le produit ne contient pas d\'huile de palme</string>
     <string name="txtBarcodeNotValid">Code barre non valide</string>
     <string name="alert_dialog_warning_title">Attention</string>
