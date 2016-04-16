@@ -3,18 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/font_larger"
-        android:text="@string/txtTitleHome"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:id="@+id/textTitleHome"
-        android:textStyle="bold"
-        android:layout_margin="@dimen/spacing_normal"
-        android:layout_gravity="center_horizontal" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,5 +23,18 @@
         android:layout_margin="@dimen/spacing_normal"
         android:id="@+id/textHome"
         android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="@dimen/spacing_normal"
+        android:background="@drawable/button_default_bg"
+        style="@style/DefaultButtonText"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:text="@string/try_it_scan_now"
+        android:id="@+id/buttonScan"
+        />
 
 </LinearLayout>
