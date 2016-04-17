@@ -17,7 +17,7 @@
         <item>Rechercher par nom</item>
         <item>Scanner</item>
         <item>Utilisateur</item>
-        <item>Edition hors ligne</item>
+        <item>Edition hors-ligne</item>
     </string-array>
 
     <!-- Nav Drawer Product Menu Items -->
@@ -25,7 +25,7 @@
         <item>Résumé</item>
         <item>Ingrédients</item>
         <item>Nutrition</item>
-        <item>Retour menu</item>
+        <item>Retour à l\'accueil</item>
     </string-array>
 
     <!-- Text units -->
@@ -65,7 +65,7 @@
     <string name="hintPass">Mot de passe</string>
     <string name="txtLogin">Identifiant :</string>
     <string name="txtUser">Panneau utilisateur</string>
-    <string name="txtToastSaved">Utilisateur enregistré</string>
+    <string name="txtToastSaved">Utilisateur connecté</string>
     <string name="errorLogin">Erreur d\'identifiant/mdp</string>
     <string name="errorWeb">Erreur de connexion internet</string>
     <string name="txtSalt">Sel :</string>
@@ -87,7 +87,7 @@
     <string name="txtTakePicture">Prendre une photo</string>
     <string name="txtNoData">Aucune donnée</string>
     <string name="txtPictureNeeded">Prenez une photo et ajoutez le nom!</string>
-    <string name="dataSaved">Données enregistrées localement...</string>
+    <string name="dataSaved">Données enregistrées en local...</string>
     <string name="toastSending">Envoi..</string>
     <string name="txtDialogsContentSend">Voulez-vous envoyer les produits dans notre base de données?</string>
     <string name="txtInfoAddUser">Veuillez ajouter un utilisateur</string>
@@ -103,10 +103,10 @@
     <string name="txtPalm">Le produit ne contient pas d\'huile de palme</string>
     <string name="txtBarcodeNotValid">Code barre non valide</string>
     <string name="alert_dialog_warning_title">Attention</string>
-    <string name="alert_dialog_warning_msg_user">Utilisateur/Mot de passe a changé, veuillez changer ces informations</string>
+    <string name="alert_dialog_warning_msg_user">L\'utilisateur ou le mot de passe a changé, veuillez changer ces informations</string>
     <string name="no_products">Produits non trouvés</string>
     <string name="search_button">Rechercher</string>
     <string name="try_it_scan_now">Scanner!</string>
     <string name="share">Partager</string>
-    <string name="msg_share">Regarde ce produit sur OpenFoodFacts :</string>
+    <string name="msg_share">Regarde ce produit sur Open Food Facts :</string>
 </resources>
