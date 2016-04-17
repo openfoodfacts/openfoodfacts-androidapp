@@ -32,7 +32,6 @@
         style="@style/DefaultButtonText"
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_alignParentBottom="true"
         android:text="@string/try_it_scan_now"
         android:id="@+id/buttonScan"
         />

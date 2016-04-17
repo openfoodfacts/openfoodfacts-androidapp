@@ -63,6 +63,19 @@
             android:id="@+id/textInfoLogin"
             android:layout_gravity="center_horizontal" />
 
+
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_default_bg"
+        style="@style/DefaultButtonText"
+        android:text="@string/create_account"
+        android:padding="@dimen/spacing_small"
+        android:id="@+id/buttonCreateAccount"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

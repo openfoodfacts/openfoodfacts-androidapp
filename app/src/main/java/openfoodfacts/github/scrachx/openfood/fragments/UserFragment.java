@@ -2,7 +2,9 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -19,6 +21,7 @@ import net.steamcrafted.loadtoast.LoadToast;
 import org.apache.http.Header;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 /**
  * Created by scotscriven on 08/05/15.
@@ -28,6 +31,7 @@ public class UserFragment extends Fragment {
     EditText login, pass;
     TextView infoLogin;
     Button save;
+    Button signup;
 
     @Nullable
     @Override
@@ -41,6 +45,7 @@ public class UserFragment extends Fragment {
         pass = (EditText) rootView.findViewById(R.id.editTextPass);
         save = (Button) rootView.findViewById(R.id.buttonSave);
         infoLogin = (TextView) rootView.findViewById(R.id.textInfoLogin);
+        signup = (Button) rootView.findViewById(R.id.buttonCreateAccount);
 
         login.setSelected(false);
         pass.setSelected(false);
@@ -56,6 +61,15 @@ public class UserFragment extends Fragment {
 
         login.setText(loginS);
         pass.setText(passS);
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browser = new Intent(Intent.ACTION_VIEW);
+                browser.setData(Uri.parse(Utils.getUriByCurrentLanguage() + "cgi/user.pl"));
+                startActivity(browser);
+            }
+        });
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
