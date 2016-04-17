@@ -95,12 +95,12 @@
     <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Login or password error</string>
-    <string name="errorWeb">We were not able to acces the internet. Do you have connectivity issues?</string>
+    <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
     <string name="txtInfoLoginOk">User saved</string>
     <string name="txtInfoLoginNo">User not saved</string>
     <string name="txtDialogsTitle">Information</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Do you want to add it?</string>
-    <string name="txtDialogsContentSend">Do you want send products saved to our database?</string>
+    <string name="txtDialogsContentSend">Do you want send the saved products to our database?</string>
     <string name="txtYes">Yes</string>
     <string name="txtNo">No</string>
     <string name="hintNameProduct">Name</string>
@@ -111,14 +111,14 @@
     <string name="txtTakePicture">Take picture</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtNoData">No data</string>
-    <string name="txtPictureNeeded">Take picture first, fill the name and store!</string>
+    <string name="txtPictureNeeded">Take a picture first, then fill the name and store!</string>
     <string name="toastSending">Uploading...</string>
     <string name="dataSaved">Saved locally on your phone</string>
     <string name="txtInfoAddUser">Please enter your login and password</string>
     <string name="txtDataUpdated">Data updated</string>
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Do you want to delete this entry?</string>
-    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it on "Offline edit" menu</string>
+    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the "Offline Edit" menu</string>
     <string name="txtBarcodeRequire">Barcode required</string>
     <string name="txtOk">Ok</string>
     <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
@@ -128,7 +128,7 @@
     <string name="txtBarcodeNotValid">Barcode not valid</string>
     <string name="try_it_scan_now">Try it! Scan now!</string>
     <string name="share">Share</string>
-    <string name="msg_share">Look at this product on OpenFoodFact :</string>
+    <string name="msg_share">Look at this product on Open Food Facts :</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>
