@@ -15,6 +15,7 @@ import com.koushikdutta.ion.Ion;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
 
 /**
  * Created by scotscriven on 04/05/15.

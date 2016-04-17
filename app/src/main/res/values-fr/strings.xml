@@ -107,4 +107,6 @@
     <string name="no_products">Produits non trouvés</string>
     <string name="search_button">Rechercher</string>
     <string name="try_it_scan_now">Scanner!</string>
+    <string name="share">Partager</string>
+    <string name="msg_share">Regarde ce produit sur OpenFoodFacts :</string>
 </resources>

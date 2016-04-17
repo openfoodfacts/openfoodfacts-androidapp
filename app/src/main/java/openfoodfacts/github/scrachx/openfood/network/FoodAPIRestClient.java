@@ -21,7 +21,7 @@ public class FoodAPIRestClient {
 
     private static String getAbsoluteUrl(String relativeUrl) {
         if (Locale.getDefault().getLanguage().contains("fr")){
-            BASE_URL = "http://fr.openfoodfacts.org/api/v0/produit/";
+            BASE_URL = "http://fr.openfoodfacts.org/";
         }
         return BASE_URL + relativeUrl;
     }

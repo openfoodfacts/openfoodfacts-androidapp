@@ -127,6 +127,8 @@
     <string name="txtPalm">The product does not contain any palm oil</string>
     <string name="txtBarcodeNotValid">Barcode not valid</string>
     <string name="try_it_scan_now">Try it! Scan now!</string>
+    <string name="share">Share</string>
+    <string name="msg_share">Look at this product on OpenFoodFact :</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>
