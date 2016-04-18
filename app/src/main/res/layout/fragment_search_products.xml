@@ -3,13 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent">
-
         <EditText
-            android:layout_height="70dp"
-            android:layout_weight="1"
+            android:layout_height="50dp"
             android:layout_width="fill_parent"
             android:hint="@string/hintNameProduct"
             android:ems="10"
@@ -24,17 +19,14 @@
             />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_weight="0"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
             android:text="@string/search_button"
             android:id="@+id/buttonSearchProducts"
             android:background="@drawable/button_default_bg"
             style="@style/DefaultButtonText"
             android:layout_margin="@dimen/spacing_normal"
             />
-
-    </LinearLayout>
 
 
     <LinearLayout
