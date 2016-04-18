@@ -32,6 +32,7 @@ Android Studio packages must be updated by just clicking on install packages in 
 - http://jsoup.org/
 - https://github.com/satyan/sugar
 - https://github.com/afollestad/material-dialogs
+- https://github.com/jjhesk/LoyalNativeSlider
 
 Big thanks to them!
 
