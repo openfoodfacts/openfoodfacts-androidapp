@@ -94,6 +94,8 @@ public class UserFragment extends Fragment {
                 super.onStart();
                 save.setClickable(false);
                 lt.setText(context.getString(R.string.toast_retrieving));
+                lt.setBackgroundColor(getResources().getColor(R.color.indigo_600));
+                lt.setTextColor(getResources().getColor(R.color.white));
                 lt.show();
             }
 

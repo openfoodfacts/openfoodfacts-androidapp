@@ -32,6 +32,8 @@ public class FoodAPIRestClientUsage {
             public void onStart() {
                 // called before request is started
                 lt.setText(activity.getString(R.string.toast_retrieving));
+                lt.setBackgroundColor(activity.getResources().getColor(R.color.indigo_600));
+                lt.setTextColor(activity.getResources().getColor(R.color.white));
                 lt.show();
             }
 
@@ -122,6 +124,8 @@ public class FoodAPIRestClientUsage {
             public void onStart() {
                 // called before request is started
                 lt.setText(activity.getString(R.string.toast_retrieving));
+                lt.setBackgroundColor(activity.getResources().getColor(R.color.indigo_600));
+                lt.setTextColor(activity.getResources().getColor(R.color.white));
                 lt.show();
             }
 
@@ -213,6 +217,8 @@ public class FoodAPIRestClientUsage {
             public void onStart() {
                 // called before request is started
                 lt.setText(activity.getString(R.string.toast_retrieving));
+                lt.setBackgroundColor(activity.getResources().getColor(R.color.indigo_600));
+                lt.setTextColor(activity.getResources().getColor(R.color.white));
                 lt.show();
             }
 

@@ -40,7 +40,6 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/font_normal"
             android:layout_marginTop="@dimen/spacing_tiny"
-            android:layout_marginBottom="@dimen/spacing_tiny"
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:padding="@dimen/spacing_small"
@@ -52,7 +51,6 @@
         <ListView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginTop="@dimen/spacing_tiny"
             android:layout_marginBottom="@dimen/spacing_tiny"
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"

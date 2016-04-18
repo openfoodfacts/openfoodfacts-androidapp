@@ -24,6 +24,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.NavDrawerItem;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NavDrawerListAdapter;
 
 
@@ -215,7 +216,11 @@ public class ProductActivity extends ActionBarActivity {
         State state = (State) intent.getExtras().getSerializable("state");
 
         Intent shareIntent = new Intent();
-        shareIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.msg_share) + " http://world.openfoodfacts.org/product/" + state.getProduct().getCode());
+        String url = " " + Utils.getUriProductByCurrentLanguage() + state.getProduct().getCode();
+        if(state.getProduct().getUrl() != null) {
+            url = " " + state.getProduct().getUrl();
+        }
+        shareIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.msg_share) + url);
         shareIntent.setType("text/plain");
         setShareIntent(shareIntent);
 

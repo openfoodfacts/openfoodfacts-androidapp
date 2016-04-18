@@ -11,28 +11,30 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+import com.hkm.slider.Indicators.PagerIndicator;
+import com.hkm.slider.SliderLayout;
+import com.hkm.slider.SliderTypes.DefaultSliderView;
+import com.hkm.slider.TransformerL;
 import com.koushikdutta.ion.Ion;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
 
 /**
  * Created by scotscriven on 04/05/15.
  */
 public class SummaryProductFragment extends Fragment {
 
-    ImageView imgProduct;
     TextView nameProduct, barCodeProduct, quantityProduct, packagingProduct, brandProduct, manufacturingProduct,
             cityProduct, storeProduct, countryProduct, categoryProduct;
+    SliderLayout sliderImages;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_summary_product,container,false);
 
-        String imgUrl;
-
-        imgProduct = (ImageView) rootView.findViewById(R.id.imageViewProduct);
         nameProduct = (TextView) rootView.findViewById(R.id.textNameProduct);
         barCodeProduct = (TextView) rootView.findViewById(R.id.textBarcodeProduct);
         quantityProduct = (TextView) rootView.findViewById(R.id.textQuantityProduct);
@@ -43,16 +45,38 @@ public class SummaryProductFragment extends Fragment {
         cityProduct = (TextView) rootView.findViewById(R.id.textCityProduct);
         storeProduct = (TextView) rootView.findViewById(R.id.textStoreProduct);
         countryProduct = (TextView) rootView.findViewById(R.id.textCountryProduct);
+        sliderImages = (SliderLayout) rootView.findViewById(R.id.slider);
 
         Intent intent = getActivity().getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
 
-        if(state.getProduct().getImageUrl().isEmpty()){
-            imgUrl = state.getProduct().getImageSmallUrl();
-        }else{
-            imgUrl = state.getProduct().getImageUrl();
+        DefaultSliderView sliderViewImageDefault;
+        if(state.getProduct().getImageUrl() != null) {
+            sliderViewImageDefault = new DefaultSliderView(getActivity());
+            sliderViewImageDefault
+                    .description("Default")
+                    .image(state.getProduct().getImageUrl());
+            sliderImages.addSlider(sliderViewImageDefault);
         }
-        setImageView(imgUrl);
+        if(state.getProduct().getImageIngredientsUrl() != null) {
+            sliderViewImageDefault = new DefaultSliderView(getActivity());
+            sliderViewImageDefault
+                    .description("Ingredients")
+                    .image(state.getProduct().getImageIngredientsUrl());
+            sliderImages.addSlider(sliderViewImageDefault);
+        }
+        if(state.getProduct().getImageNutritionUrl() != null) {
+            sliderViewImageDefault = new DefaultSliderView(getActivity());
+            sliderViewImageDefault
+                    .description("Nutrition")
+                    .image(state.getProduct().getImageNutritionUrl());
+
+            sliderImages.addSlider(sliderViewImageDefault);
+        }
+        sliderImages.setCustomIndicator((PagerIndicator) rootView.findViewById(R.id.custom_indicator));
+        sliderImages.setDuration(5000);
+        sliderImages.startAutoCycle();
+
         nameProduct.setText(state.getProduct().getProductName());
         barCodeProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtBarcode) + "</b>" + ' ' + state.getProduct().getCode()));
         quantityProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtQuantity) + "</b>" + ' ' + state.getProduct().getQuantity()));
@@ -73,11 +97,9 @@ public class SummaryProductFragment extends Fragment {
         return rootView;
     }
 
-    public void setImageView(String imgUrl){
-        Ion.with(imgProduct)
-                .placeholder(R.drawable.placeholder_thumb)
-                .error(R.drawable.error_image)
-                .resizeWidth(600)
-                .load(imgUrl);
+    @Override
+    public void onStop() {
+        sliderImages.stopAutoCycle();
+        super.onStop();
     }
 }

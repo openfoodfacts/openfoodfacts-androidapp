@@ -23,6 +23,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "states_tags",
         "labels_tags",
         "image_small_url",
+        "image_nutrition_url",
+        "image_front_url",
+        "url",
         "code",
         "traces_tags",
         "lang",
@@ -138,6 +141,14 @@ public class Product implements Serializable{
     private List<Object> labelsTags = new ArrayList<Object>();
     @JsonProperty("image_small_url")
     private String imageSmallUrl;
+    @JsonProperty("image_nutrition_url")
+    private String imageNutritionUrl;
+    @JsonProperty("image_front_url")
+    private String imageFrontUrl;
+    @JsonProperty("image_ingredients_url")
+    private String imageIngredientsUrl;
+    @JsonProperty("url")
+    private String url;
     @JsonProperty("code")
     private String code;
     @JsonProperty("traces_tags")
@@ -526,6 +537,106 @@ public class Product implements Serializable{
 
     public Product withImageSmallUrl(String imageSmallUrl) {
         this.imageSmallUrl = imageSmallUrl;
+        return this;
+    }
+
+    /**
+     *
+     * @return
+     * The imageFrontUrl
+     */
+    @JsonProperty("image_front_url")
+    public String getImageFrontUrl() {
+        return imageFrontUrl;
+    }
+
+    /**
+     *
+     * @param imageFrontUrl
+     * The image_front_url
+     */
+    @JsonProperty("image_front_url")
+    public void setImageFrontUrl(String imageFrontUrl) {
+        this.imageFrontUrl = imageFrontUrl;
+    }
+
+    public Product withImageFrontUrl(String imageFrontUrl) {
+        this.imageFrontUrl = imageFrontUrl;
+        return this;
+    }
+
+    /**
+     *
+     * @return
+     * The imageIngredientsUrl
+     */
+    @JsonProperty("image_ingredients_url")
+    public String getImageIngredientsUrl() {
+        return imageIngredientsUrl;
+    }
+
+    /**
+     *
+     * @param imageIngredientsUrl
+     * The image_ingredients_url
+     */
+    @JsonProperty("image_ingredients_url")
+    public void setImageIngredientsUrl(String imageIngredientsUrl) {
+        this.imageIngredientsUrl = imageIngredientsUrl;
+    }
+
+    public Product withImageIngredientsUrl(String imageIngredientsUrl) {
+        this.imageIngredientsUrl = imageIngredientsUrl;
+        return this;
+    }
+
+    /**
+     *
+     * @return
+     * The imageNutritionUrl
+     */
+    @JsonProperty("image_nutrition_url")
+    public String getImageNutritionUrl() {
+        return imageNutritionUrl;
+    }
+
+    /**
+     *
+     * @param imageNutritionUrl
+     * The image_small_url
+     */
+    @JsonProperty("image_nutrition_url")
+    public void setImageNutritionUrl(String imageNutritionUrl) {
+        this.imageNutritionUrl = imageNutritionUrl;
+    }
+
+    public Product withImageNutritionUrl(String imageNutritionUrl) {
+        this.imageNutritionUrl = imageNutritionUrl;
+        return this;
+    }
+
+    /**
+     *
+     * @return
+     * The url
+     */
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     *
+     * @param url
+     * The url
+     */
+    @JsonProperty("url")
+    public void url(String url) {
+        this.url = url;
+    }
+
+    public Product withUrl(String url) {
+        this.url = url;
         return this;
     }
 
@@ -2931,6 +3042,7 @@ public class Product implements Serializable{
                 ", nutritionGradeFr='" + nutritionGradeFr + '\'' +
                 ", nutrientLevels=" + nutrientLevels +
                 ", id='" + id + '\'' +
+                ", url='" + url + '\'' +
                 ", storesTags=" + storesTags +
                 ", countries='" + countries + '\'' +
                 ", purchasePlacesTags=" + purchasePlacesTags +
@@ -2976,6 +3088,7 @@ public class Product implements Serializable{
                 ", checkers=" + checkers +
                 ", complete=" + complete +
                 ", additionalProperties=" + additionalProperties +
+                ", imageNutritionUrl='" + imageNutritionUrl + '\'' +
                 '}';
     }
 }

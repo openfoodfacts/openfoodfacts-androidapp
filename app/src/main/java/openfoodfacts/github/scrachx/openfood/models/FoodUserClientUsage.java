@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.models;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.res.Resources;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -34,6 +35,8 @@ public class FoodUserClientUsage {
             public void onStart () {
                 // called before request is started
                 lt.setText(activity.getString(R.string.toastSending));
+                lt.setBackgroundColor(activity.getResources().getColor(R.color.indigo_600));
+                lt.setTextColor(activity.getResources().getColor(R.color.white));
                 lt.show();
             }
 
@@ -84,6 +87,8 @@ public class FoodUserClientUsage {
             public void onStart () {
                 // called before request is started
                 lt.setText(activity.getString(R.string.toastSending));
+                lt.setBackgroundColor(activity.getResources().getColor(R.color.indigo_600));
+                lt.setTextColor(activity.getResources().getColor(R.color.white));
                 lt.show();
             }
 

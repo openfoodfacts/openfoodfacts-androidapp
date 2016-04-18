@@ -45,6 +45,16 @@ public class Utils {
         return url;
     }
 
+    public static String getUriProductByCurrentLanguage() {
+        String url;
+        if (Locale.getDefault().getLanguage().contains("fr")){
+            url = "http://fr.openfoodfacts.org/produit/";
+        } else {
+            url = "http://world.openfoodfacts.org/product/";
+        }
+        return url;
+    }
+
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         //Find the currently focused view, so we can grab the correct window token from it.
