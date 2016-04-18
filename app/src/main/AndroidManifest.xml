@@ -22,7 +22,11 @@
 
         <activity android:name=".views.MainActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateUnchanged|adjustResize"></activity>
         <activity android:name=".views.ScannerFragmentActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".views.ProductActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateUnchanged|adjustResize"></activity>
+        <activity android:name=".views.ProductActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateUnchanged|adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.MainActivity" />
+        </activity>
         <activity android:name=".views.SaveProductOfflineActivity" android:screenOrientation="portrait"></activity>
 
         <meta-data android:name="DATABASE" android:value="offacts.db" />

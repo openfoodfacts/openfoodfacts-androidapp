@@ -8,8 +8,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 15
         targetSdkVersion 21
-        versionCode 9
-        versionName "0.1.8"
+        versionCode 10
+        versionName "0.1.9"
     }
 
     useLibrary 'org.apache.http.legacy'

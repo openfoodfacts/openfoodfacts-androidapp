@@ -46,7 +46,7 @@ public class IngredientsProductFragment extends Fragment {
             traces = state.getProduct().getTraces().replace(",", ", ");
         }
         traceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtTraces) + "</b>" + ' ' + traces));
-        additiveProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtAdditives) + "</b>" + ' ' + state.getProduct().getAdditivesTags().toString().replace("[", "").replace("]","")));
+        additiveProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtAdditives) + "</b>" + ' ' + state.getProduct().getAdditivesTags().toString().replace("[", "").replace("]","").replace("en:"," ").replace("fr:"," ")));
 
         // Code for palm oil (and additional labels/awards/certs, in the future)
         palmOilProduct = (TextView) rootView.findViewById(R.id.textPalmOilProduct);

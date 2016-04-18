@@ -15,7 +15,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="100dp"
                 android:id="@+id/imageViewProduct"
                 android:layout_margin="@dimen/spacing_normal"
                 android:src="@drawable/img_default_product"
