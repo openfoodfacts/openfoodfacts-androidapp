@@ -13,9 +13,6 @@ import java.util.ArrayList;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 
-/**
- * Created by scotscriven on 16/04/16.
- */
 public class ProductsListAdapter extends BaseAdapter {
 
     private Context context;

@@ -10,13 +10,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NavDrawerItem;
 
-/**
- * Created by scotscriven on 04/05/15.
- */
 public class NavDrawerListAdapter extends BaseAdapter {
 
     private Context context;

@@ -9,11 +9,9 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import java.util.List;
@@ -24,15 +22,9 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additives;
 import openfoodfacts.github.scrachx.openfood.models.State;
 
-/**
- * Created by scotscriven on 04/05/15.
- */
 public class IngredientsProductFragment extends Fragment {
 
-    TextView ingredientProduct, substanceProduct, traceProduct, additiveProduct;
-
-    private TextView palmOilProduct, mayBeFromPalmOilProduct;
-    private ImageView imageOkNo;
+    TextView ingredientProduct, substanceProduct, traceProduct, additiveProduct, palmOilProduct, mayBeFromPalmOilProduct;
 
     @Nullable
     @Override

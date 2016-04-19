@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
@@ -16,9 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import com.afollestad.materialdialogs.MaterialDialog;
-
 import java.util.ArrayList;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;

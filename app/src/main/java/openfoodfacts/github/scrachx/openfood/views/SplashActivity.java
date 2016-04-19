@@ -7,23 +7,15 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import net.steamcrafted.loadtoast.LoadToast;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additives;
 
-/**
- * Created by scotscriven on 08/05/15.
- */
 public class SplashActivity extends Activity {
 
     /** Duration of wait **/

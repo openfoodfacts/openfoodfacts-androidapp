@@ -2,9 +2,6 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import android.graphics.Bitmap;
 
-/**
- * Created by scotscriven on 10/05/15.
- */
 public class SaveItem {
 
     private String title;

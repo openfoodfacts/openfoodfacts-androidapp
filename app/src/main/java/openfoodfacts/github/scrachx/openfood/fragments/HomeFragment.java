@@ -5,48 +5,39 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
 import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
-import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsListAdapter;
 
-/**
- * Created by scotscriven on 04/05/15.
- */
 public class HomeFragment extends Fragment {
 
-    private Button buttonScan;
+    private Button mButtonScan;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_home,container, false);
 
-        buttonScan = (Button) rootView.findViewById(R.id.buttonScan);
+        mButtonScan = (Button) rootView.findViewById(R.id.buttonScan);
 
         final SharedPreferences settings = rootView.getContext().getSharedPreferences("login", 0);
         String loginS = settings.getString("user", "");
         String passS = settings.getString("pass", "");
 
-
-        buttonScan.setOnClickListener(new View.OnClickListener() {
+        mButtonScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ScannerFragmentActivity.class);
                 startActivity(intent);
             }
         });
-
 
         if(!loginS.isEmpty() && !passS.isEmpty()) {
             RequestParams params = new RequestParams();

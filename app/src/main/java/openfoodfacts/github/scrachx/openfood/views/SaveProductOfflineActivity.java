@@ -22,13 +22,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 
-/**
- * Created by scotscriven on 09/05/15.
- */
 public class SaveProductOfflineActivity extends Activity{
 
     ImageView imgSave;

@@ -8,15 +8,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 
-/**
- * Created by scotscriven on 10/05/15.
- */
 public class SaveListAdapter extends BaseAdapter {
 
     private Context context;

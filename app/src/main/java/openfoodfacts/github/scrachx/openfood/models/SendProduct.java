@@ -2,9 +2,6 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import com.orm.SugarRecord;
 
-/**
- * Created by scotscriven on 09/05/15.
- */
 public class SendProduct extends SugarRecord {
     String barcode;
     String name;
