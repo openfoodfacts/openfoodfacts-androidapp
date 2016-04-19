@@ -242,6 +242,7 @@ public class FoodAPIRestClientUsage {
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+                    productsCallback.onProductsResponse(false, null);
                 }
             }
 
@@ -249,6 +250,7 @@ public class FoodAPIRestClientUsage {
             public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
+                productsCallback.onProductsResponse(false, null);
             }
 
             @Override
