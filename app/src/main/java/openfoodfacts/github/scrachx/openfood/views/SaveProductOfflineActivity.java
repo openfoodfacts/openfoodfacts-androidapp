@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -17,20 +16,29 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import butterknife.Bind;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 
-public class SaveProductOfflineActivity extends Activity{
+public class SaveProductOfflineActivity extends BaseActivity {
 
-    ImageView imgSave;
-    EditText name, energy, store, weight;
-    Button takePic, save;
-    static final int REQUEST_TAKE_PHOTO = 1;
+    private static final int REQUEST_TAKE_PHOTO = 1;
+
+    @Bind(R.id.imageSave) ImageView imgSave;
+    @Bind(R.id.editTextName) EditText name;
+    @Bind(R.id.editTextStores) EditText store;
+    @Bind(R.id.editTextWeight) EditText weight;
+
+    @Bind(R.id.buttonTakePicture) Button takePic;
+    @Bind(R.id.buttonSaveProduct) Button save;
+
     String mCurrentPhotoPath;
     File photoFile = null;
 
@@ -46,13 +54,6 @@ public class SaveProductOfflineActivity extends Activity{
         final String barcode = intent.getStringExtra("barcode");
 
         final String[] unit = new String[1];
-
-        imgSave = (ImageView) findViewById(R.id.imageSave);
-        name = (EditText) findViewById(R.id.editTextName);
-        store = (EditText) findViewById(R.id.editTextStores);
-        weight = (EditText) findViewById(R.id.editTextWeight);
-        takePic = (Button) findViewById(R.id.buttonTakePicture);
-        save = (Button) findViewById(R.id.buttonSaveProduct);
 
         name.setSelected(false);
         store.setSelected(false);
@@ -72,8 +73,8 @@ public class SaveProductOfflineActivity extends Activity{
             }
         });
 
-        List<SendProduct> sp = SendProduct.find(SendProduct.class,"barcode = ?", barcode);
-        if(sp.size() > 0){
+        List<SendProduct> sp = SendProduct.find(SendProduct.class, "barcode = ?", barcode);
+        if (sp.size() > 0) {
             SendProduct product = sp.get(0);
             Bitmap bt = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(product.getImgupload_front()), 400, 400, true);
             imgSave.setImageBitmap(bt);
@@ -96,9 +97,9 @@ public class SaveProductOfflineActivity extends Activity{
             @Override
             public void onClick(View v) {
 
-                if(!settings.getString("imgUrl", "").isEmpty() && !name.getText().toString().isEmpty()){
-                    List<SendProduct> sp = SendProduct.find(SendProduct.class,"barcode = ?", barcode);
-                    if(sp.size() > 0){
+                if (!settings.getString("imgUrl", "").isEmpty() && !name.getText().toString().isEmpty()) {
+                    List<SendProduct> sp = SendProduct.find(SendProduct.class, "barcode = ?", barcode);
+                    if (sp.size() > 0) {
                         SendProduct product = sp.get(0);
                         product.setName(name.getText().toString());
                         product.setImgupload_front(settings.getString("imgUrl", ""));
@@ -106,7 +107,7 @@ public class SaveProductOfflineActivity extends Activity{
                         product.setWeight(weight.getText().toString());
                         product.setWeight_unit(unit[0]);
                         product.save();
-                    }else{
+                    } else {
                         SendProduct product = new SendProduct(barcode, name.getText().toString(), "",
                                 "", weight.getText().toString(), unit[0], settings.getString("imgUrl", ""), store.getText().toString());
                         product.save();
@@ -115,7 +116,7 @@ public class SaveProductOfflineActivity extends Activity{
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     SaveProductOfflineActivity.this.finish();
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
                 }
             }
@@ -127,7 +128,7 @@ public class SaveProductOfflineActivity extends Activity{
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         final SharedPreferences settings = getSharedPreferences("img", 0);
 
-        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK){
+        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             Bitmap bt = BitmapFactory.decodeFile(settings.getString("imgUrl", ""));
             imgSave.setImageBitmap(bt);
         }
@@ -172,7 +173,6 @@ public class SaveProductOfflineActivity extends Activity{
         mCurrentPhotoPath = "file:" + image.getAbsolutePath();
         return image;
     }
-
 
     @Override
     protected void onStart() {

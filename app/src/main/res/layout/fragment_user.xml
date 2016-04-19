@@ -1,81 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <EditText
+            android:id="@+id/editTextLogin"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:inputType="text"
-            android:ems="10"
-            android:id="@+id/editTextLogin"
-            android:hint="@string/hintLogin"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:background="@drawable/edittext_top"
             android:drawableLeft="@drawable/ic_user_grey"
             android:drawablePadding="10dip"
+            android:ems="10"
+            android:hint="@string/hintLogin"
+            android:inputType="text"
             android:paddingLeft="10dip"
             android:singleLine="true"
             />
 
         <EditText
+            android:id="@+id/editTextPass"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:inputType="textPassword"
-            android:id="@+id/editTextPass"
             android:layout_gravity="center_horizontal"
-            android:hint="@string/hintPass"
-            android:ems="10"
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:background="@drawable/edittext_bottom"
             android:drawableLeft="@drawable/ic_pass"
             android:drawablePadding="10dip"
+            android:ems="10"
+            android:hint="@string/hintPass"
+            android:inputType="textPassword"
             android:paddingLeft="10dip"
             android:singleLine="true"
             />
 
-
         <Button
+            android:id="@+id/buttonSave"
+            style="@style/DefaultButtonText"
             android:layout_width="match_parent"
             android:layout_height="70dp"
+            android:layout_gravity="center"
             android:layout_margin="@dimen/spacing_normal"
             android:background="@drawable/button_default_bg"
-            style="@style/DefaultButtonText"
-            android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/txtSave"
-            android:id="@+id/buttonSave"
             />
 
+        <Button
+            android:id="@+id/buttonCreateAccount"
+            style="@style/DefaultButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/spacing_normal"
+            android:background="@drawable/button_default_bg"
+            android:text="@string/create_account"/>
+
         <TextView
+            android:id="@+id/textInfoLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/font_small"
-            android:id="@+id/textInfoLogin"
-            android:layout_gravity="center_horizontal" />
-
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/font_small"/>
 
     </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_default_bg"
-        style="@style/DefaultButtonText"
-        android:text="@string/create_account"
-        android:padding="@dimen/spacing_small"
-        android:id="@+id/buttonCreateAccount"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

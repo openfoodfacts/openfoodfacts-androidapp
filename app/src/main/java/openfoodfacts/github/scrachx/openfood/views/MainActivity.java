@@ -1,13 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
 import android.view.Menu;
@@ -15,8 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+
 import java.util.ArrayList;
+
+import butterknife.Bind;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
@@ -26,11 +29,8 @@ import openfoodfacts.github.scrachx.openfood.fragments.UserFragment;
 import openfoodfacts.github.scrachx.openfood.models.NavDrawerItem;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NavDrawerListAdapter;
 
+public class MainActivity extends BaseActivity {
 
-public class MainActivity extends ActionBarActivity {
-
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 
     // nav drawer title
@@ -46,6 +46,9 @@ public class MainActivity extends ActionBarActivity {
     private ArrayList<NavDrawerItem> navDrawerItems;
     private NavDrawerListAdapter adapter;
 
+    @Bind(R.id.drawer_layout) DrawerLayout mDrawerLayout;
+    @Bind(R.id.left_drawer) ListView mDrawerList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,10 +63,7 @@ public class MainActivity extends ActionBarActivity {
         navMenuIcons = getResources()
                 .obtainTypedArray(R.array.nav_drawer_icons_main);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
-        navDrawerItems = new ArrayList<NavDrawerItem>();
+        navDrawerItems = new ArrayList<>();
 
         // adding nav drawer items to array
         // Home
@@ -119,7 +119,7 @@ public class MainActivity extends ActionBarActivity {
 
     /**
      * Slide menu item click listener
-     * */
+     */
     private class SlideMenuClickListener implements
             ListView.OnItemClickListener {
         @Override
@@ -169,7 +169,7 @@ public class MainActivity extends ActionBarActivity {
 
     /**
      * Diplaying fragment view for selected nav drawer list item
-     * */
+     */
     private void displayView(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
@@ -200,7 +200,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         if (fragment != null) {
-            FragmentManager fragmentManager = getFragmentManager();
+            FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame, fragment).commit();
 
@@ -239,5 +239,4 @@ public class MainActivity extends ActionBarActivity {
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
-
 }
