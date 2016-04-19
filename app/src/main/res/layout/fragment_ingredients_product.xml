@@ -11,7 +11,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -75,20 +75,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageOkNo"
-                    android:scaleType="fitStart"
-                    android:padding="10dp"
-                    android:layout_marginEnd="@dimen/spacing_normal"
-                    android:layout_marginStart="@dimen/spacing_normal"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="4" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="42dp"
+                    android:maxHeight="42dp"
+                    android:scaleType="fitCenter"
                     android:textSize="@dimen/font_normal"
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginBottom="@dimen/spacing_tiny"

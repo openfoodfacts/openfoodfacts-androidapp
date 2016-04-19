@@ -60,14 +60,11 @@ public class IngredientsProductFragment extends Fragment {
 
         palmOilProduct = (TextView) rootView.findViewById(R.id.textPalmOilProduct);
         mayBeFromPalmOilProduct = (TextView) rootView.findViewById(R.id.textMayBeFromPalmOilProduct);
-        imageOkNo = (ImageView) rootView.findViewById(R.id.imageOkNo);
 
         if(state.getProduct().getIngredientsFromPalmOilN() == 0 && state.getProduct().getIngredientsFromOrThatMayBeFromPalmOilN() == 0){
-            imageOkNo.setImageResource(R.drawable.ok);
             palmOilProduct.setVisibility(View.VISIBLE);
             palmOilProduct.setText(getString(R.string.txtPalm));
         } else {
-            imageOkNo.setImageResource(R.drawable.no);
             if(!state.getProduct().getIngredientsFromPalmOilTags().toString().replace("[", "").replace("]", "").isEmpty()) {
                 palmOilProduct.setVisibility(View.VISIBLE);
                 palmOilProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtPalmOilProduct) + "</b>" + ' ' + state.getProduct().getIngredientsFromPalmOilTags().toString().replace("[", "").replace("]", "")));
