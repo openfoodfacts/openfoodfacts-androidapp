@@ -8,22 +8,13 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-
 import com.hkm.slider.Indicators.PagerIndicator;
 import com.hkm.slider.SliderLayout;
 import com.hkm.slider.SliderTypes.DefaultSliderView;
-import com.hkm.slider.TransformerL;
-import com.koushikdutta.ion.Ion;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
 
-/**
- * Created by scotscriven on 04/05/15.
- */
 public class SummaryProductFragment extends Fragment {
 
     TextView nameProduct, barCodeProduct, quantityProduct, packagingProduct, brandProduct, manufacturingProduct,

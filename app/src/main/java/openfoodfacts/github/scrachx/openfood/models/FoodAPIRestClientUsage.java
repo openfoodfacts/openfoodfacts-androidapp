@@ -11,16 +11,12 @@ import com.loopj.android.http.*;
 import net.steamcrafted.loadtoast.LoadToast;
 import java.io.IOException;
 import java.util.List;
-
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodAPIRestClient;
 import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 
-/**
- * Created by scotscriven on 30/04/15.
- */
 public class FoodAPIRestClientUsage {
 
     public void getProduct(final String barcode, final Activity activity, final ZXingScannerView scannerView){
@@ -242,6 +238,7 @@ public class FoodAPIRestClientUsage {
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+                    productsCallback.onProductsResponse(false, null);
                 }
             }
 
@@ -249,6 +246,7 @@ public class FoodAPIRestClientUsage {
             public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
+                productsCallback.onProductsResponse(false, null);
             }
 
             @Override

@@ -18,20 +18,15 @@ import android.widget.Toast;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import net.steamcrafted.loadtoast.LoadToast;
-import org.apache.http.Header;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
-/**
- * Created by scotscriven on 08/05/15.
- */
 public class UserFragment extends Fragment {
 
     EditText login, pass;
     TextView infoLogin;
-    Button save;
-    Button signup;
+    Button save, signup;
 
     @Nullable
     @Override

@@ -18,9 +18,6 @@ import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 
-/**
- * Created by scotscriven on 04/05/15.
- */
 public class NutritionProductFragment extends Fragment {
 
     private ImageView img;

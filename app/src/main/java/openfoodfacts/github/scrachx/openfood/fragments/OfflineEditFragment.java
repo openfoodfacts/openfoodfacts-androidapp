@@ -1,8 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,12 +16,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.RequestParams;
-
-import net.steamcrafted.loadtoast.LoadToast;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -32,7 +26,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.FoodUserClientUsage;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
@@ -40,17 +33,13 @@ import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
-/**
- * Created by scotscriven on 09/05/15.
- */
 public class OfflineEditFragment extends Fragment {
 
     private ArrayList<SaveItem> saveItems;
     private SaveListAdapter adapter;
     private ListView listView;
     private Button buttonSend;
-    private String loginS;
-    private String passS;
+    private String loginS, passS;
 
     @Nullable
     @Override
@@ -170,7 +159,6 @@ public class OfflineEditFragment extends Fragment {
                         .show();
             }
         });
-
 
         return rootView;
     }

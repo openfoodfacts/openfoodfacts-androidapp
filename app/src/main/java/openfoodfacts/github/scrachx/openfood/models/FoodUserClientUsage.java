@@ -1,29 +1,20 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.content.res.Resources;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import net.steamcrafted.loadtoast.LoadToast;
-import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
-/**
- * Created by scotscriven on 10/05/15.
- */
 public class FoodUserClientUsage {
 
     public void post(final Activity activity, RequestParams params, final String img, final String barcode, final ListView lv, final int pos, final ArrayList<SaveItem> saveItems){

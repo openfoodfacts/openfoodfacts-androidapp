@@ -1,36 +1,18 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.ShareActionProvider;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import java.util.ArrayList;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
-import openfoodfacts.github.scrachx.openfood.models.NavDrawerItem;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.adapters.NavDrawerListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductPagerAdapter;
-
 
 public class ProductActivity extends ActionBarActivity {
 

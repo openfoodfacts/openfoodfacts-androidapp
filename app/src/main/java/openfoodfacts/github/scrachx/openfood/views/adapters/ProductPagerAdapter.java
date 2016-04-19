@@ -1,19 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.support.v13.app.FragmentStatePagerAdapter;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 
-/**
- * Created by Scot on 18/04/2016.
- */
 public class ProductPagerAdapter extends FragmentStatePagerAdapter {
 
     private Context context;

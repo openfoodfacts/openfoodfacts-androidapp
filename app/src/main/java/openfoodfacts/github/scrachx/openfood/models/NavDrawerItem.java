@@ -1,8 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-/**
- * Created by scotscriven on 04/05/15.
- */
 public class NavDrawerItem {
 
     private String title;

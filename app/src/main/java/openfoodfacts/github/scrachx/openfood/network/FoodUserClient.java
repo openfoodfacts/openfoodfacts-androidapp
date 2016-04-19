@@ -4,9 +4,6 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
-/**
- * Created by scotscriven on 09/05/15.
- */
 public class FoodUserClient {
 
     private static final String BASE_URL = "http://world.openfoodfacts.org";

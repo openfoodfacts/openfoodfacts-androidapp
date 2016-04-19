@@ -1,12 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import com.loopj.android.http.*;
-
 import java.util.Locale;
 
-/**
- * Created by scotscriven on 30/04/15.
- */
 public class FoodAPIRestClient {
 
     private static String BASE_URL = "http://world.openfoodfacts.org/";
