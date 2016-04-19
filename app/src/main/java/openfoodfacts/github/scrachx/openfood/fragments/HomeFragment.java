@@ -44,7 +44,6 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ScannerFragmentActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
