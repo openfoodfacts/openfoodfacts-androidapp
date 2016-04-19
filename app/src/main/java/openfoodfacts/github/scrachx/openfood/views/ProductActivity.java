@@ -74,7 +74,7 @@ public class ProductActivity extends ActionBarActivity {
         Intent intent = getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
 
-        Intent shareIntent = new Intent();
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
         String url = " " + Utils.getUriProductByCurrentLanguage() + state.getProduct().getCode();
         if(state.getProduct().getUrl() != null) {
             url = " " + state.getProduct().getUrl();
