@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -10,6 +11,8 @@ import android.util.Log;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import net.steamcrafted.loadtoast.LoadToast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,19 +49,32 @@ public class SplashActivity extends Activity {
             }, SPLASH_DISPLAY_LENGTH);
 
         } else {
-            new AdditivesJson().execute();
+            new AdditivesJson(this).execute();
         }
     }
 
-    private class AdditivesJson extends AsyncTask<Void, Void, Void> {
+    private class AdditivesJson extends AsyncTask<Void, Boolean, Boolean> {
+
+        private Context context;
+        private LoadToast lt;
+
+        public AdditivesJson(Context ctx) {
+            context = ctx;
+            lt = new LoadToast(ctx);
+        }
+
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            lt.setText(context.getString(R.string.toast_retrieving));
+            lt.setBackgroundColor(context.getResources().getColor(R.color.indigo_600));
+            lt.setTextColor(context.getResources().getColor(R.color.white));
+            lt.show();
         }
 
         @Override
-        protected Void doInBackground(Void... arg0) {
+        protected Boolean doInBackground(Void... arg0) {
 
             String json = null;
             String json1 = null;
@@ -88,16 +104,18 @@ public class SplashActivity extends Activity {
                     Additives ta = new Additives(a.getCode(),a.getName(),a.getRisk());
                     ta.save();
                 }
+                return true;
             } catch (IOException ex) {
                 ex.printStackTrace();
+                return false;
             }
-
-            return null;
         }
 
         @Override
-        protected void onPostExecute(Void result) {
+        protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
+            if(result) lt.success();
+            else lt.error();
             SharedPreferences.Editor editor=settings.edit();
             editor.putBoolean("firstRun",false);
             editor.apply();
