@@ -1,10 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+
 import openfoodfacts.github.scrachx.openfood.R;
 
-public class ScannerFragmentActivity extends ActionBarActivity {
+public class ScannerFragmentActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);

@@ -1,13 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,32 +13,34 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
 import net.steamcrafted.loadtoast.LoadToast;
+
+import butterknife.Bind;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
-public class UserFragment extends Fragment {
+public class UserFragment extends BaseFragment {
 
-    EditText login, pass;
-    TextView infoLogin;
-    Button save, signup;
+    @Bind(R.id.editTextLogin) EditText login;
+    @Bind(R.id.editTextPass) EditText pass;
+    @Bind(R.id.textInfoLogin) TextView infoLogin;
+    @Bind(R.id.buttonSave) Button save;
+    @Bind(R.id.buttonCreateAccount) Button signup;
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_user, container, false);
+        return createView(inflater, container, R.layout.fragment_user);
+    }
 
-        final SharedPreferences settings = rootView.getContext().getSharedPreferences("login", 0);
-
-
-        login = (EditText) rootView.findViewById(R.id.editTextLogin);
-        pass = (EditText) rootView.findViewById(R.id.editTextPass);
-        save = (Button) rootView.findViewById(R.id.buttonSave);
-        infoLogin = (TextView) rootView.findViewById(R.id.textInfoLogin);
-        signup = (Button) rootView.findViewById(R.id.buttonCreateAccount);
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        final SharedPreferences settings = getContext().getSharedPreferences("login", 0);
 
         login.setSelected(false);
         pass.setSelected(false);
@@ -48,9 +48,9 @@ public class UserFragment extends Fragment {
         String loginS = settings.getString("user", "");
         String passS = settings.getString("pass", "");
 
-        if(loginS.isEmpty() && passS.isEmpty()){
+        if (loginS.isEmpty() && passS.isEmpty()) {
             infoLogin.setText(R.string.txtInfoLoginNo);
-        }else{
+        } else {
             infoLogin.setText(R.string.txtInfoLoginOk);
         }
 
@@ -73,13 +73,12 @@ public class UserFragment extends Fragment {
                 params.put("user_id", login.getText().toString());
                 params.put("password", pass.getText().toString());
                 params.put(".submit", "Sign-in");
-                getLoggedIn(params, rootView.getContext(), settings);
+                getLoggedIn(params, getContext(), settings);
             }
         });
-        return rootView;
     }
 
-    public void getLoggedIn(RequestParams params, final Context context, final SharedPreferences shpref){
+    public void getLoggedIn(RequestParams params, final Context context, final SharedPreferences shpref) {
         FoodUserClient.post("/cgi/session.pl", params, new AsyncHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(context);
@@ -124,7 +123,7 @@ public class UserFragment extends Fragment {
             }
 
             @Override
-            public void onFinish(){
+            public void onFinish() {
                 super.onFinish();
                 save.setClickable(true);
             }

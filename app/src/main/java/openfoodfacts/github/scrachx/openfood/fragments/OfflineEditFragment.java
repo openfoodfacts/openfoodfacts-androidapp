@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,8 +15,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.RequestParams;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,6 +27,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.Bind;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.FoodUserClientUsage;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
@@ -33,23 +36,25 @@ import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
-public class OfflineEditFragment extends Fragment {
+public class OfflineEditFragment extends BaseFragment {
 
     private ArrayList<SaveItem> saveItems;
-    private SaveListAdapter adapter;
-    private ListView listView;
-    private Button buttonSend;
+
+    @Bind(R.id.listOfflineSave) ListView listView;
+    @Bind(R.id.buttonSendAll) Button buttonSend;
     private String loginS, passS;
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_offline_edit, container, false);
+        return createView(inflater, container, R.layout.fragment_offline_edit);
+    }
 
-        listView = (ListView) rootView.findViewById(R.id.listOfflineSave);
-        buttonSend = (Button) rootView.findViewById(R.id.buttonSendAll);
-        final SharedPreferences settings = rootView.getContext().getSharedPreferences("login", 0);
-        saveItems = new ArrayList<SaveItem>();
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        final SharedPreferences settings = getContext().getSharedPreferences("login", 0);
+        saveItems = new ArrayList<>();
 
         loginS = settings.getString("user", "");
         passS = settings.getString("pass", "");
@@ -90,7 +95,7 @@ public class OfflineEditFragment extends Fragment {
 
                             @Override
                             public void onNegative(MaterialDialog dialog) {
-                                return;
+                                // void implementation
                             }
                         })
                         .show();
@@ -159,8 +164,6 @@ public class OfflineEditFragment extends Fragment {
                         .show();
             }
         });
-
-        return rootView;
     }
 
     @Override
@@ -174,9 +177,9 @@ public class OfflineEditFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
-            if(listSaveProduct.size() == 0){
+            if (listSaveProduct.size() == 0) {
                 Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
-            }else{
+            } else {
                 Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG).show();
             }
         }
@@ -186,14 +189,14 @@ public class OfflineEditFragment extends Fragment {
             List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
 
             int imageIcon = R.drawable.ic_ok;
-            for(int i = 0; i < listSaveProduct.size(); i++){
+            for (int i = 0; i < listSaveProduct.size(); i++) {
                 SendProduct sp = listSaveProduct.get(i);
-                if(sp.getBarcode().isEmpty() || sp.getEnergy().isEmpty() || sp.getImgupload_front().isEmpty()
-                        || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()){
+                if (sp.getBarcode().isEmpty() || sp.getEnergy().isEmpty() || sp.getImgupload_front().isEmpty()
+                        || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
                     imageIcon = R.drawable.ic_no;
                 }
                 Bitmap imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(sp.getImgupload_front()), 200, 200, true);
-                saveItems.add(new SaveItem(sp.getName(),imageIcon, imgUrl, sp.getBarcode()));
+                saveItems.add(new SaveItem(sp.getName(), imageIcon, imgUrl, sp.getBarcode()));
             }
 
             return ctx[0];
@@ -202,26 +205,25 @@ public class OfflineEditFragment extends Fragment {
         @Override
         protected void onPostExecute(Context ctx) {
             List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
-            if(listSaveProduct.size() > 0){
-                adapter = new SaveListAdapter(ctx,saveItems);
+            if (listSaveProduct.size() > 0) {
+                SaveListAdapter adapter = new SaveListAdapter(ctx, saveItems);
                 listView.setAdapter(adapter);
                 buttonSend.setEnabled(true);
-                for(int i = 0; i < listSaveProduct.size(); i++){
+                for (int i = 0; i < listSaveProduct.size(); i++) {
                     SendProduct sp = listSaveProduct.get(i);
-                    if(sp.getBarcode().isEmpty() || sp.getEnergy().isEmpty() || sp.getImgupload_front().isEmpty()
-                            || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()){
+                    if (sp.getBarcode().isEmpty() || sp.getEnergy().isEmpty() || sp.getImgupload_front().isEmpty()
+                            || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
                         buttonSend.setEnabled(false);
                     }
                 }
-                if(loginS.isEmpty() || passS.isEmpty()){
+                if (loginS.isEmpty() || passS.isEmpty()) {
                     Toast.makeText(ctx, ctx.getString(R.string.txtInfoAddUser), Toast.LENGTH_LONG).show();
                     buttonSend.setEnabled(false);
                 }
-            }else{
+            } else {
                 //Do nothing
             }
         }
-
     }
 
     // Decodes image and scales it to reduce memory consumption
@@ -233,11 +235,11 @@ public class OfflineEditFragment extends Fragment {
             BitmapFactory.decodeStream(new FileInputStream(f), null, o);
 
             // The new size we want to scale to
-            final int REQUIRED_SIZE=300;
+            final int REQUIRED_SIZE = 300;
 
             // Find the correct scale value. It should be the power of 2.
             int scale = 1;
-            while(o.outWidth / scale / 2 >= REQUIRED_SIZE &&
+            while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
                     o.outHeight / scale / 2 >= REQUIRED_SIZE) {
                 scale *= 2;
             }
@@ -246,8 +248,8 @@ public class OfflineEditFragment extends Fragment {
             BitmapFactory.Options o2 = new BitmapFactory.Options();
             o2.inSampleSize = scale;
             return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
-        } catch (FileNotFoundException e) {}
+        } catch (FileNotFoundException e) {
+        }
         return null;
     }
-
 }

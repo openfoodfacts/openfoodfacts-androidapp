@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,25 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import butterknife.Bind;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
 import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
-    private Button mButtonScan;
+    @Bind(R.id.buttonScan) Button mButtonScan;
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_home,container, false);
+        return createView(inflater, container, R.layout.fragment_home);
+    }
 
-        mButtonScan = (Button) rootView.findViewById(R.id.buttonScan);
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        final SharedPreferences settings = rootView.getContext().getSharedPreferences("login", 0);
+        final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
         String loginS = settings.getString("user", "");
         String passS = settings.getString("pass", "");
 
@@ -39,7 +43,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        if(!loginS.isEmpty() && !passS.isEmpty()) {
+        if (!loginS.isEmpty() && !passS.isEmpty()) {
             RequestParams params = new RequestParams();
             params.put("user_id", loginS);
             params.put("password", passS);
@@ -60,7 +64,7 @@ public class HomeFragment extends Fragment {
                         editor.putString("user", "");
                         editor.putString("pass", "");
                         editor.commit();
-                        new MaterialDialog.Builder(rootView.getContext())
+                        new MaterialDialog.Builder(getActivity())
                                 .title(R.string.alert_dialog_warning_title)
                                 .content(R.string.alert_dialog_warning_msg_user)
                                 .positiveText(R.string.txtOk)
@@ -74,12 +78,10 @@ public class HomeFragment extends Fragment {
                 }
 
                 @Override
-                public void onFinish(){
+                public void onFinish() {
                     super.onFinish();
                 }
             });
         }
-
-        return rootView;
     }
 }

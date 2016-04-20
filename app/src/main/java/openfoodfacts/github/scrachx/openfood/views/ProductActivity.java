@@ -5,21 +5,22 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import butterknife.Bind;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductPagerAdapter;
 
-public class ProductActivity extends ActionBarActivity {
-
+public class ProductActivity extends BaseActivity {
 
     private ShareActionProvider mShareActionProvider;
     private ProductPagerAdapter adapterResult;
-    private ViewPager viewPager;
+
+    @Bind(R.id.pager) ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +30,7 @@ public class ProductActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_home);
 
-        adapterResult = new ProductPagerAdapter(getFragmentManager(),this);
-        viewPager = (ViewPager) findViewById(R.id.pager);
+        adapterResult = new ProductPagerAdapter(getSupportFragmentManager(), this);
         viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(adapterResult);
     }
@@ -58,7 +58,7 @@ public class ProductActivity extends ActionBarActivity {
 
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         String url = " " + Utils.getUriProductByCurrentLanguage() + state.getProduct().getCode();
-        if(state.getProduct().getUrl() != null) {
+        if (state.getProduct().getUrl() != null) {
             url = " " + state.getProduct().getUrl();
         }
         shareIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.msg_share) + url);
@@ -74,5 +74,4 @@ public class ProductActivity extends ActionBarActivity {
             mShareActionProvider.setShareIntent(shareIntent);
         }
     }
-
 }

@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,65 +12,69 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import butterknife.Bind;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additives;
 import openfoodfacts.github.scrachx.openfood.models.State;
 
-public class IngredientsProductFragment extends Fragment {
+public class IngredientsProductFragment extends BaseFragment {
 
-    TextView ingredientProduct, substanceProduct, traceProduct, additiveProduct, palmOilProduct, mayBeFromPalmOilProduct;
+    @Bind(R.id.textIngredientProduct) TextView ingredientProduct;
+    @Bind(R.id.textSubstanceProduct) TextView substanceProduct;
+    @Bind(R.id.textTraceProduct) TextView traceProduct;
+    @Bind(R.id.textAdditiveProduct) TextView additiveProduct;
+    @Bind(R.id.textPalmOilProduct) TextView palmOilProduct;
+    @Bind(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
 
-    @Nullable
+    @Bind(R.id.ingredientContainer) ViewGroup containerView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_ingredients_product,container,false);
+        return createView(inflater, container, R.layout.fragment_ingredients_product);
+    }
 
-        ingredientProduct = (TextView) rootView.findViewById(R.id.textIngredientProduct);
-        substanceProduct = (TextView) rootView.findViewById(R.id.textSubstanceProduct);
-        traceProduct = (TextView) rootView.findViewById(R.id.textTraceProduct);
-        additiveProduct = (TextView) rootView.findViewById(R.id.textAdditiveProduct);
-
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
 
         ingredientProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtIngredients) + "</b>" + ' ' + state.getProduct().getIngredientsText()));
         substanceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtSubstances) + "</b>" + ' ' + state.getProduct().getAllergens()));
         String traces;
-        if(state.getProduct().getCategories() == null){
+        if (state.getProduct().getCategories() == null) {
             traces = state.getProduct().getTraces();
-        }else{
+        } else {
             traces = state.getProduct().getTraces().replace(",", ", ");
         }
         traceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtTraces) + "</b>" + ' ' + traces));
-        additiveProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtAdditives) + "</b>" + ' ' + state.getProduct().getAdditivesTags().toString().replace("[", "").replace("]","").replace("en:"," ").replace("fr:"," ")));
+        additiveProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtAdditives) + "</b>" + ' ' + state.getProduct().getAdditivesTags().toString().replace("[", "").replace("]", "").replace("en:", " ").replace("fr:", " ")));
 
-        palmOilProduct = (TextView) rootView.findViewById(R.id.textPalmOilProduct);
-        mayBeFromPalmOilProduct = (TextView) rootView.findViewById(R.id.textMayBeFromPalmOilProduct);
-
-        if(state.getProduct().getIngredientsFromPalmOilN() == 0 && state.getProduct().getIngredientsFromOrThatMayBeFromPalmOilN() == 0){
+        if (state.getProduct().getIngredientsFromPalmOilN() == 0 && state.getProduct().getIngredientsFromOrThatMayBeFromPalmOilN() == 0) {
             palmOilProduct.setVisibility(View.VISIBLE);
             palmOilProduct.setText(getString(R.string.txtPalm));
         } else {
-            if(!state.getProduct().getIngredientsFromPalmOilTags().toString().replace("[", "").replace("]", "").isEmpty()) {
+            if (!state.getProduct().getIngredientsFromPalmOilTags().toString().replace("[", "").replace("]", "").isEmpty()) {
                 palmOilProduct.setVisibility(View.VISIBLE);
                 palmOilProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtPalmOilProduct) + "</b>" + ' ' + state.getProduct().getIngredientsFromPalmOilTags().toString().replace("[", "").replace("]", "")));
             }
-            if(!state.getProduct().getIngredientsThatMayBeFromPalmOilTags().toString().replace("[", "").replace("]", "").isEmpty()) {
+            if (!state.getProduct().getIngredientsThatMayBeFromPalmOilTags().toString().replace("[", "").replace("]", "").isEmpty()) {
                 mayBeFromPalmOilProduct.setVisibility(View.VISIBLE);
-                mayBeFromPalmOilProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtMayBeFromPalmOilProduct) + "</b>" + ' ' + state.getProduct().getIngredientsThatMayBeFromPalmOilTags().toString().replace("[","").replace("]","")));
+                mayBeFromPalmOilProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtMayBeFromPalmOilProduct) + "</b>" + ' ' + state.getProduct().getIngredientsThatMayBeFromPalmOilTags().toString().replace("[", "").replace("]", "")));
             }
         }
-        SpannableStringBuilder txt = new SpannableStringBuilder(Html.fromHtml(state.getProduct().getAdditivesTags().toString().replace("[", "").replace("]","").replace("en:"," ").replace("fr:"," ")).toString());
-        txt = setSpanBetweenTokens(txt, rootView);
+        SpannableStringBuilder txt = new SpannableStringBuilder(Html.fromHtml(state.getProduct().getAdditivesTags().toString().replace("[", "").replace("]", "").replace("en:", " ").replace("fr:", " ")).toString());
+        txt = setSpanBetweenTokens(txt, containerView);
         additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
         additiveProduct.setText(txt, TextView.BufferType.SPANNABLE);
-
-        return rootView;
     }
 
     public SpannableStringBuilder setSpanBetweenTokens(CharSequence text, final View view) {
