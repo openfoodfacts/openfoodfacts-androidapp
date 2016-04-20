@@ -115,6 +115,7 @@
     <string name="user_drawer">User</string>
     <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">Anonymous</string>
+    <string name="txt_product_not_found">Products not found</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>

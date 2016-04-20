@@ -226,8 +226,9 @@ public class FoodAPIRestClientUsage {
                     try {
                         Search s = objectMapper.readValue(responseBody, Search.class);
                         if(Integer.valueOf(s.getCount()) == 0){
-                            lt.setText(activity.getResources().getString(R.string.txtInfoLoginNo));
+                            Toast.makeText(activity, R.string.txt_product_not_found, Toast.LENGTH_LONG).show();
                             lt.error();
+                            productsCallback.onProductsResponse(false, null);
                         }else{
                             lt.success();
                             productsCallback.onProductsResponse(true, s.getProducts());
