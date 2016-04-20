@@ -102,8 +102,8 @@
     <string name="search_drawer">Recherche</string>
     <string name="search_by_name_drawer">Rechercher par nom</string>
     <string name="scan_search">Scanner</string>
-    <string name="user_drawer">User</string>
-    <string name="offline_edit_drawer">Utilisateur</string>
-    <string name="search_by_barcode_drawer">Edition hors-ligne</string>
+    <string name="user_drawer">Utilisateur</string>
+    <string name="offline_edit_drawer">Edition hors-ligne</string>
+    <string name="search_by_barcode_drawer">Rechercher par code-barre</string>
     <string name="txt_anonymous">Anonyme</string>
 </resources>
