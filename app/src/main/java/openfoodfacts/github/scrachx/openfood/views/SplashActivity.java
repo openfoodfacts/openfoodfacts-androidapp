@@ -5,13 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-
+import android.support.v7.app.AppCompatActivity;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import net.steamcrafted.loadtoast.LoadToast;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -19,34 +16,20 @@ import java.util.List;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additives;
 
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends AppCompatActivity {
 
-    /**
-     * Duration of wait
-     **/
-    private final int SPLASH_DISPLAY_LENGTH = 1000;
     private SharedPreferences settings;
 
-    /**
-     * Called when the activity is first created.
-     */
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        setContentView(R.layout.splash);
 
         settings = getSharedPreferences("prefs", 0);
         boolean firstRun = settings.getBoolean("firstRun", true);
         if (!firstRun) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-                    SplashActivity.this.startActivity(mainIntent);
-                    SplashActivity.this.finish();
-                }
-            }, SPLASH_DISPLAY_LENGTH);
-
+            Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+            SplashActivity.this.startActivity(mainIntent);
+            SplashActivity.this.finish();
         } else {
             new AdditivesJson(this).execute();
         }
