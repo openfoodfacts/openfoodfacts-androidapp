@@ -1,13 +1,18 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.ShareActionProvider;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
 
 import butterknife.Bind;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -21,14 +26,16 @@ public class ProductActivity extends BaseActivity {
     private ProductPagerAdapter adapterResult;
 
     @Bind(R.id.pager) ViewPager viewPager;
+    @Bind(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_home);
 
         adapterResult = new ProductPagerAdapter(getSupportFragmentManager(), this);
         viewPager.setOffscreenPageLimit(3);

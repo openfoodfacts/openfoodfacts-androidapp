@@ -7,29 +7,6 @@
     <string name="action_find">Find</string>
     <string name="text_barcode">Put the barcode :</string>
 
-    <string name="drawer_open">Slider Menu Opened</string>
-    <string name="drawer_close">Slider Menu Closed</string>
-
-    <!-- Nav Drawer Main Menu Items -->
-    <string-array name="nav_drawer_items_main">
-        <item>Home</item>
-        <item>Search by barcode</item>
-        <item>Search by name</item>
-        <item>Scan</item>
-        <item>User</item>
-        <item>Offline edit</item>
-    </string-array>
-
-    <!-- Nav Drawer Main Menu List Item Icons -->
-    <array name="nav_drawer_icons_main">
-        <item>@drawable/ic_home</item>
-        <item>@drawable/ic_barcode_white_48dp</item>
-        <item>@drawable/ic_search</item>
-        <item>@drawable/ic_camera</item>
-        <item>@drawable/ic_user</item>
-        <item>@drawable/ic_edit</item>
-    </array>
-
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Summary</item>
@@ -130,6 +107,14 @@
     <string name="share">Share</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">Sign up</string>
+    <string name="home_drawer">Home</string>
+    <string name="search_drawer">Search</string>
+    <string name="search_by_barcode_drawer">Search by barcode</string>
+    <string name="search_by_name_drawer">Search by name</string>
+    <string name="scan_search">Scan</string>
+    <string name="user_drawer">User</string>
+    <string name="offline_edit_drawer">Offline edit</string>
+    <string name="txt_anonymous">Anonymous</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>

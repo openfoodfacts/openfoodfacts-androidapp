@@ -5,20 +5,8 @@
     <string name="action_settings">Paramètres</string>
     <string name="action_about">À propos</string>
     <string name="desc_list_item_icon">Icône</string>
-    <string name="drawer_close">Menu Ouvert</string>
-    <string name="drawer_open">Menu Fermé</string>
     <string name="hello_world">Coucou all!</string>
     <string name="text_barcode">Ajoutez le code barre : </string>
-
-    <!-- Nav Drawer Main Menu Items -->
-    <string-array name="nav_drawer_items_main">
-        <item>Accueil</item>
-        <item>Rechercher par code-barre</item>
-        <item>Rechercher par nom</item>
-        <item>Scanner</item>
-        <item>Utilisateur</item>
-        <item>Edition hors-ligne</item>
-    </string-array>
 
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -110,4 +98,12 @@
     <string name="share">Partager</string>
     <string name="msg_share">Regarde ce produit sur Open Food Facts :</string>
     <string name="create_account">S\'inscrire</string>
+    <string name="home_drawer">Accueil</string>
+    <string name="search_drawer">Recherche</string>
+    <string name="search_by_name_drawer">Rechercher par nom</string>
+    <string name="scan_search">Scanner</string>
+    <string name="user_drawer">User</string>
+    <string name="offline_edit_drawer">Utilisateur</string>
+    <string name="search_by_barcode_drawer">Edition hors-ligne</string>
+    <string name="txt_anonymous">Anonyme</string>
 </resources>

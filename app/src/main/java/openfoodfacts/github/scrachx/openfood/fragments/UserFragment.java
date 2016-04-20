@@ -114,12 +114,14 @@ public class UserFragment extends BaseFragment {
                     editor.commit();
                     infoLogin.setText(R.string.txtInfoLoginOk);
                 }
+                Utils.hideKeyboard(getActivity());
             }
 
             @Override
             public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
                 Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
+                Utils.hideKeyboard(getActivity());
             }
 
             @Override
