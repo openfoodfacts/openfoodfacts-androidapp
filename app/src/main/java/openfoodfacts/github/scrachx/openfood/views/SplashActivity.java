@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.steamcrafted.loadtoast.LoadToast;
@@ -14,7 +14,8 @@ import java.io.InputStream;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Additives;
+import openfoodfacts.github.scrachx.openfood.models.Additive;
+import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
 
 public class SplashActivity extends BaseActivity {
 
@@ -31,16 +32,16 @@ public class SplashActivity extends BaseActivity {
             SplashActivity.this.startActivity(mainIntent);
             SplashActivity.this.finish();
         } else {
-            new AdditivesJson(this).execute();
+            new GetJson(this).execute();
         }
     }
 
-    private class AdditivesJson extends AsyncTask<Void, Boolean, Boolean> {
+    private class GetJson extends AsyncTask<Void, Boolean, Boolean> {
 
         private Context context;
         private LoadToast lt;
 
-        public AdditivesJson(Context ctx) {
+        public GetJson(Context ctx) {
             context = ctx;
             lt = new LoadToast(ctx);
         }
@@ -68,10 +69,9 @@ public class SplashActivity extends BaseActivity {
                 is.close();
                 json = new String(buffer, "UTF-8");
                 ObjectMapper objectMapper = new ObjectMapper();
-                List<Additives> la = objectMapper.readValue(json, new TypeReference<List<Additives>>() {
-                });
-                for (Additives a : la) {
-                    Additives ta = new Additives(a.getCode(), a.getName(), a.getRisk());
+                List<Additive> la = objectMapper.readValue(json, new TypeReference<List<Additive>>() {});
+                for (Additive a : la) {
+                    Additive ta = new Additive(a.getCode(), a.getName(), a.getRisk());
                     ta.save();
                 }
 
@@ -82,12 +82,13 @@ public class SplashActivity extends BaseActivity {
                 is1.close();
                 json1 = new String(buffer1, "UTF-8");
                 ObjectMapper objectMapper1 = new ObjectMapper();
-                List<Additives> la1 = objectMapper1.readValue(json1, new TypeReference<List<Additives>>() {
-                });
-                for (Additives a : la1) {
-                    Additives ta = new Additives(a.getCode(), a.getName(), a.getRisk());
+                List<Additive> la1 = objectMapper1.readValue(json1, new TypeReference<List<Additive>>() {});
+                for (Additive a : la1) {
+                    Additive ta = new Additive(a.getCode(), a.getName(), a.getRisk());
                     ta.save();
                 }
+                FoodAPIRestClientUsage api = new FoodAPIRestClientUsage();
+                api.getAllergens();
                 return true;
             } catch (IOException ex) {
                 ex.printStackTrace();

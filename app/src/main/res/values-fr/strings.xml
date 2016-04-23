@@ -107,4 +107,9 @@
     <string name="search_by_barcode_drawer">Rechercher par code-barre</string>
     <string name="txt_anonymous">Anonyme</string>
     <string name="txt_product_not_found">Pas de produits</string>
+    <string name="delete_txt">Supprimer</string>
+    <string name="sign_in_drawer">Se connecter</string>
+    <string name="alert_drawer">Alerte allergènes</string>
+    <string name="warning_allergens">Contient des allergènes</string>
+    <string name="title_dialog_alert">Add alert</string>
 </resources>

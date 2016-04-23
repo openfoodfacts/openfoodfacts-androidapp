@@ -3,14 +3,23 @@ package openfoodfacts.github.scrachx.openfood.models;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.loopj.android.http.*;
 import net.steamcrafted.loadtoast.LoadToast;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodAPIRestClient;
@@ -20,7 +29,7 @@ import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 public class FoodAPIRestClientUsage {
 
     public void getProduct(final String barcode, final Activity activity, final ZXingScannerView scannerView){
-        FoodAPIRestClient.get("api/v0/produit/"+barcode+".json", null, new AsyncHttpResponseHandler() {
+        FoodAPIRestClient.getAsync("/api/v0/produit/"+barcode+".json", null, new AsyncHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
 
@@ -112,7 +121,7 @@ public class FoodAPIRestClientUsage {
     }
 
     public void getProduct(final String barcode, final Activity activity){
-        FoodAPIRestClient.get("api/v0/produit/"+barcode+".json", null, new AsyncHttpResponseHandler() {
+        FoodAPIRestClient.getAsync("/api/v0/produit/"+barcode+".json", null, new AsyncHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
 
@@ -205,7 +214,7 @@ public class FoodAPIRestClientUsage {
     }
 
     public void searchProduct(final String name, final Activity activity, final OnProductsCallback productsCallback) {
-        FoodAPIRestClient.get("/cgi/search.pl?search_terms="+name+"&search_simple=1&action=process&json=1", null, new AsyncHttpResponseHandler() {
+        FoodAPIRestClient.getAsync("/cgi/search.pl?search_terms="+name+"&search_simple=1&action=process&json=1", null, new AsyncHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
 
@@ -257,4 +266,42 @@ public class FoodAPIRestClientUsage {
         });
     }
 
+    public void getAllergens() {
+        FoodAPIRestClient.getSync("/allergens.json", null, new AsyncHttpResponseHandler() {
+
+            @Override
+            public void onStart() {
+            }
+
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+                // called when response HTTP status is "200 OK"
+                try {
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    try {
+                        JsonNode root = objectMapper.readTree(responseBody);
+                        List<Allergen> la = objectMapper.readValue(root.path("tags").toString(), new TypeReference<List<Allergen>>() {});
+                        for (Allergen a : la) {
+                            Allergen al = new Allergen(a.getUrl(),a.getName(),a.getProducts(),a.getIdAllergen());
+                            al.save();
+                        }
+                    } catch (InvalidFormatException e) {
+                        e.printStackTrace();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+
+            @Override
+            public void onRetry(int retryNo) {
+                // called when request is retried
+            }
+        });
+    }
 }

@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 
 import butterknife.Bind;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Additives;
+import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.State;
 
 public class IngredientsProductFragment extends BaseFragment {
@@ -84,12 +84,12 @@ public class IngredientsProductFragment extends BaseFragment {
         Matcher m = p.matcher(ssb);
         while (m.find()) {
             final String tm = m.group();
-            final List<Additives> la = Additives.find(Additives.class, "code = ?", tm.toUpperCase());
+            final List<Additive> la = Additive.find(Additive.class, "code = ?", tm.toUpperCase());
             if (la.size() == 2) {
                 ClickableSpan clickableSpan = new ClickableSpan() {
                     @Override
                     public void onClick(View v) {
-                        Additives a;
+                        Additive a;
                         if (Locale.getDefault().getLanguage().contains("fr")) {
                             a = la.get(0);
                         } else {

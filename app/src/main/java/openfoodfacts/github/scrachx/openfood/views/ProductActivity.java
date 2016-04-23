@@ -8,14 +8,21 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.Bind;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductPagerAdapter;
@@ -24,6 +31,7 @@ public class ProductActivity extends BaseActivity {
 
     private ShareActionProvider mShareActionProvider;
     private ProductPagerAdapter adapterResult;
+    private List<Allergen> mAllergens;
 
     @Bind(R.id.pager) ViewPager viewPager;
     @Bind(R.id.toolbar) Toolbar toolbar;
@@ -37,9 +45,44 @@ public class ProductActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mAllergens = Allergen.find(Allergen.class, "enable = ?", "true");
         adapterResult = new ProductPagerAdapter(getSupportFragmentManager(), this);
         viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(adapterResult);
+
+        Intent intent = getIntent();
+        State state = (State) intent.getExtras().getSerializable("state");
+
+        List<String> all = (List<String>) state.getProduct().getAllergensHierarchy();
+        List<String> traces = (List<String>) state.getProduct().getTracesTags();
+        List<String> matchAll = new ArrayList<String>();
+        int i = 0; boolean isMatch = false;
+        for(String sA : all) {
+            if(mAllergens.size() > 0) {
+                if(sA.equals(mAllergens.get(i).getIdAllergen())) {
+                    matchAll.add(mAllergens.get(i).getName());
+                    isMatch = true;
+                }
+            }
+            if(traces.size() > 0) {
+                Log.d("trace", traces.get(i));
+                Log.d("all", sA);
+                if(sA.contains(traces.get(i))) {
+                    matchAll.add(mAllergens.get(i).getName());
+                    isMatch = true;
+                }
+            }
+            if(isMatch) i++;
+            isMatch = false;
+        }
+
+        if(matchAll.size() > 0) {
+            new MaterialDialog.Builder(this)
+                    .title(R.string.warning_allergens)
+                    .items(matchAll)
+                    .neutralText(R.string.txtOk)
+                    .show();
+        }
     }
 
     @Override

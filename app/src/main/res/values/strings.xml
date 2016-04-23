@@ -116,6 +116,11 @@
     <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">Anonymous</string>
     <string name="txt_product_not_found">Products not found</string>
+    <string name="delete_txt">Delete</string>
+    <string name="sign_in_drawer">Sign-in</string>
+    <string name="alert_drawer">Alert allergens</string>
+    <string name="warning_allergens">Contains allergens</string>
+    <string name="title_dialog_alert">Add alert</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>

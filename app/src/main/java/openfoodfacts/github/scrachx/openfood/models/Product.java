@@ -186,7 +186,7 @@ public class Product implements Serializable{
     @JsonProperty("additives_n")
     private long additivesN;
     @JsonProperty("allergens_hierarchy")
-    private List<Object> allergensHierarchy = new ArrayList<Object>();
+    private List<String> allergensHierarchy = new ArrayList<String>();
     @JsonProperty("pnns_groups_2_tags")
     private List<String> pnnsGroups2Tags = new ArrayList<String>();
     @JsonProperty("unknown_nutrients_tags")
@@ -1096,7 +1096,7 @@ public class Product implements Serializable{
      * The allergensHierarchy
      */
     @JsonProperty("allergens_hierarchy")
-    public List<Object> getAllergensHierarchy() {
+    public List<String> getAllergensHierarchy() {
         return allergensHierarchy;
     }
 
@@ -1106,14 +1106,15 @@ public class Product implements Serializable{
      * The allergens_hierarchy
      */
     @JsonProperty("allergens_hierarchy")
-    public void setAllergensHierarchy(List<Object> allergensHierarchy) {
+    public void setAllergensHierarchy(List<String> allergensHierarchy) {
         this.allergensHierarchy = allergensHierarchy;
     }
 
-    public Product withAllergensHierarchy(List<Object> allergensHierarchy) {
+    public Product withAllergensHierarchy(List<String> allergensHierarchy) {
         this.allergensHierarchy = allergensHierarchy;
         return this;
     }
+
 
     /**
      *

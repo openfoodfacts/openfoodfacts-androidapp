@@ -27,6 +27,7 @@ import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 
 import butterknife.Bind;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.AlertUserFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
@@ -80,10 +81,11 @@ public class MainActivity extends BaseActivity {
                         new SecondaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(FontAwesome.Icon.faw_barcode).withIdentifier(2),
                         new SecondaryDrawerItem().withName(R.string.search_by_name_drawer).withIcon(FontAwesome.Icon.faw_search).withIdentifier(3),
                         new SecondaryDrawerItem().withName(R.string.scan_search).withIcon(FontAwesome.Icon.faw_camera).withIdentifier(4),
+                        new SectionDrawerItem().withName(R.string.user_drawer),
+                        new SecondaryDrawerItem().withName(R.string.sign_in_drawer).withIcon(FontAwesome.Icon.faw_sign_in).withIdentifier(5),
+                        new SecondaryDrawerItem().withName(R.string.alert_drawer).withIcon(FontAwesome.Icon.faw_info).withIdentifier(6),
                         new DividerDrawerItem(),
-                        new PrimaryDrawerItem().withName(R.string.user_drawer).withIcon(FontAwesome.Icon.faw_user).withIdentifier(5),
-                        new DividerDrawerItem(),
-                        new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(FontAwesome.Icon.faw_anchor).withIdentifier(6)
+                        new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(FontAwesome.Icon.faw_anchor).withIdentifier(7)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -106,8 +108,11 @@ public class MainActivity extends BaseActivity {
                                 startActivity(intent);
                             } else if (drawerItem.getIdentifier() == 5) {
                                 fragment = new UserFragment();
-                                getSupportActionBar().setTitle(getResources().getString(R.string.user_drawer));
+                                getSupportActionBar().setTitle(R.string.sign_in_drawer);
                             } else if (drawerItem.getIdentifier() == 6) {
+                                fragment = new AlertUserFragment();
+                                getSupportActionBar().setTitle(R.string.alert_drawer);
+                            } else if (drawerItem.getIdentifier() == 7) {
                                 fragment = new OfflineEditFragment();
                                 getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
                             }
