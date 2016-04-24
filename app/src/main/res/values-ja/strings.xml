@@ -1,0 +1,148 @@
+<resources>
+    <string name="app_name">Open Food</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">設定</string>
+    <string name="action_about">アプリについて</string>
+
+    <string name="action_find">検索</string>
+    <string name="text_barcode">バーコードを入れてください :</string>
+
+    <string name="drawer_open">スライダーメニューを開きました</string>
+    <string name="drawer_close">スライダーメニューを閉じました</string>
+
+    <!-- Nav Drawer Main Menu Items -->
+    <string-array name="nav_drawer_items_main">
+        <item>ホーム</item>
+        <item>バーコードで検索</item>
+        <item>名前で検索</item>
+        <item>スキャン</item>
+        <item>ユーザー</item>
+        <item>オフライン編集</item>
+    </string-array>
+
+    <!-- Nav Drawer Main Menu List Item Icons -->
+    <array name="nav_drawer_icons_main">
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_barcode_white_48dp</item>
+        <item>@drawable/ic_search</item>
+        <item>@drawable/ic_camera</item>
+        <item>@drawable/ic_user</item>
+        <item>@drawable/ic_edit</item>
+    </array>
+
+    <!-- Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_items_product">
+        <item>サマリー</item>
+        <item>原材料</item>
+        <item>栄養</item>
+        <item>メニューに戻る</item>
+    </string-array>
+
+    <!-- Nav Drawer Main Product List Item Icons -->
+    <array name="nav_drawer_icons_product">
+        <item>@drawable/ic_summary_product</item>
+        <item>@drawable/ic_ingredient</item>
+        <item>@drawable/ic_nutrition</item>
+        <item>@drawable/ic_home</item>
+    </array>
+
+    <!-- Text units -->
+    <string-array name="units_array">
+        <item>g</item>
+        <item>mg</item>
+        <item>kg</item>
+        <item>l</item>
+        <item>ml</item>
+    </string-array>
+
+    <!-- Content Description -->
+    <string name="search_button">検索</string>
+    <string name="no_products">製品が見つかりません</string>
+    <string name="desc_list_item_icon">アイテムアイコン</string>
+    <string name="alert_dialog_warning_title">警告</string>
+    <string name="alert_dialog_warning_msg_user">ユーザー/パスワードを変更しました。情報を更新してください</string>
+    <string name="alert_dialog_product_error_msg">製品が見つかりません。もう一度試してください</string>
+    <string name="toast_retrieving">読み込んでいます...</string>
+    <string name="txtBarcode">バーコード :</string>
+    <string name="txtQuantity">量 :</string>
+    <string name="txtPackaging">パッケージ :</string>
+    <string name="txtBrands">ブランド :</string>
+    <string name="txtCategories">カテゴリー :</string>
+    <string name="txtManufacturing">製造または加工場所 :</string>
+    <string name="txtCity">購入した市区町村、都道府県、国 :</string>
+    <string name="txtStores">店舗 :</string>
+    <string name="txtCountries">販売国 :</string>
+    <string name="txtIngredients">原材料一覧 :</string>
+    <string name="txtSubstances">アレルギーまたは不耐性の原因となる物質または製品 :</string>
+    <string name="txtAdditives">添加物 :</string>
+    <string name="txtTraces">追跡 :</string>
+    <string name="txtMayBeFromPalmOilProduct">パーム油を原材料とする可能性があるもの :</string>
+    <string name="txtPalmOilProduct">パーム油を原材料とするもの :</string>
+    <string name="txtServingSize">分量 :</string>
+    <string name="txtNutrientLevel100g">100g 当たりの栄養成分:</string>
+    <string name="txtLogin">ログイン :</string>
+    <string name="txtPass">パスワード :</string>
+    <string name="txtTitleHome">食品を開くと何を食べているか分かります</string>
+    <string name="txtHome">Open Food Facts は、食品の原材料、アレルゲン、栄養成分、および製品ラベルで見ることができるすべての情報のデータベースです。</string>
+    <string name="txtSave">接続</string>
+    <string name="txtUser">ユーザーパネル</string>
+    <string name="txtToastSaved">ユーザーを保存しました</string>
+    <string name="txtSalt">食塩 :</string>
+    <string name="txtFat">脂肪 :</string>
+    <string name="txtSugars">砂糖 :</string>
+    <string name="txtSaturatedFat">飽和脂肪酸 :</string>
+    <string name="hintBarcode">バーコード</string>
+    <string name="hintLogin">ログイン</string>
+    <string name="hintPass">パスワード</string>
+    <string name="errorLogin">ログインまたはパスワードエラー</string>
+    <string name="errorWeb">インターネットにアクセスできませんでした。接続に問題がありませんか?</string>
+    <string name="txtInfoLoginOk">ユーザーを保存しました</string>
+    <string name="txtInfoLoginNo">ユーザーを保存できませんでした</string>
+    <string name="txtDialogsTitle">情報</string>
+    <string name="txtDialogsContent">スキャンした製品は、まだ Open Food Facts に存在しません。追加しますか?</string>
+    <string name="txtDialogsContentSend">保存した製品をデータベースに送信しますか?</string>
+    <string name="txtYes">はい</string>
+    <string name="txtNo">いいえ</string>
+    <string name="hintNameProduct">名前</string>
+    <string name="hintEnergy">一食当たりのエネルギー (KJ)</string>
+    <string name="hintEnergyUnit">エネルギーの単位</string>
+    <string name="hintWeight">重量</string>
+    <string name="hintStores">店舗</string>
+    <string name="txtTakePicture">写真を撮影</string>
+    <string name="txtSendAll">すべてアップロード</string>
+    <string name="txtNoData">データはありません</string>
+    <string name="txtPictureNeeded">まず写真を撮影します。その後名前と店舗を入力してください!</string>
+    <string name="toastSending">アップロードしています...</string>
+    <string name="dataSaved">お使いのデバイス内に保存しました</string>
+    <string name="txtInfoAddUser">ログインとパスワードを入力してください</string>
+    <string name="txtDataUpdated">データを更新しました</string>
+    <string name="txtLoading">読み込んでいます...</string>
+    <string name="txtDialogsContentDelete">この下書きを削除しますか?</string>
+    <string name="txtDialogsContentInfoSave">この製品はローカルに保存されます。"オフライン編集" メニューで編集することができます</string>
+    <string name="txtBarcodeRequire">バーコードが必要です</string>
+    <string name="txtOk">OK</string>
+    <string name="txtContentDialogUploading">処理中はアプリを終了しないでください...</string>
+    <string name="txtAbout">あなたが送信した画像はフリーのライセンスクリエイティブコモンズと同一条件許諾の下で公開されます。</string>
+    <string name="txtAllsent">製品を送信しました</string>
+    <string name="txtPalm">製品にはパーム油は含まれていません</string>
+    <string name="txtBarcodeNotValid">バーコードが正しくありません</string>
+    <string name="try_it_scan_now">今すぐスキャンしてみてください!</string>
+    <string name="share">共有</string>
+    <string name="msg_share">Open Food Facts でこの製品を参照してください:</string>
+    <string name="create_account">サインアップ</string>
+
+    <style name="DefaultButtonText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/grey_50</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:shadowColor">@color/grey_100</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+</resources>
