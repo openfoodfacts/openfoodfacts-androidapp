@@ -61,7 +61,7 @@
     <string name="txtPass">Password :</string>
     <string name="txtTitleHome">Open your food and know what you eat</string>
     <string name="txtHome">Open Food Facts is a database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
-    <string name="txtSave">Connect</string>
+    <string name="txtSave">Save</string>
     <string name="txtUser">User panel</string>
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Salt :</string>

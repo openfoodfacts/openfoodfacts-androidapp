@@ -119,14 +119,16 @@ public class OfflineEditFragment extends BaseFragment {
                                 FoodUserClientUsage user = new FoodUserClientUsage();
                                 for (int i = 0; i < listSaveProduct.size(); i++) {
                                     SendProduct sp = listSaveProduct.get(i);
-                                    if (sp.getBarcode().isEmpty() || sp.getEnergy().isEmpty() || sp.getImgupload_front().isEmpty()
+                                    if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()
                                             || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
                                         // Do nothing
                                     } else {
                                         RequestParams params = new RequestParams();
                                         params.put("code", sp.getBarcode());
-                                        params.put("user_id", loginS);
-                                        params.put("password", passS);
+                                        if(!loginS.isEmpty() && !passS.isEmpty()) {
+                                            params.put("user_id", loginS);
+                                            params.put("password", passS);
+                                        }
                                         params.put("product_name", sp.getName());
                                         params.put("quantity", sp.getWeight() + " " + sp.getWeight_unit());
                                         params.put("stores", sp.getStores());
@@ -209,16 +211,11 @@ public class OfflineEditFragment extends BaseFragment {
                 SaveListAdapter adapter = new SaveListAdapter(ctx, saveItems);
                 listView.setAdapter(adapter);
                 buttonSend.setEnabled(true);
-                for (int i = 0; i < listSaveProduct.size(); i++) {
-                    SendProduct sp = listSaveProduct.get(i);
-                    if (sp.getBarcode().isEmpty() || sp.getEnergy().isEmpty() || sp.getImgupload_front().isEmpty()
+                for (SendProduct sp : listSaveProduct) {
+                    if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()
                             || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
                         buttonSend.setEnabled(false);
                     }
-                }
-                if (loginS.isEmpty() || passS.isEmpty()) {
-                    Toast.makeText(ctx, ctx.getString(R.string.txtInfoAddUser), Toast.LENGTH_LONG).show();
-                    buttonSend.setEnabled(false);
                 }
             } else {
                 //Do nothing
