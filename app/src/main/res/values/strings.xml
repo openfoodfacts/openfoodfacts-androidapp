@@ -122,16 +122,17 @@
     <string name="warning_allergens">Contains allergens</string>
     <string name="title_dialog_alert">Add alert</string>
 
-    <string name="toggle_flash">Flash</string>
-    <string name="flash_on">Flash [ON]</string>
-    <string name="flash_off">Flash [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off">Auto Focus [OFF]</string>
-    <string name="formats">Formats</string>
-    <string name="choose_formats">Choose Formats</string>
-    <string name="select_camera">Select a Camera</string>
-    <string name="ok_button">OK</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="toggle_flash" translatable="false">Flash</string>
+    <string name="flash_on" translatable="false">Flash [ON]</string>
+    <string name="flash_off" translatable="false">Flash [OFF]</string>
+    <string name="auto_focus_on" translatable="false">Auto Focus [ON]</string>
+    <string name="auto_focus_off" translatable="false">Auto Focus [OFF]</string>
+    <string name="formats" translatable="false">Formats</string>
+    <string name="choose_formats" translatable="false">Choose Formats</string>
+    <string name="select_camera" translatable="false">Select a Camera</string>
+    <string name="ok_button" translatable="false">OK</string>
+    <string name="cancel_button" translatable="false">Cancel</string>
+    <string name="warning_alert_data">Data may not be accurate, be careful, please check by yourself!</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>

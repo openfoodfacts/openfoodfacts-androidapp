@@ -55,25 +55,14 @@ public class ProductActivity extends BaseActivity {
 
         List<String> all = (List<String>) state.getProduct().getAllergensHierarchy();
         List<String> traces = (List<String>) state.getProduct().getTracesTags();
+        all.addAll(traces);
         List<String> matchAll = new ArrayList<String>();
-        int i = 0; boolean isMatch = false;
-        for(String sA : all) {
-            if(mAllergens.size() > 0) {
-                if(sA.equals(mAllergens.get(i).getIdAllergen())) {
-                    matchAll.add(mAllergens.get(i).getName());
-                    isMatch = true;
+        for (int a = 0; a < mAllergens.size(); a++) {
+            for(int i = 0; i < all.size(); i++) {
+                if (all.get(i).trim().equals(mAllergens.get(a).getIdAllergen().trim())) {
+                    matchAll.add(mAllergens.get(a).getName());
                 }
             }
-            if(traces.size() > 0) {
-                Log.d("trace", traces.get(i));
-                Log.d("all", sA);
-                if(sA.contains(traces.get(i))) {
-                    matchAll.add(mAllergens.get(i).getName());
-                    isMatch = true;
-                }
-            }
-            if(isMatch) i++;
-            isMatch = false;
         }
 
         if(matchAll.size() > 0) {

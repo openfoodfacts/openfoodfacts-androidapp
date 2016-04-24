@@ -7,19 +7,6 @@
     <string name="action_find">検索</string>
     <string name="text_barcode">バーコードを入れてください :</string>
 
-    <string name="drawer_open">スライダーメニューを開きました</string>
-    <string name="drawer_close">スライダーメニューを閉じました</string>
-
-    <!-- Nav Drawer Main Menu Items -->
-    <string-array name="nav_drawer_items_main">
-        <item>ホーム</item>
-        <item>バーコードで検索</item>
-        <item>名前で検索</item>
-        <item>スキャン</item>
-        <item>ユーザー</item>
-        <item>オフライン編集</item>
-    </string-array>
-
     <!-- Nav Drawer Main Menu List Item Icons -->
     <array name="nav_drawer_icons_main">
         <item>@drawable/ic_home</item>
@@ -128,8 +115,10 @@
     <string name="txtBarcodeNotValid">バーコードが正しくありません</string>
     <string name="try_it_scan_now">今すぐスキャンしてみてください!</string>
     <string name="share">共有</string>
+    <string name="scan_search">Scan</string>
     <string name="msg_share">Open Food Facts でこの製品を参照してください:</string>
     <string name="create_account">サインアップ</string>
+    <string name="warning_alert_data">Data may not be accurate, be careful, please check by yourself!!</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>
@@ -144,5 +133,19 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
     </style>
+
+    <string name="alert_drawer">Alert allergens</string>
+    <string name="delete_txt">Delete</string>
+    <string name="home_drawer">Home</string>
+    <string name="offline_edit_drawer">Offline edit</string>
+    <string name="search_by_barcode_drawer">Search by barcode</string>
+    <string name="search_by_name_drawer">Search by name</string>
+    <string name="search_drawer">Search</string>
+    <string name="sign_in_drawer">Sign-in</string>
+    <string name="title_dialog_alert">Add alert</string>
+    <string name="txt_anonymous">Anonymous</string>
+    <string name="txt_product_not_found">Products not found</string>
+    <string name="user_drawer">User</string>
+    <string name="warning_allergens">Contains allergens</string>
 
 </resources>

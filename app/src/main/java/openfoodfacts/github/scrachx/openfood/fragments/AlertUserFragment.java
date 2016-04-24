@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +18,7 @@ import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 
 public class AlertUserFragment extends BaseFragment {
@@ -23,6 +26,7 @@ public class AlertUserFragment extends BaseFragment {
     private List<Allergen> mAllergens;
     private AllergensAdapter mAdapter;
     private RecyclerView mRvAllergens;
+    private SharedPreferences mSettings;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +36,19 @@ public class AlertUserFragment extends BaseFragment {
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        mSettings = getActivity().getSharedPreferences("prefs", 0);
+        boolean firstRunAlert = mSettings.getBoolean("firstRunAlert", true);
+        if (firstRunAlert) {
+            MaterialDialog dialog = new MaterialDialog.Builder(getContext())
+                    .title(R.string.alert_dialog_warning_title)
+                    .content(R.string.warning_alert_data)
+                    .positiveText(R.string.ok_button)
+                    .show();
+            SharedPreferences.Editor editor = mSettings.edit();
+            editor.putBoolean("firstRunAlert", false);
+            editor.apply();
+        }
 
         mRvAllergens = (RecyclerView) view.findViewById(R.id.alergens_recycle);
 
