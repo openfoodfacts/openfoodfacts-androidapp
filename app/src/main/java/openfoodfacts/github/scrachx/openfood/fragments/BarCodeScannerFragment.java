@@ -169,7 +169,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
 
     private void goToProduct(Result rawResult, ZXingScannerView scannerView) {
         FoodAPIRestClientUsage api = new FoodAPIRestClientUsage();
-        api.getProduct(rawResult.getText(), getActivity(), scannerView);
+        api.getProduct(rawResult.getText(), getActivity(), scannerView, this);
     }
 
     @Override

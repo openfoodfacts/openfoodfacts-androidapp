@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -28,7 +29,7 @@ import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 
 public class FoodAPIRestClientUsage {
 
-    public void getProduct(final String barcode, final Activity activity, final ZXingScannerView scannerView){
+    public void getProduct(final String barcode, final Activity activity, final ZXingScannerView scannerView, final ZXingScannerView.ResultHandler rs){
         FoodAPIRestClient.getAsync("/api/v0/produit/"+barcode+".json", null, new AsyncHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
@@ -59,15 +60,18 @@ public class FoodAPIRestClientUsage {
                                 .callback(new MaterialDialog.ButtonCallback() {
                                     @Override
                                     public void onPositive(MaterialDialog dialog) {
+                                        SharedPreferences settings = activity.getSharedPreferences("temp", 0);
+                                        SharedPreferences.Editor editor = settings.edit();
+                                        editor.putString("barcode", barcode);
+                                        editor.apply();
                                         Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                        intent.putExtra("barcode",barcode);
                                         activity.startActivity(intent);
                                         activity.finish();
                                     }
 
                                     @Override
                                     public void onNegative(MaterialDialog dialog) {
-                                        scannerView.startCamera();
+                                        scannerView.resumeCameraPreview(rs);
                                         return;
                                     }
                                 })
