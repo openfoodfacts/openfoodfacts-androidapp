@@ -3,27 +3,35 @@ package openfoodfacts.github.scrachx.openfood.models;
 import com.orm.SugarRecord;
 
 public class SendProduct extends SugarRecord {
+
     String barcode;
     String name;
-    String energy;
-    String energy_unit;
     String weight;
     String weight_unit;
     String imgupload_front;
+    String imgupload_ingredients;
+    String imgupload_nutrition;
     String stores;
 
     public SendProduct() {
-
+        this.barcode = "";
+        this.name = "";
+        this.weight = "";
+        this.weight_unit = "";
+        this.imgupload_front = "";
+        this.imgupload_ingredients = "";
+        this.imgupload_nutrition = "";
+        this.stores = "";
     }
 
-    public SendProduct(String barcode, String name, String energy, String energy_unit, String weight, String weight_unit, String imgupload_front, String stores) {
+    public SendProduct(String barcode, String name, String weight, String weight_unit, String imgupload_front, String imgupload_ingredients, String imgupload_nutrition, String stores) {
         this.barcode = barcode;
         this.name = name;
-        this.energy = energy;
-        this.energy_unit = energy_unit;
         this.weight = weight;
         this.weight_unit = weight_unit;
         this.imgupload_front = imgupload_front;
+        this.imgupload_ingredients = imgupload_ingredients;
+        this.imgupload_nutrition = imgupload_nutrition;
         this.stores = stores;
     }
 
@@ -51,22 +59,6 @@ public class SendProduct extends SugarRecord {
         this.name = name;
     }
 
-    public String getEnergy() {
-        return energy;
-    }
-
-    public void setEnergy(String energy) {
-        this.energy = energy;
-    }
-
-    public String getEnergy_unit() {
-        return energy_unit;
-    }
-
-    public void setEnergy_unit(String energy_unit) {
-        this.energy_unit = energy_unit;
-    }
-
     public String getWeight() {
         return weight;
     }
@@ -89,5 +81,21 @@ public class SendProduct extends SugarRecord {
 
     public void setStores(String stores) {
         this.stores = stores;
+    }
+
+    public String getImgupload_ingredients() {
+        return imgupload_ingredients;
+    }
+
+    public void setImgupload_ingredients(String imgupload_ingredients) {
+        this.imgupload_ingredients = imgupload_ingredients;
+    }
+
+    public String getImgupload_nutrition() {
+        return imgupload_nutrition;
+    }
+
+    public void setImgupload_nutrition(String imgupload_nutrition) {
+        this.imgupload_nutrition = imgupload_nutrition;
     }
 }

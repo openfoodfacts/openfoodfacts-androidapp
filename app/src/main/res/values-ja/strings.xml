@@ -147,5 +147,6 @@
     <string name="txt_product_not_found">Products not found</string>
     <string name="user_drawer">User</string>
     <string name="warning_allergens">Contains allergens</string>
+    <string name="from_gallery">From gallery</string>
 
 </resources>

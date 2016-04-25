@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.koushikdutta.ion.Ion;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -49,10 +50,14 @@ public class ProductsListAdapter extends BaseAdapter {
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.imgProduct);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.nameProduct);
 
-        Ion.with(imgIcon)
+        Picasso.with(context)
+                .load(products.get(position).getImageSmallUrl())
                 .placeholder(R.drawable.placeholder_thumb)
                 .error(R.drawable.error_image)
-                .load(products.get(position).getImageSmallUrl());
+                .fit()
+                .centerCrop()
+                .into(imgIcon);
+
         txtTitle.setText(products.get(position).getProductName());
 
         return convertView;

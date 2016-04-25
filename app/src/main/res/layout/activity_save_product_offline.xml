@@ -10,7 +10,17 @@
 
             <LinearLayout android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <Spinner
+                    android:id="@+id/spinnerImages"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/spinner_default"
+                    android:spinnerMode="dropdown"
+                    android:layout_margin="@dimen/spacing_normal" />
 
                 <ImageView
                     android:layout_width="250dp"
@@ -20,17 +30,37 @@
                     android:layout_gravity="center_horizontal"
                     />
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:background="@drawable/button_default_bg"
-                    style="@style/DefaultButtonText"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/txtTakePicture"
-                    android:id="@+id/buttonTakePicture"
-                    />
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/button_default_bg"
+                        style="@style/DefaultButtonText"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/txtTakePicture"
+                        android:id="@+id/buttonTakePicture"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/spacing_normal"
+                        />
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/button_default_bg"
+                        style="@style/DefaultButtonText"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/from_gallery"
+                        android:id="@+id/buttonFromGallery"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/spacing_normal"
+                        />
+
+                </LinearLayout>
 
                 <EditText
                     android:layout_width="match_parent"
@@ -55,10 +85,9 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
-                        android:inputType="number"
+                        android:inputType="numberSigned"
                         android:ems="10"
                         android:id="@+id/editTextWeight"
-                        android:numeric="signed"
                         android:hint="@string/hintWeight"
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:layout_marginLeft="@dimen/spacing_normal"

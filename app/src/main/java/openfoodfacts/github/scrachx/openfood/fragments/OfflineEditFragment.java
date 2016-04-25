@@ -66,9 +66,11 @@ public class OfflineEditFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 SaveItem si = (SaveItem) parent.getItemAtPosition(position);
-                String barcode = si.getBarcode();
+                SharedPreferences settings = getActivity().getSharedPreferences("temp", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("barcode", si.getBarcode());
+                editor.apply();
                 Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
-                intent.putExtra("barcode", barcode);
                 startActivity(intent);
             }
         });
@@ -119,7 +121,7 @@ public class OfflineEditFragment extends BaseFragment {
                                 FoodUserClientUsage user = new FoodUserClientUsage();
                                 for (int i = 0; i < listSaveProduct.size(); i++) {
                                     SendProduct sp = listSaveProduct.get(i);
-                                    if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()
+                                    if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty() || sp.getImgupload_ingredients().isEmpty() || sp.getImgupload_nutrition().isEmpty()
                                             || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
                                         // Do nothing
                                     } else {
@@ -132,26 +134,12 @@ public class OfflineEditFragment extends BaseFragment {
                                         params.put("product_name", sp.getName());
                                         params.put("quantity", sp.getWeight() + " " + sp.getWeight_unit());
                                         params.put("stores", sp.getStores());
-                                        params.put("nutriment_energy", sp.getEnergy());
-                                        params.put("nutriment_energy_unit", sp.getEnergy_unit());
-                                        params.put("nutrition_data_per", "serving");
 
-                                        File f = new File(sp.getImgupload_front());
-                                        Bitmap bt = decodeFile(f);
-                                        OutputStream fOut = null;
-                                        File smallFile = new File(sp.getImgupload_front().replace(".png", "_small.png"));
-                                        try {
-                                            fOut = new FileOutputStream(smallFile);
-                                            bt.compress(Bitmap.CompressFormat.PNG, 100, fOut);
-                                            fOut.flush();
-                                            fOut.close();
-                                        } catch (FileNotFoundException e) {
-                                            e.printStackTrace();
-                                        } catch (IOException e) {
-                                            e.printStackTrace();
-                                        }
+                                        compressImage(sp.getImgupload_ingredients());
+                                        compressImage(sp.getImgupload_nutrition());
+                                        compressImage(sp.getImgupload_front());
 
-                                        user.post(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getBarcode(), listView, i, saveItems);
+                                        user.post(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getImgupload_ingredients().replace(".png", "_small.png"), sp.getImgupload_nutrition().replace(".png", "_small.png"), sp.getBarcode(), listView, i, saveItems);
 
                                     }
                                 }
@@ -178,6 +166,7 @@ public class OfflineEditFragment extends BaseFragment {
 
         @Override
         protected void onPreExecute() {
+            saveItems.clear();
             List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
             if (listSaveProduct.size() == 0) {
                 Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
@@ -193,7 +182,7 @@ public class OfflineEditFragment extends BaseFragment {
             int imageIcon = R.drawable.ic_ok;
             for (int i = 0; i < listSaveProduct.size(); i++) {
                 SendProduct sp = listSaveProduct.get(i);
-                if (sp.getBarcode().isEmpty() || sp.getEnergy().isEmpty() || sp.getImgupload_front().isEmpty()
+                if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()
                         || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
                     imageIcon = R.drawable.ic_no;
                 }
@@ -212,7 +201,7 @@ public class OfflineEditFragment extends BaseFragment {
                 listView.setAdapter(adapter);
                 buttonSend.setEnabled(true);
                 for (SendProduct sp : listSaveProduct) {
-                    if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()
+                    if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty() || sp.getImgupload_ingredients().isEmpty() || sp.getImgupload_nutrition().isEmpty()
                             || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
                         buttonSend.setEnabled(false);
                     }
@@ -220,6 +209,23 @@ public class OfflineEditFragment extends BaseFragment {
             } else {
                 //Do nothing
             }
+        }
+    }
+
+    protected void compressImage(String url) {
+        File fileFront = new File(url);
+        Bitmap bt = decodeFile(fileFront);
+        OutputStream fOutFront = null;
+        File smallFileFront = new File(url.replace(".png", "_small.png"));
+        try {
+            fOutFront = new FileOutputStream(smallFileFront);
+            bt.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
+            fOutFront.flush();
+            fOutFront.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

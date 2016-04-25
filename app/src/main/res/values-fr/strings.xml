@@ -25,6 +25,12 @@
         <item>ml</item>
     </string-array>
 
+    <string-array name="images_array">
+        <item>Defaut</item>
+        <item>Nutrition</item>
+        <item>Ingredients</item>
+    </string-array>
+
     <string name="alert_dialog_product_error_msg">Produit non trouvé, veuillez recommencer</string>
     <string name="toast_retrieving">Chargement…</string>
     <string name="txtBarcode">Code barre :</string>
@@ -113,4 +119,5 @@
     <string name="warning_allergens">Contient des allergènes</string>
     <string name="title_dialog_alert">Add alert</string>
     <string name="warning_alert_data">Les données peuvent être non précis, attention à vérifier par vous même!</string>
+    <string name="from_gallery">Galerie photo</string>
 </resources>

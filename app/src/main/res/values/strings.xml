@@ -32,6 +32,12 @@
         <item>ml</item>
     </string-array>
 
+    <string-array name="images_array">
+        <item>Default</item>
+        <item>Nutrition</item>
+        <item>Ingredients</item>
+    </string-array>
+
     <!-- Content Description -->
     <string name="search_button">Search</string>
     <string name="no_products">Products not found</string>
@@ -133,6 +139,7 @@
     <string name="ok_button" translatable="false">OK</string>
     <string name="cancel_button" translatable="false">Cancel</string>
     <string name="warning_alert_data">Data may not be accurate, be careful, please check by yourself!</string>
+    <string name="from_gallery">From gallery</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>

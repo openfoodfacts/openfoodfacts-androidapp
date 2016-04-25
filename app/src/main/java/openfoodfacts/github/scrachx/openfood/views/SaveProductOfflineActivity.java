@@ -2,195 +2,211 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+import com.squareup.picasso.Picasso;
 import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
+import butterknife.OnItemSelected;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import pl.aprilapps.easyphotopicker.DefaultCallback;
+import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class SaveProductOfflineActivity extends BaseActivity {
-
-    private static final int REQUEST_TAKE_PHOTO = 1;
 
     @Bind(R.id.imageSave) ImageView imgSave;
     @Bind(R.id.editTextName) EditText name;
     @Bind(R.id.editTextStores) EditText store;
     @Bind(R.id.editTextWeight) EditText weight;
-
+    @Bind(R.id.spinnerImages) Spinner spinnerI;
+    @Bind(R.id.spinnerUnitWeight) Spinner spinnerW;
     @Bind(R.id.buttonTakePicture) Button takePic;
+    @Bind(R.id.buttonFromGallery) Button takeGallery;
     @Bind(R.id.buttonSaveProduct) Button save;
 
-    String mCurrentPhotoPath;
-    File photoFile = null;
+    private SendProduct mProduct = new SendProduct();
+    private String mBarcode = null;
+    private final String[] mUnit = new String[1];
+    private final String[] mImage = new String[1];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_product_offline);
 
-        final SharedPreferences settings = getSharedPreferences("img", 0);
-        settings.getString("imgUrl", "");
+        EasyImage.configuration(this)
+                .setImagesFolderName("OFF_Images")
+                .saveInAppExternalFilesDir()
+                .setCopyExistingPicturesToPublicLocation(true);
 
-        Intent intent = getIntent();
-        final String barcode = intent.getStringExtra("barcode");
+        final SharedPreferences settings = getSharedPreferences("temp", 0);
+        mBarcode = settings.getString("barcode", "");
 
-        final String[] unit = new String[1];
+        imgSave.setVisibility(View.GONE);
 
-        name.setSelected(false);
-        store.setSelected(false);
-        weight.setSelected(false);
+        ArrayAdapter<CharSequence> adapterW = ArrayAdapter.createFromResource(this, R.array.units_array, R.layout.custom_spinner_item);
+        adapterW.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        spinnerW.setAdapter(adapterW);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerUnitWeight);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.units_array, R.layout.custom_spinner_item);
-        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                unit[0] = parent.getItemAtPosition(pos).toString();
-            }
+        ArrayAdapter<CharSequence> adapterI = ArrayAdapter.createFromResource(this, R.array.images_array, R.layout.custom_spinner_item);
+        adapterI.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        spinnerI.setAdapter(adapterI);
 
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Another interface callback
-            }
-        });
-
-        List<SendProduct> sp = SendProduct.find(SendProduct.class, "barcode = ?", barcode);
+        List<SendProduct> sp = SendProduct.find(SendProduct.class, "barcode = ?", mBarcode);
         if (sp.size() > 0) {
             SendProduct product = sp.get(0);
-            Bitmap bt = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(product.getImgupload_front()), 400, 400, true);
-            imgSave.setImageBitmap(bt);
-            name.setText(product.getName());
-            store.setText(product.getStores());
-            weight.setText(product.getWeight());
-            ArrayAdapter unitAdapter = (ArrayAdapter) spinner.getAdapter(); //cast to an ArrayAdapter
-            int spinnerPosition = unitAdapter.getPosition(product.getWeight_unit());
-            spinner.setSelection(spinnerPosition);
+            mProduct = product;
+        }
+        if(mProduct != null) {
+            if(!mProduct.getImgupload_front().isEmpty()) {
+                Picasso.with(this)
+                        .load(mProduct.getImgupload_front())
+                        .fit()
+                        .centerCrop()
+                        .into(imgSave);
+            }
+            name.setText(mProduct.getName());
+            store.setText(mProduct.getStores());
+            weight.setText(mProduct.getWeight());
+            ArrayAdapter unitAdapter = (ArrayAdapter) spinnerW.getAdapter();
+            int spinnerPosition = unitAdapter.getPosition(mProduct.getWeight_unit());
+            spinnerW.setSelection(spinnerPosition);
+            spinnerI.setSelection(0);
+        }
+    }
+    @OnItemSelected(value = R.id.spinnerUnitWeight, callback = OnItemSelected.Callback.ITEM_SELECTED)
+    protected void onUnitSelected(int pos) {
+        mUnit[0] = spinnerW.getItemAtPosition(pos).toString();
+    }
+
+    @OnItemSelected(value = R.id.spinnerImages, callback = OnItemSelected.Callback.ITEM_SELECTED)
+    protected void onImageSelected(int pos) {
+        mImage[0] = spinnerI.getItemAtPosition(pos).toString();
+
+        if(pos == 0) {
+            if(!mProduct.getImgupload_front().isEmpty()) {
+                imgSave.setVisibility(View.VISIBLE);
+                Picasso.with(this)
+                        .load(new File(mProduct.getImgupload_front()))
+                        .fit()
+                        .centerCrop()
+                        .into(imgSave);
+            } else {
+                imgSave.setVisibility(View.GONE);
+            }
+        } else if(pos == 1) {
+            if(!mProduct.getImgupload_nutrition().isEmpty()) {
+                imgSave.setVisibility(View.VISIBLE);
+                Picasso.with(this)
+                        .load(new File(mProduct.getImgupload_nutrition()))
+                        .fit()
+                        .centerCrop()
+                        .into(imgSave);
+            } else {
+                imgSave.setVisibility(View.GONE);
+            }
+        } else {
+            if(!mProduct.getImgupload_ingredients().isEmpty()) {
+                imgSave.setVisibility(View.VISIBLE);
+                Picasso.with(this)
+                        .load(new File(mProduct.getImgupload_ingredients()))
+                        .fit()
+                        .centerCrop()
+                        .into(imgSave);
+            } else {
+                imgSave.setVisibility(View.GONE);
+            }
         }
 
-        takePic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dispatchTakePictureIntent(settings);
+    }
+
+    @OnClick(R.id.buttonFromGallery)
+    protected void onChooserWithGalleryClicked() {
+        EasyImage.openChooserWithGallery(this, "Images", 0);
+    }
+
+    @OnClick(R.id.buttonSaveProduct)
+    protected void onSaveProduct() {
+        if (!mProduct.getImgupload_front().isEmpty() && !name.getText().toString().isEmpty()) {
+            if (mProduct != null) {
+                mProduct.setBarcode(mBarcode);
+                mProduct.setName(name.getText().toString());
+                mProduct.setImgupload_front(mProduct.getImgupload_front());
+                mProduct.setImgupload_ingredients(mProduct.getImgupload_ingredients());
+                mProduct.setImgupload_nutrition(mProduct.getImgupload_nutrition());
+                mProduct.setStores(store.getText().toString());
+                mProduct.setWeight(weight.getText().toString());
+                mProduct.setWeight_unit(mUnit[0]);
+                mProduct.save();
             }
-        });
+            Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            SaveProductOfflineActivity.this.finish();
+        } else {
+            Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
+        }
+    }
 
-        save.setOnClickListener(new View.OnClickListener() {
+    @OnClick(R.id.buttonTakePicture)
+    protected void onTakePhotoClicked() {
+        EasyImage.openCamera(this, 0);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        EasyImage.handleActivityResult(requestCode, resultCode, data, this, new DefaultCallback() {
             @Override
-            public void onClick(View v) {
+            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
+                //Some error handling
+            }
 
-                if (!settings.getString("imgUrl", "").isEmpty() && !name.getText().toString().isEmpty()) {
-                    List<SendProduct> sp = SendProduct.find(SendProduct.class, "barcode = ?", barcode);
-                    if (sp.size() > 0) {
-                        SendProduct product = sp.get(0);
-                        product.setName(name.getText().toString());
-                        product.setImgupload_front(settings.getString("imgUrl", ""));
-                        product.setStores(store.getText().toString());
-                        product.setWeight(weight.getText().toString());
-                        product.setWeight_unit(unit[0]);
-                        product.save();
-                    } else {
-                        SendProduct product = new SendProduct(barcode, name.getText().toString(), "",
-                                "", weight.getText().toString(), unit[0], settings.getString("imgUrl", ""), store.getText().toString());
-                        product.save();
-                    }
-                    Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                    SaveProductOfflineActivity.this.finish();
-                } else {
-                    Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
+            @Override
+            public void onImagePicked(File imageFile, EasyImage.ImageSource source, int type) {
+                //Handle the image
+                onPhotoReturned(imageFile);
+            }
+
+            @Override
+            public void onCanceled(EasyImage.ImageSource source, int type) {
+                //Cancel handling, you might wanna remove taken photo if it was canceled
+                if (source == EasyImage.ImageSource.CAMERA) {
+                    File photoFile = EasyImage.lastlyTakenButCanceledPhoto(SaveProductOfflineActivity.this);
+                    if (photoFile != null) photoFile.delete();
                 }
             }
         });
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        final SharedPreferences settings = getSharedPreferences("img", 0);
-
-        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-            Bitmap bt = BitmapFactory.decodeFile(settings.getString("imgUrl", ""));
-            imgSave.setImageBitmap(bt);
+    private void onPhotoReturned(File photoFile) {
+        if(spinnerI.getSelectedItemPosition() == 0) {
+            mProduct.setImgupload_front(photoFile.getAbsolutePath());
+            imgSave.setVisibility(View.VISIBLE);
+        } else if(spinnerI.getSelectedItemPosition() == 1) {
+            mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
+            imgSave.setVisibility(View.VISIBLE);
+        } else {
+            mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
+            imgSave.setVisibility(View.VISIBLE);
         }
-
-    }
-
-    private void dispatchTakePictureIntent(SharedPreferences shpref) {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Ensure that there's a camera activity to handle the intent
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            // Create the File where the photo should go
-            try {
-                SharedPreferences.Editor editor = shpref.edit();
-                photoFile = createImageFile();
-                editor.putString("imgUrl", photoFile.getAbsolutePath());
-                editor.commit();
-            } catch (IOException ex) {
-                // Error occurred while creating the File
-                System.out.println(ex);
-            }
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
-                        Uri.fromFile(photoFile));
-                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-            }
-        }
-    }
-
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "PNG_" + timeStamp + "_";
-        File storageDir = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".png",         /* suffix */
-                storageDir      /* directory */
-        );
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
-        return image;
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+        Picasso.with(this)
+                .load(photoFile)
+                .fit()
+                .centerCrop()
+                .into(imgSave);
     }
 }

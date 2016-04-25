@@ -17,7 +17,7 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
 public class FoodUserClientUsage {
 
-    public void post(final Activity activity, RequestParams params, final String img, final String barcode, final ListView lv, final int pos, final ArrayList<SaveItem> saveItems){
+    public void post(final Activity activity, RequestParams params, final String imgFront, final String imgIng, final String imgNut, final String barcode, final ListView lv, final int pos, final ArrayList<SaveItem> saveItems){
         FoodUserClient.post("/cgi/product_jqm2.pl", params, new JsonHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
@@ -41,15 +41,43 @@ public class FoodUserClientUsage {
                         Toast.makeText(activity, response.getString("error"), Toast.LENGTH_LONG).show();
                     } else {
                         lt.success();
-                        RequestParams paramsImg = new RequestParams();
-                        File myFile = new File(img);
-                        long length = myFile.length();
-                        paramsImg.put("code", barcode);
-                        paramsImg.put("imagefield", "front");
-                        try {
-                            paramsImg.put("imgupload_front", myFile);
-                        } catch(FileNotFoundException e) {e.getMessage();}
-                        postImg(activity, paramsImg, barcode, length, lv, pos, saveItems);
+                        if(!imgFront.isEmpty()) {
+                            RequestParams paramsImgF = new RequestParams();
+                            File myFileFront = new File(imgFront);
+                            paramsImgF.put("code", barcode);
+                            paramsImgF.put("imagefield", "front");
+                            try {
+                                paramsImgF.put("imgupload_front", myFileFront);
+                            } catch(FileNotFoundException e) {e.getMessage();}
+                            postImg(activity, paramsImgF);
+                        }
+
+                        if(!imgIng.isEmpty()) {
+                            RequestParams paramsImgI = new RequestParams();
+                            File myFileIng = new File(imgIng);
+                            paramsImgI.put("code", barcode);
+                            paramsImgI.put("imagefield", "ingredients");
+                            try {
+                                paramsImgI.put("imgupload_ingredients", myFileIng);
+                            } catch(FileNotFoundException e) {e.getMessage();}
+                            postImg(activity, paramsImgI);
+                        }
+
+                        if(!imgNut.isEmpty()) {
+                            RequestParams paramsImgN = new RequestParams();
+                            File myFileNut = new File(imgNut);
+                            paramsImgN.put("code", barcode);
+                            paramsImgN.put("imagefield", "front");
+                            try {
+                                paramsImgN.put("imgupload_nutrition", myFileNut);
+                            } catch(FileNotFoundException e) {e.getMessage();}
+                            postImg(activity, paramsImgN);
+                        }
+
+                        SaveListAdapter sl = (SaveListAdapter) lv.getAdapter();
+                        saveItems.remove(pos);
+                        sl.notifyDataSetChanged();
+                        SendProduct.deleteAll(SendProduct.class, "barcode = ?", barcode);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -69,7 +97,7 @@ public class FoodUserClientUsage {
             });
     }
 
-    public void postImg(final Activity activity, final RequestParams params, final String barcode, final long length, final ListView lv, final int pos, final ArrayList<SaveItem> saveItems){
+    public void postImg(final Activity activity, final RequestParams params){
         FoodUserClient.post("/cgi/product_image_upload.pl", params, new JsonHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
@@ -93,10 +121,6 @@ public class FoodUserClientUsage {
                         Toast.makeText(activity, response.getString("error"), Toast.LENGTH_LONG).show();
                     } else {
                         lt.success();
-                        SendProduct.deleteAll(SendProduct.class, "barcode = ?", barcode);
-                        SaveListAdapter sl = (SaveListAdapter) lv.getAdapter();
-                        saveItems.remove(pos);
-                        sl.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

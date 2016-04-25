@@ -7,9 +7,9 @@ android {
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 15
-        targetSdkVersion 21
-        versionCode 15
-        versionName "0.1.11"
+        targetSdkVersion 23
+        versionCode 16
+        versionName "0.1.12"
     }
 
     dexOptions {
@@ -72,8 +72,6 @@ dependencies {
 
     compile 'me.dm7.barcodescanner:zxing:1.8.4'
 
-    compile 'com.koushikdutta.ion:ion:2.+'
-
     compile 'com.hkm.loyalslider:library:1.8.3'
 
     compile 'org.jsoup:jsoup:1.8.3'
@@ -94,5 +92,9 @@ dependencies {
     compile 'com.mikepenz:google-material-typeface:2.2.0.1.original@aar'
     compile 'com.mikepenz:material-design-iconic-typeface:2.2.0.1@aar'
     compile 'com.mikepenz:fontawesome-typeface:4.6.0.1@aar'
+
+    compile 'com.github.jkwiecien:EasyImage:1.2.1'
+
+    compile 'com.squareup.picasso:picasso:2.5.2'
 
 }
