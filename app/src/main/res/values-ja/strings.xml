@@ -7,16 +7,6 @@
     <string name="action_find">検索</string>
     <string name="text_barcode">バーコードを入れてください :</string>
 
-    <!-- Nav Drawer Main Menu List Item Icons -->
-    <array name="nav_drawer_icons_main">
-        <item>@drawable/ic_home</item>
-        <item>@drawable/ic_barcode_white_48dp</item>
-        <item>@drawable/ic_search</item>
-        <item>@drawable/ic_camera</item>
-        <item>@drawable/ic_user</item>
-        <item>@drawable/ic_edit</item>
-    </array>
-
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>サマリー</item>
@@ -32,6 +22,12 @@
         <item>@drawable/ic_nutrition</item>
         <item>@drawable/ic_home</item>
     </array>
+
+    <string-array name="images_array">
+        <item>Default</item>
+        <item>Nutrition</item>
+        <item>Ingredients</item>
+    </string-array>
 
     <!-- Text units -->
     <string-array name="units_array">
@@ -115,10 +111,24 @@
     <string name="txtBarcodeNotValid">バーコードが正しくありません</string>
     <string name="try_it_scan_now">今すぐスキャンしてみてください!</string>
     <string name="share">共有</string>
-    <string name="scan_search">Scan</string>
+    <string name="scan_search">スキャン</string>
     <string name="msg_share">Open Food Facts でこの製品を参照してください:</string>
     <string name="create_account">サインアップ</string>
-    <string name="warning_alert_data">Data may not be accurate, be careful, please check by yourself!!</string>
+    <string name="home_drawer">ホーム</string>
+    <string name="search_drawer">検索</string>
+    <string name="search_by_barcode_drawer">バーコードで検索</string>
+    <string name="search_by_name_drawer">名前で検索</string>
+    <string name="user_drawer">ユーザー</string>
+    <string name="offline_edit_drawer">オフライン編集</string>
+    <string name="txt_anonymous">匿名</string>
+    <string name="txt_product_not_found">製品が見つかりません</string>
+    <string name="delete_txt">削除</string>
+    <string name="sign_in_drawer">サインイン</string>
+    <string name="alert_drawer">アレルゲンを警告</string>
+    <string name="warning_allergens">アレルゲンを含んでいます</string>
+    <string name="title_dialog_alert">警告を追加</string>
+    <string name="from_gallery">From gallery</string>
+    <string name="warning_alert_data">データは正確ではないかもしれません。ご注意の上、ご自身で確認してください!!</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>
@@ -133,20 +143,5 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
     </style>
-
-    <string name="alert_drawer">Alert allergens</string>
-    <string name="delete_txt">Delete</string>
-    <string name="home_drawer">Home</string>
-    <string name="offline_edit_drawer">Offline edit</string>
-    <string name="search_by_barcode_drawer">Search by barcode</string>
-    <string name="search_by_name_drawer">Search by name</string>
-    <string name="search_drawer">Search</string>
-    <string name="sign_in_drawer">Sign-in</string>
-    <string name="title_dialog_alert">Add alert</string>
-    <string name="txt_anonymous">Anonymous</string>
-    <string name="txt_product_not_found">Products not found</string>
-    <string name="user_drawer">User</string>
-    <string name="warning_allergens">Contains allergens</string>
-    <string name="from_gallery">From gallery</string>
 
 </resources>
