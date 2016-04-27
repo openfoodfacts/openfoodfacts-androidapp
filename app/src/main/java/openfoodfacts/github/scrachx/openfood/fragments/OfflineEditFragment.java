@@ -90,9 +90,13 @@ public class OfflineEditFragment extends BaseFragment {
                             public void onPositive(MaterialDialog dialog) {
                                 String barcode = saveItems.get(lapos).getBarcode();
                                 SendProduct.deleteAll(SendProduct.class, "barcode = ?", barcode);
-                                SaveListAdapter sl = (SaveListAdapter) laparent.getAdapter();
+                                final SaveListAdapter sl = (SaveListAdapter) laparent.getAdapter();
                                 saveItems.remove(lapos);
-                                sl.notifyDataSetChanged();
+                                getActivity().runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        sl.notifyDataSetChanged();
+                                    }
+                                });
                             }
 
                             @Override
