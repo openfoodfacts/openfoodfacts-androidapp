@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,7 +17,6 @@ import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 
 public class AlertUserFragment extends BaseFragment {
