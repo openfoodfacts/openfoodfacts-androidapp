@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "21.1.2"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
@@ -21,8 +21,6 @@ android {
     defaultConfig {
         multiDexEnabled true
     }
-
-    useLibrary 'org.apache.http.legacy'
 
     packagingOptions{
         exclude 'META-INF/DEPENDENCIES.txt'
@@ -66,7 +64,7 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.3'
 
-    compile 'commons-validator:commons-validator:1.5.0'
+    compile 'commons-validator:commons-validator:1.5.1'
 
     compile 'net.steamcrafted:load-toast:1.0.10'
 
