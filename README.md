@@ -1,6 +1,8 @@
 Open Food Facts Android Application
 ===================================
 
+[![Build Status](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp.svg?branch=master)](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp)
+
 ## What is Open Food Facts?
 
 ### A food products database
