@@ -70,6 +70,9 @@ public class ProductActivity extends BaseActivity {
                     .title(R.string.warning_allergens)
                     .items(matchAll)
                     .neutralText(R.string.txtOk)
+                    .titleColorRes(R.color.red_500)
+                    .dividerColorRes(R.color.indigo_900)
+                    .icon(this.getResources().getDrawable(R.drawable.ic_warning_24dp))
                     .show();
         }
     }
