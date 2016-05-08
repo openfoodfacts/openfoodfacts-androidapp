@@ -1,0 +1,470 @@
+# Japanese translations for PROJECT.
+# Copyright (C) 2016 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-05-08 14:13+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=(0)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.3\n"
+
+msgctxt "app_name"
+msgid "Open Food"
+msgstr "Open Food"
+
+msgctxt "hello_world"
+msgid "Hello world!"
+msgstr "Hello world!"
+
+msgctxt "action_settings"
+msgid "Settings"
+msgstr "設定"
+
+msgctxt "action_about"
+msgid "About"
+msgstr "アプリについて"
+
+msgctxt "action_find"
+msgid "Find"
+msgstr "検索"
+
+msgctxt "text_barcode"
+msgid "Put the barcode :"
+msgstr "バーコードを入れてください :"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:0"
+msgid "Summary"
+msgstr "サマリー"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:1"
+msgid "Ingredients"
+msgstr "原材料"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:2"
+msgid "Nutrition"
+msgstr "栄養"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:3"
+msgid "Back to menu"
+msgstr "メニューに戻る"
+
+#. Text units
+msgctxt "units_array:0"
+msgid "g"
+msgstr "g"
+
+#. Text units
+msgctxt "units_array:1"
+msgid "mg"
+msgstr "mg"
+
+#. Text units
+msgctxt "units_array:2"
+msgid "kg"
+msgstr "kg"
+
+#. Text units
+msgctxt "units_array:3"
+msgid "l"
+msgstr "l"
+
+#. Text units
+msgctxt "units_array:4"
+msgid "ml"
+msgstr "ml"
+
+msgctxt "images_array:0"
+msgid "Default"
+msgstr "Default"
+
+msgctxt "images_array:1"
+msgid "Nutrition"
+msgstr "Nutrition"
+
+msgctxt "images_array:2"
+msgid "Ingredients"
+msgstr "Ingredients"
+
+#. Content Description
+msgctxt "search_button"
+msgid "Search"
+msgstr "検索"
+
+msgctxt "no_products"
+msgid "Products not found"
+msgstr "製品が見つかりません"
+
+msgctxt "desc_list_item_icon"
+msgid "Item Icon"
+msgstr "アイテムアイコン"
+
+msgctxt "alert_dialog_warning_title"
+msgid "Warning"
+msgstr "警告"
+
+msgctxt "alert_dialog_warning_msg_user"
+msgid "User/password has changed, please update information"
+msgstr "ユーザー/パスワードを変更しました。情報を更新してください"
+
+msgctxt "alert_dialog_product_error_msg"
+msgid "Product not found, please try again"
+msgstr "製品が見つかりません。もう一度試してください"
+
+msgctxt "toast_retrieving"
+msgid "Loading..."
+msgstr "読み込んでいます..."
+
+msgctxt "txtBarcode"
+msgid "Barcode :"
+msgstr "バーコード :"
+
+msgctxt "txtQuantity"
+msgid "Quantity :"
+msgstr "量 :"
+
+msgctxt "txtPackaging"
+msgid "Packaging :"
+msgstr "パッケージ :"
+
+msgctxt "txtBrands"
+msgid "Brands :"
+msgstr "ブランド :"
+
+msgctxt "txtCategories"
+msgid "Categories :"
+msgstr "カテゴリー :"
+
+msgctxt "txtManufacturing"
+msgid "Manufacturing or processing places :"
+msgstr "製造または加工場所 :"
+
+msgctxt "txtCity"
+msgid "City, state and country where purchased :"
+msgstr "購入した市区町村、都道府県、国 :"
+
+msgctxt "txtStores"
+msgid "Stores :"
+msgstr "店舗 :"
+
+msgctxt "txtCountries"
+msgid "Countries where sold :"
+msgstr "販売国 :"
+
+msgctxt "txtIngredients"
+msgid "Ingredients list :"
+msgstr "原材料一覧 :"
+
+msgctxt "txtSubstances"
+msgid "Substances or products causing allergies or intolerances :"
+msgstr "アレルギーまたは不耐性の原因となる物質または製品 :"
+
+msgctxt "txtAdditives"
+msgid "Additives :"
+msgstr "添加物 :"
+
+msgctxt "txtTraces"
+msgid "Traces :"
+msgstr "追跡 :"
+
+msgctxt "txtMayBeFromPalmOilProduct"
+msgid "Ingredients that may be from palm oil :"
+msgstr "パーム油を原材料とする可能性があるもの :"
+
+msgctxt "txtPalmOilProduct"
+msgid "Ingredients from palm oil :"
+msgstr "パーム油を原材料とするもの :"
+
+msgctxt "txtServingSize"
+msgid "Serving size :"
+msgstr "分量 :"
+
+msgctxt "txtNutrientLevel100g"
+msgid "Nutrient levels for 100g :"
+msgstr "100g 当たりの栄養成分:"
+
+msgctxt "txtLogin"
+msgid "Login :"
+msgstr "ログイン :"
+
+msgctxt "txtPass"
+msgid "Password :"
+msgstr "パスワード :"
+
+msgctxt "txtTitleHome"
+msgid "Open your food and know what you eat"
+msgstr "食品を開くと何を食べているか分かります"
+
+msgctxt "txtHome"
+msgid ""
+"Open Food Facts is a database of food products with ingredients, "
+"allergens, nutrition facts and all the tidbits of information we can find"
+" on product labels."
+msgstr "Open Food Facts は、食品の原材料、アレルゲン、栄養成分、および製品ラベルで見ることができるすべての情報のデータベースです。"
+
+msgctxt "txtSave"
+msgid "Save"
+msgstr "接続"
+
+msgctxt "txtUser"
+msgid "User panel"
+msgstr "ユーザーパネル"
+
+msgctxt "txtToastSaved"
+msgid "User saved"
+msgstr "ユーザーを保存しました"
+
+msgctxt "txtSalt"
+msgid "Salt :"
+msgstr "食塩 :"
+
+msgctxt "txtFat"
+msgid "Fat :"
+msgstr "脂肪 :"
+
+msgctxt "txtSugars"
+msgid "Sugars :"
+msgstr "砂糖 :"
+
+msgctxt "txtSaturatedFat"
+msgid "Satured fat :"
+msgstr "飽和脂肪酸 :"
+
+msgctxt "hintBarcode"
+msgid "Barcode"
+msgstr "バーコード"
+
+msgctxt "hintLogin"
+msgid "Login"
+msgstr "ログイン"
+
+msgctxt "hintPass"
+msgid "Password"
+msgstr "パスワード"
+
+msgctxt "errorLogin"
+msgid "Login or password error"
+msgstr "ログインまたはパスワードエラー"
+
+msgctxt "errorWeb"
+msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgstr "インターネットにアクセスできませんでした。接続に問題がありませんか?"
+
+msgctxt "txtInfoLoginOk"
+msgid "User saved"
+msgstr "ユーザーを保存しました"
+
+msgctxt "txtInfoLoginNo"
+msgid "User not saved"
+msgstr "ユーザーを保存できませんでした"
+
+msgctxt "txtDialogsTitle"
+msgid "Information"
+msgstr "情報"
+
+msgctxt "txtDialogsContent"
+msgid ""
+"The product you scanned does not exist yet in Open Food Facts. Do you "
+"want to add it?"
+msgstr "スキャンした製品は、まだ Open Food Facts に存在しません。追加しますか?"
+
+msgctxt "txtDialogsContentSend"
+msgid "Do you want send the saved products to our database?"
+msgstr "保存した製品をデータベースに送信しますか?"
+
+msgctxt "txtYes"
+msgid "Yes"
+msgstr "はい"
+
+msgctxt "txtNo"
+msgid "No"
+msgstr "いいえ"
+
+msgctxt "hintNameProduct"
+msgid "Name"
+msgstr "名前"
+
+msgctxt "hintEnergy"
+msgid "Energy in kJ per serving"
+msgstr "一食当たりのエネルギー (KJ)"
+
+msgctxt "hintEnergyUnit"
+msgid "Energy unit"
+msgstr "エネルギーの単位"
+
+msgctxt "hintWeight"
+msgid "Weight"
+msgstr "重量"
+
+msgctxt "hintStores"
+msgid "Store"
+msgstr "店舗"
+
+msgctxt "txtTakePicture"
+msgid "Take picture"
+msgstr "写真を撮影"
+
+msgctxt "txtSendAll"
+msgid "Upload all"
+msgstr "すべてアップロード"
+
+msgctxt "txtNoData"
+msgid "No data"
+msgstr "データはありません"
+
+msgctxt "txtPictureNeeded"
+msgid "Take a picture first, then fill the name and store!"
+msgstr "まず写真を撮影します。その後名前と店舗を入力してください!"
+
+msgctxt "toastSending"
+msgid "Uploading..."
+msgstr "アップロードしています..."
+
+msgctxt "dataSaved"
+msgid "Saved locally on your device"
+msgstr "お使いのデバイス内に保存しました"
+
+msgctxt "txtInfoAddUser"
+msgid "Please enter your login and password"
+msgstr "ログインとパスワードを入力してください"
+
+msgctxt "txtDataUpdated"
+msgid "Data updated"
+msgstr "データを更新しました"
+
+msgctxt "txtLoading"
+msgid "Loading..."
+msgstr "読み込んでいます..."
+
+msgctxt "txtDialogsContentDelete"
+msgid "Do you want to delete this draft?"
+msgstr "この下書きを削除しますか?"
+
+msgctxt "txtDialogsContentInfoSave"
+msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr "この製品はローカルに保存されます。オフライン編集 メニューで編集することができます"
+
+msgctxt "txtBarcodeRequire"
+msgid "Barcode required"
+msgstr "バーコードが必要です"
+
+msgctxt "txtOk"
+msgid "Ok"
+msgstr "OK"
+
+msgctxt "txtContentDialogUploading"
+msgid "Please don't exit during the process..."
+msgstr "処理中はアプリを終了しないでください..."
+
+msgctxt "txtAbout"
+msgid ""
+"The pictures you send are published under the free licence Creative "
+"Commons Attribution and ShareAlike."
+msgstr "あなたが送信した画像はフリーのライセンスクリエイティブコモンズと同一条件許諾の下で公開されます。"
+
+msgctxt "txtAllsent"
+msgid "Products sent"
+msgstr "製品を送信しました"
+
+msgctxt "txtPalm"
+msgid "The product does not contain any palm oil"
+msgstr "製品にはパーム油は含まれていません"
+
+msgctxt "txtBarcodeNotValid"
+msgid "Barcode not valid"
+msgstr "バーコードが正しくありません"
+
+msgctxt "try_it_scan_now"
+msgid "Try it! Scan now!"
+msgstr "今すぐスキャンしてみてください!"
+
+msgctxt "share"
+msgid "Share"
+msgstr "共有"
+
+msgctxt "msg_share"
+msgid "Look at this product on Open Food Facts :"
+msgstr "Open Food Facts でこの製品を参照してください:"
+
+msgctxt "create_account"
+msgid "Sign up"
+msgstr "サインアップ"
+
+msgctxt "home_drawer"
+msgid "Home"
+msgstr "ホーム"
+
+msgctxt "search_drawer"
+msgid "Search"
+msgstr "検索"
+
+msgctxt "search_by_barcode_drawer"
+msgid "Search by barcode"
+msgstr "バーコードで検索"
+
+msgctxt "search_by_name_drawer"
+msgid "Search by name"
+msgstr "名前で検索"
+
+msgctxt "scan_search"
+msgid "Scan"
+msgstr "スキャン"
+
+msgctxt "user_drawer"
+msgid "User"
+msgstr "ユーザー"
+
+msgctxt "offline_edit_drawer"
+msgid "Offline edit"
+msgstr "オフライン編集"
+
+msgctxt "txt_anonymous"
+msgid "Anonymous"
+msgstr "匿名"
+
+msgctxt "txt_product_not_found"
+msgid "Products not found"
+msgstr "製品が見つかりません"
+
+msgctxt "delete_txt"
+msgid "Delete"
+msgstr "削除"
+
+msgctxt "sign_in_drawer"
+msgid "Sign-in"
+msgstr "サインイン"
+
+msgctxt "alert_drawer"
+msgid "Alert allergens"
+msgstr "アレルゲンを警告"
+
+msgctxt "warning_allergens"
+msgid "Contains allergens"
+msgstr "アレルゲンを含んでいます"
+
+msgctxt "title_dialog_alert"
+msgid "Add alert"
+msgstr "警告を追加"
+
+msgctxt "warning_alert_data"
+msgid "Data may not be accurate, be careful, please check by yourself!"
+msgstr "データは正確ではないかもしれません。ご注意の上、ご自身で確認してください!!"
+
+msgctxt "from_gallery"
+msgid "From gallery"
+msgstr "From gallery"
+
