@@ -11,14 +11,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.RequestParams;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -29,6 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
+import butterknife.OnItemClick;
+import butterknife.OnItemLongClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.FoodUserClientUsage;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
@@ -55,109 +55,98 @@ public class OfflineEditFragment extends BaseFragment {
 
         final SharedPreferences settings = getContext().getSharedPreferences("login", 0);
         saveItems = new ArrayList<>();
-
         loginS = settings.getString("user", "");
         passS = settings.getString("pass", "");
-
         buttonSend.setEnabled(false);
+    }
 
+    @OnItemClick(R.id.listOfflineSave)
+    protected void OnClickListOffline(int position) {
+        SaveItem si = (SaveItem) listView.getItemAtPosition(position);
+        SharedPreferences settings = getActivity().getSharedPreferences("temp", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("barcode", si.getBarcode());
+        editor.apply();
+        Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
+        startActivity(intent);
+    }
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                SaveItem si = (SaveItem) parent.getItemAtPosition(position);
-                SharedPreferences settings = getActivity().getSharedPreferences("temp", 0);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putString("barcode", si.getBarcode());
-                editor.apply();
-                Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                final int lapos = position;
-                final AdapterView<?> laparent = parent;
-                new MaterialDialog.Builder(getActivity())
-                        .title(R.string.txtDialogsTitle)
-                        .content(R.string.txtDialogsContentDelete)
-                        .positiveText(R.string.txtYes)
-                        .negativeText(R.string.txtNo)
-                        .callback(new MaterialDialog.ButtonCallback() {
-                            @Override
-                            public void onPositive(MaterialDialog dialog) {
-                                String barcode = saveItems.get(lapos).getBarcode();
-                                SendProduct.deleteAll(SendProduct.class, "barcode = ?", barcode);
-                                final SaveListAdapter sl = (SaveListAdapter) laparent.getAdapter();
-                                saveItems.remove(lapos);
-                                getActivity().runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        sl.notifyDataSetChanged();
-                                    }
-                                });
+    @OnItemLongClick(R.id.listOfflineSave)
+    protected boolean OnLongClickListOffline(int position) {
+        final int lapos = position;
+        new MaterialDialog.Builder(getActivity())
+                .title(R.string.txtDialogsTitle)
+                .content(R.string.txtDialogsContentDelete)
+                .positiveText(R.string.txtYes)
+                .negativeText(R.string.txtNo)
+                .callback(new MaterialDialog.ButtonCallback() {
+                    @Override
+                    public void onPositive(MaterialDialog dialog) {
+                        String barcode = saveItems.get(lapos).getBarcode();
+                        SendProduct.deleteAll(SendProduct.class, "barcode = ?", barcode);
+                        final SaveListAdapter sl = (SaveListAdapter) listView.getAdapter();
+                        saveItems.remove(lapos);
+                        getActivity().runOnUiThread(new Runnable() {
+                            public void run() {
+                                sl.notifyDataSetChanged();
                             }
+                        });
+                    }
 
-                            @Override
-                            public void onNegative(MaterialDialog dialog) {
-                                // void implementation
-                            }
-                        })
-                        .show();
+                    @Override
+                    public void onNegative(MaterialDialog dialog) {
+                        // void implementation
+                    }
+                })
+                .show();
+        return true;
+    }
 
-                return true;
-            }
-        });
-
-        buttonSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new MaterialDialog.Builder(getActivity())
-                        .title(R.string.txtDialogsTitle)
-                        .content(R.string.txtDialogsContentSend)
-                        .positiveText(R.string.txtYes)
-                        .negativeText(R.string.txtNo)
-                        .callback(new MaterialDialog.ButtonCallback() {
-                            @Override
-                            public void onPositive(MaterialDialog dialog) {
-                                List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
-                                FoodUserClientUsage user = new FoodUserClientUsage();
-                                for (int i = 0; i < listSaveProduct.size(); i++) {
-                                    SendProduct sp = listSaveProduct.get(i);
-                                    if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty() || sp.getImgupload_ingredients().isEmpty() || sp.getImgupload_nutrition().isEmpty()
-                                            || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
-                                        // Do nothing
-                                    } else {
-                                        RequestParams params = new RequestParams();
-                                        params.put("code", sp.getBarcode());
-                                        if(!loginS.isEmpty() && !passS.isEmpty()) {
-                                            params.put("user_id", loginS);
-                                            params.put("password", passS);
-                                        }
-                                        params.put("product_name", sp.getName());
-                                        params.put("quantity", sp.getWeight() + " " + sp.getWeight_unit());
-                                        params.put("stores", sp.getStores());
-
-                                        compressImage(sp.getImgupload_ingredients());
-                                        compressImage(sp.getImgupload_nutrition());
-                                        compressImage(sp.getImgupload_front());
-
-                                        user.post(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getImgupload_ingredients().replace(".png", "_small.png"), sp.getImgupload_nutrition().replace(".png", "_small.png"), sp.getBarcode(), listView, i, saveItems);
-
-                                    }
+    @OnClick(R.id.buttonSendAll)
+    protected void onSendAllProducts() {
+        new MaterialDialog.Builder(getActivity())
+                .title(R.string.txtDialogsTitle)
+                .content(R.string.txtDialogsContentSend)
+                .positiveText(R.string.txtYes)
+                .negativeText(R.string.txtNo)
+                .callback(new MaterialDialog.ButtonCallback() {
+                    @Override
+                    public void onPositive(MaterialDialog dialog) {
+                        List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
+                        FoodUserClientUsage user = new FoodUserClientUsage();
+                        for (int i = 0; i < listSaveProduct.size(); i++) {
+                            SendProduct sp = listSaveProduct.get(i);
+                            if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty() || sp.getImgupload_ingredients().isEmpty() || sp.getImgupload_nutrition().isEmpty()
+                                    || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
+                                // Do nothing
+                            } else {
+                                RequestParams params = new RequestParams();
+                                params.put("code", sp.getBarcode());
+                                if(!loginS.isEmpty() && !passS.isEmpty()) {
+                                    params.put("user_id", loginS);
+                                    params.put("password", passS);
                                 }
+                                params.put("product_name", sp.getName());
+                                params.put("quantity", sp.getWeight() + " " + sp.getWeight_unit());
+                                params.put("stores", sp.getStores());
+
+                                compressImage(sp.getImgupload_ingredients());
+                                compressImage(sp.getImgupload_nutrition());
+                                compressImage(sp.getImgupload_front());
+
+                                user.post(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getImgupload_ingredients().replace(".png", "_small.png"), sp.getImgupload_nutrition().replace(".png", "_small.png"), sp.getBarcode(), listView, i, saveItems);
 
                             }
+                        }
 
-                            @Override
-                            public void onNegative(MaterialDialog dialog) {
-                                return;
-                            }
-                        })
-                        .show();
-            }
-        });
+                    }
+
+                    @Override
+                    public void onNegative(MaterialDialog dialog) {
+                        return;
+                    }
+                })
+                .show();
     }
 
     @Override

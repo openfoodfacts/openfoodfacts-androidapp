@@ -29,9 +29,7 @@ public class SummaryProductFragment extends BaseFragment {
     @Bind(R.id.textStoreProduct) TextView storeProduct;
     @Bind(R.id.textCountryProduct) TextView countryProduct;
     @Bind(R.id.textCategoryProduct) TextView categoryProduct;
-
     @Bind(R.id.slider) SliderLayout sliderImages;
-
     @Bind(R.id.custom_indicator) PagerIndicator pagerIndicator;
 
     @Override

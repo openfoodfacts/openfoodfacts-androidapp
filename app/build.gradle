@@ -8,8 +8,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 17
-        versionName "0.1.12.1"
+        versionCode 18
+        versionName "0.2"
     }
 
     dexOptions {

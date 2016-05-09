@@ -12,9 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.afollestad.materialdialogs.MaterialDialog;
-
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -33,7 +31,6 @@ public class IngredientsProductFragment extends BaseFragment {
     @Bind(R.id.textAdditiveProduct) TextView additiveProduct;
     @Bind(R.id.textPalmOilProduct) TextView palmOilProduct;
     @Bind(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
-
     @Bind(R.id.ingredientContainer) ViewGroup containerView;
 
     @Override
@@ -77,8 +74,7 @@ public class IngredientsProductFragment extends BaseFragment {
         additiveProduct.setText(txt, TextView.BufferType.SPANNABLE);
     }
 
-    public SpannableStringBuilder setSpanBetweenTokens(CharSequence text, final View view) {
-
+    private SpannableStringBuilder setSpanBetweenTokens(CharSequence text, final View view) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);
         Pattern p = Pattern.compile("[eE][a-zA-Z0-9]+");
         Matcher m = p.matcher(ssb);

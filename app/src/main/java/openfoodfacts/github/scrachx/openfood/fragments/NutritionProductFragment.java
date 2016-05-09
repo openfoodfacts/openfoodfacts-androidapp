@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -72,7 +71,7 @@ public class NutritionProductFragment extends BaseFragment {
         serving.setText(Html.fromHtml("<b>" + getString(R.string.txtServingSize) + "</b>" + ' ' + state.getProduct().getServingSize()));
     }
 
-    public int getImageGrade(String grade) {
+    private int getImageGrade(String grade) {
         if (grade != null) {
             grade.toLowerCase();
             if (grade.compareToIgnoreCase("a") == 0) {
@@ -90,7 +89,7 @@ public class NutritionProductFragment extends BaseFragment {
         return R.drawable.ic_error;
     }
 
-    public int getImageLevel(String nutrient) {
+    private int getImageLevel(String nutrient) {
         if (nutrient != null) {
             if (nutrient.compareToIgnoreCase("moderate") == 0) {
                 return R.drawable.ic_circle_yellow;

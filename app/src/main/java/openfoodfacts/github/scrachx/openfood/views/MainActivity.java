@@ -134,7 +134,7 @@ public class MainActivity extends BaseActivity {
                     }
                 })
                 .withSavedInstance(savedInstanceState)
-                .withShowDrawerOnFirstLaunch(true)
+                .withShowDrawerOnFirstLaunch(false)
                 .build();
 
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
@@ -146,7 +146,7 @@ public class MainActivity extends BaseActivity {
 
         //only set the active selection or active profile if we do not recreate the activity
         if (savedInstanceState == null) {
-            // set the selection to the item with the identifier 11
+            // set the selection to the item with the identifier 1
             result.setSelection(1, false);
 
             //set the active profile
