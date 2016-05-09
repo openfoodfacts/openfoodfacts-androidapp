@@ -3,20 +3,20 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2016-05-08 14:13+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: ja\n"
+"PO-Revision-Date: 2016-05-08 12:27+0000\n"
+"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language-Team: ja <LL@li.org>\n"
-"Plural-Forms: nplurals=1; plural=(0)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-05-09 13:28+0000\n"
+"X-Generator: Launchpad (build 18025)\n"
+"Language: ja\n"
 "Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
@@ -211,10 +211,11 @@ msgstr "食品を開くと何を食べているか分かります"
 
 msgctxt "txtHome"
 msgid ""
-"Open Food Facts is a database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find"
-" on product labels."
-msgstr "Open Food Facts は、食品の原材料、アレルゲン、栄養成分、および製品ラベルで見ることができるすべての情報のデータベースです。"
+"Open Food Facts is a database of food products with ingredients, allergens, "
+"nutrition facts and all the tidbits of information we can find on product "
+"labels."
+msgstr ""
+"Open Food Facts は、食品の原材料、アレルゲン、栄養成分、および製品ラベルで見ることができるすべての情報のデータベースです。"
 
 msgctxt "txtSave"
 msgid "Save"
@@ -261,7 +262,8 @@ msgid "Login or password error"
 msgstr "ログインまたはパスワードエラー"
 
 msgctxt "errorWeb"
-msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
 msgstr "インターネットにアクセスできませんでした。接続に問題がありませんか?"
 
 msgctxt "txtInfoLoginOk"
@@ -278,8 +280,8 @@ msgstr "情報"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you "
-"want to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
 msgstr "スキャンした製品は、まだ Open Food Facts に存在しません。追加しますか?"
 
 msgctxt "txtDialogsContentSend"
@@ -355,7 +357,8 @@ msgid "Do you want to delete this draft?"
 msgstr "この下書きを削除しますか?"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr "この製品はローカルに保存されます。オフライン編集 メニューで編集することができます"
 
 msgctxt "txtBarcodeRequire"
@@ -372,8 +375,8 @@ msgstr "処理中はアプリを終了しないでください..."
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative "
-"Commons Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
 msgstr "あなたが送信した画像はフリーのライセンスクリエイティブコモンズと同一条件許諾の下で公開されます。"
 
 msgctxt "txtAllsent"
@@ -467,4 +470,3 @@ msgstr "データは正確ではないかもしれません。ご注意の上、
 msgctxt "from_gallery"
 msgid "From gallery"
 msgstr "From gallery"
-

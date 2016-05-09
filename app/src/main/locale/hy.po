@@ -1,215 +1,211 @@
-# German translations for PROJECT.
-# Copyright (C) 2016 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# Armenian translation for openfoodfacts
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the openfoodfacts package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Project-Id-Version: openfoodfacts\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-05-08 14:13+0200\n"
-"PO-Revision-Date: 2016-05-08 13:26+0000\n"
-"Last-Translator: hangy <Unknown>\n"
-"Language-Team: de <LL@li.org>\n"
+"PO-Revision-Date: 2016-05-08 16:54+0000\n"
+"Last-Translator: Serj Safarian <serjsafarian@gmail.com>\n"
+"Language-Team: Armenian <hy@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-05-09 13:28+0000\n"
 "X-Generator: Launchpad (build 18025)\n"
-"Language: de\n"
-"Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
 msgid "Open Food"
-msgstr "OpenFood"
+msgstr "Բաց սնունդ"
 
 msgctxt "hello_world"
 msgid "Hello world!"
-msgstr "Hallo Welt!"
+msgstr "Ողջո՛ւյն, աշխարհ։"
 
 msgctxt "action_settings"
 msgid "Settings"
-msgstr "Einstellungen"
+msgstr "Կարգավորումներ"
 
 msgctxt "action_about"
 msgid "About"
-msgstr "Über"
+msgstr "Մեր մասին"
 
 msgctxt "action_find"
 msgid "Find"
-msgstr "Suchen"
+msgstr "Գտնել"
 
 msgctxt "text_barcode"
 msgid "Put the barcode :"
-msgstr "Barcode einfügen:"
+msgstr "Դնել գծակոդ՝"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
 msgid "Summary"
-msgstr "Zusammenfassung"
+msgstr "Ամփոփում"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:1"
 msgid "Ingredients"
-msgstr "Zutaten"
+msgstr "Բաղադրամասեր"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:2"
 msgid "Nutrition"
-msgstr "Ernährung"
+msgstr "Սննդային արժեք"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
 msgid "Back to menu"
-msgstr "Zur Startseite"
+msgstr "Ետ դեպի ընտրացանկ"
 
 #. Text units
 msgctxt "units_array:0"
 msgid "g"
-msgstr "g"
+msgstr "գ"
 
 #. Text units
 msgctxt "units_array:1"
 msgid "mg"
-msgstr "mg"
+msgstr "մգ"
 
 #. Text units
 msgctxt "units_array:2"
 msgid "kg"
-msgstr "kg"
+msgstr "կգ"
 
 #. Text units
 msgctxt "units_array:3"
 msgid "l"
-msgstr "l"
+msgstr "լ"
 
 #. Text units
 msgctxt "units_array:4"
 msgid "ml"
-msgstr "ml"
+msgstr "մլ"
 
 msgctxt "images_array:0"
 msgid "Default"
-msgstr "Standard"
+msgstr "Լռելյայն"
 
 msgctxt "images_array:1"
 msgid "Nutrition"
-msgstr "Nährwerte"
+msgstr "Սննդային արժեք"
 
 msgctxt "images_array:2"
 msgid "Ingredients"
-msgstr "Inhaltsstoffe"
+msgstr "Բաղադրամասեր"
 
 #. Content Description
 msgctxt "search_button"
 msgid "Search"
-msgstr "Suchen"
+msgstr "Որոնել"
 
 msgctxt "no_products"
 msgid "Products not found"
-msgstr "Kein Product gefunden"
+msgstr "Մթերքները չգտնվեցին"
 
 msgctxt "desc_list_item_icon"
 msgid "Item Icon"
-msgstr "Produkt Foto"
+msgstr "Տարրի պատկերակ"
 
 msgctxt "alert_dialog_warning_title"
 msgid "Warning"
-msgstr "Warnung"
+msgstr "Զգուշացում"
 
 msgctxt "alert_dialog_warning_msg_user"
 msgid "User/password has changed, please update information"
-msgstr "Login/Passwort verarbeitet, bitte Information aktualisieren"
+msgstr "Օգտվողը/ գաղտնաբառը փոխվել է, խնդրում ենք թարմացնել տեղեկատվությունը"
 
 msgctxt "alert_dialog_product_error_msg"
 msgid "Product not found, please try again"
-msgstr "Produkt nicht gefunden, bitte noch mal probieren"
+msgstr "Մթերքը չի գտնվել, խնդրում ենք կրկին փորձել"
 
 msgctxt "toast_retrieving"
 msgid "Loading..."
-msgstr "laden..."
+msgstr "Բեռնում..."
 
 msgctxt "txtBarcode"
 msgid "Barcode :"
-msgstr "Barcode:"
+msgstr "Գծակոդ՝"
 
 msgctxt "txtQuantity"
 msgid "Quantity :"
-msgstr "Menge:"
+msgstr "Քանակը`"
 
 msgctxt "txtPackaging"
 msgid "Packaging :"
-msgstr "Verpackung:"
+msgstr "Փաթեթավորում՝"
 
 msgctxt "txtBrands"
 msgid "Brands :"
-msgstr "Marken:"
+msgstr "Ապրանքանիշեր՝"
 
 msgctxt "txtCategories"
 msgid "Categories :"
-msgstr "Kategorien :"
+msgstr "Ստորոգություններ՝"
 
 msgctxt "txtManufacturing"
 msgid "Manufacturing or processing places :"
-msgstr "Herstellungs- oder Umwandlungsorte:"
+msgstr "Արտադրության կամ մշակման վայրերը՝"
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
-msgstr "Stadt und Land des Ankaufs:"
+msgstr "Ձեռք բերման քաղաքը, նահանգը և երկիրը՝"
 
 msgctxt "txtStores"
 msgid "Stores :"
-msgstr "Läden:"
+msgstr "Խանութներ՝"
 
 msgctxt "txtCountries"
 msgid "Countries where sold :"
-msgstr "Vertriebsländer:"
+msgstr "Վաճառման երկիրներ՝"
 
 msgctxt "txtIngredients"
 msgid "Ingredients list :"
-msgstr "Zutatenliste:"
+msgstr "Բաղադրամասեր՝"
 
 msgctxt "txtSubstances"
 msgid "Substances or products causing allergies or intolerances :"
-msgstr ""
-"Nahrungsstoffe oder Produkte, die zur Allergie oder Überempfindlichkeit "
-"führen:"
+msgstr "Ալերգիա կամ անհանդուրժողություն առաջացնող նյութեր կամ մտերքներ՝"
 
 msgctxt "txtAdditives"
 msgid "Additives :"
-msgstr "Zusatzstoffe:"
+msgstr "Հավելումներ՝"
 
 msgctxt "txtTraces"
 msgid "Traces :"
-msgstr "Spuren:"
+msgstr "Կարող է պարունակել՝"
 
 msgctxt "txtMayBeFromPalmOilProduct"
 msgid "Ingredients that may be from palm oil :"
-msgstr "Von Palmöl abgestammte Zutaten:"
+msgstr "Բաղադրամասեր, որոնք կարող են լինել արմավենու յուղից՝"
 
 msgctxt "txtPalmOilProduct"
 msgid "Ingredients from palm oil :"
-msgstr "Zutaten aus Palmöl:"
+msgstr "Բաղադամասեր արմավենու յուղից՝"
 
 msgctxt "txtServingSize"
 msgid "Serving size :"
-msgstr "Portiongröße:"
+msgstr "Չափաբաժնի չափը՝"
 
 msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
-msgstr "Nahrungsbedarf pro 100 g:"
+msgstr "Սննդանյութերի մակարդակը 100 գրամում՝"
 
 msgctxt "txtLogin"
 msgid "Login :"
-msgstr "Login :"
+msgstr "Մուտքանուն՝"
 
 msgctxt "txtPass"
 msgid "Password :"
-msgstr "Passwort :"
+msgstr "Գաղտնաբառ՝"
 
 msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
-msgstr "Open your food und lerne kennen, was du isst"
+msgstr "Բաց արեք Ձեր սնունդը և իմացեք, թե ինչ եք ուտում"
 
 msgctxt "txtHome"
 msgid ""
@@ -217,268 +213,266 @@ msgid ""
 "nutrition facts and all the tidbits of information we can find on product "
 "labels."
 msgstr ""
-"Open Food Facts besteht in einer Datenbank von Nahrungsmittel und ihre "
-"Zutaten, Allergene, Nährwertinformationen und all diesen auf Produkt-"
-"Etiketten angezeigten Nahrung-Einzelheiten."
+"«Բաց փաստեր սննդի մասին» ծրագիրը սննդամթերքի շտեմարան է, որը պարունակում է "
+"տեղեկություններ բաղադրամասերի, ալերգենների, սննդային արժեքների մասին և "
+"մթերքների պիտակների վրա գտվող ամբողջ տեղեկատվությունը։"
 
 msgctxt "txtSave"
 msgid "Save"
-msgstr "verbinden"
+msgstr "Պահպանել"
 
 msgctxt "txtUser"
 msgid "User panel"
-msgstr "Beteiligter Panel"
+msgstr "Օգտվողի վահանակ"
 
 msgctxt "txtToastSaved"
 msgid "User saved"
-msgstr "Beteiligter gespeichert"
+msgstr "Օգտվողը պահպանվել է"
 
 msgctxt "txtSalt"
 msgid "Salt :"
-msgstr "Salz:"
+msgstr "Աղեր՝"
 
 msgctxt "txtFat"
 msgid "Fat :"
-msgstr "Fett:"
+msgstr "Ճարպ՝"
 
 msgctxt "txtSugars"
 msgid "Sugars :"
-msgstr "Zucker:"
+msgstr "Շաքարներ՝"
 
 msgctxt "txtSaturatedFat"
 msgid "Satured fat :"
-msgstr "gesättigte Fettsäuren:"
+msgstr "Հագեցած ճարպ՝"
 
 msgctxt "hintBarcode"
 msgid "Barcode"
-msgstr "Barcode"
+msgstr "Գծակոդ"
 
 msgctxt "hintLogin"
 msgid "Login"
-msgstr "Login"
+msgstr "Մուտքանուն"
 
 msgctxt "hintPass"
 msgid "Password"
-msgstr "Passwort"
+msgstr "Գաղտնաբառ"
 
 msgctxt "errorLogin"
 msgid "Login or password error"
-msgstr "Login oder Passwort stimmen nicht"
+msgstr "Սխալ մուտքանուն կամ գաղտնաբառ"
 
 msgctxt "errorWeb"
 msgid ""
 "We were not able to access the internet. Do you have connectivity issues?"
-msgstr "Internetzugang erfolgt nicht. Hast du zufällig Netzwerk Probleme?"
+msgstr ""
+"Մենք չեն կարողանում մուտք գործել համացանց։ Դուք ունե՞ք կապի խնդիրներ։"
 
 msgctxt "txtInfoLoginOk"
 msgid "User saved"
-msgstr "Beteiligter gespeichert"
+msgstr "Օգտվողը պահպանվեց"
 
 msgctxt "txtInfoLoginNo"
 msgid "User not saved"
-msgstr "Beteiligter nicht gespeichert"
+msgstr "Օգտվողը չպահպանվեց"
 
 msgctxt "txtDialogsTitle"
 msgid "Information"
-msgstr "Information"
+msgstr "Տեղեկատվություն"
 
 msgctxt "txtDialogsContent"
 msgid ""
 "The product you scanned does not exist yet in Open Food Facts. Do you want "
 "to add it?"
-msgstr ""
-"Das gescannte Produkt befindet sich noch nicht im Open Food Facts. Möchtest "
-"du diesen hinzufügen?"
+msgstr "Այս մթերքը դեռ չկա «Open Food Facts»-ում։ Ցանկանո՞ւմ եք ավելացնել։"
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to our database?"
-msgstr "Möchtest die gespeicherten Produkte zu unserer Datenbank senden?"
+msgstr "Ցանկանո՞ւմ եք ուղարկել պահպանված մթերքները մեր տվյալների շտեմարան։"
 
 msgctxt "txtYes"
 msgid "Yes"
-msgstr "Ja"
+msgstr "Այո"
 
 msgctxt "txtNo"
 msgid "No"
-msgstr "Nein"
+msgstr "Ոչ"
 
 msgctxt "hintNameProduct"
 msgid "Name"
-msgstr "Name"
+msgstr "Անվանում"
 
 msgctxt "hintEnergy"
 msgid "Energy in kJ per serving"
-msgstr "Energie in kJ pro Schnitte"
+msgstr "Էներգետիկ արժեքը մեկ չափաբաժնի համար (կՋ)"
 
 msgctxt "hintEnergyUnit"
 msgid "Energy unit"
-msgstr "Energie-Maß"
+msgstr "Էներգետիկ արժեքի միավորներ"
 
 msgctxt "hintWeight"
 msgid "Weight"
-msgstr "Gewicht"
+msgstr "Քաշը"
 
 msgctxt "hintStores"
 msgid "Store"
-msgstr "Speichern"
+msgstr "Խանութ"
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
-msgstr "Foto machen"
+msgstr "Լուսանկարել"
 
 msgctxt "txtSendAll"
 msgid "Upload all"
-msgstr "alles hochladen"
+msgstr "Վերբեռնել բոլորը"
 
 msgctxt "txtNoData"
 msgid "No data"
-msgstr "keine Daten"
+msgstr "Տվյալներ չկան"
 
 msgctxt "txtPictureNeeded"
 msgid "Take a picture first, then fill the name and store!"
-msgstr "Zuerst ein Foto machen, den Namen hinzufügen und dann speichern!"
+msgstr "Նախ լուսանկար հանեք, հետո լրացրեք անվանումը և  խանութը։"
 
 msgctxt "toastSending"
 msgid "Uploading..."
-msgstr "hochladen..."
+msgstr "Բեռնավորում..."
 
 msgctxt "dataSaved"
 msgid "Saved locally on your device"
-msgstr "lokal auf dem Phone gespeichert"
+msgstr "Պահպանվել է Ձեր սարքի վրա"
 
 msgctxt "txtInfoAddUser"
 msgid "Please enter your login and password"
-msgstr "Bitte Login und Passwort einfügen"
+msgstr "Մուտքագրեք մուտքանունը և գաղտնաբառը"
 
 msgctxt "txtDataUpdated"
 msgid "Data updated"
-msgstr "Daten verarbeitet"
+msgstr "Տվյալները թարմացվել են"
 
 msgctxt "txtLoading"
 msgid "Loading..."
-msgstr "laden..."
+msgstr "Բեռնավորում…"
 
 msgctxt "txtDialogsContentDelete"
 msgid "Do you want to delete this draft?"
-msgstr "Möchtest du diesen Eintrag löschen?"
+msgstr "Ցանկանում եք ջնջե՞լ այս սեւագիրը։"
 
 msgctxt "txtDialogsContentInfoSave"
 msgid ""
 "The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
-"Produkt wurde lokal gespeichert und kann durch das Menü Offline bearbeiten "
-"überarbeitet werden"
+"Մթերքը պահպանվել է տեղում, Դուք կարող եք փոփոխել այդ «Անցանց խմբագրում» "
+"բաժնում"
 
 msgctxt "txtBarcodeRequire"
 msgid "Barcode required"
-msgstr "Barcode erforderlich"
+msgstr "Պահանջվում է գծակոդ"
 
 msgctxt "txtOk"
 msgid "Ok"
-msgstr "OK"
+msgstr "Լավ"
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
-msgstr "Bitte warten bis zum Prozessende..."
+msgstr "Խնդրում ենք,  դուրս մի՛ եկեք գործընթացի ժամանակ..."
 
 msgctxt "txtAbout"
 msgid ""
 "The pictures you send are published under the free licence Creative Commons "
 "Attribution and ShareAlike."
 msgstr ""
-"Die zu uns geschickten Fotos sind unter der free licence Creative Commons "
-"Attribution and ShareAlike Licence veröffentlicht."
+"Ձեր ուղարկվող լուսանկարները հրապարակվում են Creative Commons Attribution-ի և "
+"ShareAlike-ի ազատ լիցենզիայով։"
 
 msgctxt "txtAllsent"
 msgid "Products sent"
-msgstr "Produkte erfolgreich gespeichert"
+msgstr "Մթերքներն ուղարկվել են"
 
 msgctxt "txtPalm"
 msgid "The product does not contain any palm oil"
-msgstr "Der Produkt beinhaltet kein Palmöl"
+msgstr "Մթերքը չի պարունակում արմավենու յուղ"
 
 msgctxt "txtBarcodeNotValid"
 msgid "Barcode not valid"
-msgstr "Barcode ungültig"
+msgstr "Գծակոդն անվավեր է"
 
 msgctxt "try_it_scan_now"
 msgid "Try it! Scan now!"
-msgstr "Einfach probieren! Jetzt scannen!"
+msgstr "Փորձե՛ք։ Տեսածրե՛ք հիմա։"
 
 msgctxt "share"
 msgid "Share"
-msgstr "Teilen"
+msgstr "Կիսվել"
 
 msgctxt "msg_share"
 msgid "Look at this product on Open Food Facts :"
-msgstr "Sieh dir dieses Produkt auf Open Food Facts an:"
+msgstr "Նայեք այս մթերքը «Open Food Facts»-ում՝"
 
 msgctxt "create_account"
 msgid "Sign up"
-msgstr "Registrieren"
+msgstr "Գրանցում"
 
 msgctxt "home_drawer"
 msgid "Home"
-msgstr "Startseite"
+msgstr "Գլխավոր"
 
 msgctxt "search_drawer"
 msgid "Search"
-msgstr "Suchen"
+msgstr "Որոնել"
 
 msgctxt "search_by_barcode_drawer"
 msgid "Search by barcode"
-msgstr "Nach Barcode suchen"
+msgstr "Որոնել ըստ գծակոդի"
 
 msgctxt "search_by_name_drawer"
 msgid "Search by name"
-msgstr "Nach Namen suchen"
+msgstr "Որոնել ըստ անվան"
 
 msgctxt "scan_search"
 msgid "Scan"
-msgstr "Einscannen"
+msgstr "Տեսածրել"
 
 msgctxt "user_drawer"
 msgid "User"
-msgstr "Benutzer"
+msgstr "Օգտվող"
 
 msgctxt "offline_edit_drawer"
 msgid "Offline edit"
-msgstr "Offline bearbeiten"
+msgstr "Անցանց խմբագրում"
 
 msgctxt "txt_anonymous"
 msgid "Anonymous"
-msgstr "Anonymous"
+msgstr "Անանուն"
 
 msgctxt "txt_product_not_found"
 msgid "Products not found"
-msgstr "Produkt nicht gefunden"
+msgstr "Մթերքները չգտնվեցին"
 
 msgctxt "delete_txt"
 msgid "Delete"
-msgstr "Löschen"
+msgstr "Ջնջել"
 
 msgctxt "sign_in_drawer"
 msgid "Sign-in"
-msgstr "Einloggen"
+msgstr "Մուտք գործել"
 
 msgctxt "alert_drawer"
 msgid "Alert allergens"
-msgstr ""
+msgstr "Ալերգենի զգուշացում"
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
-msgstr "Enthält Allergene"
+msgstr "Պարունակում է ալերգեններ"
 
 msgctxt "title_dialog_alert"
 msgid "Add alert"
-msgstr "Alarm hinzufügen"
+msgstr "Ավելացնել զգուշացում"
 
 msgctxt "warning_alert_data"
 msgid "Data may not be accurate, be careful, please check by yourself!"
 msgstr ""
-"Die Angaben könnten nicht akkurat sein. Bitte sei vorsichtig und überprüfe "
-"die Angaben selbst."
+"Տվյալների կարող ճշգրիտ չլինել, զգո՛ւյշ եղեք, խնդրում ենք, ստուգեք ինքներդ։"
 
 msgctxt "from_gallery"
 msgid "From gallery"
-msgstr "Aus Galerie"
+msgstr "Պատկերասրահից"

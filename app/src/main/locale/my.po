@@ -1,0 +1,485 @@
+# Burmese translation for openfoodfacts
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the openfoodfacts package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openfoodfacts\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-05-08 14:13+0200\n"
+"PO-Revision-Date: 2016-05-08 14:30+0000\n"
+"Last-Translator: Pyae Sone <Unknown>\n"
+"Language-Team: Burmese <my@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-05-09 13:28+0000\n"
+"X-Generator: Launchpad (build 18025)\n"
+
+msgctxt "app_name"
+msgid "Open Food"
+msgstr "Open Food"
+
+msgctxt "hello_world"
+msgid "Hello world!"
+msgstr "မဂၤလာပါကမာၻၾကီး"
+
+msgctxt "action_settings"
+msgid "Settings"
+msgstr "အျပင္အဆင္"
+
+msgctxt "action_about"
+msgid "About"
+msgstr "အေၾကာင္း"
+
+msgctxt "action_find"
+msgid "Find"
+msgstr "ရွာေဖြမည္"
+
+msgctxt "text_barcode"
+msgid "Put the barcode :"
+msgstr "ဘားကုဒ္ထည့္ပါ -"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:0"
+msgid "Summary"
+msgstr "အက်ဥ္းခ်ဳပ္"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:1"
+msgid "Ingredients"
+msgstr "ပါဝင္မႈမ်ား"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:2"
+msgid "Nutrition"
+msgstr "အာဟာရျပည့္မႈမ်ား"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:3"
+msgid "Back to menu"
+msgstr "မီႏူးဆီသို႔ျပန္သြားမည္"
+
+#. Text units
+msgctxt "units_array:0"
+msgid "g"
+msgstr "g"
+
+#. Text units
+msgctxt "units_array:1"
+msgid "mg"
+msgstr "mg"
+
+#. Text units
+msgctxt "units_array:2"
+msgid "kg"
+msgstr "kg"
+
+#. Text units
+msgctxt "units_array:3"
+msgid "l"
+msgstr "l"
+
+#. Text units
+msgctxt "units_array:4"
+msgid "ml"
+msgstr "ml"
+
+msgctxt "images_array:0"
+msgid "Default"
+msgstr "မူလအတိုင္း"
+
+msgctxt "images_array:1"
+msgid "Nutrition"
+msgstr "အာဟာရ"
+
+msgctxt "images_array:2"
+msgid "Ingredients"
+msgstr "ပါဝင္မႈမ်ား"
+
+#. Content Description
+msgctxt "search_button"
+msgid "Search"
+msgstr "ရွာေဖြမည္"
+
+msgctxt "no_products"
+msgid "Products not found"
+msgstr "ထုတ္ကုန္ရွာမေတြ႕ပါ"
+
+msgctxt "desc_list_item_icon"
+msgid "Item Icon"
+msgstr "အမ်ိဳးအစားအိုင္ကြန္း"
+
+msgctxt "alert_dialog_warning_title"
+msgid "Warning"
+msgstr "သတိေပးခ်က္"
+
+msgctxt "alert_dialog_warning_msg_user"
+msgid "User/password has changed, please update information"
+msgstr ""
+"အသံုးျပဳသူ၊စကားဝွက္ေျပာင္းလဲသြားပါသည္။ အခ်က္အလက္မ်ား အသစ္မြမ္းမံေပးပါ"
+
+msgctxt "alert_dialog_product_error_msg"
+msgid "Product not found, please try again"
+msgstr "ထုတ္ကုန္ရွာမေတြ႕ပါ။ ေနာက္မွျပန္ၾကိဳးစားပါ"
+
+msgctxt "toast_retrieving"
+msgid "Loading..."
+msgstr "ဖြင့္ေနသည္"
+
+msgctxt "txtBarcode"
+msgid "Barcode :"
+msgstr "ဘားကုဒ္-"
+
+msgctxt "txtQuantity"
+msgid "Quantity :"
+msgstr "အရည္အတြက္ -"
+
+msgctxt "txtPackaging"
+msgid "Packaging :"
+msgstr "အထုတ္ -"
+
+msgctxt "txtBrands"
+msgid "Brands :"
+msgstr "တံဆိပ္မ်ား -"
+
+msgctxt "txtCategories"
+msgid "Categories :"
+msgstr "ေခါင္းစဥ္မ်ား -"
+
+msgctxt "txtManufacturing"
+msgid "Manufacturing or processing places :"
+msgstr "ထုတ္လုပ္ျခင္း သို႔မဟုတ္ ထုတ္သည့္ေနရာမ်ား -"
+
+msgctxt "txtCity"
+msgid "City, state and country where purchased :"
+msgstr "ဝယ္ယူခဲ့ေသာ ျမိဳ႕၊ ျပည္နယ္ ႏွင့္ ႏိုင္ငံ -"
+
+msgctxt "txtStores"
+msgid "Stores :"
+msgstr "စတိုးမ်ား -"
+
+msgctxt "txtCountries"
+msgid "Countries where sold :"
+msgstr "ေရာင္းခဲ့ေသာႏိုင္ငံမ်ား -"
+
+msgctxt "txtIngredients"
+msgid "Ingredients list :"
+msgstr "ပါဝင္ပစၥည္းစာရင္း -"
+
+msgctxt "txtSubstances"
+msgid "Substances or products causing allergies or intolerances :"
+msgstr ""
+"ပါဝင္ပစၥည္းမ်ား သို႔မဟုတ္ ယားယံေစေသာထုတ္ကုန္မ်ား ႏွင့္  intolerances မ်ား -"
+
+msgctxt "txtAdditives"
+msgid "Additives :"
+msgstr "အျဖည့္ပစၥည္း -"
+
+msgctxt "txtTraces"
+msgid "Traces :"
+msgstr "လကၡဏာမ်ား -"
+
+msgctxt "txtMayBeFromPalmOilProduct"
+msgid "Ingredients that may be from palm oil :"
+msgstr "အုန္းဆီမွ ပါဝင္ပစၥည္းမ်ား -"
+
+msgctxt "txtPalmOilProduct"
+msgid "Ingredients from palm oil :"
+msgstr "အုန္းဆီမွ ပါဝင္ပစၥည္းမ်ား -"
+
+msgctxt "txtServingSize"
+msgid "Serving size :"
+msgstr "ဝန္ေဆာင္မႈအရြယ္အစား-"
+
+msgctxt "txtNutrientLevel100g"
+msgid "Nutrient levels for 100g :"
+msgstr "100 g အတြက္အာဟာရအဆင့္ -"
+
+msgctxt "txtLogin"
+msgid "Login :"
+msgstr "ဝင္ေရာက္ရန္ -"
+
+msgctxt "txtPass"
+msgid "Password :"
+msgstr "စကားဝွက္ -"
+
+msgctxt "txtTitleHome"
+msgid "Open your food and know what you eat"
+msgstr "သင့္အစားအေသာက္ကိုဖြင့္ျပီး သင္ဘာစားေနသည္ကိုသိရွိပါ"
+
+msgctxt "txtHome"
+msgid ""
+"Open Food Facts is a database of food products with ingredients, allergens, "
+"nutrition facts and all the tidbits of information we can find on product "
+"labels."
+msgstr ""
+"Open Food အေၾကာင္းအရာမ်ားသည္ ပါဝင္ေသာပစၥည္းမ်ား၊ မတည့္ေသာအစားအစာမ်ား၊ "
+"အာဟာရအေၾကာင္းအရာမ်ားႏွင့္ ထုတ္ကုန္အဆင့္ႏွင့္ "
+"ကၽြႏ္ုပ္တို႔ရွာႏိုင္ေသာအခ်က္အလက္မ်ားပါဝင္သည့္ database ျဖစ္သည္။"
+
+msgctxt "txtSave"
+msgid "Save"
+msgstr "သိမ္းမည္"
+
+msgctxt "txtUser"
+msgid "User panel"
+msgstr "အသံုးျပဳသူ ပန္နယ္"
+
+msgctxt "txtToastSaved"
+msgid "User saved"
+msgstr "အသံုးျပဳသူကိုသိမ္းခဲ့ျပီးျပီ"
+
+msgctxt "txtSalt"
+msgid "Salt :"
+msgstr "ဆား -"
+
+msgctxt "txtFat"
+msgid "Fat :"
+msgstr "အဆီ -"
+
+msgctxt "txtSugars"
+msgid "Sugars :"
+msgstr "သၾကားမ်ား -"
+
+msgctxt "txtSaturatedFat"
+msgid "Satured fat :"
+msgstr "ျပည့္ဝအဆီ -"
+
+msgctxt "hintBarcode"
+msgid "Barcode"
+msgstr "ဘားကုုဒ္"
+
+msgctxt "hintLogin"
+msgid "Login"
+msgstr "ဝင္ေရာက္ရန္"
+
+msgctxt "hintPass"
+msgid "Password"
+msgstr "စကားဝွက္"
+
+msgctxt "errorLogin"
+msgid "Login or password error"
+msgstr "ဝင္ေရာက္မႈ သို႔မဟုတ္ စကားဝွက္ခ်ိဳ႕ယြင္းခ်က္"
+
+msgctxt "errorWeb"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
+msgstr ""
+"ကၽြႏ္ုပ္တို႔မွ အင္တာနက္ႏွင့္မခ်ိတ္ဆက္ႏိုင္ဘူးျဖစ္ေနသည္။ သင့္တြင္ "
+"ခ်ိတ္ဆက္မႈခ်ိဳ႕ယြင္းေနပါသလား။"
+
+msgctxt "txtInfoLoginOk"
+msgid "User saved"
+msgstr "အသံုးျပဳသူသိမ္းခဲ့ျပီးျပီ"
+
+msgctxt "txtInfoLoginNo"
+msgid "User not saved"
+msgstr "အသံုးျပဳသူကိုမသိမ္းခဲ့ပါ"
+
+msgctxt "txtDialogsTitle"
+msgid "Information"
+msgstr "အခ်က္အလက္"
+
+msgctxt "txtDialogsContent"
+msgid ""
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
+msgstr ""
+"သင္စကန္ဖတ္ေသာထုတ္ကုန္သည္ Open Food အခ်က္အလက္မ်ားတြင္မရွိေသးပါ။ "
+"သင္ထည့္လိုပါသလား။"
+
+msgctxt "txtDialogsContentSend"
+msgid "Do you want send the saved products to our database?"
+msgstr ""
+"သိမ္းထားေသာထုတ္ကုန္မ်ားကို ကၽြႏ္ုပ္တို႔၏ database သို႔ေပါင္းထည့္ခ်င္ပါသလား"
+
+msgctxt "txtYes"
+msgid "Yes"
+msgstr "ဟုတ္"
+
+msgctxt "txtNo"
+msgid "No"
+msgstr "မဟုတ္"
+
+msgctxt "hintNameProduct"
+msgid "Name"
+msgstr "အမည္"
+
+msgctxt "hintEnergy"
+msgid "Energy in kJ per serving"
+msgstr "တစ္ခါေသာက္တြင္ ပါဝင္ေသာ အား"
+
+msgctxt "hintEnergyUnit"
+msgid "Energy unit"
+msgstr "အားယူနစ္"
+
+msgctxt "hintWeight"
+msgid "Weight"
+msgstr "အေလးခ်ိန္"
+
+msgctxt "hintStores"
+msgid "Store"
+msgstr "စတိုး"
+
+msgctxt "txtTakePicture"
+msgid "Take picture"
+msgstr "ဓာတ္ပံုရိုက္မည္"
+
+msgctxt "txtSendAll"
+msgid "Upload all"
+msgstr "အားလံုးကိုတင္မည္"
+
+msgctxt "txtNoData"
+msgid "No data"
+msgstr "အခ်က္အလက္မရွိ"
+
+msgctxt "txtPictureNeeded"
+msgid "Take a picture first, then fill the name and store!"
+msgstr "ဓာတ္ပံုအရင္ရိုက္ပါ။ ေနာက္မွ အမည္ႏွင့္ စတိုးကိုျဖည့္ပါ"
+
+msgctxt "toastSending"
+msgid "Uploading..."
+msgstr "တင္ေနသည္"
+
+msgctxt "dataSaved"
+msgid "Saved locally on your device"
+msgstr "သင့္ကိရိယာတြင္ ခဏသိမ္းထားမည္"
+
+msgctxt "txtInfoAddUser"
+msgid "Please enter your login and password"
+msgstr "သင္ဝင္ေရာက္မႈႏွင့္စကားဝွက္ကိုရိုက္ထည့္ပါ"
+
+msgctxt "txtDataUpdated"
+msgid "Data updated"
+msgstr "အခ်က္အလက္အသစ္မြမ္းမံခဲ့သည္"
+
+msgctxt "txtLoading"
+msgid "Loading..."
+msgstr "ဖြင့္ေနသည္"
+
+msgctxt "txtDialogsContentDelete"
+msgid "Do you want to delete this draft?"
+msgstr "ဒီအၾကမ္းကိုသင္ဖ်က္ခ်င္ပါသလား"
+
+msgctxt "txtDialogsContentInfoSave"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr ""
+"ထုတ္ကုန္ကို စက္ထဲသိမ္းထားခဲ့သည္။ "
+"ေအာ့္ဖ္လိုင္းျပင္ဆင္မႈမီႏူးမွတစ္ဆင့္သင္ျပင္ဆင္ႏိုင္သည္"
+
+msgctxt "txtBarcodeRequire"
+msgid "Barcode required"
+msgstr "ဘားကုဒ္လိုအပ္သည္"
+
+msgctxt "txtOk"
+msgid "Ok"
+msgstr "အုိေက"
+
+msgctxt "txtContentDialogUploading"
+msgid "Please don't exit during the process..."
+msgstr "လုပ္ေဆာင္ေနစဥ္ မထြက္ပါႏွင့္"
+
+msgctxt "txtAbout"
+msgid ""
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
+msgstr ""
+"သင္ပို႔ေသာပံုမ်ားသည္ အခမဲ့လိုင္စင္ Creative Commons Attribution ႏွင့္ "
+"ShareAlike အရျဖစ္လိမ့္မည္။"
+
+msgctxt "txtAllsent"
+msgid "Products sent"
+msgstr "ထုတ္ကုန္ပို႔ခဲ့သည္"
+
+msgctxt "txtPalm"
+msgid "The product does not contain any palm oil"
+msgstr "ထုတ္ကုန္သည္ မည္သည့္အုန္းဆီမွ မပါဝင္ပါ"
+
+msgctxt "txtBarcodeNotValid"
+msgid "Barcode not valid"
+msgstr "ဘားကုဒ္မမွန္ကန္ပါ"
+
+msgctxt "try_it_scan_now"
+msgid "Try it! Scan now!"
+msgstr "ၾကိဳးစားၾကည့္ပါ။ ယခုစကန္ဖတ္ပါ"
+
+msgctxt "share"
+msgid "Share"
+msgstr "ေဝမွ်မည္"
+
+msgctxt "msg_share"
+msgid "Look at this product on Open Food Facts :"
+msgstr "Open Food Fact မွာဒီထုတ္ကုန္ကို ၾကည့္မည္ -"
+
+msgctxt "create_account"
+msgid "Sign up"
+msgstr "အေကာင့္ျပဳလုပ္မည္"
+
+msgctxt "home_drawer"
+msgid "Home"
+msgstr "ပင္မစာမ်က္ႏွာ"
+
+msgctxt "search_drawer"
+msgid "Search"
+msgstr "ရွာေဖြမည္"
+
+msgctxt "search_by_barcode_drawer"
+msgid "Search by barcode"
+msgstr "ဘားကုဒ္ႏွင့္ရွာေဖြမည္"
+
+msgctxt "search_by_name_drawer"
+msgid "Search by name"
+msgstr "အမည္ျဖင့္ရွာမည္"
+
+msgctxt "scan_search"
+msgid "Scan"
+msgstr "စကန္ဖတ္မည္"
+
+msgctxt "user_drawer"
+msgid "User"
+msgstr "အသံုးျပဳသူ"
+
+msgctxt "offline_edit_drawer"
+msgid "Offline edit"
+msgstr "ေအာ့္ဖ္လိုင္းျပင္ဆင္မႈ"
+
+msgctxt "txt_anonymous"
+msgid "Anonymous"
+msgstr "အမည္မသိ"
+
+msgctxt "txt_product_not_found"
+msgid "Products not found"
+msgstr "ထုတ္ကုန္မေတြ႕ပါ"
+
+msgctxt "delete_txt"
+msgid "Delete"
+msgstr "ဖ်က္မည္"
+
+msgctxt "sign_in_drawer"
+msgid "Sign-in"
+msgstr "ဝင္ေရာက္ပါ"
+
+msgctxt "alert_drawer"
+msgid "Alert allergens"
+msgstr "ယားယံျခင္းသတိေပးမႈ"
+
+msgctxt "warning_allergens"
+msgid "Contains allergens"
+msgstr "အလာဂ်င္ပါဝင္သည္"
+
+msgctxt "title_dialog_alert"
+msgid "Add alert"
+msgstr "သတိေပးမႈထည့္မည္"
+
+msgctxt "warning_alert_data"
+msgid "Data may not be accurate, be careful, please check by yourself!"
+msgstr ""
+"အခ်က္အလက္မ်ားသည္အတိအက်ျဖစ္ေနလိမ့္မည္မဟုတ္ပါ။ "
+"သင္ကိုယ္တိုင္ျပန္လည္စစ္ေဆးသင့္ပါသည္"
+
+msgctxt "from_gallery"
+msgid "From gallery"
+msgstr "ဓာတ္ပံုျပခန္းမွ"

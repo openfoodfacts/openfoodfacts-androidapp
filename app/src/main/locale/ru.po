@@ -1,215 +1,211 @@
-# German translations for PROJECT.
-# Copyright (C) 2016 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# Russian translation for openfoodfacts
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the openfoodfacts package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Project-Id-Version: openfoodfacts\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-05-08 14:13+0200\n"
-"PO-Revision-Date: 2016-05-08 13:26+0000\n"
-"Last-Translator: hangy <Unknown>\n"
-"Language-Team: de <LL@li.org>\n"
+"PO-Revision-Date: 2016-05-08 14:31+0000\n"
+"Last-Translator: Nkolay Parukhin <parukhin@gmail.com>\n"
+"Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-05-09 13:28+0000\n"
 "X-Generator: Launchpad (build 18025)\n"
-"Language: de\n"
-"Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
 msgid "Open Food"
-msgstr "OpenFood"
+msgstr ""
 
 msgctxt "hello_world"
 msgid "Hello world!"
-msgstr "Hallo Welt!"
+msgstr "Привет мир!"
 
 msgctxt "action_settings"
 msgid "Settings"
-msgstr "Einstellungen"
+msgstr "Настройки"
 
 msgctxt "action_about"
 msgid "About"
-msgstr "Über"
+msgstr "О приложении"
 
 msgctxt "action_find"
 msgid "Find"
-msgstr "Suchen"
+msgstr "Найти"
 
 msgctxt "text_barcode"
 msgid "Put the barcode :"
-msgstr "Barcode einfügen:"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
 msgid "Summary"
-msgstr "Zusammenfassung"
+msgstr "Резюме"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:1"
 msgid "Ingredients"
-msgstr "Zutaten"
+msgstr "Ингредиенты"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:2"
 msgid "Nutrition"
-msgstr "Ernährung"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
 msgid "Back to menu"
-msgstr "Zur Startseite"
+msgstr "Вернуться в меню"
 
 #. Text units
 msgctxt "units_array:0"
 msgid "g"
-msgstr "g"
+msgstr "г"
 
 #. Text units
 msgctxt "units_array:1"
 msgid "mg"
-msgstr "mg"
+msgstr "мг"
 
 #. Text units
 msgctxt "units_array:2"
 msgid "kg"
-msgstr "kg"
+msgstr "кг"
 
 #. Text units
 msgctxt "units_array:3"
 msgid "l"
-msgstr "l"
+msgstr "л"
 
 #. Text units
 msgctxt "units_array:4"
 msgid "ml"
-msgstr "ml"
+msgstr "мл"
 
 msgctxt "images_array:0"
 msgid "Default"
-msgstr "Standard"
+msgstr "По умолчанию"
 
 msgctxt "images_array:1"
 msgid "Nutrition"
-msgstr "Nährwerte"
+msgstr ""
 
 msgctxt "images_array:2"
 msgid "Ingredients"
-msgstr "Inhaltsstoffe"
+msgstr "Ингредиенты"
 
 #. Content Description
 msgctxt "search_button"
 msgid "Search"
-msgstr "Suchen"
+msgstr "Поиск"
 
 msgctxt "no_products"
 msgid "Products not found"
-msgstr "Kein Product gefunden"
+msgstr "Продукты не найдены"
 
 msgctxt "desc_list_item_icon"
 msgid "Item Icon"
-msgstr "Produkt Foto"
+msgstr ""
 
 msgctxt "alert_dialog_warning_title"
 msgid "Warning"
-msgstr "Warnung"
+msgstr "Предупреждение"
 
 msgctxt "alert_dialog_warning_msg_user"
 msgid "User/password has changed, please update information"
-msgstr "Login/Passwort verarbeitet, bitte Information aktualisieren"
+msgstr ""
 
 msgctxt "alert_dialog_product_error_msg"
 msgid "Product not found, please try again"
-msgstr "Produkt nicht gefunden, bitte noch mal probieren"
+msgstr "Продукт не найден, попробуйте ещё раз"
 
 msgctxt "toast_retrieving"
 msgid "Loading..."
-msgstr "laden..."
+msgstr "Загрузка…"
 
 msgctxt "txtBarcode"
 msgid "Barcode :"
-msgstr "Barcode:"
+msgstr "Штрих-код:"
 
 msgctxt "txtQuantity"
 msgid "Quantity :"
-msgstr "Menge:"
+msgstr "Количество:"
 
 msgctxt "txtPackaging"
 msgid "Packaging :"
-msgstr "Verpackung:"
+msgstr "Упаковка:"
 
 msgctxt "txtBrands"
 msgid "Brands :"
-msgstr "Marken:"
+msgstr "Торговые марки:"
 
 msgctxt "txtCategories"
 msgid "Categories :"
-msgstr "Kategorien :"
+msgstr "Категории:"
 
 msgctxt "txtManufacturing"
 msgid "Manufacturing or processing places :"
-msgstr "Herstellungs- oder Umwandlungsorte:"
+msgstr "Места производства или переработки:"
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
-msgstr "Stadt und Land des Ankaufs:"
+msgstr "Город, область и страна покупки:"
 
 msgctxt "txtStores"
 msgid "Stores :"
-msgstr "Läden:"
+msgstr "Магазины:"
 
 msgctxt "txtCountries"
 msgid "Countries where sold :"
-msgstr "Vertriebsländer:"
+msgstr "Страны продажи:"
 
 msgctxt "txtIngredients"
 msgid "Ingredients list :"
-msgstr "Zutatenliste:"
+msgstr "Список ингредиентов:"
 
 msgctxt "txtSubstances"
 msgid "Substances or products causing allergies or intolerances :"
 msgstr ""
-"Nahrungsstoffe oder Produkte, die zur Allergie oder Überempfindlichkeit "
-"führen:"
 
 msgctxt "txtAdditives"
 msgid "Additives :"
-msgstr "Zusatzstoffe:"
+msgstr "Добавки:"
 
 msgctxt "txtTraces"
 msgid "Traces :"
-msgstr "Spuren:"
+msgstr "Может содержать:"
 
 msgctxt "txtMayBeFromPalmOilProduct"
 msgid "Ingredients that may be from palm oil :"
-msgstr "Von Palmöl abgestammte Zutaten:"
+msgstr "Ингредиенты, возможно из пальмового масла:"
 
 msgctxt "txtPalmOilProduct"
 msgid "Ingredients from palm oil :"
-msgstr "Zutaten aus Palmöl:"
+msgstr "Ингредиенты из пальмового масла:"
 
 msgctxt "txtServingSize"
 msgid "Serving size :"
-msgstr "Portiongröße:"
+msgstr "Размер порции:"
 
 msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
-msgstr "Nahrungsbedarf pro 100 g:"
+msgstr "Пищевая ценность на 100 г:"
 
 msgctxt "txtLogin"
 msgid "Login :"
-msgstr "Login :"
+msgstr "Имя:"
 
 msgctxt "txtPass"
 msgid "Password :"
-msgstr "Passwort :"
+msgstr "Пароль:"
 
 msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
-msgstr "Open your food und lerne kennen, was du isst"
+msgstr ""
 
 msgctxt "txtHome"
 msgid ""
@@ -217,249 +213,242 @@ msgid ""
 "nutrition facts and all the tidbits of information we can find on product "
 "labels."
 msgstr ""
-"Open Food Facts besteht in einer Datenbank von Nahrungsmittel und ihre "
-"Zutaten, Allergene, Nährwertinformationen und all diesen auf Produkt-"
-"Etiketten angezeigten Nahrung-Einzelheiten."
 
 msgctxt "txtSave"
 msgid "Save"
-msgstr "verbinden"
+msgstr "Сохранить"
 
 msgctxt "txtUser"
 msgid "User panel"
-msgstr "Beteiligter Panel"
+msgstr "Панель пользователя"
 
 msgctxt "txtToastSaved"
 msgid "User saved"
-msgstr "Beteiligter gespeichert"
+msgstr "Пользователь сохранён"
 
 msgctxt "txtSalt"
 msgid "Salt :"
-msgstr "Salz:"
+msgstr "Соль:"
 
 msgctxt "txtFat"
 msgid "Fat :"
-msgstr "Fett:"
+msgstr "Жир:"
 
 msgctxt "txtSugars"
 msgid "Sugars :"
-msgstr "Zucker:"
+msgstr "Сахара:"
 
 msgctxt "txtSaturatedFat"
 msgid "Satured fat :"
-msgstr "gesättigte Fettsäuren:"
+msgstr "Насыщенный жир:"
 
 msgctxt "hintBarcode"
 msgid "Barcode"
-msgstr "Barcode"
+msgstr "Штрих-код"
 
 msgctxt "hintLogin"
 msgid "Login"
-msgstr "Login"
+msgstr ""
 
 msgctxt "hintPass"
 msgid "Password"
-msgstr "Passwort"
+msgstr "Пароль"
 
 msgctxt "errorLogin"
 msgid "Login or password error"
-msgstr "Login oder Passwort stimmen nicht"
+msgstr "Неверные имя или пароль"
 
 msgctxt "errorWeb"
 msgid ""
 "We were not able to access the internet. Do you have connectivity issues?"
-msgstr "Internetzugang erfolgt nicht. Hast du zufällig Netzwerk Probleme?"
+msgstr ""
 
 msgctxt "txtInfoLoginOk"
 msgid "User saved"
-msgstr "Beteiligter gespeichert"
+msgstr "Пользователь сохранён"
 
 msgctxt "txtInfoLoginNo"
 msgid "User not saved"
-msgstr "Beteiligter nicht gespeichert"
+msgstr "Пользователь не сохранён"
 
 msgctxt "txtDialogsTitle"
 msgid "Information"
-msgstr "Information"
+msgstr "Информация"
 
 msgctxt "txtDialogsContent"
 msgid ""
 "The product you scanned does not exist yet in Open Food Facts. Do you want "
 "to add it?"
-msgstr ""
-"Das gescannte Produkt befindet sich noch nicht im Open Food Facts. Möchtest "
-"du diesen hinzufügen?"
+msgstr "Этого продernf ещё нет в Open Food Facts. Хотите его добавить?"
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to our database?"
-msgstr "Möchtest die gespeicherten Produkte zu unserer Datenbank senden?"
+msgstr "Вы хотите отправить сохранённые продукты в нашу базу данных?"
 
 msgctxt "txtYes"
 msgid "Yes"
-msgstr "Ja"
+msgstr "Да"
 
 msgctxt "txtNo"
 msgid "No"
-msgstr "Nein"
+msgstr "Нет"
 
 msgctxt "hintNameProduct"
 msgid "Name"
-msgstr "Name"
+msgstr "Название"
 
 msgctxt "hintEnergy"
 msgid "Energy in kJ per serving"
-msgstr "Energie in kJ pro Schnitte"
+msgstr "Энергетическая ценность в кДж на порцию"
 
 msgctxt "hintEnergyUnit"
 msgid "Energy unit"
-msgstr "Energie-Maß"
+msgstr "Единицы энергетической ценности"
 
 msgctxt "hintWeight"
 msgid "Weight"
-msgstr "Gewicht"
+msgstr "Вес"
 
 msgctxt "hintStores"
 msgid "Store"
-msgstr "Speichern"
+msgstr "Магазин"
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
-msgstr "Foto machen"
+msgstr "Сделайте фото"
 
 msgctxt "txtSendAll"
 msgid "Upload all"
-msgstr "alles hochladen"
+msgstr "Отправить все"
 
 msgctxt "txtNoData"
 msgid "No data"
-msgstr "keine Daten"
+msgstr "Нет данных"
 
 msgctxt "txtPictureNeeded"
 msgid "Take a picture first, then fill the name and store!"
-msgstr "Zuerst ein Foto machen, den Namen hinzufügen und dann speichern!"
+msgstr "Сначала сделайте фото, затем заполните название и магазин!"
 
 msgctxt "toastSending"
 msgid "Uploading..."
-msgstr "hochladen..."
+msgstr "Передача..."
 
 msgctxt "dataSaved"
 msgid "Saved locally on your device"
-msgstr "lokal auf dem Phone gespeichert"
+msgstr "Сохранено на вашем устройстве"
 
 msgctxt "txtInfoAddUser"
 msgid "Please enter your login and password"
-msgstr "Bitte Login und Passwort einfügen"
+msgstr "Введите имя и пароль"
 
 msgctxt "txtDataUpdated"
 msgid "Data updated"
-msgstr "Daten verarbeitet"
+msgstr "Данные обновлены"
 
 msgctxt "txtLoading"
 msgid "Loading..."
-msgstr "laden..."
+msgstr "Загрузка…"
 
 msgctxt "txtDialogsContentDelete"
 msgid "Do you want to delete this draft?"
-msgstr "Möchtest du diesen Eintrag löschen?"
+msgstr "Вы хотите удалить этот черновик?"
 
 msgctxt "txtDialogsContentInfoSave"
 msgid ""
 "The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
-"Produkt wurde lokal gespeichert und kann durch das Menü Offline bearbeiten "
-"überarbeitet werden"
 
 msgctxt "txtBarcodeRequire"
 msgid "Barcode required"
-msgstr "Barcode erforderlich"
+msgstr "Требуется штрих-код"
 
 msgctxt "txtOk"
 msgid "Ok"
-msgstr "OK"
+msgstr "ОК"
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
-msgstr "Bitte warten bis zum Prozessende..."
+msgstr ""
 
 msgctxt "txtAbout"
 msgid ""
 "The pictures you send are published under the free licence Creative Commons "
 "Attribution and ShareAlike."
 msgstr ""
-"Die zu uns geschickten Fotos sind unter der free licence Creative Commons "
-"Attribution and ShareAlike Licence veröffentlicht."
+"Фотографии, которые вы отправляете, опубликованы под свободной лицензией "
+"Creative Commons Attribution и ShareAlike."
 
 msgctxt "txtAllsent"
 msgid "Products sent"
-msgstr "Produkte erfolgreich gespeichert"
+msgstr "Продукты отправлены"
 
 msgctxt "txtPalm"
 msgid "The product does not contain any palm oil"
-msgstr "Der Produkt beinhaltet kein Palmöl"
+msgstr "Продукт не содержит пальмовое масло"
 
 msgctxt "txtBarcodeNotValid"
 msgid "Barcode not valid"
-msgstr "Barcode ungültig"
+msgstr "Недействительный штрих-код"
 
 msgctxt "try_it_scan_now"
 msgid "Try it! Scan now!"
-msgstr "Einfach probieren! Jetzt scannen!"
+msgstr "Попробуйте! Сканируйте сейчас!"
 
 msgctxt "share"
 msgid "Share"
-msgstr "Teilen"
+msgstr "Поделиться"
 
 msgctxt "msg_share"
 msgid "Look at this product on Open Food Facts :"
-msgstr "Sieh dir dieses Produkt auf Open Food Facts an:"
+msgstr ""
 
 msgctxt "create_account"
 msgid "Sign up"
-msgstr "Registrieren"
+msgstr "Регистрация"
 
 msgctxt "home_drawer"
 msgid "Home"
-msgstr "Startseite"
+msgstr "Главная"
 
 msgctxt "search_drawer"
 msgid "Search"
-msgstr "Suchen"
+msgstr "Поиск"
 
 msgctxt "search_by_barcode_drawer"
 msgid "Search by barcode"
-msgstr "Nach Barcode suchen"
+msgstr "Поиск по штрих-коду"
 
 msgctxt "search_by_name_drawer"
 msgid "Search by name"
-msgstr "Nach Namen suchen"
+msgstr "Поиск по названию"
 
 msgctxt "scan_search"
 msgid "Scan"
-msgstr "Einscannen"
+msgstr "Сканировать"
 
 msgctxt "user_drawer"
 msgid "User"
-msgstr "Benutzer"
+msgstr "Пользователь"
 
 msgctxt "offline_edit_drawer"
 msgid "Offline edit"
-msgstr "Offline bearbeiten"
+msgstr ""
 
 msgctxt "txt_anonymous"
 msgid "Anonymous"
-msgstr "Anonymous"
+msgstr "Анонимный"
 
 msgctxt "txt_product_not_found"
 msgid "Products not found"
-msgstr "Produkt nicht gefunden"
+msgstr "Продукты не найдены"
 
 msgctxt "delete_txt"
 msgid "Delete"
-msgstr "Löschen"
+msgstr "Удалить"
 
 msgctxt "sign_in_drawer"
 msgid "Sign-in"
-msgstr "Einloggen"
+msgstr "Войти"
 
 msgctxt "alert_drawer"
 msgid "Alert allergens"
@@ -467,18 +456,17 @@ msgstr ""
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
-msgstr "Enthält Allergene"
+msgstr "Содержит аллергены"
 
 msgctxt "title_dialog_alert"
 msgid "Add alert"
-msgstr "Alarm hinzufügen"
+msgstr "Дабавить предупреждение"
 
 msgctxt "warning_alert_data"
 msgid "Data may not be accurate, be careful, please check by yourself!"
 msgstr ""
-"Die Angaben könnten nicht akkurat sein. Bitte sei vorsichtig und überprüfe "
-"die Angaben selbst."
+"Данные могут быть не точными, будьте осторожны, пожалуйста, проверьте сами!"
 
 msgctxt "from_gallery"
 msgid "From gallery"
-msgstr "Aus Galerie"
+msgstr "Из галереи"
