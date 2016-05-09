@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="hello_world">Привет мир!</string>
+  <string name="action_settings">Настройки</string>
+  <string name="action_about">О приложении</string>
+  <string name="action_find">Найти</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Резюме</item>
+    <item>Ингредиенты</item>
+    <item>Nutrition</item>
+    <item>Вернуться в меню</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>г</item>
+    <item>мг</item>
+    <item>кг</item>
+    <item>л</item>
+    <item>мл</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>По умолчанию</item>
+    <item>Nutrition</item>
+    <item>Ингредиенты</item>
+  </string-array>
+  <string name="search_button">Поиск</string>
+  <string name="no_products">Продукты не найдены</string>
+  <string name="alert_dialog_warning_title">Предупреждение</string>
+  <string name="alert_dialog_product_error_msg">Продукт не найден, попробуйте ещё раз</string>
+  <string name="toast_retrieving">Загрузка…</string>
+  <string name="txtBarcode">Штрих-код:</string>
+  <string name="txtQuantity">Количество:</string>
+  <string name="txtPackaging">Упаковка:</string>
+  <string name="txtBrands">Торговые марки:</string>
+  <string name="txtCategories">Категории:</string>
+  <string name="txtManufacturing">Места производства или переработки:</string>
+  <string name="txtCity">Город, область и страна покупки:</string>
+  <string name="txtStores">Магазины:</string>
+  <string name="txtCountries">Страны продажи:</string>
+  <string name="txtIngredients">Список ингредиентов:</string>
+  <string name="txtAdditives">Добавки:</string>
+  <string name="txtTraces">Может содержать:</string>
+  <string name="txtMayBeFromPalmOilProduct">Ингредиенты, возможно из пальмового масла:</string>
+  <string name="txtPalmOilProduct">Ингредиенты из пальмового масла:</string>
+  <string name="txtServingSize">Размер порции:</string>
+  <string name="txtNutrientLevel100g">Пищевая ценность на 100 г:</string>
+  <string name="txtLogin">Имя:</string>
+  <string name="txtPass">Пароль:</string>
+  <string name="txtSave">Сохранить</string>
+  <string name="txtUser">Панель пользователя</string>
+  <string name="txtToastSaved">Пользователь сохранён</string>
+  <string name="txtSalt">Соль:</string>
+  <string name="txtFat">Жир:</string>
+  <string name="txtSugars">Сахара:</string>
+  <string name="txtSaturatedFat">Насыщенный жир:</string>
+  <string name="hintBarcode">Штрих-код</string>
+  <string name="hintPass">Пароль</string>
+  <string name="errorLogin">Неверные имя или пароль</string>
+  <string name="txtInfoLoginOk">Пользователь сохранён</string>
+  <string name="txtInfoLoginNo">Пользователь не сохранён</string>
+  <string name="txtDialogsTitle">Информация</string>
+  <string name="txtDialogsContent">Этого продernf ещё нет в Open Food Facts. Хотите его добавить?</string>
+  <string name="txtDialogsContentSend">Вы хотите отправить сохранённые продукты в нашу базу данных?</string>
+  <string name="txtYes">Да</string>
+  <string name="txtNo">Нет</string>
+  <string name="hintNameProduct">Название</string>
+  <string name="hintEnergy">Энергетическая ценность в кДж на порцию</string>
+  <string name="hintEnergyUnit">Единицы энергетической ценности</string>
+  <string name="hintWeight">Вес</string>
+  <string name="hintStores">Магазин</string>
+  <string name="txtTakePicture">Сделайте фото</string>
+  <string name="txtSendAll">Отправить все</string>
+  <string name="txtNoData">Нет данных</string>
+  <string name="txtPictureNeeded">Сначала сделайте фото, затем заполните название и магазин!</string>
+  <string name="toastSending">Передача...</string>
+  <string name="dataSaved">Сохранено на вашем устройстве</string>
+  <string name="txtInfoAddUser">Введите имя и пароль</string>
+  <string name="txtDataUpdated">Данные обновлены</string>
+  <string name="txtLoading">Загрузка…</string>
+  <string name="txtDialogsContentDelete">Вы хотите удалить этот черновик?</string>
+  <string name="txtBarcodeRequire">Требуется штрих-код</string>
+  <string name="txtOk">ОК</string>
+  <string name="txtAbout">Фотографии, которые вы отправляете, опубликованы под свободной лицензией Creative Commons Attribution и ShareAlike.</string>
+  <string name="txtAllsent">Продукты отправлены</string>
+  <string name="txtPalm">Продукт не содержит пальмовое масло</string>
+  <string name="txtBarcodeNotValid">Недействительный штрих-код</string>
+  <string name="try_it_scan_now">Попробуйте! Сканируйте сейчас!</string>
+  <string name="share">Поделиться</string>
+  <string name="create_account">Регистрация</string>
+  <string name="home_drawer">Главная</string>
+  <string name="search_drawer">Поиск</string>
+  <string name="search_by_barcode_drawer">Поиск по штрих-коду</string>
+  <string name="search_by_name_drawer">Поиск по названию</string>
+  <string name="scan_search">Сканировать</string>
+  <string name="user_drawer">Пользователь</string>
+  <string name="txt_anonymous">Анонимный</string>
+  <string name="txt_product_not_found">Продукты не найдены</string>
+  <string name="delete_txt">Удалить</string>
+  <string name="sign_in_drawer">Войти</string>
+  <string name="warning_allergens">Содержит аллергены</string>
+  <string name="title_dialog_alert">Дабавить предупреждение</string>
+  <string name="warning_alert_data">Данные могут быть не точными, будьте осторожны, пожалуйста, проверьте сами!</string>
+  <string name="from_gallery">Из галереи</string>
+</resources>

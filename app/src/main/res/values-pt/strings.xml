@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Open Food</string>
+  <string name="hello_world">Olá Mundo!</string>
+  <string name="action_settings">Definições</string>
+  <string name="action_about">Acerca</string>
+  <string name="action_find">Procurar</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Sumário</item>
+    <item>Ingredientes</item>
+    <item>Nutrition</item>
+    <item>Voltar ao menu</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Padrão</item>
+    <item>Nutrition</item>
+    <item>Ingredientes</item>
+  </string-array>
+  <string name="search_button">Procurar</string>
+  <string name="alert_dialog_warning_title">Aviso</string>
+  <string name="toast_retrieving">A carregar...</string>
+  <string name="txtQuantity">Quantidade :</string>
+</resources>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Open Food</string>
+  <string name="hello_world">Hola món!</string>
+  <string name="action_settings">Preferències</string>
+  <string name="action_about">Quant a</string>
+  <string name="action_find">Cerca</string>
+  <string name="text_barcode">Pose el codi de barres:</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Resum</item>
+    <item>Ingredients</item>
+    <item>Nutrició</item>
+    <item>Tornar al menú</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Predeterminat</item>
+    <item>Nutrició</item>
+    <item>Ingredients</item>
+  </string-array>
+  <string name="search_button">Cerca</string>
+  <string name="no_products">No s\'han trobat els productes</string>
+  <string name="desc_list_item_icon">Icona d\'objecte</string>
+  <string name="alert_dialog_warning_title">Avís</string>
+  <string name="alert_dialog_warning_msg_user">L\'usuari/contrasenya ha canviat, per favor actualitze la informació</string>
+  <string name="alert_dialog_product_error_msg">No s\'ha trobat el producte, per favor intente-ho una altra volta</string>
+  <string name="toast_retrieving">S\'està carregant...</string>
+  <string name="txtBarcode">Codi de barres :</string>
+  <string name="txtQuantity">Quantitat :</string>
+  <string name="txtPackaging">Envasament :</string>
+  <string name="txtBrands">Marques :</string>
+  <string name="txtCategories">Categories :</string>
+</resources>
