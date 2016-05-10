@@ -1,6 +1,4 @@
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources>
 
     <string name="app_name">Open Food</string>
     <string name="hello_world">Hello world!</string>
