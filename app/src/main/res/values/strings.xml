@@ -132,6 +132,8 @@
     <string name="toggle_flash" translatable="false">Flash</string>
     <string name="flash_on" translatable="false">Flash [ON]</string>
     <string name="flash_off" translatable="false">Flash [OFF]</string>
+    <string name="ring_on" translatable="false">Ring [ON]</string>
+    <string name="ring_off" translatable="false">Ring [OFF]</string>
     <string name="auto_focus_on" translatable="false">Auto Focus [ON]</string>
     <string name="auto_focus_off" translatable="false">Auto Focus [OFF]</string>
     <string name="formats" translatable="false">Formats</string>
