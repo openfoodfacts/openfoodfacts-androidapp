@@ -3,7 +3,6 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+import com.loopj.android.http.RequestParams;
 import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.util.List;
@@ -19,7 +19,9 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.FoodUserClientUsage;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -37,21 +39,28 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
     private SendProduct mProduct = new SendProduct();
     private String mBarcode = null;
+    private FoodUserClientUsage api;
     private final String[] mUnit = new String[1];
     private final String[] mImage = new String[1];
+    private String loginS, passS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_product_offline);
 
+        api = new FoodUserClientUsage();
+
+        final SharedPreferences settingsUser = getSharedPreferences("login", 0);
+        loginS = settingsUser.getString("user", "");
+        passS = settingsUser.getString("pass", "");
+        final SharedPreferences settings = getSharedPreferences("temp", 0);
+        mBarcode = settings.getString("barcode", "");
+
         EasyImage.configuration(this)
                 .setImagesFolderName("OFF_Images")
                 .saveInAppExternalFilesDir()
                 .setCopyExistingPicturesToPublicLocation(true);
-
-        final SharedPreferences settings = getSharedPreferences("temp", 0);
-        mBarcode = settings.getString("barcode", "");
 
         imgSave.setVisibility(View.GONE);
 
@@ -139,21 +148,46 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @OnClick(R.id.buttonSaveProduct)
     protected void onSaveProduct() {
         if (!mProduct.getImgupload_front().isEmpty() && !name.getText().toString().isEmpty()) {
-            if (mProduct != null) {
-                mProduct.setBarcode(mBarcode);
-                mProduct.setName(name.getText().toString());
-                mProduct.setImgupload_front(mProduct.getImgupload_front());
-                mProduct.setImgupload_ingredients(mProduct.getImgupload_ingredients());
-                mProduct.setImgupload_nutrition(mProduct.getImgupload_nutrition());
-                mProduct.setStores(store.getText().toString());
-                mProduct.setWeight(weight.getText().toString());
-                mProduct.setWeight_unit(mUnit[0]);
-                mProduct.save();
+            RequestParams params = new RequestParams();
+            params.put("code", mBarcode);
+            if(!loginS.isEmpty() && !passS.isEmpty()) {
+                params.put("user_id", loginS);
+                params.put("password", passS);
             }
-            Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            SaveProductOfflineActivity.this.finish();
+            params.put("product_name", name.getText().toString());
+            params.put("quantity", weight.getText().toString() + " " + mUnit[0]);
+            params.put("stores", store.getText().toString());
+            params.put("comment", "added with the new Android app");
+
+            Utils.compressImage(mProduct.getImgupload_ingredients());
+            Utils.compressImage(mProduct.getImgupload_nutrition());
+            Utils.compressImage(mProduct.getImgupload_front());
+            api.post(this, params, mProduct.getImgupload_front().replace(".png", "_small.png"), mProduct.getImgupload_ingredients().replace(".png", "_small.png"),
+                    mProduct.getImgupload_nutrition().replace(".png", "_small.png"), mBarcode,
+                    new FoodUserClientUsage.OnProductSentCallback() {
+                        @Override
+                        public void onProductSentResponse(boolean value) {
+                            if(!value) {
+                                if (mProduct != null) {
+                                    mProduct.setBarcode(mBarcode);
+                                    mProduct.setName(name.getText().toString());
+                                    mProduct.setImgupload_front(mProduct.getImgupload_front());
+                                    mProduct.setImgupload_ingredients(mProduct.getImgupload_ingredients());
+                                    mProduct.setImgupload_nutrition(mProduct.getImgupload_nutrition());
+                                    mProduct.setStores(store.getText().toString());
+                                    mProduct.setWeight(weight.getText().toString());
+                                    mProduct.setWeight_unit(mUnit[0]);
+                                    mProduct.save();
+                                }
+                                Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
+                            }
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                            SaveProductOfflineActivity.this.finish();
+                        }
+            });
         } else {
             Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
         }

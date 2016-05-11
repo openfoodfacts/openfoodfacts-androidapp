@@ -25,7 +25,94 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
 public class FoodUserClientUsage {
 
-    public void post(final Activity activity, RequestParams params, final String imgFront, final String imgIng, final String imgNut, final String barcode, final ListView lv, final int pos, final ArrayList<SaveItem> saveItems){
+    public interface OnProductSentCallback {
+        public void onProductSentResponse(boolean value);
+    }
+
+    public void post(final Activity activity, RequestParams params, final String imgFront, final String imgIng, final String imgNut, final String barcode, final OnProductSentCallback productSentCallback){
+        FoodUserClient.post("/cgi/product_jqm2.pl", params, new JsonHttpResponseHandler() {
+
+            LoadToast lt = new LoadToast(activity);
+
+            @Override
+            public void onStart() {
+                // called before request is started
+                lt.setText(activity.getString(R.string.toastSending));
+                lt.setBackgroundColor(activity.getResources().getColor(R.color.indigo_600));
+                lt.setTextColor(activity.getResources().getColor(R.color.white));
+                lt.show();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
+                // If the response is JSONObject instead of expected JSONArray
+                try {
+                    int status = response.getInt("status");
+                    if (status == 0) {
+                        lt.error();
+                        productSentCallback.onProductSentResponse(false);
+                    } else {
+                        lt.success();
+                        if (!imgFront.isEmpty()) {
+                            RequestParams paramsImgF = new RequestParams();
+                            File myFileFront = new File(imgFront);
+                            paramsImgF.put("code", barcode);
+                            paramsImgF.put("imagefield", "front");
+                            try {
+                                paramsImgF.put("imgupload_front", myFileFront);
+                            } catch (FileNotFoundException e) {
+                                e.getMessage();
+                            }
+                            postImg(activity, paramsImgF);
+                        }
+
+                        if (!imgIng.isEmpty()) {
+                            RequestParams paramsImgI = new RequestParams();
+                            File myFileIng = new File(imgIng);
+                            paramsImgI.put("code", barcode);
+                            paramsImgI.put("imagefield", "ingredients");
+                            try {
+                                paramsImgI.put("imgupload_ingredients", myFileIng);
+                            } catch (FileNotFoundException e) {
+                                e.getMessage();
+                            }
+                            postImg(activity, paramsImgI);
+                        }
+
+                        if (!imgNut.isEmpty()) {
+                            RequestParams paramsImgN = new RequestParams();
+                            File myFileNut = new File(imgNut);
+                            paramsImgN.put("code", barcode);
+                            paramsImgN.put("imagefield", "front");
+                            try {
+                                paramsImgN.put("imgupload_nutrition", myFileNut);
+                            } catch (FileNotFoundException e) {
+                                e.getMessage();
+                            }
+                            postImg(activity, paramsImgN);
+                        }
+                        productSentCallback.onProductSentResponse(true);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    productSentCallback.onProductSentResponse(false);
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                productSentCallback.onProductSentResponse(false);
+                lt.error();
+            }
+
+            @Override
+            public void onRetry ( int retryNo){
+                // called when request is retried
+            }
+        });
+    }
+
+    public void postSaved(final Activity activity, RequestParams params, final String imgFront, final String imgIng, final String imgNut, final String barcode, final ListView lv, final int pos, final ArrayList<SaveItem> saveItems){
         FoodUserClient.post("/cgi/product_jqm2.pl", params, new JsonHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
@@ -101,8 +188,8 @@ public class FoodUserClientUsage {
             @Override
             public void onRetry ( int retryNo){
                 // called when request is retried
-                }
-            });
+            }
+        });
     }
 
     public void postImg(final Activity activity, final RequestParams params){
@@ -175,7 +262,7 @@ public class FoodUserClientUsage {
                     pass.setText("");
                     editor.putString("user", "");
                     editor.putString("pass", "");
-                    editor.commit();
+                    editor.apply();
                     infoLogin.setText(R.string.txtInfoLoginNo);
                 } else {
                     lt.success();
@@ -202,5 +289,4 @@ public class FoodUserClientUsage {
             }
         });
     }
-
 }

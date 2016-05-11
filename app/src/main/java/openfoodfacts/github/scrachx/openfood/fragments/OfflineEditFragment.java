@@ -16,12 +16,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.RequestParams;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +27,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.FoodUserClientUsage;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
@@ -131,11 +126,11 @@ public class OfflineEditFragment extends BaseFragment {
                                 params.put("stores", sp.getStores());
                                 params.put("comment", "added with the new Android app");
 
-                                compressImage(sp.getImgupload_ingredients());
-                                compressImage(sp.getImgupload_nutrition());
-                                compressImage(sp.getImgupload_front());
+                                Utils.compressImage(sp.getImgupload_ingredients());
+                                Utils.compressImage(sp.getImgupload_nutrition());
+                                Utils.compressImage(sp.getImgupload_front());
 
-                                user.post(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getImgupload_ingredients().replace(".png", "_small.png"), sp.getImgupload_nutrition().replace(".png", "_small.png"), sp.getBarcode(), listView, i, saveItems);
+                                user.postSaved(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getImgupload_ingredients().replace(".png", "_small.png"), sp.getImgupload_nutrition().replace(".png", "_small.png"), sp.getBarcode(), listView, i, saveItems);
 
                             }
                         }
@@ -204,49 +199,5 @@ public class OfflineEditFragment extends BaseFragment {
                 //Do nothing
             }
         }
-    }
-
-    protected void compressImage(String url) {
-        File fileFront = new File(url);
-        Bitmap bt = decodeFile(fileFront);
-        OutputStream fOutFront = null;
-        File smallFileFront = new File(url.replace(".png", "_small.png"));
-        try {
-            fOutFront = new FileOutputStream(smallFileFront);
-            bt.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
-            fOutFront.flush();
-            fOutFront.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Decodes image and scales it to reduce memory consumption
-    private Bitmap decodeFile(File f) {
-        try {
-            // Decode image size
-            BitmapFactory.Options o = new BitmapFactory.Options();
-            o.inJustDecodeBounds = true;
-            BitmapFactory.decodeStream(new FileInputStream(f), null, o);
-
-            // The new size we want to scale to
-            final int REQUIRED_SIZE = 300;
-
-            // Find the correct scale value. It should be the power of 2.
-            int scale = 1;
-            while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
-                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
-                scale *= 2;
-            }
-
-            // Decode with inSampleSize
-            BitmapFactory.Options o2 = new BitmapFactory.Options();
-            o2.inSampleSize = scale;
-            return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
-        } catch (FileNotFoundException e) {
-        }
-        return null;
     }
 }
