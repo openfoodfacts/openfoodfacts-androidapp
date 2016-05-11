@@ -129,6 +129,7 @@ public class OfflineEditFragment extends BaseFragment {
                                 params.put("product_name", sp.getName());
                                 params.put("quantity", sp.getWeight() + " " + sp.getWeight_unit());
                                 params.put("stores", sp.getStores());
+                                params.put("comment", "added with the new Android app");
 
                                 compressImage(sp.getImgupload_ingredients());
                                 compressImage(sp.getImgupload_nutrition());
