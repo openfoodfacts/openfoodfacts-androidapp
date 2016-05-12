@@ -75,7 +75,7 @@ dependencies {
 
     compile 'me.dm7.barcodescanner:zxing:1.8.4'
 
-    compile 'com.hkm.loyalslider:library:1.8.3'
+    compile 'com.hkm.loyalslider:library:1.8.8'
 
     compile 'org.jsoup:jsoup:1.8.3'
 

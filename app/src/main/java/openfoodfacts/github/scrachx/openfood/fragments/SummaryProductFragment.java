@@ -3,15 +3,22 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.hkm.slider.Animations.DescriptionAnimation;
 import com.hkm.slider.Indicators.PagerIndicator;
 import com.hkm.slider.SliderLayout;
+import com.hkm.slider.SliderTypes.AdjustableSlide;
+import com.hkm.slider.SliderTypes.BaseSliderView;
 import com.hkm.slider.SliderTypes.DefaultSliderView;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -43,31 +50,29 @@ public class SummaryProductFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
 
-        DefaultSliderView sliderViewImageDefault;
+        ArrayList<String> urlsImages = new ArrayList<>();
         if (state.getProduct().getImageUrl() != null) {
-            sliderViewImageDefault = new DefaultSliderView(getActivity());
-            sliderViewImageDefault
-                    .description("Default")
-                    .image(state.getProduct().getImageUrl());
-            sliderImages.addSlider(sliderViewImageDefault);
+            urlsImages.add(state.getProduct().getImageUrl());
         }
         if (state.getProduct().getImageIngredientsUrl() != null) {
-            sliderViewImageDefault = new DefaultSliderView(getActivity());
-            sliderViewImageDefault
-                    .description("Ingredients")
-                    .image(state.getProduct().getImageIngredientsUrl());
-            sliderImages.addSlider(sliderViewImageDefault);
+            urlsImages.add(state.getProduct().getImageIngredientsUrl());
         }
         if (state.getProduct().getImageNutritionUrl() != null) {
-            sliderViewImageDefault = new DefaultSliderView(getActivity());
-            sliderViewImageDefault
-                    .description("Nutrition")
-                    .image(state.getProduct().getImageNutritionUrl());
-
-            sliderImages.addSlider(sliderViewImageDefault);
+            urlsImages.add(state.getProduct().getImageNutritionUrl());
         }
+        ArrayList<AdjustableSlide> list = new ArrayList<>();
+        for (int h = 0; h < urlsImages.size(); h++) {
+            AdjustableSlide textSliderView = new AdjustableSlide(view.getContext());
+            textSliderView
+                    .image(urlsImages.get(h))
+                    .setScaleType(BaseSliderView.ScaleType.FitCenterCrop);
+            list.add(textSliderView);
+        }
+        sliderImages.loadSliderList(list);
+        sliderImages.setCustomAnimation(new DescriptionAnimation());
+        sliderImages.setSliderTransformDuration(1000, new LinearOutSlowInInterpolator());
         sliderImages.setCustomIndicator(pagerIndicator);
-        sliderImages.setDuration(5000);
+        sliderImages.setDuration(5500);
         sliderImages.startAutoCycle();
 
         nameProduct.setText(state.getProduct().getProductName());

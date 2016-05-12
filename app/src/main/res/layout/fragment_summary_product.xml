@@ -19,7 +19,6 @@
                 android:id="@+id/slider"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                custom:pager_animation="Accordion"
                 custom:pager_animation_span="2000"
                 />
 
