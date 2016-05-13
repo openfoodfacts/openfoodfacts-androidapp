@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-05-08 14:13+0200\n"
-"PO-Revision-Date: 2016-05-08 16:31+0000\n"
-"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
+"PO-Revision-Date: 2016-05-12 19:48+0000\n"
+"Last-Translator: VPablo <villumar@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-05-09 13:28+0000\n"
+"X-Launchpad-Export-Date: 2016-05-13 09:32+0000\n"
 "X-Generator: Launchpad (build 18025)\n"
 
 msgctxt "app_name"
 msgid "Open Food"
-msgstr ""
+msgstr "Open Food"
 
 msgctxt "hello_world"
 msgid "Hello world!"
@@ -27,24 +27,24 @@ msgstr "¡Hola mundo!"
 
 msgctxt "action_settings"
 msgid "Settings"
-msgstr ""
+msgstr "Configuración"
 
 msgctxt "action_about"
 msgid "About"
-msgstr ""
+msgstr "Acerca de"
 
 msgctxt "action_find"
 msgid "Find"
-msgstr ""
+msgstr "Buscar"
 
 msgctxt "text_barcode"
 msgid "Put the barcode :"
-msgstr ""
+msgstr "Ponga el código de barras :"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
 msgid "Summary"
-msgstr ""
+msgstr "Resumen"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:1"
@@ -64,35 +64,35 @@ msgstr "Volver al menú"
 #. Text units
 msgctxt "units_array:0"
 msgid "g"
-msgstr ""
+msgstr "g"
 
 #. Text units
 msgctxt "units_array:1"
 msgid "mg"
-msgstr ""
+msgstr "mg"
 
 #. Text units
 msgctxt "units_array:2"
 msgid "kg"
-msgstr ""
+msgstr "kg"
 
 #. Text units
 msgctxt "units_array:3"
 msgid "l"
-msgstr ""
+msgstr "l"
 
 #. Text units
 msgctxt "units_array:4"
 msgid "ml"
-msgstr ""
+msgstr "ml"
 
 msgctxt "images_array:0"
 msgid "Default"
-msgstr ""
+msgstr "Predeterminado"
 
 msgctxt "images_array:1"
 msgid "Nutrition"
-msgstr ""
+msgstr "Nutrición"
 
 msgctxt "images_array:2"
 msgid "Ingredients"
@@ -101,35 +101,36 @@ msgstr "Ingredientes"
 #. Content Description
 msgctxt "search_button"
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 msgctxt "no_products"
 msgid "Products not found"
-msgstr ""
+msgstr "No se han encontrado productos"
 
 msgctxt "desc_list_item_icon"
 msgid "Item Icon"
-msgstr ""
+msgstr "Icono de Objeto"
 
 msgctxt "alert_dialog_warning_title"
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 msgctxt "alert_dialog_warning_msg_user"
 msgid "User/password has changed, please update information"
 msgstr ""
+"El usuario/contraseña ha cambiado, por favor actualice la información"
 
 msgctxt "alert_dialog_product_error_msg"
 msgid "Product not found, please try again"
-msgstr ""
+msgstr "El producto no se ha encontrado, por favor pruebe de nuevo"
 
 msgctxt "toast_retrieving"
 msgid "Loading..."
-msgstr ""
+msgstr "Cargando..."
 
 msgctxt "txtBarcode"
 msgid "Barcode :"
-msgstr ""
+msgstr "Código de barras :"
 
 msgctxt "txtQuantity"
 msgid "Quantity :"
@@ -137,75 +138,75 @@ msgstr "Cantidad :"
 
 msgctxt "txtPackaging"
 msgid "Packaging :"
-msgstr ""
+msgstr "Envasado :"
 
 msgctxt "txtBrands"
 msgid "Brands :"
-msgstr ""
+msgstr "MArcas :"
 
 msgctxt "txtCategories"
 msgid "Categories :"
-msgstr ""
+msgstr "Categorías :"
 
 msgctxt "txtManufacturing"
 msgid "Manufacturing or processing places :"
-msgstr ""
+msgstr "Lugares de manufactura o proceso :"
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
-msgstr ""
+msgstr "Ciudad, estado o país donde se compró :"
 
 msgctxt "txtStores"
 msgid "Stores :"
-msgstr ""
+msgstr "Tiendas :"
 
 msgctxt "txtCountries"
 msgid "Countries where sold :"
-msgstr ""
+msgstr "Países donde se compra :"
 
 msgctxt "txtIngredients"
 msgid "Ingredients list :"
-msgstr ""
+msgstr "Lista de ingredientes :"
 
 msgctxt "txtSubstances"
 msgid "Substances or products causing allergies or intolerances :"
-msgstr ""
+msgstr "Substancias o productos que causen alergias o intolerancias :"
 
 msgctxt "txtAdditives"
 msgid "Additives :"
-msgstr ""
+msgstr "Aditivos :"
 
 msgctxt "txtTraces"
 msgid "Traces :"
-msgstr ""
+msgstr "Rastros :"
 
 msgctxt "txtMayBeFromPalmOilProduct"
 msgid "Ingredients that may be from palm oil :"
-msgstr ""
+msgstr "Ingredientes que puedan provenir de aceite de palma :"
 
 msgctxt "txtPalmOilProduct"
 msgid "Ingredients from palm oil :"
-msgstr ""
+msgstr "Ingredientes con aceite de palma :"
 
 msgctxt "txtServingSize"
 msgid "Serving size :"
-msgstr ""
+msgstr "Tamaño de la ración :"
 
 msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
-msgstr ""
+msgstr "Niveles de nutrientes por cada 100g :"
 
 msgctxt "txtLogin"
 msgid "Login :"
-msgstr ""
+msgstr "Usuario :"
 
 msgctxt "txtPass"
 msgid "Password :"
-msgstr ""
+msgstr "Contraseña :"
 
 msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
-msgstr ""
+msgstr "Abra su comida y sepa qué come"
 
 msgctxt "txtHome"
 msgid ""
@@ -213,34 +214,37 @@ msgid ""
 "nutrition facts and all the tidbits of information we can find on product "
 "labels."
 msgstr ""
+"OpenFoodFacts es una base de datos de productos alimenticios con "
+"ingredientes, alérgenos, información nutricional y todas aquellas minucias "
+"que se pueden encontrar en las etiquetas de los productos."
 
 msgctxt "txtSave"
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 msgctxt "txtUser"
 msgid "User panel"
-msgstr ""
+msgstr "Panel de usuario"
 
 msgctxt "txtToastSaved"
 msgid "User saved"
-msgstr ""
+msgstr "Usuario guardado"
 
 msgctxt "txtSalt"
 msgid "Salt :"
-msgstr ""
+msgstr "Sal :"
 
 msgctxt "txtFat"
 msgid "Fat :"
-msgstr ""
+msgstr "Grasas :"
 
 msgctxt "txtSugars"
 msgid "Sugars :"
-msgstr ""
+msgstr "Azúcares :"
 
 msgctxt "txtSaturatedFat"
 msgid "Satured fat :"
-msgstr ""
+msgstr "Grasas saturada :"
 
 msgctxt "hintBarcode"
 msgid "Barcode"
@@ -248,222 +252,231 @@ msgstr "Código de barras"
 
 msgctxt "hintLogin"
 msgid "Login"
-msgstr ""
+msgstr "Iniciar sesión"
 
 msgctxt "hintPass"
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 msgctxt "errorLogin"
 msgid "Login or password error"
-msgstr ""
+msgstr "Usuario o contraseña incorrecto"
 
 msgctxt "errorWeb"
 msgid ""
 "We were not able to access the internet. Do you have connectivity issues?"
 msgstr ""
+"No hemos podido conectarnos a Internet. ¿Tiene problemas de conexión?"
 
 msgctxt "txtInfoLoginOk"
 msgid "User saved"
-msgstr ""
+msgstr "Usuario guardado"
 
 msgctxt "txtInfoLoginNo"
 msgid "User not saved"
-msgstr ""
+msgstr "Usuario no guardado"
 
 msgctxt "txtDialogsTitle"
 msgid "Information"
-msgstr ""
+msgstr "Información"
 
 msgctxt "txtDialogsContent"
 msgid ""
 "The product you scanned does not exist yet in Open Food Facts. Do you want "
 "to add it?"
 msgstr ""
+"El producto que ha escaneado no existe aun en Open Food Facts. ¿Quiere "
+"añadirlo?"
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to our database?"
-msgstr ""
+msgstr "¿Quiere enviar el producto salvado a nuestra base de datos?"
 
 msgctxt "txtYes"
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
 msgctxt "txtNo"
 msgid "No"
-msgstr ""
+msgstr "No"
 
 msgctxt "hintNameProduct"
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 msgctxt "hintEnergy"
 msgid "Energy in kJ per serving"
-msgstr ""
+msgstr "Energía en kJ por ración"
 
 msgctxt "hintEnergyUnit"
 msgid "Energy unit"
-msgstr ""
+msgstr "Unidad de energía"
 
 msgctxt "hintWeight"
 msgid "Weight"
-msgstr ""
+msgstr "Peso"
 
 msgctxt "hintStores"
 msgid "Store"
-msgstr ""
+msgstr "Tienda"
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
-msgstr ""
+msgstr "Hacer una foto"
 
 msgctxt "txtSendAll"
 msgid "Upload all"
-msgstr ""
+msgstr "Subir todo"
 
 msgctxt "txtNoData"
 msgid "No data"
-msgstr ""
+msgstr "Sin datos"
 
 msgctxt "txtPictureNeeded"
 msgid "Take a picture first, then fill the name and store!"
-msgstr ""
+msgstr "¡Haga una foto antes, luego rellene el nombre y la tienda!"
 
 msgctxt "toastSending"
 msgid "Uploading..."
-msgstr ""
+msgstr "Subiendo..."
 
 msgctxt "dataSaved"
 msgid "Saved locally on your device"
-msgstr ""
+msgstr "Guardado localmente en su dispositivo"
 
 msgctxt "txtInfoAddUser"
 msgid "Please enter your login and password"
-msgstr ""
+msgstr "Por favor ponga su usuario y contraseña"
 
 msgctxt "txtDataUpdated"
 msgid "Data updated"
-msgstr ""
+msgstr "Datos actualizados"
 
 msgctxt "txtLoading"
 msgid "Loading..."
-msgstr ""
+msgstr "Cargando..."
 
 msgctxt "txtDialogsContentDelete"
 msgid "Do you want to delete this draft?"
-msgstr ""
+msgstr "¿Quiere borrar este borrador?"
 
 msgctxt "txtDialogsContentInfoSave"
 msgid ""
 "The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
+"El producto se ha guardado localmente, puede editarlo en el menú Editor "
+"Offline"
 
 msgctxt "txtBarcodeRequire"
 msgid "Barcode required"
-msgstr ""
+msgstr "Se necesita un código de barras"
 
 msgctxt "txtOk"
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
-msgstr ""
+msgstr "Por favor no salga durante el proceso..."
 
 msgctxt "txtAbout"
 msgid ""
 "The pictures you send are published under the free licence Creative Commons "
 "Attribution and ShareAlike."
 msgstr ""
+"Las imágenes que ha enviado son publicadas bajo la licencia libre Creative "
+"Commons Attribution and ShareAlike"
 
 msgctxt "txtAllsent"
 msgid "Products sent"
-msgstr ""
+msgstr "Productos enviados"
 
 msgctxt "txtPalm"
 msgid "The product does not contain any palm oil"
-msgstr ""
+msgstr "El producto no contiene nada de aceite de palma"
 
 msgctxt "txtBarcodeNotValid"
 msgid "Barcode not valid"
-msgstr ""
+msgstr "Código de barras no válido"
 
 msgctxt "try_it_scan_now"
 msgid "Try it! Scan now!"
-msgstr ""
+msgstr "¡Pruebe! ¡Escanee ahora!"
 
 msgctxt "share"
 msgid "Share"
-msgstr ""
+msgstr "Compartir"
 
 msgctxt "msg_share"
 msgid "Look at this product on Open Food Facts :"
-msgstr ""
+msgstr "Mire el producto en Open Food Facts :"
 
 msgctxt "create_account"
 msgid "Sign up"
-msgstr ""
+msgstr "Registrarse"
 
 msgctxt "home_drawer"
 msgid "Home"
-msgstr ""
+msgstr "Inicio"
 
 msgctxt "search_drawer"
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 msgctxt "search_by_barcode_drawer"
 msgid "Search by barcode"
-msgstr ""
+msgstr "Buscar por código de barras"
 
 msgctxt "search_by_name_drawer"
 msgid "Search by name"
-msgstr ""
+msgstr "Buscar por nombre"
 
 msgctxt "scan_search"
 msgid "Scan"
-msgstr ""
+msgstr "Escanear"
 
 msgctxt "user_drawer"
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 msgctxt "offline_edit_drawer"
 msgid "Offline edit"
-msgstr ""
+msgstr "Edición offline"
 
 msgctxt "txt_anonymous"
 msgid "Anonymous"
-msgstr ""
+msgstr "Anónimo"
 
 msgctxt "txt_product_not_found"
 msgid "Products not found"
-msgstr ""
+msgstr "No se han encontrado productos"
 
 msgctxt "delete_txt"
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 msgctxt "sign_in_drawer"
 msgid "Sign-in"
-msgstr ""
+msgstr "Acceder"
 
 msgctxt "alert_drawer"
 msgid "Alert allergens"
-msgstr ""
+msgstr "Cuidado alérgenos"
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
-msgstr ""
+msgstr "Contiene alérgenos"
 
 msgctxt "title_dialog_alert"
 msgid "Add alert"
-msgstr ""
+msgstr "Añadir alerta"
 
 msgctxt "warning_alert_data"
 msgid "Data may not be accurate, be careful, please check by yourself!"
 msgstr ""
+"Los datos pueden no ser precisos, tenga cuidado, ¡por favor compruébelo "
+"usted mismo!"
 
 msgctxt "from_gallery"
 msgid "From gallery"
-msgstr ""
+msgstr "Desde la galería"

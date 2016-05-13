@@ -1,4 +1,4 @@
-# Portuguese translation for openfoodfacts
+# Interlingua translation for openfoodfacts
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the openfoodfacts package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-05-08 14:13+0200\n"
-"PO-Revision-Date: 2016-05-11 17:03+0000\n"
-"Last-Translator: Rui Óscar <r.oscar@sapo.pt>\n"
-"Language-Team: Portuguese <pt@li.org>\n"
+"PO-Revision-Date: 2016-05-11 15:12+0000\n"
+"Last-Translator: karm <melo@carmu.com>\n"
+"Language-Team: Interlingua <ia@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,23 +19,23 @@ msgstr ""
 
 msgctxt "app_name"
 msgid "Open Food"
-msgstr "Open Food"
+msgstr ""
 
 msgctxt "hello_world"
 msgid "Hello world!"
-msgstr "Olá Mundo!"
+msgstr ""
 
 msgctxt "action_settings"
 msgid "Settings"
-msgstr "Definições"
+msgstr "Configurationes"
 
 msgctxt "action_about"
 msgid "About"
-msgstr "Acerca"
+msgstr "Re"
 
 msgctxt "action_find"
 msgid "Find"
-msgstr "Procurar"
+msgstr "Trovar"
 
 msgctxt "text_barcode"
 msgid "Put the barcode :"
@@ -44,7 +44,7 @@ msgstr ""
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
 msgid "Summary"
-msgstr "Resumo"
+msgstr "Summario"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:1"
@@ -54,12 +54,12 @@ msgstr "Ingredientes"
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:2"
 msgid "Nutrition"
-msgstr "Nutrição"
+msgstr "Nutrition"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
 msgid "Back to menu"
-msgstr "Voltar ao menu"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:0"
@@ -88,11 +88,11 @@ msgstr "ml"
 
 msgctxt "images_array:0"
 msgid "Default"
-msgstr "Padrão"
+msgstr "Predefinite"
 
 msgctxt "images_array:1"
 msgid "Nutrition"
-msgstr "Nutrição"
+msgstr "Nutrition"
 
 msgctxt "images_array:2"
 msgid "Ingredients"
@@ -101,19 +101,19 @@ msgstr "Ingredientes"
 #. Content Description
 msgctxt "search_button"
 msgid "Search"
-msgstr "Procurar"
+msgstr "Cercar"
 
 msgctxt "no_products"
 msgid "Products not found"
-msgstr "Produtos não encontrados"
+msgstr "Productos non trovate"
 
 msgctxt "desc_list_item_icon"
 msgid "Item Icon"
-msgstr ""
+msgstr "Icone del elemento"
 
 msgctxt "alert_dialog_warning_title"
 msgid "Warning"
-msgstr "Aviso"
+msgstr "Advertimento"
 
 msgctxt "alert_dialog_warning_msg_user"
 msgid "User/password has changed, please update information"
@@ -125,23 +125,23 @@ msgstr ""
 
 msgctxt "toast_retrieving"
 msgid "Loading..."
-msgstr "A carregar..."
+msgstr "Cargamento..."
 
 msgctxt "txtBarcode"
 msgid "Barcode :"
-msgstr "Código de barras"
+msgstr "Codice a barras:"
 
 msgctxt "txtQuantity"
 msgid "Quantity :"
-msgstr "Quantidade :"
+msgstr "Quantitate :"
 
 msgctxt "txtPackaging"
 msgid "Packaging :"
-msgstr ""
+msgstr "Pacchetto :"
 
 msgctxt "txtBrands"
 msgid "Brands :"
-msgstr ""
+msgstr "Marcas :"
 
 msgctxt "txtCategories"
 msgid "Categories :"
@@ -153,19 +153,19 @@ msgstr ""
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
-msgstr "Cidade e país de compra :"
+msgstr ""
 
 msgctxt "txtStores"
 msgid "Stores :"
-msgstr "Lojas :"
+msgstr ""
 
 msgctxt "txtCountries"
 msgid "Countries where sold :"
-msgstr "País de venda :"
+msgstr ""
 
 msgctxt "txtIngredients"
 msgid "Ingredients list :"
-msgstr "Lista dos ingredientes :"
+msgstr ""
 
 msgctxt "txtSubstances"
 msgid "Substances or products causing allergies or intolerances :"
@@ -173,7 +173,7 @@ msgstr ""
 
 msgctxt "txtAdditives"
 msgid "Additives :"
-msgstr "Aditivos :"
+msgstr ""
 
 msgctxt "txtTraces"
 msgid "Traces :"
@@ -216,7 +216,7 @@ msgstr ""
 
 msgctxt "txtSave"
 msgid "Save"
-msgstr "Guardar"
+msgstr ""
 
 msgctxt "txtUser"
 msgid "User panel"
@@ -228,7 +228,7 @@ msgstr ""
 
 msgctxt "txtSalt"
 msgid "Salt :"
-msgstr "Sal :"
+msgstr ""
 
 msgctxt "txtFat"
 msgid "Fat :"
@@ -240,15 +240,15 @@ msgstr ""
 
 msgctxt "txtSaturatedFat"
 msgid "Satured fat :"
-msgstr "Gordura saturada :"
+msgstr ""
 
 msgctxt "hintBarcode"
 msgid "Barcode"
-msgstr "Código de barras"
+msgstr ""
 
 msgctxt "hintLogin"
 msgid "Login"
-msgstr "Iniciar sessão"
+msgstr ""
 
 msgctxt "hintPass"
 msgid "Password"
@@ -273,7 +273,7 @@ msgstr ""
 
 msgctxt "txtDialogsTitle"
 msgid "Information"
-msgstr "Informação"
+msgstr ""
 
 msgctxt "txtDialogsContent"
 msgid ""
@@ -287,19 +287,19 @@ msgstr ""
 
 msgctxt "txtYes"
 msgid "Yes"
-msgstr "Sim"
+msgstr ""
 
 msgctxt "txtNo"
 msgid "No"
-msgstr "Não"
+msgstr ""
 
 msgctxt "hintNameProduct"
 msgid "Name"
-msgstr "Nome"
+msgstr ""
 
 msgctxt "hintEnergy"
 msgid "Energy in kJ per serving"
-msgstr "Energia em KJ por dose"
+msgstr ""
 
 msgctxt "hintEnergyUnit"
 msgid "Energy unit"
@@ -307,15 +307,15 @@ msgstr ""
 
 msgctxt "hintWeight"
 msgid "Weight"
-msgstr "Peso"
+msgstr ""
 
 msgctxt "hintStores"
 msgid "Store"
-msgstr "Loja"
+msgstr ""
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
-msgstr "Fotografar"
+msgstr ""
 
 msgctxt "txtSendAll"
 msgid "Upload all"
@@ -343,7 +343,7 @@ msgstr ""
 
 msgctxt "txtDataUpdated"
 msgid "Data updated"
-msgstr "Dados actualizados"
+msgstr ""
 
 msgctxt "txtLoading"
 msgid "Loading..."
@@ -364,7 +364,7 @@ msgstr ""
 
 msgctxt "txtOk"
 msgid "Ok"
-msgstr "Ok"
+msgstr ""
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
@@ -382,11 +382,11 @@ msgstr ""
 
 msgctxt "txtPalm"
 msgid "The product does not contain any palm oil"
-msgstr "O produto não contem óleo de palma"
+msgstr ""
 
 msgctxt "txtBarcodeNotValid"
 msgid "Barcode not valid"
-msgstr "Código de barras invalido"
+msgstr ""
 
 msgctxt "try_it_scan_now"
 msgid "Try it! Scan now!"
@@ -422,11 +422,11 @@ msgstr ""
 
 msgctxt "scan_search"
 msgid "Scan"
-msgstr "Digitalizar"
+msgstr ""
 
 msgctxt "user_drawer"
 msgid "User"
-msgstr "Utilizador"
+msgstr ""
 
 msgctxt "offline_edit_drawer"
 msgid "Offline edit"
@@ -434,7 +434,7 @@ msgstr ""
 
 msgctxt "txt_anonymous"
 msgid "Anonymous"
-msgstr "Anónimo"
+msgstr ""
 
 msgctxt "txt_product_not_found"
 msgid "Products not found"
@@ -442,7 +442,7 @@ msgstr ""
 
 msgctxt "delete_txt"
 msgid "Delete"
-msgstr "Apagar"
+msgstr ""
 
 msgctxt "sign_in_drawer"
 msgid "Sign-in"
@@ -458,7 +458,7 @@ msgstr ""
 
 msgctxt "title_dialog_alert"
 msgid "Add alert"
-msgstr "Adicionar alerta"
+msgstr ""
 
 msgctxt "warning_alert_data"
 msgid "Data may not be accurate, be careful, please check by yourself!"
