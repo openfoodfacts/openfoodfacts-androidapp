@@ -8,12 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
 import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
@@ -30,18 +30,19 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        checkUserCredentials();
+    }
 
+    @OnClick(R.id.buttonScan)
+    protected void OnScan() {
+        Intent intent = new Intent(getActivity(), ScannerFragmentActivity.class);
+        startActivity(intent);
+    }
+
+    private void checkUserCredentials() {
         final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
         String loginS = settings.getString("user", "");
         String passS = settings.getString("pass", "");
-
-        mButtonScan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ScannerFragmentActivity.class);
-                startActivity(intent);
-            }
-        });
 
         if (!loginS.isEmpty() && !passS.isEmpty()) {
             RequestParams params = new RequestParams();

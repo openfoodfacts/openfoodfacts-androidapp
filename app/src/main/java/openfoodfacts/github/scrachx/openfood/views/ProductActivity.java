@@ -1,22 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.mikepenz.fontawesome_typeface_library.FontAwesome;
-import com.mikepenz.iconics.IconicsDrawable;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +63,9 @@ public class ProductActivity extends BaseActivity {
                     .title(R.string.warning_allergens)
                     .items(matchAll)
                     .neutralText(R.string.txtOk)
+                    .titleColorRes(R.color.red_500)
+                    .dividerColorRes(R.color.indigo_900)
+                    .icon(this.getResources().getDrawable(R.drawable.ic_warning_24dp))
                     .show();
         }
     }

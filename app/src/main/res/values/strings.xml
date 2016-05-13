@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Open Food</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -67,7 +68,7 @@
     <string name="txtPass">Password :</string>
     <string name="txtTitleHome">Open your food and know what you eat</string>
     <string name="txtHome">Open Food Facts is a database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
-    <string name="txtSave">Save</string>
+    <string name="txtSave">Send/Save</string>
     <string name="txtUser">User panel</string>
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Salt :</string>
@@ -131,6 +132,8 @@
     <string name="toggle_flash" translatable="false">Flash</string>
     <string name="flash_on" translatable="false">Flash [ON]</string>
     <string name="flash_off" translatable="false">Flash [OFF]</string>
+    <string name="ring_on" translatable="false">Ring [ON]</string>
+    <string name="ring_off" translatable="false">Ring [OFF]</string>
     <string name="auto_focus_on" translatable="false">Auto Focus [ON]</string>
     <string name="auto_focus_off" translatable="false">Auto Focus [OFF]</string>
     <string name="formats" translatable="false">Formats</string>
@@ -140,6 +143,7 @@
     <string name="cancel_button" translatable="false">Cancel</string>
     <string name="warning_alert_data">Data may not be accurate, be careful, please check by yourself!</string>
     <string name="from_gallery">From gallery</string>
+    <string name="product_sent">Product sent!</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>
