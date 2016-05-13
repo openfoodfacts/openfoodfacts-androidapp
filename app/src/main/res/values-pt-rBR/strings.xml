@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="hello_world">Olá mundo!</string>
+  <string name="action_settings">Configurações</string>
+  <string name="action_about">Sobre</string>
+  <string name="action_find">Buscar</string>
+  <string name="text_barcode">Coloque o código de barras:</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Resumo</item>
+    <item>Ingredientes</item>
+    <item>Nutrição</item>
+    <item>Voltar ao menu</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Padrão</item>
+    <item>Nutrição</item>
+    <item>Ingredientes</item>
+  </string-array>
+  <string name="search_button">Buscar</string>
+  <string name="no_products">Nenhum produto encontrado</string>
+</resources>
