@@ -6,9 +6,9 @@
   <string name="action_about">Acerca</string>
   <string name="action_find">Procurar</string>
   <string-array name="nav_drawer_items_product">
-    <item>Sumário</item>
+    <item>Resumo</item>
     <item>Ingredientes</item>
-    <item>Nutrition</item>
+    <item>Nutrição</item>
     <item>Voltar ao menu</item>
   </string-array>
   <string-array name="units_array">
@@ -20,11 +20,41 @@
   </string-array>
   <string-array name="images_array">
     <item>Padrão</item>
-    <item>Nutrition</item>
+    <item>Nutrição</item>
     <item>Ingredientes</item>
   </string-array>
   <string name="search_button">Procurar</string>
+  <string name="no_products">Produtos não encontrados</string>
   <string name="alert_dialog_warning_title">Aviso</string>
   <string name="toast_retrieving">A carregar...</string>
+  <string name="txtBarcode">Código de barras</string>
   <string name="txtQuantity">Quantidade :</string>
+  <string name="txtCategories">Categorias :</string>
+  <string name="txtCity">Cidade e país de compra :</string>
+  <string name="txtStores">Lojas :</string>
+  <string name="txtCountries">País de venda :</string>
+  <string name="txtIngredients">Lista dos ingredientes :</string>
+  <string name="txtAdditives">Aditivos :</string>
+  <string name="txtSave">Guardar</string>
+  <string name="txtSalt">Sal :</string>
+  <string name="txtSaturatedFat">Gordura saturada :</string>
+  <string name="hintBarcode">Código de barras</string>
+  <string name="hintLogin">Iniciar sessão</string>
+  <string name="txtDialogsTitle">Informação</string>
+  <string name="txtYes">Sim</string>
+  <string name="txtNo">Não</string>
+  <string name="hintNameProduct">Nome</string>
+  <string name="hintEnergy">Energia em KJ por dose</string>
+  <string name="hintWeight">Peso</string>
+  <string name="hintStores">Loja</string>
+  <string name="txtTakePicture">Fotografar</string>
+  <string name="txtDataUpdated">Dados actualizados</string>
+  <string name="txtOk">Ok</string>
+  <string name="txtPalm">O produto não contem óleo de palma</string>
+  <string name="txtBarcodeNotValid">Código de barras invalido</string>
+  <string name="scan_search">Digitalizar</string>
+  <string name="user_drawer">Utilizador</string>
+  <string name="txt_anonymous">Anónimo</string>
+  <string name="delete_txt">Apagar</string>
+  <string name="title_dialog_alert">Adicionar alerta</string>
 </resources>

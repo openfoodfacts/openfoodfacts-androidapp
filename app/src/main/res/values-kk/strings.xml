@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="app_name">Тағам Ашу</string>
+  <string name="app_name">Open Food</string>
   <string name="hello_world">Сәлем әлем!</string>
   <string name="action_settings">Баптаулар</string>
   <string name="action_about">Осы туралы</string>
@@ -26,6 +26,7 @@
   </string-array>
   <string name="search_button">Іздеу</string>
   <string name="no_products">Өнімдер табылмады</string>
+  <string name="desc_list_item_icon">Бекеттің белгішесі</string>
   <string name="alert_dialog_warning_title">Ескерту</string>
   <string name="alert_dialog_warning_msg_user">Пайдаланушы/құпиясөз өзгертілген, ақпаратты жаңартыңыз</string>
   <string name="alert_dialog_product_error_msg">Өнім табылмады, тағы да көріңіз</string>
@@ -49,6 +50,8 @@
   <string name="txtNutrientLevel100g">Тағамдық құндылығы 100 г-да :</string>
   <string name="txtLogin">Аты :</string>
   <string name="txtPass">Құпиясөз :</string>
+  <string name="txtTitleHome">Өзіңіздің тағамыңызды ашып және не жейтініңізді біліңіз</string>
+  <string name="txtHome">Open Food Facts тағамдық ингредиенттермен, аллергендермен, тағамның құндылығын және барлық дәмді тағамдар туралы ақпарат таба алады, заттаңбадағы өнімдер деректер базасын көрсетеді.</string>
   <string name="txtSave">Сақтау</string>
   <string name="txtUser">Пайдаланушының панельі</string>
   <string name="txtToastSaved">Пайдаланушы сақталған</string>
@@ -60,6 +63,7 @@
   <string name="hintLogin">Кіру</string>
   <string name="hintPass">Құпиясөз</string>
   <string name="errorLogin">Аты немесе құпиясөзі қате</string>
+  <string name="errorWeb">Біз Ғаламторға қол жеткізе алдмадық. Сізде қосылу жағынан қиындық бар ма?</string>
   <string name="txtInfoLoginOk">Пайдаланушы сақталған</string>
   <string name="txtInfoLoginNo">Пайдаланушы сақталмаған</string>
   <string name="txtDialogsTitle">Ақпарат</string>
@@ -82,14 +86,17 @@
   <string name="txtDataUpdated">Мәліметтер жаңартылды</string>
   <string name="txtLoading">Жүктелуде...</string>
   <string name="txtDialogsContentDelete">Сіз бұл шимайды жойғыңыз келеді ме?</string>
+  <string name="txtDialogsContentInfoSave">Өнім жергілікті сақталған, сіз оның мәзір Автономды Түзетуде түзете аласыз</string>
   <string name="txtBarcodeRequire">Штрих-код талап етеді</string>
   <string name="txtOk">ОК</string>
+  <string name="txtContentDialogUploading">... үдірісінде шықпаңыз</string>
   <string name="txtAbout">Сіз жолдаған фотосуреттер Creative Commons Attribution және ShareAlike лицензияға сай жарияланды.</string>
   <string name="txtAllsent">Өнім жіберілді</string>
   <string name="txtPalm">Өнім пальма майын құрамайды</string>
   <string name="txtBarcodeNotValid">Жарамсыз штрих-код</string>
   <string name="try_it_scan_now">Көріңіз! Қазір сканерлеңіз!</string>
   <string name="share">Бөлісу</string>
+  <string name="msg_share">Бұл өнімді Open Food Facts-та қараңыз:</string>
   <string name="create_account">Тіркелу</string>
   <string name="home_drawer">Басты бет</string>
   <string name="search_drawer">Іздеу</string>
@@ -102,7 +109,9 @@
   <string name="txt_product_not_found">Өнім табылмады</string>
   <string name="delete_txt">Жою</string>
   <string name="sign_in_drawer">Кіру</string>
+  <string name="alert_drawer">Аллергендер туралы ескерту</string>
   <string name="warning_allergens">Аллергендер құрайды</string>
   <string name="title_dialog_alert">Ескертуді қосу</string>
+  <string name="warning_alert_data">Деректер нақты болмауы да мүмкін, абай болыңыз, өзіңіз тексеріңіз!</string>
   <string name="from_gallery">Галереядан</string>
 </resources>

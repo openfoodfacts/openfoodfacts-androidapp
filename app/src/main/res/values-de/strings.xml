@@ -109,6 +109,7 @@
   <string name="txt_product_not_found">Produkt nicht gefunden</string>
   <string name="delete_txt">Löschen</string>
   <string name="sign_in_drawer">Einloggen</string>
+  <string name="alert_drawer">Alarm Allergene</string>
   <string name="warning_allergens">Enthält Allergene</string>
   <string name="title_dialog_alert">Alarm hinzufügen</string>
   <string name="warning_alert_data">Die Angaben könnten nicht akkurat sein. Bitte sei vorsichtig und überprüfe die Angaben selbst.</string>
