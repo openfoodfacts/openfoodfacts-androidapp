@@ -7,4 +7,9 @@
         android:title="@string/share"
         app:actionProviderClass="android.support.v7.widget.ShareActionProvider" />
 
+    <item android:id="@+id/action_edit_product"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="@string/action_edit_product"
+        app:showAsAction="ifRoom" />
+
 </menu>

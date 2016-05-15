@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
@@ -25,6 +26,7 @@ public class ProductActivity extends BaseActivity {
     private ShareActionProvider mShareActionProvider;
     private ProductPagerAdapter adapterResult;
     private List<Allergen> mAllergens;
+    private State mState;
 
     @Bind(R.id.pager) ViewPager viewPager;
     @Bind(R.id.toolbar) Toolbar toolbar;
@@ -44,10 +46,10 @@ public class ProductActivity extends BaseActivity {
         viewPager.setAdapter(adapterResult);
 
         Intent intent = getIntent();
-        State state = (State) intent.getExtras().getSerializable("state");
+        mState = (State) intent.getExtras().getSerializable("state");
 
-        List<String> all = (List<String>) state.getProduct().getAllergensHierarchy();
-        List<String> traces = (List<String>) state.getProduct().getTracesTags();
+        List<String> all = (List<String>) mState.getProduct().getAllergensHierarchy();
+        List<String> traces = (List<String>) mState.getProduct().getTracesTags();
         all.addAll(traces);
         List<String> matchAll = new ArrayList<String>();
         for (int a = 0; a < mAllergens.size(); a++) {
@@ -77,24 +79,29 @@ public class ProductActivity extends BaseActivity {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
+            case R.id.action_edit_product:
+                String url = Utils.getUriProductByCurrentLanguage() + mState.getProduct().getCode();
+                if (mState.getProduct().getUrl() != null) {
+                    url = " " + mState.getProduct().getUrl();
+                }
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(browserIntent);
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_product_share, menu);
+        getMenuInflater().inflate(R.menu.menu_product, menu);
         MenuItem item = menu.findItem(R.id.menu_item_share);
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
 
-        Intent intent = getIntent();
-        State state = (State) intent.getExtras().getSerializable("state");
-
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        String url = " " + Utils.getUriProductByCurrentLanguage() + state.getProduct().getCode();
-        if (state.getProduct().getUrl() != null) {
-            url = " " + state.getProduct().getUrl();
+        String url = " " + Utils.getUriProductByCurrentLanguage() + mState.getProduct().getCode();
+        if (mState.getProduct().getUrl() != null) {
+            url = " " + mState.getProduct().getUrl();
         }
         shareIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.msg_share) + url);
         shareIntent.setType("text/plain");

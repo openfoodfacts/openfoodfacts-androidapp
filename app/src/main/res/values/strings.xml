@@ -144,6 +144,7 @@
     <string name="warning_alert_data">Data may not be accurate, be careful, please check by yourself!</string>
     <string name="from_gallery">From gallery</string>
     <string name="product_sent">Product sent!</string>
+    <string name="action_edit_product">Edit product</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>

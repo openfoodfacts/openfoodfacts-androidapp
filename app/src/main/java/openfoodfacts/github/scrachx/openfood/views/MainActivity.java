@@ -7,8 +7,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.fastadapter.utils.RecyclerViewCacheUtil;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -184,4 +188,25 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_about:
+                new MaterialDialog.Builder(this)
+                .title(R.string.action_about)
+                .content(R.string.txtAbout)
+                .negativeText(R.string.txtOk)
+                .show();
+            return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
