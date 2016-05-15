@@ -80,7 +80,7 @@ public class ProductActivity extends BaseActivity {
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
             case R.id.action_edit_product:
-                String url = Utils.getUriProductByCurrentLanguage() + mState.getProduct().getCode();
+                String url = Utils.getUriByCurrentLanguage() + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
                 if (mState.getProduct().getUrl() != null) {
                     url = " " + mState.getProduct().getUrl();
                 }
