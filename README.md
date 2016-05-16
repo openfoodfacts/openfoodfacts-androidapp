@@ -5,6 +5,9 @@ Open Food Facts Android Application
 
 ## What is Open Food Facts?
 
+<a href="https://f-droid.org/repository/browse/?fdid=openfoodfacts.github.scrachx.openfood">
+<img src=http://lingoworld.eu/at//public/images/fdroid.png></a> 
+
 ### A food products database
 
 Open Food Facts is a database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels. 
