@@ -1,7 +1,7 @@
 Open Food Facts Android Application
 ===================================
 
-[![Build Status](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp.svg?branch=master)](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp)
+[![Build Status](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp.svg?branch=master)](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp) [![Stories in Ready](https://badge.waffle.io/openfoodfacts/OpenFoodFacts-androidApp.svg?label=ready&title=Ready)](http://waffle.io/openfoodfacts/OpenFoodFacts-androidApp)
 
 ## What is Open Food Facts?
 
@@ -32,7 +32,9 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 
 Android Studio packages must be updated by just clicking on install packages in package manager, to let the VCS cloning from the app or the forked app on github then to have it installed and in work on the virtual android device.
 
-## TODO
+## Waffle Throughput Graph
+
+[![Throughput Graph](https://graphs.waffle.io/openfoodfacts/OpenFoodFacts-androidApp/throughput.svg)](https://waffle.io/openfoodfacts/OpenFoodFacts-androidApp/metrics/throughput)
 
 ## Libraries used
 
