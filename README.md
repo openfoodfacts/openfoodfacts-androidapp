@@ -19,6 +19,11 @@ Open Food Facts is a non-profit association of volunteers.
 Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
 - <http://world.openfoodfacts.org>
 
+## Translations
+
+Translations can be found here : https://translations.launchpad.net/openfoodfacts/trunk/+pots/openfoodfacts-android-native
+Watch the [topic](https://github.com/openfoodfacts/OpenFoodFacts-androidApp/issues/49).
+
 ## Bugs and feature requests
 
 Have a bug or a feature request? Please search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue.
@@ -40,6 +45,7 @@ Android Studio packages must be updated by just clicking on install packages in 
 - https://github.com/satyan/sugar
 - https://github.com/afollestad/material-dialogs
 - https://github.com/jjhesk/LoyalNativeSlider
+- and others (see gradle)
 
 Big thanks to them!
 
