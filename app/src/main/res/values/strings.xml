@@ -141,7 +141,7 @@
     <string name="select_camera" translatable="false">Select a Camera</string>
     <string name="ok_button" translatable="false">OK</string>
     <string name="cancel_button" translatable="false">Cancel</string>
-    <string name="warning_alert_data">Your allergies info won't be send to the Open Food Facts server and be careful data may not be accurate, please check by yourself! </string>
+    <string name="warning_alert_data">Your allergies info won\'t be send to the Open Food Facts server and be careful data may not be accurate, please check by yourself! </string>
     <string name="from_gallery">From gallery</string>
     <string name="product_sent">Product sent!</string>
     <string name="action_edit_product">Edit product</string>
