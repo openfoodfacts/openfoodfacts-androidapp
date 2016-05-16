@@ -269,7 +269,7 @@ public class FoodUserClientUsage {
                     Toast.makeText(context, context.getResources().getText(R.string.txtToastSaved), Toast.LENGTH_LONG).show();
                     editor.putString("user", login.getText().toString());
                     editor.putString("pass", pass.getText().toString());
-                    editor.commit();
+                    editor.apply();
                     infoLogin.setText(R.string.txtInfoLoginOk);
                 }
                 Utils.hideKeyboard(activity);

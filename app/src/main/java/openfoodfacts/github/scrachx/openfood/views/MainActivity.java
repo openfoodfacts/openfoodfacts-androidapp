@@ -202,7 +202,7 @@ public class MainActivity extends BaseActivity {
                 new MaterialDialog.Builder(this)
                 .title(R.string.action_about)
                 .content(R.string.txtAbout)
-                .negativeText(R.string.txtOk)
+                .neutralText(R.string.txtOk)
                 .show();
             return true;
             default:
