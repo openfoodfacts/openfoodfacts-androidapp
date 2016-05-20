@@ -1,21 +1,23 @@
 # Kazakh translation for openfoodfacts
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
-# This file is distributed under the same license as the openfoodfacts package.
+# This file is distributed under the same license as the openfoodfacts
+# package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: openfoodfacts\n"
+"Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-05-08 14:13+0200\n"
+"POT-Creation-Date: 2016-05-20 16:36+0200\n"
 "PO-Revision-Date: 2016-05-11 16:56+0000\n"
 "Last-Translator: Балкыбаев Мурат <d2vsd1@mail.ru>\n"
+"Language: kk\n"
 "Language-Team: Kazakh <kk@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(((n == 1)) ? 0 : 1)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-05-20 11:24+0000\n"
-"X-Generator: Launchpad (build 18025)\n"
+"Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
 msgid "Open Food"
@@ -209,16 +211,17 @@ msgstr "Өзіңіздің тағамыңызды ашып және не жей�
 
 msgctxt "txtHome"
 msgid ""
-"Open Food Facts is a database of food products with ingredients, allergens, "
-"nutrition facts and all the tidbits of information we can find on product "
-"labels."
+"Open Food Facts is a database of food products with ingredients, "
+"allergens, nutrition facts and all the tidbits of information we can find"
+" on product labels."
 msgstr ""
 "Open Food Facts тағамдық ингредиенттермен, аллергендермен, тағамның "
 "құндылығын және барлық дәмді тағамдар туралы ақпарат таба алады, "
 "заттаңбадағы өнімдер деректер базасын көрсетеді."
 
+#, fuzzy
 msgctxt "txtSave"
-msgid "Save"
+msgid "Send/Save"
 msgstr "Сақтау"
 
 msgctxt "txtUser"
@@ -262,10 +265,8 @@ msgid "Login or password error"
 msgstr "Аты немесе құпиясөзі қате"
 
 msgctxt "errorWeb"
-msgid ""
-"We were not able to access the internet. Do you have connectivity issues?"
-msgstr ""
-"Біз Ғаламторға қол жеткізе алдмадық. Сізде қосылу жағынан қиындық бар ма?"
+msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgstr "Біз Ғаламторға қол жеткізе алдмадық. Сізде қосылу жағынан қиындық бар ма?"
 
 msgctxt "txtInfoLoginOk"
 msgid "User saved"
@@ -281,8 +282,8 @@ msgstr "Ақпарат"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you want "
-"to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you "
+"want to add it?"
 msgstr "Бұл өнім әлі Open Food Facts-та жоқ. Сіз оны қосқыңыз келе ме?"
 
 msgctxt "txtDialogsContentSend"
@@ -358,10 +359,8 @@ msgid "Do you want to delete this draft?"
 msgstr "Сіз бұл шимайды жойғыңыз келеді ме?"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid ""
-"The product is saved locally, you can edit it in the Offline Edit menu"
-msgstr ""
-"Өнім жергілікті сақталған, сіз оның мәзір Автономды Түзетуде түзете аласыз"
+msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr "Өнім жергілікті сақталған, сіз оның мәзір Автономды Түзетуде түзете аласыз"
 
 msgctxt "txtBarcodeRequire"
 msgid "Barcode required"
@@ -377,8 +376,8 @@ msgstr "... үдірісінде шықпаңыз"
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative Commons "
-"Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative "
+"Commons Attribution and ShareAlike."
 msgstr ""
 "Сіз жолдаған фотосуреттер Creative Commons Attribution және ShareAlike "
 "лицензияға сай жарияланды."
@@ -474,3 +473,8 @@ msgstr "Деректер нақты болмауы да мүмкін, абай �
 msgctxt "from_gallery"
 msgid "From gallery"
 msgstr "Галереядан"
+
+msgctxt "product_sent"
+msgid "Product sent!"
+msgstr ""
+

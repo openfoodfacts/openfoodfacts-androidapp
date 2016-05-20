@@ -1,21 +1,23 @@
 # Burmese translation for openfoodfacts
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
-# This file is distributed under the same license as the openfoodfacts package.
+# This file is distributed under the same license as the openfoodfacts
+# package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: openfoodfacts\n"
+"Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-05-08 14:13+0200\n"
+"POT-Creation-Date: 2016-05-20 16:36+0200\n"
 "PO-Revision-Date: 2016-05-08 14:30+0000\n"
 "Last-Translator: Pyae Sone <Unknown>\n"
+"Language: my\n"
 "Language-Team: Burmese <my@li.org>\n"
+"Plural-Forms: nplurals=1; plural=(0)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-05-20 11:24+0000\n"
-"X-Generator: Launchpad (build 18025)\n"
+"Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
 msgid "Open Food"
@@ -117,8 +119,7 @@ msgstr "သတိေပးခ်က္"
 
 msgctxt "alert_dialog_warning_msg_user"
 msgid "User/password has changed, please update information"
-msgstr ""
-"အသံုးျပဳသူ၊စကားဝွက္ေျပာင္းလဲသြားပါသည္။ အခ်က္အလက္မ်ား အသစ္မြမ္းမံေပးပါ"
+msgstr "အသံုးျပဳသူ၊စကားဝွက္ေျပာင္းလဲသြားပါသည္။ အခ်က္အလက္မ်ား အသစ္မြမ္းမံေပးပါ"
 
 msgctxt "alert_dialog_product_error_msg"
 msgid "Product not found, please try again"
@@ -171,7 +172,8 @@ msgstr "ပါဝင္ပစၥည္းစာရင္း -"
 msgctxt "txtSubstances"
 msgid "Substances or products causing allergies or intolerances :"
 msgstr ""
-"ပါဝင္ပစၥည္းမ်ား သို႔မဟုတ္ ယားယံေစေသာထုတ္ကုန္မ်ား ႏွင့္  intolerances မ်ား -"
+"ပါဝင္ပစၥည္းမ်ား သို႔မဟုတ္ ယားယံေစေသာထုတ္ကုန္မ်ား ႏွင့္  intolerances မ်ား"
+" -"
 
 msgctxt "txtAdditives"
 msgid "Additives :"
@@ -211,16 +213,17 @@ msgstr "သင့္အစားအေသာက္ကိုဖြင့္ျပ
 
 msgctxt "txtHome"
 msgid ""
-"Open Food Facts is a database of food products with ingredients, allergens, "
-"nutrition facts and all the tidbits of information we can find on product "
-"labels."
+"Open Food Facts is a database of food products with ingredients, "
+"allergens, nutrition facts and all the tidbits of information we can find"
+" on product labels."
 msgstr ""
 "Open Food အေၾကာင္းအရာမ်ားသည္ ပါဝင္ေသာပစၥည္းမ်ား၊ မတည့္ေသာအစားအစာမ်ား၊ "
 "အာဟာရအေၾကာင္းအရာမ်ားႏွင့္ ထုတ္ကုန္အဆင့္ႏွင့္ "
 "ကၽြႏ္ုပ္တို႔ရွာႏိုင္ေသာအခ်က္အလက္မ်ားပါဝင္သည့္ database ျဖစ္သည္။"
 
+#, fuzzy
 msgctxt "txtSave"
-msgid "Save"
+msgid "Send/Save"
 msgstr "သိမ္းမည္"
 
 msgctxt "txtUser"
@@ -264,8 +267,7 @@ msgid "Login or password error"
 msgstr "ဝင္ေရာက္မႈ သို႔မဟုတ္ စကားဝွက္ခ်ိဳ႕ယြင္းခ်က္"
 
 msgctxt "errorWeb"
-msgid ""
-"We were not able to access the internet. Do you have connectivity issues?"
+msgid "We were not able to access the internet. Do you have connectivity issues?"
 msgstr ""
 "ကၽြႏ္ုပ္တို႔မွ အင္တာနက္ႏွင့္မခ်ိတ္ဆက္ႏိုင္ဘူးျဖစ္ေနသည္။ သင့္တြင္ "
 "ခ်ိတ္ဆက္မႈခ်ိဳ႕ယြင္းေနပါသလား။"
@@ -284,16 +286,15 @@ msgstr "အခ်က္အလက္"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you want "
-"to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you "
+"want to add it?"
 msgstr ""
 "သင္စကန္ဖတ္ေသာထုတ္ကုန္သည္ Open Food အခ်က္အလက္မ်ားတြင္မရွိေသးပါ။ "
 "သင္ထည့္လိုပါသလား။"
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to our database?"
-msgstr ""
-"သိမ္းထားေသာထုတ္ကုန္မ်ားကို ကၽြႏ္ုပ္တို႔၏ database သို႔ေပါင္းထည့္ခ်င္ပါသလား"
+msgstr "သိမ္းထားေသာထုတ္ကုန္မ်ားကို ကၽြႏ္ုပ္တို႔၏ database သို႔ေပါင္းထည့္ခ်င္ပါသလား"
 
 msgctxt "txtYes"
 msgid "Yes"
@@ -364,8 +365,7 @@ msgid "Do you want to delete this draft?"
 msgstr "ဒီအၾကမ္းကိုသင္ဖ်က္ခ်င္ပါသလား"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid ""
-"The product is saved locally, you can edit it in the Offline Edit menu"
+msgid "The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
 "ထုတ္ကုန္ကို စက္ထဲသိမ္းထားခဲ့သည္။ "
 "ေအာ့္ဖ္လိုင္းျပင္ဆင္မႈမီႏူးမွတစ္ဆင့္သင္ျပင္ဆင္ႏိုင္သည္"
@@ -384,8 +384,8 @@ msgstr "လုပ္ေဆာင္ေနစဥ္ မထြက္ပါႏွ�
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative Commons "
-"Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative "
+"Commons Attribution and ShareAlike."
 msgstr ""
 "သင္ပို႔ေသာပံုမ်ားသည္ အခမဲ့လိုင္စင္ Creative Commons Attribution ႏွင့္ "
 "ShareAlike အရျဖစ္လိမ့္မည္။"
@@ -483,3 +483,8 @@ msgstr ""
 msgctxt "from_gallery"
 msgid "From gallery"
 msgstr "ဓာတ္ပံုျပခန္းမွ"
+
+msgctxt "product_sent"
+msgid "Product sent!"
+msgstr ""
+

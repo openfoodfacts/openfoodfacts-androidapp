@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Open Food</string>
+  <string name="action_settings">الإعدادات</string>
+  <string name="action_about">حول</string>
+  <string name="action_find">بحث</string>
+  <string name="text_barcode">بخصوص الرمز الشريطي</string>
+  <string-array name="nav_drawer_items_product">
+    <item>الملخص</item>
+    <item>المكونات</item>
+    <item>التغذية</item>
+    <item>العودة إلى القائمة</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>إفتراضي</item>
+    <item>التغذية</item>
+    <item>المكونات</item>
+  </string-array>
+  <string name="search_button">بحث</string>
+  <string name="no_products">منتج غير موجود</string>
+  <string name="alert_dialog_warning_title">تحذير</string>
+  <string name="toast_retrieving">جاري التحميل...</string>
+  <string name="txtBarcode">الرمز الشريطي</string>
+  <string name="txtQuantity">الكمية</string>
+  <string name="txtBrands">العلامات التجارية</string>
+  <string name="txtCategories">الفئات</string>
+  <string name="txtStores">المتاجر:</string>
+  <string name="txtIngredients">قائمة المكونات:</string>
+  <string name="txtLogin">تسجيل الدخول:</string>
+  <string name="txtPass">كلمة المرور:</string>
+  <string name="txtSave">حفظ</string>
+  <string name="txtSalt">ملح:</string>
+  <string name="txtFat">دهن:</string>
+  <string name="txtSugars">سكريات:ﻻ</string>
+  <string name="hintLogin">تسجيل الدخول</string>
+  <string name="hintPass">كلمة المرور</string>
+  <string name="txtDialogsTitle">معلومات</string>
+  <string name="txtYes">نعم</string>
+  <string name="txtNo">لا</string>
+  <string name="hintNameProduct">اﻹسم</string>
+  <string name="hintWeight">الوزن</string>
+  <string name="hintStores">المتجر</string>
+  <string name="txtTakePicture">إلتقاط صورة</string>
+  <string name="txtNoData">لا توجد بيانات</string>
+  <string name="txtLoading">جاري التحميل...</string>
+  <string name="share">مشاركة</string>
+  <string name="home_drawer">الصفحة الرئيسية</string>
+  <string name="search_drawer">بحث</string>
+  <string name="user_drawer">المستخدم</string>
+  <string name="delete_txt">حذف</string>
+</resources>
