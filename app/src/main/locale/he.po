@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-05-20 16:36+0200\n"
+"POT-Creation-Date: 2016-05-20 16:39+0200\n"
 "PO-Revision-Date: 2016-05-08 13:33+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language: he\n"
@@ -467,8 +467,11 @@ msgctxt "title_dialog_alert"
 msgid "Add alert"
 msgstr "הוספת התרעה"
 
+#, fuzzy
 msgctxt "warning_alert_data"
-msgid "Data may not be accurate, be careful, please check by yourself!"
+msgid ""
+"Your allergies info won't be send to the Open Food Facts server and be "
+"careful data may not be accurate, please check by yourself!"
 msgstr "יתכן שהמידע לא מדויק, נא להיזהר, מומלץ לבדוק באופן עצמאי!"
 
 msgctxt "from_gallery"
@@ -477,5 +480,20 @@ msgstr "מהגלריה"
 
 msgctxt "product_sent"
 msgid "Product sent!"
+msgstr ""
+
+msgctxt "action_edit_product"
+msgid "Edit product"
+msgstr ""
+
+msgctxt "title_info_dialog"
+msgid "Information"
+msgstr ""
+
+msgctxt "text_offline_info_dialog"
+msgid ""
+"You can scan products when you're offline to add them to Open Food Facts "
+"later. All the products you scan will appear here, and you'll be able to "
+"send them using the button below."
 msgstr ""
 
