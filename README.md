@@ -1,9 +1,12 @@
 Open Food Facts Android Application
 ===================================
 
-[![Build Status](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp.svg?branch=master)](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp)
+[![Build Status](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp.svg?branch=master)](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp) [![Stories in Ready](https://badge.waffle.io/openfoodfacts/OpenFoodFacts-androidApp.svg?label=ready&title=Ready)](http://waffle.io/openfoodfacts/OpenFoodFacts-androidApp)
 
 ## What is Open Food Facts?
+
+<a href="https://f-droid.org/repository/browse/?fdid=openfoodfacts.github.scrachx.openfood">
+<img src=http://lingoworld.eu/at//public/images/fdroid.png></a> 
 
 ### A food products database
 
@@ -19,6 +22,11 @@ Open Food Facts is a non-profit association of volunteers.
 Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
 - <http://world.openfoodfacts.org>
 
+## Translations
+
+Translations can be found here : https://translations.launchpad.net/openfoodfacts/trunk/+pots/openfoodfacts-android-native
+Watch the [topic](https://github.com/openfoodfacts/OpenFoodFacts-androidApp/issues/49).
+
 ## Bugs and feature requests
 
 Have a bug or a feature request? Please search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue.
@@ -27,7 +35,9 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 
 Android Studio packages must be updated by just clicking on install packages in package manager, to let the VCS cloning from the app or the forked app on github then to have it installed and in work on the virtual android device.
 
-## TODO
+## Waffle Throughput Graph
+
+[![Throughput Graph](https://graphs.waffle.io/openfoodfacts/OpenFoodFacts-androidApp/throughput.svg)](https://waffle.io/openfoodfacts/OpenFoodFacts-androidApp/metrics/throughput)
 
 ## Libraries used
 
@@ -40,6 +50,7 @@ Android Studio packages must be updated by just clicking on install packages in 
 - https://github.com/satyan/sugar
 - https://github.com/afollestad/material-dialogs
 - https://github.com/jjhesk/LoyalNativeSlider
+- and others (see gradle)
 
 Big thanks to them!
 
