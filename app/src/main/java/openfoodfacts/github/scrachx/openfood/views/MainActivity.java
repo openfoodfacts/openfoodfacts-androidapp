@@ -80,7 +80,7 @@ public class MainActivity extends BaseActivity {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, new OfflineEditFragment()).commit();
             getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
         }
-        
+
 
         // Create the AccountHeader
         headerResult = new AccountHeaderBuilder()

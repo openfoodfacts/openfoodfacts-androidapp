@@ -95,7 +95,7 @@
     <string name="txtTakePicture">Take picture</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtNoData">No data</string>
-    <string name="txtPictureNeeded">Take a picture first, then fill the name and store!</string>
+    <string name="txtPictureNeeded">Take a picture first!</string>
     <string name="toastSending">Uploading...</string>
     <string name="dataSaved">Saved locally on your device</string>
     <string name="txtInfoAddUser">Please enter your login and password</string>

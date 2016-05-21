@@ -171,7 +171,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
     @OnClick(R.id.buttonSaveProduct)
     protected void onSaveProduct() {
-        if (!mProduct.getImgupload_front().isEmpty() && !name.getText().toString().isEmpty()) {
+        if (!mProduct.getImgupload_front().isEmpty()) {
             RequestParams params = new RequestParams();
             params.put("code", mBarcode);
             if(!loginS.isEmpty() && !passS.isEmpty()) {

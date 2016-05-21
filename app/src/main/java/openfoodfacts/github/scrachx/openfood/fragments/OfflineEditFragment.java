@@ -126,8 +126,7 @@ public class OfflineEditFragment extends BaseFragment {
                         FoodUserClientUsage user = new FoodUserClientUsage();
                         for (int i = 0; i < listSaveProduct.size(); i++) {
                             SendProduct sp = listSaveProduct.get(i);
-                            if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty() || sp.getImgupload_ingredients().isEmpty() || sp.getImgupload_nutrition().isEmpty()
-                                    || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
+                            if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()) {
                                 // Do nothing
                             } else {
                                 RequestParams params = new RequestParams();
@@ -136,14 +135,14 @@ public class OfflineEditFragment extends BaseFragment {
                                     params.put("user_id", loginS);
                                     params.put("password", passS);
                                 }
-                                params.put("product_name", sp.getName());
-                                params.put("quantity", sp.getWeight() + " " + sp.getWeight_unit());
-                                params.put("stores", sp.getStores());
+                                if(!sp.getName().isEmpty()) params.put("product_name", sp.getName());
+                                if(!sp.getWeight().isEmpty()) params.put("quantity", sp.getWeight() + " " + sp.getWeight_unit());
+                                if(!sp.getStores().isEmpty()) params.put("stores", sp.getStores());
                                 params.put("comment", "added with the new Android app");
 
-                                Utils.compressImage(sp.getImgupload_ingredients());
-                                Utils.compressImage(sp.getImgupload_nutrition());
-                                Utils.compressImage(sp.getImgupload_front());
+                                if(!sp.getImgupload_ingredients().isEmpty()) Utils.compressImage(sp.getImgupload_ingredients());
+                                if(!sp.getImgupload_nutrition().isEmpty()) Utils.compressImage(sp.getImgupload_nutrition());
+                                if(!sp.getImgupload_front().isEmpty()) Utils.compressImage(sp.getImgupload_front());
 
                                 user.postSaved(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getImgupload_ingredients().replace(".png", "_small.png"), sp.getImgupload_nutrition().replace(".png", "_small.png"), sp.getBarcode(), listView, i, saveItems);
 
@@ -199,8 +198,7 @@ public class OfflineEditFragment extends BaseFragment {
                 listView.setAdapter(adapter);
                 buttonSend.setEnabled(true);
                 for (SendProduct sp : listSaveProduct) {
-                    if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty() || sp.getImgupload_ingredients().isEmpty() || sp.getImgupload_nutrition().isEmpty()
-                            || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
+                    if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()) {
                         buttonSend.setEnabled(false);
                     }
                 }
