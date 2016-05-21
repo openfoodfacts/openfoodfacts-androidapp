@@ -53,7 +53,7 @@
             android:layout_margin="@dimen/spacing_normal"
             android:background="@drawable/button_default_bg"
             android:gravity="center"
-            android:text="@string/txtSave"
+            android:text="@string/txtSignIn"
             />
 
         <Button

@@ -69,6 +69,7 @@
     <string name="txtTitleHome">Open your food and know what you eat</string>
     <string name="txtHome">Open Food Facts is a database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
     <string name="txtSave">Send/Save</string>
+    <string name="txtSignIn">Sign in</string>
     <string name="txtUser">User panel</string>
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Salt :</string>
