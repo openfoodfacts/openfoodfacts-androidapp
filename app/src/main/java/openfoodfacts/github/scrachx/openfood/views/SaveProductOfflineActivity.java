@@ -1,9 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -183,32 +186,57 @@ public class SaveProductOfflineActivity extends BaseActivity {
             Utils.compressImage(mProduct.getImgupload_ingredients());
             Utils.compressImage(mProduct.getImgupload_nutrition());
             Utils.compressImage(mProduct.getImgupload_front());
-            api.post(this, params, mProduct.getImgupload_front().replace(".png", "_small.png"), mProduct.getImgupload_ingredients().replace(".png", "_small.png"),
-                    mProduct.getImgupload_nutrition().replace(".png", "_small.png"), mBarcode,
-                    new FoodUserClientUsage.OnProductSentCallback() {
-                        @Override
-                        public void onProductSentResponse(boolean value) {
-                            if(!value) {
-                                if (mProduct != null) {
-                                    mProduct.setBarcode(mBarcode);
-                                    mProduct.setName(name.getText().toString());
-                                    mProduct.setImgupload_front(mProduct.getImgupload_front());
-                                    mProduct.setImgupload_ingredients(mProduct.getImgupload_ingredients());
-                                    mProduct.setImgupload_nutrition(mProduct.getImgupload_nutrition());
-                                    mProduct.setStores(store.getText().toString());
-                                    mProduct.setWeight(weight.getText().toString());
-                                    mProduct.setWeight_unit(mUnit[0]);
-                                    mProduct.save();
+
+            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+
+            if(isConnected) {
+                api.post(this, params, mProduct.getImgupload_front().replace(".png", "_small.png"), mProduct.getImgupload_ingredients().replace(".png", "_small.png"),
+                        mProduct.getImgupload_nutrition().replace(".png", "_small.png"), mBarcode,
+                        new FoodUserClientUsage.OnProductSentCallback() {
+                            @Override
+                            public void onProductSentResponse(boolean value) {
+                                if(!value) {
+                                    if (mProduct != null) {
+                                        mProduct.setBarcode(mBarcode);
+                                        mProduct.setName(name.getText().toString());
+                                        mProduct.setImgupload_front(mProduct.getImgupload_front());
+                                        mProduct.setImgupload_ingredients(mProduct.getImgupload_ingredients());
+                                        mProduct.setImgupload_nutrition(mProduct.getImgupload_nutrition());
+                                        mProduct.setStores(store.getText().toString());
+                                        mProduct.setWeight(weight.getText().toString());
+                                        mProduct.setWeight_unit(mUnit[0]);
+                                        mProduct.save();
+                                    }
+                                    Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
                                 }
-                                Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                intent.putExtra("openOfflineEdit",true);
+                                startActivity(intent);
+                                finish();
                             }
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                            SaveProductOfflineActivity.this.finish();
-                        }
-            });
+                        });
+            } else {
+                if (mProduct != null) {
+                    mProduct.setBarcode(mBarcode);
+                    mProduct.setName(name.getText().toString());
+                    mProduct.setImgupload_front(mProduct.getImgupload_front());
+                    mProduct.setImgupload_ingredients(mProduct.getImgupload_ingredients());
+                    mProduct.setImgupload_nutrition(mProduct.getImgupload_nutrition());
+                    mProduct.setStores(store.getText().toString());
+                    mProduct.setWeight(weight.getText().toString());
+                    mProduct.setWeight_unit(mUnit[0]);
+                    mProduct.save();
+                }
+                Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("openOfflineEdit",true);
+                startActivity(intent);
+                finish();
+            }
         } else {
             Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
         }

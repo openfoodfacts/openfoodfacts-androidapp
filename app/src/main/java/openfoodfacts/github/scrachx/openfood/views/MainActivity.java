@@ -65,12 +65,22 @@ public class MainActivity extends BaseActivity {
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getResources().getString(R.string.home_drawer));
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
+        Bundle extras = getIntent().getExtras();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, new HomeFragment()).commit();
+        boolean isOpenOfflineEdit = false;
+        if (extras != null) {
+            isOpenOfflineEdit = extras.getBoolean("openOfflineEdit");
+        }
+        if(!isOpenOfflineEdit){
+            fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+            getSupportActionBar().setTitle(getResources().getString(R.string.home_drawer));
+        } else {
+            fragmentManager.beginTransaction().replace(R.id.fragment_container, new OfflineEditFragment()).commit();
+            getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
+        }
+        
 
         // Create the AccountHeader
         headerResult = new AccountHeaderBuilder()
