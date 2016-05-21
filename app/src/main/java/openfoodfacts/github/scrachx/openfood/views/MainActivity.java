@@ -1,17 +1,24 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
-
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.fastadapter.utils.RecyclerViewCacheUtil;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
@@ -37,6 +44,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.UserFragment;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class MainActivity extends BaseActivity {
 
@@ -97,7 +105,6 @@ public class MainActivity extends BaseActivity {
 
                         if (drawerItem != null) {
                             Fragment fragment = null;
-                            Intent intent = null;
                             if (drawerItem.getIdentifier() == 1) {
                                 fragment = new HomeFragment();
                                 getSupportActionBar().setTitle(getResources().getString(R.string.home_drawer));
@@ -108,8 +115,20 @@ public class MainActivity extends BaseActivity {
                                 fragment = new SearchProductsFragment();
                                 getSupportActionBar().setTitle(getResources().getString(R.string.search_by_name_drawer));
                             } else if (drawerItem.getIdentifier() == 4) {
-                                intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
-                                startActivity(intent);
+                                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                                    if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.CAMERA)) {
+                                        new MaterialDialog.Builder(MainActivity.this)
+                                                .title(R.string.action_about)
+                                                .content(R.string.permission_camera)
+                                                .neutralText(R.string.txtOk)
+                                                .show();
+                                    } else {
+                                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                                    }
+                                } else {
+                                    Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+                                    startActivity(intent);
+                                }
                             } else if (drawerItem.getIdentifier() == 5) {
                                 fragment = new UserFragment();
                                 getSupportActionBar().setTitle(R.string.sign_in_drawer);
@@ -119,9 +138,6 @@ public class MainActivity extends BaseActivity {
                             } else if (drawerItem.getIdentifier() == 7) {
                                 fragment = new OfflineEditFragment();
                                 getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
-                            }
-                            if (intent != null) {
-                                MainActivity.this.startActivity(intent);
                             }
 
                             if (fragment != null) {
@@ -207,6 +223,37 @@ public class MainActivity extends BaseActivity {
             return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case Utils.MY_PERMISSIONS_REQUEST_CAMERA: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+                    startActivity(intent);
+                } else {
+                    new MaterialDialog.Builder(this)
+                            .title(R.string.permission_title)
+                            .content(R.string.permission_denied)
+                            .negativeText(R.string.txtNo)
+                            .positiveText(R.string.txtYes)
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    Intent intent = new Intent();
+                                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                    intent.setData(uri);
+                                    startActivity(intent);
+                                }
+                            })
+                            .show();
+                }
+                return;
+            }
         }
     }
 }

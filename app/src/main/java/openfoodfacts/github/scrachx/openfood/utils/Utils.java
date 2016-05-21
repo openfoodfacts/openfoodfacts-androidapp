@@ -16,6 +16,9 @@ import java.util.Locale;
 
 public class Utils {
 
+    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
+    public static final int MY_PERMISSIONS_REQUEST_STORAGE= 2;
+
     public static String getUriByCurrentLanguage() {
         String url;
         if (Locale.getDefault().getLanguage().contains("fr")){
