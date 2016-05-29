@@ -6,10 +6,10 @@ android {
 
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 23
-        versionCode 20
-        versionName "0.2.2"
+        versionCode 21
+        versionName "0.2.3"
     }
 
     dexOptions {

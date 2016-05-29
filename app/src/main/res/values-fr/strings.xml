@@ -34,7 +34,7 @@
   <string name="txtBarcode">Code barre :</string>
   <string name="txtQuantity">Quantité :</string>
   <string name="txtPackaging">Conditionnement :</string>
-  <string name="txtBrands">Magasins :</string>
+  <string name="txtBrands">Marques :</string>
   <string name="txtCategories">Catégories :</string>
   <string name="txtManufacturing">Lieux de fabrication ou de transformation :</string>
   <string name="txtCity">Ville et pays d\'achat :</string>
@@ -53,6 +53,7 @@
   <string name="txtTitleHome">Ouvrez votre nourriture pour savoir ce que vous mangez</string>
   <string name="txtHome">Open Food Facts est une base de données de produits alimentaires qui répertorie les ingrédients, les allergènes, la composition nutritionnelle et toutes les informations présentes sur les étiquettes des aliments.</string>
   <string name="txtSave">Sauvegarder</string>
+  <string name="txtSignIn">S\'identifier</string>
   <string name="txtUser">Panneau utilisateur</string>
   <string name="txtToastSaved">Utilisateur connecté</string>
   <string name="txtSalt">Sel :</string>
@@ -60,11 +61,11 @@
   <string name="txtSugars">Sucres :</string>
   <string name="txtSaturatedFat">Acides gras saturés :</string>
   <string name="hintBarcode">Code barre</string>
-  <string name="hintLogin">Login</string>
+  <string name="hintLogin">Identifiant</string>
   <string name="hintPass">Mot de passe</string>
   <string name="errorLogin">Erreur d\'identifiant/mdp</string>
   <string name="errorWeb">Erreur de connexion internet</string>
-  <string name="txtInfoLoginOk">Utilisateur enregistré</string>
+  <string name="txtInfoLoginOk">Utilisateur connecté</string>
   <string name="txtInfoLoginNo">Utilisateur anonyme</string>
   <string name="txtDialogsTitle">Information</string>
   <string name="txtDialogsContent">Le produit que vous recherchez n\'existe pas dans notre base de données. Voulez-vous l\'ajouter?</string>
@@ -79,7 +80,7 @@
   <string name="txtTakePicture">Prendre une photo</string>
   <string name="txtSendAll">Tout envoyer</string>
   <string name="txtNoData">Aucune donnée</string>
-  <string name="txtPictureNeeded">Prenez une photo et ajoutez le nom!</string>
+  <string name="txtPictureNeeded">Prenez une photo!</string>
   <string name="toastSending">Envoi..</string>
   <string name="dataSaved">Données enregistrées en local...</string>
   <string name="txtInfoAddUser">Veuillez ajouter un utilisateur</string>
@@ -94,7 +95,7 @@
   <string name="txtAllsent">Produits envoyés</string>
   <string name="txtPalm">Le produit ne contient pas d\'huile de palme</string>
   <string name="txtBarcodeNotValid">Code barre non valide</string>
-  <string name="try_it_scan_now">Scanner!</string>
+  <string name="try_it_scan_now">Scanner</string>
   <string name="share">Partager</string>
   <string name="msg_share">Regarde ce produit sur Open Food Facts :</string>
   <string name="create_account">S\'inscrire</string>
@@ -111,7 +112,7 @@
   <string name="sign_in_drawer">Se connecter</string>
   <string name="alert_drawer">Alerte allergènes</string>
   <string name="warning_allergens">Contient des allergènes</string>
-  <string name="title_dialog_alert">Add alert</string>
-  <string name="warning_alert_data">Les données peuvent être non précis, attention à vérifier par vous même!</string>
+  <string name="title_dialog_alert">Ajouter une alerte</string>
+  <string name="warning_alert_data">Les données peuvent être imprécises, attention à vérifier par vous même!</string>
   <string name="from_gallery">Galerie photo</string>
 </resources>

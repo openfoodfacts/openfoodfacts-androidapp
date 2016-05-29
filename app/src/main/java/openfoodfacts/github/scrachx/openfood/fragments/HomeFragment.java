@@ -1,9 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +20,7 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
 
 public class HomeFragment extends BaseFragment {
@@ -35,8 +40,20 @@ public class HomeFragment extends BaseFragment {
 
     @OnClick(R.id.buttonScan)
     protected void OnScan() {
-        Intent intent = new Intent(getActivity(), ScannerFragmentActivity.class);
-        startActivity(intent);
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
+                new MaterialDialog.Builder(getActivity())
+                        .title(R.string.action_about)
+                        .content(R.string.permission_camera)
+                        .neutralText(R.string.txtOk)
+                        .show();
+            } else {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+            }
+        } else {
+            Intent intent = new Intent(getActivity(), ScannerFragmentActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void checkUserCredentials() {

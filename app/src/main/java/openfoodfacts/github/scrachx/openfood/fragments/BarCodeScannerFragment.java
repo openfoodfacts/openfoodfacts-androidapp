@@ -1,8 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.MenuItemCompat;
@@ -20,6 +24,7 @@ import java.util.List;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
+import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 
 public class BarCodeScannerFragment extends BaseFragment implements MessageDialogFragment.MessageDialogListener,
         ZXingScannerView.ResultHandler, CameraSelectorDialogFragment.CameraSelectorDialogListener {
@@ -169,8 +174,21 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
             } catch (Exception e) {}
         }
         if (!rawResult.getText().isEmpty()) {
-            FoodAPIRestClientUsage api = new FoodAPIRestClientUsage();
-            api.getProduct(rawResult.getText(), getActivity(), mScannerView, this);
+            ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+            if(isConnected) {
+                FoodAPIRestClientUsage api = new FoodAPIRestClientUsage();
+                api.getProduct(rawResult.getText(), getActivity(), mScannerView, this);
+            } else {
+                SharedPreferences settings = getActivity().getSharedPreferences("temp", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("barcode", rawResult.getText());
+                editor.apply();
+                Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
+                getActivity().startActivity(intent);
+                getActivity().finish();
+            }
         }
     }
 

@@ -264,8 +264,12 @@ public class FoodAPIRestClientUsage {
         });
     }
 
-    public void getAllergens() {
-        FoodAPIRestClient.getSync("/allergens.json", null, new AsyncHttpResponseHandler() {
+    public interface OnAllergensCallback {
+        public void onAllergensResponse(boolean value);
+    }
+
+    public void getAllergens(final OnAllergensCallback onAllergensCallback) {
+        FoodAPIRestClient.getAsync("/allergens.json", null, new AsyncHttpResponseHandler() {
 
             @Override
             public void onStart() {
@@ -283,11 +287,14 @@ public class FoodAPIRestClientUsage {
                             Allergen al = new Allergen(a.getUrl(),a.getName(),a.getProducts(),a.getIdAllergen());
                             al.save();
                         }
+                        onAllergensCallback.onAllergensResponse(true);
                     } catch (InvalidFormatException e) {
                         e.printStackTrace();
+                        onAllergensCallback.onAllergensResponse(false);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+                    onAllergensCallback.onAllergensResponse(false);
                 }
             }
 
