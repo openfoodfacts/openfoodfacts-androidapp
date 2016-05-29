@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-05-20 16:39+0200\n"
+"POT-Creation-Date: 2016-05-29 10:47+0200\n"
 "PO-Revision-Date: 2016-05-08 12:27+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: fr\n"
@@ -210,9 +210,10 @@ msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
 msgstr "Ouvrez votre nourriture pour savoir ce que vous mangez"
 
+#, fuzzy
 msgctxt "txtHome"
 msgid ""
-"Open Food Facts is a database of food products with ingredients, "
+"Open Food Facts is a open database of food products with ingredients, "
 "allergens, nutrition facts and all the tidbits of information we can find"
 " on product labels."
 msgstr ""
@@ -224,6 +225,10 @@ msgstr ""
 msgctxt "txtSave"
 msgid "Send/Save"
 msgstr "Sauvegarder"
+
+msgctxt "txtSignIn"
+msgid "Sign in"
+msgstr ""
 
 msgctxt "txtUser"
 msgid "User panel"
@@ -289,8 +294,9 @@ msgstr ""
 "Le produit que vous recherchez n'existe pas dans notre base de données. "
 "Voulez-vous l'ajouter?"
 
+#, fuzzy
 msgctxt "txtDialogsContentSend"
-msgid "Do you want send the saved products to our database?"
+msgid "Do you want send the saved products to the database?"
 msgstr "Voulez-vous envoyer les produits dans notre base de données?"
 
 msgctxt "txtYes"
@@ -333,8 +339,9 @@ msgctxt "txtNoData"
 msgid "No data"
 msgstr "Aucune donnée"
 
+#, fuzzy
 msgctxt "txtPictureNeeded"
-msgid "Take a picture first, then fill the name and store!"
+msgid "Take a picture first!"
 msgstr "Prenez une photo et ajoutez le nom!"
 
 msgctxt "toastSending"
@@ -459,8 +466,9 @@ msgctxt "sign_in_drawer"
 msgid "Sign-in"
 msgstr "Se connecter"
 
+#, fuzzy
 msgctxt "alert_drawer"
-msgid "Alert allergens"
+msgid "Allergen Alert"
 msgstr "Alerte allergènes"
 
 msgctxt "warning_allergens"
@@ -474,8 +482,9 @@ msgstr "Add alert"
 #, fuzzy
 msgctxt "warning_alert_data"
 msgid ""
-"Your allergies info won't be send to the Open Food Facts server and be "
-"careful data may not be accurate, please check by yourself!"
+"Your allergies info will never be sent to the Open Food Facts server. "
+"Also, be careful that data may not be accurate, please double-check by "
+"yourself!"
 msgstr "Les données peuvent être non précis, attention à vérifier par vous même!"
 
 msgctxt "from_gallery"
@@ -499,5 +508,33 @@ msgid ""
 "You can scan products when you're offline to add them to Open Food Facts "
 "later. All the products you scan will appear here, and you'll be able to "
 "send them using the button below."
+msgstr ""
+
+msgctxt "permission_camera"
+msgid "Camera permission is needed to scan barcode."
+msgstr ""
+
+msgctxt "permission_title"
+msgid "Permission information"
+msgstr ""
+
+msgctxt "permission_denied"
+msgid "Please activate permission in the settings"
+msgstr ""
+
+msgctxt "permission_storage"
+msgid "Storage is needed to take or choose pictures"
+msgstr ""
+
+msgctxt "info_download_data"
+msgid ""
+"You need to download some data to get this functionality working, please "
+"press yes to download it."
+msgstr ""
+
+msgctxt "info_download_data_connection"
+msgid ""
+"You need to download some data to get this functionality working. Please "
+"activate internet connection."
 msgstr ""
 
