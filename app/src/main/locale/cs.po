@@ -1,24 +1,21 @@
 # Czech translation for openfoodfacts
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
-# This file is distributed under the same license as the openfoodfacts
-# package.
+# This file is distributed under the same license as the openfoodfacts package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  openfoodfacts\n"
+"Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-05-20 16:39+0200\n"
-"PO-Revision-Date: 2016-05-15 10:26+0000\n"
-"Last-Translator: Adam Leitgeb <Unknown>\n"
-"Language: cs\n"
+"POT-Creation-Date: 2016-05-08 14:13+0200\n"
+"PO-Revision-Date: 2016-05-29 08:00+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Czech <cs@li.org>\n"
-"Plural-Forms: nplurals=4; plural=((((n >= 2 && n <= 4)) && ((0 == 0))) ? "
-"1 : (!((0 == 0))) ? 2 : (((n == 1)) && ((0 == 0))) ? 0 : 3)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.3\n"
+"X-Launchpad-Export-Date: 2016-05-29 08:36+0000\n"
+"X-Generator: Launchpad (build 18053)\n"
 
 msgctxt "app_name"
 msgid "Open Food"
@@ -212,14 +209,13 @@ msgstr ""
 
 msgctxt "txtHome"
 msgid ""
-"Open Food Facts is a database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find"
-" on product labels."
+"Open Food Facts is a database of food products with ingredients, allergens, "
+"nutrition facts and all the tidbits of information we can find on product "
+"labels."
 msgstr ""
 
-#, fuzzy
 msgctxt "txtSave"
-msgid "Send/Save"
+msgid "Save"
 msgstr ""
 
 msgctxt "txtUser"
@@ -263,7 +259,8 @@ msgid "Login or password error"
 msgstr ""
 
 msgctxt "errorWeb"
-msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
 msgstr ""
 
 msgctxt "txtInfoLoginOk"
@@ -280,8 +277,8 @@ msgstr ""
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you "
-"want to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
 msgstr ""
 
 msgctxt "txtDialogsContentSend"
@@ -357,7 +354,8 @@ msgid "Do you want to delete this draft?"
 msgstr ""
 
 msgctxt "txtDialogsContentInfoSave"
-msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
 
 msgctxt "txtBarcodeRequire"
@@ -374,8 +372,8 @@ msgstr ""
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative "
-"Commons Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
 msgstr ""
 
 msgctxt "txtAllsent"
@@ -462,33 +460,10 @@ msgctxt "title_dialog_alert"
 msgid "Add alert"
 msgstr ""
 
-#, fuzzy
 msgctxt "warning_alert_data"
-msgid ""
-"Your allergies info won't be send to the Open Food Facts server and be "
-"careful data may not be accurate, please check by yourself!"
+msgid "Data may not be accurate, be careful, please check by yourself!"
 msgstr ""
 
 msgctxt "from_gallery"
 msgid "From gallery"
 msgstr ""
-
-msgctxt "product_sent"
-msgid "Product sent!"
-msgstr ""
-
-msgctxt "action_edit_product"
-msgid "Edit product"
-msgstr ""
-
-msgctxt "title_info_dialog"
-msgid "Information"
-msgstr ""
-
-msgctxt "text_offline_info_dialog"
-msgid ""
-"You can scan products when you're offline to add them to Open Food Facts "
-"later. All the products you scan will appear here, and you'll be able to "
-"send them using the button below."
-msgstr ""
-

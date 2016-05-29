@@ -1,23 +1,21 @@
 # Catalan translation for openfoodfacts
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
-# This file is distributed under the same license as the openfoodfacts
-# package.
+# This file is distributed under the same license as the openfoodfacts package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  openfoodfacts\n"
+"Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-05-20 16:39+0200\n"
-"PO-Revision-Date: 2016-05-09 19:17+0000\n"
-"Last-Translator: VPablo <villumar@gmail.com>\n"
-"Language: ca\n"
+"POT-Creation-Date: 2016-05-08 14:13+0200\n"
+"PO-Revision-Date: 2016-05-29 08:00+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Catalan <ca@li.org>\n"
-"Plural-Forms: nplurals=2; plural=((((n == 1)) && ((0 == 0))) ? 0 : 1)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.3\n"
+"X-Launchpad-Export-Date: 2016-05-29 08:36+0000\n"
+"X-Generator: Launchpad (build 18053)\n"
 
 msgctxt "app_name"
 msgid "Open Food"
@@ -211,18 +209,17 @@ msgstr "Obri el seu menjar i conega què menja"
 
 msgctxt "txtHome"
 msgid ""
-"Open Food Facts is a database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find"
-" on product labels."
+"Open Food Facts is a database of food products with ingredients, allergens, "
+"nutrition facts and all the tidbits of information we can find on product "
+"labels."
 msgstr ""
 "Open Food Facts és una base de dades de productes alimentaris, alèrgens, "
 "informació nutricional i totes les xicotetes informacions que es poden "
 "trobar a les etiquetes de productes."
 
-#, fuzzy
 msgctxt "txtSave"
-msgid "Send/Save"
-msgstr "Desa"
+msgid "Save"
+msgstr ""
 
 msgctxt "txtUser"
 msgid "User panel"
@@ -265,7 +262,8 @@ msgid "Login or password error"
 msgstr "Usuari o contrasenya errònia"
 
 msgctxt "errorWeb"
-msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
 msgstr "No s'ha pogut connectar a l'Internet. Té problemes amb la connexió?"
 
 msgctxt "txtInfoLoginOk"
@@ -282,11 +280,11 @@ msgstr "Informació"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you "
-"want to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
 msgstr ""
-"El producte que ha escanejat no existix encara a Open Food Facts. Vol "
-"afegir-lo?"
+"El producte que ha escanejat no existix encara a Open Food Facts. Vol afegir-"
+"lo?"
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to our database?"
@@ -361,7 +359,8 @@ msgid "Do you want to delete this draft?"
 msgstr "Vol esborrar este esborrany?"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
 "El producte s'ha desat localment, pot editar-lo amb el menú de l'Editor "
 "Offline"
@@ -380,8 +379,8 @@ msgstr "Per favor no isca en mig del procés..."
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative "
-"Commons Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
 msgstr ""
 "Les imatges que ha enviat es publiquen amb la llicència lliure Creative "
 "Commons Attribution and ShareAlike"
@@ -470,33 +469,10 @@ msgctxt "title_dialog_alert"
 msgid "Add alert"
 msgstr "Afegir Alerta"
 
-#, fuzzy
 msgctxt "warning_alert_data"
-msgid ""
-"Your allergies info won't be send to the Open Food Facts server and be "
-"careful data may not be accurate, please check by yourself!"
-msgstr "Les dades poden no ser exactes, tinga cura, per favor comprove-ho vostè!"
+msgid "Data may not be accurate, be careful, please check by yourself!"
+msgstr ""
 
 msgctxt "from_gallery"
 msgid "From gallery"
 msgstr "Des de la galeria"
-
-msgctxt "product_sent"
-msgid "Product sent!"
-msgstr ""
-
-msgctxt "action_edit_product"
-msgid "Edit product"
-msgstr ""
-
-msgctxt "title_info_dialog"
-msgid "Information"
-msgstr ""
-
-msgctxt "text_offline_info_dialog"
-msgid ""
-"You can scan products when you're offline to add them to Open Food Facts "
-"later. All the products you scan will appear here, and you'll be able to "
-"send them using the button below."
-msgstr ""
-
