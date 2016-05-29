@@ -25,6 +25,7 @@ Data about food is of public interest and has to be open. The complete database 
 ## Translations
 
 Translations can be found here : https://translations.launchpad.net/openfoodfacts/trunk/+pots/openfoodfacts-android-native
+
 Watch the [topic](https://github.com/openfoodfacts/OpenFoodFacts-androidApp/issues/49).
 
 ## Bugs and feature requests
