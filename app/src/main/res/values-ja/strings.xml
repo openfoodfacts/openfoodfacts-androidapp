@@ -52,7 +52,6 @@
   <string name="txtPass">パスワード :</string>
   <string name="txtTitleHome">食品を開くと何を食べているか分かります</string>
   <string name="txtHome">Open Food Facts は、食品の原材料、アレルゲン、栄養成分、および製品ラベルで見ることができるすべての情報のデータベースです。</string>
-  <string name="txtSave">接続</string>
   <string name="txtUser">ユーザーパネル</string>
   <string name="txtToastSaved">ユーザーを保存しました</string>
   <string name="txtSalt">食塩 :</string>
@@ -112,6 +111,5 @@
   <string name="alert_drawer">アレルゲンを警告</string>
   <string name="warning_allergens">アレルゲンを含んでいます</string>
   <string name="title_dialog_alert">警告を追加</string>
-  <string name="warning_alert_data">データは正確ではないかもしれません。ご注意の上、ご自身で確認してください!!</string>
-  <string name="from_gallery">From gallery</string>
+  <string name="from_gallery">ギャラリーから</string>
 </resources>

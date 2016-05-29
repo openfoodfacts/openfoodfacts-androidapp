@@ -52,7 +52,6 @@
   <string name="txtPass">Contraseña :</string>
   <string name="txtTitleHome">Abra su comida y sepa qué come</string>
   <string name="txtHome">OpenFoodFacts es una base de datos de productos alimenticios con ingredientes, alérgenos, información nutricional y todas aquellas minucias que se pueden encontrar en las etiquetas de los productos.</string>
-  <string name="txtSave">Guardar</string>
   <string name="txtUser">Panel de usuario</string>
   <string name="txtToastSaved">Usuario guardado</string>
   <string name="txtSalt">Sal :</string>
@@ -112,6 +111,5 @@
   <string name="alert_drawer">Cuidado alérgenos</string>
   <string name="warning_allergens">Contiene alérgenos</string>
   <string name="title_dialog_alert">Añadir alerta</string>
-  <string name="warning_alert_data">Los datos pueden no ser precisos, tenga cuidado, ¡por favor compruébelo usted mismo!</string>
   <string name="from_gallery">Desde la galería</string>
 </resources>

@@ -52,7 +52,6 @@
   <string name="txtPass">စကားဝွက္ -</string>
   <string name="txtTitleHome">သင့္အစားအေသာက္ကိုဖြင့္ျပီး သင္ဘာစားေနသည္ကိုသိရွိပါ</string>
   <string name="txtHome">Open Food အေၾကာင္းအရာမ်ားသည္ ပါဝင္ေသာပစၥည္းမ်ား၊ မတည့္ေသာအစားအစာမ်ား၊ အာဟာရအေၾကာင္းအရာမ်ားႏွင့္ ထုတ္ကုန္အဆင့္ႏွင့္ ကၽြႏ္ုပ္တို႔ရွာႏိုင္ေသာအခ်က္အလက္မ်ားပါဝင္သည့္ database ျဖစ္သည္။</string>
-  <string name="txtSave">သိမ္းမည္</string>
   <string name="txtUser">အသံုးျပဳသူ ပန္နယ္</string>
   <string name="txtToastSaved">အသံုးျပဳသူကိုသိမ္းခဲ့ျပီးျပီ</string>
   <string name="txtSalt">ဆား -</string>
@@ -112,6 +111,5 @@
   <string name="alert_drawer">ယားယံျခင္းသတိေပးမႈ</string>
   <string name="warning_allergens">အလာဂ်င္ပါဝင္သည္</string>
   <string name="title_dialog_alert">သတိေပးမႈထည့္မည္</string>
-  <string name="warning_alert_data">အခ်က္အလက္မ်ားသည္အတိအက်ျဖစ္ေနလိမ့္မည္မဟုတ္ပါ။ သင္ကိုယ္တိုင္ျပန္လည္စစ္ေဆးသင့္ပါသည္</string>
   <string name="from_gallery">ဓာတ္ပံုျပခန္းမွ</string>
 </resources>

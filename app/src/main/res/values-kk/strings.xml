@@ -52,7 +52,6 @@
   <string name="txtPass">Құпиясөз :</string>
   <string name="txtTitleHome">Өзіңіздің тағамыңызды ашып және не жейтініңізді біліңіз</string>
   <string name="txtHome">Open Food Facts тағамдық ингредиенттермен, аллергендермен, тағамның құндылығын және барлық дәмді тағамдар туралы ақпарат таба алады, заттаңбадағы өнімдер деректер базасын көрсетеді.</string>
-  <string name="txtSave">Сақтау</string>
   <string name="txtUser">Пайдаланушының панельі</string>
   <string name="txtToastSaved">Пайдаланушы сақталған</string>
   <string name="txtSalt">Тұз :</string>
@@ -112,6 +111,5 @@
   <string name="alert_drawer">Аллергендер туралы ескерту</string>
   <string name="warning_allergens">Аллергендер құрайды</string>
   <string name="title_dialog_alert">Ескертуді қосу</string>
-  <string name="warning_alert_data">Деректер нақты болмауы да мүмкін, абай болыңыз, өзіңіз тексеріңіз!</string>
   <string name="from_gallery">Галереядан</string>
 </resources>

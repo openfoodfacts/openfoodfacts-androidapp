@@ -46,7 +46,6 @@
   <string name="txtNutrientLevel100g">Níveis de nutrientes para 100g :</string>
   <string name="txtPass">Palavra-passe :</string>
   <string name="txtTitleHome">Abra os seus alimentos e saiba o que come</string>
-  <string name="txtSave">Guardar</string>
   <string name="txtUser">Painel de Utilizador</string>
   <string name="txtToastSaved">Utilizador guardado</string>
   <string name="txtSalt">Sal :</string>
@@ -100,6 +99,5 @@
   <string name="delete_txt">Apagar</string>
   <string name="warning_allergens">Contem alérgenos</string>
   <string name="title_dialog_alert">Adicionar alerta</string>
-  <string name="warning_alert_data">Os dados podem ser imprecisos, tenha cuidado, verifique pessoalmente!</string>
   <string name="from_gallery">Galeria de imagens</string>
 </resources>

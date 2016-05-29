@@ -52,7 +52,6 @@
   <string name="txtPass">Passwort :</string>
   <string name="txtTitleHome">Open your food und lerne kennen, was du isst</string>
   <string name="txtHome">Open Food Facts besteht in einer Datenbank von Nahrungsmittel und ihre Zutaten, Allergene, Nährwertinformationen und all diesen auf Produkt-Etiketten angezeigten Nahrung-Einzelheiten.</string>
-  <string name="txtSave">verbinden</string>
   <string name="txtUser">Beteiligter Panel</string>
   <string name="txtToastSaved">Beteiligter gespeichert</string>
   <string name="txtSalt">Salz:</string>
@@ -112,6 +111,5 @@
   <string name="alert_drawer">Alarm Allergene</string>
   <string name="warning_allergens">Enthält Allergene</string>
   <string name="title_dialog_alert">Alarm hinzufügen</string>
-  <string name="warning_alert_data">Die Angaben könnten nicht akkurat sein. Bitte sei vorsichtig und überprüfe die Angaben selbst.</string>
   <string name="from_gallery">Aus Galerie</string>
 </resources>

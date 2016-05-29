@@ -52,7 +52,6 @@
   <string name="txtPass">Contrasenya:</string>
   <string name="txtTitleHome">Obri el seu menjar i conega què menja</string>
   <string name="txtHome">Open Food Facts és una base de dades de productes alimentaris, alèrgens, informació nutricional i totes les xicotetes informacions que es poden trobar a les etiquetes de productes.</string>
-  <string name="txtSave">Desa</string>
   <string name="txtUser">Panell d\'usuari</string>
   <string name="txtToastSaved">Usuari desat</string>
   <string name="txtSalt">Sal :</string>
@@ -112,6 +111,5 @@
   <string name="alert_drawer">Atenció al·lèrgens</string>
   <string name="warning_allergens">Conté al·lèrgens</string>
   <string name="title_dialog_alert">Afegir Alerta</string>
-  <string name="warning_alert_data">Les dades poden no ser exactes, tinga cura, per favor comprove-ho vostè!</string>
   <string name="from_gallery">Des de la galeria</string>
 </resources>

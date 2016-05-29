@@ -52,7 +52,6 @@
   <string name="txtPass">Գաղտնաբառ՝</string>
   <string name="txtTitleHome">Բաց արեք Ձեր սնունդը և իմացեք, թե ինչ եք ուտում</string>
   <string name="txtHome">«Բաց փաստեր սննդի մասին» ծրագիրը սննդամթերքի շտեմարան է, որը պարունակում է տեղեկություններ բաղադրամասերի, ալերգենների, սննդային արժեքների մասին և մթերքների պիտակների վրա գտվող ամբողջ տեղեկատվությունը։</string>
-  <string name="txtSave">Պահպանել</string>
   <string name="txtUser">Օգտվողի վահանակ</string>
   <string name="txtToastSaved">Օգտվողը պահպանվել է</string>
   <string name="txtSalt">Աղեր՝</string>
@@ -112,6 +111,5 @@
   <string name="alert_drawer">Ալերգենի զգուշացում</string>
   <string name="warning_allergens">Պարունակում է ալերգեններ</string>
   <string name="title_dialog_alert">Ավելացնել զգուշացում</string>
-  <string name="warning_alert_data">Տվյալների կարող ճշգրիտ չլինել, զգո՛ւյշ եղեք, խնդրում ենք, ստուգեք ինքներդ։</string>
   <string name="from_gallery">Պատկերասրահից</string>
 </resources>

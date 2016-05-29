@@ -43,7 +43,6 @@
   <string name="txtPass">Lösenord :</string>
   <string name="txtTitleHome">Öppna din mat och känn till vad du äter</string>
   <string name="txtHome">Öppen mat-fakta är en databas för matprodukter med ingredienser, allergener, näringsfakta och alla godbitar av information som vi kan hitta på produktetiketter.</string>
-  <string name="txtSave">Spara</string>
   <string name="txtToastSaved">Användaren sparades</string>
   <string name="txtSalt">Salt :</string>
   <string name="txtFat">Fett :</string>

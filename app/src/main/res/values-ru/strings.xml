@@ -52,7 +52,6 @@
   <string name="txtPass">Пароль:</string>
   <string name="txtTitleHome">Откройте вашу еду и узнайте, что вы едите</string>
   <string name="txtHome">Open Food Facts представляет собой базу данных пищевых продуктов с ингредиентами, аллергенами, пищевой ценностью и всеми лакомыми кусочками информации, которые мы можем найти на этикетках продуктов.</string>
-  <string name="txtSave">Сохранить</string>
   <string name="txtUser">Панель пользователя</string>
   <string name="txtToastSaved">Пользователь сохранён</string>
   <string name="txtSalt">Соль:</string>
@@ -112,6 +111,5 @@
   <string name="alert_drawer">Предупреждать об аллергенах</string>
   <string name="warning_allergens">Содержит аллергены</string>
   <string name="title_dialog_alert">Добавить предупреждение</string>
-  <string name="warning_alert_data">Данные могут быть не точными, будьте осторожны, пожалуйста, проверьте сами!</string>
   <string name="from_gallery">Из галереи</string>
 </resources>
