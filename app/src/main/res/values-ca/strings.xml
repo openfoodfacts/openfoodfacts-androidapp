@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Open Beauty</string>
+  <string name="hello_world">Hola món!</string>
+  <string name="action_settings">Preferències</string>
+  <string name="action_about">Quant a</string>
+  <string name="action_find">Cerca</string>
+  <string name="text_barcode">Pose el codi de barres:</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Resum</item>
+    <item>Ingredients</item>
+    <item>Nutrició</item>
+    <item>Tornar al menú</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Predeterminat</item>
+    <item>Nutrició</item>
+    <item>Ingredients</item>
+  </string-array>
+  <string name="search_button">Cerca</string>
+  <string name="no_products">No s\'han trobat els productes</string>
+  <string name="desc_list_item_icon">Icona d\'objecte</string>
+  <string name="alert_dialog_warning_title">Avís</string>
+  <string name="alert_dialog_warning_msg_user">L\'usuari/contrasenya ha canviat, per favor actualitze la informació</string>
+  <string name="alert_dialog_product_error_msg">No s\'ha trobat el producte, per favor intente-ho una altra volta</string>
+  <string name="toast_retrieving">S\'està carregant...</string>
+  <string name="txtBarcode">Codi de barres :</string>
+  <string name="txtQuantity">Quantitat :</string>
+  <string name="txtPackaging">Envasament :</string>
+  <string name="txtBrands">Marques :</string>
+  <string name="txtCategories">Categories :</string>
+  <string name="txtManufacturing">Llocs de manufactura o processament :</string>
+  <string name="txtCity">Ciutat, estat o país on es va comprar :</string>
+  <string name="txtStores">Tendes :</string>
+  <string name="txtCountries">Països on es ven :</string>
+  <string name="txtIngredients">Llista d\'ingredients :</string>
+  <string name="txtSubstances">Substàncies o productes que causen al·lèrgies o intoleràncies :</string>
+  <string name="txtAdditives">Additius :</string>
+  <string name="txtTraces">Rastres :</string>
+  <string name="txtMayBeFromPalmOilProduct">Ingredients que potser vinguen de l\'oli de palma :</string>
+  <string name="txtPalmOilProduct">Ingredients de l\'oli de palma :</string>
+  <string name="txtServingSize">Mida de la ració :</string>
+  <string name="txtNutrientLevel100g">Nivells de nutrients per cada 100g :</string>
+  <string name="txtLogin">Usuari :</string>
+  <string name="txtPass">Contrasenya:</string>
+  <string name="txtTitleHome">Obri el seu menjar i conega què menja</string>
+  <string name="txtHome">Open Beauty Facts és una base de dades de productes alimentaris, alèrgens, informació nutricional i totes les xicotetes informacions que es poden trobar a les etiquetes de productes.</string>
+  <string name="txtUser">Panell d\'usuari</string>
+  <string name="txtToastSaved">Usuari desat</string>
+  <string name="txtSalt">Sal :</string>
+  <string name="txtFat">Greix :</string>
+  <string name="txtSugars">Sucres :</string>
+  <string name="txtSaturatedFat">Greix saturat :</string>
+  <string name="hintBarcode">Codi de barres</string>
+  <string name="hintLogin">Usuari</string>
+  <string name="hintPass">Contrasenya</string>
+  <string name="errorLogin">Usuari o contrasenya errònia</string>
+  <string name="errorWeb">No s\'ha pogut connectar a l\'Internet. Té problemes amb la connexió?</string>
+  <string name="txtInfoLoginOk">Usuari desat</string>
+  <string name="txtInfoLoginNo">Usuari no desat</string>
+  <string name="txtDialogsTitle">Informació</string>
+  <string name="txtDialogsContent">El producte que ha escanejat no existix encara a Open Beauty Facts. Vol afegir-lo?</string>
+  <string name="txtDialogsContentSend">Vol enviar els productes desats a la nostra base de dades?</string>
+  <string name="txtYes">Si</string>
+  <string name="txtNo">No</string>
+  <string name="hintNameProduct">Nom</string>
+  <string name="hintEnergy">Energia en KJ per ració</string>
+  <string name="hintEnergyUnit">Unitat d\'energia</string>
+  <string name="hintWeight">Pes</string>
+  <string name="hintStores">Botiga</string>
+  <string name="txtTakePicture">Prenga una foto</string>
+  <string name="txtSendAll">Puja tot</string>
+  <string name="txtNoData">No hi ha dades</string>
+  <string name="txtPictureNeeded">Primer prenga una foto, després emplene el nom i la tenda!</string>
+  <string name="toastSending">Pujant...</string>
+  <string name="dataSaved">Desat localment al seu dispositiu</string>
+  <string name="txtInfoAddUser">Per favor pose l\'usuari i la contrasenya</string>
+  <string name="txtDataUpdated">Dades actualitzades</string>
+  <string name="txtLoading">Carregant ...</string>
+  <string name="txtDialogsContentDelete">Vol esborrar este esborrany?</string>
+  <string name="txtDialogsContentInfoSave">El producte s\'ha desat localment, pot editar-lo amb el menú de l\'Editor Offline</string>
+  <string name="txtBarcodeRequire">Es necessita un codi de barres</string>
+  <string name="txtOk">D\'acord</string>
+  <string name="txtContentDialogUploading">Per favor no isca en mig del procés...</string>
+  <string name="txtAbout">Les imatges que ha enviat es publiquen amb la llicència lliure Creative Commons Attribution and ShareAlike</string>
+  <string name="txtAllsent">Productes enviats</string>
+  <string name="txtPalm">El producte no conté res d\'oli de palma</string>
+  <string name="txtBarcodeNotValid">Codi de barres no vàlid</string>
+  <string name="try_it_scan_now">Prove! Escanege ara!</string>
+  <string name="share">Comparteix</string>
+  <string name="msg_share">Mire este producte a Open Beauty Facts :</string>
+  <string name="create_account">Entra</string>
+  <string name="home_drawer">Inici</string>
+  <string name="search_drawer">Cerca</string>
+  <string name="search_by_barcode_drawer">Cerca per codi de barres</string>
+  <string name="search_by_name_drawer">Cerca pel nom</string>
+  <string name="scan_search">Escàner</string>
+  <string name="user_drawer">Usuari</string>
+  <string name="offline_edit_drawer">Edició offline</string>
+  <string name="txt_anonymous">Anònim</string>
+  <string name="txt_product_not_found">No s\'han trobat els productes</string>
+  <string name="delete_txt">Elimina</string>
+  <string name="sign_in_drawer">Obre sessió</string>
+  <string name="alert_drawer">Atenció al·lèrgens</string>
+  <string name="warning_allergens">Conté al·lèrgens</string>
+  <string name="title_dialog_alert">Afegir Alerta</string>
+  <string name="from_gallery">Des de la galeria</string>
+</resources>

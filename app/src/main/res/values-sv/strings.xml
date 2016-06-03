@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Öppen mat</string>
+  <string name="hello_world">Hej världen!</string>
+  <string name="action_settings">Inställningar</string>
+  <string name="action_about">Om</string>
+  <string name="action_find">Sök</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Sammanfattning</item>
+    <item>Ingredienser</item>
+    <item>Näring</item>
+    <item>Tillbaka till menyn</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Standard</item>
+    <item>Näring</item>
+    <item>Ingredienser</item>
+  </string-array>
+  <string name="search_button">Sök</string>
+  <string name="no_products">Produkterna hittades inte</string>
+  <string name="alert_dialog_warning_title">Varning</string>
+  <string name="alert_dialog_warning_msg_user">Användaren/lösenordet har ändrats, var vänlig och uppdatera informationen</string>
+  <string name="alert_dialog_product_error_msg">Produkten kunde inte hittas, var vänlig försök igen</string>
+  <string name="toast_retrieving">Laddar...</string>
+  <string name="txtBarcode">Streckkod</string>
+  <string name="txtQuantity">Kvantitet:</string>
+  <string name="txtPackaging">Paketering:</string>
+  <string name="txtBrands">Märken:</string>
+  <string name="txtCategories">Kategorier:</string>
+  <string name="txtStores">Butiker:</string>
+  <string name="txtSubstances">Substanser eller produkter som orsaker allergier eller intolerans :</string>
+  <string name="txtAdditives">Tillsatser :</string>
+  <string name="txtServingSize">Storlek på portion :</string>
+  <string name="txtNutrientLevel100g">Näringsnivåer per 100g</string>
+  <string name="txtLogin">Användarnamn :</string>
+  <string name="txtPass">Lösenord :</string>
+  <string name="txtTitleHome">Öppna din mat och känn till vad du äter</string>
+  <string name="txtHome">Öppen mat-fakta är en databas för matprodukter med ingredienser, allergener, näringsfakta och alla godbitar av information som vi kan hitta på produktetiketter.</string>
+  <string name="txtToastSaved">Användaren sparades</string>
+  <string name="txtSalt">Salt :</string>
+  <string name="txtFat">Fett :</string>
+  <string name="txtSugars">Socker :</string>
+  <string name="hintBarcode">Streckkod</string>
+  <string name="hintPass">Lösenord</string>
+  <string name="errorLogin">Fel användarnamn eller lösenord</string>
+  <string name="errorWeb">Vi kan inte komma åt internet. Har du problem med anslutningen?</string>
+  <string name="txtDialogsTitle">Information</string>
+  <string name="txtDialogsContent">Produkten som du skannade finns inte i Öppen mat-fakta ännu. Vill du lägga till den?</string>
+  <string name="txtDialogsContentSend">Vill du skicka de sparade produkterna till vår databas?</string>
+  <string name="txtYes">Ja</string>
+  <string name="txtNo">Nej</string>
+  <string name="hintNameProduct">Namn</string>
+  <string name="hintEnergy">Energi i kJ per portion</string>
+  <string name="hintEnergyUnit">Energienhet</string>
+  <string name="hintWeight">Vikt</string>
+  <string name="hintStores">Butik</string>
+  <string name="txtTakePicture">Ta en bild</string>
+  <string name="txtSendAll">Ladda upp allt</string>
+  <string name="txtNoData">Ingen data</string>
+  <string name="txtPictureNeeded">Ta en bild först och sedan fyller du i namnet och butiken!</string>
+  <string name="toastSending">Laddar upp...</string>
+  <string name="dataSaved">Sparades lokalt i din enhet</string>
+  <string name="txtInfoAddUser">Vänligen fyll i ditt användarnamn och lösenord</string>
+  <string name="txtDataUpdated">Datan uppdaterades</string>
+  <string name="txtLoading">Laddar...</string>
+  <string name="txtBarcodeRequire">Streckkod krävs</string>
+  <string name="txtOk">Ok</string>
+  <string name="txtContentDialogUploading">Vänligen avsluta inte under proceduren...</string>
+  <string name="txtAllsent">Produkterna skickades</string>
+  <string name="txtPalm">Produkten innehåller ingen palmolja</string>
+  <string name="txtBarcodeNotValid">Streckkoden är inte giltig</string>
+  <string name="try_it_scan_now">Prova det! Skanna nu!</string>
+  <string name="share">Dela</string>
+  <string name="create_account">Registrera</string>
+  <string name="home_drawer">Hem</string>
+  <string name="search_drawer">Sök</string>
+  <string name="search_by_barcode_drawer">Sök med streckkod</string>
+  <string name="search_by_name_drawer">Sök på namn</string>
+  <string name="scan_search">Skanna</string>
+  <string name="user_drawer">Användare</string>
+  <string name="txt_anonymous">Anonym</string>
+  <string name="delete_txt">Radera</string>
+  <string name="sign_in_drawer">Logga in</string>
+  <string name="warning_allergens">Innehåller allergener</string>
+  <string name="from_gallery">Från galleriet</string>
+</resources>

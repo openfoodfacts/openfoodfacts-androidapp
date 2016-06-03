@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">אוכל פתוח</string>
+  <string name="hello_world">שלום עולם!</string>
+  <string name="action_settings">הגדרות</string>
+  <string name="action_about">על אודות</string>
+  <string name="action_find">חיפוש</string>
+  <string name="text_barcode">נא להזין את הברקוד:</string>
+  <string-array name="nav_drawer_items_product">
+    <item>תקציר</item>
+    <item>רכיבים</item>
+    <item>תזונה</item>
+    <item>חזרה לתפריט</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>ג׳</item>
+    <item>מ״ג</item>
+    <item>ק״ג</item>
+    <item>ל׳</item>
+    <item>מ״ל</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>בררת מחדל</item>
+    <item>תזונה</item>
+    <item>רכיבים</item>
+  </string-array>
+  <string name="search_button">חיפוש</string>
+  <string name="no_products">המוצרים לא נמצאו</string>
+  <string name="desc_list_item_icon">סמל הפריט</string>
+  <string name="alert_dialog_warning_title">אזהרה</string>
+  <string name="alert_dialog_warning_msg_user">שם משתמש/ססמה השתנו, נא לעדכן את הפרטים</string>
+  <string name="alert_dialog_product_error_msg">המוצר לא נמצא, נא לנסות שוב.</string>
+  <string name="toast_retrieving">בטעינה…</string>
+  <string name="txtBarcode">ברקוד:</string>
+  <string name="txtQuantity">כמות:</string>
+  <string name="txtPackaging">אריזה:</string>
+  <string name="txtBrands">מותגים:</string>
+  <string name="txtCategories">קטגוריות:</string>
+  <string name="txtManufacturing">מקומות העיבוד או הייצור:</string>
+  <string name="txtCity">עיר, מדינה וארץ הקנייה :</string>
+  <string name="txtStores">חנויות:</string>
+  <string name="txtCountries">מדינות בהן נמכר:</string>
+  <string name="txtIngredients">רשימת רכיבים:</string>
+  <string name="txtSubstances">חומרים או מוצרים שיכולים לגרום לרגשת או רגישות :</string>
+  <string name="txtAdditives">תוספים :</string>
+  <string name="txtTraces">עקבות :</string>
+  <string name="txtMayBeFromPalmOilProduct">רכיבים שעשויים להיות משמן דקלים :</string>
+  <string name="txtPalmOilProduct">רכיבים משמן דקלים :</string>
+  <string name="txtServingSize">גודל ההגשה :</string>
+  <string name="txtNutrientLevel100g">טבלת ערכים תזונתיים ל־100 ג׳ :</string>
+  <string name="txtLogin">שם משתמש :</string>
+  <string name="txtPass">ססמה :</string>
+  <string name="txtTitleHome">פתיחה של האוכל שלך מאפשרת לך לדעת מה נכנס אליך לגוף</string>
+  <string name="txtHome">Open Beauty Facts הנו מסד נתונים של מוצרי מזון עם רכיבים, אלרגנים, טבלאות תזונתיות וכל פרטי המידע הקטנים שניתן למצוא על תוויות המוצרים.</string>
+  <string name="txtUser">לוח משתמש</string>
+  <string name="txtToastSaved">המשתמש נשמר</string>
+  <string name="txtSalt">מלח :</string>
+  <string name="txtFat">שומן :</string>
+  <string name="txtSugars">סוכרים :</string>
+  <string name="txtSaturatedFat">שומן רווי :</string>
+  <string name="hintBarcode">ברקוד</string>
+  <string name="hintLogin">שם משתמש</string>
+  <string name="hintPass">ססמה</string>
+  <string name="errorLogin">שם המשתמש או הססמה שגויים</string>
+  <string name="errorWeb">לא הצלחנו לגשת לאינטרנט. יש לך תקלה בחיבור?</string>
+  <string name="txtInfoLoginOk">המשתמש נשמר</string>
+  <string name="txtInfoLoginNo">המשתמש לא נשמר</string>
+  <string name="txtDialogsTitle">פרטים</string>
+  <string name="txtDialogsContent">המוצרים שסרקת לא נמצאים עדיין ב־Open Beauty Facts. להוסיף?</string>
+  <string name="txtDialogsContentSend">לשלוח את המוצרים שנשמרו למסד הנתונים שלנו?</string>
+  <string name="txtYes">כן</string>
+  <string name="txtNo">לא</string>
+  <string name="hintNameProduct">שם</string>
+  <string name="hintEnergy">אנרגיה ב־kJ להגשה</string>
+  <string name="hintEnergyUnit">יחידת אנרגיה</string>
+  <string name="hintWeight">משקל</string>
+  <string name="hintStores">חנות</string>
+  <string name="txtTakePicture">צילום תמונה</string>
+  <string name="txtSendAll">לשלוח הכול</string>
+  <string name="txtNoData">אין נתונים</string>
+  <string name="txtPictureNeeded">יש לצלם תמונה תחילה ואז למלא את השם ואת החנות!</string>
+  <string name="toastSending">מתבצעת שליחה…</string>
+  <string name="dataSaved">נשמר מקומית בהתקן שלך</string>
+  <string name="txtInfoAddUser">נא להזין את שם המשתמש והססמה שלך</string>
+  <string name="txtDataUpdated">הנתונים עודכנו</string>
+  <string name="txtLoading">בטעינה…</string>
+  <string name="txtDialogsContentDelete">למחוק את הטיוטה הזו?</string>
+  <string name="txtDialogsContentInfoSave">המוצר נשמר מקומית, ניתן לערוך אותו בתפריט העריכה בלתי מקוון</string>
+  <string name="txtBarcodeRequire">נדרש ברקוד</string>
+  <string name="txtOk">בסדר</string>
+  <string name="txtContentDialogUploading">נא לא לצאת באמצע התהליך…</string>
+  <string name="txtAbout">התמונות הנשלחות על ידיך מפורסמות תחת הרישיון החופשי ייחוס שיתוף זהה מבית Creative Commons</string>
+  <string name="txtAllsent">המוצרים נשלחו</string>
+  <string name="txtPalm">המוצר אינו מכיל שמן דקלים</string>
+  <string name="txtBarcodeNotValid">הברקוד לא זמין</string>
+  <string name="try_it_scan_now">בואו ננסה! נא לסרוק כעת!</string>
+  <string name="share">שיתוף</string>
+  <string name="msg_share">להלן מוצר מתוך Open Beauty Facts :</string>
+  <string name="create_account">הרשמה</string>
+  <string name="home_drawer">ראשי</string>
+  <string name="search_drawer">חיפוש</string>
+  <string name="search_by_barcode_drawer">חיפוש לפי ברקוד</string>
+  <string name="search_by_name_drawer">חיפוש לפי שם</string>
+  <string name="scan_search">סריקה</string>
+  <string name="user_drawer">משתמש</string>
+  <string name="offline_edit_drawer">עריכה בלתי מקוונת</string>
+  <string name="txt_anonymous">אלמוני</string>
+  <string name="txt_product_not_found">המוצרים לא נמצאו</string>
+  <string name="delete_txt">מחיקה</string>
+  <string name="sign_in_drawer">כניסה</string>
+  <string name="alert_drawer">התרעה על אלרגנים</string>
+  <string name="warning_allergens">מכיל אלרגנים</string>
+  <string name="title_dialog_alert">הוספת התרעה</string>
+  <string name="from_gallery">מהגלריה</string>
+</resources>

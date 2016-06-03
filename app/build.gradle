@@ -2,17 +2,30 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "21.1.2"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "openfoodfacts.github.scrachx.openfood"
-        minSdkVersion 15
-        targetSdkVersion 21
-        versionCode 7
-        versionName "0.1.6"
+        applicationId "openbeautyfacts.github.scrachx.openbeauty"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 21
+        versionName "0.2.3"
     }
 
-    useLibrary 'org.apache.http.legacy'
+    dexOptions {
+        incremental = true;
+        preDexLibraries = false
+        javaMaxHeapSize "4g"
+    }
+
+    defaultConfig {
+        multiDexEnabled true
+    }
+
+    lintOptions {
+        abortOnError false
+        disable 'MissingTranslation'
+    }
 
     packagingOptions{
         exclude 'META-INF/DEPENDENCIES.txt'
@@ -43,8 +56,12 @@ apply plugin: 'com.neenbedankt.android-apt'
 
 dependencies {
 
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+
+    compile 'com.jakewharton:butterknife:7.0.1'
 
     compile 'com.loopj.android:android-async-http:1.4.9'
 
@@ -52,13 +69,13 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.3'
 
-    compile 'commons-validator:commons-validator:1.5.0'
+    compile 'commons-validator:commons-validator:1.5.1'
 
     compile 'net.steamcrafted:load-toast:1.0.10'
 
     compile 'me.dm7.barcodescanner:zxing:1.8.4'
 
-    compile 'com.koushikdutta.ion:ion:2.+'
+    compile 'com.hkm.loyalslider:library:1.8.8'
 
     compile 'org.jsoup:jsoup:1.8.3'
 
@@ -67,5 +84,20 @@ dependencies {
     compile('com.github.afollestad.material-dialogs:commons:0.8.5.7@aar') {
         transitive = true
     }
+
+    compile('com.mikepenz:materialdrawer:5.2.0@aar') {
+        transitive = true
+    }
+
+    compile 'com.github.clans:fab:1.6.3'
+
+    compile 'com.mikepenz:iconics-core:2.5.11@aar'
+    compile 'com.mikepenz:google-material-typeface:2.2.0.1.original@aar'
+    compile 'com.mikepenz:material-design-iconic-typeface:2.2.0.1@aar'
+    compile 'com.mikepenz:fontawesome-typeface:4.6.0.1@aar'
+
+    compile 'com.github.jkwiecien:EasyImage:1.2.1'
+
+    compile 'com.squareup.picasso:picasso:2.5.2'
 
 }

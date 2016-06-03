@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Open Beauty</string>
+  <string name="hello_world">Hello world!</string>
+  <string name="action_settings">設定</string>
+  <string name="action_about">アプリについて</string>
+  <string name="action_find">検索</string>
+  <string name="text_barcode">バーコードを入れてください :</string>
+  <string-array name="nav_drawer_items_product">
+    <item>サマリー</item>
+    <item>原材料</item>
+    <item>栄養</item>
+    <item>メニューに戻る</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Default</item>
+    <item>Nutrition</item>
+    <item>Ingredients</item>
+  </string-array>
+  <string name="search_button">検索</string>
+  <string name="no_products">製品が見つかりません</string>
+  <string name="desc_list_item_icon">アイテムアイコン</string>
+  <string name="alert_dialog_warning_title">警告</string>
+  <string name="alert_dialog_warning_msg_user">ユーザー/パスワードを変更しました。情報を更新してください</string>
+  <string name="alert_dialog_product_error_msg">製品が見つかりません。もう一度試してください</string>
+  <string name="toast_retrieving">読み込んでいます...</string>
+  <string name="txtBarcode">バーコード :</string>
+  <string name="txtQuantity">量 :</string>
+  <string name="txtPackaging">パッケージ :</string>
+  <string name="txtBrands">ブランド :</string>
+  <string name="txtCategories">カテゴリー :</string>
+  <string name="txtManufacturing">製造または加工場所 :</string>
+  <string name="txtCity">購入した市区町村、都道府県、国 :</string>
+  <string name="txtStores">店舗 :</string>
+  <string name="txtCountries">販売国 :</string>
+  <string name="txtIngredients">原材料一覧 :</string>
+  <string name="txtSubstances">アレルギーまたは不耐性の原因となる物質または製品 :</string>
+  <string name="txtAdditives">添加物 :</string>
+  <string name="txtTraces">追跡 :</string>
+  <string name="txtMayBeFromPalmOilProduct">パーム油を原材料とする可能性があるもの :</string>
+  <string name="txtPalmOilProduct">パーム油を原材料とするもの :</string>
+  <string name="txtServingSize">分量 :</string>
+  <string name="txtNutrientLevel100g">100g 当たりの栄養成分:</string>
+  <string name="txtLogin">ログイン :</string>
+  <string name="txtPass">パスワード :</string>
+  <string name="txtTitleHome">食品を開くと何を食べているか分かります</string>
+  <string name="txtHome">Open Beauty Facts は、食品の原材料、アレルゲン、栄養成分、および製品ラベルで見ることができるすべての情報のデータベースです。</string>
+  <string name="txtUser">ユーザーパネル</string>
+  <string name="txtToastSaved">ユーザーを保存しました</string>
+  <string name="txtSalt">食塩 :</string>
+  <string name="txtFat">脂肪 :</string>
+  <string name="txtSugars">砂糖 :</string>
+  <string name="txtSaturatedFat">飽和脂肪酸 :</string>
+  <string name="hintBarcode">バーコード</string>
+  <string name="hintLogin">ログイン</string>
+  <string name="hintPass">パスワード</string>
+  <string name="errorLogin">ログインまたはパスワードエラー</string>
+  <string name="errorWeb">インターネットにアクセスできませんでした。接続に問題がありませんか?</string>
+  <string name="txtInfoLoginOk">ユーザーを保存しました</string>
+  <string name="txtInfoLoginNo">ユーザーを保存できませんでした</string>
+  <string name="txtDialogsTitle">情報</string>
+  <string name="txtDialogsContent">スキャンした製品は、まだ Open Beauty Facts に存在しません。追加しますか?</string>
+  <string name="txtDialogsContentSend">保存した製品をデータベースに送信しますか?</string>
+  <string name="txtYes">はい</string>
+  <string name="txtNo">いいえ</string>
+  <string name="hintNameProduct">名前</string>
+  <string name="hintEnergy">一食当たりのエネルギー (KJ)</string>
+  <string name="hintEnergyUnit">エネルギーの単位</string>
+  <string name="hintWeight">重量</string>
+  <string name="hintStores">店舗</string>
+  <string name="txtTakePicture">写真を撮影</string>
+  <string name="txtSendAll">すべてアップロード</string>
+  <string name="txtNoData">データはありません</string>
+  <string name="txtPictureNeeded">まず写真を撮影します。その後名前と店舗を入力してください!</string>
+  <string name="toastSending">アップロードしています...</string>
+  <string name="dataSaved">お使いのデバイス内に保存しました</string>
+  <string name="txtInfoAddUser">ログインとパスワードを入力してください</string>
+  <string name="txtDataUpdated">データを更新しました</string>
+  <string name="txtLoading">読み込んでいます...</string>
+  <string name="txtDialogsContentDelete">この下書きを削除しますか?</string>
+  <string name="txtDialogsContentInfoSave">この製品はローカルに保存されます。オフライン編集 メニューで編集することができます</string>
+  <string name="txtBarcodeRequire">バーコードが必要です</string>
+  <string name="txtOk">OK</string>
+  <string name="txtContentDialogUploading">処理中はアプリを終了しないでください...</string>
+  <string name="txtAbout">あなたが送信した画像はフリーのライセンスクリエイティブコモンズと同一条件許諾の下で公開されます。</string>
+  <string name="txtAllsent">製品を送信しました</string>
+  <string name="txtPalm">製品にはパーム油は含まれていません</string>
+  <string name="txtBarcodeNotValid">バーコードが正しくありません</string>
+  <string name="try_it_scan_now">今すぐスキャンしてみてください!</string>
+  <string name="share">共有</string>
+  <string name="msg_share">Open Beauty Facts でこの製品を参照してください:</string>
+  <string name="create_account">サインアップ</string>
+  <string name="home_drawer">ホーム</string>
+  <string name="search_drawer">検索</string>
+  <string name="search_by_barcode_drawer">バーコードで検索</string>
+  <string name="search_by_name_drawer">名前で検索</string>
+  <string name="scan_search">スキャン</string>
+  <string name="user_drawer">ユーザー</string>
+  <string name="offline_edit_drawer">オフライン編集</string>
+  <string name="txt_anonymous">匿名</string>
+  <string name="txt_product_not_found">製品が見つかりません</string>
+  <string name="delete_txt">削除</string>
+  <string name="sign_in_drawer">サインイン</string>
+  <string name="alert_drawer">アレルゲンを警告</string>
+  <string name="warning_allergens">アレルゲンを含んでいます</string>
+  <string name="title_dialog_alert">警告を追加</string>
+  <string name="from_gallery">ギャラリーから</string>
+</resources>

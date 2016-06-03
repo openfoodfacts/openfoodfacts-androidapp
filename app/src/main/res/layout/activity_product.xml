@@ -1,25 +1,28 @@
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawer_layout_product"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical">
 
-    <!-- The main content view -->
-    <FrameLayout
-        android:id="@+id/content_frame_product"
+    <include layout="@layout/toolbar" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <!-- The navigation drawer -->
-    <ListView android:id="@+id/left_drawer_product"
-        android:layout_width="200dp"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:choiceMode="singleChoice"
-        android:divider="@color/indigo_50"
-        android:dividerHeight="1dp"
-        android:background="@color/indigo_300"
-        />
+        android:layout_below="@+id/toolbar">
 
-</android.support.v4.widget.DrawerLayout>
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/pager_title_strip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:textColor="@color/white"
+            android:background="@color/indigo_400"
+            android:paddingTop="@dimen/spacing_normal"
+            android:paddingBottom="@dimen/spacing_normal"
+            />
+
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
@@ -14,6 +15,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <com.hkm.slider.SliderLayout
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                custom:pager_animation_span="2000"
+                />
+
+            <com.hkm.slider.Indicators.PagerIndicator
+                android:id="@+id/custom_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                custom:selected_color="#0095BF"
+                custom:unselected_color="#55333333"
+                custom:shape="rect"
+                custom:selected_padding_left="2dp"
+                custom:selected_padding_right="2dp"
+                custom:unselected_padding_left="2dp"
+                custom:unselected_padding_right="2dp"
+                custom:selected_width="6dp"
+                custom:selected_height="6dp"
+                custom:unselected_width="6dp"
+                custom:unselected_height="6dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -24,15 +50,6 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/spacing_normal"
                 android:id="@+id/textNameProduct"/>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/imageViewProduct"
-                android:layout_marginEnd="@dimen/spacing_normal"
-                android:layout_marginStart="@dimen/spacing_normal"
-                android:layout_gravity="center_horizontal"
-                />
 
             <TextView
                 android:layout_width="fill_parent"

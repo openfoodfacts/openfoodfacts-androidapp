@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Open Beauty</string>
+  <string name="hello_world">¡Hola mundo!</string>
+  <string name="action_settings">Configuración</string>
+  <string name="action_about">Acerca de</string>
+  <string name="action_find">Buscar</string>
+  <string name="text_barcode">Ponga el código de barras :</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Resumen</item>
+    <item>Ingredientes</item>
+    <item>Nutrición</item>
+    <item>Volver al menú</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Predeterminado</item>
+    <item>Nutrición</item>
+    <item>Ingredientes</item>
+  </string-array>
+  <string name="search_button">Buscar</string>
+  <string name="no_products">No se han encontrado productos</string>
+  <string name="desc_list_item_icon">Icono de Objeto</string>
+  <string name="alert_dialog_warning_title">Aviso</string>
+  <string name="alert_dialog_warning_msg_user">El usuario/contraseña ha cambiado, por favor actualice la información</string>
+  <string name="alert_dialog_product_error_msg">El producto no se ha encontrado, por favor pruebe de nuevo</string>
+  <string name="toast_retrieving">Cargando...</string>
+  <string name="txtBarcode">Código de barras :</string>
+  <string name="txtQuantity">Cantidad :</string>
+  <string name="txtPackaging">Envasado :</string>
+  <string name="txtBrands">MArcas :</string>
+  <string name="txtCategories">Categorías :</string>
+  <string name="txtManufacturing">Lugares de manufactura o proceso :</string>
+  <string name="txtCity">Ciudad, estado o país donde se compró :</string>
+  <string name="txtStores">Tiendas :</string>
+  <string name="txtCountries">Países donde se compra :</string>
+  <string name="txtIngredients">Lista de ingredientes :</string>
+  <string name="txtSubstances">Substancias o productos que causen alergias o intolerancias :</string>
+  <string name="txtAdditives">Aditivos :</string>
+  <string name="txtTraces">Rastros :</string>
+  <string name="txtMayBeFromPalmOilProduct">Ingredientes que puedan provenir de aceite de palma :</string>
+  <string name="txtPalmOilProduct">Ingredientes con aceite de palma :</string>
+  <string name="txtServingSize">Tamaño de la ración :</string>
+  <string name="txtNutrientLevel100g">Niveles de nutrientes por cada 100g :</string>
+  <string name="txtLogin">Usuario :</string>
+  <string name="txtPass">Contraseña :</string>
+  <string name="txtTitleHome">Abra su comida y sepa qué come</string>
+  <string name="txtHome">OpenBeautyFacts es una base de datos de productos alimenticios con ingredientes, alérgenos, información nutricional y todas aquellas minucias que se pueden encontrar en las etiquetas de los productos.</string>
+  <string name="txtUser">Panel de usuario</string>
+  <string name="txtToastSaved">Usuario guardado</string>
+  <string name="txtSalt">Sal :</string>
+  <string name="txtFat">Grasas :</string>
+  <string name="txtSugars">Azúcares :</string>
+  <string name="txtSaturatedFat">Grasas saturada :</string>
+  <string name="hintBarcode">Código de barras</string>
+  <string name="hintLogin">Iniciar sesión</string>
+  <string name="hintPass">Contraseña</string>
+  <string name="errorLogin">Usuario o contraseña incorrecto</string>
+  <string name="errorWeb">No hemos podido conectarnos a Internet. ¿Tiene problemas de conexión?</string>
+  <string name="txtInfoLoginOk">Usuario guardado</string>
+  <string name="txtInfoLoginNo">Usuario no guardado</string>
+  <string name="txtDialogsTitle">Información</string>
+  <string name="txtDialogsContent">El producto que ha escaneado no existe aun en Open Beauty Facts. ¿Quiere añadirlo?</string>
+  <string name="txtDialogsContentSend">¿Quiere enviar el producto salvado a nuestra base de datos?</string>
+  <string name="txtYes">Sí</string>
+  <string name="txtNo">No</string>
+  <string name="hintNameProduct">Nombre</string>
+  <string name="hintEnergy">Energía en kJ por ración</string>
+  <string name="hintEnergyUnit">Unidad de energía</string>
+  <string name="hintWeight">Peso</string>
+  <string name="hintStores">Tienda</string>
+  <string name="txtTakePicture">Hacer una foto</string>
+  <string name="txtSendAll">Subir todo</string>
+  <string name="txtNoData">Sin datos</string>
+  <string name="txtPictureNeeded">¡Haga una foto antes, luego rellene el nombre y la tienda!</string>
+  <string name="toastSending">Subiendo...</string>
+  <string name="dataSaved">Guardado localmente en su dispositivo</string>
+  <string name="txtInfoAddUser">Por favor ponga su usuario y contraseña</string>
+  <string name="txtDataUpdated">Datos actualizados</string>
+  <string name="txtLoading">Cargando...</string>
+  <string name="txtDialogsContentDelete">¿Quiere borrar este borrador?</string>
+  <string name="txtDialogsContentInfoSave">El producto se ha guardado localmente, puede editarlo en el menú Editor Offline</string>
+  <string name="txtBarcodeRequire">Se necesita un código de barras</string>
+  <string name="txtOk">Ok</string>
+  <string name="txtContentDialogUploading">Por favor no salga durante el proceso...</string>
+  <string name="txtAbout">Las imágenes que ha enviado son publicadas bajo la licencia libre Creative Commons Attribution and ShareAlike</string>
+  <string name="txtAllsent">Productos enviados</string>
+  <string name="txtPalm">El producto no contiene nada de aceite de palma</string>
+  <string name="txtBarcodeNotValid">Código de barras no válido</string>
+  <string name="try_it_scan_now">¡Pruebe! ¡Escanee ahora!</string>
+  <string name="share">Compartir</string>
+  <string name="msg_share">Mire el producto en Open Beauty Facts :</string>
+  <string name="create_account">Registrarse</string>
+  <string name="home_drawer">Inicio</string>
+  <string name="search_drawer">Buscar</string>
+  <string name="search_by_barcode_drawer">Buscar por código de barras</string>
+  <string name="search_by_name_drawer">Buscar por nombre</string>
+  <string name="scan_search">Escanear</string>
+  <string name="user_drawer">Usuario</string>
+  <string name="offline_edit_drawer">Edición offline</string>
+  <string name="txt_anonymous">Anónimo</string>
+  <string name="txt_product_not_found">No se han encontrado productos</string>
+  <string name="delete_txt">Eliminar</string>
+  <string name="sign_in_drawer">Acceder</string>
+  <string name="alert_drawer">Cuidado alérgenos</string>
+  <string name="warning_allergens">Contiene alérgenos</string>
+  <string name="title_dialog_alert">Añadir alerta</string>
+  <string name="from_gallery">Desde la galería</string>
+</resources>

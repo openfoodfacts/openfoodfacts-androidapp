@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Բաց սնունդ</string>
+  <string name="hello_world">Ողջո՛ւյն, աշխարհ։</string>
+  <string name="action_settings">Կարգավորումներ</string>
+  <string name="action_about">Մեր մասին</string>
+  <string name="action_find">Գտնել</string>
+  <string name="text_barcode">Դնել գծակոդ՝</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Ամփոփում</item>
+    <item>Բաղադրամասեր</item>
+    <item>Սննդային արժեք</item>
+    <item>Ետ դեպի ընտրացանկ</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>գ</item>
+    <item>մգ</item>
+    <item>կգ</item>
+    <item>լ</item>
+    <item>մլ</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Լռելյայն</item>
+    <item>Սննդային արժեք</item>
+    <item>Բաղադրամասեր</item>
+  </string-array>
+  <string name="search_button">Որոնել</string>
+  <string name="no_products">Մթերքները չգտնվեցին</string>
+  <string name="desc_list_item_icon">Տարրի պատկերակ</string>
+  <string name="alert_dialog_warning_title">Զգուշացում</string>
+  <string name="alert_dialog_warning_msg_user">Օգտվողը/ գաղտնաբառը փոխվել է, խնդրում ենք թարմացնել տեղեկատվությունը</string>
+  <string name="alert_dialog_product_error_msg">Մթերքը չի գտնվել, խնդրում ենք կրկին փորձել</string>
+  <string name="toast_retrieving">Բեռնում...</string>
+  <string name="txtBarcode">Գծակոդ՝</string>
+  <string name="txtQuantity">Քանակը`</string>
+  <string name="txtPackaging">Փաթեթավորում՝</string>
+  <string name="txtBrands">Ապրանքանիշեր՝</string>
+  <string name="txtCategories">Ստորոգություններ՝</string>
+  <string name="txtManufacturing">Արտադրության կամ մշակման վայրերը՝</string>
+  <string name="txtCity">Ձեռք բերման քաղաքը, նահանգը և երկիրը՝</string>
+  <string name="txtStores">Խանութներ՝</string>
+  <string name="txtCountries">Վաճառման երկիրներ՝</string>
+  <string name="txtIngredients">Բաղադրամասեր՝</string>
+  <string name="txtSubstances">Ալերգիա կամ անհանդուրժողություն առաջացնող նյութեր կամ մտերքներ՝</string>
+  <string name="txtAdditives">Հավելումներ՝</string>
+  <string name="txtTraces">Կարող է պարունակել՝</string>
+  <string name="txtMayBeFromPalmOilProduct">Բաղադրամասեր, որոնք կարող են լինել արմավենու յուղից՝</string>
+  <string name="txtPalmOilProduct">Բաղադամասեր արմավենու յուղից՝</string>
+  <string name="txtServingSize">Չափաբաժնի չափը՝</string>
+  <string name="txtNutrientLevel100g">Սննդանյութերի մակարդակը 100 գրամում՝</string>
+  <string name="txtLogin">Մուտքանուն՝</string>
+  <string name="txtPass">Գաղտնաբառ՝</string>
+  <string name="txtTitleHome">Բաց արեք Ձեր սնունդը և իմացեք, թե ինչ եք ուտում</string>
+  <string name="txtHome">«Բաց փաստեր սննդի մասին» ծրագիրը սննդամթերքի շտեմարան է, որը պարունակում է տեղեկություններ բաղադրամասերի, ալերգենների, սննդային արժեքների մասին և մթերքների պիտակների վրա գտվող ամբողջ տեղեկատվությունը։</string>
+  <string name="txtUser">Օգտվողի վահանակ</string>
+  <string name="txtToastSaved">Օգտվողը պահպանվել է</string>
+  <string name="txtSalt">Աղեր՝</string>
+  <string name="txtFat">Ճարպ՝</string>
+  <string name="txtSugars">Շաքարներ՝</string>
+  <string name="txtSaturatedFat">Հագեցած ճարպ՝</string>
+  <string name="hintBarcode">Գծակոդ</string>
+  <string name="hintLogin">Մուտքանուն</string>
+  <string name="hintPass">Գաղտնաբառ</string>
+  <string name="errorLogin">Սխալ մուտքանուն կամ գաղտնաբառ</string>
+  <string name="errorWeb">Մենք չեն կարողանում մուտք գործել համացանց։ Դուք ունե՞ք կապի խնդիրներ։</string>
+  <string name="txtInfoLoginOk">Օգտվողը պահպանվեց</string>
+  <string name="txtInfoLoginNo">Օգտվողը չպահպանվեց</string>
+  <string name="txtDialogsTitle">Տեղեկատվություն</string>
+  <string name="txtDialogsContent">Այս մթերքը դեռ չկա «Open Beauty Facts»-ում։ Ցանկանո՞ւմ եք ավելացնել։</string>
+  <string name="txtDialogsContentSend">Ցանկանո՞ւմ եք ուղարկել պահպանված մթերքները մեր տվյալների շտեմարան։</string>
+  <string name="txtYes">Այո</string>
+  <string name="txtNo">Ոչ</string>
+  <string name="hintNameProduct">Անվանում</string>
+  <string name="hintEnergy">Էներգետիկ արժեքը մեկ չափաբաժնի համար (կՋ)</string>
+  <string name="hintEnergyUnit">Էներգետիկ արժեքի միավորներ</string>
+  <string name="hintWeight">Քաշը</string>
+  <string name="hintStores">Խանութ</string>
+  <string name="txtTakePicture">Լուսանկարել</string>
+  <string name="txtSendAll">Վերբեռնել բոլորը</string>
+  <string name="txtNoData">Տվյալներ չկան</string>
+  <string name="txtPictureNeeded">"Նախ լուսանկար հանեք, հետո լրացրեք անվանումը և  խանութը։"</string>
+  <string name="toastSending">Բեռնավորում...</string>
+  <string name="dataSaved">Պահպանվել է Ձեր սարքի վրա</string>
+  <string name="txtInfoAddUser">Մուտքագրեք մուտքանունը և գաղտնաբառը</string>
+  <string name="txtDataUpdated">Տվյալները թարմացվել են</string>
+  <string name="txtLoading">Բեռնավորում…</string>
+  <string name="txtDialogsContentDelete">Ցանկանում եք ջնջե՞լ այս սեւագիրը։</string>
+  <string name="txtDialogsContentInfoSave">Մթերքը պահպանվել է տեղում, Դուք կարող եք փոփոխել այդ «Անցանց խմբագրում» բաժնում</string>
+  <string name="txtBarcodeRequire">Պահանջվում է գծակոդ</string>
+  <string name="txtOk">Լավ</string>
+  <string name="txtContentDialogUploading">"Խնդրում ենք,  դուրս մի՛ եկեք գործընթացի ժամանակ..."</string>
+  <string name="txtAbout">Ձեր ուղարկվող լուսանկարները հրապարակվում են Creative Commons Attribution-ի և ShareAlike-ի ազատ լիցենզիայով։</string>
+  <string name="txtAllsent">Մթերքներն ուղարկվել են</string>
+  <string name="txtPalm">Մթերքը չի պարունակում արմավենու յուղ</string>
+  <string name="txtBarcodeNotValid">Գծակոդն անվավեր է</string>
+  <string name="try_it_scan_now">Փորձե՛ք։ Տեսածրե՛ք հիմա։</string>
+  <string name="share">Կիսվել</string>
+  <string name="msg_share">Նայեք այս մթերքը «Open Beauty Facts»-ում՝</string>
+  <string name="create_account">Գրանցում</string>
+  <string name="home_drawer">Գլխավոր</string>
+  <string name="search_drawer">Որոնել</string>
+  <string name="search_by_barcode_drawer">Որոնել ըստ գծակոդի</string>
+  <string name="search_by_name_drawer">Որոնել ըստ անվան</string>
+  <string name="scan_search">Տեսածրել</string>
+  <string name="user_drawer">Օգտվող</string>
+  <string name="offline_edit_drawer">Անցանց խմբագրում</string>
+  <string name="txt_anonymous">Անանուն</string>
+  <string name="txt_product_not_found">Մթերքները չգտնվեցին</string>
+  <string name="delete_txt">Ջնջել</string>
+  <string name="sign_in_drawer">Մուտք գործել</string>
+  <string name="alert_drawer">Ալերգենի զգուշացում</string>
+  <string name="warning_allergens">Պարունակում է ալերգեններ</string>
+  <string name="title_dialog_alert">Ավելացնել զգուշացում</string>
+  <string name="from_gallery">Պատկերասրահից</string>
+</resources>

@@ -1,0 +1,535 @@
+# Swedish translation for openbeautyfacts
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the openbeautyfacts
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  openbeautyfacts\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-05-29 10:47+0200\n"
+"PO-Revision-Date: 2016-05-29 08:00+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: sv\n"
+"Language-Team: Swedish <sv@li.org>\n"
+"Plural-Forms: nplurals=2; plural=((((n == 1)) && ((0 == 0))) ? 0 : 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.3\n"
+
+msgctxt "app_name"
+msgid "Open Beauty"
+msgstr "Öppen mat"
+
+msgctxt "hello_world"
+msgid "Hello world!"
+msgstr "Hej världen!"
+
+msgctxt "action_settings"
+msgid "Settings"
+msgstr "Inställningar"
+
+msgctxt "action_about"
+msgid "About"
+msgstr "Om"
+
+msgctxt "action_find"
+msgid "Find"
+msgstr "Sök"
+
+msgctxt "text_barcode"
+msgid "Put the barcode :"
+msgstr ""
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:0"
+msgid "Summary"
+msgstr "Sammanfattning"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:1"
+msgid "Ingredients"
+msgstr "Ingredienser"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:2"
+msgid "Nutrition"
+msgstr "Näring"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:3"
+msgid "Back to menu"
+msgstr "Tillbaka till menyn"
+
+#. Text units
+msgctxt "units_array:0"
+msgid "g"
+msgstr "g"
+
+#. Text units
+msgctxt "units_array:1"
+msgid "mg"
+msgstr "mg"
+
+#. Text units
+msgctxt "units_array:2"
+msgid "kg"
+msgstr "kg"
+
+#. Text units
+msgctxt "units_array:3"
+msgid "l"
+msgstr "l"
+
+#. Text units
+msgctxt "units_array:4"
+msgid "ml"
+msgstr "ml"
+
+msgctxt "images_array:0"
+msgid "Default"
+msgstr "Standard"
+
+msgctxt "images_array:1"
+msgid "Nutrition"
+msgstr "Näring"
+
+msgctxt "images_array:2"
+msgid "Ingredients"
+msgstr "Ingredienser"
+
+#. Content Description
+msgctxt "search_button"
+msgid "Search"
+msgstr "Sök"
+
+msgctxt "no_products"
+msgid "Products not found"
+msgstr "Produkterna hittades inte"
+
+msgctxt "desc_list_item_icon"
+msgid "Item Icon"
+msgstr ""
+
+msgctxt "alert_dialog_warning_title"
+msgid "Warning"
+msgstr "Varning"
+
+msgctxt "alert_dialog_warning_msg_user"
+msgid "User/password has changed, please update information"
+msgstr "Användaren/lösenordet har ändrats, var vänlig och uppdatera informationen"
+
+msgctxt "alert_dialog_product_error_msg"
+msgid "Product not found, please try again"
+msgstr "Produkten kunde inte hittas, var vänlig försök igen"
+
+msgctxt "toast_retrieving"
+msgid "Loading..."
+msgstr "Laddar..."
+
+msgctxt "txtBarcode"
+msgid "Barcode :"
+msgstr "Streckkod"
+
+msgctxt "txtQuantity"
+msgid "Quantity :"
+msgstr "Kvantitet:"
+
+msgctxt "txtPackaging"
+msgid "Packaging :"
+msgstr "Paketering:"
+
+msgctxt "txtBrands"
+msgid "Brands :"
+msgstr "Märken:"
+
+msgctxt "txtCategories"
+msgid "Categories :"
+msgstr "Kategorier:"
+
+msgctxt "txtManufacturing"
+msgid "Manufacturing or processing places :"
+msgstr ""
+
+msgctxt "txtCity"
+msgid "City, state and country where purchased :"
+msgstr ""
+
+msgctxt "txtStores"
+msgid "Stores :"
+msgstr "Butiker:"
+
+msgctxt "txtCountries"
+msgid "Countries where sold :"
+msgstr ""
+
+msgctxt "txtIngredients"
+msgid "Ingredients list :"
+msgstr ""
+
+msgctxt "txtSubstances"
+msgid "Substances or products causing allergies or intolerances :"
+msgstr "Substanser eller produkter som orsaker allergier eller intolerans :"
+
+msgctxt "txtAdditives"
+msgid "Additives :"
+msgstr "Tillsatser :"
+
+msgctxt "txtTraces"
+msgid "Traces :"
+msgstr ""
+
+msgctxt "txtMayBeFromPalmOilProduct"
+msgid "Ingredients that may be from palm oil :"
+msgstr ""
+
+msgctxt "txtPalmOilProduct"
+msgid "Ingredients from palm oil :"
+msgstr ""
+
+msgctxt "txtServingSize"
+msgid "Serving size :"
+msgstr "Storlek på portion :"
+
+msgctxt "txtNutrientLevel100g"
+msgid "Nutrient levels for 100g :"
+msgstr "Näringsnivåer per 100g"
+
+msgctxt "txtLogin"
+msgid "Login :"
+msgstr "Användarnamn :"
+
+msgctxt "txtPass"
+msgid "Password :"
+msgstr "Lösenord :"
+
+msgctxt "txtTitleHome"
+msgid "Open your food and know what you eat"
+msgstr "Öppna din mat och känn till vad du äter"
+
+#, fuzzy
+msgctxt "txtHome"
+msgid ""
+"Open Beauty Facts is a open database of food products with ingredients, "
+"allergens, nutrition facts and all the tidbits of information we can find"
+" on product labels."
+msgstr ""
+"Öppen mat-fakta är en databas för matprodukter med ingredienser, "
+"allergener, näringsfakta och alla godbitar av information som vi kan "
+"hitta på produktetiketter."
+
+#, fuzzy
+msgctxt "txtSave"
+msgid "Send/Save"
+msgstr ""
+
+msgctxt "txtSignIn"
+msgid "Sign in"
+msgstr ""
+
+msgctxt "txtUser"
+msgid "User panel"
+msgstr ""
+
+msgctxt "txtToastSaved"
+msgid "User saved"
+msgstr "Användaren sparades"
+
+msgctxt "txtSalt"
+msgid "Salt :"
+msgstr "Salt :"
+
+msgctxt "txtFat"
+msgid "Fat :"
+msgstr "Fett :"
+
+msgctxt "txtSugars"
+msgid "Sugars :"
+msgstr "Socker :"
+
+msgctxt "txtSaturatedFat"
+msgid "Satured fat :"
+msgstr ""
+
+msgctxt "hintBarcode"
+msgid "Barcode"
+msgstr "Streckkod"
+
+msgctxt "hintLogin"
+msgid "Login"
+msgstr ""
+
+msgctxt "hintPass"
+msgid "Password"
+msgstr "Lösenord"
+
+msgctxt "errorLogin"
+msgid "Login or password error"
+msgstr "Fel användarnamn eller lösenord"
+
+msgctxt "errorWeb"
+msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgstr "Vi kan inte komma åt internet. Har du problem med anslutningen?"
+
+msgctxt "txtInfoLoginOk"
+msgid "User saved"
+msgstr ""
+
+msgctxt "txtInfoLoginNo"
+msgid "User not saved"
+msgstr ""
+
+msgctxt "txtDialogsTitle"
+msgid "Information"
+msgstr "Information"
+
+msgctxt "txtDialogsContent"
+msgid ""
+"The product you scanned does not exist yet in Open Beauty Facts. Do you "
+"want to add it?"
+msgstr ""
+"Produkten som du skannade finns inte i Öppen mat-fakta ännu. Vill du "
+"lägga till den?"
+
+#, fuzzy
+msgctxt "txtDialogsContentSend"
+msgid "Do you want send the saved products to the database?"
+msgstr "Vill du skicka de sparade produkterna till vår databas?"
+
+msgctxt "txtYes"
+msgid "Yes"
+msgstr "Ja"
+
+msgctxt "txtNo"
+msgid "No"
+msgstr "Nej"
+
+msgctxt "hintNameProduct"
+msgid "Name"
+msgstr "Namn"
+
+msgctxt "hintEnergy"
+msgid "Energy in kJ per serving"
+msgstr "Energi i kJ per portion"
+
+msgctxt "hintEnergyUnit"
+msgid "Energy unit"
+msgstr "Energienhet"
+
+msgctxt "hintWeight"
+msgid "Weight"
+msgstr "Vikt"
+
+msgctxt "hintStores"
+msgid "Store"
+msgstr "Butik"
+
+msgctxt "txtTakePicture"
+msgid "Take picture"
+msgstr "Ta en bild"
+
+msgctxt "txtSendAll"
+msgid "Upload all"
+msgstr "Ladda upp allt"
+
+msgctxt "txtNoData"
+msgid "No data"
+msgstr "Ingen data"
+
+#, fuzzy
+msgctxt "txtPictureNeeded"
+msgid "Take a picture first!"
+msgstr "Ta en bild först och sedan fyller du i namnet och butiken!"
+
+msgctxt "toastSending"
+msgid "Uploading..."
+msgstr "Laddar upp..."
+
+msgctxt "dataSaved"
+msgid "Saved locally on your device"
+msgstr "Sparades lokalt i din enhet"
+
+msgctxt "txtInfoAddUser"
+msgid "Please enter your login and password"
+msgstr "Vänligen fyll i ditt användarnamn och lösenord"
+
+msgctxt "txtDataUpdated"
+msgid "Data updated"
+msgstr "Datan uppdaterades"
+
+msgctxt "txtLoading"
+msgid "Loading..."
+msgstr "Laddar..."
+
+msgctxt "txtDialogsContentDelete"
+msgid "Do you want to delete this draft?"
+msgstr ""
+
+msgctxt "txtDialogsContentInfoSave"
+msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr ""
+
+msgctxt "txtBarcodeRequire"
+msgid "Barcode required"
+msgstr "Streckkod krävs"
+
+msgctxt "txtOk"
+msgid "Ok"
+msgstr "Ok"
+
+msgctxt "txtContentDialogUploading"
+msgid "Please don't exit during the process..."
+msgstr "Vänligen avsluta inte under proceduren..."
+
+msgctxt "txtAbout"
+msgid ""
+"The pictures you send are published under the free licence Creative "
+"Commons Attribution and ShareAlike."
+msgstr ""
+
+msgctxt "txtAllsent"
+msgid "Products sent"
+msgstr "Produkterna skickades"
+
+msgctxt "txtPalm"
+msgid "The product does not contain any palm oil"
+msgstr "Produkten innehåller ingen palmolja"
+
+msgctxt "txtBarcodeNotValid"
+msgid "Barcode not valid"
+msgstr "Streckkoden är inte giltig"
+
+msgctxt "try_it_scan_now"
+msgid "Try it! Scan now!"
+msgstr "Prova det! Skanna nu!"
+
+msgctxt "share"
+msgid "Share"
+msgstr "Dela"
+
+msgctxt "msg_share"
+msgid "Look at this product on Open Beauty Facts :"
+msgstr ""
+
+msgctxt "create_account"
+msgid "Sign up"
+msgstr "Registrera"
+
+msgctxt "home_drawer"
+msgid "Home"
+msgstr "Hem"
+
+msgctxt "search_drawer"
+msgid "Search"
+msgstr "Sök"
+
+msgctxt "search_by_barcode_drawer"
+msgid "Search by barcode"
+msgstr "Sök med streckkod"
+
+msgctxt "search_by_name_drawer"
+msgid "Search by name"
+msgstr "Sök på namn"
+
+msgctxt "scan_search"
+msgid "Scan"
+msgstr "Skanna"
+
+msgctxt "user_drawer"
+msgid "User"
+msgstr "Användare"
+
+msgctxt "offline_edit_drawer"
+msgid "Offline edit"
+msgstr ""
+
+msgctxt "txt_anonymous"
+msgid "Anonymous"
+msgstr "Anonym"
+
+msgctxt "txt_product_not_found"
+msgid "Products not found"
+msgstr ""
+
+msgctxt "delete_txt"
+msgid "Delete"
+msgstr "Radera"
+
+msgctxt "sign_in_drawer"
+msgid "Sign-in"
+msgstr "Logga in"
+
+#, fuzzy
+msgctxt "alert_drawer"
+msgid "Allergen Alert"
+msgstr ""
+
+msgctxt "warning_allergens"
+msgid "Contains allergens"
+msgstr "Innehåller allergener"
+
+msgctxt "title_dialog_alert"
+msgid "Add alert"
+msgstr ""
+
+#, fuzzy
+msgctxt "warning_alert_data"
+msgid ""
+"Your allergies info will never be sent to the Open Beauty Facts server. "
+"Also, be careful that data may not be accurate, please double-check by "
+"yourself!"
+msgstr ""
+
+msgctxt "from_gallery"
+msgid "From gallery"
+msgstr "Från galleriet"
+
+msgctxt "product_sent"
+msgid "Product sent!"
+msgstr ""
+
+msgctxt "action_edit_product"
+msgid "Edit product"
+msgstr ""
+
+msgctxt "title_info_dialog"
+msgid "Information"
+msgstr ""
+
+msgctxt "text_offline_info_dialog"
+msgid ""
+"You can scan products when you're offline to add them to Open Beauty Facts "
+"later. All the products you scan will appear here, and you'll be able to "
+"send them using the button below."
+msgstr ""
+
+msgctxt "permission_camera"
+msgid "Camera permission is needed to scan barcode."
+msgstr ""
+
+msgctxt "permission_title"
+msgid "Permission information"
+msgstr ""
+
+msgctxt "permission_denied"
+msgid "Please activate permission in the settings"
+msgstr ""
+
+msgctxt "permission_storage"
+msgid "Storage is needed to take or choose pictures"
+msgstr ""
+
+msgctxt "info_download_data"
+msgid ""
+"You need to download some data to get this functionality working, please "
+"press yes to download it."
+msgstr ""
+
+msgctxt "info_download_data_connection"
+msgid ""
+"You need to download some data to get this functionality working. Please "
+"activate internet connection."
+msgstr ""
+

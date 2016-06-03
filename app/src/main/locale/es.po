@@ -1,0 +1,539 @@
+# Spanish translation for openbeautyfacts
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the openbeautyfacts
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  openbeautyfacts\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-05-29 10:47+0200\n"
+"PO-Revision-Date: 2016-05-29 08:00+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: Spanish <es@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(((n == 1)) ? 0 : 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.3\n"
+
+msgctxt "app_name"
+msgid "Open Beauty"
+msgstr "Open Beauty"
+
+msgctxt "hello_world"
+msgid "Hello world!"
+msgstr "¡Hola mundo!"
+
+msgctxt "action_settings"
+msgid "Settings"
+msgstr "Configuración"
+
+msgctxt "action_about"
+msgid "About"
+msgstr "Acerca de"
+
+msgctxt "action_find"
+msgid "Find"
+msgstr "Buscar"
+
+msgctxt "text_barcode"
+msgid "Put the barcode :"
+msgstr "Ponga el código de barras :"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:0"
+msgid "Summary"
+msgstr "Resumen"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:1"
+msgid "Ingredients"
+msgstr "Ingredientes"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:2"
+msgid "Nutrition"
+msgstr "Nutrición"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:3"
+msgid "Back to menu"
+msgstr "Volver al menú"
+
+#. Text units
+msgctxt "units_array:0"
+msgid "g"
+msgstr "g"
+
+#. Text units
+msgctxt "units_array:1"
+msgid "mg"
+msgstr "mg"
+
+#. Text units
+msgctxt "units_array:2"
+msgid "kg"
+msgstr "kg"
+
+#. Text units
+msgctxt "units_array:3"
+msgid "l"
+msgstr "l"
+
+#. Text units
+msgctxt "units_array:4"
+msgid "ml"
+msgstr "ml"
+
+msgctxt "images_array:0"
+msgid "Default"
+msgstr "Predeterminado"
+
+msgctxt "images_array:1"
+msgid "Nutrition"
+msgstr "Nutrición"
+
+msgctxt "images_array:2"
+msgid "Ingredients"
+msgstr "Ingredientes"
+
+#. Content Description
+msgctxt "search_button"
+msgid "Search"
+msgstr "Buscar"
+
+msgctxt "no_products"
+msgid "Products not found"
+msgstr "No se han encontrado productos"
+
+msgctxt "desc_list_item_icon"
+msgid "Item Icon"
+msgstr "Icono de Objeto"
+
+msgctxt "alert_dialog_warning_title"
+msgid "Warning"
+msgstr "Aviso"
+
+msgctxt "alert_dialog_warning_msg_user"
+msgid "User/password has changed, please update information"
+msgstr "El usuario/contraseña ha cambiado, por favor actualice la información"
+
+msgctxt "alert_dialog_product_error_msg"
+msgid "Product not found, please try again"
+msgstr "El producto no se ha encontrado, por favor pruebe de nuevo"
+
+msgctxt "toast_retrieving"
+msgid "Loading..."
+msgstr "Cargando..."
+
+msgctxt "txtBarcode"
+msgid "Barcode :"
+msgstr "Código de barras :"
+
+msgctxt "txtQuantity"
+msgid "Quantity :"
+msgstr "Cantidad :"
+
+msgctxt "txtPackaging"
+msgid "Packaging :"
+msgstr "Envasado :"
+
+msgctxt "txtBrands"
+msgid "Brands :"
+msgstr "MArcas :"
+
+msgctxt "txtCategories"
+msgid "Categories :"
+msgstr "Categorías :"
+
+msgctxt "txtManufacturing"
+msgid "Manufacturing or processing places :"
+msgstr "Lugares de manufactura o proceso :"
+
+msgctxt "txtCity"
+msgid "City, state and country where purchased :"
+msgstr "Ciudad, estado o país donde se compró :"
+
+msgctxt "txtStores"
+msgid "Stores :"
+msgstr "Tiendas :"
+
+msgctxt "txtCountries"
+msgid "Countries where sold :"
+msgstr "Países donde se compra :"
+
+msgctxt "txtIngredients"
+msgid "Ingredients list :"
+msgstr "Lista de ingredientes :"
+
+msgctxt "txtSubstances"
+msgid "Substances or products causing allergies or intolerances :"
+msgstr "Substancias o productos que causen alergias o intolerancias :"
+
+msgctxt "txtAdditives"
+msgid "Additives :"
+msgstr "Aditivos :"
+
+msgctxt "txtTraces"
+msgid "Traces :"
+msgstr "Rastros :"
+
+msgctxt "txtMayBeFromPalmOilProduct"
+msgid "Ingredients that may be from palm oil :"
+msgstr "Ingredientes que puedan provenir de aceite de palma :"
+
+msgctxt "txtPalmOilProduct"
+msgid "Ingredients from palm oil :"
+msgstr "Ingredientes con aceite de palma :"
+
+msgctxt "txtServingSize"
+msgid "Serving size :"
+msgstr "Tamaño de la ración :"
+
+msgctxt "txtNutrientLevel100g"
+msgid "Nutrient levels for 100g :"
+msgstr "Niveles de nutrientes por cada 100g :"
+
+msgctxt "txtLogin"
+msgid "Login :"
+msgstr "Usuario :"
+
+msgctxt "txtPass"
+msgid "Password :"
+msgstr "Contraseña :"
+
+msgctxt "txtTitleHome"
+msgid "Open your food and know what you eat"
+msgstr "Abra su comida y sepa qué come"
+
+#, fuzzy
+msgctxt "txtHome"
+msgid ""
+"Open Beauty Facts is a open database of food products with ingredients, "
+"allergens, nutrition facts and all the tidbits of information we can find"
+" on product labels."
+msgstr ""
+"OpenBeautyFacts es una base de datos de productos alimenticios con "
+"ingredientes, alérgenos, información nutricional y todas aquellas "
+"minucias que se pueden encontrar en las etiquetas de los productos."
+
+#, fuzzy
+msgctxt "txtSave"
+msgid "Send/Save"
+msgstr ""
+
+msgctxt "txtSignIn"
+msgid "Sign in"
+msgstr ""
+
+msgctxt "txtUser"
+msgid "User panel"
+msgstr "Panel de usuario"
+
+msgctxt "txtToastSaved"
+msgid "User saved"
+msgstr "Usuario guardado"
+
+msgctxt "txtSalt"
+msgid "Salt :"
+msgstr "Sal :"
+
+msgctxt "txtFat"
+msgid "Fat :"
+msgstr "Grasas :"
+
+msgctxt "txtSugars"
+msgid "Sugars :"
+msgstr "Azúcares :"
+
+msgctxt "txtSaturatedFat"
+msgid "Satured fat :"
+msgstr "Grasas saturada :"
+
+msgctxt "hintBarcode"
+msgid "Barcode"
+msgstr "Código de barras"
+
+msgctxt "hintLogin"
+msgid "Login"
+msgstr "Iniciar sesión"
+
+msgctxt "hintPass"
+msgid "Password"
+msgstr "Contraseña"
+
+msgctxt "errorLogin"
+msgid "Login or password error"
+msgstr "Usuario o contraseña incorrecto"
+
+msgctxt "errorWeb"
+msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgstr "No hemos podido conectarnos a Internet. ¿Tiene problemas de conexión?"
+
+msgctxt "txtInfoLoginOk"
+msgid "User saved"
+msgstr "Usuario guardado"
+
+msgctxt "txtInfoLoginNo"
+msgid "User not saved"
+msgstr "Usuario no guardado"
+
+msgctxt "txtDialogsTitle"
+msgid "Information"
+msgstr "Información"
+
+msgctxt "txtDialogsContent"
+msgid ""
+"The product you scanned does not exist yet in Open Beauty Facts. Do you "
+"want to add it?"
+msgstr ""
+"El producto que ha escaneado no existe aun en Open Beauty Facts. ¿Quiere "
+"añadirlo?"
+
+#, fuzzy
+msgctxt "txtDialogsContentSend"
+msgid "Do you want send the saved products to the database?"
+msgstr "¿Quiere enviar el producto salvado a nuestra base de datos?"
+
+msgctxt "txtYes"
+msgid "Yes"
+msgstr "Sí"
+
+msgctxt "txtNo"
+msgid "No"
+msgstr "No"
+
+msgctxt "hintNameProduct"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "hintEnergy"
+msgid "Energy in kJ per serving"
+msgstr "Energía en kJ por ración"
+
+msgctxt "hintEnergyUnit"
+msgid "Energy unit"
+msgstr "Unidad de energía"
+
+msgctxt "hintWeight"
+msgid "Weight"
+msgstr "Peso"
+
+msgctxt "hintStores"
+msgid "Store"
+msgstr "Tienda"
+
+msgctxt "txtTakePicture"
+msgid "Take picture"
+msgstr "Hacer una foto"
+
+msgctxt "txtSendAll"
+msgid "Upload all"
+msgstr "Subir todo"
+
+msgctxt "txtNoData"
+msgid "No data"
+msgstr "Sin datos"
+
+#, fuzzy
+msgctxt "txtPictureNeeded"
+msgid "Take a picture first!"
+msgstr "¡Haga una foto antes, luego rellene el nombre y la tienda!"
+
+msgctxt "toastSending"
+msgid "Uploading..."
+msgstr "Subiendo..."
+
+msgctxt "dataSaved"
+msgid "Saved locally on your device"
+msgstr "Guardado localmente en su dispositivo"
+
+msgctxt "txtInfoAddUser"
+msgid "Please enter your login and password"
+msgstr "Por favor ponga su usuario y contraseña"
+
+msgctxt "txtDataUpdated"
+msgid "Data updated"
+msgstr "Datos actualizados"
+
+msgctxt "txtLoading"
+msgid "Loading..."
+msgstr "Cargando..."
+
+msgctxt "txtDialogsContentDelete"
+msgid "Do you want to delete this draft?"
+msgstr "¿Quiere borrar este borrador?"
+
+msgctxt "txtDialogsContentInfoSave"
+msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr ""
+"El producto se ha guardado localmente, puede editarlo en el menú Editor "
+"Offline"
+
+msgctxt "txtBarcodeRequire"
+msgid "Barcode required"
+msgstr "Se necesita un código de barras"
+
+msgctxt "txtOk"
+msgid "Ok"
+msgstr "Ok"
+
+msgctxt "txtContentDialogUploading"
+msgid "Please don't exit during the process..."
+msgstr "Por favor no salga durante el proceso..."
+
+msgctxt "txtAbout"
+msgid ""
+"The pictures you send are published under the free licence Creative "
+"Commons Attribution and ShareAlike."
+msgstr ""
+"Las imágenes que ha enviado son publicadas bajo la licencia libre "
+"Creative Commons Attribution and ShareAlike"
+
+msgctxt "txtAllsent"
+msgid "Products sent"
+msgstr "Productos enviados"
+
+msgctxt "txtPalm"
+msgid "The product does not contain any palm oil"
+msgstr "El producto no contiene nada de aceite de palma"
+
+msgctxt "txtBarcodeNotValid"
+msgid "Barcode not valid"
+msgstr "Código de barras no válido"
+
+msgctxt "try_it_scan_now"
+msgid "Try it! Scan now!"
+msgstr "¡Pruebe! ¡Escanee ahora!"
+
+msgctxt "share"
+msgid "Share"
+msgstr "Compartir"
+
+msgctxt "msg_share"
+msgid "Look at this product on Open Beauty Facts :"
+msgstr "Mire el producto en Open Beauty Facts :"
+
+msgctxt "create_account"
+msgid "Sign up"
+msgstr "Registrarse"
+
+msgctxt "home_drawer"
+msgid "Home"
+msgstr "Inicio"
+
+msgctxt "search_drawer"
+msgid "Search"
+msgstr "Buscar"
+
+msgctxt "search_by_barcode_drawer"
+msgid "Search by barcode"
+msgstr "Buscar por código de barras"
+
+msgctxt "search_by_name_drawer"
+msgid "Search by name"
+msgstr "Buscar por nombre"
+
+msgctxt "scan_search"
+msgid "Scan"
+msgstr "Escanear"
+
+msgctxt "user_drawer"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "offline_edit_drawer"
+msgid "Offline edit"
+msgstr "Edición offline"
+
+msgctxt "txt_anonymous"
+msgid "Anonymous"
+msgstr "Anónimo"
+
+msgctxt "txt_product_not_found"
+msgid "Products not found"
+msgstr "No se han encontrado productos"
+
+msgctxt "delete_txt"
+msgid "Delete"
+msgstr "Eliminar"
+
+msgctxt "sign_in_drawer"
+msgid "Sign-in"
+msgstr "Acceder"
+
+#, fuzzy
+msgctxt "alert_drawer"
+msgid "Allergen Alert"
+msgstr "Cuidado alérgenos"
+
+msgctxt "warning_allergens"
+msgid "Contains allergens"
+msgstr "Contiene alérgenos"
+
+msgctxt "title_dialog_alert"
+msgid "Add alert"
+msgstr "Añadir alerta"
+
+#, fuzzy
+msgctxt "warning_alert_data"
+msgid ""
+"Your allergies info will never be sent to the Open Beauty Facts server. "
+"Also, be careful that data may not be accurate, please double-check by "
+"yourself!"
+msgstr ""
+
+msgctxt "from_gallery"
+msgid "From gallery"
+msgstr "Desde la galería"
+
+msgctxt "product_sent"
+msgid "Product sent!"
+msgstr ""
+
+msgctxt "action_edit_product"
+msgid "Edit product"
+msgstr ""
+
+msgctxt "title_info_dialog"
+msgid "Information"
+msgstr ""
+
+msgctxt "text_offline_info_dialog"
+msgid ""
+"You can scan products when you're offline to add them to Open Beauty Facts "
+"later. All the products you scan will appear here, and you'll be able to "
+"send them using the button below."
+msgstr ""
+
+msgctxt "permission_camera"
+msgid "Camera permission is needed to scan barcode."
+msgstr ""
+
+msgctxt "permission_title"
+msgid "Permission information"
+msgstr ""
+
+msgctxt "permission_denied"
+msgid "Please activate permission in the settings"
+msgstr ""
+
+msgctxt "permission_storage"
+msgid "Storage is needed to take or choose pictures"
+msgstr ""
+
+msgctxt "info_download_data"
+msgid ""
+"You need to download some data to get this functionality working, please "
+"press yes to download it."
+msgstr ""
+
+msgctxt "info_download_data_connection"
+msgid ""
+"You need to download some data to get this functionality working. Please "
+"activate internet connection."
+msgstr ""
+

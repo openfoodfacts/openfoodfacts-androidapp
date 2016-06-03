@@ -1,40 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/imageHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageHome"
+        android:layout_gravity="center_horizontal"
         android:layout_marginEnd="@dimen/spacing_normal"
         android:layout_marginStart="@dimen/spacing_normal"
-        android:src="@drawable/img_home"
-        android:layout_gravity="center_horizontal" />
+        android:src="@drawable/img_home"/>
 
     <TextView
+        android:id="@+id/textHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/txtHome"
-        android:textSize="@dimen/font_normal"
-        android:textAlignment="center"
-        android:gravity="center"
+        android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/spacing_normal"
-        android:id="@+id/textHome"
-        android:layout_gravity="center_horizontal" />
+        android:gravity="center"
+        android:text="@string/txtHome"
+        android:textAlignment="center"
+        android:textColor="@color/md_black_1000"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/font_normal"/>
 
     <Button
+        android:id="@+id/buttonScan"
+        style="@style/DefaultButtonText"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_gravity="center"
         android:layout_margin="@dimen/spacing_normal"
         android:background="@drawable/button_default_bg"
-        style="@style/DefaultButtonText"
-        android:layout_gravity="center"
         android:gravity="center"
-        android:layout_alignParentBottom="true"
         android:text="@string/try_it_scan_now"
-        android:id="@+id/buttonScan"
         />
 
 </LinearLayout>
