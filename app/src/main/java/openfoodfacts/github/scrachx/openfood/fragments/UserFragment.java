@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.loopj.android.http.RequestParams;
 
 import butterknife.Bind;
@@ -57,12 +59,16 @@ public class UserFragment extends BaseFragment {
     @OnClick(R.id.buttonSave)
     protected void onSaveUser() {
         SharedPreferences settings = getContext().getSharedPreferences("login", 0);
-        RequestParams params = new RequestParams();
-        params.put("user_id", login.getText().toString());
-        params.put("password", pass.getText().toString());
-        params.put(".submit", "Sign-in");
-        FoodUserClientUsage api = new FoodUserClientUsage();
-        api.getLoggedIn(params, getContext(), getActivity(), settings, save, login, pass, infoLogin);
+        if(!login.getText().toString().isEmpty() && !pass.getText().toString().isEmpty()) {
+            RequestParams params = new RequestParams();
+            params.put("user_id", login.getText().toString());
+            params.put("password", pass.getText().toString());
+            params.put(".submit", "Sign-in");
+            FoodUserClientUsage api = new FoodUserClientUsage();
+            api.getLoggedIn(params, getContext(), getActivity(), settings, save, login, pass, infoLogin);
+        } else {
+            Toast.makeText(getContext(), R.string.msg_input_empty, Toast.LENGTH_LONG).show();
+        }
     }
 
     @OnClick(R.id.buttonCreateAccount)
