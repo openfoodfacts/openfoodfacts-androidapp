@@ -47,13 +47,16 @@ public class IngredientsProductFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
 
-        SpannableStringBuilder txtIngredients = new SpannableStringBuilder(Html.fromHtml(mState.getProduct().getIngredientsText().replace("_","")));
-        txtIngredients = setSpanBoldBetweenTokens(txtIngredients);
-        if(!txtIngredients.toString().substring(txtIngredients.toString().indexOf(":")).trim().isEmpty()) {
-            ingredientsProduct.setText(txtIngredients);
-        } else {
-            ingredientsProduct.setVisibility(View.GONE);
+        if(mState.getProduct().getIngredientsText() != null) {
+            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(Html.fromHtml(mState.getProduct().getIngredientsText().replace("_","")));
+            txtIngredients = setSpanBoldBetweenTokens(txtIngredients);
+            if(!txtIngredients.toString().substring(txtIngredients.toString().indexOf(":")).trim().isEmpty()) {
+                ingredientsProduct.setText(txtIngredients);
+            } else {
+                ingredientsProduct.setVisibility(View.GONE);
+            }
         }
+
         if(!cleanAllergensString().trim().isEmpty()) {
             substanceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtSubstances) + "</b>" + ' ' + cleanAllergensString()));
         } else {
