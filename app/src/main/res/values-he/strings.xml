@@ -13,6 +13,7 @@
     <item>חזרה לתפריט</item>
   </string-array>
   <string-array name="units_array">
+    <item> </item>
     <item>ג׳</item>
     <item>מ״ג</item>
     <item>ק״ג</item>

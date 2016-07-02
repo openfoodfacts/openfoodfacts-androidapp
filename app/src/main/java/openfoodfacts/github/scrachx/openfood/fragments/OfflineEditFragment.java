@@ -136,7 +136,13 @@ public class OfflineEditFragment extends BaseFragment {
                                     params.put("password", passS);
                                 }
                                 if(!sp.getName().isEmpty()) params.put("product_name", sp.getName());
-                                if(!sp.getWeight().isEmpty()) params.put("quantity", sp.getWeight() + " " + sp.getWeight_unit());
+                                if(!sp.getWeight().isEmpty()) {
+                                    if(sp.getWeight_unit().trim().isEmpty()) {
+                                        params.put("quantity", sp.getWeight());
+                                    } else {
+                                        params.put("quantity", sp.getWeight() + " " + sp.getWeight_unit());
+                                    }
+                                }
                                 if(!sp.getStores().isEmpty()) params.put("stores", sp.getStores());
                                 params.put("comment", "added with the new Android app");
 

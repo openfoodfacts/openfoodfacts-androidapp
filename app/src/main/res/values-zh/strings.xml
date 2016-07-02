@@ -8,6 +8,7 @@
     <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
+    <item> </item>
     <item>g</item>
     <item>mg</item>
     <item>kg</item>
