@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,22 +76,58 @@ public class SummaryProductFragment extends BaseFragment {
         sliderImages.setDuration(5500);
         sliderImages.startAutoCycle();
 
-        nameProduct.setText(state.getProduct().getProductName());
-        barCodeProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtBarcode) + "</b>" + ' ' + state.getProduct().getCode()));
-        quantityProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtQuantity) + "</b>" + ' ' + state.getProduct().getQuantity()));
-        packagingProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtPackaging) + "</b>" + ' ' + state.getProduct().getPackaging()));
-        brandProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtBrands) + "</b>" + ' ' + state.getProduct().getBrands()));
-        manufacturingProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtManufacturing) + "</b>" + ' ' + state.getProduct().getManufacturingPlaces()));
+        if(!state.getProduct().getProductName().trim().isEmpty()) {
+            nameProduct.setText(state.getProduct().getProductName());
+        } else {
+            nameProduct.setVisibility(View.GONE);
+        }
+        if(!state.getProduct().getCode().trim().isEmpty()) {
+            barCodeProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtBarcode) + "</b>" + ' ' + state.getProduct().getCode()));
+        } else {
+            barCodeProduct.setVisibility(View.GONE);
+        }
+        if(!state.getProduct().getQuantity().trim().isEmpty()) {
+            quantityProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtQuantity) + "</b>" + ' ' + state.getProduct().getQuantity()));
+        } else {
+            quantityProduct.setVisibility(View.GONE);
+        }
+        if(!state.getProduct().getPackaging().trim().isEmpty()) {
+            packagingProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtPackaging) + "</b>" + ' ' + state.getProduct().getPackaging()));
+        } else {
+            packagingProduct.setVisibility(View.GONE);
+        }
+        if(!state.getProduct().getBrands().trim().isEmpty()) {
+            brandProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtBrands) + "</b>" + ' ' + state.getProduct().getBrands()));
+        } else {
+            brandProduct.setVisibility(View.GONE);
+        }
+        if(!state.getProduct().getManufacturingPlaces().trim().isEmpty()) {
+            manufacturingProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtManufacturing) + "</b>" + ' ' + state.getProduct().getManufacturingPlaces()));
+        } else {
+            manufacturingProduct.setVisibility(View.GONE);
+        }
         String categ;
-        if (state.getProduct().getCategories() == null) {
-            categ = state.getProduct().getCategories();
+        if (!state.getProduct().getCategories().trim().isEmpty()) {
+            categoryProduct.setVisibility(View.GONE);
         } else {
             categ = state.getProduct().getCategories().replace(",", ", ");
+            categoryProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCategories) + "</b>" + ' ' + categ));
         }
-        categoryProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCategories) + "</b>" + ' ' + categ));
-        cityProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCity) + "</b>" + ' ' + state.getProduct().getCitiesTags().toString().replace("[", "").replace("]", "")));
-        storeProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtStores) + "</b>" + ' ' + state.getProduct().getStores()));
-        countryProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCountries) + "</b>" + ' ' + state.getProduct().getCountries()));
+        if(!state.getProduct().getCitiesTags().toString().trim().equals("[]")) {
+            cityProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCity) + "</b>" + ' ' + state.getProduct().getCitiesTags().toString().replace("[", "").replace("]", "")));
+        } else {
+            cityProduct.setVisibility(View.GONE);
+        }
+        if(!state.getProduct().getStores().trim().isEmpty()) {
+            storeProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtStores) + "</b>" + ' ' + state.getProduct().getStores()));
+        } else {
+            storeProduct.setVisibility(View.GONE);
+        }
+        if(!state.getProduct().getCountries().trim().isEmpty()) {
+            countryProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCountries) + "</b>" + ' ' + state.getProduct().getCountries()));
+        } else {
+            countryProduct.setVisibility(View.GONE);
+        }
     }
 
     @Override

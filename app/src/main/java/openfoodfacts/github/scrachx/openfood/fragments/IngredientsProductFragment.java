@@ -27,7 +27,7 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 
 public class IngredientsProductFragment extends BaseFragment {
 
-    @Bind(R.id.textIngredientProduct) TextView ingredientProduct;
+    @Bind(R.id.textIngredientProduct) TextView ingredientsProduct;
     @Bind(R.id.textSubstanceProduct) TextView substanceProduct;
     @Bind(R.id.textTraceProduct) TextView traceProduct;
     @Bind(R.id.textAdditiveProduct) TextView additiveProduct;
@@ -49,18 +49,32 @@ public class IngredientsProductFragment extends BaseFragment {
 
         SpannableStringBuilder txtIngredients = new SpannableStringBuilder(Html.fromHtml(mState.getProduct().getIngredientsText().replace("_","")));
         txtIngredients = setSpanBoldBetweenTokens(txtIngredients);
-        ingredientProduct.setText(txtIngredients);
-
-        substanceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtSubstances) + "</b>" + ' ' + cleanAllergensString()));
+        if(!txtIngredients.toString().substring(txtIngredients.toString().indexOf(":")).trim().isEmpty()) {
+            ingredientsProduct.setText(txtIngredients);
+        } else {
+            ingredientsProduct.setVisibility(View.GONE);
+        }
+        if(!cleanAllergensString().trim().isEmpty()) {
+            substanceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtSubstances) + "</b>" + ' ' + cleanAllergensString()));
+        } else {
+            substanceProduct.setVisibility(View.GONE);
+        }
         String traces;
         if (mState.getProduct().getCategories() == null) {
-            traces = mState.getProduct().getTraces();
+            traceProduct.setVisibility(View.GONE);
         } else {
             traces = mState.getProduct().getTraces().replace(",", ", ");
+            if(traces.isEmpty()) {
+                traceProduct.setVisibility(View.GONE);
+            } else {
+                traceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtTraces) + "</b>" + ' ' + traces));
+            }
         }
-        traceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtTraces) + "</b>" + ' ' + traces));
-        additiveProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtAdditives) + "</b>" + ' ' + mState.getProduct().getAdditivesTags().toString().replace("[", "").replace("]", "").replace("en:", " ").replace("fr:", " ")));
-
+        if(!mState.getProduct().getAdditivesTags().toString().replace("[", "").replace("]", "").isEmpty()) {
+            additiveProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtAdditives) + "</b>" + ' ' + mState.getProduct().getAdditivesTags().toString().replace("[", "").replace("]", "").replace("en:", " ").replace("fr:", " ")));
+        } else {
+            additiveProduct.setVisibility(View.GONE);
+        }
         if (mState.getProduct().getIngredientsFromPalmOilN() == 0 && mState.getProduct().getIngredientsFromOrThatMayBeFromPalmOilN() == 0) {
             palmOilProduct.setVisibility(View.VISIBLE);
             palmOilProduct.setText(getString(R.string.txtPalm));
@@ -76,8 +90,13 @@ public class IngredientsProductFragment extends BaseFragment {
         }
         SpannableStringBuilder txt = new SpannableStringBuilder(Html.fromHtml(mState.getProduct().getAdditivesTags().toString().replace("[", "").replace("]", "").replace("en:", " ").replace("fr:", " ")).toString());
         txt = setSpanClickBetweenTokens(txt, containerView);
-        additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
-        additiveProduct.setText(txt, TextView.BufferType.SPANNABLE);
+        if(!txt.toString().trim().isEmpty()) {
+            additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
+            additiveProduct.setText(txt, TextView.BufferType.SPANNABLE);
+        } else {
+            additiveProduct.setVisibility(View.GONE);
+        }
+
     }
 
     private SpannableStringBuilder setSpanClickBetweenTokens(CharSequence text, final View view) {
