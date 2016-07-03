@@ -81,11 +81,11 @@ dependencies {
 
     compile 'com.github.satyan:sugar:1.5'
 
-    compile('com.github.afollestad.material-dialogs:commons:0.8.5.7@aar') {
+    compile('com.afollestad.material-dialogs:core:0.8.6.1') {
         transitive = true
     }
 
-    compile('com.mikepenz:materialdrawer:5.2.0@aar') {
+    compile('com.mikepenz:materialdrawer:5.3.2') {
         transitive = true
     }
 

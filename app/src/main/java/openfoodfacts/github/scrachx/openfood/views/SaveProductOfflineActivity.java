@@ -61,6 +61,12 @@ public class SaveProductOfflineActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_product_offline);
 
+        new MaterialDialog.Builder(this)
+                .title(R.string.title_info_dialog)
+                .content(R.string.new_offline_info)
+                .positiveText(R.string.txtOk)
+                .show();
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE) || ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 new MaterialDialog.Builder(this)

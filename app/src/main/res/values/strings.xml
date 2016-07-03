@@ -156,6 +156,7 @@
     <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
     <string name="msg_input_empty">Fill input first!</string>
+    <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
 
     <style name="DefaultButtonText">
         <item name="android:layout_width">fill_parent</item>
