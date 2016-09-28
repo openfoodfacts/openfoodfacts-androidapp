@@ -75,7 +75,7 @@
   <string name="hintEnergy">Energie in kJ pro Schnitte</string>
   <string name="hintEnergyUnit">Energie-Maß</string>
   <string name="hintWeight">Gewicht</string>
-  <string name="hintStores">Speichern</string>
+  <string name="hintStores">Laden</string>
   <string name="txtTakePicture">Foto machen</string>
   <string name="txtSendAll">alles hochladen</string>
   <string name="txtNoData">keine Daten</string>
