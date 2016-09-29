@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
+
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.fastadapter.utils.RecyclerViewCacheUtil;
@@ -43,10 +44,11 @@ import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.UserFragment;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class MainActivity extends BaseActivity {
+
+    private static final int LOGIN_REQUEST = 1;
 
     private AccountHeader headerResult = null;
     private Drawer result = null;
@@ -57,11 +59,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final SharedPreferences settings = getSharedPreferences("login", 0);
-        String loginS = settings.getString("user", "");
-        if(loginS.isEmpty()) loginS = getResources().getString(R.string.txt_anonymous);
-
-        final IProfile profile = new ProfileDrawerItem().withName(loginS).withIcon(R.drawable.img_home).withIdentifier(100);
+        final IProfile profile = getProfile();
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
@@ -140,8 +138,8 @@ public class MainActivity extends BaseActivity {
                                     startActivity(intent);
                                 }
                             } else if (drawerItem.getIdentifier() == 5) {
-                                fragment = new UserFragment();
-                                getSupportActionBar().setTitle(R.string.sign_in_drawer);
+                                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                                startActivityForResult(intent, LOGIN_REQUEST);
                             } else if (drawerItem.getIdentifier() == 6) {
                                 fragment = new AlertUserFragment();
                                 getSupportActionBar().setTitle(R.string.alert_drawer);
@@ -184,6 +182,13 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    private IProfile getProfile() {
+        final SharedPreferences settings = getSharedPreferences("login", 0);
+        String loginS = settings.getString("user", getResources().getString(R.string.txt_anonymous));
+
+        return new ProfileDrawerItem().withName(loginS).withIcon(R.drawable.img_home).withIdentifier(100);
+    }
+
     private OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
@@ -194,6 +199,20 @@ public class MainActivity extends BaseActivity {
             }
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case LOGIN_REQUEST:
+                if (resultCode == RESULT_OK) {
+                    this.headerResult.setActiveProfile(getProfile());
+                }
+                break;
+            default:
+                // do nothing
+                break;
+        }
+    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -262,7 +281,7 @@ public class MainActivity extends BaseActivity {
                             })
                             .show();
                 }
-                return;
+                break;
             }
         }
     }

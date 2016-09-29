@@ -1,26 +1,23 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-import com.loopj.android.http.AsyncHttpResponseHandler;
+
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
 import net.steamcrafted.loadtoast.LoadToast;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
 public class FoodUserClientUsage {
@@ -231,61 +228,6 @@ public class FoodUserClientUsage {
             @Override
             public void onRetry ( int retryNo){
                 // called when request is retried
-            }
-        });
-    }
-
-    public void getLoggedIn(RequestParams params, final Context context, final Activity activity, final SharedPreferences shpref, final Button save,
-                             final EditText login, final EditText pass, final TextView infoLogin) {
-        FoodUserClient.post("/cgi/session.pl", params, new AsyncHttpResponseHandler() {
-
-            LoadToast lt = new LoadToast(context);
-
-            @Override
-            public void onStart() {
-                super.onStart();
-                save.setClickable(false);
-                lt.setText(context.getString(R.string.toast_retrieving));
-                lt.setBackgroundColor(context.getResources().getColor(R.color.indigo_600));
-                lt.setTextColor(context.getResources().getColor(R.color.white));
-                lt.show();
-            }
-
-            @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
-                SharedPreferences.Editor editor = shpref.edit();
-                String htmlNoParsed = new String(responseBody);
-                if (htmlNoParsed.contains("Incorrect user name or password.") || htmlNoParsed.contains("See you soon!")) {
-                    lt.error();
-                    Toast.makeText(context, context.getString(R.string.errorLogin), Toast.LENGTH_LONG).show();
-                    login.setText("");
-                    pass.setText("");
-                    editor.putString("user", "");
-                    editor.putString("pass", "");
-                    editor.apply();
-                    infoLogin.setText(R.string.txtInfoLoginNo);
-                } else {
-                    lt.success();
-                    Toast.makeText(context, context.getResources().getText(R.string.txtToastSaved), Toast.LENGTH_LONG).show();
-                    editor.putString("user", login.getText().toString());
-                    editor.putString("pass", pass.getText().toString());
-                    editor.apply();
-                    infoLogin.setText(R.string.txtInfoLoginOk);
-                }
-                Utils.hideKeyboard(activity);
-            }
-
-            @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                lt.error();
-                Utils.hideKeyboard(activity);
-            }
-
-            @Override
-            public void onFinish() {
-                super.onFinish();
-                save.setClickable(true);
             }
         });
     }
