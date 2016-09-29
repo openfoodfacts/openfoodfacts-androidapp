@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 23
@@ -8,8 +9,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 22
-        versionName "0.2.4"
+        versionCode 23
+        versionName "0.2.5"
     }
 
     dexOptions {
@@ -48,7 +49,7 @@ buildscript {
         maven { url "https://jitpack.io" }
     }
     dependencies {
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     }
 }
 
@@ -61,35 +62,36 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support:recyclerview-v7:23.4.0'
 
-    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
 
     compile 'com.loopj.android:android-async-http:1.4.9'
 
-    compile 'com.fasterxml.jackson.core:jackson-core:2.7.3'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.3'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.3'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.3'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.8.3'
 
     compile 'commons-validator:commons-validator:1.5.1'
 
     compile 'net.steamcrafted:load-toast:1.0.10'
 
-    compile 'me.dm7.barcodescanner:zxing:1.8.4'
+    compile 'me.dm7.barcodescanner:zxing:1.9'
 
-    compile 'com.hkm.loyalslider:library:1.8.8'
+    compile 'com.hkm.loyalslider:library:1.9.4'
 
     compile 'org.jsoup:jsoup:1.8.3'
 
     compile 'com.github.satyan:sugar:1.5'
 
-    compile('com.afollestad.material-dialogs:core:0.8.6.1') {
+    compile('com.afollestad.material-dialogs:core:0.9.0.2') {
         transitive = true
     }
 
-    compile('com.mikepenz:materialdrawer:5.3.2') {
+    compile('com.mikepenz:materialdrawer:5.6.0@aar') {
         transitive = true
     }
 
-    compile 'com.github.clans:fab:1.6.3'
+    compile 'com.github.clans:fab:1.6.4'
 
     compile 'com.mikepenz:iconics-core:2.5.11@aar'
     compile 'com.mikepenz:google-material-typeface:2.2.0.1.original@aar'

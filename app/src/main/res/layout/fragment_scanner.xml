@@ -16,7 +16,7 @@
         android:layout_gravity="top"
         android:minHeight="?attr/actionBarSize"
         android:background="@color/indigo_400"
-        app:theme="@style/MaterialTheme.TranslucentStatus"
+        android:theme="@style/MaterialTheme.TranslucentStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

@@ -18,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
-
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.fastadapter.utils.RecyclerViewCacheUtil;
@@ -36,8 +35,7 @@ import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.model.interfaces.Nameable;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.AlertUserFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
@@ -52,7 +50,7 @@ public class MainActivity extends BaseActivity {
 
     private AccountHeader headerResult = null;
     private Drawer result = null;
-    @Bind(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -10,8 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -26,9 +25,9 @@ public class SearchProductsFragment extends BaseFragment {
     private ProductsListAdapter adapter;
     private FoodAPIRestClientUsage api;
 
-    @Bind(R.id.listProducts) ListView listView;
-    @Bind(R.id.buttonSearchProducts) Button buttonSearch;
-    @Bind(R.id.editTextName) EditText nameSearch;
+    @BindView(R.id.listProducts) ListView listView;
+    @BindView(R.id.buttonSearchProducts) Button buttonSearch;
+    @BindView(R.id.editTextName) EditText nameSearch;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

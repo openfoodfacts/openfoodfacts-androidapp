@@ -11,8 +11,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import java.util.ArrayList;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
@@ -21,9 +20,9 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAda
 
 public class NutritionProductFragment extends BaseFragment {
 
-    @Bind(R.id.imageGrade) ImageView img;
-    @Bind(R.id.listNutrientLevels) ListView lv;
-    @Bind(R.id.textServingSize) TextView serving;
+    @BindView(R.id.imageGrade) ImageView img;
+    @BindView(R.id.listNutrientLevels) ListView lv;
+    @BindView(R.id.textServingSize) TextView serving;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

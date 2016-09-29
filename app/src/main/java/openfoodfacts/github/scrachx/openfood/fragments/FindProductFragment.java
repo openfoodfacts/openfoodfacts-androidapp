@@ -10,8 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
@@ -19,8 +18,8 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class FindProductFragment extends BaseFragment {
 
-    @Bind(R.id.editTextBarcode) EditText mBarCodeText;
-    @Bind(R.id.buttonBarcode) Button mLaunchButton;
+    @BindView(R.id.editTextBarcode) EditText mBarCodeText;
+    @BindView(R.id.buttonBarcode) Button mLaunchButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

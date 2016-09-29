@@ -5,18 +5,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
 import net.steamcrafted.loadtoast.LoadToast;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
@@ -27,16 +28,25 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
  */
 public class LoginActivity extends BaseActivity {
 
-    @Bind(R.id.editTextLogin) EditText loginView;
-    @Bind(R.id.editTextPass) EditText passwordView;
-    @Bind(R.id.textInfoLogin) TextView infoLogin;
-    @Bind(R.id.buttonSave) Button save;
-    @Bind(R.id.buttonCreateAccount) Button signup;
+    @BindView(R.id.editTextLogin) EditText loginView;
+    @BindView(R.id.editTextPass) EditText passwordView;
+    @BindView(R.id.textInfoLogin) TextView infoLogin;
+    @BindView(R.id.buttonSave) Button save;
+    @BindView(R.id.buttonCreateAccount) Button signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        final SharedPreferences settings = getSharedPreferences("login", 0);
+        String loginS = settings.getString("user", getResources().getString(R.string.txt_anonymous));
+        if(!loginS.equals(getResources().getString(R.string.txt_anonymous))) {
+            new MaterialDialog.Builder(this)
+                    .title("Login")
+                    .content("Already logged in!")
+                    .neutralText(R.string.ok_button)
+                    .show();
+        }
     }
 
     @OnClick(R.id.buttonCreateAccount)

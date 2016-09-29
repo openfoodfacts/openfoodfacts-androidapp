@@ -15,14 +15,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.RequestParams;
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 import butterknife.OnItemLongClick;
@@ -38,8 +36,8 @@ public class OfflineEditFragment extends BaseFragment {
 
     private ArrayList<SaveItem> saveItems;
 
-    @Bind(R.id.listOfflineSave) ListView listView;
-    @Bind(R.id.buttonSendAll) Button buttonSend;
+    @BindView(R.id.listOfflineSave) ListView listView;
+    @BindView(R.id.buttonSendAll) Button buttonSend;
     private String loginS, passS;
 
     @Override

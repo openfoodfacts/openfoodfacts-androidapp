@@ -12,12 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
@@ -26,7 +24,7 @@ import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
 
 public class HomeFragment extends BaseFragment {
 
-    @Bind(R.id.buttonScan) Button mButtonScan;
+    @BindView(R.id.buttonScan) Button mButtonScan;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

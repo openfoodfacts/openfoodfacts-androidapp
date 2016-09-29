@@ -26,8 +26,7 @@ import com.loopj.android.http.RequestParams;
 import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.util.List;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -39,15 +38,15 @@ import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class SaveProductOfflineActivity extends BaseActivity {
 
-    @Bind(R.id.imageSave) ImageView imgSave;
-    @Bind(R.id.editTextName) EditText name;
-    @Bind(R.id.editTextStores) EditText store;
-    @Bind(R.id.editTextWeight) EditText weight;
-    @Bind(R.id.spinnerImages) Spinner spinnerI;
-    @Bind(R.id.spinnerUnitWeight) Spinner spinnerW;
-    @Bind(R.id.buttonTakePicture) Button takePic;
-    @Bind(R.id.buttonFromGallery) Button takeGallery;
-    @Bind(R.id.buttonSaveProduct) Button save;
+    @BindView(R.id.imageSave) ImageView imgSave;
+    @BindView(R.id.editTextName) EditText name;
+    @BindView(R.id.editTextStores) EditText store;
+    @BindView(R.id.editTextWeight) EditText weight;
+    @BindView(R.id.spinnerImages) Spinner spinnerI;
+    @BindView(R.id.spinnerUnitWeight) Spinner spinnerW;
+    @BindView(R.id.buttonTakePicture) Button takePic;
+    @BindView(R.id.buttonFromGallery) Button takeGallery;
+    @BindView(R.id.buttonSaveProduct) Button save;
 
     private SendProduct mProduct = new SendProduct();
     private String mBarcode = null;

@@ -51,9 +51,6 @@ env:
     # - ANDROID_TARGET=android-20 ANDROID_ABI=armeabi-v7a
     - ANDROID_TARGET=android-21 ANDROID_ABI=armeabi-v7a
     # - ANDROID_TARGET=android-22 ANDROID_ABI=armeabi-v7a
-addons:
-  code_climate:
-    repo_token: 2b24c9463329705e25db1b4ed139d9eb32a9cc36160f848ecb936579f94670b0
 
 notifications:
   email: false

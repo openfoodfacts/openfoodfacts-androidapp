@@ -15,15 +15,12 @@ import android.view.ViewGroup;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.clans.fab.FloatingActionButton;
-
 import net.steamcrafted.loadtoast.LoadToast;
-
 import org.apache.commons.collections.IteratorUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
@@ -37,7 +34,7 @@ public class AlertUserFragment extends BaseFragment {
     private RecyclerView mRvAllergens;
     private SharedPreferences mSettings;
     private View mView;
-    @Bind(R.id.fab) FloatingActionButton mFab;
+    @BindView(R.id.fab) FloatingActionButton mFab;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

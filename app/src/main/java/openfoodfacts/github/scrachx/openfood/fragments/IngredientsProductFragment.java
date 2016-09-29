@@ -19,21 +19,20 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.State;
 
 public class IngredientsProductFragment extends BaseFragment {
 
-    @Bind(R.id.textIngredientProduct) TextView ingredientsProduct;
-    @Bind(R.id.textSubstanceProduct) TextView substanceProduct;
-    @Bind(R.id.textTraceProduct) TextView traceProduct;
-    @Bind(R.id.textAdditiveProduct) TextView additiveProduct;
-    @Bind(R.id.textPalmOilProduct) TextView palmOilProduct;
-    @Bind(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
-    @Bind(R.id.ingredientContainer) ViewGroup containerView;
+    @BindView(R.id.textIngredientProduct) TextView ingredientsProduct;
+    @BindView(R.id.textSubstanceProduct) TextView substanceProduct;
+    @BindView(R.id.textTraceProduct) TextView traceProduct;
+    @BindView(R.id.textAdditiveProduct) TextView additiveProduct;
+    @BindView(R.id.textPalmOilProduct) TextView palmOilProduct;
+    @BindView(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
+    @BindView(R.id.ingredientContainer) ViewGroup containerView;
     private State mState;
 
     @Override

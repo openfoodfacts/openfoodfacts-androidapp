@@ -13,8 +13,7 @@ import android.view.MenuItem;
 import com.afollestad.materialdialogs.MaterialDialog;
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -28,8 +27,8 @@ public class ProductActivity extends BaseActivity {
     private List<Allergen> mAllergens;
     private State mState;
 
-    @Bind(R.id.pager) ViewPager viewPager;
-    @Bind(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.pager) ViewPager viewPager;
+    @BindView(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
