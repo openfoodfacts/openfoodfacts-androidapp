@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -81,7 +82,7 @@ public class HomeFragment extends BaseFragment {
                     if (htmlNoParsed.contains("Incorrect user name or password.") || htmlNoParsed.contains("See you soon!")) {
                         editor.putString("user", "");
                         editor.putString("pass", "");
-                        editor.commit();
+                        editor.apply();
                         new MaterialDialog.Builder(getActivity())
                                 .title(R.string.alert_dialog_warning_title)
                                 .content(R.string.alert_dialog_warning_msg_user)
