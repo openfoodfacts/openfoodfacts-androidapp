@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
@@ -21,7 +23,7 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsListAdapter;
 
 public class SearchProductsFragment extends BaseFragment {
 
-    private ArrayList<Product> productItems;
+    private List<Product> productItems;
     private ProductsListAdapter adapter;
     private FoodAPIRestClientUsage api;
 
@@ -57,9 +59,9 @@ public class SearchProductsFragment extends BaseFragment {
             api.searchProduct(nameSearch.getText().toString(), getActivity(),
                     new FoodAPIRestClientUsage.OnProductsCallback() {
                         @Override
-                        public void onProductsResponse(boolean value, List<Product> lproducts) {
+                        public void onProductsResponse(boolean value, List<Product> products) {
                             if (value) {
-                                productItems = (ArrayList) lproducts;
+                                productItems = products;
                                 adapter = new ProductsListAdapter(getActivity(), productItems);
                                 listView.setAdapter(adapter);
                             }

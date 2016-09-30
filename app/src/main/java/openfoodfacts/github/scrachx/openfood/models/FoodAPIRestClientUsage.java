@@ -5,19 +5,20 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
+
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import com.loopj.android.http.*;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
 import net.steamcrafted.loadtoast.LoadToast;
+
 import java.io.IOException;
 import java.util.List;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodAPIRestClient;
+import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 
@@ -41,8 +42,7 @@ public class FoodAPIRestClientUsage {
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                 // called when response HTTP status is "200 OK"
                 try {
-                    ObjectMapper objectMapper = new ObjectMapper();
-                    State s = objectMapper.readValue(responseBody, State.class);
+                    State s = JsonUtils.readFor(State.class).readValue(responseBody);
 
                     if(s.getStatus() == 0){
                         lt.error();
@@ -136,8 +136,7 @@ public class FoodAPIRestClientUsage {
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                 // called when response HTTP status is "200 OK"
                 try {
-                    ObjectMapper objectMapper = new ObjectMapper();
-                    State s = objectMapper.readValue(responseBody, State.class);
+                    State s = JsonUtils.readFor(State.class).readValue(responseBody);
 
                     if(s.getStatus() == 0){
                         lt.error();
@@ -229,9 +228,9 @@ public class FoodAPIRestClientUsage {
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                 // called when response HTTP status is "200 OK"
                 try {
-                    ObjectMapper objectMapper = new ObjectMapper();
+
                     try {
-                        Search s = objectMapper.readValue(responseBody, Search.class);
+                        Search s = JsonUtils.readFor(Search.class).readValue(responseBody);
                         if(Integer.valueOf(s.getCount()) == 0){
                             Toast.makeText(activity, R.string.txt_product_not_found, Toast.LENGTH_LONG).show();
                             lt.error();
@@ -265,7 +264,7 @@ public class FoodAPIRestClientUsage {
     }
 
     public interface OnAllergensCallback {
-        public void onAllergensResponse(boolean value);
+        void onAllergensResponse(boolean value);
     }
 
     public void getAllergens(final OnAllergensCallback onAllergensCallback) {
@@ -277,21 +276,14 @@ public class FoodAPIRestClientUsage {
 
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
-                // called when response HTTP status is "200 OK"
                 try {
-                    ObjectMapper objectMapper = new ObjectMapper();
-                    try {
-                        JsonNode root = objectMapper.readTree(responseBody);
-                        List<Allergen> la = objectMapper.readValue(root.path("tags").toString(), new TypeReference<List<Allergen>>() {});
-                        for (Allergen a : la) {
-                            Allergen al = new Allergen(a.getUrl(),a.getName(),a.getProducts(),a.getIdAllergen());
-                            al.save();
-                        }
-                        onAllergensCallback.onAllergensResponse(true);
-                    } catch (InvalidFormatException e) {
-                        e.printStackTrace();
-                        onAllergensCallback.onAllergensResponse(false);
+                    AllergenRestResponse restResponse = JsonUtils.readFor(AllergenRestResponse.class)
+                            .readValue(responseBody);
+
+                    for (Allergen allergen : restResponse.getAllergens()) {
+                        allergen.save();
                     }
+                    onAllergensCallback.onAllergensResponse(true);
                 } catch (IOException e) {
                     e.printStackTrace();
                     onAllergensCallback.onAllergensResponse(false);
