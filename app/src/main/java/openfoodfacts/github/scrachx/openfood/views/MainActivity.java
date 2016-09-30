@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -41,6 +43,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.AlertUserFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsFragment;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
@@ -147,8 +150,7 @@ public class MainActivity extends BaseActivity {
                             }
 
                             if (fragment != null) {
-                                FragmentManager fragmentManager = getSupportFragmentManager();
-                                fragmentManager.beginTransaction()
+                                getSupportFragmentManager().beginTransaction()
                                         .replace(R.id.fragment_container, fragment).commit();
                             } else {
                                 // error in creating fragment
@@ -177,6 +179,14 @@ public class MainActivity extends BaseActivity {
 
             //set the active profile
             headerResult.setActiveProfile(profile);
+        }
+
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        boolean lauchScan = settings.getBoolean("startScan",false);
+        if(lauchScan) {
+            Intent cameraIntent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+            startActivity(cameraIntent);
         }
     }
 
@@ -243,11 +253,15 @@ public class MainActivity extends BaseActivity {
         switch (item.getItemId()) {
             case R.id.action_about:
                 new MaterialDialog.Builder(this)
-                .title(R.string.action_about)
-                .content(R.string.txtAbout)
-                .neutralText(R.string.txtOk)
-                .show();
-            return true;
+                    .title(R.string.action_about)
+                    .content(R.string.txtAbout)
+                    .neutralText(R.string.txtOk)
+                    .show();
+                return true;
+            case R.id.action_preferences:
+                getSupportActionBar().setTitle(R.string.action_preferences);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PreferencesFragment()).commit();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

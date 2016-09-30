@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="openfoodfacts.github.scrachx.openfood"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:installLocation="auto">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -60,7 +61,7 @@
         <meta-data
             android:name="VERSION"
             android:value="7"/>
-        <meta-data
+        <meta-datas
             android:name="QUERY_LOG"
             android:value="true"/>
         <meta-data
