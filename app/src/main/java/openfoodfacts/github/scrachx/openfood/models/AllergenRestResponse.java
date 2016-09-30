@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 /**
  * Deserialize nested tags array as List of {@link Allergen}
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AllergenRestResponse {
     private List<Allergen> allergens;
 
