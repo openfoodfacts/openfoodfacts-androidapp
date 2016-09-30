@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -39,7 +41,7 @@ public class FindProductFragment extends BaseFragment {
             Toast.makeText(getActivity(), getResources().getString(R.string.txtBarcodeRequire), Toast.LENGTH_LONG).show();
         } else {
             if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(mBarCodeText.getText().toString()) && (!mBarCodeText.getText().toString().substring(0, 3).contains("977") || !mBarCodeText.getText().toString().substring(0, 3).contains("978") || !mBarCodeText.getText().toString().substring(0, 3).contains("979"))) {
-                FoodAPIRestClientUsage api = new FoodAPIRestClientUsage();
+                FoodAPIRestClientUsage api = new FoodAPIRestClientUsage(getString(R.string.openfoodUrl));
                 api.getProduct(mBarCodeText.getText().toString(), getActivity());
             } else {
                 Toast.makeText(getActivity(), getResources().getString(R.string.txtBarcodeNotValid), Toast.LENGTH_LONG).show();

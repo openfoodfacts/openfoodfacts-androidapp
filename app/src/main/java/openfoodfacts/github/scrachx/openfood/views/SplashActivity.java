@@ -70,32 +70,30 @@ public class SplashActivity extends BaseActivity {
 
         @Override
         protected Boolean doInBackground(Void... arg0) {
-            String json1 = null;
             try {
                 boolean errorAdditives = settings.getBoolean("errorAdditives", true);
                 if(errorAdditives) {
 
                     //TODO try with resources
                     InputStream is = getAssets().open("additives_fr.json");
-                    List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {})
-                            .readValue(is);
-                    for (Additive additive : frenchAdditives) {
-                        additive.save();
-                    }
+                    saveAllergens(is);
 
                     //TODO try with resources
                     InputStream is1 = getAssets().open("additives_en.json");
-                    List<Additive> englishAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {})
-                            .readValue(is1);
-
-                    for (Additive additive : englishAdditives) {
-                        additive.save();
-                    }
+                    saveAllergens(is1);
                 }
                 return true;
             } catch (IOException ex) {
                 ex.printStackTrace();
                 return false;
+            }
+        }
+
+        private void saveAllergens(InputStream is) throws IOException {
+            List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {})
+                    .readValue(is);
+            for (Additive additive : frenchAdditives) {
+                additive.save();
             }
         }
 
@@ -109,7 +107,7 @@ public class SplashActivity extends BaseActivity {
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
             if(isConnected) {
                 if(errorAllergens) {
-                    FoodAPIRestClientUsage api = new FoodAPIRestClientUsage();
+                    FoodAPIRestClientUsage api = new FoodAPIRestClientUsage(getString(R.string.openfoodUrl));
                     api.getAllergens(new FoodAPIRestClientUsage.OnAllergensCallback() {
                         @Override
                         public void onAllergensResponse(boolean value) {

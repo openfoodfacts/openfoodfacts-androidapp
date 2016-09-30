@@ -5,22 +5,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
 import net.steamcrafted.loadtoast.LoadToast;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
+import openfoodfacts.github.scrachx.openfood.network.FoodAPIRestClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 /**
@@ -80,7 +80,7 @@ public class LoginActivity extends BaseActivity {
 
         final Activity context = this;
 
-        FoodUserClient.post("/cgi/session.pl", requestParams, new AsyncHttpResponseHandler() {
+        FoodAPIRestClient.post(getString(R.string.openfoodUrl) + "/cgi/session.pl", requestParams, new AsyncHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(context);
 

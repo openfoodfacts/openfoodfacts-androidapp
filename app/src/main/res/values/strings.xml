@@ -179,4 +179,7 @@
     <string name="prefs_scan_startup">Scan on startup</string>
     <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
 
+    <!--API URL-->
+    <string name="openfoodUrl">http://world.openfoodfacts.org</string>
+
 </resources>

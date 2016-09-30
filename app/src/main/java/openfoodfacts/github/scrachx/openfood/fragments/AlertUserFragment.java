@@ -12,14 +12,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.clans.fab.FloatingActionButton;
+
 import net.steamcrafted.loadtoast.LoadToast;
+
 import org.apache.commons.collections.IteratorUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -118,7 +123,7 @@ public class AlertUserFragment extends BaseFragment {
                             @Override
                             public void onClick(@NonNull final MaterialDialog dialog, @NonNull DialogAction which) {
                                 final SharedPreferences.Editor editor = mSettings.edit();
-                                FoodAPIRestClientUsage api = new FoodAPIRestClientUsage();
+                                FoodAPIRestClientUsage api = new FoodAPIRestClientUsage(getString(R.string.openfoodUrl));
                                 api.getAllergens(new FoodAPIRestClientUsage.OnAllergensCallback() {
                                     @Override
                                     public void onAllergensResponse(boolean value) {

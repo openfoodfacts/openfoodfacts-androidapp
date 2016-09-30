@@ -16,8 +16,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -178,7 +180,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
             if(isConnected) {
-                FoodAPIRestClientUsage api = new FoodAPIRestClientUsage();
+                FoodAPIRestClientUsage api = new FoodAPIRestClientUsage(getString(R.string.openfoodUrl));
                 api.getProduct(rawResult.getText(), getActivity(), mScannerView, this);
             } else {
                 SharedPreferences settings = getActivity().getSharedPreferences("temp", 0);

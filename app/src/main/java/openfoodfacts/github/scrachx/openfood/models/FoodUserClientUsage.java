@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,17 +18,17 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.network.FoodUserClient;
+import openfoodfacts.github.scrachx.openfood.network.FoodAPIRestClient;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
 public class FoodUserClientUsage {
 
     public interface OnProductSentCallback {
-        public void onProductSentResponse(boolean value);
+        void onProductSentResponse(boolean value);
     }
 
     public void post(final Activity activity, RequestParams params, final String imgFront, final String imgIng, final String imgNut, final String barcode, final OnProductSentCallback productSentCallback){
-        FoodUserClient.post("/cgi/product_jqm2.pl", params, new JsonHttpResponseHandler() {
+        FoodAPIRestClient.post(getApiUrl(activity) + "/cgi/product_jqm2.pl", params, new JsonHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
 
@@ -110,7 +111,7 @@ public class FoodUserClientUsage {
     }
 
     public void postSaved(final Activity activity, RequestParams params, final String imgFront, final String imgIng, final String imgNut, final String barcode, final ListView lv, final int pos, final ArrayList<SaveItem> saveItems){
-        FoodUserClient.post("/cgi/product_jqm2.pl", params, new JsonHttpResponseHandler() {
+        FoodAPIRestClient.post(getApiUrl(activity) + "/cgi/product_jqm2.pl", params, new JsonHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
 
@@ -190,7 +191,7 @@ public class FoodUserClientUsage {
     }
 
     public void postImg(final Activity activity, final RequestParams params){
-        FoodUserClient.post("/cgi/product_image_upload.pl", params, new JsonHttpResponseHandler() {
+        FoodAPIRestClient.post(getApiUrl(activity) + "/cgi/product_image_upload.pl", params, new JsonHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
 
@@ -224,11 +225,11 @@ public class FoodUserClientUsage {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
             }
-
-            @Override
-            public void onRetry ( int retryNo){
-                // called when request is retried
-            }
         });
+    }
+
+    @NonNull
+    private String getApiUrl(Activity activity) {
+        return activity.getString(R.string.openfoodUrl);
     }
 }
