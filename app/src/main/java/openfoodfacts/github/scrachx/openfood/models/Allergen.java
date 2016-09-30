@@ -15,24 +15,14 @@ import com.orm.SugarRecord;
 public class Allergen extends SugarRecord {
 
     private String enable;
-    @JsonProperty("url")
     private String url;
-    @JsonProperty("name")
     private String name;
-    @JsonProperty("products")
     private Integer products;
     @JsonProperty("id")
     private String idAllergen;
 
     public Allergen() {
-    }
-
-    public Allergen(String url, String name, Integer products, String idAllergen) {
-        this.url = url;
-        this.name = name;
-        this.products = products;
-        this.idAllergen = idAllergen;
-        enable = "false";
+        this.enable = "false";
     }
 
     public String isEnable() {
@@ -43,12 +33,10 @@ public class Allergen extends SugarRecord {
         this.enable = enable;
     }
 
-    @JsonProperty("id")
     public String getIdAllergen() {
         return idAllergen;
     }
 
-    @JsonProperty("id")
     public void setIdAllergen(String idAllergen) {
         this.idAllergen = idAllergen;
     }
@@ -58,7 +46,6 @@ public class Allergen extends SugarRecord {
      * @return
      * The url
      */
-    @JsonProperty("url")
     public String getUrl() {
         return url;
     }
@@ -68,7 +55,6 @@ public class Allergen extends SugarRecord {
      * @param url
      * The url
      */
-    @JsonProperty("url")
     public void setUrl(String url) {
         this.url = url;
     }
@@ -78,7 +64,6 @@ public class Allergen extends SugarRecord {
      * @return
      * The name
      */
-    @JsonProperty("name")
     public String getName() {
         return name;
     }
@@ -88,7 +73,6 @@ public class Allergen extends SugarRecord {
      * @param name
      * The name
      */
-    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
@@ -98,7 +82,6 @@ public class Allergen extends SugarRecord {
      * @return
      * The products
      */
-    @JsonProperty("products")
     public Integer getProducts() {
         return products;
     }
@@ -108,7 +91,6 @@ public class Allergen extends SugarRecord {
      * @param products
      * The products
      */
-    @JsonProperty("products")
     public void setProducts(Integer products) {
         this.products = products;
     }

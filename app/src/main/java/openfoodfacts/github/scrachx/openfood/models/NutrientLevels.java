@@ -1,14 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -19,11 +20,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class NutrientLevels implements Serializable {
 
-    @JsonProperty("salt")
     private String salt;
-    @JsonProperty("fat")
     private String fat;
-    @JsonProperty("sugars")
     private String sugars;
     @JsonProperty("saturated-fat")
     private String saturatedFat;
@@ -35,7 +33,6 @@ public class NutrientLevels implements Serializable {
      * @return
      * The salt
      */
-    @JsonProperty("salt")
     public String getSalt() {
         return salt;
     }
@@ -45,7 +42,6 @@ public class NutrientLevels implements Serializable {
      * @param salt
      * The salt
      */
-    @JsonProperty("salt")
     public void setSalt(String salt) {
         this.salt = salt;
     }
@@ -60,7 +56,6 @@ public class NutrientLevels implements Serializable {
      * @return
      * The fat
      */
-    @JsonProperty("fat")
     public String getFat() {
         return fat;
     }
@@ -70,7 +65,6 @@ public class NutrientLevels implements Serializable {
      * @param fat
      * The fat
      */
-    @JsonProperty("fat")
     public void setFat(String fat) {
         this.fat = fat;
     }
@@ -85,7 +79,6 @@ public class NutrientLevels implements Serializable {
      * @return
      * The sugars
      */
-    @JsonProperty("sugars")
     public String getSugars() {
         return sugars;
     }
@@ -95,7 +88,6 @@ public class NutrientLevels implements Serializable {
      * @param sugars
      * The sugars
      */
-    @JsonProperty("sugars")
     public void setSugars(String sugars) {
         this.sugars = sugars;
     }
@@ -110,7 +102,6 @@ public class NutrientLevels implements Serializable {
      * @return
      * The saturatedFat
      */
-    @JsonProperty("saturated-fat")
     public String getSaturatedFat() {
         return saturatedFat;
     }
@@ -120,7 +111,6 @@ public class NutrientLevels implements Serializable {
      * @param saturatedFat
      * The saturated-fat
      */
-    @JsonProperty("saturated-fat")
     public void setSaturatedFat(String saturatedFat) {
         this.saturatedFat = saturatedFat;
     }

@@ -1,14 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -21,11 +22,8 @@ public class State implements Serializable {
 
     @JsonProperty("status_verbose")
     private String statusVerbose;
-    @JsonProperty("status")
     private long status;
-    @JsonProperty("product")
     private Product product;
-    @JsonProperty("code")
     private String code;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -35,7 +33,6 @@ public class State implements Serializable {
      * @return
      * The statusVerbose
      */
-    @JsonProperty("status_verbose")
     public String getStatusVerbose() {
         return statusVerbose;
     }
@@ -45,7 +42,6 @@ public class State implements Serializable {
      * @param statusVerbose
      * The status_verbose
      */
-    @JsonProperty("status_verbose")
     public void setStatusVerbose(String statusVerbose) {
         this.statusVerbose = statusVerbose;
     }
@@ -60,7 +56,6 @@ public class State implements Serializable {
      * @return
      * The status
      */
-    @JsonProperty("status")
     public long getStatus() {
         return status;
     }
@@ -70,7 +65,6 @@ public class State implements Serializable {
      * @param status
      * The status
      */
-    @JsonProperty("status")
     public void setStatus(long status) {
         this.status = status;
     }
@@ -85,7 +79,6 @@ public class State implements Serializable {
      * @return
      * The product
      */
-    @JsonProperty("product")
     public Product getProduct() {
         return product;
     }
@@ -95,7 +88,6 @@ public class State implements Serializable {
      * @param product
      * The product
      */
-    @JsonProperty("product")
     public void setProduct(Product product) {
         this.product = product;
     }
@@ -110,7 +102,6 @@ public class State implements Serializable {
      * @return
      * The code
      */
-    @JsonProperty("code")
     public String getCode() {
         return code;
     }
@@ -120,7 +111,6 @@ public class State implements Serializable {
      * @param code
      * The code
      */
-    @JsonProperty("code")
     public void setCode(String code) {
         this.code = code;
     }

@@ -1,14 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -64,9 +65,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class Nutriments implements Serializable {
 
-    @JsonProperty("sodium")
     private String sodium;
-    @JsonProperty("sugars")
     private String sugars;
     @JsonProperty("sugars_value")
     private String sugarsValue;
@@ -78,7 +77,6 @@ public class Nutriments implements Serializable {
     private String proteinsUnit;
     @JsonProperty("nutrition-score-fr_100g")
     private String nutritionScoreFr100g;
-    @JsonProperty("fat")
     private String fat;
     @JsonProperty("carbohydrates_value")
     private String carbohydratesValue;
@@ -88,9 +86,7 @@ public class Nutriments implements Serializable {
     private String sodiumServing;
     @JsonProperty("fiber_value")
     private String fiberValue;
-    @JsonProperty("proteins")
     private String proteins;
-    @JsonProperty("salt")
     private String salt;
     @JsonProperty("salt_unit")
     private String saltUnit;
@@ -116,7 +112,6 @@ public class Nutriments implements Serializable {
     private String fiberUnit;
     @JsonProperty("energy_value")
     private String energyValue;
-    @JsonProperty("energy")
     private String energy;
     @JsonProperty("energy_unit")
     private String energyUnit;
@@ -146,7 +141,6 @@ public class Nutriments implements Serializable {
     private String saturatedFat100g;
     @JsonProperty("nutrition-score-uk_100g")
     private String nutritionScoreUk100g;
-    @JsonProperty("fiber")
     private String fiber;
     @JsonProperty("salt_100g")
     private String salt100g;
@@ -154,7 +148,6 @@ public class Nutriments implements Serializable {
     private String saltServing;
     @JsonProperty("fiber_100g")
     private String fiber100g;
-    @JsonProperty("carbohydrates")
     private String carbohydrates;
     @JsonProperty("energy_100g")
     private String energy100g;
@@ -166,21 +159,15 @@ public class Nutriments implements Serializable {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     *
-     * @return
-     * The sodium
+     * @return The sodium
      */
-    @JsonProperty("sodium")
     public String getSodium() {
         return sodium;
     }
 
     /**
-     *
-     * @param sodium
-     * The sodium
+     * @param sodium The sodium
      */
-    @JsonProperty("sodium")
     public void setSodium(String sodium) {
         this.sodium = sodium;
     }
@@ -191,21 +178,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The sugars
+     * @return The sugars
      */
-    @JsonProperty("sugars")
     public String getSugars() {
         return sugars;
     }
 
     /**
-     *
-     * @param sugars
-     * The sugars
+     * @param sugars The sugars
      */
-    @JsonProperty("sugars")
     public void setSugars(String sugars) {
         this.sugars = sugars;
     }
@@ -216,21 +197,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The sugarsValue
+     * @return The sugarsValue
      */
-    @JsonProperty("sugars_value")
     public String getSugarsValue() {
         return sugarsValue;
     }
 
     /**
-     *
-     * @param sugarsValue
-     * The sugars_value
+     * @param sugarsValue The sugars_value
      */
-    @JsonProperty("sugars_value")
     public void setSugarsValue(String sugarsValue) {
         this.sugarsValue = sugarsValue;
     }
@@ -241,21 +216,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The carbohydratesUnit
+     * @return The carbohydratesUnit
      */
-    @JsonProperty("carbohydrates_unit")
     public String getCarbohydratesUnit() {
         return carbohydratesUnit;
     }
 
     /**
-     *
-     * @param carbohydratesUnit
-     * The carbohydrates_unit
+     * @param carbohydratesUnit The carbohydrates_unit
      */
-    @JsonProperty("carbohydrates_unit")
     public void setCarbohydratesUnit(String carbohydratesUnit) {
         this.carbohydratesUnit = carbohydratesUnit;
     }
@@ -266,21 +235,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The fatUnit
+     * @return The fatUnit
      */
-    @JsonProperty("fat_unit")
     public String getFatUnit() {
         return fatUnit;
     }
 
     /**
-     *
-     * @param fatUnit
-     * The fat_unit
+     * @param fatUnit The fat_unit
      */
-    @JsonProperty("fat_unit")
     public void setFatUnit(String fatUnit) {
         this.fatUnit = fatUnit;
     }
@@ -291,21 +254,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The proteinsUnit
+     * @return The proteinsUnit
      */
-    @JsonProperty("proteins_unit")
     public String getProteinsUnit() {
         return proteinsUnit;
     }
 
     /**
-     *
-     * @param proteinsUnit
-     * The proteins_unit
+     * @param proteinsUnit The proteins_unit
      */
-    @JsonProperty("proteins_unit")
     public void setProteinsUnit(String proteinsUnit) {
         this.proteinsUnit = proteinsUnit;
     }
@@ -316,21 +273,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The nutritionScoreFr100g
+     * @return The nutritionScoreFr100g
      */
-    @JsonProperty("nutrition-score-fr_100g")
     public String getNutritionScoreFr100g() {
         return nutritionScoreFr100g;
     }
 
     /**
-     *
-     * @param nutritionScoreFr100g
-     * The nutrition-score-fr_100g
+     * @param nutritionScoreFr100g The nutrition-score-fr_100g
      */
-    @JsonProperty("nutrition-score-fr_100g")
     public void setNutritionScoreFr100g(String nutritionScoreFr100g) {
         this.nutritionScoreFr100g = nutritionScoreFr100g;
     }
@@ -341,21 +292,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The fat
+     * @return The fat
      */
-    @JsonProperty("fat")
     public String getFat() {
         return fat;
     }
 
     /**
-     *
-     * @param fat
-     * The fat
+     * @param fat The fat
      */
-    @JsonProperty("fat")
     public void setFat(String fat) {
         this.fat = fat;
     }
@@ -366,21 +311,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The carbohydratesValue
+     * @return The carbohydratesValue
      */
-    @JsonProperty("carbohydrates_value")
     public String getCarbohydratesValue() {
         return carbohydratesValue;
     }
 
     /**
-     *
-     * @param carbohydratesValue
-     * The carbohydrates_value
+     * @param carbohydratesValue The carbohydrates_value
      */
-    @JsonProperty("carbohydrates_value")
     public void setCarbohydratesValue(String carbohydratesValue) {
         this.carbohydratesValue = carbohydratesValue;
     }
@@ -391,21 +330,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The proteinsServing
+     * @return The proteinsServing
      */
-    @JsonProperty("proteins_serving")
     public String getProteinsServing() {
         return proteinsServing;
     }
 
     /**
-     *
-     * @param proteinsServing
-     * The proteins_serving
+     * @param proteinsServing The proteins_serving
      */
-    @JsonProperty("proteins_serving")
     public void setProteinsServing(String proteinsServing) {
         this.proteinsServing = proteinsServing;
     }
@@ -416,21 +349,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The sodiumServing
+     * @return The sodiumServing
      */
-    @JsonProperty("sodium_serving")
     public String getSodiumServing() {
         return sodiumServing;
     }
 
     /**
-     *
-     * @param sodiumServing
-     * The sodium_serving
+     * @param sodiumServing The sodium_serving
      */
-    @JsonProperty("sodium_serving")
     public void setSodiumServing(String sodiumServing) {
         this.sodiumServing = sodiumServing;
     }
@@ -441,21 +368,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The fiberValue
+     * @return The fiberValue
      */
-    @JsonProperty("fiber_value")
     public String getFiberValue() {
         return fiberValue;
     }
 
     /**
-     *
-     * @param fiberValue
-     * The fiber_value
+     * @param fiberValue The fiber_value
      */
-    @JsonProperty("fiber_value")
     public void setFiberValue(String fiberValue) {
         this.fiberValue = fiberValue;
     }
@@ -466,21 +387,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The proteins
+     * @return The proteins
      */
-    @JsonProperty("proteins")
     public String getProteins() {
         return proteins;
     }
 
     /**
-     *
-     * @param proteins
-     * The proteins
+     * @param proteins The proteins
      */
-    @JsonProperty("proteins")
     public void setProteins(String proteins) {
         this.proteins = proteins;
     }
@@ -491,21 +406,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The salt
+     * @return The salt
      */
-    @JsonProperty("salt")
     public String getSalt() {
         return salt;
     }
 
     /**
-     *
-     * @param salt
-     * The salt
+     * @param salt The salt
      */
-    @JsonProperty("salt")
     public void setSalt(String salt) {
         this.salt = salt;
     }
@@ -516,21 +425,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The saltUnit
+     * @return The saltUnit
      */
-    @JsonProperty("salt_unit")
     public String getSaltUnit() {
         return saltUnit;
     }
 
     /**
-     *
-     * @param saltUnit
-     * The salt_unit
+     * @param saltUnit The salt_unit
      */
-    @JsonProperty("salt_unit")
     public void setSaltUnit(String saltUnit) {
         this.saltUnit = saltUnit;
     }
@@ -541,21 +444,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The nutritionScoreFr
+     * @return The nutritionScoreFr
      */
-    @JsonProperty("nutrition-score-fr")
     public String getNutritionScoreFr() {
         return nutritionScoreFr;
     }
 
     /**
-     *
-     * @param nutritionScoreFr
-     * The nutrition-score-fr
+     * @param nutritionScoreFr The nutrition-score-fr
      */
-    @JsonProperty("nutrition-score-fr")
     public void setNutritionScoreFr(String nutritionScoreFr) {
         this.nutritionScoreFr = nutritionScoreFr;
     }
@@ -566,21 +463,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The sugarsUnit
+     * @return The sugarsUnit
      */
-    @JsonProperty("sugars_unit")
     public String getSugarsUnit() {
         return sugarsUnit;
     }
 
     /**
-     *
-     * @param sugarsUnit
-     * The sugars_unit
+     * @param sugarsUnit The sugars_unit
      */
-    @JsonProperty("sugars_unit")
     public void setSugarsUnit(String sugarsUnit) {
         this.sugarsUnit = sugarsUnit;
     }
@@ -591,21 +482,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The fatServing
+     * @return The fatServing
      */
-    @JsonProperty("fat_serving")
     public String getFatServing() {
         return fatServing;
     }
 
     /**
-     *
-     * @param fatServing
-     * The fat_serving
+     * @param fatServing The fat_serving
      */
-    @JsonProperty("fat_serving")
     public void setFatServing(String fatServing) {
         this.fatServing = fatServing;
     }
@@ -616,21 +501,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The fatValue
+     * @return The fatValue
      */
-    @JsonProperty("fat_value")
     public String getFatValue() {
         return fatValue;
     }
 
     /**
-     *
-     * @param fatValue
-     * The fat_value
+     * @param fatValue The fat_value
      */
-    @JsonProperty("fat_value")
     public void setFatValue(String fatValue) {
         this.fatValue = fatValue;
     }
@@ -641,21 +520,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The sodiumUnit
+     * @return The sodiumUnit
      */
-    @JsonProperty("sodium_unit")
     public String getSodiumUnit() {
         return sodiumUnit;
     }
 
     /**
-     *
-     * @param sodiumUnit
-     * The sodium_unit
+     * @param sodiumUnit The sodium_unit
      */
-    @JsonProperty("sodium_unit")
     public void setSodiumUnit(String sodiumUnit) {
         this.sodiumUnit = sodiumUnit;
     }
@@ -666,21 +539,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The sugars100g
+     * @return The sugars100g
      */
-    @JsonProperty("sugars_100g")
     public String getSugars100g() {
         return sugars100g;
     }
 
     /**
-     *
-     * @param sugars100g
-     * The sugars_100g
+     * @param sugars100g The sugars_100g
      */
-    @JsonProperty("sugars_100g")
     public void setSugars100g(String sugars100g) {
         this.sugars100g = sugars100g;
     }
@@ -691,21 +558,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The sodium100g
+     * @return The sodium100g
      */
-    @JsonProperty("sodium_100g")
     public String getSodium100g() {
         return sodium100g;
     }
 
     /**
-     *
-     * @param sodium100g
-     * The sodium_100g
+     * @param sodium100g The sodium_100g
      */
-    @JsonProperty("sodium_100g")
     public void setSodium100g(String sodium100g) {
         this.sodium100g = sodium100g;
     }
@@ -716,21 +577,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The saturatedFatServing
+     * @return The saturatedFatServing
      */
-    @JsonProperty("saturated-fat_serving")
     public String getSaturatedFatServing() {
         return saturatedFatServing;
     }
 
     /**
-     *
-     * @param saturatedFatServing
-     * The saturated-fat_serving
+     * @param saturatedFatServing The saturated-fat_serving
      */
-    @JsonProperty("saturated-fat_serving")
     public void setSaturatedFatServing(String saturatedFatServing) {
         this.saturatedFatServing = saturatedFatServing;
     }
@@ -741,21 +596,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The saturatedFatUnit
+     * @return The saturatedFatUnit
      */
-    @JsonProperty("saturated-fat_unit")
     public String getSaturatedFatUnit() {
         return saturatedFatUnit;
     }
 
     /**
-     *
-     * @param saturatedFatUnit
-     * The saturated-fat_unit
+     * @param saturatedFatUnit The saturated-fat_unit
      */
-    @JsonProperty("saturated-fat_unit")
     public void setSaturatedFatUnit(String saturatedFatUnit) {
         this.saturatedFatUnit = saturatedFatUnit;
     }
@@ -766,21 +615,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The fiberUnit
+     * @return The fiberUnit
      */
-    @JsonProperty("fiber_unit")
     public String getFiberUnit() {
         return fiberUnit;
     }
 
     /**
-     *
-     * @param fiberUnit
-     * The fiber_unit
+     * @param fiberUnit The fiber_unit
      */
-    @JsonProperty("fiber_unit")
     public void setFiberUnit(String fiberUnit) {
         this.fiberUnit = fiberUnit;
     }
@@ -791,21 +634,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The energyValue
+     * @return The energyValue
      */
-    @JsonProperty("energy_value")
     public String getEnergyValue() {
         return energyValue;
     }
 
     /**
-     *
-     * @param energyValue
-     * The energy_value
+     * @param energyValue The energy_value
      */
-    @JsonProperty("energy_value")
     public void setEnergyValue(String energyValue) {
         this.energyValue = energyValue;
     }
@@ -816,21 +653,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The energy
+     * @return The energy
      */
-    @JsonProperty("energy")
     public String getEnergy() {
         return energy;
     }
 
     /**
-     *
-     * @param energy
-     * The energy
+     * @param energy The energy
      */
-    @JsonProperty("energy")
     public void setEnergy(String energy) {
         this.energy = energy;
     }
@@ -841,21 +672,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The energyUnit
+     * @return The energyUnit
      */
-    @JsonProperty("energy_unit")
     public String getEnergyUnit() {
         return energyUnit;
     }
 
     /**
-     *
-     * @param energyUnit
-     * The energy_unit
+     * @param energyUnit The energy_unit
      */
-    @JsonProperty("energy_unit")
     public void setEnergyUnit(String energyUnit) {
         this.energyUnit = energyUnit;
     }
@@ -866,21 +691,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The sugarsServing
+     * @return The sugarsServing
      */
-    @JsonProperty("sugars_serving")
     public String getSugarsServing() {
         return sugarsServing;
     }
 
     /**
-     *
-     * @param sugarsServing
-     * The sugars_serving
+     * @param sugarsServing The sugars_serving
      */
-    @JsonProperty("sugars_serving")
     public void setSugarsServing(String sugarsServing) {
         this.sugarsServing = sugarsServing;
     }
@@ -891,21 +710,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The carbohydrates100g
+     * @return The carbohydrates100g
      */
-    @JsonProperty("carbohydrates_100g")
     public String getCarbohydrates100g() {
         return carbohydrates100g;
     }
 
     /**
-     *
-     * @param carbohydrates100g
-     * The carbohydrates_100g
+     * @param carbohydrates100g The carbohydrates_100g
      */
-    @JsonProperty("carbohydrates_100g")
     public void setCarbohydrates100g(String carbohydrates100g) {
         this.carbohydrates100g = carbohydrates100g;
     }
@@ -916,21 +729,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The nutritionScoreUk
+     * @return The nutritionScoreUk
      */
-    @JsonProperty("nutrition-score-uk")
     public String getNutritionScoreUk() {
         return nutritionScoreUk;
     }
 
     /**
-     *
-     * @param nutritionScoreUk
-     * The nutrition-score-uk
+     * @param nutritionScoreUk The nutrition-score-uk
      */
-    @JsonProperty("nutrition-score-uk")
     public void setNutritionScoreUk(String nutritionScoreUk) {
         this.nutritionScoreUk = nutritionScoreUk;
     }
@@ -941,21 +748,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The saturatedFatValue
+     * @return The saturatedFatValue
      */
-    @JsonProperty("saturated-fat_value")
     public String getSaturatedFatValue() {
         return saturatedFatValue;
     }
 
     /**
-     *
-     * @param saturatedFatValue
-     * The saturated-fat_value
+     * @param saturatedFatValue The saturated-fat_value
      */
-    @JsonProperty("saturated-fat_value")
     public void setSaturatedFatValue(String saturatedFatValue) {
         this.saturatedFatValue = saturatedFatValue;
     }
@@ -966,21 +767,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The proteins100g
+     * @return The proteins100g
      */
-    @JsonProperty("proteins_100g")
     public String getProteins100g() {
         return proteins100g;
     }
 
     /**
-     *
-     * @param proteins100g
-     * The proteins_100g
+     * @param proteins100g The proteins_100g
      */
-    @JsonProperty("proteins_100g")
     public void setProteins100g(String proteins100g) {
         this.proteins100g = proteins100g;
     }
@@ -991,21 +786,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The fiberServing
+     * @return The fiberServing
      */
-    @JsonProperty("fiber_serving")
     public String getFiberServing() {
         return fiberServing;
     }
 
     /**
-     *
-     * @param fiberServing
-     * The fiber_serving
+     * @param fiberServing The fiber_serving
      */
-    @JsonProperty("fiber_serving")
     public void setFiberServing(String fiberServing) {
         this.fiberServing = fiberServing;
     }
@@ -1016,21 +805,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The carbohydratesServing
+     * @return The carbohydratesServing
      */
-    @JsonProperty("carbohydrates_serving")
     public String getCarbohydratesServing() {
         return carbohydratesServing;
     }
 
     /**
-     *
-     * @param carbohydratesServing
-     * The carbohydrates_serving
+     * @param carbohydratesServing The carbohydrates_serving
      */
-    @JsonProperty("carbohydrates_serving")
     public void setCarbohydratesServing(String carbohydratesServing) {
         this.carbohydratesServing = carbohydratesServing;
     }
@@ -1041,21 +824,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The sodiumValue
+     * @return The sodiumValue
      */
-    @JsonProperty("sodium_value")
     public String getSodiumValue() {
         return sodiumValue;
     }
 
     /**
-     *
-     * @param sodiumValue
-     * The sodium_value
+     * @param sodiumValue The sodium_value
      */
-    @JsonProperty("sodium_value")
     public void setSodiumValue(String sodiumValue) {
         this.sodiumValue = sodiumValue;
     }
@@ -1066,21 +843,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The saltValue
+     * @return The saltValue
      */
-    @JsonProperty("salt_value")
     public String getSaltValue() {
         return saltValue;
     }
 
     /**
-     *
-     * @param saltValue
-     * The salt_value
+     * @param saltValue The salt_value
      */
-    @JsonProperty("salt_value")
     public void setSaltValue(String saltValue) {
         this.saltValue = saltValue;
     }
@@ -1091,21 +862,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The energyServing
+     * @return The energyServing
      */
-    @JsonProperty("energy_serving")
     public String getEnergyServing() {
         return energyServing;
     }
 
     /**
-     *
-     * @param energyServing
-     * The energy_serving
+     * @param energyServing The energy_serving
      */
-    @JsonProperty("energy_serving")
     public void setEnergyServing(String energyServing) {
         this.energyServing = energyServing;
     }
@@ -1116,21 +881,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The fat100g
+     * @return The fat100g
      */
-    @JsonProperty("fat_100g")
     public String getFat100g() {
         return fat100g;
     }
 
     /**
-     *
-     * @param fat100g
-     * The fat_100g
+     * @param fat100g The fat_100g
      */
-    @JsonProperty("fat_100g")
     public void setFat100g(String fat100g) {
         this.fat100g = fat100g;
     }
@@ -1141,21 +900,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The saturatedFat100g
+     * @return The saturatedFat100g
      */
-    @JsonProperty("saturated-fat_100g")
     public String getSaturatedFat100g() {
         return saturatedFat100g;
     }
 
     /**
-     *
-     * @param saturatedFat100g
-     * The saturated-fat_100g
+     * @param saturatedFat100g The saturated-fat_100g
      */
-    @JsonProperty("saturated-fat_100g")
     public void setSaturatedFat100g(String saturatedFat100g) {
         this.saturatedFat100g = saturatedFat100g;
     }
@@ -1166,21 +919,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The nutritionScoreUk100g
+     * @return The nutritionScoreUk100g
      */
-    @JsonProperty("nutrition-score-uk_100g")
     public String getNutritionScoreUk100g() {
         return nutritionScoreUk100g;
     }
 
     /**
-     *
-     * @param nutritionScoreUk100g
-     * The nutrition-score-uk_100g
+     * @param nutritionScoreUk100g The nutrition-score-uk_100g
      */
-    @JsonProperty("nutrition-score-uk_100g")
     public void setNutritionScoreUk100g(String nutritionScoreUk100g) {
         this.nutritionScoreUk100g = nutritionScoreUk100g;
     }
@@ -1191,21 +938,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The fiber
+     * @return The fiber
      */
-    @JsonProperty("fiber")
     public String getFiber() {
         return fiber;
     }
 
     /**
-     *
-     * @param fiber
-     * The fiber
+     * @param fiber The fiber
      */
-    @JsonProperty("fiber")
     public void setFiber(String fiber) {
         this.fiber = fiber;
     }
@@ -1216,21 +957,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The salt100g
+     * @return The salt100g
      */
-    @JsonProperty("salt_100g")
     public String getSalt100g() {
         return salt100g;
     }
 
     /**
-     *
-     * @param salt100g
-     * The salt_100g
+     * @param salt100g The salt_100g
      */
-    @JsonProperty("salt_100g")
     public void setSalt100g(String salt100g) {
         this.salt100g = salt100g;
     }
@@ -1241,21 +976,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The saltServing
+     * @return The saltServing
      */
-    @JsonProperty("salt_serving")
     public String getSaltServing() {
         return saltServing;
     }
 
     /**
-     *
-     * @param saltServing
-     * The salt_serving
+     * @param saltServing The salt_serving
      */
-    @JsonProperty("salt_serving")
     public void setSaltServing(String saltServing) {
         this.saltServing = saltServing;
     }
@@ -1266,21 +995,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The fiber100g
+     * @return The fiber100g
      */
-    @JsonProperty("fiber_100g")
     public String getFiber100g() {
         return fiber100g;
     }
 
     /**
-     *
-     * @param fiber100g
-     * The fiber_100g
+     * @param fiber100g The fiber_100g
      */
-    @JsonProperty("fiber_100g")
     public void setFiber100g(String fiber100g) {
         this.fiber100g = fiber100g;
     }
@@ -1291,21 +1014,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The carbohydrates
+     * @return The carbohydrates
      */
-    @JsonProperty("carbohydrates")
     public String getCarbohydrates() {
         return carbohydrates;
     }
 
     /**
-     *
-     * @param carbohydrates
-     * The carbohydrates
+     * @param carbohydrates The carbohydrates
      */
-    @JsonProperty("carbohydrates")
     public void setCarbohydrates(String carbohydrates) {
         this.carbohydrates = carbohydrates;
     }
@@ -1316,21 +1033,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The energy100g
+     * @return The energy100g
      */
-    @JsonProperty("energy_100g")
     public String getEnergy100g() {
         return energy100g;
     }
 
     /**
-     *
-     * @param energy100g
-     * The energy_100g
+     * @param energy100g The energy_100g
      */
-    @JsonProperty("energy_100g")
     public void setEnergy100g(String energy100g) {
         this.energy100g = energy100g;
     }
@@ -1341,21 +1052,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The proteinsValue
+     * @return The proteinsValue
      */
-    @JsonProperty("proteins_value")
     public String getProteinsValue() {
         return proteinsValue;
     }
 
     /**
-     *
-     * @param proteinsValue
-     * The proteins_value
+     * @param proteinsValue The proteins_value
      */
-    @JsonProperty("proteins_value")
     public void setProteinsValue(String proteinsValue) {
         this.proteinsValue = proteinsValue;
     }
@@ -1366,21 +1071,15 @@ public class Nutriments implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The saturatedFat
+     * @return The saturatedFat
      */
-    @JsonProperty("saturated-fat")
     public String getSaturatedFat() {
         return saturatedFat;
     }
 
     /**
-     *
-     * @param saturatedFat
-     * The saturated-fat
+     * @param saturatedFat The saturated-fat
      */
-    @JsonProperty("saturated-fat")
     public void setSaturatedFat(String saturatedFat) {
         this.saturatedFat = saturatedFat;
     }

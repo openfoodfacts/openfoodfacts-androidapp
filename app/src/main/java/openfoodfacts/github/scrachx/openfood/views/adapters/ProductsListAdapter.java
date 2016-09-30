@@ -8,18 +8,20 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 
 public class ProductsListAdapter extends BaseAdapter {
 
-    private Context context;
-    private ArrayList<Product> products;
+    private final Context context;
+    private final List<Product> products;
 
-    public ProductsListAdapter(Context context, ArrayList<Product> items){
+    public ProductsListAdapter(Context context, List<Product> items){
         this.context = context;
         this.products = items;
     }
