@@ -16,6 +16,8 @@ public class Additive extends SugarRecord {
     private String name;
     private String risk;
 
+    protected Additive(){}
+
     public Additive(String code, String name, String risk) {
         this.code = code;
         this.name = name;
