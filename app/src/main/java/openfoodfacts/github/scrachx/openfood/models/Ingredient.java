@@ -1,14 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -19,13 +19,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class Ingredient implements Serializable {
 
-    @JsonProperty("text")
     private String text;
-    @JsonProperty("id")
     private String id;
-    @JsonProperty("rank")
     private long rank;
-    @JsonProperty("percent")
     private String percent;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -35,7 +31,6 @@ public class Ingredient implements Serializable {
      * @return
      * The text
      */
-    @JsonProperty("text")
     public String getText() {
         return text;
     }
@@ -45,7 +40,6 @@ public class Ingredient implements Serializable {
      * @param text
      * The text
      */
-    @JsonProperty("text")
     public void setText(String text) {
         this.text = text;
     }
@@ -60,7 +54,6 @@ public class Ingredient implements Serializable {
      * @return
      * The id
      */
-    @JsonProperty("id")
     public String getId() {
         return id;
     }
@@ -70,7 +63,6 @@ public class Ingredient implements Serializable {
      * @param id
      * The id
      */
-    @JsonProperty("id")
     public void setId(String id) {
         this.id = id;
     }
@@ -85,7 +77,6 @@ public class Ingredient implements Serializable {
      * @return
      * The rank
      */
-    @JsonProperty("rank")
     public long getRank() {
         return rank;
     }
@@ -95,7 +86,6 @@ public class Ingredient implements Serializable {
      * @param rank
      * The rank
      */
-    @JsonProperty("rank")
     public void setRank(long rank) {
         this.rank = rank;
     }
@@ -110,7 +100,6 @@ public class Ingredient implements Serializable {
      * @return
      * The percent
      */
-    @JsonProperty("percent")
     public String getPercent() {
         return percent;
     }
@@ -120,7 +109,6 @@ public class Ingredient implements Serializable {
      * @param percent
      * The percent
      */
-    @JsonProperty("percent")
     public void setPercent(String percent) {
         this.percent = percent;
     }

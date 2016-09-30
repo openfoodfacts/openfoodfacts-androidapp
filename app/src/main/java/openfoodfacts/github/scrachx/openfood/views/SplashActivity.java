@@ -9,8 +9,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import net.steamcrafted.loadtoast.LoadToast;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
+import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 
 public class SplashActivity extends BaseActivity {
 
@@ -68,36 +70,26 @@ public class SplashActivity extends BaseActivity {
 
         @Override
         protected Boolean doInBackground(Void... arg0) {
-
-            String json = null;
             String json1 = null;
             try {
                 boolean errorAdditives = settings.getBoolean("errorAdditives", true);
                 if(errorAdditives) {
+
+                    //TODO try with resources
                     InputStream is = getAssets().open("additives_fr.json");
-                    int size = is.available();
-                    byte[] buffer = new byte[size];
-                    is.read(buffer);
-                    is.close();
-                    json = new String(buffer, "UTF-8");
-                    ObjectMapper objectMapper = new ObjectMapper();
-                    List<Additive> la = objectMapper.readValue(json, new TypeReference<List<Additive>>() {});
-                    for (Additive a : la) {
-                        Additive ta = new Additive(a.getCode(), a.getName(), a.getRisk());
-                        ta.save();
+                    List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {})
+                            .readValue(is);
+                    for (Additive additive : frenchAdditives) {
+                        additive.save();
                     }
 
+                    //TODO try with resources
                     InputStream is1 = getAssets().open("additives_en.json");
-                    int size1 = is1.available();
-                    byte[] buffer1 = new byte[size1];
-                    is1.read(buffer1);
-                    is1.close();
-                    json1 = new String(buffer1, "UTF-8");
-                    ObjectMapper objectMapper1 = new ObjectMapper();
-                    List<Additive> la1 = objectMapper1.readValue(json1, new TypeReference<List<Additive>>() {});
-                    for (Additive a : la1) {
-                        Additive ta = new Additive(a.getCode(), a.getName(), a.getRisk());
-                        ta.save();
+                    List<Additive> englishAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {})
+                            .readValue(is1);
+
+                    for (Additive additive : englishAdditives) {
+                        additive.save();
                     }
                 }
                 return true;

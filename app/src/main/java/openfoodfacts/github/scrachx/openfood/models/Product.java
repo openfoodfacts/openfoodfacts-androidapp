@@ -1,16 +1,17 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -124,21 +125,21 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Product implements Serializable{
 
     @JsonProperty("last_edit_dates_tags")
-    private List<String> lastEditDatesTags = new ArrayList<String>();
+    private List<String> lastEditDatesTags = new ArrayList<>();
     @JsonProperty("labels_hierarchy")
-    private List<Object> labelsHierarchy = new ArrayList<Object>();
+    private List<Object> labelsHierarchy = new ArrayList<>();
     @JsonProperty("_id")
     private String Id;
     @JsonProperty("categories_hierarchy")
-    private List<String> categoriesHierarchy = new ArrayList<String>();
+    private List<String> categoriesHierarchy = new ArrayList<>();
     @JsonProperty("pnns_groups_1")
     private String pnnsGroups1;
     @JsonProperty("checkers_tags")
-    private List<Object> checkersTags = new ArrayList<Object>();
+    private List<Object> checkersTags = new ArrayList<>();
     @JsonProperty("states_tags")
-    private List<String> statesTags = new ArrayList<String>();
+    private List<String> statesTags = new ArrayList<>();
     @JsonProperty("labels_tags")
-    private List<Object> labelsTags = new ArrayList<Object>();
+    private List<Object> labelsTags = new ArrayList<>();
     @JsonProperty("image_small_url")
     private String imageSmallUrl;
     @JsonProperty("image_nutrition_url")
@@ -147,75 +148,66 @@ public class Product implements Serializable{
     private String imageFrontUrl;
     @JsonProperty("image_ingredients_url")
     private String imageIngredientsUrl;
-    @JsonProperty("url")
     private String url;
-    @JsonProperty("code")
     private String code;
     @JsonProperty("traces_tags")
-    private List<String> tracesTags = new ArrayList<String>();
-    @JsonProperty("lang")
+    private List<String> tracesTags = new ArrayList<>();
     private String lang;
-    @JsonProperty("photographers")
-    private List<String> photographers = new ArrayList<String>();
+    private List<String> photographers = new ArrayList<>();
     @JsonProperty("ingredients_that_may_be_from_palm_oil_tags")
-    private List<String> ingredientsThatMayBeFromPalmOilTags = new ArrayList<String>();
+    private List<String> ingredientsThatMayBeFromPalmOilTags = new ArrayList<>();
     @JsonProperty("generic_name")
     private String genericName;
     @JsonProperty("old_additives_tags")
-    private List<String> oldAdditivesTags = new ArrayList<String>();
-    @JsonProperty("rev")
+    private List<String> oldAdditivesTags = new ArrayList<>();
     private long rev;
     @JsonProperty("_keywords")
-    private List<String> Keywords = new ArrayList<String>();
+    private List<String> Keywords = new ArrayList<>();
     @JsonProperty("emb_codes")
     private String embCodes;
-    @JsonProperty("editors")
-    private List<String> editors = new ArrayList<String>();
+    private List<String> editors = new ArrayList<>();
     @JsonProperty("max_imgid")
     private String maxImgid;
     @JsonProperty("additives_tags")
-    private List<String> additivesTags = new ArrayList<String>();
+    private List<String> additivesTags = new ArrayList<>();
     @JsonProperty("emb_codes_orig")
     private String embCodesOrig;
     @JsonProperty("nutrient_levels_tags")
-    private List<String> nutrientLevelsTags = new ArrayList<String>();
+    private List<String> nutrientLevelsTags = new ArrayList<>();
     @JsonProperty("informers_tags")
-    private List<String> informersTags = new ArrayList<String>();
+    private List<String> informersTags = new ArrayList<>();
     @JsonProperty("photographers_tags")
-    private List<String> photographersTags = new ArrayList<String>();
+    private List<String> photographersTags = new ArrayList<>();
     @JsonProperty("additives_n")
     private long additivesN;
     @JsonProperty("allergens_hierarchy")
-    private List<String> allergensHierarchy = new ArrayList<String>();
+    private List<String> allergensHierarchy = new ArrayList<>();
     @JsonProperty("pnns_groups_2_tags")
-    private List<String> pnnsGroups2Tags = new ArrayList<String>();
+    private List<String> pnnsGroups2Tags = new ArrayList<>();
     @JsonProperty("unknown_nutrients_tags")
-    private List<Object> unknownNutrientsTags = new ArrayList<Object>();
+    private List<Object> unknownNutrientsTags = new ArrayList<>();
     @JsonProperty("packaging_tags")
-    private List<String> packagingTags = new ArrayList<String>();
+    private List<String> packagingTags = new ArrayList<>();
     @JsonProperty("manufacturing_places")
     private String manufacturingPlaces;
     @JsonProperty("unique_scans_n")
     private long uniqueScansN;
-    @JsonProperty("nutriments")
     private Nutriments nutriments;
     @JsonProperty("countries_tags")
-    private List<String> countriesTags = new ArrayList<String>();
+    private List<String> countriesTags = new ArrayList<>();
     @JsonProperty("ingredients_from_palm_oil_tags")
-    private List<Object> ingredientsFromPalmOilTags = new ArrayList<Object>();
+    private List<Object> ingredientsFromPalmOilTags = new ArrayList<>();
     @JsonProperty("purchase_places")
     private String purchasePlaces;
     @JsonProperty("emb_codes_tags")
-    private List<Object> embCodesTags = new ArrayList<Object>();
+    private List<Object> embCodesTags = new ArrayList<>();
     @JsonProperty("brands_tags")
-    private List<String> brandsTags = new ArrayList<String>();
+    private List<String> brandsTags = new ArrayList<>();
     @JsonProperty("pnns_groups_2")
     private String pnnsGroups2;
     @JsonProperty("countries_hierarchy")
-    private List<String> countriesHierarchy = new ArrayList<String>();
-    @JsonProperty("traces")
+    private List<String> countriesHierarchy = new ArrayList<>();
     private String traces;
-    @JsonProperty("categories")
     private String categories;
     @JsonProperty("ingredients_text")
     private String ingredientsText;
@@ -223,7 +215,6 @@ public class Product implements Serializable{
     private long createdT;
     @JsonProperty("product_name")
     private String productName;
-    @JsonProperty("creator")
     private String creator;
     @JsonProperty("ingredients_from_or_that_may_be_from_palm_oil_n")
     private long ingredientsFromOrThatMayBeFromPalmOilN;
@@ -235,31 +226,25 @@ public class Product implements Serializable{
     private long completedT;
     @JsonProperty("last_modified_by")
     private String lastModifiedBy;
-    @JsonProperty("allergens")
     private String allergens;
     @JsonProperty("new_additives_n")
     private long newAdditivesN;
-    @JsonProperty("origins")
     private String origins;
-    @JsonProperty("stores")
     private String stores;
     @JsonProperty("nutrition_grade_fr")
     private String nutritionGradeFr;
     @JsonProperty("nutrient_levels")
     private NutrientLevels nutrientLevels;
-    @JsonProperty("id")
     private String id;
     @JsonProperty("stores_tags")
-    private List<Object> storesTags = new ArrayList<Object>();
-    @JsonProperty("countries")
+    private List<Object> storesTags = new ArrayList<>();
     private String countries;
     @JsonProperty("purchase_places_tags")
-    private List<Object> purchasePlacesTags = new ArrayList<Object>();
+    private List<Object> purchasePlacesTags = new ArrayList<>();
     @JsonProperty("fruits-vegetables-nuts_100g_estimate")
     private double fruitsVegetablesNuts100gEstimate;
     @JsonProperty("interface_version_modified")
     private String interfaceVersionModified;
-    @JsonProperty("sortkey")
     private long sortkey;
     @JsonProperty("last_modified_t")
     private long lastModifiedT;
@@ -268,84 +253,71 @@ public class Product implements Serializable{
     @JsonProperty("countries.20131227")
     private Object countries20131227;
     @JsonProperty("correctors_tags")
-    private List<String> correctorsTags = new ArrayList<String>();
+    private List<String> correctorsTags = new ArrayList<>();
     @JsonProperty("new_additives_debug")
     private String newAdditivesDebug;
-    @JsonProperty("correctors")
-    private List<String> correctors = new ArrayList<String>();
-    @JsonProperty("brands")
+    private List<String> correctors = new ArrayList<>();
     private String brands;
     @JsonProperty("ingredients_tags")
-    private List<String> ingredientsTags = new ArrayList<String>();
+    private List<String> ingredientsTags = new ArrayList<>();
     @JsonProperty("new_additives_tags")
-    private List<String> newAdditivesTags = new ArrayList<String>();
-    @JsonProperty("informers")
-    private List<String> informers = new ArrayList<String>();
-    @JsonProperty("states")
+    private List<String> newAdditivesTags = new ArrayList<>();
+    private List<String> informers = new ArrayList<>();
     private String states;
     @JsonProperty("entry_dates_tags")
-    private List<String> entryDatesTags = new ArrayList<String>();
+    private List<String> entryDatesTags = new ArrayList<>();
     @JsonProperty("nutrition_grades_tags")
-    private List<String> nutritionGradesTags = new ArrayList<String>();
+    private List<String> nutritionGradesTags = new ArrayList<>();
     @JsonProperty("ingredients_text_with_allergens")
     private String ingredientsTextWithAllergens;
-    @JsonProperty("packaging")
     private String packaging;
     @JsonProperty("serving_quantity")
     private double servingQuantity;
     @JsonProperty("manufacturing_places_tags")
-    private List<Object> manufacturingPlacesTags = new ArrayList<Object>();
+    private List<Object> manufacturingPlacesTags = new ArrayList<>();
     @JsonProperty("origins_tags")
-    private List<String> originsTags = new ArrayList<String>();
+    private List<String> originsTags = new ArrayList<>();
     @JsonProperty("scans_n")
     private long scansN;
     @JsonProperty("nutrition_data_per")
     private String nutritionDataPer;
-    @JsonProperty("labels")
     private String labels;
-    @JsonProperty("link")
     private String link;
     @JsonProperty("cities_tags")
-    private List<Object> citiesTags = new ArrayList<Object>();
+    private List<Object> citiesTags = new ArrayList<>();
     @JsonProperty("emb_codes_20141016")
     private String embCodes20141016;
     @JsonProperty("categories_tags")
-    private List<String> categoriesTags = new ArrayList<String>();
-    @JsonProperty("quantity")
+    private List<String> categoriesTags = new ArrayList<>();
     private String quantity;
     @JsonProperty("expiration_date")
     private String expirationDate;
     @JsonProperty("ingredients_that_may_be_from_palm_oil_n")
     private long ingredientsThatMayBeFromPalmOilN;
     @JsonProperty("states_hierarchy")
-    private List<String> statesHierarchy = new ArrayList<String>();
+    private List<String> statesHierarchy = new ArrayList<>();
     @JsonProperty("emb_code")
     private String embCode;
     @JsonProperty("allergens_tags")
-    private List<Object> allergensTags = new ArrayList<Object>();
+    private List<Object> allergensTags = new ArrayList<>();
     @JsonProperty("ingredients_from_palm_oil_n")
     private long ingredientsFromPalmOilN;
     @JsonProperty("image_url")
     private String imageUrl;
-    @JsonProperty("lc")
     private String lc;
-    @JsonProperty("ingredients")
-    private List<Ingredient> ingredients = new ArrayList<Ingredient>();
+    private List<Ingredient> ingredients = new ArrayList<>();
     @JsonProperty("pnns_groups_1_tags")
-    private List<String> pnnsGroups1Tags = new ArrayList<String>();
-    @JsonProperty("checkers")
-    private List<Object> checkers = new ArrayList<Object>();
-    @JsonProperty("complete")
+    private List<String> pnnsGroups1Tags = new ArrayList<>();
+    private List<Object> checkers = new ArrayList<>();
     private long complete;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
 
     /**
      *
      * @return
      * The lastEditDatesTags
      */
-    @JsonProperty("last_edit_dates_tags")
     public List<String> getLastEditDatesTags() {
         return lastEditDatesTags;
     }
@@ -355,7 +327,6 @@ public class Product implements Serializable{
      * @param lastEditDatesTags
      * The last_edit_dates_tags
      */
-    @JsonProperty("last_edit_dates_tags")
     public void setLastEditDatesTags(List<String> lastEditDatesTags) {
         this.lastEditDatesTags = lastEditDatesTags;
     }
@@ -370,7 +341,6 @@ public class Product implements Serializable{
      * @return
      * The labelsHierarchy
      */
-    @JsonProperty("labels_hierarchy")
     public List<Object> getLabelsHierarchy() {
         return labelsHierarchy;
     }
@@ -380,7 +350,6 @@ public class Product implements Serializable{
      * @param labelsHierarchy
      * The labels_hierarchy
      */
-    @JsonProperty("labels_hierarchy")
     public void setLabelsHierarchy(List<Object> labelsHierarchy) {
         this.labelsHierarchy = labelsHierarchy;
     }
@@ -395,7 +364,6 @@ public class Product implements Serializable{
      * @return
      * The categoriesHierarchy
      */
-    @JsonProperty("categories_hierarchy")
     public List<String> getCategoriesHierarchy() {
         return categoriesHierarchy;
     }
@@ -405,7 +373,6 @@ public class Product implements Serializable{
      * @param categoriesHierarchy
      * The categories_hierarchy
      */
-    @JsonProperty("categories_hierarchy")
     public void setCategoriesHierarchy(List<String> categoriesHierarchy) {
         this.categoriesHierarchy = categoriesHierarchy;
     }
@@ -420,7 +387,6 @@ public class Product implements Serializable{
      * @return
      * The pnnsGroups1
      */
-    @JsonProperty("pnns_groups_1")
     public String getPnnsGroups1() {
         return pnnsGroups1;
     }
@@ -430,7 +396,6 @@ public class Product implements Serializable{
      * @param pnnsGroups1
      * The pnns_groups_1
      */
-    @JsonProperty("pnns_groups_1")
     public void setPnnsGroups1(String pnnsGroups1) {
         this.pnnsGroups1 = pnnsGroups1;
     }
@@ -445,7 +410,6 @@ public class Product implements Serializable{
      * @return
      * The checkersTags
      */
-    @JsonProperty("checkers_tags")
     public List<Object> getCheckersTags() {
         return checkersTags;
     }
@@ -455,7 +419,6 @@ public class Product implements Serializable{
      * @param checkersTags
      * The checkers_tags
      */
-    @JsonProperty("checkers_tags")
     public void setCheckersTags(List<Object> checkersTags) {
         this.checkersTags = checkersTags;
     }
@@ -470,7 +433,6 @@ public class Product implements Serializable{
      * @return
      * The statesTags
      */
-    @JsonProperty("states_tags")
     public List<String> getStatesTags() {
         return statesTags;
     }
@@ -480,7 +442,6 @@ public class Product implements Serializable{
      * @param statesTags
      * The states_tags
      */
-    @JsonProperty("states_tags")
     public void setStatesTags(List<String> statesTags) {
         this.statesTags = statesTags;
     }
@@ -495,7 +456,6 @@ public class Product implements Serializable{
      * @return
      * The labelsTags
      */
-    @JsonProperty("labels_tags")
     public List<Object> getLabelsTags() {
         return labelsTags;
     }
@@ -505,7 +465,6 @@ public class Product implements Serializable{
      * @param labelsTags
      * The labels_tags
      */
-    @JsonProperty("labels_tags")
     public void setLabelsTags(List<Object> labelsTags) {
         this.labelsTags = labelsTags;
     }
@@ -520,7 +479,6 @@ public class Product implements Serializable{
      * @return
      * The imageSmallUrl
      */
-    @JsonProperty("image_small_url")
     public String getImageSmallUrl() {
         return imageSmallUrl;
     }
@@ -530,7 +488,6 @@ public class Product implements Serializable{
      * @param imageSmallUrl
      * The image_small_url
      */
-    @JsonProperty("image_small_url")
     public void setImageSmallUrl(String imageSmallUrl) {
         this.imageSmallUrl = imageSmallUrl;
     }
@@ -545,7 +502,6 @@ public class Product implements Serializable{
      * @return
      * The imageFrontUrl
      */
-    @JsonProperty("image_front_url")
     public String getImageFrontUrl() {
         return imageFrontUrl;
     }
@@ -555,7 +511,6 @@ public class Product implements Serializable{
      * @param imageFrontUrl
      * The image_front_url
      */
-    @JsonProperty("image_front_url")
     public void setImageFrontUrl(String imageFrontUrl) {
         this.imageFrontUrl = imageFrontUrl;
     }
@@ -570,7 +525,6 @@ public class Product implements Serializable{
      * @return
      * The imageIngredientsUrl
      */
-    @JsonProperty("image_ingredients_url")
     public String getImageIngredientsUrl() {
         return imageIngredientsUrl;
     }
@@ -580,7 +534,6 @@ public class Product implements Serializable{
      * @param imageIngredientsUrl
      * The image_ingredients_url
      */
-    @JsonProperty("image_ingredients_url")
     public void setImageIngredientsUrl(String imageIngredientsUrl) {
         this.imageIngredientsUrl = imageIngredientsUrl;
     }
@@ -595,7 +548,6 @@ public class Product implements Serializable{
      * @return
      * The imageNutritionUrl
      */
-    @JsonProperty("image_nutrition_url")
     public String getImageNutritionUrl() {
         return imageNutritionUrl;
     }
@@ -605,7 +557,6 @@ public class Product implements Serializable{
      * @param imageNutritionUrl
      * The image_small_url
      */
-    @JsonProperty("image_nutrition_url")
     public void setImageNutritionUrl(String imageNutritionUrl) {
         this.imageNutritionUrl = imageNutritionUrl;
     }
@@ -620,7 +571,6 @@ public class Product implements Serializable{
      * @return
      * The url
      */
-    @JsonProperty("url")
     public String getUrl() {
         return url;
     }
@@ -630,7 +580,6 @@ public class Product implements Serializable{
      * @param url
      * The url
      */
-    @JsonProperty("url")
     public void url(String url) {
         this.url = url;
     }
@@ -645,7 +594,6 @@ public class Product implements Serializable{
      * @return
      * The code
      */
-    @JsonProperty("code")
     public String getCode() {
         return code;
     }
@@ -655,7 +603,6 @@ public class Product implements Serializable{
      * @param code
      * The code
      */
-    @JsonProperty("code")
     public void setCode(String code) {
         this.code = code;
     }
@@ -670,7 +617,6 @@ public class Product implements Serializable{
      * @return
      * The tracesTags
      */
-    @JsonProperty("traces_tags")
     public List<String> getTracesTags() {
         return tracesTags;
     }
@@ -680,7 +626,6 @@ public class Product implements Serializable{
      * @param tracesTags
      * The traces_tags
      */
-    @JsonProperty("traces_tags")
     public void setTracesTags(List<String> tracesTags) {
         this.tracesTags = tracesTags;
     }
@@ -695,7 +640,6 @@ public class Product implements Serializable{
      * @return
      * The lang
      */
-    @JsonProperty("lang")
     public String getLang() {
         return lang;
     }
@@ -705,7 +649,6 @@ public class Product implements Serializable{
      * @param lang
      * The lang
      */
-    @JsonProperty("lang")
     public void setLang(String lang) {
         this.lang = lang;
     }
@@ -720,7 +663,6 @@ public class Product implements Serializable{
      * @return
      * The photographers
      */
-    @JsonProperty("photographers")
     public List<String> getPhotographers() {
         return photographers;
     }
@@ -730,7 +672,6 @@ public class Product implements Serializable{
      * @param photographers
      * The photographers
      */
-    @JsonProperty("photographers")
     public void setPhotographers(List<String> photographers) {
         this.photographers = photographers;
     }
@@ -745,7 +686,6 @@ public class Product implements Serializable{
      * @return
      * The ingredientsThatMayBeFromPalmOilTags
      */
-    @JsonProperty("ingredients_that_may_be_from_palm_oil_tags")
     public List<String> getIngredientsThatMayBeFromPalmOilTags() {
         return ingredientsThatMayBeFromPalmOilTags;
     }
@@ -755,7 +695,6 @@ public class Product implements Serializable{
      * @param ingredientsThatMayBeFromPalmOilTags
      * The ingredients_that_may_be_from_palm_oil_tags
      */
-    @JsonProperty("ingredients_that_may_be_from_palm_oil_tags")
     public void setIngredientsThatMayBeFromPalmOilTags(List<String> ingredientsThatMayBeFromPalmOilTags) {
         this.ingredientsThatMayBeFromPalmOilTags = ingredientsThatMayBeFromPalmOilTags;
     }
@@ -770,7 +709,6 @@ public class Product implements Serializable{
      * @return
      * The genericName
      */
-    @JsonProperty("generic_name")
     public String getGenericName() {
         return genericName;
     }
@@ -780,7 +718,6 @@ public class Product implements Serializable{
      * @param genericName
      * The generic_name
      */
-    @JsonProperty("generic_name")
     public void setGenericName(String genericName) {
         this.genericName = genericName;
     }
@@ -795,7 +732,6 @@ public class Product implements Serializable{
      * @return
      * The oldAdditivesTags
      */
-    @JsonProperty("old_additives_tags")
     public List<String> getOldAdditivesTags() {
         return oldAdditivesTags;
     }
@@ -805,7 +741,6 @@ public class Product implements Serializable{
      * @param oldAdditivesTags
      * The old_additives_tags
      */
-    @JsonProperty("old_additives_tags")
     public void setOldAdditivesTags(List<String> oldAdditivesTags) {
         this.oldAdditivesTags = oldAdditivesTags;
     }
@@ -820,7 +755,6 @@ public class Product implements Serializable{
      * @return
      * The rev
      */
-    @JsonProperty("rev")
     public long getRev() {
         return rev;
     }
@@ -830,7 +764,6 @@ public class Product implements Serializable{
      * @param rev
      * The rev
      */
-    @JsonProperty("rev")
     public void setRev(long rev) {
         this.rev = rev;
     }
@@ -845,7 +778,6 @@ public class Product implements Serializable{
      * @return
      * The Keywords
      */
-    @JsonProperty("_keywords")
     public List<String> getKeywords() {
         return Keywords;
     }
@@ -855,7 +787,6 @@ public class Product implements Serializable{
      * @param Keywords
      * The _keywords
      */
-    @JsonProperty("_keywords")
     public void setKeywords(List<String> Keywords) {
         this.Keywords = Keywords;
     }
@@ -870,7 +801,6 @@ public class Product implements Serializable{
      * @return
      * The embCodes
      */
-    @JsonProperty("emb_codes")
     public String getEmbCodes() {
         return embCodes;
     }
@@ -880,7 +810,6 @@ public class Product implements Serializable{
      * @param embCodes
      * The emb_codes
      */
-    @JsonProperty("emb_codes")
     public void setEmbCodes(String embCodes) {
         this.embCodes = embCodes;
     }
@@ -895,7 +824,6 @@ public class Product implements Serializable{
      * @return
      * The editors
      */
-    @JsonProperty("editors")
     public List<String> getEditors() {
         return editors;
     }
@@ -905,7 +833,6 @@ public class Product implements Serializable{
      * @param editors
      * The editors
      */
-    @JsonProperty("editors")
     public void setEditors(List<String> editors) {
         this.editors = editors;
     }
@@ -920,7 +847,6 @@ public class Product implements Serializable{
      * @return
      * The maxImgid
      */
-    @JsonProperty("max_imgid")
     public String getMaxImgid() {
         return maxImgid;
     }
@@ -930,7 +856,6 @@ public class Product implements Serializable{
      * @param maxImgid
      * The max_imgid
      */
-    @JsonProperty("max_imgid")
     public void setMaxImgid(String maxImgid) {
         this.maxImgid = maxImgid;
     }
@@ -945,7 +870,6 @@ public class Product implements Serializable{
      * @return
      * The additivesTags
      */
-    @JsonProperty("additives_tags")
     public List<String> getAdditivesTags() {
         return additivesTags;
     }
@@ -955,7 +879,6 @@ public class Product implements Serializable{
      * @param additivesTags
      * The additives_tags
      */
-    @JsonProperty("additives_tags")
     public void setAdditivesTags(List<String> additivesTags) {
         this.additivesTags = additivesTags;
     }
@@ -970,7 +893,6 @@ public class Product implements Serializable{
      * @return
      * The embCodesOrig
      */
-    @JsonProperty("emb_codes_orig")
     public String getEmbCodesOrig() {
         return embCodesOrig;
     }
@@ -980,7 +902,6 @@ public class Product implements Serializable{
      * @param embCodesOrig
      * The emb_codes_orig
      */
-    @JsonProperty("emb_codes_orig")
     public void setEmbCodesOrig(String embCodesOrig) {
         this.embCodesOrig = embCodesOrig;
     }
@@ -995,7 +916,6 @@ public class Product implements Serializable{
      * @return
      * The nutrientLevelsTags
      */
-    @JsonProperty("nutrient_levels_tags")
     public List<String> getNutrientLevelsTags() {
         return nutrientLevelsTags;
     }
@@ -1005,7 +925,6 @@ public class Product implements Serializable{
      * @param nutrientLevelsTags
      * The nutrient_levels_tags
      */
-    @JsonProperty("nutrient_levels_tags")
     public void setNutrientLevelsTags(List<String> nutrientLevelsTags) {
         this.nutrientLevelsTags = nutrientLevelsTags;
     }
@@ -1020,7 +939,6 @@ public class Product implements Serializable{
      * @return
      * The informersTags
      */
-    @JsonProperty("informers_tags")
     public List<String> getInformersTags() {
         return informersTags;
     }
@@ -1030,7 +948,6 @@ public class Product implements Serializable{
      * @param informersTags
      * The informers_tags
      */
-    @JsonProperty("informers_tags")
     public void setInformersTags(List<String> informersTags) {
         this.informersTags = informersTags;
     }
@@ -1045,7 +962,6 @@ public class Product implements Serializable{
      * @return
      * The photographersTags
      */
-    @JsonProperty("photographers_tags")
     public List<String> getPhotographersTags() {
         return photographersTags;
     }
@@ -1055,7 +971,6 @@ public class Product implements Serializable{
      * @param photographersTags
      * The photographers_tags
      */
-    @JsonProperty("photographers_tags")
     public void setPhotographersTags(List<String> photographersTags) {
         this.photographersTags = photographersTags;
     }
@@ -1070,7 +985,6 @@ public class Product implements Serializable{
      * @return
      * The additivesN
      */
-    @JsonProperty("additives_n")
     public long getAdditivesN() {
         return additivesN;
     }
@@ -1080,7 +994,6 @@ public class Product implements Serializable{
      * @param additivesN
      * The additives_n
      */
-    @JsonProperty("additives_n")
     public void setAdditivesN(long additivesN) {
         this.additivesN = additivesN;
     }
@@ -1095,7 +1008,6 @@ public class Product implements Serializable{
      * @return
      * The allergensHierarchy
      */
-    @JsonProperty("allergens_hierarchy")
     public List<String> getAllergensHierarchy() {
         return allergensHierarchy;
     }
@@ -1105,7 +1017,6 @@ public class Product implements Serializable{
      * @param allergensHierarchy
      * The allergens_hierarchy
      */
-    @JsonProperty("allergens_hierarchy")
     public void setAllergensHierarchy(List<String> allergensHierarchy) {
         this.allergensHierarchy = allergensHierarchy;
     }
@@ -1121,7 +1032,6 @@ public class Product implements Serializable{
      * @return
      * The pnnsGroups2Tags
      */
-    @JsonProperty("pnns_groups_2_tags")
     public List<String> getPnnsGroups2Tags() {
         return pnnsGroups2Tags;
     }
@@ -1131,7 +1041,6 @@ public class Product implements Serializable{
      * @param pnnsGroups2Tags
      * The pnns_groups_2_tags
      */
-    @JsonProperty("pnns_groups_2_tags")
     public void setPnnsGroups2Tags(List<String> pnnsGroups2Tags) {
         this.pnnsGroups2Tags = pnnsGroups2Tags;
     }
@@ -1146,7 +1055,6 @@ public class Product implements Serializable{
      * @return
      * The unknownNutrientsTags
      */
-    @JsonProperty("unknown_nutrients_tags")
     public List<Object> getUnknownNutrientsTags() {
         return unknownNutrientsTags;
     }
@@ -1156,7 +1064,6 @@ public class Product implements Serializable{
      * @param unknownNutrientsTags
      * The unknown_nutrients_tags
      */
-    @JsonProperty("unknown_nutrients_tags")
     public void setUnknownNutrientsTags(List<Object> unknownNutrientsTags) {
         this.unknownNutrientsTags = unknownNutrientsTags;
     }
@@ -1171,7 +1078,6 @@ public class Product implements Serializable{
      * @return
      * The packagingTags
      */
-    @JsonProperty("packaging_tags")
     public List<String> getPackagingTags() {
         return packagingTags;
     }
@@ -1181,7 +1087,6 @@ public class Product implements Serializable{
      * @param packagingTags
      * The packaging_tags
      */
-    @JsonProperty("packaging_tags")
     public void setPackagingTags(List<String> packagingTags) {
         this.packagingTags = packagingTags;
     }
@@ -1196,7 +1101,6 @@ public class Product implements Serializable{
      * @return
      * The manufacturingPlaces
      */
-    @JsonProperty("manufacturing_places")
     public String getManufacturingPlaces() {
         return manufacturingPlaces;
     }
@@ -1206,7 +1110,6 @@ public class Product implements Serializable{
      * @param manufacturingPlaces
      * The manufacturing_places
      */
-    @JsonProperty("manufacturing_places")
     public void setManufacturingPlaces(String manufacturingPlaces) {
         this.manufacturingPlaces = manufacturingPlaces;
     }
@@ -1221,7 +1124,6 @@ public class Product implements Serializable{
      * @return
      * The uniqueScansN
      */
-    @JsonProperty("unique_scans_n")
     public long getUniqueScansN() {
         return uniqueScansN;
     }
@@ -1231,7 +1133,6 @@ public class Product implements Serializable{
      * @param uniqueScansN
      * The unique_scans_n
      */
-    @JsonProperty("unique_scans_n")
     public void setUniqueScansN(long uniqueScansN) {
         this.uniqueScansN = uniqueScansN;
     }
@@ -1246,7 +1147,6 @@ public class Product implements Serializable{
      * @return
      * The nutriments
      */
-    @JsonProperty("nutriments")
     public Nutriments getNutriments() {
         return nutriments;
     }
@@ -1256,7 +1156,6 @@ public class Product implements Serializable{
      * @param nutriments
      * The nutriments
      */
-    @JsonProperty("nutriments")
     public void setNutriments(Nutriments nutriments) {
         this.nutriments = nutriments;
     }
@@ -1271,7 +1170,6 @@ public class Product implements Serializable{
      * @return
      * The countriesTags
      */
-    @JsonProperty("countries_tags")
     public List<String> getCountriesTags() {
         return countriesTags;
     }
@@ -1281,7 +1179,6 @@ public class Product implements Serializable{
      * @param countriesTags
      * The countries_tags
      */
-    @JsonProperty("countries_tags")
     public void setCountriesTags(List<String> countriesTags) {
         this.countriesTags = countriesTags;
     }
@@ -1296,7 +1193,6 @@ public class Product implements Serializable{
      * @return
      * The ingredientsFromPalmOilTags
      */
-    @JsonProperty("ingredients_from_palm_oil_tags")
     public List<Object> getIngredientsFromPalmOilTags() {
         return ingredientsFromPalmOilTags;
     }
@@ -1306,7 +1202,6 @@ public class Product implements Serializable{
      * @param ingredientsFromPalmOilTags
      * The ingredients_from_palm_oil_tags
      */
-    @JsonProperty("ingredients_from_palm_oil_tags")
     public void setIngredientsFromPalmOilTags(List<Object> ingredientsFromPalmOilTags) {
         this.ingredientsFromPalmOilTags = ingredientsFromPalmOilTags;
     }
@@ -1321,7 +1216,6 @@ public class Product implements Serializable{
      * @return
      * The purchasePlaces
      */
-    @JsonProperty("purchase_places")
     public String getPurchasePlaces() {
         return purchasePlaces;
     }
@@ -1331,7 +1225,6 @@ public class Product implements Serializable{
      * @param purchasePlaces
      * The purchase_places
      */
-    @JsonProperty("purchase_places")
     public void setPurchasePlaces(String purchasePlaces) {
         this.purchasePlaces = purchasePlaces;
     }
@@ -1346,7 +1239,6 @@ public class Product implements Serializable{
      * @return
      * The embCodesTags
      */
-    @JsonProperty("emb_codes_tags")
     public List<Object> getEmbCodesTags() {
         return embCodesTags;
     }
@@ -1356,7 +1248,6 @@ public class Product implements Serializable{
      * @param embCodesTags
      * The emb_codes_tags
      */
-    @JsonProperty("emb_codes_tags")
     public void setEmbCodesTags(List<Object> embCodesTags) {
         this.embCodesTags = embCodesTags;
     }
@@ -1371,7 +1262,6 @@ public class Product implements Serializable{
      * @return
      * The brandsTags
      */
-    @JsonProperty("brands_tags")
     public List<String> getBrandsTags() {
         return brandsTags;
     }
@@ -1381,7 +1271,6 @@ public class Product implements Serializable{
      * @param brandsTags
      * The brands_tags
      */
-    @JsonProperty("brands_tags")
     public void setBrandsTags(List<String> brandsTags) {
         this.brandsTags = brandsTags;
     }
@@ -1396,7 +1285,6 @@ public class Product implements Serializable{
      * @return
      * The pnnsGroups2
      */
-    @JsonProperty("pnns_groups_2")
     public String getPnnsGroups2() {
         return pnnsGroups2;
     }
@@ -1406,7 +1294,6 @@ public class Product implements Serializable{
      * @param pnnsGroups2
      * The pnns_groups_2
      */
-    @JsonProperty("pnns_groups_2")
     public void setPnnsGroups2(String pnnsGroups2) {
         this.pnnsGroups2 = pnnsGroups2;
     }
@@ -1421,7 +1308,6 @@ public class Product implements Serializable{
      * @return
      * The countriesHierarchy
      */
-    @JsonProperty("countries_hierarchy")
     public List<String> getCountriesHierarchy() {
         return countriesHierarchy;
     }
@@ -1431,7 +1317,6 @@ public class Product implements Serializable{
      * @param countriesHierarchy
      * The countries_hierarchy
      */
-    @JsonProperty("countries_hierarchy")
     public void setCountriesHierarchy(List<String> countriesHierarchy) {
         this.countriesHierarchy = countriesHierarchy;
     }
@@ -1446,7 +1331,6 @@ public class Product implements Serializable{
      * @return
      * The traces
      */
-    @JsonProperty("traces")
     public String getTraces() {
         return traces;
     }
@@ -1456,7 +1340,6 @@ public class Product implements Serializable{
      * @param traces
      * The traces
      */
-    @JsonProperty("traces")
     public void setTraces(String traces) {
         this.traces = traces;
     }
@@ -1471,7 +1354,6 @@ public class Product implements Serializable{
      * @return
      * The categories
      */
-    @JsonProperty("categories")
     public String getCategories() {
         return categories;
     }
@@ -1481,7 +1363,6 @@ public class Product implements Serializable{
      * @param categories
      * The categories
      */
-    @JsonProperty("categories")
     public void setCategories(String categories) {
         this.categories = categories;
     }
@@ -1496,7 +1377,6 @@ public class Product implements Serializable{
      * @return
      * The ingredientsText
      */
-    @JsonProperty("ingredients_text")
     public String getIngredientsText() {
         return ingredientsText;
     }
@@ -1506,7 +1386,6 @@ public class Product implements Serializable{
      * @param ingredientsText
      * The ingredients_text
      */
-    @JsonProperty("ingredients_text")
     public void setIngredientsText(String ingredientsText) {
         this.ingredientsText = ingredientsText;
     }
@@ -1521,7 +1400,6 @@ public class Product implements Serializable{
      * @return
      * The createdT
      */
-    @JsonProperty("created_t")
     public long getCreatedT() {
         return createdT;
     }
@@ -1531,7 +1409,6 @@ public class Product implements Serializable{
      * @param createdT
      * The created_t
      */
-    @JsonProperty("created_t")
     public void setCreatedT(long createdT) {
         this.createdT = createdT;
     }
@@ -1546,7 +1423,6 @@ public class Product implements Serializable{
      * @return
      * The productName
      */
-    @JsonProperty("product_name")
     public String getProductName() {
         return productName;
     }
@@ -1556,7 +1432,6 @@ public class Product implements Serializable{
      * @param productName
      * The product_name
      */
-    @JsonProperty("product_name")
     public void setProductName(String productName) {
         this.productName = productName;
     }
@@ -1571,7 +1446,6 @@ public class Product implements Serializable{
      * @return
      * The creator
      */
-    @JsonProperty("creator")
     public String getCreator() {
         return creator;
     }
@@ -1581,7 +1455,6 @@ public class Product implements Serializable{
      * @param creator
      * The creator
      */
-    @JsonProperty("creator")
     public void setCreator(String creator) {
         this.creator = creator;
     }
@@ -1596,7 +1469,6 @@ public class Product implements Serializable{
      * @return
      * The ingredientsFromOrThatMayBeFromPalmOilN
      */
-    @JsonProperty("ingredients_from_or_that_may_be_from_palm_oil_n")
     public long getIngredientsFromOrThatMayBeFromPalmOilN() {
         return ingredientsFromOrThatMayBeFromPalmOilN;
     }
@@ -1606,7 +1478,6 @@ public class Product implements Serializable{
      * @param ingredientsFromOrThatMayBeFromPalmOilN
      * The ingredients_from_or_that_may_be_from_palm_oil_n
      */
-    @JsonProperty("ingredients_from_or_that_may_be_from_palm_oil_n")
     public void setIngredientsFromOrThatMayBeFromPalmOilN(long ingredientsFromOrThatMayBeFromPalmOilN) {
         this.ingredientsFromOrThatMayBeFromPalmOilN = ingredientsFromOrThatMayBeFromPalmOilN;
     }
@@ -1621,7 +1492,10 @@ public class Product implements Serializable{
      * @return
      * The servingSize
      */
-    @JsonProperty("serving_size")
+
+
+
+
     public String getServingSize() {
         return servingSize;
     }
@@ -1631,7 +1505,7 @@ public class Product implements Serializable{
      * @param servingSize
      * The serving_size
      */
-    @JsonProperty("serving_size")
+
     public void setServingSize(String servingSize) {
         this.servingSize = servingSize;
     }
@@ -1646,7 +1520,6 @@ public class Product implements Serializable{
      * @return
      * The noNutritionData
      */
-    @JsonProperty("no_nutrition_data")
     public Object getNoNutritionData() {
         return noNutritionData;
     }
@@ -1656,7 +1529,6 @@ public class Product implements Serializable{
      * @param noNutritionData
      * The no_nutrition_data
      */
-    @JsonProperty("no_nutrition_data")
     public void setNoNutritionData(Object noNutritionData) {
         this.noNutritionData = noNutritionData;
     }
@@ -1671,7 +1543,6 @@ public class Product implements Serializable{
      * @return
      * The completedT
      */
-    @JsonProperty("completed_t")
     public long getCompletedT() {
         return completedT;
     }
@@ -1681,7 +1552,6 @@ public class Product implements Serializable{
      * @param completedT
      * The completed_t
      */
-    @JsonProperty("completed_t")
     public void setCompletedT(long completedT) {
         this.completedT = completedT;
     }
@@ -1696,7 +1566,6 @@ public class Product implements Serializable{
      * @return
      * The lastModifiedBy
      */
-    @JsonProperty("last_modified_by")
     public String getLastModifiedBy() {
         return lastModifiedBy;
     }
@@ -1706,7 +1575,7 @@ public class Product implements Serializable{
      * @param lastModifiedBy
      * The last_modified_by
      */
-    @JsonProperty("last_modified_by")
+
     public void setLastModifiedBy(String lastModifiedBy) {
         this.lastModifiedBy = lastModifiedBy;
     }
@@ -1721,7 +1590,6 @@ public class Product implements Serializable{
      * @return
      * The allergens
      */
-    @JsonProperty("allergens")
     public String getAllergens() {
         return allergens;
     }
@@ -1731,7 +1599,6 @@ public class Product implements Serializable{
      * @param allergens
      * The allergens
      */
-    @JsonProperty("allergens")
     public void setAllergens(String allergens) {
         this.allergens = allergens;
     }
@@ -1746,7 +1613,6 @@ public class Product implements Serializable{
      * @return
      * The newAdditivesN
      */
-    @JsonProperty("new_additives_n")
     public long getNewAdditivesN() {
         return newAdditivesN;
     }
@@ -1756,7 +1622,6 @@ public class Product implements Serializable{
      * @param newAdditivesN
      * The new_additives_n
      */
-    @JsonProperty("new_additives_n")
     public void setNewAdditivesN(long newAdditivesN) {
         this.newAdditivesN = newAdditivesN;
     }
@@ -1771,7 +1636,6 @@ public class Product implements Serializable{
      * @return
      * The origins
      */
-    @JsonProperty("origins")
     public String getOrigins() {
         return origins;
     }
@@ -1781,7 +1645,6 @@ public class Product implements Serializable{
      * @param origins
      * The origins
      */
-    @JsonProperty("origins")
     public void setOrigins(String origins) {
         this.origins = origins;
     }
@@ -1796,7 +1659,6 @@ public class Product implements Serializable{
      * @return
      * The stores
      */
-    @JsonProperty("stores")
     public String getStores() {
         return stores;
     }
@@ -1806,7 +1668,6 @@ public class Product implements Serializable{
      * @param stores
      * The stores
      */
-    @JsonProperty("stores")
     public void setStores(String stores) {
         this.stores = stores;
     }
@@ -1821,7 +1682,6 @@ public class Product implements Serializable{
      * @return
      * The nutritionGradeFr
      */
-    @JsonProperty("nutrition_grade_fr")
     public String getNutritionGradeFr() {
         return nutritionGradeFr;
     }
@@ -1831,7 +1691,6 @@ public class Product implements Serializable{
      * @param nutritionGradeFr
      * The nutrition_grade_fr
      */
-    @JsonProperty("nutrition_grade_fr")
     public void setNutritionGradeFr(String nutritionGradeFr) {
         this.nutritionGradeFr = nutritionGradeFr;
     }
@@ -1846,7 +1705,6 @@ public class Product implements Serializable{
      * @return
      * The nutrientLevels
      */
-    @JsonProperty("nutrient_levels")
     public NutrientLevels getNutrientLevels() {
         return nutrientLevels;
     }
@@ -1856,7 +1714,6 @@ public class Product implements Serializable{
      * @param nutrientLevels
      * The nutrient_levels
      */
-    @JsonProperty("nutrient_levels")
     public void setNutrientLevels(NutrientLevels nutrientLevels) {
         this.nutrientLevels = nutrientLevels;
     }
@@ -1871,7 +1728,6 @@ public class Product implements Serializable{
      * @return
      * The storesTags
      */
-    @JsonProperty("stores_tags")
     public List<Object> getStoresTags() {
         return storesTags;
     }
@@ -1881,7 +1737,6 @@ public class Product implements Serializable{
      * @param storesTags
      * The stores_tags
      */
-    @JsonProperty("stores_tags")
     public void setStoresTags(List<Object> storesTags) {
         this.storesTags = storesTags;
     }
@@ -1896,7 +1751,6 @@ public class Product implements Serializable{
      * @return
      * The countries
      */
-    @JsonProperty("countries")
     public String getCountries() {
         return countries;
     }
@@ -1906,7 +1760,6 @@ public class Product implements Serializable{
      * @param countries
      * The countries
      */
-    @JsonProperty("countries")
     public void setCountries(String countries) {
         this.countries = countries;
     }
@@ -1921,7 +1774,6 @@ public class Product implements Serializable{
      * @return
      * The purchasePlacesTags
      */
-    @JsonProperty("purchase_places_tags")
     public List<Object> getPurchasePlacesTags() {
         return purchasePlacesTags;
     }
@@ -1931,7 +1783,6 @@ public class Product implements Serializable{
      * @param purchasePlacesTags
      * The purchase_places_tags
      */
-    @JsonProperty("purchase_places_tags")
     public void setPurchasePlacesTags(List<Object> purchasePlacesTags) {
         this.purchasePlacesTags = purchasePlacesTags;
     }
@@ -1946,7 +1797,6 @@ public class Product implements Serializable{
      * @return
      * The fruitsVegetablesNuts100gEstimate
      */
-    @JsonProperty("fruits-vegetables-nuts_100g_estimate")
     public double getFruitsVegetablesNuts100gEstimate() {
         return fruitsVegetablesNuts100gEstimate;
     }
@@ -1956,7 +1806,6 @@ public class Product implements Serializable{
      * @param fruitsVegetablesNuts100gEstimate
      * The fruits-vegetables-nuts_100g_estimate
      */
-    @JsonProperty("fruits-vegetables-nuts_100g_estimate")
     public void setFruitsVegetablesNuts100gEstimate(double fruitsVegetablesNuts100gEstimate) {
         this.fruitsVegetablesNuts100gEstimate = fruitsVegetablesNuts100gEstimate;
     }
@@ -1971,7 +1820,6 @@ public class Product implements Serializable{
      * @return
      * The interfaceVersionModified
      */
-    @JsonProperty("interface_version_modified")
     public String getInterfaceVersionModified() {
         return interfaceVersionModified;
     }
@@ -1981,7 +1829,6 @@ public class Product implements Serializable{
      * @param interfaceVersionModified
      * The interface_version_modified
      */
-    @JsonProperty("interface_version_modified")
     public void setInterfaceVersionModified(String interfaceVersionModified) {
         this.interfaceVersionModified = interfaceVersionModified;
     }
@@ -1996,7 +1843,6 @@ public class Product implements Serializable{
      * @return
      * The sortkey
      */
-    @JsonProperty("sortkey")
     public long getSortkey() {
         return sortkey;
     }
@@ -2006,7 +1852,6 @@ public class Product implements Serializable{
      * @param sortkey
      * The sortkey
      */
-    @JsonProperty("sortkey")
     public void setSortkey(long sortkey) {
         this.sortkey = sortkey;
     }
@@ -2021,7 +1866,6 @@ public class Product implements Serializable{
      * @return
      * The lastModifiedT
      */
-    @JsonProperty("last_modified_t")
     public long getLastModifiedT() {
         return lastModifiedT;
     }
@@ -2031,7 +1875,6 @@ public class Product implements Serializable{
      * @param lastModifiedT
      * The last_modified_t
      */
-    @JsonProperty("last_modified_t")
     public void setLastModifiedT(long lastModifiedT) {
         this.lastModifiedT = lastModifiedT;
     }
@@ -2046,7 +1889,6 @@ public class Product implements Serializable{
      * @return
      * The nutritionScoreDebug
      */
-    @JsonProperty("nutrition_score_debug")
     public String getNutritionScoreDebug() {
         return nutritionScoreDebug;
     }
@@ -2056,7 +1898,6 @@ public class Product implements Serializable{
      * @param nutritionScoreDebug
      * The nutrition_score_debug
      */
-    @JsonProperty("nutrition_score_debug")
     public void setNutritionScoreDebug(String nutritionScoreDebug) {
         this.nutritionScoreDebug = nutritionScoreDebug;
     }
@@ -2071,7 +1912,6 @@ public class Product implements Serializable{
      * @return
      * The countries20131227
      */
-    @JsonProperty("countries.20131227")
     public Object getCountries20131227() {
         return countries20131227;
     }
@@ -2081,7 +1921,6 @@ public class Product implements Serializable{
      * @param countries20131227
      * The countries.20131227
      */
-    @JsonProperty("countries.20131227")
     public void setCountries20131227(Object countries20131227) {
         this.countries20131227 = countries20131227;
     }
@@ -2096,7 +1935,6 @@ public class Product implements Serializable{
      * @return
      * The correctorsTags
      */
-    @JsonProperty("correctors_tags")
     public List<String> getCorrectorsTags() {
         return correctorsTags;
     }
@@ -2106,7 +1944,6 @@ public class Product implements Serializable{
      * @param correctorsTags
      * The correctors_tags
      */
-    @JsonProperty("correctors_tags")
     public void setCorrectorsTags(List<String> correctorsTags) {
         this.correctorsTags = correctorsTags;
     }
@@ -2121,7 +1958,6 @@ public class Product implements Serializable{
      * @return
      * The newAdditivesDebug
      */
-    @JsonProperty("new_additives_debug")
     public String getNewAdditivesDebug() {
         return newAdditivesDebug;
     }
@@ -2131,7 +1967,6 @@ public class Product implements Serializable{
      * @param newAdditivesDebug
      * The new_additives_debug
      */
-    @JsonProperty("new_additives_debug")
     public void setNewAdditivesDebug(String newAdditivesDebug) {
         this.newAdditivesDebug = newAdditivesDebug;
     }
@@ -2146,7 +1981,6 @@ public class Product implements Serializable{
      * @return
      * The correctors
      */
-    @JsonProperty("correctors")
     public List<String> getCorrectors() {
         return correctors;
     }
@@ -2156,7 +1990,6 @@ public class Product implements Serializable{
      * @param correctors
      * The correctors
      */
-    @JsonProperty("correctors")
     public void setCorrectors(List<String> correctors) {
         this.correctors = correctors;
     }
@@ -2171,7 +2004,6 @@ public class Product implements Serializable{
      * @return
      * The brands
      */
-    @JsonProperty("brands")
     public String getBrands() {
         return brands;
     }
@@ -2181,7 +2013,6 @@ public class Product implements Serializable{
      * @param brands
      * The brands
      */
-    @JsonProperty("brands")
     public void setBrands(String brands) {
         this.brands = brands;
     }
@@ -2196,7 +2027,6 @@ public class Product implements Serializable{
      * @return
      * The ingredientsTags
      */
-    @JsonProperty("ingredients_tags")
     public List<String> getIngredientsTags() {
         return ingredientsTags;
     }
@@ -2206,7 +2036,6 @@ public class Product implements Serializable{
      * @param ingredientsTags
      * The ingredients_tags
      */
-    @JsonProperty("ingredients_tags")
     public void setIngredientsTags(List<String> ingredientsTags) {
         this.ingredientsTags = ingredientsTags;
     }
@@ -2221,7 +2050,6 @@ public class Product implements Serializable{
      * @return
      * The newAdditivesTags
      */
-    @JsonProperty("new_additives_tags")
     public List<String> getNewAdditivesTags() {
         return newAdditivesTags;
     }
@@ -2231,7 +2059,6 @@ public class Product implements Serializable{
      * @param newAdditivesTags
      * The new_additives_tags
      */
-    @JsonProperty("new_additives_tags")
     public void setNewAdditivesTags(List<String> newAdditivesTags) {
         this.newAdditivesTags = newAdditivesTags;
     }
@@ -2246,7 +2073,6 @@ public class Product implements Serializable{
      * @return
      * The informers
      */
-    @JsonProperty("informers")
     public List<String> getInformers() {
         return informers;
     }
@@ -2256,7 +2082,6 @@ public class Product implements Serializable{
      * @param informers
      * The informers
      */
-    @JsonProperty("informers")
     public void setInformers(List<String> informers) {
         this.informers = informers;
     }
@@ -2271,7 +2096,6 @@ public class Product implements Serializable{
      * @return
      * The states
      */
-    @JsonProperty("states")
     public String getStates() {
         return states;
     }
@@ -2281,7 +2105,6 @@ public class Product implements Serializable{
      * @param states
      * The states
      */
-    @JsonProperty("states")
     public void setStates(String states) {
         this.states = states;
     }
@@ -2296,7 +2119,6 @@ public class Product implements Serializable{
      * @return
      * The entryDatesTags
      */
-    @JsonProperty("entry_dates_tags")
     public List<String> getEntryDatesTags() {
         return entryDatesTags;
     }
@@ -2306,7 +2128,6 @@ public class Product implements Serializable{
      * @param entryDatesTags
      * The entry_dates_tags
      */
-    @JsonProperty("entry_dates_tags")
     public void setEntryDatesTags(List<String> entryDatesTags) {
         this.entryDatesTags = entryDatesTags;
     }
@@ -2321,7 +2142,6 @@ public class Product implements Serializable{
      * @return
      * The nutritionGradesTags
      */
-    @JsonProperty("nutrition_grades_tags")
     public List<String> getNutritionGradesTags() {
         return nutritionGradesTags;
     }
@@ -2331,7 +2151,6 @@ public class Product implements Serializable{
      * @param nutritionGradesTags
      * The nutrition_grades_tags
      */
-    @JsonProperty("nutrition_grades_tags")
     public void setNutritionGradesTags(List<String> nutritionGradesTags) {
         this.nutritionGradesTags = nutritionGradesTags;
     }
@@ -2346,7 +2165,6 @@ public class Product implements Serializable{
      * @return
      * The ingredientsTextWithAllergens
      */
-    @JsonProperty("ingredients_text_with_allergens")
     public String getIngredientsTextWithAllergens() {
         return ingredientsTextWithAllergens;
     }
@@ -2356,7 +2174,6 @@ public class Product implements Serializable{
      * @param ingredientsTextWithAllergens
      * The ingredients_text_with_allergens
      */
-    @JsonProperty("ingredients_text_with_allergens")
     public void setIngredientsTextWithAllergens(String ingredientsTextWithAllergens) {
         this.ingredientsTextWithAllergens = ingredientsTextWithAllergens;
     }
@@ -2371,7 +2188,6 @@ public class Product implements Serializable{
      * @return
      * The packaging
      */
-    @JsonProperty("packaging")
     public String getPackaging() {
         return packaging;
     }
@@ -2381,7 +2197,6 @@ public class Product implements Serializable{
      * @param packaging
      * The packaging
      */
-    @JsonProperty("packaging")
     public void setPackaging(String packaging) {
         this.packaging = packaging;
     }
@@ -2396,7 +2211,6 @@ public class Product implements Serializable{
      * @return
      * The servingQuantity
      */
-    @JsonProperty("serving_quantity")
     public double getServingQuantity() {
         return servingQuantity;
     }
@@ -2406,7 +2220,6 @@ public class Product implements Serializable{
      * @param servingQuantity
      * The serving_quantity
      */
-    @JsonProperty("serving_quantity")
     public void setServingQuantity(double servingQuantity) {
         this.servingQuantity = servingQuantity;
     }
@@ -2421,7 +2234,6 @@ public class Product implements Serializable{
      * @return
      * The manufacturingPlacesTags
      */
-    @JsonProperty("manufacturing_places_tags")
     public List<Object> getManufacturingPlacesTags() {
         return manufacturingPlacesTags;
     }
@@ -2431,7 +2243,6 @@ public class Product implements Serializable{
      * @param manufacturingPlacesTags
      * The manufacturing_places_tags
      */
-    @JsonProperty("manufacturing_places_tags")
     public void setManufacturingPlacesTags(List<Object> manufacturingPlacesTags) {
         this.manufacturingPlacesTags = manufacturingPlacesTags;
     }
@@ -2446,7 +2257,6 @@ public class Product implements Serializable{
      * @return
      * The originsTags
      */
-    @JsonProperty("origins_tags")
     public List<String> getOriginsTags() {
         return originsTags;
     }
@@ -2456,7 +2266,6 @@ public class Product implements Serializable{
      * @param originsTags
      * The origins_tags
      */
-    @JsonProperty("origins_tags")
     public void setOriginsTags(List<String> originsTags) {
         this.originsTags = originsTags;
     }
@@ -2471,7 +2280,6 @@ public class Product implements Serializable{
      * @return
      * The scansN
      */
-    @JsonProperty("scans_n")
     public long getScansN() {
         return scansN;
     }
@@ -2481,7 +2289,6 @@ public class Product implements Serializable{
      * @param scansN
      * The scans_n
      */
-    @JsonProperty("scans_n")
     public void setScansN(long scansN) {
         this.scansN = scansN;
     }
@@ -2496,7 +2303,6 @@ public class Product implements Serializable{
      * @return
      * The nutritionDataPer
      */
-    @JsonProperty("nutrition_data_per")
     public String getNutritionDataPer() {
         return nutritionDataPer;
     }
@@ -2506,7 +2312,6 @@ public class Product implements Serializable{
      * @param nutritionDataPer
      * The nutrition_data_per
      */
-    @JsonProperty("nutrition_data_per")
     public void setNutritionDataPer(String nutritionDataPer) {
         this.nutritionDataPer = nutritionDataPer;
     }
@@ -2521,7 +2326,6 @@ public class Product implements Serializable{
      * @return
      * The labels
      */
-    @JsonProperty("labels")
     public String getLabels() {
         return labels;
     }
@@ -2531,7 +2335,6 @@ public class Product implements Serializable{
      * @param labels
      * The labels
      */
-    @JsonProperty("labels")
     public void setLabels(String labels) {
         this.labels = labels;
     }
@@ -2546,7 +2349,6 @@ public class Product implements Serializable{
      * @return
      * The link
      */
-    @JsonProperty("link")
     public String getLink() {
         return link;
     }
@@ -2556,7 +2358,6 @@ public class Product implements Serializable{
      * @param link
      * The link
      */
-    @JsonProperty("link")
     public void setLink(String link) {
         this.link = link;
     }
@@ -2571,7 +2372,6 @@ public class Product implements Serializable{
      * @return
      * The citiesTags
      */
-    @JsonProperty("cities_tags")
     public List<Object> getCitiesTags() {
         return citiesTags;
     }
@@ -2581,7 +2381,6 @@ public class Product implements Serializable{
      * @param citiesTags
      * The cities_tags
      */
-    @JsonProperty("cities_tags")
     public void setCitiesTags(List<Object> citiesTags) {
         this.citiesTags = citiesTags;
     }
@@ -2596,7 +2395,6 @@ public class Product implements Serializable{
      * @return
      * The embCodes20141016
      */
-    @JsonProperty("emb_codes_20141016")
     public String getEmbCodes20141016() {
         return embCodes20141016;
     }
@@ -2606,7 +2404,6 @@ public class Product implements Serializable{
      * @param embCodes20141016
      * The emb_codes_20141016
      */
-    @JsonProperty("emb_codes_20141016")
     public void setEmbCodes20141016(String embCodes20141016) {
         this.embCodes20141016 = embCodes20141016;
     }
@@ -2621,7 +2418,6 @@ public class Product implements Serializable{
      * @return
      * The categoriesTags
      */
-    @JsonProperty("categories_tags")
     public List<String> getCategoriesTags() {
         return categoriesTags;
     }
@@ -2631,7 +2427,6 @@ public class Product implements Serializable{
      * @param categoriesTags
      * The categories_tags
      */
-    @JsonProperty("categories_tags")
     public void setCategoriesTags(List<String> categoriesTags) {
         this.categoriesTags = categoriesTags;
     }
@@ -2646,7 +2441,6 @@ public class Product implements Serializable{
      * @return
      * The quantity
      */
-    @JsonProperty("quantity")
     public String getQuantity() {
         return quantity;
     }
@@ -2656,7 +2450,6 @@ public class Product implements Serializable{
      * @param quantity
      * The quantity
      */
-    @JsonProperty("quantity")
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
@@ -2671,7 +2464,6 @@ public class Product implements Serializable{
      * @return
      * The expirationDate
      */
-    @JsonProperty("expiration_date")
     public String getExpirationDate() {
         return expirationDate;
     }
@@ -2681,7 +2473,6 @@ public class Product implements Serializable{
      * @param expirationDate
      * The expiration_date
      */
-    @JsonProperty("expiration_date")
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
@@ -2696,7 +2487,6 @@ public class Product implements Serializable{
      * @return
      * The ingredientsThatMayBeFromPalmOilN
      */
-    @JsonProperty("ingredients_that_may_be_from_palm_oil_n")
     public long getIngredientsThatMayBeFromPalmOilN() {
         return ingredientsThatMayBeFromPalmOilN;
     }
@@ -2706,7 +2496,6 @@ public class Product implements Serializable{
      * @param ingredientsThatMayBeFromPalmOilN
      * The ingredients_that_may_be_from_palm_oil_n
      */
-    @JsonProperty("ingredients_that_may_be_from_palm_oil_n")
     public void setIngredientsThatMayBeFromPalmOilN(long ingredientsThatMayBeFromPalmOilN) {
         this.ingredientsThatMayBeFromPalmOilN = ingredientsThatMayBeFromPalmOilN;
     }
@@ -2721,7 +2510,6 @@ public class Product implements Serializable{
      * @return
      * The statesHierarchy
      */
-    @JsonProperty("states_hierarchy")
     public List<String> getStatesHierarchy() {
         return statesHierarchy;
     }
@@ -2731,7 +2519,6 @@ public class Product implements Serializable{
      * @param statesHierarchy
      * The states_hierarchy
      */
-    @JsonProperty("states_hierarchy")
     public void setStatesHierarchy(List<String> statesHierarchy) {
         this.statesHierarchy = statesHierarchy;
     }
@@ -2746,7 +2533,6 @@ public class Product implements Serializable{
      * @return
      * The embCode
      */
-    @JsonProperty("emb_code")
     public String getEmbCode() {
         return embCode;
     }
@@ -2756,7 +2542,6 @@ public class Product implements Serializable{
      * @param embCode
      * The emb_code
      */
-    @JsonProperty("emb_code")
     public void setEmbCode(String embCode) {
         this.embCode = embCode;
     }
@@ -2771,7 +2556,6 @@ public class Product implements Serializable{
      * @return
      * The allergensTags
      */
-    @JsonProperty("allergens_tags")
     public List<Object> getAllergensTags() {
         return allergensTags;
     }
@@ -2781,7 +2565,6 @@ public class Product implements Serializable{
      * @param allergensTags
      * The allergens_tags
      */
-    @JsonProperty("allergens_tags")
     public void setAllergensTags(List<Object> allergensTags) {
         this.allergensTags = allergensTags;
     }
@@ -2796,7 +2579,6 @@ public class Product implements Serializable{
      * @return
      * The ingredientsFromPalmOilN
      */
-    @JsonProperty("ingredients_from_palm_oil_n")
     public long getIngredientsFromPalmOilN() {
         return ingredientsFromPalmOilN;
     }
@@ -2806,7 +2588,7 @@ public class Product implements Serializable{
      * @param ingredientsFromPalmOilN
      * The ingredients_from_palm_oil_n
      */
-    @JsonProperty("ingredients_from_palm_oil_n")
+
     public void setIngredientsFromPalmOilN(long ingredientsFromPalmOilN) {
         this.ingredientsFromPalmOilN = ingredientsFromPalmOilN;
     }
@@ -2821,7 +2603,6 @@ public class Product implements Serializable{
      * @return
      * The imageUrl
      */
-    @JsonProperty("image_url")
     public String getImageUrl() {
         return imageUrl;
     }
@@ -2831,7 +2612,6 @@ public class Product implements Serializable{
      * @param imageUrl
      * The image_url
      */
-    @JsonProperty("image_url")
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
@@ -2846,7 +2626,6 @@ public class Product implements Serializable{
      * @return
      * The lc
      */
-    @JsonProperty("lc")
     public String getLc() {
         return lc;
     }
@@ -2856,7 +2635,7 @@ public class Product implements Serializable{
      * @param lc
      * The lc
      */
-    @JsonProperty("lc")
+
     public void setLc(String lc) {
         this.lc = lc;
     }
@@ -2871,7 +2650,6 @@ public class Product implements Serializable{
      * @return
      * The ingredients
      */
-    @JsonProperty("ingredients")
     public List<Ingredient> getIngredients() {
         return ingredients;
     }
@@ -2881,7 +2659,6 @@ public class Product implements Serializable{
      * @param ingredients
      * The ingredients
      */
-    @JsonProperty("ingredients")
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
@@ -2896,7 +2673,6 @@ public class Product implements Serializable{
      * @return
      * The pnnsGroups1Tags
      */
-    @JsonProperty("pnns_groups_1_tags")
     public List<String> getPnnsGroups1Tags() {
         return pnnsGroups1Tags;
     }
@@ -2906,7 +2682,6 @@ public class Product implements Serializable{
      * @param pnnsGroups1Tags
      * The pnns_groups_1_tags
      */
-    @JsonProperty("pnns_groups_1_tags")
     public void setPnnsGroups1Tags(List<String> pnnsGroups1Tags) {
         this.pnnsGroups1Tags = pnnsGroups1Tags;
     }
@@ -2921,7 +2696,6 @@ public class Product implements Serializable{
      * @return
      * The checkers
      */
-    @JsonProperty("checkers")
     public List<Object> getCheckers() {
         return checkers;
     }
@@ -2931,7 +2705,6 @@ public class Product implements Serializable{
      * @param checkers
      * The checkers
      */
-    @JsonProperty("checkers")
     public void setCheckers(List<Object> checkers) {
         this.checkers = checkers;
     }
@@ -2946,7 +2719,6 @@ public class Product implements Serializable{
      * @return
      * The complete
      */
-    @JsonProperty("complete")
     public long getComplete() {
         return complete;
     }
@@ -2956,7 +2728,6 @@ public class Product implements Serializable{
      * @param complete
      * The complete
      */
-    @JsonProperty("complete")
     public void setComplete(long complete) {
         this.complete = complete;
     }
