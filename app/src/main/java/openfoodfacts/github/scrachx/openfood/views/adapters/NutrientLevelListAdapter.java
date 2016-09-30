@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,13 +8,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 
 public class NutrientLevelListAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<NutrientLevelItem> nutrientLevelItems;
+    private List<NutrientLevelItem> nutrientLevelItems;
 
     public NutrientLevelListAdapter(Context context, ArrayList<NutrientLevelItem> navDrawerItems){
         this.context = context;
