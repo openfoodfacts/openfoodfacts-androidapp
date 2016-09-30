@@ -183,8 +183,8 @@ public class MainActivity extends BaseActivity {
 
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        boolean lauchScan = settings.getBoolean("startScan",false);
-        if(lauchScan) {
+        boolean launchScan = settings.getBoolean("startScan",false);
+        if(launchScan) {
             Intent cameraIntent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
             startActivity(cameraIntent);
         }

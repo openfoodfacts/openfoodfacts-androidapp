@@ -1,8 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.content.Intent;
 import android.os.Bundle;
-
 import openfoodfacts.github.scrachx.openfood.R;
 
 public class ScannerFragmentActivity extends BaseScannerActivity {
