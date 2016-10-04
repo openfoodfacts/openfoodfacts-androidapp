@@ -30,25 +30,29 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(icicle);
 
         settings = getSharedPreferences("prefs", 0);
-        SharedPreferences.Editor editor = settings.edit();
+
         boolean firstRun = settings.getBoolean("firstRun", true);
+
         boolean errorAdditives = settings.getBoolean("errorAdditives", true);
         boolean errorAllergens = settings.getBoolean("errorAllergens", true);
+
         if(!errorAdditives && ! errorAllergens) {
-            editor.putBoolean("firstRun", false);
-            editor.apply();
+            settings.edit()
+                    .putBoolean("firstRun", false)
+                    .apply();
             firstRun = false;
         }
-        if (!firstRun ) {
+
+        if (!firstRun) {
             Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-            SplashActivity.this.startActivity(mainIntent);
-            SplashActivity.this.finish();
+            startActivity(mainIntent);
+            finish();
         } else {
             new GetJson(this).execute();
         }
     }
 
-    private class GetJson extends AsyncTask<Void, Boolean, Boolean> {
+    private class GetJson extends AsyncTask<Void, Integer, Boolean> {
 
         private Context context;
         private LoadToast lt;
