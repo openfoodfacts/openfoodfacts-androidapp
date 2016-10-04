@@ -9,12 +9,14 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.io.IOException;
 import java.util.List;
 
+import cz.msebera.android.httpclient.Header;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.FoodAPIRestClient;
@@ -24,8 +26,14 @@ import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 
 public class FoodAPIRestClientUsage {
 
+    private final String apiUrl;
+
+    public FoodAPIRestClientUsage(String apiUrl) {
+        this.apiUrl = apiUrl;
+    }
+
     public void getProduct(final String barcode, final Activity activity, final ZXingScannerView scannerView, final ZXingScannerView.ResultHandler rs){
-        FoodAPIRestClient.getAsync("/api/v0/produit/"+barcode+".json", null, new AsyncHttpResponseHandler() {
+        FoodAPIRestClient.get(apiUrl + "/api/v0/produit/"+barcode+".json", null, new AsyncHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
 
@@ -39,7 +47,7 @@ public class FoodAPIRestClientUsage {
             }
 
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 // called when response HTTP status is "200 OK"
                 try {
                     State s = JsonUtils.readFor(State.class).readValue(responseBody);
@@ -85,7 +93,7 @@ public class FoodAPIRestClientUsage {
             }
 
             @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 new MaterialDialog.Builder(activity)
                         .title(R.string.txtDialogsTitle)
                         .content(R.string.txtDialogsContent)
@@ -109,17 +117,12 @@ public class FoodAPIRestClientUsage {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
             }
-
-            @Override
-            public void onRetry(int retryNo) {
-                // called when request is retried
-            }
         });
 
     }
 
     public void getProduct(final String barcode, final Activity activity){
-        FoodAPIRestClient.getAsync("/api/v0/produit/"+barcode+".json", null, new AsyncHttpResponseHandler() {
+        FoodAPIRestClient.get(apiUrl + "/api/v0/produit/"+barcode+".json", null, new AsyncHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
 
@@ -133,7 +136,7 @@ public class FoodAPIRestClientUsage {
             }
 
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 // called when response HTTP status is "200 OK"
                 try {
                     State s = JsonUtils.readFor(State.class).readValue(responseBody);
@@ -174,7 +177,7 @@ public class FoodAPIRestClientUsage {
             }
 
             @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 new MaterialDialog.Builder(activity)
                         .title(R.string.txtDialogsTitle)
                         .content(R.string.txtDialogsContent)
@@ -199,10 +202,6 @@ public class FoodAPIRestClientUsage {
                 lt.error();
             }
 
-            @Override
-            public void onRetry(int retryNo) {
-                // called when request is retried
-            }
         });
     }
 
@@ -211,7 +210,13 @@ public class FoodAPIRestClientUsage {
     }
 
     public void searchProduct(final String name, final Activity activity, final OnProductsCallback productsCallback) {
-        FoodAPIRestClient.getAsync("/cgi/search.pl?search_terms="+name+"&search_simple=1&action=process&json=1", null, new AsyncHttpResponseHandler() {
+        RequestParams params = new RequestParams();
+        params.add("search_terms", name);
+        params.add("action", "process");
+        params.add("search_simple", "1");
+        params.add("json", "1");
+
+        FoodAPIRestClient.get(apiUrl + "/cgi/search.pl", params, new AsyncHttpResponseHandler() {
 
             LoadToast lt = new LoadToast(activity);
 
@@ -225,7 +230,7 @@ public class FoodAPIRestClientUsage {
             }
 
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 // called when response HTTP status is "200 OK"
                 try {
 
@@ -250,15 +255,10 @@ public class FoodAPIRestClientUsage {
             }
 
             @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
                 productsCallback.onProductsResponse(false, null);
-            }
-
-            @Override
-            public void onRetry(int retryNo) {
-                // called when request is retried
             }
         });
     }
@@ -268,14 +268,10 @@ public class FoodAPIRestClientUsage {
     }
 
     public void getAllergens(final OnAllergensCallback onAllergensCallback) {
-        FoodAPIRestClient.getAsync("/allergens.json", null, new AsyncHttpResponseHandler() {
-
+        FoodAPIRestClient.get(apiUrl + "/allergens.json", null, new AsyncHttpResponseHandler() {
             @Override
-            public void onStart() {
-            }
-
-            @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                // called when response HTTP status is "200 OK"
                 try {
                     AllergenRestResponse restResponse = JsonUtils.readFor(AllergenRestResponse.class)
                             .readValue(responseBody);
@@ -291,13 +287,8 @@ public class FoodAPIRestClientUsage {
             }
 
             @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
-            }
-
-            @Override
-            public void onRetry(int retryNo) {
-                // called when request is retried
             }
         });
     }

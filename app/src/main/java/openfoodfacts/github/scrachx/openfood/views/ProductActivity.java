@@ -10,9 +10,12 @@ import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
@@ -47,8 +50,8 @@ public class ProductActivity extends BaseActivity {
         Intent intent = getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
 
-        List<String> all = (List<String>) mState.getProduct().getAllergensHierarchy();
-        List<String> traces = (List<String>) mState.getProduct().getTracesTags();
+        List<String> all = mState.getProduct().getAllergensHierarchy();
+        List<String> traces = mState.getProduct().getTracesTags();
         all.addAll(traces);
         List<String> matchAll = new ArrayList<String>();
         for (int a = 0; a < mAllergens.size(); a++) {

@@ -41,7 +41,7 @@ public class SearchProductsFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         productItems = new ArrayList<>();
-        api = new FoodAPIRestClientUsage();
+        api = new FoodAPIRestClientUsage(getString(R.string.openfoodUrl));
     }
 
     @OnItemClick(R.id.listProducts)
