@@ -13,12 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
@@ -46,7 +49,7 @@ public class IngredientsProductFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
 
-        if(mState.getProduct().getIngredientsText() != null) {
+        if(mState != null && mState.getProduct().getIngredientsText() != null) {
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(Html.fromHtml(mState.getProduct().getIngredientsText().replace("_","")));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients);
             if(!txtIngredients.toString().substring(txtIngredients.toString().indexOf(":")).trim().isEmpty()) {
@@ -138,7 +141,7 @@ public class IngredientsProductFragment extends BaseFragment {
         Matcher m = p.matcher(ssb);
         while (m.find()) {
             final String tm = m.group();
-            for (String l:cleanAllergensMultipleOccurence()) {
+            for (String l: cleanAllergensMultipleOccurrences()) {
                 if(l.toLowerCase().equals(tm.toLowerCase().replaceAll("[(),.-]+", ""))) {
                     StyleSpan bold = new StyleSpan(android.graphics.Typeface.BOLD);
                     if(tm.contains("(")) {
@@ -155,7 +158,7 @@ public class IngredientsProductFragment extends BaseFragment {
         return ssb;
     }
 
-    private List<String> cleanAllergensMultipleOccurence() {
+    private List<String> cleanAllergensMultipleOccurrences() {
         List<String> list = new ArrayList<>();
         Pattern p = Pattern.compile("[a-zA-Z0-9àâçéèêëîïôûùüÿñæœ]+");
         Matcher m = p.matcher(mState.getProduct().getAllergens().replace(",", ""));
@@ -174,9 +177,9 @@ public class IngredientsProductFragment extends BaseFragment {
     }
 
     private String cleanAllergensString() {
-        StringBuilder allergens = new StringBuilder("");
-        for (String l:cleanAllergensMultipleOccurence()) {
-            allergens.append(l + " ");
+        StringBuilder allergens = new StringBuilder();
+        for (String l: cleanAllergensMultipleOccurrences()) {
+            allergens.append(l).append(' ');
         }
         return allergens.toString();
     }

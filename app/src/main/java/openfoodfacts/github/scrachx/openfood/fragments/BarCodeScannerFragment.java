@@ -20,8 +20,7 @@ import android.view.ViewGroup;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -40,7 +39,6 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     private boolean mRing;
     private boolean mAutoFocus;
     private int mCameraId = -1;
-    private List<BarcodeFormat> mFormats;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
@@ -209,17 +207,11 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     }
 
     public void setupFormats() {
-        mFormats = new ArrayList<>();
-        mFormats.add(BarcodeFormat.UPC_A);
-        mFormats.add(BarcodeFormat.UPC_E);
-        mFormats.add(BarcodeFormat.EAN_13);
-        mFormats.add(BarcodeFormat.EAN_8);
-        mFormats.add(BarcodeFormat.RSS_14);
-        mFormats.add(BarcodeFormat.CODE_39);
-        mFormats.add(BarcodeFormat.CODE_93);
-        mFormats.add(BarcodeFormat.CODE_128);
-        mFormats.add(BarcodeFormat.ITF);
-        mScannerView.setFormats(mFormats);
+        mScannerView.setFormats(Arrays.asList(BarcodeFormat.UPC_A, BarcodeFormat.UPC_E,
+                BarcodeFormat.EAN_13, BarcodeFormat.EAN_8,
+                BarcodeFormat.RSS_14, BarcodeFormat.CODE_39,
+                BarcodeFormat.CODE_93, BarcodeFormat.CODE_128,
+                BarcodeFormat.ITF));
     }
 
     @Override

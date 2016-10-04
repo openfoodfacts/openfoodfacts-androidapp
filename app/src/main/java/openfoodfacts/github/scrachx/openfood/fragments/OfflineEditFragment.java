@@ -15,11 +15,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.RequestParams;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
@@ -125,32 +128,31 @@ public class OfflineEditFragment extends BaseFragment {
                         for (int i = 0; i < listSaveProduct.size(); i++) {
                             SendProduct sp = listSaveProduct.get(i);
                             if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()) {
-                                // Do nothing
-                            } else {
-                                RequestParams params = new RequestParams();
-                                params.put("code", sp.getBarcode());
-                                if(!loginS.isEmpty() && !passS.isEmpty()) {
-                                    params.put("user_id", loginS);
-                                    params.put("password", passS);
-                                }
-                                if(!sp.getName().isEmpty()) params.put("product_name", sp.getName());
-                                if(!sp.getWeight().isEmpty()) {
-                                    if(sp.getWeight_unit().trim().isEmpty()) {
-                                        params.put("quantity", sp.getWeight());
-                                    } else {
-                                        params.put("quantity", sp.getWeight() + " " + sp.getWeight_unit());
-                                    }
-                                }
-                                if(!sp.getStores().isEmpty()) params.put("stores", sp.getStores());
-                                params.put("comment", "added with the new Android app");
-
-                                if(!sp.getImgupload_ingredients().isEmpty()) Utils.compressImage(sp.getImgupload_ingredients());
-                                if(!sp.getImgupload_nutrition().isEmpty()) Utils.compressImage(sp.getImgupload_nutrition());
-                                if(!sp.getImgupload_front().isEmpty()) Utils.compressImage(sp.getImgupload_front());
-
-                                user.postSaved(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getImgupload_ingredients().replace(".png", "_small.png"), sp.getImgupload_nutrition().replace(".png", "_small.png"), sp.getBarcode(), listView, i, saveItems);
-
+                                continue;
                             }
+
+                            RequestParams params = new RequestParams();
+                            params.put("code", sp.getBarcode());
+                            if(!loginS.isEmpty() && !passS.isEmpty()) {
+                                params.put("user_id", loginS);
+                                params.put("password", passS);
+                            }
+                            if(!sp.getName().isEmpty()) params.put("product_name", sp.getName());
+                            if(!sp.getWeight().isEmpty()) {
+                                if(sp.getWeight_unit().trim().isEmpty()) {
+                                    params.put("quantity", sp.getWeight());
+                                } else {
+                                    params.put("quantity", sp.getWeight() + " " + sp.getWeight_unit());
+                                }
+                            }
+                            if(!sp.getStores().isEmpty()) params.put("stores", sp.getStores());
+                            params.put("comment", "added with the new Android app");
+
+                            if(!sp.getImgupload_ingredients().isEmpty()) Utils.compressImage(sp.getImgupload_ingredients());
+                            if(!sp.getImgupload_nutrition().isEmpty()) Utils.compressImage(sp.getImgupload_nutrition());
+                            if(!sp.getImgupload_front().isEmpty()) Utils.compressImage(sp.getImgupload_front());
+
+                            user.postSaved(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getImgupload_ingredients().replace(".png", "_small.png"), sp.getImgupload_nutrition().replace(".png", "_small.png"), sp.getBarcode(), listView, i, saveItems);
                         }
                     }
                 })
@@ -206,8 +208,6 @@ public class OfflineEditFragment extends BaseFragment {
                         buttonSend.setEnabled(false);
                     }
                 }
-            } else {
-                //Do nothing
             }
         }
     }

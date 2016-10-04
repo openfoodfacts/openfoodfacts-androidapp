@@ -26,8 +26,6 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductPagerAdapter;
 public class ProductActivity extends BaseActivity {
 
     private ShareActionProvider mShareActionProvider;
-    private ProductPagerAdapter adapterResult;
-    private List<Allergen> mAllergens;
     private State mState;
 
     @BindView(R.id.pager) ViewPager viewPager;
@@ -42,8 +40,8 @@ public class ProductActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAllergens = Allergen.find(Allergen.class, "enable = ?", "true");
-        adapterResult = new ProductPagerAdapter(getSupportFragmentManager(), this);
+        List<Allergen> mAllergens = Allergen.find(Allergen.class, "enable = ?", "true");
+        ProductPagerAdapter adapterResult = new ProductPagerAdapter(getSupportFragmentManager(), this);
         viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(adapterResult);
 
@@ -53,7 +51,7 @@ public class ProductActivity extends BaseActivity {
         List<String> all = mState.getProduct().getAllergensHierarchy();
         List<String> traces = mState.getProduct().getTracesTags();
         all.addAll(traces);
-        List<String> matchAll = new ArrayList<String>();
+        List<String> matchAll = new ArrayList<>();
         for (int a = 0; a < mAllergens.size(); a++) {
             for(int i = 0; i < all.size(); i++) {
                 if (all.get(i).trim().equals(mAllergens.get(a).getIdAllergen().trim())) {

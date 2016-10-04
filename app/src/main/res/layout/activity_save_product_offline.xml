@@ -1,146 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/spacing_large">
 
-    <ScrollView
-        android:layout_marginTop="@dimen/spacing_large"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
 
-            <LinearLayout android:orientation="vertical"
+        <Spinner
+            android:id="@+id/spinnerImages"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/spacing_normal"
+            android:background="@drawable/spinner_default"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:id="@+id/imageSave"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/placeholder_thumb" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonTakePicture"
+                style="@style/DefaultButtonText"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_normal"
+                android:layout_weight="1"
+                android:background="@drawable/button_default_bg"
+                android:gravity="center"
+                android:text="@string/txtTakePicture" />
+
+            <Button
+                android:id="@+id/buttonFromGallery"
+                style="@style/DefaultButtonText"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_normal"
+                android:layout_weight="1"
+                android:background="@drawable/button_default_bg"
+                android:gravity="center"
+                android:text="@string/from_gallery" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:background="@drawable/edittext_full"
+            android:ems="10"
+            android:hint="@string/hintNameProduct"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingLeft="50dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextWeight"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true">
+                android:layout_height="70dp"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_tiny"
+                android:background="@drawable/edittext_full"
+                android:ems="10"
+                android:hint="@string/hintWeight"
+                android:inputType="numberSigned"
+                android:maxLines="1"
+                android:paddingLeft="50dp" />
 
-                <Spinner
-                    android:id="@+id/spinnerImages"
-                    android:layout_width="fill_parent"
-                    android:layout_height="60dp"
-                    android:background="@drawable/spinner_default"
-                    android:spinnerMode="dropdown"
-                    android:layout_margin="@dimen/spacing_normal" />
+            <Spinner
+                android:id="@+id/spinnerUnitWeight"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:layout_marginLeft="@dimen/spacing_tiny"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:background="@drawable/spinner_default"
+                android:spinnerMode="dropdown" />
 
-                <ImageView
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
-                    android:id="@+id/imageSave"
-                    android:src="@drawable/placeholder_thumb"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-                <LinearLayout android:orientation="horizontal"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
-
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/button_default_bg"
-                        style="@style/DefaultButtonText"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="@string/txtTakePicture"
-                        android:id="@+id/buttonTakePicture"
-                        android:layout_weight="1"
-                        android:layout_margin="@dimen/spacing_normal"
-                        />
-
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/button_default_bg"
-                        style="@style/DefaultButtonText"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="@string/from_gallery"
-                        android:id="@+id/buttonFromGallery"
-                        android:layout_weight="1"
-                        android:layout_margin="@dimen/spacing_normal"
-                        />
-
-                </LinearLayout>
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:inputType="text"
-                    android:ems="10"
-                    android:id="@+id/editTextName"
-                    android:hint="@string/hintNameProduct"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:background="@drawable/edittext_full"
-                    android:paddingLeft="50dp"
-                    android:singleLine="true"
-                    />
-
-                <LinearLayout android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:inputType="numberSigned"
-                        android:ems="10"
-                        android:id="@+id/editTextWeight"
-                        android:hint="@string/hintWeight"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginRight="@dimen/spacing_tiny"
-                        android:background="@drawable/edittext_full"
-                        android:paddingLeft="50dp"
-                        android:singleLine="true"
-                        />
-
-                    <Spinner
-                        android:id="@+id/spinnerUnitWeight"
-                        android:layout_width="fill_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/spinner_default"
-                        android:spinnerMode="dropdown"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:layout_marginLeft="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        />
-
-                </LinearLayout>
+        </LinearLayout>
 
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:inputType="text"
-                    android:ems="10"
-                    android:id="@+id/editTextStores"
-                    android:hint="@string/hintStores"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:background="@drawable/edittext_full"
-                    android:paddingLeft="50dp"
-                    android:singleLine="true"
-                    />
+        <EditText
+            android:id="@+id/editTextStores"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:background="@drawable/edittext_full"
+            android:ems="10"
+            android:hint="@string/hintStores"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingLeft="50dp" />
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:background="@drawable/button_default_bg"
-                    style="@style/DefaultButtonText"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/txtSave"
-                    android:id="@+id/buttonSaveProduct"
-                    />
+        <Button
+            android:id="@+id/buttonSaveProduct"
+            style="@style/DefaultButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/spacing_normal"
+            android:background="@drawable/button_default_bg"
+            android:gravity="center"
+            android:text="@string/txtSave" />
 
+    </LinearLayout>
 
-            </LinearLayout>
-
-    </ScrollView>
-
-</FrameLayout>
+</ScrollView>

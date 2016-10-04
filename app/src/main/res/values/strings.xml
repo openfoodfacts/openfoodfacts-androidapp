@@ -16,14 +16,6 @@
         <item>Back to menu</item>
     </string-array>
 
-    <!-- Nav Drawer Main Product List Item Icons -->
-    <array name="nav_drawer_icons_product">
-        <item>@drawable/ic_summary_product</item>
-        <item>@drawable/ic_ingredient</item>
-        <item>@drawable/ic_nutrition</item>
-        <item>@drawable/ic_home</item>
-    </array>
-
     <!-- Text units -->
     <string-array name="units_array">
         <item> </item>
@@ -106,7 +98,7 @@
     <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the "Offline Edit" menu</string>
     <string name="txtBarcodeRequire">Barcode required</string>
-    <string name="txtOk">Ok</string>
+    <string name="txtOk">OK</string>
     <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
     <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
     <string name="txtAllsent">Products sent</string>
@@ -158,20 +150,6 @@
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
     <string name="msg_input_empty">Fill input first!</string>
     <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
-
-    <style name="DefaultButtonText">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/grey_50</item>
-        <item name="android:gravity">center</item>
-        <item name="android:layout_margin">3dp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:shadowColor">@color/grey_100</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">1</item>
-    </style>
 
     <!-- Strings related to login -->
     <string name="error_invalid_password">The password needs to be a least 6 characters long.</string>

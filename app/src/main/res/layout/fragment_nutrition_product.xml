@@ -1,63 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
     android:weightSum="1">
 
-    <LinearLayout
-        android:orientation="vertical"
+
+    <ImageView
+        android:id="@+id/imageGrade"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/spacing_tiny"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/textServingSize"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_tiny"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:background="@drawable/textview_full"
+        android:padding="@dimen/spacing_small"
+        android:text="@string/txtServingSize"
+        android:textSize="@dimen/font_normal" />
+
+    <TextView
+        android:id="@+id/textNutrientTxt"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:background="@drawable/textview_full"
+        android:padding="@dimen/spacing_small"
+        android:text="@string/txtNutrientLevel100g"
+        android:textSize="@dimen/font_normal"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/listNutrientLevels"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_gravity="center">
+        android:layout_marginBottom="@dimen/spacing_tiny"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:background="@drawable/textview_full"
+        android:padding="@dimen/spacing_small" />
 
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_normal"
-            android:layout_marginBottom="@dimen/spacing_tiny"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:layout_marginRight="@dimen/spacing_normal"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:id="@+id/imageGrade" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/font_normal"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:layout_marginBottom="@dimen/spacing_tiny"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:layout_marginRight="@dimen/spacing_normal"
-            android:padding="@dimen/spacing_small"
-            android:background="@drawable/textview_full"
-            android:text="@string/txtServingSize"
-            android:id="@+id/textServingSize" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/font_normal"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:layout_marginRight="@dimen/spacing_normal"
-            android:padding="@dimen/spacing_small"
-            android:background="@drawable/textview_full"
-            android:text="@string/txtNutrientLevel100g"
-            android:id="@+id/textNutrientTxt"
-            android:textStyle="bold"/>
-
-        <ListView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginBottom="@dimen/spacing_tiny"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:layout_marginRight="@dimen/spacing_normal"
-            android:padding="@dimen/spacing_small"
-            android:background="@drawable/textview_full"
-            android:id="@+id/listNutrientLevels" />
-
-    </LinearLayout>
-
-</FrameLayout>
+</LinearLayout>

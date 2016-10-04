@@ -53,15 +53,12 @@ public class Utils {
     public static void compressImage(String url) {
         File fileFront = new File(url);
         Bitmap bt = decodeFile(fileFront);
-        OutputStream fOutFront = null;
         File smallFileFront = new File(url.replace(".png", "_small.png"));
         try {
-            fOutFront = new FileOutputStream(smallFileFront);
+            OutputStream fOutFront = new FileOutputStream(smallFileFront);
             bt.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
             fOutFront.flush();
             fOutFront.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
