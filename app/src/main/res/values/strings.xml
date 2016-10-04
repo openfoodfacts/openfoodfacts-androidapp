@@ -117,6 +117,7 @@
     <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">Sign up</string>
     <string name="home_drawer">Home</string>
+    <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="search_drawer">Search</string>
     <string name="search_by_barcode_drawer">Search by barcode</string>
     <string name="search_by_name_drawer">Search by name</string>
@@ -181,5 +182,8 @@
 
     <!--API URL-->
     <string name="openfoodUrl" translatable="false">http://world.openfoodfacts.org</string>
+
+    <!-- Open beauty app -->
+    <string name="openBeautyApp" translatable="false">org.openbeautyfacts.scanner</string>
 
 </resources>

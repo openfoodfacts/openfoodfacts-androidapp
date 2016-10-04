@@ -1,6 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.View;
@@ -90,6 +92,26 @@ public class Utils {
         } catch (FileNotFoundException e) {
         }
         return null;
+    }
+
+    /**
+     * Check if a certain application is installed on a device.
+     *
+     * @param context the applications context.
+     * @param packageName the package name that you want to check.
+     *
+     * @return true if the application is installed, false otherwise.
+     */
+    public static boolean isApplicationInstalled(Context context, String packageName) {
+        PackageManager pm = context.getPackageManager();
+        try {
+            // Check if the package name exists, if exception is thrown, package name does not exist.
+            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
+            return true;
+        }
+        catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
     }
 
 }
