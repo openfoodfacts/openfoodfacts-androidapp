@@ -16,7 +16,7 @@ public class Additive extends SugarRecord {
     private String name;
     private String risk;
 
-    protected Additive(){}
+    public Additive(){}
 
     public Additive(String code, String name, String risk) {
         this.code = code.toUpperCase();
@@ -85,5 +85,21 @@ public class Additive extends SugarRecord {
                 ", name='" + name + '\'' +
                 ", risk='" + risk + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Additive additive = (Additive) o;
+
+        return code != null ? code.equals(additive.code) : additive.code == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return code != null ? code.hashCode() : 0;
     }
 }
