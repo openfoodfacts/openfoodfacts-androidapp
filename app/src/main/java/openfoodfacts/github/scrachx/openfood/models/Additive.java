@@ -19,7 +19,7 @@ public class Additive extends SugarRecord {
     protected Additive(){}
 
     public Additive(String code, String name, String risk) {
-        this.code = code;
+        this.code = code.toUpperCase();
         this.name = name;
         this.risk = risk;
     }
@@ -39,7 +39,7 @@ public class Additive extends SugarRecord {
      * The code
      */
     public void setCode(String code) {
-        this.code = code;
+        this.code = code.toUpperCase();
     }
 
     /**
