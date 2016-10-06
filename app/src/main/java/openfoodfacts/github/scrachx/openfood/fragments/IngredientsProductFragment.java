@@ -19,7 +19,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,6 +37,10 @@ public class IngredientsProductFragment extends BaseFragment {
     @BindView(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
     @BindView(R.id.ingredientContainer) ViewGroup containerView;
     private State mState;
+
+    public static final Pattern CODE_PATTERN = Pattern.compile("[eE][a-zA-Z0-9]+");
+    public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[a-zA-Z0-9(),àâçéèêëîïôûùüÿñæœ.-]+");
+    public static final Pattern ALLERGEN_PATTERN = Pattern.compile("[a-zA-Z0-9àâçéèêëîïôûùüÿñæœ]+");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -107,24 +110,18 @@ public class IngredientsProductFragment extends BaseFragment {
 
     private SpannableStringBuilder setSpanClickBetweenTokens(CharSequence text, final View view) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);
-        Pattern p = Pattern.compile("[eE][a-zA-Z0-9]+");
-        Matcher m = p.matcher(ssb);
+        Matcher m = CODE_PATTERN.matcher(ssb);
         while (m.find()) {
             final String tm = m.group();
             final List<Additive> la = Additive.find(Additive.class, "code = ?", tm.toUpperCase());
-            if (la.size() == 2) {
+            if (la.size() >= 1) {
+                final Additive additive = la.get(0);
                 ClickableSpan clickableSpan = new ClickableSpan() {
                     @Override
                     public void onClick(View v) {
-                        Additive a;
-                        if (Locale.getDefault().getLanguage().contains("fr")) {
-                            a = la.get(0);
-                        } else {
-                            a = la.get(1);
-                        }
                         new MaterialDialog.Builder(view.getContext())
-                                .title(a.getCode() + " : " + a.getName())
-                                .content(a.getRisk().toUpperCase())
+                                .title(additive.getCode() + " : " + additive.getName())
+                                .content(additive.getRisk().toUpperCase())
                                 .positiveText(R.string.txtOk)
                                 .show();
                     }
@@ -138,12 +135,11 @@ public class IngredientsProductFragment extends BaseFragment {
 
     private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);
-        Pattern p = Pattern.compile("[a-zA-Z0-9(),àâçéèêëîïôûùüÿñæœ.-]+");
-        Matcher m = p.matcher(ssb);
+        Matcher m = INGREDIENT_PATTERN.matcher(ssb);
         while (m.find()) {
             final String tm = m.group();
-            for (String l: cleanAllergensMultipleOccurence()) {
-                if(l.toLowerCase().equals(tm.toLowerCase().replaceAll("[(),.-]+", ""))) {
+            for (String l: cleanAllergensMultipleOccurrences()) {
+                if(l.equalsIgnoreCase(tm.replaceAll("[(),.-]+", ""))) {
                     StyleSpan bold = new StyleSpan(android.graphics.Typeface.BOLD);
                     if(tm.contains("(")) {
                         ssb.setSpan(bold, m.start()+1, m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -159,19 +155,22 @@ public class IngredientsProductFragment extends BaseFragment {
         return ssb;
     }
 
-    private List<String> cleanAllergensMultipleOccurence() {
+    private List<String> cleanAllergensMultipleOccurrences() {
         if (mState.getProduct() == null) {
             return Collections.emptyList();
         }
         List<String> list = new ArrayList<>();
-        Pattern p = Pattern.compile("[a-zA-Z0-9àâçéèêëîïôûùüÿñæœ]+");
-        Matcher m = p.matcher(mState.getProduct().getAllergens().replace(",", ""));
+        Matcher m = ALLERGEN_PATTERN.matcher(mState.getProduct().getAllergens().replace(",", ""));
         while (m.find()) {
             final String tma = m.group();
             boolean canAdd = true;
-            if(list.size() == 0) list.add(tma);
+            if(list.size() == 0) {
+                list.add(tma);
+            }
             for (int i = 0; i < list.size(); i++) {
-                if(list.get(i).toLowerCase().equals(tma.toLowerCase())) canAdd = false;
+                if(tma.equalsIgnoreCase(list.get(i))){
+                    canAdd = false;
+                }
             }
             if(canAdd) {
                 list.add(tma);
@@ -182,7 +181,7 @@ public class IngredientsProductFragment extends BaseFragment {
 
     private String cleanAllergensString() {
         StringBuilder allergens = new StringBuilder();
-        for (String l: cleanAllergensMultipleOccurence()) {
+        for (String l: cleanAllergensMultipleOccurrences()) {
             allergens.append(l).append(' ');
         }
         return allergens.toString();
