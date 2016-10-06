@@ -39,8 +39,7 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View contactView = inflater.inflate(R.layout.item_allergens, parent, false);
-        ViewHolder viewHolder = new ViewHolder(contactView);
-        return viewHolder;
+        return new ViewHolder(contactView);
     }
 
     @Override
@@ -53,10 +52,10 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAllergens.remove(position);
+                mAllergens.remove(holder.getAdapterPosition());
                 allergen.setEnable("false");
                 allergen.save();
-                AllergensAdapter.this.notifyItemRemoved(position);
+                notifyItemRemoved(holder.getAdapterPosition());
             }
         });
     }

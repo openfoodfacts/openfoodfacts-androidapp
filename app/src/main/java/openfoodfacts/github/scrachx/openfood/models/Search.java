@@ -28,9 +28,9 @@ public class Search implements Serializable {
     private String count;
     private Integer skip;
     private Integer page;
-    private List<Product> products = new ArrayList<Product>();
+    private List<Product> products = new ArrayList<>();
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     /**
      *

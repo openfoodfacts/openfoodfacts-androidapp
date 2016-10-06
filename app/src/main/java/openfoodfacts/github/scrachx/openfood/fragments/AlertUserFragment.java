@@ -75,7 +75,7 @@ public class AlertUserFragment extends BaseFragment {
     @OnClick(R.id.fab)
     protected void onAddAllergens() {
         final List<Allergen> all = IteratorUtils.toList(Allergen.findAll(Allergen.class));
-        List<String> allS = new ArrayList<String>();
+        List<String> allS = new ArrayList<>();
         for (Allergen a : all) {
             if (Locale.getDefault().getLanguage().contains("fr")){
                 if(a.getIdAllergen().contains("fr:")) allS.add(a.getName().substring(a.getName().indexOf(":")+1));

@@ -50,7 +50,7 @@ public class IngredientsProductFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
 
-        if(mState.getProduct().getIngredientsText() != null) {
+        if(mState != null && mState.getProduct().getIngredientsText() != null) {
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(Html.fromHtml(mState.getProduct().getIngredientsText().replace("_","")));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients);
             if(!txtIngredients.toString().substring(txtIngredients.toString().indexOf(":")).trim().isEmpty()) {
@@ -142,7 +142,7 @@ public class IngredientsProductFragment extends BaseFragment {
         Matcher m = p.matcher(ssb);
         while (m.find()) {
             final String tm = m.group();
-            for (String l:cleanAllergensMultipleOccurence()) {
+            for (String l: cleanAllergensMultipleOccurence()) {
                 if(l.toLowerCase().equals(tm.toLowerCase().replaceAll("[(),.-]+", ""))) {
                     StyleSpan bold = new StyleSpan(android.graphics.Typeface.BOLD);
                     if(tm.contains("(")) {
@@ -163,7 +163,6 @@ public class IngredientsProductFragment extends BaseFragment {
         if (mState.getProduct() == null) {
             return Collections.emptyList();
         }
-
         List<String> list = new ArrayList<>();
         Pattern p = Pattern.compile("[a-zA-Z0-9àâçéèêëîïôûùüÿñæœ]+");
         Matcher m = p.matcher(mState.getProduct().getAllergens().replace(",", ""));
@@ -182,9 +181,9 @@ public class IngredientsProductFragment extends BaseFragment {
     }
 
     private String cleanAllergensString() {
-        StringBuilder allergens = new StringBuilder("");
-        for (String l:cleanAllergensMultipleOccurence()) {
-            allergens.append(l + " ");
+        StringBuilder allergens = new StringBuilder();
+        for (String l: cleanAllergensMultipleOccurence()) {
+            allergens.append(l).append(' ');
         }
         return allergens.toString();
     }

@@ -10,7 +10,7 @@ import java.util.List;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AllergenRestResponse {
-    private List<Allergen> allergens;
+    private final List<Allergen> allergens;
 
     public AllergenRestResponse(@JsonProperty("tags") final List<Allergen> allergens) {
         this.allergens = allergens;

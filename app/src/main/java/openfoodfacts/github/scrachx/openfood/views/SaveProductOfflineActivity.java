@@ -20,12 +20,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.loopj.android.http.RequestParams;
 import com.squareup.picasso.Picasso;
+
 import java.io.File;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
@@ -103,8 +106,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
         List<SendProduct> sp = SendProduct.find(SendProduct.class, "barcode = ?", mBarcode);
         if (sp.size() > 0) {
-            SendProduct product = sp.get(0);
-            mProduct = product;
+            mProduct = sp.get(0);
         }
         if(mProduct != null) {
             if(!mProduct.getImgupload_front().isEmpty()) {
@@ -299,12 +301,10 @@ public class SaveProductOfflineActivity extends BaseActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
             case Utils.MY_PERMISSIONS_REQUEST_STORAGE: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // OK
-                } else {
+                if (grantResults.length <= 0 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     new MaterialDialog.Builder(this)
                             .title(R.string.permission_title)
                             .content(R.string.permission_denied)
@@ -322,7 +322,6 @@ public class SaveProductOfflineActivity extends BaseActivity {
                             })
                             .show();
                 }
-                return;
             }
         }
     }

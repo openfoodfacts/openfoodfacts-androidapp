@@ -6,7 +6,7 @@ import android.view.MenuItem;
 
 import openfoodfacts.github.scrachx.openfood.R;
 
-public class BaseScannerActivity extends BaseActivity {
+public abstract class BaseScannerActivity extends BaseActivity {
     public void setupToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

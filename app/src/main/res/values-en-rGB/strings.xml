@@ -88,7 +88,7 @@
   <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the Offline Edit menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
-  <string name="txtOk">Ok</string>
+  <string name="txtOk">OK</string>
   <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
   <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Products sent</string>
