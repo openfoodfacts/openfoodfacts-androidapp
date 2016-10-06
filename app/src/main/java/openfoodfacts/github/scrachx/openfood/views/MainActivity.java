@@ -154,20 +154,18 @@ public class MainActivity extends BaseActivity {
                                 if(openBeautyInstalled) {
                                     Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(getString(R.string.openBeautyApp));
                                     startActivity(LaunchIntent);
-                                    System.out.println("App is already installed on your phone");
                                 } else {
                                     try {
                                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getString(R.string.openBeautyApp))));
                                     } catch (android.content.ActivityNotFoundException anfe) {
                                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getString(R.string.openBeautyApp))));
                                     }
-                                    System.out.println("App is not currently installed on your phone");
                                 }
                             }
 
                             if (fragment != null) {
-                                getSupportFragmentManager().beginTransaction()
-                                        .replace(R.id.fragment_container, fragment).commit();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
                             } else {
                                 // error in creating fragment
                                 Log.e("MainActivity", "Error in creating fragment");
@@ -196,7 +194,6 @@ public class MainActivity extends BaseActivity {
             //set the active profile
             headerResult.setActiveProfile(profile);
         }
-
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         boolean launchScan = settings.getBoolean("startScan",false);

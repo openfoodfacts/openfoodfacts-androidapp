@@ -6,4 +6,9 @@
         android:summary="@string/prefs_scan_startup_summary"
         android:key="startScan"/>
 
+    <CheckBoxPreference android:title="Power mode scan"
+        android:defaultValue="false"
+        android:summary="Quickly scan products in a supermarket to see which one are not in the database."
+        android:key="powerMode"/>
+
 </PreferenceScreen>
