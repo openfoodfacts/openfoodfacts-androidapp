@@ -13,12 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
@@ -156,6 +160,10 @@ public class IngredientsProductFragment extends BaseFragment {
     }
 
     private List<String> cleanAllergensMultipleOccurence() {
+        if (mState.getProduct() == null) {
+            return Collections.emptyList();
+        }
+
         List<String> list = new ArrayList<>();
         Pattern p = Pattern.compile("[a-zA-Z0-9àâçéèêëîïôûùüÿñæœ]+");
         Matcher m = p.matcher(mState.getProduct().getAllergens().replace(",", ""));
