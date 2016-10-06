@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -15,6 +16,7 @@ import net.steamcrafted.loadtoast.LoadToast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
@@ -30,26 +32,31 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(icicle);
 
         settings = getSharedPreferences("prefs", 0);
-        SharedPreferences.Editor editor = settings.edit();
+
         boolean firstRun = settings.getBoolean("firstRun", true);
+
         boolean errorAdditives = settings.getBoolean("errorAdditives", true);
         boolean errorAllergens = settings.getBoolean("errorAllergens", true);
-        if(!errorAdditives && ! errorAllergens) {
-            editor.putBoolean("firstRun", false);
-            editor.apply();
+
+        if(!errorAdditives && !errorAllergens) {
+            settings.edit()
+                    .putBoolean("firstRun", false)
+                    .apply();
             firstRun = false;
         }
-        if (!firstRun ) {
+
+        if (!firstRun) {
             Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-            SplashActivity.this.startActivity(mainIntent);
-            SplashActivity.this.finish();
+            startActivity(mainIntent);
+            finish();
         } else {
             new GetJson(this).execute();
         }
     }
 
-    private class GetJson extends AsyncTask<Void, Boolean, Boolean> {
+    private class GetJson extends AsyncTask<Void, Integer, Boolean> {
 
+        private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
         private Context context;
         private LoadToast lt;
 
@@ -70,31 +77,46 @@ public class SplashActivity extends BaseActivity {
 
         @Override
         protected Boolean doInBackground(Void... arg0) {
+            boolean result = true;
+            boolean errorAdditives = settings.getBoolean("errorAdditives", true);
+
+            if (!errorAdditives) {
+                return result;
+            }
+
+            String additivesFile;
+            switch (Locale.getDefault().getLanguage()) {
+                case "fr":
+                    additivesFile = "additives_fr.json";
+                    break;
+                case "en":
+                default:
+                    additivesFile = "additives_en.json";
+                    break;
+            }
+
+            InputStream is = null;
             try {
-                boolean errorAdditives = settings.getBoolean("errorAdditives", true);
-                if(errorAdditives) {
-
-                    //TODO try with resources
-                    InputStream is = getAssets().open("additives_fr.json");
-                    saveAllergens(is);
-
-                    //TODO try with resources
-                    InputStream is1 = getAssets().open("additives_en.json");
-                    saveAllergens(is1);
+                is = getAssets().open(additivesFile);
+                List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {})
+                        .readValue(is);
+                for (Additive additive : frenchAdditives) {
+                    additive.save();
                 }
-                return true;
-            } catch (IOException ex) {
-                ex.printStackTrace();
-                return false;
+            } catch (IOException e) {
+                result = false;
+                Log.e(ADDITIVE_IMPORT, "Unable to import additives from " + additivesFile);
+            } finally {
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch (IOException e1) {
+                        Log.e(ADDITIVE_IMPORT, "Unable to close the inputstream of " + additivesFile);
+                    }
+                }
             }
-        }
 
-        private void saveAllergens(InputStream is) throws IOException {
-            List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {})
-                    .readValue(is);
-            for (Additive additive : frenchAdditives) {
-                additive.save();
-            }
+            return result;
         }
 
         @Override
@@ -105,8 +127,8 @@ public class SplashActivity extends BaseActivity {
             ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-            if(isConnected) {
-                if(errorAllergens) {
+            if (isConnected) {
+                if (errorAllergens) {
                     FoodAPIRestClientUsage api = new FoodAPIRestClientUsage(getString(R.string.openfoodUrl));
                     api.getAllergens(new FoodAPIRestClientUsage.OnAllergensCallback() {
                         @Override
@@ -114,16 +136,16 @@ public class SplashActivity extends BaseActivity {
                             if (result && value) {
                                 lt.success();
                                 editor.putBoolean("firstRun", false);
-                                editor.apply();
                             }
                             if(!value){
                                 lt.error();
                                 editor.putBoolean("errorAllergens", true);
-                                editor.apply();
                             } else {
                                 editor.putBoolean("errorAllergens", false);
-                                editor.apply();
                             }
+
+                            editor.apply();
+
                             Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
                             startActivity(mainIntent);
                             finish();
@@ -131,7 +153,7 @@ public class SplashActivity extends BaseActivity {
                     });
                 }
             } else {
-                if(!result){
+                if (!result) {
                     lt.error();
                     editor.putBoolean("errorAdditives", true);
                     editor.apply();
