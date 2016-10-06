@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -55,6 +56,7 @@ public class SplashActivity extends BaseActivity {
 
     private class GetJson extends AsyncTask<Void, Integer, Boolean> {
 
+        private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
         private Context context;
         private LoadToast lt;
 
@@ -102,14 +104,14 @@ public class SplashActivity extends BaseActivity {
                     additive.save();
                 }
             } catch (IOException e) {
-                //TODO handle issue
                 result = false;
+                Log.e(ADDITIVE_IMPORT, "Unable to import additives from " + additivesFile);
             } finally {
                 if (is != null) {
                     try {
                         is.close();
                     } catch (IOException e1) {
-                        // TODO Handle issue
+                        Log.e(ADDITIVE_IMPORT, "Unable to close the inputstream of " + additivesFile);
                     }
                 }
             }
