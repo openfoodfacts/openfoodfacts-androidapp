@@ -4,11 +4,12 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 
 public class MessageDialogFragment extends DialogFragment {
     public interface MessageDialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog);
+        void onDialogPositiveClick(DialogFragment dialog);
     }
 
     private String mTitle;
@@ -28,20 +29,18 @@ public class MessageDialogFragment extends DialogFragment {
         return fragment;
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(mMessage)
-                .setTitle(mTitle);
-
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                if(mListener != null) {
-                    mListener.onDialogPositiveClick(MessageDialogFragment.this);
-                }
-            }
-        });
-
-        return builder.create();
+        return new AlertDialog.Builder(getActivity())
+                .setMessage(mMessage)
+                .setTitle(mTitle)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        if(mListener != null) {
+                            mListener.onDialogPositiveClick(MessageDialogFragment.this);
+                        }
+                    }
+                }).create();
     }
 }

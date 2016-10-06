@@ -17,8 +17,7 @@
         android:ems="10"
         android:hint="@string/hintNameProduct"
         android:paddingLeft="10dp"
-        android:singleLine="true"
-        />
+        android:maxLines="1" />
 
     <Button
         android:id="@+id/buttonSearchProducts"

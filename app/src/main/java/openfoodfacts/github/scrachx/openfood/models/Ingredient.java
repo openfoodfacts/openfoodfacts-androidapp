@@ -24,7 +24,7 @@ public class Ingredient implements Serializable {
     private long rank;
     private String percent;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     /**
      *

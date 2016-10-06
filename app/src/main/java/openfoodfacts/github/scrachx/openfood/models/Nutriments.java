@@ -156,7 +156,7 @@ public class Nutriments implements Serializable {
     @JsonProperty("saturated-fat")
     private String saturatedFat;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     /**
      * @return The sodium
