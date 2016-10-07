@@ -159,7 +159,7 @@
     <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
 
     <!--API URL-->
-    <string name="openfoodUrl" translatable="false">http://world.openfoodfacts.org</string>
+    <string name="openfoodUrl" translatable="false">https://ssl-api.openfoodfacts.org</string>
 
     <!-- Open beauty app -->
     <string name="openBeautyApp" translatable="false">org.openbeautyfacts.scanner</string>
