@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +23,11 @@ import net.steamcrafted.loadtoast.LoadToast;
 import org.apache.commons.collections.IteratorUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -75,29 +79,38 @@ public class AlertUserFragment extends BaseFragment {
     @OnClick(R.id.fab)
     protected void onAddAllergens() {
         final List<Allergen> all = IteratorUtils.toList(Allergen.findAll(Allergen.class));
-        List<String> allS = new ArrayList<>();
+        final LinkedHashMap<Integer,String> allS = new LinkedHashMap<>();
+        int index = 0;
         for (Allergen a : all) {
             if (Locale.getDefault().getLanguage().contains("fr")){
-                if(a.getIdAllergen().contains("fr:")) allS.add(a.getName().substring(a.getName().indexOf(":")+1));
+                if(a.getIdAllergen().contains("fr:")) allS.put(index, a.getName().substring(a.getName().indexOf(":")+1));
             } else if (Locale.getDefault().getLanguage().contains("en")) {
-                if(a.getIdAllergen().contains("en:")) allS.add(a.getName().substring(a.getName().indexOf(":")+1));
+                if(a.getIdAllergen().contains("en:")) allS.put(index, a.getName().substring(a.getName().indexOf(":")+1));
             }
+            index++;
         }
         if(allS.size() > 0) {
             new MaterialDialog.Builder(mView.getContext())
                     .title(R.string.title_dialog_alert)
-                    .items(allS)
+                    .items(allS.values())
                     .itemsCallback(new MaterialDialog.ListCallback() {
                         @Override
                         public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
-                            all.get(which).setEnable("true");
-                            all.get(which).save();
                             boolean canAdd = true;
+                            int index = -1;
+                            String alergeneStringByPos = new ArrayList<String>(allS.values()).get(which);
                             for(Allergen a : mAllergens) {
                                 if(a.getName().equals(all.get(which).getName())) canAdd = false;
                             }
-                            if(canAdd) {
-                                mAllergens.add(all.get(which));
+                            for(Allergen a : all) {
+                                if(a.getName().substring(a.getName().indexOf(":")+1).equalsIgnoreCase(alergeneStringByPos)) {
+                                    index = getKey(allS, alergeneStringByPos);
+                                    all.get(index).setEnable("true");
+                                    all.get(index).save();
+                                }
+                            }
+                            if(canAdd && index != -1) {
+                                mAllergens.add(all.get(index));
                                 mAdapter.notifyItemInserted(mAllergens.size() - 1);
                                 mRvAllergens.scrollToPosition(mAdapter.getItemCount() - 1);
                             }
@@ -150,6 +163,17 @@ public class AlertUserFragment extends BaseFragment {
             }
         }
 
+    }
+
+    public static Integer getKey(HashMap<Integer, String> map, String value) {
+        Integer key = null;
+        for(Map.Entry<Integer, String> entry : map.entrySet()) {
+            if((value == null && entry.getValue() == null) || (value != null && value.equals(entry.getValue()))) {
+                key = entry.getKey();
+                break;
+            }
+        }
+        return key;
     }
 
 }

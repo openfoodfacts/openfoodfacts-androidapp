@@ -46,7 +46,7 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final Allergen allergen = mAllergens.get(position);
         TextView textView = holder.nameTextView;
-        textView.setText(allergen.getName());
+        textView.setText(allergen.getName().substring(allergen.getName().indexOf(":")+1));
         Button button = holder.messageButton;
         button.setText(R.string.delete_txt);
         button.setOnClickListener(new View.OnClickListener() {
