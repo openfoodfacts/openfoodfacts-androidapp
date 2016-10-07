@@ -53,10 +53,10 @@ public class NutritionProductFragment extends BaseFragment {
             String sugarsTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + nt.getSugars() + " (" + product.getNutriments().getSugars100g() + product.getNutriments().getSugarsUnit() + ")").toString();
             String saturatedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSaturatedFat) + "</b>" + ' ' + nt.getSaturatedFat() + " (" + product.getNutriments().getSaturatedFat100g() + product.getNutriments().getSaturatedFatUnit() + ")").toString();
 
-            levelItem.add(new NutrientLevelItem(saltTxt, getImageLevel(nt.getSalt())));
             levelItem.add(new NutrientLevelItem(fatTxt, getImageLevel(nt.getFat())));
-            levelItem.add(new NutrientLevelItem(sugarsTxt, getImageLevel(nt.getSugars())));
             levelItem.add(new NutrientLevelItem(saturatedFatTxt, getImageLevel(nt.getSaturatedFat())));
+            levelItem.add(new NutrientLevelItem(sugarsTxt, getImageLevel(nt.getSugars())));
+            levelItem.add(new NutrientLevelItem(saltTxt, getImageLevel(nt.getSalt())));
 
             img.setImageResource(getImageGrade(product.getNutritionGradeFr()));
         }
