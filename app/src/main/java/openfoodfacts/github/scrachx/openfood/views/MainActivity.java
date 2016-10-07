@@ -46,6 +46,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsFragment;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class MainActivity extends BaseActivity {
@@ -62,6 +63,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         final IProfile profile = getProfile();
+        LocaleHelper.setLocale(this, LocaleHelper.getLanguage(this));
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);

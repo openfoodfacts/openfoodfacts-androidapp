@@ -11,4 +11,13 @@
         android:summary="Quickly scan products in a supermarket to see which one are not in the database."
         android:key="powerMode"/>
 
+    <ListPreference
+        android:key="Locale.Helper.Selected.Language"
+        android:title="Language"
+        android:summary="Change language"
+        android:dialogTitle="Choose language"
+        android:entries="@array/lang_array"
+        android:entryValues="@array/lang_array"
+        android:defaultValue="en" />
+
 </PreferenceScreen>
