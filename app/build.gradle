@@ -70,6 +70,8 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.9'
 
     compile 'com.opencsv:opencsv:3.8'
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    compile 'com.squareup.retrofit:converter-jackson:2.0.0-beta2'
 
     compile 'com.fasterxml.jackson.core:jackson-core:2.8.3'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.3'
