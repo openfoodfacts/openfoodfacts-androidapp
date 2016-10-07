@@ -48,10 +48,11 @@ public class NutritionProductFragment extends BaseFragment {
                 && nt.getSaturatedFat() == null && nt.getSugars() == null)) {
             levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), R.drawable.error_image));
         } else {
-            String saltTxt = Html.fromHtml("<b>" + getString(R.string.txtSalt) + "</b>" + ' ' + nt.getSalt() + " (" + product.getNutriments().getSalt100g() + product.getNutriments().getSaltUnit() + ")").toString();
+
             String fatTxt = Html.fromHtml("<b>" + getString(R.string.txtFat) + "</b>" + ' ' + nt.getFat() + " (" + product.getNutriments().getFat100g() + product.getNutriments().getFatUnit() + ")").toString();
-            String sugarsTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + nt.getSugars() + " (" + product.getNutriments().getSugars100g() + product.getNutriments().getSugarsUnit() + ")").toString();
             String saturatedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSaturatedFat) + "</b>" + ' ' + nt.getSaturatedFat() + " (" + product.getNutriments().getSaturatedFat100g() + product.getNutriments().getSaturatedFatUnit() + ")").toString();
+            String sugarsTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + nt.getSugars() + " (" + product.getNutriments().getSugars100g() + product.getNutriments().getSugarsUnit() + ")").toString();
+            String saltTxt = Html.fromHtml("<b>" + getString(R.string.txtSalt) + "</b>" + ' ' + nt.getSalt() + " (" + product.getNutriments().getSalt100g() + product.getNutriments().getSaltUnit() + ")").toString();
 
             levelItem.add(new NutrientLevelItem(fatTxt, getImageLevel(nt.getFat())));
             levelItem.add(new NutrientLevelItem(saturatedFatTxt, getImageLevel(nt.getSaturatedFat())));
