@@ -49,6 +49,9 @@
   <string name="txtPalmOilProduct">Zutaten aus Palmöl:</string>
   <string name="txtServingSize">Portiongröße:</string>
   <string name="txtNutrientLevel100g">Nahrungsbedarf pro 100 g:</string>
+  <string name="txtNutritionLevelLow">wenig</string>
+  <string name="txtNutritionLevelModerate">moderat</string>
+  <string name="txtNutritionLevelHigh">hoch</string>
   <string name="txtLogin">Login :</string>
   <string name="txtPass">Passwort :</string>
   <string name="txtTitleHome">Open your food und lerne kennen, was du isst</string>

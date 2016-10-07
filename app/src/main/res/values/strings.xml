@@ -78,6 +78,9 @@
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Serving size :</string>
     <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
+    <string name="txtNutritionLevelLow">low</string>
+    <string name="txtNutritionLevelModerate">moderate</string>
+    <string name="txtNutritionLevelHigh">high</string>
     <string name="txtLogin">Login :</string>
     <string name="txtPass">Password :</string>
     <string name="txtTitleHome">Open your food and know what you eat</string>
