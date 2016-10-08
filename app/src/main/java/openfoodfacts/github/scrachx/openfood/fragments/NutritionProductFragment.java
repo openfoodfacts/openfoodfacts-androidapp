@@ -48,15 +48,16 @@ public class NutritionProductFragment extends BaseFragment {
                 && nt.getSaturatedFat() == null && nt.getSugars() == null)) {
             levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), R.drawable.error_image));
         } else {
-            String saltTxt = Html.fromHtml("<b>" + getString(R.string.txtSalt) + "</b>" + ' ' + nt.getSalt() + " (" + product.getNutriments().getSalt100g() + product.getNutriments().getSaltUnit() + ")").toString();
-            String fatTxt = Html.fromHtml("<b>" + getString(R.string.txtFat) + "</b>" + ' ' + nt.getFat() + " (" + product.getNutriments().getFat100g() + product.getNutriments().getFatUnit() + ")").toString();
-            String sugarsTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + nt.getSugars() + " (" + product.getNutriments().getSugars100g() + product.getNutriments().getSugarsUnit() + ")").toString();
-            String saturatedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSaturatedFat) + "</b>" + ' ' + nt.getSaturatedFat() + " (" + product.getNutriments().getSaturatedFat100g() + product.getNutriments().getSaturatedFatUnit() + ")").toString();
 
-            levelItem.add(new NutrientLevelItem(saltTxt, getImageLevel(nt.getSalt())));
+            String fatTxt = Html.fromHtml("<b>" + getString(R.string.txtFat) + "</b>" + ' ' + localiseNutritionLevel(nt.getFat()) + " (" + product.getNutriments().getFat100g() + product.getNutriments().getFatUnit() + ")").toString();
+            String saturatedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSaturatedFat) + "</b>" + ' ' + localiseNutritionLevel(nt.getSaturatedFat()) + " (" + product.getNutriments().getSaturatedFat100g() + product.getNutriments().getSaturatedFatUnit() + ")").toString();
+            String sugarsTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + localiseNutritionLevel(nt.getSugars()) + " (" + product.getNutriments().getSugars100g() + product.getNutriments().getSugarsUnit() + ")").toString();
+            String saltTxt = Html.fromHtml("<b>" + getString(R.string.txtSalt) + "</b>" + ' ' + localiseNutritionLevel(nt.getSalt()) + " (" + product.getNutriments().getSalt100g() + product.getNutriments().getSaltUnit() + ")").toString();
+
             levelItem.add(new NutrientLevelItem(fatTxt, getImageLevel(nt.getFat())));
-            levelItem.add(new NutrientLevelItem(sugarsTxt, getImageLevel(nt.getSugars())));
             levelItem.add(new NutrientLevelItem(saturatedFatTxt, getImageLevel(nt.getSaturatedFat())));
+            levelItem.add(new NutrientLevelItem(sugarsTxt, getImageLevel(nt.getSugars())));
+            levelItem.add(new NutrientLevelItem(saltTxt, getImageLevel(nt.getSalt())));
 
             img.setImageResource(getImageGrade(product.getNutritionGradeFr()));
         }
@@ -124,5 +125,24 @@ public class NutritionProductFragment extends BaseFragment {
         }
 
         return drawable;
+    }
+
+    /**
+     *
+     * @param nutritionAmount Either "low", "moderate" or "high"
+     * @return The localised word for the nutrition amount. If nutritionAmount is neither low,
+     * moderate nor high, return nutritionAmount
+     */
+    private String localiseNutritionLevel(String nutritionAmount){
+        switch (nutritionAmount){
+            case "low":
+                return getString(R.string.txtNutritionLevelLow);
+            case "moderate":
+                return getString(R.string.txtNutritionLevelModerate);
+            case "high":
+                return getString(R.string.txtNutritionLevelHigh);
+            default:
+                return nutritionAmount;
+        }
     }
 }

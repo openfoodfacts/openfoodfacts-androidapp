@@ -49,6 +49,9 @@
   <string name="txtPalmOilProduct">Ingrédients issus de l\'huile de palme :</string>
   <string name="txtServingSize">Taille d\'une portion :</string>
   <string name="txtNutrientLevel100g">Repères nutritionnels pour 100g :</string>
+  <string name="txtNutritionLevelLow">faible</string>
+  <string name="txtNutritionLevelModerate">modérée</string>
+  <string name="txtNutritionLevelHigh">élevée</string>
   <string name="txtLogin">Identifiant :</string>
   <string name="txtPass">Mot de passe :</string>
   <string name="txtTitleHome">Ouvrez votre nourriture pour savoir ce que vous mangez</string>
