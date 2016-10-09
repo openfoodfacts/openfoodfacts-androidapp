@@ -7,7 +7,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -39,7 +38,6 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 String url = " " + Utils.getUriProductByCurrentLanguage() + txtBarcode.getText();
-
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 String shareBody = itemView.getResources().getString(R.string.msg_share) + url;

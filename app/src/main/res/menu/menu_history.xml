@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_remove_all_history"
+        app:showAsAction="ifRoom"
+        android:title="@string/clear_history"
+        android:icon="@drawable/ic_delete_forever_white_48dp" />
+
+    <item android:id="@+id/action_export_all_history"
+        app:showAsAction="ifRoom"
+        android:title="@string/export_csv_history"
+        android:icon="@drawable/ic_file_download_white_48dp" />
+
+</menu>

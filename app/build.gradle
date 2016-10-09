@@ -9,8 +9,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 24
-        versionName "0.2.6"
+        versionCode 25
+        versionName "0.2.7"
     }
 
     dexOptions {
@@ -68,6 +68,8 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
 
     compile 'com.loopj.android:android-async-http:1.4.9'
+
+    compile 'com.opencsv:opencsv:3.8'
 
     compile 'com.fasterxml.jackson.core:jackson-core:2.8.3'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.3'
