@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -105,13 +106,14 @@ public class MainActivity extends BaseActivity {
                         new SecondaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(FontAwesome.Icon.faw_barcode).withIdentifier(2),
                         new SecondaryDrawerItem().withName(R.string.search_by_name_drawer).withIcon(FontAwesome.Icon.faw_search).withIdentifier(3),
                         new SecondaryDrawerItem().withName(R.string.scan_search).withIcon(FontAwesome.Icon.faw_camera).withIdentifier(4),
+                        new SecondaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(FontAwesome.Icon.faw_clock_o).withIdentifier(5),
                         new SectionDrawerItem().withName(R.string.user_drawer),
-                        new SecondaryDrawerItem().withName(R.string.sign_in_drawer).withIcon(FontAwesome.Icon.faw_sign_in).withIdentifier(5),
-                        new SecondaryDrawerItem().withName(R.string.alert_drawer).withIcon(FontAwesome.Icon.faw_info).withIdentifier(6),
+                        new SecondaryDrawerItem().withName(R.string.sign_in_drawer).withIcon(FontAwesome.Icon.faw_sign_in).withIdentifier(6),
+                        new SecondaryDrawerItem().withName(R.string.alert_drawer).withIcon(FontAwesome.Icon.faw_info).withIdentifier(7),
                         new DividerDrawerItem(),
-                        new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(FontAwesome.Icon.faw_anchor).withIdentifier(7),
+                        new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(FontAwesome.Icon.faw_anchor).withIdentifier(8),
                         new DividerDrawerItem(),
-                        new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(FontAwesome.Icon.faw_shopping_bag).withIdentifier(8)
+                        new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(FontAwesome.Icon.faw_shopping_bag).withIdentifier(9)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -144,15 +146,18 @@ public class MainActivity extends BaseActivity {
                                     startActivity(intent);
                                 }
                             } else if (drawerItem.getIdentifier() == 5) {
+                                Intent intent = new Intent(MainActivity.this, HistoryScanActivity.class);
+                                startActivity(intent);
+                            } else if (drawerItem.getIdentifier() == 6) {
                                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                                 startActivityForResult(intent, LOGIN_REQUEST);
-                            } else if (drawerItem.getIdentifier() == 6) {
+                            } else if (drawerItem.getIdentifier() == 7) {
                                 fragment = new AlertUserFragment();
                                 getSupportActionBar().setTitle(R.string.alert_drawer);
-                            } else if (drawerItem.getIdentifier() == 7) {
+                            } else if (drawerItem.getIdentifier() == 8) {
                                 fragment = new OfflineEditFragment();
                                 getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
-                            } else if (drawerItem.getIdentifier() == 8) {
+                            } else if (drawerItem.getIdentifier() == 9) {
                                 boolean openBeautyInstalled = Utils.isApplicationInstalled(MainActivity.this, getString(R.string.openBeautyApp));
                                 if(openBeautyInstalled) {
                                     Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(getString(R.string.openBeautyApp));
@@ -160,7 +165,7 @@ public class MainActivity extends BaseActivity {
                                 } else {
                                     try {
                                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getString(R.string.openBeautyApp))));
-                                    } catch (android.content.ActivityNotFoundException anfe) {
+                                    } catch (ActivityNotFoundException anfe) {
                                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getString(R.string.openBeautyApp))));
                                     }
                                 }

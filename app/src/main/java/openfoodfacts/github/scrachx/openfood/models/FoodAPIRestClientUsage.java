@@ -14,6 +14,7 @@ import com.loopj.android.http.RequestParams;
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -80,6 +81,15 @@ public class FoodAPIRestClientUsage {
                                 .show();
                     }else{
                         lt.success();
+                        List<HistoryProduct> resHp = HistoryProduct.find(HistoryProduct.class, "barcode = ?", barcode);
+                        HistoryProduct hp = null;
+                        if(resHp.size() == 1) {
+                            hp = resHp.get(0);
+                            hp.setLastSeen(new Date());
+                        } else {
+                            hp = new HistoryProduct(s.getProduct().getProductName(), s.getProduct().getBrands(), s.getProduct().getImageFrontUrl(), barcode);
+                        }
+                        hp.save();
                         Intent intent = new Intent(activity, ProductActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("state", s);

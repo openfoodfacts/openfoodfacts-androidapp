@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:id="@+id/cardViewHistory"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
+    app:cardCornerRadius="4dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_small"
+        android:id="@+id/historyRel">
+
+        <ImageView
+            android:id="@+id/imgHistoryProduct"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="@dimen/spacing_normal"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/barcodeHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/imgHistoryProduct"
+            android:layout_alignTop="@+id/imgHistoryProduct"
+            android:layout_toLeftOf="@+id/iconShareHistory"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/indigo_400"
+            android:paddingRight="40dp"
+            android:gravity="center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/titleHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/imgHistoryProduct"
+            android:layout_alignLeft="@id/barcodeHistory"
+            android:layout_below="@+id/barcodeHistory"
+            android:layout_toLeftOf="@+id/iconShareHistory"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/indigo_400"
+            android:paddingRight="40dp"
+            android:gravity="center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/brandsHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/imgHistoryProduct"
+            android:layout_alignLeft="@id/titleHistory"
+            android:layout_below="@+id/titleHistory"
+            android:layout_toLeftOf="@+id/iconShareHistory"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/indigo_400"
+            android:paddingRight="40dp"
+            android:gravity="center_vertical"
+            />
+
+        <ImageButton
+            android:id="@+id/iconShareHistory"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/spacing_normal"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_centerVertical="true"
+            android:background="@color/white"
+            android:src="@drawable/ic_share_black_48dp"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

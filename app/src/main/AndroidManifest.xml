@@ -54,13 +54,22 @@
         <activity
             android:name=".views.SaveProductOfflineActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".views.HistoryScanActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged|adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.MainActivity"/>
+        </activity>
+
 
         <meta-data
             android:name="DATABASE"
             android:value="offacts.db"/>
         <meta-data
             android:name="VERSION"
-            android:value="7"/>
+            android:value="10"/>
         <meta-data
             android:name="QUERY_LOG"
             android:value="true"/>
