@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.orm.SugarRecord;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -100,9 +101,7 @@ public class SplashActivity extends BaseActivity {
                 is = getAssets().open(additivesFile);
                 List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {})
                         .readValue(is);
-                for (Additive additive : frenchAdditives) {
-                    additive.save();
-                }
+                SugarRecord.saveInTx(frenchAdditives);
             } catch (IOException e) {
                 result = false;
                 Log.e(ADDITIVE_IMPORT, "Unable to import additives from " + additivesFile);

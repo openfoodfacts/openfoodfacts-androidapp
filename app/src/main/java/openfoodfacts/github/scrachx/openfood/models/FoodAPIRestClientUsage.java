@@ -10,6 +10,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.orm.SugarRecord;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -285,10 +286,7 @@ public class FoodAPIRestClientUsage {
                 try {
                     AllergenRestResponse restResponse = JsonUtils.readFor(AllergenRestResponse.class)
                             .readValue(responseBody);
-
-                    for (Allergen allergen : restResponse.getAllergens()) {
-                        allergen.save();
-                    }
+                    SugarRecord.saveInTx(restResponse.getAllergens());
                     onAllergensCallback.onAllergensResponse(true);
                 } catch (IOException e) {
                     e.printStackTrace();
