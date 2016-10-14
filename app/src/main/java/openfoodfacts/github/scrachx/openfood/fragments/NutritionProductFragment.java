@@ -134,6 +134,10 @@ public class NutritionProductFragment extends BaseFragment {
      * moderate nor high, return nutritionAmount
      */
     private String localiseNutritionLevel(String nutritionAmount){
+        if (nutritionAmount == null) {
+            return getString(R.string.txt_nutrition_not_found);
+        }
+
         switch (nutritionAmount){
             case "low":
                 return getString(R.string.txtNutritionLevelLow);
