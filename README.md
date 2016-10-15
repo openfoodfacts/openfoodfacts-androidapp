@@ -24,7 +24,13 @@ Data about food is of public interest and has to be open. The complete database 
 
 ## Translations
 
-Translations can be found here : https://translations.launchpad.net/openfoodfacts/trunk/+pots/openfoodfacts-android-native
+Translations are made using GetText. We convert translations to and from the Android format using Android2Po.<br><br>
+```easy_install android2po```<br>
+```a2po COMMAND --android myproject/res --gettext myproject/locale```<br>
+```a2po init de fr```<br><br>
+
+You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup): <br>
+https://translations.launchpad.net/openfoodfacts/trunk/+pots/openfoodfacts-android-native
 
 Watch the [topic](https://github.com/openfoodfacts/OpenFoodFacts-androidApp/issues/49).
 
