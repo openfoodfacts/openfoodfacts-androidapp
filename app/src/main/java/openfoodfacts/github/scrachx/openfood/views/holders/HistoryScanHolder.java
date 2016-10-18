@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class HistoryScanHolder extends RecyclerView.ViewHolder {
@@ -55,7 +55,7 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
                 NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
                 boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
                 if(isConnected) {
-                    FoodAPIRestClientUsage api = new FoodAPIRestClientUsage(v.getContext().getString(R.string.openfoodUrl));
+                    OpenFoodAPIClient api = new OpenFoodAPIClient(v.getContext());
                     api.getProduct(txtBarcode.getText().toString(), (Activity) v.getContext());
                 }
             }

@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import com.orm.SugarRecord;
 import com.orm.dsl.Unique;
+
 import java.util.Date;
 
 public class HistoryProduct extends SugarRecord {
@@ -13,13 +14,8 @@ public class HistoryProduct extends SugarRecord {
     @Unique
     private String barcode;
 
-    public HistoryProduct() {
-        this.title = "";
-        this.brands = "";
-        this.url = "";
-        this.barcode = "";
-        this.lastSeen = new Date();
-    }
+    // Default constructor is necessary for SugarRecord
+    public HistoryProduct() {}
 
     public HistoryProduct(String title, String brands, String url, String barcode) {
         this.title = title;

@@ -6,22 +6,28 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.network.FoodAPIRestClient;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * A login screen that offers login via login/password.
@@ -33,6 +39,7 @@ public class LoginActivity extends BaseActivity {
     @BindView(R.id.textInfoLogin) TextView infoLogin;
     @BindView(R.id.buttonSave) Button save;
     @BindView(R.id.buttonCreateAccount) Button signup;
+    OpenFoodAPIService apiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +54,11 @@ public class LoginActivity extends BaseActivity {
                     .neutralText(R.string.ok_button)
                     .show();
         }
+
+        apiClient = new Retrofit.Builder()
+                .baseUrl(this.getString(R.string.openfoodUrl))
+                .build()
+                .create(OpenFoodAPIService.class);
     }
 
     @OnClick(R.id.buttonCreateAccount)
@@ -58,7 +70,7 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick(R.id.buttonSave)
     protected void attemptLogin() {
-        String login = this.loginView.getText().toString();
+        String login = loginView.getText().toString();
         String password = passwordView.getText().toString();
 
         if (!(password.length() > 6)) {
@@ -73,34 +85,34 @@ public class LoginActivity extends BaseActivity {
             return;
         }
 
-        RequestParams requestParams = new RequestParams();
-        requestParams.put("user_id", login);
-        requestParams.put("password", password);
-        requestParams.put(".submit", "Sign-in");
+        final LoadToast lt = new LoadToast(this);
+        save.setClickable(false);
+        lt.setText(getString(R.string.toast_retrieving));
+        lt.setBackgroundColor(getResources().getColor(R.color.indigo_600));
+        lt.setTextColor(getResources().getColor(R.color.white));
+        lt.show();
 
         final Activity context = this;
-
-        FoodAPIRestClient.post(getString(R.string.openfoodUrl) + "/cgi/session.pl", requestParams, new AsyncHttpResponseHandler() {
-
-            LoadToast lt = new LoadToast(context);
-
+        apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onStart() {
-                super.onStart();
-                save.setClickable(false);
-                lt.setText(context.getString(R.string.toast_retrieving));
-                lt.setBackgroundColor(context.getResources().getColor(R.color.indigo_600));
-                lt.setTextColor(context.getResources().getColor(R.color.white));
-                lt.show();
-            }
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (!response.isSuccess()) {
+                    Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
+                    lt.error();
+                    Utils.hideKeyboard(context);
+                    return;
+                }
 
-            @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
-                SharedPreferences settings = context.getSharedPreferences("login", 0);
-                SharedPreferences.Editor editor = settings.edit();
-                String htmlNoParsed = new String(responseBody);
+                String htmlNoParsed = null;
+                try {
+                    htmlNoParsed = response.body().string();
+                } catch (IOException e) {
+                    Log.e("LOGIN", "Unable to parse the login reponse page", e);
+                }
 
-                if (htmlNoParsed.contains("Incorrect user name or password.") || htmlNoParsed.contains("See you soon!")) {
+                SharedPreferences.Editor editor = context.getSharedPreferences("login", 0).edit();
+
+                if (htmlNoParsed == null || htmlNoParsed.contains("Incorrect user name or password.") || htmlNoParsed.contains("See you soon!")) {
                     lt.error();
                     Toast.makeText(context, context.getString(R.string.errorLogin), Toast.LENGTH_LONG).show();
                     loginView.setText("");
@@ -121,20 +133,17 @@ public class LoginActivity extends BaseActivity {
                     finish();
                 }
                 Utils.hideKeyboard(context);
+
             }
 
             @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
                 Utils.hideKeyboard(context);
             }
-
-            @Override
-            public void onFinish() {
-                super.onFinish();
-                save.setClickable(true);
-            }
         });
+
+        save.setClickable(true);
     }
 }

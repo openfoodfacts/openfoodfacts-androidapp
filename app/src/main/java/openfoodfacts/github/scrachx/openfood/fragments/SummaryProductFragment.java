@@ -9,12 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.hkm.slider.Animations.DescriptionAnimation;
 import com.hkm.slider.Indicators.PagerIndicator;
 import com.hkm.slider.SliderLayout;
 import com.hkm.slider.SliderTypes.AdjustableSlide;
 import com.hkm.slider.SliderTypes.BaseSliderView;
+
 import java.util.ArrayList;
+
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -43,7 +46,7 @@ public class SummaryProductFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
-        State state = (State) intent.getExtras().getSerializable("state");
+        final State state = (State) intent.getExtras().getSerializable("state");
 
         ArrayList<String> urlsImages = new ArrayList<>();
         if (state.getProduct().getImageUrl() != null) {
@@ -69,6 +72,8 @@ public class SummaryProductFragment extends BaseFragment {
         sliderImages.setCustomIndicator(pagerIndicator);
         sliderImages.setDuration(5500);
         sliderImages.startAutoCycle();
+
+        //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
 
         if(state.getProduct().getProductName() != null && !state.getProduct().getProductName().trim().isEmpty()) {
             nameProduct.setText(state.getProduct().getProductName());

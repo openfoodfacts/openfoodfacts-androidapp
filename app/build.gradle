@@ -11,6 +11,7 @@ android {
         targetSdkVersion 24
         versionCode 25
         versionName "0.2.7"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     dexOptions {
@@ -40,6 +41,11 @@ android {
         exclude 'META-INF/dependencies.txt'
         exclude 'META-INF/LGPL2.1'
     }
+
+    testOptions {
+        // avoid "Method ... not mocked."
+        unitTests.returnDefaultValues = true
+    }
 }
 
 buildscript {
@@ -67,11 +73,11 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
 
-    compile 'com.loopj.android:android-async-http:1.4.9'
-
     compile 'com.opencsv:opencsv:3.8'
-    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
-    compile 'com.squareup.retrofit:converter-jackson:2.0.0-beta2'
+
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+    compile 'com.squareup.retrofit2:converter-jackson:2.0.0-beta4'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
 
     compile 'com.fasterxml.jackson.core:jackson-core:2.8.3'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.3'
@@ -111,7 +117,19 @@ dependencies {
     // Required for local unit tests (JUnit 4 framework)
     testCompile 'junit:junit:4.12'
 
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile 'net.javacrumbs.json-unit:json-unit-fluent:1.15.0'
+
     // Required for instrumented tests
     androidTestCompile 'com.android.support:support-annotations:24.2.1'
     androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-web:2.2.2'
+    androidTestCompile ('com.android.support.test.espresso:espresso-contrib:2.2.2') {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'design'
+        exclude module: 'recyclerview-v7'
+    }
 }

@@ -16,8 +16,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsListAdapter;
 
@@ -25,7 +25,7 @@ public class SearchProductsFragment extends BaseFragment {
 
     private List<Product> productItems;
     private ProductsListAdapter adapter;
-    private FoodAPIRestClientUsage api;
+    private OpenFoodAPIClient api;
 
     @BindView(R.id.listProducts) ListView listView;
     @BindView(R.id.buttonSearchProducts) Button buttonSearch;
@@ -41,7 +41,7 @@ public class SearchProductsFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         productItems = new ArrayList<>();
-        api = new FoodAPIRestClientUsage(getString(R.string.openfoodUrl));
+        api = new OpenFoodAPIClient(getActivity());
     }
 
     @OnItemClick(R.id.listProducts)
@@ -57,10 +57,10 @@ public class SearchProductsFragment extends BaseFragment {
         if (!nameSearch.getText().toString().isEmpty()) {
             buttonSearch.setEnabled(false);
             api.searchProduct(nameSearch.getText().toString(), getActivity(),
-                    new FoodAPIRestClientUsage.OnProductsCallback() {
+                    new OpenFoodAPIClient.OnProductsCallback() {
                         @Override
-                        public void onProductsResponse(boolean value, List<Product> products) {
-                            if (value) {
+                        public void onProductsResponse(boolean isOk, List<Product> products) {
+                            if (isOk) {
                                 productItems = products;
                                 adapter = new ProductsListAdapter(getActivity(), productItems);
                                 listView.setAdapter(adapter);
