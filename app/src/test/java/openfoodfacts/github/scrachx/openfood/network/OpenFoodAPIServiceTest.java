@@ -227,8 +227,4 @@ public class OpenFoodAPIServiceTest {
         assertEquals(body.getStatus(), 1);
         assertEquals(body.getStatusVerbose(), "fields saved");
     }
-
-    @Test
-    public void signIn_ok() {
-    }
 }
