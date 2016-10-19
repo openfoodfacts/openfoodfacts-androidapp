@@ -32,11 +32,12 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 
 public class AlertUserFragment extends BaseFragment {
 
+    private OpenFoodAPIClient api;
     private List<Allergen> mAllergens;
     private AllergensAdapter mAdapter;
     private RecyclerView mRvAllergens;
@@ -52,7 +53,7 @@ public class AlertUserFragment extends BaseFragment {
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        api = new OpenFoodAPIClient(getActivity());
         mView = view;
         mSettings = getActivity().getSharedPreferences("prefs", 0);
         boolean firstRunAlert = mSettings.getBoolean("firstRunAlert", true);
@@ -135,17 +136,11 @@ public class AlertUserFragment extends BaseFragment {
                             @Override
                             public void onClick(@NonNull final MaterialDialog dialog, @NonNull DialogAction which) {
                                 final SharedPreferences.Editor editor = mSettings.edit();
-                                FoodAPIRestClientUsage api = new FoodAPIRestClientUsage(getString(R.string.openfoodUrl));
-                                api.getAllergens(new FoodAPIRestClientUsage.OnAllergensCallback() {
+
+                                api.getAllergens(new OpenFoodAPIClient.OnAllergensCallback() {
                                     @Override
                                     public void onAllergensResponse(boolean value) {
-                                        if (!value) {
-                                            editor.putBoolean("errorAllergens", true);
-                                            editor.apply();
-                                        } else {
-                                            editor.putBoolean("errorAllergens", false);
-                                            editor.apply();
-                                        }
+                                        editor.putBoolean("errorAllergens", !value).apply();
                                         lt.success();
                                         dialog.hide();
                                     }

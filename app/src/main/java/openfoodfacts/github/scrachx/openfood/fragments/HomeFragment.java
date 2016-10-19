@@ -8,26 +8,33 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import cz.msebera.android.httpclient.Header;
+import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.network.FoodAPIRestClient;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends BaseFragment {
 
     @BindView(R.id.buttonScan) Button mButtonScan;
+
+    private OpenFoodAPIService apiClient;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +44,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
     }
 
@@ -60,25 +68,26 @@ public class HomeFragment extends BaseFragment {
 
     private void checkUserCredentials() {
         final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
-        String loginS = settings.getString("user", "");
-        String passS = settings.getString("pass", "");
+        String login = settings.getString("user", "");
+        String password = settings.getString("pass", "");
 
-        if (!loginS.isEmpty() && !passS.isEmpty()) {
-            RequestParams params = new RequestParams();
-            params.put("user_id", loginS);
-            params.put("password", passS);
-            params.put(".submit", "Sign-in");
-
-            FoodAPIRestClient.post(getString(R.string.openfoodUrl) + "/cgi/session.pl", params, new AsyncHttpResponseHandler() {
-
+        if (!login.isEmpty() && !password.isEmpty()) {
+            apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
                 @Override
-                public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
-                    SharedPreferences.Editor editor = settings.edit();
-                    String htmlNoParsed = new String(responseBody);
-                    if (htmlNoParsed.contains("Incorrect user name or password.") || htmlNoParsed.contains("See you soon!")) {
-                        editor.putString("user", "");
-                        editor.putString("pass", "");
-                        editor.apply();
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    String htmlNoParsed = null;
+                    try {
+                        htmlNoParsed = response.body().string();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    if (htmlNoParsed != null && (htmlNoParsed.contains("Incorrect user name or password.")
+                            || htmlNoParsed.contains("See you soon!"))) {
+                        settings.edit()
+                                .putString("user", "")
+                                .putString("pass", "")
+                                .apply();
+
                         new MaterialDialog.Builder(getActivity())
                                 .title(R.string.alert_dialog_warning_title)
                                 .content(R.string.alert_dialog_warning_msg_user)
@@ -88,7 +97,8 @@ public class HomeFragment extends BaseFragment {
                 }
 
                 @Override
-                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Log.e(HomeFragment.class.getName(), "Unable to Sign-in");
                 }
             });
         }

@@ -23,7 +23,6 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.loopj.android.http.RequestParams;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -33,8 +32,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.FoodUserClientUsage;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -51,12 +50,11 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @BindView(R.id.buttonFromGallery) Button takeGallery;
     @BindView(R.id.buttonSaveProduct) Button save;
 
-    private SendProduct mProduct = new SendProduct();
-    private String mBarcode = null;
-    private FoodUserClientUsage api;
+    private SendProduct mProduct;
+    private String mBarcode;
+    private OpenFoodAPIClient api;
     private final String[] mUnit = new String[1];
     private final String[] mImage = new String[1];
-    private String loginS, passS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,13 +79,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
             }
         }
 
-        api = new FoodUserClientUsage();
-
-        final SharedPreferences settingsUser = getSharedPreferences("login", 0);
-        loginS = settingsUser.getString("user", "");
-        passS = settingsUser.getString("pass", "");
-        final SharedPreferences settings = getSharedPreferences("temp", 0);
-        mBarcode = settings.getString("barcode", "");
+        api = new OpenFoodAPIClient(this);
+        mBarcode = getIntent().getStringExtra("barcode");
 
         EasyImage.configuration(this)
                 .setImagesFolderName("OFF_Images")
@@ -179,16 +172,20 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @OnClick(R.id.buttonSaveProduct)
     protected void onSaveProduct() {
         if (!mProduct.getImgupload_front().isEmpty()) {
-            RequestParams params = new RequestParams();
-            params.put("code", mBarcode);
-            if(!loginS.isEmpty() && !passS.isEmpty()) {
-                params.put("user_id", loginS);
-                params.put("password", passS);
+
+            mProduct.setBarcode(mBarcode);
+            mProduct.setName(name.getText().toString());
+            mProduct.setWeight(weight.getText().toString());
+            mProduct.setWeight_unit(mUnit[0]);
+            mProduct.setStores(store.getText().toString());
+
+            final SharedPreferences settingsUser = getSharedPreferences("login", 0);
+            String login = settingsUser.getString("user", "");
+            String password = settingsUser.getString("pass", "");
+            if(!login.isEmpty() && !password.isEmpty()) {
+                mProduct.setUserId(login);
+                mProduct.setPassword(password);
             }
-            params.put("product_name", name.getText().toString());
-            params.put("quantity", weight.getText().toString() + " " + mUnit[0]);
-            params.put("stores", store.getText().toString());
-            params.put("comment", "added with the new Android app");
 
             Utils.compressImage(mProduct.getImgupload_ingredients());
             Utils.compressImage(mProduct.getImgupload_nutrition());
@@ -199,43 +196,25 @@ public class SaveProductOfflineActivity extends BaseActivity {
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 
             if(isConnected) {
-                api.post(this, params, mProduct.getImgupload_front().replace(".png", "_small.png"), mProduct.getImgupload_ingredients().replace(".png", "_small.png"),
-                        mProduct.getImgupload_nutrition().replace(".png", "_small.png"), mBarcode,
-                        new FoodUserClientUsage.OnProductSentCallback() {
-                            @Override
-                            public void onProductSentResponse(boolean value) {
-                                if(!value) {
-                                    if (mProduct != null) {
-                                        mProduct.setBarcode(mBarcode);
-                                        mProduct.setName(name.getText().toString());
-                                        mProduct.setImgupload_front(mProduct.getImgupload_front());
-                                        mProduct.setImgupload_ingredients(mProduct.getImgupload_ingredients());
-                                        mProduct.setImgupload_nutrition(mProduct.getImgupload_nutrition());
-                                        mProduct.setStores(store.getText().toString());
-                                        mProduct.setWeight(weight.getText().toString());
-                                        mProduct.setWeight_unit(mUnit[0]);
-                                        mProduct.save();
-                                    }
-                                    Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
-                                } else {
-                                    Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
-                                }
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                intent.putExtra("openOfflineEdit",true);
-                                startActivity(intent);
-                                finish();
+                api.post(this, mProduct, new OpenFoodAPIClient.OnProductSentCallback() {
+                    @Override
+                    public void onProductSentResponse(boolean value) {
+                        if(!value) {
+                            if (mProduct != null) {
+                                mProduct.save();
                             }
-                        });
+                            Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
+                        }
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.putExtra("openOfflineEdit",true);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
             } else {
                 if (mProduct != null) {
-                    mProduct.setBarcode(mBarcode);
-                    mProduct.setName(name.getText().toString());
-                    mProduct.setImgupload_front(mProduct.getImgupload_front());
-                    mProduct.setImgupload_ingredients(mProduct.getImgupload_ingredients());
-                    mProduct.setImgupload_nutrition(mProduct.getImgupload_nutrition());
-                    mProduct.setStores(store.getText().toString());
-                    mProduct.setWeight(weight.getText().toString());
-                    mProduct.setWeight_unit(mUnit[0]);
                     mProduct.save();
                 }
                 Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();

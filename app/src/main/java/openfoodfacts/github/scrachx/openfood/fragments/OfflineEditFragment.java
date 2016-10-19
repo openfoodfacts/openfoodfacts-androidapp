@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.loopj.android.http.RequestParams;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +27,10 @@ import butterknife.OnClick;
 import butterknife.OnItemClick;
 import butterknife.OnItemLongClick;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.FoodUserClientUsage;
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
@@ -78,12 +77,9 @@ public class OfflineEditFragment extends BaseFragment {
 
     @OnItemClick(R.id.listOfflineSave)
     protected void OnClickListOffline(int position) {
-        SaveItem si = (SaveItem) listView.getItemAtPosition(position);
-        SharedPreferences settings = getActivity().getSharedPreferences("temp", 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("barcode", si.getBarcode());
-        editor.apply();
         Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
+        SaveItem si = (SaveItem) listView.getItemAtPosition(position);
+        intent.putExtra("barcode", si.getBarcode());
         startActivity(intent);
     }
 
@@ -123,37 +119,42 @@ public class OfflineEditFragment extends BaseFragment {
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
-                        FoodUserClientUsage user = new FoodUserClientUsage();
-                        for (int i = 0; i < listSaveProduct.size(); i++) {
-                            SendProduct sp = listSaveProduct.get(i);
-                            if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()) {
-                                continue;
-                            }
+                    OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getContext());
+                    final List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
+                    for (final SendProduct product : listSaveProduct) {
 
-                            RequestParams params = new RequestParams();
-                            params.put("code", sp.getBarcode());
-                            if(!loginS.isEmpty() && !passS.isEmpty()) {
-                                params.put("user_id", loginS);
-                                params.put("password", passS);
-                            }
-                            if(!sp.getName().isEmpty()) params.put("product_name", sp.getName());
-                            if(!sp.getWeight().isEmpty()) {
-                                if(sp.getWeight_unit().trim().isEmpty()) {
-                                    params.put("quantity", sp.getWeight());
-                                } else {
-                                    params.put("quantity", sp.getWeight() + " " + sp.getWeight_unit());
+                        if (product.getBarcode().isEmpty() || product.getImgupload_front().isEmpty()) {
+                            continue;
+                        }
+
+                        if(!loginS.isEmpty() && !passS.isEmpty()) {
+                            product.setUserId(loginS);
+                            product.setPassword(passS);
+                        }
+
+                        if(!product.getImgupload_ingredients().isEmpty()) {
+                            product.compress(ProductImageField.INGREDIENT);
+                        }
+
+                        if(!product.getImgupload_nutrition().isEmpty()) {
+                            product.compress(ProductImageField.NUTRITION);
+                        }
+
+                        if(!product.getImgupload_front().isEmpty()) {
+                            product.compress(ProductImageField.FRONT);
+                        }
+
+                        apiClient.post(getActivity(), product, new OpenFoodAPIClient.OnProductSentCallback() {
+                            @Override
+                            public void onProductSentResponse(boolean value) {
+                                if (value) {
+                                    saveItems.remove(listSaveProduct.indexOf(product));
+                                    ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
+                                    SendProduct.deleteAll(SendProduct.class, "barcode = ?", product.getBarcode());
                                 }
                             }
-                            if(!sp.getStores().isEmpty()) params.put("stores", sp.getStores());
-                            params.put("comment", "added with the new Android app");
-
-                            if(!sp.getImgupload_ingredients().isEmpty()) Utils.compressImage(sp.getImgupload_ingredients());
-                            if(!sp.getImgupload_nutrition().isEmpty()) Utils.compressImage(sp.getImgupload_nutrition());
-                            if(!sp.getImgupload_front().isEmpty()) Utils.compressImage(sp.getImgupload_front());
-
-                            user.postSaved(getActivity(), params, sp.getImgupload_front().replace(".png", "_small.png"), sp.getImgupload_ingredients().replace(".png", "_small.png"), sp.getImgupload_nutrition().replace(".png", "_small.png"), sp.getBarcode(), listView, i, saveItems);
-                        }
+                        });
+                    }
                     }
                 })
                 .show();

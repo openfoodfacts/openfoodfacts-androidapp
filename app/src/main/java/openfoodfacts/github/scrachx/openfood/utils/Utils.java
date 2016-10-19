@@ -50,7 +50,7 @@ public class Utils {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    public static void compressImage(String url) {
+    public static String compressImage(String url) {
         File fileFront = new File(url);
         Bitmap bt = decodeFile(fileFront);
         File smallFileFront = new File(url.replace(".png", "_small.png"));
@@ -62,6 +62,7 @@ public class Utils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return smallFileFront.toString();
     }
 
     // Decodes image and scales it to reduce memory consumption

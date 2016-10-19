@@ -24,7 +24,7 @@ import java.util.Arrays;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 
 public class BarCodeScannerFragment extends BaseFragment implements MessageDialogFragment.MessageDialogListener,
@@ -39,12 +39,14 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     private boolean mRing;
     private boolean mAutoFocus;
     private int mCameraId = -1;
+    private OpenFoodAPIClient api;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
         final SharedPreferences settings = getActivity().getSharedPreferences("camera", 0);
 
         mScannerView = new ZXingScannerView(getActivity());
+        api = new OpenFoodAPIClient(getActivity());
         if(state != null) {
             mRing = state.getBoolean(RING_STATE, false);
             mFlash = state.getBoolean(FLASH_STATE, false);
@@ -178,14 +180,10 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
             if(isConnected) {
-                FoodAPIRestClientUsage api = new FoodAPIRestClientUsage(getString(R.string.openfoodUrl));
                 api.getProduct(rawResult.getText(), getActivity(), mScannerView, this);
             } else {
-                SharedPreferences settings = getActivity().getSharedPreferences("temp", 0);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putString("barcode", rawResult.getText());
-                editor.apply();
                 Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
+                intent.putExtra("barcode", rawResult.getText());
                 getActivity().startActivity(intent);
                 getActivity().finish();
             }

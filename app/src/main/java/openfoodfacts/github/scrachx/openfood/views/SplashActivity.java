@@ -21,7 +21,7 @@ import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
-import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 
 public class SplashActivity extends BaseActivity {
@@ -128,8 +128,8 @@ public class SplashActivity extends BaseActivity {
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
             if (isConnected) {
                 if (errorAllergens) {
-                    FoodAPIRestClientUsage api = new FoodAPIRestClientUsage(getString(R.string.openfoodUrl));
-                    api.getAllergens(new FoodAPIRestClientUsage.OnAllergensCallback() {
+                    OpenFoodAPIClient api = new OpenFoodAPIClient(this.context);
+                    api.getAllergens(new OpenFoodAPIClient.OnAllergensCallback() {
                         @Override
                         public void onAllergensResponse(boolean value) {
                             if (result && value) {
