@@ -1,10 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -14,21 +14,17 @@ import openfoodfacts.github.scrachx.openfood.views.holders.HistoryScanHolder;
 
 public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> {
 
-    List<HistoryItem> list = Collections.emptyList();
-    Context context;
+    private final List<HistoryItem> list;
 
-    public HistoryListAdapter(List<HistoryItem> list, Context context) {
-        this.list = list;
-        this.context = context;
+    public HistoryListAdapter(List<HistoryItem> list) {
+        this.list = list == null ? Collections.<HistoryItem>emptyList() : list;
     }
 
     @Override
     public HistoryScanHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //Inflate the layout, initialize the View Holder
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.history_list_item, parent, false);
-        HistoryScanHolder holder = new HistoryScanHolder(v);
-        return holder;
-
+        return new HistoryScanHolder(v);
     }
 
     @Override

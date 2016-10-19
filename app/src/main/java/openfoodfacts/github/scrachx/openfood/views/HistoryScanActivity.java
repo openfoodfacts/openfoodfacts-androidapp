@@ -18,7 +18,6 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -50,13 +49,14 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
 
 public class HistoryScanActivity extends BaseActivity {
 
-    private ShareActionProvider mShareActionProvider;
     private List<HistoryItem> productItems;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.listHistoryScan)
     RecyclerView recyclerHistoryScanView;
+    private boolean emptyHistory;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -144,18 +144,17 @@ public class HistoryScanActivity extends BaseActivity {
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_history, menu);
-        return true;
-    }
 
-    // Call to update the share intent
-    private void setShareIntent(Intent shareIntent) {
-        if (mShareActionProvider != null) {
-            mShareActionProvider.setShareIntent(shareIntent);
-        }
+        menu.findItem(R.id.action_export_all_history)
+                .setVisible(!emptyHistory);
+
+        menu.findItem(R.id.action_remove_all_history)
+                .setVisible(!emptyHistory);
+
+        return true;
     }
 
     public class FillAdapter extends AsyncTask<Context, Void, Context> {
@@ -165,6 +164,8 @@ public class HistoryScanActivity extends BaseActivity {
             List<HistoryProduct> listHistoryProducts = HistoryProduct.listAll(HistoryProduct.class);
             if (listHistoryProducts.size() == 0) {
                 Toast.makeText(getApplicationContext(), R.string.txtNoData, Toast.LENGTH_LONG).show();
+                emptyHistory = true;
+                invalidateOptionsMenu();
                 cancel(true);
             } else {
                 Toast.makeText(getApplicationContext(), R.string.txtLoading, Toast.LENGTH_LONG).show();
@@ -196,7 +197,7 @@ public class HistoryScanActivity extends BaseActivity {
 
         @Override
         protected void onPostExecute(Context ctx) {
-            HistoryListAdapter adapter = new HistoryListAdapter(productItems, getApplication());
+            HistoryListAdapter adapter = new HistoryListAdapter(productItems);
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
         }
