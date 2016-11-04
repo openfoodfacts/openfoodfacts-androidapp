@@ -34,6 +34,16 @@ Translations are made using GetText. We convert translations to and from the And
 ```a2po COMMAND --android myproject/res --gettext myproject/locale```<br>
 ```a2po init de fr```<br><br>
 
+### Refreshing exported GetText files
+```a2po export```
+
+### Syncing with Launchpad
+Ask @teolemon to do it
+
+### Importing back to Android
+```a2po import```
+
+
 You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup): <br>
 https://translations.launchpad.net/openfoodfacts/trunk/+pots/openfoodfacts-android-native
 
