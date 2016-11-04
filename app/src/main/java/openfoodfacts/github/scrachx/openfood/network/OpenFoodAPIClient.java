@@ -298,40 +298,34 @@ public class OpenFoodAPIClient {
         apiService.saveProduct(product.getBarcode(), product.getName(), product.getStores(), product.getUserId(), product.getPassword()).enqueue(new Callback<State>() {
             @Override
             public void onResponse(Call<State> call, Response<State> response) {
-                if (!response.isSuccess()) {
+                if (!response.isSuccess() || response.body().getStatus() == 0) {
+                    lt.error();
                     productSentCallback.onProductSentResponse(false);
                     return;
                 }
 
-                long status = response.body().getStatus();
-                if (status == 0) {
-                    String imguploadFront = product.getImgupload_front();
-                    ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
-                    postImg(activity, image);
+                String imguploadFront = product.getImgupload_front();
+                ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
+                postImg(activity, image);
 
-                    String imguploadIngredients = product.getImgupload_ingredients();
-                    if (StringUtils.isNotEmpty(imguploadIngredients)) {
-                        postImg(activity, new ProductImage(product.getBarcode(), INGREDIENT, new File(imguploadIngredients)));
-                    }
-
-                    String imguploadNutrition = product.getImgupload_nutrition();
-                    if (StringUtils.isNotBlank(imguploadNutrition)) {
-                        postImg(activity, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)));
-                    }
-
-                    lt.error();
-                    productSentCallback.onProductSentResponse(false);
-                } else {
-                    lt.success();
-                    productSentCallback.onProductSentResponse(true);
+                String imguploadIngredients = product.getImgupload_ingredients();
+                if (StringUtils.isNotEmpty(imguploadIngredients)) {
+                    postImg(activity, new ProductImage(product.getBarcode(), INGREDIENT, new File(imguploadIngredients)));
                 }
 
+                String imguploadNutrition = product.getImgupload_nutrition();
+                if (StringUtils.isNotBlank(imguploadNutrition)) {
+                    postImg(activity, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)));
+                }
+
+                lt.success();
+                productSentCallback.onProductSentResponse(true);
             }
 
             @Override
             public void onFailure(Call<State> call, Throwable t) {
-                productSentCallback.onProductSentResponse(false);
                 lt.error();
+                productSentCallback.onProductSentResponse(false);
             }
         });
     }
