@@ -29,6 +29,7 @@ Data about food is of public interest and has to be open. The complete database 
 
 ## Translations
 
+### Initial setup (done)
 Translations are made using GetText. We convert translations to and from the Android format using Android2Po.<br><br>
 ```easy_install android2po```<br>
 ```a2po COMMAND --android myproject/res --gettext myproject/locale```<br>
@@ -43,6 +44,7 @@ Ask @teolemon to do it
 ### Importing back to Android
 ```a2po import```
 
+### Translate Open Food Facts in your language
 
 You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup): <br>
 https://translations.launchpad.net/openfoodfacts/trunk/+pots/openfoodfacts-android-native
