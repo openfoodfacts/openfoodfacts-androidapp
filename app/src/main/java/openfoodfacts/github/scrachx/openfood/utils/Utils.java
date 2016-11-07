@@ -20,13 +20,15 @@ public class Utils {
 
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE= 2;
+    private static final String OPEN_FOOD_FACTS_WORLD_URL = "http://world.openfoodfacts.org/";
+    private static final String HTTP_FR_OPENFOODFACTS_ORG = "http://fr.openfoodfacts.org/";
 
     public static String getUriByCurrentLanguage() {
         String url;
         if (Locale.getDefault().getLanguage().contains("fr")){
-            url = "http://fr.openfoodfacts.org/";
+            url = HTTP_FR_OPENFOODFACTS_ORG;
         } else {
-            url = "http://world.openfoodfacts.org/";
+            url = OPEN_FOOD_FACTS_WORLD_URL;
         }
         return url;
     }
@@ -34,9 +36,9 @@ public class Utils {
     public static String getUriProductByCurrentLanguage() {
         String url;
         if (Locale.getDefault().getLanguage().contains("fr")){
-            url = "http://fr.openfoodfacts.org/produit/";
+            url = HTTP_FR_OPENFOODFACTS_ORG + "produit/";
         } else {
-            url = "http://world.openfoodfacts.org/product/";
+            url = OPEN_FOOD_FACTS_WORLD_URL + "product/";
         }
         return url;
     }
