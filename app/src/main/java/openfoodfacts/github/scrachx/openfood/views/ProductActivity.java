@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
@@ -84,8 +85,11 @@ public class ProductActivity extends BaseActivity {
                 if (mState.getProduct().getUrl() != null) {
                     url = " " + mState.getProduct().getUrl();
                 }
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(browserIntent);
+
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                builder.setToolbarColor(getResources().getColor(R.color.indigo_400));
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(this, Uri.parse(url));
             default:
                 return super.onOptionsItemSelected(item);
         }
