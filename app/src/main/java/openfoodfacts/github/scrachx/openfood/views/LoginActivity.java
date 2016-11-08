@@ -3,6 +3,8 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
@@ -159,8 +161,12 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
     @OnClick(R.id.buttonCreateAccount)
     protected void onCreateUser() {
+        Bitmap icon = ((BitmapDrawable) getResources().getDrawable(R.drawable.ic_arrow_back)).getBitmap();
+
         CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder(customTabActivityHelper.getSession())
+                .setShowTitle(true)
                 .setToolbarColor(getResources().getColor(R.color.indigo_400))
+                .setCloseButtonIcon(icon)
                 .build();
 
         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, uri, new WebViewFallback());
