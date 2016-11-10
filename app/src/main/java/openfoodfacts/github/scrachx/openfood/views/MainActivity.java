@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -53,10 +54,19 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 public class MainActivity extends BaseActivity {
 
     private static final int LOGIN_REQUEST = 1;
-
+    @BindView(R.id.toolbar) Toolbar toolbar;
     private AccountHeader headerResult = null;
     private Drawer result = null;
-    @BindView(R.id.toolbar) Toolbar toolbar;
+    private OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
+            if (drawerItem instanceof Nameable) {
+                Log.i("material-drawer", "DrawerItem: " + ((Nameable) drawerItem).getName() + " - toggleChecked: " + isChecked);
+            } else {
+                Log.i("material-drawer", "toggleChecked: " + isChecked);
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,10 +120,12 @@ public class MainActivity extends BaseActivity {
                         new SectionDrawerItem().withName(R.string.user_drawer),
                         new SecondaryDrawerItem().withName(R.string.sign_in_drawer).withIcon(FontAwesome.Icon.faw_sign_in).withIdentifier(6),
                         new SecondaryDrawerItem().withName(R.string.alert_drawer).withIcon(FontAwesome.Icon.faw_info).withIdentifier(7),
+                        new SecondaryDrawerItem().withName(R.string.action_preferences).withIcon(FontAwesome.Icon.faw_cog).withIdentifier(8),
                         new DividerDrawerItem(),
-                        new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(FontAwesome.Icon.faw_anchor).withIdentifier(8),
+                        new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(FontAwesome.Icon.faw_anchor).withIdentifier(9),
                         new DividerDrawerItem(),
-                        new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(FontAwesome.Icon.faw_shopping_bag).withIdentifier(9)
+                        new PrimaryDrawerItem().withName(R.string.action_about).withIcon(FontAwesome.Icon.faw_question).withIdentifier(10),
+                        new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(FontAwesome.Icon.faw_shopping_bag).withIdentifier(11)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -155,9 +167,19 @@ public class MainActivity extends BaseActivity {
                                 fragment = new AlertUserFragment();
                                 getSupportActionBar().setTitle(R.string.alert_drawer);
                             } else if (drawerItem.getIdentifier() == 8) {
+                                fragment = new PreferencesFragment();
+                                getSupportActionBar().setTitle(R.string.action_preferences);
+                            } else if (drawerItem.getIdentifier() == 9) {
                                 fragment = new OfflineEditFragment();
                                 getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
-                            } else if (drawerItem.getIdentifier() == 9) {
+                            } else if (drawerItem.getIdentifier() == 10) {
+                                new MaterialDialog.Builder(MainActivity.this)
+                                        .title(R.string.action_about)
+                                        .content(R.string.txtAbout)
+                                        .neutralText(R.string.txtOk)
+                                        .show();
+                                return false;
+                            } else if (drawerItem.getIdentifier() == 11) {
                                 boolean openBeautyInstalled = Utils.isApplicationInstalled(MainActivity.this, getString(R.string.openBeautyApp));
                                 if(openBeautyInstalled) {
                                     Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(getString(R.string.openBeautyApp));
@@ -218,17 +240,6 @@ public class MainActivity extends BaseActivity {
         return new ProfileDrawerItem().withName(loginS).withIcon(R.drawable.img_home).withIdentifier(100);
     }
 
-    private OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
-            if (drawerItem instanceof Nameable) {
-                Log.i("material-drawer", "DrawerItem: " + ((Nameable) drawerItem).getName() + " - toggleChecked: " + isChecked);
-            } else {
-                Log.i("material-drawer", "toggleChecked: " + isChecked);
-            }
-        }
-    };
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
@@ -270,18 +281,18 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+        builder.setToolbarColor(getResources().getColor(R.color.indigo_400));
+        CustomTabsIntent customTabsIntent = builder.build();
+
+        String uriByLang = Utils.getUriByCurrentLanguage();
 
         switch (item.getItemId()) {
-            case R.id.action_about:
-                new MaterialDialog.Builder(this)
-                    .title(R.string.action_about)
-                    .content(R.string.txtAbout)
-                    .neutralText(R.string.txtOk)
-                    .show();
+            case R.id.action_contribute:
+                customTabsIntent.launchUrl(this, Uri.parse(uriByLang + "contribute"));
                 return true;
-            case R.id.action_preferences:
-                getSupportActionBar().setTitle(R.string.action_preferences);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PreferencesFragment()).commit();
+            case R.id.action_discover:
+                customTabsIntent.launchUrl(this, Uri.parse(uriByLang + "discover"));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

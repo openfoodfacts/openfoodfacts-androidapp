@@ -5,6 +5,9 @@
   <string name="action_settings">Paramètres</string>
   <string name="action_about">À propos</string>
   <string name="action_find">Chercher</string>
+  <string name="action_discover">Découvrir</string>
+  <string name="action_contribute">Contributer</string>
+
   <string name="text_barcode">Ajoutez le code barre :</string>
   <string-array name="nav_drawer_items_product">
     <item>Résumé</item>
