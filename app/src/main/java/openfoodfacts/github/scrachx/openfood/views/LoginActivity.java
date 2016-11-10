@@ -3,8 +3,11 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.customtabs.CustomTabsIntent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
@@ -24,6 +27,8 @@ import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,20 +36,34 @@ import retrofit2.Retrofit;
 
 /**
  * A login screen that offers login via login/password.
+ * This Activity connect to the Chrome Custom Tabs Service on startup to prefetch the url.
  */
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback {
 
     @BindView(R.id.editTextLogin) EditText loginView;
     @BindView(R.id.editTextPass) EditText passwordView;
     @BindView(R.id.textInfoLogin) TextView infoLogin;
     @BindView(R.id.buttonSave) Button save;
     @BindView(R.id.buttonCreateAccount) Button signup;
-    OpenFoodAPIService apiClient;
+
+    private OpenFoodAPIService apiClient;
+    private CustomTabActivityHelper customTabActivityHelper;
+    private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        uri = Uri.parse(Utils.getUriByCurrentLanguage() + "cgi/user.pl");
+
+        // prefetch the uri
+        customTabActivityHelper = new CustomTabActivityHelper();
+        customTabActivityHelper.setConnectionCallback(this);
+        customTabActivityHelper.mayLaunchUrl(uri, null, null);
+
+        signup.setEnabled(false);
+
         final SharedPreferences settings = getSharedPreferences("login", 0);
         String loginS = settings.getString("user", getResources().getString(R.string.txt_anonymous));
         if(!loginS.equals(getResources().getString(R.string.txt_anonymous))) {
@@ -59,13 +78,6 @@ public class LoginActivity extends BaseActivity {
                 .baseUrl(this.getString(R.string.openfoodUrl))
                 .build()
                 .create(OpenFoodAPIService.class);
-    }
-
-    @OnClick(R.id.buttonCreateAccount)
-    protected void onCreateUser() {
-        Intent browser = new Intent(Intent.ACTION_VIEW);
-        browser.setData(Uri.parse(Utils.getUriByCurrentLanguage() + "cgi/user.pl"));
-        startActivity(browser);
     }
 
     @OnClick(R.id.buttonSave)
@@ -145,5 +157,47 @@ public class LoginActivity extends BaseActivity {
         });
 
         save.setClickable(true);
+    }
+
+    @OnClick(R.id.buttonCreateAccount)
+    protected void onCreateUser() {
+        Bitmap icon = ((BitmapDrawable) getResources().getDrawable(R.drawable.ic_arrow_back)).getBitmap();
+
+        CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder(customTabActivityHelper.getSession())
+                .setShowTitle(true)
+                .setToolbarColor(getResources().getColor(R.color.indigo_400))
+                .setCloseButtonIcon(icon)
+                .build();
+
+        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, uri, new WebViewFallback());
+    }
+
+    @Override
+    public void onCustomTabsConnected() {
+        signup.setEnabled(true);
+    }
+
+    @Override
+    public void onCustomTabsDisconnected() {
+        signup.setEnabled(false);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        customTabActivityHelper.bindCustomTabsService(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        customTabActivityHelper.unbindCustomTabsService(this);
+        signup.setEnabled(false);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        customTabActivityHelper.setConnectionCallback(null);
     }
 }
