@@ -85,7 +85,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         String login = loginView.getText().toString();
         String password = passwordView.getText().toString();
 
-        if (!(password.length() > 6)) {
+        if (!(password.length() >= 6)) {
             passwordView.setError(getString(R.string.error_invalid_password));
             passwordView.requestFocus();
             return;
@@ -161,7 +161,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
     @OnClick(R.id.buttonCreateAccount)
     protected void onCreateUser() {
-        Bitmap icon = ((BitmapDrawable) getResources().getDrawable(R.drawable.ic_arrow_back)).getBitmap();
+        Bitmap icon = ((BitmapDrawable) getResources().getDrawable(R.drawable.ic_arrow_back_black_48dp)).getBitmap();
 
         CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder(customTabActivityHelper.getSession())
                 .setShowTitle(true)
