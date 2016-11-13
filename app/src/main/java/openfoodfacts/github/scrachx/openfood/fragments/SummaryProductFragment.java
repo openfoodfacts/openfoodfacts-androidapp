@@ -55,9 +55,6 @@ public class SummaryProductFragment extends BaseFragment {
         if (state.getProduct().getImageIngredientsUrl() != null) {
             urlsImages.add(state.getProduct().getImageIngredientsUrl());
         }
-        if (state.getProduct().getImageNutritionUrl() != null) {
-            urlsImages.add(state.getProduct().getImageNutritionUrl());
-        }
         ArrayList<AdjustableSlide> list = new ArrayList<>();
         for (int h = 0; h < urlsImages.size(); h++) {
             AdjustableSlide textSliderView = new AdjustableSlide(view.getContext());

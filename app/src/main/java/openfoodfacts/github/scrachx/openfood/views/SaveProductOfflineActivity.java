@@ -251,9 +251,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
             }
 
             @Override
-            public void onImagePicked(File imageFile, EasyImage.ImageSource source, int type) {
-                //Handle the image
-                onPhotoReturned(imageFile);
+            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
+                onPhotoReturned(imageFiles.get(0));
             }
 
             @Override

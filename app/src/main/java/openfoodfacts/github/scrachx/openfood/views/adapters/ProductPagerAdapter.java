@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 
@@ -28,6 +29,8 @@ public class ProductPagerAdapter extends FragmentStatePagerAdapter {
                 return new IngredientsProductFragment();
             case (2):
                 return new NutritionProductFragment();
+            case (3):
+                return new NutritionInfoProductFragment();
             default:
                 return new SummaryProductFragment();
         }
@@ -35,7 +38,7 @@ public class ProductPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     @Override
@@ -47,6 +50,8 @@ public class ProductPagerAdapter extends FragmentStatePagerAdapter {
                 return navMenuTitles[1];
             case (2):
                 return navMenuTitles[2];
+            case (3):
+                return navMenuTitles[3];
             default:
                 return navMenuTitles[0];
         }

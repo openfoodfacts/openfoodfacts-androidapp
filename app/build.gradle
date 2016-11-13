@@ -111,7 +111,7 @@ dependencies {
     compile 'com.mikepenz:material-design-iconic-typeface:2.2.0.1@aar'
     compile 'com.mikepenz:fontawesome-typeface:4.6.0.1@aar'
 
-    compile 'com.github.jkwiecien:EasyImage:1.2.1'
+    compile 'com.github.jkwiecien:EasyImage:1.4.0'
 
     compile 'com.squareup.picasso:picasso:2.5.2'
 

@@ -54,6 +54,9 @@
             android:name=".views.SaveProductOfflineActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".views.FullScreenImage"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".views.HistoryScanActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
