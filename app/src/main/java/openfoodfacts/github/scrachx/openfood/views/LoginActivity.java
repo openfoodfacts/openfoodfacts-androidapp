@@ -20,6 +20,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.io.IOException;
+import java.net.HttpCookie;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -119,7 +120,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                 try {
                     htmlNoParsed = response.body().string();
                 } catch (IOException e) {
-                    Log.e("LOGIN", "Unable to parse the login reponse page", e);
+                    Log.e("LOGIN", "Unable to parse the login response page", e);
                 }
 
                 SharedPreferences.Editor editor = context.getSharedPreferences("login", 0).edit();
@@ -134,6 +135,17 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                     editor.apply();
                     infoLogin.setText(R.string.txtInfoLoginNo);
                 } else {
+                    // store the user session id (user_session and user_id)
+                    for (HttpCookie httpCookie : HttpCookie.parse(response.headers().get("set-cookie"))) {
+                        if (httpCookie.getDomain().equals(".openfoodfacts.org") && httpCookie.getPath().equals("/")) {
+                            String[] cookieValues = httpCookie.getValue().split("&");
+                            for (int i = 0; i < cookieValues.length; i++) {
+                                editor.putString(cookieValues[i], cookieValues[++i]);
+                            }
+
+                            break;
+                        }
+                    }
                     lt.success();
                     Toast.makeText(context, context.getResources().getText(R.string.txtToastSaved), Toast.LENGTH_LONG).show();
                     editor.putString("user", loginView.getText().toString());
