@@ -16,13 +16,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageViewProduct"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="@dimen/spacing_normal"
-                android:src="@drawable/img_default_product"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:maxHeight="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/imageViewNutritionFullIng" />
 
             <TextView
                 android:id="@+id/textIngredientProduct"

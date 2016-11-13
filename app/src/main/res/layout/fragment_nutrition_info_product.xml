@@ -15,11 +15,11 @@
 
     <ImageButton
         android:layout_width="wrap_content"
-        android:maxWidth="300dp"
+        android:maxHeight="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textPerPortion"
         android:layout_centerHorizontal="true"
-        android:id="@+id/imageViewNutritionFull" />
+        android:id="@+id/imageViewNutritionFullNut" />
 
     <GridView
         android:id="@+id/gridView"
@@ -32,7 +32,7 @@
         android:horizontalSpacing="10dp"
         android:stretchMode="spacingWidthUniform"
         android:layout_marginTop="18dp"
-        android:layout_below="@+id/imageViewNutritionFull"
+        android:layout_below="@+id/imageViewNutritionFullNut"
         android:layout_centerHorizontal="true">
 
     </GridView >

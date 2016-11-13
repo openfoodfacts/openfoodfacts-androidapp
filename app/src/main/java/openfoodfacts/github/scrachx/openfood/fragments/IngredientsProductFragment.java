@@ -12,9 +12,11 @@ import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,9 +25,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 
 public class IngredientsProductFragment extends BaseFragment {
 
@@ -36,6 +41,9 @@ public class IngredientsProductFragment extends BaseFragment {
     @BindView(R.id.textPalmOilProduct) TextView palmOilProduct;
     @BindView(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
     @BindView(R.id.ingredientContainer) ViewGroup containerView;
+    @BindView(R.id.imageViewNutritionFullIng) ImageView mImageNutritionFullIng;
+
+    private String mUrlImage;
     private State mState;
 
     public static final Pattern CODE_PATTERN = Pattern.compile("[eE][a-zA-Z0-9]+");
@@ -52,6 +60,13 @@ public class IngredientsProductFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
+
+        if (!Utils.isNullOrEmpty(mState.getProduct().getImageIngredientsUrl())) {
+            Picasso.with(view.getContext())
+                    .load(mState.getProduct().getImageIngredientsUrl())
+                    .into(mImageNutritionFullIng);
+            mUrlImage = mState.getProduct().getImageIngredientsUrl();
+        }
 
         if(mState != null && mState.getProduct().getIngredientsText() != null) {
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(Html.fromHtml(mState.getProduct().getIngredientsText().replace("_","")));
@@ -185,5 +200,14 @@ public class IngredientsProductFragment extends BaseFragment {
             allergens.append(l).append(' ');
         }
         return allergens.toString();
+    }
+
+    @OnClick(R.id.imageViewNutritionFullIng)
+    public void openFullScreen(View v) {
+        Intent intent = new Intent(v.getContext(), FullScreenImage.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("imageurl", mUrlImage);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

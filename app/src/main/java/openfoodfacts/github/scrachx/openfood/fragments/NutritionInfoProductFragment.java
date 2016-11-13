@@ -30,7 +30,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
     GridView mGv;
     @BindView(R.id.textPerPortion)
     TextView mTextPerPortion;
-    @BindView(R.id.imageViewNutritionFull)
+    @BindView(R.id.imageViewNutritionFullNut)
     ImageView mImageNutritionFull;
 
     private String mUrlImage;
@@ -102,7 +102,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
         return -1;
     }
 
-    @OnClick(R.id.imageViewNutritionFull)
+    @OnClick(R.id.imageViewNutritionFullNut)
     public void openFullScreen(View v) {
         Intent intent = new Intent(v.getContext(), FullScreenImage.class);
         Bundle bundle = new Bundle();

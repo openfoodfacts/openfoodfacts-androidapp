@@ -8,6 +8,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hkm.slider.Animations.DescriptionAnimation;
@@ -15,12 +16,16 @@ import com.hkm.slider.Indicators.PagerIndicator;
 import com.hkm.slider.SliderLayout;
 import com.hkm.slider.SliderTypes.AdjustableSlide;
 import com.hkm.slider.SliderTypes.BaseSliderView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 
 public class SummaryProductFragment extends BaseFragment {
 
@@ -34,8 +39,10 @@ public class SummaryProductFragment extends BaseFragment {
     @BindView(R.id.textStoreProduct) TextView storeProduct;
     @BindView(R.id.textCountryProduct) TextView countryProduct;
     @BindView(R.id.textCategoryProduct) TextView categoryProduct;
-    @BindView(R.id.slider) SliderLayout sliderImages;
     @BindView(R.id.custom_indicator) PagerIndicator pagerIndicator;
+    @BindView(R.id.imageViewNutritionFullSum) ImageView mImageNutritionFullSum;
+
+    private String mUrlImage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,20 +62,12 @@ public class SummaryProductFragment extends BaseFragment {
         if (state.getProduct().getImageIngredientsUrl() != null) {
             urlsImages.add(state.getProduct().getImageIngredientsUrl());
         }
-        ArrayList<AdjustableSlide> list = new ArrayList<>();
-        for (int h = 0; h < urlsImages.size(); h++) {
-            AdjustableSlide textSliderView = new AdjustableSlide(view.getContext());
-            textSliderView
-                    .image(urlsImages.get(h))
-                    .setScaleType(BaseSliderView.ScaleType.FitCenterCrop);
-            list.add(textSliderView);
+        if (!Utils.isNullOrEmpty(state.getProduct().getImageUrl())) {
+            Picasso.with(view.getContext())
+                    .load(state.getProduct().getImageUrl())
+                    .into(mImageNutritionFullSum);
+            mUrlImage = state.getProduct().getImageUrl();
         }
-        sliderImages.loadSliderList(list);
-        sliderImages.setCustomAnimation(new DescriptionAnimation());
-        sliderImages.setSliderTransformDuration(1000, new LinearOutSlowInInterpolator());
-        sliderImages.setCustomIndicator(pagerIndicator);
-        sliderImages.setDuration(5500);
-        sliderImages.startAutoCycle();
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
 
@@ -126,9 +125,12 @@ public class SummaryProductFragment extends BaseFragment {
         }
     }
 
-    @Override
-    public void onStop() {
-        sliderImages.stopAutoCycle();
-        super.onStop();
+    @OnClick(R.id.imageViewNutritionFullSum)
+    public void openFullScreen(View v) {
+        Intent intent = new Intent(v.getContext(), FullScreenImage.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("imageurl", mUrlImage);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
