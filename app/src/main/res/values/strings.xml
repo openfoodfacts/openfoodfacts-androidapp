@@ -131,7 +131,7 @@
     <string name="txtAllsent">Products sent</string>
     <string name="txtPalm">The product does not contain any palm oil</string>
     <string name="txtBarcodeNotValid">Barcode not valid</string>
-    <string name="try_it_scan_now">Try it! Scan now!</string>
+    <string name="try_it_scan_now">Scan product</string>
     <string name="share">Share</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">Sign up</string>
@@ -180,7 +180,7 @@
 
     <!-- Strings related to login -->
     <string name="error_invalid_password">The password needs to be a least 6 characters long.</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="error_field_required">This field is required.</string>
     <string name="action_preferences">Preferences</string>
     <string name="prefs_scan_startup">Scan on startup</string>
     <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
@@ -212,7 +212,7 @@
     <string name="nutrition_fiber">Dietary fiber</string>
     <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
     <string name="nutrition_header">Nutrition facts</string>
-    <string name="nutrition_no_data_message">No data is available on this product</string>
+    <string name="nutrition_no_data_message">No data is available for this product</string>
     <string name="nutrition_per_quantity">For 100g/100ml</string>
     <string name="nutrition_proteins">Proteins</string>
     <string name="nutrition_proteins_short_name">Proteins (g)</string>
