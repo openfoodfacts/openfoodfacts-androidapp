@@ -8,15 +8,16 @@ android:
     - tools
 
     # The BuildTools version used by your project
-    - build-tools-23.0.2
+    - build-tools-25.0.0
 
     # The SDK version used to compile your project
-    - android-24
+    - android-25
 
     # Additional components
     - extra-google-google_play_services
     - extra-google-m2repository
     - extra-android-m2repository
+    - extra-android-support
     - addon-google_apis-google-19
 
     # Specify at least one system image,
@@ -24,8 +25,11 @@ android:
     # - sys-img-armeabi-v7a-android-19
     # - sys-img-x86-android-17
   licenses:
-    - 'android-sdk-.*'
-    - '.*intel.+'
+      - 'android-sdk-preview-license-.+'
+      - 'android-sdk-license-.+'
+      - 'google-gdk-license-.+'
+      - '.*intel.+'
+
 # Emulator Management: Create, Start and Wait
 before_script:
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi armeabi-v7a
