@@ -173,7 +173,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
     @OnClick(R.id.buttonCreateAccount)
     protected void onCreateUser() {
-        Bitmap icon = ((BitmapDrawable) getResources().getDrawable(R.drawable.ic_arrow_back_black_48dp)).getBitmap();
+        Bitmap icon = ((BitmapDrawable) getResources().getDrawable(R.drawable.ic_navigation_arrow_back)).getBitmap();
 
         CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder(customTabActivityHelper.getSession())
                 .setShowTitle(true)

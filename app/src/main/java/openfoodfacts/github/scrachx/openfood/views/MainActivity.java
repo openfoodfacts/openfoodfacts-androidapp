@@ -5,6 +5,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -20,24 +21,23 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CompoundButton;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.fastadapter.utils.RecyclerViewCacheUtil;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.interfaces.OnCheckedChangeListener;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -49,30 +49,32 @@ import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsFragment;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback {
 
+    public static final int USER_PROFILE = 100;
     private static final int LOGIN_REQUEST = 1;
+    private static final long PROFILE_SETTING = 200;
+
     @BindView(R.id.toolbar) Toolbar toolbar;
     private AccountHeader headerResult = null;
     private Drawer result = null;
-    private OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
-            if (drawerItem instanceof Nameable) {
-                Log.i("material-drawer", "DrawerItem: " + ((Nameable) drawerItem).getName() + " - toggleChecked: " + isChecked);
-            } else {
-                Log.i("material-drawer", "toggleChecked: " + isChecked);
-            }
-        }
-    };
+
+    private CustomTabActivityHelper customTabActivityHelper;
+    private CustomTabsIntent customTabsIntent;
+
+    private Uri userAccountUri;
+    private Uri contributeUri;
+    private Uri discoverUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final IProfile profile = getProfile();
+        final IProfile profile = getUserProfile();
         LocaleHelper.setLocale(this, LocaleHelper.getLanguage(this));
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
@@ -93,15 +95,39 @@ public class MainActivity extends BaseActivity {
             getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
         }
 
-
         // Create the AccountHeader
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.background_header_drawer)
                 .addProfiles(profile)
+                .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
+                    @Override
+                    public boolean onProfileChanged(View view, IProfile profile, boolean current) {
+                        if (profile instanceof IDrawerItem && profile.getIdentifier() == PROFILE_SETTING) {
+                            CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, userAccountUri, new WebViewFallback());
+                        }
+
+                        //false if you have not consumed the event and it should close the drawer
+                        return false;
+                    }
+                })
                 .withSavedInstance(savedInstanceState)
                 .build();
+
+        // Add Manage Account profile if the user is connected
+        SharedPreferences preferences = getSharedPreferences("login", 0);
+        String userLogin = preferences.getString("user", null);
+        String userSession = preferences.getString("user_session", null);
+        if (userLogin != null && userSession != null) {
+            userAccountUri = Uri.parse(Utils.getUriByCurrentLanguage() + "cgi/user.pl?userid=" + userLogin + "&type=edit&user_session=" + userSession);
+            customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null);
+
+            headerResult.addProfiles(new ProfileSettingDrawerItem()
+                    .withName(getString(R.string.action_manage_account))
+                    .withIcon(GoogleMaterial.Icon.gmd_settings)
+                    .withIdentifier(PROFILE_SETTING));
+        }
 
         //Create the drawer
         result = new DrawerBuilder()
@@ -225,18 +251,37 @@ public class MainActivity extends BaseActivity {
         }
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        boolean launchScan = settings.getBoolean("startScan",false);
-        if(launchScan) {
+        if (settings.getBoolean("startScan", false)) {
             Intent cameraIntent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
             startActivity(cameraIntent);
         }
+
+        contributeUri = Uri.parse(Utils.getUriByCurrentLanguage() + "contribute");
+        discoverUri = Uri.parse(Utils.getUriByCurrentLanguage() + "discover");
+
+        // chrome custom tab init
+        customTabActivityHelper = new CustomTabActivityHelper();
+        customTabActivityHelper.setConnectionCallback(this);
+
+        // prefetch uris
+        customTabActivityHelper.mayLaunchUrl(contributeUri, null, null);
+        customTabActivityHelper.mayLaunchUrl(discoverUri, null, null);
+
+        customTabsIntent = new CustomTabsIntent.Builder(customTabActivityHelper.getSession())
+                .setShowTitle(true)
+                .setToolbarColor(getResources().getColor(R.color.indigo_400))
+                .setCloseButtonIcon(((BitmapDrawable) getResources().getDrawable(R.drawable.ic_navigation_arrow_back)).getBitmap())
+                .build();
     }
 
-    private IProfile getProfile() {
-        final SharedPreferences settings = getSharedPreferences("login", 0);
-        String loginS = settings.getString("user", getResources().getString(R.string.txt_anonymous));
+    private IProfile getUserProfile() {
+        String userLogin = getSharedPreferences("login", 0)
+                .getString("user", getResources().getString(R.string.txt_anonymous));
 
-        return new ProfileDrawerItem().withName(loginS).withIcon(R.drawable.img_home).withIdentifier(100);
+        return new ProfileDrawerItem()
+                .withName(userLogin)
+                .withIcon(R.drawable.img_home)
+                .withIdentifier(USER_PROFILE);
     }
 
     @Override
@@ -244,7 +289,7 @@ public class MainActivity extends BaseActivity {
         switch (requestCode) {
             case LOGIN_REQUEST:
                 if (resultCode == RESULT_OK) {
-                    this.headerResult.setActiveProfile(getProfile());
+                    this.headerResult.setActiveProfile(getUserProfile());
                 }
                 break;
             default:
@@ -280,18 +325,13 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-        builder.setToolbarColor(getResources().getColor(R.color.indigo_400));
-        CustomTabsIntent customTabsIntent = builder.build();
-
-        String uriByLang = Utils.getUriByCurrentLanguage();
 
         switch (item.getItemId()) {
             case R.id.action_contribute:
-                customTabsIntent.launchUrl(this, Uri.parse(uriByLang + "contribute"));
+                CustomTabActivityHelper.openCustomTab(this, customTabsIntent, contributeUri, new WebViewFallback());
                 return true;
             case R.id.action_discover:
-                customTabsIntent.launchUrl(this, Uri.parse(uriByLang + "discover"));
+                CustomTabActivityHelper.openCustomTab(this, customTabsIntent, discoverUri, new WebViewFallback());
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -327,5 +367,33 @@ public class MainActivity extends BaseActivity {
                 break;
             }
         }
+    }
+
+    @Override
+    public void onCustomTabsConnected() {
+
+    }
+
+    @Override
+    public void onCustomTabsDisconnected() {
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        customTabActivityHelper.bindCustomTabsService(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        customTabActivityHelper.unbindCustomTabsService(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        customTabActivityHelper.setConnectionCallback(null);
     }
 }
