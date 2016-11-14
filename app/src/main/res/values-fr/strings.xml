@@ -84,6 +84,7 @@
   <string name="hintEnergyUnit">Unité de l\'energie</string>
   <string name="hintWeight">Poids / Quantité</string>
   <string name="hintStores">Magasin</string>
+  <string name="hintBrand">Marque</string>
   <string name="txtTakePicture">Prendre une photo</string>
   <string name="txtSendAll">Tout envoyer</string>
   <string name="txtNoData">Aucune donnée</string>

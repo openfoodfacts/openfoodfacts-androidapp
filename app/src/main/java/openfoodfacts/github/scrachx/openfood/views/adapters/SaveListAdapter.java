@@ -8,16 +8,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import java.util.ArrayList;
+
+import java.util.List;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 
 public class SaveListAdapter extends BaseAdapter {
 
-    private Context context;
-    private ArrayList<SaveItem> saveItems;
+    private final Context context;
+    private final List<SaveItem> saveItems;
 
-    public SaveListAdapter(Context context, ArrayList<SaveItem> saveItems){
+    public SaveListAdapter(Context context, List<SaveItem> saveItems){
         this.context = context;
         this.saveItems = saveItems;
     }
@@ -50,10 +52,12 @@ public class SaveListAdapter extends BaseAdapter {
         TextView txtBarcode= (TextView) convertView.findViewById(R.id.barcodeSave);
         ImageView imgProduct = (ImageView) convertView.findViewById(R.id.imgSaveProduct);
 
-        imgIcon.setImageResource(saveItems.get(position).getIcon());
-        txtTitle.setText(saveItems.get(position).getTitle());
-        imgProduct.setImageBitmap(saveItems.get(position).getUrl());
-        txtBarcode.setText( saveItems.get(position).getBarcode());
+        SaveItem item = saveItems.get(position);
+
+        imgIcon.setImageResource(item.getIcon());
+        txtTitle.setText(item.getTitle());
+        imgProduct.setImageBitmap(item.getUrl());
+        txtBarcode.setText( item.getBarcode());
 
         return convertView;
     }

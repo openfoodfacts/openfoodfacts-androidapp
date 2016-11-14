@@ -42,21 +42,20 @@ import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class SaveProductOfflineActivity extends BaseActivity {
 
+    private final String[] mUnit = new String[1];
+    private final String[] mImage = new String[1];
     @BindView(R.id.imageSave) ImageView imgSave;
     @BindView(R.id.editTextName) EditText name;
-    @BindView(R.id.editTextStores) EditText store;
+    @BindView(R.id.editTextBrand) EditText brand;
     @BindView(R.id.editTextWeight) EditText weight;
     @BindView(R.id.spinnerImages) Spinner spinnerI;
     @BindView(R.id.spinnerUnitWeight) Spinner spinnerW;
     @BindView(R.id.buttonTakePicture) Button takePic;
     @BindView(R.id.buttonFromGallery) Button takeGallery;
     @BindView(R.id.buttonSaveProduct) Button save;
-
     private SendProduct mProduct;
     private String mBarcode;
     private OpenFoodAPIClient api;
-    private final String[] mUnit = new String[1];
-    private final String[] mImage = new String[1];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +111,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                         .into(imgSave);
             }
             name.setText(mProduct.getName());
-            store.setText(mProduct.getStores());
+            brand.setText(mProduct.getBrands());
             weight.setText(mProduct.getWeight());
             ArrayAdapter unitAdapter = (ArrayAdapter) spinnerW.getAdapter();
             int spinnerPosition = unitAdapter.getPosition(mProduct.getWeight_unit());
@@ -176,7 +175,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
     @OnClick(R.id.buttonSaveProduct)
     protected void onSaveProduct() {
-        if (mProduct.getImgupload_front().isEmpty()) {
+        if (StringUtils.isBlank(mProduct.getImgupload_front())) {
             Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
             return;
         }
@@ -185,7 +184,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
         mProduct.setName(name.getText().toString());
         mProduct.setWeight(weight.getText().toString());
         mProduct.setWeight_unit(mUnit[0]);
-        mProduct.setStores(store.getText().toString());
+        mProduct.setBrands(brand.getText().toString());
 
         final SharedPreferences settingsUser = getSharedPreferences("login", 0);
         String login = settingsUser.getString("user", "");

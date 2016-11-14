@@ -44,7 +44,7 @@ public interface OpenFoodAPIService {
      */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
-    Call<State> saveProduct(@Query("code") String code, @Query("product_name") String name, @Query("stores") String stores, @Query("user_id") String login, @Query("password") String password);
+    Call<State> saveProduct(@Query("code") String code, @Query("product_name") String name, @Query("brands") String brands, @Query("user_id") String login, @Query("password") String password);
 
     @Multipart
     @POST("/cgi/product_image_upload.pl")

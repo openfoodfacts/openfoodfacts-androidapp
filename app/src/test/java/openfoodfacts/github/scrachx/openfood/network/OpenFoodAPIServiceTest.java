@@ -12,6 +12,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.Search;
@@ -216,15 +217,21 @@ public class OpenFoodAPIServiceTest {
         SendProduct product = new SendProduct();
         product.setBarcode("978020137962");
         product.setName("coca");
-        product.setStores("auchan");
+        product.setBrands("auchan");
 
 //        Response<State> execute = serviceWrite.saveProduct(product).execute();
-        Response<State> execute = serviceWrite.saveProduct(product.getBarcode(), product.getName(), product.getStores(), null, null).execute();
+        Response<State> execute = serviceWrite.saveProduct(product.getBarcode(), product.getName(), product.getBrands(), null, null).execute();
 
         assertTrue(execute.isSuccess());
 
         State body = execute.body();
         assertEquals(body.getStatus(), 1);
         assertEquals(body.getStatusVerbose(), "fields saved");
+
+        Response<State> response = serviceWrite.getProductByBarcode(product.getBarcode()).execute();
+        Product savedProduct = response.body().getProduct();
+        assertEquals(product.getName(), savedProduct.getProductName());
+        assertEquals(product.getBrands(), savedProduct.getBrands());
+        assertTrue(savedProduct.getBrandsTags().contains(product.getBrands()));
     }
 }

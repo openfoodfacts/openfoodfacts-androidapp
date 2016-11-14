@@ -36,10 +36,9 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
 public class OfflineEditFragment extends BaseFragment {
 
-    private ArrayList<SaveItem> saveItems;
-
     @BindView(R.id.listOfflineSave) ListView listView;
     @BindView(R.id.buttonSendAll) Button buttonSend;
+    private List<SaveItem> saveItems;
     private String loginS, passS;
 
     @Override
@@ -187,7 +186,7 @@ public class OfflineEditFragment extends BaseFragment {
             for (int i = 0; i < listSaveProduct.size(); i++) {
                 SendProduct sp = listSaveProduct.get(i);
                 if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()
-                        || sp.getStores().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
+                        || sp.getBrands().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
                     imageIcon = R.drawable.ic_no;
                 }
                 Bitmap imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(sp.getImgupload_front()), 200, 200, true);
@@ -200,16 +199,22 @@ public class OfflineEditFragment extends BaseFragment {
         @Override
         protected void onPostExecute(Context ctx) {
             List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
-            if (listSaveProduct.size() > 0) {
-                SaveListAdapter adapter = new SaveListAdapter(ctx, saveItems);
-                listView.setAdapter(adapter);
-                buttonSend.setEnabled(true);
-                for (SendProduct sp : listSaveProduct) {
-                    if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()) {
-                        buttonSend.setEnabled(false);
-                    }
+            if (listSaveProduct.size() <= 0) {
+                return;
+            }
+
+            SaveListAdapter adapter = new SaveListAdapter(ctx, saveItems);
+            listView.setAdapter(adapter);
+
+            boolean canSend = true;
+            for (SendProduct sp : listSaveProduct) {
+                if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()) {
+                    canSend = false;
+                    break;
                 }
             }
+
+            buttonSend.setEnabled(canSend);
         }
     }
 }

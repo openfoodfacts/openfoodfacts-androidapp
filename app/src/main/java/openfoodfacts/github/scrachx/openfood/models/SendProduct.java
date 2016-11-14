@@ -17,7 +17,8 @@ public class SendProduct extends SugarRecord {
     private String barcode;
     @JsonProperty("product_name")
     private String name;
-    private String stores;
+
+    private String brands;
     @JsonIgnore
     private String weight;
     @JsonIgnore
@@ -100,12 +101,12 @@ public class SendProduct extends SugarRecord {
         this.imgupload_front = imgupload_front;
     }
 
-    public String getStores() {
-        return stores;
+    public String getBrands() {
+        return brands;
     }
 
-    public void setStores(String stores) {
-        this.stores = stores;
+    public void setBrands(String brands) {
+        this.brands = brands;
     }
 
     public String getImgupload_ingredients() {

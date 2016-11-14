@@ -113,6 +113,7 @@
     <string name="hintEnergyUnit">Energy unit</string>
     <string name="hintWeight">Weight</string>
     <string name="hintStores">Store</string>
+    <string name="hintBrand">Brand</string>
     <string name="txtTakePicture">Take picture</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtNoData">No data</string>

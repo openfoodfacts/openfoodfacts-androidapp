@@ -56,13 +56,6 @@ public class OpenFoodAPIClient {
         this(context.getString(R.string.openfoodUrl));
     }
 
-    /**
-     * @return The API service to be able to use directly retrofit API mapping
-     */
-    public OpenFoodAPIService getAPIService() {
-        return apiService;
-    }
-
     private OpenFoodAPIClient(String apiUrl) {
         apiService = new Retrofit.Builder()
                 .baseUrl(apiUrl)
@@ -70,6 +63,13 @@ public class OpenFoodAPIClient {
                 .addConverterFactory(jacksonConverterFactory)
                 .build()
                 .create(OpenFoodAPIService.class);
+    }
+
+    /**
+     * @return The API service to be able to use directly retrofit API mapping
+     */
+    public OpenFoodAPIService getAPIService() {
+        return apiService;
     }
 
     public void getProduct(final String barcode, final Activity activity, final ZXingScannerView scannerView, final ZXingScannerView.ResultHandler rs){
@@ -223,10 +223,6 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public interface OnProductsCallback {
-
-        void onProductsResponse(boolean isOk, List<Product> products);
-    }
     public void searchProduct(final String name, final Activity activity, final OnProductsCallback productsCallback) {
         final LoadToast lt = getLoadToast(activity);
 
@@ -258,11 +254,6 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public interface OnAllergensCallback {
-
-        void onAllergensResponse(boolean value);
-    }
-
     public void getAllergens(final OnAllergensCallback onAllergensCallback) {
         apiService.getAllergens().enqueue(new Callback<AllergenRestResponse>() {
             @Override
@@ -284,10 +275,6 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public interface OnProductSentCallback {
-        void onProductSentResponse(boolean value);
-    }
-
     public void post(final Activity activity, final SendProduct product, final OnProductSentCallback productSentCallback){
         final LoadToast lt = new LoadToast(activity);
         lt.setText(activity.getString(R.string.toastSending));
@@ -295,7 +282,7 @@ public class OpenFoodAPIClient {
         lt.setTextColor(activity.getResources().getColor(R.color.white));
         lt.show();
 
-        apiService.saveProduct(product.getBarcode(), product.getName(), product.getStores(), product.getUserId(), product.getPassword()).enqueue(new Callback<State>() {
+        apiService.saveProduct(product.getBarcode(), product.getName(), product.getBrands(), product.getUserId(), product.getPassword()).enqueue(new Callback<State>() {
             @Override
             public void onResponse(Call<State> call, Response<State> response) {
                 if (!response.isSuccess() || response.body().getStatus() == 0) {
@@ -371,5 +358,19 @@ public class OpenFoodAPIClient {
         lt.setTextColor(activity.getResources().getColor(R.color.white));
         lt.show();
         return lt;
+    }
+
+    public interface OnProductsCallback {
+
+        void onProductsResponse(boolean isOk, List<Product> products);
+    }
+
+    public interface OnAllergensCallback {
+
+        void onAllergensResponse(boolean value);
+    }
+
+    public interface OnProductSentCallback {
+        void onProductSentResponse(boolean value);
     }
 }

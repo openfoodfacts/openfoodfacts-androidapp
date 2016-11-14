@@ -105,7 +105,7 @@
 
 
         <EditText
-            android:id="@+id/editTextStores"
+            android:id="@+id/editTextBrand"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_gravity="center_horizontal"
@@ -113,7 +113,7 @@
             android:layout_marginRight="@dimen/spacing_normal"
             android:background="@drawable/edittext_full"
             android:ems="10"
-            android:hint="@string/hintStores"
+            android:hint="@string/hintBrand"
             android:inputType="text"
             android:maxLines="1"
             android:paddingLeft="50dp" />
