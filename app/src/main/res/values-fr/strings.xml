@@ -102,7 +102,7 @@
   <string name="txtAllsent">Produits envoyés</string>
   <string name="txtPalm">Le produit ne contient pas d\'huile de palme</string>
   <string name="txtBarcodeNotValid">Code barre non valide</string>
-  <string name="try_it_scan_now">Scanner!</string>
+  <string name="try_it_scan_now">Scanner un produit</string>
   <string name="share">Partager</string>
   <string name="msg_share">Regarde ce produit sur Open Food Facts :</string>
   <string name="create_account">S\'inscrire</string>
