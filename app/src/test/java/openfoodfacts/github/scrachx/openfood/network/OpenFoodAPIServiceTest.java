@@ -25,6 +25,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 import static net.javacrumbs.jsonunit.fluent.JsonFluentAssert.assertThatJson;
+import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static org.junit.Assert.assertTrue;
 
 public class OpenFoodAPIServiceTest {
@@ -220,7 +221,7 @@ public class OpenFoodAPIServiceTest {
         product.setBrands("auchan");
 
 //        Response<State> execute = serviceWrite.saveProduct(product).execute();
-        Response<State> execute = serviceWrite.saveProduct(product.getBarcode(), product.getName(), product.getBrands(), null, null).execute();
+        Response<State> execute = serviceWrite.saveProduct(product.getBarcode(), product.getName(), product.getBrands(), null, null, PRODUCT_API_COMMENT).execute();
 
         assertTrue(execute.isSuccess());
 

@@ -25,6 +25,8 @@ import retrofit2.http.Query;
  */
 public interface OpenFoodAPIService {
 
+    String PRODUCT_API_COMMENT = "new android app";
+
 
     @GET("api/v0/produit/{barcode}.json")
     Call<State> getProductByBarcode(@Path("barcode") String barcode);
@@ -44,7 +46,7 @@ public interface OpenFoodAPIService {
      */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
-    Call<State> saveProduct(@Query("code") String code, @Query("product_name") String name, @Query("brands") String brands, @Query("user_id") String login, @Query("password") String password);
+    Call<State> saveProduct(@Query("code") String code, @Query("product_name") String name, @Query("brands") String brands, @Query("user_id") String login, @Query("password") String password, @Query("comment") String comment);
 
     @Multipart
     @POST("/cgi/product_image_upload.pl")
