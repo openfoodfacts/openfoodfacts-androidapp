@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="app_name">Open Food</string>
-  <string name="hello_world">Coucou all!</string>
+  <string name="hello_world">Coucou tout le monde!</string>
   <string name="action_settings">Paramètres</string>
   <string name="action_about">À propos</string>
   <string name="action_find">Chercher</string>
@@ -119,7 +119,7 @@
   <string name="sign_in_drawer">Se connecter</string>
   <string name="alert_drawer">Alerte allergènes</string>
   <string name="warning_allergens">Contient des allergènes</string>
-  <string name="title_dialog_alert">Add alert</string>
+  <string name="title_dialog_alert">Ajouter une alerte</string>
   <string name="warning_alert_data">Les données peuvent être non précis, attention à vérifier par vous même!</string>
   <string name="from_gallery">Galerie photo</string>
   <string name="txt_nutrition_not_found">N/A</string>
