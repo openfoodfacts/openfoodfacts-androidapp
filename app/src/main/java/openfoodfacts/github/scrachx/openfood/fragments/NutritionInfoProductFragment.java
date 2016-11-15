@@ -12,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -20,9 +22,10 @@ import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutritionInfoAdapter;
+
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class NutritionInfoProductFragment extends BaseFragment {
 
@@ -51,36 +54,34 @@ public class NutritionInfoProductFragment extends BaseFragment {
         Nutriments nt = product.getNutriments();
         ArrayList<NutrimentItem> nutrimentItemList = new ArrayList<>();
 
-        if (!Utils.isNullOrEmpty(product.getServingSize())) {
+        if (isNotEmpty(product.getServingSize())) {
             mTextPerPortion.setText(getString(R.string.nutriment_serving_size) + " " +product.getServingSize());
         }
 
-        if (!Utils.isNullOrEmpty(product.getImageNutritionUrl())) {
+        if (isNotEmpty(product.getImageNutritionUrl())) {
             Picasso.with(view.getContext())
                     .load(product.getImageNutritionUrl())
                     .into(mImageNutritionFull);
             mUrlImage = product.getImageNutritionUrl();
         }
 
-        if (nt == null) {
-            // No value
-        } else {
-            if(!Utils.isNullOrEmpty(nt.getCarbohydratesServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_carbohydrate_short_name), nt.getCarbohydratesServing(), R.color.amber_800));
-            if(!Utils.isNullOrEmpty(getEnergy(nt))) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name) + " (kcal)", getEnergy(nt), R.color.blue_400));
-            if(!Utils.isNullOrEmpty(nt.getFatServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_fat_short_name), nt.getFatServing(), R.color.blue_grey_500));
-            if(!Utils.isNullOrEmpty(nt.getFiberServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_fiber_short_name), nt.getFiberServing(), R.color.blue_300));
-            if(!Utils.isNullOrEmpty(nt.getProteinsServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_proteins_short_name), nt.getProteinsServing(), R.color.yellow_800));
-            if(!Utils.isNullOrEmpty(nt.getSaltServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_salt_short_name), nt.getSaltServing(), R.color.teal_800));
-            if(!Utils.isNullOrEmpty(nt.getSaturatedFatServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_satured_fat_short_name), nt.getSaturatedFatServing(), R.color.red_600));
-            if(!Utils.isNullOrEmpty(nt.getSodiumServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_sodium_short_name), nt.getSodiumServing(), R.color.purple_500));
-            if(!Utils.isNullOrEmpty(nt.getSugarsServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_sugars_short_name), nt.getSugarsServing(), R.color.cyan_600));
+        if (nt != null) {
+            if(isNotEmpty(nt.getCarbohydratesServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_carbohydrate_short_name), nt.getCarbohydratesServing(), R.color.amber_800));
+            if(isNotEmpty(getEnergy(nt))) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name) + " (kcal)", getEnergy(nt), R.color.blue_400));
+            if(isNotEmpty(nt.getFatServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_fat_short_name), nt.getFatServing(), R.color.blue_grey_500));
+            if(isNotEmpty(nt.getFiberServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_fiber_short_name), nt.getFiberServing(), R.color.blue_300));
+            if(isNotEmpty(nt.getProteinsServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_proteins_short_name), nt.getProteinsServing(), R.color.yellow_800));
+            if(isNotEmpty(nt.getSaltServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_salt_short_name), nt.getSaltServing(), R.color.teal_800));
+            if(isNotEmpty(nt.getSaturatedFatServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_satured_fat_short_name), nt.getSaturatedFatServing(), R.color.red_600));
+            if(isNotEmpty(nt.getSodiumServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_sodium_short_name), nt.getSodiumServing(), R.color.purple_500));
+            if(isNotEmpty(nt.getSugarsServing())) nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_sugars_short_name), nt.getSugarsServing(), R.color.cyan_600));
          }
 
         mGv.setAdapter(new NutritionInfoAdapter(getContext(), nutrimentItemList));
     }
 
     private String getEnergy(Nutriments nt) {
-        if (!Utils.isNullOrEmpty(nt.getEnergyServing())) {
+        if (isNotEmpty(nt.getEnergyServing())) {
             try {
                 int energyKcal;
                 if (nt.getEnergyServing().isEmpty()) {

@@ -69,17 +69,13 @@ public class Utils {
         return smallFileFront.toString();
     }
 
-    public static final int getColor(Context context, int id) {
+    public static int getColor(Context context, int id) {
         final int version = Build.VERSION.SDK_INT;
         if (version >= 23) {
             return ContextCompat.getColor(context, id);
         } else {
             return context.getResources().getColor(id);
         }
-    }
-
-    public static boolean isNullOrEmpty(String s) {
-        return s == null || s.length() == 0;
     }
 
     // Decodes image and scales it to reduce memory consumption

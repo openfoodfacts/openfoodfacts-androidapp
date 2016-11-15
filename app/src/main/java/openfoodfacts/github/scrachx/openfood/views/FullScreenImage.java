@@ -9,9 +9,10 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
+
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class FullScreenImage extends BaseActivity {
 
@@ -30,7 +31,7 @@ public class FullScreenImage extends BaseActivity {
 
         mAttacher = new PhotoViewAttacher(mImageView);
 
-        if (!Utils.isNullOrEmpty(imageurl)) {
+        if (isNotEmpty(imageurl)) {
             Picasso.with(this)
                     .load(imageurl)
                     .into(mImageView, new Callback() {

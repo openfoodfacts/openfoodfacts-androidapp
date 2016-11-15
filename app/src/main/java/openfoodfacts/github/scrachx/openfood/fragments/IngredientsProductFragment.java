@@ -29,11 +29,15 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class IngredientsProductFragment extends BaseFragment {
 
+    public static final Pattern CODE_PATTERN = Pattern.compile("[eE][a-zA-Z0-9]+");
+    public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[a-zA-Z0-9(),àâçéèêëîïôûùüÿñæœ.-]+");
+    public static final Pattern ALLERGEN_PATTERN = Pattern.compile("[a-zA-Z0-9àâçéèêëîïôûùüÿñæœ]+");
     @BindView(R.id.textIngredientProduct) TextView ingredientsProduct;
     @BindView(R.id.textSubstanceProduct) TextView substanceProduct;
     @BindView(R.id.textTraceProduct) TextView traceProduct;
@@ -42,13 +46,8 @@ public class IngredientsProductFragment extends BaseFragment {
     @BindView(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
     @BindView(R.id.ingredientContainer) ViewGroup containerView;
     @BindView(R.id.imageViewNutritionFullIng) ImageView mImageNutritionFullIng;
-
     private String mUrlImage;
     private State mState;
-
-    public static final Pattern CODE_PATTERN = Pattern.compile("[eE][a-zA-Z0-9]+");
-    public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[a-zA-Z0-9(),àâçéèêëîïôûùüÿñæœ.-]+");
-    public static final Pattern ALLERGEN_PATTERN = Pattern.compile("[a-zA-Z0-9àâçéèêëîïôûùüÿñæœ]+");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,7 +60,7 @@ public class IngredientsProductFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
 
-        if (!Utils.isNullOrEmpty(mState.getProduct().getImageIngredientsUrl())) {
+        if (isNotEmpty(mState.getProduct().getImageIngredientsUrl())) {
             Picasso.with(view.getContext())
                     .load(mState.getProduct().getImageIngredientsUrl())
                     .into(mImageNutritionFullIng);

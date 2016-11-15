@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/activity_vertical_margin">
 
     <TextView
+        android:id="@+id/textPerPortion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textPerPortion"
-        android:textSize="@dimen/font_large"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textIsSelectable="true"
+        android:textSize="@dimen/font_large" />
 
     <ImageButton
+        android:id="@+id/imageViewNutritionFullNut"
         android:layout_width="wrap_content"
-        android:maxHeight="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textPerPortion"
         android:layout_centerHorizontal="true"
-        android:id="@+id/imageViewNutritionFullNut" />
+        android:maxHeight="250dp" />
 
     <GridView
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:columnWidth="150dp"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="24dp"
-        android:horizontalSpacing="10dp"
-        android:stretchMode="spacingWidthUniform"
-        android:layout_marginTop="18dp"
         android:layout_below="@+id/imageViewNutritionFullNut"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:columnWidth="150dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="spacingWidthUniform"
+        android:verticalSpacing="24dp">
 
     </GridView >
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
-    android:id="@+id/ingredientContainer"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ingredientContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -17,11 +17,11 @@
             android:orientation="vertical">
 
             <ImageButton
+                android:id="@+id/imageViewNutritionFullIng"
                 android:layout_width="wrap_content"
-                android:maxHeight="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:id="@+id/imageViewNutritionFullIng" />
+                android:maxHeight="250dp" />
 
             <TextView
                 android:id="@+id/textIngredientProduct"
@@ -33,6 +33,7 @@
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:background="@drawable/textview_full"
                 android:padding="@dimen/spacing_small"
+                android:textIsSelectable="true"
                 android:textSize="@dimen/font_normal"/>
 
             <TextView
@@ -45,6 +46,7 @@
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:background="@drawable/textview_full"
                 android:padding="@dimen/spacing_small"
+                android:textIsSelectable="true"
                 android:textSize="@dimen/font_normal"/>
 
             <TextView
@@ -57,6 +59,7 @@
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:background="@drawable/textview_full"
                 android:padding="@dimen/spacing_small"
+                android:textIsSelectable="true"
                 android:textSize="@dimen/font_normal"/>
 
             <TextView
@@ -69,6 +72,7 @@
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:background="@drawable/textview_full"
                 android:padding="@dimen/spacing_small"
+                android:textIsSelectable="true"
                 android:textSize="@dimen/font_normal"/>
 
             <LinearLayout
@@ -91,6 +95,7 @@
                     android:maxWidth="42dp"
                     android:padding="@dimen/spacing_small"
                     android:scaleType="fitCenter"
+                    android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal"
                     android:visibility="gone"/>
 
@@ -105,6 +110,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal"
                     android:visibility="gone"/>
             </LinearLayout>

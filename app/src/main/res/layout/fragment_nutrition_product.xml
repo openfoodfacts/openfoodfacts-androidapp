@@ -29,6 +29,7 @@
         android:background="@drawable/textview_full"
         android:padding="@dimen/spacing_small"
         android:text="@string/txtServingSize"
+        android:textIsSelectable="true"
         android:textSize="@dimen/font_normal" />
 
     <TextView
@@ -41,6 +42,7 @@
         android:background="@drawable/textview_full"
         android:padding="@dimen/spacing_small"
         android:text="@string/txtNutrientLevel100g"
+        android:textIsSelectable="true"
         android:textSize="@dimen/font_normal"
         android:textStyle="bold" />
 
