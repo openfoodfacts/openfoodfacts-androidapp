@@ -3,7 +3,6 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,21 +10,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hkm.slider.Animations.DescriptionAnimation;
 import com.hkm.slider.Indicators.PagerIndicator;
-import com.hkm.slider.SliderLayout;
-import com.hkm.slider.SliderTypes.AdjustableSlide;
-import com.hkm.slider.SliderTypes.BaseSliderView;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class SummaryProductFragment extends BaseFragment {
 
@@ -55,14 +49,7 @@ public class SummaryProductFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         final State state = (State) intent.getExtras().getSerializable("state");
 
-        ArrayList<String> urlsImages = new ArrayList<>();
-        if (state.getProduct().getImageUrl() != null) {
-            urlsImages.add(state.getProduct().getImageUrl());
-        }
-        if (state.getProduct().getImageIngredientsUrl() != null) {
-            urlsImages.add(state.getProduct().getImageIngredientsUrl());
-        }
-        if (!Utils.isNullOrEmpty(state.getProduct().getImageUrl())) {
+        if (isNotEmpty(state.getProduct().getImageUrl())) {
             Picasso.with(view.getContext())
                     .load(state.getProduct().getImageUrl())
                     .into(mImageNutritionFullSum);
