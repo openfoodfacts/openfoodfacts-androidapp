@@ -49,12 +49,11 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
 
 public class HistoryScanActivity extends BaseActivity {
 
-    private List<HistoryItem> productItems;
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.listHistoryScan)
     RecyclerView recyclerHistoryScanView;
+    private List<HistoryItem> productItems;
     private boolean emptyHistory;
 
 
@@ -157,52 +156,6 @@ public class HistoryScanActivity extends BaseActivity {
         return true;
     }
 
-    public class FillAdapter extends AsyncTask<Context, Void, Context> {
-
-        @Override
-        protected void onPreExecute() {
-            List<HistoryProduct> listHistoryProducts = HistoryProduct.listAll(HistoryProduct.class);
-            if (listHistoryProducts.size() == 0) {
-                Toast.makeText(getApplicationContext(), R.string.txtNoData, Toast.LENGTH_LONG).show();
-                emptyHistory = true;
-                invalidateOptionsMenu();
-                cancel(true);
-            } else {
-                Toast.makeText(getApplicationContext(), R.string.txtLoading, Toast.LENGTH_LONG).show();
-            }
-        }
-
-        @Override
-        protected Context doInBackground(Context... ctx) {
-            List<HistoryProduct> listHistoryProducts = Select.from(HistoryProduct.class).orderBy("LAST_SEEN DESC").list();
-            for (int i = 0; i < listHistoryProducts.size(); i++) {
-                HistoryProduct hp = listHistoryProducts.get(i);
-                Bitmap imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_no), 200, 200, true);
-                try {
-                    URL url = new URL(hp.getUrl());
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setDoInput(true);
-                    connection.connect();
-                    InputStream input = connection.getInputStream();
-                    imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(input), 200, 200, true);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                productItems.add(new HistoryItem(hp.getTitle(), hp.getBrands(), imgUrl, hp.getBarcode()));
-            }
-
-            return ctx[0];
-        }
-
-        @Override
-        protected void onPostExecute(Context ctx) {
-            HistoryListAdapter adapter = new HistoryListAdapter(productItems);
-            recyclerHistoryScanView.setAdapter(adapter);
-            recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
-        }
-    }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -230,6 +183,68 @@ public class HistoryScanActivity extends BaseActivity {
                 }
                 break;
             }
+        }
+    }
+
+    public class FillAdapter extends AsyncTask<Context, Void, Context> {
+
+        @Override
+        protected void onPreExecute() {
+            List<HistoryProduct> listHistoryProducts = HistoryProduct.listAll(HistoryProduct.class);
+            if (listHistoryProducts.size() == 0) {
+                Toast.makeText(getApplicationContext(), R.string.txtNoData, Toast.LENGTH_LONG).show();
+                emptyHistory = true;
+                invalidateOptionsMenu();
+                cancel(true);
+            } else {
+                Toast.makeText(getApplicationContext(), R.string.txtLoading, Toast.LENGTH_LONG).show();
+            }
+        }
+
+        @Override
+        protected Context doInBackground(Context... ctx) {
+            List<HistoryProduct> listHistoryProducts = Select.from(HistoryProduct.class).orderBy("LAST_SEEN DESC").list();
+            final Bitmap defaultImgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_no), 200, 200, true);
+
+            for (HistoryProduct historyProduct : listHistoryProducts) {
+                Bitmap imgUrl;
+                HttpURLConnection connection = null;
+                InputStream input = null;
+                try {
+                    URL url = new URL(historyProduct.getUrl());
+                    connection = (HttpURLConnection) url.openConnection();
+                    connection.setDoInput(true);
+                    connection.connect();
+                    input = connection.getInputStream();
+                    imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(input), 200, 200, true);
+                } catch (IOException e) {
+                    Log.i("HISTORY", "unable to get the history product image", e);
+                    imgUrl = defaultImgUrl;
+                } finally {
+                    if (input != null) {
+                        try {
+                            input.close();
+                        } catch (IOException e) {
+                            // no job
+                        }
+                    }
+
+                    if (connection != null) {
+                        connection.disconnect();
+                    }
+                }
+
+                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), imgUrl, historyProduct.getBarcode()));
+            }
+
+            return ctx[0];
+        }
+
+        @Override
+        protected void onPostExecute(Context ctx) {
+            HistoryListAdapter adapter = new HistoryListAdapter(productItems);
+            recyclerHistoryScanView.setAdapter(adapter);
+            recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
         }
     }
 

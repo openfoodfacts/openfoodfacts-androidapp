@@ -186,14 +186,14 @@ public class OfflineEditFragment extends BaseFragment {
             List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
 
             int imageIcon = R.drawable.ic_ok;
-            for (int i = 0; i < listSaveProduct.size(); i++) {
-                SendProduct sp = listSaveProduct.get(i);
-                if (isEmpty(sp.getBarcode()) || isEmpty(sp.getImgupload_front())
-                        || isEmpty(sp.getBrands()) || isEmpty(sp.getWeight()) || isEmpty(sp.getName())) {
+
+            for (SendProduct product : listSaveProduct) {
+                if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())
+                        || isEmpty(product.getBrands()) || isEmpty(product.getWeight()) || isEmpty(product.getName())) {
                     imageIcon = R.drawable.ic_no;
                 }
-                Bitmap imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(sp.getImgupload_front()), 200, 200, true);
-                saveItems.add(new SaveItem(sp.getName(), imageIcon, imgUrl, sp.getBarcode()));
+                Bitmap imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(product.getImgupload_front()), 200, 200, true);
+                saveItems.add(new SaveItem(product.getName(), imageIcon, imgUrl, product.getBarcode()));
             }
 
             return ctx[0];
