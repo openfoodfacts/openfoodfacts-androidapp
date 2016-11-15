@@ -34,7 +34,6 @@ import com.mikepenz.materialdrawer.interfaces.OnCheckedChangeListener;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
@@ -113,14 +112,14 @@ public class MainActivity extends BaseActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(FontAwesome.Icon.faw_home).withIdentifier(1),
                         new SectionDrawerItem().withName(R.string.search_drawer),
-                        new SecondaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(FontAwesome.Icon.faw_barcode).withIdentifier(2),
-                        new SecondaryDrawerItem().withName(R.string.search_by_name_drawer).withIcon(FontAwesome.Icon.faw_search).withIdentifier(3),
-                        new SecondaryDrawerItem().withName(R.string.scan_search).withIcon(FontAwesome.Icon.faw_camera).withIdentifier(4),
-                        new SecondaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(FontAwesome.Icon.faw_clock_o).withIdentifier(5),
+                        new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(FontAwesome.Icon.faw_barcode).withIdentifier(2),
+                        new PrimaryDrawerItem().withName(R.string.search_by_name_drawer).withIcon(FontAwesome.Icon.faw_search).withIdentifier(3),
+                        new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(FontAwesome.Icon.faw_camera).withIdentifier(4),
+                        new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(FontAwesome.Icon.faw_clock_o).withIdentifier(5),
                         new SectionDrawerItem().withName(R.string.user_drawer),
-                        new SecondaryDrawerItem().withName(R.string.sign_in_drawer).withIcon(FontAwesome.Icon.faw_sign_in).withIdentifier(6),
-                        new SecondaryDrawerItem().withName(R.string.alert_drawer).withIcon(FontAwesome.Icon.faw_info).withIdentifier(7),
-                        new SecondaryDrawerItem().withName(R.string.action_preferences).withIcon(FontAwesome.Icon.faw_cog).withIdentifier(8),
+                        new PrimaryDrawerItem().withName(R.string.sign_in_drawer).withIcon(FontAwesome.Icon.faw_sign_in).withIdentifier(6),
+                        new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(FontAwesome.Icon.faw_info).withIdentifier(7),
+                        new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(FontAwesome.Icon.faw_cog).withIdentifier(8),
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(FontAwesome.Icon.faw_anchor).withIdentifier(9),
                         new DividerDrawerItem(),
