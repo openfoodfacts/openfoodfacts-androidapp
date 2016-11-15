@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <CheckBoxPreference android:title="@string/prefs_scan_startup"
-        android:defaultValue="false"
+    <CheckBoxPreference android:defaultValue="false"
+        android:key="startScan"
         android:summary="@string/prefs_scan_startup_summary"
-        android:key="startScan"/>
+        android:title="@string/prefs_scan_startup"/>
 
-    <CheckBoxPreference android:title="Power mode scan"
-        android:defaultValue="false"
-        android:summary="Quickly scan products in a supermarket to see which one are not in the database."
-        android:key="powerMode"/>
+    <CheckBoxPreference android:defaultValue="false"
+        android:key="powerMode"
+        android:summary="@string/prefs_power_mode_summary"
+        android:title="@string/prefs_power_mode"/>
 
     <ListPreference
-        android:key="Locale.Helper.Selected.Language"
-        android:title="Language"
-        android:summary="Change language"
+        android:defaultValue="en"
         android:dialogTitle="Choose language"
-        android:entries="@array/lang_array"
+        android:entries="@array/lang_label_array"
         android:entryValues="@array/lang_array"
-        android:defaultValue="en" />
+        android:key="Locale.Helper.Selected.Language"
+        android:summary="@string/prefs_language_summary"
+        android:title="@string/prefs_language" />
 
 </PreferenceScreen>

@@ -50,6 +50,26 @@
         <item>cs</item>
     </string-array>
 
+    <string-array name="lang_label_array">
+        <item>English</item>
+        <item>French</item>
+        <item>Spanish</item>
+        <item>Italian</item>
+        <item>German</item>
+        <item>Japanese</item>
+        <item>Russian</item>
+        <item>Portuguese</item>
+        <item>Swedish</item>
+        <item>Burmese</item>
+        <item>Kazakh</item>
+        <item>Armenian</item>
+        <item>Greek</item>
+        <item>Hebrew</item>
+        <item>Galician</item>
+        <item>Catalan</item>
+        <item>Czech</item>
+    </string-array>
+
     <string-array name="images_array">
         <item>Default</item>
         <item>Nutrition</item>
@@ -185,6 +205,10 @@
     <string name="action_preferences">Preferences</string>
     <string name="prefs_scan_startup">Scan on startup</string>
     <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
+    <string name="prefs_power_mode">Power mode scan</string>
+    <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which one are not in the database.</string>
+    <string name="prefs_language">Language</string>
+    <string name="prefs_language_summary">Change language</string>
 
     <!--API URL-->
     <string name="openfoodUrl" translatable="false">https://ssl-api.openfoodfacts.org</string>
