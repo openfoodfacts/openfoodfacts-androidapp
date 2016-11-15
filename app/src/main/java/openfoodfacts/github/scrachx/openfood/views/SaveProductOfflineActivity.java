@@ -25,8 +25,6 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.io.File;
 import java.util.List;
 
@@ -39,6 +37,10 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
+
+import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class SaveProductOfflineActivity extends BaseActivity {
 
@@ -103,7 +105,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
             mProduct = sp.get(0);
         }
         if(mProduct != null) {
-            if(!mProduct.getImgupload_front().isEmpty()) {
+            if(isNotEmpty(mProduct.getImgupload_front())) {
                 Picasso.with(this)
                         .load(mProduct.getImgupload_front())
                         .fit()
@@ -132,7 +134,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
         mImage[0] = spinnerI.getItemAtPosition(pos).toString();
 
         if(pos == 0) {
-            if(StringUtils.isNotBlank(mProduct.getImgupload_front())) {
+            if(isNotBlank(mProduct.getImgupload_front())) {
                 imgSave.setVisibility(View.VISIBLE);
                 Picasso.with(this)
                         .load(new File(mProduct.getImgupload_front()))
@@ -143,7 +145,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                 imgSave.setVisibility(View.GONE);
             }
         } else if(pos == 1) {
-            if(StringUtils.isNotBlank(mProduct.getImgupload_nutrition())) {
+            if(isNotBlank(mProduct.getImgupload_nutrition())) {
                 imgSave.setVisibility(View.VISIBLE);
                 Picasso.with(this)
                         .load(new File(mProduct.getImgupload_nutrition()))
@@ -154,7 +156,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                 imgSave.setVisibility(View.GONE);
             }
         } else {
-            if(StringUtils.isNotBlank(mProduct.getImgupload_ingredients())) {
+            if(isNotBlank(mProduct.getImgupload_ingredients())) {
                 imgSave.setVisibility(View.VISIBLE);
                 Picasso.with(this)
                         .load(new File(mProduct.getImgupload_ingredients()))
@@ -175,7 +177,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
     @OnClick(R.id.buttonSaveProduct)
     protected void onSaveProduct() {
-        if (StringUtils.isBlank(mProduct.getImgupload_front())) {
+        if (isBlank(mProduct.getImgupload_front())) {
             Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
             return;
         }
@@ -196,11 +198,11 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
         Utils.compressImage(mProduct.getImgupload_front());
 
-        if (StringUtils.isNotBlank(mProduct.getImgupload_ingredients())) {
+        if (isNotBlank(mProduct.getImgupload_ingredients())) {
             Utils.compressImage(mProduct.getImgupload_ingredients());
         }
 
-        if(StringUtils.isNotBlank(mProduct.getImgupload_nutrition())) {
+        if(isNotBlank(mProduct.getImgupload_nutrition())) {
             Utils.compressImage(mProduct.getImgupload_nutrition());
         }
 

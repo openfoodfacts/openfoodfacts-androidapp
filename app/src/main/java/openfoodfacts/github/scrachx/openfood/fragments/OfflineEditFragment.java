@@ -34,6 +34,9 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
+import static org.apache.commons.lang3.StringUtils.isEmpty;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
 public class OfflineEditFragment extends BaseFragment {
 
     @BindView(R.id.listOfflineSave) ListView listView;
@@ -122,7 +125,7 @@ public class OfflineEditFragment extends BaseFragment {
                     final List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
                     for (final SendProduct product : listSaveProduct) {
 
-                        if (product.getBarcode().isEmpty() || product.getImgupload_front().isEmpty()) {
+                        if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())) {
                             continue;
                         }
 
@@ -131,15 +134,15 @@ public class OfflineEditFragment extends BaseFragment {
                             product.setPassword(passS);
                         }
 
-                        if(!product.getImgupload_ingredients().isEmpty()) {
+                        if(isNotEmpty(product.getImgupload_ingredients())) {
                             product.compress(ProductImageField.INGREDIENT);
                         }
 
-                        if(!product.getImgupload_nutrition().isEmpty()) {
+                        if(isNotEmpty(product.getImgupload_nutrition())) {
                             product.compress(ProductImageField.NUTRITION);
                         }
 
-                        if(!product.getImgupload_front().isEmpty()) {
+                        if(isNotEmpty(product.getImgupload_front())) {
                             product.compress(ProductImageField.FRONT);
                         }
 
@@ -185,8 +188,8 @@ public class OfflineEditFragment extends BaseFragment {
             int imageIcon = R.drawable.ic_ok;
             for (int i = 0; i < listSaveProduct.size(); i++) {
                 SendProduct sp = listSaveProduct.get(i);
-                if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()
-                        || sp.getBrands().isEmpty() || sp.getWeight().isEmpty() || sp.getName().isEmpty()) {
+                if (isEmpty(sp.getBarcode()) || isEmpty(sp.getImgupload_front())
+                        || isEmpty(sp.getBrands()) || isEmpty(sp.getWeight()) || isEmpty(sp.getName())) {
                     imageIcon = R.drawable.ic_no;
                 }
                 Bitmap imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(sp.getImgupload_front()), 200, 200, true);
@@ -208,7 +211,7 @@ public class OfflineEditFragment extends BaseFragment {
 
             boolean canSend = true;
             for (SendProduct sp : listSaveProduct) {
-                if (sp.getBarcode().isEmpty() || sp.getImgupload_front().isEmpty()) {
+                if (isEmpty(sp.getBarcode()) || isEmpty(sp.getImgupload_front())) {
                     canSend = false;
                     break;
                 }
