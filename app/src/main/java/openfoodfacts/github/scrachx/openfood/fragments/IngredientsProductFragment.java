@@ -170,9 +170,10 @@ public class IngredientsProductFragment extends BaseFragment {
     }
 
     private List<String> cleanAllergensMultipleOccurrences() {
-        if (mState.getProduct() == null) {
+        if (mState.getProduct() == null || mState.getProduct().getAllergens() == null) {
             return Collections.emptyList();
         }
+
         List<String> list = new ArrayList<>();
         Matcher m = ALLERGEN_PATTERN.matcher(mState.getProduct().getAllergens().replace(",", ""));
         while (m.find()) {
