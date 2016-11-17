@@ -137,4 +137,5 @@
   <string name="prefs_scan_startup">Scanner au démarrage</string>
   <string name="prefs_scan_startup_summary">Cette option, si elle est selectionnée, lancera le scan au démarrage de l\'application</string>
   <string name="product_sent">Produit envoyé !</string>
+  <string name="txtIngredientsOrigins">Origine des ingrédients :</string>
 </resources>

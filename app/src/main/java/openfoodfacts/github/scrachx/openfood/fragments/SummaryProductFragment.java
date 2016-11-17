@@ -29,6 +29,7 @@ public class SummaryProductFragment extends BaseFragment {
     @BindView(R.id.textPackagingProduct) TextView packagingProduct;
     @BindView(R.id.textBrandProduct) TextView brandProduct;
     @BindView(R.id.textManufacturingProduct) TextView manufacturingProduct;
+    @BindView(R.id.textIngredientsOriginProduct) TextView ingredientsOrigin;
     @BindView(R.id.textCityProduct) TextView cityProduct;
     @BindView(R.id.textStoreProduct) TextView storeProduct;
     @BindView(R.id.textCountryProduct) TextView countryProduct;
@@ -88,6 +89,13 @@ public class SummaryProductFragment extends BaseFragment {
         } else {
             manufacturingProduct.setVisibility(View.GONE);
         }
+
+        if (state.getProduct().getOrigins() == null) {
+            ingredientsOrigin.setVisibility(View.GONE);
+        } else {
+            ingredientsOrigin.setText(Html.fromHtml("<b>" + getString(R.string.txtIngredientsOrigins) + "</b>" + ' ' + state.getProduct().getOrigins()));
+        }
+
         String categ;
         if (state.getProduct().getCategories() != null && !state.getProduct().getCategories().trim().isEmpty()) {
             categ = state.getProduct().getCategories().replace(",", ", ");

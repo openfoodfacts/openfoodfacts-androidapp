@@ -131,6 +131,20 @@
                 android:textSize="@dimen/font_normal" />
 
             <TextView
+                android:id="@+id/textIngredientsOriginProduct"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:background="@drawable/textview_full"
+                android:padding="@dimen/spacing_small"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/font_normal" />
+
+            <TextView
                 android:id="@+id/textCityProduct"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
