@@ -1,8 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.customtabs.CustomTabsIntent;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -21,12 +25,16 @@ import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
-public class NutritionProductFragment extends BaseFragment {
+public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
 
     @BindView(R.id.imageGrade) ImageView img;
     @BindView(R.id.listNutrientLevels) ListView lv;
     @BindView(R.id.textServingSize) TextView serving;
+    private CustomTabActivityHelper customTabActivityHelper;
+    private Uri nutritionScoreUri;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,6 +56,12 @@ public class NutritionProductFragment extends BaseFragment {
                 && nt.getSaturatedFat() == null && nt.getSugars() == null)) {
             levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), R.drawable.error_image));
         } else {
+            // prefetch the uri
+            customTabActivityHelper = new CustomTabActivityHelper();
+            customTabActivityHelper.setConnectionCallback(this);
+            // currently only available in french translations
+            nutritionScoreUri = Uri.parse("http://fr.openfoodfacts.org/score-nutritionnel-france");
+            customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
 
             String fatTxt = Html.fromHtml("<b>" + getString(R.string.txtFat) + "</b>" + ' ' + localiseNutritionLevel(nt.getFat()) + " (" + product.getNutriments().getFat100g() + product.getNutriments().getFatUnit() + ")").toString();
             String saturatedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSaturatedFat) + "</b>" + ' ' + localiseNutritionLevel(nt.getSaturatedFat()) + " (" + product.getNutriments().getSaturatedFat100g() + product.getNutriments().getSaturatedFatUnit() + ")").toString();
@@ -60,6 +74,20 @@ public class NutritionProductFragment extends BaseFragment {
             levelItem.add(new NutrientLevelItem(saltTxt, getImageLevel(nt.getSalt())));
 
             img.setImageResource(getImageGrade(product.getNutritionGradeFr()));
+            img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                Bitmap icon = ((BitmapDrawable) getResources().getDrawable(R.drawable.ic_navigation_arrow_back)).getBitmap();
+
+                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder(customTabActivityHelper.getSession())
+                        .setShowTitle(true)
+                        .setToolbarColor(getResources().getColor(R.color.indigo_400))
+                        .setCloseButtonIcon(icon)
+                        .build();
+
+                CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+                }
+            });
         }
 
         lv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
@@ -148,5 +176,15 @@ public class NutritionProductFragment extends BaseFragment {
             default:
                 return nutritionAmount;
         }
+    }
+
+    @Override
+    public void onCustomTabsConnected() {
+        img.setClickable(true);
+    }
+
+    @Override
+    public void onCustomTabsDisconnected() {
+        img.setClickable(false);
     }
 }
