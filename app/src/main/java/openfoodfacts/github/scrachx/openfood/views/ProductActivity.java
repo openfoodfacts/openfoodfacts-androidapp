@@ -1,6 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
@@ -23,14 +25,15 @@ import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductPagerAdapter;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 public class ProductActivity extends BaseActivity {
 
-    private ShareActionProvider mShareActionProvider;
-    private State mState;
-
     @BindView(R.id.pager) ViewPager viewPager;
     @BindView(R.id.toolbar) Toolbar toolbar;
+    private ShareActionProvider mShareActionProvider;
+    private State mState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,10 +89,16 @@ public class ProductActivity extends BaseActivity {
                     url = " " + mState.getProduct().getUrl();
                 }
 
-                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                builder.setToolbarColor(getResources().getColor(R.color.indigo_400));
-                CustomTabsIntent customTabsIntent = builder.build();
-                customTabsIntent.launchUrl(this, Uri.parse(url));
+                Bitmap icon = ((BitmapDrawable) getResources().getDrawable(R.drawable.ic_navigation_arrow_back)).getBitmap();
+
+                //TODO use mayLaunchUrl to improve performance like in MainActivity or LoginActivity
+                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder()
+                        .setShowTitle(true)
+                        .setToolbarColor(getResources().getColor(R.color.indigo_400))
+                        .setCloseButtonIcon(icon)
+                        .build();
+
+                CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
             default:
                 return super.onOptionsItemSelected(item);
         }
