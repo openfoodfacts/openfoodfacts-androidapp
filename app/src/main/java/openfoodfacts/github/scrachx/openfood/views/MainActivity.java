@@ -120,7 +120,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userLogin = preferences.getString("user", null);
         String userSession = preferences.getString("user_session", null);
         if (userLogin != null && userSession != null) {
-            userAccountUri = Uri.parse(Utils.getUriByCurrentLanguage() + "cgi/user.pl?userid=" + userLogin + "&type=edit&user_session=" + userSession);
+            userAccountUri = Uri.parse(Utils.getUriByCurrentLanguage() + "cgi/user.pl?user_id=" + userLogin + "&type=edit&user_session=" + userSession);
             customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null);
 
             headerResult.addProfiles(new ProfileSettingDrawerItem()
