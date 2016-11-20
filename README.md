@@ -81,7 +81,7 @@ Big thanks to them!
 ## Contributing
 
 The project is initially started by [Scot Scriven](https://github.com/itchix), other contributors include:
-
+- [Aurélien Leboulanger](https://github.com/herau)
 - [Pierre Slamich](https://github.com/teolemon)
 - [Friedger Müffke](https://github.com/friedger)
 - [Qian Jin](https://github.com/jinqian)
