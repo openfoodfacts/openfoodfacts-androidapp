@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-05-08 14:13+0200\n"
-"PO-Revision-Date: 2016-05-29 08:00+0000\n"
+"POT-Creation-Date: 2016-11-04 20:11+0100\n"
+"PO-Revision-Date: 2016-05-29 15:48+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Abkhazian <ab@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-05-29 08:36+0000\n"
-"X-Generator: Launchpad (build 18053)\n"
+"X-Launchpad-Export-Date: 2016-11-20 09:00+0000\n"
+"X-Generator: Launchpad (build 18269)\n"
 
 msgctxt "app_name"
 msgid "Open Food"
@@ -84,6 +84,91 @@ msgstr ""
 #. Text units
 msgctxt "units_array:4"
 msgid "ml"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:0"
+msgid "en"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:1"
+msgid "fr"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:2"
+msgid "es"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:3"
+msgid "it"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:4"
+msgid "de"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:5"
+msgid "ja"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:6"
+msgid "ru"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:7"
+msgid "pt"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:8"
+msgid "sv"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:9"
+msgid "my"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:10"
+msgid "kk"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:11"
+msgid "hy"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:12"
+msgid "el"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:13"
+msgid "he"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:14"
+msgid "gl"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:15"
+msgid "ca"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:16"
+msgid "cs"
 msgstr ""
 
 msgctxt "images_array:0"
@@ -195,6 +280,18 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr ""
 
+msgctxt "txtNutritionLevelLow"
+msgid "low"
+msgstr ""
+
+msgctxt "txtNutritionLevelModerate"
+msgid "moderate"
+msgstr ""
+
+msgctxt "txtNutritionLevelHigh"
+msgid "high"
+msgstr ""
+
 msgctxt "txtLogin"
 msgid "Login :"
 msgstr ""
@@ -209,13 +306,17 @@ msgstr ""
 
 msgctxt "txtHome"
 msgid ""
-"Open Food Facts is a database of food products with ingredients, allergens, "
-"nutrition facts and all the tidbits of information we can find on product "
-"labels."
+"Open Food Facts is a open database of food products with ingredients, "
+"allergens, nutrition facts and all the tidbits of information we can find on "
+"product labels."
 msgstr ""
 
 msgctxt "txtSave"
-msgid "Save"
+msgid "Send/Save"
+msgstr ""
+
+msgctxt "txtSignIn"
+msgid "Sign in"
 msgstr ""
 
 msgctxt "txtUser"
@@ -282,7 +383,7 @@ msgid ""
 msgstr ""
 
 msgctxt "txtDialogsContentSend"
-msgid "Do you want send the saved products to our database?"
+msgid "Do you want send the saved products to the database?"
 msgstr ""
 
 msgctxt "txtYes"
@@ -326,7 +427,7 @@ msgid "No data"
 msgstr ""
 
 msgctxt "txtPictureNeeded"
-msgid "Take a picture first, then fill the name and store!"
+msgid "Take a picture first!"
 msgstr ""
 
 msgctxt "toastSending"
@@ -363,7 +464,7 @@ msgid "Barcode required"
 msgstr ""
 
 msgctxt "txtOk"
-msgid "Ok"
+msgid "OK"
 msgstr ""
 
 msgctxt "txtContentDialogUploading"
@@ -408,6 +509,10 @@ msgctxt "home_drawer"
 msgid "Home"
 msgstr ""
 
+msgctxt "open_beauty_drawer"
+msgid "Open Beauty Facts"
+msgstr ""
+
 msgctxt "search_drawer"
 msgid "Search"
 msgstr ""
@@ -449,7 +554,7 @@ msgid "Sign-in"
 msgstr ""
 
 msgctxt "alert_drawer"
-msgid "Alert allergens"
+msgid "Allergen Alert"
 msgstr ""
 
 msgctxt "warning_allergens"
@@ -461,9 +566,125 @@ msgid "Add alert"
 msgstr ""
 
 msgctxt "warning_alert_data"
-msgid "Data may not be accurate, be careful, please check by yourself!"
+msgid ""
+"Your allergies info will never be sent to the Open Food Facts server. Also, "
+"be careful that data may not be accurate, please double-check by yourself!"
 msgstr ""
 
 msgctxt "from_gallery"
 msgid "From gallery"
+msgstr ""
+
+msgctxt "product_sent"
+msgid "Product sent!"
+msgstr ""
+
+msgctxt "action_edit_product"
+msgid "Edit product"
+msgstr ""
+
+msgctxt "title_info_dialog"
+msgid "Information"
+msgstr ""
+
+msgctxt "text_offline_info_dialog"
+msgid ""
+"You can scan products when you're offline to add them to Open Food Facts "
+"later. All the products you scan will appear here, and you'll be able to "
+"send them using the button below."
+msgstr ""
+
+msgctxt "permission_camera"
+msgid "Camera permission is needed to scan barcode."
+msgstr ""
+
+msgctxt "permission_title"
+msgid "Permission information"
+msgstr ""
+
+msgctxt "permission_denied"
+msgid "Please activate permission in the settings"
+msgstr ""
+
+msgctxt "permission_storage"
+msgid "Storage is needed to take or choose pictures"
+msgstr ""
+
+msgctxt "info_download_data"
+msgid ""
+"You need to download some data to get this functionality working, please "
+"press yes to download it."
+msgstr ""
+
+msgctxt "info_download_data_connection"
+msgid ""
+"You need to download some data to get this functionality working. Please "
+"activate internet connection."
+msgstr ""
+
+msgctxt "msg_input_empty"
+msgid "Fill input first!"
+msgstr ""
+
+msgctxt "new_offline_info"
+msgid ""
+"Please take a picture of the product, ingredients, nutrition facts table and "
+"any other information on the label. Thank you!"
+msgstr ""
+
+#. Strings related to login
+msgctxt "error_invalid_password"
+msgid "The password needs to be a least 6 characters long."
+msgstr ""
+
+msgctxt "error_field_required"
+msgid "This field is required"
+msgstr ""
+
+msgctxt "action_preferences"
+msgid "Preferences"
+msgstr ""
+
+msgctxt "prefs_scan_startup"
+msgid "Scan on startup"
+msgstr ""
+
+msgctxt "prefs_scan_startup_summary"
+msgid "This option if selected will start scan when app is opened."
+msgstr ""
+
+msgctxt "scan_history_drawer"
+msgid "History"
+msgstr ""
+
+msgctxt "clear_history"
+msgid "Clear history"
+msgstr ""
+
+msgctxt "title_clear_history_dialog"
+msgid "Clear"
+msgstr ""
+
+msgctxt "text_clear_history_dialog"
+msgid "Do you want to clear all scan history?"
+msgstr ""
+
+msgctxt "export_csv_history"
+msgid "Export CSV"
+msgstr ""
+
+msgctxt "txt_exporting_history"
+msgid "Exporting history..."
+msgstr ""
+
+msgctxt "txt_history_exported"
+msgid "History exported"
+msgstr ""
+
+msgctxt "permision_write_external_storage"
+msgid "Write external storage permission is needed to export history."
+msgstr ""
+
+msgctxt "txt_nutrition_not_found"
+msgid "N/A"
 msgstr ""
