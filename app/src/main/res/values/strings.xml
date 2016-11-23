@@ -1,6 +1,8 @@
 <resources>
 
     <string name="app_name">Open Food</string>
+    <!--String for Open Beauty Facts -->
+    <!--<string name="app_name_obf">Open Beauty</string> -->
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="action_about">About</string>
@@ -108,7 +110,11 @@
     <string name="txtLogin">Login :</string>
     <string name="txtPass">Password :</string>
     <string name="txtTitleHome">Open your food and know what you eat</string>
+    <!--String for Open Beauty Facts -->
+    <!--<string name="txtTitleHome_obf">Open your cosmetic cupboard and know what you use</string>-->
     <string name="txtHome">Open Food Facts is a open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
+    <!--String for Open Beauty Facts -->
+    <!--<string name="txtHome_obf">Open Beauty Facts is a open database of cosmetic products with ingredients, allergens and all the tidbits of information we can find on product labels.</string> -->
     <string name="txtSave">Send/Save</string>
     <string name="txtSignIn">Sign in</string>
     <string name="txtUser">User panel</string>
@@ -126,6 +132,8 @@
     <string name="txtInfoLoginNo">User not saved</string>
     <string name="txtDialogsTitle">Information</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Do you want to add it?</string>
+    <!--String for Open Beauty Facts -->
+    <!--<string name="txtDialogsContent_obf">The product you scanned does not exist yet in Open Beauty Facts. Do you want to add it?</string>-->
     <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
     <string name="txtYes">Yes</string>
     <string name="txtNo">No</string>
@@ -156,6 +164,8 @@
     <string name="try_it_scan_now">Scan product</string>
     <string name="share">Share</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
+    <!--String for Open Beauty Facts -->
+    <!--<string name="msg_share_obf">Look at this product on Open Beauty Facts :</string> -->
     <string name="create_account">Sign up</string>
     <string name="home_drawer">Home</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
@@ -186,11 +196,14 @@
     <string name="ok_button" translatable="false">OK</string>
     <string name="cancel_button" translatable="false">Cancel</string>
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>
+    <!--String for Open Beauty Facts -->
+    <!--<string name="warning_alert_data_obf">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>-->
     <string name="from_gallery">From gallery</string>
     <string name="product_sent">Product sent!</string>
     <string name="action_edit_product">Edit product</string>
     <string name="title_info_dialog">Information</string>
     <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
+    <!--String for Open Beauty Facts -->
     <string name="permission_camera">Camera permission is needed to scan barcode.</string>
     <string name="permission_title">Permission information</string>
     <string name="permission_denied">Please activate permission in the settings</string>
@@ -199,6 +212,8 @@
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
     <string name="msg_input_empty">Fill input first!</string>
     <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
+    <!--String for Open Beauty Facts -->
+    <!--<string name="new_offline_info_obf">Please take a picture of the product, ingredients and any other information on the label. Thank you!</string>-->
 
     <!-- Strings related to login -->
     <string name="error_invalid_password">The password needs to be a least 6 characters long.</string>
@@ -213,9 +228,14 @@
 
     <!--API URL-->
     <string name="openfoodUrl" translatable="false">https://ssl-api.openfoodfacts.org</string>
+    <!-- No SSL available for the moment for Open Beauty Facts -->
+    <!--<string name="openfoodUrl_obf" translatable="false">https://api.openbeautyfacts.org</string>-->
+    <!--<string name="openfoodUrl_obf" translatable="false">https://ssl-api.openbeautyfacts.org</string>-->
 
-    <!-- Open beauty app -->
+    <!-- Open Beauty Facts app -->
     <string name="openBeautyApp" translatable="false">org.openbeautyfacts.scanner</string>
+    <!-- Open Food Facts installation if Open Beauty Facts already installed -->
+    <!--<string name="openBeautyApp_obf" translatable="false">org.openfoodfacts.scanner</string>-->
     <string name="scan_history_drawer">History</string>
     <string name="clear_history">Clear history</string>
     <string name="title_clear_history_dialog">Clear</string>
