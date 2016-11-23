@@ -204,6 +204,7 @@
     <string name="title_info_dialog">Information</string>
     <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
     <!--String for Open Beauty Facts -->
+    <!--<string name="text_offline_info_dialog_obf">You can scan products when you\'re offline to add them to Open Beauty Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string> -->
     <string name="permission_camera">Camera permission is needed to scan barcode.</string>
     <string name="permission_title">Permission information</string>
     <string name="permission_denied">Please activate permission in the settings</string>
