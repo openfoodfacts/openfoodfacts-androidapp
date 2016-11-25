@@ -54,9 +54,10 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback {
 
-    public static final int USER_PROFILE = 100;
     private static final int LOGIN_REQUEST = 1;
+    public static final int USER_PROFILE = 100;
     private static final long PROFILE_SETTING = 200;
+    private static final long CONTRIBUTOR = 300;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     private AccountHeader headerResult = null;
@@ -68,6 +69,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private Uri userAccountUri;
     private Uri contributeUri;
     private Uri discoverUri;
+    private Uri userContributeUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +97,15 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
         }
 
+        // chrome custom tab init
+        customTabActivityHelper = new CustomTabActivityHelper();
+        customTabActivityHelper.setConnectionCallback(this);
+        customTabsIntent = new CustomTabsIntent.Builder(customTabActivityHelper.getSession())
+                .setShowTitle(true)
+                .setToolbarColor(getResources().getColor(R.color.indigo_400))
+                .setCloseButtonIcon(((BitmapDrawable) getResources().getDrawable(R.drawable.ic_navigation_arrow_back)).getBitmap())
+                .build();
+
         // Create the AccountHeader
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -104,8 +115,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
                     public boolean onProfileChanged(View view, IProfile profile, boolean current) {
-                        if (profile instanceof IDrawerItem && profile.getIdentifier() == PROFILE_SETTING) {
-                            CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, userAccountUri, new WebViewFallback());
+                        if (profile instanceof IDrawerItem) {
+                            if (profile.getIdentifier() == PROFILE_SETTING) {
+                                CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, userAccountUri, new WebViewFallback());
+                            } else if (profile.getIdentifier() == CONTRIBUTOR) {
+                                CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, userContributeUri, new WebViewFallback());
+                            }
                         }
 
                         //false if you have not consumed the event and it should close the drawer
@@ -120,13 +135,17 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userLogin = preferences.getString("user", null);
         String userSession = preferences.getString("user_session", null);
         if (userLogin != null && userSession != null) {
-            userAccountUri = Uri.parse(Utils.getUriByCurrentLanguage() + "cgi/user.pl?type=edit&userid="+ userLogin +"&user_id=" + userLogin + "&user_session=" + userSession);
+            userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid="+ userLogin +"&user_id=" + userLogin + "&user_session=" + userSession);
             customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null);
 
             headerResult.addProfiles(new ProfileSettingDrawerItem()
                     .withName(getString(R.string.action_manage_account))
                     .withIcon(GoogleMaterial.Icon.gmd_settings)
                     .withIdentifier(PROFILE_SETTING));
+            headerResult.addProfiles(new ProfileSettingDrawerItem()
+                    .withName(getString(R.string.action_contributes))
+                    .withIcon(R.drawable.ic_contributor)
+                    .withIdentifier(CONTRIBUTOR));
         }
 
         //Create the drawer
@@ -256,22 +275,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             startActivity(cameraIntent);
         }
 
-        contributeUri = Uri.parse(Utils.getUriByCurrentLanguage() + "contribute");
-        discoverUri = Uri.parse(Utils.getUriByCurrentLanguage() + "discover");
-
-        // chrome custom tab init
-        customTabActivityHelper = new CustomTabActivityHelper();
-        customTabActivityHelper.setConnectionCallback(this);
-
         // prefetch uris
+        contributeUri = Uri.parse(getString(R.string.website_contribute));
+        discoverUri = Uri.parse(getString(R.string.website_discover));
+        userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin);
+
         customTabActivityHelper.mayLaunchUrl(contributeUri, null, null);
         customTabActivityHelper.mayLaunchUrl(discoverUri, null, null);
-
-        customTabsIntent = new CustomTabsIntent.Builder(customTabActivityHelper.getSession())
-                .setShowTitle(true)
-                .setToolbarColor(getResources().getColor(R.color.indigo_400))
-                .setCloseButtonIcon(((BitmapDrawable) getResources().getDrawable(R.drawable.ic_navigation_arrow_back)).getBitmap())
-                .build();
+        customTabActivityHelper.mayLaunchUrl(userContributeUri, null, null);
     }
 
     private IProfile getUserProfile() {

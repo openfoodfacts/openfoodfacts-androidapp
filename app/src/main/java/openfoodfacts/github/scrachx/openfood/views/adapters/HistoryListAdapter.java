@@ -15,16 +15,18 @@ import openfoodfacts.github.scrachx.openfood.views.holders.HistoryScanHolder;
 public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> {
 
     private final List<HistoryItem> list;
+    private final String productUrl;
 
-    public HistoryListAdapter(List<HistoryItem> list) {
+    public HistoryListAdapter(List<HistoryItem> list, String productUrl) {
         this.list = list == null ? Collections.<HistoryItem>emptyList() : list;
+        this.productUrl = productUrl;
     }
 
     @Override
     public HistoryScanHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //Inflate the layout, initialize the View Holder
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.history_list_item, parent, false);
-        return new HistoryScanHolder(v);
+        return new HistoryScanHolder(v, productUrl);
     }
 
     @Override

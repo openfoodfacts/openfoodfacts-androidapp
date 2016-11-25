@@ -23,7 +23,6 @@ import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -84,7 +83,7 @@ public class ProductActivity extends BaseActivity {
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
             case R.id.action_edit_product:
-                String url = Utils.getUriByCurrentLanguage() + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
+                String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
                 if (mState.getProduct().getUrl() != null) {
                     url = " " + mState.getProduct().getUrl();
                 }
@@ -112,7 +111,7 @@ public class ProductActivity extends BaseActivity {
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
 
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        String url = " " + Utils.getUriProductByCurrentLanguage() + mState.getProduct().getCode();
+        String url = " " + getString(R.string.website_product) + mState.getProduct().getCode();
         if (mState.getProduct().getUrl() != null) {
             url = " " + mState.getProduct().getUrl();
         }
