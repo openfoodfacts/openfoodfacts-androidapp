@@ -1,0 +1,697 @@
+# Hebrew translation for openfoodfacts
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the openfoodfacts
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openfoodfacts\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-11-04 20:11+0100\n"
+"PO-Revision-Date: 2016-11-08 08:52+0000\n"
+"Last-Translator: Yaron <sh.yaron@gmail.com>\n"
+"Language-Team: Hebrew <he@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-11-20 09:00+0000\n"
+"X-Generator: Launchpad (build 18269)\n"
+"Language: he\n"
+"Generated-By: Babel 2.3.3\n"
+
+msgctxt "app_name"
+msgid "Open Food"
+msgstr "אוכל פתוח"
+
+msgctxt "hello_world"
+msgid "Hello world!"
+msgstr "שלום עולם!"
+
+msgctxt "action_settings"
+msgid "Settings"
+msgstr "הגדרות"
+
+msgctxt "action_about"
+msgid "About"
+msgstr "על אודות"
+
+msgctxt "action_find"
+msgid "Find"
+msgstr "חיפוש"
+
+msgctxt "text_barcode"
+msgid "Put the barcode :"
+msgstr "נא להזין את הברקוד:"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:0"
+msgid "Summary"
+msgstr "תקציר"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:1"
+msgid "Ingredients"
+msgstr "רכיבים"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:2"
+msgid "Nutrition"
+msgstr "תזונה"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:3"
+msgid "Back to menu"
+msgstr "חזרה לתפריט"
+
+#. Text units
+msgctxt "units_array:0"
+msgid "g"
+msgstr "ג׳"
+
+#. Text units
+msgctxt "units_array:1"
+msgid "mg"
+msgstr "מ״ג"
+
+#. Text units
+msgctxt "units_array:2"
+msgid "kg"
+msgstr "ק״ג"
+
+#. Text units
+msgctxt "units_array:3"
+msgid "l"
+msgstr "ל׳"
+
+#. Text units
+msgctxt "units_array:4"
+msgid "ml"
+msgstr "מ״ל"
+
+#. Text units
+msgctxt "lang_array:0"
+msgid "en"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:1"
+msgid "fr"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:2"
+msgid "es"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:3"
+msgid "it"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:4"
+msgid "de"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:5"
+msgid "ja"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:6"
+msgid "ru"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:7"
+msgid "pt"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:8"
+msgid "sv"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:9"
+msgid "my"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:10"
+msgid "kk"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:11"
+msgid "hy"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:12"
+msgid "el"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:13"
+msgid "he"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:14"
+msgid "gl"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:15"
+msgid "ca"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:16"
+msgid "cs"
+msgstr ""
+
+msgctxt "images_array:0"
+msgid "Default"
+msgstr "בררת מחדל"
+
+msgctxt "images_array:1"
+msgid "Nutrition"
+msgstr "תזונה"
+
+msgctxt "images_array:2"
+msgid "Ingredients"
+msgstr "רכיבים"
+
+#. Content Description
+msgctxt "search_button"
+msgid "Search"
+msgstr "חיפוש"
+
+msgctxt "no_products"
+msgid "Products not found"
+msgstr "המוצרים לא נמצאו"
+
+msgctxt "desc_list_item_icon"
+msgid "Item Icon"
+msgstr "סמל הפריט"
+
+msgctxt "alert_dialog_warning_title"
+msgid "Warning"
+msgstr "אזהרה"
+
+msgctxt "alert_dialog_warning_msg_user"
+msgid "User/password has changed, please update information"
+msgstr "שם משתמש/ססמה השתנו, נא לעדכן את הפרטים"
+
+msgctxt "alert_dialog_product_error_msg"
+msgid "Product not found, please try again"
+msgstr "המוצר לא נמצא, נא לנסות שוב."
+
+msgctxt "toast_retrieving"
+msgid "Loading..."
+msgstr "בטעינה…"
+
+msgctxt "txtBarcode"
+msgid "Barcode :"
+msgstr "ברקוד:"
+
+msgctxt "txtQuantity"
+msgid "Quantity :"
+msgstr "כמות:"
+
+msgctxt "txtPackaging"
+msgid "Packaging :"
+msgstr "אריזה:"
+
+msgctxt "txtBrands"
+msgid "Brands :"
+msgstr "מותגים:"
+
+msgctxt "txtCategories"
+msgid "Categories :"
+msgstr "קטגוריות:"
+
+msgctxt "txtManufacturing"
+msgid "Manufacturing or processing places :"
+msgstr "מקומות העיבוד או הייצור:"
+
+msgctxt "txtCity"
+msgid "City, state and country where purchased :"
+msgstr "עיר, מדינה וארץ הקנייה :"
+
+msgctxt "txtStores"
+msgid "Stores :"
+msgstr "חנויות:"
+
+msgctxt "txtCountries"
+msgid "Countries where sold :"
+msgstr "מדינות בהן נמכר:"
+
+msgctxt "txtIngredients"
+msgid "Ingredients list :"
+msgstr "רשימת רכיבים:"
+
+msgctxt "txtSubstances"
+msgid "Substances or products causing allergies or intolerances :"
+msgstr "חומרים או מוצרים שיכולים לגרום לרגשת או רגישות :"
+
+msgctxt "txtAdditives"
+msgid "Additives :"
+msgstr "תוספים :"
+
+msgctxt "txtTraces"
+msgid "Traces :"
+msgstr "עקבות :"
+
+msgctxt "txtMayBeFromPalmOilProduct"
+msgid "Ingredients that may be from palm oil :"
+msgstr "רכיבים שעשויים להיות משמן דקלים :"
+
+msgctxt "txtPalmOilProduct"
+msgid "Ingredients from palm oil :"
+msgstr "רכיבים משמן דקלים :"
+
+msgctxt "txtServingSize"
+msgid "Serving size :"
+msgstr "גודל ההגשה :"
+
+msgctxt "txtNutrientLevel100g"
+msgid "Nutrient levels for 100g :"
+msgstr "טבלת ערכים תזונתיים ל־100 ג׳ :"
+
+msgctxt "txtNutritionLevelLow"
+msgid "low"
+msgstr "נמוך"
+
+msgctxt "txtNutritionLevelModerate"
+msgid "moderate"
+msgstr "בינוני"
+
+msgctxt "txtNutritionLevelHigh"
+msgid "high"
+msgstr "גבוה"
+
+msgctxt "txtLogin"
+msgid "Login :"
+msgstr "שם משתמש :"
+
+msgctxt "txtPass"
+msgid "Password :"
+msgstr "ססמה :"
+
+msgctxt "txtTitleHome"
+msgid "Open your food and know what you eat"
+msgstr "פתיחה של האוכל שלך מאפשרת לך לדעת מה נכנס אליך לגוף"
+
+msgctxt "txtHome"
+msgid ""
+"Open Food Facts is a open database of food products with ingredients, "
+"allergens, nutrition facts and all the tidbits of information we can find on "
+"product labels."
+msgstr ""
+
+msgctxt "txtSave"
+msgid "Send/Save"
+msgstr "שליחה/שמירה"
+
+msgctxt "txtSignIn"
+msgid "Sign in"
+msgstr "כניסה"
+
+msgctxt "txtUser"
+msgid "User panel"
+msgstr "לוח משתמש"
+
+msgctxt "txtToastSaved"
+msgid "User saved"
+msgstr "המשתמש נשמר"
+
+msgctxt "txtSalt"
+msgid "Salt :"
+msgstr "מלח :"
+
+msgctxt "txtFat"
+msgid "Fat :"
+msgstr "שומן :"
+
+msgctxt "txtSugars"
+msgid "Sugars :"
+msgstr "סוכרים :"
+
+msgctxt "txtSaturatedFat"
+msgid "Satured fat :"
+msgstr "שומן רווי :"
+
+msgctxt "hintBarcode"
+msgid "Barcode"
+msgstr "ברקוד"
+
+msgctxt "hintLogin"
+msgid "Login"
+msgstr "שם משתמש"
+
+msgctxt "hintPass"
+msgid "Password"
+msgstr "ססמה"
+
+msgctxt "errorLogin"
+msgid "Login or password error"
+msgstr "שם המשתמש או הססמה שגויים"
+
+msgctxt "errorWeb"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
+msgstr "לא הצלחנו לגשת לאינטרנט. יש לך תקלה בחיבור?"
+
+msgctxt "txtInfoLoginOk"
+msgid "User saved"
+msgstr "המשתמש נשמר"
+
+msgctxt "txtInfoLoginNo"
+msgid "User not saved"
+msgstr "המשתמש לא נשמר"
+
+msgctxt "txtDialogsTitle"
+msgid "Information"
+msgstr "פרטים"
+
+msgctxt "txtDialogsContent"
+msgid ""
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
+msgstr "המוצרים שסרקת לא נמצאים עדיין ב־Open Food Facts. להוסיף?"
+
+msgctxt "txtDialogsContentSend"
+msgid "Do you want send the saved products to the database?"
+msgstr "לשלוח את המוצרים שנשמרו אל מסד הנתונים?"
+
+msgctxt "txtYes"
+msgid "Yes"
+msgstr "כן"
+
+msgctxt "txtNo"
+msgid "No"
+msgstr "לא"
+
+msgctxt "hintNameProduct"
+msgid "Name"
+msgstr "שם"
+
+msgctxt "hintEnergy"
+msgid "Energy in kJ per serving"
+msgstr "אנרגיה ב־kJ להגשה"
+
+msgctxt "hintEnergyUnit"
+msgid "Energy unit"
+msgstr "יחידת אנרגיה"
+
+msgctxt "hintWeight"
+msgid "Weight"
+msgstr "משקל"
+
+msgctxt "hintStores"
+msgid "Store"
+msgstr "חנות"
+
+msgctxt "txtTakePicture"
+msgid "Take picture"
+msgstr "צילום תמונה"
+
+msgctxt "txtSendAll"
+msgid "Upload all"
+msgstr "לשלוח הכול"
+
+msgctxt "txtNoData"
+msgid "No data"
+msgstr "אין נתונים"
+
+msgctxt "txtPictureNeeded"
+msgid "Take a picture first!"
+msgstr "יש לצלם תמונה תחילה!"
+
+msgctxt "toastSending"
+msgid "Uploading..."
+msgstr "מתבצעת שליחה…"
+
+msgctxt "dataSaved"
+msgid "Saved locally on your device"
+msgstr "נשמר מקומית בהתקן שלך"
+
+msgctxt "txtInfoAddUser"
+msgid "Please enter your login and password"
+msgstr "נא להזין את שם המשתמש והססמה שלך"
+
+msgctxt "txtDataUpdated"
+msgid "Data updated"
+msgstr "הנתונים עודכנו"
+
+msgctxt "txtLoading"
+msgid "Loading..."
+msgstr "בטעינה…"
+
+msgctxt "txtDialogsContentDelete"
+msgid "Do you want to delete this draft?"
+msgstr "למחוק את הטיוטה הזו?"
+
+msgctxt "txtDialogsContentInfoSave"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr "המוצר נשמר מקומית, ניתן לערוך אותו בתפריט העריכה בלתי מקוון"
+
+msgctxt "txtBarcodeRequire"
+msgid "Barcode required"
+msgstr "נדרש ברקוד"
+
+msgctxt "txtOk"
+msgid "OK"
+msgstr "אישור"
+
+msgctxt "txtContentDialogUploading"
+msgid "Please don't exit during the process..."
+msgstr "נא לא לצאת באמצע התהליך…"
+
+msgctxt "txtAbout"
+msgid ""
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
+msgstr ""
+"התמונות הנשלחות על ידיך מפורסמות תחת הרישיון החופשי ייחוס שיתוף זהה מבית "
+"Creative Commons"
+
+msgctxt "txtAllsent"
+msgid "Products sent"
+msgstr "המוצרים נשלחו"
+
+msgctxt "txtPalm"
+msgid "The product does not contain any palm oil"
+msgstr "המוצר אינו מכיל שמן דקלים"
+
+msgctxt "txtBarcodeNotValid"
+msgid "Barcode not valid"
+msgstr "הברקוד לא זמין"
+
+msgctxt "try_it_scan_now"
+msgid "Try it! Scan now!"
+msgstr "בואו ננסה! נא לסרוק כעת!"
+
+msgctxt "share"
+msgid "Share"
+msgstr "שיתוף"
+
+msgctxt "msg_share"
+msgid "Look at this product on Open Food Facts :"
+msgstr "להלן מוצר מתוך Open Food Facts :"
+
+msgctxt "create_account"
+msgid "Sign up"
+msgstr "הרשמה"
+
+msgctxt "home_drawer"
+msgid "Home"
+msgstr "ראשי"
+
+msgctxt "open_beauty_drawer"
+msgid "Open Beauty Facts"
+msgstr ""
+
+msgctxt "search_drawer"
+msgid "Search"
+msgstr "חיפוש"
+
+msgctxt "search_by_barcode_drawer"
+msgid "Search by barcode"
+msgstr "חיפוש לפי ברקוד"
+
+msgctxt "search_by_name_drawer"
+msgid "Search by name"
+msgstr "חיפוש לפי שם"
+
+msgctxt "scan_search"
+msgid "Scan"
+msgstr "סריקה"
+
+msgctxt "user_drawer"
+msgid "User"
+msgstr "משתמש"
+
+msgctxt "offline_edit_drawer"
+msgid "Offline edit"
+msgstr "עריכה בלתי מקוונת"
+
+msgctxt "txt_anonymous"
+msgid "Anonymous"
+msgstr "אלמוני"
+
+msgctxt "txt_product_not_found"
+msgid "Products not found"
+msgstr "המוצרים לא נמצאו"
+
+msgctxt "delete_txt"
+msgid "Delete"
+msgstr "מחיקה"
+
+msgctxt "sign_in_drawer"
+msgid "Sign-in"
+msgstr "כניסה"
+
+msgctxt "alert_drawer"
+msgid "Allergen Alert"
+msgstr "התראת אלרגן"
+
+msgctxt "warning_allergens"
+msgid "Contains allergens"
+msgstr "מכיל אלרגנים"
+
+msgctxt "title_dialog_alert"
+msgid "Add alert"
+msgstr "הוספת התרעה"
+
+msgctxt "warning_alert_data"
+msgid ""
+"Your allergies info will never be sent to the Open Food Facts server. Also, "
+"be careful that data may not be accurate, please double-check by yourself!"
+msgstr ""
+
+msgctxt "from_gallery"
+msgid "From gallery"
+msgstr "מהגלריה"
+
+msgctxt "product_sent"
+msgid "Product sent!"
+msgstr "המוצר נשלח!"
+
+msgctxt "action_edit_product"
+msgid "Edit product"
+msgstr "עריכת מוצר"
+
+msgctxt "title_info_dialog"
+msgid "Information"
+msgstr "פרטים"
+
+msgctxt "text_offline_info_dialog"
+msgid ""
+"You can scan products when you're offline to add them to Open Food Facts "
+"later. All the products you scan will appear here, and you'll be able to "
+"send them using the button below."
+msgstr ""
+
+msgctxt "permission_camera"
+msgid "Camera permission is needed to scan barcode."
+msgstr "נדרשות הרשאות מצלמה כדי לסרוק ברקוד."
+
+msgctxt "permission_title"
+msgid "Permission information"
+msgstr "פרטי הרשאה"
+
+msgctxt "permission_denied"
+msgid "Please activate permission in the settings"
+msgstr "נא להפעיל את ההרשאות בהגדרות"
+
+msgctxt "permission_storage"
+msgid "Storage is needed to take or choose pictures"
+msgstr "נדרש אחסון כדי לצלם או לבחור תמונות"
+
+msgctxt "info_download_data"
+msgid ""
+"You need to download some data to get this functionality working, please "
+"press yes to download it."
+msgstr ""
+
+msgctxt "info_download_data_connection"
+msgid ""
+"You need to download some data to get this functionality working. Please "
+"activate internet connection."
+msgstr ""
+
+msgctxt "msg_input_empty"
+msgid "Fill input first!"
+msgstr "יש למלא את הקלט תחילה!"
+
+msgctxt "new_offline_info"
+msgid ""
+"Please take a picture of the product, ingredients, nutrition facts table and "
+"any other information on the label. Thank you!"
+msgstr ""
+"נא לצלם תמונות של המוצר, רכיביו, טבלת ערכיו התזונתיים וכל מידע נוסף שעל "
+"התווית. תודה!"
+
+#. Strings related to login
+msgctxt "error_invalid_password"
+msgid "The password needs to be a least 6 characters long."
+msgstr "הססמה חייבת להיות באורך של 6 תווים לפחות."
+
+msgctxt "error_field_required"
+msgid "This field is required"
+msgstr "זהו שדה חובה"
+
+msgctxt "action_preferences"
+msgid "Preferences"
+msgstr "העדפות"
+
+msgctxt "prefs_scan_startup"
+msgid "Scan on startup"
+msgstr "סריקה עם ההפעלה"
+
+msgctxt "prefs_scan_startup_summary"
+msgid "This option if selected will start scan when app is opened."
+msgstr "אם אפשרות זו נבחרה הסריקה תחל עם הפעלת היישומון"
+
+msgctxt "scan_history_drawer"
+msgid "History"
+msgstr "היסטוריה"
+
+msgctxt "clear_history"
+msgid "Clear history"
+msgstr "פינוי ההיסטוריה"
+
+msgctxt "title_clear_history_dialog"
+msgid "Clear"
+msgstr "פינוי"
+
+msgctxt "text_clear_history_dialog"
+msgid "Do you want to clear all scan history?"
+msgstr "לפנות את כל היסטוריית הסריקה?"
+
+msgctxt "export_csv_history"
+msgid "Export CSV"
+msgstr "יצוא CSV…"
+
+msgctxt "txt_exporting_history"
+msgid "Exporting history..."
+msgstr ""
+
+msgctxt "txt_history_exported"
+msgid "History exported"
+msgstr ""
+
+msgctxt "permision_write_external_storage"
+msgid "Write external storage permission is needed to export history."
+msgstr ""
+
+msgctxt "txt_nutrition_not_found"
+msgid "N/A"
+msgstr "לא זמין"
