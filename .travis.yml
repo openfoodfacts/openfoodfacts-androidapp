@@ -36,7 +36,7 @@ before_cache:
 cache:
   directories:
     - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+    - $HOME/.gradle/wrapper/    
 
 # Emulator Management: Create, Start and Wait
 before_script:
@@ -47,6 +47,9 @@ before_script:
 
 install:
   - ./gradlew assembleDebug --stacktrace
+  
+script:
+  - ./gradlew build connectedCheck --stacktrace
 
 branches:
   only:
