@@ -154,8 +154,6 @@
   <string name="error_field_required">Ce champ est obligatoire.</string>
   <string name="action_preferences">Préférences</string>
   <string name="prefs_scan_startup">Scanner au démarrage</string>
-<<<<<<< HEAD
-  <string name="prefs_scan_startup_summary">Si sélectionnée, cette option lancera le scan dès l\'ouverture de l\'application.</string>
   <string name="scan_history_drawer">Historique</string>
   <string name="clear_history">Effacer l\'historique</string>
   <string name="title_clear_history_dialog">Effacer</string>
@@ -165,7 +163,6 @@
   <string name="txt_history_exported">Historique exporté</string>
   <string name="permision_write_external_storage">Les droits d\'accès en écriture sur le support de stockage externe sont nécessaires pour exporter l\'historique.</string>
   <string name="txt_nutrition_not_found">Non applicable</string>
-=======
   <string name="prefs_scan_startup_summary">Cette option, si elle est selectionnée, lancera le scan au démarrage de l\'application</string>
   <string name="product_sent">Produit envoyé !</string>
   <string name="txtIngredientsOrigins">Origine des ingrédients :</string>
@@ -176,5 +173,4 @@
   <string name="website_contributor">http://fr.openfoodfacts.org/contributeur/</string>
   <string name="website_discover">http://fr.openfoodfacts.org/decouvrir</string>
   <string name="website_product">http://fr.openfoodfacts.org/produit/</string>
->>>>>>> master
 </resources>
