@@ -56,7 +56,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        uri = Uri.parse(Utils.getUriByCurrentLanguage() + "cgi/user.pl");
+        uri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
 
         // prefetch the uri
         customTabActivityHelper = new CustomTabActivityHelper();
