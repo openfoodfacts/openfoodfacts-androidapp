@@ -164,7 +164,6 @@
   <string name="permision_write_external_storage">Les droits d\'accès en écriture sur le support de stockage externe sont nécessaires pour exporter l\'historique.</string>
   <string name="txt_nutrition_not_found">Non applicable</string>
   <string name="prefs_scan_startup_summary">Cette option, si elle est selectionnée, lancera le scan au démarrage de l\'application</string>
-  <string name="product_sent">Produit envoyé !</string>
   <string name="txtIngredientsOrigins">Origine des ingrédients :</string>
   <string name="action_contributes">Vos contributions</string>
 
