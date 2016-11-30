@@ -139,4 +139,11 @@
   <string name="prefs_scan_startup_summary">Cette option, si elle est selectionnée, lancera le scan au démarrage de l\'application</string>
   <string name="product_sent">Produit envoyé !</string>
   <string name="txtIngredientsOrigins">Origine des ingrédients :</string>
+  <string name="action_contributes">Vos contributions</string>
+
+  <string name="website">http://fr.openfoodfacts.org/</string>
+  <string name="website_contribute">http://fr.openfoodfacts.org/contribuer</string>
+  <string name="website_contributor">http://fr.openfoodfacts.org/contributeur/</string>
+  <string name="website_discover">http://fr.openfoodfacts.org/decouvrir</string>
+  <string name="website_product">http://fr.openfoodfacts.org/produit/</string>
 </resources>
