@@ -1,0 +1,700 @@
+# Italian translation for openfoodfacts
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the openfoodfacts package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openfoodfacts\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-11-04 20:11+0100\n"
+"PO-Revision-Date: 2016-11-30 15:29+0000\n"
+"Last-Translator: alev <Unknown>\n"
+"Language-Team: Italian <it@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-11-30 15:36+0000\n"
+"X-Generator: Launchpad (build 18282)\n"
+
+msgctxt "app_name"
+msgid "Open Food"
+msgstr "Open Food"
+
+msgctxt "hello_world"
+msgid "Hello world!"
+msgstr "Hello world!"
+
+msgctxt "action_settings"
+msgid "Settings"
+msgstr "Impostazioni"
+
+msgctxt "action_about"
+msgid "About"
+msgstr "Informazioni"
+
+msgctxt "action_find"
+msgid "Find"
+msgstr "Cerca"
+
+msgctxt "text_barcode"
+msgid "Put the barcode :"
+msgstr "Inserisci codice a barre"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:0"
+msgid "Summary"
+msgstr ""
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:1"
+msgid "Ingredients"
+msgstr "Ingredienti"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:2"
+msgid "Nutrition"
+msgstr ""
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:3"
+msgid "Back to menu"
+msgstr "Torna al menu"
+
+#. Text units
+msgctxt "units_array:0"
+msgid "g"
+msgstr "g"
+
+#. Text units
+msgctxt "units_array:1"
+msgid "mg"
+msgstr "mg"
+
+#. Text units
+msgctxt "units_array:2"
+msgid "kg"
+msgstr "kg"
+
+#. Text units
+msgctxt "units_array:3"
+msgid "l"
+msgstr "l"
+
+#. Text units
+msgctxt "units_array:4"
+msgid "ml"
+msgstr "ml"
+
+#. Text units
+msgctxt "lang_array:0"
+msgid "en"
+msgstr "en"
+
+#. Text units
+msgctxt "lang_array:1"
+msgid "fr"
+msgstr "fr"
+
+#. Text units
+msgctxt "lang_array:2"
+msgid "es"
+msgstr "es"
+
+#. Text units
+msgctxt "lang_array:3"
+msgid "it"
+msgstr "it"
+
+#. Text units
+msgctxt "lang_array:4"
+msgid "de"
+msgstr "de"
+
+#. Text units
+msgctxt "lang_array:5"
+msgid "ja"
+msgstr "ja"
+
+#. Text units
+msgctxt "lang_array:6"
+msgid "ru"
+msgstr "ru"
+
+#. Text units
+msgctxt "lang_array:7"
+msgid "pt"
+msgstr "pt"
+
+#. Text units
+msgctxt "lang_array:8"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:9"
+msgid "my"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:10"
+msgid "kk"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:11"
+msgid "hy"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:12"
+msgid "el"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:13"
+msgid "he"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:14"
+msgid "gl"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:15"
+msgid "ca"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:16"
+msgid "cs"
+msgstr ""
+
+msgctxt "images_array:0"
+msgid "Default"
+msgstr "Predefinito"
+
+msgctxt "images_array:1"
+msgid "Nutrition"
+msgstr ""
+
+msgctxt "images_array:2"
+msgid "Ingredients"
+msgstr "Ingredienti"
+
+#. Content Description
+msgctxt "search_button"
+msgid "Search"
+msgstr "Cerca"
+
+msgctxt "no_products"
+msgid "Products not found"
+msgstr ""
+
+msgctxt "desc_list_item_icon"
+msgid "Item Icon"
+msgstr ""
+
+msgctxt "alert_dialog_warning_title"
+msgid "Warning"
+msgstr "Attenzione"
+
+msgctxt "alert_dialog_warning_msg_user"
+msgid "User/password has changed, please update information"
+msgstr ""
+
+msgctxt "alert_dialog_product_error_msg"
+msgid "Product not found, please try again"
+msgstr ""
+
+msgctxt "toast_retrieving"
+msgid "Loading..."
+msgstr "Caricamento..."
+
+msgctxt "txtBarcode"
+msgid "Barcode :"
+msgstr "Codice a barre"
+
+msgctxt "txtQuantity"
+msgid "Quantity :"
+msgstr "Quantità :"
+
+msgctxt "txtPackaging"
+msgid "Packaging :"
+msgstr "Confezione:"
+
+msgctxt "txtBrands"
+msgid "Brands :"
+msgstr "Marche:"
+
+msgctxt "txtCategories"
+msgid "Categories :"
+msgstr "Categorie:"
+
+msgctxt "txtManufacturing"
+msgid "Manufacturing or processing places :"
+msgstr "Luoghi di produzione:"
+
+msgctxt "txtCity"
+msgid "City, state and country where purchased :"
+msgstr "Città, regione e nazione di acquisto:"
+
+msgctxt "txtStores"
+msgid "Stores :"
+msgstr "Negozi:"
+
+msgctxt "txtCountries"
+msgid "Countries where sold :"
+msgstr "Nazioni dove venduto:"
+
+msgctxt "txtIngredients"
+msgid "Ingredients list :"
+msgstr "Lista ingredienti:"
+
+msgctxt "txtSubstances"
+msgid "Substances or products causing allergies or intolerances :"
+msgstr "Sostanze o prodotti che causano allergie o intolleranze:"
+
+msgctxt "txtAdditives"
+msgid "Additives :"
+msgstr "Additivi:"
+
+msgctxt "txtTraces"
+msgid "Traces :"
+msgstr "Tracce:"
+
+msgctxt "txtMayBeFromPalmOilProduct"
+msgid "Ingredients that may be from palm oil :"
+msgstr "Ingredienti che possono derivare dall'olio di palma:"
+
+msgctxt "txtPalmOilProduct"
+msgid "Ingredients from palm oil :"
+msgstr "Ingredienti derivanti dall'olio di palma:"
+
+msgctxt "txtServingSize"
+msgid "Serving size :"
+msgstr "Grandezza porzione:"
+
+msgctxt "txtNutrientLevel100g"
+msgid "Nutrient levels for 100g :"
+msgstr "Nutrienti per 100g:"
+
+msgctxt "txtNutritionLevelLow"
+msgid "low"
+msgstr "basso"
+
+msgctxt "txtNutritionLevelModerate"
+msgid "moderate"
+msgstr "moderato"
+
+msgctxt "txtNutritionLevelHigh"
+msgid "high"
+msgstr "alto"
+
+msgctxt "txtLogin"
+msgid "Login :"
+msgstr "Login:"
+
+msgctxt "txtPass"
+msgid "Password :"
+msgstr "Password:"
+
+msgctxt "txtTitleHome"
+msgid "Open your food and know what you eat"
+msgstr "Apri il cibo e conosci cosa mangi"
+
+msgctxt "txtHome"
+msgid ""
+"Open Food Facts is a open database of food products with ingredients, "
+"allergens, nutrition facts and all the tidbits of information we can find on "
+"product labels."
+msgstr ""
+"Open Food Facts è un database aperto di prodotti alimentari con gli "
+"ingredienti, gli allergeni, le informazioni nutrizionali e tutto ciò che "
+"possiamo trovare sulle etichette dei prodotti."
+
+msgctxt "txtSave"
+msgid "Send/Save"
+msgstr "Invia/Salva"
+
+msgctxt "txtSignIn"
+msgid "Sign in"
+msgstr "Accedi"
+
+msgctxt "txtUser"
+msgid "User panel"
+msgstr "Pannello utente"
+
+msgctxt "txtToastSaved"
+msgid "User saved"
+msgstr "Utente salvato"
+
+msgctxt "txtSalt"
+msgid "Salt :"
+msgstr "Sale:"
+
+msgctxt "txtFat"
+msgid "Fat :"
+msgstr "Grassi:"
+
+msgctxt "txtSugars"
+msgid "Sugars :"
+msgstr "Zuccheri:"
+
+msgctxt "txtSaturatedFat"
+msgid "Satured fat :"
+msgstr "Grassi saturi:"
+
+msgctxt "hintBarcode"
+msgid "Barcode"
+msgstr "Codice a Barre"
+
+msgctxt "hintLogin"
+msgid "Login"
+msgstr "Login"
+
+msgctxt "hintPass"
+msgid "Password"
+msgstr "Password"
+
+msgctxt "errorLogin"
+msgid "Login or password error"
+msgstr "Login o password errati"
+
+msgctxt "errorWeb"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
+msgstr ""
+"Non abbiamo potuto accedere a internet. Hai qualche problema di connessione?"
+
+msgctxt "txtInfoLoginOk"
+msgid "User saved"
+msgstr "Utente salvato"
+
+msgctxt "txtInfoLoginNo"
+msgid "User not saved"
+msgstr "Utente non salvato"
+
+msgctxt "txtDialogsTitle"
+msgid "Information"
+msgstr "Informazioni"
+
+msgctxt "txtDialogsContent"
+msgid ""
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
+msgstr ""
+"Il prodotto che hai scansionato non esiste ancora su Open Food Facts. Vuoi "
+"aggiungerlo?"
+
+msgctxt "txtDialogsContentSend"
+msgid "Do you want send the saved products to the database?"
+msgstr "Vuoi inviare i prodotti salvati al database?"
+
+msgctxt "txtYes"
+msgid "Yes"
+msgstr "Sì"
+
+msgctxt "txtNo"
+msgid "No"
+msgstr "No"
+
+msgctxt "hintNameProduct"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "hintEnergy"
+msgid "Energy in kJ per serving"
+msgstr "Energia in KJ per porzione"
+
+msgctxt "hintEnergyUnit"
+msgid "Energy unit"
+msgstr "Unità di energia"
+
+msgctxt "hintWeight"
+msgid "Weight"
+msgstr "Peso"
+
+msgctxt "hintStores"
+msgid "Store"
+msgstr "Negozio"
+
+msgctxt "txtTakePicture"
+msgid "Take picture"
+msgstr "Fai una foto"
+
+msgctxt "txtSendAll"
+msgid "Upload all"
+msgstr "Carica tutto"
+
+msgctxt "txtNoData"
+msgid "No data"
+msgstr "Nessun dato"
+
+msgctxt "txtPictureNeeded"
+msgid "Take a picture first!"
+msgstr "Prima fai una foto!"
+
+msgctxt "toastSending"
+msgid "Uploading..."
+msgstr "Caricamento..."
+
+msgctxt "dataSaved"
+msgid "Saved locally on your device"
+msgstr "Salvato localmente sul tuo dispositivo"
+
+msgctxt "txtInfoAddUser"
+msgid "Please enter your login and password"
+msgstr "Inserisci nome utente e password"
+
+msgctxt "txtDataUpdated"
+msgid "Data updated"
+msgstr "Dati aggiornati"
+
+msgctxt "txtLoading"
+msgid "Loading..."
+msgstr "Caricamento..."
+
+msgctxt "txtDialogsContentDelete"
+msgid "Do you want to delete this draft?"
+msgstr "Vuoi cancellare questa bozza?"
+
+msgctxt "txtDialogsContentInfoSave"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr ""
+"Il prodotto è salvato localmente, lo puoi modificare nel menu Modifica "
+"Offline"
+
+msgctxt "txtBarcodeRequire"
+msgid "Barcode required"
+msgstr "Codice a barre necessario"
+
+msgctxt "txtOk"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "txtContentDialogUploading"
+msgid "Please don't exit during the process..."
+msgstr "Per favore non uscire durante il processo..."
+
+msgctxt "txtAbout"
+msgid ""
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
+msgstr ""
+"Le immagini che carichi sono pubblicate sotto la licenza gratuita Creative "
+"Commons Attribution e Share Alike"
+
+msgctxt "txtAllsent"
+msgid "Products sent"
+msgstr "Prodotti inviati"
+
+msgctxt "txtPalm"
+msgid "The product does not contain any palm oil"
+msgstr "Il prodotto non contiene olio di palma"
+
+msgctxt "txtBarcodeNotValid"
+msgid "Barcode not valid"
+msgstr "Codice a barre non valido"
+
+msgctxt "try_it_scan_now"
+msgid "Try it! Scan now!"
+msgstr "Provalo! Fai una scansione adesso!"
+
+msgctxt "share"
+msgid "Share"
+msgstr "Condividi"
+
+msgctxt "msg_share"
+msgid "Look at this product on Open Food Facts :"
+msgstr ""
+
+msgctxt "create_account"
+msgid "Sign up"
+msgstr "Registrati"
+
+msgctxt "home_drawer"
+msgid "Home"
+msgstr "Home"
+
+msgctxt "open_beauty_drawer"
+msgid "Open Beauty Facts"
+msgstr "Open Beauty Facts"
+
+msgctxt "search_drawer"
+msgid "Search"
+msgstr "Cerca"
+
+msgctxt "search_by_barcode_drawer"
+msgid "Search by barcode"
+msgstr "Cerca per codice a barre"
+
+msgctxt "search_by_name_drawer"
+msgid "Search by name"
+msgstr "Cerca per nome"
+
+msgctxt "scan_search"
+msgid "Scan"
+msgstr "Scansiona"
+
+msgctxt "user_drawer"
+msgid "User"
+msgstr "Utente"
+
+msgctxt "offline_edit_drawer"
+msgid "Offline edit"
+msgstr "Modifica offline"
+
+msgctxt "txt_anonymous"
+msgid "Anonymous"
+msgstr "Anonimo"
+
+msgctxt "txt_product_not_found"
+msgid "Products not found"
+msgstr "Prodotti non trovati"
+
+msgctxt "delete_txt"
+msgid "Delete"
+msgstr "Elimina"
+
+msgctxt "sign_in_drawer"
+msgid "Sign-in"
+msgstr "Accedi"
+
+msgctxt "alert_drawer"
+msgid "Allergen Alert"
+msgstr ""
+
+msgctxt "warning_allergens"
+msgid "Contains allergens"
+msgstr "Contiene allergeni"
+
+msgctxt "title_dialog_alert"
+msgid "Add alert"
+msgstr ""
+
+msgctxt "warning_alert_data"
+msgid ""
+"Your allergies info will never be sent to the Open Food Facts server. Also, "
+"be careful that data may not be accurate, please double-check by yourself!"
+msgstr ""
+
+msgctxt "from_gallery"
+msgid "From gallery"
+msgstr ""
+
+msgctxt "product_sent"
+msgid "Product sent!"
+msgstr ""
+
+msgctxt "action_edit_product"
+msgid "Edit product"
+msgstr ""
+
+msgctxt "title_info_dialog"
+msgid "Information"
+msgstr ""
+
+msgctxt "text_offline_info_dialog"
+msgid ""
+"You can scan products when you're offline to add them to Open Food Facts "
+"later. All the products you scan will appear here, and you'll be able to "
+"send them using the button below."
+msgstr ""
+
+msgctxt "permission_camera"
+msgid "Camera permission is needed to scan barcode."
+msgstr ""
+
+msgctxt "permission_title"
+msgid "Permission information"
+msgstr ""
+
+msgctxt "permission_denied"
+msgid "Please activate permission in the settings"
+msgstr ""
+
+msgctxt "permission_storage"
+msgid "Storage is needed to take or choose pictures"
+msgstr ""
+
+msgctxt "info_download_data"
+msgid ""
+"You need to download some data to get this functionality working, please "
+"press yes to download it."
+msgstr ""
+
+msgctxt "info_download_data_connection"
+msgid ""
+"You need to download some data to get this functionality working. Please "
+"activate internet connection."
+msgstr ""
+
+msgctxt "msg_input_empty"
+msgid "Fill input first!"
+msgstr ""
+
+msgctxt "new_offline_info"
+msgid ""
+"Please take a picture of the product, ingredients, nutrition facts table and "
+"any other information on the label. Thank you!"
+msgstr ""
+
+#. Strings related to login
+msgctxt "error_invalid_password"
+msgid "The password needs to be a least 6 characters long."
+msgstr ""
+
+msgctxt "error_field_required"
+msgid "This field is required"
+msgstr ""
+
+msgctxt "action_preferences"
+msgid "Preferences"
+msgstr ""
+
+msgctxt "prefs_scan_startup"
+msgid "Scan on startup"
+msgstr ""
+
+msgctxt "prefs_scan_startup_summary"
+msgid "This option if selected will start scan when app is opened."
+msgstr ""
+
+msgctxt "scan_history_drawer"
+msgid "History"
+msgstr ""
+
+msgctxt "clear_history"
+msgid "Clear history"
+msgstr ""
+
+msgctxt "title_clear_history_dialog"
+msgid "Clear"
+msgstr ""
+
+msgctxt "text_clear_history_dialog"
+msgid "Do you want to clear all scan history?"
+msgstr ""
+
+msgctxt "export_csv_history"
+msgid "Export CSV"
+msgstr ""
+
+msgctxt "txt_exporting_history"
+msgid "Exporting history..."
+msgstr ""
+
+msgctxt "txt_history_exported"
+msgid "History exported"
+msgstr ""
+
+msgctxt "permision_write_external_storage"
+msgid "Write external storage permission is needed to export history."
+msgstr ""
+
+msgctxt "txt_nutrition_not_found"
+msgid "N/A"
+msgstr ""
