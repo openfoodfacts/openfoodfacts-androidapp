@@ -135,7 +135,7 @@ public class SendProduct extends SugarRecord {
             case NUTRITION:
                 this.imgupload_nutrition = Utils.compressImage(this.imgupload_nutrition);
                 break;
-            case INGREDIENT:
+            case INGREDIENTS:
                 this.imgupload_ingredients = Utils.compressImage(this.imgupload_ingredients);
                 break;
             case FRONT:

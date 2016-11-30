@@ -27,7 +27,7 @@ public class ProductImage {
                 this.imguploadIngredients = null;
                 this.imguploadNutrition = null;
                 break;
-            case INGREDIENT:
+            case INGREDIENTS:
                 this.imguploadIngredients = RequestBody.create(MediaType.parse("image/*"), image);
                 this.imguploadFront = null;
                 this.imguploadNutrition = null;
