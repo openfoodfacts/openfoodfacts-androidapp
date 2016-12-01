@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,6 +18,7 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +31,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
@@ -135,7 +136,7 @@ public class OfflineEditFragment extends BaseFragment {
                         }
 
                         if(isNotEmpty(product.getImgupload_ingredients())) {
-                            product.compress(ProductImageField.INGREDIENT);
+                            product.compress(ProductImageField.INGREDIENTS);
                         }
 
                         if(isNotEmpty(product.getImgupload_nutrition())) {
@@ -192,7 +193,8 @@ public class OfflineEditFragment extends BaseFragment {
                         || isEmpty(product.getBrands()) || isEmpty(product.getWeight()) || isEmpty(product.getName())) {
                     imageIcon = R.drawable.ic_no;
                 }
-                Bitmap imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(product.getImgupload_front()), 200, 200, true);
+
+                Bitmap imgUrl = Bitmap.createScaledBitmap(Utils.decodeFile(new File(product.getImgupload_front())), 200, 200, true);
                 saveItems.add(new SaveItem(product.getName(), imageIcon, imgUrl, product.getBarcode()));
             }
 

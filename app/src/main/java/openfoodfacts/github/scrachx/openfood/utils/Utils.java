@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -34,14 +35,27 @@ public class Utils {
     public static String compressImage(String url) {
         File fileFront = new File(url);
         Bitmap bt = decodeFile(fileFront);
+        if (bt == null) {
+            Log.e("COMPRESS_IMAGE", url + " not found");
+            return null;
+        }
+
         File smallFileFront = new File(url.replace(".png", "_small.png"));
+        OutputStream fOutFront = null;
         try {
-            OutputStream fOutFront = new FileOutputStream(smallFileFront);
+            fOutFront = new FileOutputStream(smallFileFront);
             bt.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
-            fOutFront.flush();
-            fOutFront.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e("COMPRESS_IMAGE", e.getMessage(), e);
+        } finally {
+            if (fOutFront != null) {
+                try {
+                    fOutFront.flush();
+                    fOutFront.close();
+                } catch (IOException e) {
+                    // nothing to do
+                }
+            }
         }
         return smallFileFront.toString();
     }

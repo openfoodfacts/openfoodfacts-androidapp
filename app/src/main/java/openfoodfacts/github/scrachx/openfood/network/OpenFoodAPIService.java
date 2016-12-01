@@ -46,12 +46,21 @@ public interface OpenFoodAPIService {
      */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
-    Call<State> saveProduct(@Query("code") String code, @Query("product_name") String name, @Query("brands") String brands, @Query("user_id") String login, @Query("password") String password, @Query("comment") String comment);
+    Call<State> saveProduct(@Query("code") String code,
+                            @Query("product_name") String name,
+                            @Query("brands") String brands,
+                            @Query("user_id") String login,
+                            @Query("password") String password,
+                            @Query("comment") String comment);
 
     @Multipart
     @POST("/cgi/product_image_upload.pl")
     // can use also a @PartMap Map<String, RequestBody>
-    Call<JsonNode> saveImage(@Part("code") RequestBody code, @Part("imagefield") RequestBody field, @Part("imgupload_front") RequestBody imageFront, @Part("imgupload_ingredients") RequestBody imageIngredients, @Part("imgupload_nutrition") RequestBody imageNutrition);
+    Call<JsonNode> saveImage(@Part("code") RequestBody code,
+                             @Part("imagefield") RequestBody field,
+                             @Part("imgupload_front\"; filename=\"front.png\"") RequestBody imageFront,
+                             @Part("imgupload_ingredients\"; filename=\"ingredients.png\"") RequestBody imageIngredients,
+                             @Part("imgupload_nutrition\"; filename=\"nutrition.png\"") RequestBody imageNutrition);
 
     @GET("allergens.json")
     Call<AllergenRestResponse> getAllergens();
