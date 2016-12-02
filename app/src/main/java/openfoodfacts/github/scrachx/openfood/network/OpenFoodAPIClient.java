@@ -39,7 +39,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENT;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 
@@ -298,7 +298,7 @@ public class OpenFoodAPIClient {
 
                 String imguploadIngredients = product.getImgupload_ingredients();
                 if (StringUtils.isNotEmpty(imguploadIngredients)) {
-                    postImg(activity, new ProductImage(product.getBarcode(), INGREDIENT, new File(imguploadIngredients)));
+                    postImg(activity, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)));
                 }
 
                 String imguploadNutrition = product.getImgupload_nutrition();
