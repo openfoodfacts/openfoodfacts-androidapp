@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="action_settings">सेटिंग्स</string>
+  <string name="action_about">जानकारी</string>
+  <string name="action_find">ढूंढें</string>
+  <string name="text_barcode">बारकोड डालिए</string>
+  <string-array name="nav_drawer_items_product">
+    <item>संग्रह</item>
+    <item>सामग्री</item>
+    <item>पोषण</item>
+    <item>मैन्यू में वापस</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>इटली</item>
+    <item>de</item>
+    <item>जापानी</item>
+    <item>रूसी</item>
+    <item>पुर्तगाली</item>
+    <item>स्विडिश</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>यूनानी</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Default</item>
+    <item>पोषण</item>
+    <item>सामग्री</item>
+  </string-array>
+  <string name="search_button">ढूंढें</string>
+  <string name="desc_list_item_icon">"वस्तु का  आइकन"</string>
+  <string name="alert_dialog_warning_title">चेतावनी</string>
+  <string name="alert_dialog_warning_msg_user">"उपयोगकर्ता/ पासवर्ड बदल गया है,  कृप्या  जानकारी अपडेट करें"</string>
+  <string name="alert_dialog_product_error_msg">"उत्पाद नहीं मिला,  पुनः प्रयास करें"</string>
+  <string name="toast_retrieving">लोड किया जा रहा है...</string>
+  <string name="txtBarcode">बारकोड:</string>
+  <string name="txtQuantity">मात्रा:</string>
+  <string name="txtPackaging">पैकेजिंग:</string>
+  <string name="txtBrands">ब्रांड</string>
+  <string name="txtCategories">श्रेणी:</string>
+  <string name="txtManufacturing">"विनिर्माण या प्रसंस्करण की  जगह"</string>
+  <string name="txtCity">शहर, राज्य और देश जहाँ इसे खरीदा गया:</string>
+  <string name="txtStores">दुकान:</string>
+  <string name="txtCountries">देश जहाँ बेचा:</string>
+  <string name="txtIngredients">संघटक सूची:</string>
+  <string name="txtSubstances">"पदार्थ या उत्पादों  के कारण से  एलर्जी या असहिष्णुता  होना:"</string>
+  <string name="txtAdditives">योगशील:</string>
+  <string name="txtTraces">अनुरेख :</string>
+  <string name="txtMayBeFromPalmOilProduct">सामग्री ताड़ के तेल से हो सकती है:</string>
+  <string name="txtPalmOilProduct">सामग्री जो ताड़ के तेल है:</string>
+  <string name="txtServingSize">सेवारत परिमाण:</string>
+  <string name="txtNutrientLevel100g">100 ग्राम के लिए पोषक तत्वों का स्तर</string>
+  <string name="txtNutritionLevelLow">कम</string>
+  <string name="txtNutritionLevelModerate">मध्यम</string>
+  <string name="txtNutritionLevelHigh">उच्च</string>
+  <string name="txtLogin">लॉग इन</string>
+  <string name="txtPass">पासवर्ड :</string>
+  <string name="txtTitleHome">अपने आहार खोलें और जानते हैं कि आप क्या खाते हैं</string>
+  <string name="txtHome">Open Food Facts एक open डेटाबेस है खाद्य उत्पादों के लिए जहां सामग्री, ऐलर्जेन, पोषण और छोटा मोटा सामान की जानकारी उत्पाद लेबल से प्राप्त कि जा सकती है|</string>
+  <string name="txtSave">भेजें/ सेव करें</string>
+  <string name="txtSignIn">साइन इन करें</string>
+  <string name="txtUser">उपयोगकर्ता पैनल</string>
+  <string name="txtSalt">नमक :</string>
+  <string name="txtFat">बसा :</string>
+  <string name="txtSugars">चीनी :</string>
+  <string name="txtSaturatedFat">संतृप्त वसा</string>
+  <string name="hintBarcode">बारकोड</string>
+  <string name="hintLogin">लॉगिन</string>
+  <string name="hintPass">पासवर्ड</string>
+  <string name="errorLogin">लॉगिन या पासवर्ड एरर</string>
+  <string name="errorWeb">हम इंटरनेट का उपयोग करने में सक्षम नहीं थे| आप कनेक्टिविटी मुद्दों है?</string>
+  <string name="txtDialogsTitle">जानकारी</string>
+  <string name="txtDialogsContentSend">क्या आप डेटाबेस के उत्पादों को भेजने के लिए चाहते हैं?</string>
+  <string name="txtYes">हाँ</string>
+  <string name="txtNo">नहीं</string>
+  <string name="hintNameProduct">नाम</string>
+  <string name="hintEnergy">किलो जूल ऊर्जा प्रति सेवारत</string>
+  <string name="hintEnergyUnit">ऊर्जा इकाई</string>
+  <string name="hintWeight">भार</string>
+  <string name="hintStores">दुकान</string>
+  <string name="txtTakePicture">तस्वीर ले ले</string>
+  <string name="txtSendAll">सभी अपलोड कर दो</string>
+  <string name="txtNoData">कोई डेटा नहीं है</string>
+  <string name="txtPictureNeeded">पहले एक तस्वीर ले लो!</string>
+  <string name="toastSending">अपलोड हो रहा है</string>
+  <string name="txtInfoAddUser">कृप्या अपना पासवर्ड और प्रवेश दर्ज करें</string>
+  <string name="txtLoading">लोड हो रहा है...</string>
+  <string name="txtDialogsContentDelete">"क्या आप  इस ड्राफ्ट हटाना चाहते हैं?"</string>
+  <string name="txtBarcodeRequire">बारकोड अपेक्षित हैं</string>
+  <string name="txtOk">ठीक है</string>
+</resources>
