@@ -13,12 +13,30 @@
     <item>Вернуться в меню</item>
   </string-array>
   <string-array name="units_array">
-    <item> </item>
     <item>г</item>
     <item>мг</item>
     <item>кг</item>
     <item>л</item>
     <item>мл</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>Английский</item>
+    <item>Французский</item>
+    <item>Испанский</item>
+    <item>Итальянский</item>
+    <item>Немецкий</item>
+    <item>Японский</item>
+    <item>Русский</item>
+    <item>Португальский</item>
+    <item>Шведский</item>
+    <item>Бирманский</item>
+    <item>Казахский</item>
+    <item>Армянский</item>
+    <item>Греческий</item>
+    <item>Иврит</item>
+    <item>Галисийский</item>
+    <item>Каталанский</item>
+    <item>Чешский</item>
   </string-array>
   <string-array name="images_array">
     <item>По умолчанию</item>
@@ -49,10 +67,15 @@
   <string name="txtPalmOilProduct">Ингредиенты из пальмового масла:</string>
   <string name="txtServingSize">Размер порции:</string>
   <string name="txtNutrientLevel100g">Пищевая ценность на 100 г:</string>
+  <string name="txtNutritionLevelLow">низкий</string>
+  <string name="txtNutritionLevelModerate">умеренный</string>
+  <string name="txtNutritionLevelHigh">высокий</string>
   <string name="txtLogin">Имя:</string>
   <string name="txtPass">Пароль:</string>
   <string name="txtTitleHome">Откройте вашу еду и узнайте, что вы едите</string>
-  <string name="txtHome">Open Food Facts представляет собой базу данных пищевых продуктов с ингредиентами, аллергенами, пищевой ценностью и всеми лакомыми кусочками информации, которые мы можем найти на этикетках продуктов.</string>
+  <string name="txtHome">Open Food Facts — открытая база данных о пищевых продуктах: состав, аллергены, пищевая и энергетическая ценность и прочая информация с этикеток.</string>
+  <string name="txtSave">Отправить/Сохранить</string>
+  <string name="txtSignIn">Войти</string>
   <string name="txtUser">Панель пользователя</string>
   <string name="txtToastSaved">Пользователь сохранён</string>
   <string name="txtSalt">Соль:</string>
@@ -68,7 +91,7 @@
   <string name="txtInfoLoginNo">Пользователь не сохранён</string>
   <string name="txtDialogsTitle">Информация</string>
   <string name="txtDialogsContent">Этого продукта ещё нет в Open Food Facts. Хотите его добавить?</string>
-  <string name="txtDialogsContentSend">Вы хотите отправить сохранённые продукты в нашу базу данных?</string>
+  <string name="txtDialogsContentSend">Хотите отослать сохранённые продукты в базу данных?</string>
   <string name="txtYes">Да</string>
   <string name="txtNo">Нет</string>
   <string name="hintNameProduct">Название</string>
@@ -79,7 +102,7 @@
   <string name="txtTakePicture">Сделайте фото</string>
   <string name="txtSendAll">Отправить все</string>
   <string name="txtNoData">Нет данных</string>
-  <string name="txtPictureNeeded">Сначала сделайте фото, затем заполните название и магазин!</string>
+  <string name="txtPictureNeeded">Сначала сфотографируйте!</string>
   <string name="toastSending">Передача...</string>
   <string name="dataSaved">Сохранено на вашем устройстве</string>
   <string name="txtInfoAddUser">Введите имя и пароль</string>
@@ -88,7 +111,7 @@
   <string name="txtDialogsContentDelete">Вы хотите удалить этот черновик?</string>
   <string name="txtDialogsContentInfoSave">Продукт сохранён локально, вы можете редактировать его в меню Автономное редактирование</string>
   <string name="txtBarcodeRequire">Требуется штрих-код</string>
-  <string name="txtOk">ОК</string>
+  <string name="txtOk">OK</string>
   <string name="txtContentDialogUploading">Не выходите в процессе...</string>
   <string name="txtAbout">Фотографии, которые вы отправляете, опубликованы под свободной лицензией Creative Commons Attribution и ShareAlike.</string>
   <string name="txtAllsent">Продукты отправлены</string>
@@ -99,6 +122,7 @@
   <string name="msg_share">Посмотрите на этот продукт на Open Food Facts:</string>
   <string name="create_account">Регистрация</string>
   <string name="home_drawer">Главная</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="search_drawer">Поиск</string>
   <string name="search_by_barcode_drawer">Поиск по штрих-коду</string>
   <string name="search_by_name_drawer">Поиск по названию</string>
@@ -109,8 +133,35 @@
   <string name="txt_product_not_found">Продукты не найдены</string>
   <string name="delete_txt">Удалить</string>
   <string name="sign_in_drawer">Войти</string>
-  <string name="alert_drawer">Предупреждать об аллергенах</string>
+  <string name="alert_drawer">Предупреждение об аллергенах</string>
   <string name="warning_allergens">Содержит аллергены</string>
   <string name="title_dialog_alert">Добавить предупреждение</string>
+  <string name="warning_alert_data">"Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts.  Но будьте осторожны: данные могут быть неточными, перепроверяйте их!"</string>
   <string name="from_gallery">Из галереи</string>
+  <string name="product_sent">Продукт отправлен!</string>
+  <string name="action_edit_product">Редактировать продукт</string>
+  <string name="title_info_dialog">Информация</string>
+  <string name="text_offline_info_dialog">"Вы можете сканировать продукты будучи офлайн, и отправить их на Open Food Facts потом.  Все сканируемые продукты будут появляться здесь, и их можно будет отправить кнопкой, которая ниже."</string>
+  <string name="permission_camera">Для сканирования штрихкода нужен доступ к камере.</string>
+  <string name="permission_title">Информация о разрешениях</string>
+  <string name="permission_denied">Пожалуйста, включите разрешение в настройках.</string>
+  <string name="permission_storage">Для фотографирования и выбора фотографий нужен доступ к носителю данных.</string>
+  <string name="info_download_data">Для работы этой функциональности требуется скачать некоторые данные; для этого нажмите, пожалуйста, «Да».</string>
+  <string name="info_download_data_connection">Для работы этой функциональности требуется скачать некоторые данные. Пожалуйста, включите интернет-соединение.</string>
+  <string name="msg_input_empty">Сначала заполните поле!</string>
+  <string name="new_offline_info">Сделайте фото продукта, состава, пищевой ценности и другой информации на этикетке. Спасибо!</string>
+  <string name="error_invalid_password">Длина пароля должна быть не менее 6 символов.</string>
+  <string name="error_field_required">Это обязательное поле</string>
+  <string name="action_preferences">Настройки</string>
+  <string name="prefs_scan_startup">Сканировать при запуске</string>
+  <string name="prefs_scan_startup_summary">Если опция включена, сканирование запустится сразу после запуска.</string>
+  <string name="scan_history_drawer">История</string>
+  <string name="clear_history">Очистить историю</string>
+  <string name="title_clear_history_dialog">Очистить</string>
+  <string name="text_clear_history_dialog">Действительно очистить историю сканирования?</string>
+  <string name="export_csv_history">Экспорт в CSV</string>
+  <string name="txt_exporting_history">Экспорт истории...</string>
+  <string name="txt_history_exported">История экспортирована</string>
+  <string name="permision_write_external_storage">Разрешение записи на SD карту требуется для экспорта истории.</string>
+  <string name="txt_nutrition_not_found">Нет данных</string>
 </resources>

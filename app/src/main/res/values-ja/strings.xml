@@ -13,17 +13,35 @@
     <item>メニューに戻る</item>
   </string-array>
   <string-array name="units_array">
-    <item> </item>
     <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
     <item>ml</item>
   </string-array>
+  <string-array name="lang_array">
+    <item>英語</item>
+    <item>フランス語</item>
+    <item>スペイン語</item>
+    <item>イタリア語</item>
+    <item>ドイツ語</item>
+    <item>日本語</item>
+    <item>ロシア語</item>
+    <item>ポルトガル語</item>
+    <item>スウェーデン語</item>
+    <item>ビルマ語</item>
+    <item>カザフ語</item>
+    <item>アルメニア語</item>
+    <item>ギリシャ語</item>
+    <item>ヘブライ語</item>
+    <item>ガリシア語</item>
+    <item>カタロニア語</item>
+    <item>チェコ語</item>
+  </string-array>
   <string-array name="images_array">
-    <item>Default</item>
-    <item>Nutrition</item>
-    <item>Ingredients</item>
+    <item>デフォルト</item>
+    <item>栄養</item>
+    <item>原材料</item>
   </string-array>
   <string name="search_button">検索</string>
   <string name="no_products">製品が見つかりません</string>
@@ -49,10 +67,15 @@
   <string name="txtPalmOilProduct">パーム油を原材料とするもの :</string>
   <string name="txtServingSize">分量 :</string>
   <string name="txtNutrientLevel100g">100g 当たりの栄養成分:</string>
+  <string name="txtNutritionLevelLow">低</string>
+  <string name="txtNutritionLevelModerate">中</string>
+  <string name="txtNutritionLevelHigh">高</string>
   <string name="txtLogin">ログイン :</string>
   <string name="txtPass">パスワード :</string>
   <string name="txtTitleHome">食品を開くと何を食べているか分かります</string>
-  <string name="txtHome">Open Food Facts は、食品の原材料、アレルゲン、栄養成分、および製品ラベルで見ることができるすべての情報のデータベースです。</string>
+  <string name="txtHome">Open Food Facts は食品のオープン データベースです。原材料、アレルゲン、栄養成分表、および製品のラベルで見つけることができる情報があります。</string>
+  <string name="txtSave">送信/保存</string>
+  <string name="txtSignIn">サインイン</string>
   <string name="txtUser">ユーザーパネル</string>
   <string name="txtToastSaved">ユーザーを保存しました</string>
   <string name="txtSalt">食塩 :</string>
@@ -68,7 +91,7 @@
   <string name="txtInfoLoginNo">ユーザーを保存できませんでした</string>
   <string name="txtDialogsTitle">情報</string>
   <string name="txtDialogsContent">スキャンした製品は、まだ Open Food Facts に存在しません。追加しますか?</string>
-  <string name="txtDialogsContentSend">保存した製品をデータベースに送信しますか?</string>
+  <string name="txtDialogsContentSend">データベースに保存された製品を送信しますか?</string>
   <string name="txtYes">はい</string>
   <string name="txtNo">いいえ</string>
   <string name="hintNameProduct">名前</string>
@@ -79,7 +102,7 @@
   <string name="txtTakePicture">写真を撮影</string>
   <string name="txtSendAll">すべてアップロード</string>
   <string name="txtNoData">データはありません</string>
-  <string name="txtPictureNeeded">まず写真を撮影します。その後名前と店舗を入力してください!</string>
+  <string name="txtPictureNeeded">まず写真を撮ってください!</string>
   <string name="toastSending">アップロードしています...</string>
   <string name="dataSaved">お使いのデバイス内に保存しました</string>
   <string name="txtInfoAddUser">ログインとパスワードを入力してください</string>
@@ -99,6 +122,7 @@
   <string name="msg_share">Open Food Facts でこの製品を参照してください:</string>
   <string name="create_account">サインアップ</string>
   <string name="home_drawer">ホーム</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="search_drawer">検索</string>
   <string name="search_by_barcode_drawer">バーコードで検索</string>
   <string name="search_by_name_drawer">名前で検索</string>
@@ -109,8 +133,35 @@
   <string name="txt_product_not_found">製品が見つかりません</string>
   <string name="delete_txt">削除</string>
   <string name="sign_in_drawer">サインイン</string>
-  <string name="alert_drawer">アレルゲンを警告</string>
+  <string name="alert_drawer">アレルゲンの警告</string>
   <string name="warning_allergens">アレルゲンを含んでいます</string>
   <string name="title_dialog_alert">警告を追加</string>
+  <string name="warning_alert_data">アレルギー情報は、Open Food Facts サーバーに送信されることはありません。また、データが正確でない可能性があることにご注意ください。ご自分でもう一度ご確認ください!</string>
   <string name="from_gallery">ギャラリーから</string>
+  <string name="product_sent">製品を送信しました!</string>
+  <string name="action_edit_product">製品を編集</string>
+  <string name="title_info_dialog">情報</string>
+  <string name="text_offline_info_dialog">オフライン時に製品をスキャンして、後で Open Food Facts に追加するすることができます。スキャンする製品がすべてここに表示されます。下のボタンを使用してそれらを送信することができます。</string>
+  <string name="permission_camera">バーコードをスキャンするためにカメラのアクセス許可が必要です。</string>
+  <string name="permission_title">アクセス許可情報</string>
+  <string name="permission_denied">設定でアクセス許可を有効にしてください</string>
+  <string name="permission_storage">写真を撮ったり選択するために、ストレージが必要です</string>
+  <string name="info_download_data">この機能を動作させるために、いくつかのデータをダウンロードする必要があります。ダウンロードするには、はい を押してください。</string>
+  <string name="info_download_data_connection">この機能を動作させるために、いくつかのデータをダウンロードする必要があります。インターネット接続を有効にしてください。</string>
+  <string name="msg_input_empty">先に入力してください!</string>
+  <string name="new_offline_info">製品、原材料、栄養成分表、およびラベル上の他の情報を撮影してください。 ありがとうございます!</string>
+  <string name="error_invalid_password">パスワードは6文字以上にする必要があります。</string>
+  <string name="error_field_required">この項目は入力必須です。</string>
+  <string name="action_preferences">プリファレンス</string>
+  <string name="prefs_scan_startup">起動時にスキャン</string>
+  <string name="prefs_scan_startup_summary">このオプションを選択した場合、アプリを開いたときにスキャンを開始します。</string>
+  <string name="scan_history_drawer">履歴</string>
+  <string name="clear_history">履歴をクリア</string>
+  <string name="title_clear_history_dialog">クリア</string>
+  <string name="text_clear_history_dialog">すべてのスキャン履歴をクリアしますか?</string>
+  <string name="export_csv_history">CSV をエクスポート</string>
+  <string name="txt_exporting_history">履歴のエクスポート中...</string>
+  <string name="txt_history_exported">履歴をエクスポートしました</string>
+  <string name="permision_write_external_storage">履歴をエクスポートするために、外部ストレージの書き込みアクセス許可が必要です。</string>
+  <string name="txt_nutrition_not_found">適用外</string>
 </resources>

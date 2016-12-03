@@ -1,4 +1,4 @@
-# Interlingua translation for openfoodfacts
+# Hindi translation for openfoodfacts
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the openfoodfacts package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
@@ -8,83 +8,83 @@ msgstr ""
 "Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-11-04 20:11+0100\n"
-"PO-Revision-Date: 2016-08-10 13:47+0000\n"
-"Last-Translator: karm <melo@carmu.com>\n"
-"Language-Team: Interlingua <ia@li.org>\n"
+"PO-Revision-Date: 2016-12-01 19:46+0000\n"
+"Last-Translator: Shivangi Motwani <Unknown>\n"
+"Language-Team: Hindi <hi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-11-20 09:00+0000\n"
-"X-Generator: Launchpad (build 18269)\n"
+"X-Launchpad-Export-Date: 2016-12-02 14:32+0000\n"
+"X-Generator: Launchpad (build 18282)\n"
 
 msgctxt "app_name"
 msgid "Open Food"
-msgstr "Open Food"
+msgstr ""
 
 msgctxt "hello_world"
 msgid "Hello world!"
-msgstr "Salutes mundo!"
+msgstr ""
 
 msgctxt "action_settings"
 msgid "Settings"
-msgstr "Configurationes"
+msgstr "सेटिंग्स"
 
 msgctxt "action_about"
 msgid "About"
-msgstr "Re"
+msgstr "जानकारी"
 
 msgctxt "action_find"
 msgid "Find"
-msgstr "Trovar"
+msgstr "ढूंढें"
 
 msgctxt "text_barcode"
 msgid "Put the barcode :"
-msgstr ""
+msgstr "बारकोड डालिए"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
 msgid "Summary"
-msgstr "Summario"
+msgstr "संग्रह"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:1"
 msgid "Ingredients"
-msgstr "Ingredientes"
+msgstr "सामग्री"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:2"
 msgid "Nutrition"
-msgstr "Nutrition"
+msgstr "पोषण"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
 msgid "Back to menu"
-msgstr "Tornar al menu"
+msgstr "मैन्यू में वापस"
 
 #. Text units
 msgctxt "units_array:0"
 msgid "g"
-msgstr "g"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:1"
 msgid "mg"
-msgstr "mg"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:2"
 msgid "kg"
-msgstr "kg"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:3"
 msgid "l"
-msgstr "l"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:4"
 msgid "ml"
-msgstr "ml"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:0"
@@ -104,7 +104,7 @@ msgstr ""
 #. Text units
 msgctxt "lang_array:3"
 msgid "it"
-msgstr ""
+msgstr "इटली"
 
 #. Text units
 msgctxt "lang_array:4"
@@ -114,22 +114,22 @@ msgstr ""
 #. Text units
 msgctxt "lang_array:5"
 msgid "ja"
-msgstr ""
+msgstr "जापानी"
 
 #. Text units
 msgctxt "lang_array:6"
 msgid "ru"
-msgstr ""
+msgstr "रूसी"
 
 #. Text units
 msgctxt "lang_array:7"
 msgid "pt"
-msgstr ""
+msgstr "पुर्तगाली"
 
 #. Text units
 msgctxt "lang_array:8"
 msgid "sv"
-msgstr ""
+msgstr "स्विडिश"
 
 #. Text units
 msgctxt "lang_array:9"
@@ -149,7 +149,7 @@ msgstr ""
 #. Text units
 msgctxt "lang_array:12"
 msgid "el"
-msgstr ""
+msgstr "यूनानी"
 
 #. Text units
 msgctxt "lang_array:13"
@@ -173,138 +173,136 @@ msgstr ""
 
 msgctxt "images_array:0"
 msgid "Default"
-msgstr "Predefinite"
+msgstr ""
 
 msgctxt "images_array:1"
 msgid "Nutrition"
-msgstr "Nutrition"
+msgstr "पोषण"
 
 msgctxt "images_array:2"
 msgid "Ingredients"
-msgstr "Ingredientes"
+msgstr "सामग्री"
 
 #. Content Description
 msgctxt "search_button"
 msgid "Search"
-msgstr "Cercar"
+msgstr "ढूंढें"
 
 msgctxt "no_products"
 msgid "Products not found"
-msgstr "Productos non trovate"
+msgstr ""
 
 msgctxt "desc_list_item_icon"
 msgid "Item Icon"
-msgstr "Icone del elemento"
+msgstr "वस्तु का  आइकन"
 
 msgctxt "alert_dialog_warning_title"
 msgid "Warning"
-msgstr "Advertimento"
+msgstr "चेतावनी"
 
 msgctxt "alert_dialog_warning_msg_user"
 msgid "User/password has changed, please update information"
-msgstr ""
-"Le usatore/contrasigno ha essite modificate, per favor actualisa le "
-"informationes"
+msgstr "उपयोगकर्ता/ पासवर्ड बदल गया है,  कृप्या  जानकारी अपडेट करें"
 
 msgctxt "alert_dialog_product_error_msg"
 msgid "Product not found, please try again"
-msgstr "Producto non trovate, per favor reproba"
+msgstr "उत्पाद नहीं मिला,  पुनः प्रयास करें"
 
 msgctxt "toast_retrieving"
 msgid "Loading..."
-msgstr "Cargamento..."
+msgstr "लोड किया जा रहा है..."
 
 msgctxt "txtBarcode"
 msgid "Barcode :"
-msgstr "Codice a barras:"
+msgstr "बारकोड:"
 
 msgctxt "txtQuantity"
 msgid "Quantity :"
-msgstr "Quantitate :"
+msgstr "मात्रा:"
 
 msgctxt "txtPackaging"
 msgid "Packaging :"
-msgstr "Pacchetto :"
+msgstr "पैकेजिंग:"
 
 msgctxt "txtBrands"
 msgid "Brands :"
-msgstr "Marcas :"
+msgstr "ब्रांड"
 
 msgctxt "txtCategories"
 msgid "Categories :"
-msgstr "Categorias :"
+msgstr "श्रेणी:"
 
 msgctxt "txtManufacturing"
 msgid "Manufacturing or processing places :"
-msgstr "Positiones de production o de processamento:"
+msgstr "विनिर्माण या प्रसंस्करण की  जगह"
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
-msgstr "Citate, stato e pais de compra:"
+msgstr "शहर, राज्य और देश जहाँ इसे खरीदा गया:"
 
 msgctxt "txtStores"
 msgid "Stores :"
-msgstr "Magazines:"
+msgstr "दुकान:"
 
 msgctxt "txtCountries"
 msgid "Countries where sold :"
-msgstr "Paises de vendita"
+msgstr "देश जहाँ बेचा:"
 
 msgctxt "txtIngredients"
 msgid "Ingredients list :"
-msgstr "Lista del ingredientes"
+msgstr "संघटक सूची:"
 
 msgctxt "txtSubstances"
 msgid "Substances or products causing allergies or intolerances :"
-msgstr "Substantias o productos que causa allergias o intolerantias:"
+msgstr "पदार्थ या उत्पादों  के कारण से  एलर्जी या असहिष्णुता  होना:"
 
 msgctxt "txtAdditives"
 msgid "Additives :"
-msgstr "Additivos :"
+msgstr "योगशील:"
 
 msgctxt "txtTraces"
 msgid "Traces :"
-msgstr "Tracias:"
+msgstr "अनुरेख :"
 
 msgctxt "txtMayBeFromPalmOilProduct"
 msgid "Ingredients that may be from palm oil :"
-msgstr "Ingredientes que pote esser ex oleo de palma:"
+msgstr "सामग्री ताड़ के तेल से हो सकती है:"
 
 msgctxt "txtPalmOilProduct"
 msgid "Ingredients from palm oil :"
-msgstr "Ingredientes ex oleo de palma:"
+msgstr "सामग्री जो ताड़ के तेल है:"
 
 msgctxt "txtServingSize"
 msgid "Serving size :"
-msgstr "Dimensiones de servicio:"
+msgstr "सेवारत परिमाण:"
 
 msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
-msgstr "Nivellos de nutriente pro 100g:"
+msgstr "100 ग्राम के लिए पोषक तत्वों का स्तर"
 
 msgctxt "txtNutritionLevelLow"
 msgid "low"
-msgstr ""
+msgstr "कम"
 
 msgctxt "txtNutritionLevelModerate"
 msgid "moderate"
-msgstr ""
+msgstr "मध्यम"
 
 msgctxt "txtNutritionLevelHigh"
 msgid "high"
-msgstr ""
+msgstr "उच्च"
 
 msgctxt "txtLogin"
 msgid "Login :"
-msgstr "Login:"
+msgstr "लॉग इन"
 
 msgctxt "txtPass"
 msgid "Password :"
-msgstr "Contrasigno:"
+msgstr "पासवर्ड :"
 
 msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
-msgstr "Aperi tu cibo e cognosce lo que tu mangia"
+msgstr "अपने आहार खोलें और जानते हैं कि आप क्या खाते हैं"
 
 msgctxt "txtHome"
 msgid ""
@@ -312,153 +310,153 @@ msgid ""
 "allergens, nutrition facts and all the tidbits of information we can find on "
 "product labels."
 msgstr ""
+"Open Food Facts एक open डेटाबेस है खाद्य उत्पादों के लिए जहां सामग्री, "
+"ऐलर्जेन, पोषण और छोटा मोटा सामान की जानकारी उत्पाद लेबल से प्राप्त कि जा "
+"सकती है|"
 
 msgctxt "txtSave"
 msgid "Send/Save"
-msgstr "Inviar/Salvar"
+msgstr "भेजें/ सेव करें"
 
 msgctxt "txtSignIn"
 msgid "Sign in"
-msgstr "Firma te in"
+msgstr "साइन इन करें"
 
 msgctxt "txtUser"
 msgid "User panel"
-msgstr "Quadro del usator"
+msgstr "उपयोगकर्ता पैनल"
 
 msgctxt "txtToastSaved"
 msgid "User saved"
-msgstr "Usator salvate"
+msgstr ""
 
 msgctxt "txtSalt"
 msgid "Salt :"
-msgstr "Sal:"
+msgstr "नमक :"
 
 msgctxt "txtFat"
 msgid "Fat :"
-msgstr "grassia"
+msgstr "बसा :"
 
 msgctxt "txtSugars"
 msgid "Sugars :"
-msgstr "Saccharos:"
+msgstr "चीनी :"
 
 msgctxt "txtSaturatedFat"
 msgid "Satured fat :"
-msgstr "Grassia sature:"
+msgstr "संतृप्त वसा"
 
 msgctxt "hintBarcode"
 msgid "Barcode"
-msgstr "Codice a barras"
+msgstr "बारकोड"
 
 msgctxt "hintLogin"
 msgid "Login"
-msgstr "Connexion"
+msgstr "लॉगिन"
 
 msgctxt "hintPass"
 msgid "Password"
-msgstr "Contrasigno"
+msgstr "पासवर्ड"
 
 msgctxt "errorLogin"
 msgid "Login or password error"
-msgstr "Error de contrasigno o de connexion"
+msgstr "लॉगिन या पासवर्ड एरर"
 
 msgctxt "errorWeb"
 msgid ""
 "We were not able to access the internet. Do you have connectivity issues?"
 msgstr ""
-"Nos non ha essite capace de acceder Internet. Ha tu problemas de "
-"connectivitate?"
+"हम इंटरनेट का उपयोग करने में सक्षम नहीं थे| आप कनेक्टिविटी मुद्दों है?"
 
 msgctxt "txtInfoLoginOk"
 msgid "User saved"
-msgstr "Usator salvate"
+msgstr ""
 
 msgctxt "txtInfoLoginNo"
 msgid "User not saved"
-msgstr "Usator non salvate"
+msgstr ""
 
 msgctxt "txtDialogsTitle"
 msgid "Information"
-msgstr "Informationes"
+msgstr "जानकारी"
 
 msgctxt "txtDialogsContent"
 msgid ""
 "The product you scanned does not exist yet in Open Food Facts. Do you want "
 "to add it?"
 msgstr ""
-"Le producto que tu ha scandite non existe ancora in Open Food Facts. Desira "
-"tu adder lo?"
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
-msgstr "Desira tu inviar le productos salvate al base de datos?"
+msgstr "क्या आप डेटाबेस के उत्पादों को भेजने के लिए चाहते हैं?"
 
 msgctxt "txtYes"
 msgid "Yes"
-msgstr "Si"
+msgstr "हाँ"
 
 msgctxt "txtNo"
 msgid "No"
-msgstr "No"
+msgstr "नहीं"
 
 msgctxt "hintNameProduct"
 msgid "Name"
-msgstr "Nomine"
+msgstr "नाम"
 
 msgctxt "hintEnergy"
 msgid "Energy in kJ per serving"
-msgstr ""
+msgstr "किलो जूल ऊर्जा प्रति सेवारत"
 
 msgctxt "hintEnergyUnit"
 msgid "Energy unit"
-msgstr "Unitate de energia"
+msgstr "ऊर्जा इकाई"
 
 msgctxt "hintWeight"
 msgid "Weight"
-msgstr "Peso"
+msgstr "भार"
 
 msgctxt "hintStores"
 msgid "Store"
-msgstr "Salvar"
+msgstr "दुकान"
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
-msgstr "Prender un photo"
+msgstr "तस्वीर ले ले"
 
 msgctxt "txtSendAll"
 msgid "Upload all"
-msgstr "Cargar toto"
+msgstr "सभी अपलोड कर दो"
 
 msgctxt "txtNoData"
 msgid "No data"
-msgstr "Nulle datos"
+msgstr "कोई डेटा नहीं है"
 
 msgctxt "txtPictureNeeded"
 msgid "Take a picture first!"
-msgstr "Prende un photo antea!"
+msgstr "पहले एक तस्वीर ले लो!"
 
 msgctxt "toastSending"
 msgid "Uploading..."
-msgstr "Cargamento..."
+msgstr "अपलोड हो रहा है"
 
 msgctxt "dataSaved"
 msgid "Saved locally on your device"
-msgstr "Salvate localmente su tu dispositivo"
+msgstr ""
 
 msgctxt "txtInfoAddUser"
 msgid "Please enter your login and password"
-msgstr "Per favor insere tu connexion e contrasigno"
+msgstr "कृप्या अपना पासवर्ड और प्रवेश दर्ज करें"
 
 msgctxt "txtDataUpdated"
 msgid "Data updated"
-msgstr "Datos cargate"
+msgstr ""
 
 msgctxt "txtLoading"
 msgid "Loading..."
-msgstr "Cargamento..."
+msgstr "लोड हो रहा है..."
 
 msgctxt "txtDialogsContentDelete"
 msgid "Do you want to delete this draft?"
-msgstr "Desira tu deler iste minuta?"
+msgstr "क्या आप  इस ड्राफ्ट हटाना चाहते हैं?"
 
 msgctxt "txtDialogsContentInfoSave"
 msgid ""
@@ -467,43 +465,41 @@ msgstr ""
 
 msgctxt "txtBarcodeRequire"
 msgid "Barcode required"
-msgstr "Codice a barras necessari"
+msgstr "बारकोड अपेक्षित हैं"
 
 msgctxt "txtOk"
 msgid "OK"
-msgstr ""
+msgstr "ठीक है"
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
-msgstr "Per favor non exir durante le processo"
+msgstr ""
 
 msgctxt "txtAbout"
 msgid ""
 "The pictures you send are published under the free licence Creative Commons "
 "Attribution and ShareAlike."
 msgstr ""
-"Le photos tu ha mittite essera publicate sub licentia Creative Commons "
-"Attribution and ShareAlike."
 
 msgctxt "txtAllsent"
 msgid "Products sent"
-msgstr "Productos mittite"
+msgstr ""
 
 msgctxt "txtPalm"
 msgid "The product does not contain any palm oil"
-msgstr "Le producto non contine alcun oleo de palma"
+msgstr ""
 
 msgctxt "txtBarcodeNotValid"
 msgid "Barcode not valid"
-msgstr "Codice a barras non valide"
+msgstr ""
 
 msgctxt "try_it_scan_now"
 msgid "Try it! Scan now!"
-msgstr "Pova a scander lo de novo!"
+msgstr ""
 
 msgctxt "share"
 msgid "Share"
-msgstr "Compartir"
+msgstr ""
 
 msgctxt "msg_share"
 msgid "Look at this product on Open Food Facts :"
@@ -511,11 +507,11 @@ msgstr ""
 
 msgctxt "create_account"
 msgid "Sign up"
-msgstr "Firmar"
+msgstr ""
 
 msgctxt "home_drawer"
 msgid "Home"
-msgstr "Al initio"
+msgstr ""
 
 msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
@@ -523,39 +519,39 @@ msgstr ""
 
 msgctxt "search_drawer"
 msgid "Search"
-msgstr "Cercar"
+msgstr ""
 
 msgctxt "search_by_barcode_drawer"
 msgid "Search by barcode"
-msgstr "Cercar per codice a barras"
+msgstr ""
 
 msgctxt "search_by_name_drawer"
 msgid "Search by name"
-msgstr "Cercar per nomine"
+msgstr ""
 
 msgctxt "scan_search"
 msgid "Scan"
-msgstr "Scander"
+msgstr ""
 
 msgctxt "user_drawer"
 msgid "User"
-msgstr "Usator"
+msgstr ""
 
 msgctxt "offline_edit_drawer"
 msgid "Offline edit"
-msgstr "Rediger foras linea"
+msgstr ""
 
 msgctxt "txt_anonymous"
 msgid "Anonymous"
-msgstr "Anonyme"
+msgstr ""
 
 msgctxt "txt_product_not_found"
 msgid "Products not found"
-msgstr "Productos non trovate"
+msgstr ""
 
 msgctxt "delete_txt"
 msgid "Delete"
-msgstr "Deler"
+msgstr ""
 
 msgctxt "sign_in_drawer"
 msgid "Sign-in"
@@ -563,15 +559,15 @@ msgstr ""
 
 msgctxt "alert_drawer"
 msgid "Allergen Alert"
-msgstr "Alerta allergene"
+msgstr ""
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
-msgstr "Contine allergenes"
+msgstr ""
 
 msgctxt "title_dialog_alert"
 msgid "Add alert"
-msgstr "Adder un alerta"
+msgstr ""
 
 msgctxt "warning_alert_data"
 msgid ""
@@ -581,19 +577,19 @@ msgstr ""
 
 msgctxt "from_gallery"
 msgid "From gallery"
-msgstr "Ex le galeria"
+msgstr ""
 
 msgctxt "product_sent"
 msgid "Product sent!"
-msgstr "Producto inviate!"
+msgstr ""
 
 msgctxt "action_edit_product"
 msgid "Edit product"
-msgstr "Rediger le producto"
+msgstr ""
 
 msgctxt "title_info_dialog"
 msgid "Information"
-msgstr "Informationes"
+msgstr ""
 
 msgctxt "text_offline_info_dialog"
 msgid ""
@@ -604,35 +600,31 @@ msgstr ""
 
 msgctxt "permission_camera"
 msgid "Camera permission is needed to scan barcode."
-msgstr "Pro scander le codice a barras necessita le licentia del camera"
+msgstr ""
 
 msgctxt "permission_title"
 msgid "Permission information"
-msgstr "Informationes de licentia"
+msgstr ""
 
 msgctxt "permission_denied"
 msgid "Please activate permission in the settings"
-msgstr "Per favor activa le licentia in le configurationes"
+msgstr ""
 
 msgctxt "permission_storage"
 msgid "Storage is needed to take or choose pictures"
-msgstr "Magazin es necessari pro prender o eliger photos"
+msgstr ""
 
 msgctxt "info_download_data"
 msgid ""
 "You need to download some data to get this functionality working, please "
 "press yes to download it."
 msgstr ""
-"Tu necessita discargar alcun datos pro activar le functionalitate, per favor "
-"pulsa \"si\" pro discargar los."
 
 msgctxt "info_download_data_connection"
 msgid ""
 "You need to download some data to get this functionality working. Please "
 "activate internet connection."
 msgstr ""
-"Tu necessita discargar alcun datos pro activar iste functionalitates. Per "
-"favor activa le connexion a Internet."
 
 msgctxt "msg_input_empty"
 msgid "Fill input first!"
