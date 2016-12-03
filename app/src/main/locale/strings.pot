@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-11-20 10:13+0100\n"
+"POT-Creation-Date: 2016-12-03 18:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -910,5 +910,30 @@ msgstr ""
 
 msgctxt "action_manage_account"
 msgid "Manage account"
+msgstr ""
+
+msgctxt "action_contributes"
+msgid "Your contributions"
+msgstr ""
+
+#. website translated pages
+msgctxt "website"
+msgid "http://world.openfoodfacts.org/"
+msgstr ""
+
+msgctxt "website_contribute"
+msgid "http://world.openfoodfacts.org/contribute"
+msgstr ""
+
+msgctxt "website_discover"
+msgid "http://world.openfoodfacts.org/discover"
+msgstr ""
+
+msgctxt "website_product"
+msgid "http://world.openfoodfacts.org/product/"
+msgstr ""
+
+msgctxt "website_contributor"
+msgid "http://world.openfoodfacts.org/contributor/"
 msgstr ""
 

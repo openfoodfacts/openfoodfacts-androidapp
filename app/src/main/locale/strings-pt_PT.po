@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-11-27 14:34+0100\n"
+"POT-Creation-Date: 2016-12-03 18:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pt_PT\n"
@@ -67,6 +67,7 @@ msgid "Nutrition"
 msgstr "Nutrição"
 
 #. Nav Drawer Product Menu Items
+#, fuzzy
 msgctxt "nav_drawer_items_product:3"
 msgid "Full Nutrition"
 msgstr "Voltar ao menu"
@@ -578,6 +579,7 @@ msgctxt "txtBarcodeNotValid"
 msgid "Barcode not valid"
 msgstr "Código de barras invalido"
 
+#, fuzzy
 msgctxt "try_it_scan_now"
 msgid "Scan product"
 msgstr ""
@@ -727,6 +729,7 @@ msgctxt "error_invalid_password"
 msgid "The password needs to be a least 6 characters long."
 msgstr ""
 
+#, fuzzy
 msgctxt "error_field_required"
 msgid "This field is required."
 msgstr ""
@@ -912,5 +915,30 @@ msgstr ""
 
 msgctxt "action_manage_account"
 msgid "Manage account"
+msgstr ""
+
+msgctxt "action_contributes"
+msgid "Your contributions"
+msgstr ""
+
+#. website translated pages
+msgctxt "website"
+msgid "http://world.openfoodfacts.org/"
+msgstr ""
+
+msgctxt "website_contribute"
+msgid "http://world.openfoodfacts.org/contribute"
+msgstr ""
+
+msgctxt "website_discover"
+msgid "http://world.openfoodfacts.org/discover"
+msgstr ""
+
+msgctxt "website_product"
+msgid "http://world.openfoodfacts.org/product/"
+msgstr ""
+
+msgctxt "website_contributor"
+msgid "http://world.openfoodfacts.org/contributor/"
 msgstr ""
 

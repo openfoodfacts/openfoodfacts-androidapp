@@ -6,18 +6,22 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: openfoodfacts\n"
+"Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-11-04 20:11+0100\n"
+"POT-Creation-Date: 2016-12-03 18:27+0100\n"
 "PO-Revision-Date: 2016-11-16 15:31+0000\n"
 "Last-Translator: Aleksej <Unknown>\n"
+"Language: ru\n"
 "Language-Team: Russian <ru@li.org>\n"
+"Plural-Forms: nplurals=4; plural=(((((0 == 0)) && (((n % 10) >= 2 && (n %"
+" 10) <= 4))) && (!(((n % 100) >= 12 && (n % 100) <= 14)))) ? 1 : (((((0 "
+"== 0)) && (((n % 10) == 0))) || (((0 == 0)) && (((n % 10) >= 5 && (n % "
+"10) <= 9)))) || (((0 == 0)) && (((n % 100) >= 11 && (n % 100) <= 14)))) ?"
+" 2 : ((((0 == 0)) && (((n % 10) == 1))) && (!(((n % 100) == 11)))) ? 0 : "
+"3)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-11-20 09:00+0000\n"
-"X-Generator: Launchpad (build 18269)\n"
-"Language: ru\n"
 "Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
@@ -35,6 +39,14 @@ msgstr "Настройки"
 msgctxt "action_about"
 msgid "About"
 msgstr "О приложении"
+
+msgctxt "action_discover"
+msgid "Discover"
+msgstr ""
+
+msgctxt "action_contribute"
+msgid "Contribute"
+msgstr ""
 
 msgctxt "action_find"
 msgid "Find"
@@ -60,9 +72,15 @@ msgid "Nutrition"
 msgstr "Пищевая ценность"
 
 #. Nav Drawer Product Menu Items
+#, fuzzy
 msgctxt "nav_drawer_items_product:3"
-msgid "Back to menu"
+msgid "Full Nutrition"
 msgstr "Вернуться в меню"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:4"
+msgid "Back to menu"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:0"
@@ -174,6 +192,74 @@ msgctxt "lang_array:16"
 msgid "cs"
 msgstr "Чешский"
 
+msgctxt "lang_label_array:0"
+msgid "English"
+msgstr ""
+
+msgctxt "lang_label_array:1"
+msgid "French"
+msgstr ""
+
+msgctxt "lang_label_array:2"
+msgid "Spanish"
+msgstr ""
+
+msgctxt "lang_label_array:3"
+msgid "Italian"
+msgstr ""
+
+msgctxt "lang_label_array:4"
+msgid "German"
+msgstr ""
+
+msgctxt "lang_label_array:5"
+msgid "Japanese"
+msgstr ""
+
+msgctxt "lang_label_array:6"
+msgid "Russian"
+msgstr ""
+
+msgctxt "lang_label_array:7"
+msgid "Portuguese"
+msgstr ""
+
+msgctxt "lang_label_array:8"
+msgid "Swedish"
+msgstr ""
+
+msgctxt "lang_label_array:9"
+msgid "Burmese"
+msgstr ""
+
+msgctxt "lang_label_array:10"
+msgid "Kazakh"
+msgstr ""
+
+msgctxt "lang_label_array:11"
+msgid "Armenian"
+msgstr ""
+
+msgctxt "lang_label_array:12"
+msgid "Greek"
+msgstr ""
+
+msgctxt "lang_label_array:13"
+msgid "Hebrew"
+msgstr ""
+
+msgctxt "lang_label_array:14"
+msgid "Galician"
+msgstr ""
+
+msgctxt "lang_label_array:15"
+msgid "Catalan"
+msgstr ""
+
+msgctxt "lang_label_array:16"
+msgid "Czech"
+msgstr ""
+
 msgctxt "images_array:0"
 msgid "Default"
 msgstr "По умолчанию"
@@ -238,6 +324,10 @@ msgstr "Категории:"
 msgctxt "txtManufacturing"
 msgid "Manufacturing or processing places :"
 msgstr "Места производства или переработки:"
+
+msgctxt "txtIngredientsOrigins"
+msgid "Origin of ingredients :"
+msgstr ""
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
@@ -310,11 +400,12 @@ msgstr "Откройте вашу еду и узнайте, что вы едит
 msgctxt "txtHome"
 msgid ""
 "Open Food Facts is a open database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find on "
-"product labels."
+"allergens, nutrition facts and all the tidbits of information we can find"
+" on product labels."
 msgstr ""
 "Open Food Facts — открытая база данных о пищевых продуктах: состав, "
-"аллергены, пищевая и энергетическая ценность и прочая информация с этикеток."
+"аллергены, пищевая и энергетическая ценность и прочая информация с "
+"этикеток."
 
 msgctxt "txtSave"
 msgid "Send/Save"
@@ -365,8 +456,7 @@ msgid "Login or password error"
 msgstr "Неверные имя или пароль"
 
 msgctxt "errorWeb"
-msgid ""
-"We were not able to access the internet. Do you have connectivity issues?"
+msgid "We were not able to access the internet. Do you have connectivity issues?"
 msgstr ""
 "Мы не смогли получить доступ к Интернету. Есть ли у вас проблемы с "
 "подключением?"
@@ -385,8 +475,8 @@ msgstr "Информация"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you want "
-"to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you "
+"want to add it?"
 msgstr "Этого продукта ещё нет в Open Food Facts. Хотите его добавить?"
 
 msgctxt "txtDialogsContentSend"
@@ -420,6 +510,10 @@ msgstr "Вес"
 msgctxt "hintStores"
 msgid "Store"
 msgstr "Магазин"
+
+msgctxt "hintBrand"
+msgid "Brand"
+msgstr ""
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
@@ -462,8 +556,7 @@ msgid "Do you want to delete this draft?"
 msgstr "Вы хотите удалить этот черновик?"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid ""
-"The product is saved locally, you can edit it in the Offline Edit menu"
+msgid "The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
 "Продукт сохранён локально, вы можете редактировать его в меню Автономное "
 "редактирование"
@@ -482,8 +575,8 @@ msgstr "Не выходите в процессе..."
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative Commons "
-"Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative "
+"Commons Attribution and ShareAlike."
 msgstr ""
 "Фотографии, которые вы отправляете, опубликованы под свободной лицензией "
 "Creative Commons Attribution и ShareAlike."
@@ -500,8 +593,9 @@ msgctxt "txtBarcodeNotValid"
 msgid "Barcode not valid"
 msgstr "Недействительный штрих-код"
 
+#, fuzzy
 msgctxt "try_it_scan_now"
-msgid "Try it! Scan now!"
+msgid "Scan product"
 msgstr "Попробуйте! Сканируйте сейчас!"
 
 msgctxt "share"
@@ -578,11 +672,13 @@ msgstr "Добавить предупреждение"
 
 msgctxt "warning_alert_data"
 msgid ""
-"Your allergies info will never be sent to the Open Food Facts server. Also, "
-"be careful that data may not be accurate, please double-check by yourself!"
+"Your allergies info will never be sent to the Open Food Facts server. "
+"Also, be careful that data may not be accurate, please double-check by "
+"yourself!"
 msgstr ""
-"Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts.  "
-"Но будьте осторожны: данные могут быть неточными, перепроверяйте их!"
+"Ваша информация об аллергиях не будет отправлена на сервер Open Food "
+"Facts.  Но будьте осторожны: данные могут быть неточными, перепроверяйте "
+"их!"
 
 msgctxt "from_gallery"
 msgid "From gallery"
@@ -606,9 +702,9 @@ msgid ""
 "later. All the products you scan will appear here, and you'll be able to "
 "send them using the button below."
 msgstr ""
-"Вы можете сканировать продукты будучи офлайн, и отправить их на Open Food "
-"Facts потом.  Все сканируемые продукты будут появляться здесь, и их можно "
-"будет отправить кнопкой, которая ниже."
+"Вы можете сканировать продукты будучи офлайн, и отправить их на Open Food"
+" Facts потом.  Все сканируемые продукты будут появляться здесь, и их "
+"можно будет отправить кнопкой, которая ниже."
 
 msgctxt "permission_camera"
 msgid "Camera permission is needed to scan barcode."
@@ -624,8 +720,7 @@ msgstr "Пожалуйста, включите разрешение в наст�
 
 msgctxt "permission_storage"
 msgid "Storage is needed to take or choose pictures"
-msgstr ""
-"Для фотографирования и выбора фотографий нужен доступ к носителю данных."
+msgstr "Для фотографирования и выбора фотографий нужен доступ к носителю данных."
 
 msgctxt "info_download_data"
 msgid ""
@@ -649,8 +744,8 @@ msgstr "Сначала заполните поле!"
 
 msgctxt "new_offline_info"
 msgid ""
-"Please take a picture of the product, ingredients, nutrition facts table and "
-"any other information on the label. Thank you!"
+"Please take a picture of the product, ingredients, nutrition facts table "
+"and any other information on the label. Thank you!"
 msgstr ""
 "Сделайте фото продукта, состава, пищевой ценности и другой информации на "
 "этикетке. Спасибо!"
@@ -660,8 +755,9 @@ msgctxt "error_invalid_password"
 msgid "The password needs to be a least 6 characters long."
 msgstr "Длина пароля должна быть не менее 6 символов."
 
+#, fuzzy
 msgctxt "error_field_required"
-msgid "This field is required"
+msgid "This field is required."
 msgstr "Это обязательное поле"
 
 msgctxt "action_preferences"
@@ -675,6 +771,24 @@ msgstr "Сканировать при запуске"
 msgctxt "prefs_scan_startup_summary"
 msgid "This option if selected will start scan when app is opened."
 msgstr "Если опция включена, сканирование запустится сразу после запуска."
+
+msgctxt "prefs_power_mode"
+msgid "Power mode scan"
+msgstr ""
+
+msgctxt "prefs_power_mode_summary"
+msgid ""
+"Quickly scan products in a supermarket to see which one are not in the "
+"database."
+msgstr ""
+
+msgctxt "prefs_language"
+msgid "Language"
+msgstr ""
+
+msgctxt "prefs_language_summary"
+msgid "Change language"
+msgstr ""
 
 msgctxt "scan_history_drawer"
 msgid "History"
@@ -711,3 +825,146 @@ msgstr "Разрешение записи на SD карту требуется 
 msgctxt "txt_nutrition_not_found"
 msgid "N/A"
 msgstr "Нет данных"
+
+#. Nutrition info tab
+msgctxt "nutrition_carbohydrate"
+msgid "Carbohydrate"
+msgstr ""
+
+msgctxt "nutrition_carbohydrate_short_name"
+msgid "Carbohydrate (g)"
+msgstr ""
+
+msgctxt "nutrition_cholesterol"
+msgid "Cholesterol"
+msgstr ""
+
+msgctxt "nutrition_cholesterol_short_name"
+msgid "Cholesterol (g)"
+msgstr ""
+
+msgctxt "nutrition_energy"
+msgid "Energy"
+msgstr ""
+
+msgctxt "nutrition_energy_short_name"
+msgid "Energy"
+msgstr ""
+
+msgctxt "nutrition_fat"
+msgid "Fat"
+msgstr ""
+
+msgctxt "nutrition_fat_short_name"
+msgid "Fat (g)"
+msgstr ""
+
+msgctxt "nutrition_fiber"
+msgid "Dietary fiber"
+msgstr ""
+
+msgctxt "nutrition_fiber_short_name"
+msgid "Dietary fiber (g)"
+msgstr ""
+
+msgctxt "nutrition_header"
+msgid "Nutrition facts"
+msgstr ""
+
+msgctxt "nutrition_no_data_message"
+msgid "No data is available for this product"
+msgstr ""
+
+msgctxt "nutrition_per_quantity"
+msgid "For 100g/100ml"
+msgstr ""
+
+msgctxt "nutrition_proteins"
+msgid "Proteins"
+msgstr ""
+
+msgctxt "nutrition_proteins_short_name"
+msgid "Proteins (g)"
+msgstr ""
+
+msgctxt "nutrition_salt"
+msgid "Salt"
+msgstr ""
+
+msgctxt "nutrition_salt_short_name"
+msgid "Salt (g)"
+msgstr ""
+
+msgctxt "nutrition_satured_fat"
+msgid "Satured fat"
+msgstr ""
+
+msgctxt "nutrition_satured_fat_short_name"
+msgid "Satured fat (g)"
+msgstr ""
+
+msgctxt "nutrition_serving"
+msgid "Per serving"
+msgstr ""
+
+msgctxt "nutrition_serving_size"
+msgid "Serving size :"
+msgstr ""
+
+msgctxt "nutrition_sodium"
+msgid "Sodium"
+msgstr ""
+
+msgctxt "nutrition_sodium_short_name"
+msgid "Sodium (g)"
+msgstr ""
+
+msgctxt "nutrition_sugars"
+msgid "Sugars"
+msgstr ""
+
+msgctxt "nutrition_sugars_short_name"
+msgid "Sugars (g)"
+msgstr ""
+
+msgctxt "nutrition_trans_fat"
+msgid "Trans fat"
+msgstr ""
+
+msgctxt "nutrition_trans_fat_short_name"
+msgid "Trans fat (g)"
+msgstr ""
+
+msgctxt "nutriment_serving_size"
+msgid "Per portion :"
+msgstr ""
+
+msgctxt "action_manage_account"
+msgid "Manage account"
+msgstr ""
+
+msgctxt "action_contributes"
+msgid "Your contributions"
+msgstr ""
+
+#. website translated pages
+msgctxt "website"
+msgid "http://world.openfoodfacts.org/"
+msgstr ""
+
+msgctxt "website_contribute"
+msgid "http://world.openfoodfacts.org/contribute"
+msgstr ""
+
+msgctxt "website_discover"
+msgid "http://world.openfoodfacts.org/discover"
+msgstr ""
+
+msgctxt "website_product"
+msgid "http://world.openfoodfacts.org/product/"
+msgstr ""
+
+msgctxt "website_contributor"
+msgid "http://world.openfoodfacts.org/contributor/"
+msgstr ""
+
