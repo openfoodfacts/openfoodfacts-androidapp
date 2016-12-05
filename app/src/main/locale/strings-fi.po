@@ -1,7 +1,6 @@
-# Arabic translation for openfoodfacts
+# Finnish translation for openfoodfacts
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
-# This file is distributed under the same license as the openfoodfacts
-# package.
+# This file is distributed under the same license as the openfoodfacts package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
@@ -9,20 +8,18 @@ msgstr ""
 "Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-03 18:27+0100\n"
-"PO-Revision-Date: 2016-05-29 08:24+0000\n"
-"Last-Translator: RaindropR <rajaa@hilltx.com>\n"
-"Language-Team: Arabic <ar@li.org>\n"
+"PO-Revision-Date: 2016-12-04 17:11+0000\n"
+"Last-Translator: Jiri Grönroos <Unknown>\n"
+"Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-12-05 20:48+0000\n"
 "X-Generator: Launchpad (build 18282)\n"
-"Language: ar\n"
-"Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
 msgid "Open Food"
-msgstr "Open Food"
+msgstr ""
 
 msgctxt "hello_world"
 msgid "Hello world!"
@@ -30,42 +27,42 @@ msgstr ""
 
 msgctxt "action_settings"
 msgid "Settings"
-msgstr "الإعدادات"
+msgstr "Asetukset"
 
 msgctxt "action_about"
 msgid "About"
-msgstr "حول"
+msgstr "Tietoja"
 
 msgctxt "action_discover"
 msgid "Discover"
-msgstr ""
+msgstr "Löydä"
 
 msgctxt "action_contribute"
 msgid "Contribute"
-msgstr ""
+msgstr "Osallistu"
 
 msgctxt "action_find"
 msgid "Find"
-msgstr "بحث"
+msgstr "Etsi"
 
 msgctxt "text_barcode"
 msgid "Put the barcode :"
-msgstr "بخصوص الرمز الشريطي"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
 msgid "Summary"
-msgstr "الملخص"
+msgstr "Yhteenveto"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:1"
 msgid "Ingredients"
-msgstr "المكونات"
+msgstr "Ainekset"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:2"
 msgid "Nutrition"
-msgstr "التغذية"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
@@ -75,32 +72,32 @@ msgstr ""
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
 msgid "Back to menu"
-msgstr ""
+msgstr "Takaisin valikkoon"
 
 #. Text units
 msgctxt "units_array:0"
 msgid "g"
-msgstr ""
+msgstr "g"
 
 #. Text units
 msgctxt "units_array:1"
 msgid "mg"
-msgstr ""
+msgstr "mg"
 
 #. Text units
 msgctxt "units_array:2"
 msgid "kg"
-msgstr ""
+msgstr "kg"
 
 #. Text units
 msgctxt "units_array:3"
 msgid "l"
-msgstr ""
+msgstr "I"
 
 #. Text units
 msgctxt "units_array:4"
 msgid "ml"
-msgstr ""
+msgstr "ml"
 
 #. Text units
 msgctxt "lang_array:0"
@@ -257,24 +254,24 @@ msgstr ""
 
 msgctxt "images_array:0"
 msgid "Default"
-msgstr "إفتراضي"
+msgstr "Oletus"
 
 msgctxt "images_array:1"
 msgid "Nutrition"
-msgstr "التغذية"
+msgstr ""
 
 msgctxt "images_array:2"
 msgid "Ingredients"
-msgstr "المكونات"
+msgstr "Ainekset"
 
 #. Content Description
 msgctxt "search_button"
 msgid "Search"
-msgstr "بحث"
+msgstr "Etsi"
 
 msgctxt "no_products"
 msgid "Products not found"
-msgstr "منتج غير موجود"
+msgstr "Tuotteita ei löytynyt"
 
 msgctxt "desc_list_item_icon"
 msgid "Item Icon"
@@ -282,7 +279,7 @@ msgstr ""
 
 msgctxt "alert_dialog_warning_title"
 msgid "Warning"
-msgstr "تحذير"
+msgstr "Varoitus"
 
 msgctxt "alert_dialog_warning_msg_user"
 msgid "User/password has changed, please update information"
@@ -290,31 +287,31 @@ msgstr ""
 
 msgctxt "alert_dialog_product_error_msg"
 msgid "Product not found, please try again"
-msgstr ""
+msgstr "Tuotetta ei löytynyt, yritä uudelleen"
 
 msgctxt "toast_retrieving"
 msgid "Loading..."
-msgstr "جاري التحميل..."
+msgstr "Ladataan..."
 
 msgctxt "txtBarcode"
 msgid "Barcode :"
-msgstr "الرمز الشريطي"
+msgstr "Viivakoodi:"
 
 msgctxt "txtQuantity"
 msgid "Quantity :"
-msgstr "الكمية"
+msgstr "Määrä:"
 
 msgctxt "txtPackaging"
 msgid "Packaging :"
-msgstr ""
+msgstr "Paketointi:"
 
 msgctxt "txtBrands"
 msgid "Brands :"
-msgstr "العلامات التجارية"
+msgstr ""
 
 msgctxt "txtCategories"
 msgid "Categories :"
-msgstr "الفئات"
+msgstr ""
 
 msgctxt "txtManufacturing"
 msgid "Manufacturing or processing places :"
@@ -330,15 +327,15 @@ msgstr ""
 
 msgctxt "txtStores"
 msgid "Stores :"
-msgstr "المتاجر:"
+msgstr ""
 
 msgctxt "txtCountries"
 msgid "Countries where sold :"
-msgstr ""
+msgstr "Maat joissa myynnissä:"
 
 msgctxt "txtIngredients"
 msgid "Ingredients list :"
-msgstr "قائمة المكونات:"
+msgstr "Ainesosaluettelo:"
 
 msgctxt "txtSubstances"
 msgid "Substances or products causing allergies or intolerances :"
@@ -366,7 +363,7 @@ msgstr ""
 
 msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
-msgstr ""
+msgstr "Ravintosisältö per 100 g:"
 
 msgctxt "txtNutritionLevelLow"
 msgid "low"
@@ -382,11 +379,11 @@ msgstr ""
 
 msgctxt "txtLogin"
 msgid "Login :"
-msgstr "تسجيل الدخول:"
+msgstr "Tunnus:"
 
 msgctxt "txtPass"
 msgid "Password :"
-msgstr "كلمة المرور:"
+msgstr "Salasana:"
 
 msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
@@ -401,15 +398,15 @@ msgstr ""
 
 msgctxt "txtSave"
 msgid "Send/Save"
-msgstr ""
+msgstr "Lähetä/tallenna"
 
 msgctxt "txtSignIn"
 msgid "Sign in"
-msgstr ""
+msgstr "Kirjaudu sisään"
 
 msgctxt "txtUser"
 msgid "User panel"
-msgstr ""
+msgstr "Käyttäjäpaneeli"
 
 msgctxt "txtToastSaved"
 msgid "User saved"
@@ -417,15 +414,15 @@ msgstr ""
 
 msgctxt "txtSalt"
 msgid "Salt :"
-msgstr "ملح:"
+msgstr "Suola:"
 
 msgctxt "txtFat"
 msgid "Fat :"
-msgstr "دهن:"
+msgstr "Rasva:"
 
 msgctxt "txtSugars"
 msgid "Sugars :"
-msgstr "سكريات:ﻻ"
+msgstr "Sokerit:"
 
 msgctxt "txtSaturatedFat"
 msgid "Satured fat :"
@@ -433,15 +430,15 @@ msgstr ""
 
 msgctxt "hintBarcode"
 msgid "Barcode"
-msgstr ""
+msgstr "Viivakoodi"
 
 msgctxt "hintLogin"
 msgid "Login"
-msgstr "تسجيل الدخول"
+msgstr "Käyttäjätunnus"
 
 msgctxt "hintPass"
 msgid "Password"
-msgstr "كلمة المرور"
+msgstr "Salasana"
 
 msgctxt "errorLogin"
 msgid "Login or password error"
@@ -462,7 +459,7 @@ msgstr ""
 
 msgctxt "txtDialogsTitle"
 msgid "Information"
-msgstr "معلومات"
+msgstr ""
 
 msgctxt "txtDialogsContent"
 msgid ""
@@ -476,15 +473,15 @@ msgstr ""
 
 msgctxt "txtYes"
 msgid "Yes"
-msgstr "نعم"
+msgstr "Kyllä"
 
 msgctxt "txtNo"
 msgid "No"
-msgstr "لا"
+msgstr "Ei"
 
 msgctxt "hintNameProduct"
 msgid "Name"
-msgstr "اﻹسم"
+msgstr "Nimi"
 
 msgctxt "hintEnergy"
 msgid "Energy in kJ per serving"
@@ -492,15 +489,15 @@ msgstr ""
 
 msgctxt "hintEnergyUnit"
 msgid "Energy unit"
-msgstr ""
+msgstr "Energiayksikkö"
 
 msgctxt "hintWeight"
 msgid "Weight"
-msgstr "الوزن"
+msgstr "Paino"
 
 msgctxt "hintStores"
 msgid "Store"
-msgstr "المتجر"
+msgstr "Kauppa"
 
 msgctxt "hintBrand"
 msgid "Brand"
@@ -508,7 +505,7 @@ msgstr ""
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
-msgstr "إلتقاط صورة"
+msgstr "Ota kuva"
 
 msgctxt "txtSendAll"
 msgid "Upload all"
@@ -516,23 +513,23 @@ msgstr ""
 
 msgctxt "txtNoData"
 msgid "No data"
-msgstr "لا توجد بيانات"
+msgstr ""
 
 msgctxt "txtPictureNeeded"
 msgid "Take a picture first!"
-msgstr ""
+msgstr "Ota kuva ensin!"
 
 msgctxt "toastSending"
 msgid "Uploading..."
-msgstr ""
+msgstr "Lähetetään..."
 
 msgctxt "dataSaved"
 msgid "Saved locally on your device"
-msgstr ""
+msgstr "Tallennettu paikallisesti laitteellesi"
 
 msgctxt "txtInfoAddUser"
 msgid "Please enter your login and password"
-msgstr ""
+msgstr "Anna käyttäjätunnuksesi ja salasanasi"
 
 msgctxt "txtDataUpdated"
 msgid "Data updated"
@@ -540,11 +537,11 @@ msgstr ""
 
 msgctxt "txtLoading"
 msgid "Loading..."
-msgstr "جاري التحميل..."
+msgstr "Ladataan..."
 
 msgctxt "txtDialogsContentDelete"
 msgid "Do you want to delete this draft?"
-msgstr ""
+msgstr "Haluatko poistaa tämän luonnoksen?"
 
 msgctxt "txtDialogsContentInfoSave"
 msgid ""
@@ -553,11 +550,11 @@ msgstr ""
 
 msgctxt "txtBarcodeRequire"
 msgid "Barcode required"
-msgstr ""
+msgstr "Viivakoodi vaaditaan"
 
 msgctxt "txtOk"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
@@ -571,7 +568,7 @@ msgstr ""
 
 msgctxt "txtAllsent"
 msgid "Products sent"
-msgstr ""
+msgstr "Tuotteet lähetetty"
 
 msgctxt "txtPalm"
 msgid "The product does not contain any palm oil"
@@ -579,15 +576,15 @@ msgstr ""
 
 msgctxt "txtBarcodeNotValid"
 msgid "Barcode not valid"
-msgstr ""
+msgstr "Viivakoodi on virheellinen"
 
 msgctxt "try_it_scan_now"
 msgid "Scan product"
-msgstr ""
+msgstr "Skannaa tuote"
 
 msgctxt "share"
 msgid "Share"
-msgstr "مشاركة"
+msgstr "Jaa"
 
 msgctxt "msg_share"
 msgid "Look at this product on Open Food Facts :"
@@ -595,11 +592,11 @@ msgstr ""
 
 msgctxt "create_account"
 msgid "Sign up"
-msgstr ""
+msgstr "Rekisteröidy"
 
 msgctxt "home_drawer"
 msgid "Home"
-msgstr "الصفحة الرئيسية"
+msgstr "Koti"
 
 msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
@@ -607,23 +604,23 @@ msgstr ""
 
 msgctxt "search_drawer"
 msgid "Search"
-msgstr "بحث"
+msgstr "Etsi"
 
 msgctxt "search_by_barcode_drawer"
 msgid "Search by barcode"
-msgstr ""
+msgstr "Etsi viivakoodilla"
 
 msgctxt "search_by_name_drawer"
 msgid "Search by name"
-msgstr ""
+msgstr "Etsi nimellä"
 
 msgctxt "scan_search"
 msgid "Scan"
-msgstr ""
+msgstr "Skannaa"
 
 msgctxt "user_drawer"
 msgid "User"
-msgstr "المستخدم"
+msgstr "Käyttäjä"
 
 msgctxt "offline_edit_drawer"
 msgid "Offline edit"
@@ -631,19 +628,19 @@ msgstr ""
 
 msgctxt "txt_anonymous"
 msgid "Anonymous"
-msgstr ""
+msgstr "Anonyymi"
 
 msgctxt "txt_product_not_found"
 msgid "Products not found"
-msgstr ""
+msgstr "Tuotteita ei löytynyt"
 
 msgctxt "delete_txt"
 msgid "Delete"
-msgstr "حذف"
+msgstr "Poista"
 
 msgctxt "sign_in_drawer"
 msgid "Sign-in"
-msgstr ""
+msgstr "Kirjaudu sisään"
 
 msgctxt "alert_drawer"
 msgid "Allergen Alert"
@@ -665,15 +662,15 @@ msgstr ""
 
 msgctxt "from_gallery"
 msgid "From gallery"
-msgstr ""
+msgstr "Galleriasta"
 
 msgctxt "product_sent"
 msgid "Product sent!"
-msgstr ""
+msgstr "Tuote lähetetty!"
 
 msgctxt "action_edit_product"
 msgid "Edit product"
-msgstr ""
+msgstr "Muokkaa tuotetta"
 
 msgctxt "title_info_dialog"
 msgid "Information"
@@ -727,15 +724,15 @@ msgstr ""
 #. Strings related to login
 msgctxt "error_invalid_password"
 msgid "The password needs to be a least 6 characters long."
-msgstr ""
+msgstr "Salasanan on oltava vähintään 6 merkkiä."
 
 msgctxt "error_field_required"
 msgid "This field is required."
-msgstr ""
+msgstr "Tämä kenttä on pakollinen."
 
 msgctxt "action_preferences"
 msgid "Preferences"
-msgstr ""
+msgstr "Asetukset"
 
 msgctxt "prefs_scan_startup"
 msgid "Scan on startup"
@@ -757,39 +754,39 @@ msgstr ""
 
 msgctxt "prefs_language"
 msgid "Language"
-msgstr ""
+msgstr "Kieli"
 
 msgctxt "prefs_language_summary"
 msgid "Change language"
-msgstr ""
+msgstr "Vaihda kieli"
 
 msgctxt "scan_history_drawer"
 msgid "History"
-msgstr ""
+msgstr "Historia"
 
 msgctxt "clear_history"
 msgid "Clear history"
-msgstr ""
+msgstr "Tyhjennä historia"
 
 msgctxt "title_clear_history_dialog"
 msgid "Clear"
-msgstr ""
+msgstr "Tyhjennä"
 
 msgctxt "text_clear_history_dialog"
 msgid "Do you want to clear all scan history?"
-msgstr ""
+msgstr "Haluatko tyhjentää koko skannaushistorian?"
 
 msgctxt "export_csv_history"
 msgid "Export CSV"
-msgstr ""
+msgstr "Vie CSV:nä"
 
 msgctxt "txt_exporting_history"
 msgid "Exporting history..."
-msgstr ""
+msgstr "Viedään historiaa..."
 
 msgctxt "txt_history_exported"
 msgid "History exported"
-msgstr ""
+msgstr "Historia viety"
 
 msgctxt "permision_write_external_storage"
 msgid "Write external storage permission is needed to export history."
@@ -802,35 +799,35 @@ msgstr ""
 #. Nutrition info tab
 msgctxt "nutrition_carbohydrate"
 msgid "Carbohydrate"
-msgstr ""
+msgstr "Hiilihydraatti"
 
 msgctxt "nutrition_carbohydrate_short_name"
 msgid "Carbohydrate (g)"
-msgstr ""
+msgstr "Hiilihydraatti (g)"
 
 msgctxt "nutrition_cholesterol"
 msgid "Cholesterol"
-msgstr ""
+msgstr "Kolesteroli"
 
 msgctxt "nutrition_cholesterol_short_name"
 msgid "Cholesterol (g)"
-msgstr ""
+msgstr "Kolesteroli (g)"
 
 msgctxt "nutrition_energy"
 msgid "Energy"
-msgstr ""
+msgstr "Energia"
 
 msgctxt "nutrition_energy_short_name"
 msgid "Energy"
-msgstr ""
+msgstr "Energia"
 
 msgctxt "nutrition_fat"
 msgid "Fat"
-msgstr ""
+msgstr "Rasva"
 
 msgctxt "nutrition_fat_short_name"
 msgid "Fat (g)"
-msgstr ""
+msgstr "Rasva (g)"
 
 msgctxt "nutrition_fiber"
 msgid "Dietary fiber"
@@ -842,7 +839,7 @@ msgstr ""
 
 msgctxt "nutrition_header"
 msgid "Nutrition facts"
-msgstr ""
+msgstr "Ravintosisältö"
 
 msgctxt "nutrition_no_data_message"
 msgid "No data is available for this product"
@@ -854,19 +851,19 @@ msgstr ""
 
 msgctxt "nutrition_proteins"
 msgid "Proteins"
-msgstr ""
+msgstr "Proteiinit"
 
 msgctxt "nutrition_proteins_short_name"
 msgid "Proteins (g)"
-msgstr ""
+msgstr "Proteiinit (g)"
 
 msgctxt "nutrition_salt"
 msgid "Salt"
-msgstr ""
+msgstr "Suola"
 
 msgctxt "nutrition_salt_short_name"
 msgid "Salt (g)"
-msgstr ""
+msgstr "Suola (g)"
 
 msgctxt "nutrition_satured_fat"
 msgid "Satured fat"
@@ -882,7 +879,7 @@ msgstr ""
 
 msgctxt "nutrition_serving_size"
 msgid "Serving size :"
-msgstr ""
+msgstr "Tarjoilukoko:"
 
 msgctxt "nutrition_sodium"
 msgid "Sodium"
@@ -894,11 +891,11 @@ msgstr ""
 
 msgctxt "nutrition_sugars"
 msgid "Sugars"
-msgstr ""
+msgstr "Sokerit"
 
 msgctxt "nutrition_sugars_short_name"
 msgid "Sugars (g)"
-msgstr ""
+msgstr "Sokerit (g)"
 
 msgctxt "nutrition_trans_fat"
 msgid "Trans fat"
@@ -914,7 +911,7 @@ msgstr ""
 
 msgctxt "action_manage_account"
 msgid "Manage account"
-msgstr ""
+msgstr "Tilin asetukset"
 
 msgctxt "action_contributes"
 msgid "Your contributions"
@@ -923,20 +920,20 @@ msgstr ""
 #. website translated pages
 msgctxt "website"
 msgid "http://world.openfoodfacts.org/"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/"
 
 msgctxt "website_contribute"
 msgid "http://world.openfoodfacts.org/contribute"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/contribute"
 
 msgctxt "website_discover"
 msgid "http://world.openfoodfacts.org/discover"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/discover"
 
 msgctxt "website_product"
 msgid "http://world.openfoodfacts.org/product/"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/product/"
 
 msgctxt "website_contributor"
 msgid "http://world.openfoodfacts.org/contributor/"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/contributor/"

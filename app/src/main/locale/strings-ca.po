@@ -6,17 +6,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  openfoodfacts\n"
+"Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-03 18:27+0100\n"
-"PO-Revision-Date: 2016-05-29 08:25+0000\n"
+"PO-Revision-Date: 2016-12-05 15:36+0000\n"
 "Last-Translator: VPablo <villumar@gmail.com>\n"
-"Language: ca\n"
 "Language-Team: Catalan <ca@li.org>\n"
-"Plural-Forms: nplurals=2; plural=((((n == 1)) && ((0 == 0))) ? 0 : 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-12-05 20:48+0000\n"
+"X-Generator: Launchpad (build 18282)\n"
+"Language: ca\n"
 "Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
@@ -37,11 +38,11 @@ msgstr "Quant a"
 
 msgctxt "action_discover"
 msgid "Discover"
-msgstr ""
+msgstr "Descobrir"
 
 msgctxt "action_contribute"
 msgid "Contribute"
-msgstr ""
+msgstr "Contribuir"
 
 msgctxt "action_find"
 msgid "Find"
@@ -67,15 +68,14 @@ msgid "Nutrition"
 msgstr "Nutrició"
 
 #. Nav Drawer Product Menu Items
-#, fuzzy
 msgctxt "nav_drawer_items_product:3"
 msgid "Full Nutrition"
-msgstr "Tornar al menú"
+msgstr "Nutrició Completa"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
 msgid "Back to menu"
-msgstr ""
+msgstr "Tornar al menú"
 
 #. Text units
 msgctxt "units_array:0"
@@ -105,155 +105,155 @@ msgstr "ml"
 #. Text units
 msgctxt "lang_array:0"
 msgid "en"
-msgstr ""
+msgstr "en"
 
 #. Text units
 msgctxt "lang_array:1"
 msgid "fr"
-msgstr ""
+msgstr "fr"
 
 #. Text units
 msgctxt "lang_array:2"
 msgid "es"
-msgstr ""
+msgstr "es"
 
 #. Text units
 msgctxt "lang_array:3"
 msgid "it"
-msgstr ""
+msgstr "it"
 
 #. Text units
 msgctxt "lang_array:4"
 msgid "de"
-msgstr ""
+msgstr "de"
 
 #. Text units
 msgctxt "lang_array:5"
 msgid "ja"
-msgstr ""
+msgstr "ja"
 
 #. Text units
 msgctxt "lang_array:6"
 msgid "ru"
-msgstr ""
+msgstr "ru"
 
 #. Text units
 msgctxt "lang_array:7"
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #. Text units
 msgctxt "lang_array:8"
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #. Text units
 msgctxt "lang_array:9"
 msgid "my"
-msgstr ""
+msgstr "my"
 
 #. Text units
 msgctxt "lang_array:10"
 msgid "kk"
-msgstr ""
+msgstr "kk"
 
 #. Text units
 msgctxt "lang_array:11"
 msgid "hy"
-msgstr ""
+msgstr "hy"
 
 #. Text units
 msgctxt "lang_array:12"
 msgid "el"
-msgstr ""
+msgstr "el"
 
 #. Text units
 msgctxt "lang_array:13"
 msgid "he"
-msgstr ""
+msgstr "he"
 
 #. Text units
 msgctxt "lang_array:14"
 msgid "gl"
-msgstr ""
+msgstr "gl"
 
 #. Text units
 msgctxt "lang_array:15"
 msgid "ca"
-msgstr ""
+msgstr "ca"
 
 #. Text units
 msgctxt "lang_array:16"
 msgid "cs"
-msgstr ""
+msgstr "cs"
 
 msgctxt "lang_label_array:0"
 msgid "English"
-msgstr ""
+msgstr "Anglès"
 
 msgctxt "lang_label_array:1"
 msgid "French"
-msgstr ""
+msgstr "Francès"
 
 msgctxt "lang_label_array:2"
 msgid "Spanish"
-msgstr ""
+msgstr "Espanyol"
 
 msgctxt "lang_label_array:3"
 msgid "Italian"
-msgstr ""
+msgstr "Italià"
 
 msgctxt "lang_label_array:4"
 msgid "German"
-msgstr ""
+msgstr "Alemany"
 
 msgctxt "lang_label_array:5"
 msgid "Japanese"
-msgstr ""
+msgstr "Japonès"
 
 msgctxt "lang_label_array:6"
 msgid "Russian"
-msgstr ""
+msgstr "Rus"
 
 msgctxt "lang_label_array:7"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portuguès"
 
 msgctxt "lang_label_array:8"
 msgid "Swedish"
-msgstr ""
+msgstr "Suec"
 
 msgctxt "lang_label_array:9"
 msgid "Burmese"
-msgstr ""
+msgstr "Birmà"
 
 msgctxt "lang_label_array:10"
 msgid "Kazakh"
-msgstr ""
+msgstr "Kazakh"
 
 msgctxt "lang_label_array:11"
 msgid "Armenian"
-msgstr ""
+msgstr "Armeni"
 
 msgctxt "lang_label_array:12"
 msgid "Greek"
-msgstr ""
+msgstr "Grec"
 
 msgctxt "lang_label_array:13"
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebreu"
 
 msgctxt "lang_label_array:14"
 msgid "Galician"
-msgstr ""
+msgstr "Gallec"
 
 msgctxt "lang_label_array:15"
 msgid "Catalan"
-msgstr ""
+msgstr "Català"
 
 msgctxt "lang_label_array:16"
 msgid "Czech"
-msgstr ""
+msgstr "Txec"
 
 msgctxt "images_array:0"
 msgid "Default"
@@ -322,7 +322,7 @@ msgstr "Llocs de manufactura o processament :"
 
 msgctxt "txtIngredientsOrigins"
 msgid "Origin of ingredients :"
-msgstr ""
+msgstr "Origen dels ingredients :"
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
@@ -370,15 +370,15 @@ msgstr "Nivells de nutrients per cada 100g :"
 
 msgctxt "txtNutritionLevelLow"
 msgid "low"
-msgstr ""
+msgstr "baix"
 
 msgctxt "txtNutritionLevelModerate"
 msgid "moderate"
-msgstr ""
+msgstr "moderat"
 
 msgctxt "txtNutritionLevelHigh"
 msgid "high"
-msgstr ""
+msgstr "alt"
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -395,17 +395,20 @@ msgstr "Obri el seu menjar i conega què menja"
 msgctxt "txtHome"
 msgid ""
 "Open Food Facts is a open database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find"
-" on product labels."
+"allergens, nutrition facts and all the tidbits of information we can find on "
+"product labels."
 msgstr ""
+"Open Food Facts és una base de dades oberta de productes amb ingredients, "
+"al·lèrgens, dades nutricionals i totes les peces d'informació que es poden "
+"trobar a les etiquetes dels productes."
 
 msgctxt "txtSave"
 msgid "Send/Save"
-msgstr ""
+msgstr "Envia/Desa"
 
 msgctxt "txtSignIn"
 msgid "Sign in"
-msgstr ""
+msgstr "Inici de sessió"
 
 msgctxt "txtUser"
 msgid "User panel"
@@ -448,7 +451,8 @@ msgid "Login or password error"
 msgstr "Usuari o contrasenya errònia"
 
 msgctxt "errorWeb"
-msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
 msgstr "No s'ha pogut connectar a l'Internet. Té problemes amb la connexió?"
 
 msgctxt "txtInfoLoginOk"
@@ -465,15 +469,15 @@ msgstr "Informació"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you "
-"want to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
 msgstr ""
-"El producte que ha escanejat no existix encara a Open Food Facts. Vol "
-"afegir-lo?"
+"El producte que ha escanejat no existix encara a Open Food Facts. Vol afegir-"
+"lo?"
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
-msgstr ""
+msgstr "Vol enviar el producte desat a la base de dades?"
 
 msgctxt "txtYes"
 msgid "Yes"
@@ -505,7 +509,7 @@ msgstr "Botiga"
 
 msgctxt "hintBrand"
 msgid "Brand"
-msgstr ""
+msgstr "Marca"
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
@@ -521,7 +525,7 @@ msgstr "No hi ha dades"
 
 msgctxt "txtPictureNeeded"
 msgid "Take a picture first!"
-msgstr ""
+msgstr "Prenga una foto abans!"
 
 msgctxt "toastSending"
 msgid "Uploading..."
@@ -548,7 +552,8 @@ msgid "Do you want to delete this draft?"
 msgstr "Vol esborrar este esborrany?"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
 "El producte s'ha desat localment, pot editar-lo amb el menú de l'Editor "
 "Offline"
@@ -559,7 +564,7 @@ msgstr "Es necessita un codi de barres"
 
 msgctxt "txtOk"
 msgid "OK"
-msgstr ""
+msgstr "D'acord"
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
@@ -567,8 +572,8 @@ msgstr "Per favor no isca en mig del procés..."
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative "
-"Commons Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
 msgstr ""
 "Les imatges que ha enviat es publiquen amb la llicència lliure Creative "
 "Commons Attribution and ShareAlike"
@@ -585,10 +590,9 @@ msgctxt "txtBarcodeNotValid"
 msgid "Barcode not valid"
 msgstr "Codi de barres no vàlid"
 
-#, fuzzy
 msgctxt "try_it_scan_now"
 msgid "Scan product"
-msgstr "Prove! Escanege ara!"
+msgstr "Escanneja producte"
 
 msgctxt "share"
 msgid "Share"
@@ -664,9 +668,8 @@ msgstr "Afegir Alerta"
 
 msgctxt "warning_alert_data"
 msgid ""
-"Your allergies info will never be sent to the Open Food Facts server. "
-"Also, be careful that data may not be accurate, please double-check by "
-"yourself!"
+"Your allergies info will never be sent to the Open Food Facts server. Also, "
+"be careful that data may not be accurate, please double-check by yourself!"
 msgstr ""
 
 msgctxt "from_gallery"
@@ -726,8 +729,8 @@ msgstr ""
 
 msgctxt "new_offline_info"
 msgid ""
-"Please take a picture of the product, ingredients, nutrition facts table "
-"and any other information on the label. Thank you!"
+"Please take a picture of the product, ingredients, nutrition facts table and "
+"any other information on the label. Thank you!"
 msgstr ""
 
 #. Strings related to login
@@ -735,7 +738,6 @@ msgctxt "error_invalid_password"
 msgid "The password needs to be a least 6 characters long."
 msgstr ""
 
-#, fuzzy
 msgctxt "error_field_required"
 msgid "This field is required."
 msgstr ""
@@ -947,4 +949,3 @@ msgstr ""
 msgctxt "website_contributor"
 msgid "http://world.openfoodfacts.org/contributor/"
 msgstr ""
-
