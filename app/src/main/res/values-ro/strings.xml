@@ -10,7 +10,8 @@
     <item>Summary</item>
     <item>Ingrediente</item>
     <item>Nutrition</item>
-    <item>Înapoi la meniu</item>
+    <item>Full Nutrition</item>
+    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -37,6 +38,25 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
+    <item>Swedish</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Greek</item>
+    <item>Hebrew</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
@@ -106,7 +126,6 @@
   <string name="txtAllsent">Produsele au fost trimise</string>
   <string name="txtPalm">Produsul nu conține ulei de palmier</string>
   <string name="txtBarcodeNotValid">Codul de bare este invalid.</string>
-  <string name="try_it_scan_now">Scanează un produs!</string>
   <string name="create_account">Înregistrare</string>
   <string name="home_drawer">Pagina de start</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
@@ -130,7 +149,6 @@
   <string name="msg_input_empty">Completați mai întai!</string>
   <string name="new_offline_info">Vă rugăm fotografiați produsul, lista sa de ingrediente, informațiile nutriționale și oricare alte informații prezente pe eticheta. Vă mulțumim!</string>
   <string name="error_invalid_password">Parola trebuie să fie de cel puțin 6 caractere.</string>
-  <string name="error_field_required">Acest cîmp este obligatoriu</string>
   <string name="action_preferences">Preferinţe</string>
   <string name="prefs_scan_startup">Scanare la pornire</string>
   <string name="prefs_scan_startup_summary">Această opțiune permite activarea funcției de scanare la pornirea aplicației.</string>
