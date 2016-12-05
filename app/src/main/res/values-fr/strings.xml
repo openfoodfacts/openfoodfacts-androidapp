@@ -1,16 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="app_name">Open Food</string>
-  <string name="hello_world">Coucou tout le monde!</string>
+  <string name="hello_world">Coucou all!</string>
   <string name="action_settings">Paramètres</string>
   <string name="action_about">À propos</string>
+  <string name="action_discover">Découvrir</string>
+  <string name="action_contribute">Contribuer</string>
   <string name="action_find">Chercher</string>
   <string name="text_barcode">Ajoutez le code barre :</string>
   <string-array name="nav_drawer_items_product">
     <item>Résumé</item>
     <item>Ingrédients</item>
     <item>Nutrition</item>
-    <item>Retour à l\'accueil</item>
+    <item>Détails nutritionnels</item>
+    <item>Retour au menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -38,6 +41,25 @@
     <item>ca</item>
     <item>cs</item>
   </string-array>
+  <string-array name="lang_label_array">
+    <item>Anglais</item>
+    <item>Français</item>
+    <item>Espagnol</item>
+    <item>Italien</item>
+    <item>Allemand</item>
+    <item>Japonais</item>
+    <item>Russe</item>
+    <item>Portugais</item>
+    <item>Suédois</item>
+    <item>Birman</item>
+    <item>Kazakh</item>
+    <item>Arménien</item>
+    <item>Grec</item>
+    <item>Hébreu</item>
+    <item>Galicien</item>
+    <item>Catalan</item>
+    <item>Tchèque</item>
+  </string-array>
   <string-array name="images_array">
     <item>Defaut</item>
     <item>Nutrition</item>
@@ -56,6 +78,7 @@
   <string name="txtBrands">Magasins :</string>
   <string name="txtCategories">Catégories :</string>
   <string name="txtManufacturing">Lieux de fabrication ou de transformation :</string>
+  <string name="txtIngredientsOrigins">Origine des ingrédients :</string>
   <string name="txtCity">Ville et pays d\'achat :</string>
   <string name="txtStores">Magasins :</string>
   <string name="txtCountries">Pays de vente :</string>
@@ -99,6 +122,7 @@
   <string name="hintEnergyUnit">Unité de l\'energie</string>
   <string name="hintWeight">Poids / Quantité</string>
   <string name="hintStores">Magasin</string>
+  <string name="hintBrand">Marque</string>
   <string name="txtTakePicture">Prendre une photo</string>
   <string name="txtSendAll">Tout envoyer</string>
   <string name="txtNoData">Aucune donnée</string>
@@ -109,7 +133,7 @@
   <string name="txtDataUpdated">Données mises à jour</string>
   <string name="txtLoading">Chargement...</string>
   <string name="txtDialogsContentDelete">Voulez-vous supprimer cette ligne?</string>
-  <string name="txtDialogsContentInfoSave">Le produit a été sauvegardé localement, vous pouvez le modifier dans le menu Edition hors ligne</string>
+  <string name="txtDialogsContentInfoSave">Le produit a été sauvegardé localement, vous pouvez l\'éditer dans le menu Edition hors ligne</string>
   <string name="txtBarcodeRequire">Code-barre requis</string>
   <string name="txtOk">OK</string>
   <string name="txtContentDialogUploading">Ne quittez pas durant l\'envoi...</string>
@@ -135,7 +159,7 @@
   <string name="sign_in_drawer">Se connecter</string>
   <string name="alert_drawer">Alertes concernant les allergènes</string>
   <string name="warning_allergens">Contient des allergènes</string>
-  <string name="title_dialog_alert">Ajouter une alerte</string>
+  <string name="title_dialog_alert">Add alert</string>
   <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilent sur le fait que ces données ne sont pas fiables à 100%. N\'hésitez pas à revérifier par vous-même !</string>
   <string name="from_gallery">Galerie photo</string>
   <string name="product_sent">Produit envoyé !</string>
@@ -145,7 +169,7 @@
   <string name="permission_camera">L\'autorisation d\'accès à la caméra est nécessaire pour pouvoir scanner le code-barres.</string>
   <string name="permission_title">Information sur les permissions</string>
   <string name="permission_denied">Veuillez activer la permission dans les paramètres</string>
-  <string name="permission_storage">Le stockage est requis pour pouvoir prendre ou choisir des photos</string>
+  <string name="permission_storage">Le Stockage est requis pour pouvoir prendre ou choisir des photos</string>
   <string name="info_download_data">Vous devez télécharger des données pour que cette fonctionnalité marche, veuillez appuyer sur « Oui » pour les télécharger.</string>
   <string name="info_download_data_connection">Vous devez télécharger des données pour que cette fonctionnalité marche. Veuillez activer votre connexion Internet.</string>
   <string name="msg_input_empty">Remplissez tout d\'abord l\'entrée !</string>
@@ -154,6 +178,11 @@
   <string name="error_field_required">Ce champ est obligatoire.</string>
   <string name="action_preferences">Préférences</string>
   <string name="prefs_scan_startup">Scanner au démarrage</string>
+  <string name="prefs_scan_startup_summary">Si sélectionnée, cette option lancera le scan dès l\'ouverture de l\'application.</string>
+  <string name="prefs_power_mode">Mode de scan avancé</string>
+  <string name="prefs_power_mode_summary">Scannez rapidement les produits dans un supermarché pour voir lesquels ne sont pas dans la base de données.</string>
+  <string name="prefs_language">Langue</string>
+  <string name="prefs_language_summary">Changer la langue</string>
   <string name="scan_history_drawer">Historique</string>
   <string name="clear_history">Effacer l\'historique</string>
   <string name="title_clear_history_dialog">Effacer</string>
@@ -163,13 +192,39 @@
   <string name="txt_history_exported">Historique exporté</string>
   <string name="permision_write_external_storage">Les droits d\'accès en écriture sur le support de stockage externe sont nécessaires pour exporter l\'historique.</string>
   <string name="txt_nutrition_not_found">Non applicable</string>
-  <string name="prefs_scan_startup_summary">Cette option, si elle est selectionnée, lancera le scan au démarrage de l\'application</string>
-  <string name="txtIngredientsOrigins">Origine des ingrédients :</string>
+  <string name="nutrition_carbohydrate">Glucides</string>
+  <string name="nutrition_carbohydrate_short_name">Glucides (g)</string>
+  <string name="nutrition_cholesterol">Cholestérol</string>
+  <string name="nutrition_cholesterol_short_name">Cholestérol (g)</string>
+  <string name="nutrition_energy">Énergie</string>
+  <string name="nutrition_energy_short_name">Énergie</string>
+  <string name="nutrition_fat">Matières grasses</string>
+  <string name="nutrition_fat_short_name">Matières grasses (g)</string>
+  <string name="nutrition_fiber">Fibres alimentaires</string>
+  <string name="nutrition_fiber_short_name">Fibres (g)</string>
+  <string name="nutrition_header">Informations nutritionnelles</string>
+  <string name="nutrition_no_data_message">Aucune donnée n\'est disponible pour ce produit</string>
+  <string name="nutrition_per_quantity">Pour 100g/100ml</string>
+  <string name="nutrition_proteins">Protéines</string>
+  <string name="nutrition_proteins_short_name">Protéines (g)</string>
+  <string name="nutrition_salt">Sel</string>
+  <string name="nutrition_salt_short_name">Sel (g)</string>
+  <string name="nutrition_satured_fat">Graisses saturées</string>
+  <string name="nutrition_satured_fat_short_name">Graisses saturées (g)</string>
+  <string name="nutrition_serving">Par portion</string>
+  <string name="nutrition_serving_size">Taille d\'une portion :</string>
+  <string name="nutrition_sodium">Sodium</string>
+  <string name="nutrition_sodium_short_name">Sodium (g)</string>
+  <string name="nutrition_sugars">Sucres</string>
+  <string name="nutrition_sugars_short_name">Sucres (g)</string>
+  <string name="nutrition_trans_fat">Graisses transaturées</string>
+  <string name="nutrition_trans_fat_short_name">Graisses transaturées (g)</string>
+  <string name="nutriment_serving_size">Par portion :</string>
+  <string name="action_manage_account">Gérer votre compte</string>
   <string name="action_contributes">Vos contributions</string>
-
   <string name="website">http://fr.openfoodfacts.org/</string>
-  <string name="website_contribute">http://fr.openfoodfacts.org/contribuer</string>
-  <string name="website_contributor">http://fr.openfoodfacts.org/contributeur/</string>
-  <string name="website_discover">http://fr.openfoodfacts.org/decouvrir</string>
-  <string name="website_product">http://fr.openfoodfacts.org/produit/</string>
+  <string name="website_contribute">http://world-fr.openfoodfacts.org/contribuer</string>
+  <string name="website_discover">http://world-fr.openfoodfacts.org/decouvrir</string>
+  <string name="website_product">http://world-fr.openfoodfacts.org/produit/</string>
+  <string name="website_contributor">http://world-fr.openfoodfacts.org/contributeur/</string>
 </resources>
