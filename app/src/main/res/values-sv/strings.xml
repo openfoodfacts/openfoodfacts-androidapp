@@ -9,15 +9,53 @@
     <item>Sammanfattning</item>
     <item>Ingredienser</item>
     <item>Näring</item>
-    <item>Tillbaka till menyn</item>
+    <item>Full Nutrition</item>
+    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
-    <item> </item>
     <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
     <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
+    <item>Swedish</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Greek</item>
+    <item>Hebrew</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
   </string-array>
   <string-array name="images_array">
     <item>Standard</item>
@@ -43,7 +81,6 @@
   <string name="txtLogin">Användarnamn :</string>
   <string name="txtPass">Lösenord :</string>
   <string name="txtTitleHome">Öppna din mat och känn till vad du äter</string>
-  <string name="txtHome">Öppen mat-fakta är en databas för matprodukter med ingredienser, allergener, näringsfakta och alla godbitar av information som vi kan hitta på produktetiketter.</string>
   <string name="txtToastSaved">Användaren sparades</string>
   <string name="txtSalt">Salt :</string>
   <string name="txtFat">Fett :</string>
@@ -54,7 +91,6 @@
   <string name="errorWeb">Vi kan inte komma åt internet. Har du problem med anslutningen?</string>
   <string name="txtDialogsTitle">Information</string>
   <string name="txtDialogsContent">Produkten som du skannade finns inte i Öppen mat-fakta ännu. Vill du lägga till den?</string>
-  <string name="txtDialogsContentSend">Vill du skicka de sparade produkterna till vår databas?</string>
   <string name="txtYes">Ja</string>
   <string name="txtNo">Nej</string>
   <string name="hintNameProduct">Namn</string>
@@ -65,19 +101,16 @@
   <string name="txtTakePicture">Ta en bild</string>
   <string name="txtSendAll">Ladda upp allt</string>
   <string name="txtNoData">Ingen data</string>
-  <string name="txtPictureNeeded">Ta en bild först och sedan fyller du i namnet och butiken!</string>
   <string name="toastSending">Laddar upp...</string>
   <string name="dataSaved">Sparades lokalt i din enhet</string>
   <string name="txtInfoAddUser">Vänligen fyll i ditt användarnamn och lösenord</string>
   <string name="txtDataUpdated">Datan uppdaterades</string>
   <string name="txtLoading">Laddar...</string>
   <string name="txtBarcodeRequire">Streckkod krävs</string>
-  <string name="txtOk">Ok</string>
   <string name="txtContentDialogUploading">Vänligen avsluta inte under proceduren...</string>
   <string name="txtAllsent">Produkterna skickades</string>
   <string name="txtPalm">Produkten innehåller ingen palmolja</string>
   <string name="txtBarcodeNotValid">Streckkoden är inte giltig</string>
-  <string name="try_it_scan_now">Prova det! Skanna nu!</string>
   <string name="share">Dela</string>
   <string name="create_account">Registrera</string>
   <string name="home_drawer">Hem</string>

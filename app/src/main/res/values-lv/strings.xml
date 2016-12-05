@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="action_settings">Iestatījumi</string>
+  <string name="action_about">Par</string>
+  <string name="action_find">Meklēt</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Kopsavilkums</item>
+    <item>Sastāvdaļas</item>
+    <item>Nutrition</item>
+    <item>Full Nutrition</item>
+    <item>Back to menu</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>Angļu</item>
+    <item>Franču</item>
+    <item>Spāņu</item>
+    <item>Itāļu</item>
+    <item>Vācu</item>
+    <item>Japāņu</item>
+    <item>Krievu</item>
+    <item>Portugāļu</item>
+    <item>Zviedru</item>
+    <item>Burmese</item>
+    <item>Kazahu</item>
+    <item>Armēņu</item>
+    <item>Grieķu</item>
+    <item>Hebrew</item>
+    <item>Galician</item>
+    <item>Katalāņu</item>
+    <item>Čehu</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Noklusējuma</item>
+    <item>Nutrition</item>
+    <item>Sastāvdaļas</item>
+  </string-array>
+  <string name="search_button">Meklēt</string>
+  <string name="alert_dialog_warning_title">Brīdinājums</string>
+  <string name="toast_retrieving">Ielādē...</string>
+  <string name="txtStores">Veikali:</string>
+  <string name="txtSignIn">Ieiet</string>
+  <string name="txtSalt">Sāls:</string>
+  <string name="txtSugars">Cukuri:</string>
+  <string name="hintBarcode">Svītrkods</string>
+  <string name="hintLogin">Lietotājvārds</string>
+  <string name="hintPass">Parole</string>
+  <string name="txtInfoLoginOk">Lietotājs saglabāts</string>
+  <string name="txtDialogsTitle">Informācija</string>
+  <string name="txtYes">Jā</string>
+  <string name="txtNo">Nē</string>
+  <string name="hintNameProduct">Nosaukums</string>
+  <string name="hintWeight">Svars</string>
+  <string name="hintStores">Veikals</string>
+  <string name="hintBrand">Zīmols</string>
+  <string name="txtNoData">Nav datu</string>
+  <string name="toastSending">Augšuplādē…</string>
+  <string name="txtLoading">Ielādē...</string>
+  <string name="txtOk">Labi</string>
+  <string name="share">Dalīties</string>
+  <string name="home_drawer">Mājas</string>
+  <string name="search_drawer">Meklēt</string>
+  <string name="user_drawer">Lietotājs</string>
+  <string name="txt_anonymous">Anonīms</string>
+  <string name="delete_txt">Dzēst</string>
+  <string name="sign_in_drawer">Ieiet</string>
+  <string name="title_info_dialog">Informācija</string>
+  <string name="action_preferences">Iestatījumi</string>
+  <string name="prefs_language">Valoda</string>
+  <string name="prefs_language_summary">Pāriet uz citu valodu</string>
+  <string name="scan_history_drawer">Vēsture</string>
+  <string name="clear_history">Notīrīt vēsturi</string>
+  <string name="title_clear_history_dialog">Notīrīt</string>
+</resources>

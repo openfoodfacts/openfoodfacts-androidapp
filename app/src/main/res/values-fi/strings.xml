@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="action_settings">Asetukset</string>
+  <string name="action_about">Tietoja</string>
+  <string name="action_discover">Löydä</string>
+  <string name="action_contribute">Osallistu</string>
+  <string name="action_find">Etsi</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Yhteenveto</item>
+    <item>Ainekset</item>
+    <item>Nutrition</item>
+    <item>Full Nutrition</item>
+    <item>Takaisin valikkoon</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>I</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
+    <item>Swedish</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Greek</item>
+    <item>Hebrew</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Oletus</item>
+    <item>Nutrition</item>
+    <item>Ainekset</item>
+  </string-array>
+  <string name="search_button">Etsi</string>
+  <string name="no_products">Tuotteita ei löytynyt</string>
+  <string name="alert_dialog_warning_title">Varoitus</string>
+  <string name="alert_dialog_product_error_msg">Tuotetta ei löytynyt, yritä uudelleen</string>
+  <string name="toast_retrieving">Ladataan...</string>
+  <string name="txtBarcode">Viivakoodi:</string>
+  <string name="txtQuantity">Määrä:</string>
+  <string name="txtPackaging">Paketointi:</string>
+  <string name="txtCountries">Maat joissa myynnissä:</string>
+  <string name="txtIngredients">Ainesosaluettelo:</string>
+  <string name="txtNutrientLevel100g">Ravintosisältö per 100 g:</string>
+  <string name="txtLogin">Tunnus:</string>
+  <string name="txtPass">Salasana:</string>
+  <string name="txtSave">Lähetä/tallenna</string>
+  <string name="txtSignIn">Kirjaudu sisään</string>
+  <string name="txtUser">Käyttäjäpaneeli</string>
+  <string name="txtSalt">Suola:</string>
+  <string name="txtFat">Rasva:</string>
+  <string name="txtSugars">Sokerit:</string>
+  <string name="hintBarcode">Viivakoodi</string>
+  <string name="hintLogin">Käyttäjätunnus</string>
+  <string name="hintPass">Salasana</string>
+  <string name="txtYes">Kyllä</string>
+  <string name="txtNo">Ei</string>
+  <string name="hintNameProduct">Nimi</string>
+  <string name="hintEnergyUnit">Energiayksikkö</string>
+  <string name="hintWeight">Paino</string>
+  <string name="hintStores">Kauppa</string>
+  <string name="txtTakePicture">Ota kuva</string>
+  <string name="txtPictureNeeded">Ota kuva ensin!</string>
+  <string name="toastSending">Lähetetään...</string>
+  <string name="dataSaved">Tallennettu paikallisesti laitteellesi</string>
+  <string name="txtInfoAddUser">Anna käyttäjätunnuksesi ja salasanasi</string>
+  <string name="txtLoading">Ladataan...</string>
+  <string name="txtDialogsContentDelete">Haluatko poistaa tämän luonnoksen?</string>
+  <string name="txtBarcodeRequire">Viivakoodi vaaditaan</string>
+  <string name="txtOk">OK</string>
+  <string name="txtAllsent">Tuotteet lähetetty</string>
+  <string name="txtBarcodeNotValid">Viivakoodi on virheellinen</string>
+  <string name="try_it_scan_now">Skannaa tuote</string>
+  <string name="share">Jaa</string>
+  <string name="create_account">Rekisteröidy</string>
+  <string name="home_drawer">Koti</string>
+  <string name="search_drawer">Etsi</string>
+  <string name="search_by_barcode_drawer">Etsi viivakoodilla</string>
+  <string name="search_by_name_drawer">Etsi nimellä</string>
+  <string name="scan_search">Skannaa</string>
+  <string name="user_drawer">Käyttäjä</string>
+  <string name="txt_anonymous">Anonyymi</string>
+  <string name="txt_product_not_found">Tuotteita ei löytynyt</string>
+  <string name="delete_txt">Poista</string>
+  <string name="sign_in_drawer">Kirjaudu sisään</string>
+  <string name="from_gallery">Galleriasta</string>
+  <string name="product_sent">Tuote lähetetty!</string>
+  <string name="action_edit_product">Muokkaa tuotetta</string>
+  <string name="error_invalid_password">Salasanan on oltava vähintään 6 merkkiä.</string>
+  <string name="error_field_required">Tämä kenttä on pakollinen.</string>
+  <string name="action_preferences">Asetukset</string>
+  <string name="prefs_language">Kieli</string>
+  <string name="prefs_language_summary">Vaihda kieli</string>
+  <string name="scan_history_drawer">Historia</string>
+  <string name="clear_history">Tyhjennä historia</string>
+  <string name="title_clear_history_dialog">Tyhjennä</string>
+  <string name="text_clear_history_dialog">Haluatko tyhjentää koko skannaushistorian?</string>
+  <string name="export_csv_history">Vie CSV:nä</string>
+  <string name="txt_exporting_history">Viedään historiaa...</string>
+  <string name="txt_history_exported">Historia viety</string>
+  <string name="nutrition_carbohydrate">Hiilihydraatti</string>
+  <string name="nutrition_carbohydrate_short_name">Hiilihydraatti (g)</string>
+  <string name="nutrition_cholesterol">Kolesteroli</string>
+  <string name="nutrition_cholesterol_short_name">Kolesteroli (g)</string>
+  <string name="nutrition_energy">Energia</string>
+  <string name="nutrition_energy_short_name">Energia</string>
+  <string name="nutrition_fat">Rasva</string>
+  <string name="nutrition_fat_short_name">Rasva (g)</string>
+  <string name="nutrition_header">Ravintosisältö</string>
+  <string name="nutrition_proteins">Proteiinit</string>
+  <string name="nutrition_proteins_short_name">Proteiinit (g)</string>
+  <string name="nutrition_salt">Suola</string>
+  <string name="nutrition_salt_short_name">Suola (g)</string>
+  <string name="nutrition_serving_size">Tarjoilukoko:</string>
+  <string name="nutrition_sugars">Sokerit</string>
+  <string name="nutrition_sugars_short_name">Sokerit (g)</string>
+  <string name="action_manage_account">Tilin asetukset</string>
+  <string name="website">http://world.openfoodfacts.org/</string>
+  <string name="website_contribute">http://world.openfoodfacts.org/contribute</string>
+  <string name="website_discover">http://world.openfoodfacts.org/discover</string>
+  <string name="website_product">http://world.openfoodfacts.org/product/</string>
+  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
+</resources>

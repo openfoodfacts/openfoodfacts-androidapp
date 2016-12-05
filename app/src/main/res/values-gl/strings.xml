@@ -1,10 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="app_name">Open Food</string>
+  <string name="hello_world">Ola Mundo!</string>
+  <string name="action_settings">Axustes</string>
+  <string name="action_about">Sobre</string>
+  <string name="action_discover">Descubrir</string>
+  <string name="action_contribute">Colaborar</string>
+  <string name="action_find">Buscar</string>
+  <string name="text_barcode">Poña o código de barras:</string>
   <string-array name="nav_drawer_items_product">
-    <item>Summary</item>
-    <item>Ingredients</item>
-    <item>Nutrition</item>
-    <item>Back to menu</item>
+    <item>Resumo</item>
+    <item>Ingredientes</item>
+    <item>Nutrición</item>
+    <item>Nutrición completa</item>
+    <item>Volver ao menú</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -32,9 +41,91 @@
     <item>ca</item>
     <item>cs</item>
   </string-array>
-  <string-array name="images_array">
-    <item>Default</item>
-    <item>Nutrition</item>
-    <item>Ingredients</item>
+  <string-array name="lang_label_array">
+    <item>Inglés</item>
+    <item>Francés</item>
+    <item>Castelán</item>
+    <item>Italiano</item>
+    <item>Alemán</item>
+    <item>Xaponés</item>
+    <item>Ruso</item>
+    <item>Portugués</item>
+    <item>Sueco</item>
+    <item>Birmano</item>
+    <item>Casaco</item>
+    <item>Armenio</item>
+    <item>Grego</item>
+    <item>Hebreo</item>
+    <item>Galego</item>
+    <item>Catalán</item>
+    <item>Checo</item>
   </string-array>
+  <string-array name="images_array">
+    <item>Predeterminado</item>
+    <item>Nutrición</item>
+    <item>Ingredientes</item>
+  </string-array>
+  <string name="search_button">Buscar</string>
+  <string name="no_products">Produtos non atopados</string>
+  <string name="desc_list_item_icon">Icona do elemento</string>
+  <string name="alert_dialog_warning_title">Aviso</string>
+  <string name="alert_dialog_product_error_msg">Produto non atopado, ténteo de novo</string>
+  <string name="toast_retrieving">Cargando...</string>
+  <string name="txtBarcode">Código de barras :</string>
+  <string name="txtQuantity">Cantidade :</string>
+  <string name="txtPackaging">Empaquetado :</string>
+  <string name="txtBrands">Marcas :</string>
+  <string name="txtNutritionLevelLow">baixo</string>
+  <string name="txtNutritionLevelModerate">moderado</string>
+  <string name="txtNutritionLevelHigh">alto</string>
+  <string name="txtPass">Contrasinal:</string>
+  <string name="txtSignIn">Iniciar sesión</string>
+  <string name="hintBarcode">Código de barras</string>
+  <string name="hintLogin">Iniciar sesión</string>
+  <string name="hintPass">Contrasinal</string>
+  <string name="txtDialogsTitle">Información</string>
+  <string name="txtYes">Si</string>
+  <string name="txtNo">Non</string>
+  <string name="hintNameProduct">Nome</string>
+  <string name="hintWeight">Peso</string>
+  <string name="hintStores">Tenda</string>
+  <string name="hintBrand">Marca</string>
+  <string name="txtNoData">Non hai datos</string>
+  <string name="txtPictureNeeded">Primeiro faga unha foto!</string>
+  <string name="toastSending">Enviando</string>
+  <string name="txtLoading">Cargando...</string>
+  <string name="txtOk">Aceptar</string>
+  <string name="share">Compartir</string>
+  <string name="create_account">Rexistrarse</string>
+  <string name="home_drawer">Inicio</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
+  <string name="search_drawer">Buscar</string>
+  <string name="scan_search">Analizar</string>
+  <string name="user_drawer">Usuario</string>
+  <string name="txt_anonymous">Anónimo</string>
+  <string name="txt_product_not_found">Produtos non atopados</string>
+  <string name="delete_txt">Eliminar</string>
+  <string name="sign_in_drawer">Iniciar sesión</string>
+  <string name="title_info_dialog">Información</string>
+  <string name="action_preferences">Axustes</string>
+  <string name="prefs_language">Idioma</string>
+  <string name="prefs_language_summary">Cambiar o idioma</string>
+  <string name="scan_history_drawer">Historial</string>
+  <string name="clear_history">Limpar o historial</string>
+  <string name="title_clear_history_dialog">Limpar</string>
+  <string name="txt_nutrition_not_found">N/D</string>
+  <string name="nutrition_carbohydrate">Carbohidratos</string>
+  <string name="nutrition_energy">Enerxía</string>
+  <string name="nutrition_fat">Graxas</string>
+  <string name="nutrition_fiber">Fibra alimentaria</string>
+  <string name="nutrition_header">Información nutricional</string>
+  <string name="nutrition_proteins">Proteínas</string>
+  <string name="nutrition_salt">Sal</string>
+  <string name="nutrition_sodium">Sodio</string>
+  <string name="action_manage_account">Xestionar conta</string>
+  <string name="website">http://world.openfoodfacts.org/</string>
+  <string name="website_contribute">http://world.openfoodfacts.org/contribute</string>
+  <string name="website_discover">http://world.openfoodfacts.org/discover</string>
+  <string name="website_product">http://world.openfoodfacts.org/product/</string>
+  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
 </resources>

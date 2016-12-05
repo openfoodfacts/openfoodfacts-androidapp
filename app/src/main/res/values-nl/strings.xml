@@ -10,7 +10,8 @@
     <item>Samenvatting</item>
     <item>Ingrediënten</item>
     <item>Voedingswaarde</item>
-    <item>Terug naar het menu</item>
+    <item>Full Nutrition</item>
+    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -37,6 +38,25 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
+    <item>Swedish</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Greek</item>
+    <item>Hebrew</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
@@ -113,7 +133,6 @@
   <string name="txtAllsent">Producten verzonden</string>
   <string name="txtPalm">Product bevat geen palmolie</string>
   <string name="txtBarcodeNotValid">Streepjescode niet geldig</string>
-  <string name="try_it_scan_now">Scannen maar!</string>
   <string name="share">Delen</string>
   <string name="msg_share">Bekijk dit product op Open Food Facts</string>
   <string name="create_account">Inschrijven</string>

@@ -10,7 +10,8 @@
     <item>תקציר</item>
     <item>רכיבים</item>
     <item>תזונה</item>
-    <item>חזרה לתפריט</item>
+    <item>Full Nutrition</item>
+    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
     <item>ג׳</item>
@@ -37,6 +38,25 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
+    <item>Swedish</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Greek</item>
+    <item>Hebrew</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
   </string-array>
   <string-array name="images_array">
     <item>בררת מחדל</item>
@@ -116,7 +136,6 @@
   <string name="txtAllsent">המוצרים נשלחו</string>
   <string name="txtPalm">המוצר אינו מכיל שמן דקלים</string>
   <string name="txtBarcodeNotValid">הברקוד לא זמין</string>
-  <string name="try_it_scan_now">בואו ננסה! נא לסרוק כעת!</string>
   <string name="share">שיתוף</string>
   <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
   <string name="create_account">הרשמה</string>
@@ -145,7 +164,6 @@
   <string name="msg_input_empty">יש למלא את הקלט תחילה!</string>
   <string name="new_offline_info">נא לצלם תמונות של המוצר, רכיביו, טבלת ערכיו התזונתיים וכל מידע נוסף שעל התווית. תודה!</string>
   <string name="error_invalid_password">הססמה חייבת להיות באורך של 6 תווים לפחות.</string>
-  <string name="error_field_required">זהו שדה חובה</string>
   <string name="action_preferences">העדפות</string>
   <string name="prefs_scan_startup">סריקה עם ההפעלה</string>
   <string name="prefs_scan_startup_summary">אם אפשרות זו נבחרה הסריקה תחל עם הפעלת היישומון</string>

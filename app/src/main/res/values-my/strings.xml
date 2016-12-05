@@ -10,15 +10,53 @@
     <item>အက်ဥ္းခ်ဳပ္</item>
     <item>ပါဝင္မႈမ်ား</item>
     <item>အာဟာရျပည့္မႈမ်ား</item>
-    <item>မီႏူးဆီသို႔ျပန္သြားမည္</item>
+    <item>Full Nutrition</item>
+    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
-    <item> </item>
     <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
     <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
+    <item>Swedish</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Greek</item>
+    <item>Hebrew</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
   </string-array>
   <string-array name="images_array">
     <item>မူလအတိုင္း</item>
@@ -52,7 +90,6 @@
   <string name="txtLogin">ဝင္ေရာက္ရန္ -</string>
   <string name="txtPass">စကားဝွက္ -</string>
   <string name="txtTitleHome">သင့္အစားအေသာက္ကိုဖြင့္ျပီး သင္ဘာစားေနသည္ကိုသိရွိပါ</string>
-  <string name="txtHome">Open Food အေၾကာင္းအရာမ်ားသည္ ပါဝင္ေသာပစၥည္းမ်ား၊ မတည့္ေသာအစားအစာမ်ား၊ အာဟာရအေၾကာင္းအရာမ်ားႏွင့္ ထုတ္ကုန္အဆင့္ႏွင့္ ကၽြႏ္ုပ္တို႔ရွာႏိုင္ေသာအခ်က္အလက္မ်ားပါဝင္သည့္ database ျဖစ္သည္။</string>
   <string name="txtUser">အသံုးျပဳသူ ပန္နယ္</string>
   <string name="txtToastSaved">အသံုးျပဳသူကိုသိမ္းခဲ့ျပီးျပီ</string>
   <string name="txtSalt">ဆား -</string>
@@ -68,7 +105,6 @@
   <string name="txtInfoLoginNo">အသံုးျပဳသူကိုမသိမ္းခဲ့ပါ</string>
   <string name="txtDialogsTitle">အခ်က္အလက္</string>
   <string name="txtDialogsContent">သင္စကန္ဖတ္ေသာထုတ္ကုန္သည္ Open Food အခ်က္အလက္မ်ားတြင္မရွိေသးပါ။ သင္ထည့္လိုပါသလား။</string>
-  <string name="txtDialogsContentSend">သိမ္းထားေသာထုတ္ကုန္မ်ားကို ကၽြႏ္ုပ္တို႔၏ database သို႔ေပါင္းထည့္ခ်င္ပါသလား</string>
   <string name="txtYes">ဟုတ္</string>
   <string name="txtNo">မဟုတ္</string>
   <string name="hintNameProduct">အမည္</string>
@@ -79,7 +115,6 @@
   <string name="txtTakePicture">ဓာတ္ပံုရိုက္မည္</string>
   <string name="txtSendAll">အားလံုးကိုတင္မည္</string>
   <string name="txtNoData">အခ်က္အလက္မရွိ</string>
-  <string name="txtPictureNeeded">ဓာတ္ပံုအရင္ရိုက္ပါ။ ေနာက္မွ အမည္ႏွင့္ စတိုးကိုျဖည့္ပါ</string>
   <string name="toastSending">တင္ေနသည္</string>
   <string name="dataSaved">သင့္ကိရိယာတြင္ ခဏသိမ္းထားမည္</string>
   <string name="txtInfoAddUser">သင္ဝင္ေရာက္မႈႏွင့္စကားဝွက္ကိုရိုက္ထည့္ပါ</string>
@@ -88,13 +123,11 @@
   <string name="txtDialogsContentDelete">ဒီအၾကမ္းကိုသင္ဖ်က္ခ်င္ပါသလား</string>
   <string name="txtDialogsContentInfoSave">ထုတ္ကုန္ကို စက္ထဲသိမ္းထားခဲ့သည္။ ေအာ့္ဖ္လိုင္းျပင္ဆင္မႈမီႏူးမွတစ္ဆင့္သင္ျပင္ဆင္ႏိုင္သည္</string>
   <string name="txtBarcodeRequire">ဘားကုဒ္လိုအပ္သည္</string>
-  <string name="txtOk">အုိေက</string>
   <string name="txtContentDialogUploading">လုပ္ေဆာင္ေနစဥ္ မထြက္ပါႏွင့္</string>
   <string name="txtAbout">သင္ပို႔ေသာပံုမ်ားသည္ အခမဲ့လိုင္စင္ Creative Commons Attribution ႏွင့္ ShareAlike အရျဖစ္လိမ့္မည္။</string>
   <string name="txtAllsent">ထုတ္ကုန္ပို႔ခဲ့သည္</string>
   <string name="txtPalm">ထုတ္ကုန္သည္ မည္သည့္အုန္းဆီမွ မပါဝင္ပါ</string>
   <string name="txtBarcodeNotValid">ဘားကုဒ္မမွန္ကန္ပါ</string>
-  <string name="try_it_scan_now">ၾကိဳးစားၾကည့္ပါ။ ယခုစကန္ဖတ္ပါ</string>
   <string name="share">ေဝမွ်မည္</string>
   <string name="msg_share">Open Food Fact မွာဒီထုတ္ကုန္ကို ၾကည့္မည္ -</string>
   <string name="create_account">အေကာင့္ျပဳလုပ္မည္</string>
@@ -109,7 +142,6 @@
   <string name="txt_product_not_found">ထုတ္ကုန္မေတြ႕ပါ</string>
   <string name="delete_txt">ဖ်က္မည္</string>
   <string name="sign_in_drawer">ဝင္ေရာက္ပါ</string>
-  <string name="alert_drawer">ယားယံျခင္းသတိေပးမႈ</string>
   <string name="warning_allergens">အလာဂ်င္ပါဝင္သည္</string>
   <string name="title_dialog_alert">သတိေပးမႈထည့္မည္</string>
   <string name="from_gallery">ဓာတ္ပံုျပခန္းမွ</string>

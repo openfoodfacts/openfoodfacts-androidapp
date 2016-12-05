@@ -10,7 +10,8 @@
     <item>Summary</item>
     <item>Ingredienti</item>
     <item>Nutrition</item>
-    <item>Torna al menu</item>
+    <item>Full Nutrition</item>
+    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -37,6 +38,25 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
+    <item>Swedish</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Greek</item>
+    <item>Hebrew</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
   </string-array>
   <string-array name="images_array">
     <item>Predefinito</item>
@@ -113,7 +133,6 @@
   <string name="txtAllsent">Prodotti inviati</string>
   <string name="txtPalm">Il prodotto non contiene olio di palma</string>
   <string name="txtBarcodeNotValid">Codice a barre non valido</string>
-  <string name="try_it_scan_now">Provalo! Fai una scansione adesso!</string>
   <string name="share">Condividi</string>
   <string name="create_account">Registrati</string>
   <string name="home_drawer">Home</string>
@@ -134,7 +153,6 @@
   <string name="title_info_dialog">Informazioni</string>
   <string name="text_offline_info_dialog">Puoi scansionare i prodotti quando sei offline e aggiungerli a Open Food Facts più tardi. Tutti i prodotti che scansioni verranno mostrati qui e potrai inviarli usando il tasto qui sotto.</string>
   <string name="error_invalid_password">La password deve contenere almeno 6 caratteri.</string>
-  <string name="error_field_required">Questo campo è richiesto</string>
   <string name="action_preferences">Impostazioni</string>
   <string name="scan_history_drawer">Cronologia</string>
   <string name="text_clear_history_dialog">Vuoi cancellare tutta la cronologia delle scansioni?</string>

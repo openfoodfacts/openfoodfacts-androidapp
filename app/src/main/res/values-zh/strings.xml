@@ -5,6 +5,7 @@
     <item>Summary</item>
     <item>Ingredients</item>
     <item>Nutrition</item>
+    <item>Full Nutrition</item>
     <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
@@ -32,6 +33,25 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
+    <item>Swedish</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Greek</item>
+    <item>Hebrew</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>

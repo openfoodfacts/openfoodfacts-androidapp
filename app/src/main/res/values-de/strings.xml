@@ -10,15 +10,53 @@
     <item>Zusammenfassung</item>
     <item>Zutaten</item>
     <item>Ernährung</item>
-    <item>Zur Startseite</item>
+    <item>Full Nutrition</item>
+    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
-    <item> </item>
     <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
     <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
+    <item>Swedish</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Greek</item>
+    <item>Hebrew</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
   </string-array>
   <string-array name="images_array">
     <item>Standard</item>
@@ -49,13 +87,9 @@
   <string name="txtPalmOilProduct">Zutaten aus Palmöl:</string>
   <string name="txtServingSize">Portiongröße:</string>
   <string name="txtNutrientLevel100g">Nahrungsbedarf pro 100 g:</string>
-  <string name="txtNutritionLevelLow">wenig</string>
-  <string name="txtNutritionLevelModerate">moderat</string>
-  <string name="txtNutritionLevelHigh">hoch</string>
   <string name="txtLogin">Login :</string>
   <string name="txtPass">Passwort :</string>
   <string name="txtTitleHome">Open your food und lerne kennen, was du isst</string>
-  <string name="txtHome">Open Food Facts besteht in einer Datenbank von Nahrungsmittel und ihre Zutaten, Allergene, Nährwertinformationen und all diesen auf Produkt-Etiketten angezeigten Nahrung-Einzelheiten.</string>
   <string name="txtUser">Beteiligter Panel</string>
   <string name="txtToastSaved">Beteiligter gespeichert</string>
   <string name="txtSalt">Salz:</string>
@@ -71,18 +105,16 @@
   <string name="txtInfoLoginNo">Beteiligter nicht gespeichert</string>
   <string name="txtDialogsTitle">Information</string>
   <string name="txtDialogsContent">Das gescannte Produkt befindet sich noch nicht im Open Food Facts. Möchtest du diesen hinzufügen?</string>
-  <string name="txtDialogsContentSend">Möchtest die gespeicherten Produkte zu unserer Datenbank senden?</string>
   <string name="txtYes">Ja</string>
   <string name="txtNo">Nein</string>
   <string name="hintNameProduct">Name</string>
   <string name="hintEnergy">Energie in kJ pro Schnitte</string>
   <string name="hintEnergyUnit">Energie-Maß</string>
   <string name="hintWeight">Gewicht</string>
-  <string name="hintStores">Laden</string>
+  <string name="hintStores">Speichern</string>
   <string name="txtTakePicture">Foto machen</string>
   <string name="txtSendAll">alles hochladen</string>
   <string name="txtNoData">keine Daten</string>
-  <string name="txtPictureNeeded">Zuerst ein Foto machen, den Namen hinzufügen und dann speichern!</string>
   <string name="toastSending">hochladen...</string>
   <string name="dataSaved">lokal auf dem Phone gespeichert</string>
   <string name="txtInfoAddUser">Bitte Login und Passwort einfügen</string>
@@ -91,13 +123,11 @@
   <string name="txtDialogsContentDelete">Möchtest du diesen Eintrag löschen?</string>
   <string name="txtDialogsContentInfoSave">Produkt wurde lokal gespeichert und kann durch das Menü Offline bearbeiten überarbeitet werden</string>
   <string name="txtBarcodeRequire">Barcode erforderlich</string>
-  <string name="txtOk">OK</string>
   <string name="txtContentDialogUploading">Bitte warten bis zum Prozessende...</string>
   <string name="txtAbout">Die zu uns geschickten Fotos sind unter der free licence Creative Commons Attribution and ShareAlike Licence veröffentlicht.</string>
   <string name="txtAllsent">Produkte erfolgreich gespeichert</string>
   <string name="txtPalm">Der Produkt beinhaltet kein Palmöl</string>
   <string name="txtBarcodeNotValid">Barcode ungültig</string>
-  <string name="try_it_scan_now">Einfach probieren! Jetzt scannen!</string>
   <string name="share">Teilen</string>
   <string name="msg_share">Sieh dir dieses Produkt auf Open Food Facts an:</string>
   <string name="create_account">Registrieren</string>
@@ -112,7 +142,6 @@
   <string name="txt_product_not_found">Produkt nicht gefunden</string>
   <string name="delete_txt">Löschen</string>
   <string name="sign_in_drawer">Einloggen</string>
-  <string name="alert_drawer">Alarm Allergene</string>
   <string name="warning_allergens">Enthält Allergene</string>
   <string name="title_dialog_alert">Alarm hinzufügen</string>
   <string name="from_gallery">Aus Galerie</string>
