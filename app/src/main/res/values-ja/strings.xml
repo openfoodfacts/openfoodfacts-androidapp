@@ -4,12 +4,15 @@
   <string name="hello_world">Hello world!</string>
   <string name="action_settings">設定</string>
   <string name="action_about">アプリについて</string>
+  <string name="action_discover">見つける</string>
+  <string name="action_contribute">貢献する</string>
   <string name="action_find">検索</string>
   <string name="text_barcode">バーコードを入れてください :</string>
   <string-array name="nav_drawer_items_product">
     <item>サマリー</item>
     <item>原材料</item>
     <item>栄養</item>
+    <item>すべての栄養成分</item>
     <item>メニューに戻る</item>
   </string-array>
   <string-array name="units_array">
@@ -20,6 +23,25 @@
     <item>ml</item>
   </string-array>
   <string-array name="lang_array">
+    <item>英語</item>
+    <item>フランス語</item>
+    <item>スペイン語</item>
+    <item>イタリア語</item>
+    <item>ドイツ語</item>
+    <item>日本語</item>
+    <item>ロシア語</item>
+    <item>ポルトガル語</item>
+    <item>スウェーデン語</item>
+    <item>ビルマ語</item>
+    <item>カザフ語</item>
+    <item>アルメニア語</item>
+    <item>ギリシャ語</item>
+    <item>ヘブライ語</item>
+    <item>ガリシア語</item>
+    <item>カタロニア語</item>
+    <item>チェコ語</item>
+  </string-array>
+  <string-array name="lang_label_array">
     <item>英語</item>
     <item>フランス語</item>
     <item>スペイン語</item>
@@ -56,6 +78,7 @@
   <string name="txtBrands">ブランド :</string>
   <string name="txtCategories">カテゴリー :</string>
   <string name="txtManufacturing">製造または加工場所 :</string>
+  <string name="txtIngredientsOrigins">原材料の原産地 :</string>
   <string name="txtCity">購入した市区町村、都道府県、国 :</string>
   <string name="txtStores">店舗 :</string>
   <string name="txtCountries">販売国 :</string>
@@ -99,6 +122,7 @@
   <string name="hintEnergyUnit">エネルギーの単位</string>
   <string name="hintWeight">重量</string>
   <string name="hintStores">店舗</string>
+  <string name="hintBrand">ブランド（会社名）</string>
   <string name="txtTakePicture">写真を撮影</string>
   <string name="txtSendAll">すべてアップロード</string>
   <string name="txtNoData">データはありません</string>
@@ -117,7 +141,7 @@
   <string name="txtAllsent">製品を送信しました</string>
   <string name="txtPalm">製品にはパーム油は含まれていません</string>
   <string name="txtBarcodeNotValid">バーコードが正しくありません</string>
-  <string name="try_it_scan_now">今すぐスキャンしてみてください!</string>
+  <string name="try_it_scan_now">製品をスキャン</string>
   <string name="share">共有</string>
   <string name="msg_share">Open Food Facts でこの製品を参照してください:</string>
   <string name="create_account">サインアップ</string>
@@ -151,10 +175,14 @@
   <string name="msg_input_empty">先に入力してください!</string>
   <string name="new_offline_info">製品、原材料、栄養成分表、およびラベル上の他の情報を撮影してください。 ありがとうございます!</string>
   <string name="error_invalid_password">パスワードは6文字以上にする必要があります。</string>
-  <string name="error_field_required">この項目は入力必須です。</string>
+  <string name="error_field_required">このフィールドは必須入力です。</string>
   <string name="action_preferences">プリファレンス</string>
   <string name="prefs_scan_startup">起動時にスキャン</string>
   <string name="prefs_scan_startup_summary">このオプションを選択した場合、アプリを開いたときにスキャンを開始します。</string>
+  <string name="prefs_power_mode">パワーモードスキャン</string>
+  <string name="prefs_power_mode_summary">スーパーマーケット内の製品をすばやくスキャンして、データベースに含まれていないものを確認します。</string>
+  <string name="prefs_language">言語</string>
+  <string name="prefs_language_summary">言語の変更</string>
   <string name="scan_history_drawer">履歴</string>
   <string name="clear_history">履歴をクリア</string>
   <string name="title_clear_history_dialog">クリア</string>
@@ -164,4 +192,39 @@
   <string name="txt_history_exported">履歴をエクスポートしました</string>
   <string name="permision_write_external_storage">履歴をエクスポートするために、外部ストレージの書き込みアクセス許可が必要です。</string>
   <string name="txt_nutrition_not_found">適用外</string>
+  <string name="nutrition_carbohydrate">炭水化物</string>
+  <string name="nutrition_carbohydrate_short_name">炭水化物 (g)</string>
+  <string name="nutrition_cholesterol">コレステロール</string>
+  <string name="nutrition_cholesterol_short_name">コレステロール (g)</string>
+  <string name="nutrition_energy">エネルギー</string>
+  <string name="nutrition_energy_short_name">エネルギー</string>
+  <string name="nutrition_fat">脂肪</string>
+  <string name="nutrition_fat_short_name">脂肪 (g)</string>
+  <string name="nutrition_fiber">食物繊維</string>
+  <string name="nutrition_fiber_short_name">食物繊維</string>
+  <string name="nutrition_header">栄養成分表</string>
+  <string name="nutrition_no_data_message">この製品のデータはありません</string>
+  <string name="nutrition_per_quantity">100g/100ml 当たり</string>
+  <string name="nutrition_proteins">タンパク質</string>
+  <string name="nutrition_proteins_short_name">タンパク質 (g)</string>
+  <string name="nutrition_salt">食塩</string>
+  <string name="nutrition_salt_short_name">食塩 (g)</string>
+  <string name="nutrition_satured_fat">飽和脂肪酸</string>
+  <string name="nutrition_satured_fat_short_name">飽和脂肪酸 (g)</string>
+  <string name="nutrition_serving">一食当たり</string>
+  <string name="nutrition_serving_size">一人前の分量 :</string>
+  <string name="nutrition_sodium">ナトリウム</string>
+  <string name="nutrition_sodium_short_name">ナトリウム (g)</string>
+  <string name="nutrition_sugars">砂糖</string>
+  <string name="nutrition_sugars_short_name">砂糖 (g)</string>
+  <string name="nutrition_trans_fat">トランス脂肪酸</string>
+  <string name="nutrition_trans_fat_short_name">トランス脂肪酸 (g)</string>
+  <string name="nutriment_serving_size">品目当たり :</string>
+  <string name="action_manage_account">アカウントの管理</string>
+  <string name="action_contributes">あなたの貢献</string>
+  <string name="website">http://jp.openfoodfacts.org/</string>
+  <string name="website_contribute">http://jp.openfoodfacts.org/contribute</string>
+  <string name="website_discover">http://jp.openfoodfacts.org/discover</string>
+  <string name="website_product">http://jp.openfoodfacts.org/product/</string>
+  <string name="website_contributor">http://jp.openfoodfacts.org/contributor/</string>
 </resources>
