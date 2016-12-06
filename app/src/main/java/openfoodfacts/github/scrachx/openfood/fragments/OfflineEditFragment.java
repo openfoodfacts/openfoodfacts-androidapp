@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class OfflineEditFragment extends BaseFragment {
 
+    public static final String LOG_TAG = "OFFLINE_EDIT";
     @BindView(R.id.listOfflineSave) ListView listView;
     @BindView(R.id.buttonSendAll) Button buttonSend;
     private List<SaveItem> saveItems;
@@ -194,7 +196,13 @@ public class OfflineEditFragment extends BaseFragment {
                     imageIcon = R.drawable.ic_no;
                 }
 
-                Bitmap imgUrl = Bitmap.createScaledBitmap(Utils.decodeFile(new File(product.getImgupload_front())), 200, 200, true);
+                Bitmap bitmap = Utils.decodeFile(new File(product.getImgupload_front()));
+                if (bitmap == null) {
+                    Log.e(LOG_TAG, "Unable to load the image of the product: " + product.getBarcode());
+                    continue;
+                }
+
+                Bitmap imgUrl = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
                 saveItems.add(new SaveItem(product.getName(), imageIcon, imgUrl, product.getBarcode()));
             }
 
