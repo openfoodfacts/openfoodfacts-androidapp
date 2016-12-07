@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.network;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
@@ -20,7 +21,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import okhttp3.OkHttpClient;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AllergenRestResponse;
@@ -73,16 +73,21 @@ public class OpenFoodAPIClient {
         return apiService;
     }
 
-    public void getProduct(final String barcode, final Activity activity, final ZXingScannerView scannerView, final ZXingScannerView.ResultHandler rs){
+    /**
+     * Open the product activity if the barcode exist.
+     * Also add it in the history if the product exist.
+     * @param barcode product barcode
+     * @param activity
+     */
+    public void getProduct(final String barcode, final Activity activity) {
         final LoadToast lt = getLoadToast(activity);
 
         apiService.getProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
             public void onResponse(Call<State> call, Response<State> response) {
-                // called when response HTTP status is "200 OK"
                 State s = response.body();
 
-                if(s.getStatus() == 0){
+                if (s.getStatus() == 0) {
                     lt.error();
                     new MaterialDialog.Builder(activity)
                             .title(R.string.txtDialogsTitle)
@@ -100,99 +105,22 @@ public class OpenFoodAPIClient {
 
                                 @Override
                                 public void onNegative(MaterialDialog dialog) {
-                                    scannerView.resumeCameraPreview(rs);
-                                }
-                            })
-                            .show();
-                }else{
-                    lt.success();
-                    List<HistoryProduct> resHp = HistoryProduct.find(HistoryProduct.class, "barcode = ?", barcode);
-                    HistoryProduct hp;
-                    if(resHp.size() == 1) {
-                        hp = resHp.get(0);
-                        hp.setLastSeen(new Date());
-                    } else {
-                        hp = new HistoryProduct(s.getProduct().getProductName(), s.getProduct().getBrands(), s.getProduct().getImageFrontUrl(), barcode);
-                    }
-                    hp.save();
-                    Intent intent = new Intent(activity, ProductActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("state", s);
-                    intent.putExtras(bundle);
-                    activity.startActivity(intent);
-                    activity.finish();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<State> call, Throwable t) {
-                new MaterialDialog.Builder(activity)
-                        .title(R.string.txtDialogsTitle)
-                        .content(R.string.txtDialogsContent)
-                        .positiveText(R.string.txtYes)
-                        .negativeText(R.string.txtNo)
-                        .callback(new MaterialDialog.ButtonCallback() {
-                            @Override
-                            public void onPositive(MaterialDialog dialog) {
-                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                intent.putExtra("barcode",barcode);
-                                activity.startActivity(intent);
-                                activity.finish();
-                            }
-
-                            @Override
-                            public void onNegative(MaterialDialog dialog) {
-                                return;
-                            }
-                        })
-                        .show();
-                Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                lt.error();
-
-            }
-        });
-    }
-
-    public void getProduct(final String barcode, final Activity activity) {
-        final LoadToast lt = getLoadToast(activity);
-
-        apiService.getProductByBarcode(barcode).enqueue(new Callback<State>() {
-            @Override
-            public void onResponse(Call<State> call, Response<State> response) {
-                State s = response.body();
-
-                if(s.getStatus() == 0){
-                    lt.error();
-                    new MaterialDialog.Builder(activity)
-                            .title(R.string.txtDialogsTitle)
-                            .content(R.string.txtDialogsContent)
-                            .positiveText(R.string.txtYes)
-                            .negativeText(R.string.txtNo)
-                            .callback(new MaterialDialog.ButtonCallback() {
-                                @Override
-                                public void onPositive(MaterialDialog dialog) {
-                                    Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                    intent.putExtra("barcode",barcode);
-                                    activity.startActivity(intent);
-                                    activity.finish();
-                                }
-
-                                @Override
-                                public void onNegative(MaterialDialog dialog) {
                                     return;
                                 }
                             })
                             .show();
-                }else{
+                } else {
                     lt.success();
+
                     Intent intent = new Intent(activity, ProductActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("state", s);
                     intent.putExtras(bundle);
-                    activity.startActivity(intent);
-                }
 
+                    activity.startActivity(intent);
+
+                    new HistoryTask().doInBackground(s.getProduct());
+                }
             }
 
             @Override
@@ -219,7 +147,6 @@ public class OpenFoodAPIClient {
                         .show();
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
-
             }
         });
     }
@@ -373,5 +300,26 @@ public class OpenFoodAPIClient {
 
     public interface OnProductSentCallback {
         void onProductSentResponse(boolean value);
+    }
+
+    /**
+     * Create an history product asynchronously
+     */
+    private class HistoryTask extends AsyncTask<Product, Void, Void> {
+        @Override
+        protected Void doInBackground(Product... products) {
+            Product product = products[0];
+            List<HistoryProduct> historyProducts = HistoryProduct.find(HistoryProduct.class, "barcode = ?", product.getCode());
+            HistoryProduct hp;
+            if(historyProducts.size() == 1) {
+                hp = historyProducts.get(0);
+                hp.setLastSeen(new Date());
+            } else {
+                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageFrontUrl(), product.getCode());
+            }
+            hp.save();
+
+            return null;
+        }
     }
 }
