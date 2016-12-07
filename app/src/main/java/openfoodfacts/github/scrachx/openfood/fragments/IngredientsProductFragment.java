@@ -83,7 +83,7 @@ public class IngredientsProductFragment extends BaseFragment {
             substanceProduct.setVisibility(View.GONE);
         }
         String traces;
-        if (mState.getProduct().getCategories() == null) {
+        if (mState.getProduct().getTraces() == null) {
             traceProduct.setVisibility(View.GONE);
         } else {
             traces = mState.getProduct().getTraces().replace(",", ", ");
