@@ -4,68 +4,58 @@ jdk: oraclejdk8
 
 env:
   global:
-    - TRAVIS=true
     - ANDROID_API_LEVEL=25
-    - EMULATOR_API_LEVEL=21
     - ANDROID_BUILD_TOOLS_VERSION=25.0.0
+    - ANDROID_ABI=armeabi-v7a
+    - ANDROID_TAG=google_apis
     - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
-  matrix:
-    - ANDROID_TARGET=android-$EMULATOR_API_LEVEL ANDROID_ABI=armeabi-v7a
 
 android:
   components:
-    # Uncomment the lines below if you want to
-    # use the latest revision of Android SDK Tools
-    - platform-tools
     - tools
+    - platform-tools
+    - tools # to install Android SDK tools 25.1.x
 
-    # The BuildTools version used by your project
     - build-tools-$ANDROID_BUILD_TOOLS_VERSION
-    # The SDK version used to compile your project
     - android-$ANDROID_API_LEVEL
-    - android-$EMULATOR_API_LEVEL
-
-    # Additional components
-    - extra-google-google_play_services
-    # Google Play Services
-    - extra-google-m2repository
-    # Design support Library
-    - extra-android-m2repository
-
-    - extra-android-support
+    # For Google APIs
     - addon-google_apis-google-$ANDROID_API_LEVEL
-    - addon-google_apis-google-$EMULATOR_API_LEVEL
+    # Google Play Services
+    - extra-google-google_play_services
+    # Support library
+    - extra-android-support
+    # Latest artifacts in local repository
+    - extra-google-m2repository
+    - extra-android-m2repository
+    # Specify at least one system image
+    - sys-img-armeabi-v7a-google_apis-$ANDROID_API_LEVEL
 
     # Specify at least one system image,
     # if you need to run emulator(s) during your tests
     # - sys-img-armeabi-v7a-android-19
     # - sys-img-x86-android-17
-  licenses:
-      - 'android-sdk-preview-license-.+'
-      - 'android-sdk-license-.+'
-      - 'google-gdk-license-.+'
-      - '.*intel.+'
+#  licenses:
+#      - 'android-sdk-preview-license-.+'
+#      - 'android-sdk-license-.+'
+#      - 'google-gdk-license-.+'
+#      - '.*intel.+'
 
-before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+    - ${TRAVIS_BUILD_DIR}/gradle/caches/
+    - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
 
-# Emulator Management: Create, Start and Wait
-#before_script:
-#  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi armeabi-v7a
-#  - emulator -avd test -no-skin -no-audio -no-window &
-#  - android-wait-for-emulator
-#  - adb shell input keyevent 82 &
+before_script:
+  # Create and start emulator
+  - echo no | android create avd --force -n test -t "android-"$ANDROID_API_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
+  - emulator -avd test -no-skin -no-window &
+  - android-wait-for-emulator
 
 install:
   - ./gradlew assembleDebug --stacktrace
 
 script:
-  - ./gradlew build connectedCheck --stacktrace
+  - ./gradlew build connectedCheck -x library:signArchives -PdisablePreDex --stacktrace
 
 branches:
   only:
