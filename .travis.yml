@@ -31,15 +31,11 @@ android:
     # Specify at least one system image
     - sys-img-armeabi-v7a-google_apis-$ANDROID_EMULATOR_LEVEL
 
-    # Specify at least one system image,
-    # if you need to run emulator(s) during your tests
-    # - sys-img-armeabi-v7a-android-19
-    # - sys-img-x86-android-17
-#  licenses:
-#      - 'android-sdk-preview-license-.+'
-#      - 'android-sdk-license-.+'
-#      - 'google-gdk-license-.+'
-#      - '.*intel.+'
+  licenses:
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
+    - '.*intel.+'
 
 cache:
   directories:
@@ -56,7 +52,7 @@ install:
   - ./gradlew assembleDebug --stacktrace
 
 script:
-  - ./gradlew build connectedCheck -x library:signArchives -PdisablePreDex --stacktrace
+  - ./gradlew build connectedCheck --stacktrace
 
 branches:
   only:
