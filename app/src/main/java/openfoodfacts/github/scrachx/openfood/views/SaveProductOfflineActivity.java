@@ -1,10 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -38,6 +36,11 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
+import static android.Manifest.permission.CAMERA;
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
@@ -45,7 +48,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 public class SaveProductOfflineActivity extends BaseActivity {
 
     private final String[] mUnit = new String[1];
-    private final String[] mImage = new String[1];
+
     @BindView(R.id.imageSave) ImageView imgSave;
     @BindView(R.id.editTextName) EditText name;
     @BindView(R.id.editTextBrand) EditText brand;
@@ -55,6 +58,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @BindView(R.id.buttonTakePicture) Button takePic;
     @BindView(R.id.buttonFromGallery) Button takeGallery;
     @BindView(R.id.buttonSaveProduct) Button save;
+
     private SendProduct mProduct;
     private String mBarcode;
     private OpenFoodAPIClient api;
@@ -64,21 +68,23 @@ public class SaveProductOfflineActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_product_offline);
 
-        new MaterialDialog.Builder(this)
-                .title(R.string.title_info_dialog)
-                .content(R.string.new_offline_info)
-                .positiveText(R.string.txtOk)
-                .show();
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE) || ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
+            && ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE)
+                || ActivityCompat.shouldShowRequestPermissionRationale(this, WRITE_EXTERNAL_STORAGE)) {
                 new MaterialDialog.Builder(this)
                         .title(R.string.action_about)
                         .content(R.string.permission_storage)
                         .neutralText(R.string.txtOk)
+                        .onNeutral(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                ActivityCompat.requestPermissions(SaveProductOfflineActivity.this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
+                            }
+                        })
                         .show();
             } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
+                ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
             }
         }
 
@@ -123,7 +129,14 @@ public class SaveProductOfflineActivity extends BaseActivity {
             mProduct = new SendProduct();
             mProduct.setBarcode(mBarcode);
         }
+
+        new MaterialDialog.Builder(this)
+                .title(R.string.title_info_dialog)
+                .content(R.string.new_offline_info)
+                .positiveText(R.string.txtOk)
+                .show();
     }
+
     @OnItemSelected(value = R.id.spinnerUnitWeight, callback = OnItemSelected.Callback.ITEM_SELECTED)
     protected void onUnitSelected(int pos) {
         mUnit[0] = spinnerW.getItemAtPosition(pos).toString();
@@ -131,8 +144,6 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
     @OnItemSelected(value = R.id.spinnerImages, callback = OnItemSelected.Callback.ITEM_SELECTED)
     protected void onImageSelected(int pos) {
-        mImage[0] = spinnerI.getItemAtPosition(pos).toString();
-
         if(pos == 0) {
             if(isNotBlank(mProduct.getImgupload_front())) {
                 imgSave.setVisibility(View.VISIBLE);
@@ -238,7 +249,11 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
     @OnClick(R.id.buttonTakePicture)
     protected void onTakePhotoClicked() {
-        EasyImage.openCamera(this, 0);
+        if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
+        }
     }
 
     @Override
@@ -289,8 +304,9 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CAMERA:
             case Utils.MY_PERMISSIONS_REQUEST_STORAGE: {
-                if (grantResults.length <= 0 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
                     new MaterialDialog.Builder(this)
                             .title(R.string.permission_title)
                             .content(R.string.permission_denied)
