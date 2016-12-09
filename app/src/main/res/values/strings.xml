@@ -264,5 +264,7 @@
     <string name="website_discover">http://world.openfoodfacts.org/discover</string>
     <string name="website_product">http://world.openfoodfacts.org/product/</string>
     <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
+    <string name="logout_drawer">Logout</string>
+    <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
 
 </resources>
