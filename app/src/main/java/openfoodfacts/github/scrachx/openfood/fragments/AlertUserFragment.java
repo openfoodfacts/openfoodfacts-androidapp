@@ -22,7 +22,6 @@ import net.steamcrafted.loadtoast.LoadToast;
 import org.apache.commons.collections.IteratorUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -79,24 +78,18 @@ public class AlertUserFragment extends BaseFragment {
 
     @OnClick(R.id.fab)
     protected void onAddAllergens() {
-        final List<Allergen> allergenList = IteratorUtils.toList(Allergen.findAll(Allergen.class));
-        Collections.sort(allergenList);
+        final List<Allergen> all = IteratorUtils.toList(Allergen.findAll(Allergen.class));
         final LinkedHashMap<Integer,String> allS = new LinkedHashMap<>();
         int index = 0;
-        final String language = Locale.getDefault().getLanguage();
-        for (Allergen a : allergenList) {
-            if (language.contains("fr")){
-                if(a.getIdAllergen().contains("fr:")) {
-                    allS.put(index, a.getName().substring(a.getName().indexOf(":")+1));
-                }
-            } else if (language.contains("en")) {
-                if(a.getIdAllergen().contains("en:")) {
-                    allS.put(index, a.getName().substring(a.getName().indexOf(":")+1));
-                }
+        for (Allergen a : all) {
+            if (Locale.getDefault().getLanguage().contains("fr")){
+                if(a.getIdAllergen().contains("fr:")) allS.put(index, a.getName().substring(a.getName().indexOf(":")+1));
+            } else if (Locale.getDefault().getLanguage().contains("en")) {
+                if(a.getIdAllergen().contains("en:")) allS.put(index, a.getName().substring(a.getName().indexOf(":")+1));
             }
             index++;
         }
-        if(!allS.isEmpty()) {
+        if(allS.size() > 0) {
             new MaterialDialog.Builder(mView.getContext())
                     .title(R.string.title_dialog_alert)
                     .items(allS.values())
@@ -105,19 +98,19 @@ public class AlertUserFragment extends BaseFragment {
                         public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
                             boolean canAdd = true;
                             int index = -1;
-                            String allergenStringByPos = new ArrayList<>(allS.values()).get(which);
+                            String alergeneStringByPos = new ArrayList<String>(allS.values()).get(which);
                             for(Allergen a : mAllergens) {
-                                if(a.getName().equals(allergenList.get(which).getName())) canAdd = false;
+                                if(a.getName().equals(all.get(which).getName())) canAdd = false;
                             }
-                            for(Allergen a : allergenList) {
-                                if(a.getName().substring(a.getName().indexOf(":")+1).equalsIgnoreCase(allergenStringByPos)) {
-                                    index = getKey(allS, allergenStringByPos);
-                                    allergenList.get(index).setEnable("true");
-                                    allergenList.get(index).save();
+                            for(Allergen a : all) {
+                                if(a.getName().substring(a.getName().indexOf(":")+1).equalsIgnoreCase(alergeneStringByPos)) {
+                                    index = getKey(allS, alergeneStringByPos);
+                                    all.get(index).setEnable("true");
+                                    all.get(index).save();
                                 }
                             }
                             if(canAdd && index != -1) {
-                                mAllergens.add(allergenList.get(index));
+                                mAllergens.add(all.get(index));
                                 mAdapter.notifyItemInserted(mAllergens.size() - 1);
                                 mRvAllergens.scrollToPosition(mAdapter.getItemCount() - 1);
                             }
