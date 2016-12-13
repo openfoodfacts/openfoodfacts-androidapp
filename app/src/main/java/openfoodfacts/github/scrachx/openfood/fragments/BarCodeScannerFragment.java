@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.MenuItemCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -155,24 +156,29 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
 
     @Override
     public void handleResult(Result rawResult) {
-        if(mRing) {
+        if (mRing) {
             try {
                 ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
                 beep.startTone(ToneGenerator.TONE_PROP_BEEP);
-            } catch (Exception e) {}
-        }
-        if (!rawResult.getText().isEmpty()) {
-            ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-            boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-            if(isConnected) {
-                api.getProduct(rawResult.getText(), getActivity(), mScannerView, this);
-            } else {
-                Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
-                intent.putExtra("barcode", rawResult.getText());
-                getActivity().startActivity(intent);
-                getActivity().finish();
+            } catch (Exception e) {
+                Log.e("SCAN RING", e.getMessage(), e);
             }
+        }
+
+        if (rawResult.getText().isEmpty()) {
+            return;
+        }
+
+        ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+            api.getProduct(rawResult.getText(), getActivity());
+        } else {
+            Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
+            intent.putExtra("barcode", rawResult.getText());
+            getActivity().startActivity(intent);
+            getActivity().finish();
         }
     }
 

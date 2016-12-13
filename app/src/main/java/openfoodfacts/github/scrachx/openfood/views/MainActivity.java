@@ -90,16 +90,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         Bundle extras = getIntent().getExtras();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        boolean isOpenOfflineEdit = false;
-        if (extras != null) {
-            isOpenOfflineEdit = extras.getBoolean("openOfflineEdit");
-        }
-        if (!isOpenOfflineEdit) {
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-            getSupportActionBar().setTitle(getResources().getString(R.string.home_drawer));
-        } else {
+
+        boolean isOpenOfflineEdit = extras != null && extras.getBoolean("openOfflineEdit");
+        if (isOpenOfflineEdit) {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, new OfflineEditFragment()).commit();
             getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
+        } else {
+            fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+            getSupportActionBar().setTitle(getResources().getString(R.string.home_drawer));
         }
 
         // chrome custom tab init

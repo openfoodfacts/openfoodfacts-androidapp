@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -48,7 +50,6 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 public class SaveProductOfflineActivity extends BaseActivity {
 
     private final String[] mUnit = new String[1];
-
     @BindView(R.id.imageSave) ImageView imgSave;
     @BindView(R.id.editTextName) EditText name;
     @BindView(R.id.editTextBrand) EditText brand;
@@ -188,6 +189,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
     @OnClick(R.id.buttonSaveProduct)
     protected void onSaveProduct() {
+        Utils.hideKeyboard(this);
+
         if (isBlank(mProduct.getImgupload_front())) {
             Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
             return;
@@ -222,18 +225,20 @@ public class SaveProductOfflineActivity extends BaseActivity {
         boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 
         if (isConnected) {
+            final Activity activity = this;
             api.post(this, mProduct, new OpenFoodAPIClient.OnProductSentCallback() {
                 @Override
                 public void onProductSentResponse(boolean value) {
                     if (!value) {
                         mProduct.save();
                         Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.putExtra("openOfflineEdit", true);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
+                        api.getProduct(mProduct.getBarcode(), activity);
                     }
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("openOfflineEdit", true);
-                    startActivity(intent);
                     finish();
                 }
             });
@@ -280,20 +285,19 @@ public class SaveProductOfflineActivity extends BaseActivity {
                 }
             }
         });
-
     }
 
     private void onPhotoReturned(File photoFile) {
         if(spinnerI.getSelectedItemPosition() == 0) {
             mProduct.setImgupload_front(photoFile.getAbsolutePath());
-            imgSave.setVisibility(View.VISIBLE);
         } else if(spinnerI.getSelectedItemPosition() == 1) {
             mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
-            imgSave.setVisibility(View.VISIBLE);
         } else {
             mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
-            imgSave.setVisibility(View.VISIBLE);
         }
+
+        imgSave.setVisibility(View.VISIBLE);
+
         Picasso.with(this)
                 .load(photoFile)
                 .fit()
