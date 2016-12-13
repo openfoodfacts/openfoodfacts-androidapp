@@ -227,4 +227,5 @@
   <string name="website_discover">http://world-fr.openfoodfacts.org/decouvrir</string>
   <string name="website_product">http://world-fr.openfoodfacts.org/produit/</string>
   <string name="website_contributor">http://world-fr.openfoodfacts.org/contributeur/</string>
+  <string name="logout_drawer">Logout</string>
 </resources>
