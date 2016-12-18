@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-03 18:27+0100\n"
-"PO-Revision-Date: 2016-05-29 08:25+0000\n"
-"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
+"PO-Revision-Date: 2016-12-16 06:39+0000\n"
+"Last-Translator: AungKhantBo <aungkhantbo@yahoo.com>\n"
 "Language-Team: Burmese <my@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-12-05 20:48+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
+"X-Launchpad-Export-Date: 2016-12-16 09:44+0000\n"
+"X-Generator: Launchpad (build 18293)\n"
 "Language: my\n"
 "Generated-By: Babel 2.3.3\n"
 
@@ -30,11 +30,11 @@ msgstr "မဂၤလာပါကမာၻၾကီး"
 
 msgctxt "action_settings"
 msgid "Settings"
-msgstr "အျပင္အဆင္"
+msgstr "အပြင်​အဆင်​များ"
 
 msgctxt "action_about"
 msgid "About"
-msgstr "အေၾကာင္း"
+msgstr "အကြောင်း"
 
 msgctxt "action_discover"
 msgid "Discover"
@@ -42,7 +42,7 @@ msgstr ""
 
 msgctxt "action_contribute"
 msgid "Contribute"
-msgstr ""
+msgstr "ပံ့ပိုးကူညီ"
 
 msgctxt "action_find"
 msgid "Find"
@@ -65,17 +65,17 @@ msgstr "ပါဝင္မႈမ်ား"
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:2"
 msgid "Nutrition"
-msgstr "အာဟာရျပည့္မႈမ်ား"
+msgstr "အဟာရဓါတ်"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
 msgid "Full Nutrition"
-msgstr ""
+msgstr "အဟာရဓါတ်အကုန်"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
 msgid "Back to menu"
-msgstr ""
+msgstr "မီနူးဆီသို့ပြန်သွားမည်။"
 
 #. Text units
 msgctxt "units_array:0"
@@ -105,155 +105,155 @@ msgstr "ml"
 #. Text units
 msgctxt "lang_array:0"
 msgid "en"
-msgstr ""
+msgstr "en"
 
 #. Text units
 msgctxt "lang_array:1"
 msgid "fr"
-msgstr ""
+msgstr "fr"
 
 #. Text units
 msgctxt "lang_array:2"
 msgid "es"
-msgstr ""
+msgstr "es"
 
 #. Text units
 msgctxt "lang_array:3"
 msgid "it"
-msgstr ""
+msgstr "it"
 
 #. Text units
 msgctxt "lang_array:4"
 msgid "de"
-msgstr ""
+msgstr "de"
 
 #. Text units
 msgctxt "lang_array:5"
 msgid "ja"
-msgstr ""
+msgstr "ja"
 
 #. Text units
 msgctxt "lang_array:6"
 msgid "ru"
-msgstr ""
+msgstr "ru"
 
 #. Text units
 msgctxt "lang_array:7"
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #. Text units
 msgctxt "lang_array:8"
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #. Text units
 msgctxt "lang_array:9"
 msgid "my"
-msgstr ""
+msgstr "my"
 
 #. Text units
 msgctxt "lang_array:10"
 msgid "kk"
-msgstr ""
+msgstr "kk"
 
 #. Text units
 msgctxt "lang_array:11"
 msgid "hy"
-msgstr ""
+msgstr "hy"
 
 #. Text units
 msgctxt "lang_array:12"
 msgid "el"
-msgstr ""
+msgstr "el"
 
 #. Text units
 msgctxt "lang_array:13"
 msgid "he"
-msgstr ""
+msgstr "he"
 
 #. Text units
 msgctxt "lang_array:14"
 msgid "gl"
-msgstr ""
+msgstr "gl"
 
 #. Text units
 msgctxt "lang_array:15"
 msgid "ca"
-msgstr ""
+msgstr "ca"
 
 #. Text units
 msgctxt "lang_array:16"
 msgid "cs"
-msgstr ""
+msgstr "cs"
 
 msgctxt "lang_label_array:0"
 msgid "English"
-msgstr ""
+msgstr "အင်္ဂလိပ်"
 
 msgctxt "lang_label_array:1"
 msgid "French"
-msgstr ""
+msgstr "ပြင်သစ်"
 
 msgctxt "lang_label_array:2"
 msgid "Spanish"
-msgstr ""
+msgstr "စပိန်"
 
 msgctxt "lang_label_array:3"
 msgid "Italian"
-msgstr ""
+msgstr "အီတလီ"
 
 msgctxt "lang_label_array:4"
 msgid "German"
-msgstr ""
+msgstr "ဂျာမန်"
 
 msgctxt "lang_label_array:5"
 msgid "Japanese"
-msgstr ""
+msgstr "ဂျပန်"
 
 msgctxt "lang_label_array:6"
 msgid "Russian"
-msgstr ""
+msgstr "ရုရှား"
 
 msgctxt "lang_label_array:7"
 msgid "Portuguese"
-msgstr ""
+msgstr "ပေါ်တူဂီ"
 
 msgctxt "lang_label_array:8"
 msgid "Swedish"
-msgstr ""
+msgstr "ဆွီဒီးရှ်"
 
 msgctxt "lang_label_array:9"
 msgid "Burmese"
-msgstr ""
+msgstr "ဗမာ"
 
 msgctxt "lang_label_array:10"
 msgid "Kazakh"
-msgstr ""
+msgstr "Kazakh"
 
 msgctxt "lang_label_array:11"
 msgid "Armenian"
-msgstr ""
+msgstr "အာမေးနီးယန်း"
 
 msgctxt "lang_label_array:12"
 msgid "Greek"
-msgstr ""
+msgstr "ဂရိ"
 
 msgctxt "lang_label_array:13"
 msgid "Hebrew"
-msgstr ""
+msgstr "ဟီဘရူး"
 
 msgctxt "lang_label_array:14"
 msgid "Galician"
-msgstr ""
+msgstr "ဂလစ်စီယန်"
 
 msgctxt "lang_label_array:15"
 msgid "Catalan"
-msgstr ""
+msgstr "Catalan"
 
 msgctxt "lang_label_array:16"
 msgid "Czech"
-msgstr ""
+msgstr "Czech"
 
 msgctxt "images_array:0"
 msgid "Default"
@@ -372,15 +372,15 @@ msgstr "100 g အတြက္အာဟာရအဆင့္ -"
 
 msgctxt "txtNutritionLevelLow"
 msgid "low"
-msgstr ""
+msgstr "အနိမ့်"
 
 msgctxt "txtNutritionLevelModerate"
 msgid "moderate"
-msgstr ""
+msgstr "မနည်းမများသော"
 
 msgctxt "txtNutritionLevelHigh"
 msgid "high"
-msgstr ""
+msgstr "မြင့်သော"
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -478,7 +478,7 @@ msgstr ""
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
-msgstr ""
+msgstr "သိမ်းဆည်းပြီးသည့်ထုတ်ကုန်ကိုdatabaseသို့ပိုလိုပါသလား"
 
 msgctxt "txtYes"
 msgid "Yes"
@@ -502,7 +502,7 @@ msgstr "အားယူနစ္"
 
 msgctxt "hintWeight"
 msgid "Weight"
-msgstr "အေလးခ်ိန္"
+msgstr "အလေးချိန်"
 
 msgctxt "hintStores"
 msgid "Store"
@@ -510,11 +510,11 @@ msgstr "စတိုး"
 
 msgctxt "hintBrand"
 msgid "Brand"
-msgstr ""
+msgstr "အမှတ်တံဆိပ်"
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
-msgstr "ဓာတ္ပံုရိုက္မည္"
+msgstr "ဓါတ်ပုံရိုက်ရန်"
 
 msgctxt "txtSendAll"
 msgid "Upload all"
@@ -522,11 +522,11 @@ msgstr "အားလံုးကိုတင္မည္"
 
 msgctxt "txtNoData"
 msgid "No data"
-msgstr "အခ်က္အလက္မရွိ"
+msgstr "အချက်အလက်မရှိ"
 
 msgctxt "txtPictureNeeded"
 msgid "Take a picture first!"
-msgstr ""
+msgstr "ဓါတ်ပုံအရင်ရိုက်ပါ"
 
 msgctxt "toastSending"
 msgid "Uploading..."
@@ -565,7 +565,7 @@ msgstr "ဘားကုဒ္လိုအပ္သည္"
 
 msgctxt "txtOk"
 msgid "OK"
-msgstr ""
+msgstr "အိုကေ"
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
@@ -593,7 +593,7 @@ msgstr "ဘားကုဒ္မမွန္ကန္ပါ"
 
 msgctxt "try_it_scan_now"
 msgid "Scan product"
-msgstr ""
+msgstr "ထုတ်ကုန်ကိုscanဖတ်ရန်"
 
 msgctxt "share"
 msgid "Share"
@@ -679,15 +679,15 @@ msgstr "ဓာတ္ပံုျပခန္းမွ"
 
 msgctxt "product_sent"
 msgid "Product sent!"
-msgstr ""
+msgstr "ထုတ်ကုန်ပို့ပြီး"
 
 msgctxt "action_edit_product"
 msgid "Edit product"
-msgstr ""
+msgstr "ထုတ်ကုန်ကိုပြင်ဆင်ရန်"
 
 msgctxt "title_info_dialog"
 msgid "Information"
-msgstr ""
+msgstr "အချက်အလက်များ"
 
 msgctxt "text_offline_info_dialog"
 msgid ""
@@ -741,7 +741,7 @@ msgstr ""
 
 msgctxt "error_field_required"
 msgid "This field is required."
-msgstr ""
+msgstr "ဤနေရာတွင် ဖြည့်စွက်ရန် လိုအပ်ပါသည်။"
 
 msgctxt "action_preferences"
 msgid "Preferences"
@@ -767,23 +767,23 @@ msgstr ""
 
 msgctxt "prefs_language"
 msgid "Language"
-msgstr ""
+msgstr "ဘာသာစကား"
 
 msgctxt "prefs_language_summary"
 msgid "Change language"
-msgstr ""
+msgstr "ဘာသာစကားပြောင်းရန်"
 
 msgctxt "scan_history_drawer"
 msgid "History"
-msgstr ""
+msgstr "မှတ်တမ်း"
 
 msgctxt "clear_history"
 msgid "Clear history"
-msgstr ""
+msgstr "မှတ်တမ်းကိုဖျက်ရန်"
 
 msgctxt "title_clear_history_dialog"
 msgid "Clear"
-msgstr ""
+msgstr "ရှင်းလင်းမည်"
 
 msgctxt "text_clear_history_dialog"
 msgid "Do you want to clear all scan history?"
@@ -812,7 +812,7 @@ msgstr ""
 #. Nutrition info tab
 msgctxt "nutrition_carbohydrate"
 msgid "Carbohydrate"
-msgstr ""
+msgstr "ကာဗွန်ဟိုက်ဒရိတ်"
 
 msgctxt "nutrition_carbohydrate_short_name"
 msgid "Carbohydrate (g)"
@@ -820,7 +820,7 @@ msgstr ""
 
 msgctxt "nutrition_cholesterol"
 msgid "Cholesterol"
-msgstr ""
+msgstr "ကိုလက်‌‌‌စတော"
 
 msgctxt "nutrition_cholesterol_short_name"
 msgid "Cholesterol (g)"
@@ -828,15 +828,15 @@ msgstr ""
 
 msgctxt "nutrition_energy"
 msgid "Energy"
-msgstr ""
+msgstr "စွမ်းအင်"
 
 msgctxt "nutrition_energy_short_name"
 msgid "Energy"
-msgstr ""
+msgstr "စွမ်းအင်"
 
 msgctxt "nutrition_fat"
 msgid "Fat"
-msgstr ""
+msgstr "အဆီ"
 
 msgctxt "nutrition_fat_short_name"
 msgid "Fat (g)"
@@ -852,11 +852,11 @@ msgstr ""
 
 msgctxt "nutrition_header"
 msgid "Nutrition facts"
-msgstr ""
+msgstr "အာဟာရဆိုင်ရာအချက်အလက်များ"
 
 msgctxt "nutrition_no_data_message"
 msgid "No data is available for this product"
-msgstr ""
+msgstr "ဤထုတ်ကုန်အတွက်dataမရနိုင်သေးပါ"
 
 msgctxt "nutrition_per_quantity"
 msgid "For 100g/100ml"
@@ -864,7 +864,7 @@ msgstr ""
 
 msgctxt "nutrition_proteins"
 msgid "Proteins"
-msgstr ""
+msgstr "ပရိုတင်းဓာတ်"
 
 msgctxt "nutrition_proteins_short_name"
 msgid "Proteins (g)"
@@ -872,7 +872,7 @@ msgstr ""
 
 msgctxt "nutrition_salt"
 msgid "Salt"
-msgstr ""
+msgstr "ဆားဓါတ်"
 
 msgctxt "nutrition_salt_short_name"
 msgid "Salt (g)"
@@ -896,7 +896,7 @@ msgstr ""
 
 msgctxt "nutrition_sodium"
 msgid "Sodium"
-msgstr ""
+msgstr "ဆိုဒီယမ်"
 
 msgctxt "nutrition_sodium_short_name"
 msgid "Sodium (g)"
@@ -904,7 +904,7 @@ msgstr ""
 
 msgctxt "nutrition_sugars"
 msgid "Sugars"
-msgstr ""
+msgstr "သကြားဓာတ်"
 
 msgctxt "nutrition_sugars_short_name"
 msgid "Sugars (g)"
@@ -928,25 +928,25 @@ msgstr ""
 
 msgctxt "action_contributes"
 msgid "Your contributions"
-msgstr ""
+msgstr "သင်၏ကူညီမှုများ"
 
 #. website translated pages
 msgctxt "website"
 msgid "http://world.openfoodfacts.org/"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/"
 
 msgctxt "website_contribute"
 msgid "http://world.openfoodfacts.org/contribute"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/contribute"
 
 msgctxt "website_discover"
 msgid "http://world.openfoodfacts.org/discover"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/discover"
 
 msgctxt "website_product"
 msgid "http://world.openfoodfacts.org/product/"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/product/"
 
 msgctxt "website_contributor"
 msgid "http://world.openfoodfacts.org/contributor/"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/contributor/"
