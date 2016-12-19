@@ -92,15 +92,9 @@ public interface OpenFoodAPIService {
     @GET("country/{country}.json")
     Call<Search> byCountry(@Path("country") String country);
 
-    @GET("ingredient/{ingredient}.json")
-    Call<Search> byIngredient(@Path("ingredient") String ingredient);
-
     @GET("trace/{trace}.json")
     Call<Search> byTrace(@Path("trace") String trace);
-    
-    @GET("period-after-opening/{PeriodAfterOpening}.json")
-    Call<Search> byPeriodAfterOpening(@Path("PeriodAfterOpening") String PeriodAfterOpening);
-    
+
     @GET("packager-code/{PackagerCode}.json")
     Call<Search> byPackagerCode(@Path("PackagerCode") String PackagerCode);
     
@@ -136,4 +130,14 @@ public interface OpenFoodAPIService {
     
     @GET("code/{Code}.json")
     Call<Search> byCode(@Path("Code") String Code);
+
+    /**
+     * Open Beauty Facts experimental and specific APIs
+     */
+
+    @GET("period-after-opening/{PeriodAfterOpening}.json")
+    Call<Search> byPeriodAfterOpening(@Path("PeriodAfterOpening") String PeriodAfterOpening);
+
+    @GET("ingredient/{ingredient}.json")
+    Call<Search> byIngredient(@Path("ingredient") String ingredient);
 }

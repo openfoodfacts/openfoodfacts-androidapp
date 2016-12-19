@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -23,6 +24,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertNotNull;
 import static net.javacrumbs.jsonunit.fluent.JsonFluentAssert.assertThatJson;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
@@ -234,5 +236,51 @@ public class OpenFoodAPIServiceTest {
         assertEquals(product.getName(), savedProduct.getProductName());
         assertEquals(product.getBrands(), savedProduct.getBrands());
         assertTrue(savedProduct.getBrandsTags().contains(product.getBrands()));
+    }
+
+    @Test
+    public void getProductByTrace_eggs_productsFound() throws Exception {
+        Response<Search> response = serviceRead.byTrace("eggs").execute();
+        assertProductsFound(response);
+    }
+
+    @Test
+    public void getProductByPackagerCode_emb35069c_productsFound() throws Exception {
+        Response<Search> response = serviceRead.byPackagerCode("emb-35069c").execute();
+        assertProductsFound(response);
+    }
+
+    @Test
+    public void getProductByNutritionGrade_a_productsFound() throws Exception {
+        Response<Search> res = serviceRead.byNutritionGrade("a").execute();
+        assertProductsFound(res);
+    }
+
+    @Test
+    public void getProductByCity_Paris_noProductFound() throws Exception {
+        Response<Search> response = serviceRead.byCity("paris").execute();
+        assertNoProductsFound(response);
+    }
+
+    @Test
+    public void getProductByAdditive_e301_productsFound() throws Exception {
+        Response<Search> response = serviceRead.byAdditive("e301-sodium-ascorbate").execute();
+        assertProductsFound(response);
+    }
+
+    private void assertProductsFound(Response<Search> response) {
+        assertTrue(response.isSuccess());
+        Search search = response.body();
+        List<Product> products = search.getProducts();
+        assertNotNull(products);
+        assertTrue(Integer.valueOf(search.getCount()) > 0);
+        assertFalse(products.isEmpty());
+    }
+    private void assertNoProductsFound(Response<Search> response) {
+        assertTrue(response.isSuccess());
+        Search search = response.body();
+        List<Product> products = search.getProducts();
+        assertTrue(products.isEmpty());
+        assertTrue(Integer.valueOf(search.getCount()) == 0);
     }
 }
