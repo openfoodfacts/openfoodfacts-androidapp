@@ -228,4 +228,5 @@
   <string name="website_product">http://world-fr.openfoodfacts.org/produit/</string>
   <string name="website_contributor">http://world-fr.openfoodfacts.org/contributeur/</string>
   <string name="logout_drawer">Logout</string>
+  <string name="txtLabels">"Labels, certifications, récompenses : "</string>
 </resources>

@@ -89,6 +89,7 @@
     <string name="txtPackaging">Packaging :</string>
     <string name="txtBrands">Brands :</string>
     <string name="txtCategories">Categories :</string>
+    <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtManufacturing">Manufacturing or processing places :</string>
     <string name="txtIngredientsOrigins">Origin of ingredients :</string>
     <string name="txtCity">City, state and country where purchased :</string>

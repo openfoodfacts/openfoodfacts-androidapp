@@ -16,9 +16,11 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class SummaryProductFragment extends BaseFragment {
@@ -34,6 +36,7 @@ public class SummaryProductFragment extends BaseFragment {
     @BindView(R.id.textStoreProduct) TextView storeProduct;
     @BindView(R.id.textCountryProduct) TextView countryProduct;
     @BindView(R.id.textCategoryProduct) TextView categoryProduct;
+    @BindView(R.id.textLabelProduct) TextView labelProduct;
     @BindView(R.id.custom_indicator) PagerIndicator pagerIndicator;
     @BindView(R.id.imageViewNutritionFullSum) ImageView mImageNutritionFullSum;
 
@@ -50,71 +53,86 @@ public class SummaryProductFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         final State state = (State) intent.getExtras().getSerializable("state");
 
-        if (isNotEmpty(state.getProduct().getImageUrl())) {
+        final Product product = state.getProduct();
+
+        if (isNotEmpty(product.getImageUrl())) {
             Picasso.with(view.getContext())
-                    .load(state.getProduct().getImageUrl())
+                    .load(product.getImageUrl())
                     .into(mImageNutritionFullSum);
-            mUrlImage = state.getProduct().getImageUrl();
+            mUrlImage = product.getImageUrl();
         }
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
 
-        if(state.getProduct().getProductName() != null && !state.getProduct().getProductName().trim().isEmpty()) {
-            nameProduct.setText(state.getProduct().getProductName());
+        if(product.getProductName() != null && !product.getProductName().trim().isEmpty()) {
+            nameProduct.setText(product.getProductName());
         } else {
             nameProduct.setVisibility(View.GONE);
         }
-        if(state.getProduct().getCode() != null && !state.getProduct().getCode().trim().isEmpty()) {
-            barCodeProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtBarcode) + "</b>" + ' ' + state.getProduct().getCode()));
+        if(product.getCode() != null && !product.getCode().trim().isEmpty()) {
+            barCodeProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtBarcode) + "</b>" + ' ' + product.getCode()));
         } else {
             barCodeProduct.setVisibility(View.GONE);
         }
-        if(state.getProduct().getQuantity() != null && !state.getProduct().getQuantity().trim().isEmpty()) {
-            quantityProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtQuantity) + "</b>" + ' ' + state.getProduct().getQuantity()));
+        if(product.getQuantity() != null && !product.getQuantity().trim().isEmpty()) {
+            quantityProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtQuantity) + "</b>" + ' ' + product.getQuantity()));
         } else {
             quantityProduct.setVisibility(View.GONE);
         }
-        if(state.getProduct().getPackaging() != null && !state.getProduct().getPackaging().trim().isEmpty()) {
-            packagingProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtPackaging) + "</b>" + ' ' + state.getProduct().getPackaging()));
+        if(product.getPackaging() != null && !product.getPackaging().trim().isEmpty()) {
+            packagingProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtPackaging) + "</b>" + ' ' + product.getPackaging()));
         } else {
             packagingProduct.setVisibility(View.GONE);
         }
-        if(state.getProduct().getBrands() != null && !state.getProduct().getBrands().trim().isEmpty()) {
-            brandProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtBrands) + "</b>" + ' ' + state.getProduct().getBrands()));
+        if(product.getBrands() != null && !product.getBrands().trim().isEmpty()) {
+            brandProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtBrands) + "</b>" + ' ' + product.getBrands()));
         } else {
             brandProduct.setVisibility(View.GONE);
         }
-        if(state.getProduct().getManufacturingPlaces() != null && !state.getProduct().getManufacturingPlaces().trim().isEmpty()) {
-            manufacturingProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtManufacturing) + "</b>" + ' ' + state.getProduct().getManufacturingPlaces()));
+        if(product.getManufacturingPlaces() != null && !product.getManufacturingPlaces().trim().isEmpty()) {
+            manufacturingProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtManufacturing) + "</b>" + ' ' + product.getManufacturingPlaces()));
         } else {
             manufacturingProduct.setVisibility(View.GONE);
         }
 
-        if (state.getProduct().getOrigins() == null) {
+        if (product.getOrigins() == null) {
             ingredientsOrigin.setVisibility(View.GONE);
         } else {
-            ingredientsOrigin.setText(Html.fromHtml("<b>" + getString(R.string.txtIngredientsOrigins) + "</b>" + ' ' + state.getProduct().getOrigins()));
+            ingredientsOrigin.setText(Html.fromHtml("<b>" + getString(R.string.txtIngredientsOrigins) + "</b>" + ' ' + product.getOrigins()));
         }
 
         String categ;
-        if (state.getProduct().getCategories() != null && !state.getProduct().getCategories().trim().isEmpty()) {
-            categ = state.getProduct().getCategories().replace(",", ", ");
+        if (product.getCategories() != null && !product.getCategories().trim().isEmpty()) {
+            categ = product.getCategories().replace(",", ", ");
             categoryProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCategories) + "</b>" + ' ' + categ));
         } else {
             categoryProduct.setVisibility(View.GONE);
         }
-        if(state.getProduct().getCitiesTags() != null && !state.getProduct().getCitiesTags().toString().trim().equals("[]")) {
-            cityProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCity) + "</b>" + ' ' + state.getProduct().getCitiesTags().toString().replace("[", "").replace("]", "")));
+
+        String labels = product.getLabels().trim();
+        if (isNotEmpty(labels)) {
+            labelProduct.append(bold(getString(R.string.txtLabels)));
+            labelProduct.append(" ");
+            for (String label : labels.split(",")) {
+                labelProduct.append(label);
+                labelProduct.append(", ");
+            }
+        } else {
+            labelProduct.setVisibility(View.GONE);
+        }
+
+        if(product.getCitiesTags() != null && !product.getCitiesTags().toString().trim().equals("[]")) {
+            cityProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCity) + "</b>" + ' ' + product.getCitiesTags().toString().replace("[", "").replace("]", "")));
         } else {
             cityProduct.setVisibility(View.GONE);
         }
-        if(state.getProduct().getStores() != null && !state.getProduct().getStores().trim().isEmpty()) {
-            storeProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtStores) + "</b>" + ' ' + state.getProduct().getStores()));
+        if(product.getStores() != null && !product.getStores().trim().isEmpty()) {
+            storeProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtStores) + "</b>" + ' ' + product.getStores()));
         } else {
             storeProduct.setVisibility(View.GONE);
         }
-        if(state.getProduct().getCountries() != null && !state.getProduct().getCountries().trim().isEmpty()) {
-            countryProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCountries) + "</b>" + ' ' + state.getProduct().getCountries()));
+        if(product.getCountries() != null && !product.getCountries().trim().isEmpty()) {
+            countryProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCountries) + "</b>" + ' ' + product.getCountries()));
         } else {
             countryProduct.setVisibility(View.GONE);
         }
