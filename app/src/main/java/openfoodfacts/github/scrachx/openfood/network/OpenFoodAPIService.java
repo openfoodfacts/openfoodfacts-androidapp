@@ -92,10 +92,52 @@ public interface OpenFoodAPIService {
     @GET("country/{country}.json")
     Call<Search> byCountry(@Path("country") String country);
 
-    @GET("ingredient/{ingredient}.json")
-    Call<Search> byIngredient(@Path("ingredient") String ingredient);
-
     @GET("trace/{trace}.json")
     Call<Search> byTrace(@Path("trace") String trace);
 
+    @GET("packager-code/{PackagerCode}.json")
+    Call<Search> byPackagerCode(@Path("PackagerCode") String PackagerCode);
+    
+    @GET("city/{City}.json")
+    Call<Search> byCity(@Path("City") String City);
+
+    @GET("nutrition-grade/{NutritionGrade}.json")
+    Call<Search> byNutritionGrade(@Path("NutritionGrade") String NutritionGrade);
+
+    @GET("nutrient-level/{NutrientLevel}.json")
+    Call<Search> byNutrientLevel(@Path("NutrientLevel") String NutrientLevel);
+   
+    @GET("contributor/{Contributor}.json")
+    Call<Search> byContributor(@Path("Contributor") String Contributor);
+    
+    @GET("photographer/{Photographer}.json")
+    Call<Search> byPhotographer(@Path("Photographer") String Photographer);
+    
+    @GET("informer/{Informer}.json")
+    Call<Search> byInformer(@Path("Informer") String Informer);
+
+    @GET("last-edit-date/{LastEditDate}.json")
+    Call<Search> byLastEditDate(@Path("LastEditDate") String LastEditDate);
+    
+    @GET("entry-dates/{EntryDates}.json")
+    Call<Search> byEntryDates(@Path("EntryDates") String EntryDates);
+    
+    @GET("unknown-nutrient/{UnknownNutrient}.json")
+    Call<Search> byUnknownNutrient(@Path("UnknownNutrient") String UnknownNutrient);
+
+    @GET("additive/{Additive}.json")
+    Call<Search> byAdditive(@Path("Additive") String Additive);
+    
+    @GET("code/{Code}.json")
+    Call<Search> byCode(@Path("Code") String Code);
+
+    /**
+     * Open Beauty Facts experimental and specific APIs
+     */
+
+    @GET("period-after-opening/{PeriodAfterOpening}.json")
+    Call<Search> byPeriodAfterOpening(@Path("PeriodAfterOpening") String PeriodAfterOpening);
+
+    @GET("ingredient/{ingredient}.json")
+    Call<Search> byIngredient(@Path("ingredient") String ingredient);
 }
