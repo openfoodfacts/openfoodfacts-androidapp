@@ -109,12 +109,12 @@ public class SummaryProductFragment extends BaseFragment {
             categoryProduct.setVisibility(View.GONE);
         }
 
-        String labels = product.getLabels().trim();
+        String labels = product.getLabels();
         if (isNotEmpty(labels)) {
             labelProduct.append(bold(getString(R.string.txtLabels)));
             labelProduct.append(" ");
             for (String label : labels.split(",")) {
-                labelProduct.append(label);
+                labelProduct.append(label.trim());
                 labelProduct.append(", ");
             }
         } else {
