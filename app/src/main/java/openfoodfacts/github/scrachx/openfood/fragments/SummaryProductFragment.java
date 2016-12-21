@@ -21,6 +21,7 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class SummaryProductFragment extends BaseFragment {
@@ -110,7 +111,7 @@ public class SummaryProductFragment extends BaseFragment {
         }
 
         String labels = product.getLabels();
-        if (isNotEmpty(labels)) {
+        if (isNotBlank(labels)) {
             labelProduct.append(bold(getString(R.string.txtLabels)));
             labelProduct.append(" ");
             for (String label : labels.split(",")) {
