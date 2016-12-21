@@ -49,6 +49,7 @@ public interface OpenFoodAPIService {
     Call<State> saveProduct(@Query("code") String code,
                             @Query("product_name") String name,
                             @Query("brands") String brands,
+                            @Query("quantity") String quantity,
                             @Query("user_id") String login,
                             @Query("password") String password,
                             @Query("comment") String comment);
