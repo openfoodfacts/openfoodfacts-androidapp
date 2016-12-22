@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-03 18:27+0100\n"
-"PO-Revision-Date: 2016-05-29 08:25+0000\n"
-"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
+"PO-Revision-Date: 2016-12-22 21:28+0000\n"
+"Last-Translator: oric <orichard.fr@iznogoud.neomailbox.ch>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-12-05 20:48+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
+"X-Launchpad-Export-Date: 2016-12-22 22:08+0000\n"
+"X-Generator: Launchpad (build 18298)\n"
 "Language: de\n"
 "Generated-By: Babel 2.3.3\n"
 
@@ -38,11 +38,11 @@ msgstr "Über"
 
 msgctxt "action_discover"
 msgid "Discover"
-msgstr ""
+msgstr "Entdecken"
 
 msgctxt "action_contribute"
 msgid "Contribute"
-msgstr ""
+msgstr "Mitmachen"
 
 msgctxt "action_find"
 msgid "Find"
@@ -50,7 +50,7 @@ msgstr "Suchen"
 
 msgctxt "text_barcode"
 msgid "Put the barcode :"
-msgstr "Barcode einfügen:"
+msgstr "Strichcode einfügen"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
@@ -60,22 +60,22 @@ msgstr "Zusammenfassung"
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:1"
 msgid "Ingredients"
-msgstr "Zutaten"
+msgstr "Inhaltsstoffe"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:2"
 msgid "Nutrition"
-msgstr "Ernährung"
+msgstr "Nährwertangaben"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
 msgid "Full Nutrition"
-msgstr ""
+msgstr "Vollständige Nährwertangaben"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
 msgid "Back to menu"
-msgstr ""
+msgstr "Zurück zum Menü"
 
 #. Text units
 msgctxt "units_array:0"
@@ -105,155 +105,155 @@ msgstr "ml"
 #. Text units
 msgctxt "lang_array:0"
 msgid "en"
-msgstr ""
+msgstr "en"
 
 #. Text units
 msgctxt "lang_array:1"
 msgid "fr"
-msgstr ""
+msgstr "fr"
 
 #. Text units
 msgctxt "lang_array:2"
 msgid "es"
-msgstr ""
+msgstr "es"
 
 #. Text units
 msgctxt "lang_array:3"
 msgid "it"
-msgstr ""
+msgstr "it"
 
 #. Text units
 msgctxt "lang_array:4"
 msgid "de"
-msgstr ""
+msgstr "de"
 
 #. Text units
 msgctxt "lang_array:5"
 msgid "ja"
-msgstr ""
+msgstr "ja"
 
 #. Text units
 msgctxt "lang_array:6"
 msgid "ru"
-msgstr ""
+msgstr "ru"
 
 #. Text units
 msgctxt "lang_array:7"
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #. Text units
 msgctxt "lang_array:8"
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #. Text units
 msgctxt "lang_array:9"
 msgid "my"
-msgstr ""
+msgstr "my"
 
 #. Text units
 msgctxt "lang_array:10"
 msgid "kk"
-msgstr ""
+msgstr "kk"
 
 #. Text units
 msgctxt "lang_array:11"
 msgid "hy"
-msgstr ""
+msgstr "hy"
 
 #. Text units
 msgctxt "lang_array:12"
 msgid "el"
-msgstr ""
+msgstr "el"
 
 #. Text units
 msgctxt "lang_array:13"
 msgid "he"
-msgstr ""
+msgstr "he"
 
 #. Text units
 msgctxt "lang_array:14"
 msgid "gl"
-msgstr ""
+msgstr "gl"
 
 #. Text units
 msgctxt "lang_array:15"
 msgid "ca"
-msgstr ""
+msgstr "ca"
 
 #. Text units
 msgctxt "lang_array:16"
 msgid "cs"
-msgstr ""
+msgstr "cs"
 
 msgctxt "lang_label_array:0"
 msgid "English"
-msgstr ""
+msgstr "Englisch"
 
 msgctxt "lang_label_array:1"
 msgid "French"
-msgstr ""
+msgstr "Französisch"
 
 msgctxt "lang_label_array:2"
 msgid "Spanish"
-msgstr ""
+msgstr "Spanisch"
 
 msgctxt "lang_label_array:3"
 msgid "Italian"
-msgstr ""
+msgstr "Italienisch"
 
 msgctxt "lang_label_array:4"
 msgid "German"
-msgstr ""
+msgstr "Deutsch"
 
 msgctxt "lang_label_array:5"
 msgid "Japanese"
-msgstr ""
+msgstr "Japanisch"
 
 msgctxt "lang_label_array:6"
 msgid "Russian"
-msgstr ""
+msgstr "Russisch"
 
 msgctxt "lang_label_array:7"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugiesisch"
 
 msgctxt "lang_label_array:8"
 msgid "Swedish"
-msgstr ""
+msgstr "Schwedisch"
 
 msgctxt "lang_label_array:9"
 msgid "Burmese"
-msgstr ""
+msgstr "Burmesisch"
 
 msgctxt "lang_label_array:10"
 msgid "Kazakh"
-msgstr ""
+msgstr "Kasachisch"
 
 msgctxt "lang_label_array:11"
 msgid "Armenian"
-msgstr ""
+msgstr "Armenisch"
 
 msgctxt "lang_label_array:12"
 msgid "Greek"
-msgstr ""
+msgstr "Griechisch"
 
 msgctxt "lang_label_array:13"
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebräisch"
 
 msgctxt "lang_label_array:14"
 msgid "Galician"
-msgstr ""
+msgstr "Galicisch"
 
 msgctxt "lang_label_array:15"
 msgid "Catalan"
-msgstr ""
+msgstr "Katalanisch"
 
 msgctxt "lang_label_array:16"
 msgid "Czech"
-msgstr ""
+msgstr "Tschechisch"
 
 msgctxt "images_array:0"
 msgid "Default"
@@ -274,7 +274,7 @@ msgstr "Suchen"
 
 msgctxt "no_products"
 msgid "Products not found"
-msgstr "Kein Product gefunden"
+msgstr "Keine Produkte gefunden."
 
 msgctxt "desc_list_item_icon"
 msgid "Item Icon"
@@ -286,7 +286,8 @@ msgstr "Warnung"
 
 msgctxt "alert_dialog_warning_msg_user"
 msgid "User/password has changed, please update information"
-msgstr "Login/Passwort verarbeitet, bitte Information aktualisieren"
+msgstr ""
+"Benutzername/Passwort hat sich geändert, bitte Angaben aktualisieren."
 
 msgctxt "alert_dialog_product_error_msg"
 msgid "Product not found, please try again"
@@ -294,11 +295,11 @@ msgstr "Produkt nicht gefunden, bitte noch mal probieren"
 
 msgctxt "toast_retrieving"
 msgid "Loading..."
-msgstr "laden..."
+msgstr "Wird geladen …"
 
 msgctxt "txtBarcode"
 msgid "Barcode :"
-msgstr "Barcode:"
+msgstr "Strichcode"
 
 msgctxt "txtQuantity"
 msgid "Quantity :"
@@ -322,7 +323,7 @@ msgstr "Herstellungs- oder Umwandlungsorte:"
 
 msgctxt "txtIngredientsOrigins"
 msgid "Origin of ingredients :"
-msgstr ""
+msgstr "Herkunft der Zutaten"
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
@@ -356,7 +357,7 @@ msgstr "Spuren:"
 
 msgctxt "txtMayBeFromPalmOilProduct"
 msgid "Ingredients that may be from palm oil :"
-msgstr "Von Palmöl abgestammte Zutaten:"
+msgstr "Aus Palmöl hergestellte Zutaten"
 
 msgctxt "txtPalmOilProduct"
 msgid "Ingredients from palm oil :"
@@ -368,23 +369,23 @@ msgstr "Portiongröße:"
 
 msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
-msgstr "Nahrungsbedarf pro 100 g:"
+msgstr "Nährwertgehalt pro 100g"
 
 msgctxt "txtNutritionLevelLow"
 msgid "low"
-msgstr ""
+msgstr "gering"
 
 msgctxt "txtNutritionLevelModerate"
 msgid "moderate"
-msgstr ""
+msgstr "moderat"
 
 msgctxt "txtNutritionLevelHigh"
 msgid "high"
-msgstr ""
+msgstr "hoch"
 
 msgctxt "txtLogin"
 msgid "Login :"
-msgstr "Login :"
+msgstr "Einloggen"
 
 msgctxt "txtPass"
 msgid "Password :"
@@ -400,14 +401,17 @@ msgid ""
 "allergens, nutrition facts and all the tidbits of information we can find on "
 "product labels."
 msgstr ""
+"Open Food Facts ist eine freie Nahrungsmittel­produkt­datenbank mit Zutaten, "
+"Allergenen, Nährwertangaben and all den Kleinigkeiten die wir auf Produkt-"
+"Etikett finden können."
 
 msgctxt "txtSave"
 msgid "Send/Save"
-msgstr ""
+msgstr "Abschicken/Speichern"
 
 msgctxt "txtSignIn"
 msgid "Sign in"
-msgstr ""
+msgstr "Registrieren"
 
 msgctxt "txtUser"
 msgid "User panel"
@@ -415,7 +419,7 @@ msgstr "Beteiligter Panel"
 
 msgctxt "txtToastSaved"
 msgid "User saved"
-msgstr "Beteiligter gespeichert"
+msgstr "Benutzer gespeichert"
 
 msgctxt "txtSalt"
 msgid "Salt :"
@@ -435,11 +439,11 @@ msgstr "gesättigte Fettsäuren:"
 
 msgctxt "hintBarcode"
 msgid "Barcode"
-msgstr "Barcode"
+msgstr "Strichcode"
 
 msgctxt "hintLogin"
 msgid "Login"
-msgstr "Login"
+msgstr "Einloggen"
 
 msgctxt "hintPass"
 msgid "Password"
@@ -447,12 +451,12 @@ msgstr "Passwort"
 
 msgctxt "errorLogin"
 msgid "Login or password error"
-msgstr "Login oder Passwort stimmen nicht"
+msgstr "Benutzername oder Passwort stimmen nicht"
 
 msgctxt "errorWeb"
 msgid ""
 "We were not able to access the internet. Do you have connectivity issues?"
-msgstr "Internetzugang erfolgt nicht. Hast du zufällig Netzwerk Probleme?"
+msgstr "Kein Internetzugang. Netzwerkverbindung überprüfen."
 
 msgctxt "txtInfoLoginOk"
 msgid "User saved"
@@ -476,7 +480,7 @@ msgstr ""
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
-msgstr ""
+msgstr "Möchtest du die gespeicherten Produkte an die Datenbank senden?"
 
 msgctxt "txtYes"
 msgid "Yes"
@@ -508,7 +512,7 @@ msgstr "Speichern"
 
 msgctxt "hintBrand"
 msgid "Brand"
-msgstr ""
+msgstr "Marke"
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
@@ -563,7 +567,7 @@ msgstr "Barcode erforderlich"
 
 msgctxt "txtOk"
 msgid "OK"
-msgstr ""
+msgstr "Bestätigen"
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
@@ -611,7 +615,7 @@ msgstr "Startseite"
 
 msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
-msgstr ""
+msgstr "Open Beauty Facts"
 
 msgctxt "search_drawer"
 msgid "Search"
@@ -681,7 +685,7 @@ msgstr ""
 
 msgctxt "action_edit_product"
 msgid "Edit product"
-msgstr ""
+msgstr "Produkt bearbeiten"
 
 msgctxt "title_info_dialog"
 msgid "Information"
@@ -735,7 +739,7 @@ msgstr ""
 #. Strings related to login
 msgctxt "error_invalid_password"
 msgid "The password needs to be a least 6 characters long."
-msgstr ""
+msgstr "Das Passwort muss eine mindestens 6 Zeichen lang sein."
 
 msgctxt "error_field_required"
 msgid "This field is required."
@@ -842,71 +846,71 @@ msgstr ""
 
 msgctxt "nutrition_fiber"
 msgid "Dietary fiber"
-msgstr ""
+msgstr "Ballaststoffe"
 
 msgctxt "nutrition_fiber_short_name"
 msgid "Dietary fiber (g)"
-msgstr ""
+msgstr "Ballaststoffe (g)"
 
 msgctxt "nutrition_header"
 msgid "Nutrition facts"
-msgstr ""
+msgstr "Nährwertangaben"
 
 msgctxt "nutrition_no_data_message"
 msgid "No data is available for this product"
-msgstr ""
+msgstr "Zu diesem Produkt sind keine Daten verfügbar."
 
 msgctxt "nutrition_per_quantity"
 msgid "For 100g/100ml"
-msgstr ""
+msgstr "Für 100g/100ml"
 
 msgctxt "nutrition_proteins"
 msgid "Proteins"
-msgstr ""
+msgstr "Eiweiß"
 
 msgctxt "nutrition_proteins_short_name"
 msgid "Proteins (g)"
-msgstr ""
+msgstr "Eiweiß (g)"
 
 msgctxt "nutrition_salt"
 msgid "Salt"
-msgstr ""
+msgstr "Salz"
 
 msgctxt "nutrition_salt_short_name"
 msgid "Salt (g)"
-msgstr ""
+msgstr "Salz (g)"
 
 msgctxt "nutrition_satured_fat"
 msgid "Satured fat"
-msgstr ""
+msgstr "Gesättigte Fette"
 
 msgctxt "nutrition_satured_fat_short_name"
 msgid "Satured fat (g)"
-msgstr ""
+msgstr "Gesättigte Fette (g)"
 
 msgctxt "nutrition_serving"
 msgid "Per serving"
-msgstr ""
+msgstr "Pro Portion"
 
 msgctxt "nutrition_serving_size"
 msgid "Serving size :"
-msgstr ""
+msgstr "Portiongröße:"
 
 msgctxt "nutrition_sodium"
 msgid "Sodium"
-msgstr ""
+msgstr "Natrium"
 
 msgctxt "nutrition_sodium_short_name"
 msgid "Sodium (g)"
-msgstr ""
+msgstr "Natrium (g)"
 
 msgctxt "nutrition_sugars"
 msgid "Sugars"
-msgstr ""
+msgstr "Zucker"
 
 msgctxt "nutrition_sugars_short_name"
 msgid "Sugars (g)"
-msgstr ""
+msgstr "Zucker (g)"
 
 msgctxt "nutrition_trans_fat"
 msgid "Trans fat"
@@ -918,33 +922,33 @@ msgstr ""
 
 msgctxt "nutriment_serving_size"
 msgid "Per portion :"
-msgstr ""
+msgstr "Pro Portion"
 
 msgctxt "action_manage_account"
 msgid "Manage account"
-msgstr ""
+msgstr "Konto verwalten"
 
 msgctxt "action_contributes"
 msgid "Your contributions"
-msgstr ""
+msgstr "Deine Beiträge"
 
 #. website translated pages
 msgctxt "website"
 msgid "http://world.openfoodfacts.org/"
-msgstr ""
+msgstr "http://de.openfoodfacts.org/"
 
 msgctxt "website_contribute"
 msgid "http://world.openfoodfacts.org/contribute"
-msgstr ""
+msgstr "http://de.openfoodfacts.org/contribute"
 
 msgctxt "website_discover"
 msgid "http://world.openfoodfacts.org/discover"
-msgstr ""
+msgstr "http://de.openfoodfacts.org/discover"
 
 msgctxt "website_product"
 msgid "http://world.openfoodfacts.org/product/"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/product/"
 
 msgctxt "website_contributor"
 msgid "http://world.openfoodfacts.org/contributor/"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/contributor/"
