@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-03 18:27+0100\n"
-"PO-Revision-Date: 2016-12-05 17:48+0000\n"
-"Last-Translator: Aleksej <Unknown>\n"
+"PO-Revision-Date: 2016-12-21 12:40+0000\n"
+"Last-Translator: Nkolay Parukhin <parukhin@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-12-05 20:48+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
+"X-Launchpad-Export-Date: 2016-12-22 13:56+0000\n"
+"X-Generator: Launchpad (build 18298)\n"
 "Language: ru\n"
 "Generated-By: Babel 2.3.3\n"
 
@@ -38,11 +38,11 @@ msgstr "О приложении"
 
 msgctxt "action_discover"
 msgid "Discover"
-msgstr ""
+msgstr "О проекте"
 
 msgctxt "action_contribute"
 msgid "Contribute"
-msgstr ""
+msgstr "Как помочь"
 
 msgctxt "action_find"
 msgid "Find"
@@ -189,71 +189,71 @@ msgstr "Чешский"
 
 msgctxt "lang_label_array:0"
 msgid "English"
-msgstr ""
+msgstr "Английский"
 
 msgctxt "lang_label_array:1"
 msgid "French"
-msgstr ""
+msgstr "Французский"
 
 msgctxt "lang_label_array:2"
 msgid "Spanish"
-msgstr ""
+msgstr "Испанский"
 
 msgctxt "lang_label_array:3"
 msgid "Italian"
-msgstr ""
+msgstr "Итальянский"
 
 msgctxt "lang_label_array:4"
 msgid "German"
-msgstr ""
+msgstr "Немецкий"
 
 msgctxt "lang_label_array:5"
 msgid "Japanese"
-msgstr ""
+msgstr "Японский"
 
 msgctxt "lang_label_array:6"
 msgid "Russian"
-msgstr ""
+msgstr "Русский"
 
 msgctxt "lang_label_array:7"
 msgid "Portuguese"
-msgstr ""
+msgstr "Португальский"
 
 msgctxt "lang_label_array:8"
 msgid "Swedish"
-msgstr ""
+msgstr "Шведский"
 
 msgctxt "lang_label_array:9"
 msgid "Burmese"
-msgstr ""
+msgstr "Бирманский"
 
 msgctxt "lang_label_array:10"
 msgid "Kazakh"
-msgstr ""
+msgstr "Казахский"
 
 msgctxt "lang_label_array:11"
 msgid "Armenian"
-msgstr ""
+msgstr "Армянский"
 
 msgctxt "lang_label_array:12"
 msgid "Greek"
-msgstr ""
+msgstr "Греческий"
 
 msgctxt "lang_label_array:13"
 msgid "Hebrew"
-msgstr ""
+msgstr "Иврит"
 
 msgctxt "lang_label_array:14"
 msgid "Galician"
-msgstr ""
+msgstr "Галисийский"
 
 msgctxt "lang_label_array:15"
 msgid "Catalan"
-msgstr ""
+msgstr "Каталанский"
 
 msgctxt "lang_label_array:16"
 msgid "Czech"
-msgstr ""
+msgstr "Чешский"
 
 msgctxt "images_array:0"
 msgid "Default"
@@ -751,7 +751,7 @@ msgstr "Длина пароля должна быть не менее 6 симв
 
 msgctxt "error_field_required"
 msgid "This field is required."
-msgstr ""
+msgstr "Это поле обязательно."
 
 msgctxt "action_preferences"
 msgid "Preferences"
@@ -777,11 +777,11 @@ msgstr ""
 
 msgctxt "prefs_language"
 msgid "Language"
-msgstr ""
+msgstr "Язык"
 
 msgctxt "prefs_language_summary"
 msgid "Change language"
-msgstr ""
+msgstr "Сменить язык"
 
 msgctxt "scan_history_drawer"
 msgid "History"
@@ -826,7 +826,7 @@ msgstr "Углеводы"
 
 msgctxt "nutrition_carbohydrate_short_name"
 msgid "Carbohydrate (g)"
-msgstr ""
+msgstr "Углеводы (г)"
 
 msgctxt "nutrition_cholesterol"
 msgid "Cholesterol"
@@ -834,7 +834,7 @@ msgstr "Холестерин"
 
 msgctxt "nutrition_cholesterol_short_name"
 msgid "Cholesterol (g)"
-msgstr ""
+msgstr "Холестерин (г)"
 
 msgctxt "nutrition_energy"
 msgid "Energy"
@@ -842,7 +842,7 @@ msgstr "Энергетическая ценность"
 
 msgctxt "nutrition_energy_short_name"
 msgid "Energy"
-msgstr ""
+msgstr "Энергетическая ценность"
 
 msgctxt "nutrition_fat"
 msgid "Fat"
@@ -850,7 +850,7 @@ msgstr "Жиры"
 
 msgctxt "nutrition_fat_short_name"
 msgid "Fat (g)"
-msgstr ""
+msgstr "Жиры (г)"
 
 msgctxt "nutrition_fiber"
 msgid "Dietary fiber"
@@ -858,7 +858,7 @@ msgstr "Пищевые волокна"
 
 msgctxt "nutrition_fiber_short_name"
 msgid "Dietary fiber (g)"
-msgstr ""
+msgstr "Пищевые волокна (г)"
 
 msgctxt "nutrition_header"
 msgid "Nutrition facts"
@@ -866,7 +866,7 @@ msgstr "Пищевая и энергетическая ценность"
 
 msgctxt "nutrition_no_data_message"
 msgid "No data is available for this product"
-msgstr ""
+msgstr "Отсутствуют данные для этого продукта"
 
 msgctxt "nutrition_per_quantity"
 msgid "For 100g/100ml"
@@ -878,15 +878,15 @@ msgstr "Белки"
 
 msgctxt "nutrition_proteins_short_name"
 msgid "Proteins (g)"
-msgstr ""
+msgstr "Белки (г)"
 
 msgctxt "nutrition_salt"
 msgid "Salt"
-msgstr ""
+msgstr "Соль"
 
 msgctxt "nutrition_salt_short_name"
 msgid "Salt (g)"
-msgstr ""
+msgstr "Соль (г)"
 
 msgctxt "nutrition_satured_fat"
 msgid "Satured fat"
@@ -894,7 +894,7 @@ msgstr "Насыщенные жиры"
 
 msgctxt "nutrition_satured_fat_short_name"
 msgid "Satured fat (g)"
-msgstr ""
+msgstr "Насыщенные жиры (г)"
 
 msgctxt "nutrition_serving"
 msgid "Per serving"
@@ -910,7 +910,7 @@ msgstr "Натрий"
 
 msgctxt "nutrition_sodium_short_name"
 msgid "Sodium (g)"
-msgstr ""
+msgstr "Натрий (г)"
 
 msgctxt "nutrition_sugars"
 msgid "Sugars"
@@ -918,7 +918,7 @@ msgstr "Сахара"
 
 msgctxt "nutrition_sugars_short_name"
 msgid "Sugars (g)"
-msgstr ""
+msgstr "Сахара (г)"
 
 msgctxt "nutrition_trans_fat"
 msgid "Trans fat"
@@ -926,7 +926,7 @@ msgstr "Трансжиры"
 
 msgctxt "nutrition_trans_fat_short_name"
 msgid "Trans fat (g)"
-msgstr ""
+msgstr "Трансжиры (г)"
 
 msgctxt "nutriment_serving_size"
 msgid "Per portion :"
@@ -934,7 +934,7 @@ msgstr "На порцию:"
 
 msgctxt "action_manage_account"
 msgid "Manage account"
-msgstr ""
+msgstr "Управление учётной записью"
 
 msgctxt "action_contributes"
 msgid "Your contributions"
@@ -943,20 +943,20 @@ msgstr "Ваш вклад"
 #. website translated pages
 msgctxt "website"
 msgid "http://world.openfoodfacts.org/"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/"
 
 msgctxt "website_contribute"
 msgid "http://world.openfoodfacts.org/contribute"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/contribute"
 
 msgctxt "website_discover"
 msgid "http://world.openfoodfacts.org/discover"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/discover"
 
 msgctxt "website_product"
 msgid "http://world.openfoodfacts.org/product/"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/product/"
 
 msgctxt "website_contributor"
 msgid "http://world.openfoodfacts.org/contributor/"
-msgstr ""
+msgstr "http://world.openfoodfacts.org/contributor/"

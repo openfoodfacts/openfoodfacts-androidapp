@@ -210,7 +210,7 @@ public class OpenFoodAPIClient {
         lt.setTextColor(activity.getResources().getColor(R.color.white));
         lt.show();
 
-        apiService.saveProduct(product.getBarcode(), product.getName(), product.getBrands(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+        apiService.saveProduct(product.getBarcode(), product.getName(), product.getBrands(), product.getQuantity(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
             @Override
             public void onResponse(Call<State> call, Response<State> response) {
                 if (!response.isSuccess() || response.body().getStatus() == 0) {
