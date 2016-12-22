@@ -4,6 +4,8 @@
   <string name="hello_world">Привет, мир!</string>
   <string name="action_settings">Настройки</string>
   <string name="action_about">О приложении</string>
+  <string name="action_discover">О проекте</string>
+  <string name="action_contribute">Как помочь</string>
   <string name="action_find">Найти</string>
   <string name="text_barcode">Поместите штрих-код</string>
   <string-array name="nav_drawer_items_product">
@@ -40,23 +42,23 @@
     <item>Чешский</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
-    <item>Galician</item>
-    <item>Catalan</item>
-    <item>Czech</item>
+    <item>Английский</item>
+    <item>Французский</item>
+    <item>Испанский</item>
+    <item>Итальянский</item>
+    <item>Немецкий</item>
+    <item>Японский</item>
+    <item>Русский</item>
+    <item>Португальский</item>
+    <item>Шведский</item>
+    <item>Бирманский</item>
+    <item>Казахский</item>
+    <item>Армянский</item>
+    <item>Греческий</item>
+    <item>Иврит</item>
+    <item>Галисийский</item>
+    <item>Каталанский</item>
+    <item>Чешский</item>
   </string-array>
   <string-array name="images_array">
     <item>По умолчанию</item>
@@ -173,9 +175,12 @@
   <string name="msg_input_empty">Сначала заполните поле!</string>
   <string name="new_offline_info">Сделайте фото продукта, состава, пищевой ценности и другой информации на этикетке. Спасибо!</string>
   <string name="error_invalid_password">Длина пароля должна быть не менее 6 символов.</string>
+  <string name="error_field_required">Это поле обязательно.</string>
   <string name="action_preferences">Настройки</string>
   <string name="prefs_scan_startup">Сканировать при запуске</string>
   <string name="prefs_scan_startup_summary">Если опция включена, сканирование запустится сразу после запуска.</string>
+  <string name="prefs_language">Язык</string>
+  <string name="prefs_language_summary">Сменить язык</string>
   <string name="scan_history_drawer">История</string>
   <string name="clear_history">Очистить историю</string>
   <string name="title_clear_history_dialog">Очистить</string>
@@ -186,19 +191,38 @@
   <string name="permision_write_external_storage">Разрешение записи на SD карту требуется для экспорта истории.</string>
   <string name="txt_nutrition_not_found">Нет данных</string>
   <string name="nutrition_carbohydrate">Углеводы</string>
+  <string name="nutrition_carbohydrate_short_name">Углеводы (г)</string>
   <string name="nutrition_cholesterol">Холестерин</string>
+  <string name="nutrition_cholesterol_short_name">Холестерин (г)</string>
   <string name="nutrition_energy">Энергетическая ценность</string>
+  <string name="nutrition_energy_short_name">Энергетическая ценность</string>
   <string name="nutrition_fat">Жиры</string>
+  <string name="nutrition_fat_short_name">Жиры (г)</string>
   <string name="nutrition_fiber">Пищевые волокна</string>
+  <string name="nutrition_fiber_short_name">Пищевые волокна (г)</string>
   <string name="nutrition_header">Пищевая и энергетическая ценность</string>
+  <string name="nutrition_no_data_message">Отсутствуют данные для этого продукта</string>
   <string name="nutrition_per_quantity">В 100 г/100 мл</string>
   <string name="nutrition_proteins">Белки</string>
+  <string name="nutrition_proteins_short_name">Белки (г)</string>
+  <string name="nutrition_salt">Соль</string>
+  <string name="nutrition_salt_short_name">Соль (г)</string>
   <string name="nutrition_satured_fat">Насыщенные жиры</string>
+  <string name="nutrition_satured_fat_short_name">Насыщенные жиры (г)</string>
   <string name="nutrition_serving">На порцию</string>
   <string name="nutrition_serving_size">Размер порции:</string>
   <string name="nutrition_sodium">Натрий</string>
+  <string name="nutrition_sodium_short_name">Натрий (г)</string>
   <string name="nutrition_sugars">Сахара</string>
+  <string name="nutrition_sugars_short_name">Сахара (г)</string>
   <string name="nutrition_trans_fat">Трансжиры</string>
+  <string name="nutrition_trans_fat_short_name">Трансжиры (г)</string>
   <string name="nutriment_serving_size">На порцию:</string>
+  <string name="action_manage_account">Управление учётной записью</string>
   <string name="action_contributes">Ваш вклад</string>
+  <string name="website">http://world.openfoodfacts.org/</string>
+  <string name="website_contribute">http://world.openfoodfacts.org/contribute</string>
+  <string name="website_discover">http://world.openfoodfacts.org/discover</string>
+  <string name="website_product">http://world.openfoodfacts.org/product/</string>
+  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
 </resources>
