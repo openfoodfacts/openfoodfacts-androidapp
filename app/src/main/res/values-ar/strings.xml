@@ -1,23 +1,26 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="app_name">Open Food</string>
+  <string name="hello_world">أهلا يا عالم!</string>
   <string name="action_settings">الإعدادات</string>
   <string name="action_about">حول</string>
+  <string name="action_discover">إكتشف</string>
+  <string name="action_contribute">ساهم</string>
   <string name="action_find">بحث</string>
   <string name="text_barcode">بخصوص الرمز الشريطي</string>
   <string-array name="nav_drawer_items_product">
     <item>الملخص</item>
     <item>المكونات</item>
     <item>التغذية</item>
-    <item>Full Nutrition</item>
-    <item>Back to menu</item>
+    <item>تغذية كاملة</item>
+    <item>العودة إلى القائمة</item>
   </string-array>
   <string-array name="units_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
-    <item>ml</item>
+    <item>غ</item>
+    <item>مغ</item>
+    <item>كغ</item>
+    <item>ل</item>
+    <item>مل</item>
   </string-array>
   <string-array name="lang_array">
     <item>en</item>
@@ -39,23 +42,23 @@
     <item>cs</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
-    <item>Galician</item>
-    <item>Catalan</item>
-    <item>Czech</item>
+    <item>الإنجليزية</item>
+    <item>الفرنسية</item>
+    <item>الإسبانية</item>
+    <item>الإيطالية</item>
+    <item>الألمانية</item>
+    <item>اليابانية</item>
+    <item>الروسيَة</item>
+    <item>البرتغالية</item>
+    <item>السويديَة</item>
+    <item>البورميَة</item>
+    <item>الكازاخستانية</item>
+    <item>الأرمنية</item>
+    <item>اليونانيّة</item>
+    <item>العبريَة</item>
+    <item>الجاليكية</item>
+    <item>الكاتالونية</item>
+    <item>التشيكية</item>
   </string-array>
   <string-array name="images_array">
     <item>إفتراضي</item>
@@ -64,33 +67,118 @@
   </string-array>
   <string name="search_button">بحث</string>
   <string name="no_products">منتج غير موجود</string>
+  <string name="desc_list_item_icon">أيقونة العنصر</string>
   <string name="alert_dialog_warning_title">تحذير</string>
+  <string name="alert_dialog_warning_msg_user">ـم تغيير إسم المستخدم / كلمة السر، يرجى تحديث المعلومات</string>
+  <string name="alert_dialog_product_error_msg">تعذر العثور على المنتج، يرجى المحاولة مرة أخرى</string>
   <string name="toast_retrieving">جاري التحميل...</string>
   <string name="txtBarcode">الرمز الشريطي</string>
   <string name="txtQuantity">الكمية</string>
+  <string name="txtPackaging">التغليف</string>
   <string name="txtBrands">العلامات التجارية</string>
   <string name="txtCategories">الفئات</string>
+  <string name="txtManufacturing">أماكن التصنيع أو التجهيز</string>
+  <string name="txtIngredientsOrigins">أصل المكونات</string>
+  <string name="txtCity">المدينة والولاية والبلاد حيث تم شراؤها</string>
   <string name="txtStores">المتاجر:</string>
+  <string name="txtCountries">البلدان التي يباع فيها</string>
   <string name="txtIngredients">قائمة المكونات:</string>
+  <string name="txtSubstances">المواد أو المنتجات التي تسبب الحساسية أو عدم التحمل.</string>
+  <string name="txtAdditives">إضافات</string>
+  <string name="txtTraces">آثار</string>
+  <string name="txtMayBeFromPalmOilProduct">المكونات التي قد تكون من زيت النخيل</string>
+  <string name="txtPalmOilProduct">مكونات من زيت النخيل</string>
+  <string name="txtServingSize">حجم الحصة</string>
+  <string name="txtNutrientLevel100g">مستويات المواد الغذائية لـ 100غ:</string>
+  <string name="txtNutritionLevelLow">منخفض</string>
+  <string name="txtNutritionLevelModerate">معتدل</string>
+  <string name="txtNutritionLevelHigh">مرتفع</string>
   <string name="txtLogin">تسجيل الدخول:</string>
   <string name="txtPass">كلمة المرور:</string>
+  <string name="txtTitleHome">افتح غذائك واعرف ما تأكله</string>
+  <string name="txtSave">إرسال / حفظ</string>
+  <string name="txtSignIn">ولوج</string>
+  <string name="txtUser">لوحة المستخدم</string>
+  <string name="txtToastSaved">تم حفظ المستخدم</string>
   <string name="txtSalt">ملح:</string>
   <string name="txtFat">دهن:</string>
   <string name="txtSugars">سكريات:ﻻ</string>
+  <string name="txtSaturatedFat">الدهون المشبعة</string>
+  <string name="hintBarcode">الرمز الشريطي</string>
   <string name="hintLogin">تسجيل الدخول</string>
   <string name="hintPass">كلمة المرور</string>
+  <string name="errorLogin">خطأ في تسجيل الدخول أو كلمة المرور</string>
+  <string name="errorWeb">لم نتمكن من الوصول إلى الإنترنت. هل لديك مشاكل في الاتصال؟</string>
+  <string name="txtInfoLoginOk">تم حفظ المستخدم</string>
+  <string name="txtInfoLoginNo">لم يتم حفظ المستخدم</string>
   <string name="txtDialogsTitle">معلومات</string>
+  <string name="txtDialogsContentSend">هل تريد أن ترسل المنتجات المحفوظة في قاعدة البيانات؟</string>
   <string name="txtYes">نعم</string>
   <string name="txtNo">لا</string>
   <string name="hintNameProduct">اﻹسم</string>
+  <string name="hintEnergyUnit">وحدة الطاقة</string>
   <string name="hintWeight">الوزن</string>
   <string name="hintStores">المتجر</string>
+  <string name="hintBrand">العلامة التجارية</string>
   <string name="txtTakePicture">إلتقاط صورة</string>
+  <string name="txtSendAll">أرسل الكل</string>
   <string name="txtNoData">لا توجد بيانات</string>
+  <string name="txtPictureNeeded">التقط صورة أولاً!</string>
+  <string name="toastSending">جاري الإرسال...</string>
+  <string name="dataSaved">تم الحفظ محليا على جهازك</string>
+  <string name="txtInfoAddUser">الرجاء إدخال اسم المستخدم وكلمة المرور الخاصة بك</string>
+  <string name="txtDataUpdated">تم تحديث البيانات</string>
   <string name="txtLoading">جاري التحميل...</string>
+  <string name="txtDialogsContentDelete">هل تريد حذف هذه مسودة؟</string>
+  <string name="txtDialogsContentInfoSave">"تم حفظ المنتج محليا، يمكنك تحريره في قائمة  تحرير"</string>
+  <string name="txtBarcodeRequire">الرمز الشريطي مطلوب</string>
+  <string name="txtOk">موافق</string>
+  <string name="txtContentDialogUploading">من فضلك لا تخرج أثناء العملية ...</string>
+  <string name="txtAllsent">تم إرسال المنتجات</string>
+  <string name="txtPalm">"لا يحتوي المنتج على أي  زيت نخيل"</string>
+  <string name="txtBarcodeNotValid">الرمز الشريطي غير صحيح.</string>
+  <string name="try_it_scan_now">مسح المنتج</string>
   <string name="share">مشاركة</string>
+  <string name="create_account">تسجيل</string>
   <string name="home_drawer">الصفحة الرئيسية</string>
   <string name="search_drawer">بحث</string>
+  <string name="search_by_barcode_drawer">البحث عن طريق الرمز الشريطي</string>
+  <string name="search_by_name_drawer">البحث عن طريق الإسم</string>
+  <string name="scan_search">امسح</string>
   <string name="user_drawer">المستخدم</string>
+  <string name="txt_anonymous">مجهول</string>
+  <string name="txt_product_not_found">منتجات غير موجودة</string>
   <string name="delete_txt">حذف</string>
+  <string name="sign_in_drawer">تسجيل الدخول</string>
+  <string name="title_dialog_alert">إضافة تنبيه</string>
+  <string name="title_info_dialog">معلومات</string>
+  <string name="error_field_required">هذا الحقل ضروري.</string>
+  <string name="action_preferences">الخيارات</string>
+  <string name="prefs_language">اللغة</string>
+  <string name="prefs_language_summary">تغيير اللغة</string>
+  <string name="scan_history_drawer">السجل</string>
+  <string name="clear_history">محو السجل</string>
+  <string name="title_clear_history_dialog">محو</string>
+  <string name="txt_nutrition_not_found">غير متوفر</string>
+  <string name="nutrition_cholesterol">كوليسترول</string>
+  <string name="nutrition_cholesterol_short_name">كوليسترول (غ)</string>
+  <string name="nutrition_energy">الطاقة</string>
+  <string name="nutrition_energy_short_name">الطاقة</string>
+  <string name="nutrition_fiber">الألياف الغذائية</string>
+  <string name="nutrition_fiber_short_name">الألياف الغذائية (غ)</string>
+  <string name="nutrition_header">حقائق غذائية</string>
+  <string name="nutrition_proteins">البروتينات</string>
+  <string name="nutrition_proteins_short_name">البروتينات (غ)</string>
+  <string name="nutrition_salt">ملح</string>
+  <string name="nutrition_salt_short_name">ملح (غ)</string>
+  <string name="nutrition_sodium">صوديوم</string>
+  <string name="nutrition_sodium_short_name">صوديوم (غ)</string>
+  <string name="nutrition_sugars">سكريات</string>
+  <string name="nutrition_sugars_short_name">سكريات (غ)</string>
+  <string name="action_contributes">مساهماتكم</string>
+  <string name="website">http://world.openfoodfacts.org/</string>
+  <string name="website_contribute">http://world.openfoodfacts.org/contribute</string>
+  <string name="website_discover">http://world.openfoodfacts.org/discover</string>
+  <string name="website_product">http://world.openfoodfacts.org/product/</string>
+  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
 </resources>
