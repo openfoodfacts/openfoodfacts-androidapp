@@ -212,7 +212,7 @@ public class OfflineEditFragment extends BaseFragment {
         @Override
         protected void onPostExecute(Context ctx) {
             List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
-            if (listSaveProduct.size() <= 0) {
+            if (listSaveProduct.isEmpty()) {
                 return;
             }
 

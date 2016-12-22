@@ -81,6 +81,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Utils.hideKeyboard(this);
+
         final IProfile profile = getUserProfile();
         LocaleHelper.setLocale(this, LocaleHelper.getLanguage(this));
 

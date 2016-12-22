@@ -220,8 +220,10 @@ public class OpenFoodAPIClient {
                 }
 
                 String imguploadFront = product.getImgupload_front();
-                ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
-                postImg(activity, image);
+                if (StringUtils.isNotEmpty(imguploadFront )) {
+                    ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
+                    postImg(activity, image);
+                }
 
                 String imguploadIngredients = product.getImgupload_ingredients();
                 if (StringUtils.isNotEmpty(imguploadIngredients)) {
