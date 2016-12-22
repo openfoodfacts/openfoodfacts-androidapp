@@ -221,9 +221,11 @@ public class OpenFoodAPIServiceTest {
         product.setBarcode("978020137962");
         product.setName("coca");
         product.setBrands("auchan");
+        product.setWeight("300");
+        product.setWeight_unit("g");
 
 //        Response<State> execute = serviceWrite.saveProduct(product).execute();
-        Response<State> execute = serviceWrite.saveProduct(product.getBarcode(), product.getName(), product.getBrands(), null, null, PRODUCT_API_COMMENT).execute();
+        Response<State> execute = serviceWrite.saveProduct(product.getBarcode(), product.getName(), product.getBrands(), product.getQuantity(), null, null, PRODUCT_API_COMMENT).execute();
 
         assertTrue(execute.isSuccess());
 
@@ -236,6 +238,7 @@ public class OpenFoodAPIServiceTest {
         assertEquals(product.getName(), savedProduct.getProductName());
         assertEquals(product.getBrands(), savedProduct.getBrands());
         assertTrue(savedProduct.getBrandsTags().contains(product.getBrands()));
+        assertEquals(product.getWeight() + " " + product.getWeight_unit(), savedProduct.getQuantity());
     }
 
     @Test
