@@ -267,5 +267,6 @@
     <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
     <string name="logout_drawer">Logout</string>
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
+    <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
 
 </resources>

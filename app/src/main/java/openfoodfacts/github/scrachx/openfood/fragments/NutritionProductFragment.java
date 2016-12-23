@@ -22,17 +22,22 @@ import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
+
 public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
 
     @BindView(R.id.imageGrade) ImageView img;
     @BindView(R.id.listNutrientLevels) ListView lv;
     @BindView(R.id.textServingSize) TextView serving;
+    @BindView(R.id.textCarbonFootprint) TextView carbonFootprint;
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri nutritionScoreUri;
 
@@ -92,11 +97,22 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         lv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
 
-        String servingSize = product.getServingSize();
-        if (TextUtils.isEmpty(servingSize)) {
-            servingSize = getString(R.string.txtNoData);
+        if (TextUtils.isEmpty(product.getServingSize())) {
+            serving.setVisibility(View.GONE);
+        } else {
+            serving.append(bold(getString(R.string.txtServingSize)));
+            serving.append(" ");
+            serving.append(product.getServingSize());
         }
-        serving.setText(Html.fromHtml("<b>" + getString(R.string.txtServingSize) + "</b>" + ' ' + servingSize));
+
+        Nutriments nutriments = product.getNutriments();
+        if (isEmpty(nutriments.getCarbonFootprint100g())) {
+            carbonFootprint.setVisibility(View.GONE);
+        } else {
+            carbonFootprint.append(bold(getString(R.string.textCarbonFootprint)));
+            carbonFootprint.append(nutriments.getCarbonFootprint100g());
+            carbonFootprint.append(nutriments.getCarbonFootprintUnit());
+        }
     }
 
     private int getImageGrade(String grade) {
