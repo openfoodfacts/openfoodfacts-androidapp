@@ -393,7 +393,7 @@ msgstr "Passwort :"
 
 msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
-msgstr "Veröffentliche dein Essen, und lerne was du isst."
+msgstr "Veröffentliche dein Essen, und lerne was du isst"
 
 msgctxt "txtHome"
 msgid ""
@@ -544,7 +544,7 @@ msgstr "Bitte Login und Passwort einfügen"
 
 msgctxt "txtDataUpdated"
 msgid "Data updated"
-msgstr "Daten verarbeitet"
+msgstr "Daten aktualisiert"
 
 msgctxt "txtLoading"
 msgid "Loading..."
@@ -623,7 +623,7 @@ msgstr "Suchen"
 
 msgctxt "search_by_barcode_drawer"
 msgid "Search by barcode"
-msgstr "Nach Barcode suchen"
+msgstr "Nach Strichcode suchen"
 
 msgctxt "search_by_name_drawer"
 msgid "Search by name"
