@@ -229,4 +229,5 @@
   <string name="website_contributor">http://world-fr.openfoodfacts.org/contributeur/</string>
   <string name="logout_drawer">Logout</string>
   <string name="txtLabels">"Labels, certifications, récompenses : "</string>
+  <string name="textCarbonFootprint">"Empreinte carbone / émissions de CO2 : "</string>
 </resources>
