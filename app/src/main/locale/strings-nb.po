@@ -1,0 +1,949 @@
+# Norwegian Bokmal translation for openfoodfacts
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the openfoodfacts package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openfoodfacts\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-12-03 18:27+0100\n"
+"PO-Revision-Date: 2016-12-23 15:31+0000\n"
+"Last-Translator: Ingvild  <Unknown>\n"
+"Language-Team: Norwegian Bokmal <nb@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-12-23 15:32+0000\n"
+"X-Generator: Launchpad (build 18298)\n"
+
+msgctxt "app_name"
+msgid "Open Food"
+msgstr "Open Food"
+
+msgctxt "hello_world"
+msgid "Hello world!"
+msgstr ""
+
+msgctxt "action_settings"
+msgid "Settings"
+msgstr "Innstillinger"
+
+msgctxt "action_about"
+msgid "About"
+msgstr "Om"
+
+msgctxt "action_discover"
+msgid "Discover"
+msgstr "Utforsk"
+
+msgctxt "action_contribute"
+msgid "Contribute"
+msgstr "Bidra"
+
+msgctxt "action_find"
+msgid "Find"
+msgstr "Søk"
+
+msgctxt "text_barcode"
+msgid "Put the barcode :"
+msgstr ""
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:0"
+msgid "Summary"
+msgstr "Sammendrag"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:1"
+msgid "Ingredients"
+msgstr "Ingredienser"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:2"
+msgid "Nutrition"
+msgstr "Ernæring"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:3"
+msgid "Full Nutrition"
+msgstr "Fullstendig ernæringsinformasjon"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:4"
+msgid "Back to menu"
+msgstr "Tilbake til menyen"
+
+#. Text units
+msgctxt "units_array:0"
+msgid "g"
+msgstr "g"
+
+#. Text units
+msgctxt "units_array:1"
+msgid "mg"
+msgstr "mg"
+
+#. Text units
+msgctxt "units_array:2"
+msgid "kg"
+msgstr "kg"
+
+#. Text units
+msgctxt "units_array:3"
+msgid "l"
+msgstr "l"
+
+#. Text units
+msgctxt "units_array:4"
+msgid "ml"
+msgstr "ml"
+
+#. Text units
+msgctxt "lang_array:0"
+msgid "en"
+msgstr "no"
+
+#. Text units
+msgctxt "lang_array:1"
+msgid "fr"
+msgstr "fr"
+
+#. Text units
+msgctxt "lang_array:2"
+msgid "es"
+msgstr "es"
+
+#. Text units
+msgctxt "lang_array:3"
+msgid "it"
+msgstr "it"
+
+#. Text units
+msgctxt "lang_array:4"
+msgid "de"
+msgstr "de"
+
+#. Text units
+msgctxt "lang_array:5"
+msgid "ja"
+msgstr "ja"
+
+#. Text units
+msgctxt "lang_array:6"
+msgid "ru"
+msgstr "ru"
+
+#. Text units
+msgctxt "lang_array:7"
+msgid "pt"
+msgstr "pt"
+
+#. Text units
+msgctxt "lang_array:8"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:9"
+msgid "my"
+msgstr "my"
+
+#. Text units
+msgctxt "lang_array:10"
+msgid "kk"
+msgstr "kk"
+
+#. Text units
+msgctxt "lang_array:11"
+msgid "hy"
+msgstr "hy"
+
+#. Text units
+msgctxt "lang_array:12"
+msgid "el"
+msgstr "el"
+
+#. Text units
+msgctxt "lang_array:13"
+msgid "he"
+msgstr "he"
+
+#. Text units
+msgctxt "lang_array:14"
+msgid "gl"
+msgstr "gl"
+
+#. Text units
+msgctxt "lang_array:15"
+msgid "ca"
+msgstr "ca"
+
+#. Text units
+msgctxt "lang_array:16"
+msgid "cs"
+msgstr "cs"
+
+msgctxt "lang_label_array:0"
+msgid "English"
+msgstr "Engelsk"
+
+msgctxt "lang_label_array:1"
+msgid "French"
+msgstr "Fransk"
+
+msgctxt "lang_label_array:2"
+msgid "Spanish"
+msgstr "Spansk"
+
+msgctxt "lang_label_array:3"
+msgid "Italian"
+msgstr "Italiensk"
+
+msgctxt "lang_label_array:4"
+msgid "German"
+msgstr "Tysk"
+
+msgctxt "lang_label_array:5"
+msgid "Japanese"
+msgstr "Japansk"
+
+msgctxt "lang_label_array:6"
+msgid "Russian"
+msgstr "Russisk"
+
+msgctxt "lang_label_array:7"
+msgid "Portuguese"
+msgstr "Portugisisk"
+
+msgctxt "lang_label_array:8"
+msgid "Swedish"
+msgstr "Svensk"
+
+msgctxt "lang_label_array:9"
+msgid "Burmese"
+msgstr "Burmesisk"
+
+msgctxt "lang_label_array:10"
+msgid "Kazakh"
+msgstr "Kasakhisk"
+
+msgctxt "lang_label_array:11"
+msgid "Armenian"
+msgstr ""
+
+msgctxt "lang_label_array:12"
+msgid "Greek"
+msgstr ""
+
+msgctxt "lang_label_array:13"
+msgid "Hebrew"
+msgstr ""
+
+msgctxt "lang_label_array:14"
+msgid "Galician"
+msgstr ""
+
+msgctxt "lang_label_array:15"
+msgid "Catalan"
+msgstr ""
+
+msgctxt "lang_label_array:16"
+msgid "Czech"
+msgstr ""
+
+msgctxt "images_array:0"
+msgid "Default"
+msgstr ""
+
+msgctxt "images_array:1"
+msgid "Nutrition"
+msgstr "Ernæring"
+
+msgctxt "images_array:2"
+msgid "Ingredients"
+msgstr "Ingredienser"
+
+#. Content Description
+msgctxt "search_button"
+msgid "Search"
+msgstr "Søk"
+
+msgctxt "no_products"
+msgid "Products not found"
+msgstr ""
+
+msgctxt "desc_list_item_icon"
+msgid "Item Icon"
+msgstr ""
+
+msgctxt "alert_dialog_warning_title"
+msgid "Warning"
+msgstr "Advarsel"
+
+msgctxt "alert_dialog_warning_msg_user"
+msgid "User/password has changed, please update information"
+msgstr ""
+"Brukernavn/passord er endret, vennligst oppdater dine innloggingsdetaljer"
+
+msgctxt "alert_dialog_product_error_msg"
+msgid "Product not found, please try again"
+msgstr "Produktet ble ikke funnet, vennligst prøv igjen"
+
+msgctxt "toast_retrieving"
+msgid "Loading..."
+msgstr "Laster..."
+
+msgctxt "txtBarcode"
+msgid "Barcode :"
+msgstr "Strekkode :"
+
+msgctxt "txtQuantity"
+msgid "Quantity :"
+msgstr ""
+
+msgctxt "txtPackaging"
+msgid "Packaging :"
+msgstr ""
+
+msgctxt "txtBrands"
+msgid "Brands :"
+msgstr ""
+
+msgctxt "txtCategories"
+msgid "Categories :"
+msgstr ""
+
+msgctxt "txtManufacturing"
+msgid "Manufacturing or processing places :"
+msgstr ""
+
+msgctxt "txtIngredientsOrigins"
+msgid "Origin of ingredients :"
+msgstr ""
+
+msgctxt "txtCity"
+msgid "City, state and country where purchased :"
+msgstr ""
+
+msgctxt "txtStores"
+msgid "Stores :"
+msgstr "Butikker:"
+
+msgctxt "txtCountries"
+msgid "Countries where sold :"
+msgstr "Land der produktet selges:"
+
+msgctxt "txtIngredients"
+msgid "Ingredients list :"
+msgstr "Liste over ingredienser:"
+
+msgctxt "txtSubstances"
+msgid "Substances or products causing allergies or intolerances :"
+msgstr ""
+
+msgctxt "txtAdditives"
+msgid "Additives :"
+msgstr "Tilsetningsstoffer:"
+
+msgctxt "txtTraces"
+msgid "Traces :"
+msgstr "Kan finnes spor av:"
+
+msgctxt "txtMayBeFromPalmOilProduct"
+msgid "Ingredients that may be from palm oil :"
+msgstr "Ingredienser som kan stamme fra palmeolje:"
+
+msgctxt "txtPalmOilProduct"
+msgid "Ingredients from palm oil :"
+msgstr "Ingredienser fra palmeolje:"
+
+msgctxt "txtServingSize"
+msgid "Serving size :"
+msgstr "Porsjonsstørrelse:"
+
+msgctxt "txtNutrientLevel100g"
+msgid "Nutrient levels for 100g :"
+msgstr "Ernæringsinnhold per 100 g:"
+
+msgctxt "txtNutritionLevelLow"
+msgid "low"
+msgstr ""
+
+msgctxt "txtNutritionLevelModerate"
+msgid "moderate"
+msgstr "moderat"
+
+msgctxt "txtNutritionLevelHigh"
+msgid "high"
+msgstr ""
+
+msgctxt "txtLogin"
+msgid "Login :"
+msgstr ""
+
+msgctxt "txtPass"
+msgid "Password :"
+msgstr "Passord :"
+
+msgctxt "txtTitleHome"
+msgid "Open your food and know what you eat"
+msgstr ""
+
+msgctxt "txtHome"
+msgid ""
+"Open Food Facts is a open database of food products with ingredients, "
+"allergens, nutrition facts and all the tidbits of information we can find on "
+"product labels."
+msgstr ""
+
+msgctxt "txtSave"
+msgid "Send/Save"
+msgstr ""
+
+msgctxt "txtSignIn"
+msgid "Sign in"
+msgstr "Logg på"
+
+msgctxt "txtUser"
+msgid "User panel"
+msgstr ""
+
+msgctxt "txtToastSaved"
+msgid "User saved"
+msgstr ""
+
+msgctxt "txtSalt"
+msgid "Salt :"
+msgstr "Salt :"
+
+msgctxt "txtFat"
+msgid "Fat :"
+msgstr "Fett :"
+
+msgctxt "txtSugars"
+msgid "Sugars :"
+msgstr "Sukker :"
+
+msgctxt "txtSaturatedFat"
+msgid "Satured fat :"
+msgstr "Mettet fett :"
+
+msgctxt "hintBarcode"
+msgid "Barcode"
+msgstr "Strekkode"
+
+msgctxt "hintLogin"
+msgid "Login"
+msgstr "Logg på"
+
+msgctxt "hintPass"
+msgid "Password"
+msgstr "Passord"
+
+msgctxt "errorLogin"
+msgid "Login or password error"
+msgstr ""
+
+msgctxt "errorWeb"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
+msgstr "Vi klarte ikke å koble til internett. Har du tilkoblingsproblemer?"
+
+msgctxt "txtInfoLoginOk"
+msgid "User saved"
+msgstr ""
+
+msgctxt "txtInfoLoginNo"
+msgid "User not saved"
+msgstr ""
+
+msgctxt "txtDialogsTitle"
+msgid "Information"
+msgstr "Informasjon"
+
+msgctxt "txtDialogsContent"
+msgid ""
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
+msgstr ""
+"Produktet du skannet finnes ikke enda i Open Food Facts. Vil du legge det "
+"til?"
+
+msgctxt "txtDialogsContentSend"
+msgid "Do you want send the saved products to the database?"
+msgstr "Ønsker du å sende de lagrede produktene til databasen?"
+
+msgctxt "txtYes"
+msgid "Yes"
+msgstr "Ja"
+
+msgctxt "txtNo"
+msgid "No"
+msgstr "Nei"
+
+msgctxt "hintNameProduct"
+msgid "Name"
+msgstr "Navn"
+
+msgctxt "hintEnergy"
+msgid "Energy in kJ per serving"
+msgstr "Energy i kJ per porsjon"
+
+msgctxt "hintEnergyUnit"
+msgid "Energy unit"
+msgstr ""
+
+msgctxt "hintWeight"
+msgid "Weight"
+msgstr "Vekt"
+
+msgctxt "hintStores"
+msgid "Store"
+msgstr "Butikk"
+
+msgctxt "hintBrand"
+msgid "Brand"
+msgstr "Merke"
+
+msgctxt "txtTakePicture"
+msgid "Take picture"
+msgstr "Ta bilde"
+
+msgctxt "txtSendAll"
+msgid "Upload all"
+msgstr ""
+
+msgctxt "txtNoData"
+msgid "No data"
+msgstr "Ingen data"
+
+msgctxt "txtPictureNeeded"
+msgid "Take a picture first!"
+msgstr "Ta et bilde først!"
+
+msgctxt "toastSending"
+msgid "Uploading..."
+msgstr "Laster opp …"
+
+msgctxt "dataSaved"
+msgid "Saved locally on your device"
+msgstr "Lagret lokalt på din enhet"
+
+msgctxt "txtInfoAddUser"
+msgid "Please enter your login and password"
+msgstr "Vennligst fyll inn ditt brukernavn og passord"
+
+msgctxt "txtDataUpdated"
+msgid "Data updated"
+msgstr ""
+
+msgctxt "txtLoading"
+msgid "Loading..."
+msgstr "Laster..."
+
+msgctxt "txtDialogsContentDelete"
+msgid "Do you want to delete this draft?"
+msgstr "Vil du slette dette utkastet?"
+
+msgctxt "txtDialogsContentInfoSave"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr ""
+
+msgctxt "txtBarcodeRequire"
+msgid "Barcode required"
+msgstr "Strekkode behøves"
+
+msgctxt "txtOk"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "txtContentDialogUploading"
+msgid "Please don't exit during the process..."
+msgstr ""
+
+msgctxt "txtAbout"
+msgid ""
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
+msgstr ""
+
+msgctxt "txtAllsent"
+msgid "Products sent"
+msgstr ""
+
+msgctxt "txtPalm"
+msgid "The product does not contain any palm oil"
+msgstr "Produktet inneholder ikke palmeolje"
+
+msgctxt "txtBarcodeNotValid"
+msgid "Barcode not valid"
+msgstr "Strekkode ikke gyldig"
+
+msgctxt "try_it_scan_now"
+msgid "Scan product"
+msgstr "Skann produktet"
+
+msgctxt "share"
+msgid "Share"
+msgstr "Del"
+
+msgctxt "msg_share"
+msgid "Look at this product on Open Food Facts :"
+msgstr "Se på dette produktet på Open Food Facts :"
+
+msgctxt "create_account"
+msgid "Sign up"
+msgstr "Registrer deg"
+
+msgctxt "home_drawer"
+msgid "Home"
+msgstr "Hjem"
+
+msgctxt "open_beauty_drawer"
+msgid "Open Beauty Facts"
+msgstr ""
+
+msgctxt "search_drawer"
+msgid "Search"
+msgstr "Søk"
+
+msgctxt "search_by_barcode_drawer"
+msgid "Search by barcode"
+msgstr "Søk etter strekkode"
+
+msgctxt "search_by_name_drawer"
+msgid "Search by name"
+msgstr "Søk etter navn"
+
+msgctxt "scan_search"
+msgid "Scan"
+msgstr "Skann"
+
+msgctxt "user_drawer"
+msgid "User"
+msgstr "Bruker"
+
+msgctxt "offline_edit_drawer"
+msgid "Offline edit"
+msgstr "Rediger i frakoblet modus"
+
+msgctxt "txt_anonymous"
+msgid "Anonymous"
+msgstr "Anonym"
+
+msgctxt "txt_product_not_found"
+msgid "Products not found"
+msgstr "Produktene ble ikke funnet"
+
+msgctxt "delete_txt"
+msgid "Delete"
+msgstr "Slett"
+
+msgctxt "sign_in_drawer"
+msgid "Sign-in"
+msgstr "Logg inn"
+
+msgctxt "alert_drawer"
+msgid "Allergen Alert"
+msgstr "Allergenvarsel"
+
+msgctxt "warning_allergens"
+msgid "Contains allergens"
+msgstr "Inneholder allergener"
+
+msgctxt "title_dialog_alert"
+msgid "Add alert"
+msgstr "Legg til varsel"
+
+msgctxt "warning_alert_data"
+msgid ""
+"Your allergies info will never be sent to the Open Food Facts server. Also, "
+"be careful that data may not be accurate, please double-check by yourself!"
+msgstr ""
+
+msgctxt "from_gallery"
+msgid "From gallery"
+msgstr "Fra galleri"
+
+msgctxt "product_sent"
+msgid "Product sent!"
+msgstr "Produkt sendt!"
+
+msgctxt "action_edit_product"
+msgid "Edit product"
+msgstr "Rediger produkt"
+
+msgctxt "title_info_dialog"
+msgid "Information"
+msgstr "Informasjon"
+
+msgctxt "text_offline_info_dialog"
+msgid ""
+"You can scan products when you're offline to add them to Open Food Facts "
+"later. All the products you scan will appear here, and you'll be able to "
+"send them using the button below."
+msgstr ""
+"Du kan skanne produkter når du er frakoblet og legge dem til Open Food Facts "
+"senere. Alle produktene du skanner vil vises her, og du kan sende dem til "
+"databasen ved å klikke på knappen nedenfor."
+
+msgctxt "permission_camera"
+msgid "Camera permission is needed to scan barcode."
+msgstr "Vi trenger tilgang til kameraet for å kunne skanne strekkoden"
+
+msgctxt "permission_title"
+msgid "Permission information"
+msgstr "Informasjon om tillatelse"
+
+msgctxt "permission_denied"
+msgid "Please activate permission in the settings"
+msgstr "Vennligst aktiver tillatelsen i Innstillinger"
+
+msgctxt "permission_storage"
+msgid "Storage is needed to take or choose pictures"
+msgstr ""
+
+msgctxt "info_download_data"
+msgid ""
+"You need to download some data to get this functionality working, please "
+"press yes to download it."
+msgstr ""
+
+msgctxt "info_download_data_connection"
+msgid ""
+"You need to download some data to get this functionality working. Please "
+"activate internet connection."
+msgstr ""
+
+msgctxt "msg_input_empty"
+msgid "Fill input first!"
+msgstr ""
+
+msgctxt "new_offline_info"
+msgid ""
+"Please take a picture of the product, ingredients, nutrition facts table and "
+"any other information on the label. Thank you!"
+msgstr ""
+"Vennlist ta et bilde av produktet, ingredienser, ernæringsinnhold og "
+"eventuell annen informasjon som finnes på etiketten. Tusen takk!"
+
+#. Strings related to login
+msgctxt "error_invalid_password"
+msgid "The password needs to be a least 6 characters long."
+msgstr "Passordet må være minst 6 tegn"
+
+msgctxt "error_field_required"
+msgid "This field is required."
+msgstr "Dette feltet er obligatorisk."
+
+msgctxt "action_preferences"
+msgid "Preferences"
+msgstr "Brukervalg"
+
+msgctxt "prefs_scan_startup"
+msgid "Scan on startup"
+msgstr "Skann ved oppstart"
+
+msgctxt "prefs_scan_startup_summary"
+msgid "This option if selected will start scan when app is opened."
+msgstr "Dette alternativet åpner skanneren automatisk når appen åpnes"
+
+msgctxt "prefs_power_mode"
+msgid "Power mode scan"
+msgstr ""
+
+msgctxt "prefs_power_mode_summary"
+msgid ""
+"Quickly scan products in a supermarket to see which one are not in the "
+"database."
+msgstr ""
+"Skann produkter i en butikk rask og enkelt for å se hvilke som ikke finnes i "
+"databasen"
+
+msgctxt "prefs_language"
+msgid "Language"
+msgstr "Språk"
+
+msgctxt "prefs_language_summary"
+msgid "Change language"
+msgstr "Velg språk"
+
+msgctxt "scan_history_drawer"
+msgid "History"
+msgstr "Historikk"
+
+msgctxt "clear_history"
+msgid "Clear history"
+msgstr "Tøm historikk"
+
+msgctxt "title_clear_history_dialog"
+msgid "Clear"
+msgstr "Tøm"
+
+msgctxt "text_clear_history_dialog"
+msgid "Do you want to clear all scan history?"
+msgstr "Ønsker du å tømme din skanne-historikk?"
+
+msgctxt "export_csv_history"
+msgid "Export CSV"
+msgstr "Eksporter CSV"
+
+msgctxt "txt_exporting_history"
+msgid "Exporting history..."
+msgstr "Eksporterer historikk..."
+
+msgctxt "txt_history_exported"
+msgid "History exported"
+msgstr "Historikk eksportert"
+
+msgctxt "permision_write_external_storage"
+msgid "Write external storage permission is needed to export history."
+msgstr ""
+
+msgctxt "txt_nutrition_not_found"
+msgid "N/A"
+msgstr ""
+
+#. Nutrition info tab
+msgctxt "nutrition_carbohydrate"
+msgid "Carbohydrate"
+msgstr ""
+
+msgctxt "nutrition_carbohydrate_short_name"
+msgid "Carbohydrate (g)"
+msgstr ""
+
+msgctxt "nutrition_cholesterol"
+msgid "Cholesterol"
+msgstr ""
+
+msgctxt "nutrition_cholesterol_short_name"
+msgid "Cholesterol (g)"
+msgstr ""
+
+msgctxt "nutrition_energy"
+msgid "Energy"
+msgstr ""
+
+msgctxt "nutrition_energy_short_name"
+msgid "Energy"
+msgstr ""
+
+msgctxt "nutrition_fat"
+msgid "Fat"
+msgstr ""
+
+msgctxt "nutrition_fat_short_name"
+msgid "Fat (g)"
+msgstr ""
+
+msgctxt "nutrition_fiber"
+msgid "Dietary fiber"
+msgstr ""
+
+msgctxt "nutrition_fiber_short_name"
+msgid "Dietary fiber (g)"
+msgstr ""
+
+msgctxt "nutrition_header"
+msgid "Nutrition facts"
+msgstr ""
+
+msgctxt "nutrition_no_data_message"
+msgid "No data is available for this product"
+msgstr ""
+
+msgctxt "nutrition_per_quantity"
+msgid "For 100g/100ml"
+msgstr ""
+
+msgctxt "nutrition_proteins"
+msgid "Proteins"
+msgstr ""
+
+msgctxt "nutrition_proteins_short_name"
+msgid "Proteins (g)"
+msgstr "Protein (g)"
+
+msgctxt "nutrition_salt"
+msgid "Salt"
+msgstr "Salt"
+
+msgctxt "nutrition_salt_short_name"
+msgid "Salt (g)"
+msgstr "Salt (g)"
+
+msgctxt "nutrition_satured_fat"
+msgid "Satured fat"
+msgstr "Mettet fett"
+
+msgctxt "nutrition_satured_fat_short_name"
+msgid "Satured fat (g)"
+msgstr "Mettet fett (g)"
+
+msgctxt "nutrition_serving"
+msgid "Per serving"
+msgstr "Per porsjon"
+
+msgctxt "nutrition_serving_size"
+msgid "Serving size :"
+msgstr "Porsjonsstørrelse:"
+
+msgctxt "nutrition_sodium"
+msgid "Sodium"
+msgstr "Natrium"
+
+msgctxt "nutrition_sodium_short_name"
+msgid "Sodium (g)"
+msgstr "Natrium (g)"
+
+msgctxt "nutrition_sugars"
+msgid "Sugars"
+msgstr "Sukker"
+
+msgctxt "nutrition_sugars_short_name"
+msgid "Sugars (g)"
+msgstr "Sukker (g)"
+
+msgctxt "nutrition_trans_fat"
+msgid "Trans fat"
+msgstr "Trans-fett"
+
+msgctxt "nutrition_trans_fat_short_name"
+msgid "Trans fat (g)"
+msgstr "Trans-fett (g)"
+
+msgctxt "nutriment_serving_size"
+msgid "Per portion :"
+msgstr "Per porsjon:"
+
+msgctxt "action_manage_account"
+msgid "Manage account"
+msgstr "Administrer konto"
+
+msgctxt "action_contributes"
+msgid "Your contributions"
+msgstr ""
+
+#. website translated pages
+msgctxt "website"
+msgid "http://world.openfoodfacts.org/"
+msgstr "http://world.openfoodfacts.org/"
+
+msgctxt "website_contribute"
+msgid "http://world.openfoodfacts.org/contribute"
+msgstr ""
+
+msgctxt "website_discover"
+msgid "http://world.openfoodfacts.org/discover"
+msgstr ""
+
+msgctxt "website_product"
+msgid "http://world.openfoodfacts.org/product/"
+msgstr ""
+
+msgctxt "website_contributor"
+msgid "http://world.openfoodfacts.org/contributor/"
+msgstr ""
