@@ -15,7 +15,7 @@
         <item>Summary</item>
         <item>Ingredients</item>
         <item>Nutrition</item>
-        <item>Full Nutrition</item>
+        <item>Nutrition Table</item>
         <item>Back to menu</item>
     </string-array>
 
@@ -163,7 +163,7 @@
     <string name="txtTakePicture">Take picture</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtNoData">No data</string>
-    <string name="txtPictureNeeded">Take a picture first!</string>
+    <string name="txtPictureNeeded">Please take a picture first</string>
     <string name="toastSending">Uploading...</string>
     <string name="dataSaved">Saved locally on your device</string>
     <string name="txtInfoAddUser">Please enter your login and password</string>
@@ -216,13 +216,13 @@
     <string name="action_edit_product">Edit product</string>
     <string name="title_info_dialog">Information</string>
     <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
-    <string name="permission_camera">Camera permission is needed to scan barcode.</string>
+    <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
     <string name="permission_title">Permission information</string>
     <string name="permission_denied">Please activate permission in the settings</string>
-    <string name="permission_storage">Storage is needed to take or choose pictures</string>
+    <string name="permission_storage">Storage permission is needed to take or select pictures</string>
     <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
-    <string name="msg_input_empty">Fill input first!</string>
+    <string name="msg_input_empty">Please fill the fields first.</string>
     <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
 
     <!-- Strings related to login -->
