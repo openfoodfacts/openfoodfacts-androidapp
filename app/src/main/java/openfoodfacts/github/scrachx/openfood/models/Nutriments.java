@@ -1,14 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -411,8 +412,28 @@ public class Nutriments implements Serializable {
     private String sodiumServing;
     @JsonProperty("docosahexaenoic-acid_serving")
     private String docosahexaenoicAcidServing;
+    @JsonProperty("carbon-footprint_unit")
+    private String carbonFootprintUnit;
+    @JsonProperty("carbon-footprint_100g")
+    private String carbonFootprint100g;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public String getCarbonFootprint100g() {
+        return carbonFootprint100g;
+    }
+
+    public void setCarbonFootprint100g(String carbonFootprint100g) {
+        this.carbonFootprint100g = carbonFootprint100g;
+    }
+
+    public String getCarbonFootprintUnit() {
+        return carbonFootprintUnit;
+    }
+
+    public void setCarbonFootprintUnit(String carbonFootprintUnit) {
+        this.carbonFootprintUnit = carbonFootprintUnit;
+    }
 
     /**
      *
