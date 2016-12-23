@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-03 18:27+0100\n"
-"PO-Revision-Date: 2016-11-08 08:52+0000\n"
+"PO-Revision-Date: 2016-12-23 06:08+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-12-05 20:48+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
+"X-Launchpad-Export-Date: 2016-12-23 09:56+0000\n"
+"X-Generator: Launchpad (build 18298)\n"
 "Language: he\n"
 "Generated-By: Babel 2.3.3\n"
 
@@ -38,11 +38,11 @@ msgstr "על אודות"
 
 msgctxt "action_discover"
 msgid "Discover"
-msgstr ""
+msgstr "לגלות"
 
 msgctxt "action_contribute"
 msgid "Contribute"
-msgstr ""
+msgstr "לתרום"
 
 msgctxt "action_find"
 msgid "Find"
@@ -70,12 +70,12 @@ msgstr "תזונה"
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
 msgid "Full Nutrition"
-msgstr ""
+msgstr "תזונה מלאה"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
 msgid "Back to menu"
-msgstr ""
+msgstr "חזרה לתפריט"
 
 #. Text units
 msgctxt "units_array:0"
@@ -105,151 +105,151 @@ msgstr "מ״ל"
 #. Text units
 msgctxt "lang_array:0"
 msgid "en"
-msgstr ""
+msgstr "en"
 
 #. Text units
 msgctxt "lang_array:1"
 msgid "fr"
-msgstr ""
+msgstr "fr"
 
 #. Text units
 msgctxt "lang_array:2"
 msgid "es"
-msgstr ""
+msgstr "es"
 
 #. Text units
 msgctxt "lang_array:3"
 msgid "it"
-msgstr ""
+msgstr "it"
 
 #. Text units
 msgctxt "lang_array:4"
 msgid "de"
-msgstr ""
+msgstr "de"
 
 #. Text units
 msgctxt "lang_array:5"
 msgid "ja"
-msgstr ""
+msgstr "ja"
 
 #. Text units
 msgctxt "lang_array:6"
 msgid "ru"
-msgstr ""
+msgstr "ru"
 
 #. Text units
 msgctxt "lang_array:7"
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #. Text units
 msgctxt "lang_array:8"
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #. Text units
 msgctxt "lang_array:9"
 msgid "my"
-msgstr ""
+msgstr "my"
 
 #. Text units
 msgctxt "lang_array:10"
 msgid "kk"
-msgstr ""
+msgstr "kk"
 
 #. Text units
 msgctxt "lang_array:11"
 msgid "hy"
-msgstr ""
+msgstr "hy"
 
 #. Text units
 msgctxt "lang_array:12"
 msgid "el"
-msgstr ""
+msgstr "el"
 
 #. Text units
 msgctxt "lang_array:13"
 msgid "he"
-msgstr ""
+msgstr "he"
 
 #. Text units
 msgctxt "lang_array:14"
 msgid "gl"
-msgstr ""
+msgstr "gl"
 
 #. Text units
 msgctxt "lang_array:15"
 msgid "ca"
-msgstr ""
+msgstr "ca"
 
 #. Text units
 msgctxt "lang_array:16"
 msgid "cs"
-msgstr ""
+msgstr "cs"
 
 msgctxt "lang_label_array:0"
 msgid "English"
-msgstr ""
+msgstr "אנגלית"
 
 msgctxt "lang_label_array:1"
 msgid "French"
-msgstr ""
+msgstr "צרפתית"
 
 msgctxt "lang_label_array:2"
 msgid "Spanish"
-msgstr ""
+msgstr "ספרדית"
 
 msgctxt "lang_label_array:3"
 msgid "Italian"
-msgstr ""
+msgstr "איטלקית"
 
 msgctxt "lang_label_array:4"
 msgid "German"
-msgstr ""
+msgstr "גרמנית"
 
 msgctxt "lang_label_array:5"
 msgid "Japanese"
-msgstr ""
+msgstr "יפנית"
 
 msgctxt "lang_label_array:6"
 msgid "Russian"
-msgstr ""
+msgstr "רוסית"
 
 msgctxt "lang_label_array:7"
 msgid "Portuguese"
-msgstr ""
+msgstr "פורטוגלית"
 
 msgctxt "lang_label_array:8"
 msgid "Swedish"
-msgstr ""
+msgstr "שבדית"
 
 msgctxt "lang_label_array:9"
 msgid "Burmese"
-msgstr ""
+msgstr "בורמית"
 
 msgctxt "lang_label_array:10"
 msgid "Kazakh"
-msgstr ""
+msgstr "קזחית"
 
 msgctxt "lang_label_array:11"
 msgid "Armenian"
-msgstr ""
+msgstr "ארמנית"
 
 msgctxt "lang_label_array:12"
 msgid "Greek"
-msgstr ""
+msgstr "יוונית"
 
 msgctxt "lang_label_array:13"
 msgid "Hebrew"
-msgstr ""
+msgstr "עברית"
 
 msgctxt "lang_label_array:14"
 msgid "Galician"
-msgstr ""
+msgstr "גליסית"
 
 msgctxt "lang_label_array:15"
 msgid "Catalan"
-msgstr ""
+msgstr "קטלאנית"
 
 msgctxt "lang_label_array:16"
 msgid "Czech"
@@ -322,7 +322,7 @@ msgstr "מקומות העיבוד או הייצור:"
 
 msgctxt "txtIngredientsOrigins"
 msgid "Origin of ingredients :"
-msgstr ""
+msgstr "מקור הרכיבים:"
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
@@ -504,7 +504,7 @@ msgstr "חנות"
 
 msgctxt "hintBrand"
 msgid "Brand"
-msgstr ""
+msgstr "מותג"
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
@@ -585,7 +585,7 @@ msgstr "הברקוד לא זמין"
 
 msgctxt "try_it_scan_now"
 msgid "Scan product"
-msgstr ""
+msgstr "סריקת מוצר"
 
 msgctxt "share"
 msgid "Share"
@@ -735,7 +735,7 @@ msgstr "הססמה חייבת להיות באורך של 6 תווים לפחות
 
 msgctxt "error_field_required"
 msgid "This field is required."
-msgstr ""
+msgstr "זהו שדה חובה."
 
 msgctxt "action_preferences"
 msgid "Preferences"
@@ -761,11 +761,11 @@ msgstr ""
 
 msgctxt "prefs_language"
 msgid "Language"
-msgstr ""
+msgstr "שפה"
 
 msgctxt "prefs_language_summary"
 msgid "Change language"
-msgstr ""
+msgstr "החלפת שפה"
 
 msgctxt "scan_history_drawer"
 msgid "History"
@@ -814,7 +814,7 @@ msgstr ""
 
 msgctxt "nutrition_cholesterol"
 msgid "Cholesterol"
-msgstr ""
+msgstr "כולסטרול"
 
 msgctxt "nutrition_cholesterol_short_name"
 msgid "Cholesterol (g)"
@@ -830,7 +830,7 @@ msgstr ""
 
 msgctxt "nutrition_fat"
 msgid "Fat"
-msgstr ""
+msgstr "שומן"
 
 msgctxt "nutrition_fat_short_name"
 msgid "Fat (g)"
@@ -838,7 +838,7 @@ msgstr ""
 
 msgctxt "nutrition_fiber"
 msgid "Dietary fiber"
-msgstr ""
+msgstr "סיבים תזונתיים"
 
 msgctxt "nutrition_fiber_short_name"
 msgid "Dietary fiber (g)"
@@ -846,11 +846,11 @@ msgstr ""
 
 msgctxt "nutrition_header"
 msgid "Nutrition facts"
-msgstr ""
+msgstr "מפרט תזונתי"
 
 msgctxt "nutrition_no_data_message"
 msgid "No data is available for this product"
-msgstr ""
+msgstr "אין מידע זמין על המוצר הזה"
 
 msgctxt "nutrition_per_quantity"
 msgid "For 100g/100ml"
@@ -866,7 +866,7 @@ msgstr ""
 
 msgctxt "nutrition_salt"
 msgid "Salt"
-msgstr ""
+msgstr "מלח"
 
 msgctxt "nutrition_salt_short_name"
 msgid "Salt (g)"
@@ -890,7 +890,7 @@ msgstr ""
 
 msgctxt "nutrition_sodium"
 msgid "Sodium"
-msgstr ""
+msgstr "נתרן"
 
 msgctxt "nutrition_sodium_short_name"
 msgid "Sodium (g)"
@@ -898,7 +898,7 @@ msgstr ""
 
 msgctxt "nutrition_sugars"
 msgid "Sugars"
-msgstr ""
+msgstr "סוכרים"
 
 msgctxt "nutrition_sugars_short_name"
 msgid "Sugars (g)"
@@ -918,11 +918,11 @@ msgstr ""
 
 msgctxt "action_manage_account"
 msgid "Manage account"
-msgstr ""
+msgstr "ניהול חשבון"
 
 msgctxt "action_contributes"
 msgid "Your contributions"
-msgstr ""
+msgstr "התרומות שלך"
 
 #. website translated pages
 msgctxt "website"
