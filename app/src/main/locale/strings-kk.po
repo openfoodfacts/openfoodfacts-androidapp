@@ -6,18 +6,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: openfoodfacts\n"
+"Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-03 18:27+0100\n"
+"POT-Creation-Date: 2016-12-24 08:45+0100\n"
 "PO-Revision-Date: 2016-05-29 08:24+0000\n"
 "Last-Translator: Murat Balkybaev <d2vsd1@mail.ru>\n"
+"Language: kk\n"
 "Language-Team: Kazakh <kk@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(((n == 1)) ? 0 : 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-12-05 20:48+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
-"Language: kk\n"
 "Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
@@ -68,8 +67,9 @@ msgid "Nutrition"
 msgstr "Тамақтану"
 
 #. Nav Drawer Product Menu Items
+#, fuzzy
 msgctxt "nav_drawer_items_product:3"
-msgid "Full Nutrition"
+msgid "Nutrition Table"
 msgstr ""
 
 #. Nav Drawer Product Menu Items
@@ -187,6 +187,66 @@ msgctxt "lang_array:16"
 msgid "cs"
 msgstr ""
 
+#. Text units
+msgctxt "lang_array:17"
+msgid "ar"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:18"
+msgid "fi"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:19"
+msgid "hi"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:20"
+msgid "kab"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:21"
+msgid "ko"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:22"
+msgid "lv"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:23"
+msgid "nl"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:24"
+msgid "pt-rBR"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:25"
+msgid "ro"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:26"
+msgid "sv"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:27"
+msgid "zh"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:28"
+msgid "nb"
+msgstr ""
+
 msgctxt "lang_label_array:0"
 msgid "English"
 msgstr ""
@@ -255,6 +315,54 @@ msgctxt "lang_label_array:16"
 msgid "Czech"
 msgstr ""
 
+msgctxt "lang_label_array:17"
+msgid "Arabic"
+msgstr ""
+
+msgctxt "lang_label_array:18"
+msgid "Finnish"
+msgstr ""
+
+msgctxt "lang_label_array:19"
+msgid "Hindi"
+msgstr ""
+
+msgctxt "lang_label_array:20"
+msgid "Kabyle"
+msgstr ""
+
+msgctxt "lang_label_array:21"
+msgid "Korean"
+msgstr ""
+
+msgctxt "lang_label_array:22"
+msgid "Latvian"
+msgstr ""
+
+msgctxt "lang_label_array:23"
+msgid "Dutch"
+msgstr ""
+
+msgctxt "lang_label_array:24"
+msgid "Brazilian portuguese"
+msgstr ""
+
+msgctxt "lang_label_array:25"
+msgid "Romanian"
+msgstr ""
+
+msgctxt "lang_label_array:26"
+msgid "Swedish"
+msgstr ""
+
+msgctxt "lang_label_array:27"
+msgid "Chinese"
+msgstr ""
+
+msgctxt "lang_label_array:28"
+msgid "Norwegian (Bokmal)"
+msgstr ""
+
 msgctxt "images_array:0"
 msgid "Default"
 msgstr "Әдетті"
@@ -315,6 +423,10 @@ msgstr "Сауда маркалары :"
 msgctxt "txtCategories"
 msgid "Categories :"
 msgstr "Санаттар :"
+
+msgctxt "txtLabels"
+msgid "Labels, certifications, awards :"
+msgstr ""
 
 msgctxt "txtManufacturing"
 msgid "Manufacturing or processing places :"
@@ -395,8 +507,8 @@ msgstr "Өзіңіздің тағамыңызды ашып және не жей�
 msgctxt "txtHome"
 msgid ""
 "Open Food Facts is a open database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find on "
-"product labels."
+"allergens, nutrition facts and all the tidbits of information we can find"
+" on product labels."
 msgstr ""
 
 msgctxt "txtSave"
@@ -448,10 +560,8 @@ msgid "Login or password error"
 msgstr "Аты немесе құпиясөзі қате"
 
 msgctxt "errorWeb"
-msgid ""
-"We were not able to access the internet. Do you have connectivity issues?"
-msgstr ""
-"Біз Ғаламторға қол жеткізе алдмадық. Сізде қосылу жағынан қиындық бар ма?"
+msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgstr "Біз Ғаламторға қол жеткізе алдмадық. Сізде қосылу жағынан қиындық бар ма?"
 
 msgctxt "txtInfoLoginOk"
 msgid "User saved"
@@ -467,8 +577,8 @@ msgstr "Ақпарат"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you want "
-"to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you "
+"want to add it?"
 msgstr "Бұл өнім әлі Open Food Facts-та жоқ. Сіз оны қосқыңыз келе ме?"
 
 msgctxt "txtDialogsContentSend"
@@ -519,8 +629,9 @@ msgctxt "txtNoData"
 msgid "No data"
 msgstr "Деректер жоқ"
 
+#, fuzzy
 msgctxt "txtPictureNeeded"
-msgid "Take a picture first!"
+msgid "Please take a picture first"
 msgstr ""
 
 msgctxt "toastSending"
@@ -548,10 +659,8 @@ msgid "Do you want to delete this draft?"
 msgstr "Сіз бұл шимайды жойғыңыз келеді ме?"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid ""
-"The product is saved locally, you can edit it in the Offline Edit menu"
-msgstr ""
-"Өнім жергілікті сақталған, сіз оның мәзір Автономды Түзетуде түзете аласыз"
+msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr "Өнім жергілікті сақталған, сіз оның мәзір Автономды Түзетуде түзете аласыз"
 
 msgctxt "txtBarcodeRequire"
 msgid "Barcode required"
@@ -567,8 +676,8 @@ msgstr "... үдірісінде шықпаңыз"
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative Commons "
-"Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative "
+"Commons Attribution and ShareAlike."
 msgstr ""
 "Сіз жолдаған фотосуреттер Creative Commons Attribution және ShareAlike "
 "лицензияға сай жарияланды."
@@ -663,8 +772,9 @@ msgstr "Ескертуді қосу"
 
 msgctxt "warning_alert_data"
 msgid ""
-"Your allergies info will never be sent to the Open Food Facts server. Also, "
-"be careful that data may not be accurate, please double-check by yourself!"
+"Your allergies info will never be sent to the Open Food Facts server. "
+"Also, be careful that data may not be accurate, please double-check by "
+"yourself!"
 msgstr ""
 
 msgctxt "from_gallery"
@@ -690,8 +800,9 @@ msgid ""
 "send them using the button below."
 msgstr ""
 
+#, fuzzy
 msgctxt "permission_camera"
-msgid "Camera permission is needed to scan barcode."
+msgid "Camera permission is needed to scan barcodes and take pictures."
 msgstr ""
 
 msgctxt "permission_title"
@@ -702,8 +813,9 @@ msgctxt "permission_denied"
 msgid "Please activate permission in the settings"
 msgstr ""
 
+#, fuzzy
 msgctxt "permission_storage"
-msgid "Storage is needed to take or choose pictures"
+msgid "Storage permission is needed to take or select pictures"
 msgstr ""
 
 msgctxt "info_download_data"
@@ -718,14 +830,15 @@ msgid ""
 "activate internet connection."
 msgstr ""
 
+#, fuzzy
 msgctxt "msg_input_empty"
-msgid "Fill input first!"
+msgid "Please fill the fields first."
 msgstr ""
 
 msgctxt "new_offline_info"
 msgid ""
-"Please take a picture of the product, ingredients, nutrition facts table and "
-"any other information on the label. Thank you!"
+"Please take a picture of the product, ingredients, nutrition facts table "
+"and any other information on the label. Thank you!"
 msgstr ""
 
 #. Strings related to login
@@ -944,3 +1057,16 @@ msgstr ""
 msgctxt "website_contributor"
 msgid "http://world.openfoodfacts.org/contributor/"
 msgstr ""
+
+msgctxt "logout_drawer"
+msgid "Logout"
+msgstr ""
+
+msgctxt "contribution_without_account"
+msgid "You can sign-in or create an account to keep your contributions"
+msgstr ""
+
+msgctxt "textCarbonFootprint"
+msgid "Carbon footprint / CO2 emissions: "
+msgstr ""
+
