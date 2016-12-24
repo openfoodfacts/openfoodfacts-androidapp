@@ -4,14 +4,16 @@
   <string name="hello_world">Hallo wereld!</string>
   <string name="action_settings">Instellingen</string>
   <string name="action_about">Informatie</string>
+  <string name="action_discover">Ontdek</string>
+  <string name="action_contribute">Bijdragen</string>
   <string name="action_find">Zoeken</string>
   <string name="text_barcode">Voer de streepjescode in</string>
   <string-array name="nav_drawer_items_product">
     <item>Samenvatting</item>
     <item>Ingrediënten</item>
     <item>Voedingswaarde</item>
-    <item>Full Nutrition</item>
-    <item>Back to menu</item>
+    <item>Complete voeding</item>
+    <item>Terug naar het menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -40,23 +42,23 @@
     <item>cs</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
-    <item>Galician</item>
-    <item>Catalan</item>
-    <item>Czech</item>
+    <item>Engels</item>
+    <item>Frans</item>
+    <item>Spaans</item>
+    <item>Italiaans</item>
+    <item>Duits</item>
+    <item>Japans</item>
+    <item>Russisch</item>
+    <item>Portugees</item>
+    <item>Zweeds</item>
+    <item>Birmees</item>
+    <item>Kazachs</item>
+    <item>Armeens</item>
+    <item>Grieks</item>
+    <item>Hebreeuws</item>
+    <item>Gallicisch</item>
+    <item>Catalaans</item>
+    <item>Tsjechisch</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
@@ -76,6 +78,7 @@
   <string name="txtBrands">Merken</string>
   <string name="txtCategories">Categoriëen</string>
   <string name="txtManufacturing">Productie- of verwerkingslocaties</string>
+  <string name="txtIngredientsOrigins">Herkomst van de ingrediënten</string>
   <string name="txtCity">Stad, provincie of land van aankoop</string>
   <string name="txtStores">Winkels</string>
   <string name="txtCountries">Landen verkrijgbaar</string>
@@ -87,10 +90,13 @@
   <string name="txtPalmOilProduct">Ingrediënten bevatten palmolie</string>
   <string name="txtServingSize">Per portie</string>
   <string name="txtNutrientLevel100g">Voedingsstoffen per 100g</string>
+  <string name="txtNutritionLevelLow">laag</string>
+  <string name="txtNutritionLevelModerate">gemiddeld</string>
+  <string name="txtNutritionLevelHigh">hoog</string>
   <string name="txtLogin">Inloggen</string>
   <string name="txtPass">Wachtwoord:</string>
   <string name="txtTitleHome">Open je voedsel en weet wat je eet</string>
-  <string name="txtHome">Open Food Facts is een databank van voedingsproducten met ingrediënten, allergenen, voedingsadditieven, voedingswaardedeclaraties en alle interessante feitjes die we op het productetiket kunnen vinden.</string>
+  <string name="txtHome">Open Food Facts is een databank van voedingsproducten met ingrediënten, allergenen, voedingswaarde en alle interessante feitjes die we op productetiketten kunnen vinden.</string>
   <string name="txtSave">Verstuur/Bewaar</string>
   <string name="txtSignIn">Inloggen</string>
   <string name="txtUser">Gebruikerspaneel</string>
@@ -116,6 +122,7 @@
   <string name="hintEnergyUnit">Eenheid van energie</string>
   <string name="hintWeight">Gewicht</string>
   <string name="hintStores">Winkel</string>
+  <string name="hintBrand">Merk</string>
   <string name="txtTakePicture">Maak foto</string>
   <string name="txtSendAll">Alles versturen</string>
   <string name="txtNoData">Geen gegevens</string>
@@ -128,15 +135,18 @@
   <string name="txtDialogsContentDelete">Wilt u dit concept verwijderen?</string>
   <string name="txtDialogsContentInfoSave">Het product is lokaal opgeslagen, u kunt het bewerken in het Offline Edit-menu</string>
   <string name="txtBarcodeRequire">Streepjescode verplicht</string>
+  <string name="txtOk">Ok</string>
   <string name="txtContentDialogUploading">Tijdens de bewerking niet afsluiten alstublieft...</string>
   <string name="txtAbout">De foto\'s die u instuurt vallen onder de vrije licentie Creative Commons Attribution and ShareAlike (Naamsvermelding-GelijkDelen).</string>
   <string name="txtAllsent">Producten verzonden</string>
   <string name="txtPalm">Product bevat geen palmolie</string>
   <string name="txtBarcodeNotValid">Streepjescode niet geldig</string>
+  <string name="try_it_scan_now">Product scannen</string>
   <string name="share">Delen</string>
   <string name="msg_share">Bekijk dit product op Open Food Facts</string>
   <string name="create_account">Inschrijven</string>
   <string name="home_drawer">Hoofdmenu</string>
+  <string name="open_beauty_drawer">Schoonheidsfeiten openen</string>
   <string name="search_drawer">Zoeken</string>
   <string name="search_by_barcode_drawer">Zoek met streepjescode</string>
   <string name="search_by_name_drawer">Zoek op naam</string>
@@ -162,4 +172,59 @@
   <string name="permission_storage">Opslag is nodig om foto\'s te maken en selecteren</string>
   <string name="info_download_data">Er is een extra bestand nodig om deze functie te kunnen activeren, kies Ja om te downloaden.</string>
   <string name="info_download_data_connection">Er is een extra bestand nodig om deze functie te kunnen activeren. Activeer je netwerkverbinding alstublieft.</string>
+  <string name="msg_input_empty">Invoer eerst vullen!</string>
+  <string name="new_offline_info">Gelieve een foto te maken van het product, ingrediënten, voedingswaardetabel en overige informatie op het etiket. Dank!</string>
+  <string name="error_invalid_password">Het wachtwoord moet uit minstens 6 tekens bestaan.</string>
+  <string name="error_field_required">Dit veld is verplicht.</string>
+  <string name="action_preferences">Voorkeuren</string>
+  <string name="prefs_scan_startup">Bij opstarten scannen</string>
+  <string name="prefs_scan_startup_summary">Als deze optie geselecteerd is, zal het scannen worden gestart wanneer de app geopend wordt.</string>
+  <string name="prefs_power_mode">Energiebesparend scannen</string>
+  <string name="prefs_power_mode_summary">Snel producten scannen in een supermarkt om te zien welke er niet in de database staan.</string>
+  <string name="prefs_language">Taal</string>
+  <string name="prefs_language_summary">Een andere taal kiezen</string>
+  <string name="scan_history_drawer">Geschiedenis</string>
+  <string name="clear_history">Geschiedenis wissen</string>
+  <string name="title_clear_history_dialog">Wissen</string>
+  <string name="text_clear_history_dialog">Wilt u de hele scangeschiedenis wissen?</string>
+  <string name="export_csv_history">CSV exporteren</string>
+  <string name="txt_exporting_history">Geschiedenis exporteren…</string>
+  <string name="txt_history_exported">Geschiedenis geëxporteerd</string>
+  <string name="permision_write_external_storage">Toestemming om te schrijven naar extern opslagmedium is vereist om geschiedenis te exporteren.</string>
+  <string name="txt_nutrition_not_found">N.v.t.</string>
+  <string name="nutrition_carbohydrate">Koolhydraten</string>
+  <string name="nutrition_carbohydrate_short_name">Koolhydraat (g)</string>
+  <string name="nutrition_cholesterol">Cholesterol</string>
+  <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
+  <string name="nutrition_energy">Energie</string>
+  <string name="nutrition_energy_short_name">Energie</string>
+  <string name="nutrition_fat">Vet</string>
+  <string name="nutrition_fat_short_name">Vet (g)</string>
+  <string name="nutrition_fiber">Voedingsvezels</string>
+  <string name="nutrition_fiber_short_name">Voedingsvezels (g)</string>
+  <string name="nutrition_header">Voedingswaarden</string>
+  <string name="nutrition_no_data_message">Er zijn geen gegevens beschikbaar voor dit product</string>
+  <string name="nutrition_per_quantity">Voor 100g/100ml</string>
+  <string name="nutrition_proteins">Eiwitten</string>
+  <string name="nutrition_proteins_short_name">Eiwitten (g)</string>
+  <string name="nutrition_salt">Zout</string>
+  <string name="nutrition_salt_short_name">Zout (g)</string>
+  <string name="nutrition_satured_fat">Verzadigd vet</string>
+  <string name="nutrition_satured_fat_short_name">Verzadigd vet (g)</string>
+  <string name="nutrition_serving">Per portie</string>
+  <string name="nutrition_serving_size">Portiegrootte:</string>
+  <string name="nutrition_sodium">Natrium</string>
+  <string name="nutrition_sodium_short_name">Natrium (g)</string>
+  <string name="nutrition_sugars">Suikers</string>
+  <string name="nutrition_sugars_short_name">Suikers (g)</string>
+  <string name="nutrition_trans_fat">Transvet</string>
+  <string name="nutrition_trans_fat_short_name">Transvet (g)</string>
+  <string name="nutriment_serving_size">Per portie:</string>
+  <string name="action_manage_account">Account beheren</string>
+  <string name="action_contributes">Uw bijdragen</string>
+  <string name="website">http://world.openfoodfacts.org/</string>
+  <string name="website_contribute">http://world.openfoodfacts.org/contribute</string>
+  <string name="website_discover">http://world.openfoodfacts.org/discover</string>
+  <string name="website_product">http://world.openfoodfacts.org/product/</string>
+  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
 </resources>

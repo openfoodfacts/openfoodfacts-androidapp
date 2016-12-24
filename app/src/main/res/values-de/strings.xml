@@ -1,17 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="app_name">OpenFood</string>
+  <string name="app_name">Open Food</string>
   <string name="hello_world">Hallo Welt!</string>
   <string name="action_settings">Einstellungen</string>
   <string name="action_about">Über</string>
+  <string name="action_discover">Entdecken</string>
+  <string name="action_contribute">Mitmachen</string>
   <string name="action_find">Suchen</string>
-  <string name="text_barcode">Barcode einfügen:</string>
+  <string name="text_barcode">Strichcode einfügen</string>
   <string-array name="nav_drawer_items_product">
     <item>Zusammenfassung</item>
-    <item>Zutaten</item>
-    <item>Ernährung</item>
-    <item>Full Nutrition</item>
-    <item>Back to menu</item>
+    <item>Inhaltsstoffe</item>
+    <item>Nährwertangaben</item>
+    <item>Vollständige Nährwertangaben</item>
+    <item>Zurück zum Menü</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -40,23 +42,23 @@
     <item>cs</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
-    <item>Galician</item>
-    <item>Catalan</item>
-    <item>Czech</item>
+    <item>Englisch</item>
+    <item>Französisch</item>
+    <item>Spanisch</item>
+    <item>Italienisch</item>
+    <item>Deutsch</item>
+    <item>Japanisch</item>
+    <item>Russisch</item>
+    <item>Portugiesisch</item>
+    <item>Schwedisch</item>
+    <item>Burmesisch</item>
+    <item>Kasachisch</item>
+    <item>Armenisch</item>
+    <item>Griechisch</item>
+    <item>Hebräisch</item>
+    <item>Galicisch</item>
+    <item>Katalanisch</item>
+    <item>Tschechisch</item>
   </string-array>
   <string-array name="images_array">
     <item>Standard</item>
@@ -64,18 +66,19 @@
     <item>Inhaltsstoffe</item>
   </string-array>
   <string name="search_button">Suchen</string>
-  <string name="no_products">Kein Product gefunden</string>
+  <string name="no_products">Keine Produkte gefunden.</string>
   <string name="desc_list_item_icon">Produkt Foto</string>
   <string name="alert_dialog_warning_title">Warnung</string>
-  <string name="alert_dialog_warning_msg_user">Login/Passwort verarbeitet, bitte Information aktualisieren</string>
-  <string name="alert_dialog_product_error_msg">Produkt nicht gefunden, bitte noch mal probieren</string>
-  <string name="toast_retrieving">laden...</string>
-  <string name="txtBarcode">Barcode:</string>
+  <string name="alert_dialog_warning_msg_user">Benutzername/Passwort hat sich geändert, bitte Angaben aktualisieren.</string>
+  <string name="alert_dialog_product_error_msg">Produkt wurde nicht gefunden. Versuche es später noch einmal.</string>
+  <string name="toast_retrieving">Wird geladen …</string>
+  <string name="txtBarcode">Strichcode</string>
   <string name="txtQuantity">Menge:</string>
   <string name="txtPackaging">Verpackung:</string>
   <string name="txtBrands">Marken:</string>
   <string name="txtCategories">Kategorien :</string>
   <string name="txtManufacturing">Herstellungs- oder Umwandlungsorte:</string>
+  <string name="txtIngredientsOrigins">Herkunft der Zutaten</string>
   <string name="txtCity">Stadt und Land des Ankaufs:</string>
   <string name="txtStores">Läden:</string>
   <string name="txtCountries">Vertriebsländer:</string>
@@ -83,28 +86,35 @@
   <string name="txtSubstances">Nahrungsstoffe oder Produkte, die zur Allergie oder Überempfindlichkeit führen:</string>
   <string name="txtAdditives">Zusatzstoffe:</string>
   <string name="txtTraces">Spuren:</string>
-  <string name="txtMayBeFromPalmOilProduct">Von Palmöl abgestammte Zutaten:</string>
+  <string name="txtMayBeFromPalmOilProduct">Aus Palmöl hergestellte Zutaten</string>
   <string name="txtPalmOilProduct">Zutaten aus Palmöl:</string>
   <string name="txtServingSize">Portiongröße:</string>
-  <string name="txtNutrientLevel100g">Nahrungsbedarf pro 100 g:</string>
-  <string name="txtLogin">Login :</string>
+  <string name="txtNutrientLevel100g">Nährwertgehalt pro 100g</string>
+  <string name="txtNutritionLevelLow">gering</string>
+  <string name="txtNutritionLevelModerate">moderat</string>
+  <string name="txtNutritionLevelHigh">hoch</string>
+  <string name="txtLogin">Einloggen</string>
   <string name="txtPass">Passwort :</string>
-  <string name="txtTitleHome">Open your food und lerne kennen, was du isst</string>
-  <string name="txtUser">Beteiligter Panel</string>
-  <string name="txtToastSaved">Beteiligter gespeichert</string>
+  <string name="txtTitleHome">Veröffentliche dein Essen, und lerne was du isst</string>
+  <string name="txtHome">Open Food Facts ist eine freie Nahrungsmittel­produkt­datenbank mit Zutaten, Allergenen, Nährwertangaben and all den Kleinigkeiten die wir auf Produkt-Etikett finden können.</string>
+  <string name="txtSave">Abschicken/Speichern</string>
+  <string name="txtSignIn">Registrieren</string>
+  <string name="txtUser">Benutzerprofil</string>
+  <string name="txtToastSaved">Benutzer gespeichert</string>
   <string name="txtSalt">Salz:</string>
   <string name="txtFat">Fett:</string>
   <string name="txtSugars">Zucker:</string>
   <string name="txtSaturatedFat">gesättigte Fettsäuren:</string>
-  <string name="hintBarcode">Barcode</string>
-  <string name="hintLogin">Login</string>
+  <string name="hintBarcode">Strichcode</string>
+  <string name="hintLogin">Einloggen</string>
   <string name="hintPass">Passwort</string>
-  <string name="errorLogin">Login oder Passwort stimmen nicht</string>
-  <string name="errorWeb">Internetzugang erfolgt nicht. Hast du zufällig Netzwerk Probleme?</string>
+  <string name="errorLogin">Benutzername oder Passwort stimmen nicht</string>
+  <string name="errorWeb">Kein Internetzugang. Netzwerkverbindung überprüfen.</string>
   <string name="txtInfoLoginOk">Beteiligter gespeichert</string>
   <string name="txtInfoLoginNo">Beteiligter nicht gespeichert</string>
   <string name="txtDialogsTitle">Information</string>
   <string name="txtDialogsContent">Das gescannte Produkt befindet sich noch nicht im Open Food Facts. Möchtest du diesen hinzufügen?</string>
+  <string name="txtDialogsContentSend">Möchtest du die gespeicherten Produkte an die Datenbank senden?</string>
   <string name="txtYes">Ja</string>
   <string name="txtNo">Nein</string>
   <string name="hintNameProduct">Name</string>
@@ -112,28 +122,33 @@
   <string name="hintEnergyUnit">Energie-Maß</string>
   <string name="hintWeight">Gewicht</string>
   <string name="hintStores">Speichern</string>
+  <string name="hintBrand">Marke</string>
   <string name="txtTakePicture">Foto machen</string>
   <string name="txtSendAll">alles hochladen</string>
   <string name="txtNoData">keine Daten</string>
+  <string name="txtPictureNeeded">Mache zuerst ein Bild!</string>
   <string name="toastSending">hochladen...</string>
   <string name="dataSaved">lokal auf dem Phone gespeichert</string>
   <string name="txtInfoAddUser">Bitte Login und Passwort einfügen</string>
-  <string name="txtDataUpdated">Daten verarbeitet</string>
+  <string name="txtDataUpdated">Daten aktualisiert</string>
   <string name="txtLoading">laden...</string>
   <string name="txtDialogsContentDelete">Möchtest du diesen Eintrag löschen?</string>
   <string name="txtDialogsContentInfoSave">Produkt wurde lokal gespeichert und kann durch das Menü Offline bearbeiten überarbeitet werden</string>
   <string name="txtBarcodeRequire">Barcode erforderlich</string>
+  <string name="txtOk">Bestätigen</string>
   <string name="txtContentDialogUploading">Bitte warten bis zum Prozessende...</string>
   <string name="txtAbout">Die zu uns geschickten Fotos sind unter der free licence Creative Commons Attribution and ShareAlike Licence veröffentlicht.</string>
   <string name="txtAllsent">Produkte erfolgreich gespeichert</string>
   <string name="txtPalm">Der Produkt beinhaltet kein Palmöl</string>
   <string name="txtBarcodeNotValid">Barcode ungültig</string>
+  <string name="try_it_scan_now">Produkt scannen</string>
   <string name="share">Teilen</string>
   <string name="msg_share">Sieh dir dieses Produkt auf Open Food Facts an:</string>
   <string name="create_account">Registrieren</string>
   <string name="home_drawer">Startseite</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="search_drawer">Suchen</string>
-  <string name="search_by_barcode_drawer">Nach Barcode suchen</string>
+  <string name="search_by_barcode_drawer">Nach Strichcode suchen</string>
   <string name="search_by_name_drawer">Nach Namen suchen</string>
   <string name="scan_search">Einscannen</string>
   <string name="user_drawer">Benutzer</string>
@@ -142,7 +157,74 @@
   <string name="txt_product_not_found">Produkt nicht gefunden</string>
   <string name="delete_txt">Löschen</string>
   <string name="sign_in_drawer">Einloggen</string>
+  <string name="alert_drawer">Allergen-Alarm</string>
   <string name="warning_allergens">Enthält Allergene</string>
   <string name="title_dialog_alert">Alarm hinzufügen</string>
+  <string name="warning_alert_data">Deine Allergie-Daten sind auf keinem Fall zu dem Open Food Facts Server gesendet. Zusätzlich musst du darüber bewust sein, dass die gelieferten Daten nicht 100% richtig sein können, deshalb ist eine doppelte Prüfung immer empfohlen!</string>
   <string name="from_gallery">Aus Galerie</string>
+  <string name="product_sent">Produkt hochgeladen!</string>
+  <string name="action_edit_product">Produkt bearbeiten</string>
+  <string name="title_info_dialog">Information</string>
+  <string name="text_offline_info_dialog">Du kannst Produkte einscannen wenn du offline bist um sie später zu Open Food Facts hoch zu laden. Alle Produkte die du scanst werden hier aufgelistet damit du sie über den untenstehenden Button hochladen kannst.</string>
+  <string name="permission_camera">Um Strichcodes einzuscannen ist der Zugriff auf die Kamera erforderlich.</string>
+  <string name="permission_title">Berechtigungs-Informationen</string>
+  <string name="permission_denied">Bitte Berechtigung in den Einstellungen konfigurieren</string>
+  <string name="permission_storage">Zugriff auf den Speicher wird gebracht um Bilder auf zu nehmen oder aus zu wählen.</string>
+  <string name="info_download_data">Um diese Funktion durchfüḧren zu lassen, müssen einige Daten heruntergeladen werden. Bitte drücke Ja, um den Download zu starten.</string>
+  <string name="info_download_data_connection">Um diese Funktion durchfüḧren zu lassen, müssen einige Daten heruntergeladen werden. Bitte aktiviere deine Internetverbindung.</string>
+  <string name="msg_input_empty">Felder müssen zuerst ausgefüllt werden!</string>
+  <string name="new_offline_info">Nimm bitte ein Bild von dem Produkt, von den Zutaten, den Nährwertangaben und jeder anderen Information auf dem Etikett auf. Danke!</string>
+  <string name="error_invalid_password">Das Passwort muss eine mindestens 6 Zeichen lang sein.</string>
+  <string name="error_field_required">Das Feld ist erforderlich</string>
+  <string name="action_preferences">Einstellungen</string>
+  <string name="prefs_scan_startup">Scannen beim Starten</string>
+  <string name="prefs_scan_startup_summary">Wenn diese Option eingeschaltet ist, wird die App beim öffnen einen Scan durchführen.</string>
+  <string name="prefs_power_mode">Power mode scan</string>
+  <string name="prefs_power_mode_summary">Schneller Produk-scan im Supermarkt um heraus zu finden welche Produkte nicht in der Datenbank sind.</string>
+  <string name="prefs_language">Sprache</string>
+  <string name="prefs_language_summary">Sprache wählen</string>
+  <string name="scan_history_drawer">Verlauf</string>
+  <string name="clear_history">Verlauf löschen</string>
+  <string name="title_clear_history_dialog">Leeren</string>
+  <string name="text_clear_history_dialog">Möchtest du den gesamten Scan-Verlauf löschen?</string>
+  <string name="export_csv_history">Als CSV Exportieren</string>
+  <string name="txt_exporting_history">Exportiere Verlauf…</string>
+  <string name="txt_history_exported">Verlauf Exportiert</string>
+  <string name="permision_write_external_storage">Berechtigung zum Lesen von SD-Karten-Inhalten ist erforderlich um den Verlauf zu exportieren.</string>
+  <string name="txt_nutrition_not_found">k.A.</string>
+  <string name="nutrition_carbohydrate">Kohlenhydrate</string>
+  <string name="nutrition_carbohydrate_short_name">Kohlenhydrate (g)</string>
+  <string name="nutrition_cholesterol">Cholesterin</string>
+  <string name="nutrition_cholesterol_short_name">Cholesterin (g)</string>
+  <string name="nutrition_energy">Energie</string>
+  <string name="nutrition_energy_short_name">Energie</string>
+  <string name="nutrition_fat">Fett</string>
+  <string name="nutrition_fat_short_name">Fett (g)</string>
+  <string name="nutrition_fiber">Ballaststoffe</string>
+  <string name="nutrition_fiber_short_name">Ballaststoffe (g)</string>
+  <string name="nutrition_header">Nährwertangaben</string>
+  <string name="nutrition_no_data_message">Zu diesem Produkt sind keine Daten verfügbar.</string>
+  <string name="nutrition_per_quantity">Für 100g/100ml</string>
+  <string name="nutrition_proteins">Eiweiß</string>
+  <string name="nutrition_proteins_short_name">Eiweiß (g)</string>
+  <string name="nutrition_salt">Salz</string>
+  <string name="nutrition_salt_short_name">Salz (g)</string>
+  <string name="nutrition_satured_fat">Gesättigte Fette</string>
+  <string name="nutrition_satured_fat_short_name">Gesättigte Fette (g)</string>
+  <string name="nutrition_serving">Pro Portion</string>
+  <string name="nutrition_serving_size">Portiongröße:</string>
+  <string name="nutrition_sodium">Natrium</string>
+  <string name="nutrition_sodium_short_name">Natrium (g)</string>
+  <string name="nutrition_sugars">Zucker</string>
+  <string name="nutrition_sugars_short_name">Zucker (g)</string>
+  <string name="nutrition_trans_fat">Transfette</string>
+  <string name="nutrition_trans_fat_short_name">Transfette (g)</string>
+  <string name="nutriment_serving_size">Pro Portion</string>
+  <string name="action_manage_account">Konto verwalten</string>
+  <string name="action_contributes">Deine Beiträge</string>
+  <string name="website">http://de.openfoodfacts.org/</string>
+  <string name="website_contribute">http://de.openfoodfacts.org/contribute</string>
+  <string name="website_discover">http://de.openfoodfacts.org/discover</string>
+  <string name="website_product">http://world.openfoodfacts.org/product/</string>
+  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
 </resources>

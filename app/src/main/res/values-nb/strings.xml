@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Open Food</string>
+  <string name="hello_world">Hei verden!</string>
+  <string name="action_settings">Innstillinger</string>
+  <string name="action_about">Om</string>
+  <string name="action_discover">Utforsk</string>
+  <string name="action_contribute">Bidra</string>
+  <string name="action_find">Søk</string>
+  <string name="text_barcode">Skriv inn strekkoden</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Sammendrag</item>
+    <item>Ingredienser</item>
+    <item>Ernæring</item>
+    <item>Fullstendig ernæringsinformasjon</item>
+    <item>Tilbake til menyen</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>no</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>Engelsk</item>
+    <item>Fransk</item>
+    <item>Spansk</item>
+    <item>Italiensk</item>
+    <item>Tysk</item>
+    <item>Japansk</item>
+    <item>Russisk</item>
+    <item>Portugisisk</item>
+    <item>Svensk</item>
+    <item>Burmesisk</item>
+    <item>Kasakhisk</item>
+    <item>Armensk</item>
+    <item>Gresk</item>
+    <item>Hebraisk</item>
+    <item>Galisisk</item>
+    <item>Katalansk</item>
+    <item>Tsjekkisk</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Standardinnstiling</item>
+    <item>Ernæring</item>
+    <item>Ingredienser</item>
+  </string-array>
+  <string name="search_button">Søk</string>
+  <string name="no_products">Produktene ble ikke funnet</string>
+  <string name="desc_list_item_icon">Item Icon</string>
+  <string name="alert_dialog_warning_title">Advarsel</string>
+  <string name="alert_dialog_warning_msg_user">Brukernavn/passord er endret, vennligst oppdater dine innloggingsdetaljer</string>
+  <string name="alert_dialog_product_error_msg">Produktet ble ikke funnet, vennligst prøv igjen</string>
+  <string name="toast_retrieving">Laster...</string>
+  <string name="txtBarcode">Strekkode :</string>
+  <string name="txtQuantity">Størrelse (vekt/volum):</string>
+  <string name="txtPackaging">Emballasje :</string>
+  <string name="txtBrands">Merke:</string>
+  <string name="txtCategories">Kategori:</string>
+  <string name="txtManufacturing">Produksjonssted eller bearbeidelsesssted:</string>
+  <string name="txtIngredientsOrigins">Opprinnelse ingredienser</string>
+  <string name="txtCity">By, eventuelt region og land der produktet ble kjøpt</string>
+  <string name="txtStores">Butikker:</string>
+  <string name="txtCountries">Land der produktet selges:</string>
+  <string name="txtIngredients">Liste over ingredienser:</string>
+  <string name="txtSubstances">Stoffer eller produkter som fremkaller allergiske reaksjoner eller intoleranse</string>
+  <string name="txtAdditives">Tilsetningsstoffer:</string>
+  <string name="txtTraces">Kan finnes spor av:</string>
+  <string name="txtMayBeFromPalmOilProduct">Ingredienser som kan stamme fra palmeolje:</string>
+  <string name="txtPalmOilProduct">Ingredienser fra palmeolje:</string>
+  <string name="txtServingSize">Porsjonsstørrelse:</string>
+  <string name="txtNutrientLevel100g">Ernæringsinnhold per 100 g:</string>
+  <string name="txtNutritionLevelLow">lav</string>
+  <string name="txtNutritionLevelModerate">moderat</string>
+  <string name="txtNutritionLevelHigh">høy</string>
+  <string name="txtLogin">Logg på:</string>
+  <string name="txtPass">Passord :</string>
+  <string name="txtTitleHome">Åpne maten din og vit hva du spiser</string>
+  <string name="txtHome">Open Food Facts er en åpen database med oversikt over norske og globale matprodukter. Vi har blant annet oversikt over ingredienser, allergener, ernæringsinformasjon og all mulig annen nyttig informasjon som vi kan finne på etiketten.</string>
+  <string name="txtSave">Send/Lagre</string>
+  <string name="txtSignIn">Logg på</string>
+  <string name="txtUser">Brukerpanel</string>
+  <string name="txtToastSaved">Bruker lagret</string>
+  <string name="txtSalt">Salt :</string>
+  <string name="txtFat">Fett :</string>
+  <string name="txtSugars">Sukker :</string>
+  <string name="txtSaturatedFat">Mettet fett :</string>
+  <string name="hintBarcode">Strekkode</string>
+  <string name="hintLogin">Logg på</string>
+  <string name="hintPass">Passord</string>
+  <string name="errorLogin">Innloggings- eller passordfeil</string>
+  <string name="errorWeb">Vi klarte ikke å koble til internett. Har du tilkoblingsproblemer?</string>
+  <string name="txtInfoLoginOk">Bruker lagret</string>
+  <string name="txtInfoLoginNo">Bruker ikke lagret</string>
+  <string name="txtDialogsTitle">Informasjon</string>
+  <string name="txtDialogsContent">Produktet du skannet finnes ikke enda i Open Food Facts. Vil du legge det til?</string>
+  <string name="txtDialogsContentSend">Ønsker du å sende de lagrede produktene til databasen?</string>
+  <string name="txtYes">Ja</string>
+  <string name="txtNo">Nei</string>
+  <string name="hintNameProduct">Navn</string>
+  <string name="hintEnergy">Energy i kJ per porsjon</string>
+  <string name="hintEnergyUnit">Energienhet</string>
+  <string name="hintWeight">Vekt</string>
+  <string name="hintStores">Butikk</string>
+  <string name="hintBrand">Merke</string>
+  <string name="txtTakePicture">Ta bilde</string>
+  <string name="txtSendAll">Last opp alle</string>
+  <string name="txtNoData">Ingen data</string>
+  <string name="txtPictureNeeded">Ta et bilde først!</string>
+  <string name="toastSending">Laster opp …</string>
+  <string name="dataSaved">Lagret lokalt på din enhet</string>
+  <string name="txtInfoAddUser">Vennligst fyll inn ditt brukernavn og passord</string>
+  <string name="txtDataUpdated">Data lastet opp</string>
+  <string name="txtLoading">Laster...</string>
+  <string name="txtDialogsContentDelete">Vil du slette dette utkastet?</string>
+  <string name="txtDialogsContentInfoSave">P</string>
+  <string name="txtBarcodeRequire">Strekkode behøves</string>
+  <string name="txtOk">OK</string>
+  <string name="txtContentDialogUploading">Ikke logg av eller lukk siden mens prosessen pågår...</string>
+  <string name="txtAbout">Bildene du laster opp blir publisert i henhold til The Free Licence Creative Commons Attribution og ShareAlike.</string>
+  <string name="txtAllsent">Produkter sendt</string>
+  <string name="txtPalm">Produktet inneholder ikke palmeolje</string>
+  <string name="txtBarcodeNotValid">Strekkode ikke gyldig</string>
+  <string name="try_it_scan_now">Skann produktet</string>
+  <string name="share">Del</string>
+  <string name="msg_share">Se på dette produktet på Open Food Facts :</string>
+  <string name="create_account">Registrer deg</string>
+  <string name="home_drawer">Hjem</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
+  <string name="search_drawer">Søk</string>
+  <string name="search_by_barcode_drawer">Søk etter strekkode</string>
+  <string name="search_by_name_drawer">Søk etter navn</string>
+  <string name="scan_search">Skann</string>
+  <string name="user_drawer">Bruker</string>
+  <string name="offline_edit_drawer">Rediger i frakoblet modus</string>
+  <string name="txt_anonymous">Anonym</string>
+  <string name="txt_product_not_found">Produktene ble ikke funnet</string>
+  <string name="delete_txt">Slett</string>
+  <string name="sign_in_drawer">Logg inn</string>
+  <string name="alert_drawer">Allergenvarsel</string>
+  <string name="warning_allergens">Inneholder allergener</string>
+  <string name="title_dialog_alert">Legg til varsel</string>
+  <string name="warning_alert_data">"Informasjon om allergiene dine vil aldri bli sendt til Open Food Facts sin server. Vær forsiktig og dobbeltsjekk informasjon  på etiketten selv, da informasjon på Open Food Facts kan være ufullstendig eller ikke 100% oppdatert."</string>
+  <string name="from_gallery">Fra galleri</string>
+  <string name="product_sent">Produkt sendt!</string>
+  <string name="action_edit_product">Rediger produkt</string>
+  <string name="title_info_dialog">Informasjon</string>
+  <string name="text_offline_info_dialog">Du kan skanne produkter når du er frakoblet og legge dem til Open Food Facts senere. Alle produktene du skanner vil vises her, og du kan sende dem til databasen ved å klikke på knappen nedenfor.</string>
+  <string name="permission_camera">Vi trenger tilgang til kameraet for å kunne skanne strekkoden</string>
+  <string name="permission_title">Informasjon om tillatelse</string>
+  <string name="permission_denied">Vennligst aktiver tillatelsen i Innstillinger</string>
+  <string name="permission_storage">Godkjenn at Open Food Facts har tilgang til å lagre bildene dine</string>
+  <string name="info_download_data">Du må laste ned en liste med tilleggsinformasjon for at denne funksjonaliteten skal fungere, klikk \"Ja\" for å laste ned.</string>
+  <string name="info_download_data_connection">Du må laste ned noe tilleggsinformasjon for at denne funksjonaliteten skal fungere. Vennligst aktiver internettilkoblingen.</string>
+  <string name="msg_input_empty">Skriv inn informasjon først!</string>
+  <string name="new_offline_info">Vennlist ta et bilde av produktet, ingredienser, ernæringsinnhold og eventuell annen informasjon som finnes på etiketten. Tusen takk!</string>
+  <string name="error_invalid_password">Passordet må være minst 6 tegn</string>
+  <string name="error_field_required">Dette feltet er obligatorisk.</string>
+  <string name="action_preferences">Brukervalg</string>
+  <string name="prefs_scan_startup">Skann ved oppstart</string>
+  <string name="prefs_scan_startup_summary">Dette alternativet åpner skanneren automatisk når appen åpnes</string>
+  <string name="prefs_power_mode">Skanning hurtigmodus</string>
+  <string name="prefs_power_mode_summary">Skann produkter i en butikk rask og enkelt for å se hvilke som ikke finnes i databasen</string>
+  <string name="prefs_language">Språk</string>
+  <string name="prefs_language_summary">Velg språk</string>
+  <string name="scan_history_drawer">Historikk</string>
+  <string name="clear_history">Tøm historikk</string>
+  <string name="title_clear_history_dialog">Tøm</string>
+  <string name="text_clear_history_dialog">Ønsker du å tømme din skanne-historikk?</string>
+  <string name="export_csv_history">Eksporter CSV</string>
+  <string name="txt_exporting_history">Eksporterer historikk...</string>
+  <string name="txt_history_exported">Historikk eksportert</string>
+  <string name="permision_write_external_storage">Tilgang til ekstern lagring er nødvendig for å eksportere historikken</string>
+  <string name="txt_nutrition_not_found">N/A</string>
+  <string name="nutrition_carbohydrate">Karbohydrater</string>
+  <string name="nutrition_carbohydrate_short_name">Karbohydrater (g)</string>
+  <string name="nutrition_cholesterol">Kolesterol</string>
+  <string name="nutrition_cholesterol_short_name">Kolesterol (g)</string>
+  <string name="nutrition_energy">Energi</string>
+  <string name="nutrition_energy_short_name">Energiinnhold</string>
+  <string name="nutrition_fat">Fett</string>
+  <string name="nutrition_fat_short_name">Fett (g)</string>
+  <string name="nutrition_fiber">Fiber</string>
+  <string name="nutrition_fiber_short_name">Fiber (g)</string>
+  <string name="nutrition_header">Ernæringsinnhold</string>
+  <string name="nutrition_no_data_message">Vi har ikke data tilgjengelig for dette produktet</string>
+  <string name="nutrition_per_quantity">Per 100 g / 100 ml</string>
+  <string name="nutrition_proteins">Protein</string>
+  <string name="nutrition_proteins_short_name">Protein (g)</string>
+  <string name="nutrition_salt">Salt</string>
+  <string name="nutrition_salt_short_name">Salt (g)</string>
+  <string name="nutrition_satured_fat">Mettet fett</string>
+  <string name="nutrition_satured_fat_short_name">Mettet fett (g)</string>
+  <string name="nutrition_serving">Per porsjon</string>
+  <string name="nutrition_serving_size">Porsjonsstørrelse:</string>
+  <string name="nutrition_sodium">Natrium</string>
+  <string name="nutrition_sodium_short_name">Natrium (g)</string>
+  <string name="nutrition_sugars">Sukker</string>
+  <string name="nutrition_sugars_short_name">Sukker (g)</string>
+  <string name="nutrition_trans_fat">Trans-fett</string>
+  <string name="nutrition_trans_fat_short_name">Trans-fett (g)</string>
+  <string name="nutriment_serving_size">Per porsjon:</string>
+  <string name="action_manage_account">Administrer konto</string>
+  <string name="action_contributes">Dine bidrag</string>
+  <string name="website">http://world.openfoodfacts.org/</string>
+  <string name="website_contribute">http://world.openfoodfacts.org/contribute</string>
+  <string name="website_discover">http://world.openfoodfacts.org/discover</string>
+  <string name="website_product">http://world.openfoodfacts.org/product/</string>
+  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
+</resources>
