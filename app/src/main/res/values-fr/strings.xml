@@ -40,6 +40,18 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Anglais</item>
@@ -59,6 +71,18 @@
     <item>Galicien</item>
     <item>Catalan</item>
     <item>Tchèque</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
   </string-array>
   <string-array name="images_array">
     <item>Defaut</item>
@@ -75,7 +99,7 @@
   <string name="txtBarcode">Code barre :</string>
   <string name="txtQuantity">Quantité :</string>
   <string name="txtPackaging">Conditionnement :</string>
-  <string name="txtBrands">Marques :</string>
+  <string name="txtBrands">Magasins :</string>
   <string name="txtCategories">Catégories :</string>
   <string name="txtManufacturing">Lieux de fabrication ou de transformation :</string>
   <string name="txtIngredientsOrigins">Origine des ingrédients :</string>
@@ -227,7 +251,7 @@
   <string name="website_discover">http://world-fr.openfoodfacts.org/decouvrir</string>
   <string name="website_product">http://world-fr.openfoodfacts.org/produit/</string>
   <string name="website_contributor">http://world-fr.openfoodfacts.org/contributeur/</string>
-  <string name="logout_drawer">Logout</string>
-  <string name="txtLabels">"Labels, certifications, récompenses : "</string>
-  <string name="textCarbonFootprint">"Empreinte carbone / émissions de CO2 : "</string>
+ <string name="logout_drawer">Logout</string>
+ <string name="txtLabels">"Labels, certifications, récompenses : "</string>
+ <string name="textCarbonFootprint">"Empreinte carbone / émissions de CO2 : "</string>
 </resources>
