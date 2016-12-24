@@ -116,6 +116,11 @@ public class OfflineEditFragment extends BaseFragment {
 
     @OnClick(R.id.buttonSendAll)
     protected void onSendAllProducts() {
+        List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
+        if (listSaveProduct.size() == 0) {
+            Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
+            return;
+        }
         new MaterialDialog.Builder(getActivity())
                 .title(R.string.txtDialogsTitle)
                 .content(R.string.txtDialogsContentSend)
