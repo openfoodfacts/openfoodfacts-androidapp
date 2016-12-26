@@ -10,7 +10,7 @@
     <item>Summary</item>
     <item>Ingrediente</item>
     <item>Nutrition</item>
-    <item>Full Nutrition</item>
+    <item>Nutrition Table</item>
     <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
@@ -38,6 +38,18 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
@@ -57,6 +69,18 @@
     <item>Galician</item>
     <item>Catalan</item>
     <item>Czech</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
@@ -113,7 +137,6 @@
   <string name="txtTakePicture">Fotografiați</string>
   <string name="txtSendAll">Trimiteți toate produsele</string>
   <string name="txtNoData">Lipsă date</string>
-  <string name="txtPictureNeeded">Fotografiați mai întâi!</string>
   <string name="toastSending">Se trimite...</string>
   <string name="dataSaved">Salvat local pe dispozitiv</string>
   <string name="txtInfoAddUser">Introduceți numele de utilizator și parola</string>
@@ -146,7 +169,6 @@
   <string name="action_edit_product">Modificare produs</string>
   <string name="title_info_dialog">Informaţii</string>
   <string name="text_offline_info_dialog">Puteți scana produse cand sunteți offline pentru a le adăuga la Open Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de dedesubt.</string>
-  <string name="msg_input_empty">Completați mai întai!</string>
   <string name="new_offline_info">Vă rugăm fotografiați produsul, lista sa de ingrediente, informațiile nutriționale și oricare alte informații prezente pe eticheta. Vă mulțumim!</string>
   <string name="error_invalid_password">Parola trebuie să fie de cel puțin 6 caractere.</string>
   <string name="action_preferences">Preferinţe</string>

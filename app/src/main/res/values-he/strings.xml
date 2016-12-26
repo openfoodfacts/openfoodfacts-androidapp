@@ -12,7 +12,7 @@
     <item>תקציר</item>
     <item>רכיבים</item>
     <item>תזונה</item>
-    <item>תזונה מלאה</item>
+    <item>Nutrition Table</item>
     <item>חזרה לתפריט</item>
   </string-array>
   <string-array name="units_array">
@@ -40,6 +40,18 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>אנגלית</item>
@@ -59,6 +71,18 @@
     <item>גליסית</item>
     <item>קטלאנית</item>
     <item>Czech</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
   </string-array>
   <string-array name="images_array">
     <item>בררת מחדל</item>
@@ -125,7 +149,6 @@
   <string name="txtTakePicture">צילום תמונה</string>
   <string name="txtSendAll">לשלוח הכול</string>
   <string name="txtNoData">אין נתונים</string>
-  <string name="txtPictureNeeded">יש לצלם תמונה תחילה!</string>
   <string name="toastSending">מתבצעת שליחה…</string>
   <string name="dataSaved">נשמר מקומית בהתקן שלך</string>
   <string name="txtInfoAddUser">נא להזין את שם המשתמש והססמה שלך</string>
@@ -162,11 +185,8 @@
   <string name="product_sent">המוצר נשלח!</string>
   <string name="action_edit_product">עריכת מוצר</string>
   <string name="title_info_dialog">פרטים</string>
-  <string name="permission_camera">נדרשות הרשאות מצלמה כדי לסרוק ברקוד.</string>
   <string name="permission_title">פרטי הרשאה</string>
   <string name="permission_denied">נא להפעיל את ההרשאות בהגדרות</string>
-  <string name="permission_storage">נדרש אחסון כדי לצלם או לבחור תמונות</string>
-  <string name="msg_input_empty">יש למלא את הקלט תחילה!</string>
   <string name="new_offline_info">נא לצלם תמונות של המוצר, רכיביו, טבלת ערכיו התזונתיים וכל מידע נוסף שעל התווית. תודה!</string>
   <string name="error_invalid_password">הססמה חייבת להיות באורך של 6 תווים לפחות.</string>
   <string name="error_field_required">זהו שדה חובה.</string>

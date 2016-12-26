@@ -10,7 +10,7 @@
     <item>Summary</item>
     <item>Ingredients</item>
     <item>Nutrition</item>
-    <item>Full Nutrition</item>
+    <item>Nutrition Table</item>
     <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
@@ -38,6 +38,18 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
@@ -57,6 +69,18 @@
     <item>Galician</item>
     <item>Catalan</item>
     <item>Czech</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
@@ -119,7 +143,6 @@
   <string name="txtTakePicture">Take a picture</string>
   <string name="txtSendAll">Upload all</string>
   <string name="txtNoData">No data</string>
-  <string name="txtPictureNeeded">Take a picture first!</string>
   <string name="toastSending">Uploading...</string>
   <string name="dataSaved">Saved locally on your device</string>
   <string name="txtInfoAddUser">Please enter your login and password</string>
@@ -156,10 +179,8 @@
   <string name="action_edit_product">Edit product</string>
   <string name="title_info_dialog">Information</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
-  <string name="permission_camera">Camera permission is needed to scan barcode.</string>
   <string name="permission_title">Permission information</string>
   <string name="permission_denied">Please activate permission in the settings</string>
-  <string name="permission_storage">Storage is needed to take or choose pictures</string>
   <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
   <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
 </resources>

@@ -12,7 +12,7 @@
     <item>サマリー</item>
     <item>原材料</item>
     <item>栄養</item>
-    <item>すべての栄養成分</item>
+    <item>栄養成分表</item>
     <item>メニューに戻る</item>
   </string-array>
   <string-array name="units_array">
@@ -23,23 +23,35 @@
     <item>ml</item>
   </string-array>
   <string-array name="lang_array">
-    <item>英語</item>
-    <item>フランス語</item>
-    <item>スペイン語</item>
-    <item>イタリア語</item>
-    <item>ドイツ語</item>
-    <item>日本語</item>
-    <item>ロシア語</item>
-    <item>ポルトガル語</item>
-    <item>スウェーデン語</item>
-    <item>ビルマ語</item>
-    <item>カザフ語</item>
-    <item>アルメニア語</item>
-    <item>ギリシャ語</item>
-    <item>ヘブライ語</item>
-    <item>ガリシア語</item>
-    <item>カタロニア語</item>
-    <item>チェコ語</item>
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>英語</item>
@@ -59,6 +71,18 @@
     <item>ガリシア語</item>
     <item>カタロニア語</item>
     <item>チェコ語</item>
+    <item>アラビア語</item>
+    <item>フィンランド語</item>
+    <item>ヒンディー語</item>
+    <item>カビル語</item>
+    <item>朝鮮語</item>
+    <item>ラトビア語</item>
+    <item>オランダ語</item>
+    <item>ブラジルポルトガル語</item>
+    <item>ルーマニア語</item>
+    <item>スウェーデン語</item>
+    <item>中国語</item>
+    <item>ノルウェー語 (ブークモール)</item>
   </string-array>
   <string-array name="images_array">
     <item>デフォルト</item>
@@ -77,6 +101,7 @@
   <string name="txtPackaging">パッケージ :</string>
   <string name="txtBrands">ブランド :</string>
   <string name="txtCategories">カテゴリー :</string>
+  <string name="txtLabels">ラベル、認定、表彰 :</string>
   <string name="txtManufacturing">製造または加工場所 :</string>
   <string name="txtIngredientsOrigins">原材料の原産地 :</string>
   <string name="txtCity">購入した市区町村、都道府県、国 :</string>
@@ -126,7 +151,7 @@
   <string name="txtTakePicture">写真を撮影</string>
   <string name="txtSendAll">すべてアップロード</string>
   <string name="txtNoData">データはありません</string>
-  <string name="txtPictureNeeded">まず写真を撮ってください!</string>
+  <string name="txtPictureNeeded">まず写真を撮ってください</string>
   <string name="toastSending">アップロードしています...</string>
   <string name="dataSaved">お使いのデバイス内に保存しました</string>
   <string name="txtInfoAddUser">ログインとパスワードを入力してください</string>
@@ -166,13 +191,13 @@
   <string name="action_edit_product">製品を編集</string>
   <string name="title_info_dialog">情報</string>
   <string name="text_offline_info_dialog">オフライン時に製品をスキャンして、後で Open Food Facts に追加するすることができます。スキャンする製品がすべてここに表示されます。下のボタンを使用してそれらを送信することができます。</string>
-  <string name="permission_camera">バーコードをスキャンするためにカメラのアクセス許可が必要です。</string>
+  <string name="permission_camera">バーコードのスキャンと写真の撮影には、カメラのアクセス許可が必要です。</string>
   <string name="permission_title">アクセス許可情報</string>
   <string name="permission_denied">設定でアクセス許可を有効にしてください</string>
-  <string name="permission_storage">写真を撮ったり選択するために、ストレージが必要です</string>
+  <string name="permission_storage">写真を撮ったり選択したりするにはストレージのアクセス許可が必要です</string>
   <string name="info_download_data">この機能を動作させるために、いくつかのデータをダウンロードする必要があります。ダウンロードするには、はい を押してください。</string>
   <string name="info_download_data_connection">この機能を動作させるために、いくつかのデータをダウンロードする必要があります。インターネット接続を有効にしてください。</string>
-  <string name="msg_input_empty">先に入力してください!</string>
+  <string name="msg_input_empty">まず項目を入力してください。</string>
   <string name="new_offline_info">製品、原材料、栄養成分表、およびラベル上の他の情報を撮影してください。 ありがとうございます!</string>
   <string name="error_invalid_password">パスワードは6文字以上にする必要があります。</string>
   <string name="error_field_required">このフィールドは必須入力です。</string>
@@ -227,4 +252,7 @@
   <string name="website_discover">http://jp.openfoodfacts.org/discover</string>
   <string name="website_product">http://jp.openfoodfacts.org/product/</string>
   <string name="website_contributor">http://jp.openfoodfacts.org/contributor/</string>
+  <string name="logout_drawer">ログアウト</string>
+  <string name="contribution_without_account">サインイン、またはアカウントを作成して、貢献を続けることができます</string>
+  <string name="textCarbonFootprint">"カーボンフットプリント / CO2 排出量: "</string>
 </resources>

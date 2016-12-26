@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-24 08:45+0100\n"
-"PO-Revision-Date: 2016-12-16 06:39+0000\n"
-"Last-Translator: AungKhantBo <aungkhantbo@yahoo.com>\n"
+"POT-Creation-Date: 2016-12-26 18:38+0100\n"
+"PO-Revision-Date: 2016-12-26 13:56+0000\n"
+"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: my\n"
 "Language-Team: Burmese <my@li.org>\n"
 "Plural-Forms: nplurals=1; plural=(0)\n"
@@ -67,10 +67,9 @@ msgid "Nutrition"
 msgstr "အဟာရဓါတ်"
 
 #. Nav Drawer Product Menu Items
-#, fuzzy
 msgctxt "nav_drawer_items_product:3"
 msgid "Nutrition Table"
-msgstr "အဟာရဓါတ်အကုန်"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
@@ -190,17 +189,17 @@ msgstr "cs"
 #. Text units
 msgctxt "lang_array:17"
 msgid "ar"
-msgstr ""
+msgstr "ar"
 
 #. Text units
 msgctxt "lang_array:18"
 msgid "fi"
-msgstr ""
+msgstr "fi"
 
 #. Text units
 msgctxt "lang_array:19"
 msgid "hi"
-msgstr ""
+msgstr "hi"
 
 #. Text units
 msgctxt "lang_array:20"
@@ -210,42 +209,42 @@ msgstr ""
 #. Text units
 msgctxt "lang_array:21"
 msgid "ko"
-msgstr ""
+msgstr "ko"
 
 #. Text units
 msgctxt "lang_array:22"
 msgid "lv"
-msgstr ""
+msgstr "lv"
 
 #. Text units
 msgctxt "lang_array:23"
 msgid "nl"
-msgstr ""
+msgstr "nl"
 
 #. Text units
 msgctxt "lang_array:24"
 msgid "pt-rBR"
-msgstr ""
+msgstr "pt-rBR"
 
 #. Text units
 msgctxt "lang_array:25"
 msgid "ro"
-msgstr ""
+msgstr "ro"
 
 #. Text units
 msgctxt "lang_array:26"
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #. Text units
 msgctxt "lang_array:27"
 msgid "zh"
-msgstr ""
+msgstr "zh"
 
 #. Text units
 msgctxt "lang_array:28"
 msgid "nb"
-msgstr ""
+msgstr "nb"
 
 msgctxt "lang_label_array:0"
 msgid "English"
@@ -635,10 +634,9 @@ msgctxt "txtNoData"
 msgid "No data"
 msgstr "အချက်အလက်မရှိ"
 
-#, fuzzy
 msgctxt "txtPictureNeeded"
 msgid "Please take a picture first"
-msgstr "ဓါတ်ပုံအရင်ရိုက်ပါ"
+msgstr ""
 
 msgctxt "toastSending"
 msgid "Uploading..."
@@ -808,7 +806,6 @@ msgid ""
 "send them using the button below."
 msgstr ""
 
-#, fuzzy
 msgctxt "permission_camera"
 msgid "Camera permission is needed to scan barcodes and take pictures."
 msgstr ""
@@ -821,7 +818,6 @@ msgctxt "permission_denied"
 msgid "Please activate permission in the settings"
 msgstr ""
 
-#, fuzzy
 msgctxt "permission_storage"
 msgid "Storage permission is needed to take or select pictures"
 msgstr ""
@@ -838,7 +834,6 @@ msgid ""
 "activate internet connection."
 msgstr ""
 
-#, fuzzy
 msgctxt "msg_input_empty"
 msgid "Please fill the fields first."
 msgstr ""

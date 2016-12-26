@@ -9,7 +9,7 @@
     <item>Resumo</item>
     <item>Ingredientes</item>
     <item>Nutrição</item>
-    <item>Full Nutrition</item>
+    <item>Nutrition Table</item>
     <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
@@ -37,6 +37,18 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
@@ -56,6 +68,18 @@
     <item>Galician</item>
     <item>Catalan</item>
     <item>Czech</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
   </string-array>
   <string-array name="images_array">
     <item>Padrão</item>

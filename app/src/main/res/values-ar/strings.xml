@@ -12,7 +12,7 @@
     <item>الملخص</item>
     <item>المكونات</item>
     <item>التغذية</item>
-    <item>تغذية كاملة</item>
+    <item>Nutrition Table</item>
     <item>العودة إلى القائمة</item>
   </string-array>
   <string-array name="units_array">
@@ -40,6 +40,18 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>الإنجليزية</item>
@@ -59,6 +71,18 @@
     <item>الجاليكية</item>
     <item>الكاتالونية</item>
     <item>التشيكية</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
   </string-array>
   <string-array name="images_array">
     <item>إفتراضي</item>
@@ -123,7 +147,6 @@
   <string name="txtTakePicture">إلتقاط صورة</string>
   <string name="txtSendAll">أرسل الكل</string>
   <string name="txtNoData">لا توجد بيانات</string>
-  <string name="txtPictureNeeded">التقط صورة أولاً!</string>
   <string name="toastSending">جاري الإرسال...</string>
   <string name="dataSaved">تم الحفظ محليا على جهازك</string>
   <string name="txtInfoAddUser">الرجاء إدخال اسم المستخدم وكلمة المرور الخاصة بك</string>

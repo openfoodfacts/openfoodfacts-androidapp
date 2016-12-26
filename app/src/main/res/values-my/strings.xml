@@ -11,7 +11,7 @@
     <item>အက်ဥ္းခ်ဳပ္</item>
     <item>ပါဝင္မႈမ်ား</item>
     <item>အဟာရဓါတ်</item>
-    <item>အဟာရဓါတ်အကုန်</item>
+    <item>Nutrition Table</item>
     <item>မီနူးဆီသို့ပြန်သွားမည်။</item>
   </string-array>
   <string-array name="units_array">
@@ -39,6 +39,18 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>အင်္ဂလိပ်</item>
@@ -58,6 +70,18 @@
     <item>ဂလစ်စီယန်</item>
     <item>Catalan</item>
     <item>Czech</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
   </string-array>
   <string-array name="images_array">
     <item>မူလအတိုင္း</item>
@@ -121,7 +145,6 @@
   <string name="txtTakePicture">ဓါတ်ပုံရိုက်ရန်</string>
   <string name="txtSendAll">အားလံုးကိုတင္မည္</string>
   <string name="txtNoData">အချက်အလက်မရှိ</string>
-  <string name="txtPictureNeeded">ဓါတ်ပုံအရင်ရိုက်ပါ</string>
   <string name="toastSending">တင္ေနသည္</string>
   <string name="dataSaved">သင့္ကိရိယာတြင္ ခဏသိမ္းထားမည္</string>
   <string name="txtInfoAddUser">သင္ဝင္ေရာက္မႈႏွင့္စကားဝွက္ကိုရိုက္ထည့္ပါ</string>

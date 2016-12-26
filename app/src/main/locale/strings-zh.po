@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-24 08:45+0100\n"
+"POT-Creation-Date: 2016-12-26 18:38+0100\n"
 "PO-Revision-Date: 2016-06-01 07:30+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: zh\n"
@@ -67,7 +67,6 @@ msgid "Nutrition"
 msgstr ""
 
 #. Nav Drawer Product Menu Items
-#, fuzzy
 msgctxt "nav_drawer_items_product:3"
 msgid "Nutrition Table"
 msgstr ""
@@ -629,7 +628,6 @@ msgctxt "txtNoData"
 msgid "No data"
 msgstr ""
 
-#, fuzzy
 msgctxt "txtPictureNeeded"
 msgid "Please take a picture first"
 msgstr ""
@@ -798,7 +796,6 @@ msgid ""
 "send them using the button below."
 msgstr ""
 
-#, fuzzy
 msgctxt "permission_camera"
 msgid "Camera permission is needed to scan barcodes and take pictures."
 msgstr ""
@@ -811,7 +808,6 @@ msgctxt "permission_denied"
 msgid "Please activate permission in the settings"
 msgstr ""
 
-#, fuzzy
 msgctxt "permission_storage"
 msgid "Storage permission is needed to take or select pictures"
 msgstr ""
@@ -828,7 +824,6 @@ msgid ""
 "activate internet connection."
 msgstr ""
 
-#, fuzzy
 msgctxt "msg_input_empty"
 msgid "Please fill the fields first."
 msgstr ""

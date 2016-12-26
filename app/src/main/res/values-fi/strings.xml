@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="app_name">Open Food</string>
   <string name="action_settings">Asetukset</string>
   <string name="action_about">Tietoja</string>
   <string name="action_discover">Löydä</string>
@@ -9,7 +10,7 @@
     <item>Yhteenveto</item>
     <item>Ainekset</item>
     <item>Nutrition</item>
-    <item>Full Nutrition</item>
+    <item>Nutrition Table</item>
     <item>Takaisin valikkoon</item>
   </string-array>
   <string-array name="units_array">
@@ -37,6 +38,18 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
@@ -56,6 +69,18 @@
     <item>Galician</item>
     <item>Catalan</item>
     <item>Czech</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
   </string-array>
   <string-array name="images_array">
     <item>Oletus</item>
@@ -91,7 +116,6 @@
   <string name="hintWeight">Paino</string>
   <string name="hintStores">Kauppa</string>
   <string name="txtTakePicture">Ota kuva</string>
-  <string name="txtPictureNeeded">Ota kuva ensin!</string>
   <string name="toastSending">Lähetetään...</string>
   <string name="dataSaved">Tallennettu paikallisesti laitteellesi</string>
   <string name="txtInfoAddUser">Anna käyttäjätunnuksesi ja salasanasi</string>

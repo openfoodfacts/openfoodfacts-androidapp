@@ -1,4 +1,4 @@
-# Kazakh translation for openfoodfacts
+# Bengali translation for openfoodfacts
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the openfoodfacts
 # package.
@@ -9,11 +9,11 @@ msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-26 18:38+0100\n"
-"PO-Revision-Date: 2016-12-18 20:53+0000\n"
-"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
-"Language: kk\n"
-"Language-Team: Kazakh <kk@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(((n == 1)) ? 0 : 1)\n"
+"PO-Revision-Date: 2016-12-06 04:46+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: bn\n"
+"Language-Team: Bengali <bn@li.org>\n"
+"Plural-Forms: nplurals=2; plural=((((n == 0)) || ((n == 1))) ? 0 : 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,19 +21,19 @@ msgstr ""
 
 msgctxt "app_name"
 msgid "Open Food"
-msgstr "Open Food"
+msgstr ""
 
 msgctxt "hello_world"
 msgid "Hello world!"
-msgstr "Сәлем әлем!"
+msgstr ""
 
 msgctxt "action_settings"
 msgid "Settings"
-msgstr "Баптаулар"
+msgstr ""
 
 msgctxt "action_about"
 msgid "About"
-msgstr "Осы туралы"
+msgstr ""
 
 msgctxt "action_discover"
 msgid "Discover"
@@ -45,26 +45,26 @@ msgstr ""
 
 msgctxt "action_find"
 msgid "Find"
-msgstr "Табу"
+msgstr ""
 
 msgctxt "text_barcode"
 msgid "Put the barcode :"
-msgstr "Штрих-код қою :"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
 msgid "Summary"
-msgstr "Түйіндеме"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:1"
 msgid "Ingredients"
-msgstr "Ингредиенттер"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:2"
 msgid "Nutrition"
-msgstr "Тамақтану"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
@@ -79,112 +79,112 @@ msgstr ""
 #. Text units
 msgctxt "units_array:0"
 msgid "g"
-msgstr "г"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:1"
 msgid "mg"
-msgstr "мг"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:2"
 msgid "kg"
-msgstr "кг"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:3"
 msgid "l"
-msgstr "л"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:4"
 msgid "ml"
-msgstr "мл"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:0"
 msgid "en"
-msgstr "en"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:1"
 msgid "fr"
-msgstr "fr"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:2"
 msgid "es"
-msgstr "es"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:3"
 msgid "it"
-msgstr "it"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:4"
 msgid "de"
-msgstr "de"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:5"
 msgid "ja"
-msgstr "ja"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:6"
 msgid "ru"
-msgstr "ru"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:7"
 msgid "pt"
-msgstr "pt"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:8"
 msgid "sv"
-msgstr "sv"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:9"
 msgid "my"
-msgstr "my"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:10"
 msgid "kk"
-msgstr "kk"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:11"
 msgid "hy"
-msgstr "hy"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:12"
 msgid "el"
-msgstr "el"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:13"
 msgid "he"
-msgstr "he"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:14"
 msgid "gl"
-msgstr "gl"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:15"
 msgid "ca"
-msgstr "ca"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:16"
 msgid "cs"
-msgstr "cs"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:17"
@@ -364,64 +364,64 @@ msgstr ""
 
 msgctxt "images_array:0"
 msgid "Default"
-msgstr "Әдетті"
+msgstr ""
 
 msgctxt "images_array:1"
 msgid "Nutrition"
-msgstr "Тамақтану"
+msgstr ""
 
 msgctxt "images_array:2"
 msgid "Ingredients"
-msgstr "Ингредиенттер"
+msgstr ""
 
 #. Content Description
 msgctxt "search_button"
 msgid "Search"
-msgstr "Іздеу"
+msgstr ""
 
 msgctxt "no_products"
 msgid "Products not found"
-msgstr "Өнімдер табылмады"
+msgstr ""
 
 msgctxt "desc_list_item_icon"
 msgid "Item Icon"
-msgstr "Бекеттің белгішесі"
+msgstr ""
 
 msgctxt "alert_dialog_warning_title"
 msgid "Warning"
-msgstr "Ескерту"
+msgstr ""
 
 msgctxt "alert_dialog_warning_msg_user"
 msgid "User/password has changed, please update information"
-msgstr "Пайдаланушы/құпиясөз өзгертілген, ақпаратты жаңартыңыз"
+msgstr ""
 
 msgctxt "alert_dialog_product_error_msg"
 msgid "Product not found, please try again"
-msgstr "Өнім табылмады, тағы да көріңіз"
+msgstr ""
 
 msgctxt "toast_retrieving"
 msgid "Loading..."
-msgstr "Жүктелуде..."
+msgstr ""
 
 msgctxt "txtBarcode"
 msgid "Barcode :"
-msgstr "Штрих-код :"
+msgstr ""
 
 msgctxt "txtQuantity"
 msgid "Quantity :"
-msgstr "Сан :"
+msgstr ""
 
 msgctxt "txtPackaging"
 msgid "Packaging :"
-msgstr "Қаптама :"
+msgstr ""
 
 msgctxt "txtBrands"
 msgid "Brands :"
-msgstr "Сауда маркалары :"
+msgstr ""
 
 msgctxt "txtCategories"
 msgid "Categories :"
-msgstr "Санаттар :"
+msgstr ""
 
 msgctxt "txtLabels"
 msgid "Labels, certifications, awards :"
@@ -429,7 +429,7 @@ msgstr ""
 
 msgctxt "txtManufacturing"
 msgid "Manufacturing or processing places :"
-msgstr "Өндіру орны немесе қайта өңдеу :"
+msgstr ""
 
 msgctxt "txtIngredientsOrigins"
 msgid "Origin of ingredients :"
@@ -437,47 +437,47 @@ msgstr ""
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
-msgstr "Сатып алатын қала, облыс және ел :"
+msgstr ""
 
 msgctxt "txtStores"
 msgid "Stores :"
-msgstr "Дүкендер :"
+msgstr ""
 
 msgctxt "txtCountries"
 msgid "Countries where sold :"
-msgstr "Сауда-сататын елдер :"
+msgstr ""
 
 msgctxt "txtIngredients"
 msgid "Ingredients list :"
-msgstr "Ингредиенттер тізімі:"
+msgstr ""
 
 msgctxt "txtSubstances"
 msgid "Substances or products causing allergies or intolerances :"
-msgstr "Аллергия туғызатын немесе көтере алмайтын заттар немесе өнімдер :"
+msgstr ""
 
 msgctxt "txtAdditives"
 msgid "Additives :"
-msgstr "Қоспалар :"
+msgstr ""
 
 msgctxt "txtTraces"
 msgid "Traces :"
-msgstr "Қамтуы мүмкін :"
+msgstr ""
 
 msgctxt "txtMayBeFromPalmOilProduct"
 msgid "Ingredients that may be from palm oil :"
-msgstr "Ингредиенттер мүмкін пальма майынан :"
+msgstr ""
 
 msgctxt "txtPalmOilProduct"
 msgid "Ingredients from palm oil :"
-msgstr "Ингредиенттер пальма майынан :"
+msgstr ""
 
 msgctxt "txtServingSize"
 msgid "Serving size :"
-msgstr "Порция мөлшері :"
+msgstr ""
 
 msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
-msgstr "Тағамдық құндылығы 100 г-да :"
+msgstr ""
 
 msgctxt "txtNutritionLevelLow"
 msgid "low"
@@ -493,15 +493,15 @@ msgstr ""
 
 msgctxt "txtLogin"
 msgid "Login :"
-msgstr "Аты :"
+msgstr ""
 
 msgctxt "txtPass"
 msgid "Password :"
-msgstr "Құпиясөз :"
+msgstr ""
 
 msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
-msgstr "Өзіңіздің тағамыңызды ашып және не жейтініңізді біліңіз"
+msgstr ""
 
 msgctxt "txtHome"
 msgid ""
@@ -520,65 +520,65 @@ msgstr ""
 
 msgctxt "txtUser"
 msgid "User panel"
-msgstr "Пайдаланушының панельі"
+msgstr ""
 
 msgctxt "txtToastSaved"
 msgid "User saved"
-msgstr "Пайдаланушы сақталған"
+msgstr ""
 
 msgctxt "txtSalt"
 msgid "Salt :"
-msgstr "Тұз :"
+msgstr ""
 
 msgctxt "txtFat"
 msgid "Fat :"
-msgstr "Май :"
+msgstr ""
 
 msgctxt "txtSugars"
 msgid "Sugars :"
-msgstr "Қант :"
+msgstr ""
 
 msgctxt "txtSaturatedFat"
 msgid "Satured fat :"
-msgstr "Байытылған май :"
+msgstr ""
 
 msgctxt "hintBarcode"
 msgid "Barcode"
-msgstr "Штрих-код"
+msgstr ""
 
 msgctxt "hintLogin"
 msgid "Login"
-msgstr "Кіру"
+msgstr ""
 
 msgctxt "hintPass"
 msgid "Password"
-msgstr "Құпиясөз"
+msgstr ""
 
 msgctxt "errorLogin"
 msgid "Login or password error"
-msgstr "Аты немесе құпиясөзі қате"
+msgstr ""
 
 msgctxt "errorWeb"
 msgid "We were not able to access the internet. Do you have connectivity issues?"
-msgstr "Біз Ғаламторға қол жеткізе алдмадық. Сізде қосылу жағынан қиындық бар ма?"
+msgstr ""
 
 msgctxt "txtInfoLoginOk"
 msgid "User saved"
-msgstr "Пайдаланушы сақталған"
+msgstr ""
 
 msgctxt "txtInfoLoginNo"
 msgid "User not saved"
-msgstr "Пайдаланушы сақталмаған"
+msgstr ""
 
 msgctxt "txtDialogsTitle"
 msgid "Information"
-msgstr "Ақпарат"
+msgstr ""
 
 msgctxt "txtDialogsContent"
 msgid ""
 "The product you scanned does not exist yet in Open Food Facts. Do you "
 "want to add it?"
-msgstr "Бұл өнім әлі Open Food Facts-та жоқ. Сіз оны қосқыңыз келе ме?"
+msgstr ""
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
@@ -586,31 +586,31 @@ msgstr ""
 
 msgctxt "txtYes"
 msgid "Yes"
-msgstr "Иә"
+msgstr ""
 
 msgctxt "txtNo"
 msgid "No"
-msgstr "Жоқ"
+msgstr ""
 
 msgctxt "hintNameProduct"
 msgid "Name"
-msgstr "Атауы"
+msgstr ""
 
 msgctxt "hintEnergy"
 msgid "Energy in kJ per serving"
-msgstr "Энергетикалық құндылығы кДж порцияға"
+msgstr ""
 
 msgctxt "hintEnergyUnit"
 msgid "Energy unit"
-msgstr "Энергетикалық құндылықтың бірлігі"
+msgstr ""
 
 msgctxt "hintWeight"
 msgid "Weight"
-msgstr "Салмақ"
+msgstr ""
 
 msgctxt "hintStores"
 msgid "Store"
-msgstr "Дүкен"
+msgstr ""
 
 msgctxt "hintBrand"
 msgid "Brand"
@@ -618,15 +618,15 @@ msgstr ""
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
-msgstr "Сурет жасау"
+msgstr ""
 
 msgctxt "txtSendAll"
 msgid "Upload all"
-msgstr "Барлығын жіберу"
+msgstr ""
 
 msgctxt "txtNoData"
 msgid "No data"
-msgstr "Деректер жоқ"
+msgstr ""
 
 msgctxt "txtPictureNeeded"
 msgid "Please take a picture first"
@@ -634,35 +634,35 @@ msgstr ""
 
 msgctxt "toastSending"
 msgid "Uploading..."
-msgstr "Берілісте..."
+msgstr ""
 
 msgctxt "dataSaved"
 msgid "Saved locally on your device"
-msgstr "Сіздің құрылғыңызда сақталған"
+msgstr ""
 
 msgctxt "txtInfoAddUser"
 msgid "Please enter your login and password"
-msgstr "Аты және құпиясөзді енгізіңіз"
+msgstr ""
 
 msgctxt "txtDataUpdated"
 msgid "Data updated"
-msgstr "Мәліметтер жаңартылды"
+msgstr ""
 
 msgctxt "txtLoading"
 msgid "Loading..."
-msgstr "Жүктелуде..."
+msgstr ""
 
 msgctxt "txtDialogsContentDelete"
 msgid "Do you want to delete this draft?"
-msgstr "Сіз бұл шимайды жойғыңыз келеді ме?"
+msgstr ""
 
 msgctxt "txtDialogsContentInfoSave"
 msgid "The product is saved locally, you can edit it in the Offline Edit menu"
-msgstr "Өнім жергілікті сақталған, сіз оның мәзір Автономды Түзетуде түзете аласыз"
+msgstr ""
 
 msgctxt "txtBarcodeRequire"
 msgid "Barcode required"
-msgstr "Штрих-код талап етеді"
+msgstr ""
 
 msgctxt "txtOk"
 msgid "OK"
@@ -670,27 +670,25 @@ msgstr ""
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
-msgstr "... үдірісінде шықпаңыз"
+msgstr ""
 
 msgctxt "txtAbout"
 msgid ""
 "The pictures you send are published under the free licence Creative "
 "Commons Attribution and ShareAlike."
 msgstr ""
-"Сіз жолдаған фотосуреттер Creative Commons Attribution және ShareAlike "
-"лицензияға сай жарияланды."
 
 msgctxt "txtAllsent"
 msgid "Products sent"
-msgstr "Өнім жіберілді"
+msgstr ""
 
 msgctxt "txtPalm"
 msgid "The product does not contain any palm oil"
-msgstr "Өнім пальма майын құрамайды"
+msgstr ""
 
 msgctxt "txtBarcodeNotValid"
 msgid "Barcode not valid"
-msgstr "Жарамсыз штрих-код"
+msgstr ""
 
 msgctxt "try_it_scan_now"
 msgid "Scan product"
@@ -698,19 +696,19 @@ msgstr ""
 
 msgctxt "share"
 msgid "Share"
-msgstr "Бөлісу"
+msgstr ""
 
 msgctxt "msg_share"
 msgid "Look at this product on Open Food Facts :"
-msgstr "Бұл өнімді Open Food Facts-та қараңыз:"
+msgstr ""
 
 msgctxt "create_account"
 msgid "Sign up"
-msgstr "Тіркелу"
+msgstr ""
 
 msgctxt "home_drawer"
 msgid "Home"
-msgstr "Басты бет"
+msgstr ""
 
 msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
@@ -718,43 +716,43 @@ msgstr ""
 
 msgctxt "search_drawer"
 msgid "Search"
-msgstr "Іздеу"
+msgstr ""
 
 msgctxt "search_by_barcode_drawer"
 msgid "Search by barcode"
-msgstr "Штрих-код бойынша іздеу"
+msgstr ""
 
 msgctxt "search_by_name_drawer"
 msgid "Search by name"
-msgstr "Атауы бойынша іздеу"
+msgstr ""
 
 msgctxt "scan_search"
 msgid "Scan"
-msgstr "Сканерлеу"
+msgstr ""
 
 msgctxt "user_drawer"
 msgid "User"
-msgstr "Пайдаланушы"
+msgstr ""
 
 msgctxt "offline_edit_drawer"
 msgid "Offline edit"
-msgstr "Оффлайн түзету"
+msgstr ""
 
 msgctxt "txt_anonymous"
 msgid "Anonymous"
-msgstr "Анонимды"
+msgstr ""
 
 msgctxt "txt_product_not_found"
 msgid "Products not found"
-msgstr "Өнім табылмады"
+msgstr ""
 
 msgctxt "delete_txt"
 msgid "Delete"
-msgstr "Жою"
+msgstr ""
 
 msgctxt "sign_in_drawer"
 msgid "Sign-in"
-msgstr "Кіру"
+msgstr ""
 
 msgctxt "alert_drawer"
 msgid "Allergen Alert"
@@ -762,11 +760,11 @@ msgstr ""
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
-msgstr "Аллергендер құрайды"
+msgstr ""
 
 msgctxt "title_dialog_alert"
 msgid "Add alert"
-msgstr "Ескертуді қосу"
+msgstr ""
 
 msgctxt "warning_alert_data"
 msgid ""
@@ -777,7 +775,7 @@ msgstr ""
 
 msgctxt "from_gallery"
 msgid "From gallery"
-msgstr "Галереядан"
+msgstr ""
 
 msgctxt "product_sent"
 msgid "Product sent!"

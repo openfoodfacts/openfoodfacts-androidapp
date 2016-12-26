@@ -12,7 +12,7 @@
     <item>Samenvatting</item>
     <item>Ingrediënten</item>
     <item>Voedingswaarde</item>
-    <item>Complete voeding</item>
+    <item>Nutrition Table</item>
     <item>Terug naar het menu</item>
   </string-array>
   <string-array name="units_array">
@@ -40,6 +40,18 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Engels</item>
@@ -59,6 +71,18 @@
     <item>Gallicisch</item>
     <item>Catalaans</item>
     <item>Tsjechisch</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
@@ -126,7 +150,6 @@
   <string name="txtTakePicture">Maak foto</string>
   <string name="txtSendAll">Alles versturen</string>
   <string name="txtNoData">Geen gegevens</string>
-  <string name="txtPictureNeeded">Maak eerst een foto!</string>
   <string name="toastSending">Aan het doorsturen...</string>
   <string name="dataSaved">Lokaal opgeslagen</string>
   <string name="txtInfoAddUser">Uw gebruikersnaam en en wachtwoord alstublieft</string>
@@ -166,13 +189,10 @@
   <string name="action_edit_product">Bewerk product</string>
   <string name="title_info_dialog">Melding</string>
   <string name="text_offline_info_dialog">Je kunt de producten offline scannen en deze later verzenden naar Open Food Facts. Alle producten die je scant zullen hier verschijnen en zijn te verzenden met onderstaande button.</string>
-  <string name="permission_camera">Toegang tot camera is nodig om streepjescodes te scannen</string>
   <string name="permission_title">Informatie over permissies</string>
   <string name="permission_denied">Activeer alstublieft de toegang bij Instellingen</string>
-  <string name="permission_storage">Opslag is nodig om foto\'s te maken en selecteren</string>
   <string name="info_download_data">Er is een extra bestand nodig om deze functie te kunnen activeren, kies Ja om te downloaden.</string>
   <string name="info_download_data_connection">Er is een extra bestand nodig om deze functie te kunnen activeren. Activeer je netwerkverbinding alstublieft.</string>
-  <string name="msg_input_empty">Invoer eerst vullen!</string>
   <string name="new_offline_info">Gelieve een foto te maken van het product, ingrediënten, voedingswaardetabel en overige informatie op het etiket. Dank!</string>
   <string name="error_invalid_password">Het wachtwoord moet uit minstens 6 tekens bestaan.</string>
   <string name="error_field_required">Dit veld is verplicht.</string>

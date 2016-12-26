@@ -4,14 +4,16 @@
   <string name="hello_world">¡Hola mundo!</string>
   <string name="action_settings">Configuración</string>
   <string name="action_about">Acerca de</string>
+  <string name="action_discover">Descubrir</string>
+  <string name="action_contribute">Contribuir</string>
   <string name="action_find">Buscar</string>
   <string name="text_barcode">Ponga el código de barras :</string>
   <string-array name="nav_drawer_items_product">
     <item>Resumen</item>
     <item>Ingredientes</item>
     <item>Nutrición</item>
-    <item>Full Nutrition</item>
-    <item>Back to menu</item>
+    <item>Nutrition Table</item>
+    <item>Volver al menú</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -38,25 +40,49 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
+    <item>Inglés</item>
+    <item>Francés</item>
+    <item>Español</item>
+    <item>Italiano</item>
+    <item>Alemán</item>
+    <item>Japonés</item>
+    <item>Ruso</item>
+    <item>Portugués</item>
     <item>Swedish</item>
     <item>Burmese</item>
     <item>Kazakh</item>
     <item>Armenian</item>
-    <item>Greek</item>
+    <item>Griego</item>
     <item>Hebrew</item>
     <item>Galician</item>
     <item>Catalan</item>
     <item>Czech</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
   </string-array>
   <string-array name="images_array">
     <item>Predeterminado</item>
@@ -130,10 +156,12 @@
   <string name="txtAllsent">Productos enviados</string>
   <string name="txtPalm">El producto no contiene nada de aceite de palma</string>
   <string name="txtBarcodeNotValid">Código de barras no válido</string>
+  <string name="try_it_scan_now">Escanear producto</string>
   <string name="share">Compartir</string>
   <string name="msg_share">Mire el producto en Open Food Facts :</string>
   <string name="create_account">Registrarse</string>
   <string name="home_drawer">Inicio</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="search_drawer">Buscar</string>
   <string name="search_by_barcode_drawer">Buscar por código de barras</string>
   <string name="search_by_name_drawer">Buscar por nombre</string>

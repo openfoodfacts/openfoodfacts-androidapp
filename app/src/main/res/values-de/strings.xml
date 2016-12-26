@@ -12,7 +12,7 @@
     <item>Zusammenfassung</item>
     <item>Inhaltsstoffe</item>
     <item>Nährwertangaben</item>
-    <item>Vollständige Nährwertangaben</item>
+    <item>Nutrition Table</item>
     <item>Zurück zum Menü</item>
   </string-array>
   <string-array name="units_array">
@@ -40,6 +40,18 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Englisch</item>
@@ -59,6 +71,18 @@
     <item>Galicisch</item>
     <item>Katalanisch</item>
     <item>Tschechisch</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
   </string-array>
   <string-array name="images_array">
     <item>Standard</item>
@@ -126,7 +150,6 @@
   <string name="txtTakePicture">Foto machen</string>
   <string name="txtSendAll">alles hochladen</string>
   <string name="txtNoData">keine Daten</string>
-  <string name="txtPictureNeeded">Mache zuerst ein Bild!</string>
   <string name="toastSending">hochladen...</string>
   <string name="dataSaved">lokal auf dem Phone gespeichert</string>
   <string name="txtInfoAddUser">Bitte Login und Passwort einfügen</string>
@@ -166,13 +189,10 @@
   <string name="action_edit_product">Produkt bearbeiten</string>
   <string name="title_info_dialog">Information</string>
   <string name="text_offline_info_dialog">Du kannst Produkte einscannen wenn du offline bist um sie später zu Open Food Facts hoch zu laden. Alle Produkte die du scanst werden hier aufgelistet damit du sie über den untenstehenden Button hochladen kannst.</string>
-  <string name="permission_camera">Um Strichcodes einzuscannen ist der Zugriff auf die Kamera erforderlich.</string>
   <string name="permission_title">Berechtigungs-Informationen</string>
   <string name="permission_denied">Bitte Berechtigung in den Einstellungen konfigurieren</string>
-  <string name="permission_storage">Zugriff auf den Speicher wird gebracht um Bilder auf zu nehmen oder aus zu wählen.</string>
   <string name="info_download_data">Um diese Funktion durchfüḧren zu lassen, müssen einige Daten heruntergeladen werden. Bitte drücke Ja, um den Download zu starten.</string>
   <string name="info_download_data_connection">Um diese Funktion durchfüḧren zu lassen, müssen einige Daten heruntergeladen werden. Bitte aktiviere deine Internetverbindung.</string>
-  <string name="msg_input_empty">Felder müssen zuerst ausgefüllt werden!</string>
   <string name="new_offline_info">Nimm bitte ein Bild von dem Produkt, von den Zutaten, den Nährwertangaben und jeder anderen Information auf dem Etikett auf. Danke!</string>
   <string name="error_invalid_password">Das Passwort muss eine mindestens 6 Zeichen lang sein.</string>
   <string name="error_field_required">Das Feld ist erforderlich</string>

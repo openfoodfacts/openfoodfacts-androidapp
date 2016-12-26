@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-24 08:45+0100\n"
-"PO-Revision-Date: 2016-07-17 13:25+0000\n"
-"Last-Translator: RobertoMoreno <rampmaster@gmail.com>\n"
+"POT-Creation-Date: 2016-12-26 18:38+0100\n"
+"PO-Revision-Date: 2016-12-26 13:57+0000\n"
+"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: es\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(((n == 1)) ? 0 : 1)\n"
@@ -37,11 +37,11 @@ msgstr "Acerca de"
 
 msgctxt "action_discover"
 msgid "Discover"
-msgstr ""
+msgstr "Descubrir"
 
 msgctxt "action_contribute"
 msgid "Contribute"
-msgstr ""
+msgstr "Contribuir"
 
 msgctxt "action_find"
 msgid "Find"
@@ -67,7 +67,6 @@ msgid "Nutrition"
 msgstr "Nutrición"
 
 #. Nav Drawer Product Menu Items
-#, fuzzy
 msgctxt "nav_drawer_items_product:3"
 msgid "Nutrition Table"
 msgstr ""
@@ -75,7 +74,7 @@ msgstr ""
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
 msgid "Back to menu"
-msgstr ""
+msgstr "Volver al menú"
 
 #. Text units
 msgctxt "units_array:0"
@@ -105,179 +104,179 @@ msgstr "ml"
 #. Text units
 msgctxt "lang_array:0"
 msgid "en"
-msgstr ""
+msgstr "en"
 
 #. Text units
 msgctxt "lang_array:1"
 msgid "fr"
-msgstr ""
+msgstr "fr"
 
 #. Text units
 msgctxt "lang_array:2"
 msgid "es"
-msgstr ""
+msgstr "es"
 
 #. Text units
 msgctxt "lang_array:3"
 msgid "it"
-msgstr ""
+msgstr "it"
 
 #. Text units
 msgctxt "lang_array:4"
 msgid "de"
-msgstr ""
+msgstr "de"
 
 #. Text units
 msgctxt "lang_array:5"
 msgid "ja"
-msgstr ""
+msgstr "ja"
 
 #. Text units
 msgctxt "lang_array:6"
 msgid "ru"
-msgstr ""
+msgstr "ru"
 
 #. Text units
 msgctxt "lang_array:7"
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #. Text units
 msgctxt "lang_array:8"
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #. Text units
 msgctxt "lang_array:9"
 msgid "my"
-msgstr ""
+msgstr "my"
 
 #. Text units
 msgctxt "lang_array:10"
 msgid "kk"
-msgstr ""
+msgstr "kk"
 
 #. Text units
 msgctxt "lang_array:11"
 msgid "hy"
-msgstr ""
+msgstr "hy"
 
 #. Text units
 msgctxt "lang_array:12"
 msgid "el"
-msgstr ""
+msgstr "el"
 
 #. Text units
 msgctxt "lang_array:13"
 msgid "he"
-msgstr ""
+msgstr "he"
 
 #. Text units
 msgctxt "lang_array:14"
 msgid "gl"
-msgstr ""
+msgstr "gl"
 
 #. Text units
 msgctxt "lang_array:15"
 msgid "ca"
-msgstr ""
+msgstr "ca"
 
 #. Text units
 msgctxt "lang_array:16"
 msgid "cs"
-msgstr ""
+msgstr "cs"
 
 #. Text units
 msgctxt "lang_array:17"
 msgid "ar"
-msgstr ""
+msgstr "ar"
 
 #. Text units
 msgctxt "lang_array:18"
 msgid "fi"
-msgstr ""
+msgstr "fi"
 
 #. Text units
 msgctxt "lang_array:19"
 msgid "hi"
-msgstr ""
+msgstr "hi"
 
 #. Text units
 msgctxt "lang_array:20"
 msgid "kab"
-msgstr ""
+msgstr "kab"
 
 #. Text units
 msgctxt "lang_array:21"
 msgid "ko"
-msgstr ""
+msgstr "ko"
 
 #. Text units
 msgctxt "lang_array:22"
 msgid "lv"
-msgstr ""
+msgstr "lv"
 
 #. Text units
 msgctxt "lang_array:23"
 msgid "nl"
-msgstr ""
+msgstr "nl"
 
 #. Text units
 msgctxt "lang_array:24"
 msgid "pt-rBR"
-msgstr ""
+msgstr "pt-rBR"
 
 #. Text units
 msgctxt "lang_array:25"
 msgid "ro"
-msgstr ""
+msgstr "ro"
 
 #. Text units
 msgctxt "lang_array:26"
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #. Text units
 msgctxt "lang_array:27"
 msgid "zh"
-msgstr ""
+msgstr "zh"
 
 #. Text units
 msgctxt "lang_array:28"
 msgid "nb"
-msgstr ""
+msgstr "nb"
 
 msgctxt "lang_label_array:0"
 msgid "English"
-msgstr ""
+msgstr "Inglés"
 
 msgctxt "lang_label_array:1"
 msgid "French"
-msgstr ""
+msgstr "Francés"
 
 msgctxt "lang_label_array:2"
 msgid "Spanish"
-msgstr ""
+msgstr "Español"
 
 msgctxt "lang_label_array:3"
 msgid "Italian"
-msgstr ""
+msgstr "Italiano"
 
 msgctxt "lang_label_array:4"
 msgid "German"
-msgstr ""
+msgstr "Alemán"
 
 msgctxt "lang_label_array:5"
 msgid "Japanese"
-msgstr ""
+msgstr "Japonés"
 
 msgctxt "lang_label_array:6"
 msgid "Russian"
-msgstr ""
+msgstr "Ruso"
 
 msgctxt "lang_label_array:7"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugués"
 
 msgctxt "lang_label_array:8"
 msgid "Swedish"
@@ -297,7 +296,7 @@ msgstr ""
 
 msgctxt "lang_label_array:12"
 msgid "Greek"
-msgstr ""
+msgstr "Griego"
 
 msgctxt "lang_label_array:13"
 msgid "Hebrew"
@@ -631,7 +630,6 @@ msgctxt "txtNoData"
 msgid "No data"
 msgstr "Sin datos"
 
-#, fuzzy
 msgctxt "txtPictureNeeded"
 msgid "Please take a picture first"
 msgstr ""
@@ -700,7 +698,7 @@ msgstr "Código de barras no válido"
 
 msgctxt "try_it_scan_now"
 msgid "Scan product"
-msgstr ""
+msgstr "Escanear producto"
 
 msgctxt "share"
 msgid "Share"
@@ -720,7 +718,7 @@ msgstr "Inicio"
 
 msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
-msgstr ""
+msgstr "Open Beauty Facts"
 
 msgctxt "search_drawer"
 msgid "Search"
@@ -804,7 +802,6 @@ msgid ""
 "send them using the button below."
 msgstr ""
 
-#, fuzzy
 msgctxt "permission_camera"
 msgid "Camera permission is needed to scan barcodes and take pictures."
 msgstr ""
@@ -817,7 +814,6 @@ msgctxt "permission_denied"
 msgid "Please activate permission in the settings"
 msgstr ""
 
-#, fuzzy
 msgctxt "permission_storage"
 msgid "Storage permission is needed to take or select pictures"
 msgstr ""
@@ -834,7 +830,6 @@ msgid ""
 "activate internet connection."
 msgstr ""
 
-#, fuzzy
 msgctxt "msg_input_empty"
 msgid "Please fill the fields first."
 msgstr ""
