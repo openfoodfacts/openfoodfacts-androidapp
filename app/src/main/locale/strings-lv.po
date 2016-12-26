@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-26 18:38+0100\n"
+"POT-Creation-Date: 2016-12-26 18:54+0100\n"
 "PO-Revision-Date: 2016-12-26 14:03+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: lv\n"
@@ -51,8 +51,9 @@ msgctxt "action_find"
 msgid "Find"
 msgstr "Meklēt"
 
+#, fuzzy
 msgctxt "text_barcode"
-msgid "Put the barcode :"
+msgid "Type the barcode :"
 msgstr ""
 
 #. Nav Drawer Product Menu Items

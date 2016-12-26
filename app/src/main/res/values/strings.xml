@@ -8,7 +8,7 @@
     <string name="action_contribute">Contribute</string>
 
     <string name="action_find">Find</string>
-    <string name="text_barcode">Put the barcode :</string>
+    <string name="text_barcode">Type the barcode :</string>
 
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -239,7 +239,7 @@
     <!--API URL-->
     <string name="openfoodUrl" translatable="false">https://ssl-api.openfoodfacts.org</string>
 
-    <!-- Open beauty app -->
+    <!-- Open Beauty App -->
     <string name="openBeautyApp" translatable="false">org.openbeautyfacts.scanner</string>
     <string name="scan_history_drawer">History</string>
     <string name="clear_history">Clear history</string>
