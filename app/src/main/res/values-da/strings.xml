@@ -51,6 +51,8 @@
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Engelsk</item>
@@ -82,6 +84,8 @@
     <item>Svensk</item>
     <item>Kinesisk</item>
     <item>Norsk (Bokmål)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>

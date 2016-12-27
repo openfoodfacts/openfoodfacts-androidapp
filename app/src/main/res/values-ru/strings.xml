@@ -52,6 +52,8 @@
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Английский</item>
@@ -83,6 +85,8 @@
     <item>Шведский</item>
     <item>Китайский</item>
     <item>Норвежский (Букмол)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
     <item>По умолчанию</item>
