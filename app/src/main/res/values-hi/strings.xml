@@ -1,38 +1,41 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="app_name">Open Food</string>
+  <string name="hello_world">नमस्कार दुनिया</string>
   <string name="action_settings">सेटिंग्स</string>
   <string name="action_about">जानकारी</string>
+  <string name="action_discover">तलाश करें</string>
+  <string name="action_contribute">योगदान</string>
   <string name="action_find">ढूंढें</string>
-  <string name="text_barcode">बारकोड डालिए</string>
+  <string name="text_barcode">बारकोड</string>
   <string-array name="nav_drawer_items_product">
     <item>संग्रह</item>
     <item>सामग्री</item>
     <item>पोषण</item>
-    <item>Nutrition Table</item>
-    <item>Back to menu</item>
+    <item>पोषण प्रबंधन/सूची</item>
+    <item>मैन्यू में वापस</item>
   </string-array>
   <string-array name="units_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
-    <item>ml</item>
+    <item>जी</item>
+    <item>मिलीग्राम</item>
+    <item>किलोग्राम</item>
+    <item>एल/ लीटर</item>
+    <item>मिलीलीटर</item>
   </string-array>
   <string-array name="lang_array">
-    <item>en</item>
-    <item>fr</item>
+    <item>अंग्रेज़ी</item>
+    <item>फ़्रेंच</item>
     <item>es</item>
-    <item>इटली</item>
+    <item>it</item>
     <item>de</item>
-    <item>जापानी</item>
-    <item>रूसी</item>
-    <item>पुर्तगाली</item>
-    <item>स्विडिश</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
     <item>my</item>
     <item>kk</item>
     <item>hy</item>
-    <item>यूनानी</item>
+    <item>el</item>
     <item>he</item>
     <item>gl</item>
     <item>ca</item>
@@ -49,76 +52,84 @@
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
-    <item>Galician</item>
-    <item>Catalan</item>
-    <item>Czech</item>
-    <item>Arabic</item>
-    <item>Finnish</item>
-    <item>Hindi</item>
-    <item>Kabyle</item>
-    <item>Korean</item>
-    <item>Latvian</item>
-    <item>Dutch</item>
-    <item>Brazilian portuguese</item>
-    <item>Romanian</item>
-    <item>Swedish</item>
-    <item>Chinese</item>
-    <item>Norwegian (Bokmal)</item>
+    <item>अंग्रेज़ी</item>
+    <item>फ्रेंच</item>
+    <item>स्पैनिश</item>
+    <item>इतालवी</item>
+    <item>जर्मन</item>
+    <item>जापानी</item>
+    <item>रूसी</item>
+    <item>पुर्तगाली</item>
+    <item>स्वीडिश</item>
+    <item>बर्मी</item>
+    <item>कज़ाख</item>
+    <item>आर्मेनियाई</item>
+    <item>यूनानी</item>
+    <item>यहूदी</item>
+    <item>गेलिसियन</item>
+    <item>कैटेलन</item>
+    <item>चेक</item>
+    <item>अरबी</item>
+    <item>फिनिश</item>
+    <item>हिन्दी</item>
+    <item>काब्य्ले</item>
+    <item>कोरियाई</item>
+    <item>लात्वीयावासी</item>
+    <item>डच</item>
+    <item>ब्राजिलियन पुर्तगाली</item>
+    <item>रोमानियाई</item>
+    <item>स्वीडिश</item>
+    <item>चीनी</item>
+    <item>नॉर्वेजियन (बोकमाल)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
-    <item>Default</item>
+    <item>चूक</item>
     <item>पोषण</item>
     <item>सामग्री</item>
   </string-array>
   <string name="search_button">ढूंढें</string>
+  <string name="no_products">उत्पाद नहीं मिला</string>
   <string name="desc_list_item_icon">"वस्तु का  आइकन"</string>
   <string name="alert_dialog_warning_title">चेतावनी</string>
   <string name="alert_dialog_warning_msg_user">"उपयोगकर्ता/ पासवर्ड बदल गया है,  कृप्या  जानकारी अपडेट करें"</string>
-  <string name="alert_dialog_product_error_msg">"उत्पाद नहीं मिला,  पुनः प्रयास करें"</string>
+  <string name="alert_dialog_product_error_msg">"उत्पाद नहीं मिला,  फिर प्रयास करें"</string>
   <string name="toast_retrieving">लोड किया जा रहा है...</string>
   <string name="txtBarcode">बारकोड:</string>
   <string name="txtQuantity">मात्रा:</string>
   <string name="txtPackaging">पैकेजिंग:</string>
-  <string name="txtBrands">ब्रांड</string>
+  <string name="txtBrands">ब्रांड:</string>
   <string name="txtCategories">श्रेणी:</string>
+  <string name="txtLabels">लेबल, प्रमाणपत्र, पुरस्कार:</string>
   <string name="txtManufacturing">"विनिर्माण या प्रसंस्करण की  जगह"</string>
+  <string name="txtIngredientsOrigins">सामग्री की उत्पत्ति:</string>
   <string name="txtCity">शहर, राज्य और देश जहाँ इसे खरीदा गया:</string>
-  <string name="txtStores">दुकान:</string>
-  <string name="txtCountries">देश जहाँ बेचा:</string>
-  <string name="txtIngredients">संघटक सूची:</string>
+  <string name="txtStores">स्टोर:</string>
+  <string name="txtCountries">देश जहाँ बेचा गया है</string>
+  <string name="txtIngredients">सामग्री की सूची:</string>
   <string name="txtSubstances">"पदार्थ या उत्पादों  के कारण से  एलर्जी या असहिष्णुता  होना:"</string>
   <string name="txtAdditives">योगशील:</string>
-  <string name="txtTraces">अनुरेख :</string>
+  <string name="txtTraces">निशानी:</string>
   <string name="txtMayBeFromPalmOilProduct">सामग्री ताड़ के तेल से हो सकती है:</string>
-  <string name="txtPalmOilProduct">सामग्री जो ताड़ के तेल है:</string>
+  <string name="txtPalmOilProduct">ताड़ के तेल से सामग्री:</string>
   <string name="txtServingSize">सेवारत परिमाण:</string>
   <string name="txtNutrientLevel100g">100 ग्राम के लिए पोषक तत्वों का स्तर</string>
   <string name="txtNutritionLevelLow">कम</string>
   <string name="txtNutritionLevelModerate">मध्यम</string>
   <string name="txtNutritionLevelHigh">उच्च</string>
-  <string name="txtLogin">लॉग इन</string>
+  <string name="txtLogin">लॉग इन करें :</string>
   <string name="txtPass">पासवर्ड :</string>
-  <string name="txtTitleHome">अपने आहार खोलें और जानते हैं कि आप क्या खाते हैं</string>
-  <string name="txtHome">Open Food Facts एक open डेटाबेस है खाद्य उत्पादों के लिए जहां सामग्री, ऐलर्जेन, पोषण और छोटा मोटा सामान की जानकारी उत्पाद लेबल से प्राप्त कि जा सकती है|</string>
+  <string name="txtTitleHome">अपना आहार खोलें और जाने कि आप क्या खाते हैं</string>
+  <string name="txtHome">Open Food Facts एक open डेटाबेस है खाद्य उत्पादों के लिए जहां सामग्री, ऐलर्जेन, पोषण और छोटे मोटे सामान की जानकारी उत्पाद लेबल से प्राप्त कि जा सकती है|</string>
   <string name="txtSave">भेजें/ सेव करें</string>
   <string name="txtSignIn">साइन इन करें</string>
   <string name="txtUser">उपयोगकर्ता पैनल</string>
+  <string name="txtToastSaved">"उपयोगकर्ता की जानकारी  सेव है"</string>
   <string name="txtSalt">नमक :</string>
   <string name="txtFat">बसा :</string>
   <string name="txtSugars">चीनी :</string>
@@ -127,9 +138,12 @@
   <string name="hintLogin">लॉगिन</string>
   <string name="hintPass">पासवर्ड</string>
   <string name="errorLogin">लॉगिन या पासवर्ड एरर</string>
-  <string name="errorWeb">हम इंटरनेट का उपयोग करने में सक्षम नहीं थे| आप कनेक्टिविटी मुद्दों है?</string>
+  <string name="errorWeb">हम इंटरनेट का उपयोग करने में सक्षम नहीं थे| क्या आपके पास कनेक्टिविटी है?</string>
+  <string name="txtInfoLoginOk">"उपयोगकर्ता की जानकारी  सेव है"</string>
+  <string name="txtInfoLoginNo">"उपयोगकर्ता की जानकारी  सेव नहीं `है"</string>
   <string name="txtDialogsTitle">जानकारी</string>
-  <string name="txtDialogsContentSend">क्या आप डेटाबेस के उत्पादों को भेजने के लिए चाहते हैं?</string>
+  <string name="txtDialogsContent">उत्पाद जो आपने स्कैन किया वो Open Food Facts में मौजूद नहीं है। क्या आप इसे जोड़नेना चाहते हैं?</string>
+  <string name="txtDialogsContentSend">"क्या आप डेटाबेस  में  सेव केोये  उत्पादों को भेजना चाहते हैं?"</string>
   <string name="txtYes">हाँ</string>
   <string name="txtNo">नहीं</string>
   <string name="hintNameProduct">नाम</string>
@@ -137,13 +151,37 @@
   <string name="hintEnergyUnit">ऊर्जा इकाई</string>
   <string name="hintWeight">भार</string>
   <string name="hintStores">दुकान</string>
+  <string name="hintBrand">ब्रांड</string>
   <string name="txtTakePicture">तस्वीर ले ले</string>
   <string name="txtSendAll">सभी अपलोड कर दो</string>
   <string name="txtNoData">कोई डेटा नहीं है</string>
+  <string name="txtPictureNeeded">पहले तस्वीर ले</string>
   <string name="toastSending">अपलोड हो रहा है</string>
+  <string name="dataSaved">अपने डिवाइस पर स्थानीय रूप से सेव है</string>
   <string name="txtInfoAddUser">कृप्या अपना पासवर्ड और प्रवेश दर्ज करें</string>
+  <string name="txtDataUpdated">डेटा अपडेट</string>
   <string name="txtLoading">लोड हो रहा है...</string>
-  <string name="txtDialogsContentDelete">"क्या आप  इस ड्राफ्ट हटाना चाहते हैं?"</string>
+  <string name="txtDialogsContentDelete">"क्या आप  इस ड्राफ्ट कोहटाना चाहते हैं?"</string>
+  <string name="txtDialogsContentInfoSave">उत्पाद स्थानीय रूप से सेव है, आप ऑफलाइन संपादन मेनू में संपादित कर सकते हैं</string>
   <string name="txtBarcodeRequire">बारकोड अपेक्षित हैं</string>
   <string name="txtOk">ठीक है</string>
+  <string name="txtContentDialogUploading">कृपया इस प्रक्रिया के दौरान बाहर नहीं निकलते ...</string>
+  <string name="txtAbout">जो तस्वीरें आपने भेजि वो मुक्त लाइसेंस क्रिएटिव कॉमन्स रोपण और अलाइक के तहत प्रकाशित कर रहे हैं।</string>
+  <string name="txtAllsent">उत्पाद भेज दिया</string>
+  <string name="txtPalm">"उत्पाद में किसी भी तरह  का ताड़ का तेल शामिल नहीं है"</string>
+  <string name="txtBarcodeNotValid">बारकोड मान्य नहीं</string>
+  <string name="try_it_scan_now">"उत्पाद  स्कैन कीजिए"</string>
+  <string name="share">शेयर</string>
+  <string name="msg_share">"Open Food Facts  पर इस उत्पाद को देखो:"</string>
+  <string name="create_account">साइन अप करें</string>
+  <string name="home_drawer">मुख्य पृष्ठ</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
+  <string name="search_drawer">ढूंढें</string>
+  <string name="search_by_barcode_drawer">बारकोड के आधार पर ढूंढें</string>
+  <string name="search_by_name_drawer">नाम से ढूंढें</string>
+  <string name="scan_search">स्कैन</string>
+  <string name="user_drawer">उपयोगकर्ता</string>
+  <string name="offline_edit_drawer">ऑफ़लाइन संपादित</string>
+  <string name="txt_anonymous">अज्ञात</string>
+  <string name="txt_product_not_found">उत्पाद नहीं मिला</string>
 </resources>
