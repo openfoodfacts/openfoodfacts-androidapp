@@ -52,8 +52,6 @@
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
-    <item>da</item>
-    <item>zh_rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>अंग्रेज़ी</item>
@@ -85,8 +83,6 @@
     <item>स्वीडिश</item>
     <item>चीनी</item>
     <item>नॉर्वेजियन (बोकमाल)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
     <item>चूक</item>
@@ -184,4 +180,79 @@
   <string name="offline_edit_drawer">ऑफ़लाइन संपादित</string>
   <string name="txt_anonymous">अज्ञात</string>
   <string name="txt_product_not_found">उत्पाद नहीं मिला</string>
+  <string name="delete_txt">नष्ट करे</string>
+  <string name="sign_in_drawer">साइन इन करें</string>
+  <string name="alert_drawer">एलरजेन की चेतावनी</string>
+  <string name="warning_allergens">एलरजेन शामिल है</string>
+  <string name="title_dialog_alert">अलर्ट जोड़ें</string>
+  <string name="warning_alert_data">"आपकी एलर्जी की जानकारी Open Food Facts सर्वर के लिए कभी नहीं भेजा जा सक्ती। इसके अलावा, सावधान रहे  क्योंकि डेटा सही नहीं हो सकताअपने  इसलिये, आप कृपया दोहरी जांच कीजिए!"</string>
+  <string name="from_gallery">गैलरी से</string>
+  <string name="product_sent">उत्पाद भेज दिया</string>
+  <string name="action_edit_product">उत्पाद संपादित करें</string>
+  <string name="title_info_dialog">जानकारी</string>
+  <string name="text_offline_info_dialog">"जब आप ऑफ़लाइन हो तब भी आप उत्पादों को स्कैन कर सकते हैं, ताकि उन्हें आप बाद में जोड़ सके। आपके सभी स्कैन कि हुए  उत्पाद यहाँ दिखाई देगी, और आप नीचे दिए गए बटन का उपयोग कर उन्हें भेजने के लिए सक्षम हो जाएगा।"</string>
+  <string name="permission_camera">कैमरा अनुमति की जरूरत है बारकोड को स्कैन और तस्वीरें लेने के लिए</string>
+  <string name="permission_title">अनुमति जानकारी</string>
+  <string name="permission_denied">सेटिंग्स में अनुमति सक्रिय करें</string>
+  <string name="permission_storage">स्टोरेज अनुमति ति की जरूरत है चित्रों का चयन करने की जरूरत है</string>
+  <string name="info_download_data">आपको इस कार्यक्षमता काम पाने के लिए कुछ डेटा डाउनलोड करने की जरूरत है, कृपया इसे डाउनलोड करने के लिए हाँ दबाएँ।</string>
+  <string name="info_download_data_connection">आप इस कार्यक्षमता काम पाने के लिए कुछ डेटा डाउनलोड करने के लिए की जरूरत है। इंटरनेट कनेक्शन सक्रिय करें।</string>
+  <string name="msg_input_empty">कृपया फ़ील्ड पहले भरें।</string>
+  <string name="new_offline_info">कृपया उत्पाद, सामग्री, पोषण तथ्यों की सूची और लेबल पर किसी भी अन्य जानकारी की एक तस्वीर ले लो। धन्यवाद!</string>
+  <string name="error_invalid_password">पासवर्ड कम से कम 6 अक्षर लंबा होने की जरूरत है।</string>
+  <string name="error_field_required">यह क्षेत्र आवश्यक है</string>
+  <string name="action_preferences">प्राथमिकताएँ</string>
+  <string name="prefs_scan_startup">स्टार्टअप पर स्कैन करें</string>
+  <string name="prefs_scan_startup_summary">इस विकल्प का चयन किया है, तो जब एप्लिकेशन को खोला जाता है स्कैन शुरू कर देंगे।</string>
+  <string name="prefs_power_mode">पावर मोड स्कैन</string>
+  <string name="prefs_power_mode_summary">जल्दी से सुपरमार्केट में उत्पादों को स्कैन करके देखे कौन कौन से उत्पाद डेटाबेस में नहीं हैं।</string>
+  <string name="prefs_language">भाषा</string>
+  <string name="prefs_language_summary">भाषा बदले</string>
+  <string name="scan_history_drawer">वृत्तांत</string>
+  <string name="clear_history">इतिहास मिटा दें</string>
+  <string name="title_clear_history_dialog">खाली करें</string>
+  <string name="text_clear_history_dialog">आप सभी स्कैन इतिहास साफ करना चाहते हैं?</string>
+  <string name="export_csv_history">"CSV  निर्यात करें"</string>
+  <string name="txt_exporting_history">इतिहास निर्यात ...</string>
+  <string name="txt_history_exported">इतिहास का निर्यात</string>
+  <string name="permision_write_external_storage">लिखें बाह्य भंडारण की अनुमति इतिहास को निर्यात करने की जरूरत है।</string>
+  <string name="txt_nutrition_not_found">लागू नहीं</string>
+  <string name="nutrition_carbohydrate">कार्बोहाइड्रेट</string>
+  <string name="nutrition_carbohydrate_short_name">कार्बोहाइड्रेट(g)</string>
+  <string name="nutrition_cholesterol">कोलेस्ट्रॉल</string>
+  <string name="nutrition_cholesterol_short_name">कोलेस्ट्रॉल(जी)</string>
+  <string name="nutrition_energy">ऊर्जा</string>
+  <string name="nutrition_energy_short_name">ऊर्जा</string>
+  <string name="nutrition_fat">वसा</string>
+  <string name="nutrition_fat_short_name">वसा(जी)</string>
+  <string name="nutrition_fiber">फाइबर आहार</string>
+  <string name="nutrition_fiber_short_name">फाइबर आहार(जी)</string>
+  <string name="nutrition_header">पोषण तथ्य</string>
+  <string name="nutrition_no_data_message">इस उत्पाद के लिए कोई डेटा उपलब्ध नहीं है</string>
+  <string name="nutrition_per_quantity">100g / 100 एमएल के लिए</string>
+  <string name="nutrition_proteins">प्रोटीन</string>
+  <string name="nutrition_proteins_short_name">प्रोटीन(g)</string>
+  <string name="nutrition_salt">नमक</string>
+  <string name="nutrition_salt_short_name">नमक(g)</string>
+  <string name="nutrition_satured_fat">संतृप्त वसा</string>
+  <string name="nutrition_satured_fat_short_name">संतृप्त वसा(g)</string>
+  <string name="nutrition_serving">प्रत्येक हिस्सा</string>
+  <string name="nutrition_serving_size">सेवारत माप:</string>
+  <string name="nutrition_sodium">सोडियम</string>
+  <string name="nutrition_sodium_short_name">सोडियम(g)</string>
+  <string name="nutrition_sugars">शुगर्स</string>
+  <string name="nutrition_sugars_short_name">शुगर्स(g)</string>
+  <string name="nutrition_trans_fat">ट्रांस वसा</string>
+  <string name="nutrition_trans_fat_short_name">ट्रांस वसा (g)</string>
+  <string name="nutriment_serving_size">प्रति हिस्से:</string>
+  <string name="action_manage_account">खाते का प्रबंधन</string>
+  <string name="action_contributes">आपका योगदान</string>
+  <string name="website">http://world.openfoodfacts.org/</string>
+  <string name="website_contribute">http://world.openfoodfacts.org/contribute</string>
+  <string name="website_discover">http://world.openfoodfacts.org/discover</string>
+  <string name="website_product">http://world.openfoodfacts.org/product/</string>
+  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
+  <string name="logout_drawer">लॉग आउट करें</string>
+  <string name="contribution_without_account">आप साइन-इन कर सकते हैं या अपने योगदान रखने के लिए एक खाता बनाने\nप्रसंग:</string>
+  <string name="textCarbonFootprint">"कार्बन पदचिह्न / CO2 उत्सर्जन: "</string>
 </resources>
