@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Open Food</string>
+  <string name="hello_world">Hej Verden!</string>
+  <string name="action_settings">Indstillinger</string>
+  <string name="action_about">Om</string>
+  <string name="action_discover">Opdage</string>
+  <string name="action_contribute">Bidrag</string>
+  <string name="action_find">Find</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Oversigt</item>
+    <item>Ingredienser</item>
+    <item>Ernæring</item>
+    <item>Ernæringstabel</item>
+    <item>Tilbage til menuen</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>Engelsk</item>
+    <item>Fransk</item>
+    <item>Spansk</item>
+    <item>Italiensk</item>
+    <item>Tysk</item>
+    <item>Japansk</item>
+    <item>Russisk</item>
+    <item>Portugisisk</item>
+    <item>Svensk</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Græsk</item>
+    <item>Hebraisk</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
+    <item>Arabisk</item>
+    <item>Finsk</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Koreansk</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Svensk</item>
+    <item>Kinesisk</item>
+    <item>Norsk (Bokmål)</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Default</item>
+    <item>Ernæring</item>
+    <item>Ingredienser</item>
+  </string-array>
+  <string name="search_button">Søg</string>
+  <string name="alert_dialog_warning_title">Advarsel</string>
+  <string name="alert_dialog_warning_msg_user">Bruger/password er blevet ændret. Opdatér venligst information</string>
+  <string name="toast_retrieving">Indlæser...</string>
+  <string name="txtBrands">Mærker:</string>
+  <string name="txtCategories">Kategorier:</string>
+  <string name="txtStores">Butikker:</string>
+  <string name="txtIngredients">Liste af ingrediænser:</string>
+  <string name="txtMayBeFromPalmOilProduct">Ingrediænser som kan være fremstillet fra palmeolie</string>
+  <string name="txtPalmOilProduct">Ingrediænser fremstillet fra palmeolie</string>
+  <string name="txtNutritionLevelLow">lav</string>
+  <string name="txtNutritionLevelModerate">moderat</string>
+  <string name="txtNutritionLevelHigh">høj</string>
+  <string name="txtPass">Adgangskode:</string>
+  <string name="txtSave">Send/Gem</string>
+  <string name="txtSignIn">Log ind</string>
+  <string name="txtToastSaved">Bruger gemt</string>
+  <string name="txtSalt">Salt:</string>
+  <string name="hintPass">Adgangskode:</string>
+  <string name="txtInfoLoginOk">Bruger gemt</string>
+  <string name="txtDialogsTitle">Information</string>
+  <string name="txtYes">Ja</string>
+  <string name="txtNo">Nej</string>
+  <string name="hintNameProduct">Navn</string>
+  <string name="hintStores">Butik</string>
+  <string name="hintBrand">Mærke</string>
+  <string name="txtSendAll">Upload alle</string>
+  <string name="txtNoData">Ingen data</string>
+  <string name="toastSending">Uploader...</string>
+  <string name="txtDataUpdated">Data opdateret</string>
+  <string name="txtLoading">Indlæser...</string>
+  <string name="txtOk">OK</string>
+  <string name="txtPalm">Dette produkt indeholder ingen palmeolie</string>
+  <string name="share">Del</string>
+  <string name="search_drawer">Søg</string>
+  <string name="scan_search">Søg</string>
+  <string name="user_drawer">Bruger</string>
+  <string name="txt_anonymous">Anonym</string>
+  <string name="delete_txt">Slet</string>
+  <string name="title_info_dialog">Information</string>
+  <string name="error_field_required">Dette felt er påkrævet.</string>
+  <string name="action_preferences">Præferencer</string>
+  <string name="prefs_language">Sprog</string>
+  <string name="prefs_language_summary">Skift sprog</string>
+  <string name="scan_history_drawer">Historik</string>
+  <string name="clear_history">Ryd historik</string>
+  <string name="export_csv_history">Eksport CSV</string>
+  <string name="nutrition_energy_short_name">Energi</string>
+  <string name="nutrition_proteins">Proteiner</string>
+  <string name="nutrition_proteins_short_name">Proteiner (g)</string>
+  <string name="nutrition_salt">Salt</string>
+  <string name="nutrition_salt_short_name">Salt (g)</string>
+  <string name="logout_drawer">Log ud</string>
+</resources>
