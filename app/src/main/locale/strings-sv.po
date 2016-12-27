@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-26 18:54+0100\n"
+"POT-Creation-Date: 2016-12-27 17:24+0100\n"
 "PO-Revision-Date: 2016-12-26 14:05+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: sv\n"
@@ -247,6 +247,16 @@ msgctxt "lang_array:28"
 msgid "nb"
 msgstr "nb"
 
+#. Text units
+msgctxt "lang_array:29"
+msgid "da"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:30"
+msgid "zh_rCN"
+msgstr ""
+
 msgctxt "lang_label_array:0"
 msgid "English"
 msgstr ""
@@ -361,6 +371,14 @@ msgstr ""
 
 msgctxt "lang_label_array:28"
 msgid "Norwegian (Bokmal)"
+msgstr ""
+
+msgctxt "lang_label_array:29"
+msgid "Danish"
+msgstr ""
+
+msgctxt "lang_label_array:30"
+msgid "Simplified Chinese"
 msgstr ""
 
 msgctxt "images_array:0"
