@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-12-27 17:24+0100\n"
-"PO-Revision-Date: 2016-12-26 14:41+0000\n"
+"POT-Creation-Date: 2016-12-28 14:26+0100\n"
+"PO-Revision-Date: 2016-12-27 17:21+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: fr\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -46,10 +46,9 @@ msgctxt "action_find"
 msgid "Find"
 msgstr "Chercher"
 
-#, fuzzy
 msgctxt "text_barcode"
 msgid "Type the barcode :"
-msgstr "Ajoutez le code barre :"
+msgstr "Saisissez le code-barre :"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"

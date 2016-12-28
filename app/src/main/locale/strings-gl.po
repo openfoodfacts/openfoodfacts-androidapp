@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-27 17:24+0100\n"
-"PO-Revision-Date: 2016-12-26 09:44+0000\n"
+"POT-Creation-Date: 2016-12-28 14:26+0100\n"
+"PO-Revision-Date: 2016-12-28 12:03+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: gl\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -47,10 +47,9 @@ msgctxt "action_find"
 msgid "Find"
 msgstr "Buscar"
 
-#, fuzzy
 msgctxt "text_barcode"
 msgid "Type the barcode :"
-msgstr "Poña o código de barras:"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
@@ -327,7 +326,7 @@ msgstr "Checo"
 
 msgctxt "lang_label_array:17"
 msgid "Arabic"
-msgstr ""
+msgstr "Árabe"
 
 msgctxt "lang_label_array:18"
 msgid "Finnish"
@@ -343,7 +342,7 @@ msgstr ""
 
 msgctxt "lang_label_array:21"
 msgid "Korean"
-msgstr ""
+msgstr "Coreano"
 
 msgctxt "lang_label_array:22"
 msgid "Latvian"
@@ -359,19 +358,19 @@ msgstr ""
 
 msgctxt "lang_label_array:25"
 msgid "Romanian"
-msgstr ""
+msgstr "Romanés"
 
 msgctxt "lang_label_array:26"
 msgid "Swedish"
-msgstr ""
+msgstr "Sueco"
 
 msgctxt "lang_label_array:27"
 msgid "Chinese"
-msgstr ""
+msgstr "Chinés"
 
 msgctxt "lang_label_array:28"
 msgid "Norwegian (Bokmal)"
-msgstr ""
+msgstr "Noruego (Bokmaal)"
 
 msgctxt "lang_label_array:29"
 msgid "Danish"

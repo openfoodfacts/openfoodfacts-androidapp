@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-27 17:24+0100\n"
-"PO-Revision-Date: 2016-12-26 14:00+0000\n"
+"POT-Creation-Date: 2016-12-28 14:26+0100\n"
+"PO-Revision-Date: 2016-12-28 12:01+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: cs\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 msgctxt "app_name"
 msgid "Open Food"
-msgstr ""
+msgstr "Open Food"
 
 msgctxt "hello_world"
 msgid "Hello world!"
@@ -38,17 +38,16 @@ msgstr "O aplikaci"
 
 msgctxt "action_discover"
 msgid "Discover"
-msgstr ""
+msgstr "Objevte"
 
 msgctxt "action_contribute"
 msgid "Contribute"
-msgstr ""
+msgstr "Přispět"
 
 msgctxt "action_find"
 msgid "Find"
 msgstr "Vyhledat"
 
-#, fuzzy
 msgctxt "text_barcode"
 msgid "Type the barcode :"
 msgstr ""
@@ -61,12 +60,12 @@ msgstr "Shrnutí"
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:1"
 msgid "Ingredients"
-msgstr ""
+msgstr "Složení"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:2"
 msgid "Nutrition"
-msgstr ""
+msgstr "Nutriční hodnoty"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
@@ -76,7 +75,7 @@ msgstr ""
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
 msgid "Back to menu"
-msgstr ""
+msgstr "Návrat do menu"
 
 #. Text units
 msgctxt "units_array:0"
@@ -517,7 +516,7 @@ msgstr ""
 
 msgctxt "txtPass"
 msgid "Password :"
-msgstr ""
+msgstr "Heslo :"
 
 msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
@@ -572,7 +571,7 @@ msgstr ""
 
 msgctxt "hintPass"
 msgid "Password"
-msgstr ""
+msgstr "Heslo"
 
 msgctxt "errorLogin"
 msgid "Login or password error"
@@ -606,11 +605,11 @@ msgstr ""
 
 msgctxt "txtYes"
 msgid "Yes"
-msgstr ""
+msgstr "Ano"
 
 msgctxt "txtNo"
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 msgctxt "hintNameProduct"
 msgid "Name"
@@ -772,7 +771,7 @@ msgstr ""
 
 msgctxt "sign_in_drawer"
 msgid "Sign-in"
-msgstr ""
+msgstr "Podepiš"
 
 msgctxt "alert_drawer"
 msgid "Allergen Alert"
@@ -972,7 +971,7 @@ msgstr ""
 
 msgctxt "nutrition_header"
 msgid "Nutrition facts"
-msgstr ""
+msgstr "Nutriční hodnoty"
 
 msgctxt "nutrition_no_data_message"
 msgid "No data is available for this product"
@@ -1053,15 +1052,15 @@ msgstr ""
 #. website translated pages
 msgctxt "website"
 msgid "http://world.openfoodfacts.org/"
-msgstr ""
+msgstr "http://world-cs.openfoodfacts.org/"
 
 msgctxt "website_contribute"
 msgid "http://world.openfoodfacts.org/contribute"
-msgstr ""
+msgstr "http://world-cs.openfoodfacts.org/contribute"
 
 msgctxt "website_discover"
 msgid "http://world.openfoodfacts.org/discover"
-msgstr ""
+msgstr "http://world-cs.openfoodfacts.org/discover"
 
 msgctxt "website_product"
 msgid "http://world.openfoodfacts.org/product/"

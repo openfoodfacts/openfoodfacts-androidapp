@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-27 17:24+0100\n"
-"PO-Revision-Date: 2016-12-18 20:56+0000\n"
+"POT-Creation-Date: 2016-12-28 14:26+0100\n"
+"PO-Revision-Date: 2016-12-28 11:25+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: pt\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -38,20 +38,19 @@ msgstr "Acerca"
 
 msgctxt "action_discover"
 msgid "Discover"
-msgstr ""
+msgstr "Descubra"
 
 msgctxt "action_contribute"
 msgid "Contribute"
-msgstr ""
+msgstr "Contribuir"
 
 msgctxt "action_find"
 msgid "Find"
 msgstr "Procurar"
 
-#, fuzzy
 msgctxt "text_barcode"
 msgid "Type the barcode :"
-msgstr "Insira o código de barras"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
@@ -76,7 +75,7 @@ msgstr ""
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
 msgid "Back to menu"
-msgstr ""
+msgstr "Voltar ao menu"
 
 #. Text units
 msgctxt "units_array:0"
@@ -191,62 +190,62 @@ msgstr "cs"
 #. Text units
 msgctxt "lang_array:17"
 msgid "ar"
-msgstr ""
+msgstr "ar"
 
 #. Text units
 msgctxt "lang_array:18"
 msgid "fi"
-msgstr ""
+msgstr "fi"
 
 #. Text units
 msgctxt "lang_array:19"
 msgid "hi"
-msgstr ""
+msgstr "hi"
 
 #. Text units
 msgctxt "lang_array:20"
 msgid "kab"
-msgstr ""
+msgstr "kab"
 
 #. Text units
 msgctxt "lang_array:21"
 msgid "ko"
-msgstr ""
+msgstr "ko"
 
 #. Text units
 msgctxt "lang_array:22"
 msgid "lv"
-msgstr ""
+msgstr "lv"
 
 #. Text units
 msgctxt "lang_array:23"
 msgid "nl"
-msgstr ""
+msgstr "nl"
 
 #. Text units
 msgctxt "lang_array:24"
 msgid "pt-rBR"
-msgstr ""
+msgstr "pt-rBR"
 
 #. Text units
 msgctxt "lang_array:25"
 msgid "ro"
-msgstr ""
+msgstr "ro"
 
 #. Text units
 msgctxt "lang_array:26"
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #. Text units
 msgctxt "lang_array:27"
 msgid "zh"
-msgstr ""
+msgstr "zh"
 
 #. Text units
 msgctxt "lang_array:28"
 msgid "nb"
-msgstr ""
+msgstr "nb"
 
 #. Text units
 msgctxt "lang_array:29"
@@ -260,39 +259,39 @@ msgstr ""
 
 msgctxt "lang_label_array:0"
 msgid "English"
-msgstr ""
+msgstr "Inglês"
 
 msgctxt "lang_label_array:1"
 msgid "French"
-msgstr ""
+msgstr "Francês"
 
 msgctxt "lang_label_array:2"
 msgid "Spanish"
-msgstr ""
+msgstr "Espanhol"
 
 msgctxt "lang_label_array:3"
 msgid "Italian"
-msgstr ""
+msgstr "Italiano"
 
 msgctxt "lang_label_array:4"
 msgid "German"
-msgstr ""
+msgstr "Alemão"
 
 msgctxt "lang_label_array:5"
 msgid "Japanese"
-msgstr ""
+msgstr "Japonês"
 
 msgctxt "lang_label_array:6"
 msgid "Russian"
-msgstr ""
+msgstr "Russo"
 
 msgctxt "lang_label_array:7"
 msgid "Portuguese"
-msgstr ""
+msgstr "Português"
 
 msgctxt "lang_label_array:8"
 msgid "Swedish"
-msgstr ""
+msgstr "Sueco"
 
 msgctxt "lang_label_array:9"
 msgid "Burmese"
@@ -312,7 +311,7 @@ msgstr ""
 
 msgctxt "lang_label_array:13"
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebraico"
 
 msgctxt "lang_label_array:14"
 msgid "Galician"
@@ -320,7 +319,7 @@ msgstr ""
 
 msgctxt "lang_label_array:15"
 msgid "Catalan"
-msgstr ""
+msgstr "Catalão"
 
 msgctxt "lang_label_array:16"
 msgid "Czech"
@@ -352,7 +351,7 @@ msgstr ""
 
 msgctxt "lang_label_array:23"
 msgid "Dutch"
-msgstr ""
+msgstr "Holandês"
 
 msgctxt "lang_label_array:24"
 msgid "Brazilian portuguese"
@@ -360,15 +359,15 @@ msgstr ""
 
 msgctxt "lang_label_array:25"
 msgid "Romanian"
-msgstr ""
+msgstr "Romeno"
 
 msgctxt "lang_label_array:26"
 msgid "Swedish"
-msgstr ""
+msgstr "Sueco"
 
 msgctxt "lang_label_array:27"
 msgid "Chinese"
-msgstr ""
+msgstr "Chinês"
 
 msgctxt "lang_label_array:28"
 msgid "Norwegian (Bokmal)"
@@ -501,15 +500,15 @@ msgstr "Níveis de nutrientes para 100g :"
 
 msgctxt "txtNutritionLevelLow"
 msgid "low"
-msgstr ""
+msgstr "baixo"
 
 msgctxt "txtNutritionLevelModerate"
 msgid "moderate"
-msgstr ""
+msgstr "moderado"
 
 msgctxt "txtNutritionLevelHigh"
 msgid "high"
-msgstr ""
+msgstr "elevado"
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -584,7 +583,7 @@ msgstr "Sem acesso a internet."
 
 msgctxt "txtInfoLoginOk"
 msgid "User saved"
-msgstr ""
+msgstr "Utilizador guardado"
 
 msgctxt "txtInfoLoginNo"
 msgid "User not saved"
@@ -636,7 +635,7 @@ msgstr "Loja"
 
 msgctxt "hintBrand"
 msgid "Brand"
-msgstr ""
+msgstr "Marca"
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
@@ -736,7 +735,7 @@ msgstr ""
 
 msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
-msgstr ""
+msgstr "Open Beauty Facts"
 
 msgctxt "search_drawer"
 msgid "Search"
@@ -776,7 +775,7 @@ msgstr "Apagar"
 
 msgctxt "sign_in_drawer"
 msgid "Sign-in"
-msgstr ""
+msgstr "Iniciar sessão"
 
 msgctxt "alert_drawer"
 msgid "Allergen Alert"
@@ -811,7 +810,7 @@ msgstr ""
 
 msgctxt "title_info_dialog"
 msgid "Information"
-msgstr ""
+msgstr "Informação"
 
 msgctxt "text_offline_info_dialog"
 msgid ""
@@ -861,15 +860,15 @@ msgstr ""
 #. Strings related to login
 msgctxt "error_invalid_password"
 msgid "The password needs to be a least 6 characters long."
-msgstr ""
+msgstr "A senha deve conter pelo menos 6 caracteres"
 
 msgctxt "error_field_required"
 msgid "This field is required."
-msgstr ""
+msgstr "Este campo é obrigatório"
 
 msgctxt "action_preferences"
 msgid "Preferences"
-msgstr ""
+msgstr "Preferências"
 
 msgctxt "prefs_scan_startup"
 msgid "Scan on startup"
@@ -891,7 +890,7 @@ msgstr ""
 
 msgctxt "prefs_language"
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 msgctxt "prefs_language_summary"
 msgid "Change language"
@@ -936,7 +935,7 @@ msgstr ""
 #. Nutrition info tab
 msgctxt "nutrition_carbohydrate"
 msgid "Carbohydrate"
-msgstr ""
+msgstr "Hidratos de carbono"
 
 msgctxt "nutrition_carbohydrate_short_name"
 msgid "Carbohydrate (g)"
@@ -944,7 +943,7 @@ msgstr ""
 
 msgctxt "nutrition_cholesterol"
 msgid "Cholesterol"
-msgstr ""
+msgstr "Colesterol"
 
 msgctxt "nutrition_cholesterol_short_name"
 msgid "Cholesterol (g)"
@@ -952,11 +951,11 @@ msgstr ""
 
 msgctxt "nutrition_energy"
 msgid "Energy"
-msgstr ""
+msgstr "Energia"
 
 msgctxt "nutrition_energy_short_name"
 msgid "Energy"
-msgstr ""
+msgstr "Energia"
 
 msgctxt "nutrition_fat"
 msgid "Fat"
@@ -968,7 +967,7 @@ msgstr ""
 
 msgctxt "nutrition_fiber"
 msgid "Dietary fiber"
-msgstr ""
+msgstr "A fibra dietética"
 
 msgctxt "nutrition_fiber_short_name"
 msgid "Dietary fiber (g)"
@@ -976,7 +975,7 @@ msgstr ""
 
 msgctxt "nutrition_header"
 msgid "Nutrition facts"
-msgstr ""
+msgstr "Informação nutricional"
 
 msgctxt "nutrition_no_data_message"
 msgid "No data is available for this product"
@@ -988,19 +987,19 @@ msgstr ""
 
 msgctxt "nutrition_proteins"
 msgid "Proteins"
-msgstr ""
+msgstr "Proteínas"
 
 msgctxt "nutrition_proteins_short_name"
 msgid "Proteins (g)"
-msgstr ""
+msgstr "Proteínas (g)"
 
 msgctxt "nutrition_salt"
 msgid "Salt"
-msgstr ""
+msgstr "Sal"
 
 msgctxt "nutrition_salt_short_name"
 msgid "Salt (g)"
-msgstr ""
+msgstr "Sal (g)"
 
 msgctxt "nutrition_satured_fat"
 msgid "Satured fat"
@@ -1020,7 +1019,7 @@ msgstr ""
 
 msgctxt "nutrition_sodium"
 msgid "Sodium"
-msgstr ""
+msgstr "Sódio"
 
 msgctxt "nutrition_sodium_short_name"
 msgid "Sodium (g)"
@@ -1028,7 +1027,7 @@ msgstr ""
 
 msgctxt "nutrition_sugars"
 msgid "Sugars"
-msgstr ""
+msgstr "Açucares"
 
 msgctxt "nutrition_sugars_short_name"
 msgid "Sugars (g)"
@@ -1048,7 +1047,7 @@ msgstr ""
 
 msgctxt "action_manage_account"
 msgid "Manage account"
-msgstr ""
+msgstr "Gerir conta"
 
 msgctxt "action_contributes"
 msgid "Your contributions"
@@ -1057,7 +1056,7 @@ msgstr ""
 #. website translated pages
 msgctxt "website"
 msgid "http://world.openfoodfacts.org/"
-msgstr ""
+msgstr "http://world-pt.openfoodfacts.org/"
 
 msgctxt "website_contribute"
 msgid "http://world.openfoodfacts.org/contribute"
@@ -1069,15 +1068,15 @@ msgstr ""
 
 msgctxt "website_product"
 msgid "http://world.openfoodfacts.org/product/"
-msgstr ""
+msgstr "http://world-pt.openfoodfacts.org/produto/"
 
 msgctxt "website_contributor"
 msgid "http://world.openfoodfacts.org/contributor/"
-msgstr ""
+msgstr "http://world-pt.openfoodfacts.org/colaborador/"
 
 msgctxt "logout_drawer"
 msgid "Logout"
-msgstr ""
+msgstr "Terminar sessão"
 
 msgctxt "contribution_without_account"
 msgid "You can sign-in or create an account to keep your contributions"

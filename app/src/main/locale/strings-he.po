@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-27 17:24+0100\n"
-"PO-Revision-Date: 2016-12-26 13:55+0000\n"
+"POT-Creation-Date: 2016-12-28 14:26+0100\n"
+"PO-Revision-Date: 2016-12-28 09:46+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: he\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -49,10 +49,9 @@ msgctxt "action_find"
 msgid "Find"
 msgstr "חיפוש"
 
-#, fuzzy
 msgctxt "text_barcode"
 msgid "Type the barcode :"
-msgstr "נא להזין את הברקוד:"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
@@ -353,7 +352,7 @@ msgstr ""
 
 msgctxt "lang_label_array:23"
 msgid "Dutch"
-msgstr ""
+msgstr "הולנדית"
 
 msgctxt "lang_label_array:24"
 msgid "Brazilian portuguese"
@@ -365,11 +364,11 @@ msgstr ""
 
 msgctxt "lang_label_array:26"
 msgid "Swedish"
-msgstr ""
+msgstr "שבדית"
 
 msgctxt "lang_label_array:27"
 msgid "Chinese"
-msgstr ""
+msgstr "סינית"
 
 msgctxt "lang_label_array:28"
 msgid "Norwegian (Bokmal)"
@@ -735,7 +734,7 @@ msgstr "ראשי"
 
 msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
-msgstr ""
+msgstr "Open Beauty Facts"
 
 msgctxt "search_drawer"
 msgid "Search"
@@ -953,11 +952,11 @@ msgstr ""
 
 msgctxt "nutrition_energy"
 msgid "Energy"
-msgstr ""
+msgstr "אנרגיה"
 
 msgctxt "nutrition_energy_short_name"
 msgid "Energy"
-msgstr ""
+msgstr "אנרגיה"
 
 msgctxt "nutrition_fat"
 msgid "Fat"
@@ -989,7 +988,7 @@ msgstr ""
 
 msgctxt "nutrition_proteins"
 msgid "Proteins"
-msgstr ""
+msgstr "חלבון"
 
 msgctxt "nutrition_proteins_short_name"
 msgid "Proteins (g)"
@@ -1017,7 +1016,7 @@ msgstr ""
 
 msgctxt "nutrition_serving_size"
 msgid "Serving size :"
-msgstr ""
+msgstr "גודל ההגשה :"
 
 msgctxt "nutrition_sodium"
 msgid "Sodium"

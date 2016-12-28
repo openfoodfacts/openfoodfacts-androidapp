@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-27 17:24+0100\n"
-"PO-Revision-Date: 2016-12-26 13:56+0000\n"
+"POT-Creation-Date: 2016-12-28 14:26+0100\n"
+"PO-Revision-Date: 2016-12-28 11:20+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: ar\n"
 "Language-Team: Arabic <ar@li.org>\n"
@@ -49,10 +49,9 @@ msgctxt "action_find"
 msgid "Find"
 msgstr "بحث"
 
-#, fuzzy
 msgctxt "text_barcode"
 msgid "Type the barcode :"
-msgstr "بخصوص الرمز الشريطي"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
@@ -365,7 +364,7 @@ msgstr ""
 
 msgctxt "lang_label_array:26"
 msgid "Swedish"
-msgstr ""
+msgstr "السويديَة"
 
 msgctxt "lang_label_array:27"
 msgid "Chinese"
@@ -933,7 +932,7 @@ msgstr "غير متوفر"
 #. Nutrition info tab
 msgctxt "nutrition_carbohydrate"
 msgid "Carbohydrate"
-msgstr ""
+msgstr "كربوهيدرات"
 
 msgctxt "nutrition_carbohydrate_short_name"
 msgid "Carbohydrate (g)"
@@ -957,7 +956,7 @@ msgstr "الطاقة"
 
 msgctxt "nutrition_fat"
 msgid "Fat"
-msgstr ""
+msgstr "الدهن"
 
 msgctxt "nutrition_fat_short_name"
 msgid "Fat (g)"
@@ -1013,7 +1012,7 @@ msgstr ""
 
 msgctxt "nutrition_serving_size"
 msgid "Serving size :"
-msgstr ""
+msgstr "حجم الحصة"
 
 msgctxt "nutrition_sodium"
 msgid "Sodium"
@@ -1045,7 +1044,7 @@ msgstr ""
 
 msgctxt "action_manage_account"
 msgid "Manage account"
-msgstr ""
+msgstr "أدر الحساب"
 
 msgctxt "action_contributes"
 msgid "Your contributions"

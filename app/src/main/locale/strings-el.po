@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-27 17:24+0100\n"
-"PO-Revision-Date: 2016-05-29 15:48+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-12-28 14:26+0100\n"
+"PO-Revision-Date: 2016-12-28 11:31+0000\n"
+"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: el\n"
 "Language-Team: Greek <el@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(((n == 1)) ? 0 : 1)\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 msgctxt "app_name"
 msgid "Open Food"
-msgstr ""
+msgstr "Open Food"
 
 msgctxt "hello_world"
 msgid "Hello world!"
@@ -37,17 +37,16 @@ msgstr ""
 
 msgctxt "action_discover"
 msgid "Discover"
-msgstr ""
+msgstr "Ανακαλύψτε"
 
 msgctxt "action_contribute"
 msgid "Contribute"
-msgstr ""
+msgstr "Συμβάλλετε"
 
 msgctxt "action_find"
 msgid "Find"
 msgstr ""
 
-#, fuzzy
 msgctxt "text_barcode"
 msgid "Type the barcode :"
 msgstr ""
@@ -60,7 +59,7 @@ msgstr ""
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:1"
 msgid "Ingredients"
-msgstr ""
+msgstr "Συστατικά"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:2"
@@ -105,142 +104,142 @@ msgstr ""
 #. Text units
 msgctxt "lang_array:0"
 msgid "en"
-msgstr ""
+msgstr "en"
 
 #. Text units
 msgctxt "lang_array:1"
 msgid "fr"
-msgstr ""
+msgstr "fr"
 
 #. Text units
 msgctxt "lang_array:2"
 msgid "es"
-msgstr ""
+msgstr "es"
 
 #. Text units
 msgctxt "lang_array:3"
 msgid "it"
-msgstr ""
+msgstr "it"
 
 #. Text units
 msgctxt "lang_array:4"
 msgid "de"
-msgstr ""
+msgstr "de"
 
 #. Text units
 msgctxt "lang_array:5"
 msgid "ja"
-msgstr ""
+msgstr "ja"
 
 #. Text units
 msgctxt "lang_array:6"
 msgid "ru"
-msgstr ""
+msgstr "ru"
 
 #. Text units
 msgctxt "lang_array:7"
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #. Text units
 msgctxt "lang_array:8"
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #. Text units
 msgctxt "lang_array:9"
 msgid "my"
-msgstr ""
+msgstr "my"
 
 #. Text units
 msgctxt "lang_array:10"
 msgid "kk"
-msgstr ""
+msgstr "kk"
 
 #. Text units
 msgctxt "lang_array:11"
 msgid "hy"
-msgstr ""
+msgstr "hy"
 
 #. Text units
 msgctxt "lang_array:12"
 msgid "el"
-msgstr ""
+msgstr "el"
 
 #. Text units
 msgctxt "lang_array:13"
 msgid "he"
-msgstr ""
+msgstr "he"
 
 #. Text units
 msgctxt "lang_array:14"
 msgid "gl"
-msgstr ""
+msgstr "gl"
 
 #. Text units
 msgctxt "lang_array:15"
 msgid "ca"
-msgstr ""
+msgstr "ca"
 
 #. Text units
 msgctxt "lang_array:16"
 msgid "cs"
-msgstr ""
+msgstr "cs"
 
 #. Text units
 msgctxt "lang_array:17"
 msgid "ar"
-msgstr ""
+msgstr "ar"
 
 #. Text units
 msgctxt "lang_array:18"
 msgid "fi"
-msgstr ""
+msgstr "fi"
 
 #. Text units
 msgctxt "lang_array:19"
 msgid "hi"
-msgstr ""
+msgstr "hi"
 
 #. Text units
 msgctxt "lang_array:20"
 msgid "kab"
-msgstr ""
+msgstr "kab"
 
 #. Text units
 msgctxt "lang_array:21"
 msgid "ko"
-msgstr ""
+msgstr "ko"
 
 #. Text units
 msgctxt "lang_array:22"
 msgid "lv"
-msgstr ""
+msgstr "lv"
 
 #. Text units
 msgctxt "lang_array:23"
 msgid "nl"
-msgstr ""
+msgstr "nl"
 
 #. Text units
 msgctxt "lang_array:24"
 msgid "pt-rBR"
-msgstr ""
+msgstr "pt-rBR"
 
 #. Text units
 msgctxt "lang_array:25"
 msgid "ro"
-msgstr ""
+msgstr "ro"
 
 #. Text units
 msgctxt "lang_array:26"
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #. Text units
 msgctxt "lang_array:27"
 msgid "zh"
-msgstr ""
+msgstr "zh"
 
 #. Text units
 msgctxt "lang_array:28"
@@ -259,39 +258,39 @@ msgstr ""
 
 msgctxt "lang_label_array:0"
 msgid "English"
-msgstr ""
+msgstr "Αγγλικα"
 
 msgctxt "lang_label_array:1"
 msgid "French"
-msgstr ""
+msgstr "Γαλλικα"
 
 msgctxt "lang_label_array:2"
 msgid "Spanish"
-msgstr ""
+msgstr "Ισπανικα"
 
 msgctxt "lang_label_array:3"
 msgid "Italian"
-msgstr ""
+msgstr "Ιταλικα"
 
 msgctxt "lang_label_array:4"
 msgid "German"
-msgstr ""
+msgstr "Γερμανικα"
 
 msgctxt "lang_label_array:5"
 msgid "Japanese"
-msgstr ""
+msgstr "Ιαπωνικα"
 
 msgctxt "lang_label_array:6"
 msgid "Russian"
-msgstr ""
+msgstr "Ρωσικα"
 
 msgctxt "lang_label_array:7"
 msgid "Portuguese"
-msgstr ""
+msgstr "Πορτογαλικα"
 
 msgctxt "lang_label_array:8"
 msgid "Swedish"
-msgstr ""
+msgstr "Σουηδικά"
 
 msgctxt "lang_label_array:9"
 msgid "Burmese"
@@ -307,11 +306,11 @@ msgstr ""
 
 msgctxt "lang_label_array:12"
 msgid "Greek"
-msgstr ""
+msgstr "Ελληνικά"
 
 msgctxt "lang_label_array:13"
 msgid "Hebrew"
-msgstr ""
+msgstr "Εβραικα"
 
 msgctxt "lang_label_array:14"
 msgid "Galician"
@@ -331,7 +330,7 @@ msgstr ""
 
 msgctxt "lang_label_array:18"
 msgid "Finnish"
-msgstr ""
+msgstr "Φινλανδικά"
 
 msgctxt "lang_label_array:19"
 msgid "Hindi"
@@ -343,15 +342,15 @@ msgstr ""
 
 msgctxt "lang_label_array:21"
 msgid "Korean"
-msgstr ""
+msgstr "Κορεατικα"
 
 msgctxt "lang_label_array:22"
 msgid "Latvian"
-msgstr ""
+msgstr "Λετονικά"
 
 msgctxt "lang_label_array:23"
 msgid "Dutch"
-msgstr ""
+msgstr "Ολλανδικα"
 
 msgctxt "lang_label_array:24"
 msgid "Brazilian portuguese"
@@ -359,15 +358,15 @@ msgstr ""
 
 msgctxt "lang_label_array:25"
 msgid "Romanian"
-msgstr ""
+msgstr "Ρουμανικα"
 
 msgctxt "lang_label_array:26"
 msgid "Swedish"
-msgstr ""
+msgstr "Σουηδικά"
 
 msgctxt "lang_label_array:27"
 msgid "Chinese"
-msgstr ""
+msgstr "Κινεζικα"
 
 msgctxt "lang_label_array:28"
 msgid "Norwegian (Bokmal)"
@@ -391,7 +390,7 @@ msgstr ""
 
 msgctxt "images_array:2"
 msgid "Ingredients"
-msgstr ""
+msgstr "Συστατικά"
 
 #. Content Description
 msgctxt "search_button"
@@ -500,15 +499,15 @@ msgstr ""
 
 msgctxt "txtNutritionLevelLow"
 msgid "low"
-msgstr ""
+msgstr "χαμηλός"
 
 msgctxt "txtNutritionLevelModerate"
 msgid "moderate"
-msgstr ""
+msgstr "μέτριος"
 
 msgctxt "txtNutritionLevelHigh"
 msgid "high"
-msgstr ""
+msgstr "υψηλός"
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -571,7 +570,7 @@ msgstr ""
 
 msgctxt "hintPass"
 msgid "Password"
-msgstr ""
+msgstr "Κωδικός χρήστη"
 
 msgctxt "errorLogin"
 msgid "Login or password error"
@@ -629,11 +628,11 @@ msgstr ""
 
 msgctxt "hintStores"
 msgid "Store"
-msgstr ""
+msgstr "Κατάστημα"
 
 msgctxt "hintBrand"
 msgid "Brand"
-msgstr ""
+msgstr "Μάρκα"
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
@@ -731,7 +730,7 @@ msgstr ""
 
 msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
-msgstr ""
+msgstr "Open Beauty Facts"
 
 msgctxt "search_drawer"
 msgid "Search"
@@ -771,7 +770,7 @@ msgstr ""
 
 msgctxt "sign_in_drawer"
 msgid "Sign-in"
-msgstr ""
+msgstr "Εγγραφη"
 
 msgctxt "alert_drawer"
 msgid "Allergen Alert"
@@ -856,11 +855,11 @@ msgstr ""
 #. Strings related to login
 msgctxt "error_invalid_password"
 msgid "The password needs to be a least 6 characters long."
-msgstr ""
+msgstr "Ο κωδικός χρήστη (password) πρέπει να περιέχει τουλάχιστον 6 χαρακτήρες"
 
 msgctxt "error_field_required"
 msgid "This field is required."
-msgstr ""
+msgstr "Το πεδίο είναι απαραίτητο."
 
 msgctxt "action_preferences"
 msgid "Preferences"
@@ -886,7 +885,7 @@ msgstr ""
 
 msgctxt "prefs_language"
 msgid "Language"
-msgstr ""
+msgstr "Γλώσσα"
 
 msgctxt "prefs_language_summary"
 msgid "Change language"
@@ -931,7 +930,7 @@ msgstr ""
 #. Nutrition info tab
 msgctxt "nutrition_carbohydrate"
 msgid "Carbohydrate"
-msgstr ""
+msgstr "Υδατάνθρακας"
 
 msgctxt "nutrition_carbohydrate_short_name"
 msgid "Carbohydrate (g)"
@@ -939,7 +938,7 @@ msgstr ""
 
 msgctxt "nutrition_cholesterol"
 msgid "Cholesterol"
-msgstr ""
+msgstr "Χοληστερόλη"
 
 msgctxt "nutrition_cholesterol_short_name"
 msgid "Cholesterol (g)"
@@ -947,15 +946,15 @@ msgstr ""
 
 msgctxt "nutrition_energy"
 msgid "Energy"
-msgstr ""
+msgstr "Ενέργεια"
 
 msgctxt "nutrition_energy_short_name"
 msgid "Energy"
-msgstr ""
+msgstr "Ενέργεια"
 
 msgctxt "nutrition_fat"
 msgid "Fat"
-msgstr ""
+msgstr "Λίπη"
 
 msgctxt "nutrition_fat_short_name"
 msgid "Fat (g)"
@@ -963,7 +962,7 @@ msgstr ""
 
 msgctxt "nutrition_fiber"
 msgid "Dietary fiber"
-msgstr ""
+msgstr "Φυτικές ίνες"
 
 msgctxt "nutrition_fiber_short_name"
 msgid "Dietary fiber (g)"
@@ -971,7 +970,7 @@ msgstr ""
 
 msgctxt "nutrition_header"
 msgid "Nutrition facts"
-msgstr ""
+msgstr "Διατροφικά στοιχεία"
 
 msgctxt "nutrition_no_data_message"
 msgid "No data is available for this product"
@@ -983,7 +982,7 @@ msgstr ""
 
 msgctxt "nutrition_proteins"
 msgid "Proteins"
-msgstr ""
+msgstr "Πρωτεΐνες"
 
 msgctxt "nutrition_proteins_short_name"
 msgid "Proteins (g)"
@@ -991,7 +990,7 @@ msgstr ""
 
 msgctxt "nutrition_salt"
 msgid "Salt"
-msgstr ""
+msgstr "Αλάτι"
 
 msgctxt "nutrition_salt_short_name"
 msgid "Salt (g)"
@@ -1015,7 +1014,7 @@ msgstr ""
 
 msgctxt "nutrition_sodium"
 msgid "Sodium"
-msgstr ""
+msgstr "Νάτριο"
 
 msgctxt "nutrition_sodium_short_name"
 msgid "Sodium (g)"
@@ -1043,7 +1042,7 @@ msgstr ""
 
 msgctxt "action_manage_account"
 msgid "Manage account"
-msgstr ""
+msgstr "Διαχείριση λογαριασμού"
 
 msgctxt "action_contributes"
 msgid "Your contributions"
@@ -1052,23 +1051,23 @@ msgstr ""
 #. website translated pages
 msgctxt "website"
 msgid "http://world.openfoodfacts.org/"
-msgstr ""
+msgstr "http://world-el.openfoodfacts.org/"
 
 msgctxt "website_contribute"
 msgid "http://world.openfoodfacts.org/contribute"
-msgstr ""
+msgstr "http://world-el.openfoodfacts.org/contribute"
 
 msgctxt "website_discover"
 msgid "http://world.openfoodfacts.org/discover"
-msgstr ""
+msgstr "http://world-el.openfoodfacts.org/discover"
 
 msgctxt "website_product"
 msgid "http://world.openfoodfacts.org/product/"
-msgstr ""
+msgstr "http://world-el.openfoodfacts.org/προιον/"
 
 msgctxt "website_contributor"
 msgid "http://world.openfoodfacts.org/contributor/"
-msgstr ""
+msgstr "http://world-el.openfoodfacts.org/συντελεστης/"
 
 msgctxt "logout_drawer"
 msgid "Logout"

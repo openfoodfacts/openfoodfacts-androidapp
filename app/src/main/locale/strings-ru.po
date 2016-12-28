@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-27 17:24+0100\n"
-"PO-Revision-Date: 2016-12-26 11:53+0000\n"
+"POT-Creation-Date: 2016-12-28 14:26+0100\n"
+"PO-Revision-Date: 2016-12-27 11:42+0000\n"
 "Last-Translator: Nkolay Parukhin <parukhin@gmail.com>\n"
 "Language: ru\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -52,10 +52,9 @@ msgctxt "action_find"
 msgid "Find"
 msgstr "Найти"
 
-#, fuzzy
 msgctxt "text_barcode"
 msgid "Type the barcode :"
-msgstr "Поместите штрих-код"
+msgstr "Введите штрихкод"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
@@ -352,7 +351,7 @@ msgstr "Корейский"
 
 msgctxt "lang_label_array:22"
 msgid "Latvian"
-msgstr ""
+msgstr "Латышский"
 
 msgctxt "lang_label_array:23"
 msgid "Dutch"
@@ -360,7 +359,7 @@ msgstr "Голландский"
 
 msgctxt "lang_label_array:24"
 msgid "Brazilian portuguese"
-msgstr ""
+msgstr "Португальский (Бразилия)"
 
 msgctxt "lang_label_array:25"
 msgid "Romanian"
@@ -851,7 +850,7 @@ msgstr "Пожалуйста, включите разрешение в наст�
 
 msgctxt "permission_storage"
 msgid "Storage permission is needed to take or select pictures"
-msgstr ""
+msgstr "Разрешение на доступ к SD-карте требуется для выбора фото"
 
 msgctxt "info_download_data"
 msgid ""
@@ -1106,9 +1105,9 @@ msgstr "Выйти"
 
 msgctxt "contribution_without_account"
 msgid "You can sign-in or create an account to keep your contributions"
-msgstr ""
+msgstr "Вы можете войти или создать учётную запись, чтобы сохранить ваш вклад"
 
 msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
-msgstr ""
+msgstr "Углеродный след / выбросы CO2: "
 

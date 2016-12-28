@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-27 17:24+0100\n"
-"PO-Revision-Date: 2016-12-26 13:58+0000\n"
+"POT-Creation-Date: 2016-12-28 14:26+0100\n"
+"PO-Revision-Date: 2016-12-27 09:41+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: ro\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -49,10 +49,9 @@ msgctxt "action_find"
 msgid "Find"
 msgstr "Căutare"
 
-#, fuzzy
 msgctxt "text_barcode"
 msgid "Type the barcode :"
-msgstr "Cod de bare:"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
@@ -247,7 +246,7 @@ msgstr "zh"
 #. Text units
 msgctxt "lang_array:28"
 msgid "nb"
-msgstr ""
+msgstr "nb"
 
 #. Text units
 msgctxt "lang_array:29"
