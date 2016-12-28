@@ -7,7 +7,6 @@
   <string name="action_discover">Wali</string>
   <string name="action_contribute">Ttekki</string>
   <string name="action_find">Af</string>
-  <string name="text_barcode">Mudd-d tangalt n ifeggagen</string>
   <string-array name="nav_drawer_items_product">
     <item>Agzul</item>
     <item>Isufar</item>

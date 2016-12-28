@@ -7,7 +7,7 @@
   <string name="action_discover">О проекте</string>
   <string name="action_contribute">Как помочь</string>
   <string name="action_find">Найти</string>
-  <string name="text_barcode">Поместите штрих-код</string>
+  <string name="text_barcode">Введите штрихкод</string>
   <string-array name="nav_drawer_items_product">
     <item>Резюме</item>
     <item>Ингредиенты</item>
@@ -78,9 +78,9 @@
     <item>Хинди</item>
     <item>Кабильский</item>
     <item>Корейский</item>
-    <item>Latvian</item>
+    <item>Латышский</item>
     <item>Голландский</item>
-    <item>Brazilian portuguese</item>
+    <item>Португальский (Бразилия)</item>
     <item>Румынский</item>
     <item>Шведский</item>
     <item>Китайский</item>
@@ -198,6 +198,7 @@
   <string name="permission_camera">Разрешение на доступ к камере требуется для сканирования штрих-кодов и получения фото.</string>
   <string name="permission_title">Информация о разрешениях</string>
   <string name="permission_denied">Пожалуйста, включите разрешение в настройках.</string>
+  <string name="permission_storage">Разрешение на доступ к SD-карте требуется для выбора фото</string>
   <string name="info_download_data">Для работы этой функциональности требуется скачать некоторые данные; для этого нажмите, пожалуйста, «Да».</string>
   <string name="info_download_data_connection">Для работы этой функциональности требуется скачать некоторые данные. Пожалуйста, включите интернет-соединение.</string>
   <string name="msg_input_empty">Сначала заполните поле.</string>
@@ -256,4 +257,6 @@
   <string name="website_product">http://world.openfoodfacts.org/product/</string>
   <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
   <string name="logout_drawer">Выйти</string>
+  <string name="contribution_without_account">Вы можете войти или создать учётную запись, чтобы сохранить ваш вклад</string>
+  <string name="textCarbonFootprint">"Углеродный след / выбросы CO2: "</string>
 </resources>

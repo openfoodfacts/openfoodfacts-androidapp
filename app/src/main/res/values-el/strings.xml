@@ -1,8 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="app_name">Open Food</string>
+  <string name="action_discover">Ανακαλύψτε</string>
+  <string name="action_contribute">Συμβάλλετε</string>
   <string-array name="nav_drawer_items_product">
     <item>Summary</item>
-    <item>Ingredients</item>
+    <item>Συστατικά</item>
     <item>Nutrition</item>
     <item>Nutrition Table</item>
     <item>Back to menu</item>
@@ -48,34 +51,34 @@
     <item>zh_rCN</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
-    <item>Swedish</item>
+    <item>Αγγλικα</item>
+    <item>Γαλλικα</item>
+    <item>Ισπανικα</item>
+    <item>Ιταλικα</item>
+    <item>Γερμανικα</item>
+    <item>Ιαπωνικα</item>
+    <item>Ρωσικα</item>
+    <item>Πορτογαλικα</item>
+    <item>Σουηδικά</item>
     <item>Burmese</item>
     <item>Kazakh</item>
     <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
+    <item>Ελληνικά</item>
+    <item>Εβραικα</item>
     <item>Galician</item>
     <item>Catalan</item>
     <item>Czech</item>
     <item>Arabic</item>
-    <item>Finnish</item>
+    <item>Φινλανδικά</item>
     <item>Hindi</item>
     <item>Kabyle</item>
-    <item>Korean</item>
-    <item>Latvian</item>
-    <item>Dutch</item>
+    <item>Κορεατικα</item>
+    <item>Λετονικά</item>
+    <item>Ολλανδικα</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
-    <item>Swedish</item>
-    <item>Chinese</item>
+    <item>Ρουμανικα</item>
+    <item>Σουηδικά</item>
+    <item>Κινεζικα</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
@@ -83,6 +86,33 @@
   <string-array name="images_array">
     <item>Default</item>
     <item>Nutrition</item>
-    <item>Ingredients</item>
+    <item>Συστατικά</item>
   </string-array>
+  <string name="txtNutritionLevelLow">χαμηλός</string>
+  <string name="txtNutritionLevelModerate">μέτριος</string>
+  <string name="txtNutritionLevelHigh">υψηλός</string>
+  <string name="hintPass">Κωδικός χρήστη</string>
+  <string name="hintStores">Κατάστημα</string>
+  <string name="hintBrand">Μάρκα</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
+  <string name="sign_in_drawer">Εγγραφη</string>
+  <string name="error_invalid_password">Ο κωδικός χρήστη (password) πρέπει να περιέχει τουλάχιστον 6 χαρακτήρες</string>
+  <string name="error_field_required">Το πεδίο είναι απαραίτητο.</string>
+  <string name="prefs_language">Γλώσσα</string>
+  <string name="nutrition_carbohydrate">Υδατάνθρακας</string>
+  <string name="nutrition_cholesterol">Χοληστερόλη</string>
+  <string name="nutrition_energy">Ενέργεια</string>
+  <string name="nutrition_energy_short_name">Ενέργεια</string>
+  <string name="nutrition_fat">Λίπη</string>
+  <string name="nutrition_fiber">Φυτικές ίνες</string>
+  <string name="nutrition_header">Διατροφικά στοιχεία</string>
+  <string name="nutrition_proteins">Πρωτεΐνες</string>
+  <string name="nutrition_salt">Αλάτι</string>
+  <string name="nutrition_sodium">Νάτριο</string>
+  <string name="action_manage_account">Διαχείριση λογαριασμού</string>
+  <string name="website">http://world-el.openfoodfacts.org/</string>
+  <string name="website_contribute">http://world-el.openfoodfacts.org/contribute</string>
+  <string name="website_discover">http://world-el.openfoodfacts.org/discover</string>
+  <string name="website_product">http://world-el.openfoodfacts.org/προιον/</string>
+  <string name="website_contributor">http://world-el.openfoodfacts.org/συντελεστης/</string>
 </resources>

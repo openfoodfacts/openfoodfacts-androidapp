@@ -7,7 +7,7 @@
   <string name="action_discover">Découvrir</string>
   <string name="action_contribute">Contribuer</string>
   <string name="action_find">Chercher</string>
-  <string name="text_barcode">Ajoutez le code barre :</string>
+  <string name="text_barcode">Saisissez le code-barre :</string>
   <string-array name="nav_drawer_items_product">
     <item>Résumé</item>
     <item>Ingrédients</item>

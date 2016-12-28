@@ -1,13 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="hello_world">Olá mundo!</string>
-  <string name="action_settings">Configurações</string>
-  <string name="action_about">Sobre</string>
-  <string name="action_find">Buscar</string>
+  <string name="app_name">Open Food</string>
+  <string name="hello_world">Witaj, świecie!</string>
+  <string name="action_discover">Odkryj</string>
   <string-array name="nav_drawer_items_product">
-    <item>Resumo</item>
-    <item>Ingredientes</item>
-    <item>Nutrição</item>
+    <item>Summary</item>
+    <item>Ingredients</item>
+    <item>Nutrition</item>
     <item>Nutrition Table</item>
     <item>Back to menu</item>
   </string-array>
@@ -85,10 +84,27 @@
     <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
-    <item>Padrão</item>
-    <item>Nutrição</item>
-    <item>Ingredientes</item>
+    <item>Default</item>
+    <item>Nutrition</item>
+    <item>Ingredients</item>
   </string-array>
-  <string name="search_button">Buscar</string>
-  <string name="no_products">Nenhum produto encontrado</string>
+  <string name="txtPass">Hasło :</string>
+  <string name="hintPass">Hasło</string>
+  <string name="txtYes">Tak</string>
+  <string name="txtNo">Nie</string>
+  <string name="nutrition_carbohydrate">Węglowodany</string>
+  <string name="nutrition_cholesterol">Cholesterol</string>
+  <string name="nutrition_energy">Energia</string>
+  <string name="nutrition_energy_short_name">Energia</string>
+  <string name="nutrition_fat">Tłuszcz</string>
+  <string name="nutrition_header">Wartości odżywcze</string>
+  <string name="nutrition_proteins">Proteiny</string>
+  <string name="nutrition_salt">Sól</string>
+  <string name="nutrition_sodium">Sód</string>
+  <string name="action_manage_account">Zarządzaj kontem</string>
+  <string name="website">http://world-pl.openfoodfacts.org/</string>
+  <string name="website_contribute">http://world-pl.openfoodfacts.org/contribute</string>
+  <string name="website_discover">http://world-pl.openfoodfacts.org/discover</string>
+  <string name="website_product">http://world-pl.openfoodfacts.org/product/</string>
+  <string name="website_contributor">http://world-pl.openfoodfacts.org/contributor/</string>
 </resources>

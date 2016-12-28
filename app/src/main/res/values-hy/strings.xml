@@ -5,7 +5,6 @@
   <string name="action_settings">Կարգավորումներ</string>
   <string name="action_about">Մեր մասին</string>
   <string name="action_find">Գտնել</string>
-  <string name="text_barcode">Դնել գծակոդ՝</string>
   <string-array name="nav_drawer_items_product">
     <item>Ամփոփում</item>
     <item>Բաղադրամասեր</item>

@@ -5,7 +5,6 @@
   <string name="action_settings">Configurări</string>
   <string name="action_about">Despre</string>
   <string name="action_find">Căutare</string>
-  <string name="text_barcode">Cod de bare:</string>
   <string-array name="nav_drawer_items_product">
     <item>Summary</item>
     <item>Ingrediente</item>

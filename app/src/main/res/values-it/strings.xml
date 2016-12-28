@@ -4,14 +4,15 @@
   <string name="hello_world">Hello world!</string>
   <string name="action_settings">Impostazioni</string>
   <string name="action_about">Informazioni</string>
+  <string name="action_discover">Scopri</string>
+  <string name="action_contribute">Contribuire</string>
   <string name="action_find">Cerca</string>
-  <string name="text_barcode">Inserisci codice a barre</string>
   <string-array name="nav_drawer_items_product">
     <item>Summary</item>
     <item>Ingredienti</item>
-    <item>Nutrition</item>
+    <item>Nutrizione</item>
     <item>Nutrition Table</item>
-    <item>Back to menu</item>
+    <item>Torna al menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -54,44 +55,45 @@
     <item>zh_rCN</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
+    <item>Inglese</item>
+    <item>Francese</item>
+    <item>Spagnolo</item>
+    <item>Italiano</item>
     <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
-    <item>Galician</item>
-    <item>Catalan</item>
+    <item>Giapponese</item>
+    <item>Russo</item>
+    <item>Portoghese</item>
+    <item>Svedese</item>
+    <item>Birmano</item>
+    <item>Kazako</item>
+    <item>Armeno</item>
+    <item>Greco</item>
+    <item>Ebraico</item>
+    <item>Galiziano</item>
+    <item>Catalano</item>
     <item>Czech</item>
-    <item>Arabic</item>
-    <item>Finnish</item>
+    <item>Arabo</item>
+    <item>Finlandese</item>
     <item>Hindi</item>
     <item>Kabyle</item>
-    <item>Korean</item>
-    <item>Latvian</item>
-    <item>Dutch</item>
+    <item>Coreano</item>
+    <item>Lettone</item>
+    <item>Olandese</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
-    <item>Swedish</item>
-    <item>Chinese</item>
-    <item>Norwegian (Bokmal)</item>
+    <item>Rumeno</item>
+    <item>Svedese</item>
+    <item>Cinese</item>
+    <item>Norvegese (Bokmål)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
     <item>Predefinito</item>
-    <item>Nutrition</item>
+    <item>Nutrizione</item>
     <item>Ingredienti</item>
   </string-array>
   <string name="search_button">Cerca</string>
+  <string name="no_products">Prodotti non trovati</string>
   <string name="alert_dialog_warning_title">Attenzione</string>
   <string name="toast_retrieving">Caricamento...</string>
   <string name="txtBarcode">Codice a barre</string>
@@ -143,6 +145,7 @@
   <string name="hintEnergyUnit">Unità di energia</string>
   <string name="hintWeight">Peso</string>
   <string name="hintStores">Negozio</string>
+  <string name="hintBrand">Marche</string>
   <string name="txtTakePicture">Fai una foto</string>
   <string name="txtSendAll">Carica tutto</string>
   <string name="txtNoData">Nessun dato</string>
@@ -175,15 +178,50 @@
   <string name="delete_txt">Elimina</string>
   <string name="sign_in_drawer">Accedi</string>
   <string name="warning_allergens">Contiene allergeni</string>
+  <string name="title_dialog_alert">Aggiungi allarme</string>
   <string name="product_sent">Prodotto inviato!</string>
   <string name="action_edit_product">Modifica prodotto</string>
   <string name="title_info_dialog">Informazioni</string>
   <string name="text_offline_info_dialog">Puoi scansionare i prodotti quando sei offline e aggiungerli a Open Food Facts più tardi. Tutti i prodotti che scansioni verranno mostrati qui e potrai inviarli usando il tasto qui sotto.</string>
   <string name="error_invalid_password">La password deve contenere almeno 6 caratteri.</string>
+  <string name="error_field_required">Questo campo è obbligatorio.</string>
   <string name="action_preferences">Impostazioni</string>
+  <string name="prefs_language">Lingua</string>
+  <string name="prefs_language_summary">Cambia lingua</string>
   <string name="scan_history_drawer">Cronologia</string>
   <string name="text_clear_history_dialog">Vuoi cancellare tutta la cronologia delle scansioni?</string>
   <string name="export_csv_history">Esporta CSV</string>
   <string name="txt_exporting_history">Sto esportando la cronologia...</string>
   <string name="txt_nutrition_not_found">N/D</string>
+  <string name="nutrition_carbohydrate">Carboidrato</string>
+  <string name="nutrition_carbohydrate_short_name">Carboidrati (g)</string>
+  <string name="nutrition_cholesterol">Colesterolo</string>
+  <string name="nutrition_energy">Energia</string>
+  <string name="nutrition_energy_short_name">Energia</string>
+  <string name="nutrition_fat_short_name">Grassi (g)</string>
+  <string name="nutrition_fiber">Fibra dietetica</string>
+  <string name="nutrition_fiber_short_name">Fibra alimentare (g)</string>
+  <string name="nutrition_header">Informazioni nutrizionali</string>
+  <string name="nutrition_proteins">Proteine</string>
+  <string name="nutrition_proteins_short_name">Proteine (g)</string>
+  <string name="nutrition_salt">Sale</string>
+  <string name="nutrition_salt_short_name">Sale (g)</string>
+  <string name="nutrition_satured_fat">Acidi Grassi saturi</string>
+  <string name="nutrition_satured_fat_short_name">Grassi saturi (g)</string>
+  <string name="nutrition_serving">Per porzione</string>
+  <string name="nutrition_serving_size">Grandezza porzione:</string>
+  <string name="nutrition_sodium">Sodio</string>
+  <string name="nutrition_sodium_short_name">Sodio (g)</string>
+  <string name="nutrition_sugars">Zuccheri</string>
+  <string name="nutrition_sugars_short_name">Zuccheri (g)</string>
+  <string name="nutriment_serving_size">Per porzione :</string>
+  <string name="action_manage_account">Gestisci account</string>
+  <string name="action_contributes">I tuoi contributi</string>
+  <string name="website">http://world-it.openfoodfacts.org/</string>
+  <string name="website_contribute">http://world-it.openfoodfacts.org/contribute</string>
+  <string name="website_discover">http://world-it.openfoodfacts.org/discover</string>
+  <string name="website_product">http://world-it.openfoodfacts.org/prodotto/</string>
+  <string name="website_contributor">http://world-it.openfoodfacts.org/prodotto/</string>
+  <string name="logout_drawer">Termina sessione</string>
+  <string name="textCarbonFootprint">"Emissioni di CO2 (impronta climatica): "</string>
 </resources>

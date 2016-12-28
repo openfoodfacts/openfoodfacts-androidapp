@@ -5,7 +5,6 @@
   <string name="action_settings">Баптаулар</string>
   <string name="action_about">Осы туралы</string>
   <string name="action_find">Табу</string>
-  <string name="text_barcode">Штрих-код қою :</string>
   <string-array name="nav_drawer_items_product">
     <item>Түйіндеме</item>
     <item>Ингредиенттер</item>

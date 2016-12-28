@@ -7,7 +7,6 @@
   <string name="action_discover">发现</string>
   <string name="action_contribute">贡献</string>
   <string name="action_find">查找</string>
-  <string name="text_barcode">设置条形码</string>
   <string-array name="nav_drawer_items_product">
     <item>摘要</item>
     <item>成分</item>

@@ -7,7 +7,6 @@
   <string name="action_discover">Utforsk</string>
   <string name="action_contribute">Bidra</string>
   <string name="action_find">Søk</string>
-  <string name="text_barcode">Skriv inn strekkoden</string>
   <string-array name="nav_drawer_items_product">
     <item>Sammendrag</item>
     <item>Ingredienser</item>
@@ -73,18 +72,18 @@
     <item>Galisisk</item>
     <item>Katalansk</item>
     <item>Tsjekkisk</item>
-    <item>Arabic</item>
-    <item>Finnish</item>
+    <item>Arabisk</item>
+    <item>Finsk</item>
     <item>Hindi</item>
     <item>Kabyle</item>
-    <item>Korean</item>
+    <item>Koreansk</item>
     <item>Latvian</item>
-    <item>Dutch</item>
+    <item>Nederlandsk</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
-    <item>Swedish</item>
-    <item>Chinese</item>
-    <item>Norwegian (Bokmal)</item>
+    <item>Rumensk</item>
+    <item>Svensk</item>
+    <item>Kinesisk</item>
+    <item>Norsk (bokmål)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
   </string-array>

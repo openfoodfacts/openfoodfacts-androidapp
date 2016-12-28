@@ -1,13 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="hello_world">Olá mundo!</string>
-  <string name="action_settings">Configurações</string>
-  <string name="action_about">Sobre</string>
-  <string name="action_find">Buscar</string>
+  <string name="hello_world">Helló világ!</string>
   <string-array name="nav_drawer_items_product">
-    <item>Resumo</item>
-    <item>Ingredientes</item>
-    <item>Nutrição</item>
+    <item>Summary</item>
+    <item>Össztevők</item>
+    <item>Nutrition</item>
     <item>Nutrition Table</item>
     <item>Back to menu</item>
   </string-array>
@@ -65,30 +62,44 @@
     <item>Kazakh</item>
     <item>Armenian</item>
     <item>Greek</item>
-    <item>Hebrew</item>
+    <item>Héber</item>
     <item>Galician</item>
-    <item>Catalan</item>
-    <item>Czech</item>
-    <item>Arabic</item>
-    <item>Finnish</item>
+    <item>Katalán</item>
+    <item>Cseh</item>
+    <item>Arab</item>
+    <item>Finn</item>
     <item>Hindi</item>
     <item>Kabyle</item>
     <item>Korean</item>
-    <item>Latvian</item>
-    <item>Dutch</item>
+    <item>Lett</item>
+    <item>Holland</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
-    <item>Swedish</item>
-    <item>Chinese</item>
-    <item>Norwegian (Bokmal)</item>
+    <item>Román</item>
+    <item>Svéd</item>
+    <item>Kínai</item>
+    <item>Norvég (Bokmål)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
-    <item>Padrão</item>
-    <item>Nutrição</item>
-    <item>Ingredientes</item>
+    <item>Default</item>
+    <item>Nutrition</item>
+    <item>Össztevők</item>
   </string-array>
-  <string name="search_button">Buscar</string>
-  <string name="no_products">Nenhum produto encontrado</string>
+  <string name="toast_retrieving">Betöltés…</string>
+  <string name="txtPass">Jelszó :</string>
+  <string name="hintPass">Jelszó</string>
+  <string name="toastSending">Feltöltés...</string>
+  <string name="txtLoading">Betöltés…</string>
+  <string name="nutrition_carbohydrate">Szénhidrát</string>
+  <string name="nutrition_energy">Energia</string>
+  <string name="nutrition_energy_short_name">Energia</string>
+  <string name="nutrition_fat">Zsír</string>
+  <string name="nutrition_fiber">Élelmi rost</string>
+  <string name="nutrition_header">Tápanyag ismertető</string>
+  <string name="nutrition_proteins">Fehérje</string>
+  <string name="nutrition_salt">Só</string>
+  <string name="nutrition_sodium">Nátrium</string>
+  <string name="nutrition_sodium_short_name">Nátrium (g)</string>
+  <string name="action_manage_account">Fiók kezelése</string>
 </resources>

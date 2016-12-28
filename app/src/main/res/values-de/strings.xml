@@ -7,7 +7,6 @@
   <string name="action_discover">Entdecken</string>
   <string name="action_contribute">Mitmachen</string>
   <string name="action_find">Suchen</string>
-  <string name="text_barcode">Strichcode einfügen</string>
   <string-array name="nav_drawer_items_product">
     <item>Zusammenfassung</item>
     <item>Inhaltsstoffe</item>
@@ -73,18 +72,18 @@
     <item>Galicisch</item>
     <item>Katalanisch</item>
     <item>Tschechisch</item>
-    <item>Arabic</item>
-    <item>Finnish</item>
+    <item>Arabisch</item>
+    <item>Finnisch</item>
     <item>Hindi</item>
-    <item>Kabyle</item>
-    <item>Korean</item>
+    <item>Kabylisch</item>
+    <item>Koreanisch</item>
     <item>Latvian</item>
-    <item>Dutch</item>
+    <item>Niederländisch</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
-    <item>Swedish</item>
-    <item>Chinese</item>
-    <item>Norwegian (Bokmal)</item>
+    <item>Rumänisch</item>
+    <item>Schwedisch</item>
+    <item>Chinesisch</item>
+    <item>Norwegisch (Bokmål)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
   </string-array>
@@ -105,6 +104,7 @@
   <string name="txtPackaging">Verpackung:</string>
   <string name="txtBrands">Marken:</string>
   <string name="txtCategories">Kategorien :</string>
+  <string name="txtLabels">Labels, Zertifizierungen, Preise :</string>
   <string name="txtManufacturing">Herstellungs- oder Umwandlungsorte:</string>
   <string name="txtIngredientsOrigins">Herkunft der Zutaten</string>
   <string name="txtCity">Stadt und Land des Ankaufs:</string>
@@ -251,4 +251,6 @@
   <string name="website_discover">http://de.openfoodfacts.org/discover</string>
   <string name="website_product">http://world.openfoodfacts.org/product/</string>
   <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
+  <string name="logout_drawer">Ausloggen</string>
+  <string name="textCarbonFootprint">"Carbon Footprint / CO2-Emissionen: "</string>
 </resources>

@@ -7,7 +7,6 @@
   <string name="action_discover">לגלות</string>
   <string name="action_contribute">לתרום</string>
   <string name="action_find">חיפוש</string>
-  <string name="text_barcode">נא להזין את הברקוד:</string>
   <string-array name="nav_drawer_items_product">
     <item>תקציר</item>
     <item>רכיבים</item>
@@ -79,11 +78,11 @@
     <item>Kabyle</item>
     <item>Korean</item>
     <item>Latvian</item>
-    <item>Dutch</item>
+    <item>הולנדית</item>
     <item>Brazilian portuguese</item>
     <item>Romanian</item>
-    <item>Swedish</item>
-    <item>Chinese</item>
+    <item>שבדית</item>
+    <item>סינית</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
@@ -172,6 +171,7 @@
   <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
   <string name="create_account">הרשמה</string>
   <string name="home_drawer">ראשי</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="search_drawer">חיפוש</string>
   <string name="search_by_barcode_drawer">חיפוש לפי ברקוד</string>
   <string name="search_by_name_drawer">חיפוש לפי שם</string>
@@ -206,11 +206,15 @@
   <string name="export_csv_history">יצוא CSV…</string>
   <string name="txt_nutrition_not_found">לא זמין</string>
   <string name="nutrition_cholesterol">כולסטרול</string>
+  <string name="nutrition_energy">אנרגיה</string>
+  <string name="nutrition_energy_short_name">אנרגיה</string>
   <string name="nutrition_fat">שומן</string>
   <string name="nutrition_fiber">סיבים תזונתיים</string>
   <string name="nutrition_header">מפרט תזונתי</string>
   <string name="nutrition_no_data_message">אין מידע זמין על המוצר הזה</string>
+  <string name="nutrition_proteins">חלבון</string>
   <string name="nutrition_salt">מלח</string>
+  <string name="nutrition_serving_size">גודל ההגשה :</string>
   <string name="nutrition_sodium">נתרן</string>
   <string name="nutrition_sugars">סוכרים</string>
   <string name="action_manage_account">ניהול חשבון</string>

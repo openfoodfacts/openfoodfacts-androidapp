@@ -7,7 +7,6 @@
   <string name="action_discover">見つける</string>
   <string name="action_contribute">貢献する</string>
   <string name="action_find">検索</string>
-  <string name="text_barcode">バーコードを入れてください :</string>
   <string-array name="nav_drawer_items_product">
     <item>サマリー</item>
     <item>原材料</item>

@@ -7,7 +7,6 @@
   <string name="action_discover">Descubrir</string>
   <string name="action_contribute">Contribuir</string>
   <string name="action_find">Buscar</string>
-  <string name="text_barcode">Ponga el código de barras :</string>
   <string-array name="nav_drawer_items_product">
     <item>Resumen</item>
     <item>Ingredientes</item>
@@ -69,21 +68,21 @@
     <item>Kazakh</item>
     <item>Armenian</item>
     <item>Griego</item>
-    <item>Hebrew</item>
+    <item>Hebreo</item>
     <item>Galician</item>
-    <item>Catalan</item>
-    <item>Czech</item>
+    <item>Catalán</item>
+    <item>Checo</item>
     <item>Arabic</item>
-    <item>Finnish</item>
+    <item>Finlandés</item>
     <item>Hindi</item>
     <item>Kabyle</item>
     <item>Korean</item>
     <item>Latvian</item>
-    <item>Dutch</item>
+    <item>Neerlandés</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
+    <item>Rumano</item>
     <item>Swedish</item>
-    <item>Chinese</item>
+    <item>Chino</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
@@ -117,6 +116,9 @@
   <string name="txtPalmOilProduct">Ingredientes con aceite de palma :</string>
   <string name="txtServingSize">Tamaño de la ración :</string>
   <string name="txtNutrientLevel100g">Niveles de nutrientes por cada 100g :</string>
+  <string name="txtNutritionLevelLow">bajo</string>
+  <string name="txtNutritionLevelModerate">moderado</string>
+  <string name="txtNutritionLevelHigh">elevado</string>
   <string name="txtLogin">Usuario :</string>
   <string name="txtPass">Contraseña :</string>
   <string name="txtTitleHome">Abra su comida y sepa qué come</string>
@@ -181,4 +183,23 @@
   <string name="from_gallery">Desde la galería</string>
   <string name="action_edit_product">Editar producto</string>
   <string name="title_info_dialog">Información</string>
+  <string name="error_invalid_password">La contraseña debe contener al menos 6 caracteres.</string>
+  <string name="prefs_language_summary">Cambiar idioma</string>
+  <string name="export_csv_history">Exportar CSV</string>
+  <string name="nutrition_carbohydrate">Carbohidratos</string>
+  <string name="nutrition_cholesterol">Colesterol</string>
+  <string name="nutrition_fiber">Fibra dietética</string>
+  <string name="nutrition_header">Información nutricional</string>
+  <string name="nutrition_proteins">Proteínas</string>
+  <string name="nutrition_salt">Sal</string>
+  <string name="nutrition_serving_size">Tamaño de la ración :</string>
+  <string name="nutrition_sodium">Sodio</string>
+  <string name="nutrition_sugars">Azúcares</string>
+  <string name="action_manage_account">Gestionar cuenta</string>
+  <string name="action_contributes">Sus contribuciones</string>
+  <string name="website_contribute">http://world-es.openfoodfacts.org/contribuir</string>
+  <string name="website_discover">http://world-es.openfoodfacts.org/descubrir</string>
+  <string name="website_product">http://world-es.openfoodfacts.org/producto/</string>
+  <string name="website_contributor">http://world-es.openfoodfacts.org/contribuyente/</string>
+  <string name="logout_drawer">Cerrar sesión</string>
 </resources>

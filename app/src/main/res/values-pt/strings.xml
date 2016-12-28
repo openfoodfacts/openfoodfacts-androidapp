@@ -4,14 +4,15 @@
   <string name="hello_world">Olá Mundo!</string>
   <string name="action_settings">Definições</string>
   <string name="action_about">Acerca</string>
+  <string name="action_discover">Descubra</string>
+  <string name="action_contribute">Contribuir</string>
   <string name="action_find">Procurar</string>
-  <string name="text_barcode">Insira o código de barras</string>
   <string-array name="nav_drawer_items_product">
     <item>Resumo</item>
     <item>Ingredientes</item>
     <item>Nutrição</item>
     <item>Nutrition Table</item>
-    <item>Back to menu</item>
+    <item>Voltar ao menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -54,22 +55,22 @@
     <item>zh_rCN</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
-    <item>Swedish</item>
+    <item>Inglês</item>
+    <item>Francês</item>
+    <item>Espanhol</item>
+    <item>Italiano</item>
+    <item>Alemão</item>
+    <item>Japonês</item>
+    <item>Russo</item>
+    <item>Português</item>
+    <item>Sueco</item>
     <item>Burmese</item>
     <item>Kazakh</item>
     <item>Armenian</item>
     <item>Greek</item>
-    <item>Hebrew</item>
+    <item>Hebraico</item>
     <item>Galician</item>
-    <item>Catalan</item>
+    <item>Catalão</item>
     <item>Czech</item>
     <item>Arabic</item>
     <item>Finnish</item>
@@ -77,11 +78,11 @@
     <item>Kabyle</item>
     <item>Korean</item>
     <item>Latvian</item>
-    <item>Dutch</item>
+    <item>Holandês</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
-    <item>Swedish</item>
-    <item>Chinese</item>
+    <item>Romeno</item>
+    <item>Sueco</item>
+    <item>Chinês</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
@@ -111,6 +112,9 @@
   <string name="txtAdditives">Aditivos :</string>
   <string name="txtTraces">Vestígios :</string>
   <string name="txtNutrientLevel100g">Níveis de nutrientes para 100g :</string>
+  <string name="txtNutritionLevelLow">baixo</string>
+  <string name="txtNutritionLevelModerate">moderado</string>
+  <string name="txtNutritionLevelHigh">elevado</string>
   <string name="txtPass">Palavra-passe :</string>
   <string name="txtTitleHome">Abra os seus alimentos e saiba o que come</string>
   <string name="txtUser">Painel de Utilizador</string>
@@ -124,6 +128,7 @@
   <string name="hintPass">Palavra-passe</string>
   <string name="errorLogin">Utilizador ou palavra-passe errada</string>
   <string name="errorWeb">Sem acesso a internet.</string>
+  <string name="txtInfoLoginOk">Utilizador guardado</string>
   <string name="txtInfoLoginNo">Utilizador não foi guardado</string>
   <string name="txtDialogsTitle">Informação</string>
   <string name="txtDialogsContent">O produto que pesquisa não consta na nossa base de dados. Deseja adiciona-lo ?</string>
@@ -134,6 +139,7 @@
   <string name="hintEnergyUnit">Unidade de energia</string>
   <string name="hintWeight">Peso</string>
   <string name="hintStores">Loja</string>
+  <string name="hintBrand">Marca</string>
   <string name="txtTakePicture">Fotografar</string>
   <string name="txtSendAll">Enviar tudo</string>
   <string name="txtNoData">Sem dados</string>
@@ -153,6 +159,7 @@
   <string name="share">Partilhar</string>
   <string name="msg_share">Veja este produto em Open Food Facts :</string>
   <string name="create_account">Inscrever-se</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="search_drawer">Pesquisar</string>
   <string name="search_by_barcode_drawer">Pesquisar pelo código de barras</string>
   <string name="search_by_name_drawer">Pesquisar pelo nome</string>
@@ -162,7 +169,30 @@
   <string name="txt_anonymous">Anónimo</string>
   <string name="txt_product_not_found">Produtos não encontrados</string>
   <string name="delete_txt">Apagar</string>
+  <string name="sign_in_drawer">Iniciar sessão</string>
   <string name="warning_allergens">Contem alérgenos</string>
   <string name="title_dialog_alert">Adicionar alerta</string>
   <string name="from_gallery">Galeria de imagens</string>
+  <string name="title_info_dialog">Informação</string>
+  <string name="error_invalid_password">A senha deve conter pelo menos 6 caracteres</string>
+  <string name="error_field_required">Este campo é obrigatório</string>
+  <string name="action_preferences">Preferências</string>
+  <string name="prefs_language">Idioma</string>
+  <string name="nutrition_carbohydrate">Hidratos de carbono</string>
+  <string name="nutrition_cholesterol">Colesterol</string>
+  <string name="nutrition_energy">Energia</string>
+  <string name="nutrition_energy_short_name">Energia</string>
+  <string name="nutrition_fiber">A fibra dietética</string>
+  <string name="nutrition_header">Informação nutricional</string>
+  <string name="nutrition_proteins">Proteínas</string>
+  <string name="nutrition_proteins_short_name">Proteínas (g)</string>
+  <string name="nutrition_salt">Sal</string>
+  <string name="nutrition_salt_short_name">Sal (g)</string>
+  <string name="nutrition_sodium">Sódio</string>
+  <string name="nutrition_sugars">Açucares</string>
+  <string name="action_manage_account">Gerir conta</string>
+  <string name="website">http://world-pt.openfoodfacts.org/</string>
+  <string name="website_product">http://world-pt.openfoodfacts.org/produto/</string>
+  <string name="website_contributor">http://world-pt.openfoodfacts.org/colaborador/</string>
+  <string name="logout_drawer">Terminar sessão</string>
 </resources>

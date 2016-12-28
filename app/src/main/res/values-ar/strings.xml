@@ -7,7 +7,6 @@
   <string name="action_discover">إكتشف</string>
   <string name="action_contribute">ساهم</string>
   <string name="action_find">بحث</string>
-  <string name="text_barcode">بخصوص الرمز الشريطي</string>
   <string-array name="nav_drawer_items_product">
     <item>الملخص</item>
     <item>المكونات</item>
@@ -82,7 +81,7 @@
     <item>Dutch</item>
     <item>Brazilian portuguese</item>
     <item>Romanian</item>
-    <item>Swedish</item>
+    <item>السويديَة</item>
     <item>Chinese</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
@@ -187,10 +186,12 @@
   <string name="clear_history">محو السجل</string>
   <string name="title_clear_history_dialog">محو</string>
   <string name="txt_nutrition_not_found">غير متوفر</string>
+  <string name="nutrition_carbohydrate">كربوهيدرات</string>
   <string name="nutrition_cholesterol">كوليسترول</string>
   <string name="nutrition_cholesterol_short_name">كوليسترول (غ)</string>
   <string name="nutrition_energy">الطاقة</string>
   <string name="nutrition_energy_short_name">الطاقة</string>
+  <string name="nutrition_fat">الدهن</string>
   <string name="nutrition_fiber">الألياف الغذائية</string>
   <string name="nutrition_fiber_short_name">الألياف الغذائية (غ)</string>
   <string name="nutrition_header">حقائق غذائية</string>
@@ -198,10 +199,12 @@
   <string name="nutrition_proteins_short_name">البروتينات (غ)</string>
   <string name="nutrition_salt">ملح</string>
   <string name="nutrition_salt_short_name">ملح (غ)</string>
+  <string name="nutrition_serving_size">حجم الحصة</string>
   <string name="nutrition_sodium">صوديوم</string>
   <string name="nutrition_sodium_short_name">صوديوم (غ)</string>
   <string name="nutrition_sugars">سكريات</string>
   <string name="nutrition_sugars_short_name">سكريات (غ)</string>
+  <string name="action_manage_account">أدر الحساب</string>
   <string name="action_contributes">مساهماتكم</string>
   <string name="website">http://world.openfoodfacts.org/</string>
   <string name="website_contribute">http://world.openfoodfacts.org/contribute</string>

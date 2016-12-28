@@ -52,6 +52,8 @@
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>अंग्रेज़ी</item>
@@ -83,6 +85,8 @@
     <item>स्वीडिश</item>
     <item>चीनी</item>
     <item>नॉर्वेजियन (बोकमाल)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
     <item>चूक</item>

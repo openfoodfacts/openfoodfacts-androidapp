@@ -7,7 +7,6 @@
   <string name="action_discover">Descubrir</string>
   <string name="action_contribute">Colaborar</string>
   <string name="action_find">Buscar</string>
-  <string name="text_barcode">Poña o código de barras:</string>
   <string-array name="nav_drawer_items_product">
     <item>Resumo</item>
     <item>Ingredientes</item>
@@ -73,18 +72,18 @@
     <item>Galego</item>
     <item>Catalán</item>
     <item>Checo</item>
-    <item>Arabic</item>
+    <item>Árabe</item>
     <item>Finnish</item>
     <item>Hindi</item>
     <item>Kabyle</item>
-    <item>Korean</item>
+    <item>Coreano</item>
     <item>Latvian</item>
     <item>Dutch</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
-    <item>Swedish</item>
-    <item>Chinese</item>
-    <item>Norwegian (Bokmal)</item>
+    <item>Romanés</item>
+    <item>Sueco</item>
+    <item>Chinés</item>
+    <item>Noruego (Bokmaal)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
   </string-array>
