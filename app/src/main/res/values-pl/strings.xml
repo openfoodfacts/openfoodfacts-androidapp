@@ -102,9 +102,4 @@
   <string name="nutrition_salt">Sól</string>
   <string name="nutrition_sodium">Sód</string>
   <string name="action_manage_account">Zarządzaj kontem</string>
-  <string name="website">http://world-pl.openfoodfacts.org/</string>
-  <string name="website_contribute">http://world-pl.openfoodfacts.org/contribute</string>
-  <string name="website_discover">http://world-pl.openfoodfacts.org/discover</string>
-  <string name="website_product">http://world-pl.openfoodfacts.org/product/</string>
-  <string name="website_contributor">http://world-pl.openfoodfacts.org/contributor/</string>
 </resources>

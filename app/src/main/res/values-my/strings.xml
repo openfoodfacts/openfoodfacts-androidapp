@@ -201,9 +201,4 @@
   <string name="nutrition_sodium">ဆိုဒီယမ်</string>
   <string name="nutrition_sugars">သကြားဓာတ်</string>
   <string name="action_contributes">သင်၏ကူညီမှုများ</string>
-  <string name="website">http://world.openfoodfacts.org/</string>
-  <string name="website_contribute">http://world.openfoodfacts.org/contribute</string>
-  <string name="website_discover">http://world.openfoodfacts.org/discover</string>
-  <string name="website_product">http://world.openfoodfacts.org/product/</string>
-  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
 </resources>

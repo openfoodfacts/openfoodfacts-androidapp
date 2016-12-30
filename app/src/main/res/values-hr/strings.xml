@@ -97,9 +97,4 @@
   <string name="nutrition_proteins">Bjelančevine</string>
   <string name="nutrition_salt">Sol</string>
   <string name="nutrition_sodium">Natrij</string>
-  <string name="website">http://world-hr.openfoodfacts.org/</string>
-  <string name="website_contribute">http://world-hr.openfoodfacts.org/contribute</string>
-  <string name="website_discover">http://world-hr.openfoodfacts.org/discover</string>
-  <string name="website_product">http://world-hr.openfoodfacts.org/product/</string>
-  <string name="website_contributor">http://world-hr.openfoodfacts.org/contributor/</string>
 </resources>

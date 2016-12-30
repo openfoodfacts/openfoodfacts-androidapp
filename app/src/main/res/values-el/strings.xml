@@ -110,9 +110,4 @@
   <string name="nutrition_salt">Αλάτι</string>
   <string name="nutrition_sodium">Νάτριο</string>
   <string name="action_manage_account">Διαχείριση λογαριασμού</string>
-  <string name="website">http://world-el.openfoodfacts.org/</string>
-  <string name="website_contribute">http://world-el.openfoodfacts.org/contribute</string>
-  <string name="website_discover">http://world-el.openfoodfacts.org/discover</string>
-  <string name="website_product">http://world-el.openfoodfacts.org/προιον/</string>
-  <string name="website_contributor">http://world-el.openfoodfacts.org/συντελεστης/</string>
 </resources>

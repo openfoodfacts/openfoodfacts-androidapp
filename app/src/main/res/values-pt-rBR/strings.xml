@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="app_name">Open Food</string>
   <string name="hello_world">Olá mundo!</string>
   <string name="action_settings">Configurações</string>
   <string name="action_about">Sobre</string>
@@ -9,7 +10,7 @@
     <item>Ingredientes</item>
     <item>Nutrição</item>
     <item>Nutrition Table</item>
-    <item>Back to menu</item>
+    <item>Voltar ao menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -52,18 +53,18 @@
     <item>zh_rCN</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
+    <item>Inglês</item>
+    <item>Francês</item>
+    <item>Espanhol</item>
+    <item>Italiano</item>
+    <item>Alemão</item>
+    <item>Japonês</item>
+    <item>Russo</item>
+    <item>Português</item>
     <item>Swedish</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
+    <item>Birmanês</item>
+    <item>Cazaque</item>
+    <item>Armênio</item>
     <item>Greek</item>
     <item>Hebrew</item>
     <item>Galician</item>
@@ -82,7 +83,7 @@
     <item>Chinese</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>Chinês simplificado</item>
   </string-array>
   <string-array name="images_array">
     <item>Padrão</item>
@@ -91,4 +92,34 @@
   </string-array>
   <string name="search_button">Buscar</string>
   <string name="no_products">Nenhum produto encontrado</string>
+  <string name="txtQuantity">Quantidade :</string>
+  <string name="txtPass">Senha :</string>
+  <string name="hintBarcode">Código de barras</string>
+  <string name="txtYes">Sim</string>
+  <string name="txtNo">Não</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
+  <string name="txt_product_not_found">Nenhum produto encontrado</string>
+  <string name="nutrition_carbohydrate">Carboidrato</string>
+  <string name="nutrition_carbohydrate_short_name">Carboidrato (g)</string>
+  <string name="nutrition_cholesterol">Colesterol</string>
+  <string name="nutrition_cholesterol_short_name">Colesterol (g)</string>
+  <string name="nutrition_energy">Energia</string>
+  <string name="nutrition_energy_short_name">Energia</string>
+  <string name="nutrition_fat">Gordura</string>
+  <string name="nutrition_fiber">Fibra dietética</string>
+  <string name="nutrition_fiber_short_name">Fibra dietética (g)</string>
+  <string name="nutrition_header">Fatores nutricionais</string>
+  <string name="nutrition_proteins">Proteínas</string>
+  <string name="nutrition_proteins_short_name">Proteínas (g)</string>
+  <string name="nutrition_salt">Sal</string>
+  <string name="nutrition_salt_short_name">Sal (g)</string>
+  <string name="nutrition_sodium">Sódio</string>
+  <string name="nutrition_sodium_short_name">Sódio (g)</string>
+  <string name="nutrition_sugars">Açúcares</string>
+  <string name="nutrition_sugars_short_name">Açúcares (g)</string>
+  <string name="action_manage_account">Gerenciar conta</string>
+  <string name="action_contributes">Suas contribuições</string>
+  <string name="website">https://world-pt.openfoodfacts.org/</string>
+  <string name="website_product">https://world-pt.openfoodfacts.org/produto/</string>
+  <string name="website_contributor">https://world-pt.openfoodfacts.org/colaborador/</string>
 </resources>

@@ -251,11 +251,6 @@
   <string name="nutriment_serving_size">प्रति हिस्से:</string>
   <string name="action_manage_account">खाते का प्रबंधन</string>
   <string name="action_contributes">आपका योगदान</string>
-  <string name="website">http://world.openfoodfacts.org/</string>
-  <string name="website_contribute">http://world.openfoodfacts.org/contribute</string>
-  <string name="website_discover">http://world.openfoodfacts.org/discover</string>
-  <string name="website_product">http://world.openfoodfacts.org/product/</string>
-  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
   <string name="logout_drawer">लॉग आउट करें</string>
   <string name="contribution_without_account">आप साइन-इन कर सकते हैं या अपने योगदान रखने के लिए एक खाता बनाने\nप्रसंग:</string>
   <string name="textCarbonFootprint">"कार्बन पदचिह्न / CO2 उत्सर्जन: "</string>

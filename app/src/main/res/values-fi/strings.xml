@@ -174,9 +174,4 @@
   <string name="nutrition_sugars">Sokerit</string>
   <string name="nutrition_sugars_short_name">Sokerit (g)</string>
   <string name="action_manage_account">Tilin asetukset</string>
-  <string name="website">http://world.openfoodfacts.org/</string>
-  <string name="website_contribute">http://world.openfoodfacts.org/contribute</string>
-  <string name="website_discover">http://world.openfoodfacts.org/discover</string>
-  <string name="website_product">http://world.openfoodfacts.org/product/</string>
-  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
 </resources>

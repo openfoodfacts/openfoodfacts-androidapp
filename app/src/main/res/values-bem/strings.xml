@@ -1,18 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="app_name">Open Food</string>
-  <string name="hello_world">Ahoj světe!</string>
-  <string name="action_settings">Nastavení</string>
-  <string name="action_about">O aplikaci</string>
-  <string name="action_discover">Objevte</string>
-  <string name="action_contribute">Přispět</string>
-  <string name="action_find">Vyhledat</string>
   <string-array name="nav_drawer_items_product">
-    <item>Shrnutí</item>
-    <item>Složení</item>
-    <item>Nutriční hodnoty</item>
+    <item>Summary</item>
+    <item>Ingredients</item>
+    <item>Nutrition</item>
     <item>Nutrition Table</item>
-    <item>Návrat do menu</item>
+    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -88,17 +81,8 @@
     <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
-    <item>Výchozí</item>
-    <item>Nutriční hodnoty</item>
-    <item>Složení</item>
+    <item>Default</item>
+    <item>Nutrition</item>
+    <item>Ingredients</item>
   </string-array>
-  <string name="search_button">Vyhledat</string>
-  <string name="alert_dialog_warning_title">Varování</string>
-  <string name="toast_retrieving">Načítá se…</string>
-  <string name="txtPass">Heslo :</string>
-  <string name="hintPass">Heslo</string>
-  <string name="txtYes">Ano</string>
-  <string name="txtNo">Ne</string>
-  <string name="sign_in_drawer">Podepiš</string>
-  <string name="nutrition_header">Nutriční hodnoty</string>
 </resources>

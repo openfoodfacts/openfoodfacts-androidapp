@@ -251,11 +251,11 @@
   <string name="nutriment_serving_size">Per portie:</string>
   <string name="action_manage_account">Account beheren</string>
   <string name="action_contributes">Uw bijdragen</string>
-  <string name="website">http://world.openfoodfacts.org/</string>
-  <string name="website_contribute">http://world.openfoodfacts.org/contribute</string>
-  <string name="website_discover">http://world.openfoodfacts.org/discover</string>
-  <string name="website_product">http://world.openfoodfacts.org/product/</string>
-  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
+  <string name="website">https://world-nl.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-nl.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-nl.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-nl.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world-nl.openfoodfacts.org/gebruiker/</string>
   <string name="logout_drawer">Afmelden</string>
   <string name="contribution_without_account">U kunt zich aanmelden of een account aanmaken om uw bijdragen te bewaren</string>
   <string name="textCarbonFootprint">"Carbon footprint / CO2-uitstoot: "</string>

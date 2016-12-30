@@ -59,7 +59,7 @@
     <item>Francese</item>
     <item>Spagnolo</item>
     <item>Italiano</item>
-    <item>German</item>
+    <item>Tedesco</item>
     <item>Giapponese</item>
     <item>Russo</item>
     <item>Portoghese</item>
@@ -71,7 +71,7 @@
     <item>Ebraico</item>
     <item>Galiziano</item>
     <item>Catalano</item>
-    <item>Czech</item>
+    <item>Ceco</item>
     <item>Arabo</item>
     <item>Finlandese</item>
     <item>Hindi</item>
@@ -84,8 +84,8 @@
     <item>Svedese</item>
     <item>Cinese</item>
     <item>Norvegese (Bokmål)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>Danese</item>
+    <item>Cinese semplificato</item>
   </string-array>
   <string-array name="images_array">
     <item>Predefinito</item>
@@ -217,11 +217,6 @@
   <string name="nutriment_serving_size">Per porzione :</string>
   <string name="action_manage_account">Gestisci account</string>
   <string name="action_contributes">I tuoi contributi</string>
-  <string name="website">http://world-it.openfoodfacts.org/</string>
-  <string name="website_contribute">http://world-it.openfoodfacts.org/contribute</string>
-  <string name="website_discover">http://world-it.openfoodfacts.org/discover</string>
-  <string name="website_product">http://world-it.openfoodfacts.org/prodotto/</string>
-  <string name="website_contributor">http://world-it.openfoodfacts.org/prodotto/</string>
   <string name="logout_drawer">Termina sessione</string>
   <string name="textCarbonFootprint">"Emissioni di CO2 (impronta climatica): "</string>
 </resources>

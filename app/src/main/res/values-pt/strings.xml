@@ -191,8 +191,5 @@
   <string name="nutrition_sodium">Sódio</string>
   <string name="nutrition_sugars">Açucares</string>
   <string name="action_manage_account">Gerir conta</string>
-  <string name="website">http://world-pt.openfoodfacts.org/</string>
-  <string name="website_product">http://world-pt.openfoodfacts.org/produto/</string>
-  <string name="website_contributor">http://world-pt.openfoodfacts.org/colaborador/</string>
   <string name="logout_drawer">Terminar sessão</string>
 </resources>

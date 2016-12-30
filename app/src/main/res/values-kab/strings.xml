@@ -90,6 +90,6 @@
   <string-array name="images_array">
     <item>Default</item>
     <item>Nutrition</item>
-    <item>Ingredients</item>
+    <item>Isufar</item>
   </string-array>
 </resources>

@@ -64,7 +64,7 @@
     <item>Ruso</item>
     <item>Portugués</item>
     <item>Swedish</item>
-    <item>Burmese</item>
+    <item>Birmano</item>
     <item>Kazakh</item>
     <item>Armenian</item>
     <item>Griego</item>
@@ -85,7 +85,7 @@
     <item>Chino</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>Chino simplificado</item>
   </string-array>
   <string-array name="images_array">
     <item>Predeterminado</item>
@@ -139,6 +139,7 @@
   <string name="txtInfoLoginNo">Usuario no guardado</string>
   <string name="txtDialogsTitle">Información</string>
   <string name="txtDialogsContent">El producto que ha escaneado no existe aun en Open Food Facts. ¿Quiere añadirlo?</string>
+  <string name="txtDialogsContentSend">¿Desea enviar los productos guardados a la base de datos?</string>
   <string name="txtYes">Sí</string>
   <string name="txtNo">No</string>
   <string name="hintNameProduct">Nombre</string>
@@ -146,6 +147,7 @@
   <string name="hintEnergyUnit">Unidad de energía</string>
   <string name="hintWeight">Peso</string>
   <string name="hintStores">Tienda</string>
+  <string name="hintBrand">Marca</string>
   <string name="txtTakePicture">Hacer una foto</string>
   <string name="txtSendAll">Subir todo</string>
   <string name="txtNoData">Sin datos</string>
@@ -184,10 +186,14 @@
   <string name="action_edit_product">Editar producto</string>
   <string name="title_info_dialog">Información</string>
   <string name="error_invalid_password">La contraseña debe contener al menos 6 caracteres.</string>
+  <string name="error_field_required">Este campo es obligatorio.</string>
   <string name="prefs_language_summary">Cambiar idioma</string>
   <string name="export_csv_history">Exportar CSV</string>
   <string name="nutrition_carbohydrate">Carbohidratos</string>
   <string name="nutrition_cholesterol">Colesterol</string>
+  <string name="nutrition_energy">Valor energético</string>
+  <string name="nutrition_energy_short_name">Valor energético</string>
+  <string name="nutrition_fat">Grasas</string>
   <string name="nutrition_fiber">Fibra dietética</string>
   <string name="nutrition_header">Información nutricional</string>
   <string name="nutrition_proteins">Proteínas</string>
@@ -197,9 +203,7 @@
   <string name="nutrition_sugars">Azúcares</string>
   <string name="action_manage_account">Gestionar cuenta</string>
   <string name="action_contributes">Sus contribuciones</string>
-  <string name="website_contribute">http://world-es.openfoodfacts.org/contribuir</string>
-  <string name="website_discover">http://world-es.openfoodfacts.org/descubrir</string>
-  <string name="website_product">http://world-es.openfoodfacts.org/producto/</string>
-  <string name="website_contributor">http://world-es.openfoodfacts.org/contribuyente/</string>
+  <string name="website">https://world-es.openfoodfacts.org/</string>
+  <string name="website_discover">https://world-es.openfoodfacts.org/descubrir</string>
   <string name="logout_drawer">Cerrar sesión</string>
 </resources>

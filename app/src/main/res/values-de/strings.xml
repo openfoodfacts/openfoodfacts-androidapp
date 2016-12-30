@@ -7,11 +7,12 @@
   <string name="action_discover">Entdecken</string>
   <string name="action_contribute">Mitmachen</string>
   <string name="action_find">Suchen</string>
+  <string name="text_barcode">Barcode eingeben:</string>
   <string-array name="nav_drawer_items_product">
     <item>Zusammenfassung</item>
     <item>Inhaltsstoffe</item>
     <item>Nährwertangaben</item>
-    <item>Nutrition Table</item>
+    <item>Nährwerttabelle</item>
     <item>Zurück zum Menü</item>
   </string-array>
   <string-array name="units_array">
@@ -77,15 +78,15 @@
     <item>Hindi</item>
     <item>Kabylisch</item>
     <item>Koreanisch</item>
-    <item>Latvian</item>
+    <item>Lettisch</item>
     <item>Niederländisch</item>
-    <item>Brazilian portuguese</item>
+    <item>Brasilianisches Portugiesisch</item>
     <item>Rumänisch</item>
     <item>Schwedisch</item>
     <item>Chinesisch</item>
     <item>Norwegisch (Bokmål)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>Dänisch</item>
+    <item>Chinesisch (vereinfacht)</item>
   </string-array>
   <string-array name="images_array">
     <item>Standard</item>
@@ -154,6 +155,7 @@
   <string name="txtTakePicture">Foto machen</string>
   <string name="txtSendAll">alles hochladen</string>
   <string name="txtNoData">keine Daten</string>
+  <string name="txtPictureNeeded">Bitte machen Sie zunächst ein Foto</string>
   <string name="toastSending">hochladen...</string>
   <string name="dataSaved">lokal auf dem Phone gespeichert</string>
   <string name="txtInfoAddUser">Bitte Login und Passwort einfügen</string>
@@ -193,10 +195,13 @@
   <string name="action_edit_product">Produkt bearbeiten</string>
   <string name="title_info_dialog">Information</string>
   <string name="text_offline_info_dialog">Du kannst Produkte einscannen wenn du offline bist um sie später zu Open Food Facts hoch zu laden. Alle Produkte die du scanst werden hier aufgelistet damit du sie über den untenstehenden Button hochladen kannst.</string>
+  <string name="permission_camera">Die Kamera-Berechtigung wird benötigt, um Barcodes zu scannen und Fotos zu machen.</string>
   <string name="permission_title">Berechtigungs-Informationen</string>
   <string name="permission_denied">Bitte Berechtigung in den Einstellungen konfigurieren</string>
+  <string name="permission_storage">Die Speicher-Berechtigung wird benötigt, um Fotos zu machen und hochzuladen.</string>
   <string name="info_download_data">Um diese Funktion durchfüḧren zu lassen, müssen einige Daten heruntergeladen werden. Bitte drücke Ja, um den Download zu starten.</string>
   <string name="info_download_data_connection">Um diese Funktion durchfüḧren zu lassen, müssen einige Daten heruntergeladen werden. Bitte aktiviere deine Internetverbindung.</string>
+  <string name="msg_input_empty">Bitte zuerst die Felder eingeben</string>
   <string name="new_offline_info">Nimm bitte ein Bild von dem Produkt, von den Zutaten, den Nährwertangaben und jeder anderen Information auf dem Etikett auf. Danke!</string>
   <string name="error_invalid_password">Das Passwort muss eine mindestens 6 Zeichen lang sein.</string>
   <string name="error_field_required">Das Feld ist erforderlich</string>
@@ -246,11 +251,12 @@
   <string name="nutriment_serving_size">Pro Portion</string>
   <string name="action_manage_account">Konto verwalten</string>
   <string name="action_contributes">Deine Beiträge</string>
-  <string name="website">http://de.openfoodfacts.org/</string>
-  <string name="website_contribute">http://de.openfoodfacts.org/contribute</string>
-  <string name="website_discover">http://de.openfoodfacts.org/discover</string>
-  <string name="website_product">http://world.openfoodfacts.org/product/</string>
-  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
+  <string name="website">https://world-de.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-de.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-de.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-de.openfoodfacts.org/produkt/</string>
+  <string name="website_contributor">https://world-de.openfoodfacts.org/beitragszahler/</string>
   <string name="logout_drawer">Ausloggen</string>
+  <string name="contribution_without_account">Deine Beiträge durch Einloggen oder durch die Erfassung eines Kontos einfach speichern</string>
   <string name="textCarbonFootprint">"Carbon Footprint / CO2-Emissionen: "</string>
 </resources>

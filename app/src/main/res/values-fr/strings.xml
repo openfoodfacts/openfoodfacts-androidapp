@@ -85,8 +85,8 @@
     <item>suédois</item>
     <item>chinois</item>
     <item>norvégien (Bokmal)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>Danois</item>
+    <item>Chinois simplifié</item>
   </string-array>
   <string-array name="images_array">
     <item>Defaut</item>
@@ -251,11 +251,11 @@
   <string name="nutriment_serving_size">Par portion :</string>
   <string name="action_manage_account">Gérer votre compte</string>
   <string name="action_contributes">Vos contributions</string>
-  <string name="website">http://fr.openfoodfacts.org/</string>
-  <string name="website_contribute">http://world-fr.openfoodfacts.org/contribuer</string>
-  <string name="website_discover">http://world-fr.openfoodfacts.org/decouvrir</string>
-  <string name="website_product">http://world-fr.openfoodfacts.org/produit/</string>
-  <string name="website_contributor">http://world-fr.openfoodfacts.org/contributeur/</string>
+  <string name="website">https://world-fr.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-fr.openfoodfacts.org/contribuer</string>
+  <string name="website_discover">https://world-fr.openfoodfacts.org/decouvrir</string>
+  <string name="website_product">https://world-fr.openfoodfacts.org/produit/</string>
+  <string name="website_contributor">https://world-fr.openfoodfacts.org/contributeur/</string>
   <string name="logout_drawer">Se déconnecter</string>
   <string name="contribution_without_account">Vous pouvez vous connecter ou créer un compte pour conserver vos contributions</string>
   <string name="textCarbonFootprint">"Empreinte carbone / émissions de CO2: "</string>

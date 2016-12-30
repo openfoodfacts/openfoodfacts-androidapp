@@ -152,4 +152,7 @@
   <string name="sign_in_drawer">Logga in</string>
   <string name="warning_allergens">Innehåller allergener</string>
   <string name="from_gallery">Från galleriet</string>
+  <string name="nutrition_serving_size">Storlek på portion :</string>
+  <string name="nutrition_sodium">Natrium</string>
+  <string name="nutrition_sugars">Socker</string>
 </resources>
