@@ -14,14 +14,14 @@ public class AllergenTest {
     @Test
     public void deserialize_json_rest_response() throws IOException {
         String name = "Milk";
-        String url = "http://world.openfoodfacts.org/allergen/milk";
+        String url = "https://world.openfoodfacts.org/allergen/milk";
         int products = 11376;
         String id = "en:milk";
         AllergenRestResponse restResponse = JsonUtils.readFor(AllergenRestResponse.class)
                 .readValue("{\"tags\":[" +
                         "{\"url\":\"" + url + "\"," +
                         "\"products\":" + products + ",\"name\":\"" + name + "\",\"id\":\"" + id + "\"}," +
-                        "{\"url\":\"http://world.openfoodfacts.org/allergen/gluten\"," +
+                        "{\"url\":\"https://world.openfoodfacts.org/allergen/gluten\"," +
                         "\"id\":\"en:gluten\",\"products\":9812,\"name\":\"Gluten\"}" +
                         "]}");
 
