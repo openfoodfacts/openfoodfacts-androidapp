@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-28 14:26+0100\n"
+"POT-Creation-Date: 2016-12-30 10:27+0100\n"
 "PO-Revision-Date: 2016-12-18 20:54+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: hy\n"
@@ -1053,24 +1053,31 @@ msgid "Your contributions"
 msgstr ""
 
 #. website translated pages
+#. For fr, Replace by https://world-fr.openfoodfacts.org/
+#, fuzzy
 msgctxt "website"
-msgid "http://world.openfoodfacts.org/"
+msgid "https://world.openfoodfacts.org/"
 msgstr ""
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/contribuer
+#, fuzzy
 msgctxt "website_contribute"
-msgid "http://world.openfoodfacts.org/contribute"
+msgid "https://world.openfoodfacts.org/contribute"
 msgstr ""
 
+#, fuzzy
 msgctxt "website_discover"
-msgid "http://world.openfoodfacts.org/discover"
+msgid "https://world.openfoodfacts.org/discover"
 msgstr ""
 
+#, fuzzy
 msgctxt "website_product"
-msgid "http://world.openfoodfacts.org/product/"
+msgid "https://world.openfoodfacts.org/product/"
 msgstr ""
 
+#, fuzzy
 msgctxt "website_contributor"
-msgid "http://world.openfoodfacts.org/contributor/"
+msgid "https://world.openfoodfacts.org/contributor/"
 msgstr ""
 
 msgctxt "logout_drawer"
