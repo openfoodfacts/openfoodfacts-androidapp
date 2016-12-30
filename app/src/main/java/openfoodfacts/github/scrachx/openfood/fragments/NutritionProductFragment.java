@@ -65,7 +65,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             customTabActivityHelper = new CustomTabActivityHelper();
             customTabActivityHelper.setConnectionCallback(this);
             // currently only available in french translations
-            nutritionScoreUri = Uri.parse("http://fr.openfoodfacts.org/score-nutritionnel-france");
+            nutritionScoreUri = Uri.parse("https://fr.openfoodfacts.org/score-nutritionnel-france");
             customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
 
             String fatTxt = Html.fromHtml("<b>" + getString(R.string.txtFat) + "</b>" + ' ' + localiseNutritionLevel(nt.getFat()) + " (" + product.getNutriments().getFat100g() + product.getNutriments().getFatUnit() + ")").toString();
