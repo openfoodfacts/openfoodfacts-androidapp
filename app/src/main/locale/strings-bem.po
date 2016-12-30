@@ -1,7 +1,6 @@
-# Korean translation for openfoodfacts
+# Bemba translation for openfoodfacts
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
-# This file is distributed under the same license as the openfoodfacts
-# package.
+# This file is distributed under the same license as the openfoodfacts package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
@@ -9,16 +8,14 @@ msgstr ""
 "Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-30 10:27+0100\n"
-"PO-Revision-Date: 2016-12-30 13:49+0000\n"
+"PO-Revision-Date: 2016-12-30 13:34+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
-"Language-Team: Korean <ko@li.org>\n"
+"Language-Team: Bemba <bem@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-12-30 15:04+0000\n"
 "X-Generator: Launchpad (build 18298)\n"
-"Language: ko\n"
-"Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
 msgid "Open Food"
@@ -26,7 +23,7 @@ msgstr ""
 
 msgctxt "hello_world"
 msgid "Hello world!"
-msgstr "안녕하세요!"
+msgstr ""
 
 msgctxt "action_settings"
 msgid "Settings"
@@ -34,19 +31,19 @@ msgstr ""
 
 msgctxt "action_about"
 msgid "About"
-msgstr "정보"
+msgstr ""
 
 msgctxt "action_discover"
 msgid "Discover"
-msgstr "발견"
+msgstr ""
 
 msgctxt "action_contribute"
 msgid "Contribute"
-msgstr "기부"
+msgstr ""
 
 msgctxt "action_find"
 msgid "Find"
-msgstr "찾기"
+msgstr ""
 
 msgctxt "text_barcode"
 msgid "Type the barcode :"
@@ -55,17 +52,17 @@ msgstr ""
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
 msgid "Summary"
-msgstr "요약"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:1"
 msgid "Ingredients"
-msgstr "성분"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:2"
 msgid "Nutrition"
-msgstr "영양"
+msgstr ""
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
@@ -75,52 +72,52 @@ msgstr ""
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
 msgid "Back to menu"
-msgstr "메뉴로 돌아가기"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:0"
 msgid "g"
-msgstr "g"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:1"
 msgid "mg"
-msgstr "mg"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:2"
 msgid "kg"
-msgstr "kg"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:3"
 msgid "l"
-msgstr "l"
+msgstr ""
 
 #. Text units
 msgctxt "units_array:4"
 msgid "ml"
-msgstr "ml"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:0"
 msgid "en"
-msgstr "영어"
+msgstr "en"
 
 #. Text units
 msgctxt "lang_array:1"
 msgid "fr"
-msgstr "프랑스어"
+msgstr "fr"
 
 #. Text units
 msgctxt "lang_array:2"
 msgid "es"
-msgstr "스페인어"
+msgstr "es"
 
 #. Text units
 msgctxt "lang_array:3"
 msgid "it"
-msgstr "이탈리아어"
+msgstr "it"
 
 #. Text units
 msgctxt "lang_array:4"
@@ -130,27 +127,27 @@ msgstr "de"
 #. Text units
 msgctxt "lang_array:5"
 msgid "ja"
-msgstr "일본어"
+msgstr "ja"
 
 #. Text units
 msgctxt "lang_array:6"
 msgid "ru"
-msgstr "러시아어"
+msgstr "ru"
 
 #. Text units
 msgctxt "lang_array:7"
 msgid "pt"
-msgstr "포르투갈어"
+msgstr "pt"
 
 #. Text units
 msgctxt "lang_array:8"
 msgid "sv"
-msgstr "스웨덴어"
+msgstr "sv"
 
 #. Text units
 msgctxt "lang_array:9"
 msgid "my"
-msgstr "말레이시아"
+msgstr "my"
 
 #. Text units
 msgctxt "lang_array:10"
@@ -259,39 +256,39 @@ msgstr "zh_rCN"
 
 msgctxt "lang_label_array:0"
 msgid "English"
-msgstr "영어"
+msgstr ""
 
 msgctxt "lang_label_array:1"
 msgid "French"
-msgstr "프랑스어"
+msgstr ""
 
 msgctxt "lang_label_array:2"
 msgid "Spanish"
-msgstr "스페인어"
+msgstr ""
 
 msgctxt "lang_label_array:3"
 msgid "Italian"
-msgstr "이탈리아어"
+msgstr ""
 
 msgctxt "lang_label_array:4"
 msgid "German"
-msgstr "독일어"
+msgstr ""
 
 msgctxt "lang_label_array:5"
 msgid "Japanese"
-msgstr "일본어"
+msgstr ""
 
 msgctxt "lang_label_array:6"
 msgid "Russian"
-msgstr "러시아어"
+msgstr ""
 
 msgctxt "lang_label_array:7"
 msgid "Portuguese"
-msgstr "포르투갈어"
+msgstr ""
 
 msgctxt "lang_label_array:8"
 msgid "Swedish"
-msgstr "스웨덴어"
+msgstr ""
 
 msgctxt "lang_label_array:9"
 msgid "Burmese"
@@ -303,19 +300,19 @@ msgstr ""
 
 msgctxt "lang_label_array:11"
 msgid "Armenian"
-msgstr "아르메니아어"
+msgstr ""
 
 msgctxt "lang_label_array:12"
 msgid "Greek"
-msgstr "그리스어"
+msgstr ""
 
 msgctxt "lang_label_array:13"
 msgid "Hebrew"
-msgstr "히브리어"
+msgstr ""
 
 msgctxt "lang_label_array:14"
 msgid "Galician"
-msgstr "갈리시아어"
+msgstr ""
 
 msgctxt "lang_label_array:15"
 msgid "Catalan"

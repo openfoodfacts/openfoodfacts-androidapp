@@ -6,19 +6,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  openfoodfacts\n"
+"Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-30 10:27+0100\n"
-"PO-Revision-Date: 2016-12-28 09:46+0000\n"
+"PO-Revision-Date: 2016-12-29 16:51+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
-"Language: he\n"
 "Language-Team: Hebrew <he@li.org>\n"
-"Plural-Forms: nplurals=4; plural=(((((0 == 0)) && (!((n >= 0 && n <= "
-"10)))) && (((n % 10) == 0))) ? 2 : (((n == 1)) && ((0 == 0))) ? 0 : (((n "
-"== 2)) && ((0 == 0))) ? 1 : 3)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-12-30 15:04+0000\n"
+"X-Generator: Launchpad (build 18298)\n"
+"Language: he\n"
 "Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
@@ -251,12 +250,12 @@ msgstr "nb"
 #. Text units
 msgctxt "lang_array:29"
 msgid "da"
-msgstr ""
+msgstr "da"
 
 #. Text units
 msgctxt "lang_array:30"
 msgid "zh_rCN"
-msgstr ""
+msgstr "zh_rCN"
 
 msgctxt "lang_label_array:0"
 msgid "English"
@@ -526,8 +525,8 @@ msgstr "פתיחה של האוכל שלך מאפשרת לך לדעת מה נכנ
 msgctxt "txtHome"
 msgid ""
 "Open Food Facts is a open database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find"
-" on product labels."
+"allergens, nutrition facts and all the tidbits of information we can find on "
+"product labels."
 msgstr ""
 
 msgctxt "txtSave"
@@ -579,7 +578,8 @@ msgid "Login or password error"
 msgstr "שם המשתמש או הססמה שגויים"
 
 msgctxt "errorWeb"
-msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
 msgstr "לא הצלחנו לגשת לאינטרנט. יש לך תקלה בחיבור?"
 
 msgctxt "txtInfoLoginOk"
@@ -596,8 +596,8 @@ msgstr "פרטים"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you "
-"want to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
 msgstr "המוצרים שסרקת לא נמצאים עדיין ב־Open Food Facts. להוסיף?"
 
 msgctxt "txtDialogsContentSend"
@@ -677,7 +677,8 @@ msgid "Do you want to delete this draft?"
 msgstr "למחוק את הטיוטה הזו?"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr "המוצר נשמר מקומית, ניתן לערוך אותו בתפריט העריכה בלתי מקוון"
 
 msgctxt "txtBarcodeRequire"
@@ -694,8 +695,8 @@ msgstr "נא לא לצאת באמצע התהליך…"
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative "
-"Commons Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
 msgstr ""
 "התמונות הנשלחות על ידיך מפורסמות תחת הרישיון החופשי ייחוס שיתוף זהה מבית "
 "Creative Commons"
@@ -790,9 +791,8 @@ msgstr "הוספת התרעה"
 
 msgctxt "warning_alert_data"
 msgid ""
-"Your allergies info will never be sent to the Open Food Facts server. "
-"Also, be careful that data may not be accurate, please double-check by "
-"yourself!"
+"Your allergies info will never be sent to the Open Food Facts server. Also, "
+"be careful that data may not be accurate, please double-check by yourself!"
 msgstr ""
 
 msgctxt "from_gallery"
@@ -852,8 +852,8 @@ msgstr ""
 
 msgctxt "new_offline_info"
 msgid ""
-"Please take a picture of the product, ingredients, nutrition facts table "
-"and any other information on the label. Thank you!"
+"Please take a picture of the product, ingredients, nutrition facts table and "
+"any other information on the label. Thank you!"
 msgstr ""
 "נא לצלם תמונות של המוצר, רכיביו, טבלת ערכיו התזונתיים וכל מידע נוסף שעל "
 "התווית. תודה!"
@@ -1056,28 +1056,23 @@ msgstr "התרומות שלך"
 
 #. website translated pages
 #. For fr, Replace by https://world-fr.openfoodfacts.org/
-#, fuzzy
 msgctxt "website"
 msgid "https://world.openfoodfacts.org/"
 msgstr ""
 
 #. For fr, Replace by https://world-fr.openfoodfacts.org/contribuer
-#, fuzzy
 msgctxt "website_contribute"
 msgid "https://world.openfoodfacts.org/contribute"
 msgstr ""
 
-#, fuzzy
 msgctxt "website_discover"
 msgid "https://world.openfoodfacts.org/discover"
 msgstr ""
 
-#, fuzzy
 msgctxt "website_product"
 msgid "https://world.openfoodfacts.org/product/"
 msgstr ""
 
-#, fuzzy
 msgctxt "website_contributor"
 msgid "https://world.openfoodfacts.org/contributor/"
 msgstr ""
@@ -1093,4 +1088,3 @@ msgstr ""
 msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
 msgstr ""
-
