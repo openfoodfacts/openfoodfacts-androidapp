@@ -4,21 +4,88 @@
   <string name="hello_world">¡Hola mundo!</string>
   <string name="action_settings">Configuración</string>
   <string name="action_about">Acerca de</string>
+  <string name="action_discover">Descubrir</string>
+  <string name="action_contribute">Contribuir</string>
   <string name="action_find">Buscar</string>
-  <string name="text_barcode">Ponga el código de barras :</string>
   <string-array name="nav_drawer_items_product">
     <item>Resumen</item>
     <item>Ingredientes</item>
     <item>Nutrición</item>
+    <item>Nutrition Table</item>
     <item>Volver al menú</item>
   </string-array>
   <string-array name="units_array">
-    <item> </item>
     <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
     <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>Inglés</item>
+    <item>Francés</item>
+    <item>Español</item>
+    <item>Italiano</item>
+    <item>Alemán</item>
+    <item>Japonés</item>
+    <item>Ruso</item>
+    <item>Portugués</item>
+    <item>Swedish</item>
+    <item>Birmano</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Griego</item>
+    <item>Hebreo</item>
+    <item>Galician</item>
+    <item>Catalán</item>
+    <item>Checo</item>
+    <item>Arabic</item>
+    <item>Finlandés</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Neerlandés</item>
+    <item>Brazilian portuguese</item>
+    <item>Rumano</item>
+    <item>Swedish</item>
+    <item>Chino</item>
+    <item>Norwegian (Bokmal)</item>
+    <item>Danish</item>
+    <item>Chino simplificado</item>
   </string-array>
   <string-array name="images_array">
     <item>Predeterminado</item>
@@ -49,10 +116,14 @@
   <string name="txtPalmOilProduct">Ingredientes con aceite de palma :</string>
   <string name="txtServingSize">Tamaño de la ración :</string>
   <string name="txtNutrientLevel100g">Niveles de nutrientes por cada 100g :</string>
+  <string name="txtNutritionLevelLow">bajo</string>
+  <string name="txtNutritionLevelModerate">moderado</string>
+  <string name="txtNutritionLevelHigh">elevado</string>
   <string name="txtLogin">Usuario :</string>
   <string name="txtPass">Contraseña :</string>
   <string name="txtTitleHome">Abra su comida y sepa qué come</string>
-  <string name="txtHome">OpenFoodFacts es una base de datos de productos alimenticios con ingredientes, alérgenos, información nutricional y todas aquellas minucias que se pueden encontrar en las etiquetas de los productos.</string>
+  <string name="txtSave">Enviar/Guardar</string>
+  <string name="txtSignIn">Iniciar sesión</string>
   <string name="txtUser">Panel de usuario</string>
   <string name="txtToastSaved">Usuario guardado</string>
   <string name="txtSalt">Sal :</string>
@@ -68,7 +139,7 @@
   <string name="txtInfoLoginNo">Usuario no guardado</string>
   <string name="txtDialogsTitle">Información</string>
   <string name="txtDialogsContent">El producto que ha escaneado no existe aun en Open Food Facts. ¿Quiere añadirlo?</string>
-  <string name="txtDialogsContentSend">¿Quiere enviar el producto salvado a nuestra base de datos?</string>
+  <string name="txtDialogsContentSend">¿Desea enviar los productos guardados a la base de datos?</string>
   <string name="txtYes">Sí</string>
   <string name="txtNo">No</string>
   <string name="hintNameProduct">Nombre</string>
@@ -76,10 +147,10 @@
   <string name="hintEnergyUnit">Unidad de energía</string>
   <string name="hintWeight">Peso</string>
   <string name="hintStores">Tienda</string>
+  <string name="hintBrand">Marca</string>
   <string name="txtTakePicture">Hacer una foto</string>
   <string name="txtSendAll">Subir todo</string>
   <string name="txtNoData">Sin datos</string>
-  <string name="txtPictureNeeded">¡Haga una foto antes, luego rellene el nombre y la tienda!</string>
   <string name="toastSending">Subiendo...</string>
   <string name="dataSaved">Guardado localmente en su dispositivo</string>
   <string name="txtInfoAddUser">Por favor ponga su usuario y contraseña</string>
@@ -88,17 +159,17 @@
   <string name="txtDialogsContentDelete">¿Quiere borrar este borrador?</string>
   <string name="txtDialogsContentInfoSave">El producto se ha guardado localmente, puede editarlo en el menú Editor Offline</string>
   <string name="txtBarcodeRequire">Se necesita un código de barras</string>
-  <string name="txtOk">Ok</string>
   <string name="txtContentDialogUploading">Por favor no salga durante el proceso...</string>
   <string name="txtAbout">Las imágenes que ha enviado son publicadas bajo la licencia libre Creative Commons Attribution and ShareAlike</string>
   <string name="txtAllsent">Productos enviados</string>
   <string name="txtPalm">El producto no contiene nada de aceite de palma</string>
   <string name="txtBarcodeNotValid">Código de barras no válido</string>
-  <string name="try_it_scan_now">¡Pruebe! ¡Escanee ahora!</string>
+  <string name="try_it_scan_now">Escanear producto</string>
   <string name="share">Compartir</string>
   <string name="msg_share">Mire el producto en Open Food Facts :</string>
   <string name="create_account">Registrarse</string>
   <string name="home_drawer">Inicio</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="search_drawer">Buscar</string>
   <string name="search_by_barcode_drawer">Buscar por código de barras</string>
   <string name="search_by_name_drawer">Buscar por nombre</string>
@@ -109,8 +180,30 @@
   <string name="txt_product_not_found">No se han encontrado productos</string>
   <string name="delete_txt">Eliminar</string>
   <string name="sign_in_drawer">Acceder</string>
-  <string name="alert_drawer">Cuidado alérgenos</string>
   <string name="warning_allergens">Contiene alérgenos</string>
   <string name="title_dialog_alert">Añadir alerta</string>
   <string name="from_gallery">Desde la galería</string>
+  <string name="action_edit_product">Editar producto</string>
+  <string name="title_info_dialog">Información</string>
+  <string name="error_invalid_password">La contraseña debe contener al menos 6 caracteres.</string>
+  <string name="error_field_required">Este campo es obligatorio.</string>
+  <string name="prefs_language_summary">Cambiar idioma</string>
+  <string name="export_csv_history">Exportar CSV</string>
+  <string name="nutrition_carbohydrate">Carbohidratos</string>
+  <string name="nutrition_cholesterol">Colesterol</string>
+  <string name="nutrition_energy">Valor energético</string>
+  <string name="nutrition_energy_short_name">Valor energético</string>
+  <string name="nutrition_fat">Grasas</string>
+  <string name="nutrition_fiber">Fibra dietética</string>
+  <string name="nutrition_header">Información nutricional</string>
+  <string name="nutrition_proteins">Proteínas</string>
+  <string name="nutrition_salt">Sal</string>
+  <string name="nutrition_serving_size">Tamaño de la ración :</string>
+  <string name="nutrition_sodium">Sodio</string>
+  <string name="nutrition_sugars">Azúcares</string>
+  <string name="action_manage_account">Gestionar cuenta</string>
+  <string name="action_contributes">Sus contribuciones</string>
+  <string name="website">https://world-es.openfoodfacts.org/</string>
+  <string name="website_discover">https://world-es.openfoodfacts.org/descubrir</string>
+  <string name="logout_drawer">Cerrar sesión</string>
 </resources>

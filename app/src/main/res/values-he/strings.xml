@@ -4,21 +4,88 @@
   <string name="hello_world">שלום עולם!</string>
   <string name="action_settings">הגדרות</string>
   <string name="action_about">על אודות</string>
+  <string name="action_discover">לגלות</string>
+  <string name="action_contribute">לתרום</string>
   <string name="action_find">חיפוש</string>
-  <string name="text_barcode">נא להזין את הברקוד:</string>
   <string-array name="nav_drawer_items_product">
     <item>תקציר</item>
     <item>רכיבים</item>
     <item>תזונה</item>
+    <item>Nutrition Table</item>
     <item>חזרה לתפריט</item>
   </string-array>
   <string-array name="units_array">
-    <item> </item>
     <item>ג׳</item>
     <item>מ״ג</item>
     <item>ק״ג</item>
     <item>ל׳</item>
     <item>מ״ל</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>אנגלית</item>
+    <item>צרפתית</item>
+    <item>ספרדית</item>
+    <item>איטלקית</item>
+    <item>גרמנית</item>
+    <item>יפנית</item>
+    <item>רוסית</item>
+    <item>פורטוגלית</item>
+    <item>שבדית</item>
+    <item>בורמית</item>
+    <item>קזחית</item>
+    <item>ארמנית</item>
+    <item>יוונית</item>
+    <item>עברית</item>
+    <item>גליסית</item>
+    <item>קטלאנית</item>
+    <item>Czech</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>הולנדית</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>שבדית</item>
+    <item>סינית</item>
+    <item>Norwegian (Bokmal)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
     <item>בררת מחדל</item>
@@ -38,6 +105,7 @@
   <string name="txtBrands">מותגים:</string>
   <string name="txtCategories">קטגוריות:</string>
   <string name="txtManufacturing">מקומות העיבוד או הייצור:</string>
+  <string name="txtIngredientsOrigins">מקור הרכיבים:</string>
   <string name="txtCity">עיר, מדינה וארץ הקנייה :</string>
   <string name="txtStores">חנויות:</string>
   <string name="txtCountries">מדינות בהן נמכר:</string>
@@ -49,10 +117,14 @@
   <string name="txtPalmOilProduct">רכיבים משמן דקלים :</string>
   <string name="txtServingSize">גודל ההגשה :</string>
   <string name="txtNutrientLevel100g">טבלת ערכים תזונתיים ל־100 ג׳ :</string>
+  <string name="txtNutritionLevelLow">נמוך</string>
+  <string name="txtNutritionLevelModerate">בינוני</string>
+  <string name="txtNutritionLevelHigh">גבוה</string>
   <string name="txtLogin">שם משתמש :</string>
   <string name="txtPass">ססמה :</string>
   <string name="txtTitleHome">פתיחה של האוכל שלך מאפשרת לך לדעת מה נכנס אליך לגוף</string>
-  <string name="txtHome">Open Food Facts הנו מסד נתונים של מוצרי מזון עם רכיבים, אלרגנים, טבלאות תזונתיות וכל פרטי המידע הקטנים שניתן למצוא על תוויות המוצרים.</string>
+  <string name="txtSave">שליחה/שמירה</string>
+  <string name="txtSignIn">כניסה</string>
   <string name="txtUser">לוח משתמש</string>
   <string name="txtToastSaved">המשתמש נשמר</string>
   <string name="txtSalt">מלח :</string>
@@ -68,7 +140,7 @@
   <string name="txtInfoLoginNo">המשתמש לא נשמר</string>
   <string name="txtDialogsTitle">פרטים</string>
   <string name="txtDialogsContent">המוצרים שסרקת לא נמצאים עדיין ב־Open Food Facts. להוסיף?</string>
-  <string name="txtDialogsContentSend">לשלוח את המוצרים שנשמרו למסד הנתונים שלנו?</string>
+  <string name="txtDialogsContentSend">לשלוח את המוצרים שנשמרו אל מסד הנתונים?</string>
   <string name="txtYes">כן</string>
   <string name="txtNo">לא</string>
   <string name="hintNameProduct">שם</string>
@@ -76,10 +148,10 @@
   <string name="hintEnergyUnit">יחידת אנרגיה</string>
   <string name="hintWeight">משקל</string>
   <string name="hintStores">חנות</string>
+  <string name="hintBrand">מותג</string>
   <string name="txtTakePicture">צילום תמונה</string>
   <string name="txtSendAll">לשלוח הכול</string>
   <string name="txtNoData">אין נתונים</string>
-  <string name="txtPictureNeeded">יש לצלם תמונה תחילה ואז למלא את השם ואת החנות!</string>
   <string name="toastSending">מתבצעת שליחה…</string>
   <string name="dataSaved">נשמר מקומית בהתקן שלך</string>
   <string name="txtInfoAddUser">נא להזין את שם המשתמש והססמה שלך</string>
@@ -88,17 +160,18 @@
   <string name="txtDialogsContentDelete">למחוק את הטיוטה הזו?</string>
   <string name="txtDialogsContentInfoSave">המוצר נשמר מקומית, ניתן לערוך אותו בתפריט העריכה בלתי מקוון</string>
   <string name="txtBarcodeRequire">נדרש ברקוד</string>
-  <string name="txtOk">בסדר</string>
+  <string name="txtOk">אישור</string>
   <string name="txtContentDialogUploading">נא לא לצאת באמצע התהליך…</string>
   <string name="txtAbout">התמונות הנשלחות על ידיך מפורסמות תחת הרישיון החופשי ייחוס שיתוף זהה מבית Creative Commons</string>
   <string name="txtAllsent">המוצרים נשלחו</string>
   <string name="txtPalm">המוצר אינו מכיל שמן דקלים</string>
   <string name="txtBarcodeNotValid">הברקוד לא זמין</string>
-  <string name="try_it_scan_now">בואו ננסה! נא לסרוק כעת!</string>
+  <string name="try_it_scan_now">סריקת מוצר</string>
   <string name="share">שיתוף</string>
   <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
   <string name="create_account">הרשמה</string>
   <string name="home_drawer">ראשי</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="search_drawer">חיפוש</string>
   <string name="search_by_barcode_drawer">חיפוש לפי ברקוד</string>
   <string name="search_by_name_drawer">חיפוש לפי שם</string>
@@ -109,8 +182,41 @@
   <string name="txt_product_not_found">המוצרים לא נמצאו</string>
   <string name="delete_txt">מחיקה</string>
   <string name="sign_in_drawer">כניסה</string>
-  <string name="alert_drawer">התרעה על אלרגנים</string>
+  <string name="alert_drawer">התראת אלרגן</string>
   <string name="warning_allergens">מכיל אלרגנים</string>
   <string name="title_dialog_alert">הוספת התרעה</string>
   <string name="from_gallery">מהגלריה</string>
+  <string name="product_sent">המוצר נשלח!</string>
+  <string name="action_edit_product">עריכת מוצר</string>
+  <string name="title_info_dialog">פרטים</string>
+  <string name="permission_title">פרטי הרשאה</string>
+  <string name="permission_denied">נא להפעיל את ההרשאות בהגדרות</string>
+  <string name="new_offline_info">נא לצלם תמונות של המוצר, רכיביו, טבלת ערכיו התזונתיים וכל מידע נוסף שעל התווית. תודה!</string>
+  <string name="error_invalid_password">הססמה חייבת להיות באורך של 6 תווים לפחות.</string>
+  <string name="error_field_required">זהו שדה חובה.</string>
+  <string name="action_preferences">העדפות</string>
+  <string name="prefs_scan_startup">סריקה עם ההפעלה</string>
+  <string name="prefs_scan_startup_summary">אם אפשרות זו נבחרה הסריקה תחל עם הפעלת היישומון</string>
+  <string name="prefs_language">שפה</string>
+  <string name="prefs_language_summary">החלפת שפה</string>
+  <string name="scan_history_drawer">היסטוריה</string>
+  <string name="clear_history">פינוי ההיסטוריה</string>
+  <string name="title_clear_history_dialog">פינוי</string>
+  <string name="text_clear_history_dialog">לפנות את כל היסטוריית הסריקה?</string>
+  <string name="export_csv_history">יצוא CSV…</string>
+  <string name="txt_nutrition_not_found">לא זמין</string>
+  <string name="nutrition_cholesterol">כולסטרול</string>
+  <string name="nutrition_energy">אנרגיה</string>
+  <string name="nutrition_energy_short_name">אנרגיה</string>
+  <string name="nutrition_fat">שומן</string>
+  <string name="nutrition_fiber">סיבים תזונתיים</string>
+  <string name="nutrition_header">מפרט תזונתי</string>
+  <string name="nutrition_no_data_message">אין מידע זמין על המוצר הזה</string>
+  <string name="nutrition_proteins">חלבון</string>
+  <string name="nutrition_salt">מלח</string>
+  <string name="nutrition_serving_size">גודל ההגשה :</string>
+  <string name="nutrition_sodium">נתרן</string>
+  <string name="nutrition_sugars">סוכרים</string>
+  <string name="action_manage_account">ניהול חשבון</string>
+  <string name="action_contributes">התרומות שלך</string>
 </resources>

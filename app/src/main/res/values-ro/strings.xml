@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Open Food</string>
+  <string name="hello_world">Salutare, lume!</string>
+  <string name="action_settings">Configurări</string>
+  <string name="action_about">Despre</string>
+  <string name="action_find">Căutare</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Summary</item>
+    <item>Ingrediente</item>
+    <item>Nutrition</item>
+    <item>Nutrition Table</item>
+    <item>Back to menu</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
+    <item>Swedish</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Greek</item>
+    <item>Hebrew</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Default</item>
+    <item>Informații nutriționale</item>
+    <item>Ingrediente</item>
+  </string-array>
+  <string name="search_button">Caută</string>
+  <string name="alert_dialog_warning_title">Atenţie</string>
+  <string name="alert_dialog_warning_msg_user">Numele de utilizator sau parola au fost modificate, vă rugăm actualizați datele de conectare.</string>
+  <string name="alert_dialog_product_error_msg">Produsul nu a fost găsit, vă rugam încercați din nou.</string>
+  <string name="toast_retrieving">Se încarcă...</string>
+  <string name="txtBarcode">Cod de bare:</string>
+  <string name="txtQuantity">Cantitate:</string>
+  <string name="txtPackaging">Ambalaj:</string>
+  <string name="txtBrands">Marcă:</string>
+  <string name="txtCategories">Categorii:</string>
+  <string name="txtManufacturing">Locuri de fabricare sau procesare:</string>
+  <string name="txtCity">Oraș și țara unde produsul a fost cumpărat:</string>
+  <string name="txtStores">Magazine:</string>
+  <string name="txtCountries">Țări unde produsul este comercializat:</string>
+  <string name="txtIngredients">Ingrediente</string>
+  <string name="txtSubstances">Substanțe care provoacă alergii sau intoleranțe:</string>
+  <string name="txtAdditives">Aditivi alimentari:</string>
+  <string name="txtTraces">Urme de:</string>
+  <string name="txtMayBeFromPalmOilProduct">Ingrediente care pot proveni din ulei de palmier:</string>
+  <string name="txtPalmOilProduct">Ingrediente provenind din ulei de palmier:</string>
+  <string name="txtServingSize">Cantitatea unei porții:</string>
+  <string name="txtNutrientLevel100g">Informații nutriționale pentru 100g:</string>
+  <string name="txtNutritionLevelLow">scăzut</string>
+  <string name="txtNutritionLevelModerate">moderat</string>
+  <string name="txtNutritionLevelHigh">ridicat</string>
+  <string name="txtLogin">Nume de utilizator:</string>
+  <string name="txtPass">Parolă:</string>
+  <string name="txtSave">Trimite / Salvează</string>
+  <string name="txtSignIn">Conectare</string>
+  <string name="txtSalt">Sare:</string>
+  <string name="txtFat">Grăsimi:</string>
+  <string name="txtSugars">Zaharuri</string>
+  <string name="txtSaturatedFat">Grăsimi saturare</string>
+  <string name="hintBarcode">Cod de bare</string>
+  <string name="hintPass">Parolă</string>
+  <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>
+  <string name="txtInfoLoginNo">Utilizatorul nu a fost salvat.</string>
+  <string name="txtDialogsTitle">Informaţii</string>
+  <string name="txtDialogsContent">Produsul scanat nu există în baza de date Open Food Facts. Doriți să-l adăugați?</string>
+  <string name="txtDialogsContentSend">Doriți să trimiteți produsele salvate către baza de date?</string>
+  <string name="txtYes">Da</string>
+  <string name="txtNo">Nu</string>
+  <string name="hintNameProduct">Nume</string>
+  <string name="hintEnergy">Valoare energetică per porție (in kJ)</string>
+  <string name="hintEnergyUnit">Unitate de măsură a valorii energetice</string>
+  <string name="hintWeight">Greutate</string>
+  <string name="hintStores">Magazine</string>
+  <string name="txtTakePicture">Fotografiați</string>
+  <string name="txtSendAll">Trimiteți toate produsele</string>
+  <string name="txtNoData">Lipsă date</string>
+  <string name="toastSending">Se trimite...</string>
+  <string name="dataSaved">Salvat local pe dispozitiv</string>
+  <string name="txtInfoAddUser">Introduceți numele de utilizator și parola</string>
+  <string name="txtDataUpdated">Datele au fost actualizate</string>
+  <string name="txtLoading">Se încarcă...</string>
+  <string name="txtDialogsContentInfoSave">Produsul a fost salvat local, puteți să il modificați din meniul \"Editare offline\".</string>
+  <string name="txtOk">OK</string>
+  <string name="txtContentDialogUploading">Vă rugăm nu opriți aplicația în cursul acestei operații...</string>
+  <string name="txtAbout">Fotografiile trimise sunt publicate sub licența Creative Commons Attribution and ShareAlike .</string>
+  <string name="txtAllsent">Produsele au fost trimise</string>
+  <string name="txtPalm">Produsul nu conține ulei de palmier</string>
+  <string name="txtBarcodeNotValid">Codul de bare este invalid.</string>
+  <string name="create_account">Înregistrare</string>
+  <string name="home_drawer">Pagina de start</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
+  <string name="search_drawer">Căutare</string>
+  <string name="search_by_barcode_drawer">Căutare după codul de bare</string>
+  <string name="search_by_name_drawer">Căutare după nume</string>
+  <string name="scan_search">Scanează</string>
+  <string name="user_drawer">Utilizator</string>
+  <string name="offline_edit_drawer">Modificare offline</string>
+  <string name="txt_anonymous">Anonim</string>
+  <string name="txt_product_not_found">Nici un produs nu a fost găsit</string>
+  <string name="delete_txt">Ştergeţi</string>
+  <string name="sign_in_drawer">Conectare</string>
+  <string name="warning_allergens">Conține alergeni</string>
+  <string name="title_dialog_alert">Adaugare alertă</string>
+  <string name="warning_alert_data">Informațiile despre alergiile dumneavostră nu vor fi trimise către Open Food Facts. Deasemenea, luați în considerare faptul că datele pot fi imprecise, întotdeauna re-verificați dumneavoastră înșivă!</string>
+  <string name="product_sent">Produsul a fost trimis!</string>
+  <string name="action_edit_product">Modificare produs</string>
+  <string name="title_info_dialog">Informaţii</string>
+  <string name="text_offline_info_dialog">Puteți scana produse cand sunteți offline pentru a le adăuga la Open Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de dedesubt.</string>
+  <string name="new_offline_info">Vă rugăm fotografiați produsul, lista sa de ingrediente, informațiile nutriționale și oricare alte informații prezente pe eticheta. Vă mulțumim!</string>
+  <string name="error_invalid_password">Parola trebuie să fie de cel puțin 6 caractere.</string>
+  <string name="action_preferences">Preferinţe</string>
+  <string name="prefs_scan_startup">Scanare la pornire</string>
+  <string name="prefs_scan_startup_summary">Această opțiune permite activarea funcției de scanare la pornirea aplicației.</string>
+  <string name="scan_history_drawer">Istoric</string>
+  <string name="clear_history">Stergere istoric</string>
+  <string name="title_clear_history_dialog">Ștergeți</string>
+  <string name="text_clear_history_dialog">Doriți să ștergeți tot istoricul scanărilor?</string>
+  <string name="export_csv_history">Export în format CSV</string>
+  <string name="txt_exporting_history">Istoricul se exportă...</string>
+  <string name="txt_history_exported">Istoricul a fost exportat</string>
+  <string name="txt_nutrition_not_found">Nu este disponibil</string>
+</resources>

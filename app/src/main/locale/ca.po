@@ -6,17 +6,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  openfoodfacts\n"
+"Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-05-29 10:47+0200\n"
-"PO-Revision-Date: 2016-05-29 08:00+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: ca\n"
+"POT-Creation-Date: 2016-11-04 20:11+0100\n"
+"PO-Revision-Date: 2016-05-29 08:25+0000\n"
+"Last-Translator: VPablo <villumar@gmail.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
-"Plural-Forms: nplurals=2; plural=((((n == 1)) && ((0 == 0))) ? 0 : 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-11-20 09:00+0000\n"
+"X-Generator: Launchpad (build 18269)\n"
+"Language: ca\n"
 "Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
@@ -87,6 +88,91 @@ msgstr "l"
 msgctxt "units_array:4"
 msgid "ml"
 msgstr "ml"
+
+#. Text units
+msgctxt "lang_array:0"
+msgid "en"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:1"
+msgid "fr"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:2"
+msgid "es"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:3"
+msgid "it"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:4"
+msgid "de"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:5"
+msgid "ja"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:6"
+msgid "ru"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:7"
+msgid "pt"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:8"
+msgid "sv"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:9"
+msgid "my"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:10"
+msgid "kk"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:11"
+msgid "hy"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:12"
+msgid "el"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:13"
+msgid "he"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:14"
+msgid "gl"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:15"
+msgid "ca"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:16"
+msgid "cs"
+msgstr ""
 
 msgctxt "images_array:0"
 msgid "Default"
@@ -197,6 +283,18 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr "Nivells de nutrients per cada 100g :"
 
+msgctxt "txtNutritionLevelLow"
+msgid "low"
+msgstr ""
+
+msgctxt "txtNutritionLevelModerate"
+msgid "moderate"
+msgstr ""
+
+msgctxt "txtNutritionLevelHigh"
+msgid "high"
+msgstr ""
+
 msgctxt "txtLogin"
 msgid "Login :"
 msgstr "Usuari :"
@@ -209,18 +307,13 @@ msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
 msgstr "Obri el seu menjar i conega què menja"
 
-#, fuzzy
 msgctxt "txtHome"
 msgid ""
 "Open Food Facts is a open database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find"
-" on product labels."
+"allergens, nutrition facts and all the tidbits of information we can find on "
+"product labels."
 msgstr ""
-"Open Food Facts és una base de dades de productes alimentaris, alèrgens, "
-"informació nutricional i totes les xicotetes informacions que es poden "
-"trobar a les etiquetes de productes."
 
-#, fuzzy
 msgctxt "txtSave"
 msgid "Send/Save"
 msgstr ""
@@ -270,7 +363,8 @@ msgid "Login or password error"
 msgstr "Usuari o contrasenya errònia"
 
 msgctxt "errorWeb"
-msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
 msgstr "No s'ha pogut connectar a l'Internet. Té problemes amb la connexió?"
 
 msgctxt "txtInfoLoginOk"
@@ -287,16 +381,15 @@ msgstr "Informació"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you "
-"want to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
 msgstr ""
-"El producte que ha escanejat no existix encara a Open Food Facts. Vol "
-"afegir-lo?"
+"El producte que ha escanejat no existix encara a Open Food Facts. Vol afegir-"
+"lo?"
 
-#, fuzzy
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
-msgstr "Vol enviar els productes desats a la nostra base de dades?"
+msgstr ""
 
 msgctxt "txtYes"
 msgid "Yes"
@@ -338,10 +431,9 @@ msgctxt "txtNoData"
 msgid "No data"
 msgstr "No hi ha dades"
 
-#, fuzzy
 msgctxt "txtPictureNeeded"
 msgid "Take a picture first!"
-msgstr "Primer prenga una foto, després emplene el nom i la tenda!"
+msgstr ""
 
 msgctxt "toastSending"
 msgid "Uploading..."
@@ -368,7 +460,8 @@ msgid "Do you want to delete this draft?"
 msgstr "Vol esborrar este esborrany?"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
 "El producte s'ha desat localment, pot editar-lo amb el menú de l'Editor "
 "Offline"
@@ -378,8 +471,8 @@ msgid "Barcode required"
 msgstr "Es necessita un codi de barres"
 
 msgctxt "txtOk"
-msgid "Ok"
-msgstr "D'acord"
+msgid "OK"
+msgstr ""
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
@@ -387,8 +480,8 @@ msgstr "Per favor no isca en mig del procés..."
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative "
-"Commons Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
 msgstr ""
 "Les imatges que ha enviat es publiquen amb la llicència lliure Creative "
 "Commons Attribution and ShareAlike"
@@ -424,6 +517,10 @@ msgstr "Entra"
 msgctxt "home_drawer"
 msgid "Home"
 msgstr "Inici"
+
+msgctxt "open_beauty_drawer"
+msgid "Open Beauty Facts"
+msgstr ""
 
 msgctxt "search_drawer"
 msgid "Search"
@@ -465,10 +562,9 @@ msgctxt "sign_in_drawer"
 msgid "Sign-in"
 msgstr "Obre sessió"
 
-#, fuzzy
 msgctxt "alert_drawer"
 msgid "Allergen Alert"
-msgstr "Atenció al·lèrgens"
+msgstr ""
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
@@ -478,12 +574,10 @@ msgctxt "title_dialog_alert"
 msgid "Add alert"
 msgstr "Afegir Alerta"
 
-#, fuzzy
 msgctxt "warning_alert_data"
 msgid ""
-"Your allergies info will never be sent to the Open Food Facts server. "
-"Also, be careful that data may not be accurate, please double-check by "
-"yourself!"
+"Your allergies info will never be sent to the Open Food Facts server. Also, "
+"be careful that data may not be accurate, please double-check by yourself!"
 msgstr ""
 
 msgctxt "from_gallery"
@@ -537,3 +631,69 @@ msgid ""
 "activate internet connection."
 msgstr ""
 
+msgctxt "msg_input_empty"
+msgid "Fill input first!"
+msgstr ""
+
+msgctxt "new_offline_info"
+msgid ""
+"Please take a picture of the product, ingredients, nutrition facts table and "
+"any other information on the label. Thank you!"
+msgstr ""
+
+#. Strings related to login
+msgctxt "error_invalid_password"
+msgid "The password needs to be a least 6 characters long."
+msgstr ""
+
+msgctxt "error_field_required"
+msgid "This field is required"
+msgstr ""
+
+msgctxt "action_preferences"
+msgid "Preferences"
+msgstr ""
+
+msgctxt "prefs_scan_startup"
+msgid "Scan on startup"
+msgstr ""
+
+msgctxt "prefs_scan_startup_summary"
+msgid "This option if selected will start scan when app is opened."
+msgstr ""
+
+msgctxt "scan_history_drawer"
+msgid "History"
+msgstr ""
+
+msgctxt "clear_history"
+msgid "Clear history"
+msgstr ""
+
+msgctxt "title_clear_history_dialog"
+msgid "Clear"
+msgstr ""
+
+msgctxt "text_clear_history_dialog"
+msgid "Do you want to clear all scan history?"
+msgstr ""
+
+msgctxt "export_csv_history"
+msgid "Export CSV"
+msgstr ""
+
+msgctxt "txt_exporting_history"
+msgid "Exporting history..."
+msgstr ""
+
+msgctxt "txt_history_exported"
+msgid "History exported"
+msgstr ""
+
+msgctxt "permision_write_external_storage"
+msgid "Write external storage permission is needed to export history."
+msgstr ""
+
+msgctxt "txt_nutrition_not_found"
+msgid "N/A"
+msgstr ""

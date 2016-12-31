@@ -2,23 +2,89 @@
 <resources>
   <string name="app_name">Open Food</string>
   <string name="hello_world">မဂၤလာပါကမာၻၾကီး</string>
-  <string name="action_settings">အျပင္အဆင္</string>
-  <string name="action_about">အေၾကာင္း</string>
+  <string name="action_settings">အပြင်​အဆင်​များ</string>
+  <string name="action_about">အကြောင်း</string>
+  <string name="action_contribute">ပံ့ပိုးကူညီ</string>
   <string name="action_find">ရွာေဖြမည္</string>
-  <string name="text_barcode">ဘားကုဒ္ထည့္ပါ -</string>
   <string-array name="nav_drawer_items_product">
     <item>အက်ဥ္းခ်ဳပ္</item>
     <item>ပါဝင္မႈမ်ား</item>
-    <item>အာဟာရျပည့္မႈမ်ား</item>
-    <item>မီႏူးဆီသို႔ျပန္သြားမည္</item>
+    <item>အဟာရဓါတ်</item>
+    <item>Nutrition Table</item>
+    <item>မီနူးဆီသို့ပြန်သွားမည်။</item>
   </string-array>
   <string-array name="units_array">
-    <item> </item>
     <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
     <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>အင်္ဂလိပ်</item>
+    <item>ပြင်သစ်</item>
+    <item>စပိန်</item>
+    <item>အီတလီ</item>
+    <item>ဂျာမန်</item>
+    <item>ဂျပန်</item>
+    <item>ရုရှား</item>
+    <item>ပေါ်တူဂီ</item>
+    <item>ဆွီဒီးရှ်</item>
+    <item>ဗမာ</item>
+    <item>Kazakh</item>
+    <item>အာမေးနီးယန်း</item>
+    <item>ဂရိ</item>
+    <item>ဟီဘရူး</item>
+    <item>ဂလစ်စီယန်</item>
+    <item>Catalan</item>
+    <item>Czech</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
     <item>မူလအတိုင္း</item>
@@ -49,10 +115,12 @@
   <string name="txtPalmOilProduct">အုန္းဆီမွ ပါဝင္ပစၥည္းမ်ား -</string>
   <string name="txtServingSize">ဝန္ေဆာင္မႈအရြယ္အစား-</string>
   <string name="txtNutrientLevel100g">100 g အတြက္အာဟာရအဆင့္ -</string>
+  <string name="txtNutritionLevelLow">အနိမ့်</string>
+  <string name="txtNutritionLevelModerate">မနည်းမများသော</string>
+  <string name="txtNutritionLevelHigh">မြင့်သော</string>
   <string name="txtLogin">ဝင္ေရာက္ရန္ -</string>
   <string name="txtPass">စကားဝွက္ -</string>
   <string name="txtTitleHome">သင့္အစားအေသာက္ကိုဖြင့္ျပီး သင္ဘာစားေနသည္ကိုသိရွိပါ</string>
-  <string name="txtHome">Open Food အေၾကာင္းအရာမ်ားသည္ ပါဝင္ေသာပစၥည္းမ်ား၊ မတည့္ေသာအစားအစာမ်ား၊ အာဟာရအေၾကာင္းအရာမ်ားႏွင့္ ထုတ္ကုန္အဆင့္ႏွင့္ ကၽြႏ္ုပ္တို႔ရွာႏိုင္ေသာအခ်က္အလက္မ်ားပါဝင္သည့္ database ျဖစ္သည္။</string>
   <string name="txtUser">အသံုးျပဳသူ ပန္နယ္</string>
   <string name="txtToastSaved">အသံုးျပဳသူကိုသိမ္းခဲ့ျပီးျပီ</string>
   <string name="txtSalt">ဆား -</string>
@@ -68,18 +136,18 @@
   <string name="txtInfoLoginNo">အသံုးျပဳသူကိုမသိမ္းခဲ့ပါ</string>
   <string name="txtDialogsTitle">အခ်က္အလက္</string>
   <string name="txtDialogsContent">သင္စကန္ဖတ္ေသာထုတ္ကုန္သည္ Open Food အခ်က္အလက္မ်ားတြင္မရွိေသးပါ။ သင္ထည့္လိုပါသလား။</string>
-  <string name="txtDialogsContentSend">သိမ္းထားေသာထုတ္ကုန္မ်ားကို ကၽြႏ္ုပ္တို႔၏ database သို႔ေပါင္းထည့္ခ်င္ပါသလား</string>
+  <string name="txtDialogsContentSend">သိမ်းဆည်းပြီးသည့်ထုတ်ကုန်ကိုdatabaseသို့ပိုလိုပါသလား</string>
   <string name="txtYes">ဟုတ္</string>
   <string name="txtNo">မဟုတ္</string>
   <string name="hintNameProduct">အမည္</string>
   <string name="hintEnergy">တစ္ခါေသာက္တြင္ ပါဝင္ေသာ အား</string>
   <string name="hintEnergyUnit">အားယူနစ္</string>
-  <string name="hintWeight">အေလးခ်ိန္</string>
+  <string name="hintWeight">အလေးချိန်</string>
   <string name="hintStores">စတိုး</string>
-  <string name="txtTakePicture">ဓာတ္ပံုရိုက္မည္</string>
+  <string name="hintBrand">အမှတ်တံဆိပ်</string>
+  <string name="txtTakePicture">ဓါတ်ပုံရိုက်ရန်</string>
   <string name="txtSendAll">အားလံုးကိုတင္မည္</string>
-  <string name="txtNoData">အခ်က္အလက္မရွိ</string>
-  <string name="txtPictureNeeded">ဓာတ္ပံုအရင္ရိုက္ပါ။ ေနာက္မွ အမည္ႏွင့္ စတိုးကိုျဖည့္ပါ</string>
+  <string name="txtNoData">အချက်အလက်မရှိ</string>
   <string name="toastSending">တင္ေနသည္</string>
   <string name="dataSaved">သင့္ကိရိယာတြင္ ခဏသိမ္းထားမည္</string>
   <string name="txtInfoAddUser">သင္ဝင္ေရာက္မႈႏွင့္စကားဝွက္ကိုရိုက္ထည့္ပါ</string>
@@ -88,13 +156,13 @@
   <string name="txtDialogsContentDelete">ဒီအၾကမ္းကိုသင္ဖ်က္ခ်င္ပါသလား</string>
   <string name="txtDialogsContentInfoSave">ထုတ္ကုန္ကို စက္ထဲသိမ္းထားခဲ့သည္။ ေအာ့္ဖ္လိုင္းျပင္ဆင္မႈမီႏူးမွတစ္ဆင့္သင္ျပင္ဆင္ႏိုင္သည္</string>
   <string name="txtBarcodeRequire">ဘားကုဒ္လိုအပ္သည္</string>
-  <string name="txtOk">အုိေက</string>
+  <string name="txtOk">အိုကေ</string>
   <string name="txtContentDialogUploading">လုပ္ေဆာင္ေနစဥ္ မထြက္ပါႏွင့္</string>
   <string name="txtAbout">သင္ပို႔ေသာပံုမ်ားသည္ အခမဲ့လိုင္စင္ Creative Commons Attribution ႏွင့္ ShareAlike အရျဖစ္လိမ့္မည္။</string>
   <string name="txtAllsent">ထုတ္ကုန္ပို႔ခဲ့သည္</string>
   <string name="txtPalm">ထုတ္ကုန္သည္ မည္သည့္အုန္းဆီမွ မပါဝင္ပါ</string>
   <string name="txtBarcodeNotValid">ဘားကုဒ္မမွန္ကန္ပါ</string>
-  <string name="try_it_scan_now">ၾကိဳးစားၾကည့္ပါ။ ယခုစကန္ဖတ္ပါ</string>
+  <string name="try_it_scan_now">ထုတ်ကုန်ကိုscanဖတ်ရန်</string>
   <string name="share">ေဝမွ်မည္</string>
   <string name="msg_share">Open Food Fact မွာဒီထုတ္ကုန္ကို ၾကည့္မည္ -</string>
   <string name="create_account">အေကာင့္ျပဳလုပ္မည္</string>
@@ -109,8 +177,28 @@
   <string name="txt_product_not_found">ထုတ္ကုန္မေတြ႕ပါ</string>
   <string name="delete_txt">ဖ်က္မည္</string>
   <string name="sign_in_drawer">ဝင္ေရာက္ပါ</string>
-  <string name="alert_drawer">ယားယံျခင္းသတိေပးမႈ</string>
   <string name="warning_allergens">အလာဂ်င္ပါဝင္သည္</string>
   <string name="title_dialog_alert">သတိေပးမႈထည့္မည္</string>
   <string name="from_gallery">ဓာတ္ပံုျပခန္းမွ</string>
+  <string name="product_sent">ထုတ်ကုန်ပို့ပြီး</string>
+  <string name="action_edit_product">ထုတ်ကုန်ကိုပြင်ဆင်ရန်</string>
+  <string name="title_info_dialog">အချက်အလက်များ</string>
+  <string name="error_field_required">ဤနေရာတွင် ဖြည့်စွက်ရန် လိုအပ်ပါသည်။</string>
+  <string name="prefs_language">ဘာသာစကား</string>
+  <string name="prefs_language_summary">ဘာသာစကားပြောင်းရန်</string>
+  <string name="scan_history_drawer">မှတ်တမ်း</string>
+  <string name="clear_history">မှတ်တမ်းကိုဖျက်ရန်</string>
+  <string name="title_clear_history_dialog">ရှင်းလင်းမည်</string>
+  <string name="nutrition_carbohydrate">ကာဗွန်ဟိုက်ဒရိတ်</string>
+  <string name="nutrition_cholesterol">ကိုလက်‌‌‌စတော</string>
+  <string name="nutrition_energy">စွမ်းအင်</string>
+  <string name="nutrition_energy_short_name">စွမ်းအင်</string>
+  <string name="nutrition_fat">အဆီ</string>
+  <string name="nutrition_header">အာဟာရဆိုင်ရာအချက်အလက်များ</string>
+  <string name="nutrition_no_data_message">ဤထုတ်ကုန်အတွက်dataမရနိုင်သေးပါ</string>
+  <string name="nutrition_proteins">ပရိုတင်းဓာတ်</string>
+  <string name="nutrition_salt">ဆားဓါတ်</string>
+  <string name="nutrition_sodium">ဆိုဒီယမ်</string>
+  <string name="nutrition_sugars">သကြားဓာတ်</string>
+  <string name="action_contributes">သင်၏ကူညီမှုများ</string>
 </resources>

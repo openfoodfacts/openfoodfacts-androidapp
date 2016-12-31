@@ -51,7 +51,12 @@ public class NutrientLevelListAdapter extends BaseAdapter {
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.imgLevel);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.descriptionLevel);
 
-        imgIcon.setImageResource(nutrientLevelItems.get(position).getIcon());
+        if (nutrientLevelItems.get(position).getIcon() == R.drawable.error_image) {
+            imgIcon.setVisibility(View.GONE);
+        } else {
+            imgIcon.setImageResource(nutrientLevelItems.get(position).getIcon());
+            imgIcon.setVisibility(View.VISIBLE);
+        }
         txtTitle.setText(nutrientLevelItems.get(position).getTitle());
 
         return convertView;

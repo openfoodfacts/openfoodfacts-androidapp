@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
@@ -39,6 +41,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class OfflineEditFragment extends BaseFragment {
 
+    public static final String LOG_TAG = "OFFLINE_EDIT";
     @BindView(R.id.listOfflineSave) ListView listView;
     @BindView(R.id.buttonSendAll) Button buttonSend;
     private List<SaveItem> saveItems;
@@ -135,7 +138,7 @@ public class OfflineEditFragment extends BaseFragment {
                         }
 
                         if(isNotEmpty(product.getImgupload_ingredients())) {
-                            product.compress(ProductImageField.INGREDIENT);
+                            product.compress(ProductImageField.INGREDIENTS);
                         }
 
                         if(isNotEmpty(product.getImgupload_nutrition())) {
@@ -192,7 +195,14 @@ public class OfflineEditFragment extends BaseFragment {
                         || isEmpty(product.getBrands()) || isEmpty(product.getWeight()) || isEmpty(product.getName())) {
                     imageIcon = R.drawable.ic_no;
                 }
-                Bitmap imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(product.getImgupload_front()), 200, 200, true);
+
+                Bitmap bitmap = Utils.decodeFile(new File(product.getImgupload_front()));
+                if (bitmap == null) {
+                    Log.e(LOG_TAG, "Unable to load the image of the product: " + product.getBarcode());
+                    continue;
+                }
+
+                Bitmap imgUrl = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
                 saveItems.add(new SaveItem(product.getName(), imageIcon, imgUrl, product.getBarcode()));
             }
 
@@ -202,7 +212,7 @@ public class OfflineEditFragment extends BaseFragment {
         @Override
         protected void onPostExecute(Context ctx) {
             List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
-            if (listSaveProduct.size() <= 0) {
+            if (listSaveProduct.isEmpty()) {
                 return;
             }
 

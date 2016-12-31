@@ -1,61 +1,62 @@
-jdk: oraclejdk8
 language: android
+
+jdk: oraclejdk8
+
+env:
+  global:
+    - ANDROID_API_LEVEL=25
+    - ANDROID_EMULATOR_LEVEL=21
+    - ANDROID_BUILD_TOOLS_VERSION=25.0.0
+    - ANDROID_ABI=armeabi-v7a
+    - ANDROID_TAG=google_apis
+    - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+
 android:
   components:
-    # Uncomment the lines below if you want to
-    # use the latest revision of Android SDK Tools
-    - platform-tools
     - tools
+    - platform-tools
+    - tools # to install Android SDK tools 25.1.x
 
-    # The BuildTools version used by your project
-    - build-tools-25.0.0
-
-    # The SDK version used to compile your project
-    - android-25
-
-    # Additional components
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    - android-$ANDROID_API_LEVEL
+    # For Google APIs
+    - addon-google_apis-google-$ANDROID_API_LEVEL
+    # Google Play Services
     - extra-google-google_play_services
+    # Support library
+    - extra-android-support
+    # Latest artifacts in local repository
     - extra-google-m2repository
     - extra-android-m2repository
-    - extra-android-support
-    - addon-google_apis-google-19
+    # Specify at least one system image
+    - sys-img-armeabi-v7a-google_apis-$ANDROID_EMULATOR_LEVEL
 
-    # Specify at least one system image,
-    # if you need to run emulator(s) during your tests
-    # - sys-img-armeabi-v7a-android-19
-    # - sys-img-x86-android-17
   licenses:
-      - 'android-sdk-preview-license-.+'
-      - 'android-sdk-license-.+'
-      - 'google-gdk-license-.+'
-      - '.*intel.+'
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
+    - '.*intel.+'
 
-# Emulator Management: Create, Start and Wait
-before_script:
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi armeabi-v7a
-  - emulator -avd test -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
+cache:
+  directories:
+    - ${TRAVIS_BUILD_DIR}/gradle/caches/
+    - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
+
+#before_script:
+#  # Create and start emulator
+#  - echo no | android create avd --force -n test -t "android-"$ANDROID_EMULATOR_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
+#  - emulator -avd test -no-skin -no-window &
+#  - android-wait-for-emulator
 
 install:
   - ./gradlew assembleDebug --stacktrace
 
+script:
+  - ./gradlew build connectedCheck --stacktrace
+
 branches:
   only:
     - master
-
-env:
-  global:
-    - TRAVIS=true
-    - ADB_INSTALL_TIMEOUT=8
-  matrix:
-    # - ANDROID_TARGET=android-16 ANDROID_ABI=armeabi-v7a
-    # - ANDROID_TARGET=android-17 ANDROID_ABI=armeabi-v7a
-    # - ANDROID_TARGET=android-18 ANDROID_ABI=armeabi-v7a
-    # - ANDROID_TARGET=android-19 ANDROID_ABI=armeabi-v7a
-    # - ANDROID_TARGET=android-20 ANDROID_ABI=armeabi-v7a
-    - ANDROID_TARGET=android-21 ANDROID_ABI=armeabi-v7a
-    # - ANDROID_TARGET=android-22 ANDROID_ABI=armeabi-v7a
 
 notifications:
   email: false

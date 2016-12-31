@@ -5,20 +5,85 @@
   <string name="action_settings">Баптаулар</string>
   <string name="action_about">Осы туралы</string>
   <string name="action_find">Табу</string>
-  <string name="text_barcode">Штрих-код қою :</string>
   <string-array name="nav_drawer_items_product">
     <item>Түйіндеме</item>
     <item>Ингредиенттер</item>
     <item>Тамақтану</item>
-    <item>Мәзірге оралу</item>
+    <item>Nutrition Table</item>
+    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
-    <item> </item>
     <item>г</item>
     <item>мг</item>
     <item>кг</item>
     <item>л</item>
     <item>мл</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
+    <item>Swedish</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Greek</item>
+    <item>Hebrew</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
     <item>Әдетті</item>
@@ -52,7 +117,6 @@
   <string name="txtLogin">Аты :</string>
   <string name="txtPass">Құпиясөз :</string>
   <string name="txtTitleHome">Өзіңіздің тағамыңызды ашып және не жейтініңізді біліңіз</string>
-  <string name="txtHome">Open Food Facts тағамдық ингредиенттермен, аллергендермен, тағамның құндылығын және барлық дәмді тағамдар туралы ақпарат таба алады, заттаңбадағы өнімдер деректер базасын көрсетеді.</string>
   <string name="txtUser">Пайдаланушының панельі</string>
   <string name="txtToastSaved">Пайдаланушы сақталған</string>
   <string name="txtSalt">Тұз :</string>
@@ -68,7 +132,6 @@
   <string name="txtInfoLoginNo">Пайдаланушы сақталмаған</string>
   <string name="txtDialogsTitle">Ақпарат</string>
   <string name="txtDialogsContent">Бұл өнім әлі Open Food Facts-та жоқ. Сіз оны қосқыңыз келе ме?</string>
-  <string name="txtDialogsContentSend">Біздің деректер базасына сақталған өнімдерді сіз жібергіңіз келе ме?</string>
   <string name="txtYes">Иә</string>
   <string name="txtNo">Жоқ</string>
   <string name="hintNameProduct">Атауы</string>
@@ -79,7 +142,6 @@
   <string name="txtTakePicture">Сурет жасау</string>
   <string name="txtSendAll">Барлығын жіберу</string>
   <string name="txtNoData">Деректер жоқ</string>
-  <string name="txtPictureNeeded">Алдымен сурет жасаңыз, содан кейін атауы және дүкенді толтырыңыз!</string>
   <string name="toastSending">Берілісте...</string>
   <string name="dataSaved">Сіздің құрылғыңызда сақталған</string>
   <string name="txtInfoAddUser">Аты және құпиясөзді енгізіңіз</string>
@@ -88,13 +150,11 @@
   <string name="txtDialogsContentDelete">Сіз бұл шимайды жойғыңыз келеді ме?</string>
   <string name="txtDialogsContentInfoSave">Өнім жергілікті сақталған, сіз оның мәзір Автономды Түзетуде түзете аласыз</string>
   <string name="txtBarcodeRequire">Штрих-код талап етеді</string>
-  <string name="txtOk">ОК</string>
   <string name="txtContentDialogUploading">... үдірісінде шықпаңыз</string>
   <string name="txtAbout">Сіз жолдаған фотосуреттер Creative Commons Attribution және ShareAlike лицензияға сай жарияланды.</string>
   <string name="txtAllsent">Өнім жіберілді</string>
   <string name="txtPalm">Өнім пальма майын құрамайды</string>
   <string name="txtBarcodeNotValid">Жарамсыз штрих-код</string>
-  <string name="try_it_scan_now">Көріңіз! Қазір сканерлеңіз!</string>
   <string name="share">Бөлісу</string>
   <string name="msg_share">Бұл өнімді Open Food Facts-та қараңыз:</string>
   <string name="create_account">Тіркелу</string>
@@ -109,7 +169,6 @@
   <string name="txt_product_not_found">Өнім табылмады</string>
   <string name="delete_txt">Жою</string>
   <string name="sign_in_drawer">Кіру</string>
-  <string name="alert_drawer">Аллергендер туралы ескерту</string>
   <string name="warning_allergens">Аллергендер құрайды</string>
   <string name="title_dialog_alert">Ескертуді қосу</string>
   <string name="from_gallery">Галереядан</string>

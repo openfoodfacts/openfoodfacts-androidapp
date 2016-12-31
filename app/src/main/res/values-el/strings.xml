@@ -1,22 +1,113 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="app_name">Open Food</string>
+  <string name="action_discover">Ανακαλύψτε</string>
+  <string name="action_contribute">Συμβάλλετε</string>
   <string-array name="nav_drawer_items_product">
     <item>Summary</item>
-    <item>Ingredients</item>
+    <item>Συστατικά</item>
     <item>Nutrition</item>
+    <item>Nutrition Table</item>
     <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
-    <item> </item>
     <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
     <item>ml</item>
   </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>Αγγλικα</item>
+    <item>Γαλλικα</item>
+    <item>Ισπανικα</item>
+    <item>Ιταλικα</item>
+    <item>Γερμανικα</item>
+    <item>Ιαπωνικα</item>
+    <item>Ρωσικα</item>
+    <item>Πορτογαλικα</item>
+    <item>Σουηδικά</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Ελληνικά</item>
+    <item>Εβραικα</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
+    <item>Arabic</item>
+    <item>Φινλανδικά</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Κορεατικα</item>
+    <item>Λετονικά</item>
+    <item>Ολλανδικα</item>
+    <item>Brazilian portuguese</item>
+    <item>Ρουμανικα</item>
+    <item>Σουηδικά</item>
+    <item>Κινεζικα</item>
+    <item>Norwegian (Bokmal)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
+  </string-array>
   <string-array name="images_array">
     <item>Default</item>
     <item>Nutrition</item>
-    <item>Ingredients</item>
+    <item>Συστατικά</item>
   </string-array>
+  <string name="txtNutritionLevelLow">χαμηλός</string>
+  <string name="txtNutritionLevelModerate">μέτριος</string>
+  <string name="txtNutritionLevelHigh">υψηλός</string>
+  <string name="hintPass">Κωδικός χρήστη</string>
+  <string name="hintStores">Κατάστημα</string>
+  <string name="hintBrand">Μάρκα</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
+  <string name="sign_in_drawer">Εγγραφη</string>
+  <string name="error_invalid_password">Ο κωδικός χρήστη (password) πρέπει να περιέχει τουλάχιστον 6 χαρακτήρες</string>
+  <string name="error_field_required">Το πεδίο είναι απαραίτητο.</string>
+  <string name="prefs_language">Γλώσσα</string>
+  <string name="nutrition_carbohydrate">Υδατάνθρακας</string>
+  <string name="nutrition_cholesterol">Χοληστερόλη</string>
+  <string name="nutrition_energy">Ενέργεια</string>
+  <string name="nutrition_energy_short_name">Ενέργεια</string>
+  <string name="nutrition_fat">Λίπη</string>
+  <string name="nutrition_fiber">Φυτικές ίνες</string>
+  <string name="nutrition_header">Διατροφικά στοιχεία</string>
+  <string name="nutrition_proteins">Πρωτεΐνες</string>
+  <string name="nutrition_salt">Αλάτι</string>
+  <string name="nutrition_sodium">Νάτριο</string>
+  <string name="action_manage_account">Διαχείριση λογαριασμού</string>
 </resources>

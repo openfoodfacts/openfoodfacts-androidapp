@@ -5,20 +5,85 @@
   <string name="action_settings">Կարգավորումներ</string>
   <string name="action_about">Մեր մասին</string>
   <string name="action_find">Գտնել</string>
-  <string name="text_barcode">Դնել գծակոդ՝</string>
   <string-array name="nav_drawer_items_product">
     <item>Ամփոփում</item>
     <item>Բաղադրամասեր</item>
     <item>Սննդային արժեք</item>
-    <item>Ետ դեպի ընտրացանկ</item>
+    <item>Nutrition Table</item>
+    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
-    <item> </item>
     <item>գ</item>
     <item>մգ</item>
     <item>կգ</item>
     <item>լ</item>
     <item>մլ</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
+    <item>Swedish</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Greek</item>
+    <item>Hebrew</item>
+    <item>Galician</item>
+    <item>Catalan</item>
+    <item>Czech</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
     <item>Լռելյայն</item>
@@ -52,7 +117,6 @@
   <string name="txtLogin">Մուտքանուն՝</string>
   <string name="txtPass">Գաղտնաբառ՝</string>
   <string name="txtTitleHome">Բաց արեք Ձեր սնունդը և իմացեք, թե ինչ եք ուտում</string>
-  <string name="txtHome">«Բաց փաստեր սննդի մասին» ծրագիրը սննդամթերքի շտեմարան է, որը պարունակում է տեղեկություններ բաղադրամասերի, ալերգենների, սննդային արժեքների մասին և մթերքների պիտակների վրա գտվող ամբողջ տեղեկատվությունը։</string>
   <string name="txtUser">Օգտվողի վահանակ</string>
   <string name="txtToastSaved">Օգտվողը պահպանվել է</string>
   <string name="txtSalt">Աղեր՝</string>
@@ -68,7 +132,6 @@
   <string name="txtInfoLoginNo">Օգտվողը չպահպանվեց</string>
   <string name="txtDialogsTitle">Տեղեկատվություն</string>
   <string name="txtDialogsContent">Այս մթերքը դեռ չկա «Open Food Facts»-ում։ Ցանկանո՞ւմ եք ավելացնել։</string>
-  <string name="txtDialogsContentSend">Ցանկանո՞ւմ եք ուղարկել պահպանված մթերքները մեր տվյալների շտեմարան։</string>
   <string name="txtYes">Այո</string>
   <string name="txtNo">Ոչ</string>
   <string name="hintNameProduct">Անվանում</string>
@@ -79,7 +142,6 @@
   <string name="txtTakePicture">Լուսանկարել</string>
   <string name="txtSendAll">Վերբեռնել բոլորը</string>
   <string name="txtNoData">Տվյալներ չկան</string>
-  <string name="txtPictureNeeded">"Նախ լուսանկար հանեք, հետո լրացրեք անվանումը և  խանութը։"</string>
   <string name="toastSending">Բեռնավորում...</string>
   <string name="dataSaved">Պահպանվել է Ձեր սարքի վրա</string>
   <string name="txtInfoAddUser">Մուտքագրեք մուտքանունը և գաղտնաբառը</string>
@@ -88,13 +150,11 @@
   <string name="txtDialogsContentDelete">Ցանկանում եք ջնջե՞լ այս սեւագիրը։</string>
   <string name="txtDialogsContentInfoSave">Մթերքը պահպանվել է տեղում, Դուք կարող եք փոփոխել այդ «Անցանց խմբագրում» բաժնում</string>
   <string name="txtBarcodeRequire">Պահանջվում է գծակոդ</string>
-  <string name="txtOk">Լավ</string>
   <string name="txtContentDialogUploading">"Խնդրում ենք,  դուրս մի՛ եկեք գործընթացի ժամանակ..."</string>
   <string name="txtAbout">Ձեր ուղարկվող լուսանկարները հրապարակվում են Creative Commons Attribution-ի և ShareAlike-ի ազատ լիցենզիայով։</string>
   <string name="txtAllsent">Մթերքներն ուղարկվել են</string>
   <string name="txtPalm">Մթերքը չի պարունակում արմավենու յուղ</string>
   <string name="txtBarcodeNotValid">Գծակոդն անվավեր է</string>
-  <string name="try_it_scan_now">Փորձե՛ք։ Տեսածրե՛ք հիմա։</string>
   <string name="share">Կիսվել</string>
   <string name="msg_share">Նայեք այս մթերքը «Open Food Facts»-ում՝</string>
   <string name="create_account">Գրանցում</string>
@@ -109,7 +169,6 @@
   <string name="txt_product_not_found">Մթերքները չգտնվեցին</string>
   <string name="delete_txt">Ջնջել</string>
   <string name="sign_in_drawer">Մուտք գործել</string>
-  <string name="alert_drawer">Ալերգենի զգուշացում</string>
   <string name="warning_allergens">Պարունակում է ալերգեններ</string>
   <string name="title_dialog_alert">Ավելացնել զգուշացում</string>
   <string name="from_gallery">Պատկերասրահից</string>

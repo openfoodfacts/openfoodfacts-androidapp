@@ -4,21 +4,88 @@
   <string name="hello_world">Hola món!</string>
   <string name="action_settings">Preferències</string>
   <string name="action_about">Quant a</string>
+  <string name="action_discover">Descobrir</string>
+  <string name="action_contribute">Contribuir</string>
   <string name="action_find">Cerca</string>
-  <string name="text_barcode">Pose el codi de barres:</string>
   <string-array name="nav_drawer_items_product">
     <item>Resum</item>
     <item>Ingredients</item>
     <item>Nutrició</item>
+    <item>Nutrition Table</item>
     <item>Tornar al menú</item>
   </string-array>
   <string-array name="units_array">
-    <item> </item>
     <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
     <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>Anglès</item>
+    <item>Francès</item>
+    <item>Espanyol</item>
+    <item>Italià</item>
+    <item>Alemany</item>
+    <item>Japonès</item>
+    <item>Rus</item>
+    <item>Portuguès</item>
+    <item>Suec</item>
+    <item>Birmà</item>
+    <item>Kazakh</item>
+    <item>Armeni</item>
+    <item>Grec</item>
+    <item>Hebreu</item>
+    <item>Gallec</item>
+    <item>Català</item>
+    <item>Txec</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
     <item>Predeterminat</item>
@@ -38,6 +105,7 @@
   <string name="txtBrands">Marques :</string>
   <string name="txtCategories">Categories :</string>
   <string name="txtManufacturing">Llocs de manufactura o processament :</string>
+  <string name="txtIngredientsOrigins">Origen dels ingredients :</string>
   <string name="txtCity">Ciutat, estat o país on es va comprar :</string>
   <string name="txtStores">Tendes :</string>
   <string name="txtCountries">Països on es ven :</string>
@@ -49,10 +117,15 @@
   <string name="txtPalmOilProduct">Ingredients de l\'oli de palma :</string>
   <string name="txtServingSize">Mida de la ració :</string>
   <string name="txtNutrientLevel100g">Nivells de nutrients per cada 100g :</string>
+  <string name="txtNutritionLevelLow">baix</string>
+  <string name="txtNutritionLevelModerate">moderat</string>
+  <string name="txtNutritionLevelHigh">alt</string>
   <string name="txtLogin">Usuari :</string>
   <string name="txtPass">Contrasenya:</string>
   <string name="txtTitleHome">Obri el seu menjar i conega què menja</string>
-  <string name="txtHome">Open Food Facts és una base de dades de productes alimentaris, alèrgens, informació nutricional i totes les xicotetes informacions que es poden trobar a les etiquetes de productes.</string>
+  <string name="txtHome">Open Food Facts és una base de dades oberta de productes amb ingredients, al·lèrgens, dades nutricionals i totes les peces d\'informació que es poden trobar a les etiquetes dels productes.</string>
+  <string name="txtSave">Envia/Desa</string>
+  <string name="txtSignIn">Inici de sessió</string>
   <string name="txtUser">Panell d\'usuari</string>
   <string name="txtToastSaved">Usuari desat</string>
   <string name="txtSalt">Sal :</string>
@@ -68,7 +141,7 @@
   <string name="txtInfoLoginNo">Usuari no desat</string>
   <string name="txtDialogsTitle">Informació</string>
   <string name="txtDialogsContent">El producte que ha escanejat no existix encara a Open Food Facts. Vol afegir-lo?</string>
-  <string name="txtDialogsContentSend">Vol enviar els productes desats a la nostra base de dades?</string>
+  <string name="txtDialogsContentSend">Vol enviar el producte desat a la base de dades?</string>
   <string name="txtYes">Si</string>
   <string name="txtNo">No</string>
   <string name="hintNameProduct">Nom</string>
@@ -76,10 +149,10 @@
   <string name="hintEnergyUnit">Unitat d\'energia</string>
   <string name="hintWeight">Pes</string>
   <string name="hintStores">Botiga</string>
+  <string name="hintBrand">Marca</string>
   <string name="txtTakePicture">Prenga una foto</string>
   <string name="txtSendAll">Puja tot</string>
   <string name="txtNoData">No hi ha dades</string>
-  <string name="txtPictureNeeded">Primer prenga una foto, després emplene el nom i la tenda!</string>
   <string name="toastSending">Pujant...</string>
   <string name="dataSaved">Desat localment al seu dispositiu</string>
   <string name="txtInfoAddUser">Per favor pose l\'usuari i la contrasenya</string>
@@ -94,11 +167,12 @@
   <string name="txtAllsent">Productes enviats</string>
   <string name="txtPalm">El producte no conté res d\'oli de palma</string>
   <string name="txtBarcodeNotValid">Codi de barres no vàlid</string>
-  <string name="try_it_scan_now">Prove! Escanege ara!</string>
+  <string name="try_it_scan_now">Escanneja producte</string>
   <string name="share">Comparteix</string>
   <string name="msg_share">Mire este producte a Open Food Facts :</string>
   <string name="create_account">Entra</string>
   <string name="home_drawer">Inici</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="search_drawer">Cerca</string>
   <string name="search_by_barcode_drawer">Cerca per codi de barres</string>
   <string name="search_by_name_drawer">Cerca pel nom</string>
@@ -109,8 +183,66 @@
   <string name="txt_product_not_found">No s\'han trobat els productes</string>
   <string name="delete_txt">Elimina</string>
   <string name="sign_in_drawer">Obre sessió</string>
-  <string name="alert_drawer">Atenció al·lèrgens</string>
+  <string name="alert_drawer">Alerta Al·lergen</string>
   <string name="warning_allergens">Conté al·lèrgens</string>
   <string name="title_dialog_alert">Afegir Alerta</string>
+  <string name="warning_alert_data">La informació de les seues al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. També tinga cura que les dades poden no ser massa precises, per favor estiga alerta!</string>
   <string name="from_gallery">Des de la galeria</string>
+  <string name="product_sent">Producte enviat!</string>
+  <string name="action_edit_product">Edita producte</string>
+  <string name="title_info_dialog">Informació</string>
+  <string name="text_offline_info_dialog">Pot escanejar productes fora de línia i afegir-los a Open Food Facts després. Tots els productes que escaneje apareixeran ací, i podrà enviar-los amb el botó de baix.</string>
+  <string name="permission_title">Informació de permisos</string>
+  <string name="permission_denied">Per favor, active el permís a la configuració</string>
+  <string name="info_download_data">Necessita descarregar dades per tindre esta funcionalitat en marxa, per favor clique sí per descarregar-la.</string>
+  <string name="info_download_data_connection">"Necessita descarregar dades per tindre esta funcionalitat en marxa, per favor active la connexió  d\'Internet."</string>
+  <string name="new_offline_info">Per favor, prenga una foto del producte, ingredients, dades de nutrició i qualsevol altra informació a l\'etiqueta. Gràcies!</string>
+  <string name="error_invalid_password">La contrasenya ha de tenir un mínim de 6 caràcters.</string>
+  <string name="error_field_required">Aquest camp és obligatori.</string>
+  <string name="action_preferences">Preferències</string>
+  <string name="prefs_scan_startup">Escaneja al començament</string>
+  <string name="prefs_scan_startup_summary">Si està seleccionada esta opció l\'escaneig començarà quan l\'aplicació s\'òbriga.</string>
+  <string name="prefs_power_mode">Escaneig en mode power</string>
+  <string name="prefs_power_mode_summary">Escaneig ràpid de productes al supermercat per vore quins no estan a la base de dades.</string>
+  <string name="prefs_language">Idioma</string>
+  <string name="prefs_language_summary">Canvia idioma</string>
+  <string name="scan_history_drawer">Historial</string>
+  <string name="clear_history">Neteja l\'historial</string>
+  <string name="title_clear_history_dialog">Esborra</string>
+  <string name="text_clear_history_dialog">Vol esborrar tot l\'historial d\'escaneig?</string>
+  <string name="export_csv_history">Exporta CSV</string>
+  <string name="txt_exporting_history">Exportant historial...</string>
+  <string name="txt_history_exported">Historial exportat</string>
+  <string name="permision_write_external_storage">"Es necessita el permís d\'escriptura a dispositius externs  per exportar l\'historial."</string>
+  <string name="txt_nutrition_not_found">N/D</string>
+  <string name="nutrition_carbohydrate">Carbohidrat</string>
+  <string name="nutrition_carbohydrate_short_name">Carbohidrat (g)</string>
+  <string name="nutrition_cholesterol">Colesterol</string>
+  <string name="nutrition_cholesterol_short_name">Colesterol (g)</string>
+  <string name="nutrition_energy">Energia</string>
+  <string name="nutrition_energy_short_name">Energia</string>
+  <string name="nutrition_fat">Greix</string>
+  <string name="nutrition_fat_short_name">Greix (g)</string>
+  <string name="nutrition_fiber">Fibra dietètica</string>
+  <string name="nutrition_fiber_short_name">Fibra dietètica (g)</string>
+  <string name="nutrition_header">Informació nutricional</string>
+  <string name="nutrition_no_data_message">No hi ha dades per este producte</string>
+  <string name="nutrition_per_quantity">Per 100g/100ml</string>
+  <string name="nutrition_proteins">Proteïnes</string>
+  <string name="nutrition_proteins_short_name">Proteïnes (g)</string>
+  <string name="nutrition_salt">Sal</string>
+  <string name="nutrition_salt_short_name">Sal (g)</string>
+  <string name="nutrition_satured_fat">Greix saturat</string>
+  <string name="nutrition_satured_fat_short_name">Greix saturat (g)</string>
+  <string name="nutrition_serving">Per ració</string>
+  <string name="nutrition_serving_size">Mida de la ració :</string>
+  <string name="nutrition_sodium">Sodi</string>
+  <string name="nutrition_sodium_short_name">Sodi (g)</string>
+  <string name="nutrition_sugars">Sucres</string>
+  <string name="nutrition_sugars_short_name">Sucres (g)</string>
+  <string name="nutrition_trans_fat">Greix trans</string>
+  <string name="nutrition_trans_fat_short_name">Greix trans (g)</string>
+  <string name="nutriment_serving_size">Per porció :</string>
+  <string name="action_manage_account">Gestiona el compte</string>
+  <string name="action_contributes">Les seues contribucions</string>
 </resources>

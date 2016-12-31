@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Kind of Product Image
  */
 public enum ProductImageField {
-    FRONT, INGREDIENT, NUTRITION;
+    FRONT, INGREDIENTS, NUTRITION;
 
     @Override
     @JsonValue

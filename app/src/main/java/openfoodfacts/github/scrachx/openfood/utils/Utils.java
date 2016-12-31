@@ -5,8 +5,14 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -16,33 +22,64 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Locale;
 
 public class Utils {
 
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE= 2;
-    private static final String OPEN_FOOD_FACTS_WORLD_URL = "http://world.openfoodfacts.org/";
-    private static final String HTTP_FR_OPENFOODFACTS_ORG = "http://fr.openfoodfacts.org/";
 
-    public static String getUriByCurrentLanguage() {
-        String url;
-        if (Locale.getDefault().getLanguage().contains("fr")){
-            url = HTTP_FR_OPENFOODFACTS_ORG;
-        } else {
-            url = OPEN_FOOD_FACTS_WORLD_URL;
+    /**
+     * Returns a CharSequence that concatenates the specified array of CharSequence
+     * objects and then applies a list of zero or more tags to the entire range.
+     *
+     * @param content an array of character sequences to apply a style to
+     * @param tags the styled span objects to apply to the content
+     *        such as android.text.style.StyleSpan
+     *
+     */
+    private static CharSequence apply(CharSequence[] content, Object... tags) {
+        SpannableStringBuilder text = new SpannableStringBuilder();
+        openTags(text, tags);
+        for (CharSequence item : content) {
+            text.append(item);
         }
-        return url;
+        closeTags(text, tags);
+        return text;
     }
 
-    public static String getUriProductByCurrentLanguage() {
-        String url;
-        if (Locale.getDefault().getLanguage().contains("fr")){
-            url = HTTP_FR_OPENFOODFACTS_ORG + "produit/";
-        } else {
-            url = OPEN_FOOD_FACTS_WORLD_URL + "product/";
+    /**
+     * Iterates over an array of tags and applies them to the beginning of the specified
+     * Spannable object so that future text appended to the text will have the styling
+     * applied to it. Do not call this method directly.
+     */
+    private static void openTags(Spannable text, Object[] tags) {
+        for (Object tag : tags) {
+            text.setSpan(tag, 0, 0, Spannable.SPAN_MARK_MARK);
         }
-        return url;
+    }
+
+    /**
+     * "Closes" the specified tags on a Spannable by updating the spans to be
+     * endpoint-exclusive so that future text appended to the end will not take
+     * on the same styling. Do not call this method directly.
+     */
+    private static void closeTags(Spannable text, Object[] tags) {
+        int len = text.length();
+        for (Object tag : tags) {
+            if (len > 0) {
+                text.setSpan(tag, 0, len, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            } else {
+                text.removeSpan(tag);
+            }
+        }
+    }
+
+    /**
+     * Returns a CharSequence that applies boldface to the concatenation
+     * of the specified CharSequence objects.
+     */
+    public static CharSequence bold(CharSequence... content) {
+        return apply(content, new StyleSpan(Typeface.BOLD));
     }
 
     public static void hideKeyboard(Activity activity) {
@@ -57,14 +94,27 @@ public class Utils {
     public static String compressImage(String url) {
         File fileFront = new File(url);
         Bitmap bt = decodeFile(fileFront);
+        if (bt == null) {
+            Log.e("COMPRESS_IMAGE", url + " not found");
+            return null;
+        }
+
         File smallFileFront = new File(url.replace(".png", "_small.png"));
+        OutputStream fOutFront = null;
         try {
-            OutputStream fOutFront = new FileOutputStream(smallFileFront);
+            fOutFront = new FileOutputStream(smallFileFront);
             bt.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
-            fOutFront.flush();
-            fOutFront.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e("COMPRESS_IMAGE", e.getMessage(), e);
+        } finally {
+            if (fOutFront != null) {
+                try {
+                    fOutFront.flush();
+                    fOutFront.close();
+                } catch (IOException e) {
+                    // nothing to do
+                }
+            }
         }
         return smallFileFront.toString();
     }
@@ -124,5 +174,4 @@ public class Utils {
             return false;
         }
     }
-
 }

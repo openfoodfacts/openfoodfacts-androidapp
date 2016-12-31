@@ -242,7 +242,7 @@ public class HistoryScanActivity extends BaseActivity {
 
         @Override
         protected void onPostExecute(Context ctx) {
-            HistoryListAdapter adapter = new HistoryListAdapter(productItems);
+            HistoryListAdapter adapter = new HistoryListAdapter(productItems, getString(R.string.website_product));
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
         }

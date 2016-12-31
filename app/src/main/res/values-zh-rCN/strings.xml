@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Open Food Facts</string>
+  <string name="hello_world">你好，世界！</string>
+  <string name="action_settings">设置</string>
+  <string name="action_about">关于</string>
+  <string name="action_discover">发现</string>
+  <string name="action_contribute">贡献</string>
+  <string name="action_find">查找</string>
+  <string-array name="nav_drawer_items_product">
+    <item>摘要</item>
+    <item>成分</item>
+    <item>营养</item>
+    <item>营养标签</item>
+    <item>回到菜单</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>克</item>
+    <item>毫克</item>
+    <item>千克</item>
+    <item>升</item>
+    <item>毫升</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>英语</item>
+    <item>法语</item>
+    <item>西班牙语</item>
+    <item>意大利语</item>
+    <item>德语</item>
+    <item>日语</item>
+    <item>俄语</item>
+    <item>葡萄牙语</item>
+    <item>瑞典语</item>
+    <item>缅甸语</item>
+    <item>哈萨克语</item>
+    <item>亚美尼亚语</item>
+    <item>希腊语</item>
+    <item>希伯来语</item>
+    <item>加利西亚语</item>
+    <item>加泰罗尼亚语</item>
+    <item>捷克语</item>
+    <item>阿拉伯语</item>
+    <item>芬兰语</item>
+    <item>印地语</item>
+    <item>Kabyle</item>
+    <item>韩语</item>
+    <item>拉脱维亚语</item>
+    <item>荷兰语</item>
+    <item>巴西荷兰语</item>
+    <item>罗马尼亚语</item>
+    <item>Swedish</item>
+    <item>中文</item>
+    <item>挪威语(书面)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>默认</item>
+    <item>营养</item>
+    <item>成分</item>
+  </string-array>
+  <string name="search_button">搜索</string>
+  <string name="no_products">产品未找到</string>
+  <string name="desc_list_item_icon">条目图标</string>
+  <string name="alert_dialog_warning_title">警告</string>
+  <string name="alert_dialog_warning_msg_user">用户／密码已改变，请更新信息。</string>
+  <string name="alert_dialog_product_error_msg">产品未找到，请再次尝试。</string>
+  <string name="toast_retrieving">正在加载...</string>
+  <string name="txtBarcode">条形码</string>
+  <string name="txtQuantity">数量</string>
+  <string name="txtPackaging">包装：</string>
+  <string name="txtBrands">品牌：</string>
+  <string name="txtCategories">类别：</string>
+  <string name="txtLabels">标签，认证，奖励：</string>
+  <string name="txtManufacturing">生产或处理地：</string>
+  <string name="txtIngredientsOrigins">成分来源：</string>
+  <string name="txtCity">购买城市，省份和国家：</string>
+  <string name="txtStores">店铺：</string>
+  <string name="txtCountries">售卖的国家：</string>
+  <string name="txtIngredients">成分列表：</string>
+  <string name="txtSubstances">引起过敏或不耐受的产品成份：</string>
+  <string name="txtAdditives">添加剂：</string>
+  <string name="txtMayBeFromPalmOilProduct">可能来自棕榈油的成份：</string>
+  <string name="txtServingSize">份量：</string>
+  <string name="txtNutrientLevel100g">100克所含营养成分</string>
+  <string name="txtNutritionLevelLow">低</string>
+  <string name="txtNutritionLevelModerate">中等</string>
+  <string name="txtNutritionLevelHigh">高</string>
+  <string name="txtLogin">登陆名</string>
+  <string name="txtPass">密码：</string>
+  <string name="txtHome">Open Food Facts是一个记录食品产品标签上可以找到的成份，过敏，营养以及其它信息的开放数据库。</string>
+  <string name="txtSave">发送/保存</string>
+  <string name="txtSignIn">登录</string>
+</resources>

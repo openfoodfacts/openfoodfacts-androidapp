@@ -6,19 +6,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  openfoodfacts\n"
+"Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-05-29 10:47+0200\n"
-"PO-Revision-Date: 2016-05-29 08:00+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: he\n"
+"POT-Creation-Date: 2016-11-04 20:11+0100\n"
+"PO-Revision-Date: 2016-11-08 08:52+0000\n"
+"Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
-"Plural-Forms: nplurals=4; plural=(((((0 == 0)) && (!((n >= 0 && n <= "
-"10)))) && (((n % 10) == 0))) ? 2 : (((n == 1)) && ((0 == 0))) ? 0 : (((n "
-"== 2)) && ((0 == 0))) ? 1 : 3)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-11-20 09:00+0000\n"
+"X-Generator: Launchpad (build 18269)\n"
+"Language: he\n"
 "Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
@@ -89,6 +88,91 @@ msgstr "ל׳"
 msgctxt "units_array:4"
 msgid "ml"
 msgstr "מ״ל"
+
+#. Text units
+msgctxt "lang_array:0"
+msgid "en"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:1"
+msgid "fr"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:2"
+msgid "es"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:3"
+msgid "it"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:4"
+msgid "de"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:5"
+msgid "ja"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:6"
+msgid "ru"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:7"
+msgid "pt"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:8"
+msgid "sv"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:9"
+msgid "my"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:10"
+msgid "kk"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:11"
+msgid "hy"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:12"
+msgid "el"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:13"
+msgid "he"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:14"
+msgid "gl"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:15"
+msgid "ca"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:16"
+msgid "cs"
+msgstr ""
 
 msgctxt "images_array:0"
 msgid "Default"
@@ -199,6 +283,18 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr "טבלת ערכים תזונתיים ל־100 ג׳ :"
 
+msgctxt "txtNutritionLevelLow"
+msgid "low"
+msgstr "נמוך"
+
+msgctxt "txtNutritionLevelModerate"
+msgid "moderate"
+msgstr "בינוני"
+
+msgctxt "txtNutritionLevelHigh"
+msgid "high"
+msgstr "גבוה"
+
 msgctxt "txtLogin"
 msgid "Login :"
 msgstr "שם משתמש :"
@@ -211,24 +307,20 @@ msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
 msgstr "פתיחה של האוכל שלך מאפשרת לך לדעת מה נכנס אליך לגוף"
 
-#, fuzzy
 msgctxt "txtHome"
 msgid ""
 "Open Food Facts is a open database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find"
-" on product labels."
+"allergens, nutrition facts and all the tidbits of information we can find on "
+"product labels."
 msgstr ""
-"Open Food Facts הנו מסד נתונים של מוצרי מזון עם רכיבים, אלרגנים, טבלאות "
-"תזונתיות וכל פרטי המידע הקטנים שניתן למצוא על תוויות המוצרים."
 
-#, fuzzy
 msgctxt "txtSave"
 msgid "Send/Save"
-msgstr ""
+msgstr "שליחה/שמירה"
 
 msgctxt "txtSignIn"
 msgid "Sign in"
-msgstr ""
+msgstr "כניסה"
 
 msgctxt "txtUser"
 msgid "User panel"
@@ -271,7 +363,8 @@ msgid "Login or password error"
 msgstr "שם המשתמש או הססמה שגויים"
 
 msgctxt "errorWeb"
-msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
 msgstr "לא הצלחנו לגשת לאינטרנט. יש לך תקלה בחיבור?"
 
 msgctxt "txtInfoLoginOk"
@@ -288,14 +381,13 @@ msgstr "פרטים"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you "
-"want to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
 msgstr "המוצרים שסרקת לא נמצאים עדיין ב־Open Food Facts. להוסיף?"
 
-#, fuzzy
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
-msgstr "לשלוח את המוצרים שנשמרו למסד הנתונים שלנו?"
+msgstr "לשלוח את המוצרים שנשמרו אל מסד הנתונים?"
 
 msgctxt "txtYes"
 msgid "Yes"
@@ -337,10 +429,9 @@ msgctxt "txtNoData"
 msgid "No data"
 msgstr "אין נתונים"
 
-#, fuzzy
 msgctxt "txtPictureNeeded"
 msgid "Take a picture first!"
-msgstr "יש לצלם תמונה תחילה ואז למלא את השם ואת החנות!"
+msgstr "יש לצלם תמונה תחילה!"
 
 msgctxt "toastSending"
 msgid "Uploading..."
@@ -367,7 +458,8 @@ msgid "Do you want to delete this draft?"
 msgstr "למחוק את הטיוטה הזו?"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr "המוצר נשמר מקומית, ניתן לערוך אותו בתפריט העריכה בלתי מקוון"
 
 msgctxt "txtBarcodeRequire"
@@ -375,8 +467,8 @@ msgid "Barcode required"
 msgstr "נדרש ברקוד"
 
 msgctxt "txtOk"
-msgid "Ok"
-msgstr "בסדר"
+msgid "OK"
+msgstr "אישור"
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
@@ -384,8 +476,8 @@ msgstr "נא לא לצאת באמצע התהליך…"
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative "
-"Commons Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
 msgstr ""
 "התמונות הנשלחות על ידיך מפורסמות תחת הרישיון החופשי ייחוס שיתוף זהה מבית "
 "Creative Commons"
@@ -421,6 +513,10 @@ msgstr "הרשמה"
 msgctxt "home_drawer"
 msgid "Home"
 msgstr "ראשי"
+
+msgctxt "open_beauty_drawer"
+msgid "Open Beauty Facts"
+msgstr ""
 
 msgctxt "search_drawer"
 msgid "Search"
@@ -462,10 +558,9 @@ msgctxt "sign_in_drawer"
 msgid "Sign-in"
 msgstr "כניסה"
 
-#, fuzzy
 msgctxt "alert_drawer"
 msgid "Allergen Alert"
-msgstr "התרעה על אלרגנים"
+msgstr "התראת אלרגן"
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
@@ -475,12 +570,10 @@ msgctxt "title_dialog_alert"
 msgid "Add alert"
 msgstr "הוספת התרעה"
 
-#, fuzzy
 msgctxt "warning_alert_data"
 msgid ""
-"Your allergies info will never be sent to the Open Food Facts server. "
-"Also, be careful that data may not be accurate, please double-check by "
-"yourself!"
+"Your allergies info will never be sent to the Open Food Facts server. Also, "
+"be careful that data may not be accurate, please double-check by yourself!"
 msgstr ""
 
 msgctxt "from_gallery"
@@ -489,15 +582,15 @@ msgstr "מהגלריה"
 
 msgctxt "product_sent"
 msgid "Product sent!"
-msgstr ""
+msgstr "המוצר נשלח!"
 
 msgctxt "action_edit_product"
 msgid "Edit product"
-msgstr ""
+msgstr "עריכת מוצר"
 
 msgctxt "title_info_dialog"
 msgid "Information"
-msgstr ""
+msgstr "פרטים"
 
 msgctxt "text_offline_info_dialog"
 msgid ""
@@ -508,19 +601,19 @@ msgstr ""
 
 msgctxt "permission_camera"
 msgid "Camera permission is needed to scan barcode."
-msgstr ""
+msgstr "נדרשות הרשאות מצלמה כדי לסרוק ברקוד."
 
 msgctxt "permission_title"
 msgid "Permission information"
-msgstr ""
+msgstr "פרטי הרשאה"
 
 msgctxt "permission_denied"
 msgid "Please activate permission in the settings"
-msgstr ""
+msgstr "נא להפעיל את ההרשאות בהגדרות"
 
 msgctxt "permission_storage"
 msgid "Storage is needed to take or choose pictures"
-msgstr ""
+msgstr "נדרש אחסון כדי לצלם או לבחור תמונות"
 
 msgctxt "info_download_data"
 msgid ""
@@ -534,3 +627,71 @@ msgid ""
 "activate internet connection."
 msgstr ""
 
+msgctxt "msg_input_empty"
+msgid "Fill input first!"
+msgstr "יש למלא את הקלט תחילה!"
+
+msgctxt "new_offline_info"
+msgid ""
+"Please take a picture of the product, ingredients, nutrition facts table and "
+"any other information on the label. Thank you!"
+msgstr ""
+"נא לצלם תמונות של המוצר, רכיביו, טבלת ערכיו התזונתיים וכל מידע נוסף שעל "
+"התווית. תודה!"
+
+#. Strings related to login
+msgctxt "error_invalid_password"
+msgid "The password needs to be a least 6 characters long."
+msgstr "הססמה חייבת להיות באורך של 6 תווים לפחות."
+
+msgctxt "error_field_required"
+msgid "This field is required"
+msgstr "זהו שדה חובה"
+
+msgctxt "action_preferences"
+msgid "Preferences"
+msgstr "העדפות"
+
+msgctxt "prefs_scan_startup"
+msgid "Scan on startup"
+msgstr "סריקה עם ההפעלה"
+
+msgctxt "prefs_scan_startup_summary"
+msgid "This option if selected will start scan when app is opened."
+msgstr "אם אפשרות זו נבחרה הסריקה תחל עם הפעלת היישומון"
+
+msgctxt "scan_history_drawer"
+msgid "History"
+msgstr "היסטוריה"
+
+msgctxt "clear_history"
+msgid "Clear history"
+msgstr "פינוי ההיסטוריה"
+
+msgctxt "title_clear_history_dialog"
+msgid "Clear"
+msgstr "פינוי"
+
+msgctxt "text_clear_history_dialog"
+msgid "Do you want to clear all scan history?"
+msgstr "לפנות את כל היסטוריית הסריקה?"
+
+msgctxt "export_csv_history"
+msgid "Export CSV"
+msgstr "יצוא CSV…"
+
+msgctxt "txt_exporting_history"
+msgid "Exporting history..."
+msgstr ""
+
+msgctxt "txt_history_exported"
+msgid "History exported"
+msgstr ""
+
+msgctxt "permision_write_external_storage"
+msgid "Write external storage permission is needed to export history."
+msgstr ""
+
+msgctxt "txt_nutrition_not_found"
+msgid "N/A"
+msgstr "לא זמין"

@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.MenuItemCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -71,31 +72,17 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 
-        MenuItem menuItem;
+        MenuItem ringMenuItem = menu.add(Menu.NONE, R.id.menu_ring, 0, mRing ? R.string.ring_on : R.string.ring_off);
+        MenuItemCompat.setShowAsAction(ringMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
 
-        if(mRing) {
-            menuItem = menu.add(Menu.NONE, R.id.menu_ring, 0, R.string.ring_on);
-        } else {
-            menuItem = menu.add(Menu.NONE, R.id.menu_ring, 0, R.string.ring_off);
-        }
-        MenuItemCompat.setShowAsAction(menuItem, MenuItem.SHOW_AS_ACTION_NEVER);
+        MenuItem flashMenuItem = menu.add(Menu.NONE, R.id.menu_flash, 0, mFlash ? R.string.flash_on : R.string.flash_off);
+        MenuItemCompat.setShowAsAction(flashMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
 
-        if(mFlash) {
-            menuItem = menu.add(Menu.NONE, R.id.menu_flash, 0, R.string.flash_on);
-        } else {
-            menuItem = menu.add(Menu.NONE, R.id.menu_flash, 0, R.string.flash_off);
-        }
-        MenuItemCompat.setShowAsAction(menuItem, MenuItem.SHOW_AS_ACTION_NEVER);
+        MenuItem focusMenuItem = menu.add(Menu.NONE, R.id.menu_auto_focus, 0, mAutoFocus ? R.string.auto_focus_on : R.string.auto_focus_off);
+        MenuItemCompat.setShowAsAction(focusMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
 
-        if(mAutoFocus) {
-            menuItem = menu.add(Menu.NONE, R.id.menu_auto_focus, 0, R.string.auto_focus_on);
-        } else {
-            menuItem = menu.add(Menu.NONE, R.id.menu_auto_focus, 0, R.string.auto_focus_off);
-        }
-        MenuItemCompat.setShowAsAction(menuItem, MenuItem.SHOW_AS_ACTION_NEVER);
-
-        menuItem = menu.add(Menu.NONE, R.id.menu_camera_selector, 0, R.string.select_camera);
-        MenuItemCompat.setShowAsAction(menuItem, MenuItem.SHOW_AS_ACTION_NEVER);
+        MenuItem cameraMenuItem = menu.add(Menu.NONE, R.id.menu_camera_selector, 0, R.string.select_camera);
+        MenuItemCompat.setShowAsAction(cameraMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
     }
 
     @Override
@@ -169,24 +156,29 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
 
     @Override
     public void handleResult(Result rawResult) {
-        if(mRing) {
+        if (mRing) {
             try {
                 ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
                 beep.startTone(ToneGenerator.TONE_PROP_BEEP);
-            } catch (Exception e) {}
-        }
-        if (!rawResult.getText().isEmpty()) {
-            ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-            boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-            if(isConnected) {
-                api.getProduct(rawResult.getText(), getActivity(), mScannerView, this);
-            } else {
-                Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
-                intent.putExtra("barcode", rawResult.getText());
-                getActivity().startActivity(intent);
-                getActivity().finish();
+            } catch (Exception e) {
+                Log.e("SCAN RING", e.getMessage(), e);
             }
+        }
+
+        if (rawResult.getText().isEmpty()) {
+            return;
+        }
+
+        ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+            api.getProduct(rawResult.getText(), getActivity());
+        } else {
+            Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
+            intent.putExtra("barcode", rawResult.getText());
+            getActivity().startActivity(intent);
+            getActivity().finish();
         }
     }
 

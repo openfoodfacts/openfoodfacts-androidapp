@@ -1,6 +1,6 @@
 Open Food Facts Android Application
 ===================================
-![Open Food Facts] (http://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png)
+![Open Food Facts] (https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png)
 
 [![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
 [![Build Status](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp.svg?branch=master)](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp) [![Stories in Ready](https://badge.waffle.io/openfoodfacts/OpenFoodFacts-androidApp.svg?label=ready&title=Ready)](http://waffle.io/openfoodfacts/OpenFoodFacts-androidApp)
@@ -11,7 +11,9 @@ Open Food Facts Android Application
 
 
 <a href="https://f-droid.org/repository/browse/?fdid=openfoodfacts.github.scrachx.openfood">
-<img src=http://lingoworld.eu/at//public/images/fdroid.png></a> 
+<img src=http://lingoworld.eu/at//public/images/fdroid.png></a>
+<a href="https://play.google.com/store/apps/details?id=openfoodfacts.github.scrachx.openfood"><img src=https://play.google.com/intl/en_us/badges/images/badge_new.png></a><br>
+(These are beta versions, <a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner">this is the stable version</a>) 
 
 ### A food products database
 
@@ -25,7 +27,7 @@ Open Food Facts is a non-profit association of volunteers.
 ### For everyone
 
 Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
-- <http://world.openfoodfacts.org>
+- <https://world.openfoodfacts.org>
 
 ## Translations
 

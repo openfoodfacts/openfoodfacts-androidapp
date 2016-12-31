@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class HistoryScanHolder extends RecyclerView.ViewHolder {
 
@@ -25,7 +24,7 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
     public ImageView imgProduct;
     public ImageButton imgShare;
 
-    public HistoryScanHolder(final View itemView) {
+    public HistoryScanHolder(final View itemView, final String productUrl) {
         super(itemView);
         cv = (CardView) itemView.findViewById(R.id.cardViewHistory);
         txtTitle = (TextView) itemView.findViewById(R.id.titleHistory);
@@ -37,7 +36,7 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
         imgShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = " " + Utils.getUriProductByCurrentLanguage() + txtBarcode.getText();
+                String url = " " + productUrl + txtBarcode.getText();
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 String shareBody = itemView.getResources().getString(R.string.msg_share) + url;

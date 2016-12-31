@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -122,8 +124,10 @@ import java.util.Map;
         "checkers",
         "complete"
 })
-public class Product implements Serializable{
+public class Product implements Serializable {
 
+    @JsonIgnore
+    private final Map<String, Object> additionalProperties = new HashMap<>();
     @JsonProperty("last_edit_dates_tags")
     private List<String> lastEditDatesTags = new ArrayList<>();
     @JsonProperty("labels_hierarchy")
@@ -310,1190 +314,751 @@ public class Product implements Serializable{
     private List<String> pnnsGroups1Tags = new ArrayList<>();
     private List<Object> checkers = new ArrayList<>();
     private long complete;
-    @JsonIgnore
-    private final Map<String, Object> additionalProperties = new HashMap<>();
 
     /**
-     *
-     * @return
-     * The lastEditDatesTags
+     * @return The lastEditDatesTags
      */
     public List<String> getLastEditDatesTags() {
         return lastEditDatesTags;
     }
 
+
     /**
-     *
-     * @param lastEditDatesTags
-     * The last_edit_dates_tags
+     * @param lastEditDatesTags The last_edit_dates_tags
      */
     public void setLastEditDatesTags(List<String> lastEditDatesTags) {
         this.lastEditDatesTags = lastEditDatesTags;
     }
 
-    public Product withLastEditDatesTags(List<String> lastEditDatesTags) {
-        this.lastEditDatesTags = lastEditDatesTags;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The labelsHierarchy
+     * @return The labelsHierarchy
      */
     public List<Object> getLabelsHierarchy() {
         return labelsHierarchy;
     }
 
     /**
-     *
-     * @param labelsHierarchy
-     * The labels_hierarchy
+     * @param labelsHierarchy The labels_hierarchy
      */
     public void setLabelsHierarchy(List<Object> labelsHierarchy) {
         this.labelsHierarchy = labelsHierarchy;
     }
 
-    public Product withLabelsHierarchy(List<Object> labelsHierarchy) {
-        this.labelsHierarchy = labelsHierarchy;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The categoriesHierarchy
+     * @return The categoriesHierarchy
      */
     public List<String> getCategoriesHierarchy() {
         return categoriesHierarchy;
     }
 
     /**
-     *
-     * @param categoriesHierarchy
-     * The categories_hierarchy
+     * @param categoriesHierarchy The categories_hierarchy
      */
     public void setCategoriesHierarchy(List<String> categoriesHierarchy) {
         this.categoriesHierarchy = categoriesHierarchy;
     }
 
-    public Product withCategoriesHierarchy(List<String> categoriesHierarchy) {
-        this.categoriesHierarchy = categoriesHierarchy;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The pnnsGroups1
+     * @return The pnnsGroups1
      */
     public String getPnnsGroups1() {
         return pnnsGroups1;
     }
 
     /**
-     *
-     * @param pnnsGroups1
-     * The pnns_groups_1
+     * @param pnnsGroups1 The pnns_groups_1
      */
     public void setPnnsGroups1(String pnnsGroups1) {
         this.pnnsGroups1 = pnnsGroups1;
     }
 
-    public Product withPnnsGroups1(String pnnsGroups1) {
-        this.pnnsGroups1 = pnnsGroups1;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The checkersTags
+     * @return The checkersTags
      */
     public List<Object> getCheckersTags() {
         return checkersTags;
     }
 
     /**
-     *
-     * @param checkersTags
-     * The checkers_tags
+     * @param checkersTags The checkers_tags
      */
     public void setCheckersTags(List<Object> checkersTags) {
         this.checkersTags = checkersTags;
     }
 
-    public Product withCheckersTags(List<Object> checkersTags) {
-        this.checkersTags = checkersTags;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The statesTags
+     * @return The statesTags
      */
     public List<String> getStatesTags() {
         return statesTags;
     }
 
     /**
-     *
-     * @param statesTags
-     * The states_tags
+     * @param statesTags The states_tags
      */
     public void setStatesTags(List<String> statesTags) {
         this.statesTags = statesTags;
     }
 
-    public Product withStatesTags(List<String> statesTags) {
-        this.statesTags = statesTags;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The labelsTags
+     * @return The labelsTags
      */
     public List<Object> getLabelsTags() {
         return labelsTags;
     }
 
     /**
-     *
-     * @param labelsTags
-     * The labels_tags
+     * @param labelsTags The labels_tags
      */
     public void setLabelsTags(List<Object> labelsTags) {
         this.labelsTags = labelsTags;
     }
 
-    public Product withLabelsTags(List<Object> labelsTags) {
-        this.labelsTags = labelsTags;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The imageSmallUrl
+     * @return The imageSmallUrl
      */
     public String getImageSmallUrl() {
         return imageSmallUrl;
     }
 
     /**
-     *
-     * @param imageSmallUrl
-     * The image_small_url
+     * @param imageSmallUrl The image_small_url
      */
     public void setImageSmallUrl(String imageSmallUrl) {
         this.imageSmallUrl = imageSmallUrl;
     }
 
-    public Product withImageSmallUrl(String imageSmallUrl) {
-        this.imageSmallUrl = imageSmallUrl;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The imageFrontUrl
+     * @return The imageFrontUrl
      */
     public String getImageFrontUrl() {
         return imageFrontUrl;
     }
 
     /**
-     *
-     * @param imageFrontUrl
-     * The image_front_url
+     * @param imageFrontUrl The image_front_url
      */
     public void setImageFrontUrl(String imageFrontUrl) {
         this.imageFrontUrl = imageFrontUrl;
     }
 
-    public Product withImageFrontUrl(String imageFrontUrl) {
-        this.imageFrontUrl = imageFrontUrl;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The imageIngredientsUrl
+     * @return The imageIngredientsUrl
      */
     public String getImageIngredientsUrl() {
         return imageIngredientsUrl;
     }
 
     /**
-     *
-     * @param imageIngredientsUrl
-     * The image_ingredients_url
+     * @param imageIngredientsUrl The image_ingredients_url
      */
     public void setImageIngredientsUrl(String imageIngredientsUrl) {
         this.imageIngredientsUrl = imageIngredientsUrl;
     }
 
-    public Product withImageIngredientsUrl(String imageIngredientsUrl) {
-        this.imageIngredientsUrl = imageIngredientsUrl;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The imageNutritionUrl
+     * @return The imageNutritionUrl
      */
     public String getImageNutritionUrl() {
         return imageNutritionUrl;
     }
 
     /**
-     *
-     * @param imageNutritionUrl
-     * The image_small_url
+     * @param imageNutritionUrl The image_small_url
      */
     public void setImageNutritionUrl(String imageNutritionUrl) {
         this.imageNutritionUrl = imageNutritionUrl;
     }
 
-    public Product withImageNutritionUrl(String imageNutritionUrl) {
-        this.imageNutritionUrl = imageNutritionUrl;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The url
+     * @return The url
      */
     public String getUrl() {
         return url;
     }
 
     /**
-     *
-     * @param url
-     * The url
+     * @param url The url
      */
     public void url(String url) {
         this.url = url;
     }
 
-    public Product withUrl(String url) {
-        this.url = url;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The code
+     * @return The code
      */
     public String getCode() {
         return code;
     }
 
     /**
-     *
-     * @param code
-     * The code
+     * @param code The code
      */
     public void setCode(String code) {
         this.code = code;
     }
 
-    public Product withCode(String code) {
-        this.code = code;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The tracesTags
+     * @return The tracesTags
      */
     public List<String> getTracesTags() {
         return tracesTags;
     }
 
     /**
-     *
-     * @param tracesTags
-     * The traces_tags
+     * @param tracesTags The traces_tags
      */
     public void setTracesTags(List<String> tracesTags) {
         this.tracesTags = tracesTags;
     }
 
-    public Product withTracesTags(List<String> tracesTags) {
-        this.tracesTags = tracesTags;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The lang
+     * @return The lang
      */
     public String getLang() {
         return lang;
     }
 
     /**
-     *
-     * @param lang
-     * The lang
+     * @param lang The lang
      */
     public void setLang(String lang) {
         this.lang = lang;
     }
 
-    public Product withLang(String lang) {
-        this.lang = lang;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The photographers
+     * @return The photographers
      */
     public List<String> getPhotographers() {
         return photographers;
     }
 
     /**
-     *
-     * @param photographers
-     * The photographers
+     * @param photographers The photographers
      */
     public void setPhotographers(List<String> photographers) {
         this.photographers = photographers;
     }
 
-    public Product withPhotographers(List<String> photographers) {
-        this.photographers = photographers;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The ingredientsThatMayBeFromPalmOilTags
+     * @return The ingredientsThatMayBeFromPalmOilTags
      */
     public List<String> getIngredientsThatMayBeFromPalmOilTags() {
         return ingredientsThatMayBeFromPalmOilTags;
     }
 
     /**
-     *
-     * @param ingredientsThatMayBeFromPalmOilTags
-     * The ingredients_that_may_be_from_palm_oil_tags
+     * @param ingredientsThatMayBeFromPalmOilTags The ingredients_that_may_be_from_palm_oil_tags
      */
     public void setIngredientsThatMayBeFromPalmOilTags(List<String> ingredientsThatMayBeFromPalmOilTags) {
         this.ingredientsThatMayBeFromPalmOilTags = ingredientsThatMayBeFromPalmOilTags;
     }
 
-    public Product withIngredientsThatMayBeFromPalmOilTags(List<String> ingredientsThatMayBeFromPalmOilTags) {
-        this.ingredientsThatMayBeFromPalmOilTags = ingredientsThatMayBeFromPalmOilTags;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The genericName
+     * @return The genericName
      */
     public String getGenericName() {
         return genericName;
     }
 
     /**
-     *
-     * @param genericName
-     * The generic_name
+     * @param genericName The generic_name
      */
     public void setGenericName(String genericName) {
         this.genericName = genericName;
     }
 
-    public Product withGenericName(String genericName) {
-        this.genericName = genericName;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The oldAdditivesTags
+     * @return The oldAdditivesTags
      */
     public List<String> getOldAdditivesTags() {
         return oldAdditivesTags;
     }
 
     /**
-     *
-     * @param oldAdditivesTags
-     * The old_additives_tags
+     * @param oldAdditivesTags The old_additives_tags
      */
     public void setOldAdditivesTags(List<String> oldAdditivesTags) {
         this.oldAdditivesTags = oldAdditivesTags;
     }
 
-    public Product withOldAdditivesTags(List<String> oldAdditivesTags) {
-        this.oldAdditivesTags = oldAdditivesTags;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The rev
+     * @return The rev
      */
     public long getRev() {
         return rev;
     }
 
     /**
-     *
-     * @param rev
-     * The rev
+     * @param rev The rev
      */
     public void setRev(long rev) {
         this.rev = rev;
     }
 
-    public Product withRev(long rev) {
-        this.rev = rev;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The Keywords
+     * @return The Keywords
      */
     public List<String> getKeywords() {
         return Keywords;
     }
 
     /**
-     *
-     * @param Keywords
-     * The _keywords
+     * @param Keywords The _keywords
      */
     public void setKeywords(List<String> Keywords) {
         this.Keywords = Keywords;
     }
 
-    public Product withKeywords(List<String> Keywords) {
-        this.Keywords = Keywords;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The embCodes
+     * @return The embCodes
      */
     public String getEmbCodes() {
         return embCodes;
     }
 
     /**
-     *
-     * @param embCodes
-     * The emb_codes
+     * @param embCodes The emb_codes
      */
     public void setEmbCodes(String embCodes) {
         this.embCodes = embCodes;
     }
 
-    public Product withEmbCodes(String embCodes) {
-        this.embCodes = embCodes;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The editors
+     * @return The editors
      */
     public List<String> getEditors() {
         return editors;
     }
 
     /**
-     *
-     * @param editors
-     * The editors
+     * @param editors The editors
      */
     public void setEditors(List<String> editors) {
         this.editors = editors;
     }
 
-    public Product withEditors(List<String> editors) {
-        this.editors = editors;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The maxImgid
+     * @return The maxImgid
      */
     public String getMaxImgid() {
         return maxImgid;
     }
 
     /**
-     *
-     * @param maxImgid
-     * The max_imgid
+     * @param maxImgid The max_imgid
      */
     public void setMaxImgid(String maxImgid) {
         this.maxImgid = maxImgid;
     }
 
-    public Product withMaxImgid(String maxImgid) {
-        this.maxImgid = maxImgid;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The additivesTags
+     * @return The additivesTags
      */
     public List<String> getAdditivesTags() {
         return additivesTags;
     }
 
     /**
-     *
-     * @param additivesTags
-     * The additives_tags
+     * @param additivesTags The additives_tags
      */
     public void setAdditivesTags(List<String> additivesTags) {
         this.additivesTags = additivesTags;
     }
 
-    public Product withAdditivesTags(List<String> additivesTags) {
-        this.additivesTags = additivesTags;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The embCodesOrig
+     * @return The embCodesOrig
      */
     public String getEmbCodesOrig() {
         return embCodesOrig;
     }
 
     /**
-     *
-     * @param embCodesOrig
-     * The emb_codes_orig
+     * @param embCodesOrig The emb_codes_orig
      */
     public void setEmbCodesOrig(String embCodesOrig) {
         this.embCodesOrig = embCodesOrig;
     }
 
-    public Product withEmbCodesOrig(String embCodesOrig) {
-        this.embCodesOrig = embCodesOrig;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The nutrientLevelsTags
+     * @return The nutrientLevelsTags
      */
     public List<String> getNutrientLevelsTags() {
         return nutrientLevelsTags;
     }
 
     /**
-     *
-     * @param nutrientLevelsTags
-     * The nutrient_levels_tags
+     * @param nutrientLevelsTags The nutrient_levels_tags
      */
     public void setNutrientLevelsTags(List<String> nutrientLevelsTags) {
         this.nutrientLevelsTags = nutrientLevelsTags;
     }
 
-    public Product withNutrientLevelsTags(List<String> nutrientLevelsTags) {
-        this.nutrientLevelsTags = nutrientLevelsTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The informersTags
+     * @return The informersTags
      */
     public List<String> getInformersTags() {
         return informersTags;
     }
 
     /**
-     *
-     * @param informersTags
-     * The informers_tags
+     * @param informersTags The informers_tags
      */
     public void setInformersTags(List<String> informersTags) {
         this.informersTags = informersTags;
     }
 
-    public Product withInformersTags(List<String> informersTags) {
-        this.informersTags = informersTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The photographersTags
+     * @return The photographersTags
      */
     public List<String> getPhotographersTags() {
         return photographersTags;
     }
 
     /**
-     *
-     * @param photographersTags
-     * The photographers_tags
+     * @param photographersTags The photographers_tags
      */
     public void setPhotographersTags(List<String> photographersTags) {
         this.photographersTags = photographersTags;
     }
 
-    public Product withPhotographersTags(List<String> photographersTags) {
-        this.photographersTags = photographersTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The additivesN
+     * @return The additivesN
      */
     public long getAdditivesN() {
         return additivesN;
     }
 
     /**
-     *
-     * @param additivesN
-     * The additives_n
+     * @param additivesN The additives_n
      */
     public void setAdditivesN(long additivesN) {
         this.additivesN = additivesN;
     }
 
-    public Product withAdditivesN(long additivesN) {
-        this.additivesN = additivesN;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The allergensHierarchy
+     * @return The allergensHierarchy
      */
     public List<String> getAllergensHierarchy() {
         return allergensHierarchy;
     }
 
     /**
-     *
-     * @param allergensHierarchy
-     * The allergens_hierarchy
+     * @param allergensHierarchy The allergens_hierarchy
      */
     public void setAllergensHierarchy(List<String> allergensHierarchy) {
         this.allergensHierarchy = allergensHierarchy;
     }
 
-    public Product withAllergensHierarchy(List<String> allergensHierarchy) {
-        this.allergensHierarchy = allergensHierarchy;
-        return this;
-    }
-
 
     /**
-     *
-     * @return
-     * The pnnsGroups2Tags
+     * @return The pnnsGroups2Tags
      */
     public List<String> getPnnsGroups2Tags() {
         return pnnsGroups2Tags;
     }
 
     /**
-     *
-     * @param pnnsGroups2Tags
-     * The pnns_groups_2_tags
+     * @param pnnsGroups2Tags The pnns_groups_2_tags
      */
     public void setPnnsGroups2Tags(List<String> pnnsGroups2Tags) {
         this.pnnsGroups2Tags = pnnsGroups2Tags;
     }
 
-    public Product withPnnsGroups2Tags(List<String> pnnsGroups2Tags) {
-        this.pnnsGroups2Tags = pnnsGroups2Tags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The unknownNutrientsTags
+     * @return The unknownNutrientsTags
      */
     public List<Object> getUnknownNutrientsTags() {
         return unknownNutrientsTags;
     }
 
     /**
-     *
-     * @param unknownNutrientsTags
-     * The unknown_nutrients_tags
+     * @param unknownNutrientsTags The unknown_nutrients_tags
      */
     public void setUnknownNutrientsTags(List<Object> unknownNutrientsTags) {
         this.unknownNutrientsTags = unknownNutrientsTags;
     }
 
-    public Product withUnknownNutrientsTags(List<Object> unknownNutrientsTags) {
-        this.unknownNutrientsTags = unknownNutrientsTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The packagingTags
+     * @return The packagingTags
      */
     public List<String> getPackagingTags() {
         return packagingTags;
     }
 
     /**
-     *
-     * @param packagingTags
-     * The packaging_tags
+     * @param packagingTags The packaging_tags
      */
     public void setPackagingTags(List<String> packagingTags) {
         this.packagingTags = packagingTags;
     }
 
-    public Product withPackagingTags(List<String> packagingTags) {
-        this.packagingTags = packagingTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The manufacturingPlaces
+     * @return The manufacturingPlaces
      */
     public String getManufacturingPlaces() {
         return manufacturingPlaces;
     }
 
     /**
-     *
-     * @param manufacturingPlaces
-     * The manufacturing_places
+     * @param manufacturingPlaces The manufacturing_places
      */
     public void setManufacturingPlaces(String manufacturingPlaces) {
         this.manufacturingPlaces = manufacturingPlaces;
     }
 
-    public Product withManufacturingPlaces(String manufacturingPlaces) {
-        this.manufacturingPlaces = manufacturingPlaces;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The uniqueScansN
+     * @return The uniqueScansN
      */
     public long getUniqueScansN() {
         return uniqueScansN;
     }
 
     /**
-     *
-     * @param uniqueScansN
-     * The unique_scans_n
+     * @param uniqueScansN The unique_scans_n
      */
     public void setUniqueScansN(long uniqueScansN) {
         this.uniqueScansN = uniqueScansN;
     }
 
-    public Product withUniqueScansN(long uniqueScansN) {
-        this.uniqueScansN = uniqueScansN;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The nutriments
+     * @return The nutriments
      */
     public Nutriments getNutriments() {
         return nutriments;
     }
 
     /**
-     *
-     * @param nutriments
-     * The nutriments
+     * @param nutriments The nutriments
      */
     public void setNutriments(Nutriments nutriments) {
         this.nutriments = nutriments;
     }
 
-    public Product withNutriments(Nutriments nutriments) {
-        this.nutriments = nutriments;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The countriesTags
+     * @return The countriesTags
      */
     public List<String> getCountriesTags() {
         return countriesTags;
     }
 
     /**
-     *
-     * @param countriesTags
-     * The countries_tags
+     * @param countriesTags The countries_tags
      */
     public void setCountriesTags(List<String> countriesTags) {
         this.countriesTags = countriesTags;
     }
 
-    public Product withCountriesTags(List<String> countriesTags) {
-        this.countriesTags = countriesTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The ingredientsFromPalmOilTags
+     * @return The ingredientsFromPalmOilTags
      */
     public List<Object> getIngredientsFromPalmOilTags() {
         return ingredientsFromPalmOilTags;
     }
 
     /**
-     *
-     * @param ingredientsFromPalmOilTags
-     * The ingredients_from_palm_oil_tags
+     * @param ingredientsFromPalmOilTags The ingredients_from_palm_oil_tags
      */
     public void setIngredientsFromPalmOilTags(List<Object> ingredientsFromPalmOilTags) {
         this.ingredientsFromPalmOilTags = ingredientsFromPalmOilTags;
     }
 
-    public Product withIngredientsFromPalmOilTags(List<Object> ingredientsFromPalmOilTags) {
-        this.ingredientsFromPalmOilTags = ingredientsFromPalmOilTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The purchasePlaces
+     * @return The purchasePlaces
      */
     public String getPurchasePlaces() {
         return purchasePlaces;
     }
 
     /**
-     *
-     * @param purchasePlaces
-     * The purchase_places
+     * @param purchasePlaces The purchase_places
      */
     public void setPurchasePlaces(String purchasePlaces) {
         this.purchasePlaces = purchasePlaces;
     }
 
-    public Product withPurchasePlaces(String purchasePlaces) {
-        this.purchasePlaces = purchasePlaces;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The embCodesTags
+     * @return The embCodesTags
      */
     public List<Object> getEmbCodesTags() {
         return embCodesTags;
     }
 
     /**
-     *
-     * @param embCodesTags
-     * The emb_codes_tags
+     * @param embCodesTags The emb_codes_tags
      */
     public void setEmbCodesTags(List<Object> embCodesTags) {
         this.embCodesTags = embCodesTags;
     }
 
-    public Product withEmbCodesTags(List<Object> embCodesTags) {
-        this.embCodesTags = embCodesTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The brandsTags
+     * @return The brandsTags
      */
     public List<String> getBrandsTags() {
         return brandsTags;
     }
 
     /**
-     *
-     * @param brandsTags
-     * The brands_tags
+     * @param brandsTags The brands_tags
      */
     public void setBrandsTags(List<String> brandsTags) {
         this.brandsTags = brandsTags;
     }
 
-    public Product withBrandsTags(List<String> brandsTags) {
-        this.brandsTags = brandsTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The pnnsGroups2
+     * @return The pnnsGroups2
      */
     public String getPnnsGroups2() {
         return pnnsGroups2;
     }
 
     /**
-     *
-     * @param pnnsGroups2
-     * The pnns_groups_2
+     * @param pnnsGroups2 The pnns_groups_2
      */
     public void setPnnsGroups2(String pnnsGroups2) {
         this.pnnsGroups2 = pnnsGroups2;
     }
 
-    public Product withPnnsGroups2(String pnnsGroups2) {
-        this.pnnsGroups2 = pnnsGroups2;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The countriesHierarchy
+     * @return The countriesHierarchy
      */
     public List<String> getCountriesHierarchy() {
         return countriesHierarchy;
     }
 
     /**
-     *
-     * @param countriesHierarchy
-     * The countries_hierarchy
+     * @param countriesHierarchy The countries_hierarchy
      */
     public void setCountriesHierarchy(List<String> countriesHierarchy) {
         this.countriesHierarchy = countriesHierarchy;
     }
 
-    public Product withCountriesHierarchy(List<String> countriesHierarchy) {
-        this.countriesHierarchy = countriesHierarchy;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The traces
+     * @return The traces
      */
     public String getTraces() {
         return traces;
     }
 
     /**
-     *
-     * @param traces
-     * The traces
+     * @param traces The traces
      */
     public void setTraces(String traces) {
         this.traces = traces;
     }
 
-    public Product withTraces(String traces) {
-        this.traces = traces;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The categories
+     * @return The categories
      */
     public String getCategories() {
         return categories;
     }
 
     /**
-     *
-     * @param categories
-     * The categories
+     * @param categories The categories
      */
     public void setCategories(String categories) {
         this.categories = categories;
     }
 
-    public Product withCategories(String categories) {
-        this.categories = categories;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The ingredientsText
+     * @return The ingredientsText
      */
     public String getIngredientsText() {
         return ingredientsText;
     }
 
     /**
-     *
-     * @param ingredientsText
-     * The ingredients_text
+     * @param ingredientsText The ingredients_text
      */
     public void setIngredientsText(String ingredientsText) {
         this.ingredientsText = ingredientsText;
     }
 
-    public Product withIngredientsText(String ingredientsText) {
-        this.ingredientsText = ingredientsText;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The createdT
+     * @return The createdT
      */
     public long getCreatedT() {
         return createdT;
     }
 
     /**
-     *
-     * @param createdT
-     * The created_t
+     * @param createdT The created_t
      */
     public void setCreatedT(long createdT) {
         this.createdT = createdT;
     }
 
-    public Product withCreatedT(long createdT) {
-        this.createdT = createdT;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The productName
+     * @return The productName
      */
     public String getProductName() {
         return productName;
     }
 
     /**
-     *
-     * @param productName
-     * The product_name
+     * @param productName The product_name
      */
     public void setProductName(String productName) {
         this.productName = productName;
     }
 
-    public Product withProductName(String productName) {
-        this.productName = productName;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The creator
+     * @return The creator
      */
     public String getCreator() {
         return creator;
     }
 
     /**
-     *
-     * @param creator
-     * The creator
+     * @param creator The creator
      */
     public void setCreator(String creator) {
         this.creator = creator;
     }
 
-    public Product withCreator(String creator) {
-        this.creator = creator;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The ingredientsFromOrThatMayBeFromPalmOilN
+     * @return The ingredientsFromOrThatMayBeFromPalmOilN
      */
     public long getIngredientsFromOrThatMayBeFromPalmOilN() {
         return ingredientsFromOrThatMayBeFromPalmOilN;
     }
 
     /**
-     *
-     * @param ingredientsFromOrThatMayBeFromPalmOilN
-     * The ingredients_from_or_that_may_be_from_palm_oil_n
+     * @param ingredientsFromOrThatMayBeFromPalmOilN The ingredients_from_or_that_may_be_from_palm_oil_n
      */
     public void setIngredientsFromOrThatMayBeFromPalmOilN(long ingredientsFromOrThatMayBeFromPalmOilN) {
         this.ingredientsFromOrThatMayBeFromPalmOilN = ingredientsFromOrThatMayBeFromPalmOilN;
     }
 
-    public Product withIngredientsFromOrThatMayBeFromPalmOilN(long ingredientsFromOrThatMayBeFromPalmOilN) {
-        this.ingredientsFromOrThatMayBeFromPalmOilN = ingredientsFromOrThatMayBeFromPalmOilN;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The servingSize
+     * @return The servingSize
      */
-
-
 
 
     public String getServingSize() {
@@ -1501,1241 +1066,808 @@ public class Product implements Serializable{
     }
 
     /**
-     *
-     * @param servingSize
-     * The serving_size
+     * @param servingSize The serving_size
      */
 
     public void setServingSize(String servingSize) {
         this.servingSize = servingSize;
     }
 
-    public Product withServingSize(String servingSize) {
-        this.servingSize = servingSize;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The noNutritionData
+     * @return The noNutritionData
      */
     public Object getNoNutritionData() {
         return noNutritionData;
     }
 
     /**
-     *
-     * @param noNutritionData
-     * The no_nutrition_data
+     * @param noNutritionData The no_nutrition_data
      */
     public void setNoNutritionData(Object noNutritionData) {
         this.noNutritionData = noNutritionData;
     }
 
-    public Product withNoNutritionData(Object noNutritionData) {
-        this.noNutritionData = noNutritionData;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The completedT
+     * @return The completedT
      */
     public long getCompletedT() {
         return completedT;
     }
 
     /**
-     *
-     * @param completedT
-     * The completed_t
+     * @param completedT The completed_t
      */
     public void setCompletedT(long completedT) {
         this.completedT = completedT;
     }
 
-    public Product withCompletedT(long completedT) {
-        this.completedT = completedT;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The lastModifiedBy
+     * @return The lastModifiedBy
      */
     public String getLastModifiedBy() {
         return lastModifiedBy;
     }
 
     /**
-     *
-     * @param lastModifiedBy
-     * The last_modified_by
+     * @param lastModifiedBy The last_modified_by
      */
 
     public void setLastModifiedBy(String lastModifiedBy) {
         this.lastModifiedBy = lastModifiedBy;
     }
 
-    public Product withLastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-        return this;
-    }
-
     /**
-     *
-     * @return
-     * The allergens
+     * @return The allergens
      */
     public String getAllergens() {
         return allergens;
     }
 
     /**
-     *
-     * @param allergens
-     * The allergens
+     * @param allergens The allergens
      */
     public void setAllergens(String allergens) {
         this.allergens = allergens;
     }
 
-    public Product withAllergens(String allergens) {
-        this.allergens = allergens;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The newAdditivesN
+     * @return The newAdditivesN
      */
     public long getNewAdditivesN() {
         return newAdditivesN;
     }
 
     /**
-     *
-     * @param newAdditivesN
-     * The new_additives_n
+     * @param newAdditivesN The new_additives_n
      */
     public void setNewAdditivesN(long newAdditivesN) {
         this.newAdditivesN = newAdditivesN;
     }
 
-    public Product withNewAdditivesN(long newAdditivesN) {
-        this.newAdditivesN = newAdditivesN;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The origins
+     * @return The origins
      */
     public String getOrigins() {
         return origins;
     }
 
     /**
-     *
-     * @param origins
-     * The origins
+     * @param origins The origins
      */
     public void setOrigins(String origins) {
         this.origins = origins;
     }
 
-    public Product withOrigins(String origins) {
-        this.origins = origins;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The stores
+     * @return The stores
      */
     public String getStores() {
         return stores;
     }
 
     /**
-     *
-     * @param stores
-     * The stores
+     * @param stores The stores
      */
     public void setStores(String stores) {
         this.stores = stores;
     }
 
-    public Product withStores(String stores) {
-        this.stores = stores;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The nutritionGradeFr
+     * @return The nutritionGradeFr
      */
     public String getNutritionGradeFr() {
         return nutritionGradeFr;
     }
 
     /**
-     *
-     * @param nutritionGradeFr
-     * The nutrition_grade_fr
+     * @param nutritionGradeFr The nutrition_grade_fr
      */
     public void setNutritionGradeFr(String nutritionGradeFr) {
         this.nutritionGradeFr = nutritionGradeFr;
     }
 
-    public Product withNutritionGradeFr(String nutritionGradeFr) {
-        this.nutritionGradeFr = nutritionGradeFr;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The nutrientLevels
+     * @return The nutrientLevels
      */
     public NutrientLevels getNutrientLevels() {
         return nutrientLevels;
     }
 
     /**
-     *
-     * @param nutrientLevels
-     * The nutrient_levels
+     * @param nutrientLevels The nutrient_levels
      */
     public void setNutrientLevels(NutrientLevels nutrientLevels) {
         this.nutrientLevels = nutrientLevels;
     }
 
-    public Product withNutrientLevels(NutrientLevels nutrientLevels) {
-        this.nutrientLevels = nutrientLevels;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The storesTags
+     * @return The storesTags
      */
     public List<Object> getStoresTags() {
         return storesTags;
     }
 
     /**
-     *
-     * @param storesTags
-     * The stores_tags
+     * @param storesTags The stores_tags
      */
     public void setStoresTags(List<Object> storesTags) {
         this.storesTags = storesTags;
     }
 
-    public Product withStoresTags(List<Object> storesTags) {
-        this.storesTags = storesTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The countries
+     * @return The countries
      */
     public String getCountries() {
         return countries;
     }
 
     /**
-     *
-     * @param countries
-     * The countries
+     * @param countries The countries
      */
     public void setCountries(String countries) {
         this.countries = countries;
     }
 
-    public Product withCountries(String countries) {
-        this.countries = countries;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The purchasePlacesTags
+     * @return The purchasePlacesTags
      */
     public List<Object> getPurchasePlacesTags() {
         return purchasePlacesTags;
     }
 
     /**
-     *
-     * @param purchasePlacesTags
-     * The purchase_places_tags
+     * @param purchasePlacesTags The purchase_places_tags
      */
     public void setPurchasePlacesTags(List<Object> purchasePlacesTags) {
         this.purchasePlacesTags = purchasePlacesTags;
     }
 
-    public Product withPurchasePlacesTags(List<Object> purchasePlacesTags) {
-        this.purchasePlacesTags = purchasePlacesTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The fruitsVegetablesNuts100gEstimate
+     * @return The fruitsVegetablesNuts100gEstimate
      */
     public double getFruitsVegetablesNuts100gEstimate() {
         return fruitsVegetablesNuts100gEstimate;
     }
 
     /**
-     *
-     * @param fruitsVegetablesNuts100gEstimate
-     * The fruits-vegetables-nuts_100g_estimate
+     * @param fruitsVegetablesNuts100gEstimate The fruits-vegetables-nuts_100g_estimate
      */
     public void setFruitsVegetablesNuts100gEstimate(double fruitsVegetablesNuts100gEstimate) {
         this.fruitsVegetablesNuts100gEstimate = fruitsVegetablesNuts100gEstimate;
     }
 
-    public Product withFruitsVegetablesNuts100gEstimate(double fruitsVegetablesNuts100gEstimate) {
-        this.fruitsVegetablesNuts100gEstimate = fruitsVegetablesNuts100gEstimate;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The interfaceVersionModified
+     * @return The interfaceVersionModified
      */
     public String getInterfaceVersionModified() {
         return interfaceVersionModified;
     }
 
     /**
-     *
-     * @param interfaceVersionModified
-     * The interface_version_modified
+     * @param interfaceVersionModified The interface_version_modified
      */
     public void setInterfaceVersionModified(String interfaceVersionModified) {
         this.interfaceVersionModified = interfaceVersionModified;
     }
 
-    public Product withInterfaceVersionModified(String interfaceVersionModified) {
-        this.interfaceVersionModified = interfaceVersionModified;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The sortkey
+     * @return The sortkey
      */
     public long getSortkey() {
         return sortkey;
     }
 
     /**
-     *
-     * @param sortkey
-     * The sortkey
+     * @param sortkey The sortkey
      */
     public void setSortkey(long sortkey) {
         this.sortkey = sortkey;
     }
 
-    public Product withSortkey(long sortkey) {
-        this.sortkey = sortkey;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The lastModifiedT
+     * @return The lastModifiedT
      */
     public long getLastModifiedT() {
         return lastModifiedT;
     }
 
     /**
-     *
-     * @param lastModifiedT
-     * The last_modified_t
+     * @param lastModifiedT The last_modified_t
      */
     public void setLastModifiedT(long lastModifiedT) {
         this.lastModifiedT = lastModifiedT;
     }
 
-    public Product withLastModifiedT(long lastModifiedT) {
-        this.lastModifiedT = lastModifiedT;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The nutritionScoreDebug
+     * @return The nutritionScoreDebug
      */
     public String getNutritionScoreDebug() {
         return nutritionScoreDebug;
     }
 
     /**
-     *
-     * @param nutritionScoreDebug
-     * The nutrition_score_debug
+     * @param nutritionScoreDebug The nutrition_score_debug
      */
     public void setNutritionScoreDebug(String nutritionScoreDebug) {
         this.nutritionScoreDebug = nutritionScoreDebug;
     }
 
-    public Product withNutritionScoreDebug(String nutritionScoreDebug) {
-        this.nutritionScoreDebug = nutritionScoreDebug;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The countries20131227
+     * @return The countries20131227
      */
     public Object getCountries20131227() {
         return countries20131227;
     }
 
     /**
-     *
-     * @param countries20131227
-     * The countries.20131227
+     * @param countries20131227 The countries.20131227
      */
     public void setCountries20131227(Object countries20131227) {
         this.countries20131227 = countries20131227;
     }
 
-    public Product withCountries20131227(Object countries20131227) {
-        this.countries20131227 = countries20131227;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The correctorsTags
+     * @return The correctorsTags
      */
     public List<String> getCorrectorsTags() {
         return correctorsTags;
     }
 
     /**
-     *
-     * @param correctorsTags
-     * The correctors_tags
+     * @param correctorsTags The correctors_tags
      */
     public void setCorrectorsTags(List<String> correctorsTags) {
         this.correctorsTags = correctorsTags;
     }
 
-    public Product withCorrectorsTags(List<String> correctorsTags) {
-        this.correctorsTags = correctorsTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The newAdditivesDebug
+     * @return The newAdditivesDebug
      */
     public String getNewAdditivesDebug() {
         return newAdditivesDebug;
     }
 
     /**
-     *
-     * @param newAdditivesDebug
-     * The new_additives_debug
+     * @param newAdditivesDebug The new_additives_debug
      */
     public void setNewAdditivesDebug(String newAdditivesDebug) {
         this.newAdditivesDebug = newAdditivesDebug;
     }
 
-    public Product withNewAdditivesDebug(String newAdditivesDebug) {
-        this.newAdditivesDebug = newAdditivesDebug;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The correctors
+     * @return The correctors
      */
     public List<String> getCorrectors() {
         return correctors;
     }
 
     /**
-     *
-     * @param correctors
-     * The correctors
+     * @param correctors The correctors
      */
     public void setCorrectors(List<String> correctors) {
         this.correctors = correctors;
     }
 
-    public Product withCorrectors(List<String> correctors) {
-        this.correctors = correctors;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The brands
+     * @return The brands
      */
     public String getBrands() {
         return brands;
     }
 
     /**
-     *
-     * @param brands
-     * The brands
+     * @param brands The brands
      */
     public void setBrands(String brands) {
         this.brands = brands;
     }
 
-    public Product withBrands(String brands) {
-        this.brands = brands;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The ingredientsTags
+     * @return The ingredientsTags
      */
     public List<String> getIngredientsTags() {
         return ingredientsTags;
     }
 
     /**
-     *
-     * @param ingredientsTags
-     * The ingredients_tags
+     * @param ingredientsTags The ingredients_tags
      */
     public void setIngredientsTags(List<String> ingredientsTags) {
         this.ingredientsTags = ingredientsTags;
     }
 
-    public Product withIngredientsTags(List<String> ingredientsTags) {
-        this.ingredientsTags = ingredientsTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The newAdditivesTags
+     * @return The newAdditivesTags
      */
     public List<String> getNewAdditivesTags() {
         return newAdditivesTags;
     }
 
     /**
-     *
-     * @param newAdditivesTags
-     * The new_additives_tags
+     * @param newAdditivesTags The new_additives_tags
      */
     public void setNewAdditivesTags(List<String> newAdditivesTags) {
         this.newAdditivesTags = newAdditivesTags;
     }
 
-    public Product withNewAdditivesTags(List<String> newAdditivesTags) {
-        this.newAdditivesTags = newAdditivesTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The informers
+     * @return The informers
      */
     public List<String> getInformers() {
         return informers;
     }
 
     /**
-     *
-     * @param informers
-     * The informers
+     * @param informers The informers
      */
     public void setInformers(List<String> informers) {
         this.informers = informers;
     }
 
-    public Product withInformers(List<String> informers) {
-        this.informers = informers;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The states
+     * @return The states
      */
     public String getStates() {
         return states;
     }
 
     /**
-     *
-     * @param states
-     * The states
+     * @param states The states
      */
     public void setStates(String states) {
         this.states = states;
     }
 
-    public Product withStates(String states) {
-        this.states = states;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The entryDatesTags
+     * @return The entryDatesTags
      */
     public List<String> getEntryDatesTags() {
         return entryDatesTags;
     }
 
     /**
-     *
-     * @param entryDatesTags
-     * The entry_dates_tags
+     * @param entryDatesTags The entry_dates_tags
      */
     public void setEntryDatesTags(List<String> entryDatesTags) {
         this.entryDatesTags = entryDatesTags;
     }
 
-    public Product withEntryDatesTags(List<String> entryDatesTags) {
-        this.entryDatesTags = entryDatesTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The nutritionGradesTags
+     * @return The nutritionGradesTags
      */
     public List<String> getNutritionGradesTags() {
         return nutritionGradesTags;
     }
 
     /**
-     *
-     * @param nutritionGradesTags
-     * The nutrition_grades_tags
+     * @param nutritionGradesTags The nutrition_grades_tags
      */
     public void setNutritionGradesTags(List<String> nutritionGradesTags) {
         this.nutritionGradesTags = nutritionGradesTags;
     }
 
-    public Product withNutritionGradesTags(List<String> nutritionGradesTags) {
-        this.nutritionGradesTags = nutritionGradesTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The ingredientsTextWithAllergens
+     * @return The ingredientsTextWithAllergens
      */
     public String getIngredientsTextWithAllergens() {
         return ingredientsTextWithAllergens;
     }
 
     /**
-     *
-     * @param ingredientsTextWithAllergens
-     * The ingredients_text_with_allergens
+     * @param ingredientsTextWithAllergens The ingredients_text_with_allergens
      */
     public void setIngredientsTextWithAllergens(String ingredientsTextWithAllergens) {
         this.ingredientsTextWithAllergens = ingredientsTextWithAllergens;
     }
 
-    public Product withIngredientsTextWithAllergens(String ingredientsTextWithAllergens) {
-        this.ingredientsTextWithAllergens = ingredientsTextWithAllergens;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The packaging
+     * @return The packaging
      */
     public String getPackaging() {
         return packaging;
     }
 
     /**
-     *
-     * @param packaging
-     * The packaging
+     * @param packaging The packaging
      */
     public void setPackaging(String packaging) {
         this.packaging = packaging;
     }
 
-    public Product withPackaging(String packaging) {
-        this.packaging = packaging;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The servingQuantity
+     * @return The servingQuantity
      */
     public double getServingQuantity() {
         return servingQuantity;
     }
 
     /**
-     *
-     * @param servingQuantity
-     * The serving_quantity
+     * @param servingQuantity The serving_quantity
      */
     public void setServingQuantity(double servingQuantity) {
         this.servingQuantity = servingQuantity;
     }
 
-    public Product withServingQuantity(double servingQuantity) {
-        this.servingQuantity = servingQuantity;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The manufacturingPlacesTags
+     * @return The manufacturingPlacesTags
      */
     public List<Object> getManufacturingPlacesTags() {
         return manufacturingPlacesTags;
     }
 
     /**
-     *
-     * @param manufacturingPlacesTags
-     * The manufacturing_places_tags
+     * @param manufacturingPlacesTags The manufacturing_places_tags
      */
     public void setManufacturingPlacesTags(List<Object> manufacturingPlacesTags) {
         this.manufacturingPlacesTags = manufacturingPlacesTags;
     }
 
-    public Product withManufacturingPlacesTags(List<Object> manufacturingPlacesTags) {
-        this.manufacturingPlacesTags = manufacturingPlacesTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The originsTags
+     * @return The originsTags
      */
     public List<String> getOriginsTags() {
         return originsTags;
     }
 
     /**
-     *
-     * @param originsTags
-     * The origins_tags
+     * @param originsTags The origins_tags
      */
     public void setOriginsTags(List<String> originsTags) {
         this.originsTags = originsTags;
     }
 
-    public Product withOriginsTags(List<String> originsTags) {
-        this.originsTags = originsTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The scansN
+     * @return The scansN
      */
     public long getScansN() {
         return scansN;
     }
 
     /**
-     *
-     * @param scansN
-     * The scans_n
+     * @param scansN The scans_n
      */
     public void setScansN(long scansN) {
         this.scansN = scansN;
     }
 
-    public Product withScansN(long scansN) {
-        this.scansN = scansN;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The nutritionDataPer
+     * @return The nutritionDataPer
      */
     public String getNutritionDataPer() {
         return nutritionDataPer;
     }
 
     /**
-     *
-     * @param nutritionDataPer
-     * The nutrition_data_per
+     * @param nutritionDataPer The nutrition_data_per
      */
     public void setNutritionDataPer(String nutritionDataPer) {
         this.nutritionDataPer = nutritionDataPer;
     }
 
-    public Product withNutritionDataPer(String nutritionDataPer) {
-        this.nutritionDataPer = nutritionDataPer;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The labels
+     * @return The labels
      */
     public String getLabels() {
         return labels;
     }
 
     /**
-     *
-     * @param labels
-     * The labels
+     * @param labels The labels
      */
     public void setLabels(String labels) {
         this.labels = labels;
     }
 
-    public Product withLabels(String labels) {
-        this.labels = labels;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The link
+     * @return The link
      */
     public String getLink() {
         return link;
     }
 
     /**
-     *
-     * @param link
-     * The link
+     * @param link The link
      */
     public void setLink(String link) {
         this.link = link;
     }
 
-    public Product withLink(String link) {
-        this.link = link;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The citiesTags
+     * @return The citiesTags
      */
     public List<Object> getCitiesTags() {
         return citiesTags;
     }
 
     /**
-     *
-     * @param citiesTags
-     * The cities_tags
+     * @param citiesTags The cities_tags
      */
     public void setCitiesTags(List<Object> citiesTags) {
         this.citiesTags = citiesTags;
     }
 
-    public Product withCitiesTags(List<Object> citiesTags) {
-        this.citiesTags = citiesTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The embCodes20141016
+     * @return The embCodes20141016
      */
     public String getEmbCodes20141016() {
         return embCodes20141016;
     }
 
     /**
-     *
-     * @param embCodes20141016
-     * The emb_codes_20141016
+     * @param embCodes20141016 The emb_codes_20141016
      */
     public void setEmbCodes20141016(String embCodes20141016) {
         this.embCodes20141016 = embCodes20141016;
     }
 
-    public Product withEmbCodes20141016(String embCodes20141016) {
-        this.embCodes20141016 = embCodes20141016;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The categoriesTags
+     * @return The categoriesTags
      */
     public List<String> getCategoriesTags() {
         return categoriesTags;
     }
 
     /**
-     *
-     * @param categoriesTags
-     * The categories_tags
+     * @param categoriesTags The categories_tags
      */
     public void setCategoriesTags(List<String> categoriesTags) {
         this.categoriesTags = categoriesTags;
     }
 
-    public Product withCategoriesTags(List<String> categoriesTags) {
-        this.categoriesTags = categoriesTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The quantity
+     * @return The quantity
      */
     public String getQuantity() {
         return quantity;
     }
 
     /**
-     *
-     * @param quantity
-     * The quantity
+     * @param quantity The quantity
      */
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
-    public Product withQuantity(String quantity) {
-        this.quantity = quantity;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The expirationDate
+     * @return The expirationDate
      */
     public String getExpirationDate() {
         return expirationDate;
     }
 
     /**
-     *
-     * @param expirationDate
-     * The expiration_date
+     * @param expirationDate The expiration_date
      */
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
 
-    public Product withExpirationDate(String expirationDate) {
-        this.expirationDate = expirationDate;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The ingredientsThatMayBeFromPalmOilN
+     * @return The ingredientsThatMayBeFromPalmOilN
      */
     public long getIngredientsThatMayBeFromPalmOilN() {
         return ingredientsThatMayBeFromPalmOilN;
     }
 
     /**
-     *
-     * @param ingredientsThatMayBeFromPalmOilN
-     * The ingredients_that_may_be_from_palm_oil_n
+     * @param ingredientsThatMayBeFromPalmOilN The ingredients_that_may_be_from_palm_oil_n
      */
     public void setIngredientsThatMayBeFromPalmOilN(long ingredientsThatMayBeFromPalmOilN) {
         this.ingredientsThatMayBeFromPalmOilN = ingredientsThatMayBeFromPalmOilN;
     }
 
-    public Product withIngredientsThatMayBeFromPalmOilN(long ingredientsThatMayBeFromPalmOilN) {
-        this.ingredientsThatMayBeFromPalmOilN = ingredientsThatMayBeFromPalmOilN;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The statesHierarchy
+     * @return The statesHierarchy
      */
     public List<String> getStatesHierarchy() {
         return statesHierarchy;
     }
 
     /**
-     *
-     * @param statesHierarchy
-     * The states_hierarchy
+     * @param statesHierarchy The states_hierarchy
      */
     public void setStatesHierarchy(List<String> statesHierarchy) {
         this.statesHierarchy = statesHierarchy;
     }
 
-    public Product withStatesHierarchy(List<String> statesHierarchy) {
-        this.statesHierarchy = statesHierarchy;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The embCode
+     * @return The embCode
      */
     public String getEmbCode() {
         return embCode;
     }
 
     /**
-     *
-     * @param embCode
-     * The emb_code
+     * @param embCode The emb_code
      */
     public void setEmbCode(String embCode) {
         this.embCode = embCode;
     }
 
-    public Product withEmbCode(String embCode) {
-        this.embCode = embCode;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The allergensTags
+     * @return The allergensTags
      */
     public List<Object> getAllergensTags() {
         return allergensTags;
     }
 
     /**
-     *
-     * @param allergensTags
-     * The allergens_tags
+     * @param allergensTags The allergens_tags
      */
     public void setAllergensTags(List<Object> allergensTags) {
         this.allergensTags = allergensTags;
     }
 
-    public Product withAllergensTags(List<Object> allergensTags) {
-        this.allergensTags = allergensTags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The ingredientsFromPalmOilN
+     * @return The ingredientsFromPalmOilN
      */
     public long getIngredientsFromPalmOilN() {
         return ingredientsFromPalmOilN;
     }
 
     /**
-     *
-     * @param ingredientsFromPalmOilN
-     * The ingredients_from_palm_oil_n
+     * @param ingredientsFromPalmOilN The ingredients_from_palm_oil_n
      */
 
     public void setIngredientsFromPalmOilN(long ingredientsFromPalmOilN) {
         this.ingredientsFromPalmOilN = ingredientsFromPalmOilN;
     }
 
-    public Product withIngredientsFromPalmOilN(long ingredientsFromPalmOilN) {
-        this.ingredientsFromPalmOilN = ingredientsFromPalmOilN;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The imageUrl
+     * @return The imageUrl
      */
     public String getImageUrl() {
         return imageUrl;
     }
 
     /**
-     *
-     * @param imageUrl
-     * The image_url
+     * @param imageUrl The image_url
      */
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
-    public Product withImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The lc
+     * @return The lc
      */
     public String getLc() {
         return lc;
     }
 
     /**
-     *
-     * @param lc
-     * The lc
+     * @param lc The lc
      */
 
     public void setLc(String lc) {
         this.lc = lc;
     }
 
-    public Product withLc(String lc) {
-        this.lc = lc;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The ingredients
+     * @return The ingredients
      */
     public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
     /**
-     *
-     * @param ingredients
-     * The ingredients
+     * @param ingredients The ingredients
      */
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 
-    public Product withIngredients(List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The pnnsGroups1Tags
+     * @return The pnnsGroups1Tags
      */
     public List<String> getPnnsGroups1Tags() {
         return pnnsGroups1Tags;
     }
 
     /**
-     *
-     * @param pnnsGroups1Tags
-     * The pnns_groups_1_tags
+     * @param pnnsGroups1Tags The pnns_groups_1_tags
      */
     public void setPnnsGroups1Tags(List<String> pnnsGroups1Tags) {
         this.pnnsGroups1Tags = pnnsGroups1Tags;
     }
 
-    public Product withPnnsGroups1Tags(List<String> pnnsGroups1Tags) {
-        this.pnnsGroups1Tags = pnnsGroups1Tags;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The checkers
+     * @return The checkers
      */
     public List<Object> getCheckers() {
         return checkers;
     }
 
     /**
-     *
-     * @param checkers
-     * The checkers
+     * @param checkers The checkers
      */
     public void setCheckers(List<Object> checkers) {
         this.checkers = checkers;
     }
 
-    public Product withCheckers(List<Object> checkers) {
-        this.checkers = checkers;
-        return this;
-    }
 
     /**
-     *
-     * @return
-     * The complete
+     * @return The complete
      */
     public long getComplete() {
         return complete;
     }
 
     /**
-     *
-     * @param complete
-     * The complete
+     * @param complete The complete
      */
     public void setComplete(long complete) {
         this.complete = complete;
     }
 
-    public Product withComplete(long complete) {
-        this.complete = complete;
-        return this;
-    }
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
@@ -2747,120 +1879,11 @@ public class Product implements Serializable{
         this.additionalProperties.put(name, value);
     }
 
-    public Product withAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-        return this;
-    }
-
     @Override
     public String toString() {
-        return "Product{" +
-                "lastEditDatesTags=" + lastEditDatesTags +
-                ", labelsHierarchy=" + labelsHierarchy +
-                ", Id='" + Id + '\'' +
-                ", categoriesHierarchy=" + categoriesHierarchy +
-                ", pnnsGroups1='" + pnnsGroups1 + '\'' +
-                ", checkersTags=" + checkersTags +
-                ", statesTags=" + statesTags +
-                ", labelsTags=" + labelsTags +
-                ", imageSmallUrl='" + imageSmallUrl + '\'' +
-                ", code='" + code + '\'' +
-                ", tracesTags=" + tracesTags +
-                ", lang='" + lang + '\'' +
-                ", photographers=" + photographers +
-                ", ingredientsThatMayBeFromPalmOilTags=" + ingredientsThatMayBeFromPalmOilTags +
-                ", genericName='" + genericName + '\'' +
-                ", oldAdditivesTags=" + oldAdditivesTags +
-                ", rev=" + rev +
-                ", Keywords=" + Keywords +
-                ", embCodes='" + embCodes + '\'' +
-                ", editors=" + editors +
-                ", maxImgid='" + maxImgid + '\'' +
-                ", additivesTags=" + additivesTags +
-                ", embCodesOrig='" + embCodesOrig + '\'' +
-                ", nutrientLevelsTags=" + nutrientLevelsTags +
-                ", informersTags=" + informersTags +
-                ", photographersTags=" + photographersTags +
-                ", additivesN=" + additivesN +
-                ", allergensHierarchy=" + allergensHierarchy +
-                ", pnnsGroups2Tags=" + pnnsGroups2Tags +
-                ", unknownNutrientsTags=" + unknownNutrientsTags +
-                ", packagingTags=" + packagingTags +
-                ", manufacturingPlaces='" + manufacturingPlaces + '\'' +
-                ", uniqueScansN=" + uniqueScansN +
-                ", nutriments=" + nutriments +
-                ", countriesTags=" + countriesTags +
-                ", ingredientsFromPalmOilTags=" + ingredientsFromPalmOilTags +
-                ", purchasePlaces='" + purchasePlaces + '\'' +
-                ", embCodesTags=" + embCodesTags +
-                ", brandsTags=" + brandsTags +
-                ", pnnsGroups2='" + pnnsGroups2 + '\'' +
-                ", countriesHierarchy=" + countriesHierarchy +
-                ", traces='" + traces + '\'' +
-                ", categories='" + categories + '\'' +
-                ", ingredientsText='" + ingredientsText + '\'' +
-                ", createdT=" + createdT +
-                ", productName='" + productName + '\'' +
-                ", creator='" + creator + '\'' +
-                ", ingredientsFromOrThatMayBeFromPalmOilN=" + ingredientsFromOrThatMayBeFromPalmOilN +
-                ", servingSize='" + servingSize + '\'' +
-                ", noNutritionData=" + noNutritionData +
-                ", completedT=" + completedT +
-                ", lastModifiedBy='" + lastModifiedBy + '\'' +
-                ", allergens='" + allergens + '\'' +
-                ", newAdditivesN=" + newAdditivesN +
-                ", origins='" + origins + '\'' +
-                ", stores='" + stores + '\'' +
-                ", nutritionGradeFr='" + nutritionGradeFr + '\'' +
-                ", nutrientLevels=" + nutrientLevels +
-                ", id='" + id + '\'' +
-                ", url='" + url + '\'' +
-                ", storesTags=" + storesTags +
-                ", countries='" + countries + '\'' +
-                ", purchasePlacesTags=" + purchasePlacesTags +
-                ", fruitsVegetablesNuts100gEstimate=" + fruitsVegetablesNuts100gEstimate +
-                ", interfaceVersionModified='" + interfaceVersionModified + '\'' +
-                ", sortkey=" + sortkey +
-                ", lastModifiedT=" + lastModifiedT +
-                ", nutritionScoreDebug='" + nutritionScoreDebug + '\'' +
-                ", countries20131227=" + countries20131227 +
-                ", correctorsTags=" + correctorsTags +
-                ", newAdditivesDebug='" + newAdditivesDebug + '\'' +
-                ", correctors=" + correctors +
-                ", brands='" + brands + '\'' +
-                ", ingredientsTags=" + ingredientsTags +
-                ", newAdditivesTags=" + newAdditivesTags +
-                ", informers=" + informers +
-                ", states='" + states + '\'' +
-                ", entryDatesTags=" + entryDatesTags +
-                ", nutritionGradesTags=" + nutritionGradesTags +
-                ", ingredientsTextWithAllergens='" + ingredientsTextWithAllergens + '\'' +
-                ", packaging='" + packaging + '\'' +
-                ", servingQuantity=" + servingQuantity +
-                ", manufacturingPlacesTags=" + manufacturingPlacesTags +
-                ", originsTags=" + originsTags +
-                ", scansN=" + scansN +
-                ", nutritionDataPer='" + nutritionDataPer + '\'' +
-                ", labels='" + labels + '\'' +
-                ", link='" + link + '\'' +
-                ", citiesTags=" + citiesTags +
-                ", embCodes20141016='" + embCodes20141016 + '\'' +
-                ", categoriesTags=" + categoriesTags +
-                ", quantity='" + quantity + '\'' +
-                ", expirationDate='" + expirationDate + '\'' +
-                ", ingredientsThatMayBeFromPalmOilN=" + ingredientsThatMayBeFromPalmOilN +
-                ", statesHierarchy=" + statesHierarchy +
-                ", embCode='" + embCode + '\'' +
-                ", allergensTags=" + allergensTags +
-                ", ingredientsFromPalmOilN=" + ingredientsFromPalmOilN +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", lc='" + lc + '\'' +
-                ", ingredients=" + ingredients +
-                ", pnnsGroups1Tags=" + pnnsGroups1Tags +
-                ", checkers=" + checkers +
-                ", complete=" + complete +
-                ", additionalProperties=" + additionalProperties +
-                ", imageNutritionUrl='" + imageNutritionUrl + '\'' +
-                '}';
+        return new ToStringBuilder(this)
+                .append("code", code)
+                .append("productName", productName)
+                .toString();
     }
 }
