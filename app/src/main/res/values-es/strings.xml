@@ -103,7 +103,7 @@
   <string name="txtBarcode">Código de barras :</string>
   <string name="txtQuantity">Cantidad :</string>
   <string name="txtPackaging">Envasado :</string>
-  <string name="txtBrands">MArcas :</string>
+  <string name="txtBrands">Marcas :</string>
   <string name="txtCategories">Categorías :</string>
   <string name="txtLabels">Etiquetas, Certificaciones, Premios :</string>
   <string name="txtManufacturing">Lugares de manufactura o proceso :</string>
