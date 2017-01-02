@@ -9,13 +9,13 @@ msgstr ""
 "Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-30 10:27+0100\n"
-"PO-Revision-Date: 2016-12-29 16:51+0000\n"
-"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
+"PO-Revision-Date: 2017-01-02 14:13+0000\n"
+"Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-12-30 15:04+0000\n"
+"X-Launchpad-Export-Date: 2017-01-02 20:28+0000\n"
 "X-Generator: Launchpad (build 18298)\n"
 "Language: he\n"
 "Generated-By: Babel 2.3.3\n"
@@ -50,7 +50,7 @@ msgstr "חיפוש"
 
 msgctxt "text_barcode"
 msgid "Type the barcode :"
-msgstr ""
+msgstr "נא להזין את הברקוד:"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
@@ -70,7 +70,7 @@ msgstr "תזונה"
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
 msgid "Nutrition Table"
-msgstr ""
+msgstr "טבלת ערכים תזונתיים"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
@@ -323,19 +323,19 @@ msgstr "קטלאנית"
 
 msgctxt "lang_label_array:16"
 msgid "Czech"
-msgstr ""
+msgstr "צ׳כית"
 
 msgctxt "lang_label_array:17"
 msgid "Arabic"
-msgstr ""
+msgstr "ערבית"
 
 msgctxt "lang_label_array:18"
 msgid "Finnish"
-msgstr ""
+msgstr "פינית"
 
 msgctxt "lang_label_array:19"
 msgid "Hindi"
-msgstr ""
+msgstr "הינדי"
 
 msgctxt "lang_label_array:20"
 msgid "Kabyle"
@@ -343,11 +343,11 @@ msgstr ""
 
 msgctxt "lang_label_array:21"
 msgid "Korean"
-msgstr ""
+msgstr "קוריאנית"
 
 msgctxt "lang_label_array:22"
 msgid "Latvian"
-msgstr ""
+msgstr "לטבית"
 
 msgctxt "lang_label_array:23"
 msgid "Dutch"
@@ -355,11 +355,11 @@ msgstr "הולנדית"
 
 msgctxt "lang_label_array:24"
 msgid "Brazilian portuguese"
-msgstr ""
+msgstr "פורטוגלית ברזילאית"
 
 msgctxt "lang_label_array:25"
 msgid "Romanian"
-msgstr ""
+msgstr "רומנית"
 
 msgctxt "lang_label_array:26"
 msgid "Swedish"
@@ -371,15 +371,15 @@ msgstr "סינית"
 
 msgctxt "lang_label_array:28"
 msgid "Norwegian (Bokmal)"
-msgstr ""
+msgstr "נורבקית ספרותית"
 
 msgctxt "lang_label_array:29"
 msgid "Danish"
-msgstr ""
+msgstr "דנית"
 
 msgctxt "lang_label_array:30"
 msgid "Simplified Chinese"
-msgstr ""
+msgstr "סינית מפושטת"
 
 msgctxt "images_array:0"
 msgid "Default"
@@ -444,7 +444,7 @@ msgstr "קטגוריות:"
 
 msgctxt "txtLabels"
 msgid "Labels, certifications, awards :"
-msgstr ""
+msgstr "תוויות, אישורים, פרסים:"
 
 msgctxt "txtManufacturing"
 msgid "Manufacturing or processing places :"
@@ -650,7 +650,7 @@ msgstr "אין נתונים"
 
 msgctxt "txtPictureNeeded"
 msgid "Please take a picture first"
-msgstr ""
+msgstr "נא לצלם תמונה תחילה"
 
 msgctxt "toastSending"
 msgid "Uploading..."
@@ -820,7 +820,7 @@ msgstr ""
 
 msgctxt "permission_camera"
 msgid "Camera permission is needed to scan barcodes and take pictures."
-msgstr ""
+msgstr "נדרשת הרשאה לשימוש במצלמה כדי לסרוק ברקודים ולצלם תמונות."
 
 msgctxt "permission_title"
 msgid "Permission information"
@@ -832,7 +832,7 @@ msgstr "נא להפעיל את ההרשאות בהגדרות"
 
 msgctxt "permission_storage"
 msgid "Storage permission is needed to take or select pictures"
-msgstr ""
+msgstr "נדרשת הרשאת גישה לאחסון כדי לצלם או לבחור תמונות"
 
 msgctxt "info_download_data"
 msgid ""
@@ -848,7 +848,7 @@ msgstr ""
 
 msgctxt "msg_input_empty"
 msgid "Please fill the fields first."
-msgstr ""
+msgstr "נא למלא את השדות תחילה."
 
 msgctxt "new_offline_info"
 msgid ""
@@ -919,11 +919,11 @@ msgstr "יצוא CSV…"
 
 msgctxt "txt_exporting_history"
 msgid "Exporting history..."
-msgstr ""
+msgstr "ההיסטוריה מיוצאת…"
 
 msgctxt "txt_history_exported"
 msgid "History exported"
-msgstr ""
+msgstr "ההיסטוריה יוצאה"
 
 msgctxt "permision_write_external_storage"
 msgid "Write external storage permission is needed to export history."
@@ -936,11 +936,11 @@ msgstr "לא זמין"
 #. Nutrition info tab
 msgctxt "nutrition_carbohydrate"
 msgid "Carbohydrate"
-msgstr ""
+msgstr "פחמימות"
 
 msgctxt "nutrition_carbohydrate_short_name"
 msgid "Carbohydrate (g)"
-msgstr ""
+msgstr "פחמימות (ג׳)"
 
 msgctxt "nutrition_cholesterol"
 msgid "Cholesterol"
@@ -948,7 +948,7 @@ msgstr "כולסטרול"
 
 msgctxt "nutrition_cholesterol_short_name"
 msgid "Cholesterol (g)"
-msgstr ""
+msgstr "כולסטרול (ג׳)"
 
 msgctxt "nutrition_energy"
 msgid "Energy"
@@ -964,7 +964,7 @@ msgstr "שומן"
 
 msgctxt "nutrition_fat_short_name"
 msgid "Fat (g)"
-msgstr ""
+msgstr "שומנים (ג׳)"
 
 msgctxt "nutrition_fiber"
 msgid "Dietary fiber"
@@ -972,7 +972,7 @@ msgstr "סיבים תזונתיים"
 
 msgctxt "nutrition_fiber_short_name"
 msgid "Dietary fiber (g)"
-msgstr ""
+msgstr "סיבים תזונתיים (ג׳)"
 
 msgctxt "nutrition_header"
 msgid "Nutrition facts"
@@ -992,7 +992,7 @@ msgstr "חלבון"
 
 msgctxt "nutrition_proteins_short_name"
 msgid "Proteins (g)"
-msgstr ""
+msgstr "חלבונים (ג׳)"
 
 msgctxt "nutrition_salt"
 msgid "Salt"
@@ -1000,7 +1000,7 @@ msgstr "מלח"
 
 msgctxt "nutrition_salt_short_name"
 msgid "Salt (g)"
-msgstr ""
+msgstr "מלח (ג׳)"
 
 msgctxt "nutrition_satured_fat"
 msgid "Satured fat"
@@ -1012,7 +1012,7 @@ msgstr ""
 
 msgctxt "nutrition_serving"
 msgid "Per serving"
-msgstr ""
+msgstr "להגשה"
 
 msgctxt "nutrition_serving_size"
 msgid "Serving size :"
@@ -1032,7 +1032,7 @@ msgstr "סוכרים"
 
 msgctxt "nutrition_sugars_short_name"
 msgid "Sugars (g)"
-msgstr ""
+msgstr "סוכרים (ג׳)"
 
 msgctxt "nutrition_trans_fat"
 msgid "Trans fat"
@@ -1058,24 +1058,24 @@ msgstr "התרומות שלך"
 #. For fr, Replace by https://world-fr.openfoodfacts.org/
 msgctxt "website"
 msgid "https://world.openfoodfacts.org/"
-msgstr ""
+msgstr "https://world-he.openfoodfacts.org/"
 
 #. For fr, Replace by https://world-fr.openfoodfacts.org/contribuer
 msgctxt "website_contribute"
 msgid "https://world.openfoodfacts.org/contribute"
-msgstr ""
+msgstr "https://world-he.openfoodfacts.org/contribute"
 
 msgctxt "website_discover"
 msgid "https://world.openfoodfacts.org/discover"
-msgstr ""
+msgstr "https://world-he.openfoodfacts.org/discover"
 
 msgctxt "website_product"
 msgid "https://world.openfoodfacts.org/product/"
-msgstr ""
+msgstr "https://world-he.openfoodfacts.org/product/"
 
 msgctxt "website_contributor"
 msgid "https://world.openfoodfacts.org/contributor/"
-msgstr ""
+msgstr "https://world-he.openfoodfacts.org/contributor/"
 
 msgctxt "logout_drawer"
 msgid "Logout"
