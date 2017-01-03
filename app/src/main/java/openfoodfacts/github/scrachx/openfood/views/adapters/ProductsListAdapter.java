@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
@@ -60,7 +62,18 @@ public class ProductsListAdapter extends BaseAdapter {
                 .centerCrop()
                 .into(imgIcon);
 
-        txtTitle.setText(products.get(position).getProductName());
+        Product product = products.get(position);
+        StringBuilder stringBuilder = new StringBuilder(product.getProductName() + "\n");
+
+        if (!product.getBrands().isEmpty()) {
+            stringBuilder.append(StringUtils.capitalize(product.getBrands().split(",")[0].trim()));
+        }
+
+        if (!product.getQuantity().isEmpty()) {
+            stringBuilder.append(" - ").append(product.getQuantity());
+        }
+
+        txtTitle.setText(stringBuilder.toString());
 
         return convertView;
     }
