@@ -74,7 +74,6 @@ public class IngredientsProductFragment extends BaseFragment {
         }
 
         if(mState != null && product.getIngredientsText() != null) {
-            //TODO The API doesn't return ingredients text with the _ token. the replace method could be removed
             String txtIngredients = product.getIngredientsText().replace("_","").trim();
             if(!txtIngredients.isEmpty()) {
                 String ingredientsValue = setSpanBoldBetweenTokens(txtIngredients).toString();
