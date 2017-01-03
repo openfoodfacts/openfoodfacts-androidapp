@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Html;
@@ -73,10 +74,10 @@ public class IngredientsProductFragment extends BaseFragment {
         }
 
         if(mState != null && product.getIngredientsText() != null) {
-            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(Html.fromHtml(product.getIngredientsText().replace("_","")));
-            txtIngredients = setSpanBoldBetweenTokens(txtIngredients);
-            if(!txtIngredients.toString().substring(txtIngredients.toString().indexOf(":")).trim().isEmpty()) {
-                ingredientsProduct.setText(txtIngredients);
+            String txtIngredients = product.getIngredientsText().replace("_","").trim();
+            if(!txtIngredients.isEmpty()) {
+                String ingredientsValue = setSpanBoldBetweenTokens(txtIngredients).toString();
+                ingredientsProduct.setText(ingredientsValue);
             } else {
                 ingredientsProduct.setVisibility(View.GONE);
             }
@@ -167,7 +168,7 @@ public class IngredientsProductFragment extends BaseFragment {
             final String tm = m.group();
             for (String l: cleanAllergensMultipleOccurrences()) {
                 if(l.equalsIgnoreCase(tm.replaceAll("[(),.-]+", ""))) {
-                    StyleSpan bold = new StyleSpan(android.graphics.Typeface.BOLD);
+                    StyleSpan bold = new StyleSpan(Typeface.BOLD);
                     if(tm.contains("(")) {
                         ssb.setSpan(bold, m.start()+1, m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     } else if(tm.contains(")")) {
