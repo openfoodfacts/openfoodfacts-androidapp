@@ -12,7 +12,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginEnd="@dimen/spacing_normal"
         android:layout_marginStart="@dimen/spacing_normal"
-        android:src="@drawable/img_home"/>
+        android:src="@drawable/openfoodfacts_logo" />
 
     <TextView
         android:id="@+id/textHome"
