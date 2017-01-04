@@ -157,15 +157,15 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(FontAwesome.Icon.faw_barcode).withIdentifier(2),
                     new PrimaryDrawerItem().withName(R.string.search_by_name_drawer).withIcon(FontAwesome.Icon.faw_search).withIdentifier(3),
                     new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(FontAwesome.Icon.faw_camera).withIdentifier(4),
-                    new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(FontAwesome.Icon.faw_clock_o).withIdentifier(5),
+                    new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(R.drawable.ic_history).withIdentifier(5),
                     new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
                     new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(R.drawable.ic_contributor).withIdentifier(CONTRIBUTOR),
-                    new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(FontAwesome.Icon.faw_info).withIdentifier(7),
+                    new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(R.drawable.ic_warning).withIdentifier(7),
                     new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(FontAwesome.Icon.faw_cog).withIdentifier(8),
                     new DividerDrawerItem(),
                     new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(FontAwesome.Icon.faw_anchor).withIdentifier(9),
                     new DividerDrawerItem(),
-                    new PrimaryDrawerItem().withName(R.string.action_about).withIcon(FontAwesome.Icon.faw_question).withIdentifier(10),
+                    new PrimaryDrawerItem().withName(R.string.action_about).withIcon(R.drawable.ic_info).withIdentifier(10),
                     new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(FontAwesome.Icon.faw_shopping_bag).withIdentifier(11)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -434,7 +434,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private IDrawerItem getLogoutDrawerItem() {
         return new ProfileSettingDrawerItem()
                 .withName(getString(R.string.logout_drawer))
-                .withIcon(FontAwesome.Icon.faw_sign_out)
+                .withIcon(R.drawable.ic_exit_to_app)
                 .withIdentifier(LOGOUT);
     }
 
