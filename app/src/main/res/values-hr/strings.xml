@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Open Food</string>
+  <string name="hello_world">Pozdrav svijetu!</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Summary</item>
+    <item>Sastojci</item>
+    <item>Nutrition</item>
+    <item>Nutrition Table</item>
+    <item>Back to menu</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>Engleski</item>
+    <item>Francuski</item>
+    <item>Španjolski</item>
+    <item>Talijanski</item>
+    <item>Njemački</item>
+    <item>Japanski</item>
+    <item>Ruski</item>
+    <item>Portugalski</item>
+    <item>Švedski</item>
+    <item>Burmanski</item>
+    <item>Kazaški</item>
+    <item>Armenski</item>
+    <item>Grčki</item>
+    <item>Hebrejski</item>
+    <item>Galician</item>
+    <item>Katalanski</item>
+    <item>Češki</item>
+    <item>Arapski</item>
+    <item>Finski</item>
+    <item>Hindski</item>
+    <item>Kabyle</item>
+    <item>Korejski</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Rumunjski</item>
+    <item>Švedski</item>
+    <item>Kineski</item>
+    <item>Norveški (Bokmal)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Default</item>
+    <item>Nutrition</item>
+    <item>Sastojci</item>
+  </string-array>
+  <string name="txtPass">Lozinka :</string>
+  <string name="nutrition_carbohydrate">Ugljikohidrati</string>
+  <string name="nutrition_energy">Energija</string>
+  <string name="nutrition_energy_short_name">Energija</string>
+  <string name="nutrition_fat">Masnoće</string>
+  <string name="nutrition_fiber">Dijetalna vlakna</string>
+  <string name="nutrition_header">Nutritivne vrijednosti</string>
+  <string name="nutrition_proteins">Bjelančevine</string>
+  <string name="nutrition_salt">Sol</string>
+  <string name="nutrition_sodium">Natrij</string>
+</resources>

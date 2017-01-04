@@ -3,8 +3,14 @@ This is the Changelog. Please list changes here so that we can provide meaningfu
 Upcoming:
 
 - Full nutrition table
-- Wording fixes
-- Various bugfixes
+
+- Labels, certifications and awards, Origin of the ingredients as well as the carbon footprint are now displayed when available
+- You can manage your Open Food Facts contributor account right from the app.
+- You can access your contributions easily using… "Your contributions"
+- You can now logout easily if you feel the need to (and just to be clear, we don't send personal info on the server)
+- You are now shown new products right after you add them, so that you can complete them easily.
+- Wording fixes, layout fixes, various bugfixes (including some nasty crashes, brands being displayed as stores, weight now properly saved)
+- Other 33 languages now available ! Help others access food facts in their native language.
 
 0.3 - Nov 10 2016
 

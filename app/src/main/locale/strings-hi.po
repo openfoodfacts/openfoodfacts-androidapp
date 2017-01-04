@@ -8,25 +8,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-03 18:27+0100\n"
-"PO-Revision-Date: 2016-12-01 19:46+0000\n"
-"Last-Translator: Shivangi Motwani <Unknown>\n"
+"POT-Creation-Date: 2016-12-30 10:27+0100\n"
+"PO-Revision-Date: 2016-12-29 16:54+0000\n"
+"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language-Team: Hindi <hi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-12-05 20:48+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
+"X-Launchpad-Export-Date: 2016-12-30 15:04+0000\n"
+"X-Generator: Launchpad (build 18298)\n"
 "Language: hi\n"
 "Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
 msgid "Open Food"
-msgstr ""
+msgstr "Open Food"
 
 msgctxt "hello_world"
 msgid "Hello world!"
-msgstr ""
+msgstr "नमस्कार दुनिया"
 
 msgctxt "action_settings"
 msgid "Settings"
@@ -38,19 +38,19 @@ msgstr "जानकारी"
 
 msgctxt "action_discover"
 msgid "Discover"
-msgstr ""
+msgstr "तलाश करें"
 
 msgctxt "action_contribute"
 msgid "Contribute"
-msgstr ""
+msgstr "योगदान"
 
 msgctxt "action_find"
 msgid "Find"
 msgstr "ढूंढें"
 
 msgctxt "text_barcode"
-msgid "Put the barcode :"
-msgstr "बारकोड डालिए"
+msgid "Type the barcode :"
+msgstr "बारकोड"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
@@ -69,195 +69,321 @@ msgstr "पोषण"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
-msgid "Full Nutrition"
-msgstr ""
+msgid "Nutrition Table"
+msgstr "पोषण प्रबंधन/सूची"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
 msgid "Back to menu"
-msgstr ""
+msgstr "मैन्यू में वापस"
 
 #. Text units
 msgctxt "units_array:0"
 msgid "g"
-msgstr ""
+msgstr "जी"
 
 #. Text units
 msgctxt "units_array:1"
 msgid "mg"
-msgstr ""
+msgstr "मिलीग्राम"
 
 #. Text units
 msgctxt "units_array:2"
 msgid "kg"
-msgstr ""
+msgstr "किलोग्राम"
 
 #. Text units
 msgctxt "units_array:3"
 msgid "l"
-msgstr ""
+msgstr "एल/ लीटर"
 
 #. Text units
 msgctxt "units_array:4"
 msgid "ml"
-msgstr ""
+msgstr "मिलीलीटर"
 
 #. Text units
 msgctxt "lang_array:0"
 msgid "en"
-msgstr ""
+msgstr "अंग्रेज़ी"
 
 #. Text units
 msgctxt "lang_array:1"
 msgid "fr"
-msgstr ""
+msgstr "फ़्रेंच"
 
 #. Text units
 msgctxt "lang_array:2"
 msgid "es"
-msgstr ""
+msgstr "es"
 
 #. Text units
 msgctxt "lang_array:3"
 msgid "it"
-msgstr "इटली"
+msgstr "it"
 
 #. Text units
 msgctxt "lang_array:4"
 msgid "de"
-msgstr ""
+msgstr "de"
 
 #. Text units
 msgctxt "lang_array:5"
 msgid "ja"
-msgstr "जापानी"
+msgstr "ja"
 
 #. Text units
 msgctxt "lang_array:6"
 msgid "ru"
-msgstr "रूसी"
+msgstr "ru"
 
 #. Text units
 msgctxt "lang_array:7"
 msgid "pt"
-msgstr "पुर्तगाली"
+msgstr "pt"
 
 #. Text units
 msgctxt "lang_array:8"
 msgid "sv"
-msgstr "स्विडिश"
+msgstr "sv"
 
 #. Text units
 msgctxt "lang_array:9"
 msgid "my"
-msgstr ""
+msgstr "my"
 
 #. Text units
 msgctxt "lang_array:10"
 msgid "kk"
-msgstr ""
+msgstr "kk"
 
 #. Text units
 msgctxt "lang_array:11"
 msgid "hy"
-msgstr ""
+msgstr "hy"
 
 #. Text units
 msgctxt "lang_array:12"
 msgid "el"
-msgstr "यूनानी"
+msgstr "el"
 
 #. Text units
 msgctxt "lang_array:13"
 msgid "he"
-msgstr ""
+msgstr "he"
 
 #. Text units
 msgctxt "lang_array:14"
 msgid "gl"
-msgstr ""
+msgstr "gl"
 
 #. Text units
 msgctxt "lang_array:15"
 msgid "ca"
-msgstr ""
+msgstr "ca"
 
 #. Text units
 msgctxt "lang_array:16"
 msgid "cs"
-msgstr ""
+msgstr "cs"
+
+#. Text units
+msgctxt "lang_array:17"
+msgid "ar"
+msgstr "ar"
+
+#. Text units
+msgctxt "lang_array:18"
+msgid "fi"
+msgstr "fi"
+
+#. Text units
+msgctxt "lang_array:19"
+msgid "hi"
+msgstr "hi"
+
+#. Text units
+msgctxt "lang_array:20"
+msgid "kab"
+msgstr "kab"
+
+#. Text units
+msgctxt "lang_array:21"
+msgid "ko"
+msgstr "ko"
+
+#. Text units
+msgctxt "lang_array:22"
+msgid "lv"
+msgstr "lv"
+
+#. Text units
+msgctxt "lang_array:23"
+msgid "nl"
+msgstr "nl"
+
+#. Text units
+msgctxt "lang_array:24"
+msgid "pt-rBR"
+msgstr "pt-rBR"
+
+#. Text units
+msgctxt "lang_array:25"
+msgid "ro"
+msgstr "ro"
+
+#. Text units
+msgctxt "lang_array:26"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:27"
+msgid "zh"
+msgstr "zh"
+
+#. Text units
+msgctxt "lang_array:28"
+msgid "nb"
+msgstr "nb"
+
+#. Text units
+msgctxt "lang_array:29"
+msgid "da"
+msgstr "da"
+
+#. Text units
+msgctxt "lang_array:30"
+msgid "zh_rCN"
+msgstr "zh_rCN"
 
 msgctxt "lang_label_array:0"
 msgid "English"
-msgstr ""
+msgstr "अंग्रेज़ी"
 
 msgctxt "lang_label_array:1"
 msgid "French"
-msgstr ""
+msgstr "फ्रेंच"
 
 msgctxt "lang_label_array:2"
 msgid "Spanish"
-msgstr ""
+msgstr "स्पैनिश"
 
 msgctxt "lang_label_array:3"
 msgid "Italian"
-msgstr ""
+msgstr "इतालवी"
 
 msgctxt "lang_label_array:4"
 msgid "German"
-msgstr ""
+msgstr "जर्मन"
 
 msgctxt "lang_label_array:5"
 msgid "Japanese"
-msgstr ""
+msgstr "जापानी"
 
 msgctxt "lang_label_array:6"
 msgid "Russian"
-msgstr ""
+msgstr "रूसी"
 
 msgctxt "lang_label_array:7"
 msgid "Portuguese"
-msgstr ""
+msgstr "पुर्तगाली"
 
 msgctxt "lang_label_array:8"
 msgid "Swedish"
-msgstr ""
+msgstr "स्वीडिश"
 
 msgctxt "lang_label_array:9"
 msgid "Burmese"
-msgstr ""
+msgstr "बर्मी"
 
 msgctxt "lang_label_array:10"
 msgid "Kazakh"
-msgstr ""
+msgstr "कज़ाख"
 
 msgctxt "lang_label_array:11"
 msgid "Armenian"
-msgstr ""
+msgstr "आर्मेनियाई"
 
 msgctxt "lang_label_array:12"
 msgid "Greek"
-msgstr ""
+msgstr "यूनानी"
 
 msgctxt "lang_label_array:13"
 msgid "Hebrew"
-msgstr ""
+msgstr "यहूदी"
 
 msgctxt "lang_label_array:14"
 msgid "Galician"
-msgstr ""
+msgstr "गेलिसियन"
 
 msgctxt "lang_label_array:15"
 msgid "Catalan"
-msgstr ""
+msgstr "कैटेलन"
 
 msgctxt "lang_label_array:16"
 msgid "Czech"
+msgstr "चेक"
+
+msgctxt "lang_label_array:17"
+msgid "Arabic"
+msgstr "अरबी"
+
+msgctxt "lang_label_array:18"
+msgid "Finnish"
+msgstr "फिनिश"
+
+msgctxt "lang_label_array:19"
+msgid "Hindi"
+msgstr "हिन्दी"
+
+msgctxt "lang_label_array:20"
+msgid "Kabyle"
+msgstr "काब्य्ले"
+
+msgctxt "lang_label_array:21"
+msgid "Korean"
+msgstr "कोरियाई"
+
+msgctxt "lang_label_array:22"
+msgid "Latvian"
+msgstr "लात्वीयावासी"
+
+msgctxt "lang_label_array:23"
+msgid "Dutch"
+msgstr "डच"
+
+msgctxt "lang_label_array:24"
+msgid "Brazilian portuguese"
+msgstr "ब्राजिलियन पुर्तगाली"
+
+msgctxt "lang_label_array:25"
+msgid "Romanian"
+msgstr "रोमानियाई"
+
+msgctxt "lang_label_array:26"
+msgid "Swedish"
+msgstr "स्वीडिश"
+
+msgctxt "lang_label_array:27"
+msgid "Chinese"
+msgstr "चीनी"
+
+msgctxt "lang_label_array:28"
+msgid "Norwegian (Bokmal)"
+msgstr "नॉर्वेजियन (बोकमाल)"
+
+msgctxt "lang_label_array:29"
+msgid "Danish"
+msgstr ""
+
+msgctxt "lang_label_array:30"
+msgid "Simplified Chinese"
 msgstr ""
 
 msgctxt "images_array:0"
 msgid "Default"
-msgstr ""
+msgstr "चूक"
 
 msgctxt "images_array:1"
 msgid "Nutrition"
@@ -274,7 +400,7 @@ msgstr "ढूंढें"
 
 msgctxt "no_products"
 msgid "Products not found"
-msgstr ""
+msgstr "उत्पाद नहीं मिला"
 
 msgctxt "desc_list_item_icon"
 msgid "Item Icon"
@@ -290,7 +416,7 @@ msgstr "उपयोगकर्ता/ पासवर्ड बदल गय�
 
 msgctxt "alert_dialog_product_error_msg"
 msgid "Product not found, please try again"
-msgstr "उत्पाद नहीं मिला,  पुनः प्रयास करें"
+msgstr "उत्पाद नहीं मिला,  फिर प्रयास करें"
 
 msgctxt "toast_retrieving"
 msgid "Loading..."
@@ -310,11 +436,15 @@ msgstr "पैकेजिंग:"
 
 msgctxt "txtBrands"
 msgid "Brands :"
-msgstr "ब्रांड"
+msgstr "ब्रांड:"
 
 msgctxt "txtCategories"
 msgid "Categories :"
 msgstr "श्रेणी:"
+
+msgctxt "txtLabels"
+msgid "Labels, certifications, awards :"
+msgstr "लेबल, प्रमाणपत्र, पुरस्कार:"
 
 msgctxt "txtManufacturing"
 msgid "Manufacturing or processing places :"
@@ -322,7 +452,7 @@ msgstr "विनिर्माण या प्रसंस्करण की
 
 msgctxt "txtIngredientsOrigins"
 msgid "Origin of ingredients :"
-msgstr ""
+msgstr "सामग्री की उत्पत्ति:"
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
@@ -330,15 +460,15 @@ msgstr "शहर, राज्य और देश जहाँ इसे ख�
 
 msgctxt "txtStores"
 msgid "Stores :"
-msgstr "दुकान:"
+msgstr "स्टोर:"
 
 msgctxt "txtCountries"
 msgid "Countries where sold :"
-msgstr "देश जहाँ बेचा:"
+msgstr "देश जहाँ बेचा गया है"
 
 msgctxt "txtIngredients"
 msgid "Ingredients list :"
-msgstr "संघटक सूची:"
+msgstr "सामग्री की सूची:"
 
 msgctxt "txtSubstances"
 msgid "Substances or products causing allergies or intolerances :"
@@ -350,7 +480,7 @@ msgstr "योगशील:"
 
 msgctxt "txtTraces"
 msgid "Traces :"
-msgstr "अनुरेख :"
+msgstr "निशानी:"
 
 msgctxt "txtMayBeFromPalmOilProduct"
 msgid "Ingredients that may be from palm oil :"
@@ -358,7 +488,7 @@ msgstr "सामग्री ताड़ के तेल से हो सक
 
 msgctxt "txtPalmOilProduct"
 msgid "Ingredients from palm oil :"
-msgstr "सामग्री जो ताड़ के तेल है:"
+msgstr "ताड़ के तेल से सामग्री:"
 
 msgctxt "txtServingSize"
 msgid "Serving size :"
@@ -382,7 +512,7 @@ msgstr "उच्च"
 
 msgctxt "txtLogin"
 msgid "Login :"
-msgstr "लॉग इन"
+msgstr "लॉग इन करें :"
 
 msgctxt "txtPass"
 msgid "Password :"
@@ -390,7 +520,7 @@ msgstr "पासवर्ड :"
 
 msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
-msgstr "अपने आहार खोलें और जानते हैं कि आप क्या खाते हैं"
+msgstr "अपना आहार खोलें और जाने कि आप क्या खाते हैं"
 
 msgctxt "txtHome"
 msgid ""
@@ -399,7 +529,7 @@ msgid ""
 "product labels."
 msgstr ""
 "Open Food Facts एक open डेटाबेस है खाद्य उत्पादों के लिए जहां सामग्री, "
-"ऐलर्जेन, पोषण और छोटा मोटा सामान की जानकारी उत्पाद लेबल से प्राप्त कि जा "
+"ऐलर्जेन, पोषण और छोटे मोटे सामान की जानकारी उत्पाद लेबल से प्राप्त कि जा "
 "सकती है|"
 
 msgctxt "txtSave"
@@ -416,7 +546,7 @@ msgstr "उपयोगकर्ता पैनल"
 
 msgctxt "txtToastSaved"
 msgid "User saved"
-msgstr ""
+msgstr "उपयोगकर्ता की जानकारी  सेव है"
 
 msgctxt "txtSalt"
 msgid "Salt :"
@@ -454,15 +584,15 @@ msgctxt "errorWeb"
 msgid ""
 "We were not able to access the internet. Do you have connectivity issues?"
 msgstr ""
-"हम इंटरनेट का उपयोग करने में सक्षम नहीं थे| आप कनेक्टिविटी मुद्दों है?"
+"हम इंटरनेट का उपयोग करने में सक्षम नहीं थे| क्या आपके पास कनेक्टिविटी है?"
 
 msgctxt "txtInfoLoginOk"
 msgid "User saved"
-msgstr ""
+msgstr "उपयोगकर्ता की जानकारी  सेव है"
 
 msgctxt "txtInfoLoginNo"
 msgid "User not saved"
-msgstr ""
+msgstr "उपयोगकर्ता की जानकारी  सेव नहीं `है"
 
 msgctxt "txtDialogsTitle"
 msgid "Information"
@@ -473,10 +603,12 @@ msgid ""
 "The product you scanned does not exist yet in Open Food Facts. Do you want "
 "to add it?"
 msgstr ""
+"उत्पाद जो आपने स्कैन किया वो Open Food Facts में मौजूद नहीं है। क्या आप इसे "
+"जोड़नेना चाहते हैं?"
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
-msgstr "क्या आप डेटाबेस के उत्पादों को भेजने के लिए चाहते हैं?"
+msgstr "क्या आप डेटाबेस  में  सेव केोये  उत्पादों को भेजना चाहते हैं?"
 
 msgctxt "txtYes"
 msgid "Yes"
@@ -508,7 +640,7 @@ msgstr "दुकान"
 
 msgctxt "hintBrand"
 msgid "Brand"
-msgstr ""
+msgstr "ब्रांड"
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
@@ -523,8 +655,8 @@ msgid "No data"
 msgstr "कोई डेटा नहीं है"
 
 msgctxt "txtPictureNeeded"
-msgid "Take a picture first!"
-msgstr "पहले एक तस्वीर ले लो!"
+msgid "Please take a picture first"
+msgstr "पहले तस्वीर ले"
 
 msgctxt "toastSending"
 msgid "Uploading..."
@@ -532,7 +664,7 @@ msgstr "अपलोड हो रहा है"
 
 msgctxt "dataSaved"
 msgid "Saved locally on your device"
-msgstr ""
+msgstr "अपने डिवाइस पर स्थानीय रूप से सेव है"
 
 msgctxt "txtInfoAddUser"
 msgid "Please enter your login and password"
@@ -540,7 +672,7 @@ msgstr "कृप्या अपना पासवर्ड और प्र�
 
 msgctxt "txtDataUpdated"
 msgid "Data updated"
-msgstr ""
+msgstr "डेटा अपडेट"
 
 msgctxt "txtLoading"
 msgid "Loading..."
@@ -548,12 +680,13 @@ msgstr "लोड हो रहा है..."
 
 msgctxt "txtDialogsContentDelete"
 msgid "Do you want to delete this draft?"
-msgstr "क्या आप  इस ड्राफ्ट हटाना चाहते हैं?"
+msgstr "क्या आप  इस ड्राफ्ट कोहटाना चाहते हैं?"
 
 msgctxt "txtDialogsContentInfoSave"
 msgid ""
 "The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
+"उत्पाद स्थानीय रूप से सेव है, आप ऑफलाइन संपादन मेनू में संपादित कर सकते हैं"
 
 msgctxt "txtBarcodeRequire"
 msgid "Barcode required"
@@ -565,123 +698,128 @@ msgstr "ठीक है"
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
-msgstr ""
+msgstr "कृपया इस प्रक्रिया के दौरान बाहर नहीं निकलते ..."
 
 msgctxt "txtAbout"
 msgid ""
 "The pictures you send are published under the free licence Creative Commons "
 "Attribution and ShareAlike."
 msgstr ""
+"जो तस्वीरें आपने भेजि वो मुक्त लाइसेंस क्रिएटिव कॉमन्स रोपण और अलाइक के तहत "
+"प्रकाशित कर रहे हैं।"
 
 msgctxt "txtAllsent"
 msgid "Products sent"
-msgstr ""
+msgstr "उत्पाद भेज दिया"
 
 msgctxt "txtPalm"
 msgid "The product does not contain any palm oil"
-msgstr ""
+msgstr "उत्पाद में किसी भी तरह  का ताड़ का तेल शामिल नहीं है"
 
 msgctxt "txtBarcodeNotValid"
 msgid "Barcode not valid"
-msgstr ""
+msgstr "बारकोड मान्य नहीं"
 
 msgctxt "try_it_scan_now"
 msgid "Scan product"
-msgstr ""
+msgstr "उत्पाद  स्कैन कीजिए"
 
 msgctxt "share"
 msgid "Share"
-msgstr ""
+msgstr "शेयर"
 
 msgctxt "msg_share"
 msgid "Look at this product on Open Food Facts :"
-msgstr ""
+msgstr "Open Food Facts  पर इस उत्पाद को देखो:"
 
 msgctxt "create_account"
 msgid "Sign up"
-msgstr ""
+msgstr "साइन अप करें"
 
 msgctxt "home_drawer"
 msgid "Home"
-msgstr ""
+msgstr "मुख्य पृष्ठ"
 
 msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
-msgstr ""
+msgstr "Open Beauty Facts"
 
 msgctxt "search_drawer"
 msgid "Search"
-msgstr ""
+msgstr "ढूंढें"
 
 msgctxt "search_by_barcode_drawer"
 msgid "Search by barcode"
-msgstr ""
+msgstr "बारकोड के आधार पर ढूंढें"
 
 msgctxt "search_by_name_drawer"
 msgid "Search by name"
-msgstr ""
+msgstr "नाम से ढूंढें"
 
 msgctxt "scan_search"
 msgid "Scan"
-msgstr ""
+msgstr "स्कैन"
 
 msgctxt "user_drawer"
 msgid "User"
-msgstr ""
+msgstr "उपयोगकर्ता"
 
 msgctxt "offline_edit_drawer"
 msgid "Offline edit"
-msgstr ""
+msgstr "ऑफ़लाइन संपादित"
 
 msgctxt "txt_anonymous"
 msgid "Anonymous"
-msgstr ""
+msgstr "अज्ञात"
 
 msgctxt "txt_product_not_found"
 msgid "Products not found"
-msgstr ""
+msgstr "उत्पाद नहीं मिला"
 
 msgctxt "delete_txt"
 msgid "Delete"
-msgstr ""
+msgstr "नष्ट करे"
 
 msgctxt "sign_in_drawer"
 msgid "Sign-in"
-msgstr ""
+msgstr "साइन इन करें"
 
 msgctxt "alert_drawer"
 msgid "Allergen Alert"
-msgstr ""
+msgstr "एलरजेन की चेतावनी"
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
-msgstr ""
+msgstr "एलरजेन शामिल है"
 
 msgctxt "title_dialog_alert"
 msgid "Add alert"
-msgstr ""
+msgstr "अलर्ट जोड़ें"
 
 msgctxt "warning_alert_data"
 msgid ""
 "Your allergies info will never be sent to the Open Food Facts server. Also, "
 "be careful that data may not be accurate, please double-check by yourself!"
 msgstr ""
+"आपकी एलर्जी की जानकारी Open Food Facts सर्वर के लिए कभी नहीं भेजा जा सक्ती। "
+"इसके अलावा, सावधान रहे  क्योंकि डेटा सही नहीं हो सकताअपने  इसलिये, आप कृपया "
+"दोहरी जांच कीजिए!"
 
 msgctxt "from_gallery"
 msgid "From gallery"
-msgstr ""
+msgstr "गैलरी से"
 
 msgctxt "product_sent"
 msgid "Product sent!"
-msgstr ""
+msgstr "उत्पाद भेज दिया"
 
 msgctxt "action_edit_product"
 msgid "Edit product"
-msgstr ""
+msgstr "उत्पाद संपादित करें"
 
 msgctxt "title_info_dialog"
 msgid "Information"
-msgstr ""
+msgstr "जानकारी"
 
 msgctxt "text_offline_info_dialog"
 msgid ""
@@ -689,258 +827,307 @@ msgid ""
 "later. All the products you scan will appear here, and you'll be able to "
 "send them using the button below."
 msgstr ""
+"जब आप ऑफ़लाइन हो तब भी आप उत्पादों को स्कैन कर सकते हैं, ताकि उन्हें आप बाद "
+"में जोड़ सके। आपके सभी स्कैन कि हुए  उत्पाद यहाँ दिखाई देगी, और आप नीचे दिए "
+"गए बटन का उपयोग कर उन्हें भेजने के लिए सक्षम हो जाएगा।"
 
 msgctxt "permission_camera"
-msgid "Camera permission is needed to scan barcode."
-msgstr ""
+msgid "Camera permission is needed to scan barcodes and take pictures."
+msgstr "कैमरा अनुमति की जरूरत है बारकोड को स्कैन और तस्वीरें लेने के लिए"
 
 msgctxt "permission_title"
 msgid "Permission information"
-msgstr ""
+msgstr "अनुमति जानकारी"
 
 msgctxt "permission_denied"
 msgid "Please activate permission in the settings"
-msgstr ""
+msgstr "सेटिंग्स में अनुमति सक्रिय करें"
 
 msgctxt "permission_storage"
-msgid "Storage is needed to take or choose pictures"
-msgstr ""
+msgid "Storage permission is needed to take or select pictures"
+msgstr "स्टोरेज अनुमति ति की जरूरत है चित्रों का चयन करने की जरूरत है"
 
 msgctxt "info_download_data"
 msgid ""
 "You need to download some data to get this functionality working, please "
 "press yes to download it."
 msgstr ""
+"आपको इस कार्यक्षमता काम पाने के लिए कुछ डेटा डाउनलोड करने की जरूरत है, कृपया "
+"इसे डाउनलोड करने के लिए हाँ दबाएँ।"
 
 msgctxt "info_download_data_connection"
 msgid ""
 "You need to download some data to get this functionality working. Please "
 "activate internet connection."
 msgstr ""
+"आप इस कार्यक्षमता काम पाने के लिए कुछ डेटा डाउनलोड करने के लिए की जरूरत है। "
+"इंटरनेट कनेक्शन सक्रिय करें।"
 
 msgctxt "msg_input_empty"
-msgid "Fill input first!"
-msgstr ""
+msgid "Please fill the fields first."
+msgstr "कृपया फ़ील्ड पहले भरें।"
 
 msgctxt "new_offline_info"
 msgid ""
 "Please take a picture of the product, ingredients, nutrition facts table and "
 "any other information on the label. Thank you!"
 msgstr ""
+"कृपया उत्पाद, सामग्री, पोषण तथ्यों की सूची और लेबल पर किसी भी अन्य जानकारी "
+"की एक तस्वीर ले लो। धन्यवाद!"
 
 #. Strings related to login
 msgctxt "error_invalid_password"
 msgid "The password needs to be a least 6 characters long."
-msgstr ""
+msgstr "पासवर्ड कम से कम 6 अक्षर लंबा होने की जरूरत है।"
 
 msgctxt "error_field_required"
 msgid "This field is required."
-msgstr ""
+msgstr "यह क्षेत्र आवश्यक है"
 
 msgctxt "action_preferences"
 msgid "Preferences"
-msgstr ""
+msgstr "प्राथमिकताएँ"
 
 msgctxt "prefs_scan_startup"
 msgid "Scan on startup"
-msgstr ""
+msgstr "स्टार्टअप पर स्कैन करें"
 
 msgctxt "prefs_scan_startup_summary"
 msgid "This option if selected will start scan when app is opened."
 msgstr ""
+"इस विकल्प का चयन किया है, तो जब एप्लिकेशन को खोला जाता है स्कैन शुरू कर "
+"देंगे।"
 
 msgctxt "prefs_power_mode"
 msgid "Power mode scan"
-msgstr ""
+msgstr "पावर मोड स्कैन"
 
 msgctxt "prefs_power_mode_summary"
 msgid ""
 "Quickly scan products in a supermarket to see which one are not in the "
 "database."
 msgstr ""
+"जल्दी से सुपरमार्केट में उत्पादों को स्कैन करके देखे कौन कौन से उत्पाद "
+"डेटाबेस में नहीं हैं।"
 
 msgctxt "prefs_language"
 msgid "Language"
-msgstr ""
+msgstr "भाषा"
 
 msgctxt "prefs_language_summary"
 msgid "Change language"
-msgstr ""
+msgstr "भाषा बदले"
 
 msgctxt "scan_history_drawer"
 msgid "History"
-msgstr ""
+msgstr "वृत्तांत"
 
 msgctxt "clear_history"
 msgid "Clear history"
-msgstr ""
+msgstr "इतिहास मिटा दें"
 
 msgctxt "title_clear_history_dialog"
 msgid "Clear"
-msgstr ""
+msgstr "खाली करें"
 
 msgctxt "text_clear_history_dialog"
 msgid "Do you want to clear all scan history?"
-msgstr ""
+msgstr "आप सभी स्कैन इतिहास साफ करना चाहते हैं?"
 
 msgctxt "export_csv_history"
 msgid "Export CSV"
-msgstr ""
+msgstr "CSV  निर्यात करें"
 
 msgctxt "txt_exporting_history"
 msgid "Exporting history..."
-msgstr ""
+msgstr "इतिहास निर्यात ..."
 
 msgctxt "txt_history_exported"
 msgid "History exported"
-msgstr ""
+msgstr "इतिहास का निर्यात"
 
 msgctxt "permision_write_external_storage"
 msgid "Write external storage permission is needed to export history."
-msgstr ""
+msgstr "लिखें बाह्य भंडारण की अनुमति इतिहास को निर्यात करने की जरूरत है।"
 
 msgctxt "txt_nutrition_not_found"
 msgid "N/A"
-msgstr ""
+msgstr "लागू नहीं"
 
 #. Nutrition info tab
 msgctxt "nutrition_carbohydrate"
 msgid "Carbohydrate"
-msgstr ""
+msgstr "कार्बोहाइड्रेट"
 
 msgctxt "nutrition_carbohydrate_short_name"
 msgid "Carbohydrate (g)"
-msgstr ""
+msgstr "कार्बोहाइड्रेट(g)"
 
 msgctxt "nutrition_cholesterol"
 msgid "Cholesterol"
-msgstr ""
+msgstr "कोलेस्ट्रॉल"
 
 msgctxt "nutrition_cholesterol_short_name"
 msgid "Cholesterol (g)"
-msgstr ""
+msgstr "कोलेस्ट्रॉल(जी)"
 
 msgctxt "nutrition_energy"
 msgid "Energy"
-msgstr ""
+msgstr "ऊर्जा"
 
 msgctxt "nutrition_energy_short_name"
 msgid "Energy"
-msgstr ""
+msgstr "ऊर्जा"
 
 msgctxt "nutrition_fat"
 msgid "Fat"
-msgstr ""
+msgstr "वसा"
 
 msgctxt "nutrition_fat_short_name"
 msgid "Fat (g)"
-msgstr ""
+msgstr "वसा(जी)"
 
 msgctxt "nutrition_fiber"
 msgid "Dietary fiber"
-msgstr ""
+msgstr "फाइबर आहार"
 
 msgctxt "nutrition_fiber_short_name"
 msgid "Dietary fiber (g)"
-msgstr ""
+msgstr "फाइबर आहार(जी)"
 
 msgctxt "nutrition_header"
 msgid "Nutrition facts"
-msgstr ""
+msgstr "पोषण तथ्य"
 
 msgctxt "nutrition_no_data_message"
 msgid "No data is available for this product"
-msgstr ""
+msgstr "इस उत्पाद के लिए कोई डेटा उपलब्ध नहीं है"
 
 msgctxt "nutrition_per_quantity"
 msgid "For 100g/100ml"
-msgstr ""
+msgstr "100g / 100 एमएल के लिए"
 
 msgctxt "nutrition_proteins"
 msgid "Proteins"
-msgstr ""
+msgstr "प्रोटीन"
 
 msgctxt "nutrition_proteins_short_name"
 msgid "Proteins (g)"
-msgstr ""
+msgstr "प्रोटीन(g)"
 
 msgctxt "nutrition_salt"
 msgid "Salt"
-msgstr ""
+msgstr "नमक"
 
 msgctxt "nutrition_salt_short_name"
 msgid "Salt (g)"
-msgstr ""
+msgstr "नमक(g)"
 
 msgctxt "nutrition_satured_fat"
 msgid "Satured fat"
-msgstr ""
+msgstr "संतृप्त वसा"
 
 msgctxt "nutrition_satured_fat_short_name"
 msgid "Satured fat (g)"
-msgstr ""
+msgstr "संतृप्त वसा(g)"
 
 msgctxt "nutrition_serving"
 msgid "Per serving"
-msgstr ""
+msgstr "प्रत्येक हिस्सा"
 
 msgctxt "nutrition_serving_size"
 msgid "Serving size :"
-msgstr ""
+msgstr "सेवारत माप:"
 
 msgctxt "nutrition_sodium"
 msgid "Sodium"
-msgstr ""
+msgstr "सोडियम"
 
 msgctxt "nutrition_sodium_short_name"
 msgid "Sodium (g)"
-msgstr ""
+msgstr "सोडियम(g)"
 
 msgctxt "nutrition_sugars"
 msgid "Sugars"
-msgstr ""
+msgstr "शुगर्स"
 
 msgctxt "nutrition_sugars_short_name"
 msgid "Sugars (g)"
-msgstr ""
+msgstr "शुगर्स(g)"
 
 msgctxt "nutrition_trans_fat"
 msgid "Trans fat"
-msgstr ""
+msgstr "ट्रांस वसा"
 
 msgctxt "nutrition_trans_fat_short_name"
 msgid "Trans fat (g)"
-msgstr ""
+msgstr "ट्रांस वसा (g)"
 
 msgctxt "nutriment_serving_size"
 msgid "Per portion :"
-msgstr ""
+msgstr "प्रति हिस्से:"
 
 msgctxt "action_manage_account"
 msgid "Manage account"
-msgstr ""
+msgstr "खाते का प्रबंधन"
 
 msgctxt "action_contributes"
 msgid "Your contributions"
-msgstr ""
+msgstr "आपका योगदान"
 
 #. website translated pages
+#. For fr, Replace by https://world-fr.openfoodfacts.org/
 msgctxt "website"
-msgid "http://world.openfoodfacts.org/"
+msgid "https://world.openfoodfacts.org/"
 msgstr ""
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/contribuer
 msgctxt "website_contribute"
-msgid "http://world.openfoodfacts.org/contribute"
+msgid "https://world.openfoodfacts.org/contribute"
 msgstr ""
 
 msgctxt "website_discover"
-msgid "http://world.openfoodfacts.org/discover"
+msgid "https://world.openfoodfacts.org/discover"
 msgstr ""
 
 msgctxt "website_product"
-msgid "http://world.openfoodfacts.org/product/"
+msgid "https://world.openfoodfacts.org/product/"
 msgstr ""
 
 msgctxt "website_contributor"
-msgid "http://world.openfoodfacts.org/contributor/"
+msgid "https://world.openfoodfacts.org/contributor/"
 msgstr ""
+
+msgctxt "logout_drawer"
+msgid "Logout"
+msgstr "लॉग आउट करें"
+
+msgctxt "contribution_without_account"
+msgid "You can sign-in or create an account to keep your contributions"
+msgstr ""
+"आप साइन-इन कर सकते हैं या अपने योगदान रखने के लिए एक खाता बनाने\r\n"
+"प्रसंग:"
+
+msgctxt "textCarbonFootprint"
+msgid "Carbon footprint / CO2 emissions: "
+msgstr "कार्बन पदचिह्न / CO2 उत्सर्जन: "
+
+#~ msgctxt "website_discover"
+#~ msgid "http://world.openfoodfacts.org/discover"
+#~ msgstr "http://world.openfoodfacts.org/discover"
+
+#~ msgctxt "website_contribute"
+#~ msgid "http://world.openfoodfacts.org/contribute"
+#~ msgstr "http://world.openfoodfacts.org/contribute"
+
+#~ msgctxt "website"
+#~ msgid "http://world.openfoodfacts.org/"
+#~ msgstr "http://world.openfoodfacts.org/"
+
+#~ msgctxt "website_product"
+#~ msgid "http://world.openfoodfacts.org/product/"
+#~ msgstr "http://world.openfoodfacts.org/product/"
+
+#~ msgctxt "website_contributor"
+#~ msgid "http://world.openfoodfacts.org/contributor/"
+#~ msgstr "http://world.openfoodfacts.org/contributor/"

@@ -158,7 +158,12 @@ public class OfflineEditFragment extends BaseFragment {
                             @Override
                             public void onProductSentResponse(boolean value) {
                                 if (value) {
-                                    saveItems.remove(listSaveProduct.indexOf(product));
+                                    int productIndex = listSaveProduct.indexOf(product);
+
+                                    if (productIndex >= 0 && productIndex < saveItems.size()) {
+                                        saveItems.remove(productIndex);
+                                    }
+
                                     ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
                                     SendProduct.deleteAll(SendProduct.class, "barcode = ?", product.getBarcode());
                                     Toast.makeText(getActivity(), R.string.txtDataUpdated, Toast.LENGTH_LONG).show();

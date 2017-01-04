@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-03 18:27+0100\n"
-"PO-Revision-Date: 2016-07-24 13:18+0000\n"
-"Last-Translator: blipp <Unknown>\n"
+"POT-Creation-Date: 2016-12-30 10:27+0100\n"
+"PO-Revision-Date: 2016-12-30 13:11+0000\n"
+"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-12-05 20:48+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
+"X-Launchpad-Export-Date: 2016-12-30 15:04+0000\n"
+"X-Generator: Launchpad (build 18298)\n"
 "Language: nl\n"
 "Generated-By: Babel 2.3.3\n"
 
@@ -38,19 +38,19 @@ msgstr "Informatie"
 
 msgctxt "action_discover"
 msgid "Discover"
-msgstr ""
+msgstr "Ontdek"
 
 msgctxt "action_contribute"
 msgid "Contribute"
-msgstr ""
+msgstr "Bijdragen"
 
 msgctxt "action_find"
 msgid "Find"
 msgstr "Zoeken"
 
 msgctxt "text_barcode"
-msgid "Put the barcode :"
-msgstr "Voer de streepjescode in"
+msgid "Type the barcode :"
+msgstr "Streepjescode invoeren:"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
@@ -69,13 +69,13 @@ msgstr "Voedingswaarde"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
-msgid "Full Nutrition"
-msgstr ""
+msgid "Nutrition Table"
+msgstr "Voedingswaarde"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
 msgid "Back to menu"
-msgstr ""
+msgstr "Terug naar het menu"
 
 #. Text units
 msgctxt "units_array:0"
@@ -105,154 +105,280 @@ msgstr "ml"
 #. Text units
 msgctxt "lang_array:0"
 msgid "en"
-msgstr ""
+msgstr "en"
 
 #. Text units
 msgctxt "lang_array:1"
 msgid "fr"
-msgstr ""
+msgstr "fr"
 
 #. Text units
 msgctxt "lang_array:2"
 msgid "es"
-msgstr ""
+msgstr "es"
 
 #. Text units
 msgctxt "lang_array:3"
 msgid "it"
-msgstr ""
+msgstr "it"
 
 #. Text units
 msgctxt "lang_array:4"
 msgid "de"
-msgstr ""
+msgstr "de"
 
 #. Text units
 msgctxt "lang_array:5"
 msgid "ja"
-msgstr ""
+msgstr "ja"
 
 #. Text units
 msgctxt "lang_array:6"
 msgid "ru"
-msgstr ""
+msgstr "ru"
 
 #. Text units
 msgctxt "lang_array:7"
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #. Text units
 msgctxt "lang_array:8"
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #. Text units
 msgctxt "lang_array:9"
 msgid "my"
-msgstr ""
+msgstr "my"
 
 #. Text units
 msgctxt "lang_array:10"
 msgid "kk"
-msgstr ""
+msgstr "kk"
 
 #. Text units
 msgctxt "lang_array:11"
 msgid "hy"
-msgstr ""
+msgstr "hy"
 
 #. Text units
 msgctxt "lang_array:12"
 msgid "el"
-msgstr ""
+msgstr "el"
 
 #. Text units
 msgctxt "lang_array:13"
 msgid "he"
-msgstr ""
+msgstr "he"
 
 #. Text units
 msgctxt "lang_array:14"
 msgid "gl"
-msgstr ""
+msgstr "gl"
 
 #. Text units
 msgctxt "lang_array:15"
 msgid "ca"
-msgstr ""
+msgstr "ca"
 
 #. Text units
 msgctxt "lang_array:16"
 msgid "cs"
-msgstr ""
+msgstr "cs"
+
+#. Text units
+msgctxt "lang_array:17"
+msgid "ar"
+msgstr "ar"
+
+#. Text units
+msgctxt "lang_array:18"
+msgid "fi"
+msgstr "fi"
+
+#. Text units
+msgctxt "lang_array:19"
+msgid "hi"
+msgstr "hi"
+
+#. Text units
+msgctxt "lang_array:20"
+msgid "kab"
+msgstr "kab"
+
+#. Text units
+msgctxt "lang_array:21"
+msgid "ko"
+msgstr "ko"
+
+#. Text units
+msgctxt "lang_array:22"
+msgid "lv"
+msgstr "lv"
+
+#. Text units
+msgctxt "lang_array:23"
+msgid "nl"
+msgstr "nl"
+
+#. Text units
+msgctxt "lang_array:24"
+msgid "pt-rBR"
+msgstr "pt-rBR"
+
+#. Text units
+msgctxt "lang_array:25"
+msgid "ro"
+msgstr "ro"
+
+#. Text units
+msgctxt "lang_array:26"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:27"
+msgid "zh"
+msgstr "zh"
+
+#. Text units
+msgctxt "lang_array:28"
+msgid "nb"
+msgstr "nb"
+
+#. Text units
+msgctxt "lang_array:29"
+msgid "da"
+msgstr "da"
+
+#. Text units
+msgctxt "lang_array:30"
+msgid "zh_rCN"
+msgstr "zh_rCN"
 
 msgctxt "lang_label_array:0"
 msgid "English"
-msgstr ""
+msgstr "Engels"
 
 msgctxt "lang_label_array:1"
 msgid "French"
-msgstr ""
+msgstr "Frans"
 
 msgctxt "lang_label_array:2"
 msgid "Spanish"
-msgstr ""
+msgstr "Spaans"
 
 msgctxt "lang_label_array:3"
 msgid "Italian"
-msgstr ""
+msgstr "Italiaans"
 
 msgctxt "lang_label_array:4"
 msgid "German"
-msgstr ""
+msgstr "Duits"
 
 msgctxt "lang_label_array:5"
 msgid "Japanese"
-msgstr ""
+msgstr "Japans"
 
 msgctxt "lang_label_array:6"
 msgid "Russian"
-msgstr ""
+msgstr "Russisch"
 
 msgctxt "lang_label_array:7"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugees"
 
 msgctxt "lang_label_array:8"
 msgid "Swedish"
-msgstr ""
+msgstr "Zweeds"
 
 msgctxt "lang_label_array:9"
 msgid "Burmese"
-msgstr ""
+msgstr "Birmees"
 
 msgctxt "lang_label_array:10"
 msgid "Kazakh"
-msgstr ""
+msgstr "Kazachs"
 
 msgctxt "lang_label_array:11"
 msgid "Armenian"
-msgstr ""
+msgstr "Armeens"
 
 msgctxt "lang_label_array:12"
 msgid "Greek"
-msgstr ""
+msgstr "Grieks"
 
 msgctxt "lang_label_array:13"
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebreeuws"
 
 msgctxt "lang_label_array:14"
 msgid "Galician"
-msgstr ""
+msgstr "Gallicisch"
 
 msgctxt "lang_label_array:15"
 msgid "Catalan"
-msgstr ""
+msgstr "Catalaans"
 
 msgctxt "lang_label_array:16"
 msgid "Czech"
+msgstr "Tsjechisch"
+
+msgctxt "lang_label_array:17"
+msgid "Arabic"
+msgstr "Arabisch"
+
+msgctxt "lang_label_array:18"
+msgid "Finnish"
+msgstr "Fins"
+
+msgctxt "lang_label_array:19"
+msgid "Hindi"
+msgstr "Hindi"
+
+msgctxt "lang_label_array:20"
+msgid "Kabyle"
+msgstr "Kabyle"
+
+msgctxt "lang_label_array:21"
+msgid "Korean"
+msgstr "Koreaans"
+
+msgctxt "lang_label_array:22"
+msgid "Latvian"
+msgstr "Lets"
+
+msgctxt "lang_label_array:23"
+msgid "Dutch"
+msgstr "Nederlands"
+
+msgctxt "lang_label_array:24"
+msgid "Brazilian portuguese"
+msgstr "Braziliaans Portugees"
+
+msgctxt "lang_label_array:25"
+msgid "Romanian"
+msgstr "Roemeens"
+
+msgctxt "lang_label_array:26"
+msgid "Swedish"
+msgstr "Zweeds"
+
+msgctxt "lang_label_array:27"
+msgid "Chinese"
+msgstr "Chinees"
+
+msgctxt "lang_label_array:28"
+msgid "Norwegian (Bokmal)"
+msgstr "Noors (Bokmal)"
+
+msgctxt "lang_label_array:29"
+msgid "Danish"
+msgstr ""
+
+msgctxt "lang_label_array:30"
+msgid "Simplified Chinese"
 msgstr ""
 
 msgctxt "images_array:0"
@@ -316,13 +442,17 @@ msgctxt "txtCategories"
 msgid "Categories :"
 msgstr "Categoriëen"
 
+msgctxt "txtLabels"
+msgid "Labels, certifications, awards :"
+msgstr "Etiketten, certificeringen, onderscheidingen:"
+
 msgctxt "txtManufacturing"
 msgid "Manufacturing or processing places :"
 msgstr "Productie- of verwerkingslocaties"
 
 msgctxt "txtIngredientsOrigins"
 msgid "Origin of ingredients :"
-msgstr ""
+msgstr "Herkomst van de ingrediënten"
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
@@ -371,15 +501,15 @@ msgstr "Voedingsstoffen per 100g"
 
 msgctxt "txtNutritionLevelLow"
 msgid "low"
-msgstr ""
+msgstr "laag"
 
 msgctxt "txtNutritionLevelModerate"
 msgid "moderate"
-msgstr ""
+msgstr "gemiddeld"
 
 msgctxt "txtNutritionLevelHigh"
 msgid "high"
-msgstr ""
+msgstr "hoog"
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -400,8 +530,8 @@ msgid ""
 "product labels."
 msgstr ""
 "Open Food Facts is een databank van voedingsproducten met ingrediënten, "
-"allergenen, voedingsadditieven, voedingswaardedeclaraties en alle "
-"interessante feitjes die we op het productetiket kunnen vinden."
+"allergenen, voedingswaarde en alle interessante feitjes die we op "
+"productetiketten kunnen vinden."
 
 msgctxt "txtSave"
 msgid "Send/Save"
@@ -512,7 +642,7 @@ msgstr "Winkel"
 
 msgctxt "hintBrand"
 msgid "Brand"
-msgstr ""
+msgstr "Merk"
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
@@ -527,8 +657,8 @@ msgid "No data"
 msgstr "Geen gegevens"
 
 msgctxt "txtPictureNeeded"
-msgid "Take a picture first!"
-msgstr "Maak eerst een foto!"
+msgid "Please take a picture first"
+msgstr "Gelieve eerst een foto te nemen"
 
 msgctxt "toastSending"
 msgid "Uploading..."
@@ -567,7 +697,7 @@ msgstr "Streepjescode verplicht"
 
 msgctxt "txtOk"
 msgid "OK"
-msgstr ""
+msgstr "Ok"
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
@@ -595,7 +725,7 @@ msgstr "Streepjescode niet geldig"
 
 msgctxt "try_it_scan_now"
 msgid "Scan product"
-msgstr ""
+msgstr "Product scannen"
 
 msgctxt "share"
 msgid "Share"
@@ -615,7 +745,7 @@ msgstr "Hoofdmenu"
 
 msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
-msgstr ""
+msgstr "Schoonheidsfeiten openen"
 
 msgctxt "search_drawer"
 msgid "Search"
@@ -705,8 +835,9 @@ msgstr ""
 "verzenden met onderstaande button."
 
 msgctxt "permission_camera"
-msgid "Camera permission is needed to scan barcode."
-msgstr "Toegang tot camera is nodig om streepjescodes te scannen"
+msgid "Camera permission is needed to scan barcodes and take pictures."
+msgstr ""
+"Om streepjescodes te scannen en foto's te nemen is cameratoestemming vereist."
 
 msgctxt "permission_title"
 msgid "Permission information"
@@ -717,8 +848,8 @@ msgid "Please activate permission in the settings"
 msgstr "Activeer alstublieft de toegang bij Instellingen"
 
 msgctxt "permission_storage"
-msgid "Storage is needed to take or choose pictures"
-msgstr "Opslag is nodig om foto's te maken en selecteren"
+msgid "Storage permission is needed to take or select pictures"
+msgstr "Om foto's te nemen of te selecteren is opslagtoestemming vereist"
 
 msgctxt "info_download_data"
 msgid ""
@@ -737,228 +868,271 @@ msgstr ""
 "je netwerkverbinding alstublieft."
 
 msgctxt "msg_input_empty"
-msgid "Fill input first!"
-msgstr ""
+msgid "Please fill the fields first."
+msgstr "Gelieve eerst de velden in te vullen."
 
 msgctxt "new_offline_info"
 msgid ""
 "Please take a picture of the product, ingredients, nutrition facts table and "
 "any other information on the label. Thank you!"
 msgstr ""
+"Gelieve een foto te maken van het product, ingrediënten, voedingswaardetabel "
+"en overige informatie op het etiket. Dank!"
 
 #. Strings related to login
 msgctxt "error_invalid_password"
 msgid "The password needs to be a least 6 characters long."
-msgstr ""
+msgstr "Het wachtwoord moet uit minstens 6 tekens bestaan."
 
 msgctxt "error_field_required"
 msgid "This field is required."
-msgstr ""
+msgstr "Dit veld is verplicht."
 
 msgctxt "action_preferences"
 msgid "Preferences"
-msgstr ""
+msgstr "Voorkeuren"
 
 msgctxt "prefs_scan_startup"
 msgid "Scan on startup"
-msgstr ""
+msgstr "Bij opstarten scannen"
 
 msgctxt "prefs_scan_startup_summary"
 msgid "This option if selected will start scan when app is opened."
 msgstr ""
+"Als deze optie geselecteerd is, zal het scannen worden gestart wanneer de "
+"app geopend wordt."
 
 msgctxt "prefs_power_mode"
 msgid "Power mode scan"
-msgstr ""
+msgstr "Energiebesparend scannen"
 
 msgctxt "prefs_power_mode_summary"
 msgid ""
 "Quickly scan products in a supermarket to see which one are not in the "
 "database."
 msgstr ""
+"Snel producten scannen in een supermarkt om te zien welke er niet in de "
+"database staan."
 
 msgctxt "prefs_language"
 msgid "Language"
-msgstr ""
+msgstr "Taal"
 
 msgctxt "prefs_language_summary"
 msgid "Change language"
-msgstr ""
+msgstr "Een andere taal kiezen"
 
 msgctxt "scan_history_drawer"
 msgid "History"
-msgstr ""
+msgstr "Geschiedenis"
 
 msgctxt "clear_history"
 msgid "Clear history"
-msgstr ""
+msgstr "Geschiedenis wissen"
 
 msgctxt "title_clear_history_dialog"
 msgid "Clear"
-msgstr ""
+msgstr "Wissen"
 
 msgctxt "text_clear_history_dialog"
 msgid "Do you want to clear all scan history?"
-msgstr ""
+msgstr "Wilt u de hele scangeschiedenis wissen?"
 
 msgctxt "export_csv_history"
 msgid "Export CSV"
-msgstr ""
+msgstr "CSV exporteren"
 
 msgctxt "txt_exporting_history"
 msgid "Exporting history..."
-msgstr ""
+msgstr "Geschiedenis exporteren…"
 
 msgctxt "txt_history_exported"
 msgid "History exported"
-msgstr ""
+msgstr "Geschiedenis geëxporteerd"
 
 msgctxt "permision_write_external_storage"
 msgid "Write external storage permission is needed to export history."
 msgstr ""
+"Toestemming om te schrijven naar extern opslagmedium is vereist om "
+"geschiedenis te exporteren."
 
 msgctxt "txt_nutrition_not_found"
 msgid "N/A"
-msgstr ""
+msgstr "N.v.t."
 
 #. Nutrition info tab
 msgctxt "nutrition_carbohydrate"
 msgid "Carbohydrate"
-msgstr ""
+msgstr "Koolhydraten"
 
 msgctxt "nutrition_carbohydrate_short_name"
 msgid "Carbohydrate (g)"
-msgstr ""
+msgstr "Koolhydraat (g)"
 
 msgctxt "nutrition_cholesterol"
 msgid "Cholesterol"
-msgstr ""
+msgstr "Cholesterol"
 
 msgctxt "nutrition_cholesterol_short_name"
 msgid "Cholesterol (g)"
-msgstr ""
+msgstr "Cholesterol (g)"
 
 msgctxt "nutrition_energy"
 msgid "Energy"
-msgstr ""
+msgstr "Energie"
 
 msgctxt "nutrition_energy_short_name"
 msgid "Energy"
-msgstr ""
+msgstr "Energie"
 
 msgctxt "nutrition_fat"
 msgid "Fat"
-msgstr ""
+msgstr "Vet"
 
 msgctxt "nutrition_fat_short_name"
 msgid "Fat (g)"
-msgstr ""
+msgstr "Vet (g)"
 
 msgctxt "nutrition_fiber"
 msgid "Dietary fiber"
-msgstr ""
+msgstr "Voedingsvezels"
 
 msgctxt "nutrition_fiber_short_name"
 msgid "Dietary fiber (g)"
-msgstr ""
+msgstr "Voedingsvezels (g)"
 
 msgctxt "nutrition_header"
 msgid "Nutrition facts"
-msgstr ""
+msgstr "Voedingswaarden"
 
 msgctxt "nutrition_no_data_message"
 msgid "No data is available for this product"
-msgstr ""
+msgstr "Er zijn geen gegevens beschikbaar voor dit product"
 
 msgctxt "nutrition_per_quantity"
 msgid "For 100g/100ml"
-msgstr ""
+msgstr "Voor 100g/100ml"
 
 msgctxt "nutrition_proteins"
 msgid "Proteins"
-msgstr ""
+msgstr "Eiwitten"
 
 msgctxt "nutrition_proteins_short_name"
 msgid "Proteins (g)"
-msgstr ""
+msgstr "Eiwitten (g)"
 
 msgctxt "nutrition_salt"
 msgid "Salt"
-msgstr ""
+msgstr "Zout"
 
 msgctxt "nutrition_salt_short_name"
 msgid "Salt (g)"
-msgstr ""
+msgstr "Zout (g)"
 
 msgctxt "nutrition_satured_fat"
 msgid "Satured fat"
-msgstr ""
+msgstr "Verzadigd vet"
 
 msgctxt "nutrition_satured_fat_short_name"
 msgid "Satured fat (g)"
-msgstr ""
+msgstr "Verzadigd vet (g)"
 
 msgctxt "nutrition_serving"
 msgid "Per serving"
-msgstr ""
+msgstr "Per portie"
 
 msgctxt "nutrition_serving_size"
 msgid "Serving size :"
-msgstr ""
+msgstr "Portiegrootte:"
 
 msgctxt "nutrition_sodium"
 msgid "Sodium"
-msgstr ""
+msgstr "Natrium"
 
 msgctxt "nutrition_sodium_short_name"
 msgid "Sodium (g)"
-msgstr ""
+msgstr "Natrium (g)"
 
 msgctxt "nutrition_sugars"
 msgid "Sugars"
-msgstr ""
+msgstr "Suikers"
 
 msgctxt "nutrition_sugars_short_name"
 msgid "Sugars (g)"
-msgstr ""
+msgstr "Suikers (g)"
 
 msgctxt "nutrition_trans_fat"
 msgid "Trans fat"
-msgstr ""
+msgstr "Transvet"
 
 msgctxt "nutrition_trans_fat_short_name"
 msgid "Trans fat (g)"
-msgstr ""
+msgstr "Transvet (g)"
 
 msgctxt "nutriment_serving_size"
 msgid "Per portion :"
-msgstr ""
+msgstr "Per portie:"
 
 msgctxt "action_manage_account"
 msgid "Manage account"
-msgstr ""
+msgstr "Account beheren"
 
 msgctxt "action_contributes"
 msgid "Your contributions"
-msgstr ""
+msgstr "Uw bijdragen"
 
 #. website translated pages
+#. For fr, Replace by https://world-fr.openfoodfacts.org/
 msgctxt "website"
-msgid "http://world.openfoodfacts.org/"
-msgstr ""
+msgid "https://world.openfoodfacts.org/"
+msgstr "https://world-nl.openfoodfacts.org/"
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/contribuer
 msgctxt "website_contribute"
-msgid "http://world.openfoodfacts.org/contribute"
-msgstr ""
+msgid "https://world.openfoodfacts.org/contribute"
+msgstr "https://world-nl.openfoodfacts.org/contribute"
 
 msgctxt "website_discover"
-msgid "http://world.openfoodfacts.org/discover"
-msgstr ""
+msgid "https://world.openfoodfacts.org/discover"
+msgstr "https://world-nl.openfoodfacts.org/discover"
 
 msgctxt "website_product"
-msgid "http://world.openfoodfacts.org/product/"
-msgstr ""
+msgid "https://world.openfoodfacts.org/product/"
+msgstr "https://world-nl.openfoodfacts.org/product/"
 
 msgctxt "website_contributor"
-msgid "http://world.openfoodfacts.org/contributor/"
+msgid "https://world.openfoodfacts.org/contributor/"
+msgstr "https://world-nl.openfoodfacts.org/gebruiker/"
+
+msgctxt "logout_drawer"
+msgid "Logout"
+msgstr "Afmelden"
+
+msgctxt "contribution_without_account"
+msgid "You can sign-in or create an account to keep your contributions"
 msgstr ""
+"U kunt zich aanmelden of een account aanmaken om uw bijdragen te bewaren"
+
+msgctxt "textCarbonFootprint"
+msgid "Carbon footprint / CO2 emissions: "
+msgstr "Carbon footprint / CO2-uitstoot: "
+
+#~ msgctxt "website"
+#~ msgid "http://world.openfoodfacts.org/"
+#~ msgstr "http://world.openfoodfacts.org/"
+
+#~ msgctxt "website_contribute"
+#~ msgid "http://world.openfoodfacts.org/contribute"
+#~ msgstr "http://world.openfoodfacts.org/contribute"
+
+#~ msgctxt "website_product"
+#~ msgid "http://world.openfoodfacts.org/product/"
+#~ msgstr "http://world.openfoodfacts.org/product/"
+
+#~ msgctxt "website_discover"
+#~ msgid "http://world.openfoodfacts.org/discover"
+#~ msgstr "http://world.openfoodfacts.org/discover"
+
+#~ msgctxt "website_contributor"
+#~ msgid "http://world.openfoodfacts.org/contributor/"
+#~ msgstr "http://world.openfoodfacts.org/contributor/"

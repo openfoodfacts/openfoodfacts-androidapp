@@ -7,12 +7,12 @@
   <string name="action_discover">Découvrir</string>
   <string name="action_contribute">Contribuer</string>
   <string name="action_find">Chercher</string>
-  <string name="text_barcode">Ajoutez le code barre :</string>
+  <string name="text_barcode">Saisissez le code-barre :</string>
   <string-array name="nav_drawer_items_product">
     <item>Résumé</item>
     <item>Ingrédients</item>
     <item>Nutrition</item>
-    <item>Détails nutritionnels</item>
+    <item>Tableau nutritionnel</item>
     <item>Retour au menu</item>
   </string-array>
   <string-array name="units_array">
@@ -40,6 +40,20 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Anglais</item>
@@ -59,6 +73,20 @@
     <item>Galicien</item>
     <item>Catalan</item>
     <item>Tchèque</item>
+    <item>arabe</item>
+    <item>finnois</item>
+    <item>hindi</item>
+    <item>kabyle</item>
+    <item>coréen</item>
+    <item>letton</item>
+    <item>néerlandais</item>
+    <item>brésilien</item>
+    <item>roumain</item>
+    <item>suédois</item>
+    <item>chinois</item>
+    <item>norvégien (Bokmal)</item>
+    <item>Danois</item>
+    <item>Chinois simplifié</item>
   </string-array>
   <string-array name="images_array">
     <item>Defaut</item>
@@ -75,8 +103,9 @@
   <string name="txtBarcode">Code barre :</string>
   <string name="txtQuantity">Quantité :</string>
   <string name="txtPackaging">Conditionnement :</string>
-  <string name="txtBrands">Marques :</string>
+  <string name="txtBrands">Magasins :</string>
   <string name="txtCategories">Catégories :</string>
+  <string name="txtLabels">Labels, certifications, récompenses :</string>
   <string name="txtManufacturing">Lieux de fabrication ou de transformation :</string>
   <string name="txtIngredientsOrigins">Origine des ingrédients :</string>
   <string name="txtCity">Ville et pays d\'achat :</string>
@@ -126,7 +155,7 @@
   <string name="txtTakePicture">Prendre une photo</string>
   <string name="txtSendAll">Tout envoyer</string>
   <string name="txtNoData">Aucune donnée</string>
-  <string name="txtPictureNeeded">Commencez par prendre une photo !</string>
+  <string name="txtPictureNeeded">Veuillez d\'abord prendre une photo</string>
   <string name="toastSending">Envoi..</string>
   <string name="dataSaved">Données enregistrées en local...</string>
   <string name="txtInfoAddUser">Veuillez ajouter un utilisateur</string>
@@ -166,13 +195,13 @@
   <string name="action_edit_product">Modifier le produit</string>
   <string name="title_info_dialog">Information</string>
   <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
-  <string name="permission_camera">L\'autorisation d\'accès à la caméra est nécessaire pour pouvoir scanner le code-barres.</string>
+  <string name="permission_camera">L\'autorisation de l\'appareil photo est nécessaire pour scanner des codes barres et prendre des photos.</string>
   <string name="permission_title">Information sur les permissions</string>
   <string name="permission_denied">Veuillez activer la permission dans les paramètres</string>
-  <string name="permission_storage">Le Stockage est requis pour pouvoir prendre ou choisir des photos</string>
+  <string name="permission_storage">L\'autorisation de stockage est nécessaire pour prendre ou sélectionner des photos</string>
   <string name="info_download_data">Vous devez télécharger des données pour que cette fonctionnalité marche, veuillez appuyer sur « Oui » pour les télécharger.</string>
   <string name="info_download_data_connection">Vous devez télécharger des données pour que cette fonctionnalité marche. Veuillez activer votre connexion Internet.</string>
-  <string name="msg_input_empty">Remplissez tout d\'abord l\'entrée !</string>
+  <string name="msg_input_empty">Veuillez remplir les champs en premier.</string>
   <string name="new_offline_info">Veuillez prendre une photo du produit, des ingrédients, des valeurs nutritionnelles et de toutes les autres informations sur l\'étiquette. Merci !</string>
   <string name="error_invalid_password">Le mot de passe doit comporter au moins 6 caractères.</string>
   <string name="error_field_required">Ce champ est obligatoire.</string>
@@ -222,11 +251,12 @@
   <string name="nutriment_serving_size">Par portion :</string>
   <string name="action_manage_account">Gérer votre compte</string>
   <string name="action_contributes">Vos contributions</string>
-  <string name="website">http://fr.openfoodfacts.org/</string>
-  <string name="website_contribute">http://world-fr.openfoodfacts.org/contribuer</string>
-  <string name="website_discover">http://world-fr.openfoodfacts.org/decouvrir</string>
-  <string name="website_product">http://world-fr.openfoodfacts.org/produit/</string>
-  <string name="website_contributor">http://world-fr.openfoodfacts.org/contributeur/</string>
-  <string name="logout_drawer">Logout</string>
-  <string name="txtLabels">"Labels, certifications, récompenses : "</string>
+  <string name="website">https://world-fr.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-fr.openfoodfacts.org/contribuer</string>
+  <string name="website_discover">https://world-fr.openfoodfacts.org/decouvrir</string>
+  <string name="website_product">https://world-fr.openfoodfacts.org/produit/</string>
+  <string name="website_contributor">https://world-fr.openfoodfacts.org/contributeur/</string>
+  <string name="logout_drawer">Se déconnecter</string>
+  <string name="contribution_without_account">Vous pouvez vous connecter ou créer un compte pour conserver vos contributions</string>
+  <string name="textCarbonFootprint">"Empreinte carbone / émissions de CO2: "</string>
 </resources>

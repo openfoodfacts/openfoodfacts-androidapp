@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Html;
@@ -28,14 +29,15 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class IngredientsProductFragment extends BaseFragment {
 
-    public static final Pattern CODE_PATTERN = Pattern.compile("[eE][a-zA-Z0-9]+");
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[a-zA-Z0-9(),àâçéèêëîïôûùüÿñæœ.-]+");
     public static final Pattern ALLERGEN_PATTERN = Pattern.compile("[a-zA-Z0-9àâçéèêëîïôûùüÿñæœ]+");
     @BindView(R.id.textIngredientProduct) TextView ingredientsProduct;
@@ -60,90 +62,102 @@ public class IngredientsProductFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
 
-        if (isNotEmpty(mState.getProduct().getImageIngredientsUrl())) {
+        final Product product = mState.getProduct();
+
+        if (isNotEmpty(product.getImageIngredientsUrl())) {
             Picasso.with(view.getContext())
-                    .load(mState.getProduct().getImageIngredientsUrl())
+                    .load(product.getImageIngredientsUrl())
                     .into(mImageNutritionFullIng);
-            mUrlImage = mState.getProduct().getImageIngredientsUrl();
+            mUrlImage = product.getImageIngredientsUrl();
+        } else {
+            mImageNutritionFullIng.setVisibility(View.GONE);
         }
 
-        if(mState != null && mState.getProduct().getIngredientsText() != null) {
-            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(Html.fromHtml(mState.getProduct().getIngredientsText().replace("_","")));
-            txtIngredients = setSpanBoldBetweenTokens(txtIngredients);
-            if(!txtIngredients.toString().substring(txtIngredients.toString().indexOf(":")).trim().isEmpty()) {
-                ingredientsProduct.setText(txtIngredients);
+        if(mState != null && product.getIngredientsText() != null) {
+            String txtIngredients = product.getIngredientsText().replace("_","").trim();
+            if(!txtIngredients.isEmpty()) {
+                String ingredientsValue = setSpanBoldBetweenTokens(txtIngredients).toString();
+                ingredientsProduct.setText(ingredientsValue);
             } else {
                 ingredientsProduct.setVisibility(View.GONE);
             }
         }
 
         if(!cleanAllergensString().trim().isEmpty()) {
-            substanceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtSubstances) + "</b>" + ' ' + cleanAllergensString()));
+            substanceProduct.append(bold(getString(R.string.txtSubstances)));
+            substanceProduct.append(" ");
+            substanceProduct.append(cleanAllergensString());
         } else {
             substanceProduct.setVisibility(View.GONE);
         }
+
         String traces;
-        if (mState.getProduct().getTraces() == null) {
+        if (product.getTraces() == null) {
             traceProduct.setVisibility(View.GONE);
         } else {
-            traces = mState.getProduct().getTraces().replace(",", ", ");
+            traces = product.getTraces().replace(",", ", ");
             if(traces.isEmpty()) {
                 traceProduct.setVisibility(View.GONE);
             } else {
-                traceProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtTraces) + "</b>" + ' ' + traces));
+                traceProduct.append(bold(getString(R.string.txtTraces)));
+                traceProduct.append(" ");
+                traceProduct.append(traces);
             }
         }
-        if(!mState.getProduct().getAdditivesTags().toString().replace("[", "").replace("]", "").isEmpty()) {
-            additiveProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtAdditives) + "</b>" + ' ' + mState.getProduct().getAdditivesTags().toString().replace("[", "").replace("]", "").replace("en:", " ").replace("fr:", " ")));
-        } else {
-            additiveProduct.setVisibility(View.GONE);
-        }
-        if (mState.getProduct().getIngredientsFromPalmOilN() == 0 && mState.getProduct().getIngredientsFromOrThatMayBeFromPalmOilN() == 0) {
-            palmOilProduct.setVisibility(View.VISIBLE);
-            palmOilProduct.setText(getString(R.string.txtPalm));
-        } else {
-            if (!mState.getProduct().getIngredientsFromPalmOilTags().toString().replace("[", "").replace("]", "").isEmpty()) {
-                palmOilProduct.setVisibility(View.VISIBLE);
-                palmOilProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtPalmOilProduct) + "</b>" + ' ' + mState.getProduct().getIngredientsFromPalmOilTags().toString().replace("[", "").replace("]", "")));
-            }
-            if (!mState.getProduct().getIngredientsThatMayBeFromPalmOilTags().toString().replace("[", "").replace("]", "").isEmpty()) {
-                mayBeFromPalmOilProduct.setVisibility(View.VISIBLE);
-                mayBeFromPalmOilProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtMayBeFromPalmOilProduct) + "</b>" + ' ' + mState.getProduct().getIngredientsThatMayBeFromPalmOilTags().toString().replace("[", "").replace("]", "")));
-            }
-        }
-        SpannableStringBuilder txt = new SpannableStringBuilder(Html.fromHtml(mState.getProduct().getAdditivesTags().toString().replace("[", "").replace("]", "").replace("en:", " ").replace("fr:", " ")).toString());
-        txt = setSpanClickBetweenTokens(txt, containerView);
-        if(!txt.toString().trim().isEmpty()) {
+
+        if(!product.getAdditivesTags().isEmpty()) {
             additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            additiveProduct.setText(txt, TextView.BufferType.SPANNABLE);
+            additiveProduct.append(bold(getString(R.string.txtAdditives)));
+            additiveProduct.append(" ");
+
+            for (String tag : product.getAdditivesTags()) {
+                String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "");
+                additiveProduct.append(getSpanTag(tagWithoutLocale, view));
+            }
         } else {
             additiveProduct.setVisibility(View.GONE);
         }
 
+        if (product.getIngredientsFromPalmOilN() == 0 && product.getIngredientsFromOrThatMayBeFromPalmOilN() == 0) {
+            palmOilProduct.setVisibility(View.GONE);
+            mayBeFromPalmOilProduct.setVisibility(View.GONE);
+        } else {
+            if (!product.getIngredientsFromPalmOilTags().isEmpty()) {
+                palmOilProduct.append(bold(getString(R.string.txtPalmOilProduct)));
+                palmOilProduct.append(" ");
+                palmOilProduct.append(product.getIngredientsFromPalmOilTags().toString().replaceAll("[\\[,\\]]", ""));
+            } else {
+                palmOilProduct.setVisibility(View.GONE);
+            }
+            if (!product.getIngredientsThatMayBeFromPalmOilTags().isEmpty()) {
+                mayBeFromPalmOilProduct.append(bold(getString(R.string.txtMayBeFromPalmOilProduct)));
+                mayBeFromPalmOilProduct.append(" ");
+                mayBeFromPalmOilProduct.append(product.getIngredientsThatMayBeFromPalmOilTags().toString().replaceAll("[\\[,\\]]", ""));
+            } else {
+                mayBeFromPalmOilProduct.setVisibility(View.GONE);
+            }
+        }
     }
 
-    private SpannableStringBuilder setSpanClickBetweenTokens(CharSequence text, final View view) {
-        final SpannableStringBuilder ssb = new SpannableStringBuilder(text);
-        Matcher m = CODE_PATTERN.matcher(ssb);
-        while (m.find()) {
-            final String tm = m.group();
-            final List<Additive> la = Additive.find(Additive.class, "code = ?", tm.toUpperCase());
-            if (la.size() >= 1) {
-                final Additive additive = la.get(0);
-                ClickableSpan clickableSpan = new ClickableSpan() {
-                    @Override
-                    public void onClick(View v) {
-                        new MaterialDialog.Builder(view.getContext())
-                                .title(additive.getCode() + " : " + additive.getName())
-                                .content(additive.getRisk().toUpperCase())
-                                .positiveText(R.string.txtOk)
-                                .show();
-                    }
-                };
-                ssb.setSpan(clickableSpan, m.start(), m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
+    private CharSequence getSpanTag(String tag, final View view) {
+        final SpannableStringBuilder ssb = new SpannableStringBuilder();
+        final List<Additive> la = Additive.find(Additive.class, "code = ?", tag.toUpperCase());
+        if (la.size() >= 1) {
+            final Additive additive = la.get(0);
+            ClickableSpan clickableSpan = new ClickableSpan() {
+                @Override
+                public void onClick(View v) {
+                    new MaterialDialog.Builder(view.getContext())
+                            .title(additive.getCode() + " : " + additive.getName())
+                            .content(additive.getRisk().toUpperCase())
+                            .positiveText(R.string.txtOk)
+                            .show();
+                }
+            };
+            ssb.append(tag);
+            ssb.setSpan(clickableSpan, 0, ssb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            ssb.append(" ");
         }
-        ssb.insert(0, Html.fromHtml("<b>" + getString(R.string.txtAdditives) + "</b>" + ' '));
         return ssb;
     }
 
@@ -154,7 +168,7 @@ public class IngredientsProductFragment extends BaseFragment {
             final String tm = m.group();
             for (String l: cleanAllergensMultipleOccurrences()) {
                 if(l.equalsIgnoreCase(tm.replaceAll("[(),.-]+", ""))) {
-                    StyleSpan bold = new StyleSpan(android.graphics.Typeface.BOLD);
+                    StyleSpan bold = new StyleSpan(Typeface.BOLD);
                     if(tm.contains("(")) {
                         ssb.setSpan(bold, m.start()+1, m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     } else if(tm.contains(")")) {

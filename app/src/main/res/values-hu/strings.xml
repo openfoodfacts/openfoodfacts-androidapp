@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="hello_world">Helló világ!</string>
+  <string-array name="nav_drawer_items_product">
+    <item>Summary</item>
+    <item>Össztevők</item>
+    <item>Nutrition</item>
+    <item>Nutrition Table</item>
+    <item>Back to menu</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+  </string-array>
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
+  </string-array>
+  <string-array name="lang_label_array">
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
+    <item>Swedish</item>
+    <item>Burmese</item>
+    <item>Kazakh</item>
+    <item>Armenian</item>
+    <item>Greek</item>
+    <item>Héber</item>
+    <item>Galician</item>
+    <item>Katalán</item>
+    <item>Cseh</item>
+    <item>Arab</item>
+    <item>Finn</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Lett</item>
+    <item>Holland</item>
+    <item>Brazilian portuguese</item>
+    <item>Román</item>
+    <item>Svéd</item>
+    <item>Kínai</item>
+    <item>Norvég (Bokmål)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Default</item>
+    <item>Nutrition</item>
+    <item>Össztevők</item>
+  </string-array>
+  <string name="toast_retrieving">Betöltés…</string>
+  <string name="txtPass">Jelszó :</string>
+  <string name="hintPass">Jelszó</string>
+  <string name="toastSending">Feltöltés...</string>
+  <string name="txtLoading">Betöltés…</string>
+  <string name="nutrition_carbohydrate">Szénhidrát</string>
+  <string name="nutrition_energy">Energia</string>
+  <string name="nutrition_energy_short_name">Energia</string>
+  <string name="nutrition_fat">Zsír</string>
+  <string name="nutrition_fiber">Élelmi rost</string>
+  <string name="nutrition_header">Tápanyag ismertető</string>
+  <string name="nutrition_proteins">Fehérje</string>
+  <string name="nutrition_salt">Só</string>
+  <string name="nutrition_sodium">Nátrium</string>
+  <string name="nutrition_sodium_short_name">Nátrium (g)</string>
+  <string name="action_manage_account">Fiók kezelése</string>
+</resources>

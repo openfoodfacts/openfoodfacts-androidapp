@@ -7,12 +7,12 @@
   <string name="action_discover">О проекте</string>
   <string name="action_contribute">Как помочь</string>
   <string name="action_find">Найти</string>
-  <string name="text_barcode">Поместите штрих-код</string>
+  <string name="text_barcode">Введите штрихкод</string>
   <string-array name="nav_drawer_items_product">
     <item>Резюме</item>
     <item>Ингредиенты</item>
     <item>Пищевая ценность</item>
-    <item>Full Nutrition</item>
+    <item>Состав</item>
     <item>Назад в меню</item>
   </string-array>
   <string-array name="units_array">
@@ -40,6 +40,20 @@
     <item>Галисийский</item>
     <item>Каталанский</item>
     <item>Чешский</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Английский</item>
@@ -59,6 +73,20 @@
     <item>Галисийский</item>
     <item>Каталанский</item>
     <item>Чешский</item>
+    <item>Арабский</item>
+    <item>Финский</item>
+    <item>Хинди</item>
+    <item>Кабильский</item>
+    <item>Корейский</item>
+    <item>Латышский</item>
+    <item>Голландский</item>
+    <item>Португальский (Бразилия)</item>
+    <item>Румынский</item>
+    <item>Шведский</item>
+    <item>Китайский</item>
+    <item>Норвежский (Букмол)</item>
+    <item>Датский</item>
+    <item>Китайский (упрощенный)</item>
   </string-array>
   <string-array name="images_array">
     <item>По умолчанию</item>
@@ -77,6 +105,7 @@
   <string name="txtPackaging">Упаковка:</string>
   <string name="txtBrands">Торговые марки:</string>
   <string name="txtCategories">Категории:</string>
+  <string name="txtLabels">Марки, сертификаты, награды:</string>
   <string name="txtManufacturing">Места производства или переработки:</string>
   <string name="txtIngredientsOrigins">Происхождение ингредиентов:</string>
   <string name="txtCity">Город, область и страна покупки:</string>
@@ -126,7 +155,7 @@
   <string name="txtTakePicture">Сделайте фото</string>
   <string name="txtSendAll">Отправить все</string>
   <string name="txtNoData">Нет данных</string>
-  <string name="txtPictureNeeded">Сначала сфотографируйте!</string>
+  <string name="txtPictureNeeded">Сначала сделайте фото</string>
   <string name="toastSending">Передача...</string>
   <string name="dataSaved">Сохранено на вашем устройстве</string>
   <string name="txtInfoAddUser">Введите имя и пароль</string>
@@ -166,19 +195,21 @@
   <string name="action_edit_product">Редактировать продукт</string>
   <string name="title_info_dialog">Информация</string>
   <string name="text_offline_info_dialog">"Вы можете сканировать продукты будучи офлайн, и отправить их на Open Food Facts потом.  Все сканируемые продукты будут появляться здесь, и их можно будет отправить кнопкой, которая ниже."</string>
-  <string name="permission_camera">Для сканирования штрихкода нужен доступ к камере.</string>
+  <string name="permission_camera">Разрешение на доступ к камере требуется для сканирования штрих-кодов и получения фото.</string>
   <string name="permission_title">Информация о разрешениях</string>
   <string name="permission_denied">Пожалуйста, включите разрешение в настройках.</string>
-  <string name="permission_storage">Для фотографирования и выбора фотографий нужен доступ к носителю данных.</string>
+  <string name="permission_storage">Разрешение на доступ к SD-карте требуется для выбора фото</string>
   <string name="info_download_data">Для работы этой функциональности требуется скачать некоторые данные; для этого нажмите, пожалуйста, «Да».</string>
   <string name="info_download_data_connection">Для работы этой функциональности требуется скачать некоторые данные. Пожалуйста, включите интернет-соединение.</string>
-  <string name="msg_input_empty">Сначала заполните поле!</string>
+  <string name="msg_input_empty">Сначала заполните поле.</string>
   <string name="new_offline_info">Сделайте фото продукта, состава, пищевой ценности и другой информации на этикетке. Спасибо!</string>
   <string name="error_invalid_password">Длина пароля должна быть не менее 6 символов.</string>
   <string name="error_field_required">Это поле обязательно.</string>
   <string name="action_preferences">Настройки</string>
   <string name="prefs_scan_startup">Сканировать при запуске</string>
   <string name="prefs_scan_startup_summary">Если опция включена, сканирование запустится сразу после запуска.</string>
+  <string name="prefs_power_mode">Потоковое сканирование</string>
+  <string name="prefs_power_mode_summary">Быстрое сканирование продуктов в супермаркете для определения отсутствующих в базе данных.</string>
   <string name="prefs_language">Язык</string>
   <string name="prefs_language_summary">Сменить язык</string>
   <string name="scan_history_drawer">История</string>
@@ -220,9 +251,12 @@
   <string name="nutriment_serving_size">На порцию:</string>
   <string name="action_manage_account">Управление учётной записью</string>
   <string name="action_contributes">Ваш вклад</string>
-  <string name="website">http://world.openfoodfacts.org/</string>
-  <string name="website_contribute">http://world.openfoodfacts.org/contribute</string>
-  <string name="website_discover">http://world.openfoodfacts.org/discover</string>
-  <string name="website_product">http://world.openfoodfacts.org/product/</string>
-  <string name="website_contributor">http://world.openfoodfacts.org/contributor/</string>
+  <string name="website">https://world-ru.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-ru.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-ru.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-ru.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world-ru.openfoodfacts.org/contributor/</string>
+  <string name="logout_drawer">Выйти</string>
+  <string name="contribution_without_account">Вы можете войти или создать учётную запись, чтобы сохранить ваш вклад</string>
+  <string name="textCarbonFootprint">"Углеродный след / выбросы CO2: "</string>
 </resources>

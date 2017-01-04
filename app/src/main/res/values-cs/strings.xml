@@ -1,15 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="app_name">Open Food</string>
   <string name="hello_world">Ahoj světe!</string>
   <string name="action_settings">Nastavení</string>
   <string name="action_about">O aplikaci</string>
+  <string name="action_discover">Objevte</string>
+  <string name="action_contribute">Přispět</string>
   <string name="action_find">Vyhledat</string>
   <string-array name="nav_drawer_items_product">
     <item>Shrnutí</item>
-    <item>Ingredients</item>
-    <item>Nutrition</item>
-    <item>Full Nutrition</item>
-    <item>Back to menu</item>
+    <item>Složení</item>
+    <item>Nutriční hodnoty</item>
+    <item>Nutrition Table</item>
+    <item>Návrat do menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -36,6 +39,20 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh_rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
@@ -55,6 +72,20 @@
     <item>Galician</item>
     <item>Catalan</item>
     <item>Czech</item>
+    <item>Arabic</item>
+    <item>Finnish</item>
+    <item>Hindi</item>
+    <item>Kabyle</item>
+    <item>Korean</item>
+    <item>Latvian</item>
+    <item>Dutch</item>
+    <item>Brazilian portuguese</item>
+    <item>Romanian</item>
+    <item>Swedish</item>
+    <item>Chinese</item>
+    <item>Norwegian (Bokmal)</item>
+    <item>Danish</item>
+    <item>Simplified Chinese</item>
   </string-array>
   <string-array name="images_array">
     <item>Výchozí</item>
@@ -64,4 +95,10 @@
   <string name="search_button">Vyhledat</string>
   <string name="alert_dialog_warning_title">Varování</string>
   <string name="toast_retrieving">Načítá se…</string>
+  <string name="txtPass">Heslo :</string>
+  <string name="hintPass">Heslo</string>
+  <string name="txtYes">Ano</string>
+  <string name="txtNo">Ne</string>
+  <string name="sign_in_drawer">Podepiš</string>
+  <string name="nutrition_header">Nutriční hodnoty</string>
 </resources>

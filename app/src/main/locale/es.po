@@ -230,7 +230,7 @@ msgstr "Envasado :"
 
 msgctxt "txtBrands"
 msgid "Brands :"
-msgstr "MArcas :"
+msgstr "Marcas :"
 
 msgctxt "txtCategories"
 msgid "Categories :"
