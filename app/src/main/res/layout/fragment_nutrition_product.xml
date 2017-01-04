@@ -28,7 +28,6 @@
         android:layout_marginTop="@dimen/spacing_tiny"
         android:background="@drawable/textview_full"
         android:padding="@dimen/spacing_small"
-        android:text="@string/txtServingSize"
         android:textIsSelectable="true"
         android:textSize="@dimen/font_normal" />
 
