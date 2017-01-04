@@ -259,4 +259,6 @@
   <string name="logout_drawer">Se déconnecter</string>
   <string name="contribution_without_account">Vous pouvez vous connecter ou créer un compte pour conserver vos contributions</string>
   <string name="textCarbonFootprint">"Empreinte carbone / émissions de CO2: "</string>
+  <string name="action_search">Rechercher</string>
+  <string name="search_hint">Rechercher un produit</string>
 </resources>

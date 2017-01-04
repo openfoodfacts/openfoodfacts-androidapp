@@ -301,5 +301,7 @@
     <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
     <string name="txtDialogPowerMode">Quick view</string>
     <string name="txtSeeMore">See more</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Search a product</string>
 
 </resources>

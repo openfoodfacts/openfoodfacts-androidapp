@@ -1,7 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
+import android.app.SearchManager;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -15,7 +17,10 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -47,6 +52,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsResultsFragment;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -86,7 +92,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         final IProfile profile = getUserProfile();
         LocaleHelper.setLocale(this, LocaleHelper.getLanguage(this));
 
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
@@ -107,7 +112,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         customTabActivityHelper.setConnectionCallback(this);
         customTabsIntent = new CustomTabsIntent.Builder(customTabActivityHelper.getSession())
                 .setShowTitle(true)
-                .setToolbarColor(getResources().getColor(R.color.indigo_400))
+                .setToolbarColor(getResources().getColor(R.color.md_light_appbar))
                 .setCloseButtonIcon(((BitmapDrawable) getResources().getDrawable(R.drawable.ic_navigation_arrow_back)).getBitmap())
                 .build();
 
@@ -383,22 +388,76 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchMenuItem.getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                if (isEmpty(query)) {
+//                    return false;
+//                }
+//
+//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//                Fragment newFragment = new SearchProductsResultsFragment();
+//                Bundle args = new Bundle();
+//                args.putString("query", query);
+//                newFragment.setArguments(args);
+//
+//                transaction.replace(R.id.fragment_container, newFragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+//
+//                // not need to send the search intent
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                return false;
+//            }
+//        });
+
+        MenuItemCompat.setOnActionExpandListener(searchMenuItem, new MenuItemCompat.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                //TODO not replace if no search has been done (no switch of fragment)
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new HomeFragment())
+                        .commit();
+                return true;
+            }
+        });
+
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_contribute:
-                CustomTabActivityHelper.openCustomTab(this, customTabsIntent, contributeUri, new WebViewFallback());
-                return true;
-            case R.id.action_discover:
-                CustomTabActivityHelper.openCustomTab(this, customTabsIntent, discoverUri, new WebViewFallback());
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+
+
+//    TODO put the link in the text with accent colors
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.action_contribute:
+//                CustomTabActivityHelper.openCustomTab(this, customTabsIntent, contributeUri, new WebViewFallback());
+//                return true;
+//            case R.id.action_discover:
+//                CustomTabActivityHelper.openCustomTab(this, customTabsIntent, discoverUri, new WebViewFallback());
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
@@ -481,6 +540,25 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     protected void onDestroy() {
         super.onDestroy();
         customTabActivityHelper.setConnectionCallback(null);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            Fragment newFragment = new SearchProductsResultsFragment();
+            Bundle args = new Bundle();
+            args.putString("query", query);
+            newFragment.setArguments(args);
+
+            transaction.replace(R.id.fragment_container, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
     }
 
 }
