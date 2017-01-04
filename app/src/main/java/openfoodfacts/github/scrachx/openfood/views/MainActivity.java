@@ -152,21 +152,21 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .withHasStableIds(true)
                 .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
                 .addDrawerItems(
-                    new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(FontAwesome.Icon.faw_home).withIdentifier(1),
+                    new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(1),
                     new SectionDrawerItem().withName(R.string.search_drawer),
                     new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(FontAwesome.Icon.faw_barcode).withIdentifier(2),
-                    new PrimaryDrawerItem().withName(R.string.search_by_name_drawer).withIcon(FontAwesome.Icon.faw_search).withIdentifier(3),
-                    new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(FontAwesome.Icon.faw_camera).withIdentifier(4),
-                    new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(FontAwesome.Icon.faw_clock_o).withIdentifier(5),
+                    new PrimaryDrawerItem().withName(R.string.search_by_name_drawer).withIcon(GoogleMaterial.Icon.gmd_search).withIdentifier(3),
+                    new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(GoogleMaterial.Icon.gmd_camera_alt).withIdentifier(4),
+                    new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(5),
                     new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
-                    new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(R.drawable.ic_contributor).withIdentifier(CONTRIBUTOR),
-                    new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(FontAwesome.Icon.faw_info).withIdentifier(7),
-                    new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(FontAwesome.Icon.faw_cog).withIdentifier(8),
+                    new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(CONTRIBUTOR),
+                    new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(7),
+                    new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(8),
                     new DividerDrawerItem(),
-                    new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(FontAwesome.Icon.faw_anchor).withIdentifier(9),
+                    new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9),
                     new DividerDrawerItem(),
-                    new PrimaryDrawerItem().withName(R.string.action_about).withIcon(FontAwesome.Icon.faw_question).withIdentifier(10),
-                    new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(FontAwesome.Icon.faw_shopping_bag).withIdentifier(11)
+                    new PrimaryDrawerItem().withName(R.string.action_about).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(10),
+                    new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(11)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -432,16 +432,16 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     private IDrawerItem getLogoutDrawerItem() {
-        return new ProfileSettingDrawerItem()
+        return new PrimaryDrawerItem()
                 .withName(getString(R.string.logout_drawer))
-                .withIcon(FontAwesome.Icon.faw_sign_out)
+                .withIcon(GoogleMaterial.Icon.gmd_settings_power)
                 .withIdentifier(LOGOUT);
     }
 
     private IDrawerItem getLoginDrawerItem() {
         return new PrimaryDrawerItem()
                 .withName(R.string.sign_in_drawer)
-                .withIcon(FontAwesome.Icon.faw_sign_in)
+                .withIcon(GoogleMaterial.Icon.gmd_account_circle)
                 .withIdentifier(LOGIN_ID);
     }
 
