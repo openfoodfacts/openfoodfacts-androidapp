@@ -161,6 +161,9 @@ public class OfflineEditFragment extends BaseFragment {
 
                                     ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
                                     SendProduct.deleteAll(SendProduct.class, "barcode = ?", product.getBarcode());
+                                    Toast.makeText(getActivity(), R.string.txtDataUpdated, Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(getActivity(), R.string.errorWeb, Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
