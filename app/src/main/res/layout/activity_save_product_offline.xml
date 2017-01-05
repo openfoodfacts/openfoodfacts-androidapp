@@ -39,6 +39,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/spacing_normal"
                 android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_add_a_photo"
                 android:background="@drawable/button_default_bg"
                 android:gravity="center"
                 android:text="@string/txtTakePicture" />
@@ -51,6 +52,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/spacing_normal"
                 android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_photo_library"
                 android:background="@drawable/button_default_bg"
                 android:gravity="center"
                 android:text="@string/from_gallery" />
