@@ -63,3 +63,5 @@ notifications:
   slack: openfoodfacts:mXLLSlWjBKA9e03ELQ83rNvB
 
 sudo: false
+addons:
+  artifacts: true
