@@ -70,7 +70,10 @@ notifications:
 sudo: true
 
 addons:
-  artifacts: true
+  artifacts:true
+    paths:
+    - my_path
+
   coverity_scan:
     project:
       name: "openfoodfacts/OpenFoodFacts-androidApp"
