@@ -10,9 +10,7 @@ env:
     - ANDROID_ABI=armeabi-v7a
     - ANDROID_TAG=google_apis
     - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
-   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-   #   via the "travis encrypt" command using the project repo's public key
-   - secure: "fpNJresszWHcOg8Qh4plu2RJFOv9AzCMh2dVV2SbwWNRuf2j15raDdFGhCD2tEM7ddhqrfHgmiwqFSWCzjWw1azx0ovGJfFhikLM741pLb68S/EkOdvl9RU6DXeC6+Tyg0iaustgkoK24kwkzx/kg3o56TyFg1g2ufsQqfEseJtOGVQEh86zj8ncfU60VcMP7HHqHZMjlZaQ+G0Ale4ofzQzmAbiNiNPjykMbjDhzdKMTeZLXnj8S59twI1y/D/JdfKCiq/xOnO3HbIZBZ4A3nVb/fV5WCR4Kw6LRzoNE9qYnxJFaeIYSF9+YDDol9PbQRWTX5EgDnJBbZqj8aSYUEk3WUGRnDCKYR0R/v/BhTfnLIp1jBQWyhDJ56iPZ+tgRfChMejsf8aH8agPwczjfbX8H/1NLzBAtF/elA67dPaoQMqb33nO8D+ESIIyYNsK4CyfeDF6/qT/IcBBa7FUfhIOHjwLnaeCyZS78eq2QUSNkDaATKM8BUot+hGMTenBpivEDKL1L+twFFFKjNK3HkvnJ2H92P/EgT7OUVSuPnD5czfK3WydMmbimChKoygSq5/62tC6FMHUNdNj7pHnfJWTdSj+RgNJKVTasPJAQ1B+pU/z+TZVJMsBpME2CTtNGC6+o9W/6K5FMUt/2J/P63RHJqXXZLtttphN3tg7eLo="
+    - secure: "fpNJresszWHcOg8Qh4plu2RJFOv9AzCMh2dVV2SbwWNRuf2j15raDdFGhCD2tEM7ddhqrfHgmiwqFSWCzjWw1azx0ovGJfFhikLM741pLb68S/EkOdvl9RU6DXeC6+Tyg0iaustgkoK24kwkzx/kg3o56TyFg1g2ufsQqfEseJtOGVQEh86zj8ncfU60VcMP7HHqHZMjlZaQ+G0Ale4ofzQzmAbiNiNPjykMbjDhzdKMTeZLXnj8S59twI1y/D/JdfKCiq/xOnO3HbIZBZ4A3nVb/fV5WCR4Kw6LRzoNE9qYnxJFaeIYSF9+YDDol9PbQRWTX5EgDnJBbZqj8aSYUEk3WUGRnDCKYR0R/v/BhTfnLIp1jBQWyhDJ56iPZ+tgRfChMejsf8aH8agPwczjfbX8H/1NLzBAtF/elA67dPaoQMqb33nO8D+ESIIyYNsK4CyfeDF6/qT/IcBBa7FUfhIOHjwLnaeCyZS78eq2QUSNkDaATKM8BUot+hGMTenBpivEDKL1L+twFFFKjNK3HkvnJ2H92P/EgT7OUVSuPnD5czfK3WydMmbimChKoygSq5/62tC6FMHUNdNj7pHnfJWTdSj+RgNJKVTasPJAQ1B+pU/z+TZVJMsBpME2CTtNGC6+o9W/6K5FMUt/2J/P63RHJqXXZLtttphN3tg7eLo="
 
 before_install:
       - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
@@ -70,7 +68,6 @@ notifications:
   slack: openfoodfacts:mXLLSlWjBKA9e03ELQ83rNvB
 
 sudo: false
-
 
 addons:
   artifacts: true
