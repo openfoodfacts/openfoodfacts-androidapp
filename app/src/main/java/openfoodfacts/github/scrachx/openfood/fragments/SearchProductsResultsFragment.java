@@ -15,6 +15,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
+import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
 public class SearchProductsResultsFragment extends BaseFragment {
 
@@ -49,9 +50,18 @@ public class SearchProductsResultsFragment extends BaseFragment {
                 DividerItemDecoration.VERTICAL);
         productsRecyclerView.addItemDecoration(dividerItemDecoration);
 
-        String query = this.getArguments().getString("query");
+        // Click listener on a product
+        productsRecyclerView.addOnItemTouchListener(
+            new RecyclerItemClickListener(view.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
+                @Override public void onItemClick(View view, int position) {
+                    Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
+                    String barcode = p.getCode();
+                    api.getProduct(barcode, getActivity());
+                }
+            })
+        );
 
-        api.searchProduct(query, getActivity(),
+        api.searchProduct(getArguments().getString("query"), getActivity(),
                 new OpenFoodAPIClient.OnProductsCallback() {
 
                     @Override
@@ -64,13 +74,4 @@ public class SearchProductsResultsFragment extends BaseFragment {
                 }
         );
     }
-
-//    @OnItemClick(R.id.listProducts)
-    protected void onProductClicked(int position) {
-        Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
-        String barcode = p.getCode();
-        api.getProduct(barcode, getActivity());
-    }
-
-
 }
