@@ -22,24 +22,6 @@
                 android:layout_gravity="center"
                 android:maxHeight="250dp" />
 
-            <com.hkm.slider.Indicators.PagerIndicator
-                android:id="@+id/custom_indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                custom:selected_color="#0095BF"
-                custom:selected_height="6dp"
-                custom:selected_padding_left="2dp"
-                custom:selected_padding_right="2dp"
-                custom:selected_width="6dp"
-                custom:shape="rect"
-                custom:unselected_color="#55333333"
-                custom:unselected_height="6dp"
-                custom:unselected_padding_left="2dp"
-                custom:unselected_padding_right="2dp"
-                custom:unselected_width="6dp" />
-
             <TextView
                 android:id="@+id/textNameProduct"
                 android:layout_width="wrap_content"

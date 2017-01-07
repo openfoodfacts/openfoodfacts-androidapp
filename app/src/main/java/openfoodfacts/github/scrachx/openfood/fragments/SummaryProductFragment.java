@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hkm.slider.Indicators.PagerIndicator;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -38,7 +37,6 @@ public class SummaryProductFragment extends BaseFragment {
     @BindView(R.id.textCountryProduct) TextView countryProduct;
     @BindView(R.id.textCategoryProduct) TextView categoryProduct;
     @BindView(R.id.textLabelProduct) TextView labelProduct;
-    @BindView(R.id.custom_indicator) PagerIndicator pagerIndicator;
     @BindView(R.id.imageViewNutritionFullSum) ImageView mImageNutritionFullSum;
 
     private String mUrlImage;
