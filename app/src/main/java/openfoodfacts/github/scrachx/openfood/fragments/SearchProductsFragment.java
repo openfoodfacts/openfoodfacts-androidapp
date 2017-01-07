@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -21,9 +20,10 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsListAdapter;
 
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
 public class SearchProductsFragment extends BaseFragment {
 
-    private List<Product> productItems;
     private ProductsListAdapter adapter;
     private OpenFoodAPIClient api;
 
@@ -40,7 +40,6 @@ public class SearchProductsFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        productItems = new ArrayList<>();
         api = new OpenFoodAPIClient(getActivity());
     }
 
@@ -54,15 +53,15 @@ public class SearchProductsFragment extends BaseFragment {
     @OnClick(R.id.buttonSearchProducts)
     protected void onSearchProduct() {
         Utils.hideKeyboard(getActivity());
-        if (!nameSearch.getText().toString().isEmpty()) {
+        String searchTerms = nameSearch.getText().toString();
+        if (isNotEmpty(searchTerms)) {
             buttonSearch.setEnabled(false);
-            api.searchProduct(nameSearch.getText().toString(), getActivity(),
+            api.searchProduct(searchTerms, getActivity(),
                     new OpenFoodAPIClient.OnProductsCallback() {
                         @Override
                         public void onProductsResponse(boolean isOk, List<Product> products) {
                             if (isOk) {
-                                productItems = products;
-                                adapter = new ProductsListAdapter(getActivity(), productItems);
+                                adapter = new ProductsListAdapter(getActivity(), products);
                                 listView.setAdapter(adapter);
                             }
                             buttonSearch.setEnabled(true);
