@@ -62,7 +62,7 @@ public class SendProduct extends SugarRecord {
     }
 
     public String getQuantity() {
-        if (weight == null) {
+        if (weight == null || weight.length() == 0) {
             return null;
         }
 
