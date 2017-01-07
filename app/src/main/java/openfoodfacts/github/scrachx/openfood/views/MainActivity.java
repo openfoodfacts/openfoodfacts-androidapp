@@ -395,34 +395,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         SearchView searchView = (SearchView) searchMenuItem.getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
-
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                if (isEmpty(query)) {
-//                    return false;
-//                }
-//
-//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//                Fragment newFragment = new SearchProductsResultsFragment();
-//                Bundle args = new Bundle();
-//                args.putString("query", query);
-//                newFragment.setArguments(args);
-//
-//                transaction.replace(R.id.fragment_container, newFragment);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
-//
-//                // not need to send the search intent
-//                return true;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                return false;
-//            }
-//        });
-
         MenuItemCompat.setOnActionExpandListener(searchMenuItem, new MenuItemCompat.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem item) {

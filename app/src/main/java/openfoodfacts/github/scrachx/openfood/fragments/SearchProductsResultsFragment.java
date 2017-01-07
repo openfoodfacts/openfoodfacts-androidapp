@@ -23,8 +23,6 @@ public class SearchProductsResultsFragment extends BaseFragment {
 
     private RecyclerView productsRecyclerView;
 
-    private RecyclerView.LayoutManager mLayoutManager;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
         api = new OpenFoodAPIClient(getActivity());
@@ -42,7 +40,7 @@ public class SearchProductsResultsFragment extends BaseFragment {
         productsRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(getActivity());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         productsRecyclerView.setLayoutManager(mLayoutManager);
 
         // use VERTICAL divider
