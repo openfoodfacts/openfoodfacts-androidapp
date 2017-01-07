@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +73,10 @@ public class ProductActivity extends BaseActivity {
                     .neutralText(R.string.txtOk)
                     .titleColorRes(R.color.red_500)
                     .dividerColorRes(R.color.indigo_900)
-                    .icon(this.getResources().getDrawable(R.drawable.ic_warning_24dp))
+                    .icon(new IconicsDrawable(this)
+                            .icon(GoogleMaterial.Icon.gmd_warning)
+                            .color(Color.RED)
+                            .sizeDp(24))
                     .show();
         }
     }
