@@ -3,7 +3,7 @@ This is the Changelog. Please list changes here so that we can provide meaningfu
 Upcoming:
 
 - Full nutrition table
-
+- Better search, now with brand and weight.
 - Labels, certifications and awards, Origin of the ingredients as well as the carbon footprint are now displayed when available
 - You can manage your Open Food Facts contributor account right from the app.
 - You can access your contributions easily using… "Your contributions"
