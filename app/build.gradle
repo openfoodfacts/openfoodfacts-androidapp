@@ -9,8 +9,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 26
-        versionName "0.3"
+        versionCode 27
+        versionName "0.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
