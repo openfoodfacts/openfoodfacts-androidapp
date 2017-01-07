@@ -2,6 +2,10 @@ This is the Changelog. Please list changes here so that we can provide meaningfu
 
 Upcoming:
 
+- Quick View : a new way to quickly get info about several products in a row, and easily add them to Open Food Facts if they don't exist
+
+0.4 - Jan 7 2017
+
 - Full nutrition table
 - Better search, now with brand and weight.
 - Labels, certifications and awards, Origin of the ingredients as well as the carbon footprint are now displayed when available
