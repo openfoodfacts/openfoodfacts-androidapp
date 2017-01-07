@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-07 18:01+0100\n"
+"POT-Creation-Date: 2017-01-07 20:38+0100\n"
 "PO-Revision-Date: 2017-01-02 03:39+0000\n"
 "Last-Translator: Ricardo Alanis <Unknown>\n"
 "Language: es\n"
@@ -1118,5 +1118,9 @@ msgstr "Huella de Carbón / Emisiones de CO2: "
 
 msgctxt "txtDialogPowerMode"
 msgid "Power mode"
+msgstr ""
+
+msgctxt "txtSeeMore"
+msgid "See more"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-01-07 18:01+0100\n"
+"POT-Creation-Date: 2017-01-07 20:38+0100\n"
 "PO-Revision-Date: 2016-12-30 13:10+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: fr\n"
@@ -1127,5 +1127,9 @@ msgstr "Empreinte carbone / émissions de CO2: "
 
 msgctxt "txtDialogPowerMode"
 msgid "Power mode"
+msgstr ""
+
+msgctxt "txtSeeMore"
+msgid "See more"
 msgstr ""
 

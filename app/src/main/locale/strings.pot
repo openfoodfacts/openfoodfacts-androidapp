@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-01-07 18:01+0100\n"
+"POT-Creation-Date: 2017-01-07 20:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1087,5 +1087,9 @@ msgstr ""
 
 msgctxt "txtDialogPowerMode"
 msgid "Power mode"
+msgstr ""
+
+msgctxt "txtSeeMore"
+msgid "See more"
 msgstr ""
 
