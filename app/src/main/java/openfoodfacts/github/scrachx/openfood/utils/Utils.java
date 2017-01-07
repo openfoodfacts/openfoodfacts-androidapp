@@ -23,6 +23,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import openfoodfacts.github.scrachx.openfood.R;
+
 public class Utils {
 
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
@@ -172,6 +174,85 @@ public class Utils {
         }
         catch (PackageManager.NameNotFoundException e) {
             return false;
+        }
+    }
+
+    public static int getImageGrade(String grade) {
+        int drawable;
+
+        if (grade == null) {
+            return R.drawable.ic_error;
+        }
+
+        switch (grade.toLowerCase()) {
+            case "a":
+                drawable = R.drawable.nnc_a;
+                break;
+            case "b":
+                drawable = R.drawable.nnc_b;
+                break;
+            case "c":
+                drawable = R.drawable.nnc_c;
+                break;
+            case "d":
+                drawable = R.drawable.nnc_d;
+                break;
+            case "e":
+                drawable = R.drawable.nnc_e;
+                break;
+            default:
+                drawable = R.drawable.ic_error;
+                break;
+        }
+
+        return drawable;
+    }
+
+    public static int getImageLevel(String nutrient) {
+        int drawable;
+
+        if (nutrient == null) {
+            return R.drawable.ic_error;
+        }
+
+        switch (nutrient.toLowerCase()) {
+            case "moderate":
+                drawable = R.drawable.ic_circle_yellow;
+                break;
+            case "low":
+                drawable = R.drawable.ic_circle_green;
+                break;
+            case "high":
+                drawable = R.drawable.ic_circle_red;
+                break;
+            default:
+                drawable = R.drawable.ic_error;
+                break;
+        }
+
+        return drawable;
+    }
+
+    /**
+     *
+     * @param nutritionAmount Either "low", "moderate" or "high"
+     * @return The localised word for the nutrition amount. If nutritionAmount is neither low,
+     * moderate nor high, return nutritionAmount
+     */
+    public static String localiseNutritionLevel(Context context, String nutritionAmount){
+        if (nutritionAmount == null) {
+            return context.getString(R.string.txt_nutrition_not_found);
+        }
+
+        switch (nutritionAmount){
+            case "low":
+                return context.getString(R.string.txtNutritionLevelLow);
+            case "moderate":
+                return context.getString(R.string.txtNutritionLevelModerate);
+            case "high":
+                return context.getString(R.string.txtNutritionLevelHigh);
+            default:
+                return nutritionAmount;
         }
     }
 }

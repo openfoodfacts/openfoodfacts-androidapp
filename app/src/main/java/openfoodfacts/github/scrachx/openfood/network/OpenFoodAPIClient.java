@@ -8,8 +8,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.preference.PreferenceManager;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -37,6 +39,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
@@ -125,12 +128,23 @@ public class OpenFoodAPIClient {
                             .show();
                 } else {
                     lt.success();
-
+                    new HistoryTask().doInBackground(s.getProduct());
                     if (settings.getBoolean("powerMode", false) && camera != null) {
                         MaterialDialog dialog = new MaterialDialog.Builder(activity)
                                 .title(R.string.txtDialogPowerMode)
                                 .customView(R.layout.alert_powermode_image, true)
                                 .neutralText(R.string.txtOk)
+                                .positiveText(R.string.txtSeeMore)
+                                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                    @Override
+                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                        Intent intent = new Intent(activity, ProductActivity.class);
+                                        Bundle bundle = new Bundle();
+                                        bundle.putSerializable("state", s);
+                                        intent.putExtras(bundle);
+                                        activity.startActivity(intent);
+                                    }
+                                })
                                 .onNeutral(new MaterialDialog.SingleButtonCallback() {
                                     @Override
                                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
@@ -139,17 +153,43 @@ public class OpenFoodAPIClient {
                                 })
                                 .build();
 
-                        ImageView img = (ImageView) dialog.getCustomView().findViewById(R.id.imagePowerModeProduct);
+                        final Product product = s.getProduct();
+                        ImageView imgPhoto = (ImageView) dialog.getCustomView().findViewById(R.id.imagePowerModeProduct);
+                        ImageView imgNutriscore = (ImageView) dialog.getCustomView().findViewById(R.id.imageGrade);
+                        TextView nameProduct = (TextView) dialog.getCustomView().findViewById(R.id.textNameProduct);
+                        TextView quantityProduct = (TextView) dialog.getCustomView().findViewById(R.id.textQuantityProduct);
+                        TextView brandProduct = (TextView) dialog.getCustomView().findViewById(R.id.textBrandProduct);
+
+                        if(product.getProductName() != null && !product.getProductName().trim().isEmpty()) {
+                            nameProduct.setText(product.getProductName());
+                        } else {
+                            nameProduct.setVisibility(View.GONE);
+                        }
+                        if(product.getQuantity() != null && !product.getQuantity().trim().isEmpty()) {
+                            quantityProduct.setText(Html.fromHtml("<b>" + activity.getResources().getString(R.string.txtQuantity) + "</b>" + ' ' + product.getQuantity()));
+                        } else {
+                            quantityProduct.setVisibility(View.GONE);
+                        }
+                        if(product.getBrands() != null && !product.getBrands().trim().isEmpty()) {
+                            brandProduct.setText(Html.fromHtml("<b>" + activity.getResources().getString(R.string.txtBrands) + "</b>" + ' ' + product.getBrands()));
+                        } else {
+                            brandProduct.setVisibility(View.GONE);
+                        }
+                        if (isNotEmpty(s.getProduct().getImageUrl())) {
+                            Picasso.with(activity)
+                                    .load(Utils.getImageGrade(product.getNutritionGradeFr()))
+                                    .into(imgNutriscore);
+                        }
                         if (isNotEmpty(s.getProduct().getImageUrl())) {
                             Picasso.with(activity)
                                     .load(s.getProduct().getImageUrl())
-                                    .into(img);
-                            img.setOnClickListener(new View.OnClickListener() {
+                                    .into(imgPhoto);
+                            imgPhoto.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
                                     Intent intent = new Intent(view.getContext(), FullScreenImage.class);
                                     Bundle bundle = new Bundle();
-                                    bundle.putString("imageurl", s.getProduct().getImageUrl());
+                                    bundle.putString("imageurl", product.getImageUrl());
                                     intent.putExtras(bundle);
                                     activity.startActivity(intent);
                                 }
@@ -161,10 +201,7 @@ public class OpenFoodAPIClient {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("state", s);
                         intent.putExtras(bundle);
-
                         activity.startActivity(intent);
-
-                        new HistoryTask().doInBackground(s.getProduct());
                     }
                 }
             }
