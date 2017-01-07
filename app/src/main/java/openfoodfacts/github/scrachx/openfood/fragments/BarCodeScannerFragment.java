@@ -173,7 +173,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
         if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
-            api.getProduct(rawResult.getText(), getActivity());
+            api.getProduct(rawResult.getText(), getActivity(), mScannerView, this);
         } else {
             Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
             intent.putExtra("barcode", rawResult.getText());

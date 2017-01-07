@@ -155,6 +155,7 @@
     <string name="txtInfoLoginNo">User not saved</string>
     <string name="txtDialogsTitle">Information</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Do you want to add it?</string>
+    <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
     <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
     <string name="txtYes">Yes</string>
     <string name="txtNo">No</string>
@@ -298,5 +299,6 @@
     <string name="logout_drawer">Logout</string>
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
+    <string name="txtDialogPowerMode">Power mode</string>
 
 </resources>

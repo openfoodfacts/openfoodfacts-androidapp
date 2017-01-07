@@ -237,7 +237,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                         startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
-                        api.getProduct(mProduct.getBarcode(), activity);
+                        api.getProduct(mProduct.getBarcode(), activity, null, null);
                     }
                     finish();
                 }

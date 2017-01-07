@@ -55,7 +55,7 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
                 boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
                 if(isConnected) {
                     OpenFoodAPIClient api = new OpenFoodAPIClient(v.getContext());
-                    api.getProduct(txtBarcode.getText().toString(), (Activity) v.getContext());
+                    api.getProduct(txtBarcode.getText().toString(), (Activity) v.getContext(), null, null);
                 }
             }
         });
