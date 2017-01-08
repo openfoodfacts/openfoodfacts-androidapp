@@ -205,10 +205,11 @@ public class OpenFoodAPIClient {
                             .show();
                 } else {
                     lt.success();
+                    final Product product = s.getProduct();
                     new HistoryTask().doInBackground(s.getProduct());
                     if (settings.getBoolean("powerMode", false) && camera != null) {
                         MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                                .title(R.string.txtDialogPowerMode)
+                                .title(product.getProductName())
                                 .customView(R.layout.alert_powermode_image, true)
                                 .neutralText(R.string.txtOk)
                                 .positiveText(R.string.txtSeeMore)
@@ -230,18 +231,11 @@ public class OpenFoodAPIClient {
                                 })
                                 .build();
 
-                        final Product product = s.getProduct();
                         ImageView imgPhoto = (ImageView) dialog.getCustomView().findViewById(R.id.imagePowerModeProduct);
                         ImageView imgNutriscore = (ImageView) dialog.getCustomView().findViewById(R.id.imageGrade);
-                        TextView nameProduct = (TextView) dialog.getCustomView().findViewById(R.id.textNameProduct);
                         TextView quantityProduct = (TextView) dialog.getCustomView().findViewById(R.id.textQuantityProduct);
                         TextView brandProduct = (TextView) dialog.getCustomView().findViewById(R.id.textBrandProduct);
-
-                        if(product.getProductName() != null && !product.getProductName().trim().isEmpty()) {
-                            nameProduct.setText(product.getProductName());
-                        } else {
-                            nameProduct.setVisibility(View.GONE);
-                        }
+                        
                         if(product.getQuantity() != null && !product.getQuantity().trim().isEmpty()) {
                             quantityProduct.setText(Html.fromHtml("<b>" + activity.getResources().getString(R.string.txtQuantity) + "</b>" + ' ' + product.getQuantity()));
                         } else {
