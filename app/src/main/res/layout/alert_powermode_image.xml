@@ -4,18 +4,6 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textNameProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/spacing_normal"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textIsSelectable="true"
-        android:textSize="@dimen/font_larger"
-        android:textStyle="bold"/>
-
-    <TextView
         android:id="@+id/textBrandProduct"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -40,8 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginEnd="@dimen/spacing_normal"
-        android:layout_marginStart="@dimen/spacing_normal" />
+        android:layout_marginBottom="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_large" />
 
     <ImageView
         android:id="@+id/imageGrade"
