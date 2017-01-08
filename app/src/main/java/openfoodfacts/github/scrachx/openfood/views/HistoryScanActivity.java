@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -115,7 +116,7 @@ public class HistoryScanActivity extends BaseActivity {
 
     public void exportCSV() {
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show();
-        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+        String baseDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
         Log.d("dir", baseDir);
         String fileName = "exportHistoryOFF"+new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date())+".csv";
         String filePath = baseDir + File.separator + fileName;
