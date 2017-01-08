@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,8 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.orm.SugarRecord;
-
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.io.IOException;
@@ -23,6 +22,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class SplashActivity extends BaseActivity {
 
@@ -58,21 +58,21 @@ public class SplashActivity extends BaseActivity {
     private class GetJson extends AsyncTask<Void, Integer, Boolean> {
 
         private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
-        private Context context;
+        private Activity activity;
         private LoadToast lt;
 
-        public GetJson(Context ctx) {
-            context = ctx;
-            lt = new LoadToast(ctx);
+        public GetJson(Activity act) {
+            activity = act;
+            lt = new LoadToast(activity);
         }
 
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            lt.setText(context.getString(R.string.toast_retrieving));
-            lt.setBackgroundColor(context.getResources().getColor(R.color.indigo_600));
-            lt.setTextColor(context.getResources().getColor(R.color.white));
+            lt.setText(activity.getString(R.string.toast_retrieving));
+            lt.setBackgroundColor(activity.getResources().getColor(R.color.indigo_600));
+            lt.setTextColor(activity.getResources().getColor(R.color.white));
             lt.show();
         }
 
@@ -101,7 +101,7 @@ public class SplashActivity extends BaseActivity {
                 is = getAssets().open(additivesFile);
                 List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {})
                         .readValue(is);
-                SugarRecord.saveInTx(frenchAdditives);
+                Utils.getAppDaoSession(activity).getAdditiveDao().insertInTx(frenchAdditives);
             } catch (IOException e) {
                 result = false;
                 Log.e(ADDITIVE_IMPORT, "Unable to import additives from " + additivesFile);
@@ -128,7 +128,7 @@ public class SplashActivity extends BaseActivity {
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
             if (isConnected) {
                 if (errorAllergens) {
-                    OpenFoodAPIClient api = new OpenFoodAPIClient(this.context);
+                    OpenFoodAPIClient api = new OpenFoodAPIClient(activity);
                     api.getAllergens(new OpenFoodAPIClient.OnAllergensCallback() {
                         @Override
                         public void onAllergensResponse(boolean value) {
@@ -149,7 +149,7 @@ public class SplashActivity extends BaseActivity {
                             startActivity(mainIntent);
                             finish();
                         }
-                    });
+                    }, activity);
                 }
             } else {
                 if (!result) {

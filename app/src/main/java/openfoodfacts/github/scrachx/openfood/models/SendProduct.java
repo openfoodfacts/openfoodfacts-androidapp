@@ -3,22 +3,29 @@ package openfoodfacts.github.scrachx.openfood.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
-import com.orm.dsl.Unique;
+
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Index;
+import org.greenrobot.greendao.annotation.Unique;
 
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class SendProduct extends SugarRecord {
+@Entity(indexes = {
+        @Index(value = "barcode", unique = true)
+})
+public class SendProduct {
 
     @JsonProperty("code")
-    @Unique
+    @Id
     private String barcode;
     @JsonProperty("product_name")
     private String name;
 
     private String brands;
+    @Generated
     @JsonIgnore
     private String weight;
     @JsonIgnore
@@ -30,12 +37,26 @@ public class SendProduct extends SugarRecord {
     @JsonIgnore
     private String imgupload_nutrition;
     @JsonProperty("user_id")
-    @Ignore
     private String userId;
-    @Ignore
     private String password;
 
     public SendProduct() {}
+
+    @Generated(hash = 1057098170)
+    public SendProduct(String barcode, String name, String brands, String weight,
+            String weight_unit, String imgupload_front, String imgupload_ingredients,
+            String imgupload_nutrition, String userId, String password) {
+        this.barcode = barcode;
+        this.name = name;
+        this.brands = brands;
+        this.weight = weight;
+        this.weight_unit = weight_unit;
+        this.imgupload_front = imgupload_front;
+        this.imgupload_ingredients = imgupload_ingredients;
+        this.imgupload_nutrition = imgupload_nutrition;
+        this.userId = userId;
+        this.password = password;
+    }
 
     public String getUserId() {
         return userId;

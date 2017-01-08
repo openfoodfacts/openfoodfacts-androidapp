@@ -27,7 +27,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
@@ -146,7 +148,8 @@ public class IngredientsProductFragment extends BaseFragment {
 
     private CharSequence getSpanTag(String tag, final View view) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder();
-        final List<Additive> la = Additive.find(Additive.class, "code = ?", tag.toUpperCase());
+
+        final List<Additive> la = Utils.getAppDaoSession(getActivity()).getAdditiveDao().queryBuilder().where(AdditiveDao.Properties.Code.eq(tag.toUpperCase())).list();
         if (la.size() >= 1) {
             final Additive additive = la.get(0);
             ClickableSpan clickableSpan = new ClickableSpan() {

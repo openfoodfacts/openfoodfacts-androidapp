@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -32,7 +33,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 
 public class AlertUserFragment extends BaseFragment {
@@ -69,8 +72,8 @@ public class AlertUserFragment extends BaseFragment {
         }
 
         mRvAllergens = (RecyclerView) view.findViewById(R.id.alergens_recycle);
-        mAllergens = Allergen.find(Allergen.class, "enable = ?", "true");
-        mAdapter = new AllergensAdapter(mAllergens);
+        mAllergens = Utils.getAppDaoSession(this.getActivity()).getAllergenDao().queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
+        mAdapter = new AllergensAdapter(mAllergens, getActivity());
         mRvAllergens.setAdapter(mAdapter);
         mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
         mRvAllergens.setHasFixedSize(true);
@@ -78,7 +81,7 @@ public class AlertUserFragment extends BaseFragment {
 
     @OnClick(R.id.fab)
     protected void onAddAllergens() {
-        final List<Allergen> all = IteratorUtils.toList(Allergen.findAll(Allergen.class));
+        final List<Allergen> all = Utils.getAppDaoSession(this.getActivity()).getAllergenDao().loadAll();
         final LinkedHashMap<Integer,String> allS = new LinkedHashMap<>();
         int index = 0;
         for (Allergen a : all) {
@@ -106,7 +109,7 @@ public class AlertUserFragment extends BaseFragment {
                                 if(a.getName().substring(a.getName().indexOf(":")+1).equalsIgnoreCase(alergeneStringByPos)) {
                                     index = getKey(allS, alergeneStringByPos);
                                     all.get(index).setEnable("true");
-                                    all.get(index).save();
+                                    Utils.getAppDaoSession(getActivity()).getAllergenDao().update(all.get(index));
                                 }
                             }
                             if(canAdd && index != -1) {
@@ -144,7 +147,7 @@ public class AlertUserFragment extends BaseFragment {
                                         lt.success();
                                         dialog.hide();
                                     }
-                                });
+                                }, getActivity());
                             }
                         })
                         .show();
