@@ -70,8 +70,8 @@ notifications:
 sudo: true
 
 addons:
-  artifacts:true
-    paths:
+  artifacts: true
+  paths:
     - my_path
 
   coverity_scan:
