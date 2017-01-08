@@ -3,7 +3,6 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
@@ -69,27 +69,32 @@ public class SummaryProductFragment extends BaseFragment {
             nameProduct.setVisibility(View.GONE);
         }
         if(product.getCode() != null && !product.getCode().trim().isEmpty()) {
-            barCodeProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtBarcode) + "</b>" + ' ' + product.getCode()));
+            barCodeProduct.setText(Utils.bold(getString(R.string.txtBarcode)));
+            barCodeProduct.append(' ' + product.getCode());
         } else {
             barCodeProduct.setVisibility(View.GONE);
         }
         if(product.getQuantity() != null && !product.getQuantity().trim().isEmpty()) {
-            quantityProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtQuantity) + "</b>" + ' ' + product.getQuantity()));
+            quantityProduct.setText(Utils.bold(getString(R.string.txtQuantity)));
+            quantityProduct.append(' ' + product.getQuantity());
         } else {
             quantityProduct.setVisibility(View.GONE);
         }
         if(product.getPackaging() != null && !product.getPackaging().trim().isEmpty()) {
-            packagingProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtPackaging) + "</b>" + ' ' + product.getPackaging()));
+            packagingProduct.setText(Utils.bold(getString(R.string.txtPackaging)));
+            packagingProduct.append(' ' + product.getPackaging());
         } else {
             packagingProduct.setVisibility(View.GONE);
         }
         if(product.getBrands() != null && !product.getBrands().trim().isEmpty()) {
-            brandProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtBrands) + "</b>" + ' ' + product.getBrands()));
+            brandProduct.setText(Utils.bold(getString(R.string.txtBrands)));
+            brandProduct.append(' ' + product.getBrands());
         } else {
             brandProduct.setVisibility(View.GONE);
         }
         if(product.getManufacturingPlaces() != null && !product.getManufacturingPlaces().trim().isEmpty()) {
-            manufacturingProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtManufacturing) + "</b>" + ' ' + product.getManufacturingPlaces()));
+            manufacturingProduct.setText(Utils.bold(getString(R.string.txtManufacturing)));
+            manufacturingProduct.append(' ' + product.getManufacturingPlaces());
         } else {
             manufacturingProduct.setVisibility(View.GONE);
         }
@@ -97,13 +102,15 @@ public class SummaryProductFragment extends BaseFragment {
         if (product.getOrigins() == null) {
             ingredientsOrigin.setVisibility(View.GONE);
         } else {
-            ingredientsOrigin.setText(Html.fromHtml("<b>" + getString(R.string.txtIngredientsOrigins) + "</b>" + ' ' + product.getOrigins()));
+            ingredientsOrigin.setText(Utils.bold(getString(R.string.txtIngredientsOrigins)));
+            ingredientsOrigin.append(' ' + product.getOrigins());
         }
 
         String categ;
         if (product.getCategories() != null && !product.getCategories().trim().isEmpty()) {
             categ = product.getCategories().replace(",", ", ");
-            categoryProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCategories) + "</b>" + ' ' + categ));
+            categoryProduct.setText(Utils.bold(getString(R.string.txtCategories)));
+            categoryProduct.append(' ' + categ);
         } else {
             categoryProduct.setVisibility(View.GONE);
         }
@@ -121,17 +128,20 @@ public class SummaryProductFragment extends BaseFragment {
         }
 
         if(product.getCitiesTags() != null && !product.getCitiesTags().toString().trim().equals("[]")) {
-            cityProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCity) + "</b>" + ' ' + product.getCitiesTags().toString().replace("[", "").replace("]", "")));
+            cityProduct.setText(Utils.bold(getString(R.string.txtCity)));
+            cityProduct.append(' ' + product.getCitiesTags().toString().replace("[", "").replace("]", ""));
         } else {
             cityProduct.setVisibility(View.GONE);
         }
         if(product.getStores() != null && !product.getStores().trim().isEmpty()) {
-            storeProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtStores) + "</b>" + ' ' + product.getStores()));
+            storeProduct.setText(Utils.bold(getString(R.string.txtStores)));
+            storeProduct.append(' ' + product.getStores());
         } else {
             storeProduct.setVisibility(View.GONE);
         }
         if(product.getCountries() != null && !product.getCountries().trim().isEmpty()) {
-            countryProduct.setText(Html.fromHtml("<b>" + getString(R.string.txtCountries) + "</b>" + ' ' + product.getCountries()));
+            countryProduct.setText(Utils.bold(getString(R.string.txtCountries)));
+            countryProduct.append(' ' + product.getCountries());
         } else {
             countryProduct.setVisibility(View.GONE);
         }

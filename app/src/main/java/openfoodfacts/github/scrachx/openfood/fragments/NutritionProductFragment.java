@@ -69,10 +69,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             nutritionScoreUri = Uri.parse("https://fr.openfoodfacts.org/score-nutritionnel-france");
             customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
 
-            String fatTxt = Html.fromHtml("<b>" + getString(R.string.txtFat) + "</b>" + ' ' + Utils.localiseNutritionLevel(this.getContext(), nt.getFat()) + " (" + product.getNutriments().getFat100g() + product.getNutriments().getFatUnit() + ")").toString();
-            String saturatedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSaturatedFat) + "</b>" + ' ' + Utils.localiseNutritionLevel(this.getContext(), nt.getSaturatedFat()) + " (" + product.getNutriments().getSaturatedFat100g() + product.getNutriments().getSaturatedFatUnit() + ")").toString();
-            String sugarsTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + Utils.localiseNutritionLevel(this.getContext(), nt.getSugars()) + " (" + product.getNutriments().getSugars100g() + product.getNutriments().getSugarsUnit() + ")").toString();
-            String saltTxt = Html.fromHtml("<b>" + getString(R.string.txtSalt) + "</b>" + ' ' + Utils.localiseNutritionLevel(this.getContext(), nt.getSalt()) + " (" + product.getNutriments().getSalt100g() + product.getNutriments().getSaltUnit() + ")").toString();
+            String fatTxt = getString(R.string.txtFat) + ' ' + Utils.localiseNutritionLevel(this.getContext(), nt.getFat()) + " (" + product.getNutriments().getFat100g() + product.getNutriments().getFatUnit() + ")";
+            String saturatedFatTxt = getString(R.string.txtSaturatedFat) + ' ' + Utils.localiseNutritionLevel(this.getContext(), nt.getSaturatedFat()) + " (" + product.getNutriments().getSaturatedFat100g() + product.getNutriments().getSaturatedFatUnit() + ")";
+            String sugarsTxt = getString(R.string.txtSugars)  + ' ' + Utils.localiseNutritionLevel(this.getContext(), nt.getSugars()) + " (" + product.getNutriments().getSugars100g() + product.getNutriments().getSugarsUnit() + ")";
+            String saltTxt = getString(R.string.txtSalt) + ' ' + Utils.localiseNutritionLevel(this.getContext(), nt.getSalt()) + " (" + product.getNutriments().getSalt100g() + product.getNutriments().getSaltUnit() + ")";
 
             levelItem.add(new NutrientLevelItem(fatTxt, Utils.getImageLevel(nt.getFat())));
             levelItem.add(new NutrientLevelItem(saturatedFatTxt, Utils.getImageLevel(nt.getSaturatedFat())));

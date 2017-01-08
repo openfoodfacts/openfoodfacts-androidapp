@@ -90,6 +90,83 @@ public class OpenFoodAPIClient {
      * Also add it in the history if the product exist.
      * @param barcode product barcode
      * @param activity
+     */
+    public void getProduct(final String barcode, final Activity activity) {
+        final LoadToast lt = getLoadToast(activity);
+
+        apiService.getProductByBarcode(barcode).enqueue(new Callback<State>() {
+            @Override
+            public void onResponse(Call<State> call, Response<State> response) {
+
+                final State s = response.body();
+
+                if (s.getStatus() == 0) {
+                    lt.error();
+                    new MaterialDialog.Builder(activity)
+                            .title(R.string.txtDialogsTitle)
+                            .content(R.string.txtDialogsContent)
+                            .positiveText(R.string.txtYes)
+                            .negativeText(R.string.txtNo)
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                                    intent.putExtra("barcode", barcode);
+                                    activity.startActivity(intent);
+                                    activity.finish();
+                                }
+                            })
+                            .onNegative(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    return;
+                                }
+                            })
+                            .show();
+                } else {
+                    lt.success();
+                    new HistoryTask().doInBackground(s.getProduct());
+                    Intent intent = new Intent(activity, ProductActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("state", s);
+                    intent.putExtras(bundle);
+                    activity.startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<State> call, Throwable t) {
+                new MaterialDialog.Builder(activity)
+                        .title(R.string.txtDialogsTitle)
+                        .content(R.string.txtDialogsContent)
+                        .positiveText(R.string.txtYes)
+                        .negativeText(R.string.txtNo)
+                        .callback(new MaterialDialog.ButtonCallback() {
+                            @Override
+                            public void onPositive(MaterialDialog dialog) {
+                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                                intent.putExtra("barcode",barcode);
+                                activity.startActivity(intent);
+                                activity.finish();
+                            }
+
+                            @Override
+                            public void onNegative(MaterialDialog dialog) {
+                                return;
+                            }
+                        })
+                        .show();
+                Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
+                lt.error();
+            }
+        });
+    }
+
+    /**
+     * Open the product activity if the barcode exist.
+     * Also add it in the history if the product exist.
+     * @param barcode product barcode
+     * @param activity
      * @param camera needed when the function is called by the barcodefragment else null
      * @param resultHandler needed when the function is called by the barcodefragment else null
      */

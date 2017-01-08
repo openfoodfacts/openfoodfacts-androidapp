@@ -66,6 +66,8 @@
         android:layout_marginLeft="@dimen/spacing_normal"
         android:layout_marginRight="@dimen/spacing_normal"
         android:background="@drawable/textview_full"
+        android:divider="@color/white"
+        android:dividerHeight="0dp"
         android:padding="@dimen/spacing_small" />
 
 

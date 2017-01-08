@@ -47,7 +47,7 @@ public class SearchProductsFragment extends BaseFragment {
     protected void onProductClicked(int position) {
         Product p = (Product) listView.getItemAtPosition(position);
         String barcode = p.getCode();
-        api.getProduct(barcode, getActivity(), null, null);
+        api.getProduct(barcode, getActivity());
     }
 
     @OnClick(R.id.buttonSearchProducts)
