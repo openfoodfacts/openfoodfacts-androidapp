@@ -403,10 +403,16 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
             @Override
             public boolean onMenuItemActionCollapse(MenuItem item) {
-                //TODO not replace if no search has been done (no switch of fragment)
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new HomeFragment())
-                        .commit();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                Fragment currentFragment = fragmentManager.findFragmentById(R.id.fragment_container);
+
+                // Not replace if no search has been done (no switch of fragment)
+                if (currentFragment instanceof SearchProductsResultsFragment) {
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fragment_container, new HomeFragment())
+                            .commit();
+                }
+
                 return true;
             }
         });
