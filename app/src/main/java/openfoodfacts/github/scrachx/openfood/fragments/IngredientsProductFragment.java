@@ -88,9 +88,11 @@ public class IngredientsProductFragment extends BaseFragment {
         if(!allergens.isEmpty()) {
             substanceProduct.append(bold(getString(R.string.txtSubstances)));
             substanceProduct.append(" ");
+            String delim = "";
             for (String allergen : allergens) {
+                substanceProduct.append(delim);
                 substanceProduct.append(allergen);
-                substanceProduct.append(" ");
+                delim = ", ";
             }
         } else {
             substanceProduct.setVisibility(View.GONE);
