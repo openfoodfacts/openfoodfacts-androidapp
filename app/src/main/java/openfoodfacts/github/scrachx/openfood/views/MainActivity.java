@@ -71,6 +71,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final long USER_ID = 500;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
+
     private AccountHeader headerResult = null;
     private Drawer result = null;
 
@@ -78,8 +79,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private CustomTabsIntent customTabsIntent;
 
     private Uri userAccountUri;
-    private Uri contributeUri;
-    private Uri discoverUri;
     private Uri userContributeUri;
 
     @Override
@@ -314,12 +313,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
 
         // prefetch uris
-        contributeUri = Uri.parse(getString(R.string.website_contribute));
-        discoverUri = Uri.parse(getString(R.string.website_discover));
         userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin);
-
-        customTabActivityHelper.mayLaunchUrl(contributeUri, null, null);
-        customTabActivityHelper.mayLaunchUrl(discoverUri, null, null);
         customTabActivityHelper.mayLaunchUrl(userContributeUri, null, null);
     }
 
@@ -416,23 +410,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         return true;
     }
-
-
-
-//    TODO put the link in the text with accent colors
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.action_contribute:
-//                CustomTabActivityHelper.openCustomTab(this, customTabsIntent, contributeUri, new WebViewFallback());
-//                return true;
-//            case R.id.action_discover:
-//                CustomTabActivityHelper.openCustomTab(this, customTabsIntent, discoverUri, new WebViewFallback());
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {

@@ -12,6 +12,9 @@ android {
         versionCode 27
         versionName "0.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     dexOptions {
