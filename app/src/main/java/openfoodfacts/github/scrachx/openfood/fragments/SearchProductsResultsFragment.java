@@ -23,6 +23,8 @@ public class SearchProductsResultsFragment extends BaseFragment {
 
     private RecyclerView productsRecyclerView;
 
+    private View progressBar;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
         api = new OpenFoodAPIClient(getActivity());
@@ -50,13 +52,14 @@ public class SearchProductsResultsFragment extends BaseFragment {
 
         // Click listener on a product
         productsRecyclerView.addOnItemTouchListener(
-            new RecyclerItemClickListener(view.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
-                @Override public void onItemClick(View view, int position) {
-                    Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
-                    String barcode = p.getCode();
-                    api.getProduct(barcode, getActivity());
-                }
-            })
+                new RecyclerItemClickListener(view.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
+                        String barcode = p.getCode();
+                        api.getProduct(barcode, getActivity());
+                    }
+                })
         );
 
         api.searchProduct(getArguments().getString("query"), getActivity(),
@@ -64,6 +67,7 @@ public class SearchProductsResultsFragment extends BaseFragment {
 
                     @Override
                     public void onProductsResponse(boolean isResponseOk, List<Product> products) {
+                        hideProgressBar();
                         if (isResponseOk) {
                             RecyclerView.Adapter adapter = new ProductsRecyclerViewAdapter(products);
                             productsRecyclerView.setAdapter(adapter);
@@ -71,5 +75,18 @@ public class SearchProductsResultsFragment extends BaseFragment {
                     }
                 }
         );
+
+        progressBar = view.findViewById(R.id.progressBar);
+        showProgressBar();
+    }
+
+    private void showProgressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+        progressBar.animate().setDuration(200).alpha(1).start();
+    }
+
+    private void hideProgressBar() {
+        progressBar.animate().setDuration(200).alpha(0).start();
+        progressBar.setVisibility(View.GONE);
     }
 }

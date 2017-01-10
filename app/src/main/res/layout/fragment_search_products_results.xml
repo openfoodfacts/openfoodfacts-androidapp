@@ -7,6 +7,8 @@
     tools:context="openfoodfacts.github.scrachx.openfood.views.MainActivity"
     >
 
+   <include layout="@layout/loading_icon" />
+
    <android.support.v7.widget.RecyclerView
        android:id="@+id/products_recycler_view"
        android:scrollbars="vertical"
