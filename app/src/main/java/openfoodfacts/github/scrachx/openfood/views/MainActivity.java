@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -56,6 +55,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsResultsFrag
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
@@ -110,11 +110,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         // chrome custom tab init
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
-        customTabsIntent = new CustomTabsIntent.Builder(customTabActivityHelper.getSession())
-                .setShowTitle(true)
-                .setToolbarColor(getResources().getColor(R.color.md_light_appbar))
-                .setCloseButtonIcon(((BitmapDrawable) getResources().getDrawable(R.drawable.ic_navigation_arrow_back)).getBitmap())
-                .build();
+
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getResources(), customTabActivityHelper.getSession());
 
         // Create the AccountHeader
         headerResult = new AccountHeaderBuilder()

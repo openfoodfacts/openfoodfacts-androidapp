@@ -69,6 +69,7 @@ dependencies {
     compile 'com.android.support:customtabs:25.1.0'
     compile 'com.android.support:support-v4:25.1.0'
     compile 'com.android.support:preference-v14:25.1.0'
+    compile "com.android.support:design:25.1.0"
 
     compile 'com.android.support:multidex:1.0.1'
 

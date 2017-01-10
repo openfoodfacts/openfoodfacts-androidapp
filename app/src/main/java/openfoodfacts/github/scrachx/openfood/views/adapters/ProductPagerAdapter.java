@@ -3,7 +3,7 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
@@ -11,7 +11,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragm
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 
-public class ProductPagerAdapter extends FragmentStatePagerAdapter {
+public class ProductPagerAdapter extends FragmentPagerAdapter {
 
     private String[] navMenuTitles;
 

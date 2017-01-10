@@ -19,12 +19,19 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.support.customtabs.CustomTabsIntent;
+import android.support.customtabs.CustomTabsSession;
 import android.text.TextUtils;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import openfoodfacts.github.scrachx.openfood.R;
 
 /**
  * Helper class for Custom Tabs.
@@ -49,6 +56,24 @@ public class CustomTabsHelper {
         Intent keepAliveIntent = new Intent().setClassName(
                 context.getPackageName(), KeepAliveService.class.getCanonicalName());
         intent.putExtra(EXTRA_CUSTOM_TABS_KEEP_ALIVE, keepAliveIntent);
+    }
+
+    /**
+     * Create a custom tabs intent configured
+     * @param resources to fetch drawables, colors...
+     * @param session optional custom tabs session - could be null
+     * @return CustomTabsIntent
+     */
+    public static CustomTabsIntent getCustomTabsIntent(Resources resources, CustomTabsSession session) {
+        Bitmap icon = ((BitmapDrawable) resources.getDrawable(R.drawable.ic_navigation_arrow_back)).getBitmap();
+
+        //TODO use mayLaunchUrl to improve performance like in MainActivity or LoginActivity
+        return new CustomTabsIntent.Builder(session)
+                .setShowTitle(true)
+                // to override if not default theme value
+//                .setToolbarColor(resources.getColor(R.color.md_light_appbar))
+                .setCloseButtonIcon(icon)
+                .build();
     }
 
     /**
