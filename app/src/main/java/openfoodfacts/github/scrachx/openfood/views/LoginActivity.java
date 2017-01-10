@@ -172,7 +172,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
     @OnClick(R.id.buttonCreateAccount)
     protected void onCreateUser() {
-        CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getResources(), customTabActivityHelper.getSession());
+        CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
 
         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, uri, new WebViewFallback());
     }

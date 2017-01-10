@@ -111,7 +111,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
 
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getResources(), customTabActivityHelper.getSession());
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
 
         // Create the AccountHeader
         headerResult = new AccountHeaderBuilder()

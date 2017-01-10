@@ -19,9 +19,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.customtabs.CustomTabsSession;
@@ -32,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 /**
  * Helper class for Custom Tabs.
@@ -60,13 +59,12 @@ public class CustomTabsHelper {
 
     /**
      * Create a custom tabs intent configured
-     * @param resources to fetch drawables, colors...
+     * @param context to fetch drawables, colors...
      * @param session optional custom tabs session - could be null
      * @return CustomTabsIntent
      */
-    public static CustomTabsIntent getCustomTabsIntent(Resources resources, CustomTabsSession session) {
-        Bitmap icon = ((BitmapDrawable) resources.getDrawable(R.drawable.ic_navigation_arrow_back)).getBitmap();
-
+    public static CustomTabsIntent getCustomTabsIntent(Context context, CustomTabsSession session) {
+        Bitmap icon = Utils.getBitmapFromDrawable(context, R.drawable.ic_arrow_back_black);
         //TODO use mayLaunchUrl to improve performance like in MainActivity or LoginActivity
         return new CustomTabsIntent.Builder(session)
                 .setShowTitle(true)

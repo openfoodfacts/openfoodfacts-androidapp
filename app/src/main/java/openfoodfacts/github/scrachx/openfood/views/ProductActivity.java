@@ -100,7 +100,7 @@ public class ProductActivity extends BaseActivity {
                     url = " " + mState.getProduct().getUrl();
                 }
 
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getResources(), null);
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), null);
 
                 CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
             default:

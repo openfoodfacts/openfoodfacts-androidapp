@@ -81,7 +81,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getResources(), customTabActivityHelper.getSession());
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
                 CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
                 }
