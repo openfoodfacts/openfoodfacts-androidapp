@@ -56,10 +56,20 @@ buildscript {
     }
     dependencies {
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
     }
 }
 
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'org.greenrobot.greendao'
+
+greendao {
+    schemaVersion 1
+}
+
+configurations {
+    all*.exclude group: 'commons-logging', module: 'commons-logging'
+}
 
 dependencies {
 
@@ -84,8 +94,6 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.3'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.3'
 
-    compile 'commons-validator:commons-validator:1.5.1'
-
     compile 'net.steamcrafted:load-toast:1.0.10'
 
     compile 'me.dm7.barcodescanner:zxing:1.9'
@@ -94,7 +102,7 @@ dependencies {
 
     compile 'org.jsoup:jsoup:1.8.3'
 
-    compile 'com.github.satyan:sugar:1.5'
+    compile 'org.greenrobot:greendao:3.2.0'
 
     compile('com.afollestad.material-dialogs:core:0.9.2.1') {
         transitive = true
@@ -116,6 +124,10 @@ dependencies {
     compile 'com.github.jkwiecien:EasyImage:1.4.0'
 
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    //Apache
+    compile 'org.apache.commons:commons-collections4:4.1'
+    compile 'commons-validator:commons-validator:1.5.1'
 
     // Required for local unit tests (JUnit 4 framework)
     testCompile 'junit:junit:4.12'

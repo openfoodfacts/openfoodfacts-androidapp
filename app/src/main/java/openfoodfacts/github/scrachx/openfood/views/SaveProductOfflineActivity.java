@@ -33,6 +33,7 @@ import butterknife.OnClick;
 import butterknife.OnItemSelected;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -107,7 +108,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
         adapterI.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         spinnerI.setAdapter(adapterI);
 
-        List<SendProduct> sp = SendProduct.find(SendProduct.class, "barcode = ?", mBarcode);
+        List<SendProduct> sp = Utils.getAppDaoSession(this).getSendProductDao().queryBuilder().where(SendProductDao.Properties.Barcode.eq(mBarcode)).list();
         if (sp.size() > 0) {
             mProduct = sp.get(0);
         }
@@ -230,7 +231,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                 @Override
                 public void onProductSentResponse(boolean value) {
                     if (!value) {
-                        mProduct.save();
+                        Utils.getAppDaoSession(activity).getSendProductDao().insert(mProduct);
                         Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("openOfflineEdit", true);
@@ -243,7 +244,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                 }
             });
         } else {
-            mProduct.save();
+            Utils.getAppDaoSession(this).getSendProductDao().insertOrReplace(mProduct);
             Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.putExtra("openOfflineEdit", true);

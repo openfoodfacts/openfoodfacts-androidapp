@@ -31,6 +31,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
@@ -100,7 +101,7 @@ public class OfflineEditFragment extends BaseFragment {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                         String barcode = saveItems.get(lapos).getBarcode();
-                        SendProduct.deleteAll(SendProduct.class, "barcode = ?", barcode);
+                        Utils.getAppDaoSession(getActivity()).getSendProductDao().deleteInTx(Utils.getAppDaoSession(getActivity()).getSendProductDao().queryBuilder().where(SendProductDao.Properties.Barcode.eq(barcode)).list());
                         final SaveListAdapter sl = (SaveListAdapter) listView.getAdapter();
                         saveItems.remove(lapos);
                         getActivity().runOnUiThread(new Runnable() {
@@ -125,7 +126,7 @@ public class OfflineEditFragment extends BaseFragment {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                     OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getContext());
-                    final List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
+                    final List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
                     for (final SendProduct product : listSaveProduct) {
 
                         if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())) {
@@ -160,7 +161,7 @@ public class OfflineEditFragment extends BaseFragment {
                                     }
 
                                     ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
-                                    SendProduct.deleteAll(SendProduct.class, "barcode = ?", product.getBarcode());
+                                    Utils.getAppDaoSession(getActivity()).getSendProductDao().deleteInTx(Utils.getAppDaoSession(getActivity()).getSendProductDao().queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
                                 }
                             }
                         });
@@ -181,7 +182,7 @@ public class OfflineEditFragment extends BaseFragment {
         @Override
         protected void onPreExecute() {
             saveItems.clear();
-            List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
+            List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
             if (listSaveProduct.size() == 0) {
                 Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
             } else {
@@ -191,7 +192,7 @@ public class OfflineEditFragment extends BaseFragment {
 
         @Override
         protected Context doInBackground(Context... ctx) {
-            List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
+            List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
 
             int imageIcon = R.drawable.ic_ok;
 
@@ -216,7 +217,7 @@ public class OfflineEditFragment extends BaseFragment {
 
         @Override
         protected void onPostExecute(Context ctx) {
-            List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
+            List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
             if (listSaveProduct.isEmpty()) {
                 return;
             }

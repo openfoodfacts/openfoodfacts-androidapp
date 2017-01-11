@@ -25,7 +25,9 @@ import java.util.List;
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -46,7 +48,7 @@ public class ProductActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        List<Allergen> mAllergens = Allergen.find(Allergen.class, "enable = ?", "true");
+        List<Allergen> mAllergens = Utils.getAppDaoSession(this).getAllergenDao().queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
         ProductPagerAdapter adapterResult = new ProductPagerAdapter(getSupportFragmentManager(), this);
         viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(adapterResult);

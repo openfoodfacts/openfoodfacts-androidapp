@@ -1,17 +1,23 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import com.orm.SugarRecord;
-import com.orm.dsl.Unique;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Index;
+import org.greenrobot.greendao.annotation.Unique;
 
 import java.util.Date;
+import org.greenrobot.greendao.annotation.Generated;
 
-public class HistoryProduct extends SugarRecord {
+@Entity(indexes = {
+        @Index(value = "barcode", unique = true)
+})
+public class HistoryProduct {
 
     private String title;
     private String brands;
     private String url;
     private Date lastSeen;
-    @Unique
+    @Id
     private String barcode;
 
     // Default constructor is necessary for SugarRecord
@@ -23,6 +29,16 @@ public class HistoryProduct extends SugarRecord {
         this.url = url;
         this.barcode = barcode;
         this.lastSeen = new Date();
+    }
+
+    @Generated(hash = 1846082873)
+    public HistoryProduct(String title, String brands, String url, Date lastSeen,
+            String barcode) {
+        this.title = title;
+        this.brands = brands;
+        this.url = url;
+        this.lastSeen = lastSeen;
+        this.barcode = barcode;
     }
 
     public String getTitle() {

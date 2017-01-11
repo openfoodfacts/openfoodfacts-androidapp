@@ -3,7 +3,11 @@ package openfoodfacts.github.scrachx.openfood.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.orm.SugarRecord;
+
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Index;
+import org.greenrobot.greendao.annotation.Generated;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -12,17 +16,31 @@ import com.orm.SugarRecord;
         "products",
         "id"
 })
-public class Allergen extends SugarRecord {
+@Entity(indexes = {
+        @Index(value = "name", unique = true)
+})
+public class Allergen {
 
     private String enable;
     private String url;
     private String name;
     private Integer products;
     @JsonProperty("id")
+    @Id
     private String idAllergen;
 
     public Allergen() {
         this.enable = "false";
+    }
+
+    @Generated(hash = 512140330)
+    public Allergen(String enable, String url, String name, Integer products,
+            String idAllergen) {
+        this.enable = enable;
+        this.url = url;
+        this.name = name;
+        this.products = products;
+        this.idAllergen = idAllergen;
     }
 
     public String isEnable() {
@@ -104,5 +122,9 @@ public class Allergen extends SugarRecord {
                 ", products=" + products +
                 ", idAllergen='" + idAllergen + '\'' +
                 '}';
+    }
+
+    public String getEnable() {
+        return this.enable;
     }
 }
