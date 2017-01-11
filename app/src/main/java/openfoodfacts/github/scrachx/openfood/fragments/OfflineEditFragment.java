@@ -116,6 +116,11 @@ public class OfflineEditFragment extends BaseFragment {
 
     @OnClick(R.id.buttonSendAll)
     protected void onSendAllProducts() {
+        List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
+        if (listSaveProduct.size() == 0) {
+            Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
+            return;
+        }
         new MaterialDialog.Builder(getActivity())
                 .title(R.string.txtDialogsTitle)
                 .content(R.string.txtDialogsContentSend)
@@ -161,6 +166,9 @@ public class OfflineEditFragment extends BaseFragment {
 
                                     ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
                                     SendProduct.deleteAll(SendProduct.class, "barcode = ?", product.getBarcode());
+                                    Toast.makeText(getActivity(), R.string.txtDataUpdated, Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(getActivity(), R.string.errorWeb, Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
