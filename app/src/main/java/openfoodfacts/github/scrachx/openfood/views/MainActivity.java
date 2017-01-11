@@ -29,7 +29,6 @@ import android.view.View;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.fastadapter.commons.utils.RecyclerViewCacheUtil;
-import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -69,9 +68,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final int LOGOUT = 400;
     public static final int LOGIN_ID = 6;
     private static final long USER_ID = 500;
+    private static final int ABOUT = 600;
+    private static final int CONTRIBUTE = 700;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
-
     private AccountHeader headerResult = null;
     private Drawer result = null;
 
@@ -79,6 +79,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private CustomTabsIntent customTabsIntent;
 
     private Uri userAccountUri;
+    private Uri contributeUri;
+    private Uri discoverUri;
     private Uri userContributeUri;
 
     @Override
@@ -155,8 +157,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .addDrawerItems(
                     new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(1),
                     new SectionDrawerItem().withName(R.string.search_drawer),
-                    new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(FontAwesome.Icon.faw_barcode).withIdentifier(2),
-                    new PrimaryDrawerItem().withName(R.string.search_by_name_drawer).withIcon(GoogleMaterial.Icon.gmd_search).withIdentifier(3),
+                    new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(2),
                     new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(GoogleMaterial.Icon.gmd_camera_alt).withIdentifier(4),
                     new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(5),
                     new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
@@ -166,7 +167,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     new DividerDrawerItem(),
                     new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9),
                     new DividerDrawerItem(),
-                    new PrimaryDrawerItem().withName(R.string.action_about).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(10),
+                    new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ABOUT),
+                    new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(CONTRIBUTE),
                     new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(11)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -225,13 +227,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                 fragment = new OfflineEditFragment();
                                 getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
                                 break;
-                            case 10:
-                                new MaterialDialog.Builder(MainActivity.this)
-                                        .title(R.string.action_about)
-                                        .content(R.string.txtAbout)
-                                        .neutralText(R.string.txtOk)
-                                        .show();
-                                return false;
+                            case ABOUT:
+                                CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, discoverUri, new WebViewFallback());
+                                break;
+                            case CONTRIBUTE:
+                                CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, contributeUri, new WebViewFallback());
+                                break;
                             case 11:
                                 boolean openBeautyInstalled = Utils.isApplicationInstalled(MainActivity.this, getString(R.string.openBeautyApp));
                                 if (openBeautyInstalled) {
@@ -252,7 +253,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                     CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, userContributeUri, new WebViewFallback());
                                 } else {
                                     new MaterialDialog.Builder(MainActivity.this)
-                                            .title(R.string.action_contribute)
+                                            .title(R.string.contribute)
                                             .content(R.string.contribution_without_account)
                                             .positiveText(R.string.txtOk)
                                             .negativeText(R.string.cancel_button)
@@ -313,7 +314,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
 
         // prefetch uris
+        contributeUri = Uri.parse(getString(R.string.website_contribute));
+        discoverUri = Uri.parse(getString(R.string.website_discover));
         userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin);
+
+        customTabActivityHelper.mayLaunchUrl(contributeUri, null, null);
+        customTabActivityHelper.mayLaunchUrl(discoverUri, null, null);
         customTabActivityHelper.mayLaunchUrl(userContributeUri, null, null);
     }
 

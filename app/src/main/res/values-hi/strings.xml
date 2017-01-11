@@ -5,7 +5,7 @@
   <string name="action_settings">सेटिंग्स</string>
   <string name="action_about">जानकारी</string>
   <string name="action_discover">तलाश करें</string>
-  <string name="action_contribute">योगदान</string>
+  <string name="contribute">योगदान</string>
   <string name="action_find">ढूंढें</string>
   <string name="text_barcode">बारकोड</string>
   <string-array name="nav_drawer_items_product">

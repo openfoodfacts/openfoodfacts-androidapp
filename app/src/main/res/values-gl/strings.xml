@@ -5,7 +5,7 @@
   <string name="action_settings">Axustes</string>
   <string name="action_about">Sobre</string>
   <string name="action_discover">Descubrir</string>
-  <string name="action_contribute">Colaborar</string>
+  <string name="contribute">Colaborar</string>
   <string name="action_find">Buscar</string>
   <string-array name="nav_drawer_items_product">
     <item>Resumo</item>

@@ -5,7 +5,7 @@
   <string name="action_settings">Impostazioni</string>
   <string name="action_about">Informazioni</string>
   <string name="action_discover">Scopri</string>
-  <string name="action_contribute">Contribuire</string>
+  <string name="contribute">Contribuire</string>
   <string name="action_find">Cerca</string>
   <string-array name="nav_drawer_items_product">
     <item>Summary</item>

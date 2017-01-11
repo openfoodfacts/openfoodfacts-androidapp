@@ -5,7 +5,7 @@
   <string name="action_settings">Instellingen</string>
   <string name="action_about">Informatie</string>
   <string name="action_discover">Ontdek</string>
-  <string name="action_contribute">Bijdragen</string>
+  <string name="contribute">Bijdragen</string>
   <string name="action_find">Zoeken</string>
   <string name="text_barcode">Streepjescode invoeren:</string>
   <string-array name="nav_drawer_items_product">

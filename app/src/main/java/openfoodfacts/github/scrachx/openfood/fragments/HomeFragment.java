@@ -4,11 +4,9 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -16,7 +14,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -31,9 +28,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,18 +37,7 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
 
-
-    @BindView(R.id.discoverButton)
-    Button discoverButton;
-
-    @BindView(R.id.contributeButton)
-    Button contributeButton;
-
     private OpenFoodAPIService apiClient;
-    private Uri contributeUri;
-    private Uri discoverUri;
-    private CustomTabActivityHelper customTabActivityHelper;
-    private CustomTabsIntent customTabsIntent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -65,16 +48,6 @@ public class HomeFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
-
-        contributeUri = Uri.parse(getString(R.string.website_contribute));
-        discoverUri = Uri.parse(getString(R.string.website_discover));
-
-        customTabActivityHelper = new CustomTabActivityHelper();
-        customTabActivityHelper.mayLaunchUrl(contributeUri, null, null);
-        customTabActivityHelper.mayLaunchUrl(discoverUri, null, null);
-
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(view.getContext(), customTabActivityHelper.getSession());
-
         checkUserCredentials();
     }
 
@@ -100,16 +73,6 @@ public class HomeFragment extends BaseFragment {
             Intent intent = new Intent(getActivity(), ScannerFragmentActivity.class);
             startActivity(intent);
         }
-    }
-
-    @OnClick(R.id.contributeButton)
-    protected void onContribute() {
-        CustomTabActivityHelper.openCustomTab(HomeFragment.this.getActivity(), customTabsIntent, contributeUri, new WebViewFallback());
-    }
-
-    @OnClick(R.id.discoverButton)
-    protected void onDiscover() {
-        CustomTabActivityHelper.openCustomTab(HomeFragment.this.getActivity(), customTabsIntent, discoverUri, new WebViewFallback());
     }
 
     private void checkUserCredentials() {

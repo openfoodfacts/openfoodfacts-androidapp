@@ -5,7 +5,7 @@
   <string name="action_settings">Configurări</string>
   <string name="action_about">Despre</string>
   <string name="action_discover">Descoperiți</string>
-  <string name="action_contribute">Contribuiți</string>
+  <string name="contribute">Contribuiți</string>
   <string name="action_find">Căutare</string>
   <string name="text_barcode">Introduceți codul de bare</string>
   <string-array name="nav_drawer_items_product">
