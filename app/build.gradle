@@ -100,9 +100,11 @@ dependencies {
         transitive = true
     }
 
-    compile('com.mikepenz:materialdrawer:5.6.0@aar') {
+    compile('com.mikepenz:materialdrawer:5.8.1@aar') {
         transitive = true
     }
+
+    compile 'com.mikepenz:fastadapter-commons:2.1.0@aar'
 
     compile 'com.github.clans:fab:1.6.4'
 
