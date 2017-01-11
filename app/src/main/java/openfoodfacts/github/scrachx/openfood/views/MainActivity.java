@@ -49,7 +49,6 @@ import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsResultsFragment;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -188,10 +187,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             case 2:
                                 fragment = new FindProductFragment();
                                 getSupportActionBar().setTitle(getResources().getString(R.string.search_by_barcode_drawer));
-                                break;
-                            case 3:
-                                fragment = new SearchProductsFragment();
-                                getSupportActionBar().setTitle(getResources().getString(R.string.search_by_name_drawer));
                                 break;
                             case 4:
                                 if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
