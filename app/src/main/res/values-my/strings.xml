@@ -4,7 +4,7 @@
   <string name="hello_world">မဂၤလာပါကမာၻၾကီး</string>
   <string name="action_settings">အပြင်​အဆင်​များ</string>
   <string name="action_about">အကြောင်း</string>
-  <string name="action_contribute">ပံ့ပိုးကူညီ</string>
+  <string name="contribute">ပံ့ပိုးကူညီ</string>
   <string name="action_find">ရွာေဖြမည္</string>
   <string-array name="nav_drawer_items_product">
     <item>အက်ဥ္းခ်ဳပ္</item>

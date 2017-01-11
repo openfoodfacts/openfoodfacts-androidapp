@@ -46,7 +46,6 @@ public class IngredientsProductFragment extends BaseFragment {
     @BindView(R.id.textAdditiveProduct) TextView additiveProduct;
     @BindView(R.id.textPalmOilProduct) TextView palmOilProduct;
     @BindView(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
-    @BindView(R.id.ingredientContainer) ViewGroup containerView;
     @BindView(R.id.imageViewNutritionFullIng) ImageView mImageNutritionFullIng;
     private String mUrlImage;
     private State mState;

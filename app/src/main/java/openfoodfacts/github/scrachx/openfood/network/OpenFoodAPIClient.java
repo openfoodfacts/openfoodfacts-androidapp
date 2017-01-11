@@ -306,8 +306,6 @@ public class OpenFoodAPIClient {
     }
 
     public void searchProduct(final String name, final Activity activity, final OnProductsCallback productsCallback) {
-        final LoadToast lt = getLoadToast(activity);
-
         apiService.searchProductByName(name).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(Call<Search> call, Response<Search> response) {
@@ -319,10 +317,8 @@ public class OpenFoodAPIClient {
                 Search s = response.body();
                 if(Integer.valueOf(s.getCount()) == 0){
                     Toast.makeText(activity, R.string.txt_product_not_found, Toast.LENGTH_LONG).show();
-                    lt.error();
                     productsCallback.onProductsResponse(false, null);
                 }else{
-                    lt.success();
                     productsCallback.onProductsResponse(true, s.getProducts());
                 }
             }
@@ -330,7 +326,6 @@ public class OpenFoodAPIClient {
             @Override
             public void onFailure(Call<Search> call, Throwable t) {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                lt.error();
                 productsCallback.onProductsResponse(false, null);
             }
         });

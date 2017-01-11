@@ -5,7 +5,7 @@
   <string name="action_settings">الإعدادات</string>
   <string name="action_about">حول</string>
   <string name="action_discover">إكتشف</string>
-  <string name="action_contribute">ساهم</string>
+  <string name="contribute">ساهم</string>
   <string name="action_find">بحث</string>
   <string-array name="nav_drawer_items_product">
     <item>الملخص</item>

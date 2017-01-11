@@ -8,8 +8,9 @@
         app:actionProviderClass="android.support.v7.widget.ShareActionProvider" />
 
     <item android:id="@+id/action_edit_product"
-        android:icon="@drawable/ic_edit_white_48dp"
+        android:icon="@drawable/ic_mode_edit_black"
         android:title="@string/action_edit_product"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        />
 
 </menu>
