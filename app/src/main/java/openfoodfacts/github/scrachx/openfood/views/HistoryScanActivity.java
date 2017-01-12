@@ -5,6 +5,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -26,10 +28,14 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.opencsv.CSVWriter;
+import com.orm.query.Select;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -184,52 +190,52 @@ public class HistoryScanActivity extends BaseActivity {
 
         @Override
         protected void onPreExecute() {
-//            List<HistoryProduct> listHistoryProducts = HistoryProduct.listAll(HistoryProduct.class);
-//            if (listHistoryProducts.size() == 0) {
-//                Toast.makeText(getApplicationContext(), R.string.txtNoData, Toast.LENGTH_LONG).show();
-//                emptyHistory = true;
-//                invalidateOptionsMenu();
-//                cancel(true);
-//            } else {
-//                Toast.makeText(getApplicationContext(), R.string.txtLoading, Toast.LENGTH_LONG).show();
-//            }
+            List<HistoryProduct> listHistoryProducts = HistoryProduct.listAll(HistoryProduct.class);
+            if (listHistoryProducts.size() == 0) {
+                Toast.makeText(getApplicationContext(), R.string.txtNoData, Toast.LENGTH_LONG).show();
+                emptyHistory = true;
+                invalidateOptionsMenu();
+                cancel(true);
+            } else {
+                Toast.makeText(getApplicationContext(), R.string.txtLoading, Toast.LENGTH_LONG).show();
+            }
         }
 
         @Override
         protected Context doInBackground(Context... ctx) {
-//            List<HistoryProduct> listHistoryProducts = Select.from(HistoryProduct.class).orderBy("LAST_SEEN DESC").list();
-//            final Bitmap defaultImgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_no), 200, 200, true);
-//
-//            for (HistoryProduct historyProduct : listHistoryProducts) {
-//                Bitmap imgUrl;
-//                HttpURLConnection connection = null;
-//                InputStream input = null;
-//                try {
-//                    URL url = new URL(historyProduct.getUrl());
-//                    connection = (HttpURLConnection) url.openConnection();
-//                    connection.setDoInput(true);
-//                    connection.connect();
-//                    input = connection.getInputStream();
-//                    imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(input), 200, 200, true);
-//                } catch (IOException e) {
-//                    Log.i("HISTORY", "unable to get the history product image", e);
-//                    imgUrl = defaultImgUrl;
-//                } finally {
-//                    if (input != null) {
-//                        try {
-//                            input.close();
-//                        } catch (IOException e) {
-//                            // no job
-//                        }
-//                    }
-//
-//                    if (connection != null) {
-//                        connection.disconnect();
-//                    }
-//                }
-//
-//                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), imgUrl, historyProduct.getBarcode()));
-//            }
+            List<HistoryProduct> listHistoryProducts = Select.from(HistoryProduct.class).orderBy("LAST_SEEN DESC").list();
+            final Bitmap defaultImgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_no), 200, 200, true);
+
+            for (HistoryProduct historyProduct : listHistoryProducts) {
+                Bitmap imgUrl;
+                HttpURLConnection connection = null;
+                InputStream input = null;
+                try {
+                    URL url = new URL(historyProduct.getUrl());
+                    connection = (HttpURLConnection) url.openConnection();
+                    connection.setDoInput(true);
+                    connection.connect();
+                    input = connection.getInputStream();
+                    imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(input), 200, 200, true);
+                } catch (IOException e) {
+                    Log.i("HISTORY", "unable to get the history product image", e);
+                    imgUrl = defaultImgUrl;
+                } finally {
+                    if (input != null) {
+                        try {
+                            input.close();
+                        } catch (IOException e) {
+                            // no job
+                        }
+                    }
+
+                    if (connection != null) {
+                        connection.disconnect();
+                    }
+                }
+
+                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), imgUrl, historyProduct.getBarcode()));
+            }
 
             return ctx[0];
         }
