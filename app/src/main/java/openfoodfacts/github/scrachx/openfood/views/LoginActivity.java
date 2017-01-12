@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
@@ -40,6 +41,7 @@ import retrofit2.Retrofit;
  */
 public class LoginActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback {
 
+    @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.editTextLogin) EditText loginView;
     @BindView(R.id.editTextPass) EditText passwordView;
     @BindView(R.id.textInfoLogin) TextView infoLogin;
@@ -54,6 +56,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         uri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
 

@@ -1,69 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editTextLogin"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="@dimen/spacing_normal"
-        android:layout_marginRight="@dimen/spacing_normal"
-        android:background="@drawable/edittext_top"
-        android:drawableLeft="@drawable/ic_user_grey"
-        android:drawablePadding="10dip"
-        android:ems="10"
-        android:hint="@string/hintLogin"
-        android:inputType="text"
-        android:maxLines="1"
-        android:paddingLeft="10dip" />
+    <include layout="@layout/toolbar" />
 
-    <EditText
-        android:id="@+id/editTextPass"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="@dimen/spacing_normal"
-        android:layout_marginRight="@dimen/spacing_normal"
-        android:background="@drawable/edittext_bottom"
-        android:drawableLeft="@drawable/ic_pass"
-        android:drawablePadding="10dip"
-        android:ems="10"
-        android:hint="@string/hintPass"
-        android:inputType="textPassword"
-        android:maxLines="1"
-        android:paddingLeft="10dip" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="60dp">
 
-    <Button
-        android:id="@+id/buttonSave"
-        style="@style/DefaultButtonText"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/spacing_normal"
-        android:background="@drawable/button_default_bg"
-        android:gravity="center"
-        android:text="@string/txtSignIn" />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/buttonCreateAccount"
-        style="@style/DefaultButtonText"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/spacing_normal"
-        android:background="@drawable/button_default_bg"
-        android:text="@string/create_account" />
+            <EditText
+                android:id="@+id/editTextLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:drawableLeft="@drawable/ic_person_grey_24dp"
+                android:drawablePadding="10dip"
+                android:ems="10"
+                android:hint="@string/hintLogin"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingLeft="10dip" />
 
-    <TextView
-        android:id="@+id/textInfoLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textSize="@dimen/font_small" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editTextPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:drawableLeft="@drawable/ic_vpn_key_grey_24dp"
+                android:drawablePadding="10dip"
+                android:ems="10"
+                android:hint="@string/hintPass"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingLeft="10dip" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="?attr/colorPrimary"
+            android:text="@string/txtSignIn"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/buttonCreateAccount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="?attr/colorPrimary"
+            android:text="@string/create_account"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/textInfoLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/font_small" />
+
+    </LinearLayout>
 
 </LinearLayout>
