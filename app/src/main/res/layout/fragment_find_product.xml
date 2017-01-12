@@ -21,7 +21,7 @@
         android:layout_marginRight="@dimen/spacing_normal"
         android:layout_marginTop="@dimen/spacing_normal"
         android:background="@drawable/edittext_full"
-        android:drawableLeft="@drawable/ic_search_grey"
+        android:drawableLeft="@drawable/ic_search_black"
         android:drawablePadding="10dip"
         android:ems="10"
         android:hint="@string/hintBarcode"

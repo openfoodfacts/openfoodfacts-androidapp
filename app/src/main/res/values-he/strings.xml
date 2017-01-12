@@ -5,13 +5,14 @@
   <string name="action_settings">הגדרות</string>
   <string name="action_about">על אודות</string>
   <string name="action_discover">לגלות</string>
-  <string name="action_contribute">לתרום</string>
+  <string name="contribute">לתרום</string>
   <string name="action_find">חיפוש</string>
+  <string name="text_barcode">נא להזין את הברקוד:</string>
   <string-array name="nav_drawer_items_product">
     <item>תקציר</item>
     <item>רכיבים</item>
     <item>תזונה</item>
-    <item>Nutrition Table</item>
+    <item>טבלת ערכים תזונתיים</item>
     <item>חזרה לתפריט</item>
   </string-array>
   <string-array name="units_array">
@@ -71,21 +72,21 @@
     <item>עברית</item>
     <item>גליסית</item>
     <item>קטלאנית</item>
-    <item>Czech</item>
-    <item>Arabic</item>
-    <item>Finnish</item>
-    <item>Hindi</item>
+    <item>צ׳כית</item>
+    <item>ערבית</item>
+    <item>פינית</item>
+    <item>הינדי</item>
     <item>Kabyle</item>
-    <item>Korean</item>
-    <item>Latvian</item>
+    <item>קוריאנית</item>
+    <item>לטבית</item>
     <item>הולנדית</item>
-    <item>Brazilian portuguese</item>
-    <item>Romanian</item>
+    <item>פורטוגלית ברזילאית</item>
+    <item>רומנית</item>
     <item>שבדית</item>
     <item>סינית</item>
-    <item>Norwegian (Bokmal)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>נורבקית ספרותית</item>
+    <item>דנית</item>
+    <item>סינית מפושטת</item>
   </string-array>
   <string-array name="images_array">
     <item>בררת מחדל</item>
@@ -104,6 +105,7 @@
   <string name="txtPackaging">אריזה:</string>
   <string name="txtBrands">מותגים:</string>
   <string name="txtCategories">קטגוריות:</string>
+  <string name="txtLabels">תוויות, אישורים, פרסים:</string>
   <string name="txtManufacturing">מקומות העיבוד או הייצור:</string>
   <string name="txtIngredientsOrigins">מקור הרכיבים:</string>
   <string name="txtCity">עיר, מדינה וארץ הקנייה :</string>
@@ -152,6 +154,7 @@
   <string name="txtTakePicture">צילום תמונה</string>
   <string name="txtSendAll">לשלוח הכול</string>
   <string name="txtNoData">אין נתונים</string>
+  <string name="txtPictureNeeded">נא לצלם תמונה תחילה</string>
   <string name="toastSending">מתבצעת שליחה…</string>
   <string name="dataSaved">נשמר מקומית בהתקן שלך</string>
   <string name="txtInfoAddUser">נא להזין את שם המשתמש והססמה שלך</string>
@@ -185,12 +188,19 @@
   <string name="alert_drawer">התראת אלרגן</string>
   <string name="warning_allergens">מכיל אלרגנים</string>
   <string name="title_dialog_alert">הוספת התרעה</string>
+  <string name="warning_alert_data">נתוני האלרגיות שלך לעולם לא ישלחו אל שרתי מסד נתוני המזון הפתוח. כמו כן, כדאי להיזהר כיוון שהמידע לא בהכרח אמין, כדאי לוודא שוב באופן עצמאי!</string>
   <string name="from_gallery">מהגלריה</string>
   <string name="product_sent">המוצר נשלח!</string>
   <string name="action_edit_product">עריכת מוצר</string>
   <string name="title_info_dialog">פרטים</string>
+  <string name="text_offline_info_dialog">ניתן לסרוק מוצרים ללא חיבור לאינטרנט ולהוסיף אותם למסד נתוני המזון הפתוח מאוחר יותר. כל המוצרים שנסרקים מופיעים כאן, תהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
+  <string name="permission_camera">נדרשת הרשאה לשימוש במצלמה כדי לסרוק ברקודים ולצלם תמונות.</string>
   <string name="permission_title">פרטי הרשאה</string>
   <string name="permission_denied">נא להפעיל את ההרשאות בהגדרות</string>
+  <string name="permission_storage">נדרשת הרשאת גישה לאחסון כדי לצלם או לבחור תמונות</string>
+  <string name="info_download_data">ניתן להוריד נתונים כדי שתכונה זו תפעל, יש ללחוץ על כן כדי להוריד אותם.</string>
+  <string name="info_download_data_connection">עליך להוריד נתונים כדי שתכונה זו תפעל. נא להתחבר לאינטרנט.</string>
+  <string name="msg_input_empty">נא למלא את השדות תחילה.</string>
   <string name="new_offline_info">נא לצלם תמונות של המוצר, רכיביו, טבלת ערכיו התזונתיים וכל מידע נוסף שעל התווית. תודה!</string>
   <string name="error_invalid_password">הססמה חייבת להיות באורך של 6 תווים לפחות.</string>
   <string name="error_field_required">זהו שדה חובה.</string>
@@ -204,19 +214,41 @@
   <string name="title_clear_history_dialog">פינוי</string>
   <string name="text_clear_history_dialog">לפנות את כל היסטוריית הסריקה?</string>
   <string name="export_csv_history">יצוא CSV…</string>
+  <string name="txt_exporting_history">ההיסטוריה מיוצאת…</string>
+  <string name="txt_history_exported">ההיסטוריה יוצאה</string>
+  <string name="permision_write_external_storage">נדרשת הרשאת כתיבה לאחסון חיצוני כדי לייצא היסטוריה.</string>
   <string name="txt_nutrition_not_found">לא זמין</string>
+  <string name="nutrition_carbohydrate">פחמימות</string>
+  <string name="nutrition_carbohydrate_short_name">פחמימות (ג׳)</string>
   <string name="nutrition_cholesterol">כולסטרול</string>
+  <string name="nutrition_cholesterol_short_name">כולסטרול (ג׳)</string>
   <string name="nutrition_energy">אנרגיה</string>
   <string name="nutrition_energy_short_name">אנרגיה</string>
   <string name="nutrition_fat">שומן</string>
+  <string name="nutrition_fat_short_name">שומנים (ג׳)</string>
   <string name="nutrition_fiber">סיבים תזונתיים</string>
+  <string name="nutrition_fiber_short_name">סיבים תזונתיים (ג׳)</string>
   <string name="nutrition_header">מפרט תזונתי</string>
   <string name="nutrition_no_data_message">אין מידע זמין על המוצר הזה</string>
+  <string name="nutrition_per_quantity">ל־100ג׳/100מ״ל</string>
   <string name="nutrition_proteins">חלבון</string>
+  <string name="nutrition_proteins_short_name">חלבונים (ג׳)</string>
   <string name="nutrition_salt">מלח</string>
+  <string name="nutrition_salt_short_name">מלח (ג׳)</string>
+  <string name="nutrition_serving">להגשה</string>
   <string name="nutrition_serving_size">גודל ההגשה :</string>
   <string name="nutrition_sodium">נתרן</string>
+  <string name="nutrition_sodium_short_name">נתרן (ג׳)</string>
   <string name="nutrition_sugars">סוכרים</string>
+  <string name="nutrition_sugars_short_name">סוכרים (ג׳)</string>
   <string name="action_manage_account">ניהול חשבון</string>
   <string name="action_contributes">התרומות שלך</string>
+  <string name="website">https://world-he.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-he.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-he.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-he.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world-he.openfoodfacts.org/contributor/</string>
+  <string name="logout_drawer">יציאה</string>
+  <string name="contribution_without_account">ניתן להיכנס או ליצור חשבון כדי לשמור על התרומות שלך</string>
+  <string name="textCarbonFootprint">"טביעה פחמנית / פליטת פחמן דו חמצני: "</string>
 </resources>

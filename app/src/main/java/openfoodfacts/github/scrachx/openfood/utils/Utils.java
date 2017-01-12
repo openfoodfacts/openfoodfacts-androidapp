@@ -5,8 +5,14 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.VectorDrawable;
 import android.os.Build;
+import android.support.annotation.DrawableRes;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -22,6 +28,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+
+import openfoodfacts.github.scrachx.openfood.R;
 
 public class Utils {
 
@@ -172,6 +180,102 @@ public class Utils {
         }
         catch (PackageManager.NameNotFoundException e) {
             return false;
+        }
+    }
+
+    public static int getImageGrade(String grade) {
+        int drawable;
+
+        if (grade == null) {
+            return R.drawable.ic_error;
+        }
+
+        switch (grade.toLowerCase()) {
+            case "a":
+                drawable = R.drawable.nnc_a;
+                break;
+            case "b":
+                drawable = R.drawable.nnc_b;
+                break;
+            case "c":
+                drawable = R.drawable.nnc_c;
+                break;
+            case "d":
+                drawable = R.drawable.nnc_d;
+                break;
+            case "e":
+                drawable = R.drawable.nnc_e;
+                break;
+            default:
+                drawable = R.drawable.ic_error;
+                break;
+        }
+
+        return drawable;
+    }
+
+    public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
+        Drawable drawable = ContextCompat.getDrawable(context, drawableId);
+
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        } else if (drawable instanceof VectorDrawable || drawable instanceof VectorDrawableCompat) {
+            Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bitmap);
+            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+            drawable.draw(canvas);
+
+            return bitmap;
+        } else {
+            throw new IllegalArgumentException("unsupported drawable type");
+        }
+    }
+
+    public static int getImageLevel(String nutrient) {
+        int drawable;
+
+        if (nutrient == null) {
+            return R.drawable.ic_error;
+        }
+
+        switch (nutrient.toLowerCase()) {
+            case "moderate":
+                drawable = R.drawable.ic_circle_yellow;
+                break;
+            case "low":
+                drawable = R.drawable.ic_circle_green;
+                break;
+            case "high":
+                drawable = R.drawable.ic_circle_red;
+                break;
+            default:
+                drawable = R.drawable.ic_error;
+                break;
+        }
+
+        return drawable;
+    }
+
+    /**
+     *
+     * @param nutritionAmount Either "low", "moderate" or "high"
+     * @return The localised word for the nutrition amount. If nutritionAmount is neither low,
+     * moderate nor high, return nutritionAmount
+     */
+    public static String localiseNutritionLevel(Context context, String nutritionAmount){
+        if (nutritionAmount == null) {
+            return context.getString(R.string.txt_nutrition_not_found);
+        }
+
+        switch (nutritionAmount){
+            case "low":
+                return context.getString(R.string.txtNutritionLevelLow);
+            case "moderate":
+                return context.getString(R.string.txtNutritionLevelModerate);
+            case "high":
+                return context.getString(R.string.txtNutritionLevelHigh);
+            default:
+                return nutritionAmount;
         }
     }
 }

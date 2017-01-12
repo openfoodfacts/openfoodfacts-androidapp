@@ -7,13 +7,13 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -34,7 +34,8 @@ import retrofit2.Response;
 
 public class HomeFragment extends BaseFragment {
 
-    @BindView(R.id.buttonScan) Button mButtonScan;
+    @BindView(R.id.buttonScan)
+    FloatingActionButton mButtonScan;
 
     private OpenFoodAPIService apiClient;
 

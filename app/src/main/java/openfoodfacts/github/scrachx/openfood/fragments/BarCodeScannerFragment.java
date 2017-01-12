@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
@@ -83,6 +84,9 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
 
         MenuItem cameraMenuItem = menu.add(Menu.NONE, R.id.menu_camera_selector, 0, R.string.select_camera);
         MenuItemCompat.setShowAsAction(cameraMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
+
+        MenuItem aboutMenuItem = menu.add(Menu.NONE, R.id.menu_about, 0, R.string.action_about);
+        MenuItemCompat.setShowAsAction(aboutMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
     }
 
     @Override
@@ -132,6 +136,12 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
                 DialogFragment cFragment = CameraSelectorDialogFragment.newInstance(this, mCameraId);
                 cFragment.show(getActivity().getSupportFragmentManager(), "camera_selector");
                 return true;
+            case R.id.menu_about:
+                new MaterialDialog.Builder(this.getActivity())
+                        .title(R.string.action_about)
+                        .content(R.string.txtAbout)
+                        .neutralText(R.string.txtOk)
+                        .show();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -173,7 +183,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
         if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
-            api.getProduct(rawResult.getText(), getActivity());
+            api.getProduct(rawResult.getText(), getActivity(), mScannerView, this);
         } else {
             Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
             intent.putExtra("barcode", rawResult.getText());

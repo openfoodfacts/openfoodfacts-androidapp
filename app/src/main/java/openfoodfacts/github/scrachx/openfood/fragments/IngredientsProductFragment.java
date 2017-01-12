@@ -1,11 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.Html;
 import android.text.SpannableStringBuilder;
-import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
@@ -30,8 +29,10 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 
+import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
@@ -45,7 +46,6 @@ public class IngredientsProductFragment extends BaseFragment {
     @BindView(R.id.textAdditiveProduct) TextView additiveProduct;
     @BindView(R.id.textPalmOilProduct) TextView palmOilProduct;
     @BindView(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
-    @BindView(R.id.ingredientContainer) ViewGroup containerView;
     @BindView(R.id.imageViewNutritionFullIng) ImageView mImageNutritionFullIng;
     private String mUrlImage;
     private State mState;
@@ -72,9 +72,11 @@ public class IngredientsProductFragment extends BaseFragment {
             mImageNutritionFullIng.setVisibility(View.GONE);
         }
 
+        List<String> allergens = getAllergens();
+
         if(mState != null && product.getIngredientsText() != null) {
-            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(Html.fromHtml(product.getIngredientsText().replace("_","")));
-            txtIngredients = setSpanBoldBetweenTokens(txtIngredients);
+            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_",""));
+            txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
             if(!txtIngredients.toString().substring(txtIngredients.toString().indexOf(":")).trim().isEmpty()) {
                 ingredientsProduct.setText(txtIngredients);
             } else {
@@ -82,10 +84,15 @@ public class IngredientsProductFragment extends BaseFragment {
             }
         }
 
-        if(!cleanAllergensString().trim().isEmpty()) {
+        if(!allergens.isEmpty()) {
             substanceProduct.append(bold(getString(R.string.txtSubstances)));
             substanceProduct.append(" ");
-            substanceProduct.append(cleanAllergensString());
+            String delim = "";
+            for (String allergen : allergens) {
+                substanceProduct.append(delim);
+                substanceProduct.append(allergen);
+                delim = ", ";
+            }
         } else {
             substanceProduct.setVisibility(View.GONE);
         }
@@ -154,35 +161,39 @@ public class IngredientsProductFragment extends BaseFragment {
                 }
             };
             ssb.append(tag);
-            ssb.setSpan(clickableSpan, 0, ssb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
             ssb.append(" ");
         }
         return ssb;
     }
 
-    private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text) {
+    private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text, List<String> allergens) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);
         Matcher m = INGREDIENT_PATTERN.matcher(ssb);
         while (m.find()) {
             final String tm = m.group();
-            for (String l: cleanAllergensMultipleOccurrences()) {
-                if(l.equalsIgnoreCase(tm.replaceAll("[(),.-]+", ""))) {
-                    StyleSpan bold = new StyleSpan(android.graphics.Typeface.BOLD);
+            final String allergenValue = tm.replaceAll("[(),.-]+", "");
+
+            for (String allergen: allergens) {
+                if(allergen.equalsIgnoreCase(allergenValue)) {
+                    int start = m.start();
+                    int end = m.end();
+
                     if(tm.contains("(")) {
-                        ssb.setSpan(bold, m.start()+1, m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        start += 1;
                     } else if(tm.contains(")")) {
-                        ssb.setSpan(bold, m.start(), m.end()-1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    } else {
-                        ssb.setSpan(bold, m.start(), m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        end -= 1;
                     }
+
+                    ssb.setSpan(new StyleSpan(Typeface.BOLD), start, end, SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
             }
         }
-        ssb.insert(0, Html.fromHtml("<b>" + getString(R.string.txtIngredients) + "</b>" + ' '));
+        ssb.insert(0, Utils.bold(getString(R.string.txtIngredients)).toString() + ' ');
         return ssb;
     }
 
-    private List<String> cleanAllergensMultipleOccurrences() {
+    private List<String> getAllergens() {
         if (mState.getProduct() == null || mState.getProduct().getAllergens() == null) {
             return Collections.emptyList();
         }
@@ -192,27 +203,19 @@ public class IngredientsProductFragment extends BaseFragment {
         while (m.find()) {
             final String tma = m.group();
             boolean canAdd = true;
-            if(list.size() == 0) {
-                list.add(tma);
-            }
-            for (int i = 0; i < list.size(); i++) {
-                if(tma.equalsIgnoreCase(list.get(i))){
+
+            for (String allergen : list) {
+                if(tma.equalsIgnoreCase(allergen)){
                     canAdd = false;
+                    break;
                 }
             }
-            if(canAdd) {
+
+            if (canAdd) {
                 list.add(tma);
             }
         }
         return list;
-    }
-
-    private String cleanAllergensString() {
-        StringBuilder allergens = new StringBuilder();
-        for (String l: cleanAllergensMultipleOccurrences()) {
-            allergens.append(l).append(' ');
-        }
-        return allergens.toString();
     }
 
     @OnClick(R.id.imageViewNutritionFullIng)
