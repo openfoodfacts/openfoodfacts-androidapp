@@ -25,7 +25,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.opencsv.CSVWriter;
 import com.orm.query.Select;
@@ -81,13 +80,10 @@ public class HistoryScanActivity extends BaseActivity {
                 new MaterialDialog.Builder(this)
                         .title(R.string.title_clear_history_dialog)
                         .content(R.string.text_clear_history_dialog)
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                HistoryProduct.deleteAll(HistoryProduct.class);
-                                productItems.clear();
-                                recyclerHistoryScanView.getAdapter().notifyDataSetChanged();
-                            }
+                        .onPositive((dialog, which) -> {
+                            HistoryProduct.deleteAll(HistoryProduct.class);
+                            productItems.clear();
+                            recyclerHistoryScanView.getAdapter().notifyDataSetChanged();
                         })
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
@@ -169,15 +165,12 @@ public class HistoryScanActivity extends BaseActivity {
                             .content(R.string.permission_denied)
                             .negativeText(R.string.txtNo)
                             .positiveText(R.string.txtYes)
-                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    Intent intent = new Intent();
-                                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                    Uri uri = Uri.fromParts("package", getPackageName(), null);
-                                    intent.setData(uri);
-                                    startActivity(intent);
-                                }
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent();
+                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                intent.setData(uri);
+                                startActivity(intent);
                             })
                             .show();
                 }

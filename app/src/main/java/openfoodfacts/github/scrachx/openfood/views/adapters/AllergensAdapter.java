@@ -49,14 +49,11 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
         textView.setText(allergen.getName().substring(allergen.getName().indexOf(":")+1));
         Button button = holder.messageButton;
         button.setText(R.string.delete_txt);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAllergens.remove(holder.getAdapterPosition());
-                allergen.setEnable("false");
-                allergen.save();
-                notifyItemRemoved(holder.getAdapterPosition());
-            }
+        button.setOnClickListener(v -> {
+            mAllergens.remove(holder.getAdapterPosition());
+            allergen.setEnable("false");
+            allergen.save();
+            notifyItemRemoved(holder.getAdapterPosition());
         });
     }
 

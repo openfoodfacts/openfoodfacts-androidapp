@@ -21,7 +21,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 
@@ -82,12 +81,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                         .title(R.string.action_about)
                         .content(R.string.permission_storage)
                         .neutralText(R.string.txtOk)
-                        .onNeutral(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                ActivityCompat.requestPermissions(SaveProductOfflineActivity.this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
-                            }
-                        })
+                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(SaveProductOfflineActivity.this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
                         .show();
             } else {
                 ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
@@ -218,21 +212,18 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
         if (isConnected) {
             final Activity activity = this;
-            api.post(this, mProduct, new OpenFoodAPIClient.OnProductSentCallback() {
-                @Override
-                public void onProductSentResponse(boolean value) {
-                    if (!value) {
-                        mProduct.save();
-                        Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        intent.putExtra("openOfflineEdit", true);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
-                        api.getProduct(mProduct.getBarcode(), activity);
-                    }
-                    finish();
+            api.post(this, mProduct, value -> {
+                if (!value) {
+                    mProduct.save();
+                    Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("openOfflineEdit", true);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
+                    api.getProduct(mProduct.getBarcode(), activity);
                 }
+                finish();
             });
         } else {
             mProduct.save();
@@ -339,15 +330,12 @@ public class SaveProductOfflineActivity extends BaseActivity {
                             .content(R.string.permission_denied)
                             .negativeText(R.string.txtNo)
                             .positiveText(R.string.txtYes)
-                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    Intent intent = new Intent();
-                                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                    Uri uri = Uri.fromParts("package", getPackageName(), null);
-                                    intent.setData(uri);
-                                    startActivity(intent);
-                                }
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent();
+                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                intent.setData(uri);
+                                startActivity(intent);
                             })
                             .show();
                 }

@@ -78,13 +78,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             levelItem.add(new NutrientLevelItem(saltTxt, Utils.getImageLevel(nt.getSalt())));
 
             img.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
-            img.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+            img.setOnClickListener(view1 -> {
+            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-                CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
-                }
+            CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
             });
         }
 

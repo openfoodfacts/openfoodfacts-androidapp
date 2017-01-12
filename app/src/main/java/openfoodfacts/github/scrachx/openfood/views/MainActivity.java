@@ -24,9 +24,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.fastadapter.commons.utils.RecyclerViewCacheUtil;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -119,18 +117,15 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.header)
                 .addProfiles(profile)
-                .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
-                    @Override
-                    public boolean onProfileChanged(View view, IProfile profile, boolean current) {
-                        if (profile instanceof IDrawerItem) {
-                            if (profile.getIdentifier() == PROFILE_SETTING) {
-                                CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, userAccountUri, new WebViewFallback());
-                            }
+                .withOnAccountHeaderListener((view, profile1, current) -> {
+                    if (profile1 instanceof IDrawerItem) {
+                        if (profile1.getIdentifier() == PROFILE_SETTING) {
+                            CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, userAccountUri, new WebViewFallback());
                         }
-
-                        //false if you have not consumed the event and it should close the drawer
-                        return false;
                     }
+
+                    //false if you have not consumed the event and it should close the drawer
+                    return false;
                 })
                 .withSavedInstance(savedInstanceState)
                 .build();
@@ -170,114 +165,106 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(CONTRIBUTE),
                     new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(11)
                 )
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                .withOnDrawerItemClickListener((view, position, drawerItem) -> {
 
-                        if (drawerItem == null) {
-                            return false;
-                        }
-
-                        Fragment fragment = null;
-                        switch ((int) drawerItem.getIdentifier()) {
-                            case 1:
-                                fragment = new HomeFragment();
-                                getSupportActionBar().setTitle(getResources().getString(R.string.home_drawer));
-                                break;
-                            case 2:
-                                fragment = new FindProductFragment();
-                                getSupportActionBar().setTitle(getResources().getString(R.string.search_by_barcode_drawer));
-                                break;
-                            case 4:
-                                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                                    if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.CAMERA)) {
-                                        new MaterialDialog.Builder(MainActivity.this)
-                                                .title(R.string.action_about)
-                                                .content(R.string.permission_camera)
-                                                .neutralText(R.string.txtOk)
-                                                .show();
-                                    } else {
-                                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
-                                    }
-                                } else {
-                                    Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
-                                    startActivity(intent);
-                                }
-                                break;
-                            case 5:
-                                startActivity(new Intent(MainActivity.this, HistoryScanActivity.class));
-                                break;
-                            case LOGIN_ID:
-                                startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LOGIN_REQUEST);
-                                break;
-                            case 7:
-                                fragment = new AlertUserFragment();
-                                getSupportActionBar().setTitle(R.string.alert_drawer);
-                                break;
-                            case 8:
-                                fragment = new PreferencesFragment();
-                                getSupportActionBar().setTitle(R.string.action_preferences);
-                                break;
-                            case 9:
-                                fragment = new OfflineEditFragment();
-                                getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
-                                break;
-                            case ABOUT:
-                                CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, discoverUri, new WebViewFallback());
-                                break;
-                            case CONTRIBUTE:
-                                CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, contributeUri, new WebViewFallback());
-                                break;
-                            case 11:
-                                boolean openBeautyInstalled = Utils.isApplicationInstalled(MainActivity.this, getString(R.string.openBeautyApp));
-                                if (openBeautyInstalled) {
-                                    Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(getString(R.string.openBeautyApp));
-                                    startActivity(LaunchIntent);
-                                } else {
-                                    try {
-                                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getString(R.string.openBeautyApp))));
-                                    } catch (ActivityNotFoundException anfe) {
-                                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getString(R.string.openBeautyApp))));
-                                    }
-                                }
-                                break;
-                            case CONTRIBUTOR:
-                                SharedPreferences preferences = getSharedPreferences("login", 0);
-                                String userLogin = preferences.getString("user", null);
-                                if (isNotEmpty(userLogin)) {
-                                    CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, userContributeUri, new WebViewFallback());
-                                } else {
-                                    new MaterialDialog.Builder(MainActivity.this)
-                                            .title(R.string.contribute)
-                                            .content(R.string.contribution_without_account)
-                                            .positiveText(R.string.txtOk)
-                                            .negativeText(R.string.cancel_button)
-                                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                                @Override
-                                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                                    CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R.string.website) + "cgi/user.pl"), new WebViewFallback());
-                                                }
-                                            })
-                                            .show();
-                                }
-                                break;
-                            case LOGOUT:
-                                logout();
-                                break;
-                            default:
-                                // nothing to do
-                                break;
-                        }
-
-                        if (fragment != null) {
-                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-                        } else {
-                            // error in creating fragment
-                            Log.e("MainActivity", "Error in creating fragment");
-                        }
-
+                    if (drawerItem == null) {
                         return false;
                     }
+
+                    Fragment fragment = null;
+                    switch ((int) drawerItem.getIdentifier()) {
+                        case 1:
+                            fragment = new HomeFragment();
+                            getSupportActionBar().setTitle(getResources().getString(R.string.home_drawer));
+                            break;
+                        case 2:
+                            fragment = new FindProductFragment();
+                            getSupportActionBar().setTitle(getResources().getString(R.string.search_by_barcode_drawer));
+                            break;
+                        case 4:
+                            if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                                if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.CAMERA)) {
+                                    new MaterialDialog.Builder(MainActivity.this)
+                                            .title(R.string.action_about)
+                                            .content(R.string.permission_camera)
+                                            .neutralText(R.string.txtOk)
+                                            .show();
+                                } else {
+                                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                                }
+                            } else {
+                                Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+                                startActivity(intent);
+                            }
+                            break;
+                        case 5:
+                            startActivity(new Intent(MainActivity.this, HistoryScanActivity.class));
+                            break;
+                        case LOGIN_ID:
+                            startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LOGIN_REQUEST);
+                            break;
+                        case 7:
+                            fragment = new AlertUserFragment();
+                            getSupportActionBar().setTitle(R.string.alert_drawer);
+                            break;
+                        case 8:
+                            fragment = new PreferencesFragment();
+                            getSupportActionBar().setTitle(R.string.action_preferences);
+                            break;
+                        case 9:
+                            fragment = new OfflineEditFragment();
+                            getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
+                            break;
+                        case ABOUT:
+                            CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, discoverUri, new WebViewFallback());
+                            break;
+                        case CONTRIBUTE:
+                            CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, contributeUri, new WebViewFallback());
+                            break;
+                        case 11:
+                            boolean openBeautyInstalled = Utils.isApplicationInstalled(MainActivity.this, getString(R.string.openBeautyApp));
+                            if (openBeautyInstalled) {
+                                Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(getString(R.string.openBeautyApp));
+                                startActivity(LaunchIntent);
+                            } else {
+                                try {
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getString(R.string.openBeautyApp))));
+                                } catch (ActivityNotFoundException anfe) {
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getString(R.string.openBeautyApp))));
+                                }
+                            }
+                            break;
+                        case CONTRIBUTOR:
+                            SharedPreferences preferences1 = getSharedPreferences("login", 0);
+                            String userLogin1 = preferences1.getString("user", null);
+                            if (isNotEmpty(userLogin1)) {
+                                CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, userContributeUri, new WebViewFallback());
+                            } else {
+                                new MaterialDialog.Builder(MainActivity.this)
+                                        .title(R.string.contribute)
+                                        .content(R.string.contribution_without_account)
+                                        .positiveText(R.string.txtOk)
+                                        .negativeText(R.string.cancel_button)
+                                        .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R.string.website) + "cgi/user.pl"), new WebViewFallback()))
+                                        .show();
+                            }
+                            break;
+                        case LOGOUT:
+                            logout();
+                            break;
+                        default:
+                            // nothing to do
+                            break;
+                    }
+
+                    if (fragment != null) {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                    } else {
+                        // error in creating fragment
+                        Log.e("MainActivity", "Error in creating fragment");
+                    }
+
+                    return false;
                 })
                 .withSavedInstance(savedInstanceState)
                 .withShowDrawerOnFirstLaunch(false)
@@ -426,15 +413,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             .content(R.string.permission_denied)
                             .negativeText(R.string.txtNo)
                             .positiveText(R.string.txtYes)
-                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    Intent intent = new Intent();
-                                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                    Uri uri = Uri.fromParts("package", getPackageName(), null);
-                                    intent.setData(uri);
-                                    startActivity(intent);
-                                }
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent();
+                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                intent.setData(uri);
+                                startActivity(intent);
                             })
                             .show();
                 }
