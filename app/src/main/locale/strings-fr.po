@@ -437,7 +437,7 @@ msgstr "Conditionnement :"
 
 msgctxt "txtBrands"
 msgid "Brands :"
-msgstr "Magasins :"
+msgstr "Marques :"
 
 msgctxt "txtCategories"
 msgid "Categories :"
@@ -1127,20 +1127,19 @@ msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
 msgstr "Empreinte carbone / émissions de CO2: "
 
-#, fuzzy
 msgctxt "txtDialogPowerMode"
 msgid "Quick view"
-msgstr ""
+msgstr "Aperçu"
 
 msgctxt "txtSeeMore"
 msgid "See more"
-msgstr ""
+msgstr "Plus"
 
 msgctxt "action_search"
 msgid "Search"
-msgstr ""
+msgstr "Rechercher"
 
 msgctxt "search_hint"
 msgid "Search a product"
-msgstr ""
+msgstr "Rechercher un produit"
 
