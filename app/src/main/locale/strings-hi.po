@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-08 12:54+0100\n"
+"POT-Creation-Date: 2017-01-14 10:59+0100\n"
 "PO-Revision-Date: 2016-12-29 16:54+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: hi\n"
@@ -39,9 +39,9 @@ msgctxt "action_discover"
 msgid "Discover"
 msgstr "तलाश करें"
 
-msgctxt "action_contribute"
-msgid "Contribute"
-msgstr "योगदान"
+msgctxt "contribute"
+msgid "How to contribute"
+msgstr ""
 
 msgctxt "action_find"
 msgid "Find"
@@ -252,8 +252,9 @@ msgid "da"
 msgstr "da"
 
 #. Text units
+#, fuzzy
 msgctxt "lang_array:30"
-msgid "zh_rCN"
+msgid "zh-rCN"
 msgstr "zh_rCN"
 
 msgctxt "lang_label_array:0"
@@ -531,8 +532,9 @@ msgstr ""
 "ऐलर्जेन, पोषण और छोटे मोटे सामान की जानकारी उत्पाद लेबल से प्राप्त कि जा "
 "सकती है|"
 
+#, fuzzy
 msgctxt "txtSave"
-msgid "Send/Save"
+msgid "Save"
 msgstr "भेजें/ सेव करें"
 
 msgctxt "txtSignIn"
@@ -1121,5 +1123,13 @@ msgstr ""
 
 msgctxt "txtSeeMore"
 msgid "See more"
+msgstr ""
+
+msgctxt "action_search"
+msgid "Search"
+msgstr ""
+
+msgctxt "search_hint"
+msgid "Search a product"
 msgstr ""
 

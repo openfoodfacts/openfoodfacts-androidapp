@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-08 12:54+0100\n"
+"POT-Creation-Date: 2017-01-14 10:59+0100\n"
 "PO-Revision-Date: 2017-01-02 21:31+0000\n"
 "Last-Translator: lucaa <Unknown>\n"
 "Language: ro\n"
@@ -41,9 +41,9 @@ msgctxt "action_discover"
 msgid "Discover"
 msgstr "Descoperiți"
 
-msgctxt "action_contribute"
-msgid "Contribute"
-msgstr "Contribuiți"
+msgctxt "contribute"
+msgid "How to contribute"
+msgstr ""
 
 msgctxt "action_find"
 msgid "Find"
@@ -254,8 +254,9 @@ msgid "da"
 msgstr "da"
 
 #. Text units
+#, fuzzy
 msgctxt "lang_array:30"
-msgid "zh_rCN"
+msgid "zh-rCN"
 msgstr "zh_rCN"
 
 msgctxt "lang_label_array:0"
@@ -535,8 +536,9 @@ msgstr ""
 "conținând informații despre ingrediente, alergeni, informații "
 "nutriționale și alte detalii ce se regăsesc pe etichetele produselor."
 
+#, fuzzy
 msgctxt "txtSave"
-msgid "Send/Save"
+msgid "Save"
 msgstr "Trimite / Salvează"
 
 msgctxt "txtSignIn"
@@ -765,7 +767,7 @@ msgstr "Căutare după nume"
 
 msgctxt "scan_search"
 msgid "Scan"
-msgstr "Scanează"
+msgstr "Scanare"
 
 msgctxt "user_drawer"
 msgid "User"
@@ -1132,5 +1134,13 @@ msgstr ""
 
 msgctxt "txtSeeMore"
 msgid "See more"
+msgstr ""
+
+msgctxt "action_search"
+msgid "Search"
+msgstr ""
+
+msgctxt "search_hint"
+msgid "Search a product"
 msgstr ""
 
