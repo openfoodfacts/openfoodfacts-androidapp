@@ -5,7 +5,6 @@
   <string name="action_settings">Настройки</string>
   <string name="action_about">О приложении</string>
   <string name="action_discover">О проекте</string>
-  <string name="contribute">Как помочь</string>
   <string name="action_find">Найти</string>
   <string name="text_barcode">Введите штрихкод</string>
   <string-array name="nav_drawer_items_product">

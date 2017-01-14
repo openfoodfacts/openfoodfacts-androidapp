@@ -2,7 +2,6 @@
 <resources>
   <string name="app_name">Open Food</string>
   <string name="action_discover">Ανακαλύψτε</string>
-  <string name="contribute">Συμβάλλετε</string>
   <string-array name="nav_drawer_items_product">
     <item>Summary</item>
     <item>Συστατικά</item>

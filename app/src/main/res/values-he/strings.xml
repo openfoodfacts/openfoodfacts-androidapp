@@ -5,7 +5,6 @@
   <string name="action_settings">הגדרות</string>
   <string name="action_about">על אודות</string>
   <string name="action_discover">לגלות</string>
-  <string name="contribute">לתרום</string>
   <string name="action_find">חיפוש</string>
   <string name="text_barcode">נא להזין את הברקוד:</string>
   <string-array name="nav_drawer_items_product">
