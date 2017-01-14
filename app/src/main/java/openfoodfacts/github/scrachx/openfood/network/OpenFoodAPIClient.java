@@ -305,28 +305,28 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public void searchProduct(final String name, final Activity activity, final OnProductsCallback productsCallback) {
-        apiService.searchProductByName(name).enqueue(new Callback<Search>() {
+    public void searchProduct(final String name, final int page, final Activity activity, final OnProductsCallback productsCallback) {
+        apiService.searchProductByName(name, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(Call<Search> call, Response<Search> response) {
                 if (!response.isSuccess()) {
-                    productsCallback.onProductsResponse(false, null);
+                    productsCallback.onProductsResponse(false, null, -1);
                     return;
                 }
 
                 Search s = response.body();
                 if(Integer.valueOf(s.getCount()) == 0){
                     Toast.makeText(activity, R.string.txt_product_not_found, Toast.LENGTH_LONG).show();
-                    productsCallback.onProductsResponse(false, null);
+                    productsCallback.onProductsResponse(false, null, -1);
                 }else{
-                    productsCallback.onProductsResponse(true, s.getProducts());
+                    productsCallback.onProductsResponse(true, s.getProducts(), Integer.parseInt(s.getCount()));
                 }
             }
 
             @Override
             public void onFailure(Call<Search> call, Throwable t) {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                productsCallback.onProductsResponse(false, null);
+                productsCallback.onProductsResponse(false, null, -1);
             }
         });
     }
@@ -441,7 +441,7 @@ public class OpenFoodAPIClient {
 
     public interface OnProductsCallback {
 
-        void onProductsResponse(boolean isOk, List<Product> products);
+        void onProductsResponse(boolean isOk, List<Product> products, int countProducts);
     }
 
     public interface OnAllergensCallback {
