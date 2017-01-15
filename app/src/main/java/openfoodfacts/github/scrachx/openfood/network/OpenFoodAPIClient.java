@@ -355,7 +355,7 @@ public class OpenFoodAPIClient {
     public void post(final Activity activity, final SendProduct product, final OnProductSentCallback productSentCallback){
         final LoadToast lt = new LoadToast(activity);
         lt.setText(activity.getString(R.string.toastSending));
-        lt.setBackgroundColor(activity.getResources().getColor(R.color.indigo_600));
+        lt.setBackgroundColor(activity.getResources().getColor(R.color.blue));
         lt.setTextColor(activity.getResources().getColor(R.color.white));
         lt.show();
 
@@ -399,7 +399,7 @@ public class OpenFoodAPIClient {
     public void postImg(final Context context, final ProductImage image) {
         final LoadToast lt = new LoadToast(context);
         lt.setText(context.getString(R.string.toastSending));
-        lt.setBackgroundColor(context.getResources().getColor(R.color.indigo_600));
+        lt.setBackgroundColor(context.getResources().getColor(R.color.blue));
         lt.setTextColor(context.getResources().getColor(R.color.white));
         lt.show();
 
@@ -433,7 +433,7 @@ public class OpenFoodAPIClient {
     private LoadToast getLoadToast(Activity activity) {
         final LoadToast lt = new LoadToast(activity);
         lt.setText(activity.getString(R.string.toast_retrieving));
-        lt.setBackgroundColor(activity.getResources().getColor(R.color.indigo_600));
+        lt.setBackgroundColor(activity.getResources().getColor(R.color.blue));
         lt.setTextColor(activity.getResources().getColor(R.color.white));
         lt.show();
         return lt;

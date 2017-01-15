@@ -61,18 +61,18 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="?attr/colorPrimary"
+            android:background="@color/blue"
             android:text="@string/txtSignIn"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/buttonCreateAccount"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="?attr/colorPrimary"
+            android:background="@color/blue"
             android:text="@string/create_account"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/textInfoLogin"

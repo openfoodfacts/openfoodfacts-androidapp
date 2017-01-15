@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +12,7 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -50,24 +50,29 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 public class SaveProductOfflineActivity extends BaseActivity {
 
     private final String[] mUnit = new String[1];
-    @BindView(R.id.imageSave) ImageView imgSave;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.imageSaveFront) ImageView imgSaveFront;
+    @BindView(R.id.imageSaveNutrition) ImageView imgSaveNutrition;
+    @BindView(R.id.imageSaveIngredients) ImageView imgSaveIngredients;
     @BindView(R.id.editTextName) EditText name;
     @BindView(R.id.editTextBrand) EditText brand;
     @BindView(R.id.editTextWeight) EditText weight;
-    @BindView(R.id.spinnerImages) Spinner spinnerI;
     @BindView(R.id.spinnerUnitWeight) Spinner spinnerW;
-    @BindView(R.id.buttonTakePicture) Button takePic;
-    @BindView(R.id.buttonFromGallery) Button takeGallery;
     @BindView(R.id.buttonSaveProduct) Button save;
 
     private SendProduct mProduct;
     private String mBarcode;
     private OpenFoodAPIClient api;
+    private String imageTaken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_product_offline);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
             && ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
@@ -97,15 +102,13 @@ public class SaveProductOfflineActivity extends BaseActivity {
                 .saveInAppExternalFilesDir()
                 .setCopyExistingPicturesToPublicLocation(true);
 
-        imgSave.setVisibility(View.GONE);
+        imgSaveFront.setVisibility(View.GONE);
+        imgSaveIngredients.setVisibility(View.GONE);
+        imgSaveNutrition.setVisibility(View.GONE);
 
         ArrayAdapter<CharSequence> adapterW = ArrayAdapter.createFromResource(this, R.array.units_array, R.layout.custom_spinner_item);
         adapterW.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         spinnerW.setAdapter(adapterW);
-
-        ArrayAdapter<CharSequence> adapterI = ArrayAdapter.createFromResource(this, R.array.images_array, R.layout.custom_spinner_item);
-        adapterI.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        spinnerI.setAdapter(adapterI);
 
         List<SendProduct> sp = SendProduct.find(SendProduct.class, "barcode = ?", mBarcode);
         if (sp.size() > 0) {
@@ -117,7 +120,23 @@ public class SaveProductOfflineActivity extends BaseActivity {
                         .load(mProduct.getImgupload_front())
                         .fit()
                         .centerCrop()
-                        .into(imgSave);
+                        .into(imgSaveFront);
+            }
+            if(isNotBlank(mProduct.getImgupload_nutrition())) {
+                imgSaveNutrition.setVisibility(View.VISIBLE);
+                Picasso.with(this)
+                        .load(new File(mProduct.getImgupload_nutrition()))
+                        .fit()
+                        .centerCrop()
+                        .into(imgSaveNutrition);
+            }
+            if(isNotBlank(mProduct.getImgupload_ingredients())) {
+                imgSaveIngredients.setVisibility(View.VISIBLE);
+                Picasso.with(this)
+                        .load(new File(mProduct.getImgupload_ingredients()))
+                        .fit()
+                        .centerCrop()
+                        .into(imgSaveIngredients);
             }
             name.setText(mProduct.getName());
             brand.setText(mProduct.getBrands());
@@ -125,7 +144,6 @@ public class SaveProductOfflineActivity extends BaseActivity {
             ArrayAdapter unitAdapter = (ArrayAdapter) spinnerW.getAdapter();
             int spinnerPosition = unitAdapter.getPosition(mProduct.getWeight_unit());
             spinnerW.setSelection(spinnerPosition);
-            spinnerI.setSelection(0);
         } else {
             mProduct = new SendProduct();
             mProduct.setBarcode(mBarcode);
@@ -143,48 +161,22 @@ public class SaveProductOfflineActivity extends BaseActivity {
         mUnit[0] = spinnerW.getItemAtPosition(pos).toString();
     }
 
-    @OnItemSelected(value = R.id.spinnerImages, callback = OnItemSelected.Callback.ITEM_SELECTED)
-    protected void onImageSelected(int pos) {
-        if(pos == 0) {
-            if(isNotBlank(mProduct.getImgupload_front())) {
-                imgSave.setVisibility(View.VISIBLE);
-                Picasso.with(this)
-                        .load(new File(mProduct.getImgupload_front()))
-                        .fit()
-                        .centerCrop()
-                        .into(imgSave);
-            } else {
-                imgSave.setVisibility(View.GONE);
-            }
-        } else if(pos == 1) {
-            if(isNotBlank(mProduct.getImgupload_nutrition())) {
-                imgSave.setVisibility(View.VISIBLE);
-                Picasso.with(this)
-                        .load(new File(mProduct.getImgupload_nutrition()))
-                        .fit()
-                        .centerCrop()
-                        .into(imgSave);
-            } else {
-                imgSave.setVisibility(View.GONE);
-            }
-        } else {
-            if(isNotBlank(mProduct.getImgupload_ingredients())) {
-                imgSave.setVisibility(View.VISIBLE);
-                Picasso.with(this)
-                        .load(new File(mProduct.getImgupload_ingredients()))
-                        .fit()
-                        .centerCrop()
-                        .into(imgSave);
-            } else {
-                imgSave.setVisibility(View.GONE);
-            }
-        }
-
+    @OnClick(R.id.buttonFromGalleryFront)
+    protected void onChooserWithGalleryFrontClicked() {
+        EasyImage.openChooserWithGallery(this, "Images", 0);
+        imageTaken = "front";
     }
 
-    @OnClick(R.id.buttonFromGallery)
-    protected void onChooserWithGalleryClicked() {
+    @OnClick(R.id.buttonFromGalleryIngredients)
+    protected void onChooserWithGalleryIngredientsClicked() {
         EasyImage.openChooserWithGallery(this, "Images", 0);
+        imageTaken = "ingredients";
+    }
+
+    @OnClick(R.id.buttonFromGalleryNutrition)
+    protected void onChooserWithGalleryNutritionClicked() {
+        EasyImage.openChooserWithGallery(this, "Images", 0);
+        imageTaken = "nutrition";
     }
 
     @OnClick(R.id.buttonSaveProduct)
@@ -252,12 +244,33 @@ public class SaveProductOfflineActivity extends BaseActivity {
         }
     }
 
-    @OnClick(R.id.buttonTakePicture)
-    protected void onTakePhotoClicked() {
+    @OnClick(R.id.buttonTakePictureFront)
+    protected void onTakePhotoFrontClicked() {
         if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
             EasyImage.openCamera(this, 0);
+            imageTaken = "front";
+        }
+    }
+
+    @OnClick(R.id.buttonTakePictureIngredients)
+    protected void onTakePhotoIngredientsClicked() {
+        if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
+            imageTaken = "ingredients";
+        }
+    }
+
+    @OnClick(R.id.buttonTakePictureNutrition)
+    protected void onTakePhotoNutritionClicked() {
+        if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
+            imageTaken = "nutrition";
         }
     }
 
@@ -288,21 +301,31 @@ public class SaveProductOfflineActivity extends BaseActivity {
     }
 
     private void onPhotoReturned(File photoFile) {
-        if(spinnerI.getSelectedItemPosition() == 0) {
+        if(imageTaken == "front") {
             mProduct.setImgupload_front(photoFile.getAbsolutePath());
-        } else if(spinnerI.getSelectedItemPosition() == 1) {
+            imgSaveFront.setVisibility(View.VISIBLE);
+            Picasso.with(this)
+                    .load(photoFile)
+                    .fit()
+                    .centerCrop()
+                    .into(imgSaveFront);
+        } else if(imageTaken == "nutrition") {
             mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
+            imgSaveNutrition.setVisibility(View.VISIBLE);
+            Picasso.with(this)
+                    .load(photoFile)
+                    .fit()
+                    .centerCrop()
+                    .into(imgSaveNutrition);
         } else {
             mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
+            imgSaveIngredients.setVisibility(View.VISIBLE);
+            Picasso.with(this)
+                    .load(photoFile)
+                    .fit()
+                    .centerCrop()
+                    .into(imgSaveIngredients);
         }
-
-        imgSave.setVisibility(View.VISIBLE);
-
-        Picasso.with(this)
-                .load(photoFile)
-                .fit()
-                .centerCrop()
-                .into(imgSave);
     }
 
     @Override

@@ -124,7 +124,7 @@ public class AlertUserFragment extends BaseFragment {
             if(isConnected) {
                 final LoadToast lt = new LoadToast(getContext());
                 lt.setText(getContext().getString(R.string.toast_retrieving));
-                lt.setBackgroundColor(getContext().getResources().getColor(R.color.indigo_600));
+                lt.setBackgroundColor(getContext().getResources().getColor(R.color.blue));
                 lt.setTextColor(getContext().getResources().getColor(R.color.white));
                 lt.show();
                 new MaterialDialog.Builder(mView.getContext())
