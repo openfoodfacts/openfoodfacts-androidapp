@@ -6,9 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 /**
- * Come from : https://guides.codepath.com/android/Endless-Scrolling-with-AdapterViews-and-RecyclerView
+ * @see <a href="https://guides.codepath.com/android/Endless-Scrolling-with-AdapterViews-and-RecyclerView">Implementation came from this sample</a>
  */
-public abstract class EndlessRecyclerViewProductsScrollListener extends RecyclerView.OnScrollListener {
+public abstract class EndlessRecyclerViewScrollListener extends RecyclerView.OnScrollListener {
     // The minimum amount of items to have below your current scroll position
     // before loading more.
     private int visibleThreshold = 3;
@@ -23,16 +23,16 @@ public abstract class EndlessRecyclerViewProductsScrollListener extends Recycler
 
     RecyclerView.LayoutManager mLayoutManager;
 
-    public EndlessRecyclerViewProductsScrollListener(LinearLayoutManager layoutManager) {
+    public EndlessRecyclerViewScrollListener(LinearLayoutManager layoutManager) {
         this.mLayoutManager = layoutManager;
     }
 
-    public EndlessRecyclerViewProductsScrollListener(GridLayoutManager layoutManager) {
+    public EndlessRecyclerViewScrollListener(GridLayoutManager layoutManager) {
         this.mLayoutManager = layoutManager;
         visibleThreshold = visibleThreshold * layoutManager.getSpanCount();
     }
 
-    public EndlessRecyclerViewProductsScrollListener(StaggeredGridLayoutManager layoutManager) {
+    public EndlessRecyclerViewScrollListener(StaggeredGridLayoutManager layoutManager) {
         this.mLayoutManager = layoutManager;
         visibleThreshold = visibleThreshold * layoutManager.getSpanCount();
     }
