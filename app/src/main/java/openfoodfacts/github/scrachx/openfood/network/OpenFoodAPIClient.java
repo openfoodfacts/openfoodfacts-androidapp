@@ -386,10 +386,13 @@ public class OpenFoodAPIClient {
                 if(!response.isSuccess()) {
                     Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                     lt.error();
+                    return;
                 }
 
                 JsonNode body = response.body();
-                if (body.get("status").asText().contains("status not ok")) {
+                if (body == null || !body.isObject()) {
+                    lt.error();
+                } else if (body.get("status").asText().contains("status not ok")) {
                     Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
                     lt.error();
                 } else {
