@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 25
@@ -18,13 +17,18 @@ android {
     }
 
     dexOptions {
-        incremental = true;
         preDexLibraries = false
         javaMaxHeapSize "4g"
     }
 
     defaultConfig {
         multiDexEnabled true
+        jackOptions.enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     lintOptions {
@@ -57,12 +61,7 @@ buildscript {
         jcenter()
         maven { url "https://jitpack.io" }
     }
-    dependencies {
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-    }
 }
-
-apply plugin: 'com.neenbedankt.android-apt'
 
 dependencies {
 
@@ -77,7 +76,7 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
 
     compile 'com.jakewharton:butterknife:8.4.0'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
     compile 'com.opencsv:opencsv:3.8'
 

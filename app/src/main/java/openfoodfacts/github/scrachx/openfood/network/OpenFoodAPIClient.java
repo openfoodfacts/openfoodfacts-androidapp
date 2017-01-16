@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.orm.SugarRecord;
@@ -107,20 +106,14 @@ public class OpenFoodAPIClient {
                             .content(R.string.txtDialogsContent)
                             .positiveText(R.string.txtYes)
                             .negativeText(R.string.txtNo)
-                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                    intent.putExtra("barcode", barcode);
-                                    activity.startActivity(intent);
-                                    activity.finish();
-                                }
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                                intent.putExtra("barcode", barcode);
+                                activity.startActivity(intent);
+                                activity.finish();
                             })
-                            .onNegative(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    return;
-                                }
+                            .onNegative((dialog, which) -> {
+                                return;
                             })
                             .show();
                 } else {
@@ -187,20 +180,14 @@ public class OpenFoodAPIClient {
                             .content(R.string.txtDialogsContent)
                             .positiveText(R.string.txtYes)
                             .negativeText(R.string.txtNo)
-                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                    intent.putExtra("barcode", barcode);
-                                    activity.startActivity(intent);
-                                    activity.finish();
-                                }
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                                intent.putExtra("barcode", barcode);
+                                activity.startActivity(intent);
+                                activity.finish();
                             })
-                            .onNegative(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    return;
-                                }
+                            .onNegative((dialog, which) -> {
+                                return;
                             })
                             .show();
                 } else {
@@ -213,22 +200,14 @@ public class OpenFoodAPIClient {
                                 .customView(R.layout.alert_powermode_image, true)
                                 .neutralText(R.string.txtOk)
                                 .positiveText(R.string.txtSeeMore)
-                                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                    @Override
-                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                        Intent intent = new Intent(activity, ProductActivity.class);
-                                        Bundle bundle = new Bundle();
-                                        bundle.putSerializable("state", s);
-                                        intent.putExtras(bundle);
-                                        activity.startActivity(intent);
-                                    }
+                                .onPositive((materialDialog, which) -> {
+                                    Intent intent = new Intent(activity, ProductActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putSerializable("state", s);
+                                    intent.putExtras(bundle);
+                                    activity.startActivity(intent);
                                 })
-                                .onNeutral(new MaterialDialog.SingleButtonCallback() {
-                                    @Override
-                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                        camera.resumeCameraPreview(resultHandler);
-                                    }
-                                })
+                                .onNeutral((materialDialog, which) -> camera.resumeCameraPreview(resultHandler))
                                 .build();
 
                         ImageView imgPhoto = (ImageView) dialog.getCustomView().findViewById(R.id.imagePowerModeProduct);
@@ -255,15 +234,12 @@ public class OpenFoodAPIClient {
                             Picasso.with(activity)
                                     .load(s.getProduct().getImageUrl())
                                     .into(imgPhoto);
-                            imgPhoto.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    Intent intent = new Intent(view.getContext(), FullScreenImage.class);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("imageurl", product.getImageUrl());
-                                    intent.putExtras(bundle);
-                                    activity.startActivity(intent);
-                                }
+                            imgPhoto.setOnClickListener(view -> {
+                                Intent intent = new Intent(view.getContext(), FullScreenImage.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("imageurl", product.getImageUrl());
+                                intent.putExtras(bundle);
+                                activity.startActivity(intent);
                             });
                         }
                         dialog.show();

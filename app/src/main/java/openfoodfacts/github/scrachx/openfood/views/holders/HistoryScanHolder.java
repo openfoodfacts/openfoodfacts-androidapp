@@ -33,30 +33,24 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
         imgProduct = (ImageView) itemView.findViewById(R.id.imgHistoryProduct);
         imgShare = (ImageButton) itemView.findViewById(R.id.iconShareHistory);
 
-        imgShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String url = " " + productUrl + txtBarcode.getText();
-                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                String shareBody = itemView.getResources().getString(R.string.msg_share) + url;
-                String shareSub = "\n\n";
-                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                itemView.getContext().startActivity(Intent.createChooser(sharingIntent, "Share using"));
-               }
-        });
+        imgShare.setOnClickListener(view -> {
+            String url = " " + productUrl + txtBarcode.getText();
+            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = itemView.getResources().getString(R.string.msg_share) + url;
+            String shareSub = "\n\n";
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+            itemView.getContext().startActivity(Intent.createChooser(sharingIntent, "Share using"));
+           });
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ConnectivityManager cm = (ConnectivityManager) v.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-                boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-                if(isConnected) {
-                    OpenFoodAPIClient api = new OpenFoodAPIClient(v.getContext());
-                    api.getProduct(txtBarcode.getText().toString(), (Activity) v.getContext());
-                }
+        itemView.setOnClickListener(v -> {
+            ConnectivityManager cm = (ConnectivityManager) v.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+            if(isConnected) {
+                OpenFoodAPIClient api = new OpenFoodAPIClient(v.getContext());
+                api.getProduct(txtBarcode.getText().toString(), (Activity) v.getContext());
             }
         });
     }
