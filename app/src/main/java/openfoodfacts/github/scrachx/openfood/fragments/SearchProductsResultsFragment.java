@@ -18,7 +18,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewProductsScrollListener;
+import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
 public class SearchProductsResultsFragment extends BaseFragment {
@@ -26,7 +26,7 @@ public class SearchProductsResultsFragment extends BaseFragment {
     private OpenFoodAPIClient api;
     private RecyclerView productsRecyclerView;
     private View progressBar;
-    private EndlessRecyclerViewProductsScrollListener scrollListener;
+    private EndlessRecyclerViewScrollListener scrollListener;
     private List<Product> mProducts;
     private int mCountProducts = 0;
 
@@ -62,10 +62,12 @@ public class SearchProductsResultsFragment extends BaseFragment {
         productsRecyclerView.addItemDecoration(dividerItemDecoration);
 
         // Retain an instance so that you can call `resetState()` for fresh searches
-        scrollListener = new EndlessRecyclerViewProductsScrollListener(mLayoutManager) {
+        scrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                if(mProducts.size() < mCountProducts) loadNextDataFromApi(page);
+                if(mProducts.size() < mCountProducts) {
+                    loadNextDataFromApi(page);
+                }
             }
         };
         // Adds the scroll listener to RecyclerView
@@ -101,7 +103,7 @@ public class SearchProductsResultsFragment extends BaseFragment {
                             ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
                             productsRecyclerView.setAdapter(adapter);
                         } else {
-                            countProductsView.append(" 0");
+                            countProductsView.setText(R.string.txt_no_results);
                         }
                     }
                 }

@@ -17,7 +17,6 @@
        android:layout_margin="@dimen/spacing_normal"
        android:gravity="center"
        android:text="@string/number_of_results"
-       android:textColor="@color/md_black_1000"
        android:textAppearance="?android:attr/textAppearanceMedium"
        android:textSize="@dimen/font_normal" />
 

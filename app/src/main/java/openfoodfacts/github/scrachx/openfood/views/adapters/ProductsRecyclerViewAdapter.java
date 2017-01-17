@@ -20,13 +20,12 @@ import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 /**
- * @author herau
- * @modified itchix
+ * @author herau & itchix
  */
 public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
 
-    private final int VIEW_ITEM = 1;
-    private final int VIEW_LOAD = 0;
+    private static final int VIEW_ITEM = 1;
+    private static final int VIEW_LOAD = 0;
 
     private Context context;
     private final List<Product> products;
@@ -39,17 +38,14 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
 
-        RecyclerView.ViewHolder vh;
-        View v;
-        if (viewType == VIEW_ITEM) {
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.products_list_item, parent, false);
-            vh = new ProductViewHolder(v);
-        } else {
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.progressbar_endless_list, parent, false);
-            vh = new ProgressViewHolder(v);
-        }
+        int layoutResourceId = viewType == VIEW_ITEM ? R.layout.products_list_item: R.layout.progressbar_endless_list;
+        View v = LayoutInflater.from(parent.getContext()).inflate(layoutResourceId, parent, false);
 
-        return vh;
+        if (viewType == VIEW_ITEM) {
+            return new ProductViewHolder(v);
+        } else {
+            return new ProgressViewHolder(v);
+        }
     }
 
     @Override
@@ -62,17 +58,18 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         if (holder instanceof ProductViewHolder) {
+            ProductViewHolder productHolder = (ProductViewHolder) holder;
             Picasso.with(context)
                     .load(products.get(position).getImageSmallUrl())
                     .placeholder(R.drawable.placeholder_thumb)
                     .error(R.drawable.error_image)
                     .fit()
                     .centerCrop()
-                    .into(((ProductViewHolder) holder).vProductImage);
+                    .into(productHolder.vProductImage);
 
             Product product = products.get(position);
 
-            ((ProductViewHolder) holder).vProductName.setText(product.getProductName());
+            productHolder.vProductName.setText(product.getProductName());
 
             StringBuilder stringBuilder = new StringBuilder();
             if (isNotEmpty(product.getBrands())) {
@@ -83,9 +80,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
                 stringBuilder.append(" - ").append(product.getQuantity());
             }
 
-            ((ProductViewHolder) holder).vProductDetails.setText(stringBuilder.toString());
-        } else {
-            ((ProgressViewHolder) holder).progressBar.setIndeterminate(true);
+            productHolder.vProductDetails.setText(stringBuilder.toString());
         }
 
     }
