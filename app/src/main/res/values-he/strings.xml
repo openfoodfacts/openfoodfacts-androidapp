@@ -5,6 +5,7 @@
   <string name="action_settings">הגדרות</string>
   <string name="action_about">על אודות</string>
   <string name="action_discover">לגלות</string>
+  <string name="contribute">כיצד ניתן לתרום</string>
   <string name="action_find">חיפוש</string>
   <string name="text_barcode">נא להזין את הברקוד:</string>
   <string-array name="nav_drawer_items_product">
@@ -52,7 +53,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>אנגלית</item>
@@ -75,7 +76,7 @@
     <item>ערבית</item>
     <item>פינית</item>
     <item>הינדי</item>
-    <item>Kabyle</item>
+    <item>קאבילה</item>
     <item>קוריאנית</item>
     <item>לטבית</item>
     <item>הולנדית</item>
@@ -124,7 +125,7 @@
   <string name="txtLogin">שם משתמש :</string>
   <string name="txtPass">ססמה :</string>
   <string name="txtTitleHome">פתיחה של האוכל שלך מאפשרת לך לדעת מה נכנס אליך לגוף</string>
-  <string name="txtSave">שליחה/שמירה</string>
+  <string name="txtSave">שמירה</string>
   <string name="txtSignIn">כניסה</string>
   <string name="txtUser">לוח משתמש</string>
   <string name="txtToastSaved">המשתמש נשמר</string>
@@ -141,6 +142,7 @@
   <string name="txtInfoLoginNo">המשתמש לא נשמר</string>
   <string name="txtDialogsTitle">פרטים</string>
   <string name="txtDialogsContent">המוצרים שסרקת לא נמצאים עדיין ב־Open Food Facts. להוסיף?</string>
+  <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא במסד נתוני המזון הפתוח.</string>
   <string name="txtDialogsContentSend">לשלוח את המוצרים שנשמרו אל מסד הנתונים?</string>
   <string name="txtYes">כן</string>
   <string name="txtNo">לא</string>
@@ -206,6 +208,8 @@
   <string name="action_preferences">העדפות</string>
   <string name="prefs_scan_startup">סריקה עם ההפעלה</string>
   <string name="prefs_scan_startup_summary">אם אפשרות זו נבחרה הסריקה תחל עם הפעלת היישומון</string>
+  <string name="prefs_power_mode">סריקת על</string>
+  <string name="prefs_power_mode_summary">סריקת מוצרים במהירות בסופר כדי לראות מי מהם לא במסד הנתונים.</string>
   <string name="prefs_language">שפה</string>
   <string name="prefs_language_summary">החלפת שפה</string>
   <string name="scan_history_drawer">היסטוריה</string>
@@ -234,12 +238,17 @@
   <string name="nutrition_proteins_short_name">חלבונים (ג׳)</string>
   <string name="nutrition_salt">מלח</string>
   <string name="nutrition_salt_short_name">מלח (ג׳)</string>
+  <string name="nutrition_satured_fat">שומן רווי</string>
+  <string name="nutrition_satured_fat_short_name">שומן רווי (ג׳)</string>
   <string name="nutrition_serving">להגשה</string>
   <string name="nutrition_serving_size">גודל ההגשה :</string>
   <string name="nutrition_sodium">נתרן</string>
   <string name="nutrition_sodium_short_name">נתרן (ג׳)</string>
   <string name="nutrition_sugars">סוכרים</string>
   <string name="nutrition_sugars_short_name">סוכרים (ג׳)</string>
+  <string name="nutrition_trans_fat">שומן טרנס</string>
+  <string name="nutrition_trans_fat_short_name">שומן טרנס (ג׳)</string>
+  <string name="nutriment_serving_size">למנה :</string>
   <string name="action_manage_account">ניהול חשבון</string>
   <string name="action_contributes">התרומות שלך</string>
   <string name="website">https://world-he.openfoodfacts.org/</string>
@@ -250,4 +259,8 @@
   <string name="logout_drawer">יציאה</string>
   <string name="contribution_without_account">ניתן להיכנס או ליצור חשבון כדי לשמור על התרומות שלך</string>
   <string name="textCarbonFootprint">"טביעה פחמנית / פליטת פחמן דו חמצני: "</string>
+  <string name="txtDialogPowerMode">תצוגה מהירה</string>
+  <string name="txtSeeMore">מידע נוסף</string>
+  <string name="action_search">חיפוש</string>
+  <string name="search_hint">חיפוש מוצר</string>
 </resources>
