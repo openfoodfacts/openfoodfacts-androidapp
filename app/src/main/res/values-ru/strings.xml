@@ -53,7 +53,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>упрощенный китайский</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Английский</item>
