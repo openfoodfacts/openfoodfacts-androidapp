@@ -81,24 +81,24 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
             if (fat != null) {
                 String fatNutrimentLevel = fat.getLocalize(context);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtFat), getRoundNumber(nutriments.getFat100g()) + nutriments.getFatUnit(), fatNutrimentLevel, fat.getImageLevel()));
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtFat), getRoundNumber(nutriments.getFat100g()) + " " + nutriments.getFatUnit(), fatNutrimentLevel, fat.getImageLevel()));
             }
 
             if (saturatedFat != null) {
                 String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                String saturatedFatValue = getRoundNumber(nutriments.getSaturatedFat100g()) + nutriments.getSaturatedFatUnit();
+                String saturatedFatValue = getRoundNumber(nutriments.getSaturatedFat100g()) + " " + nutriments.getSaturatedFatUnit();
                 levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatValue, saturatedFatLocalize, saturatedFat.getImageLevel()));
             }
 
             if (sugars != null) {
                 String sugarsLocalize = sugars.getLocalize(context);
-                String sugarsValue = getRoundNumber(nutriments.getSugars100g()) + nutriments.getSugarsUnit();
+                String sugarsValue = getRoundNumber(nutriments.getSugars100g()) + " " + nutriments.getSugarsUnit();
                 levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars), sugarsValue, sugarsLocalize, sugars.getImageLevel()));
             }
 
             if (salt != null) {
                 String saltLocalize = salt.getLocalize(context);
-                String saltValue = getRoundNumber(nutriments.getSalt100g()) + nutriments.getSaltUnit();
+                String saltValue = getRoundNumber(nutriments.getSalt100g()) + " " + nutriments.getSaltUnit();
                 levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt), saltValue, saltLocalize, salt.getImageLevel()));
             }
 
