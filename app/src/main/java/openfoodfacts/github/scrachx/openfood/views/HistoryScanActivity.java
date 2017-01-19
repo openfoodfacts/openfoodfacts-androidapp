@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -27,7 +28,6 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.opencsv.CSVWriter;
-import com.orm.query.Select;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -44,6 +44,7 @@ import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
+import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
 
@@ -66,7 +67,7 @@ public class HistoryScanActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         productItems = new ArrayList<>();
-        new HistoryScanActivity.FillAdapter().execute(this);
+        new HistoryScanActivity.FillAdapter(this).execute(this);
     }
 
     @Override
@@ -81,7 +82,7 @@ public class HistoryScanActivity extends BaseActivity {
                         .title(R.string.title_clear_history_dialog)
                         .content(R.string.text_clear_history_dialog)
                         .onPositive((dialog, which) -> {
-                            HistoryProduct.deleteAll(HistoryProduct.class);
+                            Utils.getAppDaoSession(getParent()).getHistoryProductDao().deleteAll();;
                             productItems.clear();
                             recyclerHistoryScanView.getAdapter().notifyDataSetChanged();
                         })
@@ -127,7 +128,7 @@ public class HistoryScanActivity extends BaseActivity {
             }
             String[] headers = {"Barcode", "Name", "Brands"};
             writer.writeNext(headers);
-            List<HistoryProduct> listHistoryProducts = HistoryProduct.listAll(HistoryProduct.class);
+            List<HistoryProduct> listHistoryProducts = Utils.getAppDaoSession(this).getHistoryProductDao().loadAll();
             for (HistoryProduct hp : listHistoryProducts) {
                 String[] line = {hp.getBarcode(), hp.getTitle(), hp.getBrands()};
                 writer.writeNext(line);
@@ -181,9 +182,15 @@ public class HistoryScanActivity extends BaseActivity {
 
     public class FillAdapter extends AsyncTask<Context, Void, Context> {
 
+        private Activity activity;
+
+        public FillAdapter(Activity act) {
+            activity = act;
+        }
+
         @Override
         protected void onPreExecute() {
-            List<HistoryProduct> listHistoryProducts = HistoryProduct.listAll(HistoryProduct.class);
+            List<HistoryProduct> listHistoryProducts = Utils.getAppDaoSession(activity).getHistoryProductDao().loadAll();
             if (listHistoryProducts.size() == 0) {
                 Toast.makeText(getApplicationContext(), R.string.txtNoData, Toast.LENGTH_LONG).show();
                 emptyHistory = true;
@@ -196,7 +203,7 @@ public class HistoryScanActivity extends BaseActivity {
 
         @Override
         protected Context doInBackground(Context... ctx) {
-            List<HistoryProduct> listHistoryProducts = Select.from(HistoryProduct.class).orderBy("LAST_SEEN DESC").list();
+            List<HistoryProduct> listHistoryProducts = Utils.getAppDaoSession(activity).getHistoryProductDao().queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list();
             final Bitmap defaultImgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_no), 200, 200, true);
 
             for (HistoryProduct historyProduct : listHistoryProducts) {

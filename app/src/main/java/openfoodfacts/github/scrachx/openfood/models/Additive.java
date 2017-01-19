@@ -2,7 +2,11 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.orm.SugarRecord;
+
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Index;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -10,16 +14,23 @@ import com.orm.SugarRecord;
         "name",
         "risk"
 })
-public class Additive extends SugarRecord {
+@Entity(indexes = {
+        @Index(value = "code", unique = true)
+})
+public class Additive {
 
+    @Id
+    private Long id;
     private String code;
     private String name;
     private String risk;
 
     public Additive(){}
 
-    public Additive(String code, String name, String risk) {
-        this.code = code.toUpperCase();
+    @Generated(hash = 1600864133)
+    public Additive(Long id, String code, String name, String risk) {
+        this.id = id;
+        this.code = code;
         this.name = name;
         this.risk = risk;
     }
@@ -101,5 +112,13 @@ public class Additive extends SugarRecord {
     @Override
     public int hashCode() {
         return code != null ? code.hashCode() : 0;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

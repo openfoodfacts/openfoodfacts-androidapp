@@ -30,6 +30,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class Utils {
 
@@ -277,5 +279,9 @@ public class Utils {
             default:
                 return nutritionAmount;
         }
+    }
+
+    public static DaoSession getAppDaoSession(Activity activity) {
+        return ((OFFApplication) activity.getApplication()).getDaoSession();
     }
 }

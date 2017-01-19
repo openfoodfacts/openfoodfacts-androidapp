@@ -29,6 +29,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
@@ -93,7 +94,7 @@ public class OfflineEditFragment extends BaseFragment {
                 .negativeText(R.string.txtNo)
                 .onPositive((dialog, which) -> {
                     String barcode = saveItems.get(lapos).getBarcode();
-                    SendProduct.deleteAll(SendProduct.class, "barcode = ?", barcode);
+                    Utils.getAppDaoSession(getActivity()).getSendProductDao().deleteInTx(Utils.getAppDaoSession(getActivity()).getSendProductDao().queryBuilder().where(SendProductDao.Properties.Barcode.eq(barcode)).list());
                     final SaveListAdapter sl = (SaveListAdapter) listView.getAdapter();
                     saveItems.remove(lapos);
                     getActivity().runOnUiThread(() -> sl.notifyDataSetChanged());
@@ -110,44 +111,43 @@ public class OfflineEditFragment extends BaseFragment {
                 .positiveText(R.string.txtYes)
                 .negativeText(R.string.txtNo)
                 .onPositive((dialog, which) -> {
-                OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getContext());
-                final List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
-                for (final SendProduct product : listSaveProduct) {
-
-                    if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())) {
-                        continue;
-                    }
-
-                    if(!loginS.isEmpty() && !passS.isEmpty()) {
-                        product.setUserId(loginS);
-                        product.setPassword(passS);
-                    }
-
-                    if(isNotEmpty(product.getImgupload_ingredients())) {
-                        product.compress(ProductImageField.INGREDIENTS);
-                    }
-
-                    if(isNotEmpty(product.getImgupload_nutrition())) {
-                        product.compress(ProductImageField.NUTRITION);
-                    }
-
-                    if(isNotEmpty(product.getImgupload_front())) {
-                        product.compress(ProductImageField.FRONT);
-                    }
-
-                    apiClient.post(getActivity(), product, value -> {
-                        if (value) {
-                            int productIndex = listSaveProduct.indexOf(product);
-
-                            if (productIndex >= 0 && productIndex < saveItems.size()) {
-                                saveItems.remove(productIndex);
-                            }
-
-                            ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
-                            SendProduct.deleteAll(SendProduct.class, "barcode = ?", product.getBarcode());
+                    OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getContext());
+                    final List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
+                    for (final SendProduct product : listSaveProduct) {
+                        if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())) {
+                            continue;
                         }
-                    });
-                }
+
+                        if(!loginS.isEmpty() && !passS.isEmpty()) {
+                            product.setUserId(loginS);
+                            product.setPassword(passS);
+                        }
+
+                        if(isNotEmpty(product.getImgupload_ingredients())) {
+                            product.compress(ProductImageField.INGREDIENTS);
+                        }
+
+                        if(isNotEmpty(product.getImgupload_nutrition())) {
+                            product.compress(ProductImageField.NUTRITION);
+                        }
+
+                        if(isNotEmpty(product.getImgupload_front())) {
+                            product.compress(ProductImageField.FRONT);
+                        }
+
+                        apiClient.post(getActivity(), product, value -> {
+                            if (value) {
+                                int productIndex = listSaveProduct.indexOf(product);
+
+                                if (productIndex >= 0 && productIndex < saveItems.size()) {
+                                    saveItems.remove(productIndex);
+                                }
+
+                                ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
+                                Utils.getAppDaoSession(getActivity()).getSendProductDao().deleteInTx(Utils.getAppDaoSession(getActivity()).getSendProductDao().queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
+                            }
+                        });
+                    }
                 })
                 .show();
     }
@@ -163,7 +163,7 @@ public class OfflineEditFragment extends BaseFragment {
         @Override
         protected void onPreExecute() {
             saveItems.clear();
-            List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
+            List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
             if (listSaveProduct.size() == 0) {
                 Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
             } else {
@@ -173,7 +173,7 @@ public class OfflineEditFragment extends BaseFragment {
 
         @Override
         protected Context doInBackground(Context... ctx) {
-            List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
+            List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
 
             int imageIcon = R.drawable.ic_ok;
 
@@ -198,7 +198,7 @@ public class OfflineEditFragment extends BaseFragment {
 
         @Override
         protected void onPostExecute(Context ctx) {
-            List<SendProduct> listSaveProduct = SendProduct.listAll(SendProduct.class);
+            List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
             if (listSaveProduct.isEmpty()) {
                 return;
             }

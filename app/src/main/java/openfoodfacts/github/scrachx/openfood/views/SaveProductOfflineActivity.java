@@ -32,6 +32,7 @@ import butterknife.OnClick;
 import butterknife.OnItemSelected;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -74,9 +75,9 @@ public class SaveProductOfflineActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
-            && ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+                && ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE)
-                || ActivityCompat.shouldShowRequestPermissionRationale(this, WRITE_EXTERNAL_STORAGE)) {
+                    || ActivityCompat.shouldShowRequestPermissionRationale(this, WRITE_EXTERNAL_STORAGE)) {
                 new MaterialDialog.Builder(this)
                         .title(R.string.action_about)
                         .content(R.string.permission_storage)
@@ -104,7 +105,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
         adapterW.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         spinnerW.setAdapter(adapterW);
 
-        List<SendProduct> sp = SendProduct.find(SendProduct.class, "barcode = ?", mBarcode);
+        List<SendProduct> sp = Utils.getAppDaoSession(this).getSendProductDao().queryBuilder().where(SendProductDao.Properties.Barcode.eq(mBarcode)).list();
+
         if (sp.size() > 0) {
             mProduct = sp.get(0);
         }
@@ -214,7 +216,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
             final Activity activity = this;
             api.post(this, mProduct, value -> {
                 if (!value) {
-                    mProduct.save();
+                    Utils.getAppDaoSession(activity).getSendProductDao().insert(mProduct);
                     Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra("openOfflineEdit", true);
@@ -226,7 +228,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                 finish();
             });
         } else {
-            mProduct.save();
+            Utils.getAppDaoSession(this).getSendProductDao().insertOrReplace(mProduct);
             Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.putExtra("openOfflineEdit", true);

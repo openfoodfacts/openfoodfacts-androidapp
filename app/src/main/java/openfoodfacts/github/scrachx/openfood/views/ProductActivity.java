@@ -24,7 +24,9 @@ import java.util.List;
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -58,7 +60,7 @@ public class ProductActivity extends BaseActivity {
         allergens.addAll(traces);
 
         List<String> matchAll = new ArrayList<>();
-        List<Allergen> mAllergens = Allergen.find(Allergen.class, "enable = ?", "true");
+        List<Allergen> mAllergens = Utils.getAppDaoSession(this).getAllergenDao().queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
         for (int a = 0; a < mAllergens.size(); a++) {
             for(int i = 0; i < allergens.size(); i++) {
                 if (allergens.get(i).trim().equals(mAllergens.get(a).getIdAllergen().trim())) {
