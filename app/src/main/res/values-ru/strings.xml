@@ -5,7 +5,7 @@
   <string name="action_settings">Настройки</string>
   <string name="action_about">О приложении</string>
   <string name="action_discover">О проекте</string>
-  <string name="action_contribute">Как помочь</string>
+  <string name="contribute">Как принять участие</string>
   <string name="action_find">Найти</string>
   <string name="text_barcode">Введите штрихкод</string>
   <string-array name="nav_drawer_items_product">
@@ -53,7 +53,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Английский</item>
@@ -126,7 +126,7 @@
   <string name="txtPass">Пароль:</string>
   <string name="txtTitleHome">Откройте вашу еду и узнайте, что вы едите</string>
   <string name="txtHome">Open Food Facts — открытая база данных о пищевых продуктах: состав, аллергены, пищевая и энергетическая ценность и прочая информация с этикеток.</string>
-  <string name="txtSave">Отправить/Сохранить</string>
+  <string name="txtSave">Сохранить</string>
   <string name="txtSignIn">Войти</string>
   <string name="txtUser">Панель пользователя</string>
   <string name="txtToastSaved">Пользователь сохранён</string>
@@ -143,6 +143,7 @@
   <string name="txtInfoLoginNo">Пользователь не сохранён</string>
   <string name="txtDialogsTitle">Информация</string>
   <string name="txtDialogsContent">Этого продукта ещё нет в Open Food Facts. Хотите его добавить?</string>
+  <string name="txtDialogsContentPowerMode">Просканированный продукт уже внесён в Open Food Facts.</string>
   <string name="txtDialogsContentSend">Хотите отослать сохранённые продукты в базу данных?</string>
   <string name="txtYes">Да</string>
   <string name="txtNo">Нет</string>
@@ -259,4 +260,8 @@
   <string name="logout_drawer">Выйти</string>
   <string name="contribution_without_account">Вы можете войти или создать учётную запись, чтобы сохранить ваш вклад</string>
   <string name="textCarbonFootprint">"Углеродный след / выбросы CO2: "</string>
+  <string name="txtDialogPowerMode">Быстрый просмотр</string>
+  <string name="txtSeeMore">Подробнее</string>
+  <string name="action_search">Найти</string>
+  <string name="search_hint">Поиск продукта</string>
 </resources>

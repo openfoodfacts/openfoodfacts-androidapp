@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.squareup.picasso.Picasso;
@@ -107,20 +106,14 @@ public class OpenFoodAPIClient {
                             .content(R.string.txtDialogsContent)
                             .positiveText(R.string.txtYes)
                             .negativeText(R.string.txtNo)
-                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                    intent.putExtra("barcode", barcode);
-                                    activity.startActivity(intent);
-                                    activity.finish();
-                                }
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                                intent.putExtra("barcode", barcode);
+                                activity.startActivity(intent);
+                                activity.finish();
                             })
-                            .onNegative(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    return;
-                                }
+                            .onNegative((dialog, which) -> {
+                                return;
                             })
                             .show();
                 } else {
@@ -187,20 +180,14 @@ public class OpenFoodAPIClient {
                             .content(R.string.txtDialogsContent)
                             .positiveText(R.string.txtYes)
                             .negativeText(R.string.txtNo)
-                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                    intent.putExtra("barcode", barcode);
-                                    activity.startActivity(intent);
-                                    activity.finish();
-                                }
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                                intent.putExtra("barcode", barcode);
+                                activity.startActivity(intent);
+                                activity.finish();
                             })
-                            .onNegative(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    return;
-                                }
+                            .onNegative((dialog, which) -> {
+                                return;
                             })
                             .show();
                 } else {
@@ -213,22 +200,14 @@ public class OpenFoodAPIClient {
                                 .customView(R.layout.alert_powermode_image, true)
                                 .neutralText(R.string.txtOk)
                                 .positiveText(R.string.txtSeeMore)
-                                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                    @Override
-                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                        Intent intent = new Intent(activity, ProductActivity.class);
-                                        Bundle bundle = new Bundle();
-                                        bundle.putSerializable("state", s);
-                                        intent.putExtras(bundle);
-                                        activity.startActivity(intent);
-                                    }
+                                .onPositive((materialDialog, which) -> {
+                                    Intent intent = new Intent(activity, ProductActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putSerializable("state", s);
+                                    intent.putExtras(bundle);
+                                    activity.startActivity(intent);
                                 })
-                                .onNeutral(new MaterialDialog.SingleButtonCallback() {
-                                    @Override
-                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                        camera.resumeCameraPreview(resultHandler);
-                                    }
-                                })
+                                .onNeutral((materialDialog, which) -> camera.resumeCameraPreview(resultHandler))
                                 .build();
 
                         ImageView imgPhoto = (ImageView) dialog.getCustomView().findViewById(R.id.imagePowerModeProduct);
@@ -255,15 +234,12 @@ public class OpenFoodAPIClient {
                             Picasso.with(activity)
                                     .load(s.getProduct().getImageUrl())
                                     .into(imgPhoto);
-                            imgPhoto.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    Intent intent = new Intent(view.getContext(), FullScreenImage.class);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("imageurl", product.getImageUrl());
-                                    intent.putExtras(bundle);
-                                    activity.startActivity(intent);
-                                }
+                            imgPhoto.setOnClickListener(view -> {
+                                Intent intent = new Intent(view.getContext(), FullScreenImage.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("imageurl", product.getImageUrl());
+                                intent.putExtras(bundle);
+                                activity.startActivity(intent);
                             });
                         }
                         dialog.show();
@@ -305,33 +281,28 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public void searchProduct(final String name, final Activity activity, final OnProductsCallback productsCallback) {
-        final LoadToast lt = getLoadToast(activity);
-
-        apiService.searchProductByName(name).enqueue(new Callback<Search>() {
+    public void searchProduct(final String name, final int page, final Activity activity, final OnProductsCallback productsCallback) {
+        apiService.searchProductByName(name, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(Call<Search> call, Response<Search> response) {
                 if (!response.isSuccess()) {
-                    productsCallback.onProductsResponse(false, null);
+                    productsCallback.onProductsResponse(false, null, -1);
                     return;
                 }
 
                 Search s = response.body();
                 if(Integer.valueOf(s.getCount()) == 0){
                     Toast.makeText(activity, R.string.txt_product_not_found, Toast.LENGTH_LONG).show();
-                    lt.error();
-                    productsCallback.onProductsResponse(false, null);
+                    productsCallback.onProductsResponse(false, null, -1);
                 }else{
-                    lt.success();
-                    productsCallback.onProductsResponse(true, s.getProducts());
+                    productsCallback.onProductsResponse(true, s.getProducts(), Integer.parseInt(s.getCount()));
                 }
             }
 
             @Override
             public void onFailure(Call<Search> call, Throwable t) {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                lt.error();
-                productsCallback.onProductsResponse(false, null);
+                productsCallback.onProductsResponse(false, null, -1);
             }
         });
     }
@@ -360,7 +331,7 @@ public class OpenFoodAPIClient {
     public void post(final Activity activity, final SendProduct product, final OnProductSentCallback productSentCallback){
         final LoadToast lt = new LoadToast(activity);
         lt.setText(activity.getString(R.string.toastSending));
-        lt.setBackgroundColor(activity.getResources().getColor(R.color.indigo_600));
+        lt.setBackgroundColor(activity.getResources().getColor(R.color.blue));
         lt.setTextColor(activity.getResources().getColor(R.color.white));
         lt.show();
 
@@ -404,7 +375,7 @@ public class OpenFoodAPIClient {
     public void postImg(final Context context, final ProductImage image) {
         final LoadToast lt = new LoadToast(context);
         lt.setText(context.getString(R.string.toastSending));
-        lt.setBackgroundColor(context.getResources().getColor(R.color.indigo_600));
+        lt.setBackgroundColor(context.getResources().getColor(R.color.blue));
         lt.setTextColor(context.getResources().getColor(R.color.white));
         lt.show();
 
@@ -415,10 +386,13 @@ public class OpenFoodAPIClient {
                 if(!response.isSuccess()) {
                     Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                     lt.error();
+                    return;
                 }
 
                 JsonNode body = response.body();
-                if (body.get("status").asText().contains("status not ok")) {
+                if (body == null || !body.isObject()) {
+                    lt.error();
+                } else if (body.get("status").asText().contains("status not ok")) {
                     Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
                     lt.error();
                 } else {
@@ -438,7 +412,7 @@ public class OpenFoodAPIClient {
     private LoadToast getLoadToast(Activity activity) {
         final LoadToast lt = new LoadToast(activity);
         lt.setText(activity.getString(R.string.toast_retrieving));
-        lt.setBackgroundColor(activity.getResources().getColor(R.color.indigo_600));
+        lt.setBackgroundColor(activity.getResources().getColor(R.color.blue));
         lt.setTextColor(activity.getResources().getColor(R.color.white));
         lt.show();
         return lt;
@@ -446,7 +420,7 @@ public class OpenFoodAPIClient {
 
     public interface OnProductsCallback {
 
-        void onProductsResponse(boolean isOk, List<Product> products);
+        void onProductsResponse(boolean isOk, List<Product> products, int countProducts);
     }
 
     public interface OnAllergensCallback {

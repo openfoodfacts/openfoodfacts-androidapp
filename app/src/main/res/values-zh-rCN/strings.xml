@@ -5,7 +5,6 @@
   <string name="action_settings">设置</string>
   <string name="action_about">关于</string>
   <string name="action_discover">发现</string>
-  <string name="action_contribute">贡献</string>
   <string name="action_find">查找</string>
   <string-array name="nav_drawer_items_product">
     <item>摘要</item>

@@ -1,12 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
@@ -30,12 +29,14 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 public class ProductActivity extends BaseActivity {
 
     @BindView(R.id.pager) ViewPager viewPager;
     @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.tabs) TabLayout tabLayout;
     private ShareActionProvider mShareActionProvider;
     private State mState;
 
@@ -44,25 +45,25 @@ public class ProductActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        List<Allergen> mAllergens = Utils.getAppDaoSession(this).getAllergenDao().queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
-        ProductPagerAdapter adapterResult = new ProductPagerAdapter(getSupportFragmentManager(), this);
-        viewPager.setOffscreenPageLimit(3);
-        viewPager.setAdapter(adapterResult);
+        setupViewPager(viewPager);
+
+        tabLayout.setupWithViewPager(viewPager);
 
         Intent intent = getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
 
-        List<String> all = mState.getProduct().getAllergensHierarchy();
+        List<String> allergens = mState.getProduct().getAllergensHierarchy();
         List<String> traces = mState.getProduct().getTracesTags();
-        all.addAll(traces);
+        allergens.addAll(traces);
+
         List<String> matchAll = new ArrayList<>();
+        List<Allergen> mAllergens = Utils.getAppDaoSession(this).getAllergenDao().queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
         for (int a = 0; a < mAllergens.size(); a++) {
-            for(int i = 0; i < all.size(); i++) {
-                if (all.get(i).trim().equals(mAllergens.get(a).getIdAllergen().trim())) {
+            for(int i = 0; i < allergens.size(); i++) {
+                if (allergens.get(i).trim().equals(mAllergens.get(a).getIdAllergen().trim())) {
                     matchAll.add(mAllergens.get(a).getName());
                 }
             }
@@ -83,6 +84,11 @@ public class ProductActivity extends BaseActivity {
         }
     }
 
+    private void setupViewPager(ViewPager viewPager) {
+        ProductPagerAdapter adapterResult = new ProductPagerAdapter(getSupportFragmentManager(), this);
+        viewPager.setAdapter(adapterResult);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -96,14 +102,7 @@ public class ProductActivity extends BaseActivity {
                     url = " " + mState.getProduct().getUrl();
                 }
 
-                Bitmap icon = ((BitmapDrawable) getResources().getDrawable(R.drawable.ic_navigation_arrow_back)).getBitmap();
-
-                //TODO use mayLaunchUrl to improve performance like in MainActivity or LoginActivity
-                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder()
-                        .setShowTitle(true)
-                        .setToolbarColor(getResources().getColor(R.color.indigo_400))
-                        .setCloseButtonIcon(icon)
-                        .build();
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), null);
 
                 CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
             default:

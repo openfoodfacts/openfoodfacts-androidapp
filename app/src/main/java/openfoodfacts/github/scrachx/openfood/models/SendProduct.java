@@ -8,6 +8,7 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
+import org.greenrobot.greendao.annotation.Transient;
 import org.greenrobot.greendao.annotation.Unique;
 
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -18,14 +19,14 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 })
 public class SendProduct {
 
-    @JsonProperty("code")
     @Id
+    private Long id;
+
+    @JsonProperty("code")
     private String barcode;
     @JsonProperty("product_name")
     private String name;
-
     private String brands;
-    @Generated
     @JsonIgnore
     private String weight;
     @JsonIgnore
@@ -37,15 +38,18 @@ public class SendProduct {
     @JsonIgnore
     private String imgupload_nutrition;
     @JsonProperty("user_id")
+    @Transient
     private String userId;
+    @Transient
     private String password;
 
     public SendProduct() {}
 
-    @Generated(hash = 1057098170)
-    public SendProduct(String barcode, String name, String brands, String weight,
+    @Generated(hash = 201105305)
+    public SendProduct(Long id, String barcode, String name, String brands, String weight,
             String weight_unit, String imgupload_front, String imgupload_ingredients,
-            String imgupload_nutrition, String userId, String password) {
+            String imgupload_nutrition) {
+        this.id = id;
         this.barcode = barcode;
         this.name = name;
         this.brands = brands;
@@ -54,8 +58,6 @@ public class SendProduct {
         this.imgupload_front = imgupload_front;
         this.imgupload_ingredients = imgupload_ingredients;
         this.imgupload_nutrition = imgupload_nutrition;
-        this.userId = userId;
-        this.password = password;
     }
 
     public String getUserId() {
@@ -166,5 +168,13 @@ public class SendProduct {
                 //nothing to do
                 break;
         }
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

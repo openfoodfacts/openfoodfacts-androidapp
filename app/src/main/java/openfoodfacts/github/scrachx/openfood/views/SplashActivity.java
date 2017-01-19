@@ -71,7 +71,7 @@ public class SplashActivity extends BaseActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             lt.setText(activity.getString(R.string.toast_retrieving));
-            lt.setBackgroundColor(activity.getResources().getColor(R.color.indigo_600));
+            lt.setBackgroundColor(activity.getResources().getColor(R.color.blue));
             lt.setTextColor(activity.getResources().getColor(R.color.white));
             lt.show();
         }
@@ -129,26 +129,23 @@ public class SplashActivity extends BaseActivity {
             if (isConnected) {
                 if (errorAllergens) {
                     OpenFoodAPIClient api = new OpenFoodAPIClient(activity);
-                    api.getAllergens(new OpenFoodAPIClient.OnAllergensCallback() {
-                        @Override
-                        public void onAllergensResponse(boolean value) {
-                            if (result && value) {
-                                lt.success();
-                                editor.putBoolean("firstRun", false);
-                            }
-                            if(!value){
-                                lt.error();
-                                editor.putBoolean("errorAllergens", true);
-                            } else {
-                                editor.putBoolean("errorAllergens", false);
-                            }
-
-                            editor.apply();
-
-                            Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-                            startActivity(mainIntent);
-                            finish();
+                    api.getAllergens(value -> {
+                        if (result && value) {
+                            lt.success();
+                            editor.putBoolean("firstRun", false);
                         }
+                        if(!value){
+                            lt.error();
+                            editor.putBoolean("errorAllergens", true);
+                        } else {
+                            editor.putBoolean("errorAllergens", false);
+                        }
+
+                        editor.apply();
+
+                        Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                        startActivity(mainIntent);
+                        finish();
                     }, activity);
                 }
             } else {

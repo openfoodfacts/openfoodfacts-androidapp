@@ -5,7 +5,6 @@
   <string name="action_settings">Paramètres</string>
   <string name="action_about">À propos</string>
   <string name="action_discover">Découvrir</string>
-  <string name="action_contribute">Contribuer</string>
   <string name="action_find">Chercher</string>
   <string name="text_barcode">Saisissez le code-barre :</string>
   <string-array name="nav_drawer_items_product">
@@ -56,23 +55,23 @@
     <item>zh_rCN</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>Anglais</item>
-    <item>Français</item>
-    <item>Espagnol</item>
-    <item>Italien</item>
-    <item>Allemand</item>
-    <item>Japonais</item>
-    <item>Russe</item>
-    <item>Portugais</item>
-    <item>Suédois</item>
-    <item>Birman</item>
-    <item>Kazakh</item>
-    <item>Arménien</item>
-    <item>Grec</item>
-    <item>Hébreu</item>
-    <item>Galicien</item>
-    <item>Catalan</item>
-    <item>Tchèque</item>
+    <item>anglais</item>
+    <item>français</item>
+    <item>espagnol</item>
+    <item>italien</item>
+    <item>allemand</item>
+    <item>japonais</item>
+    <item>russe</item>
+    <item>portugais</item>
+    <item>suédois</item>
+    <item>birman</item>
+    <item>kazakh</item>
+    <item>arménien</item>
+    <item>grec</item>
+    <item>hébreu</item>
+    <item>galicien</item>
+    <item>catalan</item>
+    <item>tchèque</item>
     <item>arabe</item>
     <item>finnois</item>
     <item>hindi</item>
@@ -85,8 +84,8 @@
     <item>suédois</item>
     <item>chinois</item>
     <item>norvégien (Bokmal)</item>
-    <item>Danois</item>
-    <item>Chinois simplifié</item>
+    <item>danois</item>
+    <item>chinois simplifié</item>
   </string-array>
   <string-array name="images_array">
     <item>Defaut</item>
@@ -188,7 +187,7 @@
   <string name="sign_in_drawer">Se connecter</string>
   <string name="alert_drawer">Alertes concernant les allergènes</string>
   <string name="warning_allergens">Contient des allergènes</string>
-  <string name="title_dialog_alert">Add alert</string>
+  <string name="title_dialog_alert">Ajouter une alerte</string>
   <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilent sur le fait que ces données ne sont pas fiables à 100%. N\'hésitez pas à revérifier par vous-même !</string>
   <string name="from_gallery">Galerie photo</string>
   <string name="product_sent">Produit envoyé !</string>

@@ -20,14 +20,16 @@ import org.greenrobot.greendao.annotation.Index;
 public class Additive {
 
     @Id
+    private Long id;
     private String code;
     private String name;
     private String risk;
 
     public Additive(){}
 
-    @Generated(hash = 1913885541)
-    public Additive(String code, String name, String risk) {
+    @Generated(hash = 1600864133)
+    public Additive(Long id, String code, String name, String risk) {
+        this.id = id;
         this.code = code;
         this.name = name;
         this.risk = risk;
@@ -110,5 +112,13 @@ public class Additive {
     @Override
     public int hashCode() {
         return code != null ? code.hashCode() : 0;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

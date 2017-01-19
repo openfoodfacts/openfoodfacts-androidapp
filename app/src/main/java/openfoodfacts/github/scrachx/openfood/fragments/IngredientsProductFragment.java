@@ -29,7 +29,6 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
@@ -48,7 +47,6 @@ public class IngredientsProductFragment extends BaseFragment {
     @BindView(R.id.textAdditiveProduct) TextView additiveProduct;
     @BindView(R.id.textPalmOilProduct) TextView palmOilProduct;
     @BindView(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
-    @BindView(R.id.ingredientContainer) ViewGroup containerView;
     @BindView(R.id.imageViewNutritionFullIng) ImageView mImageNutritionFullIng;
     private String mUrlImage;
     private State mState;
@@ -90,9 +88,11 @@ public class IngredientsProductFragment extends BaseFragment {
         if(!allergens.isEmpty()) {
             substanceProduct.append(bold(getString(R.string.txtSubstances)));
             substanceProduct.append(" ");
+            String delim = "";
             for (String allergen : allergens) {
+                substanceProduct.append(delim);
                 substanceProduct.append(allergen);
-                substanceProduct.append(" ");
+                delim = ", ";
             }
         } else {
             substanceProduct.setVisibility(View.GONE);

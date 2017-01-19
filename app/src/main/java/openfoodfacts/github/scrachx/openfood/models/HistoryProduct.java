@@ -13,14 +13,13 @@ import org.greenrobot.greendao.annotation.Generated;
 })
 public class HistoryProduct {
 
+    @Id private Long id;
     private String title;
     private String brands;
     private String url;
     private Date lastSeen;
-    @Id
     private String barcode;
 
-    // Default constructor is necessary for SugarRecord
     public HistoryProduct() {}
 
     public HistoryProduct(String title, String brands, String url, String barcode) {
@@ -31,9 +30,10 @@ public class HistoryProduct {
         this.lastSeen = new Date();
     }
 
-    @Generated(hash = 1846082873)
-    public HistoryProduct(String title, String brands, String url, Date lastSeen,
-            String barcode) {
+    @Generated(hash = 1359786217)
+    public HistoryProduct(Long id, String title, String brands, String url,
+            Date lastSeen, String barcode) {
+        this.id = id;
         this.title = title;
         this.brands = brands;
         this.url = url;
@@ -79,5 +79,13 @@ public class HistoryProduct {
 
     public void setLastSeen(Date lastSeen) {
         this.lastSeen = lastSeen;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

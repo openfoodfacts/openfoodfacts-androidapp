@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-08 12:54+0100\n"
+"POT-Creation-Date: 2017-01-17 13:22+0100\n"
 "PO-Revision-Date: 2017-01-02 03:39+0000\n"
 "Last-Translator: Ricardo Alanis <Unknown>\n"
 "Language: es\n"
@@ -39,9 +39,9 @@ msgctxt "action_discover"
 msgid "Discover"
 msgstr "Descubrir"
 
-msgctxt "action_contribute"
-msgid "Contribute"
-msgstr "Contribuir"
+msgctxt "contribute"
+msgid "How to contribute"
+msgstr ""
 
 msgctxt "action_find"
 msgid "Find"
@@ -252,8 +252,9 @@ msgid "da"
 msgstr "da"
 
 #. Text units
+#, fuzzy
 msgctxt "lang_array:30"
-msgid "zh_rCN"
+msgid "zh-rCN"
 msgstr "zh_rCN"
 
 msgctxt "lang_label_array:0"
@@ -531,8 +532,9 @@ msgstr ""
 " información nutricional de cualquier pedazo de información que podemos "
 "encontrar sobre etiquetas de productos."
 
+#, fuzzy
 msgctxt "txtSave"
-msgid "Send/Save"
+msgid "Save"
 msgstr "Enviar/Guardar"
 
 msgctxt "txtSignIn"
@@ -1123,5 +1125,21 @@ msgstr ""
 
 msgctxt "txtSeeMore"
 msgid "See more"
+msgstr ""
+
+msgctxt "action_search"
+msgid "Search"
+msgstr ""
+
+msgctxt "search_hint"
+msgid "Search a product"
+msgstr ""
+
+msgctxt "number_of_results"
+msgid "Number of results :"
+msgstr ""
+
+msgctxt "txt_no_results"
+msgid "No results found"
 msgstr ""
 

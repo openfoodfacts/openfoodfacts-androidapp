@@ -3,11 +3,10 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
@@ -29,6 +28,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,6 +41,7 @@ import retrofit2.Retrofit;
  */
 public class LoginActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback {
 
+    @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.editTextLogin) EditText loginView;
     @BindView(R.id.editTextPass) EditText passwordView;
     @BindView(R.id.textInfoLogin) TextView infoLogin;
@@ -55,6 +56,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         uri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
 
@@ -101,7 +105,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         final LoadToast lt = new LoadToast(this);
         save.setClickable(false);
         lt.setText(getString(R.string.toast_retrieving));
-        lt.setBackgroundColor(getResources().getColor(R.color.indigo_600));
+        lt.setBackgroundColor(getResources().getColor(R.color.blue));
         lt.setTextColor(getResources().getColor(R.color.white));
         lt.show();
 
@@ -173,13 +177,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
     @OnClick(R.id.buttonCreateAccount)
     protected void onCreateUser() {
-        Bitmap icon = ((BitmapDrawable) getResources().getDrawable(R.drawable.ic_navigation_arrow_back)).getBitmap();
-
-        CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder(customTabActivityHelper.getSession())
-                .setShowTitle(true)
-                .setToolbarColor(getResources().getColor(R.color.indigo_400))
-                .setCloseButtonIcon(icon)
-                .build();
+        CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
 
         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, uri, new WebViewFallback());
     }

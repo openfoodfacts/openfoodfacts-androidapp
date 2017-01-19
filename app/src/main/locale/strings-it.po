@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-08 12:54+0100\n"
-"PO-Revision-Date: 2016-12-29 17:02+0000\n"
-"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
+"POT-Creation-Date: 2017-01-17 13:22+0100\n"
+"PO-Revision-Date: 2017-01-13 21:31+0000\n"
+"Last-Translator: mattia <Unknown>\n"
 "Language: it\n"
 "Language-Team: Italian <it@li.org>\n"
 "Plural-Forms: nplurals=2; plural=((((n == 1)) && ((0 == 0))) ? 0 : 1)\n"
@@ -39,9 +39,9 @@ msgctxt "action_discover"
 msgid "Discover"
 msgstr "Scopri"
 
-msgctxt "action_contribute"
-msgid "Contribute"
-msgstr "Contribuire"
+msgctxt "contribute"
+msgid "How to contribute"
+msgstr ""
 
 msgctxt "action_find"
 msgid "Find"
@@ -49,12 +49,12 @@ msgstr "Cerca"
 
 msgctxt "text_barcode"
 msgid "Type the barcode :"
-msgstr ""
+msgstr "Scrivi il codice a barre:"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
 msgid "Summary"
-msgstr ""
+msgstr "Sommario"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:1"
@@ -69,7 +69,7 @@ msgstr "Nutrizione"
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
 msgid "Nutrition Table"
-msgstr ""
+msgstr "Tabella nutrizionale"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
@@ -252,8 +252,9 @@ msgid "da"
 msgstr "da"
 
 #. Text units
+#, fuzzy
 msgctxt "lang_array:30"
-msgid "zh_rCN"
+msgid "zh-rCN"
 msgstr "zh_rCN"
 
 msgctxt "lang_label_array:0"
@@ -334,7 +335,7 @@ msgstr "Finlandese"
 
 msgctxt "lang_label_array:19"
 msgid "Hindi"
-msgstr ""
+msgstr "Indi"
 
 msgctxt "lang_label_array:20"
 msgid "Kabyle"
@@ -354,7 +355,7 @@ msgstr "Olandese"
 
 msgctxt "lang_label_array:24"
 msgid "Brazilian portuguese"
-msgstr ""
+msgstr "Brasiliano portoghese"
 
 msgctxt "lang_label_array:25"
 msgid "Romanian"
@@ -403,7 +404,7 @@ msgstr "Prodotti non trovati"
 
 msgctxt "desc_list_item_icon"
 msgid "Item Icon"
-msgstr ""
+msgstr "Icona Elemento"
 
 msgctxt "alert_dialog_warning_title"
 msgid "Warning"
@@ -411,11 +412,11 @@ msgstr "Attenzione"
 
 msgctxt "alert_dialog_warning_msg_user"
 msgid "User/password has changed, please update information"
-msgstr ""
+msgstr "Nome utente/password cambiata, per favore aggiorna le informazioni"
 
 msgctxt "alert_dialog_product_error_msg"
 msgid "Product not found, please try again"
-msgstr ""
+msgstr "prodotto non trovato, per favore prova ancora"
 
 msgctxt "toast_retrieving"
 msgid "Loading..."
@@ -443,7 +444,7 @@ msgstr "Categorie:"
 
 msgctxt "txtLabels"
 msgid "Labels, certifications, awards :"
-msgstr ""
+msgstr "Etichette, certificazioni, premi :"
 
 msgctxt "txtManufacturing"
 msgid "Manufacturing or processing places :"
@@ -451,7 +452,7 @@ msgstr "Luoghi di produzione:"
 
 msgctxt "txtIngredientsOrigins"
 msgid "Origin of ingredients :"
-msgstr ""
+msgstr "Origine degli ingredienti"
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
@@ -531,8 +532,9 @@ msgstr ""
 "ingredienti, gli allergeni, le informazioni nutrizionali e tutto ciò che "
 "possiamo trovare sulle etichette dei prodotti."
 
+#, fuzzy
 msgctxt "txtSave"
-msgid "Send/Save"
+msgid "Save"
 msgstr "Invia/Salva"
 
 msgctxt "txtSignIn"
@@ -607,7 +609,7 @@ msgstr ""
 
 msgctxt "txtDialogsContentPowerMode"
 msgid "The product you scanned does already exist in Open Food Facts."
-msgstr ""
+msgstr "Il prodotto scannerizzato esiste già in Open Food Facts"
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
@@ -659,7 +661,7 @@ msgstr "Nessun dato"
 
 msgctxt "txtPictureNeeded"
 msgid "Please take a picture first"
-msgstr ""
+msgstr "Per favore prima scatta una foto"
 
 msgctxt "toastSending"
 msgid "Uploading..."
@@ -725,7 +727,7 @@ msgstr "Codice a barre non valido"
 
 msgctxt "try_it_scan_now"
 msgid "Scan product"
-msgstr ""
+msgstr "Scansiona prodotto"
 
 msgctxt "share"
 msgid "Share"
@@ -733,7 +735,7 @@ msgstr "Condividi"
 
 msgctxt "msg_share"
 msgid "Look at this product on Open Food Facts :"
-msgstr ""
+msgstr "Guarda questo prodotto su Open Food Facts"
 
 msgctxt "create_account"
 msgid "Sign up"
@@ -789,7 +791,7 @@ msgstr "Accedi"
 
 msgctxt "alert_drawer"
 msgid "Allergen Alert"
-msgstr ""
+msgstr "Allerta Allergeni"
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
@@ -805,10 +807,13 @@ msgid ""
 "Also, be careful that data may not be accurate, please double-check by "
 "yourself!"
 msgstr ""
+"Le informazioni sulle tue allergie non verrano mai spedite ai server di "
+"Open Food  Facts. Controlla invece le informazioni che potrebbero in "
+"certi casi non essere accurate."
 
 msgctxt "from_gallery"
 msgid "From gallery"
-msgstr ""
+msgstr "Dalla galleria"
 
 msgctxt "product_sent"
 msgid "Product sent!"
@@ -835,40 +840,48 @@ msgstr ""
 msgctxt "permission_camera"
 msgid "Camera permission is needed to scan barcodes and take pictures."
 msgstr ""
+"è richiesto il permesso Fotocamera per scansionare i codici a barre e "
+"scattare foto."
 
 msgctxt "permission_title"
 msgid "Permission information"
-msgstr ""
+msgstr "Informazione permesso"
 
 msgctxt "permission_denied"
 msgid "Please activate permission in the settings"
-msgstr ""
+msgstr "Per favore attiva il permesso nelle impostazioni"
 
 msgctxt "permission_storage"
 msgid "Storage permission is needed to take or select pictures"
-msgstr ""
+msgstr "é richiesto il permesso di storage per scattare e selezionare foto"
 
 msgctxt "info_download_data"
 msgid ""
 "You need to download some data to get this functionality working, please "
 "press yes to download it."
 msgstr ""
+"è necessario scaricare dei dati per rendere questa funzionalità "
+"operativa, premi si per scaricarli"
 
 msgctxt "info_download_data_connection"
 msgid ""
 "You need to download some data to get this functionality working. Please "
 "activate internet connection."
 msgstr ""
+"è necessario scaricare dei dati per rendere questa funzionalità "
+"operativa, attiva la connessione internet."
 
 msgctxt "msg_input_empty"
 msgid "Please fill the fields first."
-msgstr ""
+msgstr "Per favore prima riempi i campi"
 
 msgctxt "new_offline_info"
 msgid ""
 "Please take a picture of the product, ingredients, nutrition facts table "
 "and any other information on the label. Thank you!"
 msgstr ""
+"Scatta una foto del prodotto, degli ingredienti, delle informazioni "
+"nutrizionali e qualsiasi altra informazione dell'etichetta. Grazie!"
 
 #. Strings related to login
 msgctxt "error_invalid_password"
@@ -885,11 +898,13 @@ msgstr "Impostazioni"
 
 msgctxt "prefs_scan_startup"
 msgid "Scan on startup"
-msgstr ""
+msgstr "scansiona all'avvio"
 
 msgctxt "prefs_scan_startup_summary"
 msgid "This option if selected will start scan when app is opened."
 msgstr ""
+"Se selezionata questa opzione farà partire la scansione quando l'app "
+"viene aperta"
 
 msgctxt "prefs_power_mode"
 msgid "Power mode scan"
@@ -900,6 +915,8 @@ msgid ""
 "Quickly scan products in a supermarket to see which one are not in the "
 "database."
 msgstr ""
+"Scansiona velocemente i prodotti in un supermercato per vedere quali non "
+"sono nel database."
 
 msgctxt "prefs_language"
 msgid "Language"
@@ -915,11 +932,11 @@ msgstr "Cronologia"
 
 msgctxt "clear_history"
 msgid "Clear history"
-msgstr ""
+msgstr "Cancella cronologia"
 
 msgctxt "title_clear_history_dialog"
 msgid "Clear"
-msgstr ""
+msgstr "Cancella"
 
 msgctxt "text_clear_history_dialog"
 msgid "Do you want to clear all scan history?"
@@ -935,11 +952,13 @@ msgstr "Sto esportando la cronologia..."
 
 msgctxt "txt_history_exported"
 msgid "History exported"
-msgstr ""
+msgstr "Cronologia esportata"
 
 msgctxt "permision_write_external_storage"
 msgid "Write external storage permission is needed to export history."
 msgstr ""
+"è richiesto il permesso di scrittura sulla memoria esterna per esportare "
+"la cronologia"
 
 msgctxt "txt_nutrition_not_found"
 msgid "N/A"
@@ -960,7 +979,7 @@ msgstr "Colesterolo"
 
 msgctxt "nutrition_cholesterol_short_name"
 msgid "Cholesterol (g)"
-msgstr ""
+msgstr "Colesterolo (g)"
 
 msgctxt "nutrition_energy"
 msgid "Energy"
@@ -972,7 +991,7 @@ msgstr "Energia"
 
 msgctxt "nutrition_fat"
 msgid "Fat"
-msgstr ""
+msgstr "Grasso"
 
 msgctxt "nutrition_fat_short_name"
 msgid "Fat (g)"
@@ -992,11 +1011,11 @@ msgstr "Informazioni nutrizionali"
 
 msgctxt "nutrition_no_data_message"
 msgid "No data is available for this product"
-msgstr ""
+msgstr "Nessuna informazione disponibile per questo prodotto"
 
 msgctxt "nutrition_per_quantity"
 msgid "For 100g/100ml"
-msgstr ""
+msgstr "per 100g/100ml"
 
 msgctxt "nutrition_proteins"
 msgid "Proteins"
@@ -1048,11 +1067,11 @@ msgstr "Zuccheri (g)"
 
 msgctxt "nutrition_trans_fat"
 msgid "Trans fat"
-msgstr ""
+msgstr "Grassi"
 
 msgctxt "nutrition_trans_fat_short_name"
 msgid "Trans fat (g)"
-msgstr ""
+msgstr "Grassi trans"
 
 msgctxt "nutriment_serving_size"
 msgid "Per portion :"
@@ -1070,24 +1089,24 @@ msgstr "I tuoi contributi"
 #. For fr, Replace by https://world-fr.openfoodfacts.org/
 msgctxt "website"
 msgid "https://world.openfoodfacts.org/"
-msgstr ""
+msgstr "https://world-it.openfoodfacts.org/"
 
 #. For fr, Replace by https://world-fr.openfoodfacts.org/contribuer
 msgctxt "website_contribute"
 msgid "https://world.openfoodfacts.org/contribute"
-msgstr ""
+msgstr "https://world-it.openfoodfacts.org/contribute"
 
 msgctxt "website_discover"
 msgid "https://world.openfoodfacts.org/discover"
-msgstr ""
+msgstr "https://world-it.openfoodfacts.org/discover"
 
 msgctxt "website_product"
 msgid "https://world.openfoodfacts.org/product/"
-msgstr ""
+msgstr "https://world-it.openfoodfacts.org/prodotto/"
 
 msgctxt "website_contributor"
 msgid "https://world.openfoodfacts.org/contributor/"
-msgstr ""
+msgstr "https://world-it.openfoodfacts.org/contributore/"
 
 msgctxt "logout_drawer"
 msgid "Logout"
@@ -1095,18 +1114,33 @@ msgstr "Termina sessione"
 
 msgctxt "contribution_without_account"
 msgid "You can sign-in or create an account to keep your contributions"
-msgstr ""
+msgstr "Puoi accedere o creare un account per salvare il tuo contributo"
 
 msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
 msgstr "Emissioni di CO2 (impronta climatica): "
 
-#, fuzzy
 msgctxt "txtDialogPowerMode"
 msgid "Quick view"
-msgstr ""
+msgstr "Visualizzazione rapida"
 
 msgctxt "txtSeeMore"
 msgid "See more"
+msgstr "Altro"
+
+msgctxt "action_search"
+msgid "Search"
+msgstr ""
+
+msgctxt "search_hint"
+msgid "Search a product"
+msgstr ""
+
+msgctxt "number_of_results"
+msgid "Number of results :"
+msgstr ""
+
+msgctxt "txt_no_results"
+msgid "No results found"
 msgstr ""
 

@@ -5,7 +5,6 @@
   <string name="action_settings">Configuración</string>
   <string name="action_about">Acerca de</string>
   <string name="action_discover">Descubrir</string>
-  <string name="action_contribute">Contribuir</string>
   <string name="action_find">Buscar</string>
   <string name="text_barcode">Escribe el código de barras :</string>
   <string-array name="nav_drawer_items_product">

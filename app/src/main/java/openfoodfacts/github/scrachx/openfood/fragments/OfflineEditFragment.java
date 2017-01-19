@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +15,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.io.File;
@@ -67,13 +65,10 @@ public class OfflineEditFragment extends BaseFragment {
             new MaterialDialog.Builder(getContext())
                     .title(R.string.title_info_dialog)
                     .content(R.string.text_offline_info_dialog)
-                    .onPositive(new MaterialDialog.SingleButtonCallback() {
-                        @Override
-                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                            SharedPreferences.Editor editor = settingsUsage.edit();
-                            editor.putBoolean("firstOffline", true);
-                            editor.apply();
-                        }
+                    .onPositive((dialog, which) -> {
+                        SharedPreferences.Editor editor = settingsUsage.edit();
+                        editor.putBoolean("firstOffline", true);
+                        editor.apply();
                     })
                     .positiveText(R.string.txtOk)
                     .show();
@@ -97,19 +92,12 @@ public class OfflineEditFragment extends BaseFragment {
                 .content(R.string.txtDialogsContentDelete)
                 .positiveText(R.string.txtYes)
                 .negativeText(R.string.txtNo)
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        String barcode = saveItems.get(lapos).getBarcode();
-                        Utils.getAppDaoSession(getActivity()).getSendProductDao().deleteInTx(Utils.getAppDaoSession(getActivity()).getSendProductDao().queryBuilder().where(SendProductDao.Properties.Barcode.eq(barcode)).list());
-                        final SaveListAdapter sl = (SaveListAdapter) listView.getAdapter();
-                        saveItems.remove(lapos);
-                        getActivity().runOnUiThread(new Runnable() {
-                            public void run() {
-                                sl.notifyDataSetChanged();
-                            }
-                        });
-                    }
+                .onPositive((dialog, which) -> {
+                    String barcode = saveItems.get(lapos).getBarcode();
+                    Utils.getAppDaoSession(getActivity()).getSendProductDao().deleteInTx(Utils.getAppDaoSession(getActivity()).getSendProductDao().queryBuilder().where(SendProductDao.Properties.Barcode.eq(barcode)).list());
+                    final SaveListAdapter sl = (SaveListAdapter) listView.getAdapter();
+                    saveItems.remove(lapos);
+                    getActivity().runOnUiThread(() -> sl.notifyDataSetChanged());
                 })
                 .show();
         return true;
@@ -122,51 +110,44 @@ public class OfflineEditFragment extends BaseFragment {
                 .content(R.string.txtDialogsContentSend)
                 .positiveText(R.string.txtYes)
                 .negativeText(R.string.txtNo)
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                    OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getContext());
-                    final List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
-                    for (final SendProduct product : listSaveProduct) {
+                .onPositive((dialog, which) -> {
+                OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getContext());
+                final List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
+                for (final SendProduct product : listSaveProduct) {
+                    if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())) {
+                        continue;
+                    }
 
-                        if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())) {
-                            continue;
-                        }
+                    if(!loginS.isEmpty() && !passS.isEmpty()) {
+                        product.setUserId(loginS);
+                        product.setPassword(passS);
+                    }
 
-                        if(!loginS.isEmpty() && !passS.isEmpty()) {
-                            product.setUserId(loginS);
-                            product.setPassword(passS);
-                        }
+                    if(isNotEmpty(product.getImgupload_ingredients())) {
+                        product.compress(ProductImageField.INGREDIENTS);
+                    }
 
-                        if(isNotEmpty(product.getImgupload_ingredients())) {
-                            product.compress(ProductImageField.INGREDIENTS);
-                        }
+                    if(isNotEmpty(product.getImgupload_nutrition())) {
+                        product.compress(ProductImageField.NUTRITION);
+                    }
 
-                        if(isNotEmpty(product.getImgupload_nutrition())) {
-                            product.compress(ProductImageField.NUTRITION);
-                        }
+                    if(isNotEmpty(product.getImgupload_front())) {
+                        product.compress(ProductImageField.FRONT);
+                    }
 
-                        if(isNotEmpty(product.getImgupload_front())) {
-                            product.compress(ProductImageField.FRONT);
-                        }
+                    apiClient.post(getActivity(), product, value -> {
+                        if (value) {
+                            int productIndex = listSaveProduct.indexOf(product);
 
-                        apiClient.post(getActivity(), product, new OpenFoodAPIClient.OnProductSentCallback() {
-                            @Override
-                            public void onProductSentResponse(boolean value) {
-                                if (value) {
-                                    int productIndex = listSaveProduct.indexOf(product);
-
-                                    if (productIndex >= 0 && productIndex < saveItems.size()) {
-                                        saveItems.remove(productIndex);
-                                    }
-
-                                    ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
-                                    Utils.getAppDaoSession(getActivity()).getSendProductDao().deleteInTx(Utils.getAppDaoSession(getActivity()).getSendProductDao().queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
-                                }
+                            if (productIndex >= 0 && productIndex < saveItems.size()) {
+                                saveItems.remove(productIndex);
                             }
-                        });
-                    }
-                    }
+
+                            ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
+                        Utils.getAppDaoSession(getActivity()).getSendProductDao().deleteInTx(Utils.getAppDaoSession(getActivity()).getSendProductDao().queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
+                        }
+                    });
+                }
                 })
                 .show();
     }
