@@ -4,12 +4,14 @@ public class NutrimentItem {
 
     private final String title;
     private final String value;
-    private final int color;
+    private final String servingValue;
+    private final String unit;
 
-    public NutrimentItem(String title, String value, int color ){
+    public NutrimentItem(String title, String value, String servingValue, String unit){
         this.title = title;
         this.value = value;
-        this.color = color;
+        this.servingValue = servingValue;
+        this.unit = unit;
     }
 
     public String getTitle() {
@@ -20,7 +22,11 @@ public class NutrimentItem {
         return value;
     }
 
-    public int getColor() {
-        return color;
+    public String getUnit() {
+        return unit;
+    }
+
+    public String getServingValue() {
+        return servingValue;
     }
 }

@@ -33,22 +33,12 @@
             android:layout_centerHorizontal="true"
             android:maxHeight="250dp" />
 
-        <GridView
-            android:id="@+id/gridView"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/nutriments_recycler_view"
             android:scrollbars="vertical"
+            android:layout_below="@id/imageViewNutritionFullNut"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageViewNutritionFullNut"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="18dp"
-            android:columnWidth="150dp"
-            android:gravity="center"
-            android:horizontalSpacing="10dp"
-            android:numColumns="auto_fit"
-            android:stretchMode="spacingWidthUniform"
-            android:verticalSpacing="24dp">
-
-        </GridView >
+            android:layout_height="match_parent"/>
 
     </RelativeLayout>
 

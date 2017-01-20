@@ -4,10 +4,12 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,20 +26,21 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-import openfoodfacts.github.scrachx.openfood.views.adapters.NutritionInfoAdapter;
+import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
 
+import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 import static android.text.TextUtils.isEmpty;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class NutritionInfoProductFragment extends BaseFragment {
 
-    @BindView(R.id.gridView)
-    GridView mGv;
     @BindView(R.id.textPerPortion)
     TextView mTextPerPortion;
     @BindView(R.id.imageViewNutritionFullNut)
     ImageView mImageNutritionFull;
+    @BindView(R.id.nutriments_recycler_view)
+    RecyclerView nutrimentsRecyclerView;
 
     private String mUrlImage;
 
@@ -54,8 +57,8 @@ public class NutritionInfoProductFragment extends BaseFragment {
         State state = (State) intent.getExtras().getSerializable("state");
 
         final Product product = state.getProduct();
-        Nutriments nt = product.getNutriments();
-        List<NutrimentItem> nutrimentItemList = new ArrayList<>();
+        Nutriments nutriments = product.getNutriments();
+        List<NutrimentItem> nutrimentItems = new ArrayList<>();
 
         if (isNotEmpty(product.getServingSize())) {
             mTextPerPortion.setText(getString(R.string.nutriment_serving_size) + " " +product.getServingSize());
@@ -68,55 +71,86 @@ public class NutritionInfoProductFragment extends BaseFragment {
             mUrlImage = product.getImageNutritionUrl();
         }
 
-        if (nt != null) {
-            if(isNotEmpty(nt.getCarbohydratesServing())) {
-                String value = getRoundNumber(nt.getCarbohydratesServing());
-                nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_carbohydrate_short_name), value, R.color.amber_800));
-            }
-            if(isNotEmpty(getEnergy(nt))) {
-                nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name) + " (kcal)", getEnergy(nt), R.color.blue_400));
-            }
-            if(isNotEmpty(nt.getFatServing())) {
-                String value = getRoundNumber(nt.getFatServing());
-                nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_fat_short_name), value, R.color.blue_grey_500));
-            }
-            if(isNotEmpty(nt.getFiberServing())) {
-                String value = getRoundNumber(nt.getFiberServing());
-                nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_fiber_short_name), value, R.color.blue_300));
-            }
-            if(isNotEmpty(nt.getProteinsServing())) {
-                String value = getRoundNumber(nt.getProteinsServing());
-                nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_proteins_short_name), value, R.color.yellow_800));
-            }
-            if(isNotEmpty(nt.getSaltServing())) {
-                String value = getRoundNumber(nt.getSaltServing());
-                nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_salt_short_name), value, R.color.teal_800));
-            }
-            if(isNotEmpty(nt.getSaturatedFatServing())) {
-                String value = getRoundNumber(nt.getSaturatedFatServing());
-                nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_satured_fat_short_name), value, R.color.red_600));
-            }
-            if(isNotEmpty(nt.getSodiumServing())) {
-                String value = getRoundNumber(nt.getSodiumServing());
-                nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_sodium_short_name), value, R.color.purple_500));
-            }
-            if(isNotEmpty(nt.getSugarsServing())) {
-                String value = getRoundNumber(nt.getSugarsServing());
-                nutrimentItemList.add(new NutrimentItem(getString(R.string.nutrition_sugars_short_name), value, R.color.cyan_600));
-            }
-         }
+        if (nutriments != null) {
+            // use this setting to improve performance if you know that changes
+            // in content do not change the layout size of the RecyclerView
+            nutrimentsRecyclerView.setHasFixedSize(true);
 
-        mGv.setAdapter(new NutritionInfoAdapter(getContext(), nutrimentItemList));
+            // use a linear layout manager
+            LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+            nutrimentsRecyclerView.setLayoutManager(mLayoutManager);
+
+            // use VERTICAL divider
+            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
+            nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
+
+            if(isNotEmpty(nutriments.getCarbohydratesServing())) {
+                String servingValue = getRoundNumber(nutriments.getCarbohydratesServing());
+                String value = getRoundNumber(nutriments.getCarbohydrates100g());
+                nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_carbohydrate), value, servingValue, nutriments.getCarbohydratesUnit()));
+            }
+
+            if(isNotEmpty(nutriments.getEnergyServing())) {
+                String servingEnergy = getEnergy(nutriments.getEnergyServing());
+                String energy = getEnergy(nutriments.getEnergy100g());
+                nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name), energy, servingEnergy, "kcal"));
+            }
+
+            if(isNotEmpty(nutriments.getFatServing())) {
+                String servingValue = getRoundNumber(nutriments.getFatServing());
+                String value = getRoundNumber(nutriments.getFat100g());
+                nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_fat), value, servingValue, nutriments.getFatUnit()));
+            }
+
+            if(isNotEmpty(nutriments.getFiberServing())) {
+                String servingValue = getRoundNumber(nutriments.getFiberServing());
+                String value = getRoundNumber(nutriments.getFiber100g());
+                nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_fiber), value, servingValue, nutriments.getFiberUnit()));
+            }
+
+            if(isNotEmpty(nutriments.getProteinsServing())) {
+                String value = getRoundNumber(nutriments.getProteins100g());
+                String servingValue = getRoundNumber(nutriments.getProteinsServing());
+                nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_proteins), value, servingValue, nutriments.getProteinsUnit()));
+            }
+
+            if(isNotEmpty(nutriments.getSaltServing())) {
+                String value = getRoundNumber(nutriments.getSalt100g());
+                String servingValue = getRoundNumber(nutriments.getSaltServing());
+                nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_salt), value, servingValue, nutriments.getSaltUnit()));
+            }
+
+            if(isNotEmpty(nutriments.getSaturatedFatServing())) {
+                String value = getRoundNumber(nutriments.getSaturatedFat100g());
+                String servingValue = getRoundNumber(nutriments.getSaturatedFatServing());
+                nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_satured_fat), value, servingValue, nutriments.getSaturatedFatUnit()));
+            }
+
+            if(isNotEmpty(nutriments.getSodiumServing())) {
+                String value = getRoundNumber(nutriments.getSodium100g());
+                String servingValue = getRoundNumber(nutriments.getSodiumServing());
+                nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_sodium), value, servingValue, nutriments.getSodiumUnit()));
+            }
+
+            if(isNotEmpty(nutriments.getSugarsServing())) {
+                String value = getRoundNumber(nutriments.getSugars100g());
+                String servingValue = getRoundNumber(nutriments.getSugarsServing());
+                nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_sugars), value, servingValue, nutriments.getSugarsUnit()));
+            }
+
+            RecyclerView.Adapter adapter = new NutrimentsRecyclerViewAdapter(nutrimentItems);
+            nutrimentsRecyclerView.setAdapter(adapter);
+         }
     }
 
-    private String getEnergy(Nutriments nt) {
+    private String getEnergy(String value) {
         String defaultValue = "0";
-        if (defaultValue.equals(nt.getEnergyServing()) || isEmpty(nt.getEnergyServing())) {
+        if (defaultValue.equals(value) || isEmpty(value)) {
             return defaultValue;
         }
 
         try {
-            int energyKcal = convertKjToKcal(Integer.parseInt(nt.getEnergyServing()));
+            int energyKcal = convertKjToKcal(Integer.parseInt(value));
             return String.valueOf(energyKcal);
         } catch (NumberFormatException e) {
             return defaultValue;
