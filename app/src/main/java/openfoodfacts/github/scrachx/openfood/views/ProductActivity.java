@@ -23,9 +23,14 @@ import java.util.List;
 
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.views.adapters.ProductPagerAdapter;
+import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -53,8 +58,10 @@ public class ProductActivity extends BaseActivity {
         Intent intent = getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
 
-        List<String> allergens = mState.getProduct().getAllergensHierarchy();
-        List<String> traces = mState.getProduct().getTracesTags();
+        Product product = mState.getProduct();
+
+        List<String> allergens = product.getAllergensHierarchy();
+        List<String> traces = product.getTracesTags();
         allergens.addAll(traces);
 
         List<String> matchAll = new ArrayList<>();
@@ -83,7 +90,13 @@ public class ProductActivity extends BaseActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ProductPagerAdapter adapterResult = new ProductPagerAdapter(getSupportFragmentManager(), this);
+        String[] menuTitles = getResources().getStringArray(R.array.nav_drawer_items_product);
+
+        ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
+        adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
+        adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
+        adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
+        adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
         viewPager.setAdapter(adapterResult);
     }
 
