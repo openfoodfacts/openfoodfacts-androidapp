@@ -45,6 +45,7 @@ public class OfflineEditFragment extends BaseFragment {
     @BindView(R.id.buttonSendAll) Button buttonSend;
     private List<SaveItem> saveItems;
     private String loginS, passS;
+    private SendProductDao mSendProductDao;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,6 +55,8 @@ public class OfflineEditFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        mSendProductDao = Utils.getAppDaoSession(getActivity()).getSendProductDao();
 
         final SharedPreferences settingsLogin = getContext().getSharedPreferences("login", 0);
         final SharedPreferences settingsUsage = getContext().getSharedPreferences("usage", 0);
@@ -94,7 +97,7 @@ public class OfflineEditFragment extends BaseFragment {
                 .negativeText(R.string.txtNo)
                 .onPositive((dialog, which) -> {
                     String barcode = saveItems.get(lapos).getBarcode();
-                    Utils.getAppDaoSession(getActivity()).getSendProductDao().deleteInTx(Utils.getAppDaoSession(getActivity()).getSendProductDao().queryBuilder().where(SendProductDao.Properties.Barcode.eq(barcode)).list());
+                    mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(barcode)).list());
                     final SaveListAdapter sl = (SaveListAdapter) listView.getAdapter();
                     saveItems.remove(lapos);
                     getActivity().runOnUiThread(() -> sl.notifyDataSetChanged());
@@ -111,8 +114,8 @@ public class OfflineEditFragment extends BaseFragment {
                 .positiveText(R.string.txtYes)
                 .negativeText(R.string.txtNo)
                 .onPositive((dialog, which) -> {
-                    OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getContext());
-                    final List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
+                    OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getActivity());
+                    final List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
                     for (final SendProduct product : listSaveProduct) {
                         if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())) {
                             continue;
@@ -144,7 +147,7 @@ public class OfflineEditFragment extends BaseFragment {
                                 }
 
                                 ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
-                                Utils.getAppDaoSession(getActivity()).getSendProductDao().deleteInTx(Utils.getAppDaoSession(getActivity()).getSendProductDao().queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
+                                mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
                             }
                         });
                     }
@@ -163,7 +166,7 @@ public class OfflineEditFragment extends BaseFragment {
         @Override
         protected void onPreExecute() {
             saveItems.clear();
-            List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
+            List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
             if (listSaveProduct.size() == 0) {
                 Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
             } else {
@@ -173,7 +176,7 @@ public class OfflineEditFragment extends BaseFragment {
 
         @Override
         protected Context doInBackground(Context... ctx) {
-            List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
+            List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
 
             int imageIcon = R.drawable.ic_ok;
 
@@ -198,7 +201,7 @@ public class OfflineEditFragment extends BaseFragment {
 
         @Override
         protected void onPostExecute(Context ctx) {
-            List<SendProduct> listSaveProduct = Utils.getAppDaoSession(getActivity()).getSendProductDao().loadAll();
+            List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
             if (listSaveProduct.isEmpty()) {
                 return;
             }

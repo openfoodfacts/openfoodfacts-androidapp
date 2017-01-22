@@ -20,6 +20,7 @@ import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -27,12 +28,14 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 public class SplashActivity extends BaseActivity {
 
     private SharedPreferences settings;
+    private AdditiveDao mAdditiveDao;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
         settings = getSharedPreferences("prefs", 0);
+        mAdditiveDao = Utils.getAppDaoSession(this).getAdditiveDao();
 
         boolean firstRun = settings.getBoolean("firstRun", true);
 
@@ -101,7 +104,7 @@ public class SplashActivity extends BaseActivity {
                 is = getAssets().open(additivesFile);
                 List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {})
                         .readValue(is);
-                Utils.getAppDaoSession(activity).getAdditiveDao().insertInTx(frenchAdditives);
+                mAdditiveDao.insertInTx(frenchAdditives);
             } catch (IOException e) {
                 result = false;
                 Log.e(ADDITIVE_IMPORT, "Unable to import additives from " + additivesFile);
@@ -146,7 +149,7 @@ public class SplashActivity extends BaseActivity {
                         Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
                         startActivity(mainIntent);
                         finish();
-                    }, activity);
+                    });
                 }
             } else {
                 if (!result) {

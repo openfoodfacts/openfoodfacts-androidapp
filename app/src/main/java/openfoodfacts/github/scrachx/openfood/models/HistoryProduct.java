@@ -20,8 +20,6 @@ public class HistoryProduct {
     private Date lastSeen;
     private String barcode;
 
-    public HistoryProduct() {}
-
     public HistoryProduct(String title, String brands, String url, String barcode) {
         this.title = title;
         this.brands = brands;
@@ -39,6 +37,10 @@ public class HistoryProduct {
         this.url = url;
         this.lastSeen = lastSeen;
         this.barcode = barcode;
+    }
+
+    @Generated(hash = 1674709907)
+    public HistoryProduct() {
     }
 
     public String getTitle() {

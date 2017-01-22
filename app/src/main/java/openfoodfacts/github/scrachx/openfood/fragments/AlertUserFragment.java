@@ -37,6 +37,7 @@ public class AlertUserFragment extends BaseFragment {
 
     private OpenFoodAPIClient api;
     private List<Allergen> mAllergensEnabled;
+    private AllergenDao mAllergenDao;
     private AllergensAdapter mAdapter;
     private RecyclerView mRvAllergens;
     private SharedPreferences mSettings;
@@ -53,7 +54,8 @@ public class AlertUserFragment extends BaseFragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mAllergensFromDao = Utils.getAppDaoSession(this.getActivity()).getAllergenDao().loadAll();
+        mAllergenDao = Utils.getAppDaoSession(getActivity()).getAllergenDao();
+        mAllergensFromDao = mAllergenDao.loadAll();
 
         api = new OpenFoodAPIClient(getActivity());
         mView = view;
@@ -71,7 +73,7 @@ public class AlertUserFragment extends BaseFragment {
         }
 
         mRvAllergens = (RecyclerView) view.findViewById(R.id.alergens_recycle);
-        mAllergensEnabled = Utils.getAppDaoSession(this.getActivity()).getAllergenDao().queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
+        mAllergensEnabled = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
         mAdapter = new AllergensAdapter(mAllergensEnabled, getActivity());
         mRvAllergens.setAdapter(mAdapter);
         mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
@@ -105,7 +107,7 @@ public class AlertUserFragment extends BaseFragment {
                             if (a.getName().substring(a.getName().indexOf(":") + 1).equalsIgnoreCase(alergeneStringByPos)) {
                                 index1 = getKey(allS, alergeneStringByPos);
                                 mAllergensFromDao.get(index1).setEnable("true");
-                                Utils.getAppDaoSession(getActivity()).getAllergenDao().update(mAllergensFromDao.get(index1));
+                                mAllergenDao.update(mAllergensFromDao.get(index1));
                             }
                         }
                         if (canAdd && index1 != -1) {
@@ -136,7 +138,7 @@ public class AlertUserFragment extends BaseFragment {
                                 editor.putBoolean("errorAllergens", !value).apply();
                                 lt.success();
                                 dialog.hide();
-                            }, getActivity());
+                            });
                         })
                         .show();
             } else {

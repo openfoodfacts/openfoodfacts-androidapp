@@ -127,4 +127,5 @@ public class Allergen {
     public String getEnable() {
         return this.enable;
     }
+    
 }

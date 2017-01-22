@@ -30,6 +30,7 @@ import java.util.concurrent.TimeUnit;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import okhttp3.OkHttpClient;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
 import openfoodfacts.github.scrachx.openfood.models.AllergenRestResponse;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
@@ -56,6 +57,9 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class OpenFoodAPIClient {
 
+    private AllergenDao mAllergenDao;
+    private HistoryProductDao mHistoryProductDao;
+
     private static final JacksonConverterFactory jacksonConverterFactory = JacksonConverterFactory.create();
 
     private final static OkHttpClient httpClient = new OkHttpClient.Builder()
@@ -64,8 +68,10 @@ public class OpenFoodAPIClient {
 
     private final OpenFoodAPIService apiService;
 
-    public OpenFoodAPIClient(Context context) {
-        this(context.getString(R.string.openfoodUrl));
+    public OpenFoodAPIClient(Activity activity) {
+        this(activity.getString(R.string.openfoodUrl));
+        mAllergenDao = Utils.getAppDaoSession(activity).getAllergenDao();
+        mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
     }
 
     private OpenFoodAPIClient(String apiUrl) {
@@ -118,7 +124,7 @@ public class OpenFoodAPIClient {
                             .show();
                 } else {
                     lt.success();
-                    new HistoryTask(activity).doInBackground(s.getProduct());
+                    new HistoryTask().doInBackground(s.getProduct());
                     Intent intent = new Intent(activity, ProductActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("state", s);
@@ -193,7 +199,7 @@ public class OpenFoodAPIClient {
                 } else {
                     lt.success();
                     final Product product = s.getProduct();
-                    new HistoryTask(activity).doInBackground(s.getProduct());
+                    new HistoryTask().doInBackground(s.getProduct());
                     if (settings.getBoolean("powerMode", false) && camera != null) {
                         MaterialDialog dialog = new MaterialDialog.Builder(activity)
                                 .title(product.getProductName())
@@ -307,7 +313,7 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public void getAllergens(final OnAllergensCallback onAllergensCallback, final Activity activity) {
+    public void getAllergens(final OnAllergensCallback onAllergensCallback) {
         apiService.getAllergens().enqueue(new Callback<AllergenRestResponse>() {
             @Override
             public void onResponse(Call<AllergenRestResponse> call, Response<AllergenRestResponse> response) {
@@ -316,8 +322,7 @@ public class OpenFoodAPIClient {
                     return;
                 }
 
-                Utils.getAppDaoSession(activity).getAllergenDao().insertInTx(response.body().getAllergens());
-
+                mAllergenDao.insertInTx(response.body().getAllergens());
                 onAllergensCallback.onAllergensResponse(true);
             }
 
@@ -437,17 +442,11 @@ public class OpenFoodAPIClient {
      */
     private class HistoryTask extends AsyncTask<Product, Void, Void> {
 
-        private Activity mActivity;
-
-        public HistoryTask(Activity activity) {
-            mActivity = activity;
-        }
-
         @Override
         protected Void doInBackground(Product... products) {
             Product product = products[0];
 
-            List<HistoryProduct> historyProducts = Utils.getAppDaoSession(mActivity).getHistoryProductDao().queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode())).list();
+            List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode())).list();
             HistoryProduct hp;
             if(historyProducts.size() == 1) {
                 hp = historyProducts.get(0);
@@ -455,7 +454,7 @@ public class OpenFoodAPIClient {
             } else {
                 hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageFrontUrl(), product.getCode());
             }
-            Utils.getAppDaoSession(mActivity).getHistoryProductDao().insertOrReplace(hp);
+            mHistoryProductDao.insertOrReplace(hp);
 
             return null;
         }

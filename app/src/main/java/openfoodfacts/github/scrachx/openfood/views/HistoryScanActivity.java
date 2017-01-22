@@ -56,7 +56,7 @@ public class HistoryScanActivity extends BaseActivity {
     RecyclerView recyclerHistoryScanView;
     private List<HistoryItem> productItems;
     private boolean emptyHistory;
-
+    private HistoryProductDao mHistoryProductDao;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,6 +66,7 @@ public class HistoryScanActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
         productItems = new ArrayList<>();
         new HistoryScanActivity.FillAdapter(this).execute(this);
     }
@@ -82,7 +83,7 @@ public class HistoryScanActivity extends BaseActivity {
                         .title(R.string.title_clear_history_dialog)
                         .content(R.string.text_clear_history_dialog)
                         .onPositive((dialog, which) -> {
-                            Utils.getAppDaoSession(getParent()).getHistoryProductDao().deleteAll();;
+                            mHistoryProductDao.deleteAll();;
                             productItems.clear();
                             recyclerHistoryScanView.getAdapter().notifyDataSetChanged();
                         })
@@ -128,7 +129,7 @@ public class HistoryScanActivity extends BaseActivity {
             }
             String[] headers = {"Barcode", "Name", "Brands"};
             writer.writeNext(headers);
-            List<HistoryProduct> listHistoryProducts = Utils.getAppDaoSession(this).getHistoryProductDao().loadAll();
+            List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             for (HistoryProduct hp : listHistoryProducts) {
                 String[] line = {hp.getBarcode(), hp.getTitle(), hp.getBrands()};
                 writer.writeNext(line);
@@ -190,7 +191,7 @@ public class HistoryScanActivity extends BaseActivity {
 
         @Override
         protected void onPreExecute() {
-            List<HistoryProduct> listHistoryProducts = Utils.getAppDaoSession(activity).getHistoryProductDao().loadAll();
+            List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             if (listHistoryProducts.size() == 0) {
                 Toast.makeText(getApplicationContext(), R.string.txtNoData, Toast.LENGTH_LONG).show();
                 emptyHistory = true;
@@ -203,7 +204,7 @@ public class HistoryScanActivity extends BaseActivity {
 
         @Override
         protected Context doInBackground(Context... ctx) {
-            List<HistoryProduct> listHistoryProducts = Utils.getAppDaoSession(activity).getHistoryProductDao().queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list();
+            List<HistoryProduct> listHistoryProducts = mHistoryProductDao.queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list();
             final Bitmap defaultImgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_no), 200, 200, true);
 
             for (HistoryProduct historyProduct : listHistoryProducts) {
@@ -242,7 +243,7 @@ public class HistoryScanActivity extends BaseActivity {
 
         @Override
         protected void onPostExecute(Context ctx) {
-            HistoryListAdapter adapter = new HistoryListAdapter(productItems, getString(R.string.website_product));
+            HistoryListAdapter adapter = new HistoryListAdapter(productItems, getString(R.string.website_product), activity);
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
         }

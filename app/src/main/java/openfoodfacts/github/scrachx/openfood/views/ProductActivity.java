@@ -44,6 +44,7 @@ public class ProductActivity extends BaseActivity {
     @BindView(R.id.tabs) TabLayout tabLayout;
     private ShareActionProvider mShareActionProvider;
     private State mState;
+    private AllergenDao mAllergenDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class ProductActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mAllergenDao = Utils.getAppDaoSession(this).getAllergenDao();
         setupViewPager(viewPager);
 
         tabLayout.setupWithViewPager(viewPager);
@@ -67,7 +69,7 @@ public class ProductActivity extends BaseActivity {
         allergens.addAll(traces);
 
         List<String> matchAll = new ArrayList<>();
-        List<Allergen> mAllergens = Utils.getAppDaoSession(this).getAllergenDao().queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
+        List<Allergen> mAllergens = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
         for (int a = 0; a < mAllergens.size(); a++) {
             for(int i = 0; i < allergens.size(); i++) {
                 if (allergens.get(i).trim().equals(mAllergens.get(a).getIdAllergen().trim())) {
