@@ -5,7 +5,7 @@
   <string name="action_settings">設定</string>
   <string name="action_about">アプリについて</string>
   <string name="action_discover">見つける</string>
-  <string name="action_contribute">貢献する</string>
+  <string name="contribute">貢献する方法</string>
   <string name="action_find">検索</string>
   <string name="text_barcode">バーコードを入力 :</string>
   <string-array name="nav_drawer_items_product">
@@ -53,7 +53,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>英語</item>
@@ -126,7 +126,7 @@
   <string name="txtPass">パスワード :</string>
   <string name="txtTitleHome">食品を開くと何を食べているか分かります</string>
   <string name="txtHome">Open Food Facts は食品のオープン データベースです。原材料、アレルゲン、栄養成分表、および製品のラベルで見つけることができる情報があります。</string>
-  <string name="txtSave">送信/保存</string>
+  <string name="txtSave">保存</string>
   <string name="txtSignIn">サインイン</string>
   <string name="txtUser">ユーザーパネル</string>
   <string name="txtToastSaved">ユーザーを保存しました</string>
@@ -143,6 +143,7 @@
   <string name="txtInfoLoginNo">ユーザーを保存できませんでした</string>
   <string name="txtDialogsTitle">情報</string>
   <string name="txtDialogsContent">スキャンした製品は、まだ Open Food Facts に存在しません。追加しますか?</string>
+  <string name="txtDialogsContentPowerMode">スキャンした製品は、すでに Open Food Facts に存在します。</string>
   <string name="txtDialogsContentSend">データベースに保存された製品を送信しますか?</string>
   <string name="txtYes">はい</string>
   <string name="txtNo">いいえ</string>
@@ -259,4 +260,8 @@
   <string name="logout_drawer">ログアウト</string>
   <string name="contribution_without_account">サインイン、またはアカウントを作成して、貢献を続けることができます</string>
   <string name="textCarbonFootprint">"カーボンフットプリント / CO2 排出量: "</string>
+  <string name="txtDialogPowerMode">クイックビュー</string>
+  <string name="txtSeeMore">さらに表示</string>
+  <string name="action_search">検索</string>
+  <string name="search_hint">製品を検索します</string>
 </resources>

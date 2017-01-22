@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.clans.fab.FloatingActionButton;
 
@@ -93,27 +91,24 @@ public class AlertUserFragment extends BaseFragment {
             new MaterialDialog.Builder(mView.getContext())
                     .title(R.string.title_dialog_alert)
                     .items(allS.values())
-                    .itemsCallback(new MaterialDialog.ListCallback() {
-                        @Override
-                        public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
-                            boolean canAdd = true;
-                            int index = -1;
-                            String alergeneStringByPos = new ArrayList<String>(allS.values()).get(which);
-                            for(Allergen a : mAllergens) {
-                                if(a.getName().equals(all.get(which).getName())) canAdd = false;
+                    .itemsCallback((dialog, view, which, text) -> {
+                        boolean canAdd = true;
+                        int index1 = -1;
+                        String alergeneStringByPos = new ArrayList<String>(allS.values()).get(which);
+                        for(Allergen a : mAllergens) {
+                            if(a.getName().equals(all.get(which).getName())) canAdd = false;
+                        }
+                        for(Allergen a : all) {
+                            if(a.getName().substring(a.getName().indexOf(":")+1).equalsIgnoreCase(alergeneStringByPos)) {
+                                index1 = getKey(allS, alergeneStringByPos);
+                                all.get(index1).setEnable("true");
+                                all.get(index1).save();
                             }
-                            for(Allergen a : all) {
-                                if(a.getName().substring(a.getName().indexOf(":")+1).equalsIgnoreCase(alergeneStringByPos)) {
-                                    index = getKey(allS, alergeneStringByPos);
-                                    all.get(index).setEnable("true");
-                                    all.get(index).save();
-                                }
-                            }
-                            if(canAdd && index != -1) {
-                                mAllergens.add(all.get(index));
-                                mAdapter.notifyItemInserted(mAllergens.size() - 1);
-                                mRvAllergens.scrollToPosition(mAdapter.getItemCount() - 1);
-                            }
+                        }
+                        if(canAdd && index1 != -1) {
+                            mAllergens.add(all.get(index1));
+                            mAdapter.notifyItemInserted(mAllergens.size() - 1);
+                            mRvAllergens.scrollToPosition(mAdapter.getItemCount() - 1);
                         }
                     })
                     .show();
@@ -124,7 +119,7 @@ public class AlertUserFragment extends BaseFragment {
             if(isConnected) {
                 final LoadToast lt = new LoadToast(getContext());
                 lt.setText(getContext().getString(R.string.toast_retrieving));
-                lt.setBackgroundColor(getContext().getResources().getColor(R.color.indigo_600));
+                lt.setBackgroundColor(getContext().getResources().getColor(R.color.blue));
                 lt.setTextColor(getContext().getResources().getColor(R.color.white));
                 lt.show();
                 new MaterialDialog.Builder(mView.getContext())
@@ -132,20 +127,14 @@ public class AlertUserFragment extends BaseFragment {
                         .content(R.string.info_download_data)
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull final MaterialDialog dialog, @NonNull DialogAction which) {
-                                final SharedPreferences.Editor editor = mSettings.edit();
+                        .onPositive((dialog, which) -> {
+                            final SharedPreferences.Editor editor = mSettings.edit();
 
-                                api.getAllergens(new OpenFoodAPIClient.OnAllergensCallback() {
-                                    @Override
-                                    public void onAllergensResponse(boolean value) {
-                                        editor.putBoolean("errorAllergens", !value).apply();
-                                        lt.success();
-                                        dialog.hide();
-                                    }
-                                });
-                            }
+                            api.getAllergens(value -> {
+                                editor.putBoolean("errorAllergens", !value).apply();
+                                lt.success();
+                                dialog.hide();
+                            });
                         })
                         .show();
             } else {

@@ -5,8 +5,14 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.VectorDrawable;
 import android.os.Build;
+import android.support.annotation.DrawableRes;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -22,6 +28,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Locale;
+
+import openfoodfacts.github.scrachx.openfood.R;
+
+import static android.text.TextUtils.isEmpty;
 
 public class Utils {
 
@@ -173,5 +184,72 @@ public class Utils {
         catch (PackageManager.NameNotFoundException e) {
             return false;
         }
+    }
+
+    public static int getImageGrade(String grade) {
+        int drawable;
+
+        if (grade == null) {
+            return R.drawable.ic_error;
+        }
+
+        switch (grade.toLowerCase()) {
+            case "a":
+                drawable = R.drawable.nnc_a;
+                break;
+            case "b":
+                drawable = R.drawable.nnc_b;
+                break;
+            case "c":
+                drawable = R.drawable.nnc_c;
+                break;
+            case "d":
+                drawable = R.drawable.nnc_d;
+                break;
+            case "e":
+                drawable = R.drawable.nnc_e;
+                break;
+            default:
+                drawable = R.drawable.ic_error;
+                break;
+        }
+
+        return drawable;
+    }
+
+    public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
+        Drawable drawable = ContextCompat.getDrawable(context, drawableId);
+
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        } else if (drawable instanceof VectorDrawable || drawable instanceof VectorDrawableCompat) {
+            Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bitmap);
+            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+            drawable.draw(canvas);
+
+            return bitmap;
+        } else {
+            throw new IllegalArgumentException("unsupported drawable type");
+        }
+    }
+
+    /**
+     * Return a round float value with 2 decimals
+     *
+     * @param value float value
+     * @return round value or 0 if the value is empty or equals to 0
+     */
+    public static String getRoundNumber(String value) {
+        if (isEmpty(value) || "0".equals(value)) {
+            return "0";
+        }
+
+        String[] strings = value.split("\\.");
+        if (strings.length == 1 || (strings.length == 2 && strings[1].length() <= 2)) {
+            return value;
+        }
+
+        return String.format(Locale.getDefault(), "%.2f", Double.valueOf(value));
     }
 }

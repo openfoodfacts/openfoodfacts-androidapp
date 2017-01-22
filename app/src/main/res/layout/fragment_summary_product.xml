@@ -1,203 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:weightSum="1">
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:isScrollContainer="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical"
+    android:clipToPadding="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <ScrollView
-        android:id="@+id/scrollViewSummaryProduct"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/imageViewNutritionFullSum"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:maxHeight="250dp" />
 
-            <ImageButton
-                android:id="@+id/imageViewNutritionFullSum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:maxHeight="250dp" />
+        <TextView
+            android:id="@+id/textNameProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/spacing_normal"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_larger"
+            android:textStyle="bold" />
 
-            <com.hkm.slider.Indicators.PagerIndicator
-                android:id="@+id/custom_indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                custom:selected_color="#0095BF"
-                custom:selected_height="6dp"
-                custom:selected_padding_left="2dp"
-                custom:selected_padding_right="2dp"
-                custom:selected_width="6dp"
-                custom:shape="rect"
-                custom:unselected_color="#55333333"
-                custom:unselected_height="6dp"
-                custom:unselected_padding_left="2dp"
-                custom:unselected_padding_right="2dp"
-                custom:unselected_width="6dp" />
+        <TextView
+            android:id="@+id/textBarcodeProduct"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
 
-            <TextView
-                android:id="@+id/textNameProduct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/spacing_normal"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_larger"
-                android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/textQuantityProduct"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
 
-            <TextView
-                android:id="@+id/textBarcodeProduct"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@drawable/textview_full"
-                android:padding="@dimen/spacing_small"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_normal" />
+        <TextView
+            android:id="@+id/textPackagingProduct"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
 
-            <TextView
-                android:id="@+id/textQuantityProduct"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@drawable/textview_full"
-                android:padding="@dimen/spacing_small"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_normal" />
+        <TextView
+            android:id="@+id/textBrandProduct"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
 
-            <TextView
-                android:id="@+id/textPackagingProduct"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@drawable/textview_full"
-                android:padding="@dimen/spacing_small"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_normal" />
+        <TextView
+            android:id="@+id/textCategoryProduct"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
 
-            <TextView
-                android:id="@+id/textBrandProduct"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@drawable/textview_full"
-                android:padding="@dimen/spacing_small"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_normal" />
+        <TextView
+            android:id="@+id/textLabelProduct"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
 
-            <TextView
-                android:id="@+id/textCategoryProduct"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@drawable/textview_full"
-                android:padding="@dimen/spacing_small"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_normal" />
+        <TextView
+            android:id="@+id/textManufacturingProduct"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
 
-            <TextView
-                android:id="@+id/textLabelProduct"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@drawable/textview_full"
-                android:padding="@dimen/spacing_small"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_normal" />
+        <TextView
+            android:id="@+id/textIngredientsOriginProduct"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
 
-            <TextView
-                android:id="@+id/textManufacturingProduct"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@drawable/textview_full"
-                android:padding="@dimen/spacing_small"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_normal" />
+        <TextView
+            android:id="@+id/textCityProduct"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
 
-            <TextView
-                android:id="@+id/textIngredientsOriginProduct"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@drawable/textview_full"
-                android:padding="@dimen/spacing_small"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_normal" />
+        <TextView
+            android:id="@+id/textStoreProduct"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
 
-            <TextView
-                android:id="@+id/textCityProduct"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@drawable/textview_full"
-                android:padding="@dimen/spacing_small"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_normal" />
+        <TextView
+            android:id="@+id/textCountryProduct"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
 
-            <TextView
-                android:id="@+id/textStoreProduct"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@drawable/textview_full"
-                android:padding="@dimen/spacing_small"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_normal" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/textCountryProduct"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@drawable/textview_full"
-                android:padding="@dimen/spacing_small"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_normal" />
-
-        </LinearLayout>
-
-    </ScrollView>
-
-</FrameLayout>
+</android.support.v4.widget.NestedScrollView>

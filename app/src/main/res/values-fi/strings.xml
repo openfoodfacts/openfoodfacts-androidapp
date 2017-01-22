@@ -4,7 +4,6 @@
   <string name="action_settings">Asetukset</string>
   <string name="action_about">Tietoja</string>
   <string name="action_discover">Löydä</string>
-  <string name="action_contribute">Osallistu</string>
   <string name="action_find">Etsi</string>
   <string-array name="nav_drawer_items_product">
     <item>Yhteenveto</item>

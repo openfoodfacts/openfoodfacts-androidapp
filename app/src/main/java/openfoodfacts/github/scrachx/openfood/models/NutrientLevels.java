@@ -5,26 +5,19 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "salt",
-        "fat",
-        "sugars",
-        "saturated-fat"
-})
 public class NutrientLevels implements Serializable {
 
-    private String salt;
-    private String fat;
-    private String sugars;
+    private NutrimentLevel salt;
+    private NutrimentLevel fat;
+    private NutrimentLevel sugars;
     @JsonProperty("saturated-fat")
-    private String saturatedFat;
+    private NutrimentLevel saturatedFat;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<>();
 
@@ -33,7 +26,7 @@ public class NutrientLevels implements Serializable {
      * @return
      * The salt
      */
-    public String getSalt() {
+    public NutrimentLevel getSalt() {
         return salt;
     }
 
@@ -42,13 +35,8 @@ public class NutrientLevels implements Serializable {
      * @param salt
      * The salt
      */
-    public void setSalt(String salt) {
+    public void setSalt(NutrimentLevel salt) {
         this.salt = salt;
-    }
-
-    public NutrientLevels withSalt(String salt) {
-        this.salt = salt;
-        return this;
     }
 
     /**
@@ -56,7 +44,7 @@ public class NutrientLevels implements Serializable {
      * @return
      * The fat
      */
-    public String getFat() {
+    public NutrimentLevel getFat() {
         return fat;
     }
 
@@ -65,13 +53,8 @@ public class NutrientLevels implements Serializable {
      * @param fat
      * The fat
      */
-    public void setFat(String fat) {
+    public void setFat(NutrimentLevel fat) {
         this.fat = fat;
-    }
-
-    public NutrientLevels withFat(String fat) {
-        this.fat = fat;
-        return this;
     }
 
     /**
@@ -79,7 +62,7 @@ public class NutrientLevels implements Serializable {
      * @return
      * The sugars
      */
-    public String getSugars() {
+    public NutrimentLevel getSugars() {
         return sugars;
     }
 
@@ -88,13 +71,8 @@ public class NutrientLevels implements Serializable {
      * @param sugars
      * The sugars
      */
-    public void setSugars(String sugars) {
+    public void setSugars(NutrimentLevel sugars) {
         this.sugars = sugars;
-    }
-
-    public NutrientLevels withSugars(String sugars) {
-        this.sugars = sugars;
-        return this;
     }
 
     /**
@@ -102,7 +80,7 @@ public class NutrientLevels implements Serializable {
      * @return
      * The saturatedFat
      */
-    public String getSaturatedFat() {
+    public NutrimentLevel getSaturatedFat() {
         return saturatedFat;
     }
 
@@ -111,13 +89,8 @@ public class NutrientLevels implements Serializable {
      * @param saturatedFat
      * The saturated-fat
      */
-    public void setSaturatedFat(String saturatedFat) {
+    public void setSaturatedFat(NutrimentLevel saturatedFat) {
         this.saturatedFat = saturatedFat;
-    }
-
-    public NutrientLevels withSaturatedFat(String saturatedFat) {
-        this.saturatedFat = saturatedFat;
-        return this;
     }
 
     @JsonAnyGetter
@@ -128,11 +101,6 @@ public class NutrientLevels implements Serializable {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
-    }
-
-    public NutrientLevels withAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-        return this;
     }
 
     @Override

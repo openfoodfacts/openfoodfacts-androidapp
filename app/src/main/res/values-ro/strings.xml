@@ -5,7 +5,6 @@
   <string name="action_settings">Configurări</string>
   <string name="action_about">Despre</string>
   <string name="action_discover">Descoperiți</string>
-  <string name="action_contribute">Contribuiți</string>
   <string name="action_find">Căutare</string>
   <string name="text_barcode">Introduceți codul de bare</string>
   <string-array name="nav_drawer_items_product">
@@ -179,7 +178,7 @@
   <string name="search_drawer">Căutare</string>
   <string name="search_by_barcode_drawer">Căutare după codul de bare</string>
   <string name="search_by_name_drawer">Căutare după nume</string>
-  <string name="scan_search">Scanează</string>
+  <string name="scan_search">Scanare</string>
   <string name="user_drawer">Utilizator</string>
   <string name="offline_edit_drawer">Modificare offline</string>
   <string name="txt_anonymous">Anonim</string>

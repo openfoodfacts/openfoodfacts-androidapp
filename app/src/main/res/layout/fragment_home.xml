@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
-    <ImageView
+
+        <ImageView
         android:id="@+id/imageHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginEnd="@dimen/spacing_normal"
         android:layout_marginStart="@dimen/spacing_normal"
-        android:src="@drawable/openfoodfacts_logo" />
+        android:layout_marginTop="@dimen/spacing_normal"
+        app:srcCompat="@drawable/ic_openfoodfacts_logo_no_tagline" />
 
     <TextView
         android:id="@+id/textHome"
@@ -22,21 +31,22 @@
         android:layout_margin="@dimen/spacing_normal"
         android:gravity="center"
         android:text="@string/txtHome"
-        android:textAlignment="center"
         android:textColor="@color/md_black_1000"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="@dimen/font_normal"/>
+        android:textSize="@dimen/font_normal" />
 
-    <Button
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/buttonScan"
-        style="@style/DefaultButtonText"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/spacing_normal"
-        android:background="@drawable/button_default_bg"
-        android:gravity="center"
-        android:text="@string/try_it_scan_now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:contentDescription="@string/try_it_scan_now"
+        app:srcCompat="@drawable/ic_camera_white"
         />
-
-</LinearLayout>
+</RelativeLayout>

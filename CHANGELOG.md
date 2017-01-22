@@ -2,8 +2,18 @@ This is the Changelog. Please list changes here so that we can provide meaningfu
 
 Upcoming:
 
-- Full nutrition table
+- Quick View : a new way to quickly get info (including the Nutriscore) about several products in a row, and easily add them to Open Food Facts if they don't exist. Thanks to @itchix
+- Better search, from everywhere: Search now includes brand, weight, and images are better looking. Plus you can now search from anywhere in the app. @herau
+- Better UX: the UX has materially improved thanks to @herau. It matches the web version. This is our first take at following the Material design spec. Espect even more refinements in the next release.
+- Lighter: the APK is 2MB lighter. Yes lighter :-)
+- Vectorization: most assets are now vector based, which means that they'll look a little crisper, whatever your screen resolution.
+- Bug squashing: the app won't send the units if you don't have time to fill the weight.
+- History export: the history is now exported in your Downloads folder, for easier access. Download folder, but it NEVER leaves your device. It's yours. You can keep scanning your Nutella jar collection :-)
 
+0.4 - Jan 7 2017
+
+- Full nutrition table
+- Better search, now with brand and weight.
 - Labels, certifications and awards, Origin of the ingredients as well as the carbon footprint are now displayed when available
 - You can manage your Open Food Facts contributor account right from the app.
 - You can access your contributions easily using… "Your contributions"

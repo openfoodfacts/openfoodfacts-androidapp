@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -24,7 +25,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.opencsv.CSVWriter;
 import com.orm.query.Select;
@@ -62,7 +62,6 @@ public class HistoryScanActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_scan);
 
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -81,13 +80,10 @@ public class HistoryScanActivity extends BaseActivity {
                 new MaterialDialog.Builder(this)
                         .title(R.string.title_clear_history_dialog)
                         .content(R.string.text_clear_history_dialog)
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                HistoryProduct.deleteAll(HistoryProduct.class);
-                                productItems.clear();
-                                recyclerHistoryScanView.getAdapter().notifyDataSetChanged();
-                            }
+                        .onPositive((dialog, which) -> {
+                            HistoryProduct.deleteAll(HistoryProduct.class);
+                            productItems.clear();
+                            recyclerHistoryScanView.getAdapter().notifyDataSetChanged();
                         })
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
@@ -115,7 +111,7 @@ public class HistoryScanActivity extends BaseActivity {
 
     public void exportCSV() {
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show();
-        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+        String baseDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
         Log.d("dir", baseDir);
         String fileName = "exportHistoryOFF"+new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date())+".csv";
         String filePath = baseDir + File.separator + fileName;
@@ -169,15 +165,12 @@ public class HistoryScanActivity extends BaseActivity {
                             .content(R.string.permission_denied)
                             .negativeText(R.string.txtNo)
                             .positiveText(R.string.txtYes)
-                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    Intent intent = new Intent();
-                                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                    Uri uri = Uri.fromParts("package", getPackageName(), null);
-                                    intent.setData(uri);
-                                    startActivity(intent);
-                                }
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent();
+                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                intent.setData(uri);
+                                startActivity(intent);
                             })
                             .show();
                 }

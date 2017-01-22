@@ -5,13 +5,14 @@
   <string name="action_settings">Axustes</string>
   <string name="action_about">Sobre</string>
   <string name="action_discover">Descubrir</string>
-  <string name="action_contribute">Colaborar</string>
+  <string name="contribute">Cómo contribuír</string>
   <string name="action_find">Buscar</string>
+  <string name="text_barcode">Tipo de código de barras :</string>
   <string-array name="nav_drawer_items_product">
     <item>Resumo</item>
     <item>Ingredientes</item>
     <item>Nutrición</item>
-    <item>Nutrition Table</item>
+    <item>Táboa nutricional</item>
     <item>Volver ao menú</item>
   </string-array>
   <string-array name="units_array">
@@ -52,7 +53,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Inglés</item>
@@ -73,19 +74,19 @@
     <item>Catalán</item>
     <item>Checo</item>
     <item>Árabe</item>
-    <item>Finnish</item>
+    <item>Finlandés</item>
     <item>Hindi</item>
     <item>Kabyle</item>
     <item>Coreano</item>
-    <item>Latvian</item>
-    <item>Dutch</item>
-    <item>Brazilian portuguese</item>
+    <item>Letón</item>
+    <item>Neerlandés</item>
+    <item>Portugués do Brasil</item>
     <item>Romanés</item>
     <item>Sueco</item>
     <item>Chinés</item>
     <item>Noruego (Bokmaal)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>Dinamarqués</item>
+    <item>Chinés simplificado</item>
   </string-array>
   <string-array name="images_array">
     <item>Predeterminado</item>
@@ -104,6 +105,7 @@
   <string name="txtPackaging">Empaquetado :</string>
   <string name="txtBrands">Marcas :</string>
   <string name="txtCategories">Categorías :</string>
+  <string name="txtLabels">Etiquetas, certificacións, premios :</string>
   <string name="txtManufacturing">Lugares de fabricación ou procesado :</string>
   <string name="txtIngredientsOrigins">Orixe dos ingredientes :</string>
   <string name="txtCity">Cidade, provincia e país da compra :</string>
@@ -124,7 +126,7 @@
   <string name="txtPass">Contrasinal:</string>
   <string name="txtTitleHome">Abra a súa comida para coñecer o que come</string>
   <string name="txtHome">Open Food Facts é unha base de datos aberta de produtos alimentarios cos seus ingredientes, alérxenos, información nutricional e todos os datos que podemos ver nas etiquetas dos produtos.</string>
-  <string name="txtSave">Enviar/Gardar</string>
+  <string name="txtSave">Gardar</string>
   <string name="txtSignIn">Iniciar sesión</string>
   <string name="txtUser">Panel do usuario</string>
   <string name="txtToastSaved">Gardouse o usuario</string>
@@ -141,6 +143,7 @@
   <string name="txtInfoLoginNo">Non se gardou o usuario</string>
   <string name="txtDialogsTitle">Información</string>
   <string name="txtDialogsContent">O produto escaneado non existe aínda en Open Food Facts. Desexa engadilo?</string>
+  <string name="txtDialogsContentPowerMode">O produto escaneado xa existe en Open Food Facts.</string>
   <string name="txtDialogsContentSend">Desexa enviar os produtos gardados á base de datos?</string>
   <string name="txtYes">Si</string>
   <string name="txtNo">Non</string>
@@ -153,6 +156,7 @@
   <string name="txtTakePicture">Facer foto</string>
   <string name="txtSendAll">Subir todo</string>
   <string name="txtNoData">Non hai datos</string>
+  <string name="txtPictureNeeded">Faga unha foto primeiro</string>
   <string name="toastSending">Enviando</string>
   <string name="dataSaved">Gardado localmente no seu dispositivo</string>
   <string name="txtInfoAddUser">Introduza o usuario e o contrasinal</string>
@@ -192,10 +196,13 @@
   <string name="action_edit_product">Editar produto</string>
   <string name="title_info_dialog">Información</string>
   <string name="text_offline_info_dialog">Pode escanear produtos estando sen conexión e engadilos a Open Food Facts máis tarde. Todos os produtos que escanee aparecerán aquí e poderá envialos usando o botón de debaixo.</string>
+  <string name="permission_camera">Precísanse permisos de cámara para escanear códigos de barras e facer fotos.</string>
   <string name="permission_title">Información dos permisos</string>
   <string name="permission_denied">Active os permisos nos axustes</string>
+  <string name="permission_storage">Precísanse permisos de almacenamento para facer ou seleccionar fotos</string>
   <string name="info_download_data">Precisa descargar algúns datos para que esta funcionalidade traballe, prema SI para descargalos.</string>
   <string name="info_download_data_connection">Precisa descargar algúns datos para que esta funcionalidade traballe, active a conexión a internet.</string>
+  <string name="msg_input_empty">Encha os campos primeiro.</string>
   <string name="new_offline_info">Faga unha foto do produto, ingredientes, táboa coa información nutricional e outra información da etiqueta. Grazas.</string>
   <string name="error_invalid_password">O contrasinal debe ser de polo menos 6 caracteres.</string>
   <string name="error_field_required">Este campo é obrigatorio</string>
@@ -245,4 +252,16 @@
   <string name="nutriment_serving_size">Por porción :</string>
   <string name="action_manage_account">Xestionar conta</string>
   <string name="action_contributes">As súas contribucións</string>
+  <string name="website">https://world-gl.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-gl.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-gl.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-gl.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world-gl.openfoodfacts.org/contributor/</string>
+  <string name="logout_drawer">Saír da sesión</string>
+  <string name="contribution_without_account">Pode iniciar sesión ou crear unha conta para manter as contribucións</string>
+  <string name="textCarbonFootprint">"Pegada de carbono / Emisións de CO2: "</string>
+  <string name="txtDialogPowerMode">Vista rápida</string>
+  <string name="txtSeeMore">Ver máis</string>
+  <string name="action_search">Buscar</string>
+  <string name="search_hint">Buscar un producto</string>
 </resources>

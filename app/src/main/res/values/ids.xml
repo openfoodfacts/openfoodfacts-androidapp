@@ -4,4 +4,5 @@
     <item type="id" name="menu_ring" />
     <item type="id" name="menu_auto_focus" />
     <item type="id" name="menu_camera_selector" />
+    <item type="id" name="menu_about" />
 </resources>

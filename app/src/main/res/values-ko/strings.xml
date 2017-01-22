@@ -3,7 +3,6 @@
   <string name="hello_world">안녕하세요!</string>
   <string name="action_about">정보</string>
   <string name="action_discover">발견</string>
-  <string name="action_contribute">기부</string>
   <string name="action_find">찾기</string>
   <string-array name="nav_drawer_items_product">
     <item>요약</item>

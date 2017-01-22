@@ -21,7 +21,7 @@
         android:layout_height="70dp"
         android:layout_margin="@dimen/spacing_normal"
         android:drawableLeft="@drawable/ic_done_all"
-        android:background="@drawable/button_default_bg"
+        android:background="@color/blue"
         style="@style/DefaultButtonText"
         android:layout_gravity="center"
         android:gravity="center"

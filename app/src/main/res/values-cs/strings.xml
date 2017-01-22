@@ -5,7 +5,6 @@
   <string name="action_settings">Nastavení</string>
   <string name="action_about">O aplikaci</string>
   <string name="action_discover">Objevte</string>
-  <string name="action_contribute">Přispět</string>
   <string name="action_find">Vyhledat</string>
   <string-array name="nav_drawer_items_product">
     <item>Shrnutí</item>

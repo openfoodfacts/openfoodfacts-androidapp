@@ -76,6 +76,7 @@ Android Studio packages must be updated by just clicking on install packages in 
 - https://github.com/satyan/sugar
 - https://github.com/afollestad/material-dialogs
 - https://github.com/jjhesk/LoyalNativeSlider
+- https://github.com/mikepenz/MaterialDrawer
 - and others (see gradle)
 
 Big thanks to them!

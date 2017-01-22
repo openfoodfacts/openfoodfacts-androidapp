@@ -5,148 +5,21 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.text.TextUtils.isEmpty;
+
+/**
+ * JSON representation of the product nutriments entry
+ * @see <a href="http://en.wiki.openfoodfacts.org/API#JSON_interface">JSON Structure</a>
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "serum-proteins_100g",
-        "casein",
-        "magnesium",
-        "fiber_unit",
-        "magnesium_value",
-        "maltodextrins_value",
-        "proteins_unit",
-        "maltodextrins_label",
-        "saturated-fat_unit",
-        "sodium",
-        "carbohydrates_100g",
-        "taurine_unit",
-        "carbohydrates",
-        "linoleic-acid_unit",
-        "energy_100g",
-        "potassium_value",
-        "calcium_serving",
-        "sodium_100g",
-        "serum-proteins_unit",
-        "maltodextrins_serving",
-        "casein_unit",
-        "nucleotides_unit",
-        "calcium_value",
-        "sugars_unit",
-        "sodium_unit",
-        "salt_unit",
-        "lactose",
-        "alpha-linolenic-acid_100g",
-        "potassium_unit",
-        "nucleotides_serving",
-        "fat_unit",
-        "linoleic-acid_value",
-        "arachidonic-acid",
-        "potassium_100g",
-        "linoleic-acid_label",
-        "energy_value",
-        "energy_unit",
-        "chlore_label",
-        "lactose_label",
-        "proteins",
-        "lactose_serving",
-        "sugars_value",
-        "casein_value",
-        "serum-proteins_label",
-        "serum-proteins",
-        "salt",
-        "docosahexaenoic-acid_value",
-        "nucleotides_value",
-        "proteins_100g",
-        "fiber_serving",
-        "arachidonic-acid_unit",
-        "nutrition-score-uk",
-        "nucleotides",
-        "sodium_value",
-        "calcium",
-        "chlore_serving",
-        "arachidonic-acid_100g",
-        "saturated-fat",
-        "magnesium_100g",
-        "fat_value",
-        "docosahexaenoic-acid_100g",
-        "chlore",
-        "carbohydrates_value",
-        "nutrition-score-fr",
-        "sugars",
-        "taurine_value",
-        "fiber_100g",
-        "alpha-linolenic-acid_unit",
-        "taurine_label",
-        "chlore_value",
-        "fiber",
-        "sugars_serving",
-        "magnesium_label",
-        "magnesium_serving",
-        "alpha-linolenic-acid",
-        "lactose_unit",
-        "saturated-fat_serving",
-        "docosahexaenoic-acid_unit",
-        "lactose_100g",
-        "sugars_100g",
-        "saturated-fat_100g",
-        "alpha-linolenic-acid_value",
-        "serum-proteins_value",
-        "potassium_serving",
-        "maltodextrins",
-        "taurine",
-        "salt_100g",
-        "potassium_label",
-        "linoleic-acid_serving",
-        "carbohydrates_unit",
-        "calcium_unit",
-        "calcium_label",
-        "saturated-fat_value",
-        "docosahexaenoic-acid_label",
-        "chlore_100g",
-        "calcium_100g",
-        "nucleotides_label",
-        "arachidonic-acid_label",
-        "nucleotides_100g",
-        "casein_100g",
-        "casein_label",
-        "arachidonic-acid_serving",
-        "fiber_value",
-        "chlore_unit",
-        "maltodextrins_unit",
-        "serum-proteins_serving",
-        "proteins_serving",
-        "linoleic-acid",
-        "alpha-linolenic-acid_label",
-        "arachidonic-acid_value",
-        "taurine_100g",
-        "maltodextrins_100g",
-        "lactose_value",
-        "taurine_serving",
-        "nutrition-score-uk_100g",
-        "fat",
-        "linoleic-acid_100g",
-        "fat_serving",
-        "fat_100g",
-        "nutrition-score-fr_100g",
-        "alpha-linolenic-acid_serving",
-        "salt_serving",
-        "carbohydrates_serving",
-        "casein_serving",
-        "docosahexaenoic-acid",
-        "energy_serving",
-        "magnesium_unit",
-        "potassium",
-        "proteins_value",
-        "energy",
-        "sodium_serving",
-        "docosahexaenoic-acid_serving"
-})
 public class Nutriments implements Serializable {
+
+    private static final String DEFAULT_UNIT = "g";
 
     @JsonProperty("serum-proteins_100g")
     private String serumProteins100g;
@@ -400,7 +273,7 @@ public class Nutriments implements Serializable {
     @JsonProperty("carbon-footprint_100g")
     private String carbonFootprint100g;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     public String getCarbonFootprint100g() {
         return carbonFootprint100g;
@@ -542,7 +415,7 @@ public class Nutriments implements Serializable {
      */
 
     public String getSaltUnit() {
-        return saltUnit;
+        return isEmpty(saltUnit) ? DEFAULT_UNIT : saltUnit;
     }
 
     /**
@@ -566,7 +439,7 @@ public class Nutriments implements Serializable {
      */
 
     public String getSaturatedFatUnit() {
-        return saturatedFatUnit;
+        return isEmpty(saturatedFatUnit) ? DEFAULT_UNIT : saturatedFatUnit;
     }
 
     /**
@@ -806,7 +679,7 @@ public class Nutriments implements Serializable {
      */
 
     public String getSugarsUnit() {
-        return sugarsUnit;
+        return isEmpty(sugarsUnit) ? DEFAULT_UNIT : sugarsUnit;
     }
 
     /**
@@ -902,7 +775,7 @@ public class Nutriments implements Serializable {
      */
 
     public String getFatUnit() {
-        return fatUnit;
+        return isEmpty(fatUnit) ? DEFAULT_UNIT : fatUnit;
     }
 
     /**

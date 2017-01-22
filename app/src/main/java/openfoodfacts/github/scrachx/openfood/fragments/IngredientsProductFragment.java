@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -30,6 +29,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
@@ -46,7 +46,6 @@ public class IngredientsProductFragment extends BaseFragment {
     @BindView(R.id.textAdditiveProduct) TextView additiveProduct;
     @BindView(R.id.textPalmOilProduct) TextView palmOilProduct;
     @BindView(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
-    @BindView(R.id.ingredientContainer) ViewGroup containerView;
     @BindView(R.id.imageViewNutritionFullIng) ImageView mImageNutritionFullIng;
     private String mUrlImage;
     private State mState;
@@ -76,7 +75,7 @@ public class IngredientsProductFragment extends BaseFragment {
         List<String> allergens = getAllergens();
 
         if(mState != null && product.getIngredientsText() != null) {
-            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(Html.fromHtml(product.getIngredientsText().replace("_","")));
+            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_",""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
             if(!txtIngredients.toString().substring(txtIngredients.toString().indexOf(":")).trim().isEmpty()) {
                 ingredientsProduct.setText(txtIngredients);
@@ -88,9 +87,11 @@ public class IngredientsProductFragment extends BaseFragment {
         if(!allergens.isEmpty()) {
             substanceProduct.append(bold(getString(R.string.txtSubstances)));
             substanceProduct.append(" ");
+            String delim = "";
             for (String allergen : allergens) {
+                substanceProduct.append(delim);
                 substanceProduct.append(allergen);
-                substanceProduct.append(" ");
+                delim = ", ";
             }
         } else {
             substanceProduct.setVisibility(View.GONE);
@@ -188,7 +189,7 @@ public class IngredientsProductFragment extends BaseFragment {
                 }
             }
         }
-        ssb.insert(0, Html.fromHtml("<b>" + getString(R.string.txtIngredients) + "</b>" + ' '));
+        ssb.insert(0, Utils.bold(getString(R.string.txtIngredients)).toString() + ' ');
         return ssb;
     }
 
