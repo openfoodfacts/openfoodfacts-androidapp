@@ -118,9 +118,9 @@
   <string name="txtPalmOilProduct">Ingrédients issus de l\'huile de palme :</string>
   <string name="txtServingSize">Taille d\'une portion :</string>
   <string name="txtNutrientLevel100g">Repères nutritionnels pour 100g :</string>
-  <string name="txtNutritionLevelLow">faible</string>
-  <string name="txtNutritionLevelModerate">moyen</string>
-  <string name="txtNutritionLevelHigh">élevé</string>
+  <string name="txtNutritionLevelLow">en faible quantité</string>
+  <string name="txtNutritionLevelModerate">en quantité modérée</string>
+  <string name="txtNutritionLevelHigh">en quantité élevée</string>
   <string name="txtLogin">Identifiant :</string>
   <string name="txtPass">Mot de passe :</string>
   <string name="txtTitleHome">Ouvrez votre nourriture pour savoir ce que vous mangez</string>
@@ -129,10 +129,10 @@
   <string name="txtSignIn">Se connecter</string>
   <string name="txtUser">Panneau utilisateur</string>
   <string name="txtToastSaved">Utilisateur connecté</string>
-  <string name="txtSalt">Sel :</string>
-  <string name="txtFat">Matières grasses / Lipides :</string>
-  <string name="txtSugars">Sucres :</string>
-  <string name="txtSaturatedFat">Acides gras saturés :</string>
+  <string name="txtSalt">Sel</string>
+  <string name="txtFat">Matières grasses / Lipides</string>
+  <string name="txtSugars">Sucres</string>
+  <string name="txtSaturatedFat">Acides gras saturés</string>
   <string name="hintBarcode">Code barre</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Mot de passe</string>

@@ -28,10 +28,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+
+import static android.text.TextUtils.isEmpty;
 
 public class Utils {
 
@@ -233,52 +236,23 @@ public class Utils {
         }
     }
 
-    public static int getImageLevel(String nutrient) {
-        int drawable;
-
-        if (nutrient == null) {
-            return R.drawable.ic_error;
-        }
-
-        switch (nutrient.toLowerCase()) {
-            case "moderate":
-                drawable = R.drawable.ic_circle_yellow;
-                break;
-            case "low":
-                drawable = R.drawable.ic_circle_green;
-                break;
-            case "high":
-                drawable = R.drawable.ic_circle_red;
-                break;
-            default:
-                drawable = R.drawable.ic_error;
-                break;
-        }
-
-        return drawable;
-    }
-
     /**
+     * Return a round float value with 2 decimals
      *
-     * @param nutritionAmount Either "low", "moderate" or "high"
-     * @return The localised word for the nutrition amount. If nutritionAmount is neither low,
-     * moderate nor high, return nutritionAmount
+     * @param value float value
+     * @return round value or 0 if the value is empty or equals to 0
      */
-    public static String localiseNutritionLevel(Context context, String nutritionAmount){
-        if (nutritionAmount == null) {
-            return context.getString(R.string.txt_nutrition_not_found);
+    public static String getRoundNumber(String value) {
+        if (isEmpty(value) || "0".equals(value)) {
+            return "0";
         }
 
-        switch (nutritionAmount){
-            case "low":
-                return context.getString(R.string.txtNutritionLevelLow);
-            case "moderate":
-                return context.getString(R.string.txtNutritionLevelModerate);
-            case "high":
-                return context.getString(R.string.txtNutritionLevelHigh);
-            default:
-                return nutritionAmount;
+        String[] strings = value.split("\\.");
+        if (strings.length == 1 || (strings.length == 2 && strings[1].length() <= 2)) {
+            return value;
         }
+
+        return String.format(Locale.getDefault(), "%.2f", Double.valueOf(value));
     }
 
     public static DaoSession getAppDaoSession(Activity activity) {

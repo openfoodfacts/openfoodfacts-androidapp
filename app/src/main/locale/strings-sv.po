@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-14 10:59+0100\n"
+"POT-Creation-Date: 2017-01-17 13:22+0100\n"
 "PO-Revision-Date: 2016-12-30 14:02+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: sv\n"
@@ -1106,5 +1106,13 @@ msgstr ""
 
 msgctxt "search_hint"
 msgid "Search a product"
+msgstr ""
+
+msgctxt "number_of_results"
+msgid "Number of results :"
+msgstr ""
+
+msgctxt "txt_no_results"
+msgid "No results found"
 msgstr ""
 

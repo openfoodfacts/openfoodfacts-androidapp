@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-14 10:59+0100\n"
-"PO-Revision-Date: 2017-01-05 16:06+0000\n"
+"POT-Creation-Date: 2017-01-17 13:22+0100\n"
+"PO-Revision-Date: 2017-01-16 16:21+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language: he\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -43,7 +43,7 @@ msgstr "לגלות"
 
 msgctxt "contribute"
 msgid "How to contribute"
-msgstr ""
+msgstr "כיצד ניתן לתרום"
 
 msgctxt "action_find"
 msgid "Find"
@@ -254,10 +254,9 @@ msgid "da"
 msgstr "da"
 
 #. Text units
-#, fuzzy
 msgctxt "lang_array:30"
 msgid "zh-rCN"
-msgstr "zh_rCN"
+msgstr ""
 
 msgctxt "lang_label_array:0"
 msgid "English"
@@ -341,7 +340,7 @@ msgstr "הינדי"
 
 msgctxt "lang_label_array:20"
 msgid "Kabyle"
-msgstr ""
+msgstr "קאבילה"
 
 msgctxt "lang_label_array:21"
 msgid "Korean"
@@ -531,10 +530,9 @@ msgid ""
 " on product labels."
 msgstr ""
 
-#, fuzzy
 msgctxt "txtSave"
 msgid "Save"
-msgstr "שליחה/שמירה"
+msgstr "שמירה"
 
 msgctxt "txtSignIn"
 msgid "Sign in"
@@ -604,7 +602,7 @@ msgstr "המוצרים שסרקת לא נמצאים עדיין ב־Open Food Fac
 
 msgctxt "txtDialogsContentPowerMode"
 msgid "The product you scanned does already exist in Open Food Facts."
-msgstr ""
+msgstr "המוצר שסרקת כבר נמצא במסד נתוני המזון הפתוח."
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
@@ -892,13 +890,13 @@ msgstr "אם אפשרות זו נבחרה הסריקה תחל עם הפעלת ה
 
 msgctxt "prefs_power_mode"
 msgid "Power mode scan"
-msgstr ""
+msgstr "סריקת על"
 
 msgctxt "prefs_power_mode_summary"
 msgid ""
 "Quickly scan products in a supermarket to see which one are not in the "
 "database."
-msgstr ""
+msgstr "סריקת מוצרים במהירות בסופר כדי לראות מי מהם לא במסד הנתונים."
 
 msgctxt "prefs_language"
 msgid "Language"
@@ -1015,11 +1013,11 @@ msgstr "מלח (ג׳)"
 
 msgctxt "nutrition_satured_fat"
 msgid "Satured fat"
-msgstr ""
+msgstr "שומן רווי"
 
 msgctxt "nutrition_satured_fat_short_name"
 msgid "Satured fat (g)"
-msgstr ""
+msgstr "שומן רווי (ג׳)"
 
 msgctxt "nutrition_serving"
 msgid "Per serving"
@@ -1047,15 +1045,15 @@ msgstr "סוכרים (ג׳)"
 
 msgctxt "nutrition_trans_fat"
 msgid "Trans fat"
-msgstr ""
+msgstr "שומן טרנס"
 
 msgctxt "nutrition_trans_fat_short_name"
 msgid "Trans fat (g)"
-msgstr ""
+msgstr "שומן טרנס (ג׳)"
 
 msgctxt "nutriment_serving_size"
 msgid "Per portion :"
-msgstr ""
+msgstr "למנה :"
 
 msgctxt "action_manage_account"
 msgid "Manage account"
@@ -1100,20 +1098,27 @@ msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
 msgstr "טביעה פחמנית / פליטת פחמן דו חמצני: "
 
-#, fuzzy
 msgctxt "txtDialogPowerMode"
 msgid "Quick view"
-msgstr ""
+msgstr "תצוגה מהירה"
 
 msgctxt "txtSeeMore"
 msgid "See more"
-msgstr ""
+msgstr "מידע נוסף"
 
 msgctxt "action_search"
 msgid "Search"
-msgstr ""
+msgstr "חיפוש"
 
 msgctxt "search_hint"
 msgid "Search a product"
+msgstr "חיפוש מוצר"
+
+msgctxt "number_of_results"
+msgid "Number of results :"
+msgstr ""
+
+msgctxt "txt_no_results"
+msgid "No results found"
 msgstr ""
 
