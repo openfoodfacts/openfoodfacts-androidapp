@@ -198,7 +198,7 @@
     <string name="txt_product_not_found">Products not found</string>
     <string name="delete_txt">Delete</string>
     <string name="sign_in_drawer">Sign-in</string>
-    <string name="alert_drawer">Allergen Alert</string>
+    <string name="alert_drawer">Allergen alert</string>
     <string name="warning_allergens">Contains allergens</string>
     <string name="title_dialog_alert">Add alert</string>
 
@@ -216,7 +216,7 @@
     <string name="cancel_button" translatable="false">Cancel</string>
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>
     <string name="from_gallery">From gallery</string>
-    <string name="product_sent">Product sent!</string>
+    <string name="product_sent">Product sent successfully</string>
     <string name="action_edit_product">Edit product</string>
     <string name="title_info_dialog">Information</string>
     <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
@@ -236,7 +236,7 @@
     <string name="prefs_scan_startup">Scan on startup</string>
     <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
     <string name="prefs_power_mode">Power mode scan</string>
-    <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which one are not in the database.</string>
+    <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
     <string name="prefs_language">Language</string>
     <string name="prefs_language_summary">Change language</string>
 
@@ -292,8 +292,11 @@
     <string name="website">https://world.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
     <string name="website_contribute">https://world.openfoodfacts.org/contribute</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir -->
     <string name="website_discover">https://world.openfoodfacts.org/discover</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="logout_drawer">Logout</string>
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
