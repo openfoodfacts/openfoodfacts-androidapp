@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-08 12:54+0100\n"
-"PO-Revision-Date: 2016-12-30 13:09+0000\n"
-"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
+"POT-Creation-Date: 2017-01-17 13:22+0100\n"
+"PO-Revision-Date: 2017-01-16 15:22+0000\n"
+"Last-Translator: Naofumi Fukue <naofum@gmail.com>\n"
 "Language: ja\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "Plural-Forms: nplurals=1; plural=(0)\n"
@@ -39,9 +39,9 @@ msgctxt "action_discover"
 msgid "Discover"
 msgstr "見つける"
 
-msgctxt "action_contribute"
-msgid "Contribute"
-msgstr "貢献する"
+msgctxt "contribute"
+msgid "How to contribute"
+msgstr "貢献する方法"
 
 msgctxt "action_find"
 msgid "Find"
@@ -253,8 +253,8 @@ msgstr "da"
 
 #. Text units
 msgctxt "lang_array:30"
-msgid "zh_rCN"
-msgstr "zh_rCN"
+msgid "zh-rCN"
+msgstr "zh-rCN"
 
 msgctxt "lang_label_array:0"
 msgid "English"
@@ -531,8 +531,8 @@ msgstr ""
 "データベースです。原材料、アレルゲン、栄養成分表、および製品のラベルで見つけることができる情報があります。"
 
 msgctxt "txtSave"
-msgid "Send/Save"
-msgstr "送信/保存"
+msgid "Save"
+msgstr "保存"
 
 msgctxt "txtSignIn"
 msgid "Sign in"
@@ -602,7 +602,7 @@ msgstr "スキャンした製品は、まだ Open Food Facts に存在しませ�
 
 msgctxt "txtDialogsContentPowerMode"
 msgid "The product you scanned does already exist in Open Food Facts."
-msgstr ""
+msgstr "スキャンした製品は、すでに Open Food Facts に存在します。"
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
@@ -1093,12 +1093,27 @@ msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
 msgstr "カーボンフットプリント / CO2 排出量: "
 
-#, fuzzy
 msgctxt "txtDialogPowerMode"
 msgid "Quick view"
-msgstr ""
+msgstr "クイックビュー"
 
 msgctxt "txtSeeMore"
 msgid "See more"
+msgstr "さらに表示"
+
+msgctxt "action_search"
+msgid "Search"
+msgstr "検索"
+
+msgctxt "search_hint"
+msgid "Search a product"
+msgstr "製品を検索します"
+
+msgctxt "number_of_results"
+msgid "Number of results :"
+msgstr ""
+
+msgctxt "txt_no_results"
+msgid "No results found"
 msgstr ""
 

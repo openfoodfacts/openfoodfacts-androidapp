@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -19,9 +20,12 @@ import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 /**
- * @author herau
+ * @author herau & itchix
  */
-public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRecyclerViewAdapter.ViewHolder> {
+public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
+
+    private static final int VIEW_ITEM = 1;
+    private static final int VIEW_LOAD = 0;
 
     private Context context;
     private final List<Product> products;
@@ -31,43 +35,54 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
 
-        // create a new view
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.products_list_item, parent, false);
-        // set the view's size, margins, paddings and layout parameters
+        int layoutResourceId = viewType == VIEW_ITEM ? R.layout.products_list_item: R.layout.progressbar_endless_list;
+        View v = LayoutInflater.from(parent.getContext()).inflate(layoutResourceId, parent, false);
 
-        return new ViewHolder(v);
+        if (viewType == VIEW_ITEM) {
+            return new ProductViewHolder(v);
+        } else {
+            return new ProgressViewHolder(v);
+        }
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public int getItemViewType(int position) {
+        return products.get(position) != null ? VIEW_ITEM : VIEW_LOAD;
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        Picasso.with(context)
-                .load(products.get(position).getImageSmallUrl())
-                .placeholder(R.drawable.placeholder_thumb)
-                .error(R.drawable.error_image)
-                .fit()
-                .centerCrop()
-                .into(holder.vProductImage);
+        if (holder instanceof ProductViewHolder) {
+            ProductViewHolder productHolder = (ProductViewHolder) holder;
+            Picasso.with(context)
+                    .load(products.get(position).getImageSmallUrl())
+                    .placeholder(R.drawable.placeholder_thumb)
+                    .error(R.drawable.error_image)
+                    .fit()
+                    .centerCrop()
+                    .into(productHolder.vProductImage);
 
-        Product product = products.get(position);
+            Product product = products.get(position);
 
-        holder.vProductName.setText(product.getProductName());
+            productHolder.vProductName.setText(product.getProductName());
 
-        StringBuilder stringBuilder = new StringBuilder();
-        if (isNotEmpty(product.getBrands())) {
-            stringBuilder.append(capitalize(product.getBrands().split(",")[0].trim()));
+            StringBuilder stringBuilder = new StringBuilder();
+            if (isNotEmpty(product.getBrands())) {
+                stringBuilder.append(capitalize(product.getBrands().split(",")[0].trim()));
+            }
+
+            if (isNotEmpty(product.getQuantity())) {
+                stringBuilder.append(" - ").append(product.getQuantity());
+            }
+
+            productHolder.vProductDetails.setText(stringBuilder.toString());
         }
 
-        if (isNotEmpty(product.getQuantity())) {
-            stringBuilder.append(" - ").append(product.getQuantity());
-        }
-
-        holder.vProductDetails.setText(stringBuilder.toString());
     }
 
     public Product getProduct(int position) {
@@ -83,16 +98,26 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ProductViewHolder extends RecyclerView.ViewHolder {
+
         ImageView vProductImage;
         TextView vProductName;
         TextView vProductDetails;
 
-        ViewHolder(View v) {
+        ProductViewHolder(View v) {
             super(v);
             vProductImage = (ImageView) v.findViewById(R.id.imgProduct);
             vProductName = (TextView) v.findViewById(R.id.nameProduct);
             vProductDetails = (TextView) v.findViewById(R.id.productDetails);
+        }
+    }
+
+    static class ProgressViewHolder extends RecyclerView.ViewHolder {
+        public ProgressBar progressBar;
+
+        public ProgressViewHolder(View v) {
+            super(v);
+            progressBar = (ProgressBar) v.findViewById(R.id.progressBar1);
         }
     }
 

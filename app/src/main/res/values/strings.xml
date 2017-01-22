@@ -18,7 +18,6 @@
         <item>Ingredients</item>
         <item>Nutrition</item>
         <item>Nutrition Table</item>
-        <item>Back to menu</item>
     </string-array>
 
     <!-- Text units -->
@@ -133,9 +132,9 @@
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Serving size :</string>
     <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
-    <string name="txtNutritionLevelLow">low</string>
-    <string name="txtNutritionLevelModerate">moderate</string>
-    <string name="txtNutritionLevelHigh">high</string>
+    <string name="txtNutritionLevelLow">in low quantity</string>
+    <string name="txtNutritionLevelModerate">in moderate quantity</string>
+    <string name="txtNutritionLevelHigh">in high quantity</string>
     <string name="txtLogin">Login :</string>
     <string name="txtPass">Password :</string>
     <string name="txtTitleHome">Open your food and know what you eat</string>
@@ -144,14 +143,14 @@
     <string name="txtHome">Open Food Facts is a open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
     <!--String for Open Beauty Facts -->
     <string name="txtHome_obf">Open Beauty Facts is a open database of cosmetic products with ingredients, allergens and all the tidbits of information we can find on product labels.</string>
-    <string name="txtSave">Send/Save</string>
+    <string name="txtSave">Save</string>
     <string name="txtSignIn">Sign in</string>
     <string name="txtUser">User panel</string>
     <string name="txtToastSaved">User saved</string>
-    <string name="txtSalt">Salt :</string>
-    <string name="txtFat">Fat :</string>
-    <string name="txtSugars">Sugars :</string>
-    <string name="txtSaturatedFat">Satured fat :</string>
+    <string name="txtSalt">Salt</string>
+    <string name="txtFat">Fat</string>
+    <string name="txtSugars">Sugars</string>
+    <string name="txtSaturatedFat">Satured fat</string>
     <string name="hintBarcode">Barcode</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
@@ -209,7 +208,7 @@
     <string name="txt_product_not_found">Products not found</string>
     <string name="delete_txt">Delete</string>
     <string name="sign_in_drawer">Sign-in</string>
-    <string name="alert_drawer">Allergen Alert</string>
+    <string name="alert_drawer">Allergen alert</string>
     <string name="warning_allergens">Contains allergens</string>
     <string name="title_dialog_alert">Add alert</string>
 
@@ -229,7 +228,7 @@
     <!--String for Open Beauty Facts -->
     <string name="warning_alert_data_obf">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>
     <string name="from_gallery">From gallery</string>
-    <string name="product_sent">Product sent!</string>
+    <string name="product_sent">Product sent successfully</string>
     <string name="action_edit_product">Edit product</string>
     <string name="title_info_dialog">Information</string>
     <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
@@ -253,7 +252,7 @@
     <string name="prefs_scan_startup">Scan on startup</string>
     <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
     <string name="prefs_power_mode">Power mode scan</string>
-    <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which one are not in the database.</string>
+    <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
     <string name="prefs_language">Language</string>
     <string name="prefs_language_summary">Change language</string>
 
@@ -315,8 +314,11 @@
     <string name="website_obf">http://world.openbeautyfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
     <string name="website_contribute">https://world.openfoodfacts.org/contribute</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir -->
     <string name="website_discover">https://world.openfoodfacts.org/discover</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="website_contribute_obf">http://world.openbeautyfacts.org/contribute</string>
     <string name="website_discover_obf">http://world.openbeautyfacts.org/discover</string>
@@ -329,5 +331,7 @@
     <string name="txtSeeMore">See more</string>
     <string name="action_search">Search</string>
     <string name="search_hint">Search a product</string>
+    <string name="number_of_results">Number of results :</string>
+    <string name="txt_no_results">No results found</string>
 
 </resources>

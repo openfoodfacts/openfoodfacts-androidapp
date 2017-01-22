@@ -32,7 +32,7 @@ public interface OpenFoodAPIService {
     Call<State> getProductByBarcode(@Path("barcode") String barcode);
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process")
-    Call<Search> searchProductByName(@Query("search_terms") String name);
+    Call<Search> searchProductByName(@Query("search_terms") String name, @Query("page") int page);
 
     @FormUrlEncoded
     @POST("/cgi/session.pl")

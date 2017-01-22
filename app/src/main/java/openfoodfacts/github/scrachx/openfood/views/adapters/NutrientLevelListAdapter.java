@@ -9,18 +9,19 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
+
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 
 public class NutrientLevelListAdapter extends BaseAdapter {
 
     private Context context;
     private List<NutrientLevelItem> nutrientLevelItems;
 
-    public NutrientLevelListAdapter(Context context, ArrayList<NutrientLevelItem> navDrawerItems){
+    public NutrientLevelListAdapter(Context context, List<NutrientLevelItem> navDrawerItems){
         this.context = context;
         this.nutrientLevelItems = navDrawerItems;
     }
@@ -48,16 +49,26 @@ public class NutrientLevelListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.nutrient_lvl_list_item, null);
         }
 
-        ImageView imgIcon = (ImageView) convertView.findViewById(R.id.imgLevel);
-        TextView txtTitle = (TextView) convertView.findViewById(R.id.descriptionLevel);
 
-        if (nutrientLevelItems.get(position).getIcon() == R.drawable.error_image) {
+        NutrientLevelItem nutrientLevelItem = nutrientLevelItems.get(position);
+
+        ImageView imgIcon = (ImageView) convertView.findViewById(R.id.imgLevel);
+        if (nutrientLevelItem.getIcon() <= 0) {
             imgIcon.setVisibility(View.GONE);
         } else {
-            imgIcon.setImageResource(nutrientLevelItems.get(position).getIcon());
+            imgIcon.setImageResource(nutrientLevelItem.getIcon());
             imgIcon.setVisibility(View.VISIBLE);
         }
-        txtTitle.setText(nutrientLevelItems.get(position).getTitle());
+
+        TextView txtTitle = (TextView) convertView.findViewById(R.id.descriptionLevel);
+        // need to clear the text because using append method (append method is mandatory for html text)
+        txtTitle.setText("");
+
+        txtTitle.append(nutrientLevelItem.getValue());
+        txtTitle.append(" ");
+        txtTitle.append(bold(nutrientLevelItem.getCategory()));
+        txtTitle.append("\n");
+        txtTitle.append(nutrientLevelItem.getLabel());
 
         return convertView;
     }

@@ -5,9 +5,9 @@
   <string name="action_settings">Einstellungen</string>
   <string name="action_about">Über</string>
   <string name="action_discover">Entdecken</string>
-  <string name="contribute">Mitmachen</string>
+  <string name="contribute">Wie Sie mithelfen können</string>
   <string name="action_find">Suchen</string>
-  <string name="text_barcode">Barcode eingeben:</string>
+  <string name="text_barcode">Strichcode eingeben:</string>
   <string-array name="nav_drawer_items_product">
     <item>Zusammenfassung</item>
     <item>Inhaltsstoffe</item>
@@ -53,7 +53,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Englisch</item>
@@ -70,7 +70,7 @@
     <item>Armenisch</item>
     <item>Griechisch</item>
     <item>Hebräisch</item>
-    <item>Galicisch</item>
+    <item>Galizisch</item>
     <item>Katalanisch</item>
     <item>Tschechisch</item>
     <item>Arabisch</item>
@@ -94,40 +94,40 @@
     <item>Inhaltsstoffe</item>
   </string-array>
   <string name="search_button">Suchen</string>
-  <string name="no_products">Keine Produkte gefunden.</string>
-  <string name="desc_list_item_icon">Produkt Foto</string>
+  <string name="no_products">Keine Produkte gefunden</string>
+  <string name="desc_list_item_icon">Produktfoto</string>
   <string name="alert_dialog_warning_title">Warnung</string>
   <string name="alert_dialog_warning_msg_user">Benutzername/Passwort hat sich geändert, bitte Angaben aktualisieren.</string>
-  <string name="alert_dialog_product_error_msg">Produkt wurde nicht gefunden. Versuche es später noch einmal.</string>
+  <string name="alert_dialog_product_error_msg">Produkt wurde nicht gefunden. Versuchen Sie es später noch einmal.</string>
   <string name="toast_retrieving">Wird geladen …</string>
-  <string name="txtBarcode">Strichcode</string>
+  <string name="txtBarcode">Strichcode:</string>
   <string name="txtQuantity">Menge:</string>
   <string name="txtPackaging">Verpackung:</string>
   <string name="txtBrands">Marken:</string>
-  <string name="txtCategories">Kategorien :</string>
-  <string name="txtLabels">Labels, Zertifizierungen, Preise :</string>
-  <string name="txtManufacturing">Herstellungs- oder Umwandlungsorte:</string>
-  <string name="txtIngredientsOrigins">Herkunft der Zutaten</string>
-  <string name="txtCity">Stadt und Land des Ankaufs:</string>
+  <string name="txtCategories">Kategorien:</string>
+  <string name="txtLabels">Labels, Zertifizierungen, Preise:</string>
+  <string name="txtManufacturing">Herstellungs- oder Verarbeitungsorte:</string>
+  <string name="txtIngredientsOrigins">Herkunft der Zutaten:</string>
+  <string name="txtCity">Stadt, Bundesland und Land des Kaufs:</string>
   <string name="txtStores">Läden:</string>
   <string name="txtCountries">Vertriebsländer:</string>
   <string name="txtIngredients">Zutatenliste:</string>
-  <string name="txtSubstances">Nahrungsstoffe oder Produkte, die zur Allergie oder Überempfindlichkeit führen:</string>
+  <string name="txtSubstances">Inhaltsstoffe oder Produkte, die zu Allergien oder Überempfindlichkeiten führen:</string>
   <string name="txtAdditives">Zusatzstoffe:</string>
   <string name="txtTraces">Spuren:</string>
-  <string name="txtMayBeFromPalmOilProduct">Aus Palmöl hergestellte Zutaten</string>
-  <string name="txtPalmOilProduct">Zutaten aus Palmöl:</string>
+  <string name="txtMayBeFromPalmOilProduct">Möglicherweise aus Palmöl hergestellte Zutaten:</string>
+  <string name="txtPalmOilProduct">Aus Palmöl hergestellte Zutaten:</string>
   <string name="txtServingSize">Portiongröße:</string>
-  <string name="txtNutrientLevel100g">Nährwertgehalt pro 100g</string>
+  <string name="txtNutrientLevel100g">Nährwertgehalt pro 100g:</string>
   <string name="txtNutritionLevelLow">gering</string>
-  <string name="txtNutritionLevelModerate">moderat</string>
+  <string name="txtNutritionLevelModerate">mäßig</string>
   <string name="txtNutritionLevelHigh">hoch</string>
-  <string name="txtLogin">Einloggen</string>
+  <string name="txtLogin">Benutzername:</string>
   <string name="txtPass">Passwort :</string>
-  <string name="txtTitleHome">Veröffentliche dein Essen, und lerne was du isst</string>
-  <string name="txtHome">Open Food Facts ist eine freie Nahrungsmittel­produkt­datenbank mit Zutaten, Allergenen, Nährwertangaben and all den Kleinigkeiten die wir auf Produkt-Etikett finden können.</string>
-  <string name="txtSave">Abschicken/Speichern</string>
-  <string name="txtSignIn">Registrieren</string>
+  <string name="txtTitleHome">Öffnen Sie Ihr Essen und lernen Sie was Sie essen</string>
+  <string name="txtHome">Open Food Facts ist eine freie Nahrungsmittelproduktdatenbank mit Zutaten, Allergenen, Nährwertangaben und all den Kleinigkeiten, die sich auf Produkt-Etiketten befinden.</string>
+  <string name="txtSave">Speichern</string>
+  <string name="txtSignIn">Anmelden</string>
   <string name="txtUser">Benutzerprofil</string>
   <string name="txtToastSaved">Benutzer gespeichert</string>
   <string name="txtSalt">Salz:</string>
@@ -135,91 +135,92 @@
   <string name="txtSugars">Zucker:</string>
   <string name="txtSaturatedFat">gesättigte Fettsäuren:</string>
   <string name="hintBarcode">Strichcode</string>
-  <string name="hintLogin">Einloggen</string>
+  <string name="hintLogin">Benutzername</string>
   <string name="hintPass">Passwort</string>
   <string name="errorLogin">Benutzername oder Passwort stimmen nicht</string>
   <string name="errorWeb">Kein Internetzugang. Netzwerkverbindung überprüfen.</string>
-  <string name="txtInfoLoginOk">Beteiligter gespeichert</string>
-  <string name="txtInfoLoginNo">Beteiligter nicht gespeichert</string>
+  <string name="txtInfoLoginOk">Benutzer gespeichert</string>
+  <string name="txtInfoLoginNo">Benutzer nicht gespeichert</string>
   <string name="txtDialogsTitle">Information</string>
-  <string name="txtDialogsContent">Das gescannte Produkt befindet sich noch nicht im Open Food Facts. Möchtest du diesen hinzufügen?</string>
-  <string name="txtDialogsContentSend">Möchtest du die gespeicherten Produkte an die Datenbank senden?</string>
+  <string name="txtDialogsContent">Das gescannte Produkt befindet sich noch nicht in Open Food Facts. Möchten Sie es hinzufügen?</string>
+  <string name="txtDialogsContentPowerMode">Das gescannte Produkt befindet sich bereits in Open Food Facts.</string>
+  <string name="txtDialogsContentSend">Möchten Sie die gespeicherten Produkte an die Datenbank senden?</string>
   <string name="txtYes">Ja</string>
   <string name="txtNo">Nein</string>
   <string name="hintNameProduct">Name</string>
-  <string name="hintEnergy">Energie in kJ pro Schnitte</string>
-  <string name="hintEnergyUnit">Energie-Maß</string>
+  <string name="hintEnergy">Energie in kJ pro Portion</string>
+  <string name="hintEnergyUnit">Energieeinheit</string>
   <string name="hintWeight">Gewicht</string>
-  <string name="hintStores">Speichern</string>
+  <string name="hintStores">Laden</string>
   <string name="hintBrand">Marke</string>
   <string name="txtTakePicture">Foto machen</string>
-  <string name="txtSendAll">alles hochladen</string>
+  <string name="txtSendAll">Alles hochladen</string>
   <string name="txtNoData">keine Daten</string>
-  <string name="txtPictureNeeded">Bitte machen Sie zunächst ein Foto</string>
-  <string name="toastSending">hochladen...</string>
-  <string name="dataSaved">lokal auf dem Phone gespeichert</string>
-  <string name="txtInfoAddUser">Bitte Login und Passwort einfügen</string>
-  <string name="txtDataUpdated">Daten aktualisiert</string>
-  <string name="txtLoading">laden...</string>
-  <string name="txtDialogsContentDelete">Möchtest du diesen Eintrag löschen?</string>
-  <string name="txtDialogsContentInfoSave">Produkt wurde lokal gespeichert und kann durch das Menü Offline bearbeiten überarbeitet werden</string>
-  <string name="txtBarcodeRequire">Barcode erforderlich</string>
-  <string name="txtOk">Bestätigen</string>
-  <string name="txtContentDialogUploading">Bitte warten bis zum Prozessende...</string>
-  <string name="txtAbout">Die zu uns geschickten Fotos sind unter der free licence Creative Commons Attribution and ShareAlike Licence veröffentlicht.</string>
-  <string name="txtAllsent">Produkte erfolgreich gespeichert</string>
-  <string name="txtPalm">Der Produkt beinhaltet kein Palmöl</string>
-  <string name="txtBarcodeNotValid">Barcode ungültig</string>
+  <string name="txtPictureNeeded">Bitte machen Sie zuerst ein Foto</string>
+  <string name="toastSending">Lade hoch...</string>
+  <string name="dataSaved">Lokal auf dem Gerät gespeichert</string>
+  <string name="txtInfoAddUser">Bitte Benutzername und Passwort eingeben</string>
+  <string name="txtDataUpdated">Daten wurden aktualisiert</string>
+  <string name="txtLoading">Wird geladen …</string>
+  <string name="txtDialogsContentDelete">Möchten Sie diesen Entwurf löschen?</string>
+  <string name="txtDialogsContentInfoSave">Produkt wurde lokal gespeichert und kann im Offline Bearbeiten-Menü überarbeitet werden</string>
+  <string name="txtBarcodeRequire">Strichcode erforderlich</string>
+  <string name="txtOk">OK</string>
+  <string name="txtContentDialogUploading">Bitte warten bis der Vorgang abgeschlossen ist...</string>
+  <string name="txtAbout">Die hochgeladenen Fotos werden unter der freien Lizenz Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen veröffentlicht.</string>
+  <string name="txtAllsent">Produkte hochgeladen</string>
+  <string name="txtPalm">Das Produkt beinhaltet kein Palmöl</string>
+  <string name="txtBarcodeNotValid">Strichcode ungültig</string>
   <string name="try_it_scan_now">Produkt scannen</string>
   <string name="share">Teilen</string>
-  <string name="msg_share">Sieh dir dieses Produkt auf Open Food Facts an:</string>
+  <string name="msg_share">Sehen Sie sich dieses Produkt auf Open Food Facts an:</string>
   <string name="create_account">Registrieren</string>
   <string name="home_drawer">Startseite</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="search_drawer">Suchen</string>
   <string name="search_by_barcode_drawer">Nach Strichcode suchen</string>
-  <string name="search_by_name_drawer">Nach Namen suchen</string>
+  <string name="search_by_name_drawer">Nach Name suchen</string>
   <string name="scan_search">Einscannen</string>
   <string name="user_drawer">Benutzer</string>
   <string name="offline_edit_drawer">Offline bearbeiten</string>
-  <string name="txt_anonymous">Anonymous</string>
-  <string name="txt_product_not_found">Produkt nicht gefunden</string>
+  <string name="txt_anonymous">Anonym</string>
+  <string name="txt_product_not_found">Keine Produkte gefunden</string>
   <string name="delete_txt">Löschen</string>
-  <string name="sign_in_drawer">Einloggen</string>
+  <string name="sign_in_drawer">Anmelden</string>
   <string name="alert_drawer">Allergen-Alarm</string>
   <string name="warning_allergens">Enthält Allergene</string>
   <string name="title_dialog_alert">Alarm hinzufügen</string>
-  <string name="warning_alert_data">Deine Allergie-Daten sind auf keinem Fall zu dem Open Food Facts Server gesendet. Zusätzlich musst du darüber bewust sein, dass die gelieferten Daten nicht 100% richtig sein können, deshalb ist eine doppelte Prüfung immer empfohlen!</string>
+  <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an den Open Food Facts Server gesendet. Seien Sie vorsichtig! Die Daten sind möglicherweise nicht immer 100% richtig. Prüfen Sie deshalb bitte selbst noch einmal nach!</string>
   <string name="from_gallery">Aus Galerie</string>
   <string name="product_sent">Produkt hochgeladen!</string>
   <string name="action_edit_product">Produkt bearbeiten</string>
   <string name="title_info_dialog">Information</string>
-  <string name="text_offline_info_dialog">Du kannst Produkte einscannen wenn du offline bist um sie später zu Open Food Facts hoch zu laden. Alle Produkte die du scanst werden hier aufgelistet damit du sie über den untenstehenden Button hochladen kannst.</string>
-  <string name="permission_camera">Die Kamera-Berechtigung wird benötigt, um Barcodes zu scannen und Fotos zu machen.</string>
+  <string name="text_offline_info_dialog">Sie können Produkte einscannen, wenn Sie offline sind, um sie später zu Open Food Facts hoch zu laden. Alle Produkte, die Sie scannen werden hier aufgelistet, damit Sie sie über die unten stehende Schaltfläche hochladen können.</string>
+  <string name="permission_camera">Die Kamera-Berechtigung wird benötigt, um Strichcodes zu scannen und Fotos zu machen.</string>
   <string name="permission_title">Berechtigungs-Informationen</string>
-  <string name="permission_denied">Bitte Berechtigung in den Einstellungen konfigurieren</string>
+  <string name="permission_denied">Bitte Berechtigung in den Einstellungen aktivieren</string>
   <string name="permission_storage">Die Speicher-Berechtigung wird benötigt, um Fotos zu machen und hochzuladen.</string>
-  <string name="info_download_data">Um diese Funktion durchfüḧren zu lassen, müssen einige Daten heruntergeladen werden. Bitte drücke Ja, um den Download zu starten.</string>
-  <string name="info_download_data_connection">Um diese Funktion durchfüḧren zu lassen, müssen einige Daten heruntergeladen werden. Bitte aktiviere deine Internetverbindung.</string>
-  <string name="msg_input_empty">Bitte zuerst die Felder eingeben</string>
-  <string name="new_offline_info">Nimm bitte ein Bild von dem Produkt, von den Zutaten, den Nährwertangaben und jeder anderen Information auf dem Etikett auf. Danke!</string>
-  <string name="error_invalid_password">Das Passwort muss eine mindestens 6 Zeichen lang sein.</string>
-  <string name="error_field_required">Das Feld ist erforderlich</string>
+  <string name="info_download_data">Um diese Funktion zu aktivieren, müssen einige Daten heruntergeladen werden. Bitte drücken Sie Ja, um den Download zu starten.</string>
+  <string name="info_download_data_connection">Um diese Funktion zu aktivieren, müssen einige Daten heruntergeladen werden. Bitte aktivieren Sie Ihre Internetverbindung.</string>
+  <string name="msg_input_empty">Bitte zuerst die Felder ausfüllen</string>
+  <string name="new_offline_info">Nehmen Sie bitte Bilder vom Produkt, den Zutaten, den Nährwertangaben und jeder anderen Information auf dem Etikett auf. Danke!</string>
+  <string name="error_invalid_password">Das Passwort muss mindestens 6 Zeichen lang sein.</string>
+  <string name="error_field_required">Das Feld ist erforderlich.</string>
   <string name="action_preferences">Einstellungen</string>
   <string name="prefs_scan_startup">Scannen beim Starten</string>
-  <string name="prefs_scan_startup_summary">Wenn diese Option eingeschaltet ist, wird die App beim öffnen einen Scan durchführen.</string>
-  <string name="prefs_power_mode">Power mode scan</string>
-  <string name="prefs_power_mode_summary">Schneller Produk-scan im Supermarkt um heraus zu finden welche Produkte nicht in der Datenbank sind.</string>
+  <string name="prefs_scan_startup_summary">Wenn diese Option eingeschaltet ist, wird die App beim Öffnen einen Scan durchführen.</string>
+  <string name="prefs_power_mode">Schnelles Scannen</string>
+  <string name="prefs_power_mode_summary">Scannen Sie schnell Produkte im Supermarkt um zu sehen, welche Produkte noch nicht in der Datenbank sind.</string>
   <string name="prefs_language">Sprache</string>
-  <string name="prefs_language_summary">Sprache wählen</string>
+  <string name="prefs_language_summary">Sprache ändern</string>
   <string name="scan_history_drawer">Verlauf</string>
   <string name="clear_history">Verlauf löschen</string>
   <string name="title_clear_history_dialog">Leeren</string>
-  <string name="text_clear_history_dialog">Möchtest du den gesamten Scan-Verlauf löschen?</string>
+  <string name="text_clear_history_dialog">Möchten Sie den gesamten Scan-Verlauf löschen?</string>
   <string name="export_csv_history">Als CSV Exportieren</string>
   <string name="txt_exporting_history">Exportiere Verlauf…</string>
-  <string name="txt_history_exported">Verlauf Exportiert</string>
-  <string name="permision_write_external_storage">Berechtigung zum Lesen von SD-Karten-Inhalten ist erforderlich um den Verlauf zu exportieren.</string>
+  <string name="txt_history_exported">Verlauf exportiert</string>
+  <string name="permision_write_external_storage">Berechtigung zum Schreiben der SD-Karte ist erforderlich, um den Verlauf zu exportieren.</string>
   <string name="txt_nutrition_not_found">k.A.</string>
   <string name="nutrition_carbohydrate">Kohlenhydrate</string>
   <string name="nutrition_carbohydrate_short_name">Kohlenhydrate (g)</string>
@@ -241,22 +242,26 @@
   <string name="nutrition_satured_fat">Gesättigte Fette</string>
   <string name="nutrition_satured_fat_short_name">Gesättigte Fette (g)</string>
   <string name="nutrition_serving">Pro Portion</string>
-  <string name="nutrition_serving_size">Portiongröße:</string>
+  <string name="nutrition_serving_size">Portionsgröße:</string>
   <string name="nutrition_sodium">Natrium</string>
   <string name="nutrition_sodium_short_name">Natrium (g)</string>
   <string name="nutrition_sugars">Zucker</string>
   <string name="nutrition_sugars_short_name">Zucker (g)</string>
   <string name="nutrition_trans_fat">Transfette</string>
   <string name="nutrition_trans_fat_short_name">Transfette (g)</string>
-  <string name="nutriment_serving_size">Pro Portion</string>
+  <string name="nutriment_serving_size">Pro Portion:</string>
   <string name="action_manage_account">Konto verwalten</string>
-  <string name="action_contributes">Deine Beiträge</string>
+  <string name="action_contributes">Ihre Beiträge</string>
   <string name="website">https://world-de.openfoodfacts.org/</string>
   <string name="website_contribute">https://world-de.openfoodfacts.org/contribute</string>
   <string name="website_discover">https://world-de.openfoodfacts.org/discover</string>
   <string name="website_product">https://world-de.openfoodfacts.org/produkt/</string>
   <string name="website_contributor">https://world-de.openfoodfacts.org/beitragszahler/</string>
-  <string name="logout_drawer">Ausloggen</string>
-  <string name="contribution_without_account">Deine Beiträge durch Einloggen oder durch die Erfassung eines Kontos einfach speichern</string>
-  <string name="textCarbonFootprint">"Carbon Footprint / CO2-Emissionen: "</string>
+  <string name="logout_drawer">Abmelden</string>
+  <string name="contribution_without_account">Sie können sich anmelden oder ein Konto erstellen, um Ihre Beiträge zu speichern</string>
+  <string name="textCarbonFootprint">"Ökologischer Fußabdruck / CO2-Emissionen: "</string>
+  <string name="txtDialogPowerMode">Schnellansicht</string>
+  <string name="txtSeeMore">Mehr sehen</string>
+  <string name="action_search">Suchen</string>
+  <string name="search_hint">Ein Produkt suchen</string>
 </resources>

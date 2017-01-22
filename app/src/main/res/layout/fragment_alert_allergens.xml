@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:src="@drawable/ic_plus_white_48dp"
-        fab:fab_colorNormal="@color/primary"
-        fab:fab_colorPressed="@color/primary_dark"
-        fab:fab_colorRipple="@color/primary_light"
+        fab:fab_colorNormal="@color/blue"
+        fab:fab_colorPressed="@color/blue_500"
+        fab:fab_colorRipple="@color/blue_300"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
