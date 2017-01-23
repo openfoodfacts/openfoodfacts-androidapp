@@ -54,7 +54,7 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
         button.setOnClickListener(v -> {
             mAllergens.remove(holder.getAdapterPosition());
             allergen.setEnable("false");
-            Utils.getAppDaoSession(mActivity).getAllergenDao().insert(allergen);
+            Utils.getAppDaoSession(mActivity).getAllergenDao().update(allergen);
             notifyItemRemoved(holder.getAdapterPosition());
         });
     }
