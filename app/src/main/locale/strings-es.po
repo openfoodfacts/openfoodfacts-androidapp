@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-17 13:22+0100\n"
+"POT-Creation-Date: 2017-01-23 09:40+0100\n"
 "PO-Revision-Date: 2017-01-02 03:39+0000\n"
 "Last-Translator: Ricardo Alanis <Unknown>\n"
 "Language: es\n"
@@ -70,11 +70,6 @@ msgstr "Nutrición"
 msgctxt "nav_drawer_items_product:3"
 msgid "Nutrition Table"
 msgstr "Tabla Nutricional"
-
-#. Nav Drawer Product Menu Items
-msgctxt "nav_drawer_items_product:4"
-msgid "Back to menu"
-msgstr "Volver al menú"
 
 #. Text units
 msgctxt "units_array:0"
@@ -498,16 +493,19 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr "Niveles de nutrientes por cada 100g :"
 
+#, fuzzy
 msgctxt "txtNutritionLevelLow"
-msgid "low"
+msgid "in low quantity"
 msgstr "bajo"
 
+#, fuzzy
 msgctxt "txtNutritionLevelModerate"
-msgid "moderate"
+msgid "in moderate quantity"
 msgstr "moderado"
 
+#, fuzzy
 msgctxt "txtNutritionLevelHigh"
-msgid "high"
+msgid "in high quantity"
 msgstr "elevado"
 
 msgctxt "txtLogin"
@@ -549,20 +547,24 @@ msgctxt "txtToastSaved"
 msgid "User saved"
 msgstr "Usuario guardado"
 
+#, fuzzy
 msgctxt "txtSalt"
-msgid "Salt :"
+msgid "Salt"
 msgstr "Sal :"
 
+#, fuzzy
 msgctxt "txtFat"
-msgid "Fat :"
+msgid "Fat"
 msgstr "Grasas :"
 
+#, fuzzy
 msgctxt "txtSugars"
-msgid "Sugars :"
+msgid "Sugars"
 msgstr "Azúcares :"
 
+#, fuzzy
 msgctxt "txtSaturatedFat"
-msgid "Satured fat :"
+msgid "Satured fat"
 msgstr "Grasas saturada :"
 
 msgctxt "hintBarcode"
@@ -787,8 +789,9 @@ msgctxt "sign_in_drawer"
 msgid "Sign-in"
 msgstr "Acceder"
 
+#, fuzzy
 msgctxt "alert_drawer"
-msgid "Allergen Alert"
+msgid "Allergen alert"
 msgstr "Advertencia de Alergeno"
 
 msgctxt "warning_allergens"
@@ -813,8 +816,9 @@ msgctxt "from_gallery"
 msgid "From gallery"
 msgstr "Desde la galería"
 
+#, fuzzy
 msgctxt "product_sent"
-msgid "Product sent!"
+msgid "Product sent successfully"
 msgstr "Producto enviado"
 
 msgctxt "action_edit_product"
@@ -908,9 +912,10 @@ msgctxt "prefs_power_mode"
 msgid "Power mode scan"
 msgstr ""
 
+#, fuzzy
 msgctxt "prefs_power_mode_summary"
 msgid ""
-"Quickly scan products in a supermarket to see which one are not in the "
+"Quickly scan products in a supermarket to see which ones are not in the "
 "database."
 msgstr ""
 "Scanea productos rápidamente en un supermercado para ver cuales no están "
@@ -1094,14 +1099,17 @@ msgctxt "website_contribute"
 msgid "https://world.openfoodfacts.org/contribute"
 msgstr "https://world-es.openfoodfacts.org/contribuir"
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir
 msgctxt "website_discover"
 msgid "https://world.openfoodfacts.org/discover"
 msgstr "https://world-es.openfoodfacts.org/descubrir"
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/produit/
 msgctxt "website_product"
 msgid "https://world.openfoodfacts.org/product/"
 msgstr "https://world.openfoodfacts.org/product/"
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/
 msgctxt "website_contributor"
 msgid "https://world.openfoodfacts.org/contributor/"
 msgstr "https://world.openfoodfacts.org/contributor/"

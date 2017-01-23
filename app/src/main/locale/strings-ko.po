@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-17 13:22+0100\n"
+"POT-Creation-Date: 2017-01-23 09:40+0100\n"
 "PO-Revision-Date: 2016-12-30 13:49+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: ko\n"
@@ -70,11 +70,6 @@ msgstr "영양"
 msgctxt "nav_drawer_items_product:3"
 msgid "Nutrition Table"
 msgstr ""
-
-#. Nav Drawer Product Menu Items
-msgctxt "nav_drawer_items_product:4"
-msgid "Back to menu"
-msgstr "메뉴로 돌아가기"
 
 #. Text units
 msgctxt "units_array:0"
@@ -498,16 +493,19 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr ""
 
+#, fuzzy
 msgctxt "txtNutritionLevelLow"
-msgid "low"
+msgid "in low quantity"
 msgstr ""
 
+#, fuzzy
 msgctxt "txtNutritionLevelModerate"
-msgid "moderate"
+msgid "in moderate quantity"
 msgstr ""
 
+#, fuzzy
 msgctxt "txtNutritionLevelHigh"
-msgid "high"
+msgid "in high quantity"
 msgstr ""
 
 msgctxt "txtLogin"
@@ -546,20 +544,24 @@ msgctxt "txtToastSaved"
 msgid "User saved"
 msgstr ""
 
+#, fuzzy
 msgctxt "txtSalt"
-msgid "Salt :"
+msgid "Salt"
 msgstr ""
 
+#, fuzzy
 msgctxt "txtFat"
-msgid "Fat :"
+msgid "Fat"
 msgstr ""
 
+#, fuzzy
 msgctxt "txtSugars"
-msgid "Sugars :"
+msgid "Sugars"
 msgstr ""
 
+#, fuzzy
 msgctxt "txtSaturatedFat"
-msgid "Satured fat :"
+msgid "Satured fat"
 msgstr ""
 
 msgctxt "hintBarcode"
@@ -778,8 +780,9 @@ msgctxt "sign_in_drawer"
 msgid "Sign-in"
 msgstr ""
 
+#, fuzzy
 msgctxt "alert_drawer"
-msgid "Allergen Alert"
+msgid "Allergen alert"
 msgstr ""
 
 msgctxt "warning_allergens"
@@ -801,8 +804,9 @@ msgctxt "from_gallery"
 msgid "From gallery"
 msgstr ""
 
+#, fuzzy
 msgctxt "product_sent"
-msgid "Product sent!"
+msgid "Product sent successfully"
 msgstr ""
 
 msgctxt "action_edit_product"
@@ -883,9 +887,10 @@ msgctxt "prefs_power_mode"
 msgid "Power mode scan"
 msgstr ""
 
+#, fuzzy
 msgctxt "prefs_power_mode_summary"
 msgid ""
-"Quickly scan products in a supermarket to see which one are not in the "
+"Quickly scan products in a supermarket to see which ones are not in the "
 "database."
 msgstr ""
 
@@ -1065,14 +1070,17 @@ msgctxt "website_contribute"
 msgid "https://world.openfoodfacts.org/contribute"
 msgstr ""
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir
 msgctxt "website_discover"
 msgid "https://world.openfoodfacts.org/discover"
 msgstr ""
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/produit/
 msgctxt "website_product"
 msgid "https://world.openfoodfacts.org/product/"
 msgstr ""
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/
 msgctxt "website_contributor"
 msgid "https://world.openfoodfacts.org/contributor/"
 msgstr ""
