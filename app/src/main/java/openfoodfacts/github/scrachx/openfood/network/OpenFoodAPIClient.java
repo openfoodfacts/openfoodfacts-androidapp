@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.orm.SugarRecord;
 import com.squareup.picasso.Picasso;
 
 import net.steamcrafted.loadtoast.LoadToast;
@@ -31,8 +30,10 @@ import java.util.concurrent.TimeUnit;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import okhttp3.OkHttpClient;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
 import openfoodfacts.github.scrachx.openfood.models.AllergenRestResponse;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
+import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.Search;
@@ -56,6 +57,9 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class OpenFoodAPIClient {
 
+    private AllergenDao mAllergenDao;
+    private HistoryProductDao mHistoryProductDao;
+
     private static final JacksonConverterFactory jacksonConverterFactory = JacksonConverterFactory.create();
 
     private final static OkHttpClient httpClient = new OkHttpClient.Builder()
@@ -64,8 +68,10 @@ public class OpenFoodAPIClient {
 
     private final OpenFoodAPIService apiService;
 
-    public OpenFoodAPIClient(Context context) {
-        this(context.getString(R.string.openfoodUrl));
+    public OpenFoodAPIClient(Activity activity) {
+        this(activity.getString(R.string.openfoodUrl));
+        mAllergenDao = Utils.getAppDaoSession(activity).getAllergenDao();
+        mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
     }
 
     private OpenFoodAPIClient(String apiUrl) {
@@ -214,7 +220,7 @@ public class OpenFoodAPIClient {
                         ImageView imgNutriscore = (ImageView) dialog.getCustomView().findViewById(R.id.imageGrade);
                         TextView quantityProduct = (TextView) dialog.getCustomView().findViewById(R.id.textQuantityProduct);
                         TextView brandProduct = (TextView) dialog.getCustomView().findViewById(R.id.textBrandProduct);
-                        
+
                         if(product.getQuantity() != null && !product.getQuantity().trim().isEmpty()) {
                             quantityProduct.setText(Html.fromHtml("<b>" + activity.getResources().getString(R.string.txtQuantity) + "</b>" + ' ' + product.getQuantity()));
                         } else {
@@ -316,8 +322,7 @@ public class OpenFoodAPIClient {
                     return;
                 }
 
-                SugarRecord.saveInTx(response.body().getAllergens());
-
+                mAllergenDao.insertInTx(response.body().getAllergens());
                 onAllergensCallback.onAllergensResponse(true);
             }
 
@@ -381,31 +386,31 @@ public class OpenFoodAPIClient {
 
         apiService.saveImage(image.getCode(), image.getField(), image.getImguploadFront(), image.getImguploadIngredients(), image.getImguploadNutrition())
                 .enqueue(new Callback<JsonNode>() {
-            @Override
-            public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
-                if(!response.isSuccess()) {
-                    Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                    lt.error();
-                    return;
-                }
+                    @Override
+                    public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
+                        if(!response.isSuccess()) {
+                            Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
+                            lt.error();
+                            return;
+                        }
 
-                JsonNode body = response.body();
-                if (body == null || !body.isObject()) {
-                    lt.error();
-                } else if (body.get("status").asText().contains("status not ok")) {
-                    Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
-                    lt.error();
-                } else {
-                    lt.success();
-                }
-            }
+                        JsonNode body = response.body();
+                        if (body == null || !body.isObject()) {
+                            lt.error();
+                        } else if (body.get("status").asText().contains("status not ok")) {
+                            Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
+                            lt.error();
+                        } else {
+                            lt.success();
+                        }
+                    }
 
-            @Override
-            public void onFailure(Call<JsonNode> call, Throwable t) {
-                Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                lt.error();
-            }
-        });
+                    @Override
+                    public void onFailure(Call<JsonNode> call, Throwable t) {
+                        Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
+                        lt.error();
+                    }
+                });
     }
 
     @NonNull
@@ -436,10 +441,12 @@ public class OpenFoodAPIClient {
      * Create an history product asynchronously
      */
     private class HistoryTask extends AsyncTask<Product, Void, Void> {
+
         @Override
         protected Void doInBackground(Product... products) {
             Product product = products[0];
-            List<HistoryProduct> historyProducts = HistoryProduct.find(HistoryProduct.class, "barcode = ?", product.getCode());
+
+            List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode())).list();
             HistoryProduct hp;
             if(historyProducts.size() == 1) {
                 hp = historyProducts.get(0);
@@ -447,7 +454,7 @@ public class OpenFoodAPIClient {
             } else {
                 hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageFrontUrl(), product.getCode());
             }
-            hp.save();
+            mHistoryProductDao.insertOrReplace(hp);
 
             return null;
         }

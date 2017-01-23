@@ -23,8 +23,9 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
     public TextView txtBrands;
     public ImageView imgProduct;
     public ImageButton imgShare;
+    public Activity mActivity;
 
-    public HistoryScanHolder(final View itemView, final String productUrl) {
+    public HistoryScanHolder(final View itemView, final String productUrl, Activity activity) {
         super(itemView);
         cv = (CardView) itemView.findViewById(R.id.cardViewHistory);
         txtTitle = (TextView) itemView.findViewById(R.id.titleHistory);
@@ -32,6 +33,7 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
         txtBrands = (TextView) itemView.findViewById(R.id.brandsHistory);
         imgProduct = (ImageView) itemView.findViewById(R.id.imgHistoryProduct);
         imgShare = (ImageButton) itemView.findViewById(R.id.iconShareHistory);
+        mActivity = activity;
 
         imgShare.setOnClickListener(view -> {
             String url = " " + productUrl + txtBarcode.getText();
@@ -49,7 +51,7 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
             if(isConnected) {
-                OpenFoodAPIClient api = new OpenFoodAPIClient(v.getContext());
+                OpenFoodAPIClient api = new OpenFoodAPIClient(mActivity);
                 api.getProduct(txtBarcode.getText().toString(), (Activity) v.getContext());
             }
         });
