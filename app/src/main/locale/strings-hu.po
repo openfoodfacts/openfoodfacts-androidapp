@@ -6,22 +6,23 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  openfoodfacts\n"
+"Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-01-17 13:22+0100\n"
-"PO-Revision-Date: 2016-12-30 13:50+0000\n"
-"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
-"Language: hu\n"
+"PO-Revision-Date: 2017-01-23 04:54+0000\n"
+"Last-Translator: eaposztrof <e@eaposztrof.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(((n == 1)) ? 0 : 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-01-23 08:00+0000\n"
+"X-Generator: Launchpad (build 18302)\n"
+"Language: hu\n"
 "Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
 msgid "Open Food"
-msgstr ""
+msgstr "Open Food (Nyílt Étel)"
 
 msgctxt "hello_world"
 msgid "Hello world!"
@@ -29,32 +30,32 @@ msgstr "Helló világ!"
 
 msgctxt "action_settings"
 msgid "Settings"
-msgstr ""
+msgstr "Beállítások"
 
 msgctxt "action_about"
 msgid "About"
-msgstr ""
+msgstr "Névjegy"
 
 msgctxt "action_discover"
 msgid "Discover"
-msgstr ""
+msgstr "Feltárás"
 
 msgctxt "contribute"
 msgid "How to contribute"
-msgstr ""
+msgstr "Hogyan segíthet"
 
 msgctxt "action_find"
 msgid "Find"
-msgstr ""
+msgstr "Keres"
 
 msgctxt "text_barcode"
 msgid "Type the barcode :"
-msgstr ""
+msgstr "Vonalkód beírása"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
 msgid "Summary"
-msgstr ""
+msgstr "Áttekintés"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:1"
@@ -64,42 +65,42 @@ msgstr "Össztevők"
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:2"
 msgid "Nutrition"
-msgstr ""
+msgstr "Tápanyag"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:3"
 msgid "Nutrition Table"
-msgstr ""
+msgstr "Tápanyag táblázat"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:4"
 msgid "Back to menu"
-msgstr ""
+msgstr "Vissza a menübe"
 
 #. Text units
 msgctxt "units_array:0"
 msgid "g"
-msgstr ""
+msgstr "g"
 
 #. Text units
 msgctxt "units_array:1"
 msgid "mg"
-msgstr ""
+msgstr "mg"
 
 #. Text units
 msgctxt "units_array:2"
 msgid "kg"
-msgstr ""
+msgstr "kg"
 
 #. Text units
 msgctxt "units_array:3"
 msgid "l"
-msgstr ""
+msgstr "l"
 
 #. Text units
 msgctxt "units_array:4"
 msgid "ml"
-msgstr ""
+msgstr "ml"
 
 #. Text units
 msgctxt "lang_array:0"
@@ -252,62 +253,61 @@ msgid "da"
 msgstr "da"
 
 #. Text units
-#, fuzzy
 msgctxt "lang_array:30"
 msgid "zh-rCN"
-msgstr "zh_rCN"
+msgstr "zh-rCN"
 
 msgctxt "lang_label_array:0"
 msgid "English"
-msgstr ""
+msgstr "Angol"
 
 msgctxt "lang_label_array:1"
 msgid "French"
-msgstr ""
+msgstr "Francia"
 
 msgctxt "lang_label_array:2"
 msgid "Spanish"
-msgstr ""
+msgstr "Spanyol"
 
 msgctxt "lang_label_array:3"
 msgid "Italian"
-msgstr ""
+msgstr "Olasz"
 
 msgctxt "lang_label_array:4"
 msgid "German"
-msgstr ""
+msgstr "Német"
 
 msgctxt "lang_label_array:5"
 msgid "Japanese"
-msgstr ""
+msgstr "Japán"
 
 msgctxt "lang_label_array:6"
 msgid "Russian"
-msgstr ""
+msgstr "Orosz"
 
 msgctxt "lang_label_array:7"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugál"
 
 msgctxt "lang_label_array:8"
 msgid "Swedish"
-msgstr ""
+msgstr "Svéd"
 
 msgctxt "lang_label_array:9"
 msgid "Burmese"
-msgstr ""
+msgstr "Burmai"
 
 msgctxt "lang_label_array:10"
 msgid "Kazakh"
-msgstr ""
+msgstr "Kazah"
 
 msgctxt "lang_label_array:11"
 msgid "Armenian"
-msgstr ""
+msgstr "Örmény"
 
 msgctxt "lang_label_array:12"
 msgid "Greek"
-msgstr ""
+msgstr "Görög"
 
 msgctxt "lang_label_array:13"
 msgid "Hebrew"
@@ -315,7 +315,7 @@ msgstr "Héber"
 
 msgctxt "lang_label_array:14"
 msgid "Galician"
-msgstr ""
+msgstr "Galíciai"
 
 msgctxt "lang_label_array:15"
 msgid "Catalan"
@@ -335,15 +335,15 @@ msgstr "Finn"
 
 msgctxt "lang_label_array:19"
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 msgctxt "lang_label_array:20"
 msgid "Kabyle"
-msgstr ""
+msgstr "Kabije"
 
 msgctxt "lang_label_array:21"
 msgid "Korean"
-msgstr ""
+msgstr "Kóreai"
 
 msgctxt "lang_label_array:22"
 msgid "Latvian"
@@ -355,7 +355,7 @@ msgstr "Holland"
 
 msgctxt "lang_label_array:24"
 msgid "Brazilian portuguese"
-msgstr ""
+msgstr "Brazil portugál"
 
 msgctxt "lang_label_array:25"
 msgid "Romanian"
@@ -375,19 +375,19 @@ msgstr "Norvég (Bokmål)"
 
 msgctxt "lang_label_array:29"
 msgid "Danish"
-msgstr ""
+msgstr "Dán"
 
 msgctxt "lang_label_array:30"
 msgid "Simplified Chinese"
-msgstr ""
+msgstr "Egyszerűsített kínai"
 
 msgctxt "images_array:0"
 msgid "Default"
-msgstr ""
+msgstr "Alapértelmezett"
 
 msgctxt "images_array:1"
 msgid "Nutrition"
-msgstr ""
+msgstr "Tápanyag"
 
 msgctxt "images_array:2"
 msgid "Ingredients"
@@ -396,27 +396,27 @@ msgstr "Össztevők"
 #. Content Description
 msgctxt "search_button"
 msgid "Search"
-msgstr ""
+msgstr "Keres"
 
 msgctxt "no_products"
 msgid "Products not found"
-msgstr ""
+msgstr "Hiányzó termékek"
 
 msgctxt "desc_list_item_icon"
 msgid "Item Icon"
-msgstr ""
+msgstr "Termék ikon"
 
 msgctxt "alert_dialog_warning_title"
 msgid "Warning"
-msgstr ""
+msgstr "Figyelem"
 
 msgctxt "alert_dialog_warning_msg_user"
 msgid "User/password has changed, please update information"
-msgstr ""
+msgstr "Felhasználó/jelszó megváltozott, frissítse az információt"
 
 msgctxt "alert_dialog_product_error_msg"
 msgid "Product not found, please try again"
-msgstr ""
+msgstr "Termék nem található, próbálja újra"
 
 msgctxt "toast_retrieving"
 msgid "Loading..."
@@ -424,151 +424,153 @@ msgstr "Betöltés…"
 
 msgctxt "txtBarcode"
 msgid "Barcode :"
-msgstr ""
+msgstr "Vonalkód:"
 
 msgctxt "txtQuantity"
 msgid "Quantity :"
-msgstr ""
+msgstr "Mennyiség:"
 
 msgctxt "txtPackaging"
 msgid "Packaging :"
-msgstr ""
+msgstr "Csomagolás:"
 
 msgctxt "txtBrands"
 msgid "Brands :"
-msgstr ""
+msgstr "Márkák:"
 
 msgctxt "txtCategories"
 msgid "Categories :"
-msgstr ""
+msgstr "Kategóriák:"
 
 msgctxt "txtLabels"
 msgid "Labels, certifications, awards :"
-msgstr ""
+msgstr "Címkék, tanúsítványok, kitüntetések:"
 
 msgctxt "txtManufacturing"
 msgid "Manufacturing or processing places :"
-msgstr ""
+msgstr "Gyártás, vagy feldolgozás helye:"
 
 msgctxt "txtIngredientsOrigins"
 msgid "Origin of ingredients :"
-msgstr ""
+msgstr "Összetevők származása:"
 
 msgctxt "txtCity"
 msgid "City, state and country where purchased :"
-msgstr ""
+msgstr "Vásárlás helye (város, állam vagy ország):"
 
 msgctxt "txtStores"
 msgid "Stores :"
-msgstr ""
+msgstr "Boltok:"
 
 msgctxt "txtCountries"
 msgid "Countries where sold :"
-msgstr ""
+msgstr "Országokban kapható:"
 
 msgctxt "txtIngredients"
 msgid "Ingredients list :"
-msgstr ""
+msgstr "Összetétel listája:"
 
 msgctxt "txtSubstances"
 msgid "Substances or products causing allergies or intolerances :"
-msgstr ""
+msgstr "Allergén, vagy irritáló termékek, alkotóanyagok:"
 
 msgctxt "txtAdditives"
 msgid "Additives :"
-msgstr ""
+msgstr "Adalékok:"
 
 msgctxt "txtTraces"
 msgid "Traces :"
-msgstr ""
+msgstr "Nyomokban tartalmazhat:"
 
 msgctxt "txtMayBeFromPalmOilProduct"
 msgid "Ingredients that may be from palm oil :"
-msgstr ""
+msgstr "Lehetséges pálmaolaj származék összetevők:"
 
 msgctxt "txtPalmOilProduct"
 msgid "Ingredients from palm oil :"
-msgstr ""
+msgstr "Pálmaolaj származék összetevők:"
 
 msgctxt "txtServingSize"
 msgid "Serving size :"
-msgstr ""
+msgstr "Egy adag:"
 
 msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
-msgstr ""
+msgstr "Tápanyagszint 100 grammban:"
 
 msgctxt "txtNutritionLevelLow"
 msgid "low"
-msgstr ""
+msgstr "alacsony"
 
 msgctxt "txtNutritionLevelModerate"
 msgid "moderate"
-msgstr ""
+msgstr "közepes"
 
 msgctxt "txtNutritionLevelHigh"
 msgid "high"
-msgstr ""
+msgstr "magas"
 
 msgctxt "txtLogin"
 msgid "Login :"
-msgstr ""
+msgstr "Bejelentkezés:"
 
 msgctxt "txtPass"
 msgid "Password :"
-msgstr "Jelszó :"
+msgstr "Jelszó:"
 
 msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
-msgstr ""
+msgstr "Tedd nyílttá ételed és tudd mit eszel"
 
 msgctxt "txtHome"
 msgid ""
 "Open Food Facts is a open database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find"
-" on product labels."
+"allergens, nutrition facts and all the tidbits of information we can find on "
+"product labels."
 msgstr ""
+"Open Food Facts (Nyílt Élelmiszer Tények) élelmiszer termékek nyílt "
+"adatbázisa összetétellel, allergén információval, tápanyag tényekkel és "
+"minden címkén fellelhető kiegészítő információval."
 
-#, fuzzy
 msgctxt "txtSave"
 msgid "Save"
-msgstr ""
+msgstr "Mentés"
 
 msgctxt "txtSignIn"
 msgid "Sign in"
-msgstr ""
+msgstr "Bejelentkezés"
 
 msgctxt "txtUser"
 msgid "User panel"
-msgstr ""
+msgstr "Felhasználói felület"
 
 msgctxt "txtToastSaved"
 msgid "User saved"
-msgstr ""
+msgstr "Felhasználó mentve"
 
 msgctxt "txtSalt"
 msgid "Salt :"
-msgstr ""
+msgstr "Só:"
 
 msgctxt "txtFat"
 msgid "Fat :"
-msgstr ""
+msgstr "Zsír:"
 
 msgctxt "txtSugars"
 msgid "Sugars :"
-msgstr ""
+msgstr "Cukrok:"
 
 msgctxt "txtSaturatedFat"
 msgid "Satured fat :"
-msgstr ""
+msgstr "Telített zsírok:"
 
 msgctxt "hintBarcode"
 msgid "Barcode"
-msgstr ""
+msgstr "Vonalkód"
 
 msgctxt "hintLogin"
 msgid "Login"
-msgstr ""
+msgstr "Bejelentkezés"
 
 msgctxt "hintPass"
 msgid "Password"
@@ -576,85 +578,88 @@ msgstr "Jelszó"
 
 msgctxt "errorLogin"
 msgid "Login or password error"
-msgstr ""
+msgstr "Bejelentkezési hiba"
 
 msgctxt "errorWeb"
-msgid "We were not able to access the internet. Do you have connectivity issues?"
-msgstr ""
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
+msgstr "Internet csatlakozási problémák."
 
 msgctxt "txtInfoLoginOk"
 msgid "User saved"
-msgstr ""
+msgstr "Felhasználó mentve"
 
 msgctxt "txtInfoLoginNo"
 msgid "User not saved"
-msgstr ""
+msgstr "Felhasználó nem lett mentve"
 
 msgctxt "txtDialogsTitle"
 msgid "Information"
-msgstr ""
+msgstr "Információ"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you "
-"want to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
 msgstr ""
+"Gratulálunk! A termék még nem található az Open Food Facts adatbázisában. "
+"Hozzáadjuk most?"
 
 msgctxt "txtDialogsContentPowerMode"
 msgid "The product you scanned does already exist in Open Food Facts."
-msgstr ""
+msgstr "Ez a termék megtalálható az Open Food Facts adatbázisában."
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
-msgstr ""
+msgstr "Feltöltjük a mentett terméket az adatbázisba?"
 
 msgctxt "txtYes"
 msgid "Yes"
-msgstr ""
+msgstr "Igen"
 
 msgctxt "txtNo"
 msgid "No"
-msgstr ""
+msgstr "Nem"
 
 msgctxt "hintNameProduct"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "hintEnergy"
 msgid "Energy in kJ per serving"
-msgstr ""
+msgstr "Energia kJ-ban adagonként"
 
 msgctxt "hintEnergyUnit"
 msgid "Energy unit"
-msgstr ""
+msgstr "Energia egység"
 
 msgctxt "hintWeight"
 msgid "Weight"
-msgstr ""
+msgstr "Tömeg"
 
 msgctxt "hintStores"
 msgid "Store"
-msgstr ""
+msgstr "Bolt"
 
 msgctxt "hintBrand"
 msgid "Brand"
-msgstr ""
+msgstr "Márka"
 
 msgctxt "txtTakePicture"
 msgid "Take picture"
-msgstr ""
+msgstr "Fotó készítése"
 
 msgctxt "txtSendAll"
 msgid "Upload all"
-msgstr ""
+msgstr "Összes feltöltése"
 
 msgctxt "txtNoData"
 msgid "No data"
-msgstr ""
+msgstr "Nincs adat"
 
 msgctxt "txtPictureNeeded"
 msgid "Please take a picture first"
-msgstr ""
+msgstr "Fotó szükséges"
 
 msgctxt "toastSending"
 msgid "Uploading..."
@@ -662,15 +667,15 @@ msgstr "Feltöltés..."
 
 msgctxt "dataSaved"
 msgid "Saved locally on your device"
-msgstr ""
+msgstr "Elmentve az eszközre"
 
 msgctxt "txtInfoAddUser"
 msgid "Please enter your login and password"
-msgstr ""
+msgstr "Felhasználónév és jelszó megadása"
 
 msgctxt "txtDataUpdated"
 msgid "Data updated"
-msgstr ""
+msgstr "Adatok frissítve"
 
 msgctxt "txtLoading"
 msgid "Loading..."
@@ -678,140 +683,146 @@ msgstr "Betöltés…"
 
 msgctxt "txtDialogsContentDelete"
 msgid "Do you want to delete this draft?"
-msgstr ""
+msgstr "Piszkozat törlése?"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
+"A termék el lett mentve az eszközre, szerkeszthető az Offline Szerkesztés "
+"menüből"
 
 msgctxt "txtBarcodeRequire"
 msgid "Barcode required"
-msgstr ""
+msgstr "Vonalkód szükséges"
 
 msgctxt "txtOk"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "txtContentDialogUploading"
 msgid "Please don't exit during the process..."
-msgstr ""
+msgstr "Folyamatban... NE lépjen ki."
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative "
-"Commons Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
 msgstr ""
+"A képek Creative Commons Nevezd meg és Így add tovább szabad licenc alatt "
+"kerülnek elküldésre"
 
 msgctxt "txtAllsent"
 msgid "Products sent"
-msgstr ""
+msgstr "Termék elküldve"
 
 msgctxt "txtPalm"
 msgid "The product does not contain any palm oil"
-msgstr ""
+msgstr "a termék ne tartalmaz pálmaolajat"
 
 msgctxt "txtBarcodeNotValid"
 msgid "Barcode not valid"
-msgstr ""
+msgstr "Helytelen vonalkód"
 
 msgctxt "try_it_scan_now"
 msgid "Scan product"
-msgstr ""
+msgstr "Termék beolvasása"
 
 msgctxt "share"
 msgid "Share"
-msgstr ""
+msgstr "Megosztás"
 
 msgctxt "msg_share"
 msgid "Look at this product on Open Food Facts :"
-msgstr ""
+msgstr "Termék keresése az Open Food Facts adatbázisban:"
 
 msgctxt "create_account"
 msgid "Sign up"
-msgstr ""
+msgstr "Regisztráció"
 
 msgctxt "home_drawer"
 msgid "Home"
-msgstr ""
+msgstr "Kezdőlap"
 
 msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
-msgstr ""
+msgstr "Open Beauty Facts (Nyílt Szépség Tények)"
 
 msgctxt "search_drawer"
 msgid "Search"
-msgstr ""
+msgstr "Keres"
 
 msgctxt "search_by_barcode_drawer"
 msgid "Search by barcode"
-msgstr ""
+msgstr "Keresés vonalkód alapján"
 
 msgctxt "search_by_name_drawer"
 msgid "Search by name"
-msgstr ""
+msgstr "Keresés név szerint"
 
 msgctxt "scan_search"
 msgid "Scan"
-msgstr ""
+msgstr "Beolvasás"
 
 msgctxt "user_drawer"
 msgid "User"
-msgstr ""
+msgstr "Felhasználó"
 
 msgctxt "offline_edit_drawer"
 msgid "Offline edit"
-msgstr ""
+msgstr "Offline szerkesztés"
 
 msgctxt "txt_anonymous"
 msgid "Anonymous"
-msgstr ""
+msgstr "Anonymous"
 
 msgctxt "txt_product_not_found"
 msgid "Products not found"
-msgstr ""
+msgstr "Hiányzó termékek"
 
 msgctxt "delete_txt"
 msgid "Delete"
-msgstr ""
+msgstr "Törlés"
 
 msgctxt "sign_in_drawer"
 msgid "Sign-in"
-msgstr ""
+msgstr "Bejelentkezés"
 
 msgctxt "alert_drawer"
 msgid "Allergen Alert"
-msgstr ""
+msgstr "Allergén Figyelmeztetés"
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
-msgstr ""
+msgstr "Allergént tartalmaz"
 
 msgctxt "title_dialog_alert"
 msgid "Add alert"
-msgstr ""
+msgstr "Figyelmeztetés felvétele"
 
 msgctxt "warning_alert_data"
 msgid ""
-"Your allergies info will never be sent to the Open Food Facts server. "
-"Also, be careful that data may not be accurate, please double-check by "
-"yourself!"
+"Your allergies info will never be sent to the Open Food Facts server. Also, "
+"be careful that data may not be accurate, please double-check by yourself!"
 msgstr ""
+"A személyes allergén információk nem kerülnek feltöltésre az Open Food Facts "
+"szerverére. Érdemes ellenőrizni az adatok helytállóságát."
 
 msgctxt "from_gallery"
 msgid "From gallery"
-msgstr ""
+msgstr "Galériából"
 
 msgctxt "product_sent"
 msgid "Product sent!"
-msgstr ""
+msgstr "Termék elküldve!"
 
 msgctxt "action_edit_product"
 msgid "Edit product"
-msgstr ""
+msgstr "Termék szerkesztés"
 
 msgctxt "title_info_dialog"
 msgid "Information"
-msgstr ""
+msgstr "Információ"
 
 msgctxt "text_offline_info_dialog"
 msgid ""
@@ -819,119 +830,130 @@ msgid ""
 "later. All the products you scan will appear here, and you'll be able to "
 "send them using the button below."
 msgstr ""
+"Offline beolvasás is lehetséges az Open Food Facts adatbázisba való későbbi "
+"feltöltéshez. Minden itt megjelenő termék beküldhető az alábbi gomb "
+"megnyomásával."
 
 msgctxt "permission_camera"
 msgid "Camera permission is needed to scan barcodes and take pictures."
 msgstr ""
+"Kamerához jogosultság szükséges a vonalkód-olvasáshoz és termékfotózásoz."
 
 msgctxt "permission_title"
 msgid "Permission information"
-msgstr ""
+msgstr "Jogosultság információ"
 
 msgctxt "permission_denied"
 msgid "Please activate permission in the settings"
-msgstr ""
+msgstr "A beállításokan engedélyezni kell a jogosultságot"
 
 msgctxt "permission_storage"
 msgid "Storage permission is needed to take or select pictures"
-msgstr ""
+msgstr "Tárhely jogosultság szükséges képek készítéséhez és kiválasztásához."
 
 msgctxt "info_download_data"
 msgid ""
 "You need to download some data to get this functionality working, please "
 "press yes to download it."
 msgstr ""
+"További adatok letöltésére van szükség ezen funkció használatához. Kívánja "
+"most letölteni?"
 
 msgctxt "info_download_data_connection"
 msgid ""
 "You need to download some data to get this functionality working. Please "
 "activate internet connection."
 msgstr ""
+"További adatok letöltésére van szükség ezen funkció használatához. Kérjük "
+"tegye lehetővé a kapcsolatot."
 
 msgctxt "msg_input_empty"
 msgid "Please fill the fields first."
-msgstr ""
+msgstr "Mezők kitöltése szükséges."
 
 msgctxt "new_offline_info"
 msgid ""
-"Please take a picture of the product, ingredients, nutrition facts table "
-"and any other information on the label. Thank you!"
+"Please take a picture of the product, ingredients, nutrition facts table and "
+"any other information on the label. Thank you!"
 msgstr ""
+"Kérjük készítsen képet a termékről, összetételről, tápanyagtáblázatról, és "
+"minden címkén található információról. Köszönjük!"
 
 #. Strings related to login
 msgctxt "error_invalid_password"
 msgid "The password needs to be a least 6 characters long."
-msgstr ""
+msgstr "Legalább 6 karakter hosszúságú jelszó szükséges."
 
 msgctxt "error_field_required"
 msgid "This field is required."
-msgstr ""
+msgstr "Szükséges mező."
 
 msgctxt "action_preferences"
 msgid "Preferences"
-msgstr ""
+msgstr "Tulajdonságok"
 
 msgctxt "prefs_scan_startup"
 msgid "Scan on startup"
-msgstr ""
+msgstr "Beolvasás induláskor."
 
 msgctxt "prefs_scan_startup_summary"
 msgid "This option if selected will start scan when app is opened."
-msgstr ""
+msgstr "Ez esetben alkalmazásindításkor a beolvasó jelenik meg."
 
 msgctxt "prefs_power_mode"
 msgid "Power mode scan"
-msgstr ""
+msgstr "Gyors beolvasás"
 
 msgctxt "prefs_power_mode_summary"
 msgid ""
 "Quickly scan products in a supermarket to see which one are not in the "
 "database."
 msgstr ""
+"Gyors egymásutáni beolvasás az adatbázisban fellelhetőség kiderítéséhez."
 
 msgctxt "prefs_language"
 msgid "Language"
-msgstr ""
+msgstr "Nyelv"
 
 msgctxt "prefs_language_summary"
 msgid "Change language"
-msgstr ""
+msgstr "Nyelv megváltoztatása"
 
 msgctxt "scan_history_drawer"
 msgid "History"
-msgstr ""
+msgstr "Előzmények"
 
 msgctxt "clear_history"
 msgid "Clear history"
-msgstr ""
+msgstr "Előzmények törlése"
 
 msgctxt "title_clear_history_dialog"
 msgid "Clear"
-msgstr ""
+msgstr "Törlés"
 
 msgctxt "text_clear_history_dialog"
 msgid "Do you want to clear all scan history?"
-msgstr ""
+msgstr "Az összes beolvasási előzmény törlése?"
 
 msgctxt "export_csv_history"
 msgid "Export CSV"
-msgstr ""
+msgstr "CSV export"
 
 msgctxt "txt_exporting_history"
 msgid "Exporting history..."
-msgstr ""
+msgstr "Előzmény export..."
 
 msgctxt "txt_history_exported"
 msgid "History exported"
-msgstr ""
+msgstr "Előzmény exportálva"
 
 msgctxt "permision_write_external_storage"
 msgid "Write external storage permission is needed to export history."
-msgstr ""
+msgstr "Tárhelyre írási jogosultság szükséges az előzmény exportálásához."
 
 msgctxt "txt_nutrition_not_found"
 msgid "N/A"
-msgstr ""
+msgstr "Nincs adat"
 
 #. Nutrition info tab
 msgctxt "nutrition_carbohydrate"
@@ -940,15 +962,15 @@ msgstr "Szénhidrát"
 
 msgctxt "nutrition_carbohydrate_short_name"
 msgid "Carbohydrate (g)"
-msgstr ""
+msgstr "Szénhidrát (g)"
 
 msgctxt "nutrition_cholesterol"
 msgid "Cholesterol"
-msgstr ""
+msgstr "Koleszterin"
 
 msgctxt "nutrition_cholesterol_short_name"
 msgid "Cholesterol (g)"
-msgstr ""
+msgstr "Koleszterin (g)"
 
 msgctxt "nutrition_energy"
 msgid "Energy"
@@ -964,7 +986,7 @@ msgstr "Zsír"
 
 msgctxt "nutrition_fat_short_name"
 msgid "Fat (g)"
-msgstr ""
+msgstr "Zsír (g)"
 
 msgctxt "nutrition_fiber"
 msgid "Dietary fiber"
@@ -972,7 +994,7 @@ msgstr "Élelmi rost"
 
 msgctxt "nutrition_fiber_short_name"
 msgid "Dietary fiber (g)"
-msgstr ""
+msgstr "Élelmi rost (g)"
 
 msgctxt "nutrition_header"
 msgid "Nutrition facts"
@@ -980,11 +1002,11 @@ msgstr "Tápanyag ismertető"
 
 msgctxt "nutrition_no_data_message"
 msgid "No data is available for this product"
-msgstr ""
+msgstr "Nincs elérhető adat a termékről"
 
 msgctxt "nutrition_per_quantity"
 msgid "For 100g/100ml"
-msgstr ""
+msgstr "100g/100ml-ben"
 
 msgctxt "nutrition_proteins"
 msgid "Proteins"
@@ -992,7 +1014,7 @@ msgstr "Fehérje"
 
 msgctxt "nutrition_proteins_short_name"
 msgid "Proteins (g)"
-msgstr ""
+msgstr "Fehérje (g)"
 
 msgctxt "nutrition_salt"
 msgid "Salt"
@@ -1000,23 +1022,23 @@ msgstr "Só"
 
 msgctxt "nutrition_salt_short_name"
 msgid "Salt (g)"
-msgstr ""
+msgstr "Só (g)"
 
 msgctxt "nutrition_satured_fat"
 msgid "Satured fat"
-msgstr ""
+msgstr "Telített zsír"
 
 msgctxt "nutrition_satured_fat_short_name"
 msgid "Satured fat (g)"
-msgstr ""
+msgstr "Telített zsír (g)"
 
 msgctxt "nutrition_serving"
 msgid "Per serving"
-msgstr ""
+msgstr "Adagonként"
 
 msgctxt "nutrition_serving_size"
 msgid "Serving size :"
-msgstr ""
+msgstr "Adag:"
 
 msgctxt "nutrition_sodium"
 msgid "Sodium"
@@ -1028,23 +1050,23 @@ msgstr "Nátrium (g)"
 
 msgctxt "nutrition_sugars"
 msgid "Sugars"
-msgstr ""
+msgstr "Cukrok"
 
 msgctxt "nutrition_sugars_short_name"
 msgid "Sugars (g)"
-msgstr ""
+msgstr "Cukrok (g)"
 
 msgctxt "nutrition_trans_fat"
 msgid "Trans fat"
-msgstr ""
+msgstr "Transzzsír"
 
 msgctxt "nutrition_trans_fat_short_name"
 msgid "Trans fat (g)"
-msgstr ""
+msgstr "Transzzsír (g)"
 
 msgctxt "nutriment_serving_size"
 msgid "Per portion :"
-msgstr ""
+msgstr "Adagonként"
 
 msgctxt "action_manage_account"
 msgid "Manage account"
@@ -1052,65 +1074,63 @@ msgstr "Fiók kezelése"
 
 msgctxt "action_contributes"
 msgid "Your contributions"
-msgstr ""
+msgstr "Saját közreműködések"
 
 #. website translated pages
 #. For fr, Replace by https://world-fr.openfoodfacts.org/
 msgctxt "website"
 msgid "https://world.openfoodfacts.org/"
-msgstr ""
+msgstr "https://world-hu.openfoodfacts.org/"
 
 #. For fr, Replace by https://world-fr.openfoodfacts.org/contribuer
 msgctxt "website_contribute"
 msgid "https://world.openfoodfacts.org/contribute"
-msgstr ""
+msgstr "https://world-hu.openfoodfacts.org/contribute"
 
 msgctxt "website_discover"
 msgid "https://world.openfoodfacts.org/discover"
-msgstr ""
+msgstr "https://world-hu.openfoodfacts.org/discover"
 
 msgctxt "website_product"
 msgid "https://world.openfoodfacts.org/product/"
-msgstr ""
+msgstr "https://world-hu.openfoodfacts.org/product/"
 
 msgctxt "website_contributor"
 msgid "https://world.openfoodfacts.org/contributor/"
-msgstr ""
+msgstr "https://world-hu.openfoodfacts.org/contributor/"
 
 msgctxt "logout_drawer"
 msgid "Logout"
-msgstr ""
+msgstr "Kijelentkezés"
 
 msgctxt "contribution_without_account"
 msgid "You can sign-in or create an account to keep your contributions"
-msgstr ""
+msgstr "Közreműködések megőrzéséhez bejelentkezés szükséges."
 
 msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
-msgstr ""
+msgstr "Ökológiai lábnyom/CO2 kibocsájtás "
 
-#, fuzzy
 msgctxt "txtDialogPowerMode"
 msgid "Quick view"
-msgstr ""
+msgstr "Gyorsnézet"
 
 msgctxt "txtSeeMore"
 msgid "See more"
-msgstr ""
+msgstr "Továbbiak"
 
 msgctxt "action_search"
 msgid "Search"
-msgstr ""
+msgstr "Keres"
 
 msgctxt "search_hint"
 msgid "Search a product"
-msgstr ""
+msgstr "Termék keresése"
 
 msgctxt "number_of_results"
 msgid "Number of results :"
-msgstr ""
+msgstr "Találatok száma"
 
 msgctxt "txt_no_results"
 msgid "No results found"
-msgstr ""
-
+msgstr "Nincs találat"
