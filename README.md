@@ -91,6 +91,10 @@ The project is initially started by [Scot Scriven](https://github.com/itchix), o
 
 Feel free to fork the project and send us a pull request.
 
+Here's a few list of bugs:
+- Very high impact: https://github.com/openfoodfacts/OpenFoodFacts-androidApp/labels/very%20high%20impact
+- https://github.com/openfoodfacts/OpenFoodFacts-androidApp/labels/priority
+
 ## Copyright and License
 
     Copyright 2016 Open Food Facts
