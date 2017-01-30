@@ -28,17 +28,12 @@ public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType == TYPE_ITEM) {
-            View v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.nutriment_item_list, parent, false);
-            return new NutrimentsRecyclerViewAdapter.NutrimentViewHolder(v);
-        } else if (viewType == TYPE_HEADER) {
-            View v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.nutriment_item_list_header, parent, false);
-            return new NutrimentsRecyclerViewAdapter.NutrimentHeaderViewHolder(v);
-        }
+        boolean isViewTypeHeader = viewType == TYPE_HEADER;
 
-        throw new RuntimeException("there is no type that matches the type " + viewType + " + make sure your using types correctly");
+        int layoutResourceId = isViewTypeHeader ? R.layout.nutriment_item_list_header : R.layout.nutriment_item_list;
+        View v = LayoutInflater.from(parent.getContext()).inflate(layoutResourceId, parent, false);
+
+        return isViewTypeHeader ? new NutrimentHeaderViewHolder(v) : new NutrimentViewHolder(v);
     }
 
     @Override
