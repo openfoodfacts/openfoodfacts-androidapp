@@ -13,7 +13,6 @@
     <item>Inhaltsstoffe</item>
     <item>Nährwertangaben</item>
     <item>Nährwerttabelle</item>
-    <item>Zurück zum Menü</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -119,9 +118,9 @@
   <string name="txtPalmOilProduct">Aus Palmöl hergestellte Zutaten:</string>
   <string name="txtServingSize">Portiongröße:</string>
   <string name="txtNutrientLevel100g">Nährwertgehalt pro 100g:</string>
-  <string name="txtNutritionLevelLow">gering</string>
-  <string name="txtNutritionLevelModerate">mäßig</string>
-  <string name="txtNutritionLevelHigh">hoch</string>
+  <string name="txtNutritionLevelLow">in geringer Menge</string>
+  <string name="txtNutritionLevelModerate">in mäßiger Menge</string>
+  <string name="txtNutritionLevelHigh">in hoher Menge</string>
   <string name="txtLogin">Benutzername:</string>
   <string name="txtPass">Passwort :</string>
   <string name="txtTitleHome">Öffnen Sie Ihr Essen und lernen Sie was Sie essen</string>
@@ -130,10 +129,10 @@
   <string name="txtSignIn">Anmelden</string>
   <string name="txtUser">Benutzerprofil</string>
   <string name="txtToastSaved">Benutzer gespeichert</string>
-  <string name="txtSalt">Salz:</string>
-  <string name="txtFat">Fett:</string>
-  <string name="txtSugars">Zucker:</string>
-  <string name="txtSaturatedFat">gesättigte Fettsäuren:</string>
+  <string name="txtSalt">Salz</string>
+  <string name="txtFat">Fett</string>
+  <string name="txtSugars">Zucker</string>
+  <string name="txtSaturatedFat">Gesättigte Fette</string>
   <string name="hintBarcode">Strichcode</string>
   <string name="hintLogin">Benutzername</string>
   <string name="hintPass">Passwort</string>
@@ -192,7 +191,7 @@
   <string name="title_dialog_alert">Alarm hinzufügen</string>
   <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an den Open Food Facts Server gesendet. Seien Sie vorsichtig! Die Daten sind möglicherweise nicht immer 100% richtig. Prüfen Sie deshalb bitte selbst noch einmal nach!</string>
   <string name="from_gallery">Aus Galerie</string>
-  <string name="product_sent">Produkt hochgeladen!</string>
+  <string name="product_sent">Produkt hochgeladen.</string>
   <string name="action_edit_product">Produkt bearbeiten</string>
   <string name="title_info_dialog">Information</string>
   <string name="text_offline_info_dialog">Sie können Produkte einscannen, wenn Sie offline sind, um sie später zu Open Food Facts hoch zu laden. Alle Produkte, die Sie scannen werden hier aufgelistet, damit Sie sie über die unten stehende Schaltfläche hochladen können.</string>
@@ -210,7 +209,7 @@
   <string name="prefs_scan_startup">Scannen beim Starten</string>
   <string name="prefs_scan_startup_summary">Wenn diese Option eingeschaltet ist, wird die App beim Öffnen einen Scan durchführen.</string>
   <string name="prefs_power_mode">Schnelles Scannen</string>
-  <string name="prefs_power_mode_summary">Scannen Sie schnell Produkte im Supermarkt um zu sehen, welche Produkte noch nicht in der Datenbank sind.</string>
+  <string name="prefs_power_mode_summary">Schnell Produkte im Supermarkt scannen, um zu sehen welche noch nicht in der Datenbank vorhanden sind.</string>
   <string name="prefs_language">Sprache</string>
   <string name="prefs_language_summary">Sprache ändern</string>
   <string name="scan_history_drawer">Verlauf</string>
@@ -264,4 +263,67 @@
   <string name="txtSeeMore">Mehr sehen</string>
   <string name="action_search">Suchen</string>
   <string name="search_hint">Ein Produkt suchen</string>
+  <string name="number_of_results">Anzahl der Ergebnisse:</string>
+  <string name="txt_no_results">Keine Ergebnisse gefunden</string>
+  <string name="nutrition_lactose">Laktose</string>
+  <string name="nutrition_casein">Casein</string>
+  <string name="nutrition_maltodextrins">Maltodextrine</string>
+  <string name="nutrition_serum_proteins">Serumproteine</string>
+  <string name="nutrition_nucleotides">Nukleotide</string>
+  <string name="for_100g">Für 100 g</string>
+  <string name="serving">Pro Portion</string>
+  <string name="minerals">Mineralien</string>
+  <string name="nutrition_calcium">Kalzium</string>
+  <string name="nutrition_potassium">Kalium</string>
+  <string name="nutrition_chlore">Chlor</string>
+  <string name="nutrition_magnesium">Magnesium</string>
+  <string name="nutrition_taurine">Taurin</string>
+  <string name="nutrition_monounsaturatedFat">Einfch ungesättigte Fette</string>
+  <string name="nutrition_polyunsaturatedFat">Mehrfach ungesättigte Fette</string>
+  <string name="nutrition_omega3">Omega 3</string>
+  <string name="nutrition_omega6">Omega 6</string>
+  <string name="nutrition_omega9">Omega 9</string>
+  <string name="nutrition_sucrose">Saccharose</string>
+  <string name="nutrition_glucose">Glukose</string>
+  <string name="nutrition_fructose">Fruktose</string>
+  <string name="nutrition_maltose">Maltose</string>
+  <string name="nutrition_alcohol">Alkohol</string>
+  <string name="nutrition_vitamins">Vitamine</string>
+  <string name="vitamin_a">Vitamin A</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
+  <string name="vitamin_c">Vitamin C</string>
+  <string name="vitamin_b1">Vitamin B1</string>
+  <string name="vitamin_b2">Vitamin B2</string>
+  <string name="vitamin_pp">Vitamin PP</string>
+  <string name="vitamin_b6">Vitamin B6</string>
+  <string name="vitamin_b9">Vitamin B9</string>
+  <string name="vitamin_b12">Vitamin B12</string>
+  <string name="biotin">Biotin</string>
+  <string name="pantothenic_acid">Pantothensäure</string>
+  <string name="nutrition_minerals">Mineralien</string>
+  <string name="silica">Siliziumdioxid</string>
+  <string name="bicarbonate">Bicarbonate</string>
+  <string name="potassium">Kalium</string>
+  <string name="chloride">Chlor</string>
+  <string name="calcium">Kalzium</string>
+  <string name="phosphorus">Phosphor</string>
+  <string name="iron">Eisen</string>
+  <string name="magnesium">Magnesium</string>
+  <string name="zinc">Zink</string>
+  <string name="copper">Kupfer</string>
+  <string name="manganese">Mangan</string>
+  <string name="fluoride">Fluoride</string>
+  <string name="selenium">Selen</string>
+  <string name="chromium">Chrom</string>
+  <string name="molybdenum">Molybdän</string>
+  <string name="iodine">Jod</string>
+  <string name="caffeine">Koffein</string>
+  <string name="taurine">Taurin</string>
+  <string name="ph">Ph</string>
+  <string name="fruits_vegetables_nuts">Früchte, Gemüse, Nüsse</string>
+  <string name="collagen_meat_protein_ratio">Kollagenwert</string>
+  <string name="cocoa">Kakao</string>
+  <string name="chlorophyl">Chlorophyll</string>
 </resources>
