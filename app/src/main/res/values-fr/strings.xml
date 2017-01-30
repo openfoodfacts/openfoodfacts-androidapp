@@ -5,6 +5,7 @@
   <string name="action_settings">Paramètres</string>
   <string name="action_about">À propos</string>
   <string name="action_discover">Découvrir</string>
+  <string name="contribute">Comment contribuer ?</string>
   <string name="action_find">Chercher</string>
   <string name="text_barcode">Saisissez le code-barre :</string>
   <string-array name="nav_drawer_items_product">
@@ -12,7 +13,6 @@
     <item>Ingrédients</item>
     <item>Nutrition</item>
     <item>Tableau nutritionnel</item>
-    <item>Retour au menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -52,26 +52,26 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>anglais</item>
-    <item>français</item>
-    <item>espagnol</item>
-    <item>italien</item>
-    <item>allemand</item>
-    <item>japonais</item>
-    <item>russe</item>
-    <item>portugais</item>
-    <item>suédois</item>
-    <item>birman</item>
-    <item>kazakh</item>
-    <item>arménien</item>
-    <item>grec</item>
-    <item>hébreu</item>
-    <item>galicien</item>
-    <item>catalan</item>
-    <item>tchèque</item>
+    <item>Anglais</item>
+    <item>Français</item>
+    <item>Espagnol</item>
+    <item>Italien</item>
+    <item>Allemand</item>
+    <item>Japonais</item>
+    <item>Russe</item>
+    <item>Portugais</item>
+    <item>Suédois</item>
+    <item>Birman</item>
+    <item>Kazakh</item>
+    <item>Arménien</item>
+    <item>Grec</item>
+    <item>Hébreu</item>
+    <item>Galicien</item>
+    <item>Catalan</item>
+    <item>Tchèque</item>
     <item>arabe</item>
     <item>finnois</item>
     <item>hindi</item>
@@ -84,8 +84,8 @@
     <item>suédois</item>
     <item>chinois</item>
     <item>norvégien (Bokmal)</item>
-    <item>danois</item>
-    <item>chinois simplifié</item>
+    <item>Danois</item>
+    <item>Chinois simplifié</item>
   </string-array>
   <string-array name="images_array">
     <item>Defaut</item>
@@ -102,7 +102,7 @@
   <string name="txtBarcode">Code barre :</string>
   <string name="txtQuantity">Quantité :</string>
   <string name="txtPackaging">Conditionnement :</string>
-  <string name="txtBrands">Marques :</string>
+  <string name="txtBrands">Magasins :</string>
   <string name="txtCategories">Catégories :</string>
   <string name="txtLabels">Labels, certifications, récompenses :</string>
   <string name="txtManufacturing">Lieux de fabrication ou de transformation :</string>
@@ -125,14 +125,14 @@
   <string name="txtPass">Mot de passe :</string>
   <string name="txtTitleHome">Ouvrez votre nourriture pour savoir ce que vous mangez</string>
   <string name="txtHome">Open Food Facts est une base de données ouverte de produits alimentaires contenant les ingrédients, les allergènes, les informations nutritionnelles et toutes les bribes d\'informations que nous pouvons trouver sur les étiquettes des produits.</string>
-  <string name="txtSave">Envoyer/Enregistrer</string>
+  <string name="txtSave">Enregistrer</string>
   <string name="txtSignIn">Se connecter</string>
   <string name="txtUser">Panneau utilisateur</string>
   <string name="txtToastSaved">Utilisateur connecté</string>
   <string name="txtSalt">Sel</string>
-  <string name="txtFat">Matières grasses / Lipides</string>
+  <string name="txtFat">Matières grasses</string>
   <string name="txtSugars">Sucres</string>
-  <string name="txtSaturatedFat">Acides gras saturés</string>
+  <string name="txtSaturatedFat">Graisses saturées</string>
   <string name="hintBarcode">Code barre</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Mot de passe</string>
@@ -142,6 +142,7 @@
   <string name="txtInfoLoginNo">Utilisateur anonyme</string>
   <string name="txtDialogsTitle">Information</string>
   <string name="txtDialogsContent">Le produit que vous recherchez n\'existe pas dans notre base de données. Voulez-vous l\'ajouter?</string>
+  <string name="txtDialogsContentPowerMode">Le produit que vous avez scanné existe déjà dans Open Food Facts.</string>
   <string name="txtDialogsContentSend">Voulez-vous envoyer les produits enregistrés dans la base de données ?</string>
   <string name="txtYes">Oui</string>
   <string name="txtNo">Non</string>
@@ -185,12 +186,11 @@
   <string name="txt_product_not_found">Pas de produits</string>
   <string name="delete_txt">Supprimer</string>
   <string name="sign_in_drawer">Se connecter</string>
-  <string name="alert_drawer">Alertes concernant les allergènes</string>
   <string name="warning_allergens">Contient des allergènes</string>
   <string name="title_dialog_alert">Ajouter une alerte</string>
   <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilent sur le fait que ces données ne sont pas fiables à 100%. N\'hésitez pas à revérifier par vous-même !</string>
   <string name="from_gallery">Galerie photo</string>
-  <string name="product_sent">Produit envoyé !</string>
+  <string name="product_sent">Produit envoyé!</string>
   <string name="action_edit_product">Modifier le produit</string>
   <string name="title_info_dialog">Information</string>
   <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
@@ -208,7 +208,6 @@
   <string name="prefs_scan_startup">Scanner au démarrage</string>
   <string name="prefs_scan_startup_summary">Si sélectionnée, cette option lancera le scan dès l\'ouverture de l\'application.</string>
   <string name="prefs_power_mode">Mode de scan avancé</string>
-  <string name="prefs_power_mode_summary">Scannez rapidement les produits dans un supermarché pour voir lesquels ne sont pas dans la base de données.</string>
   <string name="prefs_language">Langue</string>
   <string name="prefs_language_summary">Changer la langue</string>
   <string name="scan_history_drawer">Historique</string>
@@ -258,7 +257,47 @@
   <string name="logout_drawer">Se déconnecter</string>
   <string name="contribution_without_account">Vous pouvez vous connecter ou créer un compte pour conserver vos contributions</string>
   <string name="textCarbonFootprint">"Empreinte carbone / émissions de CO2: "</string>
-  <string name="nutrition_maltodextrins">Maltodextrines</string>
-  <string name="nutrition_serum_proteins">Protéines sériques</string>
-  <string name="nutrition_chlore">Chlore</string>
+  <string name="txtDialogPowerMode">Aperçu rapide</string>
+  <string name="txtSeeMore">En voir plus</string>
+  <string name="action_search">Rechercher</string>
+  <string name="search_hint">Chercher un produit</string>
+  <string name="txt_no_results">Aucun résultat n\'a été trouvé</string>
+  <string name="nutrition_lactose">Lactose</string>
+  <string name="nutrition_casein">Caséine</string>
+  <string name="nutrition_maltodextrins">Maltodextrine</string>
+  <string name="for_100g">Pour 100 g</string>
+  <string name="serving">Par portion</string>
+  <string name="minerals">Minéraux</string>
+  <string name="nutrition_calcium">Calcium</string>
+  <string name="nutrition_potassium">Potassium</string>
+  <string name="nutrition_magnesium">Magnésium</string>
+  <string name="nutrition_taurine">Taurine</string>
+  <string name="nutrition_omega3">Oméga-3</string>
+  <string name="nutrition_omega6">Oméga-6</string>
+  <string name="nutrition_omega9">Oméga-9</string>
+  <string name="nutrition_vitamins">Vitamines</string>
+  <string name="vitamin_a">Vitamine A</string>
+  <string name="vitamin_d">Vitamine D</string>
+  <string name="vitamin_e">Vitamine E</string>
+  <string name="vitamin_c">Vitamine C</string>
+  <string name="vitamin_b1">Vitamine B1</string>
+  <string name="vitamin_b2">Vitamine B2</string>
+  <string name="vitamin_pp">Vitamine PP</string>
+  <string name="vitamin_b6">Vitamine B6</string>
+  <string name="vitamin_b9">Vitamine B9</string>
+  <string name="vitamin_b12">Vitamine B12</string>
+  <string name="potassium">Potassium</string>
+  <string name="calcium">Calcium</string>
+  <string name="phosphorus">Phosphore</string>
+  <string name="iron">Fer</string>
+  <string name="magnesium">Magnésium</string>
+  <string name="zinc">Zinc</string>
+  <string name="copper">Cuivre</string>
+  <string name="manganese">Manganèse</string>
+  <string name="selenium">Sélénium</string>
+  <string name="chromium">Chrome</string>
+  <string name="molybdenum">Molybdène</string>
+  <string name="iodine">Iode</string>
+  <string name="caffeine">Caféine</string>
+  <string name="taurine">Taurine</string>
 </resources>

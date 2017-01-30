@@ -51,7 +51,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Engleză</item>
@@ -117,21 +117,13 @@
   <string name="txtPalmOilProduct">Ingrediente provenind din ulei de palmier:</string>
   <string name="txtServingSize">Cantitatea unei porții:</string>
   <string name="txtNutrientLevel100g">Informații nutriționale pentru 100g:</string>
-  <string name="txtNutritionLevelLow">scăzut</string>
-  <string name="txtNutritionLevelModerate">moderat</string>
-  <string name="txtNutritionLevelHigh">ridicat</string>
   <string name="txtLogin">Nume de utilizator:</string>
   <string name="txtPass">Parolă:</string>
   <string name="txtTitleHome">Eliberați alimentația și aflați ce mâncați</string>
   <string name="txtHome">Open Food Facts este o bază de date deschisă de produse alimentare, conținând informații despre ingrediente, alergeni, informații nutriționale și alte detalii ce se regăsesc pe etichetele produselor.</string>
-  <string name="txtSave">Trimite / Salvează</string>
   <string name="txtSignIn">Conectare</string>
   <string name="txtUser">Panou utilizator</string>
   <string name="txtToastSaved">Utilizator salvat</string>
-  <string name="txtSalt">Sare:</string>
-  <string name="txtFat">Grăsimi:</string>
-  <string name="txtSugars">Zaharuri</string>
-  <string name="txtSaturatedFat">Grăsimi saturare</string>
   <string name="hintBarcode">Cod de bare</string>
   <string name="hintLogin">Conectați-vă</string>
   <string name="hintPass">Parolă</string>
@@ -184,12 +176,10 @@
   <string name="txt_product_not_found">Nici un produs nu a fost găsit</string>
   <string name="delete_txt">Ştergeţi</string>
   <string name="sign_in_drawer">Conectare</string>
-  <string name="alert_drawer">Alertă alergeni</string>
   <string name="warning_allergens">Conține alergeni</string>
   <string name="title_dialog_alert">Adaugare alertă</string>
   <string name="warning_alert_data">Informațiile despre alergiile dumneavostră nu vor fi trimise către Open Food Facts. Deasemenea, luați în considerare faptul că datele pot fi imprecise, întotdeauna re-verificați dumneavoastră înșivă!</string>
   <string name="from_gallery">Din galerie</string>
-  <string name="product_sent">Produsul a fost trimis!</string>
   <string name="action_edit_product">Modificare produs</string>
   <string name="title_info_dialog">Informaţii</string>
   <string name="text_offline_info_dialog">Puteți scana produse cand sunteți offline pentru a le adăuga la Open Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de dedesubt.</string>
@@ -207,7 +197,6 @@
   <string name="prefs_scan_startup">Scanare la pornire</string>
   <string name="prefs_scan_startup_summary">Această opțiune permite activarea funcției de scanare la pornirea aplicației.</string>
   <string name="prefs_power_mode">Scanare \"power mode\"</string>
-  <string name="prefs_power_mode_summary">Scanați rapid produse dintr-un supermarket pentru a descoperi pe cele care nu se regăsesc în baza de date.</string>
   <string name="prefs_language">Limbă</string>
   <string name="prefs_language_summary">Modificați limba</string>
   <string name="scan_history_drawer">Istoric</string>

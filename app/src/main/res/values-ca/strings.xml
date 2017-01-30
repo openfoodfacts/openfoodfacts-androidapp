@@ -50,7 +50,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Anglès</item>
@@ -115,21 +115,13 @@
   <string name="txtPalmOilProduct">Ingredients de l\'oli de palma :</string>
   <string name="txtServingSize">Mida de la ració :</string>
   <string name="txtNutrientLevel100g">Nivells de nutrients per cada 100g :</string>
-  <string name="txtNutritionLevelLow">baix</string>
-  <string name="txtNutritionLevelModerate">moderat</string>
-  <string name="txtNutritionLevelHigh">alt</string>
   <string name="txtLogin">Usuari :</string>
   <string name="txtPass">Contrasenya:</string>
   <string name="txtTitleHome">Obri el seu menjar i conega què menja</string>
   <string name="txtHome">Open Food Facts és una base de dades oberta de productes amb ingredients, al·lèrgens, dades nutricionals i totes les peces d\'informació que es poden trobar a les etiquetes dels productes.</string>
-  <string name="txtSave">Envia/Desa</string>
   <string name="txtSignIn">Inici de sessió</string>
   <string name="txtUser">Panell d\'usuari</string>
   <string name="txtToastSaved">Usuari desat</string>
-  <string name="txtSalt">Sal :</string>
-  <string name="txtFat">Greix :</string>
-  <string name="txtSugars">Sucres :</string>
-  <string name="txtSaturatedFat">Greix saturat :</string>
   <string name="hintBarcode">Codi de barres</string>
   <string name="hintLogin">Usuari</string>
   <string name="hintPass">Contrasenya</string>
@@ -181,12 +173,10 @@
   <string name="txt_product_not_found">No s\'han trobat els productes</string>
   <string name="delete_txt">Elimina</string>
   <string name="sign_in_drawer">Obre sessió</string>
-  <string name="alert_drawer">Alerta Al·lergen</string>
   <string name="warning_allergens">Conté al·lèrgens</string>
   <string name="title_dialog_alert">Afegir Alerta</string>
   <string name="warning_alert_data">La informació de les seues al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. També tinga cura que les dades poden no ser massa precises, per favor estiga alerta!</string>
   <string name="from_gallery">Des de la galeria</string>
-  <string name="product_sent">Producte enviat!</string>
   <string name="action_edit_product">Edita producte</string>
   <string name="title_info_dialog">Informació</string>
   <string name="text_offline_info_dialog">Pot escanejar productes fora de línia i afegir-los a Open Food Facts després. Tots els productes que escaneje apareixeran ací, i podrà enviar-los amb el botó de baix.</string>
@@ -201,7 +191,6 @@
   <string name="prefs_scan_startup">Escaneja al començament</string>
   <string name="prefs_scan_startup_summary">Si està seleccionada esta opció l\'escaneig començarà quan l\'aplicació s\'òbriga.</string>
   <string name="prefs_power_mode">Escaneig en mode power</string>
-  <string name="prefs_power_mode_summary">Escaneig ràpid de productes al supermercat per vore quins no estan a la base de dades.</string>
   <string name="prefs_language">Idioma</string>
   <string name="prefs_language_summary">Canvia idioma</string>
   <string name="scan_history_drawer">Historial</string>
@@ -243,4 +232,9 @@
   <string name="nutriment_serving_size">Per porció :</string>
   <string name="action_manage_account">Gestiona el compte</string>
   <string name="action_contributes">Les seues contribucions</string>
+  <string name="website">https://world-ca.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-ca.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-ca.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-ca.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world-ca.openfoodfacts.org/contributor/</string>
 </resources>

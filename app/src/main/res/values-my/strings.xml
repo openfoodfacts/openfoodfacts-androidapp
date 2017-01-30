@@ -49,7 +49,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>အင်္ဂလိပ်</item>
@@ -113,18 +113,11 @@
   <string name="txtPalmOilProduct">အုန္းဆီမွ ပါဝင္ပစၥည္းမ်ား -</string>
   <string name="txtServingSize">ဝန္ေဆာင္မႈအရြယ္အစား-</string>
   <string name="txtNutrientLevel100g">100 g အတြက္အာဟာရအဆင့္ -</string>
-  <string name="txtNutritionLevelLow">အနိမ့်</string>
-  <string name="txtNutritionLevelModerate">မနည်းမများသော</string>
-  <string name="txtNutritionLevelHigh">မြင့်သော</string>
   <string name="txtLogin">ဝင္ေရာက္ရန္ -</string>
   <string name="txtPass">စကားဝွက္ -</string>
   <string name="txtTitleHome">သင့္အစားအေသာက္ကိုဖြင့္ျပီး သင္ဘာစားေနသည္ကိုသိရွိပါ</string>
   <string name="txtUser">အသံုးျပဳသူ ပန္နယ္</string>
   <string name="txtToastSaved">အသံုးျပဳသူကိုသိမ္းခဲ့ျပီးျပီ</string>
-  <string name="txtSalt">ဆား -</string>
-  <string name="txtFat">အဆီ -</string>
-  <string name="txtSugars">သၾကားမ်ား -</string>
-  <string name="txtSaturatedFat">ျပည့္ဝအဆီ -</string>
   <string name="hintBarcode">ဘားကုုဒ္</string>
   <string name="hintLogin">ဝင္ေရာက္ရန္</string>
   <string name="hintPass">စကားဝွက္</string>
@@ -178,7 +171,6 @@
   <string name="warning_allergens">အလာဂ်င္ပါဝင္သည္</string>
   <string name="title_dialog_alert">သတိေပးမႈထည့္မည္</string>
   <string name="from_gallery">ဓာတ္ပံုျပခန္းမွ</string>
-  <string name="product_sent">ထုတ်ကုန်ပို့ပြီး</string>
   <string name="action_edit_product">ထုတ်ကုန်ကိုပြင်ဆင်ရန်</string>
   <string name="title_info_dialog">အချက်အလက်များ</string>
   <string name="error_field_required">ဤနေရာတွင် ဖြည့်စွက်ရန် လိုအပ်ပါသည်။</string>

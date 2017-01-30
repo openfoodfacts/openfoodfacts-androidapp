@@ -118,9 +118,6 @@
   <string name="txtPalmOilProduct">Ingredientes de aceite de palma :</string>
   <string name="txtServingSize">Tamaño da ración :</string>
   <string name="txtNutrientLevel100g">Cantidade de nutrientes por 100g :</string>
-  <string name="txtNutritionLevelLow">baixo</string>
-  <string name="txtNutritionLevelModerate">moderado</string>
-  <string name="txtNutritionLevelHigh">alto</string>
   <string name="txtLogin">Iniciar sesión :</string>
   <string name="txtPass">Contrasinal:</string>
   <string name="txtTitleHome">Abra a súa comida para coñecer o que come</string>
@@ -129,10 +126,6 @@
   <string name="txtSignIn">Iniciar sesión</string>
   <string name="txtUser">Panel do usuario</string>
   <string name="txtToastSaved">Gardouse o usuario</string>
-  <string name="txtSalt">Sal :</string>
-  <string name="txtFat">Graxas :</string>
-  <string name="txtSugars">Azucres :</string>
-  <string name="txtSaturatedFat">Graxas saturadas :</string>
   <string name="hintBarcode">Código de barras</string>
   <string name="hintLogin">Iniciar sesión</string>
   <string name="hintPass">Contrasinal</string>
@@ -186,12 +179,10 @@
   <string name="txt_product_not_found">Produtos non atopados</string>
   <string name="delete_txt">Eliminar</string>
   <string name="sign_in_drawer">Iniciar sesión</string>
-  <string name="alert_drawer">Alerta de alérxeno</string>
   <string name="warning_allergens">Contén alérxenos</string>
   <string name="title_dialog_alert">Engadir alerta</string>
   <string name="warning_alert_data">As información das súas alerxias non se enviará ao servidor de Open Food Facts. Ademais, teña tino xa que os datos poden non ser exactos. Faga unha dobre comprobación por si mesmo.</string>
   <string name="from_gallery">Da galería</string>
-  <string name="product_sent">Produto enviado</string>
   <string name="action_edit_product">Editar produto</string>
   <string name="title_info_dialog">Información</string>
   <string name="text_offline_info_dialog">Pode escanear produtos estando sen conexión e engadilos a Open Food Facts máis tarde. Todos os produtos que escanee aparecerán aquí e poderá envialos usando o botón de debaixo.</string>
@@ -209,7 +200,6 @@
   <string name="prefs_scan_startup">Escanear ao iniciar</string>
   <string name="prefs_scan_startup_summary">Se esta opción está seleccionada iniciarase o escaneo ao abrir o aplicativo</string>
   <string name="prefs_power_mode">Escaneo en modo potente</string>
-  <string name="prefs_power_mode_summary">Escanee rapidamente produtos nun supermercado para ver cales están na base de datos.</string>
   <string name="prefs_language">Idioma</string>
   <string name="prefs_language_summary">Cambiar o idioma</string>
   <string name="scan_history_drawer">Historial</string>
@@ -263,4 +253,6 @@
   <string name="txtSeeMore">Ver máis</string>
   <string name="action_search">Buscar</string>
   <string name="search_hint">Buscar un producto</string>
+  <string name="number_of_results">Número de resultados:</string>
+  <string name="txt_no_results">Sen resultados</string>
 </resources>

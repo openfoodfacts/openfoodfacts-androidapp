@@ -50,7 +50,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>الإنجليزية</item>
@@ -115,20 +115,12 @@
   <string name="txtPalmOilProduct">مكونات من زيت النخيل</string>
   <string name="txtServingSize">حجم الحصة</string>
   <string name="txtNutrientLevel100g">مستويات المواد الغذائية لـ 100غ:</string>
-  <string name="txtNutritionLevelLow">منخفض</string>
-  <string name="txtNutritionLevelModerate">معتدل</string>
-  <string name="txtNutritionLevelHigh">مرتفع</string>
   <string name="txtLogin">تسجيل الدخول:</string>
   <string name="txtPass">كلمة المرور:</string>
   <string name="txtTitleHome">افتح غذائك واعرف ما تأكله</string>
-  <string name="txtSave">إرسال / حفظ</string>
   <string name="txtSignIn">ولوج</string>
   <string name="txtUser">لوحة المستخدم</string>
   <string name="txtToastSaved">تم حفظ المستخدم</string>
-  <string name="txtSalt">ملح:</string>
-  <string name="txtFat">دهن:</string>
-  <string name="txtSugars">سكريات:ﻻ</string>
-  <string name="txtSaturatedFat">الدهون المشبعة</string>
   <string name="hintBarcode">الرمز الشريطي</string>
   <string name="hintLogin">تسجيل الدخول</string>
   <string name="hintPass">كلمة المرور</string>
@@ -204,4 +196,8 @@
   <string name="nutrition_sugars_short_name">سكريات (غ)</string>
   <string name="action_manage_account">أدر الحساب</string>
   <string name="action_contributes">مساهماتكم</string>
+  <string name="website_contribute">https://world-ar.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-ar.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-ar.openfoodfacts.org/mountaj/</string>
+  <string name="website_contributor">https://world-ar.openfoodfacts.org/almousstakhdimoun/</string>
 </resources>

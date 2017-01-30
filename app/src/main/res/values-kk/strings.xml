@@ -49,7 +49,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
@@ -118,10 +118,6 @@
   <string name="txtTitleHome">Өзіңіздің тағамыңызды ашып және не жейтініңізді біліңіз</string>
   <string name="txtUser">Пайдаланушының панельі</string>
   <string name="txtToastSaved">Пайдаланушы сақталған</string>
-  <string name="txtSalt">Тұз :</string>
-  <string name="txtFat">Май :</string>
-  <string name="txtSugars">Қант :</string>
-  <string name="txtSaturatedFat">Байытылған май :</string>
   <string name="hintBarcode">Штрих-код</string>
   <string name="hintLogin">Кіру</string>
   <string name="hintPass">Құпиясөз</string>

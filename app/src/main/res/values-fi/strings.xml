@@ -49,7 +49,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
@@ -102,12 +102,8 @@
   <string name="txtNutrientLevel100g">Ravintosisältö per 100 g:</string>
   <string name="txtLogin">Tunnus:</string>
   <string name="txtPass">Salasana:</string>
-  <string name="txtSave">Lähetä/tallenna</string>
   <string name="txtSignIn">Kirjaudu sisään</string>
   <string name="txtUser">Käyttäjäpaneeli</string>
-  <string name="txtSalt">Suola:</string>
-  <string name="txtFat">Rasva:</string>
-  <string name="txtSugars">Sokerit:</string>
   <string name="hintBarcode">Viivakoodi</string>
   <string name="hintLogin">Käyttäjätunnus</string>
   <string name="hintPass">Salasana</string>
@@ -141,7 +137,6 @@
   <string name="delete_txt">Poista</string>
   <string name="sign_in_drawer">Kirjaudu sisään</string>
   <string name="from_gallery">Galleriasta</string>
-  <string name="product_sent">Tuote lähetetty!</string>
   <string name="action_edit_product">Muokkaa tuotetta</string>
   <string name="error_invalid_password">Salasanan on oltava vähintään 6 merkkiä.</string>
   <string name="error_field_required">Tämä kenttä on pakollinen.</string>
