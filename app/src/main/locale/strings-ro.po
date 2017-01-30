@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-30 16:51+0100\n"
-"PO-Revision-Date: 2017-01-02 21:31+0000\n"
-"Last-Translator: lucaa <Unknown>\n"
+"POT-Creation-Date: 2017-01-30 17:13+0100\n"
+"PO-Revision-Date: 2017-01-14 17:42+0000\n"
+"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: ro\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "Plural-Forms: nplurals=3; plural=((((!((0 == 0))) || ((n == 0))) || "
@@ -249,10 +249,9 @@ msgid "da"
 msgstr "da"
 
 #. Text units
-#, fuzzy
 msgctxt "lang_array:30"
 msgid "zh-rCN"
-msgstr "zh_rCN"
+msgstr ""
 
 msgctxt "lang_label_array:0"
 msgid "English"
@@ -497,20 +496,17 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr "Informații nutriționale pentru 100g:"
 
-#, fuzzy
 msgctxt "txtNutritionLevelLow"
 msgid "in low quantity"
-msgstr "scăzut"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelModerate"
 msgid "in moderate quantity"
-msgstr "moderat"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelHigh"
 msgid "in high quantity"
-msgstr "ridicat"
+msgstr ""
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -534,10 +530,9 @@ msgstr ""
 "conținând informații despre ingrediente, alergeni, informații "
 "nutriționale și alte detalii ce se regăsesc pe etichetele produselor."
 
-#, fuzzy
 msgctxt "txtSave"
 msgid "Save"
-msgstr "Trimite / Salvează"
+msgstr ""
 
 msgctxt "txtSignIn"
 msgid "Sign in"
@@ -551,25 +546,21 @@ msgctxt "txtToastSaved"
 msgid "User saved"
 msgstr "Utilizator salvat"
 
-#, fuzzy
 msgctxt "txtSalt"
 msgid "Salt"
-msgstr "Sare:"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtFat"
 msgid "Fat"
-msgstr "Grăsimi:"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtSugars"
 msgid "Sugars"
-msgstr "Zaharuri"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtSaturatedFat"
 msgid "Satured fat"
-msgstr "Grăsimi saturare"
+msgstr ""
 
 msgctxt "hintBarcode"
 msgid "Barcode"
@@ -798,7 +789,7 @@ msgstr "Conectare"
 #, fuzzy
 msgctxt "alert_drawer"
 msgid "Allergen alert"
-msgstr "Alertă alergeni"
+msgstr ""
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
@@ -825,7 +816,7 @@ msgstr "Din galerie"
 #, fuzzy
 msgctxt "product_sent"
 msgid "Product sent successfully"
-msgstr "Produsul a fost trimis!"
+msgstr ""
 
 msgctxt "action_edit_product"
 msgid "Edit product"
@@ -927,8 +918,6 @@ msgid ""
 "Quickly scan products in a supermarket to see which ones are not in the "
 "database."
 msgstr ""
-"Scanați rapid produse dintr-un supermarket pentru a descoperi pe cele "
-"care nu se regăsesc în baza de date."
 
 msgctxt "prefs_language"
 msgid "Language"
@@ -1135,7 +1124,6 @@ msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
 msgstr "Amprenta carbon / Emisii CO2 "
 
-#, fuzzy
 msgctxt "txtDialogPowerMode"
 msgid "Quick view"
 msgstr ""

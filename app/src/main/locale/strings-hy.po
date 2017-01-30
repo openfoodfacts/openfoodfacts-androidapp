@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-30 16:51+0100\n"
+"POT-Creation-Date: 2017-01-30 17:13+0100\n"
 "PO-Revision-Date: 2016-12-30 14:04+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: hy\n"
@@ -247,10 +247,9 @@ msgid "da"
 msgstr "da"
 
 #. Text units
-#, fuzzy
 msgctxt "lang_array:30"
 msgid "zh-rCN"
-msgstr "zh_rCN"
+msgstr ""
 
 msgctxt "lang_label_array:0"
 msgid "English"
@@ -493,17 +492,14 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr "Սննդանյութերի մակարդակը 100 գրամում՝"
 
-#, fuzzy
 msgctxt "txtNutritionLevelLow"
 msgid "in low quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelModerate"
 msgid "in moderate quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelHigh"
 msgid "in high quantity"
 msgstr ""
@@ -527,7 +523,6 @@ msgid ""
 " on product labels."
 msgstr ""
 
-#, fuzzy
 msgctxt "txtSave"
 msgid "Save"
 msgstr ""
@@ -544,25 +539,21 @@ msgctxt "txtToastSaved"
 msgid "User saved"
 msgstr "Օգտվողը պահպանվել է"
 
-#, fuzzy
 msgctxt "txtSalt"
 msgid "Salt"
-msgstr "Աղեր՝"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtFat"
 msgid "Fat"
-msgstr "Ճարպ՝"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtSugars"
 msgid "Sugars"
-msgstr "Շաքարներ՝"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtSaturatedFat"
 msgid "Satured fat"
-msgstr "Հագեցած ճարպ՝"
+msgstr ""
 
 msgctxt "hintBarcode"
 msgid "Barcode"
@@ -1101,7 +1092,6 @@ msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
 msgstr ""
 
-#, fuzzy
 msgctxt "txtDialogPowerMode"
 msgid "Quick view"
 msgstr ""

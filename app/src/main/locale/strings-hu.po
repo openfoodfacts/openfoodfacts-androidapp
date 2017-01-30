@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-30 16:51+0100\n"
+"POT-Creation-Date: 2017-01-30 17:13+0100\n"
 "PO-Revision-Date: 2017-01-23 04:54+0000\n"
 "Last-Translator: eaposztrof <e@eaposztrof.com>\n"
 "Language: hu\n"
@@ -492,20 +492,17 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr "Tápanyagszint 100 grammban:"
 
-#, fuzzy
 msgctxt "txtNutritionLevelLow"
 msgid "in low quantity"
-msgstr "alacsony"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelModerate"
 msgid "in moderate quantity"
-msgstr "közepes"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelHigh"
 msgid "in high quantity"
-msgstr "magas"
+msgstr ""
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -545,25 +542,21 @@ msgctxt "txtToastSaved"
 msgid "User saved"
 msgstr "Felhasználó mentve"
 
-#, fuzzy
 msgctxt "txtSalt"
 msgid "Salt"
-msgstr "Só:"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtFat"
 msgid "Fat"
-msgstr "Zsír:"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtSugars"
 msgid "Sugars"
-msgstr "Cukrok:"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtSaturatedFat"
 msgid "Satured fat"
-msgstr "Telített zsírok:"
+msgstr ""
 
 msgctxt "hintBarcode"
 msgid "Barcode"
@@ -790,7 +783,7 @@ msgstr "Bejelentkezés"
 #, fuzzy
 msgctxt "alert_drawer"
 msgid "Allergen alert"
-msgstr "Allergén Figyelmeztetés"
+msgstr ""
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
@@ -816,7 +809,7 @@ msgstr "Galériából"
 #, fuzzy
 msgctxt "product_sent"
 msgid "Product sent successfully"
-msgstr "Termék elküldve!"
+msgstr ""
 
 msgctxt "action_edit_product"
 msgid "Edit product"
@@ -910,7 +903,7 @@ msgctxt "prefs_power_mode_summary"
 msgid ""
 "Quickly scan products in a supermarket to see which ones are not in the "
 "database."
-msgstr "Gyors egymásutáni beolvasás az adatbázisban fellelhetőség kiderítéséhez."
+msgstr ""
 
 msgctxt "prefs_language"
 msgid "Language"

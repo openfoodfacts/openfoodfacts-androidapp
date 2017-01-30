@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-30 16:51+0100\n"
-"PO-Revision-Date: 2016-12-29 16:54+0000\n"
+"POT-Creation-Date: 2017-01-30 17:13+0100\n"
+"PO-Revision-Date: 2017-01-03 10:19+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: nb\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
@@ -247,10 +247,9 @@ msgid "da"
 msgstr "da"
 
 #. Text units
-#, fuzzy
 msgctxt "lang_array:30"
 msgid "zh-rCN"
-msgstr "zh_rCN"
+msgstr ""
 
 msgctxt "lang_label_array:0"
 msgid "English"
@@ -495,20 +494,17 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr "Ernæringsinnhold per 100 g:"
 
-#, fuzzy
 msgctxt "txtNutritionLevelLow"
 msgid "in low quantity"
-msgstr "lav"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelModerate"
 msgid "in moderate quantity"
-msgstr "moderat"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelHigh"
 msgid "in high quantity"
-msgstr "høy"
+msgstr ""
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -533,10 +529,9 @@ msgstr ""
 "ernæringsinformasjon og all mulig annen nyttig informasjon som vi kan "
 "finne på etiketten."
 
-#, fuzzy
 msgctxt "txtSave"
 msgid "Save"
-msgstr "Send/Lagre"
+msgstr ""
 
 msgctxt "txtSignIn"
 msgid "Sign in"
@@ -550,25 +545,21 @@ msgctxt "txtToastSaved"
 msgid "User saved"
 msgstr "Bruker lagret"
 
-#, fuzzy
 msgctxt "txtSalt"
 msgid "Salt"
-msgstr "Salt :"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtFat"
 msgid "Fat"
-msgstr "Fett :"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtSugars"
 msgid "Sugars"
-msgstr "Sukker :"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtSaturatedFat"
 msgid "Satured fat"
-msgstr "Mettet fett :"
+msgstr ""
 
 msgctxt "hintBarcode"
 msgid "Barcode"
@@ -793,7 +784,7 @@ msgstr "Logg inn"
 #, fuzzy
 msgctxt "alert_drawer"
 msgid "Allergen alert"
-msgstr "Allergenvarsel"
+msgstr ""
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
@@ -821,7 +812,7 @@ msgstr "Fra galleri"
 #, fuzzy
 msgctxt "product_sent"
 msgid "Product sent successfully"
-msgstr "Produkt sendt!"
+msgstr ""
 
 msgctxt "action_edit_product"
 msgid "Edit product"
@@ -916,8 +907,6 @@ msgid ""
 "Quickly scan products in a supermarket to see which ones are not in the "
 "database."
 msgstr ""
-"Skann produkter i en butikk rask og enkelt for å se hvilke som ikke "
-"finnes i databasen"
 
 msgctxt "prefs_language"
 msgid "Language"
@@ -1088,27 +1077,27 @@ msgstr "Dine bidrag"
 #. For fr, Replace by https://world-fr.openfoodfacts.org/
 msgctxt "website"
 msgid "https://world.openfoodfacts.org/"
-msgstr ""
+msgstr "https://world-nb.openfoodfacts.org/"
 
 #. For fr, Replace by https://world-fr.openfoodfacts.org/contribuer
 msgctxt "website_contribute"
 msgid "https://world.openfoodfacts.org/contribute"
-msgstr ""
+msgstr "https://world-nb.openfoodfacts.org/contribute"
 
 #. For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir
 msgctxt "website_discover"
 msgid "https://world.openfoodfacts.org/discover"
-msgstr ""
+msgstr "https://world-nb.openfoodfacts.org/discover"
 
 #. For fr, Replace by https://world-fr.openfoodfacts.org/produit/
 msgctxt "website_product"
 msgid "https://world.openfoodfacts.org/product/"
-msgstr ""
+msgstr "https://world-nb.openfoodfacts.org/product/"
 
 #. For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/
 msgctxt "website_contributor"
 msgid "https://world.openfoodfacts.org/contributor/"
-msgstr ""
+msgstr "https://world-nb.openfoodfacts.org/contributor/"
 
 msgctxt "logout_drawer"
 msgid "Logout"
@@ -1122,7 +1111,6 @@ msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
 msgstr ""
 
-#, fuzzy
 msgctxt "txtDialogPowerMode"
 msgid "Quick view"
 msgstr ""

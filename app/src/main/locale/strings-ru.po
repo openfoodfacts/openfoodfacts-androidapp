@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-30 16:51+0100\n"
-"PO-Revision-Date: 2017-01-16 12:59+0000\n"
-"Last-Translator: Nkolay Parukhin <parukhin@gmail.com>\n"
+"POT-Creation-Date: 2017-01-30 17:13+0100\n"
+"PO-Revision-Date: 2017-01-29 07:40+0000\n"
+"Last-Translator: Aleksej <Unknown>\n"
 "Language: ru\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Plural-Forms: nplurals=4; plural=(((((0 == 0)) && (((n % 10) >= 2 && (n %"
@@ -497,20 +497,17 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr "Пищевая ценность на 100 г:"
 
-#, fuzzy
 msgctxt "txtNutritionLevelLow"
 msgid "in low quantity"
-msgstr "низкий"
+msgstr "в малом количестве"
 
-#, fuzzy
 msgctxt "txtNutritionLevelModerate"
 msgid "in moderate quantity"
-msgstr "умеренный"
+msgstr "в умеренном количестве"
 
-#, fuzzy
 msgctxt "txtNutritionLevelHigh"
 msgid "in high quantity"
-msgstr "высокий"
+msgstr "в большом количестве"
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -550,25 +547,21 @@ msgctxt "txtToastSaved"
 msgid "User saved"
 msgstr "Пользователь сохранён"
 
-#, fuzzy
 msgctxt "txtSalt"
 msgid "Salt"
-msgstr "Соль:"
+msgstr "Соль"
 
-#, fuzzy
 msgctxt "txtFat"
 msgid "Fat"
-msgstr "Жиры:"
+msgstr "Жир"
 
-#, fuzzy
 msgctxt "txtSugars"
 msgid "Sugars"
-msgstr "Сахара:"
+msgstr "Сахара"
 
-#, fuzzy
 msgctxt "txtSaturatedFat"
 msgid "Satured fat"
-msgstr "Насыщенные жиры:"
+msgstr "Насыщенные жиры"
 
 msgctxt "hintBarcode"
 msgid "Barcode"
@@ -795,7 +788,7 @@ msgstr "Войти"
 #, fuzzy
 msgctxt "alert_drawer"
 msgid "Allergen alert"
-msgstr "Предупреждение об аллергенах"
+msgstr ""
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
@@ -822,7 +815,7 @@ msgstr "Из галереи"
 #, fuzzy
 msgctxt "product_sent"
 msgid "Product sent successfully"
-msgstr "Продукт отправлен!"
+msgstr ""
 
 msgctxt "action_edit_product"
 msgid "Edit product"
@@ -919,8 +912,6 @@ msgid ""
 "Quickly scan products in a supermarket to see which ones are not in the "
 "database."
 msgstr ""
-"Быстрое сканирование продуктов в супермаркете для определения "
-"отсутствующих в базе данных."
 
 msgctxt "prefs_language"
 msgid "Language"
@@ -1143,15 +1134,15 @@ msgstr "Поиск продукта"
 
 msgctxt "number_of_results"
 msgid "Number of results :"
-msgstr ""
+msgstr "Количество результатов:"
 
 msgctxt "txt_no_results"
 msgid "No results found"
-msgstr ""
+msgstr "Ничего не найдено"
 
 msgctxt "nutrition_lactose"
 msgid "Lactose"
-msgstr ""
+msgstr "Лактоза"
 
 msgctxt "nutrition_casein"
 msgid "Casein"
@@ -1171,43 +1162,43 @@ msgstr ""
 
 msgctxt "for_100g"
 msgid "For 100 g"
-msgstr ""
+msgstr "На 100 г"
 
 msgctxt "serving"
 msgid "Per serving"
-msgstr ""
+msgstr "На порцию"
 
 msgctxt "minerals"
 msgid "Minerals"
-msgstr ""
+msgstr "Минералы"
 
 msgctxt "nutrition_calcium"
 msgid "Calcium"
-msgstr ""
+msgstr "Кальций"
 
 msgctxt "nutrition_potassium"
 msgid "Potassium"
-msgstr ""
+msgstr "Калий"
 
 msgctxt "nutrition_chlore"
 msgid "Chlorine"
-msgstr ""
+msgstr "Хлор"
 
 msgctxt "nutrition_magnesium"
 msgid "Magnesium"
-msgstr ""
+msgstr "Магний"
 
 msgctxt "nutrition_taurine"
 msgid "Taurine"
-msgstr ""
+msgstr "Таурин"
 
 msgctxt "nutrition_monounsaturatedFat"
 msgid "Mono unsaturated fat"
-msgstr ""
+msgstr "Мононенасыщенные жирные кислоты"
 
 msgctxt "nutrition_polyunsaturatedFat"
 msgid "Poly unsaturated fat"
-msgstr ""
+msgstr "Полиненасыщенные жирные кислоты"
 
 msgctxt "nutrition_omega3"
 msgid "Omega 3"
@@ -1223,15 +1214,15 @@ msgstr ""
 
 msgctxt "nutrition_sucrose"
 msgid "Sucrose"
-msgstr ""
+msgstr "Сахароза"
 
 msgctxt "nutrition_glucose"
 msgid "Glucose"
-msgstr ""
+msgstr "Глюкоза"
 
 msgctxt "nutrition_fructose"
 msgid "Fructose"
-msgstr ""
+msgstr "Фруктоза"
 
 msgctxt "nutrition_maltose"
 msgid "Maltose"
@@ -1243,43 +1234,43 @@ msgstr ""
 
 msgctxt "nutrition_vitamins"
 msgid "Vitamins"
-msgstr ""
+msgstr "Витамины"
 
 msgctxt "vitamin_a"
 msgid "Vitamin A"
-msgstr ""
+msgstr "Витамин А"
 
 msgctxt "vitamin_d"
 msgid "Vitamin d"
-msgstr ""
+msgstr "Витамин D"
 
 msgctxt "vitamin_e"
 msgid "Vitamin e"
-msgstr ""
+msgstr "Витамин E"
 
 msgctxt "vitamin_k"
 msgid "Vitamin k"
-msgstr ""
+msgstr "Витамин K"
 
 msgctxt "vitamin_c"
 msgid "Vitamin C"
-msgstr ""
+msgstr "Витамин C"
 
 msgctxt "vitamin_b1"
 msgid "Vitamin B1"
-msgstr ""
+msgstr "Тиамин"
 
 msgctxt "vitamin_b2"
 msgid "Vitamin B2"
-msgstr ""
+msgstr "Рибофлавин"
 
 msgctxt "vitamin_pp"
 msgid "Vitamin PP"
-msgstr ""
+msgstr "Витамин PP"
 
 msgctxt "vitamin_b6"
 msgid "Vitamin B6"
-msgstr ""
+msgstr "Витамин B6"
 
 msgctxt "vitamin_b9"
 msgid "Vitamin B9"
@@ -1299,11 +1290,11 @@ msgstr ""
 
 msgctxt "nutrition_minerals"
 msgid "Minerals"
-msgstr ""
+msgstr "Минералы"
 
 msgctxt "silica"
 msgid "Silica"
-msgstr ""
+msgstr "Диоксид кремния"
 
 msgctxt "bicarbonate"
 msgid "Bicarbonate"
@@ -1311,7 +1302,7 @@ msgstr ""
 
 msgctxt "potassium"
 msgid "Potassium"
-msgstr ""
+msgstr "Калий"
 
 msgctxt "chloride"
 msgid "Chloride"
@@ -1319,31 +1310,31 @@ msgstr ""
 
 msgctxt "calcium"
 msgid "Calcium"
-msgstr ""
+msgstr "Кальций"
 
 msgctxt "phosphorus"
 msgid "Phosphorus"
-msgstr ""
+msgstr "Фосфор"
 
 msgctxt "iron"
 msgid "Iron"
-msgstr ""
+msgstr "Железо"
 
 msgctxt "magnesium"
 msgid "Magnesium"
-msgstr ""
+msgstr "Магний"
 
 msgctxt "zinc"
 msgid "Zinc"
-msgstr ""
+msgstr "Цинк"
 
 msgctxt "copper"
 msgid "Copper"
-msgstr ""
+msgstr "Медь"
 
 msgctxt "manganese"
 msgid "Manganese"
-msgstr ""
+msgstr "Марганец"
 
 msgctxt "fluoride"
 msgid "Fluoride"
@@ -1363,15 +1354,15 @@ msgstr ""
 
 msgctxt "iodine"
 msgid "Iodine"
-msgstr ""
+msgstr "Иод"
 
 msgctxt "caffeine"
 msgid "Caffeine"
-msgstr ""
+msgstr "Кофеин"
 
 msgctxt "taurine"
 msgid "Taurine"
-msgstr ""
+msgstr "Таурин"
 
 msgctxt "ph"
 msgid "Ph"
@@ -1379,7 +1370,7 @@ msgstr ""
 
 msgctxt "fruits_vegetables_nuts"
 msgid "Fruits, vegetables, nuts"
-msgstr ""
+msgstr "Фрукты, овощи, орехи"
 
 msgctxt "collagen_meat_protein_ratio"
 msgid "Collagen meat protein ratio"

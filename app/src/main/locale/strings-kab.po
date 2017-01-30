@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-30 16:51+0100\n"
-"PO-Revision-Date: 2016-12-30 13:35+0000\n"
-"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
+"POT-Creation-Date: 2017-01-30 17:13+0100\n"
+"PO-Revision-Date: 2017-01-28 11:58+0000\n"
+"Last-Translator: Belkacem Mohammed <belkacem77@gmail.com>\n"
 "Language: kab\n"
 "Language-Team: Kabyle <kab@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(((n == 0) || (n == 1)) ? 0 : 1)\n"
@@ -41,7 +41,7 @@ msgstr "Wali"
 
 msgctxt "contribute"
 msgid "How to contribute"
-msgstr ""
+msgstr "Amek ara tettekkiḍ"
 
 msgctxt "action_find"
 msgid "Find"
@@ -49,7 +49,7 @@ msgstr "Af"
 
 msgctxt "text_barcode"
 msgid "Type the barcode :"
-msgstr ""
+msgstr "Sekcem tangalt n ifeggagen"
 
 #. Nav Drawer Product Menu Items
 msgctxt "nav_drawer_items_product:0"
@@ -247,30 +247,29 @@ msgid "da"
 msgstr "da"
 
 #. Text units
-#, fuzzy
 msgctxt "lang_array:30"
 msgid "zh-rCN"
-msgstr "zh_rCN"
+msgstr "zh-rCN"
 
 msgctxt "lang_label_array:0"
 msgid "English"
-msgstr ""
+msgstr "Taglizit"
 
 msgctxt "lang_label_array:1"
 msgid "French"
-msgstr ""
+msgstr "Tafransist"
 
 msgctxt "lang_label_array:2"
 msgid "Spanish"
-msgstr ""
+msgstr "Taspanit"
 
 msgctxt "lang_label_array:3"
 msgid "Italian"
-msgstr ""
+msgstr "Tatelyanit"
 
 msgctxt "lang_label_array:4"
 msgid "German"
-msgstr ""
+msgstr "Talmanit"
 
 msgctxt "lang_label_array:5"
 msgid "Japanese"
@@ -493,17 +492,14 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelLow"
 msgid "in low quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelModerate"
 msgid "in moderate quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelHigh"
 msgid "in high quantity"
 msgstr ""
@@ -527,7 +523,6 @@ msgid ""
 " on product labels."
 msgstr ""
 
-#, fuzzy
 msgctxt "txtSave"
 msgid "Save"
 msgstr ""
@@ -544,22 +539,18 @@ msgctxt "txtToastSaved"
 msgid "User saved"
 msgstr ""
 
-#, fuzzy
 msgctxt "txtSalt"
 msgid "Salt"
 msgstr ""
 
-#, fuzzy
 msgctxt "txtFat"
 msgid "Fat"
 msgstr ""
 
-#, fuzzy
 msgctxt "txtSugars"
 msgid "Sugars"
 msgstr ""
 
-#, fuzzy
 msgctxt "txtSaturatedFat"
 msgid "Satured fat"
 msgstr ""
@@ -1097,7 +1088,6 @@ msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
 msgstr ""
 
-#, fuzzy
 msgctxt "txtDialogPowerMode"
 msgid "Quick view"
 msgstr ""

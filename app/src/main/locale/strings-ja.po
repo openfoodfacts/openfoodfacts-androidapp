@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-30 16:51+0100\n"
-"PO-Revision-Date: 2017-01-16 15:22+0000\n"
+"POT-Creation-Date: 2017-01-30 17:13+0100\n"
+"PO-Revision-Date: 2017-01-29 08:40+0000\n"
 "Last-Translator: Naofumi Fukue <naofum@gmail.com>\n"
 "Language: ja\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -492,20 +492,17 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr "100g 当たりの栄養成分:"
 
-#, fuzzy
 msgctxt "txtNutritionLevelLow"
 msgid "in low quantity"
-msgstr "低"
+msgstr "少量"
 
-#, fuzzy
 msgctxt "txtNutritionLevelModerate"
 msgid "in moderate quantity"
-msgstr "中"
+msgstr "適量"
 
-#, fuzzy
 msgctxt "txtNutritionLevelHigh"
 msgid "in high quantity"
-msgstr "高"
+msgstr "多量"
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -544,25 +541,21 @@ msgctxt "txtToastSaved"
 msgid "User saved"
 msgstr "ユーザーを保存しました"
 
-#, fuzzy
 msgctxt "txtSalt"
 msgid "Salt"
-msgstr "食塩 :"
+msgstr "食塩"
 
-#, fuzzy
 msgctxt "txtFat"
 msgid "Fat"
-msgstr "脂肪 :"
+msgstr "脂肪"
 
-#, fuzzy
 msgctxt "txtSugars"
 msgid "Sugars"
-msgstr "砂糖 :"
+msgstr "砂糖"
 
-#, fuzzy
 msgctxt "txtSaturatedFat"
 msgid "Satured fat"
-msgstr "飽和脂肪酸 :"
+msgstr "飽和脂肪酸"
 
 msgctxt "hintBarcode"
 msgid "Barcode"
@@ -1119,253 +1112,253 @@ msgstr "製品を検索します"
 
 msgctxt "number_of_results"
 msgid "Number of results :"
-msgstr ""
+msgstr "結果の数 :"
 
 msgctxt "txt_no_results"
 msgid "No results found"
-msgstr ""
+msgstr "見つかりませんでした"
 
 msgctxt "nutrition_lactose"
 msgid "Lactose"
-msgstr ""
+msgstr "乳糖"
 
 msgctxt "nutrition_casein"
 msgid "Casein"
-msgstr ""
+msgstr "カゼイン"
 
 msgctxt "nutrition_maltodextrins"
 msgid "Maltodextrins"
-msgstr ""
+msgstr "マルトデキストリン"
 
 msgctxt "nutrition_serum_proteins"
 msgid "Serum Proteins"
-msgstr ""
+msgstr "血清タンパク質"
 
 msgctxt "nutrition_nucleotides"
 msgid "Nucleotides"
-msgstr ""
+msgstr "ヌクレオチド"
 
 msgctxt "for_100g"
 msgid "For 100 g"
-msgstr ""
+msgstr "100 g 当たり"
 
 msgctxt "serving"
 msgid "Per serving"
-msgstr ""
+msgstr "一食当たり"
 
 msgctxt "minerals"
 msgid "Minerals"
-msgstr ""
+msgstr "ミネラル"
 
 msgctxt "nutrition_calcium"
 msgid "Calcium"
-msgstr ""
+msgstr "カルシウム"
 
 msgctxt "nutrition_potassium"
 msgid "Potassium"
-msgstr ""
+msgstr "カリウム"
 
 msgctxt "nutrition_chlore"
 msgid "Chlorine"
-msgstr ""
+msgstr "塩素"
 
 msgctxt "nutrition_magnesium"
 msgid "Magnesium"
-msgstr ""
+msgstr "マグネシウム"
 
 msgctxt "nutrition_taurine"
 msgid "Taurine"
-msgstr ""
+msgstr "タウリン"
 
 msgctxt "nutrition_monounsaturatedFat"
 msgid "Mono unsaturated fat"
-msgstr ""
+msgstr "一価不飽和脂肪"
 
 msgctxt "nutrition_polyunsaturatedFat"
 msgid "Poly unsaturated fat"
-msgstr ""
+msgstr "多価不飽和脂肪"
 
 msgctxt "nutrition_omega3"
 msgid "Omega 3"
-msgstr ""
+msgstr "オメガ 3"
 
 msgctxt "nutrition_omega6"
 msgid "Omega 6"
-msgstr ""
+msgstr "オメガ 6"
 
 msgctxt "nutrition_omega9"
 msgid "Omega 9"
-msgstr ""
+msgstr "オメガ 9"
 
 msgctxt "nutrition_sucrose"
 msgid "Sucrose"
-msgstr ""
+msgstr "スクロース"
 
 msgctxt "nutrition_glucose"
 msgid "Glucose"
-msgstr ""
+msgstr "グルコース"
 
 msgctxt "nutrition_fructose"
 msgid "Fructose"
-msgstr ""
+msgstr "果糖"
 
 msgctxt "nutrition_maltose"
 msgid "Maltose"
-msgstr ""
+msgstr "麦芽糖"
 
 msgctxt "nutrition_alcohol"
 msgid "Alcohol"
-msgstr ""
+msgstr "アルコール"
 
 msgctxt "nutrition_vitamins"
 msgid "Vitamins"
-msgstr ""
+msgstr "ビタミン"
 
 msgctxt "vitamin_a"
 msgid "Vitamin A"
-msgstr ""
+msgstr "ビタミン A"
 
 msgctxt "vitamin_d"
 msgid "Vitamin d"
-msgstr ""
+msgstr "ビタミン D"
 
 msgctxt "vitamin_e"
 msgid "Vitamin e"
-msgstr ""
+msgstr "ビタミン E"
 
 msgctxt "vitamin_k"
 msgid "Vitamin k"
-msgstr ""
+msgstr "ビタミン K"
 
 msgctxt "vitamin_c"
 msgid "Vitamin C"
-msgstr ""
+msgstr "ビタミン C"
 
 msgctxt "vitamin_b1"
 msgid "Vitamin B1"
-msgstr ""
+msgstr "ビタミン B1"
 
 msgctxt "vitamin_b2"
 msgid "Vitamin B2"
-msgstr ""
+msgstr "ビタミン B2"
 
 msgctxt "vitamin_pp"
 msgid "Vitamin PP"
-msgstr ""
+msgstr "ビタミン PP"
 
 msgctxt "vitamin_b6"
 msgid "Vitamin B6"
-msgstr ""
+msgstr "ビタミン B6"
 
 msgctxt "vitamin_b9"
 msgid "Vitamin B9"
-msgstr ""
+msgstr "ビタミン B9"
 
 msgctxt "vitamin_b12"
 msgid "Vitamin B12"
-msgstr ""
+msgstr "ビタミン B12"
 
 msgctxt "biotin"
 msgid "Biotin"
-msgstr ""
+msgstr "ビオチン"
 
 msgctxt "pantothenic_acid"
 msgid "Pantothenic acid"
-msgstr ""
+msgstr "パントテン酸"
 
 msgctxt "nutrition_minerals"
 msgid "Minerals"
-msgstr ""
+msgstr "ミネラル"
 
 msgctxt "silica"
 msgid "Silica"
-msgstr ""
+msgstr "シリカ"
 
 msgctxt "bicarbonate"
 msgid "Bicarbonate"
-msgstr ""
+msgstr "重炭酸塩"
 
 msgctxt "potassium"
 msgid "Potassium"
-msgstr ""
+msgstr "カリウム"
 
 msgctxt "chloride"
 msgid "Chloride"
-msgstr ""
+msgstr "塩化物"
 
 msgctxt "calcium"
 msgid "Calcium"
-msgstr ""
+msgstr "カルシウム"
 
 msgctxt "phosphorus"
 msgid "Phosphorus"
-msgstr ""
+msgstr "リン"
 
 msgctxt "iron"
 msgid "Iron"
-msgstr ""
+msgstr "鉄"
 
 msgctxt "magnesium"
 msgid "Magnesium"
-msgstr ""
+msgstr "マグネシウム"
 
 msgctxt "zinc"
 msgid "Zinc"
-msgstr ""
+msgstr "亜鉛"
 
 msgctxt "copper"
 msgid "Copper"
-msgstr ""
+msgstr "銅"
 
 msgctxt "manganese"
 msgid "Manganese"
-msgstr ""
+msgstr "マンガン"
 
 msgctxt "fluoride"
 msgid "Fluoride"
-msgstr ""
+msgstr "フッ化物"
 
 msgctxt "selenium"
 msgid "Selenium"
-msgstr ""
+msgstr "セレン"
 
 msgctxt "chromium"
 msgid "Chromium"
-msgstr ""
+msgstr "クロム"
 
 msgctxt "molybdenum"
 msgid "Molybdenum"
-msgstr ""
+msgstr "モリブデン"
 
 msgctxt "iodine"
 msgid "Iodine"
-msgstr ""
+msgstr "ヨウ素"
 
 msgctxt "caffeine"
 msgid "Caffeine"
-msgstr ""
+msgstr "カフェイン"
 
 msgctxt "taurine"
 msgid "Taurine"
-msgstr ""
+msgstr "タウリン"
 
 msgctxt "ph"
 msgid "Ph"
-msgstr ""
+msgstr "Ph"
 
 msgctxt "fruits_vegetables_nuts"
 msgid "Fruits, vegetables, nuts"
-msgstr ""
+msgstr "果物, 野菜, ナッツ"
 
 msgctxt "collagen_meat_protein_ratio"
 msgid "Collagen meat protein ratio"
-msgstr ""
+msgstr "コラーゲン肉タンパク質比"
 
 msgctxt "cocoa"
 msgid "Cocoa"
-msgstr ""
+msgstr "ココア"
 
 msgctxt "chlorophyl"
 msgid "Chlorophyl"
-msgstr ""
+msgstr "クロロフィル"
 

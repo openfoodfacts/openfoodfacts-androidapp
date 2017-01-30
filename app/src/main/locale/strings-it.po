@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-30 16:51+0100\n"
+"POT-Creation-Date: 2017-01-30 17:13+0100\n"
 "PO-Revision-Date: 2017-01-13 21:31+0000\n"
 "Last-Translator: mattia <Unknown>\n"
 "Language: it\n"
@@ -247,10 +247,9 @@ msgid "da"
 msgstr "da"
 
 #. Text units
-#, fuzzy
 msgctxt "lang_array:30"
 msgid "zh-rCN"
-msgstr "zh_rCN"
+msgstr ""
 
 msgctxt "lang_label_array:0"
 msgid "English"
@@ -493,20 +492,17 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr "Nutrienti per 100g:"
 
-#, fuzzy
 msgctxt "txtNutritionLevelLow"
 msgid "in low quantity"
-msgstr "basso"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelModerate"
 msgid "in moderate quantity"
-msgstr "moderato"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelHigh"
 msgid "in high quantity"
-msgstr "alto"
+msgstr ""
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -530,10 +526,9 @@ msgstr ""
 "ingredienti, gli allergeni, le informazioni nutrizionali e tutto ciò che "
 "possiamo trovare sulle etichette dei prodotti."
 
-#, fuzzy
 msgctxt "txtSave"
 msgid "Save"
-msgstr "Invia/Salva"
+msgstr ""
 
 msgctxt "txtSignIn"
 msgid "Sign in"
@@ -547,25 +542,21 @@ msgctxt "txtToastSaved"
 msgid "User saved"
 msgstr "Utente salvato"
 
-#, fuzzy
 msgctxt "txtSalt"
 msgid "Salt"
-msgstr "Sale:"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtFat"
 msgid "Fat"
-msgstr "Grassi:"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtSugars"
 msgid "Sugars"
-msgstr "Zuccheri:"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtSaturatedFat"
 msgid "Satured fat"
-msgstr "Grassi saturi:"
+msgstr ""
 
 msgctxt "hintBarcode"
 msgid "Barcode"
@@ -794,7 +785,7 @@ msgstr "Accedi"
 #, fuzzy
 msgctxt "alert_drawer"
 msgid "Allergen alert"
-msgstr "Allerta Allergeni"
+msgstr ""
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
@@ -821,7 +812,7 @@ msgstr "Dalla galleria"
 #, fuzzy
 msgctxt "product_sent"
 msgid "Product sent successfully"
-msgstr "Prodotto inviato!"
+msgstr ""
 
 msgctxt "action_edit_product"
 msgid "Edit product"
@@ -920,8 +911,6 @@ msgid ""
 "Quickly scan products in a supermarket to see which ones are not in the "
 "database."
 msgstr ""
-"Scansiona velocemente i prodotti in un supermercato per vedere quali non "
-"sono nel database."
 
 msgctxt "prefs_language"
 msgid "Language"

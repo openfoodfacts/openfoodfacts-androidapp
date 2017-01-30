@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-30 16:51+0100\n"
-"PO-Revision-Date: 2016-12-29 16:54+0000\n"
+"POT-Creation-Date: 2017-01-30 17:13+0100\n"
+"PO-Revision-Date: 2017-01-03 10:16+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: hi\n"
 "Language-Team: Hindi <hi@li.org>\n"
@@ -247,10 +247,9 @@ msgid "da"
 msgstr "da"
 
 #. Text units
-#, fuzzy
 msgctxt "lang_array:30"
 msgid "zh-rCN"
-msgstr "zh_rCN"
+msgstr ""
 
 msgctxt "lang_label_array:0"
 msgid "English"
@@ -493,20 +492,17 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr "100 ग्राम के लिए पोषक तत्वों का स्तर"
 
-#, fuzzy
 msgctxt "txtNutritionLevelLow"
 msgid "in low quantity"
-msgstr "कम"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelModerate"
 msgid "in moderate quantity"
-msgstr "मध्यम"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtNutritionLevelHigh"
 msgid "in high quantity"
-msgstr "उच्च"
+msgstr ""
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -530,10 +526,9 @@ msgstr ""
 "ऐलर्जेन, पोषण और छोटे मोटे सामान की जानकारी उत्पाद लेबल से प्राप्त कि जा "
 "सकती है|"
 
-#, fuzzy
 msgctxt "txtSave"
 msgid "Save"
-msgstr "भेजें/ सेव करें"
+msgstr ""
 
 msgctxt "txtSignIn"
 msgid "Sign in"
@@ -547,25 +542,21 @@ msgctxt "txtToastSaved"
 msgid "User saved"
 msgstr "उपयोगकर्ता की जानकारी  सेव है"
 
-#, fuzzy
 msgctxt "txtSalt"
 msgid "Salt"
-msgstr "नमक :"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtFat"
 msgid "Fat"
-msgstr "बसा :"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtSugars"
 msgid "Sugars"
-msgstr "चीनी :"
+msgstr ""
 
-#, fuzzy
 msgctxt "txtSaturatedFat"
 msgid "Satured fat"
-msgstr "संतृप्त वसा"
+msgstr ""
 
 msgctxt "hintBarcode"
 msgid "Barcode"
@@ -792,7 +783,7 @@ msgstr "साइन इन करें"
 #, fuzzy
 msgctxt "alert_drawer"
 msgid "Allergen alert"
-msgstr "एलरजेन की चेतावनी"
+msgstr ""
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
@@ -819,7 +810,7 @@ msgstr "गैलरी से"
 #, fuzzy
 msgctxt "product_sent"
 msgid "Product sent successfully"
-msgstr "उत्पाद भेज दिया"
+msgstr ""
 
 msgctxt "action_edit_product"
 msgid "Edit product"
@@ -916,8 +907,6 @@ msgid ""
 "Quickly scan products in a supermarket to see which ones are not in the "
 "database."
 msgstr ""
-"जल्दी से सुपरमार्केट में उत्पादों को स्कैन करके देखे कौन कौन से उत्पाद "
-"डेटाबेस में नहीं हैं।"
 
 msgctxt "prefs_language"
 msgid "Language"
@@ -1088,27 +1077,27 @@ msgstr "आपका योगदान"
 #. For fr, Replace by https://world-fr.openfoodfacts.org/
 msgctxt "website"
 msgid "https://world.openfoodfacts.org/"
-msgstr ""
+msgstr "https://world-hi.openfoodfacts.org/"
 
 #. For fr, Replace by https://world-fr.openfoodfacts.org/contribuer
 msgctxt "website_contribute"
 msgid "https://world.openfoodfacts.org/contribute"
-msgstr ""
+msgstr "https://world-hi.openfoodfacts.org/contribute"
 
 #. For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir
 msgctxt "website_discover"
 msgid "https://world.openfoodfacts.org/discover"
-msgstr ""
+msgstr "https://world-hi.openfoodfacts.org/discover"
 
 #. For fr, Replace by https://world-fr.openfoodfacts.org/produit/
 msgctxt "website_product"
 msgid "https://world.openfoodfacts.org/product/"
-msgstr ""
+msgstr "https://world-hi.openfoodfacts.org/product/"
 
 #. For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/
 msgctxt "website_contributor"
 msgid "https://world.openfoodfacts.org/contributor/"
-msgstr ""
+msgstr "https://world-hi.openfoodfacts.org/contributor/"
 
 msgctxt "logout_drawer"
 msgid "Logout"
@@ -1124,7 +1113,6 @@ msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
 msgstr "कार्बन पदचिह्न / CO2 उत्सर्जन: "
 
-#, fuzzy
 msgctxt "txtDialogPowerMode"
 msgid "Quick view"
 msgstr ""
