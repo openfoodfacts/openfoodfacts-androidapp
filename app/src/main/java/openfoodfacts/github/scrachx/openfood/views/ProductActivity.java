@@ -97,7 +97,9 @@ public class ProductActivity extends BaseActivity {
         String[] menuTitles = getResources().getStringArray(R.array.nav_drawer_items_product);
 
         ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
-        adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
+        SummaryProductFragment summaryProductFragment = new SummaryProductFragment();
+
+        adapterResult.addFragment(summaryProductFragment, menuTitles[0]);
         adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
         adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
         adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
