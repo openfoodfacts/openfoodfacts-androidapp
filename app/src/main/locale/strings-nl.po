@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-30 13:00+0100\n"
-"PO-Revision-Date: 2016-12-30 13:11+0000\n"
-"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
+"POT-Creation-Date: 2017-01-30 16:51+0100\n"
+"PO-Revision-Date: 2017-01-29 18:59+0000\n"
+"Last-Translator: Arnaud Leene <Unknown>\n"
 "Language: nl\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "Plural-Forms: nplurals=2; plural=((((n == 1)) && ((0 == 0))) ? 0 : 1)\n"
@@ -41,7 +41,7 @@ msgstr "Ontdek"
 
 msgctxt "contribute"
 msgid "How to contribute"
-msgstr ""
+msgstr "Hoe kan je bijdragen?"
 
 msgctxt "action_find"
 msgid "Find"
@@ -247,10 +247,9 @@ msgid "da"
 msgstr "da"
 
 #. Text units
-#, fuzzy
 msgctxt "lang_array:30"
 msgid "zh-rCN"
-msgstr "zh_rCN"
+msgstr ""
 
 msgctxt "lang_label_array:0"
 msgid "English"
@@ -370,11 +369,11 @@ msgstr "Noors (Bokmal)"
 
 msgctxt "lang_label_array:29"
 msgid "Danish"
-msgstr ""
+msgstr "Deens"
 
 msgctxt "lang_label_array:30"
 msgid "Simplified Chinese"
-msgstr ""
+msgstr "Vereenvoudigd Chinees"
 
 msgctxt "images_array:0"
 msgid "Default"
@@ -493,20 +492,17 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr "Voedingsstoffen per 100g"
 
-#, fuzzy
 msgctxt "txtNutritionLevelLow"
 msgid "in low quantity"
-msgstr "laag"
+msgstr "kleine hoeveelheid"
 
-#, fuzzy
 msgctxt "txtNutritionLevelModerate"
 msgid "in moderate quantity"
-msgstr "gemiddeld"
+msgstr "matige hoeveelheid"
 
-#, fuzzy
 msgctxt "txtNutritionLevelHigh"
 msgid "in high quantity"
-msgstr "hoog"
+msgstr "grote hoeveelheid"
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -530,10 +526,9 @@ msgstr ""
 "allergenen, voedingswaarde en alle interessante feitjes die we op "
 "productetiketten kunnen vinden."
 
-#, fuzzy
 msgctxt "txtSave"
 msgid "Save"
-msgstr "Verstuur/Bewaar"
+msgstr "Bewaar"
 
 msgctxt "txtSignIn"
 msgid "Sign in"
@@ -547,22 +542,18 @@ msgctxt "txtToastSaved"
 msgid "User saved"
 msgstr "Gebruiker opgeslagen"
 
-#, fuzzy
 msgctxt "txtSalt"
 msgid "Salt"
 msgstr "Zout"
 
-#, fuzzy
 msgctxt "txtFat"
 msgid "Fat"
 msgstr "Vet"
 
-#, fuzzy
 msgctxt "txtSugars"
 msgid "Sugars"
 msgstr "Suikers"
 
-#, fuzzy
 msgctxt "txtSaturatedFat"
 msgid "Satured fat"
 msgstr "Verzadigd vet"
@@ -611,7 +602,7 @@ msgstr ""
 
 msgctxt "txtDialogsContentPowerMode"
 msgid "The product you scanned does already exist in Open Food Facts."
-msgstr ""
+msgstr "Het gescannede product bestaat al in Open Food Facts"
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
@@ -794,7 +785,7 @@ msgstr "Aanmelden"
 #, fuzzy
 msgctxt "alert_drawer"
 msgid "Allergen alert"
-msgstr "Allergenen-melding"
+msgstr "Allergeen waarschuwing"
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
@@ -821,7 +812,7 @@ msgstr "Gallerie"
 #, fuzzy
 msgctxt "product_sent"
 msgid "Product sent successfully"
-msgstr "Product verzonden!"
+msgstr "Product verstuurd!"
 
 msgctxt "action_edit_product"
 msgid "Edit product"
@@ -919,9 +910,7 @@ msgctxt "prefs_power_mode_summary"
 msgid ""
 "Quickly scan products in a supermarket to see which ones are not in the "
 "database."
-msgstr ""
-"Snel producten scannen in een supermarkt om te zien welke er niet in de "
-"database staan."
+msgstr "Bekijk de onbeschikbare supermarktproducten."
 
 msgctxt "prefs_language"
 msgid "Language"
@@ -1128,272 +1117,271 @@ msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
 msgstr "Carbon footprint / CO2-uitstoot: "
 
-#, fuzzy
 msgctxt "txtDialogPowerMode"
 msgid "Quick view"
-msgstr ""
+msgstr "Bekijk"
 
 msgctxt "txtSeeMore"
 msgid "See more"
-msgstr ""
+msgstr "Meer"
 
 msgctxt "action_search"
 msgid "Search"
-msgstr ""
+msgstr "Zoek"
 
 msgctxt "search_hint"
 msgid "Search a product"
-msgstr ""
+msgstr "Zoek een product"
 
 msgctxt "number_of_results"
 msgid "Number of results :"
-msgstr ""
+msgstr "Aantal resultaten"
 
 msgctxt "txt_no_results"
 msgid "No results found"
-msgstr ""
+msgstr "Geen resultaten gevonden"
 
 msgctxt "nutrition_lactose"
 msgid "Lactose"
-msgstr ""
+msgstr "Lactose"
 
 msgctxt "nutrition_casein"
 msgid "Casein"
-msgstr ""
+msgstr "Caseïne"
 
 msgctxt "nutrition_maltodextrins"
 msgid "Maltodextrins"
-msgstr ""
+msgstr "Maltodextrine"
 
 msgctxt "nutrition_serum_proteins"
 msgid "Serum Proteins"
-msgstr ""
+msgstr "Serumproteïnen"
 
 msgctxt "nutrition_nucleotides"
 msgid "Nucleotides"
-msgstr ""
+msgstr "Nucleotiden"
 
 msgctxt "for_100g"
 msgid "For 100 g"
-msgstr ""
+msgstr "Per 100g"
 
 msgctxt "serving"
 msgid "Per serving"
-msgstr ""
+msgstr "Per portie"
 
 msgctxt "minerals"
 msgid "Minerals"
-msgstr ""
+msgstr "Mineralen"
 
 msgctxt "nutrition_calcium"
 msgid "Calcium"
-msgstr ""
+msgstr "Calcium"
 
 msgctxt "nutrition_potassium"
 msgid "Potassium"
-msgstr ""
+msgstr "Kalium"
 
 msgctxt "nutrition_chlore"
 msgid "Chlorine"
-msgstr ""
+msgstr "Chloor"
 
 msgctxt "nutrition_magnesium"
 msgid "Magnesium"
-msgstr ""
+msgstr "Magnesium"
 
 msgctxt "nutrition_taurine"
 msgid "Taurine"
-msgstr ""
+msgstr "Taurine"
 
 msgctxt "nutrition_monounsaturatedFat"
 msgid "Mono unsaturated fat"
-msgstr ""
+msgstr "Enkelvoudige onverzadigde vetzuren"
 
 msgctxt "nutrition_polyunsaturatedFat"
 msgid "Poly unsaturated fat"
-msgstr ""
+msgstr "Meervoudig onvervaardigde vetzuren"
 
 msgctxt "nutrition_omega3"
 msgid "Omega 3"
-msgstr ""
+msgstr "Omega 3"
 
 msgctxt "nutrition_omega6"
 msgid "Omega 6"
-msgstr ""
+msgstr "Omega 6"
 
 msgctxt "nutrition_omega9"
 msgid "Omega 9"
-msgstr ""
+msgstr "Omega 9"
 
 msgctxt "nutrition_sucrose"
 msgid "Sucrose"
-msgstr ""
+msgstr "Sucrose"
 
 msgctxt "nutrition_glucose"
 msgid "Glucose"
-msgstr ""
+msgstr "Glucose"
 
 msgctxt "nutrition_fructose"
 msgid "Fructose"
-msgstr ""
+msgstr "Fructose"
 
 msgctxt "nutrition_maltose"
 msgid "Maltose"
-msgstr ""
+msgstr "Maltose"
 
 msgctxt "nutrition_alcohol"
 msgid "Alcohol"
-msgstr ""
+msgstr "Alcohol"
 
 msgctxt "nutrition_vitamins"
 msgid "Vitamins"
-msgstr ""
+msgstr "Vitaminen"
 
 msgctxt "vitamin_a"
 msgid "Vitamin A"
-msgstr ""
+msgstr "Vitamine A"
 
 msgctxt "vitamin_d"
 msgid "Vitamin d"
-msgstr ""
+msgstr "Vitamine D"
 
 msgctxt "vitamin_e"
 msgid "Vitamin e"
-msgstr ""
+msgstr "Vitamine E"
 
 msgctxt "vitamin_k"
 msgid "Vitamin k"
-msgstr ""
+msgstr "Vitamine K"
 
 msgctxt "vitamin_c"
 msgid "Vitamin C"
-msgstr ""
+msgstr "Vitamine C"
 
 msgctxt "vitamin_b1"
 msgid "Vitamin B1"
-msgstr ""
+msgstr "Vitamine B1"
 
 msgctxt "vitamin_b2"
 msgid "Vitamin B2"
-msgstr ""
+msgstr "Vitamine B2"
 
 msgctxt "vitamin_pp"
 msgid "Vitamin PP"
-msgstr ""
+msgstr "Vitamine PP"
 
 msgctxt "vitamin_b6"
 msgid "Vitamin B6"
-msgstr ""
+msgstr "Vitamine B6"
 
 msgctxt "vitamin_b9"
 msgid "Vitamin B9"
-msgstr ""
+msgstr "Vitamine B6"
 
 msgctxt "vitamin_b12"
 msgid "Vitamin B12"
-msgstr ""
+msgstr "Vitamine B12"
 
 msgctxt "biotin"
 msgid "Biotin"
-msgstr ""
+msgstr "Biotine"
 
 msgctxt "pantothenic_acid"
 msgid "Pantothenic acid"
-msgstr ""
+msgstr "Pantotheenzuur"
 
 msgctxt "nutrition_minerals"
 msgid "Minerals"
-msgstr ""
+msgstr "Mineralen"
 
 msgctxt "silica"
 msgid "Silica"
-msgstr ""
+msgstr "Silicium"
 
 msgctxt "bicarbonate"
 msgid "Bicarbonate"
-msgstr ""
+msgstr "Carbonaten"
 
 msgctxt "potassium"
 msgid "Potassium"
-msgstr ""
+msgstr "Kalium"
 
 msgctxt "chloride"
 msgid "Chloride"
-msgstr ""
+msgstr "Chloor"
 
 msgctxt "calcium"
 msgid "Calcium"
-msgstr ""
+msgstr "Calcium"
 
 msgctxt "phosphorus"
 msgid "Phosphorus"
-msgstr ""
+msgstr "Fosfor"
 
 msgctxt "iron"
 msgid "Iron"
-msgstr ""
+msgstr "IJzer"
 
 msgctxt "magnesium"
 msgid "Magnesium"
-msgstr ""
+msgstr "Magnesium"
 
 msgctxt "zinc"
 msgid "Zinc"
-msgstr ""
+msgstr "Zink"
 
 msgctxt "copper"
 msgid "Copper"
-msgstr ""
+msgstr "Koper"
 
 msgctxt "manganese"
 msgid "Manganese"
-msgstr ""
+msgstr "Mangaan"
 
 msgctxt "fluoride"
 msgid "Fluoride"
-msgstr ""
+msgstr "Fluor"
 
 msgctxt "selenium"
 msgid "Selenium"
-msgstr ""
+msgstr "Seleen"
 
 msgctxt "chromium"
 msgid "Chromium"
-msgstr ""
+msgstr "Chroom"
 
 msgctxt "molybdenum"
 msgid "Molybdenum"
-msgstr ""
+msgstr "Molybdeen"
 
 msgctxt "iodine"
 msgid "Iodine"
-msgstr ""
+msgstr "Jodium"
 
 msgctxt "caffeine"
 msgid "Caffeine"
-msgstr ""
+msgstr "Caffeïne"
 
 msgctxt "taurine"
 msgid "Taurine"
-msgstr ""
+msgstr "Taurine"
 
 msgctxt "ph"
 msgid "Ph"
-msgstr ""
+msgstr "pH"
 
 msgctxt "fruits_vegetables_nuts"
 msgid "Fruits, vegetables, nuts"
-msgstr ""
+msgstr "Fruit, groente, noten"
 
 msgctxt "collagen_meat_protein_ratio"
 msgid "Collagen meat protein ratio"
-msgstr ""
+msgstr "Collageen vleesproteïne verhouding"
 
 msgctxt "cocoa"
 msgid "Cocoa"
-msgstr ""
+msgstr "Cacao"
 
 msgctxt "chlorophyl"
 msgid "Chlorophyl"
-msgstr ""
+msgstr "Chlorofyl"
 
