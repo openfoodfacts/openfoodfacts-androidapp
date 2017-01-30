@@ -10,7 +10,6 @@
     <item>Ingredientes</item>
     <item>Nutrição</item>
     <item>Nutrition Table</item>
-    <item>Voltar ao menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>

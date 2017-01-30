@@ -13,7 +13,6 @@
     <item>Ингредиенты</item>
     <item>Пищевая ценность</item>
     <item>Состав</item>
-    <item>Назад в меню</item>
   </string-array>
   <string-array name="units_array">
     <item>г</item>
@@ -53,7 +52,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>упрощенный китайский</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Английский</item>

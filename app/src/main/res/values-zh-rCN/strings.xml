@@ -11,7 +11,6 @@
     <item>成分</item>
     <item>营养</item>
     <item>营养标签</item>
-    <item>回到菜单</item>
   </string-array>
   <string-array name="units_array">
     <item>克</item>
