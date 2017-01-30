@@ -12,7 +12,6 @@
     <item>Ingrediente</item>
     <item>Informații nutriționale</item>
     <item>Tabel nutrițional</item>
-    <item>Înapoi la meniu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>

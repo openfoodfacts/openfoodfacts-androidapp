@@ -1,8 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="app_name">Open Food</string>
-  <string name="hello_world">Witaj, świecie!</string>
-  <string name="action_discover">Odkryj</string>
   <string-array name="nav_drawer_items_product">
     <item>Summary</item>
     <item>Ingredients</item>
@@ -47,7 +44,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
@@ -87,18 +84,4 @@
     <item>Nutrition</item>
     <item>Ingredients</item>
   </string-array>
-  <string name="txtPass">Hasło :</string>
-  <string name="hintPass">Hasło</string>
-  <string name="txtYes">Tak</string>
-  <string name="txtNo">Nie</string>
-  <string name="nutrition_carbohydrate">Węglowodany</string>
-  <string name="nutrition_cholesterol">Cholesterol</string>
-  <string name="nutrition_energy">Energia</string>
-  <string name="nutrition_energy_short_name">Energia</string>
-  <string name="nutrition_fat">Tłuszcz</string>
-  <string name="nutrition_header">Wartości odżywcze</string>
-  <string name="nutrition_proteins">Proteiny</string>
-  <string name="nutrition_salt">Sól</string>
-  <string name="nutrition_sodium">Sód</string>
-  <string name="action_manage_account">Zarządzaj kontem</string>
 </resources>
