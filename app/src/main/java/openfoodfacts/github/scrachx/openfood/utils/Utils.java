@@ -31,6 +31,8 @@ import java.io.OutputStream;
 import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static android.text.TextUtils.isEmpty;
 
@@ -255,5 +257,9 @@ public class Utils {
         }
 
         return  String.format(Locale.getDefault(), "%.2f", Double.valueOf(value));
+    }
+
+    public static DaoSession getAppDaoSession(Activity activity) {
+        return ((OFFApplication) activity.getApplication()).getDaoSession();
     }
 }

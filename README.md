@@ -49,7 +49,7 @@ Ask @teolemon to do it
 ### Translate Open Food Facts in your language
 
 You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup): <br>
-https://translations.launchpad.net/openfoodfacts/trunk/+pots/openfoodfacts-android-native
+https://translations.launchpad.net/openfoodfacts/openfoodfacts-android-native
 
 Watch the [topic](https://github.com/openfoodfacts/OpenFoodFacts-androidApp/issues/49).
 
@@ -90,6 +90,10 @@ The project is initially started by [Scot Scriven](https://github.com/itchix), o
 - [Qian Jin](https://github.com/jinqian)
 
 Feel free to fork the project and send us a pull request.
+
+Here's a few list of bugs:
+- Very high impact: https://github.com/openfoodfacts/OpenFoodFacts-androidApp/labels/very%20high%20impact
+- https://github.com/openfoodfacts/OpenFoodFacts-androidApp/labels/priority
 
 ## Copyright and License
 

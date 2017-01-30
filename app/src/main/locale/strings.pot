@@ -770,7 +770,7 @@ msgid "Sign-in"
 msgstr ""
 
 msgctxt "alert_drawer"
-msgid "Allergen Alert"
+msgid "Allergen alert"
 msgstr ""
 
 msgctxt "warning_allergens"
@@ -793,7 +793,7 @@ msgid "From gallery"
 msgstr ""
 
 msgctxt "product_sent"
-msgid "Product sent!"
+msgid "Product sent successfully"
 msgstr ""
 
 msgctxt "action_edit_product"
@@ -876,7 +876,7 @@ msgstr ""
 
 msgctxt "prefs_power_mode_summary"
 msgid ""
-"Quickly scan products in a supermarket to see which one are not in the "
+"Quickly scan products in a supermarket to see which ones are not in the "
 "database."
 msgstr ""
 
@@ -1056,14 +1056,17 @@ msgctxt "website_contribute"
 msgid "https://world.openfoodfacts.org/contribute"
 msgstr ""
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir
 msgctxt "website_discover"
 msgid "https://world.openfoodfacts.org/discover"
 msgstr ""
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/produit/
 msgctxt "website_product"
 msgid "https://world.openfoodfacts.org/product/"
 msgstr ""
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/
 msgctxt "website_contributor"
 msgid "https://world.openfoodfacts.org/contributor/"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-17 13:22+0100\n"
+"POT-Creation-Date: 2017-01-23 09:40+0100\n"
 "PO-Revision-Date: 2016-12-29 16:54+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: hi\n"
@@ -70,11 +70,6 @@ msgstr "पोषण"
 msgctxt "nav_drawer_items_product:3"
 msgid "Nutrition Table"
 msgstr "पोषण प्रबंधन/सूची"
-
-#. Nav Drawer Product Menu Items
-msgctxt "nav_drawer_items_product:4"
-msgid "Back to menu"
-msgstr "मैन्यू में वापस"
 
 #. Text units
 msgctxt "units_array:0"
@@ -498,16 +493,19 @@ msgctxt "txtNutrientLevel100g"
 msgid "Nutrient levels for 100g :"
 msgstr "100 ग्राम के लिए पोषक तत्वों का स्तर"
 
+#, fuzzy
 msgctxt "txtNutritionLevelLow"
-msgid "low"
+msgid "in low quantity"
 msgstr "कम"
 
+#, fuzzy
 msgctxt "txtNutritionLevelModerate"
-msgid "moderate"
+msgid "in moderate quantity"
 msgstr "मध्यम"
 
+#, fuzzy
 msgctxt "txtNutritionLevelHigh"
-msgid "high"
+msgid "in high quantity"
 msgstr "उच्च"
 
 msgctxt "txtLogin"
@@ -549,20 +547,24 @@ msgctxt "txtToastSaved"
 msgid "User saved"
 msgstr "उपयोगकर्ता की जानकारी  सेव है"
 
+#, fuzzy
 msgctxt "txtSalt"
-msgid "Salt :"
+msgid "Salt"
 msgstr "नमक :"
 
+#, fuzzy
 msgctxt "txtFat"
-msgid "Fat :"
+msgid "Fat"
 msgstr "बसा :"
 
+#, fuzzy
 msgctxt "txtSugars"
-msgid "Sugars :"
+msgid "Sugars"
 msgstr "चीनी :"
 
+#, fuzzy
 msgctxt "txtSaturatedFat"
-msgid "Satured fat :"
+msgid "Satured fat"
 msgstr "संतृप्त वसा"
 
 msgctxt "hintBarcode"
@@ -787,8 +789,9 @@ msgctxt "sign_in_drawer"
 msgid "Sign-in"
 msgstr "साइन इन करें"
 
+#, fuzzy
 msgctxt "alert_drawer"
-msgid "Allergen Alert"
+msgid "Allergen alert"
 msgstr "एलरजेन की चेतावनी"
 
 msgctxt "warning_allergens"
@@ -813,8 +816,9 @@ msgctxt "from_gallery"
 msgid "From gallery"
 msgstr "गैलरी से"
 
+#, fuzzy
 msgctxt "product_sent"
-msgid "Product sent!"
+msgid "Product sent successfully"
 msgstr "उत्पाद भेज दिया"
 
 msgctxt "action_edit_product"
@@ -906,9 +910,10 @@ msgctxt "prefs_power_mode"
 msgid "Power mode scan"
 msgstr "पावर मोड स्कैन"
 
+#, fuzzy
 msgctxt "prefs_power_mode_summary"
 msgid ""
-"Quickly scan products in a supermarket to see which one are not in the "
+"Quickly scan products in a supermarket to see which ones are not in the "
 "database."
 msgstr ""
 "जल्दी से सुपरमार्केट में उत्पादों को स्कैन करके देखे कौन कौन से उत्पाद "
@@ -1090,14 +1095,17 @@ msgctxt "website_contribute"
 msgid "https://world.openfoodfacts.org/contribute"
 msgstr ""
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir
 msgctxt "website_discover"
 msgid "https://world.openfoodfacts.org/discover"
 msgstr ""
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/produit/
 msgctxt "website_product"
 msgid "https://world.openfoodfacts.org/product/"
 msgstr ""
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/
 msgctxt "website_contributor"
 msgid "https://world.openfoodfacts.org/contributor/"
 msgstr ""
