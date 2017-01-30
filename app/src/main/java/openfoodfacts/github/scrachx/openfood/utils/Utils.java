@@ -243,8 +243,12 @@ public class Utils {
      * @return round value or 0 if the value is empty or equals to 0
      */
     public static String getRoundNumber(String value) {
-        if (isEmpty(value) || "0".equals(value)) {
-            return "0";
+        if ("0".equals(value)) {
+            return value;
+        }
+
+        if (isEmpty(value)) {
+            return "?";
         }
 
         String[] strings = value.split("\\.");
@@ -252,7 +256,7 @@ public class Utils {
             return value;
         }
 
-        return String.format(Locale.getDefault(), "%.2f", Double.valueOf(value));
+        return  String.format(Locale.getDefault(), "%.2f", Double.valueOf(value));
     }
 
     public static DaoSession getAppDaoSession(Activity activity) {

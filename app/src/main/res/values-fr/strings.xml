@@ -258,4 +258,7 @@
   <string name="logout_drawer">Se déconnecter</string>
   <string name="contribution_without_account">Vous pouvez vous connecter ou créer un compte pour conserver vos contributions</string>
   <string name="textCarbonFootprint">"Empreinte carbone / émissions de CO2: "</string>
+  <string name="nutrition_maltodextrins">Maltodextrines</string>
+  <string name="nutrition_serum_proteins">Protéines sériques</string>
+  <string name="nutrition_chlore">Chlore</string>
 </resources>
