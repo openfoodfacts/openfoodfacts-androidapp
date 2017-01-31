@@ -97,8 +97,6 @@ public class OpenFoodAPIClient {
      * @param activity
      */
     public void getProduct(final String barcode, final Activity activity) {
-        final LoadToast lt = getLoadToast(activity);
-
         apiService.getProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
             public void onResponse(Call<State> call, Response<State> response) {
@@ -106,7 +104,6 @@ public class OpenFoodAPIClient {
                 final State s = response.body();
 
                 if (s.getStatus() == 0) {
-                    lt.error();
                     new MaterialDialog.Builder(activity)
                             .title(R.string.txtDialogsTitle)
                             .content(R.string.txtDialogsContent)
@@ -118,12 +115,8 @@ public class OpenFoodAPIClient {
                                 activity.startActivity(intent);
                                 activity.finish();
                             })
-                            .onNegative((dialog, which) -> {
-                                return;
-                            })
                             .show();
                 } else {
-                    lt.success();
                     new HistoryTask().doInBackground(s.getProduct());
                     Intent intent = new Intent(activity, ProductActivity.class);
                     Bundle bundle = new Bundle();
@@ -140,23 +133,14 @@ public class OpenFoodAPIClient {
                         .content(R.string.txtDialogsContent)
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
-                        .callback(new MaterialDialog.ButtonCallback() {
-                            @Override
-                            public void onPositive(MaterialDialog dialog) {
-                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                intent.putExtra("barcode",barcode);
-                                activity.startActivity(intent);
-                                activity.finish();
-                            }
-
-                            @Override
-                            public void onNegative(MaterialDialog dialog) {
-                                return;
-                            }
+                        .onPositive((dialog, which) -> {
+                            Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                            intent.putExtra("barcode",barcode);
+                            activity.startActivity(intent);
+                            activity.finish();
                         })
                         .show();
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                lt.error();
             }
         });
     }
@@ -170,8 +154,6 @@ public class OpenFoodAPIClient {
      * @param resultHandler needed when the function is called by the barcodefragment else null
      */
     public void getProduct(final String barcode, final Activity activity, final ZXingScannerView camera, final ZXingScannerView.ResultHandler resultHandler) {
-        final LoadToast lt = getLoadToast(activity);
-
         apiService.getProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
             public void onResponse(Call<State> call, Response<State> response) {
@@ -180,7 +162,6 @@ public class OpenFoodAPIClient {
                 final State s = response.body();
 
                 if (s.getStatus() == 0) {
-                    lt.error();
                     new MaterialDialog.Builder(activity)
                             .title(R.string.txtDialogsTitle)
                             .content(R.string.txtDialogsContent)
@@ -197,7 +178,6 @@ public class OpenFoodAPIClient {
                             })
                             .show();
                 } else {
-                    lt.success();
                     final Product product = s.getProduct();
                     new HistoryTask().doInBackground(s.getProduct());
                     if (settings.getBoolean("powerMode", false) && camera != null) {
@@ -282,7 +262,6 @@ public class OpenFoodAPIClient {
                         })
                         .show();
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                lt.error();
             }
         });
     }
