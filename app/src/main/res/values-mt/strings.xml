@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="app_name">Open Food</string>
   <string-array name="nav_drawer_items_product">
     <item>Summary</item>
     <item>Ingredients</item>

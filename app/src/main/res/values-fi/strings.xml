@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="app_name">Open Food</string>
+  <string name="hello_world">Terve maailma!</string>
   <string name="action_settings">Asetukset</string>
   <string name="action_about">Tietoja</string>
   <string name="action_discover">Löydä</string>
@@ -167,4 +168,11 @@
   <string name="nutrition_sugars">Sokerit</string>
   <string name="nutrition_sugars_short_name">Sokerit (g)</string>
   <string name="action_manage_account">Tilin asetukset</string>
+  <string name="manganese">Mangaani</string>
+  <string name="fluoride">Fluoridi</string>
+  <string name="selenium">Seleeni</string>
+  <string name="chromium">Kromi</string>
+  <string name="molybdenum">Molybdeeni</string>
+  <string name="iodine">Jodi</string>
+  <string name="taurine">Tauriini</string>
 </resources>

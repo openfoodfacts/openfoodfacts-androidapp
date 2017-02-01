@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="app_name">Open Food</string>
+  <string name="hello_world">Pozdravljen svet!</string>
   <string-array name="nav_drawer_items_product">
     <item>Summary</item>
     <item>Ingredients</item>
@@ -84,4 +86,11 @@
     <item>Nutrition</item>
     <item>Ingredients</item>
   </string-array>
+  <string name="manganese">Mangan</string>
+  <string name="fluoride">Fluorid</string>
+  <string name="selenium">Selen</string>
+  <string name="chromium">Krom</string>
+  <string name="molybdenum">Molibden</string>
+  <string name="iodine">Jod</string>
+  <string name="taurine">Tavrin</string>
 </resources>
