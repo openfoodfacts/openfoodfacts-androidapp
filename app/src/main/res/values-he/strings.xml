@@ -185,10 +185,12 @@
   <string name="txt_product_not_found">המוצרים לא נמצאו</string>
   <string name="delete_txt">מחיקה</string>
   <string name="sign_in_drawer">כניסה</string>
+  <string name="alert_drawer">אזהרת אלרגנים</string>
   <string name="warning_allergens">מכיל אלרגנים</string>
   <string name="title_dialog_alert">הוספת התרעה</string>
   <string name="warning_alert_data">נתוני האלרגיות שלך לעולם לא ישלחו אל שרתי מסד נתוני המזון הפתוח. כמו כן, כדאי להיזהר כיוון שהמידע לא בהכרח אמין, כדאי לוודא שוב באופן עצמאי!</string>
   <string name="from_gallery">מהגלריה</string>
+  <string name="product_sent">המוצר נשלח!</string>
   <string name="action_edit_product">עריכת מוצר</string>
   <string name="title_info_dialog">פרטים</string>
   <string name="text_offline_info_dialog">ניתן לסרוק מוצרים ללא חיבור לאינטרנט ולהוסיף אותם למסד נתוני המזון הפתוח מאוחר יותר. כל המוצרים שנסרקים מופיעים כאן, תהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
@@ -206,6 +208,7 @@
   <string name="prefs_scan_startup">סריקה עם ההפעלה</string>
   <string name="prefs_scan_startup_summary">אם אפשרות זו נבחרה הסריקה תחל עם הפעלת היישומון</string>
   <string name="prefs_power_mode">סריקת על</string>
+  <string name="prefs_power_mode_summary">ניתן לסרוק במהירות מוצרים בסופר כדי לראות אילו מהם אינם במסד הנתונים.</string>
   <string name="prefs_language">שפה</string>
   <string name="prefs_language_summary">החלפת שפה</string>
   <string name="scan_history_drawer">היסטוריה</string>

@@ -186,12 +186,12 @@
   <string name="txt_product_not_found">製品が見つかりません</string>
   <string name="delete_txt">削除</string>
   <string name="sign_in_drawer">サインイン</string>
-  <string name="alert_drawer">アレルゲンの警告</string>
+  <string name="alert_drawer">アレルゲン警告</string>
   <string name="warning_allergens">アレルゲンを含んでいます</string>
   <string name="title_dialog_alert">警告を追加</string>
   <string name="warning_alert_data">アレルギー情報は、Open Food Facts サーバーに送信されることはありません。また、データが正確でない可能性があることにご注意ください。ご自分でもう一度ご確認ください!</string>
   <string name="from_gallery">ギャラリーから</string>
-  <string name="product_sent">製品を送信しました!</string>
+  <string name="product_sent">製品を送信しました</string>
   <string name="action_edit_product">製品を編集</string>
   <string name="title_info_dialog">情報</string>
   <string name="text_offline_info_dialog">オフライン時に製品をスキャンして、後で Open Food Facts に追加するすることができます。スキャンする製品がすべてここに表示されます。下のボタンを使用してそれらを送信することができます。</string>
