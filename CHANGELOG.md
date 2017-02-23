@@ -7,7 +7,7 @@ Upcoming:
 - More harmonization with the website (color scheme)
 - Added smaller nutrients to the full nutrition table when they are available (eg waters, baby products…)
 - New appearence for the UK traffic lights: more compact, more legible
-
+- Under the hood: switch to a new ORM that improves reliability
 
 0.5 - Jan 12 2017
 
