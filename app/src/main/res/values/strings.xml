@@ -259,7 +259,7 @@
     <!--API URL-->
     <string name="openfoodUrl" translatable="false">https://ssl-api.openfoodfacts.org</string>
     <!-- No SSL available for the moment for Open Beauty Facts -->
-    <string name="openfoodUrl_obf" translatable="false">http://api.openbeautyfacts.org</string>
+    <string name="openfoodUrl_obf" translatable="false">https://api.openbeautyfacts.org</string>
     <!--<string name="openfoodUrl_obf" translatable="false">https://ssl-api.openbeautyfacts.org</string>-->
   
     <!-- Open Beauty Facts app -->
@@ -311,7 +311,7 @@
 
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">https://world.openfoodfacts.org/</string>
-    <string name="website_obf">http://world.openbeautyfacts.org/</string>
+    <string name="website_obf">https://world.openbeautyfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
     <string name="website_contribute">https://world.openfoodfacts.org/contribute</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir -->
@@ -320,13 +320,13 @@
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-    <string name="website_contribute_obf">http://world.openbeautyfacts.org/contribute</string>
-    <string name="website_discover_obf">http://world.openbeautyfacts.org/discover</string>
-    <string name="website_product_obf">http://world.openbeautyfacts.org/product/</string>
-    <string name="website_contributor_obf">http://world.openbeautyfacts.org/contributor/</string>
+    <string name="website_contribute_obf">https://world.openbeautyfacts.org/contribute</string>
+    <string name="website_discover_obf">https://world.openbeautyfacts.org/discover</string>
+    <string name="website_product_obf">https://world.openbeautyfacts.org/product/</string>
+    <string name="website_contributor_obf">https://world.openbeautyfacts.org/contributor/</string>
     <string name="logout_drawer">Logout</string>
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
-    <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
+    <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="txtDialogPowerMode">Quick view</string>
     <string name="txtSeeMore">See more</string>
     <string name="action_search">Search</string>
