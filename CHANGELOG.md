@@ -2,6 +2,8 @@ This is the Changelog. Please list changes here so that we can provide meaningfu
 
 Upcoming:
 
+0.6 - Mar 3 2017
+
 - Translation updates: Romanian, Italian, Galician, Hebrew, German, Japanese, Russian
 - The total number of results is displayed when you search a product, and you get infinite results that load as you scroll
 - More harmonization with the website (color scheme)
