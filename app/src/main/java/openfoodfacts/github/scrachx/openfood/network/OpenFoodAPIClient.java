@@ -301,7 +301,7 @@ public class OpenFoodAPIClient {
                     return;
                 }
 
-                mAllergenDao.insertInTx(response.body().getAllergens());
+                mAllergenDao.insertOrReplaceInTx(response.body().getAllergens());
                 onAllergensCallback.onAllergensResponse(true);
             }
 

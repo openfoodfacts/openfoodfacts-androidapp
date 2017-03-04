@@ -104,7 +104,7 @@ public class SplashActivity extends BaseActivity {
                 is = getAssets().open(additivesFile);
                 List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {})
                         .readValue(is);
-                mAdditiveDao.insertInTx(frenchAdditives);
+                mAdditiveDao.insertOrReplaceInTx(frenchAdditives);
             } catch (IOException e) {
                 result = false;
                 Log.e(ADDITIVE_IMPORT, "Unable to import additives from " + additivesFile);

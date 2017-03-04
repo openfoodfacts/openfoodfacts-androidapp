@@ -14,7 +14,7 @@ import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
 public class OFFApplication extends Application {
 
     private DaoSession daoSession;
-    private boolean DEBUG = true;
+    private boolean DEBUG = false;
 
     @Override
     public void onCreate() {
@@ -22,7 +22,7 @@ public class OFFApplication extends Application {
 
         // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
         // Use only during production: DatabaseHelper (see on Upgrade!)
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "open_food_facts");
+        DatabaseHelper helper = new DatabaseHelper(this, "open_food_facts");
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
 
