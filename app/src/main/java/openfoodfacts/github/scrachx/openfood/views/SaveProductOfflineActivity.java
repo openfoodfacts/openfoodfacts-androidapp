@@ -245,8 +245,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
         if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
-            EasyImage.openCamera(this, 0);
             imageTaken = "front";
+            EasyImage.openCamera(this, 0);
         }
     }
 
@@ -255,8 +255,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
         if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
-            EasyImage.openCamera(this, 0);
             imageTaken = "ingredients";
+            EasyImage.openCamera(this, 0);
         }
     }
 
@@ -265,8 +265,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
         if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
-            EasyImage.openCamera(this, 0);
             imageTaken = "nutrition";
+            EasyImage.openCamera(this, 0);
         }
     }
 
@@ -297,7 +297,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
     }
 
     private void onPhotoReturned(File photoFile) {
-        if(imageTaken == "front") {
+        if(imageTaken.equals("front")) {
             mProduct.setImgupload_front(photoFile.getAbsolutePath());
             imgSaveFront.setVisibility(View.VISIBLE);
             Picasso.with(this)
@@ -305,7 +305,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                     .fit()
                     .centerCrop()
                     .into(imgSaveFront);
-        } else if(imageTaken == "nutrition") {
+        } else if(imageTaken.equals("nutrition")) {
             mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
             imgSaveNutrition.setVisibility(View.VISIBLE);
             Picasso.with(this)

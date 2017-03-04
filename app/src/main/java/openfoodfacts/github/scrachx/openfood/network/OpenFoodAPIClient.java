@@ -329,7 +329,7 @@ public class OpenFoodAPIClient {
                 }
 
                 String imguploadFront = product.getImgupload_front();
-                if (StringUtils.isNotEmpty(imguploadFront )) {
+                if (StringUtils.isNotEmpty(imguploadFront)) {
                     ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
                     postImg(activity, image);
                 }
@@ -390,16 +390,6 @@ public class OpenFoodAPIClient {
                         lt.error();
                     }
                 });
-    }
-
-    @NonNull
-    private LoadToast getLoadToast(Activity activity) {
-        final LoadToast lt = new LoadToast(activity);
-        lt.setText(activity.getString(R.string.toast_retrieving));
-        lt.setBackgroundColor(activity.getResources().getColor(R.color.blue));
-        lt.setTextColor(activity.getResources().getColor(R.color.white));
-        lt.show();
-        return lt;
     }
 
     public interface OnProductsCallback {
