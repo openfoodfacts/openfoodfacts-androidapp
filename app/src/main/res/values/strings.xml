@@ -153,7 +153,7 @@
     <string name="txtInfoLoginOk">User saved</string>
     <string name="txtInfoLoginNo">User not saved</string>
     <string name="txtDialogsTitle">Information</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Do you want to add it?</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
     <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
     <string name="txtYes">Yes</string>

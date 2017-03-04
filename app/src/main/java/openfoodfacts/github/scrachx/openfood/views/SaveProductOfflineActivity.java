@@ -11,8 +11,10 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -147,12 +149,6 @@ public class SaveProductOfflineActivity extends BaseActivity {
             mProduct = new SendProduct();
             mProduct.setBarcode(mBarcode);
         }
-
-        new MaterialDialog.Builder(this)
-                .title(R.string.title_info_dialog)
-                .content(R.string.new_offline_info)
-                .positiveText(R.string.txtOk)
-                .show();
     }
 
     @OnItemSelected(value = R.id.spinnerUnitWeight, callback = OnItemSelected.Callback.ITEM_SELECTED)
@@ -267,6 +263,17 @@ public class SaveProductOfflineActivity extends BaseActivity {
         } else {
             imageTaken = "nutrition";
             EasyImage.openCamera(this, 0);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 

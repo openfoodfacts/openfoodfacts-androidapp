@@ -162,21 +162,11 @@ public class OpenFoodAPIClient {
                 final State s = response.body();
 
                 if (s.getStatus() == 0) {
-                    new MaterialDialog.Builder(activity)
-                            .title(R.string.txtDialogsTitle)
-                            .content(R.string.txtDialogsContent)
-                            .positiveText(R.string.txtYes)
-                            .negativeText(R.string.txtNo)
-                            .onPositive((dialog, which) -> {
-                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                intent.putExtra("barcode", barcode);
-                                activity.startActivity(intent);
-                                activity.finish();
-                            })
-                            .onNegative((dialog, which) -> {
-                                return;
-                            })
-                            .show();
+                    Toast.makeText(activity, R.string.txtDialogsContent, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                    intent.putExtra("barcode", barcode);
+                    activity.startActivity(intent);
+                    activity.finish();
                 } else {
                     final Product product = s.getProduct();
                     new HistoryTask().doInBackground(s.getProduct());
