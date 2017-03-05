@@ -2,6 +2,14 @@ This is the Changelog. Please list changes here so that we can provide meaningfu
 
 Upcoming:
 
+
+0.6.2 - Mar 5 2017
+- Even faster scan experience for new products: no more annoying popups, we jump straight to the new product page
+- Fix upload problems when starting with the nutrition image
+
+0.6.1 - Mar 5 2017
+- Fixes for the additives loading
+
 0.6 - Mar 3 2017
 
 - Translation updates: Romanian, Italian, Galician, Hebrew, German, Japanese, Russian
