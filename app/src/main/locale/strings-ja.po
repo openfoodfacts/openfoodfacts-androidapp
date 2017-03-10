@@ -6,17 +6,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  openfoodfacts\n"
+"Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-17 13:22+0100\n"
-"PO-Revision-Date: 2017-01-16 15:22+0000\n"
+"POT-Creation-Date: 2017-01-30 17:13+0100\n"
+"PO-Revision-Date: 2017-02-01 02:56+0000\n"
 "Last-Translator: Naofumi Fukue <naofum@gmail.com>\n"
-"Language: ja\n"
 "Language-Team: Japanese <ja@li.org>\n"
-"Plural-Forms: nplurals=1; plural=(0)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-02-01 09:28+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
+"Language: ja\n"
 "Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
@@ -70,11 +71,6 @@ msgstr "栄養"
 msgctxt "nav_drawer_items_product:3"
 msgid "Nutrition Table"
 msgstr "栄養成分表"
-
-#. Nav Drawer Product Menu Items
-msgctxt "nav_drawer_items_product:4"
-msgid "Back to menu"
-msgstr "メニューに戻る"
 
 #. Text units
 msgctxt "units_array:0"
@@ -498,16 +494,16 @@ msgid "Nutrient levels for 100g :"
 msgstr "100g 当たりの栄養成分:"
 
 msgctxt "txtNutritionLevelLow"
-msgid "low"
-msgstr "低"
+msgid "in low quantity"
+msgstr "少量"
 
 msgctxt "txtNutritionLevelModerate"
-msgid "moderate"
-msgstr "中"
+msgid "in moderate quantity"
+msgstr "適量"
 
 msgctxt "txtNutritionLevelHigh"
-msgid "high"
-msgstr "高"
+msgid "in high quantity"
+msgstr "多量"
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -524,8 +520,8 @@ msgstr "食品を開くと何を食べているか分かります"
 msgctxt "txtHome"
 msgid ""
 "Open Food Facts is a open database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find"
-" on product labels."
+"allergens, nutrition facts and all the tidbits of information we can find on "
+"product labels."
 msgstr ""
 "Open Food Facts は食品のオープン "
 "データベースです。原材料、アレルゲン、栄養成分表、および製品のラベルで見つけることができる情報があります。"
@@ -547,20 +543,20 @@ msgid "User saved"
 msgstr "ユーザーを保存しました"
 
 msgctxt "txtSalt"
-msgid "Salt :"
-msgstr "食塩 :"
+msgid "Salt"
+msgstr "食塩"
 
 msgctxt "txtFat"
-msgid "Fat :"
-msgstr "脂肪 :"
+msgid "Fat"
+msgstr "脂肪"
 
 msgctxt "txtSugars"
-msgid "Sugars :"
-msgstr "砂糖 :"
+msgid "Sugars"
+msgstr "砂糖"
 
 msgctxt "txtSaturatedFat"
-msgid "Satured fat :"
-msgstr "飽和脂肪酸 :"
+msgid "Satured fat"
+msgstr "飽和脂肪酸"
 
 msgctxt "hintBarcode"
 msgid "Barcode"
@@ -579,7 +575,8 @@ msgid "Login or password error"
 msgstr "ログインまたはパスワードエラー"
 
 msgctxt "errorWeb"
-msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
 msgstr "インターネットにアクセスできませんでした。接続に問題がありませんか?"
 
 msgctxt "txtInfoLoginOk"
@@ -596,8 +593,8 @@ msgstr "情報"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you "
-"want to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
 msgstr "スキャンした製品は、まだ Open Food Facts に存在しません。追加しますか?"
 
 msgctxt "txtDialogsContentPowerMode"
@@ -681,7 +678,8 @@ msgid "Do you want to delete this draft?"
 msgstr "この下書きを削除しますか?"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr "この製品はローカルに保存されます。オフライン編集 メニューで編集することができます"
 
 msgctxt "txtBarcodeRequire"
@@ -698,8 +696,8 @@ msgstr "処理中はアプリを終了しないでください..."
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative "
-"Commons Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
 msgstr "あなたが送信した画像はフリーのライセンスクリエイティブコモンズと同一条件許諾の下で公開されます。"
 
 msgctxt "txtAllsent"
@@ -779,8 +777,8 @@ msgid "Sign-in"
 msgstr "サインイン"
 
 msgctxt "alert_drawer"
-msgid "Allergen Alert"
-msgstr "アレルゲンの警告"
+msgid "Allergen alert"
+msgstr "アレルゲン警告"
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
@@ -792,9 +790,8 @@ msgstr "警告を追加"
 
 msgctxt "warning_alert_data"
 msgid ""
-"Your allergies info will never be sent to the Open Food Facts server. "
-"Also, be careful that data may not be accurate, please double-check by "
-"yourself!"
+"Your allergies info will never be sent to the Open Food Facts server. Also, "
+"be careful that data may not be accurate, please double-check by yourself!"
 msgstr ""
 "アレルギー情報は、Open Food Facts "
 "サーバーに送信されることはありません。また、データが正確でない可能性があることにご注意ください。ご自分でもう一度ご確認ください!"
@@ -804,8 +801,8 @@ msgid "From gallery"
 msgstr "ギャラリーから"
 
 msgctxt "product_sent"
-msgid "Product sent!"
-msgstr "製品を送信しました!"
+msgid "Product sent successfully"
+msgstr "製品を送信しました"
 
 msgctxt "action_edit_product"
 msgid "Edit product"
@@ -858,8 +855,8 @@ msgstr "まず項目を入力してください。"
 
 msgctxt "new_offline_info"
 msgid ""
-"Please take a picture of the product, ingredients, nutrition facts table "
-"and any other information on the label. Thank you!"
+"Please take a picture of the product, ingredients, nutrition facts table and "
+"any other information on the label. Thank you!"
 msgstr "製品、原材料、栄養成分表、およびラベル上の他の情報を撮影してください。 ありがとうございます!"
 
 #. Strings related to login
@@ -889,7 +886,7 @@ msgstr "パワーモードスキャン"
 
 msgctxt "prefs_power_mode_summary"
 msgid ""
-"Quickly scan products in a supermarket to see which one are not in the "
+"Quickly scan products in a supermarket to see which ones are not in the "
 "database."
 msgstr "スーパーマーケット内の製品をすばやくスキャンして、データベースに含まれていないものを確認します。"
 
@@ -1069,14 +1066,17 @@ msgctxt "website_contribute"
 msgid "https://world.openfoodfacts.org/contribute"
 msgstr "https://world-ja.openfoodfacts.org/contribute"
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir
 msgctxt "website_discover"
 msgid "https://world.openfoodfacts.org/discover"
 msgstr "https://world-ja.openfoodfacts.org/discover"
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/produit/
 msgctxt "website_product"
 msgid "https://world.openfoodfacts.org/product/"
 msgstr "https://world-ja.openfoodfacts.org/product/"
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/
 msgctxt "website_contributor"
 msgid "https://world.openfoodfacts.org/contributor/"
 msgstr "https://world-ja.openfoodfacts.org/contributor/"
@@ -1111,9 +1111,252 @@ msgstr "製品を検索します"
 
 msgctxt "number_of_results"
 msgid "Number of results :"
-msgstr ""
+msgstr "結果の数 :"
 
 msgctxt "txt_no_results"
 msgid "No results found"
-msgstr ""
+msgstr "見つかりませんでした"
 
+msgctxt "nutrition_lactose"
+msgid "Lactose"
+msgstr "乳糖"
+
+msgctxt "nutrition_casein"
+msgid "Casein"
+msgstr "カゼイン"
+
+msgctxt "nutrition_maltodextrins"
+msgid "Maltodextrins"
+msgstr "マルトデキストリン"
+
+msgctxt "nutrition_serum_proteins"
+msgid "Serum Proteins"
+msgstr "血清タンパク質"
+
+msgctxt "nutrition_nucleotides"
+msgid "Nucleotides"
+msgstr "ヌクレオチド"
+
+msgctxt "for_100g"
+msgid "For 100 g"
+msgstr "100 g 当たり"
+
+msgctxt "serving"
+msgid "Per serving"
+msgstr "一食当たり"
+
+msgctxt "minerals"
+msgid "Minerals"
+msgstr "ミネラル"
+
+msgctxt "nutrition_calcium"
+msgid "Calcium"
+msgstr "カルシウム"
+
+msgctxt "nutrition_potassium"
+msgid "Potassium"
+msgstr "カリウム"
+
+msgctxt "nutrition_chlore"
+msgid "Chlorine"
+msgstr "塩素"
+
+msgctxt "nutrition_magnesium"
+msgid "Magnesium"
+msgstr "マグネシウム"
+
+msgctxt "nutrition_taurine"
+msgid "Taurine"
+msgstr "タウリン"
+
+msgctxt "nutrition_monounsaturatedFat"
+msgid "Mono unsaturated fat"
+msgstr "一価不飽和脂肪"
+
+msgctxt "nutrition_polyunsaturatedFat"
+msgid "Poly unsaturated fat"
+msgstr "多価不飽和脂肪"
+
+msgctxt "nutrition_omega3"
+msgid "Omega 3"
+msgstr "オメガ 3"
+
+msgctxt "nutrition_omega6"
+msgid "Omega 6"
+msgstr "オメガ 6"
+
+msgctxt "nutrition_omega9"
+msgid "Omega 9"
+msgstr "オメガ 9"
+
+msgctxt "nutrition_sucrose"
+msgid "Sucrose"
+msgstr "スクロース"
+
+msgctxt "nutrition_glucose"
+msgid "Glucose"
+msgstr "グルコース"
+
+msgctxt "nutrition_fructose"
+msgid "Fructose"
+msgstr "果糖"
+
+msgctxt "nutrition_maltose"
+msgid "Maltose"
+msgstr "麦芽糖"
+
+msgctxt "nutrition_alcohol"
+msgid "Alcohol"
+msgstr "アルコール"
+
+msgctxt "nutrition_vitamins"
+msgid "Vitamins"
+msgstr "ビタミン"
+
+msgctxt "vitamin_a"
+msgid "Vitamin A"
+msgstr "ビタミン A"
+
+msgctxt "vitamin_d"
+msgid "Vitamin d"
+msgstr "ビタミン D"
+
+msgctxt "vitamin_e"
+msgid "Vitamin e"
+msgstr "ビタミン E"
+
+msgctxt "vitamin_k"
+msgid "Vitamin k"
+msgstr "ビタミン K"
+
+msgctxt "vitamin_c"
+msgid "Vitamin C"
+msgstr "ビタミン C"
+
+msgctxt "vitamin_b1"
+msgid "Vitamin B1"
+msgstr "ビタミン B1"
+
+msgctxt "vitamin_b2"
+msgid "Vitamin B2"
+msgstr "ビタミン B2"
+
+msgctxt "vitamin_pp"
+msgid "Vitamin PP"
+msgstr "ビタミン PP"
+
+msgctxt "vitamin_b6"
+msgid "Vitamin B6"
+msgstr "ビタミン B6"
+
+msgctxt "vitamin_b9"
+msgid "Vitamin B9"
+msgstr "ビタミン B9"
+
+msgctxt "vitamin_b12"
+msgid "Vitamin B12"
+msgstr "ビタミン B12"
+
+msgctxt "biotin"
+msgid "Biotin"
+msgstr "ビオチン"
+
+msgctxt "pantothenic_acid"
+msgid "Pantothenic acid"
+msgstr "パントテン酸"
+
+msgctxt "nutrition_minerals"
+msgid "Minerals"
+msgstr "ミネラル"
+
+msgctxt "silica"
+msgid "Silica"
+msgstr "シリカ"
+
+msgctxt "bicarbonate"
+msgid "Bicarbonate"
+msgstr "重炭酸塩"
+
+msgctxt "potassium"
+msgid "Potassium"
+msgstr "カリウム"
+
+msgctxt "chloride"
+msgid "Chloride"
+msgstr "塩化物"
+
+msgctxt "calcium"
+msgid "Calcium"
+msgstr "カルシウム"
+
+msgctxt "phosphorus"
+msgid "Phosphorus"
+msgstr "リン"
+
+msgctxt "iron"
+msgid "Iron"
+msgstr "鉄"
+
+msgctxt "magnesium"
+msgid "Magnesium"
+msgstr "マグネシウム"
+
+msgctxt "zinc"
+msgid "Zinc"
+msgstr "亜鉛"
+
+msgctxt "copper"
+msgid "Copper"
+msgstr "銅"
+
+msgctxt "manganese"
+msgid "Manganese"
+msgstr "マンガン"
+
+msgctxt "fluoride"
+msgid "Fluoride"
+msgstr "フッ化物"
+
+msgctxt "selenium"
+msgid "Selenium"
+msgstr "セレン"
+
+msgctxt "chromium"
+msgid "Chromium"
+msgstr "クロム"
+
+msgctxt "molybdenum"
+msgid "Molybdenum"
+msgstr "モリブデン"
+
+msgctxt "iodine"
+msgid "Iodine"
+msgstr "ヨウ素"
+
+msgctxt "caffeine"
+msgid "Caffeine"
+msgstr "カフェイン"
+
+msgctxt "taurine"
+msgid "Taurine"
+msgstr "タウリン"
+
+msgctxt "ph"
+msgid "Ph"
+msgstr "Ph"
+
+msgctxt "fruits_vegetables_nuts"
+msgid "Fruits, vegetables, nuts"
+msgstr "果物, 野菜, ナッツ"
+
+msgctxt "collagen_meat_protein_ratio"
+msgid "Collagen meat protein ratio"
+msgstr "コラーゲン肉タンパク質比"
+
+msgctxt "cocoa"
+msgid "Cocoa"
+msgstr "ココア"
+
+msgctxt "chlorophyl"
+msgid "Chlorophyl"
+msgstr "クロロフィル"

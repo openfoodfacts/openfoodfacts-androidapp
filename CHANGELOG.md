@@ -2,6 +2,25 @@ This is the Changelog. Please list changes here so that we can provide meaningfu
 
 Upcoming:
 
+
+0.6.2 - Mar 5 2017
+- Even faster scan experience for new products: no more annoying popups, we jump straight to the new product page
+- Fix upload problems when starting with the nutrition image
+
+0.6.1 - Mar 5 2017
+- Fixes for the additives loading
+
+0.6 - Mar 3 2017
+
+- Translation updates: Romanian, Italian, Galician, Hebrew, German, Japanese, Russian
+- The total number of results is displayed when you search a product, and you get infinite results that load as you scroll
+- More harmonization with the website (color scheme)
+- Added smaller nutrients to the full nutrition table when they are available (eg waters, baby products…)
+- New appearence for the UK traffic lights: more compact, more legible
+- Under the hood: switch to a new ORM that improves reliability
+
+0.5 - Jan 12 2017
+
 - Quick View : a new way to quickly get info (including the Nutriscore) about several products in a row, and easily add them to Open Food Facts if they don't exist. Thanks to @itchix
 - Better search, from everywhere: Search now includes brand, weight, and images are better looking. Plus you can now search from anywhere in the app. @herau
 - Better UX: the UX has materially improved thanks to @herau. It matches the web version. This is our first take at following the Material design spec. Espect even more refinements in the next release.

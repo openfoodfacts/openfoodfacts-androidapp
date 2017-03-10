@@ -6,19 +6,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  openfoodfacts\n"
+"Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-17 13:22+0100\n"
-"PO-Revision-Date: 2017-01-02 21:31+0000\n"
+"POT-Creation-Date: 2017-01-30 17:13+0100\n"
+"PO-Revision-Date: 2017-02-16 20:47+0000\n"
 "Last-Translator: lucaa <Unknown>\n"
-"Language: ro\n"
 "Language-Team: Romanian <ro@li.org>\n"
-"Plural-Forms: nplurals=3; plural=((((!((0 == 0))) || ((n == 0))) || "
-"((!((n == 1))) && (((n % 100) >= 1 && (n % 100) <= 19)))) ? 1 : (((n == "
-"1)) && ((0 == 0))) ? 0 : 2)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-02-16 21:16+0000\n"
+"X-Generator: Launchpad (build 18326)\n"
+"Language: ro\n"
 "Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
@@ -43,7 +42,7 @@ msgstr "Descoperiți"
 
 msgctxt "contribute"
 msgid "How to contribute"
-msgstr ""
+msgstr "Cum să contribuiţi"
 
 msgctxt "action_find"
 msgid "Find"
@@ -72,11 +71,6 @@ msgstr "Informații nutriționale"
 msgctxt "nav_drawer_items_product:3"
 msgid "Nutrition Table"
 msgstr "Tabel nutrițional"
-
-#. Nav Drawer Product Menu Items
-msgctxt "nav_drawer_items_product:4"
-msgid "Back to menu"
-msgstr "Înapoi la meniu"
 
 #. Text units
 msgctxt "units_array:0"
@@ -254,10 +248,9 @@ msgid "da"
 msgstr "da"
 
 #. Text units
-#, fuzzy
 msgctxt "lang_array:30"
 msgid "zh-rCN"
-msgstr "zh_rCN"
+msgstr "zh-rCN"
 
 msgctxt "lang_label_array:0"
 msgid "English"
@@ -503,16 +496,16 @@ msgid "Nutrient levels for 100g :"
 msgstr "Informații nutriționale pentru 100g:"
 
 msgctxt "txtNutritionLevelLow"
-msgid "low"
-msgstr "scăzut"
+msgid "in low quantity"
+msgstr "în cantitate mică"
 
 msgctxt "txtNutritionLevelModerate"
-msgid "moderate"
-msgstr "moderat"
+msgid "in moderate quantity"
+msgstr "în cantitate moderată"
 
 msgctxt "txtNutritionLevelHigh"
-msgid "high"
-msgstr "ridicat"
+msgid "in high quantity"
+msgstr "în cantitate ridicată"
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -529,17 +522,16 @@ msgstr "Eliberați alimentația și aflați ce mâncați"
 msgctxt "txtHome"
 msgid ""
 "Open Food Facts is a open database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find"
-" on product labels."
+"allergens, nutrition facts and all the tidbits of information we can find on "
+"product labels."
 msgstr ""
 "Open Food Facts este o bază de date deschisă de produse alimentare, "
-"conținând informații despre ingrediente, alergeni, informații "
-"nutriționale și alte detalii ce se regăsesc pe etichetele produselor."
+"conținând informații despre ingrediente, alergeni, informații nutriționale "
+"și alte detalii ce se regăsesc pe etichetele produselor."
 
-#, fuzzy
 msgctxt "txtSave"
 msgid "Save"
-msgstr "Trimite / Salvează"
+msgstr "Salvează"
 
 msgctxt "txtSignIn"
 msgid "Sign in"
@@ -554,20 +546,20 @@ msgid "User saved"
 msgstr "Utilizator salvat"
 
 msgctxt "txtSalt"
-msgid "Salt :"
-msgstr "Sare:"
+msgid "Salt"
+msgstr "Sare"
 
 msgctxt "txtFat"
-msgid "Fat :"
-msgstr "Grăsimi:"
+msgid "Fat"
+msgstr "Grăsimi"
 
 msgctxt "txtSugars"
-msgid "Sugars :"
+msgid "Sugars"
 msgstr "Zaharuri"
 
 msgctxt "txtSaturatedFat"
-msgid "Satured fat :"
-msgstr "Grăsimi saturare"
+msgid "Satured fat"
+msgstr "Acizi grași saturați"
 
 msgctxt "hintBarcode"
 msgid "Barcode"
@@ -586,7 +578,8 @@ msgid "Login or password error"
 msgstr "Numele de utilizator sau parola sunt incorecte"
 
 msgctxt "errorWeb"
-msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
 msgstr ""
 "Conectarea la internet nu e posibilă. Aveți probleme cu conexiunea la "
 "internet?"
@@ -605,15 +598,15 @@ msgstr "Informaţii"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you "
-"want to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Do you want "
+"to add it?"
 msgstr ""
 "Produsul scanat nu există în baza de date Open Food Facts. Doriți să-l "
 "adăugați?"
 
 msgctxt "txtDialogsContentPowerMode"
 msgid "The product you scanned does already exist in Open Food Facts."
-msgstr ""
+msgstr "Produsul scanat există deja în baza de date Open Food Facts."
 
 msgctxt "txtDialogsContentSend"
 msgid "Do you want send the saved products to the database?"
@@ -692,10 +685,11 @@ msgid "Do you want to delete this draft?"
 msgstr "Doriți să ștergeți această versiune intermediară?"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
-"Produsul a fost salvat local, puteți să il modificați din meniul "
-"\"Editare offline\"."
+"Produsul a fost salvat local, puteți să il modificați din meniul \"Editare "
+"offline\"."
 
 msgctxt "txtBarcodeRequire"
 msgid "Barcode required"
@@ -711,11 +705,11 @@ msgstr "Vă rugăm nu opriți aplicația în cursul acestei operații..."
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative "
-"Commons Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
 msgstr ""
-"Fotografiile trimise sunt publicate sub licența Creative Commons "
-"Attribution and ShareAlike ."
+"Fotografiile trimise sunt publicate sub licența Creative Commons Attribution "
+"and ShareAlike ."
 
 msgctxt "txtAllsent"
 msgid "Products sent"
@@ -794,7 +788,7 @@ msgid "Sign-in"
 msgstr "Conectare"
 
 msgctxt "alert_drawer"
-msgid "Allergen Alert"
+msgid "Allergen alert"
 msgstr "Alertă alergeni"
 
 msgctxt "warning_allergens"
@@ -807,21 +801,20 @@ msgstr "Adaugare alertă"
 
 msgctxt "warning_alert_data"
 msgid ""
-"Your allergies info will never be sent to the Open Food Facts server. "
-"Also, be careful that data may not be accurate, please double-check by "
-"yourself!"
+"Your allergies info will never be sent to the Open Food Facts server. Also, "
+"be careful that data may not be accurate, please double-check by yourself!"
 msgstr ""
-"Informațiile despre alergiile dumneavostră nu vor fi trimise către Open "
-"Food Facts. Deasemenea, luați în considerare faptul că datele pot fi "
-"imprecise, întotdeauna re-verificați dumneavoastră înșivă!"
+"Informațiile despre alergiile dumneavostră nu vor fi trimise către Open Food "
+"Facts. Deasemenea, luați în considerare faptul că datele pot fi imprecise, "
+"întotdeauna re-verificați dumneavoastră înșivă!"
 
 msgctxt "from_gallery"
 msgid "From gallery"
 msgstr "Din galerie"
 
 msgctxt "product_sent"
-msgid "Product sent!"
-msgstr "Produsul a fost trimis!"
+msgid "Product sent successfully"
+msgstr "Produsul a fost trimis cu succes"
 
 msgctxt "action_edit_product"
 msgid "Edit product"
@@ -837,15 +830,15 @@ msgid ""
 "later. All the products you scan will appear here, and you'll be able to "
 "send them using the button below."
 msgstr ""
-"Puteți scana produse cand sunteți offline pentru a le adăuga la Open Food"
-" Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți "
-"putea trimite folosind butonul de dedesubt."
+"Puteți scana produse cand sunteți offline pentru a le adăuga la Open Food "
+"Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea "
+"trimite folosind butonul de dedesubt."
 
 msgctxt "permission_camera"
 msgid "Camera permission is needed to scan barcodes and take pictures."
 msgstr ""
-"Pentru a scana codul de bare și a fotografia produse sunt necesare "
-"drepturi de access la camera foto."
+"Pentru a scana codul de bare și a fotografia produse sunt necesare drepturi "
+"de access la camera foto."
 
 msgctxt "permission_title"
 msgid "Permission information"
@@ -883,12 +876,11 @@ msgstr "Vă rugăm completați câmpurile."
 
 msgctxt "new_offline_info"
 msgid ""
-"Please take a picture of the product, ingredients, nutrition facts table "
-"and any other information on the label. Thank you!"
+"Please take a picture of the product, ingredients, nutrition facts table and "
+"any other information on the label. Thank you!"
 msgstr ""
 "Vă rugăm fotografiați produsul, lista sa de ingrediente, informațiile "
-"nutriționale și oricare alte informații prezente pe eticheta. Vă "
-"mulțumim!"
+"nutriționale și oricare alte informații prezente pe eticheta. Vă mulțumim!"
 
 #. Strings related to login
 msgctxt "error_invalid_password"
@@ -910,8 +902,7 @@ msgstr "Scanare la pornire"
 msgctxt "prefs_scan_startup_summary"
 msgid "This option if selected will start scan when app is opened."
 msgstr ""
-"Această opțiune permite activarea funcției de scanare la pornirea "
-"aplicației."
+"Această opțiune permite activarea funcției de scanare la pornirea aplicației."
 
 msgctxt "prefs_power_mode"
 msgid "Power mode scan"
@@ -919,11 +910,11 @@ msgstr "Scanare \"power mode\""
 
 msgctxt "prefs_power_mode_summary"
 msgid ""
-"Quickly scan products in a supermarket to see which one are not in the "
+"Quickly scan products in a supermarket to see which ones are not in the "
 "database."
 msgstr ""
-"Scanați rapid produse dintr-un supermarket pentru a descoperi pe cele "
-"care nu se regăsesc în baza de date."
+"Scanare rapidă a produselor într-un supermarket pentru a verifica prezența "
+"lor în baza de date."
 
 msgctxt "prefs_language"
 msgid "Language"
@@ -1103,14 +1094,17 @@ msgctxt "website_contribute"
 msgid "https://world.openfoodfacts.org/contribute"
 msgstr "https://world-ro.openfoodfacts.org/contribute"
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir
 msgctxt "website_discover"
 msgid "https://world.openfoodfacts.org/discover"
 msgstr "https://world-ro.openfoodfacts.org/discover"
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/produit/
 msgctxt "website_product"
 msgid "https://world.openfoodfacts.org/product/"
 msgstr "https://world-ro.openfoodfacts.org/produs/"
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/
 msgctxt "website_contributor"
 msgid "https://world.openfoodfacts.org/contributor/"
 msgstr "https://world-ro.openfoodfacts.org/contributor/"
@@ -1127,28 +1121,270 @@ msgctxt "textCarbonFootprint"
 msgid "Carbon footprint / CO2 emissions: "
 msgstr "Amprenta carbon / Emisii CO2 "
 
-#, fuzzy
 msgctxt "txtDialogPowerMode"
 msgid "Quick view"
-msgstr ""
+msgstr "Vizualizare rapidă"
 
 msgctxt "txtSeeMore"
 msgid "See more"
-msgstr ""
+msgstr "Mai mult..."
 
 msgctxt "action_search"
 msgid "Search"
-msgstr ""
+msgstr "Căutare"
 
 msgctxt "search_hint"
 msgid "Search a product"
-msgstr ""
+msgstr "Căutați un produs"
 
 msgctxt "number_of_results"
 msgid "Number of results :"
-msgstr ""
+msgstr "Număr de rezultate"
 
 msgctxt "txt_no_results"
 msgid "No results found"
-msgstr ""
+msgstr "Nici un rezultat"
 
+msgctxt "nutrition_lactose"
+msgid "Lactose"
+msgstr "Lactoză"
+
+msgctxt "nutrition_casein"
+msgid "Casein"
+msgstr "Caseină"
+
+msgctxt "nutrition_maltodextrins"
+msgid "Maltodextrins"
+msgstr "Maltodextrină"
+
+msgctxt "nutrition_serum_proteins"
+msgid "Serum Proteins"
+msgstr "Proteine sangvine"
+
+msgctxt "nutrition_nucleotides"
+msgid "Nucleotides"
+msgstr "Nucleotide"
+
+msgctxt "for_100g"
+msgid "For 100 g"
+msgstr "per 100g"
+
+msgctxt "serving"
+msgid "Per serving"
+msgstr "Per porție"
+
+msgctxt "minerals"
+msgid "Minerals"
+msgstr "Minerale"
+
+msgctxt "nutrition_calcium"
+msgid "Calcium"
+msgstr "Calciu"
+
+msgctxt "nutrition_potassium"
+msgid "Potassium"
+msgstr "Potasiu"
+
+msgctxt "nutrition_chlore"
+msgid "Chlorine"
+msgstr "Clor"
+
+msgctxt "nutrition_magnesium"
+msgid "Magnesium"
+msgstr "Magneziu"
+
+msgctxt "nutrition_taurine"
+msgid "Taurine"
+msgstr "Taurină"
+
+msgctxt "nutrition_monounsaturatedFat"
+msgid "Mono unsaturated fat"
+msgstr "Grăsimi monosaturate"
+
+msgctxt "nutrition_polyunsaturatedFat"
+msgid "Poly unsaturated fat"
+msgstr "Grăsimi polinesaturate"
+
+msgctxt "nutrition_omega3"
+msgid "Omega 3"
+msgstr "Omega 3"
+
+msgctxt "nutrition_omega6"
+msgid "Omega 6"
+msgstr "Omega 6"
+
+msgctxt "nutrition_omega9"
+msgid "Omega 9"
+msgstr "Omega 9"
+
+msgctxt "nutrition_sucrose"
+msgid "Sucrose"
+msgstr "Zaharoză"
+
+msgctxt "nutrition_glucose"
+msgid "Glucose"
+msgstr "Glucoză"
+
+msgctxt "nutrition_fructose"
+msgid "Fructose"
+msgstr "Fructoză"
+
+msgctxt "nutrition_maltose"
+msgid "Maltose"
+msgstr "Maltoză"
+
+msgctxt "nutrition_alcohol"
+msgid "Alcohol"
+msgstr "Alcool"
+
+msgctxt "nutrition_vitamins"
+msgid "Vitamins"
+msgstr "Vitamine"
+
+msgctxt "vitamin_a"
+msgid "Vitamin A"
+msgstr "Vitamina A"
+
+msgctxt "vitamin_d"
+msgid "Vitamin d"
+msgstr "Vitamina D"
+
+msgctxt "vitamin_e"
+msgid "Vitamin e"
+msgstr "Vitamina E"
+
+msgctxt "vitamin_k"
+msgid "Vitamin k"
+msgstr "Vitamina K"
+
+msgctxt "vitamin_c"
+msgid "Vitamin C"
+msgstr "Vitamina C"
+
+msgctxt "vitamin_b1"
+msgid "Vitamin B1"
+msgstr "Vitamina B1"
+
+msgctxt "vitamin_b2"
+msgid "Vitamin B2"
+msgstr "Vitamina B2"
+
+msgctxt "vitamin_pp"
+msgid "Vitamin PP"
+msgstr "Vitamina PP"
+
+msgctxt "vitamin_b6"
+msgid "Vitamin B6"
+msgstr "Vitamina B6"
+
+msgctxt "vitamin_b9"
+msgid "Vitamin B9"
+msgstr "Vitamina B9"
+
+msgctxt "vitamin_b12"
+msgid "Vitamin B12"
+msgstr "Vitamina B12"
+
+msgctxt "biotin"
+msgid "Biotin"
+msgstr "Biotină"
+
+msgctxt "pantothenic_acid"
+msgid "Pantothenic acid"
+msgstr "Acid pantotenic"
+
+msgctxt "nutrition_minerals"
+msgid "Minerals"
+msgstr "Minerale"
+
+msgctxt "silica"
+msgid "Silica"
+msgstr "Dioxid de siliciu"
+
+msgctxt "bicarbonate"
+msgid "Bicarbonate"
+msgstr "Bicarbonat"
+
+msgctxt "potassium"
+msgid "Potassium"
+msgstr "Potasiu"
+
+msgctxt "chloride"
+msgid "Chloride"
+msgstr "Clorură"
+
+msgctxt "calcium"
+msgid "Calcium"
+msgstr "Calciu"
+
+msgctxt "phosphorus"
+msgid "Phosphorus"
+msgstr "Fosfor"
+
+msgctxt "iron"
+msgid "Iron"
+msgstr "Fier"
+
+msgctxt "magnesium"
+msgid "Magnesium"
+msgstr "Magneziu"
+
+msgctxt "zinc"
+msgid "Zinc"
+msgstr "Zinc"
+
+msgctxt "copper"
+msgid "Copper"
+msgstr "Cupru"
+
+msgctxt "manganese"
+msgid "Manganese"
+msgstr "Mangan"
+
+msgctxt "fluoride"
+msgid "Fluoride"
+msgstr "Fluorură"
+
+msgctxt "selenium"
+msgid "Selenium"
+msgstr "Seleniu"
+
+msgctxt "chromium"
+msgid "Chromium"
+msgstr "Crom"
+
+msgctxt "molybdenum"
+msgid "Molybdenum"
+msgstr "Molibden"
+
+msgctxt "iodine"
+msgid "Iodine"
+msgstr "Iod"
+
+msgctxt "caffeine"
+msgid "Caffeine"
+msgstr "Cafeină"
+
+msgctxt "taurine"
+msgid "Taurine"
+msgstr "Taurină"
+
+msgctxt "ph"
+msgid "Ph"
+msgstr "pH"
+
+msgctxt "fruits_vegetables_nuts"
+msgid "Fruits, vegetables, nuts"
+msgstr "Fructe, legume, semințe"
+
+msgctxt "collagen_meat_protein_ratio"
+msgid "Collagen meat protein ratio"
+msgstr "Raport colagen / proteine din carne"
+
+msgctxt "cocoa"
+msgid "Cocoa"
+msgstr "Cacao"
+
+msgctxt "chlorophyl"
+msgid "Chlorophyl"
+msgstr "Clorofilă"

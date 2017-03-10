@@ -13,7 +13,6 @@
     <item>Ингредиенты</item>
     <item>Пищевая ценность</item>
     <item>Состав</item>
-    <item>Назад в меню</item>
   </string-array>
   <string-array name="units_array">
     <item>г</item>
@@ -53,7 +52,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>упрощенный китайский</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Английский</item>
@@ -119,9 +118,9 @@
   <string name="txtPalmOilProduct">Ингредиенты из пальмового масла:</string>
   <string name="txtServingSize">Размер порции:</string>
   <string name="txtNutrientLevel100g">Пищевая ценность на 100 г:</string>
-  <string name="txtNutritionLevelLow">низкий</string>
-  <string name="txtNutritionLevelModerate">умеренный</string>
-  <string name="txtNutritionLevelHigh">высокий</string>
+  <string name="txtNutritionLevelLow">в малом количестве</string>
+  <string name="txtNutritionLevelModerate">в умеренном количестве</string>
+  <string name="txtNutritionLevelHigh">в большом количестве</string>
   <string name="txtLogin">Имя:</string>
   <string name="txtPass">Пароль:</string>
   <string name="txtTitleHome">Откройте вашу еду и узнайте, что вы едите</string>
@@ -130,10 +129,10 @@
   <string name="txtSignIn">Войти</string>
   <string name="txtUser">Панель пользователя</string>
   <string name="txtToastSaved">Пользователь сохранён</string>
-  <string name="txtSalt">Соль:</string>
-  <string name="txtFat">Жиры:</string>
-  <string name="txtSugars">Сахара:</string>
-  <string name="txtSaturatedFat">Насыщенные жиры:</string>
+  <string name="txtSalt">Соль</string>
+  <string name="txtFat">Жир</string>
+  <string name="txtSugars">Сахара</string>
+  <string name="txtSaturatedFat">Насыщенные жиры</string>
   <string name="hintBarcode">Штрих-код</string>
   <string name="hintLogin">Логин</string>
   <string name="hintPass">Пароль</string>
@@ -192,7 +191,7 @@
   <string name="title_dialog_alert">Добавить предупреждение</string>
   <string name="warning_alert_data">"Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts.  Но будьте осторожны: данные могут быть неточными, перепроверяйте их!"</string>
   <string name="from_gallery">Из галереи</string>
-  <string name="product_sent">Продукт отправлен!</string>
+  <string name="product_sent">Данные о продукте успешно отправлены</string>
   <string name="action_edit_product">Редактировать продукт</string>
   <string name="title_info_dialog">Информация</string>
   <string name="text_offline_info_dialog">"Вы можете сканировать продукты будучи офлайн, и отправить их на Open Food Facts потом.  Все сканируемые продукты будут появляться здесь, и их можно будет отправить кнопкой, которая ниже."</string>
@@ -210,7 +209,7 @@
   <string name="prefs_scan_startup">Сканировать при запуске</string>
   <string name="prefs_scan_startup_summary">Если опция включена, сканирование запустится сразу после запуска.</string>
   <string name="prefs_power_mode">Потоковое сканирование</string>
-  <string name="prefs_power_mode_summary">Быстрое сканирование продуктов в супермаркете для определения отсутствующих в базе данных.</string>
+  <string name="prefs_power_mode_summary">Быстрое сканирование продуктов в супермаркете для проверки их наличия в базе данных.</string>
   <string name="prefs_language">Язык</string>
   <string name="prefs_language_summary">Сменить язык</string>
   <string name="scan_history_drawer">История</string>
@@ -264,4 +263,67 @@
   <string name="txtSeeMore">Подробнее</string>
   <string name="action_search">Найти</string>
   <string name="search_hint">Поиск продукта</string>
+  <string name="number_of_results">Количество результатов:</string>
+  <string name="txt_no_results">Ничего не найдено</string>
+  <string name="nutrition_lactose">Лактоза</string>
+  <string name="nutrition_casein">Казеин</string>
+  <string name="nutrition_maltodextrins">Мальтодекстрин</string>
+  <string name="nutrition_serum_proteins">Сывороточный протеин</string>
+  <string name="nutrition_nucleotides">Нуклеотиды</string>
+  <string name="for_100g">На 100 г</string>
+  <string name="serving">На порцию</string>
+  <string name="minerals">Минералы</string>
+  <string name="nutrition_calcium">Кальций</string>
+  <string name="nutrition_potassium">Калий</string>
+  <string name="nutrition_chlore">Хлор</string>
+  <string name="nutrition_magnesium">Магний</string>
+  <string name="nutrition_taurine">Таурин</string>
+  <string name="nutrition_monounsaturatedFat">Мононенасыщенные жирные кислоты</string>
+  <string name="nutrition_polyunsaturatedFat">Полиненасыщенные жирные кислоты</string>
+  <string name="nutrition_omega3">Омега-3</string>
+  <string name="nutrition_omega6">Омега-6</string>
+  <string name="nutrition_omega9">Омега-9</string>
+  <string name="nutrition_sucrose">Сахароза</string>
+  <string name="nutrition_glucose">Глюкоза</string>
+  <string name="nutrition_fructose">Фруктоза</string>
+  <string name="nutrition_maltose">Мальтоза</string>
+  <string name="nutrition_alcohol">Алкоголь</string>
+  <string name="nutrition_vitamins">Витамины</string>
+  <string name="vitamin_a">Витамин А</string>
+  <string name="vitamin_d">Витамин D</string>
+  <string name="vitamin_e">Витамин E</string>
+  <string name="vitamin_k">Витамин K</string>
+  <string name="vitamin_c">Витамин C</string>
+  <string name="vitamin_b1">Тиамин</string>
+  <string name="vitamin_b2">Рибофлавин</string>
+  <string name="vitamin_pp">Витамин PP</string>
+  <string name="vitamin_b6">Витамин B6</string>
+  <string name="vitamin_b9">Витамин B9</string>
+  <string name="vitamin_b12">Витамин B12</string>
+  <string name="biotin">Биотин</string>
+  <string name="pantothenic_acid">Пантотеновая кислота</string>
+  <string name="nutrition_minerals">Минералы</string>
+  <string name="silica">Диоксид кремния</string>
+  <string name="bicarbonate">Гидрокарбонаты</string>
+  <string name="potassium">Калий</string>
+  <string name="chloride">Хлориды</string>
+  <string name="calcium">Кальций</string>
+  <string name="phosphorus">Фосфор</string>
+  <string name="iron">Железо</string>
+  <string name="magnesium">Магний</string>
+  <string name="zinc">Цинк</string>
+  <string name="copper">Медь</string>
+  <string name="manganese">Марганец</string>
+  <string name="fluoride">Фториды</string>
+  <string name="selenium">Селен</string>
+  <string name="chromium">Хром</string>
+  <string name="molybdenum">Молибден</string>
+  <string name="iodine">Иод</string>
+  <string name="caffeine">Кофеин</string>
+  <string name="taurine">Таурин</string>
+  <string name="ph">pH</string>
+  <string name="fruits_vegetables_nuts">Фрукты, овощи, орехи</string>
+  <string name="collagen_meat_protein_ratio">Доля коллагена в мясном белке</string>
+  <string name="cocoa">Какао</string>
+  <string name="chlorophyl">Хлорофилл</string>
 </resources>

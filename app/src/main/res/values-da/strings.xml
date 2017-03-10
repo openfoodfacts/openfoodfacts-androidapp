@@ -11,7 +11,6 @@
     <item>Ingredienser</item>
     <item>Ernæring</item>
     <item>Ernæringstabel</item>
-    <item>Tilbage til menuen</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -51,7 +50,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Engelsk</item>
@@ -101,14 +100,9 @@
   <string name="txtIngredients">Liste af ingrediænser:</string>
   <string name="txtMayBeFromPalmOilProduct">Ingrediænser som kan være fremstillet fra palmeolie</string>
   <string name="txtPalmOilProduct">Ingrediænser fremstillet fra palmeolie</string>
-  <string name="txtNutritionLevelLow">lav</string>
-  <string name="txtNutritionLevelModerate">moderat</string>
-  <string name="txtNutritionLevelHigh">høj</string>
   <string name="txtPass">Adgangskode:</string>
-  <string name="txtSave">Send/Gem</string>
   <string name="txtSignIn">Log ind</string>
   <string name="txtToastSaved">Bruger gemt</string>
-  <string name="txtSalt">Salt:</string>
   <string name="hintPass">Adgangskode:</string>
   <string name="txtInfoLoginOk">Bruger gemt</string>
   <string name="txtDialogsTitle">Information</string>

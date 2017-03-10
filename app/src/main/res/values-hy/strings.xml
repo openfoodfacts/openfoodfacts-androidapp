@@ -10,7 +10,6 @@
     <item>Բաղադրամասեր</item>
     <item>Սննդային արժեք</item>
     <item>Nutrition Table</item>
-    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
     <item>գ</item>
@@ -50,7 +49,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
@@ -119,10 +118,6 @@
   <string name="txtTitleHome">Բաց արեք Ձեր սնունդը և իմացեք, թե ինչ եք ուտում</string>
   <string name="txtUser">Օգտվողի վահանակ</string>
   <string name="txtToastSaved">Օգտվողը պահպանվել է</string>
-  <string name="txtSalt">Աղեր՝</string>
-  <string name="txtFat">Ճարպ՝</string>
-  <string name="txtSugars">Շաքարներ՝</string>
-  <string name="txtSaturatedFat">Հագեցած ճարպ՝</string>
   <string name="hintBarcode">Գծակոդ</string>
   <string name="hintLogin">Մուտքանուն</string>
   <string name="hintPass">Գաղտնաբառ</string>

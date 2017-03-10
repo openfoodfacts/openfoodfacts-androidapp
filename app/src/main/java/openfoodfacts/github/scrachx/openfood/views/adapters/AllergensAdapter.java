@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,13 +13,15 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.ViewHolder> {
 
     private List<Allergen> mAllergens;
-
-    public AllergensAdapter(List<Allergen> allergens) {
+    private Activity mActivity;
+    public AllergensAdapter(List<Allergen> allergens, Activity activity) {
         mAllergens = allergens;
+        mActivity = activity;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -28,7 +31,6 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
 
         public ViewHolder(View itemView) {
             super(itemView);
-
             nameTextView = (TextView) itemView.findViewById(R.id.allergen_name);
             messageButton = (Button) itemView.findViewById(R.id.delete_button);
         }
@@ -52,7 +54,7 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
         button.setOnClickListener(v -> {
             mAllergens.remove(holder.getAdapterPosition());
             allergen.setEnable("false");
-            allergen.save();
+            Utils.getAppDaoSession(mActivity).getAllergenDao().update(allergen);
             notifyItemRemoved(holder.getAdapterPosition());
         });
     }

@@ -12,7 +12,6 @@
     <item>Ingredienti</item>
     <item>Nutrizione</item>
     <item>Tabella nutrizionale</item>
-    <item>Torna al menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -52,7 +51,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Inglese</item>
@@ -101,38 +100,30 @@
   <string name="toast_retrieving">Caricamento...</string>
   <string name="txtBarcode">Codice a barre</string>
   <string name="txtQuantity">Quantità :</string>
-  <string name="txtPackaging">Confezione :</string>
-  <string name="txtBrands">Marche :</string>
-  <string name="txtCategories">Categorie :</string>
+  <string name="txtPackaging">Confezione:</string>
+  <string name="txtBrands">Marche:</string>
+  <string name="txtCategories">Categorie:</string>
   <string name="txtLabels">Etichette, certificazioni, premi :</string>
-  <string name="txtManufacturing">Luoghi di produzione :</string>
-  <string name="txtIngredientsOrigins">Origine degli ingredienti :</string>
-  <string name="txtCity">Città, regione e nazione di acquisto :</string>
-  <string name="txtStores">Negozi :</string>
-  <string name="txtCountries">Nazioni dove venduto :</string>
-  <string name="txtIngredients">Lista ingredienti :</string>
-  <string name="txtSubstances">Sostanze o prodotti che causano allergie o intolleranze :</string>
-  <string name="txtAdditives">Additivi :</string>
-  <string name="txtTraces">Tracce :</string>
-  <string name="txtMayBeFromPalmOilProduct">Ingredienti che possono derivare dall\'olio di palma :</string>
-  <string name="txtPalmOilProduct">Ingredienti derivanti dall\'olio di palma :</string>
-  <string name="txtServingSize">Grandezza porzione :</string>
-  <string name="txtNutrientLevel100g">Nutrienti per 100g :</string>
-  <string name="txtNutritionLevelLow">basso</string>
-  <string name="txtNutritionLevelModerate">moderato</string>
-  <string name="txtNutritionLevelHigh">alto</string>
+  <string name="txtManufacturing">Luoghi di produzione:</string>
+  <string name="txtIngredientsOrigins">Origine degli ingredienti</string>
+  <string name="txtCity">Città, regione e nazione di acquisto:</string>
+  <string name="txtStores">Negozi:</string>
+  <string name="txtCountries">Nazioni dove venduto:</string>
+  <string name="txtIngredients">Lista ingredienti:</string>
+  <string name="txtSubstances">Sostanze o prodotti che causano allergie o intolleranze:</string>
+  <string name="txtAdditives">Additivi:</string>
+  <string name="txtTraces">Tracce:</string>
+  <string name="txtMayBeFromPalmOilProduct">Ingredienti che possono derivare dall\'olio di palma:</string>
+  <string name="txtPalmOilProduct">Ingredienti derivanti dall\'olio di palma:</string>
+  <string name="txtServingSize">Grandezza porzione:</string>
+  <string name="txtNutrientLevel100g">Nutrienti per 100g:</string>
   <string name="txtLogin">Login:</string>
   <string name="txtPass">Password:</string>
   <string name="txtTitleHome">Apri il cibo e conosci cosa mangi</string>
   <string name="txtHome">Open Food Facts è un database aperto di prodotti alimentari con gli ingredienti, gli allergeni, le informazioni nutrizionali e tutto ciò che possiamo trovare sulle etichette dei prodotti.</string>
-  <string name="txtSave">Invia/Salva</string>
   <string name="txtSignIn">Accedi</string>
   <string name="txtUser">Pannello utente</string>
   <string name="txtToastSaved">Utente salvato</string>
-  <string name="txtSalt">Sale:</string>
-  <string name="txtFat">Grassi:</string>
-  <string name="txtSugars">Zuccheri:</string>
-  <string name="txtSaturatedFat">Grassi saturi:</string>
   <string name="hintBarcode">Codice a Barre</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Password</string>
@@ -186,12 +177,10 @@
   <string name="txt_product_not_found">Prodotti non trovati</string>
   <string name="delete_txt">Elimina</string>
   <string name="sign_in_drawer">Accedi</string>
-  <string name="alert_drawer">Allerta Allergeni</string>
   <string name="warning_allergens">Contiene allergeni</string>
   <string name="title_dialog_alert">Aggiungi allarme</string>
   <string name="warning_alert_data">"Le informazioni sulle tue allergie non verrano mai spedite ai server di Open Food  Facts. Controlla invece le informazioni che potrebbero in certi casi non essere accurate."</string>
   <string name="from_gallery">Dalla galleria</string>
-  <string name="product_sent">Prodotto inviato!</string>
   <string name="action_edit_product">Modifica prodotto</string>
   <string name="title_info_dialog">Informazioni</string>
   <string name="text_offline_info_dialog">Puoi scansionare i prodotti quando sei offline e aggiungerli a Open Food Facts più tardi. Tutti i prodotti che scansioni verranno mostrati qui e potrai inviarli usando il tasto qui sotto.</string>
@@ -208,7 +197,6 @@
   <string name="action_preferences">Impostazioni</string>
   <string name="prefs_scan_startup">scansiona all\'avvio</string>
   <string name="prefs_scan_startup_summary">Se selezionata questa opzione farà partire la scansione quando l\'app viene aperta</string>
-  <string name="prefs_power_mode_summary">Scansiona velocemente i prodotti in un supermercato per vedere quali non sono nel database.</string>
   <string name="prefs_language">Lingua</string>
   <string name="prefs_language_summary">Cambia lingua</string>
   <string name="scan_history_drawer">Cronologia</string>

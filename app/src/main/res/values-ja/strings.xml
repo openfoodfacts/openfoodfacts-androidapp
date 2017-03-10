@@ -13,7 +13,6 @@
     <item>原材料</item>
     <item>栄養</item>
     <item>栄養成分表</item>
-    <item>メニューに戻る</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -119,9 +118,9 @@
   <string name="txtPalmOilProduct">パーム油を原材料とするもの :</string>
   <string name="txtServingSize">分量 :</string>
   <string name="txtNutrientLevel100g">100g 当たりの栄養成分:</string>
-  <string name="txtNutritionLevelLow">低</string>
-  <string name="txtNutritionLevelModerate">中</string>
-  <string name="txtNutritionLevelHigh">高</string>
+  <string name="txtNutritionLevelLow">少量</string>
+  <string name="txtNutritionLevelModerate">適量</string>
+  <string name="txtNutritionLevelHigh">多量</string>
   <string name="txtLogin">ログイン :</string>
   <string name="txtPass">パスワード :</string>
   <string name="txtTitleHome">食品を開くと何を食べているか分かります</string>
@@ -130,10 +129,10 @@
   <string name="txtSignIn">サインイン</string>
   <string name="txtUser">ユーザーパネル</string>
   <string name="txtToastSaved">ユーザーを保存しました</string>
-  <string name="txtSalt">食塩 :</string>
-  <string name="txtFat">脂肪 :</string>
-  <string name="txtSugars">砂糖 :</string>
-  <string name="txtSaturatedFat">飽和脂肪酸 :</string>
+  <string name="txtSalt">食塩</string>
+  <string name="txtFat">脂肪</string>
+  <string name="txtSugars">砂糖</string>
+  <string name="txtSaturatedFat">飽和脂肪酸</string>
   <string name="hintBarcode">バーコード</string>
   <string name="hintLogin">ログイン</string>
   <string name="hintPass">パスワード</string>
@@ -187,12 +186,12 @@
   <string name="txt_product_not_found">製品が見つかりません</string>
   <string name="delete_txt">削除</string>
   <string name="sign_in_drawer">サインイン</string>
-  <string name="alert_drawer">アレルゲンの警告</string>
+  <string name="alert_drawer">アレルゲン警告</string>
   <string name="warning_allergens">アレルゲンを含んでいます</string>
   <string name="title_dialog_alert">警告を追加</string>
   <string name="warning_alert_data">アレルギー情報は、Open Food Facts サーバーに送信されることはありません。また、データが正確でない可能性があることにご注意ください。ご自分でもう一度ご確認ください!</string>
   <string name="from_gallery">ギャラリーから</string>
-  <string name="product_sent">製品を送信しました!</string>
+  <string name="product_sent">製品を送信しました</string>
   <string name="action_edit_product">製品を編集</string>
   <string name="title_info_dialog">情報</string>
   <string name="text_offline_info_dialog">オフライン時に製品をスキャンして、後で Open Food Facts に追加するすることができます。スキャンする製品がすべてここに表示されます。下のボタンを使用してそれらを送信することができます。</string>
@@ -264,4 +263,67 @@
   <string name="txtSeeMore">さらに表示</string>
   <string name="action_search">検索</string>
   <string name="search_hint">製品を検索します</string>
+  <string name="number_of_results">結果の数 :</string>
+  <string name="txt_no_results">見つかりませんでした</string>
+  <string name="nutrition_lactose">乳糖</string>
+  <string name="nutrition_casein">カゼイン</string>
+  <string name="nutrition_maltodextrins">マルトデキストリン</string>
+  <string name="nutrition_serum_proteins">血清タンパク質</string>
+  <string name="nutrition_nucleotides">ヌクレオチド</string>
+  <string name="for_100g">100 g 当たり</string>
+  <string name="serving">一食当たり</string>
+  <string name="minerals">ミネラル</string>
+  <string name="nutrition_calcium">カルシウム</string>
+  <string name="nutrition_potassium">カリウム</string>
+  <string name="nutrition_chlore">塩素</string>
+  <string name="nutrition_magnesium">マグネシウム</string>
+  <string name="nutrition_taurine">タウリン</string>
+  <string name="nutrition_monounsaturatedFat">一価不飽和脂肪</string>
+  <string name="nutrition_polyunsaturatedFat">多価不飽和脂肪</string>
+  <string name="nutrition_omega3">オメガ 3</string>
+  <string name="nutrition_omega6">オメガ 6</string>
+  <string name="nutrition_omega9">オメガ 9</string>
+  <string name="nutrition_sucrose">スクロース</string>
+  <string name="nutrition_glucose">グルコース</string>
+  <string name="nutrition_fructose">果糖</string>
+  <string name="nutrition_maltose">麦芽糖</string>
+  <string name="nutrition_alcohol">アルコール</string>
+  <string name="nutrition_vitamins">ビタミン</string>
+  <string name="vitamin_a">ビタミン A</string>
+  <string name="vitamin_d">ビタミン D</string>
+  <string name="vitamin_e">ビタミン E</string>
+  <string name="vitamin_k">ビタミン K</string>
+  <string name="vitamin_c">ビタミン C</string>
+  <string name="vitamin_b1">ビタミン B1</string>
+  <string name="vitamin_b2">ビタミン B2</string>
+  <string name="vitamin_pp">ビタミン PP</string>
+  <string name="vitamin_b6">ビタミン B6</string>
+  <string name="vitamin_b9">ビタミン B9</string>
+  <string name="vitamin_b12">ビタミン B12</string>
+  <string name="biotin">ビオチン</string>
+  <string name="pantothenic_acid">パントテン酸</string>
+  <string name="nutrition_minerals">ミネラル</string>
+  <string name="silica">シリカ</string>
+  <string name="bicarbonate">重炭酸塩</string>
+  <string name="potassium">カリウム</string>
+  <string name="chloride">塩化物</string>
+  <string name="calcium">カルシウム</string>
+  <string name="phosphorus">リン</string>
+  <string name="iron">鉄</string>
+  <string name="magnesium">マグネシウム</string>
+  <string name="zinc">亜鉛</string>
+  <string name="copper">銅</string>
+  <string name="manganese">マンガン</string>
+  <string name="fluoride">フッ化物</string>
+  <string name="selenium">セレン</string>
+  <string name="chromium">クロム</string>
+  <string name="molybdenum">モリブデン</string>
+  <string name="iodine">ヨウ素</string>
+  <string name="caffeine">カフェイン</string>
+  <string name="taurine">タウリン</string>
+  <string name="ph">Ph</string>
+  <string name="fruits_vegetables_nuts">果物, 野菜, ナッツ</string>
+  <string name="collagen_meat_protein_ratio">コラーゲン肉タンパク質比</string>
+  <string name="cocoa">ココア</string>
+  <string name="chlorophyl">クロロフィル</string>
 </resources>

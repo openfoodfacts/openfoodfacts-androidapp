@@ -5,6 +5,7 @@
   <string name="action_settings">Instellingen</string>
   <string name="action_about">Informatie</string>
   <string name="action_discover">Ontdek</string>
+  <string name="contribute">Hoe kan je bijdragen?</string>
   <string name="action_find">Zoeken</string>
   <string name="text_barcode">Streepjescode invoeren:</string>
   <string-array name="nav_drawer_items_product">
@@ -12,7 +13,6 @@
     <item>Ingrediënten</item>
     <item>Voedingswaarde</item>
     <item>Voedingswaarde</item>
-    <item>Terug naar het menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -52,7 +52,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Engels</item>
@@ -84,8 +84,8 @@
     <item>Zweeds</item>
     <item>Chinees</item>
     <item>Noors (Bokmal)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>Deens</item>
+    <item>Vereenvoudigd Chinees</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
@@ -118,14 +118,14 @@
   <string name="txtPalmOilProduct">Ingrediënten bevatten palmolie</string>
   <string name="txtServingSize">Per portie</string>
   <string name="txtNutrientLevel100g">Voedingsstoffen per 100g</string>
-  <string name="txtNutritionLevelLow">laag</string>
-  <string name="txtNutritionLevelModerate">gemiddeld</string>
-  <string name="txtNutritionLevelHigh">hoog</string>
+  <string name="txtNutritionLevelLow">kleine hoeveelheid</string>
+  <string name="txtNutritionLevelModerate">matige hoeveelheid</string>
+  <string name="txtNutritionLevelHigh">grote hoeveelheid</string>
   <string name="txtLogin">Inloggen</string>
   <string name="txtPass">Wachtwoord:</string>
   <string name="txtTitleHome">Open je voedsel en weet wat je eet</string>
   <string name="txtHome">Open Food Facts is een databank van voedingsproducten met ingrediënten, allergenen, voedingswaarde en alle interessante feitjes die we op productetiketten kunnen vinden.</string>
-  <string name="txtSave">Verstuur/Bewaar</string>
+  <string name="txtSave">Bewaar</string>
   <string name="txtSignIn">Inloggen</string>
   <string name="txtUser">Gebruikerspaneel</string>
   <string name="txtToastSaved">Gebruiker opgeslagen</string>
@@ -142,6 +142,7 @@
   <string name="txtInfoLoginNo">Gebruiker niet opgeslagen</string>
   <string name="txtDialogsTitle">Opmerking</string>
   <string name="txtDialogsContent">Het gescande product is nog niet opgenomen in de Open Food Facts-databank. Wilt u het toevoegen?</string>
+  <string name="txtDialogsContentPowerMode">Het gescannede product bestaat al in Open Food Facts</string>
   <string name="txtDialogsContentSend">Wilt u de bewaarde producten opslaan in de databank?</string>
   <string name="txtYes">Ja</string>
   <string name="txtNo">Nee</string>
@@ -185,12 +186,12 @@
   <string name="txt_product_not_found">Artikelen niet gevonden</string>
   <string name="delete_txt">Verwijder</string>
   <string name="sign_in_drawer">Aanmelden</string>
-  <string name="alert_drawer">Allergenen-melding</string>
+  <string name="alert_drawer">Allergeen waarschuwing</string>
   <string name="warning_allergens">Bevat allergenen</string>
   <string name="title_dialog_alert">Voeg melding toe</string>
   <string name="warning_alert_data">Informatie over je allergieën wordt nooit naar het Open Food Facts-netwerk verzonden. N.B. wees ervan bewust dat gegevens mogelijk niet accuraat zijn, double-check deze zelf!</string>
   <string name="from_gallery">Gallerie</string>
-  <string name="product_sent">Product verzonden!</string>
+  <string name="product_sent">Product verstuurd!</string>
   <string name="action_edit_product">Bewerk product</string>
   <string name="title_info_dialog">Melding</string>
   <string name="text_offline_info_dialog">Je kunt de producten offline scannen en deze later verzenden naar Open Food Facts. Alle producten die je scant zullen hier verschijnen en zijn te verzenden met onderstaande button.</string>
@@ -208,7 +209,7 @@
   <string name="prefs_scan_startup">Bij opstarten scannen</string>
   <string name="prefs_scan_startup_summary">Als deze optie geselecteerd is, zal het scannen worden gestart wanneer de app geopend wordt.</string>
   <string name="prefs_power_mode">Energiebesparend scannen</string>
-  <string name="prefs_power_mode_summary">Snel producten scannen in een supermarkt om te zien welke er niet in de database staan.</string>
+  <string name="prefs_power_mode_summary">Bekijk de onbeschikbare supermarktproducten.</string>
   <string name="prefs_language">Taal</string>
   <string name="prefs_language_summary">Een andere taal kiezen</string>
   <string name="scan_history_drawer">Geschiedenis</string>
@@ -258,4 +259,71 @@
   <string name="logout_drawer">Afmelden</string>
   <string name="contribution_without_account">U kunt zich aanmelden of een account aanmaken om uw bijdragen te bewaren</string>
   <string name="textCarbonFootprint">"Carbon footprint / CO2-uitstoot: "</string>
+  <string name="txtDialogPowerMode">Bekijk</string>
+  <string name="txtSeeMore">Meer</string>
+  <string name="action_search">Zoek</string>
+  <string name="search_hint">Zoek een product</string>
+  <string name="number_of_results">Aantal resultaten</string>
+  <string name="txt_no_results">Geen resultaten gevonden</string>
+  <string name="nutrition_lactose">Lactose</string>
+  <string name="nutrition_casein">Caseïne</string>
+  <string name="nutrition_maltodextrins">Maltodextrine</string>
+  <string name="nutrition_serum_proteins">Serumproteïnen</string>
+  <string name="nutrition_nucleotides">Nucleotiden</string>
+  <string name="for_100g">Per 100g</string>
+  <string name="serving">Per portie</string>
+  <string name="minerals">Mineralen</string>
+  <string name="nutrition_calcium">Calcium</string>
+  <string name="nutrition_potassium">Kalium</string>
+  <string name="nutrition_chlore">Chloor</string>
+  <string name="nutrition_magnesium">Magnesium</string>
+  <string name="nutrition_taurine">Taurine</string>
+  <string name="nutrition_monounsaturatedFat">Enkelvoudige onverzadigde vetzuren</string>
+  <string name="nutrition_polyunsaturatedFat">Meervoudig onvervaardigde vetzuren</string>
+  <string name="nutrition_omega3">Omega 3</string>
+  <string name="nutrition_omega6">Omega 6</string>
+  <string name="nutrition_omega9">Omega 9</string>
+  <string name="nutrition_sucrose">Sucrose</string>
+  <string name="nutrition_glucose">Glucose</string>
+  <string name="nutrition_fructose">Fructose</string>
+  <string name="nutrition_maltose">Maltose</string>
+  <string name="nutrition_alcohol">Alcohol</string>
+  <string name="nutrition_vitamins">Vitaminen</string>
+  <string name="vitamin_a">Vitamine A</string>
+  <string name="vitamin_d">Vitamine D</string>
+  <string name="vitamin_e">Vitamine E</string>
+  <string name="vitamin_k">Vitamine K</string>
+  <string name="vitamin_c">Vitamine C</string>
+  <string name="vitamin_b1">Vitamine B1</string>
+  <string name="vitamin_b2">Vitamine B2</string>
+  <string name="vitamin_pp">Vitamine PP</string>
+  <string name="vitamin_b6">Vitamine B6</string>
+  <string name="vitamin_b9">Vitamine B6</string>
+  <string name="vitamin_b12">Vitamine B12</string>
+  <string name="biotin">Biotine</string>
+  <string name="pantothenic_acid">Pantotheenzuur</string>
+  <string name="nutrition_minerals">Mineralen</string>
+  <string name="silica">Silicium</string>
+  <string name="bicarbonate">Carbonaten</string>
+  <string name="potassium">Kalium</string>
+  <string name="chloride">Chloor</string>
+  <string name="calcium">Calcium</string>
+  <string name="phosphorus">Fosfor</string>
+  <string name="iron">IJzer</string>
+  <string name="magnesium">Magnesium</string>
+  <string name="zinc">Zink</string>
+  <string name="copper">Koper</string>
+  <string name="manganese">Mangaan</string>
+  <string name="fluoride">Fluor</string>
+  <string name="selenium">Seleen</string>
+  <string name="chromium">Chroom</string>
+  <string name="molybdenum">Molybdeen</string>
+  <string name="iodine">Jodium</string>
+  <string name="caffeine">Caffeïne</string>
+  <string name="taurine">Taurine</string>
+  <string name="ph">pH</string>
+  <string name="fruits_vegetables_nuts">Fruit, groente, noten</string>
+  <string name="collagen_meat_protein_ratio">Collageen vleesproteïne verhouding</string>
+  <string name="cocoa">Cacao</string>
+  <string name="chlorophyl">Chlorofyl</string>
 </resources>

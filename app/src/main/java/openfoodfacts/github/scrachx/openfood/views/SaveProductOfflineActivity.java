@@ -11,8 +11,10 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,6 +34,7 @@ import butterknife.OnClick;
 import butterknife.OnItemSelected;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -64,6 +67,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
     private String mBarcode;
     private OpenFoodAPIClient api;
     private String imageTaken;
+    private SendProductDao mSendProductDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,10 +77,12 @@ public class SaveProductOfflineActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mSendProductDao = Utils.getAppDaoSession(this).getSendProductDao();
+
         if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
-            && ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+                && ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE)
-                || ActivityCompat.shouldShowRequestPermissionRationale(this, WRITE_EXTERNAL_STORAGE)) {
+                    || ActivityCompat.shouldShowRequestPermissionRationale(this, WRITE_EXTERNAL_STORAGE)) {
                 new MaterialDialog.Builder(this)
                         .title(R.string.action_about)
                         .content(R.string.permission_storage)
@@ -104,7 +110,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
         adapterW.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         spinnerW.setAdapter(adapterW);
 
-        List<SendProduct> sp = SendProduct.find(SendProduct.class, "barcode = ?", mBarcode);
+        List<SendProduct> sp = mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(mBarcode)).list();
+
         if (sp.size() > 0) {
             mProduct = sp.get(0);
         }
@@ -142,12 +149,6 @@ public class SaveProductOfflineActivity extends BaseActivity {
             mProduct = new SendProduct();
             mProduct.setBarcode(mBarcode);
         }
-
-        new MaterialDialog.Builder(this)
-                .title(R.string.title_info_dialog)
-                .content(R.string.new_offline_info)
-                .positiveText(R.string.txtOk)
-                .show();
     }
 
     @OnItemSelected(value = R.id.spinnerUnitWeight, callback = OnItemSelected.Callback.ITEM_SELECTED)
@@ -214,7 +215,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
             final Activity activity = this;
             api.post(this, mProduct, value -> {
                 if (!value) {
-                    mProduct.save();
+                    mSendProductDao.insert(mProduct);
                     Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra("openOfflineEdit", true);
@@ -226,7 +227,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                 finish();
             });
         } else {
-            mProduct.save();
+            mSendProductDao.insertOrReplace(mProduct);
             Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.putExtra("openOfflineEdit", true);
@@ -240,8 +241,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
         if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
-            EasyImage.openCamera(this, 0);
             imageTaken = "front";
+            EasyImage.openCamera(this, 0);
         }
     }
 
@@ -250,8 +251,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
         if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
-            EasyImage.openCamera(this, 0);
             imageTaken = "ingredients";
+            EasyImage.openCamera(this, 0);
         }
     }
 
@@ -260,8 +261,19 @@ public class SaveProductOfflineActivity extends BaseActivity {
         if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
-            EasyImage.openCamera(this, 0);
             imageTaken = "nutrition";
+            EasyImage.openCamera(this, 0);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
@@ -292,7 +304,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
     }
 
     private void onPhotoReturned(File photoFile) {
-        if(imageTaken == "front") {
+        if(imageTaken.equals("front")) {
             mProduct.setImgupload_front(photoFile.getAbsolutePath());
             imgSaveFront.setVisibility(View.VISIBLE);
             Picasso.with(this)
@@ -300,7 +312,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                     .fit()
                     .centerCrop()
                     .into(imgSaveFront);
-        } else if(imageTaken == "nutrition") {
+        } else if(imageTaken.equals("nutrition")) {
             mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
             imgSaveNutrition.setVisibility(View.VISIBLE);
             Picasso.with(this)

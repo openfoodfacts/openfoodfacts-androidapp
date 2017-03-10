@@ -11,7 +11,6 @@
     <item>Ingredientes</item>
     <item>Nutrição</item>
     <item>Nutrition Table</item>
-    <item>Voltar ao menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -51,7 +50,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Inglês</item>
@@ -111,17 +110,10 @@
   <string name="txtAdditives">Aditivos :</string>
   <string name="txtTraces">Vestígios :</string>
   <string name="txtNutrientLevel100g">Níveis de nutrientes para 100g :</string>
-  <string name="txtNutritionLevelLow">baixo</string>
-  <string name="txtNutritionLevelModerate">moderado</string>
-  <string name="txtNutritionLevelHigh">elevado</string>
   <string name="txtPass">Palavra-passe :</string>
   <string name="txtTitleHome">Abra os seus alimentos e saiba o que come</string>
   <string name="txtUser">Painel de Utilizador</string>
   <string name="txtToastSaved">Utilizador guardado</string>
-  <string name="txtSalt">Sal :</string>
-  <string name="txtFat">Matéria gorda :</string>
-  <string name="txtSugars">Açucares :</string>
-  <string name="txtSaturatedFat">Gordura saturada :</string>
   <string name="hintBarcode">Código de barras</string>
   <string name="hintLogin">Iniciar sessão</string>
   <string name="hintPass">Palavra-passe</string>

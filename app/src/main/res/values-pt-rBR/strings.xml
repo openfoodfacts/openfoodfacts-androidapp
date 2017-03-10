@@ -4,13 +4,13 @@
   <string name="hello_world">Olá mundo!</string>
   <string name="action_settings">Configurações</string>
   <string name="action_about">Sobre</string>
+  <string name="action_discover">Descobrir</string>
   <string name="action_find">Buscar</string>
   <string-array name="nav_drawer_items_product">
     <item>Resumo</item>
     <item>Ingredientes</item>
     <item>Nutrição</item>
     <item>Nutrition Table</item>
-    <item>Voltar ao menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -50,7 +50,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Inglês</item>

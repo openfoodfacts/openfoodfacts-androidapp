@@ -10,7 +10,6 @@
     <item>Ingredienser</item>
     <item>Näring</item>
     <item>Nutrition Table</item>
-    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -50,7 +49,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
@@ -110,9 +109,6 @@
   <string name="txtPass">Lösenord :</string>
   <string name="txtTitleHome">Öppna din mat och känn till vad du äter</string>
   <string name="txtToastSaved">Användaren sparades</string>
-  <string name="txtSalt">Salt :</string>
-  <string name="txtFat">Fett :</string>
-  <string name="txtSugars">Socker :</string>
   <string name="hintBarcode">Streckkod</string>
   <string name="hintPass">Lösenord</string>
   <string name="errorLogin">Fel användarnamn eller lösenord</string>

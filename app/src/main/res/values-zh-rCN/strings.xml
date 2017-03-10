@@ -11,7 +11,6 @@
     <item>成分</item>
     <item>营养</item>
     <item>营养标签</item>
-    <item>回到菜单</item>
   </string-array>
   <string-array name="units_array">
     <item>克</item>
@@ -51,7 +50,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>英语</item>
@@ -80,7 +79,7 @@
     <item>荷兰语</item>
     <item>巴西荷兰语</item>
     <item>罗马尼亚语</item>
-    <item>Swedish</item>
+    <item>瑞典语</item>
     <item>中文</item>
     <item>挪威语(书面)</item>
     <item>Danish</item>
@@ -115,12 +114,16 @@
   <string name="txtMayBeFromPalmOilProduct">可能来自棕榈油的成份：</string>
   <string name="txtServingSize">份量：</string>
   <string name="txtNutrientLevel100g">100克所含营养成分</string>
-  <string name="txtNutritionLevelLow">低</string>
-  <string name="txtNutritionLevelModerate">中等</string>
-  <string name="txtNutritionLevelHigh">高</string>
   <string name="txtLogin">登陆名</string>
   <string name="txtPass">密码：</string>
   <string name="txtHome">Open Food Facts是一个记录食品产品标签上可以找到的成份，过敏，营养以及其它信息的开放数据库。</string>
-  <string name="txtSave">发送/保存</string>
   <string name="txtSignIn">登录</string>
+  <string name="txtLoading">正在加载...</string>
+  <string name="txt_product_not_found">产品未找到</string>
+  <string name="nutrition_serving_size">份量：</string>
+  <string name="website">https://world-zh.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-zh.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-zh.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-zh.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world-zh.openfoodfacts.org/contributor/</string>
 </resources>

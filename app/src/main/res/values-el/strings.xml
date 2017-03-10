@@ -7,7 +7,6 @@
     <item>Συστατικά</item>
     <item>Nutrition</item>
     <item>Nutrition Table</item>
-    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -47,7 +46,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Αγγλικα</item>
@@ -87,9 +86,6 @@
     <item>Nutrition</item>
     <item>Συστατικά</item>
   </string-array>
-  <string name="txtNutritionLevelLow">χαμηλός</string>
-  <string name="txtNutritionLevelModerate">μέτριος</string>
-  <string name="txtNutritionLevelHigh">υψηλός</string>
   <string name="hintPass">Κωδικός χρήστη</string>
   <string name="hintStores">Κατάστημα</string>
   <string name="hintBrand">Μάρκα</string>

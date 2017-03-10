@@ -8,7 +8,6 @@
     <item>Sastāvdaļas</item>
     <item>Nutrition</item>
     <item>Nutrition Table</item>
-    <item>Back to menu</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -48,7 +47,7 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Angļu</item>
@@ -93,8 +92,6 @@
   <string name="toast_retrieving">Ielādē...</string>
   <string name="txtStores">Veikali:</string>
   <string name="txtSignIn">Ieiet</string>
-  <string name="txtSalt">Sāls:</string>
-  <string name="txtSugars">Cukuri:</string>
   <string name="hintBarcode">Svītrkods</string>
   <string name="hintLogin">Lietotājvārds</string>
   <string name="hintPass">Parole</string>

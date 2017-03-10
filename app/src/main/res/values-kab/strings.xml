@@ -5,13 +5,14 @@
   <string name="action_settings">Iɣewwaren</string>
   <string name="action_about">Ɣef</string>
   <string name="action_discover">Wali</string>
+  <string name="contribute">Amek ara tettekkiḍ</string>
   <string name="action_find">Af</string>
+  <string name="text_barcode">Sekcem tangalt n ifeggagen</string>
   <string-array name="nav_drawer_items_product">
     <item>Agzul</item>
     <item>Isufar</item>
     <item>Nutrition</item>
     <item>Nutrition Table</item>
-    <item>Uɣam ar wumuɣ</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -51,14 +52,14 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
+    <item>Taglizit</item>
+    <item>Tafransist</item>
+    <item>Taspanit</item>
+    <item>Tatelyanit</item>
+    <item>Talmanit</item>
     <item>Japanese</item>
     <item>Russian</item>
     <item>Portuguese</item>

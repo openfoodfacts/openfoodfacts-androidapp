@@ -1,12 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="app_name">Open Food (Nyílt Étel)</string>
   <string name="hello_world">Helló világ!</string>
+  <string name="action_settings">Beállítások</string>
+  <string name="action_about">Névjegy</string>
+  <string name="action_discover">Feltárás</string>
+  <string name="contribute">Hogyan segíthet</string>
+  <string name="action_find">Keres</string>
+  <string name="text_barcode">Vonalkód beírása</string>
   <string-array name="nav_drawer_items_product">
-    <item>Summary</item>
+    <item>Áttekintés</item>
     <item>Össztevők</item>
-    <item>Nutrition</item>
-    <item>Nutrition Table</item>
-    <item>Back to menu</item>
+    <item>Tápanyag</item>
+    <item>Tápanyag táblázat</item>
   </string-array>
   <string-array name="units_array">
     <item>g</item>
@@ -46,60 +52,207 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh_rCN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
-    <item>Greek</item>
+    <item>Angol</item>
+    <item>Francia</item>
+    <item>Spanyol</item>
+    <item>Olasz</item>
+    <item>Német</item>
+    <item>Japán</item>
+    <item>Orosz</item>
+    <item>Portugál</item>
+    <item>Svéd</item>
+    <item>Burmai</item>
+    <item>Kazah</item>
+    <item>Örmény</item>
+    <item>Görög</item>
     <item>Héber</item>
-    <item>Galician</item>
+    <item>Galíciai</item>
     <item>Katalán</item>
     <item>Cseh</item>
     <item>Arab</item>
     <item>Finn</item>
     <item>Hindi</item>
-    <item>Kabyle</item>
-    <item>Korean</item>
+    <item>Kabije</item>
+    <item>Kóreai</item>
     <item>Lett</item>
     <item>Holland</item>
-    <item>Brazilian portuguese</item>
+    <item>Brazil portugál</item>
     <item>Román</item>
     <item>Svéd</item>
     <item>Kínai</item>
     <item>Norvég (Bokmål)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>Dán</item>
+    <item>Egyszerűsített kínai</item>
   </string-array>
   <string-array name="images_array">
-    <item>Default</item>
-    <item>Nutrition</item>
+    <item>Alapértelmezett</item>
+    <item>Tápanyag</item>
     <item>Össztevők</item>
   </string-array>
+  <string name="search_button">Keres</string>
+  <string name="no_products">Hiányzó termékek</string>
+  <string name="desc_list_item_icon">Termék ikon</string>
+  <string name="alert_dialog_warning_title">Figyelem</string>
+  <string name="alert_dialog_warning_msg_user">Felhasználó/jelszó megváltozott, frissítse az információt</string>
+  <string name="alert_dialog_product_error_msg">Termék nem található, próbálja újra</string>
   <string name="toast_retrieving">Betöltés…</string>
-  <string name="txtPass">Jelszó :</string>
+  <string name="txtBarcode">Vonalkód:</string>
+  <string name="txtQuantity">Mennyiség:</string>
+  <string name="txtPackaging">Csomagolás:</string>
+  <string name="txtBrands">Márkák:</string>
+  <string name="txtCategories">Kategóriák:</string>
+  <string name="txtLabels">Címkék, tanúsítványok, kitüntetések:</string>
+  <string name="txtManufacturing">Gyártás, vagy feldolgozás helye:</string>
+  <string name="txtIngredientsOrigins">Összetevők származása:</string>
+  <string name="txtCity">Vásárlás helye (város, állam vagy ország):</string>
+  <string name="txtStores">Boltok:</string>
+  <string name="txtCountries">Országokban kapható:</string>
+  <string name="txtIngredients">Összetétel listája:</string>
+  <string name="txtSubstances">Allergén, vagy irritáló termékek, alkotóanyagok:</string>
+  <string name="txtAdditives">Adalékok:</string>
+  <string name="txtTraces">Nyomokban tartalmazhat:</string>
+  <string name="txtMayBeFromPalmOilProduct">Lehetséges pálmaolaj származék összetevők:</string>
+  <string name="txtPalmOilProduct">Pálmaolaj származék összetevők:</string>
+  <string name="txtServingSize">Egy adag:</string>
+  <string name="txtNutrientLevel100g">Tápanyagszint 100 grammban:</string>
+  <string name="txtLogin">Bejelentkezés:</string>
+  <string name="txtPass">Jelszó:</string>
+  <string name="txtTitleHome">Tedd nyílttá ételed és tudd mit eszel</string>
+  <string name="txtHome">Open Food Facts (Nyílt Élelmiszer Tények) élelmiszer termékek nyílt adatbázisa összetétellel, allergén információval, tápanyag tényekkel és minden címkén fellelhető kiegészítő információval.</string>
+  <string name="txtSave">Mentés</string>
+  <string name="txtSignIn">Bejelentkezés</string>
+  <string name="txtUser">Felhasználói felület</string>
+  <string name="txtToastSaved">Felhasználó mentve</string>
+  <string name="hintBarcode">Vonalkód</string>
+  <string name="hintLogin">Bejelentkezés</string>
   <string name="hintPass">Jelszó</string>
+  <string name="errorLogin">Bejelentkezési hiba</string>
+  <string name="errorWeb">Internet csatlakozási problémák.</string>
+  <string name="txtInfoLoginOk">Felhasználó mentve</string>
+  <string name="txtInfoLoginNo">Felhasználó nem lett mentve</string>
+  <string name="txtDialogsTitle">Információ</string>
+  <string name="txtDialogsContent">Gratulálunk! A termék még nem található az Open Food Facts adatbázisában. Hozzáadjuk most?</string>
+  <string name="txtDialogsContentPowerMode">Ez a termék megtalálható az Open Food Facts adatbázisában.</string>
+  <string name="txtDialogsContentSend">Feltöltjük a mentett terméket az adatbázisba?</string>
+  <string name="txtYes">Igen</string>
+  <string name="txtNo">Nem</string>
+  <string name="hintNameProduct">Név</string>
+  <string name="hintEnergy">Energia kJ-ban adagonként</string>
+  <string name="hintEnergyUnit">Energia egység</string>
+  <string name="hintWeight">Tömeg</string>
+  <string name="hintStores">Bolt</string>
+  <string name="hintBrand">Márka</string>
+  <string name="txtTakePicture">Fotó készítése</string>
+  <string name="txtSendAll">Összes feltöltése</string>
+  <string name="txtNoData">Nincs adat</string>
+  <string name="txtPictureNeeded">Fotó szükséges</string>
   <string name="toastSending">Feltöltés...</string>
+  <string name="dataSaved">Elmentve az eszközre</string>
+  <string name="txtInfoAddUser">Felhasználónév és jelszó megadása</string>
+  <string name="txtDataUpdated">Adatok frissítve</string>
   <string name="txtLoading">Betöltés…</string>
+  <string name="txtDialogsContentDelete">Piszkozat törlése?</string>
+  <string name="txtDialogsContentInfoSave">A termék el lett mentve az eszközre, szerkeszthető az Offline Szerkesztés menüből</string>
+  <string name="txtBarcodeRequire">Vonalkód szükséges</string>
+  <string name="txtOk">OK</string>
+  <string name="txtContentDialogUploading">Folyamatban... NE lépjen ki.</string>
+  <string name="txtAbout">A képek Creative Commons Nevezd meg és Így add tovább szabad licenc alatt kerülnek elküldésre</string>
+  <string name="txtAllsent">Termék elküldve</string>
+  <string name="txtPalm">a termék ne tartalmaz pálmaolajat</string>
+  <string name="txtBarcodeNotValid">Helytelen vonalkód</string>
+  <string name="try_it_scan_now">Termék beolvasása</string>
+  <string name="share">Megosztás</string>
+  <string name="msg_share">Termék keresése az Open Food Facts adatbázisban:</string>
+  <string name="create_account">Regisztráció</string>
+  <string name="home_drawer">Kezdőlap</string>
+  <string name="open_beauty_drawer">Open Beauty Facts (Nyílt Szépség Tények)</string>
+  <string name="search_drawer">Keres</string>
+  <string name="search_by_barcode_drawer">Keresés vonalkód alapján</string>
+  <string name="search_by_name_drawer">Keresés név szerint</string>
+  <string name="scan_search">Beolvasás</string>
+  <string name="user_drawer">Felhasználó</string>
+  <string name="offline_edit_drawer">Offline szerkesztés</string>
+  <string name="txt_anonymous">Anonymous</string>
+  <string name="txt_product_not_found">Hiányzó termékek</string>
+  <string name="delete_txt">Törlés</string>
+  <string name="sign_in_drawer">Bejelentkezés</string>
+  <string name="warning_allergens">Allergént tartalmaz</string>
+  <string name="title_dialog_alert">Figyelmeztetés felvétele</string>
+  <string name="warning_alert_data">A személyes allergén információk nem kerülnek feltöltésre az Open Food Facts szerverére. Érdemes ellenőrizni az adatok helytállóságát.</string>
+  <string name="from_gallery">Galériából</string>
+  <string name="action_edit_product">Termék szerkesztés</string>
+  <string name="title_info_dialog">Információ</string>
+  <string name="text_offline_info_dialog">Offline beolvasás is lehetséges az Open Food Facts adatbázisba való későbbi feltöltéshez. Minden itt megjelenő termék beküldhető az alábbi gomb megnyomásával.</string>
+  <string name="permission_camera">Kamerához jogosultság szükséges a vonalkód-olvasáshoz és termékfotózásoz.</string>
+  <string name="permission_title">Jogosultság információ</string>
+  <string name="permission_denied">A beállításokan engedélyezni kell a jogosultságot</string>
+  <string name="permission_storage">Tárhely jogosultság szükséges képek készítéséhez és kiválasztásához.</string>
+  <string name="info_download_data">További adatok letöltésére van szükség ezen funkció használatához. Kívánja most letölteni?</string>
+  <string name="info_download_data_connection">További adatok letöltésére van szükség ezen funkció használatához. Kérjük tegye lehetővé a kapcsolatot.</string>
+  <string name="msg_input_empty">Mezők kitöltése szükséges.</string>
+  <string name="new_offline_info">Kérjük készítsen képet a termékről, összetételről, tápanyagtáblázatról, és minden címkén található információról. Köszönjük!</string>
+  <string name="error_invalid_password">Legalább 6 karakter hosszúságú jelszó szükséges.</string>
+  <string name="error_field_required">Szükséges mező.</string>
+  <string name="action_preferences">Tulajdonságok</string>
+  <string name="prefs_scan_startup">Beolvasás induláskor.</string>
+  <string name="prefs_scan_startup_summary">Ez esetben alkalmazásindításkor a beolvasó jelenik meg.</string>
+  <string name="prefs_power_mode">Gyors beolvasás</string>
+  <string name="prefs_language">Nyelv</string>
+  <string name="prefs_language_summary">Nyelv megváltoztatása</string>
+  <string name="scan_history_drawer">Előzmények</string>
+  <string name="clear_history">Előzmények törlése</string>
+  <string name="title_clear_history_dialog">Törlés</string>
+  <string name="text_clear_history_dialog">Az összes beolvasási előzmény törlése?</string>
+  <string name="export_csv_history">CSV export</string>
+  <string name="txt_exporting_history">Előzmény export...</string>
+  <string name="txt_history_exported">Előzmény exportálva</string>
+  <string name="permision_write_external_storage">Tárhelyre írási jogosultság szükséges az előzmény exportálásához.</string>
+  <string name="txt_nutrition_not_found">Nincs adat</string>
   <string name="nutrition_carbohydrate">Szénhidrát</string>
+  <string name="nutrition_carbohydrate_short_name">Szénhidrát (g)</string>
+  <string name="nutrition_cholesterol">Koleszterin</string>
+  <string name="nutrition_cholesterol_short_name">Koleszterin (g)</string>
   <string name="nutrition_energy">Energia</string>
   <string name="nutrition_energy_short_name">Energia</string>
   <string name="nutrition_fat">Zsír</string>
+  <string name="nutrition_fat_short_name">Zsír (g)</string>
   <string name="nutrition_fiber">Élelmi rost</string>
+  <string name="nutrition_fiber_short_name">Élelmi rost (g)</string>
   <string name="nutrition_header">Tápanyag ismertető</string>
+  <string name="nutrition_no_data_message">Nincs elérhető adat a termékről</string>
+  <string name="nutrition_per_quantity">100g/100ml-ben</string>
   <string name="nutrition_proteins">Fehérje</string>
+  <string name="nutrition_proteins_short_name">Fehérje (g)</string>
   <string name="nutrition_salt">Só</string>
+  <string name="nutrition_salt_short_name">Só (g)</string>
+  <string name="nutrition_satured_fat">Telített zsír</string>
+  <string name="nutrition_satured_fat_short_name">Telített zsír (g)</string>
+  <string name="nutrition_serving">Adagonként</string>
+  <string name="nutrition_serving_size">Adag:</string>
   <string name="nutrition_sodium">Nátrium</string>
   <string name="nutrition_sodium_short_name">Nátrium (g)</string>
+  <string name="nutrition_sugars">Cukrok</string>
+  <string name="nutrition_sugars_short_name">Cukrok (g)</string>
+  <string name="nutrition_trans_fat">Transzzsír</string>
+  <string name="nutrition_trans_fat_short_name">Transzzsír (g)</string>
+  <string name="nutriment_serving_size">Adagonként</string>
   <string name="action_manage_account">Fiók kezelése</string>
+  <string name="action_contributes">Saját közreműködések</string>
+  <string name="website">https://world-hu.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-hu.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-hu.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-hu.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world-hu.openfoodfacts.org/contributor/</string>
+  <string name="logout_drawer">Kijelentkezés</string>
+  <string name="contribution_without_account">Közreműködések megőrzéséhez bejelentkezés szükséges.</string>
+  <string name="textCarbonFootprint">"Ökológiai lábnyom/CO2 kibocsájtás "</string>
+  <string name="txtDialogPowerMode">Gyorsnézet</string>
+  <string name="txtSeeMore">Továbbiak</string>
+  <string name="action_search">Keres</string>
+  <string name="search_hint">Termék keresése</string>
+  <string name="number_of_results">Találatok száma</string>
+  <string name="txt_no_results">Nincs találat</string>
 </resources>

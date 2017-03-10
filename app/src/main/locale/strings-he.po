@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-17 13:22+0100\n"
-"PO-Revision-Date: 2017-01-16 16:21+0000\n"
+"POT-Creation-Date: 2017-01-30 17:13+0100\n"
+"PO-Revision-Date: 2017-01-29 08:24+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language: he\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -72,11 +72,6 @@ msgstr "תזונה"
 msgctxt "nav_drawer_items_product:3"
 msgid "Nutrition Table"
 msgstr "טבלת ערכים תזונתיים"
-
-#. Nav Drawer Product Menu Items
-msgctxt "nav_drawer_items_product:4"
-msgid "Back to menu"
-msgstr "חזרה לתפריט"
 
 #. Text units
 msgctxt "units_array:0"
@@ -500,16 +495,16 @@ msgid "Nutrient levels for 100g :"
 msgstr "טבלת ערכים תזונתיים ל־100 ג׳ :"
 
 msgctxt "txtNutritionLevelLow"
-msgid "low"
-msgstr "נמוך"
+msgid "in low quantity"
+msgstr "בכמות נמוכה"
 
 msgctxt "txtNutritionLevelModerate"
-msgid "moderate"
-msgstr "בינוני"
+msgid "in moderate quantity"
+msgstr "בכמות מתונה"
 
 msgctxt "txtNutritionLevelHigh"
-msgid "high"
-msgstr "גבוה"
+msgid "in high quantity"
+msgstr "בכמות גדולה"
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -547,20 +542,20 @@ msgid "User saved"
 msgstr "המשתמש נשמר"
 
 msgctxt "txtSalt"
-msgid "Salt :"
-msgstr "מלח :"
+msgid "Salt"
+msgstr "מלח"
 
 msgctxt "txtFat"
-msgid "Fat :"
-msgstr "שומן :"
+msgid "Fat"
+msgstr "שומן"
 
 msgctxt "txtSugars"
-msgid "Sugars :"
-msgstr "סוכרים :"
+msgid "Sugars"
+msgstr "סוכרים"
 
 msgctxt "txtSaturatedFat"
-msgid "Satured fat :"
-msgstr "שומן רווי :"
+msgid "Satured fat"
+msgstr "שומן רווי"
 
 msgctxt "hintBarcode"
 msgid "Barcode"
@@ -780,9 +775,10 @@ msgctxt "sign_in_drawer"
 msgid "Sign-in"
 msgstr "כניסה"
 
+#, fuzzy
 msgctxt "alert_drawer"
-msgid "Allergen Alert"
-msgstr "התראת אלרגן"
+msgid "Allergen alert"
+msgstr "אזהרת אלרגנים"
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
@@ -805,8 +801,9 @@ msgctxt "from_gallery"
 msgid "From gallery"
 msgstr "מהגלריה"
 
+#, fuzzy
 msgctxt "product_sent"
-msgid "Product sent!"
+msgid "Product sent successfully"
 msgstr "המוצר נשלח!"
 
 msgctxt "action_edit_product"
@@ -892,11 +889,12 @@ msgctxt "prefs_power_mode"
 msgid "Power mode scan"
 msgstr "סריקת על"
 
+#, fuzzy
 msgctxt "prefs_power_mode_summary"
 msgid ""
-"Quickly scan products in a supermarket to see which one are not in the "
+"Quickly scan products in a supermarket to see which ones are not in the "
 "database."
-msgstr "סריקת מוצרים במהירות בסופר כדי לראות מי מהם לא במסד הנתונים."
+msgstr "ניתן לסרוק במהירות מוצרים בסופר כדי לראות אילו מהם אינם במסד הנתונים."
 
 msgctxt "prefs_language"
 msgid "Language"
@@ -1074,14 +1072,17 @@ msgctxt "website_contribute"
 msgid "https://world.openfoodfacts.org/contribute"
 msgstr "https://world-he.openfoodfacts.org/contribute"
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir
 msgctxt "website_discover"
 msgid "https://world.openfoodfacts.org/discover"
 msgstr "https://world-he.openfoodfacts.org/discover"
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/produit/
 msgctxt "website_product"
 msgid "https://world.openfoodfacts.org/product/"
 msgstr "https://world-he.openfoodfacts.org/product/"
 
+#. For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/
 msgctxt "website_contributor"
 msgid "https://world.openfoodfacts.org/contributor/"
 msgstr "https://world-he.openfoodfacts.org/contributor/"
@@ -1116,9 +1117,253 @@ msgstr "חיפוש מוצר"
 
 msgctxt "number_of_results"
 msgid "Number of results :"
-msgstr ""
+msgstr "מספר התוצאות:"
 
 msgctxt "txt_no_results"
 msgid "No results found"
+msgstr "לא נמצאו תוצאות"
+
+msgctxt "nutrition_lactose"
+msgid "Lactose"
+msgstr "לקטוז"
+
+msgctxt "nutrition_casein"
+msgid "Casein"
+msgstr "קזאין"
+
+msgctxt "nutrition_maltodextrins"
+msgid "Maltodextrins"
+msgstr "מלטודקסטרין"
+
+msgctxt "nutrition_serum_proteins"
+msgid "Serum Proteins"
 msgstr ""
+
+msgctxt "nutrition_nucleotides"
+msgid "Nucleotides"
+msgstr "נוקלאוטידים"
+
+msgctxt "for_100g"
+msgid "For 100 g"
+msgstr "ל־100 ג׳"
+
+msgctxt "serving"
+msgid "Per serving"
+msgstr "להגשה"
+
+msgctxt "minerals"
+msgid "Minerals"
+msgstr "מינרלים"
+
+msgctxt "nutrition_calcium"
+msgid "Calcium"
+msgstr "סידן"
+
+msgctxt "nutrition_potassium"
+msgid "Potassium"
+msgstr "אשלגן"
+
+msgctxt "nutrition_chlore"
+msgid "Chlorine"
+msgstr "כלור"
+
+msgctxt "nutrition_magnesium"
+msgid "Magnesium"
+msgstr "מגנזיום"
+
+msgctxt "nutrition_taurine"
+msgid "Taurine"
+msgstr "טאורין"
+
+msgctxt "nutrition_monounsaturatedFat"
+msgid "Mono unsaturated fat"
+msgstr ""
+
+msgctxt "nutrition_polyunsaturatedFat"
+msgid "Poly unsaturated fat"
+msgstr ""
+
+msgctxt "nutrition_omega3"
+msgid "Omega 3"
+msgstr "אומגה 3"
+
+msgctxt "nutrition_omega6"
+msgid "Omega 6"
+msgstr "אומגה 6"
+
+msgctxt "nutrition_omega9"
+msgid "Omega 9"
+msgstr "אומגה 9"
+
+msgctxt "nutrition_sucrose"
+msgid "Sucrose"
+msgstr "סוכרוז"
+
+msgctxt "nutrition_glucose"
+msgid "Glucose"
+msgstr "גלוקוז"
+
+msgctxt "nutrition_fructose"
+msgid "Fructose"
+msgstr "פרוקטוז"
+
+msgctxt "nutrition_maltose"
+msgid "Maltose"
+msgstr "מלטוז"
+
+msgctxt "nutrition_alcohol"
+msgid "Alcohol"
+msgstr "אלכוהול"
+
+msgctxt "nutrition_vitamins"
+msgid "Vitamins"
+msgstr "ויטמינים"
+
+msgctxt "vitamin_a"
+msgid "Vitamin A"
+msgstr "ויטמין A"
+
+msgctxt "vitamin_d"
+msgid "Vitamin d"
+msgstr "ויטמין D"
+
+msgctxt "vitamin_e"
+msgid "Vitamin e"
+msgstr "ויטמין E"
+
+msgctxt "vitamin_k"
+msgid "Vitamin k"
+msgstr "ויטמין K"
+
+msgctxt "vitamin_c"
+msgid "Vitamin C"
+msgstr "ויטמין C"
+
+msgctxt "vitamin_b1"
+msgid "Vitamin B1"
+msgstr "ויטמין B1"
+
+msgctxt "vitamin_b2"
+msgid "Vitamin B2"
+msgstr "ויטמין B2"
+
+msgctxt "vitamin_pp"
+msgid "Vitamin PP"
+msgstr "ויטמין PP"
+
+msgctxt "vitamin_b6"
+msgid "Vitamin B6"
+msgstr "ויטמין B6"
+
+msgctxt "vitamin_b9"
+msgid "Vitamin B9"
+msgstr "ויטמין B9"
+
+msgctxt "vitamin_b12"
+msgid "Vitamin B12"
+msgstr "ויטמין B12"
+
+msgctxt "biotin"
+msgid "Biotin"
+msgstr "ביוטין"
+
+msgctxt "pantothenic_acid"
+msgid "Pantothenic acid"
+msgstr "חומצה פנטוטנית"
+
+msgctxt "nutrition_minerals"
+msgid "Minerals"
+msgstr "מינרלים"
+
+msgctxt "silica"
+msgid "Silica"
+msgstr "צורן דו חמצני"
+
+msgctxt "bicarbonate"
+msgid "Bicarbonate"
+msgstr "ביקרבונט"
+
+msgctxt "potassium"
+msgid "Potassium"
+msgstr "אשלגן"
+
+msgctxt "chloride"
+msgid "Chloride"
+msgstr "כלוריד"
+
+msgctxt "calcium"
+msgid "Calcium"
+msgstr "סידן"
+
+msgctxt "phosphorus"
+msgid "Phosphorus"
+msgstr "זרחן"
+
+msgctxt "iron"
+msgid "Iron"
+msgstr "ברזל"
+
+msgctxt "magnesium"
+msgid "Magnesium"
+msgstr "מגנזיום"
+
+msgctxt "zinc"
+msgid "Zinc"
+msgstr "אבץ"
+
+msgctxt "copper"
+msgid "Copper"
+msgstr "נחושת"
+
+msgctxt "manganese"
+msgid "Manganese"
+msgstr "מנגן"
+
+msgctxt "fluoride"
+msgid "Fluoride"
+msgstr "פלואוריד"
+
+msgctxt "selenium"
+msgid "Selenium"
+msgstr "סלניום"
+
+msgctxt "chromium"
+msgid "Chromium"
+msgstr "כרומיום"
+
+msgctxt "molybdenum"
+msgid "Molybdenum"
+msgstr "מוליבדן"
+
+msgctxt "iodine"
+msgid "Iodine"
+msgstr "יוד"
+
+msgctxt "caffeine"
+msgid "Caffeine"
+msgstr "קפאין"
+
+msgctxt "taurine"
+msgid "Taurine"
+msgstr "טאורין"
+
+msgctxt "ph"
+msgid "Ph"
+msgstr "Ph"
+
+msgctxt "fruits_vegetables_nuts"
+msgid "Fruits, vegetables, nuts"
+msgstr "פרות, ירקות, אגוזים"
+
+msgctxt "collagen_meat_protein_ratio"
+msgid "Collagen meat protein ratio"
+msgstr ""
+
+msgctxt "cocoa"
+msgid "Cocoa"
+msgstr "קקאו"
+
+msgctxt "chlorophyl"
+msgid "Chlorophyl"
+msgstr "כלורופיל"
 
