@@ -29,8 +29,6 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -55,17 +53,16 @@ public class SummaryProductFragment extends BaseFragment {
     @BindView(R.id.textCountryProduct) TextView countryProduct;
     @BindView(R.id.textCategoryProduct) TextView categoryProduct;
     @BindView(R.id.textLabelProduct) TextView labelProduct;
-    @BindView(R.id.imageViewNutritionFullSum) ImageView mImageNutritionFullSum;
+    @BindView(R.id.imageViewFront) ImageView mImageFront;
     @BindView(R.id.addPhotoLabel) TextView addPhotoLabel;
 
     private OpenFoodAPIClient api;
-
     private String mUrlImage;
     private String barcode;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        api = new OpenFoodAPIClient(this.getActivity());
+        api = new OpenFoodAPIClient(getActivity());
 
         return createView(inflater, container, R.layout.fragment_summary_product);
     }
@@ -85,7 +82,7 @@ public class SummaryProductFragment extends BaseFragment {
 
             Picasso.with(view.getContext())
                     .load(product.getImageUrl())
-                    .into(mImageNutritionFullSum);
+                    .into(mImageFront);
 
             mUrlImage = product.getImageUrl();
         }
@@ -176,7 +173,7 @@ public class SummaryProductFragment extends BaseFragment {
         }
     }
 
-    @OnClick(R.id.imageViewNutritionFullSum)
+    @OnClick(R.id.imageViewFront)
     public void openFullScreen(View v) {
         if (mUrlImage != null) {
             Intent intent = new Intent(v.getContext(), FullScreenImage.class);
@@ -198,10 +195,12 @@ public class SummaryProductFragment extends BaseFragment {
         ProductImage image = new ProductImage(barcode, FRONT, photoFile);
         api.postImg(getContext(), image);
         addPhotoLabel.setVisibility(View.GONE);
+        mUrlImage = photoFile.getAbsolutePath();
 
         Picasso.with(getContext())
                 .load(photoFile)
-                .into(mImageNutritionFullSum);
+                .fit()
+                .into(mImageFront);
     }
 
     @Override
@@ -233,8 +232,7 @@ public class SummaryProductFragment extends BaseFragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_CAMERA:
-            case Utils.MY_PERMISSIONS_REQUEST_STORAGE: {
+            case MY_PERMISSIONS_REQUEST_CAMERA: {
                 if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
                     new MaterialDialog.Builder(getActivity())
                             .title(R.string.permission_title)

@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.ShareActionProvider;
@@ -37,6 +41,11 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+
 public class ProductActivity extends BaseActivity {
 
     @BindView(R.id.pager) ViewPager viewPager;
@@ -58,6 +67,21 @@ public class ProductActivity extends BaseActivity {
         setupViewPager(viewPager);
 
         tabLayout.setupWithViewPager(viewPager);
+
+        if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE)
+                    || ActivityCompat.shouldShowRequestPermissionRationale(this, WRITE_EXTERNAL_STORAGE)) {
+                new MaterialDialog.Builder(this)
+                        .title(R.string.action_about)
+                        .content(R.string.permission_storage)
+                        .neutralText(R.string.txtOk)
+                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(ProductActivity.this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
+                        .show();
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
+            }
+        }
 
         Intent intent = getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
@@ -97,9 +121,7 @@ public class ProductActivity extends BaseActivity {
         String[] menuTitles = getResources().getStringArray(R.array.nav_drawer_items_product);
 
         ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
-        SummaryProductFragment summaryProductFragment = new SummaryProductFragment();
-
-        adapterResult.addFragment(summaryProductFragment, menuTitles[0]);
+        adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
         adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
         adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
         adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
@@ -150,6 +172,30 @@ public class ProductActivity extends BaseActivity {
     private void setShareIntent(Intent shareIntent) {
         if (mShareActionProvider != null) {
             mShareActionProvider.setShareIntent(shareIntent);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CAMERA:
+            case Utils.MY_PERMISSIONS_REQUEST_STORAGE: {
+                if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
+                    new MaterialDialog.Builder(this)
+                            .title(R.string.permission_title)
+                            .content(R.string.permission_denied)
+                            .negativeText(R.string.txtNo)
+                            .positiveText(R.string.txtYes)
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent();
+                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                intent.setData(uri);
+                                startActivity(intent);
+                            })
+                            .show();
+                }
+            }
         }
     }
 }

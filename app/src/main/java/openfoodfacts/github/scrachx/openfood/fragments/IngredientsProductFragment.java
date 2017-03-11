@@ -2,8 +2,13 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -17,6 +22,7 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -29,12 +35,22 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import pl.aprilapps.easyphotopicker.DefaultCallback;
+import pl.aprilapps.easyphotopicker.EasyImage;
 
+import static android.Manifest.permission.CAMERA;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class IngredientsProductFragment extends BaseFragment {
@@ -47,13 +63,19 @@ public class IngredientsProductFragment extends BaseFragment {
     @BindView(R.id.textAdditiveProduct) TextView additiveProduct;
     @BindView(R.id.textPalmOilProduct) TextView palmOilProduct;
     @BindView(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
-    @BindView(R.id.imageViewNutritionFullIng) ImageView mImageNutritionFullIng;
+    @BindView(R.id.imageViewIngredients) ImageView mImageIngredients;
+    @BindView(R.id.addPhotoLabel) TextView addPhotoLabel;
+
+    private OpenFoodAPIClient api;
     private String mUrlImage;
     private State mState;
+    private String barcode;
     private AdditiveDao mAdditiveDao;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        api = new OpenFoodAPIClient(getActivity());
+
         return createView(inflater, container, R.layout.fragment_ingredients_product);
     }
 
@@ -65,14 +87,16 @@ public class IngredientsProductFragment extends BaseFragment {
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
 
         final Product product = mState.getProduct();
+        barcode = product.getCode();
 
-        if (isNotEmpty(product.getImageIngredientsUrl())) {
+        if (isNotBlank(product.getImageIngredientsUrl())) {
+            addPhotoLabel.setVisibility(View.GONE);
+
             Picasso.with(view.getContext())
                     .load(product.getImageIngredientsUrl())
-                    .into(mImageNutritionFullIng);
+                    .into(mImageIngredients);
+
             mUrlImage = product.getImageIngredientsUrl();
-        } else {
-            mImageNutritionFullIng.setVisibility(View.GONE);
         }
 
         List<String> allergens = getAllergens();
@@ -222,12 +246,82 @@ public class IngredientsProductFragment extends BaseFragment {
         return list;
     }
 
-    @OnClick(R.id.imageViewNutritionFullIng)
+    @OnClick(R.id.imageViewIngredients)
     public void openFullScreen(View v) {
-        Intent intent = new Intent(v.getContext(), FullScreenImage.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("imageurl", mUrlImage);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        if (mUrlImage != null) {
+            Intent intent = new Intent(v.getContext(), FullScreenImage.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("imageurl", mUrlImage);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            // take a picture
+            if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+            } else {
+                EasyImage.openCamera(this, 0);
+            }
+        }
+    }
+
+    private void onPhotoReturned(File photoFile) {
+        ProductImage image = new ProductImage(barcode, INGREDIENTS, photoFile);
+        api.postImg(getContext(), image);
+        addPhotoLabel.setVisibility(View.GONE);
+        mUrlImage = photoFile.getAbsolutePath();
+
+        Picasso.with(getContext())
+                .load(photoFile)
+                .fit()
+                .into(mImageIngredients);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
+            @Override
+            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
+                //Some error handling
+            }
+
+            @Override
+            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
+                onPhotoReturned(imageFiles.get(0));
+            }
+
+            @Override
+            public void onCanceled(EasyImage.ImageSource source, int type) {
+                //Cancel handling, you might wanna remove taken photo if it was canceled
+                if (source == EasyImage.ImageSource.CAMERA) {
+                    File photoFile = EasyImage.lastlyTakenButCanceledPhoto(getContext());
+                    if (photoFile != null) photoFile.delete();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CAMERA: {
+                if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
+                    new MaterialDialog.Builder(getActivity())
+                            .title(R.string.permission_title)
+                            .content(R.string.permission_denied)
+                            .negativeText(R.string.txtNo)
+                            .positiveText(R.string.txtYes)
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent();
+                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
+                                intent.setData(uri);
+                                startActivity(intent);
+                            })
+                            .show();
+                }
+            }
+        }
     }
 }

@@ -97,11 +97,6 @@ public class SaveProductOfflineActivity extends BaseActivity {
         api = new OpenFoodAPIClient(this);
         mBarcode = getIntent().getStringExtra("barcode");
 
-        EasyImage.configuration(this)
-                .setImagesFolderName("OFF_Images")
-                .saveInAppExternalFilesDir()
-                .setCopyExistingPicturesToPublicLocation(true);
-
         imgSaveFront.setVisibility(View.GONE);
         imgSaveIngredients.setVisibility(View.GONE);
         imgSaveNutrition.setVisibility(View.GONE);
@@ -335,6 +330,21 @@ public class SaveProductOfflineActivity extends BaseActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_CAMERA:
+                if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
+                    new MaterialDialog.Builder(this)
+                            .title(R.string.permission_title)
+                            .content(R.string.permission_denied)
+                            .negativeText(R.string.txtNo)
+                            .positiveText(R.string.txtYes)
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent();
+                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                intent.setData(uri);
+                                startActivity(intent);
+                            })
+                            .show();
+                }
             case Utils.MY_PERMISSIONS_REQUEST_STORAGE: {
                 if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
                     new MaterialDialog.Builder(this)
