@@ -1,7 +1,7 @@
 This is the Changelog. Please list changes here so that we can provide meaningful changelog for the application stores.
 
 Upcoming:
-
+- 
 
 0.6.2 - Mar 5 2017
 - Even faster scan experience for new products: no more annoying popups, we jump straight to the new product page
