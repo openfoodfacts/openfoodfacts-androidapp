@@ -247,6 +247,8 @@ public class SummaryProductFragment extends BaseFragment {
                                 startActivity(intent);
                             })
                             .show();
+                } else {
+                    EasyImage.openCamera(this, 0);
                 }
             }
         }

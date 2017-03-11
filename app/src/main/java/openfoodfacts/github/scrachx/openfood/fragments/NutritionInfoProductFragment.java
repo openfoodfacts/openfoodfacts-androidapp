@@ -302,6 +302,8 @@ public class NutritionInfoProductFragment extends BaseFragment {
                                 startActivity(intent);
                             })
                             .show();
+                } else {
+                    EasyImage.openCamera(this, 0);
                 }
             }
         }
