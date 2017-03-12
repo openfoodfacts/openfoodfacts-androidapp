@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -358,7 +359,7 @@ public class OpenFoodAPIClient {
 
         String lang = Locale.getDefault().getLanguage();
 
-        HashMap<String, RequestBody> imgMap = new HashMap<>();
+        Map<String, RequestBody> imgMap = new HashMap<>();
         imgMap.put("code", image.getCode());
         imgMap.put("imagefield", image.getField());
         imgMap.put("imgupload_front\"; filename=\"front_"+ lang +".png\"", image.getImguploadFront());
