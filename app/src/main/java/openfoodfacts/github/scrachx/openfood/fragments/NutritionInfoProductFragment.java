@@ -96,7 +96,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
         Nutriments nutriments = product.getNutriments();
         List<NutrimentItem> nutrimentItems = new ArrayList<>();
 
-        if (isNotEmpty(product.getServingSize())) {
+        if (isNotBlank(product.getServingSize())) {
             mTextPerPortion.setText(getString(R.string.nutriment_serving_size) + " " + product.getServingSize());
         } else {
             mTextPerPortion.setVisibility(View.GONE);

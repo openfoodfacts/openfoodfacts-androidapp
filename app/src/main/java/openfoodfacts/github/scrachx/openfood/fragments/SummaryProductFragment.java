@@ -39,6 +39,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRO
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class SummaryProductFragment extends BaseFragment {
@@ -93,7 +94,7 @@ public class SummaryProductFragment extends BaseFragment {
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
 
-        if(product.getProductName() != null && !product.getProductName().trim().isEmpty()) {
+        if(isNotBlank(product.getProductName())) {
             nameProduct.setText(product.getProductName());
         } else {
             nameProduct.setVisibility(View.GONE);
@@ -110,26 +111,26 @@ public class SummaryProductFragment extends BaseFragment {
         } else {
             quantityProduct.setVisibility(View.GONE);
         }
-        if(product.getPackaging() != null && !product.getPackaging().trim().isEmpty()) {
+        if(isNotBlank(product.getPackaging())) {
             packagingProduct.setText(bold(getString(R.string.txtPackaging)));
             packagingProduct.append(' ' + product.getPackaging());
         } else {
             packagingProduct.setVisibility(View.GONE);
         }
-        if(product.getBrands() != null && !product.getBrands().trim().isEmpty()) {
+        if(isNotBlank(product.getBrands())) {
             brandProduct.setText(bold(getString(R.string.txtBrands)));
             brandProduct.append(' ' + product.getBrands());
         } else {
             brandProduct.setVisibility(View.GONE);
         }
-        if(product.getManufacturingPlaces() != null && !product.getManufacturingPlaces().trim().isEmpty()) {
+        if(isNotBlank(product.getManufacturingPlaces())) {
             manufacturingProduct.setText(bold(getString(R.string.txtManufacturing)));
             manufacturingProduct.append(' ' + product.getManufacturingPlaces());
         } else {
             manufacturingProduct.setVisibility(View.GONE);
         }
 
-        if (product.getOrigins() == null) {
+        if (isBlank(product.getOrigins())) {
             ingredientsOrigin.setVisibility(View.GONE);
         } else {
             ingredientsOrigin.setText(bold(getString(R.string.txtIngredientsOrigins)));
@@ -137,7 +138,7 @@ public class SummaryProductFragment extends BaseFragment {
         }
 
         String categ;
-        if (product.getCategories() != null && !product.getCategories().trim().isEmpty()) {
+        if (isNotBlank(product.getCategories())) {
             categ = product.getCategories().replace(",", ", ");
             categoryProduct.setText(bold(getString(R.string.txtCategories)));
             categoryProduct.append(' ' + categ);
@@ -163,13 +164,13 @@ public class SummaryProductFragment extends BaseFragment {
         } else {
             cityProduct.setVisibility(View.GONE);
         }
-        if(product.getStores() != null && !product.getStores().trim().isEmpty()) {
+        if(isNotBlank(product.getStores())) {
             storeProduct.setText(bold(getString(R.string.txtStores)));
             storeProduct.append(' ' + product.getStores());
         } else {
             storeProduct.setVisibility(View.GONE);
         }
-        if(product.getCountries() != null && !product.getCountries().trim().isEmpty()) {
+        if(isNotBlank(product.getCountries())) {
             countryProduct.setText(bold(getString(R.string.txtCountries)));
             countryProduct.append(' ' + product.getCountries());
         } else {
