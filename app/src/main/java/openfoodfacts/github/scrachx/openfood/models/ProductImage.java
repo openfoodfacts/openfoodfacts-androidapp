@@ -22,7 +22,7 @@ public class ProductImage {
 
     public ProductImage(String code, ProductImageField field, File image) {
         this.code = RequestBody.create(MediaType.parse("text/plain"), code);
-        this.field = RequestBody.create(MediaType.parse("text/plain"), field.toString() + '_' + Locale.getDefault().getDisplayLanguage());
+        this.field = RequestBody.create(MediaType.parse("text/plain"), field.toString() + '_' + Locale.getDefault().getLanguage());
 
         switch (field) {
             case FRONT:

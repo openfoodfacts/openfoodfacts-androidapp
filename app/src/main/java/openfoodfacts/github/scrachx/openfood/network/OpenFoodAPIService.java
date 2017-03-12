@@ -51,6 +51,7 @@ public interface OpenFoodAPIService {
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
     Call<State> saveProduct(@Query("code") String code,
+                            @Query("lang") String lang,
                             @Query("product_name") String name,
                             @Query("brands") String brands,
                             @Query("quantity") String quantity,

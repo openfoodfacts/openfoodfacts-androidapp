@@ -28,6 +28,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -144,6 +145,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
             mProduct = new SendProduct();
             mProduct.setBarcode(mBarcode);
         }
+        mProduct.setLang(Locale.getDefault().getLanguage());
     }
 
     @OnItemSelected(value = R.id.spinnerUnitWeight, callback = OnItemSelected.Callback.ITEM_SELECTED)

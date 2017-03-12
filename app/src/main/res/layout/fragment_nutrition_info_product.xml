@@ -22,6 +22,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             app:srcCompat="@drawable/ic_add_a_photo_black_48dp"
+            android:background="?android:selectableItemBackground"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:maxHeight="250dp" />
 
@@ -32,13 +33,14 @@
             android:gravity="center"
             android:text="@string/take_picture_nutrition_table"
             android:textStyle="bold"
+            android:layout_marginBottom="@dimen/spacing_normal"
             android:layout_below="@+id/imageViewNutrition"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/textPerPortion"
-            android:layout_below="@id/imageViewNutrition"
+            android:layout_below="@id/addPhotoLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"

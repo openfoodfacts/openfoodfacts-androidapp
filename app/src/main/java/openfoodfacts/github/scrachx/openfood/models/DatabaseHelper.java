@@ -41,7 +41,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
     private void upgrade(SQLiteDatabase db, int migrateVersion) {
         switch (migrateVersion) {
             case 2:
-                //db.execSQL("ALTER TABLE INHABITANT ADD COLUMN 'GENDER' INTEGER NOT NULL DEFAULT '0';");
+                db.execSQL("ALTER TABLE send_product ADD COLUMN 'lang' TEXT NOT NULL DEFAULT 'fr';");
                 break;
         }
     }

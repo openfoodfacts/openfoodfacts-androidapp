@@ -312,7 +312,7 @@ public class OpenFoodAPIClient {
         lt.setTextColor(activity.getResources().getColor(R.color.white));
         lt.show();
 
-        apiService.saveProduct(product.getBarcode(), product.getName(), product.getBrands(), product.getQuantity(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+        apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
             @Override
             public void onResponse(Call<State> call, Response<State> response) {
                 if (!response.isSuccess() || response.body().getStatus() == 0) {
@@ -356,15 +356,15 @@ public class OpenFoodAPIClient {
         lt.setTextColor(context.getResources().getColor(R.color.white));
         lt.show();
 
-        String lang = Locale.getDefault().getDisplayLanguage();
+        String lang = Locale.getDefault().getLanguage();
 
         HashMap<String, RequestBody> imgMap = new HashMap<>();
         imgMap.put("code", image.getCode());
         imgMap.put("imagefield", image.getField());
-        imgMap.put("\"imgupload_front\"; filename=\"front_"+ lang +".png\"", image.getImguploadFront());
-        imgMap.put("\"imgupload_ingredients\"; filename=\"ingredients_" + lang + ".png\"", image.getImguploadIngredients());
-        imgMap.put("\"imgupload_nutrition\"; filename=\"nutrition_" + lang + ".png\"", image.getImguploadNutrition());
-        imgMap.put("\"imgupload_other\"; filename=\"other_" + lang + ".png\"", image.getImguploadOther());
+        imgMap.put("imgupload_front\"; filename=\"front_"+ lang +".png\"", image.getImguploadFront());
+        imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + lang + ".png\"", image.getImguploadIngredients());
+        imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + lang + ".png\"", image.getImguploadNutrition());
+        imgMap.put("imgupload_other\"; filename=\"other_" + lang + ".png\"", image.getImguploadOther());
 
         apiService.saveImage(imgMap)
                 .enqueue(new Callback<JsonNode>() {
