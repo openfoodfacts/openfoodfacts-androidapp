@@ -11,6 +11,8 @@ import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Transient;
 import org.greenrobot.greendao.annotation.Unique;
 
+import java.util.Locale;
+
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -24,6 +26,7 @@ public class SendProduct {
 
     @JsonProperty("code")
     private String barcode;
+    private String lang;
     @JsonProperty("product_name")
     private String name;
     private String brands;
@@ -45,12 +48,13 @@ public class SendProduct {
 
     public SendProduct() {}
 
-    @Generated(hash = 201105305)
-    public SendProduct(Long id, String barcode, String name, String brands, String weight,
-                       String weight_unit, String imgupload_front, String imgupload_ingredients,
-                       String imgupload_nutrition) {
+    @Generated(hash = 994048396)
+    public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight,
+            String weight_unit, String imgupload_front, String imgupload_ingredients,
+            String imgupload_nutrition) {
         this.id = id;
         this.barcode = barcode;
+        this.lang = lang;
         this.name = name;
         this.brands = brands;
         this.weight = weight;
@@ -168,6 +172,14 @@ public class SendProduct {
                 //nothing to do
                 break;
         }
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public void setLang(String lang) {
+        this.lang = lang;
     }
 
     public Long getId() {

@@ -27,7 +27,7 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:gravity="end"
         android:text="@string/for_100g"
-        android:layout_width="75dp" />
+        android:layout_width="60dp" />
 
     <TextView
         android:id="@+id/nutriment_serving_value"
@@ -38,6 +38,6 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:gravity="end"
         android:text="@string/serving"
-        android:layout_width="55dp" />
+        android:layout_width="60dp" />
 
 </GridLayout>

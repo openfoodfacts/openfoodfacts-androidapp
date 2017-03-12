@@ -24,6 +24,7 @@ import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class SplashActivity extends BaseActivity {
 
@@ -50,6 +51,10 @@ public class SplashActivity extends BaseActivity {
         }
 
         if (!firstRun) {
+            EasyImage.configuration(this)
+                    .setImagesFolderName("OFF_Images")
+                    .saveInAppExternalFilesDir()
+                    .setCopyExistingPicturesToPublicLocation(true);
             Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
             startActivity(mainIntent);
             finish();
