@@ -30,9 +30,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/take_a_picture"
+            android:text="@string/take_picture_nutrition_table"
             android:textStyle="bold"
-            />
+            android:layout_below="@+id/imageViewNutrition"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/textPerPortion"

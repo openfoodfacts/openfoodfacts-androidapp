@@ -353,7 +353,7 @@ public class OpenFoodAPIClient {
         lt.setTextColor(context.getResources().getColor(R.color.white));
         lt.show();
 
-        apiService.saveImage(image.getCode(), image.getField(), image.getImguploadFront(), image.getImguploadIngredients(), image.getImguploadNutrition())
+        apiService.saveImage(image.getCode(), image.getField(), image.getImguploadFront(), image.getImguploadIngredients(), image.getImguploadNutrition(), image.getImguploadOther())
                 .enqueue(new Callback<JsonNode>() {
                     @Override
                     public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {

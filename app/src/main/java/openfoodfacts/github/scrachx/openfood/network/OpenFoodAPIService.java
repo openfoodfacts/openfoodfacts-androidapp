@@ -61,7 +61,8 @@ public interface OpenFoodAPIService {
                              @Part("imagefield") RequestBody field,
                              @Part("imgupload_front\"; filename=\"front.png\"") RequestBody imageFront,
                              @Part("imgupload_ingredients\"; filename=\"ingredients.png\"") RequestBody imageIngredients,
-                             @Part("imgupload_nutrition\"; filename=\"nutrition.png\"") RequestBody imageNutrition);
+                             @Part("imgupload_nutrition\"; filename=\"nutrition.png\"") RequestBody imageNutrition,
+                             @Part("imgupload_other\"; filename=\"other.png\"") RequestBody imageOther);
 
     @GET("allergens.json")
     Call<AllergenRestResponse> getAllergens();

@@ -368,6 +368,9 @@
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
     <string name="cocoa">Cocoa</string>
     <string name="chlorophyl">Chlorophyl</string>
-    <string name="take_a_picture">Take a picture</string>
+    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
+    <string name="take_picture_front">Take a picture of the front</string>
+    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
+    <string name="take_more_pictures">Take more pictures of any interesting information</string>
 
 </resources>

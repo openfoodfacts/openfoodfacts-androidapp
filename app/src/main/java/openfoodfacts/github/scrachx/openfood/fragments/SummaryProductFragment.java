@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,6 +36,7 @@ import pl.aprilapps.easyphotopicker.EasyImage;
 import static android.Manifest.permission.CAMERA;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -55,10 +57,12 @@ public class SummaryProductFragment extends BaseFragment {
     @BindView(R.id.textLabelProduct) TextView labelProduct;
     @BindView(R.id.imageViewFront) ImageView mImageFront;
     @BindView(R.id.addPhotoLabel) TextView addPhotoLabel;
+    @BindView(R.id.buttonMorePictures) Button addMorePicture;
 
     private OpenFoodAPIClient api;
     private String mUrlImage;
     private String barcode;
+    private boolean sendOther = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -173,6 +177,16 @@ public class SummaryProductFragment extends BaseFragment {
         }
     }
 
+    @OnClick(R.id.buttonMorePictures)
+    public void takeMorePicture() {
+        if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            sendOther = true;
+            EasyImage.openCamera(this, 0);
+        }
+    }
+
     @OnClick(R.id.imageViewFront)
     public void openFullScreen(View v) {
         if (mUrlImage != null) {
@@ -186,6 +200,7 @@ public class SummaryProductFragment extends BaseFragment {
             if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
             } else {
+                sendOther = false;
                 EasyImage.openCamera(this, 0);
             }
         }
@@ -215,7 +230,12 @@ public class SummaryProductFragment extends BaseFragment {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                onPhotoReturned(imageFiles.get(0));
+                if(!sendOther) {
+                    onPhotoReturned(imageFiles.get(0));
+                } else {
+                    ProductImage image = new ProductImage(barcode, OTHER, imageFiles.get(0));
+                    api.postImg(getContext(), image);
+                }
             }
 
             @Override
@@ -248,6 +268,7 @@ public class SummaryProductFragment extends BaseFragment {
                             })
                             .show();
                 } else {
+                    sendOther = false;
                     EasyImage.openCamera(this, 0);
                 }
             }
