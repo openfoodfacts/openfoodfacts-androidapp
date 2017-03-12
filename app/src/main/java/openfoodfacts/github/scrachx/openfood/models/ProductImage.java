@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import java.io.File;
+import java.util.Locale;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -21,7 +22,7 @@ public class ProductImage {
 
     public ProductImage(String code, ProductImageField field, File image) {
         this.code = RequestBody.create(MediaType.parse("text/plain"), code);
-        this.field = RequestBody.create(MediaType.parse("text/plain"), field.toString());
+        this.field = RequestBody.create(MediaType.parse("text/plain"), field.toString() + '_' + Locale.getDefault().getDisplayLanguage());
 
         switch (field) {
             case FRONT:

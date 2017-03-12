@@ -187,6 +187,14 @@
             android:textIsSelectable="true"
             android:textSize="@dimen/font_normal" />
 
+        <Button
+            android:id="@+id/buttonMorePictures"
+            android:layout_width="250dp"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:text="@string/take_more_pictures" />
+
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>
