@@ -2,6 +2,11 @@ This is the Changelog. Please list changes here so that we can provide meaningfu
 
 Upcoming:
 - 
+0.7 - Mar 12 2017
+- Ability to add more photos to existing products
+- Ability to add front, ingredient and nutrition photos to existing products
+- New icon
+- Various library updates 
 
 0.6.2 - Mar 5 2017
 - Even faster scan experience for new products: no more annoying popups, we jump straight to the new product page
