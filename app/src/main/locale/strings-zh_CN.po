@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-30 17:13+0100\n"
+"POT-Creation-Date: 2017-03-13 19:23+0100\n"
 "PO-Revision-Date: 2017-01-02 12:00+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: zh_Hans_CN\n"
@@ -587,10 +587,11 @@ msgctxt "txtDialogsTitle"
 msgid "Information"
 msgstr ""
 
+#, fuzzy
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you "
-"want to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Please add"
+" it."
 msgstr ""
 
 msgctxt "txtDialogsContentPowerMode"
@@ -1354,5 +1355,21 @@ msgstr ""
 
 msgctxt "chlorophyl"
 msgid "Chlorophyl"
+msgstr ""
+
+msgctxt "take_picture_ingredients"
+msgid "Take a picture of the ingredients"
+msgstr ""
+
+msgctxt "take_picture_front"
+msgid "Take a picture of the front"
+msgstr ""
+
+msgctxt "take_picture_nutrition_table"
+msgid "Take a picture of the nutrition table"
+msgstr ""
+
+msgctxt "take_more_pictures"
+msgid "Take more pictures"
 msgstr ""
 
