@@ -126,7 +126,6 @@
   <string name="txtInfoLoginOk">Օգտվողը պահպանվեց</string>
   <string name="txtInfoLoginNo">Օգտվողը չպահպանվեց</string>
   <string name="txtDialogsTitle">Տեղեկատվություն</string>
-  <string name="txtDialogsContent">Այս մթերքը դեռ չկա «Open Food Facts»-ում։ Ցանկանո՞ւմ եք ավելացնել։</string>
   <string name="txtYes">Այո</string>
   <string name="txtNo">Ոչ</string>
   <string name="hintNameProduct">Անվանում</string>

@@ -134,7 +134,6 @@
   <string name="txtInfoLoginOk">Gardouse o usuario</string>
   <string name="txtInfoLoginNo">Non se gardou o usuario</string>
   <string name="txtDialogsTitle">Información</string>
-  <string name="txtDialogsContent">O produto escaneado non existe aínda en Open Food Facts. Desexa engadilo?</string>
   <string name="txtDialogsContentPowerMode">O produto escaneado xa existe en Open Food Facts.</string>
   <string name="txtDialogsContentSend">Desexa enviar os produtos gardados á base de datos?</string>
   <string name="txtYes">Si</string>

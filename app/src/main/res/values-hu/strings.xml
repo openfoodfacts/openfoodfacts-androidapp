@@ -134,7 +134,6 @@
   <string name="txtInfoLoginOk">Felhasználó mentve</string>
   <string name="txtInfoLoginNo">Felhasználó nem lett mentve</string>
   <string name="txtDialogsTitle">Információ</string>
-  <string name="txtDialogsContent">Gratulálunk! A termék még nem található az Open Food Facts adatbázisában. Hozzáadjuk most?</string>
   <string name="txtDialogsContentPowerMode">Ez a termék megtalálható az Open Food Facts adatbázisában.</string>
   <string name="txtDialogsContentSend">Feltöltjük a mentett terméket az adatbázisba?</string>
   <string name="txtYes">Igen</string>

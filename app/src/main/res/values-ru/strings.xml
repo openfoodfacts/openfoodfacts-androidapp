@@ -141,7 +141,7 @@
   <string name="txtInfoLoginOk">Пользователь сохранён</string>
   <string name="txtInfoLoginNo">Пользователь не сохранён</string>
   <string name="txtDialogsTitle">Информация</string>
-  <string name="txtDialogsContent">Этого продукта ещё нет в Open Food Facts. Хотите его добавить?</string>
+  <string name="txtDialogsContent">"Отсканированного продукта ещё нет в  базе Open Food Facts. Добавьте его, пожалуйста."</string>
   <string name="txtDialogsContentPowerMode">Просканированный продукт уже внесён в Open Food Facts.</string>
   <string name="txtDialogsContentSend">Хотите отослать сохранённые продукты в базу данных?</string>
   <string name="txtYes">Да</string>
@@ -326,4 +326,8 @@
   <string name="collagen_meat_protein_ratio">Доля коллагена в мясном белке</string>
   <string name="cocoa">Какао</string>
   <string name="chlorophyl">Хлорофилл</string>
+  <string name="take_picture_ingredients">Сделайте фото состава</string>
+  <string name="take_picture_front">Сделайте общее фото</string>
+  <string name="take_picture_nutrition_table">Сделайте фото энерг. ценности</string>
+  <string name="take_more_pictures">Сделайте дополнительные фото</string>
 </resources>

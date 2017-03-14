@@ -5,6 +5,7 @@
   <string name="action_settings">Innstillinger</string>
   <string name="action_about">Om</string>
   <string name="action_discover">Utforsk</string>
+  <string name="contribute">Hvordan bidra</string>
   <string name="action_find">Søk</string>
   <string-array name="nav_drawer_items_product">
     <item>Sammendrag</item>
@@ -122,6 +123,9 @@
   <string name="txtSignIn">Logg på</string>
   <string name="txtUser">Brukerpanel</string>
   <string name="txtToastSaved">Bruker lagret</string>
+  <string name="txtFat">Fett</string>
+  <string name="txtSugars">Sukker</string>
+  <string name="txtSaturatedFat">Mettet fett</string>
   <string name="hintBarcode">Strekkode</string>
   <string name="hintLogin">Logg på</string>
   <string name="hintPass">Passord</string>
@@ -130,7 +134,6 @@
   <string name="txtInfoLoginOk">Bruker lagret</string>
   <string name="txtInfoLoginNo">Bruker ikke lagret</string>
   <string name="txtDialogsTitle">Informasjon</string>
-  <string name="txtDialogsContent">Produktet du skannet finnes ikke enda i Open Food Facts. Vil du legge det til?</string>
   <string name="txtDialogsContentSend">Ønsker du å sende de lagrede produktene til databasen?</string>
   <string name="txtYes">Ja</string>
   <string name="txtNo">Nei</string>
@@ -237,4 +240,6 @@
   <string name="website_discover">https://world-nb.openfoodfacts.org/discover</string>
   <string name="website_product">https://world-nb.openfoodfacts.org/product/</string>
   <string name="website_contributor">https://world-nb.openfoodfacts.org/contributor/</string>
+  <string name="txt_no_results">Ingen resultater ble funnet</string>
+  <string name="serving">Per porsjon</string>
 </resources>

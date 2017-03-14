@@ -141,7 +141,6 @@
   <string name="txtInfoLoginOk">Gebruiker opgeslagen</string>
   <string name="txtInfoLoginNo">Gebruiker niet opgeslagen</string>
   <string name="txtDialogsTitle">Opmerking</string>
-  <string name="txtDialogsContent">Het gescande product is nog niet opgenomen in de Open Food Facts-databank. Wilt u het toevoegen?</string>
   <string name="txtDialogsContentPowerMode">Het gescannede product bestaat al in Open Food Facts</string>
   <string name="txtDialogsContentSend">Wilt u de bewaarde producten opslaan in de databank?</string>
   <string name="txtYes">Ja</string>
@@ -186,12 +185,10 @@
   <string name="txt_product_not_found">Artikelen niet gevonden</string>
   <string name="delete_txt">Verwijder</string>
   <string name="sign_in_drawer">Aanmelden</string>
-  <string name="alert_drawer">Allergeen waarschuwing</string>
   <string name="warning_allergens">Bevat allergenen</string>
   <string name="title_dialog_alert">Voeg melding toe</string>
   <string name="warning_alert_data">Informatie over je allergieën wordt nooit naar het Open Food Facts-netwerk verzonden. N.B. wees ervan bewust dat gegevens mogelijk niet accuraat zijn, double-check deze zelf!</string>
   <string name="from_gallery">Gallerie</string>
-  <string name="product_sent">Product verstuurd!</string>
   <string name="action_edit_product">Bewerk product</string>
   <string name="title_info_dialog">Melding</string>
   <string name="text_offline_info_dialog">Je kunt de producten offline scannen en deze later verzenden naar Open Food Facts. Alle producten die je scant zullen hier verschijnen en zijn te verzenden met onderstaande button.</string>
@@ -209,7 +206,6 @@
   <string name="prefs_scan_startup">Bij opstarten scannen</string>
   <string name="prefs_scan_startup_summary">Als deze optie geselecteerd is, zal het scannen worden gestart wanneer de app geopend wordt.</string>
   <string name="prefs_power_mode">Energiebesparend scannen</string>
-  <string name="prefs_power_mode_summary">Bekijk de onbeschikbare supermarktproducten.</string>
   <string name="prefs_language">Taal</string>
   <string name="prefs_language_summary">Een andere taal kiezen</string>
   <string name="scan_history_drawer">Geschiedenis</string>

@@ -126,7 +126,6 @@
   <string name="txtInfoLoginOk">Пайдаланушы сақталған</string>
   <string name="txtInfoLoginNo">Пайдаланушы сақталмаған</string>
   <string name="txtDialogsTitle">Ақпарат</string>
-  <string name="txtDialogsContent">Бұл өнім әлі Open Food Facts-та жоқ. Сіз оны қосқыңыз келе ме?</string>
   <string name="txtYes">Иә</string>
   <string name="txtNo">Жоқ</string>
   <string name="hintNameProduct">Атауы</string>

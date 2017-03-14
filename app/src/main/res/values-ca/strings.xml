@@ -76,14 +76,14 @@
     <item>Kabyle</item>
     <item>Korean</item>
     <item>Latvian</item>
-    <item>Dutch</item>
+    <item>Holandès</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
-    <item>Swedish</item>
-    <item>Chinese</item>
-    <item>Norwegian (Bokmal)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>Romanès</item>
+    <item>Suec</item>
+    <item>Xinès</item>
+    <item>Noruec (Bokmål)</item>
+    <item>Danès</item>
+    <item>Xinès simplificat</item>
   </string-array>
   <string-array name="images_array">
     <item>Predeterminat</item>
@@ -122,6 +122,9 @@
   <string name="txtSignIn">Inici de sessió</string>
   <string name="txtUser">Panell d\'usuari</string>
   <string name="txtToastSaved">Usuari desat</string>
+  <string name="txtSalt">Sal</string>
+  <string name="txtFat">Greix</string>
+  <string name="txtSaturatedFat">Greix saturat</string>
   <string name="hintBarcode">Codi de barres</string>
   <string name="hintLogin">Usuari</string>
   <string name="hintPass">Contrasenya</string>
@@ -130,7 +133,6 @@
   <string name="txtInfoLoginOk">Usuari desat</string>
   <string name="txtInfoLoginNo">Usuari no desat</string>
   <string name="txtDialogsTitle">Informació</string>
-  <string name="txtDialogsContent">El producte que ha escanejat no existix encara a Open Food Facts. Vol afegir-lo?</string>
   <string name="txtDialogsContentSend">Vol enviar el producte desat a la base de dades?</string>
   <string name="txtYes">Si</string>
   <string name="txtNo">No</string>
@@ -237,4 +239,20 @@
   <string name="website_discover">https://world-ca.openfoodfacts.org/discover</string>
   <string name="website_product">https://world-ca.openfoodfacts.org/product/</string>
   <string name="website_contributor">https://world-ca.openfoodfacts.org/contributor/</string>
+  <string name="search_hint">Cercar un producte</string>
+  <string name="txt_no_results">No s\'ha trobat resultats</string>
+  <string name="serving">Per ració</string>
+  <string name="nutrition_calcium">Calci</string>
+  <string name="nutrition_potassium">Potassi</string>
+  <string name="nutrition_chlore">Clor</string>
+  <string name="nutrition_magnesium">Magnesi</string>
+  <string name="vitamin_a">Vitamina A</string>
+  <string name="vitamin_c">Vitamina C</string>
+  <string name="vitamin_b6">Vitamina B6</string>
+  <string name="vitamin_b12">Vitamina B12</string>
+  <string name="potassium">Potassi</string>
+  <string name="calcium">Calci</string>
+  <string name="phosphorus">Fòsfor</string>
+  <string name="iron">Ferro</string>
+  <string name="magnesium">Magnesi</string>
 </resources>

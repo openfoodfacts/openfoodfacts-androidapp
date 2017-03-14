@@ -141,7 +141,6 @@
   <string name="txtInfoLoginOk">Benutzer gespeichert</string>
   <string name="txtInfoLoginNo">Benutzer nicht gespeichert</string>
   <string name="txtDialogsTitle">Information</string>
-  <string name="txtDialogsContent">Das gescannte Produkt befindet sich noch nicht in Open Food Facts. Möchten Sie es hinzufügen?</string>
   <string name="txtDialogsContentPowerMode">Das gescannte Produkt befindet sich bereits in Open Food Facts.</string>
   <string name="txtDialogsContentSend">Möchten Sie die gespeicherten Produkte an die Datenbank senden?</string>
   <string name="txtYes">Ja</string>
@@ -186,12 +185,10 @@
   <string name="txt_product_not_found">Keine Produkte gefunden</string>
   <string name="delete_txt">Löschen</string>
   <string name="sign_in_drawer">Anmelden</string>
-  <string name="alert_drawer">Allergen-Alarm</string>
   <string name="warning_allergens">Enthält Allergene</string>
   <string name="title_dialog_alert">Alarm hinzufügen</string>
   <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an den Open Food Facts Server gesendet. Seien Sie vorsichtig! Die Daten sind möglicherweise nicht immer 100% richtig. Prüfen Sie deshalb bitte selbst noch einmal nach!</string>
   <string name="from_gallery">Aus Galerie</string>
-  <string name="product_sent">Produkt hochgeladen.</string>
   <string name="action_edit_product">Produkt bearbeiten</string>
   <string name="title_info_dialog">Information</string>
   <string name="text_offline_info_dialog">Sie können Produkte einscannen, wenn Sie offline sind, um sie später zu Open Food Facts hoch zu laden. Alle Produkte, die Sie scannen werden hier aufgelistet, damit Sie sie über die unten stehende Schaltfläche hochladen können.</string>
@@ -209,7 +206,6 @@
   <string name="prefs_scan_startup">Scannen beim Starten</string>
   <string name="prefs_scan_startup_summary">Wenn diese Option eingeschaltet ist, wird die App beim Öffnen einen Scan durchführen.</string>
   <string name="prefs_power_mode">Schnelles Scannen</string>
-  <string name="prefs_power_mode_summary">Schnell Produkte im Supermarkt scannen, um zu sehen welche noch nicht in der Datenbank vorhanden sind.</string>
   <string name="prefs_language">Sprache</string>
   <string name="prefs_language_summary">Sprache ändern</string>
   <string name="scan_history_drawer">Verlauf</string>

@@ -126,7 +126,6 @@
   <string name="txtInfoLoginOk">အသံုးျပဳသူသိမ္းခဲ့ျပီးျပီ</string>
   <string name="txtInfoLoginNo">အသံုးျပဳသူကိုမသိမ္းခဲ့ပါ</string>
   <string name="txtDialogsTitle">အခ်က္အလက္</string>
-  <string name="txtDialogsContent">သင္စကန္ဖတ္ေသာထုတ္ကုန္သည္ Open Food အခ်က္အလက္မ်ားတြင္မရွိေသးပါ။ သင္ထည့္လိုပါသလား။</string>
   <string name="txtDialogsContentSend">သိမ်းဆည်းပြီးသည့်ထုတ်ကုန်ကိုdatabaseသို့ပိုလိုပါသလား</string>
   <string name="txtYes">ဟုတ္</string>
   <string name="txtNo">မဟုတ္</string>

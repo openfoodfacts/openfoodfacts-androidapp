@@ -141,7 +141,6 @@
   <string name="txtInfoLoginOk">ユーザーを保存しました</string>
   <string name="txtInfoLoginNo">ユーザーを保存できませんでした</string>
   <string name="txtDialogsTitle">情報</string>
-  <string name="txtDialogsContent">スキャンした製品は、まだ Open Food Facts に存在しません。追加しますか?</string>
   <string name="txtDialogsContentPowerMode">スキャンした製品は、すでに Open Food Facts に存在します。</string>
   <string name="txtDialogsContentSend">データベースに保存された製品を送信しますか?</string>
   <string name="txtYes">はい</string>

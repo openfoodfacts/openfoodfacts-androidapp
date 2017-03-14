@@ -141,7 +141,6 @@
   <string name="txtInfoLoginOk">Usuario guardado</string>
   <string name="txtInfoLoginNo">Usuario no guardado</string>
   <string name="txtDialogsTitle">Información</string>
-  <string name="txtDialogsContent">El producto que ha escaneado no existe aun en Open Food Facts. ¿Quiere añadirlo?</string>
   <string name="txtDialogsContentPowerMode">El producto que has escaneado ya existe en Open Food Facts.</string>
   <string name="txtDialogsContentSend">¿Desea enviar los productos guardados a la base de datos?</string>
   <string name="txtYes">Sí</string>
@@ -186,12 +185,10 @@
   <string name="txt_product_not_found">No se han encontrado productos</string>
   <string name="delete_txt">Eliminar</string>
   <string name="sign_in_drawer">Acceder</string>
-  <string name="alert_drawer">Alerta de Alérgeno</string>
   <string name="warning_allergens">Contiene alérgenos</string>
   <string name="title_dialog_alert">Añadir alerta</string>
   <string name="warning_alert_data">Tu información sobre alergias no debería de ser enviada a los servidores de Open Food Facts. Además, toma en cuenta que la información mostrada puede no ser precisa ¡Por favor verifícalo por tu cuenta!</string>
   <string name="from_gallery">Desde la galería</string>
-  <string name="product_sent">¡Producto Enviado!</string>
   <string name="action_edit_product">Editar producto</string>
   <string name="title_info_dialog">Información</string>
   <string name="text_offline_info_dialog">Puedes escanear productos cuando estas desconectado para agregarlos a Open Food Facts después. Todos los productos que escanees aparecerán aquí, y vas a ser capaz de enviarlos con el botón de abajo.</string>
@@ -209,7 +206,6 @@
   <string name="prefs_scan_startup">Escanear al arrancar</string>
   <string name="prefs_scan_startup_summary">Si esta opción es seleccionada el escaneo iniciará cuando se abre la app.</string>
   <string name="prefs_power_mode">Escaneado avanzado</string>
-  <string name="prefs_power_mode_summary">Escanea productos rápidamente en un supermercado para ver cuales no están registrados en la base de datos.</string>
   <string name="prefs_language">Idioma</string>
   <string name="prefs_language_summary">Cambiar idioma</string>
   <string name="scan_history_drawer">Historia</string>

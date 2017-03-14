@@ -132,7 +132,6 @@
   <string name="txtInfoLoginOk">Utente salvato</string>
   <string name="txtInfoLoginNo">Utente non salvato</string>
   <string name="txtDialogsTitle">Informazioni</string>
-  <string name="txtDialogsContent">Il prodotto che hai scansionato non esiste ancora su Open Food Facts. Vuoi aggiungerlo?</string>
   <string name="txtDialogsContentPowerMode">Il prodotto scannerizzato esiste già in Open Food Facts</string>
   <string name="txtDialogsContentSend">Vuoi inviare i prodotti salvati al database?</string>
   <string name="txtYes">Sì</string>

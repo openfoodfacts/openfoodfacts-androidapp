@@ -124,6 +124,10 @@
   <string name="txtSignIn">साइन इन करें</string>
   <string name="txtUser">उपयोगकर्ता पैनल</string>
   <string name="txtToastSaved">"उपयोगकर्ता की जानकारी  सेव है"</string>
+  <string name="txtSalt">नमक</string>
+  <string name="txtFat">वसा</string>
+  <string name="txtSugars">शुगर्स</string>
+  <string name="txtSaturatedFat">संतृप्त वसा</string>
   <string name="hintBarcode">बारकोड</string>
   <string name="hintLogin">लॉगिन</string>
   <string name="hintPass">पासवर्ड</string>
@@ -132,7 +136,6 @@
   <string name="txtInfoLoginOk">"उपयोगकर्ता की जानकारी  सेव है"</string>
   <string name="txtInfoLoginNo">"उपयोगकर्ता की जानकारी  सेव नहीं `है"</string>
   <string name="txtDialogsTitle">जानकारी</string>
-  <string name="txtDialogsContent">उत्पाद जो आपने स्कैन किया वो Open Food Facts में मौजूद नहीं है। क्या आप इसे जोड़नेना चाहते हैं?</string>
   <string name="txtDialogsContentSend">"क्या आप डेटाबेस  में  सेव केोये  उत्पादों को भेजना चाहते हैं?"</string>
   <string name="txtYes">हाँ</string>
   <string name="txtNo">नहीं</string>
@@ -246,4 +249,20 @@
   <string name="logout_drawer">लॉग आउट करें</string>
   <string name="contribution_without_account">आप साइन-इन कर सकते हैं या अपने योगदान रखने के लिए एक खाता बनाने\nप्रसंग:</string>
   <string name="textCarbonFootprint">"कार्बन पदचिह्न / CO2 उत्सर्जन: "</string>
+  <string name="action_search">ढूंढें</string>
+  <string name="txt_no_results">कोई परिणाम नहीं मिला</string>
+  <string name="nutrition_calcium">केल्शियम</string>
+  <string name="nutrition_potassium">पोटेशियम</string>
+  <string name="nutrition_magnesium">मैग्नीशियम</string>
+  <string name="potassium">पोटेशियम</string>
+  <string name="calcium">केल्शियम</string>
+  <string name="phosphorus">फॉस्फोरस</string>
+  <string name="iron">लोहा</string>
+  <string name="magnesium">मैग्नीशियम</string>
+  <string name="zinc">ज़िंक</string>
+  <string name="copper">तांबा</string>
+  <string name="manganese">मैंगनीज़</string>
+  <string name="selenium">सेलेनियम</string>
+  <string name="molybdenum">मॉलीब्डेनम</string>
+  <string name="iodine">आयोडीन</string>
 </resources>

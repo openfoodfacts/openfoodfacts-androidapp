@@ -122,7 +122,6 @@
   <string name="txtInfoLoginOk">Utilizador guardado</string>
   <string name="txtInfoLoginNo">Utilizador não foi guardado</string>
   <string name="txtDialogsTitle">Informação</string>
-  <string name="txtDialogsContent">O produto que pesquisa não consta na nossa base de dados. Deseja adiciona-lo ?</string>
   <string name="txtYes">Sim</string>
   <string name="txtNo">Não</string>
   <string name="hintNameProduct">Nome</string>
