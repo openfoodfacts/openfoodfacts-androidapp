@@ -6,17 +6,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  openfoodfacts\n"
+"Project-Id-Version: openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-03-13 19:23+0100\n"
-"PO-Revision-Date: 2016-12-30 14:06+0000\n"
+"PO-Revision-Date: 2017-02-01 16:10+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
-"Language: fi\n"
 "Language-Team: Finnish <fi@li.org>\n"
-"Plural-Forms: nplurals=2; plural=((((n == 1)) && ((0 == 0))) ? 0 : 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-03-14 08:20+0000\n"
+"X-Generator: Launchpad (build 18331)\n"
+"Language: fi\n"
 "Generated-By: Babel 2.3.3\n"
 
 msgctxt "app_name"
@@ -25,7 +26,7 @@ msgstr "Open Food"
 
 msgctxt "hello_world"
 msgid "Hello world!"
-msgstr ""
+msgstr "Terve maailma!"
 
 msgctxt "action_settings"
 msgid "Settings"
@@ -519,8 +520,8 @@ msgstr ""
 msgctxt "txtHome"
 msgid ""
 "Open Food Facts is a open database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find"
-" on product labels."
+"allergens, nutrition facts and all the tidbits of information we can find on "
+"product labels."
 msgstr ""
 
 msgctxt "txtSave"
@@ -572,7 +573,8 @@ msgid "Login or password error"
 msgstr ""
 
 msgctxt "errorWeb"
-msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgid ""
+"We were not able to access the internet. Do you have connectivity issues?"
 msgstr ""
 
 msgctxt "txtInfoLoginOk"
@@ -587,11 +589,9 @@ msgctxt "txtDialogsTitle"
 msgid "Information"
 msgstr ""
 
-#, fuzzy
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Please add"
-" it."
+"The product you scanned does not exist yet in Open Food Facts. Please add it."
 msgstr ""
 
 msgctxt "txtDialogsContentPowerMode"
@@ -675,7 +675,8 @@ msgid "Do you want to delete this draft?"
 msgstr "Haluatko poistaa tämän luonnoksen?"
 
 msgctxt "txtDialogsContentInfoSave"
-msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgid ""
+"The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
 
 msgctxt "txtBarcodeRequire"
@@ -692,8 +693,8 @@ msgstr ""
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative "
-"Commons Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
 msgstr ""
 
 msgctxt "txtAllsent"
@@ -772,7 +773,6 @@ msgctxt "sign_in_drawer"
 msgid "Sign-in"
 msgstr "Kirjaudu sisään"
 
-#, fuzzy
 msgctxt "alert_drawer"
 msgid "Allergen alert"
 msgstr ""
@@ -787,16 +787,14 @@ msgstr ""
 
 msgctxt "warning_alert_data"
 msgid ""
-"Your allergies info will never be sent to the Open Food Facts server. "
-"Also, be careful that data may not be accurate, please double-check by "
-"yourself!"
+"Your allergies info will never be sent to the Open Food Facts server. Also, "
+"be careful that data may not be accurate, please double-check by yourself!"
 msgstr ""
 
 msgctxt "from_gallery"
 msgid "From gallery"
 msgstr "Galleriasta"
 
-#, fuzzy
 msgctxt "product_sent"
 msgid "Product sent successfully"
 msgstr ""
@@ -850,8 +848,8 @@ msgstr ""
 
 msgctxt "new_offline_info"
 msgid ""
-"Please take a picture of the product, ingredients, nutrition facts table "
-"and any other information on the label. Thank you!"
+"Please take a picture of the product, ingredients, nutrition facts table and "
+"any other information on the label. Thank you!"
 msgstr ""
 
 #. Strings related to login
@@ -879,7 +877,6 @@ msgctxt "prefs_power_mode"
 msgid "Power mode scan"
 msgstr ""
 
-#, fuzzy
 msgctxt "prefs_power_mode_summary"
 msgid ""
 "Quickly scan products in a supermarket to see which ones are not in the "
@@ -1307,27 +1304,27 @@ msgstr ""
 
 msgctxt "manganese"
 msgid "Manganese"
-msgstr ""
+msgstr "Mangaani"
 
 msgctxt "fluoride"
 msgid "Fluoride"
-msgstr ""
+msgstr "Fluoridi"
 
 msgctxt "selenium"
 msgid "Selenium"
-msgstr ""
+msgstr "Seleeni"
 
 msgctxt "chromium"
 msgid "Chromium"
-msgstr ""
+msgstr "Kromi"
 
 msgctxt "molybdenum"
 msgid "Molybdenum"
-msgstr ""
+msgstr "Molybdeeni"
 
 msgctxt "iodine"
 msgid "Iodine"
-msgstr ""
+msgstr "Jodi"
 
 msgctxt "caffeine"
 msgid "Caffeine"
@@ -1335,7 +1332,7 @@ msgstr ""
 
 msgctxt "taurine"
 msgid "Taurine"
-msgstr ""
+msgstr "Tauriini"
 
 msgctxt "ph"
 msgid "Ph"
@@ -1372,4 +1369,3 @@ msgstr ""
 msgctxt "take_more_pictures"
 msgid "Take more pictures"
 msgstr ""
-
