@@ -61,10 +61,16 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         Nutriments nutriments = product.getNutriments();
 
         NutrientLevels nutrientLevels = product.getNutrientLevels();
-        NutrimentLevel fat = nutrientLevels.getFat();
-        NutrimentLevel saturatedFat = nutrientLevels.getSaturatedFat();
-        NutrimentLevel sugars = nutrientLevels.getSugars();
-        NutrimentLevel salt = nutrientLevels.getSalt();
+        NutrimentLevel fat = null;
+        NutrimentLevel saturatedFat = null;
+        NutrimentLevel sugars = null;
+        NutrimentLevel salt = null;
+        if(nutrientLevels != null) {
+            fat = nutrientLevels.getFat();
+            saturatedFat = nutrientLevels.getSaturatedFat();
+            sugars = nutrientLevels.getSugars();
+            salt = nutrientLevels.getSalt();
+        }
 
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
             levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), "", "", R.drawable.error_image));
