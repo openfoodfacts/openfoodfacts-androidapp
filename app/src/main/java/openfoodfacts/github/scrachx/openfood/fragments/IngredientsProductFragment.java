@@ -144,7 +144,7 @@ public class IngredientsProductFragment extends BaseFragment {
             additiveProduct.append(" ");
 
             for (String tag : product.getAdditivesTags()) {
-                String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "");
+                String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "").toUpperCase();
                 additiveProduct.append(getSpanTag(tagWithoutLocale, view));
             }
         } else {
