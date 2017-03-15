@@ -176,9 +176,9 @@
   <string name="home_drawer">Home</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="search_drawer">Search</string>
-  <string name="search_by_barcode_drawer">Search by barcode</string>
+  <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="search_by_name_drawer">Search by name</string>
-  <string name="scan_search">Scan</string>
+  <string name="scan_search">Scan barcode</string>
   <string name="user_drawer">User</string>
   <string name="offline_edit_drawer">Offline edit</string>
   <string name="txt_anonymous">Anonymous</string>
