@@ -151,8 +151,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .addDrawerItems(
                     new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(1),
                     new SectionDrawerItem().withName(R.string.search_drawer),
-                    new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(2),
-                    new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(GoogleMaterial.Icon.gmd_camera_alt).withIdentifier(4),
+                    new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(2),
+                    new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(4),
                     new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(5),
                     new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
                     new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(CONTRIBUTOR),
