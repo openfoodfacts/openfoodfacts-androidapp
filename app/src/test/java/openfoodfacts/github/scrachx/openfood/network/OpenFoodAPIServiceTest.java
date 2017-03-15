@@ -7,11 +7,14 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
@@ -202,11 +205,18 @@ public class OpenFoodAPIServiceTest {
     @Test
     public void saveImage_noImageFile_ko() throws IOException {
 
-        File outputFile = File.createTempFile("prefix", "png", new File("/tmp"));
+        File outputFile = File.createTempFile("prefix", "png", new File("/"));
 
         ProductImage image = new ProductImage("01010101010101", ProductImageField.FRONT, outputFile);
+        Map<String, RequestBody> imgMap = new HashMap<>();
+        imgMap.put("code", image.getCode());
+        imgMap.put("imagefield", image.getField());
+        imgMap.put("imgupload_front\"; filename=\"front_fr.png\"", image.getImguploadFront());
+        imgMap.put("imgupload_ingredients\"; filename=\"ingredients_fr.png\"", image.getImguploadIngredients());
+        imgMap.put("imgupload_nutrition\"; filename=\"nutrition_fr.png\"", image.getImguploadNutrition());
+        imgMap.put("imgupload_other\"; filename=\"other_fr.png\"", image.getImguploadOther());
 
-        Response<JsonNode> response = serviceWrite.saveImage(image.getCode(), image.getField(), image.getImguploadFront(), image.getImguploadIngredients(), image.getImguploadNutrition()).execute();
+        Response<JsonNode> response = serviceWrite.saveImage(imgMap).execute();
 
         assertTrue(response.isSuccess());
 
@@ -223,9 +233,10 @@ public class OpenFoodAPIServiceTest {
         product.setBrands("auchan");
         product.setWeight("300");
         product.setWeight_unit("g");
+        product.setLang("fr");
 
 //        Response<State> execute = serviceWrite.saveProduct(product).execute();
-        Response<State> execute = serviceWrite.saveProduct(product.getBarcode(), product.getName(), product.getBrands(), product.getQuantity(), null, null, PRODUCT_API_COMMENT).execute();
+        Response<State> execute = serviceWrite.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), null, null, PRODUCT_API_COMMENT).execute();
 
         assertTrue(execute.isSuccess());
 
