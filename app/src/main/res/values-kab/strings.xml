@@ -60,36 +60,43 @@
     <item>Taspanit</item>
     <item>Tatelyanit</item>
     <item>Talmanit</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
+    <item>Tajapunit</item>
+    <item>Tarusit</item>
+    <item>Tapurtugit</item>
+    <item>Taswidit</item>
+    <item>Tabirmanit</item>
+    <item>Takazaxt</item>
+    <item>Taṛminit</item>
+    <item>Tagrigit</item>
+    <item>Taɛebrit</item>
     <item>Galician</item>
-    <item>Catalan</item>
-    <item>Czech</item>
-    <item>Arabic</item>
-    <item>Finnish</item>
-    <item>Hindi</item>
-    <item>Kabyle</item>
-    <item>Korean</item>
-    <item>Latvian</item>
-    <item>Dutch</item>
+    <item>Takaṭalant</item>
+    <item>Tačikit</item>
+    <item>Taɛrabt</item>
+    <item>Tafinit</item>
+    <item>Tahendit</item>
+    <item>Taqbaylit</item>
+    <item>Takurit</item>
+    <item>Taliṭunit</item>
+    <item>Tahulandit</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
-    <item>Swedish</item>
-    <item>Chinese</item>
+    <item>Tarumanit</item>
+    <item>Taswidit</item>
+    <item>Tacinwat</item>
     <item>Norwegian (Bokmal)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>Tadanit</item>
+    <item>Tacinit taḥerfit</item>
   </string-array>
   <string-array name="images_array">
-    <item>Default</item>
+    <item>Amezwer</item>
     <item>Nutrition</item>
     <item>Isufar</item>
   </string-array>
+  <string name="search_button">Nadi</string>
+  <string name="no_products">Ulac ifarisen</string>
+  <string name="alert_dialog_warning_title">ɣuṛ-k</string>
+  <string name="toast_retrieving">Asali...</string>
+  <string name="txtBarcode">Tangalt s ifeggagen:</string>
+  <string name="txtBrands">Ticrad:</string>
+  <string name="txtCategories">Taggayin:</string>
 </resources>
