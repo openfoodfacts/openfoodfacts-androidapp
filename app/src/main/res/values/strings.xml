@@ -1,6 +1,5 @@
 <resources>
 
-    <string name="app_name">Open Food</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="action_about">About</string>
@@ -136,7 +135,6 @@
     <string name="txtLogin">Login :</string>
     <string name="txtPass">Password :</string>
     <string name="txtTitleHome">Open your food and know what you eat</string>
-    <string name="txtHome">Open Food Facts is a open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
     <string name="txtSave">Save</string>
     <string name="txtSignIn">Sign in</string>
     <string name="txtUser">User panel</string>
@@ -188,6 +186,7 @@
     <string name="create_account">Sign up</string>
     <string name="home_drawer">Home</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
+    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Search</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
     <string name="search_by_name_drawer">Search by name</string>
@@ -240,11 +239,6 @@
     <string name="prefs_language">Language</string>
     <string name="prefs_language_summary">Change language</string>
 
-    <!--API URL-->
-    <string name="openfoodUrl" translatable="false">https://ssl-api.openfoodfacts.org</string>
-
-    <!-- Open Beauty App -->
-    <string name="openBeautyApp" translatable="false">org.openbeautyfacts.scanner</string>
     <string name="scan_history_drawer">History</string>
     <string name="clear_history">Clear history</string>
     <string name="title_clear_history_dialog">Clear</string>
@@ -286,18 +280,7 @@
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
     <string name="action_contributes">Your contributions</string>
-    <!-- website translated pages -->
 
-    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
-    <string name="website">https://world.openfoodfacts.org/</string>
-    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
-    <string name="website_contribute">https://world.openfoodfacts.org/contribute</string>
-    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir -->
-    <string name="website_discover">https://world.openfoodfacts.org/discover</string>
-    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
-    <string name="website_product">https://world.openfoodfacts.org/product/</string>
-    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="logout_drawer">Logout</string>
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>

@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragment;
@@ -123,8 +124,10 @@ public class ProductActivity extends BaseActivity {
         ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
         adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
         adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
-        adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
-        adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
+        if(BuildConfig.FLAVOR.equals("off")) {
+            adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
+            adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
+        }
         viewPager.setAdapter(adapterResult);
     }
 

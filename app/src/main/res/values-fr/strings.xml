@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="app_name">Open Food</string>
   <string name="hello_world">Coucou all!</string>
   <string name="action_settings">Paramètres</string>
   <string name="action_about">À propos</string>
@@ -124,7 +123,6 @@
   <string name="txtLogin">Identifiant :</string>
   <string name="txtPass">Mot de passe :</string>
   <string name="txtTitleHome">Ouvrez votre nourriture pour savoir ce que vous mangez</string>
-  <string name="txtHome">Open Food Facts est une base de données ouverte de produits alimentaires contenant les ingrédients, les allergènes, les informations nutritionnelles et toutes les bribes d\'informations que nous pouvons trouver sur les étiquettes des produits.</string>
   <string name="txtSave">Enregistrer</string>
   <string name="txtSignIn">Se connecter</string>
   <string name="txtUser">Panneau utilisateur</string>
@@ -251,11 +249,6 @@
   <string name="nutriment_serving_size">Par portion :</string>
   <string name="action_manage_account">Gérer votre compte</string>
   <string name="action_contributes">Vos contributions</string>
-  <string name="website">https://world-fr.openfoodfacts.org/</string>
-  <string name="website_contribute">https://world-fr.openfoodfacts.org/contribuer</string>
-  <string name="website_discover">https://world-fr.openfoodfacts.org/decouvrir</string>
-  <string name="website_product">https://world-fr.openfoodfacts.org/produit/</string>
-  <string name="website_contributor">https://world-fr.openfoodfacts.org/contributeur/</string>
   <string name="logout_drawer">Se déconnecter</string>
   <string name="contribution_without_account">Vous pouvez vous connecter ou créer un compte pour conserver vos contributions</string>
   <string name="textCarbonFootprint">"Empreinte carbone / émissions de CO2: "</string>

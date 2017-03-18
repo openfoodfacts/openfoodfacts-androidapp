@@ -7,6 +7,7 @@ import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.database.DatabaseOpenHelper;
 import org.greenrobot.greendao.query.QueryBuilder;
 
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
@@ -22,7 +23,13 @@ public class OFFApplication extends Application {
 
         // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
         // Use only during production: DatabaseHelper (see on Upgrade!)
-        DatabaseHelper helper = new DatabaseHelper(this, "open_food_facts");
+        String nameDB = "";
+        if((BuildConfig.FLAVOR.equals("off"))) {
+            nameDB = "open_food_facts";
+        } else {
+            nameDB = "open_beauty_facts";
+        }
+        DatabaseHelper helper = new DatabaseHelper(this, nameDB);
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
 

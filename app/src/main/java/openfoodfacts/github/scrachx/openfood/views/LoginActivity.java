@@ -24,6 +24,7 @@ import java.net.HttpCookie;
 import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.ResponseBody;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -80,7 +81,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         }
 
         apiClient = new Retrofit.Builder()
-                .baseUrl(this.getString(R.string.openfoodUrl))
+                .baseUrl(BuildConfig.HOST)
                 .build()
                 .create(OpenFoodAPIService.class);
     }

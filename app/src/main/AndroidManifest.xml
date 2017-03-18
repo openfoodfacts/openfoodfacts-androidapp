@@ -46,6 +46,7 @@
         <activity
             android:name=".views.ProductActivity"
             android:screenOrientation="portrait"
+            android:parentActivityName=".views.MainActivity"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -54,10 +55,12 @@
         <activity android:name=".views.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
+                android:parentActivityName=".views.MainActivity"
                 android:value=".views.MainActivity" />
         </activity>
         <activity
             android:name=".views.SaveProductOfflineActivity"
+            android:parentActivityName=".views.MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -69,6 +72,7 @@
         <activity
             android:name=".views.HistoryScanActivity"
             android:screenOrientation="portrait"
+            android:parentActivityName=".views.MainActivity"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

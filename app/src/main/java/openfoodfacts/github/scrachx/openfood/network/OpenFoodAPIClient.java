@@ -33,6 +33,7 @@ import java.util.concurrent.TimeUnit;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
 import openfoodfacts.github.scrachx.openfood.models.AllergenRestResponse;
@@ -73,7 +74,7 @@ public class OpenFoodAPIClient {
     private final OpenFoodAPIService apiService;
 
     public OpenFoodAPIClient(Activity activity) {
-        this(activity.getString(R.string.openfoodUrl));
+        this(BuildConfig.HOST);
         mAllergenDao = Utils.getAppDaoSession(activity).getAllergenDao();
         mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
     }

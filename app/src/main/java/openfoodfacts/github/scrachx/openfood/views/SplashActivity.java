@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Locale;
 
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
@@ -38,29 +39,38 @@ public class SplashActivity extends BaseActivity {
         settings = getSharedPreferences("prefs", 0);
         mAdditiveDao = Utils.getAppDaoSession(this).getAdditiveDao();
 
-        boolean firstRun = settings.getBoolean("firstRun", true);
+        if((BuildConfig.FLAVOR.equals("off"))) {
+            boolean firstRun = settings.getBoolean("firstRun", true);
 
-        boolean errorAdditives = settings.getBoolean("errorAdditives", true);
-        boolean errorAllergens = settings.getBoolean("errorAllergens", true);
+            boolean errorAdditives = settings.getBoolean("errorAdditives", true);
+            boolean errorAllergens = settings.getBoolean("errorAllergens", true);
 
-        if(!errorAdditives && !errorAllergens) {
-            settings.edit()
-                    .putBoolean("firstRun", false)
-                    .apply();
-            firstRun = false;
-        }
+            if(!errorAdditives && !errorAllergens) {
+                settings.edit()
+                        .putBoolean("firstRun", false)
+                        .apply();
+                firstRun = false;
+            }
 
-        if (!firstRun) {
-            EasyImage.configuration(this)
-                    .setImagesFolderName("OFF_Images")
-                    .saveInAppExternalFilesDir()
-                    .setCopyExistingPicturesToPublicLocation(true);
-            Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-            startActivity(mainIntent);
-            finish();
+            if (!firstRun) {
+                launchMainActivity();
+            } else {
+                new GetJson(this).execute();
+            }
         } else {
-            new GetJson(this).execute();
+            launchMainActivity();
         }
+
+    }
+
+    private void launchMainActivity() {
+        EasyImage.configuration(this)
+                .setImagesFolderName("OFF_Images")
+                .saveInAppExternalFilesDir()
+                .setCopyExistingPicturesToPublicLocation(true);
+        Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+        startActivity(mainIntent);
+        finish();
     }
 
     private class GetJson extends AsyncTask<Void, Integer, Boolean> {
