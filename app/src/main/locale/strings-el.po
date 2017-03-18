@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-03-13 19:23+0100\n"
+"POT-Creation-Date: 2017-03-18 23:17+0100\n"
 "PO-Revision-Date: 2016-12-30 13:51+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: el\n"
@@ -18,10 +18,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.3\n"
-
-msgctxt "app_name"
-msgid "Open Food"
-msgstr "Open Food"
 
 msgctxt "hello_world"
 msgid "Hello world!"
@@ -516,13 +512,6 @@ msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
 msgstr ""
 
-msgctxt "txtHome"
-msgid ""
-"Open Food Facts is a open database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find"
-" on product labels."
-msgstr ""
-
 msgctxt "txtSave"
 msgid "Save"
 msgstr ""
@@ -732,20 +721,26 @@ msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
 msgstr "Open Beauty Facts"
 
+msgctxt "open_food_drawer"
+msgid "Open Food Facts"
+msgstr ""
+
 msgctxt "search_drawer"
 msgid "Search"
 msgstr ""
 
+#, fuzzy
 msgctxt "search_by_barcode_drawer"
-msgid "Search by barcode"
+msgid "Type barcode"
 msgstr ""
 
 msgctxt "search_by_name_drawer"
 msgid "Search by name"
 msgstr ""
 
+#, fuzzy
 msgctxt "scan_search"
-msgid "Scan"
+msgid "Scan Barcode"
 msgstr ""
 
 msgctxt "user_drawer"
@@ -1049,32 +1044,6 @@ msgstr "Διαχείριση λογαριασμού"
 
 msgctxt "action_contributes"
 msgid "Your contributions"
-msgstr ""
-
-#. website translated pages
-#. For fr, Replace by https://world-fr.openfoodfacts.org/
-msgctxt "website"
-msgid "https://world.openfoodfacts.org/"
-msgstr ""
-
-#. For fr, Replace by https://world-fr.openfoodfacts.org/contribuer
-msgctxt "website_contribute"
-msgid "https://world.openfoodfacts.org/contribute"
-msgstr ""
-
-#. For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir
-msgctxt "website_discover"
-msgid "https://world.openfoodfacts.org/discover"
-msgstr ""
-
-#. For fr, Replace by https://world-fr.openfoodfacts.org/produit/
-msgctxt "website_product"
-msgid "https://world.openfoodfacts.org/product/"
-msgstr ""
-
-#. For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/
-msgctxt "website_contributor"
-msgid "https://world.openfoodfacts.org/contributor/"
 msgstr ""
 
 msgctxt "logout_drawer"

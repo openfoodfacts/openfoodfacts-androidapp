@@ -1,25 +1,27 @@
 # Serbian translation for openfoodfacts
 # Copyright (c) 2017 Rosetta Contributors and Canonical Ltd 2017
-# This file is distributed under the same license as the openfoodfacts package.
+# This file is distributed under the same license as the openfoodfacts
+# package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: openfoodfacts\n"
+"Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-03-13 19:23+0100\n"
+"POT-Creation-Date: 2017-03-18 23:17+0100\n"
 "PO-Revision-Date: 2017-03-13 21:45+0000\n"
 "Last-Translator: milanche <Unknown>\n"
+"Language: sr\n"
 "Language-Team: Serbian <sr@li.org>\n"
+"Plural-Forms: nplurals=3; plural=((((((0 == 0)) && (((n % 10) >= 2 && (n "
+"% 10) <= 4))) && (!(((n % 100) >= 12 && (n % 100) <= 14)))) || ((((0 % "
+"10) >= 2 && (0 % 10) <= 4)) && (!(((0 % 100) >= 12 && (0 % 100) <= "
+"14))))) ? 1 : (((((0 == 0)) && (((n % 10) == 1))) && (!(((n % 100) == "
+"11)))) || ((((0 % 10) == 1)) && (!(((0 % 100) == 11))))) ? 0 : 2)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-03-14 08:20+0000\n"
-"X-Generator: Launchpad (build 18331)\n"
-
-msgctxt "app_name"
-msgid "Open Food"
-msgstr "Open Food"
+"Generated-By: Babel 2.3.3\n"
 
 msgctxt "hello_world"
 msgid "Hello world!"
@@ -404,8 +406,7 @@ msgstr "Upozorenje"
 
 msgctxt "alert_dialog_warning_msg_user"
 msgid "User/password has changed, please update information"
-msgstr ""
-"Korisničko ime/lozinka je promenjena, molimo vas da ažurirate infromacije."
+msgstr "Korisničko ime/lozinka je promenjena, molimo vas da ažurirate infromacije."
 
 msgctxt "alert_dialog_product_error_msg"
 msgid "Product not found, please try again"
@@ -515,13 +516,6 @@ msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
 msgstr "Oslobodi svoju hranu i saznaj šta jedeš"
 
-msgctxt "txtHome"
-msgid ""
-"Open Food Facts is a open database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find on "
-"product labels."
-msgstr ""
-
 msgctxt "txtSave"
 msgid "Save"
 msgstr "Sačuvaj"
@@ -571,10 +565,10 @@ msgid "Login or password error"
 msgstr "Korisničko ime ili lozinka greška"
 
 msgctxt "errorWeb"
-msgid ""
-"We were not able to access the internet. Do you have connectivity issues?"
+msgid "We were not able to access the internet. Do you have connectivity issues?"
 msgstr ""
-"Nismo uspeli da se povežemo na internet. Da li imate problema sa konekcijom?"
+"Nismo uspeli da se povežemo na internet. Da li imate problema sa "
+"konekcijom?"
 
 msgctxt "txtInfoLoginOk"
 msgid "User saved"
@@ -590,10 +584,11 @@ msgstr "Informacija"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Please add it."
+"The product you scanned does not exist yet in Open Food Facts. Please add"
+" it."
 msgstr ""
-"Proizvod koji ste skenirali ne postoji u bazi Open Food Facts. Molimo Vas da "
-"ga dodate."
+"Proizvod koji ste skenirali ne postoji u bazi Open Food Facts. Molimo Vas"
+" da ga dodate."
 
 msgctxt "txtDialogsContentPowerMode"
 msgid "The product you scanned does already exist in Open Food Facts."
@@ -676,8 +671,7 @@ msgid "Do you want to delete this draft?"
 msgstr ""
 
 msgctxt "txtDialogsContentInfoSave"
-msgid ""
-"The product is saved locally, you can edit it in the Offline Edit menu"
+msgid "The product is saved locally, you can edit it in the Offline Edit menu"
 msgstr ""
 
 msgctxt "txtBarcodeRequire"
@@ -694,8 +688,8 @@ msgstr ""
 
 msgctxt "txtAbout"
 msgid ""
-"The pictures you send are published under the free licence Creative Commons "
-"Attribution and ShareAlike."
+"The pictures you send are published under the free licence Creative "
+"Commons Attribution and ShareAlike."
 msgstr ""
 
 msgctxt "txtAllsent"
@@ -734,20 +728,26 @@ msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
 msgstr "Open Beauty Facts"
 
+msgctxt "open_food_drawer"
+msgid "Open Food Facts"
+msgstr ""
+
 msgctxt "search_drawer"
 msgid "Search"
 msgstr "Pretraži"
 
+#, fuzzy
 msgctxt "search_by_barcode_drawer"
-msgid "Search by barcode"
+msgid "Type barcode"
 msgstr "Pretraži po barkodu"
 
 msgctxt "search_by_name_drawer"
 msgid "Search by name"
 msgstr "Pretraži po imenu"
 
+#, fuzzy
 msgctxt "scan_search"
-msgid "Scan"
+msgid "Scan Barcode"
 msgstr "Skeniraj"
 
 msgctxt "user_drawer"
@@ -788,12 +788,13 @@ msgstr "Dodaj alarm"
 
 msgctxt "warning_alert_data"
 msgid ""
-"Your allergies info will never be sent to the Open Food Facts server. Also, "
-"be careful that data may not be accurate, please double-check by yourself!"
+"Your allergies info will never be sent to the Open Food Facts server. "
+"Also, be careful that data may not be accurate, please double-check by "
+"yourself!"
 msgstr ""
-"Vaše informacije o alergijama nikada neće biti poslate na Open Food Facts "
-"server. Takođe, budite oprezni jer je moguće da podaci nisu tačni, molimo "
-"vas da proverite sami!"
+"Vaše informacije o alergijama nikada neće biti poslate na Open Food Facts"
+" server. Takođe, budite oprezni jer je moguće da podaci nisu tačni, "
+"molimo vas da proverite sami!"
 
 msgctxt "from_gallery"
 msgid "From gallery"
@@ -817,9 +818,10 @@ msgid ""
 "later. All the products you scan will appear here, and you'll be able to "
 "send them using the button below."
 msgstr ""
-"Možete skenirati proizvode i kada niste povezani na internet kako biste ih "
-"dodali kasnije na Open Food Facts. Svi proizvodi koje skenirate pojaviće se "
-"ovde, i bićete u mogućnosti da ih pošaljete pritiskom na dugme ispod."
+"Možete skenirati proizvode i kada niste povezani na internet kako biste "
+"ih dodali kasnije na Open Food Facts. Svi proizvodi koje skenirate "
+"pojaviće se ovde, i bićete u mogućnosti da ih pošaljete pritiskom na "
+"dugme ispod."
 
 msgctxt "permission_camera"
 msgid "Camera permission is needed to scan barcodes and take pictures."
@@ -855,8 +857,8 @@ msgstr ""
 
 msgctxt "new_offline_info"
 msgid ""
-"Please take a picture of the product, ingredients, nutrition facts table and "
-"any other information on the label. Thank you!"
+"Please take a picture of the product, ingredients, nutrition facts table "
+"and any other information on the label. Thank you!"
 msgstr ""
 
 #. Strings related to login
@@ -888,8 +890,7 @@ msgctxt "prefs_power_mode_summary"
 msgid ""
 "Quickly scan products in a supermarket to see which ones are not in the "
 "database."
-msgstr ""
-"Brzo skeniranje proizvoda u prodavnici da biste videli koji nisu u bazi."
+msgstr "Brzo skeniranje proizvoda u prodavnici da biste videli koji nisu u bazi."
 
 msgctxt "prefs_language"
 msgid "Language"
@@ -1054,32 +1055,6 @@ msgstr ""
 
 msgctxt "action_contributes"
 msgid "Your contributions"
-msgstr ""
-
-#. website translated pages
-#. For fr, Replace by https://world-fr.openfoodfacts.org/
-msgctxt "website"
-msgid "https://world.openfoodfacts.org/"
-msgstr ""
-
-#. For fr, Replace by https://world-fr.openfoodfacts.org/contribuer
-msgctxt "website_contribute"
-msgid "https://world.openfoodfacts.org/contribute"
-msgstr ""
-
-#. For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir
-msgctxt "website_discover"
-msgid "https://world.openfoodfacts.org/discover"
-msgstr ""
-
-#. For fr, Replace by https://world-fr.openfoodfacts.org/produit/
-msgctxt "website_product"
-msgid "https://world.openfoodfacts.org/product/"
-msgstr ""
-
-#. For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/
-msgctxt "website_contributor"
-msgid "https://world.openfoodfacts.org/contributor/"
 msgstr ""
 
 msgctxt "logout_drawer"
@@ -1377,3 +1352,4 @@ msgstr ""
 msgctxt "take_more_pictures"
 msgid "Take more pictures"
 msgstr ""
+
