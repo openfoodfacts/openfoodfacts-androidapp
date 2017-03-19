@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-03-18 23:17+0100\n"
+"POT-Creation-Date: 2017-03-19 18:47+0100\n"
 "PO-Revision-Date: 2016-12-30 13:49+0000\n"
 "Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language: ko\n"
@@ -91,6 +91,16 @@ msgstr "l"
 msgctxt "units_array:4"
 msgid "ml"
 msgstr "ml"
+
+#. Text units
+msgctxt "units_array:5"
+msgid "cl"
+msgstr ""
+
+#. Text units
+msgctxt "units_array:6"
+msgid "fl oz"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:0"
