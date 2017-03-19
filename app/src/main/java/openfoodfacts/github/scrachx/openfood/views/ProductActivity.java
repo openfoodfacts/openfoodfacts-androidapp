@@ -1,12 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
@@ -26,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
@@ -52,6 +56,8 @@ public class ProductActivity extends BaseActivity {
     @BindView(R.id.pager) ViewPager viewPager;
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.tabs) TabLayout tabLayout;
+    @BindView(R.id.buttonScan)
+    FloatingActionButton mButtonScan;
     private ShareActionProvider mShareActionProvider;
     private State mState;
     private AllergenDao mAllergenDao;
@@ -115,6 +121,24 @@ public class ProductActivity extends BaseActivity {
                             .color(Color.RED)
                             .sizeDp(24))
                     .show();
+        }
+    }
+
+    @OnClick(R.id.buttonScan)
+    protected void OnScan() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                new MaterialDialog.Builder(this)
+                        .title(R.string.action_about)
+                        .content(R.string.permission_camera)
+                        .neutralText(R.string.txtOk)
+                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                        .show();
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+            }
+        } else {
+            finish();
         }
     }
 
