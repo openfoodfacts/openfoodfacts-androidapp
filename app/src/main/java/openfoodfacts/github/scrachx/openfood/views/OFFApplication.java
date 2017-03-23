@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 
 import android.app.Application;
+import android.support.v7.app.AppCompatDelegate;
 
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.database.DatabaseOpenHelper;
@@ -20,6 +21,7 @@ public class OFFApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
         // Use only during production: DatabaseHelper (see on Upgrade!)
