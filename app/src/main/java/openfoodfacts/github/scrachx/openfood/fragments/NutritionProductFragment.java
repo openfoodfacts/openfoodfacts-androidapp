@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
-import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -112,7 +112,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                 levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt), saltValue, saltLocalize, salt.getImageLevel()));
             }
 
-            img.setImageDrawable(VectorDrawableCompat.create(context.getResources(), Utils.getImageGrade(product.getNutritionGradeFr()), null));
+            img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
             img.setOnClickListener(view1 -> {
             CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
