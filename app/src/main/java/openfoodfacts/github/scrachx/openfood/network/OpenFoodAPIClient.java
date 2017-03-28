@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.preference.PreferenceManager;
 import android.text.Html;
 import android.view.View;
@@ -31,6 +30,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -367,6 +367,16 @@ public class OpenFoodAPIClient {
         imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + lang + ".png\"", image.getImguploadIngredients());
         imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + lang + ".png\"", image.getImguploadNutrition());
         imgMap.put("imgupload_other\"; filename=\"other_" + lang + ".png\"", image.getImguploadOther());
+
+        // Attribute the upload to the connected user
+        final SharedPreferences settings = context.getSharedPreferences("login", 0);
+        final String login = settings.getString("user", "");
+        final String password = settings.getString("pass", "");
+
+        if (!login.isEmpty() && !password.isEmpty()) {
+            imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
+            imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
+        }
 
         apiService.saveImage(imgMap)
                 .enqueue(new Callback<JsonNode>() {
