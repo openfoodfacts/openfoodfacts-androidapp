@@ -280,6 +280,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             result.removeItem(7);
             result.updateName(11, new StringHolder(getString(R.string.open_food_drawer)));
         }
+        if(BuildConfig.FLAVOR.equals("opff")) {
+            result.removeItem(7);
+            result.updateName(11, new StringHolder(getString(R.string.open_food_drawer)));
+        }
 
         //if you have many different types of DrawerItems you can magically pre-cache those items to get a better scroll performance
         //make sure to init the cache after the DrawerBuilder was created as this will first clear the cache to make sure no old elements are in

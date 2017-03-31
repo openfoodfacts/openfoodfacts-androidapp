@@ -26,7 +26,12 @@ public class OFFApplication extends Application {
         String nameDB = "";
         if((BuildConfig.FLAVOR.equals("off"))) {
             nameDB = "open_food_facts";
-        } else {
+        } else
+        if((BuildConfig.FLAVOR.equals("opff"))) {
+            nameDB = "open_pet_food_facts";
+        } else
+
+            {
             nameDB = "open_beauty_facts";
         }
         DatabaseHelper helper = new DatabaseHelper(this, nameDB);

@@ -152,6 +152,10 @@ public class ProductActivity extends BaseActivity {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
         }
+        if(BuildConfig.FLAVOR.equals("opff")) {
+            adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
+            adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
+        }
         viewPager.setAdapter(adapterResult);
     }
 
