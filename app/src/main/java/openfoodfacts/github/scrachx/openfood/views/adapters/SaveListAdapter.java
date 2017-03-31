@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,7 @@ public class SaveListAdapter extends BaseAdapter {
 
         SaveItem item = saveItems.get(position);
 
-        imgIcon.setImageResource(item.getIcon());
+        imgIcon.setImageDrawable(VectorDrawableCompat.create(context.getResources(), item.getIcon(), null));
         txtTitle.setText(item.getTitle());
         imgProduct.setImageBitmap(item.getUrl());
         txtBarcode.setText( item.getBarcode());
