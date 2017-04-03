@@ -104,7 +104,9 @@ public class IngredientsProductFragment extends BaseFragment {
         if(mState != null && product.getIngredientsText() != null) {
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_",""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
-            if(!txtIngredients.toString().substring(txtIngredients.toString().indexOf(":")).trim().isEmpty()) {
+            int ingredientsListAt = Math.max(0, txtIngredients.toString().indexOf(":"));
+
+            if(!txtIngredients.toString().substring(ingredientsListAt).trim().isEmpty()) {
                 ingredientsProduct.setText(txtIngredients);
             } else {
                 ingredientsProduct.setVisibility(View.GONE);
