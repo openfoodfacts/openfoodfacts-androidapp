@@ -100,6 +100,7 @@
   <string name="alert_dialog_warning_msg_user">L\'utilisateur ou le mot de passe a changé, veuillez changer ces informations</string>
   <string name="alert_dialog_product_error_msg">Produit non trouvé, veuillez recommencer</string>
   <string name="toast_retrieving">Chargement…</string>
+  <string name="txtGenericName">Nom générique :</string>
   <string name="txtBarcode">Code barre :</string>
   <string name="txtQuantity">Quantité :</string>
   <string name="txtPackaging">Conditionnement :</string>

@@ -112,6 +112,7 @@
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
     <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
     <string name="toast_retrieving">Loading...</string>
+    <string name="txtGenericName">Common name :</string>
     <string name="txtBarcode">Barcode :</string>
     <string name="txtQuantity">Quantity :</string>
     <string name="txtPackaging">Packaging :</string>
