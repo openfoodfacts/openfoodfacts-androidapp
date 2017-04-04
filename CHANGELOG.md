@@ -6,6 +6,16 @@ Upcoming:
 - Fix a crasher on the ingredient list
 - Open Pet Food Facts support. Woof. Woof.
 - You are now properly credited for uploaded images.
+0.7.2 & 0.7.3 & 0.7.4 - 
+- Micro-release to fix 4.0 related bugs.
+0.7.1 - 
+- German, Serbian translations
+- Added support for fl oz and cl units
+- Added the scan button in the product view, for quicker scanning
+- Added support for Open Beauty Facts
+- Provided a rounded icon for Nougat devices which support it
+- Capitalized additives (thanks NasiaKouts :-)
+- Changed menu icons for better legibility (thanks ChasakisD and @mikeh)
 
 0.7 - Mar 12 2017
 - Ability to add more photos to existing products
