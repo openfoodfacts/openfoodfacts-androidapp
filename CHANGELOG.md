@@ -1,7 +1,12 @@
 This is the Changelog. Please list changes here so that we can provide meaningful changelog for the application stores.
 
 Upcoming:
-- 
+- Some languages were not working (eg Brazilian Portuguese). This has been fixed.
+- We now also display the Common name of the product. Nutella in French is also known as "Pâte à tartiner aux noisettes et au cacao"
+- Fix a crasher on the ingredient list
+- Open Pet Food Facts support. Woof. Woof.
+- You are now properly credited for uploaded images.
+
 0.7 - Mar 12 2017
 - Ability to add more photos to existing products
 - Ability to add front, ingredient and nutrition photos to existing products
