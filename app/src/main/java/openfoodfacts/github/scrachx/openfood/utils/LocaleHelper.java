@@ -53,7 +53,15 @@ public class LocaleHelper {
     }
 
     private static void updateResources(Context context, String language) {
-        Locale locale = new Locale(language);
+        Locale locale;
+
+        if (language.contains("-")) {
+            String[] languageParts = language.split("-");
+            locale = new Locale(languageParts[0], languageParts[1]);
+        } else {
+            locale = new Locale(language);
+        }
+
         Locale.setDefault(locale);
 
         Resources resources = context.getResources();

@@ -20,7 +20,15 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             FragmentActivity activity = PreferencesFragment.this.getActivity();
             Configuration configuration = activity.getResources().getConfiguration();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                configuration.setLocale(new Locale(((String) locale)));
+                String localeValue = (String) locale;
+
+                if (localeValue.contains("-")) {
+                    String[] localeParts = localeValue.split("-");
+                    configuration.setLocale(new Locale(localeParts[0], localeParts[1]));
+                } else {
+                    configuration.setLocale(new Locale(localeValue));
+                }
+
                 activity.recreate();
             }
             return true;
