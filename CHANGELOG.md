@@ -6,9 +6,12 @@ Upcoming:
 - Fix a crasher on the ingredient list
 - Open Pet Food Facts support. Woof. Woof.
 - You are now properly credited for uploaded images.
+
 0.7.2 & 0.7.3 & 0.7.4 - 
 - Micro-release to fix 4.0 related bugs.
+
 0.7.1 - 
+
 - German, Serbian translations
 - Added support for fl oz and cl units
 - Added the scan button in the product view, for quicker scanning
