@@ -45,6 +45,8 @@ public class Product implements Serializable {
     private String ingredientsText;
     @JsonProperty("product_name")
     private String productName;
+    @JsonProperty("generic_name")
+    private String genericName;
     @JsonProperty("ingredients_from_or_that_may_be_from_palm_oil_n")
     private long ingredientsFromOrThatMayBeFromPalmOilN;
     @JsonProperty("serving_size")
@@ -209,6 +211,13 @@ public class Product implements Serializable {
         return productName;
     }
 
+
+    /**
+     * @return The genericName
+     */
+    public String getGenericName() {
+        return genericName;
+    }
 
     /**
      * @return The ingredientsFromOrThatMayBeFromPalmOilN

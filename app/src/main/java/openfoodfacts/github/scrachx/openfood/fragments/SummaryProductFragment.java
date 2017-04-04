@@ -45,6 +45,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 public class SummaryProductFragment extends BaseFragment {
 
     @BindView(R.id.textNameProduct) TextView nameProduct;
+    @BindView(R.id.textGenericNameProduct) TextView genericNameProduct;
     @BindView(R.id.textBarcodeProduct) TextView barCodeProduct;
     @BindView(R.id.textQuantityProduct) TextView quantityProduct;
     @BindView(R.id.textPackagingProduct) TextView packagingProduct;
@@ -98,6 +99,12 @@ public class SummaryProductFragment extends BaseFragment {
             nameProduct.setText(product.getProductName());
         } else {
             nameProduct.setVisibility(View.GONE);
+        }
+        if (isNotBlank(product.getGenericName())) {
+            genericNameProduct.setText(bold(getString(R.string.txtGenericName)));
+            genericNameProduct.append(' ' + product.getGenericName());
+        } else {
+            genericNameProduct.setVisibility(View.GONE);
         }
         if(isNotBlank(barcode)) {
             barCodeProduct.setText(bold(getString(R.string.txtBarcode)));
