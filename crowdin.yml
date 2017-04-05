@@ -4,4 +4,4 @@ files:
   - source: app/src/obf/res/values/strings.xml
     translation: app/src/obf/res/values-%two_letters_code%/%original_file_name%
   - source: app/src/off/res/values/strings.xml
-    translation: app/src/obf/res/values-%two_letters_code%/%original_file_name%
+    translation: app/src/off/res/values-%two_letters_code%/%original_file_name%
