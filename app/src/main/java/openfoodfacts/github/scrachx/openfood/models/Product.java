@@ -3,12 +3,21 @@ package openfoodfacts.github.scrachx.openfood.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.util.StdConverter;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+class ProductStringConverter extends StdConverter<String, String> {
+    public String convert(String value) {
+        return StringEscapeUtils.unescapeHtml4(value).replace("\\'", "'");
+    }
+}
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -42,10 +51,13 @@ public class Product implements Serializable {
     private String traces;
     private String categories;
     @JsonProperty("ingredients_text")
+    @JsonDeserialize(converter = ProductStringConverter.class)
     private String ingredientsText;
     @JsonProperty("product_name")
+    @JsonDeserialize(converter = ProductStringConverter.class)
     private String productName;
     @JsonProperty("generic_name")
+    @JsonDeserialize(converter = ProductStringConverter.class)
     private String genericName;
     @JsonProperty("ingredients_from_or_that_may_be_from_palm_oil_n")
     private long ingredientsFromOrThatMayBeFromPalmOilN;
