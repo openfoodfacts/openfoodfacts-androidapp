@@ -5,3 +5,5 @@ files:
     translation: app/src/obf/res/values-%two_letters_code%/%original_file_name%
   - source: app/src/off/res/values/strings.xml
     translation: app/src/off/res/values-%two_letters_code%/%original_file_name%
+  - source: /app/src/opff/res/values/strings.xml
+    translation: /app/src/opff/res/values-%two_letters_code%/strings.xml
