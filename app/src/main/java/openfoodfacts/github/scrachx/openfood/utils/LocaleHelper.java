@@ -35,32 +35,12 @@ public class LocaleHelper {
     }
 
     public static void setLocale(Context context, String language) {
-        persist(context, language);
-        updateResources(context, language);
-    }
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putString(SELECTED_LANGUAGE, language)
+                .apply();
 
-    private static String getPersistedData(Context context, String defaultLanguage) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return preferences.getString(SELECTED_LANGUAGE, defaultLanguage);
-    }
-
-    private static void persist(Context context, String language) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = preferences.edit();
-
-        editor.putString(SELECTED_LANGUAGE, language);
-        editor.apply();
-    }
-
-    private static void updateResources(Context context, String language) {
-        Locale locale;
-
-        if (language.contains("-")) {
-            String[] languageParts = language.split("-");
-            locale = new Locale(languageParts[0], languageParts[1]);
-        } else {
-            locale = new Locale(language);
-        }
+        Locale locale = getLocale(language);
 
         Locale.setDefault(locale);
 
@@ -71,4 +51,22 @@ public class LocaleHelper {
 
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
     }
+
+    /**
+     * Extract language and region from the locale string
+     * @param locale language
+     * @return Locale from locale string
+     */
+    public static Locale getLocale(String locale) {
+        String[] localeParts = locale.split("-");
+        String language = localeParts[0];
+        String country = localeParts.length == 2 ? localeParts[1] : "";
+        return new Locale(language, country);
+    }
+
+    private static String getPersistedData(Context context, String defaultLanguage) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getString(SELECTED_LANGUAGE, defaultLanguage);
+    }
+
 }

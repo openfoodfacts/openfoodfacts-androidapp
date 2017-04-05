@@ -219,7 +219,7 @@ public class IngredientsProductFragment extends BaseFragment {
                 }
             }
         }
-        ssb.insert(0, Utils.bold(getString(R.string.txtIngredients)).toString() + ' ');
+        ssb.insert(0, Utils.bold(getString(R.string.txtIngredients) + ' '));
         return ssb;
     }
 
