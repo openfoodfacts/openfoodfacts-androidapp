@@ -55,8 +55,8 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class IngredientsProductFragment extends BaseFragment {
 
-    public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[a-zA-Z0-9(),àâçéèêëîïôûùüÿñæœ.-]+");
-    public static final Pattern ALLERGEN_PATTERN = Pattern.compile("[a-zA-Z0-9àâçéèêëîïôûùüÿñæœ]+");
+    public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
+    public static final Pattern ALLERGEN_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}]+");
     @BindView(R.id.textIngredientProduct) TextView ingredientsProduct;
     @BindView(R.id.textSubstanceProduct) TextView substanceProduct;
     @BindView(R.id.textTraceProduct) TextView traceProduct;
