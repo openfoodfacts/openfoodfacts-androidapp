@@ -99,7 +99,7 @@
     <item>Συστατικά</item>
   </string-array>
   <!-- Content Description -->
-  <string name="search_button">Search</string>
+  <string name="search_button">Αναζήτηση</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
   <string name="alert_dialog_warning_title">Warning</string>
@@ -132,7 +132,7 @@
   <string name="txtLogin">Login :</string>
   <string name="txtPass">Password :</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
-  <string name="txtSave">Save</string>
+  <string name="txtSave">Αποθήκευση</string>
   <string name="txtSignIn">Sign in</string>
   <string name="txtUser">User panel</string>
   <string name="txtToastSaved">User saved</string>
@@ -153,7 +153,7 @@
   <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
   <string name="txtYes">Yes</string>
   <string name="txtNo">No</string>
-  <string name="hintNameProduct">Name</string>
+  <string name="hintNameProduct">Όνομα</string>
   <string name="hintEnergy">Energy in kJ per serving</string>
   <string name="hintEnergyUnit">Energy unit</string>
   <string name="hintWeight">Weight</string>
@@ -184,7 +184,7 @@
   <string name="home_drawer">Home</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
-  <string name="search_drawer">Search</string>
+  <string name="search_drawer">Αναζήτηση</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
@@ -266,8 +266,8 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">Search</string>
-  <string name="search_hint">Search a product</string>
+  <string name="action_search">Αναζήτηση</string>
+  <string name="search_hint">Αναζήτηση προϊόντος</string>
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No results found</string>
   <string name="nutrition_lactose">Lactose</string>
