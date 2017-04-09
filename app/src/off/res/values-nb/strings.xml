@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="website">https://world-nb.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-nb.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-nb.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-nb.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world-nb.openfoodfacts.org/contributor/</string>
+  <string name="txtHome">Open Food Facts er en åpen database med oversikt over norske og globale matprodukter. Vi har blant annet oversikt over ingredienser, allergener, ernæringsinformasjon og all mulig annen nyttig informasjon som vi kan finne på etiketten.</string>
+</resources>

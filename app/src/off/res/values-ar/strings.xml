@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="website_contribute">https://world-ar.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-ar.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-ar.openfoodfacts.org/mountaj/</string>
+  <string name="website_contributor">https://world-ar.openfoodfacts.org/almousstakhdimoun/</string>
+</resources>

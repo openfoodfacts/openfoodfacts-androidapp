@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="website">https://world-hu.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-hu.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-hu.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-hu.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world-hu.openfoodfacts.org/contributor/</string>
+  <string name="txtHome">Open Food Facts (Nyílt Élelmiszer Tények) élelmiszer termékek nyílt adatbázisa összetétellel, allergén információval, tápanyag tényekkel és minden címkén fellelhető kiegészítő információval.</string>
+</resources>

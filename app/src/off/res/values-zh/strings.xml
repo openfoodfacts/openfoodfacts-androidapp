@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="website">https://world-zh.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-zh.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-zh.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-zh.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world-zh.openfoodfacts.org/contributor/</string>
+  <string name="txtHome">Open Food Facts是一个记录食品产品标签上可以找到的成份，过敏，营养以及其它信息的开放数据库。</string>
+</resources>

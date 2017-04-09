@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="website">https://world-es.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-es.openfoodfacts.org/contribuir</string>
+  <string name="website_discover">https://world-es.openfoodfacts.org/descubrir</string>
+  <string name="website_product">https://world.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
+  <string name="txtHome">Open Food Facts es una base de datos abierta con ingredientes, alergenos, información nutricional de cualquier pedazo de información que podemos encontrar sobre etiquetas de productos.</string>
+</resources>

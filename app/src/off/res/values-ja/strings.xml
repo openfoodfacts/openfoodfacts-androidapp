@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="website">https://jp.openfoodfacts.org/</string>
+  <string name="website_contribute">https://jp.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://jp.openfoodfacts.org/discover</string>
+  <string name="website_product">https://jp.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://jp.openfoodfacts.org/contributor/</string>
+  <string name="txtHome">Open Food Facts は、原材料、アレルゲン、栄養成分表、および製品ラベルに記載されたすべての情報を掲載した食品のオープンデータベースです。</string>
+</resources>
