@@ -167,7 +167,7 @@
   <string name="dataSaved">Saved locally on your device</string>
   <string name="txtInfoAddUser">Please enter your login and password</string>
   <string name="txtDataUpdated">Data updated</string>
-  <string name="txtLoading">Loading...</string>
+  <string name="txtLoading">Načítá se…</string>
   <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
@@ -184,7 +184,7 @@
   <string name="home_drawer">Home</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
-  <string name="search_drawer">Search</string>
+  <string name="search_drawer">Vyhledávání</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
@@ -219,7 +219,7 @@
   <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
   <string name="prefs_power_mode">Power mode scan</string>
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
-  <string name="prefs_language">Language</string>
+  <string name="prefs_language">Jazyk</string>
   <string name="prefs_language_summary">Change language</string>
   <string name="scan_history_drawer">History</string>
   <string name="clear_history">Clear history</string>
@@ -266,8 +266,8 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">Search</string>
-  <string name="search_hint">Search a product</string>
+  <string name="action_search">Vyhledávání</string>
+  <string name="search_hint">Vyhledat produkt</string>
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No results found</string>
   <string name="nutrition_lactose">Lactose</string>
