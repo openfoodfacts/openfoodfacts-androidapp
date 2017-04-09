@@ -201,7 +201,7 @@
   <string name="from_gallery">Iz galerije</string>
   <string name="product_sent">Proizvod uspešno poslat</string>
   <string name="action_edit_product">Izmenite proizvod</string>
-  <string name="title_info_dialog">Information</string>
+  <string name="title_info_dialog">Informacija</string>
   <string name="text_offline_info_dialog">Možete skenirati proizvode i kada niste povezani na internet kako biste ih dodali kasnije na Open Food Facts. Svi proizvodi koje skenirate pojaviće se ovde, i bićete u mogućnosti da ih pošaljete pritiskom na dugme ispod.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
   <string name="permission_title">Informacije o dozvolama</string>
@@ -237,7 +237,7 @@
   <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
   <string name="nutrition_energy">Energy</string>
   <string name="nutrition_energy_short_name">Energy</string>
-  <string name="nutrition_fat">Fat</string>
+  <string name="nutrition_fat">Masti</string>
   <string name="nutrition_fat_short_name">Fat (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
@@ -246,15 +246,15 @@
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Proteins</string>
   <string name="nutrition_proteins_short_name">Proteins (g)</string>
-  <string name="nutrition_salt">Salt</string>
+  <string name="nutrition_salt">So</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
-  <string name="nutrition_satured_fat">Satured fat</string>
+  <string name="nutrition_satured_fat">Zasićene masne kiseline</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
   <string name="nutrition_serving">Per serving</string>
-  <string name="nutrition_serving_size">Serving size :</string>
+  <string name="nutrition_serving_size">Porcija :</string>
   <string name="nutrition_sodium">Sodium</string>
   <string name="nutrition_sodium_short_name">Sodium (g)</string>
-  <string name="nutrition_sugars">Sugars</string>
+  <string name="nutrition_sugars">Šećer</string>
   <string name="nutrition_sugars_short_name">Sugars (g)</string>
   <string name="nutrition_trans_fat">Trans fat</string>
   <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
