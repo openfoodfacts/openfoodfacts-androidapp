@@ -6,19 +6,19 @@
 # You probably want to copy this file as ".android2po" into the directory
 # containing your "AndroidManifest.xml" file, so it'll be picked up
 # automatically.
---android res/
+--android off/res/
 
 # If you don't like the default location, you can specify where the .po files
 # should be stored. This path is relative to the path of this configuration
 # file.
---gettext  locale/
+--gettext off/locale/
 
 
 # By default, android2po will always process strings.xml and arrays.xml files,
 # as well as all files which are found to contain string resources. However,
 # you may often find it necessary to restrict the files used. This option
 # allows to explicitly define the groups being processed.
---groups strings strings
+--groups strings
 
 
 # Specify a custom gettext domain. A gettext domain is like a namespace for
