@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="website">https://world-ro.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-ro.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-ro.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-ro.openfoodfacts.org/produs/</string>
+  <string name="website_contributor">https://world-ro.openfoodfacts.org/contributor/</string>
+  <string name="txtHome">Open Food Facts este o bază de date deschisă de produse alimentare, conținând informații despre ingrediente, alergeni, informații nutriționale și alte detalii ce se regăsesc pe etichetele produselor.</string>
+</resources>

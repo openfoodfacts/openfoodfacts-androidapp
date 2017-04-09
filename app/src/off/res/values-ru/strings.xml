@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="website">https://world-ru.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-ru.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-ru.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-ru.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world-ru.openfoodfacts.org/contributor/</string>
+  <string name="txtHome">Open Food Facts - это открытая база данных пищевых продуктов с ингредиентами, аллергенами, питательной ценностью и тонкостями, которые мы смогли найти на этикетках.</string>
+</resources>

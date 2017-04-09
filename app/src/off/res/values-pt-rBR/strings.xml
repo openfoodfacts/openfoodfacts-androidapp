@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="website">https://world-pt.openfoodfacts.org/</string>
+  <string name="website_product">https://world-pt.openfoodfacts.org/produto/</string>
+  <string name="website_contributor">https://world-pt.openfoodfacts.org/colaborador/</string>
+</resources>

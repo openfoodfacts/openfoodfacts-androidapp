@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="website">https://world-hi.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-hi.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-hi.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-hi.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world-hi.openfoodfacts.org/contributor/</string>
+  <string name="txtHome">Open Food Facts एक open डेटाबेस है खाद्य उत्पादों के लिए जहां सामग्री, ऐलर्जेन, पोषण और छोटे मोटे सामान की जानकारी उत्पाद लेबल से प्राप्त कि जा सकती है|</string>
+</resources>
