@@ -49,9 +49,7 @@ Ask @teolemon to do it
 ### Translate Open Food Facts in your language
 
 You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup): <br>
-- Main app: https://translations.launchpad.net/openfoodfacts/openfoodfacts-android-native
-- Open Food Facts specific: https://translations.launchpad.net/openfoodfacts/openfoodfacts-android-native/+pots/strings-off
-- Open Beauty Facts specific: https://translations.launchpad.net/openfoodfacts/openfoodfacts-android-native/+pots/strings-obf
+https://crowdin.com/project/openfoodfacts
 
 Watch the [topic](https://github.com/openfoodfacts/OpenFoodFacts-androidApp/issues/49).
 

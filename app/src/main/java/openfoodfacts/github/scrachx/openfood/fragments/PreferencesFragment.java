@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.preference.PreferenceFragmentCompat;
 
-import java.util.Locale;
-
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 
 public class PreferencesFragment extends PreferenceFragmentCompat {
 
@@ -20,14 +19,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             FragmentActivity activity = PreferencesFragment.this.getActivity();
             Configuration configuration = activity.getResources().getConfiguration();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                String localeValue = (String) locale;
 
-                if (localeValue.contains("-")) {
-                    String[] localeParts = localeValue.split("-");
-                    configuration.setLocale(new Locale(localeParts[0], localeParts[1]));
-                } else {
-                    configuration.setLocale(new Locale(localeValue));
-                }
+                configuration.setLocale(LocaleHelper.getLocale((String) locale));
 
                 activity.recreate();
             }
