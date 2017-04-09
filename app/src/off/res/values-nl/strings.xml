@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="website">https://world-nl.openfoodfacts.org/</string>
+  <string name="website_contribute">https://world-nl.openfoodfacts.org/contribute</string>
+  <string name="website_discover">https://world-nl.openfoodfacts.org/discover</string>
+  <string name="website_product">https://world-nl.openfoodfacts.org/product/</string>
+  <string name="website_contributor">https://world-nl.openfoodfacts.org/gebruiker/</string>
+  <string name="txtHome">Open Food Facts is een databank van voedingsproducten met ingrediënten, allergenen, voedingswaarde en alle interessante feitjes die we op productetiketten kunnen vinden.</string>
+</resources>
