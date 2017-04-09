@@ -54,7 +54,7 @@
     <item>nl</item>
     <item>pt-rBR</item>
     <item>ro</item>
-    <item>sv</item>
+    <item>스웨덴어</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
@@ -82,12 +82,12 @@
     <item>Finnish</item>
     <item>Hindi</item>
     <item>Kabyle</item>
-    <item>Korean</item>
+    <item>한국어</item>
     <item>Latvian</item>
     <item>Dutch</item>
     <item>Brazilian portuguese</item>
     <item>Romanian</item>
-    <item>Swedish</item>
+    <item>스웨덴어</item>
     <item>Chinese</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
@@ -95,11 +95,11 @@
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
-    <item>Nutrition</item>
-    <item>Ingredients</item>
+    <item>영양</item>
+    <item>성분</item>
   </string-array>
   <!-- Content Description -->
-  <string name="search_button">Search</string>
+  <string name="search_button">수색</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
   <string name="alert_dialog_warning_title">Warning</string>
@@ -132,7 +132,7 @@
   <string name="txtLogin">Login :</string>
   <string name="txtPass">Password :</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
-  <string name="txtSave">Save</string>
+  <string name="txtSave">저장</string>
   <string name="txtSignIn">Sign in</string>
   <string name="txtUser">User panel</string>
   <string name="txtToastSaved">User saved</string>
@@ -140,9 +140,9 @@
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
   <string name="txtSaturatedFat">Satured fat</string>
-  <string name="hintBarcode">Barcode</string>
+  <string name="hintBarcode">바코드</string>
   <string name="hintLogin">Login</string>
-  <string name="hintPass">Password</string>
+  <string name="hintPass">암호</string>
   <string name="errorLogin">Login or password error</string>
   <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
   <string name="txtInfoLoginOk">User saved</string>
@@ -184,7 +184,7 @@
   <string name="home_drawer">Home</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
-  <string name="search_drawer">Search</string>
+  <string name="search_drawer">수색</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
@@ -193,7 +193,7 @@
   <string name="txt_anonymous">Anonymous</string>
   <string name="txt_product_not_found">Products not found</string>
   <string name="delete_txt">Delete</string>
-  <string name="sign_in_drawer">Sign-in</string>
+  <string name="sign_in_drawer">로그인에</string>
   <string name="alert_drawer">Allergen alert</string>
   <string name="warning_allergens">Contains allergens</string>
   <string name="title_dialog_alert">Add alert</string>
@@ -219,7 +219,7 @@
   <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
   <string name="prefs_power_mode">Power mode scan</string>
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
-  <string name="prefs_language">Language</string>
+  <string name="prefs_language">언어</string>
   <string name="prefs_language_summary">Change language</string>
   <string name="scan_history_drawer">History</string>
   <string name="clear_history">Clear history</string>
@@ -241,7 +241,7 @@
   <string name="nutrition_fat_short_name">Fat (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
-  <string name="nutrition_header">Nutrition facts</string>
+  <string name="nutrition_header">영양 성분 표시</string>
   <string name="nutrition_no_data_message">No data is available for this product</string>
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Proteins</string>
@@ -266,8 +266,8 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">Search</string>
-  <string name="search_hint">Search a product</string>
+  <string name="action_search">수색</string>
+  <string name="search_hint">제품 검색</string>
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No results found</string>
   <string name="nutrition_lactose">Lactose</string>
