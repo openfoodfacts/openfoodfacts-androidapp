@@ -84,11 +84,11 @@
     <item>Kabyle</item>
     <item>Korean</item>
     <item>Latvian</item>
-    <item>Dutch</item>
+    <item>الهولندية</item>
     <item>Brazilian portuguese</item>
     <item>Romanian</item>
     <item>السويديَة</item>
-    <item>Chinese</item>
+    <item>الصينية</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
@@ -132,7 +132,7 @@
   <string name="txtLogin">تسجيل الدخول:</string>
   <string name="txtPass">كلمة المرور:</string>
   <string name="txtTitleHome">افتح غذائك واعرف ما تأكله</string>
-  <string name="txtSave">Save</string>
+  <string name="txtSave">حفظ</string>
   <string name="txtSignIn">ولوج</string>
   <string name="txtUser">لوحة المستخدم</string>
   <string name="txtToastSaved">تم حفظ المستخدم</string>
@@ -266,8 +266,8 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">Search</string>
-  <string name="search_hint">Search a product</string>
+  <string name="action_search">بحث</string>
+  <string name="search_hint">ابحث عن منتج</string>
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No results found</string>
   <string name="nutrition_lactose">Lactose</string>
