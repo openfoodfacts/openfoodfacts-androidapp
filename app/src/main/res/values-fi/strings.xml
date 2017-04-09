@@ -132,7 +132,7 @@
   <string name="txtLogin">Tunnus:</string>
   <string name="txtPass">Salasana:</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
-  <string name="txtSave">Save</string>
+  <string name="txtSave">Tallenna</string>
   <string name="txtSignIn">Kirjaudu sisään</string>
   <string name="txtUser">Käyttäjäpaneeli</string>
   <string name="txtToastSaved">User saved</string>
@@ -266,8 +266,8 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">Search</string>
-  <string name="search_hint">Search a product</string>
+  <string name="action_search">Etsi</string>
+  <string name="search_hint">Etsi tuote</string>
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No results found</string>
   <string name="nutrition_lactose">Lactose</string>

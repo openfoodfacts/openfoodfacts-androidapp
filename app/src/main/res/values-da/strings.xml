@@ -84,9 +84,9 @@
     <item>Kabyle</item>
     <item>Koreansk</item>
     <item>Latvian</item>
-    <item>Dutch</item>
+    <item>Nederlandsk</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
+    <item>Rumensk</item>
     <item>Svensk</item>
     <item>Kinesisk</item>
     <item>Norsk (Bokmål)</item>
@@ -140,7 +140,7 @@
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
   <string name="txtSaturatedFat">Satured fat</string>
-  <string name="hintBarcode">Barcode</string>
+  <string name="hintBarcode">Strekkode</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Adgangskode:</string>
   <string name="errorLogin">Login or password error</string>
@@ -193,7 +193,7 @@
   <string name="txt_anonymous">Anonym</string>
   <string name="txt_product_not_found">Products not found</string>
   <string name="delete_txt">Slet</string>
-  <string name="sign_in_drawer">Sign-in</string>
+  <string name="sign_in_drawer">Logg inn</string>
   <string name="alert_drawer">Allergen alert</string>
   <string name="warning_allergens">Contains allergens</string>
   <string name="title_dialog_alert">Add alert</string>
@@ -212,7 +212,7 @@
   <string name="msg_input_empty">Please fill the fields first.</string>
   <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">The password needs to be a least 6 characters long.</string>
+  <string name="error_invalid_password">Passordet må være minst 6 tegn langt</string>
   <string name="error_field_required">Dette felt er påkrævet.</string>
   <string name="action_preferences">Præferencer</string>
   <string name="prefs_scan_startup">Scan on startup</string>
@@ -241,7 +241,7 @@
   <string name="nutrition_fat_short_name">Fat (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
-  <string name="nutrition_header">Nutrition facts</string>
+  <string name="nutrition_header">Ernæringsinnhold</string>
   <string name="nutrition_no_data_message">No data is available for this product</string>
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Proteiner</string>

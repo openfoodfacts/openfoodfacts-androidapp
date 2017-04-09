@@ -96,7 +96,7 @@
   <string-array name="images_array">
     <item>Defaut</item>
     <item>Nutrition</item>
-    <item>Ingredients</item>
+    <item>Ingrédients</item>
   </string-array>
   <!-- Content Description -->
   <string name="search_button">Rechercher</string>
@@ -307,7 +307,7 @@
   <string name="vitamin_b12">Vitamine B12</string>
   <string name="biotin">Biotine</string>
   <string name="pantothenic_acid">Acide pantothénique</string>
-  <string name="nutrition_minerals">Minerals</string>
+  <string name="nutrition_minerals">Minéraux</string>
   <string name="silica">Silica</string>
   <string name="bicarbonate">Bicarbonate</string>
   <string name="potassium">Potassium</string>
