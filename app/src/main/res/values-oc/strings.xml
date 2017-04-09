@@ -61,20 +61,20 @@
     <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
+    <item>Anglés</item>
+    <item>Francés</item>
+    <item>Espanhòl</item>
     <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
+    <item>Alemand</item>
+    <item>Japonés</item>
+    <item>Rus</item>
+    <item>Portugués</item>
     <item>Swedish</item>
     <item>Burmese</item>
     <item>Kazakh</item>
     <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
+    <item>Grèc</item>
+    <item>Ebrèu</item>
     <item>Galician</item>
     <item>Catalan</item>
     <item>Czech</item>
@@ -82,13 +82,13 @@
     <item>Finnish</item>
     <item>Hindi</item>
     <item>Kabyle</item>
-    <item>Korean</item>
+    <item>Corean</item>
     <item>Latvian</item>
-    <item>Dutch</item>
+    <item>Neerlandés</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
+    <item>Romanés</item>
     <item>Swedish</item>
-    <item>Chinese</item>
+    <item>Chinés</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
@@ -99,7 +99,7 @@
     <item>Ingredients</item>
   </string-array>
   <!-- Content Description -->
-  <string name="search_button">Search</string>
+  <string name="search_button">Recercar</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
   <string name="alert_dialog_warning_title">Warning</string>
@@ -132,7 +132,7 @@
   <string name="txtLogin">Login :</string>
   <string name="txtPass">Password :</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
-  <string name="txtSave">Save</string>
+  <string name="txtSave">Enregistrar</string>
   <string name="txtSignIn">Sign in</string>
   <string name="txtUser">User panel</string>
   <string name="txtToastSaved">User saved</string>
@@ -140,9 +140,9 @@
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
   <string name="txtSaturatedFat">Satured fat</string>
-  <string name="hintBarcode">Barcode</string>
+  <string name="hintBarcode">Còdi de barras</string>
   <string name="hintLogin">Login</string>
-  <string name="hintPass">Password</string>
+  <string name="hintPass">Senhal</string>
   <string name="errorLogin">Login or password error</string>
   <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
   <string name="txtInfoLoginOk">User saved</string>
@@ -153,7 +153,7 @@
   <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
   <string name="txtYes">Yes</string>
   <string name="txtNo">No</string>
-  <string name="hintNameProduct">Name</string>
+  <string name="hintNameProduct">Nom</string>
   <string name="hintEnergy">Energy in kJ per serving</string>
   <string name="hintEnergyUnit">Energy unit</string>
   <string name="hintWeight">Weight</string>
@@ -184,7 +184,7 @@
   <string name="home_drawer">Home</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
-  <string name="search_drawer">Search</string>
+  <string name="search_drawer">Recercar</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
@@ -219,7 +219,7 @@
   <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
   <string name="prefs_power_mode">Power mode scan</string>
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
-  <string name="prefs_language">Language</string>
+  <string name="prefs_language">Lenga</string>
   <string name="prefs_language_summary">Change language</string>
   <string name="scan_history_drawer">History</string>
   <string name="clear_history">Clear history</string>
@@ -266,7 +266,7 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">Search</string>
+  <string name="action_search">Recercar</string>
   <string name="search_hint">Search a product</string>
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No results found</string>
