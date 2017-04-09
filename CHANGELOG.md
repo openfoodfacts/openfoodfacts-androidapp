@@ -1,11 +1,12 @@
 This is the Changelog. Please list changes here so that we can provide meaningful changelog for the application stores.
 
 Upcoming:
-- Some languages were not working (eg Brazilian Portuguese). This has been fixed.
+- Some languages were not working (eg Brazilian Portuguese). This has been fixed. We're also laying some bases for upcoming locale improvements.
 - We now also display the Common name of the product. Nutella in French is also known as "Pâte à tartiner aux noisettes et au cacao"
-- Fix a crasher on the ingredient list
+- Fix a crasher on the ingredient list, some encoding issues in product fields and typos (pH).
 - Open Pet Food Facts support. Woof. Woof.
 - You are now properly credited for uploaded images.
+- Fixed an issue in allergen detection
 
 0.7.2 & 0.7.3 & 0.7.4 - 
 - Micro-release to fix 4.0 related bugs.
