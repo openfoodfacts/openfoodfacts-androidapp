@@ -145,7 +145,7 @@
   <string name="hintPass">Lösenord</string>
   <string name="errorLogin">Fel användarnamn eller lösenord</string>
   <string name="errorWeb">Vi kan inte komma åt internet. Har du problem med anslutningen?</string>
-  <string name="txtInfoLoginOk">User saved</string>
+  <string name="txtInfoLoginOk">Användaren sparades</string>
   <string name="txtInfoLoginNo">User not saved</string>
   <string name="txtDialogsTitle">Information</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
@@ -191,7 +191,7 @@
   <string name="user_drawer">Användare</string>
   <string name="offline_edit_drawer">Offline edit</string>
   <string name="txt_anonymous">Anonym</string>
-  <string name="txt_product_not_found">Products not found</string>
+  <string name="txt_product_not_found">Produkterna hittades inte</string>
   <string name="delete_txt">Radera</string>
   <string name="sign_in_drawer">Logga in</string>
   <string name="alert_drawer">Allergen alert</string>
