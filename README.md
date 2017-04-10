@@ -6,7 +6,7 @@ Open Food Facts Android Application
 [![Build Status](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp.svg?branch=master)](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp) [![Stories in Ready](https://badge.waffle.io/openfoodfacts/OpenFoodFacts-androidApp.svg?label=ready&title=Ready)](http://waffle.io/openfoodfacts/OpenFoodFacts-androidApp)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/openfoodfacts/OpenFoodFacts-androidApp.svg)](http://isitmaintained.com/project/openfoodfacts/OpenFoodFacts-androidApp "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/openfoodfacts/OpenFoodFacts-androidApp.svg)](http://isitmaintained.com/project/openfoodfacts/OpenFoodFacts-androidApp "Percentage of issues still open")
-
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/openfoodfacts/localized.svg)](https://crowdin.com/project/openfoodfacts)
 ## What is Open Food Facts?
 
 
