@@ -127,8 +127,8 @@
   <string name="txtServingSize">Μέγεθος μερίδας :</string>
   <string name="txtNutrientLevel100g">Διατροφικοί δείκτες ανά 100 g :</string>
   <string name="txtNutritionLevelLow">σε μικρή ποσότητα</string>
-  <string name="txtNutritionLevelModerate">in moderate quantity</string>
-  <string name="txtNutritionLevelHigh">in high quantity</string>
+  <string name="txtNutritionLevelModerate">σε μέτρια ποσότητα</string>
+  <string name="txtNutritionLevelHigh">σε υψηλή ποσότητα</string>
   <string name="txtLogin">Login :</string>
   <string name="txtPass">Password :</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
@@ -185,11 +185,11 @@
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Αναζήτηση</string>
-  <string name="search_by_barcode_drawer">Type barcode</string>
-  <string name="search_by_name_drawer">Search by name</string>
-  <string name="scan_search">Scan Barcode</string>
-  <string name="user_drawer">User</string>
-  <string name="offline_edit_drawer">Offline edit</string>
+  <string name="search_by_barcode_drawer">Πληκτρολογήστε barcode</string>
+  <string name="search_by_name_drawer">Αναζήτηση βάση ονόματος</string>
+  <string name="scan_search">Σάρωση barcode</string>
+  <string name="user_drawer">Χρήστης</string>
+  <string name="offline_edit_drawer">Επεξεργασία χωρίς σύνδεση</string>
   <string name="txt_anonymous">Anonymous</string>
   <string name="txt_product_not_found">Products not found</string>
   <string name="delete_txt">Delete</string>
