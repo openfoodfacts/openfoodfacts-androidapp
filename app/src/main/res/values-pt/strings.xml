@@ -52,13 +52,13 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-BR</item>
+    <item>pt-rBR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-CN</item>
+    <item>zh-rCN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Inglês</item>
