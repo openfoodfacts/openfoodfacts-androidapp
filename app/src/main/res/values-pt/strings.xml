@@ -162,7 +162,7 @@
   <string name="txtTakePicture">Tirar foto</string>
   <string name="txtSendAll">Enviar todos</string>
   <string name="txtNoData">Sem dados</string>
-  <string name="txtPictureNeeded">Please take a picture first</string>
+  <string name="txtPictureNeeded">Por favor, primeiro, tire uma foto</string>
   <string name="toastSending">A enviar...</string>
   <string name="dataSaved">Guardado localmente no seu dispositivo</string>
   <string name="txtInfoAddUser">Por favor, digite o seu nome de utilizador e palavra-passe</string>
@@ -173,15 +173,15 @@
   <string name="txtBarcodeRequire">Código de barras necessário</string>
   <string name="txtOk">OK</string>
   <string name="txtContentDialogUploading">Por favor não saia durante o procedimento...</string>
-  <string name="txtAbout">As fotos que enviar ficam publicadas sob a licença livre Creative Commons Atribuição e CompartilhaIgual.</string>
+  <string name="txtAbout">As fotos que enviar ficam publicadas sob a licença livre Creative Commons Atribuição-CompartilhaIgual.</string>
   <string name="txtAllsent">Produtos enviados</string>
   <string name="txtPalm">O produto não contém óleo de palma</string>
   <string name="txtBarcodeNotValid">Código de barras inválido</string>
-  <string name="try_it_scan_now">Scan product</string>
+  <string name="try_it_scan_now">Digitalizar produto</string>
   <string name="share">Partilhar</string>
   <string name="msg_share">Veja este produto no Open Food Facts :</string>
   <string name="create_account">Inscrever</string>
-  <string name="home_drawer">Home</string>
+  <string name="home_drawer">Início</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Pesquisar</string>
@@ -194,7 +194,7 @@
   <string name="txt_product_not_found">Produtos não encontrados</string>
   <string name="delete_txt">Eliminar</string>
   <string name="sign_in_drawer">Iniciar sessão</string>
-  <string name="alert_drawer">Allergen alert</string>
+  <string name="alert_drawer">Alerta de alergénios</string>
   <string name="warning_allergens">Contém alergénios</string>
   <string name="title_dialog_alert">Adicionar alerta</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>
