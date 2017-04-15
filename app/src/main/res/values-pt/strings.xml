@@ -52,13 +52,13 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Inglês</item>
@@ -70,28 +70,28 @@
     <item>Russo</item>
     <item>Português</item>
     <item>Sueco</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
+    <item>Birmanês</item>
+    <item>Cazaque</item>
+    <item>Arménio</item>
     <item>Grego</item>
     <item>Hebraico</item>
-    <item>Galician</item>
+    <item>Galego</item>
     <item>Catalão</item>
-    <item>Czech</item>
-    <item>Arabic</item>
-    <item>Finnish</item>
+    <item>Checo</item>
+    <item>Arábico</item>
+    <item>Finlandês</item>
     <item>Hindi</item>
-    <item>Kabyle</item>
+    <item>Cabila</item>
     <item>Coreano</item>
-    <item>Latvian</item>
+    <item>Letão</item>
     <item>Holandês</item>
-    <item>Brazilian portuguese</item>
+    <item>Português brasileiro</item>
     <item>Romeno</item>
     <item>Sueco</item>
     <item>Chinês</item>
-    <item>Norwegian (Bokmal)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>Norueguês (Bokmal)</item>
+    <item>Dinamarquês</item>
+    <item>Chinês simplificado</item>
   </string-array>
   <string-array name="images_array">
     <item>Padrão</item>
