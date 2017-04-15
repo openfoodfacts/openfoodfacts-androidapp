@@ -185,17 +185,17 @@
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Pesquisar</string>
-  <string name="search_by_barcode_drawer">Pesquisar pelo código de barras</string>
+  <string name="search_by_barcode_drawer">Escreva o código de barras</string>
   <string name="search_by_name_drawer">Pesquisar pelo nome</string>
-  <string name="scan_search">Digitalizar</string>
+  <string name="scan_search">Digitalizar o código de barras</string>
   <string name="user_drawer">Utilizador</string>
-  <string name="offline_edit_drawer">Edição desconectado</string>
+  <string name="offline_edit_drawer">Editar offline</string>
   <string name="txt_anonymous">Anónimo</string>
   <string name="txt_product_not_found">Produtos não encontrados</string>
-  <string name="delete_txt">Apagar</string>
+  <string name="delete_txt">Eliminar</string>
   <string name="sign_in_drawer">Iniciar sessão</string>
   <string name="alert_drawer">Allergen alert</string>
-  <string name="warning_allergens">Contem alérgenos</string>
+  <string name="warning_allergens">Contém alergénios</string>
   <string name="title_dialog_alert">Adicionar alerta</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>
   <string name="from_gallery">Galeria de imagens</string>
@@ -213,7 +213,7 @@
   <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">A senha deve conter pelo menos 6 caracteres</string>
-  <string name="error_field_required">Este campo é obrigatório</string>
+  <string name="error_field_required">Este campo é necessário.</string>
   <string name="action_preferences">Preferências</string>
   <string name="prefs_scan_startup">Scan on startup</string>
   <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
@@ -239,7 +239,7 @@
   <string name="nutrition_energy_short_name">Energia</string>
   <string name="nutrition_fat">Fat</string>
   <string name="nutrition_fat_short_name">Fat (g)</string>
-  <string name="nutrition_fiber">A fibra dietética</string>
+  <string name="nutrition_fiber">Fibra</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
   <string name="nutrition_header">Informação nutricional</string>
   <string name="nutrition_no_data_message">No data is available for this product</string>
