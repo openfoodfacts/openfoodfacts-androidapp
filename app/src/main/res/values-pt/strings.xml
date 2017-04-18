@@ -202,7 +202,7 @@
   <string name="product_sent">Produto enviado com sucesso</string>
   <string name="action_edit_product">Modificar produto</string>
   <string name="title_info_dialog">Informação</string>
-  <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
+  <string name="text_offline_info_dialog">Poderá digitalizar produtos enquanto estiver offline para, mais tarde, adicioná-los ao Open Food Facts. Os produtos serão mostrados aqui e poderá enviá-los usando o botão abaixo.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
   <string name="permission_title">Permission information</string>
   <string name="permission_denied">Please activate permission in the settings</string>
