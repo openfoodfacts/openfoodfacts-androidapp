@@ -11,5 +11,5 @@
   <string name="website_product">https://world-pt.openbeautyfacts.org/produto/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-pt.openbeautyfacts.org/colaborador/</string>
-  <string name="txtHome">Open Beauty Facts é uma base de dados de produtos cosméticos com ingredientes, alergénios, vestígios e todos os pedacinhos de informação que encontramos nos rótulos dos produtos.</string>
+  <string name="txtHome">Open Beauty Facts é uma base de dados de produtos cosméticos com ingredientes, alergénios, vestígios de ingredientes e todos os pedacinhos de informação que se encontram nos rótulos dos produtos.</string>
 </resources>
