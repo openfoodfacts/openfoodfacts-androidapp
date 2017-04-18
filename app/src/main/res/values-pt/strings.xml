@@ -216,9 +216,9 @@
   <string name="error_field_required">Este campo é necessário.</string>
   <string name="action_preferences">Configurações</string>
   <string name="prefs_scan_startup">Digitalizar ao iniciar</string>
-  <string name="prefs_scan_startup_summary">Esta opção, quando seleccionada, iniciará a digitalização ao abrir a App.</string>
+  <string name="prefs_scan_startup_summary">Esta opção, quando seleccionada, iniciará a digitalização ao abrir a aplicação.</string>
   <string name="prefs_power_mode">Digitalizar em modo avançado</string>
-  <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
+  <string name="prefs_power_mode_summary">Digitalizar rapidamente produtos num supermercado, para verificar quais deles não se encontram na base de dados.</string>
   <string name="prefs_language">Idioma</string>
   <string name="prefs_language_summary">Change language</string>
   <string name="scan_history_drawer">History</string>
