@@ -52,13 +52,13 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Inglês</item>
@@ -69,54 +69,54 @@
     <item>Japonês</item>
     <item>Russo</item>
     <item>Português</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
+    <item>Sueco</item>
+    <item>Birmanês</item>
+    <item>Cazaque</item>
+    <item>Arménio</item>
     <item>Grego</item>
     <item>Hebraico</item>
-    <item>Galician</item>
-    <item>Catalan</item>
-    <item>Czech</item>
-    <item>Arabic</item>
-    <item>Finnish</item>
+    <item>Galego</item>
+    <item>Catalão</item>
+    <item>Checo</item>
+    <item>Arábico</item>
+    <item>Finlandês</item>
     <item>Hindi</item>
-    <item>Kabyle</item>
+    <item>Cabila</item>
     <item>Coreano</item>
-    <item>Latvian</item>
+    <item>Letão</item>
     <item>Holandês</item>
-    <item>Brazilian portuguese</item>
+    <item>Português brasileiro</item>
     <item>Romeno</item>
-    <item>Swedish</item>
+    <item>Sueco</item>
     <item>Chinês</item>
-    <item>Norwegian (Bokmal)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>Norueguês (Bokmal)</item>
+    <item>Dinamarquês</item>
+    <item>Chinês simplificado</item>
   </string-array>
   <string-array name="images_array">
-    <item>Default</item>
+    <item>Padrão</item>
     <item>Nutrição</item>
     <item>Ingredientes</item>
   </string-array>
   <!-- Content Description -->
   <string name="search_button">Procurar</string>
-  <string name="no_products">Products not found</string>
-  <string name="desc_list_item_icon">Item Icon</string>
-  <string name="alert_dialog_warning_title">Warning</string>
-  <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-  <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
-  <string name="toast_retrieving">Loading...</string>
-  <string name="txtGenericName">Common name :</string>
-  <string name="txtBarcode">Barcode :</string>
-  <string name="txtQuantity">Quantity :</string>
-  <string name="txtPackaging">Packaging :</string>
-  <string name="txtBrands">Brands :</string>
-  <string name="txtCategories">Categories :</string>
-  <string name="txtLabels">Labels, certifications, awards :</string>
-  <string name="txtManufacturing">Manufacturing or processing places :</string>
-  <string name="txtIngredientsOrigins">Origin of ingredients :</string>
-  <string name="txtCity">City, state and country where purchased :</string>
-  <string name="txtStores">Stores :</string>
+  <string name="no_products">Produtos não encontrados</string>
+  <string name="desc_list_item_icon">Ícone</string>
+  <string name="alert_dialog_warning_title">Aviso</string>
+  <string name="alert_dialog_warning_msg_user">O utilizador/palavra-passe mudou, por favor actualize a informação</string>
+  <string name="alert_dialog_product_error_msg">Produto não encontrado, por favor tente novamente</string>
+  <string name="toast_retrieving">A carregar...</string>
+  <string name="txtGenericName">Nome genérico :</string>
+  <string name="txtBarcode">Código de barras :</string>
+  <string name="txtQuantity">Quantidade :</string>
+  <string name="txtPackaging">Embalagem :</string>
+  <string name="txtBrands">Marcas :</string>
+  <string name="txtCategories">Categorias :</string>
+  <string name="txtLabels">Etiquetas, certificações, prémios :</string>
+  <string name="txtManufacturing">Locais de fabrico ou de transformação :</string>
+  <string name="txtIngredientsOrigins">Origem dos ingredientes :</string>
+  <string name="txtCity">Cidade, estado e país onde foi comprado :</string>
+  <string name="txtStores">Lojas :</string>
   <string name="txtCountries">Countries where sold :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
@@ -167,7 +167,7 @@
   <string name="dataSaved">Saved locally on your device</string>
   <string name="txtInfoAddUser">Please enter your login and password</string>
   <string name="txtDataUpdated">Data updated</string>
-  <string name="txtLoading">Loading...</string>
+  <string name="txtLoading">A carregar...</string>
   <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
@@ -191,7 +191,7 @@
   <string name="user_drawer">User</string>
   <string name="offline_edit_drawer">Offline edit</string>
   <string name="txt_anonymous">Anonymous</string>
-  <string name="txt_product_not_found">Products not found</string>
+  <string name="txt_product_not_found">Produtos não encontrados</string>
   <string name="delete_txt">Delete</string>
   <string name="sign_in_drawer">Iniciar sessão</string>
   <string name="alert_drawer">Allergen alert</string>
