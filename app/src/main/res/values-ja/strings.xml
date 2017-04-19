@@ -24,7 +24,7 @@
     <item>l</item>
     <item>ml</item>
     <item>cl</item>
-    <item>fl oz</item>
+    <item>液量オンス</item>
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
@@ -106,7 +106,7 @@
   <string name="alert_dialog_warning_msg_user">ユーザー/パスワードを変更しました。情報を更新してください</string>
   <string name="alert_dialog_product_error_msg">製品が見つかりません。もう一度試してください</string>
   <string name="toast_retrieving">読み込んでいます...</string>
-  <string name="txtGenericName">Common name :</string>
+  <string name="txtGenericName">一般名 :</string>
   <string name="txtBarcode">バーコード :</string>
   <string name="txtQuantity">量 :</string>
   <string name="txtPackaging">パッケージ :</string>
@@ -148,7 +148,7 @@
   <string name="txtInfoLoginOk">ユーザーを保存しました</string>
   <string name="txtInfoLoginNo">ユーザーを保存できませんでした</string>
   <string name="txtDialogsTitle">情報</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+  <string name="txtDialogsContent">スキャンした製品はまだ Open Food Facts に存在しません。追加してください。</string>
   <string name="txtDialogsContentPowerMode">スキャンした製品は、すでに Open Food Facts に存在します。</string>
   <string name="txtDialogsContentSend">データベースに保存された製品を送信しますか?</string>
   <string name="txtYes">はい</string>
@@ -331,8 +331,8 @@
   <string name="collagen_meat_protein_ratio">コラーゲン肉タンパク質比</string>
   <string name="cocoa">ココア</string>
   <string name="chlorophyl">クロロフィル</string>
-  <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-  <string name="take_picture_front">Take a picture of the front</string>
-  <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-  <string name="take_more_pictures">Take more pictures</string>
+  <string name="take_picture_ingredients">原材料の写真を撮ります</string>
+  <string name="take_picture_front">正面の写真を撮ります</string>
+  <string name="take_picture_nutrition_table">栄養成分表の写真を撮ります</string>
+  <string name="take_more_pictures">もっと写真を撮ります</string>
 </resources>
