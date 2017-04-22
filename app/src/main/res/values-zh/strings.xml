@@ -3,15 +3,15 @@
 <resources>
   <string name="hello_world">Hello world!</string>
   <string name="action_settings">Settings</string>
-  <string name="action_about">About</string>
-  <string name="action_discover">探索</string>
+  <string name="action_about">关于</string>
+  <string name="action_discover">Discover</string>
   <string name="contribute">How to contribute</string>
   <string name="action_find">Find</string>
   <string name="text_barcode">Type the barcode :</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Summary</item>
-    <item>成分</item>
+    <item>Ingredients</item>
     <item>Nutrition</item>
     <item>Nutrition Table</item>
   </string-array>
@@ -63,20 +63,20 @@
     <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>英語</item>
-    <item>法語</item>
-    <item>西班牙語</item>
-    <item>義大利語</item>
-    <item>德語</item>
-    <item>日語</item>
-    <item>俄語</item>
-    <item>葡萄牙語</item>
+    <item>English</item>
+    <item>French</item>
+    <item>Spanish</item>
+    <item>Italian</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Russian</item>
+    <item>Portuguese</item>
     <item>Swedish</item>
     <item>Burmese</item>
     <item>Kazakh</item>
     <item>Armenian</item>
-    <item>希臘語</item>
-    <item>希伯來語</item>
+    <item>Greek</item>
+    <item>Hebrew</item>
     <item>Galician</item>
     <item>Catalan</item>
     <item>Czech</item>
@@ -84,13 +84,13 @@
     <item>Finnish</item>
     <item>Hindi</item>
     <item>Kabyle</item>
-    <item>韓語</item>
+    <item>Korean</item>
     <item>Latvian</item>
-    <item>荷蘭語</item>
+    <item>Dutch</item>
     <item>Brazilian portuguese</item>
-    <item>羅馬尼亞語</item>
+    <item>Romanian</item>
     <item>Swedish</item>
-    <item>漢語</item>
+    <item>Chinese</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
@@ -100,10 +100,10 @@
   <string-array name="images_array">
     <item>Default</item>
     <item>Nutrition</item>
-    <item>成分</item>
+    <item>Ingredients</item>
   </string-array>
   <!-- Content Description -->
-  <string name="search_button">搜尋</string>
+  <string name="search_button">Search</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
   <string name="alert_dialog_warning_title">Warning</string>
@@ -136,7 +136,7 @@
   <string name="txtLogin">Login :</string>
   <string name="txtPass">Password :</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
-  <string name="txtSave">儲存</string>
+  <string name="txtSave">Save</string>
   <string name="txtSignIn">Sign in</string>
   <string name="txtUser">User panel</string>
   <string name="txtToastSaved">User saved</string>
@@ -144,9 +144,9 @@
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
   <string name="txtSaturatedFat">Satured fat</string>
-  <string name="hintBarcode">條碼</string>
+  <string name="hintBarcode">Barcode</string>
   <string name="hintLogin">Login</string>
-  <string name="hintPass">密碼</string>
+  <string name="hintPass">Password</string>
   <string name="errorLogin">Login or password error</string>
   <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
   <string name="txtInfoLoginOk">User saved</string>
@@ -157,7 +157,7 @@
   <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
   <string name="txtYes">Yes</string>
   <string name="txtNo">No</string>
-  <string name="hintNameProduct">名稱</string>
+  <string name="hintNameProduct">Name</string>
   <string name="hintEnergy">Energy in kJ per serving</string>
   <string name="hintEnergyUnit">Energy unit</string>
   <string name="hintWeight">Weight</string>
@@ -188,7 +188,7 @@
   <string name="home_drawer">Home</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
-  <string name="search_drawer">搜尋</string>
+  <string name="search_drawer">Search</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
@@ -197,7 +197,7 @@
   <string name="txt_anonymous">Anonymous</string>
   <string name="txt_product_not_found">Products not found</string>
   <string name="delete_txt">Delete</string>
-  <string name="sign_in_drawer">登入</string>
+  <string name="sign_in_drawer">Sign-in</string>
   <string name="alert_drawer">Allergen alert</string>
   <string name="warning_allergens">Contains allergens</string>
   <string name="title_dialog_alert">Add alert</string>
@@ -223,7 +223,7 @@
   <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
   <string name="prefs_power_mode">Power mode scan</string>
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
-  <string name="prefs_language">語言</string>
+  <string name="prefs_language">Language</string>
   <string name="prefs_language_summary">Change language</string>
   <string name="scan_history_drawer">History</string>
   <string name="clear_history">Clear history</string>
@@ -245,7 +245,7 @@
   <string name="nutrition_fat_short_name">Fat (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
-  <string name="nutrition_header">營養成分</string>
+  <string name="nutrition_header">Nutrition facts</string>
   <string name="nutrition_no_data_message">No data is available for this product</string>
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Proteins</string>
@@ -270,8 +270,8 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">搜尋</string>
-  <string name="search_hint">搜尋產品</string>
+  <string name="action_search">Search</string>
+  <string name="search_hint">Search a product</string>
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No results found</string>
   <string name="nutrition_lactose">Lactose</string>
