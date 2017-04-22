@@ -216,7 +216,7 @@
   <string name="msg_input_empty">Gelieve eerst de velden in te vullen.</string>
   <string name="new_offline_info">Gelieve een foto te maken van het product, ingrediënten, voedingswaardetabel en overige informatie op het etiket. Dank!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">Het wachtwoord moet uit minstens 6 tekens bestaan</string>
+  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
   <string name="error_field_required">Dit veld is verplicht.</string>
   <string name="action_preferences">Voorkeuren</string>
   <string name="prefs_scan_startup">Bij opstarten scannen</string>
