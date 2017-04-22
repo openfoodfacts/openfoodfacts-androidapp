@@ -59,6 +59,8 @@
     <item>nb</item>
     <item>da</item>
     <item>zh-rCN</item>
+    <item>fa</item>
+    <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Engleză</item>
@@ -92,6 +94,8 @@
     <item>Norvegiană (Bokmal)</item>
     <item>Daneză</item>
     <item>Chineză simplificată</item>
+    <item>Farsi</item>
+    <item>Serbian</item>
   </string-array>
   <string-array name="images_array">
     <item>Implicită</item>
@@ -212,7 +216,7 @@
   <string name="msg_input_empty">Vă rugăm completați câmpurile.</string>
   <string name="new_offline_info">Vă rugăm fotografiați produsul, lista sa de ingrediente, informațiile nutriționale și oricare alte informații prezente pe eticheta. Vă mulțumim!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">Parola trebuie să fie de cel puțin 6 caractere.</string>
+  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
   <string name="error_field_required">Acest câmp este obligatoriu.</string>
   <string name="action_preferences">Preferinţe</string>
   <string name="prefs_scan_startup">Scanare la pornire</string>
