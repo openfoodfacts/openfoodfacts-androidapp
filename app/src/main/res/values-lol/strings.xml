@@ -59,6 +59,8 @@
     <item>crwdns35009:0crwdne35009:0</item>
     <item>crwdns35010:0crwdne35010:0</item>
     <item>crwdns35011:0crwdne35011:0</item>
+    <item>crwdns35939:0crwdne35939:0</item>
+    <item>crwdns35940:0crwdne35940:0</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>crwdns35012:0crwdne35012:0</item>
@@ -92,6 +94,8 @@
     <item>crwdns35040:0crwdne35040:0</item>
     <item>crwdns35041:0crwdne35041:0</item>
     <item>crwdns35042:0crwdne35042:0</item>
+    <item>crwdns35941:0crwdne35941:0</item>
+    <item>crwdns35942:0crwdne35942:0</item>
   </string-array>
   <string-array name="images_array">
     <item>crwdns35043:0crwdne35043:0</item>
