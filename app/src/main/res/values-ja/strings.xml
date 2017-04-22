@@ -59,6 +59,8 @@
     <item>nb</item>
     <item>da</item>
     <item>zh-rCN</item>
+    <item>fa</item>
+    <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>英語</item>
@@ -92,6 +94,8 @@
     <item>ノルウェー語 (ブークモール)</item>
     <item>デンマーク語</item>
     <item>中国語（簡体字）</item>
+    <item>Farsi</item>
+    <item>Serbian</item>
   </string-array>
   <string-array name="images_array">
     <item>デフォルト</item>
@@ -212,7 +216,7 @@
   <string name="msg_input_empty">まず項目を入力してください。</string>
   <string name="new_offline_info">製品、原材料、栄養成分表、およびラベル上の他の情報を撮影してください。 ありがとうございます!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">パスワードは6文字以上にする必要があります。</string>
+  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
   <string name="error_field_required">このフィールドは必須入力です。</string>
   <string name="action_preferences">プリファレンス</string>
   <string name="prefs_scan_startup">起動時にスキャン</string>

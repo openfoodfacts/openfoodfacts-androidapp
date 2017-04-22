@@ -59,6 +59,8 @@
     <item>nb</item>
     <item>da</item>
     <item>zh-rCN</item>
+    <item>fa</item>
+    <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Engels</item>
@@ -92,14 +94,16 @@
     <item>Noors (Bokmal)</item>
     <item>Deens</item>
     <item>Vereenvoudigd Chinees</item>
+    <item>Farsi</item>
+    <item>Serbian</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
-    <item>Voedingsstof</item>
+    <item>Voedingswaarde</item>
     <item>Ingrediënten</item>
   </string-array>
   <!-- Content Description -->
-  <string name="search_button">Zoek</string>
+  <string name="search_button">Zoeken</string>
   <string name="no_products">Geen product gevonden</string>
   <string name="desc_list_item_icon">Pictogram</string>
   <string name="alert_dialog_warning_title">Let op</string>
@@ -132,7 +136,7 @@
   <string name="txtLogin">Inloggen</string>
   <string name="txtPass">Wachtwoord:</string>
   <string name="txtTitleHome">Open je voedsel en weet wat je eet</string>
-  <string name="txtSave">Bewaar</string>
+  <string name="txtSave">Opslaan</string>
   <string name="txtSignIn">Inloggen</string>
   <string name="txtUser">Gebruikerspaneel</string>
   <string name="txtToastSaved">Gebruiker opgeslagen</string>
@@ -140,7 +144,7 @@
   <string name="txtFat">Vet</string>
   <string name="txtSugars">Suikers</string>
   <string name="txtSaturatedFat">Verzadigd vet</string>
-  <string name="hintBarcode">Streepjescode</string>
+  <string name="hintBarcode">Barcode</string>
   <string name="hintLogin">Inloggen</string>
   <string name="hintPass">Wachtwoord</string>
   <string name="errorLogin">Verkeerde gebruikersnaam of wachtwoord</string>
@@ -153,7 +157,7 @@
   <string name="txtDialogsContentSend">Wilt u de bewaarde producten opslaan in de databank?</string>
   <string name="txtYes">Ja</string>
   <string name="txtNo">Nee</string>
-  <string name="hintNameProduct">Naam:</string>
+  <string name="hintNameProduct">Naam</string>
   <string name="hintEnergy">Energie in kj per portie</string>
   <string name="hintEnergyUnit">Eenheid van energie</string>
   <string name="hintWeight">Gewicht</string>
@@ -178,12 +182,12 @@
   <string name="txtPalm">Product bevat geen palmolie</string>
   <string name="txtBarcodeNotValid">Streepjescode niet geldig</string>
   <string name="try_it_scan_now">Product scannen</string>
-  <string name="share">Delen</string>
+  <string name="share">Share</string>
   <string name="msg_share">Bekijk dit product op Open Food Facts</string>
   <string name="create_account">Inschrijven</string>
   <string name="home_drawer">Hoofdmenu</string>
-  <string name="open_beauty_drawer">Schoonheidsfeiten openen</string>
-  <string name="open_food_drawer">Open Food Facts</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
+  <string name="open_food_drawer">Open Food Facts NL</string>
   <string name="search_drawer">Zoeken</string>
   <string name="search_by_barcode_drawer">Zoek met streepjescode</string>
   <string name="search_by_name_drawer">Zoek op naam</string>
@@ -191,7 +195,7 @@
   <string name="user_drawer">Gebruikersnaam</string>
   <string name="offline_edit_drawer">Offline bewerken</string>
   <string name="txt_anonymous">Anoniem</string>
-  <string name="txt_product_not_found">Artikelen niet gevonden</string>
+  <string name="txt_product_not_found">Geen product gevonden</string>
   <string name="delete_txt">Verwijder</string>
   <string name="sign_in_drawer">Aanmelden</string>
   <string name="alert_drawer">Allergen alert</string>
@@ -201,7 +205,7 @@
   <string name="from_gallery">Gallerie</string>
   <string name="product_sent">Product sent successfully</string>
   <string name="action_edit_product">Bewerk product</string>
-  <string name="title_info_dialog">Melding</string>
+  <string name="title_info_dialog">Opmerking</string>
   <string name="text_offline_info_dialog">Je kunt de producten offline scannen en deze later verzenden naar Open Food Facts. Alle producten die je scant zullen hier verschijnen en zijn te verzenden met onderstaande button.</string>
   <string name="permission_camera">Om streepjescodes te scannen en foto\'s te nemen is cameratoestemming vereist.</string>
   <string name="permission_title">Informatie over permissies</string>
@@ -212,7 +216,7 @@
   <string name="msg_input_empty">Gelieve eerst de velden in te vullen.</string>
   <string name="new_offline_info">Gelieve een foto te maken van het product, ingrediënten, voedingswaardetabel en overige informatie op het etiket. Dank!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">Het wachtwoord moet uit minstens 6 tekens bestaan.</string>
+  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
   <string name="error_field_required">Dit veld is verplicht.</string>
   <string name="action_preferences">Voorkeuren</string>
   <string name="prefs_scan_startup">Bij opstarten scannen</string>
@@ -241,7 +245,7 @@
   <string name="nutrition_fat_short_name">Vet (g)</string>
   <string name="nutrition_fiber">Voedingsvezels</string>
   <string name="nutrition_fiber_short_name">Voedingsvezels (g)</string>
-  <string name="nutrition_header">Voedingswaarden</string>
+  <string name="nutrition_header">Voedigswaarden</string>
   <string name="nutrition_no_data_message">Er zijn geen gegevens beschikbaar voor dit product</string>
   <string name="nutrition_per_quantity">Voor 100g/100ml</string>
   <string name="nutrition_proteins">Eiwitten</string>
@@ -251,7 +255,7 @@
   <string name="nutrition_satured_fat">Verzadigd vet</string>
   <string name="nutrition_satured_fat_short_name">Verzadigd vet (g)</string>
   <string name="nutrition_serving">Per portie</string>
-  <string name="nutrition_serving_size">Portiegrootte:</string>
+  <string name="nutrition_serving_size">Per portie</string>
   <string name="nutrition_sodium">Natrium</string>
   <string name="nutrition_sodium_short_name">Natrium (g)</string>
   <string name="nutrition_sugars">Suikers</string>
@@ -266,7 +270,7 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2-uitstoot: "</string>
   <string name="txtDialogPowerMode">Bekijk</string>
   <string name="txtSeeMore">Meer</string>
-  <string name="action_search">Zoek</string>
+  <string name="action_search">Zoeken</string>
   <string name="search_hint">Zoek een product</string>
   <string name="number_of_results">Aantal resultaten</string>
   <string name="txt_no_results">Geen resultaten gevonden</string>

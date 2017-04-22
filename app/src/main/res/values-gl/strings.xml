@@ -59,6 +59,8 @@
     <item>nb</item>
     <item>da</item>
     <item>zh-rCN</item>
+    <item>fa</item>
+    <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Inglés</item>
@@ -92,6 +94,8 @@
     <item>Noruego (Bokmaal)</item>
     <item>Dinamarqués</item>
     <item>Chinés simplificado</item>
+    <item>Farsi</item>
+    <item>Serbian</item>
   </string-array>
   <string-array name="images_array">
     <item>Predeterminado</item>
@@ -212,7 +216,7 @@
   <string name="msg_input_empty">Encha os campos primeiro.</string>
   <string name="new_offline_info">Faga unha foto do produto, ingredientes, táboa coa información nutricional e outra información da etiqueta. Grazas.</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">O contrasinal debe ser de polo menos 6 caracteres.</string>
+  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
   <string name="error_field_required">Este campo é obrigatorio</string>
   <string name="action_preferences">Axustes</string>
   <string name="prefs_scan_startup">Escanear ao iniciar</string>

@@ -59,6 +59,8 @@
     <item>nb</item>
     <item>da</item>
     <item>zh-rCN</item>
+    <item>fa</item>
+    <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Englisch</item>
@@ -92,6 +94,8 @@
     <item>Norwegisch (Bokmål)</item>
     <item>Dänisch</item>
     <item>Chinesisch (vereinfacht)</item>
+    <item>Farsi</item>
+    <item>Serbian</item>
   </string-array>
   <string-array name="images_array">
     <item>Standard</item>
@@ -212,7 +216,7 @@
   <string name="msg_input_empty">Bitte zuerst die Felder ausfüllen</string>
   <string name="new_offline_info">Nehmen Sie bitte Bilder vom Produkt, den Zutaten, den Nährwertangaben und jeder anderen Information auf dem Etikett auf. Danke!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">Das Passwort muss mindestens 6 Zeichen lang sein.</string>
+  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
   <string name="error_field_required">Das Feld ist erforderlich.</string>
   <string name="action_preferences">Einstellungen</string>
   <string name="prefs_scan_startup">Scannen beim Starten</string>

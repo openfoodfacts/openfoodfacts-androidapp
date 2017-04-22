@@ -59,6 +59,8 @@
     <item>nb</item>
     <item>da</item>
     <item>zh-rCN</item>
+    <item>fa</item>
+    <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>영어</item>
@@ -92,6 +94,8 @@
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
+    <item>Farsi</item>
+    <item>Serbian</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
@@ -212,7 +216,7 @@
   <string name="msg_input_empty">Please fill the fields first.</string>
   <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">The password needs to be a least 6 characters long.</string>
+  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
   <string name="error_field_required">This field is required.</string>
   <string name="action_preferences">Preferences</string>
   <string name="prefs_scan_startup">Scan on startup</string>

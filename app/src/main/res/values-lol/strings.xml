@@ -59,6 +59,8 @@
     <item>crwdns35009:0crwdne35009:0</item>
     <item>crwdns35010:0crwdne35010:0</item>
     <item>crwdns35011:0crwdne35011:0</item>
+    <item>crwdns35939:0crwdne35939:0</item>
+    <item>crwdns35940:0crwdne35940:0</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>crwdns35012:0crwdne35012:0</item>
@@ -92,6 +94,8 @@
     <item>crwdns35040:0crwdne35040:0</item>
     <item>crwdns35041:0crwdne35041:0</item>
     <item>crwdns35042:0crwdne35042:0</item>
+    <item>crwdns35941:0crwdne35941:0</item>
+    <item>crwdns35942:0crwdne35942:0</item>
   </string-array>
   <string-array name="images_array">
     <item>crwdns35043:0crwdne35043:0</item>
@@ -212,7 +216,7 @@
   <string name="msg_input_empty">crwdns35168:0crwdne35168:0</string>
   <string name="new_offline_info">crwdns35169:0crwdne35169:0</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">crwdns35170:0crwdne35170:0</string>
+  <string name="error_invalid_password">crwdns35943:0crwdne35943:0</string>
   <string name="error_field_required">crwdns35171:0crwdne35171:0</string>
   <string name="action_preferences">crwdns35172:0crwdne35172:0</string>
   <string name="prefs_scan_startup">crwdns35173:0crwdne35173:0</string>

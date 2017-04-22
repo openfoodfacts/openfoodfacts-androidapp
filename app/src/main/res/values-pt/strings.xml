@@ -52,13 +52,15 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
+    <item>fa</item>
+    <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Inglês</item>
@@ -92,6 +94,8 @@
     <item>Norueguês (Bokmal)</item>
     <item>Dinamarquês</item>
     <item>Chinês simplificado</item>
+    <item>Farsi</item>
+    <item>Serbian</item>
   </string-array>
   <string-array name="images_array">
     <item>Padrão</item>
@@ -182,8 +186,8 @@
   <string name="msg_share">Ver este produto no Open Food Facts :</string>
   <string name="create_account">Inscrever</string>
   <string name="home_drawer">Início</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
+  <string name="open_beauty_drawer">Open Beauty Facts - Portugal</string>
+  <string name="open_food_drawer">Open Food Facts - Portugal</string>
   <string name="search_drawer">Procurar</string>
   <string name="search_by_barcode_drawer">Escreva o código de barras</string>
   <string name="search_by_name_drawer">Pesquisar pelo nome</string>
