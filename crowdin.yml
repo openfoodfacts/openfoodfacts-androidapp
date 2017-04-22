@@ -8,9 +8,30 @@ files:
         zh-CN: zh-rCN
         en-AU: en-rAU
         en-GB: en-rGB
+        nl-BE: nl-rBE
+        nl: nl
   - source: /app/src/obf/res/values/strings.xml
     translation: /app/src/obf/res/values-%two_letters_code%/%original_file_name%
+    languages_mapping:
+      two_letters_code:
+        zh-CN: zh-rCN
+        en-GB: en-rGB
+        pt-BR: pt-rBR
+        en-AU: en-rAU
   - source: /app/src/off/res/values/strings.xml
     translation: /app/src/off/res/values-%two_letters_code%/%original_file_name%
+    languages_mapping:
+      two_letters_code:
+        pt-BR: pt-rBR
+        zh-CN: zh-rCN
+        en-GB: en-rGB
+        en-AU: en-rAU
+        nl-BE: nl-rBE
   - source: /app/src/opff/res/values/strings.xml
     translation: /app/src/opff/res/values-%two_letters_code%/strings.xml
+    languages_mapping:
+      two_letters_code:
+        zh-CN: zh-rCN
+        en-GB: en-rGB
+        en-AU: en-rAU
+        pt-BR: pt-rBR
