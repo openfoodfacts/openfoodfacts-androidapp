@@ -59,6 +59,8 @@
     <item>nb</item>
     <item>da</item>
     <item>zh-rCN</item>
+    <item>fa</item>
+    <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Engleski</item>
@@ -92,6 +94,8 @@
     <item>Norveški (Bokmal)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
+    <item>Farsi</item>
+    <item>Serbian</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
