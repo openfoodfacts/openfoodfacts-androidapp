@@ -59,6 +59,8 @@
     <item>nb</item>
     <item>da</item>
     <item>zh-rCN</item>
+    <item>fa</item>
+    <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Engelsk</item>
@@ -92,6 +94,8 @@
     <item>Norsk (bokmål)</item>
     <item>Danish</item>
     <item>Simplified Chinese</item>
+    <item>Farsi</item>
+    <item>Serbian</item>
   </string-array>
   <string-array name="images_array">
     <item>Standardinnstiling</item>
@@ -212,7 +216,7 @@
   <string name="msg_input_empty">Please fill the fields first.</string>
   <string name="new_offline_info">Vennlist ta et bilde av produktet, ingredienser, ernæringsinnhold og eventuell annen informasjon som finnes på etiketten. Tusen takk!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">Passordet må være minst 6 tegn</string>
+  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
   <string name="error_field_required">Dette feltet er obligatorisk.</string>
   <string name="action_preferences">Brukervalg</string>
   <string name="prefs_scan_startup">Skann ved oppstart</string>
