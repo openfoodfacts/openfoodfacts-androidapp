@@ -13,15 +13,15 @@
     <item>Resumo</item>
     <item>Ingredientes</item>
     <item>Nutrição</item>
-    <item>Voltar ao menu</item>
+    <item>Tabela Nutricional</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
     <item>mg</item>
     <item>mg</item>
+    <item>kg</item>
     <item>l</item>
-    <item>ml</item>
     <item>ml</item>
     <item>cl</item>
     <item>fl oz</item>
@@ -179,8 +179,8 @@
   <string name="txtContentDialogUploading">Por favor não saia durante o procedimento...</string>
   <string name="txtAbout">As fotos que enviar ficam publicadas sob a licença livre Creative Commons Atribuição-CompartilhaIgual.</string>
   <string name="txtAllsent">Produtos enviados</string>
-  <string name="txtPalm">O produto não contem óleo de palma</string>
-  <string name="txtBarcodeNotValid">Código de barras invalido</string>
+  <string name="txtPalm">O produto não contém óleo de palma</string>
+  <string name="txtBarcodeNotValid">Código de barras inválido</string>
   <string name="try_it_scan_now">Digitalizar produto</string>
   <string name="share">Partilhar</string>
   <string name="msg_share">Ver este produto no Open Food Facts :</string>
@@ -216,7 +216,7 @@
   <string name="msg_input_empty">Por favor, preencha os campos primeiro.</string>
   <string name="new_offline_info">Por favor, tire uma foto ao produto, aos ingredientes, à tabela nutricional e a qualquer outra informação relevante na embalagem. Obrigado!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
+  <string name="error_invalid_password">A palavra-passe deve conter pelo menos 6 caracteres.</string>
   <string name="error_field_required">Este campo é necessário.</string>
   <string name="action_preferences">Configurações</string>
   <string name="prefs_scan_startup">Digitalizar ao iniciar</string>
