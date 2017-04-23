@@ -19,7 +19,7 @@
   <string-array name="units_array">
     <item> </item>
     <item>mg</item>
-    <item>kg</item>
+    <item>mg</item>
     <item>l</item>
     <item>ml</item>
     <item>ml</item>
@@ -95,7 +95,7 @@
     <item>Dinamarquês</item>
     <item>Chinês simplificado</item>
     <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Sérvio</item>
   </string-array>
   <string-array name="images_array">
     <item>Padrão</item>
