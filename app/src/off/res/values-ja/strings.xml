@@ -11,5 +11,5 @@
   <string name="website_product">https://jp.openfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://jp.openfoodfacts.org/contributor/</string>
-  <string name="txtHome">Open Food Facts is a open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
+  <string name="txtHome">Open Food Facts は、食品の原材料、アレルゲン、栄養成分表、および製品ラベルで見ることができるすべての情報のオープンデータベースです。</string>
 </resources>
