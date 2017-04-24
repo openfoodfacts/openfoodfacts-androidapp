@@ -54,11 +54,13 @@
     <item>nl</item>
     <item>pt-rBR</item>
     <item>ro</item>
-    <item>sv</item>
+    <item>Шведский</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
     <item>упрощенный китайский</item>
+    <item>fa</item>
+    <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Английский</item>
@@ -92,6 +94,8 @@
     <item>Норвежский (Букмол)</item>
     <item>Датский</item>
     <item>Китайский (упрощенный)</item>
+    <item>Farsi</item>
+    <item>Serbian</item>
   </string-array>
   <string-array name="images_array">
     <item>По умолчанию</item>
@@ -212,7 +216,7 @@
   <string name="msg_input_empty">Сначала заполните поле.</string>
   <string name="new_offline_info">Сделайте фото продукта, состава, пищевой ценности и другой информации на этикетке. Спасибо!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">Длина пароля должна быть не менее 6 символов.</string>
+  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
   <string name="error_field_required">Это поле обязательно.</string>
   <string name="action_preferences">Настройки</string>
   <string name="prefs_scan_startup">Сканировать при запуске</string>
