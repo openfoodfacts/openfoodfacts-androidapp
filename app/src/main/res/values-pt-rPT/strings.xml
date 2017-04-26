@@ -13,15 +13,15 @@
     <item>Resumo</item>
     <item>Ingredientes</item>
     <item>Nutrição</item>
-    <item>Voltar ao menu</item>
+    <item>Tabela Nutricional</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
+    <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
-    <item>ml</item>
     <item>ml</item>
     <item>cl</item>
     <item>fl oz</item>
@@ -52,13 +52,13 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-BR</item>
+    <item>pt-rBR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-CN</item>
+    <item>zh-rCN</item>
     <item>fa</item>
     <item>rs</item>
   </string-array>
