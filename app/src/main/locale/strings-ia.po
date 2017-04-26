@@ -518,7 +518,7 @@ msgstr "Aperi tu cibo e cognosce lo que tu mangia"
 
 msgctxt "txtHome"
 msgid ""
-"Open Food Facts is a open database of food products with ingredients, "
+"Open Food Facts is an open database of food products with ingredients, "
 "allergens, nutrition facts and all the tidbits of information we can find on "
 "product labels."
 msgstr ""
