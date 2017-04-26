@@ -10,6 +10,6 @@
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/produit/ -->
   <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
-  <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
-  <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
+  <string name="website_contributor">https://world-ja.openpetfoodfacts.org/contributor/</string>
+  <string name="txtHome">Open Pet Food Facts は、原材料、アレルゲン、マーク、およびペットフードの製品ラベルに記載されているすべての情報をもつペットフード製品のデータベースです。</string>
 </resources>
