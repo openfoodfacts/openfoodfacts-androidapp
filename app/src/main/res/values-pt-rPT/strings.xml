@@ -13,15 +13,15 @@
     <item>Resumo</item>
     <item>Ingredientes</item>
     <item>Nutrição</item>
-    <item>Tabela Nutricional</item>
+    <item>Voltar ao menu</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
     <item>mg</item>
-    <item>mg</item>
     <item>kg</item>
     <item>l</item>
+    <item>ml</item>
     <item>ml</item>
     <item>cl</item>
     <item>fl oz</item>
