@@ -18,10 +18,10 @@
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
+    <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
-    <item>ml</item>
     <item>ml</item>
     <item>cl</item>
     <item>fl oz</item>
@@ -63,9 +63,9 @@
     <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
+    <item>Béarla</item>
+    <item>Fraincis</item>
+    <item>Spáinnis</item>
     <item>Italian</item>
     <item>German</item>
     <item>Japanese</item>
@@ -120,7 +120,7 @@
   <string name="txtManufacturing">Manufacturing or processing places :</string>
   <string name="txtIngredientsOrigins">Origin of ingredients :</string>
   <string name="txtCity">City, state and country where purchased :</string>
-  <string name="txtStores">Stores :</string>
+  <string name="txtStores">Siopaí:</string>
   <string name="txtCountries">Countries where sold :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
@@ -140,8 +140,8 @@
   <string name="txtSignIn">Sign in</string>
   <string name="txtUser">User panel</string>
   <string name="txtToastSaved">User saved</string>
-  <string name="txtSalt">Salt</string>
-  <string name="txtFat">Fat</string>
+  <string name="txtSalt">Salann</string>
+  <string name="txtFat">Saill</string>
   <string name="txtSugars">Sugars</string>
   <string name="txtSaturatedFat">Satured fat</string>
   <string name="hintBarcode">Barcode</string>
@@ -155,13 +155,13 @@
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
   <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
-  <string name="txtYes">Yes</string>
-  <string name="txtNo">No</string>
-  <string name="hintNameProduct">Name</string>
+  <string name="txtYes">Tá</string>
+  <string name="txtNo">Níl</string>
+  <string name="hintNameProduct">Ainm</string>
   <string name="hintEnergy">Energy in kJ per serving</string>
   <string name="hintEnergyUnit">Energy unit</string>
   <string name="hintWeight">Weight</string>
-  <string name="hintStores">Store</string>
+  <string name="hintStores">Siopa</string>
   <string name="hintBrand">Brand</string>
   <string name="txtTakePicture">Take picture</string>
   <string name="txtSendAll">Upload all</string>
@@ -241,16 +241,16 @@
   <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
   <string name="nutrition_energy">Energy</string>
   <string name="nutrition_energy_short_name">Energy</string>
-  <string name="nutrition_fat">Fat</string>
+  <string name="nutrition_fat">Saill</string>
   <string name="nutrition_fat_short_name">Fat (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
   <string name="nutrition_header">Nutrition facts</string>
   <string name="nutrition_no_data_message">No data is available for this product</string>
-  <string name="nutrition_per_quantity">For 100g/100ml</string>
-  <string name="nutrition_proteins">Proteins</string>
-  <string name="nutrition_proteins_short_name">Proteins (g)</string>
-  <string name="nutrition_salt">Salt</string>
+  <string name="nutrition_per_quantity">Maidir le 100g / 100ml</string>
+  <string name="nutrition_proteins">Próitéiní</string>
+  <string name="nutrition_proteins_short_name">Próitéiní (g)</string>
+  <string name="nutrition_salt">Salann</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Satured fat</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
