@@ -270,7 +270,7 @@
   <string name="textCarbonFootprint">"Pegada ecológica / emissões CO2: "</string>
   <string name="txtDialogPowerMode">Vista rápida</string>
   <string name="txtSeeMore">Ver mais</string>
-  <string name="action_search">Pesquisar</string>
+  <string name="action_search">Procurar</string>
   <string name="search_hint">Pesquisar um produto</string>
   <string name="number_of_results">Número de resultados :</string>
   <string name="txt_no_results">Sem resultados</string>
