@@ -115,6 +115,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
         }
         if(mProduct != null) {
             if(isNotEmpty(mProduct.getImgupload_front())) {
+		imgSaveFront.setVisibility(View.VISIBLE);
                 Picasso.with(this)
                         .load(mProduct.getImgupload_front())
                         .fit()
