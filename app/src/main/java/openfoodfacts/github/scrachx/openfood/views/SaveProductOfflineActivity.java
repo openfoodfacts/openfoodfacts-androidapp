@@ -197,8 +197,10 @@ public class SaveProductOfflineActivity extends BaseActivity {
             mProduct.setPassword(password);
         }
 
+        if (isNotEmpty(mProduct.getImgupload_front())) {
         Utils.compressImage(mProduct.getImgupload_front());
-
+        }
+	    
         if (isNotBlank(mProduct.getImgupload_ingredients())) {
             Utils.compressImage(mProduct.getImgupload_ingredients());
         }
