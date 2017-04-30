@@ -323,7 +323,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                     .fit()
                     .centerCrop()
                     .into(imgSaveNutrition);
-        } else {
+        } else if(imageTaken.equals("ingredients")) {
             mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
             imgSaveIngredients.setVisibility(View.VISIBLE);
             Picasso.with(this)
