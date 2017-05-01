@@ -147,7 +147,7 @@
   <string name="hintBarcode">Code barre</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Mot de passe</string>
-  <string name="errorLogin">Erreur d\'identifiant/mdp</string>
+  <string name="errorLogin">Identifiant ou mot de passe incorrect</string>
   <string name="errorWeb">Erreur de connexion internet</string>
   <string name="txtInfoLoginOk">Utilisateur enregistré</string>
   <string name="txtInfoLoginNo">Utilisateur anonyme</string>
@@ -159,7 +159,7 @@
   <string name="txtNo">Non</string>
   <string name="hintNameProduct">Nom</string>
   <string name="hintEnergy">Energie en kJ par portion</string>
-  <string name="hintEnergyUnit">Unité de l\'energie</string>
+  <string name="hintEnergyUnit">Unité d\'énergie</string>
   <string name="hintWeight">Poids / Quantité</string>
   <string name="hintStores">Magasin</string>
   <string name="hintBrand">Marque</string>
@@ -167,7 +167,7 @@
   <string name="txtSendAll">Tout envoyer</string>
   <string name="txtNoData">Aucune donnée</string>
   <string name="txtPictureNeeded">Veuillez d\'abord prendre une photo</string>
-  <string name="toastSending">Envoi..</string>
+  <string name="toastSending">Envoi en cours...</string>
   <string name="dataSaved">Données enregistrées en local...</string>
   <string name="txtInfoAddUser">Veuillez ajouter un utilisateur</string>
   <string name="txtDataUpdated">Données mises à jour</string>
