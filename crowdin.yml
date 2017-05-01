@@ -10,8 +10,8 @@ files:
         en-GB: en-rGB
         nl-BE: nl-rBE
         nl: nl
-        zh-TW: zh_rTW
-        zh-HK: zh_rHK
+        zh-TW: zh-rTW
+        zh-HK: zh-rHK
   - source: /app/src/obf/res/values/strings.xml
     translation: /app/src/obf/res/values-%two_letters_code%/%original_file_name%
     languages_mapping:
@@ -23,8 +23,8 @@ files:
         pt-PT: pt-rPT
         nl-BE: nl-rBE
         nl: nl
-        zh-HK: zh_rHK
-        zh-TW: zh_rTW
+        zh-HK: zh-rHK
+        zh-TW: zh-rTW
   - source: /app/src/off/res/values/strings.xml
     translation: /app/src/off/res/values-%two_letters_code%/%original_file_name%
     languages_mapping:
@@ -35,8 +35,8 @@ files:
         en-AU: en-rAU
         nl-BE: nl-rBE
         pt-PT: pt-rPT
-        zh-HK: zh_rHK
-        zh-TW: zh_rTW
+        zh-HK: zh-rHK
+        zh-TW: zh-rTW
   - source: /app/src/opff/res/values/strings.xml
     translation: /app/src/opff/res/values-%two_letters_code%/strings.xml
     languages_mapping:
@@ -47,5 +47,5 @@ files:
         pt-BR: pt-rBR
         nl-BE: nl-rBE
         pt-PT: pt-rPT
-        zh-TW: zh_rTW
-        zh-HK: zh_rHK
+        zh-TW: zh-rTW
+        zh-HK: zh-rHK
