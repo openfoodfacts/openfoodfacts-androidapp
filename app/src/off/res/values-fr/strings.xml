@@ -11,5 +11,5 @@
   <string name="website_product">https://world-fr.openfoodfacts.org/produit/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-fr.openfoodfacts.org/contributeur/</string>
-  <string name="txtHome">Open Food Facts est une base de données ouverte de produits alimentaires contenant les ingrédients, les allergènes, les informations nutritionnelles et toutes les bribes d\'informations que nous pouvons trouver sur les étiquettes des produits.</string>
+  <string name="txtHome">Open Food Facts est une base de données ouverte de produits alimentaires contenant ingrédients, allergènes, informations nutritionnelles et toute information qui se trouve sur les étiquettes.</string>
 </resources>
