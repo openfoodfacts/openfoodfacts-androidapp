@@ -3,7 +3,6 @@ package openfoodfacts.github.scrachx.openfood.models;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
-import org.greenrobot.greendao.annotation.Unique;
 
 import java.util.Date;
 import org.greenrobot.greendao.annotation.Generated;
