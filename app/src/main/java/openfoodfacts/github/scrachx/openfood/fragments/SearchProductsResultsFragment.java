@@ -121,15 +121,12 @@ public class SearchProductsResultsFragment extends BaseFragment {
                             countProductsView.setVisibility(View.VISIBLE);
                             offlineCloudLayout.setVisibility(View.INVISIBLE);
                             noResultsLayout.setVisibility(View.INVISIBLE);
-                        /* if the isResponseOk is false */
                         } else {
-                            /* if countProducts == -2 this means that the product being searched isn't stored into the database */
                             if(countProducts == -2) {
                                 countProductsView.setVisibility(View.INVISIBLE);
                                 offlineCloudLayout.setVisibility(View.INVISIBLE);
                                 noResultsLayout.setVisibility(View.VISIBLE);
                             }
-                            /* else there is an internet connection problem or the server is down etc */
                             else{
                                 countProductsView.setVisibility(View.INVISIBLE);
                                 noResultsLayout.setVisibility(View.INVISIBLE);
