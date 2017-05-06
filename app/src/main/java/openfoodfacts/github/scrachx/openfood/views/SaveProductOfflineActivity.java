@@ -115,6 +115,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
         }
         if(mProduct != null) {
             if(isNotEmpty(mProduct.getImgupload_front())) {
+		imgSaveFront.setVisibility(View.VISIBLE);
                 Picasso.with(this)
                         .load(mProduct.getImgupload_front())
                         .fit()
@@ -197,8 +198,10 @@ public class SaveProductOfflineActivity extends BaseActivity {
             mProduct.setPassword(password);
         }
 
+        if (isNotEmpty(mProduct.getImgupload_front())) {
         Utils.compressImage(mProduct.getImgupload_front());
-
+        }
+	    
         if (isNotBlank(mProduct.getImgupload_ingredients())) {
             Utils.compressImage(mProduct.getImgupload_ingredients());
         }
@@ -320,7 +323,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                     .fit()
                     .centerCrop()
                     .into(imgSaveNutrition);
-        } else {
+        } else if(imageTaken.equals("ingredients")) {
             mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
             imgSaveIngredients.setVisibility(View.VISIBLE);
             Picasso.with(this)
