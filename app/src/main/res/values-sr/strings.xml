@@ -126,8 +126,8 @@
   <string name="txtSubstances">Sastojci koji izazivaju alergiju ili netoleranciju :</string>
   <string name="txtAdditives">Aditivi :</string>
   <string name="txtTraces">Tragovi :</string>
-  <string name="txtMayBeFromPalmOilProduct">Sastojci koji mogu biti od palminog ulja :</string>
-  <string name="txtPalmOilProduct">Sastojci od palminog ulja :</string>
+  <string name="txtMayBeFromPalmOilProduct">Sastojci koji mogu biti iz palminog ulja :</string>
+  <string name="txtPalmOilProduct">Sastojci iz palminog ulja :</string>
   <string name="txtServingSize">Porcija :</string>
   <string name="txtNutrientLevel100g">Hranljiva vrednost na 100g :</string>
   <string name="txtNutritionLevelLow">u malim količinama</string>
