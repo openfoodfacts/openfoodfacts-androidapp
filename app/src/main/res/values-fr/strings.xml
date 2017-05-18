@@ -284,7 +284,7 @@
   <string name="minerals">Minéraux</string>
   <string name="nutrition_calcium">Calcium</string>
   <string name="nutrition_potassium">Potassium</string>
-  <string name="nutrition_chlore">Chlorine</string>
+  <string name="nutrition_chlore">Chlore</string>
   <string name="nutrition_magnesium">Magnésium</string>
   <string name="nutrition_taurine">Taurine</string>
   <string name="nutrition_monounsaturatedFat">Graisses mono-insaturées</string>
@@ -292,7 +292,7 @@
   <string name="nutrition_omega3">Oméga-3</string>
   <string name="nutrition_omega6">Oméga-6</string>
   <string name="nutrition_omega9">Oméga-9</string>
-  <string name="nutrition_sucrose">Sucrose</string>
+  <string name="nutrition_sucrose">Saccharose</string>
   <string name="nutrition_glucose">Glucose</string>
   <string name="nutrition_fructose">Fructose</string>
   <string name="nutrition_maltose">Maltose</string>
@@ -315,7 +315,7 @@
   <string name="silica">Silice</string>
   <string name="bicarbonate">Bicarbonate</string>
   <string name="potassium">Potassium</string>
-  <string name="chloride">Chloride</string>
+  <string name="chloride">Chlorure</string>
   <string name="calcium">Calcium</string>
   <string name="phosphorus">Phosphore</string>
   <string name="iron">Fer</string>
@@ -323,7 +323,7 @@
   <string name="zinc">Zinc</string>
   <string name="copper">Cuivre</string>
   <string name="manganese">Manganèse</string>
-  <string name="fluoride">Fluoride</string>
+  <string name="fluoride">Fluorure</string>
   <string name="selenium">Sélénium</string>
   <string name="chromium">Chrome</string>
   <string name="molybdenum">Molybdène</string>
