@@ -187,7 +187,7 @@
   <string name="create_account">Inschrijven</string>
   <string name="home_drawer">Hoofdmenu</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts NL</string>
+  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Zoeken</string>
   <string name="search_by_barcode_drawer">Zoek met streepjescode</string>
   <string name="search_by_name_drawer">Zoek op naam</string>
@@ -274,6 +274,9 @@
   <string name="search_hint">Zoek een product</string>
   <string name="number_of_results">Aantal resultaten</string>
   <string name="txt_no_results">Geen resultaten gevonden</string>
+  <string name="txt_extend_search">Try broadening your search or add the product</string>
+  <string name="txt_cant_load_search_results">Can\'t load search results</string>
+  <string name="txt_try_again">Try again</string>
   <string name="nutrition_lactose">Lactose</string>
   <string name="nutrition_casein">Caseïne</string>
   <string name="nutrition_maltodextrins">Maltodextrine</string>
