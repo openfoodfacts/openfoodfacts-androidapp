@@ -95,7 +95,7 @@
     <item>danski</item>
     <item>pojednostavljeni kineski</item>
     <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Srpski</item>
   </string-array>
   <string-array name="images_array">
     <item>Podrazumevana</item>
@@ -126,8 +126,8 @@
   <string name="txtSubstances">Sastojci koji izazivaju alergiju ili netoleranciju :</string>
   <string name="txtAdditives">Aditivi :</string>
   <string name="txtTraces">Tragovi :</string>
-  <string name="txtMayBeFromPalmOilProduct">Sastojci koji mogu biti iz palminog ulja :</string>
-  <string name="txtPalmOilProduct">Sastojci iz palminog ulja :</string>
+  <string name="txtMayBeFromPalmOilProduct">Sastojci koji mogu biti od palminog ulja :</string>
+  <string name="txtPalmOilProduct">Sastojci od palminog ulja :</string>
   <string name="txtServingSize">Porcija :</string>
   <string name="txtNutrientLevel100g">Hranljiva vrednost na 100g :</string>
   <string name="txtNutritionLevelLow">u malim količinama</string>
@@ -276,20 +276,20 @@
   <string name="txt_no_results">No results found</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
   <string name="txt_cant_load_search_results">Can\'t load search results</string>
-  <string name="txt_try_again">Try again</string>
-  <string name="nutrition_lactose">Lactose</string>
+  <string name="txt_try_again">Pokušajte ponovo</string>
+  <string name="nutrition_lactose">Laktoza</string>
   <string name="nutrition_casein">Casein</string>
   <string name="nutrition_maltodextrins">Maltodextrins</string>
   <string name="nutrition_serum_proteins">Serum Proteins</string>
   <string name="nutrition_nucleotides">Nucleotides</string>
   <string name="for_100g">For 100 g</string>
   <string name="serving">Per serving</string>
-  <string name="minerals">Minerals</string>
-  <string name="nutrition_calcium">Calcium</string>
-  <string name="nutrition_potassium">Potassium</string>
+  <string name="minerals">Minerali</string>
+  <string name="nutrition_calcium">Kalcijum</string>
+  <string name="nutrition_potassium">Kalijum</string>
   <string name="nutrition_chlore">Chlorine</string>
-  <string name="nutrition_magnesium">Magnesium</string>
-  <string name="nutrition_taurine">Taurine</string>
+  <string name="nutrition_magnesium">Magnezijum</string>
+  <string name="nutrition_taurine">Taurin</string>
   <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
   <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
   <string name="nutrition_omega3">Omega 3</string>
@@ -300,9 +300,9 @@
   <string name="nutrition_fructose">Fructose</string>
   <string name="nutrition_maltose">Maltose</string>
   <string name="nutrition_alcohol">Alcohol</string>
-  <string name="nutrition_vitamins">Vitamins</string>
+  <string name="nutrition_vitamins">Vitamini</string>
   <string name="vitamin_a">Vitamin A</string>
-  <string name="vitamin_d">Vitamin d</string>
+  <string name="vitamin_d">Vitamin D</string>
   <string name="vitamin_e">Vitamin E</string>
   <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">Vitamin C</string>
