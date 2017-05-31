@@ -159,6 +159,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
                     new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(CONTRIBUTOR),
                     new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(7),
+					new PrimaryDrawerItem().withName(R.string.user_ratings).withIcon(GoogleMaterial.Icon.gmd_stars).withIdentifier(12),
                     new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(8),
                     new DividerDrawerItem(),
                     new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9),
@@ -235,6 +236,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + BuildConfig.OFOTHERLINKAPP)));
                                 }
                             }
+                            break;
+                        case 12:
+                            startActivity(new Intent(MainActivity.this, UserRatingsActivity.class));
                             break;
                         case CONTRIBUTOR:
                             SharedPreferences preferences1 = getSharedPreferences("login", 0);
