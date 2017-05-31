@@ -152,7 +152,7 @@ public class ProductActivity extends BaseActivity {
         if(BuildConfig.FLAVOR.equals("off")) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
-            adapterResult.addFragment(new RatingFragment(), "Personal Rating");
+            adapterResult.addFragment(new RatingFragment(), menuTitles[4]);
         }else if(BuildConfig.FLAVOR.equals("opff")) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
