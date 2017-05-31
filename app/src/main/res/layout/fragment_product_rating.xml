@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:isScrollContainer="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <RelativeLayout
+        android:id="@+id/ratingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RatingBar
+            android:id="@+id/productRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/spacing_normal"
+            android:stepSize="1"
+            android:numStars="5" />
+
+        <EditText
+            android:id="@+id/textRatingComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_below="@+id/productRating"
+            android:scrollHorizontally="false"
+            android:gravity="center"
+            android:textSize="@dimen/font_larger"
+            android:hint="@string/enter_comment"
+            android:inputType="textCapSentences|textMultiLine"
+            android:minLines="5"
+            android:background="@color/md_grey_100"/>
+
+        <LinearLayout
+            android:id="@+id/edit_delete_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/textRatingComment"
+            android:visibility="invisible">
+
+            <Button
+                android:id="@+id/edit_rating_button"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/edit_rating"
+                android:background="@color/md_grey_100"
+                android:padding="@dimen/spacing_small"
+                android:layout_marginBottom="@dimen/spacing_normal"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_normal"/>
+
+            <Button
+                android:id="@+id/delete_rating_button"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/delete_rating"
+                android:background="@color/md_grey_100"
+                android:padding="@dimen/spacing_small"
+                android:layout_marginBottom="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_normal"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/saving_rating_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/textRatingComment"
+            android:layout_centerHorizontal="true"
+            android:text="@string/save_rating"
+            android:enabled="false"
+            android:background="@color/md_grey_100"
+            android:padding="@dimen/spacing_small"/>
+
+        <TextView
+            android:id="@+id/rating_note_textview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spacing_normal"
+            android:layout_below="@id/saving_rating_button"
+            android:text="@string/rating_note"/>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>

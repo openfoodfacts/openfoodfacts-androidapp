@@ -154,6 +154,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(1),
                     new SectionDrawerItem().withName(R.string.search_drawer),
                     new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(2),
+
+                        new PrimaryDrawerItem().withName(R.string.user_ratings).withIcon(GoogleMaterial.Icon.gmd_stars).withIdentifier(12),
                     new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(4),
                     new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(5),
                     new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
@@ -235,6 +237,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + BuildConfig.OFOTHERLINKAPP)));
                                 }
                             }
+                            break;
+                        case 12:
+                            startActivity(new Intent(MainActivity.this, UserRatingsActivity.class));
                             break;
                         case CONTRIBUTOR:
                             SharedPreferences preferences1 = getSharedPreferences("login", 0);
