@@ -24,7 +24,7 @@
     <item>ml</item>
     <item>ml</item>
     <item>cl</item>
-    <item>fl oz</item>
+    <item>fl.oz.</item>
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
@@ -95,7 +95,7 @@
     <item>Dänisch</item>
     <item>Chinesisch (vereinfacht)</item>
     <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Serbisch</item>
   </string-array>
   <string-array name="images_array">
     <item>Standard</item>
@@ -110,7 +110,7 @@
   <string name="alert_dialog_warning_msg_user">Benutzername/Passwort hat sich geändert, bitte Angaben aktualisieren.</string>
   <string name="alert_dialog_product_error_msg">Produkt wurde nicht gefunden. Versuchen Sie es später noch einmal.</string>
   <string name="toast_retrieving">Wird geladen …</string>
-  <string name="txtGenericName">Common name :</string>
+  <string name="txtGenericName">Allgemeiner Name:</string>
   <string name="txtBarcode">Strichcode:</string>
   <string name="txtQuantity">Menge:</string>
   <string name="txtPackaging">Verpackung:</string>
@@ -151,7 +151,7 @@
   <string name="errorWeb">Kein Internetzugang. Netzwerkverbindung überprüfen.</string>
   <string name="txtInfoLoginOk">Benutzer gespeichert</string>
   <string name="txtInfoLoginNo">Benutzer nicht gespeichert</string>
-  <string name="txtDialogsTitle">Information</string>
+  <string name="txtDialogsTitle">Informationen</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">Das gescannte Produkt befindet sich bereits in Open Food Facts.</string>
   <string name="txtDialogsContentSend">Möchten Sie die gespeicherten Produkte an die Datenbank senden?</string>
@@ -198,14 +198,14 @@
   <string name="txt_product_not_found">Keine Produkte gefunden</string>
   <string name="delete_txt">Löschen</string>
   <string name="sign_in_drawer">Anmelden</string>
-  <string name="alert_drawer">Allergen alert</string>
+  <string name="alert_drawer">Allergen-Warnung</string>
   <string name="warning_allergens">Enthält Allergene</string>
   <string name="title_dialog_alert">Alarm hinzufügen</string>
   <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an den Open Food Facts Server gesendet. Seien Sie vorsichtig! Die Daten sind möglicherweise nicht immer 100% richtig. Prüfen Sie deshalb bitte selbst noch einmal nach!</string>
   <string name="from_gallery">Aus Galerie</string>
   <string name="product_sent">Product sent successfully</string>
   <string name="action_edit_product">Produkt bearbeiten</string>
-  <string name="title_info_dialog">Information</string>
+  <string name="title_info_dialog">Informationen</string>
   <string name="text_offline_info_dialog">Sie können Produkte einscannen, wenn Sie offline sind, um sie später zu Open Food Facts hoch zu laden. Alle Produkte, die Sie scannen werden hier aufgelistet, damit Sie sie über die unten stehende Schaltfläche hochladen können.</string>
   <string name="permission_camera">Die Kamera-Berechtigung wird benötigt, um Strichcodes zu scannen und Fotos zu machen.</string>
   <string name="permission_title">Berechtigungs-Informationen</string>
@@ -216,7 +216,7 @@
   <string name="msg_input_empty">Bitte zuerst die Felder ausfüllen</string>
   <string name="new_offline_info">Nehmen Sie bitte Bilder vom Produkt, den Zutaten, den Nährwertangaben und jeder anderen Information auf dem Etikett auf. Danke!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
+  <string name="error_invalid_password">Das Passwort muss mindestens 6 Zeichen lang sein.</string>
   <string name="error_field_required">Das Feld ist erforderlich.</string>
   <string name="action_preferences">Einstellungen</string>
   <string name="prefs_scan_startup">Scannen beim Starten</string>
@@ -276,7 +276,7 @@
   <string name="txt_no_results">Keine Ergebnisse gefunden</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
   <string name="txt_cant_load_search_results">Can\'t load search results</string>
-  <string name="txt_try_again">Try again</string>
+  <string name="txt_try_again">Wiederholen</string>
   <string name="nutrition_lactose">Laktose</string>
   <string name="nutrition_casein">Casein</string>
   <string name="nutrition_maltodextrins">Maltodextrine</string>
@@ -294,7 +294,7 @@
   <string name="nutrition_polyunsaturatedFat">Mehrfach ungesättigte Fette</string>
   <string name="nutrition_omega3">Omega-3</string>
   <string name="nutrition_omega6">Omega-6</string>
-  <string name="nutrition_omega9">Omega 9</string>
+  <string name="nutrition_omega9">Omega-9</string>
   <string name="nutrition_sucrose">Saccharose</string>
   <string name="nutrition_glucose">Glukose</string>
   <string name="nutrition_fructose">Fruktose</string>
@@ -316,7 +316,7 @@
   <string name="pantothenic_acid">Pantothensäure</string>
   <string name="nutrition_minerals">Mineralien</string>
   <string name="silica">Siliziumdioxid</string>
-  <string name="bicarbonate">Bicarbonate</string>
+  <string name="bicarbonate">Bikarbonat</string>
   <string name="potassium">Kalium</string>
   <string name="chloride">Chlor</string>
   <string name="calcium">Kalzium</string>
@@ -326,7 +326,7 @@
   <string name="zinc">Zink</string>
   <string name="copper">Kupfer</string>
   <string name="manganese">Mangan</string>
-  <string name="fluoride">Fluoride</string>
+  <string name="fluoride">Fluorid</string>
   <string name="selenium">Selen</string>
   <string name="chromium">Chrom</string>
   <string name="molybdenum">Molybdän</string>
