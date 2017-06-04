@@ -4,17 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.LayerDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.widget.RatingBar;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -29,13 +25,21 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.RatingItem;
 import openfoodfacts.github.scrachx.openfood.models.RatingProduct;
 import openfoodfacts.github.scrachx.openfood.models.RatingProductDao;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.RatingProductListAdapter;
 
+/**
+ * This class is responsible for the "Your Personal Ratings" section of the app's hamburger menu.
+ * If the user press this section and he has not saved any rating yet, there is a toast informing the user about this.
+ * If the user press this section and he has some saved ratings, then there will appear a recycler view,
+ * containing a list of the user's ratings.
+ * The list's item template is consist of an image of the product on the left, and the product's tittle, stars rating
+ * and the user's comment (if there is one) on the right.
+ * The items will appear sorted by the stars in decrease order.
+ * The user can click on any list's item to go to the product.
+ */
 public class UserRatingsActivity extends BaseActivity {
     private RatingProductDao mRatingDao;
-    private OpenFoodAPIClient api;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -44,7 +48,6 @@ public class UserRatingsActivity extends BaseActivity {
     RecyclerView ratingsRecyclerView;
 
     private List<RatingItem> mRatings;
-    private boolean emptyRatings;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +58,6 @@ public class UserRatingsActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.user_ratings);
 
-        api = new OpenFoodAPIClient(this);
         mRatingDao = Utils.getAppDaoSession(this).getRatingProductDao();
         mRatings = new ArrayList<>();
 
@@ -75,7 +77,6 @@ public class UserRatingsActivity extends BaseActivity {
             List<RatingProduct> listHistoryProducts = mRatingDao.loadAll();
             if (listHistoryProducts.size() == 0) {
                 Toast.makeText(getApplicationContext(), R.string.txtNoData, Toast.LENGTH_LONG).show();
-                emptyRatings = true;
                 invalidateOptionsMenu();
                 cancel(true);
             } else {
@@ -106,7 +107,9 @@ public class UserRatingsActivity extends BaseActivity {
                     if (input != null) {
                         try {
                             input.close();
-                        } catch (IOException e) { }
+                        } catch (IOException e) {
+                            Log.i("UserRatingActivity", "Unable to close file", e);
+                        }
                     }
 
                     if (connection != null) {

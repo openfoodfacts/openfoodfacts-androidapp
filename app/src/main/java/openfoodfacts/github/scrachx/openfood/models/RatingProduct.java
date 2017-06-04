@@ -10,6 +10,9 @@ import org.greenrobot.greendao.annotation.Generated;
         @Index(value = "barcode", unique = true)
 })
 
+/**
+ * The model that is used in order to create the database table or ratings.
+ */
 public class RatingProduct {
     @Id private Long id;
     private short stars;

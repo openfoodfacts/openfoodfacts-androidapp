@@ -8,17 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RatingBar;
 
 import java.util.Collections;
 import java.util.List;
 
-import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.RatingItem;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.views.holders.UserRatingsHolder;
-
 
 public class RatingProductListAdapter extends RecyclerView.Adapter<UserRatingsHolder> {
 
@@ -49,6 +46,7 @@ public class RatingProductListAdapter extends RecyclerView.Adapter<UserRatingsHo
         holder.vProductRating.setRating(list.get(position).getStars());
         holder.vProductName.setText(list.get(position).getProductName());
         holder.vComment.setText(list.get(position).getComment());
+        holder.mProductBarcode = list.get(position).getBarcode();
     }
 
     @Override
@@ -61,6 +59,10 @@ public class RatingProductListAdapter extends RecyclerView.Adapter<UserRatingsHo
         super.onAttachedToRecyclerView(recyclerView);
     }
 
+    public List<RatingItem> getList(){
+        return list;
+    }
+
     public void insert(int position, RatingItem data) {
         list.add(position, data);
         notifyItemInserted(position);
@@ -71,5 +73,4 @@ public class RatingProductListAdapter extends RecyclerView.Adapter<UserRatingsHo
         list.remove(position);
         notifyItemRemoved(position);
     }
-
 }

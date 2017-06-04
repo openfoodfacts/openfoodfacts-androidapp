@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
@@ -18,6 +17,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -33,10 +34,33 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
  * Class containing everything related to the users rating of the product.
- * A user can rate a product from 1 to 5 stars. Also, he can add a comment about the product.
- * A user is able to edit either the rating or the comment any time he wish.
+ *
+ * There is a tab called "Personal Rating" on each product view pager.
+ * In this tab, the user can create an evaluation on the product,
+ * consist of stars rating (required) and a comment (possible).
+ *
+ *
+ * If there is no rating saved, then the tab will contain:
+ * an editable rating bar, an editable edit text view and a save button.
+ * The save button will be enabled only if the user set number of stars to the rating bar.
+ * Fun fact: in order to make it appear even more user friendly and modern,
+ * each number rating will appear with a different color,
+ * meaning if the rating is only one star it will appear red whereas five stars will appear green etc.
+ *
+ *
+ * If there is a rating saved, then the tab will contain:
+ * an non-editable rating bar (indicator), an non-editable edit text view, an edit and a delete buttons.
+ *
+ * If the user wants to make a change either on rating bar or the edit text view,
+ * he has to press the edit button first.
+ *
+ * If the user press the delete button, then a message dialog will pop up,
+ * asking the user to confirm the delete action.
+ *
+ *
+ * Note that each rating is only visible to the user who created the rating and only him.
+ * No rating is being saved online. Relative warning appears everytime the user creates new rating.
  */
-
 public class RatingFragment extends BaseFragment {
     private static RatingProductDao ratingDao;
 
@@ -44,25 +68,25 @@ public class RatingFragment extends BaseFragment {
     private RatingProduct productRating;
     private LayerDrawable ratingDrawable;
 
-    @BindView(R.id.productRating)
+    @BindView(R.id.ratingRatingBar)
     RatingBar productRatingBar;
 
-    @BindView(R.id.textRatingComment)
+    @BindView(R.id.ratingCommentEditText)
     EditText ratingComment;
 
-    @BindView(R.id.edit_delete_buttons)
+    @BindView(R.id.ratingEditDeleteLinearLayout)
     LinearLayout editDeleteButtons;
 
-    @BindView(R.id.saving_rating_button)
+    @BindView(R.id.ratingSaveButton)
     Button saveRating;
 
-    @BindView(R.id.delete_rating_button)
+    @BindView(R.id.ratingDeleteButton)
     Button deleteRating;
 
-    @BindView(R.id.edit_rating_button)
+    @BindView(R.id.ratingEditButton)
     Button editRating;
 
-    @BindView(R.id.rating_note_textview)
+    @BindView(R.id.ratingNoteTextView)
     TextView note;
 
     @Override
@@ -74,9 +98,9 @@ public class RatingFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Intent intent = getActivity().getIntent();
+        Bundle bun = getActivity().getIntent().getExtras();
 
-        State state = (State) intent.getExtras().getSerializable("state");
+        State state = (State) getActivity().getIntent().getExtras().getSerializable("state");
 
         final Product product = state.getProduct();
 
@@ -183,21 +207,29 @@ public class RatingFragment extends BaseFragment {
 
     }
 
-    @OnClick(R.id.delete_rating_button)
+    @OnClick(R.id.ratingDeleteButton)
     public void deleteRating() {
-        ratingDao.delete(productRating);
-        productRating = null;
-        productRatingBar.setIsIndicator(false);
-        productRatingBar.setRating(0);
-        ratingComment.setText("");
-        ratingComment.setHint(R.string.enter_comment);
-        ratingComment.setEnabled(true);
-        editDeleteButtons.setVisibility(View.GONE);
-        saveRating.setVisibility(View.VISIBLE);
-        note.setVisibility(View.VISIBLE);
+        new MaterialDialog.Builder(getActivity())
+                .title(R.string.delete_rating)
+                .content(R.string.delete_rating_prompt)
+                .positiveText(R.string.txtYes)
+                .negativeText(R.string.txtNo)
+                .onPositive((dialog, which) -> {
+                    ratingDao.delete(productRating);
+                    productRating = null;
+                    productRatingBar.setIsIndicator(false);
+                    productRatingBar.setRating(0);
+                    ratingComment.setText("");
+                    ratingComment.setHint(R.string.enter_comment);
+                    ratingComment.setEnabled(true);
+                    editDeleteButtons.setVisibility(View.GONE);
+                    saveRating.setVisibility(View.VISIBLE);
+                    note.setVisibility(View.VISIBLE);
+                })
+                .show();
     }
 
-    @OnClick(R.id.edit_rating_button)
+    @OnClick(R.id.ratingEditButton)
     public void editRating() {
         productRatingBar.setIsIndicator(false);
         ratingComment.setEnabled(true);
@@ -206,7 +238,7 @@ public class RatingFragment extends BaseFragment {
         note.setVisibility(View.VISIBLE);
     }
 
-    @OnClick(R.id.saving_rating_button)
+    @OnClick(R.id.ratingSaveButton)
     public void saveRating() {
         if(productRating == null) {
             productRating = new RatingProduct((short)productRatingBar.getRating(), ratingComment.getText().toString(),
