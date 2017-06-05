@@ -107,7 +107,7 @@ public class RatingFragment extends BaseFragment {
         currentProduct = product;
         List<RatingProduct> ratings = ratingDao.queryBuilder().where(RatingProductDao.Properties.Barcode.eq(product.getCode())).list();
 
-        productRating = ratings.size() == 0 ? null : ratings.get(0);
+        productRating = ratings.isEmpty() ? null : ratings.get(0);
 
         ratingDrawable = (LayerDrawable) productRatingBar.getProgressDrawable();
 
