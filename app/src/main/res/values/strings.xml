@@ -377,8 +377,4 @@
     <string name="save_rating_success">Your rating has been saved successfully</string>
     <string name="rating_note">Note that any rating or comment is visible to you and only you. No other person using Open Food Facts is going to be able to see this. All the data stays on your personal device and is never sent online.</string>
     <string name="delete_rating_prompt">Are you sure you want to delete this rating permanently?</string>
-
-    <!-- Offline Download -->
-    <string name="prompt_user">Do you wish to use Open Food Facts even when you are offline? Choose the country that you are interested in, and then press download to get the products related to the selected country stored on your device!</string>
-    <string name="download">Download</string>
 </resources>

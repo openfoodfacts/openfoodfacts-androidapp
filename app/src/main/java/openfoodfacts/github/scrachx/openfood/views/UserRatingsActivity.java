@@ -74,8 +74,8 @@ public class UserRatingsActivity extends BaseActivity {
 
         @Override
         protected void onPreExecute() {
-            List<RatingProduct> listHistoryProducts = mRatingDao.loadAll();
-            if (listHistoryProducts.size() == 0) {
+            List<RatingProduct> listRatingProducts = mRatingDao.loadAll();
+            if (listRatingProducts.size() == 0) {
                 Toast.makeText(getApplicationContext(), R.string.txtNoData, Toast.LENGTH_LONG).show();
                 invalidateOptionsMenu();
                 cancel(true);
