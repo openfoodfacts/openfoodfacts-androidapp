@@ -22,9 +22,9 @@
     <item>кг</item>
     <item>л</item>
     <item>мл</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
+    <item>мл</item>
+    <item>сл</item>
+    <item>жидкая унция</item>
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
@@ -94,8 +94,8 @@
     <item>Норвежский (Букмол)</item>
     <item>Датский</item>
     <item>Китайский (упрощенный)</item>
-    <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Фарси</item>
+    <item>Сербский</item>
   </string-array>
   <string-array name="images_array">
     <item>По умолчанию</item>
@@ -110,7 +110,7 @@
   <string name="alert_dialog_warning_msg_user">Пользователь/пароль изменены, обновите информацию</string>
   <string name="alert_dialog_product_error_msg">Продукт не найден, попробуйте ещё раз</string>
   <string name="toast_retrieving">Загрузка…</string>
-  <string name="txtGenericName">Common name :</string>
+  <string name="txtGenericName">Общепринятое название:</string>
   <string name="txtBarcode">Штрих-код:</string>
   <string name="txtQuantity">Количество:</string>
   <string name="txtPackaging">Упаковка:</string>
@@ -216,7 +216,7 @@
   <string name="msg_input_empty">Сначала заполните поле.</string>
   <string name="new_offline_info">Сделайте фото продукта, состава, пищевой ценности и другой информации на этикетке. Спасибо!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
+  <string name="error_invalid_password">Длина пароля должна быть не менее 6 символов.</string>
   <string name="error_field_required">Это поле обязательно.</string>
   <string name="action_preferences">Настройки</string>
   <string name="prefs_scan_startup">Сканировать при запуске</string>
@@ -275,8 +275,8 @@
   <string name="number_of_results">Количество результатов:</string>
   <string name="txt_no_results">Ничего не найдено</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
-  <string name="txt_cant_load_search_results">Can\'t load search results</string>
-  <string name="txt_try_again">Try again</string>
+  <string name="txt_cant_load_search_results">Не удается загрузить результаты поиска</string>
+  <string name="txt_try_again">Попробуйте еще раз</string>
   <string name="nutrition_lactose">Лактоза</string>
   <string name="nutrition_casein">Казеин</string>
   <string name="nutrition_maltodextrins">Мальтодекстрин</string>
