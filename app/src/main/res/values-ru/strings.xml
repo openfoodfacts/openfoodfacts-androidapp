@@ -7,7 +7,7 @@
   <string name="action_discover">О проекте</string>
   <string name="contribute">Как принять участие</string>
   <string name="action_find">Найти</string>
-  <string name="text_barcode">Введите штрихкод</string>
+  <string name="text_barcode">Введите штрихкод:</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Резюме</item>
@@ -20,8 +20,8 @@
     <item> </item>
     <item>мг</item>
     <item>кг</item>
+    <item>кг</item>
     <item>л</item>
-    <item>мл</item>
     <item>мл</item>
     <item>сл</item>
     <item>жидкая унция</item>
@@ -45,21 +45,21 @@
     <item>Галисийский</item>
     <item>Каталанский</item>
     <item>Чешский</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-rBR</item>
-    <item>ro</item>
+    <item>Арабский</item>
+    <item>Финский</item>
+    <item>Хинди</item>
+    <item>Кабильский</item>
+    <item>Корейский</item>
+    <item>Латвийский</item>
+    <item>Нидерландский</item>
+    <item>Португальский (Бразилия)</item>
+    <item>Румынский</item>
     <item>Шведский</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>упрощенный китайский</item>
-    <item>fa</item>
+    <item>Китайский</item>
+    <item>Норвежский (Букмол)</item>
+    <item>Датский</item>
+    <item>Упрощенный китайский</item>
+    <item>Персидский</item>
     <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
@@ -274,7 +274,7 @@
   <string name="search_hint">Поиск продукта</string>
   <string name="number_of_results">Количество результатов:</string>
   <string name="txt_no_results">Ничего не найдено</string>
-  <string name="txt_extend_search">Try broadening your search or add the product</string>
+  <string name="txt_extend_search">Попробуйте расширить свой поиск или добавить продукт</string>
   <string name="txt_cant_load_search_results">Не удается загрузить результаты поиска</string>
   <string name="txt_try_again">Попробуйте еще раз</string>
   <string name="nutrition_lactose">Лактоза</string>
