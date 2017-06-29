@@ -28,38 +28,38 @@
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
-    <item>Английский</item>
-    <item>Французский</item>
-    <item>Испанский</item>
-    <item>Итальянский</item>
-    <item>Немецкий</item>
-    <item>Японский</item>
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
     <item>ru</item>
-    <item>Португальский</item>
-    <item>Шведский</item>
-    <item>Бирманский</item>
-    <item>Казахский</item>
-    <item>Армянский</item>
-    <item>Греческий</item>
-    <item>Иврит</item>
-    <item>Галисийский</item>
-    <item>Каталанский</item>
-    <item>Чешский</item>
-    <item>Арабский</item>
-    <item>Финский</item>
-    <item>Хинди</item>
-    <item>Кабильский</item>
-    <item>Корейский</item>
-    <item>Латвийский</item>
-    <item>Нидерландский</item>
-    <item>Португальский (Бразилия)</item>
-    <item>Румынский</item>
-    <item>Шведский</item>
-    <item>Китайский</item>
-    <item>Норвежский (Букмол)</item>
-    <item>Датский</item>
-    <item>Упрощенный китайский</item>
-    <item>Персидский</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-rBR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh-rCN</item>
+    <item>fa</item>
     <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
