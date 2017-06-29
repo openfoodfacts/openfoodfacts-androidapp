@@ -28,39 +28,39 @@
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
-    <item>الفرنسية</item>
-    <item>الأب</item>
-    <item>وفاق</item>
-    <item>أنها</item>
-    <item>دي</item>
-    <item>جا</item>
-    <item>رو</item>
-    <item>حزب العمال</item>
-    <item>sV</item>
-    <item>لي</item>
-    <item>ك ك</item>
-    <item>اتش واى</item>
-    <item>ش</item>
-    <item>هو</item>
-    <item>جي ال</item>
-    <item>كاليفورنيا</item>
-    <item>خدمات العملاء</item>
-    <item>ع</item>
-    <item>فاي</item>
-    <item>مرحبا</item>
-    <item>كاب</item>
-    <item>كو</item>
-    <item>لف</item>
-    <item>نيكولا لانغ</item>
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
     <item>pt-rBR</item>
-    <item>ريال عماني</item>
-    <item>sV</item>
-    <item>زكية</item>
-    <item>ملحوظة</item>
-    <item>دا</item>
-    <item>زكية-آر سي</item>
-    <item>اتحاد كرة القدم</item>
-    <item>جمهورية صربيا</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh-rCN</item>
+    <item>fa</item>
+    <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>الإنجليزية</item>
