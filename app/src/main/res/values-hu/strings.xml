@@ -152,7 +152,7 @@
   <string name="txtInfoLoginOk">Felhasználó mentve</string>
   <string name="txtInfoLoginNo">Felhasználó nem lett mentve</string>
   <string name="txtDialogsTitle">Információ</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+  <string name="txtDialogsContent">A beolvasott termék nem található az Open Food Facts adatbázisában. Adja hozzá.</string>
   <string name="txtDialogsContentPowerMode">Ez a termék megtalálható az Open Food Facts adatbázisában.</string>
   <string name="txtDialogsContentSend">Feltöltjük a mentett terméket az adatbázisba?</string>
   <string name="txtYes">Igen</string>
@@ -179,7 +179,7 @@
   <string name="txtContentDialogUploading">Folyamatban... NE lépjen ki.</string>
   <string name="txtAbout">A képek Creative Commons Nevezd meg és Így add tovább szabad licenc alatt kerülnek elküldésre</string>
   <string name="txtAllsent">Termék elküldve</string>
-  <string name="txtPalm">a termék ne tartalmaz pálmaolajat</string>
+  <string name="txtPalm">A termék nem tartalmaz pálmaolajat</string>
   <string name="txtBarcodeNotValid">Helytelen vonalkód</string>
   <string name="try_it_scan_now">Termék beolvasása</string>
   <string name="share">Megosztás</string>
@@ -222,9 +222,9 @@
   <string name="prefs_scan_startup">Beolvasás induláskor.</string>
   <string name="prefs_scan_startup_summary">Ez esetben alkalmazásindításkor a beolvasó jelenik meg.</string>
   <string name="prefs_power_mode">Gyors beolvasás</string>
-  <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
+  <string name="prefs_power_mode_summary">Termékek gyors beolvasása vásárlás közben annak ellenőrzéséhez, hogy megtalálható-e az adatbázisban.</string>
   <string name="prefs_language">Nyelv</string>
-  <string name="prefs_language_summary">Nyelv megváltoztatása</string>
+  <string name="prefs_language_summary">Nyelv módosítása</string>
   <string name="scan_history_drawer">Előzmények</string>
   <string name="clear_history">Előzmények törlése</string>
   <string name="title_clear_history_dialog">Törlés</string>
