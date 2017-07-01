@@ -94,8 +94,8 @@
     <item>Norvég (Bokmål)</item>
     <item>Dán</item>
     <item>Egyszerűsített kínai</item>
-    <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Perzsa</item>
+    <item>Szerb</item>
   </string-array>
   <string-array name="images_array">
     <item>Alapértelmezett</item>
@@ -130,9 +130,9 @@
   <string name="txtPalmOilProduct">Pálmaolaj származék összetevők:</string>
   <string name="txtServingSize">Egy adag:</string>
   <string name="txtNutrientLevel100g">Tápanyagszint 100 grammban:</string>
-  <string name="txtNutritionLevelLow">in low quantity</string>
-  <string name="txtNutritionLevelModerate">in moderate quantity</string>
-  <string name="txtNutritionLevelHigh">in high quantity</string>
+  <string name="txtNutritionLevelLow">alacsony mennyiségben</string>
+  <string name="txtNutritionLevelModerate">mérsékelt mennyiségben</string>
+  <string name="txtNutritionLevelHigh">nagy mennyiségben</string>
   <string name="txtLogin">Bejelentkezés:</string>
   <string name="txtPass">Jelszó:</string>
   <string name="txtTitleHome">Tedd nyílttá ételed és tudd mit eszel</string>
