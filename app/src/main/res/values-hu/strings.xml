@@ -7,10 +7,10 @@
   <string name="action_discover">Feltárás</string>
   <string name="contribute">Hogyan segíthet</string>
   <string name="action_find">Keres</string>
-  <string name="text_barcode">Vonalkód beírása</string>
+  <string name="text_barcode">Vonalkód beírása :</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
-    <item>Áttekintés</item>
+    <item>Összefoglalás</item>
     <item>Össztevők</item>
     <item>Tápanyag</item>
     <item>Tápanyag táblázat</item>
