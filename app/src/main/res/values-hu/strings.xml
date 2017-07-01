@@ -11,9 +11,9 @@
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Összefoglalás</item>
-    <item>Össztevők</item>
+    <item>Összetevők</item>
     <item>Tápanyag</item>
-    <item>Tápanyag táblázat</item>
+    <item>Tápanyagtáblázat</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
@@ -83,8 +83,8 @@
     <item>Arab</item>
     <item>Finn</item>
     <item>Hindi</item>
-    <item>Kabije</item>
-    <item>Kóreai</item>
+    <item>Kabil</item>
+    <item>Koreai</item>
     <item>Lett</item>
     <item>Holland</item>
     <item>Brazil portugál</item>
@@ -110,21 +110,21 @@
   <string name="alert_dialog_warning_msg_user">Felhasználó/jelszó megváltozott, frissítse az információt</string>
   <string name="alert_dialog_product_error_msg">Termék nem található, próbálja újra</string>
   <string name="toast_retrieving">Betöltés…</string>
-  <string name="txtGenericName">Common name :</string>
+  <string name="txtGenericName">Általános név:</string>
   <string name="txtBarcode">Vonalkód:</string>
   <string name="txtQuantity">Mennyiség:</string>
   <string name="txtPackaging">Csomagolás:</string>
   <string name="txtBrands">Márkák:</string>
   <string name="txtCategories">Kategóriák:</string>
   <string name="txtLabels">Címkék, tanúsítványok, kitüntetések:</string>
-  <string name="txtManufacturing">Gyártás, vagy feldolgozás helye:</string>
+  <string name="txtManufacturing">Gyártás vagy feldolgozás helye:</string>
   <string name="txtIngredientsOrigins">Összetevők származása:</string>
   <string name="txtCity">Vásárlás helye (város, állam vagy ország):</string>
   <string name="txtStores">Boltok:</string>
   <string name="txtCountries">Országokban kapható:</string>
-  <string name="txtIngredients">Összetétel listája:</string>
+  <string name="txtIngredients">Összetevők listája :</string>
   <string name="txtSubstances">Allergén, vagy irritáló termékek, alkotóanyagok:</string>
-  <string name="txtAdditives">Adalékok:</string>
+  <string name="txtAdditives">Adalékanyagok :</string>
   <string name="txtTraces">Nyomokban tartalmazhat:</string>
   <string name="txtMayBeFromPalmOilProduct">Lehetséges pálmaolaj származék összetevők:</string>
   <string name="txtPalmOilProduct">Pálmaolaj származék összetevők:</string>
