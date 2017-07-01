@@ -282,7 +282,7 @@
   <string name="nutrition_maltodextrins">Maltodextrin</string>
   <string name="nutrition_serum_proteins">Serum Proteins</string>
   <string name="nutrition_nucleotides">Nukleotidok</string>
-  <string name="for_100g">For 100 g</string>
+  <string name="for_100g">100 g-ra</string>
   <string name="serving">Adagonként</string>
   <string name="minerals">Ásványi anyagok</string>
   <string name="nutrition_calcium">Kalcium</string>
@@ -335,7 +335,7 @@
   <string name="taurine">Taurin</string>
   <string name="ph">pH</string>
   <string name="fruits_vegetables_nuts">Gyümölcsök, zöldségek, diófélék</string>
-  <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
+  <string name="collagen_meat_protein_ratio">Kollagén húsfehérje aránya</string>
   <string name="cocoa">Kakaó</string>
   <string name="chlorophyl">Klorofill</string>
   <string name="take_picture_ingredients">Kép készítése az összetevőkről</string>
