@@ -11,5 +11,5 @@
   <string name="website_product">https://world-hu.openfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-hu.openfoodfacts.org/contributor/</string>
-  <string name="txtHome">Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
+  <string name="txtHome">Az Open Food Facts élelmiszerek nyílt adatbázisa, a termékekhez tartozó összetevők, allergének, tápanyagok adataival együtt és egyéb információval, ami a termék csomagolásán vagy címkéjén szerepel.</string>
 </resources>
