@@ -280,7 +280,7 @@
   <string name="nutrition_lactose">Laktóz</string>
   <string name="nutrition_casein">Kazein</string>
   <string name="nutrition_maltodextrins">Maltodextrin</string>
-  <string name="nutrition_serum_proteins">Serum Proteins</string>
+  <string name="nutrition_serum_proteins">Szérum fehérje</string>
   <string name="nutrition_nucleotides">Nukleotidok</string>
   <string name="for_100g">100 g-ra</string>
   <string name="serving">Adagonként</string>
@@ -339,7 +339,7 @@
   <string name="cocoa">Kakaó</string>
   <string name="chlorophyl">Klorofill</string>
   <string name="take_picture_ingredients">Kép készítése az összetevőkről</string>
-  <string name="take_picture_front">Take a picture of the front</string>
+  <string name="take_picture_front">Kép készítése a termék csomagolásáról</string>
   <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
   <string name="take_more_pictures">További képek készítése</string>
 </resources>
