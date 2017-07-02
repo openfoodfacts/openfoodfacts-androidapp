@@ -274,9 +274,9 @@
   <string name="search_hint">Chercher un produit</string>
   <string name="number_of_results">Nombre de résultats:</string>
   <string name="txt_no_results">Aucun résultat n\'a été trouvé</string>
-  <string name="txt_extend_search">Try broadening your search or add the product</string>
-  <string name="txt_cant_load_search_results">Can\'t load search results</string>
-  <string name="txt_try_again">Try again</string>
+  <string name="txt_extend_search">Veuillez élargir vos critères de recherche ou ajoutez le produit</string>
+  <string name="txt_cant_load_search_results">Impossible de charger les résultats</string>
+  <string name="txt_try_again">Veuillez réessayer</string>
   <string name="nutrition_lactose">Lactose</string>
   <string name="nutrition_casein">Caséine</string>
   <string name="nutrition_maltodextrins">Maltodextrine</string>

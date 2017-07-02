@@ -7,24 +7,24 @@
   <string name="action_discover">Feltárás</string>
   <string name="contribute">Hogyan segíthet</string>
   <string name="action_find">Keres</string>
-  <string name="text_barcode">Vonalkód beírása</string>
+  <string name="text_barcode">Vonalkód beírása :</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
-    <item>Áttekintés</item>
-    <item>Össztevők</item>
+    <item>Összefoglalás</item>
+    <item>Összetevők</item>
     <item>Tápanyag</item>
-    <item>Tápanyag táblázat</item>
+    <item>Tápanyagtáblázat</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
+    <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
     <item>ml</item>
-    <item>ml</item>
     <item>cl</item>
-    <item>fl oz</item>
+    <item>uncia</item>
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
@@ -83,8 +83,8 @@
     <item>Arab</item>
     <item>Finn</item>
     <item>Hindi</item>
-    <item>Kabije</item>
-    <item>Kóreai</item>
+    <item>Kabil</item>
+    <item>Koreai</item>
     <item>Lett</item>
     <item>Holland</item>
     <item>Brazil portugál</item>
@@ -94,8 +94,8 @@
     <item>Norvég (Bokmål)</item>
     <item>Dán</item>
     <item>Egyszerűsített kínai</item>
-    <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Perzsa</item>
+    <item>Szerb</item>
   </string-array>
   <string-array name="images_array">
     <item>Alapértelmezett</item>
@@ -110,29 +110,29 @@
   <string name="alert_dialog_warning_msg_user">Felhasználó/jelszó megváltozott, frissítse az információt</string>
   <string name="alert_dialog_product_error_msg">Termék nem található, próbálja újra</string>
   <string name="toast_retrieving">Betöltés…</string>
-  <string name="txtGenericName">Common name :</string>
+  <string name="txtGenericName">Általános név:</string>
   <string name="txtBarcode">Vonalkód:</string>
   <string name="txtQuantity">Mennyiség:</string>
   <string name="txtPackaging">Csomagolás:</string>
   <string name="txtBrands">Márkák:</string>
   <string name="txtCategories">Kategóriák:</string>
   <string name="txtLabels">Címkék, tanúsítványok, kitüntetések:</string>
-  <string name="txtManufacturing">Gyártás, vagy feldolgozás helye:</string>
+  <string name="txtManufacturing">Gyártás vagy feldolgozás helye:</string>
   <string name="txtIngredientsOrigins">Összetevők származása:</string>
   <string name="txtCity">Vásárlás helye (város, állam vagy ország):</string>
   <string name="txtStores">Boltok:</string>
   <string name="txtCountries">Országokban kapható:</string>
-  <string name="txtIngredients">Összetétel listája:</string>
+  <string name="txtIngredients">Összetevők listája :</string>
   <string name="txtSubstances">Allergén, vagy irritáló termékek, alkotóanyagok:</string>
-  <string name="txtAdditives">Adalékok:</string>
+  <string name="txtAdditives">Adalékanyagok :</string>
   <string name="txtTraces">Nyomokban tartalmazhat:</string>
   <string name="txtMayBeFromPalmOilProduct">Lehetséges pálmaolaj származék összetevők:</string>
   <string name="txtPalmOilProduct">Pálmaolaj származék összetevők:</string>
   <string name="txtServingSize">Egy adag:</string>
   <string name="txtNutrientLevel100g">Tápanyagszint 100 grammban:</string>
-  <string name="txtNutritionLevelLow">in low quantity</string>
-  <string name="txtNutritionLevelModerate">in moderate quantity</string>
-  <string name="txtNutritionLevelHigh">in high quantity</string>
+  <string name="txtNutritionLevelLow">kis mennyiségben</string>
+  <string name="txtNutritionLevelModerate">mérsékelt mennyiségben</string>
+  <string name="txtNutritionLevelHigh">nagy mennyiségben</string>
   <string name="txtLogin">Bejelentkezés:</string>
   <string name="txtPass">Jelszó:</string>
   <string name="txtTitleHome">Tedd nyílttá ételed és tudd mit eszel</string>
@@ -140,10 +140,10 @@
   <string name="txtSignIn">Bejelentkezés</string>
   <string name="txtUser">Felhasználói felület</string>
   <string name="txtToastSaved">Felhasználó mentve</string>
-  <string name="txtSalt">Salt</string>
-  <string name="txtFat">Fat</string>
-  <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Satured fat</string>
+  <string name="txtSalt">Só</string>
+  <string name="txtFat">Zsír</string>
+  <string name="txtSugars">Cukrok</string>
+  <string name="txtSaturatedFat">Telített zsírsavak</string>
   <string name="hintBarcode">Vonalkód</string>
   <string name="hintLogin">Bejelentkezés</string>
   <string name="hintPass">Jelszó</string>
@@ -152,7 +152,7 @@
   <string name="txtInfoLoginOk">Felhasználó mentve</string>
   <string name="txtInfoLoginNo">Felhasználó nem lett mentve</string>
   <string name="txtDialogsTitle">Információ</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+  <string name="txtDialogsContent">A beolvasott termék nem található az Open Food Facts adatbázisában. Adja hozzá.</string>
   <string name="txtDialogsContentPowerMode">Ez a termék megtalálható az Open Food Facts adatbázisában.</string>
   <string name="txtDialogsContentSend">Feltöltjük a mentett terméket az adatbázisba?</string>
   <string name="txtYes">Igen</string>
@@ -179,7 +179,7 @@
   <string name="txtContentDialogUploading">Folyamatban... NE lépjen ki.</string>
   <string name="txtAbout">A képek Creative Commons Nevezd meg és Így add tovább szabad licenc alatt kerülnek elküldésre</string>
   <string name="txtAllsent">Termék elküldve</string>
-  <string name="txtPalm">a termék ne tartalmaz pálmaolajat</string>
+  <string name="txtPalm">A termék nem tartalmaz pálmaolajat</string>
   <string name="txtBarcodeNotValid">Helytelen vonalkód</string>
   <string name="try_it_scan_now">Termék beolvasása</string>
   <string name="share">Megosztás</string>
@@ -187,23 +187,23 @@
   <string name="create_account">Regisztráció</string>
   <string name="home_drawer">Kezdőlap</string>
   <string name="open_beauty_drawer">Open Beauty Facts (Nyílt Szépség Tények)</string>
-  <string name="open_food_drawer">Open Food Facts</string>
+  <string name="open_food_drawer">Open Food Facts (Nyílt Élelmiszer Tények)</string>
   <string name="search_drawer">Keres</string>
   <string name="search_by_barcode_drawer">Keresés vonalkód alapján</string>
   <string name="search_by_name_drawer">Keresés név szerint</string>
   <string name="scan_search">Beolvasás</string>
   <string name="user_drawer">Felhasználó</string>
   <string name="offline_edit_drawer">Offline szerkesztés</string>
-  <string name="txt_anonymous">Anonymous</string>
+  <string name="txt_anonymous">Névtelen</string>
   <string name="txt_product_not_found">Hiányzó termékek</string>
   <string name="delete_txt">Törlés</string>
   <string name="sign_in_drawer">Bejelentkezés</string>
-  <string name="alert_drawer">Allergen alert</string>
+  <string name="alert_drawer">Allergén riasztás</string>
   <string name="warning_allergens">Allergént tartalmaz</string>
   <string name="title_dialog_alert">Figyelmeztetés felvétele</string>
   <string name="warning_alert_data">A személyes allergén információk nem kerülnek feltöltésre az Open Food Facts szerverére. Érdemes ellenőrizni az adatok helytállóságát.</string>
   <string name="from_gallery">Galériából</string>
-  <string name="product_sent">Product sent successfully</string>
+  <string name="product_sent">Termék sikeresen elküldve</string>
   <string name="action_edit_product">Termék szerkesztés</string>
   <string name="title_info_dialog">Információ</string>
   <string name="text_offline_info_dialog">Offline beolvasás is lehetséges az Open Food Facts adatbázisba való későbbi feltöltéshez. Minden itt megjelenő termék beküldhető az alábbi gomb megnyomásával.</string>
@@ -216,15 +216,15 @@
   <string name="msg_input_empty">Mezők kitöltése szükséges.</string>
   <string name="new_offline_info">Kérjük készítsen képet a termékről, összetételről, tápanyagtáblázatról, és minden címkén található információról. Köszönjük!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
+  <string name="error_invalid_password">A jelszó legalább 6 karakter hosszú legyen.</string>
   <string name="error_field_required">Szükséges mező.</string>
   <string name="action_preferences">Tulajdonságok</string>
   <string name="prefs_scan_startup">Beolvasás induláskor.</string>
   <string name="prefs_scan_startup_summary">Ez esetben alkalmazásindításkor a beolvasó jelenik meg.</string>
   <string name="prefs_power_mode">Gyors beolvasás</string>
-  <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
+  <string name="prefs_power_mode_summary">Termékek gyors beolvasása vásárlás közben annak ellenőrzéséhez, hogy megtalálható-e az adatbázisban.</string>
   <string name="prefs_language">Nyelv</string>
-  <string name="prefs_language_summary">Nyelv megváltoztatása</string>
+  <string name="prefs_language_summary">Nyelv módosítása</string>
   <string name="scan_history_drawer">Előzmények</string>
   <string name="clear_history">Előzmények törlése</string>
   <string name="title_clear_history_dialog">Törlés</string>
@@ -262,84 +262,84 @@
   <string name="nutrition_sugars_short_name">Cukrok (g)</string>
   <string name="nutrition_trans_fat">Transzzsír</string>
   <string name="nutrition_trans_fat_short_name">Transzzsír (g)</string>
-  <string name="nutriment_serving_size">Adagonként</string>
+  <string name="nutriment_serving_size">Adagonként : </string>
   <string name="action_manage_account">Fiók kezelése</string>
   <string name="action_contributes">Saját közreműködések</string>
   <string name="logout_drawer">Kijelentkezés</string>
   <string name="contribution_without_account">Közreműködések megőrzéséhez bejelentkezés szükséges.</string>
-  <string name="textCarbonFootprint">"Ökológiai lábnyom/CO2 kibocsájtás "</string>
+  <string name="textCarbonFootprint">"Szénlábnyom / szén-dioxid-kibocsátás: "</string>
   <string name="txtDialogPowerMode">Gyorsnézet</string>
   <string name="txtSeeMore">Továbbiak</string>
   <string name="action_search">Keres</string>
   <string name="search_hint">Termék keresése</string>
-  <string name="number_of_results">Találatok száma</string>
+  <string name="number_of_results">Találatok száma :</string>
   <string name="txt_no_results">Nincs találat</string>
-  <string name="txt_extend_search">Try broadening your search or add the product</string>
-  <string name="txt_cant_load_search_results">Can\'t load search results</string>
-  <string name="txt_try_again">Try again</string>
-  <string name="nutrition_lactose">Lactose</string>
-  <string name="nutrition_casein">Casein</string>
-  <string name="nutrition_maltodextrins">Maltodextrins</string>
-  <string name="nutrition_serum_proteins">Serum Proteins</string>
-  <string name="nutrition_nucleotides">Nucleotides</string>
-  <string name="for_100g">For 100 g</string>
+  <string name="txt_extend_search">Próbálja meg bővíteni a keresést vagy adja hozzá a terméket</string>
+  <string name="txt_cant_load_search_results">Nem tölthető be a keresés eredménye</string>
+  <string name="txt_try_again">Próbálja újra</string>
+  <string name="nutrition_lactose">Laktóz</string>
+  <string name="nutrition_casein">Kazein</string>
+  <string name="nutrition_maltodextrins">Maltodextrin</string>
+  <string name="nutrition_serum_proteins">Szérum fehérje</string>
+  <string name="nutrition_nucleotides">Nukleotidok</string>
+  <string name="for_100g">100 g-ra</string>
   <string name="serving">Adagonként</string>
-  <string name="minerals">Minerals</string>
-  <string name="nutrition_calcium">Calcium</string>
-  <string name="nutrition_potassium">Potassium</string>
-  <string name="nutrition_chlore">Chlorine</string>
-  <string name="nutrition_magnesium">Magnesium</string>
-  <string name="nutrition_taurine">Taurine</string>
-  <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-  <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
-  <string name="nutrition_omega3">Omega 3</string>
-  <string name="nutrition_omega6">Omega 6</string>
-  <string name="nutrition_omega9">Omega 9</string>
-  <string name="nutrition_sucrose">Sucrose</string>
-  <string name="nutrition_glucose">Glucose</string>
-  <string name="nutrition_fructose">Fructose</string>
-  <string name="nutrition_maltose">Maltose</string>
-  <string name="nutrition_alcohol">Alcohol</string>
-  <string name="nutrition_vitamins">Vitamins</string>
-  <string name="vitamin_a">Vitamin A</string>
-  <string name="vitamin_d">Vitamin d</string>
-  <string name="vitamin_e">Vitamin e</string>
-  <string name="vitamin_k">Vitamin k</string>
-  <string name="vitamin_c">Vitamin C</string>
-  <string name="vitamin_b1">Vitamin B1</string>
-  <string name="vitamin_b2">Vitamin B2</string>
-  <string name="vitamin_pp">Vitamin PP</string>
-  <string name="vitamin_b6">Vitamin B6</string>
-  <string name="vitamin_b9">Vitamin B9</string>
-  <string name="vitamin_b12">Vitamin B12</string>
+  <string name="minerals">Ásványi anyagok</string>
+  <string name="nutrition_calcium">Kalcium</string>
+  <string name="nutrition_potassium">Kálium</string>
+  <string name="nutrition_chlore">Klór</string>
+  <string name="nutrition_magnesium">Magnézium</string>
+  <string name="nutrition_taurine">Taurin</string>
+  <string name="nutrition_monounsaturatedFat">Egyszeresen telítetlen zsírsavak</string>
+  <string name="nutrition_polyunsaturatedFat">Többszörösen telítetlen zsírsavak</string>
+  <string name="nutrition_omega3">Omega-3</string>
+  <string name="nutrition_omega6">Omega-6</string>
+  <string name="nutrition_omega9">Omega-9</string>
+  <string name="nutrition_sucrose">Szacharóz</string>
+  <string name="nutrition_glucose">Glükóz</string>
+  <string name="nutrition_fructose">Fruktóz</string>
+  <string name="nutrition_maltose">Maltóz</string>
+  <string name="nutrition_alcohol">Alkohol</string>
+  <string name="nutrition_vitamins">Vitaminok</string>
+  <string name="vitamin_a">A-vitamin</string>
+  <string name="vitamin_d">D-vitamin</string>
+  <string name="vitamin_e">E-vitamin</string>
+  <string name="vitamin_k">K-vitamin</string>
+  <string name="vitamin_c">C-vitamin</string>
+  <string name="vitamin_b1">B1-vitamin</string>
+  <string name="vitamin_b2">B2-vitamin</string>
+  <string name="vitamin_pp">PP-vitamin</string>
+  <string name="vitamin_b6">B6-vitamin</string>
+  <string name="vitamin_b9">B9-vitamin</string>
+  <string name="vitamin_b12">B12-vitamin</string>
   <string name="biotin">Biotin</string>
-  <string name="pantothenic_acid">Pantothenic acid</string>
-  <string name="nutrition_minerals">Minerals</string>
-  <string name="silica">Silica</string>
-  <string name="bicarbonate">Bicarbonate</string>
-  <string name="potassium">Potassium</string>
-  <string name="chloride">Chloride</string>
-  <string name="calcium">Calcium</string>
-  <string name="phosphorus">Phosphorus</string>
-  <string name="iron">Iron</string>
-  <string name="magnesium">Magnesium</string>
-  <string name="zinc">Zinc</string>
-  <string name="copper">Copper</string>
-  <string name="manganese">Manganese</string>
-  <string name="fluoride">Fluoride</string>
-  <string name="selenium">Selenium</string>
-  <string name="chromium">Chromium</string>
-  <string name="molybdenum">Molybdenum</string>
-  <string name="iodine">Iodine</string>
-  <string name="caffeine">Caffeine</string>
-  <string name="taurine">Taurine</string>
+  <string name="pantothenic_acid">Pantoténsav</string>
+  <string name="nutrition_minerals">Ásványi anyagok</string>
+  <string name="silica">Szilícium-dioxid</string>
+  <string name="bicarbonate">Bikarbonát</string>
+  <string name="potassium">Kálium</string>
+  <string name="chloride">Klorid</string>
+  <string name="calcium">Kalcium</string>
+  <string name="phosphorus">Foszfor</string>
+  <string name="iron">Vas</string>
+  <string name="magnesium">Magnézium</string>
+  <string name="zinc">Cink</string>
+  <string name="copper">Réz</string>
+  <string name="manganese">Mangán</string>
+  <string name="fluoride">Fluor</string>
+  <string name="selenium">Szelén</string>
+  <string name="chromium">Króm</string>
+  <string name="molybdenum">Molibdén</string>
+  <string name="iodine">Jód</string>
+  <string name="caffeine">Koffein</string>
+  <string name="taurine">Taurin</string>
   <string name="ph">pH</string>
-  <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
-  <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
-  <string name="cocoa">Cocoa</string>
-  <string name="chlorophyl">Chlorophyl</string>
-  <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-  <string name="take_picture_front">Take a picture of the front</string>
-  <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-  <string name="take_more_pictures">Take more pictures</string>
+  <string name="fruits_vegetables_nuts">Gyümölcsök, zöldségek, diófélék</string>
+  <string name="collagen_meat_protein_ratio">Kollagén húsfehérje aránya</string>
+  <string name="cocoa">Kakaó</string>
+  <string name="chlorophyl">Klorofill</string>
+  <string name="take_picture_ingredients">Kép készítése az összetevőkről</string>
+  <string name="take_picture_front">Kép készítése a termék csomagolásáról</string>
+  <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
+  <string name="take_more_pictures">További képek készítése</string>
 </resources>

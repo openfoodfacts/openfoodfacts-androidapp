@@ -7,7 +7,7 @@
   <string name="action_discover">О проекте</string>
   <string name="contribute">Как принять участие</string>
   <string name="action_find">Найти</string>
-  <string name="text_barcode">Введите штрихкод</string>
+  <string name="text_barcode">Введите штрихкод:</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Резюме</item>
@@ -20,31 +20,31 @@
     <item> </item>
     <item>мг</item>
     <item>кг</item>
+    <item>кг</item>
     <item>л</item>
-    <item>мл</item>
     <item>мл</item>
     <item>сл</item>
     <item>жидкая унция</item>
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
-    <item>Английский</item>
-    <item>Французский</item>
-    <item>Испанский</item>
-    <item>Итальянский</item>
-    <item>Немецкий</item>
-    <item>Японский</item>
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
     <item>ru</item>
-    <item>Португальский</item>
-    <item>Шведский</item>
-    <item>Бирманский</item>
-    <item>Казахский</item>
-    <item>Армянский</item>
-    <item>Греческий</item>
-    <item>Иврит</item>
-    <item>Галисийский</item>
-    <item>Каталанский</item>
-    <item>Чешский</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
     <item>ar</item>
     <item>fi</item>
     <item>hi</item>
@@ -54,11 +54,11 @@
     <item>nl</item>
     <item>pt-rBR</item>
     <item>ro</item>
-    <item>Шведский</item>
+    <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>упрощенный китайский</item>
+    <item>zh-rCN</item>
     <item>fa</item>
     <item>rs</item>
   </string-array>
@@ -274,7 +274,7 @@
   <string name="search_hint">Поиск продукта</string>
   <string name="number_of_results">Количество результатов:</string>
   <string name="txt_no_results">Ничего не найдено</string>
-  <string name="txt_extend_search">Try broadening your search or add the product</string>
+  <string name="txt_extend_search">Попробуйте расширить свой поиск или добавить продукт</string>
   <string name="txt_cant_load_search_results">Не удается загрузить результаты поиска</string>
   <string name="txt_try_again">Попробуйте еще раз</string>
   <string name="nutrition_lactose">Лактоза</string>

@@ -152,7 +152,7 @@
   <string name="txtInfoLoginOk">Benutzer gespeichert</string>
   <string name="txtInfoLoginNo">Benutzer nicht gespeichert</string>
   <string name="txtDialogsTitle">Informationen</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+  <string name="txtDialogsContent">Das Produkt, das Sie gescannt haben, existiert noch nicht in Open Food Facts. Bitte füge es hinzu.</string>
   <string name="txtDialogsContentPowerMode">Das gescannte Produkt befindet sich bereits in Open Food Facts.</string>
   <string name="txtDialogsContentSend">Möchten Sie die gespeicherten Produkte an die Datenbank senden?</string>
   <string name="txtYes">Ja</string>
@@ -203,7 +203,7 @@
   <string name="title_dialog_alert">Alarm hinzufügen</string>
   <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an den Open Food Facts Server gesendet. Seien Sie vorsichtig! Die Daten sind möglicherweise nicht immer 100% richtig. Prüfen Sie deshalb bitte selbst noch einmal nach!</string>
   <string name="from_gallery">Aus Galerie</string>
-  <string name="product_sent">Product sent successfully</string>
+  <string name="product_sent">Produkt wurde erfolgreich gesendet</string>
   <string name="action_edit_product">Produkt bearbeiten</string>
   <string name="title_info_dialog">Informationen</string>
   <string name="text_offline_info_dialog">Sie können Produkte einscannen, wenn Sie offline sind, um sie später zu Open Food Facts hoch zu laden. Alle Produkte, die Sie scannen werden hier aufgelistet, damit Sie sie über die unten stehende Schaltfläche hochladen können.</string>
@@ -338,8 +338,8 @@
   <string name="collagen_meat_protein_ratio">Kollagenwert</string>
   <string name="cocoa">Kakao</string>
   <string name="chlorophyl">Chlorophyll</string>
-  <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-  <string name="take_picture_front">Take a picture of the front</string>
+  <string name="take_picture_ingredients">Mache ein Bild der Zutaten</string>
+  <string name="take_picture_front">Mache ein Bild der Vorderseite</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-  <string name="take_more_pictures">Take more pictures</string>
+  <string name="take_more_pictures">Mache mehr Bilder</string>
 </resources>
