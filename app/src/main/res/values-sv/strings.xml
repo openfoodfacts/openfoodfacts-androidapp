@@ -64,10 +64,10 @@
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
-    <item>French</item>
+    <item>Franska</item>
     <item>Spanish</item>
     <item>Italian</item>
-    <item>German</item>
+    <item>Tyska</item>
     <item>Japanese</item>
     <item>Russian</item>
     <item>Portuguese</item>
@@ -76,7 +76,7 @@
     <item>Kazakh</item>
     <item>Armenian</item>
     <item>Greek</item>
-    <item>Hebrew</item>
+    <item>Hebreiska</item>
     <item>Galician</item>
     <item>Catalan</item>
     <item>Czech</item>
@@ -92,7 +92,7 @@
     <item>Swedish</item>
     <item>Chinese</item>
     <item>Norwegian (Bokmal)</item>
-    <item>Danish</item>
+    <item>Danska</item>
     <item>Simplified Chinese</item>
     <item>Farsi</item>
     <item>Serbian</item>
@@ -136,13 +136,13 @@
   <string name="txtLogin">Användarnamn :</string>
   <string name="txtPass">Lösenord :</string>
   <string name="txtTitleHome">Öppna din mat och känn till vad du äter</string>
-  <string name="txtSave">Save</string>
+  <string name="txtSave">Spara</string>
   <string name="txtSignIn">Sign in</string>
   <string name="txtUser">User panel</string>
   <string name="txtToastSaved">Användaren sparades</string>
   <string name="txtSalt">Salt</string>
-  <string name="txtFat">Fat</string>
-  <string name="txtSugars">Sugars</string>
+  <string name="txtFat">Fett</string>
+  <string name="txtSugars">Socker</string>
   <string name="txtSaturatedFat">Satured fat</string>
   <string name="hintBarcode">Streckkod</string>
   <string name="hintLogin">Login</string>
@@ -239,9 +239,9 @@
   <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
   <string name="nutrition_cholesterol">Cholesterol</string>
   <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
-  <string name="nutrition_energy">Energy</string>
-  <string name="nutrition_energy_short_name">Energy</string>
-  <string name="nutrition_fat">Fat</string>
+  <string name="nutrition_energy">Energi</string>
+  <string name="nutrition_energy_short_name">Energi</string>
+  <string name="nutrition_fat">Fett</string>
   <string name="nutrition_fat_short_name">Fat (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
@@ -265,7 +265,7 @@
   <string name="nutriment_serving_size">Per portion : </string>
   <string name="action_manage_account">Manage account</string>
   <string name="action_contributes">Your contributions</string>
-  <string name="logout_drawer">Logout</string>
+  <string name="logout_drawer">Logga ut</string>
   <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
@@ -321,9 +321,9 @@
   <string name="chloride">Chloride</string>
   <string name="calcium">Calcium</string>
   <string name="phosphorus">Phosphorus</string>
-  <string name="iron">Iron</string>
+  <string name="iron">Järn</string>
   <string name="magnesium">Magnesium</string>
-  <string name="zinc">Zinc</string>
+  <string name="zinc">Zink</string>
   <string name="copper">Copper</string>
   <string name="manganese">Manganese</string>
   <string name="fluoride">Fluoride</string>
