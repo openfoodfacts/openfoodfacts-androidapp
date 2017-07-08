@@ -5,7 +5,7 @@
   <string name="action_settings">Inställningar</string>
   <string name="action_about">Om</string>
   <string name="action_discover">Upptäck</string>
-  <string name="contribute">How to contribute</string>
+  <string name="contribute">Hur man bidrar</string>
   <string name="action_find">Sök</string>
   <string name="text_barcode">Type the barcode :</string>
   <!-- Nav Drawer Product Menu Items -->
@@ -130,7 +130,7 @@
   <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
   <string name="txtServingSize">Storlek på portion :</string>
   <string name="txtNutrientLevel100g">Näringsnivåer per 100g</string>
-  <string name="txtNutritionLevelLow">in low quantity</string>
+  <string name="txtNutritionLevelLow">i låg kvantitet</string>
   <string name="txtNutritionLevelModerate">in moderate quantity</string>
   <string name="txtNutritionLevelHigh">in high quantity</string>
   <string name="txtLogin">Användarnamn :</string>
@@ -181,7 +181,7 @@
   <string name="txtAllsent">Produkterna skickades</string>
   <string name="txtPalm">Produkten innehåller ingen palmolja</string>
   <string name="txtBarcodeNotValid">Streckkoden är inte giltig</string>
-  <string name="try_it_scan_now">Scan product</string>
+  <string name="try_it_scan_now">Skanna produkt</string>
   <string name="share">Dela</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
   <string name="create_account">Registrera</string>
@@ -204,7 +204,7 @@
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>
   <string name="from_gallery">Från galleriet</string>
   <string name="product_sent">Product sent successfully</string>
-  <string name="action_edit_product">Edit product</string>
+  <string name="action_edit_product">Redigera produkt</string>
   <string name="title_info_dialog">Information</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
@@ -217,14 +217,14 @@
   <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
-  <string name="error_field_required">This field is required.</string>
+  <string name="error_field_required">Detta fält är obligatoriskt.</string>
   <string name="action_preferences">Preferences</string>
-  <string name="prefs_scan_startup">Scan on startup</string>
+  <string name="prefs_scan_startup">Skanna vid uppstart</string>
   <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
   <string name="prefs_power_mode">Power mode scan</string>
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
   <string name="prefs_language">Spåk</string>
-  <string name="prefs_language_summary">Change language</string>
+  <string name="prefs_language_summary">Byt språk</string>
   <string name="scan_history_drawer">Historik</string>
   <string name="clear_history">Clear history</string>
   <string name="title_clear_history_dialog">Rensa</string>
@@ -235,25 +235,25 @@
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <!-- Nutrition info tab -->
-  <string name="nutrition_carbohydrate">Carbohydrate</string>
+  <string name="nutrition_carbohydrate">Kolhydrat</string>
   <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
   <string name="nutrition_cholesterol">Kolesterol</string>
-  <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
+  <string name="nutrition_cholesterol_short_name">Kolesterol (g)</string>
   <string name="nutrition_energy">Energi</string>
   <string name="nutrition_energy_short_name">Energi</string>
   <string name="nutrition_fat">Fett</string>
   <string name="nutrition_fat_short_name">Fett (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
-  <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
+  <string name="nutrition_fiber_short_name">Kostfiber (g)</string>
   <string name="nutrition_header">Nutrition facts</string>
   <string name="nutrition_no_data_message">No data is available for this product</string>
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Proteiner</string>
-  <string name="nutrition_proteins_short_name">Proteins (g)</string>
+  <string name="nutrition_proteins_short_name">Proteiner (g)</string>
   <string name="nutrition_salt">Salt</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Mättat fett</string>
-  <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
+  <string name="nutrition_satured_fat_short_name">Mättat fett (g)</string>
   <string name="nutrition_serving">Per portion</string>
   <string name="nutrition_serving_size">Storlek på portion :</string>
   <string name="nutrition_sodium">Natrium</string>
@@ -262,8 +262,8 @@
   <string name="nutrition_sugars_short_name">Sugars (g)</string>
   <string name="nutrition_trans_fat">Transfett</string>
   <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
-  <string name="nutriment_serving_size">Per portion : </string>
-  <string name="action_manage_account">Manage account</string>
+  <string name="nutriment_serving_size">Per portion: </string>
+  <string name="action_manage_account">Hantera konto</string>
   <string name="action_contributes">Your contributions</string>
   <string name="logout_drawer">Logga ut</string>
   <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
@@ -272,7 +272,7 @@
   <string name="txtSeeMore">Visa mer</string>
   <string name="action_search">Sök</string>
   <string name="search_hint">Search a product</string>
-  <string name="number_of_results">Number of results :</string>
+  <string name="number_of_results">Antal resultat:</string>
   <string name="txt_no_results">No results found</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
   <string name="txt_cant_load_search_results">Can\'t load search results</string>
@@ -280,7 +280,7 @@
   <string name="nutrition_lactose">Laktos</string>
   <string name="nutrition_casein">Casein</string>
   <string name="nutrition_maltodextrins">Maltodextrins</string>
-  <string name="nutrition_serum_proteins">Serum Proteins</string>
+  <string name="nutrition_serum_proteins">Serumproteiner</string>
   <string name="nutrition_nucleotides">Nucleotides</string>
   <string name="for_100g">För 100 g</string>
   <string name="serving">Per portion</string>
@@ -341,5 +341,5 @@
   <string name="take_picture_ingredients">Take a picture of the ingredients</string>
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-  <string name="take_more_pictures">Take more pictures</string>
+  <string name="take_more_pictures">Ta fler bilder</string>
 </resources>
