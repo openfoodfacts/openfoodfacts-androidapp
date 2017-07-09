@@ -246,7 +246,7 @@
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Kostfiber (g)</string>
   <string name="nutrition_header">Nutrition facts</string>
-  <string name="nutrition_no_data_message">No data is available for this product</string>
+  <string name="nutrition_no_data_message">Inga data finns tillgängliga för denna produkt</string>
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Proteiner</string>
   <string name="nutrition_proteins_short_name">Proteiner (g)</string>
@@ -340,6 +340,6 @@
   <string name="chlorophyl">Klorofyll</string>
   <string name="take_picture_ingredients">Take a picture of the ingredients</string>
   <string name="take_picture_front">Ta en bild på framsidan</string>
-  <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
+  <string name="take_picture_nutrition_table">Ta en bild av näringstabellen</string>
   <string name="take_more_pictures">Ta fler bilder</string>
 </resources>
