@@ -70,7 +70,7 @@
     <item>Tyska</item>
     <item>Japanska</item>
     <item>Ryska</item>
-    <item>Portuguese</item>
+    <item>Portugisiska</item>
     <item>Svenska</item>
     <item>Burmesiska</item>
     <item>Kazakh</item>
@@ -132,13 +132,13 @@
   <string name="txtNutrientLevel100g">Näringsnivåer per 100g</string>
   <string name="txtNutritionLevelLow">i låg kvantitet</string>
   <string name="txtNutritionLevelModerate">in moderate quantity</string>
-  <string name="txtNutritionLevelHigh">in high quantity</string>
+  <string name="txtNutritionLevelHigh">i hög kvantitet</string>
   <string name="txtLogin">Användarnamn :</string>
   <string name="txtPass">Lösenord :</string>
   <string name="txtTitleHome">Öppna din mat och känn till vad du äter</string>
   <string name="txtSave">Spara</string>
   <string name="txtSignIn">Logga in</string>
-  <string name="txtUser">User panel</string>
+  <string name="txtUser">Användarpanel</string>
   <string name="txtToastSaved">Användaren sparades</string>
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fett</string>
@@ -218,7 +218,7 @@
   <!-- Strings related to login -->
   <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
   <string name="error_field_required">Detta fält är obligatoriskt.</string>
-  <string name="action_preferences">Preferences</string>
+  <string name="action_preferences">Inställningar</string>
   <string name="prefs_scan_startup">Skanna vid uppstart</string>
   <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
   <string name="prefs_power_mode">Power mode scan</string>
@@ -231,12 +231,12 @@
   <string name="text_clear_history_dialog">Do you want to clear all scan history?</string>
   <string name="export_csv_history">Exportera CSV</string>
   <string name="txt_exporting_history">Exporting history...</string>
-  <string name="txt_history_exported">History exported</string>
+  <string name="txt_history_exported">Historik exporterad</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <!-- Nutrition info tab -->
   <string name="nutrition_carbohydrate">Kolhydrat</string>
-  <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
+  <string name="nutrition_carbohydrate_short_name">Kolhydrat (g)</string>
   <string name="nutrition_cholesterol">Kolesterol</string>
   <string name="nutrition_cholesterol_short_name">Kolesterol (g)</string>
   <string name="nutrition_energy">Energi</string>
@@ -271,17 +271,17 @@
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">Visa mer</string>
   <string name="action_search">Sök</string>
-  <string name="search_hint">Search a product</string>
+  <string name="search_hint">Sök en produkt</string>
   <string name="number_of_results">Antal resultat:</string>
-  <string name="txt_no_results">No results found</string>
+  <string name="txt_no_results">Inga resultat hittades</string>
   <string name="txt_extend_search">Prova att bredda din sökning eller lägga till produkten</string>
   <string name="txt_cant_load_search_results">Kan inte ladda sökresultat</string>
-  <string name="txt_try_again">Try again</string>
+  <string name="txt_try_again">Försök igen</string>
   <string name="nutrition_lactose">Laktos</string>
   <string name="nutrition_casein">Kasein</string>
   <string name="nutrition_maltodextrins">Maltodextrins</string>
   <string name="nutrition_serum_proteins">Serumproteiner</string>
-  <string name="nutrition_nucleotides">Nucleotides</string>
+  <string name="nutrition_nucleotides">Nukleotider</string>
   <string name="for_100g">För 100 g</string>
   <string name="serving">Per portion</string>
   <string name="minerals">Mineraler</string>
@@ -313,7 +313,7 @@
   <string name="vitamin_b9">Vitamin B9</string>
   <string name="vitamin_b12">Vitamin B12</string>
   <string name="biotin">Biotin</string>
-  <string name="pantothenic_acid">Pantothenic acid</string>
+  <string name="pantothenic_acid">Pantotensyra</string>
   <string name="nutrition_minerals">Mineraler</string>
   <string name="silica">Kiseldioxid</string>
   <string name="bicarbonate">Bikarbonat</string>
