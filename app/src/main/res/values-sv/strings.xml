@@ -80,7 +80,7 @@
     <item>Galiciska</item>
     <item>Katalanska</item>
     <item>Tjeckiska</item>
-    <item>Arabic</item>
+    <item>Arabiska</item>
     <item>Finska</item>
     <item>Hindi</item>
     <item>Kabyle</item>
@@ -126,7 +126,7 @@
   <string name="txtSubstances">Substanser eller produkter som orsaker allergier eller intolerans :</string>
   <string name="txtAdditives">Tillsatser :</string>
   <string name="txtTraces">Traces :</string>
-  <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
+  <string name="txtMayBeFromPalmOilProduct">Ingredienser som kan vara från palmolja :</string>
   <string name="txtPalmOilProduct">Ingredienser från palmolja :</string>
   <string name="txtServingSize">Storlek på portion :</string>
   <string name="txtNutrientLevel100g">Näringsnivåer per 100g</string>
@@ -162,7 +162,7 @@
   <string name="hintEnergyUnit">Energienhet</string>
   <string name="hintWeight">Vikt</string>
   <string name="hintStores">Butik</string>
-  <string name="hintBrand">Brand</string>
+  <string name="hintBrand">Varumärke</string>
   <string name="txtTakePicture">Ta en bild</string>
   <string name="txtSendAll">Ladda upp allt</string>
   <string name="txtNoData">Ingen data</string>
@@ -183,7 +183,7 @@
   <string name="txtBarcodeNotValid">Streckkoden är inte giltig</string>
   <string name="try_it_scan_now">Skanna produkt</string>
   <string name="share">Dela</string>
-  <string name="msg_share">Look at this product on Open Food Facts :</string>
+  <string name="msg_share">Titta på denna produkt på Open Food Facts:</string>
   <string name="create_account">Registrera</string>
   <string name="home_drawer">Hem</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
@@ -208,12 +208,12 @@
   <string name="title_info_dialog">Information</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
-  <string name="permission_title">Permission information</string>
+  <string name="permission_title">Behörighetsinformation</string>
   <string name="permission_denied">Please activate permission in the settings</string>
   <string name="permission_storage">Storage permission is needed to take or select pictures</string>
   <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
   <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
-  <string name="msg_input_empty">Please fill the fields first.</string>
+  <string name="msg_input_empty">Vänligen fyll i fälten först.</string>
   <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
@@ -274,11 +274,11 @@
   <string name="search_hint">Search a product</string>
   <string name="number_of_results">Antal resultat:</string>
   <string name="txt_no_results">No results found</string>
-  <string name="txt_extend_search">Try broadening your search or add the product</string>
+  <string name="txt_extend_search">Prova att bredda din sökning eller lägga till produkten</string>
   <string name="txt_cant_load_search_results">Kan inte ladda sökresultat</string>
   <string name="txt_try_again">Try again</string>
   <string name="nutrition_lactose">Laktos</string>
-  <string name="nutrition_casein">Casein</string>
+  <string name="nutrition_casein">Kasein</string>
   <string name="nutrition_maltodextrins">Maltodextrins</string>
   <string name="nutrition_serum_proteins">Serumproteiner</string>
   <string name="nutrition_nucleotides">Nucleotides</string>
@@ -315,7 +315,7 @@
   <string name="biotin">Biotin</string>
   <string name="pantothenic_acid">Pantothenic acid</string>
   <string name="nutrition_minerals">Mineraler</string>
-  <string name="silica">Silica</string>
+  <string name="silica">Kiseldioxid</string>
   <string name="bicarbonate">Bikarbonat</string>
   <string name="potassium">Kalium</string>
   <string name="chloride">Klorid</string>
@@ -334,7 +334,7 @@
   <string name="caffeine">Koffein</string>
   <string name="taurine">Taurin</string>
   <string name="ph">pH</string>
-  <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
+  <string name="fruits_vegetables_nuts">Frukt, grönsaker, nötter</string>
   <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
   <string name="cocoa">Kakao</string>
   <string name="chlorophyl">Klorofyll</string>
