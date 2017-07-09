@@ -4,8 +4,8 @@
   <string name="hello_world">Hej världen!</string>
   <string name="action_settings">Inställningar</string>
   <string name="action_about">Om</string>
-  <string name="action_discover">Discover</string>
-  <string name="contribute">How to contribute</string>
+  <string name="action_discover">Upptäck</string>
+  <string name="contribute">Hur man bidrar</string>
   <string name="action_find">Sök</string>
   <string name="text_barcode">Type the barcode :</string>
   <!-- Nav Drawer Product Menu Items -->
@@ -63,39 +63,39 @@
     <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
+    <item>Engelska</item>
+    <item>Franska</item>
+    <item>Spanska</item>
+    <item>Italienska</item>
+    <item>Tyska</item>
+    <item>Japanska</item>
+    <item>Ryska</item>
     <item>Portuguese</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
+    <item>Svenska</item>
+    <item>Burmesiska</item>
     <item>Kazakh</item>
-    <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
-    <item>Galician</item>
-    <item>Catalan</item>
-    <item>Czech</item>
-    <item>Arabic</item>
-    <item>Finnish</item>
+    <item>Armeniska</item>
+    <item>Grekiska</item>
+    <item>Hebreiska</item>
+    <item>Galiciska</item>
+    <item>Katalanska</item>
+    <item>Tjeckiska</item>
+    <item>Arabiska</item>
+    <item>Finska</item>
     <item>Hindi</item>
     <item>Kabyle</item>
     <item>Korean</item>
-    <item>Latvian</item>
-    <item>Dutch</item>
+    <item>Lettiska</item>
+    <item>Nederländska</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
-    <item>Swedish</item>
-    <item>Chinese</item>
+    <item>Rumänska</item>
+    <item>Svenska</item>
+    <item>Kinesiska</item>
     <item>Norwegian (Bokmal)</item>
-    <item>Danish</item>
+    <item>Danska</item>
     <item>Simplified Chinese</item>
     <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Serbiska</item>
   </string-array>
   <string-array name="images_array">
     <item>Standard</item>
@@ -116,7 +116,7 @@
   <string name="txtPackaging">Paketering:</string>
   <string name="txtBrands">Märken:</string>
   <string name="txtCategories">Kategorier:</string>
-  <string name="txtLabels">Labels, certifications, awards :</string>
+  <string name="txtLabels">Etiketter, certifieringar, utmärkelser :</string>
   <string name="txtManufacturing">Manufacturing or processing places :</string>
   <string name="txtIngredientsOrigins">Origin of ingredients :</string>
   <string name="txtCity">City, state and country where purchased :</string>
@@ -126,26 +126,26 @@
   <string name="txtSubstances">Substanser eller produkter som orsaker allergier eller intolerans :</string>
   <string name="txtAdditives">Tillsatser :</string>
   <string name="txtTraces">Traces :</string>
-  <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
-  <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
+  <string name="txtMayBeFromPalmOilProduct">Ingredienser som kan vara från palmolja :</string>
+  <string name="txtPalmOilProduct">Ingredienser från palmolja :</string>
   <string name="txtServingSize">Storlek på portion :</string>
   <string name="txtNutrientLevel100g">Näringsnivåer per 100g</string>
-  <string name="txtNutritionLevelLow">in low quantity</string>
+  <string name="txtNutritionLevelLow">i låg kvantitet</string>
   <string name="txtNutritionLevelModerate">in moderate quantity</string>
   <string name="txtNutritionLevelHigh">in high quantity</string>
   <string name="txtLogin">Användarnamn :</string>
   <string name="txtPass">Lösenord :</string>
   <string name="txtTitleHome">Öppna din mat och känn till vad du äter</string>
-  <string name="txtSave">Save</string>
-  <string name="txtSignIn">Sign in</string>
+  <string name="txtSave">Spara</string>
+  <string name="txtSignIn">Logga in</string>
   <string name="txtUser">User panel</string>
   <string name="txtToastSaved">Användaren sparades</string>
   <string name="txtSalt">Salt</string>
-  <string name="txtFat">Fat</string>
-  <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Satured fat</string>
+  <string name="txtFat">Fett</string>
+  <string name="txtSugars">Socker</string>
+  <string name="txtSaturatedFat">Mättat fett</string>
   <string name="hintBarcode">Streckkod</string>
-  <string name="hintLogin">Login</string>
+  <string name="hintLogin">Logga in</string>
   <string name="hintPass">Lösenord</string>
   <string name="errorLogin">Fel användarnamn eller lösenord</string>
   <string name="errorWeb">Vi kan inte komma åt internet. Har du problem med anslutningen?</string>
@@ -162,17 +162,17 @@
   <string name="hintEnergyUnit">Energienhet</string>
   <string name="hintWeight">Vikt</string>
   <string name="hintStores">Butik</string>
-  <string name="hintBrand">Brand</string>
+  <string name="hintBrand">Varumärke</string>
   <string name="txtTakePicture">Ta en bild</string>
   <string name="txtSendAll">Ladda upp allt</string>
   <string name="txtNoData">Ingen data</string>
-  <string name="txtPictureNeeded">Please take a picture first</string>
+  <string name="txtPictureNeeded">Vänligen ta en bild först</string>
   <string name="toastSending">Laddar upp...</string>
   <string name="dataSaved">Sparades lokalt i din enhet</string>
   <string name="txtInfoAddUser">Vänligen fyll i ditt användarnamn och lösenord</string>
   <string name="txtDataUpdated">Datan uppdaterades</string>
   <string name="txtLoading">Laddar...</string>
-  <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
+  <string name="txtDialogsContentDelete">Vill du ta bort detta utkast?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Streckkod krävs</string>
   <string name="txtOk">OK</string>
@@ -181,9 +181,9 @@
   <string name="txtAllsent">Produkterna skickades</string>
   <string name="txtPalm">Produkten innehåller ingen palmolja</string>
   <string name="txtBarcodeNotValid">Streckkoden är inte giltig</string>
-  <string name="try_it_scan_now">Scan product</string>
+  <string name="try_it_scan_now">Skanna produkt</string>
   <string name="share">Dela</string>
-  <string name="msg_share">Look at this product on Open Food Facts :</string>
+  <string name="msg_share">Titta på denna produkt på Open Food Facts:</string>
   <string name="create_account">Registrera</string>
   <string name="home_drawer">Hem</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
@@ -203,104 +203,104 @@
   <string name="title_dialog_alert">Add alert</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>
   <string name="from_gallery">Från galleriet</string>
-  <string name="product_sent">Product sent successfully</string>
-  <string name="action_edit_product">Edit product</string>
+  <string name="product_sent">Produkt skickad</string>
+  <string name="action_edit_product">Redigera produkt</string>
   <string name="title_info_dialog">Information</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
-  <string name="permission_title">Permission information</string>
+  <string name="permission_title">Behörighetsinformation</string>
   <string name="permission_denied">Please activate permission in the settings</string>
   <string name="permission_storage">Storage permission is needed to take or select pictures</string>
   <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
   <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
-  <string name="msg_input_empty">Please fill the fields first.</string>
+  <string name="msg_input_empty">Vänligen fyll i fälten först.</string>
   <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
-  <string name="error_field_required">This field is required.</string>
+  <string name="error_field_required">Detta fält är obligatoriskt.</string>
   <string name="action_preferences">Preferences</string>
-  <string name="prefs_scan_startup">Scan on startup</string>
+  <string name="prefs_scan_startup">Skanna vid uppstart</string>
   <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
   <string name="prefs_power_mode">Power mode scan</string>
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
-  <string name="prefs_language">Language</string>
-  <string name="prefs_language_summary">Change language</string>
-  <string name="scan_history_drawer">History</string>
+  <string name="prefs_language">Spåk</string>
+  <string name="prefs_language_summary">Byt språk</string>
+  <string name="scan_history_drawer">Historik</string>
   <string name="clear_history">Clear history</string>
-  <string name="title_clear_history_dialog">Clear</string>
+  <string name="title_clear_history_dialog">Rensa</string>
   <string name="text_clear_history_dialog">Do you want to clear all scan history?</string>
-  <string name="export_csv_history">Export CSV</string>
+  <string name="export_csv_history">Exportera CSV</string>
   <string name="txt_exporting_history">Exporting history...</string>
   <string name="txt_history_exported">History exported</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <!-- Nutrition info tab -->
-  <string name="nutrition_carbohydrate">Carbohydrate</string>
+  <string name="nutrition_carbohydrate">Kolhydrat</string>
   <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
-  <string name="nutrition_cholesterol">Cholesterol</string>
-  <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
-  <string name="nutrition_energy">Energy</string>
-  <string name="nutrition_energy_short_name">Energy</string>
-  <string name="nutrition_fat">Fat</string>
-  <string name="nutrition_fat_short_name">Fat (g)</string>
+  <string name="nutrition_cholesterol">Kolesterol</string>
+  <string name="nutrition_cholesterol_short_name">Kolesterol (g)</string>
+  <string name="nutrition_energy">Energi</string>
+  <string name="nutrition_energy_short_name">Energi</string>
+  <string name="nutrition_fat">Fett</string>
+  <string name="nutrition_fat_short_name">Fett (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
-  <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
+  <string name="nutrition_fiber_short_name">Kostfiber (g)</string>
   <string name="nutrition_header">Nutrition facts</string>
-  <string name="nutrition_no_data_message">No data is available for this product</string>
+  <string name="nutrition_no_data_message">Inga data finns tillgängliga för denna produkt</string>
   <string name="nutrition_per_quantity">For 100g/100ml</string>
-  <string name="nutrition_proteins">Proteins</string>
-  <string name="nutrition_proteins_short_name">Proteins (g)</string>
+  <string name="nutrition_proteins">Proteiner</string>
+  <string name="nutrition_proteins_short_name">Proteiner (g)</string>
   <string name="nutrition_salt">Salt</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
-  <string name="nutrition_satured_fat">Satured fat</string>
-  <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
-  <string name="nutrition_serving">Per serving</string>
+  <string name="nutrition_satured_fat">Mättat fett</string>
+  <string name="nutrition_satured_fat_short_name">Mättat fett (g)</string>
+  <string name="nutrition_serving">Per portion</string>
   <string name="nutrition_serving_size">Storlek på portion :</string>
   <string name="nutrition_sodium">Natrium</string>
-  <string name="nutrition_sodium_short_name">Sodium (g)</string>
+  <string name="nutrition_sodium_short_name">Natrium (g)</string>
   <string name="nutrition_sugars">Socker</string>
   <string name="nutrition_sugars_short_name">Sugars (g)</string>
-  <string name="nutrition_trans_fat">Trans fat</string>
+  <string name="nutrition_trans_fat">Transfett</string>
   <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
-  <string name="nutriment_serving_size">Per portion : </string>
-  <string name="action_manage_account">Manage account</string>
+  <string name="nutriment_serving_size">Per portion: </string>
+  <string name="action_manage_account">Hantera konto</string>
   <string name="action_contributes">Your contributions</string>
-  <string name="logout_drawer">Logout</string>
+  <string name="logout_drawer">Logga ut</string>
   <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
-  <string name="txtSeeMore">See more</string>
+  <string name="txtSeeMore">Visa mer</string>
   <string name="action_search">Sök</string>
   <string name="search_hint">Search a product</string>
-  <string name="number_of_results">Number of results :</string>
+  <string name="number_of_results">Antal resultat:</string>
   <string name="txt_no_results">No results found</string>
-  <string name="txt_extend_search">Try broadening your search or add the product</string>
-  <string name="txt_cant_load_search_results">Can\'t load search results</string>
+  <string name="txt_extend_search">Prova att bredda din sökning eller lägga till produkten</string>
+  <string name="txt_cant_load_search_results">Kan inte ladda sökresultat</string>
   <string name="txt_try_again">Try again</string>
-  <string name="nutrition_lactose">Lactose</string>
-  <string name="nutrition_casein">Casein</string>
+  <string name="nutrition_lactose">Laktos</string>
+  <string name="nutrition_casein">Kasein</string>
   <string name="nutrition_maltodextrins">Maltodextrins</string>
-  <string name="nutrition_serum_proteins">Serum Proteins</string>
+  <string name="nutrition_serum_proteins">Serumproteiner</string>
   <string name="nutrition_nucleotides">Nucleotides</string>
-  <string name="for_100g">For 100 g</string>
-  <string name="serving">Per serving</string>
-  <string name="minerals">Minerals</string>
-  <string name="nutrition_calcium">Calcium</string>
-  <string name="nutrition_potassium">Potassium</string>
-  <string name="nutrition_chlore">Chlorine</string>
+  <string name="for_100g">För 100 g</string>
+  <string name="serving">Per portion</string>
+  <string name="minerals">Mineraler</string>
+  <string name="nutrition_calcium">Kalcium</string>
+  <string name="nutrition_potassium">Kalium</string>
+  <string name="nutrition_chlore">Klor</string>
   <string name="nutrition_magnesium">Magnesium</string>
-  <string name="nutrition_taurine">Taurine</string>
+  <string name="nutrition_taurine">Taurin</string>
   <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
   <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
   <string name="nutrition_omega3">Omega 3</string>
   <string name="nutrition_omega6">Omega 6</string>
   <string name="nutrition_omega9">Omega 9</string>
-  <string name="nutrition_sucrose">Sucrose</string>
-  <string name="nutrition_glucose">Glucose</string>
-  <string name="nutrition_fructose">Fructose</string>
-  <string name="nutrition_maltose">Maltose</string>
-  <string name="nutrition_alcohol">Alcohol</string>
-  <string name="nutrition_vitamins">Vitamins</string>
+  <string name="nutrition_sucrose">Sackaros</string>
+  <string name="nutrition_glucose">Glukos</string>
+  <string name="nutrition_fructose">Fruktos</string>
+  <string name="nutrition_maltose">Maltos</string>
+  <string name="nutrition_alcohol">Alkohol</string>
+  <string name="nutrition_vitamins">Vitaminer</string>
   <string name="vitamin_a">Vitamin A</string>
   <string name="vitamin_d">Vitamin d</string>
   <string name="vitamin_e">Vitamin e</string>
@@ -314,32 +314,32 @@
   <string name="vitamin_b12">Vitamin B12</string>
   <string name="biotin">Biotin</string>
   <string name="pantothenic_acid">Pantothenic acid</string>
-  <string name="nutrition_minerals">Minerals</string>
-  <string name="silica">Silica</string>
-  <string name="bicarbonate">Bicarbonate</string>
-  <string name="potassium">Potassium</string>
-  <string name="chloride">Chloride</string>
-  <string name="calcium">Calcium</string>
-  <string name="phosphorus">Phosphorus</string>
-  <string name="iron">Iron</string>
+  <string name="nutrition_minerals">Mineraler</string>
+  <string name="silica">Kiseldioxid</string>
+  <string name="bicarbonate">Bikarbonat</string>
+  <string name="potassium">Kalium</string>
+  <string name="chloride">Klorid</string>
+  <string name="calcium">Kalcium</string>
+  <string name="phosphorus">Fosfor</string>
+  <string name="iron">Järn</string>
   <string name="magnesium">Magnesium</string>
-  <string name="zinc">Zinc</string>
-  <string name="copper">Copper</string>
+  <string name="zinc">Zink</string>
+  <string name="copper">Koppar</string>
   <string name="manganese">Manganese</string>
-  <string name="fluoride">Fluoride</string>
-  <string name="selenium">Selenium</string>
-  <string name="chromium">Chromium</string>
-  <string name="molybdenum">Molybdenum</string>
-  <string name="iodine">Iodine</string>
-  <string name="caffeine">Caffeine</string>
-  <string name="taurine">Taurine</string>
+  <string name="fluoride">Fluorid</string>
+  <string name="selenium">Selen</string>
+  <string name="chromium">Krom</string>
+  <string name="molybdenum">Molybden</string>
+  <string name="iodine">Jod</string>
+  <string name="caffeine">Koffein</string>
+  <string name="taurine">Taurin</string>
   <string name="ph">pH</string>
-  <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
+  <string name="fruits_vegetables_nuts">Frukt, grönsaker, nötter</string>
   <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
-  <string name="cocoa">Cocoa</string>
-  <string name="chlorophyl">Chlorophyl</string>
+  <string name="cocoa">Kakao</string>
+  <string name="chlorophyl">Klorofyll</string>
   <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-  <string name="take_picture_front">Take a picture of the front</string>
-  <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-  <string name="take_more_pictures">Take more pictures</string>
+  <string name="take_picture_front">Ta en bild på framsidan</string>
+  <string name="take_picture_nutrition_table">Ta en bild av näringstabellen</string>
+  <string name="take_more_pictures">Ta fler bilder</string>
 </resources>
