@@ -116,7 +116,7 @@
   <string name="txtPackaging">Paketering:</string>
   <string name="txtBrands">Märken:</string>
   <string name="txtCategories">Kategorier:</string>
-  <string name="txtLabels">Labels, certifications, awards :</string>
+  <string name="txtLabels">Etiketter, certifieringar, utmärkelser :</string>
   <string name="txtManufacturing">Manufacturing or processing places :</string>
   <string name="txtIngredientsOrigins">Origin of ingredients :</string>
   <string name="txtCity">City, state and country where purchased :</string>
@@ -127,7 +127,7 @@
   <string name="txtAdditives">Tillsatser :</string>
   <string name="txtTraces">Traces :</string>
   <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
-  <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
+  <string name="txtPalmOilProduct">Ingredienser från palmolja :</string>
   <string name="txtServingSize">Storlek på portion :</string>
   <string name="txtNutrientLevel100g">Näringsnivåer per 100g</string>
   <string name="txtNutritionLevelLow">i låg kvantitet</string>
@@ -166,13 +166,13 @@
   <string name="txtTakePicture">Ta en bild</string>
   <string name="txtSendAll">Ladda upp allt</string>
   <string name="txtNoData">Ingen data</string>
-  <string name="txtPictureNeeded">Please take a picture first</string>
+  <string name="txtPictureNeeded">Vänligen ta en bild först</string>
   <string name="toastSending">Laddar upp...</string>
   <string name="dataSaved">Sparades lokalt i din enhet</string>
   <string name="txtInfoAddUser">Vänligen fyll i ditt användarnamn och lösenord</string>
   <string name="txtDataUpdated">Datan uppdaterades</string>
   <string name="txtLoading">Laddar...</string>
-  <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
+  <string name="txtDialogsContentDelete">Vill du ta bort detta utkast?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Streckkod krävs</string>
   <string name="txtOk">OK</string>
@@ -203,7 +203,7 @@
   <string name="title_dialog_alert">Add alert</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>
   <string name="from_gallery">Från galleriet</string>
-  <string name="product_sent">Product sent successfully</string>
+  <string name="product_sent">Produkt skickad</string>
   <string name="action_edit_product">Redigera produkt</string>
   <string name="title_info_dialog">Information</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
@@ -275,7 +275,7 @@
   <string name="number_of_results">Antal resultat:</string>
   <string name="txt_no_results">No results found</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
-  <string name="txt_cant_load_search_results">Can\'t load search results</string>
+  <string name="txt_cant_load_search_results">Kan inte ladda sökresultat</string>
   <string name="txt_try_again">Try again</string>
   <string name="nutrition_lactose">Laktos</string>
   <string name="nutrition_casein">Casein</string>
@@ -339,7 +339,7 @@
   <string name="cocoa">Kakao</string>
   <string name="chlorophyl">Klorofyll</string>
   <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-  <string name="take_picture_front">Take a picture of the front</string>
+  <string name="take_picture_front">Ta en bild på framsidan</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Ta fler bilder</string>
 </resources>
