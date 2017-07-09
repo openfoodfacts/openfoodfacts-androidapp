@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -55,6 +56,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
     private final String[] mUnit = new String[1];
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.barcodeDoubleCheck) TextView barcodeText;
     @BindView(R.id.imageSaveFront) ImageView imgSaveFront;
     @BindView(R.id.imageSaveNutrition) ImageView imgSaveNutrition;
     @BindView(R.id.imageSaveIngredients) ImageView imgSaveIngredients;
@@ -113,6 +115,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
         }
         if(mProduct != null) {
             if(isNotEmpty(mProduct.getImgupload_front())) {
+		imgSaveFront.setVisibility(View.VISIBLE);
                 Picasso.with(this)
                         .load(mProduct.getImgupload_front())
                         .fit()
@@ -144,6 +147,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
         } else {
             mProduct = new SendProduct();
             mProduct.setBarcode(mBarcode);
+			barcodeText.setText(barcodeText.getText() + " " + mBarcode);
         }
         mProduct.setLang(Locale.getDefault().getLanguage());
     }
@@ -194,8 +198,10 @@ public class SaveProductOfflineActivity extends BaseActivity {
             mProduct.setPassword(password);
         }
 
+        if (isNotEmpty(mProduct.getImgupload_front())) {
         Utils.compressImage(mProduct.getImgupload_front());
-
+        }
+	    
         if (isNotBlank(mProduct.getImgupload_ingredients())) {
             Utils.compressImage(mProduct.getImgupload_ingredients());
         }
@@ -317,7 +323,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                     .fit()
                     .centerCrop()
                     .into(imgSaveNutrition);
-        } else {
+        } else if(imageTaken.equals("ingredients")) {
             mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
             imgSaveIngredients.setVisibility(View.VISIBLE);
             Picasso.with(this)
