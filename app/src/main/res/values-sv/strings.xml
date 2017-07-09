@@ -73,7 +73,7 @@
     <item>Portugisiska</item>
     <item>Svenska</item>
     <item>Burmesiska</item>
-    <item>Kazakh</item>
+    <item>Kazakiska</item>
     <item>Armeniska</item>
     <item>Grekiska</item>
     <item>Hebreiska</item>
@@ -84,7 +84,7 @@
     <item>Finska</item>
     <item>Hindi</item>
     <item>Kabyle</item>
-    <item>Korean</item>
+    <item>Koreanska</item>
     <item>Lettiska</item>
     <item>Nederländska</item>
     <item>Brasiliansk portugisiska</item>
@@ -117,7 +117,7 @@
   <string name="txtBrands">Märken:</string>
   <string name="txtCategories">Kategorier:</string>
   <string name="txtLabels">Etiketter, certifieringar, utmärkelser :</string>
-  <string name="txtManufacturing">Manufacturing or processing places :</string>
+  <string name="txtManufacturing">Tillverknings- eller bearbetningsplatser:</string>
   <string name="txtIngredientsOrigins">Origin of ingredients :</string>
   <string name="txtCity">City, state and country where purchased :</string>
   <string name="txtStores">Butiker:</string>
@@ -200,7 +200,7 @@
   <string name="sign_in_drawer">Logga in</string>
   <string name="alert_drawer">Allergenvarning</string>
   <string name="warning_allergens">Innehåller allergener</string>
-  <string name="title_dialog_alert">Add alert</string>
+  <string name="title_dialog_alert">Lägg till varning</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>
   <string name="from_gallery">Från galleriet</string>
   <string name="product_sent">Produkt skickad</string>
@@ -259,7 +259,7 @@
   <string name="nutrition_sodium">Natrium</string>
   <string name="nutrition_sodium_short_name">Natrium (g)</string>
   <string name="nutrition_sugars">Socker</string>
-  <string name="nutrition_sugars_short_name">Sugars (g)</string>
+  <string name="nutrition_sugars_short_name">Sockerarter (g)</string>
   <string name="nutrition_trans_fat">Transfett</string>
   <string name="nutrition_trans_fat_short_name">Transfett (g)</string>
   <string name="nutriment_serving_size">Per portion: </string>
@@ -279,7 +279,7 @@
   <string name="txt_try_again">Försök igen</string>
   <string name="nutrition_lactose">Laktos</string>
   <string name="nutrition_casein">Kasein</string>
-  <string name="nutrition_maltodextrins">Maltodextrins</string>
+  <string name="nutrition_maltodextrins">Maltodextriner</string>
   <string name="nutrition_serum_proteins">Serumproteiner</string>
   <string name="nutrition_nucleotides">Nukleotider</string>
   <string name="for_100g">För 100 g</string>
@@ -302,9 +302,9 @@
   <string name="nutrition_alcohol">Alkohol</string>
   <string name="nutrition_vitamins">Vitaminer</string>
   <string name="vitamin_a">Vitamin A</string>
-  <string name="vitamin_d">Vitamin d</string>
-  <string name="vitamin_e">Vitamin e</string>
-  <string name="vitamin_k">Vitamin k</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">Vitamin C</string>
   <string name="vitamin_b1">Vitamin B1</string>
   <string name="vitamin_b2">Vitamin B2</string>
