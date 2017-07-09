@@ -211,19 +211,19 @@
   <string name="permission_title">Permissions</string>
   <string name="permission_denied">Please activate permission in Settings</string>
   <string name="permission_storage">Storage permission is needed to take or select pictures</string>
-  <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
-  <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
-  <string name="msg_input_empty">Please fill the fields first.</string>
-  <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
+  <string name="info_download_data">You need to download some data to get this function. Please activate Internet connection.</string>
+  <string name="info_download_data_connection">You need to download some data to get this function. Press yes to download it.</string>
+  <string name="msg_input_empty">Please fill in the fields first.</string>
+  <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table, and any other information on the label. Thank you!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
+  <string name="error_invalid_password">Password must be at least 6 characters.</string>
   <string name="error_field_required">This field is required.</string>
   <string name="action_preferences">Preferences</string>
   <string name="prefs_scan_startup">Scan on startup</string>
-  <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
+  <string name="prefs_scan_startup_summary">This option, if selected, will start scan when app is opened.</string>
   <string name="prefs_power_mode">Power mode scan</string>
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
-  <string name="prefs_language">Language</string>
+  <string name="prefs_language">Languages</string>
   <string name="prefs_language_summary">Change language</string>
   <string name="scan_history_drawer">History</string>
   <string name="clear_history">Clear history</string>
