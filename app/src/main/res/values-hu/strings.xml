@@ -4,7 +4,7 @@
   <string name="hello_world">Helló világ!</string>
   <string name="action_settings">Beállítások</string>
   <string name="action_about">Névjegy</string>
-  <string name="action_discover">Feltárás</string>
+  <string name="action_discover">Felfedezés</string>
   <string name="contribute">Hogyan segíthet</string>
   <string name="action_find">Keres</string>
   <string name="text_barcode">Vonalkód beírása :</string>
@@ -128,7 +128,7 @@
   <string name="txtTraces">Nyomokban tartalmazhat:</string>
   <string name="txtMayBeFromPalmOilProduct">Lehetséges pálmaolaj származék összetevők:</string>
   <string name="txtPalmOilProduct">Pálmaolaj származék összetevők:</string>
-  <string name="txtServingSize">Egy adag:</string>
+  <string name="txtServingSize">Egy adag :</string>
   <string name="txtNutrientLevel100g">Tápanyagszint 100 grammban:</string>
   <string name="txtNutritionLevelLow">kis mennyiségben</string>
   <string name="txtNutritionLevelModerate">mérsékelt mennyiségben</string>
