@@ -105,7 +105,7 @@
   <!-- Content Description -->
   <string name="search_button">Pretraživanje</string>
   <string name="no_products">Proizvodi nisu pronađeni</string>
-  <string name="desc_list_item_icon">Item Icon</string>
+  <string name="desc_list_item_icon">Ikona</string>
   <string name="alert_dialog_warning_title">Upozorenje</string>
   <string name="alert_dialog_warning_msg_user">Korisničko ime/lozinka je promenjena, molimo vas da ažurirate infromacije.</string>
   <string name="alert_dialog_product_error_msg">Proizvod nije pronađen, pokušajte ponovo</string>
@@ -176,14 +176,14 @@
   <string name="txtDialogsContentInfoSave">Ovaj proizvod je sačuvan lokalno, možete ga izmeniti u meniju \"Offline edit\"</string>
   <string name="txtBarcodeRequire">Barkod je neophodan</string>
   <string name="txtOk">ОК</string>
-  <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
-  <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
+  <string name="txtContentDialogUploading">Molimo vas da ne napuštate tokom ovog procesa...</string>
+  <string name="txtAbout">Fotografije koje pošaljete su objavljene pod besplatnom licencom Creative Commons Attribution i ShareAlike.</string>
   <string name="txtAllsent">Proizvod poslat</string>
   <string name="txtPalm">Ovaj proizvod ne sadrži palmino ulje</string>
   <string name="txtBarcodeNotValid">Barkod nije ispravan</string>
   <string name="try_it_scan_now">Skeniraj proizvod</string>
   <string name="share">Podeli</string>
-  <string name="msg_share">Look at this product on Open Food Facts :</string>
+  <string name="msg_share">Pogledaj ovaj proizvod na Open Food Facts :</string>
   <string name="create_account">Registruj se</string>
   <string name="home_drawer">Početna</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
@@ -220,7 +220,7 @@
   <string name="error_field_required">Ovo polje je obavezno.</string>
   <string name="action_preferences">Podešavanja</string>
   <string name="prefs_scan_startup">Skeniraj pri pokretanju</string>
-  <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
+  <string name="prefs_scan_startup_summary">Ako je ova opcija štiklirana, skreniranje će biti započeto pri startovanju aplikacije.</string>
   <string name="prefs_power_mode">Power mode skeniranje</string>
   <string name="prefs_power_mode_summary">Brzo skeniranje proizvoda u prodavnici da biste videli koji nisu u bazi.</string>
   <string name="prefs_language">Jezik</string>
@@ -232,7 +232,7 @@
   <string name="export_csv_history">Izvezi CSV</string>
   <string name="txt_exporting_history">Izvoz istorije u toku...</string>
   <string name="txt_history_exported">Istorija izvezena</string>
-  <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
+  <string name="permision_write_external_storage">Dozvola za upis na eksternu memorije je potrebna za izvoz istorije.</string>
   <string name="txt_nutrition_not_found">Nedostupno</string>
   <!-- Nutrition info tab -->
   <string name="nutrition_carbohydrate">Ugljeni hidrati</string>
@@ -266,15 +266,15 @@
   <string name="action_manage_account">Upravljaj nalogom</string>
   <string name="action_contributes">Vaši doprinosi</string>
   <string name="logout_drawer">Odjavite se</string>
-  <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
-  <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
+  <string name="contribution_without_account">Prijavi se ili registruj nalog da bi sačuvao doprinose</string>
+  <string name="textCarbonFootprint">"Ugljenični otisak / emisija CO2: "</string>
   <string name="txtDialogPowerMode">Brzi pregled</string>
   <string name="txtSeeMore">Pogledaj više</string>
   <string name="action_search">Pretraživanje</string>
   <string name="search_hint">Traži proizvod</string>
   <string name="number_of_results">Broj rezultata :</string>
   <string name="txt_no_results">Rezultati nisu pronađeni</string>
-  <string name="txt_extend_search">Try broadening your search or add the product</string>
+  <string name="txt_extend_search">Proširite pretragu ili dodajte proizvod</string>
   <string name="txt_cant_load_search_results">Rezultate pretraživanja nije moguće učitati</string>
   <string name="txt_try_again">Pokušajte ponovo</string>
   <string name="nutrition_lactose">Laktoza</string>
