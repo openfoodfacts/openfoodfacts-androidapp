@@ -4,12 +4,12 @@
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/ -->
   <string name="website">https://world.openpetfoodfacts.org/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
-  <string name="website_contribute">https://world.openpetfoodfacts.org/contribute</string>
+  <string name="website_contribute">https://world.openpetfoodfacts.org/ساهم</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/decouvrir -->
-  <string name="website_discover">https://world.openpetfoodfacts.org/discover</string>
+  <string name="website_discover">https://world.openpetfoodfacts.org/اكتشف</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/produit/ -->
-  <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
+  <string name="website_product">https://world.openpetfoodfacts.org/المنتج/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
-  <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
-  <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
+  <string name="website_contributor">https://world.openpetfoodfacts.org/المساهم/</string>
+  <string name="txtHome">Open Beauty Facts هو قاعدة بيانات لمنتجات مستحضرات التجميل مع المكونات، والمواد المسببة للحساسية، والمؤشرات وجميع المعلومات التي يمكن أن نجدها على ملصقات المنتج.</string>
 </resources>
