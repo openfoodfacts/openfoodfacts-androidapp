@@ -3,22 +3,22 @@
 <resources>
   <string name="hello_world">Halló heimur!</string>
   <string name="action_settings">Stillingar</string>
-  <string name="action_about">About</string>
-  <string name="action_discover">Discover</string>
-  <string name="contribute">How to contribute</string>
-  <string name="action_find">Find</string>
-  <string name="text_barcode">Type the barcode :</string>
+  <string name="action_about">Um forritið</string>
+  <string name="action_discover">Uppgötva</string>
+  <string name="contribute">Hvernig þú getur hjálpað</string>
+  <string name="action_find">Finna</string>
+  <string name="text_barcode">Sláðu inn strikamerkið:</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
-    <item>Summary</item>
-    <item>Ingredients</item>
-    <item>Nutrition</item>
-    <item>Nutrition Table</item>
+    <item>Yfirlit</item>
+    <item>Innihald</item>
+    <item>Næring</item>
+    <item>Næringartafla</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
-    <item>g</item>
+    <item>gr</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
@@ -99,8 +99,8 @@
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
-    <item>Nutrition</item>
-    <item>Ingredients</item>
+    <item>Næring</item>
+    <item>Innihald</item>
   </string-array>
   <!-- Content Description -->
   <string name="search_button">Search</string>
@@ -118,7 +118,7 @@
   <string name="txtCategories">Categories :</string>
   <string name="txtLabels">Labels, certifications, awards :</string>
   <string name="txtManufacturing">Manufacturing or processing places :</string>
-  <string name="txtIngredientsOrigins">Origin of ingredients :</string>
+  <string name="txtIngredientsOrigins">Uppruni innihaldsefna:</string>
   <string name="txtCity">City, state and country where purchased :</string>
   <string name="txtStores">Stores :</string>
   <string name="txtCountries">Countries where sold :</string>
