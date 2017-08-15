@@ -251,7 +251,7 @@
   <string name="nutrition_proteins">Proteins</string>
   <string name="nutrition_proteins_short_name">Protein (g)</string>
   <string name="nutrition_salt">Salt</string>
-  <string name="nutrition_salt_short_name">Sodium (g)</string>
+  <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Saturated fat</string>
   <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Per serving</string>
