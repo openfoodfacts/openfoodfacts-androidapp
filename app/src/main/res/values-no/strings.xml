@@ -118,11 +118,11 @@
   <string name="txtCategories">Kategorier :</string>
   <string name="txtLabels">Etiketter, sertifiseringer, priser :</string>
   <string name="txtManufacturing">Produksjon- eller behandlingssteder :</string>
-  <string name="txtIngredientsOrigins">Origin of ingredients :</string>
-  <string name="txtCity">City, state and country where purchased :</string>
-  <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Countries where sold :</string>
-  <string name="txtIngredients">Ingredients list :</string>
+  <string name="txtIngredientsOrigins">Ingrediensopprinnelser :</string>
+  <string name="txtCity">By, region eller land der produktet ble kjøpt :</string>
+  <string name="txtStores">Butikker :</string>
+  <string name="txtCountries">Land der produktet selges :</string>
+  <string name="txtIngredients">Ingrediensliste :</string>
   <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
   <string name="txtAdditives">Additives :</string>
   <string name="txtTraces">Traces :</string>
