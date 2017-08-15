@@ -4,10 +4,10 @@ Open Food Facts Android Application
 
 
 [![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
-[![Build Status](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp.svg?branch=master)](https://travis-ci.org/openfoodfacts/OpenFoodFacts-androidApp) 
-[![Stories in Ready](https://badge.waffle.io/openfoodfacts/OpenFoodFacts-androidApp.svg?label=ready&title=Ready)](http://waffle.io/openfoodfacts/OpenFoodFacts-androidApp)
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/openfoodfacts/OpenFoodFacts-androidApp.svg)](http://isitmaintained.com/project/openfoodfacts/OpenFoodFacts-androidApp "Average time to resolve an issue")
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/openfoodfacts/OpenFoodFacts-androidApp.svg)](http://isitmaintained.com/project/openfoodfacts/OpenFoodFacts-androidApp "Percentage of issues still open")
+[![Build Status](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp.svg?branch=master)](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp) 
+[![Stories in Ready](https://badge.waffle.io/openfoodfacts/openfoodfacts-androidapp.svg?label=ready&title=Ready)](http://waffle.io/openfoodfacts/openfoodfacts-androidapp)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/openfoodfacts/openfoodfacts-androidapp.svg)](http://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/openfoodfacts/openfoodfacts-androidapp.svg)](http://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Percentage of issues still open")
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/openfoodfacts/localized.svg)](https://crowdin.com/project/openfoodfacts)
 <br>
 <img src="https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png">
@@ -55,7 +55,7 @@ Ask @teolemon to do it
 You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup): <br>
 https://crowdin.com/project/openfoodfacts
 
-Watch the [topic](https://github.com/openfoodfacts/OpenFoodFacts-androidApp/issues/49).
+Watch the [topic](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/49).
 
 ## Bugs and feature requests
 
@@ -67,16 +67,16 @@ Android Studio packages must be updated by just clicking on install packages in 
 
 ## Waffle Throughput Graph
 
-[![Throughput Graph](https://graphs.waffle.io/openfoodfacts/OpenFoodFacts-androidApp/throughput.svg)](https://waffle.io/openfoodfacts/OpenFoodFacts-androidApp/metrics/throughput)
+[![Throughput Graph](https://graphs.waffle.io/openfoodfacts/openfoodfacts-androidapp/throughput.svg)](https://waffle.io/openfoodfacts/openfoodfacts-androidapp/metrics/throughput)
 
 ## Libraries used
 
-- http://loopj.com/android-async-http/
+- https://loopj.com/android-async-http/
 - http://jackson.codehaus.org
 - https://github.com/code-mc/loadtoast
 - https://github.com/dm77/barcodescanner
 - https://github.com/koush/ion
-- http://jsoup.org/
+- https://jsoup.org/
 - https://github.com/satyan/sugar
 - https://github.com/afollestad/material-dialogs
 - https://github.com/jjhesk/LoyalNativeSlider
@@ -96,8 +96,8 @@ The project is initially started by [Scot Scriven](https://github.com/itchix), o
 Feel free to fork the project and send us a pull request.
 
 Here's a few list of bugs:
-- Very high impact: https://github.com/openfoodfacts/OpenFoodFacts-androidApp/labels/very%20high%20impact
-- https://github.com/openfoodfacts/OpenFoodFacts-androidApp/labels/priority
+- Very high impact: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/very%20high%20impact
+- Priority: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/priority
 
 ## Copyright and License
 
@@ -107,8 +107,8 @@ Here's a few list of bugs:
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
-
+       https://www.apache.org/licenses/LICENSE-2.0
+       
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
