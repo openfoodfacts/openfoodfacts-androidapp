@@ -13,7 +13,7 @@
     <item>Sammendrag</item>
     <item>Ingredienser</item>
     <item>Næring</item>
-    <item>Nutrition Table</item>
+    <item>Næringsliste</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
@@ -63,48 +63,48 @@
     <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
-    <item>Galician</item>
-    <item>Catalan</item>
-    <item>Czech</item>
-    <item>Arabic</item>
-    <item>Finnish</item>
+    <item>Engelsk</item>
+    <item>Fransk</item>
+    <item>Spansk</item>
+    <item>Italiensk</item>
+    <item>Tysk</item>
+    <item>Japansk</item>
+    <item>Russisk</item>
+    <item>Portugisisk</item>
+    <item>Svensk</item>
+    <item>Burmesisk</item>
+    <item>Kasakhisk</item>
+    <item>Armensk</item>
+    <item>Gresk</item>
+    <item>Hebraisk</item>
+    <item>Galisisk</item>
+    <item>Katalansk</item>
+    <item>Tsjekkisk</item>
+    <item>Arabisk</item>
+    <item>Finsk</item>
     <item>Hindi</item>
-    <item>Kabyle</item>
-    <item>Korean</item>
-    <item>Latvian</item>
-    <item>Dutch</item>
-    <item>Brazilian portuguese</item>
-    <item>Romanian</item>
-    <item>Swedish</item>
-    <item>Chinese</item>
-    <item>Norwegian (Bokmal)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
-    <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Kabylsk</item>
+    <item>Koreansk</item>
+    <item>Latvisk</item>
+    <item>Nederlandsk</item>
+    <item>Brasiliansk portugisisk</item>
+    <item>Rumensk</item>
+    <item>Svensk</item>
+    <item>Kinesisk</item>
+    <item>Norsk (bokmål)</item>
+    <item>Dansk</item>
+    <item>Forenklet kinesisk</item>
+    <item>Persisk</item>
+    <item>Serbisk</item>
   </string-array>
   <string-array name="images_array">
-    <item>Default</item>
+    <item>Standard</item>
     <item>Næring</item>
     <item>Ingredienser</item>
   </string-array>
   <!-- Content Description -->
-  <string name="search_button">Search</string>
-  <string name="no_products">Products not found</string>
+  <string name="search_button">Søk</string>
+  <string name="no_products">Produkter ikke funnet</string>
   <string name="desc_list_item_icon">Item Icon</string>
   <string name="alert_dialog_warning_title">Warning</string>
   <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
@@ -188,14 +188,14 @@
   <string name="home_drawer">Home</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
-  <string name="search_drawer">Search</string>
+  <string name="search_drawer">Søk</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
   <string name="user_drawer">User</string>
   <string name="offline_edit_drawer">Offline edit</string>
   <string name="txt_anonymous">Anonymous</string>
-  <string name="txt_product_not_found">Products not found</string>
+  <string name="txt_product_not_found">Produkter ikke funnet</string>
   <string name="delete_txt">Delete</string>
   <string name="sign_in_drawer">Sign-in</string>
   <string name="alert_drawer">Allergen alert</string>
@@ -270,7 +270,7 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">Search</string>
+  <string name="action_search">Søk</string>
   <string name="search_hint">Search a product</string>
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No results found</string>
