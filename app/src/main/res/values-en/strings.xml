@@ -251,7 +251,7 @@
   <string name="nutrition_proteins">Proteins</string>
   <string name="nutrition_proteins_short_name">Protein (g)</string>
   <string name="nutrition_salt">Salt</string>
-  <string name="nutrition_salt_short_name">Sodium (g)</string>
+  <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Saturated fat</string>
   <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Per serving</string>
@@ -308,7 +308,7 @@
   <string name="vitamin_c">Vitamin C</string>
   <string name="vitamin_b1">Vitamin B1</string>
   <string name="vitamin_b2">Vitamin B2</string>
-  <string name="vitamin_pp">Vitamin B3</string>
+  <string name="vitamin_pp">Vitamin PP / B3</string>
   <string name="vitamin_b6">Vitamin B6</string>
   <string name="vitamin_b9">Vitamin B9</string>
   <string name="vitamin_b12">Vitamin B12</string>
