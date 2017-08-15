@@ -201,10 +201,10 @@
   <string name="alert_drawer">Allergenadvarsel</string>
   <string name="warning_allergens">Inneholder allergener</string>
   <string name="title_dialog_alert">Legg til varsel</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>
-  <string name="from_gallery">From gallery</string>
-  <string name="product_sent">Product sent successfully</string>
-  <string name="action_edit_product">Edit product</string>
+  <string name="warning_alert_data">Allergiinformasjonen din vil aldri bli sendt til Open Food Facts-serveren. Også, vær forsiktig. Den dataen er kanskje unøyaktig, vennligst dobbelsjekk selv! </string>
+  <string name="from_gallery">Fra galleri</string>
+  <string name="product_sent">Produkt vellykket sendt</string>
+  <string name="action_edit_product">Redigér produkt</string>
   <string name="title_info_dialog">Informasjon</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
