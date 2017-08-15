@@ -206,17 +206,17 @@
   <string name="product_sent">Produkt vellykket sendt</string>
   <string name="action_edit_product">Redigér produkt</string>
   <string name="title_info_dialog">Informasjon</string>
-  <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
-  <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
-  <string name="permission_title">Permission information</string>
-  <string name="permission_denied">Please activate permission in the settings</string>
-  <string name="permission_storage">Storage permission is needed to take or select pictures</string>
-  <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
-  <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
-  <string name="msg_input_empty">Please fill the fields first.</string>
-  <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
+  <string name="text_offline_info_dialog">Du kan skanne produkter uten nett for å legge dem til Open Food Facts senere. Alle produktene du skanner vil vises her, og du vil være i stand til å sende dem ved å bruke knappen under.</string>
+  <string name="permission_camera">Kameratillatelse kreves for å skanne strekkoder og ta bilder.</string>
+  <string name="permission_title">Tillatelsesinformasjon</string>
+  <string name="permission_denied">Vennligst aktivér tillatelser i innstillingene</string>
+  <string name="permission_storage">Lagringstillatelse kreves for å ta eller velge bilder</string>
+  <string name="info_download_data">Du må laste ned litt data for at denne funksjonen skal virke, vennligst trykk på ja for å laste den ned.</string>
+  <string name="info_download_data_connection">Du må laste ned litt data for at denne funksjonen skal virke. Vennligst skaff deg nettverkstilkobling.</string>
+  <string name="msg_input_empty">Vennligst fyll ut feltene først.</string>
+  <string name="new_offline_info">Vennligst ta et bilde av produktet, ingrediensene, næringslisten og all annen informasjon på etiketten. Tusen takk!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
+  <string name="error_invalid_password">Passordet må minst være 6 karakterer langt.</string>
   <string name="error_field_required">This field is required.</string>
   <string name="action_preferences">Preferences</string>
   <string name="prefs_scan_startup">Scan on startup</string>
