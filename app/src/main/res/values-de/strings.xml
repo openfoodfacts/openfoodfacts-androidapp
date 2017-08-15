@@ -206,11 +206,11 @@
   <string name="product_sent">Produkt wurde erfolgreich gesendet</string>
   <string name="action_edit_product">Produkt bearbeiten</string>
   <string name="title_info_dialog">Informationen</string>
-  <string name="text_offline_info_dialog">Sie können Produkte einscannen, wenn Sie offline sind, um sie später zu Open Food Facts hoch zu laden. Alle Produkte, die Sie scannen werden hier aufgelistet, damit Sie sie über die unten stehende Schaltfläche hochladen können.</string>
+  <string name="text_offline_info_dialog">Sie können Produkte einscannen, wenn Sie offline sind, um sie später zu Open Food Facts hochzuladen. Alle Produkte, die Sie scannen werden hier aufgelistet, damit Sie sie über die unten stehende Schaltfläche hochladen können.</string>
   <string name="permission_camera">Die Kamera-Berechtigung wird benötigt, um Strichcodes zu scannen und Fotos zu machen.</string>
   <string name="permission_title">Berechtigungs-Informationen</string>
   <string name="permission_denied">Bitte Berechtigung in den Einstellungen aktivieren</string>
-  <string name="permission_storage">Die Speicher-Berechtigung wird benötigt, um Fotos zu machen und hochzuladen.</string>
+  <string name="permission_storage">Die Speicher-Berechtigung wird benötigt, um Fotos zu machen und hochzuladen</string>
   <string name="info_download_data">Um diese Funktion zu aktivieren, müssen einige Daten heruntergeladen werden. Bitte drücken Sie Ja, um den Download zu starten.</string>
   <string name="info_download_data_connection">Um diese Funktion zu aktivieren, müssen einige Daten heruntergeladen werden. Bitte aktivieren Sie Ihre Internetverbindung.</string>
   <string name="msg_input_empty">Bitte zuerst die Felder ausfüllen</string>
@@ -269,7 +269,7 @@
   <string name="contribution_without_account">Sie können sich anmelden oder ein Konto erstellen, um Ihre Beiträge zu speichern</string>
   <string name="textCarbonFootprint">"Ökologischer Fußabdruck / CO2-Emissionen: "</string>
   <string name="txtDialogPowerMode">Schnellansicht</string>
-  <string name="txtSeeMore">Mehr sehen</string>
+  <string name="txtSeeMore">Mehr anzeigen</string>
   <string name="action_search">Suchen</string>
   <string name="search_hint">Ein Produkt suchen</string>
   <string name="number_of_results">Anzahl der Ergebnisse:</string>
@@ -290,7 +290,7 @@
   <string name="nutrition_chlore">Chlor</string>
   <string name="nutrition_magnesium">Magnesium</string>
   <string name="nutrition_taurine">Taurin</string>
-  <string name="nutrition_monounsaturatedFat">Einfch ungesättigte Fette</string>
+  <string name="nutrition_monounsaturatedFat">Einfach ungesättigte Fette</string>
   <string name="nutrition_polyunsaturatedFat">Mehrfach ungesättigte Fette</string>
   <string name="nutrition_omega3">Omega-3</string>
   <string name="nutrition_omega6">Omega-6</string>
