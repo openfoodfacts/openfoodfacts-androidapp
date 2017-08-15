@@ -105,11 +105,11 @@
   <!-- Content Description -->
   <string name="search_button">Søk</string>
   <string name="no_products">Produkter ikke funnet</string>
-  <string name="desc_list_item_icon">Item Icon</string>
-  <string name="alert_dialog_warning_title">Warning</string>
-  <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-  <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
-  <string name="toast_retrieving">Loading...</string>
+  <string name="desc_list_item_icon">Gjenstandsikon</string>
+  <string name="alert_dialog_warning_title">Advarsel</string>
+  <string name="alert_dialog_warning_msg_user">Brukeren/passordet har blitt endret, vennligst oppdatér innloggingsdetaljene</string>
+  <string name="alert_dialog_product_error_msg">Produkt ikke funnet, vennligst prøv igjen</string>
+  <string name="toast_retrieving">Laster inn...</string>
   <string name="txtGenericName">Common name :</string>
   <string name="txtBarcode">Barcode :</string>
   <string name="txtQuantity">Quantity :</string>
@@ -171,7 +171,7 @@
   <string name="dataSaved">Saved locally on your device</string>
   <string name="txtInfoAddUser">Please enter your login and password</string>
   <string name="txtDataUpdated">Data updated</string>
-  <string name="txtLoading">Loading...</string>
+  <string name="txtLoading">Laster inn...</string>
   <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
