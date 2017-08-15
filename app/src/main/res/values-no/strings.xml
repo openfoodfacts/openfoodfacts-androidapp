@@ -217,12 +217,12 @@
   <string name="new_offline_info">Vennligst ta et bilde av produktet, ingrediensene, næringslisten og all annen informasjon på etiketten. Tusen takk!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Passordet må minst være 6 karakterer langt.</string>
-  <string name="error_field_required">This field is required.</string>
-  <string name="action_preferences">Preferences</string>
-  <string name="prefs_scan_startup">Scan on startup</string>
-  <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
-  <string name="prefs_power_mode">Power mode scan</string>
-  <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
+  <string name="error_field_required">Dette feltet er obligatorisk.</string>
+  <string name="action_preferences">Preferanser</string>
+  <string name="prefs_scan_startup">Skann ved oppstart</string>
+  <string name="prefs_scan_startup_summary">Hvis denne innstillingen er valgt vil skanneren åpne samtidig med appen.</string>
+  <string name="prefs_power_mode">Hurtigskanning</string>
+  <string name="prefs_power_mode_summary">Skann produkter raskt i en dagligvarebutikk for å se hvilke som ikke er i databasen.</string>
   <string name="prefs_language">Språk</string>
   <string name="prefs_language_summary">Bytt språk</string>
   <string name="scan_history_drawer">Logg</string>
@@ -280,11 +280,11 @@
   <string name="nutrition_lactose">Laktose</string>
   <string name="nutrition_casein">Kasein</string>
   <string name="nutrition_maltodextrins">Maltodekstrin</string>
-  <string name="nutrition_serum_proteins">Serum Proteins</string>
-  <string name="nutrition_nucleotides">Nucleotides</string>
+  <string name="nutrition_serum_proteins">Serumproteiner</string>
+  <string name="nutrition_nucleotides">Nukleotider</string>
   <string name="for_100g">For 100 g</string>
   <string name="serving">Per porsjon</string>
-  <string name="minerals">Minerals</string>
+  <string name="minerals">Mineraler</string>
   <string name="nutrition_calcium">Calcium</string>
   <string name="nutrition_potassium">Potassium</string>
   <string name="nutrition_chlore">Chlorine</string>
@@ -314,7 +314,7 @@
   <string name="vitamin_b12">Vitamin B12</string>
   <string name="biotin">Biotin</string>
   <string name="pantothenic_acid">Pantothenic acid</string>
-  <string name="nutrition_minerals">Minerals</string>
+  <string name="nutrition_minerals">Mineraler</string>
   <string name="silica">Silica</string>
   <string name="bicarbonate">Bicarbonate</string>
   <string name="potassium">Potassium</string>
