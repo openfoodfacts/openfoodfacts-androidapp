@@ -105,7 +105,7 @@
   <!-- Content Description -->
   <string name="search_button">Søk</string>
   <string name="no_products">Produkter ikke funnet</string>
-  <string name="desc_list_item_icon">Gjenstandsikon</string>
+  <string name="desc_list_item_icon">Vareikon</string>
   <string name="alert_dialog_warning_title">Advarsel</string>
   <string name="alert_dialog_warning_msg_user">Brukeren/passordet har blitt endret, vennligst oppdatér innloggingsdetaljene</string>
   <string name="alert_dialog_product_error_msg">Produkt ikke funnet, vennligst prøv igjen</string>
@@ -118,7 +118,7 @@
   <string name="txtCategories">Kategorier :</string>
   <string name="txtLabels">Etiketter, sertifiseringer, priser :</string>
   <string name="txtManufacturing">Produksjon- eller behandlingssteder :</string>
-  <string name="txtIngredientsOrigins">Ingrediensopprinnelser :</string>
+  <string name="txtIngredientsOrigins">Ingrediensopprinnelse :</string>
   <string name="txtCity">By, region eller land der produktet ble kjøpt :</string>
   <string name="txtStores">Butikker :</string>
   <string name="txtCountries">Land der produktet selges :</string>
