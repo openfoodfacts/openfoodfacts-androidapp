@@ -113,7 +113,7 @@
   <string name="txtGenericName">Vanlig navn :</string>
   <string name="txtBarcode">Strekkode :</string>
   <string name="txtQuantity">Mengde :</string>
-  <string name="txtPackaging">Innpakning :</string>
+  <string name="txtPackaging">Emballasje :</string>
   <string name="txtBrands">Kjeder :</string>
   <string name="txtCategories">Kategorier :</string>
   <string name="txtLabels">Etiketter, sertifiseringer, priser :</string>
