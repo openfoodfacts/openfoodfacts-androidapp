@@ -85,17 +85,17 @@
     <item>Hindi</item>
     <item>Kabyle</item>
     <item>Korean</item>
-    <item>Latvian</item>
+    <item>Latvie</item>
     <item>Dutch</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
+    <item>Romanie</item>
     <item>Swadish</item>
-    <item>Chinese</item>
-    <item>Norwegian (Bokmal)</item>
+    <item>Cheenese</item>
+    <item>Norse (Bokmal)</item>
     <item>Dens</item>
-    <item>Simplified Chinese</item>
+    <item>Semplifee\'d Cheenese</item>
     <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Serbie</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
@@ -103,7 +103,7 @@
     <item>Ingredients</item>
   </string-array>
   <!-- Content Description -->
-  <string name="search_button">Search</string>
+  <string name="search_button">Sairch</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
   <string name="alert_dialog_warning_title">Warning</string>
@@ -188,7 +188,7 @@
   <string name="home_drawer">Home</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
-  <string name="search_drawer">Search</string>
+  <string name="search_drawer">Sairch</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
@@ -230,7 +230,7 @@
   <string name="title_clear_history_dialog">Clear</string>
   <string name="text_clear_history_dialog">Do you want to clear all scan history?</string>
   <string name="export_csv_history">Export CSV</string>
-  <string name="txt_exporting_history">Exporting history...</string>
+  <string name="txt_exporting_history">Exportin history...</string>
   <string name="txt_history_exported">History exported</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>
@@ -251,10 +251,10 @@
   <string name="nutrition_proteins">Proteins</string>
   <string name="nutrition_proteins_short_name">Proteins (g)</string>
   <string name="nutrition_salt">Saut</string>
-  <string name="nutrition_salt_short_name">Salt (g)</string>
+  <string name="nutrition_salt_short_name">Saut (g)</string>
   <string name="nutrition_satured_fat">Satured fat</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
-  <string name="nutrition_serving">Per serving</string>
+  <string name="nutrition_serving">Per servin</string>
   <string name="nutrition_serving_size">Servin size :</string>
   <string name="nutrition_sodium">Sodium</string>
   <string name="nutrition_sodium_short_name">Sodium (g)</string>
@@ -283,7 +283,7 @@
   <string name="nutrition_serum_proteins">Serum Proteins</string>
   <string name="nutrition_nucleotides">Nucleotides</string>
   <string name="for_100g">For 100 g</string>
-  <string name="serving">Per serving</string>
+  <string name="serving">Per servin</string>
   <string name="minerals">Minerals</string>
   <string name="nutrition_calcium">Calcium</string>
   <string name="nutrition_potassium">Potassium</string>
@@ -314,17 +314,17 @@
   <string name="vitamin_b12">Vitamin B12</string>
   <string name="biotin">Biotin</string>
   <string name="pantothenic_acid">Pantothenic acid</string>
-  <string name="nutrition_minerals">Minerals</string>
-  <string name="silica">Silica</string>
+  <string name="nutrition_minerals">Meenerals</string>
+  <string name="silica">Seelicae</string>
   <string name="bicarbonate">Bicarbonate</string>
   <string name="potassium">Potassium</string>
   <string name="chloride">Chloride</string>
   <string name="calcium">Calcium</string>
-  <string name="phosphorus">Phosphorus</string>
-  <string name="iron">Iron</string>
+  <string name="phosphorus">Phosphor</string>
+  <string name="iron">Airn</string>
   <string name="magnesium">Magnesium</string>
   <string name="zinc">Zinc</string>
-  <string name="copper">Copper</string>
+  <string name="copper">Capper</string>
   <string name="manganese">Manganese</string>
   <string name="fluoride">Fluoride</string>
   <string name="selenium">Selenium</string>
@@ -341,5 +341,5 @@
   <string name="take_picture_ingredients">Take a picture of the ingredients</string>
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-  <string name="take_more_pictures">Take more pictures</string>
+  <string name="take_more_pictures">Tak mair picturs</string>
 </resources>
