@@ -23,10 +23,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.3\n"
 
-msgctxt "hello_world"
-msgid "Hello world!"
-msgstr "Pozdrav svijetu!"
-
 msgctxt "action_settings"
 msgid "Settings"
 msgstr ""

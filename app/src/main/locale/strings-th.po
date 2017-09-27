@@ -17,10 +17,6 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-03-28 16:44+0000\n"
 "X-Generator: Launchpad (build 18335)\n"
 
-msgctxt "hello_world"
-msgid "Hello world!"
-msgstr "สวัสดี ชาวโลก!"
-
 msgctxt "action_settings"
 msgid "Settings"
 msgstr "การตั้งค่า"

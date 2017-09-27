@@ -22,10 +22,6 @@ msgstr ""
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 
-msgctxt "hello_world"
-msgid "Hello world!"
-msgstr "Hallo Welt!"
-
 msgctxt "action_settings"
 msgid "Settings"
 msgstr "Einstellungen"
