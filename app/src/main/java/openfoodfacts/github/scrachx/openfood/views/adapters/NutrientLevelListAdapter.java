@@ -1,23 +1,28 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.List;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
+
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 
 public class NutrientLevelListAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<NutrientLevelItem> nutrientLevelItems;
+    private List<NutrientLevelItem> nutrientLevelItems;
 
-    public NutrientLevelListAdapter(Context context, ArrayList<NutrientLevelItem> navDrawerItems){
+    public NutrientLevelListAdapter(Context context, List<NutrientLevelItem> navDrawerItems){
         this.context = context;
         this.nutrientLevelItems = navDrawerItems;
     }
@@ -45,11 +50,26 @@ public class NutrientLevelListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.nutrient_lvl_list_item, null);
         }
 
-        ImageView imgIcon = (ImageView) convertView.findViewById(R.id.imgLevel);
-        TextView txtTitle = (TextView) convertView.findViewById(R.id.descriptionLevel);
 
-        imgIcon.setImageResource(nutrientLevelItems.get(position).getIcon());
-        txtTitle.setText(nutrientLevelItems.get(position).getTitle());
+        NutrientLevelItem nutrientLevelItem = nutrientLevelItems.get(position);
+
+        ImageView imgIcon = (ImageView) convertView.findViewById(R.id.imgLevel);
+        if (nutrientLevelItem.getIcon() <= 0) {
+            imgIcon.setVisibility(View.GONE);
+        } else {
+            imgIcon.setImageDrawable(VectorDrawableCompat.create(context.getResources(), nutrientLevelItem.getIcon(), null));
+            imgIcon.setVisibility(View.VISIBLE);
+        }
+
+        TextView txtTitle = (TextView) convertView.findViewById(R.id.descriptionLevel);
+        // need to clear the text because using append method (append method is mandatory for html text)
+        txtTitle.setText("");
+
+        txtTitle.append(nutrientLevelItem.getValue());
+        txtTitle.append(" ");
+        txtTitle.append(bold(nutrientLevelItem.getCategory()));
+        txtTitle.append("\n");
+        txtTitle.append(nutrientLevelItem.getLabel());
 
         return convertView;
     }

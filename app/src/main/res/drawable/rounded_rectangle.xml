@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+
+    <stroke android:width="@dimen/gauge_nutrition_rounded_circle_width" android:color="#b1bcbe" />
+    <corners android:radius="40dp" />
+    <solid android:color="@color/indigo_400" />
+
+</shape>

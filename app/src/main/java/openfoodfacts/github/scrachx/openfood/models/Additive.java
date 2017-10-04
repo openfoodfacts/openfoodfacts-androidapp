@@ -1,9 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import com.orm.SugarRecord;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Index;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -11,20 +14,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "name",
         "risk"
 })
-public class Additive extends SugarRecord {
+@Entity(indexes = {
+        @Index(value = "code", unique = true)
+})
+public class Additive {
 
-    @JsonProperty("code")
+    @Id
+    private Long id;
     private String code;
-    @JsonProperty("name")
     private String name;
-    @JsonProperty("risk")
     private String risk;
 
-    public Additive() {
+    public Additive(){}
 
-    }
-
-    public Additive(String code, String name, String risk) {
+    @Generated(hash = 1600864133)
+    public Additive(Long id, String code, String name, String risk) {
+        this.id = id;
         this.code = code;
         this.name = name;
         this.risk = risk;
@@ -35,7 +40,6 @@ public class Additive extends SugarRecord {
      * @return
      * The code
      */
-    @JsonProperty("code")
     public String getCode() {
         return code;
     }
@@ -45,9 +49,8 @@ public class Additive extends SugarRecord {
      * @param code
      * The code
      */
-    @JsonProperty("code")
     public void setCode(String code) {
-        this.code = code;
+        this.code = code.toUpperCase();
     }
 
     /**
@@ -55,7 +58,6 @@ public class Additive extends SugarRecord {
      * @return
      * The name
      */
-    @JsonProperty("name")
     public String getName() {
         return name;
     }
@@ -65,7 +67,6 @@ public class Additive extends SugarRecord {
      * @param name
      * The name
      */
-    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
@@ -75,7 +76,6 @@ public class Additive extends SugarRecord {
      * @return
      * The risk
      */
-    @JsonProperty("risk")
     public String getRisk() {
         return risk;
     }
@@ -85,7 +85,6 @@ public class Additive extends SugarRecord {
      * @param risk
      * The risk
      */
-    @JsonProperty("risk")
     public void setRisk(String risk) {
         this.risk = risk;
     }
@@ -97,5 +96,29 @@ public class Additive extends SugarRecord {
                 ", name='" + name + '\'' +
                 ", risk='" + risk + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Additive additive = (Additive) o;
+
+        return code != null ? code.equals(additive.code) : additive.code == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return code != null ? code.hashCode() : 0;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

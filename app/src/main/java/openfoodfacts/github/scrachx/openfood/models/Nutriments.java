@@ -1,1393 +1,235 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import openfoodfacts.github.scrachx.openfood.R;
+
+import static android.text.TextUtils.isEmpty;
+
+/**
+ * JSON representation of the product nutriments entry
+ *
+ * @see <a href="http://en.wiki.openfoodfacts.org/API#JSON_interface">JSON Structure</a>
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "sodium",
-        "sugars",
-        "sugars_value",
-        "carbohydrates_unit",
-        "fat_unit",
-        "proteins_unit",
-        "nutrition-score-fr_100g",
-        "fat",
-        "carbohydrates_value",
-        "proteins_serving",
-        "sodium_serving",
-        "fiber_value",
-        "proteins",
-        "salt",
-        "salt_unit",
-        "nutrition-score-fr",
-        "sugars_unit",
-        "fat_serving",
-        "fat_value",
-        "sodium_unit",
-        "sugars_100g",
-        "sodium_100g",
-        "saturated-fat_serving",
-        "saturated-fat_unit",
-        "fiber_unit",
-        "energy_value",
-        "energy",
-        "energy_unit",
-        "sugars_serving",
-        "carbohydrates_100g",
-        "nutrition-score-uk",
-        "saturated-fat_value",
-        "proteins_100g",
-        "fiber_serving",
-        "carbohydrates_serving",
-        "sodium_value",
-        "salt_value",
-        "energy_serving",
-        "fat_100g",
-        "saturated-fat_100g",
-        "nutrition-score-uk_100g",
-        "fiber",
-        "salt_100g",
-        "salt_serving",
-        "fiber_100g",
-        "carbohydrates",
-        "energy_100g",
-        "proteins_value",
-        "saturated-fat"
-})
 public class Nutriments implements Serializable {
 
-    @JsonProperty("sodium")
-    private String sodium;
-    @JsonProperty("sugars")
-    private String sugars;
-    @JsonProperty("sugars_value")
-    private String sugarsValue;
-    @JsonProperty("carbohydrates_unit")
-    private String carbohydratesUnit;
-    @JsonProperty("fat_unit")
-    private String fatUnit;
-    @JsonProperty("proteins_unit")
-    private String proteinsUnit;
-    @JsonProperty("nutrition-score-fr_100g")
-    private String nutritionScoreFr100g;
-    @JsonProperty("fat")
-    private String fat;
-    @JsonProperty("carbohydrates_value")
-    private String carbohydratesValue;
-    @JsonProperty("proteins_serving")
-    private String proteinsServing;
-    @JsonProperty("sodium_serving")
-    private String sodiumServing;
-    @JsonProperty("fiber_value")
-    private String fiberValue;
-    @JsonProperty("proteins")
-    private String proteins;
-    @JsonProperty("salt")
-    private String salt;
-    @JsonProperty("salt_unit")
-    private String saltUnit;
-    @JsonProperty("nutrition-score-fr")
-    private String nutritionScoreFr;
-    @JsonProperty("sugars_unit")
-    private String sugarsUnit;
-    @JsonProperty("fat_serving")
-    private String fatServing;
-    @JsonProperty("fat_value")
-    private String fatValue;
-    @JsonProperty("sodium_unit")
-    private String sodiumUnit;
-    @JsonProperty("sugars_100g")
-    private String sugars100g;
-    @JsonProperty("sodium_100g")
-    private String sodium100g;
-    @JsonProperty("saturated-fat_serving")
-    private String saturatedFatServing;
-    @JsonProperty("saturated-fat_unit")
-    private String saturatedFatUnit;
-    @JsonProperty("fiber_unit")
-    private String fiberUnit;
-    @JsonProperty("energy_value")
-    private String energyValue;
-    @JsonProperty("energy")
-    private String energy;
-    @JsonProperty("energy_unit")
-    private String energyUnit;
-    @JsonProperty("sugars_serving")
-    private String sugarsServing;
-    @JsonProperty("carbohydrates_100g")
-    private String carbohydrates100g;
-    @JsonProperty("nutrition-score-uk")
-    private String nutritionScoreUk;
-    @JsonProperty("saturated-fat_value")
-    private String saturatedFatValue;
-    @JsonProperty("proteins_100g")
-    private String proteins100g;
-    @JsonProperty("fiber_serving")
-    private String fiberServing;
-    @JsonProperty("carbohydrates_serving")
-    private String carbohydratesServing;
-    @JsonProperty("sodium_value")
-    private String sodiumValue;
-    @JsonProperty("salt_value")
-    private String saltValue;
-    @JsonProperty("energy_serving")
-    private String energyServing;
-    @JsonProperty("fat_100g")
-    private String fat100g;
-    @JsonProperty("saturated-fat_100g")
-    private String saturatedFat100g;
-    @JsonProperty("nutrition-score-uk_100g")
-    private String nutritionScoreUk100g;
-    @JsonProperty("fiber")
-    private String fiber;
-    @JsonProperty("salt_100g")
-    private String salt100g;
-    @JsonProperty("salt_serving")
-    private String saltServing;
-    @JsonProperty("fiber_100g")
-    private String fiber100g;
-    @JsonProperty("carbohydrates")
-    private String carbohydrates;
-    @JsonProperty("energy_100g")
-    private String energy100g;
-    @JsonProperty("proteins_value")
-    private String proteinsValue;
-    @JsonProperty("saturated-fat")
-    private String saturatedFat;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    /**
-     *
-     * @return
-     * The sodium
-     */
-    @JsonProperty("sodium")
-    public String getSodium() {
-        return sodium;
-    }
-
-    /**
-     *
-     * @param sodium
-     * The sodium
-     */
-    @JsonProperty("sodium")
-    public void setSodium(String sodium) {
-        this.sodium = sodium;
-    }
-
-    public Nutriments withSodium(String sodium) {
-        this.sodium = sodium;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The sugars
-     */
-    @JsonProperty("sugars")
-    public String getSugars() {
-        return sugars;
-    }
-
-    /**
-     *
-     * @param sugars
-     * The sugars
-     */
-    @JsonProperty("sugars")
-    public void setSugars(String sugars) {
-        this.sugars = sugars;
-    }
-
-    public Nutriments withSugars(String sugars) {
-        this.sugars = sugars;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The sugarsValue
-     */
-    @JsonProperty("sugars_value")
-    public String getSugarsValue() {
-        return sugarsValue;
-    }
-
-    /**
-     *
-     * @param sugarsValue
-     * The sugars_value
-     */
-    @JsonProperty("sugars_value")
-    public void setSugarsValue(String sugarsValue) {
-        this.sugarsValue = sugarsValue;
-    }
-
-    public Nutriments withSugarsValue(String sugarsValue) {
-        this.sugarsValue = sugarsValue;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The carbohydratesUnit
-     */
-    @JsonProperty("carbohydrates_unit")
-    public String getCarbohydratesUnit() {
-        return carbohydratesUnit;
-    }
-
-    /**
-     *
-     * @param carbohydratesUnit
-     * The carbohydrates_unit
-     */
-    @JsonProperty("carbohydrates_unit")
-    public void setCarbohydratesUnit(String carbohydratesUnit) {
-        this.carbohydratesUnit = carbohydratesUnit;
-    }
-
-    public Nutriments withCarbohydratesUnit(String carbohydratesUnit) {
-        this.carbohydratesUnit = carbohydratesUnit;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The fatUnit
-     */
-    @JsonProperty("fat_unit")
-    public String getFatUnit() {
-        return fatUnit;
-    }
-
-    /**
-     *
-     * @param fatUnit
-     * The fat_unit
-     */
-    @JsonProperty("fat_unit")
-    public void setFatUnit(String fatUnit) {
-        this.fatUnit = fatUnit;
-    }
-
-    public Nutriments withFatUnit(String fatUnit) {
-        this.fatUnit = fatUnit;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The proteinsUnit
-     */
-    @JsonProperty("proteins_unit")
-    public String getProteinsUnit() {
-        return proteinsUnit;
-    }
-
-    /**
-     *
-     * @param proteinsUnit
-     * The proteins_unit
-     */
-    @JsonProperty("proteins_unit")
-    public void setProteinsUnit(String proteinsUnit) {
-        this.proteinsUnit = proteinsUnit;
-    }
-
-    public Nutriments withProteinsUnit(String proteinsUnit) {
-        this.proteinsUnit = proteinsUnit;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The nutritionScoreFr100g
-     */
-    @JsonProperty("nutrition-score-fr_100g")
-    public String getNutritionScoreFr100g() {
-        return nutritionScoreFr100g;
-    }
-
-    /**
-     *
-     * @param nutritionScoreFr100g
-     * The nutrition-score-fr_100g
-     */
-    @JsonProperty("nutrition-score-fr_100g")
-    public void setNutritionScoreFr100g(String nutritionScoreFr100g) {
-        this.nutritionScoreFr100g = nutritionScoreFr100g;
-    }
-
-    public Nutriments withNutritionScoreFr100g(String nutritionScoreFr100g) {
-        this.nutritionScoreFr100g = nutritionScoreFr100g;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The fat
-     */
-    @JsonProperty("fat")
-    public String getFat() {
-        return fat;
-    }
-
-    /**
-     *
-     * @param fat
-     * The fat
-     */
-    @JsonProperty("fat")
-    public void setFat(String fat) {
-        this.fat = fat;
-    }
-
-    public Nutriments withFat(String fat) {
-        this.fat = fat;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The carbohydratesValue
-     */
-    @JsonProperty("carbohydrates_value")
-    public String getCarbohydratesValue() {
-        return carbohydratesValue;
-    }
-
-    /**
-     *
-     * @param carbohydratesValue
-     * The carbohydrates_value
-     */
-    @JsonProperty("carbohydrates_value")
-    public void setCarbohydratesValue(String carbohydratesValue) {
-        this.carbohydratesValue = carbohydratesValue;
-    }
-
-    public Nutriments withCarbohydratesValue(String carbohydratesValue) {
-        this.carbohydratesValue = carbohydratesValue;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The proteinsServing
-     */
-    @JsonProperty("proteins_serving")
-    public String getProteinsServing() {
-        return proteinsServing;
-    }
-
-    /**
-     *
-     * @param proteinsServing
-     * The proteins_serving
-     */
-    @JsonProperty("proteins_serving")
-    public void setProteinsServing(String proteinsServing) {
-        this.proteinsServing = proteinsServing;
-    }
-
-    public Nutriments withProteinsServing(String proteinsServing) {
-        this.proteinsServing = proteinsServing;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The sodiumServing
-     */
-    @JsonProperty("sodium_serving")
-    public String getSodiumServing() {
-        return sodiumServing;
-    }
-
-    /**
-     *
-     * @param sodiumServing
-     * The sodium_serving
-     */
-    @JsonProperty("sodium_serving")
-    public void setSodiumServing(String sodiumServing) {
-        this.sodiumServing = sodiumServing;
-    }
-
-    public Nutriments withSodiumServing(String sodiumServing) {
-        this.sodiumServing = sodiumServing;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The fiberValue
-     */
-    @JsonProperty("fiber_value")
-    public String getFiberValue() {
-        return fiberValue;
-    }
-
-    /**
-     *
-     * @param fiberValue
-     * The fiber_value
-     */
-    @JsonProperty("fiber_value")
-    public void setFiberValue(String fiberValue) {
-        this.fiberValue = fiberValue;
-    }
-
-    public Nutriments withFiberValue(String fiberValue) {
-        this.fiberValue = fiberValue;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The proteins
-     */
-    @JsonProperty("proteins")
-    public String getProteins() {
-        return proteins;
-    }
-
-    /**
-     *
-     * @param proteins
-     * The proteins
-     */
-    @JsonProperty("proteins")
-    public void setProteins(String proteins) {
-        this.proteins = proteins;
-    }
-
-    public Nutriments withProteins(String proteins) {
-        this.proteins = proteins;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The salt
-     */
-    @JsonProperty("salt")
-    public String getSalt() {
-        return salt;
-    }
-
-    /**
-     *
-     * @param salt
-     * The salt
-     */
-    @JsonProperty("salt")
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-    public Nutriments withSalt(String salt) {
-        this.salt = salt;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The saltUnit
-     */
-    @JsonProperty("salt_unit")
-    public String getSaltUnit() {
-        return saltUnit;
-    }
-
-    /**
-     *
-     * @param saltUnit
-     * The salt_unit
-     */
-    @JsonProperty("salt_unit")
-    public void setSaltUnit(String saltUnit) {
-        this.saltUnit = saltUnit;
-    }
-
-    public Nutriments withSaltUnit(String saltUnit) {
-        this.saltUnit = saltUnit;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The nutritionScoreFr
-     */
-    @JsonProperty("nutrition-score-fr")
-    public String getNutritionScoreFr() {
-        return nutritionScoreFr;
-    }
-
-    /**
-     *
-     * @param nutritionScoreFr
-     * The nutrition-score-fr
-     */
-    @JsonProperty("nutrition-score-fr")
-    public void setNutritionScoreFr(String nutritionScoreFr) {
-        this.nutritionScoreFr = nutritionScoreFr;
-    }
-
-    public Nutriments withNutritionScoreFr(String nutritionScoreFr) {
-        this.nutritionScoreFr = nutritionScoreFr;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The sugarsUnit
-     */
-    @JsonProperty("sugars_unit")
-    public String getSugarsUnit() {
-        return sugarsUnit;
-    }
-
-    /**
-     *
-     * @param sugarsUnit
-     * The sugars_unit
-     */
-    @JsonProperty("sugars_unit")
-    public void setSugarsUnit(String sugarsUnit) {
-        this.sugarsUnit = sugarsUnit;
-    }
-
-    public Nutriments withSugarsUnit(String sugarsUnit) {
-        this.sugarsUnit = sugarsUnit;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The fatServing
-     */
-    @JsonProperty("fat_serving")
-    public String getFatServing() {
-        return fatServing;
-    }
-
-    /**
-     *
-     * @param fatServing
-     * The fat_serving
-     */
-    @JsonProperty("fat_serving")
-    public void setFatServing(String fatServing) {
-        this.fatServing = fatServing;
-    }
-
-    public Nutriments withFatServing(String fatServing) {
-        this.fatServing = fatServing;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The fatValue
-     */
-    @JsonProperty("fat_value")
-    public String getFatValue() {
-        return fatValue;
-    }
-
-    /**
-     *
-     * @param fatValue
-     * The fat_value
-     */
-    @JsonProperty("fat_value")
-    public void setFatValue(String fatValue) {
-        this.fatValue = fatValue;
-    }
-
-    public Nutriments withFatValue(String fatValue) {
-        this.fatValue = fatValue;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The sodiumUnit
-     */
-    @JsonProperty("sodium_unit")
-    public String getSodiumUnit() {
-        return sodiumUnit;
-    }
-
-    /**
-     *
-     * @param sodiumUnit
-     * The sodium_unit
-     */
-    @JsonProperty("sodium_unit")
-    public void setSodiumUnit(String sodiumUnit) {
-        this.sodiumUnit = sodiumUnit;
-    }
-
-    public Nutriments withSodiumUnit(String sodiumUnit) {
-        this.sodiumUnit = sodiumUnit;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The sugars100g
-     */
-    @JsonProperty("sugars_100g")
-    public String getSugars100g() {
-        return sugars100g;
-    }
-
-    /**
-     *
-     * @param sugars100g
-     * The sugars_100g
-     */
-    @JsonProperty("sugars_100g")
-    public void setSugars100g(String sugars100g) {
-        this.sugars100g = sugars100g;
-    }
-
-    public Nutriments withSugars100g(String sugars100g) {
-        this.sugars100g = sugars100g;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The sodium100g
-     */
-    @JsonProperty("sodium_100g")
-    public String getSodium100g() {
-        return sodium100g;
-    }
-
-    /**
-     *
-     * @param sodium100g
-     * The sodium_100g
-     */
-    @JsonProperty("sodium_100g")
-    public void setSodium100g(String sodium100g) {
-        this.sodium100g = sodium100g;
-    }
-
-    public Nutriments withSodium100g(String sodium100g) {
-        this.sodium100g = sodium100g;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The saturatedFatServing
-     */
-    @JsonProperty("saturated-fat_serving")
-    public String getSaturatedFatServing() {
-        return saturatedFatServing;
-    }
-
-    /**
-     *
-     * @param saturatedFatServing
-     * The saturated-fat_serving
-     */
-    @JsonProperty("saturated-fat_serving")
-    public void setSaturatedFatServing(String saturatedFatServing) {
-        this.saturatedFatServing = saturatedFatServing;
-    }
-
-    public Nutriments withSaturatedFatServing(String saturatedFatServing) {
-        this.saturatedFatServing = saturatedFatServing;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The saturatedFatUnit
-     */
-    @JsonProperty("saturated-fat_unit")
-    public String getSaturatedFatUnit() {
-        return saturatedFatUnit;
-    }
-
-    /**
-     *
-     * @param saturatedFatUnit
-     * The saturated-fat_unit
-     */
-    @JsonProperty("saturated-fat_unit")
-    public void setSaturatedFatUnit(String saturatedFatUnit) {
-        this.saturatedFatUnit = saturatedFatUnit;
-    }
-
-    public Nutriments withSaturatedFatUnit(String saturatedFatUnit) {
-        this.saturatedFatUnit = saturatedFatUnit;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The fiberUnit
-     */
-    @JsonProperty("fiber_unit")
-    public String getFiberUnit() {
-        return fiberUnit;
-    }
-
-    /**
-     *
-     * @param fiberUnit
-     * The fiber_unit
-     */
-    @JsonProperty("fiber_unit")
-    public void setFiberUnit(String fiberUnit) {
-        this.fiberUnit = fiberUnit;
-    }
-
-    public Nutriments withFiberUnit(String fiberUnit) {
-        this.fiberUnit = fiberUnit;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The energyValue
-     */
-    @JsonProperty("energy_value")
-    public String getEnergyValue() {
-        return energyValue;
-    }
-
-    /**
-     *
-     * @param energyValue
-     * The energy_value
-     */
-    @JsonProperty("energy_value")
-    public void setEnergyValue(String energyValue) {
-        this.energyValue = energyValue;
-    }
-
-    public Nutriments withEnergyValue(String energyValue) {
-        this.energyValue = energyValue;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The energy
-     */
-    @JsonProperty("energy")
-    public String getEnergy() {
-        return energy;
-    }
-
-    /**
-     *
-     * @param energy
-     * The energy
-     */
-    @JsonProperty("energy")
-    public void setEnergy(String energy) {
-        this.energy = energy;
-    }
-
-    public Nutriments withEnergy(String energy) {
-        this.energy = energy;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The energyUnit
-     */
-    @JsonProperty("energy_unit")
-    public String getEnergyUnit() {
-        return energyUnit;
-    }
-
-    /**
-     *
-     * @param energyUnit
-     * The energy_unit
-     */
-    @JsonProperty("energy_unit")
-    public void setEnergyUnit(String energyUnit) {
-        this.energyUnit = energyUnit;
-    }
-
-    public Nutriments withEnergyUnit(String energyUnit) {
-        this.energyUnit = energyUnit;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The sugarsServing
-     */
-    @JsonProperty("sugars_serving")
-    public String getSugarsServing() {
-        return sugarsServing;
-    }
-
-    /**
-     *
-     * @param sugarsServing
-     * The sugars_serving
-     */
-    @JsonProperty("sugars_serving")
-    public void setSugarsServing(String sugarsServing) {
-        this.sugarsServing = sugarsServing;
-    }
-
-    public Nutriments withSugarsServing(String sugarsServing) {
-        this.sugarsServing = sugarsServing;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The carbohydrates100g
-     */
-    @JsonProperty("carbohydrates_100g")
-    public String getCarbohydrates100g() {
-        return carbohydrates100g;
-    }
-
-    /**
-     *
-     * @param carbohydrates100g
-     * The carbohydrates_100g
-     */
-    @JsonProperty("carbohydrates_100g")
-    public void setCarbohydrates100g(String carbohydrates100g) {
-        this.carbohydrates100g = carbohydrates100g;
-    }
-
-    public Nutriments withCarbohydrates100g(String carbohydrates100g) {
-        this.carbohydrates100g = carbohydrates100g;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The nutritionScoreUk
-     */
-    @JsonProperty("nutrition-score-uk")
-    public String getNutritionScoreUk() {
-        return nutritionScoreUk;
-    }
-
-    /**
-     *
-     * @param nutritionScoreUk
-     * The nutrition-score-uk
-     */
-    @JsonProperty("nutrition-score-uk")
-    public void setNutritionScoreUk(String nutritionScoreUk) {
-        this.nutritionScoreUk = nutritionScoreUk;
-    }
-
-    public Nutriments withNutritionScoreUk(String nutritionScoreUk) {
-        this.nutritionScoreUk = nutritionScoreUk;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The saturatedFatValue
-     */
-    @JsonProperty("saturated-fat_value")
-    public String getSaturatedFatValue() {
-        return saturatedFatValue;
-    }
-
-    /**
-     *
-     * @param saturatedFatValue
-     * The saturated-fat_value
-     */
-    @JsonProperty("saturated-fat_value")
-    public void setSaturatedFatValue(String saturatedFatValue) {
-        this.saturatedFatValue = saturatedFatValue;
-    }
-
-    public Nutriments withSaturatedFatValue(String saturatedFatValue) {
-        this.saturatedFatValue = saturatedFatValue;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The proteins100g
-     */
-    @JsonProperty("proteins_100g")
-    public String getProteins100g() {
-        return proteins100g;
-    }
-
-    /**
-     *
-     * @param proteins100g
-     * The proteins_100g
-     */
-    @JsonProperty("proteins_100g")
-    public void setProteins100g(String proteins100g) {
-        this.proteins100g = proteins100g;
-    }
-
-    public Nutriments withProteins100g(String proteins100g) {
-        this.proteins100g = proteins100g;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The fiberServing
-     */
-    @JsonProperty("fiber_serving")
-    public String getFiberServing() {
-        return fiberServing;
-    }
-
-    /**
-     *
-     * @param fiberServing
-     * The fiber_serving
-     */
-    @JsonProperty("fiber_serving")
-    public void setFiberServing(String fiberServing) {
-        this.fiberServing = fiberServing;
-    }
-
-    public Nutriments withFiberServing(String fiberServing) {
-        this.fiberServing = fiberServing;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The carbohydratesServing
-     */
-    @JsonProperty("carbohydrates_serving")
-    public String getCarbohydratesServing() {
-        return carbohydratesServing;
-    }
-
-    /**
-     *
-     * @param carbohydratesServing
-     * The carbohydrates_serving
-     */
-    @JsonProperty("carbohydrates_serving")
-    public void setCarbohydratesServing(String carbohydratesServing) {
-        this.carbohydratesServing = carbohydratesServing;
-    }
-
-    public Nutriments withCarbohydratesServing(String carbohydratesServing) {
-        this.carbohydratesServing = carbohydratesServing;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The sodiumValue
-     */
-    @JsonProperty("sodium_value")
-    public String getSodiumValue() {
-        return sodiumValue;
-    }
-
-    /**
-     *
-     * @param sodiumValue
-     * The sodium_value
-     */
-    @JsonProperty("sodium_value")
-    public void setSodiumValue(String sodiumValue) {
-        this.sodiumValue = sodiumValue;
-    }
-
-    public Nutriments withSodiumValue(String sodiumValue) {
-        this.sodiumValue = sodiumValue;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The saltValue
-     */
-    @JsonProperty("salt_value")
-    public String getSaltValue() {
-        return saltValue;
-    }
-
-    /**
-     *
-     * @param saltValue
-     * The salt_value
-     */
-    @JsonProperty("salt_value")
-    public void setSaltValue(String saltValue) {
-        this.saltValue = saltValue;
-    }
-
-    public Nutriments withSaltValue(String saltValue) {
-        this.saltValue = saltValue;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The energyServing
-     */
-    @JsonProperty("energy_serving")
-    public String getEnergyServing() {
-        return energyServing;
-    }
-
-    /**
-     *
-     * @param energyServing
-     * The energy_serving
-     */
-    @JsonProperty("energy_serving")
-    public void setEnergyServing(String energyServing) {
-        this.energyServing = energyServing;
-    }
-
-    public Nutriments withEnergyServing(String energyServing) {
-        this.energyServing = energyServing;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The fat100g
-     */
-    @JsonProperty("fat_100g")
-    public String getFat100g() {
-        return fat100g;
-    }
-
-    /**
-     *
-     * @param fat100g
-     * The fat_100g
-     */
-    @JsonProperty("fat_100g")
-    public void setFat100g(String fat100g) {
-        this.fat100g = fat100g;
-    }
-
-    public Nutriments withFat100g(String fat100g) {
-        this.fat100g = fat100g;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The saturatedFat100g
-     */
-    @JsonProperty("saturated-fat_100g")
-    public String getSaturatedFat100g() {
-        return saturatedFat100g;
-    }
-
-    /**
-     *
-     * @param saturatedFat100g
-     * The saturated-fat_100g
-     */
-    @JsonProperty("saturated-fat_100g")
-    public void setSaturatedFat100g(String saturatedFat100g) {
-        this.saturatedFat100g = saturatedFat100g;
-    }
-
-    public Nutriments withSaturatedFat100g(String saturatedFat100g) {
-        this.saturatedFat100g = saturatedFat100g;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The nutritionScoreUk100g
-     */
-    @JsonProperty("nutrition-score-uk_100g")
-    public String getNutritionScoreUk100g() {
-        return nutritionScoreUk100g;
-    }
-
-    /**
-     *
-     * @param nutritionScoreUk100g
-     * The nutrition-score-uk_100g
-     */
-    @JsonProperty("nutrition-score-uk_100g")
-    public void setNutritionScoreUk100g(String nutritionScoreUk100g) {
-        this.nutritionScoreUk100g = nutritionScoreUk100g;
-    }
-
-    public Nutriments withNutritionScoreUk100g(String nutritionScoreUk100g) {
-        this.nutritionScoreUk100g = nutritionScoreUk100g;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The fiber
-     */
-    @JsonProperty("fiber")
-    public String getFiber() {
-        return fiber;
-    }
-
-    /**
-     *
-     * @param fiber
-     * The fiber
-     */
-    @JsonProperty("fiber")
-    public void setFiber(String fiber) {
-        this.fiber = fiber;
-    }
-
-    public Nutriments withFiber(String fiber) {
-        this.fiber = fiber;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The salt100g
-     */
-    @JsonProperty("salt_100g")
-    public String getSalt100g() {
-        return salt100g;
-    }
-
-    /**
-     *
-     * @param salt100g
-     * The salt_100g
-     */
-    @JsonProperty("salt_100g")
-    public void setSalt100g(String salt100g) {
-        this.salt100g = salt100g;
-    }
-
-    public Nutriments withSalt100g(String salt100g) {
-        this.salt100g = salt100g;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The saltServing
-     */
-    @JsonProperty("salt_serving")
-    public String getSaltServing() {
-        return saltServing;
-    }
-
-    /**
-     *
-     * @param saltServing
-     * The salt_serving
-     */
-    @JsonProperty("salt_serving")
-    public void setSaltServing(String saltServing) {
-        this.saltServing = saltServing;
-    }
-
-    public Nutriments withSaltServing(String saltServing) {
-        this.saltServing = saltServing;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The fiber100g
-     */
-    @JsonProperty("fiber_100g")
-    public String getFiber100g() {
-        return fiber100g;
-    }
-
-    /**
-     *
-     * @param fiber100g
-     * The fiber_100g
-     */
-    @JsonProperty("fiber_100g")
-    public void setFiber100g(String fiber100g) {
-        this.fiber100g = fiber100g;
-    }
-
-    public Nutriments withFiber100g(String fiber100g) {
-        this.fiber100g = fiber100g;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The carbohydrates
-     */
-    @JsonProperty("carbohydrates")
-    public String getCarbohydrates() {
-        return carbohydrates;
-    }
-
-    /**
-     *
-     * @param carbohydrates
-     * The carbohydrates
-     */
-    @JsonProperty("carbohydrates")
-    public void setCarbohydrates(String carbohydrates) {
-        this.carbohydrates = carbohydrates;
-    }
-
-    public Nutriments withCarbohydrates(String carbohydrates) {
-        this.carbohydrates = carbohydrates;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The energy100g
-     */
-    @JsonProperty("energy_100g")
-    public String getEnergy100g() {
-        return energy100g;
-    }
-
-    /**
-     *
-     * @param energy100g
-     * The energy_100g
-     */
-    @JsonProperty("energy_100g")
-    public void setEnergy100g(String energy100g) {
-        this.energy100g = energy100g;
-    }
-
-    public Nutriments withEnergy100g(String energy100g) {
-        this.energy100g = energy100g;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The proteinsValue
-     */
-    @JsonProperty("proteins_value")
-    public String getProteinsValue() {
-        return proteinsValue;
-    }
-
-    /**
-     *
-     * @param proteinsValue
-     * The proteins_value
-     */
-    @JsonProperty("proteins_value")
-    public void setProteinsValue(String proteinsValue) {
-        this.proteinsValue = proteinsValue;
-    }
-
-    public Nutriments withProteinsValue(String proteinsValue) {
-        this.proteinsValue = proteinsValue;
-        return this;
-    }
-
-    /**
-     *
-     * @return
-     * The saturatedFat
-     */
-    @JsonProperty("saturated-fat")
-    public String getSaturatedFat() {
-        return saturatedFat;
-    }
-
-    /**
-     *
-     * @param saturatedFat
-     * The saturated-fat
-     */
-    @JsonProperty("saturated-fat")
-    public void setSaturatedFat(String saturatedFat) {
-        this.saturatedFat = saturatedFat;
-    }
-
-    public Nutriments withSaturatedFat(String saturatedFat) {
-        this.saturatedFat = saturatedFat;
-        return this;
+    private static final String DEFAULT_UNIT = "g";
+
+    public final static String ENERGY ="energy";
+    public static final String ENERGY_FROM_FAT = "energy-from-fat";
+    public static final String FAT = "fat";
+    public static final String SATURATED_FAT = "saturated-fat";
+    public static final String BUTYRIC_ACID = "butyric-acid";
+    public static final String CAPROIC_ACID = "caproic-acid";
+    public static final String CAPRYLIC_ACID = "caprylic-acid";
+    public static final String CAPRIC_ACID = "capric-acid";
+    public static final String LAURIC_ACID = "lauric-acid";
+    public static final String MYRISTIC_ACID = "myristic-acid";
+    public static final String PALMITIC_ACID = "palmitic-acid";
+    public static final String STEARIC_ACID = "stearic-acid";
+    public static final String ARACHIDIC_ACID = "arachidic-acid";
+    public static final String BEHENIC_ACID = "behenic-acid";
+    public static final String LIGNOCERIC_ACID = "lignoceric-acid";
+    public static final String CEROTIC_ACID = "cerotic-acid";
+    public static final String MONTANIC_ACID = "montanic-acid";
+    public static final String MELISSIC_ACID = "melissic-acid";
+    public static final String MONOUNSATURATED_FAT = "monounsaturated-fat";
+    public static final String POLYUNSATURATED_FAT = "polyunsaturated-fat";
+    public static final String OMEGA_3_FAT = "omega-3-fat";
+    public static final String ALPHA_LINOLENIC_ACID = "alpha-linolenic-acid";
+    public static final String EICOSAPENTAENOIC_ACID = "eicosapentaenoic-acid";
+    public static final String DOCOSAHEXAENOIC_ACID = "docosahexaenoic-acid";
+    public static final String OMEGA_6_FAT = "omega-6-fat";
+    public static final String LINOLEIC_ACID = "linoleic-acid";
+    public static final String ARACHIDONIC_ACID = "arachidonic-acid";
+    public static final String GAMMA_LINOLENIC_ACID = "gamma-linolenic-acid";
+    public static final String DIHOMO_GAMMA_LINOLENIC_ACID = "dihomo-gamma-linolenic-acid";
+    public static final String OMEGA_9_FAT = "omega-9-fat";
+    public static final String OLEIC_ACID = "oleic-acid";
+    public static final String ELAIDIC_ACID = "elaidic-acid";
+    public static final String GONDOIC_ACID = "gondoic-acid";
+    public static final String MEAD_ACID = "mead-acid";
+    public static final String ERUCIC_ACID = "erucic-acid";
+    public static final String NERVONIC_ACID = "nervonic-acid";
+    public static final String TRANS_FAT = "trans-fat";
+    public static final String CHOLESTEROL = "cholesterol";
+    public static final String CARBOHYDRATES = "carbohydrates";
+    public static final String SUGARS = "sugars";
+    public static final String SUCROSE = "sucrose";
+    public static final String GLUCOSE = "glucose";
+    public static final String FRUCTOSE = "fructose";
+    public static final String LACTOSE = "lactose";
+    public static final String MALTOSE = "maltose";
+    public static final String MALTODEXTRINS = "maltodextrins";
+    public static final String STARCH = "starch";
+    public static final String POLYOLS = "polyols";
+    public static final String FIBER = "fiber";
+    public static final String PROTEINS = "proteins";
+    public static final String CASEIN = "casein";
+    public static final String SERUM_PROTEINS = "serum-proteins";
+    public static final String NUCLEOTIDES = "nucleotides";
+    public static final String SALT = "salt";
+    public static final String SODIUM = "sodium";
+    public static final String ALCOHOL = "alcohol";
+    public static final String VITAMIN_A = "vitamin-a";
+    public static final String BETA_CAROTENE = "beta-carotene";
+    public static final String VITAMIN_D = "vitamin-d";
+    public static final String VITAMIN_E = "vitamin-e";
+    public static final String VITAMIN_K = "vitamin-k";
+    public static final String VITAMIN_C = "vitamin-c";
+    public static final String VITAMIN_B1 = "vitamin-b1";
+    public static final String VITAMIN_B2 = "vitamin-b2";
+    public static final String VITAMIN_PP = "vitamin-pp";
+    public static final String VITAMIN_B6 = "vitamin-b6";
+    public static final String VITAMIN_B9 = "vitamin-b9";
+    public static final String WATER_HARDNESS = "water-hardness";
+    public static final String GLYCEMIC_INDEX = "glycemic-index";
+    public static final String NUTRITION_SCORE_UK = "nutrition-score-uk";
+    public static final String NUTRITION_SCORE_FR = "nutrition-score-fr";
+    public static final String CARBON_FOOTPRINT = "carbon-footprint";
+    public static final String CHLOROPHYL = "chlorophyl";
+    public static final String COCOA = "cocoa";
+    public static final String COLLAGEN_MEAT_PROTEIN_RATIO = "collagen-meat-protein-ratio";
+    public static final String FRUITS_VEGETABLES_NUTS = "fruits-vegetables-nuts";
+    public static final String PH = "ph";
+    public static final String TAURINE = "taurine";
+    public static final String CAFFEINE = "caffeine";
+    public static final String IODINE = "iodine";
+    public static final String MOLYBDENUM = "molybdenum";
+    public static final String CHROMIUM = "chromium";
+    public static final String SELENIUM = "selenium";
+    public static final String FLUORIDE = "fluoride";
+    public static final String MANGANESE = "manganese";
+    public static final String COPPER = "copper";
+    public static final String ZINC = "zinc";
+    public static final String VITAMIN_B12 = "vitamin-b12";
+    public static final String BIOTIN = "biotin";
+    public static final String PANTOTHENIC_ACID = "pantothenic-acid";
+    public static final String SILICA = "silica";
+    public static final String BICARBONATE = "bicarbonate";
+    public static final String POTASSIUM = "potassium";
+    public static final String CHLORIDE = "chloride";
+    public static final String CALCIUM = "calcium";
+    public static final String PHOSPHORUS = "phosphorus";
+    public static final String IRON = "iron";
+    public static final String MAGNESIUM = "magnesium";
+
+    public static final Map<String, Integer> MINERALS_MAP = new HashMap<String, Integer>() {{
+        put(Nutriments.SILICA, R.string.silica);
+        put(Nutriments.BICARBONATE, R.string.bicarbonate);
+        put(Nutriments.POTASSIUM, R.string.potassium);
+        put(Nutriments.CHLORIDE, R.string.chloride);
+        put(Nutriments.CALCIUM, R.string.calcium);
+        put(Nutriments.PHOSPHORUS, R.string.phosphorus);
+        put(Nutriments.IRON, R.string.iron);
+        put(Nutriments.MAGNESIUM, R.string.magnesium);
+        put(Nutriments.ZINC, R.string.zinc);
+        put(Nutriments.COPPER, R.string.copper);
+        put(Nutriments.MANGANESE, R.string.manganese);
+        put(Nutriments.FLUORIDE, R.string.fluoride);
+        put(Nutriments.SELENIUM, R.string.selenium);
+        put(Nutriments.CHROMIUM, R.string.chromium);
+        put(Nutriments.MOLYBDENUM, R.string.molybdenum);
+        put(Nutriments.IODINE, R.string.iodine);
+        put(Nutriments.CAFFEINE, R.string.caffeine);
+        put(Nutriments.TAURINE, R.string.taurine);
+        put(Nutriments.PH, R.string.ph);
+        put(Nutriments.FRUITS_VEGETABLES_NUTS, R.string.fruits_vegetables_nuts);
+        put(Nutriments.COLLAGEN_MEAT_PROTEIN_RATIO, R.string.collagen_meat_protein_ratio);
+        put(Nutriments.COCOA, R.string.cocoa);
+        put(Nutriments.CHLOROPHYL, R.string.chlorophyl);
+    }};
+
+    public static final Map<String, Integer> FAT_MAP = new HashMap<String, Integer>(){{
+        put(Nutriments.SATURATED_FAT, R.string.nutrition_satured_fat);
+        put(Nutriments.MONOUNSATURATED_FAT, R.string.nutrition_monounsaturatedFat);
+        put(Nutriments.POLYUNSATURATED_FAT, R.string.nutrition_polyunsaturatedFat);
+        put(Nutriments.OMEGA_3_FAT, R.string.nutrition_omega3);
+        put(Nutriments.OMEGA_6_FAT, R.string.nutrition_omega6);
+        put(Nutriments.OMEGA_9_FAT, R.string.nutrition_omega9);
+        put(Nutriments.TRANS_FAT, R.string.nutrition_trans_fat);
+        put(Nutriments.CHOLESTEROL, R.string.nutrition_cholesterol);
+    }};
+
+    public static final Map<String, Integer> CARBO_MAP = new HashMap<String, Integer>(){{
+        put(Nutriments.SUGARS, R.string.nutrition_sugars);
+        put(Nutriments.SUCROSE, R.string.nutrition_sucrose);
+        put(Nutriments.GLUCOSE, R.string.nutrition_glucose);
+        put(Nutriments.FRUCTOSE, R.string.nutrition_fructose);
+        put(Nutriments.LACTOSE, R.string.nutrition_lactose);
+        put(Nutriments.MALTOSE, R.string.nutrition_maltose);
+        put(Nutriments.MALTODEXTRINS, R.string.nutrition_maltodextrins);
+    }};
+
+    public static final Map<String, Integer> PROT_MAP = new HashMap<String, Integer>(){{
+        put(Nutriments.CASEIN, R.string.nutrition_casein);
+        put(Nutriments.SERUM_PROTEINS, R.string.nutrition_serum_proteins);
+        put(Nutriments.NUCLEOTIDES, R.string.nutrition_nucleotides);
+    }};
+
+    public static final Map<String, Integer> VITAMINS_MAP = new HashMap<String, Integer>(){{
+        put(Nutriments.VITAMIN_A, R.string.vitamin_a);
+        put(Nutriments.BETA_CAROTENE, R.string.vitamin_a);
+        put(Nutriments.VITAMIN_D, R.string.vitamin_d);
+        put(Nutriments.VITAMIN_E, R.string.vitamin_e);
+        put(Nutriments.VITAMIN_K, R.string.vitamin_k);
+        put(Nutriments.VITAMIN_C, R.string.vitamin_c);
+        put(Nutriments.VITAMIN_B1, R.string.vitamin_b1);
+        put(Nutriments.VITAMIN_B2, R.string.vitamin_b2);
+        put(Nutriments.VITAMIN_PP, R.string.vitamin_pp);
+        put(Nutriments.VITAMIN_B6, R.string.vitamin_b6);
+        put(Nutriments.VITAMIN_B9, R.string.vitamin_b9);
+        put(Nutriments.VITAMIN_B12, R.string.vitamin_b12);
+        put(Nutriments.BIOTIN, R.string.biotin);
+        put(Nutriments.PANTOTHENIC_ACID, R.string.pantothenic_acid);
+    }};
+
+    private Map<String, Object> additionalProperties = new HashMap<>();
+    private boolean containsVitamins;
+    private boolean containsMinerals;
+
+    public Nutriment get(String nutrimentName){
+        if (!additionalProperties.containsKey(nutrimentName)) {
+            return null;
+        }
+
+        return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName));
+    }
+
+    public String getUnit(String nutrimentName){
+        String unit = ((String) additionalProperties.get(nutrimentName + "_unit"));
+        return isEmpty(unit) ? DEFAULT_UNIT : unit;
+    }
+
+    public String getServing(String nutrimentName){
+        return additionalProperties.get(nutrimentName + "_serving").toString();
+    }
+
+    public String get100g(String nutrimentName){
+        return additionalProperties.get(nutrimentName + "_100g").toString();
+    }
+
+    public Double getValue(String nutrimentName){
+        return ((Double) additionalProperties.get(nutrimentName + "_value"));
+    }
+
+    public boolean contains(String nutrimentName){
+        return additionalProperties.containsKey(nutrimentName);
+    }
+
+    public boolean hasVitamins() {
+        return containsVitamins;
+    }
+
+    public boolean hasMinerals() {
+        return containsMinerals;
     }
 
     @JsonAnyGetter
@@ -1398,66 +240,43 @@ public class Nutriments implements Serializable {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
+
+        if (VITAMINS_MAP.containsKey(name)) {
+            containsVitamins = true;
+        } else if (MINERALS_MAP.containsKey(name)) {
+            containsMinerals = true;
+        }
     }
 
-    public Nutriments withAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-        return this;
+    public static class Nutriment {
+
+        private final String value;
+        private final String for100g;
+        private final String forServing;
+        private final String unit;
+
+        Nutriment(String name, String for100g, String forServing, String unit) {
+            this.value = name;
+            this.for100g = for100g;
+            this.forServing = forServing;
+            this.unit = unit;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public String getFor100g() {
+            return for100g;
+        }
+
+        public String getForServing() {
+            return forServing;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
     }
 
-    @Override
-    public String toString() {
-        return "Nutriments{" +
-                "sodium='" + sodium + '\'' +
-                ", sugars='" + sugars + '\'' +
-                ", sugarsValue='" + sugarsValue + '\'' +
-                ", carbohydratesUnit='" + carbohydratesUnit + '\'' +
-                ", fatUnit='" + fatUnit + '\'' +
-                ", proteinsUnit='" + proteinsUnit + '\'' +
-                ", nutritionScoreFr100g='" + nutritionScoreFr100g + '\'' +
-                ", fat='" + fat + '\'' +
-                ", carbohydratesValue='" + carbohydratesValue + '\'' +
-                ", proteinsServing='" + proteinsServing + '\'' +
-                ", sodiumServing='" + sodiumServing + '\'' +
-                ", fiberValue='" + fiberValue + '\'' +
-                ", proteins='" + proteins + '\'' +
-                ", salt='" + salt + '\'' +
-                ", saltUnit='" + saltUnit + '\'' +
-                ", nutritionScoreFr='" + nutritionScoreFr + '\'' +
-                ", sugarsUnit='" + sugarsUnit + '\'' +
-                ", fatServing='" + fatServing + '\'' +
-                ", fatValue='" + fatValue + '\'' +
-                ", sodiumUnit='" + sodiumUnit + '\'' +
-                ", sugars100g='" + sugars100g + '\'' +
-                ", sodium100g='" + sodium100g + '\'' +
-                ", saturatedFatServing='" + saturatedFatServing + '\'' +
-                ", saturatedFatUnit='" + saturatedFatUnit + '\'' +
-                ", fiberUnit='" + fiberUnit + '\'' +
-                ", energyValue='" + energyValue + '\'' +
-                ", energy='" + energy + '\'' +
-                ", energyUnit='" + energyUnit + '\'' +
-                ", sugarsServing='" + sugarsServing + '\'' +
-                ", carbohydrates100g='" + carbohydrates100g + '\'' +
-                ", nutritionScoreUk='" + nutritionScoreUk + '\'' +
-                ", saturatedFatValue='" + saturatedFatValue + '\'' +
-                ", proteins100g='" + proteins100g + '\'' +
-                ", fiberServing='" + fiberServing + '\'' +
-                ", carbohydratesServing='" + carbohydratesServing + '\'' +
-                ", sodiumValue='" + sodiumValue + '\'' +
-                ", saltValue='" + saltValue + '\'' +
-                ", energyServing='" + energyServing + '\'' +
-                ", fat100g='" + fat100g + '\'' +
-                ", saturatedFat100g='" + saturatedFat100g + '\'' +
-                ", nutritionScoreUk100g='" + nutritionScoreUk100g + '\'' +
-                ", fiber='" + fiber + '\'' +
-                ", salt100g='" + salt100g + '\'' +
-                ", saltServing='" + saltServing + '\'' +
-                ", fiber100g='" + fiber100g + '\'' +
-                ", carbohydrates='" + carbohydrates + '\'' +
-                ", energy100g='" + energy100g + '\'' +
-                ", proteinsValue='" + proteinsValue + '\'' +
-                ", saturatedFat='" + saturatedFat + '\'' +
-                ", additionalProperties=" + additionalProperties +
-                '}';
-    }
 }

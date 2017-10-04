@@ -5,39 +5,45 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.afollestad.materialdialogs.DialogAction;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.clans.fab.FloatingActionButton;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
-import org.apache.commons.collections.IteratorUtils;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 
 public class AlertUserFragment extends BaseFragment {
 
-    private List<Allergen> mAllergens;
+    private OpenFoodAPIClient api;
+    private List<Allergen> mAllergensEnabled;
+    private AllergenDao mAllergenDao;
     private AllergensAdapter mAdapter;
     private RecyclerView mRvAllergens;
     private SharedPreferences mSettings;
+    private List<Allergen> mAllergensFromDao;
     private View mView;
-    @Bind(R.id.fab) FloatingActionButton mFab;
+    @BindView(R.id.fab) FloatingActionButton mFab;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,6 +54,10 @@ public class AlertUserFragment extends BaseFragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mAllergenDao = Utils.getAppDaoSession(getActivity()).getAllergenDao();
+        mAllergensFromDao = mAllergenDao.loadAll();
+
+        api = new OpenFoodAPIClient(getActivity());
         mView = view;
         mSettings = getActivity().getSharedPreferences("prefs", 0);
         boolean firstRunAlert = mSettings.getBoolean("firstRunAlert", true);
@@ -63,8 +73,8 @@ public class AlertUserFragment extends BaseFragment {
         }
 
         mRvAllergens = (RecyclerView) view.findViewById(R.id.alergens_recycle);
-        mAllergens = Allergen.find(Allergen.class, "enable = ?", "true");
-        mAdapter = new AllergensAdapter(mAllergens);
+        mAllergensEnabled = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
+        mAdapter = new AllergensAdapter(mAllergensEnabled, getActivity());
         mRvAllergens.setAdapter(mAdapter);
         mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
         mRvAllergens.setHasFixedSize(true);
@@ -72,33 +82,38 @@ public class AlertUserFragment extends BaseFragment {
 
     @OnClick(R.id.fab)
     protected void onAddAllergens() {
-        final List<Allergen> all = IteratorUtils.toList(Allergen.findAll(Allergen.class));
-        List<String> allS = new ArrayList<String>();
-        for (Allergen a : all) {
+        final LinkedHashMap<Integer,String> allS = new LinkedHashMap<>();
+        int index = 0;
+        for (Allergen a : mAllergensFromDao) {
             if (Locale.getDefault().getLanguage().contains("fr")){
-                if(a.getIdAllergen().contains("fr:")) allS.add(a.getName().substring(a.getName().indexOf(":")+1));
+                if(a.getIdAllergen().contains("fr:")) allS.put(index, a.getName().substring(a.getName().indexOf(":")+1));
             } else if (Locale.getDefault().getLanguage().contains("en")) {
-                if(a.getIdAllergen().contains("en:")) allS.add(a.getName().substring(a.getName().indexOf(":")+1));
+                if(a.getIdAllergen().contains("en:")) allS.put(index, a.getName().substring(a.getName().indexOf(":")+1));
             }
+            index++;
         }
         if(allS.size() > 0) {
             new MaterialDialog.Builder(mView.getContext())
                     .title(R.string.title_dialog_alert)
-                    .items(allS)
-                    .itemsCallback(new MaterialDialog.ListCallback() {
-                        @Override
-                        public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
-                            all.get(which).setEnable("true");
-                            all.get(which).save();
-                            boolean canAdd = true;
-                            for(Allergen a : mAllergens) {
-                                if(a.getName().equals(all.get(which).getName())) canAdd = false;
+                    .items(allS.values())
+                    .itemsCallback((dialog, view, which, text) -> {
+                        boolean canAdd = true;
+                        int index1 = -1;
+                        String alergeneStringByPos = new ArrayList<String>(allS.values()).get(which);
+                        for(Allergen a : mAllergensEnabled) {
+                            if(a.getName().equals(mAllergensFromDao.get(which).getName())) canAdd = false;
+                        }
+                        for(Allergen a : mAllergensFromDao) {
+                            if (a.getName().substring(a.getName().indexOf(":") + 1).equalsIgnoreCase(alergeneStringByPos)) {
+                                index1 = getKey(allS, alergeneStringByPos);
+                                mAllergensFromDao.get(index1).setEnable("true");
+                                mAllergenDao.update(mAllergensFromDao.get(index1));
                             }
-                            if(canAdd) {
-                                mAllergens.add(all.get(which));
-                                mAdapter.notifyItemInserted(mAllergens.size() - 1);
-                                mRvAllergens.scrollToPosition(mAdapter.getItemCount() - 1);
-                            }
+                        }
+                        if (canAdd && index1 != -1) {
+                            mAllergensEnabled.add(mAllergensFromDao.get(index1));
+                            mAdapter.notifyItemInserted(mAllergensEnabled.size() - 1);
+                            mRvAllergens.scrollToPosition(mAdapter.getItemCount() - 1);
                         }
                     })
                     .show();
@@ -109,7 +124,7 @@ public class AlertUserFragment extends BaseFragment {
             if(isConnected) {
                 final LoadToast lt = new LoadToast(getContext());
                 lt.setText(getContext().getString(R.string.toast_retrieving));
-                lt.setBackgroundColor(getContext().getResources().getColor(R.color.indigo_600));
+                lt.setBackgroundColor(getContext().getResources().getColor(R.color.blue));
                 lt.setTextColor(getContext().getResources().getColor(R.color.white));
                 lt.show();
                 new MaterialDialog.Builder(mView.getContext())
@@ -117,26 +132,13 @@ public class AlertUserFragment extends BaseFragment {
                         .content(R.string.info_download_data)
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull final MaterialDialog dialog, @NonNull DialogAction which) {
-                                final SharedPreferences.Editor editor = mSettings.edit();
-                                FoodAPIRestClientUsage api = new FoodAPIRestClientUsage();
-                                api.getAllergens(new FoodAPIRestClientUsage.OnAllergensCallback() {
-                                    @Override
-                                    public void onAllergensResponse(boolean value) {
-                                        if (!value) {
-                                            editor.putBoolean("errorAllergens", true);
-                                            editor.apply();
-                                        } else {
-                                            editor.putBoolean("errorAllergens", false);
-                                            editor.apply();
-                                        }
-                                        lt.success();
-                                        dialog.hide();
-                                    }
-                                });
-                            }
+                        .onPositive((dialog, which) -> {
+                            final SharedPreferences.Editor editor = mSettings.edit();
+                            api.getAllergens(value -> {
+                                editor.putBoolean("errorAllergens", !value).apply();
+                                lt.success();
+                                dialog.hide();
+                            });
                         })
                         .show();
             } else {
@@ -148,6 +150,17 @@ public class AlertUserFragment extends BaseFragment {
             }
         }
 
+    }
+
+    public static Integer getKey(HashMap<Integer, String> map, String value) {
+        Integer key = null;
+        for(Map.Entry<Integer, String> entry : map.entrySet()) {
+            if((value == null && entry.getValue() == null) || (value != null && value.equals(entry.getValue()))) {
+                key = entry.getKey();
+                break;
+            }
+        }
+        return key;
     }
 
 }

@@ -2,31 +2,31 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 public class NutrientLevelItem {
 
-    private String title;
-    private int icon;
+    private final String category;
+    private final String value;
+    private final String label;
+    private final int icon;
 
-    public NutrientLevelItem(){}
-
-    public NutrientLevelItem(String title, int icon){
-        this.title = title;
+    public NutrientLevelItem(String category, String value, String label, int icon){
+        this.category = category;
+        this.value = value;
+        this.label = label;
         this.icon = icon;
     }
 
+    public String getValue() {
+        return value;
+    }
 
-    public String getTitle(){
-        return this.title;
+    public String getCategory(){
+        return this.category;
     }
 
     public int getIcon(){
         return this.icon;
     }
 
-    public void setTitle(String title){
-        this.title = title;
+    public String getLabel() {
+        return label;
     }
-
-    public void setIcon(int icon){
-        this.icon = icon;
-    }
-
 }

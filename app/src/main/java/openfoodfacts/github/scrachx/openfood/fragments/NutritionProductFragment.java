@@ -1,29 +1,48 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.Html;
+import android.support.customtabs.CustomTabsIntent;
+import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import java.util.ArrayList;
 
-import butterknife.Bind;
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
+import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
-public class NutritionProductFragment extends BaseFragment {
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
-    @Bind(R.id.imageGrade) ImageView img;
-    @Bind(R.id.listNutrientLevels) ListView lv;
-    @Bind(R.id.textServingSize) TextView serving;
+public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
+
+    @BindView(R.id.imageGrade) ImageView img;
+    @BindView(R.id.listNutrientLevels) ListView lv;
+    @BindView(R.id.textServingSize) TextView serving;
+    @BindView(R.id.textCarbonFootprint) TextView carbonFootprint;
+    private CustomTabActivityHelper customTabActivityHelper;
+    private Uri nutritionScoreUri;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,68 +56,97 @@ public class NutritionProductFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
 
-        NutrientLevels nt = state.getProduct().getNutrientLevels();
-        ArrayList<NutrientLevelItem> levelItem;
-        NutrientLevelListAdapter adapter;
-        
-        if (nt == null) {
-            levelItem = new ArrayList<>();
-            levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), R.drawable.error_image));
-            adapter = new NutrientLevelListAdapter(getContext(), levelItem);
-            lv.setAdapter(adapter);
+        final Product product = state.getProduct();
+        List<NutrientLevelItem> levelItem = new ArrayList<>();
+
+        Nutriments nutriments = product.getNutriments();
+
+        NutrientLevels nutrientLevels = product.getNutrientLevels();
+        NutrimentLevel fat = null;
+        NutrimentLevel saturatedFat = null;
+        NutrimentLevel sugars = null;
+        NutrimentLevel salt = null;
+        if(nutrientLevels != null) {
+            fat = nutrientLevels.getFat();
+            saturatedFat = nutrientLevels.getSaturatedFat();
+            sugars = nutrientLevels.getSugars();
+            salt = nutrientLevels.getSalt();
+        }
+
+        if (fat == null && salt == null && saturatedFat == null && sugars == null) {
+            levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), "", "", R.drawable.error_image));
         } else {
-            String saltTxt = Html.fromHtml("<b>" + getString(R.string.txtSalt) + "</b>" + ' ' + nt.getSalt() + " (" + state.getProduct().getNutriments().getSalt100g() + state.getProduct().getNutriments().getSaltUnit() + ")").toString();
-            String fatTxt = Html.fromHtml("<b>" + getString(R.string.txtFat) + "</b>" + ' ' + nt.getFat() + " (" + state.getProduct().getNutriments().getFat100g() + state.getProduct().getNutriments().getFatUnit() + ")").toString();
-            String sugarsTxt = Html.fromHtml("<b>" + getString(R.string.txtSugars) + "</b>" + ' ' + nt.getSugars() + " (" + state.getProduct().getNutriments().getSugars100g() + state.getProduct().getNutriments().getSugarsUnit() + ")").toString();
-            String saturatedFatTxt = Html.fromHtml("<b>" + getString(R.string.txtSaturatedFat) + "</b>" + ' ' + nt.getSaturatedFat() + " (" + state.getProduct().getNutriments().getSaturatedFat100g() + state.getProduct().getNutriments().getSaturatedFatUnit() + ")").toString();
+            // prefetch the uri
+            customTabActivityHelper = new CustomTabActivityHelper();
+            customTabActivityHelper.setConnectionCallback(this);
+            // currently only available in french translations
+            nutritionScoreUri = Uri.parse("https://fr.openfoodfacts.org/score-nutritionnel-france");
+            customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
 
-            String saltImg = nt.getSalt();
-            String fatImg = nt.getFat();
-            String sugarsImg = nt.getSugars();
-            String saturatedFatImg = nt.getSaturatedFat();
+            Context context = this.getContext();
 
-            levelItem = new ArrayList<>();
-            levelItem.add(new NutrientLevelItem(saltTxt, getImageLevel(saltImg)));
-            levelItem.add(new NutrientLevelItem(fatTxt, getImageLevel(fatImg)));
-            levelItem.add(new NutrientLevelItem(sugarsTxt, getImageLevel(sugarsImg)));
-            levelItem.add(new NutrientLevelItem(saturatedFatTxt, getImageLevel(saturatedFatImg)));
+            if (fat != null) {
+                String fatNutrimentLevel = fat.getLocalize(context);
+                Nutriments.Nutriment nutriment = nutriments.get(Nutriments.FAT);
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtFat), getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit(), fatNutrimentLevel, fat.getImageLevel()));
+            }
 
-            adapter = new NutrientLevelListAdapter(getContext(), levelItem);
-            lv.setAdapter(adapter);
-            img.setImageResource(getImageGrade(state.getProduct().getNutritionGradeFr()));
+            if (saturatedFat != null) {
+                String saturatedFatLocalize = saturatedFat.getLocalize(context);
+                Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SATURATED_FAT);
+                String saturatedFatValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatValue, saturatedFatLocalize, saturatedFat.getImageLevel()));
+            }
+
+            if (sugars != null) {
+                String sugarsLocalize = sugars.getLocalize(context);
+                Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SUGARS);
+                String sugarsValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars), sugarsValue, sugarsLocalize, sugars.getImageLevel()));
+            }
+
+            if (salt != null) {
+                String saltLocalize = salt.getLocalize(context);
+                Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SALT);
+                String saltValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt), saltValue, saltLocalize, salt.getImageLevel()));
+            }
+
+            img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+            img.setOnClickListener(view1 -> {
+            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+
+            CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+            });
         }
 
-        serving.setText(Html.fromHtml("<b>" + getString(R.string.txtServingSize) + "</b>" + ' ' + state.getProduct().getServingSize()));
+        lv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
+
+        if (TextUtils.isEmpty(product.getServingSize())) {
+            serving.setVisibility(View.GONE);
+        } else {
+            serving.append(bold(getString(R.string.txtServingSize)));
+            serving.append(" ");
+            serving.append(product.getServingSize());
+        }
+
+        if (!nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
+            carbonFootprint.setVisibility(View.GONE);
+        } else {
+            Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
+            carbonFootprint.append(bold(getString(R.string.textCarbonFootprint)));
+            carbonFootprint.append(carbonFootprintNutriment.getFor100g());
+            carbonFootprint.append(carbonFootprintNutriment.getUnit());
+        }
     }
 
-    private int getImageGrade(String grade) {
-        if (grade != null) {
-            grade.toLowerCase();
-            if (grade.compareToIgnoreCase("a") == 0) {
-                return R.drawable.nnc_a;
-            } else if (grade.compareToIgnoreCase("b") == 0) {
-                return R.drawable.nnc_b;
-            } else if (grade.compareToIgnoreCase("c") == 0) {
-                return R.drawable.nnc_c;
-            } else if (grade.compareToIgnoreCase("d") == 0) {
-                return R.drawable.nnc_d;
-            } else if (grade.compareToIgnoreCase("e") == 0) {
-                return R.drawable.nnc_e;
-            }
-        }
-        return R.drawable.ic_error;
+    @Override
+    public void onCustomTabsConnected() {
+        img.setClickable(true);
     }
 
-    private int getImageLevel(String nutrient) {
-        if (nutrient != null) {
-            if (nutrient.compareToIgnoreCase("moderate") == 0) {
-                return R.drawable.ic_circle_yellow;
-            } else if (nutrient.compareToIgnoreCase("low") == 0) {
-                return R.drawable.ic_circle_green;
-            } else if (nutrient.compareToIgnoreCase("high") == 0) {
-                return R.drawable.ic_circle_red;
-            }
-        }
-        return R.drawable.ic_error;
+    @Override
+    public void onCustomTabsDisconnected() {
+        img.setClickable(false);
     }
 }

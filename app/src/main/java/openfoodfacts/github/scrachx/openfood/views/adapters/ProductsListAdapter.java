@@ -8,18 +8,22 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.List;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 
 public class ProductsListAdapter extends BaseAdapter {
 
-    private Context context;
-    private ArrayList<Product> products;
+    private final Context context;
+    private final List<Product> products;
 
-    public ProductsListAdapter(Context context, ArrayList<Product> items){
+    public ProductsListAdapter(Context context, List<Product> items){
         this.context = context;
         this.products = items;
     }
@@ -58,7 +62,18 @@ public class ProductsListAdapter extends BaseAdapter {
                 .centerCrop()
                 .into(imgIcon);
 
-        txtTitle.setText(products.get(position).getProductName());
+        Product product = products.get(position);
+        StringBuilder stringBuilder = new StringBuilder(product.getProductName() + "\n");
+
+        if (!product.getBrands().isEmpty()) {
+            stringBuilder.append(StringUtils.capitalize(product.getBrands().split(",")[0].trim()));
+        }
+
+        if (!product.getQuantity().isEmpty()) {
+            stringBuilder.append(" - ").append(product.getQuantity());
+        }
+
+        txtTitle.setText(stringBuilder.toString());
 
         return convertView;
     }

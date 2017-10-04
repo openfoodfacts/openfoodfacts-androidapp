@@ -1,0 +1,58 @@
+# Polish translations for PROJECT.
+# Copyright (C) 2017 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-03-18 22:37+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: pl\n"
+"Language-Team: pl <LL@li.org>\n"
+"Plural-Forms: nplurals=4; plural=(((((0 == 0)) && (((n % 10) >= 2 && (n %"
+" 10) <= 4))) && (!(((n % 100) >= 12 && (n % 100) <= 14)))) ? 1 : ((((((0 "
+"== 0)) && (!((n == 1)))) && (((n % 10) >= 0 && (n % 10) <= 1))) || (((0 "
+"== 0)) && (((n % 10) >= 5 && (n % 10) <= 9)))) || (((0 == 0)) && (((n % "
+"100) >= 12 && (n % 100) <= 14)))) ? 2 : (((n == 1)) && ((0 == 0))) ? 0 : "
+"3)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.3\n"
+
+#. For fr, Replace by https://world-fr.openbeautyfacts.org/
+msgctxt "website"
+msgid "https://world.openbeautyfacts.org/"
+msgstr ""
+
+#. For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer
+msgctxt "website_contribute"
+msgid "https://world.openbeautyfacts.org/contribute"
+msgstr ""
+
+#. For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir
+msgctxt "website_discover"
+msgid "https://world.openbeautyfacts.org/discover"
+msgstr ""
+
+#. For fr, Replace by https://world-fr.openbeautyfacts.org/produit/
+msgctxt "website_product"
+msgid "https://world.openbeautyfacts.org/product/"
+msgstr ""
+
+#. For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/
+msgctxt "website_contributor"
+msgid "https://world.openbeautyfacts.org/contributor/"
+msgstr ""
+
+msgctxt "txtHome"
+msgid ""
+"Open Beauty Facts is a database of cosmetics products with ingredients, "
+"allergens, indicia and all the tidbits of information we can find on "
+"product labels."
+msgstr ""
+

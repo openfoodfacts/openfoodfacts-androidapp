@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference android:defaultValue="false"
+        android:key="startScan"
+        android:summary="@string/prefs_scan_startup_summary"
+        android:title="@string/prefs_scan_startup"/>
+
+    <CheckBoxPreference android:defaultValue="false"
+        android:key="powerMode"
+        android:summary="@string/prefs_power_mode_summary"
+        android:title="@string/prefs_power_mode"/>
+
+    <ListPreference
+        android:defaultValue="en"
+        android:dialogTitle="Choose language"
+        android:entries="@array/lang_label_array"
+        android:entryValues="@array/lang_array"
+        android:key="Locale.Helper.Selected.Language"
+        android:summary="@string/prefs_language_summary"
+        android:title="@string/prefs_language" />
+
+</PreferenceScreen>

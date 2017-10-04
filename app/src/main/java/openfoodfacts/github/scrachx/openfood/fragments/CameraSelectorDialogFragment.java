@@ -2,9 +2,9 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 
 import openfoodfacts.github.scrachx.openfood.R;
@@ -12,7 +12,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 public class CameraSelectorDialogFragment extends DialogFragment {
 
     public interface CameraSelectorDialogListener {
-        public void onCameraSelected(int cameraId);
+        void onCameraSelected(int cameraId);
     }
 
     private int mCameraId;
@@ -30,6 +30,7 @@ public class CameraSelectorDialogFragment extends DialogFragment {
         return fragment;
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         if(mListener == null) {
@@ -62,27 +63,18 @@ public class CameraSelectorDialogFragment extends DialogFragment {
                 // Specify the list array, the items to be selected by default (null for none),
                 // and the listener through which to receive callbacks when items are selected
                 .setSingleChoiceItems(cameraNames, checkedIndex,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                mCameraId = which;
-                            }
+                        (dialog, which) -> {
+                            mCameraId = which;
                         })
                 // Set the action buttons
-                .setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        // User clicked OK, so save the mSelectedIndices results somewhere
-                        // or return them to the component that opened the dialog
-                        if (mListener != null) {
-                            mListener.onCameraSelected(mCameraId);
-                        }
+                .setPositiveButton(R.string.ok_button, (dialog, id) -> {
+                    // User clicked OK, so save the mSelectedIndices results somewhere
+                    // or return them to the component that opened the dialog
+                    if (mListener != null) {
+                        mListener.onCameraSelected(mCameraId);
                     }
                 })
-                .setNegativeButton(R.string.cancel_button, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                    }
+                .setNegativeButton(R.string.cancel_button, (dialog, id) -> {
                 });
 
         return builder.create();

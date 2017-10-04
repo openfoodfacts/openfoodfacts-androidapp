@@ -1,60 +1,109 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.customtabs.CustomTabsIntent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
+import butterknife.OnClick;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.adapters.ProductPagerAdapter;
+import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
 public class ProductActivity extends BaseActivity {
 
+    @BindView(R.id.pager) ViewPager viewPager;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.tabs) TabLayout tabLayout;
+    @BindView(R.id.buttonScan)
+    FloatingActionButton mButtonScan;
     private ShareActionProvider mShareActionProvider;
-    private ProductPagerAdapter adapterResult;
-    private List<Allergen> mAllergens;
     private State mState;
-
-    @Bind(R.id.pager) ViewPager viewPager;
-    @Bind(R.id.toolbar) Toolbar toolbar;
+    private AllergenDao mAllergenDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAllergens = Allergen.find(Allergen.class, "enable = ?", "true");
-        adapterResult = new ProductPagerAdapter(getSupportFragmentManager(), this);
-        viewPager.setOffscreenPageLimit(3);
-        viewPager.setAdapter(adapterResult);
+        mAllergenDao = Utils.getAppDaoSession(this).getAllergenDao();
+        setupViewPager(viewPager);
+
+        tabLayout.setupWithViewPager(viewPager);
+
+        if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE)
+                    || ActivityCompat.shouldShowRequestPermissionRationale(this, WRITE_EXTERNAL_STORAGE)) {
+                new MaterialDialog.Builder(this)
+                        .title(R.string.action_about)
+                        .content(R.string.permission_storage)
+                        .neutralText(R.string.txtOk)
+                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(ProductActivity.this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
+                        .show();
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
+            }
+        }
 
         Intent intent = getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
 
-        List<String> all = (List<String>) mState.getProduct().getAllergensHierarchy();
-        List<String> traces = (List<String>) mState.getProduct().getTracesTags();
-        all.addAll(traces);
-        List<String> matchAll = new ArrayList<String>();
+        Product product = mState.getProduct();
+
+        List<String> allergens = product.getAllergensHierarchy();
+        List<String> traces = product.getTracesTags();
+        allergens.addAll(traces);
+
+        List<String> matchAll = new ArrayList<>();
+        List<Allergen> mAllergens = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
         for (int a = 0; a < mAllergens.size(); a++) {
-            for(int i = 0; i < all.size(); i++) {
-                if (all.get(i).trim().equals(mAllergens.get(a).getIdAllergen().trim())) {
+            for(int i = 0; i < allergens.size(); i++) {
+                if (allergens.get(i).trim().equals(mAllergens.get(a).getIdAllergen().trim())) {
                     matchAll.add(mAllergens.get(a).getName());
                 }
             }
@@ -67,9 +116,47 @@ public class ProductActivity extends BaseActivity {
                     .neutralText(R.string.txtOk)
                     .titleColorRes(R.color.red_500)
                     .dividerColorRes(R.color.indigo_900)
-                    .icon(this.getResources().getDrawable(R.drawable.ic_warning_24dp))
+                    .icon(new IconicsDrawable(this)
+                            .icon(GoogleMaterial.Icon.gmd_warning)
+                            .color(Color.RED)
+                            .sizeDp(24))
                     .show();
         }
+    }
+
+    @OnClick(R.id.buttonScan)
+    protected void OnScan() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                new MaterialDialog.Builder(this)
+                        .title(R.string.action_about)
+                        .content(R.string.permission_camera)
+                        .neutralText(R.string.txtOk)
+                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                        .show();
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+            }
+        } else {
+            finish();
+        }
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        String[] menuTitles = getResources().getStringArray(R.array.nav_drawer_items_product);
+
+        ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
+        adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
+        adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
+        if(BuildConfig.FLAVOR.equals("off")) {
+            adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
+            adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
+        }
+        if(BuildConfig.FLAVOR.equals("opff")) {
+            adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
+            adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
+        }
+        viewPager.setAdapter(adapterResult);
     }
 
     @Override
@@ -80,12 +167,14 @@ public class ProductActivity extends BaseActivity {
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
             case R.id.action_edit_product:
-                String url = Utils.getUriByCurrentLanguage() + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
+                String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
                 if (mState.getProduct().getUrl() != null) {
                     url = " " + mState.getProduct().getUrl();
                 }
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(browserIntent);
+
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), null);
+
+                CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -99,7 +188,7 @@ public class ProductActivity extends BaseActivity {
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
 
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        String url = " " + Utils.getUriProductByCurrentLanguage() + mState.getProduct().getCode();
+        String url = " " + getString(R.string.website_product) + mState.getProduct().getCode();
         if (mState.getProduct().getUrl() != null) {
             url = " " + mState.getProduct().getUrl();
         }
@@ -114,6 +203,30 @@ public class ProductActivity extends BaseActivity {
     private void setShareIntent(Intent shareIntent) {
         if (mShareActionProvider != null) {
             mShareActionProvider.setShareIntent(shareIntent);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CAMERA:
+            case Utils.MY_PERMISSIONS_REQUEST_STORAGE: {
+                if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
+                    new MaterialDialog.Builder(this)
+                            .title(R.string.permission_title)
+                            .content(R.string.permission_denied)
+                            .negativeText(R.string.txtNo)
+                            .positiveText(R.string.txtYes)
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent();
+                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                intent.setData(uri);
+                                startActivity(intent);
+                            })
+                            .show();
+                }
+            }
         }
     }
 }

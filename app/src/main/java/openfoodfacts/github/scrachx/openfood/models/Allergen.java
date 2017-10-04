@@ -3,7 +3,11 @@ package openfoodfacts.github.scrachx.openfood.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.orm.SugarRecord;
+
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Index;
+import org.greenrobot.greendao.annotation.Generated;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -12,27 +16,31 @@ import com.orm.SugarRecord;
         "products",
         "id"
 })
-public class Allergen extends SugarRecord {
+@Entity(indexes = {
+        @Index(value = "name", unique = true)
+})
+public class Allergen {
 
     private String enable;
-    @JsonProperty("url")
     private String url;
-    @JsonProperty("name")
     private String name;
-    @JsonProperty("products")
     private Integer products;
     @JsonProperty("id")
+    @Id
     private String idAllergen;
 
     public Allergen() {
+        this.enable = "false";
     }
 
-    public Allergen(String url, String name, Integer products, String idAllergen) {
+    @Generated(hash = 512140330)
+    public Allergen(String enable, String url, String name, Integer products,
+                    String idAllergen) {
+        this.enable = enable;
         this.url = url;
         this.name = name;
         this.products = products;
         this.idAllergen = idAllergen;
-        enable = "false";
     }
 
     public String isEnable() {
@@ -43,12 +51,10 @@ public class Allergen extends SugarRecord {
         this.enable = enable;
     }
 
-    @JsonProperty("id")
     public String getIdAllergen() {
         return idAllergen;
     }
 
-    @JsonProperty("id")
     public void setIdAllergen(String idAllergen) {
         this.idAllergen = idAllergen;
     }
@@ -58,7 +64,6 @@ public class Allergen extends SugarRecord {
      * @return
      * The url
      */
-    @JsonProperty("url")
     public String getUrl() {
         return url;
     }
@@ -68,7 +73,6 @@ public class Allergen extends SugarRecord {
      * @param url
      * The url
      */
-    @JsonProperty("url")
     public void setUrl(String url) {
         this.url = url;
     }
@@ -78,7 +82,6 @@ public class Allergen extends SugarRecord {
      * @return
      * The name
      */
-    @JsonProperty("name")
     public String getName() {
         return name;
     }
@@ -88,7 +91,6 @@ public class Allergen extends SugarRecord {
      * @param name
      * The name
      */
-    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
@@ -98,7 +100,6 @@ public class Allergen extends SugarRecord {
      * @return
      * The products
      */
-    @JsonProperty("products")
     public Integer getProducts() {
         return products;
     }
@@ -108,7 +109,6 @@ public class Allergen extends SugarRecord {
      * @param products
      * The products
      */
-    @JsonProperty("products")
     public void setProducts(Integer products) {
         this.products = products;
     }
@@ -123,4 +123,9 @@ public class Allergen extends SugarRecord {
                 ", idAllergen='" + idAllergen + '\'' +
                 '}';
     }
+
+    public String getEnable() {
+        return this.enable;
+    }
+    
 }

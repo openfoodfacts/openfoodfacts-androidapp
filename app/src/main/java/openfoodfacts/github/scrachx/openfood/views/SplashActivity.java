@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,104 +8,132 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import net.steamcrafted.loadtoast.LoadToast;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Locale;
 
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
-import openfoodfacts.github.scrachx.openfood.models.FoodAPIRestClientUsage;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class SplashActivity extends BaseActivity {
 
     private SharedPreferences settings;
+    private AdditiveDao mAdditiveDao;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
         settings = getSharedPreferences("prefs", 0);
-        SharedPreferences.Editor editor = settings.edit();
-        boolean firstRun = settings.getBoolean("firstRun", true);
-        boolean errorAdditives = settings.getBoolean("errorAdditives", true);
-        boolean errorAllergens = settings.getBoolean("errorAllergens", true);
-        if(!errorAdditives && ! errorAllergens) {
-            editor.putBoolean("firstRun", false);
-            editor.apply();
-            firstRun = false;
-        }
-        if (!firstRun ) {
-            Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-            SplashActivity.this.startActivity(mainIntent);
-            SplashActivity.this.finish();
+        mAdditiveDao = Utils.getAppDaoSession(this).getAdditiveDao();
+
+        if((BuildConfig.FLAVOR.equals("off"))) {
+            boolean firstRun = settings.getBoolean("firstRun", true);
+
+            boolean errorAdditives = settings.getBoolean("errorAdditives", true);
+            boolean errorAllergens = settings.getBoolean("errorAllergens", true);
+
+            if(!errorAdditives && !errorAllergens) {
+                settings.edit()
+                        .putBoolean("firstRun", false)
+                        .apply();
+                firstRun = false;
+            }
+
+            if (!firstRun) {
+                launchMainActivity();
+            } else {
+                new GetJson(this).execute();
+            }
         } else {
-            new GetJson(this).execute();
+            launchMainActivity();
         }
+
     }
 
-    private class GetJson extends AsyncTask<Void, Boolean, Boolean> {
+    private void launchMainActivity() {
+        EasyImage.configuration(this)
+                .setImagesFolderName("OFF_Images")
+                .saveInAppExternalFilesDir()
+                .setCopyExistingPicturesToPublicLocation(true);
+        Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+        startActivity(mainIntent);
+        finish();
+    }
 
-        private Context context;
+    private class GetJson extends AsyncTask<Void, Integer, Boolean> {
+
+        private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
+        private Activity activity;
         private LoadToast lt;
 
-        public GetJson(Context ctx) {
-            context = ctx;
-            lt = new LoadToast(ctx);
+        public GetJson(Activity act) {
+            activity = act;
+            lt = new LoadToast(activity);
         }
 
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            lt.setText(context.getString(R.string.toast_retrieving));
-            lt.setBackgroundColor(context.getResources().getColor(R.color.indigo_600));
-            lt.setTextColor(context.getResources().getColor(R.color.white));
+            lt.setText(activity.getString(R.string.toast_retrieving));
+            lt.setBackgroundColor(activity.getResources().getColor(R.color.blue));
+            lt.setTextColor(activity.getResources().getColor(R.color.white));
             lt.show();
         }
 
         @Override
         protected Boolean doInBackground(Void... arg0) {
+            boolean result = true;
+            boolean errorAdditives = settings.getBoolean("errorAdditives", true);
 
-            String json = null;
-            String json1 = null;
+            if (!errorAdditives) {
+                return result;
+            }
+
+            String additivesFile;
+            switch (Locale.getDefault().getLanguage()) {
+                case "fr":
+                    additivesFile = "additives_fr.json";
+                    break;
+                case "en":
+                default:
+                    additivesFile = "additives_en.json";
+                    break;
+            }
+
+            InputStream is = null;
             try {
-                boolean errorAdditives = settings.getBoolean("errorAdditives", true);
-                if(errorAdditives) {
-                    InputStream is = getAssets().open("additives_fr.json");
-                    int size = is.available();
-                    byte[] buffer = new byte[size];
-                    is.read(buffer);
-                    is.close();
-                    json = new String(buffer, "UTF-8");
-                    ObjectMapper objectMapper = new ObjectMapper();
-                    List<Additive> la = objectMapper.readValue(json, new TypeReference<List<Additive>>() {});
-                    for (Additive a : la) {
-                        Additive ta = new Additive(a.getCode(), a.getName(), a.getRisk());
-                        ta.save();
-                    }
-
-                    InputStream is1 = getAssets().open("additives_en.json");
-                    int size1 = is1.available();
-                    byte[] buffer1 = new byte[size1];
-                    is1.read(buffer1);
-                    is1.close();
-                    json1 = new String(buffer1, "UTF-8");
-                    ObjectMapper objectMapper1 = new ObjectMapper();
-                    List<Additive> la1 = objectMapper1.readValue(json1, new TypeReference<List<Additive>>() {});
-                    for (Additive a : la1) {
-                        Additive ta = new Additive(a.getCode(), a.getName(), a.getRisk());
-                        ta.save();
+                is = getAssets().open(additivesFile);
+                List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {})
+                        .readValue(is);
+                mAdditiveDao.insertOrReplaceInTx(frenchAdditives);
+            } catch (IOException e) {
+                result = false;
+                Log.e(ADDITIVE_IMPORT, "Unable to import additives from " + additivesFile);
+            } finally {
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch (IOException e1) {
+                        Log.e(ADDITIVE_IMPORT, "Unable to close the inputstream of " + additivesFile);
                     }
                 }
-                return true;
-            } catch (IOException ex) {
-                ex.printStackTrace();
-                return false;
             }
+
+            return result;
         }
 
         @Override
@@ -115,33 +144,30 @@ public class SplashActivity extends BaseActivity {
             ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-            if(isConnected) {
-                if(errorAllergens) {
-                    FoodAPIRestClientUsage api = new FoodAPIRestClientUsage();
-                    api.getAllergens(new FoodAPIRestClientUsage.OnAllergensCallback() {
-                        @Override
-                        public void onAllergensResponse(boolean value) {
-                            if (result && value) {
-                                lt.success();
-                                editor.putBoolean("firstRun", false);
-                                editor.apply();
-                            }
-                            if(!value){
-                                lt.error();
-                                editor.putBoolean("errorAllergens", true);
-                                editor.apply();
-                            } else {
-                                editor.putBoolean("errorAllergens", false);
-                                editor.apply();
-                            }
-                            Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-                            startActivity(mainIntent);
-                            finish();
+            if (isConnected) {
+                if (errorAllergens) {
+                    OpenFoodAPIClient api = new OpenFoodAPIClient(activity);
+                    api.getAllergens(value -> {
+                        if (result && value) {
+                            lt.success();
+                            editor.putBoolean("firstRun", false);
                         }
+                        if(!value){
+                            lt.error();
+                            editor.putBoolean("errorAllergens", true);
+                        } else {
+                            editor.putBoolean("errorAllergens", false);
+                        }
+
+                        editor.apply();
+
+                        Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                        startActivity(mainIntent);
+                        finish();
                     });
                 }
             } else {
-                if(!result){
+                if (!result) {
                     lt.error();
                     editor.putBoolean("errorAdditives", true);
                     editor.apply();

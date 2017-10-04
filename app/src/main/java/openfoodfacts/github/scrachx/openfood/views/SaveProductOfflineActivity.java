@@ -1,10 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -12,245 +11,273 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
-import com.afollestad.materialdialogs.DialogAction;
+
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.loopj.android.http.RequestParams;
 import com.squareup.picasso.Picasso;
+
 import java.io.File;
 import java.util.List;
+import java.util.Locale;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.FoodUserClientUsage;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
+import static android.Manifest.permission.CAMERA;
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
 public class SaveProductOfflineActivity extends BaseActivity {
 
-    @Bind(R.id.imageSave) ImageView imgSave;
-    @Bind(R.id.editTextName) EditText name;
-    @Bind(R.id.editTextStores) EditText store;
-    @Bind(R.id.editTextWeight) EditText weight;
-    @Bind(R.id.spinnerImages) Spinner spinnerI;
-    @Bind(R.id.spinnerUnitWeight) Spinner spinnerW;
-    @Bind(R.id.buttonTakePicture) Button takePic;
-    @Bind(R.id.buttonFromGallery) Button takeGallery;
-    @Bind(R.id.buttonSaveProduct) Button save;
-
-    private SendProduct mProduct = new SendProduct();
-    private String mBarcode = null;
-    private FoodUserClientUsage api;
     private final String[] mUnit = new String[1];
-    private final String[] mImage = new String[1];
-    private String loginS, passS;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.barcodeDoubleCheck) TextView barcodeText;
+    @BindView(R.id.imageSaveFront) ImageView imgSaveFront;
+    @BindView(R.id.imageSaveNutrition) ImageView imgSaveNutrition;
+    @BindView(R.id.imageSaveIngredients) ImageView imgSaveIngredients;
+    @BindView(R.id.editTextName) EditText name;
+    @BindView(R.id.editTextBrand) EditText brand;
+    @BindView(R.id.editTextWeight) EditText weight;
+    @BindView(R.id.spinnerUnitWeight) Spinner spinnerW;
+    @BindView(R.id.buttonSaveProduct) Button save;
+
+    private SendProduct mProduct;
+    private String mBarcode;
+    private OpenFoodAPIClient api;
+    private String imageTaken;
+    private SendProductDao mSendProductDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_product_offline);
 
-        new MaterialDialog.Builder(this)
-                .title(R.string.title_info_dialog)
-                .content(R.string.new_offline_info)
-                .positiveText(R.string.txtOk)
-                .show();
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE) || ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        mSendProductDao = Utils.getAppDaoSession(this).getSendProductDao();
+
+        if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE)
+                    || ActivityCompat.shouldShowRequestPermissionRationale(this, WRITE_EXTERNAL_STORAGE)) {
                 new MaterialDialog.Builder(this)
                         .title(R.string.action_about)
                         .content(R.string.permission_storage)
                         .neutralText(R.string.txtOk)
+                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(SaveProductOfflineActivity.this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
                         .show();
             } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
+                ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
             }
         }
 
-        api = new FoodUserClientUsage();
+        api = new OpenFoodAPIClient(this);
+        mBarcode = getIntent().getStringExtra("barcode");
 
-        final SharedPreferences settingsUser = getSharedPreferences("login", 0);
-        loginS = settingsUser.getString("user", "");
-        passS = settingsUser.getString("pass", "");
-        final SharedPreferences settings = getSharedPreferences("temp", 0);
-        mBarcode = settings.getString("barcode", "");
-
-        EasyImage.configuration(this)
-                .setImagesFolderName("OFF_Images")
-                .saveInAppExternalFilesDir()
-                .setCopyExistingPicturesToPublicLocation(true);
-
-        imgSave.setVisibility(View.GONE);
+        imgSaveFront.setVisibility(View.GONE);
+        imgSaveIngredients.setVisibility(View.GONE);
+        imgSaveNutrition.setVisibility(View.GONE);
 
         ArrayAdapter<CharSequence> adapterW = ArrayAdapter.createFromResource(this, R.array.units_array, R.layout.custom_spinner_item);
         adapterW.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         spinnerW.setAdapter(adapterW);
 
-        ArrayAdapter<CharSequence> adapterI = ArrayAdapter.createFromResource(this, R.array.images_array, R.layout.custom_spinner_item);
-        adapterI.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        spinnerI.setAdapter(adapterI);
+        List<SendProduct> sp = mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(mBarcode)).list();
 
-        List<SendProduct> sp = SendProduct.find(SendProduct.class, "barcode = ?", mBarcode);
         if (sp.size() > 0) {
-            SendProduct product = sp.get(0);
-            mProduct = product;
+            mProduct = sp.get(0);
         }
         if(mProduct != null) {
-            if(!mProduct.getImgupload_front().isEmpty()) {
+            if(isNotEmpty(mProduct.getImgupload_front())) {
+		imgSaveFront.setVisibility(View.VISIBLE);
                 Picasso.with(this)
                         .load(mProduct.getImgupload_front())
                         .fit()
                         .centerCrop()
-                        .into(imgSave);
+                        .into(imgSaveFront);
+            }
+            if(isNotBlank(mProduct.getImgupload_nutrition())) {
+                imgSaveNutrition.setVisibility(View.VISIBLE);
+                Picasso.with(this)
+                        .load(new File(mProduct.getImgupload_nutrition()))
+                        .fit()
+                        .centerCrop()
+                        .into(imgSaveNutrition);
+            }
+            if(isNotBlank(mProduct.getImgupload_ingredients())) {
+                imgSaveIngredients.setVisibility(View.VISIBLE);
+                Picasso.with(this)
+                        .load(new File(mProduct.getImgupload_ingredients()))
+                        .fit()
+                        .centerCrop()
+                        .into(imgSaveIngredients);
             }
             name.setText(mProduct.getName());
-            store.setText(mProduct.getStores());
+            brand.setText(mProduct.getBrands());
             weight.setText(mProduct.getWeight());
             ArrayAdapter unitAdapter = (ArrayAdapter) spinnerW.getAdapter();
             int spinnerPosition = unitAdapter.getPosition(mProduct.getWeight_unit());
             spinnerW.setSelection(spinnerPosition);
-            spinnerI.setSelection(0);
+        } else {
+            mProduct = new SendProduct();
+            mProduct.setBarcode(mBarcode);
+			barcodeText.setText(barcodeText.getText() + " " + mBarcode);
         }
+        mProduct.setLang(Locale.getDefault().getLanguage());
     }
+
     @OnItemSelected(value = R.id.spinnerUnitWeight, callback = OnItemSelected.Callback.ITEM_SELECTED)
     protected void onUnitSelected(int pos) {
         mUnit[0] = spinnerW.getItemAtPosition(pos).toString();
     }
 
-    @OnItemSelected(value = R.id.spinnerImages, callback = OnItemSelected.Callback.ITEM_SELECTED)
-    protected void onImageSelected(int pos) {
-        mImage[0] = spinnerI.getItemAtPosition(pos).toString();
-
-        if(pos == 0) {
-            if(!mProduct.getImgupload_front().isEmpty()) {
-                imgSave.setVisibility(View.VISIBLE);
-                Picasso.with(this)
-                        .load(new File(mProduct.getImgupload_front()))
-                        .fit()
-                        .centerCrop()
-                        .into(imgSave);
-            } else {
-                imgSave.setVisibility(View.GONE);
-            }
-        } else if(pos == 1) {
-            if(!mProduct.getImgupload_nutrition().isEmpty()) {
-                imgSave.setVisibility(View.VISIBLE);
-                Picasso.with(this)
-                        .load(new File(mProduct.getImgupload_nutrition()))
-                        .fit()
-                        .centerCrop()
-                        .into(imgSave);
-            } else {
-                imgSave.setVisibility(View.GONE);
-            }
-        } else {
-            if(!mProduct.getImgupload_ingredients().isEmpty()) {
-                imgSave.setVisibility(View.VISIBLE);
-                Picasso.with(this)
-                        .load(new File(mProduct.getImgupload_ingredients()))
-                        .fit()
-                        .centerCrop()
-                        .into(imgSave);
-            } else {
-                imgSave.setVisibility(View.GONE);
-            }
-        }
-
+    @OnClick(R.id.buttonFromGalleryFront)
+    protected void onChooserWithGalleryFrontClicked() {
+        EasyImage.openChooserWithGallery(this, "Images", 0);
+        imageTaken = "front";
     }
 
-    @OnClick(R.id.buttonFromGallery)
-    protected void onChooserWithGalleryClicked() {
+    @OnClick(R.id.buttonFromGalleryIngredients)
+    protected void onChooserWithGalleryIngredientsClicked() {
         EasyImage.openChooserWithGallery(this, "Images", 0);
+        imageTaken = "ingredients";
+    }
+
+    @OnClick(R.id.buttonFromGalleryNutrition)
+    protected void onChooserWithGalleryNutritionClicked() {
+        EasyImage.openChooserWithGallery(this, "Images", 0);
+        imageTaken = "nutrition";
     }
 
     @OnClick(R.id.buttonSaveProduct)
     protected void onSaveProduct() {
-        if (!mProduct.getImgupload_front().isEmpty()) {
-            RequestParams params = new RequestParams();
-            params.put("code", mBarcode);
-            if(!loginS.isEmpty() && !passS.isEmpty()) {
-                params.put("user_id", loginS);
-                params.put("password", passS);
-            }
-            params.put("product_name", name.getText().toString());
-            params.put("quantity", weight.getText().toString() + " " + mUnit[0]);
-            params.put("stores", store.getText().toString());
-            params.put("comment", "added with the new Android app");
+        Utils.hideKeyboard(this);
 
-            Utils.compressImage(mProduct.getImgupload_ingredients());
-            Utils.compressImage(mProduct.getImgupload_nutrition());
-            Utils.compressImage(mProduct.getImgupload_front());
-
-            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-            boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-
-            if(isConnected) {
-                api.post(this, params, mProduct.getImgupload_front().replace(".png", "_small.png"), mProduct.getImgupload_ingredients().replace(".png", "_small.png"),
-                        mProduct.getImgupload_nutrition().replace(".png", "_small.png"), mBarcode,
-                        new FoodUserClientUsage.OnProductSentCallback() {
-                            @Override
-                            public void onProductSentResponse(boolean value) {
-                                if(!value) {
-                                    if (mProduct != null) {
-                                        mProduct.setBarcode(mBarcode);
-                                        mProduct.setName(name.getText().toString());
-                                        mProduct.setImgupload_front(mProduct.getImgupload_front());
-                                        mProduct.setImgupload_ingredients(mProduct.getImgupload_ingredients());
-                                        mProduct.setImgupload_nutrition(mProduct.getImgupload_nutrition());
-                                        mProduct.setStores(store.getText().toString());
-                                        mProduct.setWeight(weight.getText().toString());
-                                        mProduct.setWeight_unit(mUnit[0]);
-                                        mProduct.save();
-                                    }
-                                    Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
-                                } else {
-                                    Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
-                                }
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                intent.putExtra("openOfflineEdit",true);
-                                startActivity(intent);
-                                finish();
-                            }
-                        });
-            } else {
-                if (mProduct != null) {
-                    mProduct.setBarcode(mBarcode);
-                    mProduct.setName(name.getText().toString());
-                    mProduct.setImgupload_front(mProduct.getImgupload_front());
-                    mProduct.setImgupload_ingredients(mProduct.getImgupload_ingredients());
-                    mProduct.setImgupload_nutrition(mProduct.getImgupload_nutrition());
-                    mProduct.setStores(store.getText().toString());
-                    mProduct.setWeight(weight.getText().toString());
-                    mProduct.setWeight_unit(mUnit[0]);
-                    mProduct.save();
-                }
-                Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("openOfflineEdit",true);
-                startActivity(intent);
-                finish();
-            }
-        } else {
+        if (isBlank(mProduct.getImgupload_front())) {
             Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        mProduct.setBarcode(mBarcode);
+        mProduct.setName(name.getText().toString());
+        mProduct.setWeight(weight.getText().toString());
+        mProduct.setWeight_unit(mUnit[0]);
+        mProduct.setBrands(brand.getText().toString());
+
+        final SharedPreferences settingsUser = getSharedPreferences("login", 0);
+        String login = settingsUser.getString("user", "");
+        String password = settingsUser.getString("pass", "");
+        if (!login.isEmpty() && !password.isEmpty()) {
+            mProduct.setUserId(login);
+            mProduct.setPassword(password);
+        }
+
+        if (isNotEmpty(mProduct.getImgupload_front())) {
+        Utils.compressImage(mProduct.getImgupload_front());
+        }
+	    
+        if (isNotBlank(mProduct.getImgupload_ingredients())) {
+            Utils.compressImage(mProduct.getImgupload_ingredients());
+        }
+
+        if(isNotBlank(mProduct.getImgupload_nutrition())) {
+            Utils.compressImage(mProduct.getImgupload_nutrition());
+        }
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+
+        if (isConnected) {
+            final Activity activity = this;
+            api.post(this, mProduct, value -> {
+                if (!value) {
+                    mSendProductDao.insert(mProduct);
+                    Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("openOfflineEdit", true);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
+                    api.getProduct(mProduct.getBarcode(), activity);
+                }
+                finish();
+            });
+        } else {
+            mSendProductDao.insertOrReplace(mProduct);
+            Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.putExtra("openOfflineEdit", true);
+            startActivity(intent);
+            finish();
         }
     }
 
-    @OnClick(R.id.buttonTakePicture)
-    protected void onTakePhotoClicked() {
-        EasyImage.openCamera(this, 0);
+    @OnClick(R.id.buttonTakePictureFront)
+    protected void onTakePhotoFrontClicked() {
+        if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            imageTaken = "front";
+            EasyImage.openCamera(this, 0);
+        }
+    }
+
+    @OnClick(R.id.buttonTakePictureIngredients)
+    protected void onTakePhotoIngredientsClicked() {
+        if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            imageTaken = "ingredients";
+            EasyImage.openCamera(this, 0);
+        }
+    }
+
+    @OnClick(R.id.buttonTakePictureNutrition)
+    protected void onTakePhotoNutritionClicked() {
+        if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            imageTaken = "nutrition";
+            EasyImage.openCamera(this, 0);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -264,9 +291,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
             }
 
             @Override
-            public void onImagePicked(File imageFile, EasyImage.ImageSource source, int type) {
-                //Handle the image
-                onPhotoReturned(imageFile);
+            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
+                onPhotoReturned(imageFiles.get(0));
             }
 
             @Override
@@ -278,52 +304,71 @@ public class SaveProductOfflineActivity extends BaseActivity {
                 }
             }
         });
-
     }
 
     private void onPhotoReturned(File photoFile) {
-        if(spinnerI.getSelectedItemPosition() == 0) {
+        if(imageTaken.equals("front")) {
             mProduct.setImgupload_front(photoFile.getAbsolutePath());
-            imgSave.setVisibility(View.VISIBLE);
-        } else if(spinnerI.getSelectedItemPosition() == 1) {
+            imgSaveFront.setVisibility(View.VISIBLE);
+            Picasso.with(this)
+                    .load(photoFile)
+                    .fit()
+                    .centerCrop()
+                    .into(imgSaveFront);
+        } else if(imageTaken.equals("nutrition")) {
             mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
-            imgSave.setVisibility(View.VISIBLE);
-        } else {
+            imgSaveNutrition.setVisibility(View.VISIBLE);
+            Picasso.with(this)
+                    .load(photoFile)
+                    .fit()
+                    .centerCrop()
+                    .into(imgSaveNutrition);
+        } else if(imageTaken.equals("ingredients")) {
             mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
-            imgSave.setVisibility(View.VISIBLE);
+            imgSaveIngredients.setVisibility(View.VISIBLE);
+            Picasso.with(this)
+                    .load(photoFile)
+                    .fit()
+                    .centerCrop()
+                    .into(imgSaveIngredients);
         }
-        Picasso.with(this)
-                .load(photoFile)
-                .fit()
-                .centerCrop()
-                .into(imgSave);
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
-            case Utils.MY_PERMISSIONS_REQUEST_STORAGE: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // OK
-                } else {
+            case MY_PERMISSIONS_REQUEST_CAMERA:
+                if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
                     new MaterialDialog.Builder(this)
                             .title(R.string.permission_title)
                             .content(R.string.permission_denied)
                             .negativeText(R.string.txtNo)
                             .positiveText(R.string.txtYes)
-                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    Intent intent = new Intent();
-                                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                    Uri uri = Uri.fromParts("package", getPackageName(), null);
-                                    intent.setData(uri);
-                                    startActivity(intent);
-                                }
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent();
+                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                intent.setData(uri);
+                                startActivity(intent);
                             })
                             .show();
                 }
-                return;
+            case Utils.MY_PERMISSIONS_REQUEST_STORAGE: {
+                if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
+                    new MaterialDialog.Builder(this)
+                            .title(R.string.permission_title)
+                            .content(R.string.permission_denied)
+                            .negativeText(R.string.txtNo)
+                            .positiveText(R.string.txtYes)
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent();
+                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                intent.setData(uri);
+                                startActivity(intent);
+                            })
+                            .show();
+                }
             }
         }
     }
