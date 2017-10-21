@@ -21,10 +21,6 @@ msgctxt "app_name"
 msgid "Open Food"
 msgstr "Open Food"
 
-msgctxt "hello_world"
-msgid "Hello world!"
-msgstr "Salutes mundo!"
-
 msgctxt "action_settings"
 msgid "Settings"
 msgstr "Configurationes"
