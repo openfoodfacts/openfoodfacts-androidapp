@@ -11,8 +11,8 @@
   <string-array name="nav_drawer_items_product">
     <item>Agzul</item>
     <item>Isufar</item>
-    <item>Nutrition</item>
-    <item>Nutrition Table</item>
+    <item>Tuččit</item>
+    <item>Ṭabla n tuččit</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
@@ -76,7 +76,7 @@
     <item>Taṛminit</item>
     <item>Tagrigit</item>
     <item>Taɛebrit</item>
-    <item>Galician</item>
+    <item>Tagalisyant</item>
     <item>Takaṭalant</item>
     <item>Tačikit</item>
     <item>Taɛrabt</item>
@@ -93,12 +93,12 @@
     <item>Norwegian (Bokmal)</item>
     <item>Tadanit</item>
     <item>Tacinit taḥerfit</item>
-    <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Afarsi</item>
+    <item>Taṣirbit</item>
   </string-array>
   <string-array name="images_array">
     <item>Amezwer</item>
-    <item>Nutrition</item>
+    <item>Tuččit</item>
     <item>Isufar</item>
   </string-array>
   <!-- Content Description -->
@@ -224,9 +224,9 @@
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
   <string name="prefs_language">Language</string>
   <string name="prefs_language_summary">Change language</string>
-  <string name="scan_history_drawer">History</string>
+  <string name="scan_history_drawer">Amazray</string>
   <string name="clear_history">Clear history</string>
-  <string name="title_clear_history_dialog">Clear</string>
+  <string name="title_clear_history_dialog">Sfeḍ</string>
   <string name="text_clear_history_dialog">Do you want to clear all scan history?</string>
   <string name="export_csv_history">Export CSV</string>
   <string name="txt_exporting_history">Exporting history...</string>
