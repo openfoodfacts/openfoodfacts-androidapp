@@ -95,8 +95,8 @@
     <item>Danish</item>
     <item>Simplified Chinese</item>
     <item>Farsi</item>
-    <item>Serbian</item>
-    <item>Serbian 2</item>
+    <item>Serbian (Cyrillic)</item>
+    <item>Serbian (Latin)</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
