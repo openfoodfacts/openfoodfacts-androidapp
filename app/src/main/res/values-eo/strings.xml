@@ -11,8 +11,8 @@
   <string-array name="nav_drawer_items_product">
     <item>Resumo</item>
     <item>Ingrediencoj</item>
-    <item>Nutrition</item>
-    <item>Nutrition Table</item>
+    <item>Nutrado</item>
+    <item>Nutra Tabelo</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
@@ -98,7 +98,7 @@
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
-    <item>Nutrition</item>
+    <item>Nutrado</item>
     <item>Ingrediencoj</item>
   </string-array>
   <!-- Content Description -->
@@ -112,12 +112,12 @@
   <string name="txtGenericName">Common name :</string>
   <string name="txtBarcode">Strekokodo :</string>
   <string name="txtQuantity">Kvanto :</string>
-  <string name="txtPackaging">Packaging :</string>
+  <string name="txtPackaging">Pakaĵo :</string>
   <string name="txtBrands">Varomarkoj :</string>
   <string name="txtCategories">Kategorioj :</string>
   <string name="txtLabels">Labels, certifications, awards :</string>
   <string name="txtManufacturing">Manufacturing or processing places :</string>
-  <string name="txtIngredientsOrigins">Origin of ingredients :</string>
+  <string name="txtIngredientsOrigins">Origino de ingrediencoj :</string>
   <string name="txtCity">City, state and country where purchased :</string>
   <string name="txtStores">Vendejoj :</string>
   <string name="txtCountries">Countries where sold :</string>
@@ -128,7 +128,7 @@
   <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
   <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
   <string name="txtServingSize">Serving size :</string>
-  <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
+  <string name="txtNutrientLevel100g">Nutraĵa nivelo por 100 g :</string>
   <string name="txtNutritionLevelLow">in low quantity</string>
   <string name="txtNutritionLevelModerate">in moderate quantity</string>
   <string name="txtNutritionLevelHigh">in high quantity</string>
@@ -244,7 +244,7 @@
   <string name="nutrition_fat_short_name">Lipido (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
-  <string name="nutrition_header">Nutrition facts</string>
+  <string name="nutrition_header">Nutra valoro</string>
   <string name="nutrition_no_data_message">No data is available for this product</string>
   <string name="nutrition_per_quantity">Po 100g/100ml</string>
   <string name="nutrition_proteins">Proteinoj</string>
