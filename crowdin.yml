@@ -12,7 +12,7 @@ files:
         nl: nl
         zh-TW: zh-rTW
         zh-HK: zh-rHK
-        sr-CS: sr-rCS
+        sr-CS: b+sr+Latn
         sr: sr
   - source: /app/src/obf/res/values/strings.xml
     translation: /app/src/obf/res/values-%two_letters_code%/%original_file_name%
@@ -27,7 +27,7 @@ files:
         nl: nl
         zh-HK: zh-rHK
         zh-TW: zh-rTW
-        sr-CS: sr-rCS
+        sr-CS: b+sr+Latn
         sr: sr
   - source: /app/src/off/res/values/strings.xml
     translation: /app/src/off/res/values-%two_letters_code%/%original_file_name%
