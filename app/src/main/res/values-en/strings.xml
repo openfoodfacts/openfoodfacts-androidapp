@@ -60,6 +60,7 @@
     <item>zh-rCN</item>
     <item>fa</item>
     <item>rs</item>
+    <item>sr-rCS</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
@@ -95,6 +96,7 @@
     <item>Simplified Chinese</item>
     <item>Farsi</item>
     <item>Serbian</item>
+    <item>Serbian 2</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
