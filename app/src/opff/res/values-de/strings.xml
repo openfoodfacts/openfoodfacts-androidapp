@@ -10,6 +10,6 @@
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/produit/ -->
   <string name="website_product">https://world-de.openpetfoodfacts.org/produkt/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
-  <string name="website_contributor">https://world-de.openpetfoodfacts.org/beitragszahler/</string>
+  <string name="website_contributor">https://world-de.openpetfoodfacts.org/mitwirkender/</string>
   <string name="txtHome">Open Pet Food Facts ist eine freie Tiernahrungsmittelproduktdatenbank mit Zutaten, Allergenen, Nährwertangaben und all den Kleinigkeiten, die sich auf Produkt-Etiketten befinden.</string>
 </resources>
