@@ -125,8 +125,8 @@
   <string name="txtSubstances">Substancoj aŭ produktoj kaŭzantaj alergiojn aŭ netolerojn :</string>
   <string name="txtAdditives">Aldonaĵoj :</string>
   <string name="txtTraces">Traces :</string>
-  <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
-  <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
+  <string name="txtMayBeFromPalmOilProduct">Ingrediencoj, kiuj eble enhavas palmoleon :</string>
+  <string name="txtPalmOilProduct">Ingrediencoj, kiuj enhavas palmoleon :</string>
   <string name="txtServingSize">Serving size :</string>
   <string name="txtNutrientLevel100g">Nutraĵa nivelo por 100 g :</string>
   <string name="txtNutritionLevelLow">en malgranda kvanto</string>
