@@ -17,7 +17,7 @@
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
-    <item>mg</item>
+    <item>g</item>
     <item>kg</item>
     <item>l</item>
     <item>ml</item>
