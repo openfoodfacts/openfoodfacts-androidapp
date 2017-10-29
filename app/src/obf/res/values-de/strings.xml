@@ -4,9 +4,9 @@
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/ -->
   <string name="website">https://world-de.openbeautyfacts.org/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
-  <string name="website_contribute">https://world-de.openbeautyfacts.org/contribute</string>
+  <string name="website_contribute">https://world-de.openbeautyfacts.org/mitmachen</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
-  <string name="website_discover">https://world-de.openbeautyfacts.org/discover</string>
+  <string name="website_discover">https://world-de.openbeautyfacts.org/entdecken</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
   <string name="website_product">https://world-de.openbeautyfacts.org/produkt/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
