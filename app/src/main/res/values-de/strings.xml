@@ -121,11 +121,11 @@
   <string name="txtCity">Stadt, Bundesland und Land des Kaufs:</string>
   <string name="txtStores">Läden:</string>
   <string name="txtCountries">Vertriebsländer:</string>
-  <string name="txtIngredients">Zutaten:</string>
+  <string name="txtIngredients">Zutatenliste:</string>
   <string name="txtSubstances">Inhaltsstoffe oder Produkte, die zu Allergien oder Überempfindlichkeiten führen:</string>
   <string name="txtAdditives">Zusatzstoffe:</string>
   <string name="txtTraces">Spuren:</string>
-  <string name="txtMayBeFromPalmOilProduct">Möglicherweise aus Palmöl hergestellte Zutaten:</string>
+  <string name="txtMayBeFromPalmOilProduct">Zutaten, die möglicherweise aus Palmöl hergestellt werden :</string>
   <string name="txtPalmOilProduct">Aus Palmöl hergestellte Zutaten :</string>
   <string name="txtServingSize">Portiongröße:</string>
   <string name="txtNutrientLevel100g">Nährwertgehalt pro 100g:</string>
@@ -329,7 +329,7 @@
   <string name="selenium">Selen</string>
   <string name="chromium">Chrom</string>
   <string name="molybdenum">Molybdän</string>
-  <string name="iodine">Jod</string>
+  <string name="iodine">Iod</string>
   <string name="caffeine">Koffein</string>
   <string name="taurine">Taurin</string>
   <string name="ph">pH</string>
