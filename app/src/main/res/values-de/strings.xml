@@ -157,7 +157,7 @@
   <string name="txtYes">Ja</string>
   <string name="txtNo">Nein</string>
   <string name="hintNameProduct">Name</string>
-  <string name="hintEnergy">Energie in kJ pro Portion</string>
+  <string name="hintEnergy">Brennwert in kJ pro Portion</string>
   <string name="hintEnergyUnit">Energieeinheit</string>
   <string name="hintWeight">Gewicht</string>
   <string name="hintStores">Laden</string>
@@ -238,8 +238,8 @@
   <string name="nutrition_carbohydrate_short_name">Kohlenhydrate (g)</string>
   <string name="nutrition_cholesterol">Cholesterin</string>
   <string name="nutrition_cholesterol_short_name">Cholesterin (g)</string>
-  <string name="nutrition_energy">Energie</string>
-  <string name="nutrition_energy_short_name">Energie</string>
+  <string name="nutrition_energy">Brennwert</string>
+  <string name="nutrition_energy_short_name">Brennwert</string>
   <string name="nutrition_fat">Fett</string>
   <string name="nutrition_fat_short_name">Fett (g)</string>
   <string name="nutrition_fiber">Ballaststoffe</string>
