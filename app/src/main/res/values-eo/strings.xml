@@ -109,7 +109,7 @@
   <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
   <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
   <string name="toast_retrieving">Loading...</string>
-  <string name="txtGenericName">Common name :</string>
+  <string name="txtGenericName">Ĝenerala nomo :</string>
   <string name="txtBarcode">Strekokodo :</string>
   <string name="txtQuantity">Kvanto :</string>
   <string name="txtPackaging">Pakaĵo :</string>
@@ -120,7 +120,7 @@
   <string name="txtIngredientsOrigins">Origino de ingrediencoj :</string>
   <string name="txtCity">City, state and country where purchased :</string>
   <string name="txtStores">Vendejoj :</string>
-  <string name="txtCountries">Countries where sold :</string>
+  <string name="txtCountries">Landoj, kie ĝi vendiĝas :</string>
   <string name="txtIngredients">Listo da ingrediencoj :</string>
   <string name="txtSubstances">Substancoj aŭ produktoj kaŭzantaj alergiojn aŭ netolerojn :</string>
   <string name="txtAdditives">Aldonaĵoj :</string>
@@ -195,7 +195,7 @@
   <string name="offline_edit_drawer">Offline edit</string>
   <string name="txt_anonymous">Anonima</string>
   <string name="txt_product_not_found">Products not found</string>
-  <string name="delete_txt">Delete</string>
+  <string name="delete_txt">Forigi</string>
   <string name="sign_in_drawer">Ensaluti</string>
   <string name="alert_drawer">Alergena alarmo</string>
   <string name="warning_allergens">Enhavas alergenojn</string>
