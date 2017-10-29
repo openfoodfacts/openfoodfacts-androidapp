@@ -47,7 +47,7 @@ android {
 
     defaultConfig {
         multiDexEnabled true
-        jackOptions.enabled = true
+        jackOptions.enabled = false
     }
 
     compileOptions {
