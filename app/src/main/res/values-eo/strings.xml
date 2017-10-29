@@ -23,7 +23,7 @@
     <item>l</item>
     <item>ml</item>
     <item>cl</item>
-    <item>fl oz</item>
+    <item>fl. oz.</item>
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
@@ -129,9 +129,9 @@
   <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
   <string name="txtServingSize">Serving size :</string>
   <string name="txtNutrientLevel100g">Nutraĵa nivelo por 100 g :</string>
-  <string name="txtNutritionLevelLow">in low quantity</string>
-  <string name="txtNutritionLevelModerate">in moderate quantity</string>
-  <string name="txtNutritionLevelHigh">in high quantity</string>
+  <string name="txtNutritionLevelLow">en malgranda kvanto</string>
+  <string name="txtNutritionLevelModerate">en modera kvanto</string>
+  <string name="txtNutritionLevelHigh">en granda kvanto</string>
   <string name="txtLogin">Login :</string>
   <string name="txtPass">Pasvorto :</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
@@ -325,7 +325,7 @@
   <string name="zinc">Zinko</string>
   <string name="copper">Kupro</string>
   <string name="manganese">Mangano</string>
-  <string name="fluoride">Fluoride</string>
+  <string name="fluoride">Fluorido</string>
   <string name="selenium">Seleno</string>
   <string name="chromium">Kromio</string>
   <string name="molybdenum">Molibdeno</string>
