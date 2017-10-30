@@ -54,10 +54,10 @@ cache:
 #  - android-wait-for-emulator
 
 install:
-  - ./gradlew assembleDebug --stacktrace
+  - ./gradlew assembleDebug --stacktrace --debug
 
 script:
-  - ./gradlew build connectedCheck --stacktrace
+  - ./gradlew build connectedCheck --stacktrace --debug
 
 branches:
   only:
