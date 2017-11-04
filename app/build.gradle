@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
@@ -13,7 +13,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
-
+    flavorDimensions "versionCode"
     productFlavors {
         off {
             applicationId "openfoodfacts.github.scrachx.openfood"
@@ -47,7 +47,7 @@ android {
 
     defaultConfig {
         multiDexEnabled true
-        jackOptions.enabled = true
+       // jackOptions.enabled = true
     }
 
     compileOptions {
