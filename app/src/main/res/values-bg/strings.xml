@@ -62,33 +62,33 @@
     <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
+    <item>Английски</item>
+    <item>Френски</item>
+    <item>Испански</item>
+    <item>Италиански</item>
     <item>German</item>
     <item>Japanese</item>
     <item>Russian</item>
     <item>Portuguese</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
-    <item>Galician</item>
-    <item>Catalan</item>
-    <item>Czech</item>
-    <item>Arabic</item>
-    <item>Finnish</item>
-    <item>Hindi</item>
-    <item>Kabyle</item>
-    <item>Korean</item>
+    <item>Шведски</item>
+    <item>Бирмански</item>
+    <item>Казахски</item>
+    <item>Арменски</item>
+    <item>Гръцки</item>
+    <item>Иврит</item>
+    <item>Галисийски</item>
+    <item>Каталонски</item>
+    <item>Чешки</item>
+    <item>Арабски</item>
+    <item>Финландски</item>
+    <item>Хинди</item>
+    <item>Кабиле</item>
+    <item>Корейски</item>
     <item>Latvian</item>
     <item>Dutch</item>
     <item>Brazilian portuguese</item>
     <item>Romanian</item>
-    <item>Swedish</item>
+    <item>Шведски</item>
     <item>Chinese</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
