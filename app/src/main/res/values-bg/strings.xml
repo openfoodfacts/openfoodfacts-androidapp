@@ -84,31 +84,31 @@
     <item>Хинди</item>
     <item>Кабиле</item>
     <item>Корейски</item>
-    <item>Latvian</item>
-    <item>Dutch</item>
-    <item>Brazilian portuguese</item>
-    <item>Romanian</item>
+    <item>Латвийски</item>
+    <item>Холандски</item>
+    <item>Бразилски - португалски</item>
+    <item>Румънски</item>
     <item>Шведски</item>
-    <item>Chinese</item>
-    <item>Norwegian (Bokmal)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
-    <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Китайски</item>
+    <item>Норвежки (букмол)</item>
+    <item>Датски</item>
+    <item>Опростен китайски</item>
+    <item>Фарси</item>
+    <item>Сръбски</item>
   </string-array>
   <string-array name="images_array">
-    <item>Default</item>
-    <item>Nutrition</item>
-    <item>Ingredients</item>
+    <item>По подразбиране</item>
+    <item>Хранене</item>
+    <item>Съставки</item>
   </string-array>
   <!-- Content Description -->
-  <string name="search_button">Search</string>
-  <string name="no_products">Products not found</string>
+  <string name="search_button">Търсене</string>
+  <string name="no_products">Продуктът не е намерен</string>
   <string name="desc_list_item_icon">Item Icon</string>
-  <string name="alert_dialog_warning_title">Warning</string>
-  <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-  <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
-  <string name="toast_retrieving">Loading...</string>
+  <string name="alert_dialog_warning_title">Предупреждение</string>
+  <string name="alert_dialog_warning_msg_user">Потребителско име/парола е променена, обновете информацията</string>
+  <string name="alert_dialog_product_error_msg">Продуктът не е намерен, моля опитайте пак</string>
+  <string name="toast_retrieving">Зареждане...</string>
   <string name="txtGenericName">Common name :</string>
   <string name="txtBarcode">Barcode :</string>
   <string name="txtQuantity">Quantity :</string>
@@ -170,7 +170,7 @@
   <string name="dataSaved">Saved locally on your device</string>
   <string name="txtInfoAddUser">Please enter your login and password</string>
   <string name="txtDataUpdated">Data updated</string>
-  <string name="txtLoading">Loading...</string>
+  <string name="txtLoading">Зареждане...</string>
   <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
@@ -187,14 +187,14 @@
   <string name="home_drawer">Home</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
-  <string name="search_drawer">Search</string>
+  <string name="search_drawer">Търсене</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
   <string name="user_drawer">User</string>
   <string name="offline_edit_drawer">Offline edit</string>
   <string name="txt_anonymous">Anonymous</string>
-  <string name="txt_product_not_found">Products not found</string>
+  <string name="txt_product_not_found">Продуктът не е намерен</string>
   <string name="delete_txt">Delete</string>
   <string name="sign_in_drawer">Sign-in</string>
   <string name="alert_drawer">Allergen alert</string>
@@ -269,7 +269,7 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">Search</string>
+  <string name="action_search">Търсене</string>
   <string name="search_hint">Search a product</string>
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No results found</string>
