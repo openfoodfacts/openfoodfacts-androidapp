@@ -15,11 +15,8 @@ Open Food Facts Android Application
 
 <a href="https://f-droid.org/app/openfoodfacts.github.scrachx.openfood">
     <img src="https://f-droid.org/badge/get-it-on.png"
-         alt="Get it on F-Droid" height="46">
-</a>
-
-
-<a href="https://play.google.com/store/apps/details?id=openfoodfacts.github.scrachx.openfood"><img src=https://play.google.com/intl/en_us/badges/images/badge_new.png></a><br>
+         alt="Get it on F-Droid" height="70">
+</a><a href="https://play.google.com/store/apps/details?id=openfoodfacts.github.scrachx.openfood"><img src=https://play.google.com/intl/en_us/badges/images/badge_new.png></a><br>
 (These are beta versions, <a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner">this is the stable version</a>) 
 
 ### A food products database
