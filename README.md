@@ -13,9 +13,12 @@ Open Food Facts Android Application
 <img src="https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png">
 ## What is Open Food Facts?
 
+<a href="https://f-droid.org/app/openfoodfacts.github.scrachx.openfood">
+    <img src="https://f-droid.org/badge/get-it-on.png"
+         alt="Get it on F-Droid" height="80">
+</a>
 
-<a href="https://f-droid.org/repository/browse/?fdid=openfoodfacts.github.scrachx.openfood">
-<img src=http://lingoworld.eu/at//public/images/fdroid.png></a>
+
 <a href="https://play.google.com/store/apps/details?id=openfoodfacts.github.scrachx.openfood"><img src=https://play.google.com/intl/en_us/badges/images/badge_new.png></a><br>
 (These are beta versions, <a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner">this is the stable version</a>) 
 
