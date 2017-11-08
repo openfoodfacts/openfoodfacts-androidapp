@@ -15,7 +15,7 @@ Open Food Facts Android Application
 
 <a href="https://f-droid.org/app/openfoodfacts.github.scrachx.openfood">
     <img src="https://f-droid.org/badge/get-it-on.png"
-         alt="Get it on F-Droid" height="80">
+         alt="Get it on F-Droid" height="46">
 </a>
 
 
