@@ -3,7 +3,7 @@ Open Food Facts Android Application
 
 
 
-[![Project Status](https://opensource.box.com/badges/active.svg)](https://opensource.box.com/badges)
+[![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
 [![Build Status](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp.svg?branch=master)](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp) 
 [![Stories in Ready](https://badge.waffle.io/openfoodfacts/openfoodfacts-androidapp.svg?label=ready&title=Ready)](https://waffle.io/openfoodfacts/openfoodfacts-androidapp)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/openfoodfacts/openfoodfacts-androidapp.svg)](https://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Average time to resolve an issue")
