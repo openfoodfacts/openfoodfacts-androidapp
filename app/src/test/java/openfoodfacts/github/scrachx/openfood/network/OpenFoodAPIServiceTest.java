@@ -201,12 +201,17 @@ public class OpenFoodAPIServiceTest {
         assertEquals("product not found", response.body().getStatusVerbose());
         assertEquals(barcode, response.body().getCode());
     }
-/*
+
     @Test
     public void saveImage_noImageFile_ko() throws IOException {
 
-        File outputFile = File.createTempFile("prefix", "png", new File("/"));
-
+        
+if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+    Log.v(TAG,"Permission is granted");
+    //File write logic here
+    File outputFile = File.createTempFile("prefix", "png", new File("/"));
+}
+        
         ProductImage image = new ProductImage("01010101010101", ProductImageField.FRONT, outputFile);
         Map<String, RequestBody> imgMap = new HashMap<>();
         imgMap.put("code", image.getCode());
@@ -224,7 +229,7 @@ public class OpenFoodAPIServiceTest {
                 .node("status")
                     .isEqualTo("status not ok");
     }
-*/
+
     @Test
     public void post_product() throws IOException {
         SendProduct product = new SendProduct();
