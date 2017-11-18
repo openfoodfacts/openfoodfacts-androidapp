@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import android.content.pm.PackageManager;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,6 +31,7 @@ import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertNotNull;
 import static net.javacrumbs.jsonunit.fluent.JsonFluentAssert.assertThatJson;
+import static android.support.v4.content.PermissionChecker.checkSelfPermission;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static org.junit.Assert.assertTrue;
 
@@ -207,10 +209,9 @@ public class OpenFoodAPIServiceTest {
 
         
 if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-    Log.v(TAG,"Permission is granted");
-    //File write logic here
+
     File outputFile = File.createTempFile("prefix", "png", new File("/"));
-}
+
         
         ProductImage image = new ProductImage("01010101010101", ProductImageField.FRONT, outputFile);
         Map<String, RequestBody> imgMap = new HashMap<>();
@@ -228,6 +229,9 @@ if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == P
         assertThatJson(response.body())
                 .node("status")
                     .isEqualTo("status not ok");
+    
+    } else {}
+    
     }
 
     @Test
