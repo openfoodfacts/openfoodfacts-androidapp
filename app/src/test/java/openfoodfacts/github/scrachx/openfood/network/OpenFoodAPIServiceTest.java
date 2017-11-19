@@ -204,37 +204,32 @@ public class OpenFoodAPIServiceTest {
         assertEquals(barcode, response.body().getCode());
     }
 
-    @Test
-    public void saveImage_noImageFile_ko() throws IOException {
-
+@Override
+public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    switch (requestCode) {
+        case 1001: {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                File outputFile = File.createTempFile("prefix", "png", new File("/"));
         
-if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-
-    File outputFile = File.createTempFile("prefix", "png", new File("/"));
-
-        
-        ProductImage image = new ProductImage("01010101010101", ProductImageField.FRONT, outputFile);
-        Map<String, RequestBody> imgMap = new HashMap<>();
-        imgMap.put("code", image.getCode());
-        imgMap.put("imagefield", image.getField());
-        imgMap.put("imgupload_front\"; filename=\"front_fr.png\"", image.getImguploadFront());
-        imgMap.put("imgupload_ingredients\"; filename=\"ingredients_fr.png\"", image.getImguploadIngredients());
-        imgMap.put("imgupload_nutrition\"; filename=\"nutrition_fr.png\"", image.getImguploadNutrition());
-        imgMap.put("imgupload_other\"; filename=\"other_fr.png\"", image.getImguploadOther());
-
-        Response<JsonNode> response = serviceWrite.saveImage(imgMap).execute();
-
-        assertTrue(response.isSuccess());
-
-        assertThatJson(response.body())
-                .node("status")
-                    .isEqualTo("status not ok");
-    
-    } else {
-ActivityCompat.requestPermissions(getApplicationContext(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1001);
-}
-    
+                ProductImage image = new ProductImage("01010101010101", ProductImageField.FRONT, outputFile);
+                Map<String, RequestBody> imgMap = new HashMap<>();
+                imgMap.put("code", image.getCode());
+                imgMap.put("imagefield", image.getField());
+                imgMap.put("imgupload_front\"; filename=\"front_fr.png\"", image.getImguploadFront());
+                imgMap.put("imgupload_ingredients\"; filename=\"ingredients_fr.png\"", image.getImguploadIngredients());
+                imgMap.put("imgupload_nutrition\"; filename=\"nutrition_fr.png\"", image.getImguploadNutrition());
+                imgMap.put("imgupload_other\"; filename=\"other_fr.png\"", image.getImguploadOther());
+                Response<JsonNode> response = serviceWrite.saveImage(imgMap).execute();
+                assertTrue(response.isSuccess());
+                assertThatJson(response.body().node("status").isEqualTo("status not ok");
+            } else {
+                // permission denied, boo! Disable the
+                // functionality that depends on this permission.
+            }
+            return;
+        }
     }
+}
 
     @Test
     public void post_product() throws IOException {
