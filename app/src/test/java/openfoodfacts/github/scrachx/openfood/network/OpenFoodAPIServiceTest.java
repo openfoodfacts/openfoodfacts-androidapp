@@ -221,7 +221,10 @@ public void onRequestPermissionsResult(int requestCode, String permissions[], in
                 imgMap.put("imgupload_other\"; filename=\"other_fr.png\"", image.getImguploadOther());
                 Response<JsonNode> response = serviceWrite.saveImage(imgMap).execute();
                 assertTrue(response.isSuccess());
-                assertThatJson(response.body().node("status").isEqualTo("status not ok");
+               // assertThatJson(response.body().node("status").isEqualTo("status not ok");
+                                    assertThatJson(response.body())
+                            .node("status")
+                            .isEqualTo("status not ok");
             } else {
                 // permission denied, boo! Disable the
                 // functionality that depends on this permission.
