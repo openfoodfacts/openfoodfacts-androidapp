@@ -230,7 +230,9 @@ if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == P
                 .node("status")
                     .isEqualTo("status not ok");
     
-    } else {}
+    } else {
+ActivityCompat.requestPermissions(getApplicationContext(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1001);
+}
     
     }
 
