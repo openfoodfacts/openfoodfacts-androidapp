@@ -59,7 +59,7 @@
     <item>丹麦语</item>
     <item>繁体中文</item>
     <item>波斯语</item>
-    <item>rs</item>
+    <item>塞尔维亚语</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>英语</item>
@@ -134,29 +134,29 @@
   <string name="txtNutritionLevelHigh">最高含量</string>
   <string name="txtLogin">登陆名</string>
   <string name="txtPass">密码：</string>
-  <string name="txtTitleHome">Open your food and know what you eat</string>
-  <string name="txtSave">Save</string>
+  <string name="txtTitleHome">打开你的食物知道你在吃什么</string>
+  <string name="txtSave">保存</string>
   <string name="txtSignIn">登录</string>
-  <string name="txtUser">User panel</string>
-  <string name="txtToastSaved">User saved</string>
-  <string name="txtSalt">Salt</string>
-  <string name="txtFat">Fat</string>
-  <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Satured fat</string>
-  <string name="hintBarcode">Barcode</string>
-  <string name="hintLogin">Login</string>
-  <string name="hintPass">Password</string>
-  <string name="errorLogin">Login or password error</string>
-  <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
-  <string name="txtInfoLoginOk">User saved</string>
-  <string name="txtInfoLoginNo">User not saved</string>
-  <string name="txtDialogsTitle">Information</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
-  <string name="txtYes">Yes</string>
-  <string name="txtNo">No</string>
-  <string name="hintNameProduct">Name</string>
+  <string name="txtUser">用户面板</string>
+  <string name="txtToastSaved">用户已保存</string>
+  <string name="txtSalt">盐</string>
+  <string name="txtFat">脂肪</string>
+  <string name="txtSugars">糖</string>
+  <string name="txtSaturatedFat">饱和脂肪</string>
+  <string name="hintBarcode">条形码</string>
+  <string name="hintLogin">登录</string>
+  <string name="hintPass">密码</string>
+  <string name="errorLogin">登录或者密码错误</string>
+  <string name="errorWeb">我们无法访问互联网，请问是否有连接问题</string>
+  <string name="txtInfoLoginOk">用户已保存</string>
+  <string name="txtInfoLoginNo">用户没有保存</string>
+  <string name="txtDialogsTitle">信息</string>
+  <string name="txtDialogsContent">您扫描的产品尚未在公开食物中，请添加它</string>
+  <string name="txtDialogsContentPowerMode">您所扫描的产品一经在公开的食物中</string>
+  <string name="txtDialogsContentSend">你想把保存的产品发送到数据库中吗？</string>
+  <string name="txtYes">是的</string>
+  <string name="txtNo">不</string>
+  <string name="hintNameProduct">名称</string>
   <string name="hintEnergy">Energy in kJ per serving</string>
   <string name="hintEnergyUnit">Energy unit</string>
   <string name="hintWeight">Weight</string>
@@ -204,7 +204,7 @@
   <string name="from_gallery">From gallery</string>
   <string name="product_sent">Product sent successfully</string>
   <string name="action_edit_product">Edit product</string>
-  <string name="title_info_dialog">Information</string>
+  <string name="title_info_dialog">信息</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
   <string name="permission_title">Permission information</string>
@@ -240,7 +240,7 @@
   <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
   <string name="nutrition_energy">Energy</string>
   <string name="nutrition_energy_short_name">Energy</string>
-  <string name="nutrition_fat">Fat</string>
+  <string name="nutrition_fat">脂肪</string>
   <string name="nutrition_fat_short_name">Fat (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
@@ -249,15 +249,15 @@
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Proteins</string>
   <string name="nutrition_proteins_short_name">Proteins (g)</string>
-  <string name="nutrition_salt">Salt</string>
+  <string name="nutrition_salt">盐</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
-  <string name="nutrition_satured_fat">Satured fat</string>
+  <string name="nutrition_satured_fat">饱和脂肪</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
   <string name="nutrition_serving">Per serving</string>
   <string name="nutrition_serving_size">份量：</string>
   <string name="nutrition_sodium">Sodium</string>
   <string name="nutrition_sodium_short_name">Sodium (g)</string>
-  <string name="nutrition_sugars">Sugars</string>
+  <string name="nutrition_sugars">糖</string>
   <string name="nutrition_sugars_short_name">Sugars (g)</string>
   <string name="nutrition_trans_fat">Trans fat</string>
   <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
