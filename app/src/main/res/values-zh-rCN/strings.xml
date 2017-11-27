@@ -4,9 +4,9 @@
   <string name="action_settings">设置</string>
   <string name="action_about">关于</string>
   <string name="action_discover">发现</string>
-  <string name="contribute">How to contribute</string>
+  <string name="contribute">如何参与</string>
   <string name="action_find">查找</string>
-  <string name="text_barcode">Type the barcode :</string>
+  <string name="text_barcode">输入条形码</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>摘要</item>
@@ -21,18 +21,18 @@
     <item>kg</item>
     <item>l</item>
     <item>ml</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
+    <item>毫升</item>
+    <item>厘升</item>
+    <item>盎司</item>
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
-    <item>en</item>
-    <item>fr</item>
-    <item>es</item>
-    <item>it</item>
-    <item>de</item>
-    <item>ja</item>
+    <item>英语</item>
+    <item>法语</item>
+    <item>西班牙语</item>
+    <item>意大利语</item>
+    <item>德语</item>
+    <item>日语</item>
     <item>ru</item>
     <item>pt</item>
     <item>sv</item>
