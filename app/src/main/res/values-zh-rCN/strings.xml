@@ -212,16 +212,16 @@
   <string name="permission_storage">需要储存权限才能拍摄或者选择照片</string>
   <string name="info_download_data">您需要下载一些数据才能使用该功能，请按“是”下载</string>
   <string name="info_download_data_connection">你需要下载一些数据才能使用该功能，请按“是”下载</string>
-  <string name="msg_input_empty">Please fill the fields first.</string>
-  <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
+  <string name="msg_input_empty">请填写字符</string>
+  <string name="new_offline_info">请对产品拍照，包含配料，营养成分和标签上其他的信息，非常感谢</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">密码至少6个特殊字符</string>
   <string name="error_field_required">此处必填</string>
   <string name="action_preferences">偏好</string>
   <string name="prefs_scan_startup">启动扫描</string>
-  <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
-  <string name="prefs_power_mode">Power mode scan</string>
-  <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
+  <string name="prefs_scan_startup_summary">如果选中此项，请打开程序时开始扫描</string>
+  <string name="prefs_power_mode">扫描</string>
+  <string name="prefs_power_mode_summary">快速扫描超市中的厂品，查看哪些产品不再数据库中</string>
   <string name="prefs_language">语言</string>
   <string name="prefs_language_summary">改变语言</string>
   <string name="scan_history_drawer">历史记录</string>
@@ -231,10 +231,10 @@
   <string name="export_csv_history">导出csv文件</string>
   <string name="txt_exporting_history">导出历史记录</string>
   <string name="txt_history_exported">历史记录已经导出</string>
-  <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
+  <string name="permision_write_external_storage">需要写入外部存储权限才能导出历史记录</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <!-- Nutrition info tab -->
-  <string name="nutrition_carbohydrate">Carbohydrate</string>
+  <string name="nutrition_carbohydrate">碳水化合物</string>
   <string name="nutrition_carbohydrate_short_name">碳水化合物（克）</string>
   <string name="nutrition_cholesterol">胆固醇</string>
   <string name="nutrition_cholesterol_short_name">胆固醇（克）</string>
@@ -279,7 +279,7 @@
   <string name="nutrition_lactose">乳糖</string>
   <string name="nutrition_casein">酪蛋白</string>
   <string name="nutrition_maltodextrins">麦芽糖</string>
-  <string name="nutrition_serum_proteins">Serum Proteins</string>
+  <string name="nutrition_serum_proteins">血浆蛋白</string>
   <string name="nutrition_nucleotides">核苷酸</string>
   <string name="for_100g">100g</string>
   <string name="serving">每份</string>
@@ -311,7 +311,7 @@
   <string name="vitamin_b6">维生素b6</string>
   <string name="vitamin_b9">维生素b9</string>
   <string name="vitamin_b12">维生素b12</string>
-  <string name="biotin">Biotin</string>
+  <string name="biotin">生物素</string>
   <string name="pantothenic_acid">泛酸</string>
   <string name="nutrition_minerals">矿物质</string>
   <string name="silica">二氧化硅</string>
@@ -327,18 +327,18 @@
   <string name="manganese">锰</string>
   <string name="fluoride">氟</string>
   <string name="selenium">硒</string>
-  <string name="chromium">Chromium</string>
-  <string name="molybdenum">Molybdenum</string>
-  <string name="iodine">Iodine</string>
-  <string name="caffeine">Caffeine</string>
+  <string name="chromium">铬</string>
+  <string name="molybdenum">钼</string>
+  <string name="iodine">碘</string>
+  <string name="caffeine">咖啡因</string>
   <string name="taurine">牛磺酸</string>
-  <string name="ph">pH</string>
-  <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
-  <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
+  <string name="ph">酸碱度</string>
+  <string name="fruits_vegetables_nuts">水果，蔬菜，坚果</string>
+  <string name="collagen_meat_protein_ratio">胶原蛋白比例</string>
   <string name="cocoa">可可粉</string>
   <string name="chlorophyl">叶绿素</string>
-  <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-  <string name="take_picture_front">Take a picture of the front</string>
-  <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-  <string name="take_more_pictures">Take more pictures</string>
+  <string name="take_picture_ingredients">拍摄营养成分</string>
+  <string name="take_picture_front">拍摄正面照片</string>
+  <string name="take_picture_nutrition_table">拍摄营养成分</string>
+  <string name="take_more_pictures">拍照</string>
 </resources>
