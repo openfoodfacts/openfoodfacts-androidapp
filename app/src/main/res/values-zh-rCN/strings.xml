@@ -46,19 +46,19 @@
     <item>捷克语</item>
     <item>阿拉伯语</item>
     <item>芬兰语</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-rBR</item>
-    <item>ro</item>
+    <item>印地语</item>
+    <item>卡拜尔语</item>
+    <item>韩国</item>
+    <item>拉脱维亚</item>
+    <item>荷兰</item>
+    <item>巴西葡萄牙语</item>
+    <item>罗马尼亚语</item>
     <item>瑞士</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-rCN</item>
-    <item>fa</item>
+    <item>中文</item>
+    <item>挪威语</item>
+    <item>丹麦语</item>
+    <item>繁体中文</item>
+    <item>波斯语</item>
     <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
@@ -82,7 +82,7 @@
     <item>阿拉伯语</item>
     <item>芬兰语</item>
     <item>印地语</item>
-    <item>Kabyle</item>
+    <item>卡拜尔语</item>
     <item>韩语</item>
     <item>拉脱维亚语</item>
     <item>荷兰语</item>
@@ -91,10 +91,10 @@
     <item>瑞典语</item>
     <item>中文</item>
     <item>挪威语(书面)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
-    <item>Farsi</item>
-    <item>Serbian</item>
+    <item>丹麦语</item>
+    <item>简体中文</item>
+    <item>波斯语</item>
+    <item>塞尔维亚语</item>
   </string-array>
   <string-array name="images_array">
     <item>默认</item>
@@ -109,7 +109,7 @@
   <string name="alert_dialog_warning_msg_user">用户／密码已改变，请更新信息。</string>
   <string name="alert_dialog_product_error_msg">产品未找到，请再次尝试。</string>
   <string name="toast_retrieving">正在加载...</string>
-  <string name="txtGenericName">Common name :</string>
+  <string name="txtGenericName">通用名</string>
   <string name="txtBarcode">条形码</string>
   <string name="txtQuantity">数量</string>
   <string name="txtPackaging">包装：</string>
@@ -124,14 +124,14 @@
   <string name="txtIngredients">成分列表：</string>
   <string name="txtSubstances">引起过敏或不耐受的产品成份：</string>
   <string name="txtAdditives">添加剂：</string>
-  <string name="txtTraces">Traces :</string>
+  <string name="txtTraces">轨迹</string>
   <string name="txtMayBeFromPalmOilProduct">可能来自棕榈油的成份：</string>
-  <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
+  <string name="txtPalmOilProduct">棕榈油成分：</string>
   <string name="txtServingSize">份量：</string>
   <string name="txtNutrientLevel100g">100克所含营养成分</string>
-  <string name="txtNutritionLevelLow">in low quantity</string>
-  <string name="txtNutritionLevelModerate">in moderate quantity</string>
-  <string name="txtNutritionLevelHigh">in high quantity</string>
+  <string name="txtNutritionLevelLow">库存量</string>
+  <string name="txtNutritionLevelModerate">中等数量</string>
+  <string name="txtNutritionLevelHigh">最高含量</string>
   <string name="txtLogin">登陆名</string>
   <string name="txtPass">密码：</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
