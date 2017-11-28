@@ -79,8 +79,8 @@
     <item>الجاليكية</item>
     <item>الكاتالونية</item>
     <item>التشيكية</item>
-    <item>اللغة العربية</item>
-    <item>اللغة الفنلندية</item>
+    <item>العربية</item>
+    <item>الفنلندية</item>
     <item>الهندية</item>
     <item>قابيل</item>
     <item>الكورية</item>
@@ -92,7 +92,7 @@
     <item>الصينية</item>
     <item>النرويجية (بوكمال)</item>
     <item>الدانماركية</item>
-    <item>اللغة الصينية المُبسطة</item>
+    <item>الصينية المبسطة</item>
     <item>الفارسية</item>
     <item>الصربية</item>
   </string-array>
@@ -111,8 +111,8 @@
   <string name="toast_retrieving">جاري التحميل...</string>
   <string name="txtGenericName">الاسم الشائع:</string>
   <string name="txtBarcode">الرمز الشريطي</string>
-  <string name="txtQuantity">الكمية</string>
-  <string name="txtPackaging">التغليف</string>
+  <string name="txtQuantity">الكمية :</string>
+  <string name="txtPackaging">التغليف :</string>
   <string name="txtBrands">العلامات التجارية</string>
   <string name="txtCategories">الفئات</string>
   <string name="txtLabels">التسميات، الشهادات، الجوائز:</string>
