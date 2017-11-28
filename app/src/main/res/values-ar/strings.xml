@@ -3,7 +3,7 @@
 <resources>
   <string name="action_settings">الإعدادات</string>
   <string name="action_about">حول</string>
-  <string name="action_discover">اكتشف</string>
+  <string name="action_discover">إكتشف</string>
   <string name="contribute">كيفية المساهمة</string>
   <string name="action_find">بحث</string>
   <string name="text_barcode">اكتب الرمز الشريطي:</string>
@@ -17,9 +17,9 @@
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
-    <item>ج</item>
+    <item>غ</item>
     <item>مغ</item>
-    <item>كجم</item>
+    <item>كغ</item>
     <item>مل</item>
     <item>مل</item>
     <item>البنود</item>
@@ -82,7 +82,7 @@
     <item>العربية</item>
     <item>الفنلندية</item>
     <item>الهندية</item>
-    <item>قابيل</item>
+    <item>القبيلية</item>
     <item>الكورية</item>
     <item>اللاتفية</item>
     <item>الهولندية</item>
@@ -113,8 +113,8 @@
   <string name="txtBarcode">الرمز الشريطي</string>
   <string name="txtQuantity">الكمية :</string>
   <string name="txtPackaging">التغليف :</string>
-  <string name="txtBrands">العلامات التجارية</string>
-  <string name="txtCategories">الفئات</string>
+  <string name="txtBrands">العلامات التجارية :</string>
+  <string name="txtCategories">الفئات :</string>
   <string name="txtLabels">التسميات، الشهادات، الجوائز:</string>
   <string name="txtManufacturing">أماكن التصنيع أو التجهيز</string>
   <string name="txtIngredientsOrigins">أصل المكونات</string>
@@ -123,11 +123,11 @@
   <string name="txtCountries">البلدان التي يباع فيها</string>
   <string name="txtIngredients">قائمة المكونات:</string>
   <string name="txtSubstances">المواد أو المنتجات التي تسبب الحساسية أو عدم التحمل.</string>
-  <string name="txtAdditives">إضافات</string>
-  <string name="txtTraces">آثار</string>
+  <string name="txtAdditives">الإضافات:</string>
+  <string name="txtTraces">آثار:</string>
   <string name="txtMayBeFromPalmOilProduct">المكونات التي قد تكون من زيت النخيل</string>
   <string name="txtPalmOilProduct">مكونات من زيت النخيل</string>
-  <string name="txtServingSize">حجم الحصة</string>
+  <string name="txtServingSize">حجم الحصة:</string>
   <string name="txtNutrientLevel100g">مستويات المواد الغذائية لـ 100غ:</string>
   <string name="txtNutritionLevelLow">في كمية المخزون</string>
   <string name="txtNutritionLevelModerate">كمية معتدلة</string>
