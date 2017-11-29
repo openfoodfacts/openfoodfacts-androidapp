@@ -11,5 +11,5 @@
   <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
-  <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
+  <string name="txtHome">开“宠物食品”上一个宠物食品产品的数据库，其中包含成分，过敏原，标记和我们可以在“宠物食品”产品标签上找到的所有信息。</string>
 </resources>
