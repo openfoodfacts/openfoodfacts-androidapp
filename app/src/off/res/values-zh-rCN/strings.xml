@@ -11,5 +11,5 @@
   <string name="website_product">https://world.openfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-  <string name="txtHome">打开“Beauty Facts”是一个化妆品数据库，我们可以在产品标签上找到该商品的成分，过敏原等所有信息。</string>
+  <string name="txtHome">“开放食品事实”是一个开放的食品数据库，包含成分，过敏原，营养成分以及我们可以在产品标签上找到的所有信息。</string>
 </resources>
