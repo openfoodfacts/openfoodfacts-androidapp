@@ -27,14 +27,14 @@
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
-    <item>ingilizce</item>
-    <item>fransızca</item>
-    <item>ispanyolca</item>
-    <item>italyanca</item>
-    <item>almanca</item>
-    <item>japonca</item>
-    <item>rusça</item>
-    <item>portekizce</item>
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
     <item>sv</item>
     <item>my</item>
     <item>kk</item>
