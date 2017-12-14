@@ -17,7 +17,7 @@ android {
     productFlavors {
         off {
             applicationId "openfoodfacts.github.scrachx.openfood"
-            resValue "string", "app_name", "Open Food"
+            resValue "string", "app_name", "Open Food Facts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"openfoodfacts.github.scrachx.openbeauty"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
@@ -25,7 +25,7 @@ android {
 
         obf {
             applicationId "openfoodfacts.github.scrachx.openbeauty"
-            resValue "string", "app_name", "Open Beauty"
+            resValue "string", "app_name", "Open Beauty Facts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openbeautyfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"openfoodfacts.github.scrachx.openfood"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openbeautyfacts.org/"'
