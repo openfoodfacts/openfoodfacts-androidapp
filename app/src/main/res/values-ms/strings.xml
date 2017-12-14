@@ -3,7 +3,7 @@
 <resources>
   <string name="action_settings">Tetapan</string>
   <string name="action_about">Tentang</string>
-  <string name="action_discover">Discover</string>
+  <string name="action_discover">Temui</string>
   <string name="contribute">How to contribute</string>
   <string name="action_find">Find</string>
   <string name="text_barcode">Type the barcode :</string>
