@@ -27,16 +27,16 @@
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
-    <item>ইংরেজি ভাষায়</item>
-    <item>ফরাসী ভাষায়</item>
-    <item>স্প্যানিশ ভাষায়</item>
-    <item>ইতালিয়ান ভাষায়</item>
-    <item>জার্মান ভাষায়</item>
-    <item>জাপানী ভাষায়</item>
-    <item>রাশিয়ান ভাষায়</item>
-    <item>পিটি</item>
-    <item>সুইডিশ ভাষায়</item>
-    <item>আমার</item>
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
     <item>kk</item>
     <item>hy</item>
     <item>el</item>
@@ -44,7 +44,7 @@
     <item>gl</item>
     <item>ca</item>
     <item>cs</item>
-    <item>আরবী ভাষায়</item>
+    <item>ar</item>
     <item>fi</item>
     <item>hi</item>
     <item>kab</item>
@@ -53,10 +53,10 @@
     <item>nl</item>
     <item>pt-rBR</item>
     <item>ro</item>
-    <item>সুইডিশ ভাষায়</item>
-    <item>চীনা ভাষায়</item>
-    <item>বিশেষ দ্রষ্টব্য</item>
-    <item>ড্যানিশ ভাষায়</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
     <item>zh-rCN</item>
     <item>fa</item>
     <item>rs</item>
@@ -134,54 +134,54 @@
   <string name="txtNutritionLevelHigh">in high quantity</string>
   <string name="txtLogin">Login :</string>
   <string name="txtPass">Password :</string>
-  <string name="txtTitleHome">Open your food and know what you eat</string>
-  <string name="txtSave">Save</string>
-  <string name="txtSignIn">Sign in</string>
-  <string name="txtUser">User panel</string>
-  <string name="txtToastSaved">User saved</string>
-  <string name="txtSalt">Salt</string>
-  <string name="txtFat">Fat</string>
-  <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Satured fat</string>
+  <string name="txtTitleHome">আপনার খাদ্য খুলুন এবং জানুন আপনি কি খাচ্ছেন</string>
+  <string name="txtSave">সংরক্ষণ করুন</string>
+  <string name="txtSignIn">সাইন ইন</string>
+  <string name="txtUser">ব্যবহারকারী প্যানেল</string>
+  <string name="txtToastSaved">ব্যাবহারকারি সংরক্ষিত হয়েছে</string>
+  <string name="txtSalt">লবন</string>
+  <string name="txtFat">চর্বি</string>
+  <string name="txtSugars">চিনি</string>
+  <string name="txtSaturatedFat">সম্পৃক্ত চর্বি</string>
   <string name="hintBarcode">বারকোড</string>
-  <string name="hintLogin">Login</string>
-  <string name="hintPass">Password</string>
-  <string name="errorLogin">Login or password error</string>
-  <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
-  <string name="txtInfoLoginOk">User saved</string>
-  <string name="txtInfoLoginNo">User not saved</string>
-  <string name="txtDialogsTitle">Information</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
-  <string name="txtYes">Yes</string>
-  <string name="txtNo">No</string>
-  <string name="hintNameProduct">Name</string>
-  <string name="hintEnergy">Energy in kJ per serving</string>
-  <string name="hintEnergyUnit">Energy unit</string>
-  <string name="hintWeight">Weight</string>
-  <string name="hintStores">Store</string>
-  <string name="hintBrand">Brand</string>
-  <string name="txtTakePicture">Take picture</string>
-  <string name="txtSendAll">Upload all</string>
-  <string name="txtNoData">No data</string>
-  <string name="txtPictureNeeded">Please take a picture first</string>
-  <string name="toastSending">Uploading...</string>
-  <string name="dataSaved">Saved locally on your device</string>
-  <string name="txtInfoAddUser">Please enter your login and password</string>
-  <string name="txtDataUpdated">Data updated</string>
-  <string name="txtLoading">Loading...</string>
-  <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
-  <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
-  <string name="txtBarcodeRequire">Barcode required</string>
-  <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
-  <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
-  <string name="txtAllsent">Products sent</string>
-  <string name="txtPalm">The product does not contain any palm oil</string>
-  <string name="txtBarcodeNotValid">Barcode not valid</string>
-  <string name="try_it_scan_now">Scan product</string>
-  <string name="share">Share</string>
+  <string name="hintLogin">লগ ইন</string>
+  <string name="hintPass">পাসওয়ার্ড</string>
+  <string name="errorLogin">লগইন বা পাসওয়ার্ড ত্রুটি</string>
+  <string name="errorWeb">আমরা ইন্টারনেট অ্যাক্সেস করতে পারিনি। আপনার সংযোগ সমস্যা আছে?</string>
+  <string name="txtInfoLoginOk">ব্যাবহারকারি সংরক্ষিত হয়েছে</string>
+  <string name="txtInfoLoginNo">ব্যবহারকারী সংরক্ষিত না</string>
+  <string name="txtDialogsTitle">তথ্য</string>
+  <string name="txtDialogsContent">আপনি যে পণ্য স্ক্যান করছেন তা Open Food Facts এ বিদ্যমান নাই। দয়া করে যোগ করুন।</string>
+  <string name="txtDialogsContentPowerMode">আপনি যে পণ্য স্ক্যান করছেন তা Open Food Facts এ বিদ্যমান নাই।</string>
+  <string name="txtDialogsContentSend">আপনি কি সংরক্ষিত পণ্য ডাটাবেসের কাছে পাঠাতে চান?</string>
+  <string name="txtYes">হ্যা</string>
+  <string name="txtNo">না</string>
+  <string name="hintNameProduct">নাম</string>
+  <string name="hintEnergy">সেবা প্রতি কেজি শক্তি</string>
+  <string name="hintEnergyUnit">শক্তি ইউনিট</string>
+  <string name="hintWeight">ওজন</string>
+  <string name="hintStores">দোকান</string>
+  <string name="hintBrand">ব্র্যান্ড</string>
+  <string name="txtTakePicture">ছবি তুলুন</string>
+  <string name="txtSendAll">সবগুলো আপলোড করুন</string>
+  <string name="txtNoData">কোন উপাত্ত নেই</string>
+  <string name="txtPictureNeeded">দয়া করে প্রথমে একটি ছবি তুলুন</string>
+  <string name="toastSending">আপলোড করা হচ্ছে...</string>
+  <string name="dataSaved">আপনার ডিভাইসে স্থানীয়ভাবে সংরক্ষিত হয়েছে</string>
+  <string name="txtInfoAddUser">দয়া করে আপনার লগইন এবং পাসওয়ার্ড প্রবেশ করান</string>
+  <string name="txtDataUpdated">তথ্য হালনাগাদ হয়েছে</string>
+  <string name="txtLoading">লোড হচ্ছে...</string>
+  <string name="txtDialogsContentDelete">আপনি কি এই খসড়াটি মুছে ফেলতে চান?</string>
+  <string name="txtDialogsContentInfoSave">পণ্যটি স্থানীয়ভাবে সংরক্ষণ হয়েছে। আপনি তা \"অফলাইন সম্পাদনা করুন\" মেনু থেকে সম্পাদনা করতে পারেন</string>
+  <string name="txtBarcodeRequire">বারকোড প্রয়োজন হয়েছে</string>
+  <string name="txtOk">ঠিক আছে</string>
+  <string name="txtContentDialogUploading">এই প্রক্রিয়া চলাকালীন প্রস্থান করবেন না দয়া করে...</string>
+  <string name="txtAbout">আপনি যে ছবিগুলি পাঠিয়েছেন সেগুলি ক্রিয়েটিভ কমন্স অ্যাট্রিবিউশন এবং শেয়ার এএইচ মুক্ত লাইসেন্সের অধীনে প্রকাশ করা হয়েছে।</string>
+  <string name="txtAllsent">পণ্যটি পাঠানো হয়েছে</string>
+  <string name="txtPalm">পণ্যটি কোন পাম তেল ধারণ করে না</string>
+  <string name="txtBarcodeNotValid">বারকোড বৈধ নয়</string>
+  <string name="try_it_scan_now">পণ্য স্ক্যান করুন</string>
+  <string name="share">শেয়ার</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
   <string name="create_account">Sign up</string>
   <string name="home_drawer">Home</string>
@@ -204,7 +204,7 @@
   <string name="from_gallery">From gallery</string>
   <string name="product_sent">Product sent successfully</string>
   <string name="action_edit_product">Edit product</string>
-  <string name="title_info_dialog">Information</string>
+  <string name="title_info_dialog">তথ্য</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
   <string name="permission_title">Permission information</string>
@@ -240,7 +240,7 @@
   <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
   <string name="nutrition_energy">Energy</string>
   <string name="nutrition_energy_short_name">Energy</string>
-  <string name="nutrition_fat">Fat</string>
+  <string name="nutrition_fat">চর্বি</string>
   <string name="nutrition_fat_short_name">Fat (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
@@ -249,15 +249,15 @@
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Proteins</string>
   <string name="nutrition_proteins_short_name">Proteins (g)</string>
-  <string name="nutrition_salt">Salt</string>
+  <string name="nutrition_salt">লবন</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
-  <string name="nutrition_satured_fat">Satured fat</string>
+  <string name="nutrition_satured_fat">সম্পৃক্ত চর্বি</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
   <string name="nutrition_serving">Per serving</string>
   <string name="nutrition_serving_size">Serving size :</string>
   <string name="nutrition_sodium">Sodium</string>
   <string name="nutrition_sodium_short_name">Sodium (g)</string>
-  <string name="nutrition_sugars">Sugars</string>
+  <string name="nutrition_sugars">চিনি</string>
   <string name="nutrition_sugars_short_name">Sugars (g)</string>
   <string name="nutrition_trans_fat">Trans fat</string>
   <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
@@ -339,6 +339,6 @@
   <string name="chlorophyl">Chlorophyl</string>
   <string name="take_picture_ingredients">Take a picture of the ingredients</string>
   <string name="take_picture_front">Take a picture of the front</string>
-  <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-  <string name="take_more_pictures">Take more pictures</string>
+  <string name="take_picture_nutrition_table">পুষ্টি তালিকার একটি ছবি তুলুন</string>
+  <string name="take_more_pictures">আরও কিছু ছবি তুলুন</string>
 </resources>
