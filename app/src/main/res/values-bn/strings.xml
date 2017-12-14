@@ -62,21 +62,21 @@
     <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
-    <item>Galician</item>
+    <item>ইংরেজি</item>
+    <item>ফরাসি</item>
+    <item>স্প্যানীয়</item>
+    <item>ইতালীয়</item>
+    <item>জার্মান</item>
+    <item>জাপানি</item>
+    <item>রুশ</item>
+    <item>পর্তুগিজ</item>
+    <item>সুইডিশ</item>
+    <item>বর্মী</item>
+    <item>কাজাথ</item>
+    <item>আর্মেনীয়</item>
+    <item>গ্রিক</item>
+    <item>হিব্রু</item>
+    <item>গ্যালিশীয়</item>
     <item>Catalan</item>
     <item>Czech</item>
     <item>Arabic</item>
@@ -88,7 +88,7 @@
     <item>Dutch</item>
     <item>Brazilian portuguese</item>
     <item>Romanian</item>
-    <item>Swedish</item>
+    <item>সুইডিশ</item>
     <item>Chinese</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
