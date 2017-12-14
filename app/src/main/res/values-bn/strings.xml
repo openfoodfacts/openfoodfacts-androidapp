@@ -168,9 +168,9 @@
   <string name="txtPictureNeeded">দয়া করে প্রথমে একটি ছবি তুলুন</string>
   <string name="toastSending">আপলোড করা হচ্ছে...</string>
   <string name="dataSaved">আপনার ডিভাইসে স্থানীয়ভাবে সংরক্ষিত হয়েছে</string>
-  <string name="txtInfoAddUser">Please enter your login and password</string>
-  <string name="txtDataUpdated">Data updated</string>
-  <string name="txtLoading">Loading...</string>
+  <string name="txtInfoAddUser">দয়া করে আপনার লগইন এবং পাসওয়ার্ড প্রবেশ করান</string>
+  <string name="txtDataUpdated">তথ্য হালনাগাদ হয়েছে</string>
+  <string name="txtLoading">লোড হচ্ছে...</string>
   <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
