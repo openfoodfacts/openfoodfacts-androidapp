@@ -92,25 +92,25 @@
     <item>চীনা</item>
     <item>নরওয়েজীয় (বোকম্যাল)</item>
     <item>ড্যানিশ</item>
-    <item>Simplified Chinese</item>
-    <item>Farsi</item>
-    <item>Serbian</item>
+    <item>সরলক্রিত চীনা</item>
+    <item>ফার্সি</item>
+    <item>সার্বিয়</item>
   </string-array>
   <string-array name="images_array">
-    <item>Default</item>
+    <item>ডিফল্ট</item>
     <item>পুষ্টি</item>
     <item>উপকরণসমূহ</item>
   </string-array>
   <!-- Content Description -->
-  <string name="search_button">Search</string>
-  <string name="no_products">Products not found</string>
-  <string name="desc_list_item_icon">Item Icon</string>
-  <string name="alert_dialog_warning_title">Warning</string>
-  <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-  <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
-  <string name="toast_retrieving">Loading...</string>
-  <string name="txtGenericName">Common name :</string>
-  <string name="txtBarcode">Barcode :</string>
+  <string name="search_button">অনুসন্ধান</string>
+  <string name="no_products">পণ্যটি খুঁজে পাওয়া যায় নি</string>
+  <string name="desc_list_item_icon">আইটেম আইকন</string>
+  <string name="alert_dialog_warning_title">সতর্কতা</string>
+  <string name="alert_dialog_warning_msg_user">ইউজার/পাসওয়ার্ড পরিবর্তিত হয়েছে, দয়া করে তথ্য হালনাগাদ করুন</string>
+  <string name="alert_dialog_product_error_msg">পণ্যটি খুঁজে পাওয়া যায়নি, অনুগ্রহ করে আবার চেষ্টা করুন</string>
+  <string name="toast_retrieving">লোড হচ্ছে...</string>
+  <string name="txtGenericName">প্রচলিত নাম :</string>
+  <string name="txtBarcode">বারকোড :</string>
   <string name="txtQuantity">Quantity :</string>
   <string name="txtPackaging">Packaging :</string>
   <string name="txtBrands">Brands :</string>
@@ -187,14 +187,14 @@
   <string name="home_drawer">Home</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
-  <string name="search_drawer">Search</string>
+  <string name="search_drawer">অনুসন্ধান</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
   <string name="user_drawer">User</string>
   <string name="offline_edit_drawer">Offline edit</string>
   <string name="txt_anonymous">Anonymous</string>
-  <string name="txt_product_not_found">Products not found</string>
+  <string name="txt_product_not_found">পণ্যটি খুঁজে পাওয়া যায় নি</string>
   <string name="delete_txt">Delete</string>
   <string name="sign_in_drawer">Sign-in</string>
   <string name="alert_drawer">Allergen alert</string>
@@ -269,7 +269,7 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">Search</string>
+  <string name="action_search">অনুসন্ধান</string>
   <string name="search_hint">Search a product</string>
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No results found</string>
