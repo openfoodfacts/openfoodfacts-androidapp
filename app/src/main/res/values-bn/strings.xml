@@ -206,13 +206,13 @@
   <string name="action_edit_product">পণ্য সম্পাদনা করুন</string>
   <string name="title_info_dialog">তথ্য</string>
   <string name="text_offline_info_dialog">আপনি অফলাইন যখন পণ্যগুলি স্ক্যান করতে পারেন পরে তাদের খাদ্য সংস্থানগুলি যোগ করতে পারেন। আপনি স্ক্যান সমস্ত পণ্য এখানে প্রদর্শিত হবে, এবং আপনি নীচের বোতাম ব্যবহার করে তাদের পাঠাতে সক্ষম হবেন।</string>
-  <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
-  <string name="permission_title">Permission information</string>
-  <string name="permission_denied">Please activate permission in the settings</string>
-  <string name="permission_storage">Storage permission is needed to take or select pictures</string>
-  <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
-  <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
-  <string name="msg_input_empty">Please fill the fields first.</string>
+  <string name="permission_camera">বারকোড স্ক্যান এবং ছবি তুলতে ক্যামেরার অনুমতি প্রয়োজন।</string>
+  <string name="permission_title">অনুমতি তথ্য</string>
+  <string name="permission_denied">দয়া করে অনুমতি সেটিংস সক্রিয় করুন</string>
+  <string name="permission_storage">ছবি তুলতে বা নির্বাচন করতে স্টোরেজ অনুমতি প্রয়োজন</string>
+  <string name="info_download_data">এই কার্যকারিতা কাজ করার জন্য আপনাকে কিছু ডেটা ডাউনলোড করতে হবে, এটি ডাউনলোড করার জন্য হ্যাঁ টিপুন।</string>
+  <string name="info_download_data_connection">এই কার্যকারিতা কাজ করার জন্য আপনাকে কিছু ডেটা ডাউনলোড করতে হবে। দয়া করে ইন্টারনেট সংযোগ সক্রিয় করুন।</string>
+  <string name="msg_input_empty">দয়া করে প্রথমে ক্ষেত্রগুলি পূরণ করুন।</string>
   <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
