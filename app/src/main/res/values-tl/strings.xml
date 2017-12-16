@@ -62,21 +62,21 @@
     <item>rs</item>
   </string-array>
   <string-array name="lang_label_array">
-    <item>English</item>
-    <item>French</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-    <item>German</item>
-    <item>Japanese</item>
-    <item>Russian</item>
-    <item>Portuguese</item>
-    <item>Swedish</item>
-    <item>Burmese</item>
+    <item>Ingles</item>
+    <item>Pranses</item>
+    <item>Espanyol</item>
+    <item>Italiyano</item>
+    <item>Aleman</item>
+    <item>Hapon</item>
+    <item>Ruso</item>
+    <item>Portuges</item>
+    <item>Suweko</item>
+    <item>Burmes</item>
     <item>Kazakh</item>
     <item>Armenian</item>
-    <item>Greek</item>
-    <item>Hebrew</item>
-    <item>Galician</item>
+    <item>Griyego</item>
+    <item>Hebreyo</item>
+    <item>Galisyano</item>
     <item>Catalan</item>
     <item>Czech</item>
     <item>Arabic</item>
@@ -88,7 +88,7 @@
     <item>Dutch</item>
     <item>Brazilian portuguese</item>
     <item>Romanian</item>
-    <item>Swedish</item>
+    <item>Suweko</item>
     <item>Chinese</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
@@ -118,8 +118,8 @@
   <string name="txtLabels">Labels, certifications, awards :</string>
   <string name="txtManufacturing">Manufacturing or processing places :</string>
   <string name="txtIngredientsOrigins">Origin of ingredients :</string>
-  <string name="txtCity">City, state and country where purchased :</string>
-  <string name="txtStores">Stores :</string>
+  <string name="txtCity">Lungsod, estado at bansa kung saan nabili :</string>
+  <string name="txtStores">Mga Tindahan :</string>
   <string name="txtCountries">Countries where sold :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
