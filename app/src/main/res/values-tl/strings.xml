@@ -4,14 +4,14 @@
   <string name="action_settings">Mga Setting</string>
   <string name="action_about">Tungkol sa</string>
   <string name="action_discover">Mag-diskubre</string>
-  <string name="contribute">How to contribute</string>
-  <string name="action_find">Find</string>
-  <string name="text_barcode">Type the barcode :</string>
+  <string name="contribute">Paano ang mag ambag</string>
+  <string name="action_find">Hanapin</string>
+  <string name="text_barcode">I-type ang barcode:</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
-    <item>Summary</item>
-    <item>Ingredients</item>
-    <item>Nutrition</item>
+    <item>Buod</item>
+    <item>Mga Sangkap</item>
+    <item>Nutrisyon</item>
     <item>Nutrition Table</item>
   </string-array>
   <!-- Text units -->
@@ -98,8 +98,8 @@
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
-    <item>Nutrition</item>
-    <item>Ingredients</item>
+    <item>Nutrisyon</item>
+    <item>Mga Sangkap</item>
   </string-array>
   <!-- Content Description -->
   <string name="search_button">Search</string>
