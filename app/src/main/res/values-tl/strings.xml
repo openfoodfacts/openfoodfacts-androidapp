@@ -3,7 +3,7 @@
 <resources>
   <string name="action_settings">Mga Setting</string>
   <string name="action_about">Tungkol sa</string>
-  <string name="action_discover">Mag-diskubre</string>
+  <string name="action_discover">Tuklasin</string>
   <string name="contribute">Paano ang mag ambag</string>
   <string name="action_find">Hanapin</string>
   <string name="text_barcode">I-type ang barcode:</string>
@@ -12,7 +12,7 @@
     <item>Buod</item>
     <item>Mga Sangkap</item>
     <item>Nutrisyon</item>
-    <item>Nutrition Table</item>
+    <item>Talahanayan ng nutrisyon</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
