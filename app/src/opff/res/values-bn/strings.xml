@@ -11,5 +11,5 @@
   <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
-  <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
+  <string name="txtHome">খোলা পেস্ট ফুড ফ্যাক্টস উপাদান, এলার্জি, ইঙ্কিয়া এবং পোষা খাদ্য পণ্য লেবেলগুলিতে আমরা জানতে পারি এমন সব তথ্য দিয়ে পোষা খাদ্য পণ্যগুলির একটি ডাটাবেস। বুনন। বুনন।</string>
 </resources>
