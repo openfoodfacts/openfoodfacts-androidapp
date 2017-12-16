@@ -79,22 +79,22 @@
     <item>Galisyano</item>
     <item>Catalan</item>
     <item>Czech</item>
-    <item>Arabic</item>
+    <item>Arabe</item>
     <item>Finnish</item>
     <item>Hindi</item>
     <item>Kabyle</item>
-    <item>Korean</item>
+    <item>Koreano</item>
     <item>Latvian</item>
     <item>Dutch</item>
     <item>Brazilian portuguese</item>
-    <item>Romanian</item>
+    <item>Romano</item>
     <item>Suweko</item>
-    <item>Chinese</item>
+    <item>Tsino</item>
     <item>Norwegian (Bokmal)</item>
     <item>Danish</item>
-    <item>Simplified Chinese</item>
+    <item>Pinapayak na salitang Tsino</item>
     <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Serbiyano</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
@@ -102,13 +102,13 @@
     <item>Mga Sangkap</item>
   </string-array>
   <!-- Content Description -->
-  <string name="search_button">Search</string>
-  <string name="no_products">Products not found</string>
+  <string name="search_button">Maghanap</string>
+  <string name="no_products">Hindi natagpuan ang mga produkto</string>
   <string name="desc_list_item_icon">Item Icon</string>
-  <string name="alert_dialog_warning_title">Warning</string>
-  <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-  <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
-  <string name="toast_retrieving">Loading...</string>
+  <string name="alert_dialog_warning_title">Babala</string>
+  <string name="alert_dialog_warning_msg_user">User/password ay nabago, paki-update ang impormasyon</string>
+  <string name="alert_dialog_product_error_msg">Hindi natagpuan ang produkto, paki subukang muli</string>
+  <string name="toast_retrieving">Naglo-load...</string>
   <string name="txtGenericName">Common name :</string>
   <string name="txtBarcode">Barcode :</string>
   <string name="txtQuantity">Quantity :</string>
@@ -170,7 +170,7 @@
   <string name="dataSaved">Saved locally on your device</string>
   <string name="txtInfoAddUser">Please enter your login and password</string>
   <string name="txtDataUpdated">Data updated</string>
-  <string name="txtLoading">Loading...</string>
+  <string name="txtLoading">Naglo-load...</string>
   <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
@@ -187,14 +187,14 @@
   <string name="home_drawer">Home</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
-  <string name="search_drawer">Search</string>
+  <string name="search_drawer">Maghanap</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
   <string name="user_drawer">User</string>
   <string name="offline_edit_drawer">Offline edit</string>
   <string name="txt_anonymous">Anonymous</string>
-  <string name="txt_product_not_found">Products not found</string>
+  <string name="txt_product_not_found">Hindi natagpuan ang mga produkto</string>
   <string name="delete_txt">Delete</string>
   <string name="sign_in_drawer">Sign-in</string>
   <string name="alert_drawer">Allergen alert</string>
@@ -269,7 +269,7 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">Search</string>
+  <string name="action_search">Maghanap</string>
   <string name="search_hint">Search a product</string>
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No results found</string>
