@@ -86,13 +86,16 @@ public class SummaryProductFragment extends BaseFragment {
         barcode = product.getCode();
 
         if (isNotBlank(product.getImageUrl())) {
-            addPhotoLabel.setVisibility(View.GONE);
 
             Picasso.with(view.getContext())
                     .load(product.getImageUrl())
                     .into(mImageFront);
 
             mUrlImage = product.getImageUrl();
+        }
+        else
+        {
+            addPhotoLabel.setVisibility(View.GONE);
         }
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc

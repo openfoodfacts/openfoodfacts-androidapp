@@ -74,7 +74,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
 
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
-            levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), "", "", R.drawable.error_image));
+            levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), "", "", R.drawable.ic_error_outline_black_24dp));
         } else {
             // prefetch the uri
             customTabActivityHelper = new CustomTabActivityHelper();
