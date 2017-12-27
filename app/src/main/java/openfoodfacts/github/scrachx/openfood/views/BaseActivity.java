@@ -1,6 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 
@@ -18,13 +20,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        activityComponent = OFFApplication.getAppComponent().plusActivityComponent(new ActivityModule(this));
+        activityComponent.inject(this);
+    }
+
+    @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
         ButterKnife.bind(this);
         LocaleHelper.onCreate(this);
-
-        activityComponent = OFFApplication.getAppComponent().plusActivityComponent(new ActivityModule(this));
-        activityComponent.inject(this);
     }
 
     public ActivityComponent getActivityComponent() {

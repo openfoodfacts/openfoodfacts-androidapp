@@ -1,0 +1,19 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="openfoodfacts.github.scrachx.openfood.views.viewmodel.category.CategoryFragmentViewModel" />
+    </data>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:categories="@{viewModel.categories}"
+        tools:context="openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment" />
+
+</layout>

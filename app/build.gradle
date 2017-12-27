@@ -13,6 +13,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+
+    dataBinding {
+        enabled true
+    }
+
     flavorDimensions "versionCode"
     productFlavors {
         off {
@@ -47,7 +52,7 @@ android {
 
     defaultConfig {
         multiDexEnabled true
-       // jackOptions.enabled = true
+        // jackOptions.enabled = true
     }
 
     compileOptions {
@@ -60,7 +65,7 @@ android {
         disable 'MissingTranslation'
     }
 
-    packagingOptions{
+    packagingOptions {
         exclude 'META-INF/DEPENDENCIES.txt'
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
@@ -104,6 +109,7 @@ dependencies {
     implementation "com.android.support:preference-v14:$rootProject.supportLibraryVersion"
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
     implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
     compile "com.android.support:multidex:$rootProject.multidexVersion"
 
@@ -112,12 +118,19 @@ dependencies {
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
     provided "javax.annotation:jsr250-api:1.0"
 
+    //Rx
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
+
     //Networking
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-jackson:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
 
     //Serialization/Deserialization
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
     implementation "com.fasterxml.jackson.core:jackson-core:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-databind:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-annotations:$rootProject.jacksonVersion"
@@ -187,7 +200,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.1'
-    androidTestImplementation ('com.android.support.test.espresso:espresso-contrib:2.2.2') {
+    androidTestImplementation('com.android.support.test.espresso:espresso-contrib:2.2.2') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'com.android.support', module: 'design'

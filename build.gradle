@@ -30,9 +30,13 @@ ext {
 
     daggerVersion = '2.13'
 
+    rxVersion = '2.1.7'
+    rxAndroidVersion = '2.0.1'
+
     retrofitVersion = '2.3.0'
     okhttpVersion = '3.9.0'
 
+    gsonVersion = '2.8.2'
     jacksonVersion = '2.8.9'
 
     greenDaoVersion = '3.2.0'
