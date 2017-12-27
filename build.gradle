@@ -28,6 +28,8 @@ ext {
     supportLibraryVersion = '26.0.2'
     multidexVersion = '1.0.2'
 
+    daggerVersion = '2.13'
+
     retrofitVersion = '2.3.0'
     okhttpVersion = '3.9.0'
 

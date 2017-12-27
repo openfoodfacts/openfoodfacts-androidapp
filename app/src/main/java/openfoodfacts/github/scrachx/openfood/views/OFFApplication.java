@@ -8,6 +8,8 @@ import org.greenrobot.greendao.database.DatabaseOpenHelper;
 import org.greenrobot.greendao.query.QueryBuilder;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.dagger.component.AppComponent;
+import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
@@ -16,6 +18,12 @@ public class OFFApplication extends Application {
 
     private DaoSession daoSession;
     private boolean DEBUG = false;
+
+    private static AppComponent appComponent;
+
+    public static AppComponent getAppComponent() {
+        return appComponent;
+    }
 
     @Override
     public void onCreate() {
@@ -41,6 +49,9 @@ public class OFFApplication extends Application {
         // DEBUG
         QueryBuilder.LOG_VALUES = DEBUG;
         QueryBuilder.LOG_SQL = DEBUG;
+
+        appComponent = AppComponent.Initializer.init(new AppModule(this));
+        appComponent.inject(this);
     }
 
     public DaoSession getDaoSession() {

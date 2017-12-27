@@ -96,93 +96,98 @@ greendao {
 dependencies {
 
     //Android
-    compile "com.android.support:customtabs:$rootProject.supportLibraryVersion"
-    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
-    compile "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
-    compile "com.android.support:support-v4:$rootProject.supportLibraryVersion"
-    compile "com.android.support:preference-v14:$rootProject.supportLibraryVersion"
-    compile "com.android.support:design:$rootProject.supportLibraryVersion"
-    compile "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:customtabs:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:preference-v14:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
 
     compile "com.android.support:multidex:$rootProject.multidexVersion"
 
+    //DI
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
+    provided "javax.annotation:jsr250-api:1.0"
+
     //Networking
-    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    compile "com.squareup.retrofit2:converter-jackson:$rootProject.retrofitVersion"
-    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-jackson:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
 
     //Serialization/Deserialization
-    compile "com.fasterxml.jackson.core:jackson-core:$rootProject.jacksonVersion"
-    compile "com.fasterxml.jackson.core:jackson-databind:$rootProject.jacksonVersion"
-    compile "com.fasterxml.jackson.core:jackson-annotations:$rootProject.jacksonVersion"
+    implementation "com.fasterxml.jackson.core:jackson-core:$rootProject.jacksonVersion"
+    implementation "com.fasterxml.jackson.core:jackson-databind:$rootProject.jacksonVersion"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:$rootProject.jacksonVersion"
 
     //CSV Serialization/Deserialization
-    compile "com.opencsv:opencsv:$rootProject.openCsvVersion"
+    implementation "com.opencsv:opencsv:$rootProject.openCsvVersion"
 
     //Database
-    compile "org.greenrobot:greendao:$rootProject.greenDaoVersion"
+    implementation "org.greenrobot:greendao:$rootProject.greenDaoVersion"
 
     //Image Loading
-    compile "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
 
     //Image from gallery or camera
-    compile "com.github.jkwiecien:EasyImage:$rootProject.easyImageVersion"
+    implementation "com.github.jkwiecien:EasyImage:$rootProject.easyImageVersion"
 
     //Binding
-    compile "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
+    implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
 
     //Barcode and QR Scanner
-    compile "me.dm7.barcodescanner:zxing:$rootProject.qrScannerVersion"
+    implementation "me.dm7.barcodescanner:zxing:$rootProject.qrScannerVersion"
 
     //HTML Dom
-    compile "org.jsoup:jsoup:$rootProject.htmlDomVersion"
+    implementation "org.jsoup:jsoup:$rootProject.htmlDomVersion"
 
     //Apache
-    compile "org.apache.commons:commons-collections4:$rootProject.apacheCollectionsVersion"
-    compile "commons-validator:commons-validator:$rootProject.apacheValidatorVersion"
+    implementation "org.apache.commons:commons-collections4:$rootProject.apacheCollectionsVersion"
+    implementation "commons-validator:commons-validator:$rootProject.apacheValidatorVersion"
 
     //UI Component : Custom Toast
-    compile "net.steamcrafted:load-toast:$rootProject.loadToastVersion"
+    implementation "net.steamcrafted:load-toast:$rootProject.loadToastVersion"
 
     //UI Component : ImageView with Zooming
-    compile "com.github.chrisbanes:PhotoView:$rootProject.zoomingImgVersion"
+    implementation "com.github.chrisbanes:PhotoView:$rootProject.zoomingImgVersion"
 
     //UI Component : Material Dialog
-    compile("com.afollestad.material-dialogs:core:$rootProject.materialDialogVersion") {
+    implementation("com.afollestad.material-dialogs:core:$rootProject.materialDialogVersion") {
         transitive = true
     }
 
     //UI Component : Material Drawer
-    compile('com.mikepenz:materialdrawer:6.0.2@aar') {
+    implementation('com.mikepenz:materialdrawer:6.0.2@aar') {
         transitive = true
     }
 
     //UI Component : Adapters
     //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
-    compile 'com.mikepenz:fastadapter-commons:2.1.0@aar'
+    implementation 'com.mikepenz:fastadapter-commons:2.1.0@aar'
 
     //UI Component : Fab
-    compile "com.github.clans:fab:$rootProject.fabVersion"
+    implementation "com.github.clans:fab:$rootProject.fabVersion"
 
     //UI Component : Font Icons
-    compile "com.mikepenz:iconics-core:$rootProject.fontIconCoreVersion"
-    compile "com.mikepenz:google-material-typeface:$rootProject.googleMaterialFontVersion"
-    compile "com.mikepenz:material-design-iconic-typeface:$rootProject.materialFontVersion"
-    compile "com.mikepenz:fontawesome-typeface:$rootProject.awesomeFontVersion"
+    implementation "com.mikepenz:iconics-core:$rootProject.fontIconCoreVersion"
+    implementation "com.mikepenz:google-material-typeface:$rootProject.googleMaterialFontVersion"
+    implementation "com.mikepenz:material-design-iconic-typeface:$rootProject.materialFontVersion"
+    implementation "com.mikepenz:fontawesome-typeface:$rootProject.awesomeFontVersion"
 
     //Testing
-    testCompile "junit:junit:$rootProject.jUnitVersion"
-    testCompile "org.mockito:mockito-core:$rootProject.mockitoVersion"
-    testCompile "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"
+    testImplementation "junit:junit:$rootProject.jUnitVersion"
+    testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    testImplementation "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"
 
     // Required for instrumented tests
-    androidTestCompile 'com.android.support.test:runner:1.0.1'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
-    androidTestCompile 'com.android.support.test.espresso:espresso-intents:3.0.1'
-    androidTestCompile 'com.android.support.test.espresso:espresso-web:3.0.1'
-    androidTestCompile ('com.android.support.test.espresso:espresso-contrib:2.2.2') {
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.1'
+    androidTestImplementation ('com.android.support.test.espresso:espresso-contrib:2.2.2') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'com.android.support', module: 'design'
