@@ -201,7 +201,7 @@ public class OpenFoodAPIServiceTest {
         assertEquals("product not found", response.body().getStatusVerbose());
         assertEquals(barcode, response.body().getCode());
     }
-
+/*
     @Test
     public void saveImage_noImageFile_ko() throws IOException {
 
@@ -224,7 +224,7 @@ public class OpenFoodAPIServiceTest {
                 .node("status")
                     .isEqualTo("status not ok");
     }
-
+*/
     @Test
     public void post_product() throws IOException {
         SendProduct product = new SendProduct();

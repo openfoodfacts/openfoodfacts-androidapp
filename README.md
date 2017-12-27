@@ -5,19 +5,21 @@ Open Food Facts Android Application
 
 [![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
 [![Build Status](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp.svg?branch=master)](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp) 
-[![Stories in Ready](https://badge.waffle.io/openfoodfacts/openfoodfacts-androidapp.svg?label=ready&title=Ready)](http://waffle.io/openfoodfacts/openfoodfacts-androidapp)
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/openfoodfacts/openfoodfacts-androidapp.svg)](http://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Average time to resolve an issue")
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/openfoodfacts/openfoodfacts-androidapp.svg)](http://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Percentage of issues still open")
+[![Stories in Ready](https://badge.waffle.io/openfoodfacts/openfoodfacts-androidapp.svg?label=ready&title=Ready)](https://waffle.io/openfoodfacts/openfoodfacts-androidapp)
+[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/openfoodfacts/openfoodfacts-androidapp.svg)](https://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Average time to resolve an issue")
+[![Percentage of issues still open](https://isitmaintained.com/badge/open/openfoodfacts/openfoodfacts-androidapp.svg)](https://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Percentage of issues still open")
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/openfoodfacts/localized.svg)](https://crowdin.com/project/openfoodfacts)
 <br>
 <img src="https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png">
 ## What is Open Food Facts?
 
-
-<a href="https://f-droid.org/repository/browse/?fdid=openfoodfacts.github.scrachx.openfood">
-<img src=http://lingoworld.eu/at//public/images/fdroid.png></a>
-<a href="https://play.google.com/store/apps/details?id=openfoodfacts.github.scrachx.openfood"><img src=https://play.google.com/intl/en_us/badges/images/badge_new.png></a><br>
+<a href="https://f-droid.org/app/openfoodfacts.github.scrachx.openfood">
+    <img src="https://f-droid.org/badge/get-it-on.png"
+         alt="Get it on F-Droid" height="70">
+</a><a href="https://play.google.com/store/apps/details?id=openfoodfacts.github.scrachx.openfood"><img src=https://play.google.com/intl/en_us/badges/images/badge_new.png></a><br>
 (These are beta versions, <a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner">this is the stable version</a>) 
+
+<img src="https://lh3.googleusercontent.com/8WatIseTIIFe5dLA2Gje3CVFZkiLWKVkt4RjuxtdQk56G1MEHmQ5cR57ICQnTFaSLss=h900" height="300"><img src="https://lh3.googleusercontent.com/xSkBdFey8CNhIN7lBjAWGzuMd6hTdfKNeeWI0dchehqyL3CgyU7jER5C5dM_CzwQyJA=h900" height="300"><img src="https://lh3.googleusercontent.com/bbDgVhz73xXZzA2-QjkvP3V0aFeX9iys5lh2vWmjMsg4UlMXERBxoRqAGcgW6YFbJaET=h900" height="300"><img src="https://lh3.googleusercontent.com/bL1v0l8BKfHQG2x4k-macPi5w3dGLbxGDaBuRPtKTzXE56-HXQmNXk0Ew60v1Kyh3g=h900" height="300">
 
 ### A food products database
 

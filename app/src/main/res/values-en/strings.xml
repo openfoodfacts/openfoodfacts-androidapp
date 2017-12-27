@@ -59,7 +59,8 @@
     <item>da</item>
     <item>zh-rCN</item>
     <item>fa</item>
-    <item>rs</item>
+    <item>sr</item>
+    <item>b+sr+Latn</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
@@ -94,7 +95,8 @@
     <item>Danish</item>
     <item>Simplified Chinese</item>
     <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Serbian (Cyrillic)</item>
+    <item>Serbian (Latin)</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>

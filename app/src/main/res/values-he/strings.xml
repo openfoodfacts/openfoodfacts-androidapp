@@ -23,7 +23,7 @@
     <item>מ״ל</item>
     <item>ml</item>
     <item>cl</item>
-    <item>fl oz</item>
+    <item>אונקיה</item>
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
@@ -221,7 +221,7 @@
   <string name="prefs_scan_startup">סריקה עם ההפעלה</string>
   <string name="prefs_scan_startup_summary">אם אפשרות זו נבחרה הסריקה תחל עם הפעלת היישומון</string>
   <string name="prefs_power_mode">סריקת על</string>
-  <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
+  <string name="prefs_power_mode_summary">ניתן לסרוק מוצרים במהירות בסופר כדי לראות אילו מהם לא נמצאים במסד הנתונים.</string>
   <string name="prefs_language">שפה</string>
   <string name="prefs_language_summary">החלפת שפה</string>
   <string name="scan_history_drawer">היסטוריה</string>
@@ -273,9 +273,9 @@
   <string name="search_hint">חיפוש מוצר</string>
   <string name="number_of_results">מספר התוצאות:</string>
   <string name="txt_no_results">לא נמצאו תוצאות</string>
-  <string name="txt_extend_search">Try broadening your search or add the product</string>
-  <string name="txt_cant_load_search_results">Can\'t load search results</string>
-  <string name="txt_try_again">Try again</string>
+  <string name="txt_extend_search">כדאי להרחיב את החיפוש שלך או להוסיף את המוצר</string>
+  <string name="txt_cant_load_search_results">לא ניתן לטעון את תוצאות החיפוש</string>
+  <string name="txt_try_again">נא לנסות שוב</string>
   <string name="nutrition_lactose">לקטוז</string>
   <string name="nutrition_casein">קזאין</string>
   <string name="nutrition_maltodextrins">מלטודקסטרין</string>

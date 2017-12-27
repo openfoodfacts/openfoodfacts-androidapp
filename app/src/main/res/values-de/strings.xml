@@ -10,17 +10,17 @@
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Zusammenfassung</item>
-    <item>Inhaltsstoffe</item>
+    <item>Zutaten</item>
     <item>Nährwertangaben</item>
     <item>Nährwerttabelle</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
+    <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
-    <item>ml</item>
     <item>ml</item>
     <item>cl</item>
     <item>fl.oz.</item>
@@ -99,7 +99,7 @@
   <string-array name="images_array">
     <item>Standard</item>
     <item>Nährwerte</item>
-    <item>Inhaltsstoffe</item>
+    <item>Zutaten</item>
   </string-array>
   <!-- Content Description -->
   <string name="search_button">Suchen</string>
@@ -125,15 +125,15 @@
   <string name="txtSubstances">Inhaltsstoffe oder Produkte, die zu Allergien oder Überempfindlichkeiten führen:</string>
   <string name="txtAdditives">Zusatzstoffe:</string>
   <string name="txtTraces">Spuren:</string>
-  <string name="txtMayBeFromPalmOilProduct">Möglicherweise aus Palmöl hergestellte Zutaten:</string>
-  <string name="txtPalmOilProduct">Aus Palmöl hergestellte Zutaten:</string>
-  <string name="txtServingSize">Portiongröße:</string>
+  <string name="txtMayBeFromPalmOilProduct">Zutaten, die möglicherweise aus Palmöl hergestellt werden :</string>
+  <string name="txtPalmOilProduct">Aus Palmöl hergestellte Zutaten :</string>
+  <string name="txtServingSize">Portionsgröße:</string>
   <string name="txtNutrientLevel100g">Nährwertgehalt pro 100g:</string>
   <string name="txtNutritionLevelLow">in geringer Menge</string>
   <string name="txtNutritionLevelModerate">in mäßiger Menge</string>
   <string name="txtNutritionLevelHigh">in hoher Menge</string>
   <string name="txtLogin">Benutzername:</string>
-  <string name="txtPass">Passwort :</string>
+  <string name="txtPass">Passwort:</string>
   <string name="txtTitleHome">Öffnen Sie Ihr Essen und lernen Sie was Sie essen</string>
   <string name="txtSave">Speichern</string>
   <string name="txtSignIn">Anmelden</string>
@@ -157,7 +157,7 @@
   <string name="txtYes">Ja</string>
   <string name="txtNo">Nein</string>
   <string name="hintNameProduct">Name</string>
-  <string name="hintEnergy">Energie in kJ pro Portion</string>
+  <string name="hintEnergy">Brennwert in kJ pro Portion</string>
   <string name="hintEnergyUnit">Energieeinheit</string>
   <string name="hintWeight">Gewicht</string>
   <string name="hintStores">Laden</string>
@@ -238,8 +238,8 @@
   <string name="nutrition_carbohydrate_short_name">Kohlenhydrate (g)</string>
   <string name="nutrition_cholesterol">Cholesterin</string>
   <string name="nutrition_cholesterol_short_name">Cholesterin (g)</string>
-  <string name="nutrition_energy">Energie</string>
-  <string name="nutrition_energy_short_name">Energie</string>
+  <string name="nutrition_energy">Brennwert</string>
+  <string name="nutrition_energy_short_name">Brennwert</string>
   <string name="nutrition_fat">Fett</string>
   <string name="nutrition_fat_short_name">Fett (g)</string>
   <string name="nutrition_fiber">Ballaststoffe</string>
@@ -317,7 +317,7 @@
   <string name="silica">Siliziumdioxid</string>
   <string name="bicarbonate">Bikarbonat</string>
   <string name="potassium">Kalium</string>
-  <string name="chloride">Chlor</string>
+  <string name="chloride">Chlorid</string>
   <string name="calcium">Kalzium</string>
   <string name="phosphorus">Phosphor</string>
   <string name="iron">Eisen</string>
@@ -329,7 +329,7 @@
   <string name="selenium">Selen</string>
   <string name="chromium">Chrom</string>
   <string name="molybdenum">Molybdän</string>
-  <string name="iodine">Jod</string>
+  <string name="iodine">Iod</string>
   <string name="caffeine">Koffein</string>
   <string name="taurine">Taurin</string>
   <string name="ph">pH</string>

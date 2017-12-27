@@ -110,7 +110,7 @@
   <string name="alert_dialog_product_error_msg">Produkten kunde inte hittas, var vänlig försök igen</string>
   <string name="toast_retrieving">Laddar...</string>
   <string name="txtGenericName">Vanligt namn :</string>
-  <string name="txtBarcode">Streckkod</string>
+  <string name="txtBarcode">Streckkod :</string>
   <string name="txtQuantity">Kvantitet:</string>
   <string name="txtPackaging">Paketering:</string>
   <string name="txtBrands">Märken:</string>
@@ -128,7 +128,7 @@
   <string name="txtMayBeFromPalmOilProduct">Ingredienser som kan vara från palmolja :</string>
   <string name="txtPalmOilProduct">Ingredienser från palmolja :</string>
   <string name="txtServingSize">Storlek på portion :</string>
-  <string name="txtNutrientLevel100g">Näringsnivåer per 100g</string>
+  <string name="txtNutrientLevel100g">Näringsnivåer per 100g :</string>
   <string name="txtNutritionLevelLow">i låg kvantitet</string>
   <string name="txtNutritionLevelModerate">i måttlig mängd</string>
   <string name="txtNutritionLevelHigh">i hög kvantitet</string>

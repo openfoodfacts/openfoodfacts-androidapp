@@ -3,7 +3,7 @@
 <resources>
   <string name="action_settings">الإعدادات</string>
   <string name="action_about">حول</string>
-  <string name="action_discover">اكتشف</string>
+  <string name="action_discover">إكتشف</string>
   <string name="contribute">كيفية المساهمة</string>
   <string name="action_find">بحث</string>
   <string name="text_barcode">اكتب الرمز الشريطي:</string>
@@ -17,9 +17,9 @@
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
-    <item>ج</item>
+    <item>غ</item>
     <item>مغ</item>
-    <item>كجم</item>
+    <item>كغ</item>
     <item>مل</item>
     <item>مل</item>
     <item>البنود</item>
@@ -79,10 +79,10 @@
     <item>الجاليكية</item>
     <item>الكاتالونية</item>
     <item>التشيكية</item>
-    <item>اللغة العربية</item>
-    <item>اللغة الفنلندية</item>
+    <item>العربية</item>
+    <item>الفنلندية</item>
     <item>الهندية</item>
-    <item>قابيل</item>
+    <item>القبيلية</item>
     <item>الكورية</item>
     <item>اللاتفية</item>
     <item>الهولندية</item>
@@ -92,7 +92,7 @@
     <item>الصينية</item>
     <item>النرويجية (بوكمال)</item>
     <item>الدانماركية</item>
-    <item>اللغة الصينية المُبسطة</item>
+    <item>الصينية المبسطة</item>
     <item>الفارسية</item>
     <item>الصربية</item>
   </string-array>
@@ -111,32 +111,32 @@
   <string name="toast_retrieving">جاري التحميل...</string>
   <string name="txtGenericName">الاسم الشائع:</string>
   <string name="txtBarcode">الرمز الشريطي</string>
-  <string name="txtQuantity">الكمية</string>
-  <string name="txtPackaging">التغليف</string>
-  <string name="txtBrands">العلامات التجارية</string>
-  <string name="txtCategories">الفئات</string>
+  <string name="txtQuantity">الكمية :</string>
+  <string name="txtPackaging">التغليف :</string>
+  <string name="txtBrands">العلامات التجارية :</string>
+  <string name="txtCategories">الفئات :</string>
   <string name="txtLabels">التسميات، الشهادات، الجوائز:</string>
-  <string name="txtManufacturing">أماكن التصنيع أو التجهيز</string>
-  <string name="txtIngredientsOrigins">أصل المكونات</string>
-  <string name="txtCity">المدينة والولاية والبلاد حيث تم شراؤها</string>
+  <string name="txtManufacturing">أماكن التصنيع أو التجهيز :</string>
+  <string name="txtIngredientsOrigins">أصل المكونات :</string>
+  <string name="txtCity">المدينة والولاية والبلاد حيث تم شراؤها:</string>
   <string name="txtStores">المتاجر:</string>
-  <string name="txtCountries">البلدان التي يباع فيها</string>
+  <string name="txtCountries">البلدان التي يباع فيها:</string>
   <string name="txtIngredients">قائمة المكونات:</string>
-  <string name="txtSubstances">المواد أو المنتجات التي تسبب الحساسية أو عدم التحمل.</string>
-  <string name="txtAdditives">إضافات</string>
-  <string name="txtTraces">آثار</string>
-  <string name="txtMayBeFromPalmOilProduct">المكونات التي قد تكون من زيت النخيل</string>
-  <string name="txtPalmOilProduct">مكونات من زيت النخيل</string>
-  <string name="txtServingSize">حجم الحصة</string>
+  <string name="txtSubstances">المواد أو المنتجات التي تسبب الحساسية أو عدم التحمل:</string>
+  <string name="txtAdditives">الإضافات:</string>
+  <string name="txtTraces">آثار:</string>
+  <string name="txtMayBeFromPalmOilProduct">المكونات التي قد تكون من زيت النخيل:</string>
+  <string name="txtPalmOilProduct">مكونات من زيت النخيل:</string>
+  <string name="txtServingSize">حجم الحصة:</string>
   <string name="txtNutrientLevel100g">مستويات المواد الغذائية لـ 100غ:</string>
-  <string name="txtNutritionLevelLow">في كمية المخزون</string>
-  <string name="txtNutritionLevelModerate">كمية معتدلة</string>
+  <string name="txtNutritionLevelLow">في كمية منخفضة</string>
+  <string name="txtNutritionLevelModerate">في كمية معتدلة</string>
   <string name="txtNutritionLevelHigh">كمية عالية</string>
   <string name="txtLogin">تسجيل الدخول:</string>
   <string name="txtPass">كلمة المرور:</string>
   <string name="txtTitleHome">افتح غذائك واعرف ما تأكله</string>
   <string name="txtSave">حفظ</string>
-  <string name="txtSignIn">تسجل الدخول</string>
+  <string name="txtSignIn">تسجيل الدخول</string>
   <string name="txtUser">لوحة المستخدم</string>
   <string name="txtToastSaved">تم حفظ المستخدم</string>
   <string name="txtSalt">ملح</string>
@@ -151,19 +151,19 @@
   <string name="txtInfoLoginOk">تم حفظ المستخدم</string>
   <string name="txtInfoLoginNo">لم يتم حفظ المستخدم</string>
   <string name="txtDialogsTitle">معلومات</string>
-  <string name="txtDialogsContent">المنتج يمكنك تفحص لا يوجد بعد في \"الحقائق الغذائية مفتوحة\". الرجاء إضافته.</string>
-  <string name="txtDialogsContentPowerMode">المنتج الذي تم تفحصه موجود بالفعل في \"فتح الغذاء الحقائق\".</string>
+  <string name="txtDialogsContent">المنتج الذي تم مسحه غير موجود حتى الآن في الحقائق الغذائية المفتوحة. الرجاء إضافته.</string>
+  <string name="txtDialogsContentPowerMode">المنتج الذي تم مسحه موجود بالفعل في \"الحقائق الغذائية المفتوحة\".</string>
   <string name="txtDialogsContentSend">هل تريد أن ترسل المنتجات المحفوظة في قاعدة البيانات؟</string>
   <string name="txtYes">نعم</string>
   <string name="txtNo">لا</string>
   <string name="hintNameProduct">اﻹسم</string>
-  <string name="hintEnergy">الطاقة في كيلوجول كل خدمة</string>
+  <string name="hintEnergy">الطاقة في كيلوجول لكل حصة</string>
   <string name="hintEnergyUnit">وحدة الطاقة</string>
   <string name="hintWeight">الوزن</string>
   <string name="hintStores">المتجر</string>
   <string name="hintBrand">العلامة التجارية</string>
   <string name="txtTakePicture">إلتقاط صورة</string>
-  <string name="txtSendAll">أرسل الكل</string>
+  <string name="txtSendAll">رفع الكل</string>
   <string name="txtNoData">لا توجد بيانات</string>
   <string name="txtPictureNeeded">يرجى أخذ صورة أولاً</string>
   <string name="toastSending">جاري الإرسال...</string>
@@ -178,11 +178,11 @@
   <string name="txtContentDialogUploading">من فضلك لا تخرج أثناء العملية ...</string>
   <string name="txtAbout">ملاحظة: يتم نشر الصور التي ترسلها تحت رخصة حرة سمات الإبداعية العموم والمشاركة على قدم المساواة.</string>
   <string name="txtAllsent">تم إرسال المنتجات</string>
-  <string name="txtPalm">لا يحتوي المنتج على أي  زيت نخيل</string>
+  <string name="txtPalm">لا يحتوي المنتج على أي زيت نخيل</string>
   <string name="txtBarcodeNotValid">الرمز الشريطي غير صحيح.</string>
   <string name="try_it_scan_now">مسح المنتج</string>
   <string name="share">مشاركة</string>
-  <string name="msg_share">نظرة على هذا المنتج على فتح حقائق الغذاء:</string>
+  <string name="msg_share">انظر لهذا المنتج على \"الحقائق الغذائية المفتوحة\":</string>
   <string name="create_account">تسجيل</string>
   <string name="home_drawer">الصفحة الرئيسية</string>
   <string name="open_beauty_drawer">حقائق الجمال مفتوحة</string>
