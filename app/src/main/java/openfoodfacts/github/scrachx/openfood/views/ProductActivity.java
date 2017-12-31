@@ -35,6 +35,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.RatingFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
@@ -151,10 +152,13 @@ public class ProductActivity extends BaseActivity {
         if(BuildConfig.FLAVOR.equals("off")) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
-        }
-        if(BuildConfig.FLAVOR.equals("opff")) {
+            adapterResult.addFragment(new RatingFragment(), menuTitles[4]);
+        }else if(BuildConfig.FLAVOR.equals("opff")) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
+            adapterResult.addFragment(new RatingFragment(), menuTitles[4]);
+        }else{
+            adapterResult.addFragment(new RatingFragment(), menuTitles[4]);
         }
         viewPager.setAdapter(adapterResult);
     }
