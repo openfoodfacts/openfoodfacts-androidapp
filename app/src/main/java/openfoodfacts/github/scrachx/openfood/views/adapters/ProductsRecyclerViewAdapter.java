@@ -62,7 +62,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
             Picasso.with(context)
                     .load(products.get(position).getImageSmallUrl())
                     .placeholder(R.drawable.placeholder_thumb)
-                    .error(R.drawable.error_image)
+                    .error(R.drawable.ic_error_outline_black_24dp)
                     .fit()
                     .centerCrop()
                     .into(productHolder.vProductImage);
