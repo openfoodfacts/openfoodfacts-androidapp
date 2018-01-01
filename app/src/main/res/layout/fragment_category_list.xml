@@ -4,16 +4,46 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="openfoodfacts.github.scrachx.openfood.views.viewmodel.category.CategoryFragmentViewModel" />
     </data>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:categories="@{viewModel.categories}"
-        tools:context="openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment" />
+        tools:context="openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:categories="@{viewModel.categories}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="@{viewModel.showProgress}">
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/toast_retrieving"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </FrameLayout>
 
 </layout>

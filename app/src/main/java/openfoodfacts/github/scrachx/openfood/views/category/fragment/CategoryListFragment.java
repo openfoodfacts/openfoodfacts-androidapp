@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,7 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
 
         binding.recycler.setHasFixedSize(true);
         binding.recycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recycler.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 
         binding.setViewModel(getViewModel());
     }
