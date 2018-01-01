@@ -195,7 +195,7 @@ public class OpenFoodAPIServiceTest {
         String barcode = "457457457";
         Response<State> response = serviceRead.getProductByBarcode(barcode).execute();
 
-        assertTrue(response.isSuccess());
+        assertTrue(response.isSuccessful());
 
         assertEquals(0, response.body().getStatus());
         assertEquals("product not found", response.body().getStatusVerbose());
@@ -238,7 +238,7 @@ public class OpenFoodAPIServiceTest {
 //        Response<State> execute = serviceWrite.saveProduct(product).execute();
         Response<State> execute = serviceWrite.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), null, null, PRODUCT_API_COMMENT).execute();
 
-        assertTrue(execute.isSuccess());
+        assertTrue(execute.isSuccessful());
 
         State body = execute.body();
         assertEquals(body.getStatus(), 1);
@@ -283,7 +283,7 @@ public class OpenFoodAPIServiceTest {
     }
 
     private void assertProductsFound(Response<Search> response) {
-        assertTrue(response.isSuccess());
+        assertTrue(response.isSuccessful());
         Search search = response.body();
         List<Product> products = search.getProducts();
         assertNotNull(products);
@@ -291,7 +291,7 @@ public class OpenFoodAPIServiceTest {
         assertFalse(products.isEmpty());
     }
     private void assertNoProductsFound(Response<Search> response) {
-        assertTrue(response.isSuccess());
+        assertTrue(response.isSuccessful());
         Search search = response.body();
         List<Product> products = search.getProducts();
         assertTrue(products.isEmpty());
