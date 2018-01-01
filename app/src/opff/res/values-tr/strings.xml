@@ -11,5 +11,5 @@
   <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
-  <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
+  <string name="txtHome">Open Pet Food Facts, evde beslenen hayvan gıda ürünleri etiketlerinde bulunan maddelerle, alerjenlerle, işaretlerle ve tüm çerezlerle evde beslenen hayvan ürünlerinin bir veritabanıdır. Hav. Hav.</string>
 </resources>

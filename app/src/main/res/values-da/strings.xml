@@ -4,9 +4,9 @@
   <string name="action_settings">Indstillinger</string>
   <string name="action_about">Om</string>
   <string name="action_discover">Opdage</string>
-  <string name="contribute">How to contribute</string>
+  <string name="contribute">Hvordan du bidrager</string>
   <string name="action_find">Find</string>
-  <string name="text_barcode">Type the barcode :</string>
+  <string name="text_barcode">Indtast stregkoden:</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Oversigt</item>
@@ -71,27 +71,27 @@
     <item>Russisk</item>
     <item>Portugisisk</item>
     <item>Svensk</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>Armenian</item>
+    <item>Burmesisk</item>
+    <item>Kasakhisk</item>
+    <item>Armensk</item>
     <item>Græsk</item>
     <item>Hebraisk</item>
-    <item>Galician</item>
-    <item>Catalan</item>
-    <item>Czech</item>
+    <item>Galicisk</item>
+    <item>Katalansk</item>
+    <item>Tjekkisk</item>
     <item>Arabisk</item>
     <item>Finsk</item>
     <item>Hindi</item>
-    <item>Kabyle</item>
+    <item>Kabylsk</item>
     <item>Koreansk</item>
-    <item>Latvian</item>
+    <item>Lettisk</item>
     <item>Nederlandsk</item>
-    <item>Brazilian portuguese</item>
+    <item>Brasiliansk Portugisisk</item>
     <item>Rumensk</item>
     <item>Svensk</item>
     <item>Kinesisk</item>
     <item>Norsk (Bokmål)</item>
-    <item>Danish</item>
+    <item>Dansk</item>
     <item>Simplified Chinese</item>
     <item>Farsi</item>
     <item>Serbian</item>
@@ -123,33 +123,33 @@
   <string name="txtCountries">Countries where sold :</string>
   <string name="txtIngredients">Liste af ingrediænser:</string>
   <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
-  <string name="txtAdditives">Additives :</string>
-  <string name="txtTraces">Traces :</string>
+  <string name="txtAdditives">Tilsætningsstoffer :</string>
+  <string name="txtTraces">Spor:</string>
   <string name="txtMayBeFromPalmOilProduct">Ingrediænser som kan være fremstillet fra palmeolie</string>
   <string name="txtPalmOilProduct">Ingrediænser fremstillet fra palmeolie</string>
-  <string name="txtServingSize">Serving size :</string>
-  <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
-  <string name="txtNutritionLevelLow">in low quantity</string>
-  <string name="txtNutritionLevelModerate">in moderate quantity</string>
-  <string name="txtNutritionLevelHigh">in high quantity</string>
-  <string name="txtLogin">Login :</string>
+  <string name="txtServingSize">Portionsstørrelse :</string>
+  <string name="txtNutrientLevel100g">Næringsstoffer per 100 g :</string>
+  <string name="txtNutritionLevelLow">i lav mængde</string>
+  <string name="txtNutritionLevelModerate">i moderat mængde</string>
+  <string name="txtNutritionLevelHigh">i høj mængde</string>
+  <string name="txtLogin">Log på :</string>
   <string name="txtPass">Adgangskode:</string>
-  <string name="txtTitleHome">Open your food and know what you eat</string>
-  <string name="txtSave">Save</string>
+  <string name="txtTitleHome">Åbn din mad og ved hvad du spiser</string>
+  <string name="txtSave">Gem</string>
   <string name="txtSignIn">Log ind</string>
-  <string name="txtUser">User panel</string>
+  <string name="txtUser">Brugerpanel</string>
   <string name="txtToastSaved">Bruger gemt</string>
   <string name="txtSalt">Salt</string>
-  <string name="txtFat">Fat</string>
-  <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Satured fat</string>
+  <string name="txtFat">Fedt</string>
+  <string name="txtSugars">Sukker</string>
+  <string name="txtSaturatedFat">Modificeret fedt</string>
   <string name="hintBarcode">Strekkode</string>
-  <string name="hintLogin">Login</string>
+  <string name="hintLogin">Log på</string>
   <string name="hintPass">Adgangskode:</string>
-  <string name="errorLogin">Login or password error</string>
-  <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
+  <string name="errorLogin">Login eller adgangskode fejl</string>
+  <string name="errorWeb">Vi kunne ikke få adgang til internettet. Har du problemer med tilslutning?</string>
   <string name="txtInfoLoginOk">Bruger gemt</string>
-  <string name="txtInfoLoginNo">User not saved</string>
+  <string name="txtInfoLoginNo">Bruger ikke gemt</string>
   <string name="txtDialogsTitle">Information</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
@@ -157,44 +157,44 @@
   <string name="txtYes">Ja</string>
   <string name="txtNo">Nej</string>
   <string name="hintNameProduct">Navn</string>
-  <string name="hintEnergy">Energy in kJ per serving</string>
-  <string name="hintEnergyUnit">Energy unit</string>
-  <string name="hintWeight">Weight</string>
+  <string name="hintEnergy">Energi i kJ per portion</string>
+  <string name="hintEnergyUnit">Energienhed</string>
+  <string name="hintWeight">Vægt</string>
   <string name="hintStores">Butik</string>
   <string name="hintBrand">Mærke</string>
-  <string name="txtTakePicture">Take picture</string>
+  <string name="txtTakePicture">Tag billede</string>
   <string name="txtSendAll">Upload alle</string>
   <string name="txtNoData">Ingen data</string>
-  <string name="txtPictureNeeded">Please take a picture first</string>
+  <string name="txtPictureNeeded">Tag venligst et billede først</string>
   <string name="toastSending">Uploader...</string>
-  <string name="dataSaved">Saved locally on your device</string>
-  <string name="txtInfoAddUser">Please enter your login and password</string>
+  <string name="dataSaved">Gemt lokalt på din enhed</string>
+  <string name="txtInfoAddUser">Indtast venligst dit login og adgangskode</string>
   <string name="txtDataUpdated">Data opdateret</string>
   <string name="txtLoading">Indlæser...</string>
-  <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
+  <string name="txtDialogsContentDelete">Vil du slette dette udkast?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
-  <string name="txtBarcodeRequire">Barcode required</string>
+  <string name="txtBarcodeRequire">Stregkode påkrævet</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+  <string name="txtContentDialogUploading">Afslut venligst ikke under processen...</string>
   <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Products sent</string>
   <string name="txtPalm">Dette produkt indeholder ingen palmeolie</string>
-  <string name="txtBarcodeNotValid">Barcode not valid</string>
-  <string name="try_it_scan_now">Scan product</string>
+  <string name="txtBarcodeNotValid">Stregkode er ikke gyldig</string>
+  <string name="try_it_scan_now">Scan produkt</string>
   <string name="share">Del</string>
-  <string name="msg_share">Look at this product on Open Food Facts :</string>
-  <string name="create_account">Sign up</string>
-  <string name="home_drawer">Home</string>
+  <string name="msg_share">Kig på dette produkt på Open Food Facts :</string>
+  <string name="create_account">Tilmeld dig</string>
+  <string name="home_drawer">Hjem</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Søg</string>
-  <string name="search_by_barcode_drawer">Type barcode</string>
-  <string name="search_by_name_drawer">Search by name</string>
+  <string name="search_by_barcode_drawer">Indtast stregkode</string>
+  <string name="search_by_name_drawer">Søg efter navn</string>
   <string name="scan_search">Søg</string>
   <string name="user_drawer">Bruger</string>
-  <string name="offline_edit_drawer">Offline edit</string>
+  <string name="offline_edit_drawer">Offline redigering</string>
   <string name="txt_anonymous">Anonym</string>
-  <string name="txt_product_not_found">Products not found</string>
+  <string name="txt_product_not_found">Produktet blev ikke fundet</string>
   <string name="delete_txt">Slet</string>
   <string name="sign_in_drawer">Logg inn</string>
   <string name="alert_drawer">Allergen alert</string>
@@ -240,7 +240,7 @@
   <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
   <string name="nutrition_energy">Energy</string>
   <string name="nutrition_energy_short_name">Energi</string>
-  <string name="nutrition_fat">Fat</string>
+  <string name="nutrition_fat">Fedt</string>
   <string name="nutrition_fat_short_name">Fat (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
@@ -251,13 +251,13 @@
   <string name="nutrition_proteins_short_name">Proteiner (g)</string>
   <string name="nutrition_salt">Salt</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
-  <string name="nutrition_satured_fat">Satured fat</string>
+  <string name="nutrition_satured_fat">Modificeret fedt</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
   <string name="nutrition_serving">Per serving</string>
-  <string name="nutrition_serving_size">Serving size :</string>
+  <string name="nutrition_serving_size">Portionsstørrelse :</string>
   <string name="nutrition_sodium">Sodium</string>
   <string name="nutrition_sodium_short_name">Sodium (g)</string>
-  <string name="nutrition_sugars">Sugars</string>
+  <string name="nutrition_sugars">Sukker</string>
   <string name="nutrition_sugars_short_name">Sugars (g)</string>
   <string name="nutrition_trans_fat">Trans fat</string>
   <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>

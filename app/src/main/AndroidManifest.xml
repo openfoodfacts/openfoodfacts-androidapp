@@ -79,6 +79,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.MainActivity" />
         </activity>
+        <activity
+            android:name=".views.UserRatingsActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".views.MainActivity"
+            android:windowSoftInputMode="stateUnchanged|adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.MainActivity" />
+        </activity>
+        <activity
+            android:name=".views.DummyTestActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".views.MainActivity"
+            android:windowSoftInputMode="stateUnchanged|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
     </application>
 

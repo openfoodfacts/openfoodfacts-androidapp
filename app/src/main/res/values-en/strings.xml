@@ -61,6 +61,8 @@
     <item>fa</item>
     <item>rs</item>
     <item>sr-rCS</item>
+    <item>sr</item>
+    <item>b+sr+Latn</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>English</item>
