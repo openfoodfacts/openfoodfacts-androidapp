@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.github.clans.fab.FloatingActionButton;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -43,7 +42,8 @@ public class AlertUserFragment extends BaseFragment {
     private SharedPreferences mSettings;
     private List<Allergen> mAllergensFromDao;
     private View mView;
-    @BindView(R.id.fab) FloatingActionButton mFab;
+    @BindView(R.id.fab)
+    android.support.design.widget.FloatingActionButton mFab;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
