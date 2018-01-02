@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import org.greenrobot.greendao.database.Database;
-import org.greenrobot.greendao.database.StandardDatabase;
 
 public class DatabaseHelper extends DaoMaster.OpenHelper {
 
@@ -43,9 +42,6 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
         switch (migrateVersion) {
             case 2:
                 db.execSQL("ALTER TABLE send_product ADD COLUMN 'lang' TEXT NOT NULL DEFAULT 'fr';");
-                break;
-            case 3:
-                RatingProductDao.createTable(new StandardDatabase(db), false);
                 break;
         }
     }
