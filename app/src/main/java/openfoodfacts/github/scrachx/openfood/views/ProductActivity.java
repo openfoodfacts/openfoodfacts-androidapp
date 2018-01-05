@@ -138,7 +138,8 @@ public class ProductActivity extends BaseActivity {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
             }
         } else {
-            finish();
+            Intent intent = new Intent(this, ScannerFragmentActivity.class);
+            startActivity(intent);
         }
     }
 

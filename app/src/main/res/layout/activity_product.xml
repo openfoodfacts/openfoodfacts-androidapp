@@ -47,6 +47,6 @@
         android:contentDescription="@string/try_it_scan_now"
         app:layout_anchor="@+id/pager"
         app:layout_anchorGravity="bottom|right"
-        app:srcCompat="@drawable/ic_camera_white" />
+        app:srcCompat="@drawable/barcode_white_24dp" />
 
 </android.support.design.widget.CoordinatorLayout>
