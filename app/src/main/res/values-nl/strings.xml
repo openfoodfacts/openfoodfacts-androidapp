@@ -94,10 +94,10 @@
     <item>Deens</item>
     <item>Vereenvoudigd Chinees</item>
     <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Servisch</item>
   </string-array>
   <string-array name="images_array">
-    <item>Default</item>
+    <item>Standaard</item>
     <item>Voedingswaarde</item>
     <item>Ingrediënten</item>
   </string-array>
@@ -109,7 +109,7 @@
   <string name="alert_dialog_warning_msg_user">Gebruiker/wachtwoord is aangepast, informatie updaten alstublieft</string>
   <string name="alert_dialog_product_error_msg">Product niet gevonden, probeer het nog eens</string>
   <string name="toast_retrieving">Bezig met laden…</string>
-  <string name="txtGenericName">Common name :</string>
+  <string name="txtGenericName">Algemene naam :</string>
   <string name="txtBarcode">Streepjescode</string>
   <string name="txtQuantity">Hoeveelheid:</string>
   <string name="txtPackaging">Verpakking</string>
@@ -151,7 +151,7 @@
   <string name="txtInfoLoginOk">Gebruiker opgeslagen</string>
   <string name="txtInfoLoginNo">Gebruiker niet opgeslagen</string>
   <string name="txtDialogsTitle">Opmerking</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+  <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Food Facts. Voeg deze toe.</string>
   <string name="txtDialogsContentPowerMode">Het gescannede product bestaat al in Open Food Facts</string>
   <string name="txtDialogsContentSend">Wilt u de bewaarde producten opslaan in de databank?</string>
   <string name="txtYes">Ja</string>
@@ -181,7 +181,7 @@
   <string name="txtPalm">Product bevat geen palmolie</string>
   <string name="txtBarcodeNotValid">Streepjescode niet geldig</string>
   <string name="try_it_scan_now">Product scannen</string>
-  <string name="share">Share</string>
+  <string name="share">Delen</string>
   <string name="msg_share">Bekijk dit product op Open Food Facts</string>
   <string name="create_account">Inschrijven</string>
   <string name="home_drawer">Hoofdmenu</string>
@@ -197,7 +197,7 @@
   <string name="txt_product_not_found">Geen product gevonden</string>
   <string name="delete_txt">Verwijder</string>
   <string name="sign_in_drawer">Aanmelden</string>
-  <string name="alert_drawer">Allergen alert</string>
+  <string name="alert_drawer">Allergenen alert</string>
   <string name="warning_allergens">Bevat allergenen</string>
   <string name="title_dialog_alert">Voeg melding toe</string>
   <string name="warning_alert_data">Informatie over je allergieën wordt nooit naar het Open Food Facts-netwerk verzonden. N.B. wees ervan bewust dat gegevens mogelijk niet accuraat zijn, double-check deze zelf!</string>
@@ -273,9 +273,9 @@
   <string name="search_hint">Zoek een product</string>
   <string name="number_of_results">Aantal resultaten</string>
   <string name="txt_no_results">Geen resultaten gevonden</string>
-  <string name="txt_extend_search">Try broadening your search or add the product</string>
-  <string name="txt_cant_load_search_results">Can\'t load search results</string>
-  <string name="txt_try_again">Try again</string>
+  <string name="txt_extend_search">Probeer uw zoekopdracht te verbreden of voeg het product toe</string>
+  <string name="txt_cant_load_search_results">Kan zoekresultaten niet laden</string>
+  <string name="txt_try_again">Probeer het opnieuw</string>
   <string name="nutrition_lactose">Lactose</string>
   <string name="nutrition_casein">Caseïne</string>
   <string name="nutrition_maltodextrins">Maltodextrine</string>
