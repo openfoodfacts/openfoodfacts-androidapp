@@ -27,7 +27,7 @@
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
-    <item>sl</item>
+    <item>en</item>
     <item>fr</item>
     <item>es</item>
     <item>it</item>
