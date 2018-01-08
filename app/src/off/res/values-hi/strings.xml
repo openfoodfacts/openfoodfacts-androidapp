@@ -11,5 +11,5 @@
   <string name="website_product">https://world.openfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-  <string name="txtHome">Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
+  <string name="txtHome">Open Food Facts सामग्री, एलर्जी, संकेत और सभी उत्पाद जानकारी के साथ सौंदर्य प्रसाधन उत्पादों का एक डाटाबेस है जिसे हम उत्पाद लेबल पर पा सकते हैं।</string>
 </resources>

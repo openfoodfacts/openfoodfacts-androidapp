@@ -11,5 +11,5 @@
   <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
-  <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
+  <string name="txtHome">Open Pet Food Facts ay isang datos ng mga produktong pagkain sa alagang hayop na may sangkap, allergens, indicia at lahat ng mga impormasiyon na makikita sa tanda ng producktong pagkain sa alagang hayop. Woof. Woof.</string>
 </resources>
