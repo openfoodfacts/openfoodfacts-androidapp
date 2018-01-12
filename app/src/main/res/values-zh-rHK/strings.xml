@@ -189,6 +189,8 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">搜尋</string>
   <string name="search_by_barcode_drawer">輸入條碼</string>
+  <string name="category_drawer">類別</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">透過名稱搜尋</string>
   <string name="scan_search">掃描條碼</string>
   <string name="user_drawer">使用者</string>
