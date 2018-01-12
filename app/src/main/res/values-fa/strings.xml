@@ -189,6 +189,8 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">جستجو</string>
   <string name="search_by_barcode_drawer">بارکد را وارد کنید</string>
+  <string name="category_drawer">Categories</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">جستجو بر اساس نام</string>
   <string name="scan_search">اسکن بارکد</string>
   <string name="user_drawer">کاربر</string>
