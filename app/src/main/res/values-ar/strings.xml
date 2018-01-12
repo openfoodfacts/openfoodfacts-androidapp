@@ -189,6 +189,8 @@
   <string name="open_food_drawer">الحقائق الغذائية مفتوحة</string>
   <string name="search_drawer">بحث</string>
   <string name="search_by_barcode_drawer">البحث عن طريق الرمز الشريطي</string>
+  <string name="category_drawer">الفئات</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">البحث عن طريق الإسم</string>
   <string name="scan_search">امسح</string>
   <string name="user_drawer">المستخدم</string>
