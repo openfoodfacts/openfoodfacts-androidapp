@@ -189,6 +189,8 @@
   <string name="open_food_drawer">Open Food Facts (Nyílt Élelmiszer Tények)</string>
   <string name="search_drawer">Keres</string>
   <string name="search_by_barcode_drawer">Keresés vonalkód alapján</string>
+  <string name="category_drawer">Kategóriák</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">Keresés név szerint</string>
   <string name="scan_search">Beolvasás</string>
   <string name="user_drawer">Felhasználó</string>
