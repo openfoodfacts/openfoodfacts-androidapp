@@ -189,6 +189,8 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">অনুসন্ধান</string>
   <string name="search_by_barcode_drawer">বারকোডের ধরন</string>
+  <string name="category_drawer">শ্রেণীসমূহ</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">নাম দিয়ে অনুসন্ধান করুন</string>
   <string name="scan_search">বারকোড স্ক্যান করুন</string>
   <string name="user_drawer">ইউজার</string>
