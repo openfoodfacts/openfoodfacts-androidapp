@@ -189,6 +189,8 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Zoeken</string>
   <string name="search_by_barcode_drawer">Zoek met streepjescode</string>
+  <string name="category_drawer">Categorieën</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">Zoek op naam</string>
   <string name="scan_search">Zoeken op streepjescode</string>
   <string name="user_drawer">Gebruikersnaam</string>
