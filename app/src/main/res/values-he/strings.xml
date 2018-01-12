@@ -189,6 +189,8 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">חיפוש</string>
   <string name="search_by_barcode_drawer">חיפוש לפי ברקוד</string>
+  <string name="category_drawer">קטגוריות</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">חיפוש לפי שם</string>
   <string name="scan_search">סריקה</string>
   <string name="user_drawer">משתמש</string>
