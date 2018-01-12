@@ -114,7 +114,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (!response.isSuccess()) {
+                if (!response.isSuccessful()) {
                     Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                     lt.error();
                     Utils.hideKeyboard(context);
