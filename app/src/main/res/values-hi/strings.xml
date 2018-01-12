@@ -189,6 +189,8 @@
   <string name="open_food_drawer">ओपन फ़ूड फैक्ट्स</string>
   <string name="search_drawer">ढूंढें</string>
   <string name="search_by_barcode_drawer">बारकोड के आधार पर ढूंढें</string>
+  <string name="category_drawer">Categories</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">नाम से ढूंढें</string>
   <string name="scan_search">स्कैन</string>
   <string name="user_drawer">उपयोगकर्ता</string>
