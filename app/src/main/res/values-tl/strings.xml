@@ -189,6 +189,8 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Maghanap</string>
   <string name="search_by_barcode_drawer">I-type ang barcode</string>
+  <string name="category_drawer">Mga kategorya</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">Maghanap ayon sa pangalan</string>
   <string name="scan_search">I-scan ang Barcode</string>
   <string name="user_drawer">User</string>
