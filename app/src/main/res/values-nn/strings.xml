@@ -189,6 +189,8 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Søk</string>
   <string name="search_by_barcode_drawer">Skriv inn strekkode</string>
+  <string name="category_drawer">Kategorier</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">Søk med navn</string>
   <string name="scan_search">Skann strekkode</string>
   <string name="user_drawer">Bruker</string>

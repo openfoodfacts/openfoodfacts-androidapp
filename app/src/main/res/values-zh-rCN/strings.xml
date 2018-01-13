@@ -189,6 +189,8 @@
   <string name="open_food_drawer">查找食品</string>
   <string name="search_drawer">搜索</string>
   <string name="search_by_barcode_drawer">输入条形码</string>
+  <string name="category_drawer">类别</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">按照名字搜索</string>
   <string name="scan_search">扫描条形码</string>
   <string name="user_drawer">用户</string>

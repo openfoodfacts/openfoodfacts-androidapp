@@ -189,6 +189,8 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Etsi</string>
   <string name="search_by_barcode_drawer">Etsi viivakoodilla</string>
+  <string name="category_drawer">Luokat</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">Etsi nimellä</string>
   <string name="scan_search">Skannaa</string>
   <string name="user_drawer">Käyttäjä</string>

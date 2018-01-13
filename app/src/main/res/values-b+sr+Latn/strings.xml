@@ -189,6 +189,8 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Pretraži</string>
   <string name="search_by_barcode_drawer">Pretraži po barkodu</string>
+  <string name="category_drawer">Kategorije</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">Pretraži po imenu</string>
   <string name="scan_search">Skeniraj</string>
   <string name="user_drawer">Korisnik</string>

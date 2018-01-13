@@ -190,6 +190,8 @@
   <string name="open_food_drawer">membuka fakta makanan</string>
   <string name="search_drawer">mencari </string>
   <string name="search_by_barcode_drawer">tipe kode batang</string>
+  <string name="category_drawer">Kategori</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">mencari nama kamu</string>
   <string name="scan_search">memindai kode batang</string>
   <string name="user_drawer">pengguna</string>

@@ -189,6 +189,8 @@
   <string name="open_food_drawer">Open Food Facts - Portugal</string>
   <string name="search_drawer">Procurar</string>
   <string name="search_by_barcode_drawer">Escreva o código de barras</string>
+  <string name="category_drawer">Categorias</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">Pesquisar pelo nome</string>
   <string name="scan_search">Digitalizar</string>
   <string name="user_drawer">Utilizador</string>

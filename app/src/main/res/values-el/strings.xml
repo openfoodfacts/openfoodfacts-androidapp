@@ -189,6 +189,8 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Αναζήτηση</string>
   <string name="search_by_barcode_drawer">Πληκτρολογήστε barcode</string>
+  <string name="category_drawer">Κατηγορίες</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">Αναζήτηση βάση ονόματος</string>
   <string name="scan_search">Σάρωση barcode</string>
   <string name="user_drawer">Χρήστης</string>

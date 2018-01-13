@@ -189,6 +189,8 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">ရွာေဖြမည္</string>
   <string name="search_by_barcode_drawer">ဘားကုဒ္ႏွင့္ရွာေဖြမည္</string>
+  <string name="category_drawer">Categories</string>
+  <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">အမည္ျဖင့္ရွာမည္</string>
   <string name="scan_search">စကန္ဖတ္မည္</string>
   <string name="user_drawer">အသံုးျပဳသူ</string>

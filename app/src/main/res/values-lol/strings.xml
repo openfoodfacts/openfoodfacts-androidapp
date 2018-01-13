@@ -189,6 +189,8 @@
   <string name="open_food_drawer">crwdns35130:0crwdne35130:0</string>
   <string name="search_drawer">crwdns35131:0crwdne35131:0</string>
   <string name="search_by_barcode_drawer">crwdns35132:0crwdne35132:0</string>
+  <string name="category_drawer">crwdns36947:0crwdne36947:0</string>
+  <string name="search_by_category">crwdns36948:0crwdne36948:0</string>
   <string name="search_by_name_drawer">crwdns35133:0crwdne35133:0</string>
   <string name="scan_search">crwdns35134:0crwdne35134:0</string>
   <string name="user_drawer">crwdns35135:0crwdne35135:0</string>
