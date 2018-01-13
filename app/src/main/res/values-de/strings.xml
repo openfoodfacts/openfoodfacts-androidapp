@@ -190,7 +190,7 @@
   <string name="search_drawer">Suchen</string>
   <string name="search_by_barcode_drawer">Nach Strichcode suchen</string>
   <string name="category_drawer">Kategorien</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Kategorie</string>
   <string name="search_by_name_drawer">Nach Name suchen</string>
   <string name="scan_search">Einscannen</string>
   <string name="user_drawer">Benutzer</string>
