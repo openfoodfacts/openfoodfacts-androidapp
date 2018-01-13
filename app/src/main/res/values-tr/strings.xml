@@ -190,7 +190,7 @@
   <string name="search_drawer">Ara</string>
   <string name="search_by_barcode_drawer">Barkod türü</string>
   <string name="category_drawer">Kategoriler</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Kategori</string>
   <string name="search_by_name_drawer">İsme göre ara</string>
   <string name="scan_search">Barkod tarama</string>
   <string name="user_drawer">Kullanıcı</string>
