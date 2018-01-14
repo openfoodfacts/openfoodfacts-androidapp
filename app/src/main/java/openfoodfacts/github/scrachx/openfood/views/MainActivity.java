@@ -52,6 +52,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsResultsFragment;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -70,7 +71,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final int ABOUT = 600;
     private static final int CONTRIBUTE = 700;
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private AccountHeader headerResult = null;
     private Drawer result = null;
 
@@ -151,21 +153,22 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .withHasStableIds(true)
                 .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
                 .addDrawerItems(
-                    new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(1),
-                    new SectionDrawerItem().withName(R.string.search_drawer),
-                    new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(2),
-                    new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(4),
-                    new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(5),
-                    new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
-                    new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(CONTRIBUTOR),
-                    new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(7),
-                    new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(8),
-                    new DividerDrawerItem(),
-                    new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9),
-                    new DividerDrawerItem(),
-                    new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ABOUT),
-                    new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(CONTRIBUTE),
-                    new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(11)
+                        new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(1),
+                        new SectionDrawerItem().withName(R.string.search_drawer),
+                        new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(2),
+                        new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(3),
+                        new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(4),
+                        new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(5),
+                        new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
+                        new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(CONTRIBUTOR),
+                        new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(7),
+                        new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(8),
+                        new DividerDrawerItem(),
+                        new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9),
+                        new DividerDrawerItem(),
+                        new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ABOUT),
+                        new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(CONTRIBUTE),
+                        new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(11)
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
 
@@ -182,6 +185,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         case 2:
                             fragment = new FindProductFragment();
                             getSupportActionBar().setTitle(getResources().getString(R.string.search_by_barcode_drawer));
+                            break;
+                        case 3:
+                            startActivity(CategoryActivity.getIntent(this));
                             break;
                         case 4:
                             if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -276,11 +282,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         // Add Drawer items for the connected user
         result.addItemsAtPosition(result.getPosition(CONTRIBUTOR), isUserConnected ? getLogoutDrawerItem() : getLoginDrawerItem());
-        if(BuildConfig.FLAVOR.equals("obf")) {
+        if (BuildConfig.FLAVOR.equals("obf")) {
             result.removeItem(7);
             result.updateName(11, new StringHolder(getString(R.string.open_food_drawer)));
         }
-        if(BuildConfig.FLAVOR.equals("opff")) {
+        if (BuildConfig.FLAVOR.equals("opff")) {
             result.removeItem(7);
             result.updateName(11, new StringHolder(getString(R.string.open_food_drawer)));
         }

@@ -265,7 +265,7 @@ public class OpenFoodAPIClient {
         apiService.searchProductByName(name, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(Call<Search> call, Response<Search> response) {
-                if (!response.isSuccess()) {
+                if (!response.isSuccessful()) {
                     productsCallback.onProductsResponse(false, null, -1);
                     return;
                 }
@@ -291,7 +291,7 @@ public class OpenFoodAPIClient {
         apiService.getAllergens().enqueue(new Callback<AllergenRestResponse>() {
             @Override
             public void onResponse(Call<AllergenRestResponse> call, Response<AllergenRestResponse> response) {
-                if (!response.isSuccess()) {
+                if (!response.isSuccessful()) {
                     onAllergensCallback.onAllergensResponse(false);
                     return;
                 }
@@ -317,7 +317,7 @@ public class OpenFoodAPIClient {
         apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
             @Override
             public void onResponse(Call<State> call, Response<State> response) {
-                if (!response.isSuccess() || response.body().getStatus() == 0) {
+                if (!response.isSuccessful() || response.body().getStatus() == 0) {
                     lt.error();
                     productSentCallback.onProductSentResponse(false);
                     return;
@@ -382,7 +382,7 @@ public class OpenFoodAPIClient {
                 .enqueue(new Callback<JsonNode>() {
                     @Override
                     public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
-                        if(!response.isSuccess()) {
+                        if(!response.isSuccessful()) {
                             Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                             lt.error();
                             return;
