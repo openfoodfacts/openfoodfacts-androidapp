@@ -12,16 +12,11 @@ env:
     - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
     - secure: "fpNJresszWHcOg8Qh4plu2RJFOv9AzCMh2dVV2SbwWNRuf2j15raDdFGhCD2tEM7ddhqrfHgmiwqFSWCzjWw1azx0ovGJfFhikLM741pLb68S/EkOdvl9RU6DXeC6+Tyg0iaustgkoK24kwkzx/kg3o56TyFg1g2ufsQqfEseJtOGVQEh86zj8ncfU60VcMP7HHqHZMjlZaQ+G0Ale4ofzQzmAbiNiNPjykMbjDhzdKMTeZLXnj8S59twI1y/D/JdfKCiq/xOnO3HbIZBZ4A3nVb/fV5WCR4Kw6LRzoNE9qYnxJFaeIYSF9+YDDol9PbQRWTX5EgDnJBbZqj8aSYUEk3WUGRnDCKYR0R/v/BhTfnLIp1jBQWyhDJ56iPZ+tgRfChMejsf8aH8agPwczjfbX8H/1NLzBAtF/elA67dPaoQMqb33nO8D+ESIIyYNsK4CyfeDF6/qT/IcBBa7FUfhIOHjwLnaeCyZS78eq2QUSNkDaATKM8BUot+hGMTenBpivEDKL1L+twFFFKjNK3HkvnJ2H92P/EgT7OUVSuPnD5czfK3WydMmbimChKoygSq5/62tC6FMHUNdNj7pHnfJWTdSj+RgNJKVTasPJAQ1B+pU/z+TZVJMsBpME2CTtNGC6+o9W/6K5FMUt/2J/P63RHJqXXZLtttphN3tg7eLo="
 
-before_install:
-      - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
-
-
 android:
   components:
     - tools
     - platform-tools
     - tools # to install Android SDK tools 25.1.x
-
     - build-tools-$ANDROID_BUILD_TOOLS_VERSION
     - android-$ANDROID_API_LEVEL
     # For Google APIs
@@ -73,12 +68,3 @@ addons:
   artifacts: true
   paths:
     - my_path
-
-  coverity_scan:
-    project:
-      name: "openfoodfacts/OpenFoodFacts-androidApp"
-      description: "<Your project description here>"
-    notification_email: pierre.slamich@gmail.com
-    build_command_prepend: "<Your build preprocessing command here>"
-    build_command:   "<Your build command here>"
-    branch_pattern: coverity_scan
