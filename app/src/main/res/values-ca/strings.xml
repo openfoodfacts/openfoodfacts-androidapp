@@ -60,6 +60,23 @@
     <item>zh-rCN</item>
     <item>fa</item>
     <item>rs</item>
+    <item>af</item>
+    <item>ak</item>
+    <item>am</item>
+    <item>as</item>
+    <item>zh-rTW</item>
+    <item>zh-rHK</item>
+    <item>hu</item>
+    <item>tr</item>
+    <item>id</item>
+    <item>tl</item>
+    <item>fil</item>
+    <item>nl-rBE</item>
+    <item>bn</item>
+    <item>sl</item>
+    <item>ku</item>
+    <item>eo</item>
+    <item>pl</item>
   </string-array>
   <string-array name="lang_label_array">
     <item>Anglès</item>
@@ -94,7 +111,24 @@
     <item>Danès</item>
     <item>Xinès simplificat</item>
     <item>Farsi</item>
-    <item>Serbian</item>
+    <item>Serbian (Latin)</item>
+    <item>Afrikaans</item>
+    <item>Akan</item>
+    <item>Amharic</item>
+    <item>Assamese</item>
+    <item>Chinese Traditional</item>
+    <item>Chinese Traditional, Hong Kong</item>
+    <item>Hungarian</item>
+    <item>Turkish</item>
+    <item>Indonesian</item>
+    <item>Tagalog</item>
+    <item>Filipino</item>
+    <item>Dutch, Belgium</item>
+    <item>Bengali</item>
+    <item>Slovenian</item>
+    <item>Kurdish</item>
+    <item>Esperanto</item>
+    <item>Polonès</item>
   </string-array>
   <string-array name="images_array">
     <item>Predeterminat</item>
