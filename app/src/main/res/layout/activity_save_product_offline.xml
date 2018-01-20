@@ -19,7 +19,7 @@
             android:focusableInTouchMode="true"
             android:orientation="vertical">
 
-			<TextView
+            <TextView
                 android:id="@+id/barcodeDoubleCheck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -31,157 +31,181 @@
                 android:textIsSelectable="true"
                 android:textSize="@dimen/font_larger"
                 android:textStyle="bold" />
-			
-            <TextView
-                android:id="@+id/textFront"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/spacing_normal"
-                android:gravity="center"
-                android:text="Take front image"
-                android:textAlignment="center"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_larger"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/imageSaveFront"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/placeholder_thumb" />
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:id="@+id/FrontImageGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/buttonTakePictureFront"
-                    style="@style/DefaultButtonText"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
+                <TextView
+                    android:id="@+id/textFront"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/spacing_normal"
-                    android:layout_weight="1"
                     android:gravity="center"
-                    app:srcCompat="@drawable/ic_camera_white"
-                    android:background="@color/blue" />
+                    android:text="@string/take_picture_front"
+                    android:textAlignment="center"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_larger"
+                    android:textStyle="bold" />
 
-                <ImageButton
-                    android:id="@+id/buttonFromGalleryFront"
-                    style="@style/DefaultButtonText"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    app:srcCompat="@drawable/ic_photo_library"
-                    android:background="@color/blue" />
+                <ImageView
+                    android:id="@+id/imageSaveFront"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/placeholder_thumb" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/buttonTakePictureFront"
+                        style="@style/DefaultButtonText"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:layout_weight="1"
+                        android:background="@color/blue"
+                        android:gravity="center"
+                        app:srcCompat="@drawable/ic_camera_white" />
+
+                    <ImageButton
+                        android:id="@+id/buttonFromGalleryFront"
+                        style="@style/DefaultButtonText"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:layout_weight="1"
+                        android:background="@color/blue"
+                        android:gravity="center"
+                        app:srcCompat="@drawable/ic_photo_library" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textNutrition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/spacing_normal"
-                android:gravity="center"
-                android:text="Take nutrition image"
-                android:textAlignment="center"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_larger"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/imageSaveNutrition"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/placeholder_thumb" />
-
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:id="@+id/IngredientImageGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/buttonTakePictureNutrition"
-                    style="@style/DefaultButtonText"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
+                <TextView
+                    android:id="@+id/textIngredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/spacing_normal"
-                    android:layout_weight="1"
-                    android:background="@color/blue"
                     android:gravity="center"
-                    app:srcCompat="@drawable/ic_camera_white" />
+                    android:text="@string/take_picture_ingredients"
+                    android:textAlignment="center"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_larger"
+                    android:textStyle="bold" />
 
-                <ImageButton
-                    android:id="@+id/buttonFromGalleryNutrition"
-                    style="@style/DefaultButtonText"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:layout_weight="1"
-                    android:background="@color/blue"
-                    android:gravity="center"
-                    app:srcCompat="@drawable/ic_photo_library" />
+                <ImageView
+                    android:id="@+id/imageSaveIngredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/placeholder_thumb" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/buttonTakePictureIngredients"
+                        style="@style/DefaultButtonText"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:layout_weight="1"
+                        android:background="@color/blue"
+                        android:gravity="center"
+                        app:srcCompat="@drawable/ic_camera_white" />
+
+                    <ImageButton
+                        android:id="@+id/buttonFromGalleryIngredients"
+                        style="@style/DefaultButtonText"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:layout_weight="1"
+                        android:background="@color/blue"
+                        android:gravity="center"
+                        app:srcCompat="@drawable/ic_photo_library" />
+                </LinearLayout>
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textIngredients"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/spacing_normal"
-                android:gravity="center"
-                android:text="Take ingredients image"
-                android:textAlignment="center"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_larger"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/imageSaveIngredients"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/placeholder_thumb" />
-
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:id="@+id/NutritionImageGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/buttonTakePictureIngredients"
-                    style="@style/DefaultButtonText"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
+                <TextView
+                    android:id="@+id/textNutrition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/spacing_normal"
-                    android:layout_weight="1"
-                    android:background="@color/blue"
                     android:gravity="center"
-                    app:srcCompat="@drawable/ic_camera_white" />
+                    android:text="@string/take_picture_nutrition_table"
+                    android:textAlignment="center"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_larger"
+                    android:textStyle="bold" />
 
-                <ImageButton
-                    android:id="@+id/buttonFromGalleryIngredients"
-                    style="@style/DefaultButtonText"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:layout_weight="1"
-                    android:background="@color/blue"
-                    android:gravity="center"
-                    app:srcCompat="@drawable/ic_photo_library"/>
+                <ImageView
+                    android:id="@+id/imageSaveNutrition"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/placeholder_thumb" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/buttonTakePictureNutrition"
+                        style="@style/DefaultButtonText"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:layout_weight="1"
+                        android:background="@color/blue"
+                        android:gravity="center"
+                        app:srcCompat="@drawable/ic_camera_white" />
+
+                    <ImageButton
+                        android:id="@+id/buttonFromGalleryNutrition"
+                        style="@style/DefaultButtonText"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:layout_weight="1"
+                        android:background="@color/blue"
+                        android:gravity="center"
+                        app:srcCompat="@drawable/ic_photo_library" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <EditText
