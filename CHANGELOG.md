@@ -8,7 +8,7 @@ Upcoming:
 - Fix a crasher on the ingredient list, some encoding issues in product fields and typos (pH).
 - Open Pet Food Facts support. Woof. Woof.
 - You are now properly credited for uploaded images.
-- Fixed an issue in allergen detection
+- Cleaner allergen detection settings, and fixed an issue in allergen detection
 
 0.7.2 & 0.7.3 & 0.7.4 - 
 - Micro-release to fix 4.0 related bugs.
