@@ -20,6 +20,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme.NoActionBar">
+
+        <!-- 18:9 aspect ratio support -->
+        <meta-data android:name="android.max_aspect" android:value="2.1" />
+
         <activity
             android:name=".views.SplashActivity"
             android:label="@string/app_name"
