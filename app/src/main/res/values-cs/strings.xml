@@ -4,15 +4,15 @@
   <string name="action_settings">Nastavení</string>
   <string name="action_about">O aplikaci</string>
   <string name="action_discover">Objevte</string>
-  <string name="contribute">How to contribute</string>
+  <string name="contribute">Jak přispět</string>
   <string name="action_find">Vyhledat</string>
-  <string name="text_barcode">Type the barcode :</string>
+  <string name="text_barcode">Zadejte čárový kód:</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Shrnutí</item>
     <item>Složení</item>
     <item>Nutriční hodnoty</item>
-    <item>Nutrition Table</item>
+    <item>Tabulka nutričních hodnot</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
@@ -143,14 +143,14 @@
   <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
   <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
   <string name="toast_retrieving">Načítá se…</string>
-  <string name="txtGenericName">Common name :</string>
-  <string name="txtBarcode">Barcode :</string>
-  <string name="txtQuantity">Quantity :</string>
-  <string name="txtPackaging">Packaging :</string>
-  <string name="txtBrands">Brands :</string>
-  <string name="txtCategories">Categories :</string>
-  <string name="txtLabels">Labels, certifications, awards :</string>
-  <string name="txtManufacturing">Manufacturing or processing places :</string>
+  <string name="txtGenericName">Běžné jméno :</string>
+  <string name="txtBarcode">Čárový kód :</string>
+  <string name="txtQuantity">Množství :</string>
+  <string name="txtPackaging">Balení:</string>
+  <string name="txtBrands">Značky :</string>
+  <string name="txtCategories">Kategorie :</string>
+  <string name="txtLabels">Etikety, certifikáty, ocenění :</string>
+  <string name="txtManufacturing">Výrobní nebo zpracovatelská místa:</string>
   <string name="txtIngredientsOrigins">Origin of ingredients :</string>
   <string name="txtCity">City, state and country where purchased :</string>
   <string name="txtStores">Stores :</string>
@@ -159,30 +159,30 @@
   <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
   <string name="txtAdditives">Additives :</string>
   <string name="txtTraces">Traces :</string>
-  <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
-  <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
-  <string name="txtServingSize">Serving size :</string>
-  <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
-  <string name="txtNutritionLevelLow">in low quantity</string>
-  <string name="txtNutritionLevelModerate">in moderate quantity</string>
-  <string name="txtNutritionLevelHigh">in high quantity</string>
-  <string name="txtLogin">Login :</string>
+  <string name="txtMayBeFromPalmOilProduct">Přísady, které mohou být z palmového oleje :</string>
+  <string name="txtPalmOilProduct">Suroviny z palmového oleje :</string>
+  <string name="txtServingSize">Velikost porce :</string>
+  <string name="txtNutrientLevel100g">Nutriční hodnoty na 100 g :</string>
+  <string name="txtNutritionLevelLow">v malém množství</string>
+  <string name="txtNutritionLevelModerate">v mírném množství</string>
+  <string name="txtNutritionLevelHigh">ve velkém množství</string>
+  <string name="txtLogin">Přihlašovací jméno :</string>
   <string name="txtPass">Heslo :</string>
-  <string name="txtTitleHome">Open your food and know what you eat</string>
-  <string name="txtSave">Save</string>
-  <string name="txtSignIn">Sign in</string>
-  <string name="txtUser">User panel</string>
-  <string name="txtToastSaved">User saved</string>
-  <string name="txtSalt">Salt</string>
-  <string name="txtFat">Fat</string>
-  <string name="txtSugars">Sugars</string>
+  <string name="txtTitleHome">Otevřete vaše jídlo a poznejte co jíte</string>
+  <string name="txtSave">Uložit</string>
+  <string name="txtSignIn">Přihlásit se</string>
+  <string name="txtUser">Uživatelský panel</string>
+  <string name="txtToastSaved">Uživatel byl uložen</string>
+  <string name="txtSalt">Sůl</string>
+  <string name="txtFat">Tuky</string>
+  <string name="txtSugars">Cukry</string>
   <string name="txtSaturatedFat">Satured fat</string>
   <string name="hintBarcode">Barcode</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Heslo</string>
   <string name="errorLogin">Login or password error</string>
   <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
-  <string name="txtInfoLoginOk">User saved</string>
+  <string name="txtInfoLoginOk">Uživatel byl uložen</string>
   <string name="txtInfoLoginNo">User not saved</string>
   <string name="txtDialogsTitle">Information</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
@@ -276,7 +276,7 @@
   <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
   <string name="nutrition_energy">Energy</string>
   <string name="nutrition_energy_short_name">Energy</string>
-  <string name="nutrition_fat">Fat</string>
+  <string name="nutrition_fat">Tuky</string>
   <string name="nutrition_fat_short_name">Fat (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
@@ -285,15 +285,15 @@
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Proteins</string>
   <string name="nutrition_proteins_short_name">Proteins (g)</string>
-  <string name="nutrition_salt">Salt</string>
+  <string name="nutrition_salt">Sůl</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Satured fat</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
   <string name="nutrition_serving">Per serving</string>
-  <string name="nutrition_serving_size">Serving size :</string>
+  <string name="nutrition_serving_size">Velikost porce :</string>
   <string name="nutrition_sodium">Sodium</string>
   <string name="nutrition_sodium_short_name">Sodium (g)</string>
-  <string name="nutrition_sugars">Sugars</string>
+  <string name="nutrition_sugars">Cukry</string>
   <string name="nutrition_sugars_short_name">Sugars (g)</string>
   <string name="nutrition_trans_fat">Trans fat</string>
   <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
