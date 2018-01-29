@@ -21,6 +21,7 @@ import java.io.IOException;
 import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.ResponseBody;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
@@ -51,20 +52,29 @@ public class HomeFragment extends BaseFragment {
 
     @OnClick(R.id.buttonScan)
     protected void OnScan() {
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
-                new MaterialDialog.Builder(getActivity())
-                        .title(R.string.action_about)
-                        .content(R.string.permission_camera)
-                        .neutralText(R.string.txtOk)
-                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
-                        .show();
+        try {
+            if (getContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
+                        new MaterialDialog.Builder(getActivity())
+                                .title(R.string.action_about)
+                                .content(R.string.permission_camera)
+                                .neutralText(R.string.txtOk)
+                                .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                                .show();
+                    } else {
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                    }
+                } else {
+                    Intent intent = new Intent(getActivity(), ScannerFragmentActivity.class);
+                    startActivity(intent);
+                }
             } else {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                mButtonScan.setVisibility(View.GONE);
             }
-        } else {
-            Intent intent = new Intent(getActivity(), ScannerFragmentActivity.class);
-            startActivity(intent);
+        } catch (NullPointerException e){
+            if (BuildConfig.DEBUG) Log.i(getClass().getSimpleName(), e.toString());
+            mButtonScan.setVisibility(View.GONE);
         }
     }
 

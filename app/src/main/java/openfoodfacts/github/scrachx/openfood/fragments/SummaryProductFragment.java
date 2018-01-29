@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -8,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
@@ -185,30 +188,45 @@ public class SummaryProductFragment extends BaseFragment {
         } else {
             countryProduct.setVisibility(View.GONE);
         }
+
+        // if the device does not have a camera, hide the button
+        try {
+            if (!getContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+                addMorePicture.setVisibility(View.GONE);
+            }
+        } catch (NullPointerException e){
+            if (BuildConfig.DEBUG) Log.i(getClass().getSimpleName(), e.toString());
+        }
     }
 
     @OnClick(R.id.buttonMorePictures)
     public void takeMorePicture() {
-        if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-        } else {
-            sendOther = true;
-            EasyImage.openCamera(this, 0);
-        }
+        try {
+            if (getContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+                if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    sendOther = true;
+                    EasyImage.openCamera(this, 0);
+                }
 
-        if (ContextCompat.checkSelfPermission(this.getContext(), READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), READ_EXTERNAL_STORAGE)
-                    || ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), WRITE_EXTERNAL_STORAGE)) {
-                new MaterialDialog.Builder(this.getContext())
-                        .title(R.string.action_about)
-                        .content(R.string.permission_storage)
-                        .neutralText(R.string.txtOk)
-                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
-                        .show();
-            } else {
-                ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
+                if (ContextCompat.checkSelfPermission(this.getContext(), READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
+                        && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), READ_EXTERNAL_STORAGE)
+                            || ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), WRITE_EXTERNAL_STORAGE)) {
+                        new MaterialDialog.Builder(this.getContext())
+                                .title(R.string.action_about)
+                                .content(R.string.permission_storage)
+                                .neutralText(R.string.txtOk)
+                                .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
+                                .show();
+                    } else {
+                        ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
+                    }
+                }
             }
+        } catch (NullPointerException e){
+            Log.i(getClass().getSimpleName(), e.toString());
         }
     }
 

@@ -291,6 +291,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             result.updateName(11, new StringHolder(getString(R.string.open_food_drawer)));
         }
 
+        // Remove scan item if the device does not have a camera, for example, Chromebooks or Fire devices
+        if (!this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+            result.removeItem(4);
+        }
+
+
         //if you have many different types of DrawerItems you can magically pre-cache those items to get a better scroll performance
         //make sure to init the cache after the DrawerBuilder was created as this will first clear the cache to make sure no old elements are in
         //RecyclerViewCacheUtil.getInstance().withCacheSize(2).init(result);
