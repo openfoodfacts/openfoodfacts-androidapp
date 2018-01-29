@@ -1,6 +1,51 @@
 This is the Changelog. Please list changes here so that we can provide meaningful changelog for the application stores.
 
 Upcoming:
+- New full or partial support for Serbian (Latin), Afrikaans, Akan, Amharic, Assamese, Chinese Traditional, Chinese Traditional (Hong Kong), Hungarian, Turkish, Indonesian, Tagalog, Filipino, Dutch, Belgium, Bengali, Slovenian, Kurdish, Esperanto, Polish.
+- Images were uploaded in low-res. We've increased the upload resolution a bit so that they can be legible and useful.
+- Some languages were not working (eg Brazilian Portuguese). This has been fixed. We're also laying some bases for upcoming locale improvements.
+- We now also display the Common name of the product. Nutella in French is also known as "Pâte à tartiner aux noisettes et au cacao"
+- Fix a crasher on the ingredient list, some encoding issues in product fields and typos (pH).
+- Open Pet Food Facts support. Woof. Woof.
+- You are now properly credited for uploaded images.
+- Cleaner allergen detection settings, and fixed an issue in allergen detection
+
+0.7.2 & 0.7.3 & 0.7.4 - 
+- Micro-release to fix 4.0 related bugs.
+
+0.7.1 - 
+
+- German, Serbian translations
+- Added support for fl oz and cl units
+- Added the scan button in the product view, for quicker scanning
+- Added support for Open Beauty Facts
+- Provided a rounded icon for Nougat devices which support it
+- Capitalized additives (thanks NasiaKouts :-)
+- Changed menu icons for better legibility (thanks ChasakisD and @mikeh)
+
+0.7 - Mar 12 2017
+- Ability to add more photos to existing products
+- Ability to add front, ingredient and nutrition photos to existing products
+- New icon
+- Various library updates 
+
+0.6.2 - Mar 5 2017
+- Even faster scan experience for new products: no more annoying popups, we jump straight to the new product page
+- Fix upload problems when starting with the nutrition image
+
+0.6.1 - Mar 5 2017
+- Fixes for the additives loading
+
+0.6 - Mar 3 2017
+
+- Translation updates: Romanian, Italian, Galician, Hebrew, German, Japanese, Russian
+- The total number of results is displayed when you search a product, and you get infinite results that load as you scroll
+- More harmonization with the website (color scheme)
+- Added smaller nutrients to the full nutrition table when they are available (eg waters, baby products…)
+- New appearence for the UK traffic lights: more compact, more legible
+- Under the hood: switch to a new ORM that improves reliability
+
+0.5 - Jan 12 2017
 
 - Quick View : a new way to quickly get info (including the Nutriscore) about several products in a row, and easily add them to Open Food Facts if they don't exist. Thanks to @itchix
 - Better search, from everywhere: Search now includes brand, weight, and images are better looking. Plus you can now search from anywhere in the app. @herau

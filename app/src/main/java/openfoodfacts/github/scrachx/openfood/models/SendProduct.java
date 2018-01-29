@@ -3,21 +3,32 @@ package openfoodfacts.github.scrachx.openfood.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
-import com.orm.dsl.Unique;
+
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Index;
+import org.greenrobot.greendao.annotation.Transient;
+import org.greenrobot.greendao.annotation.Unique;
+
+import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class SendProduct extends SugarRecord {
+@Entity(indexes = {
+        @Index(value = "barcode", unique = true)
+})
+public class SendProduct {
+
+    @Id
+    private Long id;
 
     @JsonProperty("code")
-    @Unique
     private String barcode;
+    private String lang;
     @JsonProperty("product_name")
     private String name;
-
     private String brands;
     @JsonIgnore
     private String weight;
@@ -30,12 +41,28 @@ public class SendProduct extends SugarRecord {
     @JsonIgnore
     private String imgupload_nutrition;
     @JsonProperty("user_id")
-    @Ignore
+    @Transient
     private String userId;
-    @Ignore
+    @Transient
     private String password;
 
     public SendProduct() {}
+
+    @Generated(hash = 994048396)
+    public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight,
+            String weight_unit, String imgupload_front, String imgupload_ingredients,
+            String imgupload_nutrition) {
+        this.id = id;
+        this.barcode = barcode;
+        this.lang = lang;
+        this.name = name;
+        this.brands = brands;
+        this.weight = weight;
+        this.weight_unit = weight_unit;
+        this.imgupload_front = imgupload_front;
+        this.imgupload_ingredients = imgupload_ingredients;
+        this.imgupload_nutrition = imgupload_nutrition;
+    }
 
     public String getUserId() {
         return userId;
@@ -145,5 +172,21 @@ public class SendProduct extends SugarRecord {
                 //nothing to do
                 break;
         }
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public void setLang(String lang) {
+        this.lang = lang;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -8,12 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
@@ -32,6 +34,12 @@ public class SearchProductsResultsFragment extends BaseFragment {
 
     @BindView(R.id.textCountProduct)
     TextView countProductsView;
+
+    @BindView(R.id.noResultsLayout)
+    LinearLayout noResultsLayout;
+
+    @BindView(R.id.offlineCloudLinearLayout)
+    LinearLayout offlineCloudLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
@@ -87,6 +95,14 @@ public class SearchProductsResultsFragment extends BaseFragment {
                 })
         );
 
+        searchProduct(view);
+
+        progressBar = view.findViewById(R.id.progressBar);
+        showProgressBar();
+    }
+
+    @OnClick(R.id.buttonTryAgain)
+    public void searchProduct(View view){
         api.searchProduct(getArguments().getString("query"), 1, getActivity(),
                 new OpenFoodAPIClient.OnProductsCallback() {
 
@@ -102,15 +118,24 @@ public class SearchProductsResultsFragment extends BaseFragment {
                             }
                             ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
                             productsRecyclerView.setAdapter(adapter);
+                            countProductsView.setVisibility(View.VISIBLE);
+                            offlineCloudLayout.setVisibility(View.INVISIBLE);
+                            noResultsLayout.setVisibility(View.INVISIBLE);
                         } else {
-                            countProductsView.setText(R.string.txt_no_results);
+                            if(countProducts == -2) {
+                                countProductsView.setVisibility(View.INVISIBLE);
+                                offlineCloudLayout.setVisibility(View.INVISIBLE);
+                                noResultsLayout.setVisibility(View.VISIBLE);
+                            }
+                            else{
+                                countProductsView.setVisibility(View.INVISIBLE);
+                                noResultsLayout.setVisibility(View.INVISIBLE);
+                                offlineCloudLayout.setVisibility(View.VISIBLE);
+                            }
                         }
                     }
                 }
         );
-
-        progressBar = view.findViewById(R.id.progressBar);
-        showProgressBar();
     }
 
     private void showProgressBar() {

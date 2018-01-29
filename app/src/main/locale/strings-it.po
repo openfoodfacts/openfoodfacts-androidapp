@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  openfoodfacts\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-17 13:22+0100\n"
-"PO-Revision-Date: 2017-01-13 21:31+0000\n"
-"Last-Translator: mattia <Unknown>\n"
+"POT-Creation-Date: 2017-03-19 18:47+0100\n"
+"PO-Revision-Date: 2017-03-16 08:49+0000\n"
+"Last-Translator: Marco Ciampa <ciampix@libero.it>\n"
 "Language: it\n"
 "Language-Team: Italian <it@li.org>\n"
 "Plural-Forms: nplurals=2; plural=((((n == 1)) && ((0 == 0))) ? 0 : 1)\n"
@@ -18,14 +18,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.3\n"
-
-msgctxt "app_name"
-msgid "Open Food"
-msgstr "Open Food"
-
-msgctxt "hello_world"
-msgid "Hello world!"
-msgstr "Hello world!"
 
 msgctxt "action_settings"
 msgid "Settings"
@@ -41,7 +33,7 @@ msgstr "Scopri"
 
 msgctxt "contribute"
 msgid "How to contribute"
-msgstr ""
+msgstr "Come contribuire"
 
 msgctxt "action_find"
 msgid "Find"
@@ -71,11 +63,6 @@ msgctxt "nav_drawer_items_product:3"
 msgid "Nutrition Table"
 msgstr "Tabella nutrizionale"
 
-#. Nav Drawer Product Menu Items
-msgctxt "nav_drawer_items_product:4"
-msgid "Back to menu"
-msgstr "Torna al menu"
-
 #. Text units
 msgctxt "units_array:0"
 msgid "g"
@@ -100,6 +87,16 @@ msgstr "l"
 msgctxt "units_array:4"
 msgid "ml"
 msgstr "ml"
+
+#. Text units
+msgctxt "units_array:5"
+msgid "cl"
+msgstr ""
+
+#. Text units
+msgctxt "units_array:6"
+msgid "fl oz"
+msgstr ""
 
 #. Text units
 msgctxt "lang_array:0"
@@ -252,10 +249,9 @@ msgid "da"
 msgstr "da"
 
 #. Text units
-#, fuzzy
 msgctxt "lang_array:30"
 msgid "zh-rCN"
-msgstr "zh_rCN"
+msgstr "zh-rCN"
 
 msgctxt "lang_label_array:0"
 msgid "English"
@@ -499,16 +495,16 @@ msgid "Nutrient levels for 100g :"
 msgstr "Nutrienti per 100g:"
 
 msgctxt "txtNutritionLevelLow"
-msgid "low"
-msgstr "basso"
+msgid "in low quantity"
+msgstr "in basse quantità"
 
 msgctxt "txtNutritionLevelModerate"
-msgid "moderate"
-msgstr "moderato"
+msgid "in moderate quantity"
+msgstr "in moderate quantità"
 
 msgctxt "txtNutritionLevelHigh"
-msgid "high"
-msgstr "alto"
+msgid "in high quantity"
+msgstr "in grandi quantità"
 
 msgctxt "txtLogin"
 msgid "Login :"
@@ -522,20 +518,9 @@ msgctxt "txtTitleHome"
 msgid "Open your food and know what you eat"
 msgstr "Apri il cibo e conosci cosa mangi"
 
-msgctxt "txtHome"
-msgid ""
-"Open Food Facts is a open database of food products with ingredients, "
-"allergens, nutrition facts and all the tidbits of information we can find"
-" on product labels."
-msgstr ""
-"Open Food Facts è un database aperto di prodotti alimentari con gli "
-"ingredienti, gli allergeni, le informazioni nutrizionali e tutto ciò che "
-"possiamo trovare sulle etichette dei prodotti."
-
-#, fuzzy
 msgctxt "txtSave"
 msgid "Save"
-msgstr "Invia/Salva"
+msgstr "Salva"
 
 msgctxt "txtSignIn"
 msgid "Sign in"
@@ -550,20 +535,20 @@ msgid "User saved"
 msgstr "Utente salvato"
 
 msgctxt "txtSalt"
-msgid "Salt :"
-msgstr "Sale:"
+msgid "Salt"
+msgstr "Sale"
 
 msgctxt "txtFat"
-msgid "Fat :"
-msgstr "Grassi:"
+msgid "Fat"
+msgstr "Grasso"
 
 msgctxt "txtSugars"
-msgid "Sugars :"
-msgstr "Zuccheri:"
+msgid "Sugars"
+msgstr "Zuccheri"
 
 msgctxt "txtSaturatedFat"
-msgid "Satured fat :"
-msgstr "Grassi saturi:"
+msgid "Satured fat"
+msgstr "Grassi saturi"
 
 msgctxt "hintBarcode"
 msgid "Barcode"
@@ -601,11 +586,11 @@ msgstr "Informazioni"
 
 msgctxt "txtDialogsContent"
 msgid ""
-"The product you scanned does not exist yet in Open Food Facts. Do you "
-"want to add it?"
+"The product you scanned does not exist yet in Open Food Facts. Please add"
+" it."
 msgstr ""
-"Il prodotto che hai scansionato non esiste ancora su Open Food Facts. "
-"Vuoi aggiungerlo?"
+"Il prodotto scansionato non esiste ancora in Open Food Facts. Aggiungerlo"
+" per favore."
 
 msgctxt "txtDialogsContentPowerMode"
 msgid "The product you scanned does already exist in Open Food Facts."
@@ -749,20 +734,26 @@ msgctxt "open_beauty_drawer"
 msgid "Open Beauty Facts"
 msgstr "Open Beauty Facts"
 
+msgctxt "open_food_drawer"
+msgid "Open Food Facts"
+msgstr ""
+
 msgctxt "search_drawer"
 msgid "Search"
 msgstr "Cerca"
 
+#, fuzzy
 msgctxt "search_by_barcode_drawer"
-msgid "Search by barcode"
+msgid "Type barcode"
 msgstr "Cerca per codice a barre"
 
 msgctxt "search_by_name_drawer"
 msgid "Search by name"
 msgstr "Cerca per nome"
 
+#, fuzzy
 msgctxt "scan_search"
-msgid "Scan"
+msgid "Scan Barcode"
 msgstr "Scansiona"
 
 msgctxt "user_drawer"
@@ -790,8 +781,8 @@ msgid "Sign-in"
 msgstr "Accedi"
 
 msgctxt "alert_drawer"
-msgid "Allergen Alert"
-msgstr "Allerta Allergeni"
+msgid "Allergen alert"
+msgstr "Allarme allergeni"
 
 msgctxt "warning_allergens"
 msgid "Contains allergens"
@@ -816,8 +807,8 @@ msgid "From gallery"
 msgstr "Dalla galleria"
 
 msgctxt "product_sent"
-msgid "Product sent!"
-msgstr "Prodotto inviato!"
+msgid "Product sent successfully"
+msgstr "Prodotto inviato con successo"
 
 msgctxt "action_edit_product"
 msgid "Edit product"
@@ -912,11 +903,11 @@ msgstr ""
 
 msgctxt "prefs_power_mode_summary"
 msgid ""
-"Quickly scan products in a supermarket to see which one are not in the "
+"Quickly scan products in a supermarket to see which ones are not in the "
 "database."
 msgstr ""
 "Scansiona velocemente i prodotti in un supermercato per vedere quali non "
-"sono nel database."
+"sono presenti nel database."
 
 msgctxt "prefs_language"
 msgid "Language"
@@ -1085,29 +1076,6 @@ msgctxt "action_contributes"
 msgid "Your contributions"
 msgstr "I tuoi contributi"
 
-#. website translated pages
-#. For fr, Replace by https://world-fr.openfoodfacts.org/
-msgctxt "website"
-msgid "https://world.openfoodfacts.org/"
-msgstr "https://world-it.openfoodfacts.org/"
-
-#. For fr, Replace by https://world-fr.openfoodfacts.org/contribuer
-msgctxt "website_contribute"
-msgid "https://world.openfoodfacts.org/contribute"
-msgstr "https://world-it.openfoodfacts.org/contribute"
-
-msgctxt "website_discover"
-msgid "https://world.openfoodfacts.org/discover"
-msgstr "https://world-it.openfoodfacts.org/discover"
-
-msgctxt "website_product"
-msgid "https://world.openfoodfacts.org/product/"
-msgstr "https://world-it.openfoodfacts.org/prodotto/"
-
-msgctxt "website_contributor"
-msgid "https://world.openfoodfacts.org/contributor/"
-msgstr "https://world-it.openfoodfacts.org/contributore/"
-
 msgctxt "logout_drawer"
 msgid "Logout"
 msgstr "Termina sessione"
@@ -1130,17 +1098,277 @@ msgstr "Altro"
 
 msgctxt "action_search"
 msgid "Search"
-msgstr ""
+msgstr "Cerca"
 
 msgctxt "search_hint"
 msgid "Search a product"
-msgstr ""
+msgstr "Cerca un prodotto"
 
 msgctxt "number_of_results"
 msgid "Number of results :"
-msgstr ""
+msgstr "Numero di risultati"
 
 msgctxt "txt_no_results"
 msgid "No results found"
-msgstr ""
+msgstr "Nessun risultato trovato"
+
+msgctxt "nutrition_lactose"
+msgid "Lactose"
+msgstr "Lattosio"
+
+msgctxt "nutrition_casein"
+msgid "Casein"
+msgstr "Caseina"
+
+msgctxt "nutrition_maltodextrins"
+msgid "Maltodextrins"
+msgstr "Maltodestrine"
+
+msgctxt "nutrition_serum_proteins"
+msgid "Serum Proteins"
+msgstr "Proteine del siero"
+
+msgctxt "nutrition_nucleotides"
+msgid "Nucleotides"
+msgstr "Nucleotidi"
+
+msgctxt "for_100g"
+msgid "For 100 g"
+msgstr "Per 100g"
+
+msgctxt "serving"
+msgid "Per serving"
+msgstr "Per porzione"
+
+msgctxt "minerals"
+msgid "Minerals"
+msgstr "Minerali"
+
+msgctxt "nutrition_calcium"
+msgid "Calcium"
+msgstr "Calcio"
+
+msgctxt "nutrition_potassium"
+msgid "Potassium"
+msgstr "Potassio"
+
+msgctxt "nutrition_chlore"
+msgid "Chlorine"
+msgstr "Cloro"
+
+msgctxt "nutrition_magnesium"
+msgid "Magnesium"
+msgstr "Magnesio"
+
+msgctxt "nutrition_taurine"
+msgid "Taurine"
+msgstr "Taurina"
+
+msgctxt "nutrition_monounsaturatedFat"
+msgid "Mono unsaturated fat"
+msgstr "Grasso monoinsaturo"
+
+msgctxt "nutrition_polyunsaturatedFat"
+msgid "Poly unsaturated fat"
+msgstr "Grasso polinsaturo"
+
+msgctxt "nutrition_omega3"
+msgid "Omega 3"
+msgstr "Omega 3"
+
+msgctxt "nutrition_omega6"
+msgid "Omega 6"
+msgstr "Omega 6"
+
+msgctxt "nutrition_omega9"
+msgid "Omega 9"
+msgstr "Omega 9"
+
+msgctxt "nutrition_sucrose"
+msgid "Sucrose"
+msgstr "Saccarosio"
+
+msgctxt "nutrition_glucose"
+msgid "Glucose"
+msgstr "Glucosio"
+
+msgctxt "nutrition_fructose"
+msgid "Fructose"
+msgstr "Fruttosio"
+
+msgctxt "nutrition_maltose"
+msgid "Maltose"
+msgstr "Maltosio"
+
+msgctxt "nutrition_alcohol"
+msgid "Alcohol"
+msgstr "Alcol"
+
+msgctxt "nutrition_vitamins"
+msgid "Vitamins"
+msgstr "Vitamine"
+
+msgctxt "vitamin_a"
+msgid "Vitamin A"
+msgstr "Vitamina A"
+
+msgctxt "vitamin_d"
+msgid "Vitamin d"
+msgstr "Vitamina D"
+
+msgctxt "vitamin_e"
+msgid "Vitamin e"
+msgstr "Vitamina E"
+
+msgctxt "vitamin_k"
+msgid "Vitamin k"
+msgstr "Vitamina K"
+
+msgctxt "vitamin_c"
+msgid "Vitamin C"
+msgstr "Vitamina C"
+
+msgctxt "vitamin_b1"
+msgid "Vitamin B1"
+msgstr "Vitamina B1"
+
+msgctxt "vitamin_b2"
+msgid "Vitamin B2"
+msgstr "Vitamina B2"
+
+msgctxt "vitamin_pp"
+msgid "Vitamin PP"
+msgstr "Vitamina PP"
+
+msgctxt "vitamin_b6"
+msgid "Vitamin B6"
+msgstr "Vitamina B6"
+
+msgctxt "vitamin_b9"
+msgid "Vitamin B9"
+msgstr "Vitamina B9"
+
+msgctxt "vitamin_b12"
+msgid "Vitamin B12"
+msgstr "Vitamina B12"
+
+msgctxt "biotin"
+msgid "Biotin"
+msgstr "Biotina"
+
+msgctxt "pantothenic_acid"
+msgid "Pantothenic acid"
+msgstr "Acido pantotenico"
+
+msgctxt "nutrition_minerals"
+msgid "Minerals"
+msgstr "Minerali"
+
+msgctxt "silica"
+msgid "Silica"
+msgstr "Silice"
+
+msgctxt "bicarbonate"
+msgid "Bicarbonate"
+msgstr "Bicarbonato"
+
+msgctxt "potassium"
+msgid "Potassium"
+msgstr "Potassio"
+
+msgctxt "chloride"
+msgid "Chloride"
+msgstr "Cloruro"
+
+msgctxt "calcium"
+msgid "Calcium"
+msgstr "Calcio"
+
+msgctxt "phosphorus"
+msgid "Phosphorus"
+msgstr "Fosforo"
+
+msgctxt "iron"
+msgid "Iron"
+msgstr "Ferro"
+
+msgctxt "magnesium"
+msgid "Magnesium"
+msgstr "Magnesio"
+
+msgctxt "zinc"
+msgid "Zinc"
+msgstr "Zinco"
+
+msgctxt "copper"
+msgid "Copper"
+msgstr "Rame"
+
+msgctxt "manganese"
+msgid "Manganese"
+msgstr "Manganese"
+
+msgctxt "fluoride"
+msgid "Fluoride"
+msgstr "Fluoruro"
+
+msgctxt "selenium"
+msgid "Selenium"
+msgstr "Selenio"
+
+msgctxt "chromium"
+msgid "Chromium"
+msgstr "Cromo"
+
+msgctxt "molybdenum"
+msgid "Molybdenum"
+msgstr "Molibdeno"
+
+msgctxt "iodine"
+msgid "Iodine"
+msgstr "Iodio"
+
+msgctxt "caffeine"
+msgid "Caffeine"
+msgstr "Caffeina"
+
+msgctxt "taurine"
+msgid "Taurine"
+msgstr "Taurina"
+
+msgctxt "ph"
+msgid "Ph"
+msgstr "Ph"
+
+msgctxt "fruits_vegetables_nuts"
+msgid "Fruits, vegetables, nuts"
+msgstr "Frutta, vegetali, semi"
+
+msgctxt "collagen_meat_protein_ratio"
+msgid "Collagen meat protein ratio"
+msgstr "Rapporto proteine della carne collagene"
+
+msgctxt "cocoa"
+msgid "Cocoa"
+msgstr "Cacao"
+
+msgctxt "chlorophyl"
+msgid "Chlorophyl"
+msgstr "Clorofilla"
+
+msgctxt "take_picture_ingredients"
+msgid "Take a picture of the ingredients"
+msgstr "Prendi una foto degli ingredienti"
+
+msgctxt "take_picture_front"
+msgid "Take a picture of the front"
+msgstr "Prendi una foto della parte frontale"
+
+msgctxt "take_picture_nutrition_table"
+msgid "Take a picture of the nutrition table"
+msgstr "Prendi una foto della tabella nutrizionale"
+
+msgctxt "take_more_pictures"
+msgid "Take more pictures"
+msgstr "Prendi ulteriori foto"
 

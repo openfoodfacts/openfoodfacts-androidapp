@@ -24,6 +24,7 @@ import java.net.HttpCookie;
 import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.ResponseBody;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -80,7 +81,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         }
 
         apiClient = new Retrofit.Builder()
-                .baseUrl(this.getString(R.string.openfoodUrl))
+                .baseUrl(BuildConfig.HOST)
                 .build()
                 .create(OpenFoodAPIService.class);
     }
@@ -113,7 +114,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (!response.isSuccess()) {
+                if (!response.isSuccessful()) {
                     Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                     lt.error();
                     Utils.hideKeyboard(context);

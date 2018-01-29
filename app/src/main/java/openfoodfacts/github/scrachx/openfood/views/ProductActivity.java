@@ -1,12 +1,19 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.ShareActionProvider;
@@ -22,26 +29,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
 public class ProductActivity extends BaseActivity {
 
     @BindView(R.id.pager) ViewPager viewPager;
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.tabs) TabLayout tabLayout;
+    @BindView(R.id.buttonScan)
+    FloatingActionButton mButtonScan;
     private ShareActionProvider mShareActionProvider;
     private State mState;
+    private AllergenDao mAllergenDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +68,7 @@ public class ProductActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mAllergenDao = Utils.getAppDaoSession(this).getAllergenDao();
         setupViewPager(viewPager);
 
         tabLayout.setupWithViewPager(viewPager);
@@ -65,7 +83,7 @@ public class ProductActivity extends BaseActivity {
         allergens.addAll(traces);
 
         List<String> matchAll = new ArrayList<>();
-        List<Allergen> mAllergens = Allergen.find(Allergen.class, "enable = ?", "true");
+        List<Allergen> mAllergens = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
         for (int a = 0; a < mAllergens.size(); a++) {
             for(int i = 0; i < allergens.size(); i++) {
                 if (allergens.get(i).trim().equals(mAllergens.get(a).getIdAllergen().trim())) {
@@ -89,14 +107,39 @@ public class ProductActivity extends BaseActivity {
         }
     }
 
+    @OnClick(R.id.buttonScan)
+    protected void OnScan() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                new MaterialDialog.Builder(this)
+                        .title(R.string.action_about)
+                        .content(R.string.permission_camera)
+                        .neutralText(R.string.txtOk)
+                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                        .show();
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+            }
+        } else {
+            Intent intent = new Intent(this, ScannerFragmentActivity.class);
+            startActivity(intent);
+        }
+    }
+
     private void setupViewPager(ViewPager viewPager) {
         String[] menuTitles = getResources().getStringArray(R.array.nav_drawer_items_product);
 
         ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
         adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
         adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
-        adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
-        adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
+        if(BuildConfig.FLAVOR.equals("off")) {
+            adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
+            adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
+        }
+        if(BuildConfig.FLAVOR.equals("opff")) {
+            adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
+            adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
+        }
         viewPager.setAdapter(adapterResult);
     }
 
@@ -144,6 +187,30 @@ public class ProductActivity extends BaseActivity {
     private void setShareIntent(Intent shareIntent) {
         if (mShareActionProvider != null) {
             mShareActionProvider.setShareIntent(shareIntent);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CAMERA:
+            case Utils.MY_PERMISSIONS_REQUEST_STORAGE: {
+                if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
+                    new MaterialDialog.Builder(this)
+                            .title(R.string.permission_title)
+                            .content(R.string.permission_denied)
+                            .negativeText(R.string.txtNo)
+                            .positiveText(R.string.txtYes)
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent();
+                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                intent.setData(uri);
+                                startActivity(intent);
+                            })
+                            .show();
+                }
+            }
         }
     }
 }

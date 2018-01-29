@@ -7,9 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.VectorDrawable;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
 import android.support.graphics.drawable.VectorDrawableCompat;
@@ -31,6 +29,8 @@ import java.io.OutputStream;
 import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static android.text.TextUtils.isEmpty;
 
@@ -148,7 +148,7 @@ public class Utils {
             BitmapFactory.decodeStream(new FileInputStream(f), null, o);
 
             // The new size we want to scale to
-            final int REQUIRED_SIZE = 300;
+            final int REQUIRED_SIZE = 1200;
 
             // Find the correct scale value. It should be the power of 2.
             int scale = 1;
@@ -174,7 +174,9 @@ public class Utils {
      *
      * @return true if the application is installed, false otherwise.
      */
+
     public static boolean isApplicationInstalled(Context context, String packageName) {
+    //private boolean isApplicationInstalled(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
         try {
             // Check if the package name exists, if exception is thrown, package name does not exist.
@@ -218,20 +220,13 @@ public class Utils {
     }
 
     public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
-        Drawable drawable = ContextCompat.getDrawable(context, drawableId);
+        Drawable drawable = VectorDrawableCompat.create(context.getResources(), drawableId, null);
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
 
-        if (drawable instanceof BitmapDrawable) {
-            return ((BitmapDrawable) drawable).getBitmap();
-        } else if (drawable instanceof VectorDrawable || drawable instanceof VectorDrawableCompat) {
-            Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(bitmap);
-            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-            drawable.draw(canvas);
-
-            return bitmap;
-        } else {
-            throw new IllegalArgumentException("unsupported drawable type");
-        }
+        return bitmap;
     }
 
     /**
@@ -241,8 +236,12 @@ public class Utils {
      * @return round value or 0 if the value is empty or equals to 0
      */
     public static String getRoundNumber(String value) {
-        if (isEmpty(value) || "0".equals(value)) {
-            return "0";
+        if ("0".equals(value)) {
+            return value;
+        }
+
+        if (isEmpty(value)) {
+            return "?";
         }
 
         String[] strings = value.split("\\.");
@@ -250,6 +249,10 @@ public class Utils {
             return value;
         }
 
-        return String.format(Locale.getDefault(), "%.2f", Double.valueOf(value));
+        return  String.format(Locale.getDefault(), "%.2f", Double.valueOf(value));
+    }
+
+    public static DaoSession getAppDaoSession(Activity activity) {
+        return ((OFFApplication) activity.getApplication()).getDaoSession();
     }
 }

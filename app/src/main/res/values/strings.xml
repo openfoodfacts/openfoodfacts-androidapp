@@ -1,7 +1,5 @@
 <resources>
 
-    <string name="app_name">Open Food</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="action_about">About</string>
     <string name="action_discover">Discover</string>
@@ -26,6 +24,8 @@
         <item>kg</item>
         <item>l</item>
         <item>ml</item>
+        <item>cl</item>
+        <item>fl oz</item>
     </string-array>
 
     <!-- Text units -->
@@ -61,6 +61,25 @@
         <item>nb</item>
         <item>da</item>
         <item>zh-rCN</item>
+        <item>fa</item>
+        <item>rs</item>
+        <item>af</item>
+        <item>ak</item>
+        <item>am</item>
+        <item>as</item>
+        <item>zh-rTW</item>
+        <item>zh-rHK</item>
+        <item>hu</item>
+        <item>tr</item>
+        <item>id</item>
+        <item>tl</item>
+        <item>fil</item>
+        <item>nl-rBE</item>
+        <item>bn</item>
+        <item>sl</item>
+        <item>ku</item>
+        <item>eo</item>
+        <item>pl</item>
     </string-array>
 
     <string-array name="lang_label_array">
@@ -95,6 +114,26 @@
         <item>Norwegian (Bokmal)</item>
         <item>Danish</item>
         <item>Simplified Chinese</item>
+        <item>Farsi</item>
+        <item>Serbian (Latin)</item>
+        <item>Afrikaans</item>
+        <item>Akan</item>
+        <item>Amharic</item>
+        <item>Assamese</item>
+        <item>Chinese Traditional</item>
+        <item>Chinese Traditional, Hong Kong</item>
+        <item>Hungarian</item>
+        <item>Turkish</item>
+        <item>Indonesian</item>
+        <item>Tagalog</item>
+        <item>Filipino</item>
+        <item>Dutch, Belgium</item>
+        <item>Bengali</item>
+        <item>Slovenian</item>
+        <item>Kurdish</item>
+        <item>Esperanto</item>
+        <item>Polish</item>
+        
     </string-array>
 
     <string-array name="images_array">
@@ -111,6 +150,7 @@
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
     <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
     <string name="toast_retrieving">Loading...</string>
+    <string name="txtGenericName">Common name :</string>
     <string name="txtBarcode">Barcode :</string>
     <string name="txtQuantity">Quantity :</string>
     <string name="txtPackaging">Packaging :</string>
@@ -136,7 +176,6 @@
     <string name="txtLogin">Login :</string>
     <string name="txtPass">Password :</string>
     <string name="txtTitleHome">Open your food and know what you eat</string>
-    <string name="txtHome">Open Food Facts is a open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
     <string name="txtSave">Save</string>
     <string name="txtSignIn">Sign in</string>
     <string name="txtUser">User panel</string>
@@ -153,7 +192,7 @@
     <string name="txtInfoLoginOk">User saved</string>
     <string name="txtInfoLoginNo">User not saved</string>
     <string name="txtDialogsTitle">Information</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Do you want to add it?</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
     <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
     <string name="txtYes">Yes</string>
@@ -188,10 +227,13 @@
     <string name="create_account">Sign up</string>
     <string name="home_drawer">Home</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
+    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Search</string>
-    <string name="search_by_barcode_drawer">Search by barcode</string>
+    <string name="search_by_barcode_drawer">Type barcode</string>
+    <string name="category_drawer">Categories</string>
+    <string name="search_by_category">Category</string>
     <string name="search_by_name_drawer">Search by name</string>
-    <string name="scan_search">Scan</string>
+    <string name="scan_search">Scan Barcode</string>
     <string name="user_drawer">User</string>
     <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">Anonymous</string>
@@ -230,7 +272,7 @@
     <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
 
     <!-- Strings related to login -->
-    <string name="error_invalid_password">The password needs to be a least 6 characters long.</string>
+    <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
     <string name="error_field_required">This field is required.</string>
     <string name="action_preferences">Preferences</string>
     <string name="prefs_scan_startup">Scan on startup</string>
@@ -240,11 +282,6 @@
     <string name="prefs_language">Language</string>
     <string name="prefs_language_summary">Change language</string>
 
-    <!--API URL-->
-    <string name="openfoodUrl" translatable="false">https://ssl-api.openfoodfacts.org</string>
-
-    <!-- Open Beauty App -->
-    <string name="openBeautyApp" translatable="false">org.openbeautyfacts.scanner</string>
     <string name="scan_history_drawer">History</string>
     <string name="clear_history">Clear history</string>
     <string name="title_clear_history_dialog">Clear</string>
@@ -286,18 +323,7 @@
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
     <string name="action_contributes">Your contributions</string>
-    <!-- website translated pages -->
 
-    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
-    <string name="website">https://world.openfoodfacts.org/</string>
-    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
-    <string name="website_contribute">https://world.openfoodfacts.org/contribute</string>
-    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir -->
-    <string name="website_discover">https://world.openfoodfacts.org/discover</string>
-    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
-    <string name="website_product">https://world.openfoodfacts.org/product/</string>
-    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="logout_drawer">Logout</string>
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
@@ -307,5 +333,73 @@
     <string name="search_hint">Search a product</string>
     <string name="number_of_results">Number of results :</string>
     <string name="txt_no_results">No results found</string>
+    <string name="txt_extend_search">Try broadening your search or add the product</string>
+    <string name="txt_cant_load_search_results">Can\'t load search results</string>
+    <string name="txt_try_again">Try again</string>
+    <string name="nutrition_lactose">Lactose</string>
+    <string name="nutrition_casein">Casein</string>
+    <string name="nutrition_maltodextrins">Maltodextrins</string>
+    <string name="nutrition_serum_proteins">Serum Proteins</string>
+    <string name="nutrition_nucleotides">Nucleotides</string>
+    <string name="for_100g">For 100 g</string>
+    <string name="serving">Per serving</string>
+    <string name="minerals">Minerals</string>
+    <string name="nutrition_calcium">Calcium</string>
+    <string name="nutrition_potassium">Potassium</string>
+    <string name="nutrition_chlore">Chlorine</string>
+    <string name="nutrition_magnesium">Magnesium</string>
+    <string name="nutrition_taurine">Taurine</string>
+    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_omega3">Omega 3</string>
+    <string name="nutrition_omega6">Omega 6</string>
+    <string name="nutrition_omega9">Omega 9</string>
+    <string name="nutrition_sucrose">Sucrose</string>
+    <string name="nutrition_glucose">Glucose</string>
+    <string name="nutrition_fructose">Fructose</string>
+    <string name="nutrition_maltose">Maltose</string>
+    <string name="nutrition_alcohol">Alcohol</string>
+    <string name="nutrition_vitamins">Vitamins</string>
+    <string name="vitamin_a">Vitamin A</string>
+    <string name="vitamin_d">Vitamin d</string>
+    <string name="vitamin_e">Vitamin e</string>
+    <string name="vitamin_k">Vitamin k</string>
+    <string name="vitamin_c">Vitamin C</string>
+    <string name="vitamin_b1">Vitamin B1</string>
+    <string name="vitamin_b2">Vitamin B2</string>
+    <string name="vitamin_pp">Vitamin PP</string>
+    <string name="vitamin_b6">Vitamin B6</string>
+    <string name="vitamin_b9">Vitamin B9</string>
+    <string name="vitamin_b12">Vitamin B12</string>
+    <string name="biotin">Biotin</string>
+    <string name="pantothenic_acid">Pantothenic acid</string>
+    <string name="nutrition_minerals">Minerals</string>
+    <string name="silica">Silica</string>
+    <string name="bicarbonate">Bicarbonate</string>
+    <string name="potassium">Potassium</string>
+    <string name="chloride">Chloride</string>
+    <string name="calcium">Calcium</string>
+    <string name="phosphorus">Phosphorus</string>
+    <string name="iron">Iron</string>
+    <string name="magnesium">Magnesium</string>
+    <string name="zinc">Zinc</string>
+    <string name="copper">Copper</string>
+    <string name="manganese">Manganese</string>
+    <string name="fluoride">Fluoride</string>
+    <string name="selenium">Selenium</string>
+    <string name="chromium">Chromium</string>
+    <string name="molybdenum">Molybdenum</string>
+    <string name="iodine">Iodine</string>
+    <string name="caffeine">Caffeine</string>
+    <string name="taurine">Taurine</string>
+    <string name="ph">pH</string>
+    <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
+    <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
+    <string name="cocoa">Cocoa</string>
+    <string name="chlorophyl">Chlorophyl</string>
+    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
+    <string name="take_picture_front">Take a picture of the front</string>
+    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
+    <string name="take_more_pictures">Take more pictures</string>
 
 </resources>

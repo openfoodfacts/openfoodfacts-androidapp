@@ -1,21 +1,23 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import com.orm.SugarRecord;
-import com.orm.dsl.Unique;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Index;
 
 import java.util.Date;
+import org.greenrobot.greendao.annotation.Generated;
 
-public class HistoryProduct extends SugarRecord {
+@Entity(indexes = {
+        @Index(value = "barcode", unique = true)
+})
+public class HistoryProduct {
 
+    @Id private Long id;
     private String title;
     private String brands;
     private String url;
     private Date lastSeen;
-    @Unique
     private String barcode;
-
-    // Default constructor is necessary for SugarRecord
-    public HistoryProduct() {}
 
     public HistoryProduct(String title, String brands, String url, String barcode) {
         this.title = title;
@@ -23,6 +25,21 @@ public class HistoryProduct extends SugarRecord {
         this.url = url;
         this.barcode = barcode;
         this.lastSeen = new Date();
+    }
+
+    @Generated(hash = 1359786217)
+    public HistoryProduct(Long id, String title, String brands, String url,
+                          Date lastSeen, String barcode) {
+        this.id = id;
+        this.title = title;
+        this.brands = brands;
+        this.url = url;
+        this.lastSeen = lastSeen;
+        this.barcode = barcode;
+    }
+
+    @Generated(hash = 1674709907)
+    public HistoryProduct() {
     }
 
     public String getTitle() {
@@ -63,5 +80,13 @@ public class HistoryProduct extends SugarRecord {
 
     public void setLastSeen(Date lastSeen) {
         this.lastSeen = lastSeen;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

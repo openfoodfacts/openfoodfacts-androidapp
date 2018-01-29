@@ -32,6 +32,7 @@ import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.holder.StringHolder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
@@ -41,6 +42,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import butterknife.BindView;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.AlertUserFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
@@ -50,6 +52,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsResultsFragment;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -68,7 +71,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final int ABOUT = 600;
     private static final int CONTRIBUTE = 700;
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private AccountHeader headerResult = null;
     private Drawer result = null;
 
@@ -149,21 +153,22 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .withHasStableIds(true)
                 .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
                 .addDrawerItems(
-                    new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(1),
-                    new SectionDrawerItem().withName(R.string.search_drawer),
-                    new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(2),
-                    new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(GoogleMaterial.Icon.gmd_camera_alt).withIdentifier(4),
-                    new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(5),
-                    new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
-                    new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(CONTRIBUTOR),
-                    new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(7),
-                    new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(8),
-                    new DividerDrawerItem(),
-                    new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9),
-                    new DividerDrawerItem(),
-                    new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ABOUT),
-                    new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(CONTRIBUTE),
-                    new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(11)
+                        new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(1),
+                        new SectionDrawerItem().withName(R.string.search_drawer),
+                        new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(2),
+                        new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(3),
+                        new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(4),
+                        new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(5),
+                        new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
+                        new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(CONTRIBUTOR),
+                        new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(7),
+                        new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(8),
+                        new DividerDrawerItem(),
+                        new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9),
+                        new DividerDrawerItem(),
+                        new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ABOUT),
+                        new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(CONTRIBUTE),
+                        new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(11)
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
 
@@ -180,6 +185,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         case 2:
                             fragment = new FindProductFragment();
                             getSupportActionBar().setTitle(getResources().getString(R.string.search_by_barcode_drawer));
+                            break;
+                        case 3:
+                            startActivity(CategoryActivity.getIntent(this));
                             break;
                         case 4:
                             if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -222,15 +230,15 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, contributeUri, new WebViewFallback());
                             break;
                         case 11:
-                            boolean openBeautyInstalled = Utils.isApplicationInstalled(MainActivity.this, getString(R.string.openBeautyApp));
-                            if (openBeautyInstalled) {
-                                Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(getString(R.string.openBeautyApp));
+                            boolean otherOFAppInstalled = Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP);
+                            if (otherOFAppInstalled) {
+                                Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(BuildConfig.OFOTHERLINKAPP);
                                 startActivity(LaunchIntent);
                             } else {
                                 try {
-                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getString(R.string.openBeautyApp))));
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + BuildConfig.OFOTHERLINKAPP)));
                                 } catch (ActivityNotFoundException anfe) {
-                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getString(R.string.openBeautyApp))));
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + BuildConfig.OFOTHERLINKAPP)));
                                 }
                             }
                             break;
@@ -274,6 +282,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         // Add Drawer items for the connected user
         result.addItemsAtPosition(result.getPosition(CONTRIBUTOR), isUserConnected ? getLogoutDrawerItem() : getLoginDrawerItem());
+        if (BuildConfig.FLAVOR.equals("obf")) {
+            result.removeItem(7);
+            result.updateName(11, new StringHolder(getString(R.string.open_food_drawer)));
+        }
+        if (BuildConfig.FLAVOR.equals("opff")) {
+            result.removeItem(7);
+            result.updateName(11, new StringHolder(getString(R.string.open_food_drawer)));
+        }
 
         //if you have many different types of DrawerItems you can magically pre-cache those items to get a better scroll performance
         //make sure to init the cache after the DrawerBuilder was created as this will first clear the cache to make sure no old elements are in

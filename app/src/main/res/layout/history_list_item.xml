@@ -76,7 +76,7 @@
             android:layout_marginRight="12dp"
             android:layout_centerVertical="true"
             android:background="@color/white"
-            android:src="@drawable/ic_share_black_48px"/>
+            app:srcCompat="@drawable/ic_share_black_48px"/>
 
     </RelativeLayout>
 
