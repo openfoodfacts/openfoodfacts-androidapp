@@ -286,13 +286,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             result.removeItem(7);
             result.updateName(11, new StringHolder(getString(R.string.open_food_drawer)));
         }
+
         if (BuildConfig.FLAVOR.equals("opff")) {
             result.removeItem(7);
             result.updateName(11, new StringHolder(getString(R.string.open_food_drawer)));
         }
 
         // Remove scan item if the device does not have a camera, for example, Chromebooks or Fire devices
-        if (!this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+        if (!Utils.isHardwareCameraInstalled(this)){
             result.removeItem(4);
         }
 
@@ -520,4 +521,19 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
     }
 
+    /**
+     * This moves the main activity to the barcode entry fragment.
+     */
+    public void moveToBarcodeEntry(){
+        result.setSelection(2);
+        Fragment fragment = new FindProductFragment();
+        getSupportActionBar().setTitle(getResources().getString(R.string.search_by_barcode_drawer));
+
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        } else {
+            // error in creating fragment
+            Log.e("MainActivity", "Error in creating fragment");
+        }
+    }
 }

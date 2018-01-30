@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -191,7 +190,7 @@ public class SummaryProductFragment extends BaseFragment {
 
         // if the device does not have a camera, hide the button
         try {
-            if (!getContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+            if (!Utils.isHardwareCameraInstalled(getContext())) {
                 addMorePicture.setVisibility(View.GONE);
             }
         } catch (NullPointerException e){
@@ -202,13 +201,22 @@ public class SummaryProductFragment extends BaseFragment {
     @OnClick(R.id.buttonMorePictures)
     public void takeMorePicture() {
         try {
-            if (getContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+            if (Utils.isHardwareCameraInstalled(getContext())) {
                 if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
                 } else {
                     sendOther = true;
                     EasyImage.openCamera(this, 0);
                 }
+            } else {
+                if (ContextCompat.checkSelfPermission(this.getContext(), READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
+                        && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
+                } else {
+                    sendOther = true;
+                    EasyImage.openGallery(this, 0, false);
+                }
+            }
 
                 if (ContextCompat.checkSelfPermission(this.getContext(), READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
                         && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
@@ -224,7 +232,6 @@ public class SummaryProductFragment extends BaseFragment {
                         ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
                     }
                 }
-            }
         } catch (NullPointerException e){
             Log.i(getClass().getSimpleName(), e.toString());
         }
@@ -244,7 +251,11 @@ public class SummaryProductFragment extends BaseFragment {
                 ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
             } else {
                 sendOther = false;
-                EasyImage.openCamera(this, 0);
+                if (Utils.isHardwareCameraInstalled(getContext())) {
+                    EasyImage.openCamera(this, 0);
+                } else {
+                    EasyImage.openGallery(getActivity(), 0, false);
+                }
             }
         }
     }

@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -65,6 +66,9 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @BindView(R.id.editTextWeight) EditText weight;
     @BindView(R.id.spinnerUnitWeight) Spinner spinnerW;
     @BindView(R.id.buttonSaveProduct) Button save;
+    @BindView(R.id.buttonTakePictureFront) ImageButton btnTakeFront;
+    @BindView(R.id.buttonTakePictureIngredients) ImageButton btnTakeIngredients;
+    @BindView(R.id.buttonTakePictureNutrition) ImageButton btnTakeNutrition;
 
     private SendProduct mProduct;
     private String mBarcode;
@@ -149,7 +153,22 @@ public class SaveProductOfflineActivity extends BaseActivity {
             mProduct.setBarcode(mBarcode);
 			barcodeText.setText(barcodeText.getText() + " " + mBarcode);
         }
+
         mProduct.setLang(Locale.getDefault().getLanguage());
+
+        checkIfCameraInstalled();
+    }
+
+    /**
+     * Check if there is a camera installed on the device. If there is not, then hide the views that
+     * allow the user to take a photo.
+     */
+    private void checkIfCameraInstalled(){
+        if (Utils.isHardwareCameraInstalled(this)){
+            btnTakeFront.setVisibility(View.GONE);
+            btnTakeNutrition.setVisibility(View.GONE);
+            btnTakeIngredients.setVisibility(View.GONE);
+        }
     }
 
     @OnItemSelected(value = R.id.spinnerUnitWeight, callback = OnItemSelected.Callback.ITEM_SELECTED)
