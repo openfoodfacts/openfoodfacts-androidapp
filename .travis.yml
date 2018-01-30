@@ -48,6 +48,9 @@ cache:
 #  - emulator -avd test -no-skin -no-window &
 #  - android-wait-for-emulator
 
+before_install:
+  - yes | sdkmanager "platforms;android-27"
+
 install:
   - ./gradlew assembleDebug --stacktrace
 

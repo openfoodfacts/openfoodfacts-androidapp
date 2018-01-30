@@ -1,12 +1,14 @@
 This is the Changelog. Please list changes here so that we can provide meaningful changelog for the application stores.
 
 Upcoming:
+- New full or partial support for Serbian (Latin), Afrikaans, Akan, Amharic, Assamese, Chinese Traditional, Chinese Traditional (Hong Kong), Hungarian, Turkish, Indonesian, Tagalog, Filipino, Dutch, Belgium, Bengali, Slovenian, Kurdish, Esperanto, Polish.
+- Images were uploaded in low-res. We've increased the upload resolution a bit so that they can be legible and useful.
 - Some languages were not working (eg Brazilian Portuguese). This has been fixed. We're also laying some bases for upcoming locale improvements.
 - We now also display the Common name of the product. Nutella in French is also known as "Pâte à tartiner aux noisettes et au cacao"
 - Fix a crasher on the ingredient list, some encoding issues in product fields and typos (pH).
 - Open Pet Food Facts support. Woof. Woof.
 - You are now properly credited for uploaded images.
-- Fixed an issue in allergen detection
+- Cleaner allergen detection settings, and fixed an issue in allergen detection
 
 0.7.2 & 0.7.3 & 0.7.4 - 
 - Micro-release to fix 4.0 related bugs.
