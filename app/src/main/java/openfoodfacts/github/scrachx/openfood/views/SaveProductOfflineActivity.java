@@ -164,7 +164,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
      * allow the user to take a photo.
      */
     private void checkIfCameraInstalled(){
-        if (Utils.isHardwareCameraInstalled(this)){
+        if (!Utils.isHardwareCameraInstalled(this)){
             btnTakeFront.setVisibility(View.GONE);
             btnTakeNutrition.setVisibility(View.GONE);
             btnTakeIngredients.setVisibility(View.GONE);
