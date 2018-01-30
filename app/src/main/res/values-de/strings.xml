@@ -111,22 +111,22 @@
     <item>Dänisch</item>
     <item>Chinesisch (vereinfacht)</item>
     <item>Farsi</item>
-    <item>Serbian (Latin)</item>
+    <item>Serbisch (Latein)</item>
     <item>Afrikaans</item>
     <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
+    <item>Amharisch</item>
+    <item>Assamesisch</item>
+    <item>Chinesisch (Traditionell)</item>
+    <item>Chinesisch (traditionell), Hong Kong</item>
     <item>Ungarisch</item>
-    <item>Turkish</item>
+    <item>Türkisch</item>
     <item>Indonesisch</item>
     <item>Tagalog</item>
     <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
+    <item>Niederländisch, Belgien</item>
+    <item>Bengalisch</item>
     <item>Slowenisch</item>
-    <item>Kurdish</item>
+    <item>Kurdisch</item>
     <item>Esperanto</item>
     <item>Polnisch</item>
   </string-array>
@@ -249,7 +249,7 @@
   <string name="info_download_data">Um diese Funktion zu aktivieren, müssen einige Daten heruntergeladen werden. Bitte drücken Sie Ja, um den Download zu starten.</string>
   <string name="info_download_data_connection">Um diese Funktion zu aktivieren, müssen einige Daten heruntergeladen werden. Bitte aktivieren Sie Ihre Internetverbindung.</string>
   <string name="msg_input_empty">Bitte zuerst die Felder ausfüllen</string>
-  <string name="new_offline_info">Nehmen Sie bitte Bilder vom Produkt, den Zutaten, den Nährwertangaben und jeder anderen Information auf dem Etikett auf. Danke!</string>
+  <string name="new_offline_info">Machen Sie bitte Bilder vom Produkt, den Zutaten, den Nährwertangaben und jeder anderen Information auf dem Etikett. Danke!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Das Passwort muss mindestens 6 Zeichen lang sein.</string>
   <string name="error_field_required">Das Feld ist erforderlich.</string>
