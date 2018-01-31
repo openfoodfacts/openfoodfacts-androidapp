@@ -60,15 +60,15 @@
     <item>zh-rCN</item>
     <item>fa</item>
     <item>rs</item>
-    <item>af</item>
-    <item>ak</item>
-    <item>am</item>
-    <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
-    <item>hu</item>
-    <item>tr</item>
-    <item>id</item>
+    <item>南非語</item>
+    <item>阿寒語</item>
+    <item>阿姆哈拉語</item>
+    <item>阿薩姆語</item>
+    <item>中文 - 台灣</item>
+    <item>中文 - 香港</item>
+    <item>匈牙利語</item>
+    <item>土耳其語</item>
+    <item>印尼語</item>
     <item>tl</item>
     <item>fil</item>
     <item>nl-rBE</item>
@@ -114,15 +114,15 @@
     <item>Serbian (Latin)</item>
     <item>Afrikaans</item>
     <item>Akan</item>
-    <item>Amharic</item>
+    <item>阿姆哈拉語</item>
     <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
+    <item>繁體中文</item>
+    <item>香港繁體中文</item>
     <item>匈牙利語</item>
-    <item>Turkish</item>
+    <item>土耳其語</item>
     <item>印尼語</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
+    <item>塔加拉語</item>
+    <item>菲律賓語</item>
     <item>Dutch, Belgium</item>
     <item>Bengali</item>
     <item>斯洛文尼亞語</item>
@@ -224,7 +224,7 @@
   <string name="search_drawer">搜尋</string>
   <string name="search_by_barcode_drawer">輸入條碼</string>
   <string name="category_drawer">類別</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">分類</string>
   <string name="search_by_name_drawer">透過名稱搜尋</string>
   <string name="scan_search">掃描條碼</string>
   <string name="user_drawer">使用者</string>
