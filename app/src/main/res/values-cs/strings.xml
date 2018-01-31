@@ -176,9 +176,9 @@
   <string name="txtSalt">Sůl</string>
   <string name="txtFat">Tuky</string>
   <string name="txtSugars">Cukry</string>
-  <string name="txtSaturatedFat">Satured fat</string>
+  <string name="txtSaturatedFat">Nasycené tuky</string>
   <string name="hintBarcode">Čárový kód</string>
-  <string name="hintLogin">Login</string>
+  <string name="hintLogin">Přihlašovací jméno</string>
   <string name="hintPass">Heslo</string>
   <string name="errorLogin">Přihlašovací jméno nebo heslo je chybné</string>
   <string name="errorWeb">Nelze se připojit k internetu. Zkontrolujte, prosím, připojení k síti.</string>
@@ -287,8 +287,8 @@
   <string name="nutrition_proteins_short_name">Bílkoviny (g)</string>
   <string name="nutrition_salt">Sůl</string>
   <string name="nutrition_salt_short_name">Sůl (g)</string>
-  <string name="nutrition_satured_fat">Satured fat</string>
-  <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
+  <string name="nutrition_satured_fat">Nasycené tuky</string>
+  <string name="nutrition_satured_fat_short_name">Nasycené tuky (g)</string>
   <string name="nutrition_serving">V jedné porci</string>
   <string name="nutrition_serving_size">Velikost porce :</string>
   <string name="nutrition_sodium">Sodík</string>
