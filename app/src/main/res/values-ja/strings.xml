@@ -176,8 +176,7 @@
   <string name="txtSalt">食塩</string>
   <string name="txtFat">脂肪</string>
   <string name="txtSugars">砂糖</string>
-  <string name="txtSaturatedFat">飽和脂肪酸</string>
-  <string name="hintBarcode">バーコード</string>
+    <string name="hintBarcode">バーコード</string>
   <string name="hintLogin">ログイン</string>
   <string name="hintPass">パスワード</string>
   <string name="errorLogin">ログインまたはパスワードエラー</string>

@@ -176,8 +176,7 @@
   <string name="txtSalt">Sol</string>
   <string name="txtFat">Maščoba</string>
   <string name="txtSugars">Sladkorji</string>
-  <string name="txtSaturatedFat">Nasičena maščoba</string>
-  <string name="hintBarcode">Črtna koda</string>
+    <string name="hintBarcode">Črtna koda</string>
   <string name="hintLogin">Prijava</string>
   <string name="hintPass">Geslo</string>
   <string name="errorLogin">Uporabniško ime ali geslo sta napačna</string>

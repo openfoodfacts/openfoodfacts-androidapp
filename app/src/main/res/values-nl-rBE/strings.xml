@@ -176,8 +176,7 @@
   <string name="txtSalt">Zout</string>
   <string name="txtFat">Vet</string>
   <string name="txtSugars">Suikers</string>
-  <string name="txtSaturatedFat">Verzadigd vet</string>
-  <string name="hintBarcode">Streepjescode</string>
+    <string name="hintBarcode">Streepjescode</string>
   <string name="hintLogin">Inloggen</string>
   <string name="hintPass">Wachtwoord</string>
   <string name="errorLogin">Verkeerde gebruikersnaam of wachtwoord</string>

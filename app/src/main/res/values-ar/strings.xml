@@ -176,8 +176,7 @@
   <string name="txtSalt">ملح</string>
   <string name="txtFat">الدهون</string>
   <string name="txtSugars">السكريات</string>
-  <string name="txtSaturatedFat">الدهون المشبعة</string>
-  <string name="hintBarcode">الرمز الشريطي</string>
+    <string name="hintBarcode">الرمز الشريطي</string>
   <string name="hintLogin">تسجيل الدخول</string>
   <string name="hintPass">كلمة المرور</string>
   <string name="errorLogin">خطأ في تسجيل الدخول أو كلمة المرور</string>

@@ -176,8 +176,7 @@
   <string name="txtSalt">garam</string>
   <string name="txtFat">lebar</string>
   <string name="txtSugars">saka</string>
-  <string name="txtSaturatedFat">lemak tidak sehat</string>
-  <string name="hintBarcode">kode batang</string>
+    <string name="hintBarcode">kode batang</string>
   <string name="hintLogin">masuk</string>
   <string name="hintPass">kata sandi anda</string>
   <string name="errorLogin">Kesalahan masuk atau kata sandi anda salah</string>

@@ -176,8 +176,7 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Satured fat</string>
-  <string name="hintBarcode">Գծակոդ</string>
+    <string name="hintBarcode">Գծակոդ</string>
   <string name="hintLogin">Մուտքանուն</string>
   <string name="hintPass">Գաղտնաբառ</string>
   <string name="errorLogin">Սխալ մուտքանուն կամ գաղտնաբառ</string>

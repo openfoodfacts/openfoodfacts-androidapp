@@ -176,8 +176,7 @@
   <string name="txtSalt">Só</string>
   <string name="txtFat">Zsír</string>
   <string name="txtSugars">Cukrok</string>
-  <string name="txtSaturatedFat">Telített zsírsavak</string>
-  <string name="hintBarcode">Vonalkód</string>
+    <string name="hintBarcode">Vonalkód</string>
   <string name="hintLogin">Bejelentkezés</string>
   <string name="hintPass">Jelszó</string>
   <string name="errorLogin">Bejelentkezési hiba</string>

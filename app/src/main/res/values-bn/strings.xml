@@ -176,8 +176,7 @@
   <string name="txtSalt">লবন</string>
   <string name="txtFat">চর্বি</string>
   <string name="txtSugars">চিনি</string>
-  <string name="txtSaturatedFat">সম্পৃক্ত চর্বি</string>
-  <string name="hintBarcode">বারকোড</string>
+    <string name="hintBarcode">বারকোড</string>
   <string name="hintLogin">লগ ইন</string>
   <string name="hintPass">পাসওয়ার্ড</string>
   <string name="errorLogin">লগইন বা পাসওয়ার্ড ত্রুটি</string>

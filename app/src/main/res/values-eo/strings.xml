@@ -176,8 +176,7 @@
   <string name="txtSalt">Salo</string>
   <string name="txtFat">Lipido</string>
   <string name="txtSugars">Sukeroj</string>
-  <string name="txtSaturatedFat">Saturita graso</string>
-  <string name="hintBarcode">Strekokodo</string>
+    <string name="hintBarcode">Strekokodo</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Pasvorto</string>
   <string name="errorLogin">Login or password error</string>

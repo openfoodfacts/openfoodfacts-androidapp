@@ -114,15 +114,15 @@
     <item>Serbian (Latin)</item>
     <item>Afrikaans</item>
     <item>Akan</item>
-    <item>Amharic</item>
+    <item>阿姆哈拉語</item>
     <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
+    <item>繁體中文</item>
+    <item>香港繁體中文</item>
     <item>匈牙利語</item>
-    <item>Turkish</item>
+    <item>土耳其語</item>
     <item>印尼語</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
+    <item>塔加拉語</item>
+    <item>菲律賓語</item>
     <item>Dutch, Belgium</item>
     <item>Bengali</item>
     <item>斯洛文尼亞語</item>
@@ -176,8 +176,7 @@
   <string name="txtSalt">鹽</string>
   <string name="txtFat">脂肪</string>
   <string name="txtSugars">糖</string>
-  <string name="txtSaturatedFat">飽和脂肪</string>
-  <string name="hintBarcode">條碼</string>
+    <string name="hintBarcode">條碼</string>
   <string name="hintLogin">登入</string>
   <string name="hintPass">密碼</string>
   <string name="errorLogin">使用者名稱或密碼錯誤</string>
@@ -224,7 +223,7 @@
   <string name="search_drawer">搜尋</string>
   <string name="search_by_barcode_drawer">輸入條碼</string>
   <string name="category_drawer">類別</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">分類</string>
   <string name="search_by_name_drawer">透過名稱搜尋</string>
   <string name="scan_search">掃描條碼</string>
   <string name="user_drawer">使用者</string>

@@ -176,8 +176,7 @@
   <string name="txtSalt">Salz</string>
   <string name="txtFat">Fett</string>
   <string name="txtSugars">Zucker</string>
-  <string name="txtSaturatedFat">Gesättigte Fette</string>
-  <string name="hintBarcode">Strichcode</string>
+    <string name="hintBarcode">Strichcode</string>
   <string name="hintLogin">Benutzername</string>
   <string name="hintPass">Passwort</string>
   <string name="errorLogin">Benutzername oder Passwort stimmen nicht</string>

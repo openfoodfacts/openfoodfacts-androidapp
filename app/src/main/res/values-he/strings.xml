@@ -176,8 +176,7 @@
   <string name="txtSalt">מלח</string>
   <string name="txtFat">שומן</string>
   <string name="txtSugars">סוכרים</string>
-  <string name="txtSaturatedFat">שומן רווי</string>
-  <string name="hintBarcode">ברקוד</string>
+    <string name="hintBarcode">ברקוד</string>
   <string name="hintLogin">שם משתמש</string>
   <string name="hintPass">ססמה</string>
   <string name="errorLogin">שם המשתמש או הססמה שגויים</string>

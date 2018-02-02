@@ -176,8 +176,7 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Satured fat</string>
-  <string name="hintBarcode">ဘားကုုဒ္</string>
+    <string name="hintBarcode">ဘားကုုဒ္</string>
   <string name="hintLogin">ဝင္ေရာက္ရန္</string>
   <string name="hintPass">စကားဝွက္</string>
   <string name="errorLogin">ဝင္ေရာက္မႈ သို႔မဟုတ္ စကားဝွက္ခ်ိဳ႕ယြင္းခ်က္</string>

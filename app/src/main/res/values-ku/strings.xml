@@ -176,8 +176,7 @@
   <string name="txtSalt">Xwê</string>
   <string name="txtFat">Rûn</string>
   <string name="txtSugars">Şekirê</string>
-  <string name="txtSaturatedFat">Petrolê fatty</string>
-  <string name="hintBarcode">Barcode</string>
+    <string name="hintBarcode">Barcode</string>
   <string name="hintLogin">Niştin vergır</string>
   <string name="hintPass">Şîfreya</string>
   <string name="errorLogin">Destpêk an şîfre têketin</string>

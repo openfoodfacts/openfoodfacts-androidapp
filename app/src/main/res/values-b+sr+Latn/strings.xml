@@ -176,8 +176,7 @@
   <string name="txtSalt">So</string>
   <string name="txtFat">Masti</string>
   <string name="txtSugars">Šećer</string>
-  <string name="txtSaturatedFat">Zasićene masne kiseline</string>
-  <string name="hintBarcode">Barkod</string>
+    <string name="hintBarcode">Barkod</string>
   <string name="hintLogin">Prijavi se</string>
   <string name="hintPass">Lozinka</string>
   <string name="errorLogin">Korisničko ime ili lozinka greška</string>

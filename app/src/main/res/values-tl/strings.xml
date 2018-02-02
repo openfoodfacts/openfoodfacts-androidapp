@@ -176,8 +176,7 @@
   <string name="txtSalt">Asin</string>
   <string name="txtFat">Taba</string>
   <string name="txtSugars">Mga asukal</string>
-  <string name="txtSaturatedFat">Satured na taba</string>
-  <string name="hintBarcode">Barcode</string>
+    <string name="hintBarcode">Barcode</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Password</string>
   <string name="errorLogin">Kamalian sa login o password</string>

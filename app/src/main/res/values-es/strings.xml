@@ -98,7 +98,7 @@
     <item>Checo</item>
     <item>Árabe</item>
     <item>Finlandés</item>
-    <item>Hindi</item>
+    <item>Hindú</item>
     <item>Cabileño</item>
     <item>Coreano</item>
     <item>Letón</item>
@@ -110,23 +110,23 @@
     <item>Noruego</item>
     <item>Danés</item>
     <item>Chino simplificado</item>
-    <item>Farsi</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>Hungarian</item>
-    <item>Turkish</item>
-    <item>Indonesian</item>
-    <item>Tagalog</item>
+    <item>Farsí</item>
+    <item>Serbio (latín)</item>
+    <item>Africano</item>
+    <item>Akán</item>
+    <item>Amárico</item>
+    <item>Asamés</item>
+    <item>Chino tradicional</item>
+    <item>Chino tradicional, Hong Kong</item>
+    <item>Húngaro</item>
+    <item>Turco</item>
+    <item>Indonesio</item>
+    <item>Tagalo</item>
     <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>Slovenian</item>
-    <item>Kurdish</item>
+    <item>Holandés, Bélgica</item>
+    <item>Bengalí</item>
+    <item>Esloveno</item>
+    <item>Kurdo</item>
     <item>Esperanto</item>
     <item>Polaco</item>
   </string-array>
@@ -176,8 +176,7 @@
   <string name="txtSalt">Sal</string>
   <string name="txtFat">Grasas</string>
   <string name="txtSugars">Azúcares</string>
-  <string name="txtSaturatedFat">Grasa saturada</string>
-  <string name="hintBarcode">Código de barras</string>
+    <string name="hintBarcode">Código de barras</string>
   <string name="hintLogin">Iniciar sesión</string>
   <string name="hintPass">Contraseña</string>
   <string name="errorLogin">Usuario o contraseña incorrecto</string>
@@ -224,7 +223,7 @@
   <string name="search_drawer">Buscar</string>
   <string name="search_by_barcode_drawer">Buscar por código de barras</string>
   <string name="category_drawer">Categorías</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Categoría</string>
   <string name="search_by_name_drawer">Buscar por nombre</string>
   <string name="scan_search">Escanear</string>
   <string name="user_drawer">Usuario</string>
@@ -251,7 +250,7 @@
   <string name="msg_input_empty">Favor de llenar los campos primero.</string>
   <string name="new_offline_info">Favor de tomar una imagen del producto, ingredientes, tabla de información nutricional y otra información en la etiqueta. Gracias!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
+  <string name="error_invalid_password">La contraseña debe tener al menos 6 caracteres.</string>
   <string name="error_field_required">Este campo es obligatorio.</string>
   <string name="action_preferences">Preferencias</string>
   <string name="prefs_scan_startup">Escanear al arrancar</string>
@@ -309,8 +308,8 @@
   <string name="search_hint">Buscar artículo</string>
   <string name="number_of_results">Número de resultados :</string>
   <string name="txt_no_results">No se encontraron resultados</string>
-  <string name="txt_extend_search">Try broadening your search or add the product</string>
-  <string name="txt_cant_load_search_results">Can\'t load search results</string>
+  <string name="txt_extend_search">Intente ampliar su búsqueda o agregue el producto</string>
+  <string name="txt_cant_load_search_results">No se puede cargar los resultados de búsqueda</string>
   <string name="txt_try_again">Vuelva a intentar</string>
   <string name="nutrition_lactose">Lactosa</string>
   <string name="nutrition_casein">Caseína</string>

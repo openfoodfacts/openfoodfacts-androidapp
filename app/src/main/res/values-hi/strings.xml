@@ -176,8 +176,7 @@
   <string name="txtSalt">नमक</string>
   <string name="txtFat">वसा</string>
   <string name="txtSugars">शुगर्स</string>
-  <string name="txtSaturatedFat">संतृप्त वसा</string>
-  <string name="hintBarcode">बारकोड</string>
+    <string name="hintBarcode">बारकोड</string>
   <string name="hintLogin">लॉगिन</string>
   <string name="hintPass">पासवर्ड</string>
   <string name="errorLogin">लॉगिन या पासवर्ड एरर</string>

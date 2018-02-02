@@ -176,8 +176,7 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Satured fat</string>
-  <string name="hintBarcode">Barcode</string>
+    <string name="hintBarcode">Barcode</string>
   <string name="hintLogin">Σύνδεση</string>
   <string name="hintPass">Κωδικός χρήστη</string>
   <string name="errorLogin">Σφάλμα σύνδεσης ή κωδικού πρόσβασης</string>
