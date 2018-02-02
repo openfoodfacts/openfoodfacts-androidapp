@@ -176,8 +176,7 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Satured fat</string>
-  <string name="hintBarcode">Código de barras</string>
+    <string name="hintBarcode">Código de barras</string>
   <string name="hintLogin">Iniciar sesión</string>
   <string name="hintPass">Contrasinal</string>
   <string name="errorLogin">Erro de acceso ou do contrasinal</string>

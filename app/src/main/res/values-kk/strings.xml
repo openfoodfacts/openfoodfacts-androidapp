@@ -176,8 +176,7 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Satured fat</string>
-  <string name="hintBarcode">Штрих-код</string>
+    <string name="hintBarcode">Штрих-код</string>
   <string name="hintLogin">Кіру</string>
   <string name="hintPass">Құпиясөз</string>
   <string name="errorLogin">Аты немесе құпиясөзі қате</string>

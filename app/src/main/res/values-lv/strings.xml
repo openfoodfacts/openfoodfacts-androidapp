@@ -176,8 +176,7 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Satured fat</string>
-  <string name="hintBarcode">Svītrkods</string>
+    <string name="hintBarcode">Svītrkods</string>
   <string name="hintLogin">Lietotājvārds</string>
   <string name="hintPass">Parole</string>
   <string name="errorLogin">Login or password error</string>

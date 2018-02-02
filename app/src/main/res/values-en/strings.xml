@@ -146,8 +146,7 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugar</string>
-  <string name="txtSaturatedFat">Saturated fat</string>
-  <string name="hintBarcode">Barcode</string>
+    <string name="hintBarcode">Barcode</string>
   <string name="hintLogin">Username</string>
   <string name="hintPass">Password</string>
   <string name="errorLogin">Username or password incorrect</string>

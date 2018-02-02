@@ -176,8 +176,7 @@
   <string name="txtSalt">نمک</string>
   <string name="txtFat">چربی</string>
   <string name="txtSugars">قندها</string>
-  <string name="txtSaturatedFat">چربی اشباع شده</string>
-  <string name="hintBarcode">بارکد</string>
+    <string name="hintBarcode">بارکد</string>
   <string name="hintLogin">ورود به سامانه</string>
   <string name="hintPass">گذرواژه</string>
   <string name="errorLogin">خطا در ورود به سیستم یا رمز عبور</string>

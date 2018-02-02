@@ -176,8 +176,7 @@
   <string name="txtSalt">Tuz</string>
   <string name="txtFat">Yağ</string>
   <string name="txtSugars">Şeker</string>
-  <string name="txtSaturatedFat">Doymuş yağ</string>
-  <string name="hintBarcode">Barkod</string>
+    <string name="hintBarcode">Barkod</string>
   <string name="hintLogin">Giriş</string>
   <string name="hintPass">Şifre</string>
   <string name="errorLogin">Giriş veya parola hatası</string>

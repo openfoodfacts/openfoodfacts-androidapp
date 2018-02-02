@@ -176,8 +176,7 @@
   <string name="txtSalt">Sale</string>
   <string name="txtFat">Grasso</string>
   <string name="txtSugars">Zuccheri</string>
-  <string name="txtSaturatedFat">Grassi saturi</string>
-  <string name="hintBarcode">Codice a Barre</string>
+    <string name="hintBarcode">Codice a Barre</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Password</string>
   <string name="errorLogin">Login o password errati</string>

@@ -176,8 +176,7 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fedt</string>
   <string name="txtSugars">Sukker</string>
-  <string name="txtSaturatedFat">Modificeret fedt</string>
-  <string name="hintBarcode">Strekkode</string>
+    <string name="hintBarcode">Strekkode</string>
   <string name="hintLogin">Log på</string>
   <string name="hintPass">Adgangskode:</string>
   <string name="errorLogin">Login eller adgangskode fejl</string>

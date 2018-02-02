@@ -176,8 +176,7 @@
   <string name="txtSalt">Sare</string>
   <string name="txtFat">Grăsimi</string>
   <string name="txtSugars">Zaharuri</string>
-  <string name="txtSaturatedFat">Acizi grași saturați</string>
-  <string name="hintBarcode">Cod de bare</string>
+    <string name="hintBarcode">Cod de bare</string>
   <string name="hintLogin">Conectați-vă</string>
   <string name="hintPass">Parolă</string>
   <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>

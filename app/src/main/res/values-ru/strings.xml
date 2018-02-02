@@ -176,8 +176,7 @@
   <string name="txtSalt">Соль</string>
   <string name="txtFat">Жир</string>
   <string name="txtSugars">Сахара</string>
-  <string name="txtSaturatedFat">Насыщенные жиры</string>
-  <string name="hintBarcode">Штрих-код</string>
+    <string name="hintBarcode">Штрих-код</string>
   <string name="hintLogin">Логин</string>
   <string name="hintPass">Пароль</string>
   <string name="errorLogin">Неверные имя или пароль</string>

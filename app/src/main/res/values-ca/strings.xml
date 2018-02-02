@@ -176,8 +176,7 @@
   <string name="txtSalt">Sal</string>
   <string name="txtFat">Greix</string>
   <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Greix saturat</string>
-  <string name="hintBarcode">Codi de barres</string>
+    <string name="hintBarcode">Codi de barres</string>
   <string name="hintLogin">Usuari</string>
   <string name="hintPass">Contrasenya</string>
   <string name="errorLogin">Usuari o contrasenya errònia</string>
