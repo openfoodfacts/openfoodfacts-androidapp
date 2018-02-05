@@ -176,7 +176,6 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Satured fat</string>
   <string name="hintBarcode">Svītrkods</string>
   <string name="hintLogin">Lietotājvārds</string>
   <string name="hintPass">Parole</string>
@@ -377,4 +376,5 @@
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
+  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>
