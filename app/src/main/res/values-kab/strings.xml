@@ -140,7 +140,7 @@
   <string name="no_products">Ulac ifarisen</string>
   <string name="desc_list_item_icon">Tignit uferdis </string>
   <string name="alert_dialog_warning_title">ɣuṛ-k</string>
-  <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
+  <string name="alert_dialog_warning_msg_user">Milk</string>
   <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
   <string name="toast_retrieving">Asali...</string>
   <string name="txtGenericName">Isem amezdi :</string>
