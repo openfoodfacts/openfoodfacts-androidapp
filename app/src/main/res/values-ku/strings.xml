@@ -176,7 +176,6 @@
   <string name="txtSalt">Xwê</string>
   <string name="txtFat">Rûn</string>
   <string name="txtSugars">Şekirê</string>
-  <string name="txtSaturatedFat">Petrolê fatty</string>
   <string name="hintBarcode">Barcode</string>
   <string name="hintLogin">Niştin vergır</string>
   <string name="hintPass">Şîfreya</string>
@@ -377,4 +376,5 @@
   <string name="take_picture_front">Pişa resma bıkışıne</string>
   <string name="take_picture_nutrition_table">Teblo rema bıkışıkının</string>
   <string name="take_more_pictures">Zev resma bışıkının</string>
+  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>
