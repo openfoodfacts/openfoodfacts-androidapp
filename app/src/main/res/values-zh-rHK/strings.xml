@@ -176,7 +176,6 @@
   <string name="txtSalt">鹽</string>
   <string name="txtFat">脂肪</string>
   <string name="txtSugars">糖</string>
-  <string name="txtSaturatedFat">飽和脂肪</string>
   <string name="hintBarcode">條碼</string>
   <string name="hintLogin">登入</string>
   <string name="hintPass">密碼</string>
@@ -377,4 +376,5 @@
   <string name="take_picture_front">拍攝正面的照片</string>
   <string name="take_picture_nutrition_table">拍攝營養成份表的照片</string>
   <string name="take_more_pictures">拍攝更多照片</string>
+  <string name="txtSaturatedFat">飽和脂肪</string>
 </resources>
