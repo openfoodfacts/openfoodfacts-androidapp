@@ -111,23 +111,23 @@
     <item>דנית</item>
     <item>סינית מפושטת</item>
     <item>פרסית</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
+    <item>סרבית (לטינית)</item>
+    <item>אפריקאנס</item>
+    <item>אקאן</item>
+    <item>אמהרית</item>
+    <item>אסאמית</item>
+    <item>סינית מסורתית</item>
+    <item>סינית מסורתית, הונג קונג</item>
     <item>הונגרית</item>
-    <item>Turkish</item>
+    <item>טורקית</item>
     <item>אנדונזית</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
+    <item>טגלוג</item>
+    <item>פיליפינית</item>
     <item>Dutch, Belgium</item>
-    <item>Bengali</item>
+    <item>בנגלית</item>
     <item>סלובנית</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
+    <item>כורדית</item>
+    <item>אספרנטו</item>
     <item>פולנית</item>
   </string-array>
   <string-array name="images_array">
@@ -176,7 +176,6 @@
   <string name="txtSalt">מלח</string>
   <string name="txtFat">שומן</string>
   <string name="txtSugars">סוכרים</string>
-  <string name="txtSaturatedFat">שומן רווי</string>
   <string name="hintBarcode">ברקוד</string>
   <string name="hintLogin">שם משתמש</string>
   <string name="hintPass">ססמה</string>
@@ -224,7 +223,7 @@
   <string name="search_drawer">חיפוש</string>
   <string name="search_by_barcode_drawer">חיפוש לפי ברקוד</string>
   <string name="category_drawer">קטגוריות</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">קטגוריה</string>
   <string name="search_by_name_drawer">חיפוש לפי שם</string>
   <string name="scan_search">סריקה</string>
   <string name="user_drawer">משתמש</string>
@@ -325,8 +324,8 @@
   <string name="nutrition_chlore">כלור</string>
   <string name="nutrition_magnesium">מגנזיום</string>
   <string name="nutrition_taurine">טאורין</string>
-  <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-  <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+  <string name="nutrition_monounsaturatedFat">שומן חד בלתי רווי</string>
+  <string name="nutrition_polyunsaturatedFat">שומן רב בלתי רווי</string>
   <string name="nutrition_omega3">אומגה 3</string>
   <string name="nutrition_omega6">אומגה 6</string>
   <string name="nutrition_omega9">אומגה 9</string>
@@ -377,4 +376,5 @@
   <string name="take_picture_front">צילום תמונה של החזית</string>
   <string name="take_picture_nutrition_table">צילום תמונה של טבלת הערכים</string>
   <string name="take_more_pictures">צילום תמונות נוספות</string>
+  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>
