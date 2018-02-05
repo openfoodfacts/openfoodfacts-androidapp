@@ -211,9 +211,9 @@
   <string name="txtOk">OK</string>
   <string name="txtContentDialogUploading">Ma ulac aɣilif, ur tteffeɣ ara mi ara ileḥḥu</string>
   <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
-  <string name="txtAllsent">Products sent</string>
-  <string name="txtPalm">The product does not contain any palm oil</string>
-  <string name="txtBarcodeNotValid">Barcode not valid</string>
+  <string name="txtAllsent">Ifardisen ttwaceggeɛn</string>
+  <string name="txtPalm">Afardis ulac degs zzit palm</string>
+  <string name="txtBarcodeNotValid">Tangalt n tfeggagt mačči d ameɣtu</string>
   <string name="try_it_scan_now">Scan product</string>
   <string name="share">Bḍu</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
