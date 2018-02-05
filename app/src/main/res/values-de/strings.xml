@@ -176,7 +176,6 @@
   <string name="txtSalt">Salz</string>
   <string name="txtFat">Fett</string>
   <string name="txtSugars">Zucker</string>
-  <string name="txtSaturatedFat">Gesättigte Fette</string>
   <string name="hintBarcode">Strichcode</string>
   <string name="hintLogin">Benutzername</string>
   <string name="hintPass">Passwort</string>
@@ -377,4 +376,5 @@
   <string name="take_picture_front">Mache ein Bild der Vorderseite</string>
   <string name="take_picture_nutrition_table">Mache ein Bild von der Ernährungstabelle</string>
   <string name="take_more_pictures">Mache mehr Bilder</string>
+  <string name="txtSaturatedFat">Gesättigte Fettsäuren</string>
 </resources>
