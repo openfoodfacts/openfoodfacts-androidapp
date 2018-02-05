@@ -122,13 +122,13 @@
     <item>Taṭurkit</item>
     <item>Tandunizit</item>
     <item>Tatagalugt</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>Slovenian</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>Polish</item>
+    <item>Tafilipint</item>
+    <item>Talmanit, Beljik</item>
+    <item>Tabengalit</item>
+    <item>Tasluvinit</item>
+    <item>Takurdit</item>
+    <item>Taspirantit</item>
+    <item>Tapulandit</item>
   </string-array>
   <string-array name="images_array">
     <item>Amezwer</item>
@@ -138,15 +138,15 @@
   <!-- Content Description -->
   <string name="search_button">Nadi</string>
   <string name="no_products">Ulac ifarisen</string>
-  <string name="desc_list_item_icon">Item Icon</string>
+  <string name="desc_list_item_icon">Tignit uferdis </string>
   <string name="alert_dialog_warning_title">ɣuṛ-k</string>
   <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
   <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
   <string name="toast_retrieving">Asali...</string>
-  <string name="txtGenericName">Common name :</string>
+  <string name="txtGenericName">Isem amezdi :</string>
   <string name="txtBarcode">Tangalt s ifeggagen:</string>
-  <string name="txtQuantity">Quantity :</string>
-  <string name="txtPackaging">Packaging :</string>
+  <string name="txtQuantity">Tasmendna</string>
+  <string name="txtPackaging">Asekrud :</string>
   <string name="txtBrands">Ticrad:</string>
   <string name="txtCategories">Taggayin:</string>
   <string name="txtLabels">Labels, certifications, awards :</string>
