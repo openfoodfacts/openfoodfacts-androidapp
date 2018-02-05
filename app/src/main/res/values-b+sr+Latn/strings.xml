@@ -176,7 +176,6 @@
   <string name="txtSalt">So</string>
   <string name="txtFat">Masti</string>
   <string name="txtSugars">Šećer</string>
-  <string name="txtSaturatedFat">Zasićene masne kiseline</string>
   <string name="hintBarcode">Barkod</string>
   <string name="hintLogin">Prijavi se</string>
   <string name="hintPass">Lozinka</string>
@@ -377,4 +376,5 @@
   <string name="take_picture_front">Uslikajte prednju stranu proizvoda</string>
   <string name="take_picture_nutrition_table">Uslikajte tablicu nutritivnih vrednosti</string>
   <string name="take_more_pictures">Uslikaj</string>
+  <string name="txtSaturatedFat">Zasićene masne kiseline</string>
 </resources>
