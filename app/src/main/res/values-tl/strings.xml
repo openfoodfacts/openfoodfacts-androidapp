@@ -176,7 +176,6 @@
   <string name="txtSalt">Asin</string>
   <string name="txtFat">Taba</string>
   <string name="txtSugars">Mga asukal</string>
-  <string name="txtSaturatedFat">Satured na taba</string>
   <string name="hintBarcode">Barcode</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Password</string>
@@ -377,4 +376,5 @@
   <string name="take_picture_front">Kuhanan ng larawan ang harapan</string>
   <string name="take_picture_nutrition_table">Kuhanan ng larawan ang talahanayan ng nutrisyon</string>
   <string name="take_more_pictures">Kumuha ng mas maraming larawan</string>
+  <string name="txtSaturatedFat">Saturated na taba</string>
 </resources>
