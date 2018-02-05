@@ -176,7 +176,11 @@
   <string name="txtSalt">盐</string>
   <string name="txtFat">脂肪</string>
   <string name="txtSugars">糖</string>
+<<<<<<< HEAD
     <string name="hintBarcode">条形码</string>
+=======
+  <string name="hintBarcode">条形码</string>
+>>>>>>> l10n_master
   <string name="hintLogin">登录</string>
   <string name="hintPass">密码</string>
   <string name="errorLogin">登录或者密码错误</string>
@@ -376,4 +380,5 @@
   <string name="take_picture_front">拍摄正面照片</string>
   <string name="take_picture_nutrition_table">拍摄营养成分</string>
   <string name="take_more_pictures">拍照</string>
+  <string name="txtSaturatedFat">饱和脂肪</string>
 </resources>

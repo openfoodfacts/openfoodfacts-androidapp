@@ -176,7 +176,11 @@
   <string name="txtSalt">garam</string>
   <string name="txtFat">lebar</string>
   <string name="txtSugars">saka</string>
+<<<<<<< HEAD
     <string name="hintBarcode">kode batang</string>
+=======
+  <string name="hintBarcode">kode batang</string>
+>>>>>>> l10n_master
   <string name="hintLogin">masuk</string>
   <string name="hintPass">kata sandi anda</string>
   <string name="errorLogin">Kesalahan masuk atau kata sandi anda salah</string>
@@ -377,4 +381,5 @@
   <string name="take_picture_front">mengambil gambar dari bahan ramuan</string>
   <string name="take_picture_nutrition_table">ambil gambar nutrisi</string>
   <string name="take_more_pictures">memfoto</string>
+  <string name="txtSaturatedFat">Lemak jenuh</string>
 </resources>

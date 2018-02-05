@@ -176,7 +176,11 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
+<<<<<<< HEAD
     <string name="hintBarcode">Código de barras</string>
+=======
+  <string name="hintBarcode">Código de barras</string>
+>>>>>>> l10n_master
   <string name="hintLogin">Iniciar sesión</string>
   <string name="hintPass">Contrasinal</string>
   <string name="errorLogin">Erro de acceso ou do contrasinal</string>
@@ -376,4 +380,5 @@
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
+  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>

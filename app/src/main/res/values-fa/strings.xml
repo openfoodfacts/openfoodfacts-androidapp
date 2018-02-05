@@ -176,7 +176,11 @@
   <string name="txtSalt">نمک</string>
   <string name="txtFat">چربی</string>
   <string name="txtSugars">قندها</string>
+<<<<<<< HEAD
     <string name="hintBarcode">بارکد</string>
+=======
+  <string name="hintBarcode">بارکد</string>
+>>>>>>> l10n_master
   <string name="hintLogin">ورود به سامانه</string>
   <string name="hintPass">گذرواژه</string>
   <string name="errorLogin">خطا در ورود به سیستم یا رمز عبور</string>
@@ -376,4 +380,5 @@
   <string name="take_picture_front">عکس گرفتن از جلوی محصول</string>
   <string name="take_picture_nutrition_table">عکس گرفتن از جدول ارزش غذایی</string>
   <string name="take_more_pictures">ثبت تصاویر بیشتر</string>
+  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>

@@ -176,7 +176,11 @@
   <string name="txtSalt">Sare</string>
   <string name="txtFat">Grăsimi</string>
   <string name="txtSugars">Zaharuri</string>
+<<<<<<< HEAD
     <string name="hintBarcode">Cod de bare</string>
+=======
+  <string name="hintBarcode">Cod de bare</string>
+>>>>>>> l10n_master
   <string name="hintLogin">Conectați-vă</string>
   <string name="hintPass">Parolă</string>
   <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>
@@ -376,4 +380,5 @@
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
+  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>

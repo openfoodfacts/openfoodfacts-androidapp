@@ -176,7 +176,11 @@
   <string name="txtSalt">Sol</string>
   <string name="txtFat">Maščoba</string>
   <string name="txtSugars">Sladkorji</string>
+<<<<<<< HEAD
     <string name="hintBarcode">Črtna koda</string>
+=======
+  <string name="hintBarcode">Črtna koda</string>
+>>>>>>> l10n_master
   <string name="hintLogin">Prijava</string>
   <string name="hintPass">Geslo</string>
   <string name="errorLogin">Uporabniško ime ali geslo sta napačna</string>
@@ -376,4 +380,5 @@
   <string name="take_picture_front">Fotografirajte spredaj</string>
   <string name="take_picture_nutrition_table">Naredi posnetek iz tabele sestavin</string>
   <string name="take_more_pictures">Naredite več slik</string>
+  <string name="txtSaturatedFat">Nasičena maščoba</string>
 </resources>

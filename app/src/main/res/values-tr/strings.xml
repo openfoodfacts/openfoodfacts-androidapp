@@ -176,7 +176,11 @@
   <string name="txtSalt">Tuz</string>
   <string name="txtFat">Yağ</string>
   <string name="txtSugars">Şeker</string>
+<<<<<<< HEAD
     <string name="hintBarcode">Barkod</string>
+=======
+  <string name="hintBarcode">Barkod</string>
+>>>>>>> l10n_master
   <string name="hintLogin">Giriş</string>
   <string name="hintPass">Şifre</string>
   <string name="errorLogin">Giriş veya parola hatası</string>
@@ -376,4 +380,5 @@
   <string name="take_picture_front">Ön fotoğrafını çekin</string>
   <string name="take_picture_nutrition_table">Beslenme tablosunun resmini çekin</string>
   <string name="take_more_pictures">Daha fazla resim çek</string>
+  <string name="txtSaturatedFat">Doymuş yağ</string>
 </resources>

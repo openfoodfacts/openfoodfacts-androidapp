@@ -176,7 +176,11 @@
   <string name="txtSalt">Só</string>
   <string name="txtFat">Zsír</string>
   <string name="txtSugars">Cukrok</string>
+<<<<<<< HEAD
     <string name="hintBarcode">Vonalkód</string>
+=======
+  <string name="hintBarcode">Vonalkód</string>
+>>>>>>> l10n_master
   <string name="hintLogin">Bejelentkezés</string>
   <string name="hintPass">Jelszó</string>
   <string name="errorLogin">Bejelentkezési hiba</string>
@@ -376,4 +380,5 @@
   <string name="take_picture_front">Kép készítése a termék csomagolásáról</string>
   <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
   <string name="take_more_pictures">További képek készítése</string>
+  <string name="txtSaturatedFat">Telített zsír</string>
 </resources>

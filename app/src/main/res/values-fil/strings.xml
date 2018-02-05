@@ -176,7 +176,11 @@
   <string name="txtSalt">Asin</string>
   <string name="txtFat">Taba</string>
   <string name="txtSugars">Mga asukal</string>
+<<<<<<< HEAD
     <string name="hintBarcode">Barcode</string>
+=======
+  <string name="hintBarcode">Barcode</string>
+>>>>>>> l10n_master
   <string name="hintLogin">Mag-login</string>
   <string name="hintPass">Password</string>
   <string name="errorLogin">Error sa login o password</string>
@@ -376,4 +380,5 @@
   <string name="take_picture_front">Kumuha ng isang larawan ng harapang bahagi</string>
   <string name="take_picture_nutrition_table">Kumuha ng larawan ng talahanayan ng nutrisyon</string>
   <string name="take_more_pictures">Kumuha ng marami pang mga larawan</string>
+  <string name="txtSaturatedFat">Saturated na taba</string>
 </resources>
