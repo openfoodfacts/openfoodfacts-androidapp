@@ -214,7 +214,7 @@
   <string name="txtAllsent">Ifardisen ttwaceggeɛn</string>
   <string name="txtPalm">Afardis ulac degs zzit palm</string>
   <string name="txtBarcodeNotValid">Tangalt n tfeggagt mačči d ameɣtu</string>
-  <string name="try_it_scan_now">Scan product</string>
+  <string name="try_it_scan_now">Semḍen afaris</string>
   <string name="share">Bḍu</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
   <string name="create_account">Jerred</string>
@@ -226,7 +226,7 @@
   <string name="category_drawer">Taggayin</string>
   <string name="search_by_category">Taggayt</string>
   <string name="search_by_name_drawer">Nadi s yisem</string>
-  <string name="scan_search">Scan Barcode</string>
+  <string name="scan_search">Semḍen tangalt n tfeggagt</string>
   <string name="user_drawer">Aseqdac</string>
   <string name="offline_edit_drawer">Offline edit</string>
   <string name="txt_anonymous">Udrig</string>
