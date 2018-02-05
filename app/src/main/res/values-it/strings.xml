@@ -176,7 +176,6 @@
   <string name="txtSalt">Sale</string>
   <string name="txtFat">Grasso</string>
   <string name="txtSugars">Zuccheri</string>
-  <string name="txtSaturatedFat">Grassi saturi</string>
   <string name="hintBarcode">Codice a Barre</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Password</string>
@@ -377,4 +376,5 @@
   <string name="take_picture_front">Prendi una foto della parte frontale</string>
   <string name="take_picture_nutrition_table">Prendi una foto della tabella nutrizionale</string>
   <string name="take_more_pictures">Prendi ulteriori foto</string>
+  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>
