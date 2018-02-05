@@ -176,7 +176,6 @@
   <string name="txtSalt">crwdns35083:0crwdne35083:0</string>
   <string name="txtFat">crwdns35084:0crwdne35084:0</string>
   <string name="txtSugars">crwdns35085:0crwdne35085:0</string>
-  <string name="txtSaturatedFat">crwdns35086:0crwdne35086:0</string>
   <string name="hintBarcode">crwdns35087:0crwdne35087:0</string>
   <string name="hintLogin">crwdns35088:0crwdne35088:0</string>
   <string name="hintPass">crwdns35089:0crwdne35089:0</string>
@@ -377,4 +376,5 @@
   <string name="take_picture_front">crwdns35289:0crwdne35289:0</string>
   <string name="take_picture_nutrition_table">crwdns35290:0crwdne35290:0</string>
   <string name="take_more_pictures">crwdns35291:0crwdne35291:0</string>
+  <string name="txtSaturatedFat">crwdns37039:0crwdne37039:0</string>
 </resources>
