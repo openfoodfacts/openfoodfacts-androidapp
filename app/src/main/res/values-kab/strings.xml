@@ -159,9 +159,10 @@
   <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
   <string name="txtAdditives">Imerna</string>
   <string name="txtTraces">Limaṛat :</string>
-  <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
-  <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
-  <string name="txtServingSize">Serving size :</string>
+  <string name="txtMayBeFromPalmOilProduct">Isufar ig zemren ad kken seg zzit n palm :
+</string>
+  <string name="txtPalmOilProduct">Isufar n zzit n palm :</string>
+  <string name="txtServingSize">Tiddi n tunt :</string>
   <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
   <string name="txtNutritionLevelLow">s ciṭuḥ</string>
   <string name="txtNutritionLevelModerate">S tesmekta iwulmen</string>
@@ -289,7 +290,7 @@
   <string name="nutrition_satured_fat">Iččuṛ d tassemt</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
   <string name="nutrition_serving">Per serving</string>
-  <string name="nutrition_serving_size">Serving size :</string>
+  <string name="nutrition_serving_size">Tiddi n tunt :</string>
   <string name="nutrition_sodium">Aṣudyum</string>
   <string name="nutrition_sodium_short_name">Sodium (g)</string>
   <string name="nutrition_sugars">Sskeṛ</string>
