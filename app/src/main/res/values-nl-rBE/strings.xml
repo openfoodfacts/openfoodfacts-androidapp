@@ -176,11 +176,7 @@
   <string name="txtSalt">Zout</string>
   <string name="txtFat">Vet</string>
   <string name="txtSugars">Suikers</string>
-<<<<<<< HEAD
     <string name="hintBarcode">Streepjescode</string>
-=======
-  <string name="hintBarcode">Streepjescode</string>
->>>>>>> l10n_master
   <string name="hintLogin">Inloggen</string>
   <string name="hintPass">Wachtwoord</string>
   <string name="errorLogin">Verkeerde gebruikersnaam of wachtwoord</string>
@@ -380,5 +376,4 @@
   <string name="take_picture_front">Maak een foto van de voorkant</string>
   <string name="take_picture_nutrition_table">Maak een foto van de voedingstabel</string>
   <string name="take_more_pictures">Maak meer foto\'s</string>
-  <string name="txtSaturatedFat">Verzadigd vet</string>
 </resources>

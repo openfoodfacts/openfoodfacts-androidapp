@@ -176,11 +176,7 @@
   <string name="txtSalt">লবন</string>
   <string name="txtFat">চর্বি</string>
   <string name="txtSugars">চিনি</string>
-<<<<<<< HEAD
     <string name="hintBarcode">বারকোড</string>
-=======
-  <string name="hintBarcode">বারকোড</string>
->>>>>>> l10n_master
   <string name="hintLogin">লগ ইন</string>
   <string name="hintPass">পাসওয়ার্ড</string>
   <string name="errorLogin">লগইন বা পাসওয়ার্ড ত্রুটি</string>
@@ -380,5 +376,4 @@
   <string name="take_picture_front">সামনের ছবি তুলুন</string>
   <string name="take_picture_nutrition_table">পুষ্টি তালিকার একটি ছবি তুলুন</string>
   <string name="take_more_pictures">আরও কিছু ছবি তুলুন</string>
-  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>

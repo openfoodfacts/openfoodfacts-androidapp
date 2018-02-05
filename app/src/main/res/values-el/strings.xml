@@ -176,11 +176,7 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
-<<<<<<< HEAD
     <string name="hintBarcode">Barcode</string>
-=======
-  <string name="hintBarcode">Barcode</string>
->>>>>>> l10n_master
   <string name="hintLogin">Σύνδεση</string>
   <string name="hintPass">Κωδικός χρήστη</string>
   <string name="errorLogin">Σφάλμα σύνδεσης ή κωδικού πρόσβασης</string>
@@ -380,5 +376,4 @@
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
-  <string name="txtSaturatedFat">Κορεσμένα λιπαρά</string>
 </resources>

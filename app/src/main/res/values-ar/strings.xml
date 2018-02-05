@@ -176,11 +176,7 @@
   <string name="txtSalt">ملح</string>
   <string name="txtFat">الدهون</string>
   <string name="txtSugars">السكريات</string>
-<<<<<<< HEAD
     <string name="hintBarcode">الرمز الشريطي</string>
-=======
-  <string name="hintBarcode">الرمز الشريطي</string>
->>>>>>> l10n_master
   <string name="hintLogin">تسجيل الدخول</string>
   <string name="hintPass">كلمة المرور</string>
   <string name="errorLogin">خطأ في تسجيل الدخول أو كلمة المرور</string>
@@ -380,5 +376,4 @@
   <string name="take_picture_front">التقط صورة للأمام</string>
   <string name="take_picture_nutrition_table">التقط صورة لجدول الحقائق الغذائية</string>
   <string name="take_more_pictures">التقط المزيد من الصور</string>
-  <string name="txtSaturatedFat">الدهون المشبعة</string>
 </resources>

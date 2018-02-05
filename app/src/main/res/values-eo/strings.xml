@@ -176,11 +176,7 @@
   <string name="txtSalt">Salo</string>
   <string name="txtFat">Lipido</string>
   <string name="txtSugars">Sukeroj</string>
-<<<<<<< HEAD
     <string name="hintBarcode">Strekokodo</string>
-=======
-  <string name="hintBarcode">Strekokodo</string>
->>>>>>> l10n_master
   <string name="hintLogin">Login</string>
   <string name="hintPass">Pasvorto</string>
   <string name="errorLogin">Login or password error</string>
@@ -380,5 +376,4 @@
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
-  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>
