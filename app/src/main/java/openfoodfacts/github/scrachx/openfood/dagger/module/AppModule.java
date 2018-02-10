@@ -2,11 +2,14 @@ package openfoodfacts.github.scrachx.openfood.dagger.module;
 
 import android.content.Context;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.OkHttpClient;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.category.CategoryRepository;
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
@@ -38,11 +41,18 @@ public class AppModule {
         return application;
     }
 
+    private final static OkHttpClient httpClient = new OkHttpClient.Builder()
+            .connectTimeout(5000, TimeUnit.MILLISECONDS)
+            .readTimeout(30000, TimeUnit.MILLISECONDS)
+            .writeTimeout(30000, TimeUnit.MILLISECONDS)
+            .build();
+
     @Provides
     @Singleton
     Retrofit provideRetrofit() {
         return new Retrofit.Builder()
                 .baseUrl(BuildConfig.OFWEBSITE)
+                .client(httpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build();
