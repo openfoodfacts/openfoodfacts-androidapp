@@ -111,23 +111,23 @@
     <item>Датский</item>
     <item>Китайский (упрощенный)</item>
     <item>Фарси</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
+    <item>Сербский (Латиница)</item>
+    <item>Африкаанс</item>
+    <item>Акан</item>
+    <item>Амхарский</item>
+    <item>Ассамский</item>
+    <item>Китайский традиционный</item>
+    <item>Китайский традиционный, Гонконг</item>
     <item>Венгерский</item>
-    <item>Turkish</item>
+    <item>Турецкий</item>
     <item>Индонезийский</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
+    <item>Тагальский</item>
+    <item>Филиппинский</item>
+    <item>Голландский, Бельгия</item>
+    <item>Бенгальский</item>
     <item>Словенский</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
+    <item>Курдский</item>
+    <item>Эсперанто</item>
     <item>Польский</item>
   </string-array>
   <string-array name="images_array">
@@ -176,7 +176,7 @@
   <string name="txtSalt">Соль</string>
   <string name="txtFat">Жир</string>
   <string name="txtSugars">Сахара</string>
-    <string name="hintBarcode">Штрих-код</string>
+  <string name="hintBarcode">Штрих-код</string>
   <string name="hintLogin">Логин</string>
   <string name="hintPass">Пароль</string>
   <string name="errorLogin">Неверные имя или пароль</string>
@@ -223,7 +223,7 @@
   <string name="search_drawer">Поиск</string>
   <string name="search_by_barcode_drawer">Поиск по штрих-коду</string>
   <string name="category_drawer">Категории</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Категория</string>
   <string name="search_by_name_drawer">Поиск по названию</string>
   <string name="scan_search">Сканировать</string>
   <string name="user_drawer">Пользователь</string>
@@ -376,4 +376,5 @@
   <string name="take_picture_front">Сделайте общее фото</string>
   <string name="take_picture_nutrition_table">Сделайте фото энерг. ценности</string>
   <string name="take_more_pictures">Сделайте дополнительные фото</string>
+  <string name="txtSaturatedFat">Насыщенные жиры</string>
 </resources>

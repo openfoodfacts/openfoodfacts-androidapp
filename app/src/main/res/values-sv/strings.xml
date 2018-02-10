@@ -176,7 +176,7 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fett</string>
   <string name="txtSugars">Socker</string>
-    <string name="hintBarcode">Streckkod</string>
+  <string name="hintBarcode">Streckkod</string>
   <string name="hintLogin">Logga in</string>
   <string name="hintPass">Lösenord</string>
   <string name="errorLogin">Fel användarnamn eller lösenord</string>
@@ -376,4 +376,5 @@
   <string name="take_picture_front">Ta en bild på framsidan</string>
   <string name="take_picture_nutrition_table">Ta en bild av näringstabellen</string>
   <string name="take_more_pictures">Ta fler bilder</string>
+  <string name="txtSaturatedFat">Mättat fett</string>
 </resources>

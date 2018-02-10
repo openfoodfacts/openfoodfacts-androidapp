@@ -176,7 +176,7 @@
   <string name="txtSalt">食塩</string>
   <string name="txtFat">脂肪</string>
   <string name="txtSugars">砂糖</string>
-    <string name="hintBarcode">バーコード</string>
+  <string name="hintBarcode">バーコード</string>
   <string name="hintLogin">ログイン</string>
   <string name="hintPass">パスワード</string>
   <string name="errorLogin">ログインまたはパスワードエラー</string>
@@ -376,4 +376,5 @@
   <string name="take_picture_front">正面の写真を撮ります</string>
   <string name="take_picture_nutrition_table">栄養成分表の写真を撮ります</string>
   <string name="take_more_pictures">もっと写真を撮ります</string>
+  <string name="txtSaturatedFat">飽和脂肪酸</string>
 </resources>

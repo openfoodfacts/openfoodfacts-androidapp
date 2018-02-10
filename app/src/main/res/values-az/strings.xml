@@ -176,7 +176,7 @@
   <string name="txtSalt">Duz</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Şəkər</string>
-    <string name="hintBarcode">Barkod</string>
+  <string name="hintBarcode">Barkod</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Şifrə</string>
   <string name="errorLogin">Login or password error</string>
@@ -376,4 +376,5 @@
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
+  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>

@@ -176,7 +176,7 @@
   <string name="txtSalt">Sal</string>
   <string name="txtFat">Greix</string>
   <string name="txtSugars">Sugars</string>
-    <string name="hintBarcode">Codi de barres</string>
+  <string name="hintBarcode">Codi de barres</string>
   <string name="hintLogin">Usuari</string>
   <string name="hintPass">Contrasenya</string>
   <string name="errorLogin">Usuari o contrasenya errònia</string>
@@ -376,4 +376,5 @@
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
+  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>

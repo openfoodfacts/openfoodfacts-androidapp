@@ -176,7 +176,7 @@
   <string name="txtSalt">Saut</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Succars</string>
-    <string name="hintBarcode">Barcode</string>
+  <string name="hintBarcode">Barcode</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Password</string>
   <string name="errorLogin">Login or password error</string>
@@ -376,4 +376,5 @@
   <string name="take_picture_front">Tak a pictur o the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Tak mair picturs</string>
+  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>

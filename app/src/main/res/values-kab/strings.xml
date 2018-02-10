@@ -103,32 +103,32 @@
     <item>Takurit</item>
     <item>Taliṭunit</item>
     <item>Tahulandit</item>
-    <item>Brazilian portuguese</item>
+    <item>Tapurtugit n Brazil</item>
     <item>Tarumanit</item>
     <item>Taswidit</item>
     <item>Tacinwat</item>
-    <item>Norwegian (Bokmal)</item>
+    <item>Tanuṛvijit (Bokmal)</item>
     <item>Tadanit</item>
     <item>Tacinit taḥerfit</item>
     <item>Afarsi</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
+    <item>Asiṛbi (Alatini)</item>
+    <item>Tafrikant</item>
+    <item>Takanit</item>
     <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>Hungarian</item>
-    <item>Turkish</item>
-    <item>Indonesian</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>Slovenian</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>Polish</item>
+    <item>Tasamizt</item>
+    <item>Tacinwat tamensayt</item>
+    <item>Tacinwat tamensayt, Hung Kung</item>
+    <item>Tahungarit</item>
+    <item>Taṭurkit</item>
+    <item>Tandunizit</item>
+    <item>Tatagalugt</item>
+    <item>Tafilipint</item>
+    <item>Talmanit, Beljik</item>
+    <item>Tabengalit</item>
+    <item>Tasluvinit</item>
+    <item>Takurdit</item>
+    <item>Taspirantit</item>
+    <item>Tapulandit</item>
   </string-array>
   <string-array name="images_array">
     <item>Amezwer</item>
@@ -138,100 +138,101 @@
   <!-- Content Description -->
   <string name="search_button">Nadi</string>
   <string name="no_products">Ulac ifarisen</string>
-  <string name="desc_list_item_icon">Item Icon</string>
+  <string name="desc_list_item_icon">Tignit uferdis </string>
   <string name="alert_dialog_warning_title">ɣuṛ-k</string>
-  <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-  <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
+  <string name="alert_dialog_warning_msg_user">Milk</string>
+  <string name="alert_dialog_product_error_msg">Ulac afaris,ttxil-k ɛreḍ tikelt nniḍen</string>
   <string name="toast_retrieving">Asali...</string>
-  <string name="txtGenericName">Common name :</string>
+  <string name="txtGenericName">Isem amezdi :</string>
   <string name="txtBarcode">Tangalt s ifeggagen:</string>
-  <string name="txtQuantity">Quantity :</string>
-  <string name="txtPackaging">Packaging :</string>
+  <string name="txtQuantity">Tasmendna</string>
+  <string name="txtPackaging">Asekrud :</string>
   <string name="txtBrands">Ticrad:</string>
   <string name="txtCategories">Taggayin:</string>
-  <string name="txtLabels">Labels, certifications, awards :</string>
-  <string name="txtManufacturing">Manufacturing or processing places :</string>
-  <string name="txtIngredientsOrigins">Origin of ingredients :</string>
-  <string name="txtCity">City, state and country where purchased :</string>
-  <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Countries where sold :</string>
-  <string name="txtIngredients">Ingredients list :</string>
+  <string name="txtLabels">Tibzimin,tasilkant,tarrazt :</string>
+  <string name="txtManufacturing">Amḍiq anda yettwegg neɣ i ttwasmiti :</string>
+  <string name="txtIngredientsOrigins">Cetla n isufar :</string>
+  <string name="txtCity">Aɣrem,awanak d tamurt n tiɣin :</string>
+  <string name="txtStores">Taḥanutt :</string>
+  <string name="txtCountries">Timura anida yettnuzu</string>
+  <string name="txtIngredients">Umuɣ n yisufar</string>
   <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
-  <string name="txtAdditives">Additives :</string>
-  <string name="txtTraces">Traces :</string>
-  <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
-  <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
-  <string name="txtServingSize">Serving size :</string>
+  <string name="txtAdditives">Imerna</string>
+  <string name="txtTraces">Limaṛat :</string>
+  <string name="txtMayBeFromPalmOilProduct">Isufar ig zemren ad kken seg zzit n palm :
+</string>
+  <string name="txtPalmOilProduct">Isufar n zzit n palm :</string>
+  <string name="txtServingSize">Tiddi n tunt :</string>
   <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
-  <string name="txtNutritionLevelLow">in low quantity</string>
-  <string name="txtNutritionLevelModerate">in moderate quantity</string>
-  <string name="txtNutritionLevelHigh">in high quantity</string>
-  <string name="txtLogin">Login :</string>
-  <string name="txtPass">Password :</string>
-  <string name="txtTitleHome">Open your food and know what you eat</string>
-  <string name="txtSave">Save</string>
-  <string name="txtSignIn">Sign in</string>
-  <string name="txtUser">User panel</string>
-  <string name="txtToastSaved">User saved</string>
-  <string name="txtSalt">Salt</string>
-  <string name="txtFat">Fat</string>
-  <string name="txtSugars">Sugars</string>
-    <string name="hintBarcode">Barcode</string>
-  <string name="hintLogin">Login</string>
-  <string name="hintPass">Password</string>
-  <string name="errorLogin">Login or password error</string>
-  <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
-  <string name="txtInfoLoginOk">User saved</string>
-  <string name="txtInfoLoginNo">User not saved</string>
-  <string name="txtDialogsTitle">Information</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
-  <string name="txtYes">Yes</string>
-  <string name="txtNo">No</string>
-  <string name="hintNameProduct">Name</string>
+  <string name="txtNutritionLevelLow">s ciṭuḥ</string>
+  <string name="txtNutritionLevelModerate">S tesmekta iwulmen</string>
+  <string name="txtNutritionLevelHigh">S waṭas</string>
+  <string name="txtLogin">Kcem</string>
+  <string name="txtPass">Tasarut</string>
+  <string name="txtTitleHome">Ldi učči-inek, twaliḍ d acu ara teččeḍ</string>
+  <string name="txtSave">Sekles</string>
+  <string name="txtSignIn">Jerred iman-ik</string>
+  <string name="txtUser">Agalis n useqdec</string>
+  <string name="txtToastSaved">Yettwasekles umseqdec</string>
+  <string name="txtSalt">Lemleḥ</string>
+  <string name="txtFat">Tassemt</string>
+  <string name="txtSugars">Sskeṛ</string>
+  <string name="hintBarcode">Tangalt s yifeggagen</string>
+  <string name="hintLogin">Kcem</string>
+  <string name="hintPass">Tasarut</string>
+  <string name="errorLogin">Tɣelṭeḍ deg tuqqna neɣ deg tsarut</string>
+  <string name="errorWeb">Ur nezmir ara ad nekcem ar Internet. Tesɛiḍ uguren deg tuqqna? </string>
+  <string name="txtInfoLoginOk">Yettwasekles umseqdec</string>
+  <string name="txtInfoLoginNo">Ur yettwasekles ara umseqdec</string>
+  <string name="txtDialogsTitle">Talɣut</string>
+  <string name="txtDialogsContent">Afaris-nni i d-tegreḍ ur yelli ara ɛad deg Open Food Facts. Di leɛnaya-k rnu-t-id !</string>
+  <string name="txtDialogsContentPowerMode">Afaris-nni i d-tegreḍ yella yakkan deg Open Food Facts</string>
+  <string name="txtDialogsContentSend">Tebɣiḍ ad tceyyɛeḍ afaris-nni yettskelsen ar uzadur n yisefka?</string>
+  <string name="txtYes">Ih</string>
+  <string name="txtNo">Uhu</string>
+  <string name="hintNameProduct">Isem</string>
   <string name="hintEnergy">Energy in kJ per serving</string>
-  <string name="hintEnergyUnit">Energy unit</string>
-  <string name="hintWeight">Weight</string>
-  <string name="hintStores">Store</string>
-  <string name="hintBrand">Brand</string>
-  <string name="txtTakePicture">Take picture</string>
-  <string name="txtSendAll">Upload all</string>
-  <string name="txtNoData">No data</string>
-  <string name="txtPictureNeeded">Please take a picture first</string>
-  <string name="toastSending">Uploading...</string>
-  <string name="dataSaved">Saved locally on your device</string>
-  <string name="txtInfoAddUser">Please enter your login and password</string>
-  <string name="txtDataUpdated">Data updated</string>
+  <string name="hintEnergyUnit">Taxxamt n tezmert</string>
+  <string name="hintWeight">Taẓayt</string>
+  <string name="hintStores">Taḥanutt</string>
+  <string name="hintBrand">Tacreḍt</string>
+  <string name="txtTakePicture">Ṭṭef tawlaft</string>
+  <string name="txtSendAll">Ssider-d kullec</string>
+  <string name="txtNoData">Ulac isefka</string>
+  <string name="txtPictureNeeded">Di leɛnaya-k zwar s tewlaft</string>
+  <string name="toastSending">Asider...</string>
+  <string name="dataSaved">Sekles deg kra n wadeg deg tmacint-ik</string>
+  <string name="txtInfoAddUser">Ma ulac aɣilif, ssekcem isem-ik d tsarutt</string>
+  <string name="txtDataUpdated">Ttwasidren-d yisefka</string>
   <string name="txtLoading">Asali...</string>
-  <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
+  <string name="txtDialogsContentDelete">Tebɣiḍ ad tekkseḍ tawriqt-a n usxeṛbubec ?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+  <string name="txtContentDialogUploading">Ma ulac aɣilif, ur tteffeɣ ara mi ara ileḥḥu</string>
   <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
-  <string name="txtAllsent">Products sent</string>
-  <string name="txtPalm">The product does not contain any palm oil</string>
-  <string name="txtBarcodeNotValid">Barcode not valid</string>
-  <string name="try_it_scan_now">Scan product</string>
-  <string name="share">Share</string>
+  <string name="txtAllsent">Ifardisen ttwaceggeɛn</string>
+  <string name="txtPalm">Afardis ulac degs zzit palm</string>
+  <string name="txtBarcodeNotValid">Tangalt n tfeggagt mačči d ameɣtu</string>
+  <string name="try_it_scan_now">Semḍen afaris</string>
+  <string name="share">Bḍu</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
-  <string name="create_account">Sign up</string>
-  <string name="home_drawer">Home</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
+  <string name="create_account">Jerred</string>
+  <string name="home_drawer">Asebter agejdan</string>
+  <string name="open_beauty_drawer">Ldi Beauty Facts</string>
+  <string name="open_food_drawer">Ldi Food Facts</string>
   <string name="search_drawer">Nadi</string>
-  <string name="search_by_barcode_drawer">Type barcode</string>
-  <string name="category_drawer">Categories</string>
-  <string name="search_by_category">Category</string>
-  <string name="search_by_name_drawer">Search by name</string>
-  <string name="scan_search">Scan Barcode</string>
-  <string name="user_drawer">User</string>
+  <string name="search_by_barcode_drawer">Anaw tangalt n ifeggagen</string>
+  <string name="category_drawer">Taggayin</string>
+  <string name="search_by_category">Taggayt</string>
+  <string name="search_by_name_drawer">Nadi s yisem</string>
+  <string name="scan_search">Semḍen tangalt n tfeggagt</string>
+  <string name="user_drawer">Aseqdac</string>
   <string name="offline_edit_drawer">Offline edit</string>
-  <string name="txt_anonymous">Anonymous</string>
+  <string name="txt_anonymous">Udrig</string>
   <string name="txt_product_not_found">Ulac ifarisen</string>
-  <string name="delete_txt">Delete</string>
-  <string name="sign_in_drawer">Sign-in</string>
+  <string name="delete_txt">Kkes</string>
+  <string name="sign_in_drawer">Qqen</string>
   <string name="alert_drawer">Allergen alert</string>
   <string name="warning_allergens">Contains allergens</string>
   <string name="title_dialog_alert">Add alert</string>
@@ -239,7 +240,7 @@
   <string name="from_gallery">From gallery</string>
   <string name="product_sent">Product sent successfully</string>
   <string name="action_edit_product">Edit product</string>
-  <string name="title_info_dialog">Information</string>
+  <string name="title_info_dialog">Talɣut</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
   <string name="permission_title">Permission information</string>
@@ -257,12 +258,12 @@
   <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
   <string name="prefs_power_mode">Power mode scan</string>
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
-  <string name="prefs_language">Language</string>
-  <string name="prefs_language_summary">Change language</string>
+  <string name="prefs_language">Tutlayt</string>
+  <string name="prefs_language_summary">Beddel tutlayt</string>
   <string name="scan_history_drawer">Amazray</string>
-  <string name="clear_history">Clear history</string>
+  <string name="clear_history">Sfeḍ amazray</string>
   <string name="title_clear_history_dialog">Sfeḍ</string>
-  <string name="text_clear_history_dialog">Do you want to clear all scan history?</string>
+  <string name="text_clear_history_dialog">Tebɣiḍ ad tsefḍeḍ akk amazray n uḍummu?</string>
   <string name="export_csv_history">Export CSV</string>
   <string name="txt_exporting_history">Exporting history...</string>
   <string name="txt_history_exported">History exported</string>
@@ -271,28 +272,28 @@
   <!-- Nutrition info tab -->
   <string name="nutrition_carbohydrate">Carbohydrate</string>
   <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
-  <string name="nutrition_cholesterol">Cholesterol</string>
-  <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
+  <string name="nutrition_cholesterol">Kulistiṛul</string>
+  <string name="nutrition_cholesterol_short_name">igramen n Kulistiṛul</string>
   <string name="nutrition_energy">Energy</string>
   <string name="nutrition_energy_short_name">Energy</string>
-  <string name="nutrition_fat">Fat</string>
+  <string name="nutrition_fat">Tassemt</string>
   <string name="nutrition_fat_short_name">Fat (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
   <string name="nutrition_header">Nutrition facts</string>
   <string name="nutrition_no_data_message">No data is available for this product</string>
-  <string name="nutrition_per_quantity">For 100g/100ml</string>
-  <string name="nutrition_proteins">Proteins</string>
-  <string name="nutrition_proteins_short_name">Proteins (g)</string>
-  <string name="nutrition_salt">Salt</string>
-  <string name="nutrition_salt_short_name">Salt (g)</string>
-  <string name="nutrition_satured_fat">Satured fat</string>
+  <string name="nutrition_per_quantity">I 100g/100ml</string>
+  <string name="nutrition_proteins">Ipṛutinen</string>
+  <string name="nutrition_proteins_short_name">Igrammen n ipṛutinen</string>
+  <string name="nutrition_salt">Lemleḥ</string>
+  <string name="nutrition_salt_short_name">Igrammen n lemleḥ</string>
+  <string name="nutrition_satured_fat">Iččuṛ d tassemt</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
   <string name="nutrition_serving">Per serving</string>
-  <string name="nutrition_serving_size">Serving size :</string>
-  <string name="nutrition_sodium">Sodium</string>
+  <string name="nutrition_serving_size">Tiddi n tunt :</string>
+  <string name="nutrition_sodium">Aṣudyum</string>
   <string name="nutrition_sodium_short_name">Sodium (g)</string>
-  <string name="nutrition_sugars">Sugars</string>
+  <string name="nutrition_sugars">Sskeṛ</string>
   <string name="nutrition_sugars_short_name">Sugars (g)</string>
   <string name="nutrition_trans_fat">Trans fat</string>
   <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
@@ -305,24 +306,24 @@
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
   <string name="action_search">Nadi</string>
-  <string name="search_hint">Search a product</string>
-  <string name="number_of_results">Number of results :</string>
-  <string name="txt_no_results">No results found</string>
-  <string name="txt_extend_search">Try broadening your search or add the product</string>
-  <string name="txt_cant_load_search_results">Can\'t load search results</string>
-  <string name="txt_try_again">Try again</string>
+  <string name="search_hint">Nadi afaris</string>
+  <string name="number_of_results">amḍan n yigemmaḍ</string>
+  <string name="txt_no_results">Ulac igemmaḍ i d-nufa</string>
+  <string name="txt_extend_search">Ssawseɛ anad-k neɣ rnu afaris</string>
+  <string name="txt_cant_load_search_results">Ur nezmir ara ad d-nessali ayen i tettnadiḍ</string>
+  <string name="txt_try_again">Ɛreḍ tikkelt-nniḍen</string>
   <string name="nutrition_lactose">Lactose</string>
   <string name="nutrition_casein">Casein</string>
   <string name="nutrition_maltodextrins">Maltodextrins</string>
   <string name="nutrition_serum_proteins">Serum Proteins</string>
   <string name="nutrition_nucleotides">Nucleotides</string>
-  <string name="for_100g">For 100 g</string>
+  <string name="for_100g">I 100 n yigṛammen</string>
   <string name="serving">Per serving</string>
   <string name="minerals">Minerals</string>
-  <string name="nutrition_calcium">Calcium</string>
-  <string name="nutrition_potassium">Potassium</string>
+  <string name="nutrition_calcium">Akalisyum</string>
+  <string name="nutrition_potassium">Apuṭasyum</string>
   <string name="nutrition_chlore">Chlorine</string>
-  <string name="nutrition_magnesium">Magnesium</string>
+  <string name="nutrition_magnesium">Amagnizyum</string>
   <string name="nutrition_taurine">Taurine</string>
   <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
   <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
@@ -334,30 +335,30 @@
   <string name="nutrition_fructose">Fructose</string>
   <string name="nutrition_maltose">Maltose</string>
   <string name="nutrition_alcohol">Alcohol</string>
-  <string name="nutrition_vitamins">Vitamins</string>
-  <string name="vitamin_a">Vitamin A</string>
-  <string name="vitamin_d">Vitamin d</string>
-  <string name="vitamin_e">Vitamin e</string>
-  <string name="vitamin_k">Vitamin k</string>
-  <string name="vitamin_c">Vitamin C</string>
-  <string name="vitamin_b1">Vitamin B1</string>
-  <string name="vitamin_b2">Vitamin B2</string>
-  <string name="vitamin_pp">Vitamin PP</string>
-  <string name="vitamin_b6">Vitamin B6</string>
-  <string name="vitamin_b9">Vitamin B9</string>
-  <string name="vitamin_b12">Vitamin B12</string>
+  <string name="nutrition_vitamins">Ivitaminen</string>
+  <string name="vitamin_a">Avitamin A</string>
+  <string name="vitamin_d">Avitamin d</string>
+  <string name="vitamin_e">Avitamin e</string>
+  <string name="vitamin_k">Avitamin k</string>
+  <string name="vitamin_c">Avitamin C</string>
+  <string name="vitamin_b1">Avitamin B1</string>
+  <string name="vitamin_b2">Avitamin B2</string>
+  <string name="vitamin_pp">Avitamin PP</string>
+  <string name="vitamin_b6">Avitamin B6</string>
+  <string name="vitamin_b9">Avitamin B9</string>
+  <string name="vitamin_b12">Avitamin B12</string>
   <string name="biotin">Biotin</string>
   <string name="pantothenic_acid">Pantothenic acid</string>
   <string name="nutrition_minerals">Minerals</string>
-  <string name="silica">Silica</string>
-  <string name="bicarbonate">Bicarbonate</string>
-  <string name="potassium">Potassium</string>
-  <string name="chloride">Chloride</string>
-  <string name="calcium">Calcium</string>
-  <string name="phosphorus">Phosphorus</string>
-  <string name="iron">Iron</string>
-  <string name="magnesium">Magnesium</string>
-  <string name="zinc">Zinc</string>
+  <string name="silica">Silika</string>
+  <string name="bicarbonate">Bikarbunat</string>
+  <string name="potassium">Putasyum</string>
+  <string name="chloride">Klurid</string>
+  <string name="calcium">Kalsyum</string>
+  <string name="phosphorus">Fusfur</string>
+  <string name="iron">Uzzel</string>
+  <string name="magnesium">Magnizyum</string>
+  <string name="zinc">Zink</string>
   <string name="copper">Copper</string>
   <string name="manganese">Manganese</string>
   <string name="fluoride">Fluoride</string>
@@ -368,12 +369,13 @@
   <string name="caffeine">Caffeine</string>
   <string name="taurine">Taurine</string>
   <string name="ph">pH</string>
-  <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
+  <string name="fruits_vegetables_nuts">Lfakeyya, lxeḍra, tijujtin</string>
   <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
   <string name="cocoa">Cocoa</string>
   <string name="chlorophyl">Chlorophyl</string>
-  <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-  <string name="take_picture_front">Take a picture of the front</string>
+  <string name="take_picture_ingredients">Ṣewwer isufar</string>
+  <string name="take_picture_front">Ṣewwer ar zdat</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-  <string name="take_more_pictures">Take more pictures</string>
+  <string name="take_more_pictures">Ṭṭef ugar n tewlafin</string>
+  <string name="txtSaturatedFat">Iččuṛ d tassemt</string>
 </resources>

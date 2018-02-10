@@ -4,12 +4,12 @@
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/ -->
   <string name="website">https://world-de.openbeautyfacts.org/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
-  <string name="website_contribute">https://world-de.openbeautyfacts.org/mitmachen</string>
+  <string name="website_contribute">https://world.openbeautyfacts.org/contribute</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
-  <string name="website_discover">https://world-de.openbeautyfacts.org/entdecken</string>
+  <string name="website_discover">https://world.openbeautyfacts.org/discover</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
   <string name="website_product">https://world-de.openbeautyfacts.org/produkt/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
-  <string name="website_contributor">https://world-de.openbeautyfacts.org/mitwirkender/</string>
-  <string name="txtHome">Open Beauty Facts is a database of cosmetics products with ingredients, allergens, indicia and all the tidbits of information we can find on product labels..</string>
+  <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
+  <string name="txtHome">Open Beauty Facts ist eine Datebank für Kosmetikprodukte mit Inhaltsstoffen, Allergenen, Zeichen und allen Leckerbissen voll Informationen kannst du hier finden.</string>
 </resources>

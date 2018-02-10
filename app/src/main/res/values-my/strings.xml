@@ -176,7 +176,7 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
-    <string name="hintBarcode">ဘားကုုဒ္</string>
+  <string name="hintBarcode">ဘားကုုဒ္</string>
   <string name="hintLogin">ဝင္ေရာက္ရန္</string>
   <string name="hintPass">စကားဝွက္</string>
   <string name="errorLogin">ဝင္ေရာက္မႈ သို႔မဟုတ္ စကားဝွက္ခ်ိဳ႕ယြင္းခ်က္</string>
@@ -376,4 +376,5 @@
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
+  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>

@@ -111,23 +111,23 @@
     <item>Danimarkalı</item>
     <item>Basitleştirilmiş Çince</item>
     <item>Farsça</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
+    <item>Sırpça (Latin)</item>
+    <item>Güney afrika dili</item>
     <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
+    <item>Amharca</item>
+    <item>Assamca</item>
+    <item>Geleneksel çince</item>
+    <item>Geleneksel Çince, Hong kong</item>
     <item>Macarca</item>
-    <item>Turkish</item>
+    <item>Türkçe</item>
     <item>Endonezce</item>
     <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
+    <item>Filipinli</item>
+    <item>Flemenkçe, Belçika</item>
+    <item>Bengalce</item>
     <item>Slovence</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
+    <item>Kürtçe</item>
+    <item>İspanyol</item>
     <item>Polonyaca</item>
   </string-array>
   <string-array name="images_array">
@@ -176,7 +176,7 @@
   <string name="txtSalt">Tuz</string>
   <string name="txtFat">Yağ</string>
   <string name="txtSugars">Şeker</string>
-    <string name="hintBarcode">Barkod</string>
+  <string name="hintBarcode">Barkod</string>
   <string name="hintLogin">Giriş</string>
   <string name="hintPass">Şifre</string>
   <string name="errorLogin">Giriş veya parola hatası</string>
@@ -376,4 +376,5 @@
   <string name="take_picture_front">Ön fotoğrafını çekin</string>
   <string name="take_picture_nutrition_table">Beslenme tablosunun resmini çekin</string>
   <string name="take_more_pictures">Daha fazla resim çek</string>
+  <string name="txtSaturatedFat">Doymuş yağ</string>
 </resources>
