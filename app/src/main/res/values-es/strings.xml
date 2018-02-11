@@ -211,11 +211,11 @@
   <string name="txtContentDialogUploading">Por favor no salga durante el proceso...</string>
   <string name="txtAbout">Las imágenes que ha enviado son publicadas bajo la licencia libre Creative Commons Attribution and ShareAlike</string>
   <string name="txtAllsent">Productos enviados</string>
-  <string name="txtPalm">El producto no contiene nada de aceite de palma</string>
+  <string name="txtPalm">El producto no contiene aceite de palma</string>
   <string name="txtBarcodeNotValid">Código de barras no válido</string>
   <string name="try_it_scan_now">Escanear producto</string>
   <string name="share">Compartir</string>
-  <string name="msg_share">Mire el producto en Open Food Facts :</string>
+  <string name="msg_share">Mira este producto en Open Food Facts :</string>
   <string name="create_account">Registrarse</string>
   <string name="home_drawer">Inicio</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
