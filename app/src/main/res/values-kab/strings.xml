@@ -185,8 +185,8 @@
   <string name="txtInfoLoginOk">Yettwasekles umseqdec</string>
   <string name="txtInfoLoginNo">Ur yettwasekles ara umseqdec</string>
   <string name="txtDialogsTitle">Talɣut</string>
-  <string name="txtDialogsContent">Afaris-nni i d-tegreḍ ur yelli ara ɛad deg OPEN FOOD FACTS. Di leɛnaya-k rnu-t-id !</string>
-  <string name="txtDialogsContentPowerMode">Afaris-nni i d-tegreḍ yella yakkan deg OPEN FOOD FACTS</string>
+  <string name="txtDialogsContent">Afaris-nni i d-tegreḍ ur yelli ara ɛad deg Open Food Facts. Di leɛnaya-k rnu-t-id !</string>
+  <string name="txtDialogsContentPowerMode">Afaris-nni i d-tegreḍ yella yakkan deg Open Food Facts</string>
   <string name="txtDialogsContentSend">Tebɣiḍ ad tceyyɛeḍ afaris-nni yettskelsen ar uzadur n yisefka?</string>
   <string name="txtYes">Ih</string>
   <string name="txtNo">Uhu</string>
