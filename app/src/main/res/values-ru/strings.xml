@@ -51,84 +51,32 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
     <item>fa</item>
     <item>rs</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
     <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
     <item>hu</item>
     <item>tr</item>
     <item>id</item>
     <item>tl</item>
     <item>fil</item>
-    <item>nl-rBE</item>
+    <item>nl-BE</item>
     <item>bn</item>
     <item>sl</item>
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>Английский</item>
-    <item>Французский</item>
-    <item>Испанский</item>
-    <item>Итальянский</item>
-    <item>Немецкий</item>
-    <item>Японский</item>
-    <item>Русский</item>
-    <item>Португальский</item>
-    <item>Шведский</item>
-    <item>Бирманский</item>
-    <item>Казахский</item>
-    <item>Армянский</item>
-    <item>Греческий</item>
-    <item>Иврит</item>
-    <item>Галисийский</item>
-    <item>Каталанский</item>
-    <item>Чешский</item>
-    <item>Арабский</item>
-    <item>Финский</item>
-    <item>Хинди</item>
-    <item>Кабильский</item>
-    <item>Корейский</item>
-    <item>Латышский</item>
-    <item>Голландский</item>
-    <item>Португальский (Бразилия)</item>
-    <item>Румынский</item>
-    <item>Шведский</item>
-    <item>Китайский</item>
-    <item>Норвежский (Букмол)</item>
-    <item>Датский</item>
-    <item>Китайский (упрощенный)</item>
-    <item>Фарси</item>
-    <item>Сербский (Латиница)</item>
-    <item>Африкаанс</item>
-    <item>Акан</item>
-    <item>Амхарский</item>
-    <item>Ассамский</item>
-    <item>Китайский традиционный</item>
-    <item>Китайский традиционный, Гонконг</item>
-    <item>Венгерский</item>
-    <item>Турецкий</item>
-    <item>Индонезийский</item>
-    <item>Тагальский</item>
-    <item>Филиппинский</item>
-    <item>Голландский, Бельгия</item>
-    <item>Бенгальский</item>
-    <item>Словенский</item>
-    <item>Курдский</item>
-    <item>Эсперанто</item>
-    <item>Польский</item>
   </string-array>
   <string-array name="images_array">
     <item>По умолчанию</item>
