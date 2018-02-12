@@ -51,84 +51,32 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
     <item>fa</item>
     <item>rs</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
     <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
     <item>hu</item>
     <item>tr</item>
     <item>id</item>
     <item>tl</item>
     <item>fil</item>
-    <item>nl-rBE</item>
+    <item>nl-BE</item>
     <item>bn</item>
     <item>sl</item>
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>Inglese</item>
-    <item>Francese</item>
-    <item>Spagnolo</item>
-    <item>Italiano</item>
-    <item>Tedesco</item>
-    <item>Giapponese</item>
-    <item>Russo</item>
-    <item>Portoghese</item>
-    <item>Svedese</item>
-    <item>Birmano</item>
-    <item>Kazako</item>
-    <item>Armeno</item>
-    <item>Greco</item>
-    <item>Ebraico</item>
-    <item>Galiziano</item>
-    <item>Catalano</item>
-    <item>Ceco</item>
-    <item>Arabo</item>
-    <item>Finlandese</item>
-    <item>Indi</item>
-    <item>Kabyle</item>
-    <item>Coreano</item>
-    <item>Lettone</item>
-    <item>Olandese</item>
-    <item>Brasiliano portoghese</item>
-    <item>Rumeno</item>
-    <item>Svedese</item>
-    <item>Cinese</item>
-    <item>Norvegese (Bokmål)</item>
-    <item>Danese</item>
-    <item>Cinese semplificato</item>
-    <item>Farsi</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>Hungarian</item>
-    <item>Turkish</item>
-    <item>Indonesian</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>Slovenian</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>Polacco</item>
   </string-array>
   <string-array name="images_array">
     <item>Predefinito</item>
