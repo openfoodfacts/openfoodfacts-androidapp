@@ -51,84 +51,32 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
     <item>fa</item>
     <item>rs</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
     <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
     <item>hu</item>
     <item>tr</item>
     <item>id</item>
     <item>tl</item>
     <item>fil</item>
-    <item>nl-rBE</item>
+    <item>nl-BE</item>
     <item>bn</item>
     <item>sl</item>
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>Taglizit</item>
-    <item>Tafransist</item>
-    <item>Taspanit</item>
-    <item>Tatelyanit</item>
-    <item>Talmanit</item>
-    <item>Tajapunit</item>
-    <item>Tarusit</item>
-    <item>Tapurtugit</item>
-    <item>Taswidit</item>
-    <item>Tabirmanit</item>
-    <item>Takazaxt</item>
-    <item>Taṛminit</item>
-    <item>Tagrigit</item>
-    <item>Taɛebrit</item>
-    <item>Tagalisyant</item>
-    <item>Takaṭalant</item>
-    <item>Tačikit</item>
-    <item>Taɛrabt</item>
-    <item>Tafinit</item>
-    <item>Tahendit</item>
-    <item>Taqbaylit</item>
-    <item>Takurit</item>
-    <item>Taliṭunit</item>
-    <item>Tahulandit</item>
-    <item>Tapurtugit n Brazil</item>
-    <item>Tarumanit</item>
-    <item>Taswidit</item>
-    <item>Tacinwat</item>
-    <item>Tanuṛvijit (Bokmal)</item>
-    <item>Tadanit</item>
-    <item>Tacinit taḥerfit</item>
-    <item>Afarsi</item>
-    <item>Asiṛbi (Alatini)</item>
-    <item>Tafrikant</item>
-    <item>Takanit</item>
-    <item>Amharic</item>
-    <item>Tasamizt</item>
-    <item>Tacinwat tamensayt</item>
-    <item>Tacinwat tamensayt, Hung Kung</item>
-    <item>Tahungarit</item>
-    <item>Taṭurkit</item>
-    <item>Tandunizit</item>
-    <item>Tatagalugt</item>
-    <item>Tafilipint</item>
-    <item>Talmanit, Beljik</item>
-    <item>Tabengalit</item>
-    <item>Tasluvinit</item>
-    <item>Takurdit</item>
-    <item>Taspirantit</item>
-    <item>Tapulandit</item>
   </string-array>
   <string-array name="images_array">
     <item>Amezwer</item>
@@ -156,14 +104,14 @@
   <string name="txtStores">Taḥanutt :</string>
   <string name="txtCountries">Timura anida yettnuzu</string>
   <string name="txtIngredients">Umuɣ n yisufar</string>
-  <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
+  <string name="txtSubstances">Isental neɣ isufer id-igelun s innefrayen neɣ tisedmirin:</string>
   <string name="txtAdditives">Imerna</string>
   <string name="txtTraces">Limaṛat :</string>
   <string name="txtMayBeFromPalmOilProduct">Isufar ig zemren ad kken seg zzit n palm :
 </string>
   <string name="txtPalmOilProduct">Isufar n zzit n palm :</string>
   <string name="txtServingSize">Tiddi n tunt :</string>
-  <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
+  <string name="txtNutrientLevel100g">Anaṭṭaf deg asmintig di 100g :</string>
   <string name="txtNutritionLevelLow">s ciṭuḥ</string>
   <string name="txtNutritionLevelModerate">S tesmekta iwulmen</string>
   <string name="txtNutritionLevelHigh">S waṭas</string>
@@ -191,7 +139,7 @@
   <string name="txtYes">Ih</string>
   <string name="txtNo">Uhu</string>
   <string name="hintNameProduct">Isem</string>
-  <string name="hintEnergy">Energy in kJ per serving</string>
+  <string name="hintEnergy">Izuren di kj i tiremt</string>
   <string name="hintEnergyUnit">Taxxamt n tezmert</string>
   <string name="hintWeight">Taẓayt</string>
   <string name="hintStores">Taḥanutt</string>
