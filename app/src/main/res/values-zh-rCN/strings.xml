@@ -51,84 +51,32 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
     <item>fa</item>
     <item>rs</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
     <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
     <item>hu</item>
     <item>tr</item>
     <item>id</item>
     <item>tl</item>
     <item>fil</item>
-    <item>nl-rBE</item>
+    <item>nl-BE</item>
     <item>bn</item>
     <item>sl</item>
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>英语</item>
-    <item>法语</item>
-    <item>西班牙语</item>
-    <item>意大利语</item>
-    <item>德语</item>
-    <item>日语</item>
-    <item>俄语</item>
-    <item>葡萄牙语</item>
-    <item>瑞典语</item>
-    <item>缅甸语</item>
-    <item>哈萨克语</item>
-    <item>亚美尼亚语</item>
-    <item>希腊语</item>
-    <item>希伯来语</item>
-    <item>加利西亚语</item>
-    <item>加泰罗尼亚语</item>
-    <item>捷克语</item>
-    <item>阿拉伯语</item>
-    <item>芬兰语</item>
-    <item>印地语</item>
-    <item>卡拜尔语</item>
-    <item>韩语</item>
-    <item>拉脱维亚语</item>
-    <item>荷兰语</item>
-    <item>巴西荷兰语</item>
-    <item>罗马尼亚语</item>
-    <item>瑞典语</item>
-    <item>中文</item>
-    <item>挪威语(书面)</item>
-    <item>丹麦语</item>
-    <item>简体中文</item>
-    <item>波斯语</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>匈牙利语</item>
-    <item>Turkish</item>
-    <item>印度尼西亚语</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>斯洛文尼亚</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>波兰语</item>
   </string-array>
   <string-array name="images_array">
     <item>默认</item>
