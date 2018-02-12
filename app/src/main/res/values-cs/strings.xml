@@ -51,84 +51,32 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
     <item>fa</item>
     <item>rs</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
     <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
     <item>hu</item>
     <item>tr</item>
     <item>id</item>
     <item>tl</item>
     <item>fil</item>
-    <item>nl-rBE</item>
+    <item>nl-BE</item>
     <item>bn</item>
     <item>sl</item>
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>Angličtina</item>
-    <item>Francouzština</item>
-    <item>Španělština</item>
-    <item>Italština</item>
-    <item>Němčina</item>
-    <item>Japonština</item>
-    <item>Ruština</item>
-    <item>Portugalština</item>
-    <item>Švédština</item>
-    <item>Barmština</item>
-    <item>Kazaština</item>
-    <item>Arménština</item>
-    <item>Řečtina</item>
-    <item>Hebrejština</item>
-    <item>Galicijština</item>
-    <item>Katalánština</item>
-    <item>Čeština</item>
-    <item>Arabština</item>
-    <item>Finština</item>
-    <item>Hindština</item>
-    <item>Kabylština</item>
-    <item>Korejština</item>
-    <item>Lotyština</item>
-    <item>Holandština</item>
-    <item>Brazilská portugalština</item>
-    <item>Rumunština</item>
-    <item>Švédština</item>
-    <item>Čínština</item>
-    <item>Norština (Bokmål)</item>
-    <item>Dánština</item>
-    <item>Čínština (zjednodušená)</item>
-    <item>Perština</item>
-    <item>Srbština (latinka)</item>
-    <item>Afrikánština</item>
-    <item>Akanština</item>
-    <item>Amharština</item>
-    <item>Ásámština</item>
-    <item>Čínština (tradiční)</item>
-    <item>Čínština (tradiční, Hong Kong)</item>
-    <item>Maďarština</item>
-    <item>Turečtina</item>
-    <item>Indonéština</item>
-    <item>Tagalština</item>
-    <item>Filipínština</item>
-    <item>Holandština (Belgie)</item>
-    <item>Bengálština</item>
-    <item>Slovinština</item>
-    <item>Kurdština</item>
-    <item>Esperanto</item>
-    <item>Polština</item>
   </string-array>
   <string-array name="images_array">
     <item>Výchozí</item>
