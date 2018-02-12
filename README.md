@@ -100,7 +100,7 @@ Here's a few list of bugs:
 
 ## Copyright and License
 
-    Copyright 2016 Open Food Facts
+    Copyright 2016-2018 Open Food Facts
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
