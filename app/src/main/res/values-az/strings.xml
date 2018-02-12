@@ -51,84 +51,32 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
     <item>fa</item>
     <item>rs</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
     <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
     <item>hu</item>
     <item>tr</item>
     <item>id</item>
     <item>tl</item>
     <item>fil</item>
-    <item>nl-rBE</item>
+    <item>nl-BE</item>
     <item>bn</item>
     <item>sl</item>
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>İngiliscə</item>
-    <item>Fransızca</item>
-    <item>İspanca</item>
-    <item>İtalyanca</item>
-    <item>Almanca</item>
-    <item>Yaponca</item>
-    <item>Rusca</item>
-    <item>Portuqalca</item>
-    <item>İsveçcə</item>
-    <item>Birmanca</item>
-    <item>Qazaxca</item>
-    <item>ermənicə</item>
-    <item>Yunanca</item>
-    <item>İvritcə</item>
-    <item>Qalisiyaca</item>
-    <item>Katalanca</item>
-    <item>Çexcə</item>
-    <item>Ərəbcə</item>
-    <item>Fincə</item>
-    <item>Hindcə</item>
-    <item>Kabilcə</item>
-    <item>Koreyaca</item>
-    <item>Latışca</item>
-    <item>Hollandca</item>
-    <item>Braziliya portuqalcası</item>
-    <item>Rumınca</item>
-    <item>İsveçcə</item>
-    <item>Çincə</item>
-    <item>Norveçcə (Bokmal)</item>
-    <item>Danca</item>
-    <item>Asandlaşdırılmış Çincə</item>
-    <item>Farsca</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>Hungarian</item>
-    <item>Turkish</item>
-    <item>Indonesian</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>Slovenian</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>Polish</item>
   </string-array>
   <string-array name="images_array">
     <item>İlkin</item>
