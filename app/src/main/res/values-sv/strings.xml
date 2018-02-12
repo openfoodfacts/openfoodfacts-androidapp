@@ -51,84 +51,32 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
     <item>fa</item>
     <item>rs</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
     <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
     <item>hu</item>
     <item>tr</item>
     <item>id</item>
     <item>tl</item>
     <item>fil</item>
-    <item>nl-rBE</item>
+    <item>nl-BE</item>
     <item>bn</item>
     <item>sl</item>
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>Engelska</item>
-    <item>Franska</item>
-    <item>Spanska</item>
-    <item>Italienska</item>
-    <item>Tyska</item>
-    <item>Japanska</item>
-    <item>Ryska</item>
-    <item>Portugisiska</item>
-    <item>Svenska</item>
-    <item>Burmesiska</item>
-    <item>Kazakiska</item>
-    <item>Armeniska</item>
-    <item>Grekiska</item>
-    <item>Hebreiska</item>
-    <item>Galiciska</item>
-    <item>Katalanska</item>
-    <item>Tjeckiska</item>
-    <item>Arabiska</item>
-    <item>Finska</item>
-    <item>Hindi</item>
-    <item>Kabyle</item>
-    <item>Koreanska</item>
-    <item>Lettiska</item>
-    <item>Nederländska</item>
-    <item>Brasiliansk portugisiska</item>
-    <item>Rumänska</item>
-    <item>Svenska</item>
-    <item>Kinesiska</item>
-    <item>Norska (bokmål)</item>
-    <item>Danska</item>
-    <item>Simplified Chinese</item>
-    <item>Farsi</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>Ungerska</item>
-    <item>Turkish</item>
-    <item>Indonesiska</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>Slovenska</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>Polska</item>
   </string-array>
   <string-array name="images_array">
     <item>Standard</item>
