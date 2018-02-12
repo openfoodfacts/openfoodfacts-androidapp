@@ -51,84 +51,32 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
     <item>fa</item>
     <item>rs</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
     <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
     <item>hu</item>
     <item>tr</item>
     <item>id</item>
     <item>tl</item>
     <item>fil</item>
-    <item>nl-rBE</item>
+    <item>nl-BE</item>
     <item>bn</item>
     <item>sl</item>
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>אנגלית</item>
-    <item>צרפתית</item>
-    <item>ספרדית</item>
-    <item>איטלקית</item>
-    <item>גרמנית</item>
-    <item>יפנית</item>
-    <item>רוסית</item>
-    <item>פורטוגלית</item>
-    <item>שבדית</item>
-    <item>בורמית</item>
-    <item>קזחית</item>
-    <item>ארמנית</item>
-    <item>יוונית</item>
-    <item>עברית</item>
-    <item>גליסית</item>
-    <item>קטלאנית</item>
-    <item>צ׳כית</item>
-    <item>ערבית</item>
-    <item>פינית</item>
-    <item>הינדי</item>
-    <item>קאבילה</item>
-    <item>קוריאנית</item>
-    <item>לטבית</item>
-    <item>הולנדית</item>
-    <item>פורטוגלית ברזילאית</item>
-    <item>רומנית</item>
-    <item>שבדית</item>
-    <item>סינית</item>
-    <item>נורבקית ספרותית</item>
-    <item>דנית</item>
-    <item>סינית מפושטת</item>
-    <item>פרסית</item>
-    <item>סרבית (לטינית)</item>
-    <item>אפריקאנס</item>
-    <item>אקאן</item>
-    <item>אמהרית</item>
-    <item>אסאמית</item>
-    <item>סינית מסורתית</item>
-    <item>סינית מסורתית, הונג קונג</item>
-    <item>הונגרית</item>
-    <item>טורקית</item>
-    <item>אנדונזית</item>
-    <item>טגלוג</item>
-    <item>פיליפינית</item>
-    <item>הולנדית בלגית</item>
-    <item>בנגלית</item>
-    <item>סלובנית</item>
-    <item>כורדית</item>
-    <item>אספרנטו</item>
-    <item>פולנית</item>
   </string-array>
   <string-array name="images_array">
     <item>בררת מחדל</item>
