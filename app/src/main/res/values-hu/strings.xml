@@ -51,84 +51,32 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
     <item>fa</item>
     <item>rs</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
     <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
     <item>hu</item>
     <item>tr</item>
     <item>id</item>
     <item>tl</item>
     <item>fil</item>
-    <item>nl-rBE</item>
+    <item>nl-BE</item>
     <item>bn</item>
     <item>sl</item>
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>Angol</item>
-    <item>Francia</item>
-    <item>Spanyol</item>
-    <item>Olasz</item>
-    <item>Német</item>
-    <item>Japán</item>
-    <item>Orosz</item>
-    <item>Portugál</item>
-    <item>Svéd</item>
-    <item>Burmai</item>
-    <item>Kazah</item>
-    <item>Örmény</item>
-    <item>Görög</item>
-    <item>Héber</item>
-    <item>Galíciai</item>
-    <item>Katalán</item>
-    <item>Cseh</item>
-    <item>Arab</item>
-    <item>Finn</item>
-    <item>Hindi</item>
-    <item>Kabil</item>
-    <item>Koreai</item>
-    <item>Lett</item>
-    <item>Holland</item>
-    <item>Brazil portugál</item>
-    <item>Román</item>
-    <item>Svéd</item>
-    <item>Kínai</item>
-    <item>Norvég (Bokmål)</item>
-    <item>Dán</item>
-    <item>Egyszerűsített kínai</item>
-    <item>Perzsa</item>
-    <item>Szerb (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amhara</item>
-    <item>Asszámi</item>
-    <item>Hagyományos kínai</item>
-    <item>Hagyományos kínai, Hong Kong</item>
-    <item>Magyar</item>
-    <item>Török</item>
-    <item>Indonéz</item>
-    <item>Tagalog</item>
-    <item>Filippínó</item>
-    <item>Holland, Belgium</item>
-    <item>Bengáli</item>
-    <item>Szlovén</item>
-    <item>Kurd</item>
-    <item>Eszperantó</item>
-    <item>Lengyel</item>
   </string-array>
   <string-array name="images_array">
     <item>Alapértelmezett</item>
