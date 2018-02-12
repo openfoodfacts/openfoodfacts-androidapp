@@ -57,15 +57,15 @@
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-CN</item>
+    <item>简体字</item>
     <item>fa</item>
     <item>rs</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
     <item>as</item>
-    <item>zh-TW</item>
-    <item>zh-HK</item>
+    <item>繁体字</item>
+    <item>繁体字</item>
     <item>hu</item>
     <item>tr</item>
     <item>id</item>
@@ -171,7 +171,7 @@
   <string name="search_drawer">搜索</string>
   <string name="search_by_barcode_drawer">输入条形码</string>
   <string name="category_drawer">类别</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">类型</string>
   <string name="search_by_name_drawer">按照名字搜索</string>
   <string name="scan_search">扫描条形码</string>
   <string name="user_drawer">用户</string>
