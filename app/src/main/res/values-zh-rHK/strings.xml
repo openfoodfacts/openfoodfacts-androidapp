@@ -51,84 +51,32 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
     <item>fa</item>
     <item>rs</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
     <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
     <item>hu</item>
     <item>tr</item>
     <item>id</item>
     <item>tl</item>
     <item>fil</item>
-    <item>nl-rBE</item>
+    <item>nl-BE</item>
     <item>bn</item>
     <item>sl</item>
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>英語</item>
-    <item>法語</item>
-    <item>西班牙語</item>
-    <item>義大利語</item>
-    <item>德語</item>
-    <item>日語</item>
-    <item>俄語</item>
-    <item>葡萄牙語</item>
-    <item>瑞典語</item>
-    <item>緬甸語</item>
-    <item>哈薩克語</item>
-    <item>亞美尼亞語</item>
-    <item>希臘語</item>
-    <item>希伯來語</item>
-    <item>加里西亞語</item>
-    <item>加泰隆尼亞語</item>
-    <item>捷克語</item>
-    <item>阿拉伯語</item>
-    <item>芬蘭語</item>
-    <item>印地語</item>
-    <item>卡拜爾語</item>
-    <item>韓語</item>
-    <item>拉脫維亞語</item>
-    <item>荷蘭語</item>
-    <item>巴西葡萄牙語</item>
-    <item>羅馬尼亞語</item>
-    <item>瑞典語</item>
-    <item>漢語</item>
-    <item>挪威語 (博克馬爾)</item>
-    <item>丹麥語</item>
-    <item>簡體中文</item>
-    <item>波斯語</item>
-    <item>塞爾維亞語（拉丁）</item>
-    <item>南非語</item>
-    <item>阿坎語</item>
-    <item>阿姆哈拉語</item>
-    <item>Assamese</item>
-    <item>繁體中文</item>
-    <item>香港繁體中文</item>
-    <item>匈牙利語</item>
-    <item>土耳其語</item>
-    <item>印尼語</item>
-    <item>塔加拉語</item>
-    <item>菲律賓語</item>
-    <item>荷蘭語（比利時）</item>
-    <item>孟加拉語</item>
-    <item>斯洛文尼亞語</item>
-    <item>庫德語</item>
-    <item>世界語</item>
-    <item>波蘭語</item>
   </string-array>
   <string-array name="images_array">
     <item>預設值</item>
