@@ -51,84 +51,32 @@
     <item>ko</item>
     <item>lv</item>
     <item>nl</item>
-    <item>pt-rBR</item>
+    <item>pt-BR</item>
     <item>ro</item>
     <item>sv</item>
     <item>zh</item>
     <item>nb</item>
     <item>da</item>
-    <item>zh-rCN</item>
+    <item>zh-CN</item>
     <item>fa</item>
     <item>rs</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
     <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
     <item>hu</item>
     <item>tr</item>
     <item>id</item>
     <item>tl</item>
     <item>fil</item>
-    <item>nl-rBE</item>
+    <item>nl-BE</item>
     <item>bn</item>
     <item>sl</item>
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>Angielski</item>
-    <item>Francuski</item>
-    <item>Hiszpański</item>
-    <item>Włoski</item>
-    <item>Niemiecki</item>
-    <item>Japoński</item>
-    <item>Rosyjski</item>
-    <item>Portugalski</item>
-    <item>Szwedzki</item>
-    <item>Birmański</item>
-    <item>Kazachski</item>
-    <item>Armeński</item>
-    <item>Grecki</item>
-    <item>Hebrajski</item>
-    <item>Galicyjski</item>
-    <item>Kataloński</item>
-    <item>Czeski</item>
-    <item>Arabski</item>
-    <item>Fiński</item>
-    <item>Hinduski</item>
-    <item>Kabylski</item>
-    <item>Koreański</item>
-    <item>Łotewski</item>
-    <item>Holenderski</item>
-    <item>Brazylijski portugalski</item>
-    <item>Rumuński</item>
-    <item>Szwedzki</item>
-    <item>Chiński</item>
-    <item>Norweski (Bokmål)</item>
-    <item>Duński</item>
-    <item>Chiński uproszczony</item>
-    <item>Perski</item>
-    <item>Serbski (Łacina)</item>
-    <item>Afrikaans</item>
-    <item>Język akan</item>
-    <item>Amharski</item>
-    <item>Asamski</item>
-    <item>Tradycyjny Chiński</item>
-    <item>Tradycyjny Chiński, Hong Kong</item>
-    <item>Węgierski</item>
-    <item>Turecki</item>
-    <item>Indonezyjski</item>
-    <item>Tagalog</item>
-    <item>Filipiński</item>
-    <item>Holenderski, Belgia</item>
-    <item>Bengalski</item>
-    <item>Słoweński</item>
-    <item>Kurdyjski</item>
-    <item>Esperanto</item>
-    <item>Polski</item>
   </string-array>
   <string-array name="images_array">
     <item>Domyślny</item>
