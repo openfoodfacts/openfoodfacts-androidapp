@@ -23,6 +23,7 @@ class ProductStringConverter extends StdConverter<String, String> {
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @JsonProperty("image_small_url")
     private String imageSmallUrl;
     @JsonProperty("image_nutrition_url")
