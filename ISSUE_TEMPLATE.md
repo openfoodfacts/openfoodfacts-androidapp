@@ -6,11 +6,15 @@ Summarize your issue in one sentence (what goes wrong, what did you expect to ha
 
 How can we reproduce the issue?
 
+**Add System logs:**
+
+Add logcat files here(If you are able to add).
+
 **Expected behavior:** 
 
 What did you expect the App to do?
 
-**Observed behavior:** /
+**Observed behavior:** 
 
 What did you see instead?  Describe your issue in detail here.
 
