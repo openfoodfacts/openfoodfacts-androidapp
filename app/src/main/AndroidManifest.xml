@@ -59,10 +59,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.MainActivity" />
         </activity>
-        <activity android:name=".views.LoginActivity">
+        <activity
+            android:name=".views.LoginActivity"
+            android:parentActivityName=".views.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:parentActivityName=".views.MainActivity"
                 android:value=".views.MainActivity" />
         </activity>
         <activity
