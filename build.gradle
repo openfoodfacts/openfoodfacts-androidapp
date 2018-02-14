@@ -57,7 +57,7 @@ ext {
     apacheValidatorVersion = '1.6'
 
     loadToastVersion = '1.0.12'
-    zoomingImgVersion = '2.0.0'
+    zoomingImgVersion = '2.1.3'
     materialDialogVersion = '0.9.6.0'
     fabVersion = '1.6.4'
 
