@@ -189,7 +189,8 @@ dependencies {
     implementation "com.mikepenz:google-material-typeface:$rootProject.googleMaterialFontVersion"
     implementation "com.mikepenz:material-design-iconic-typeface:$rootProject.materialFontVersion"
     implementation "com.mikepenz:fontawesome-typeface:$rootProject.awesomeFontVersion"
-
+    //BottomBar
+    compile 'it.sephiroth.android.library.bottomnavigation:bottom-navigation:2.0.1-rc1'
     //Testing
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
