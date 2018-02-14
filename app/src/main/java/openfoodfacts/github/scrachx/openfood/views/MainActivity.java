@@ -252,9 +252,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                 new MaterialDialog.Builder(MainActivity.this)
                                         .title(R.string.contribute)
                                         .content(R.string.contribution_without_account)
-                                        .positiveText(R.string.txtOk)
+                                        .positiveText(R.string.create_account_button)
                                         .negativeText(R.string.cancel_button)
+                                        .neutralText(R.string.login_button)
                                         .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R.string.website) + "cgi/user.pl"), new WebViewFallback()))
+                                        .onNeutral((dialog, which) -> startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LOGIN_REQUEST))
                                         .show();
                             }
                             break;
