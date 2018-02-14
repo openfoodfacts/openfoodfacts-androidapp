@@ -40,6 +40,7 @@ import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
+import android.support.v7.app.AlertDialog;
 
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -261,7 +262,26 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             }
                             break;
                         case LOGOUT:
-                            logout();
+                             AlertDialog.Builder myAlertBuilder = new
+                                    AlertDialog.Builder(MainActivity.this);
+                            myAlertBuilder.setTitle("Alert");
+                            myAlertBuilder.setMessage("Click OK to logout, or Cancel to stop:");
+                            myAlertBuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    logout(); // User clicked OK button.
+
+                                }
+                            });
+                            myAlertBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // User clicked the CANCEL button.
+                                    Toast.makeText(getApplicationContext(),R.string.pressed_cancel,
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                            // Create and show the AlertDialog.
+                            myAlertBuilder.show();
                             break;
                         default:
                             // nothing to do
