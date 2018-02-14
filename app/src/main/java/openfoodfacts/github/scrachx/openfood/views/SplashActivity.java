@@ -90,6 +90,7 @@ public class SplashActivity extends BaseActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             lt.setText(activity.getString(R.string.toast_retrieving));
+             lt.setTranslationY(1000);
             lt.setBackgroundColor(ContextCompat.getColor(SplashActivity.this,R.color.blue));
             lt.setTextColor(ContextCompat.getColor(SplashActivity.this,R.color.white));
             lt.show();
