@@ -26,110 +26,6 @@
     <item>жидкая унция</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>en</item>
-    <item>fr</item>
-    <item>es</item>
-    <item>it</item>
-    <item>de</item>
-    <item>ja</item>
-    <item>ru</item>
-    <item>pt</item>
-    <item>sv</item>
-    <item>my</item>
-    <item>kk</item>
-    <item>hy</item>
-    <item>el</item>
-    <item>he</item>
-    <item>gl</item>
-    <item>ca</item>
-    <item>cs</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-rBR</item>
-    <item>ro</item>
-    <item>sv</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-rCN</item>
-    <item>fa</item>
-    <item>rs</item>
-    <item>af</item>
-    <item>ak</item>
-    <item>am</item>
-    <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
-    <item>hu</item>
-    <item>tr</item>
-    <item>id</item>
-    <item>tl</item>
-    <item>fil</item>
-    <item>nl-rBE</item>
-    <item>bn</item>
-    <item>sl</item>
-    <item>ku</item>
-    <item>eo</item>
-    <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>Английский</item>
-    <item>Французский</item>
-    <item>Испанский</item>
-    <item>Итальянский</item>
-    <item>Немецкий</item>
-    <item>Японский</item>
-    <item>Русский</item>
-    <item>Португальский</item>
-    <item>Шведский</item>
-    <item>Бирманский</item>
-    <item>Казахский</item>
-    <item>Армянский</item>
-    <item>Греческий</item>
-    <item>Иврит</item>
-    <item>Галисийский</item>
-    <item>Каталанский</item>
-    <item>Чешский</item>
-    <item>Арабский</item>
-    <item>Финский</item>
-    <item>Хинди</item>
-    <item>Кабильский</item>
-    <item>Корейский</item>
-    <item>Латышский</item>
-    <item>Голландский</item>
-    <item>Португальский (Бразилия)</item>
-    <item>Румынский</item>
-    <item>Шведский</item>
-    <item>Китайский</item>
-    <item>Норвежский (Букмол)</item>
-    <item>Датский</item>
-    <item>Китайский (упрощенный)</item>
-    <item>Фарси</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>Венгерский</item>
-    <item>Turkish</item>
-    <item>Индонезийский</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>Словенский</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>Польский</item>
-  </string-array>
   <string-array name="images_array">
     <item>По умолчанию</item>
     <item>Пищевая ценность</item>
@@ -176,7 +72,6 @@
   <string name="txtSalt">Соль</string>
   <string name="txtFat">Жир</string>
   <string name="txtSugars">Сахара</string>
-  <string name="txtSaturatedFat">Насыщенные жиры</string>
   <string name="hintBarcode">Штрих-код</string>
   <string name="hintLogin">Логин</string>
   <string name="hintPass">Пароль</string>
@@ -224,7 +119,7 @@
   <string name="search_drawer">Поиск</string>
   <string name="search_by_barcode_drawer">Поиск по штрих-коду</string>
   <string name="category_drawer">Категории</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Категория</string>
   <string name="search_by_name_drawer">Поиск по названию</string>
   <string name="scan_search">Сканировать</string>
   <string name="user_drawer">Пользователь</string>
@@ -377,4 +272,5 @@
   <string name="take_picture_front">Сделайте общее фото</string>
   <string name="take_picture_nutrition_table">Сделайте фото энерг. ценности</string>
   <string name="take_more_pictures">Сделайте дополнительные фото</string>
+  <string name="txtSaturatedFat">Насыщенные жиры</string>
 </resources>

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -106,8 +107,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         final LoadToast lt = new LoadToast(this);
         save.setClickable(false);
         lt.setText(getString(R.string.toast_retrieving));
-        lt.setBackgroundColor(getResources().getColor(R.color.blue));
-        lt.setTextColor(getResources().getColor(R.color.white));
+        lt.setBackgroundColor(ContextCompat.getColor(this,R.color.blue));
+        lt.setTextColor(ContextCompat.getColor(this,R.color.white));
         lt.show();
 
         final Activity context = this;

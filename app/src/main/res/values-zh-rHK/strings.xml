@@ -26,110 +26,6 @@
     <item>液量盎司</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>en</item>
-    <item>fr</item>
-    <item>es</item>
-    <item>it</item>
-    <item>de</item>
-    <item>ja</item>
-    <item>ru</item>
-    <item>pt</item>
-    <item>sv</item>
-    <item>my</item>
-    <item>kk</item>
-    <item>hy</item>
-    <item>el</item>
-    <item>he</item>
-    <item>gl</item>
-    <item>ca</item>
-    <item>cs</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-rBR</item>
-    <item>ro</item>
-    <item>sv</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-rCN</item>
-    <item>fa</item>
-    <item>rs</item>
-    <item>af</item>
-    <item>ak</item>
-    <item>am</item>
-    <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
-    <item>hu</item>
-    <item>tr</item>
-    <item>id</item>
-    <item>tl</item>
-    <item>fil</item>
-    <item>nl-rBE</item>
-    <item>bn</item>
-    <item>sl</item>
-    <item>ku</item>
-    <item>eo</item>
-    <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>英語</item>
-    <item>法語</item>
-    <item>西班牙語</item>
-    <item>義大利語</item>
-    <item>德語</item>
-    <item>日語</item>
-    <item>俄語</item>
-    <item>葡萄牙語</item>
-    <item>瑞典語</item>
-    <item>緬甸語</item>
-    <item>哈薩克語</item>
-    <item>亞美尼亞語</item>
-    <item>希臘語</item>
-    <item>希伯來語</item>
-    <item>加里西亞語</item>
-    <item>加泰隆尼亞語</item>
-    <item>捷克語</item>
-    <item>阿拉伯語</item>
-    <item>芬蘭語</item>
-    <item>印地語</item>
-    <item>卡拜爾語</item>
-    <item>韓語</item>
-    <item>拉脫維亞語</item>
-    <item>荷蘭語</item>
-    <item>巴西葡萄牙語</item>
-    <item>羅馬尼亞語</item>
-    <item>瑞典語</item>
-    <item>漢語</item>
-    <item>挪威語 (博克馬爾)</item>
-    <item>丹麥語</item>
-    <item>簡體中文</item>
-    <item>波斯語</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>匈牙利語</item>
-    <item>Turkish</item>
-    <item>印尼語</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>斯洛文尼亞語</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>波蘭語</item>
-  </string-array>
   <string-array name="images_array">
     <item>預設值</item>
     <item>營養成分</item>
@@ -176,7 +72,6 @@
   <string name="txtSalt">鹽</string>
   <string name="txtFat">脂肪</string>
   <string name="txtSugars">糖</string>
-  <string name="txtSaturatedFat">飽和脂肪</string>
   <string name="hintBarcode">條碼</string>
   <string name="hintLogin">登入</string>
   <string name="hintPass">密碼</string>
@@ -224,7 +119,7 @@
   <string name="search_drawer">搜尋</string>
   <string name="search_by_barcode_drawer">輸入條碼</string>
   <string name="category_drawer">類別</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">分類</string>
   <string name="search_by_name_drawer">透過名稱搜尋</string>
   <string name="scan_search">掃描條碼</string>
   <string name="user_drawer">使用者</string>
@@ -377,4 +272,5 @@
   <string name="take_picture_front">拍攝正面的照片</string>
   <string name="take_picture_nutrition_table">拍攝營養成份表的照片</string>
   <string name="take_more_pictures">拍攝更多照片</string>
+  <string name="txtSaturatedFat">飽和脂肪</string>
 </resources>

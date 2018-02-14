@@ -97,6 +97,8 @@ public class SearchProductsResultsFragment extends BaseFragment {
 
         searchProduct(view);
 
+        noResultsLayout = view.findViewById(R.id.noResultsLayout);
+        noResultsLayout.setVisibility(View.INVISIBLE);
         progressBar = view.findViewById(R.id.progressBar);
         showProgressBar();
     }

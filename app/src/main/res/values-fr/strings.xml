@@ -26,76 +26,6 @@
     <item>fl oz</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>en</item>
-    <item>fr</item>
-    <item>es</item>
-    <item>it</item>
-    <item>de</item>
-    <item>ja</item>
-    <item>ru</item>
-    <item>pt</item>
-    <item>sv</item>
-    <item>my</item>
-    <item>kk</item>
-    <item>hy</item>
-    <item>el</item>
-    <item>he</item>
-    <item>gl</item>
-    <item>ca</item>
-    <item>cs</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-rBR</item>
-    <item>ro</item>
-    <item>sv</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-rCN</item>
-    <item>fa</item>
-    <item>rs</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>Anglais</item>
-    <item>Français</item>
-    <item>Espagnol</item>
-    <item>Italien</item>
-    <item>Allemand</item>
-    <item>Japonais</item>
-    <item>Russe</item>
-    <item>Portugais</item>
-    <item>Suédois</item>
-    <item>Birman</item>
-    <item>Kazakh</item>
-    <item>Arménien</item>
-    <item>Grec</item>
-    <item>Hébreu</item>
-    <item>Galicien</item>
-    <item>Catalan</item>
-    <item>Tchèque</item>
-    <item>Arabe</item>
-    <item>Finnois</item>
-    <item>Hindi</item>
-    <item>Kabyle</item>
-    <item>Coréen</item>
-    <item>Letton</item>
-    <item>Néerlandais</item>
-    <item>Portugais brésilien</item>
-    <item>Roumain</item>
-    <item>Suédois</item>
-    <item>Chinois</item>
-    <item>Norvégien (Bokmål)</item>
-    <item>Danois</item>
-    <item>Chinois simplifié</item>
-    <item>Farsi</item>
-    <item>Serbe</item>
-  </string-array>
   <string-array name="images_array">
     <item>Defaut</item>
     <item>Nutrition</item>
@@ -142,8 +72,7 @@
   <string name="txtSalt">Sel</string>
   <string name="txtFat">Matières grasses</string>
   <string name="txtSugars">Sucres</string>
-  <string name="txtSaturatedFat">Graisses saturées</string>
-  <string name="hintBarcode">Code barre</string>
+    <string name="hintBarcode">Code barre</string>
   <string name="hintLogin">Connexion</string>
   <string name="hintPass">Mot de passe</string>
   <string name="errorLogin">Identifiant ou mot de passe incorrect</string>

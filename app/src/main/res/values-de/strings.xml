@@ -26,110 +26,6 @@
     <item>fl.oz.</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>en</item>
-    <item>fr</item>
-    <item>es</item>
-    <item>it</item>
-    <item>de</item>
-    <item>ja</item>
-    <item>ru</item>
-    <item>pt</item>
-    <item>sv</item>
-    <item>my</item>
-    <item>kk</item>
-    <item>hy</item>
-    <item>el</item>
-    <item>he</item>
-    <item>gl</item>
-    <item>ca</item>
-    <item>cs</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-rBR</item>
-    <item>ro</item>
-    <item>sv</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-rCN</item>
-    <item>fa</item>
-    <item>rs</item>
-    <item>af</item>
-    <item>ak</item>
-    <item>am</item>
-    <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
-    <item>hu</item>
-    <item>tr</item>
-    <item>id</item>
-    <item>tl</item>
-    <item>fil</item>
-    <item>nl-rBE</item>
-    <item>bn</item>
-    <item>sl</item>
-    <item>ku</item>
-    <item>eo</item>
-    <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>Englisch</item>
-    <item>Französisch</item>
-    <item>Spanisch</item>
-    <item>Italienisch</item>
-    <item>Deutsch</item>
-    <item>Japanisch</item>
-    <item>Russisch</item>
-    <item>Portugiesisch</item>
-    <item>Schwedisch</item>
-    <item>Burmesisch</item>
-    <item>Kasachisch</item>
-    <item>Armenisch</item>
-    <item>Griechisch</item>
-    <item>Hebräisch</item>
-    <item>Galizisch</item>
-    <item>Katalanisch</item>
-    <item>Tschechisch</item>
-    <item>Arabisch</item>
-    <item>Finnisch</item>
-    <item>Hindi</item>
-    <item>Kabylisch</item>
-    <item>Koreanisch</item>
-    <item>Lettisch</item>
-    <item>Niederländisch</item>
-    <item>Brasilianisches Portugiesisch</item>
-    <item>Rumänisch</item>
-    <item>Schwedisch</item>
-    <item>Chinesisch</item>
-    <item>Norwegisch (Bokmål)</item>
-    <item>Dänisch</item>
-    <item>Chinesisch (vereinfacht)</item>
-    <item>Farsi</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>Ungarisch</item>
-    <item>Turkish</item>
-    <item>Indonesisch</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>Slowenisch</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>Polnisch</item>
-  </string-array>
   <string-array name="images_array">
     <item>Standard</item>
     <item>Nährwerte</item>
@@ -176,7 +72,6 @@
   <string name="txtSalt">Salz</string>
   <string name="txtFat">Fett</string>
   <string name="txtSugars">Zucker</string>
-  <string name="txtSaturatedFat">Gesättigte Fette</string>
   <string name="hintBarcode">Strichcode</string>
   <string name="hintLogin">Benutzername</string>
   <string name="hintPass">Passwort</string>
@@ -249,7 +144,7 @@
   <string name="info_download_data">Um diese Funktion zu aktivieren, müssen einige Daten heruntergeladen werden. Bitte drücken Sie Ja, um den Download zu starten.</string>
   <string name="info_download_data_connection">Um diese Funktion zu aktivieren, müssen einige Daten heruntergeladen werden. Bitte aktivieren Sie Ihre Internetverbindung.</string>
   <string name="msg_input_empty">Bitte zuerst die Felder ausfüllen</string>
-  <string name="new_offline_info">Nehmen Sie bitte Bilder vom Produkt, den Zutaten, den Nährwertangaben und jeder anderen Information auf dem Etikett auf. Danke!</string>
+  <string name="new_offline_info">Machen Sie bitte Bilder vom Produkt, den Zutaten, den Nährwertangaben und jeder anderen Information auf dem Etikett. Danke!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Das Passwort muss mindestens 6 Zeichen lang sein.</string>
   <string name="error_field_required">Das Feld ist erforderlich.</string>
@@ -377,4 +272,5 @@
   <string name="take_picture_front">Mache ein Bild der Vorderseite</string>
   <string name="take_picture_nutrition_table">Mache ein Bild von der Ernährungstabelle</string>
   <string name="take_more_pictures">Mache mehr Bilder</string>
+  <string name="txtSaturatedFat">Gesättigte Fettsäuren</string>
 </resources>

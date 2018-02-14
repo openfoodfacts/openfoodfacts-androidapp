@@ -26,110 +26,6 @@
     <item>uncia</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>en</item>
-    <item>fr</item>
-    <item>es</item>
-    <item>it</item>
-    <item>de</item>
-    <item>ja</item>
-    <item>ru</item>
-    <item>pt</item>
-    <item>sv</item>
-    <item>my</item>
-    <item>kk</item>
-    <item>hy</item>
-    <item>el</item>
-    <item>he</item>
-    <item>gl</item>
-    <item>ca</item>
-    <item>cs</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-rBR</item>
-    <item>ro</item>
-    <item>sv</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-rCN</item>
-    <item>fa</item>
-    <item>rs</item>
-    <item>af</item>
-    <item>ak</item>
-    <item>am</item>
-    <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
-    <item>hu</item>
-    <item>tr</item>
-    <item>id</item>
-    <item>tl</item>
-    <item>fil</item>
-    <item>nl-rBE</item>
-    <item>bn</item>
-    <item>sl</item>
-    <item>ku</item>
-    <item>eo</item>
-    <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>Angol</item>
-    <item>Francia</item>
-    <item>Spanyol</item>
-    <item>Olasz</item>
-    <item>Német</item>
-    <item>Japán</item>
-    <item>Orosz</item>
-    <item>Portugál</item>
-    <item>Svéd</item>
-    <item>Burmai</item>
-    <item>Kazah</item>
-    <item>Örmény</item>
-    <item>Görög</item>
-    <item>Héber</item>
-    <item>Galíciai</item>
-    <item>Katalán</item>
-    <item>Cseh</item>
-    <item>Arab</item>
-    <item>Finn</item>
-    <item>Hindi</item>
-    <item>Kabil</item>
-    <item>Koreai</item>
-    <item>Lett</item>
-    <item>Holland</item>
-    <item>Brazil portugál</item>
-    <item>Román</item>
-    <item>Svéd</item>
-    <item>Kínai</item>
-    <item>Norvég (Bokmål)</item>
-    <item>Dán</item>
-    <item>Egyszerűsített kínai</item>
-    <item>Perzsa</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>Magyar</item>
-    <item>Turkish</item>
-    <item>Indonéz</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>Szlovén</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>Lengyel</item>
-  </string-array>
   <string-array name="images_array">
     <item>Alapértelmezett</item>
     <item>Tápanyag</item>
@@ -176,7 +72,6 @@
   <string name="txtSalt">Só</string>
   <string name="txtFat">Zsír</string>
   <string name="txtSugars">Cukrok</string>
-  <string name="txtSaturatedFat">Telített zsírsavak</string>
   <string name="hintBarcode">Vonalkód</string>
   <string name="hintLogin">Bejelentkezés</string>
   <string name="hintPass">Jelszó</string>
@@ -377,4 +272,5 @@
   <string name="take_picture_front">Kép készítése a termék csomagolásáról</string>
   <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
   <string name="take_more_pictures">További képek készítése</string>
+  <string name="txtSaturatedFat">Telített zsír</string>
 </resources>

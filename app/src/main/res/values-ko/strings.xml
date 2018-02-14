@@ -26,110 +26,6 @@
     <item>fl oz</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>영어</item>
-    <item>프랑스어</item>
-    <item>스페인어</item>
-    <item>이탈리아어</item>
-    <item>de</item>
-    <item>일본어</item>
-    <item>러시아어</item>
-    <item>포르투갈어</item>
-    <item>스웨덴어</item>
-    <item>말레이시아</item>
-    <item>kk</item>
-    <item>hy</item>
-    <item>el</item>
-    <item>he</item>
-    <item>gl</item>
-    <item>ca</item>
-    <item>cs</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-rBR</item>
-    <item>ro</item>
-    <item>스웨덴어</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-rCN</item>
-    <item>fa</item>
-    <item>rs</item>
-    <item>af</item>
-    <item>ak</item>
-    <item>am</item>
-    <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
-    <item>hu</item>
-    <item>tr</item>
-    <item>id</item>
-    <item>tl</item>
-    <item>fil</item>
-    <item>nl-rBE</item>
-    <item>bn</item>
-    <item>sl</item>
-    <item>ku</item>
-    <item>eo</item>
-    <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>영어</item>
-    <item>프랑스어</item>
-    <item>스페인어</item>
-    <item>이탈리아어</item>
-    <item>독일어</item>
-    <item>일본어</item>
-    <item>러시아어</item>
-    <item>포르투갈어</item>
-    <item>스웨덴어</item>
-    <item>Burmese</item>
-    <item>Kazakh</item>
-    <item>아르메니아어</item>
-    <item>그리스어</item>
-    <item>히브리어</item>
-    <item>갈리시아어</item>
-    <item>Catalan</item>
-    <item>Czech</item>
-    <item>Arabic</item>
-    <item>Finnish</item>
-    <item>Hindi</item>
-    <item>Kabyle</item>
-    <item>한국어</item>
-    <item>Latvian</item>
-    <item>Dutch</item>
-    <item>Brazilian portuguese</item>
-    <item>Romanian</item>
-    <item>스웨덴어</item>
-    <item>Chinese</item>
-    <item>Norwegian (Bokmal)</item>
-    <item>Danish</item>
-    <item>Simplified Chinese</item>
-    <item>Farsi</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>Hungarian</item>
-    <item>Turkish</item>
-    <item>Indonesian</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>Slovenian</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>Polish</item>
-  </string-array>
   <string-array name="images_array">
     <item>Default</item>
     <item>영양</item>
@@ -176,7 +72,6 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
-  <string name="txtSaturatedFat">Satured fat</string>
   <string name="hintBarcode">바코드</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">암호</string>
@@ -377,4 +272,5 @@
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
+  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>

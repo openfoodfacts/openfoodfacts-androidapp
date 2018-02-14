@@ -26,110 +26,6 @@
     <item>fl oz</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>en</item>
-    <item>fr</item>
-    <item>es</item>
-    <item>it</item>
-    <item>de</item>
-    <item>ja</item>
-    <item>ru</item>
-    <item>pt</item>
-    <item>sv</item>
-    <item>my</item>
-    <item>kk</item>
-    <item>hy</item>
-    <item>el</item>
-    <item>he</item>
-    <item>gl</item>
-    <item>ca</item>
-    <item>cs</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-rBR</item>
-    <item>ro</item>
-    <item>sv</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-rCN</item>
-    <item>fa</item>
-    <item>rs</item>
-    <item>af</item>
-    <item>ak</item>
-    <item>am</item>
-    <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
-    <item>hu</item>
-    <item>tr</item>
-    <item>id</item>
-    <item>tl</item>
-    <item>fil</item>
-    <item>nl-rBE</item>
-    <item>bn</item>
-    <item>sl</item>
-    <item>ku</item>
-    <item>eo</item>
-    <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>Engelska</item>
-    <item>Franska</item>
-    <item>Spanska</item>
-    <item>Italienska</item>
-    <item>Tyska</item>
-    <item>Japanska</item>
-    <item>Ryska</item>
-    <item>Portugisiska</item>
-    <item>Svenska</item>
-    <item>Burmesiska</item>
-    <item>Kazakiska</item>
-    <item>Armeniska</item>
-    <item>Grekiska</item>
-    <item>Hebreiska</item>
-    <item>Galiciska</item>
-    <item>Katalanska</item>
-    <item>Tjeckiska</item>
-    <item>Arabiska</item>
-    <item>Finska</item>
-    <item>Hindi</item>
-    <item>Kabyle</item>
-    <item>Koreanska</item>
-    <item>Lettiska</item>
-    <item>Nederländska</item>
-    <item>Brasiliansk portugisiska</item>
-    <item>Rumänska</item>
-    <item>Svenska</item>
-    <item>Kinesiska</item>
-    <item>Norska (bokmål)</item>
-    <item>Danska</item>
-    <item>Simplified Chinese</item>
-    <item>Farsi</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>Ungerska</item>
-    <item>Turkish</item>
-    <item>Indonesiska</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>Slovenska</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>Polska</item>
-  </string-array>
   <string-array name="images_array">
     <item>Standard</item>
     <item>Näring</item>
@@ -176,7 +72,6 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fett</string>
   <string name="txtSugars">Socker</string>
-  <string name="txtSaturatedFat">Mättat fett</string>
   <string name="hintBarcode">Streckkod</string>
   <string name="hintLogin">Logga in</string>
   <string name="hintPass">Lösenord</string>
@@ -377,4 +272,5 @@
   <string name="take_picture_front">Ta en bild på framsidan</string>
   <string name="take_picture_nutrition_table">Ta en bild av näringstabellen</string>
   <string name="take_more_pictures">Ta fler bilder</string>
+  <string name="txtSaturatedFat">Mättat fett</string>
 </resources>

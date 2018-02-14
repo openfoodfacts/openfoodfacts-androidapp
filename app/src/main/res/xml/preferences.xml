@@ -14,8 +14,6 @@
     <ListPreference
         android:defaultValue="en"
         android:dialogTitle="Choose language"
-        android:entries="@array/lang_label_array"
-        android:entryValues="@array/lang_array"
         android:key="Locale.Helper.Selected.Language"
         android:summary="@string/prefs_language_summary"
         android:title="@string/prefs_language" />

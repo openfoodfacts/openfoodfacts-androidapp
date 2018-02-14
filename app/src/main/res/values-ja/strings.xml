@@ -26,110 +26,6 @@
     <item>液量オンス</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>en</item>
-    <item>fr</item>
-    <item>es</item>
-    <item>it</item>
-    <item>de</item>
-    <item>ja</item>
-    <item>ru</item>
-    <item>pt</item>
-    <item>sv</item>
-    <item>my</item>
-    <item>kk</item>
-    <item>hy</item>
-    <item>el</item>
-    <item>he</item>
-    <item>gl</item>
-    <item>ca</item>
-    <item>cs</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-rBR</item>
-    <item>ro</item>
-    <item>sv</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-rCN</item>
-    <item>fa</item>
-    <item>rs</item>
-    <item>af</item>
-    <item>ak</item>
-    <item>am</item>
-    <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
-    <item>hu</item>
-    <item>tr</item>
-    <item>id</item>
-    <item>tl</item>
-    <item>fil</item>
-    <item>nl-rBE</item>
-    <item>bn</item>
-    <item>sl</item>
-    <item>ku</item>
-    <item>eo</item>
-    <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>英語</item>
-    <item>フランス語</item>
-    <item>スペイン語</item>
-    <item>イタリア語</item>
-    <item>ドイツ語</item>
-    <item>日本語</item>
-    <item>ロシア語</item>
-    <item>ポルトガル語</item>
-    <item>スウェーデン語</item>
-    <item>ビルマ語</item>
-    <item>カザフ語</item>
-    <item>アルメニア語</item>
-    <item>ギリシャ語</item>
-    <item>ヘブライ語</item>
-    <item>ガリシア語</item>
-    <item>カタロニア語</item>
-    <item>チェコ語</item>
-    <item>アラビア語</item>
-    <item>フィンランド語</item>
-    <item>ヒンディー語</item>
-    <item>カビル語</item>
-    <item>朝鮮語</item>
-    <item>ラトビア語</item>
-    <item>オランダ語</item>
-    <item>ブラジルポルトガル語</item>
-    <item>ルーマニア語</item>
-    <item>スウェーデン語</item>
-    <item>中国語</item>
-    <item>ノルウェー語 (ブークモール)</item>
-    <item>デンマーク語</item>
-    <item>中国語（簡体字）</item>
-    <item>ペルシア語</item>
-    <item>セルビア語 (ラテン)</item>
-    <item>アフリカーンス語</item>
-    <item>アカン語</item>
-    <item>アムハラ語</item>
-    <item>アッサム語</item>
-    <item>中国語 (繁体字)</item>
-    <item>中国語 (繁体字、香港)</item>
-    <item>ハンガリー語</item>
-    <item>トルコ語</item>
-    <item>インドネシア語</item>
-    <item>タガログ語</item>
-    <item>フィリピン語</item>
-    <item>オランダ語 (ベルギー)</item>
-    <item>ベンガル語</item>
-    <item>スロベニア語</item>
-    <item>クルド語</item>
-    <item>エスペラント語</item>
-    <item>ポーランド語</item>
-  </string-array>
   <string-array name="images_array">
     <item>デフォルト</item>
     <item>栄養</item>
@@ -176,7 +72,6 @@
   <string name="txtSalt">食塩</string>
   <string name="txtFat">脂肪</string>
   <string name="txtSugars">砂糖</string>
-  <string name="txtSaturatedFat">飽和脂肪酸</string>
   <string name="hintBarcode">バーコード</string>
   <string name="hintLogin">ログイン</string>
   <string name="hintPass">パスワード</string>
@@ -377,4 +272,5 @@
   <string name="take_picture_front">正面の写真を撮ります</string>
   <string name="take_picture_nutrition_table">栄養成分表の写真を撮ります</string>
   <string name="take_more_pictures">もっと写真を撮ります</string>
+  <string name="txtSaturatedFat">飽和脂肪酸</string>
 </resources>

@@ -69,6 +69,8 @@ public class OpenFoodAPIClient {
 
     private final static OkHttpClient httpClient = new OkHttpClient.Builder()
             .connectTimeout(5000, TimeUnit.MILLISECONDS)
+            .readTimeout(30000, TimeUnit.MILLISECONDS)
+            .writeTimeout(30000, TimeUnit.MILLISECONDS)
             .build();
 
     private final OpenFoodAPIService apiService;

@@ -26,110 +26,6 @@
     <item>fl.oz</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>en</item>
-    <item>fr</item>
-    <item>es</item>
-    <item>it</item>
-    <item>de</item>
-    <item>ja</item>
-    <item>ru</item>
-    <item>pt</item>
-    <item>sv</item>
-    <item>my</item>
-    <item>kk</item>
-    <item>hy</item>
-    <item>el</item>
-    <item>he</item>
-    <item>gl</item>
-    <item>ca</item>
-    <item>cs</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-rBR</item>
-    <item>ro</item>
-    <item>sv</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-rCN</item>
-    <item>fa</item>
-    <item>rs</item>
-    <item>af</item>
-    <item>ak</item>
-    <item>am</item>
-    <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
-    <item>hu</item>
-    <item>tr</item>
-    <item>id</item>
-    <item>tl</item>
-    <item>fil</item>
-    <item>nl-rBE</item>
-    <item>bn</item>
-    <item>sl</item>
-    <item>ku</item>
-    <item>eo</item>
-    <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>Inggriss</item>
-    <item>bahasa,Perancis</item>
-    <item>Sepanyol</item>
-    <item>Italiaa</item>
-    <item>jerrman</item>
-    <item>Jepange</item>
-    <item>Rusiaan</item>
-    <item>Portugiss</item>
-    <item>Swediaa</item>
-    <item>Birmaa</item>
-    <item>Kazakhistan</item>
-    <item>Armeniaa</item>
-    <item>Yunanii</item>
-    <item>Ibranii</item>
-    <item>Galiciaan</item>
-    <item>Catalaan</item>
-    <item>Cekoo</item>
-    <item>Arabb</item>
-    <item>Finlandiaa</item>
-    <item>Hindii</item>
-    <item>Kabylee</item>
-    <item>Korea</item>
-    <item>Latviaa</item>
-    <item>Belandaa</item>
-    <item>brazil portugiss</item>
-    <item>Romania</item>
-    <item>Swediaa</item>
-    <item>China</item>
-    <item>Norwegia (Bokmal)</item>
-    <item>Denmarkk</item>
-    <item>Cina sederhana</item>
-    <item>Farsii</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>Hongaria</item>
-    <item>Turkish</item>
-    <item>bahasa Indonesia</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>Orang Slovenia</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>Polandia</item>
-  </string-array>
   <string-array name="images_array">
     <item>seperti semula</item>
     <item>kandungan nutrisi</item>
@@ -176,7 +72,6 @@
   <string name="txtSalt">garam</string>
   <string name="txtFat">lebar</string>
   <string name="txtSugars">saka</string>
-  <string name="txtSaturatedFat">lemak tidak sehat</string>
   <string name="hintBarcode">kode batang</string>
   <string name="hintLogin">masuk</string>
   <string name="hintPass">kata sandi anda</string>
@@ -225,7 +120,7 @@
   <string name="search_drawer">mencari </string>
   <string name="search_by_barcode_drawer">tipe kode batang</string>
   <string name="category_drawer">Kategori</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Kategori</string>
   <string name="search_by_name_drawer">mencari nama kamu</string>
   <string name="scan_search">memindai kode batang</string>
   <string name="user_drawer">pengguna</string>
@@ -378,4 +273,5 @@
   <string name="take_picture_front">mengambil gambar dari bahan ramuan</string>
   <string name="take_picture_nutrition_table">ambil gambar nutrisi</string>
   <string name="take_more_pictures">memfoto</string>
+  <string name="txtSaturatedFat">Lemak jenuh</string>
 </resources>

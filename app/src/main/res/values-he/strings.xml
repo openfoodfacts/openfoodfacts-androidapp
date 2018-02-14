@@ -26,110 +26,6 @@
     <item>אונקיה</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>en</item>
-    <item>fr</item>
-    <item>es</item>
-    <item>it</item>
-    <item>de</item>
-    <item>ja</item>
-    <item>ru</item>
-    <item>pt</item>
-    <item>sv</item>
-    <item>my</item>
-    <item>kk</item>
-    <item>hy</item>
-    <item>el</item>
-    <item>he</item>
-    <item>gl</item>
-    <item>ca</item>
-    <item>cs</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-rBR</item>
-    <item>ro</item>
-    <item>sv</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-rCN</item>
-    <item>fa</item>
-    <item>rs</item>
-    <item>af</item>
-    <item>ak</item>
-    <item>am</item>
-    <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
-    <item>hu</item>
-    <item>tr</item>
-    <item>id</item>
-    <item>tl</item>
-    <item>fil</item>
-    <item>nl-rBE</item>
-    <item>bn</item>
-    <item>sl</item>
-    <item>ku</item>
-    <item>eo</item>
-    <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>אנגלית</item>
-    <item>צרפתית</item>
-    <item>ספרדית</item>
-    <item>איטלקית</item>
-    <item>גרמנית</item>
-    <item>יפנית</item>
-    <item>רוסית</item>
-    <item>פורטוגלית</item>
-    <item>שבדית</item>
-    <item>בורמית</item>
-    <item>קזחית</item>
-    <item>ארמנית</item>
-    <item>יוונית</item>
-    <item>עברית</item>
-    <item>גליסית</item>
-    <item>קטלאנית</item>
-    <item>צ׳כית</item>
-    <item>ערבית</item>
-    <item>פינית</item>
-    <item>הינדי</item>
-    <item>קאבילה</item>
-    <item>קוריאנית</item>
-    <item>לטבית</item>
-    <item>הולנדית</item>
-    <item>פורטוגלית ברזילאית</item>
-    <item>רומנית</item>
-    <item>שבדית</item>
-    <item>סינית</item>
-    <item>נורבקית ספרותית</item>
-    <item>דנית</item>
-    <item>סינית מפושטת</item>
-    <item>פרסית</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>הונגרית</item>
-    <item>Turkish</item>
-    <item>אנדונזית</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>סלובנית</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>פולנית</item>
-  </string-array>
   <string-array name="images_array">
     <item>בררת מחדל</item>
     <item>תזונה</item>
@@ -176,7 +72,6 @@
   <string name="txtSalt">מלח</string>
   <string name="txtFat">שומן</string>
   <string name="txtSugars">סוכרים</string>
-  <string name="txtSaturatedFat">שומן רווי</string>
   <string name="hintBarcode">ברקוד</string>
   <string name="hintLogin">שם משתמש</string>
   <string name="hintPass">ססמה</string>
@@ -224,7 +119,7 @@
   <string name="search_drawer">חיפוש</string>
   <string name="search_by_barcode_drawer">חיפוש לפי ברקוד</string>
   <string name="category_drawer">קטגוריות</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">קטגוריה</string>
   <string name="search_by_name_drawer">חיפוש לפי שם</string>
   <string name="scan_search">סריקה</string>
   <string name="user_drawer">משתמש</string>
@@ -325,8 +220,8 @@
   <string name="nutrition_chlore">כלור</string>
   <string name="nutrition_magnesium">מגנזיום</string>
   <string name="nutrition_taurine">טאורין</string>
-  <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-  <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+  <string name="nutrition_monounsaturatedFat">שומן חד בלתי רווי</string>
+  <string name="nutrition_polyunsaturatedFat">שומן רב בלתי רווי</string>
   <string name="nutrition_omega3">אומגה 3</string>
   <string name="nutrition_omega6">אומגה 6</string>
   <string name="nutrition_omega9">אומגה 9</string>
@@ -377,4 +272,5 @@
   <string name="take_picture_front">צילום תמונה של החזית</string>
   <string name="take_picture_nutrition_table">צילום תמונה של טבלת הערכים</string>
   <string name="take_more_pictures">צילום תמונות נוספות</string>
+  <string name="txtSaturatedFat">Saturated fat</string>
 </resources>

@@ -245,6 +245,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         case CONTRIBUTOR:
                             SharedPreferences preferences1 = getSharedPreferences("login", 0);
                             String userLogin1 = preferences1.getString("user", null);
+                            userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin1);
                             if (isNotEmpty(userLogin1)) {
                                 CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, userContributeUri, new WebViewFallback());
                             } else {

@@ -26,110 +26,6 @@
     <item>فلوريدا أوقية</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>en</item>
-    <item>fr</item>
-    <item>es</item>
-    <item>it</item>
-    <item>de</item>
-    <item>ja</item>
-    <item>ru</item>
-    <item>pt</item>
-    <item>sv</item>
-    <item>my</item>
-    <item>kk</item>
-    <item>hy</item>
-    <item>el</item>
-    <item>he</item>
-    <item>gl</item>
-    <item>ca</item>
-    <item>cs</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-rBR</item>
-    <item>ro</item>
-    <item>sv</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-rCN</item>
-    <item>fa</item>
-    <item>rs</item>
-    <item>af</item>
-    <item>ak</item>
-    <item>am</item>
-    <item>as</item>
-    <item>zh-rTW</item>
-    <item>zh-rHK</item>
-    <item>hu</item>
-    <item>tr</item>
-    <item>id</item>
-    <item>tl</item>
-    <item>fil</item>
-    <item>nl-rBE</item>
-    <item>bn</item>
-    <item>sl</item>
-    <item>ku</item>
-    <item>eo</item>
-    <item>pl</item>
-  </string-array>
-  <string-array name="lang_label_array">
-    <item>الإنجليزية</item>
-    <item>الفرنسية</item>
-    <item>الإسبانية</item>
-    <item>الإيطالية</item>
-    <item>الألمانية</item>
-    <item>اليابانية</item>
-    <item>الروسيَة</item>
-    <item>البرتغالية</item>
-    <item>السويديَة</item>
-    <item>البورميَة</item>
-    <item>الكازاخستانية</item>
-    <item>الأرمنية</item>
-    <item>اليونانيّة</item>
-    <item>العبريَة</item>
-    <item>الجاليكية</item>
-    <item>الكاتالونية</item>
-    <item>التشيكية</item>
-    <item>العربية</item>
-    <item>الفنلندية</item>
-    <item>الهندية</item>
-    <item>القبيلية</item>
-    <item>الكورية</item>
-    <item>اللاتفية</item>
-    <item>الهولندية</item>
-    <item>البرتغالية البرازيلية</item>
-    <item>الرومانية</item>
-    <item>السويديَة</item>
-    <item>الصينية</item>
-    <item>النرويجية (بوكمال)</item>
-    <item>الدانماركية</item>
-    <item>الصينية المبسطة</item>
-    <item>الفارسية</item>
-    <item>Serbian (Latin)</item>
-    <item>Afrikaans</item>
-    <item>Akan</item>
-    <item>Amharic</item>
-    <item>Assamese</item>
-    <item>Chinese Traditional</item>
-    <item>Chinese Traditional, Hong Kong</item>
-    <item>الهنغارية</item>
-    <item>Turkish</item>
-    <item>الإندونيسية</item>
-    <item>Tagalog</item>
-    <item>Filipino</item>
-    <item>Dutch, Belgium</item>
-    <item>Bengali</item>
-    <item>السلوفينية</item>
-    <item>Kurdish</item>
-    <item>Esperanto</item>
-    <item>البولندية</item>
-  </string-array>
   <string-array name="images_array">
     <item>الافتراضي</item>
     <item>التغذية</item>
@@ -176,7 +72,6 @@
   <string name="txtSalt">ملح</string>
   <string name="txtFat">الدهون</string>
   <string name="txtSugars">السكريات</string>
-  <string name="txtSaturatedFat">الدهون المشبعة</string>
   <string name="hintBarcode">الرمز الشريطي</string>
   <string name="hintLogin">تسجيل الدخول</string>
   <string name="hintPass">كلمة المرور</string>
@@ -377,4 +272,5 @@
   <string name="take_picture_front">التقط صورة للأمام</string>
   <string name="take_picture_nutrition_table">التقط صورة لجدول الحقائق الغذائية</string>
   <string name="take_more_pictures">التقط المزيد من الصور</string>
+  <string name="txtSaturatedFat">الدهون المشبعة</string>
 </resources>
