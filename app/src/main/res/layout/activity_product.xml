@@ -38,11 +38,12 @@
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="92dp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         app:itemBackground="@color/colorPrimary"
         app:itemIconTint="@color/white"
+        android:layout_marginBottom="-20dp"
         app:itemTextColor="@color/white"
         app:menu="@menu/bottombar_menu_items">
 
@@ -59,13 +60,7 @@
             android:elevation="20dp"
             app:layout_anchor="@+id/bottom_navigation"
             app:srcCompat="@drawable/barcode_white_24dp" />
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="10dp"
-    android:background="@color/colorPrimary"
-    android:elevation="-40dp"
-    android:layout_gravity="bottom"
-    />
+
     </android.support.design.widget.BottomNavigationView>
 
 
