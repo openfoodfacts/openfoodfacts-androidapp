@@ -91,7 +91,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         Utils.hideKeyboard(this);
 
-        final IProfile profile = getUserProfile();
+        final IProfile<ProfileDrawerItem> profile = getUserProfile();
         LocaleHelper.setLocale(this, LocaleHelper.getLanguage(this));
 
         setSupportActionBar(toolbar);
@@ -329,7 +329,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         customTabActivityHelper.mayLaunchUrl(userContributeUri, null, null);
     }
 
-    private IProfile getProfileSettingDrawerItem() {
+    private IProfile<ProfileSettingDrawerItem> getProfileSettingDrawerItem() {
         return new ProfileSettingDrawerItem()
                 .withName(getString(R.string.action_manage_account))
                 .withIcon(GoogleMaterial.Icon.gmd_settings)
@@ -396,7 +396,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchMenuItem.getActionView();
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        if (searchManager != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        }
 
         MenuItemCompat.setOnActionExpandListener(searchMenuItem, new MenuItemCompat.OnActionExpandListener() {
             @Override
@@ -451,21 +453,21 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
     }
 
-    private IDrawerItem getLogoutDrawerItem() {
+    private IDrawerItem<PrimaryDrawerItem, com.mikepenz.materialdrawer.model.AbstractBadgeableDrawerItem.ViewHolder> getLogoutDrawerItem() {
         return new PrimaryDrawerItem()
                 .withName(getString(R.string.logout_drawer))
                 .withIcon(GoogleMaterial.Icon.gmd_settings_power)
                 .withIdentifier(LOGOUT);
     }
 
-    private IDrawerItem getLoginDrawerItem() {
+    private IDrawerItem<PrimaryDrawerItem, com.mikepenz.materialdrawer.model.AbstractBadgeableDrawerItem.ViewHolder> getLoginDrawerItem() {
         return new PrimaryDrawerItem()
                 .withName(R.string.sign_in_drawer)
                 .withIcon(GoogleMaterial.Icon.gmd_account_circle)
                 .withIdentifier(LOGIN_ID);
     }
 
-    private IProfile getUserProfile() {
+    private IProfile<ProfileDrawerItem> getUserProfile() {
         String userLogin = getSharedPreferences("login", 0)
                 .getString("user", getResources().getString(R.string.txt_anonymous));
 
