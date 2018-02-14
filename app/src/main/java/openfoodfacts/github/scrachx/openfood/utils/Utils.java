@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Locale;
 
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
@@ -254,5 +255,21 @@ public class Utils {
 
     public static DaoSession getAppDaoSession(Activity activity) {
         return ((OFFApplication) activity.getApplication()).getDaoSession();
+    }
+
+    /**
+     * Check if the device has a camera installed.
+     * @return true if installed, false otherwise.
+     */
+    public static boolean isHardwareCameraInstalled(Context context) {
+        try {
+            if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+                return true;
+            }
+        } catch (NullPointerException e) {
+            if (BuildConfig.DEBUG) Log.i(context.getClass().getSimpleName(), e.toString());
+            return false;
+        }
+        return false;
     }
 }

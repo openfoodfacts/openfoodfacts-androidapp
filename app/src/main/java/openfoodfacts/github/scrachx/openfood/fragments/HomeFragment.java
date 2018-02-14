@@ -25,6 +25,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,20 +52,24 @@ public class HomeFragment extends BaseFragment {
 
     @OnClick(R.id.buttonScan)
     protected void OnScan() {
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
-                new MaterialDialog.Builder(getActivity())
-                        .title(R.string.action_about)
-                        .content(R.string.permission_camera)
-                        .neutralText(R.string.txtOk)
-                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
-                        .show();
+        if (Utils.isHardwareCameraInstalled(getContext())) {
+            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
+                    new MaterialDialog.Builder(getActivity())
+                            .title(R.string.action_about)
+                            .content(R.string.permission_camera)
+                            .neutralText(R.string.txtOk)
+                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                            .show();
+                } else {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                }
             } else {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                Intent intent = new Intent(getActivity(), ScannerFragmentActivity.class);
+                startActivity(intent);
             }
         } else {
-            Intent intent = new Intent(getActivity(), ScannerFragmentActivity.class);
-            startActivity(intent);
+            ((MainActivity)getContext()).moveToBarcodeEntry();
         }
     }
 
