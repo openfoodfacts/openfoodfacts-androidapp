@@ -60,5 +60,5 @@
             app:srcCompat="@drawable/barcode_white_24dp" />
 
     </android.support.design.widget.BottomNavigationView>
-    
+
 </android.support.design.widget.CoordinatorLayout>
