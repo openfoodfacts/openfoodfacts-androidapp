@@ -510,7 +510,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             newFragment.setArguments(args);
 
             transaction.replace(R.id.fragment_container, newFragment);
-            transaction.addToBackStack(null);
             transaction.commit();
         }
     }
