@@ -107,7 +107,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         final LoadToast lt = new LoadToast(this);
         save.setClickable(false);
         lt.setText(getString(R.string.toast_retrieving));
-        lt.setTranslationY(100);
+        lt.setTranslationY(1000);
         lt.setBackgroundColor(ContextCompat.getColor(this,R.color.blue));
         lt.setTextColor(ContextCompat.getColor(this,R.color.white));
         lt.show();
