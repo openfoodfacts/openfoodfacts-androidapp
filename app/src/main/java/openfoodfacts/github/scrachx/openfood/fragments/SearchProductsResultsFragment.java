@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -156,7 +157,6 @@ public class SearchProductsResultsFragment extends BaseFragment {
     public void loadNextDataFromApi(int offset) {
         api.searchProduct(getArguments().getString("query"), offset, getActivity(),
                 new OpenFoodAPIClient.OnProductsCallback() {
-
                     @Override
                     public void onProductsResponse(boolean isResponseOk, List<Product> products, int countProducts) {
                         final int posStart = mProducts.size();
