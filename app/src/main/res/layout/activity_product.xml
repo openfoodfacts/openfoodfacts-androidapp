@@ -47,15 +47,12 @@
         android:layout_marginBottom="-15dp"
         app:menu="@menu/bottombar_menu_items">
 
-
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/buttonScan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_gravity="right"
             android:layout_marginRight="7dp"
-
             android:contentDescription="@string/try_it_scan_now"
             android:elevation="20dp"
             android:layout_marginBottom="20dp"
@@ -63,5 +60,5 @@
             app:srcCompat="@drawable/barcode_white_24dp" />
 
     </android.support.design.widget.BottomNavigationView>
-
+    
 </android.support.design.widget.CoordinatorLayout>
