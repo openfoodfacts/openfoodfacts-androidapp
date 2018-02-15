@@ -3,6 +3,7 @@
 
 
     <!-- Basic OpenFoodFacts colors -->
+    <color name="black">#FF000000</color>
     <color name="green">#00D400</color>
     <color name="blue">#0066FF</color>
     <color name="orange">#FFCC00</color>
