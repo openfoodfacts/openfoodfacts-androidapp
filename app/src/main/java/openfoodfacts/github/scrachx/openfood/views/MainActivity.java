@@ -332,6 +332,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     private IProfile<ProfileSettingDrawerItem> getProfileSettingDrawerItem() {
+        SharedPreferences preferences = getSharedPreferences("login", 0);
+        String userLogin = preferences.getString("user", null);
+        String userSession = preferences.getString("user_session", null);
+        userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin + "&user_session=" + userSession);
+        customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null);
         return new ProfileSettingDrawerItem()
                 .withName(getString(R.string.action_manage_account))
                 .withIcon(GoogleMaterial.Icon.gmd_settings)
@@ -345,11 +350,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * Remove user login info
      */
     private void logout() {
-        getSharedPreferences("login", 0).edit().clear().apply();
-
+        getSharedPreferences("login", 0).edit().clear().commit();
         headerResult.removeProfileByIdentifier(PROFILE_SETTING);
-        headerResult.setActiveProfile(getUserProfile());
-
+        headerResult.updateProfile(getUserProfile());
         result.addItemAtPosition(getLoginDrawerItem(), result.getPosition(CONTRIBUTOR));
         result.removeItem(LOGOUT);
     }
@@ -361,7 +364,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 if (resultCode == RESULT_OK) {
                     result.removeItem(LOGIN_ID);
                     result.addItemsAtPosition(result.getPosition(CONTRIBUTOR), getLogoutDrawerItem());
-                    headerResult.setActiveProfile(getUserProfile());
+                    headerResult.updateProfile(getUserProfile());
                     headerResult.addProfiles(getProfileSettingDrawerItem());
                 }
                 break;
