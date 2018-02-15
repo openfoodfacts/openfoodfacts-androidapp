@@ -5,7 +5,7 @@
     android:background="@android:color/black"
     android:orientation="vertical">
 
-    <ImageView
+    <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/imageViewFullScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
