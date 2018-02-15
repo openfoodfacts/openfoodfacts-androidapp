@@ -3,7 +3,6 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.Toast;
 
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
@@ -26,7 +25,6 @@ public class FullScreenImage extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_full_screen_image);
-        Toast.makeText(this,"ey",Toast.LENGTH_SHORT).show();
         Intent intent = getIntent();
         String imageurl = intent.getExtras().getString("imageurl");
 
