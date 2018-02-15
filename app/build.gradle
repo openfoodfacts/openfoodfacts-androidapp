@@ -3,7 +3,7 @@ apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.0'
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
@@ -201,7 +201,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.1'
-    androidTestImplementation('com.android.support.test.espresso:espresso-contrib:2.2.2') {
+    androidTestImplementation('com.android.support.test.espresso:espresso-contrib:3.0.1') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'com.android.support', module: 'design'
