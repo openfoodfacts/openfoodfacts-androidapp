@@ -1,16 +1,17 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Context;
-import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v7.content.res.AppCompatResources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NavDrawerItem;
 
@@ -19,7 +20,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<NavDrawerItem> navDrawerItems;
 
-    public NavDrawerListAdapter(Context context, ArrayList<NavDrawerItem> navDrawerItems){
+    public NavDrawerListAdapter(Context context, ArrayList<NavDrawerItem> navDrawerItems) {
         this.context = context;
         this.navDrawerItems = navDrawerItems;
     }
@@ -50,7 +51,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
 
-        imgIcon.setImageDrawable(VectorDrawableCompat.create(context.getResources(), navDrawerItems.get(position).getIcon(), null));
+        imgIcon.setImageDrawable(AppCompatResources.getDrawable(context, navDrawerItems.get(position).getIcon()));
         txtTitle.setText(navDrawerItems.get(position).getTitle());
 
         return convertView;
