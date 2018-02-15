@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import net.steamcrafted.loadtoast.LoadToast;
@@ -39,6 +40,13 @@ public class SplashActivity extends BaseActivity {
 
         settings = getSharedPreferences("prefs", 0);
         mAdditiveDao = Utils.getAppDaoSession(this).getAdditiveDao();
+
+        ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netinfo=connectivityManager.getActiveNetworkInfo();
+        if (!(netinfo!=null && netinfo.isConnected()))
+        {
+            Toast.makeText(getApplicationContext(),"No Internet Access",Toast.LENGTH_SHORT).show();
+        }
 
         if((BuildConfig.FLAVOR.equals("off"))) {
             boolean firstRun = settings.getBoolean("firstRun", true);

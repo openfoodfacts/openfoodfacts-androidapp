@@ -1,8 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
@@ -70,7 +73,14 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         customTabActivityHelper.mayLaunchUrl(uri, null, null);
 
         signup.setEnabled(false);
-
+        ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netinfo=connectivityManager.getActiveNetworkInfo();
+        if (netinfo!=null && netinfo.isConnected())
+        { }
+        else
+        {
+            Toast.makeText(getApplicationContext(),"No Internet Access",Toast.LENGTH_SHORT).show();
+        }
         final SharedPreferences settings = getSharedPreferences("login", 0);
         String loginS = settings.getString("user", getResources().getString(R.string.txt_anonymous));
         if(!loginS.equals(getResources().getString(R.string.txt_anonymous))) {

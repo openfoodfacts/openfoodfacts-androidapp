@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.BarcodeFormat;
@@ -46,7 +47,6 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
         final SharedPreferences settings = getActivity().getSharedPreferences("camera", 0);
-
         mScannerView = new ZXingScannerView(getActivity());
         api = new OpenFoodAPIClient(getActivity());
         if(state != null) {
