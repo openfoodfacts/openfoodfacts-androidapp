@@ -26,6 +26,58 @@
     <item>盎司</item>
   </string-array>
   <!-- Text units -->
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-BR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>简体字</item>
+    <item>fa</item>
+    <item>rs</item>
+    <item>af</item>
+    <item>ak</item>
+    <item>am</item>
+    <item>as</item>
+    <item>繁体字</item>
+    <item>繁体字</item>
+    <item>hu</item>
+    <item>tr</item>
+    <item>id</item>
+    <item>tl</item>
+    <item>fil</item>
+    <item>nl-BE</item>
+    <item>bn</item>
+    <item>sl</item>
+    <item>ku</item>
+    <item>eo</item>
+    <item>pl</item>
+  </string-array>
   <string-array name="images_array">
     <item>默认</item>
     <item>营养</item>
@@ -119,7 +171,7 @@
   <string name="search_drawer">搜索</string>
   <string name="search_by_barcode_drawer">输入条形码</string>
   <string name="category_drawer">类别</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">类型</string>
   <string name="search_by_name_drawer">按照名字搜索</string>
   <string name="scan_search">扫描条形码</string>
   <string name="user_drawer">用户</string>
