@@ -174,9 +174,16 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (isNotBlank(labels)) {
             labelProduct.append(bold(getString(R.string.txtLabels)));
             labelProduct.append(" ");
-            for (String label : labels.split(",")) {
-                labelProduct.append(label.trim());
-                labelProduct.append(", ");
+            String[] label = labels.split(",");
+            int labelCount = label.length;
+            if(labelCount>1) {
+                for (int i = 0; i < (labelCount - 1); i++) {
+                    labelProduct.append(label[i].trim());
+                    labelProduct.append(", ");
+                }
+                labelProduct.append(label[labelCount-1].trim());
+            } else {
+                labelProduct.append(label[0].trim());
             }
         } else {
             labelProduct.setVisibility(View.GONE);
