@@ -1,0 +1,1112 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 429916160 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2640), pid=2879, tid=0x00007f334cb63700
+#
+# JRE version: OpenJDK Runtime Environment (8.0_152-b01) (build 1.8.0_152-release-915-b01)
+# Java VM: OpenJDK 64-Bit Server VM (25.152-b01 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f3360078000):  VMThread [stack: 0x00007f334ca63000,0x00007f334cb64000] [id=2887]
+
+Stack: [0x00007f334ca63000,0x00007f334cb64000],  sp=0x00007f334cb624d0,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x9eb15d]  VMError::report_and_die()+0x15d
+V  [libjvm.so+0x4b8eaa]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x8a
+V  [libjvm.so+0x851370]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0xf0
+V  [libjvm.so+0x84be8f]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x1f
+V  [libjvm.so+0x8c261b]  PSVirtualSpace::expand_by(unsigned long)+0x5b
+V  [libjvm.so+0x8b33fb]  PSOldGen::expand_by(unsigned long) [clone .part.109]+0x1b
+V  [libjvm.so+0x8b35bb]  PSOldGen::expand(unsigned long) [clone .part.111]+0xdb
+V  [libjvm.so+0x8b3e98]  PSOldGen::resize(unsigned long)+0x188
+V  [libjvm.so+0x8b94ac]  PSParallelCompact::invoke_no_policy(bool)+0x97c
+V  [libjvm.so+0x8c05bd]  PSScavenge::invoke()+0x17d
+V  [libjvm.so+0x8748f3]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x63
+V  [libjvm.so+0x9ecc84]  VM_ParallelGCFailedAllocation::doit()+0x84
+V  [libjvm.so+0x9f1197]  VM_Operation::evaluate()+0x47
+V  [libjvm.so+0x9efb78]  VMThread::evaluate_operation(VM_Operation*)+0x2c8
+V  [libjvm.so+0x9efff9]  VMThread::loop()+0x219
+V  [libjvm.so+0x9f0442]  VMThread::run()+0x72
+V  [libjvm.so+0x84e792]  java_start(Thread*)+0xf2
+
+VM_Operation (0x00007f32c82ecad0): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007f330000a800
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f3300035000 JavaThread "process reaper" daemon [_thread_blocked, id=7274, stack(0x00007f32ca289000,0x00007f32ca2c2000)]
+  0x00007f334804f000 JavaThread "process reaper" daemon [_thread_blocked, id=7267, stack(0x00007f32ca217000,0x00007f32ca250000)]
+  0x00007f3360d02000 JavaThread "process reaper" daemon [_thread_blocked, id=7259, stack(0x00007f32ca250000,0x00007f32ca289000)]
+  0x00007f3344037800 JavaThread "process reaper" daemon [_thread_blocked, id=7255, stack(0x00007f32ca2c2000,0x00007f32ca2fb000)]
+  0x00007f32f4049800 JavaThread "ForkJoinPool.commonPool-worker-3" daemon [_thread_blocked, id=7249, stack(0x00007f332d3cc000,0x00007f332d4cd000)]
+  0x00007f32f4049000 JavaThread "ForkJoinPool.commonPool-worker-2" daemon [_thread_blocked, id=7248, stack(0x00007f32c8efa000,0x00007f32c8ffb000)]
+  0x00007f32f404a800 JavaThread "ForkJoinPool.commonPool-worker-1" daemon [_thread_blocked, id=7247, stack(0x00007f32ca7fc000,0x00007f32ca8fd000)]
+  0x00007f32f4035800 JavaThread "build operations Thread 4" [_thread_blocked, id=7240, stack(0x00007f32ca8fd000,0x00007f32ca9fe000)]
+  0x00007f32f4035000 JavaThread "build operations Thread 3" [_thread_blocked, id=7239, stack(0x00007f330ccfe000,0x00007f330cdff000)]
+  0x00007f32f403e800 JavaThread "build operations Thread 2" [_thread_blocked, id=7238, stack(0x00007f332cac7000,0x00007f332cbc8000)]
+  0x00007f32f4026000 JavaThread "build operations" [_thread_blocked, id=7237, stack(0x00007f330c7fd000,0x00007f330c8fe000)]
+  0x00007f32f4031800 JavaThread "Cache worker for Artifact transforms cache (/home/absolutelysaurabh/.gradle/caches/transforms-1)" [_thread_blocked, id=7235, stack(0x00007f32bf6f7000,0x00007f32bf7f8000)]
+  0x00007f32f4045800 JavaThread "Cache worker for file hash cache (/home/absolutelysaurabh/Documents/openfoodfacts-androidapp/.gradle/4.1/fileHashes)" [_thread_blocked, id=7231, stack(0x00007f32c89f7000,0x00007f32c8af8000)]
+  0x00007f32f4030800 JavaThread "Asynchronous log dispatcher for DefaultDaemonConnection: socket connection from /127.0.0.1:41595 to /127.0.0.1:54286" [_thread_blocked, id=7229, stack(0x00007f32c8bf9000,0x00007f32c8cfa000)]
+  0x00007f3300005800 JavaThread "Cancel handler" [_thread_blocked, id=7226, stack(0x00007f332d4cd000,0x00007f332d5ce000)]
+  0x00007f3300004000 JavaThread "Handler for socket connection from /127.0.0.1:41595 to /127.0.0.1:54286" [_thread_in_native, id=7225, stack(0x00007f32c90fc000,0x00007f32c91fd000)]
+  0x00007f330000a800 JavaThread "Daemon worker Thread 8" [_thread_blocked, id=7061, stack(0x00007f32c81ef000,0x00007f32c82f0000)]
+  0x00007f3304017800 JavaThread "Daemon Thread 8" [_thread_blocked, id=7058, stack(0x00007f332d6cf000,0x00007f332d7d0000)]
+  0x00007f32eccfb800 JavaThread "Memory manager" [_thread_blocked, id=3356, stack(0x00007f32cbaff000,0x00007f32cbc00000)]
+  0x00007f32ecc1e800 JavaThread "pool-1-thread-1" [_thread_blocked, id=3355, stack(0x00007f330c01a000,0x00007f330c11b000)]
+  0x00007f32ec147000 JavaThread "File lock request listener" [_thread_in_native, id=3130, stack(0x00007f332cdc8000,0x00007f332cec9000)]
+  0x00007f32ec139000 JavaThread "Cache worker for file hash cache (/home/absolutelysaurabh/.gradle/caches/4.1/fileHashes)" [_thread_blocked, id=3129, stack(0x00007f332cec9000,0x00007f332cfca000)]
+  0x00007f3360d01000 JavaThread "Daemon periodic checks" [_thread_blocked, id=2965, stack(0x00007f332d7d0000,0x00007f332d8d1000)]
+  0x00007f3360ce8800 JavaThread "Incoming local TCP Connector on port 41595" [_thread_in_native, id=2964, stack(0x00007f332d8d8000,0x00007f332d9d9000)]
+  0x00007f33600c0800 JavaThread "Service Thread" daemon [_thread_blocked, id=2894, stack(0x00007f334c084000,0x00007f334c185000)]
+  0x00007f33600bd000 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=2893, stack(0x00007f334c185000,0x00007f334c286000)]
+  0x00007f33600bb800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=2892, stack(0x00007f334c286000,0x00007f334c387000)]
+  0x00007f33600b8800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=2891, stack(0x00007f334c387000,0x00007f334c488000)]
+  0x00007f33600b4800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=2890, stack(0x00007f334c488000,0x00007f334c589000)]
+  0x00007f3360084800 JavaThread "Finalizer" daemon [_thread_blocked, id=2889, stack(0x00007f334c861000,0x00007f334c962000)]
+  0x00007f3360080000 JavaThread "Reference Handler" daemon [_thread_blocked, id=2888, stack(0x00007f334c962000,0x00007f334ca63000)]
+  0x00007f336000a800 JavaThread "main" [_thread_blocked, id=2880, stack(0x00007f336634c000,0x00007f336644d000)]
+
+Other Threads:
+=>0x00007f3360078000 VMThread [stack: 0x00007f334ca63000,0x00007f334cb64000] [id=2887]
+  0x00007f33600c3000 WatcherThread [stack: 0x00007f332eeff000,0x00007f332f000000] [id=2895]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007f33600069f0] ExpandHeap_lock - owner thread: 0x00007f3360078000
+[0x00007f3360007070] Threads_lock - owner thread: 0x00007f3360078000
+[0x00007f3360007570] Heap_lock - owner thread: 0x00007f330000a800
+
+Heap:
+ PSYoungGen      total 977920K, used 125801K [0x0000000760000000, 0x00000007c0000000, 0x00000007c0000000)
+  eden space 729088K, 0% used [0x0000000760000000,0x0000000760000000,0x000000078c800000)
+  from space 248832K, 50% used [0x00000007b0d00000,0x00000007b87da738,0x00000007c0000000)
+  to   space 421888K, 0% used [0x000000078c800000,0x000000078c800000,0x00000007a6400000)
+ ParOldGen       total 937984K, used 937973K [0x00000006a0000000, 0x00000006d9400000, 0x0000000760000000)
+  object space 937984K, 99% used [0x00000006a0000000,0x00000006d93fd548,0x00000006d9400000)
+ Metaspace       used 170428K, capacity 178800K, committed 179288K, reserved 1204224K
+  class space    used 22041K, capacity 23797K, committed 23936K, reserved 1048576K
+
+Card table byte_map: [0x00007f334f8bd000,0x00007f33501be000] byte_map_base: 0x00007f334c3bd000
+
+Marking Bits: (ParMarkBitMap*) 0x00007f336581e3e0
+ Begin Bits: [0x00007f332f000000, 0x00007f3333800000)
+ End Bits:   [0x00007f3333800000, 0x00007f3338000000)
+
+Polling page: 0x00007f3366472000
+
+CodeCache: size=245760Kb used=93274Kb max_used=93354Kb free=152485Kb
+ bounds [0x00007f335057e000, 0x00007f335614e000, 0x00007f335f57e000]
+ total_blobs=28029 nmethods=27167 adapters=774
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 4206.102 Thread 0x00007f33600bd000 nmethod 38481 0x00007f3350a52cd0 code [0x00007f3350a52e40, 0x00007f3350a530b0]
+Event: 4206.107 Thread 0x00007f33600bd000 38482       3       com.google.gson.internal.bind.TypeAdapters$28::<init> (15 bytes)
+Event: 4206.108 Thread 0x00007f33600bd000 nmethod 38482 0x00007f3350c290d0 code [0x00007f3350c29240, 0x00007f3350c29430]
+Event: 4206.191 Thread 0x00007f33600bd000 38485       3       sun.util.locale.LocaleUtils::toLower (17 bytes)
+Event: 4206.192 Thread 0x00007f33600bd000 nmethod 38485 0x00007f33515ba510 code [0x00007f33515ba680, 0x00007f33515ba8f0]
+Event: 4206.226 Thread 0x00007f33600bd000 38486       3       com.google.wireless.android.sdk.stats.GradleBuildMemorySample$1::parsePartialFrom (7 bytes)
+Event: 4206.227 Thread 0x00007f33600bd000 nmethod 38486 0x00007f335101f6d0 code [0x00007f335101f860, 0x00007f335101fba8]
+Event: 4206.229 Thread 0x00007f33600bb800 38492       4       com.google.protobuf.Utf8$UnsafeProcessor::partialIsValidUtf8 (268 bytes)
+Event: 4206.234 Thread 0x00007f33600bd000 38487       3       com.google.wireless.android.sdk.stats.GradleBuildMemorySample$1::parsePartialFrom (11 bytes)
+Event: 4206.235 Thread 0x00007f33600bd000 nmethod 38487 0x00007f3350d11710 code [0x00007f3350d11880, 0x00007f3350d11ae8]
+
+GC Heap History (10 events):
+Event: 3604.287 GC heap after
+Heap after GC invocations=77 (full 8):
+ PSYoungGen      total 1343488K, used 41018K [0x0000000760000000, 0x00000007c0000000, 0x00000007c0000000)
+  eden space 1114112K, 0% used [0x0000000760000000,0x0000000760000000,0x00000007a4000000)
+  from space 229376K, 17% used [0x00000007a4000000,0x00000007a680eb10,0x00000007b2000000)
+  to   space 222208K, 0% used [0x00000007b2700000,0x00000007b2700000,0x00000007c0000000)
+ ParOldGen       total 773632K, used 704545K [0x00000006a0000000, 0x00000006cf380000, 0x0000000760000000)
+  object space 773632K, 91% used [0x00000006a0000000,0x00000006cb008638,0x00000006cf380000)
+ Metaspace       used 127910K, capacity 134478K, committed 134744K, reserved 1167360K
+  class space    used 16327K, capacity 17700K, committed 17792K, reserved 1048576K
+}
+Event: 3604.287 GC heap before
+{Heap before GC invocations=78 (full 9):
+ PSYoungGen      total 1343488K, used 41018K [0x0000000760000000, 0x00000007c0000000, 0x00000007c0000000)
+  eden space 1114112K, 0% used [0x0000000760000000,0x0000000760000000,0x00000007a4000000)
+  from space 229376K, 17% used [0x00000007a4000000,0x00000007a680eb10,0x00000007b2000000)
+  to   space 222208K, 0% used [0x00000007b2700000,0x00000007b2700000,0x00000007c0000000)
+ ParOldGen       total 773632K, used 704545K [0x00000006a0000000, 0x00000006cf380000, 0x0000000760000000)
+  object space 773632K, 91% used [0x00000006a0000000,0x00000006cb008638,0x00000006cf380000)
+ Metaspace       used 127910K, capacity 134478K, committed 134744K, reserved 1167360K
+  class space    used 16327K, capacity 17700K, committed 17792K, reserved 1048576K
+Event: 3607.889 GC heap after
+Heap after GC invocations=78 (full 9):
+ PSYoungGen      total 1343488K, used 0K [0x0000000760000000, 0x00000007c0000000, 0x00000007c0000000)
+  eden space 1114112K, 0% used [0x0000000760000000,0x0000000760000000,0x00000007a4000000)
+  from space 229376K, 0% used [0x00000007a4000000,0x00000007a4000000,0x00000007b2000000)
+  to   space 222208K, 0% used [0x00000007b2700000,0x00000007b2700000,0x00000007c0000000)
+ ParOldGen       total 937984K, used 600802K [0x00000006a0000000, 0x00000006d9400000, 0x0000000760000000)
+  object space 937984K, 64% used [0x00000006a0000000,0x00000006c4ab88b0,0x00000006d9400000)
+ Metaspace       used 127906K, capacity 134466K, committed 134744K, reserved 1167360K
+  class space    used 16326K, capacity 17698K, committed 17792K, reserved 1048576K
+}
+Event: 4029.601 GC heap before
+{Heap before GC invocations=79 (full 9):
+ PSYoungGen      total 1343488K, used 1114112K [0x0000000760000000, 0x00000007c0000000, 0x00000007c0000000)
+  eden space 1114112K, 100% used [0x0000000760000000,0x00000007a4000000,0x00000007a4000000)
+  from space 229376K, 0% used [0x00000007a4000000,0x00000007a4000000,0x00000007b2000000)
+  to   space 222208K, 0% used [0x00000007b2700000,0x00000007b2700000,0x00000007c0000000)
+ ParOldGen       total 937984K, used 600802K [0x00000006a0000000, 0x00000006d9400000, 0x0000000760000000)
+  object space 937984K, 64% used [0x00000006a0000000,0x00000006c4ab88b0,0x00000006d9400000)
+ Metaspace       used 142154K, capacity 149370K, committed 149592K, reserved 1179648K
+  class space    used 18244K, capacity 19760K, committed 19840K, reserved 1048576K
+Event: 4029.923 GC heap after
+Heap after GC invocations=79 (full 9):
+ PSYoungGen      total 1297408K, used 190246K [0x0000000760000000, 0x00000007c0000000, 0x00000007c0000000)
+  eden space 1075200K, 0% used [0x0000000760000000,0x0000000760000000,0x00000007a1a00000)
+  from space 222208K, 85% used [0x00000007b2700000,0x00000007be0c9bb0,0x00000007c0000000)
+  to   space 248832K, 0% used [0x00000007a1a00000,0x00000007a1a00000,0x00000007b0d00000)
+ ParOldGen       total 937984K, used 600810K [0x00000006a0000000, 0x00000006d9400000, 0x0000000760000000)
+  object space 937984K, 64% used [0x00000006a0000000,0x00000006c4aba8b0,0x00000006d9400000)
+ Metaspace       used 142154K, capacity 149370K, committed 149592K, reserved 1179648K
+  class space    used 18244K, capacity 19760K, committed 19840K, reserved 1048576K
+}
+Event: 4137.751 GC heap before
+{Heap before GC invocations=80 (full 9):
+ PSYoungGen      total 1297408K, used 1265446K [0x0000000760000000, 0x00000007c0000000, 0x00000007c0000000)
+  eden space 1075200K, 100% used [0x0000000760000000,0x00000007a1a00000,0x00000007a1a00000)
+  from space 222208K, 85% used [0x00000007b2700000,0x00000007be0c9bb0,0x00000007c0000000)
+  to   space 248832K, 0% used [0x00000007a1a00000,0x00000007a1a00000,0x00000007b0d00000)
+ ParOldGen       total 937984K, used 600810K [0x00000006a0000000, 0x00000006d9400000, 0x0000000760000000)
+  object space 937984K, 64% used [0x00000006a0000000,0x00000006c4aba8b0,0x00000006d9400000)
+ Metaspace       used 156437K, capacity 164342K, committed 164440K, reserved 1191936K
+  class space    used 20173K, capacity 21846K, committed 21888K, reserved 1048576K
+Event: 4138.316 GC heap after
+Heap after GC invocations=80 (full 9):
+ PSYoungGen      total 1324032K, used 248801K [0x0000000760000000, 0x00000007c0000000, 0x00000007c0000000)
+  eden space 1075200K, 0% used [0x0000000760000000,0x0000000760000000,0x00000007a1a00000)
+  from space 248832K, 99% used [0x00000007a1a00000,0x00000007b0cf85e8,0x00000007b0d00000)
+  to   space 248832K, 0% used [0x00000007b0d00000,0x00000007b0d00000,0x00000007c0000000)
+ ParOldGen       total 937984K, used 694784K [0x00000006a0000000, 0x00000006d9400000, 0x0000000760000000)
+  object space 937984K, 74% used [0x00000006a0000000,0x00000006ca6801d0,0x00000006d9400000)
+ Metaspace       used 156437K, capacity 164342K, committed 164440K, reserved 1191936K
+  class space    used 20173K, capacity 21846K, committed 21888K, reserved 1048576K
+}
+Event: 4206.238 GC heap before
+{Heap before GC invocations=81 (full 9):
+ PSYoungGen      total 1324032K, used 1324001K [0x0000000760000000, 0x00000007c0000000, 0x00000007c0000000)
+  eden space 1075200K, 100% used [0x0000000760000000,0x00000007a1a00000,0x00000007a1a00000)
+  from space 248832K, 99% used [0x00000007a1a00000,0x00000007b0cf85e8,0x00000007b0d00000)
+  to   space 248832K, 0% used [0x00000007b0d00000,0x00000007b0d00000,0x00000007c0000000)
+ ParOldGen       total 937984K, used 694784K [0x00000006a0000000, 0x00000006d9400000, 0x0000000760000000)
+  object space 937984K, 74% used [0x00000006a0000000,0x00000006ca6801d0,0x00000006d9400000)
+ Metaspace       used 170561K, capacity 179018K, committed 179288K, reserved 1204224K
+  class space    used 22065K, capacity 23842K, committed 23936K, reserved 1048576K
+Event: 4207.042 GC heap after
+Heap after GC invocations=81 (full 9):
+ PSYoungGen      total 977920K, used 248813K [0x0000000760000000, 0x00000007c0000000, 0x00000007c0000000)
+  eden space 729088K, 0% used [0x0000000760000000,0x0000000760000000,0x000000078c800000)
+  from space 248832K, 99% used [0x00000007b0d00000,0x00000007bfffb540,0x00000007c0000000)
+  to   space 421888K, 0% used [0x000000078c800000,0x000000078c800000,0x00000007a6400000)
+ ParOldGen       total 937984K, used 876959K [0x00000006a0000000, 0x00000006d9400000, 0x0000000760000000)
+  object space 937984K, 93% used [0x00000006a0000000,0x00000006d5867c28,0x00000006d9400000)
+ Metaspace       used 170561K, capacity 179018K, committed 179288K, reserved 1204224K
+  class space    used 22065K, capacity 23842K, committed 23936K, reserved 1048576K
+}
+Event: 4207.215 GC heap before
+{Heap before GC invocations=82 (full 10):
+ PSYoungGen      total 977920K, used 248813K [0x0000000760000000, 0x00000007c0000000, 0x00000007c0000000)
+  eden space 729088K, 0% used [0x0000000760000000,0x0000000760000000,0x000000078c800000)
+  from space 248832K, 99% used [0x00000007b0d00000,0x00000007bfffb540,0x00000007c0000000)
+  to   space 421888K, 0% used [0x000000078c800000,0x000000078c800000,0x00000007a6400000)
+ ParOldGen       total 937984K, used 876959K [0x00000006a0000000, 0x00000006d9400000, 0x0000000760000000)
+  object space 937984K, 93% used [0x00000006a0000000,0x00000006d5867c28,0x00000006d9400000)
+ Metaspace       used 170561K, capacity 179018K, committed 179288K, reserved 1204224K
+  class space    used 22065K, capacity 23842K, committed 23936K, reserved 1048576K
+
+Deoptimization events (10 events):
+Event: 4147.391 Thread 0x00007f330000a800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f3353b03e48 method=com.google.common.collect.AbstractMapBasedMultimap$WrappedCollection.refreshIfEmpty()V @ 59
+Event: 4147.391 Thread 0x00007f330000a800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f3353b03e48 method=com.google.common.collect.AbstractMapBasedMultimap$WrappedCollection.refreshIfEmpty()V @ 59
+Event: 4147.402 Thread 0x00007f330000a800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f3353b03f24 method=com.google.common.collect.AbstractMapBasedMultimap$WrappedCollection.refreshIfEmpty()V @ 40
+Event: 4147.402 Thread 0x00007f330000a800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f3353b03f24 method=com.google.common.collect.AbstractMapBasedMultimap$WrappedCollection.refreshIfEmpty()V @ 40
+Event: 4147.957 Thread 0x00007f330000a800 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x00007f3355497980 method=com.google.common.collect.Range.<init>(Lcom/google/common/collect/Cut;Lcom/google/common/collect/Cut;)V @ 28
+Event: 4147.981 Thread 0x00007f330000a800 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x00007f3355497980 method=com.google.common.collect.Range.<init>(Lcom/google/common/collect/Cut;Lcom/google/common/collect/Cut;)V @ 28
+Event: 4148.826 Thread 0x00007f330000a800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f3355e23ae4 method=com.squareup.javapoet.CodeWriter.emitAndIndent(Ljava/lang/String;)Lcom/squareup/javapoet/CodeWriter; @ 172
+Event: 4149.138 Thread 0x00007f330000a800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f3353e904e8 method=java.io.PrintWriter.newLine()V @ 19
+Event: 4152.256 Thread 0x00007f330000a800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f33554fb27c method=com.sun.tools.javac.comp.LambdaToMethod.translate(Lcom/sun/tools/javac/tree/JCTree;)Lcom/sun/tools/javac/tree/JCTree; @ 10
+Event: 4153.175 Thread 0x00007f330000a800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f3352c52dc8 method=com.sun.tools.javac.jvm.Code.typeForPool(Ljava/lang/Object;)Lcom/sun/tools/javac/code/Type; @ 64
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 4174.671 Thread 0x00007f32eccfb800 Exception <a 'java/io/IOException'> (0x0000000790e9d6b0) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 4179.546 Thread 0x00007f32eccfb800 Exception <a 'java/io/IOException'> (0x0000000790ea5cf8) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 4184.106 Thread 0x00007f32eccfb800 Exception <a 'java/io/IOException'> (0x0000000790eae378) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 4189.106 Thread 0x00007f32eccfb800 Exception <a 'java/io/IOException'> (0x0000000790ec25c8) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 4194.106 Thread 0x00007f32eccfb800 Exception <a 'java/io/IOException'> (0x0000000790ec6bf0) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 4197.728 Thread 0x00007f32ecc1e800 Exception <a 'sun/nio/fs/UnixException'> (0x0000000790e7c8a8) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 4199.106 Thread 0x00007f32eccfb800 Exception <a 'java/io/IOException'> (0x000000079117ce48) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 4200.399 Thread 0x00007f32f41e0000 Exception <a 'sun/nio/fs/UnixException'> (0x00000007926ab120) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 4204.106 Thread 0x00007f32eccfb800 Exception <a 'java/io/IOException'> (0x00000007921d1d80) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 4206.219 Thread 0x00007f330000a800 Exception <a 'sun/nio/fs/UnixException'> (0x00000007a1897ac0) thrown at [/ssd/Android/AOSP-openjdk-git/jdk8u/hotspot/src/share/vm/prims/jni.cpp, line 709]
+
+Events (10 events):
+Event: 4206.022 Thread 0x00007f32f4039800 Thread exited: 0x00007f32f4039800
+Event: 4206.022 Thread 0x00007f32f4124800 Thread exited: 0x00007f32f4124800
+Event: 4206.096 Executing VM operation: RevokeBias
+Event: 4206.096 Executing VM operation: RevokeBias done
+Event: 4206.149 Thread 0x00007f32f4107800 Thread exited: 0x00007f32f4107800
+Event: 4206.163 Thread 0x00007f32f4108800 Thread exited: 0x00007f32f4108800
+Event: 4206.228 Thread 0x00007f33600bd000 flushing nmethod 0x00007f33536d60d0
+Event: 4206.233 Thread 0x00007f33600bd000 flushing nmethod 0x00007f3353b74890
+Event: 4206.233 Thread 0x00007f33600bd000 flushing nmethod 0x00007f3353bc8050
+Event: 4206.238 Executing VM operation: ParallelGCFailedAllocation
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:07 149941                             /home/absolutelysaurabh/android-studio/jre/bin/java
+00600000-00601000 r--p 00000000 08:07 149941                             /home/absolutelysaurabh/android-studio/jre/bin/java
+00601000-00602000 rw-p 00001000 08:07 149941                             /home/absolutelysaurabh/android-studio/jre/bin/java
+011a1000-01b84000 rw-p 00000000 00:00 0                                  [heap]
+6a0000000-6d9400000 rw-p 00000000 00:00 0 
+6f2e00000-760000000 ---p 00000000 00:00 0 
+760000000-7c0000000 rw-p 00000000 00:00 0 
+7c0000000-7c1760000 rw-p 00000000 00:00 0 
+7c1760000-800000000 ---p 00000000 00:00 0 
+7f32ba187000-7f32ba347000 rw-p 00000000 00:00 0 
+7f32ba347000-7f32ba387000 ---p 00000000 00:00 0 
+7f32ba387000-7f32ba587000 rw-p 00000000 00:00 0 
+7f32ba587000-7f32ba787000 rw-p 00000000 00:00 0 
+7f32ba787000-7f32ba987000 rw-p 00000000 00:00 0 
+7f32ba987000-7f32bab87000 rw-p 00000000 00:00 0 
+7f32bab87000-7f32bad87000 rw-p 00000000 00:00 0 
+7f32bad87000-7f32baf87000 rw-p 00000000 00:00 0 
+7f32baf87000-7f32bb187000 rw-p 00000000 00:00 0 
+7f32bb187000-7f32bb387000 rw-p 00000000 00:00 0 
+7f32bb387000-7f32bb587000 rw-p 00000000 00:00 0 
+7f32bb587000-7f32bb787000 rw-p 00000000 00:00 0 
+7f32bb787000-7f32bb987000 rw-p 00000000 00:00 0 
+7f32bb987000-7f32bbb87000 rw-p 00000000 00:00 0 
+7f32bbb87000-7f32bbd87000 rw-p 00000000 00:00 0 
+7f32bbd87000-7f32bbf87000 rw-p 00000000 00:00 0 
+7f32bbf87000-7f32bc187000 rw-p 00000000 00:00 0 
+7f32bc187000-7f32bc387000 rw-p 00000000 00:00 0 
+7f32bc387000-7f32bc587000 rw-p 00000000 00:00 0 
+7f32bc587000-7f32bc787000 rw-p 00000000 00:00 0 
+7f32bc787000-7f32bc987000 rw-p 00000000 00:00 0 
+7f32bc987000-7f32bcb87000 rw-p 00000000 00:00 0 
+7f32bcb87000-7f32bcb8a000 ---p 00000000 00:00 0 
+7f32bcb8a000-7f32bcc88000 rw-p 00000000 00:00 0 
+7f32bcd89000-7f32bcd8c000 ---p 00000000 00:00 0 
+7f32bcd8c000-7f32bce8a000 rw-p 00000000 00:00 0 
+7f32bcf8b000-7f32bd18b000 rw-p 00000000 00:00 0 
+7f32bd18b000-7f32bd38b000 rw-p 00000000 00:00 0 
+7f32bd38b000-7f32bd58b000 rw-p 00000000 00:00 0 
+7f32bd58b000-7f32bd78b000 rw-p 00000000 00:00 0 
+7f32bd78b000-7f32bd98b000 rw-p 00000000 00:00 0 
+7f32bd98b000-7f32bdb8b000 rw-p 00000000 00:00 0 
+7f32bdb8b000-7f32bdd8b000 rw-p 00000000 00:00 0 
+7f32bddb6000-7f32bdfb6000 rw-p 00000000 00:00 0 
+7f32bdfb6000-7f32be1b6000 rw-p 00000000 00:00 0 
+7f32be2f7000-7f32be4f7000 rw-p 00000000 00:00 0 
+7f32be4f7000-7f32be6f7000 rw-p 00000000 00:00 0 
+7f32be6f7000-7f32be8f7000 rw-p 00000000 00:00 0 
+7f32be8f7000-7f32beaf7000 rw-p 00000000 00:00 0 
+7f32beaf7000-7f32becf7000 rw-p 00000000 00:00 0 
+7f32becf7000-7f32beef7000 rw-p 00000000 00:00 0 
+7f32beef7000-7f32bf0f7000 rw-p 00000000 00:00 0 
+7f32bf0f7000-7f32bf2f7000 rw-p 00000000 00:00 0 
+7f32bf2f7000-7f32bf4f7000 rw-p 00000000 00:00 0 
+7f32bf4f7000-7f32bf6f7000 rw-p 00000000 00:00 0 
+7f32bf6f7000-7f32bf6fa000 ---p 00000000 00:00 0 
+7f32bf6fa000-7f32bf7f8000 rw-p 00000000 00:00 0 
+7f32bf7f8000-7f32bf7fb000 ---p 00000000 00:00 0 
+7f32bf7fb000-7f32bf8f9000 rw-p 00000000 00:00 0 
+7f32bf8f9000-7f32bf8fc000 ---p 00000000 00:00 0 
+7f32bf8fc000-7f32bf9fa000 rw-p 00000000 00:00 0 
+7f32bf9fa000-7f32bf9fd000 ---p 00000000 00:00 0 
+7f32bf9fd000-7f32bfafb000 rw-p 00000000 00:00 0 
+7f32bfafb000-7f32bfafe000 ---p 00000000 00:00 0 
+7f32bfafe000-7f32bfbfc000 rw-p 00000000 00:00 0 
+7f32bfcfd000-7f32bfd00000 ---p 00000000 00:00 0 
+7f32bfd00000-7f32bfdfe000 rw-p 00000000 00:00 0 
+7f32bfe00000-7f32c0000000 rw-p 00000000 00:00 0 
+7f32c0000000-7f32c0119000 rw-p 00000000 00:00 0 
+7f32c0119000-7f32c4000000 ---p 00000000 00:00 0 
+7f32c4000000-7f32c4d98000 rw-p 00000000 00:00 0 
+7f32c4d98000-7f32c8000000 ---p 00000000 00:00 0 
+7f32c80cf000-7f32c80ee000 r--s 0053d000 08:07 2255211                    /home/absolutelysaurabh/.gradle/caches/jars-3/07dcf2f3f2bda71869cda3f75be96a82/sdk-tools.jar
+7f32c80ee000-7f32c80f1000 ---p 00000000 00:00 0 
+7f32c80f1000-7f32c81ef000 rw-p 00000000 00:00 0 
+7f32c81ef000-7f32c81f2000 ---p 00000000 00:00 0 
+7f32c81f2000-7f32c82f0000 rw-p 00000000 00:00 0 
+7f32c82f0000-7f32c82f3000 ---p 00000000 00:00 0 
+7f32c82f3000-7f32c83f1000 rw-p 00000000 00:00 0 
+7f32c83f1000-7f32c83f4000 ---p 00000000 00:00 0 
+7f32c83f4000-7f32c84f2000 rw-p 00000000 00:00 0 
+7f32c84f2000-7f32c84f5000 ---p 00000000 00:00 0 
+7f32c84f5000-7f32c85f3000 rw-p 00000000 00:00 0 
+7f32c85f3000-7f32c85f6000 ---p 00000000 00:00 0 
+7f32c85f6000-7f32c86f4000 rw-p 00000000 00:00 0 
+7f32c86f4000-7f32c86f7000 ---p 00000000 00:00 0 
+7f32c86f7000-7f32c87f5000 rw-p 00000000 00:00 0 
+7f32c88f6000-7f32c88f9000 ---p 00000000 00:00 0 
+7f32c88f9000-7f32c89f7000 rw-p 00000000 00:00 0 
+7f32c89f7000-7f32c89fa000 ---p 00000000 00:00 0 
+7f32c89fa000-7f32c8af8000 rw-p 00000000 00:00 0 
+7f32c8af8000-7f32c8afb000 ---p 00000000 00:00 0 
+7f32c8afb000-7f32c8bf9000 rw-p 00000000 00:00 0 
+7f32c8bf9000-7f32c8bfc000 ---p 00000000 00:00 0 
+7f32c8bfc000-7f32c8efa000 rw-p 00000000 00:00 0 
+7f32c8efa000-7f32c8efd000 ---p 00000000 00:00 0 
+7f32c8efd000-7f32c8ffb000 rw-p 00000000 00:00 0 
+7f32c8ffb000-7f32c8ffe000 ---p 00000000 00:00 0 
+7f32c8ffe000-7f32c90fc000 rw-p 00000000 00:00 0 
+7f32c90fc000-7f32c90ff000 ---p 00000000 00:00 0 
+7f32c90ff000-7f32c93fd000 rw-p 00000000 00:00 0 
+7f32c93fd000-7f32c95fd000 rw-p 00000000 00:00 0 
+7f32c95fd000-7f32c97fd000 rw-p 00000000 00:00 0 
+7f32c97fd000-7f32c99fd000 rw-p 00000000 00:00 0 
+7f32c99fd000-7f32c9bfd000 rw-p 00000000 00:00 0 
+7f32c9bfd000-7f32c9dfd000 rw-p 00000000 00:00 0 
+7f32c9dfd000-7f32c9ffd000 rw-p 00000000 00:00 0 
+7f32c9fff000-7f32ca1ff000 rw-p 00000000 00:00 0 
+7f32ca217000-7f32ca21a000 ---p 00000000 00:00 0 
+7f32ca21a000-7f32ca250000 rw-p 00000000 00:00 0 
+7f32ca250000-7f32ca253000 ---p 00000000 00:00 0 
+7f32ca253000-7f32ca289000 rw-p 00000000 00:00 0 
+7f32ca289000-7f32ca28c000 ---p 00000000 00:00 0 
+7f32ca28c000-7f32ca2c2000 rw-p 00000000 00:00 0 
+7f32ca2c2000-7f32ca2c5000 ---p 00000000 00:00 0 
+7f32ca2c5000-7f32ca4fb000 rw-p 00000000 00:00 0 
+7f32ca4fb000-7f32ca6fb000 rw-p 00000000 00:00 0 
+7f32ca6fb000-7f32ca6fe000 ---p 00000000 00:00 0 
+7f32ca6fe000-7f32ca7fc000 rw-p 00000000 00:00 0 
+7f32ca7fc000-7f32ca7ff000 ---p 00000000 00:00 0 
+7f32ca7ff000-7f32ca8fd000 rw-p 00000000 00:00 0 
+7f32ca8fd000-7f32ca900000 ---p 00000000 00:00 0 
+7f32ca900000-7f32cabfe000 rw-p 00000000 00:00 0 
+7f32cabfe000-7f32cac01000 ---p 00000000 00:00 0 
+7f32cac01000-7f32caeff000 rw-p 00000000 00:00 0 
+7f32caeff000-7f32cb0ff000 rw-p 00000000 00:00 0 
+7f32cb0ff000-7f32cb2ff000 rw-p 00000000 00:00 0 
+7f32cb2ff000-7f32cb4ff000 rw-p 00000000 00:00 0 
+7f32cb4ff000-7f32cb6ff000 rw-p 00000000 00:00 0 
+7f32cb6ff000-7f32cb8ff000 rw-p 00000000 00:00 0 
+7f32cb8ff000-7f32cbaff000 rw-p 00000000 00:00 0 
+7f32cbaff000-7f32cbb02000 ---p 00000000 00:00 0 
+7f32cbb02000-7f32cbe00000 rw-p 00000000 00:00 0 
+7f32cbe00000-7f32cbff6000 rw-p 00000000 00:00 0 
+7f32cbff6000-7f32cc000000 ---p 00000000 00:00 0 
+7f32cc000000-7f32ccc84000 rw-p 00000000 00:00 0 
+7f32ccc84000-7f32d0000000 ---p 00000000 00:00 0 
+7f32d0000000-7f32d125e000 rw-p 00000000 00:00 0 
+7f32d125e000-7f32d4000000 ---p 00000000 00:00 0 
+7f32d4000000-7f32d6202000 rw-p 00000000 00:00 0 
+7f32d6202000-7f32d8000000 ---p 00000000 00:00 0 
+7f32d8000000-7f32d814f000 rw-p 00000000 00:00 0 
+7f32d814f000-7f32dc000000 ---p 00000000 00:00 0 
+7f32dc000000-7f32dd4d7000 rw-p 00000000 00:00 0 
+7f32dd4d7000-7f32e0000000 ---p 00000000 00:00 0 
+7f32e0000000-7f32e00b8000 rw-p 00000000 00:00 0 
+7f32e00b8000-7f32e4000000 ---p 00000000 00:00 0 
+7f32e4000000-7f32e406c000 rw-p 00000000 00:00 0 
+7f32e406c000-7f32e8000000 ---p 00000000 00:00 0 
+7f32e8000000-7f32e9497000 rw-p 00000000 00:00 0 
+7f32e9497000-7f32ec000000 ---p 00000000 00:00 0 
+7f32ec000000-7f32ed693000 rw-p 00000000 00:00 0 
+7f32ed693000-7f32f0000000 ---p 00000000 00:00 0 
+7f32f0000000-7f32f027e000 rw-p 00000000 00:00 0 
+7f32f027e000-7f32f4000000 ---p 00000000 00:00 0 
+7f32f4000000-7f32f53c5000 rw-p 00000000 00:00 0 
+7f32f53c5000-7f32f8000000 ---p 00000000 00:00 0 
+7f32f8000000-7f32f804c000 rw-p 00000000 00:00 0 
+7f32f804c000-7f32fc000000 ---p 00000000 00:00 0 
+7f32fc000000-7f32fc090000 rw-p 00000000 00:00 0 
+7f32fc090000-7f3300000000 ---p 00000000 00:00 0 
+7f3300000000-7f3300079000 rw-p 00000000 00:00 0 
+7f3300079000-7f3304000000 ---p 00000000 00:00 0 
+7f3304000000-7f3304099000 rw-p 00000000 00:00 0 
+7f3304099000-7f3308000000 ---p 00000000 00:00 0 
+7f3308000000-7f330804a000 rw-p 00000000 00:00 0 
+7f330804a000-7f330c000000 ---p 00000000 00:00 0 
+7f330c005000-7f330c017000 r--s 00345000 08:07 150109                     /home/absolutelysaurabh/android-studio/jre/jre/lib/resources.jar
+7f330c017000-7f330c01a000 r--s 00015000 08:07 150107                     /home/absolutelysaurabh/android-studio/jre/jre/lib/jce.jar
+7f330c01a000-7f330c01d000 ---p 00000000 00:00 0 
+7f330c01d000-7f330c11b000 rw-p 00000000 00:00 0 
+7f330c11b000-7f330c11d000 r--s 00003000 08:07 5524                       /home/absolutelysaurabh/.gradle/caches/jars-3/01ab8600ebbfdcaf9b89b45c2b992e82/annotations-13.0.jar
+7f330c11d000-7f330c128000 r--s 00081000 08:07 5556                       /home/absolutelysaurabh/.gradle/caches/jars-3/fc6e889a0f45cc9752787eb60f920103/trove4j-20160824.jar
+7f330c128000-7f330c1ab000 r--s 00758000 08:07 5554                       /home/absolutelysaurabh/.gradle/caches/jars-3/b46ab84062ddfd52701cfe0a9718e764/intellij-core-26.0.1.jar
+7f330c1ab000-7f330c1b1000 r--s 00033000 08:07 5552                       /home/absolutelysaurabh/.gradle/caches/jars-3/f96c897d327ea500d64fe3af2833bd50/commons-codec-1.6.jar
+7f330c1b1000-7f330c1b3000 r--s 0000d000 08:07 5550                       /home/absolutelysaurabh/.gradle/caches/jars-3/ccc849edcf9fccd61ed937bf93ffe896/commons-logging-1.1.1.jar
+7f330c1b3000-7f330c1b9000 r--s 00032000 08:07 5548                       /home/absolutelysaurabh/.gradle/caches/jars-3/72e344059d1923829968d0d38b0c3c72/httpcore-4.2.5.jar
+7f330c1b9000-7f330c1ba000 r--s 00004000 08:07 5546                       /home/absolutelysaurabh/.gradle/caches/jars-3/3a4299d1ce3e273e7c03a9ccf5a1e333/annotations-12.0.jar
+7f330c1ba000-7f330c1bb000 r--s 00000000 08:07 5544                       /home/absolutelysaurabh/.gradle/caches/jars-3/0e2fbc3b8c56d2975eca90c524790c13/animal-sniffer-annotations-1.14.jar
+7f330c1bb000-7f330c1bd000 r--s 00001000 08:07 5542                       /home/absolutelysaurabh/.gradle/caches/jars-3/ad41f8f3ac67c0323ce9eb1c20c8dc3f/j2objc-annotations-1.1.jar
+7f330c1bd000-7f330c1be000 r--s 00002000 08:07 5540                       /home/absolutelysaurabh/.gradle/caches/jars-3/9edb0f46b907c34c4718edabde6c791c/error_prone_annotations-2.0.18.jar
+7f330c1be000-7f330c1c1000 r--s 00006000 08:07 5538                       /home/absolutelysaurabh/.gradle/caches/jars-3/b58a9bc3bbba42132e4abc0bacae8da1/jsr305-1.3.9.jar
+7f330c1c1000-7f330c1c2000 r--s 0000a000 08:07 5536                       /home/absolutelysaurabh/.gradle/caches/jars-3/5b8b36ed61fe92731031cca3c9b3a0b3/kxml2-2.3.0.jar
+7f330c1c2000-7f330c1c4000 r--s 00005000 08:07 5534                       /home/absolutelysaurabh/.gradle/caches/jars-3/f10e1e1978816198f2eb1189c974b440/httpmime-4.1.jar
+7f330c1c4000-7f330c1ce000 r--s 00061000 08:07 5532                       /home/absolutelysaurabh/.gradle/caches/jars-3/bc4b2527f35dc983f759e8f85f3f8d52/httpclient-4.2.6.jar
+7f330c1ce000-7f330c1d7000 r--s 00064000 08:07 5530                       /home/absolutelysaurabh/.gradle/caches/jars-3/fc37c717528c2a0d27f3e3621835f781/commons-compress-1.12.jar
+7f330c1d7000-7f330c1dc000 r--s 0002e000 08:07 5528                       /home/absolutelysaurabh/.gradle/caches/jars-3/c5bcda7f6f4809e9c92270f99e51f154/gson-2.3.jar
+7f330c1dc000-7f330c1f4000 r--s 00132000 08:07 172748                     /home/absolutelysaurabh/.gradle/caches/modules-2/files-2.1/org.freemarker/freemarker/2.3.23/cd143cd8c02a9f838e3cb75a6dfe133750437f6d/freemarker-2.3.23.jar
+7f330c1f4000-7f330c204000 r--s 000d6000 08:07 5526                       /home/absolutelysaurabh/.gradle/caches/jars-3/dbdb8caed2514263a34702cc763c6785/proguard-base-5.3.3.jar
+7f330c204000-7f330c205000 r--s 00001000 08:07 5522                       /home/absolutelysaurabh/.gradle/caches/jars-3/dccac9b7f67766e57200b1770178f61c/annotations-26.0.1.jar
+7f330c205000-7f330c208000 r--s 00033000 08:07 5520                       /home/absolutelysaurabh/.gradle/caches/jars-3/0ce03714647bf7bd3c78634c20ddbf38/juniversalchardet-1.0.3.jar
+7f330c208000-7f330c20c000 r--s 0002a000 08:07 5518                       /home/absolutelysaurabh/.gradle/caches/jars-3/9849af6d4b0409ba64061601342f385d/commons-io-2.4.jar
+7f330c20c000-7f330c223000 r--s 00154000 08:07 5516                       /home/absolutelysaurabh/.gradle/caches/jars-3/57adf9abd30c921d4ea1dfdcfe7b9efd/antlr4-4.5.3.jar
+7f330c223000-7f330c224000 r--s 00003000 08:07 5514                       /home/absolutelysaurabh/.gradle/caches/jars-3/54a15dd332fd4c2e246ad396835dc0d2/baseLibrary-3.0.1.jar
+7f330c224000-7f330c254000 r--s 00245000 08:07 5512                       /home/absolutelysaurabh/.gradle/caches/jars-3/8e27cdebb49ba2f804f9403d90aaaac5/guava-22.0.jar
+7f330c254000-7f330c25c000 r--s 000a8000 08:07 5510                       /home/absolutelysaurabh/.gradle/caches/jars-3/6cc57ce9ec0d90186f781694264d61bc/lombok-ast-0.2.3.jar
+7f330c25c000-7f330c260000 r--s 0002f000 08:07 5508                       /home/absolutelysaurabh/.gradle/caches/jars-3/505fcc8c47da308b2f1262f0ff3c65f1/jimfs-1.1.jar
+7f330c260000-7f330c273000 r--s 00241000 08:07 5506                       /home/absolutelysaurabh/.gradle/caches/jars-3/d8dc71eb6d91c966c45f7b594129e14a/ecj-4.6.1.jar
+7f330c273000-7f330c274000 r--s 00003000 08:07 5504                       /home/absolutelysaurabh/.gradle/caches/jars-3/fdb8f5ebd6a086c4818336712b830716/json-simple-1.1.jar
+7f330c274000-7f330c399000 r--s 00f5d000 08:07 5502                       /home/absolutelysaurabh/.gradle/caches/jars-3/dfd566a90e18a0aa75879c33e0731ab8/fastutil-7.2.0.jar
+7f330c399000-7f330c3e4000 r--s 002ff000 08:07 5500                       /home/absolutelysaurabh/.gradle/caches/jars-3/d3d44e9a7fcb4a86fb40775c385dd3d0/bcprov-jdk15on-1.56.jar
+7f330c3e4000-7f330c3f5000 r--s 00097000 08:07 5498                       /home/absolutelysaurabh/.gradle/caches/jars-3/59ebb77d99c5ca0e24bb23272e0329dd/bcpkix-jdk15on-1.56.jar
+7f330c3f5000-7f330c3f7000 r--s 00002000 08:07 5496                       /home/absolutelysaurabh/.gradle/caches/jars-3/f268e5e8fc83bb846ac355d6a16b1f30/javawriter-2.5.0.jar
+7f330c3f7000-7f330c3fc000 r--s 0003b000 08:07 5494                       /home/absolutelysaurabh/.gradle/caches/jars-3/91bf67441f6ac57ccbb374f99f9ed0fc/apksig-3.0.1.jar
+7f330c3fc000-7f330c3ff000 r--s 00024000 08:07 5492                       /home/absolutelysaurabh/.gradle/caches/jars-3/04183dcd1bde85515b23d1bbd46ea9bc/common-26.0.1.jar
+7f330c3ff000-7f330c401000 r--s 00006000 08:07 5490                       /home/absolutelysaurabh/.gradle/caches/jars-3/a0ea702af2bdb16dfa1a50969b155dea/dvlib-26.0.1.jar
+7f330c401000-7f330c404000 r--s 00014000 08:07 5488                       /home/absolutelysaurabh/.gradle/caches/jars-3/6abb718b4b844aa0386163f0c2f6eb72/layoutlib-api-26.0.1.jar
+7f330c404000-7f330c409000 r--s 0004d000 08:07 5486                       /home/absolutelysaurabh/.gradle/caches/jars-3/65a80584522712b8832b7c1c03186c4b/ddmlib-26.0.1.jar
+7f330c409000-7f330c40a000 r--s 00003000 08:07 5484                       /home/absolutelysaurabh/.gradle/caches/jars-3/af01854c900e4906a368ef59064a245d/builder-test-api-3.0.1.jar
+7f330c40a000-7f330c40d000 r--s 00007000 08:07 5482                       /home/absolutelysaurabh/.gradle/caches/jars-3/124ec36ab4edce0919b54d1123daa364/builder-model-3.0.1.jar
+7f330c40d000-7f330c40f000 r--s 0000f000 08:07 172746                     /home/absolutelysaurabh/.gradle/caches/modules-2/files-2.1/org.greenrobot/essentials/3.0.0-RC1/dfc6cd070e196e63df53c90abd2c3e1e02ee40e9/essentials-3.0.0-RC1.jar
+7f330c40f000-7f330c47c000 r--s 00839000 08:07 172744                     /home/absolutelysaurabh/.gradle/caches/modules-2/files-2.1/org.greenrobot/greenrobot-jdt/3.12.2/56bbe5ebf141455ca196fa6fa668930daa6e6dc/greenrobot-jdt-3.12.2.jar
+7f330c47c000-7f330c47e000 r--s 0000b000 08:07 172742                     /home/absolutelysaurabh/.gradle/caches/modules-2/files-2.1/org.greenrobot/greendao-generator/3.2.2/c1d222f0f518f6d32150c566ef378e0dcba8de1e/greendao-generator-3.2.2.jar
+7f330c47e000-7f330c480000 r--s 00001000 08:07 172740                     /home/absolutelysaurabh/.gradle/caches/modules-2/files-2.1/org.greenrobot/greendao-api/3.2.2/e9bbf7a184b0b4914a10d8179c993cc9aa9b1b33/greendao-api-3.2.2.jar
+7f330c480000-7f330c48f000 r--s 00130000 08:07 5480                       /home/absolutelysaurabh/.gradle/caches/jars-3/72ba1443c6adcea1f6ba21e12f0bb0fc/protobuf-java-3.0.0.jar
+7f330c48f000-7f330c4a2000 r--s 001a8000 08:07 5478                       /home/absolutelysaurabh/.gradle/caches/jars-3/a1cbdfb97e256e71fcbd29dc4584a785/protos-26.0.1.jar
+7f330c4a2000-7f330c4a3000 r--s 00005000 08:07 5476                       /home/absolutelysaurabh/.gradle/caches/jars-3/ca5180624b528b15325a5d002dbfbb6d/shared-26.0.1.jar
+7f330c4a3000-7f330c4a5000 r--s 00004000 08:07 5474                       /home/absolutelysaurabh/.gradle/caches/jars-3/07f12c2b6f66ca8d4d6bd02e9c9b060a/tracker-26.0.1.jar
+7f330c4a5000-7f330c4a7000 r--s 00002000 08:07 5472                       /home/absolutelysaurabh/.gradle/caches/jars-3/e91624d2ed1c3b55eec9fd768ed13c1d/proguard-gradle-5.3.3.jar
+7f330c4a7000-7f330c4a9000 r--s 0000f000 08:07 5470                       /home/absolutelysaurabh/.gradle/caches/jars-3/96760c32d36a5d7066e3ccf088bfd362/jopt-simple-4.9.jar
+7f330c4a9000-7f330c4ad000 r--s 0001e000 08:07 5468                       /home/absolutelysaurabh/.gradle/caches/jars-3/0d3e95aba631209a078aeec58a76633d/org.jacoco.core-0.7.4.201502262128.jar
+7f330c4ad000-7f330c4b0000 r--s 00020000 08:07 5466                       /home/absolutelysaurabh/.gradle/caches/jars-3/c72fc284d34f39eab57a4e3ba83405e9/org.jacoco.report-0.7.4.201502262128.jar
+7f330c4b0000-7f330c4b2000 r--s 0000c000 08:07 5464                       /home/absolutelysaurabh/.gradle/caches/jars-3/9b0a36633c92c6e87e62c81734593183/asm-5.1.jar
+7f330c4b2000-7f330c4b4000 r--s 00006000 08:07 5462                       /home/absolutelysaurabh/.gradle/caches/jars-3/50c8a7da333c41693b2b7ce95b6d9d89/asm-tree-5.1.jar
+7f330c4b4000-7f330c4b5000 r--s 0000a000 08:07 5460                       /home/absolutelysaurabh/.gradle/caches/jars-3/c4f1f1d5a624f981d35a78d181e2c418/asm-util-5.1.jar
+7f330c4b5000-7f330c4b7000 r--s 0000a000 08:07 5458                       /home/absolutelysaurabh/.gradle/caches/jars-3/d37aa405961c464c627b1efe5def81b8/asm-commons-5.1.jar
+7f330c4b7000-7f330c4b8000 r--s 00004000 08:07 5456                       /home/absolutelysaurabh/.gradle/caches/jars-3/2b2689d10a4425b1cb2d0654db2ea088/asm-analysis-5.1.jar
+7f330c4b8000-7f330c4b9000 r--s 00000000 08:07 5454                       /home/absolutelysaurabh/.gradle/caches/jars-3/5206138fb8a6b2ffbd31e140916c2100/transform-api-2.0.0-deprecated-use-gradle-api.jar
+7f330c4b9000-7f330c4c8000 r--s 000c8000 08:07 5452                       /home/absolutelysaurabh/.gradle/caches/jars-3/af931fae44e009148423077fa09abbd1/kotlin-stdlib-1.1.3-2.jar
+7f330c4c8000-7f330c4fa000 r--s 0021b000 08:07 5450                       /home/absolutelysaurabh/.gradle/caches/jars-3/24b2127528a18b338af82ff7ea236d45/kotlin-reflect-1.1.3-2.jar
+7f330c4fa000-7f330c4fd000 ---p 00000000 00:00 0 
+7f330c4fd000-7f330c5fb000 rw-p 00000000 00:00 0 
+7f330c5fb000-7f330c5fe000 ---p 00000000 00:00 0 
+7f330c5fe000-7f330c6fc000 rw-p 00000000 00:00 0 
+7f330c6fc000-7f330c6ff000 ---p 00000000 00:00 0 
+7f330c6ff000-7f330c7fd000 rw-p 00000000 00:00 0 
+7f330c7fd000-7f330c800000 ---p 00000000 00:00 0 
+7f330c800000-7f330cafe000 rw-p 00000000 00:00 0 
+7f330cafe000-7f330ccfe000 rw-p 00000000 00:00 0 
+7f330ccfe000-7f330cd01000 ---p 00000000 00:00 0 
+7f330cd01000-7f330cfff000 rw-p 00000000 00:00 0 
+7f330cfff000-7f3310000000 rw-p 00000000 00:00 0 
+7f3310000000-7f33113c2000 rw-p 00000000 00:00 0 
+7f33113c2000-7f3314000000 ---p 00000000 00:00 0 
+7f3314000000-7f33140c7000 rw-p 00000000 00:00 0 
+7f33140c7000-7f3318000000 ---p 00000000 00:00 0 
+7f3318000000-7f331a134000 rw-p 00000000 00:00 0 
+7f331a134000-7f331c000000 ---p 00000000 00:00 0 
+7f331c000000-7f331dfae000 rw-p 00000000 00:00 0 
+7f331dfae000-7f3320000000 ---p 00000000 00:00 0 
+7f3320000000-7f332004d000 rw-p 00000000 00:00 0 
+7f332004d000-7f3324000000 ---p 00000000 00:00 0 
+7f3324000000-7f33245c3000 rw-p 00000000 00:00 0 
+7f33245c3000-7f3328000000 ---p 00000000 00:00 0 
+7f3328000000-7f3329305000 rw-p 00000000 00:00 0 
+7f3329305000-7f332c000000 ---p 00000000 00:00 0 
+7f332c000000-7f332c006000 r--s 00030000 08:07 5448                       /home/absolutelysaurabh/.gradle/caches/jars-3/90ec49f8b88710e2876aefe447609abb/repository-26.0.1.jar
+7f332c006000-7f332c011000 r--s 0009b000 08:07 5446                       /home/absolutelysaurabh/.gradle/caches/jars-3/af771564c510a1c104220a8be892ab2d/sdklib-26.0.1.jar
+7f332c011000-7f332c020000 r--s 000da000 08:07 5444                       /home/absolutelysaurabh/.gradle/caches/jars-3/50767da85151ce151711c301f4a0623c/sdk-common-26.0.1.jar
+7f332c020000-7f332c024000 r--s 00023000 08:07 5442                       /home/absolutelysaurabh/.gradle/caches/jars-3/186e268c3a12c0a405d658dabf9d64d2/manifest-merger-26.0.1.jar
+7f332c024000-7f332c028000 r--s 0002e000 08:07 5440                       /home/absolutelysaurabh/.gradle/caches/jars-3/c519ce7b2f3637e909703f541c08c445/compilerCommon-3.0.1.jar
+7f332c028000-7f332c02a000 r--s 00003000 08:07 5438                       /home/absolutelysaurabh/.gradle/caches/jars-3/34cfdbf6cad3f54cc2f45521bf0374e7/gradle-api-3.0.1.jar
+7f332c02a000-7f332c039000 r--s 000cb000 08:07 5436                       /home/absolutelysaurabh/.gradle/caches/jars-3/e5c09abb4b0acf0785ecd8a8015ab959/uast-26.0.1.jar
+7f332c039000-7f332c040000 r--s 0007f000 08:07 5434                       /home/absolutelysaurabh/.gradle/caches/jars-3/b1f5a73634581e955e7f89376aea2d48/lint-api-26.0.1.jar
+7f332c040000-7f332c049000 r--s 000ff000 08:07 5432                       /home/absolutelysaurabh/.gradle/caches/jars-3/75e696a5531ca85e1fe447df83f74bd2/lint-checks-26.0.1.jar
+7f332c049000-7f332c04c000 r--s 00039000 08:07 5430                       /home/absolutelysaurabh/.gradle/caches/jars-3/7fa6c4fcdd1d81db4cc9c7439ce29486/lint-26.0.1.jar
+7f332c04c000-7f332c07c000 r--s 01983000 08:07 5428                       /home/absolutelysaurabh/.gradle/caches/jars-3/add7f1627b730db059119a8274a10c21/builder-3.0.1.jar
+7f332c07c000-7f332c07f000 r--s 00027000 08:07 172736                     /home/absolutelysaurabh/.gradle/caches/modules-2/files-2.1/org.greenrobot/greendao-code-modifier/3.2.2/e8c030500864d74dc46a3b4f100c05e3382b9b02/greendao-code-modifier-3.2.2.jar
+7f332c07f000-7f332c0a2000 r--s 0020b000 08:07 5426                       /home/absolutelysaurabh/.gradle/caches/jars-3/4adae2b762c8552c6e3aa2ded1493e4b/gradle-core-3.0.1.jar
+7f332c0a2000-7f332c0a4000 r--s 0000b000 08:07 172738                     /home/absolutelysaurabh/.gradle/caches/modules-2/files-2.1/org.greenrobot/greendao-gradle-plugin/3.2.2/db4da9243ef0d65ffb94cd48445da259e696d90b/greendao-gradle-plugin-3.2.2.jar
+7f332c0a4000-7f332c0a6000 r--s 0000f000 08:07 5424                       /home/absolutelysaurabh/.gradle/caches/jars-3/afd86a0d8507fd7f2e97461eaf9e4416/gradle-3.0.1.jar
+7f332c0a6000-7f332c2a6000 rw-p 00000000 00:00 0 
+7f332c2a6000-7f332c4a6000 rw-p 00000000 00:00 0 
+7f332c4a6000-7f332c6a6000 rw-p 00000000 00:00 0 
+7f332c6a6000-7f332c7c1000 r--s 02008000 08:07 9264                       /home/absolutelysaurabh/.gradle/caches/jars-3/9955734f77abc673a38c7cd4c0214af5/android.jar
+7f332c7c1000-7f332c7c8000 r--s 0002a000 08:07 2254209                    /home/absolutelysaurabh/.gradle/caches/jars-3/fff47aec37b967e571b648d1fc9c6db6/gradle-messaging-3.5.jar
+7f332c7c8000-7f332c7cd000 r--s 00041000 08:07 2254203                    /home/absolutelysaurabh/.gradle/caches/jars-3/c0502f5c2cf6dfd52d250e1b7d027d24/commons-lang-2.6.jar
+7f332c7cd000-7f332c80f000 r--s 00220000 08:07 2254197                    /home/absolutelysaurabh/.gradle/caches/jars-3/929747bc6b973b44297e9c57df71598d/gradle-core-3.5.jar
+7f332c80f000-7f332c818000 r--s 00047000 08:07 2254192                    /home/absolutelysaurabh/.gradle/caches/jars-3/11d06a5dce89fe5632250b7df00a3d57/gradle-base-services-3.5.jar
+7f332c818000-7f332c840000 r--s 001cf000 08:07 2254190                    /home/absolutelysaurabh/.gradle/caches/jars-3/566e7e0f530f75a42eba4833ef84d88c/guava-jdk5-17.0.jar
+7f332c840000-7f332c84e000 r--s 00043000 08:07 2254188                    /home/absolutelysaurabh/.gradle/caches/jars-3/c0d1da18a547ef3a2ba66d3068ae6e09/gradle-tooling-api-3.5.jar
+7f332c84e000-7f332ca4e000 rw-p 00000000 00:00 0 
+7f332ca4e000-7f332cac7000 r--s 010fd000 08:07 150049                     /home/absolutelysaurabh/android-studio/jre/lib/tools.jar
+7f332cac7000-7f332caca000 ---p 00000000 00:00 0 
+7f332caca000-7f332cdc8000 rw-p 00000000 00:00 0 
+7f332cdc8000-7f332cdcb000 ---p 00000000 00:00 0 
+7f332cdcb000-7f332cec9000 rw-p 00000000 00:00 0 
+7f332cec9000-7f332cecc000 ---p 00000000 00:00 0 
+7f332cecc000-7f332d1ca000 rw-p 00000000 00:00 0 
+7f332d1ca000-7f332d1cd000 ---p 00000000 00:00 0 
+7f332d1cd000-7f332d2cb000 rw-p 00000000 00:00 0 
+7f332d2cb000-7f332d2ce000 ---p 00000000 00:00 0 
+7f332d2ce000-7f332d3cc000 rw-p 00000000 00:00 0 
+7f332d3cc000-7f332d3cf000 ---p 00000000 00:00 0 
+7f332d3cf000-7f332d4cd000 rw-p 00000000 00:00 0 
+7f332d4cd000-7f332d4d0000 ---p 00000000 00:00 0 
+7f332d4d0000-7f332d5ce000 rw-p 00000000 00:00 0 
+7f332d5ce000-7f332d5d1000 ---p 00000000 00:00 0 
+7f332d5d1000-7f332d6cf000 rw-p 00000000 00:00 0 
+7f332d6cf000-7f332d6d2000 ---p 00000000 00:00 0 
+7f332d6d2000-7f332d7d0000 rw-p 00000000 00:00 0 
+7f332d7d0000-7f332d7d3000 ---p 00000000 00:00 0 
+7f332d7d3000-7f332d8d1000 rw-p 00000000 00:00 0 
+7f332d8d1000-7f332d8d8000 r--s 00000000 08:07 1879114                    /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+7f332d8d8000-7f332d8db000 ---p 00000000 00:00 0 
+7f332d8db000-7f332d9d9000 rw-p 00000000 00:00 0 
+7f332d9d9000-7f332d9de000 r--s 0009a000 08:07 150305                     /home/absolutelysaurabh/android-studio/jre/jre/lib/jsse.jar
+7f332d9de000-7f332dbde000 rw-p 00000000 00:00 0 
+7f332dbde000-7f332dbe7000 r-xp 00000000 08:07 150210                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f332dbe7000-7f332dde6000 ---p 00009000 08:07 150210                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f332dde6000-7f332dde7000 r--p 00008000 08:07 150210                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f332dde7000-7f332dde8000 rw-p 00009000 08:07 150210                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f332dde8000-7f332ddea000 r--s 00007000 08:07 2236679                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-tooling-api-builders-4.1.jar
+7f332ddea000-7f332dded000 r--s 00009000 08:07 2236689                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-testing-native-4.1.jar
+7f332dded000-7f332ddef000 r--s 00009000 08:07 2236762                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/hamcrest-core-1.3.jar
+7f332ddef000-7f332ddf4000 r--s 00040000 08:07 2236757                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/bsh-2.0b4.jar
+7f332ddf4000-7f332ddf6000 r--s 00006000 08:07 2236758                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jcommander-1.12.jar
+7f332ddf6000-7f332ddfc000 r--s 00033000 08:07 2236759                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/snakeyaml-1.6.jar
+7f332ddfc000-7f332de05000 r--s 00089000 08:07 2236717                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/testng-6.3.1.jar
+7f332de05000-7f332de0d000 r--s 00045000 08:07 2236718                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/junit-4.12.jar
+7f332de0d000-7f332de13000 r--s 0002e000 08:07 2236685                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-testing-jvm-4.1.jar
+7f332de13000-7f332de17000 r--s 00017000 08:07 2236693                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-testing-base-4.1.jar
+7f332de17000-7f332de1e000 r--s 00038000 08:07 2236713                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/bcpg-jdk15on-1.51.jar
+7f332de1e000-7f332de20000 r--s 0000c000 08:07 2236664                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-signing-4.1.jar
+7f332de20000-7f332de22000 r--s 00007000 08:07 2236670                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-scala-4.1.jar
+7f332de22000-7f332de23000 r--s 00004000 08:07 2236701                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-resources-sftp-4.1.jar
+7f332de23000-7f332de33000 r--s 00088000 08:07 2236730                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/joda-time-2.8.2.jar
+7f332de33000-7f332de44000 r--s 0010d000 08:07 2236729                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jackson-databind-2.6.6.jar
+7f332de44000-7f332de47000 r--s 00009000 08:07 2236728                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jackson-annotations-2.6.6.jar
+7f332de47000-7f332de4b000 r--s 0003c000 08:07 2236727                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jackson-core-2.6.6.jar
+7f332de4b000-7f332de59000 r--s 00087000 08:07 2236726                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aws-java-sdk-core-1.11.6.jar
+7f332de59000-7f332de60000 r--s 00057000 08:07 2236725                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aws-java-sdk-kms-1.11.6.jar
+7f332de60000-7f332de6d000 r--s 0008e000 08:07 2236724                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aws-java-sdk-s3-1.11.6.jar
+7f332de6d000-7f332de6f000 r--s 00004000 08:07 2236698                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-resources-s3-4.1.jar
+7f332de6f000-7f332de71000 r--s 00010000 08:07 2236694                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-reporting-4.1.jar
+7f332de71000-7f332de73000 r--s 00002000 08:07 2236695                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-publish-4.1.jar
+7f332de73000-7f332de75000 r--s 00009000 08:07 2236706                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/commons-cli-1.2.jar
+7f332de75000-7f332de7b000 r--s 00036000 08:07 2236678                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-plugins-4.1.jar
+7f332de7b000-7f332de7d000 r--s 00009000 08:07 2236665                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-plugin-development-4.1.jar
+7f332de7d000-7f332de83000 r--s 0002b000 08:07 2236673                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-platform-play-4.1.jar
+7f332de83000-7f332de92000 r--s 0005b000 08:07 2236691                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-platform-native-4.1.jar
+7f332de92000-7f332de96000 r--s 0001b000 08:07 2236688                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-platform-jvm-4.1.jar
+7f332de96000-7f332de9e000 r--s 00027000 08:07 2236696                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-platform-base-4.1.jar
+7f332de9e000-7f332dec6000 r--s 0021c000 08:07 2236707                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/biz.aQute.bndlib-3.2.0.jar
+7f332dec6000-7f332dec7000 r--s 00004000 08:07 2236663                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-osgi-4.1.jar
+7f332dec7000-7f332deca000 r--s 0000c000 08:07 2236710                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/pmaven-groovy-0.8-20100325.jar
+7f332deca000-7f332decb000 r--s 00004000 08:07 2236709                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/pmaven-common-0.8-20100325.jar
+7f332decb000-7f332ded1000 r--s 00023000 08:07 2236666                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-maven-4.1.jar
+7f332ded1000-7f332ded4000 r--s 0000b000 08:07 2236684                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-language-scala-4.1.jar
+7f332ded4000-7f332dedb000 r--s 00020000 08:07 2236690                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-language-native-4.1.jar
+7f332dedb000-7f332dedd000 r--s 00005000 08:07 2236687                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-language-jvm-4.1.jar
+7f332dedd000-7f332dee4000 r--s 0002f000 08:07 2236686                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-language-java-4.1.jar
+7f332dee4000-7f332dee7000 r--s 0000a000 08:07 2236683                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-language-groovy-4.1.jar
+7f332dee7000-7f332deee000 r--s 00035000 08:07 2236716                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/simple-4.1.21.jar
+7f332deee000-7f332defa000 r--s 00100000 08:07 2236714                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/rhino-1.7R3.jar
+7f332defa000-7f332defe000 r--s 00012000 08:07 2236674                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-javascript-4.1.jar
+7f332defe000-7f332df01000 r--s 00011000 08:07 2236676                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-jacoco-4.1.jar
+7f332df01000-7f332df04000 r--s 0000e000 08:07 2236675                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-ivy-4.1.jar
+7f332df04000-7f332df05000 r--s 00002000 08:07 2236667                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-ide-play-4.1.jar
+7f332df05000-7f332df08000 r--s 00013000 08:07 2236668                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-ide-native-4.1.jar
+7f332df08000-7f332df12000 r--s 00054000 08:07 2236669                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-ide-4.1.jar
+7f332df12000-7f332df14000 r--s 00007000 08:07 2236672                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-ear-4.1.jar
+7f332df14000-7f332df16000 r--s 00005000 08:07 2236704                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jatl-0.2.2.jar
+7f332df16000-7f332df1d000 r--s 00038000 08:07 2236692                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-diagnostics-4.1.jar
+7f332df1d000-7f332df1f000 r--s 0000b000 08:07 2236681                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-composite-builds-4.1.jar
+7f332df1f000-7f332df24000 r--s 00025000 08:07 2236661                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-code-quality-4.1.jar
+7f332df24000-7f332df29000 r--s 00022000 08:07 2236677                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-build-init-4.1.jar
+7f332df29000-7f332df2f000 r--s 0008e000 08:07 2236671                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-build-comparison-4.1.jar
+7f332df2f000-7f332df30000 r--s 00002000 08:07 2236699                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-build-cache-http-4.1.jar
+7f332df30000-7f332df32000 r--s 00008000 08:07 2236662                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-antlr-4.1.jar
+7f332df32000-7f332df34000 r--s 00004000 08:07 2236682                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-announce-4.1.jar
+7f332df34000-7f332df36000 r--s 00008000 08:07 2236570                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-kotlin-dsl-tooling-builders-0.10.3.jar
+7f332df36000-7f332df39000 r--s 0001c000 08:07 2236720                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/nekohtml-1.9.14.jar
+7f332df39000-7f332df41000 r--s 00028000 08:07 2236761                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/xml-apis-1.3.04.jar
+7f332df41000-7f332df59000 r--s 00115000 08:07 2236721                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/xercesImpl-2.9.1.jar
+7f332df59000-7f332df5f000 r--s 0005b000 08:07 2236719                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jcifs-1.3.17.jar
+7f332df5f000-7f332df66000 r--s 00049000 08:07 2236760                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/httpcore-4.4.4.jar
+7f332df66000-7f332df6c000 r--s 00033000 08:07 2236712                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/commons-codec-1.6.jar
+7f332df6c000-7f332df79000 r--s 000a4000 08:07 2236705                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/httpclient-4.4.1.jar
+7f332df79000-7f332df7b000 r--s 0000b000 08:07 2236700                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-resources-http-4.1.jar
+7f332df7b000-7f332df7f000 r--s 00017000 08:07 2236697                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-plugin-use-4.1.jar
+7f332df7f000-7f332df80000 r--s 00000000 08:07 2236576                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-runtime-api-info-4.1.jar
+7f332df80000-7f332df81000 r--s 00000000 08:07 2236579                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-installation-beacon-4.1.jar
+7f332df81000-7f332dfc1000 r--s 00277000 08:07 2236732                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/bcprov-jdk15on-1.51.jar
+7f332dfc1000-7f332dfc5000 r--s 0001d000 08:07 2236731                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/xbean-reflect-3.4.jar
+7f332dfc5000-7f332dfc7000 r--s 0000a000 08:07 2236733                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-settings-3.0.4.jar
+7f332dfc7000-7f332dfca000 r--s 00008000 08:07 2236734                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-settings-builder-3.0.4.jar
+7f332dfca000-7f332dfce000 r--s 00033000 08:07 2236735                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-utils-2.0.6.jar
+7f332dfce000-7f332dfd0000 r--s 0000d000 08:07 2236736                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-interpolation-1.14.jar
+7f332dfd0000-7f332dfd2000 r--s 00000000 08:07 2236711                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-component-annotations-1.5.5.jar
+7f332dfd2000-7f332dfd9000 r--s 0002e000 08:07 2236737                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-container-default-1.5.5.jar
+7f332dfd9000-7f332dfdb000 r--s 0000a000 08:07 2236738                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-classworlds-2.4.jar
+7f332dfdb000-7f332dfdd000 r--s 00002000 08:07 2236739                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-cipher-1.7.jar
+7f332dfdd000-7f332dfde000 r--s 00006000 08:07 2236740                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/plexus-sec-dispatcher-1.3.jar
+7f332dfde000-7f332dfe4000 r--s 0003f000 08:07 2236741                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-compat-3.0.4.jar
+7f332dfe4000-7f332dfe8000 r--s 00021000 08:07 2236742                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-model-builder-3.0.4.jar
+7f332dfe8000-7f332dfea000 r--s 00026000 08:07 2236743                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-model-3.0.4.jar
+7f332dfea000-7f332dfec000 r--s 0000b000 08:07 2236744                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-artifact-3.0.4.jar
+7f332dfec000-7f332dfee000 r--s 00006000 08:07 2236745                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-repository-metadata-3.0.4.jar
+7f332dfee000-7f332dff0000 r--s 0000b000 08:07 2236746                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-plugin-api-3.0.4.jar
+7f332dff0000-7f332dff2000 r--s 0000c000 08:07 2236747                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-aether-provider-3.0.4.jar
+7f332dff2000-7f332dff3000 r--s 00002000 08:07 2236748                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/wagon-file-2.4.jar
+7f332dff3000-7f332dff4000 r--s 00002000 08:07 2236749                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/wagon-http-2.4.jar
+7f332dff4000-7f332dff6000 r--s 0000b000 08:07 2236750                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/wagon-provider-api-2.4.jar
+7f332dff6000-7f332dff7000 r--s 00007000 08:07 2236751                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/wagon-http-shared4-2.4.jar
+7f332dff7000-7f332dffa000 r--s 00013000 08:07 2236752                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aether-api-1.13.1.jar
+7f332dffa000-7f332dffd000 r--s 0001d000 08:07 2236753                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aether-impl-1.13.1.jar
+7f332dffd000-7f332dffe000 r--s 00003000 08:07 2236754                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aether-spi-1.13.1.jar
+7f332dffe000-7f332e00a000 r--s 0007d000 08:07 2236708                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/maven-core-3.0.4.jar
+7f332e00a000-7f332e02e000 r--s 0011a000 08:07 2236703                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-dependency-management-4.1.jar
+7f332e02e000-7f332e044000 r-xp 00000000 08:07 147473                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f332e044000-7f332e243000 ---p 00016000 08:07 147473                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f332e243000-7f332e244000 rw-p 00015000 08:07 147473                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f332e244000-7f332e3b6000 r-xp 00000000 08:07 1574093                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f332e3b6000-7f332e5b6000 ---p 00172000 08:07 1574093                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f332e5b6000-7f332e5c0000 r--p 00172000 08:07 1574093                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f332e5c0000-7f332e5c2000 rw-p 0017c000 08:07 1574093                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f332e5c2000-7f332e5c6000 rw-p 00000000 00:00 0 
+7f332e5c6000-7f332e5ca000 r--s 0001c000 08:07 2236755                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aether-util-1.13.1.jar
+7f332e5ca000-7f332e5cc000 r--s 00006000 08:07 2236756                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/aether-connector-wagon-1.13.1.jar
+7f332e5cc000-7f332e5d1000 r--s 00034000 08:07 2236715                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gson-2.7.jar
+7f332e5d1000-7f332e5d6000 r--s 00040000 08:07 2236723                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/jsch-0.1.54.jar
+7f332e5d6000-7f332e5e5000 r--s 000d9000 08:07 2236722                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/ivy-2.2.0.jar
+7f332e5e5000-7f332e5e8000 r--s 0000d000 08:07 2236702                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/plugins/gradle-workers-4.1.jar
+7f332e5e8000-7f332e5ed000 r-xp 00000000 08:07 2254160                    /home/absolutelysaurabh/.gradle/native/25/linux-amd64/libnative-platform.so
+7f332e5ed000-7f332e7ec000 ---p 00005000 08:07 2254160                    /home/absolutelysaurabh/.gradle/native/25/linux-amd64/libnative-platform.so
+7f332e7ec000-7f332e7ed000 rw-p 00004000 08:07 2254160                    /home/absolutelysaurabh/.gradle/native/25/linux-amd64/libnative-platform.so
+7f332e7ed000-7f332e7fe000 r-xp 00000000 08:07 150194                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libnio.so
+7f332e7fe000-7f332e9fd000 ---p 00011000 08:07 150194                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libnio.so
+7f332e9fd000-7f332e9fe000 r--p 00010000 08:07 150194                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libnio.so
+7f332e9fe000-7f332e9ff000 rw-p 00011000 08:07 150194                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libnio.so
+7f332e9ff000-7f332ea15000 r-xp 00000000 08:07 150198                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libnet.so
+7f332ea15000-7f332ec15000 ---p 00016000 08:07 150198                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libnet.so
+7f332ec15000-7f332ec16000 r--p 00016000 08:07 150198                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libnet.so
+7f332ec16000-7f332ec17000 rw-p 00017000 08:07 150198                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libnet.so
+7f332ec17000-7f332ec18000 r--s 00006000 08:07 2236578                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-wrapper-4.1.jar
+7f332ec18000-7f332ec25000 r--s 00043000 08:07 2236577                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-tooling-api-4.1.jar
+7f332ec25000-7f332ec34000 r--s 000c8000 08:07 2236574                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/kotlin-stdlib-1.1.3-2.jar
+7f332ec34000-7f332ec66000 r--s 0021b000 08:07 2236573                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/kotlin-reflect-1.1.3-2.jar
+7f332ec66000-7f332ee1d000 r--s 01786000 08:07 2236572                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/kotlin-compiler-embeddable-1.1.3-2.jar
+7f332ee1d000-7f332ee1e000 r--s 00000000 08:07 2236571                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-kotlin-dsl-tooling-models-0.10.3.jar
+7f332ee1e000-7f332ee1f000 r--s 00001000 08:07 2236569                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-kotlin-dsl-compiler-plugin-0.10.3.jar
+7f332ee1f000-7f332ee21000 r--s 00003000 08:07 2236567                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/annotations-13.0.jar
+7f332ee21000-7f332ee2b000 r--s 00073000 08:07 2236568                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-kotlin-dsl-0.10.3.jar
+7f332ee2b000-7f332ee30000 r--s 00013000 08:07 2236584                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-resources-4.1.jar
+7f332ee30000-7f332ee32000 r--s 00005000 08:07 2236591                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-cli-4.1.jar
+7f332ee32000-7f332ee34000 r--s 00003000 08:07 2236599                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/jcl-over-slf4j-1.7.10.jar
+7f332ee34000-7f332ee35000 r--s 00005000 08:07 2236598                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/log4j-over-slf4j-1.7.10.jar
+7f332ee35000-7f332ee37000 r--s 00000000 08:07 2236596                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/jul-to-slf4j-1.7.10.jar
+7f332ee37000-7f332ee3e000 r--s 0002c000 08:07 2236582                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-logging-4.1.jar
+7f332ee3e000-7f332ee4e000 r--s 00082000 08:07 2236587                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-model-core-4.1.jar
+7f332ee4e000-7f332ee50000 r--s 00006000 08:07 2236588                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-base-services-groovy-4.1.jar
+7f332ee50000-7f332ee52000 r--s 00007000 08:07 2236586                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-model-groovy-4.1.jar
+7f332ee52000-7f332ee53000 r--s 00002000 08:07 2236626                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-docs-4.1.jar
+7f332ee53000-7f332ee60000 r--s 00083000 08:07 2236624                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/commons-collections-3.2.2.jar
+7f332ee60000-7f332ee61000 r--s 00000000 08:07 2236623                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/javax.inject-1.jar
+7f332ee61000-7f332eed1000 r--s 00645000 08:07 2236621                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/groovy-all-2.4.11.jar
+7f332eed1000-7f332eed4000 r--s 00023000 08:07 2236642                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/jansi-1.14.jar
+7f332eed4000-7f332eed5000 r--s 00004000 08:07 2236644                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-freebsd-amd64-libcpp-0.14.jar
+7f332eed5000-7f332eed6000 r--s 00004000 08:07 2236645                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-freebsd-amd64-libstdcpp-0.14.jar
+7f332eed6000-7f332eed7000 r--s 00004000 08:07 2236646                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-freebsd-i386-libcpp-0.14.jar
+7f332eed7000-7f332eeff000 r--s 001cf000 08:07 2236603                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/guava-jdk5-17.0.jar
+7f332eeff000-7f332ef00000 ---p 00000000 00:00 0 
+7f332ef00000-7f3338000000 rw-p 00000000 00:00 0 
+7f3338000000-7f333805f000 rw-p 00000000 00:00 0 
+7f333805f000-7f333c000000 ---p 00000000 00:00 0 
+7f333c000000-7f333d224000 rw-p 00000000 00:00 0 
+7f333d224000-7f3340000000 ---p 00000000 00:00 0 
+7f3340000000-7f3340193000 rw-p 00000000 00:00 0 
+7f3340193000-7f3344000000 ---p 00000000 00:00 0 
+7f3344000000-7f3344085000 rw-p 00000000 00:00 0 
+7f3344085000-7f3348000000 ---p 00000000 00:00 0 
+7f3348000000-7f3348152000 rw-p 00000000 00:00 0 
+7f3348152000-7f334c000000 ---p 00000000 00:00 0 
+7f334c000000-7f334c001000 r--s 00003000 08:07 2236647                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-freebsd-i386-libstdcpp-0.14.jar
+7f334c001000-7f334c002000 r--s 00002000 08:07 2236648                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-linux-amd64-0.14.jar
+7f334c002000-7f334c003000 r--s 00002000 08:07 2236649                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-linux-i386-0.14.jar
+7f334c003000-7f334c005000 r--s 00002000 08:07 2236650                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-osx-amd64-0.14.jar
+7f334c005000-7f334c006000 r--s 00003000 08:07 2236651                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-osx-i386-0.14.jar
+7f334c006000-7f334c008000 r--s 0000b000 08:07 2236652                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-windows-amd64-0.14.jar
+7f334c008000-7f334c009000 r--s 0000b000 08:07 2236653                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-windows-i386-0.14.jar
+7f334c009000-7f334c00a000 r--s 00001000 08:07 2236654                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-linux-amd64-ncurses5-0.14.jar
+7f334c00a000-7f334c00b000 r--s 00001000 08:07 2236655                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-linux-amd64-ncurses6-0.14.jar
+7f334c00b000-7f334c00c000 r--s 00001000 08:07 2236656                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-linux-i386-ncurses5-0.14.jar
+7f334c00c000-7f334c010000 r--s 00012000 08:07 2236625                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-0.14.jar
+7f334c010000-7f334c013000 r--s 0000c000 08:07 2236585                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-native-4.1.jar
+7f334c013000-7f334c015000 r--s 0000f000 08:07 2236593                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/reflectasm-1.07-shaded.jar
+7f334c015000-7f334c017000 r--s 00000000 08:07 2236658                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/minlog-1.2.jar
+7f334c017000-7f334c01b000 r--s 00026000 08:07 2236592                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/kryo-2.20.jar
+7f334c01b000-7f334c03a000 r--s 001d1000 08:07 2236622                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/ant-1.9.6.jar
+7f334c03a000-7f334c084000 r--s 00253000 08:07 2236580                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-core-4.1.jar
+7f334c084000-7f334c087000 ---p 00000000 00:00 0 
+7f334c087000-7f334c185000 rw-p 00000000 00:00 0 
+7f334c185000-7f334c188000 ---p 00000000 00:00 0 
+7f334c188000-7f334c286000 rw-p 00000000 00:00 0 
+7f334c286000-7f334c289000 ---p 00000000 00:00 0 
+7f334c289000-7f334c387000 rw-p 00000000 00:00 0 
+7f334c387000-7f334c38a000 ---p 00000000 00:00 0 
+7f334c38a000-7f334c488000 rw-p 00000000 00:00 0 
+7f334c488000-7f334c48b000 ---p 00000000 00:00 0 
+7f334c48b000-7f334c589000 rw-p 00000000 00:00 0 
+7f334c589000-7f334c861000 r--p 00000000 08:07 1574187                    /usr/lib/locale/locale-archive
+7f334c861000-7f334c864000 ---p 00000000 00:00 0 
+7f334c864000-7f334c962000 rw-p 00000000 00:00 0 
+7f334c962000-7f334c965000 ---p 00000000 00:00 0 
+7f334c965000-7f334ca63000 rw-p 00000000 00:00 0 
+7f334ca63000-7f334ca64000 ---p 00000000 00:00 0 
+7f334ca64000-7f334db18000 rw-p 00000000 00:00 0 
+7f334db18000-7f334dce8000 r--s 03c46000 08:07 150103                     /home/absolutelysaurabh/android-studio/jre/jre/lib/rt.jar
+7f334dce8000-7f334eeb9000 rw-p 00000000 00:00 0 
+7f334eeb9000-7f334eeba000 ---p 00000000 00:00 0 
+7f334eeba000-7f334efba000 rw-p 00000000 00:00 0 
+7f334efba000-7f334efbb000 ---p 00000000 00:00 0 
+7f334efbb000-7f334f0bb000 rw-p 00000000 00:00 0 
+7f334f0bb000-7f334f0bc000 ---p 00000000 00:00 0 
+7f334f0bc000-7f334f1bc000 rw-p 00000000 00:00 0 
+7f334f1bc000-7f334f1bd000 ---p 00000000 00:00 0 
+7f334f1bd000-7f334f487000 rw-p 00000000 00:00 0 
+7f334f487000-7f334f8bd000 ---p 00000000 00:00 0 
+7f334f8bd000-7f334fa87000 rw-p 00000000 00:00 0 
+7f334fa87000-7f334febd000 ---p 00000000 00:00 0 
+7f334febd000-7f33501bd000 rw-p 00000000 00:00 0 
+7f33501bd000-7f335032e000 rw-p 00000000 00:00 0 
+7f335032e000-7f335057e000 ---p 00000000 00:00 0 
+7f335057e000-7f335614e000 rwxp 00000000 00:00 0 
+7f335614e000-7f335f57e000 ---p 00000000 00:00 0 
+7f335f57e000-7f335f598000 r-xp 00000000 08:07 150146                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libzip.so
+7f335f598000-7f335f798000 ---p 0001a000 08:07 150146                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libzip.so
+7f335f798000-7f335f799000 r--p 0001a000 08:07 150146                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libzip.so
+7f335f799000-7f335f79a000 rw-p 0001b000 08:07 150146                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libzip.so
+7f335f79a000-7f335f7a5000 r-xp 00000000 08:07 146469                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f335f7a5000-7f335f9a4000 ---p 0000b000 08:07 146469                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f335f9a4000-7f335f9a5000 r--p 0000a000 08:07 146469                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f335f9a5000-7f335f9a6000 rw-p 0000b000 08:07 146469                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f335f9a6000-7f335f9ac000 rw-p 00000000 00:00 0 
+7f335f9ac000-7f335f9b7000 r-xp 00000000 08:07 146473                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f335f9b7000-7f335fbb6000 ---p 0000b000 08:07 146473                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f335fbb6000-7f335fbb7000 r--p 0000a000 08:07 146473                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f335fbb7000-7f335fbb8000 rw-p 0000b000 08:07 146473                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f335fbb8000-7f335fbce000 r-xp 00000000 08:07 146453                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f335fbce000-7f335fdcd000 ---p 00016000 08:07 146453                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f335fdcd000-7f335fdce000 r--p 00015000 08:07 146453                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f335fdce000-7f335fdcf000 rw-p 00016000 08:07 146453                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f335fdcf000-7f335fdd1000 rw-p 00000000 00:00 0 
+7f335fdd1000-7f335fdfe000 r-xp 00000000 08:07 150144                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libjava.so
+7f335fdfe000-7f335fffd000 ---p 0002d000 08:07 150144                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libjava.so
+7f335fffd000-7f335fffe000 r--p 0002c000 08:07 150144                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libjava.so
+7f335fffe000-7f3360000000 rw-p 0002d000 08:07 150144                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libjava.so
+7f3360000000-7f3360ece000 rw-p 00000000 00:00 0 
+7f3360ece000-7f3364000000 ---p 00000000 00:00 0 
+7f3364000000-7f3364001000 r--s 00001000 08:07 2236657                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/native-platform-linux-i386-ncurses6-0.14.jar
+7f3364001000-7f3364003000 r--s 00007000 08:07 2236659                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/objenesis-1.2.jar
+7f3364003000-7f3364009000 r--s 0002b000 08:07 2236589                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-messaging-4.1.jar
+7f3364009000-7f336400b000 r--s 00006000 08:07 2236583                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-process-services-4.1.jar
+7f336400b000-7f336400d000 r--s 00000000 08:07 2236581                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-jvm-services-4.1.jar
+7f336400d000-7f3364012000 r--s 00041000 08:07 2236607                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/commons-lang-2.6.jar
+7f3364012000-7f3364015000 r--s 00006000 08:07 2236605                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/jsr305-1.3.9.jar
+7f3364015000-7f336401d000 r--s 000bd000 08:07 2236594                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/asm-debug-all-6.0_ALPHA.jar
+7f336401d000-7f3364025000 r-xp 00000000 08:07 146464                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f3364025000-7f3364224000 ---p 00008000 08:07 146464                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f3364224000-7f3364225000 r--p 00007000 08:07 146464                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f3364225000-7f3364226000 rw-p 00008000 08:07 146464                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f3364226000-7f3364236000 r-xp 00000000 08:07 150156                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libverify.so
+7f3364236000-7f3364435000 ---p 00010000 08:07 150156                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libverify.so
+7f3364435000-7f3364437000 r--p 0000f000 08:07 150156                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libverify.so
+7f3364437000-7f3364438000 rw-p 00011000 08:07 150156                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/libverify.so
+7f3364438000-7f336443f000 r-xp 00000000 08:07 146474                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f336443f000-7f336463e000 ---p 00007000 08:07 146474                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f336463e000-7f336463f000 r--p 00006000 08:07 146474                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f336463f000-7f3364640000 rw-p 00007000 08:07 146474                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f3364640000-7f3364748000 r-xp 00000000 08:07 146452                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f3364748000-7f3364947000 ---p 00108000 08:07 146452                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f3364947000-7f3364948000 r--p 00107000 08:07 146452                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f3364948000-7f3364949000 rw-p 00108000 08:07 146452                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f3364949000-7f3365541000 r-xp 00000000 08:07 150166                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f3365541000-7f3365741000 ---p 00bf8000 08:07 150166                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f3365741000-7f33657e0000 r--p 00bf8000 08:07 150166                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f33657e0000-7f3365809000 rw-p 00c97000 08:07 150166                     /home/absolutelysaurabh/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f3365809000-7f336584d000 rw-p 00000000 00:00 0 
+7f336584d000-7f3365865000 r-xp 00000000 08:07 146455                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f3365865000-7f3365a64000 ---p 00018000 08:07 146455                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f3365a64000-7f3365a65000 r--p 00017000 08:07 146455                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f3365a65000-7f3365a66000 rw-p 00018000 08:07 146455                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f3365a66000-7f3365a6a000 rw-p 00000000 00:00 0 
+7f3365a6a000-7f3365a6d000 r-xp 00000000 08:07 146458                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f3365a6d000-7f3365c6c000 ---p 00003000 08:07 146458                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f3365c6c000-7f3365c6d000 r--p 00002000 08:07 146458                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f3365c6d000-7f3365c6e000 rw-p 00003000 08:07 146458                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f3365c6e000-7f3365e2e000 r-xp 00000000 08:07 146456                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f3365e2e000-7f336602e000 ---p 001c0000 08:07 146456                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f336602e000-7f3366032000 r--p 001c0000 08:07 146456                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f3366032000-7f3366034000 rw-p 001c4000 08:07 146456                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f3366034000-7f3366038000 rw-p 00000000 00:00 0 
+7f3366038000-7f336604e000 r-xp 00000000 08:07 150039                     /home/absolutelysaurabh/android-studio/jre/lib/amd64/jli/libjli.so
+7f336604e000-7f336624d000 ---p 00016000 08:07 150039                     /home/absolutelysaurabh/android-studio/jre/lib/amd64/jli/libjli.so
+7f336624d000-7f336624e000 r--p 00015000 08:07 150039                     /home/absolutelysaurabh/android-studio/jre/lib/amd64/jli/libjli.so
+7f336624e000-7f336624f000 rw-p 00016000 08:07 150039                     /home/absolutelysaurabh/android-studio/jre/lib/amd64/jli/libjli.so
+7f336624f000-7f3366275000 r-xp 00000000 08:07 146454                     /lib/x86_64-linux-gnu/ld-2.23.so
+7f3366275000-7f3366276000 r--s 00000000 08:07 2236618                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/jcip-annotations-1.0.jar
+7f3366276000-7f3366277000 r--s 00007000 08:07 2236601                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/slf4j-api-1.7.10.jar
+7f3366277000-7f336627b000 r--s 00027000 08:07 2236595                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/commons-io-2.2.jar
+7f336627b000-7f336627c000 r--s 00004000 08:07 2236643                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/ant-launcher-1.9.6.jar
+7f336627c000-7f336634c000 rw-p 00000000 00:00 0 
+7f336634c000-7f336634f000 ---p 00000000 00:00 0 
+7f336634f000-7f3366451000 rw-p 00000000 00:00 0 
+7f3366451000-7f336645d000 r--s 00053000 08:07 2236590                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-base-services-4.1.jar
+7f336645d000-7f3366469000 r--s 0005c000 08:07 2236575                    /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-launcher-4.1.jar
+7f3366469000-7f3366471000 rw-s 00000000 08:07 131276                     /tmp/hsperfdata_absolutelysaurabh/2879
+7f3366471000-7f3366472000 rw-p 00000000 00:00 0 
+7f3366472000-7f3366473000 ---p 00000000 00:00 0 
+7f3366473000-7f3366474000 rw-p 00000000 00:00 0 
+7f3366474000-7f3366475000 r--p 00025000 08:07 146454                     /lib/x86_64-linux-gnu/ld-2.23.so
+7f3366475000-7f3366476000 rw-p 00026000 08:07 146454                     /lib/x86_64-linux-gnu/ld-2.23.so
+7f3366476000-7f3366477000 rw-p 00000000 00:00 0 
+7fff15dc2000-7fff15de4000 rw-p 00000000 00:00 0                          [stack]
+7fff15df4000-7fff15df7000 r--p 00000000 00:00 0                          [vvar]
+7fff15df7000-7fff15df9000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Xmx4608M -Dfile.encoding=UTF-8 -Duser.country=IN -Duser.language=en -Duser.variant 
+java_command: org.gradle.launcher.daemon.bootstrap.GradleDaemon 4.1
+java_class_path (initial): /home/absolutelysaurabh/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/lib/gradle-launcher-4.1.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/usr/lib/jvm/java-8-oracle
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+LD_LIBRARY_PATH=.:
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x9ebc60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0x9ebc60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x84cf60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x84cf60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x84cf60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x84cf60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x84ce30], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x84d020], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x84d020], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x84d020], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x84d020], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.3 LTS"
+
+uname:Linux 4.4.0-112-generic #135-Ubuntu SMP Fri Jan 19 11:48:36 UTC 2018 x86_64
+libc:glibc 2.23 NPTL 2.23 
+rlimit: STACK 8192k, CORE 0k, NPROC 27301, NOFILE 1048576, AS infinity
+load average:6.83 3.67 2.35
+
+/proc/meminfo:
+MemTotal:        7086884 kB
+MemFree:          143768 kB
+MemAvailable:     103092 kB
+Buffers:           11748 kB
+Cached:           355380 kB
+SwapCached:            0 kB
+Active:          6370692 kB
+Inactive:         299432 kB
+Active(anon):    6304608 kB
+Inactive(anon):   227780 kB
+Active(file):      66084 kB
+Inactive(file):    71652 kB
+Unevictable:         220 kB
+Mlocked:             220 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:              1524 kB
+Writeback:             0 kB
+AnonPages:       6303292 kB
+Mapped:           297908 kB
+Shmem:            229348 kB
+Slab:              96096 kB
+SReclaimable:      52684 kB
+SUnreclaim:        43412 kB
+KernelStack:       13184 kB
+PageTables:        63444 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     3543440 kB
+Committed_AS:   12231400 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   4173824 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      206300 kB
+DirectMap2M:     6029312 kB
+DirectMap1G:     1048576 kB
+
+
+CPU:total 4 (initial active 4) (4 cores per cpu, 1 threads per core) family 22 model 48 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, clmul, mmxext, 3dnowpref, lzcnt, sse4a, tsc, tscinvbit, tscinv, bmi1
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: AuthenticAMD
+cpu family	: 22
+model		: 48
+model name	: AMD A8-6410 APU with AMD Radeon R5 Graphics
+stepping	: 1
+microcode	: 0x7030105
+cpu MHz		: 1200.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 4
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid aperfmperf eagerfpu pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt topoext perfctr_nb bpext perfctr_l2 cpb hw_pstate vmmcall bmi1 xsaveopt arat npt lbrv svm_lock nrip_save tsc_scale flushbyasid decodeassists pausefilter pfthreshold
+bugs		: fxsave_leak sysret_ss_attrs
+bogomips	: 3992.55
+TLB size	: 1024 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb [12] [13]
+
+processor	: 1
+vendor_id	: AuthenticAMD
+cpu family	: 22
+model		: 48
+model name	: AMD A8-6410 APU with AMD Radeon R5 Graphics
+stepping	: 1
+microcode	: 0x7030105
+cpu MHz		: 1000.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 4
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid aperfmperf eagerfpu pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt topoext perfctr_nb bpext perfctr_l2 cpb hw_pstate vmmcall bmi1 xsaveopt arat npt lbrv svm_lock nrip_save tsc_scale flushbyasid decodeassists pausefilter pfthreshold
+bugs		: fxsave_leak sysret_ss_attrs
+bogomips	: 3992.55
+TLB size	: 1024 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb [12] [13]
+
+processor	: 2
+vendor_id	: AuthenticAMD
+cpu family	: 22
+model		: 48
+model name	: AMD A8-6410 APU with AMD Radeon R5 Graphics
+stepping	: 1
+microcode	: 0x7030105
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 4
+core id		: 2
+cpu cores	: 4
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid aperfmperf eagerfpu pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt topoext perfctr_nb bpext perfctr_l2 cpb hw_pstate vmmcall bmi1 xsaveopt arat npt lbrv svm_lock nrip_save tsc_scale flushbyasid decodeassists pausefilter pfthreshold
+bugs		: fxsave_leak sysret_ss_attrs
+bogomips	: 3992.55
+TLB size	: 1024 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb [12] [13]
+
+processor	: 3
+vendor_id	: AuthenticAMD
+cpu family	: 22
+model		: 48
+model name	: AMD A8-6410 APU with AMD Radeon R5 Graphics
+stepping	: 1
+microcode	: 0x7030105
+cpu MHz		: 1200.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 4
+core id		: 3
+cpu cores	: 4
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid aperfmperf eagerfpu pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt topoext perfctr_nb bpext perfctr_l2 cpb hw_pstate vmmcall bmi1 xsaveopt arat npt lbrv svm_lock nrip_save tsc_scale flushbyasid decodeassists pausefilter pfthreshold
+bugs		: fxsave_leak sysret_ss_attrs
+bogomips	: 3992.55
+TLB size	: 1024 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb [12] [13]
+
+
+
+Memory: 4k page, physical 7086884k(143768k free), swap 0k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.152-b01) for linux-amd64 JRE (1.8.0_152-release-915-b01), built by "builder" with gcc 4.8.4
+
+time: Fri Feb 16 01:42:35 2018
+elapsed time: 4213 seconds (0d 1h 10m 13s)
+

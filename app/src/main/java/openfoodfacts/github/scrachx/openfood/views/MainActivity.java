@@ -542,4 +542,5 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             Log.e("MainActivity", "Error in creating fragment");
         }
     }
+
 }
