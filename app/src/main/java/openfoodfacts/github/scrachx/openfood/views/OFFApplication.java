@@ -1,10 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import org.greenrobot.greendao.database.Database;
-import org.greenrobot.greendao.database.DatabaseOpenHelper;
 import org.greenrobot.greendao.query.QueryBuilder;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -14,7 +13,7 @@ import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
 
-public class OFFApplication extends Application {
+public class OFFApplication extends MultiDexApplication {
 
     private DaoSession daoSession;
     private boolean DEBUG = false;
