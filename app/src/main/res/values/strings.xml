@@ -222,6 +222,9 @@
     <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
     <string name="error_field_required">This field is required.</string>
     <string name="action_preferences">Preferences</string>
+     <string name="ok">OK</string>
+     <string name="cancel">CANCEL</string>
+    <string name="pressed_cancel">Log out cancelled</string>
     <string name="prefs_scan_startup">Scan on startup</string>
     <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
     <string name="prefs_power_mode">Power mode scan</string>
