@@ -28,7 +28,7 @@
         android:hint="@string/hintBarcode"
         android:inputType="number"
         android:maxLines="1"
-        android:paddingLeft="10dip" />
+        android:paddingLeft="10dp" />
 
     <Button
         android:id="@+id/buttonBarcode"

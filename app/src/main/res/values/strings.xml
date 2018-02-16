@@ -238,6 +238,9 @@
     <string name="txt_history_exported">History exported</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
     <string name="txt_nutrition_not_found">N/A</string>
+    <string name="product_name_long_text">Product name with a long description</string>
+
+
 
     <!-- Nutrition info tab -->
     <string name="nutrition_carbohydrate">Carbohydrate</string>
@@ -349,5 +352,7 @@
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">Saturated fat</string>
+    <string name="kcal_496">496 Kcal</string>
+    <string name="sucres_bla">Sucres bla bla bla</string>
 
 </resources>

@@ -36,7 +36,7 @@
             android:textSize="@dimen/font_large"
             android:gravity="center_vertical"
             android:layout_row="0"
-            tools:text="Product name with a long long long description"
+            tools:text="@string/product_name_long_text"
             android:textAlignment="gravity"
             android:ellipsize="end"
             android:maxLines="1"
@@ -48,7 +48,7 @@
             android:layout_width="fill_parent"
             android:textSize="@dimen/font_normal"
             android:gravity="center_vertical"
-            tools:text="Product details which are also sometimes very long"
+            tools:text="@string/product_name_long_text"
             android:ellipsize="end"
             android:maxLines="1"
             />
