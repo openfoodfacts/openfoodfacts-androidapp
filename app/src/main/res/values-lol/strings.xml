@@ -26,6 +26,58 @@
     <item>crwdns34980:0crwdne34980:0</item>
   </string-array>
   <!-- Text units -->
+  <string-array name="lang_array">
+    <item>crwdns34981:0crwdne34981:0</item>
+    <item>crwdns34982:0crwdne34982:0</item>
+    <item>crwdns34983:0crwdne34983:0</item>
+    <item>crwdns34984:0crwdne34984:0</item>
+    <item>crwdns34985:0crwdne34985:0</item>
+    <item>crwdns34986:0crwdne34986:0</item>
+    <item>crwdns34987:0crwdne34987:0</item>
+    <item>crwdns34988:0crwdne34988:0</item>
+    <item>crwdns34989:0crwdne34989:0</item>
+    <item>crwdns34990:0crwdne34990:0</item>
+    <item>crwdns34991:0crwdne34991:0</item>
+    <item>crwdns34992:0crwdne34992:0</item>
+    <item>crwdns34993:0crwdne34993:0</item>
+    <item>crwdns34994:0crwdne34994:0</item>
+    <item>crwdns34995:0crwdne34995:0</item>
+    <item>crwdns34996:0crwdne34996:0</item>
+    <item>crwdns34997:0crwdne34997:0</item>
+    <item>crwdns34998:0crwdne34998:0</item>
+    <item>crwdns34999:0crwdne34999:0</item>
+    <item>crwdns35000:0crwdne35000:0</item>
+    <item>crwdns35001:0crwdne35001:0</item>
+    <item>crwdns35002:0crwdne35002:0</item>
+    <item>crwdns35003:0crwdne35003:0</item>
+    <item>crwdns35004:0crwdne35004:0</item>
+    <item>crwdns37053:0crwdne37053:0</item>
+    <item>crwdns35006:0crwdne35006:0</item>
+    <item>crwdns35007:0crwdne35007:0</item>
+    <item>crwdns35008:0crwdne35008:0</item>
+    <item>crwdns35009:0crwdne35009:0</item>
+    <item>crwdns35010:0crwdne35010:0</item>
+    <item>crwdns37054:0crwdne37054:0</item>
+    <item>crwdns35939:0crwdne35939:0</item>
+    <item>crwdns35940:0crwdne35940:0</item>
+    <item>crwdns36949:0crwdne36949:0</item>
+    <item>crwdns36950:0crwdne36950:0</item>
+    <item>crwdns36951:0crwdne36951:0</item>
+    <item>crwdns36952:0crwdne36952:0</item>
+    <item>crwdns37055:0crwdne37055:0</item>
+    <item>crwdns37056:0crwdne37056:0</item>
+    <item>crwdns36955:0crwdne36955:0</item>
+    <item>crwdns36956:0crwdne36956:0</item>
+    <item>crwdns36957:0crwdne36957:0</item>
+    <item>crwdns36958:0crwdne36958:0</item>
+    <item>crwdns36959:0crwdne36959:0</item>
+    <item>crwdns37057:0crwdne37057:0</item>
+    <item>crwdns36961:0crwdne36961:0</item>
+    <item>crwdns36962:0crwdne36962:0</item>
+    <item>crwdns36963:0crwdne36963:0</item>
+    <item>crwdns36964:0crwdne36964:0</item>
+    <item>crwdns36965:0crwdne36965:0</item>
+  </string-array>
   <string-array name="images_array">
     <item>crwdns35043:0crwdne35043:0</item>
     <item>crwdns35044:0crwdne35044:0</item>
