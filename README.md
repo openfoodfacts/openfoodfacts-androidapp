@@ -15,8 +15,7 @@ Open Food Facts Android Application
 ## What is Open Food Facts?
 
 <a href="https://f-droid.org/app/openfoodfacts.github.scrachx.openfood">
-    <img src="https://f-droid.org/badge/get-it-on.png"
-         alt="Get it on F-Droid" height="70">
+    <img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="70">
 </a><a href="https://play.google.com/store/apps/details?id=openfoodfacts.github.scrachx.openfood"><img src=https://play.google.com/intl/en_us/badges/images/badge_new.png></a><br>
 (These are beta versions, <a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner">this is the stable version</a>)
 
@@ -37,18 +36,6 @@ Data about food is of public interest and has to be open. The complete database 
 - <https://world.openfoodfacts.org>
 
 ## Translations
-
-### Initial setup (done)
-Translations are made using GetText. We convert translations to and from the Android format using Android2Po.<br><br>
-```easy_install android2po```<br>
-```a2po COMMAND --android myproject/res --gettext myproject/locale```<br>
-```a2po init de fr```<br><br>
-
-### Refreshing exported GetText files
-```a2po export```
-
-### Importing back to Android
-```a2po import```
 
 ### Translate Open Food Facts in your language
 
