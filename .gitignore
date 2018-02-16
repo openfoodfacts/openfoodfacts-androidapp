@@ -1,6 +1,14 @@
+*.iml
 .gradle
 /local.properties
-/.idea
+/.idea/workspace.xml
+/.idea/libraries
 .DS_Store
 /build
-*.iml
+/captures
+.externalNativeBuild
+*.log
+hs_err_pid2879.log
+hs_err_pid*
+.idea/
+
