@@ -23,6 +23,7 @@ import java.util.Map;
 })
 public class Search implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @JsonProperty("page_size")
     private String pageSize;
     private String count;
