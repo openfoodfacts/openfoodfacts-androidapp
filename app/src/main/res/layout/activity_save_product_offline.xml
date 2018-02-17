@@ -34,35 +34,53 @@
                 android:textStyle="bold" />
 
             <android.support.v7.widget.CardView
+                android:id="@+id/message_container_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_small"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal">
+                android:layout_marginLeft="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_small">
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/message_container"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
                     android:background="#EEE"
-                    android:padding="@dimen/padding_short">
+                    android:gravity="center"
+                    android:padding="4dp"
+                   >
 
                     <ImageView
                         android:id="@+id/message_icon"
-                        android:layout_width="@dimen/button_height_too_short"
-                        android:layout_height="@dimen/button_height_too_short"
-                        android:layout_marginRight="@dimen/spacing_small"
+                        android:layout_width="@dimen/button_height_normal"
+                        android:layout_height="@dimen/button_height_normal"
+                        android:padding="@dimen/padding_too_short"
                         android:src="@drawable/ic_action_name" />
 
                     <TextView
                         android:id="@+id/message"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
+                        android:layout_toLeftOf="@+id/message_dismiss_icon"
+                        android:layout_toRightOf="@+id/message_icon"
+                        android:layout_toStartOf="@+id/message_dismiss_icon"
+                        android:gravity="center"
                         android:text="@string/message_in_activity_save_product_offline"
+                        android:textAlignment="center"
                         android:textColor="@color/md_black_1000" />
-                </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/message_dismiss_icon"
+                        android:layout_width="@dimen/button_height_too_much_short"
+                        android:layout_height="@dimen/button_height_too_much_short"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="4dp"
+                        android:background="#EEE"
+                        android:src="@drawable/ic_action_cross" />
+
+                </RelativeLayout>
             </android.support.v7.widget.CardView>
 
             <LinearLayout
