@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -74,10 +77,18 @@ public class AlertUserFragment extends BaseFragment {
 
         mRvAllergens = (RecyclerView) view.findViewById(R.id.alergens_recycle);
         mAllergensEnabled = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
-        mAdapter = new AllergensAdapter(mAllergensEnabled, getActivity());
+        mAdapter = new AllergensAdapter(sortedAllergensList(), getActivity());
+        Log.e("mAllergensEnabled: ", mAllergensEnabled.toString());
+        Log.e("mAllergensFromDao: ", mAllergensFromDao.toString());
+
         mRvAllergens.setAdapter(mAdapter);
         mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
         mRvAllergens.setHasFixedSize(true);
+    }
+
+    public List<Allergen> sortedAllergensList(){
+        Collections.sort(mAllergensFromDao);
+        return mAllergensFromDao;
     }
 
     @OnClick(R.id.fab)

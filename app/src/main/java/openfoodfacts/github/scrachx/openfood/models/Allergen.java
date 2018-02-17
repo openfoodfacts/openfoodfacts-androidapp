@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import android.support.annotation.NonNull;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -19,7 +21,7 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity(indexes = {
         @Index(value = "name", unique = true)
 })
-public class Allergen {
+public class Allergen implements Comparable<Allergen>{
 
     private String enable;
     private String url;
@@ -127,5 +129,18 @@ public class Allergen {
     public String getEnable() {
         return this.enable;
     }
-    
+
+    @Override
+    public int compareTo(@NonNull Allergen o) {
+
+        int compartInt = this.name.compareTo(o.getName());
+        if(compartInt<0){
+            return -1;
+        }else
+            if(compartInt>0){
+               return 1;
+        }else{
+                return 0;
+            }
+    }
 }
