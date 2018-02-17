@@ -28,6 +28,7 @@ public class CategoryMapper {
                     tag.getProducts()));
         }
         Collections.sort(categories, (first, second) -> first.getName().compareTo(second.getName()));
+        if (categories.get(0).getName().isEmpty() || categories.get(0).getId().isEmpty())
         categories.remove(0);
         return categories;
     }
