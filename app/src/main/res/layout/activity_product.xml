@@ -33,21 +33,21 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/buttonScan"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="top|center_horizontal"
         android:layout_margin="@dimen/activity_vertical_margin"
-
-
         android:contentDescription="@string/try_it_scan_now"
+        app:layout_anchor="@+id/pager"
+        app:layout_anchorGravity="bottom|right"
         app:srcCompat="@drawable/barcode_white_24dp" />
 
 </android.support.design.widget.CoordinatorLayout>
