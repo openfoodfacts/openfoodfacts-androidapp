@@ -91,7 +91,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         Utils.hideKeyboard(this);
 
-        final IProfile profile = getUserProfile();
+        final IProfile<ProfileDrawerItem> profile = getUserProfile();
         LocaleHelper.setLocale(this, LocaleHelper.getLanguage(this));
 
         setSupportActionBar(toolbar);
@@ -252,9 +252,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                 new MaterialDialog.Builder(MainActivity.this)
                                         .title(R.string.contribute)
                                         .content(R.string.contribution_without_account)
-                                        .positiveText(R.string.txtOk)
+                                        .positiveText(R.string.create_account_button)
                                         .negativeText(R.string.cancel_button)
+                                        .neutralText(R.string.login_button)
                                         .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R.string.website) + "cgi/user.pl"), new WebViewFallback()))
+                                        .onNeutral((dialog, which) -> startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LOGIN_REQUEST))
                                         .show();
                             }
                             break;
@@ -287,10 +289,17 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             result.removeItem(7);
             result.updateName(11, new StringHolder(getString(R.string.open_food_drawer)));
         }
+
         if (BuildConfig.FLAVOR.equals("opff")) {
             result.removeItem(7);
             result.updateName(11, new StringHolder(getString(R.string.open_food_drawer)));
         }
+
+        // Remove scan item if the device does not have a camera, for example, Chromebooks or Fire devices
+        if (!Utils.isHardwareCameraInstalled(this)){
+            result.removeItem(4);
+        }
+
 
         //if you have many different types of DrawerItems you can magically pre-cache those items to get a better scroll performance
         //make sure to init the cache after the DrawerBuilder was created as this will first clear the cache to make sure no old elements are in
@@ -322,7 +331,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         customTabActivityHelper.mayLaunchUrl(userContributeUri, null, null);
     }
 
-    private IProfile getProfileSettingDrawerItem() {
+    private IProfile<ProfileSettingDrawerItem> getProfileSettingDrawerItem() {
+        SharedPreferences preferences = getSharedPreferences("login", 0);
+        String userLogin = preferences.getString("user", null);
+        String userSession = preferences.getString("user_session", null);
+        userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin + "&user_session=" + userSession);
+        customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null);
         return new ProfileSettingDrawerItem()
                 .withName(getString(R.string.action_manage_account))
                 .withIcon(GoogleMaterial.Icon.gmd_settings)
@@ -336,11 +350,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * Remove user login info
      */
     private void logout() {
-        getSharedPreferences("login", 0).edit().clear().apply();
-
+        getSharedPreferences("login", 0).edit().clear().commit();
         headerResult.removeProfileByIdentifier(PROFILE_SETTING);
-        headerResult.setActiveProfile(getUserProfile());
-
+        headerResult.updateProfile(getUserProfile());
         result.addItemAtPosition(getLoginDrawerItem(), result.getPosition(CONTRIBUTOR));
         result.removeItem(LOGOUT);
     }
@@ -352,7 +364,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 if (resultCode == RESULT_OK) {
                     result.removeItem(LOGIN_ID);
                     result.addItemsAtPosition(result.getPosition(CONTRIBUTOR), getLogoutDrawerItem());
-                    headerResult.setActiveProfile(getUserProfile());
+                    headerResult.updateProfile(getUserProfile());
                     headerResult.addProfiles(getProfileSettingDrawerItem());
                 }
                 break;
@@ -389,7 +401,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchMenuItem.getActionView();
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        if (searchManager != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        }
 
         MenuItemCompat.setOnActionExpandListener(searchMenuItem, new MenuItemCompat.OnActionExpandListener() {
             @Override
@@ -444,21 +458,21 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
     }
 
-    private IDrawerItem getLogoutDrawerItem() {
+    private IDrawerItem<PrimaryDrawerItem, com.mikepenz.materialdrawer.model.AbstractBadgeableDrawerItem.ViewHolder> getLogoutDrawerItem() {
         return new PrimaryDrawerItem()
                 .withName(getString(R.string.logout_drawer))
                 .withIcon(GoogleMaterial.Icon.gmd_settings_power)
                 .withIdentifier(LOGOUT);
     }
 
-    private IDrawerItem getLoginDrawerItem() {
+    private IDrawerItem<PrimaryDrawerItem, com.mikepenz.materialdrawer.model.AbstractBadgeableDrawerItem.ViewHolder> getLoginDrawerItem() {
         return new PrimaryDrawerItem()
                 .withName(R.string.sign_in_drawer)
                 .withIcon(GoogleMaterial.Icon.gmd_account_circle)
                 .withIdentifier(LOGIN_ID);
     }
 
-    private IProfile getUserProfile() {
+    private IProfile<ProfileDrawerItem> getUserProfile() {
         String userLogin = getSharedPreferences("login", 0)
                 .getString("user", getResources().getString(R.string.txt_anonymous));
 
@@ -508,11 +522,24 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             Bundle args = new Bundle();
             args.putString("query", query);
             newFragment.setArguments(args);
-
             transaction.replace(R.id.fragment_container, newFragment);
-            transaction.addToBackStack(null);
             transaction.commit();
         }
     }
 
+    /**
+     * This moves the main activity to the barcode entry fragment.
+     */
+    public void moveToBarcodeEntry(){
+        result.setSelection(2);
+        Fragment fragment = new FindProductFragment();
+        getSupportActionBar().setTitle(getResources().getString(R.string.search_by_barcode_drawer));
+
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        } else {
+            // error in creating fragment
+            Log.e("MainActivity", "Error in creating fragment");
+        }
+    }
 }

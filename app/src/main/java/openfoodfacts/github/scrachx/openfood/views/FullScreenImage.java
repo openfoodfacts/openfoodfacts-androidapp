@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.ImageView;
 
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
@@ -17,7 +18,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 public class FullScreenImage extends BaseActivity {
 
     @BindView(R.id.imageViewFullScreen)
-    PhotoView mImageView;
+    PhotoView mPhotoView;
     PhotoViewAttacher mAttacher;
 
     @Override
@@ -28,12 +29,12 @@ public class FullScreenImage extends BaseActivity {
         Intent intent = getIntent();
         String imageurl = intent.getExtras().getString("imageurl");
 
-        mAttacher = new PhotoViewAttacher(mImageView);
+        mAttacher = new PhotoViewAttacher(mPhotoView);
 
         if (isNotEmpty(imageurl)) {
             Picasso.with(this)
                     .load(imageurl)
-                    .into(mImageView, new Callback() {
+                    .into(mPhotoView, new Callback() {
                         @Override
                         public void onSuccess() {
                             mAttacher.update();

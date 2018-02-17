@@ -20,6 +20,7 @@ import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -73,8 +74,7 @@ public class ProductActivity extends BaseActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
-        Intent intent = getIntent();
-        mState = (State) intent.getExtras().getSerializable("state");
+        mState = (State) getIntent().getExtras().getSerializable("state");
 
         Product product = mState.getProduct();
 
@@ -105,24 +105,30 @@ public class ProductActivity extends BaseActivity {
                             .sizeDp(24))
                     .show();
         }
+
+        if (!Utils.isHardwareCameraInstalled(this)){
+            mButtonScan.setVisibility(View.GONE);
+        }
     }
 
     @OnClick(R.id.buttonScan)
     protected void OnScan() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
-                new MaterialDialog.Builder(this)
-                        .title(R.string.action_about)
-                        .content(R.string.permission_camera)
-                        .neutralText(R.string.txtOk)
-                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
-                        .show();
+        if (Utils.isHardwareCameraInstalled(this)) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                    new MaterialDialog.Builder(this)
+                            .title(R.string.action_about)
+                            .content(R.string.permission_camera)
+                            .neutralText(R.string.txtOk)
+                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                            .show();
+                } else {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                }
             } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                Intent intent = new Intent(this, ScannerFragmentActivity.class);
+                startActivity(intent);
             }
-        } else {
-            Intent intent = new Intent(this, ScannerFragmentActivity.class);
-            startActivity(intent);
         }
     }
 

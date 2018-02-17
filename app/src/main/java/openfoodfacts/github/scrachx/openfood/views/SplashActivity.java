@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -89,8 +90,8 @@ public class SplashActivity extends BaseActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             lt.setText(activity.getString(R.string.toast_retrieving));
-            lt.setBackgroundColor(activity.getResources().getColor(R.color.blue));
-            lt.setTextColor(activity.getResources().getColor(R.color.white));
+            lt.setBackgroundColor(ContextCompat.getColor(SplashActivity.this,R.color.blue));
+            lt.setTextColor(ContextCompat.getColor(SplashActivity.this,R.color.white));
             lt.show();
         }
 
