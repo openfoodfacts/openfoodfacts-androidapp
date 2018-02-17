@@ -4,9 +4,10 @@
     <string name="action_about">About</string>
     <string name="action_discover">Discover</string>
     <string name="contribute">How to contribute</string>
-
     <string name="action_find">Find</string>
     <string name="text_barcode">Type the barcode :</string>
+    <string name="message_in_activity_save_product_offline">Only one photo is compulsory to process upload.</string>
+
 
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -349,5 +350,4 @@
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">Saturated fat</string>
-
 </resources>
