@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/black"
+    app:bbn_badgeColor="#AAFF0000"
+    app:bbn_rippleColor="#33ffffff">
+    <item
+        android:id="@+id/bbn_item1"
+        android:color="@color/colorPrimary"
+        android:icon="@drawable/ic_bookmark_border_white_24dp"
+        android:title="Bookmark" />
+    <item
+        android:id="@+id/bbn_item2"
+        android:color="@android:color/holo_green_dark"
+        android:icon="@drawable/ic_share_white_24dp"
+        android:title="Share" />
+    <item
+        android:id="@+id/bbn_item3"
+        android:color="@android:color/holo_orange_dark"
+        android:icon="@drawable/ic_translate_white_24dp"
+        android:title="Translate" />
+    <item
+        android:id="@+id/action4"
+        android:color="#FF5252"
+        android:icon="@drawable/ic_find_in_page_white_24dp"
+        android:title="Find" />
+    <item
+        android:id="@+id/action5"
+        android:color="#FF5252"
+        android:icon="@drawable/empty"
+        android:title=" " />
+</menu>

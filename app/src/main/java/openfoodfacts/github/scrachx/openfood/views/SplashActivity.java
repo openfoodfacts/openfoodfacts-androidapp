@@ -10,9 +10,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.LinearLayout;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import net.steamcrafted.loadtoast.LoadToast;
+import net.steamcrafted.loadtoast.LoadToastView;
 
 import java.io.IOException;
 import java.io.InputStream;

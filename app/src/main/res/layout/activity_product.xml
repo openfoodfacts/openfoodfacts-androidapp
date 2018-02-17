@@ -16,8 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
@@ -35,18 +35,33 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/buttonScan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="92dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="top|center_horizontal"
-        android:layout_margin="@dimen/activity_vertical_margin"
-        android:contentDescription="@string/try_it_scan_now"
-        app:layout_anchor="@+id/pager"
-        app:layout_anchorGravity="bottom|right"
-        app:srcCompat="@drawable/barcode_white_24dp" />
+        android:layout_gravity="bottom"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@color/white"
+        android:layout_marginBottom="-20dp"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottombar_menu_items">
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/buttonScan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="right"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="0dp"
+            android:contentDescription="@string/try_it_scan_now"
+            android:elevation="20dp"
+            app:layout_anchor="@+id/bottom_navigation"
+            app:srcCompat="@drawable/barcode_white_24dp" />
+
+    </android.support.design.widget.BottomNavigationView>
+
 
 </android.support.design.widget.CoordinatorLayout>
