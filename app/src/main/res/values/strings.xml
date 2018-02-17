@@ -281,6 +281,8 @@
     <string name="number_of_results">Number of results :</string>
     <string name="txt_no_results">No results found</string>
     <string name="txt_extend_search">Try broadening your search or add the product</string>
+    <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="txt_cant_load_search_results">Can\'t load search results</string>
     <string name="txt_try_again">Try again</string>
     <string name="nutrition_lactose">Lactose</string>
