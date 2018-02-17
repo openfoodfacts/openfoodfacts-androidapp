@@ -28,6 +28,7 @@ public class CategoryMapper {
                     tag.getProducts()));
         }
         Collections.sort(categories, (first, second) -> first.getName().compareTo(second.getName()));
+        categories.remove(0);
         return categories;
     }
 }
