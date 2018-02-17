@@ -19,20 +19,20 @@
             android:focusableInTouchMode="true"
             android:orientation="vertical">
 
-            <TextView
+            <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
                 android:id="@+id/barcodeDoubleCheck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/spacing_normal"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_add_a_photo"
                 android:gravity="center"
                 android:text="@string/txtBarcode"
                 android:textAlignment="center"
                 android:textIsSelectable="true"
                 android:textSize="@dimen/font_larger"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:drawableLeftCompat="@drawable/ic_add_a_photo" />
 
             <LinearLayout
                 android:id="@+id/FrontImageGroup"

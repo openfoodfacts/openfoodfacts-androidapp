@@ -10,8 +10,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
-import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.content.res.AppCompatResources;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -38,16 +38,15 @@ import static android.text.TextUtils.isEmpty;
 public class Utils {
 
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
-    public static final int MY_PERMISSIONS_REQUEST_STORAGE= 2;
+    public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
 
     /**
      * Returns a CharSequence that concatenates the specified array of CharSequence
      * objects and then applies a list of zero or more tags to the entire range.
      *
      * @param content an array of character sequences to apply a style to
-     * @param tags the styled span objects to apply to the content
-     *        such as android.text.style.StyleSpan
-     *
+     * @param tags    the styled span objects to apply to the content
+     *                such as android.text.style.StyleSpan
      */
     private static CharSequence apply(CharSequence[] content, Object... tags) {
         SpannableStringBuilder text = new SpannableStringBuilder();
@@ -170,21 +169,19 @@ public class Utils {
     /**
      * Check if a certain application is installed on a device.
      *
-     * @param context the applications context.
+     * @param context     the applications context.
      * @param packageName the package name that you want to check.
-     *
      * @return true if the application is installed, false otherwise.
      */
 
     public static boolean isApplicationInstalled(Context context, String packageName) {
-    //private boolean isApplicationInstalled(Context context, String packageName) {
+        //private boolean isApplicationInstalled(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
         try {
             // Check if the package name exists, if exception is thrown, package name does not exist.
             pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
             return true;
-        }
-        catch (PackageManager.NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
     }
@@ -221,7 +218,7 @@ public class Utils {
     }
 
     public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
-        Drawable drawable = VectorDrawableCompat.create(context.getResources(), drawableId, null);
+        Drawable drawable = AppCompatResources.getDrawable(context, drawableId);
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
@@ -250,7 +247,7 @@ public class Utils {
             return value;
         }
 
-        return  String.format(Locale.getDefault(), "%.2f", Double.valueOf(value));
+        return String.format(Locale.getDefault(), "%.2f", Double.valueOf(value));
     }
 
     public static DaoSession getAppDaoSession(Activity activity) {
@@ -259,6 +256,7 @@ public class Utils {
 
     /**
      * Check if the device has a camera installed.
+     *
      * @return true if installed, false otherwise.
      */
     public static boolean isHardwareCameraInstalled(Context context) {
