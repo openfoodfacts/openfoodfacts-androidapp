@@ -22,9 +22,13 @@
         android:id="@+id/buttonSendAll"
         style="@style/DefaultButtonText"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+
+        android:layout_height="@dimen/button_height_tall"
+
+      
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
+
         android:layout_margin="@dimen/spacing_normal"
         android:background="@color/blue"
         android:gravity="center"

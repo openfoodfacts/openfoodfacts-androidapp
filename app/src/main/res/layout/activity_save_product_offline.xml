@@ -56,7 +56,7 @@
                 <ImageView
                     android:id="@+id/imageSaveFront"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="@dimen/activity_layout_height"
                     android:layout_gravity="center_horizontal"
                     app:srcCompat="@drawable/placeholder_thumb" />
 
@@ -69,7 +69,7 @@
                         android:id="@+id/buttonTakePictureFront"
                         style="@style/DefaultButtonText"
                         android:layout_width="0dp"
-                        android:layout_height="60dp"
+                        android:layout_height="@dimen/button_height_tall"
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
@@ -81,7 +81,7 @@
                         android:id="@+id/buttonFromGalleryFront"
                         style="@style/DefaultButtonText"
                         android:layout_width="0dp"
-                        android:layout_height="60dp"
+                        android:layout_height="@dimen/button_height_tall"
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
@@ -115,7 +115,7 @@
                 <ImageView
                     android:id="@+id/imageSaveIngredients"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="@dimen/activity_layout_height"
                     android:layout_gravity="center_horizontal"
                     app:srcCompat="@drawable/placeholder_thumb" />
 
@@ -128,7 +128,7 @@
                         android:id="@+id/buttonTakePictureIngredients"
                         style="@style/DefaultButtonText"
                         android:layout_width="0dp"
-                        android:layout_height="60dp"
+                        android:layout_height="@dimen/button_height_tall"
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
@@ -140,7 +140,7 @@
                         android:id="@+id/buttonFromGalleryIngredients"
                         style="@style/DefaultButtonText"
                         android:layout_width="0dp"
-                        android:layout_height="60dp"
+                        android:layout_height="@dimen/button_height_tall"
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
@@ -173,7 +173,7 @@
                 <ImageView
                     android:id="@+id/imageSaveNutrition"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="@dimen/activity_layout_height"
                     android:layout_gravity="center_horizontal"
                     app:srcCompat="@drawable/placeholder_thumb" />
 
@@ -186,7 +186,7 @@
                         android:id="@+id/buttonTakePictureNutrition"
                         style="@style/DefaultButtonText"
                         android:layout_width="0dp"
-                        android:layout_height="60dp"
+                        android:layout_height="@dimen/button_height_tall"
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
@@ -198,7 +198,7 @@
                         android:id="@+id/buttonFromGalleryNutrition"
                         style="@style/DefaultButtonText"
                         android:layout_width="0dp"
-                        android:layout_height="60dp"
+                        android:layout_height="@dimen/button_height_tall"
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
@@ -213,7 +213,7 @@
             <EditText
                 android:id="@+id/editTextName"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="@dimen/edit_text_height_normal"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/spacing_tiny"
                 android:layout_marginLeft="@dimen/spacing_normal"
@@ -223,7 +223,7 @@
                 android:hint="@string/hintNameProduct"
                 android:inputType="text"
                 android:maxLines="1"
-                android:paddingLeft="50dp" />
+                android:paddingLeft="@dimen/padding_large" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -233,7 +233,7 @@
                 <EditText
                     android:id="@+id/editTextWeight"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="@dimen/edit_text_height_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
                     android:layout_marginLeft="@dimen/spacing_normal"
                     android:layout_marginRight="@dimen/spacing_tiny"
@@ -242,7 +242,7 @@
                     android:hint="@string/hintWeight"
                     android:inputType="numberSigned"
                     android:maxLines="1"
-                    android:paddingLeft="50dp" />
+                    android:paddingLeft="@dimen/padding_large" />
 
                 <Spinner
                     android:id="@+id/spinnerUnitWeight"
@@ -260,7 +260,7 @@
             <EditText
                 android:id="@+id/editTextBrand"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="@dimen/edit_text_height_normal"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="@dimen/spacing_normal"
                 android:layout_marginRight="@dimen/spacing_normal"
@@ -269,13 +269,13 @@
                 android:hint="@string/hintBrand"
                 android:inputType="text"
                 android:maxLines="1"
-                android:paddingLeft="50dp" />
+                android:paddingLeft="@dimen/padding_large" />
 
             <Button
                 android:id="@+id/buttonSaveProduct"
                 style="@style/DefaultButtonText"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="@dimen/edit_text_height_normal"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/spacing_normal"
                 android:background="@color/blue"
