@@ -12,9 +12,9 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="60dp">
+        android:paddingLeft="@dimen/padding_normal"
+        android:paddingRight="@dimen/padding_normal"
+        android:paddingTop="@dimen/padding_huge">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                 android:hint="@string/hintLogin"
                 android:inputType="text"
                 android:maxLines="1"
-                android:paddingLeft="10dip" />
+                android:paddingLeft="@dimen/padding_small" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -54,14 +54,14 @@
                 android:hint="@string/hintPass"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:paddingLeft="10dip" />
+                android:paddingLeft="@dimen/padding_small" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/buttonSave"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="@dimen/spacing_huge"
             android:background="@color/blue"
             android:text="@string/txtSignIn"
             android:textColor="@android:color/white" />
@@ -70,7 +70,7 @@
             android:id="@+id/buttonCreateAccount"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="@dimen/spacing_huge"
             android:background="@color/blue"
             android:text="@string/create_account"
             android:textColor="@android:color/white" />

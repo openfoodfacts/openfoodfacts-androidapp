@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/imgSaveProduct"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="@dimen/image_view_width_normal"
+        android:layout_height="@dimen/image_view_height_normal"
         android:layout_alignParentLeft="true"
         android:layout_margin="@dimen/spacing_normal"
         android:layout_centerVertical="true"
@@ -22,7 +22,7 @@
         android:layout_toLeftOf="@+id/iconSave"
         android:textSize="@dimen/font_normal"
         android:textColor="@color/indigo_400"
-        android:paddingRight="40dp"
+        android:paddingRight="@dimen/padding_large"
         android:gravity="center_vertical"
         />
 
@@ -36,7 +36,7 @@
         android:layout_toLeftOf="@+id/iconSave"
         android:textSize="@dimen/font_normal"
         android:textColor="@color/indigo_400"
-        android:paddingRight="40dp"
+        android:paddingRight="@dimen/padding_large"
         android:gravity="center_vertical"
         />
 
@@ -47,8 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_margin="@dimen/spacing_normal"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginRight="@dimen/spacing_small"
         android:layout_centerVertical="true"
         />
 

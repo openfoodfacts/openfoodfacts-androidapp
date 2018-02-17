@@ -9,8 +9,8 @@
         android:layout_width="25dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_centerVertical="true"
         />
 
@@ -23,7 +23,7 @@
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
         android:gravity="center_vertical"
         android:textColor="@color/grey_50"
-        android:paddingRight="40dp"
+        android:paddingRight="@dimen/padding_large"
         />
 
 

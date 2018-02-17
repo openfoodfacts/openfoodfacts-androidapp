@@ -7,7 +7,7 @@
     android:ellipsize="marquee"
     android:gravity="center"
     android:drawableRight="@drawable/ic_arrow_down"
-    android:textSize="20sp"
+    android:textSize="@dimen/font_larger"
     android:textColor="#fff"
     android:textStyle="bold"
     />

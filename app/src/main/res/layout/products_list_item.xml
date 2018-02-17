@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/imgProduct"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="@dimen/image_view_width_normal"
+        android:layout_height="@dimen/image_view_height_normal"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_margin="@dimen/spacing_normal"

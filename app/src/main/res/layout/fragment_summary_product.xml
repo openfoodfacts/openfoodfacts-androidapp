@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:background="?android:selectableItemBackground"
-            android:maxHeight="250dp"
+            android:maxHeight="@dimen/activity_layout_height"
             app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
 
         <TextView
