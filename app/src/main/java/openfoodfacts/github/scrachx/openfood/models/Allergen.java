@@ -21,7 +21,7 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity(indexes = {
         @Index(value = "name", unique = true)
 })
-public class Allergen implements Comparable<Allergen>{
+public class Allergen{
 
     private String enable;
     private String url;
@@ -128,19 +128,5 @@ public class Allergen implements Comparable<Allergen>{
 
     public String getEnable() {
         return this.enable;
-    }
-
-    @Override
-    public int compareTo(@NonNull Allergen o) {
-
-        int compartInt = this.name.compareTo(o.getName());
-        if(compartInt<0){
-            return -1;
-        }else
-            if(compartInt>0){
-               return 1;
-        }else{
-                return 0;
-            }
     }
 }
