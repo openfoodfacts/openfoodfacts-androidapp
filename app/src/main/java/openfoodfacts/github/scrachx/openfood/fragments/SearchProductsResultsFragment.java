@@ -64,10 +64,6 @@ public class SearchProductsResultsFragment extends BaseFragment {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         productsRecyclerView.setLayoutManager(mLayoutManager);
 
-        // use VERTICAL divider
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(productsRecyclerView.getContext(),
-                DividerItemDecoration.VERTICAL);
-        productsRecyclerView.addItemDecoration(dividerItemDecoration);
 
         // Retain an instance so that you can call `resetState()` for fresh searches
         scrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
