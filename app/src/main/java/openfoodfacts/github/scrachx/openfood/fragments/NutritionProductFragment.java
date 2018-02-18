@@ -41,6 +41,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @BindView(R.id.listNutrientLevels) ListView lv;
     @BindView(R.id.textServingSize) TextView serving;
     @BindView(R.id.textCarbonFootprint) TextView carbonFootprint;
+    @BindView(R.id.txtNoDataString)TextView noTextString;
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri nutritionScoreUri;
 
@@ -74,8 +75,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
 
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
-            levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), "", "", R.drawable.error_image));
+            noTextString.setVisibility(View.VISIBLE);
+            levelItem.add(new NutrientLevelItem("", "", "",0));
         } else {
+            noTextString.setVisibility(View.GONE);
             // prefetch the uri
             customTabActivityHelper = new CustomTabActivityHelper();
             customTabActivityHelper.setConnectionCallback(this);
