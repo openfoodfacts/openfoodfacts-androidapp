@@ -336,6 +336,6 @@
   <string name="barcode_shortcut_long_label">Szukaj po kodzie kreskowym</string>
   <string name="history_shortcut_short_label">Historia</string>
   <string name="history_shortcut_long_label">Historia</string>
-  <string name="contributions_shortcut_short_label">Contributions</string>
-  <string name="contributions_shortcut_long_label">My Contributions</string>
+  <string name="contributions_shortcut_short_label">Wkład</string>
+  <string name="contributions_shortcut_long_label">Mój wkład</string>
 </resources>
