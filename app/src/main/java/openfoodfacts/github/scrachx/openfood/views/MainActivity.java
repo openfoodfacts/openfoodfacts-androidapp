@@ -61,15 +61,18 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback {
 
-    private static final int LOGIN_REQUEST = 1;
     public static final int USER_PROFILE = 100;
+    public static final int LOGIN_ID = 6;
+    private static final int LOGIN_REQUEST = 1;
     private static final long PROFILE_SETTING = 200;
     private static final int CONTRIBUTOR = 300;
     private static final int LOGOUT = 400;
-    public static final int LOGIN_ID = 6;
     private static final long USER_ID = 500;
     private static final int ABOUT = 600;
     private static final int CONTRIBUTE = 700;
+    private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
+    private static final String SCAN_SHORTCUT = "SCAN";
+    private static final String BARCODE_SHORTCUT = "BARCODE";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -190,20 +193,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             startActivity(CategoryActivity.getIntent(this));
                             break;
                         case 4:
-                            if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                                if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.CAMERA)) {
-                                    new MaterialDialog.Builder(MainActivity.this)
-                                            .title(R.string.action_about)
-                                            .content(R.string.permission_camera)
-                                            .neutralText(R.string.txtOk)
-                                            .show();
-                                } else {
-                                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
-                                }
-                            } else {
-                                Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
-                                startActivity(intent);
-                            }
+                            scan();
                             break;
                         case 5:
                             startActivity(new Intent(MainActivity.this, HistoryScanActivity.class));
@@ -243,22 +233,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             }
                             break;
                         case CONTRIBUTOR:
-                            SharedPreferences preferences1 = getSharedPreferences("login", 0);
-                            String userLogin1 = preferences1.getString("user", null);
-                            userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin1);
-                            if (isNotEmpty(userLogin1)) {
-                                CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, userContributeUri, new WebViewFallback());
-                            } else {
-                                new MaterialDialog.Builder(MainActivity.this)
-                                        .title(R.string.contribute)
-                                        .content(R.string.contribution_without_account)
-                                        .positiveText(R.string.create_account_button)
-                                        .negativeText(R.string.cancel_button)
-                                        .neutralText(R.string.login_button)
-                                        .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R.string.website) + "cgi/user.pl"), new WebViewFallback()))
-                                        .onNeutral((dialog, which) -> startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LOGIN_REQUEST))
-                                        .show();
-                            }
+                            myContributions();
                             break;
                         case LOGOUT:
                             logout();
@@ -296,7 +271,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
 
         // Remove scan item if the device does not have a camera, for example, Chromebooks or Fire devices
-        if (!Utils.isHardwareCameraInstalled(this)){
+        if (!Utils.isHardwareCameraInstalled(this)) {
             result.removeItem(4);
         }
 
@@ -329,6 +304,54 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         customTabActivityHelper.mayLaunchUrl(contributeUri, null, null);
         customTabActivityHelper.mayLaunchUrl(discoverUri, null, null);
         customTabActivityHelper.mayLaunchUrl(userContributeUri, null, null);
+
+        if (CONTRIBUTIONS_SHORTCUT.equals(getIntent().getAction())) {
+            myContributions();
+        }
+
+        if (SCAN_SHORTCUT.equals(getIntent().getAction())) {
+            scan();
+        }
+
+        if (BARCODE_SHORTCUT.equals(getIntent().getAction())) {
+            moveToBarcodeEntry();
+        }
+    }
+
+    private void scan() {
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.CAMERA)) {
+                new MaterialDialog.Builder(MainActivity.this)
+                        .title(R.string.action_about)
+                        .content(R.string.permission_camera)
+                        .neutralText(R.string.txtOk)
+                        .show();
+            } else {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+            }
+        } else {
+            Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    private void myContributions() {
+        SharedPreferences preferences1 = getSharedPreferences("login", 0);
+        String userLogin1 = preferences1.getString("user", null);
+        userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin1);
+        if (isNotEmpty(userLogin1)) {
+            CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, userContributeUri, new WebViewFallback());
+        } else {
+            new MaterialDialog.Builder(MainActivity.this)
+                    .title(R.string.contribute)
+                    .content(R.string.contribution_without_account)
+                    .positiveText(R.string.create_account_button)
+                    .negativeText(R.string.cancel_button)
+                    .neutralText(R.string.login_button)
+                    .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R.string.website) + "cgi/user.pl"), new WebViewFallback()))
+                    .onNeutral((dialog, which) -> startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LOGIN_REQUEST))
+                    .show();
+        }
     }
 
     private IProfile<ProfileSettingDrawerItem> getProfileSettingDrawerItem() {
@@ -530,7 +553,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     /**
      * This moves the main activity to the barcode entry fragment.
      */
-    public void moveToBarcodeEntry(){
+    public void moveToBarcodeEntry() {
         result.setSelection(2);
         Fragment fragment = new FindProductFragment();
         getSupportActionBar().setTitle(getResources().getString(R.string.search_by_barcode_drawer));
