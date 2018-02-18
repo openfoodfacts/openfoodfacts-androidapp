@@ -18,6 +18,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -69,6 +70,9 @@ public class HistoryScanActivity extends BaseActivity {
         mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
         productItems = new ArrayList<>();
         new HistoryScanActivity.FillAdapter(this).execute(this);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerHistoryScanView.getContext(), DividerItemDecoration.VERTICAL);
+        recyclerHistoryScanView.addItemDecoration(dividerItemDecoration);
     }
 
     @Override
@@ -83,7 +87,7 @@ public class HistoryScanActivity extends BaseActivity {
                         .title(R.string.title_clear_history_dialog)
                         .content(R.string.text_clear_history_dialog)
                         .onPositive((dialog, which) -> {
-                            mHistoryProductDao.deleteAll();;
+                            mHistoryProductDao.deleteAll();
                             productItems.clear();
                             recyclerHistoryScanView.getAdapter().notifyDataSetChanged();
                         })
@@ -115,14 +119,14 @@ public class HistoryScanActivity extends BaseActivity {
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show();
         String baseDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
         Log.d("dir", baseDir);
-        String fileName = "exportHistoryOFF"+new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date())+".csv";
+        String fileName = "exportHistoryOFF" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date()) + ".csv";
         String filePath = baseDir + File.separator + fileName;
-        File f = new File(filePath );
+        File f = new File(filePath);
         CSVWriter writer;
         FileWriter fileWriter;
         try {
-            if(f.exists() && !f.isDirectory()) {
-                fileWriter = new FileWriter(filePath , true);
+            if (f.exists() && !f.isDirectory()) {
+                fileWriter = new FileWriter(filePath, true);
                 writer = new CSVWriter(fileWriter);
             } else {
                 writer = new CSVWriter(new FileWriter(filePath));

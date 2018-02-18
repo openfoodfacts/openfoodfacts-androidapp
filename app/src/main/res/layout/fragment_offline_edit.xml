@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/buttonSendAll">
+        android:layout_above="@+id/buttonSendAll"
+        android:orientation="vertical">
 
         <ListView
+            android:id="@+id/listOfflineSave"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_normal"
-            android:id="@+id/listOfflineSave" />
+            android:layout_margin="@dimen/spacing_normal" />
 
     </LinearLayout>
 
-    <Button
+    <openfoodfacts.github.scrachx.openfood.utils.CustomButtonView
+        android:id="@+id/buttonSendAll"
+        style="@style/DefaultButtonText"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_margin="@dimen/spacing_normal"
-        android:drawableLeft="@drawable/ic_done_all"
-        android:background="@color/blue"
-        style="@style/DefaultButtonText"
-        android:layout_gravity="center"
-        android:gravity="center"
         android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/spacing_normal"
+        android:background="@color/blue"
+        android:gravity="center"
         android:text="@string/txtSendAll"
-        android:id="@+id/buttonSendAll"
-            />
+        app:drawableLeftCompat="@drawable/ic_done_all" />
 </RelativeLayout>
