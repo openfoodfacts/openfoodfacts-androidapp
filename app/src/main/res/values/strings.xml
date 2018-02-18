@@ -4,9 +4,10 @@
     <string name="action_about">About</string>
     <string name="action_discover">Discover</string>
     <string name="contribute">How to contribute</string>
-
     <string name="action_find">Find</string>
     <string name="text_barcode">Type the barcode :</string>
+    <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
+
 
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -362,6 +363,5 @@
     <string name="history_shortcut_long_label">History</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
     <string name="contributions_shortcut_long_label">My Contributions</string>
-
 
 </resources>
