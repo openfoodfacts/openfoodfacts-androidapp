@@ -7,6 +7,7 @@
 
     <string name="action_find">Find</string>
     <string name="text_barcode">Type the barcode :</string>
+    <string name="app_exit_toast_message">Please press back again to exit</string>
 
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">

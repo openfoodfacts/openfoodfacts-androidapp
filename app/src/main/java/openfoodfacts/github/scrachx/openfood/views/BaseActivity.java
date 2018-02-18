@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.widget.Toast;
 import butterknife.ButterKnife;
+import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.dagger.component.ActivityComponent;
 import openfoodfacts.github.scrachx.openfood.dagger.module.ActivityModule;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
@@ -48,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
 
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please press back again to exit", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, this.getString(R.string.app_exit_toast_message), Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(new Runnable() {
 
