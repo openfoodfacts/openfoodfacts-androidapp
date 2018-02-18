@@ -26,6 +26,58 @@
     <item>fl oz</item>
   </string-array>
   <!-- Text units -->
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-BR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh-CN</item>
+    <item>fa</item>
+    <item>rs</item>
+    <item>af</item>
+    <item>ak</item>
+    <item>am</item>
+    <item>as</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
+    <item>hu</item>
+    <item>tr</item>
+    <item>id</item>
+    <item>tl</item>
+    <item>fil</item>
+    <item>nl-BE</item>
+    <item>bn</item>
+    <item>sl</item>
+    <item>ku</item>
+    <item>eo</item>
+    <item>pl</item>
+  </string-array>
   <string-array name="images_array">
     <item>Amezwer</item>
     <item>Tuččit</item>
@@ -52,14 +104,14 @@
   <string name="txtStores">Taḥanutt :</string>
   <string name="txtCountries">Timura anida yettnuzu</string>
   <string name="txtIngredients">Umuɣ n yisufar</string>
-  <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
+  <string name="txtSubstances">Isental neɣ isufer id-igelun s innefrayen neɣ tisedmirin:</string>
   <string name="txtAdditives">Imerna</string>
   <string name="txtTraces">Limaṛat :</string>
   <string name="txtMayBeFromPalmOilProduct">Isufar ig zemren ad kken seg zzit n palm :
 </string>
   <string name="txtPalmOilProduct">Isufar n zzit n palm :</string>
   <string name="txtServingSize">Tiddi n tunt :</string>
-  <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
+  <string name="txtNutrientLevel100g">Anaṭṭaf deg asmintig di 100g :</string>
   <string name="txtNutritionLevelLow">s ciṭuḥ</string>
   <string name="txtNutritionLevelModerate">S tesmekta iwulmen</string>
   <string name="txtNutritionLevelHigh">S waṭas</string>
@@ -87,7 +139,7 @@
   <string name="txtYes">Ih</string>
   <string name="txtNo">Uhu</string>
   <string name="hintNameProduct">Isem</string>
-  <string name="hintEnergy">Energy in kJ per serving</string>
+  <string name="hintEnergy">Izuren di kj i tiremt</string>
   <string name="hintEnergyUnit">Taxxamt n tezmert</string>
   <string name="hintWeight">Taẓayt</string>
   <string name="hintStores">Taḥanutt</string>
@@ -206,6 +258,8 @@
   <string name="number_of_results">amḍan n yigemmaḍ</string>
   <string name="txt_no_results">Ulac igemmaḍ i d-nufa</string>
   <string name="txt_extend_search">Ssawseɛ anad-k neɣ rnu afaris</string>
+  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Ur nezmir ara ad d-nessali ayen i tettnadiḍ</string>
   <string name="txt_try_again">Ɛreḍ tikkelt-nniḍen</string>
   <string name="nutrition_lactose">Lactose</string>
@@ -274,4 +328,14 @@
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Ṭṭef ugar n tewlafin</string>
   <string name="txtSaturatedFat">Iččuṛ d tassemt</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="scan_shortcut_short_label">Semḍen</string>
+  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="barcode_shortcut_short_label">Nadi</string>
+  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="history_shortcut_short_label">Amazray</string>
+  <string name="history_shortcut_long_label">Amazray</string>
+  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_long_label">My Contributions</string>
 </resources>

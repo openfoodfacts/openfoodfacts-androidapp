@@ -257,6 +257,8 @@
   <string name="number_of_results">Antall resultater :</string>
   <string name="txt_no_results">Ingen resultater funnet</string>
   <string name="txt_extend_search">Prøv å utvide søket ditt eller legg til produktet</string>
+  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Kunne ikke laste inn søkeresultater</string>
   <string name="txt_try_again">Prøv igjen</string>
   <string name="nutrition_lactose">Laktose</string>
@@ -325,4 +327,14 @@
   <string name="take_picture_nutrition_table">Ta et bilde av næringslisten</string>
   <string name="take_more_pictures">Ta flere bilder</string>
   <string name="txtSaturatedFat">Mettet fett</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="scan_shortcut_short_label">Scan</string>
+  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="barcode_shortcut_short_label">Søk</string>
+  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="history_shortcut_short_label">Logg</string>
+  <string name="history_shortcut_long_label">Logg</string>
+  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_long_label">My Contributions</string>
 </resources>
