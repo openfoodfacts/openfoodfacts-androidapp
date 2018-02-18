@@ -51,32 +51,32 @@
     <item>crwdns35002:0crwdne35002:0</item>
     <item>crwdns35003:0crwdne35003:0</item>
     <item>crwdns35004:0crwdne35004:0</item>
-    <item>crwdns37053:0crwdne37053:0</item>
+    <item>crwdns37099:0crwdne37099:0</item>
     <item>crwdns35006:0crwdne35006:0</item>
     <item>crwdns35007:0crwdne35007:0</item>
     <item>crwdns35008:0crwdne35008:0</item>
     <item>crwdns35009:0crwdne35009:0</item>
     <item>crwdns35010:0crwdne35010:0</item>
-    <item>crwdns37054:0crwdne37054:0</item>
+    <item>crwdns37100:0crwdne37100:0</item>
     <item>crwdns35939:0crwdne35939:0</item>
     <item>crwdns35940:0crwdne35940:0</item>
-    <item>crwdns36949:0crwdne36949:0</item>
-    <item>crwdns36950:0crwdne36950:0</item>
-    <item>crwdns36951:0crwdne36951:0</item>
-    <item>crwdns36952:0crwdne36952:0</item>
-    <item>crwdns37055:0crwdne37055:0</item>
-    <item>crwdns37056:0crwdne37056:0</item>
-    <item>crwdns36955:0crwdne36955:0</item>
-    <item>crwdns36956:0crwdne36956:0</item>
-    <item>crwdns36957:0crwdne36957:0</item>
-    <item>crwdns36958:0crwdne36958:0</item>
-    <item>crwdns36959:0crwdne36959:0</item>
-    <item>crwdns37057:0crwdne37057:0</item>
-    <item>crwdns36961:0crwdne36961:0</item>
-    <item>crwdns36962:0crwdne36962:0</item>
-    <item>crwdns36963:0crwdne36963:0</item>
-    <item>crwdns36964:0crwdne36964:0</item>
-    <item>crwdns36965:0crwdne36965:0</item>
+    <item>crwdns37101:0crwdne37101:0</item>
+    <item>crwdns37102:0crwdne37102:0</item>
+    <item>crwdns37103:0crwdne37103:0</item>
+    <item>crwdns37104:0crwdne37104:0</item>
+    <item>crwdns37105:0crwdne37105:0</item>
+    <item>crwdns37106:0crwdne37106:0</item>
+    <item>crwdns37107:0crwdne37107:0</item>
+    <item>crwdns37108:0crwdne37108:0</item>
+    <item>crwdns37109:0crwdne37109:0</item>
+    <item>crwdns37110:0crwdne37110:0</item>
+    <item>crwdns37111:0crwdne37111:0</item>
+    <item>crwdns37112:0crwdne37112:0</item>
+    <item>crwdns37113:0crwdne37113:0</item>
+    <item>crwdns37114:0crwdne37114:0</item>
+    <item>crwdns37115:0crwdne37115:0</item>
+    <item>crwdns37116:0crwdne37116:0</item>
+    <item>crwdns37117:0crwdne37117:0</item>
   </string-array>
   <string-array name="images_array">
     <item>crwdns35043:0crwdne35043:0</item>
@@ -170,8 +170,8 @@
   <string name="open_food_drawer">crwdns35130:0crwdne35130:0</string>
   <string name="search_drawer">crwdns35131:0crwdne35131:0</string>
   <string name="search_by_barcode_drawer">crwdns35132:0crwdne35132:0</string>
-  <string name="category_drawer">crwdns36947:0crwdne36947:0</string>
-  <string name="search_by_category">crwdns36948:0crwdne36948:0</string>
+  <string name="category_drawer">crwdns37118:0crwdne37118:0</string>
+  <string name="search_by_category">crwdns37119:0crwdne37119:0</string>
   <string name="search_by_name_drawer">crwdns35133:0crwdne35133:0</string>
   <string name="scan_search">crwdns35134:0crwdne35134:0</string>
   <string name="user_drawer">crwdns35135:0crwdne35135:0</string>
@@ -257,6 +257,8 @@
   <string name="number_of_results">crwdns35225:0crwdne35225:0</string>
   <string name="txt_no_results">crwdns35226:0crwdne35226:0</string>
   <string name="txt_extend_search">crwdns35962:0crwdne35962:0</string>
+  <string name="txt_no_matching_products">crwdns37122:0crwdne37122:0</string>
+  <string name="txt_broaden_search">crwdns37123:0crwdne37123:0</string>
   <string name="txt_cant_load_search_results">crwdns35963:0crwdne35963:0</string>
   <string name="txt_try_again">crwdns35964:0crwdne35964:0</string>
   <string name="nutrition_lactose">crwdns35227:0crwdne35227:0</string>
@@ -324,5 +326,15 @@
   <string name="take_picture_front">crwdns35289:0crwdne35289:0</string>
   <string name="take_picture_nutrition_table">crwdns35290:0crwdne35290:0</string>
   <string name="take_more_pictures">crwdns35291:0crwdne35291:0</string>
-  <string name="txtSaturatedFat">crwdns37039:0crwdne37039:0</string>
+  <string name="txtSaturatedFat">crwdns37124:0crwdne37124:0</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">crwdns37125:0crwdne37125:0</string>
+  <string name="scan_shortcut_short_label">crwdns37126:0crwdne37126:0</string>
+  <string name="scan_shortcut_long_label">crwdns37127:0crwdne37127:0</string>
+  <string name="barcode_shortcut_short_label">crwdns37128:0crwdne37128:0</string>
+  <string name="barcode_shortcut_long_label">crwdns37129:0crwdne37129:0</string>
+  <string name="history_shortcut_short_label">crwdns37130:0crwdne37130:0</string>
+  <string name="history_shortcut_long_label">crwdns37131:0crwdne37131:0</string>
+  <string name="contributions_shortcut_short_label">crwdns37132:0crwdne37132:0</string>
+  <string name="contributions_shortcut_long_label">crwdns37133:0crwdne37133:0</string>
 </resources>
