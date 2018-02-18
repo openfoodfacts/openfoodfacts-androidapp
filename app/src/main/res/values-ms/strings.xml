@@ -60,7 +60,7 @@
     <item>da</item>
     <item>zh-CN</item>
     <item>fa</item>
-    <item>rs</item>
+    <item>b+sr+Latn</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
@@ -78,6 +78,7 @@
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
+    <item>b+sr+Cyrl</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
