@@ -3,7 +3,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    android:gravity="center">
+    android:gravity="center"
+    android:id="@+id/main_linear_layout">
 
     <include layout="@layout/toolbar" />
 
