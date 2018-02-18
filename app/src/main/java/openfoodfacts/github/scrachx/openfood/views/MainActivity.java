@@ -70,9 +70,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final long USER_ID = 500;
     private static final int ABOUT = 600;
     private static final int CONTRIBUTE = 700;
-    private static final String CONTRIBUTIONS_SHORTCUT = "openfoodfacts.github.scrachx.openfood.CONTRIBUTIONS";
-    private static final String SCAN_SHORTCUT = "openfoodfacts.github.scrachx.openfood.SCAN";
-    private static final String BARCODE_SHORTCUT = "openfoodfacts.github.scrachx.openfood.BARCODE";
+    private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
+    private static final String SCAN_SHORTCUT = "SCAN";
+    private static final String BARCODE_SHORTCUT = "BARCODE";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;

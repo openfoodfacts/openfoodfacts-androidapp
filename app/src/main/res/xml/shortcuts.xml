@@ -7,10 +7,10 @@
         android:shortcutLongLabel="@string/scan_shortcut_long_label"
         android:shortcutShortLabel="@string/scan_shortcut_short_label">
         <intent
-            android:action="openfoodfacts.github.scrachx.openfood.SCAN"
+            android:action="SCAN"
             android:targetClass="openfoodfacts.github.scrachx.openfood.views.MainActivity"
-            android:targetPackage="openfoodfacts.github.scrachx.openfood" />
-        <categories android:name="openfoodfacts.github.scrachx.openfood" />
+            android:targetPackage="${applicationId}" />
+        <categories android:name="${applicationId}" />
     </shortcut>
     <shortcut
         android:enabled="true"
@@ -20,10 +20,10 @@
         android:shortcutLongLabel="@string/barcode_shortcut_long_label"
         android:shortcutShortLabel="@string/barcode_shortcut_short_label">
         <intent
-            android:action="openfoodfacts.github.scrachx.openfood.BARCODE"
+            android:action="BARCODE"
             android:targetClass="openfoodfacts.github.scrachx.openfood.views.MainActivity"
-            android:targetPackage="openfoodfacts.github.scrachx.openfood" />
-        <categories android:name="openfoodfacts.github.scrachx.openfood" />
+            android:targetPackage="${applicationId}" />
+        <categories android:name="${applicationId}" />
     </shortcut>
     <shortcut
         android:enabled="true"
@@ -35,8 +35,8 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetClass="openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity"
-            android:targetPackage="openfoodfacts.github.scrachx.openfood" />
-        <categories android:name="openfoodfacts.github.scrachx.openfood" />
+            android:targetPackage="${applicationId}" />
+        <categories android:name="${applicationId}" />
     </shortcut>
     <shortcut
         android:enabled="true"
@@ -46,10 +46,10 @@
         android:shortcutLongLabel="@string/contributions_shortcut_long_label"
         android:shortcutShortLabel="@string/contributions_shortcut_short_label">
         <intent
-            android:action="openfoodfacts.github.scrachx.openfood.CONTRIBUTIONS"
+            android:action="CONTRIBUTIONS"
             android:targetClass="openfoodfacts.github.scrachx.openfood.views.MainActivity"
-            android:targetPackage="openfoodfacts.github.scrachx.openfood" />
-        <categories android:name="openfoodfacts.github.scrachx.openfood" />
+            android:targetPackage="${applicationId}" />
+        <categories android:name="${applicationId}" />
     </shortcut>
 
 </shortcuts>
