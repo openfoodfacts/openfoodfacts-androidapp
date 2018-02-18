@@ -257,6 +257,8 @@
   <string name="number_of_results">Número de resultados :</string>
   <string name="txt_no_results">Sem resultados</string>
   <string name="txt_extend_search">Tente alargar a pesquisa ou adicione o produto</string>
+  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Não foi possível carregar os resultados da pesquisa</string>
   <string name="txt_try_again">Tente novamente</string>
   <string name="nutrition_lactose">Lactose</string>
@@ -325,4 +327,14 @@
   <string name="take_picture_nutrition_table">Tirar foto à tabela nutricional</string>
   <string name="take_more_pictures">Tirar mais fotos</string>
   <string name="txtSaturatedFat">Saturated fat</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="scan_shortcut_short_label">Scan</string>
+  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="barcode_shortcut_short_label">Procurar</string>
+  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="history_shortcut_short_label">Histórico</string>
+  <string name="history_shortcut_long_label">Histórico</string>
+  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_long_label">My Contributions</string>
 </resources>
