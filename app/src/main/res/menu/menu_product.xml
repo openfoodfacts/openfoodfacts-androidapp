@@ -5,7 +5,8 @@
         app:showAsAction="ifRoom"
         android:title="@string/share"
         android:icon="@drawable/ic_share_black_48px"
-        app:actionProviderClass="android.support.v7.widget.ShareActionProvider" />
+        android:checkable="true"
+        />
 
     <item android:id="@+id/action_edit_product"
         android:icon="@drawable/ic_mode_edit_black"

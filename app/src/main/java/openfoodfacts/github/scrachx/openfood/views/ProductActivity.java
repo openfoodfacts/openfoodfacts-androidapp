@@ -156,6 +156,11 @@ public class ProductActivity extends BaseActivity {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
+
+            case R.id.menu_item_share:
+                showShareDialog();
+                return super.onOptionsItemSelected(item);
+
             case R.id.action_edit_product:
                 String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
                 if (mState.getProduct().getUrl() != null) {
@@ -170,32 +175,25 @@ public class ProductActivity extends BaseActivity {
         }
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_product, menu);
-        MenuItem item = menu.findItem(R.id.menu_item_share);
-        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
-
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+    private void showShareDialog() {
         String url = " " + getString(R.string.website_product) + mState.getProduct().getCode();
         if (mState.getProduct().getUrl() != null) {
             url = " " + mState.getProduct().getUrl();
         }
-        shareIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.msg_share) + url);
-        shareIntent.setType("text/plain");
-        setShareIntent(shareIntent);
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.msg_share) + url);
 
+        startActivity(Intent.createChooser(intent, getString(R.string.share)));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_product, menu);
         return true;
     }
-
-    // Call to update the share intent
-    private void setShareIntent(Intent shareIntent) {
-        if (mShareActionProvider != null) {
-            mShareActionProvider.setShareIntent(shareIntent);
-        }
-    }
-
+     
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
