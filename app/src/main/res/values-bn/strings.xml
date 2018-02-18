@@ -257,6 +257,8 @@
   <string name="number_of_results">ফলাফলের সংখ্যা:</string>
   <string name="txt_no_results">কোন ফলাফল খুঁজে পাওয়া যায়নি</string>
   <string name="txt_extend_search">আপনার অনুসন্ধান বাড়ানোর চেষ্টা করুন বা পণ্য যোগ করুন</string>
+  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">অনুসন্ধান ফলাফলগুলি লোড করা যাবে না</string>
   <string name="txt_try_again">আবার চেষ্টা করুন</string>
   <string name="nutrition_lactose">ল্যাকটোজ</string>
@@ -325,4 +327,14 @@
   <string name="take_picture_nutrition_table">পুষ্টি তালিকার একটি ছবি তুলুন</string>
   <string name="take_more_pictures">আরও কিছু ছবি তুলুন</string>
   <string name="txtSaturatedFat">Saturated fat</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="scan_shortcut_short_label">স্ক্যান</string>
+  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="barcode_shortcut_short_label">অনুসন্ধান</string>
+  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="history_shortcut_short_label">ইতিহাস</string>
+  <string name="history_shortcut_long_label">ইতিহাস</string>
+  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_long_label">My Contributions</string>
 </resources>
