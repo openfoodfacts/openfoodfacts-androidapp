@@ -258,8 +258,8 @@
   <string name="number_of_results">Liczba wyników :</string>
   <string name="txt_no_results">Brak wyników</string>
   <string name="txt_extend_search">Spróbuj poszerzyć zakres wyszukiwania lub dodać produkt</string>
-  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+  <string name="txt_no_matching_products">Nie znaleziono żadnych produktów spełniających kryteria. \n Możesz spróbować :</string>
+  <string name="txt_broaden_search">rozszerzenie zakresu wyszukiwania \n - zeskanuj i dodaj do Open Food Facts</string>
   <string name="txt_cant_load_search_results">Nie można załadować wyników wyszukiwania</string>
   <string name="txt_try_again">Spróbuj ponownie</string>
   <string name="nutrition_lactose">Laktoza</string>
@@ -329,11 +329,11 @@
   <string name="take_more_pictures">Zrób więcej zdjęć</string>
   <string name="txtSaturatedFat">Tłuszcz nasycony</string>
   <!-- String related to App Shortcuts -->
-  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="disabled_message">Skrót niedostępny</string>
   <string name="scan_shortcut_short_label">Skan</string>
-  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="scan_shortcut_long_label">Zeskanuj produkt</string>
   <string name="barcode_shortcut_short_label">Szukaj</string>
-  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="barcode_shortcut_long_label">Szukaj po kodzie kreskowym</string>
   <string name="history_shortcut_short_label">Historia</string>
   <string name="history_shortcut_long_label">Historia</string>
   <string name="contributions_shortcut_short_label">Contributions</string>
