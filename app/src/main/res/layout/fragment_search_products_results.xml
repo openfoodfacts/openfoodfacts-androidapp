@@ -32,7 +32,7 @@
          android:id="@+id/textNoResults"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:text="@string/txt_no_results"
+         android:text="@string/txt_no_matching_products"
          android:textAppearance="?android:attr/textAppearanceMedium"
          android:textSize="@dimen/font_normal"
          android:textColor="@color/grey_500"/>
@@ -40,10 +40,19 @@
          android:id="@+id/textExtendSearch"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:text="@string/txt_extend_search"
+          android:layout_marginTop="@dimen/materialize_typography_subheading"
+         android:text="@string/txt_broaden_search"
          android:textAppearance="?android:attr/textAppearanceMedium"
          android:textSize="@dimen/font_normal"
          android:textColor="@color/grey_500"/>
+
+      <ImageView
+          android:id="@+id/addProduct"
+          android:layout_marginTop="25dp"
+          android:layout_width="95dp"
+          android:layout_height="90dp"
+          android:scaleType="fitCenter"
+          app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
 
    </LinearLayout>
 
