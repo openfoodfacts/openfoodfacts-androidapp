@@ -26,7 +26,6 @@ public class FullScreenImage extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_full_screen_image);
-
         Intent intent = getIntent();
         String imageurl = intent.getExtras().getString("imageurl");
 
