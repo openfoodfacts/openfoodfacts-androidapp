@@ -105,7 +105,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
         mSendProductDao = Utils.getAppDaoSession(this).getSendProductDao();
         mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
         boolean isMsgOnlyOnePhotoNecessaryDismissed = mSharedPref.getBoolean("is_msg_only_one_photo_necessary_dismissed", false);
-        if (messageDismissed) {
+        if (isMsgOnlyOnePhotoNecessaryDismissed) {
             mContainerView.setVisibility(View.GONE);
         }
         if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
