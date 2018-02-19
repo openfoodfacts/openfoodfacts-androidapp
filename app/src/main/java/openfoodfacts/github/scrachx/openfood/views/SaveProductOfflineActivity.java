@@ -104,7 +104,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
         mSendProductDao = Utils.getAppDaoSession(this).getSendProductDao();
         mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
-        boolean messageDismissed = mSharedPref.getBoolean("is_message_dismissed", false);
+        boolean isMsgOnlyOnePhotoNecessaryDismissed = mSharedPref.getBoolean("is_msg_only_one_photo_necessary_dismissed", false);
         if (messageDismissed) {
             mContainerView.setVisibility(View.GONE);
         }
@@ -313,7 +313,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @OnClick(R.id.message_dismiss_icon)
     protected void onMessageDismissClicked() {
         mContainerView.setVisibility(View.GONE);
-        mSharedPref.edit().putBoolean("is_message_dismissed", true).apply();
+        mSharedPref.edit().putBoolean("is_msg_only_one_photo_necessary_dismissed", true).apply();
     }
 
     @Override
