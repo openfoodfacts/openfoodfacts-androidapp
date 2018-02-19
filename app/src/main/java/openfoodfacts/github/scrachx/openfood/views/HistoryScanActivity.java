@@ -131,7 +131,7 @@ public class HistoryScanActivity extends BaseActivity {
             } else {
                 writer = new CSVWriter(new FileWriter(filePath));
             }
-            String[] headers = {"Barcode", "Name", "Brands"};
+           String[]  headers = res.getStringArray(R.array.headers);
             writer.writeNext(headers);
             List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             for (HistoryProduct hp : listHistoryProducts) {
