@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,10 +19,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,10 +47,12 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
+import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
+import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
 
-public class HistoryScanActivity extends BaseActivity {
+public class HistoryScanActivity extends BaseActivity implements SwipeControllerActions {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -58,6 +61,8 @@ public class HistoryScanActivity extends BaseActivity {
     private List<HistoryItem> productItems;
     private boolean emptyHistory;
     private HistoryProductDao mHistoryProductDao;
+    private HistoryListAdapter adapter;
+    private List<HistoryProduct> listHistoryProducts;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,8 +76,16 @@ public class HistoryScanActivity extends BaseActivity {
         productItems = new ArrayList<>();
         new HistoryScanActivity.FillAdapter(this).execute(this);
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerHistoryScanView.getContext(), DividerItemDecoration.VERTICAL);
-        recyclerHistoryScanView.addItemDecoration(dividerItemDecoration);
+    }
+
+    @Override
+    public void onRightClicked(int position) {
+        if (listHistoryProducts.size() > 0) {
+            mHistoryProductDao.delete(listHistoryProducts.get(position));
+        }
+        adapter.remove(productItems.get(position));
+        adapter.notifyItemRemoved(position);
+        adapter.notifyItemRangeChanged(position, adapter.getItemCount());
     }
 
     @Override
@@ -208,7 +221,7 @@ public class HistoryScanActivity extends BaseActivity {
 
         @Override
         protected Context doInBackground(Context... ctx) {
-            List<HistoryProduct> listHistoryProducts = mHistoryProductDao.queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list();
+            listHistoryProducts = mHistoryProductDao.queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list();
             final Bitmap defaultImgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_no), 200, 200, true);
 
             for (HistoryProduct historyProduct : listHistoryProducts) {
@@ -247,9 +260,24 @@ public class HistoryScanActivity extends BaseActivity {
 
         @Override
         protected void onPostExecute(Context ctx) {
-            HistoryListAdapter adapter = new HistoryListAdapter(productItems, getString(R.string.website_product), activity);
+//            HistoryListAdapter adapter = new HistoryListAdapter(productItems, getString(R.string.website_product), activity);
+//            recyclerHistoryScanView.setAdapter(adapter);
+//            recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
+            adapter = new HistoryListAdapter(productItems, getString(R.string
+                    .website_product), activity);
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
+
+
+            SwipeController swipeController = new SwipeController(HistoryScanActivity.this);
+            ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
+            itemTouchhelper.attachToRecyclerView(recyclerHistoryScanView);
+            recyclerHistoryScanView.addItemDecoration(new RecyclerView.ItemDecoration() {
+                @Override
+                public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+                    swipeController.onDraw(c);
+                }
+            });
         }
     }
 
