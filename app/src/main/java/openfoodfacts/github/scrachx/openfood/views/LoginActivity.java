@@ -104,13 +104,10 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
             return;
         }
 
-        final LoadToast lt = new LoadToast(this);
-        save.setClickable(false);
-        lt.setText(getString(R.string.toast_retrieving));
-        lt.setTranslationY(1000);
-        lt.setBackgroundColor(ContextCompat.getColor(this,R.color.blue));
-        lt.setTextColor(ContextCompat.getColor(this,R.color.white));
-        lt.show();
+        Snackbar snackbar = Snackbar
+                .make(linearLayout, "Loading", Snackbar.LENGTH_LONG);
+
+        snackbar.show();
 
         final Activity context = this;
         apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
@@ -118,7 +115,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                    lt.error();
+                    
                     Utils.hideKeyboard(context);
                     return;
                 }
@@ -133,7 +130,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                 SharedPreferences.Editor editor = context.getSharedPreferences("login", 0).edit();
 
                 if (htmlNoParsed == null || htmlNoParsed.contains("Incorrect user name or password.") || htmlNoParsed.contains("See you soon!")) {
-                    lt.error();
+                   
                     Toast.makeText(context, context.getString(R.string.errorLogin), Toast.LENGTH_LONG).show();
                     loginView.setText("");
                     passwordView.setText("");
@@ -153,7 +150,11 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                             break;
                         }
                     }
-                    lt.success();
+                     Snackbar snackbar = Snackbar
+                            .make(linearLayout, "Connected", Snackbar.LENGTH_LONG);
+
+                    snackbar.show();
+                    
                     Toast.makeText(context, context.getResources().getText(R.string.txtToastSaved), Toast.LENGTH_LONG).show();
                     editor.putString("user", loginView.getText().toString());
                     editor.putString("pass", passwordView.getText().toString());
@@ -170,7 +171,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                lt.error();
+               
                 Utils.hideKeyboard(context);
             }
         });
