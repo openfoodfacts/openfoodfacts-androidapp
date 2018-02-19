@@ -304,7 +304,7 @@ public class OpenFoodAPIClient {
 
             @Override
             public void onFailure(Call<AllergenRestResponse> call, Throwable t) {
-
+                onAllergensCallback.onAllergensResponse(false);
             }
         });
     }
