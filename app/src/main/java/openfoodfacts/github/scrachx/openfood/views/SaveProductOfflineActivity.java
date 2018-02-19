@@ -58,26 +58,41 @@ public class SaveProductOfflineActivity extends BaseActivity {
     private final String[] mUnit = new String[1];
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.barcodeDoubleCheck) TextView barcodeText;
-    @BindView(R.id.imageSaveFront) ImageView imgSaveFront;
-    @BindView(R.id.imageSaveNutrition) ImageView imgSaveNutrition;
-    @BindView(R.id.imageSaveIngredients) ImageView imgSaveIngredients;
-    @BindView(R.id.editTextName) EditText name;
-    @BindView(R.id.editTextBrand) EditText brand;
-    @BindView(R.id.editTextWeight) EditText weight;
-    @BindView(R.id.spinnerUnitWeight) Spinner spinnerW;
-    @BindView(R.id.buttonSaveProduct) Button save;
-    @BindView(R.id.buttonTakePictureFront) ImageButton btnTakeFront;
-    @BindView(R.id.buttonTakePictureIngredients) ImageButton btnTakeIngredients;
-    @BindView(R.id.buttonTakePictureNutrition) ImageButton btnTakeNutrition;
-    @BindView(R.id.message_container_card_view) CardView mContainerView;
-    @BindView(R.id.message_dismiss_icon) ImageButton mDismissButton;
+    @BindView(R.id.barcodeDoubleCheck)
+    TextView barcodeText;
+    @BindView(R.id.imageSaveFront)
+    ImageView imgSaveFront;
+    @BindView(R.id.imageSaveNutrition)
+    ImageView imgSaveNutrition;
+    @BindView(R.id.imageSaveIngredients)
+    ImageView imgSaveIngredients;
+    @BindView(R.id.editTextName)
+    EditText name;
+    @BindView(R.id.editTextBrand)
+    EditText brand;
+    @BindView(R.id.editTextWeight)
+    EditText weight;
+    @BindView(R.id.spinnerUnitWeight)
+    Spinner spinnerW;
+    @BindView(R.id.buttonSaveProduct)
+    Button save;
+    @BindView(R.id.buttonTakePictureFront)
+    ImageButton btnTakeFront;
+    @BindView(R.id.buttonTakePictureIngredients)
+    ImageButton btnTakeIngredients;
+    @BindView(R.id.buttonTakePictureNutrition)
+    ImageButton btnTakeNutrition;
+    @BindView(R.id.message_container_card_view)
+    CardView mContainerView;
+    @BindView(R.id.message_dismiss_icon)
+    ImageButton mDismissButton;
 
     private SendProduct mProduct;
     private String mBarcode;
     private OpenFoodAPIClient api;
     private String imageTaken;
     private SendProductDao mSendProductDao;
+    private SharedPreferences mSharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +103,11 @@ public class SaveProductOfflineActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mSendProductDao = Utils.getAppDaoSession(this).getSendProductDao();
-
+        mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
+        boolean messageDismissed = mSharedPref.getBoolean("is_message_dismissed", false);
+        if (messageDismissed) {
+            mContainerView.setVisibility(View.GONE);
+        }
         if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE)
@@ -120,16 +139,16 @@ public class SaveProductOfflineActivity extends BaseActivity {
         if (sp.size() > 0) {
             mProduct = sp.get(0);
         }
-        if(mProduct != null) {
-            if(isNotEmpty(mProduct.getImgupload_front())) {
-		imgSaveFront.setVisibility(View.VISIBLE);
+        if (mProduct != null) {
+            if (isNotEmpty(mProduct.getImgupload_front())) {
+                imgSaveFront.setVisibility(View.VISIBLE);
                 Picasso.with(this)
                         .load(mProduct.getImgupload_front())
                         .fit()
                         .centerCrop()
                         .into(imgSaveFront);
             }
-            if(isNotBlank(mProduct.getImgupload_nutrition())) {
+            if (isNotBlank(mProduct.getImgupload_nutrition())) {
                 imgSaveNutrition.setVisibility(View.VISIBLE);
                 Picasso.with(this)
                         .load(new File(mProduct.getImgupload_nutrition()))
@@ -137,7 +156,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                         .centerCrop()
                         .into(imgSaveNutrition);
             }
-            if(isNotBlank(mProduct.getImgupload_ingredients())) {
+            if (isNotBlank(mProduct.getImgupload_ingredients())) {
                 imgSaveIngredients.setVisibility(View.VISIBLE);
                 Picasso.with(this)
                         .load(new File(mProduct.getImgupload_ingredients()))
@@ -154,7 +173,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
         } else {
             mProduct = new SendProduct();
             mProduct.setBarcode(mBarcode);
-			barcodeText.setText(barcodeText.getText() + " " + mBarcode);
+            barcodeText.setText(barcodeText.getText() + " " + mBarcode);
         }
 
         mProduct.setLang(Locale.getDefault().getLanguage());
@@ -166,8 +185,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
      * Check if there is a camera installed on the device. If there is not, then hide the views that
      * allow the user to take a photo.
      */
-    private void checkIfCameraInstalled(){
-        if (!Utils.isHardwareCameraInstalled(this)){
+    private void checkIfCameraInstalled() {
+        if (!Utils.isHardwareCameraInstalled(this)) {
             btnTakeFront.setVisibility(View.GONE);
             btnTakeNutrition.setVisibility(View.GONE);
             btnTakeIngredients.setVisibility(View.GONE);
@@ -221,14 +240,14 @@ public class SaveProductOfflineActivity extends BaseActivity {
         }
 
         if (isNotEmpty(mProduct.getImgupload_front())) {
-        Utils.compressImage(mProduct.getImgupload_front());
+            Utils.compressImage(mProduct.getImgupload_front());
         }
-	    
+
         if (isNotBlank(mProduct.getImgupload_ingredients())) {
             Utils.compressImage(mProduct.getImgupload_ingredients());
         }
 
-        if(isNotBlank(mProduct.getImgupload_nutrition())) {
+        if (isNotBlank(mProduct.getImgupload_nutrition())) {
             Utils.compressImage(mProduct.getImgupload_nutrition());
         }
 
@@ -292,8 +311,9 @@ public class SaveProductOfflineActivity extends BaseActivity {
     }
 
     @OnClick(R.id.message_dismiss_icon)
-    protected void onMessageDismissClicked(){
+    protected void onMessageDismissClicked() {
         mContainerView.setVisibility(View.GONE);
+        mSharedPref.edit().putBoolean("is_message_dismissed", true).apply();
     }
 
     @Override
@@ -334,7 +354,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
     }
 
     private void onPhotoReturned(File photoFile) {
-        if(imageTaken.equals("front")) {
+        if (imageTaken.equals("front")) {
             mProduct.setImgupload_front(photoFile.getAbsolutePath());
             imgSaveFront.setVisibility(View.VISIBLE);
             Picasso.with(this)
@@ -342,7 +362,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                     .fit()
                     .centerCrop()
                     .into(imgSaveFront);
-        } else if(imageTaken.equals("nutrition")) {
+        } else if (imageTaken.equals("nutrition")) {
             mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
             imgSaveNutrition.setVisibility(View.VISIBLE);
             Picasso.with(this)
@@ -350,7 +370,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                     .fit()
                     .centerCrop()
                     .into(imgSaveNutrition);
-        } else if(imageTaken.equals("ingredients")) {
+        } else if (imageTaken.equals("ingredients")) {
             mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
             imgSaveIngredients.setVisibility(View.VISIBLE);
             Picasso.with(this)
