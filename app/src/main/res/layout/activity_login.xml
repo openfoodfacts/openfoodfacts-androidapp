@@ -62,7 +62,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="@color/blue"
+            android:background="@drawable/rounded_button"
             android:text="@string/txtSignIn"
             android:textColor="@android:color/white" />
 
@@ -71,7 +71,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="@color/blue"
+            android:background="@drawable/rounded_button"
             android:text="@string/create_account"
             android:textColor="@android:color/white" />
 
