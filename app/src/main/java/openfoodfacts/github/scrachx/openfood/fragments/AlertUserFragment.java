@@ -17,6 +17,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -74,10 +76,20 @@ public class AlertUserFragment extends BaseFragment {
 
         mRvAllergens = (RecyclerView) view.findViewById(R.id.alergens_recycle);
         mAllergensEnabled = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
-        mAdapter = new AllergensAdapter(mAllergensEnabled, getActivity());
+        mAdapter = new AllergensAdapter(sortedAllergensList(), getActivity());
         mRvAllergens.setAdapter(mAdapter);
         mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
         mRvAllergens.setHasFixedSize(true);
+    }
+
+    public List<Allergen> sortedAllergensList(){
+        Collections.sort(mAllergensFromDao, new Comparator<Allergen>() {
+            @Override
+            public int compare(Allergen a1, Allergen a2) {
+                return a1.getName().compareToIgnoreCase(a2.getName());
+            }
+        });
+        return mAllergensFromDao;
     }
 
     @OnClick(R.id.fab)
