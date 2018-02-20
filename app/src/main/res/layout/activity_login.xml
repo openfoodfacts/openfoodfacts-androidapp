@@ -82,6 +82,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textSize="@dimen/font_small" />
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forgot_password"
+            android:id="@+id/forgotpassword"
+            android:textColor="@color/primary"
+            android:layout_gravity="center_horizontal"
+            android:padding="12sp"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
