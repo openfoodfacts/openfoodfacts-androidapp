@@ -32,7 +32,8 @@
                 android:textIsSelectable="true"
                 android:textSize="@dimen/font_larger"
                 android:textStyle="bold"
-                app:drawableLeftCompat="@drawable/ic_add_a_photo" />
+                android:drawablePadding="7dp"
+                app:drawableLeftCompat="@drawable/ic_add_a_photo_color_primary" />
 
             <android.support.v7.widget.CardView
                 android:id="@+id/message_container_card_view"
