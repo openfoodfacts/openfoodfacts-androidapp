@@ -10,8 +10,6 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -81,12 +79,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final int CONTRIBUTE = 700;
 
     //Network Status
-    public static int TYPE_WIFI = 1;
-    public static int TYPE_MOBILE = 2;
-    public static int TYPE_NOT_CONNECTED = 0;
-    private Snackbar snackbar;
-    private boolean internetConnected=true;
+    private Utils utils;
     private LinearLayout linearLayout;
+    private boolean internetConnected=true;
+    private Snackbar snackbar;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -116,7 +112,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         Bundle extras = getIntent().getExtras();
         FragmentManager fragmentManager = getSupportFragmentManager();
-
+        linearLayout=(LinearLayout)findViewById(R.id.main_linear_layout);
         boolean isOpenOfflineEdit = extras != null && extras.getBoolean("openOfflineEdit");
         if (isOpenOfflineEdit) {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, new OfflineEditFragment()).commit();
@@ -570,8 +566,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             Log.e("MainActivity", "Error in creating fragment");
         }
     }
-      /*  Method to register runtime broadcast receiver to show snackbar alert for internet connection..
-            */
+    /*  Method to register runtime broadcast receiver to show snackbar alert for internet connection..
+          */
     private void registerInternetCheckReceiver() {
         IntentFilter internetFilter = new IntentFilter();
         internetFilter.addAction("android.net.wifi.STATE_CHANGE");
@@ -585,59 +581,39 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     public BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String status = getConnectivityStatusString(context);
+            String status = utils.getConnectivityStatusString(context);
             setSnackbarMessage(status,false);
         }
     };
 
-    public static int getConnectivityStatus(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if (null != activeNetwork) {
-            if(activeNetwork.getType() == ConnectivityManager.TYPE_WIFI)
-                return TYPE_WIFI;
-
-            if(activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE)
-                return TYPE_MOBILE;
-        }
-        return TYPE_NOT_CONNECTED;
-    }
-
-    public static String getConnectivityStatusString(Context context) {
-        int conn = getConnectivityStatus(context);
-        String status = null;
-        if (conn == TYPE_WIFI) {
-            status = "Wifi enabled";
-        } else if (conn == TYPE_MOBILE) {
-            status = "Mobile data enabled";
-        } else if (conn == TYPE_NOT_CONNECTED) {
-            status = "Not connected to Internet";
-        }
-        return status;
-    }
     private void setSnackbarMessage(String status,boolean showBar) {
         String internetStatus="";
         if(status.equalsIgnoreCase("Wifi enabled")||status.equalsIgnoreCase("Mobile data enabled")){
-            internetStatus="Internet Connected";
+            internetStatus="Network Status: Connected";
         }else {
-            internetStatus="Lost Internet Connection";
+            internetStatus="Network Status: Disconnected";
         }
-        snackbar = Snackbar
-                .make(linearLayout, internetStatus, Snackbar.LENGTH_LONG)
-                .setAction("X", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        snackbar.dismiss();
-                    }
-                });
+        if(internetStatus.equalsIgnoreCase("Network Status: Disconnected")) {
+            snackbar = Snackbar
+                    .make(linearLayout, internetStatus, Snackbar.LENGTH_LONG)
+                    .setAction("Retry", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+                        }
+
+                    });
+        }
+        else
+        {
+            snackbar = Snackbar
+                    .make(linearLayout, internetStatus, Snackbar.LENGTH_SHORT);
+        }
+
         // Changing message text color
         snackbar.setActionTextColor(Color.WHITE);
-        // Changing action button text color
-        View sbView = snackbar.getView();
-        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.WHITE);
-        if(internetStatus.equalsIgnoreCase("Lost Internet Connection")){
+
+        if(internetStatus.equalsIgnoreCase("Network Status: Disconnected")){
             if(internetConnected){
                 snackbar.show();
                 internetConnected=false;
@@ -650,4 +626,3 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
     }
 }
-
