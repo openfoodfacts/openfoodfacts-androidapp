@@ -7,6 +7,7 @@
   <string name="contribute">How to contribute</string>
   <string name="action_find">Cerca</string>
   <string name="text_barcode">Type the barcode :</string>
+  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Resum</item>
@@ -77,6 +78,7 @@
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
+    <item>b+sr+Cyrl</item>
   </string-array>
   <string-array name="images_array">
     <item>Predeterminat</item>
@@ -257,6 +259,8 @@
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No s\'ha trobat resultats</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
+  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Can\'t load search results</string>
   <string name="txt_try_again">Try again</string>
   <string name="nutrition_lactose">Lactose</string>
@@ -325,4 +329,14 @@
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
   <string name="txtSaturatedFat">Saturated fat</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="scan_shortcut_short_label">Escàner</string>
+  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="barcode_shortcut_short_label">Cerca</string>
+  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="history_shortcut_short_label">Historial</string>
+  <string name="history_shortcut_long_label">Historial</string>
+  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_long_label">My Contributions</string>
 </resources>

@@ -12,8 +12,9 @@ files:
         nl: nl
         zh-TW: zh-rTW
         zh-HK: zh-rHK
-        sr-CS: sr-rRS
-        sr: sr
+        sr-CS: b+sr+Latn
+        sr: b+sr+Cyrl
+        
   - source: /app/src/obf/res/values/strings.xml
     translation: /app/src/obf/res/values-%two_letters_code%/%original_file_name%
     languages_mapping:
@@ -27,8 +28,9 @@ files:
         nl: nl
         zh-HK: zh-rHK
         zh-TW: zh-rTW
-        sr-CS: sr-rRS
-        sr: sr
+        sr-CS: b+sr+Latn
+        sr: b+sr+Cyrl
+        
   - source: /app/src/off/res/values/strings.xml
     translation: /app/src/off/res/values-%two_letters_code%/%original_file_name%
     languages_mapping:
@@ -41,8 +43,9 @@ files:
         pt-PT: pt-rPT
         zh-HK: zh-rHK
         zh-TW: zh-rTW
-        sr: sr
-        sr-CS: sr-rRS
+        sr-CS: b+sr+Latn
+        sr: b+sr+Cyrl
+        
   - source: /app/src/opff/res/values/strings.xml
     translation: /app/src/opff/res/values-%two_letters_code%/strings.xml
     languages_mapping:
@@ -55,5 +58,5 @@ files:
         pt-PT: pt-rPT
         zh-TW: zh-rTW
         zh-HK: zh-rHK
-        sr-CS: sr-rRS
-        sr: sr
+        sr-CS: b+sr+Latn
+        sr: b+sr+Cyrl

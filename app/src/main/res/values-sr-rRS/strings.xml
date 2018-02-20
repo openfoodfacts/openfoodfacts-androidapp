@@ -257,6 +257,8 @@
   <string name="number_of_results">Broj rezultata :</string>
   <string name="txt_no_results">Rezultati nisu pronađeni</string>
   <string name="txt_extend_search">Proširite pretragu ili dodajte proizvod</string>
+  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Rezultate pretraživanja nije moguće učitati</string>
   <string name="txt_try_again">Pokušajte ponovo</string>
   <string name="nutrition_lactose">Laktoza</string>
@@ -325,4 +327,14 @@
   <string name="take_picture_nutrition_table">Uslikajte tablicu nutritivnih vrednosti</string>
   <string name="take_more_pictures">Uslikaj</string>
   <string name="txtSaturatedFat">Zasićene masne kiseline</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="scan_shortcut_short_label">Skeniraj</string>
+  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="barcode_shortcut_short_label">Pretraživanje</string>
+  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="history_shortcut_short_label">Istorija</string>
+  <string name="history_shortcut_long_label">Istorija</string>
+  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_long_label">My Contributions</string>
 </resources>

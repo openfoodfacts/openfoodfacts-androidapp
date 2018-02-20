@@ -7,6 +7,7 @@
   <string name="contribute">योगदान कसरी गर्ने</string>
   <string name="action_find">भेटाउनुहोस्</string>
   <string name="text_barcode">बारकोड टाइप गर्नुहोस्:</string>
+  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>सारांश</item>
@@ -77,6 +78,7 @@
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
+    <item>b+sr+Cyrl</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
@@ -121,7 +123,7 @@
   <string name="txtSignIn">Sign in</string>
   <string name="txtUser">User panel</string>
   <string name="txtToastSaved">User saved</string>
-  <string name="txtSalt">Salt</string>
+  <string name="txtSalt">नुन</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
   <string name="hintBarcode">Barcode</string>
@@ -140,7 +142,7 @@
   <string name="hintNameProduct">Name</string>
   <string name="hintEnergy">Energy in kJ per serving</string>
   <string name="hintEnergyUnit">Energy unit</string>
-  <string name="hintWeight">Weight</string>
+  <string name="hintWeight">तौल</string>
   <string name="hintStores">Store</string>
   <string name="hintBrand">Brand</string>
   <string name="txtTakePicture">Take picture</string>
@@ -232,7 +234,7 @@
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Proteins</string>
   <string name="nutrition_proteins_short_name">Proteins (g)</string>
-  <string name="nutrition_salt">Salt</string>
+  <string name="nutrition_salt">नुन</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Satured fat</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
@@ -257,6 +259,8 @@
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No results found</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
+  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Can\'t load search results</string>
   <string name="txt_try_again">Try again</string>
   <string name="nutrition_lactose">Lactose</string>
@@ -291,9 +295,9 @@
   <string name="vitamin_b1">Vitamin B1</string>
   <string name="vitamin_b2">Vitamin B2</string>
   <string name="vitamin_pp">Vitamin PP</string>
-  <string name="vitamin_b6">Vitamin B6</string>
-  <string name="vitamin_b9">Vitamin B9</string>
-  <string name="vitamin_b12">Vitamin B12</string>
+  <string name="vitamin_b6">भिटामिन बी 6</string>
+  <string name="vitamin_b9">भिटामिन बी 9</string>
+  <string name="vitamin_b12">भिटामिन बी 12</string>
   <string name="biotin">Biotin</string>
   <string name="pantothenic_acid">Pantothenic acid</string>
   <string name="nutrition_minerals">Minerals</string>
@@ -301,7 +305,7 @@
   <string name="bicarbonate">Bicarbonate</string>
   <string name="potassium">Potassium</string>
   <string name="chloride">Chloride</string>
-  <string name="calcium">Calcium</string>
+  <string name="calcium">क्यालसियम</string>
   <string name="phosphorus">Phosphorus</string>
   <string name="iron">Iron</string>
   <string name="magnesium">Magnesium</string>
@@ -312,7 +316,7 @@
   <string name="selenium">Selenium</string>
   <string name="chromium">Chromium</string>
   <string name="molybdenum">Molybdenum</string>
-  <string name="iodine">Iodine</string>
+  <string name="iodine">आयोडिन</string>
   <string name="caffeine">Caffeine</string>
   <string name="taurine">Taurine</string>
   <string name="ph">pH</string>
@@ -325,4 +329,14 @@
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
   <string name="txtSaturatedFat">Saturated fat</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="scan_shortcut_short_label">Scan</string>
+  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="barcode_shortcut_short_label">Search</string>
+  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="history_shortcut_short_label">History</string>
+  <string name="history_shortcut_long_label">History</string>
+  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_long_label">My Contributions</string>
 </resources>

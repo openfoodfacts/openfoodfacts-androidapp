@@ -13,6 +13,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,6 +70,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @BindView(R.id.buttonTakePictureFront) ImageButton btnTakeFront;
     @BindView(R.id.buttonTakePictureIngredients) ImageButton btnTakeIngredients;
     @BindView(R.id.buttonTakePictureNutrition) ImageButton btnTakeNutrition;
+    @BindView(R.id.message_container_card_view) CardView mContainerView;
+    @BindView(R.id.message_dismiss_icon) ImageButton mDismissButton;
 
     private SendProduct mProduct;
     private String mBarcode;
@@ -286,6 +289,11 @@ public class SaveProductOfflineActivity extends BaseActivity {
             imageTaken = "nutrition";
             EasyImage.openCamera(this, 0);
         }
+    }
+
+    @OnClick(R.id.message_dismiss_icon)
+    protected void onMessageDismissClicked(){
+        mContainerView.setVisibility(View.GONE);
     }
 
     @Override
