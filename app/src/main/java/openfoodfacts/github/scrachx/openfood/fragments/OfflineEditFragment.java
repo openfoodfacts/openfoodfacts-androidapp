@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -170,7 +171,10 @@ public class OfflineEditFragment extends BaseFragment {
             if (listSaveProduct.size() == 0) {
                 Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG).show();
+               Toast toast= Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG);
+               toast.setGravity(Gravity.CENTER,0,0);
+               toast.show();
+
             }
         }
 
