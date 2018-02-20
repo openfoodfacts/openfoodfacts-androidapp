@@ -3,6 +3,8 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,6 +21,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -141,10 +144,57 @@ public class HistoryScanActivity extends BaseActivity {
                 writer.writeNext(line);
             }
             writer.close();
+            addNotification(this,f);
             Toast.makeText(this, R.string.txt_history_exported, Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void addNotification(Context context,File file){
+
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this,"notification_channel")
+                        .addAction(R.drawable.ic_share_black_24dp, getString(R.string.share_notification), shareFileIntent(context,file))
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setContentTitle(getString(R.string.download_complete))
+                        .setContentText(file.toString());
+
+        Intent notificationIntent = openFile(file);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        // Add as notification
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
+    }
+    public PendingIntent shareFileIntent(Context context,File file){
+        Intent intentShareFile = new Intent(Intent.ACTION_SEND);
+        File fileWithinMyDir = new File(String.valueOf(file));
+        PendingIntent pendingIntent = null;
+
+        if(fileWithinMyDir.exists()) {
+            intentShareFile.setType("text/csv");
+            intentShareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+file));
+
+            intentShareFile.putExtra(Intent.EXTRA_SUBJECT,
+                    getString(R.string.sharing_file));
+            intentShareFile.putExtra(Intent.EXTRA_TEXT, getString(R.string.sharing_file));
+
+            pendingIntent = PendingIntent.getActivity(context, 0, intentShareFile, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        }
+        return pendingIntent;
+    }
+
+    public Intent openFile(File file) {
+
+        Uri path = Uri.fromFile(file);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent chooser = Intent.createChooser(intent, getString(R.string.open_file));
+        intent.setDataAndType(path, "text/csv");
+        return chooser;
     }
 
     @Override

@@ -364,5 +364,9 @@
     <string name="history_shortcut_long_label">History</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
     <string name="contributions_shortcut_long_label">My Contributions</string>
+    <string name="download_complete">Download completed</string>
+    <string name="open_file">open file</string>
+    <string name="sharing_file">Sharing File...</string>
+    <string name="share_notification">Share</string>
 
 </resources>
