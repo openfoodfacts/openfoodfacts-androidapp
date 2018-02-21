@@ -193,7 +193,7 @@ public class Utils {
             return R.drawable.ic_error;
         }
 
-        switch (grade.toLowerCase()) {
+        switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
                 drawable = R.drawable.nnc_a;
                 break;

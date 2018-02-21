@@ -26,6 +26,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,12 +47,10 @@ import pl.aprilapps.easyphotopicker.EasyImage;
 import static android.Manifest.permission.CAMERA;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class IngredientsProductFragment extends BaseFragment {
 
@@ -146,7 +145,7 @@ public class IngredientsProductFragment extends BaseFragment {
             additiveProduct.append(" ");
 
             for (String tag : product.getAdditivesTags()) {
-                String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "").toUpperCase();
+                String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "").toUpperCase(Locale.getDefault());
                 additiveProduct.append(getSpanTag(tagWithoutLocale, view));
             }
         } else {
@@ -177,7 +176,7 @@ public class IngredientsProductFragment extends BaseFragment {
     private CharSequence getSpanTag(String tag, final View view) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder();
 
-        final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tag.toUpperCase())).list();
+        final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tag.toUpperCase(Locale.getDefault()))).list();
         if (la.size() >= 1) {
             final Additive additive = la.get(0);
             ClickableSpan clickableSpan = new ClickableSpan() {
@@ -185,7 +184,7 @@ public class IngredientsProductFragment extends BaseFragment {
                 public void onClick(View v) {
                     new MaterialDialog.Builder(view.getContext())
                             .title(additive.getCode() + " : " + additive.getName())
-                            .content(additive.getRisk().toUpperCase())
+                            .content(additive.getRisk().toUpperCase(Locale.getDefault()))
                             .positiveText(R.string.txtOk)
                             .show();
                 }
