@@ -75,12 +75,11 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
         productItems = new ArrayList<>();
         new HistoryScanActivity.FillAdapter(this).execute(this);
-
     }
 
     @Override
     public void onRightClicked(int position) {
-        if (listHistoryProducts.size() > 0) {
+        if (listHistoryProducts != null && listHistoryProducts.size() > 0) {
             mHistoryProductDao.delete(listHistoryProducts.get(position));
         }
         adapter.remove(productItems.get(position));
@@ -269,7 +268,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
 
 
-            SwipeController swipeController = new SwipeController(HistoryScanActivity.this);
+            SwipeController swipeController = new SwipeController(ctx, HistoryScanActivity.this);
             ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
             itemTouchhelper.attachToRecyclerView(recyclerHistoryScanView);
             recyclerHistoryScanView.addItemDecoration(new RecyclerView.ItemDecoration() {
