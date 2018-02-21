@@ -29,6 +29,12 @@ public class CategoryListRecyclerAdapter extends RecyclerView.Adapter<CategoryVi
 
     @Override
     public void onBindViewHolder(CategoryViewHolder holder, int position) {
+        if(categories.get(0).getName().isEmpty()||categories.get(0).getId().isEmpty()){
+            categories.remove(0);
+            CategoryListRecyclerAdapter.this.notifyDataSetChanged();
+            CategoryListRecyclerAdapter.this.notifyItemChanged(0);
+            CategoryListRecyclerAdapter.this.getItemCount();
+        }
         holder.bind(categories.get(position));
     }
 
