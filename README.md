@@ -78,7 +78,7 @@ The project is initially started by [Scot Scriven](https://github.com/itchix), o
 - [Friedger Müffke](https://github.com/friedger)
 - [Qian Jin](https://github.com/jinqian)
 
-If you're new to Open-Source,We recommend you to Checkout our [_Contributing Guidelines_](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/guideline/CONTRIBUTING.md).Feel free to fork the project and send us a pull request.
+If you're new to Open-Source,We recommend you to Checkout our [_Contributing Guidelines_](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/CONTRIBUTING.md).Feel free to fork the project and send us a pull request.
 
 Here's a few list of bugs:
 - Very high impact: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/very%20high%20impact
