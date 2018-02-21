@@ -12,7 +12,7 @@
   <string-array name="nav_drawer_items_product">
     <item>İcmal</item>
     <item>Tərkibi</item>
-    <item>Nutrition</item>
+    <item>Qidalanma</item>
     <item>Nutrition Table</item>
   </string-array>
   <!-- Text units -->
@@ -82,7 +82,7 @@
   </string-array>
   <string-array name="images_array">
     <item>İlkin</item>
-    <item>Nutrition</item>
+    <item>Qidalanma</item>
     <item>Tərkibi</item>
   </string-array>
   <!-- Content Description -->
