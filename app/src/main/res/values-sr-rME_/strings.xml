@@ -11,17 +11,17 @@
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Summary</item>
-    <item>Sastojci</item>
+    <item>Ingredients</item>
     <item>Nutrition</item>
     <item>Nutrition Table</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
+    <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
-    <item>ml</item>
     <item>ml</item>
     <item>cl</item>
     <item>fl oz</item>
@@ -78,12 +78,11 @@
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
-    <item>b+sr+Cyrl</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
     <item>Nutrition</item>
-    <item>Sastojci</item>
+    <item>Ingredients</item>
   </string-array>
   <!-- Content Description -->
   <string name="search_button">Search</string>
@@ -117,7 +116,7 @@
   <string name="txtNutritionLevelModerate">in moderate quantity</string>
   <string name="txtNutritionLevelHigh">in high quantity</string>
   <string name="txtLogin">Login :</string>
-  <string name="txtPass">Lozinka :</string>
+  <string name="txtPass">Password :</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
   <string name="txtSave">Save</string>
   <string name="txtSignIn">Sign in</string>
@@ -219,28 +218,28 @@
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <!-- Nutrition info tab -->
-  <string name="nutrition_carbohydrate">Ugljikohidrati</string>
+  <string name="nutrition_carbohydrate">Carbohydrate</string>
   <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
   <string name="nutrition_cholesterol">Cholesterol</string>
   <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
-  <string name="nutrition_energy">Energija</string>
-  <string name="nutrition_energy_short_name">Energija</string>
-  <string name="nutrition_fat">Masnoće</string>
+  <string name="nutrition_energy">Energy</string>
+  <string name="nutrition_energy_short_name">Energy</string>
+  <string name="nutrition_fat">Fat</string>
   <string name="nutrition_fat_short_name">Fat (g)</string>
-  <string name="nutrition_fiber">Dijetalna vlakna</string>
+  <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
-  <string name="nutrition_header">Nutritivne vrijednosti</string>
+  <string name="nutrition_header">Nutrition facts</string>
   <string name="nutrition_no_data_message">No data is available for this product</string>
   <string name="nutrition_per_quantity">For 100g/100ml</string>
-  <string name="nutrition_proteins">Bjelančevine</string>
+  <string name="nutrition_proteins">Proteins</string>
   <string name="nutrition_proteins_short_name">Proteins (g)</string>
-  <string name="nutrition_salt">Sol</string>
+  <string name="nutrition_salt">Salt</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Satured fat</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
   <string name="nutrition_serving">Per serving</string>
   <string name="nutrition_serving_size">Serving size :</string>
-  <string name="nutrition_sodium">Natrij</string>
+  <string name="nutrition_sodium">Sodium</string>
   <string name="nutrition_sodium_short_name">Sodium (g)</string>
   <string name="nutrition_sugars">Sugars</string>
   <string name="nutrition_sugars_short_name">Sugars (g)</string>
@@ -339,5 +338,4 @@
   <string name="history_shortcut_long_label">History</string>
   <string name="contributions_shortcut_short_label">Contributions</string>
   <string name="contributions_shortcut_long_label">My Contributions</string>
-  <string name="forgot_password">Forgot Password</string>
 </resources>

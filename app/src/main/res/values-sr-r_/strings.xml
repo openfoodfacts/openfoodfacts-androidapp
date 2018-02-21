@@ -60,7 +60,7 @@
     <item>da</item>
     <item>zh-CN</item>
     <item>fa</item>
-    <item>b+sr+Latn</item>
+    <item>rs</item>
     <item>af</item>
     <item>ak</item>
     <item>am</item>
@@ -78,7 +78,6 @@
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
-    <item>b+sr+Cyrl</item>
   </string-array>
   <string-array name="images_array">
     <item>Podrazumevana</item>
@@ -339,5 +338,4 @@
   <string name="history_shortcut_long_label">Istorija</string>
   <string name="contributions_shortcut_short_label">Contributions</string>
   <string name="contributions_shortcut_long_label">My Contributions</string>
-  <string name="forgot_password">Forgot Password</string>
 </resources>
