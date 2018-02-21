@@ -259,7 +259,7 @@
   <string name="number_of_results">Anzahl der Ergebnisse:</string>
   <string name="txt_no_results">Keine Ergebnisse gefunden</string>
   <string name="txt_extend_search">Versuchen Sie, Ihre Suche zu erweitern oder das Produkt hinzuzufügen</string>
-  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+  <string name="txt_no_matching_products">Wir haben keine passenden Produkte gefunden.\nSie können versuchen:</string>
   <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Die Suchergebnisse können nicht geladen werden</string>
   <string name="txt_try_again">Wiederholen</string>
@@ -337,7 +337,7 @@
   <string name="barcode_shortcut_long_label">Suche mit Strichcode</string>
   <string name="history_shortcut_short_label">Verlauf</string>
   <string name="history_shortcut_long_label">Verlauf</string>
-  <string name="contributions_shortcut_short_label">Contributions</string>
-  <string name="contributions_shortcut_long_label">My Contributions</string>
+  <string name="contributions_shortcut_short_label">Beiträge</string>
+  <string name="contributions_shortcut_long_label">Meine Beiträge</string>
   <string name="forgot_password">Passwort vergessen</string>
 </resources>
