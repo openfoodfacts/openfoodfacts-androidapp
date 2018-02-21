@@ -52,7 +52,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
     private OpenFoodAPIService apiClient;
     private CustomTabActivityHelper customTabActivityHelper;
-    private Uri uri;
+    private Uri userLoginUri;
+    private Uri resetPasswordUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +63,13 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        uri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
+        userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
+        resetPasswordUri = Uri.parse(getString(R.string.website) + "cgi/reset_password.pl");
 
         // prefetch the uri
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
-        customTabActivityHelper.mayLaunchUrl(uri, null, null);
+        customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null);
 
         signup.setEnabled(false);
 
@@ -181,9 +183,14 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     protected void onCreateUser() {
         CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
 
-        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, uri, new WebViewFallback());
+        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, userLoginUri, new WebViewFallback());
     }
 
+    @OnClick(R.id.forgotpassword)
+    public void forgotpassword() {
+        CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
+        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, resetPasswordUri, new WebViewFallback());
+    }
     @Override
     public void onCustomTabsConnected() {
         signup.setEnabled(true);
