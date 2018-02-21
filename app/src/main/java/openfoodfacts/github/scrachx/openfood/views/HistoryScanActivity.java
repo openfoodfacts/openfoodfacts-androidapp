@@ -14,6 +14,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
@@ -154,10 +155,18 @@ public class HistoryScanActivity extends BaseActivity {
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this,"notification_channel")
-                        .addAction(R.drawable.ic_share_black_24dp, getString(R.string.share_notification), shareFileIntent(context,file))
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle(getString(R.string.download_complete))
                         .setContentText(file.toString());
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            NotificationCompat.Action action = new NotificationCompat.Action.Builder(R.drawable.ic_share_black_24dp, getString(R.string.share_notification), shareFileIntent(context,file)).build();
+            builder.addAction(action);
+        }
+        else{
+            NotificationCompat.Action action = new NotificationCompat.Action.Builder(0, getString(R.string.share_notification), shareFileIntent(context,file)).build();
+            builder.addAction(action);
+        }
 
         Intent notificationIntent = openFile(file);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,
@@ -166,7 +175,9 @@ public class HistoryScanActivity extends BaseActivity {
 
         // Add as notification
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(0, builder.build());
+        if(manager!=null) {
+            manager.notify(0, builder.build());
+        }
     }
     public PendingIntent shareFileIntent(Context context,File file){
         Intent intentShareFile = new Intent(Intent.ACTION_SEND);
