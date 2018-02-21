@@ -7,7 +7,7 @@
   <string name="contribute">Wie Sie mithelfen können</string>
   <string name="action_find">Suchen</string>
   <string name="text_barcode">Strichcode eingeben:</string>
-  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
+  <string name="message_in_activity_save_product_offline">Fürs Zusenden eines neuen Produkts wird mindestens ein Foto benötigt.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Zusammenfassung</item>
@@ -330,14 +330,14 @@
   <string name="take_more_pictures">Mache mehr Bilder</string>
   <string name="txtSaturatedFat">Gesättigte Fettsäuren</string>
   <!-- String related to App Shortcuts -->
-  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="disabled_message">Verknüpfung ist nicht verfügbar</string>
   <string name="scan_shortcut_short_label">Scannen</string>
-  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="scan_shortcut_long_label">Produkt scannen</string>
   <string name="barcode_shortcut_short_label">Suchen</string>
-  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="barcode_shortcut_long_label">Suche mit Strichcode</string>
   <string name="history_shortcut_short_label">Verlauf</string>
   <string name="history_shortcut_long_label">Verlauf</string>
   <string name="contributions_shortcut_short_label">Contributions</string>
   <string name="contributions_shortcut_long_label">My Contributions</string>
-  <string name="forgot_password">Forgot Password</string>
+  <string name="forgot_password">Passwort vergessen</string>
 </resources>
