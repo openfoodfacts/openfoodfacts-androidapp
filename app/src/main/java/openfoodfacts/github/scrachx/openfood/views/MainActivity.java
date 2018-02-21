@@ -3,8 +3,10 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.Manifest;
 import android.app.SearchManager;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -112,7 +114,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         Bundle extras = getIntent().getExtras();
         FragmentManager fragmentManager = getSupportFragmentManager();
-
+        linearLayout=(LinearLayout)findViewById(R.id.main_linear_layout);
         boolean isOpenOfflineEdit = extras != null && extras.getBoolean("openOfflineEdit");
         if (isOpenOfflineEdit) {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, new OfflineEditFragment()).commit();
@@ -585,6 +587,26 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             Log.e("MainActivity", "Error in creating fragment");
         }
     }
+    /**
+     *  Method to register runtime broadcast receiver to show snackbar alert for internet connection..
+     */
+    private void registerInternetCheckReceiver() {
+        IntentFilter internetFilter = new IntentFilter();
+        internetFilter.addAction("android.net.wifi.STATE_CHANGE");
+        internetFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        registerReceiver(broadcastReceiver, internetFilter);
+    }
+
+    /**
+     *  Runtime Broadcast receiver inner class to capture internet connectivity events
+     */
+    public BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String status = utils.getConnectivityStatusString(context);
+            setSnackbarMessage(status,false);
+        }
+    };
     private void setSnackbarMessage(String status,boolean showBar) {
         String internetStatus="";
         if(status.equalsIgnoreCase("Wifi enabled")||status.equalsIgnoreCase("Mobile data enabled")){
