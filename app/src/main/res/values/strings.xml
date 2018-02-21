@@ -354,6 +354,11 @@
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">Saturated fat</string>
 
+    <!-- Offile Status -->
+    <string name="offline_network_connected">Network Status: Connected</string>
+    <string name="offline_network_disconnected">Network Status: Disconnected</string>
+    <string name="offline_network_retry">Retry</string>
+  
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">Scan</string>
