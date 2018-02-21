@@ -11,17 +11,20 @@ import android.util.AttributeSet;
 import openfoodfacts.github.scrachx.openfood.R;
 
 /**
- * Based on <a href="http://stackoverflow.com/questions/35761636/is-it-possible-to-use-vectordrawable-in-buttons-and-textviews-using-androiddraw</a>
+ * Based on
+ * <a href="http://stackoverflow.com/questions/35761636/is-it-possible-to-use-vectordrawable-in-buttons-and-textviews-using-androiddraw></a>
  */
 public class CustomEditTextView extends AppCompatEditText {
 
     public CustomEditTextView(Context context) {
         super(context);
     }
+
     public CustomEditTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initAttrs(context, attrs);
     }
+
     public CustomEditTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttrs(context, attrs);

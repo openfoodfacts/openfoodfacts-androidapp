@@ -1,8 +1,6 @@
 Open Food Facts Android Application
 ===================================
 
-
-
 [![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
 [![Build Status](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp.svg?branch=master)](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp)
 [![Stories in Ready](https://badge.waffle.io/openfoodfacts/openfoodfacts-androidapp.svg?label=ready&title=Ready)](https://waffle.io/openfoodfacts/openfoodfacts-androidapp)
@@ -14,10 +12,7 @@ Open Food Facts Android Application
 <img src="https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png">
 ## What is Open Food Facts?
 
-<a href="https://f-droid.org/app/openfoodfacts.github.scrachx.openfood">
-    <img src="https://f-droid.org/badge/get-it-on.png"
-         alt="Get it on F-Droid" height="70">
-</a><a href="https://play.google.com/store/apps/details?id=openfoodfacts.github.scrachx.openfood"><img src=https://play.google.com/intl/en_us/badges/images/badge_new.png></a><br>
+<a href="https://f-droid.org/app/openfoodfacts.github.scrachx.openfood"><img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="70"></a><a href="https://play.google.com/store/apps/details?id=openfoodfacts.github.scrachx.openfood"><img src=https://play.google.com/intl/en_us/badges/images/badge_new.png></a><br>
 (These are beta versions, <a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner">this is the stable version</a>)
 
 <img src="https://lh3.googleusercontent.com/8WatIseTIIFe5dLA2Gje3CVFZkiLWKVkt4RjuxtdQk56G1MEHmQ5cR57ICQnTFaSLss=h900" height="300"><img src="https://lh3.googleusercontent.com/xSkBdFey8CNhIN7lBjAWGzuMd6hTdfKNeeWI0dchehqyL3CgyU7jER5C5dM_CzwQyJA=h900" height="300"><img src="https://lh3.googleusercontent.com/bbDgVhz73xXZzA2-QjkvP3V0aFeX9iys5lh2vWmjMsg4UlMXERBxoRqAGcgW6YFbJaET=h900" height="300"><img src="https://lh3.googleusercontent.com/bL1v0l8BKfHQG2x4k-macPi5w3dGLbxGDaBuRPtKTzXE56-HXQmNXk0Ew60v1Kyh3g=h900" height="300">
@@ -37,18 +32,6 @@ Data about food is of public interest and has to be open. The complete database 
 - <https://world.openfoodfacts.org>
 
 ## Translations
-
-### Initial setup (done)
-Translations are made using GetText. We convert translations to and from the Android format using Android2Po.<br><br>
-```easy_install android2po```<br>
-```a2po COMMAND --android myproject/res --gettext myproject/locale```<br>
-```a2po init de fr```<br><br>
-
-### Refreshing exported GetText files
-```a2po export```
-
-### Importing back to Android
-```a2po import```
 
 ### Translate Open Food Facts in your language
 

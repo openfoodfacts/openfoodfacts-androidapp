@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -69,6 +72,9 @@ public class HistoryScanActivity extends BaseActivity {
         mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
         productItems = new ArrayList<>();
         new HistoryScanActivity.FillAdapter(this).execute(this);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerHistoryScanView.getContext(), DividerItemDecoration.VERTICAL);
+        recyclerHistoryScanView.addItemDecoration(dividerItemDecoration);
     }
 
     @Override
@@ -83,7 +89,7 @@ public class HistoryScanActivity extends BaseActivity {
                         .title(R.string.title_clear_history_dialog)
                         .content(R.string.text_clear_history_dialog)
                         .onPositive((dialog, which) -> {
-                            mHistoryProductDao.deleteAll();;
+                            mHistoryProductDao.deleteAll();
                             productItems.clear();
                             recyclerHistoryScanView.getAdapter().notifyDataSetChanged();
                         })
@@ -115,14 +121,14 @@ public class HistoryScanActivity extends BaseActivity {
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show();
         String baseDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
         Log.d("dir", baseDir);
-        String fileName = "exportHistoryOFF"+new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date())+".csv";
+        String fileName = "exportHistoryOFF" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date()) + ".csv";
         String filePath = baseDir + File.separator + fileName;
-        File f = new File(filePath );
+        File f = new File(filePath);
         CSVWriter writer;
         FileWriter fileWriter;
         try {
-            if(f.exists() && !f.isDirectory()) {
-                fileWriter = new FileWriter(filePath , true);
+            if (f.exists() && !f.isDirectory()) {
+                fileWriter = new FileWriter(filePath, true);
                 writer = new CSVWriter(fileWriter);
             } else {
                 writer = new CSVWriter(new FileWriter(filePath));
@@ -205,7 +211,6 @@ public class HistoryScanActivity extends BaseActivity {
         @Override
         protected Context doInBackground(Context... ctx) {
             List<HistoryProduct> listHistoryProducts = mHistoryProductDao.queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list();
-            final Bitmap defaultImgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_no), 200, 200, true);
 
             for (HistoryProduct historyProduct : listHistoryProducts) {
                 Bitmap imgUrl;
@@ -220,7 +225,13 @@ public class HistoryScanActivity extends BaseActivity {
                     imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(input), 200, 200, true);
                 } catch (IOException e) {
                     Log.i("HISTORY", "unable to get the history product image", e);
-                    imgUrl = defaultImgUrl;
+                    Drawable drawable = getResources().getDrawable(R.drawable.ic_no_red_24dp);
+                    Canvas canvas = new Canvas();
+                    Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+                    canvas.setBitmap(bitmap);
+                    drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+                    drawable.draw(canvas);
+                    imgUrl = bitmap;
                 } finally {
                     if (input != null) {
                         try {

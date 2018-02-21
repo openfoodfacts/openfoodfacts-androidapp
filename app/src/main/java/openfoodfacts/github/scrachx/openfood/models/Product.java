@@ -270,6 +270,8 @@ public class Product implements Serializable {
      * @return The stores
      */
     public String getStores() {
+        if(stores==null)
+            return null;
         return stores.replace(",",", ");
     }
 
@@ -294,6 +296,8 @@ public class Product implements Serializable {
      * @return The countries
      */
     public String getCountries() {
+        if(countries==null)
+            return null;
         return countries.replace(",",", ");
     }
 
@@ -302,6 +306,8 @@ public class Product implements Serializable {
      * @return The brands
      */
     public String getBrands() {
+        if(brands==null)
+            return null;
         return brands.replace(",", ", ");
     }
 
@@ -310,6 +316,8 @@ public class Product implements Serializable {
      * @return The packaging
      */
     public String getPackaging() {
+        if(packaging==null)
+            return null;
         return packaging.replace(",",", ");
     }
 

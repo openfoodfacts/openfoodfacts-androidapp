@@ -17,7 +17,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 
 public class HistoryScanHolder extends RecyclerView.ViewHolder {
 
-    public CardView cv;
     public TextView txtTitle;
     public TextView txtBarcode;
     public TextView txtBrands;
@@ -27,7 +26,6 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
 
     public HistoryScanHolder(final View itemView, final String productUrl, Activity activity) {
         super(itemView);
-        cv = (CardView) itemView.findViewById(R.id.cardViewHistory);
         txtTitle = (TextView) itemView.findViewById(R.id.titleHistory);
         txtBarcode = (TextView) itemView.findViewById(R.id.barcodeHistory);
         txtBrands = (TextView) itemView.findViewById(R.id.brandsHistory);
@@ -44,13 +42,13 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
             sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
             sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
             itemView.getContext().startActivity(Intent.createChooser(sharingIntent, "Share using"));
-           });
+        });
 
         itemView.setOnClickListener(v -> {
             ConnectivityManager cm = (ConnectivityManager) v.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-            if(isConnected) {
+            if (isConnected) {
                 OpenFoodAPIClient api = new OpenFoodAPIClient(mActivity);
                 api.getProduct(txtBarcode.getText().toString(), (Activity) v.getContext());
             }
