@@ -589,14 +589,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private void setSnackbarMessage(String status,boolean showBar) {
         String internetStatus="";
         if(status.equalsIgnoreCase("Wifi enabled")||status.equalsIgnoreCase("Mobile data enabled")){
-            internetStatus="Network Status: Connected";
+            internetStatus=getResources().getString(R.string.offline_network_connected);
         }else {
-            internetStatus="Network Status: Disconnected";
+            internetStatus=getResources().getString(R.string.offline_network_disconnected);
         }
-        if(internetStatus.equalsIgnoreCase("Network Status: Disconnected")) {
+        if(internetStatus.equalsIgnoreCase(getResources().getString(R.string.offline_network_disconnected))) {
             snackbar = Snackbar
                     .make(linearLayout, internetStatus, Snackbar.LENGTH_LONG)
-                    .setAction("Retry", new View.OnClickListener() {
+                    .setAction(getResources().getString(R.string.offline_network_retry), new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
@@ -613,7 +613,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         // Changing message text color
         snackbar.setActionTextColor(Color.WHITE);
 
-        if(internetStatus.equalsIgnoreCase("Network Status: Disconnected")){
+        if(internetStatus.equalsIgnoreCase(getResources().getString(R.string.offline_network_disconnected))){
             if(internetConnected){
                 snackbar.show();
                 internetConnected=false;
