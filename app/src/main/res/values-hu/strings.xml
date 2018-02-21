@@ -339,5 +339,5 @@
   <string name="history_shortcut_long_label">Előzmények</string>
   <string name="contributions_shortcut_short_label">Hozzájárulások</string>
   <string name="contributions_shortcut_long_label">Hozzájárulásaim</string>
-  <string name="forgot_password">Forgot Password</string>
+  <string name="forgot_password">Elfelejtett jelszó</string>
 </resources>
