@@ -11,7 +11,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -186,7 +185,8 @@ public class IngredientsProductFragment extends BaseFragment {
         final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tag.toUpperCase())).list();
         if (la.size() >= 1) {
             final Additive additive = la.get(0);
-            ClickableSpan clickableSpan = new ClickableSpan() {
+            //disabled popup temporarily
+          /*ClickableSpan clickableSpan = new ClickableSpan() {
                 @Override
                 public void onClick(View v) {
                     new MaterialDialog.Builder(view.getContext())
@@ -195,9 +195,9 @@ public class IngredientsProductFragment extends BaseFragment {
                             .positiveText(R.string.txtOk)
                             .show();
                 }
-            };
+            };*/
             ssb.append(tag);
-            ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+           // ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
             ssb.append(" ");
         }
         return ssb;
