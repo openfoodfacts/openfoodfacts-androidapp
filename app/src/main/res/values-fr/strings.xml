@@ -7,9 +7,7 @@
   <string name="contribute">Comment contribuer ?</string>
   <string name="action_find">Chercher</string>
   <string name="text_barcode">Saisissez le code-barre :</string>
-
   <string name="message_in_activity_save_product_offline">Une seule photo est obligatoire pour envoyer un nouveau produit.</string>
-
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Résumé</item>
@@ -341,7 +339,5 @@
   <string name="history_shortcut_long_label">Historique</string>
   <string name="contributions_shortcut_short_label">Contributions</string>
   <string name="contributions_shortcut_long_label">Mes contributions</string>
-  
   <string name="forgot_password">Mot de passe oublié</string>
-  <string name="forgot_password">Forgot Password</string>
 </resources>
