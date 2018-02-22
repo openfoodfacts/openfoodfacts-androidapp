@@ -64,7 +64,6 @@ public class NutrientLevelListAdapter extends BaseAdapter {
         TextView txtTitle = (TextView) convertView.findViewById(R.id.descriptionLevel);
         // need to clear the text because using append method (append method is mandatory for html text)
         txtTitle.setText("");
-
         txtTitle.append(nutrientLevelItem.getValue());
         txtTitle.append(" ");
         txtTitle.append(bold(nutrientLevelItem.getCategory()));
