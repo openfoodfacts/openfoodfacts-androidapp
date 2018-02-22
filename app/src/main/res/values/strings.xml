@@ -368,7 +368,7 @@
 
     <!--Status Network-->
     <string name="offline_network_connected">Network Status: Connected</string>
-    <string name="offline_network_discoonected">Network Status: Disconnected</string>
+    <string name="offline_network_disconnected">Network Status: Disconnected</string>
     <string name="offline_network_retry">Retry</string>
 
 </resources>
