@@ -14,7 +14,7 @@ Make sure you've done all the following (You can delete the checklist before sub
  - [ ] Apply the `AndroidStyle.xml` style template to your code in Android Studio.
  - [ ] Code is well documented
  - [ ] Include unit tests for new functionality
- - [ ] All user-visible strings are externalized
+ - [ ] All user-visible strings are made translatable
  - [ ] Code passes Travis builds in your branch
  - [ ] If you have multiple commits please combine them into one commit by squashing them.
  - [ ] Read and understood the contribution guidelines .
