@@ -9,6 +9,9 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+
+import android.graphics.drawable.Drawable;
+
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -221,7 +224,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         @Override
         protected Context doInBackground(Context... ctx) {
             listHistoryProducts = mHistoryProductDao.queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list();
-            final Bitmap defaultImgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_no), 200, 200, true);
+//            final Bitmap defaultImgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_no), 200, 200, true);
+
 
             for (HistoryProduct historyProduct : listHistoryProducts) {
                 Bitmap imgUrl;
@@ -236,7 +240,13 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                     imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(input), 200, 200, true);
                 } catch (IOException e) {
                     Log.i("HISTORY", "unable to get the history product image", e);
-                    imgUrl = defaultImgUrl;
+                    Drawable drawable = getResources().getDrawable(R.drawable.ic_no_red_24dp);
+                    Canvas canvas = new Canvas();
+                    Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+                    canvas.setBitmap(bitmap);
+                    drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+                    drawable.draw(canvas);
+                    imgUrl = bitmap;
                 } finally {
                     if (input != null) {
                         try {

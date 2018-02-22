@@ -182,7 +182,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_camera_white" />
 
@@ -194,7 +194,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_photo_library" />
                 </LinearLayout>
@@ -240,7 +240,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_camera_white" />
 
@@ -252,7 +252,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_photo_library" />
 
@@ -328,7 +328,7 @@
                 android:layout_height="@dimen/button_height_tall"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/spacing_normal"
-                android:background="@color/blue"
+                android:background="@drawable/rounded_button"
                 android:gravity="center"
                 android:text="@string/txtSave" />
 
