@@ -1,7 +1,7 @@
-**Avoid reporting a duplicate**
+**Checklist**
 - [x] Bug Report - The issue you are reporting might be there already. Please search on the [issues tracker](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues) before creating or reporting a issue.
-   - Also before reporting please ensure that you have tested it with the latest (dev) version of the software.
-
+- [x] Before reporting, please ensure (if you can) that you have tested it with the latest (dev) version of the software.
+- [x] Don't forget to tag your issue, it makes it easier to discover.
 **Summary:** 
 
 Summarize your issue in one sentence (what goes wrong, what did you expect to happen)
