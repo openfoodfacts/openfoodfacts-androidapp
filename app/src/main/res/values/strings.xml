@@ -366,4 +366,7 @@
     <string name="contributions_shortcut_long_label">My Contributions</string>
     <string name="forgot_password">Forgot Password</string>
 
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
 </resources>
