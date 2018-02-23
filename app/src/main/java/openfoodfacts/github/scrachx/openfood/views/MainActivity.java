@@ -24,7 +24,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.fastadapter.commons.utils.RecyclerViewCacheUtil;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -40,7 +42,6 @@ import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-import android.support.v7.app.AlertDialog;
 
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
