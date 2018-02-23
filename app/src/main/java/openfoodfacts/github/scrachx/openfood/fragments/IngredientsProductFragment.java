@@ -11,7 +11,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,12 +45,10 @@ import pl.aprilapps.easyphotopicker.EasyImage;
 import static android.Manifest.permission.CAMERA;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class IngredientsProductFragment extends BaseFragment {
 
@@ -105,7 +102,6 @@ public class IngredientsProductFragment extends BaseFragment {
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_",""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
             int ingredientsListAt = Math.max(0, txtIngredients.toString().indexOf(":"));
-
             if(!txtIngredients.toString().substring(ingredientsListAt).trim().isEmpty()) {
                 ingredientsProduct.setText(txtIngredients);
             } else {
@@ -144,10 +140,19 @@ public class IngredientsProductFragment extends BaseFragment {
             additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
             additiveProduct.append(bold(getString(R.string.txtAdditives)));
             additiveProduct.append(" ");
+            additiveProduct.append("\n");
 
             for (String tag : product.getAdditivesTags()) {
                 String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "").toUpperCase();
+                final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tagWithoutLocale.toUpperCase())).list();
                 additiveProduct.append(getSpanTag(tagWithoutLocale, view));
+                //Display additives list with full name
+                if (la.size() >= 1) {
+                    final Additive additive = la.get(0);
+                    additiveProduct.append(" - ");
+                    additiveProduct.append(additive.getName().split(",")[0]);
+                    additiveProduct.append("\n");
+                }
             }
         } else {
             additiveProduct.setVisibility(View.GONE);
@@ -180,7 +185,8 @@ public class IngredientsProductFragment extends BaseFragment {
         final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tag.toUpperCase())).list();
         if (la.size() >= 1) {
             final Additive additive = la.get(0);
-            ClickableSpan clickableSpan = new ClickableSpan() {
+            //disabled popup temporarily
+          /*ClickableSpan clickableSpan = new ClickableSpan() {
                 @Override
                 public void onClick(View v) {
                     new MaterialDialog.Builder(view.getContext())
@@ -189,9 +195,9 @@ public class IngredientsProductFragment extends BaseFragment {
                             .positiveText(R.string.txtOk)
                             .show();
                 }
-            };
+            };*/
             ssb.append(tag);
-            ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+           // ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
             ssb.append(" ");
         }
         return ssb;
