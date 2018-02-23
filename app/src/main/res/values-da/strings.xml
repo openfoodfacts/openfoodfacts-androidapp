@@ -118,7 +118,7 @@
   <string name="txtNutritionLevelHigh">i høj mængde</string>
   <string name="txtLogin">Brugernavn :</string>
   <string name="txtPass">Adgangskode :</string>
-  <string name="txtTitleHome">Åbn din mad og ved hvad du spiser</string>
+  <string name="txtTitleHome">Åbn din mad, for at vide hvad du spiser</string>
   <string name="txtSave">Gem</string>
   <string name="txtSignIn">Log ind</string>
   <string name="txtUser">Brugerpanel</string>
@@ -130,7 +130,7 @@
   <string name="hintLogin">Brugernavn</string>
   <string name="hintPass">Adgangskode</string>
   <string name="errorLogin">Brugernavn eller adgangskode-fejl</string>
-  <string name="errorWeb">Vi kunne ikke få adgang til internettet. Har du problemer med tilslutning?</string>
+  <string name="errorWeb">Vi kunne ikke få adgang til internettet. Har du problemer med forbindelsen?</string>
   <string name="txtInfoLoginOk">Bruger gemt</string>
   <string name="txtInfoLoginNo">Bruger ikke gemt</string>
   <string name="txtDialogsTitle">Information</string>
@@ -154,7 +154,7 @@
   <string name="txtInfoAddUser">Indtast venligst dit brugernavn og adgangskode</string>
   <string name="txtDataUpdated">Data opdateret</string>
   <string name="txtLoading">Indlæser...</string>
-  <string name="txtDialogsContentDelete">Vil du slette dette udkast?</string>
+  <string name="txtDialogsContentDelete">Vil du slette denne kladde?</string>
   <string name="txtDialogsContentInfoSave">Produktet er gemt lokalt på denne enhed, du kan redigere det i menuen \"Offline-redigering\"</string>
   <string name="txtBarcodeRequire">Stregkode påkrævet</string>
   <string name="txtOk">OK</string>
@@ -163,7 +163,7 @@
   <string name="txtAllsent">Produkter sendt</string>
   <string name="txtPalm">Dette produkt indeholder ingen palmeolie</string>
   <string name="txtBarcodeNotValid">Stregkode er ikke gyldig</string>
-  <string name="try_it_scan_now">Scan produkt</string>
+  <string name="try_it_scan_now">Skan produkt</string>
   <string name="share">Del</string>
   <string name="msg_share">Kig på dette produkt på Open Food Facts :</string>
   <string name="create_account">Tilmeld dig</string>
@@ -230,7 +230,7 @@
   <string name="nutrition_fiber">Kostfibre</string>
   <string name="nutrition_fiber_short_name">Kostfibre (g)</string>
   <string name="nutrition_header">Ernæringsinnhold</string>
-  <string name="nutrition_no_data_message">Der er ingen data tilgængelige for dette produkt</string>
+  <string name="nutrition_no_data_message">Der er ingen data tilgængelig for dette produkt</string>
   <string name="nutrition_per_quantity">Til 100g / 100ml</string>
   <string name="nutrition_proteins">Proteiner</string>
   <string name="nutrition_proteins_short_name">Proteiner (g)</string>
