@@ -366,7 +366,14 @@
     <string name="contributions_shortcut_long_label">My Contributions</string>
     <string name="forgot_password">Forgot Password</string>
 
+
+    <!--Status Network-->
+    <string name="offline_network_connected">Network Status: Connected</string>
+    <string name="offline_network_disconnected">Network Status: Disconnected</string>
+    <string name="offline_network_retry">Retry</string>
+
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
+
 </resources>

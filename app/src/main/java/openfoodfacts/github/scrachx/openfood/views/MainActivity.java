@@ -3,16 +3,20 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.Manifest;
 import android.app.SearchManager;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -24,6 +28,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.fastadapter.commons.utils.RecyclerViewCacheUtil;
@@ -75,6 +81,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
 
+    //Network Status
+    private Utils utils;
+    private LinearLayout linearLayout;
+    private boolean internetConnected=true;
+    private Snackbar snackbar;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     private AccountHeader headerResult = null;
@@ -103,7 +115,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         Bundle extras = getIntent().getExtras();
         FragmentManager fragmentManager = getSupportFragmentManager();
-
+        linearLayout=(LinearLayout)findViewById(R.id.main_linear_layout);
         boolean isOpenOfflineEdit = extras != null && extras.getBoolean("openOfflineEdit");
         if (isOpenOfflineEdit) {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, new OfflineEditFragment()).commit();
@@ -335,7 +347,17 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             moveToBarcodeEntry();
         }
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerInternetCheckReceiver();
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(broadcastReceiver);
+    }
     private void scan() {
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.CAMERA)) {
@@ -581,6 +603,65 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         } else {
             // error in creating fragment
             Log.e("MainActivity", "Error in creating fragment");
+        }
+    }
+    /**
+     *  Method to register runtime broadcast receiver to show snackbar alert for internet connection..
+     */
+    private void registerInternetCheckReceiver() {
+        IntentFilter internetFilter = new IntentFilter();
+        internetFilter.addAction("android.net.wifi.STATE_CHANGE");
+        internetFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        registerReceiver(broadcastReceiver, internetFilter);
+    }
+
+    /**
+     *  Runtime Broadcast receiver inner class to capture internet connectivity events
+     */
+    public BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String status = utils.getConnectivityStatusString(context);
+            setSnackbarMessage(status,false);
+        }
+    };
+    private void setSnackbarMessage(String status,boolean showBar) {
+        String internetStatus="";
+        if(status.equalsIgnoreCase("Wifi enabled")||status.equalsIgnoreCase("Mobile data enabled")){
+            internetStatus=getResources().getString(R.string.offline_network_connected);
+        }else {
+            internetStatus=getResources().getString(R.string.offline_network_disconnected);
+        }
+        if(internetStatus.equalsIgnoreCase(getResources().getString(R.string.offline_network_disconnected))) {
+            snackbar = Snackbar
+                    .make(linearLayout, internetStatus, Snackbar.LENGTH_LONG)
+                    .setAction(getResources().getString(R.string.offline_network_retry), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+                        }
+
+                    });
+        }
+        else
+        {
+            snackbar = Snackbar
+                    .make(linearLayout, internetStatus, Snackbar.LENGTH_SHORT);
+        }
+
+        // Changing message text color
+        snackbar.setActionTextColor(Color.WHITE);
+
+        if(internetStatus.equalsIgnoreCase(getResources().getString(R.string.offline_network_disconnected))){
+            if(internetConnected){
+                snackbar.show();
+                internetConnected=false;
+            }
+        }else{
+            if(!internetConnected){
+                internetConnected=true;
+                snackbar.show();
+            }
         }
     }
 }
