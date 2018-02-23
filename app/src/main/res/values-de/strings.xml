@@ -260,7 +260,7 @@
   <string name="txt_no_results">Keine Ergebnisse gefunden</string>
   <string name="txt_extend_search">Versuchen Sie, Ihre Suche zu erweitern oder das Produkt hinzuzufügen</string>
   <string name="txt_no_matching_products">Wir haben keine passenden Produkte gefunden.\nSie können versuchen:</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+  <string name="txt_broaden_search">- Ihre Suche erweitern\n- scannen und fügen Sie es zu Open Food Facts hinzu</string>
   <string name="txt_cant_load_search_results">Die Suchergebnisse können nicht geladen werden</string>
   <string name="txt_try_again">Wiederholen</string>
   <string name="nutrition_lactose">Laktose</string>
@@ -340,4 +340,7 @@
   <string name="contributions_shortcut_short_label">Beiträge</string>
   <string name="contributions_shortcut_long_label">Meine Beiträge</string>
   <string name="forgot_password">Passwort vergessen</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
 </resources>

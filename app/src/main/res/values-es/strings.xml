@@ -337,7 +337,10 @@
   <string name="barcode_shortcut_long_label">Buscar por código de barras</string>
   <string name="history_shortcut_short_label">Historia</string>
   <string name="history_shortcut_long_label">Historia</string>
-  <string name="contributions_shortcut_short_label">Contibuciones</string>
+  <string name="contributions_shortcut_short_label">Contribuciones</string>
   <string name="contributions_shortcut_long_label">Mis contribuciones</string>
   <string name="forgot_password">Forgot Password</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
 </resources>

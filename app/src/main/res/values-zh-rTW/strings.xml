@@ -340,4 +340,7 @@
   <string name="contributions_shortcut_short_label">貢獻</string>
   <string name="contributions_shortcut_long_label">我的貢獻</string>
   <string name="forgot_password">忘記密碼</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
 </resources>

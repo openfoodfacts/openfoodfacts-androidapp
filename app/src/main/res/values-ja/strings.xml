@@ -339,5 +339,8 @@
   <string name="history_shortcut_long_label">履歴</string>
   <string name="contributions_shortcut_short_label">貢献</string>
   <string name="contributions_shortcut_long_label">私の貢献</string>
-  <string name="forgot_password">Forgot Password</string>
+  <string name="forgot_password">パスワードを忘れた場合</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
 </resources>
