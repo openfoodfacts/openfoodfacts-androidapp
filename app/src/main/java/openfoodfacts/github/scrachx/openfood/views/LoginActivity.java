@@ -105,7 +105,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         }
 
         Snackbar snackbar = Snackbar
-                .make(linearLayout, "Loading", Snackbar.LENGTH_LONG);
+                .make(linearLayout, R.string.toast_retrieving, Snackbar.LENGTH_LONG);
 
         snackbar.show();
 
@@ -151,7 +151,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                         }
                     }
                      Snackbar snackbar = Snackbar
-                            .make(linearLayout, "Connected", Snackbar.LENGTH_LONG);
+                            .make(linearLayout,R.string.connection, Snackbar.LENGTH_LONG);
 
                     snackbar.show();
                     
