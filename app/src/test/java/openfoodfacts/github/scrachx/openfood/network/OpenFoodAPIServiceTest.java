@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import android.content.pm.PackageManager;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,6 +31,7 @@ import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertNotNull;
 import static net.javacrumbs.jsonunit.fluent.JsonFluentAssert.assertThatJson;
+import static android.support.v4.content.PermissionChecker.checkSelfPermission;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static org.junit.Assert.assertTrue;
 
@@ -201,30 +203,37 @@ public class OpenFoodAPIServiceTest {
         assertEquals("product not found", response.body().getStatusVerbose());
         assertEquals(barcode, response.body().getCode());
     }
-/*
-    @Test
-    public void saveImage_noImageFile_ko() throws IOException {
 
-        File outputFile = File.createTempFile("prefix", "png", new File("/"));
-
-        ProductImage image = new ProductImage("01010101010101", ProductImageField.FRONT, outputFile);
-        Map<String, RequestBody> imgMap = new HashMap<>();
-        imgMap.put("code", image.getCode());
-        imgMap.put("imagefield", image.getField());
-        imgMap.put("imgupload_front\"; filename=\"front_fr.png\"", image.getImguploadFront());
-        imgMap.put("imgupload_ingredients\"; filename=\"ingredients_fr.png\"", image.getImguploadIngredients());
-        imgMap.put("imgupload_nutrition\"; filename=\"nutrition_fr.png\"", image.getImguploadNutrition());
-        imgMap.put("imgupload_other\"; filename=\"other_fr.png\"", image.getImguploadOther());
-
-        Response<JsonNode> response = serviceWrite.saveImage(imgMap).execute();
-
-        assertTrue(response.isSuccess());
-
-        assertThatJson(response.body())
-                .node("status")
-                    .isEqualTo("status not ok");
+@Override
+public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    switch (requestCode) {
+        case 1001: {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                File outputFile = File.createTempFile("prefix", "png", new File("/"));
+        
+                ProductImage image = new ProductImage("01010101010101", ProductImageField.FRONT, outputFile);
+                Map<String, RequestBody> imgMap = new HashMap<>();
+                imgMap.put("code", image.getCode());
+                imgMap.put("imagefield", image.getField());
+                imgMap.put("imgupload_front\"; filename=\"front_fr.png\"", image.getImguploadFront());
+                imgMap.put("imgupload_ingredients\"; filename=\"ingredients_fr.png\"", image.getImguploadIngredients());
+                imgMap.put("imgupload_nutrition\"; filename=\"nutrition_fr.png\"", image.getImguploadNutrition());
+                imgMap.put("imgupload_other\"; filename=\"other_fr.png\"", image.getImguploadOther());
+                Response<JsonNode> response = serviceWrite.saveImage(imgMap).execute();
+                assertTrue(response.isSuccess());
+               // assertThatJson(response.body().node("status").isEqualTo("status not ok");
+                                    assertThatJson(response.body())
+                            .node("status")
+                            .isEqualTo("status not ok");
+            } else {
+                // permission denied, boo! Disable the
+                // functionality that depends on this permission.
+            }
+            return;
+        }
     }
-*/
+}
+
     @Test
     public void post_product() throws IOException {
         SendProduct product = new SendProduct();
