@@ -340,4 +340,7 @@
   <string name="contributions_shortcut_short_label">Contributions</string>
   <string name="contributions_shortcut_long_label">Mes contributions</string>
   <string name="forgot_password">Mot de passe oublié</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
 </resources>
