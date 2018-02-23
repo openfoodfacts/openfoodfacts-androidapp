@@ -276,7 +276,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         .onNegative(new MaterialDialog.SingleButtonCallback() {
             @Override
             public void onClick(MaterialDialog dialog, DialogAction which) {
-                // TODO
+                Toast.makeText(getApplicationContext(),"Cancelled",
+                        Toast.LENGTH_SHORT).show();
             }
         }).show();
                             break;
