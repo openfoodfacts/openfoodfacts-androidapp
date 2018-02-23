@@ -48,6 +48,8 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 
 * Android Studio should be the latest stable build.You can get it from [Here](https://developer.android.com/studio/index.html)
 * If you're running the app for first time android-studio will ask you to install the gradle dependencies if you haven't already, Just click install.
+* If you're a new contributor to open-source, We recommend you to read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md)
+
 
 
 ## Waffle Throughput Graph
