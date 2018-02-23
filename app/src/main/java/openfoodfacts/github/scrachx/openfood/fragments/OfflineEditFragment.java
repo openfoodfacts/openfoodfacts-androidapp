@@ -41,8 +41,10 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 public class OfflineEditFragment extends BaseFragment {
 
     public static final String LOG_TAG = "OFFLINE_EDIT";
-    @BindView(R.id.listOfflineSave) ListView listView;
-    @BindView(R.id.buttonSendAll) Button buttonSend;
+    @BindView(R.id.listOfflineSave)
+    ListView listView;
+    @BindView(R.id.buttonSendAll)
+    Button buttonSend;
     private List<SaveItem> saveItems;
     private String loginS, passS;
     private SendProductDao mSendProductDao;
@@ -64,7 +66,7 @@ public class OfflineEditFragment extends BaseFragment {
         loginS = settingsLogin.getString("user", "");
         passS = settingsLogin.getString("pass", "");
         boolean firstUse = settingsUsage.getBoolean("firstOffline", false);
-        if(!firstUse) {
+        if (!firstUse) {
             new MaterialDialog.Builder(getContext())
                     .title(R.string.title_info_dialog)
                     .content(R.string.text_offline_info_dialog)
@@ -121,20 +123,20 @@ public class OfflineEditFragment extends BaseFragment {
                             continue;
                         }
 
-                        if(!loginS.isEmpty() && !passS.isEmpty()) {
+                        if (!loginS.isEmpty() && !passS.isEmpty()) {
                             product.setUserId(loginS);
                             product.setPassword(passS);
                         }
 
-                        if(isNotEmpty(product.getImgupload_ingredients())) {
+                        if (isNotEmpty(product.getImgupload_ingredients())) {
                             product.compress(ProductImageField.INGREDIENTS);
                         }
 
-                        if(isNotEmpty(product.getImgupload_nutrition())) {
+                        if (isNotEmpty(product.getImgupload_nutrition())) {
                             product.compress(ProductImageField.NUTRITION);
                         }
 
-                        if(isNotEmpty(product.getImgupload_front())) {
+                        if (isNotEmpty(product.getImgupload_front())) {
                             product.compress(ProductImageField.FRONT);
                         }
 
@@ -178,12 +180,12 @@ public class OfflineEditFragment extends BaseFragment {
         protected Context doInBackground(Context... ctx) {
             List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
 
-            int imageIcon = R.drawable.ic_ok;
+            int imageIcon = R.drawable.ic_done_green_24dp;
 
             for (SendProduct product : listSaveProduct) {
                 if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())
                         || isEmpty(product.getBrands()) || isEmpty(product.getWeight()) || isEmpty(product.getName())) {
-                    imageIcon = R.drawable.ic_no;
+                    imageIcon = R.drawable.ic_no_red_24dp;
                 }
 
                 Bitmap bitmap = Utils.decodeFile(new File(product.getImgupload_front()));

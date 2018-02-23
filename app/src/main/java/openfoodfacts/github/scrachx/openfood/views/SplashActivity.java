@@ -52,7 +52,6 @@ public class SplashActivity extends BaseActivity {
                         .apply();
                 firstRun = false;
             }
-
             if (!firstRun) {
                 launchMainActivity();
             } else {
@@ -69,7 +68,7 @@ public class SplashActivity extends BaseActivity {
                 .setImagesFolderName("OFF_Images")
                 .saveInAppExternalFilesDir()
                 .setCopyExistingPicturesToPublicLocation(true);
-        Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+        Intent mainIntent = new Intent(SplashActivity.this, WelcomeActivity.class);
         startActivity(mainIntent);
         finish();
     }
@@ -162,7 +161,7 @@ public class SplashActivity extends BaseActivity {
 
                         editor.apply();
 
-                        Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                        Intent mainIntent = new Intent(SplashActivity.this, WelcomeActivity.class);
                         startActivity(mainIntent);
                         finish();
                     });
