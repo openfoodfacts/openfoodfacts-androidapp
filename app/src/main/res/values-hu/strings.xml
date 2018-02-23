@@ -340,4 +340,7 @@
   <string name="contributions_shortcut_short_label">Hozzájárulások</string>
   <string name="contributions_shortcut_long_label">Hozzájárulásaim</string>
   <string name="forgot_password">Elfelejtett jelszó</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
 </resources>
