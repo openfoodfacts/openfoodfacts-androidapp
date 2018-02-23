@@ -237,7 +237,7 @@
   <string name="nutrition_salt">Salt</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Modificeret fedt</string>
-  <string name="nutrition_satured_fat_short_name">Modificeret fedt (g)</string>
+  <string name="nutrition_satured_fat_short_name">Mættet fedt (g)</string>
   <string name="nutrition_serving">Per portion</string>
   <string name="nutrition_serving_size">Portionsstørrelse :</string>
   <string name="nutrition_sodium">Natrium</string>
@@ -252,7 +252,7 @@
   <string name="logout_drawer">Log ud</string>
   <string name="contribution_without_account">Du kan logge ind eller oprette en konto for at gemme bidrag</string>
   <string name="textCarbonFootprint">"CO2-regnskab / emissioner: "</string>
-  <string name="txtDialogPowerMode">Hurtig visning</string>
+  <string name="txtDialogPowerMode">Hurtigvisning</string>
   <string name="txtSeeMore">Se mere</string>
   <string name="action_search">Søg</string>
   <string name="search_hint">Søg efter produkt</string>
@@ -269,7 +269,7 @@
   <string name="nutrition_serum_proteins">Serumproteiner</string>
   <string name="nutrition_nucleotides">Nukleotider</string>
   <string name="for_100g">For 100 g</string>
-  <string name="serving">Per servering</string>
+  <string name="serving">Per portion</string>
   <string name="minerals">Mineraler</string>
   <string name="nutrition_calcium">Calcium</string>
   <string name="nutrition_potassium">Kalium</string>
