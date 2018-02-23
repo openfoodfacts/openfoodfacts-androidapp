@@ -25,6 +25,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -143,6 +144,7 @@ public class IngredientsProductFragment extends BaseFragment {
             additiveProduct.append("\n");
 
             for (String tag : product.getAdditivesTags()) {
+                String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "").toUpperCase(Locale.getDefault());
                 String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "").toUpperCase();
                 final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tagWithoutLocale.toUpperCase())).list();
                 additiveProduct.append(getSpanTag(tagWithoutLocale, view));
@@ -182,7 +184,7 @@ public class IngredientsProductFragment extends BaseFragment {
     private CharSequence getSpanTag(String tag, final View view) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder();
 
-        final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tag.toUpperCase())).list();
+        final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tag.toUpperCase(Locale.getDefault()))).list();
         if (la.size() >= 1) {
             final Additive additive = la.get(0);
             //disabled popup temporarily
@@ -191,7 +193,7 @@ public class IngredientsProductFragment extends BaseFragment {
                 public void onClick(View v) {
                     new MaterialDialog.Builder(view.getContext())
                             .title(additive.getCode() + " : " + additive.getName())
-                            .content(additive.getRisk().toUpperCase())
+                            .content(additive.getRisk().toUpperCase(Locale.getDefault()))
                             .positiveText(R.string.txtOk)
                             .show();
                 }
