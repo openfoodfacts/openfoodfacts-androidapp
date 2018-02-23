@@ -262,26 +262,23 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             }
                             break;
                         case LOGOUT:
-                             AlertDialog.Builder myAlertBuilder = new
-                                    AlertDialog.Builder(MainActivity.this);
-                            myAlertBuilder.setTitle("Alert");
-                            myAlertBuilder.setMessage("Click OK to logout, or Cancel to stop:");
-                            myAlertBuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    logout(); // User clicked OK button.
-
-                                }
-                            });
-                            myAlertBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // User clicked the CANCEL button.
-                                    Toast.makeText(getApplicationContext(),R.string.pressed_cancel,
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            });
-
-                            // Create and show the AlertDialog.
-                            myAlertBuilder.show();
+                             new MaterialDialog.Builder(MainActivity.this)
+        .title("Confirm Logout")
+        .content("Are you sure to log out")
+        .positiveText(R.string.txtOk)
+        .negativeText("Cancel")
+        .onPositive(new MaterialDialog.SingleButtonCallback() {
+            @Override
+            public void onClick(MaterialDialog dialog, DialogAction which) {
+                logout();
+            }
+        })
+        .onNegative(new MaterialDialog.SingleButtonCallback() {
+            @Override
+            public void onClick(MaterialDialog dialog, DialogAction which) {
+                // TODO
+            }
+        }).show();
                             break;
                         default:
                             // nothing to do
