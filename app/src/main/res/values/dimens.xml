@@ -39,4 +39,9 @@
     <dimen name="padding_short">8dp</dimen>
     <dimen name="padding_too_short">4dp</dimen>
 
+    <!-- Intro Screens -->
+        <dimen name="dots_height">30dp</dimen>
+        <dimen name="dots_margin_bottom">20dp</dimen>
+        <dimen name="img_width_height">250dp</dimen>
+        <dimen name="slide_desc">16dp</dimen>
 </resources>

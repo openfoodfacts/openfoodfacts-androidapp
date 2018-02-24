@@ -92,7 +92,7 @@
   <string name="alert_dialog_warning_title">crwdns35049:0crwdne35049:0</string>
   <string name="alert_dialog_warning_msg_user">crwdns35050:0crwdne35050:0</string>
   <string name="alert_dialog_product_error_msg">crwdns35051:0crwdne35051:0</string>
-  <string name="toast_retrieving">crwdns35052:0crwdne35052:0</string>
+  <string name="toast_retrieving">crwdns37138:0crwdne37138:0</string>
   <string name="txtGenericName">crwdns35053:0crwdne35053:0</string>
   <string name="txtBarcode">crwdns35054:0crwdne35054:0</string>
   <string name="txtQuantity">crwdns35055:0crwdne35055:0</string>
@@ -149,16 +149,16 @@
   <string name="txtSendAll">crwdns35107:0crwdne35107:0</string>
   <string name="txtNoData">crwdns35108:0crwdne35108:0</string>
   <string name="txtPictureNeeded">crwdns35109:0crwdne35109:0</string>
-  <string name="toastSending">crwdns35110:0crwdne35110:0</string>
+  <string name="toastSending">crwdns37139:0crwdne37139:0</string>
   <string name="dataSaved">crwdns35111:0crwdne35111:0</string>
   <string name="txtInfoAddUser">crwdns35112:0crwdne35112:0</string>
   <string name="txtDataUpdated">crwdns35113:0crwdne35113:0</string>
-  <string name="txtLoading">crwdns35114:0crwdne35114:0</string>
+  <string name="txtLoading">crwdns37140:0crwdne37140:0</string>
   <string name="txtDialogsContentDelete">crwdns35115:0crwdne35115:0</string>
   <string name="txtDialogsContentInfoSave">crwdns35116:0crwdne35116:0</string>
   <string name="txtBarcodeRequire">crwdns35117:0crwdne35117:0</string>
   <string name="txtOk">crwdns35118:0crwdne35118:0</string>
-  <string name="txtContentDialogUploading">crwdns35119:0crwdne35119:0</string>
+  <string name="txtContentDialogUploading">crwdns37141:0crwdne37141:0</string>
   <string name="txtAbout">crwdns35120:0crwdne35120:0</string>
   <string name="txtAllsent">crwdns35121:0crwdne35121:0</string>
   <string name="txtPalm">crwdns35122:0crwdne35122:0</string>
@@ -214,7 +214,7 @@
   <string name="title_clear_history_dialog">crwdns35181:0crwdne35181:0</string>
   <string name="text_clear_history_dialog">crwdns35182:0crwdne35182:0</string>
   <string name="export_csv_history">crwdns35183:0crwdne35183:0</string>
-  <string name="txt_exporting_history">crwdns35184:0crwdne35184:0</string>
+  <string name="txt_exporting_history">crwdns37142:0crwdne37142:0</string>
   <string name="txt_history_exported">crwdns35185:0crwdne35185:0</string>
   <string name="permision_write_external_storage">crwdns35186:0crwdne35186:0</string>
   <string name="txt_nutrition_not_found">crwdns35187:0crwdne35187:0</string>
@@ -340,4 +340,7 @@
   <string name="contributions_shortcut_short_label">crwdns37132:0crwdne37132:0</string>
   <string name="contributions_shortcut_long_label">crwdns37133:0crwdne37133:0</string>
   <string name="forgot_password">crwdns37137:0crwdne37137:0</string>
+  <string name="next">crwdns37143:0crwdne37143:0</string>
+  <string name="skip">crwdns37144:0crwdne37144:0</string>
+  <string name="start">crwdns37145:0crwdne37145:0</string>
 </resources>

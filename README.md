@@ -46,8 +46,10 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 
 ## Installation
 
-* Android Studio should be the latest stable build.You can get it from [Here](https://developer.android.com/studio/index.html)
+* Android Studio should be the latest stable build. You can get it from [Here](https://developer.android.com/studio/index.html)
 * If you're running the app for first time android-studio will ask you to install the gradle dependencies if you haven't already, Just click install.
+* If you're a new contributor to open-source, We recommend you to read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md)
+
 
 
 ## Waffle Throughput Graph
@@ -78,7 +80,7 @@ The project is initially started by [Scot Scriven](https://github.com/itchix), o
 - [Friedger Müffke](https://github.com/friedger)
 - [Qian Jin](https://github.com/jinqian)
 
-If you're new to Open-Source,We recommend you to Checkout our [_Contributing Guidelines_](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/CONTRIBUTING.md).Feel free to fork the project and send us a pull request.
+If you're new to open-source, we recommend you to checkout our [_Contributing Guidelines_](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/CONTRIBUTING.md). Feel free to fork the project and send us a pull request.
 
 Here's a few list of bugs:
 - Very high impact: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/very%20high%20impact
