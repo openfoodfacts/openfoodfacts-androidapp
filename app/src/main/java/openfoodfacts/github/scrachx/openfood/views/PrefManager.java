@@ -9,7 +9,6 @@ public class PrefManager extends AppCompatActivity {
     SharedPreferences.Editor editor;
     Context _context;
 
-
    public PrefManager()
     {
 
