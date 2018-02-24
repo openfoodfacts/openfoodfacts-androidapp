@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -10,6 +11,11 @@ import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +45,7 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -59,29 +66,57 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
 
-    @BindView(R.id.textNameProduct) TextView nameProduct;
-    @BindView(R.id.textGenericNameProduct) TextView genericNameProduct;
-    @BindView(R.id.textBarcodeProduct) TextView barCodeProduct;
-    @BindView(R.id.textQuantityProduct) TextView quantityProduct;
-    @BindView(R.id.textPackagingProduct) TextView packagingProduct;
-    @BindView(R.id.textBrandProduct) TextView brandProduct;
-    @BindView(R.id.textManufacturingProduct) TextView manufacturingProduct;
-    @BindView(R.id.textIngredientsOriginProduct) TextView ingredientsOrigin;
-    @BindView(R.id.textCityProduct) TextView cityProduct;
-    @BindView(R.id.textStoreProduct) TextView storeProduct;
-    @BindView(R.id.textCountryProduct) TextView countryProduct;
-    @BindView(R.id.textCategoryProduct) TextView categoryProduct;
-    @BindView(R.id.textLabelProduct) TextView labelProduct;
-    @BindView(R.id.imageViewFront) ImageView mImageFront;
-    @BindView(R.id.addPhotoLabel) TextView addPhotoLabel;
-    @BindView(R.id.buttonMorePictures) Button addMorePicture;
-    @BindView(R.id.imageGrade) ImageView img;
+    @BindView(R.id.textNameProduct)
+    TextView nameProduct;
+    @BindView(R.id.textGenericNameProduct)
+    TextView genericNameProduct;
+    @BindView(R.id.textBarcodeProduct)
+    TextView barCodeProduct;
+    @BindView(R.id.textQuantityProduct)
+    TextView quantityProduct;
+    @BindView(R.id.textPackagingProduct)
+    TextView packagingProduct;
+    @BindView(R.id.textBrandProduct)
+    TextView brandProduct;
+    @BindView(R.id.textManufacturingProduct)
+    TextView manufacturingProduct;
+    @BindView(R.id.textIngredientsOriginProduct)
+    TextView ingredientsOrigin;
+    @BindView(R.id.textCityProduct)
+    TextView cityProduct;
+    @BindView(R.id.textManufactureUrl)
+    TextView manufactureUlrProduct;
+    @BindView(R.id.textStoreProduct)
+    TextView storeProduct;
+    @BindView(R.id.textCountryProduct)
+    TextView countryProduct;
+    @BindView(R.id.textCategoryProduct)
+    TextView categoryProduct;
+    @BindView(R.id.textLabelProduct)
+    TextView labelProduct;
+    @BindView(R.id.imageViewFront)
+    ImageView mImageFront;
+    @BindView(R.id.addPhotoLabel)
+    TextView addPhotoLabel;
+    @BindView(R.id.buttonMorePictures)
+    Button addMorePicture;
+    @BindView(R.id.imageGrade)
+    ImageView img;
     private OpenFoodAPIClient api;
     private String mUrlImage;
     private String barcode;
     private boolean sendOther = false;
+    private CustomTabsIntent customTabsIntent;
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri nutritionScoreUri;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        customTabActivityHelper = new CustomTabActivityHelper();
+        customTabActivityHelper.setConnectionCallback(this);
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -112,7 +147,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
 
-        if(isNotBlank(product.getProductName())) {
+        if (isNotBlank(product.getProductName())) {
             nameProduct.setText(product.getProductName());
         } else {
             nameProduct.setVisibility(View.GONE);
@@ -123,31 +158,31 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         } else {
             genericNameProduct.setVisibility(View.GONE);
         }
-        if(isNotBlank(barcode)) {
+        if (isNotBlank(barcode)) {
             barCodeProduct.setText(bold(getString(R.string.txtBarcode)));
             barCodeProduct.append(' ' + barcode);
         } else {
             barCodeProduct.setVisibility(View.GONE);
         }
-        if(isNotBlank(product.getQuantity())) {
+        if (isNotBlank(product.getQuantity())) {
             quantityProduct.setText(bold(getString(R.string.txtQuantity)));
             quantityProduct.append(' ' + product.getQuantity());
         } else {
             quantityProduct.setVisibility(View.GONE);
         }
-        if(isNotBlank(product.getPackaging())) {
+        if (isNotBlank(product.getPackaging())) {
             packagingProduct.setText(bold(getString(R.string.txtPackaging)));
             packagingProduct.append(' ' + product.getPackaging());
         } else {
             packagingProduct.setVisibility(View.GONE);
         }
-        if(isNotBlank(product.getBrands())) {
+        if (isNotBlank(product.getBrands())) {
             brandProduct.setText(bold(getString(R.string.txtBrands)));
             brandProduct.append(' ' + product.getBrands());
         } else {
             brandProduct.setVisibility(View.GONE);
         }
-        if(isNotBlank(product.getManufacturingPlaces())) {
+        if (isNotBlank(product.getManufacturingPlaces())) {
             manufacturingProduct.setText(bold(getString(R.string.txtManufacturing)));
             manufacturingProduct.append(' ' + product.getManufacturingPlaces());
         } else {
@@ -176,12 +211,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             labelProduct.append(" ");
             String[] label = labels.split(",");
             int labelCount = label.length;
-            if(labelCount>1) {
+            if (labelCount > 1) {
                 for (int i = 0; i < (labelCount - 1); i++) {
                     labelProduct.append(label[i].trim());
                     labelProduct.append(", ");
                 }
-                labelProduct.append(label[labelCount-1].trim());
+                labelProduct.append(label[labelCount - 1].trim());
             } else {
                 labelProduct.append(label[0].trim());
             }
@@ -189,19 +224,41 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             labelProduct.setVisibility(View.GONE);
         }
 
-        if(product.getCitiesTags() != null && !product.getCitiesTags().toString().trim().equals("[]")) {
+        if (product.getCitiesTags() != null && !product.getCitiesTags().toString().trim().equals("[]")) {
             cityProduct.setText(bold(getString(R.string.txtCity)));
             cityProduct.append(' ' + product.getCitiesTags().toString().replace("[", "").replace("]", ""));
         } else {
             cityProduct.setVisibility(View.GONE);
         }
-        if(isNotBlank(product.getStores())) {
+        if (isNotBlank(product.getStores())) {
             storeProduct.setText(bold(getString(R.string.txtStores)));
             storeProduct.append(' ' + product.getStores());
         } else {
             storeProduct.setVisibility(View.GONE);
         }
-        if(isNotBlank(product.getCountries())) {
+        if (isNotBlank(product.getManufactureUrl())) {
+            Uri manufactureUri = Uri.parse(product.getManufactureUrl());
+            customTabActivityHelper.mayLaunchUrl(manufactureUri, null, null);
+
+            String manufactureUrlTitle = getString(R.string.txtManufactureUrl);
+            SpannableString spannableText = new SpannableString(manufactureUrlTitle + "\n" + product.getManufactureUrl());
+
+            ClickableSpan clickableSpan = new ClickableSpan() {
+                @Override
+                public void onClick(View textView) {
+                    CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, manufactureUri, new WebViewFallback());
+                }
+            };
+
+            spannableText.setSpan(clickableSpan, manufactureUrlTitle.length() + 1, spannableText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableText.setSpan(new StyleSpan(Typeface.BOLD), 0, manufactureUrlTitle.length(), 0);
+
+            manufactureUlrProduct.setText(spannableText);
+            manufactureUlrProduct.setMovementMethod(LinkMovementMethod.getInstance());
+        } else {
+            manufactureUlrProduct.setVisibility(View.GONE);
+        }
+        if (isNotBlank(product.getCountries())) {
             countryProduct.setText(bold(getString(R.string.txtCountries)));
             countryProduct.append(' ' + product.getCountries());
         } else {
@@ -213,10 +270,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             if (!Utils.isHardwareCameraInstalled(getContext())) {
                 addMorePicture.setVisibility(View.GONE);
             }
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             if (BuildConfig.DEBUG) Log.i(getClass().getSimpleName(), e.toString());
         }
-      
+
         List<NutrientLevelItem> levelItem = new ArrayList<>();
         Nutriments nutriments = product.getNutriments();
 
@@ -225,7 +282,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         NutrimentLevel saturatedFat = null;
         NutrimentLevel sugars = null;
         NutrimentLevel salt = null;
-        if(nutrientLevels != null) {
+        if (nutrientLevels != null) {
             fat = nutrientLevels.getFat();
             saturatedFat = nutrientLevels.getSaturatedFat();
             sugars = nutrientLevels.getSugars();
@@ -236,8 +293,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), "", "", R.drawable.error_image));
         } else {
             // prefetch the uri
-            customTabActivityHelper = new CustomTabActivityHelper();
-            customTabActivityHelper.setConnectionCallback(this);
             // currently only available in french translations
             nutritionScoreUri = Uri.parse("https://fr.openfoodfacts.org/score-nutritionnel-france");
             customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
@@ -313,21 +368,21 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 }
             }
 
-                if (ContextCompat.checkSelfPermission(this.getContext(), READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
-                        && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), READ_EXTERNAL_STORAGE)
-                            || ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), WRITE_EXTERNAL_STORAGE)) {
-                        new MaterialDialog.Builder(this.getContext())
-                                .title(R.string.action_about)
-                                .content(R.string.permission_storage)
-                                .neutralText(R.string.txtOk)
-                                .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
-                                .show();
-                    } else {
-                        ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
-                    }
+            if (ContextCompat.checkSelfPermission(this.getContext(), READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
+                    && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), READ_EXTERNAL_STORAGE)
+                        || ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), WRITE_EXTERNAL_STORAGE)) {
+                    new MaterialDialog.Builder(this.getContext())
+                            .title(R.string.action_about)
+                            .content(R.string.permission_storage)
+                            .neutralText(R.string.txtOk)
+                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
+                            .show();
+                } else {
+                    ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
                 }
-        } catch (NullPointerException e){
+            }
+        } catch (NullPointerException e) {
             Log.i(getClass().getSimpleName(), e.toString());
         }
     }
@@ -379,7 +434,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                if(!sendOther) {
+                if (!sendOther) {
                     onPhotoReturned(imageFiles.get(0));
                 } else {
                     ProductImage image = new ProductImage(barcode, OTHER, imageFiles.get(0));
