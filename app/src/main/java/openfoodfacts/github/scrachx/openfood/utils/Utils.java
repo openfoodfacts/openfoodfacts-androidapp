@@ -36,9 +36,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Collections;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.CipherSuite;
+import okhttp3.ConnectionSpec;
+import okhttp3.OkHttpClient;
+import okhttp3.TlsVersion;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
@@ -326,5 +331,28 @@ public class Utils {
                 .build();
         jobDispatcher.schedule(uploadJob);
         isUploadJobInitialised = true;
+
+    public static OkHttpClient HttpClientBuilder() {
+        OkHttpClient httpClient;
+        if (Build.VERSION.SDK_INT == 24) {
+            ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                    .tlsVersions(TlsVersion.TLS_1_2)
+                    .cipherSuites(CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
+                    .build();
+
+            httpClient = new OkHttpClient.Builder()
+                    .connectTimeout(5000, TimeUnit.MILLISECONDS)
+                    .readTimeout(30000, TimeUnit.MILLISECONDS)
+                    .writeTimeout(30000, TimeUnit.MILLISECONDS)
+                    .connectionSpecs(Collections.singletonList(spec))
+                    .build();
+        } else {
+            httpClient = new OkHttpClient.Builder()
+                    .connectTimeout(5000, TimeUnit.MILLISECONDS)
+                    .readTimeout(30000, TimeUnit.MILLISECONDS)
+                    .writeTimeout(30000, TimeUnit.MILLISECONDS)
+                    .build();
+        }
+        return httpClient;
     }
 }
