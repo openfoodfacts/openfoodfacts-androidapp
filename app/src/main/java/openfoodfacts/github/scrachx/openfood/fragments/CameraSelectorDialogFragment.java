@@ -75,6 +75,7 @@ public class CameraSelectorDialogFragment extends DialogFragment {
                     }
                 })
                 .setNegativeButton(R.string.cancel_button, (dialog, id) -> {
+                    mListener.onCameraSelected(mCameraId);
                 });
 
         return builder.create();
