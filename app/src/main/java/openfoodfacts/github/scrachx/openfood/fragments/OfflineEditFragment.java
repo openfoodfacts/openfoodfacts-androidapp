@@ -12,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -48,7 +50,10 @@ public class OfflineEditFragment extends BaseFragment {
     private List<SaveItem> saveItems;
     private String loginS, passS;
     private SendProductDao mSendProductDao;
-
+    @BindView(R.id.noDataImg)
+    ImageView noDataImage;
+    @BindView(R.id.noDataText)
+    TextView noDataText;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return createView(inflater, container, R.layout.fragment_offline_edit);
@@ -103,6 +108,7 @@ public class OfflineEditFragment extends BaseFragment {
                     final SaveListAdapter sl = (SaveListAdapter) listView.getAdapter();
                     saveItems.remove(lapos);
                     getActivity().runOnUiThread(() -> sl.notifyDataSetChanged());
+                    refresh();
                 })
                 .show();
         return true;
@@ -156,11 +162,14 @@ public class OfflineEditFragment extends BaseFragment {
                 })
                 .show();
     }
-
+    public void refresh()
+    {
+        new FillAdapter().execute(getActivity());
+    }
     @Override
     public void onResume() {
         super.onResume();
-        new FillAdapter().execute(getActivity());
+        refresh();
     }
 
     public class FillAdapter extends AsyncTask<Context, Void, Context> {
@@ -170,8 +179,16 @@ public class OfflineEditFragment extends BaseFragment {
             saveItems.clear();
             List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
             if (listSaveProduct.size() == 0) {
-                Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
+                noDataImage.setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
+                noDataText.setVisibility(View.VISIBLE);
+                buttonSend.setVisibility(View.GONE);
             } else {
+                noDataImage.setVisibility(View.GONE);
+                listView.setVisibility(View.VISIBLE);
+                noDataText.setVisibility(View.GONE);
+                buttonSend.setVisibility(View.VISIBLE);
                 Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG).show();
             }
         }

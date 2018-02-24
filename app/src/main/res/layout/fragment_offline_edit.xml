@@ -10,11 +10,42 @@
         android:layout_above="@+id/buttonSendAll"
         android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/noDataImg"
+                android:layout_width="200dp"
+                android:layout_height="300dp"
+                android:layout_margin="@dimen/padding_large"
+                android:layout_centerHorizontal="true"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_clipboards" />
+
+            <TextView
+                android:id="@+id/noDataText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/noDataImg"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_margin="@dimen/padding_normal"
+                android:text="@string/no_offline_data"
+                android:textColor="@color/grey_500"
+                android:textSize="35sp"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
         <ListView
             android:id="@+id/listOfflineSave"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_normal" />
+            android:layout_margin="@dimen/spacing_normal"
+            android:visibility="gone" />
 
     </LinearLayout>
 
@@ -29,5 +60,6 @@
         android:background="@drawable/rounded_button"
         android:gravity="center"
         android:text="@string/txtSendAll"
+        android:visibility="gone"
         app:drawableLeftCompat="@drawable/ic_done_all" />
 </RelativeLayout>
