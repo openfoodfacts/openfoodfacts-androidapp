@@ -339,8 +339,8 @@
   <string name="history_shortcut_long_label">История</string>
   <string name="contributions_shortcut_short_label">Вклад</string>
   <string name="contributions_shortcut_long_label">Мой вклад</string>
-  <string name="forgot_password">Forgot Password</string>
-  <string name="next">NEXT</string>
-  <string name="skip">SKIP</string>
-  <string name="start">GOT IT</string>
+  <string name="forgot_password">Забыли пароль?</string>
+  <string name="next">ДАЛЕЕ</string>
+  <string name="skip">ПРОПУСТИТЬ</string>
+  <string name="start">ПОНЯТНО</string>
 </resources>
