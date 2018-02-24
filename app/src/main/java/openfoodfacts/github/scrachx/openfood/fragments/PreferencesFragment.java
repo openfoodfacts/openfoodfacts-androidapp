@@ -30,7 +30,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             localeLabels[i] = String.format("%s - %s",
                     // current.getDisplayName(current), // native form
                     WordUtils.capitalize(current.getDisplayName()),
-                    localeValues[i].toUpperCase()
+                    localeValues[i].toUpperCase(Locale.getDefault())
                     );
         }
 
