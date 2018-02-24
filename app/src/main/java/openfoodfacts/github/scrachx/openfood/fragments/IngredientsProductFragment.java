@@ -145,7 +145,7 @@ public class IngredientsProductFragment extends BaseFragment {
 
             for (String tag : product.getAdditivesTags()) {
                 String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "").toUpperCase(Locale.getDefault());
-                String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "").toUpperCase();
+                //String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "").toUpperCase();
                 final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tagWithoutLocale.toUpperCase())).list();
                 additiveProduct.append(getSpanTag(tagWithoutLocale, view));
                 //Display additives list with full name
