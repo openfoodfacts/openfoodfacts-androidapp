@@ -9,6 +9,16 @@ Upcoming:
 - Open Pet Food Facts support. Woof. Woof.
 - You are now properly credited for uploaded images.
 - Cleaner allergen detection settings, and fixed an issue in allergen detection
+- Added onboarding screens
+- A link to reset your password
+- Add option to add a product if there are no search results
+- Add app shortcuts for Nougat
+- Fix for TLS issue on Nougat (tbm)
+- Added confirmation before logging out
+- Message to tell you that only 1 photo is required to add a product (though more are welcome :-)
+- You can now delete items from your scan history. Note that your scan history always stays on your device.
+- More explicit titles thoughout the app
+
 
 0.7.2 & 0.7.3 & 0.7.4 - 
 - Micro-release to fix 4.0 related bugs.
