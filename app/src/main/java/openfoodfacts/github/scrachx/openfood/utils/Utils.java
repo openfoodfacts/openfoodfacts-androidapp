@@ -331,6 +331,7 @@ public class Utils {
                 .build();
         jobDispatcher.schedule(uploadJob);
         isUploadJobInitialised = true;
+    }
 
     public static OkHttpClient HttpClientBuilder() {
         OkHttpClient httpClient;
