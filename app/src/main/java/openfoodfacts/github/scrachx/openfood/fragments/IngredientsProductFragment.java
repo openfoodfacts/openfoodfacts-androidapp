@@ -11,7 +11,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +25,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,12 +46,10 @@ import pl.aprilapps.easyphotopicker.EasyImage;
 import static android.Manifest.permission.CAMERA;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class IngredientsProductFragment extends BaseFragment {
 
@@ -105,7 +103,6 @@ public class IngredientsProductFragment extends BaseFragment {
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_",""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
             int ingredientsListAt = Math.max(0, txtIngredients.toString().indexOf(":"));
-
             if(!txtIngredients.toString().substring(ingredientsListAt).trim().isEmpty()) {
                 ingredientsProduct.setText(txtIngredients);
             } else {
@@ -144,10 +141,19 @@ public class IngredientsProductFragment extends BaseFragment {
             additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
             additiveProduct.append(bold(getString(R.string.txtAdditives)));
             additiveProduct.append(" ");
+            additiveProduct.append("\n");
 
             for (String tag : product.getAdditivesTags()) {
-                String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "").toUpperCase();
+                String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "").toUpperCase(Locale.getDefault());
+                final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tagWithoutLocale.toUpperCase())).list();
                 additiveProduct.append(getSpanTag(tagWithoutLocale, view));
+                //Display additives list with full name
+                if (la.size() >= 1) {
+                    final Additive additive = la.get(0);
+                    additiveProduct.append(" - ");
+                    additiveProduct.append(additive.getName().split(",")[0]);
+                    additiveProduct.append("\n");
+                }
             }
         } else {
             additiveProduct.setVisibility(View.GONE);
@@ -177,21 +183,22 @@ public class IngredientsProductFragment extends BaseFragment {
     private CharSequence getSpanTag(String tag, final View view) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder();
 
-        final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tag.toUpperCase())).list();
+        final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tag.toUpperCase(Locale.getDefault()))).list();
         if (la.size() >= 1) {
             final Additive additive = la.get(0);
-            ClickableSpan clickableSpan = new ClickableSpan() {
+            //disabled popup temporarily
+          /*ClickableSpan clickableSpan = new ClickableSpan() {
                 @Override
                 public void onClick(View v) {
                     new MaterialDialog.Builder(view.getContext())
                             .title(additive.getCode() + " : " + additive.getName())
-                            .content(additive.getRisk().toUpperCase())
+                            .content(additive.getRisk().toUpperCase(Locale.getDefault()))
                             .positiveText(R.string.txtOk)
                             .show();
                 }
-            };
+            };*/
             ssb.append(tag);
-            ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+           // ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
             ssb.append(" ");
         }
         return ssb;
@@ -268,6 +275,7 @@ public class IngredientsProductFragment extends BaseFragment {
 
     private void onPhotoReturned(File photoFile) {
         ProductImage image = new ProductImage(barcode, INGREDIENTS, photoFile);
+        image.setFilePath(photoFile.getAbsolutePath());
         api.postImg(getContext(), image);
         addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();

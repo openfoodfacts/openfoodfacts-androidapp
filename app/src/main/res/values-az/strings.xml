@@ -12,7 +12,7 @@
   <string-array name="nav_drawer_items_product">
     <item>İcmal</item>
     <item>Tərkibi</item>
-    <item>Nutrition</item>
+    <item>Qidalanma</item>
     <item>Nutrition Table</item>
   </string-array>
   <!-- Text units -->
@@ -82,7 +82,7 @@
   </string-array>
   <string-array name="images_array">
     <item>İlkin</item>
-    <item>Nutrition</item>
+    <item>Qidalanma</item>
     <item>Tərkibi</item>
   </string-array>
   <!-- Content Description -->
@@ -339,4 +339,8 @@
   <string name="history_shortcut_long_label">Tarixçə</string>
   <string name="contributions_shortcut_short_label">Contributions</string>
   <string name="contributions_shortcut_long_label">My Contributions</string>
+  <string name="forgot_password">Forgot Password</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
 </resources>

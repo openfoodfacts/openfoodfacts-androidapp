@@ -69,6 +69,7 @@
         </activity>
         <activity
             android:name=".views.LoginActivity"
+            android:label="Sign In"
             android:screenOrientation="portrait"
             android:parentActivityName=".views.MainActivity">
             <meta-data
@@ -88,6 +89,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".views.HistoryScanActivity"
+            android:label="History"
             android:parentActivityName=".views.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
@@ -104,6 +106,20 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.MainActivity" />
         </activity>
+
+        <activity android:name=".views.PrefManager">
+        </activity>
+        <activity android:name=".views.WelcomeActivity">
+        </activity>
+
+        <service android:name=".jobs.SavedProductUploadJob"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+            </intent-filter>
+        </service>
+
+
     </application>
 
 </manifest>

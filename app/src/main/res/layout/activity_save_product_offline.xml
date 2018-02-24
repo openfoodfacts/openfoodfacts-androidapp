@@ -22,7 +22,7 @@
             <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
                 android:id="@+id/barcodeDoubleCheck"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/spacing_normal"
                 android:layout_weight="1"
@@ -31,8 +31,7 @@
                 android:textAlignment="center"
                 android:textIsSelectable="true"
                 android:textSize="@dimen/font_larger"
-                android:textStyle="bold"
-                app:drawableLeftCompat="@drawable/ic_add_a_photo" />
+                android:textStyle="bold" />
 
             <android.support.v7.widget.CardView
                 android:id="@+id/message_container_card_view"
@@ -49,8 +48,7 @@
                     android:layout_gravity="center"
                     android:background="#EEE"
                     android:gravity="center"
-                    android:padding="4dp"
-                   >
+                    android:padding="4dp">
 
                     <ImageView
                         android:id="@+id/message_icon"
@@ -182,7 +180,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_camera_white" />
 
@@ -194,7 +192,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_photo_library" />
                 </LinearLayout>
@@ -240,7 +238,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_camera_white" />
 
@@ -252,7 +250,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_photo_library" />
 
@@ -328,7 +326,7 @@
                 android:layout_height="@dimen/button_height_tall"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/spacing_normal"
-                android:background="@color/blue"
+                android:background="@drawable/rounded_button"
                 android:gravity="center"
                 android:text="@string/txtSave" />
 

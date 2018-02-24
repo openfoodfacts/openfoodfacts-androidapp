@@ -7,6 +7,7 @@
   <string name="contribute">Comment contribuer ?</string>
   <string name="action_find">Chercher</string>
   <string name="text_barcode">Saisissez le code-barre :</string>
+  <string name="message_in_activity_save_product_offline">Une seule photo est obligatoire pour envoyer un nouveau produit.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Résumé</item>
@@ -26,6 +27,59 @@
     <item>fl oz</item>
   </string-array>
   <!-- Text units -->
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-BR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh-CN</item>
+    <item>fa</item>
+    <item>b+sr+Latn</item>
+    <item>af</item>
+    <item>ak</item>
+    <item>am</item>
+    <item>as</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
+    <item>hu</item>
+    <item>tr</item>
+    <item>id</item>
+    <item>tl</item>
+    <item>fil</item>
+    <item>nl-BE</item>
+    <item>bn</item>
+    <item>sl</item>
+    <item>ku</item>
+    <item>eo</item>
+    <item>pl</item>
+    <item>b+sr+Cyrl</item>
+  </string-array>
   <string-array name="images_array">
     <item>Defaut</item>
     <item>Nutrition</item>
@@ -72,7 +126,7 @@
   <string name="txtSalt">Sel</string>
   <string name="txtFat">Matières grasses</string>
   <string name="txtSugars">Sucres</string>
-    <string name="hintBarcode">Code barre</string>
+  <string name="hintBarcode">Code barre</string>
   <string name="hintLogin">Connexion</string>
   <string name="hintPass">Mot de passe</string>
   <string name="errorLogin">Identifiant ou mot de passe incorrect</string>
@@ -118,6 +172,8 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Recherche</string>
   <string name="search_by_barcode_drawer">Rechercher par code-barre</string>
+  <string name="category_drawer">Catégories</string>
+  <string name="search_by_category">Categorie</string>
   <string name="search_by_name_drawer">Rechercher par nom</string>
   <string name="scan_search">Scanner</string>
   <string name="user_drawer">Utilisateur</string>
@@ -203,6 +259,8 @@
   <string name="number_of_results">Nombre de résultats:</string>
   <string name="txt_no_results">Aucun résultat n\'a été trouvé</string>
   <string name="txt_extend_search">Veuillez élargir vos critères de recherche ou ajoutez le produit</string>
+  <string name="txt_no_matching_products">Nous n\'avons trouvé aucun produit correspondant.\nVous pouvez essayer:</string>
+  <string name="txt_broaden_search">- élargir votre recherche\n-le scanner et l\'ajouter à Open Food Facts</string>
   <string name="txt_cant_load_search_results">Impossible de charger les résultats</string>
   <string name="txt_try_again">Veuillez réessayer</string>
   <string name="nutrition_lactose">Lactose</string>
@@ -270,4 +328,19 @@
   <string name="take_picture_front">Prendre une photo de l’avant</string>
   <string name="take_picture_nutrition_table">Prendre une photo du tableau nutritionnel</string>
   <string name="take_more_pictures">Prendre plus de photos</string>
+  <string name="txtSaturatedFat">Graisses saturées</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Raccourci non disponible</string>
+  <string name="scan_shortcut_short_label">Scanner</string>
+  <string name="scan_shortcut_long_label">Scanner un produit</string>
+  <string name="barcode_shortcut_short_label">Rechercher</string>
+  <string name="barcode_shortcut_long_label">Recherche par code-barres</string>
+  <string name="history_shortcut_short_label">Historique</string>
+  <string name="history_shortcut_long_label">Historique</string>
+  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_long_label">Mes contributions</string>
+  <string name="forgot_password">Mot de passe oublié</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
 </resources>

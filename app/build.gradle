@@ -3,7 +3,7 @@ apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.0'
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
@@ -96,7 +96,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 2
+    schemaVersion 3
 }
 
 dependencies {
@@ -130,11 +130,15 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
 
+    //scheduling jobs
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+
     //Serialization/Deserialization
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
     implementation "com.fasterxml.jackson.core:jackson-core:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-databind:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-annotations:$rootProject.jacksonVersion"
+//    compile 'io.rest-assured:json-path:3.0.7'
 
     //CSV Serialization/Deserialization
     implementation "com.opencsv:opencsv:$rootProject.openCsvVersion"
@@ -201,7 +205,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.1'
-    androidTestImplementation('com.android.support.test.espresso:espresso-contrib:2.2.2') {
+    androidTestImplementation('com.android.support.test.espresso:espresso-contrib:3.0.1') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'com.android.support', module: 'design'

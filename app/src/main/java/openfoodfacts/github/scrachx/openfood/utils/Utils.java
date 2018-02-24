@@ -20,6 +20,16 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.firebase.jobdispatcher.Constraint;
+import com.firebase.jobdispatcher.Driver;
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+import com.firebase.jobdispatcher.Job;
+import com.firebase.jobdispatcher.Lifetime;
+import com.firebase.jobdispatcher.Trigger;
+
+import org.greenrobot.greendao.database.Database;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,10 +37,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
+import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static android.text.TextUtils.isEmpty;
@@ -39,6 +53,8 @@ public class Utils {
 
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
+    public static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
+    public static boolean isUploadJobInitialised;
 
     /**
      * Returns a CharSequence that concatenates the specified array of CharSequence
@@ -94,7 +110,8 @@ public class Utils {
     }
 
     public static void hideKeyboard(Activity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity
+                .INPUT_METHOD_SERVICE);
         View view = activity.getCurrentFocus();
         if (view == null) {
             view = new View(activity);
@@ -178,7 +195,8 @@ public class Utils {
         //private boolean isApplicationInstalled(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
         try {
-            // Check if the package name exists, if exception is thrown, package name does not exist.
+            // Check if the package name exists, if exception is thrown, package name does not
+            // exist.
             pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
             return true;
         } catch (PackageManager.NameNotFoundException e) {
@@ -193,7 +211,7 @@ public class Utils {
             return R.drawable.ic_error;
         }
 
-        switch (grade.toLowerCase()) {
+        switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
                 drawable = R.drawable.nnc_a;
                 break;
@@ -219,7 +237,8 @@ public class Utils {
 
     public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
         Drawable drawable = AppCompatResources.getDrawable(context, drawableId);
-        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable
+                .getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
@@ -254,6 +273,21 @@ public class Utils {
         return ((OFFApplication) activity.getApplication()).getDaoSession();
     }
 
+
+    public static DaoSession getDaoSession(Context context) {
+        String nameDB = "";
+        if ((BuildConfig.FLAVOR.equals("off"))) {
+            nameDB = "open_food_facts";
+        } else if ((BuildConfig.FLAVOR.equals("opff"))) {
+            nameDB = "open_pet_food_facts";
+        } else {
+            nameDB = "open_beauty_facts";
+        }
+        DatabaseHelper helper = new DatabaseHelper(context, nameDB);
+        Database db = helper.getWritableDb();
+        return new DaoMaster(db).newSession();
+    }
+
     /**
      * Check if the device has a camera installed.
      *
@@ -269,5 +303,28 @@ public class Utils {
             return false;
         }
         return false;
+    }
+
+    /**
+     * Schedules job to download when network is available
+     */
+
+    synchronized public static void scheduleProductUploadJob(Context context) {
+        if (isUploadJobInitialised) return;
+        final int periodicity = (int) TimeUnit.MINUTES.toSeconds(30);
+        final int toleranceInterval = (int) TimeUnit.MINUTES.toSeconds(5);
+        Driver driver = new GooglePlayDriver(context);
+        FirebaseJobDispatcher jobDispatcher = new FirebaseJobDispatcher(driver);
+        Job uploadJob = jobDispatcher.newJobBuilder()
+                .setService(SavedProductUploadJob.class)
+                .setTag(UPLOAD_JOB_TAG)
+                .setConstraints(Constraint.ON_UNMETERED_NETWORK)
+                .setLifetime(Lifetime.FOREVER)
+                .setRecurring(false)
+                .setTrigger(Trigger.executionWindow(periodicity, periodicity + toleranceInterval))
+                .setReplaceCurrent(false)
+                .build();
+        jobDispatcher.schedule(uploadJob);
+        isUploadJobInitialised = true;
     }
 }
