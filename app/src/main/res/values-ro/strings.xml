@@ -131,6 +131,7 @@
   <string name="hintPass">Parolă</string>
   <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>
   <string name="errorWeb">Conectarea la internet nu e posibilă. Aveți probleme cu conexiunea la internet?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Utilizator salvat</string>
   <string name="txtInfoLoginNo">Utilizatorul nu a fost salvat.</string>
   <string name="txtDialogsTitle">Informaţii</string>
