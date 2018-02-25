@@ -272,24 +272,24 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             myContributions();
                             break;
                         case LOGOUT:
-                             new MaterialDialog.Builder(MainActivity.this)
-        .title("Confirm Logout")
-        .content("Are you sure to log out ?")
-        .positiveText(R.string.txtOk)
-        .negativeText("Cancel")
-        .onPositive(new MaterialDialog.SingleButtonCallback() {
-            @Override
-            public void onClick(MaterialDialog dialog, DialogAction which) {
-                logout();
-            }
-        })
-        .onNegative(new MaterialDialog.SingleButtonCallback() {
-            @Override
-            public void onClick(MaterialDialog dialog, DialogAction which) {
-                Toast.makeText(getApplicationContext(),"Cancelled",
-                        Toast.LENGTH_SHORT).show();
-            }
-        }).show();
+                            new MaterialDialog.Builder(MainActivity.this)
+                                    .title("Confirm Logout")
+                                    .content("Are you sure to log out ?")
+                                    .positiveText(R.string.txtOk)
+                                    .negativeText("Cancel")
+                                    .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                        @Override
+                                        public void onClick(MaterialDialog dialog, DialogAction which) {
+                                            logout();
+                                        }
+                                    })
+                                    .onNegative(new MaterialDialog.SingleButtonCallback() {
+                                        @Override
+                                        public void onClick(MaterialDialog dialog, DialogAction which) {
+                                            Toast.makeText(getApplicationContext(), "Cancelled",
+                                                    Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).show();
                             break;
                         default:
                             // nothing to do
@@ -415,7 +415,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     .title(R.string.contribute)
                     .content(R.string.contribution_without_account)
                     .positiveText(R.string.create_account_button)
-                    .negativeText(R.string.cancel_button)
                     .neutralText(R.string.login_button)
                     .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R.string.website) + "cgi/user.pl"), new WebViewFallback()))
                     .onNeutral((dialog, which) -> startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LOGIN_REQUEST))

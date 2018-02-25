@@ -5,14 +5,10 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 
 public class PrefManager extends AppCompatActivity {
+
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     Context _context;
-
-   public PrefManager()
-    {
-
-    }
 
     int PRIVATE_MODE = 0;
 
