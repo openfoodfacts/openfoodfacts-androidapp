@@ -131,6 +131,7 @@
   <string name="hintPass">Contrasenya</string>
   <string name="errorLogin">Usuari o contrasenya errònia</string>
   <string name="errorWeb">No s\'ha pogut connectar a l\'Internet. Té problemes amb la connexió?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Usuari desat</string>
   <string name="txtInfoLoginNo">Usuari no desat</string>
   <string name="txtDialogsTitle">Informació</string>
