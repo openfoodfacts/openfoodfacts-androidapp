@@ -131,6 +131,7 @@
   <string name="hintPass">পাসওয়ার্ড</string>
   <string name="errorLogin">লগইন বা পাসওয়ার্ড ত্রুটি</string>
   <string name="errorWeb">আমরা ইন্টারনেট সংযোগ করতে পারিনি। আপনার সংযোগে কি কোন সমস্যা আছে?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">ব্যবহারকারি সংরক্ষিত হয়েছে</string>
   <string name="txtInfoLoginNo">ব্যবহারকারী সংরক্ষিত না</string>
   <string name="txtDialogsTitle">তথ্য</string>
