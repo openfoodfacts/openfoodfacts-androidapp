@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.preference.PreferenceManager;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.firebase.jobdispatcher.JobParameters;
 import com.squareup.picasso.Picasso;
 
 import net.steamcrafted.loadtoast.LoadToast;
@@ -22,6 +23,7 @@ import net.steamcrafted.loadtoast.LoadToast;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -34,8 +36,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
 import openfoodfacts.github.scrachx.openfood.models.AllergenRestResponse;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -43,6 +47,8 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
+import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
@@ -63,11 +69,13 @@ public class OpenFoodAPIClient {
 
     private AllergenDao mAllergenDao;
     private HistoryProductDao mHistoryProductDao;
-
+    private ToUploadProductDao mToUploadProductDao;
+    private OfflineUploadingTask task = new OfflineUploadingTask();
     private static final JacksonConverterFactory jacksonConverterFactory = JacksonConverterFactory.create();
-
+    private DaoSession daoSession;
 
     private static OkHttpClient httpClient = Utils.HttpClientBuilder();
+
 
     private final OpenFoodAPIService apiService;
 
@@ -75,6 +83,14 @@ public class OpenFoodAPIClient {
         this(BuildConfig.HOST);
         mAllergenDao = Utils.getAppDaoSession(activity).getAllergenDao();
         mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
+        mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
+    }
+
+    //used to upload in background
+    public OpenFoodAPIClient(Context context) {
+        this(BuildConfig.HOST);
+        daoSession = Utils.getDaoSession(context);
+        mToUploadProductDao = daoSession.getToUploadProductDao();
     }
 
     private OpenFoodAPIClient(String apiUrl) {
@@ -301,7 +317,8 @@ public class OpenFoodAPIClient {
         lt.setTextColor(activity.getResources().getColor(R.color.white));
         lt.show();
 
-        apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+        apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product
+                .getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
             @Override
             public void onResponse(Call<State> call, Response<State> response) {
                 if (!response.isSuccessful() || response.body().getStatus() == 0) {
@@ -345,37 +362,21 @@ public class OpenFoodAPIClient {
         lt.setTextColor(context.getResources().getColor(R.color.white));
         lt.show();
 
-        String lang = Locale.getDefault().getLanguage();
-
-        Map<String, RequestBody> imgMap = new HashMap<>();
-        imgMap.put("code", image.getCode());
-        imgMap.put("imagefield", image.getField());
-        imgMap.put("imgupload_front\"; filename=\"front_" + lang + ".png\"", image.getImguploadFront());
-        imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + lang + ".png\"", image.getImguploadIngredients());
-        imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + lang + ".png\"", image.getImguploadNutrition());
-        imgMap.put("imgupload_other\"; filename=\"other_" + lang + ".png\"", image.getImguploadOther());
-
-        // Attribute the upload to the connected user
-        final SharedPreferences settings = context.getSharedPreferences("login", 0);
-        final String login = settings.getString("user", "");
-        final String password = settings.getString("pass", "");
-
-        if (!login.isEmpty() && !password.isEmpty()) {
-            imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
-            imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
-        }
-
-        apiService.saveImage(imgMap)
+        apiService.saveImage(getUploadableMap(image, context))
                 .enqueue(new Callback<JsonNode>() {
                     @Override
                     public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
+                        Log.d("onResponse", response.toString());
                         if (!response.isSuccessful()) {
-                            Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
+                            ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
+                            mToUploadProductDao.insertOrReplace(product);
+                            Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
                             lt.error();
                             return;
                         }
 
                         JsonNode body = response.body();
+                        Log.d("onResponse", body.toString());
                         if (body == null || !body.isObject()) {
                             lt.error();
                         } else if (body.get("status").asText().contains("status not ok")) {
@@ -388,10 +389,40 @@ public class OpenFoodAPIClient {
 
                     @Override
                     public void onFailure(Call<JsonNode> call, Throwable t) {
-                        Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
+                        Log.d("onResponse", t.toString());
+                        ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
+                        mToUploadProductDao.insertOrReplace(product);
+                        Toast.makeText(context, context.getString(R.string.uploadLater), Toast.LENGTH_LONG).show();
                         lt.error();
                     }
                 });
+    }
+
+    private Map<String, RequestBody> getUploadableMap(ProductImage image, Context context) {
+        String lang = Locale.getDefault().getLanguage();
+
+        Map<String, RequestBody> imgMap = new HashMap<>();
+        imgMap.put("code", image.getCode());
+        imgMap.put("imagefield", image.getField());
+        if (image.getImguploadFront() != null)
+            imgMap.put("imgupload_front\"; filename=\"front_" + lang + ".png\"", image.getImguploadFront());
+        if (image.getImguploadIngredients() != null)
+            imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + lang + ".png\"", image.getImguploadIngredients());
+        if (image.getImguploadNutrition() != null)
+            imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + lang + ".png\"", image.getImguploadNutrition());
+        if (image.getImguploadOther() != null)
+            imgMap.put("imgupload_other\"; filename=\"other_" + lang + ".png\"", image.getImguploadOther());
+
+        // Attribute the upload to the connected user
+        final SharedPreferences settings = context.getSharedPreferences("login", 0);
+        final String login = settings.getString("user", "");
+        final String password = settings.getString("pass", "");
+
+        if (!login.isEmpty() && !password.isEmpty()) {
+            imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
+            imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
+        }
+        return imgMap;
     }
 
     public interface OnProductsCallback {
@@ -417,7 +448,8 @@ public class OpenFoodAPIClient {
         protected Void doInBackground(Product... products) {
             Product product = products[0];
 
-            List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode())).list();
+            List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode
+                    ())).list();
             HistoryProduct hp;
             if (historyProducts.size() == 1) {
                 hp = historyProducts.get(0);
@@ -428,6 +460,77 @@ public class OpenFoodAPIClient {
             mHistoryProductDao.insertOrReplace(hp);
 
             return null;
+        }
+    }
+
+    public void uploadOfflineImages(Context context, boolean cancel, JobParameters job, SavedProductUploadJob service) {
+        if (!cancel) {
+            Toast.makeText(context, "called function", Toast.LENGTH_SHORT).show();
+            task.job = job;
+            task.service = new WeakReference<SavedProductUploadJob>(service);
+            task.execute(context);
+        } else {
+            task.cancel(true);
+        }
+    }
+
+    public class OfflineUploadingTask extends AsyncTask<Context, Void, Void> {
+        JobParameters job;
+        WeakReference<SavedProductUploadJob> service;
+
+        @Override
+        protected Void doInBackground(Context... context) {
+            List<ToUploadProduct> toUploadProductList = mToUploadProductDao.queryBuilder().where(ToUploadProductDao.Properties.Uploaded.eq(false)
+            ).list();
+            int totalSize = toUploadProductList.size();
+            for (int i = 0; i < totalSize; i++) {
+                ToUploadProduct uploadProduct = toUploadProductList.get(i);
+                File imageFile;
+                try {
+                    imageFile = new File(uploadProduct.getImageFilePath());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    continue;
+                }
+                ProductImage productImage = new ProductImage(uploadProduct.getBarcode(),
+                        uploadProduct.getProductField(), imageFile);
+
+                apiService.saveImage(getUploadableMap(productImage, context[0]))
+                        .enqueue(new Callback<JsonNode>() {
+                            @Override
+                            public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
+                                if (!response.isSuccessful()) {
+                                    Toast.makeText(context[0], response.toString(), Toast.LENGTH_LONG).show();
+                                    return;
+                                }
+
+                                JsonNode body = response.body();
+                                Log.d("onResponse", body.toString());
+                                if (body == null || !body.isObject()) {
+
+                                } else if (body.get("status").asText().contains("status not ok")) {
+                                    mToUploadProductDao.delete(uploadProduct);
+                                } else {
+                                    mToUploadProductDao.delete(uploadProduct);
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<JsonNode> call, Throwable t) {
+
+                            }
+                        });
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Log.d("serviceValue", service.get().toString());
+            service.get().jobFinished(job, false);
+
         }
     }
 }

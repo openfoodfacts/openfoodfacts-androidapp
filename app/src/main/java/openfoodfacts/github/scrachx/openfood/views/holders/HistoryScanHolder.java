@@ -17,6 +17,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 
 public class HistoryScanHolder extends RecyclerView.ViewHolder {
 
+    public TextView txtDate;
     public TextView txtTitle;
     public TextView txtBarcode;
     public TextView txtBrands;
@@ -31,6 +32,7 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
         txtBrands = (TextView) itemView.findViewById(R.id.brandsHistory);
         imgProduct = (ImageView) itemView.findViewById(R.id.imgHistoryProduct);
         imgShare = (ImageButton) itemView.findViewById(R.id.iconShareHistory);
+        txtDate = (TextView) itemView.findViewById(R.id.dateView);
         mActivity = activity;
 
         imgShare.setOnClickListener(view -> {
