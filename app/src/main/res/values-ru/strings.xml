@@ -343,4 +343,9 @@
   <string name="next">ДАЛЕЕ</string>
   <string name="skip">ПРОПУСТИТЬ</string>
   <string name="start">ПОНЯТНО</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
 </resources>
