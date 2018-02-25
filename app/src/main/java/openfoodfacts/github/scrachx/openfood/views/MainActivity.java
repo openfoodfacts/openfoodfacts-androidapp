@@ -174,6 +174,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ABOUT),
                         new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(CONTRIBUTE),
                         new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(11)
+
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
 
@@ -234,6 +235,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                 }
                             }
                             break;
+
                         case CONTRIBUTOR:
                             myContributions();
                             break;
