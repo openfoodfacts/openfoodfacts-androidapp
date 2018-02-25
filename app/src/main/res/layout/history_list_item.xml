@@ -62,11 +62,36 @@
         android:layout_toLeftOf="@+id/iconShareHistory"
         android:layout_toRightOf="@id/imgHistoryProduct"
         android:layout_toStartOf="@+id/iconShareHistory"
+        android:drawableLeft="@drawable/barcode_grey_24dp"
+        android:drawablePadding="2dp"
+        android:drawableStart="@drawable/barcode_grey_24dp"
         android:gravity="center_vertical"
         android:paddingEnd="40dp"
         android:paddingRight="40dp"
         android:paddingStart="40dp"
         android:textSize="@dimen/font_normal" />
+
+
+    <TextView
+        android:id="@+id/dateView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@id/barcodeHistory"
+        android:layout_alignStart="@id/barcodeHistory"
+        android:layout_below="@id/barcodeHistory"
+        android:layout_toEndOf="@id/imgHistoryProduct"
+        android:layout_toLeftOf="@+id/iconShareHistory"
+        android:layout_toRightOf="@id/imgHistoryProduct"
+        android:layout_toStartOf="@+id/iconShareHistory"
+        android:drawableLeft="@drawable/ic_history_grey_24dp"
+        android:drawablePadding="2dp"
+        android:drawableStart="@drawable/ic_history_grey_24dp"
+        android:gravity="center_vertical"
+        android:paddingEnd="40dp"
+        android:paddingRight="40dp"
+        android:paddingStart="40dp"
+        android:textSize="@dimen/font_normal" />
+
 
     <ImageButton
         android:id="@+id/iconShareHistory"
@@ -79,8 +104,8 @@
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
         android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
         app:srcCompat="@drawable/ic_share_black_48px" />
 
 </RelativeLayout>
