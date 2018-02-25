@@ -2,12 +2,16 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
@@ -40,6 +44,12 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         holder.txtBarcode.setText(list.get(position).getBarcode());
         holder.txtBrands.setText(list.get(position).getBrands());
         holder.imgProduct.setImageBitmap(list.get(position).getUrl());
+
+        Date date = list.get(position).getTime();
+
+        long time = date.getTime();
+        String timeStamp = (String)DateUtils.getRelativeTimeSpanString(time);
+        holder.txtDate.setText(timeStamp);
 
         //animate(holder);
     }
