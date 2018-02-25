@@ -131,6 +131,7 @@
   <string name="hintPass">Hasło</string>
   <string name="errorLogin">Błędny login lub hasło</string>
   <string name="errorWeb">Brak dostępu do Internetu. Czy masz problemy z łącznością?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Zapisano użytkownika</string>
   <string name="txtInfoLoginNo">Nie zapisano użytkownika</string>
   <string name="txtDialogsTitle">Informacja</string>
