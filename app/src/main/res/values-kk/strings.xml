@@ -131,6 +131,7 @@
   <string name="hintPass">Құпиясөз</string>
   <string name="errorLogin">Аты немесе құпиясөзі қате</string>
   <string name="errorWeb">Біз Ғаламторға қол жеткізе алдмадық. Сізде қосылу жағынан қиындық бар ма?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Пайдаланушы сақталған</string>
   <string name="txtInfoLoginNo">Пайдаланушы сақталмаған</string>
   <string name="txtDialogsTitle">Ақпарат</string>
