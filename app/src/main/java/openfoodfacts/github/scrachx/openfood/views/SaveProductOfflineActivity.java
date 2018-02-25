@@ -220,6 +220,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
     protected void onSaveProduct() {
         Utils.hideKeyboard(this);
 
+        save.setEnabled(false);
+
         if (isBlank(mProduct.getImgupload_front())) {
             Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
             return;
