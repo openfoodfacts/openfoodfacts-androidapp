@@ -103,6 +103,7 @@
   <string name="txtManufacturing">Lieux de fabrication ou de transformation :</string>
   <string name="txtIngredientsOrigins">Origine des ingrédients :</string>
   <string name="txtCity">Ville, état et pays d\'achat :</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Magasins :</string>
   <string name="txtCountries">Pays de vente :</string>
   <string name="txtIngredients">Liste des ingrédients :</string>
