@@ -18,4 +18,9 @@
         android:summary="@string/prefs_language_summary"
         android:title="@string/prefs_language" />
 
+    <Preference
+        android:title="@string/contact"
+        android:key="@string/contact_key"
+        android:summary="@string/contact_summary"/>
+
 </PreferenceScreen>
