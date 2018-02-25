@@ -118,7 +118,7 @@
   <string name="txtNutritionLevelHigh">i høj mængde</string>
   <string name="txtLogin">Brugernavn :</string>
   <string name="txtPass">Adgangskode :</string>
-  <string name="txtTitleHome">Åbn din mad og ved hvad du spiser</string>
+  <string name="txtTitleHome">Åbn din mad, for at vide hvad du spiser</string>
   <string name="txtSave">Gem</string>
   <string name="txtSignIn">Log ind</string>
   <string name="txtUser">Brugerpanel</string>
@@ -130,7 +130,7 @@
   <string name="hintLogin">Brugernavn</string>
   <string name="hintPass">Adgangskode</string>
   <string name="errorLogin">Brugernavn eller adgangskode-fejl</string>
-  <string name="errorWeb">Vi kunne ikke få adgang til internettet. Har du problemer med tilslutning?</string>
+  <string name="errorWeb">Vi kunne ikke få adgang til internettet. Har du problemer med forbindelsen?</string>
   <string name="txtInfoLoginOk">Bruger gemt</string>
   <string name="txtInfoLoginNo">Bruger ikke gemt</string>
   <string name="txtDialogsTitle">Information</string>
@@ -154,7 +154,7 @@
   <string name="txtInfoAddUser">Indtast venligst dit brugernavn og adgangskode</string>
   <string name="txtDataUpdated">Data opdateret</string>
   <string name="txtLoading">Indlæser...</string>
-  <string name="txtDialogsContentDelete">Vil du slette dette udkast?</string>
+  <string name="txtDialogsContentDelete">Vil du slette denne kladde?</string>
   <string name="txtDialogsContentInfoSave">Produktet er gemt lokalt på denne enhed, du kan redigere det i menuen \"Offline-redigering\"</string>
   <string name="txtBarcodeRequire">Stregkode påkrævet</string>
   <string name="txtOk">OK</string>
@@ -237,7 +237,7 @@
   <string name="nutrition_salt">Salt</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Modificeret fedt</string>
-  <string name="nutrition_satured_fat_short_name">Modificeret fedt (g)</string>
+  <string name="nutrition_satured_fat_short_name">Mættet fedt (g)</string>
   <string name="nutrition_serving">Per portion</string>
   <string name="nutrition_serving_size">Portionsstørrelse :</string>
   <string name="nutrition_sodium">Natrium</string>
@@ -252,7 +252,7 @@
   <string name="logout_drawer">Log ud</string>
   <string name="contribution_without_account">Du kan logge ind eller oprette en konto for at gemme bidrag</string>
   <string name="textCarbonFootprint">"CO2-regnskab / emissioner: "</string>
-  <string name="txtDialogPowerMode">Hurtig visning</string>
+  <string name="txtDialogPowerMode">Hurtigvisning</string>
   <string name="txtSeeMore">Se mere</string>
   <string name="action_search">Søg</string>
   <string name="search_hint">Søg efter produkt</string>
@@ -343,4 +343,9 @@
   <string name="next">NÆSTE</string>
   <string name="skip">SPRING OVER</string>
   <string name="start">FORSTÅET</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
 </resources>
