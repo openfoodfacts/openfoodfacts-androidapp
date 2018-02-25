@@ -131,6 +131,7 @@
   <string name="hintPass">စကားဝွက္</string>
   <string name="errorLogin">ဝင္ေရာက္မႈ သို႔မဟုတ္ စကားဝွက္ခ်ိဳ႕ယြင္းခ်က္</string>
   <string name="errorWeb">ကၽြႏ္ုပ္တို႔မွ အင္တာနက္ႏွင့္မခ်ိတ္ဆက္ႏိုင္ဘူးျဖစ္ေနသည္။ သင့္တြင္ ခ်ိတ္ဆက္မႈခ်ိဳ႕ယြင္းေနပါသလား။</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">အသံုးျပဳသူသိမ္းခဲ့ျပီးျပီ</string>
   <string name="txtInfoLoginNo">အသံုးျပဳသူကိုမသိမ္းခဲ့ပါ</string>
   <string name="txtDialogsTitle">အခ်က္အလက္</string>
