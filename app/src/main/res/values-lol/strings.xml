@@ -103,6 +103,7 @@
   <string name="txtManufacturing">crwdns35060:0crwdne35060:0</string>
   <string name="txtIngredientsOrigins">crwdns35061:0crwdne35061:0</string>
   <string name="txtCity">crwdns35062:0crwdne35062:0</string>
+  <string name="txtManufactureUrl">crwdns37176:0crwdne37176:0</string>
   <string name="txtStores">crwdns35063:0crwdne35063:0</string>
   <string name="txtCountries">crwdns35064:0crwdne35064:0</string>
   <string name="txtIngredients">crwdns35065:0crwdne35065:0</string>
