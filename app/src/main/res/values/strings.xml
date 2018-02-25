@@ -375,4 +375,6 @@
     <string name="contact_summary">Contact the team</string>
     <string name="off_mail">mailto:contact@openfoodfacts.org</string>
     <string name="email_not_found">No email applications found</string>
+
+    <string name="saving">saving</string>
 </resources>

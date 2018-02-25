@@ -221,9 +221,12 @@ public class SaveProductOfflineActivity extends BaseActivity {
         Utils.hideKeyboard(this);
 
         save.setEnabled(false);
+        save.setText(getString(R.string.saving));
 
         if (isBlank(mProduct.getImgupload_front())) {
             Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
+            save.setEnabled(true);
+            save.setText(getString(R.string.txtSave));
             return;
         }
 
