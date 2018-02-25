@@ -103,6 +103,7 @@
   <string name="txtManufacturing">Locuri de fabricare sau procesare:</string>
   <string name="txtIngredientsOrigins">Originea ingredientelor</string>
   <string name="txtCity">Oraș și țara unde produsul a fost cumpărat:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Magazine:</string>
   <string name="txtCountries">Țări unde produsul este comercializat:</string>
   <string name="txtIngredients">Ingrediente:</string>
