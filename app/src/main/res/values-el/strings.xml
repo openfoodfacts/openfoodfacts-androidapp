@@ -131,6 +131,7 @@
   <string name="hintPass">Κωδικός χρήστη</string>
   <string name="errorLogin">Σφάλμα σύνδεσης ή κωδικού πρόσβασης</string>
   <string name="errorWeb">Δεν μπορέσαμε να αποκτήσουμε πρόσβαση στο διαδίκτυο. Έχετε προβλήματα συνδεσιμότητας;</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">User saved</string>
   <string name="txtInfoLoginNo">Ο χρήστης δεν είναι αποθηκευμένος</string>
   <string name="txtDialogsTitle">Πληροφορίες</string>
