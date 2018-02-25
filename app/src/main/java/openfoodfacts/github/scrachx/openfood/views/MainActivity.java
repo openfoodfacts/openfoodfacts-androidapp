@@ -24,6 +24,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -41,8 +42,6 @@ import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-import android.support.v7.app.AlertDialog;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -175,6 +174,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ABOUT),
                         new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(CONTRIBUTE),
                         new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(11)
+
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
 
@@ -235,28 +235,29 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                 }
                             }
                             break;
+
                         case CONTRIBUTOR:
                             myContributions();
                             break;
                         case LOGOUT:
-                             new MaterialDialog.Builder(MainActivity.this)
-        .title("Confirm Logout")
-        .content("Are you sure to log out ?")
-        .positiveText(R.string.txtOk)
-        .negativeText("Cancel")
-        .onPositive(new MaterialDialog.SingleButtonCallback() {
-            @Override
-            public void onClick(MaterialDialog dialog, DialogAction which) {
-                logout();
-            }
-        })
-        .onNegative(new MaterialDialog.SingleButtonCallback() {
-            @Override
-            public void onClick(MaterialDialog dialog, DialogAction which) {
-                Toast.makeText(getApplicationContext(),"Cancelled",
-                        Toast.LENGTH_SHORT).show();
-            }
-        }).show();
+                            new MaterialDialog.Builder(MainActivity.this)
+                                    .title("Confirm Logout")
+                                    .content("Are you sure to log out ?")
+                                    .positiveText(R.string.txtOk)
+                                    .negativeText("Cancel")
+                                    .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                        @Override
+                                        public void onClick(MaterialDialog dialog, DialogAction which) {
+                                            logout();
+                                        }
+                                    })
+                                    .onNegative(new MaterialDialog.SingleButtonCallback() {
+                                        @Override
+                                        public void onClick(MaterialDialog dialog, DialogAction which) {
+                                            Toast.makeText(getApplicationContext(), "Cancelled",
+                                                    Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).show();
                             break;
                         default:
                             // nothing to do

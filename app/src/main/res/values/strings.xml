@@ -369,4 +369,9 @@
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
+    <string name="contact">Contact</string>
+    <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+    <string name="email_not_found">No email applications found</string>
+    <string name="contact_button">contact_button</string>
+    <string name="contact_summary">Contact the team</string>
 </resources>
