@@ -131,6 +131,7 @@
   <string name="hintPass">密码</string>
   <string name="errorLogin">登录或者密码错误</string>
   <string name="errorWeb">我们无法访问互联网，请问是否有连接问题</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">用户已保存</string>
   <string name="txtInfoLoginNo">用户没有保存</string>
   <string name="txtDialogsTitle">信息</string>
