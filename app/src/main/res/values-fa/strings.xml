@@ -131,6 +131,7 @@
   <string name="hintPass">گذرواژه</string>
   <string name="errorLogin">خطا در ورود به سیستم یا رمز عبور</string>
   <string name="errorWeb">ما قادر به دسترسی به اینترنت نیستیم. دسترسی به اینترنت دارید؟</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">کاربر ذخیره شد</string>
   <string name="txtInfoLoginNo">کاربر ذخیره نشد</string>
   <string name="txtDialogsTitle">اطلاعات</string>
