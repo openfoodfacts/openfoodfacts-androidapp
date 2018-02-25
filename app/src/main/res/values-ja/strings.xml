@@ -131,6 +131,7 @@
   <string name="hintPass">パスワード</string>
   <string name="errorLogin">ログインまたはパスワードエラー</string>
   <string name="errorWeb">インターネットにアクセスできませんでした。接続に問題がありませんか?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">ユーザーを保存しました</string>
   <string name="txtInfoLoginNo">ユーザーを保存できませんでした</string>
   <string name="txtDialogsTitle">情報</string>
