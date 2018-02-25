@@ -131,6 +131,7 @@
   <string name="hintPass">Password</string>
   <string name="errorLogin">Error sa login o password</string>
   <string name="errorWeb">Hindi namin ma-access ang internet. Mayroon ka bang mga isyu sa pagkakakonekta?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Na-save ang user</string>
   <string name="txtInfoLoginNo">Hindi nai-save ang user</string>
   <string name="txtDialogsTitle">Impormasyon</string>
