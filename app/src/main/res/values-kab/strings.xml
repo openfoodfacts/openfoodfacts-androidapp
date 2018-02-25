@@ -132,6 +132,7 @@
   <string name="hintPass">Tasarut</string>
   <string name="errorLogin">Tɣelṭeḍ deg tuqqna neɣ deg tsarut</string>
   <string name="errorWeb">Ur nezmir ara ad nekcem ar Internet. Tesɛiḍ uguren deg tuqqna? </string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Yettwasekles umseqdec</string>
   <string name="txtInfoLoginNo">Ur yettwasekles ara umseqdec</string>
   <string name="txtDialogsTitle">Talɣut</string>
