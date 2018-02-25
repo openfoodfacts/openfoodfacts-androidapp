@@ -350,4 +350,13 @@
   <string name="contact_summary">crwdns37172:0crwdne37172:0</string>
   <string name="off_mail">crwdns37173:0crwdne37173:0</string>
   <string name="email_not_found">crwdns37174:0crwdne37174:0</string>
+  <string name="airplane_mode_active_dialog_title">crwdns37177:0crwdne37177:0</string>
+  <string name="airplane_mode_active_dialog_message">crwdns37178:0crwdne37178:0</string>
+  <string name="airplane_mode_active_dialog_negative">crwdns37179:0crwdne37179:0</string>
+  <string name="airplane_mode_active_dialog_positive">crwdns37180:0crwdne37180:0</string>
+  <string name="device_offline_dialog_title">crwdns37181:0crwdne37181:0</string>
+  <string name="device_offline_dialog_message">crwdns37182:0crwdne37182:0</string>
+  <string name="device_offline_dialog_negative">crwdns37183:0crwdne37183:0</string>
+  <string name="device_offline_dialog_positive">crwdns37184:0crwdne37184:0</string>
+  <string name="saving">crwdns37185:0crwdne37185:0</string>
 </resources>
