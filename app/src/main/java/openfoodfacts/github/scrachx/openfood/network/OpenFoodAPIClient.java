@@ -27,7 +27,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import okhttp3.MediaType;
@@ -59,7 +58,6 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.ING
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
-
 public class OpenFoodAPIClient {
 
     private AllergenDao mAllergenDao;
@@ -67,11 +65,8 @@ public class OpenFoodAPIClient {
 
     private static final JacksonConverterFactory jacksonConverterFactory = JacksonConverterFactory.create();
 
-    private final static OkHttpClient httpClient = new OkHttpClient.Builder()
-            .connectTimeout(5000, TimeUnit.MILLISECONDS)
-            .readTimeout(30000, TimeUnit.MILLISECONDS)
-            .writeTimeout(30000, TimeUnit.MILLISECONDS)
-            .build();
+
+    private static OkHttpClient httpClient = Utils.HttpClientBuilder();
 
     private final OpenFoodAPIService apiService;
 
@@ -82,6 +77,7 @@ public class OpenFoodAPIClient {
     }
 
     private OpenFoodAPIClient(String apiUrl) {
+
         apiService = new Retrofit.Builder()
                 .baseUrl(apiUrl)
                 .client(httpClient)
@@ -274,7 +270,6 @@ public class OpenFoodAPIClient {
 
                 Search s = response.body();
                 if(Integer.valueOf(s.getCount()) == 0){
-                    Toast.makeText(activity, R.string.txt_product_not_found, Toast.LENGTH_LONG).show();
                     productsCallback.onProductsResponse(false, null, -2);
                 }else{
                     productsCallback.onProductsResponse(true, s.getProducts(), Integer.parseInt(s.getCount()));
@@ -304,7 +299,7 @@ public class OpenFoodAPIClient {
 
             @Override
             public void onFailure(Call<AllergenRestResponse> call, Throwable t) {
-
+                onAllergensCallback.onAllergensResponse(false);
             }
         });
     }

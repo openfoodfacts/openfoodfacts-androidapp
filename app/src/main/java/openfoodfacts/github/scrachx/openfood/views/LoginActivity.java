@@ -85,6 +85,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         apiClient = new Retrofit.Builder()
                 .baseUrl(BuildConfig.HOST)
+                .client(Utils.HttpClientBuilder())
                 .build()
                 .create(OpenFoodAPIService.class);
     }
@@ -173,6 +174,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                 Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
                 Utils.hideKeyboard(context);
+                t.printStackTrace();
             }
         });
 

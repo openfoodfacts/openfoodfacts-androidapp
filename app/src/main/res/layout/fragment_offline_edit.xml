@@ -27,7 +27,9 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/spacing_normal"
         android:background="@drawable/rounded_button"
-        android:gravity="center"
         android:text="@string/txtSendAll"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        android:textSize="16sp"
         app:drawableLeftCompat="@drawable/ic_done_all" />
 </RelativeLayout>
