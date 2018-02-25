@@ -103,6 +103,7 @@
   <string name="txtManufacturing">Места производства или переработки:</string>
   <string name="txtIngredientsOrigins">Происхождение ингредиентов:</string>
   <string name="txtCity">Город, область и страна покупки:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Магазины:</string>
   <string name="txtCountries">Страны продажи:</string>
   <string name="txtIngredients">Список ингредиентов:</string>
