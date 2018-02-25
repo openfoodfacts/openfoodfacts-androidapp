@@ -131,6 +131,7 @@
   <string name="hintPass">Lozinka</string>
   <string name="errorLogin">Korisničko ime ili lozinka greška</string>
   <string name="errorWeb">Nismo uspeli da se povežemo na internet. Da li imate problema sa konekcijom?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Korisničko ime sačuvano</string>
   <string name="txtInfoLoginNo">Korisničko ime nije sačuvano</string>
   <string name="txtDialogsTitle">Informacija</string>
