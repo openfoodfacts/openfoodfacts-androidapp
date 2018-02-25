@@ -103,6 +103,7 @@
   <string name="txtManufacturing">Արտադրության կամ մշակման վայրերը՝</string>
   <string name="txtIngredientsOrigins">Origin of ingredients :</string>
   <string name="txtCity">Ձեռք բերման քաղաքը, նահանգը և երկիրը՝</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Խանութներ՝</string>
   <string name="txtCountries">Վաճառման երկիրներ՝</string>
   <string name="txtIngredients">Բաղադրամասեր՝</string>
