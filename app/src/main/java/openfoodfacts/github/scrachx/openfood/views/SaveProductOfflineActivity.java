@@ -125,6 +125,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
         api = new OpenFoodAPIClient(this);
         mBarcode = getIntent().getStringExtra("barcode");
+        barcodeText.append(" " + mBarcode);
 
         imgSaveFront.setVisibility(View.GONE);
         imgSaveIngredients.setVisibility(View.GONE);
@@ -143,7 +144,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
             if (isNotEmpty(mProduct.getImgupload_front())) {
                 imgSaveFront.setVisibility(View.VISIBLE);
                 Picasso.with(this)
-                        .load(mProduct.getImgupload_front())
+                        .load(new File(mProduct.getImgupload_front()))
                         .fit()
                         .centerCrop()
                         .into(imgSaveFront);
@@ -173,7 +174,6 @@ public class SaveProductOfflineActivity extends BaseActivity {
         } else {
             mProduct = new SendProduct();
             mProduct.setBarcode(mBarcode);
-            barcodeText.setText(barcodeText.getText() + " " + mBarcode);
         }
 
         mProduct.setLang(Locale.getDefault().getLanguage());
