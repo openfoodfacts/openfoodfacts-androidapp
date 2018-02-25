@@ -343,4 +343,9 @@
   <string name="next">crwdns37143:0crwdne37143:0</string>
   <string name="skip">crwdns37144:0crwdne37144:0</string>
   <string name="start">crwdns37145:0crwdne37145:0</string>
+  <string name="contact">crwdns37170:0crwdne37170:0</string>
+  <string name="contact_key">crwdns37171:0crwdne37171:0</string>
+  <string name="contact_summary">crwdns37172:0crwdne37172:0</string>
+  <string name="off_mail">crwdns37173:0crwdne37173:0</string>
+  <string name="email_not_found">crwdns37174:0crwdne37174:0</string>
 </resources>
