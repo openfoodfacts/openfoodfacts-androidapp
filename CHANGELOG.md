@@ -1,24 +1,45 @@
 This is the Changelog. Please list changes here so that we can provide meaningful changelog for the application stores.
 
 Upcoming:
+** Onboarding **
+- Added onboarding screens
+
+** Translations **
 - New full or partial support for Serbian (Latin), Afrikaans, Akan, Amharic, Assamese, Chinese Traditional, Chinese Traditional (Hong Kong), Hungarian, Turkish, Indonesian, Tagalog, Filipino, Dutch, Belgium, Bengali, Slovenian, Kurdish, Esperanto, Polish.
-- Images were uploaded in low-res. We've increased the upload resolution a bit so that they can be legible and useful.
 - Some languages were not working (eg Brazilian Portuguese). This has been fixed. We're also laying some bases for upcoming locale improvements.
+
+** Product View **
 - We now also display the Common name of the product. Nutella in French is also known as "Pâte à tartiner aux noisettes et au cacao"
 - Fix a crasher on the ingredient list, some encoding issues in product fields and typos (pH).
-- Open Pet Food Facts support. Woof. Woof.
-- You are now properly credited for uploaded images.
-- Cleaner allergen detection settings, and fixed an issue in allergen detection
-- Added onboarding screens
-- A link to reset your password
-- Add option to add a product if there are no search results
-- Add app shortcuts for Nougat
-- Fix for TLS issue on Nougat (tbm)
-- Added confirmation before logging out
-- Message to tell you that only 1 photo is required to add a product (though more are welcome :-)
-- You can now delete items from your scan history. Note that your scan history always stays on your device.
-- More explicit titles thoughout the app
 
+** Contributing **
+- Message to tell you that only 1 photo is required to add a product (though more are welcome :-)
+- Images were uploaded in low-res. We've increased the upload resolution a bit so that they can be legible and useful.
+- You are now properly credited for uploaded images.
+- Add option to add a product if there are no search results
+
+** Open Pet Food Facts **
+- Open Pet Food Facts support. Woof. Woof.
+
+** Better user management **
+- Added confirmation before logging out
+- A link to reset your password
+
+** General **
+- Add app shortcuts for Nougat
+- More explicit titles thoughout the app
+- Cleaner allergen detection settings, and fixed an issue in allergen detection
+
+** Bug fixing **
+- Fix for TLS issue on Nougat (tbm)
+
+** History **
+- You can now delete items from your scan history. Note that your scan history always stays on your device.
+- Your scan history is now timestamped.
+
+0.8.1
+
+0.8
 
 0.7.2 & 0.7.3 & 0.7.4 - 
 - Micro-release to fix 4.0 related bugs.
