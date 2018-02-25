@@ -131,6 +131,7 @@
   <string name="hintPass">Password</string>
   <string name="errorLogin">Erore pa \'l aceso o pa ła password</string>
   <string name="errorWeb">No semo riusesti a rivar so internet. Gatu problemi de conesion?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Utente salvà</string>
   <string name="txtInfoLoginNo">Utente no salvà</string>
   <string name="txtDialogsTitle">Informasion</string>
