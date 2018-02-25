@@ -131,6 +131,7 @@
   <string name="hintPass">Passord</string>
   <string name="errorLogin">Innloggings- eller passordfeil</string>
   <string name="errorWeb">Vi klarte ikke å koble til internett. Har du tilkoblingsproblemer?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Bruker lagret</string>
   <string name="txtInfoLoginNo">Bruker ikke lagret</string>
   <string name="txtDialogsTitle">Informasjon</string>
