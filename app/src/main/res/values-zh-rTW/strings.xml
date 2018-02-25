@@ -131,6 +131,7 @@
   <string name="hintPass">密碼</string>
   <string name="errorLogin">使用者名稱或密碼錯誤</string>
   <string name="errorWeb">我們無法存取網際網路。您是否有連線問題？</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">使用者已儲存</string>
   <string name="txtInfoLoginNo">使用者未被儲存</string>
   <string name="txtDialogsTitle">資訊</string>
