@@ -340,7 +340,7 @@
   <string name="contributions_shortcut_short_label">貢献</string>
   <string name="contributions_shortcut_long_label">私の貢献</string>
   <string name="forgot_password">パスワードを忘れた場合</string>
-  <string name="next">NEXT</string>
-  <string name="skip">SKIP</string>
-  <string name="start">GOT IT</string>
+  <string name="next">次へ</string>
+  <string name="skip">スキップ</string>
+  <string name="start">了解</string>
 </resources>
