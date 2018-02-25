@@ -131,6 +131,7 @@
   <string name="hintPass">Şîfreya</string>
   <string name="errorLogin">Destpêk an şîfre têketin</string>
   <string name="errorWeb">Em dikarin bigîjin Înternet ne. Gelo ti pirsgirêkên girêdanê heye?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Bikarhêner hatine qeydkirin</string>
   <string name="txtInfoLoginNo">Bikarhêner xilas ne</string>
   <string name="txtDialogsTitle">Agahî</string>
