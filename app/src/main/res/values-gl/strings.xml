@@ -131,6 +131,7 @@
   <string name="hintPass">Contrasinal</string>
   <string name="errorLogin">Erro de acceso ou do contrasinal</string>
   <string name="errorWeb">Non fomos quen de acceder a internet. Ten problemas de conexión?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Gardouse o usuario</string>
   <string name="txtInfoLoginNo">Non se gardou o usuario</string>
   <string name="txtDialogsTitle">Información</string>
