@@ -14,9 +14,9 @@
   <string name="txtHome">Open Pet Food Facts は、原材料、アレルゲン、マーク、およびペットフードの製品ラベルに記載されているすべての情報をもつペットフード製品のデータベースです。</string>
   <string name="slide_1_title">Contribute to Pet Food transparency</string>
   <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
-  <string name="slide_2_title">Get the facts</string>
-  <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Keep track of the product you use</string>
+  <string name="slide_2_title">事実を入手します</string>
+  <string name="slide_2_desc">あなたがスキャンした製品に関する広範な情報。あなたのために解読されました</string>
+  <string name="slide_3_title">あなたが使用する製品を追跡します</string>
   <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
   <string name="slide_4_title">Works offline</string>
   <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connexion right now</string>
