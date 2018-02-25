@@ -131,6 +131,7 @@
   <string name="hintPass">Şifre</string>
   <string name="errorLogin">Giriş veya parola hatası</string>
   <string name="errorWeb">İnternet\'e erişemedik. Bağlantı sorununuz var mı?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Kullanıcı kaydedildi</string>
   <string name="txtInfoLoginNo">Kullanıcı kaydedilemedi</string>
   <string name="txtDialogsTitle">Bilgi</string>
