@@ -131,6 +131,7 @@
   <string name="hintPass">Գաղտնաբառ</string>
   <string name="errorLogin">Սխալ մուտքանուն կամ գաղտնաբառ</string>
   <string name="errorWeb">Մենք չեն կարողանում մուտք գործել համացանց։ Դուք ունե՞ք կապի խնդիրներ։</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Օգտվողը պահպանվեց</string>
   <string name="txtInfoLoginNo">Օգտվողը չպահպանվեց</string>
   <string name="txtDialogsTitle">Տեղեկատվություն</string>
