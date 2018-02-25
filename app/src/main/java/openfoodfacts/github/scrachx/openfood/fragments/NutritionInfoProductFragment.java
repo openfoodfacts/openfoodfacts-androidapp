@@ -39,7 +39,6 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -58,18 +57,18 @@ import static openfoodfacts.github.scrachx.openfood.models.Nutriments.MINERALS_M
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.PROTEINS;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.PROT_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.VITAMINS_MAP;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class NutritionInfoProductFragment extends BaseFragment {
 
     @BindView(R.id.textPerPortion)
     TextView mTextPerPortion;
-    @BindView(R.id.imageViewNutrition) ImageView mImageNutrition;
-    @BindView(R.id.addPhotoLabel) TextView addPhotoLabel;
+    @BindView(R.id.imageViewNutrition)
+    ImageView mImageNutrition;
+    @BindView(R.id.addPhotoLabel)
+    TextView addPhotoLabel;
     @BindView(R.id.nutriments_recycler_view)
     RecyclerView nutrimentsRecyclerView;
 
@@ -136,7 +135,8 @@ public class NutritionInfoProductFragment extends BaseFragment {
         // Energy
         Nutriment energy = nutriments.get(ENERGY);
         if (energy != null) {
-            nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name), getEnergy(energy.getFor100g()), getEnergy(energy.getForServing()), "kcal"));
+            nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name), getEnergy(energy.getFor100g()), getEnergy(energy
+                    .getForServing()), "kcal"));
         }
 
         // Fat        
@@ -248,6 +248,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
 
     private void onPhotoReturned(File photoFile) {
         ProductImage image = new ProductImage(barcode, NUTRITION, photoFile);
+        image.setFilePath(photoFile.getAbsolutePath());
         api.postImg(getContext(), image);
         addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();

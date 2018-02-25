@@ -357,6 +357,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     private void onPhotoReturned(File photoFile) {
         ProductImage image = new ProductImage(barcode, FRONT, photoFile);
+        image.setFilePath(photoFile.getAbsolutePath());
         api.postImg(getContext(), image);
         addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();
@@ -382,7 +383,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 if(!sendOther) {
                     onPhotoReturned(imageFiles.get(0));
                 } else {
-                    ProductImage image = new ProductImage(barcode, OTHER, imageFiles.get(0));
+                    ProductImage image = new ProductImage(barcode, OTHER, new  File(imageFiles.get(0).getAbsolutePath()));
+                    image.setFilePath(imageFiles.get(0).getAbsolutePath());
                     api.postImg(getContext(), image);
                 }
             }
