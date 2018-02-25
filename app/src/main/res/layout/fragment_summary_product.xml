@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:isScrollContainer="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="fill_vertical"
     android:clipToPadding="false"
+    android:isScrollContainer="false"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
@@ -30,8 +30,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/take_picture_front"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textNameProduct"
@@ -165,7 +164,6 @@
             android:id="@+id/textIngredientsOriginProduct"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_marginBottom="@dimen/spacing_tiny"
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
@@ -173,7 +171,8 @@
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
             android:textIsSelectable="true"
-            android:textSize="@dimen/font_normal" />
+            android:textSize="@dimen/font_normal"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/textCityProduct"
@@ -185,6 +184,20 @@
             android:layout_marginTop="@dimen/spacing_tiny"
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/textManufactureUrl"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textColorLink="@color/light_blue_A700"
             android:textIsSelectable="true"
             android:textSize="@dimen/font_normal" />
 
@@ -217,11 +230,10 @@
         <Button
             android:id="@+id/buttonMorePictures"
             android:layout_width="250dp"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
-            android:text="@string/take_more_pictures"
-            />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:text="@string/take_more_pictures" />
 
 
     </LinearLayout>
