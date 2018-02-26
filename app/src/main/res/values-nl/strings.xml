@@ -103,6 +103,7 @@
   <string name="txtManufacturing">Productie- of verwerkingslocaties</string>
   <string name="txtIngredientsOrigins">Herkomst van de ingrediënten</string>
   <string name="txtCity">Stad, provincie of land van aankoop</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Winkels</string>
   <string name="txtCountries">Landen verkrijgbaar</string>
