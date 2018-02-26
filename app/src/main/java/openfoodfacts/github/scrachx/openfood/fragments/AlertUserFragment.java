@@ -82,17 +82,15 @@ public class AlertUserFragment extends BaseFragment {
 
     @OnClick(R.id.fab)
     protected void onAddAllergens() {
-        final LinkedHashMap<Integer,String> allS = new LinkedHashMap<>();
+        final LinkedHashMap<Integer, String> allS = new LinkedHashMap<>();
         int index = 0;
+        String language = Locale.getDefault().getLanguage();
         for (Allergen a : mAllergensFromDao) {
-            if (Locale.getDefault().getLanguage().contains("fr")){
-                if(a.getIdAllergen().contains("fr:")) allS.put(index, a.getName().substring(a.getName().indexOf(":")+1));
-            } else if (Locale.getDefault().getLanguage().contains("en")) {
-                if(a.getIdAllergen().contains("en:")) allS.put(index, a.getName().substring(a.getName().indexOf(":")+1));
-            }
+            if (a.getIdAllergen().contains(language + ":"))
+                allS.put(index, a.getName().substring(a.getName().indexOf(":") + 1));
             index++;
         }
-        if(allS.size() > 0) {
+        if (allS.size() > 0) {
             new MaterialDialog.Builder(mView.getContext())
                     .title(R.string.title_dialog_alert)
                     .items(allS.values())
@@ -100,10 +98,11 @@ public class AlertUserFragment extends BaseFragment {
                         boolean canAdd = true;
                         int index1 = -1;
                         String alergeneStringByPos = new ArrayList<String>(allS.values()).get(which);
-                        for(Allergen a : mAllergensEnabled) {
-                            if(a.getName().equals(mAllergensFromDao.get(which).getName())) canAdd = false;
+                        for (Allergen a : mAllergensEnabled) {
+                            if (a.getName().equals(mAllergensFromDao.get(which).getName()))
+                                canAdd = false;
                         }
-                        for(Allergen a : mAllergensFromDao) {
+                        for (Allergen a : mAllergensFromDao) {
                             if (a.getName().substring(a.getName().indexOf(":") + 1).equalsIgnoreCase(alergeneStringByPos)) {
                                 index1 = getKey(allS, alergeneStringByPos);
                                 mAllergensFromDao.get(index1).setEnable("true");
@@ -121,7 +120,7 @@ public class AlertUserFragment extends BaseFragment {
             ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-            if(isConnected) {
+            if (isConnected) {
                 final LoadToast lt = new LoadToast(getContext());
                 lt.setText(getContext().getString(R.string.toast_retrieving));
                 lt.setBackgroundColor(getContext().getResources().getColor(R.color.blue));
@@ -152,10 +151,11 @@ public class AlertUserFragment extends BaseFragment {
 
     }
 
+
     public static Integer getKey(HashMap<Integer, String> map, String value) {
         Integer key = null;
-        for(Map.Entry<Integer, String> entry : map.entrySet()) {
-            if((value == null && entry.getValue() == null) || (value != null && value.equals(entry.getValue()))) {
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            if ((value == null && entry.getValue() == null) || (value != null && value.equals(entry.getValue()))) {
                 key = entry.getKey();
                 break;
             }
