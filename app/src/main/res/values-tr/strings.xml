@@ -103,6 +103,7 @@
   <string name="txtManufacturing">Üretim veya işleme yerleri:</string>
   <string name="txtIngredientsOrigins">Malzemelerin kaynağı:</string>
   <string name="txtCity">Satın alınan şehir, eyalet ve ülke:</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Mağazalar :</string>
   <string name="txtCountries">Satılan ülkeler:</string>
