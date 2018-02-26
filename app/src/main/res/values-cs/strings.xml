@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Prosím, zadejte své uživatelské jméno a heslo</string>
   <string name="txtDataUpdated">Data byla aktualizována</string>
   <string name="txtLoading">Načítá se…</string>
-  <string name="txtDialogsContentDelete">Chcete tento návrh smazat?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Produkt je uložen lokálně, můžete ho upravit v menu \"Editovat offline\"</string>
   <string name="txtBarcodeRequire">Je třeba zadat čárový kód</string>
   <string name="txtOk">OK</string>
