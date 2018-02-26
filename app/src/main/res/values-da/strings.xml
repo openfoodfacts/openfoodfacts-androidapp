@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Indtast venligst dit brugernavn og adgangskode</string>
   <string name="txtDataUpdated">Data opdateret</string>
   <string name="txtLoading">Indlæser...</string>
-  <string name="txtDialogsContentDelete">Vil du slette denne kladde?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Produktet er gemt lokalt på denne enhed, du kan redigere det i menuen \"Offline-redigering\"</string>
   <string name="txtBarcodeRequire">Stregkode påkrævet</string>
   <string name="txtOk">OK</string>
