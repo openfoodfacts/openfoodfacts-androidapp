@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">لطفا نام کاربری و رمز عبور خود را وارد کنید</string>
   <string name="txtDataUpdated">داده ها بروز شدند</string>
   <string name="txtLoading">درحال بارگذاری...</string>
-  <string name="txtDialogsContentDelete">آیا می خواهید این پیش نویس را حذف کنید؟</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">محصول به صورت محلی ذخیره می شود، شما می توانید آن را در منوی \"ویرایش آفلاین\" ویرایش کنید</string>
   <string name="txtBarcodeRequire">بارکد مورد نیاز است</string>
   <string name="txtOk">تأیید</string>
