@@ -157,7 +157,7 @@
   <string name="txtInfoAddUser">Ma ulac aɣilif, ssekcem isem-ik d tsarutt</string>
   <string name="txtDataUpdated">Ttwasidren-d yisefka</string>
   <string name="txtLoading">Asali...</string>
-  <string name="txtDialogsContentDelete">Tebɣiḍ ad tekkseḍ tawriqt-a n usxeṛbubec ?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
   <string name="txtOk">OK</string>
