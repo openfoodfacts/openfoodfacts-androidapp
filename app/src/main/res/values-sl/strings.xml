@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Vnesite svojo prijavo in geslo</string>
   <string name="txtDataUpdated">Podatki so posodobljeni</string>
   <string name="txtLoading">Nalaganje...</string>
-  <string name="txtDialogsContentDelete">Želite izbrisati ta osnutek?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Izdelek je shranjen lokalno, lahko ga uredite v meniju »Brez povezave«</string>
   <string name="txtBarcodeRequire">Potrebna je črtna koda</string>
   <string name="txtOk">V redu</string>
