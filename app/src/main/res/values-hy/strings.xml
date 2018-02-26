@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Մուտքագրեք մուտքանունը և գաղտնաբառը</string>
   <string name="txtDataUpdated">Տվյալները թարմացվել են</string>
   <string name="txtLoading">Բեռնավորում…</string>
-  <string name="txtDialogsContentDelete">Ցանկանում եք ջնջե՞լ այս սեւագիրը։</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Մթերքը պահպանվել է տեղում, Դուք կարող եք փոփոխել այդ «Անցանց խմբագրում» բաժնում</string>
   <string name="txtBarcodeRequire">Պահանջվում է գծակոդ</string>
   <string name="txtOk">Լավ</string>
