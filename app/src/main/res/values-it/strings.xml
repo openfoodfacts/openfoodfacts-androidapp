@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Inserisci nome utente e password</string>
   <string name="txtDataUpdated">Dati aggiornati</string>
   <string name="txtLoading">Caricamento...</string>
-  <string name="txtDialogsContentDelete">Vuoi cancellare questa bozza?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Il prodotto è salvato localmente, lo puoi modificare nel menu Modifica Offline</string>
   <string name="txtBarcodeRequire">Codice a barre necessario</string>
   <string name="txtOk">OK</string>
