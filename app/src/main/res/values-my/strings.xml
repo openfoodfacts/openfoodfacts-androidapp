@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">သင္ဝင္ေရာက္မႈႏွင့္စကားဝွက္ကိုရိုက္ထည့္ပါ</string>
   <string name="txtDataUpdated">အခ်က္အလက္အသစ္မြမ္းမံခဲ့သည္</string>
   <string name="txtLoading">ဖြင့္ေနသည္</string>
-  <string name="txtDialogsContentDelete">ဒီအၾကမ္းကိုသင္ဖ်က္ခ်င္ပါသလား</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">ထုတ္ကုန္ကို စက္ထဲသိမ္းထားခဲ့သည္။ ေအာ့္ဖ္လိုင္းျပင္ဆင္မႈမီႏူးမွတစ္ဆင့္သင္ျပင္ဆင္ႏိုင္သည္</string>
   <string name="txtBarcodeRequire">ဘားကုဒ္လိုအပ္သည္</string>
   <string name="txtOk">အိုကေ</string>
