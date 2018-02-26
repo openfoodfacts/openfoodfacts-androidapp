@@ -103,6 +103,7 @@
   <string name="txtManufacturing">أماكن التصنيع أو التجهيز :</string>
   <string name="txtIngredientsOrigins">أصل المكونات :</string>
   <string name="txtCity">المدينة والولاية والبلاد حيث تم شراؤها:</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">المتاجر:</string>
   <string name="txtCountries">البلدان التي يباع فيها:</string>
