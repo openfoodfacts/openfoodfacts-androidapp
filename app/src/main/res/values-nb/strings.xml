@@ -103,6 +103,7 @@
   <string name="txtManufacturing">Produksjonssted eller bearbeidelsesssted:</string>
   <string name="txtIngredientsOrigins">Opprinnelse ingredienser</string>
   <string name="txtCity">By, eventuelt region og land der produktet ble kjøpt</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Butikker:</string>
   <string name="txtCountries">Land der produktet selges:</string>
