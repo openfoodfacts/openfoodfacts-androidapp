@@ -103,6 +103,7 @@
   <string name="txtManufacturing">製造或加工地：</string>
   <string name="txtIngredientsOrigins">原料產地：</string>
   <string name="txtCity">購入的城市、州以及國家：</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">商店：</string>
   <string name="txtCountries">販售的國家：</string>
   <string name="txtIngredients">成份表：</string>
@@ -349,4 +350,13 @@
   <string name="contact_summary">Contact the team</string>
   <string name="off_mail">mailto:contact@openfoodfacts.org</string>
   <string name="email_not_found">No email applications found</string>
+  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_positive">設定</string>
+  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_positive">設定</string>
+  <string name="saving">Saving…</string>
 </resources>
