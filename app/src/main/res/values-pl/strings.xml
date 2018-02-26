@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Proszę, wprowadź login i hasło</string>
   <string name="txtDataUpdated">Data aktualizacji</string>
   <string name="txtLoading">Ładowanie...</string>
-  <string name="txtDialogsContentDelete">Czy chcesz usunąć tę wersję roboczą?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Zapisano lokalnie, produkt możesz zmienić przez menu \"Edycja w trybie offline\"</string>
   <string name="txtBarcodeRequire">Wymagany kod kreskowy</string>
   <string name="txtOk">Dobrze</string>
