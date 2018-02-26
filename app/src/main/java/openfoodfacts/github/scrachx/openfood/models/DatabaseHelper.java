@@ -37,7 +37,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
      * left untouched just fix the code in the version case and push a new
      * release
      *
-     * @param db
+     * @param db database
      * @param migrateVersion
      */
     private void upgrade(Database db, int migrateVersion) {
@@ -47,6 +47,8 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 break;
             case 3:
                 ToUploadProductDao.createTable(db, true);
+            case 4:
+                TagDao.createTable(db, true);
         }
     }
 }

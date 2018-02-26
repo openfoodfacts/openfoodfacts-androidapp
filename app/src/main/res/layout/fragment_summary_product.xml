@@ -175,7 +175,7 @@
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/textCityProduct"
+            android:id="@+id/textEmbCode"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_tiny"
