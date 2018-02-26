@@ -103,6 +103,7 @@
   <string name="txtManufacturing">tempat pembuatan atau tempat diolah</string>
   <string name="txtIngredientsOrigins">asal kandungan</string>
   <string name="txtCity">kota,bagian negara .dan negara daerahl dibeli</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">penampungan toko</string>
   <string name="txtCountries">negara menjual</string>
