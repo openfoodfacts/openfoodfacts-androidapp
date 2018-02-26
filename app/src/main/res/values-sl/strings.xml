@@ -103,6 +103,7 @@
   <string name="txtManufacturing">Obdelava ali predelava:</string>
   <string name="txtIngredientsOrigins">Poreklo sestavin:</string>
   <string name="txtCity">Mesto, država in država nakupa:</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Trgovine:</string>
   <string name="txtCountries">Države, kjer se prodajajo:</string>
