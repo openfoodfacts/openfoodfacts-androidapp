@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">請輸入您的使用者名稱與密碼</string>
   <string name="txtDataUpdated">資料已更新</string>
   <string name="txtLoading">載入中...</string>
-  <string name="txtDialogsContentDelete">您要刪除此草稿嗎？</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">該產品是儲存在本地裝置，您可以在「離線編輯」選單中編輯</string>
   <string name="txtBarcodeRequire">需要條碼</string>
   <string name="txtOk">好</string>
