@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Vänligen fyll i ditt användarnamn och lösenord</string>
   <string name="txtDataUpdated">Datan uppdaterades</string>
   <string name="txtLoading">Laddar...</string>
-  <string name="txtDialogsContentDelete">Vill du ta bort detta utkast?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Streckkod krävs</string>
   <string name="txtOk">OK</string>
