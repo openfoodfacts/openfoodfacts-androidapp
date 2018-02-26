@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Mangyaring ilagay ang iyong login at password</string>
   <string name="txtDataUpdated">Na-update na ang data</string>
   <string name="txtLoading">Naglo-load...</string>
-  <string name="txtDialogsContentDelete">Gusto mo bang tanggalin ang draft na ito?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Ang produkto ay naka-save na sa device, makakapag-edit ka sa \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Kinakailangan ang barcode</string>
   <string name="txtOk">OK</string>
