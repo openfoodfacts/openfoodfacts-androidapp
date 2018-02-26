@@ -103,6 +103,7 @@
   <string name="txtManufacturing">Τόπος παραγωγής ή επεξεργασίας :</string>
   <string name="txtIngredientsOrigins">Προέλευση των συστατικών :</string>
   <string name="txtCity">Πόλη και χώρα αγοράς :</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Καταστήματα :</string>
   <string name="txtCountries">Χώρες όπου πωλείται :</string>
