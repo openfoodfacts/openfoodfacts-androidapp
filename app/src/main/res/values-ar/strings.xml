@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">الرجاء إدخال اسم المستخدم وكلمة المرور الخاصة بك</string>
   <string name="txtDataUpdated">تم تحديث البيانات</string>
   <string name="txtLoading">جاري التحميل...</string>
-  <string name="txtDialogsContentDelete">هل تريد حذف هذه المسودة؟</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">تم حفظ المنتج محليا، يمكنك تحريره في قائمة  تحرير</string>
   <string name="txtBarcodeRequire">الرمز الشريطي مطلوب</string>
   <string name="txtOk">موافق</string>
