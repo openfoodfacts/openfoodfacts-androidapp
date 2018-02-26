@@ -103,6 +103,7 @@
   <string name="txtManufacturing">Lugares de fabricación ou procesado :</string>
   <string name="txtIngredientsOrigins">Orixe dos ingredientes :</string>
   <string name="txtCity">Cidade, provincia e país da compra :</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Tendas :</string>
   <string name="txtCountries">Países de venda :</string>
