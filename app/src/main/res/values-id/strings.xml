@@ -157,7 +157,7 @@
   <string name="txtInfoAddUser">mohon masukan  kata sandi kamu </string>
   <string name="txtDataUpdated">mempebaharui data </string>
   <string name="txtLoading">sedang memuat</string>
-  <string name="txtDialogsContentDelete">apa kamu ingin menghapus kotak ini ?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">produk disimpan di lokal . kamu mau mengedit di menu edit offline ??</string>
   <string name="txtBarcodeRequire">kode batang dibutuhkan</string>
   <string name="txtOk">oke</string>
