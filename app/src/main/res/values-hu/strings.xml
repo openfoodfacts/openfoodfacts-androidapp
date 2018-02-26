@@ -103,6 +103,7 @@
   <string name="txtManufacturing">Gyártás vagy feldolgozás helye:</string>
   <string name="txtIngredientsOrigins">Összetevők származása:</string>
   <string name="txtCity">Vásárlás helye (város, állam vagy ország):</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Boltok:</string>
   <string name="txtCountries">Országokban kapható:</string>
