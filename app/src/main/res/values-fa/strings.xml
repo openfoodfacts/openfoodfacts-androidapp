@@ -103,6 +103,7 @@
   <string name="txtManufacturing">مکان تولیدی:</string>
   <string name="txtIngredientsOrigins">منشاء مواد تشکیل دهنده:</string>
   <string name="txtCity">شهر ایالت و کشوری که در آن خریداری شده:</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">فروشگاه ها:</string>
   <string name="txtCountries">کشورهایی که در آن به فروش می رسد:</string>
