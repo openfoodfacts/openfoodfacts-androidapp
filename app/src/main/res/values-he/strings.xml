@@ -103,6 +103,7 @@
   <string name="txtManufacturing">מקומות העיבוד או הייצור:</string>
   <string name="txtIngredientsOrigins">מקור הרכיבים:</string>
   <string name="txtCity">עיר, מדינה וארץ הקנייה :</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">קישור לעמוד המוצר באתר הרשמי של היצרן:</string>
   <string name="txtStores">חנויות:</string>
   <string name="txtCountries">מדינות בהן נמכר:</string>
