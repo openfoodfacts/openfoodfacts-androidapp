@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Uw gebruikersnaam en en wachtwoord alstublieft</string>
   <string name="txtDataUpdated">Gegevens bijgewerkt</string>
   <string name="txtLoading">Bezig met laden…</string>
-  <string name="txtDialogsContentDelete">Wilt u dit concept verwijderen?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Het product is lokaal opgeslagen, u kunt het bewerken in het Offline Edit-menu</string>
   <string name="txtBarcodeRequire">Streepjescode verplicht</string>
   <string name="txtOk">Ok</string>
