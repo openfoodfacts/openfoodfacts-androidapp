@@ -103,7 +103,8 @@
   <string name="txtManufacturing">製造または加工場所 :</string>
   <string name="txtIngredientsOrigins">原材料の原産地 :</string>
   <string name="txtCity">購入した市区町村、都道府県、国 :</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtEMB">EMBコード:</string>
+  <string name="txtManufactureUrl">生産者の公式サイト上の製品ページへのリンク:</string>
   <string name="txtStores">店舗 :</string>
   <string name="txtCountries">販売国 :</string>
   <string name="txtIngredients">原材料一覧 :</string>
@@ -132,7 +133,7 @@
   <string name="hintPass">パスワード</string>
   <string name="errorLogin">ログインまたはパスワードエラー</string>
   <string name="errorWeb">インターネットにアクセスできませんでした。接続に問題がありませんか?</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="uploadLater">ネットワークが利用可能になると画像がアップロードされます</string>
   <string name="txtInfoLoginOk">ユーザーを保存しました</string>
   <string name="txtInfoLoginNo">ユーザーを保存できませんでした</string>
   <string name="txtDialogsTitle">情報</string>
@@ -156,7 +157,7 @@
   <string name="txtInfoAddUser">ログインとパスワードを入力してください</string>
   <string name="txtDataUpdated">データを更新しました</string>
   <string name="txtLoading">読み込んでいます...</string>
-  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
+  <string name="txtDialogsContentDelete">このドラフトを削除してもよろしいですか?</string>
   <string name="txtDialogsContentInfoSave">この製品はローカルに保存されます。オフライン編集 メニューで編集することができます</string>
   <string name="txtBarcodeRequire">バーコードが必要です</string>
   <string name="txtOk">OK</string>
@@ -345,11 +346,11 @@
   <string name="next">次へ</string>
   <string name="skip">スキップ</string>
   <string name="start">了解</string>
-  <string name="contact">Contact</string>
+  <string name="contact">お問い合わせ</string>
   <string name="contact_key">contact_team</string>
-  <string name="contact_summary">Contact the team</string>
+  <string name="contact_summary">チームに連絡します</string>
   <string name="off_mail">mailto:contact@openfoodfacts.org</string>
-  <string name="email_not_found">No email applications found</string>
+  <string name="email_not_found">メールアプリケーションが見つかりません</string>
   <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
   <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
   <string name="airplane_mode_active_dialog_negative">Dismiss</string>
