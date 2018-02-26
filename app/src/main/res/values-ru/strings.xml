@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Введите имя и пароль</string>
   <string name="txtDataUpdated">Данные обновлены</string>
   <string name="txtLoading">Загрузка…</string>
-  <string name="txtDialogsContentDelete">Вы хотите удалить этот черновик?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Продукт сохранён локально, вы можете редактировать его в меню Автономное редактирование</string>
   <string name="txtBarcodeRequire">Требуется штрих-код</string>
   <string name="txtOk">OK</string>
