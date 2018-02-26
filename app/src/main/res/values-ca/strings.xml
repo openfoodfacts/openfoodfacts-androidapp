@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Per favor pose l\'usuari i la contrasenya</string>
   <string name="txtDataUpdated">Dades actualitzades</string>
   <string name="txtLoading">Carregant ...</string>
-  <string name="txtDialogsContentDelete">Vol esborrar este esborrany?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">El producte s\'ha desat localment, pot editar-lo amb el menú de l\'Editor Offline</string>
   <string name="txtBarcodeRequire">Es necessita un codi de barres</string>
   <string name="txtOk">D\'acord</string>
