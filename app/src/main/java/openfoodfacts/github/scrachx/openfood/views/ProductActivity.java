@@ -1,9 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -21,6 +24,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -81,7 +85,12 @@ public class ProductActivity extends BaseActivity {
         List<String> allergens = product.getAllergensHierarchy();
         List<String> traces = product.getTracesTags();
         allergens.addAll(traces);
-
+        ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netinfo=connectivityManager.getActiveNetworkInfo();
+        if (!(netinfo!=null && netinfo.isConnected()))
+        {
+            Toast.makeText(getApplicationContext(),"No Internet Access",Toast.LENGTH_SHORT).show();
+        }
         List<String> matchAll = new ArrayList<>();
         List<Allergen> mAllergens = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
         for (int a = 0; a < mAllergens.size(); a++) {
