@@ -103,6 +103,7 @@
   <string name="txtManufacturing">Výrobní nebo zpracovatelská místa:</string>
   <string name="txtIngredientsOrigins">Původ přísad :</string>
   <string name="txtCity">Město, stát a země, kde byl zakoupen :</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Prodejny :</string>
   <string name="txtCountries">Země prodeje :</string>
