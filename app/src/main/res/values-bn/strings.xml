@@ -103,6 +103,7 @@
   <string name="txtManufacturing">উৎপাদন বা প্রক্রিয়াকরণের জায়গা :</string>
   <string name="txtIngredientsOrigins">প্রধান উপাদানসমূহ :</string>
   <string name="txtCity">ক্রয়কৃত শহর, রাজ্য এবং দেশ :</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">দোকান সমূহ :</string>
   <string name="txtCountries">যেসব দেশে পাওয়া যাবে :</string>
