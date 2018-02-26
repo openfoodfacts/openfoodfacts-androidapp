@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">ログインとパスワードを入力してください</string>
   <string name="txtDataUpdated">データを更新しました</string>
   <string name="txtLoading">読み込んでいます...</string>
-  <string name="txtDialogsContentDelete">この下書きを削除しますか?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">この製品はローカルに保存されます。オフライン編集 メニューで編集することができます</string>
   <string name="txtBarcodeRequire">バーコードが必要です</string>
   <string name="txtOk">OK</string>
