@@ -103,6 +103,7 @@
   <string name="txtManufacturing">生产或处理地：</string>
   <string name="txtIngredientsOrigins">成分来源：</string>
   <string name="txtCity">购买城市，省份和国家：</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">店铺：</string>
   <string name="txtCountries">售卖的国家：</string>
