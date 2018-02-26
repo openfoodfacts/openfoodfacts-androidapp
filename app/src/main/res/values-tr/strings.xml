@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Lütfen giriş ve şifrenizi girin</string>
   <string name="txtDataUpdated">Veri güncellendi</string>
   <string name="txtLoading">Yükleniyor...</string>
-  <string name="txtDialogsContentDelete">Bu taslağı silmek istiyor musunuz?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Ürün lokal olarak kaydedildi, \"Çevrimdışı düzenle\" menüsünden düzenleyebilirsiniz</string>
   <string name="txtBarcodeRequire">Barkod gerekli</string>
   <string name="txtOk">Tamam</string>
