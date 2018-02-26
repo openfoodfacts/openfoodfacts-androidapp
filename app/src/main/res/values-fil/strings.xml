@@ -103,6 +103,7 @@
   <string name="txtManufacturing">Mga lugar ng paggawa o pagproseso :</string>
   <string name="txtIngredientsOrigins">Pinagmulan ng mga sangkap :</string>
   <string name="txtCity">Lungsod, estado at bansa kung saan binili :</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Mga Tindahan :</string>
   <string name="txtCountries">Mga bansa kung saan ibinebenta :</string>
