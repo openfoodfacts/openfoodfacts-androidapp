@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">দয়া করে আপনার লগইন এবং পাসওয়ার্ড প্রবেশ করুন</string>
   <string name="txtDataUpdated">তথ্য হালনাগাদ হয়েছে</string>
   <string name="txtLoading">লোড হচ্ছে...</string>
-  <string name="txtDialogsContentDelete">আপনি কি এই খসড়াটি মুছে ফেলতে চান?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">পণ্যটি স্থানীয়ভাবে সংরক্ষণ হয়েছে। আপনি তা \"অফলাইন সম্পাদনা করুন\" মেনু থেকে সম্পাদনা করতে পারেন</string>
   <string name="txtBarcodeRequire">বারকোড প্রযোজ্য</string>
   <string name="txtOk">ঠিক আছে</string>
