@@ -103,6 +103,7 @@
   <string name="txtManufacturing">विनिर्माण या प्रसंस्करण की  जगह</string>
   <string name="txtIngredientsOrigins">सामग्री की उत्पत्ति:</string>
   <string name="txtCity">शहर, राज्य और देश जहाँ इसे खरीदा गया:</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">स्टोर:</string>
   <string name="txtCountries">देश जहाँ बेचा गया है</string>
