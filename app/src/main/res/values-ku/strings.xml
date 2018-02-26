@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Ji kerema xwe navê bikarhêner û nasnavê xwe binivîsî</string>
   <string name="txtDataUpdated">Data ve</string>
   <string name="txtLoading">Ciji tıbe...</string>
-  <string name="txtDialogsContentDelete">Ma hûn dixwazin ku ev pêşnûme jê bibî?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Product xilas herêmî de, \"girêdayî Edit\" tu pêşeka biguherînî</string>
   <string name="txtBarcodeRequire">Barcode pêwîst e</string>
   <string name="txtOk">Okay</string>
