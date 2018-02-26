@@ -103,6 +103,7 @@
   <string name="txtManufacturing">ထုတ္လုပ္ျခင္း သို႔မဟုတ္ ထုတ္သည့္ေနရာမ်ား -</string>
   <string name="txtIngredientsOrigins">Origin of ingredients :</string>
   <string name="txtCity">ဝယ္ယူခဲ့ေသာ ျမိဳ႕၊ ျပည္နယ္ ႏွင့္ ႏိုင္ငံ -</string>
+  <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">စတိုးမ်ား -</string>
   <string name="txtCountries">ေရာင္းခဲ့ေသာႏိုင္ငံမ်ား -</string>
