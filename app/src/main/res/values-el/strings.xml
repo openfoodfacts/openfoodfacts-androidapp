@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Παρακαλούμε εισάγετε το όνομα χρήστη και κωδικό πρόσβασης</string>
   <string name="txtDataUpdated">Τα δεδομένα ενημερώθηκαν</string>
   <string name="txtLoading">Loading...</string>
-  <string name="txtDialogsContentDelete">Θέλετε να διαγράψετε αυτό το σχέδιο;</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Το προϊόν είναι αποθηκευμένο τοπικά, μπορείτε να το επεξεργαστείτε στο μενού «Επεξεργασία χωρίς σύνδεση»</string>
   <string name="txtBarcodeRequire">Απαιτείται Barcode</string>
   <string name="txtOk">Εντάξει</string>
