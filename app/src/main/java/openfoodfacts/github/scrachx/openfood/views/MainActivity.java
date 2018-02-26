@@ -24,6 +24,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -163,8 +164,21 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .withHasStableIds(true)
-                .withAccountHeader(headerResult) //set the AccountHeader we created earlier for
-                // the header
+                .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
+                .withOnDrawerListener(new Drawer.OnDrawerListener() {
+                    @Override
+                    public void onDrawerOpened(View drawerView) {
+                        Utils.hideKeyboard(MainActivity.this);
+                    }
+
+                    @Override
+                    public void onDrawerClosed(View drawerView) {}
+
+                    @Override
+                    public void onDrawerSlide(View drawerView, float slideOffset) {
+                        Utils.hideKeyboard(MainActivity.this);
+                    }
+                })
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon
                                 (GoogleMaterial.Icon.gmd_home).withIdentifier(1),
