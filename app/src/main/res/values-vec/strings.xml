@@ -156,7 +156,7 @@
   <string name="txtInfoAddUser">Par favor, fa l\'aceso</string>
   <string name="txtDataUpdated">Dati ajornài</string>
   <string name="txtLoading">Loading...</string>
-  <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">El prodoto el xe salvà localmente, te połi modifegarlo inte \'l menù \"Modìfeghe Offline\"</string>
   <string name="txtBarcodeRequire">Còdexe a bare necesàrio</string>
   <string name="txtOk">Va ben</string>
