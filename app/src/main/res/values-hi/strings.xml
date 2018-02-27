@@ -188,7 +188,7 @@
   <string name="alert_drawer">एलर्जी की चेतावनी</string>
   <string name="warning_allergens">एलरजेन शामिल है</string>
   <string name="title_dialog_alert">अलर्ट जोड़ें</string>
-  <string name="warning_alert_data">आपकी एलर्जी की जानकारी Open Food Facts सर्वर के लिए कभी नहीं भेजा जा सक्ती। इसके अलावा, सावधान रहे  क्योंकि डेटा सही नहीं हो सकताअपने  इसलिये, आप कृपया दोहरी जांच कीजिए!</string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">गैलरी से</string>
   <string name="product_sent">उत्पाद की जानकारी सफलतापूर्वक भेजी गई</string>
   <string name="action_edit_product">उत्पाद संपादित करें</string>
