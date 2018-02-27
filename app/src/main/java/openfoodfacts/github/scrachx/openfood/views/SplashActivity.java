@@ -12,6 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.io.IOException;
@@ -39,7 +40,8 @@ public class SplashActivity extends BaseActivity {
 
         settings = getSharedPreferences("prefs", 0);
         mAdditiveDao = Utils.getAppDaoSession(this).getAdditiveDao();
-
+        OpenFoodAPIClient client = new OpenFoodAPIClient(this);
+        client.getPackagerCodes();
         if((BuildConfig.FLAVOR.equals("off"))) {
             boolean firstRun = settings.getBoolean("firstRun", true);
 
