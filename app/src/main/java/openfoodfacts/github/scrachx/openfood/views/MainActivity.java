@@ -59,6 +59,8 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
+import static openfoodfacts.github.scrachx.openfood.utils.CustomTextView.CustomOfflineSnackbar;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.isNetworkConnected;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class MainActivity extends BaseActivity implements CustomTabActivityHelper
@@ -96,7 +98,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         setContentView(R.layout.activity_main);
 
         Utils.hideKeyboard(this);
-
+        if (!isNetworkConnected(getApplicationContext()))
+            CustomOfflineSnackbar(findViewById(android.R.id.content));
         final IProfile<ProfileDrawerItem> profile = getUserProfile();
         LocaleHelper.setLocale(this, LocaleHelper.getLanguage(this));
 

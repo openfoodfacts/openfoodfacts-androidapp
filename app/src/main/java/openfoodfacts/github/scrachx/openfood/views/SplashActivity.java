@@ -28,6 +28,9 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
+import static openfoodfacts.github.scrachx.openfood.utils.CustomTextView.CustomOfflineSnackbar;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.isNetworkConnected;
+
 public class SplashActivity extends BaseActivity {
 
     private SharedPreferences settings;
@@ -39,6 +42,8 @@ public class SplashActivity extends BaseActivity {
 
         settings = getSharedPreferences("prefs", 0);
         mAdditiveDao = Utils.getAppDaoSession(this).getAdditiveDao();
+        if (!isNetworkConnected(getApplicationContext()))
+            CustomOfflineSnackbar(findViewById(android.R.id.content));
         OpenFoodAPIClient client = new OpenFoodAPIClient(this);
         client.getPackagerCodes();
         if ((BuildConfig.FLAVOR.equals("off"))) {
