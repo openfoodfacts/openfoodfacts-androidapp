@@ -119,13 +119,14 @@ public class Utils {
     }
 
     public static void hideKeyboard(Activity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity
-                .INPUT_METHOD_SERVICE);
         View view = activity.getCurrentFocus();
-        if (view == null) {
-            view = new View(activity);
+
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
         }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     public static String compressImage(String url) {
