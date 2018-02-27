@@ -188,7 +188,7 @@
   <string name="alert_drawer">过敏原警告</string>
   <string name="warning_allergens">含有过敏原</string>
   <string name="title_dialog_alert">添加提醒</string>
-  <string name="warning_alert_data">您的过敏原信息将永远不会发送到“ Open Food Facts ”上，另外请注意。数据可能不准确，请仔细检查。 </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">从相册</string>
   <string name="product_sent">日志发送成功</string>
   <string name="action_edit_product">编辑产品</string>
