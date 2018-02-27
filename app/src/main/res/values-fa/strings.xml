@@ -188,7 +188,7 @@
   <string name="alert_drawer">هشدار وجود آلرژن</string>
   <string name="warning_allergens">شامل آلرژن است</string>
   <string name="title_dialog_alert">اضافه کردن هشدار</string>
-  <string name="warning_alert_data">اطلاعات آلرژی شما هیچگاه به سرور Open Food Facts فرستاده نمیشود. اطلاعات ممکن است دقیق نباشد ،لطفاً قبل از استفاده امتحان کنید! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">از گالری</string>
   <string name="product_sent">محصولات با موفقیت ارسال شد</string>
   <string name="action_edit_product">ویرایش کالا</string>
