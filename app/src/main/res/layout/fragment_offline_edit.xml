@@ -30,6 +30,6 @@
         android:text="@string/txtSendAll"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
-        android:textSize="16sp"
-        app:drawableLeftCompat="@drawable/ic_done_all" />
+        android:textSize="16sp" />
+        <!--app:drawableLeftCompat="@drawable/ic_done_all" -->
 </RelativeLayout>
