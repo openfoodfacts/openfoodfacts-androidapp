@@ -9,12 +9,12 @@
 
     <ImageView
         android:id="@+id/imgHistoryProduct"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_margin="@dimen/spacing_normal" />
+        android:layout_margin="@dimen/spacing_small" />
 
     <TextView
         android:id="@+id/titleHistory"
@@ -26,12 +26,10 @@
         android:layout_toRightOf="@id/imgHistoryProduct"
         android:layout_toStartOf="@+id/iconShareHistory"
         android:gravity="center_vertical"
-        android:paddingEnd="40dp"
-        android:paddingRight="40dp"
-        android:paddingStart="40dp"
-        android:textSize="@dimen/font_normal"
-
-        />
+        android:paddingEnd="20dp"
+        android:paddingRight="20dp"
+        android:paddingStart="20dp"
+        android:textSize="@dimen/font_small" />
 
     <TextView
         android:id="@+id/brandsHistory"
@@ -45,10 +43,10 @@
         android:layout_toRightOf="@id/imgHistoryProduct"
         android:layout_toStartOf="@+id/iconShareHistory"
         android:gravity="center_vertical"
-        android:paddingEnd="40dp"
-        android:paddingRight="40dp"
-        android:paddingStart="40dp"
-        android:textSize="@dimen/font_normal" />
+        android:paddingEnd="20dp"
+        android:paddingRight="20dp"
+        android:paddingStart="20dp"
+        android:textSize="@dimen/font_small" />
 
 
     <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
@@ -65,10 +63,10 @@
         app:drawableLeftCompat="@drawable/barcode_grey_24dp"
         android:drawablePadding="2dp"
         android:gravity="center_vertical"
-        android:paddingEnd="40dp"
-        android:paddingRight="40dp"
-        android:paddingStart="40dp"
-        android:textSize="@dimen/font_normal" />
+        android:paddingEnd="20dp"
+        android:paddingRight="20dp"
+        android:paddingStart="20dp"
+        android:textSize="@dimen/font_small" />
 
 
     <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
@@ -85,22 +83,22 @@
         app:drawableLeftCompat="@drawable/ic_history_grey_24dp"
         android:drawablePadding="2dp"
         android:gravity="center_vertical"
-        android:paddingEnd="40dp"
-        android:paddingRight="40dp"
-        android:paddingStart="40dp"
-        android:textSize="@dimen/font_normal" />
+        android:paddingEnd="20dp"
+        android:paddingRight="20dp"
+        android:paddingStart="20dp"
+        android:textSize="@dimen/font_small" />
 
 
     <ImageButton
         android:id="@+id/iconShareHistory"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_margin="@dimen/spacing_normal"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
+        android:layout_margin="@dimen/spacing_small"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"

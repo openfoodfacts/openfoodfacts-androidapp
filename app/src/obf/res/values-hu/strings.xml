@@ -12,12 +12,12 @@
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-hu.openbeautyfacts.org/contributor/</string>
   <string name="txtHome">Az Open Beauty Facts kozmetikai termékek adatbázisa, a termékekhez tartozó összetevők, allergének, jelölések adataival együtt és minden egyéb információval, ami a termék csomagolásán vagy címkéjén szerepel.</string>
-  <string name="slide_1_title">Contribute to Cosmetic transparency</string>
-  <string name="slide_1_desc">Scan products, take them in picture, make cosmetic transparency happen</string>
-  <string name="slide_2_title">Get the facts</string>
-  <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Keep track of the product you use</string>
-  <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
-  <string name="slide_4_title">Works offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connexion right now</string>
+  <string name="slide_1_title">Hozzájárulás a Kozmetikai szer átláthatósághoz</string>
+  <string name="slide_1_desc">Olvasson be termékeket, készítsen képet, tegye lehetővé a kozmetikai szer átláthatóságot</string>
+  <string name="slide_2_title">Kapja meg a tényeket</string>
+  <string name="slide_2_desc">Széleskörű információ az ön által beolvasott termékről, megfejtve az ön számára</string>
+  <string name="slide_3_title">Kövesse nyomon a terméket amit használ</string>
+  <string name="slide_3_desc">Az összes kozmetikai szer amit ön használ, egy könnyen kezelhető listán amit exportálni is tud</string>
+  <string name="slide_4_title">Kapcsolat nélküli módban is működik</string>
+  <string name="slide_4_desc">Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata</string>
 </resources>

@@ -103,6 +103,8 @@
   <string name="txtManufacturing">Obdelava ali predelava:</string>
   <string name="txtIngredientsOrigins">Poreklo sestavin:</string>
   <string name="txtCity">Mesto, država in država nakupa:</string>
+  <string name="txtEMB">EMB Code:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Trgovine:</string>
   <string name="txtCountries">Države, kjer se prodajajo:</string>
   <string name="txtIngredients">Seznam sestavin:</string>
@@ -131,6 +133,7 @@
   <string name="hintPass">Geslo</string>
   <string name="errorLogin">Uporabniško ime ali geslo sta napačna</string>
   <string name="errorWeb">Nismo mogli dostopati do interneta. Imate težave s povezljivostjo?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Uporabnik je shranjen</string>
   <string name="txtInfoLoginNo">Uporabnik ni shranjen</string>
   <string name="txtDialogsTitle">Imformacije</string>
@@ -154,7 +157,7 @@
   <string name="txtInfoAddUser">Vnesite svojo prijavo in geslo</string>
   <string name="txtDataUpdated">Podatki so posodobljeni</string>
   <string name="txtLoading">Nalaganje...</string>
-  <string name="txtDialogsContentDelete">Želite izbrisati ta osnutek?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Izdelek je shranjen lokalno, lahko ga uredite v meniju »Brez povezave«</string>
   <string name="txtBarcodeRequire">Potrebna je črtna koda</string>
   <string name="txtOk">V redu</string>
@@ -185,7 +188,7 @@
   <string name="alert_drawer">Opozorilo alergena</string>
   <string name="warning_allergens">Vsebuje alergene</string>
   <string name="title_dialog_alert">Dodaj opozorilo</string>
-  <string name="warning_alert_data">Informacije o alergijah nikoli ne bodo poslane na strežnik Open Food Facts. Prav tako bodite previdni, da podatki morda niso točni, prosimo dvakrat preverite sami! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">Iz galerije</string>
   <string name="product_sent">Izdelek je uspešno poslan</string>
   <string name="action_edit_product">Uredi izdelek</string>
@@ -343,4 +346,18 @@
   <string name="next">NEXT</string>
   <string name="skip">SKIP</string>
   <string name="start">GOT IT</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
+  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_positive">Nastavitve</string>
+  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_positive">Nastavitve</string>
+  <string name="saving">Saving…</string>
 </resources>

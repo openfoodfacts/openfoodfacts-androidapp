@@ -108,6 +108,7 @@
     <string name="txtManufacturing">Manufacturing or processing places :</string>
     <string name="txtIngredientsOrigins">Origin of ingredients :</string>
     <string name="txtCity">City, state and country where purchased :</string>
+    <string name="txtEMB">EMB Code:</string>
     <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
     <string name="txtStores">Stores :</string>
     <string name="txtCountries">Countries where sold :</string>
@@ -207,7 +208,7 @@
     <string name="cancel_button" translatable="false">Cancel</string>
     <string name="login_button" translatable="false">Login</string>
     <string name="create_account_button" translatable="false">Create Account</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="from_gallery">From gallery</string>
     <string name="product_sent">Product sent successfully</string>
     <string name="action_edit_product">Edit product</string>
@@ -376,6 +377,7 @@
     <string name="contact_summary">Contact the team</string>
     <string name="off_mail">mailto:contact@openfoodfacts.org</string>
     <string name="email_not_found">No email applications found</string>
+
     <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
     <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
     <string name="airplane_mode_active_dialog_negative">Dismiss</string>
@@ -388,4 +390,5 @@
     <string name="saving">Saving…</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+
 </resources>
