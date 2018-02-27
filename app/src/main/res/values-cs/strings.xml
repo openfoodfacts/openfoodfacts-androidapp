@@ -188,7 +188,7 @@
   <string name="alert_drawer">Hlídání alergenů</string>
   <string name="warning_allergens">Obsahuje alergeny</string>
   <string name="title_dialog_alert">Přidat upozornění</string>
-  <string name="warning_alert_data">Vaše informace o alergiích se nikdy nebude odesílat na server Open Food Facts. Buďte ovšem opatrní, na nepřesné údaje v databázi a složení si pro jistotu ověřte! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">Z galerie</string>
   <string name="product_sent">Produkt byl úspěšně odeslán</string>
   <string name="action_edit_product">Upravit produkt</string>
