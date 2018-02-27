@@ -188,7 +188,7 @@
   <string name="alert_drawer">Allergen-Warnung</string>
   <string name="warning_allergens">Enthält Allergene</string>
   <string name="title_dialog_alert">Alarm hinzufügen</string>
-  <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an den Open Food Facts Server gesendet. Seien Sie vorsichtig! Die Daten sind möglicherweise nicht immer 100% richtig. Prüfen Sie deshalb bitte selbst noch einmal nach!</string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">Aus Galerie</string>
   <string name="product_sent">Produkt wurde erfolgreich gesendet</string>
   <string name="action_edit_product">Produkt bearbeiten</string>
