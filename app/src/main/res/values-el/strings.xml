@@ -188,7 +188,7 @@
   <string name="alert_drawer">Ειδοποίηση για αλλεργιογόνο</string>
   <string name="warning_allergens">Περιέχει αλλεργιογόνα</string>
   <string name="title_dialog_alert">Προσθήκη ειδοποίησης</string>
-  <string name="warning_alert_data">Οι πληροφορίες για τις αλλεργίες σας δε θα σταλούν ποτέ στον διακομιστή Open Food Facts. Επίσης, να είστε προσεκτικοί καθώς τα δεδομένα μπορεί να μην είναι ακριβή, παρακαλώ ελέγξτε ξανά μόνοι σας! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">Από τη συλλογή</string>
   <string name="product_sent">Το προϊόν στάλθηκε με επιτυχία</string>
   <string name="action_edit_product">Επεξεργασία προϊόντος</string>
