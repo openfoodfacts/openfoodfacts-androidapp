@@ -55,14 +55,22 @@ public class IngredientsProductFragment extends BaseFragment {
 
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
     public static final Pattern ALLERGEN_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}]+");
-    @BindView(R.id.textIngredientProduct) TextView ingredientsProduct;
-    @BindView(R.id.textSubstanceProduct) TextView substanceProduct;
-    @BindView(R.id.textTraceProduct) TextView traceProduct;
-    @BindView(R.id.textAdditiveProduct) TextView additiveProduct;
-    @BindView(R.id.textPalmOilProduct) TextView palmOilProduct;
-    @BindView(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
-    @BindView(R.id.imageViewIngredients) ImageView mImageIngredients;
-    @BindView(R.id.addPhotoLabel) TextView addPhotoLabel;
+    @BindView(R.id.textIngredientProduct)
+    TextView ingredientsProduct;
+    @BindView(R.id.textSubstanceProduct)
+    TextView substanceProduct;
+    @BindView(R.id.textTraceProduct)
+    TextView traceProduct;
+    @BindView(R.id.textAdditiveProduct)
+    TextView additiveProduct;
+    @BindView(R.id.textPalmOilProduct)
+    TextView palmOilProduct;
+    @BindView(R.id.textMayBeFromPalmOilProduct)
+    TextView mayBeFromPalmOilProduct;
+    @BindView(R.id.imageViewIngredients)
+    ImageView mImageIngredients;
+    @BindView(R.id.addPhotoLabel)
+    TextView addPhotoLabel;
 
     private OpenFoodAPIClient api;
     private String mUrlImage;
@@ -99,18 +107,18 @@ public class IngredientsProductFragment extends BaseFragment {
 
         List<String> allergens = getAllergens();
 
-        if(mState != null && product.getIngredientsText() != null) {
-            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_",""));
+        if (mState != null && product.getIngredientsText() != null) {
+            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
             int ingredientsListAt = Math.max(0, txtIngredients.toString().indexOf(":"));
-            if(!txtIngredients.toString().substring(ingredientsListAt).trim().isEmpty()) {
+            if (!txtIngredients.toString().substring(ingredientsListAt).trim().isEmpty()) {
                 ingredientsProduct.setText(txtIngredients);
             } else {
                 ingredientsProduct.setVisibility(View.GONE);
             }
         }
 
-        if(!allergens.isEmpty()) {
+        if (!allergens.isEmpty()) {
             substanceProduct.append(bold(getString(R.string.txtSubstances)));
             substanceProduct.append(" ");
             String delim = "";
@@ -128,7 +136,7 @@ public class IngredientsProductFragment extends BaseFragment {
             traceProduct.setVisibility(View.GONE);
         } else {
             traces = product.getTraces().replace(",", ", ");
-            if(traces.isEmpty()) {
+            if (traces.isEmpty()) {
                 traceProduct.setVisibility(View.GONE);
             } else {
                 traceProduct.append(bold(getString(R.string.txtTraces)));
@@ -137,7 +145,7 @@ public class IngredientsProductFragment extends BaseFragment {
             }
         }
 
-        if(!product.getAdditivesTags().isEmpty()) {
+        if (!product.getAdditivesTags().isEmpty()) {
             additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
             additiveProduct.append(bold(getString(R.string.txtAdditives)));
             additiveProduct.append(" ");
@@ -198,7 +206,7 @@ public class IngredientsProductFragment extends BaseFragment {
                 }
             };*/
             ssb.append(tag);
-           // ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+            // ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
             ssb.append(" ");
         }
         return ssb;
@@ -211,14 +219,14 @@ public class IngredientsProductFragment extends BaseFragment {
             final String tm = m.group();
             final String allergenValue = tm.replaceAll("[(),.-]+", "");
 
-            for (String allergen: allergens) {
-                if(allergen.equalsIgnoreCase(allergenValue)) {
+            for (String allergen : allergens) {
+                if (allergen.equalsIgnoreCase(allergenValue)) {
                     int start = m.start();
                     int end = m.end();
 
-                    if(tm.contains("(")) {
+                    if (tm.contains("(")) {
                         start += 1;
-                    } else if(tm.contains(")")) {
+                    } else if (tm.contains(")")) {
                         end -= 1;
                     }
 
@@ -242,7 +250,7 @@ public class IngredientsProductFragment extends BaseFragment {
             boolean canAdd = true;
 
             for (String allergen : list) {
-                if(tma.equalsIgnoreCase(allergen)){
+                if (tma.equalsIgnoreCase(allergen)) {
                     canAdd = false;
                     break;
                 }
