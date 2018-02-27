@@ -4,9 +4,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import java.util.Map;
 
+import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.models.AllergenRestResponse;
+import openfoodfacts.github.scrachx.openfood.models.PackagerCodes;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -132,6 +134,9 @@ public interface OpenFoodAPIService {
 
     @GET("code/{Code}.json")
     Call<Search> byCode(@Path("Code") String Code);
+
+    @GET("packager-codes.json")
+    Observable<PackagerCodes> getPackagerCodes();
 
     /**
      * Open Beauty Facts experimental and specific APIs

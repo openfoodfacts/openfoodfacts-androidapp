@@ -30,6 +30,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -42,11 +45,14 @@ import openfoodfacts.github.scrachx.openfood.models.AllergenRestResponse;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
+import openfoodfacts.github.scrachx.openfood.models.PackagerCodes;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.Tag;
+import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -57,6 +63,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
@@ -69,6 +76,8 @@ public class OpenFoodAPIClient {
 
     private AllergenDao mAllergenDao;
     private HistoryProductDao mHistoryProductDao;
+    private TagDao mTagDao;
+
     private ToUploadProductDao mToUploadProductDao;
     private OfflineUploadingTask task = new OfflineUploadingTask();
     private static final JacksonConverterFactory jacksonConverterFactory = JacksonConverterFactory.create();
@@ -83,6 +92,7 @@ public class OpenFoodAPIClient {
         this(BuildConfig.HOST);
         mAllergenDao = Utils.getAppDaoSession(activity).getAllergenDao();
         mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
+        mTagDao = Utils.getAppDaoSession(activity).getTagDao();
         mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
     }
 
@@ -99,6 +109,7 @@ public class OpenFoodAPIClient {
                 .baseUrl(apiUrl)
                 .client(httpClient)
                 .addConverterFactory(jacksonConverterFactory)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()
                 .create(OpenFoodAPIService.class);
     }
@@ -136,6 +147,7 @@ public class OpenFoodAPIClient {
                                 activity.startActivity(intent);
                                 activity.finish();
                             })
+                            .onNegative((dialog, which) -> activity.onBackPressed())
                             .show();
                 } else {
                     new HistoryTask().doInBackground(s.getProduct());
@@ -160,10 +172,37 @@ public class OpenFoodAPIClient {
                             activity.startActivity(intent);
                             activity.finish();
                         })
+                        .onNegative((dialog, which) -> activity.onBackPressed())
                         .show();
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public void getPackagerCodes() {
+        apiService.getPackagerCodes()
+                .flatMapIterable(PackagerCodes::getTags)
+                .subscribe(new Observer<Tag>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Tag tag) {
+                        mTagDao.insertOrReplace(tag);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(OpenFoodAPIClient.this.getClass().getSimpleName(), e.toString());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     /**
@@ -182,11 +221,19 @@ public class OpenFoodAPIClient {
                 final State s = response.body();
 
                 if (s.getStatus() == 0) {
-                    Toast.makeText(activity, R.string.txtDialogsContent, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                    intent.putExtra("barcode", barcode);
-                    activity.startActivity(intent);
-                    activity.finish();
+                    new MaterialDialog.Builder(activity)
+                            .title(R.string.txtDialogsTitle)
+                            .content(R.string.txtDialogsContent)
+                            .positiveText(R.string.txtYes)
+                            .negativeText(R.string.txtNo)
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                                intent.putExtra("barcode", barcode);
+                                activity.startActivity(intent);
+                                activity.finish();
+                            })
+                            .onNegative((dialog, which) -> activity.onBackPressed())
+                            .show();
                 } else {
                     final Product product = s.getProduct();
                     new HistoryTask().doInBackground(s.getProduct());
@@ -245,20 +292,14 @@ public class OpenFoodAPIClient {
                         .content(R.string.txtDialogsContent)
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
-                        .callback(new MaterialDialog.ButtonCallback() {
-                            @Override
-                            public void onPositive(MaterialDialog dialog) {
+                        .onPositive((dialog, which) -> {
                                 Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
                                 intent.putExtra("barcode", barcode);
                                 activity.startActivity(intent);
                                 activity.finish();
                             }
-
-                            @Override
-                            public void onNegative(MaterialDialog dialog) {
-                                return;
-                            }
-                        })
+                        )
+                        .onNegative((dialog, which) -> activity.onBackPressed())
                         .show();
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
             }
