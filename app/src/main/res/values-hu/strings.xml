@@ -103,8 +103,8 @@
   <string name="txtManufacturing">Gyártás vagy feldolgozás helye:</string>
   <string name="txtIngredientsOrigins">Összetevők származása:</string>
   <string name="txtCity">Vásárlás helye (város, állam vagy ország):</string>
-  <string name="txtEMB">EMB Code:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtEMB">EMB vagy EK üzemkód:</string>
+  <string name="txtManufactureUrl">A termék weboldalának címe a gyártó hivatalos honlapján:</string>
   <string name="txtStores">Boltok:</string>
   <string name="txtCountries">Országokban kapható:</string>
   <string name="txtIngredients">Összetevők listája :</string>
@@ -133,7 +133,7 @@
   <string name="hintPass">Jelszó</string>
   <string name="errorLogin">Bejelentkezési hiba</string>
   <string name="errorWeb">Internet csatlakozási problémák.</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="uploadLater">A kép feltöltésre kerül amikor a hálózat elérhető lesz</string>
   <string name="txtInfoLoginOk">Felhasználó mentve</string>
   <string name="txtInfoLoginNo">Felhasználó nem lett mentve</string>
   <string name="txtDialogsTitle">Információ</string>
