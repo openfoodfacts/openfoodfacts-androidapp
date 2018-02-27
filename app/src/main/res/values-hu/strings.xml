@@ -188,7 +188,7 @@
   <string name="alert_drawer">Allergén riasztás</string>
   <string name="warning_allergens">Allergént tartalmaz</string>
   <string name="title_dialog_alert">Figyelmeztetés felvétele</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
   <string name="from_gallery">Galériából</string>
   <string name="product_sent">Termék sikeresen elküldve</string>
   <string name="action_edit_product">Termék szerkesztés</string>
