@@ -32,4 +32,9 @@
         android:summary="@string/contact_summary"
         android:title="@string/contact" />
 
+    <Preference
+           android:title="@string/FAQ"
+            android:summary="@string/FrequentlyAskedQuestions"
+            android:key="@string/FAQ"/>
+
 </PreferenceScreen>
