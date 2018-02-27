@@ -22,5 +22,10 @@
         android:title="@string/contact"
         android:key="@string/contact_key"
         android:summary="@string/contact_summary"/>
+    <Preference
+        android:title="@string/FAQ"
+        android:summary="@string/FrequentlyAskedQuestions"
+        android:key="@string/FAQ"/>
+
 
 </PreferenceScreen>

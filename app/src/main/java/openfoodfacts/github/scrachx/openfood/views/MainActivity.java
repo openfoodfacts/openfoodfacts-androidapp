@@ -524,7 +524,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         return true;
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
                                            @NonNull int[] grantResults) {

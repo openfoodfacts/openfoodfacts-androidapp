@@ -386,4 +386,6 @@
     <string name="device_offline_dialog_negative">Dismiss</string>
     <string name="device_offline_dialog_positive">Settings</string>
     <string name="saving">Saving…</string>
+    <string name="FAQ">FAQ</string>
+    <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
 </resources>
