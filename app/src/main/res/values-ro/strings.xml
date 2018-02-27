@@ -188,7 +188,7 @@
   <string name="alert_drawer">Alertă alergeni</string>
   <string name="warning_allergens">Conține alergeni</string>
   <string name="title_dialog_alert">Adaugare alertă</string>
-  <string name="warning_alert_data">Informațiile despre alergiile dumneavostră nu vor fi trimise către Open Food Facts. Deasemenea, luați în considerare faptul că datele pot fi imprecise, întotdeauna re-verificați dumneavoastră înșivă!</string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">Din galerie</string>
   <string name="product_sent">Produsul a fost trimis cu succes</string>
   <string name="action_edit_product">Modificare produs</string>
