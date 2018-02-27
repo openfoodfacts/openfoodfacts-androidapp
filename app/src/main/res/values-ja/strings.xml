@@ -188,7 +188,7 @@
   <string name="alert_drawer">アレルゲン警告</string>
   <string name="warning_allergens">アレルゲンを含んでいます</string>
   <string name="title_dialog_alert">警告を追加</string>
-  <string name="warning_alert_data">アレルギー情報は、Open Food Facts サーバーに送信されることはありません。また、データが正確でない可能性があることにご注意ください。ご自分でもう一度ご確認ください!</string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">ギャラリーから</string>
   <string name="product_sent">製品を送信しました</string>
   <string name="action_edit_product">製品を編集</string>
