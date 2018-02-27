@@ -103,6 +103,8 @@
   <string name="txtManufacturing">مکان تولیدی:</string>
   <string name="txtIngredientsOrigins">منشاء مواد تشکیل دهنده:</string>
   <string name="txtCity">شهر ایالت و کشوری که در آن خریداری شده:</string>
+  <string name="txtEMB">EMB Code:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">فروشگاه ها:</string>
   <string name="txtCountries">کشورهایی که در آن به فروش می رسد:</string>
   <string name="txtIngredients">لیست مواد تشکیل دهنده:</string>
@@ -131,6 +133,7 @@
   <string name="hintPass">گذرواژه</string>
   <string name="errorLogin">خطا در ورود به سیستم یا رمز عبور</string>
   <string name="errorWeb">ما قادر به دسترسی به اینترنت نیستیم. دسترسی به اینترنت دارید؟</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">کاربر ذخیره شد</string>
   <string name="txtInfoLoginNo">کاربر ذخیره نشد</string>
   <string name="txtDialogsTitle">اطلاعات</string>
@@ -154,7 +157,7 @@
   <string name="txtInfoAddUser">لطفا نام کاربری و رمز عبور خود را وارد کنید</string>
   <string name="txtDataUpdated">داده ها بروز شدند</string>
   <string name="txtLoading">درحال بارگذاری...</string>
-  <string name="txtDialogsContentDelete">آیا می خواهید این پیش نویس را حذف کنید؟</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">محصول به صورت محلی ذخیره می شود، شما می توانید آن را در منوی \"ویرایش آفلاین\" ویرایش کنید</string>
   <string name="txtBarcodeRequire">بارکد مورد نیاز است</string>
   <string name="txtOk">تأیید</string>
@@ -185,7 +188,7 @@
   <string name="alert_drawer">هشدار وجود آلرژن</string>
   <string name="warning_allergens">شامل آلرژن است</string>
   <string name="title_dialog_alert">اضافه کردن هشدار</string>
-  <string name="warning_alert_data">اطلاعات آلرژی شما هیچگاه به سرور Open Food Facts فرستاده نمیشود. اطلاعات ممکن است دقیق نباشد ،لطفاً قبل از استفاده امتحان کنید! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">از گالری</string>
   <string name="product_sent">محصولات با موفقیت ارسال شد</string>
   <string name="action_edit_product">ویرایش کالا</string>
@@ -343,4 +346,18 @@
   <string name="next">NEXT</string>
   <string name="skip">SKIP</string>
   <string name="start">GOT IT</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
+  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_positive">تنظیمات</string>
+  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_positive">تنظیمات</string>
+  <string name="saving">Saving…</string>
 </resources>
