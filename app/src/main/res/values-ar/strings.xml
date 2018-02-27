@@ -188,7 +188,7 @@
   <string name="alert_drawer">تنبيه مسببات الحساسية</string>
   <string name="warning_allergens">يحتوي على المواد المسببة للحساسية</string>
   <string name="title_dialog_alert">إضافة تنبيه</string>
-  <string name="warning_alert_data">سيتم إرسال معلومات الحساسية الخاصة بك على الملقم \"فتح الغذاء الحقائق\" ابدأ. أيضا، كن حذراً من أن البيانات قد لا تكون دقيقة، يرجى التحقق من صحة بنفسك! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">من معرض الصور</string>
   <string name="product_sent">تم إرسال المنتج بنجاح</string>
   <string name="action_edit_product">تحرير المنتج</string>
