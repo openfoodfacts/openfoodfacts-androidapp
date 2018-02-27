@@ -22,17 +22,19 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
     public TextView txtBarcode;
     public TextView txtBrands;
     public ImageView imgProduct;
+    public ImageView imgGrade;
     public ImageButton imgShare;
     public Activity mActivity;
 
     public HistoryScanHolder(final View itemView, final String productUrl, Activity activity) {
         super(itemView);
-        txtTitle = (TextView) itemView.findViewById(R.id.titleHistory);
-        txtBarcode = (TextView) itemView.findViewById(R.id.barcodeHistory);
-        txtBrands = (TextView) itemView.findViewById(R.id.brandsHistory);
-        imgProduct = (ImageView) itemView.findViewById(R.id.imgHistoryProduct);
-        imgShare = (ImageButton) itemView.findViewById(R.id.iconShareHistory);
-        txtDate = (TextView) itemView.findViewById(R.id.dateView);
+        txtTitle = itemView.findViewById(R.id.titleHistory);
+        txtBarcode = itemView.findViewById(R.id.barcodeHistory);
+        txtBrands = itemView.findViewById(R.id.brandsHistory);
+        imgProduct = itemView.findViewById(R.id.imgHistoryProduct);
+        imgShare = itemView.findViewById(R.id.iconShareHistory);
+        imgGrade = itemView.findViewById(R.id.img_grade);
+        txtDate = itemView.findViewById(R.id.dateView);
         mActivity = activity;
 
         imgShare.setOnClickListener(view -> {

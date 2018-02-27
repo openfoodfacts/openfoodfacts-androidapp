@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.holders.HistoryScanHolder;
 
 public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> {
@@ -24,6 +26,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
     private Activity mActivity;
 
     public HistoryListAdapter(List<HistoryItem> list, String productUrl, Activity activity) {
+
         this.list = list == null ? Collections.<HistoryItem>emptyList() : list;
         this.productUrl = productUrl;
         this.mActivity = activity;
@@ -31,6 +34,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
 
     @Override
     public HistoryScanHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         //Inflate the layout, initialize the View Holder
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.history_list_item, parent, false);
         return new HistoryScanHolder(v, productUrl, mActivity);
@@ -44,14 +48,13 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         holder.txtBarcode.setText(list.get(position).getBarcode());
         holder.txtBrands.setText(list.get(position).getBrands());
         holder.imgProduct.setImageBitmap(list.get(position).getUrl());
+        holder.imgGrade.setImageDrawable(ContextCompat.getDrawable(mActivity, Utils.getImageGradeColor(list.get(position).getGrade())));
 
         Date date = list.get(position).getTime();
 
         long time = date.getTime();
-        String timeStamp = (String)DateUtils.getRelativeTimeSpanString(time);
+        String timeStamp = (String) DateUtils.getRelativeTimeSpanString(time);
         holder.txtDate.setText(timeStamp);
-
-        //animate(holder);
     }
 
     @Override

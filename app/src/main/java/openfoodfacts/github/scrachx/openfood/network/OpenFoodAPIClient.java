@@ -38,6 +38,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
+import okhttp3.internal.Util;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
@@ -72,6 +73,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.ING
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
 public class OpenFoodAPIClient {
 
     private AllergenDao mAllergenDao;
@@ -318,11 +320,11 @@ public class OpenFoodAPIClient {
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
                         .onPositive((dialog, which) -> {
-                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                intent.putExtra("barcode", barcode);
-                                activity.startActivity(intent);
-                                activity.finish();
-                            }
+                                    Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                                    intent.putExtra("barcode", barcode);
+                                    activity.startActivity(intent);
+                                    activity.finish();
+                                }
                         )
                         .onNegative((dialog, which) -> activity.onBackPressed())
                         .show();
@@ -341,7 +343,7 @@ public class OpenFoodAPIClient {
                 }
 
                 Search s = response.body();
-                if(Integer.valueOf(s.getCount()) == 0){
+                if (Integer.valueOf(s.getCount()) == 0) {
                     productsCallback.onProductsResponse(false, null, -2);
                 } else {
                     productsCallback.onProductsResponse(true, s.getProducts(), Integer.parseInt(s.getCount()));
@@ -514,14 +516,13 @@ public class OpenFoodAPIClient {
         protected Void doInBackground(Product... products) {
             Product product = products[0];
 
-            List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode
-                    ())).list();
+            List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode())).list();
             HistoryProduct hp;
             if (historyProducts.size() == 1) {
                 hp = historyProducts.get(0);
                 hp.setLastSeen(new Date());
             } else {
-                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageFrontUrl(), product.getCode());
+                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageFrontUrl(), product.getCode(), product.getNutritionGradeFr());
             }
             mHistoryProductDao.insertOrReplace(hp);
 

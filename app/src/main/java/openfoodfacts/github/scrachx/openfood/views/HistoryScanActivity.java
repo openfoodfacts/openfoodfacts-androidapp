@@ -146,7 +146,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             } else {
                 writer = new CSVWriter(new FileWriter(filePath));
             }
-           String[]  headers = getResources().getStringArray(R.array.headers);
+            String[] headers = getResources().getStringArray(R.array.headers);
             writer.writeNext(headers);
             List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             for (HistoryProduct hp : listHistoryProducts) {
@@ -224,7 +224,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         @Override
         protected Context doInBackground(Context... ctx) {
             listHistoryProducts = mHistoryProductDao.queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list();
-//            final Bitmap defaultImgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_no), 200, 200, true);
 
 
             for (HistoryProduct historyProduct : listHistoryProducts) {
@@ -261,7 +260,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                     }
                 }
 
-                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), imgUrl, historyProduct.getBarcode(),historyProduct.getLastSeen()));
+                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), imgUrl, historyProduct.getBarcode(), historyProduct.getLastSeen(), historyProduct.getGrade()));
             }
 
             return ctx[0];
@@ -269,9 +268,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         @Override
         protected void onPostExecute(Context ctx) {
-//            HistoryListAdapter adapter = new HistoryListAdapter(productItems, getString(R.string.website_product), activity);
-//            recyclerHistoryScanView.setAdapter(adapter);
-//            recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
             adapter = new HistoryListAdapter(productItems, getString(R.string
                     .website_product), activity);
             recyclerHistoryScanView.setAdapter(adapter);

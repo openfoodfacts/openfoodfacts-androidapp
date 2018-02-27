@@ -104,5 +104,16 @@
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/ic_share_black_48px" />
 
+    <ImageView
+        android:id="@+id/img_grade"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignEnd="@+id/imgHistoryProduct"
+        android:layout_alignRight="@+id/imgHistoryProduct"
+        android:layout_alignTop="@+id/imgHistoryProduct"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter" />
+
 </RelativeLayout>
 
