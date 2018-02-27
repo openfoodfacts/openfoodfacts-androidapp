@@ -386,4 +386,5 @@
     <string name="device_offline_dialog_negative">Dismiss</string>
     <string name="device_offline_dialog_positive">Settings</string>
     <string name="saving">Saving…</string>
+    <string name="scan_first_product">Scan First Product</string>
 </resources>
