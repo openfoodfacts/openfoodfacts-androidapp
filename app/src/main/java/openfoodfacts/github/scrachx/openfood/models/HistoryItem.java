@@ -11,16 +11,18 @@ public class HistoryItem {
     private Bitmap url;
     private String barcode;
     private Date lastSeen;
+    private String grade;
 
     public HistoryItem() {
     }
 
-    public HistoryItem(String title, String brands, Bitmap url, String barcode, Date lastSeen) {
+    public HistoryItem(String title, String brands, Bitmap url, String barcode, Date lastSeen, String grade) {
         this.title = title;
         this.brands = brands;
         this.url = url;
         this.barcode = barcode;
         this.lastSeen = lastSeen;
+        this.grade = grade;
     }
 
     public String getBarcode() {
@@ -61,5 +63,21 @@ public class HistoryItem {
 
     public Date getTime() {
         return lastSeen;
+    }
+
+    public Date getLastSeen() {
+        return lastSeen;
+    }
+
+    public void setLastSeen(Date lastSeen) {
+        this.lastSeen = lastSeen;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 }

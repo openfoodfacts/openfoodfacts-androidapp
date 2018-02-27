@@ -214,6 +214,37 @@ public class Utils {
         }
     }
 
+    public static int getImageGradeColor(String grade) {
+        int drawable;
+
+        if (grade == null) {
+            return R.drawable.ic_circle_grey_24dp;
+        }
+
+        switch (grade.toLowerCase()) {
+            case "a":
+                drawable = R.drawable.ic_circle_dark_green_24dp;
+                break;
+            case "b":
+                drawable = R.drawable.ic_circle_green_24dp;
+                break;
+            case "c":
+                drawable = R.drawable.ic_circle_yellow_24dp;
+                break;
+            case "d":
+                drawable = R.drawable.ic_circle_orange_24dp;
+                break;
+            case "e":
+                drawable = R.drawable.ic_circle_red_24dp;
+                break;
+            default:
+                drawable = R.drawable.ic_circle_grey_24dp;
+                break;
+        }
+
+        return drawable;
+    }
+
     public static int getImageGrade(String grade) {
         int drawable;
 
@@ -364,12 +395,13 @@ public class Utils {
 
     /**
      * Check if airplane mode is turned on on the device.
+     *
      * @param context of the application.
      * @return true if airplane mode is active.
      */
     @SuppressWarnings("depreciation")
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public static boolean isAirplaneModeActive(Context context){
+    public static boolean isAirplaneModeActive(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
             return Settings.System.getInt(context.getContentResolver(),
                     Settings.System.AIRPLANE_MODE_ON, 0) != 0;
@@ -381,6 +413,7 @@ public class Utils {
 
     /**
      * Check if the user is connected to a network. This can be any network.
+     *
      * @param context of the application.
      * @return true if connected or connecting. False otherwise.
      */
@@ -393,10 +426,11 @@ public class Utils {
 
     /**
      * Check if the user is connected to a mobile network.
+     *
      * @param context of the application.
      * @return true if connected to mobile data.
      */
-    public static boolean isConnectedToMobileData(Context context){
+    public static boolean isConnectedToMobileData(Context context) {
         return getNetworkType(context).equals("Mobile");
     }
 
