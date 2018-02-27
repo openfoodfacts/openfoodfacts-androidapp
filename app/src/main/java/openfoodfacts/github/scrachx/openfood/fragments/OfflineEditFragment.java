@@ -1,10 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -124,15 +126,29 @@ public class OfflineEditFragment extends BaseFragment {
                     .negativeText(R.string.txtNo)
                     .onPositive((dialog, which) -> uploadProducts())
                     .show();
-        } else if (Utils.isAirplaneModeActive(getContext())){
+        } else if (Utils.isAirplaneModeActive(getContext())) {
             new MaterialDialog.Builder(getActivity())
                     .title(R.string.airplane_mode_active_dialog_title)
                     .content(R.string.airplane_mode_active_dialog_message)
                     .positiveText(R.string.airplane_mode_active_dialog_positive)
                     .negativeText(R.string.airplane_mode_active_dialog_negative)
-                    .onPositive((dialog, which) -> startActivity(new Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS)))
+                    .onPositive((dialog, which) -> {
+                        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                            try {
+                                Intent intentAirplaneMode = new Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS);
+                                intentAirplaneMode.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intentAirplaneMode);
+                            } catch (ActivityNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Intent intent1 = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
+                            intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent1);
+                        }
+                    })
                     .show();
-        } else if (!Utils.isNetworkConnected(getContext())){
+        } else if (!Utils.isNetworkConnected(getContext())) {
             new MaterialDialog.Builder(getActivity())
                     .title(R.string.device_offline_dialog_title)
                     .content(R.string.device_offline_dialog_message)
@@ -140,13 +156,13 @@ public class OfflineEditFragment extends BaseFragment {
                     .negativeText(R.string.device_offline_dialog_negative)
                     .onPositive((dialog, which) -> startActivity(new Intent(Settings.ACTION_SETTINGS)))
                     .show();
-        } else if (!PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true) && Utils.isConnectedToMobileData(getContext())){
+        } else if (!PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true) && Utils.isConnectedToMobileData(getContext())) {
             new MaterialDialog.Builder(getActivity())
                     .title(R.string.device_on_mobile_data_warning_title)
                     .content(R.string.device_on_mobile_data_warning_message)
                     .positiveText(R.string.device_on_mobile_data_warning_positive)
                     .negativeText(R.string.device_on_mobile_data_warning_negative)
-                    .onPositive((dialog, which) -> ((MainActivity)getActivity()).moveToPreferences())
+                    .onPositive((dialog, which) -> ((MainActivity) getActivity()).moveToPreferences())
                     .onNegative((dialog, which) -> uploadProducts())
                     .show();
         }
@@ -155,7 +171,7 @@ public class OfflineEditFragment extends BaseFragment {
     /**
      * Upload the offline products.
      */
-    private void uploadProducts(){
+    private void uploadProducts() {
         OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getActivity());
         final List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
         for (final SendProduct product : listSaveProduct) {
