@@ -640,4 +640,19 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             Log.e("MainActivity", "Error in creating fragment");
         }
     }
+
+    /**
+     * This moves the main activity to the preferences fragment.
+     */
+    public void moveToPreferences(){
+        result.setSelection(8);
+        Fragment fragment = new PreferencesFragment();
+        getSupportActionBar().setTitle(R.string.action_preferences);
+
+        if (fragment != null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        } else {
+            Log.e(getClass().getSimpleName(), "Error in creating fragment");
+        }
+    }
 }

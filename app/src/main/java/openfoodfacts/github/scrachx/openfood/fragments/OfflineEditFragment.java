@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -33,6 +34,7 @@ import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
@@ -109,53 +111,18 @@ public class OfflineEditFragment extends BaseFragment {
         return true;
     }
 
+    /**
+     * User has clicked "upload all" to upload the offline products.
+     */
     @OnClick(R.id.buttonSendAll)
     protected void onSendAllProducts() {
-        if (!Utils.isAirplaneModeActive(getContext()) && Utils.isNetworkConnected(getContext())) {
+        if (!Utils.isAirplaneModeActive(getContext()) && Utils.isNetworkConnected(getContext()) && PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true)) {
             new MaterialDialog.Builder(getActivity())
                     .title(R.string.txtDialogsTitle)
                     .content(R.string.txtDialogsContentSend)
                     .positiveText(R.string.txtYes)
                     .negativeText(R.string.txtNo)
-                    .onPositive((dialog, which) -> {
-                        OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getActivity());
-                        final List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
-                        for (final SendProduct product : listSaveProduct) {
-                            if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())) {
-                                continue;
-                            }
-
-                            if (!loginS.isEmpty() && !passS.isEmpty()) {
-                                product.setUserId(loginS);
-                                product.setPassword(passS);
-                            }
-
-                            if (isNotEmpty(product.getImgupload_ingredients())) {
-                                product.compress(ProductImageField.INGREDIENTS);
-                            }
-
-                            if (isNotEmpty(product.getImgupload_nutrition())) {
-                                product.compress(ProductImageField.NUTRITION);
-                            }
-
-                            if (isNotEmpty(product.getImgupload_front())) {
-                                product.compress(ProductImageField.FRONT);
-                            }
-
-                            apiClient.post(getActivity(), product, value -> {
-                                if (value) {
-                                    int productIndex = listSaveProduct.indexOf(product);
-
-                                    if (productIndex >= 0 && productIndex < saveItems.size()) {
-                                        saveItems.remove(productIndex);
-                                    }
-
-                                    ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
-                                    mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
-                                }
-                            });
-                        }
-                    })
+                    .onPositive((dialog, which) -> uploadProducts())
                     .show();
         } else if (Utils.isAirplaneModeActive(getContext())){
             new MaterialDialog.Builder(getActivity())
@@ -163,9 +130,7 @@ public class OfflineEditFragment extends BaseFragment {
                     .content(R.string.airplane_mode_active_dialog_message)
                     .positiveText(R.string.airplane_mode_active_dialog_positive)
                     .negativeText(R.string.airplane_mode_active_dialog_negative)
-                    .onPositive((dialog, which) -> {
-                        startActivity(new Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS));
-                    })
+                    .onPositive((dialog, which) -> startActivity(new Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS)))
                     .show();
         } else if (!Utils.isNetworkConnected(getContext())){
             new MaterialDialog.Builder(getActivity())
@@ -173,10 +138,60 @@ public class OfflineEditFragment extends BaseFragment {
                     .content(R.string.device_offline_dialog_message)
                     .positiveText(R.string.device_offline_dialog_positive)
                     .negativeText(R.string.device_offline_dialog_negative)
-                    .onPositive((dialog, which) -> {
-                        startActivity(new Intent(Settings.ACTION_SETTINGS));
-                    })
+                    .onPositive((dialog, which) -> startActivity(new Intent(Settings.ACTION_SETTINGS)))
                     .show();
+        } else if (!PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true) && Utils.isConnectedToMobileData(getContext())){
+            new MaterialDialog.Builder(getActivity())
+                    .title(R.string.device_on_mobile_data_warning_title)
+                    .content(R.string.device_on_mobile_data_warning_message)
+                    .positiveText(R.string.device_on_mobile_data_warning_positive)
+                    .negativeText(R.string.device_on_mobile_data_warning_negative)
+                    .onPositive((dialog, which) -> ((MainActivity)getActivity()).moveToPreferences())
+                    .onNegative((dialog, which) -> uploadProducts())
+                    .show();
+        }
+    }
+
+    /**
+     * Upload the offline products.
+     */
+    private void uploadProducts(){
+        OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getActivity());
+        final List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
+        for (final SendProduct product : listSaveProduct) {
+            if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())) {
+                continue;
+            }
+
+            if (!loginS.isEmpty() && !passS.isEmpty()) {
+                product.setUserId(loginS);
+                product.setPassword(passS);
+            }
+
+            if (isNotEmpty(product.getImgupload_ingredients())) {
+                product.compress(ProductImageField.INGREDIENTS);
+            }
+
+            if (isNotEmpty(product.getImgupload_nutrition())) {
+                product.compress(ProductImageField.NUTRITION);
+            }
+
+            if (isNotEmpty(product.getImgupload_front())) {
+                product.compress(ProductImageField.FRONT);
+            }
+
+            apiClient.post(getActivity(), product, value -> {
+                if (value) {
+                    int productIndex = listSaveProduct.indexOf(product);
+
+                    if (productIndex >= 0 && productIndex < saveItems.size()) {
+                        saveItems.remove(productIndex);
+                    }
+
+                    ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
+                    mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
+                }
+            });
         }
     }
 
