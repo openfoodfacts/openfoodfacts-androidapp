@@ -10,7 +10,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
@@ -52,8 +51,6 @@ import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsResultsFragment;
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
@@ -392,7 +389,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         .title(R.string.action_about)
                         .content(R.string.permission_camera)
                         .neutralText(R.string.txtOk)
-                        .show();
+                        .show().setOnDismissListener(dialogInterface -> ActivityCompat.requestPermissions(MainActivity.this,
+                        new String[]{Manifest.permission.CAMERA},
+                        Utils.MY_PERMISSIONS_REQUEST_CAMERA));
+
             } else {
                 ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest
                         .permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
@@ -535,25 +535,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         .PERMISSION_GRANTED) {
                     Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
                     startActivity(intent);
-                } else {
-                    new MaterialDialog.Builder(this)
-                            .title(R.string.permission_title)
-                            .content(R.string.permission_denied)
-                            .negativeText(R.string.txtNo)
-                            .positiveText(R.string.txtYes)
-                            .onPositive((dialog, which) -> {
-                                Intent intent = new Intent();
-                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                Uri uri = Uri.fromParts("package", getPackageName(), null);
-                                intent.setData(uri);
-                                startActivity(intent);
-                            })
-                            .show();
                 }
-                break;
             }
+            break;
         }
     }
+
 
     private IDrawerItem<PrimaryDrawerItem, com.mikepenz.materialdrawer.model
             .AbstractBadgeableDrawerItem.ViewHolder> getLogoutDrawerItem() {
