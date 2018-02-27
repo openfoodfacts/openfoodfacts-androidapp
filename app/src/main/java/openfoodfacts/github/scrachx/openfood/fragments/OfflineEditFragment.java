@@ -111,6 +111,9 @@ public class OfflineEditFragment extends BaseFragment {
         return true;
     }
 
+    /**
+     * User has clicked "upload all" to upload the offline products.
+     */
     @OnClick(R.id.buttonSendAll)
     protected void onSendAllProducts() {
         if (!Utils.isAirplaneModeActive(getContext()) && Utils.isNetworkConnected(getContext()) && PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true)) {
@@ -119,45 +122,7 @@ public class OfflineEditFragment extends BaseFragment {
                     .content(R.string.txtDialogsContentSend)
                     .positiveText(R.string.txtYes)
                     .negativeText(R.string.txtNo)
-                    .onPositive((dialog, which) -> {
-                        OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getActivity());
-                        final List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
-                        for (final SendProduct product : listSaveProduct) {
-                            if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())) {
-                                continue;
-                            }
-
-                            if (!loginS.isEmpty() && !passS.isEmpty()) {
-                                product.setUserId(loginS);
-                                product.setPassword(passS);
-                            }
-
-                            if (isNotEmpty(product.getImgupload_ingredients())) {
-                                product.compress(ProductImageField.INGREDIENTS);
-                            }
-
-                            if (isNotEmpty(product.getImgupload_nutrition())) {
-                                product.compress(ProductImageField.NUTRITION);
-                            }
-
-                            if (isNotEmpty(product.getImgupload_front())) {
-                                product.compress(ProductImageField.FRONT);
-                            }
-
-                            apiClient.post(getActivity(), product, value -> {
-                                if (value) {
-                                    int productIndex = listSaveProduct.indexOf(product);
-
-                                    if (productIndex >= 0 && productIndex < saveItems.size()) {
-                                        saveItems.remove(productIndex);
-                                    }
-
-                                    ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
-                                    mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
-                                }
-                            });
-                        }
-                    })
+                    .onPositive((dialog, which) -> uploadProducts())
                     .show();
         } else if (Utils.isAirplaneModeActive(getContext())){
             new MaterialDialog.Builder(getActivity())
@@ -182,7 +147,51 @@ public class OfflineEditFragment extends BaseFragment {
                     .positiveText(R.string.device_on_mobile_data_warning_positive)
                     .negativeText(R.string.device_on_mobile_data_warning_negative)
                     .onPositive((dialog, which) -> ((MainActivity)getActivity()).moveToPreferences())
+                    .onNegative((dialog, which) -> uploadProducts())
                     .show();
+        }
+    }
+
+    /**
+     * Upload the offline products.
+     */
+    private void uploadProducts(){
+        OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getActivity());
+        final List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
+        for (final SendProduct product : listSaveProduct) {
+            if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())) {
+                continue;
+            }
+
+            if (!loginS.isEmpty() && !passS.isEmpty()) {
+                product.setUserId(loginS);
+                product.setPassword(passS);
+            }
+
+            if (isNotEmpty(product.getImgupload_ingredients())) {
+                product.compress(ProductImageField.INGREDIENTS);
+            }
+
+            if (isNotEmpty(product.getImgupload_nutrition())) {
+                product.compress(ProductImageField.NUTRITION);
+            }
+
+            if (isNotEmpty(product.getImgupload_front())) {
+                product.compress(ProductImageField.FRONT);
+            }
+
+            apiClient.post(getActivity(), product, value -> {
+                if (value) {
+                    int productIndex = listSaveProduct.indexOf(product);
+
+                    if (productIndex >= 0 && productIndex < saveItems.size()) {
+                        saveItems.remove(productIndex);
+                    }
+
+                    ((SaveListAdapter) listView.getAdapter()).notifyDataSetChanged();
+                    mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
+                }
+            });
         }
     }
 
