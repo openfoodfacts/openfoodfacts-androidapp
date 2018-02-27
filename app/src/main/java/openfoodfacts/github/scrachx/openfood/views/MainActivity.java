@@ -172,7 +172,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     }
 
                     @Override
-                    public void onDrawerClosed(View drawerView) {}
+                    public void onDrawerClosed(View drawerView) {
+                    }
 
                     @Override
                     public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -295,7 +296,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     }
 
                     if (fragment != null) {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
                     } else {
                         // error in creating fragment
                         Log.e("MainActivity", "Error in creating fragment");
@@ -637,6 +638,21 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         } else {
             // error in creating fragment
             Log.e("MainActivity", "Error in creating fragment");
+        }
+    }
+
+    /**
+     * This moves the main activity to the preferences fragment.
+     */
+    public void moveToPreferences(){
+        result.setSelection(8);
+        Fragment fragment = new PreferencesFragment();
+        getSupportActionBar().setTitle(R.string.action_preferences);
+
+        if (fragment != null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        } else {
+            Log.e(getClass().getSimpleName(), "Error in creating fragment");
         }
     }
 }

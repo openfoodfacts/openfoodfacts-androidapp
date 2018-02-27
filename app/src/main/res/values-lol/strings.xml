@@ -103,6 +103,8 @@
   <string name="txtManufacturing">crwdns35060:0crwdne35060:0</string>
   <string name="txtIngredientsOrigins">crwdns35061:0crwdne35061:0</string>
   <string name="txtCity">crwdns35062:0crwdne35062:0</string>
+  <string name="txtEMB">crwdns37187:0crwdne37187:0</string>
+  <string name="txtManufactureUrl">crwdns37176:0crwdne37176:0</string>
   <string name="txtStores">crwdns35063:0crwdne35063:0</string>
   <string name="txtCountries">crwdns35064:0crwdne35064:0</string>
   <string name="txtIngredients">crwdns35065:0crwdne35065:0</string>
@@ -131,6 +133,7 @@
   <string name="hintPass">crwdns35089:0crwdne35089:0</string>
   <string name="errorLogin">crwdns35090:0crwdne35090:0</string>
   <string name="errorWeb">crwdns35091:0crwdne35091:0</string>
+  <string name="uploadLater">crwdns37175:0crwdne37175:0</string>
   <string name="txtInfoLoginOk">crwdns35092:0crwdne35092:0</string>
   <string name="txtInfoLoginNo">crwdns35093:0crwdne35093:0</string>
   <string name="txtDialogsTitle">crwdns35094:0crwdne35094:0</string>
@@ -154,7 +157,7 @@
   <string name="txtInfoAddUser">crwdns35112:0crwdne35112:0</string>
   <string name="txtDataUpdated">crwdns35113:0crwdne35113:0</string>
   <string name="txtLoading">crwdns37140:0crwdne37140:0</string>
-  <string name="txtDialogsContentDelete">crwdns35115:0crwdne35115:0</string>
+  <string name="txtDialogsContentDelete">crwdns37186:0crwdne37186:0</string>
   <string name="txtDialogsContentInfoSave">crwdns35116:0crwdne35116:0</string>
   <string name="txtBarcodeRequire">crwdns35117:0crwdne35117:0</string>
   <string name="txtOk">crwdns35118:0crwdne35118:0</string>
@@ -185,7 +188,7 @@
   <string name="alert_drawer">crwdns35141:0crwdne35141:0</string>
   <string name="warning_allergens">crwdns35142:0crwdne35142:0</string>
   <string name="title_dialog_alert">crwdns35143:0crwdne35143:0</string>
-  <string name="warning_alert_data">crwdns35156:0crwdne35156:0</string>
+  <string name="warning_alert_data">crwdns37188:0crwdne37188:0</string>
   <string name="from_gallery">crwdns35157:0crwdne35157:0</string>
   <string name="product_sent">crwdns35158:0crwdne35158:0</string>
   <string name="action_edit_product">crwdns35159:0crwdne35159:0</string>
@@ -343,4 +346,18 @@
   <string name="next">crwdns37143:0crwdne37143:0</string>
   <string name="skip">crwdns37144:0crwdne37144:0</string>
   <string name="start">crwdns37145:0crwdne37145:0</string>
+  <string name="contact">crwdns37170:0crwdne37170:0</string>
+  <string name="contact_key">crwdns37171:0crwdne37171:0</string>
+  <string name="contact_summary">crwdns37172:0crwdne37172:0</string>
+  <string name="off_mail">crwdns37173:0crwdne37173:0</string>
+  <string name="email_not_found">crwdns37174:0crwdne37174:0</string>
+  <string name="airplane_mode_active_dialog_title">crwdns37177:0crwdne37177:0</string>
+  <string name="airplane_mode_active_dialog_message">crwdns37178:0crwdne37178:0</string>
+  <string name="airplane_mode_active_dialog_negative">crwdns37179:0crwdne37179:0</string>
+  <string name="airplane_mode_active_dialog_positive">crwdns37180:0crwdne37180:0</string>
+  <string name="device_offline_dialog_title">crwdns37181:0crwdne37181:0</string>
+  <string name="device_offline_dialog_message">crwdns37182:0crwdne37182:0</string>
+  <string name="device_offline_dialog_negative">crwdns37183:0crwdne37183:0</string>
+  <string name="device_offline_dialog_positive">crwdns37184:0crwdne37184:0</string>
+  <string name="saving">crwdns37185:0crwdne37185:0</string>
 </resources>

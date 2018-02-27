@@ -103,6 +103,8 @@
   <string name="txtManufacturing">ထုတ္လုပ္ျခင္း သို႔မဟုတ္ ထုတ္သည့္ေနရာမ်ား -</string>
   <string name="txtIngredientsOrigins">Origin of ingredients :</string>
   <string name="txtCity">ဝယ္ယူခဲ့ေသာ ျမိဳ႕၊ ျပည္နယ္ ႏွင့္ ႏိုင္ငံ -</string>
+  <string name="txtEMB">EMB Code:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">စတိုးမ်ား -</string>
   <string name="txtCountries">ေရာင္းခဲ့ေသာႏိုင္ငံမ်ား -</string>
   <string name="txtIngredients">ပါဝင္ပစၥည္းစာရင္း -</string>
@@ -131,6 +133,7 @@
   <string name="hintPass">စကားဝွက္</string>
   <string name="errorLogin">ဝင္ေရာက္မႈ သို႔မဟုတ္ စကားဝွက္ခ်ိဳ႕ယြင္းခ်က္</string>
   <string name="errorWeb">ကၽြႏ္ုပ္တို႔မွ အင္တာနက္ႏွင့္မခ်ိတ္ဆက္ႏိုင္ဘူးျဖစ္ေနသည္။ သင့္တြင္ ခ်ိတ္ဆက္မႈခ်ိဳ႕ယြင္းေနပါသလား။</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">အသံုးျပဳသူသိမ္းခဲ့ျပီးျပီ</string>
   <string name="txtInfoLoginNo">အသံုးျပဳသူကိုမသိမ္းခဲ့ပါ</string>
   <string name="txtDialogsTitle">အခ်က္အလက္</string>
@@ -154,7 +157,7 @@
   <string name="txtInfoAddUser">သင္ဝင္ေရာက္မႈႏွင့္စကားဝွက္ကိုရိုက္ထည့္ပါ</string>
   <string name="txtDataUpdated">အခ်က္အလက္အသစ္မြမ္းမံခဲ့သည္</string>
   <string name="txtLoading">ဖြင့္ေနသည္</string>
-  <string name="txtDialogsContentDelete">ဒီအၾကမ္းကိုသင္ဖ်က္ခ်င္ပါသလား</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">ထုတ္ကုန္ကို စက္ထဲသိမ္းထားခဲ့သည္။ ေအာ့္ဖ္လိုင္းျပင္ဆင္မႈမီႏူးမွတစ္ဆင့္သင္ျပင္ဆင္ႏိုင္သည္</string>
   <string name="txtBarcodeRequire">ဘားကုဒ္လိုအပ္သည္</string>
   <string name="txtOk">အိုကေ</string>
@@ -185,7 +188,7 @@
   <string name="alert_drawer">Allergen alert</string>
   <string name="warning_allergens">အလာဂ်င္ပါဝင္သည္</string>
   <string name="title_dialog_alert">သတိေပးမႈထည့္မည္</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">ဓာတ္ပံုျပခန္းမွ</string>
   <string name="product_sent">Product sent successfully</string>
   <string name="action_edit_product">ထုတ်ကုန်ကိုပြင်ဆင်ရန်</string>
@@ -343,4 +346,18 @@
   <string name="next">NEXT</string>
   <string name="skip">SKIP</string>
   <string name="start">GOT IT</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
+  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_positive">အပြင်​အဆင်​များ</string>
+  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_positive">အပြင်​အဆင်​များ</string>
+  <string name="saving">Saving…</string>
 </resources>

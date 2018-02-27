@@ -8,9 +8,9 @@ import android.media.ToneGenerator;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -188,7 +188,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
         }
 
 
-        if (Utils.isNetworkConnected(getContext())) {
+        if (Utils.isNetworkConnected(getContext()) && PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true)) {
             if (settings.getBoolean("powerMode", false) && mScannerView != null) {
                 api.getShortProduct(rawResult.getText(), getActivity(), mScannerView, this);
             } else {
