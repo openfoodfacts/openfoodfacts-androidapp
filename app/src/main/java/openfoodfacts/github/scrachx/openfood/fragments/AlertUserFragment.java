@@ -72,7 +72,7 @@ public class AlertUserFragment extends BaseFragment {
             editor.apply();
         }
 
-        mRvAllergens = (RecyclerView) view.findViewById(R.id.alergens_recycle);
+        mRvAllergens = (RecyclerView) view.findViewById(R.id.allergens_recycle);
         mAllergensEnabled = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
         mAdapter = new AllergensAdapter(mAllergensEnabled, getActivity());
         mRvAllergens.setAdapter(mAdapter);
