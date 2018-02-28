@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -215,6 +217,15 @@ public class OfflineEditFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         new FillAdapter().execute(getActivity());
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        ActionBar actionBar;
+        if(activity!=null) {
+            actionBar = activity.getSupportActionBar();
+
+            if(actionBar!=null){
+                actionBar.setTitle(getString(R.string.offline_edit_drawer));
+            }
+        }
     }
 
     public class FillAdapter extends AsyncTask<Context, Void, Context> {
@@ -276,4 +287,6 @@ public class OfflineEditFragment extends BaseFragment {
             buttonSend.setEnabled(canSend);
         }
     }
+
+
 }

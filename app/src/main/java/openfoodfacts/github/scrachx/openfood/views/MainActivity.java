@@ -205,13 +205,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     switch ((int) drawerItem.getIdentifier()) {
                         case 1:
                             fragment = new HomeFragment();
-                            getSupportActionBar().setTitle(getResources().getString(R.string
-                                    .home_drawer));
                             break;
                         case 2:
                             fragment = new FindProductFragment();
-                            getSupportActionBar().setTitle(getResources().getString(R.string
-                                    .search_by_barcode_drawer));
                             break;
                         case 3:
                             startActivity(CategoryActivity.getIntent(this));
@@ -228,16 +224,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             break;
                         case 7:
                             fragment = new AlertUserFragment();
-                            getSupportActionBar().setTitle(R.string.alert_drawer);
                             break;
                         case 8:
                             fragment = new PreferencesFragment();
-                            getSupportActionBar().setTitle(R.string.action_preferences);
                             break;
                         case 9:
                             fragment = new OfflineEditFragment();
-                            getSupportActionBar().setTitle(getResources().getString(R.string
-                                    .offline_edit_drawer));
                             break;
                         case ABOUT:
                             CustomTabActivityHelper.openCustomTab(MainActivity.this,

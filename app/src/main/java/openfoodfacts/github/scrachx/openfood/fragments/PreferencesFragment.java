@@ -11,6 +11,8 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
@@ -101,6 +103,20 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
         });
     }
 
+
+    public void onResume() {
+        super.onResume();
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        ActionBar actionBar;
+        if(activity!=null) {
+            actionBar = activity.getSupportActionBar();
+
+            if(actionBar!=null){
+                actionBar.setTitle(getString(R.string.action_preferences));
+            }
+        }
+
+
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {
 
         private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
@@ -149,5 +165,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             lt.hide();
             getActivity().recreate();
         }
+
     }
 }
