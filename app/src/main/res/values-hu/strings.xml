@@ -103,6 +103,8 @@
   <string name="txtManufacturing">Gyártás vagy feldolgozás helye:</string>
   <string name="txtIngredientsOrigins">Összetevők származása:</string>
   <string name="txtCity">Vásárlás helye (város, állam vagy ország):</string>
+  <string name="txtEMB">EMB vagy EK üzemkód:</string>
+  <string name="txtManufactureUrl">A termék weboldalának címe a gyártó hivatalos honlapján:</string>
   <string name="txtStores">Boltok:</string>
   <string name="txtCountries">Országokban kapható:</string>
   <string name="txtIngredients">Összetevők listája :</string>
@@ -131,6 +133,7 @@
   <string name="hintPass">Jelszó</string>
   <string name="errorLogin">Bejelentkezési hiba</string>
   <string name="errorWeb">Internet csatlakozási problémák.</string>
+  <string name="uploadLater">A kép feltöltésre kerül amikor a hálózat elérhető lesz</string>
   <string name="txtInfoLoginOk">Felhasználó mentve</string>
   <string name="txtInfoLoginNo">Felhasználó nem lett mentve</string>
   <string name="txtDialogsTitle">Információ</string>
@@ -154,7 +157,7 @@
   <string name="txtInfoAddUser">Felhasználónév és jelszó megadása</string>
   <string name="txtDataUpdated">Adatok frissítve</string>
   <string name="txtLoading">Betöltés…</string>
-  <string name="txtDialogsContentDelete">Piszkozat törlése?</string>
+  <string name="txtDialogsContentDelete">Biztosan eltávolítja ezt a vázlatot?</string>
   <string name="txtDialogsContentInfoSave">A termék el lett mentve az eszközre, szerkeszthető az Offline Szerkesztés menüből</string>
   <string name="txtBarcodeRequire">Vonalkód szükséges</string>
   <string name="txtOk">OK</string>
@@ -185,7 +188,7 @@
   <string name="alert_drawer">Allergén riasztás</string>
   <string name="warning_allergens">Allergént tartalmaz</string>
   <string name="title_dialog_alert">Figyelmeztetés felvétele</string>
-  <string name="warning_alert_data">A személyes allergén információk nem kerülnek feltöltésre az Open Food Facts szerverére. Érdemes ellenőrizni az adatok helytállóságát.</string>
+  <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
   <string name="from_gallery">Galériából</string>
   <string name="product_sent">Termék sikeresen elküldve</string>
   <string name="action_edit_product">Termék szerkesztés</string>
@@ -340,7 +343,29 @@
   <string name="contributions_shortcut_short_label">Hozzájárulások</string>
   <string name="contributions_shortcut_long_label">Hozzájárulásaim</string>
   <string name="forgot_password">Elfelejtett jelszó</string>
-  <string name="next">NEXT</string>
-  <string name="skip">SKIP</string>
-  <string name="start">GOT IT</string>
+  <string name="next">KÖVETKEZŐ</string>
+  <string name="skip">KIHAGY</string>
+  <string name="start">MEGÉRTETTEM</string>
+  <string name="contact">Kapcsolat</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Lépjen kapcsolatba a csapattal</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">Nem találhatóak email alkalmazások</string>
+  <string name="airplane_mode_active_dialog_title">Repülőgép mód engedélyezve</string>
+  <string name="airplane_mode_active_dialog_message">A repülőgép mód engedélyezve van, kérjük, tiltsa le a folytatáshoz.</string>
+  <string name="airplane_mode_active_dialog_negative">Elutasít</string>
+  <string name="airplane_mode_active_dialog_positive">Beállítások</string>
+  <string name="device_offline_dialog_title">A hálózat nem érhető el</string>
+  <string name="device_offline_dialog_message">Ehhez a művelethez hálózati kapcsolat szükséges, szeretné megváltoztatni a beállításokat?</string>
+  <string name="device_offline_dialog_negative">Elutasít</string>
+  <string name="device_offline_dialog_positive">Beállítások</string>
+  <string name="saving">Mentés…</string>
+  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="device_on_mobile_data_warning_title">Információ</string>
+  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_positive">Tulajdonságok</string>
+  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="preference_choose_language_dialog_title">Choose language</string>
 </resources>

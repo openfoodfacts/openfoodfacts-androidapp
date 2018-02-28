@@ -101,7 +101,7 @@
                     android:textSize="@dimen/font_large"
                     android:textStyle="bold" />
 
-                <ImageView
+                <com.github.chrisbanes.photoview.PhotoView
                     android:id="@+id/imageSaveFront"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
@@ -160,7 +160,7 @@
                     android:textSize="@dimen/font_large"
                     android:textStyle="bold" />
 
-                <ImageView
+                <com.github.chrisbanes.photoview.PhotoView
                     android:id="@+id/imageSaveIngredients"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
@@ -218,7 +218,7 @@
                     android:textSize="@dimen/font_large"
                     android:textStyle="bold" />
 
-                <ImageView
+                <com.github.chrisbanes.photoview.PhotoView
                     android:id="@+id/imageSaveNutrition"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
