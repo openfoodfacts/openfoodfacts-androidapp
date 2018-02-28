@@ -368,6 +368,8 @@
   <string name="device_on_mobile_data_warning_positive">プリファレンス</string>
   <string name="device_on_mobile_data_warning_negative">とにかくアップロード</string>
   <string name="preference_choose_language_dialog_title">言語を選択</string>
+  <string name="FAQ">FAQ</string>
+  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
   <string name="lang_translate">local_translate_help</string>
   <string name="translate_help_title">Open Food Factsの翻訳を手伝う</string>
   <string name="translate_help_summary">Open Food Factsデータベースをあなたの言語に対応させます - 技術的な知識は必要ありません</string>
