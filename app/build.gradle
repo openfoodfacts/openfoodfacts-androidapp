@@ -96,7 +96,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 3
+    schemaVersion 4
 }
 
 dependencies {
@@ -194,6 +194,10 @@ dependencies {
     implementation "com.mikepenz:google-material-typeface:$rootProject.googleMaterialFontVersion"
     implementation "com.mikepenz:material-design-iconic-typeface:$rootProject.materialFontVersion"
     implementation "com.mikepenz:fontawesome-typeface:$rootProject.awesomeFontVersion"
+
+    implementation ("com.theartofdev.edmodo:android-image-cropper:2.6.0") {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    }
 
     //Testing
     testImplementation "junit:junit:$rootProject.jUnitVersion"

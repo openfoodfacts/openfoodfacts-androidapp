@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -40,10 +41,12 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 import static android.Manifest.permission.CAMERA;
+import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
@@ -55,14 +58,22 @@ public class IngredientsProductFragment extends BaseFragment {
 
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
     public static final Pattern ALLERGEN_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}]+");
-    @BindView(R.id.textIngredientProduct) TextView ingredientsProduct;
-    @BindView(R.id.textSubstanceProduct) TextView substanceProduct;
-    @BindView(R.id.textTraceProduct) TextView traceProduct;
-    @BindView(R.id.textAdditiveProduct) TextView additiveProduct;
-    @BindView(R.id.textPalmOilProduct) TextView palmOilProduct;
-    @BindView(R.id.textMayBeFromPalmOilProduct) TextView mayBeFromPalmOilProduct;
-    @BindView(R.id.imageViewIngredients) ImageView mImageIngredients;
-    @BindView(R.id.addPhotoLabel) TextView addPhotoLabel;
+    @BindView(R.id.textIngredientProduct)
+    TextView ingredientsProduct;
+    @BindView(R.id.textSubstanceProduct)
+    TextView substanceProduct;
+    @BindView(R.id.textTraceProduct)
+    TextView traceProduct;
+    @BindView(R.id.textAdditiveProduct)
+    TextView additiveProduct;
+    @BindView(R.id.textPalmOilProduct)
+    TextView palmOilProduct;
+    @BindView(R.id.textMayBeFromPalmOilProduct)
+    TextView mayBeFromPalmOilProduct;
+    @BindView(R.id.imageViewIngredients)
+    ImageView mImageIngredients;
+    @BindView(R.id.addPhotoLabel)
+    TextView addPhotoLabel;
 
     private OpenFoodAPIClient api;
     private String mUrlImage;
@@ -99,18 +110,18 @@ public class IngredientsProductFragment extends BaseFragment {
 
         List<String> allergens = getAllergens();
 
-        if(mState != null && product.getIngredientsText() != null) {
-            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_",""));
+        if (mState != null && product.getIngredientsText() != null) {
+            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
             int ingredientsListAt = Math.max(0, txtIngredients.toString().indexOf(":"));
-            if(!txtIngredients.toString().substring(ingredientsListAt).trim().isEmpty()) {
+            if (!txtIngredients.toString().substring(ingredientsListAt).trim().isEmpty()) {
                 ingredientsProduct.setText(txtIngredients);
             } else {
                 ingredientsProduct.setVisibility(View.GONE);
             }
         }
 
-        if(!allergens.isEmpty()) {
+        if (!allergens.isEmpty()) {
             substanceProduct.append(bold(getString(R.string.txtSubstances)));
             substanceProduct.append(" ");
             String delim = "";
@@ -128,7 +139,7 @@ public class IngredientsProductFragment extends BaseFragment {
             traceProduct.setVisibility(View.GONE);
         } else {
             traces = product.getTraces().replace(",", ", ");
-            if(traces.isEmpty()) {
+            if (traces.isEmpty()) {
                 traceProduct.setVisibility(View.GONE);
             } else {
                 traceProduct.append(bold(getString(R.string.txtTraces)));
@@ -137,7 +148,7 @@ public class IngredientsProductFragment extends BaseFragment {
             }
         }
 
-        if(!product.getAdditivesTags().isEmpty()) {
+        if (!product.getAdditivesTags().isEmpty()) {
             additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
             additiveProduct.append(bold(getString(R.string.txtAdditives)));
             additiveProduct.append(" ");
@@ -198,7 +209,7 @@ public class IngredientsProductFragment extends BaseFragment {
                 }
             };*/
             ssb.append(tag);
-           // ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+            // ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
             ssb.append(" ");
         }
         return ssb;
@@ -211,14 +222,14 @@ public class IngredientsProductFragment extends BaseFragment {
             final String tm = m.group();
             final String allergenValue = tm.replaceAll("[(),.-]+", "");
 
-            for (String allergen: allergens) {
-                if(allergen.equalsIgnoreCase(allergenValue)) {
+            for (String allergen : allergens) {
+                if (allergen.equalsIgnoreCase(allergenValue)) {
                     int start = m.start();
                     int end = m.end();
 
-                    if(tm.contains("(")) {
+                    if (tm.contains("(")) {
                         start += 1;
-                    } else if(tm.contains(")")) {
+                    } else if (tm.contains(")")) {
                         end -= 1;
                     }
 
@@ -242,7 +253,7 @@ public class IngredientsProductFragment extends BaseFragment {
             boolean canAdd = true;
 
             for (String allergen : list) {
-                if(tma.equalsIgnoreCase(allergen)){
+                if (tma.equalsIgnoreCase(allergen)) {
                     canAdd = false;
                     break;
                 }
@@ -289,6 +300,15 @@ public class IngredientsProductFragment extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                onPhotoReturned(new File(resultUri.getPath()));
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
 
         EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
             @Override
@@ -298,7 +318,8 @@ public class IngredientsProductFragment extends BaseFragment {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                onPhotoReturned(imageFiles.get(0));
+                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                        .start(getActivity());
             }
 
             @Override

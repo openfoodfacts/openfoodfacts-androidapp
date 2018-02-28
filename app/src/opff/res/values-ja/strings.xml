@@ -12,12 +12,12 @@
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-ja.openpetfoodfacts.org/contributor/</string>
   <string name="txtHome">Open Pet Food Facts は、原材料、アレルゲン、マーク、およびペットフードの製品ラベルに記載されているすべての情報をもつペットフード製品のデータベースです。</string>
-  <string name="slide_1_title">Contribute to Pet Food transparency</string>
-  <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
-  <string name="slide_2_title">Get the facts</string>
-  <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Keep track of the product you use</string>
-  <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
-  <string name="slide_4_title">Works offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connexion right now</string>
+  <string name="slide_1_title">ペットフードの透明性に貢献します</string>
+  <string name="slide_1_desc">製品をスキャンし、写真に写して、ペットフードの透明性を実現します</string>
+  <string name="slide_2_title">事実を入手します</string>
+  <string name="slide_2_desc">あなたがスキャンした製品に関する広範な情報。あなたのために解読されました</string>
+  <string name="slide_3_title">あなたが使用する製品を追跡します</string>
+  <string name="slide_3_desc">あなたが使用するすべての化粧品を、便利な一つのリストに書き出すことができます</string>
+  <string name="slide_4_title">オフラインで作業する</string>
+  <string name="slide_4_desc">今インターネットに接続していなくても、新製品を追加できます</string>
 </resources>

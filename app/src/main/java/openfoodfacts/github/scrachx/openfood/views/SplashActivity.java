@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,12 +11,12 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -25,6 +24,7 @@ import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -39,14 +39,15 @@ public class SplashActivity extends BaseActivity {
 
         settings = getSharedPreferences("prefs", 0);
         mAdditiveDao = Utils.getAppDaoSession(this).getAdditiveDao();
-
-        if((BuildConfig.FLAVOR.equals("off"))) {
+        OpenFoodAPIClient client = new OpenFoodAPIClient(this);
+        client.getPackagerCodes();
+        if ((BuildConfig.FLAVOR.equals("off"))) {
             boolean firstRun = settings.getBoolean("firstRun", true);
 
             boolean errorAdditives = settings.getBoolean("errorAdditives", true);
             boolean errorAllergens = settings.getBoolean("errorAllergens", true);
 
-            if(!errorAdditives && !errorAllergens) {
+            if (!errorAdditives && !errorAllergens) {
                 settings.edit()
                         .putBoolean("firstRun", false)
                         .apply();
@@ -55,7 +56,7 @@ public class SplashActivity extends BaseActivity {
             if (!firstRun) {
                 launchMainActivity();
             } else {
-                new GetJson(this).execute();
+                new GetJson().execute();
             }
         } else {
             launchMainActivity();
@@ -76,21 +77,15 @@ public class SplashActivity extends BaseActivity {
     private class GetJson extends AsyncTask<Void, Integer, Boolean> {
 
         private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
-        private Activity activity;
-        private LoadToast lt;
-
-        public GetJson(Activity act) {
-            activity = act;
-            lt = new LoadToast(activity);
-        }
+        private LoadToast lt = new LoadToast(SplashActivity.this);
 
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            lt.setText(activity.getString(R.string.toast_retrieving));
-            lt.setBackgroundColor(ContextCompat.getColor(SplashActivity.this,R.color.blue));
-            lt.setTextColor(ContextCompat.getColor(SplashActivity.this,R.color.white));
+            lt.setText(SplashActivity.this.getString(R.string.toast_retrieving));
+            lt.setBackgroundColor(ContextCompat.getColor(SplashActivity.this, R.color.blue));
+            lt.setTextColor(ContextCompat.getColor(SplashActivity.this, R.color.white));
             lt.show();
         }
 
@@ -103,21 +98,13 @@ public class SplashActivity extends BaseActivity {
                 return result;
             }
 
-            String additivesFile;
-            switch (Locale.getDefault().getLanguage()) {
-                case "fr":
-                    additivesFile = "additives_fr.json";
-                    break;
-                case "en":
-                default:
-                    additivesFile = "additives_en.json";
-                    break;
-            }
+            String additivesFile = "additives_" + LocaleHelper.getLanguage(SplashActivity.this) + ".json";
 
             InputStream is = null;
             try {
                 is = getAssets().open(additivesFile);
-                List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {})
+                List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {
+                })
                         .readValue(is);
                 mAdditiveDao.insertOrReplaceInTx(frenchAdditives);
             } catch (IOException e) {
@@ -146,13 +133,13 @@ public class SplashActivity extends BaseActivity {
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
             if (isConnected) {
                 if (errorAllergens) {
-                    OpenFoodAPIClient api = new OpenFoodAPIClient(activity);
+                    OpenFoodAPIClient api = new OpenFoodAPIClient(SplashActivity.this);
                     api.getAllergens(value -> {
                         if (result && value) {
                             lt.success();
                             editor.putBoolean("firstRun", false);
                         }
-                        if(!value){
+                        if (!value) {
                             lt.error();
                             editor.putBoolean("errorAllergens", true);
                         } else {

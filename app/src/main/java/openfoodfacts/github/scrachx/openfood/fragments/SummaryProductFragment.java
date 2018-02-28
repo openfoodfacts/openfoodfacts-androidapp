@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.SpannableStringBuilder;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -42,10 +44,13 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.Tag;
+import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
+import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -55,7 +60,9 @@ import pl.aprilapps.easyphotopicker.EasyImage;
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
@@ -82,8 +89,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView manufacturingProduct;
     @BindView(R.id.textIngredientsOriginProduct)
     TextView ingredientsOrigin;
-    @BindView(R.id.textCityProduct)
-    TextView cityProduct;
+    @BindView(R.id.textEmbCode)
+    TextView embCode;
     @BindView(R.id.textManufactureUrl)
     TextView manufactureUlrProduct;
     @BindView(R.id.textStoreProduct)
@@ -109,6 +116,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private CustomTabsIntent customTabsIntent;
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri nutritionScoreUri;
+    private Uri embCodeUri;
+    private TagDao mTagDao;
 
     @Override
     public void onAttach(Context context) {
@@ -132,7 +141,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         final State state = (State) intent.getExtras().getSerializable("state");
 
         final Product product = state.getProduct();
-
+        mTagDao = Utils.getAppDaoSession(getActivity()).getTagDao();
         barcode = product.getCode();
 
         if (isNotBlank(product.getImageUrl())) {
@@ -224,11 +233,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             labelProduct.setVisibility(View.GONE);
         }
 
-        if (product.getCitiesTags() != null && !product.getCitiesTags().toString().trim().equals("[]")) {
-            cityProduct.setText(bold(getString(R.string.txtCity)));
-            cityProduct.append(' ' + product.getCitiesTags().toString().replace("[", "").replace("]", ""));
+        if (product.getEmbTags() != null && !product.getEmbTags().toString().trim().equals("[]")) {
+            embCode.setMovementMethod(LinkMovementMethod.getInstance());
+            embCode.setText(bold(getString(R.string.txtEMB)));
+            embCode.append(" ");
+            String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
+            for (String embTag : embTags) {
+                embCode.append(getSpanTag(getEmbCode(embTag), getEmbUrl(embTag)));
+            }
+
         } else {
-            cityProduct.setVisibility(View.GONE);
+            embCode.setVisibility(View.GONE);
         }
         if (isNotBlank(product.getStores())) {
             storeProduct.setText(bold(getString(R.string.txtStores)));
@@ -336,6 +351,34 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     }
 
+    private String getEmbUrl(String embTag) {
+        Tag tag = mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique();
+        if (tag != null) return tag.getName();
+        return null;
+    }
+
+    private String getEmbCode(String embTag) {
+        Tag tag = mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique();
+        if (tag != null) return tag.getName();
+        return embTag;
+    }
+
+    private CharSequence getSpanTag(String embCode, String embUrl) {
+        final SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                embCodeUri = Uri.parse("https://world.openfoodfacts.org/packager-code/" + embUrl);
+                CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, embCodeUri, new WebViewFallback());
+            }
+        };
+        spannableStringBuilder.append(embCode);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.append(" ");
+        return spannableStringBuilder;
+    }
+
     // Implements CustomTabActivityHelper.ConnectionCallback
     @Override
     public void onCustomTabsConnected() {
@@ -427,6 +470,21 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                if (!sendOther) {
+                    onPhotoReturned(new File(resultUri.getPath()));
+                } else {
+                    ProductImage image = new ProductImage(barcode, OTHER, new  File(resultUri.getPath()));
+                    image.setFilePath(resultUri.getPath());
+                    api.postImg(getContext(), image);
+                }
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
         EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
@@ -435,13 +493,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                if (!sendOther) {
-                    onPhotoReturned(imageFiles.get(0));
-                } else {
-                    ProductImage image = new ProductImage(barcode, OTHER, new  File(imageFiles.get(0).getAbsolutePath()));
-                    image.setFilePath(imageFiles.get(0).getAbsolutePath());
-                    api.postImg(getContext(), image);
-                }
+                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                        .start(getActivity());
             }
 
             @Override

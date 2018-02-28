@@ -86,6 +86,8 @@ public class Product implements Serializable {
     private long ingredientsFromPalmOilN;
     @JsonProperty("image_url")
     private String imageUrl;
+    @JsonProperty("emb_codes_tags")
+    private List<Object> embTags = new ArrayList<>();
 
     public String getLastModifiedBy() {
         return lastModifiedBy;
@@ -368,6 +370,14 @@ public class Product implements Serializable {
      */
     public String getImageUrl() {
         return imageUrl;
+    }
+
+
+    /**
+     * @return The Emb_codes
+     */
+    public List<Object> getEmbTags() {
+        return embTags;
     }
 
 
