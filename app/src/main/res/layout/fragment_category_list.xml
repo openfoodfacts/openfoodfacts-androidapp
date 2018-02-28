@@ -22,6 +22,14 @@
             android:layout_height="match_parent"
             app:categories="@{viewModel.categories}" />
 
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="@string/txt_no_results" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,12 +39,14 @@
             android:visibility="@{viewModel.showProgress}">
 
             <ProgressBar
+                android:id="@+id/prog_bar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:indeterminate="true" />
 
             <TextView
+                android:id="@+id/load_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

@@ -5,6 +5,7 @@ import android.databinding.ObservableInt;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.category.CategoryRepository;
 import openfoodfacts.github.scrachx.openfood.category.model.Category;
+import openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment;
 import openfoodfacts.github.scrachx.openfood.views.viewmodel.ViewModel;
 
 /**
@@ -38,11 +40,12 @@ public class CategoryFragmentViewModel extends ViewModel {
     }
 
     @Override
-    protected void subscribe(@NonNull CompositeDisposable subscriptions) {
+    public void subscribe(@NonNull CompositeDisposable subscriptions) {
         subscriptions.add(repository.retrieveAll().subscribe(categoryList -> {
                     categories.set(categoryList);
                     showProgress.set(View.GONE);
                 },
-                throwable -> Log.e(CategoryFragmentViewModel.class.getCanonicalName(), "Error loading categories", throwable)));
+                throwable -> Log.e(CategoryFragmentViewModel.class.getCanonicalName(), "Error loading categories", throwable)
+        ));
     }
 }
