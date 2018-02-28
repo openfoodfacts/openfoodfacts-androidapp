@@ -2,11 +2,10 @@ package openfoodfacts.github.scrachx.openfood.views.category.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 
 public class CategoryActivity extends BaseActivity {
@@ -22,16 +21,8 @@ public class CategoryActivity extends BaseActivity {
     }
 
     private void checkNetworkAndShowScreen(){
-        ConnectivityManager cm =
-                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        boolean isConnected = activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
-        if (isConnected) {
-
+        if (Utils.isNetworkConnected(this)) {
             setContentView(R.layout.activity_category);
-
             setSupportActionBar(findViewById(R.id.toolbar));
             setTitle(R.string.category_drawer);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -39,7 +30,6 @@ public class CategoryActivity extends BaseActivity {
         else{
             setContentView(R.layout.offline_cloud_layout);
             findViewById(R.id.buttonToRefresh).setOnClickListener(view -> checkNetworkAndShowScreen());
-
         }
     }
 }
