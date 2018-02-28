@@ -400,7 +400,6 @@
 
     <string name="preference_choose_language_dialog_title">Choose language</string>
 
-    
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
 
@@ -408,5 +407,5 @@
     <string name="translate_url" translatable="false">https://crowdin.com/project/openfoodfacts</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
     <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
-
+    <string name="SnackbarOfflineText">Offline Mode (No Internet)</string>
 </resources>

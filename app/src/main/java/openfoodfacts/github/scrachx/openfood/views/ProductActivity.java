@@ -14,7 +14,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
@@ -48,7 +47,9 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static openfoodfacts.github.scrachx.openfood.utils.CustomTextView.CustomOfflineSnackbar;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.isNetworkConnected;
 
 public class ProductActivity extends BaseActivity {
 
@@ -81,7 +82,8 @@ public class ProductActivity extends BaseActivity {
         List<String> allergens = product.getAllergensHierarchy();
         List<String> traces = product.getTracesTags();
         allergens.addAll(traces);
-
+        if (!isNetworkConnected(getApplicationContext()))
+            CustomOfflineSnackbar(findViewById(android.R.id.content));
         List<String> matchAll = new ArrayList<>();
         List<Allergen> mAllergens = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
         for (int a = 0; a < mAllergens.size(); a++) {

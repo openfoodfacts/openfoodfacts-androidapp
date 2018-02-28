@@ -20,6 +20,9 @@ import android.widget.TextView;
 
 import openfoodfacts.github.scrachx.openfood.R;
 
+import static openfoodfacts.github.scrachx.openfood.utils.CustomTextView.CustomOfflineSnackbar;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.isNetworkConnected;
+
 public class WelcomeActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
@@ -29,6 +32,32 @@ public class WelcomeActivity extends AppCompatActivity {
     private int[] layouts;
     private Button btnSkip, btnNext;
     private PrefManager prefManager;
+    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
+
+        @Override
+        public void onPageSelected(int position) {
+            addBottomDots(position);
+
+            if (position == layouts.length - 1) {
+                btnNext.setText(getString(R.string.start));
+                btnSkip.setVisibility(View.GONE);
+            } else {
+                btnNext.setText(getString(R.string.next));
+                btnSkip.setVisibility(View.VISIBLE);
+            }
+        }
+
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +66,8 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        if (!isNetworkConnected(getApplicationContext()))
+            CustomOfflineSnackbar(findViewById(android.R.id.content));
         prefManager = new PrefManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();
@@ -115,32 +146,6 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
         finish();
     }
-
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
-
-        @Override
-        public void onPageSelected(int position) {
-            addBottomDots(position);
-
-            if (position == layouts.length - 1) {
-                btnNext.setText(getString(R.string.start));
-                btnSkip.setVisibility(View.GONE);
-            } else {
-                btnNext.setText(getString(R.string.next));
-                btnSkip.setVisibility(View.VISIBLE);
-            }
-        }
-
-        @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
-
-        }
-    };
 
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

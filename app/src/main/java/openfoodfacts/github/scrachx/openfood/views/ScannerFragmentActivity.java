@@ -7,6 +7,9 @@ import android.view.MenuItem;
 
 import openfoodfacts.github.scrachx.openfood.R;
 
+import static openfoodfacts.github.scrachx.openfood.utils.CustomTextView.CustomOfflineSnackbar;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.isNetworkConnected;
+
 public class ScannerFragmentActivity extends BaseActivity {
 
     @Override
@@ -14,6 +17,8 @@ public class ScannerFragmentActivity extends BaseActivity {
         super.onCreate(state);
         setContentView(R.layout.fragment_scanner);
         setupToolbar();
+        if (!isNetworkConnected(getApplicationContext()))
+            CustomOfflineSnackbar(findViewById(android.R.id.content));
     }
 
     public void setupToolbar() {

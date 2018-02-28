@@ -2,11 +2,14 @@ package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.design.widget.Snackbar;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+import android.view.View;
 
 import openfoodfacts.github.scrachx.openfood.R;
 
@@ -26,6 +29,12 @@ public class CustomTextView extends AppCompatTextView {
     public CustomTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttrs(context, attrs);
+    }
+
+    public static void CustomOfflineSnackbar(View view) {
+        Snackbar.make(view, R.string.SnackbarOfflineText, Snackbar.LENGTH_INDEFINITE)
+                .setActionTextColor(Color.DKGRAY)
+                .show();
     }
 
     void initAttrs(Context context, AttributeSet attrs) {

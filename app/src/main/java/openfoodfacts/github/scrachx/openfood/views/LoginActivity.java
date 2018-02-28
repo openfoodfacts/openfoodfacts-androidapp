@@ -37,6 +37,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static openfoodfacts.github.scrachx.openfood.utils.CustomTextView.CustomOfflineSnackbar;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.isNetworkConnected;
+
 /**
  * A login screen that offers login via login/password.
  * This Activity connect to the Chrome Custom Tabs Service on startup to prefetch the url.
@@ -72,7 +75,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null);
 
         signup.setEnabled(false);
-
+        if (!isNetworkConnected(getApplicationContext()))
+            CustomOfflineSnackbar(findViewById(android.R.id.content));
         final SharedPreferences settings = getSharedPreferences("login", 0);
         String loginS = settings.getString("user", getResources().getString(R.string.txt_anonymous));
         if(!loginS.equals(getResources().getString(R.string.txt_anonymous))) {
