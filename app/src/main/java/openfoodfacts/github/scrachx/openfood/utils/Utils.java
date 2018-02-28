@@ -48,6 +48,7 @@ import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
 import okhttp3.TlsVersion;
+import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
@@ -351,12 +352,14 @@ public class Utils {
                     .readTimeout(30000, TimeUnit.MILLISECONDS)
                     .writeTimeout(30000, TimeUnit.MILLISECONDS)
                     .connectionSpecs(Collections.singletonList(spec))
+                    .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                     .build();
         } else {
             httpClient = new OkHttpClient.Builder()
                     .connectTimeout(5000, TimeUnit.MILLISECONDS)
                     .readTimeout(30000, TimeUnit.MILLISECONDS)
                     .writeTimeout(30000, TimeUnit.MILLISECONDS)
+                    .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                     .build();
         }
         return httpClient;
@@ -391,4 +394,40 @@ public class Utils {
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
 
+    /**
+     * Check if the user is connected to a mobile network.
+     * @param context of the application.
+     * @return true if connected to mobile data.
+     */
+    public static boolean isConnectedToMobileData(Context context){
+        return getNetworkType(context).equals("Mobile");
+    }
+
+    /**
+     * Get the type of network that the user is connected to.
+     *
+     * @param context of the application.
+     * @return the type of network that is connected.
+     */
+    private static String getNetworkType(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+            switch (activeNetwork.getType()) {
+                case ConnectivityManager.TYPE_ETHERNET:
+                    return "Ethernet";
+                case ConnectivityManager.TYPE_MOBILE:
+                    return "Mobile";
+                case ConnectivityManager.TYPE_VPN:
+                    return "VPN";
+                case ConnectivityManager.TYPE_WIFI:
+                    return "WiFi";
+                case ConnectivityManager.TYPE_WIMAX:
+                    return "WiMax";
+            }
+        }
+
+        return "Other";
+    }
 }

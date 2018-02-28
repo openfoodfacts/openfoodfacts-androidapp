@@ -103,6 +103,8 @@
   <string name="txtManufacturing">tempat pembuatan atau tempat diolah</string>
   <string name="txtIngredientsOrigins">asal kandungan</string>
   <string name="txtCity">kota,bagian negara .dan negara daerahl dibeli</string>
+  <string name="txtEMB">EMB Code:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">penampungan toko</string>
   <string name="txtCountries">negara menjual</string>
   <string name="txtIngredients">daftar kandungan </string>
@@ -131,6 +133,7 @@
   <string name="hintPass">kata sandi anda</string>
   <string name="errorLogin">Kesalahan masuk atau kata sandi anda salah</string>
   <string name="errorWeb">kami tidak bisa memasukin kedalam jaringan internet , apakah anda sedang dalam masalah konektivitas ?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">pengguna menyimpan</string>
   <string name="txtInfoLoginNo">pengguna tidak bisa menyimpan</string>
   <string name="txtDialogsTitle">informasi</string>
@@ -155,7 +158,7 @@
   <string name="txtInfoAddUser">mohon masukan  kata sandi kamu </string>
   <string name="txtDataUpdated">mempebaharui data </string>
   <string name="txtLoading">sedang memuat</string>
-  <string name="txtDialogsContentDelete">apa kamu ingin menghapus kotak ini ?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">produk disimpan di lokal . kamu mau mengedit di menu edit offline ??</string>
   <string name="txtBarcodeRequire">kode batang dibutuhkan</string>
   <string name="txtOk">oke</string>
@@ -186,7 +189,7 @@
   <string name="alert_drawer">peringatan bahaya</string>
   <string name="warning_allergens">Berisi alergen</string>
   <string name="title_dialog_alert">Tambah waspada</string>
-  <string name="warning_alert_data">pembertitahuan alergi anda tidak akan dikirimkan ke server r Open Food Facts. Sselain itu anda harus berhati supaya lebih akurat. mohon melihatnya lagi</string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">Dari Galeri</string>
   <string name="product_sent">produk berhasil dikirimkan</string>
   <string name="action_edit_product">mengedit produkk</string>
@@ -344,4 +347,26 @@
   <string name="next">NEXT</string>
   <string name="skip">SKIP</string>
   <string name="start">GOT IT</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
+  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_positive">Pengaturan</string>
+  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_positive">Pengaturan</string>
+  <string name="saving">Saving…</string>
+  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="device_on_mobile_data_warning_title">informasi</string>
+  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_positive">pengaturan</string>
+  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="preference_choose_language_dialog_title">Choose language</string>
 </resources>

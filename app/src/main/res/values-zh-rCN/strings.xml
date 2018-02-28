@@ -103,6 +103,8 @@
   <string name="txtManufacturing">生产或处理地：</string>
   <string name="txtIngredientsOrigins">成分来源：</string>
   <string name="txtCity">购买城市，省份和国家：</string>
+  <string name="txtEMB">EMB Code:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">店铺：</string>
   <string name="txtCountries">售卖的国家：</string>
   <string name="txtIngredients">成分列表：</string>
@@ -131,6 +133,7 @@
   <string name="hintPass">密码</string>
   <string name="errorLogin">登录或者密码错误</string>
   <string name="errorWeb">我们无法访问互联网，请问是否有连接问题</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">用户已保存</string>
   <string name="txtInfoLoginNo">用户没有保存</string>
   <string name="txtDialogsTitle">信息</string>
@@ -154,7 +157,7 @@
   <string name="txtInfoAddUser">请输入您的用户名和密码</string>
   <string name="txtDataUpdated">数据已更新</string>
   <string name="txtLoading">正在加载...</string>
-  <string name="txtDialogsContentDelete">确定要删除此任务吗</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">产品保存在本地，您可以在“离线编辑”中进行编辑</string>
   <string name="txtBarcodeRequire">条形码需求</string>
   <string name="txtOk">确定</string>
@@ -185,7 +188,7 @@
   <string name="alert_drawer">过敏原警告</string>
   <string name="warning_allergens">含有过敏原</string>
   <string name="title_dialog_alert">添加提醒</string>
-  <string name="warning_alert_data">您的过敏原信息将永远不会发送到“ Open Food Facts ”上，另外请注意。数据可能不准确，请仔细检查。 </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">从相册</string>
   <string name="product_sent">日志发送成功</string>
   <string name="action_edit_product">编辑产品</string>
@@ -343,4 +346,26 @@
   <string name="next">NEXT</string>
   <string name="skip">SKIP</string>
   <string name="start">GOT IT</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
+  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_positive">设置</string>
+  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_positive">设置</string>
+  <string name="saving">Saving…</string>
+  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="device_on_mobile_data_warning_title">信息</string>
+  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_positive">偏好</string>
+  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="preference_choose_language_dialog_title">Choose language</string>
 </resources>

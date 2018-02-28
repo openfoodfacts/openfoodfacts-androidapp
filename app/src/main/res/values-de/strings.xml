@@ -103,6 +103,8 @@
   <string name="txtManufacturing">Herstellungs- oder Verarbeitungsorte:</string>
   <string name="txtIngredientsOrigins">Herkunft der Zutaten:</string>
   <string name="txtCity">Stadt, Bundesland und Land des Kaufs:</string>
+  <string name="txtEMB">EMB Code:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Läden:</string>
   <string name="txtCountries">Vertriebsländer:</string>
   <string name="txtIngredients">Zutatenliste:</string>
@@ -131,6 +133,7 @@
   <string name="hintPass">Passwort</string>
   <string name="errorLogin">Benutzername oder Passwort stimmen nicht</string>
   <string name="errorWeb">Kein Internetzugang. Netzwerkverbindung überprüfen.</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Benutzer gespeichert</string>
   <string name="txtInfoLoginNo">Benutzer nicht gespeichert</string>
   <string name="txtDialogsTitle">Informationen</string>
@@ -154,7 +157,7 @@
   <string name="txtInfoAddUser">Bitte Benutzername und Passwort eingeben</string>
   <string name="txtDataUpdated">Daten wurden aktualisiert</string>
   <string name="txtLoading">Wird geladen …</string>
-  <string name="txtDialogsContentDelete">Möchten Sie diesen Entwurf löschen?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Produkt wurde lokal gespeichert und kann im Offline Bearbeiten-Menü überarbeitet werden</string>
   <string name="txtBarcodeRequire">Strichcode erforderlich</string>
   <string name="txtOk">OK</string>
@@ -185,7 +188,7 @@
   <string name="alert_drawer">Allergen-Warnung</string>
   <string name="warning_allergens">Enthält Allergene</string>
   <string name="title_dialog_alert">Alarm hinzufügen</string>
-  <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an den Open Food Facts Server gesendet. Seien Sie vorsichtig! Die Daten sind möglicherweise nicht immer 100% richtig. Prüfen Sie deshalb bitte selbst noch einmal nach!</string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">Aus Galerie</string>
   <string name="product_sent">Produkt wurde erfolgreich gesendet</string>
   <string name="action_edit_product">Produkt bearbeiten</string>
@@ -340,7 +343,29 @@
   <string name="contributions_shortcut_short_label">Beiträge</string>
   <string name="contributions_shortcut_long_label">Meine Beiträge</string>
   <string name="forgot_password">Passwort vergessen</string>
-  <string name="next">NEXT</string>
-  <string name="skip">SKIP</string>
-  <string name="start">GOT IT</string>
+  <string name="next">NÄCHSTE(R)</string>
+  <string name="skip">ÜBERSPRINGEN</string>
+  <string name="start">VERSTANDEN</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
+  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_positive">Einstellungen</string>
+  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_positive">Einstellungen</string>
+  <string name="saving">Saving…</string>
+  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="device_on_mobile_data_warning_title">Informationen</string>
+  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_positive">Einstellungen</string>
+  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="preference_choose_language_dialog_title">Choose language</string>
 </resources>

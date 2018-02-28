@@ -103,6 +103,8 @@
   <string name="txtManufacturing">製造または加工場所 :</string>
   <string name="txtIngredientsOrigins">原材料の原産地 :</string>
   <string name="txtCity">購入した市区町村、都道府県、国 :</string>
+  <string name="txtEMB">EMBコード:</string>
+  <string name="txtManufactureUrl">生産者の公式サイト上の製品ページへのリンク:</string>
   <string name="txtStores">店舗 :</string>
   <string name="txtCountries">販売国 :</string>
   <string name="txtIngredients">原材料一覧 :</string>
@@ -131,6 +133,7 @@
   <string name="hintPass">パスワード</string>
   <string name="errorLogin">ログインまたはパスワードエラー</string>
   <string name="errorWeb">インターネットにアクセスできませんでした。接続に問題がありませんか?</string>
+  <string name="uploadLater">ネットワークが利用可能になると画像がアップロードされます</string>
   <string name="txtInfoLoginOk">ユーザーを保存しました</string>
   <string name="txtInfoLoginNo">ユーザーを保存できませんでした</string>
   <string name="txtDialogsTitle">情報</string>
@@ -154,7 +157,7 @@
   <string name="txtInfoAddUser">ログインとパスワードを入力してください</string>
   <string name="txtDataUpdated">データを更新しました</string>
   <string name="txtLoading">読み込んでいます...</string>
-  <string name="txtDialogsContentDelete">この下書きを削除しますか?</string>
+  <string name="txtDialogsContentDelete">このドラフトを削除してもよろしいですか?</string>
   <string name="txtDialogsContentInfoSave">この製品はローカルに保存されます。オフライン編集 メニューで編集することができます</string>
   <string name="txtBarcodeRequire">バーコードが必要です</string>
   <string name="txtOk">OK</string>
@@ -185,7 +188,7 @@
   <string name="alert_drawer">アレルゲン警告</string>
   <string name="warning_allergens">アレルゲンを含んでいます</string>
   <string name="title_dialog_alert">警告を追加</string>
-  <string name="warning_alert_data">アレルギー情報は、Open Food Facts サーバーに送信されることはありません。また、データが正確でない可能性があることにご注意ください。ご自分でもう一度ご確認ください!</string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">ギャラリーから</string>
   <string name="product_sent">製品を送信しました</string>
   <string name="action_edit_product">製品を編集</string>
@@ -340,7 +343,29 @@
   <string name="contributions_shortcut_short_label">貢献</string>
   <string name="contributions_shortcut_long_label">私の貢献</string>
   <string name="forgot_password">パスワードを忘れた場合</string>
-  <string name="next">NEXT</string>
-  <string name="skip">SKIP</string>
-  <string name="start">GOT IT</string>
+  <string name="next">次へ</string>
+  <string name="skip">スキップ</string>
+  <string name="start">了解</string>
+  <string name="contact">お問い合わせ</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">チームに連絡します</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">メールアプリケーションが見つかりません</string>
+  <string name="airplane_mode_active_dialog_title">機内モードが有効です</string>
+  <string name="airplane_mode_active_dialog_message">飛行機モードが有効になっているので、これを無効にして続行してください。</string>
+  <string name="airplane_mode_active_dialog_negative">消去</string>
+  <string name="airplane_mode_active_dialog_positive">設定</string>
+  <string name="device_offline_dialog_title">ネットワークが利用できません</string>
+  <string name="device_offline_dialog_message">これを行うにはネットワーク接続が必要です。設定でこれを変更しますか?</string>
+  <string name="device_offline_dialog_negative">消去</string>
+  <string name="device_offline_dialog_positive">設定</string>
+  <string name="saving">保存中…</string>
+  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="device_on_mobile_data_warning_title">情報</string>
+  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_positive">プリファレンス</string>
+  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="preference_choose_language_dialog_title">Choose language</string>
 </resources>
