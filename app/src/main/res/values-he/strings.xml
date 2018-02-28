@@ -366,6 +366,6 @@
   <string name="device_on_mobile_data_warning_title">פרטים</string>
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
   <string name="device_on_mobile_data_warning_positive">העדפות</string>
-  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
-  <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="device_on_mobile_data_warning_negative">להעלות בכל זאת</string>
+  <string name="preference_choose_language_dialog_title">בחירת שפה</string>
 </resources>
