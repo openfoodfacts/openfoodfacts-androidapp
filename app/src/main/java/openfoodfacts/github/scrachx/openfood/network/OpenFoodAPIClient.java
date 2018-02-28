@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.preference.PreferenceManager;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -72,6 +71,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.ING
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
 public class OpenFoodAPIClient {
 
     private AllergenDao mAllergenDao;
@@ -129,7 +129,7 @@ public class OpenFoodAPIClient {
      * @param activity
      */
     public void getProduct(final String barcode, final Activity activity) {
-        apiService.getProductByBarcode(barcode).enqueue(new Callback<State>() {
+        apiService.getFullProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
             public void onResponse(Call<State> call, Response<State> response) {
 
@@ -206,7 +206,7 @@ public class OpenFoodAPIClient {
     }
 
     /**
-     * Open the product activity if the barcode exist.
+     * Open the dialog with short product details.
      * Also add it in the history if the product exist.
      *
      * @param barcode       product barcode
@@ -214,13 +214,10 @@ public class OpenFoodAPIClient {
      * @param camera        needed when the function is called by the barcodefragment else null
      * @param resultHandler needed when the function is called by the barcodefragment else null
      */
-    public void getProduct(final String barcode, final Activity activity, final ZXingScannerView camera, final ZXingScannerView.ResultHandler
-            resultHandler) {
-        apiService.getProductByBarcode(barcode).enqueue(new Callback<State>() {
+    public void getShortProduct(final String barcode, final Activity activity, final ZXingScannerView camera, final ZXingScannerView.ResultHandler resultHandler) {
+        apiService.getShortProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
             public void onResponse(Call<State> call, Response<State> response) {
-
-                SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(activity.getBaseContext());
                 final State s = response.body();
 
                 if (s.getStatus() == 0) {
@@ -240,73 +237,51 @@ public class OpenFoodAPIClient {
                 } else {
                     final Product product = s.getProduct();
                     new HistoryTask().doInBackground(s.getProduct());
-                    if (settings.getBoolean("powerMode", false) && camera != null) {
-                        MaterialDialog dialog = new MaterialDialog.Builder(activity)
-                                .title(product.getProductName())
-                                .customView(R.layout.alert_powermode_image, true)
-                                .neutralText(R.string.txtOk)
-                                .positiveText(R.string.txtSeeMore)
-                                .onPositive((materialDialog, which) -> {
-                                    Intent intent = new Intent(activity, ProductActivity.class);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putSerializable("state", s);
-                                    intent.putExtras(bundle);
-                                    activity.startActivity(intent);
-                                })
-                                .onNeutral((materialDialog, which) -> camera.resumeCameraPreview(resultHandler))
-                                .build();
 
-                        ImageView imgPhoto = (ImageView) dialog.getCustomView().findViewById(R.id.imagePowerModeProduct);
-                        ImageView imgNutriscore = (ImageView) dialog.getCustomView().findViewById(R.id.imageGrade);
-                        TextView quantityProduct = (TextView) dialog.getCustomView().findViewById(R.id.textQuantityProduct);
-                        TextView brandProduct = (TextView) dialog.getCustomView().findViewById(R.id.textBrandProduct);
+                    MaterialDialog dialog = new MaterialDialog.Builder(activity)
+                            .title(product.getProductName())
+                            .customView(R.layout.alert_powermode_image, true)
+                            .neutralText(R.string.txtOk)
+                            .positiveText(R.string.txtSeeMore)
+                            .onPositive((materialDialog, which) -> {
+                                getProduct(barcode, activity);
+                            })
+                            .onNeutral((materialDialog, which) -> camera.resumeCameraPreview(resultHandler))
+                            .build();
 
-                        if (product.getQuantity() != null && !product.getQuantity().trim().isEmpty()) {
-                            quantityProduct.setText(Html.fromHtml("<b>" + activity.getResources().getString(R.string.txtQuantity) + "</b>" + ' ' +
-                                    product.getQuantity()));
-                        } else {
-                            quantityProduct.setVisibility(View.GONE);
-                        }
-                        if (product.getBrands() != null && !product.getBrands().trim().isEmpty()) {
-                            brandProduct.setText(Html.fromHtml("<b>" + activity.getResources().getString(R.string.txtBrands) + "</b>" + ' ' +
-                                    product.getBrands()));
-                        } else {
-                            brandProduct.setVisibility(View.GONE);
-                        }
-                        if (isNotEmpty(s.getProduct().getImageUrl())) {
-                            Picasso.with(activity)
-                                    .load(Utils.getImageGrade(product.getNutritionGradeFr()))
-                                    .into(imgNutriscore);
-                        }
-                        if (isNotEmpty(s.getProduct().getImageUrl())) {
-                            Picasso.with(activity)
-                                    .load(s.getProduct().getImageUrl())
-                                    .into(imgPhoto);
-                            imgPhoto.setOnClickListener(view -> {
-                                Intent intent = new Intent(view.getContext(), FullScreenImage.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putString("imageurl", product.getImageUrl());
-                                intent.putExtras(bundle);
-                                activity.startActivity(intent);
-                            });
-                        }
-                        dialog.show();
+                    ImageView imgPhoto = (ImageView) dialog.getCustomView().findViewById(R.id.imagePowerModeProduct);
+                    ImageView imgNutriscore = (ImageView) dialog.getCustomView().findViewById(R.id.imageGrade);
+                    TextView quantityProduct = (TextView) dialog.getCustomView().findViewById(R.id.textQuantityProduct);
+                    TextView brandProduct = (TextView) dialog.getCustomView().findViewById(R.id.textBrandProduct);
+
+                    if (product.getQuantity() != null && !product.getQuantity().trim().isEmpty()) {
+                        quantityProduct.setText(Html.fromHtml("<b>" + activity.getResources().getString(R.string.txtQuantity) + "</b>" + ' ' + product.getQuantity()));
                     } else {
-                        new MaterialDialog.Builder(activity)
-                                .title(R.string.txtDialogsTitle)
-                                .content(R.string.txtDialogsContent)
-                                .positiveText(R.string.txtYes)
-                                .negativeText(R.string.txtNo)
-                                .onPositive((dialog, which) -> {
-                                    Intent intent = new Intent(activity, ProductActivity.class);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putSerializable("state", s);
-                                    intent.putExtras(bundle);
-                                    activity.startActivity(intent);
-                                })
-                                .onNegative((dialog, which) -> activity.onBackPressed())
-                                .show();
+                        quantityProduct.setVisibility(View.GONE);
                     }
+                    if (product.getBrands() != null && !product.getBrands().trim().isEmpty()) {
+                        brandProduct.setText(Html.fromHtml("<b>" + activity.getResources().getString(R.string.txtBrands) + "</b>" + ' ' + product.getBrands()));
+                    } else {
+                        brandProduct.setVisibility(View.GONE);
+                    }
+                    if (isNotEmpty(s.getProduct().getImageUrl())) {
+                        Picasso.with(activity)
+                                .load(Utils.getImageGrade(product.getNutritionGradeFr()))
+                                .into(imgNutriscore);
+                    }
+                    if (isNotEmpty(s.getProduct().getImageUrl())) {
+                        Picasso.with(activity)
+                                .load(s.getProduct().getImageUrl())
+                                .into(imgPhoto);
+                        imgPhoto.setOnClickListener(view -> {
+                            Intent intent = new Intent(view.getContext(), FullScreenImage.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("imageurl", product.getImageUrl());
+                            intent.putExtras(bundle);
+                            activity.startActivity(intent);
+                        });
+                    }
+                    dialog.show();
                 }
             }
 

@@ -48,6 +48,7 @@ import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
 import okhttp3.TlsVersion;
+import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
@@ -351,12 +352,14 @@ public class Utils {
                     .readTimeout(30000, TimeUnit.MILLISECONDS)
                     .writeTimeout(30000, TimeUnit.MILLISECONDS)
                     .connectionSpecs(Collections.singletonList(spec))
+                    .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                     .build();
         } else {
             httpClient = new OkHttpClient.Builder()
                     .connectTimeout(5000, TimeUnit.MILLISECONDS)
                     .readTimeout(30000, TimeUnit.MILLISECONDS)
                     .writeTimeout(30000, TimeUnit.MILLISECONDS)
+                    .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                     .build();
         }
         return httpClient;
