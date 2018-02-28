@@ -350,7 +350,7 @@
   <string name="contact_key">contact_team</string>
   <string name="contact_summary">Contactar a equipa</string>
   <string name="off_mail">mailto:contact@openfoodfacts.org</string>
-  <string name="email_not_found">No email applications found</string>
+  <string name="email_not_found">Nenhuma aplicação de email encontrada</string>
   <string name="airplane_mode_active_dialog_title">Modo de avião activado</string>
   <string name="airplane_mode_active_dialog_message">O modo de avião está activo, por favor desactive para continuar.</string>
   <string name="airplane_mode_active_dialog_negative">Descartar</string>
