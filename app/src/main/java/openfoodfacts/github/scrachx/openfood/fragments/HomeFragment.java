@@ -9,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -109,5 +111,25 @@ public class HomeFragment extends BaseFragment {
                 }
             });
         }
+    }
+
+
+    public void onResume() {
+
+        super.onResume();
+
+        AppCompatActivity activity = (AppCompatActivity)getActivity();
+
+        ActionBar actionBar;
+
+        if(activity!=null){
+            actionBar =activity.getSupportActionBar();
+
+            if(actionBar!=null){
+                actionBar.setTitle(getString(R.string.home_drawer));
+            }
+        }
+
+
     }
 }
