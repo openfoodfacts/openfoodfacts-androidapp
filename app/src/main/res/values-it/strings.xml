@@ -368,4 +368,7 @@
   <string name="device_on_mobile_data_warning_positive">Impostazioni</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
   <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="lang_translate">local_translate_help</string>
+  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
 </resources>
