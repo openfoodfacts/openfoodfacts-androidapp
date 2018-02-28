@@ -29,6 +29,10 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -46,6 +50,7 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
@@ -66,6 +71,11 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     private HistoryProductDao mHistoryProductDao;
     private HistoryListAdapter adapter;
     private List<HistoryProduct> listHistoryProducts;
+    @BindView(R.id.scanFirst)
+    Button scanFirst;
+    @BindView(R.id.empty_history_info)
+    TextView infoView;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,6 +87,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
         productItems = new ArrayList<>();
+        setInfo(infoView);
         new HistoryScanActivity.FillAdapter(this).execute(this);
     }
 
@@ -88,6 +99,13 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         adapter.remove(productItems.get(position));
         adapter.notifyItemRemoved(position);
         adapter.notifyItemRangeChanged(position, adapter.getItemCount());
+
+        if (adapter.getItemCount() == 0) {
+
+            infoView.setVisibility(View.VISIBLE);
+            scanFirst.setVisibility(View.VISIBLE);
+
+        }
     }
 
     @Override
@@ -105,6 +123,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                             mHistoryProductDao.deleteAll();
                             productItems.clear();
                             recyclerHistoryScanView.getAdapter().notifyDataSetChanged();
+                            infoView.setVisibility(View.VISIBLE);
+                            scanFirst.setVisibility(View.VISIBLE);
                         })
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
@@ -146,7 +166,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             } else {
                 writer = new CSVWriter(new FileWriter(filePath));
             }
-           String[]  headers = getResources().getStringArray(R.array.headers);
+            String[] headers = getResources().getStringArray(R.array.headers);
             writer.writeNext(headers);
             List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             for (HistoryProduct hp : listHistoryProducts) {
@@ -200,6 +220,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         }
     }
 
+
     public class FillAdapter extends AsyncTask<Context, Void, Context> {
 
         private Activity activity;
@@ -212,8 +233,9 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         protected void onPreExecute() {
             List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             if (listHistoryProducts.size() == 0) {
-                Toast.makeText(getApplicationContext(), R.string.txtNoData, Toast.LENGTH_LONG).show();
                 emptyHistory = true;
+                infoView.setVisibility(View.VISIBLE);
+                scanFirst.setVisibility(View.VISIBLE);
                 invalidateOptionsMenu();
                 cancel(true);
             } else {
@@ -261,7 +283,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                     }
                 }
 
-                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), imgUrl, historyProduct.getBarcode(),historyProduct.getLastSeen()));
+                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), imgUrl, historyProduct.getBarcode(), historyProduct.getLastSeen()));
             }
 
             return ctx[0];
@@ -289,5 +311,40 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             });
         }
     }
+
+
+    @OnClick(R.id.scanFirst)
+    protected void onScanFirst() {
+
+
+        if (Utils.isHardwareCameraInstalled(getBaseContext())) {
+            if (ContextCompat.checkSelfPermission(getBaseContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(HistoryScanActivity.this, Manifest.permission.CAMERA)) {
+                    new MaterialDialog.Builder(getBaseContext())
+                            .title(R.string.action_about)
+                            .content(R.string.permission_camera)
+                            .neutralText(R.string.txtOk)
+                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(HistoryScanActivity.this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                            .show();
+                } else {
+                    ActivityCompat.requestPermissions(HistoryScanActivity.this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                }
+            } else {
+                Intent intent = new Intent(HistoryScanActivity.this, ScannerFragmentActivity.class);
+                startActivity(intent);
+            }
+        }
+
+    }
+
+    public void setInfo(TextView view) {
+
+        String info = "Your viewed product history will be listed here.\n"+
+        "This history is for your eyes only and is stored locally.";
+
+        view.setText(info);
+
+    }
+
 
 }

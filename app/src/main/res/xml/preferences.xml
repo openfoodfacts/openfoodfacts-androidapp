@@ -33,7 +33,10 @@
         android:title="@string/contact" />
 
     <Preference
-        android:title="@string/translate_help_title"
+           android:title="@string/FAQ"
+            android:summary="@string/FrequentlyAskedQuestions"
+            android:key="@string/FAQ"/>
+           <Preference android:title="@string/translate_help_title"
         android:key="@string/lang_translate"
         android:summary="@string/translate_help_summary"/>
 
