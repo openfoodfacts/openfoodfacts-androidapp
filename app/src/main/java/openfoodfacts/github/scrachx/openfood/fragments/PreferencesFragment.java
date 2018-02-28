@@ -108,9 +108,10 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
         faqbutton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://world.openfoodfacts.org/faq"));
-                startActivity(browserIntent);
-                return false;
+
+                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+                CustomTabActivityHelper.openCustomTab(getActivity(),customTabsIntent,Uri.parse(getString(R.string.faq_url)),new WebViewFallback());
+                return true;
             }
         });
 

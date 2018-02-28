@@ -368,4 +368,9 @@
   <string name="device_on_mobile_data_warning_positive">crwdns37194:0crwdne37194:0</string>
   <string name="device_on_mobile_data_warning_negative">crwdns37195:0crwdne37195:0</string>
   <string name="preference_choose_language_dialog_title">crwdns37196:0crwdne37196:0</string>
+  <string name="FAQ">crwdns37201:0crwdne37201:0</string>
+  <string name="FrequentlyAskedQuestions">crwdns37202:0crwdne37202:0</string>
+  <string name="lang_translate">crwdns37197:0crwdne37197:0</string>
+  <string name="translate_help_title">crwdns37199:0crwdne37199:0</string>
+  <string name="translate_help_summary">crwdns37200:0crwdne37200:0</string>
 </resources>

@@ -590,8 +590,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         customTabActivityHelper.setConnectionCallback(null);
+        super.onDestroy();
+
     }
 
     @Override
