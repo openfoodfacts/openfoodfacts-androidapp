@@ -339,7 +339,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
     public void setInfo(TextView view) {
 
-        String info = "Your viewed product history will be listed here.\n" +
+        String info = "     Your viewed product history will be listed here.\n" +
                 "This history is for your eyes only and is stored locally.";
 
         view.setText(info);
