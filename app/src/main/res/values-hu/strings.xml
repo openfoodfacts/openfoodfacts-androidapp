@@ -371,6 +371,6 @@
   <string name="FAQ">GYIK</string>
   <string name="FrequentlyAskedQuestions">Gyakran Ismételt Kérdések</string>
   <string name="lang_translate">local_translate_help</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="translate_help_title">Segítse az Open Food Facts fordítását</string>
+  <string name="translate_help_summary">Hozza az Open Food Facts adatbázist az ön nyelvére - nincs szükség műszaki ismeretekre</string>
 </resources>
