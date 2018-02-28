@@ -360,6 +360,7 @@
   <string name="device_offline_dialog_negative">Descartar</string>
   <string name="device_offline_dialog_positive">Configurações</string>
   <string name="saving">A guardar…</string>
+  <string name="scan_first_product">Scan First Product</string>
   <string name="preference_enable_mobile_data_title">Carregamento por dados móveis</string>
   <string name="preference_enable_mobile_data_summary_on">Carregar novos produtos via dados móveis &amp; WiFi</string>
   <string name="preference_enable_mobile_data_summary_off">Carregar novos produtos por WiFi apenas</string>

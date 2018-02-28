@@ -360,6 +360,7 @@
   <string name="device_offline_dialog_negative">crwdns37183:0crwdne37183:0</string>
   <string name="device_offline_dialog_positive">crwdns37184:0crwdne37184:0</string>
   <string name="saving">crwdns37185:0crwdne37185:0</string>
+  <string name="scan_first_product">crwdns37203:0crwdne37203:0</string>
   <string name="preference_enable_mobile_data_title">crwdns37189:0crwdne37189:0</string>
   <string name="preference_enable_mobile_data_summary_on">crwdns37190:0crwdne37190:0</string>
   <string name="preference_enable_mobile_data_summary_off">crwdns37191:0crwdne37191:0</string>
