@@ -7,7 +7,7 @@
   <string name="contribute">Como contribuir</string>
   <string name="action_find">Procurar</string>
   <string name="text_barcode">Escreva o código de barras:</string>
-  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
+  <string name="message_in_activity_save_product_offline">É obrigatória apenas uma foto para enviar um novo produto.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Resumo</item>
@@ -103,8 +103,8 @@
   <string name="txtManufacturing">Locais de fabrico ou de transformação :</string>
   <string name="txtIngredientsOrigins">Origem dos ingredientes :</string>
   <string name="txtCity">Cidade e país de compra :</string>
-  <string name="txtEMB">EMB Code:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtEMB">Código EMB:</string>
+  <string name="txtManufactureUrl">Ligação para a página do produto no site oficial do fabricante:</string>
   <string name="txtStores">Lojas :</string>
   <string name="txtCountries">País de venda :</string>
   <string name="txtIngredients">Lista dos ingredientes :</string>
@@ -133,7 +133,7 @@
   <string name="hintPass">Palavra-passe</string>
   <string name="errorLogin">Utilizador ou palavra-passe errada</string>
   <string name="errorWeb">Sem acesso à Internet.</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="uploadLater">A imagem será carregada quando a rede estiver disponível</string>
   <string name="txtInfoLoginOk">Utilizador guardado</string>
   <string name="txtInfoLoginNo">O utilizador não foi guardado</string>
   <string name="txtDialogsTitle">Informação</string>
@@ -157,7 +157,7 @@
   <string name="txtInfoAddUser">Por favor, digite o nome de utilizador e palavra-passe</string>
   <string name="txtDataUpdated">Dados actualizados</string>
   <string name="txtLoading">A carregar...</string>
-  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
+  <string name="txtDialogsContentDelete">Tem a certeza que deseja eliminar este rascunho?</string>
   <string name="txtDialogsContentInfoSave">O produto está guardado localmente, poderá editá-lo no menu \"Editar Offline\"</string>
   <string name="txtBarcodeRequire">Código de barras necessário</string>
   <string name="txtOk">Ok</string>
@@ -176,7 +176,7 @@
   <string name="search_drawer">Procurar</string>
   <string name="search_by_barcode_drawer">Escreva o código de barras</string>
   <string name="category_drawer">Categorias</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Categoria</string>
   <string name="search_by_name_drawer">Pesquisar pelo nome</string>
   <string name="scan_search">Digitalizar</string>
   <string name="user_drawer">Utilizador</string>
@@ -355,8 +355,8 @@
   <string name="airplane_mode_active_dialog_message">O modo de avião está activo, por favor desactive para continuar.</string>
   <string name="airplane_mode_active_dialog_negative">Descartar</string>
   <string name="airplane_mode_active_dialog_positive">Definições</string>
-  <string name="device_offline_dialog_title">Network unavailable</string>
-  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_title">Rede indisponível</string>
+  <string name="device_offline_dialog_message">É necessária uma ligação de rede para fazer isto, gostaria de alterar as definições?</string>
   <string name="device_offline_dialog_negative">Descartar</string>
   <string name="device_offline_dialog_positive">Definições</string>
   <string name="saving">A guardar…</string>
