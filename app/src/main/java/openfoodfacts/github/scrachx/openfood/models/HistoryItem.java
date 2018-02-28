@@ -11,16 +11,20 @@ public class HistoryItem {
     private Bitmap url;
     private String barcode;
     private Date lastSeen;
+    private String quantity;
+    private String nutriScore;
 
     public HistoryItem() {
     }
 
-    public HistoryItem(String title, String brands, Bitmap url, String barcode, Date lastSeen) {
+    public HistoryItem(String title, String brands, Bitmap url, String barcode, Date lastSeen, String quantity, String nutriScore) {
         this.title = title;
         this.brands = brands;
         this.url = url;
         this.barcode = barcode;
         this.lastSeen = lastSeen;
+        this.quantity = quantity;
+        this.nutriScore = nutriScore;
     }
 
     public String getBarcode() {
@@ -61,5 +65,21 @@ public class HistoryItem {
 
     public Date getTime() {
         return lastSeen;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getNutriScore() {
+        return nutriScore;
+    }
+
+    public void setNutriScore(String nutriScore) {
+        this.nutriScore = nutriScore;
     }
 }

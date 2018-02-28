@@ -9,9 +9,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-
 import android.graphics.drawable.Drawable;
-
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -31,7 +29,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -283,7 +280,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                     }
                 }
 
-                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), imgUrl, historyProduct.getBarcode(), historyProduct.getLastSeen()));
+                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), imgUrl, historyProduct.getBarcode(), historyProduct.getLastSeen(), historyProduct.getQuantity(), historyProduct.getNutriScore()));
             }
 
             return ctx[0];
