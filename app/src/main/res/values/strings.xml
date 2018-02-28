@@ -387,4 +387,8 @@
     <string name="device_offline_dialog_negative">Dismiss</string>
     <string name="device_offline_dialog_positive">Settings</string>
     <string name="saving">Saving…</string>
+    <string name="lang_translate">local_translate_help</string>
+    <string name="translate_url" translatable="false">https://crowdin.com/project/openfoodfacts</string>
+    <string name="translate_help_title">Help translate Open Food Facts</string>
+    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
 </resources>

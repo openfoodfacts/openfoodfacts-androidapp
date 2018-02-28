@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
@@ -17,8 +18,13 @@ import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 public class PreferencesFragment extends PreferenceFragmentCompat {
+
+    private CustomTabActivityHelper customTabActivityHelper;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String rootKey) {
@@ -68,6 +74,18 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
 
                     Toast.makeText(getActivity(), R.string.email_not_found,Toast.LENGTH_SHORT).show();
                 }
+                return true;
+            }
+        });
+
+        Preference langHelp = findPreference(getString(R.string.lang_translate));
+        langHelp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+
+                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+                CustomTabActivityHelper.openCustomTab(getActivity(),customTabsIntent,Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
+
                 return true;
             }
         });
