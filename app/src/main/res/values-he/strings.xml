@@ -157,7 +157,7 @@
   <string name="txtInfoAddUser">נא להזין את שם המשתמש והססמה שלך</string>
   <string name="txtDataUpdated">הנתונים עודכנו</string>
   <string name="txtLoading">בטעינה…</string>
-  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
+  <string name="txtDialogsContentDelete">להסיר את הטיוטה הזו?</string>
   <string name="txtDialogsContentInfoSave">המוצר נשמר מקומית, ניתן לערוך אותו בתפריט העריכה בלתי מקוון</string>
   <string name="txtBarcodeRequire">נדרש ברקוד</string>
   <string name="txtOk">אישור</string>
@@ -188,7 +188,7 @@
   <string name="alert_drawer">אזהרת אלרגן</string>
   <string name="warning_allergens">מכיל אלרגנים</string>
   <string name="title_dialog_alert">הוספת התרעה</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">נתוני האלרגיות שלך לא יישלחו לשרת של Open Food Facts server. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
   <string name="from_gallery">מהגלריה</string>
   <string name="product_sent">המוצר נשלח בהצלחה</string>
   <string name="action_edit_product">עריכת מוצר</string>
@@ -360,4 +360,15 @@
   <string name="device_offline_dialog_negative">התעלמות</string>
   <string name="device_offline_dialog_positive">הגדרות</string>
   <string name="saving">בהליכי שמירה…</string>
+  <string name="preference_enable_mobile_data_title">להעלות כשיש חיבור נתונים סלולרי</string>
+  <string name="preference_enable_mobile_data_summary_on">להעלות מוצרים חדשים כשיש חיבור נתונים סלולרי או אלחוטי</string>
+  <string name="preference_enable_mobile_data_summary_off">להעלות מוצרים חדשים כשיש חיבור נתונים אלחוטי בלבד</string>
+  <string name="device_on_mobile_data_warning_title">פרטים</string>
+  <string name="device_on_mobile_data_warning_message">העלאת מוצרים חדשים כשיש חיבור נתונים סלולרי מושבתת, נא להתחבר לרשת אלחוטית או לשנות זאת בהעדפות</string>
+  <string name="device_on_mobile_data_warning_positive">העדפות</string>
+  <string name="device_on_mobile_data_warning_negative">להעלות בכל זאת</string>
+  <string name="preference_choose_language_dialog_title">בחירת שפה</string>
+  <string name="lang_translate">local_translate_help</string>
+  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
 </resources>

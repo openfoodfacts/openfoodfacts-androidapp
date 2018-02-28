@@ -44,6 +44,13 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     private boolean mAutoFocus;
     private int mCameraId = -1;
     private OpenFoodAPIClient api;
+    private SharedPreferences settings;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        settings = PreferenceManager.getDefaultSharedPreferences(context);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
@@ -180,8 +187,13 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
             return;
         }
 
+
         if (Utils.isNetworkConnected(getContext()) && PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true)) {
-            api.getProduct(rawResult.getText(), getActivity(), mScannerView, this);
+            if (settings.getBoolean("powerMode", false) && mScannerView != null) {
+                api.getShortProduct(rawResult.getText(), getActivity(), mScannerView, this);
+            } else {
+                api.getProduct(rawResult.getText(), getActivity());
+            }
         } else {
             Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
             intent.putExtra("barcode", rawResult.getText());
