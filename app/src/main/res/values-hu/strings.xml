@@ -360,6 +360,7 @@
   <string name="device_offline_dialog_negative">Elutasít</string>
   <string name="device_offline_dialog_positive">Beállítások</string>
   <string name="saving">Mentés…</string>
+  <string name="scan_first_product">Scan First Product</string>
   <string name="preference_enable_mobile_data_title">Feltöltés mobilinterneten</string>
   <string name="preference_enable_mobile_data_summary_on">Új termékek feltöltése mobilinternet &amp; WiFi használatával</string>
   <string name="preference_enable_mobile_data_summary_off">Új termékek feltöltése csak WiFi használatával</string>
