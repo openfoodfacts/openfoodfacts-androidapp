@@ -30,10 +30,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:visibility="invisible"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:textAlignment="center"
                 android:layout_margin="12dp"
                 android:textColor="@android:color/darker_gray"
+                android:gravity="center"
                 android:padding="12dp"
                 android:layout_weight="1"
                 />
