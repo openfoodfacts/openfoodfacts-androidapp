@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +18,9 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.holders.HistoryScanHolder;
+
+import static org.apache.commons.lang3.StringUtils.capitalize;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> {
 
@@ -40,16 +45,27 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
     public void onBindViewHolder(HistoryScanHolder holder, int position) {
         HistoryItem item = list.get(position);
 
+        StringBuilder stringBuilder = new StringBuilder();
+        if (isNotEmpty(item.getBrands())) {
+            stringBuilder.append(capitalize(item.getBrands().split(",")[0].trim()));
+        }
+
+        if (isNotEmpty(item.getQuantity())) {
+            stringBuilder.append(" - ").append(item.getQuantity());
+        }
+
         //Use the provided View Holder on the onCreateViewHolder method to populate the current row on the RecyclerView
         holder.txtTitle.setText(item.getTitle());
         holder.txtBarcode.setText(item.getBarcode());
-        holder.txtProductDetails.setText(item.getBrands());
-        holder.imgProduct.setImageBitmap(item.getUrl());
+        holder.txtProductDetails.setText(stringBuilder.toString());
         holder.imgNutriScore.setImageDrawable(ContextCompat.getDrawable(mActivity, Utils.getSmallImageGrade(item.getNutriScore())));
-
-        if (item.getQuantity() != null && !item.getQuantity().isEmpty()) {
-            holder.txtProductDetails.append(" - " + item.getQuantity());
-        }
+        Picasso.with(mActivity)
+                .load(item.getUrl())
+                .placeholder(R.drawable.placeholder_thumb)
+                .error(R.drawable.ic_no_red_24dp)
+                .fit()
+                .centerCrop()
+                .into(holder.imgProduct);
 
         Date date = list.get(position).getTime();
         calcTime(date, holder);

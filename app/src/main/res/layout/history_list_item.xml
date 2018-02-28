@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/historyRel"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/spacing_small">
+    android:layout_height="wrap_content">
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/imgHistoryProduct"
@@ -18,7 +17,6 @@
         android:paddingBottom="10dp"
         android:paddingEnd="8dp"
         android:paddingRight="8dp"
-        android:scaleType="fitXY"
         tools:srcCompat="@drawable/header" />
 
     <android.support.v7.widget.AppCompatImageView
@@ -35,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/imgHistoryProduct"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:layout_toEndOf="@id/imgHistoryProduct"
         android:layout_toLeftOf="@id/barcodeHistory"
         android:layout_toRightOf="@id/imgHistoryProduct"
@@ -67,13 +65,13 @@
         android:id="@+id/barcodeHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/titleHistory"
         android:layout_alignParentEnd="true"
+
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/imgHistoryProduct"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="12dp"
         android:drawablePadding="2dp"
         android:gravity="center_vertical"
         android:textSize="@dimen/font_small"
@@ -85,10 +83,9 @@
         android:id="@+id/dateView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imgHistoryProduct"
+        android:layout_alignBottom="@+id/productDetailsHistory"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="12dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginStart="10dp"
