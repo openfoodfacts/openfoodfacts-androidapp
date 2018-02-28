@@ -27,6 +27,7 @@ import java.util.Arrays;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 
 public class BarCodeScannerFragment extends BaseFragment implements MessageDialogFragment.MessageDialogListener,
@@ -178,10 +179,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
             return;
         }
 
-        ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-
-        if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+        if (Utils.isNetworkConnected(getContext())) {
             api.getProduct(rawResult.getText(), getActivity(), mScannerView, this);
         } else {
             Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);

@@ -147,6 +147,7 @@ public class OpenFoodAPIClient {
                                 activity.startActivity(intent);
                                 activity.finish();
                             })
+                            .onNegative((dialog, which) -> activity.onBackPressed())
                             .show();
                 } else {
                     new HistoryTask().doInBackground(s.getProduct());
@@ -171,6 +172,7 @@ public class OpenFoodAPIClient {
                             activity.startActivity(intent);
                             activity.finish();
                         })
+                        .onNegative((dialog, which) -> activity.onBackPressed())
                         .show();
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
             }
@@ -222,11 +224,19 @@ public class OpenFoodAPIClient {
                 final State s = response.body();
 
                 if (s.getStatus() == 0) {
-                    Toast.makeText(activity, R.string.txtDialogsContent, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                    intent.putExtra("barcode", barcode);
-                    activity.startActivity(intent);
-                    activity.finish();
+                    new MaterialDialog.Builder(activity)
+                            .title(R.string.txtDialogsTitle)
+                            .content(R.string.txtDialogsContent)
+                            .positiveText(R.string.txtYes)
+                            .negativeText(R.string.txtNo)
+                            .onPositive((dialog, which) -> {
+                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                                intent.putExtra("barcode", barcode);
+                                activity.startActivity(intent);
+                                activity.finish();
+                            })
+                            .onNegative((dialog, which) -> activity.onBackPressed())
+                            .show();
                 } else {
                     final Product product = s.getProduct();
                     new HistoryTask().doInBackground(s.getProduct());
@@ -282,11 +292,20 @@ public class OpenFoodAPIClient {
                         }
                         dialog.show();
                     } else {
-                        Intent intent = new Intent(activity, ProductActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("state", s);
-                        intent.putExtras(bundle);
-                        activity.startActivity(intent);
+                        new MaterialDialog.Builder(activity)
+                                .title(R.string.txtDialogsTitle)
+                                .content(R.string.txtDialogsContent)
+                                .positiveText(R.string.txtYes)
+                                .negativeText(R.string.txtNo)
+                                .onPositive((dialog, which) -> {
+                                    Intent intent = new Intent(activity, ProductActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putSerializable("state", s);
+                                    intent.putExtras(bundle);
+                                    activity.startActivity(intent);
+                                })
+                                .onNegative((dialog, which) -> activity.onBackPressed())
+                                .show();
                     }
                 }
             }
@@ -298,20 +317,14 @@ public class OpenFoodAPIClient {
                         .content(R.string.txtDialogsContent)
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
-                        .callback(new MaterialDialog.ButtonCallback() {
-                            @Override
-                            public void onPositive(MaterialDialog dialog) {
+                        .onPositive((dialog, which) -> {
                                 Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
                                 intent.putExtra("barcode", barcode);
                                 activity.startActivity(intent);
                                 activity.finish();
                             }
-
-                            @Override
-                            public void onNegative(MaterialDialog dialog) {
-                                return;
-                            }
-                        })
+                        )
+                        .onNegative((dialog, which) -> activity.onBackPressed())
                         .show();
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
             }
