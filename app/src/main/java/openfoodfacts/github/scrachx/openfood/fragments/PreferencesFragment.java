@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.ListPreference;
@@ -39,6 +40,8 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.SplashActivity;
 import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 public class PreferencesFragment extends PreferenceFragmentCompat {
 
@@ -99,7 +102,23 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
                 return true;
             }
         });
+
+        Preference langHelp = findPreference(getString(R.string.lang_translate));
+
+        langHelp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+
+        {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+
+                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
+
+                return true;
+            }
+        });
     }
+
 
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {
 
