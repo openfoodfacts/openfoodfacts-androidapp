@@ -400,6 +400,10 @@
 
     <string name="preference_choose_language_dialog_title">Choose language</string>
 
+    
+    <string name="FAQ">FAQ</string>
+    <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+
     <string name="lang_translate">local_translate_help</string>
     <string name="translate_url" translatable="false">https://crowdin.com/project/openfoodfacts</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
