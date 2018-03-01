@@ -360,6 +360,7 @@
   <string name="device_offline_dialog_negative">Dismiss</string>
   <string name="device_offline_dialog_positive">Opcje</string>
   <string name="saving">Saving…</string>
+  <string name="scan_first_product">Scan First Product</string>
   <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
   <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
   <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
@@ -368,4 +369,10 @@
   <string name="device_on_mobile_data_warning_positive">Ustawienia</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
   <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="FAQ">FAQ</string>
+  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+  <string name="lang_translate">local_translate_help</string>
+  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>

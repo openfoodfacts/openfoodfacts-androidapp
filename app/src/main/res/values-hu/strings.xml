@@ -360,15 +360,19 @@
   <string name="device_offline_dialog_negative">Elutasít</string>
   <string name="device_offline_dialog_positive">Beállítások</string>
   <string name="saving">Mentés…</string>
-  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
-  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
-  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="scan_first_product">Scan First Product</string>
+  <string name="preference_enable_mobile_data_title">Feltöltés mobilinterneten</string>
+  <string name="preference_enable_mobile_data_summary_on">Új termékek feltöltése mobilinternet &amp; WiFi használatával</string>
+  <string name="preference_enable_mobile_data_summary_off">Új termékek feltöltése csak WiFi használatával</string>
   <string name="device_on_mobile_data_warning_title">Információ</string>
-  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_message">A feltöltés mobilinterneten le van tiltva, kérjük, csatlakozzon WiFi-hez vagy módosítsa a beállításokat</string>
   <string name="device_on_mobile_data_warning_positive">Tulajdonságok</string>
-  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
-  <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="device_on_mobile_data_warning_negative">Feltöltés mindenképpen</string>
+  <string name="preference_choose_language_dialog_title">Válasszon nyelvet</string>
+  <string name="FAQ">GYIK</string>
+  <string name="FrequentlyAskedQuestions">Gyakran Ismételt Kérdések</string>
   <string name="lang_translate">local_translate_help</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="translate_help_title">Segítse az Open Food Facts fordítását</string>
+  <string name="translate_help_summary">Hozza az Open Food Facts adatbázist az ön nyelvére - nincs szükség műszaki ismeretekre</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>

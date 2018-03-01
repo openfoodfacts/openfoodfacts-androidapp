@@ -18,6 +18,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -205,13 +206,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     switch ((int) drawerItem.getIdentifier()) {
                         case 1:
                             fragment = new HomeFragment();
-                            getSupportActionBar().setTitle(getResources().getString(R.string
-                                    .home_drawer));
                             break;
                         case 2:
                             fragment = new FindProductFragment();
-                            getSupportActionBar().setTitle(getResources().getString(R.string
-                                    .search_by_barcode_drawer));
                             break;
                         case 3:
                             startActivity(CategoryActivity.getIntent(this));
@@ -228,16 +225,13 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             break;
                         case 7:
                             fragment = new AlertUserFragment();
-                            getSupportActionBar().setTitle(R.string.alert_drawer);
                             break;
                         case 8:
                             fragment = new PreferencesFragment();
-                            getSupportActionBar().setTitle(R.string.action_preferences);
                             break;
                         case 9:
                             fragment = new OfflineEditFragment();
-                            getSupportActionBar().setTitle(getResources().getString(R.string
-                                    .offline_edit_drawer));
+
                             break;
                         case ABOUT:
                             CustomTabActivityHelper.openCustomTab(MainActivity.this,
@@ -590,8 +584,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         customTabActivityHelper.setConnectionCallback(null);
+        super.onDestroy();
+
     }
 
     @Override
