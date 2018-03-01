@@ -374,4 +374,5 @@
   <string name="lang_translate">local_translate_help</string>
   <string name="translate_help_title">סיוע בתרגום Open Food Facts</string>
   <string name="translate_help_summary">הנגשת מסד הנתונים של Open Food Facts לאנשים שדוברים את אותה השפה כמוך - לא נדרש ידע טכני</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>

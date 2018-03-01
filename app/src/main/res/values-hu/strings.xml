@@ -374,4 +374,5 @@
   <string name="lang_translate">local_translate_help</string>
   <string name="translate_help_title">Segítse az Open Food Facts fordítását</string>
   <string name="translate_help_summary">Hozza az Open Food Facts adatbázist az ön nyelvére - nincs szükség műszaki ismeretekre</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>
