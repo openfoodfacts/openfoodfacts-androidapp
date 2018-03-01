@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.text.SpannableStringBuilder;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -26,6 +28,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -37,6 +41,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
@@ -49,8 +55,6 @@ import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
-import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -73,6 +77,8 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
 
+    @BindView(R.id.product_incomplete_warning_view_container)
+    CardView productIncompleteView;
     @BindView(R.id.textNameProduct)
     TextView nameProduct;
     @BindView(R.id.textGenericNameProduct)
@@ -118,6 +124,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Uri nutritionScoreUri;
     private Uri embCodeUri;
     private TagDao mTagDao;
+    private AllergenDao mAllergenDao;
 
     @Override
     public void onAttach(Context context) {
@@ -141,6 +148,44 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         final State state = (State) intent.getExtras().getSerializable("state");
 
         final Product product = state.getProduct();
+
+        mAllergenDao = Utils.getAppDaoSession(getActivity()).getAllergenDao();
+        List<Allergen> mAllergens = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
+
+        List<String> allergens = product.getAllergensHierarchy();
+        List<String> traces = product.getTracesTags();
+        allergens.addAll(traces);
+        if (!mAllergens.isEmpty() && product.getStatesTags().get(0).contains("to-be-completed")) {
+            productIncompleteView.setVisibility(View.VISIBLE);
+        }
+
+        List<String> matchAll = new ArrayList<>();
+        for (int a = 0; a < mAllergens.size(); a++) {
+            for (int i = 0; i < allergens.size(); i++) {
+                if (allergens.get(i).trim().equals(mAllergens.get(a).getIdAllergen().trim())) {
+                    matchAll.add(mAllergens.get(a).getName());
+                }
+            }
+        }
+
+        /**
+         * shows the dialog if allergen is found.
+         */
+        if (matchAll.size() > 0) {
+            new MaterialDialog.Builder(getActivity())
+                    .title(R.string.warning_allergens)
+                    .items(matchAll)
+                    .neutralText(R.string.txtOk)
+                    .titleColorRes(R.color.red_500)
+                    .dividerColorRes(R.color.indigo_900)
+                    .icon(new IconicsDrawable(getActivity())
+                            .icon(GoogleMaterial.Icon.gmd_warning)
+                            .color(Color.RED)
+                            .sizeDp(24))
+                    .show();
+        }
+
+
         mTagDao = Utils.getAppDaoSession(getActivity()).getTagDao();
         barcode = product.getCode();
 
@@ -379,6 +424,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         return spannableStringBuilder;
     }
 
+    @OnClick(R.id.product_incomplete_message_dismiss_icon)
+    public void onDismissProductIncompleteMsgClicked() {
+        productIncompleteView.setVisibility(View.GONE);
+    }
+
     // Implements CustomTabActivityHelper.ConnectionCallback
     @Override
     public void onCustomTabsConnected() {
@@ -477,7 +527,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 if (!sendOther) {
                     onPhotoReturned(new File(resultUri.getPath()));
                 } else {
-                    ProductImage image = new ProductImage(barcode, OTHER, new  File(resultUri.getPath()));
+                    ProductImage image = new ProductImage(barcode, OTHER, new File(resultUri.getPath()));
                     image.setFilePath(resultUri.getPath());
                     api.postImg(getContext(), image);
                 }
