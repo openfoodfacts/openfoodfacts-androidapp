@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 
 import javax.inject.Inject;
 
@@ -50,8 +51,20 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
         binding.recycler.setHasFixedSize(true);
         binding.recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recycler.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        fastScroller.setRecyclerView(binding.recycler);
         binding.setViewModel(getViewModel());
+        fastScroller.setRecyclerView(binding.recycler);
+        binding.recycler.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                if(binding.getViewModel().getCategories().get().isEmpty()){
+                    fastScroller.setVisibility(View.GONE);
+
+                }
+                else {
+                    fastScroller.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
     @Override
