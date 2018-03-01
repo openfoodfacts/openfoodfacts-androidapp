@@ -159,18 +159,11 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
 
         super.onResume();
 
-        AppCompatActivity activity = (AppCompatActivity)getActivity();
-
-        ActionBar actionBar;
-
-        if(activity!=null){
-            actionBar =activity.getSupportActionBar();
-
-            if(actionBar!=null){
-                actionBar.setTitle(getString(R.string.action_preferences));
-            }
+        try {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.action_preferences));
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
-
 
     }
 }

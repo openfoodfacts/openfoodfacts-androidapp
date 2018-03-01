@@ -218,17 +218,10 @@ public class OfflineEditFragment extends BaseFragment {
         super.onResume();
         new FillAdapter().execute(getActivity());
 
-        AppCompatActivity activity = (AppCompatActivity)getActivity();
-
-        ActionBar actionBar;
-
-        if(activity!=null){
-            actionBar =activity.getSupportActionBar();
-
-            if(actionBar!=null){
-                actionBar.setTitle(getString(R.string
-                        .offline_edit_drawer));
-            }
+        try {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.offline_edit_drawer));
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
     }
 

@@ -56,19 +56,11 @@ public class FindProductFragment extends BaseFragment {
 
         super.onResume();
 
-        AppCompatActivity activity = (AppCompatActivity)getActivity();
-
-        ActionBar actionBar;
-
-        if(activity!=null){
-            actionBar =activity.getSupportActionBar();
-
-            if(actionBar!=null){
-                actionBar.setTitle(getString(R.string
-                        .search_by_barcode_drawer));
-            }
+        try {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.search_by_barcode_drawer));
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
-
 
     }
 }

@@ -169,19 +169,11 @@ public class AlertUserFragment extends BaseFragment {
 
         super.onResume();
 
-        AppCompatActivity activity = (AppCompatActivity)getActivity();
-
-        ActionBar actionBar;
-
-        if(activity!=null){
-            actionBar =activity.getSupportActionBar();
-
-            if(actionBar!=null){
-                actionBar.setTitle(getString(R.string
-                        .alert_drawer));
-            }
+        try {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.alert_drawer));
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
-
 
     }
 
