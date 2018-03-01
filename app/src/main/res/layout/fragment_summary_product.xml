@@ -69,6 +69,55 @@
             android:textIsSelectable="true"
             android:textSize="@dimen/font_normal" />
 
+        <android.support.v7.widget.CardView
+            android:id="@+id/product_incomplete_warning_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#EEE"
+                android:gravity="center"
+                android:padding="4dp">
+
+                <ImageView
+                    android:id="@+id/message_icon"
+                    android:layout_width="@dimen/button_height_normal"
+                    android:layout_height="@dimen/button_height_normal"
+                    android:padding="@dimen/padding_too_short"
+                    android:src="@drawable/warning_icon" />
+
+                <TextView
+                    android:id="@+id/product_incomplete_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/message_dismiss_icon"
+                    android:layout_toRightOf="@+id/message_icon"
+                    android:layout_toStartOf="@+id/message_dismiss_icon"
+                    android:gravity="center"
+                    android:paddingRight="@dimen/padding_normal"
+                    android:text="@string/product_incomplete_message"
+                    android:textAlignment="center"
+                    android:textColor="@color/md_black_1000" />
+
+                <ImageButton
+                    android:id="@+id/product_incomplete_message_dismiss_icon"
+                    android:layout_width="@dimen/button_height_too_much_short"
+                    android:layout_height="@dimen/button_height_too_much_short"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="4dp"
+                    android:background="#EEE"
+                    android:src="@drawable/ic_action_cross" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
         <TextView
             android:id="@+id/textBarcodeProduct"
             android:layout_width="fill_parent"
