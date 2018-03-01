@@ -32,7 +32,7 @@ public class HistoryProduct {
         this.nutritionGrade = nutritionGrade;
     }
 
-    @Generated(hash = 1666043918)
+    @Generated(hash = 1473607560)
     public HistoryProduct(Long id, String title, String brands, String url, Date lastSeen, String barcode, String quantity,
             String nutritionGrade) {
         this.id = id;
