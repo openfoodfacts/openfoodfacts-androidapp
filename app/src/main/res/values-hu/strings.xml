@@ -8,6 +8,7 @@
   <string name="action_find">Keres</string>
   <string name="text_barcode">Vonalkód beírása :</string>
   <string name="message_in_activity_save_product_offline">Csak egy fénykép kötelező egy új termék elküldéséhez.</string>
+  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Összefoglalás</item>
@@ -374,4 +375,5 @@
   <string name="lang_translate">local_translate_help</string>
   <string name="translate_help_title">Segítse az Open Food Facts fordítását</string>
   <string name="translate_help_summary">Hozza az Open Food Facts adatbázist az ön nyelvére - nincs szükség műszaki ismeretekre</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>

@@ -8,6 +8,7 @@
   <string name="action_find">crwdns34967:0crwdne34967:0</string>
   <string name="text_barcode">crwdns34968:0crwdne34968:0</string>
   <string name="message_in_activity_save_product_offline">crwdns37134:0crwdne37134:0</string>
+  <string name="product_incomplete_message">crwdns37206:0crwdne37206:0</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>crwdns34969:0crwdne34969:0</item>
@@ -374,4 +375,5 @@
   <string name="lang_translate">crwdns37197:0crwdne37197:0</string>
   <string name="translate_help_title">crwdns37199:0crwdne37199:0</string>
   <string name="translate_help_summary">crwdns37200:0crwdne37200:0</string>
+  <string name="please_check_your_connection">crwdns37205:0crwdne37205:0</string>
 </resources>
