@@ -257,7 +257,7 @@ public class OfflineEditFragment extends BaseFragment {
                 }
 
                 Bitmap imgUrl = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
-                saveItems.add(new SaveItem(product.getName(), imageIcon, imgUrl, product.getBarcode()));
+                saveItems.add(new SaveItem(product.getName(), imageIcon, imgUrl, product.getBarcode(),product.getWeight()+" "+product.getWeight_unit(),product.getBrands()));
             }
 
             return ctx[0];
