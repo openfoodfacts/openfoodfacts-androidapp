@@ -241,7 +241,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
 
             for (HistoryProduct historyProduct : listHistoryProducts) {
-                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), historyProduct.getUrl(), historyProduct.getBarcode(), historyProduct.getLastSeen(), historyProduct.getQuantity(), historyProduct.getNutriScore()));
+                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), historyProduct.getUrl(), historyProduct.getBarcode(), historyProduct.getLastSeen(), historyProduct.getQuantity(), historyProduct.getNutritionGrade()));
             }
 
             return ctx[0];

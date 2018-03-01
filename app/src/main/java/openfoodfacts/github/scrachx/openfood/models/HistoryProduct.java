@@ -20,21 +20,21 @@ public class HistoryProduct {
     private Date lastSeen;
     private String barcode;
     private String quantity;
-    private String nutriScore;
+    private String nutritionGrade;
 
-    public HistoryProduct(String title, String brands, String url, String barcode, String quantity, String nutriScore) {
+    public HistoryProduct(String title, String brands, String url, String barcode, String quantity, String nutritionGrade) {
         this.title = title;
         this.brands = brands;
         this.url = url;
         this.barcode = barcode;
         this.lastSeen = new Date();
         this.quantity = quantity;
-        this.nutriScore = nutriScore;
+        this.nutritionGrade = nutritionGrade;
     }
 
     @Generated(hash = 1666043918)
     public HistoryProduct(Long id, String title, String brands, String url, Date lastSeen, String barcode, String quantity,
-            String nutriScore) {
+            String nutritionGrade) {
         this.id = id;
         this.title = title;
         this.brands = brands;
@@ -42,7 +42,7 @@ public class HistoryProduct {
         this.lastSeen = lastSeen;
         this.barcode = barcode;
         this.quantity = quantity;
-        this.nutriScore = nutriScore;
+        this.nutritionGrade = nutritionGrade;
     }
 
     @Generated(hash = 1674709907)
@@ -105,11 +105,11 @@ public class HistoryProduct {
         this.quantity = quantity;
     }
 
-    public String getNutriScore() {
-        return nutriScore;
+    public String getNutritionGrade() {
+        return nutritionGrade;
     }
 
-    public void setNutriScore(String nutriScore) {
-        this.nutriScore = nutriScore;
+    public void setNutritionGrade(String nutritionGrade) {
+        this.nutritionGrade = nutritionGrade;
     }
 }

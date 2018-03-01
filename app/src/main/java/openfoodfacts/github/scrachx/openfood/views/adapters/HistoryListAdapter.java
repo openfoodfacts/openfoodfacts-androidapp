@@ -58,7 +58,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         holder.txtTitle.setText(item.getTitle());
         holder.txtBarcode.setText(item.getBarcode());
         holder.txtProductDetails.setText(stringBuilder.toString());
-        holder.imgNutriScore.setImageDrawable(ContextCompat.getDrawable(mActivity, Utils.getSmallImageGrade(item.getNutriScore())));
+        holder.imgNutritionGrade.setImageDrawable(ContextCompat.getDrawable(mActivity, Utils.getSmallImageGrade(item.getNutritionGrade())));
         Picasso.with(mActivity)
                 .load(item.getUrl())
                 .placeholder(R.drawable.placeholder_thumb)

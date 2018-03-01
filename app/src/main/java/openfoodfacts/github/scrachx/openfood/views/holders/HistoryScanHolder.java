@@ -19,7 +19,7 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
     public TextView txtBarcode;
     public TextView txtProductDetails;
     public ImageView imgProduct;
-    public ImageView imgNutriScore;
+    public ImageView imgNutritionGrade;
     public Activity mActivity;
 
     public HistoryScanHolder(final View itemView, final String productUrl, Activity activity) {
@@ -28,7 +28,7 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
         txtBarcode = (TextView) itemView.findViewById(R.id.barcodeHistory);
         txtProductDetails = (TextView) itemView.findViewById(R.id.productDetailsHistory);
         imgProduct = (ImageView) itemView.findViewById(R.id.imgHistoryProduct);
-        imgNutriScore = (ImageView) itemView.findViewById(R.id.nutriScoreImage);
+        imgNutritionGrade = (ImageView) itemView.findViewById(R.id.nutritionGradeImage);
         txtDate = (TextView) itemView.findViewById(R.id.dateView);
         mActivity = activity;
 

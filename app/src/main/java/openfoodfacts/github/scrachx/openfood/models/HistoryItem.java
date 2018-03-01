@@ -10,19 +10,19 @@ public class HistoryItem {
     private String barcode;
     private Date lastSeen;
     private String quantity;
-    private String nutriScore;
+    private String nutritionGrade;
 
     public HistoryItem() {
     }
 
-    public HistoryItem(String title, String brands, String url, String barcode, Date lastSeen, String quantity, String nutriScore) {
+    public HistoryItem(String title, String brands, String url, String barcode, Date lastSeen, String quantity, String nutritionGrade) {
         this.title = title;
         this.brands = brands;
         this.url = url;
         this.barcode = barcode;
         this.lastSeen = lastSeen;
         this.quantity = quantity;
-        this.nutriScore = nutriScore;
+        this.nutritionGrade = nutritionGrade;
     }
 
     public String getBarcode() {
@@ -73,11 +73,11 @@ public class HistoryItem {
         this.quantity = quantity;
     }
 
-    public String getNutriScore() {
-        return nutriScore;
+    public String getNutritionGrade() {
+        return nutritionGrade;
     }
 
-    public void setNutriScore(String nutriScore) {
-        this.nutriScore = nutriScore;
+    public void setNutritionGrade(String nutritionGrade) {
+        this.nutritionGrade = nutritionGrade;
     }
 }

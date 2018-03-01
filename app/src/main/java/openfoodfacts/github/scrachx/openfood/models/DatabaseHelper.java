@@ -51,7 +51,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 TagDao.createTable(db, true);
             case 5: {
                 db.execSQL("ALTER TABLE history_product ADD COLUMN 'quantity' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE history_product ADD COLUMN 'nutri_score' TEXT NOT NULL DEFAULT '';");
+                db.execSQL("ALTER TABLE history_product ADD COLUMN 'nutrition_grade' TEXT NOT NULL DEFAULT '';");
             }
         }
     }
