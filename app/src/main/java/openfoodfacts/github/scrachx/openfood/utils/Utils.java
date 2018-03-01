@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -8,7 +9,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.annotation.DrawableRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.content.res.AppCompatResources;
@@ -20,17 +24,37 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.firebase.jobdispatcher.Constraint;
+import com.firebase.jobdispatcher.Driver;
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+import com.firebase.jobdispatcher.Job;
+import com.firebase.jobdispatcher.Lifetime;
+import com.firebase.jobdispatcher.Trigger;
+
+import org.greenrobot.greendao.database.Database;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Collections;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.CipherSuite;
+import okhttp3.ConnectionSpec;
+import okhttp3.OkHttpClient;
+import okhttp3.TlsVersion;
+import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
+import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static android.text.TextUtils.isEmpty;
@@ -39,6 +63,8 @@ public class Utils {
 
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
+    public static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
+    public static boolean isUploadJobInitialised;
 
     /**
      * Returns a CharSequence that concatenates the specified array of CharSequence
@@ -94,12 +120,14 @@ public class Utils {
     }
 
     public static void hideKeyboard(Activity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         View view = activity.getCurrentFocus();
-        if (view == null) {
-            view = new View(activity);
+
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
         }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     public static String compressImage(String url) {
@@ -178,7 +206,8 @@ public class Utils {
         //private boolean isApplicationInstalled(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
         try {
-            // Check if the package name exists, if exception is thrown, package name does not exist.
+            // Check if the package name exists, if exception is thrown, package name does not
+            // exist.
             pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
             return true;
         } catch (PackageManager.NameNotFoundException e) {
@@ -193,7 +222,7 @@ public class Utils {
             return R.drawable.ic_error;
         }
 
-        switch (grade.toLowerCase()) {
+        switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
                 drawable = R.drawable.nnc_a;
                 break;
@@ -219,7 +248,8 @@ public class Utils {
 
     public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
         Drawable drawable = AppCompatResources.getDrawable(context, drawableId);
-        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable
+                .getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
@@ -254,6 +284,21 @@ public class Utils {
         return ((OFFApplication) activity.getApplication()).getDaoSession();
     }
 
+
+    public static DaoSession getDaoSession(Context context) {
+        String nameDB = "";
+        if ((BuildConfig.FLAVOR.equals("off"))) {
+            nameDB = "open_food_facts";
+        } else if ((BuildConfig.FLAVOR.equals("opff"))) {
+            nameDB = "open_pet_food_facts";
+        } else {
+            nameDB = "open_beauty_facts";
+        }
+        DatabaseHelper helper = new DatabaseHelper(context, nameDB);
+        Database db = helper.getWritableDb();
+        return new DaoMaster(db).newSession();
+    }
+
     /**
      * Check if the device has a camera installed.
      *
@@ -269,5 +314,120 @@ public class Utils {
             return false;
         }
         return false;
+    }
+
+    /**
+     * Schedules job to download when network is available
+     */
+
+    synchronized public static void scheduleProductUploadJob(Context context) {
+        if (isUploadJobInitialised) return;
+        final int periodicity = (int) TimeUnit.MINUTES.toSeconds(30);
+        final int toleranceInterval = (int) TimeUnit.MINUTES.toSeconds(5);
+        Driver driver = new GooglePlayDriver(context);
+        FirebaseJobDispatcher jobDispatcher = new FirebaseJobDispatcher(driver);
+        Job uploadJob = jobDispatcher.newJobBuilder()
+                .setService(SavedProductUploadJob.class)
+                .setTag(UPLOAD_JOB_TAG)
+                .setConstraints(Constraint.ON_UNMETERED_NETWORK)
+                .setLifetime(Lifetime.FOREVER)
+                .setRecurring(false)
+                .setTrigger(Trigger.executionWindow(periodicity, periodicity + toleranceInterval))
+                .setReplaceCurrent(false)
+                .build();
+        jobDispatcher.schedule(uploadJob);
+        isUploadJobInitialised = true;
+    }
+
+    public static OkHttpClient HttpClientBuilder() {
+        OkHttpClient httpClient;
+        if (Build.VERSION.SDK_INT == 24) {
+            ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                    .tlsVersions(TlsVersion.TLS_1_2)
+                    .cipherSuites(CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
+                    .build();
+
+            httpClient = new OkHttpClient.Builder()
+                    .connectTimeout(5000, TimeUnit.MILLISECONDS)
+                    .readTimeout(30000, TimeUnit.MILLISECONDS)
+                    .writeTimeout(30000, TimeUnit.MILLISECONDS)
+                    .connectionSpecs(Collections.singletonList(spec))
+                    .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                    .build();
+        } else {
+            httpClient = new OkHttpClient.Builder()
+                    .connectTimeout(5000, TimeUnit.MILLISECONDS)
+                    .readTimeout(30000, TimeUnit.MILLISECONDS)
+                    .writeTimeout(30000, TimeUnit.MILLISECONDS)
+                    .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                    .build();
+        }
+        return httpClient;
+    }
+
+    /**
+     * Check if airplane mode is turned on on the device.
+     * @param context of the application.
+     * @return true if airplane mode is active.
+     */
+    @SuppressWarnings("depreciation")
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public static boolean isAirplaneModeActive(Context context){
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            return Settings.System.getInt(context.getContentResolver(),
+                    Settings.System.AIRPLANE_MODE_ON, 0) != 0;
+        } else {
+            return Settings.Global.getInt(context.getContentResolver(),
+                    Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
+        }
+    }
+
+    /**
+     * Check if the user is connected to a network. This can be any network.
+     * @param context of the application.
+     * @return true if connected or connecting. False otherwise.
+     */
+    public static boolean isNetworkConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+    }
+
+    /**
+     * Check if the user is connected to a mobile network.
+     * @param context of the application.
+     * @return true if connected to mobile data.
+     */
+    public static boolean isConnectedToMobileData(Context context){
+        return getNetworkType(context).equals("Mobile");
+    }
+
+    /**
+     * Get the type of network that the user is connected to.
+     *
+     * @param context of the application.
+     * @return the type of network that is connected.
+     */
+    private static String getNetworkType(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+            switch (activeNetwork.getType()) {
+                case ConnectivityManager.TYPE_ETHERNET:
+                    return "Ethernet";
+                case ConnectivityManager.TYPE_MOBILE:
+                    return "Mobile";
+                case ConnectivityManager.TYPE_VPN:
+                    return "VPN";
+                case ConnectivityManager.TYPE_WIFI:
+                    return "WiFi";
+                case ConnectivityManager.TYPE_WIMAX:
+                    return "WiMax";
+            }
+        }
+
+        return "Other";
     }
 }

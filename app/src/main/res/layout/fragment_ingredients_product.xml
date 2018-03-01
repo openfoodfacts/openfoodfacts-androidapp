@@ -13,7 +13,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="65dp">
 
         <ImageButton
             android:id="@+id/imageViewIngredients"
@@ -110,7 +111,8 @@
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
             android:textIsSelectable="true"
-            android:textSize="@dimen/font_normal" />
+            android:textSize="@dimen/font_normal"
+            />
 
     </LinearLayout>
 

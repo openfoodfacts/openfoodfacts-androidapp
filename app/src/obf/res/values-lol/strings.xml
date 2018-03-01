@@ -12,4 +12,12 @@
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">crwdns35296:0crwdne35296:0</string>
   <string name="txtHome">crwdns35297:0crwdne35297:0</string>
+  <string name="slide_1_title">crwdns37146:0crwdne37146:0</string>
+  <string name="slide_1_desc">crwdns37147:0crwdne37147:0</string>
+  <string name="slide_2_title">crwdns37148:0crwdne37148:0</string>
+  <string name="slide_2_desc">crwdns37149:0crwdne37149:0</string>
+  <string name="slide_3_title">crwdns37150:0crwdne37150:0</string>
+  <string name="slide_3_desc">crwdns37151:0crwdne37151:0</string>
+  <string name="slide_4_title">crwdns37152:0crwdne37152:0</string>
+  <string name="slide_4_desc">crwdns37153:0crwdne37153:0</string>
 </resources>

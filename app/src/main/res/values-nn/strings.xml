@@ -7,6 +7,8 @@
   <string name="contribute">Hvordan bidra</string>
   <string name="action_find">Finn</string>
   <string name="text_barcode">Skriv inn strekkoden :</string>
+  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
+  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Sammendrag</item>
@@ -77,6 +79,7 @@
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
+    <item>b+sr+Cyrl</item>
   </string-array>
   <string-array name="images_array">
     <item>Standard</item>
@@ -84,6 +87,8 @@
     <item>Ingredienser</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Søk</string>
   <string name="no_products">Produkter ikke funnet</string>
   <string name="desc_list_item_icon">Vareikon</string>
@@ -101,6 +106,8 @@
   <string name="txtManufacturing">Produksjon- eller behandlingssteder :</string>
   <string name="txtIngredientsOrigins">Ingrediensopprinnelse :</string>
   <string name="txtCity">By, region eller land der produktet ble kjøpt :</string>
+  <string name="txtEMB">EMB Code:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Butikker :</string>
   <string name="txtCountries">Land der produktet selges :</string>
   <string name="txtIngredients">Ingrediensliste :</string>
@@ -129,6 +136,7 @@
   <string name="hintPass">Passord</string>
   <string name="errorLogin">Feil brukernavn eller passord</string>
   <string name="errorWeb">Vi var ikke i stand til å tilkoble internett. Har du tilkoblingsproblemer?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Bruker lagret</string>
   <string name="txtInfoLoginNo">Bruker ikke lagret</string>
   <string name="txtDialogsTitle">Informasjon</string>
@@ -152,7 +160,7 @@
   <string name="txtInfoAddUser">Vennligst angi brukernavnet og passordet ditt</string>
   <string name="txtDataUpdated">Data oppdatert</string>
   <string name="txtLoading">Laster inn...</string>
-  <string name="txtDialogsContentDelete">Vil du slette dette utkastet?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Dette produktet er lagret lokalt, du kan redigere det uten nettverkstilkobling</string>
   <string name="txtBarcodeRequire">Strekkode kreves</string>
   <string name="txtOk">OK</string>
@@ -183,7 +191,7 @@
   <string name="alert_drawer">Allergenadvarsel</string>
   <string name="warning_allergens">Inneholder allergener</string>
   <string name="title_dialog_alert">Legg til varsel</string>
-  <string name="warning_alert_data">Allergiinformasjonen din vil aldri bli sendt til Open Food Facts-serveren. Også, vær forsiktig. Den dataen er kanskje unøyaktig, vennligst dobbelsjekk selv! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">Fra galleri</string>
   <string name="product_sent">Produkt vellykket sendt</string>
   <string name="action_edit_product">Redigér produkt</string>
@@ -257,6 +265,8 @@
   <string name="number_of_results">Antall resultater :</string>
   <string name="txt_no_results">Ingen resultater funnet</string>
   <string name="txt_extend_search">Prøv å utvide søket ditt eller legg til produktet</string>
+  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Kunne ikke laste inn søkeresultater</string>
   <string name="txt_try_again">Prøv igjen</string>
   <string name="nutrition_lactose">Laktose</string>
@@ -325,4 +335,47 @@
   <string name="take_picture_nutrition_table">Ta et bilde av næringslisten</string>
   <string name="take_more_pictures">Ta flere bilder</string>
   <string name="txtSaturatedFat">Mettet fett</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="scan_shortcut_short_label">Scan</string>
+  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="barcode_shortcut_short_label">Søk</string>
+  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="history_shortcut_short_label">Logg</string>
+  <string name="history_shortcut_long_label">Logg</string>
+  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_long_label">My Contributions</string>
+  <string name="forgot_password">Forgot Password</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
+  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_positive">Innstillinger</string>
+  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_positive">Innstillinger</string>
+  <string name="saving">Saving…</string>
+  <string name="scan_first_product">Scan First Product</string>
+  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="device_on_mobile_data_warning_title">Informasjon</string>
+  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_positive">Preferanser</string>
+  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="FAQ">FAQ</string>
+  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+  <string name="lang_translate">local_translate_help</string>
+  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>

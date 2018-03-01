@@ -2,12 +2,17 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
@@ -41,6 +46,9 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         holder.txtBrands.setText(list.get(position).getBrands());
         holder.imgProduct.setImageBitmap(list.get(position).getUrl());
 
+        Date date = list.get(position).getTime();
+        calcTime(date, holder);
+
         //animate(holder);
     }
 
@@ -67,5 +75,33 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         list.remove(position);
         notifyItemRemoved(position);
     }
+
+
+    public void calcTime(Date date, HistoryScanHolder holder) {
+
+
+        Date now = new Date();
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(now.getTime() - date.getTime());
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(now.getTime() - date.getTime());
+        long hours = TimeUnit.MILLISECONDS.toHours(now.getTime() - date.getTime());
+        long days = TimeUnit.MILLISECONDS.toDays(now.getTime() - date.getTime());
+
+
+        String secText = String.valueOf(seconds) + " seconds ago";
+        String minText = String.valueOf(minutes) + " minutes ago";
+        String hourText = String.valueOf(hours) + " hours ago";
+        String dayText = String.valueOf(days) + " days ago";
+
+        if (seconds < 60) {
+            holder.txtDate.setText(secText);
+        } else if (minutes < 60) {
+            holder.txtDate.setText(minText);
+        } else if (hours < 24) {
+            holder.txtDate.setText(hourText);
+        } else {
+            holder.txtDate.setText(dayText);
+        }
+    }
+
 
 }

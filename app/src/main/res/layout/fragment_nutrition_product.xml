@@ -79,7 +79,8 @@
             android:background="@drawable/textview_full"
             android:divider="@color/white"
             android:dividerHeight="0dp"
-            android:padding="@dimen/spacing_small" />
+            android:padding="@dimen/spacing_small"
+            android:paddingBottom="60dp"/>
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

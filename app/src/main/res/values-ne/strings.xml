@@ -7,6 +7,8 @@
   <string name="contribute">योगदान कसरी गर्ने</string>
   <string name="action_find">भेटाउनुहोस्</string>
   <string name="text_barcode">बारकोड टाइप गर्नुहोस्:</string>
+  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
+  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>सारांश</item>
@@ -77,6 +79,7 @@
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
+    <item>b+sr+Cyrl</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
@@ -84,6 +87,8 @@
     <item>आवश्यक सामग्रीहरू</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Search</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
@@ -101,6 +106,8 @@
   <string name="txtManufacturing">Manufacturing or processing places :</string>
   <string name="txtIngredientsOrigins">Origin of ingredients :</string>
   <string name="txtCity">City, state and country where purchased :</string>
+  <string name="txtEMB">EMB Code:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
   <string name="txtCountries">Countries where sold :</string>
   <string name="txtIngredients">Ingredients list :</string>
@@ -121,7 +128,7 @@
   <string name="txtSignIn">Sign in</string>
   <string name="txtUser">User panel</string>
   <string name="txtToastSaved">User saved</string>
-  <string name="txtSalt">Salt</string>
+  <string name="txtSalt">नुन</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
   <string name="hintBarcode">Barcode</string>
@@ -129,6 +136,7 @@
   <string name="hintPass">Password</string>
   <string name="errorLogin">Login or password error</string>
   <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">User saved</string>
   <string name="txtInfoLoginNo">User not saved</string>
   <string name="txtDialogsTitle">Information</string>
@@ -140,7 +148,7 @@
   <string name="hintNameProduct">Name</string>
   <string name="hintEnergy">Energy in kJ per serving</string>
   <string name="hintEnergyUnit">Energy unit</string>
-  <string name="hintWeight">Weight</string>
+  <string name="hintWeight">तौल</string>
   <string name="hintStores">Store</string>
   <string name="hintBrand">Brand</string>
   <string name="txtTakePicture">Take picture</string>
@@ -152,7 +160,7 @@
   <string name="txtInfoAddUser">Please enter your login and password</string>
   <string name="txtDataUpdated">Data updated</string>
   <string name="txtLoading">Loading...</string>
-  <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
   <string name="txtOk">OK</string>
@@ -183,7 +191,7 @@
   <string name="alert_drawer">Allergen alert</string>
   <string name="warning_allergens">Contains allergens</string>
   <string name="title_dialog_alert">Add alert</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that data may not be accurate, please double-check by yourself! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">From gallery</string>
   <string name="product_sent">Product sent successfully</string>
   <string name="action_edit_product">Edit product</string>
@@ -232,7 +240,7 @@
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Proteins</string>
   <string name="nutrition_proteins_short_name">Proteins (g)</string>
-  <string name="nutrition_salt">Salt</string>
+  <string name="nutrition_salt">नुन</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Satured fat</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
@@ -257,6 +265,8 @@
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">No results found</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
+  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Can\'t load search results</string>
   <string name="txt_try_again">Try again</string>
   <string name="nutrition_lactose">Lactose</string>
@@ -291,9 +301,9 @@
   <string name="vitamin_b1">Vitamin B1</string>
   <string name="vitamin_b2">Vitamin B2</string>
   <string name="vitamin_pp">Vitamin PP</string>
-  <string name="vitamin_b6">Vitamin B6</string>
-  <string name="vitamin_b9">Vitamin B9</string>
-  <string name="vitamin_b12">Vitamin B12</string>
+  <string name="vitamin_b6">भिटामिन बी 6</string>
+  <string name="vitamin_b9">भिटामिन बी 9</string>
+  <string name="vitamin_b12">भिटामिन बी 12</string>
   <string name="biotin">Biotin</string>
   <string name="pantothenic_acid">Pantothenic acid</string>
   <string name="nutrition_minerals">Minerals</string>
@@ -301,7 +311,7 @@
   <string name="bicarbonate">Bicarbonate</string>
   <string name="potassium">Potassium</string>
   <string name="chloride">Chloride</string>
-  <string name="calcium">Calcium</string>
+  <string name="calcium">क्यालसियम</string>
   <string name="phosphorus">Phosphorus</string>
   <string name="iron">Iron</string>
   <string name="magnesium">Magnesium</string>
@@ -312,7 +322,7 @@
   <string name="selenium">Selenium</string>
   <string name="chromium">Chromium</string>
   <string name="molybdenum">Molybdenum</string>
-  <string name="iodine">Iodine</string>
+  <string name="iodine">आयोडिन</string>
   <string name="caffeine">Caffeine</string>
   <string name="taurine">Taurine</string>
   <string name="ph">pH</string>
@@ -325,4 +335,47 @@
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
   <string name="txtSaturatedFat">Saturated fat</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="scan_shortcut_short_label">Scan</string>
+  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="barcode_shortcut_short_label">Search</string>
+  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="history_shortcut_short_label">History</string>
+  <string name="history_shortcut_long_label">History</string>
+  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_long_label">My Contributions</string>
+  <string name="forgot_password">Forgot Password</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
+  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_positive">सेटिङ्हरू</string>
+  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_positive">सेटिङ्हरू</string>
+  <string name="saving">Saving…</string>
+  <string name="scan_first_product">Scan First Product</string>
+  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="device_on_mobile_data_warning_title">Information</string>
+  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_positive">Preferences</string>
+  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="FAQ">FAQ</string>
+  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+  <string name="lang_translate">local_translate_help</string>
+  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>

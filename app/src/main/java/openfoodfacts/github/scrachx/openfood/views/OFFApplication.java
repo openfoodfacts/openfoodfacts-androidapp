@@ -13,6 +13,7 @@ import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class OFFApplication extends MultiDexApplication {
 

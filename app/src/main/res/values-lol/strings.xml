@@ -7,6 +7,8 @@
   <string name="contribute">crwdns34966:0crwdne34966:0</string>
   <string name="action_find">crwdns34967:0crwdne34967:0</string>
   <string name="text_barcode">crwdns34968:0crwdne34968:0</string>
+  <string name="message_in_activity_save_product_offline">crwdns37134:0crwdne37134:0</string>
+  <string name="product_incomplete_message">crwdns37206:0crwdne37206:0</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>crwdns34969:0crwdne34969:0</item>
@@ -51,32 +53,33 @@
     <item>crwdns35002:0crwdne35002:0</item>
     <item>crwdns35003:0crwdne35003:0</item>
     <item>crwdns35004:0crwdne35004:0</item>
-    <item>crwdns37053:0crwdne37053:0</item>
+    <item>crwdns37099:0crwdne37099:0</item>
     <item>crwdns35006:0crwdne35006:0</item>
     <item>crwdns35007:0crwdne35007:0</item>
     <item>crwdns35008:0crwdne35008:0</item>
     <item>crwdns35009:0crwdne35009:0</item>
     <item>crwdns35010:0crwdne35010:0</item>
-    <item>crwdns37054:0crwdne37054:0</item>
+    <item>crwdns37100:0crwdne37100:0</item>
     <item>crwdns35939:0crwdne35939:0</item>
-    <item>crwdns35940:0crwdne35940:0</item>
-    <item>crwdns36949:0crwdne36949:0</item>
-    <item>crwdns36950:0crwdne36950:0</item>
-    <item>crwdns36951:0crwdne36951:0</item>
-    <item>crwdns36952:0crwdne36952:0</item>
-    <item>crwdns37055:0crwdne37055:0</item>
-    <item>crwdns37056:0crwdne37056:0</item>
-    <item>crwdns36955:0crwdne36955:0</item>
-    <item>crwdns36956:0crwdne36956:0</item>
-    <item>crwdns36957:0crwdne36957:0</item>
-    <item>crwdns36958:0crwdne36958:0</item>
-    <item>crwdns36959:0crwdne36959:0</item>
-    <item>crwdns37057:0crwdne37057:0</item>
-    <item>crwdns36961:0crwdne36961:0</item>
-    <item>crwdns36962:0crwdne36962:0</item>
-    <item>crwdns36963:0crwdne36963:0</item>
-    <item>crwdns36964:0crwdne36964:0</item>
-    <item>crwdns36965:0crwdne36965:0</item>
+    <item>crwdns37135:0crwdne37135:0</item>
+    <item>crwdns37101:0crwdne37101:0</item>
+    <item>crwdns37102:0crwdne37102:0</item>
+    <item>crwdns37103:0crwdne37103:0</item>
+    <item>crwdns37104:0crwdne37104:0</item>
+    <item>crwdns37105:0crwdne37105:0</item>
+    <item>crwdns37106:0crwdne37106:0</item>
+    <item>crwdns37107:0crwdne37107:0</item>
+    <item>crwdns37108:0crwdne37108:0</item>
+    <item>crwdns37109:0crwdne37109:0</item>
+    <item>crwdns37110:0crwdne37110:0</item>
+    <item>crwdns37111:0crwdne37111:0</item>
+    <item>crwdns37112:0crwdne37112:0</item>
+    <item>crwdns37113:0crwdne37113:0</item>
+    <item>crwdns37114:0crwdne37114:0</item>
+    <item>crwdns37115:0crwdne37115:0</item>
+    <item>crwdns37116:0crwdne37116:0</item>
+    <item>crwdns37117:0crwdne37117:0</item>
+    <item>crwdns37136:0crwdne37136:0</item>
   </string-array>
   <string-array name="images_array">
     <item>crwdns35043:0crwdne35043:0</item>
@@ -84,13 +87,15 @@
     <item>crwdns35045:0crwdne35045:0</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">crwdns37207:0crwdne37207:0</string>
+  <string name="fastscroller_handle">crwdns37208:0crwdne37208:0</string>
   <string name="search_button">crwdns35046:0crwdne35046:0</string>
   <string name="no_products">crwdns35047:0crwdne35047:0</string>
   <string name="desc_list_item_icon">crwdns35048:0crwdne35048:0</string>
   <string name="alert_dialog_warning_title">crwdns35049:0crwdne35049:0</string>
   <string name="alert_dialog_warning_msg_user">crwdns35050:0crwdne35050:0</string>
   <string name="alert_dialog_product_error_msg">crwdns35051:0crwdne35051:0</string>
-  <string name="toast_retrieving">crwdns35052:0crwdne35052:0</string>
+  <string name="toast_retrieving">crwdns37138:0crwdne37138:0</string>
   <string name="txtGenericName">crwdns35053:0crwdne35053:0</string>
   <string name="txtBarcode">crwdns35054:0crwdne35054:0</string>
   <string name="txtQuantity">crwdns35055:0crwdne35055:0</string>
@@ -101,6 +106,8 @@
   <string name="txtManufacturing">crwdns35060:0crwdne35060:0</string>
   <string name="txtIngredientsOrigins">crwdns35061:0crwdne35061:0</string>
   <string name="txtCity">crwdns35062:0crwdne35062:0</string>
+  <string name="txtEMB">crwdns37187:0crwdne37187:0</string>
+  <string name="txtManufactureUrl">crwdns37176:0crwdne37176:0</string>
   <string name="txtStores">crwdns35063:0crwdne35063:0</string>
   <string name="txtCountries">crwdns35064:0crwdne35064:0</string>
   <string name="txtIngredients">crwdns35065:0crwdne35065:0</string>
@@ -129,6 +136,7 @@
   <string name="hintPass">crwdns35089:0crwdne35089:0</string>
   <string name="errorLogin">crwdns35090:0crwdne35090:0</string>
   <string name="errorWeb">crwdns35091:0crwdne35091:0</string>
+  <string name="uploadLater">crwdns37175:0crwdne37175:0</string>
   <string name="txtInfoLoginOk">crwdns35092:0crwdne35092:0</string>
   <string name="txtInfoLoginNo">crwdns35093:0crwdne35093:0</string>
   <string name="txtDialogsTitle">crwdns35094:0crwdne35094:0</string>
@@ -147,16 +155,16 @@
   <string name="txtSendAll">crwdns35107:0crwdne35107:0</string>
   <string name="txtNoData">crwdns35108:0crwdne35108:0</string>
   <string name="txtPictureNeeded">crwdns35109:0crwdne35109:0</string>
-  <string name="toastSending">crwdns35110:0crwdne35110:0</string>
+  <string name="toastSending">crwdns37139:0crwdne37139:0</string>
   <string name="dataSaved">crwdns35111:0crwdne35111:0</string>
   <string name="txtInfoAddUser">crwdns35112:0crwdne35112:0</string>
   <string name="txtDataUpdated">crwdns35113:0crwdne35113:0</string>
-  <string name="txtLoading">crwdns35114:0crwdne35114:0</string>
-  <string name="txtDialogsContentDelete">crwdns35115:0crwdne35115:0</string>
+  <string name="txtLoading">crwdns37140:0crwdne37140:0</string>
+  <string name="txtDialogsContentDelete">crwdns37186:0crwdne37186:0</string>
   <string name="txtDialogsContentInfoSave">crwdns35116:0crwdne35116:0</string>
   <string name="txtBarcodeRequire">crwdns35117:0crwdne35117:0</string>
   <string name="txtOk">crwdns35118:0crwdne35118:0</string>
-  <string name="txtContentDialogUploading">crwdns35119:0crwdne35119:0</string>
+  <string name="txtContentDialogUploading">crwdns37141:0crwdne37141:0</string>
   <string name="txtAbout">crwdns35120:0crwdne35120:0</string>
   <string name="txtAllsent">crwdns35121:0crwdne35121:0</string>
   <string name="txtPalm">crwdns35122:0crwdne35122:0</string>
@@ -170,8 +178,8 @@
   <string name="open_food_drawer">crwdns35130:0crwdne35130:0</string>
   <string name="search_drawer">crwdns35131:0crwdne35131:0</string>
   <string name="search_by_barcode_drawer">crwdns35132:0crwdne35132:0</string>
-  <string name="category_drawer">crwdns36947:0crwdne36947:0</string>
-  <string name="search_by_category">crwdns36948:0crwdne36948:0</string>
+  <string name="category_drawer">crwdns37118:0crwdne37118:0</string>
+  <string name="search_by_category">crwdns37119:0crwdne37119:0</string>
   <string name="search_by_name_drawer">crwdns35133:0crwdne35133:0</string>
   <string name="scan_search">crwdns35134:0crwdne35134:0</string>
   <string name="user_drawer">crwdns35135:0crwdne35135:0</string>
@@ -183,7 +191,7 @@
   <string name="alert_drawer">crwdns35141:0crwdne35141:0</string>
   <string name="warning_allergens">crwdns35142:0crwdne35142:0</string>
   <string name="title_dialog_alert">crwdns35143:0crwdne35143:0</string>
-  <string name="warning_alert_data">crwdns35156:0crwdne35156:0</string>
+  <string name="warning_alert_data">crwdns37188:0crwdne37188:0</string>
   <string name="from_gallery">crwdns35157:0crwdne35157:0</string>
   <string name="product_sent">crwdns35158:0crwdne35158:0</string>
   <string name="action_edit_product">crwdns35159:0crwdne35159:0</string>
@@ -212,7 +220,7 @@
   <string name="title_clear_history_dialog">crwdns35181:0crwdne35181:0</string>
   <string name="text_clear_history_dialog">crwdns35182:0crwdne35182:0</string>
   <string name="export_csv_history">crwdns35183:0crwdne35183:0</string>
-  <string name="txt_exporting_history">crwdns35184:0crwdne35184:0</string>
+  <string name="txt_exporting_history">crwdns37142:0crwdne37142:0</string>
   <string name="txt_history_exported">crwdns35185:0crwdne35185:0</string>
   <string name="permision_write_external_storage">crwdns35186:0crwdne35186:0</string>
   <string name="txt_nutrition_not_found">crwdns35187:0crwdne35187:0</string>
@@ -257,6 +265,8 @@
   <string name="number_of_results">crwdns35225:0crwdne35225:0</string>
   <string name="txt_no_results">crwdns35226:0crwdne35226:0</string>
   <string name="txt_extend_search">crwdns35962:0crwdne35962:0</string>
+  <string name="txt_no_matching_products">crwdns37122:0crwdne37122:0</string>
+  <string name="txt_broaden_search">crwdns37123:0crwdne37123:0</string>
   <string name="txt_cant_load_search_results">crwdns35963:0crwdne35963:0</string>
   <string name="txt_try_again">crwdns35964:0crwdne35964:0</string>
   <string name="nutrition_lactose">crwdns35227:0crwdne35227:0</string>
@@ -324,5 +334,48 @@
   <string name="take_picture_front">crwdns35289:0crwdne35289:0</string>
   <string name="take_picture_nutrition_table">crwdns35290:0crwdne35290:0</string>
   <string name="take_more_pictures">crwdns35291:0crwdne35291:0</string>
-  <string name="txtSaturatedFat">crwdns37039:0crwdne37039:0</string>
+  <string name="txtSaturatedFat">crwdns37124:0crwdne37124:0</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">crwdns37125:0crwdne37125:0</string>
+  <string name="scan_shortcut_short_label">crwdns37126:0crwdne37126:0</string>
+  <string name="scan_shortcut_long_label">crwdns37127:0crwdne37127:0</string>
+  <string name="barcode_shortcut_short_label">crwdns37128:0crwdne37128:0</string>
+  <string name="barcode_shortcut_long_label">crwdns37129:0crwdne37129:0</string>
+  <string name="history_shortcut_short_label">crwdns37130:0crwdne37130:0</string>
+  <string name="history_shortcut_long_label">crwdns37131:0crwdne37131:0</string>
+  <string name="contributions_shortcut_short_label">crwdns37132:0crwdne37132:0</string>
+  <string name="contributions_shortcut_long_label">crwdns37133:0crwdne37133:0</string>
+  <string name="forgot_password">crwdns37137:0crwdne37137:0</string>
+  <string name="next">crwdns37143:0crwdne37143:0</string>
+  <string name="skip">crwdns37144:0crwdne37144:0</string>
+  <string name="start">crwdns37145:0crwdne37145:0</string>
+  <string name="contact">crwdns37170:0crwdne37170:0</string>
+  <string name="contact_key">crwdns37171:0crwdne37171:0</string>
+  <string name="contact_summary">crwdns37172:0crwdne37172:0</string>
+  <string name="off_mail">crwdns37173:0crwdne37173:0</string>
+  <string name="email_not_found">crwdns37174:0crwdne37174:0</string>
+  <string name="airplane_mode_active_dialog_title">crwdns37177:0crwdne37177:0</string>
+  <string name="airplane_mode_active_dialog_message">crwdns37178:0crwdne37178:0</string>
+  <string name="airplane_mode_active_dialog_negative">crwdns37179:0crwdne37179:0</string>
+  <string name="airplane_mode_active_dialog_positive">crwdns37180:0crwdne37180:0</string>
+  <string name="device_offline_dialog_title">crwdns37181:0crwdne37181:0</string>
+  <string name="device_offline_dialog_message">crwdns37182:0crwdne37182:0</string>
+  <string name="device_offline_dialog_negative">crwdns37183:0crwdne37183:0</string>
+  <string name="device_offline_dialog_positive">crwdns37184:0crwdne37184:0</string>
+  <string name="saving">crwdns37185:0crwdne37185:0</string>
+  <string name="scan_first_product">crwdns37203:0crwdne37203:0</string>
+  <string name="preference_enable_mobile_data_title">crwdns37189:0crwdne37189:0</string>
+  <string name="preference_enable_mobile_data_summary_on">crwdns37190:0crwdne37190:0</string>
+  <string name="preference_enable_mobile_data_summary_off">crwdns37191:0crwdne37191:0</string>
+  <string name="device_on_mobile_data_warning_title">crwdns37192:0crwdne37192:0</string>
+  <string name="device_on_mobile_data_warning_message">crwdns37193:0crwdne37193:0</string>
+  <string name="device_on_mobile_data_warning_positive">crwdns37194:0crwdne37194:0</string>
+  <string name="device_on_mobile_data_warning_negative">crwdns37195:0crwdne37195:0</string>
+  <string name="preference_choose_language_dialog_title">crwdns37196:0crwdne37196:0</string>
+  <string name="FAQ">crwdns37201:0crwdne37201:0</string>
+  <string name="FrequentlyAskedQuestions">crwdns37202:0crwdne37202:0</string>
+  <string name="lang_translate">crwdns37197:0crwdne37197:0</string>
+  <string name="translate_help_title">crwdns37199:0crwdne37199:0</string>
+  <string name="translate_help_summary">crwdns37200:0crwdne37200:0</string>
+  <string name="please_check_your_connection">crwdns37205:0crwdne37205:0</string>
 </resources>

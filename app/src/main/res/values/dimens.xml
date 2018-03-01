@@ -4,6 +4,15 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+
+    <!-- fast scroller -->
+    <dimen name="fastscroller_handle_corner">20dp</dimen>
+    <dimen name="fastscroller_handle_size">50dp</dimen>
+    <dimen name="fastscroller_reack_corner">3dp</dimen>
+    <dimen name="fastscroller_track_height">30dp</dimen>
+    <dimen name="fastscroller_track_width">6dp</dimen>
+    <dimen name="fastscroller_track_padding">2dp</dimen>
+
     <!-- font sizes -->
     <dimen name="font_larger">22sp</dimen>
     <dimen name="font_large">18sp</dimen>
@@ -12,6 +21,7 @@
 
     <!-- typical spacing between two views -->
     <dimen name="spacing_huge">40dp</dimen>
+    <dimen name="spacing_larger">32dp</dimen>
     <dimen name="spacing_large">24dp</dimen>
     <dimen name="spacing_normal">14dp</dimen>
     <dimen name="spacing_small">10dp</dimen>
@@ -21,6 +31,8 @@
     <dimen name="button_height_tall">60dp</dimen>
     <dimen name="button_height_normal">40dp</dimen>
     <dimen name="button_height_short">32dp</dimen>
+    <dimen name="button_height_too_short">20dp</dimen>
+    <dimen name="button_height_too_much_short">10dp</dimen>
 
     <!-- Gauge -->
     <dimen name="gauge_nutrition_circle_size">60.0dip</dimen>
@@ -31,4 +43,15 @@
     <dimen name="xxlittle_padding">4.0dip</dimen>
     <dimen name="xxxlittle_padding">2.0dip</dimen>
 
+    <!-- Paddings -->
+    <dimen name="padding_large">24dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="padding_short">8dp</dimen>
+    <dimen name="padding_too_short">4dp</dimen>
+
+    <!-- Intro Screens -->
+        <dimen name="dots_height">30dp</dimen>
+        <dimen name="dots_margin_bottom">20dp</dimen>
+        <dimen name="img_width_height">250dp</dimen>
+        <dimen name="slide_desc">16sp</dimen>
 </resources>

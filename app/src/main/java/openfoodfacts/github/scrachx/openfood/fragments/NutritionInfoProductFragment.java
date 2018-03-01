@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -39,13 +40,13 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 import static android.Manifest.permission.CAMERA;
+import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 import static android.text.TextUtils.isEmpty;
@@ -58,29 +59,30 @@ import static openfoodfacts.github.scrachx.openfood.models.Nutriments.MINERALS_M
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.PROTEINS;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.PROT_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.VITAMINS_MAP;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class NutritionInfoProductFragment extends BaseFragment {
 
     @BindView(R.id.textPerPortion)
     TextView mTextPerPortion;
-    @BindView(R.id.imageViewNutrition) ImageView mImageNutrition;
-    @BindView(R.id.addPhotoLabel) TextView addPhotoLabel;
+    @BindView(R.id.imageViewNutrition)
+    ImageView mImageNutrition;
+    @BindView(R.id.addPhotoLabel)
+    TextView addPhotoLabel;
     @BindView(R.id.nutriments_recycler_view)
     RecyclerView nutrimentsRecyclerView;
 
     private String mUrlImage;
     private String barcode;
     private OpenFoodAPIClient api;
+    private NutritionInfoProductFragment mFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
-
+        mFragment = this;
         return createView(inflater, container, R.layout.fragment_nutrition_info_product);
     }
 
@@ -136,7 +138,8 @@ public class NutritionInfoProductFragment extends BaseFragment {
         // Energy
         Nutriment energy = nutriments.get(ENERGY);
         if (energy != null) {
-            nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name), getEnergy(energy.getFor100g()), getEnergy(energy.getForServing()), "kcal"));
+            nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name), getEnergy(energy.getFor100g()), getEnergy(energy
+                    .getForServing()), "kcal"));
         }
 
         // Fat        
@@ -248,6 +251,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
 
     private void onPhotoReturned(File photoFile) {
         ProductImage image = new ProductImage(barcode, NUTRITION, photoFile);
+        image.setFilePath(photoFile.getAbsolutePath());
         api.postImg(getContext(), image);
         addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();
@@ -262,6 +266,16 @@ public class NutritionInfoProductFragment extends BaseFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                onPhotoReturned(new File(resultUri.getPath()));
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
+
         EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
@@ -270,7 +284,8 @@ public class NutritionInfoProductFragment extends BaseFragment {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                onPhotoReturned(imageFiles.get(0));
+                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                        .start(getContext(), mFragment);
             }
 
             @Override

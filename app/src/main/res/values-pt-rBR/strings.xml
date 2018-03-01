@@ -7,6 +7,8 @@
   <string name="contribute">Como contribuir</string>
   <string name="action_find">Buscar</string>
   <string name="text_barcode">Escreva o código de barras:</string>
+  <string name="message_in_activity_save_product_offline">É obrigatória apenas uma foto para enviar um novo produto.</string>
+  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Resumo</item>
@@ -77,6 +79,7 @@
     <item>ku</item>
     <item>eo</item>
     <item>pl</item>
+    <item>b+sr+Cyrl</item>
   </string-array>
   <string-array name="images_array">
     <item>Padrão</item>
@@ -84,6 +87,8 @@
     <item>Ingredientes</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Procurar</string>
   <string name="no_products">Nenhum produto encontrado</string>
   <string name="desc_list_item_icon">Ícone</string>
@@ -101,6 +106,8 @@
   <string name="txtManufacturing">Locais de fabrico ou processamento :</string>
   <string name="txtIngredientsOrigins">Origem dos ingredientes :</string>
   <string name="txtCity">Cidade, estado e país onde foi comprado :</string>
+  <string name="txtEMB">Código EMB:</string>
+  <string name="txtManufactureUrl">Ligação para a página do produto no site oficial do fabricante:</string>
   <string name="txtStores">Lojas :</string>
   <string name="txtCountries">Países onde é vendido :</string>
   <string name="txtIngredients">Lista de ingredientes :</string>
@@ -129,6 +136,7 @@
   <string name="hintPass">Palavra-passe</string>
   <string name="errorLogin">Utilizador ou palavra-passe errada</string>
   <string name="errorWeb">Sem acesso à Internet.</string>
+  <string name="uploadLater">A imagem será carregada quando a rede estiver disponível</string>
   <string name="txtInfoLoginOk">Utilizador guardado</string>
   <string name="txtInfoLoginNo">Utilizador não foi guardado</string>
   <string name="txtDialogsTitle">Informação</string>
@@ -152,7 +160,7 @@
   <string name="txtInfoAddUser">Por favor, digite o seu nome de utilizador e palavra-passe</string>
   <string name="txtDataUpdated">Dados actualizados</string>
   <string name="txtLoading">A carregar...</string>
-  <string name="txtDialogsContentDelete">Deseja eliminar este rascunho?</string>
+  <string name="txtDialogsContentDelete">Tem a certeza que deseja eliminar este rascunho?</string>
   <string name="txtDialogsContentInfoSave">O produto é guardado localmente, poderá editá-lo no menu \"Editar Offline\"</string>
   <string name="txtBarcodeRequire">Código de barras necessário</string>
   <string name="txtOk">OK</string>
@@ -171,7 +179,7 @@
   <string name="search_drawer">Pesquisar</string>
   <string name="search_by_barcode_drawer">Escreva o código de barras</string>
   <string name="category_drawer">Categorias</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Categoria</string>
   <string name="search_by_name_drawer">Pesquisar pelo nome</string>
   <string name="scan_search">Digitalizar o código de barras</string>
   <string name="user_drawer">Utilizador</string>
@@ -183,7 +191,7 @@
   <string name="alert_drawer">Alerta de alergénios</string>
   <string name="warning_allergens">Contém alergénios</string>
   <string name="title_dialog_alert">Adicionar alerta</string>
-  <string name="warning_alert_data">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Adicionalmente, tenha cuidado com potenciais erros nos dados. Confirme sempre os rótulos dos produtos! </string>
+  <string name="warning_alert_data">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Adicionalmente, tenha cuidado com potenciais erros nos dados e a detecção, que poderá não ser 100% precisa, por favor confirme sempre por si mesmo! </string>
   <string name="from_gallery">Galeria de imagens</string>
   <string name="product_sent">Produto enviado com sucesso</string>
   <string name="action_edit_product">Editar produto</string>
@@ -257,6 +265,8 @@
   <string name="number_of_results">Número de resultados :</string>
   <string name="txt_no_results">Sem resultados</string>
   <string name="txt_extend_search">Tente alargar a pesquisa ou adicione o produto</string>
+  <string name="txt_no_matching_products">Não encontrámos nenhum produto correspondente.\nPoderá tentar:</string>
+  <string name="txt_broaden_search">- alargar a sua pesquisa \n- digitalizar e adicionar ao Open Food Facts</string>
   <string name="txt_cant_load_search_results">Não foi possível carregar os resultados da pesquisa</string>
   <string name="txt_try_again">Tente novamente</string>
   <string name="nutrition_lactose">Lactose</string>
@@ -325,4 +335,47 @@
   <string name="take_picture_nutrition_table">Tirar foto à tabela nutricional</string>
   <string name="take_more_pictures">Tirar mais fotos</string>
   <string name="txtSaturatedFat">Saturated fat</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Atalho Indisponível</string>
+  <string name="scan_shortcut_short_label">Scan</string>
+  <string name="scan_shortcut_long_label">Digitalizar Produto</string>
+  <string name="barcode_shortcut_short_label">Procurar</string>
+  <string name="barcode_shortcut_long_label">Pesquisa por Código de Barras</string>
+  <string name="history_shortcut_short_label">Histórico</string>
+  <string name="history_shortcut_long_label">Histórico</string>
+  <string name="contributions_shortcut_short_label">Contribuições</string>
+  <string name="contributions_shortcut_long_label">As Minhas Contribuições</string>
+  <string name="forgot_password">Esqueci-me da Password</string>
+  <string name="next">SEGUINTE</string>
+  <string name="skip">IGNORAR</string>
+  <string name="start">COMPREENDI</string>
+  <string name="contact">Contacto</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contactar a equipa</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">Nenhuma aplicação de email encontrada</string>
+  <string name="airplane_mode_active_dialog_title">Modo de avião activado</string>
+  <string name="airplane_mode_active_dialog_message">O modo de avião está activo, por favor desactive para continuar.</string>
+  <string name="airplane_mode_active_dialog_negative">Descartar</string>
+  <string name="airplane_mode_active_dialog_positive">Configurações</string>
+  <string name="device_offline_dialog_title">Rede indisponível</string>
+  <string name="device_offline_dialog_message">É necessária uma ligação de rede para fazer isto, gostaria de alterar as definições?</string>
+  <string name="device_offline_dialog_negative">Descartar</string>
+  <string name="device_offline_dialog_positive">Configurações</string>
+  <string name="saving">A guardar…</string>
+  <string name="scan_first_product">Scan First Product</string>
+  <string name="preference_enable_mobile_data_title">Carregamento por dados móveis</string>
+  <string name="preference_enable_mobile_data_summary_on">Carregar novos produtos via dados móveis &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Carregar novos produtos por WiFi apenas</string>
+  <string name="device_on_mobile_data_warning_title">Informação</string>
+  <string name="device_on_mobile_data_warning_message">O carregamento via dados móveis está desactivado, por favor ligue por WiFi ou altere isto nas definições</string>
+  <string name="device_on_mobile_data_warning_positive">Preferências</string>
+  <string name="device_on_mobile_data_warning_negative">Carregar mesmo assim</string>
+  <string name="preference_choose_language_dialog_title">Escolher idioma</string>
+  <string name="FAQ">FAQ</string>
+  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+  <string name="lang_translate">local_translate_help</string>
+  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>

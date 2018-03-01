@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+<<<<<<< HEAD
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +22,13 @@ import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Delayed;
+=======
+>>>>>>> 8c4b7829eb6fc0c80686a0ff3623b6b84c2887e1
 
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
+import openfoodfacts.github.scrachx.openfood.FastScroller;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
 import openfoodfacts.github.scrachx.openfood.dagger.component.FragmentComponent;
@@ -34,10 +38,17 @@ import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.category.adapter.CategoryListRecyclerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.viewmodel.category.CategoryFragmentViewModel;
 
+<<<<<<< HEAD
 public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel, FragmentComponent>  {
     ProgressBar progressBar;
     TextView emptyView;
     TextView loadText;
+=======
+public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel, FragmentComponent> {
+
+    FastScroller fastScroller;
+
+>>>>>>> 8c4b7829eb6fc0c80686a0ff3623b6b84c2887e1
     @Inject
     CategoryFragmentViewModel viewModel;
     private FragmentCategoryListBinding binding;
@@ -48,12 +59,18 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+<<<<<<< HEAD
 
         View rootView =  inflater.inflate(R.layout.fragment_category_list, container, false);
         progressBar = (ProgressBar)rootView.findViewById(R.id.prog_bar);
         emptyView = (TextView)rootView.findViewById(R.id.empty_view);
         loadText = (TextView)rootView.findViewById(R.id.load_text);
         return  rootView;
+=======
+        View rootView =  inflater.inflate(R.layout.fragment_category_list, container, false);
+        fastScroller = (FastScroller)rootView.findViewById(R.id.fast_scroller);
+        return rootView;
+>>>>>>> 8c4b7829eb6fc0c80686a0ff3623b6b84c2887e1
     }
 
 
@@ -65,8 +82,8 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
         binding.recycler.setHasFixedSize(true);
         binding.recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recycler.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-
         binding.setViewModel(getViewModel());
+<<<<<<< HEAD
         binding.recycler.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -75,6 +92,21 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
         });
 
 
+=======
+        fastScroller.setRecyclerView(binding.recycler);
+        binding.recycler.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                if(binding.getViewModel().getCategories().get().isEmpty()){
+                    fastScroller.setVisibility(View.GONE);
+
+                }
+                else {
+                    fastScroller.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+>>>>>>> 8c4b7829eb6fc0c80686a0ff3623b6b84c2887e1
     }
 
     @Override

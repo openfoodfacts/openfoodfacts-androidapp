@@ -12,4 +12,12 @@
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-ja.openpetfoodfacts.org/contributor/</string>
   <string name="txtHome">Open Pet Food Facts は、原材料、アレルゲン、マーク、およびペットフードの製品ラベルに記載されているすべての情報をもつペットフード製品のデータベースです。</string>
+  <string name="slide_1_title">ペットフードの透明性に貢献します</string>
+  <string name="slide_1_desc">製品をスキャンし、写真に写して、ペットフードの透明性を実現します</string>
+  <string name="slide_2_title">事実を入手します</string>
+  <string name="slide_2_desc">あなたがスキャンした製品に関する広範な情報。あなたのために解読されました</string>
+  <string name="slide_3_title">あなたが使用する製品を追跡します</string>
+  <string name="slide_3_desc">あなたが使用するすべての化粧品を、便利な一つのリストに書き出すことができます</string>
+  <string name="slide_4_title">オフラインで作業する</string>
+  <string name="slide_4_desc">今インターネットに接続していなくても、新製品を追加できます</string>
 </resources>

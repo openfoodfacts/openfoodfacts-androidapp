@@ -12,6 +12,7 @@
     </data>
 
     <FrameLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment">
@@ -22,6 +23,7 @@
             android:layout_height="match_parent"
             app:categories="@{viewModel.categories}" />
 
+<<<<<<< HEAD
         <TextView
             android:id="@+id/empty_view"
             android:layout_width="match_parent"
@@ -29,6 +31,16 @@
             android:gravity="center"
             android:visibility="gone"
             android:text="@string/txt_no_results" />
+=======
+
+        <openfoodfacts.github.scrachx.openfood.FastScroller
+            android:id="@+id/fast_scroller"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+           android:layout_gravity="end">
+
+        </openfoodfacts.github.scrachx.openfood.FastScroller>
+>>>>>>> 8c4b7829eb6fc0c80686a0ff3623b6b84c2887e1
 
         <LinearLayout
             android:layout_width="match_parent"
