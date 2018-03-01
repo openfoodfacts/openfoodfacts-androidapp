@@ -8,6 +8,7 @@
   <string name="action_find">Find</string>
   <string name="text_barcode">Indtast stregkoden:</string>
   <string name="message_in_activity_save_product_offline">Kun ét foto er nødvendigt for at indsende et nyt produkt.</string>
+  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Oversigt</item>
