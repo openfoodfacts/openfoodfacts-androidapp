@@ -87,6 +87,8 @@
     <item>Съставки</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Търсене</string>
   <string name="no_products">Продуктът не е намерен</string>
   <string name="desc_list_item_icon">Item Icon</string>
