@@ -75,9 +75,9 @@ public class FastScroller extends LinearLayout {
                 currentAnimator.cancel();
             }
             getHandler().removeCallbacks(handleHider);
-            if (handle.getVisibility() == INVISIBLE) {
+           /* if (handle.getVisibility() == INVISIBLE) {
                 showHandle();
-            }
+            }*/
             setRecyclerViewPosition(event.getY());
             return true;
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
