@@ -360,7 +360,7 @@
   <string name="device_offline_dialog_negative">消去</string>
   <string name="device_offline_dialog_positive">設定</string>
   <string name="saving">保存中…</string>
-  <string name="scan_first_product">Scan First Product</string>
+  <string name="scan_first_product">最初の製品をスキャンします</string>
   <string name="preference_enable_mobile_data_title">モバイルデータ通信時にアップロード</string>
   <string name="preference_enable_mobile_data_summary_on">モバイル データ通信 &amp; WiFi を使用して新しい製品をアップロードします</string>
   <string name="preference_enable_mobile_data_summary_off">WiFi 接続時のみ新しい製品をアップロードします</string>
@@ -370,7 +370,7 @@
   <string name="device_on_mobile_data_warning_negative">とにかくアップロード</string>
   <string name="preference_choose_language_dialog_title">言語を選択</string>
   <string name="FAQ">FAQ</string>
-  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+  <string name="FrequentlyAskedQuestions">よく寄せられる質問</string>
   <string name="lang_translate">local_translate_help</string>
   <string name="translate_help_title">Open Food Factsの翻訳を手伝う</string>
   <string name="translate_help_summary">Open Food Factsデータベースをあなたの言語に対応させます - 技術的な知識は必要ありません</string>
