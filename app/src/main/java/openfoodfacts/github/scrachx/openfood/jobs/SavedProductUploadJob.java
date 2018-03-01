@@ -17,7 +17,7 @@ public class SavedProductUploadJob extends JobService {
 
     @Override
     public boolean onStartJob(JobParameters job) {
-        Toast.makeText(this, "job called", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "job called", Toast.LENGTH_SHORT).show();
         apiClient = new OpenFoodAPIClient(this);
         apiClient.uploadOfflineImages(this, false, job, this);
         return true;
