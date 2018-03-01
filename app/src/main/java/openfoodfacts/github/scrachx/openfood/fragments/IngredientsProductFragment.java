@@ -80,11 +80,12 @@ public class IngredientsProductFragment extends BaseFragment {
     private State mState;
     private String barcode;
     private AdditiveDao mAdditiveDao;
+    private IngredientsProductFragment mFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
-
+        mFragment=this;
         return createView(inflater, container, R.layout.fragment_ingredients_product);
     }
 
@@ -319,7 +320,7 @@ public class IngredientsProductFragment extends BaseFragment {
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
                 CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .start(getActivity());
+                        .start(getContext(),mFragment);
             }
 
             @Override

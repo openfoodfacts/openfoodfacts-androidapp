@@ -506,7 +506,7 @@ public class OpenFoodAPIClient {
 
     public void uploadOfflineImages(Context context, boolean cancel, JobParameters job, SavedProductUploadJob service) {
         if (!cancel) {
-            Toast.makeText(context, "called function", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "called function", Toast.LENGTH_SHORT).show();
             task.job = job;
             task.service = new WeakReference<SavedProductUploadJob>(service);
             task.execute(context);

@@ -14,7 +14,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
@@ -52,14 +51,16 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 
 public class ProductActivity extends BaseActivity {
 
-    @BindView(R.id.pager) ViewPager viewPager;
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.tabs) TabLayout tabLayout;
+    @BindView(R.id.pager)
+    ViewPager viewPager;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.tabs)
+    TabLayout tabLayout;
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
     private ShareActionProvider mShareActionProvider;
     private State mState;
-    private AllergenDao mAllergenDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,44 +70,11 @@ public class ProductActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAllergenDao = Utils.getAppDaoSession(this).getAllergenDao();
         setupViewPager(viewPager);
 
         tabLayout.setupWithViewPager(viewPager);
-
         mState = (State) getIntent().getExtras().getSerializable("state");
-
-        Product product = mState.getProduct();
-
-        List<String> allergens = product.getAllergensHierarchy();
-        List<String> traces = product.getTracesTags();
-        allergens.addAll(traces);
-
-        List<String> matchAll = new ArrayList<>();
-        List<Allergen> mAllergens = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
-        for (int a = 0; a < mAllergens.size(); a++) {
-            for(int i = 0; i < allergens.size(); i++) {
-                if (allergens.get(i).trim().equals(mAllergens.get(a).getIdAllergen().trim())) {
-                    matchAll.add(mAllergens.get(a).getName());
-                }
-            }
-        }
-
-        if(matchAll.size() > 0) {
-            new MaterialDialog.Builder(this)
-                    .title(R.string.warning_allergens)
-                    .items(matchAll)
-                    .neutralText(R.string.txtOk)
-                    .titleColorRes(R.color.red_500)
-                    .dividerColorRes(R.color.indigo_900)
-                    .icon(new IconicsDrawable(this)
-                            .icon(GoogleMaterial.Icon.gmd_warning)
-                            .color(Color.RED)
-                            .sizeDp(24))
-                    .show();
-        }
-
-        if (!Utils.isHardwareCameraInstalled(this)){
+        if (!Utils.isHardwareCameraInstalled(this)) {
             mButtonScan.setVisibility(View.GONE);
         }
     }
@@ -138,11 +106,11 @@ public class ProductActivity extends BaseActivity {
         ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
         adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
         adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
-        if(BuildConfig.FLAVOR.equals("off")) {
+        if (BuildConfig.FLAVOR.equals("off")) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
         }
-        if(BuildConfig.FLAVOR.equals("opff")) {
+        if (BuildConfig.FLAVOR.equals("opff")) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
         }

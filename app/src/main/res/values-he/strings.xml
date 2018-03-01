@@ -8,6 +8,7 @@
   <string name="action_find">חיפוש</string>
   <string name="text_barcode">נא להזין את הברקוד:</string>
   <string name="message_in_activity_save_product_offline">נדרשת לפחות תמונה אחת לטובת שליחת מוצר חדש.</string>
+  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>תקציר</item>
@@ -269,7 +270,7 @@
   <string name="nutrition_lactose">לקטוז</string>
   <string name="nutrition_casein">קזאין</string>
   <string name="nutrition_maltodextrins">מלטודקסטרין</string>
-  <string name="nutrition_serum_proteins">Serum Proteins</string>
+  <string name="nutrition_serum_proteins">חלבון בסרום</string>
   <string name="nutrition_nucleotides">נוקלאוטידים</string>
   <string name="for_100g">ל־100 ג׳</string>
   <string name="serving">להגשה</string>
@@ -360,6 +361,7 @@
   <string name="device_offline_dialog_negative">התעלמות</string>
   <string name="device_offline_dialog_positive">הגדרות</string>
   <string name="saving">בהליכי שמירה…</string>
+  <string name="scan_first_product">סריקת המוצר הראשון</string>
   <string name="preference_enable_mobile_data_title">להעלות כשיש חיבור נתונים סלולרי</string>
   <string name="preference_enable_mobile_data_summary_on">להעלות מוצרים חדשים כשיש חיבור נתונים סלולרי או אלחוטי</string>
   <string name="preference_enable_mobile_data_summary_off">להעלות מוצרים חדשים כשיש חיבור נתונים אלחוטי בלבד</string>
@@ -368,9 +370,10 @@
   <string name="device_on_mobile_data_warning_positive">העדפות</string>
   <string name="device_on_mobile_data_warning_negative">להעלות בכל זאת</string>
   <string name="preference_choose_language_dialog_title">בחירת שפה</string>
-  <string name="FAQ">FAQ</string>
-  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+  <string name="FAQ">שו״ת</string>
+  <string name="FrequentlyAskedQuestions">שאלות ותשובות נפוצות</string>
   <string name="lang_translate">local_translate_help</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="translate_help_title">סיוע בתרגום Open Food Facts</string>
+  <string name="translate_help_summary">הנגשת מסד הנתונים של Open Food Facts לאנשים שדוברים את אותה השפה כמוך - לא נדרש ידע טכני</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>
