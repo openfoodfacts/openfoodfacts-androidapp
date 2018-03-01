@@ -8,6 +8,7 @@
   <string name="action_find">crwdns34967:0crwdne34967:0</string>
   <string name="text_barcode">crwdns34968:0crwdne34968:0</string>
   <string name="message_in_activity_save_product_offline">crwdns37134:0crwdne37134:0</string>
+  <string name="product_incomplete_message">crwdns37206:0crwdne37206:0</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>crwdns34969:0crwdne34969:0</item>
