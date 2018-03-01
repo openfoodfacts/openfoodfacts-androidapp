@@ -374,4 +374,5 @@
   <string name="lang_translate">local_translate_help</string>
   <string name="translate_help_title">Open Food Factsの翻訳を手伝う</string>
   <string name="translate_help_summary">Open Food Factsデータベースをあなたの言語に対応させます - 技術的な知識は必要ありません</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>
