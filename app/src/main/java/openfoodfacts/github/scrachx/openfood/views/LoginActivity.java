@@ -61,8 +61,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         setContentView(R.layout.activity_login);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
         resetPasswordUri = Uri.parse(getString(R.string.website) + "cgi/reset_password.pl");
 
@@ -94,19 +95,16 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     protected void attemptLogin() {
         String login = loginView.getText().toString();
         String password = passwordView.getText().toString();
-
         if (TextUtils.isEmpty(login)) {
             loginView.setError(getString(R.string.error_field_required));
             loginView.requestFocus();
             return;
         }
-
         if (!(password.length() >= 6)) {
             passwordView.setError(getString(R.string.error_invalid_password));
             passwordView.requestFocus();
             return;
         }
-
 
         final LoadToast lt = new LoadToast(this);
         save.setClickable(false);
@@ -149,6 +147,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                     for (HttpCookie httpCookie : HttpCookie.parse(response.headers().get("set-cookie"))) {
                         if (httpCookie.getDomain().equals(".openfoodfacts.org") && httpCookie.getPath().equals("/")) {
                             String[] cookieValues = httpCookie.getValue().split("&");
+
                             for (int i = 0; i < cookieValues.length; i++) {
                                 editor.putString(cookieValues[i], cookieValues[++i]);
                             }
@@ -158,8 +157,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                     }
                     lt.success();
                     Toast.makeText(context, context.getResources().getText(R.string.txtToastSaved), Toast.LENGTH_LONG).show();
-                    editor.putString("user", loginView.getText().toString());
-                    editor.putString("pass", passwordView.getText().toString());
+                    editor.putString("user", login);
+                    editor.putString("pass", password);
                     editor.apply();
                     infoLogin.setText(R.string.txtInfoLoginOk);
 
