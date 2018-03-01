@@ -3,6 +3,8 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,5 +50,17 @@ public class FindProductFragment extends BaseFragment {
                 Toast.makeText(getActivity(), getResources().getString(R.string.txtBarcodeNotValid), Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    public void onResume() {
+
+        super.onResume();
+
+        try {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.search_by_barcode_drawer));
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
     }
 }
