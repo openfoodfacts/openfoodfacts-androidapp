@@ -87,6 +87,8 @@
     <item>Ingrediente</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Caută</string>
   <string name="no_products">Nici un produs nu a fost găsit</string>
   <string name="desc_list_item_icon">Iconița</string>
