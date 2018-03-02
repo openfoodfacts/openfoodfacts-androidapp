@@ -30,7 +30,7 @@
         android:summary="@string/Donation"
         android:title="@string/Donate">
         <intent android:action="android.intent.action.VIEW"
-            android:data="https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en" />
+            android:data="@string/donation_url" />
     </Preference>
 
     <Preference
