@@ -26,6 +26,12 @@
         android:key="Locale.Helper.Selected.Language"
         android:summary="@string/prefs_language_summary"
         android:title="@string/prefs_language" />
+    <Preference
+        android:summary="@string/Donation"
+        android:title="@string/Donate">
+        <intent android:action="android.intent.action.VIEW"
+            android:data="@string/donation_url" />
+    </Preference>
 
     <Preference
         android:key="@string/contact_key"
