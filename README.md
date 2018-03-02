@@ -1,8 +1,6 @@
 Open Food Facts Android Application
 ===================================
 
-
-
 [![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
 [![Build Status](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp.svg?branch=master)](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp)
 [![Stories in Ready](https://badge.waffle.io/openfoodfacts/openfoodfacts-androidapp.svg?label=ready&title=Ready)](https://waffle.io/openfoodfacts/openfoodfacts-androidapp)
@@ -14,10 +12,7 @@ Open Food Facts Android Application
 <img src="https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png">
 ## What is Open Food Facts?
 
-<a href="https://f-droid.org/app/openfoodfacts.github.scrachx.openfood">
-    <img src="https://f-droid.org/badge/get-it-on.png"
-         alt="Get it on F-Droid" height="70">
-</a><a href="https://play.google.com/store/apps/details?id=openfoodfacts.github.scrachx.openfood"><img src=https://play.google.com/intl/en_us/badges/images/badge_new.png></a><br>
+<a href="https://f-droid.org/app/openfoodfacts.github.scrachx.openfood"><img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="70"></a><a href="https://play.google.com/store/apps/details?id=openfoodfacts.github.scrachx.openfood"><img src=https://play.google.com/intl/en_us/badges/images/badge_new.png></a><br>
 (These are beta versions, <a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner">this is the stable version</a>)
 
 <img src="https://lh3.googleusercontent.com/8WatIseTIIFe5dLA2Gje3CVFZkiLWKVkt4RjuxtdQk56G1MEHmQ5cR57ICQnTFaSLss=h900" height="300"><img src="https://lh3.googleusercontent.com/xSkBdFey8CNhIN7lBjAWGzuMd6hTdfKNeeWI0dchehqyL3CgyU7jER5C5dM_CzwQyJA=h900" height="300"><img src="https://lh3.googleusercontent.com/bbDgVhz73xXZzA2-QjkvP3V0aFeX9iys5lh2vWmjMsg4UlMXERBxoRqAGcgW6YFbJaET=h900" height="300"><img src="https://lh3.googleusercontent.com/bL1v0l8BKfHQG2x4k-macPi5w3dGLbxGDaBuRPtKTzXE56-HXQmNXk0Ew60v1Kyh3g=h900" height="300">
@@ -29,7 +24,7 @@ Open Food Facts is a database of food products with ingredients, allergens, nutr
 ### Made by everyone
 
 Open Food Facts is a non-profit association of volunteers.
-1800+ contributors like you have added 43 000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
+7000+ contributors like you have added 450 000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
 
 ### For everyone
 
@@ -37,18 +32,6 @@ Data about food is of public interest and has to be open. The complete database 
 - <https://world.openfoodfacts.org>
 
 ## Translations
-
-### Initial setup (done)
-Translations are made using GetText. We convert translations to and from the Android format using Android2Po.<br><br>
-```easy_install android2po```<br>
-```a2po COMMAND --android myproject/res --gettext myproject/locale```<br>
-```a2po init de fr```<br><br>
-
-### Refreshing exported GetText files
-```a2po export```
-
-### Importing back to Android
-```a2po import```
 
 ### Translate Open Food Facts in your language
 
@@ -63,7 +46,11 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 
 ## Installation
 
-Android Studio packages must be updated by just clicking on install packages in package manager, to let the VCS cloning from the app or the forked app on github then to have it installed and in work on the virtual android device.
+* Android Studio should be the latest stable build. You can get it from [Here](https://developer.android.com/studio/index.html)
+* If you're running the app for first time android-studio will ask you to install the gradle dependencies if you haven't already, Just click install.
+* If you're a new contributor to open-source, We recommend you to read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md)
+
+
 
 ## Waffle Throughput Graph
 
@@ -93,7 +80,7 @@ The project is initially started by [Scot Scriven](https://github.com/itchix), o
 - [Friedger Müffke](https://github.com/friedger)
 - [Qian Jin](https://github.com/jinqian)
 
-Feel free to fork the project and send us a pull request.
+If you're new to open-source, we recommend you to checkout our [_Contributing Guidelines_](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/CONTRIBUTING.md). Feel free to fork the project and send us a pull request.
 
 Here's a few list of bugs:
 - Very high impact: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/very%20high%20impact
@@ -112,5 +99,5 @@ Here's a few list of bugs:
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
+    See the License for the specific language governing permissions and 
     limitations under the License.

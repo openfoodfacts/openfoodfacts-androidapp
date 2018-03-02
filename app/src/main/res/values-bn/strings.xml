@@ -4,14 +4,16 @@
   <string name="action_settings">সেটিংস</string>
   <string name="action_about">সম্পর্কে</string>
   <string name="action_discover">খুঁজুন</string>
-  <string name="contribute">কিভাবে অবদান রাখতে হবে</string>
+  <string name="contribute">কিভাবে অবদান করবেন</string>
   <string name="action_find">খুঁজুন</string>
   <string name="text_barcode">বারকোড টাইপ করুন :</string>
+  <string name="message_in_activity_save_product_offline">একটি নতুন পণ্য পাঠাতে শুধুমাত্র একটি ছবি বাধ্যতামূলক।</string>
+  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>সারাংশ</item>
     <item>উপকরণসমূহ</item>
-    <item>পুষ্টি</item>
+    <item>পুষ্টি উপাদান</item>
     <item>পুষ্টি তালিকা</item>
   </string-array>
   <!-- Text units -->
@@ -26,6 +28,59 @@
     <item>fl oz</item>
   </string-array>
   <!-- Text units -->
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-BR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh-CN</item>
+    <item>fa</item>
+    <item>rs</item>
+    <item>af</item>
+    <item>ak</item>
+    <item>am</item>
+    <item>as</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
+    <item>hu</item>
+    <item>tr</item>
+    <item>id</item>
+    <item>tl</item>
+    <item>fil</item>
+    <item>nl-BE</item>
+    <item>bn</item>
+    <item>sl</item>
+    <item>ku</item>
+    <item>eo</item>
+    <item>pl</item>
+    <item>b+sr+Cyrl</item>
+  </string-array>
   <string-array name="images_array">
     <item>ডিফল্ট</item>
     <item>পুষ্টি</item>
@@ -41,34 +96,36 @@
   <string name="toast_retrieving">লোড হচ্ছে...</string>
   <string name="txtGenericName">প্রচলিত নাম :</string>
   <string name="txtBarcode">বারকোড :</string>
-  <string name="txtQuantity">মোট পরিমান :</string>
+  <string name="txtQuantity">পরিমান :</string>
   <string name="txtPackaging">প্যাকেজিং :</string>
   <string name="txtBrands">ব্র্যান্ডগুলি :</string>
   <string name="txtCategories">শ্রেণীসমূহ :</string>
   <string name="txtLabels">লেবেল, সার্টিফিকেশন, পুরষ্কার:</string>
   <string name="txtManufacturing">উৎপাদন বা প্রক্রিয়াকরণের জায়গা :</string>
-  <string name="txtIngredientsOrigins">মূল উপাদানগুলো হল :</string>
+  <string name="txtIngredientsOrigins">প্রধান উপাদানসমূহ :</string>
   <string name="txtCity">ক্রয়কৃত শহর, রাজ্য এবং দেশ :</string>
+  <string name="txtEMB">EMB Code:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">দোকান সমূহ :</string>
-  <string name="txtCountries">দেশের কোথায় বিক্রি হয়েছে :</string>
+  <string name="txtCountries">যেসব দেশে পাওয়া যাবে :</string>
   <string name="txtIngredients">উপকরণসমূহের তালিকা :</string>
-  <string name="txtSubstances">দ্রব্য বা পণ্য যা বিরূপ বা অসহনীয় প্রতিক্রিয়ার সৃষ্টি করে :</string>
-  <string name="txtAdditives">দ্রব্য সংযোজন :</string>
+  <string name="txtSubstances"> এলার্জি বা অসহিষ্ণুতা সৃষ্টিকারী দ্রব্য বা পণ্য :</string>
+  <string name="txtAdditives">ফুড অ্যাডেটিভস</string>
   <string name="txtTraces">ট্রেস:</string>
-  <string name="txtMayBeFromPalmOilProduct">উপকরন যা পাম তেল থেকে উৎপাদিত হতে পারে :</string>
-  <string name="txtPalmOilProduct">উপকরন পাম তেল থেকে :</string>
-  <string name="txtServingSize">ভজনার আকার :</string>
+  <string name="txtMayBeFromPalmOilProduct">উপকরণ যা পাম তেল থেকে উৎপাদিত হতে পারে :</string>
+  <string name="txtPalmOilProduct">পাম তেল থেকে উপকরণ:</string>
+  <string name="txtServingSize">পরিবেশন পরিমাপ :</string>
   <string name="txtNutrientLevel100g">100gএর জন্য পুষ্টির মাত্রা :</string>
-  <string name="txtNutritionLevelLow">কম পরিমানে</string>
-  <string name="txtNutritionLevelModerate">মাঝারি পরিমানে</string>
+  <string name="txtNutritionLevelLow">কম পরিমাণে </string>
+  <string name="txtNutritionLevelModerate">মাঝারি পরিমাণে</string>
   <string name="txtNutritionLevelHigh">উচ্চ মাত্রায়</string>
   <string name="txtLogin">লগইন :</string>
   <string name="txtPass">পাসওয়ার্ড :</string>
   <string name="txtTitleHome">আপনার খাদ্য খুলুন এবং জানুন আপনি কি খাচ্ছেন</string>
   <string name="txtSave">সংরক্ষণ করুন</string>
   <string name="txtSignIn">সাইন ইন</string>
-  <string name="txtUser">ব্যবহারকারী প্যানেল</string>
-  <string name="txtToastSaved">ব্যাবহারকারি সংরক্ষিত হয়েছে</string>
+  <string name="txtUser">ইউজার প্যানেল</string>
+  <string name="txtToastSaved">ইউজার সেইভ করা হয়েছে</string>
   <string name="txtSalt">লবন</string>
   <string name="txtFat">চর্বি</string>
   <string name="txtSugars">চিনি</string>
@@ -76,18 +133,19 @@
   <string name="hintLogin">লগ ইন</string>
   <string name="hintPass">পাসওয়ার্ড</string>
   <string name="errorLogin">লগইন বা পাসওয়ার্ড ত্রুটি</string>
-  <string name="errorWeb">আমরা ইন্টারনেট অ্যাক্সেস করতে পারিনি। আপনার সংযোগ সমস্যা আছে?</string>
-  <string name="txtInfoLoginOk">ব্যাবহারকারি সংরক্ষিত হয়েছে</string>
+  <string name="errorWeb">আমরা ইন্টারনেট সংযোগ করতে পারিনি। আপনার সংযোগে কি কোন সমস্যা আছে?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="txtInfoLoginOk">ব্যবহারকারি সংরক্ষিত হয়েছে</string>
   <string name="txtInfoLoginNo">ব্যবহারকারী সংরক্ষিত না</string>
   <string name="txtDialogsTitle">তথ্য</string>
   <string name="txtDialogsContent">আপনি যে পণ্য স্ক্যান করছেন তা Open Food Facts এ বিদ্যমান নাই। দয়া করে যোগ করুন।</string>
-  <string name="txtDialogsContentPowerMode">আপনি যে পণ্য স্ক্যান করছেন তা Open Food Facts এ বিদ্যমান নাই।</string>
-  <string name="txtDialogsContentSend">আপনি কি সংরক্ষিত পণ্য ডাটাবেসের কাছে পাঠাতে চান?</string>
-  <string name="txtYes">হ্যা</string>
+  <string name="txtDialogsContentPowerMode">আপনি স্ক্যানকৃত পণ্য Open Food Facts এ বিদ্যমান ।</string>
+  <string name="txtDialogsContentSend">আপনি কি সংরক্ষিত পণ্য ডাটাবেসে পাঠাতে চান?</string>
+  <string name="txtYes">হ্যাঁ</string>
   <string name="txtNo">না</string>
   <string name="hintNameProduct">নাম</string>
-  <string name="hintEnergy">সেবা প্রতি কেজি শক্তি</string>
-  <string name="hintEnergyUnit">শক্তি ইউনিট</string>
+  <string name="hintEnergy">প্রতি পরিবেশনে শক্তি ( কেজিতে ) </string>
+  <string name="hintEnergyUnit">শক্তি একক</string>
   <string name="hintWeight">ওজন</string>
   <string name="hintStores">দোকান</string>
   <string name="hintBrand">ব্র্যান্ড</string>
@@ -97,15 +155,15 @@
   <string name="txtPictureNeeded">দয়া করে প্রথমে একটি ছবি তুলুন</string>
   <string name="toastSending">আপলোড করা হচ্ছে...</string>
   <string name="dataSaved">আপনার ডিভাইসে স্থানীয়ভাবে সংরক্ষিত হয়েছে</string>
-  <string name="txtInfoAddUser">দয়া করে আপনার লগইন এবং পাসওয়ার্ড প্রবেশ করান</string>
+  <string name="txtInfoAddUser">দয়া করে আপনার লগইন এবং পাসওয়ার্ড প্রবেশ করুন</string>
   <string name="txtDataUpdated">তথ্য হালনাগাদ হয়েছে</string>
   <string name="txtLoading">লোড হচ্ছে...</string>
-  <string name="txtDialogsContentDelete">আপনি কি এই খসড়াটি মুছে ফেলতে চান?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">পণ্যটি স্থানীয়ভাবে সংরক্ষণ হয়েছে। আপনি তা \"অফলাইন সম্পাদনা করুন\" মেনু থেকে সম্পাদনা করতে পারেন</string>
-  <string name="txtBarcodeRequire">বারকোড প্রয়োজন হয়েছে</string>
+  <string name="txtBarcodeRequire">বারকোড প্রযোজ্য</string>
   <string name="txtOk">ঠিক আছে</string>
   <string name="txtContentDialogUploading">এই প্রক্রিয়া চলাকালীন প্রস্থান করবেন না দয়া করে...</string>
-  <string name="txtAbout">আপনি যে ছবিগুলি পাঠিয়েছেন সেগুলি ক্রিয়েটিভ কমন্স অ্যাট্রিবিউশন এবং শেয়ার এএইচ মুক্ত লাইসেন্সের অধীনে প্রকাশ করা হয়েছে।</string>
+  <string name="txtAbout">আপনি যে ছবিগুলি পাঠিয়েছেন সেগুলি ক্রিয়েটিভ কমন্স অ্যাট্রিবিউশন এবং শেয়ারঅ্যালাইক মুক্ত লাইসেন্সের অধীনে প্রকাশ করা হয়েছে।</string>
   <string name="txtAllsent">পণ্যটি পাঠানো হয়েছে</string>
   <string name="txtPalm">পণ্যটি কোন পাম তেল ধারণ করে না</string>
   <string name="txtBarcodeNotValid">বারকোড বৈধ নয়</string>
@@ -117,10 +175,10 @@
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">অনুসন্ধান</string>
-  <string name="search_by_barcode_drawer">বারকোডের ধরন</string>
+  <string name="search_by_barcode_drawer">বারকোড টাইপ করুন</string>
   <string name="category_drawer">শ্রেণীসমূহ</string>
-  <string name="search_by_category">Category</string>
-  <string name="search_by_name_drawer">নাম দিয়ে অনুসন্ধান করুন</string>
+  <string name="search_by_category">বিভাগ</string>
+  <string name="search_by_name_drawer">নাম দ্বারা অনুসন্ধান</string>
   <string name="scan_search">বারকোড স্ক্যান করুন</string>
   <string name="user_drawer">ইউজার</string>
   <string name="offline_edit_drawer">অফলাইনে সম্পাদনা করুন</string>
@@ -128,75 +186,75 @@
   <string name="txt_product_not_found">পণ্যটি খুঁজে পাওয়া যায় নি</string>
   <string name="delete_txt">মুছুন</string>
   <string name="sign_in_drawer">সাইন-ইন</string>
-  <string name="alert_drawer">অতিপ্রতিক্রিয়া সৃষ্টিকারী বস্তুর সতর্কতা</string>
+  <string name="alert_drawer">এলার্জেন সতর্কতা</string>
   <string name="warning_allergens">এলার্জি রয়েছে</string>
   <string name="title_dialog_alert">সতর্ক সংকেত যোগ করুন</string>
-  <string name="warning_alert_data">আপনার এলার্জি তথ্য খোলা খাদ্য ফ্যাক্টস সার্ভারে পাঠানো হবে না। এছাড়াও, সতর্কতা অবলম্বন করুন যে ডেটা নির্ভুল নাও হতে পারে, দয়া করে নিজেকে ডবল চেক করুন! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">গ্যালারী থেকে</string>
   <string name="product_sent">পণ্যটি পাঠানো সফল হয়েছে</string>
   <string name="action_edit_product">পণ্য সম্পাদনা করুন</string>
   <string name="title_info_dialog">তথ্য</string>
-  <string name="text_offline_info_dialog">আপনি অফলাইন যখন পণ্যগুলি স্ক্যান করতে পারেন পরে তাদের খাদ্য সংস্থানগুলি যোগ করতে পারেন। আপনি স্ক্যান সমস্ত পণ্য এখানে প্রদর্শিত হবে, এবং আপনি নীচের বোতাম ব্যবহার করে তাদের পাঠাতে সক্ষম হবেন।</string>
+  <string name="text_offline_info_dialog">আপনি অফলাইনে পণ্যগুলি স্ক্যান করতে এবং পরে সেগুলি যোগ করতে পারবেন। আপনার স্ক্যানকৃত পণ্য এখানে প্রদর্শিত হবে, এবং আপনি নচের বোতাম ব্যবহার করে সেগুলি পাঠাতে পারবেন।</string>
   <string name="permission_camera">বারকোড স্ক্যান এবং ছবি তুলতে ক্যামেরার অনুমতি প্রয়োজন।</string>
   <string name="permission_title">অনুমতি তথ্য</string>
-  <string name="permission_denied">দয়া করে অনুমতি সেটিংস সক্রিয় করুন</string>
+  <string name="permission_denied">দয়া করে সেটিংসে পারমিশন সক্রিয় করুন</string>
   <string name="permission_storage">ছবি তুলতে বা নির্বাচন করতে স্টোরেজ অনুমতি প্রয়োজন</string>
   <string name="info_download_data">এই কার্যকারিতা কাজ করার জন্য আপনাকে কিছু ডেটা ডাউনলোড করতে হবে, এটি ডাউনলোড করার জন্য হ্যাঁ টিপুন।</string>
   <string name="info_download_data_connection">এই কার্যকারিতা কাজ করার জন্য আপনাকে কিছু ডেটা ডাউনলোড করতে হবে। দয়া করে ইন্টারনেট সংযোগ সক্রিয় করুন।</string>
   <string name="msg_input_empty">দয়া করে প্রথমে ক্ষেত্রগুলি পূরণ করুন।</string>
-  <string name="new_offline_info">অনুগ্রহ করে পণ্য, উপাদান, পুষ্টি তথ্য সারণি এবং লেবেলের অন্য কোন তথ্য নিয়ে একটি ছবি তুলুন।ধন্যবাদ!</string>
+  <string name="new_offline_info">অনুগ্রহ করে পণ্য, উপাদান, পুষ্টিতথ্য সারণি এবং লেবেলের অন্যান্য তথ্যের ছবি তুলুন । ধন্যবাদ !</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">পাসওয়ার্ডতি অন্ততপক্ষে ৬ অক্ষরের দীর্ঘ হতে হবে।</string>
-  <string name="error_field_required">ঘরটি অবশ্যই পুরন করতে হবে।</string>
+  <string name="error_invalid_password">পাসওয়ার্ড অন্তত ৬ অক্ষরের দীর্ঘ হতে হবে।</string>
+  <string name="error_field_required">এই ঘরটি পূরণ করা আবশ্যক ।</string>
   <string name="action_preferences">অগ্রাধিকারসমূহ</string>
   <string name="prefs_scan_startup">শুরুতেই স্ক্যান করুন</string>
   <string name="prefs_scan_startup_summary">এই অপশনটি নির্বাচন করা হলে অ্যাপ খোলা মাত্রই স্ক্যান করা শুরু হবে।</string>
   <string name="prefs_power_mode">পাওয়ার মোড স্ক্যান</string>
-  <string name="prefs_power_mode_summary">ডাটাবেসে আছে কিনা তা দেখার জন্য সুপারমার্কেট এ থাকা কোন পণ্য দ্রুত স্ক্যান করুন।</string>
+  <string name="prefs_power_mode_summary">ডাটাবেসে আছে কিনা তা দেখার জন্য সুপারমার্কেট এ থাকা পণ্য দ্রুত স্ক্যান করুন।</string>
   <string name="prefs_language">ভাষা</string>
   <string name="prefs_language_summary">ভাষা পরিবর্তন করুন</string>
   <string name="scan_history_drawer">ইতিহাস</string>
   <string name="clear_history">ইতিহাস মুছে ফেলুন</string>
-  <string name="title_clear_history_dialog">পরিস্কার</string>
+  <string name="title_clear_history_dialog">মুছে ফেলুন</string>
   <string name="text_clear_history_dialog">আপনি কি সম্পূর্ণ স্ক্যান ইতিহাস মুছে ফেলতে চান?</string>
   <string name="export_csv_history">CSV রপ্তানি করুন</string>
   <string name="txt_exporting_history">ইতিহাস রপ্তানি করা হচ্ছে...</string>
   <string name="txt_history_exported">ইতিহাস রপ্তানি করা হয়েছে</string>
-  <string name="permision_write_external_storage">ইতিহাস রপ্তানি করতে বাহ্যিক স্টোরেজ অনুমতি লিখুন।</string>
-  <string name="txt_nutrition_not_found">পাওয়া যাবে না</string>
+  <string name="permision_write_external_storage">ইতিহাস রপ্তানি করতে বাহ্যিক স্টোরেজে সংরক্ষণ অনুমতি প্রয়োজন।</string>
+  <string name="txt_nutrition_not_found">প্রযোজ্য নয়</string>
   <!-- Nutrition info tab -->
   <string name="nutrition_carbohydrate">কার্বোহাইড্রেট</string>
-  <string name="nutrition_carbohydrate_short_name">কার্বোহাইড্রেট (g)</string>
+  <string name="nutrition_carbohydrate_short_name">কার্বোহাইড্রেট (গ্রাম)</string>
   <string name="nutrition_cholesterol">কোলেস্টেরল</string>
-  <string name="nutrition_cholesterol_short_name">কোলেস্টেরল (g)</string>
+  <string name="nutrition_cholesterol_short_name">কোলেস্টেরল (গ্রাম)</string>
   <string name="nutrition_energy">শক্তি</string>
   <string name="nutrition_energy_short_name">শক্তি</string>
   <string name="nutrition_fat">চর্বি</string>
   <string name="nutrition_fat_short_name">ফ্যাট (গ্রাম)</string>
-  <string name="nutrition_fiber">খাদ্যতালিকাগত ফাইবার</string>
-  <string name="nutrition_fiber_short_name">খাদ্যতালিকাগত ফাইবার (g)</string>
+  <string name="nutrition_fiber">ডায়েটারি ফাইবার</string>
+  <string name="nutrition_fiber_short_name">খাদ্যতালিকাগত ফাইবার (গ্রাম)</string>
   <string name="nutrition_header">পুষ্টি তথ্য</string>
   <string name="nutrition_no_data_message">এই পণ্যের জন্য কোন তথ্য পাওয়া যাচ্ছে না</string>
-  <string name="nutrition_per_quantity">100g / 100ml এর জন্য</string>
+  <string name="nutrition_per_quantity">১০০ গ্রাম /১০০ মিলির জন্য</string>
   <string name="nutrition_proteins">প্রোটিন</string>
-  <string name="nutrition_proteins_short_name">প্রোটিন (g)</string>
+  <string name="nutrition_proteins_short_name">প্রোটিন (গ্রাম)</string>
   <string name="nutrition_salt">লবন</string>
-  <string name="nutrition_salt_short_name">লবণ (জি)</string>
+  <string name="nutrition_salt_short_name">লবণ (গ্রাম)</string>
   <string name="nutrition_satured_fat">সম্পৃক্ত চর্বি</string>
-  <string name="nutrition_satured_fat_short_name">সম্পৃক্ত চর্বি (g)</string>
-  <string name="nutrition_serving">ভজনা প্রতি</string>
-  <string name="nutrition_serving_size">ভজনার আকার :</string>
+  <string name="nutrition_satured_fat_short_name">সম্পৃক্ত চর্বি (গ্রাম)</string>
+  <string name="nutrition_serving">প্রতি পরিবেশনে</string>
+  <string name="nutrition_serving_size">পরিবেশন পরিমাণ :</string>
   <string name="nutrition_sodium">সোডিয়াম</string>
-  <string name="nutrition_sodium_short_name">সোডিয়াম (g)</string>
+  <string name="nutrition_sodium_short_name">সোডিয়াম (গ্রাম)</string>
   <string name="nutrition_sugars">চিনি</string>
-  <string name="nutrition_sugars_short_name">চিনি (g)</string>
+  <string name="nutrition_sugars_short_name">চিনি (গ্রাম)</string>
   <string name="nutrition_trans_fat">ট্রান্স ফ্যাট</string>
-  <string name="nutrition_trans_fat_short_name">ট্রান্স ফ্যাট (g)</string>
-  <string name="nutriment_serving_size">প্রতি অংশ : </string>
+  <string name="nutrition_trans_fat_short_name">ট্রান্স ফ্যাট (গ্রাম)</string>
+  <string name="nutriment_serving_size">প্রতি অংশে : </string>
   <string name="action_manage_account">অ্যাকাউন্ট পরিচালনা</string>
   <string name="action_contributes">আপনার অবদানসমূহ</string>
   <string name="logout_drawer">লগআউট</string>
-  <string name="contribution_without_account">আপনি আপনার অবদান রাখতে সাইন-ইন বা একটি অ্যাকাউন্ট তৈরি করতে পারেন</string>
+  <string name="contribution_without_account">অবদান রাখতে সাইন-ইন করুন  বা নতুন অ্যাকাউন্ট খুলুন</string>
   <string name="textCarbonFootprint">"কার্বন পদচিহ্ন / CO2 নির্গমন: "</string>
   <string name="txtDialogPowerMode">দ্রুত দেখুন</string>
   <string name="txtSeeMore">আরও দেখুন</string>
@@ -204,8 +262,10 @@
   <string name="search_hint">পণ্য অনুসন্ধান করুন</string>
   <string name="number_of_results">ফলাফলের সংখ্যা:</string>
   <string name="txt_no_results">কোন ফলাফল খুঁজে পাওয়া যায়নি</string>
-  <string name="txt_extend_search">আপনার অনুসন্ধান বাড়ানোর চেষ্টা করুন বা পণ্য যোগ করুন</string>
-  <string name="txt_cant_load_search_results">অনুসন্ধান ফলাফলগুলি লোড করা যাবে না</string>
+  <string name="txt_extend_search">আপনার অনুসন্ধান স্পষ্ট করুন বা পণ্য যোগ করুন</string>
+  <string name="txt_no_matching_products">আমরা কোন পণ্য খুঁজে পাইনি ।\nআপনি আরো দেখতে পারেন :</string>
+  <string name="txt_broaden_search">- আপনার অনুসন্ধান স্পষ্ট করুন \ n- স্ক্যান করুন এবং ওপেন ফুড ফ্যাক্টসে যোগ করুন </string>
+  <string name="txt_cant_load_search_results">অনুসন্ধান ফলাফল লোড করা যায়নি</string>
   <string name="txt_try_again">আবার চেষ্টা করুন</string>
   <string name="nutrition_lactose">ল্যাকটোজ</string>
   <string name="nutrition_casein">ছানাজাতীয় উপাদান</string>
@@ -213,13 +273,13 @@
   <string name="nutrition_serum_proteins">সিরাম প্রোটিন</string>
   <string name="nutrition_nucleotides">নিউক্লিওটাইডস</string>
   <string name="for_100g">100 গ্রামের জন্য</string>
-  <string name="serving">ভজনা প্রতি</string>
+  <string name="serving">পরিবেশন প্রতি</string>
   <string name="minerals">খনিজ পদার্থ</string>
   <string name="nutrition_calcium">ক্যালসিয়াম</string>
-  <string name="nutrition_potassium">পটাশিয়াম</string>
+  <string name="nutrition_potassium">পটাসিয়াম</string>
   <string name="nutrition_chlore">ক্লোরিন</string>
-  <string name="nutrition_magnesium">ম্যাগনেশিয়াম</string>
-  <string name="nutrition_taurine">বৃষসদৃশ</string>
+  <string name="nutrition_magnesium">ম্যাগনেসিয়াম</string>
+  <string name="nutrition_taurine">Taurine</string>
   <string name="nutrition_monounsaturatedFat">মণি অসম্পৃক্ত চর্বি</string>
   <string name="nutrition_polyunsaturatedFat">পল্লি অসম্পৃক্ত চর্বি</string>
   <string name="nutrition_omega3">ওমেগা 3</string>
@@ -228,9 +288,10 @@
   <string name="nutrition_sucrose">সুক্রোজ</string>
   <string name="nutrition_glucose">শর্করা</string>
   <string name="nutrition_fructose">ফ্রুক্টোজ</string>
-  <string name="nutrition_maltose">মালটোস</string>
-  <string name="nutrition_alcohol">এলকোহল</string>
-  <string name="nutrition_vitamins">ভিটামিন</string>
+  <string name="nutrition_maltose">ম্যালটোজ</string>
+  <string name="nutrition_alcohol">
+অ্যালকোহল</string>
+  <string name="nutrition_vitamins">ভিটামিনসমূহ</string>
   <string name="vitamin_a">ভিটামিন এ</string>
   <string name="vitamin_d">ভিটামিন ডি</string>
   <string name="vitamin_e">ভিটামিন ই</string>
@@ -242,35 +303,78 @@
   <string name="vitamin_b6">ভিটামিন বি 6</string>
   <string name="vitamin_b9">ভিটামিন বি 9</string>
   <string name="vitamin_b12">ভিটামিন B12</string>
-  <string name="biotin">Biotin</string>
+  <string name="biotin">বায়োটিন</string>
   <string name="pantothenic_acid">Pantothenic অ্যাসিড</string>
   <string name="nutrition_minerals">খনিজ পদার্থ</string>
   <string name="silica">সিলিকা</string>
   <string name="bicarbonate">বাইকার্বোনেট</string>
-  <string name="potassium">পটাশিয়াম</string>
+  <string name="potassium">পটাসিয়াম</string>
   <string name="chloride">ক্লোরাইড</string>
   <string name="calcium">ক্যালসিয়াম</string>
   <string name="phosphorus">ফসফরাস</string>
   <string name="iron">লৌহ</string>
-  <string name="magnesium">ম্যাগনেশিয়াম</string>
+  <string name="magnesium">ম্যাগনেসিয়াম</string>
   <string name="zinc">জিঙ্ক</string>
   <string name="copper">তামা</string>
-  <string name="manganese">ম্যাঙ্গানীজ্</string>
+  <string name="manganese">ম্যাঙ্গানিজ</string>
   <string name="fluoride">ফ্লোরাইড</string>
   <string name="selenium">সেলেনিয়াম</string>
   <string name="chromium">ক্রোমিয়াম</string>
-  <string name="molybdenum">উন্নত</string>
+  <string name="molybdenum">মলিবডেনাম</string>
   <string name="iodine">আয়োডিন</string>
   <string name="caffeine">ক্যাফেইন</string>
   <string name="taurine">বৃষসদৃশ</string>
-  <string name="ph">pH এর</string>
+  <string name="ph">pH</string>
   <string name="fruits_vegetables_nuts">ফলমূল, শাকসবজি, বাদাম</string>
   <string name="collagen_meat_protein_ratio">কোলাজেন মাংস প্রোটিন অনুপাত</string>
   <string name="cocoa">কোকো</string>
   <string name="chlorophyl">ক্লোরোফিল</string>
   <string name="take_picture_ingredients">উপাদানের একটি ছবি নিন</string>
-  <string name="take_picture_front">সামনের ছবি তুলুন</string>
+  <string name="take_picture_front">সামনের দিকের ছবি তুলুন</string>
   <string name="take_picture_nutrition_table">পুষ্টি তালিকার একটি ছবি তুলুন</string>
   <string name="take_more_pictures">আরও কিছু ছবি তুলুন</string>
-  <string name="txtSaturatedFat">Saturated fat</string>
+  <string name="txtSaturatedFat">সম্পৃক্ত চর্বি</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">শর্টকাট খুঁজে পাওয়া যায়নি</string>
+  <string name="scan_shortcut_short_label">স্ক্যান</string>
+  <string name="scan_shortcut_long_label">পণ্য স্ক্যান করুন</string>
+  <string name="barcode_shortcut_short_label">অনুসন্ধান</string>
+  <string name="barcode_shortcut_long_label">বারকোড দ্বারা অনুসন্ধান করুন</string>
+  <string name="history_shortcut_short_label">ইতিহাস</string>
+  <string name="history_shortcut_long_label">ইতিহাস</string>
+  <string name="contributions_shortcut_short_label">অবদান</string>
+  <string name="contributions_shortcut_long_label">আপনার অবদান</string>
+  <string name="forgot_password">পাসওয়ার্ড ভুলে গেছেন?</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
+  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_positive">সেটিংস</string>
+  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_positive">সেটিংস</string>
+  <string name="saving">Saving…</string>
+  <string name="scan_first_product">Scan First Product</string>
+  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="device_on_mobile_data_warning_title">তথ্য</string>
+  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_positive">অগ্রাধিকারসমূহ</string>
+  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="FAQ">FAQ</string>
+  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+  <string name="lang_translate">local_translate_help</string>
+  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>

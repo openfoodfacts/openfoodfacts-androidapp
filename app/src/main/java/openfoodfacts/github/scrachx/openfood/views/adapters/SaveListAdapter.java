@@ -2,7 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v7.content.res.AppCompatResources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +20,7 @@ public class SaveListAdapter extends BaseAdapter {
     private final Context context;
     private final List<SaveItem> saveItems;
 
-    public SaveListAdapter(Context context, List<SaveItem> saveItems){
+    public SaveListAdapter(Context context, List<SaveItem> saveItems) {
         this.context = context;
         this.saveItems = saveItems;
     }
@@ -50,15 +50,15 @@ public class SaveListAdapter extends BaseAdapter {
 
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.iconSave);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.titleSave);
-        TextView txtBarcode= (TextView) convertView.findViewById(R.id.barcodeSave);
+        TextView txtBarcode = (TextView) convertView.findViewById(R.id.barcodeSave);
         ImageView imgProduct = (ImageView) convertView.findViewById(R.id.imgSaveProduct);
 
         SaveItem item = saveItems.get(position);
 
-        imgIcon.setImageDrawable(VectorDrawableCompat.create(context.getResources(), item.getIcon(), null));
+        imgIcon.setImageDrawable(AppCompatResources.getDrawable(context, item.getIcon()));
         txtTitle.setText(item.getTitle());
         imgProduct.setImageBitmap(item.getUrl());
-        txtBarcode.setText( item.getBarcode());
+        txtBarcode.setText(item.getBarcode());
 
         return convertView;
     }

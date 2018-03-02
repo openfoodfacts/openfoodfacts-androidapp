@@ -11,5 +11,13 @@
   <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
-  <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
+  <string name="txtHome">Open Pet Food Facts הוא מסד נתונים של מוצרי מזון לחיות מחמד עם רכיבים, אלרגנים, תסמינים וכל שביב מידע שניתן למצוא על תווית של מוצרי מזון לחיות מחמד. מיאו. מיאו.</string>
+  <string name="slide_1_title">Contribute to Pet Food transparency</string>
+  <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
+  <string name="slide_2_title">קבלת העובדות</string>
+  <string name="slide_2_desc">מידע נרחב על המוצר שסרקת, מפוענח עבורך</string>
+  <string name="slide_3_title">מעקב אחר המוצרים בהם השתמשת</string>
+  <string name="slide_3_desc">כל מוצרי הקוסמטיקה שלך ברשימה נוחה אחת שניתן לייצא</string>
+  <string name="slide_4_title">תמיכה במצב בלתי מקוון</string>
+  <string name="slide_4_desc">ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע</string>
 </resources>

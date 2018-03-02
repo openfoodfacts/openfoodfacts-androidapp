@@ -7,6 +7,8 @@
   <string name="contribute">योगदान कैसे करें</string>
   <string name="action_find">ढूंढें</string>
   <string name="text_barcode">बारकोड</string>
+  <string name="message_in_activity_save_product_offline">एक नया उत्पाद भेजने के लिए केवल एक फोटो अनिवार्य है</string>
+  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>संग्रह</item>
@@ -26,6 +28,59 @@
     <item>फ्लूइड आउन्स</item>
   </string-array>
   <!-- Text units -->
+  <string-array name="lang_array">
+    <item>अंग्रेज़ी</item>
+    <item>फ़्रेंच</item>
+    <item>स्पेनिश</item>
+    <item>इतालवी</item>
+    <item>जर्मन</item>
+    <item>जापानी</item>
+    <item>रूसी</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-BR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh-CN</item>
+    <item>fa</item>
+    <item>rs</item>
+    <item>af</item>
+    <item>ak</item>
+    <item>am</item>
+    <item>as</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
+    <item>hu</item>
+    <item>tr</item>
+    <item>id</item>
+    <item>tl</item>
+    <item>fil</item>
+    <item>nl-BE</item>
+    <item>bn</item>
+    <item>sl</item>
+    <item>ku</item>
+    <item>eo</item>
+    <item>pl</item>
+    <item>b+sr+Cyrl</item>
+  </string-array>
   <string-array name="images_array">
     <item>चूक</item>
     <item>पोषण</item>
@@ -49,6 +104,8 @@
   <string name="txtManufacturing">विनिर्माण या प्रसंस्करण की  जगह</string>
   <string name="txtIngredientsOrigins">सामग्री की उत्पत्ति:</string>
   <string name="txtCity">शहर, राज्य और देश जहाँ इसे खरीदा गया:</string>
+  <string name="txtEMB">EMB Code:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">स्टोर:</string>
   <string name="txtCountries">देश जहाँ बेचा गया है</string>
   <string name="txtIngredients">सामग्री की सूची:</string>
@@ -77,6 +134,7 @@
   <string name="hintPass">पासवर्ड</string>
   <string name="errorLogin">लॉगिन या पासवर्ड एरर</string>
   <string name="errorWeb">हम इंटरनेट का उपयोग करने में सक्षम नहीं थे| क्या आपके पास कनेक्टिविटी है?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">उपयोगकर्ता की जानकारी  सेव है</string>
   <string name="txtInfoLoginNo">उपयोगकर्ता की जानकारी  सेव नहीं `है</string>
   <string name="txtDialogsTitle">जानकारी</string>
@@ -100,7 +158,7 @@
   <string name="txtInfoAddUser">कृप्या अपना पासवर्ड और प्रवेश दर्ज करें</string>
   <string name="txtDataUpdated">डेटा अपडेट</string>
   <string name="txtLoading">लोड हो रहा है...</string>
-  <string name="txtDialogsContentDelete">क्या आप  इस ड्राफ्ट कोहटाना चाहते हैं?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">उत्पाद स्थानीय रूप से सेव है, आप ऑफलाइन संपादन मेनू में संपादित कर सकते हैं</string>
   <string name="txtBarcodeRequire">बारकोड अपेक्षित हैं</string>
   <string name="txtOk">ठीक है</string>
@@ -118,8 +176,8 @@
   <string name="open_food_drawer">ओपन फ़ूड फैक्ट्स</string>
   <string name="search_drawer">ढूंढें</string>
   <string name="search_by_barcode_drawer">बारकोड के आधार पर ढूंढें</string>
-  <string name="category_drawer">Categories</string>
-  <string name="search_by_category">Category</string>
+  <string name="category_drawer">श्रेणियाँ</string>
+  <string name="search_by_category">श्रेणी</string>
   <string name="search_by_name_drawer">नाम से ढूंढें</string>
   <string name="scan_search">स्कैन</string>
   <string name="user_drawer">उपयोगकर्ता</string>
@@ -131,7 +189,7 @@
   <string name="alert_drawer">एलर्जी की चेतावनी</string>
   <string name="warning_allergens">एलरजेन शामिल है</string>
   <string name="title_dialog_alert">अलर्ट जोड़ें</string>
-  <string name="warning_alert_data">आपकी एलर्जी की जानकारी Open Food Facts सर्वर के लिए कभी नहीं भेजा जा सक्ती। इसके अलावा, सावधान रहे  क्योंकि डेटा सही नहीं हो सकताअपने  इसलिये, आप कृपया दोहरी जांच कीजिए!</string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">गैलरी से</string>
   <string name="product_sent">उत्पाद की जानकारी सफलतापूर्वक भेजी गई</string>
   <string name="action_edit_product">उत्पाद संपादित करें</string>
@@ -146,7 +204,7 @@
   <string name="msg_input_empty">कृपया फ़ील्ड पहले भरें।</string>
   <string name="new_offline_info">कृपया उत्पाद, सामग्री, पोषण तथ्यों की सूची और लेबल पर किसी भी अन्य जानकारी की एक तस्वीर ले लो। धन्यवाद!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
+  <string name="error_invalid_password">पासवर्ड कम से कम 6 अक्षर लंबा होने की जरूरत है।</string>
   <string name="error_field_required">यह क्षेत्र आवश्यक है</string>
   <string name="action_preferences">प्राथमिकताएँ</string>
   <string name="prefs_scan_startup">स्टार्टअप पर स्कैन करें</string>
@@ -205,14 +263,16 @@
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">कोई परिणाम नहीं मिला</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
+  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Can\'t load search results</string>
-  <string name="txt_try_again">Try again</string>
+  <string name="txt_try_again">फिर कोशिश करे</string>
   <string name="nutrition_lactose">Lactose</string>
   <string name="nutrition_casein">Casein</string>
   <string name="nutrition_maltodextrins">Maltodextrins</string>
   <string name="nutrition_serum_proteins">Serum Proteins</string>
   <string name="nutrition_nucleotides">Nucleotides</string>
-  <string name="for_100g">For 100 g</string>
+  <string name="for_100g">१०० g के लिए</string>
   <string name="serving">प्रत्येक हिस्सा</string>
   <string name="minerals">Minerals</string>
   <string name="nutrition_calcium">केल्शियम</string>
@@ -268,9 +328,52 @@
   <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
   <string name="cocoa">Cocoa</string>
   <string name="chlorophyl">Chlorophyl</string>
-  <string name="take_picture_ingredients">Take a picture of the ingredients</string>
+  <string name="take_picture_ingredients">सामग्री की एक चित्र लीजिए</string>
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
   <string name="txtSaturatedFat">Saturated fat</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="scan_shortcut_short_label">Scan</string>
+  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="barcode_shortcut_short_label">ढूंढें</string>
+  <string name="barcode_shortcut_long_label">बारकोड द्वारा खोज</string>
+  <string name="history_shortcut_short_label">वृत्तांत</string>
+  <string name="history_shortcut_long_label">वृत्तांत</string>
+  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_long_label">My Contributions</string>
+  <string name="forgot_password">पासवर्ड भूल गए</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
+  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_positive">सेटिंग्स</string>
+  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_positive">सेटिंग्स</string>
+  <string name="saving">Saving…</string>
+  <string name="scan_first_product">Scan First Product</string>
+  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="device_on_mobile_data_warning_title">जानकारी</string>
+  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_positive">प्राथमिकताएँ</string>
+  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="FAQ">FAQ</string>
+  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+  <string name="lang_translate">local_translate_help</string>
+  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>

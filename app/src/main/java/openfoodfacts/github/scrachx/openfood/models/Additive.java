@@ -8,6 +8,8 @@ import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 
+import java.util.Locale;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "code",
@@ -50,7 +52,7 @@ public class Additive {
      * The code
      */
     public void setCode(String code) {
-        this.code = code.toUpperCase();
+        this.code = code.toUpperCase(Locale.getDefault());
     }
 
     /**

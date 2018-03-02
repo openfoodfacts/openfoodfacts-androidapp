@@ -2,7 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v7.content.res.AppCompatResources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +22,7 @@ public class NutrientLevelListAdapter extends BaseAdapter {
     private Context context;
     private List<NutrientLevelItem> nutrientLevelItems;
 
-    public NutrientLevelListAdapter(Context context, List<NutrientLevelItem> navDrawerItems){
+    public NutrientLevelListAdapter(Context context, List<NutrientLevelItem> navDrawerItems) {
         this.context = context;
         this.nutrientLevelItems = navDrawerItems;
     }
@@ -57,14 +57,13 @@ public class NutrientLevelListAdapter extends BaseAdapter {
         if (nutrientLevelItem.getIcon() <= 0) {
             imgIcon.setVisibility(View.GONE);
         } else {
-            imgIcon.setImageDrawable(VectorDrawableCompat.create(context.getResources(), nutrientLevelItem.getIcon(), null));
+            imgIcon.setImageDrawable(AppCompatResources.getDrawable(context, nutrientLevelItem.getIcon()));
             imgIcon.setVisibility(View.VISIBLE);
         }
 
         TextView txtTitle = (TextView) convertView.findViewById(R.id.descriptionLevel);
         // need to clear the text because using append method (append method is mandatory for html text)
         txtTitle.setText("");
-
         txtTitle.append(nutrientLevelItem.getValue());
         txtTitle.append(" ");
         txtTitle.append(bold(nutrientLevelItem.getCategory()));

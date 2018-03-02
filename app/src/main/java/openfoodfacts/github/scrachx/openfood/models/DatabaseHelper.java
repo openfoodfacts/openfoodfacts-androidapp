@@ -16,18 +16,20 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
         super(context, name);
     }
 
+
     @Override
     public void onCreate(Database db) {
         Log.i("greenDAO", "Creating tables for schema version " + DaoMaster.SCHEMA_VERSION);
-        DaoMaster.createAllTables(db, false);
+        DaoMaster.createAllTables(db, true);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(Database db, int oldVersion, int newVersion) {
         Log.i("greenDAO", "migrating schema from version " + oldVersion + " to " + newVersion);
         for (int migrateVersion = oldVersion + 1; migrateVersion <= newVersion; migrateVersion++) {
             upgrade(db, migrateVersion);
         }
+
     }
 
     /**
@@ -35,14 +37,18 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
      * left untouched just fix the code in the version case and push a new
      * release
      *
-     * @param db
+     * @param db database
      * @param migrateVersion
      */
-    private void upgrade(SQLiteDatabase db, int migrateVersion) {
+    private void upgrade(Database db, int migrateVersion) {
         switch (migrateVersion) {
             case 2:
                 db.execSQL("ALTER TABLE send_product ADD COLUMN 'lang' TEXT NOT NULL DEFAULT 'fr';");
                 break;
+            case 3:
+                ToUploadProductDao.createTable(db, true);
+            case 4:
+                TagDao.createTable(db, true);
         }
     }
 }

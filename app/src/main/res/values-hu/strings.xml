@@ -7,6 +7,8 @@
   <string name="contribute">Hogyan segíthet</string>
   <string name="action_find">Keres</string>
   <string name="text_barcode">Vonalkód beírása :</string>
+  <string name="message_in_activity_save_product_offline">Csak egy fénykép kötelező egy új termék elküldéséhez.</string>
+  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Összefoglalás</item>
@@ -26,6 +28,59 @@
     <item>uncia</item>
   </string-array>
   <!-- Text units -->
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-BR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh-CN</item>
+    <item>fa</item>
+    <item>rs</item>
+    <item>af</item>
+    <item>ak</item>
+    <item>am</item>
+    <item>as</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
+    <item>hu</item>
+    <item>tr</item>
+    <item>id</item>
+    <item>tl</item>
+    <item>fil</item>
+    <item>nl-BE</item>
+    <item>bn</item>
+    <item>sl</item>
+    <item>ku</item>
+    <item>eo</item>
+    <item>pl</item>
+    <item>rs</item>
+  </string-array>
   <string-array name="images_array">
     <item>Alapértelmezett</item>
     <item>Tápanyag</item>
@@ -49,6 +104,8 @@
   <string name="txtManufacturing">Gyártás vagy feldolgozás helye:</string>
   <string name="txtIngredientsOrigins">Összetevők származása:</string>
   <string name="txtCity">Vásárlás helye (város, állam vagy ország):</string>
+  <string name="txtEMB">EMB vagy EK üzemkód:</string>
+  <string name="txtManufactureUrl">A termék weboldalának címe a gyártó hivatalos honlapján:</string>
   <string name="txtStores">Boltok:</string>
   <string name="txtCountries">Országokban kapható:</string>
   <string name="txtIngredients">Összetevők listája :</string>
@@ -77,6 +134,7 @@
   <string name="hintPass">Jelszó</string>
   <string name="errorLogin">Bejelentkezési hiba</string>
   <string name="errorWeb">Internet csatlakozási problémák.</string>
+  <string name="uploadLater">A kép feltöltésre kerül amikor a hálózat elérhető lesz</string>
   <string name="txtInfoLoginOk">Felhasználó mentve</string>
   <string name="txtInfoLoginNo">Felhasználó nem lett mentve</string>
   <string name="txtDialogsTitle">Információ</string>
@@ -100,7 +158,7 @@
   <string name="txtInfoAddUser">Felhasználónév és jelszó megadása</string>
   <string name="txtDataUpdated">Adatok frissítve</string>
   <string name="txtLoading">Betöltés…</string>
-  <string name="txtDialogsContentDelete">Piszkozat törlése?</string>
+  <string name="txtDialogsContentDelete">Biztosan eltávolítja ezt a vázlatot?</string>
   <string name="txtDialogsContentInfoSave">A termék el lett mentve az eszközre, szerkeszthető az Offline Szerkesztés menüből</string>
   <string name="txtBarcodeRequire">Vonalkód szükséges</string>
   <string name="txtOk">OK</string>
@@ -131,7 +189,7 @@
   <string name="alert_drawer">Allergén riasztás</string>
   <string name="warning_allergens">Allergént tartalmaz</string>
   <string name="title_dialog_alert">Figyelmeztetés felvétele</string>
-  <string name="warning_alert_data">A személyes allergén információk nem kerülnek feltöltésre az Open Food Facts szerverére. Érdemes ellenőrizni az adatok helytállóságát.</string>
+  <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
   <string name="from_gallery">Galériából</string>
   <string name="product_sent">Termék sikeresen elküldve</string>
   <string name="action_edit_product">Termék szerkesztés</string>
@@ -205,6 +263,8 @@
   <string name="number_of_results">Találatok száma :</string>
   <string name="txt_no_results">Nincs találat</string>
   <string name="txt_extend_search">Próbálja meg bővíteni a keresést vagy adja hozzá a terméket</string>
+  <string name="txt_no_matching_products">Nem találtunk megfelelő termékeket.\nMegpróbálhatja :</string>
+  <string name="txt_broaden_search">- szélesítse a keresést \n- olvassa be és adja hozzá az Open Food Facts-hoz</string>
   <string name="txt_cant_load_search_results">Nem tölthető be a keresés eredménye</string>
   <string name="txt_try_again">Próbálja újra</string>
   <string name="nutrition_lactose">Laktóz</string>
@@ -273,4 +333,47 @@
   <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
   <string name="take_more_pictures">További képek készítése</string>
   <string name="txtSaturatedFat">Telített zsír</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Parancsikon nem elérhető</string>
+  <string name="scan_shortcut_short_label">Beolvasás</string>
+  <string name="scan_shortcut_long_label">Termék beolvasása</string>
+  <string name="barcode_shortcut_short_label">Keres</string>
+  <string name="barcode_shortcut_long_label">Keresés vonalkód alapján</string>
+  <string name="history_shortcut_short_label">Előzmények</string>
+  <string name="history_shortcut_long_label">Előzmények</string>
+  <string name="contributions_shortcut_short_label">Hozzájárulások</string>
+  <string name="contributions_shortcut_long_label">Hozzájárulásaim</string>
+  <string name="forgot_password">Elfelejtett jelszó</string>
+  <string name="next">KÖVETKEZŐ</string>
+  <string name="skip">KIHAGY</string>
+  <string name="start">MEGÉRTETTEM</string>
+  <string name="contact">Kapcsolat</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Lépjen kapcsolatba a csapattal</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">Nem találhatóak email alkalmazások</string>
+  <string name="airplane_mode_active_dialog_title">Repülőgép mód engedélyezve</string>
+  <string name="airplane_mode_active_dialog_message">A repülőgép mód engedélyezve van, kérjük, tiltsa le a folytatáshoz.</string>
+  <string name="airplane_mode_active_dialog_negative">Elutasít</string>
+  <string name="airplane_mode_active_dialog_positive">Beállítások</string>
+  <string name="device_offline_dialog_title">A hálózat nem érhető el</string>
+  <string name="device_offline_dialog_message">Ehhez a művelethez hálózati kapcsolat szükséges, szeretné megváltoztatni a beállításokat?</string>
+  <string name="device_offline_dialog_negative">Elutasít</string>
+  <string name="device_offline_dialog_positive">Beállítások</string>
+  <string name="saving">Mentés…</string>
+  <string name="scan_first_product">Scan First Product</string>
+  <string name="preference_enable_mobile_data_title">Feltöltés mobilinterneten</string>
+  <string name="preference_enable_mobile_data_summary_on">Új termékek feltöltése mobilinternet &amp; WiFi használatával</string>
+  <string name="preference_enable_mobile_data_summary_off">Új termékek feltöltése csak WiFi használatával</string>
+  <string name="device_on_mobile_data_warning_title">Információ</string>
+  <string name="device_on_mobile_data_warning_message">A feltöltés mobilinterneten le van tiltva, kérjük, csatlakozzon WiFi-hez vagy módosítsa a beállításokat</string>
+  <string name="device_on_mobile_data_warning_positive">Tulajdonságok</string>
+  <string name="device_on_mobile_data_warning_negative">Feltöltés mindenképpen</string>
+  <string name="preference_choose_language_dialog_title">Válasszon nyelvet</string>
+  <string name="FAQ">GYIK</string>
+  <string name="FrequentlyAskedQuestions">Gyakran Ismételt Kérdések</string>
+  <string name="lang_translate">local_translate_help</string>
+  <string name="translate_help_title">Segítse az Open Food Facts fordítását</string>
+  <string name="translate_help_summary">Hozza az Open Food Facts adatbázist az ön nyelvére - nincs szükség műszaki ismeretekre</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>

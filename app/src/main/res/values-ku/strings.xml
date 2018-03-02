@@ -7,6 +7,8 @@
   <string name="contribute">Çawa alîkarî</string>
   <string name="action_find">Dî_tin</string>
   <string name="text_barcode">_yazmışkeBarcode:</string>
+  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
+  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Kurtayîf</item>
@@ -26,6 +28,59 @@
     <item>fl oz</item>
   </string-array>
   <!-- Text units -->
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-BR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh-CN</item>
+    <item>fa</item>
+    <item>rs</item>
+    <item>af</item>
+    <item>ak</item>
+    <item>am</item>
+    <item>as</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
+    <item>hu</item>
+    <item>tr</item>
+    <item>id</item>
+    <item>tl</item>
+    <item>fil</item>
+    <item>nl-BE</item>
+    <item>bn</item>
+    <item>sl</item>
+    <item>ku</item>
+    <item>eo</item>
+    <item>pl</item>
+    <item>b+sr+Cyrl</item>
+  </string-array>
   <string-array name="images_array">
     <item>Putative</item>
     <item>Xwarin û</item>
@@ -49,6 +104,8 @@
   <string name="txtManufacturing">Hilberîn 	an. neqş:</string>
   <string name="txtIngredientsOrigins">Maddî source:</string>
   <string name="txtCity">Bajar, dewlet û welêt kirîn:</string>
+  <string name="txtEMB">EMB Code:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Dikanên:</string>
   <string name="txtCountries">Welatên serbixwe:</string>
   <string name="txtIngredients">Tabloya naverokê:</string>
@@ -77,6 +134,7 @@
   <string name="hintPass">Şîfreya</string>
   <string name="errorLogin">Destpêk an şîfre têketin</string>
   <string name="errorWeb">Em dikarin bigîjin Înternet ne. Gelo ti pirsgirêkên girêdanê heye?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Bikarhêner hatine qeydkirin</string>
   <string name="txtInfoLoginNo">Bikarhêner xilas ne</string>
   <string name="txtDialogsTitle">Agahî</string>
@@ -100,7 +158,7 @@
   <string name="txtInfoAddUser">Ji kerema xwe navê bikarhêner û nasnavê xwe binivîsî</string>
   <string name="txtDataUpdated">Data ve</string>
   <string name="txtLoading">Ciji tıbe...</string>
-  <string name="txtDialogsContentDelete">Ma hûn dixwazin ku ev pêşnûme jê bibî?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Product xilas herêmî de, \"girêdayî Edit\" tu pêşeka biguherînî</string>
   <string name="txtBarcodeRequire">Barcode pêwîst e</string>
   <string name="txtOk">Okay</string>
@@ -131,7 +189,7 @@
   <string name="alert_drawer">Heşyarkirin</string>
   <string name="warning_allergens">De dihewîne alerjen</string>
   <string name="title_dialog_alert">Heşyarkirin</string>
-  <string name="warning_alert_data">Agahî Allergen wê ji we re li tu dema Open Facts Food pêşkêşkerên şandin. Jî, xwe not bikin ku dibe ku daneya agadar bikerewe, ji kerema xwe careke din kontrol bike! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">Ji Gallery</string>
   <string name="product_sent">Berhemên bi serkeftî hate şandin</string>
   <string name="action_edit_product">Berhem pergal</string>
@@ -205,6 +263,8 @@
   <string name="number_of_results">Encam:</string>
   <string name="txt_no_results">Encam tine</string>
   <string name="txt_extend_search">Hewl bide ku lê zêde bike an jî veşartinê berhemên aramışke te</string>
+  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Geleri results nayê sazkirin</string>
   <string name="txt_try_again">Dîsa biceribîne</string>
   <string name="nutrition_lactose">Bê şekira</string>
@@ -273,4 +333,47 @@
   <string name="take_picture_nutrition_table">Teblo rema bıkışıkının</string>
   <string name="take_more_pictures">Zev resma bışıkının</string>
   <string name="txtSaturatedFat">Saturated fat</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="scan_shortcut_short_label">Scan</string>
+  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="barcode_shortcut_short_label">Lêgerîn</string>
+  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="history_shortcut_short_label">Dîrok</string>
+  <string name="history_shortcut_long_label">Dîrok</string>
+  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_long_label">My Contributions</string>
+  <string name="forgot_password">Forgot Password</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
+  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_positive">Ligorî</string>
+  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_positive">Ligorî</string>
+  <string name="saving">Saving…</string>
+  <string name="scan_first_product">Scan First Product</string>
+  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="device_on_mobile_data_warning_title">Agahî</string>
+  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_positive">Tercîh</string>
+  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="FAQ">FAQ</string>
+  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+  <string name="lang_translate">local_translate_help</string>
+  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>

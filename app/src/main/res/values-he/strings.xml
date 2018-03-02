@@ -7,6 +7,8 @@
   <string name="contribute">כיצד ניתן לתרום</string>
   <string name="action_find">חיפוש</string>
   <string name="text_barcode">נא להזין את הברקוד:</string>
+  <string name="message_in_activity_save_product_offline">נדרשת לפחות תמונה אחת לטובת שליחת מוצר חדש.</string>
+  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>תקציר</item>
@@ -26,6 +28,59 @@
     <item>אונקיה</item>
   </string-array>
   <!-- Text units -->
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-BR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh-CN</item>
+    <item>fa</item>
+    <item>rs</item>
+    <item>af</item>
+    <item>ak</item>
+    <item>am</item>
+    <item>as</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
+    <item>hu</item>
+    <item>tr</item>
+    <item>id</item>
+    <item>tl</item>
+    <item>fil</item>
+    <item>nl-BE</item>
+    <item>bn</item>
+    <item>sl</item>
+    <item>ku</item>
+    <item>eo</item>
+    <item>pl</item>
+    <item>b+sr+Cyrl</item>
+  </string-array>
   <string-array name="images_array">
     <item>בררת מחדל</item>
     <item>תזונה</item>
@@ -49,6 +104,8 @@
   <string name="txtManufacturing">מקומות העיבוד או הייצור:</string>
   <string name="txtIngredientsOrigins">מקור הרכיבים:</string>
   <string name="txtCity">עיר, מדינה וארץ הקנייה :</string>
+  <string name="txtEMB">EMB Code:</string>
+  <string name="txtManufactureUrl">קישור לעמוד המוצר באתר הרשמי של היצרן:</string>
   <string name="txtStores">חנויות:</string>
   <string name="txtCountries">מדינות בהן נמכר:</string>
   <string name="txtIngredients">רשימת רכיבים:</string>
@@ -77,6 +134,7 @@
   <string name="hintPass">ססמה</string>
   <string name="errorLogin">שם המשתמש או הססמה שגויים</string>
   <string name="errorWeb">לא הצלחנו לגשת לאינטרנט. יש לך תקלה בחיבור?</string>
+  <string name="uploadLater">התמונה תישלח ברגע שהרשת תהיה זמינה</string>
   <string name="txtInfoLoginOk">המשתמש נשמר</string>
   <string name="txtInfoLoginNo">המשתמש לא נשמר</string>
   <string name="txtDialogsTitle">פרטים</string>
@@ -100,7 +158,7 @@
   <string name="txtInfoAddUser">נא להזין את שם המשתמש והססמה שלך</string>
   <string name="txtDataUpdated">הנתונים עודכנו</string>
   <string name="txtLoading">בטעינה…</string>
-  <string name="txtDialogsContentDelete">למחוק את הטיוטה הזו?</string>
+  <string name="txtDialogsContentDelete">להסיר את הטיוטה הזו?</string>
   <string name="txtDialogsContentInfoSave">המוצר נשמר מקומית, ניתן לערוך אותו בתפריט העריכה בלתי מקוון</string>
   <string name="txtBarcodeRequire">נדרש ברקוד</string>
   <string name="txtOk">אישור</string>
@@ -131,7 +189,7 @@
   <string name="alert_drawer">אזהרת אלרגן</string>
   <string name="warning_allergens">מכיל אלרגנים</string>
   <string name="title_dialog_alert">הוספת התרעה</string>
-  <string name="warning_alert_data">נתוני האלרגיות שלך לעולם לא ישלחו אל שרתי מסד נתוני המזון הפתוח. כמו כן, כדאי להיזהר כיוון שהמידע לא בהכרח אמין, כדאי לוודא שוב באופן עצמאי!</string>
+  <string name="warning_alert_data">נתוני האלרגיות שלך לא יישלחו לשרת של Open Food Facts server. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
   <string name="from_gallery">מהגלריה</string>
   <string name="product_sent">המוצר נשלח בהצלחה</string>
   <string name="action_edit_product">עריכת מוצר</string>
@@ -205,12 +263,14 @@
   <string name="number_of_results">מספר התוצאות:</string>
   <string name="txt_no_results">לא נמצאו תוצאות</string>
   <string name="txt_extend_search">כדאי להרחיב את החיפוש שלך או להוסיף את המוצר</string>
+  <string name="txt_no_matching_products">לא מצאנו מוצרים מתאימים.\nניתן לנסות:</string>
+  <string name="txt_broaden_search">- להרחיב את החיפוש שלך \n- לסרוק ולהוסיף ל־Open Food Facts</string>
   <string name="txt_cant_load_search_results">לא ניתן לטעון את תוצאות החיפוש</string>
   <string name="txt_try_again">נא לנסות שוב</string>
   <string name="nutrition_lactose">לקטוז</string>
   <string name="nutrition_casein">קזאין</string>
   <string name="nutrition_maltodextrins">מלטודקסטרין</string>
-  <string name="nutrition_serum_proteins">Serum Proteins</string>
+  <string name="nutrition_serum_proteins">חלבון בסרום</string>
   <string name="nutrition_nucleotides">נוקלאוטידים</string>
   <string name="for_100g">ל־100 ג׳</string>
   <string name="serving">להגשה</string>
@@ -272,5 +332,48 @@
   <string name="take_picture_front">צילום תמונה של החזית</string>
   <string name="take_picture_nutrition_table">צילום תמונה של טבלת הערכים</string>
   <string name="take_more_pictures">צילום תמונות נוספות</string>
-  <string name="txtSaturatedFat">Saturated fat</string>
+  <string name="txtSaturatedFat">שומן רווי</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">קיצור הדרך אינו זמין</string>
+  <string name="scan_shortcut_short_label">סריקה</string>
+  <string name="scan_shortcut_long_label">סריקת מוצר</string>
+  <string name="barcode_shortcut_short_label">חיפוש</string>
+  <string name="barcode_shortcut_long_label">חיפוש לפי ברקוד</string>
+  <string name="history_shortcut_short_label">היסטוריה</string>
+  <string name="history_shortcut_long_label">היסטוריה</string>
+  <string name="contributions_shortcut_short_label">תרומות</string>
+  <string name="contributions_shortcut_long_label">התרומות שלי</string>
+  <string name="forgot_password">שכחתי ססמה</string>
+  <string name="next">הבא</string>
+  <string name="skip">דילוג</string>
+  <string name="start">הבנתי</string>
+  <string name="contact">יצירת קשר</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">יצירת קשר עם הצוות</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">לא נמצאו יישומוני דוא״ל</string>
+  <string name="airplane_mode_active_dialog_title">מצב טיסה מופעל</string>
+  <string name="airplane_mode_active_dialog_message">מצב טיסה פעיל, נא להשבית אותו כדי להמשיך.</string>
+  <string name="airplane_mode_active_dialog_negative">התעלמות</string>
+  <string name="airplane_mode_active_dialog_positive">הגדרות</string>
+  <string name="device_offline_dialog_title">הרשת אינה זמינה</string>
+  <string name="device_offline_dialog_message">לשם ביצוע פעולה זו נדרש חיבור לרשת, לשנות זאת בהגדרות?</string>
+  <string name="device_offline_dialog_negative">התעלמות</string>
+  <string name="device_offline_dialog_positive">הגדרות</string>
+  <string name="saving">בהליכי שמירה…</string>
+  <string name="scan_first_product">סריקת המוצר הראשון</string>
+  <string name="preference_enable_mobile_data_title">להעלות כשיש חיבור נתונים סלולרי</string>
+  <string name="preference_enable_mobile_data_summary_on">להעלות מוצרים חדשים כשיש חיבור נתונים סלולרי או אלחוטי</string>
+  <string name="preference_enable_mobile_data_summary_off">להעלות מוצרים חדשים כשיש חיבור נתונים אלחוטי בלבד</string>
+  <string name="device_on_mobile_data_warning_title">פרטים</string>
+  <string name="device_on_mobile_data_warning_message">העלאת מוצרים חדשים כשיש חיבור נתונים סלולרי מושבתת, נא להתחבר לרשת אלחוטית או לשנות זאת בהעדפות</string>
+  <string name="device_on_mobile_data_warning_positive">העדפות</string>
+  <string name="device_on_mobile_data_warning_negative">להעלות בכל זאת</string>
+  <string name="preference_choose_language_dialog_title">בחירת שפה</string>
+  <string name="FAQ">שו״ת</string>
+  <string name="FrequentlyAskedQuestions">שאלות ותשובות נפוצות</string>
+  <string name="lang_translate">local_translate_help</string>
+  <string name="translate_help_title">סיוע בתרגום Open Food Facts</string>
+  <string name="translate_help_summary">הנגשת מסד הנתונים של Open Food Facts לאנשים שדוברים את אותה השפה כמוך - לא נדרש ידע טכני</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>

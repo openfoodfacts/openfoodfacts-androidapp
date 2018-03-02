@@ -2,20 +2,25 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import android.graphics.Bitmap;
 
+import java.util.Date;
+
 public class HistoryItem {
 
     private String title;
     private String brands;
     private Bitmap url;
     private String barcode;
+    private Date lastSeen;
 
-    public HistoryItem(){}
+    public HistoryItem() {
+    }
 
-    public HistoryItem(String title, String brands, Bitmap url, String barcode) {
+    public HistoryItem(String title, String brands, Bitmap url, String barcode, Date lastSeen) {
         this.title = title;
         this.brands = brands;
         this.url = url;
         this.barcode = barcode;
+        this.lastSeen = lastSeen;
     }
 
     public String getBarcode() {
@@ -26,11 +31,11 @@ public class HistoryItem {
         this.barcode = barcode;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return this.title;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title = title;
     }
 
@@ -48,5 +53,13 @@ public class HistoryItem {
 
     public void setBrands(String brands) {
         this.brands = brands;
+    }
+
+    public void setTime(Date lastSeen) {
+        this.lastSeen = lastSeen;
+    }
+
+    public Date getTime() {
+        return lastSeen;
     }
 }

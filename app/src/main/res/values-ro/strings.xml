@@ -7,6 +7,8 @@
   <string name="contribute">Cum să contribuiţi</string>
   <string name="action_find">Căutare</string>
   <string name="text_barcode">Introduceți codul de bare</string>
+  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
+  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Continut</item>
@@ -26,12 +28,67 @@
     <item>fl oz</item>
   </string-array>
   <!-- Text units -->
+  <string-array name="lang_array">
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
+    <item>pt</item>
+    <item>sv</item>
+    <item>my</item>
+    <item>kk</item>
+    <item>hy</item>
+    <item>el</item>
+    <item>he</item>
+    <item>gl</item>
+    <item>ca</item>
+    <item>cs</item>
+    <item>ar</item>
+    <item>fi</item>
+    <item>hi</item>
+    <item>kab</item>
+    <item>ko</item>
+    <item>lv</item>
+    <item>nl</item>
+    <item>pt-BR</item>
+    <item>ro</item>
+    <item>sv</item>
+    <item>zh</item>
+    <item>nb</item>
+    <item>da</item>
+    <item>zh-CN</item>
+    <item>fa</item>
+    <item>rs</item>
+    <item>af</item>
+    <item>ak</item>
+    <item>am</item>
+    <item>as</item>
+    <item>zh-TW</item>
+    <item>zh-HK</item>
+    <item>hu</item>
+    <item>tr</item>
+    <item>id</item>
+    <item>tl</item>
+    <item>fil</item>
+    <item>nl-BE</item>
+    <item>bn</item>
+    <item>sl</item>
+    <item>ku</item>
+    <item>eo</item>
+    <item>pl</item>
+    <item>b+sr+Cyrl</item>
+  </string-array>
   <string-array name="images_array">
     <item>Implicită</item>
     <item>Informații nutriționale</item>
     <item>Ingrediente</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Caută</string>
   <string name="no_products">Nici un produs nu a fost găsit</string>
   <string name="desc_list_item_icon">Iconița</string>
@@ -49,6 +106,8 @@
   <string name="txtManufacturing">Locuri de fabricare sau procesare:</string>
   <string name="txtIngredientsOrigins">Originea ingredientelor</string>
   <string name="txtCity">Oraș și țara unde produsul a fost cumpărat:</string>
+  <string name="txtEMB">EMB Code:</string>
+  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Magazine:</string>
   <string name="txtCountries">Țări unde produsul este comercializat:</string>
   <string name="txtIngredients">Ingrediente:</string>
@@ -77,6 +136,7 @@
   <string name="hintPass">Parolă</string>
   <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>
   <string name="errorWeb">Conectarea la internet nu e posibilă. Aveți probleme cu conexiunea la internet?</string>
+  <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Utilizator salvat</string>
   <string name="txtInfoLoginNo">Utilizatorul nu a fost salvat.</string>
   <string name="txtDialogsTitle">Informaţii</string>
@@ -100,7 +160,7 @@
   <string name="txtInfoAddUser">Introduceți numele de utilizator și parola</string>
   <string name="txtDataUpdated">Datele au fost actualizate</string>
   <string name="txtLoading">Se încarcă...</string>
-  <string name="txtDialogsContentDelete">Doriți să ștergeți această versiune intermediară?</string>
+  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Produsul a fost salvat local, puteți să il modificați din meniul \"Editare offline\".</string>
   <string name="txtBarcodeRequire">Codul de bare este obligatoriu</string>
   <string name="txtOk">OK</string>
@@ -131,7 +191,7 @@
   <string name="alert_drawer">Alertă alergeni</string>
   <string name="warning_allergens">Conține alergeni</string>
   <string name="title_dialog_alert">Adaugare alertă</string>
-  <string name="warning_alert_data">Informațiile despre alergiile dumneavostră nu vor fi trimise către Open Food Facts. Deasemenea, luați în considerare faptul că datele pot fi imprecise, întotdeauna re-verificați dumneavoastră înșivă!</string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">Din galerie</string>
   <string name="product_sent">Produsul a fost trimis cu succes</string>
   <string name="action_edit_product">Modificare produs</string>
@@ -205,6 +265,8 @@
   <string name="number_of_results">Număr de rezultate</string>
   <string name="txt_no_results">Nici un rezultat</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
+  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Can\'t load search results</string>
   <string name="txt_try_again">Try again</string>
   <string name="nutrition_lactose">Lactoză</string>
@@ -273,4 +335,47 @@
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
   <string name="txtSaturatedFat">Saturated fat</string>
+  <!-- String related to App Shortcuts -->
+  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="scan_shortcut_short_label">Scanează</string>
+  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="barcode_shortcut_short_label">Caută</string>
+  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="history_shortcut_short_label">Istoric</string>
+  <string name="history_shortcut_long_label">Istoric</string>
+  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_long_label">My Contributions</string>
+  <string name="forgot_password">Forgot Password</string>
+  <string name="next">NEXT</string>
+  <string name="skip">SKIP</string>
+  <string name="start">GOT IT</string>
+  <string name="contact">Contact</string>
+  <string name="contact_key">contact_team</string>
+  <string name="contact_summary">Contact the team</string>
+  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
+  <string name="email_not_found">No email applications found</string>
+  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_positive">Configurări</string>
+  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_positive">Configurări</string>
+  <string name="saving">Saving…</string>
+  <string name="scan_first_product">Scan First Product</string>
+  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="device_on_mobile_data_warning_title">Informaţii</string>
+  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_positive">Preferinţe</string>
+  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="FAQ">FAQ</string>
+  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+  <string name="lang_translate">local_translate_help</string>
+  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="please_check_your_connection">Please check your connection.</string>
 </resources>

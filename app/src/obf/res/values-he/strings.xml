@@ -11,5 +11,13 @@
   <string name="website_product">https://world.openbeautyfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
-  <string name="txtHome">Open Beauty Facts is a database of cosmetics products with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
+  <string name="txtHome">Open Beauty Facts הוא מסד נתונים של מוצרי קוסמטיקה עם רכיבים, אלרגנים, תסמינים וכל שביב מידע שניתן למצוא על תווית המוצר.</string>
+  <string name="slide_1_title">תרומה לשקיפות קוסמטית</string>
+  <string name="slide_1_desc">ניתן לסרוק מוצרים, לצלם אותם ולהפוך את השקיפות הקוסמטית למציאות</string>
+  <string name="slide_2_title">קבלת העובדות</string>
+  <string name="slide_2_desc">מידע נרחב על המוצר שסרקת, מפוענח עבורך</string>
+  <string name="slide_3_title">מעקב אחר המוצרים בהם השתמשת</string>
+  <string name="slide_3_desc">כל מוצרי הקוסמטיקה שלך ברשימה נוחה אחת שניתן לייצא</string>
+  <string name="slide_4_title">תמיכה במצב בלתי מקוון</string>
+  <string name="slide_4_desc">ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע</string>
 </resources>

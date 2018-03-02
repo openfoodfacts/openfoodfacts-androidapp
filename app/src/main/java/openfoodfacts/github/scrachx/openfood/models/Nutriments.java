@@ -20,6 +20,7 @@ import static android.text.TextUtils.isEmpty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Nutriments implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private static final String DEFAULT_UNIT = "g";
 
     public final static String ENERGY ="energy";

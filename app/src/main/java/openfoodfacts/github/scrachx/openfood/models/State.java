@@ -20,6 +20,7 @@ import java.util.Map;
 })
 public class State implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @JsonProperty("status_verbose")
     private String statusVerbose;
     private long status;
