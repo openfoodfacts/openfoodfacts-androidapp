@@ -111,6 +111,8 @@
   <string name="txtStores">Καταστήματα :</string>
   <string name="txtCountries">Χώρες όπου πωλείται :</string>
   <string name="txtIngredients">Λίστα συστατικών :</string>
+  <string name="Donate">Donate</string>
+  <string name="Donation">Click here to donate to Open Food Facts</string>
   <string name="txtSubstances">Oυσίες ή προϊοντα που προκαλούν αλλεργιες ή δυσανεξιες :</string>
   <string name="txtAdditives">Πρόσθετα :</string>
   <string name="txtTraces">Ίχνη :</string>
@@ -378,4 +380,6 @@
   <string name="translate_help_title">Help translate Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
   <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
+  <string name="advanced_search_title">Advanced Search &amp; Charts</string>
 </resources>
