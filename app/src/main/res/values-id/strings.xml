@@ -111,6 +111,8 @@
   <string name="txtStores">penampungan toko</string>
   <string name="txtCountries">negara menjual</string>
   <string name="txtIngredients">daftar kandungan </string>
+  <string name="Donate">Donate</string>
+  <string name="Donation">Click here to donate to Open Food Facts</string>
   <string name="txtSubstances">Zat atau produk yang menyebabkan alergi atau intoleransi penyakit</string>
   <string name="txtAdditives">zat adiktif</string>
   <string name="txtTraces">langkah</string>
@@ -379,4 +381,6 @@
   <string name="translate_help_title">Help translate Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
   <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
+  <string name="advanced_search_title">Advanced Search &amp; Charts</string>
 </resources>
