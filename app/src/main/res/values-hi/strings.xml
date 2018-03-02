@@ -87,8 +87,8 @@
     <item>सामग्री</item>
   </string-array>
   <!-- Content Description -->
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
+  <string name="fastscroller_track">फास्टस्क्रोलर ट्रैक</string>
+  <string name="fastscroller_handle">फास्टस्क्रोलर हैंडल</string>
   <string name="search_button">ढूंढें</string>
   <string name="no_products">उत्पाद नहीं मिला</string>
   <string name="desc_list_item_icon">वस्तु का  आइकन</string>
@@ -111,8 +111,8 @@
   <string name="txtStores">स्टोर:</string>
   <string name="txtCountries">देश जहाँ बेचा गया है</string>
   <string name="txtIngredients">सामग्री की सूची:</string>
-  <string name="Donate">Donate</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donate">दान करें</string>
+  <string name="Donation">ओपन फ़ूड फैक्ट्स को दान करने के लिए यहाँ क्लिक करें</string>
   <string name="txtSubstances">पदार्थ या उत्पादों  के कारण से  एलर्जी या असहिष्णुता  होना:</string>
   <string name="txtAdditives">योगशील:</string>
   <string name="txtTraces">निशानी:</string>
