@@ -87,8 +87,6 @@
     <item>Ingredienser</item>
   </string-array>
   <!-- Content Description -->
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Søk</string>
   <string name="no_products">Produkter ikke funnet</string>
   <string name="desc_list_item_icon">Vareikon</string>

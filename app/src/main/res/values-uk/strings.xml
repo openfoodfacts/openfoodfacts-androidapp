@@ -87,14 +87,13 @@
     <item>Інгредієнти</item>
   </string-array>
   <!-- Content Description -->
-  <string name="fastscroller_track">Швидкісна прокрутка</string>
-  <string name="fastscroller_handle">Швидкісна прокрутка</string>
   <string name="search_button">Пошук</string>
   <string name="no_products">Товари не знайдено</string>
   <string name="desc_list_item_icon">Іконка елемента</string>
   <string name="alert_dialog_warning_title">Увага</string>
   <string name="alert_dialog_warning_msg_user">Ім\'я користувача/Пароль було змінено. Будь ласка, оновіть інформацію.</string>
   <string name="alert_dialog_product_error_msg">Товар не знайдено. Будь ласка, спробуйте ще раз</string>
+
   <string name="toast_retrieving">Loading...</string>
   <string name="txtGenericName">Загальне ім’я:</string>
   <string name="txtBarcode">Код товару:</string>

@@ -87,8 +87,6 @@
     <item>成分</item>
   </string-array>
   <!-- Content Description -->
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">搜索</string>
   <string name="no_products">产品未找到</string>
   <string name="desc_list_item_icon">条目图标</string>
