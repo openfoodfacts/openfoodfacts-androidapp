@@ -367,7 +367,7 @@
   <string name="saving">सेविंग...</string>
   <string name="scan_first_product">पहला उत्पाद स्कैन करें</string>
   <string name="preference_enable_mobile_data_title">मोबाइल डेटा पर अपलोड करें</string>
-  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_on">मोबाइल डेटा और वाई - फाई का उपयोग करके नए उत्पाद अपलोड करें</string>
   <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
   <string name="device_on_mobile_data_warning_title">जानकारी</string>
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
