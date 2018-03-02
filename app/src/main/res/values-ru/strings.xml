@@ -111,7 +111,7 @@
   <string name="txtStores">Магазины:</string>
   <string name="txtCountries">Страны продажи:</string>
   <string name="txtIngredients">Список ингредиентов:</string>
-  <string name="Donate">Donate</string>
+  <string name="Donate">Поддержать</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
   <string name="txtSubstances">Вещества или продукты, вызывающие аллергию или непереносимость:</string>
   <string name="txtAdditives">Добавки:</string>
@@ -368,18 +368,18 @@
   <string name="scan_first_product">Сканировать первый продукт</string>
   <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
   <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
-  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="preference_enable_mobile_data_summary_off">Загружать новые продукты только с помощью Wi-Fi</string>
   <string name="device_on_mobile_data_warning_title">Информация</string>
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
   <string name="device_on_mobile_data_warning_positive">Настройки</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
-  <string name="preference_choose_language_dialog_title">Choose language</string>
-  <string name="FAQ">FAQ</string>
-  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+  <string name="preference_choose_language_dialog_title">Выберите язык</string>
+  <string name="FAQ">ЧаВО</string>
+  <string name="FrequentlyAskedQuestions">Часто задаваемые вопросы</string>
   <string name="lang_translate">local_translate_help</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="translate_help_title">Помогите перевести Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
-  <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="please_check_your_connection">Проверьте подключение к интернету.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
-  <string name="advanced_search_title">Advanced Search &amp; Charts</string>
+  <string name="advanced_search_title">Расширенный поиск и графики</string>
 </resources>
