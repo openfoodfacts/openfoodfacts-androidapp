@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -52,6 +53,8 @@ public class OfflineEditFragment extends BaseFragment {
     ListView listView;
     @BindView(R.id.buttonSendAll)
     Button buttonSend;
+    @BindView(R.id.message_container_card_view)
+    CardView mCardView;
     private List<SaveItem> saveItems;
     private String loginS, passS;
     private SendProductDao mSendProductDao;
@@ -72,20 +75,19 @@ public class OfflineEditFragment extends BaseFragment {
         saveItems = new ArrayList<>();
         loginS = settingsLogin.getString("user", "");
         passS = settingsLogin.getString("pass", "");
-        boolean firstUse = settingsUsage.getBoolean("firstOffline", false);
-        if (!firstUse) {
-            new MaterialDialog.Builder(getContext())
-                    .title(R.string.title_info_dialog)
-                    .content(R.string.text_offline_info_dialog)
-                    .onPositive((dialog, which) -> {
-                        SharedPreferences.Editor editor = settingsUsage.edit();
-                        editor.putBoolean("firstOffline", true);
-                        editor.apply();
-                    })
-                    .positiveText(R.string.txtOk)
-                    .show();
+        boolean isOfflineMsgDismissed = settingsUsage.getBoolean("is_offline_msg_dismissed", false);
+        if (isOfflineMsgDismissed) {
+            mCardView.setVisibility(View.GONE);
         }
         buttonSend.setEnabled(false);
+    }
+
+    @OnClick(R.id.message_dismiss_icon)
+    protected void OnClickMessageDismissalIcon() {
+        mCardView.setVisibility(View.GONE);
+        final SharedPreferences settingsUsage = getContext().getSharedPreferences("usage", 0);
+        settingsUsage.edit().putBoolean("is_offline_msg_dismissed", true).apply();
+
     }
 
     @OnItemClick(R.id.listOfflineSave)
@@ -234,6 +236,7 @@ public class OfflineEditFragment extends BaseFragment {
             if (listSaveProduct.size() == 0) {
                 Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
             } else {
+                mCardView.setVisibility(View.GONE);
                 Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG).show();
             }
         }
@@ -257,7 +260,7 @@ public class OfflineEditFragment extends BaseFragment {
                 }
 
                 Bitmap imgUrl = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
-                saveItems.add(new SaveItem(product.getName(), imageIcon, imgUrl, product.getBarcode()));
+                saveItems.add(new SaveItem(product.getName(), imageIcon, imgUrl, product.getBarcode(),product.getWeight()+" "+product.getWeight_unit(),product.getBrands()));
             }
 
             return ctx[0];

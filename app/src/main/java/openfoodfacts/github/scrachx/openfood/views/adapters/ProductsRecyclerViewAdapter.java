@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
@@ -30,7 +32,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
     private Context context;
     private final List<Product> products;
 
-    public ProductsRecyclerViewAdapter(List<Product> items){
+    public ProductsRecyclerViewAdapter(List<Product> items) {
         this.products = items;
     }
 
@@ -38,7 +40,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
 
-        int layoutResourceId = viewType == VIEW_ITEM ? R.layout.products_list_item: R.layout.progressbar_endless_list;
+        int layoutResourceId = viewType == VIEW_ITEM ? R.layout.products_list_item : R.layout.progressbar_endless_list;
         View v = LayoutInflater.from(parent.getContext()).inflate(layoutResourceId, parent, false);
 
         if (viewType == VIEW_ITEM) {
@@ -80,6 +82,10 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
                 stringBuilder.append(" - ").append(product.getQuantity());
             }
 
+            if (isNotEmpty(product.getNutritionGradeFr())) {
+                productHolder.vProductGrade.setImageDrawable(ContextCompat.getDrawable(context, Utils.getSmallImageGrade(product.getNutritionGradeFr())));
+            }
+
             productHolder.vProductDetails.setText(stringBuilder.toString());
         }
 
@@ -101,14 +107,16 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
     static class ProductViewHolder extends RecyclerView.ViewHolder {
 
         ImageView vProductImage;
+        ImageView vProductGrade;
         TextView vProductName;
         TextView vProductDetails;
 
         ProductViewHolder(View v) {
             super(v);
-            vProductImage = (ImageView) v.findViewById(R.id.imgProduct);
-            vProductName = (TextView) v.findViewById(R.id.nameProduct);
-            vProductDetails = (TextView) v.findViewById(R.id.productDetails);
+            vProductImage = v.findViewById(R.id.imgProduct);
+            vProductGrade = v.findViewById(R.id.imgGrade);
+            vProductName = v.findViewById(R.id.nameProduct);
+            vProductDetails = v.findViewById(R.id.productDetails);
         }
     }
 
@@ -117,7 +125,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
 
         public ProgressViewHolder(View v) {
             super(v);
-            progressBar = (ProgressBar) v.findViewById(R.id.progressBar1);
+            progressBar = v.findViewById(R.id.progressBar1);
         }
     }
 

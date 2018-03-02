@@ -18,7 +18,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -184,6 +183,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(2),
                         new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(3).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(4).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.advanced_search_title).withIcon(GoogleMaterial.Icon.gmd_insert_chart).withIdentifier(12).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(5).withSelectable(false),
                         new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
                         new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(CONTRIBUTOR),
@@ -258,6 +258,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                 }
                             }
                             break;
+
+                        case 12:
+
+                            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                            CustomTabsIntent customTabsIntent = builder.build();
+                            CustomTabActivityHelper.openCustomTab(this,customTabsIntent,Uri.parse(getString(R.string.advanced_search_url)),new WebViewFallback());
+                            break;
+
                         case CONTRIBUTOR:
                             myContributions();
                             break;
@@ -431,7 +439,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * Remove user login info
      */
     private void logout() {
-        getSharedPreferences("login", 0).edit().clear().commit();
+        getSharedPreferences("login", MODE_PRIVATE).edit().clear().commit();
         headerResult.removeProfileByIdentifier(PROFILE_SETTING);
         headerResult.updateProfile(getUserProfile());
         result.addItemAtPosition(getLoginDrawerItem(), result.getPosition(CONTRIBUTOR));
@@ -626,12 +634,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     /**
      * This moves the main activity to the preferences fragment.
      */
-    public void moveToPreferences(){
+    public void moveToPreferences() {
         result.setSelection(8);
         Fragment fragment = new PreferencesFragment();
         getSupportActionBar().setTitle(R.string.action_preferences);
 
-        if (fragment != null){
+        if (fragment != null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
         } else {
             Log.e(getClass().getSimpleName(), "Error in creating fragment");

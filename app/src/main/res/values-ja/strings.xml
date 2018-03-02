@@ -87,6 +87,8 @@
     <item>原材料</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">検索</string>
   <string name="no_products">製品が見つかりません</string>
   <string name="desc_list_item_icon">アイテムアイコン</string>
