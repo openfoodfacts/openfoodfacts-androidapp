@@ -122,7 +122,8 @@ public class ProductActivity extends BaseActivity {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+//                NavUtils.navigateUpFromSameTask(this);
+                finish();
                 return true;
 
             case R.id.menu_item_share:
