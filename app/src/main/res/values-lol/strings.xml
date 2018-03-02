@@ -111,6 +111,8 @@
   <string name="txtStores">crwdns35063:0crwdne35063:0</string>
   <string name="txtCountries">crwdns35064:0crwdne35064:0</string>
   <string name="txtIngredients">crwdns35065:0crwdne35065:0</string>
+  <string name="Donate">crwdns37211:0crwdne37211:0</string>
+  <string name="Donation">crwdns37212:0crwdne37212:0</string>
   <string name="txtSubstances">crwdns35066:0crwdne35066:0</string>
   <string name="txtAdditives">crwdns35067:0crwdne35067:0</string>
   <string name="txtTraces">crwdns35068:0crwdne35068:0</string>
@@ -378,5 +380,6 @@
   <string name="translate_help_title">crwdns37199:0crwdne37199:0</string>
   <string name="translate_help_summary">crwdns37200:0crwdne37200:0</string>
   <string name="please_check_your_connection">crwdns37205:0crwdne37205:0</string>
+  <string name="donation_url">crwdns37213:0crwdne37213:0</string>
   <string name="advanced_search_title">crwdns37210:0crwdne37210:0</string>
 </resources>
