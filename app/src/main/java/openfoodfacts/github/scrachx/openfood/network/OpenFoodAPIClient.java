@@ -293,11 +293,11 @@ public class OpenFoodAPIClient {
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
                         .onPositive((dialog, which) -> {
-                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                intent.putExtra("barcode", barcode);
-                                activity.startActivity(intent);
-                                activity.finish();
-                            }
+                                    Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                                    intent.putExtra("barcode", barcode);
+                                    activity.startActivity(intent);
+                                    activity.finish();
+                                }
                         )
                         .onNegative((dialog, which) -> activity.onBackPressed())
                         .show();
@@ -316,7 +316,7 @@ public class OpenFoodAPIClient {
                 }
 
                 Search s = response.body();
-                if(Integer.valueOf(s.getCount()) == 0){
+                if (Integer.valueOf(s.getCount()) == 0) {
                     productsCallback.onProductsResponse(false, null, -2);
                 } else {
                     productsCallback.onProductsResponse(true, s.getProducts(), Integer.parseInt(s.getCount()));
@@ -496,7 +496,7 @@ public class OpenFoodAPIClient {
                 hp = historyProducts.get(0);
                 hp.setLastSeen(new Date());
             } else {
-                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageFrontUrl(), product.getCode());
+                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(), product.getCode(), product.getQuantity(), product.getNutritionGradeFr());
             }
             mHistoryProductDao.insertOrReplace(hp);
 

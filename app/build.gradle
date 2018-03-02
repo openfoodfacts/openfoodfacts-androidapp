@@ -96,7 +96,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 4
+    schemaVersion 5
 }
 
 dependencies {
