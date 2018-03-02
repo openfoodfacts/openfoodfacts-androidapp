@@ -87,6 +87,8 @@
     <item>Zutaten</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Suchen</string>
   <string name="no_products">Keine Produkte gefunden</string>
   <string name="desc_list_item_icon">Produktfoto</string>
