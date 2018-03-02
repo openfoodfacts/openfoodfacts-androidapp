@@ -3,10 +3,10 @@
 <resources>
   <string name="action_settings">Налаштування</string>
   <string name="action_about">Про додаток</string>
-  <string name="action_discover">Discover</string>
-  <string name="contribute">How to contribute</string>
-  <string name="action_find">Find</string>
-  <string name="text_barcode">Type the barcode :</string>
+  <string name="action_discover">Дізнатись більше</string>
+  <string name="contribute">Як внести свій вклад</string>
+  <string name="action_find">Знайти</string>
+  <string name="text_barcode">Введіть код продукту:</string>
   <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
   <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <!-- Nav Drawer Product Menu Items -->
