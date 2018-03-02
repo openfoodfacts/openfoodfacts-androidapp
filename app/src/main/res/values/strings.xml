@@ -414,6 +414,6 @@
     <string name="please_check_your_connection">Please check your connection.</string>
     <string name="faq_url" translatable="false">https://world.openfoodfacts.org/faq</string>
     <string name="advanced_search_url" translatable="false">https://world.openfoodfacts.org/cgi/search.pl</string>
-    <string name="advance_search_title">Advanced Search &amp; Charts</string>
+    <string name="advanced_search_title">Advanced Search &amp; Charts</string>
 
 </resources>
