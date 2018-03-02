@@ -87,6 +87,8 @@
     <item>Složení</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Vyhledat</string>
   <string name="no_products">Produkty nebyly nalezeny</string>
   <string name="desc_list_item_icon">Ikona položky</string>
