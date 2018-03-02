@@ -8,7 +8,9 @@
   <string name="action_find">חיפוש</string>
   <string name="text_barcode">נא להזין את הברקוד:</string>
   <string name="message_in_activity_save_product_offline">נדרשת לפחות תמונה אחת לטובת שליחת מוצר חדש.</string>
+
   <string name="product_incomplete_message">המפרט של מוצר זה לוקה בחסר. כתוצאה מכך, לא הצלחנו לבדוק מה הם מעוררי הרגישות.</string>
+
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>תקציר</item>
@@ -89,6 +91,7 @@
   <!-- Content Description -->
   <string name="fastscroller_track">רצועה בגלילה מהירה</string>
   <string name="fastscroller_handle">ידית גרירה מהירה</string>
+
   <string name="search_button">חיפוש</string>
   <string name="no_products">המוצרים לא נמצאו</string>
   <string name="desc_list_item_icon">סמל הפריט</string>

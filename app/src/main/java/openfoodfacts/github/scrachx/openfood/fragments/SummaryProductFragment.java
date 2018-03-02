@@ -124,6 +124,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Uri nutritionScoreUri;
     private Uri embCodeUri;
     private TagDao mTagDao;
+    private SummaryProductFragment mFragment;
     private AllergenDao mAllergenDao;
 
     @Override
@@ -137,7 +138,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
-
+        mFragment=this;
         return createView(inflater, container, R.layout.fragment_summary_product);
     }
 
@@ -544,7 +545,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
                 CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .start(getActivity());
+                        .start(getContext(),mFragment);
             }
 
             @Override

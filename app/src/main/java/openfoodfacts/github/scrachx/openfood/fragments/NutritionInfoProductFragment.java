@@ -77,11 +77,12 @@ public class NutritionInfoProductFragment extends BaseFragment {
     private String mUrlImage;
     private String barcode;
     private OpenFoodAPIClient api;
+    private NutritionInfoProductFragment mFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
-
+        mFragment = this;
         return createView(inflater, container, R.layout.fragment_nutrition_info_product);
     }
 
@@ -284,7 +285,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
                 CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .start(getActivity());
+                        .start(getContext(), mFragment);
             }
 
             @Override
