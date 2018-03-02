@@ -4,6 +4,15 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+
+    <!-- fast scroller -->
+    <dimen name="fastscroller_handle_corner">20dp</dimen>
+    <dimen name="fastscroller_handle_size">50dp</dimen>
+    <dimen name="fastscroller_reack_corner">3dp</dimen>
+    <dimen name="fastscroller_track_height">30dp</dimen>
+    <dimen name="fastscroller_track_width">6dp</dimen>
+    <dimen name="fastscroller_track_padding">2dp</dimen>
+
     <!-- font sizes -->
     <dimen name="font_larger">22sp</dimen>
     <dimen name="font_large">18sp</dimen>

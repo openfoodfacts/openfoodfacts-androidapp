@@ -18,7 +18,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -431,7 +430,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * Remove user login info
      */
     private void logout() {
-        getSharedPreferences("login", 0).edit().clear().commit();
+        getSharedPreferences("login", MODE_PRIVATE).edit().clear().commit();
         headerResult.removeProfileByIdentifier(PROFILE_SETTING);
         headerResult.updateProfile(getUserProfile());
         result.addItemAtPosition(getLoginDrawerItem(), result.getPosition(CONTRIBUTOR));
