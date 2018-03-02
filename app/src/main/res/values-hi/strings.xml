@@ -87,6 +87,8 @@
     <item>सामग्री</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">ढूंढें</string>
   <string name="no_products">उत्पाद नहीं मिला</string>
   <string name="desc_list_item_icon">वस्तु का  आइकन</string>
