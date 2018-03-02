@@ -87,8 +87,6 @@
     <item>crwdns35045:0crwdne35045:0</item>
   </string-array>
   <!-- Content Description -->
-  <string name="fastscroller_track">crwdns37207:0crwdne37207:0</string>
-  <string name="fastscroller_handle">crwdns37208:0crwdne37208:0</string>
   <string name="search_button">crwdns35046:0crwdne35046:0</string>
   <string name="no_products">crwdns35047:0crwdne35047:0</string>
   <string name="desc_list_item_icon">crwdns35048:0crwdne35048:0</string>

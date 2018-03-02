@@ -87,8 +87,6 @@
     <item>Mga sangkap</item>
   </string-array>
   <!-- Content Description -->
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Hanapin</string>
   <string name="no_products">Hindi nakita ang mga produkto</string>
   <string name="desc_list_item_icon">Icon ng mga item</string>
