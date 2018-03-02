@@ -94,7 +94,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     @OnClick(R.id.buttonSave)
     protected void attemptLogin() {
         String login = loginView.getText().toString().trim();
-        String password = passwordView.getText().toString().trim();
+        String password = passwordView.getText().toString();
         if (TextUtils.isEmpty(login)) {
             loginView.setError(getString(R.string.error_field_required));
             loginView.requestFocus();
