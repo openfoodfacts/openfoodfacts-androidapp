@@ -111,6 +111,8 @@
   <string name="txtStores">店舗 :</string>
   <string name="txtCountries">販売国 :</string>
   <string name="txtIngredients">原材料一覧 :</string>
+  <string name="Donate">Donate</string>
+  <string name="Donation">Click here to donate to Open Food Facts</string>
   <string name="txtSubstances">アレルギーまたは不耐性の原因となる物質または製品 :</string>
   <string name="txtAdditives">添加物 :</string>
   <string name="txtTraces">追跡 :</string>
@@ -378,4 +380,6 @@
   <string name="translate_help_title">Open Food Factsの翻訳を手伝う</string>
   <string name="translate_help_summary">Open Food Factsデータベースをあなたの言語に対応させます - 技術的な知識は必要ありません</string>
   <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
+  <string name="advanced_search_title">Advanced Search &amp; Charts</string>
 </resources>
