@@ -87,8 +87,6 @@
     <item>مواد تشکیل دهنده</item>
   </string-array>
   <!-- Content Description -->
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">جستجو</string>
   <string name="no_products">محصول مورد نظر یافت نشد</string>
   <string name="desc_list_item_icon">آیکون مورد</string>

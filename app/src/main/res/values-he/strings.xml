@@ -87,8 +87,6 @@
     <item>רכיבים</item>
   </string-array>
   <!-- Content Description -->
-  <string name="fastscroller_track">רצועה בגלילה מהירה</string>
-  <string name="fastscroller_handle">ידית גרירה מהירה</string>
   <string name="search_button">חיפוש</string>
   <string name="no_products">המוצרים לא נמצאו</string>
   <string name="desc_list_item_icon">סמל הפריט</string>
