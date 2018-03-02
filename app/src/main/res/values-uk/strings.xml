@@ -13,8 +13,8 @@
   <string-array name="nav_drawer_items_product">
     <item>Загальна інформація</item>
     <item>Інгредієнти</item>
-    <item>Nutrition</item>
-    <item>Nutrition Table</item>
+    <item>Склад</item>
+    <item>Детальний склад</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
@@ -83,7 +83,7 @@
   </string-array>
   <string-array name="images_array">
     <item>Default</item>
-    <item>Nutrition</item>
+    <item>Склад</item>
     <item>Інгредієнти</item>
   </string-array>
   <!-- Content Description -->
