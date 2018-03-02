@@ -8,7 +8,7 @@
   <string name="action_find">ढूंढें</string>
   <string name="text_barcode">बारकोड</string>
   <string name="message_in_activity_save_product_offline">एक नया उत्पाद भेजने के लिए केवल एक फोटो अनिवार्य है</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+  <string name="product_incomplete_message">यह उत्पाद पूर्ण नहीं है। नतीजतन, हम एलर्जी की जांच नहीं कर सके</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>संग्रह</item>
@@ -106,10 +106,10 @@
   <string name="txtManufacturing">विनिर्माण या प्रसंस्करण की  जगह</string>
   <string name="txtIngredientsOrigins">सामग्री की उत्पत्ति:</string>
   <string name="txtCity">शहर, राज्य और देश जहाँ इसे खरीदा गया:</string>
-  <string name="txtEMB">EMB Code:</string>
+  <string name="txtEMB">ईएमबी कोड:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">स्टोर:</string>
-  <string name="txtCountries">देश जहाँ बेचा गया है</string>
+  <string name="txtCountries">जिन देशों में बिकता है</string>
   <string name="txtIngredients">सामग्री की सूची:</string>
   <string name="Donate">दान करें</string>
   <string name="Donation">ओपन फ़ूड फैक्ट्स को दान करने के लिए यहाँ क्लिक करें</string>
@@ -263,7 +263,7 @@
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
   <string name="action_search">ढूंढें</string>
-  <string name="search_hint">Search a product</string>
+  <string name="search_hint">उत्पाद खोजें</string>
   <string name="number_of_results">Number of results :</string>
   <string name="txt_no_results">कोई परिणाम नहीं मिला</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
@@ -376,9 +376,9 @@
   <string name="preference_choose_language_dialog_title">भाषा चुनें</string>
   <string name="FAQ">ऍफ़ ऐ क्यू</string>
   <string name="FrequentlyAskedQuestions">अक्सर पूछे जाने वाले सवाल</string>
-  <string name="lang_translate">local_translate_help</string>
+  <string name="lang_translate">लोकल_ट्रांसलेट_हेल्प</string>
   <string name="translate_help_title">ओपन फ़ूड फैक्ट्स का अनुवाद करने में मदद करें</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="translate_help_summary">ओपन फ़ूड फैक्ट्स डेटाबेस को अपनी भाषा में लाएं - कोई तकनीकी की आवश्यकता नहीं है</string>
   <string name="please_check_your_connection">कृपया अपना कनेक्शन जाँचें</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">उन्नत खोज और चार्ट्स</string>
