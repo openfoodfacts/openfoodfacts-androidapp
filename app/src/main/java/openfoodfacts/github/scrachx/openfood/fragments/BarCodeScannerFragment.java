@@ -220,11 +220,16 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     }
 
     public void setupFormats() {
-        mScannerView.setFormats(Arrays.asList(BarcodeFormat.UPC_A, BarcodeFormat.UPC_E,
+        mScannerView.setFormats(Arrays.asList(
+                BarcodeFormat.UPC_A, BarcodeFormat.UPC_E,
                 BarcodeFormat.EAN_13, BarcodeFormat.EAN_8,
                 BarcodeFormat.RSS_14, BarcodeFormat.CODE_39,
                 BarcodeFormat.CODE_93, BarcodeFormat.CODE_128,
-                BarcodeFormat.ITF));
+                BarcodeFormat.AZTEC,BarcodeFormat.PDF_417,
+                BarcodeFormat.DATA_MATRIX,BarcodeFormat.QR_CODE,
+                BarcodeFormat.ITF,BarcodeFormat.UPC_EAN_EXTENSION,
+                BarcodeFormat.MAXICODE,BarcodeFormat.CODABAR,
+                BarcodeFormat.RSS_EXPANDED, BarcodeFormat.ITF));
     }
 
     @Override
