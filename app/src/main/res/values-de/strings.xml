@@ -8,7 +8,7 @@
   <string name="action_find">Suchen</string>
   <string name="text_barcode">Strichcode eingeben:</string>
   <string name="message_in_activity_save_product_offline">Fürs Zusenden eines neuen Produkts wird mindestens ein Foto benötigt.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+  <string name="product_incomplete_message">Dieses Produkt ist noch nicht vollständig. Deshalb konnten wir keine Allergenprüfung durchführen.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Zusammenfassung</item>
@@ -109,7 +109,7 @@
   <string name="txtStores">Läden:</string>
   <string name="txtCountries">Vertriebsländer:</string>
   <string name="txtIngredients">Zutatenliste:</string>
-  <string name="Donate">Donate</string>
+  <string name="Donate">Spenden</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
   <string name="txtSubstances">Inhaltsstoffe oder Produkte, die zu Allergien oder Überempfindlichkeiten führen:</string>
   <string name="txtAdditives">Zusatzstoffe:</string>
@@ -191,7 +191,7 @@
   <string name="alert_drawer">Allergen-Warnung</string>
   <string name="warning_allergens">Enthält Allergene</string>
   <string name="title_dialog_alert">Alarm hinzufügen</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
   <string name="from_gallery">Aus Galerie</string>
   <string name="product_sent">Produkt wurde erfolgreich gesendet</string>
   <string name="action_edit_product">Produkt bearbeiten</string>
@@ -377,7 +377,7 @@
   <string name="lang_translate">local_translate_help</string>
   <string name="translate_help_title">Help translate Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
-  <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="please_check_your_connection">Bitte überprüfen Sie Ihre Internetverbindung.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
-  <string name="advanced_search_title">Advanced Search &amp; Charts</string>
+  <string name="advanced_search_title">Erweiterte Suche &amp; Diagramme</string>
 </resources>
