@@ -62,7 +62,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         holder.txtProductDetails.setText(stringBuilder.toString());
         holder.imgNutritionGrade.setImageDrawable(ContextCompat.getDrawable(mActivity, Utils.getSmallImageGrade(item.getNutritionGrade())));
         if (item.getUrl() == null) {
-            holder.historyImageProgressbar.setVisibility(View.INVISIBLE);
+            holder.historyImageProgressbar.setVisibility(View.GONE);
         }
         Picasso.with(mActivity)
                 .load(item.getUrl())
@@ -73,12 +73,12 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
                 .into(holder.imgProduct, new Callback() {
                     @Override
                     public void onSuccess() {
-                        holder.historyImageProgressbar.setVisibility(View.INVISIBLE);
+                        holder.historyImageProgressbar.setVisibility(View.GONE);
                     }
 
                     @Override
                     public void onError() {
-                        holder.historyImageProgressbar.setVisibility(View.INVISIBLE);
+                        holder.historyImageProgressbar.setVisibility(View.GONE);
                     }
                 });
 

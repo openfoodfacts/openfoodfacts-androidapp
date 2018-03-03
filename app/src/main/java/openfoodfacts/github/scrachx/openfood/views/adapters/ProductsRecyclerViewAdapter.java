@@ -64,7 +64,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
             ProductViewHolder productHolder = (ProductViewHolder) holder;
             productHolder.vProductImageProgressbar.setVisibility(View.VISIBLE);
             if (products.get(position).getImageSmallUrl() == null)
-                productHolder.vProductImageProgressbar.setVisibility(View.INVISIBLE);
+                productHolder.vProductImageProgressbar.setVisibility(View.GONE);
             Picasso.with(context)
                     .load(products.get(position).getImageSmallUrl())
                     .placeholder(R.drawable.placeholder_thumb)
@@ -74,12 +74,12 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
                     .into(productHolder.vProductImage, new Callback() {
                         @Override
                         public void onSuccess() {
-                            productHolder.vProductImageProgressbar.setVisibility(View.INVISIBLE);
+                            productHolder.vProductImageProgressbar.setVisibility(View.GONE);
                         }
 
                         @Override
                         public void onError() {
-                            productHolder.vProductImageProgressbar.setVisibility(View.INVISIBLE);
+                            productHolder.vProductImageProgressbar.setVisibility(View.GONE);
                         }
                     });
 

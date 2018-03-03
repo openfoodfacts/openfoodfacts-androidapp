@@ -230,7 +230,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             if (listHistoryProducts.size() == 0) {
                 emptyHistory = true;
-                historyProgressbar.setVisibility(View.INVISIBLE);
+                historyProgressbar.setVisibility(View.GONE);
                 infoView.setVisibility(View.VISIBLE);
                 scanFirst.setVisibility(View.VISIBLE);
                 invalidateOptionsMenu();
@@ -261,7 +261,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                     .website_product), activity);
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
-
+            historyProgressbar.setVisibility(View.GONE);
 
             SwipeController swipeController = new SwipeController(ctx, HistoryScanActivity.this);
             ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
@@ -272,7 +272,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                     swipeController.onDraw(c);
                 }
             });
-            historyProgressbar.setVisibility(View.INVISIBLE);
         }
     }
 
