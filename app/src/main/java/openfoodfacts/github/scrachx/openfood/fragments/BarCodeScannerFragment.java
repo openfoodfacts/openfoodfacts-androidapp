@@ -79,6 +79,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
+        setHasOptionsMenu(true);
 
     }
 
