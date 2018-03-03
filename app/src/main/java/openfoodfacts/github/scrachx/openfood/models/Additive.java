@@ -11,6 +11,7 @@ import org.greenrobot.greendao.annotation.Index;
 import java.util.Locale;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+
 @JsonPropertyOrder({
         "code",
         "name",
