@@ -53,6 +53,10 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 db.execSQL("ALTER TABLE history_product ADD COLUMN 'quantity' TEXT NOT NULL DEFAULT '';");
                 db.execSQL("ALTER TABLE history_product ADD COLUMN 'nutrition_grade' TEXT NOT NULL DEFAULT '';");
             }
+            case 6: {
+                LabelDao.createTable(db, true);
+                LabelNameDao.createTable(db, true);
+            }
         }
     }
 }
