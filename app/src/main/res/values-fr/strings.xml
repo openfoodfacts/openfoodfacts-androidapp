@@ -380,8 +380,8 @@
   <string name="please_check_your_connection">Veuillez vérifier votre connexion Internet.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget</string>
   <string name="advanced_search_title">Recherche avancée &amp; Graphiques</string>
-  <string name="preference_header_general">General</string>
-  <string name="preference_header_network">Network</string>
-  <string name="preference_header_contributing">Contributing</string>
-  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
+  <string name="preference_header_general">Général</string>
+  <string name="preference_header_network">Réseau</string>
+  <string name="preference_header_contributing">Contribuer</string>
+  <string name="not_support_books">Les livres ne sont actuellement pas pris en charge par Open Food Facts</string>
 </resources>
