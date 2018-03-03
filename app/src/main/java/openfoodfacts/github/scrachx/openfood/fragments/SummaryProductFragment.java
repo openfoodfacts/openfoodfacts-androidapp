@@ -13,8 +13,8 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
-import android.text.SpannableStringBuilder;
 import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -36,6 +36,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -43,6 +44,7 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
@@ -53,6 +55,8 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -126,6 +130,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private TagDao mTagDao;
     private SummaryProductFragment mFragment;
     private AllergenDao mAllergenDao;
+    private IProductRepository productRepository;
 
     @Override
     public void onAttach(Context context) {
@@ -133,12 +138,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+        productRepository = ProductRepository.getInstance();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
-        mFragment=this;
+        mFragment = this;
         return createView(inflater, container, R.layout.fragment_summary_product);
     }
 
@@ -260,21 +266,36 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             categoryProduct.setVisibility(View.GONE);
         }
 
-        String labels = product.getLabels();
-        if (isNotBlank(labels)) {
+        List<String> labelsTags = product.getLabelsTags();
+        if (!labelsTags.isEmpty()) {
             labelProduct.append(bold(getString(R.string.txtLabels)));
             labelProduct.append(" ");
-            String[] label = labels.split(",");
-            int labelCount = label.length;
-            if (labelCount > 1) {
-                for (int i = 0; i < (labelCount - 1); i++) {
-                    labelProduct.append(label[i].trim());
-                    labelProduct.append(", ");
+
+            String labelTag;
+            String languageCode = Locale.getDefault().getLanguage();
+            List<String> labels = new ArrayList<>();
+            for (int i = 0; i < labelsTags.size(); i++) {
+                labelTag = labelsTags.get(i);
+                LabelName label = productRepository.getLabelByTagAndLanguageCode(labelTag, languageCode);
+                if (label == null) {
+                    label = productRepository.getLabelByTagAndDefaultLanguageCode(labelTag);
+                    if (label == null) {
+                        if (product.getLabelsHierarchy().size() > i) {
+                            label = new LabelName(product.getLabelsHierarchy().get(i).replaceAll("(en:|fr:)", ""));
+                        }
+                    }
                 }
-                labelProduct.append(label[labelCount - 1].trim());
-            } else {
-                labelProduct.append(label[0].trim());
+
+                if (label != null) {
+                    labels.add(label.getName());
+                }
             }
+
+            for (int i = 0; i < labels.size() - 1; i++) {
+                labelProduct.append(labels.get(i) + ", ");
+            }
+
+            labelProduct.append(labels.get(labels.size() - 1));
         } else {
             labelProduct.setVisibility(View.GONE);
         }
@@ -545,7 +566,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
                 CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .start(getContext(),mFragment);
+                        .start(getContext(), mFragment);
             }
 
             @Override
