@@ -419,9 +419,9 @@
     <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
     <string name="advanced_search_url" translatable="false">https://world.openfoodfacts.org/cgi/search.pl</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
-    
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_about" translatable="false">@string/action_about</string>
     <string name="preference_header_contributing">Contributing</string>
+    <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
 </resources>
