@@ -6,7 +6,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,10 +26,13 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 
@@ -135,11 +137,17 @@ public class AlertUserFragment extends BaseFragment {
                         .negativeText(R.string.txtNo)
                         .onPositive((dialog, which) -> {
                             final SharedPreferences.Editor editor = mSettings.edit();
-                            api.getAllergens(value -> {
-                                editor.putBoolean("errorAllergens", !value).apply();
-                                lt.success();
-                                dialog.hide();
-                            });
+                            ProductRepository.getInstance().getAllergens(true)
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .toObservable()
+                                    .subscribe(allergens -> {
+                                        editor.putBoolean("errorAllergens", false).apply();
+                                        lt.success();
+                                    }, e -> {
+                                        editor.putBoolean("errorAllergens", true).apply();
+                                        lt.error();
+                                    }, dialog::hide);
                         })
                         .show();
             } else {

@@ -4,14 +4,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import java.util.Map;
 
-import io.reactivex.Observable;
+import io.reactivex.Single;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import openfoodfacts.github.scrachx.openfood.models.AllergenRestResponse;
-import openfoodfacts.github.scrachx.openfood.models.PackagerCodes;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -31,7 +30,7 @@ public interface OpenFoodAPIService {
 
     String PRODUCT_API_COMMENT = "new android app";
 
-    @GET("api/v0/product/{barcode}.json?fields=image_small_url,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,brands,packaging,labels,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags")
+    @GET("api/v0/product/{barcode}.json?fields=image_small_url,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags")
     Call<State> getFullProductByBarcode(@Path("barcode") String barcode);
 
     @GET("api/v0/product/{barcode}.json?fields=product_name,brands,quantity,image_url,nutrition_grade_fr,code")
@@ -64,9 +63,6 @@ public interface OpenFoodAPIService {
     @Multipart
     @POST("/cgi/product_image_upload.pl")
     Call<JsonNode> saveImage(@PartMap Map<String, RequestBody> fields);
-
-    @GET("allergens.json")
-    Call<AllergenRestResponse> getAllergens();
 
     @GET("language/{language}.json")
     Call<Search> byLanguage(@Path("language") String language);
@@ -135,7 +131,7 @@ public interface OpenFoodAPIService {
     Call<Search> byCode(@Path("Code") String Code);
 
     @GET("packager-codes.json")
-    Observable<PackagerCodes> getPackagerCodes();
+    Single<TagsWrapper> getTags();
 
     /**
      * Open Beauty Facts experimental and specific APIs
