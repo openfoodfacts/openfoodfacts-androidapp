@@ -79,7 +79,10 @@ public class Product implements Serializable {
     private String countries;
     private String brands;
     private String packaging;
-    private String labels;
+    @JsonProperty("labels_hierarchy")
+    private List<String> labelsHierarchy;
+    @JsonProperty("labels_tags")
+    private List<String> labelsTags;
     @JsonProperty("cities_tags")
     private List<Object> citiesTags = new ArrayList<>();
     private String quantity;
@@ -344,12 +347,18 @@ public class Product implements Serializable {
 
 
     /**
-     * @return The labels
+     * @return The labels tags
      */
-    public String getLabels() {
-        return labels;
+    public List<String> getLabelsTags() {
+        return labelsTags;
     }
 
+    /**
+     * @return The labels hierarchy
+     */
+    public List<String> getLabelsHierarchy() {
+        return labelsHierarchy;
+    }
 
     /**
      * @return The citiesTags

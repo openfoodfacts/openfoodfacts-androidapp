@@ -1,13 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.gson.annotations.SerializedName;
 
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
-import org.greenrobot.greendao.annotation.Generated;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -25,7 +25,7 @@ public class Allergen {
     private String url;
     private String name;
     private Integer products;
-    @JsonProperty("id")
+    @SerializedName("id")
     @Id
     private String idAllergen;
 
@@ -60,54 +60,42 @@ public class Allergen {
     }
 
     /**
-     *
-     * @return
-     * The url
+     * @return The url
      */
     public String getUrl() {
         return url;
     }
 
     /**
-     *
-     * @param url
-     * The url
+     * @param url The url
      */
     public void setUrl(String url) {
         this.url = url;
     }
 
     /**
-     *
-     * @return
-     * The name
+     * @return The name
      */
     public String getName() {
         return name;
     }
 
     /**
-     *
-     * @param name
-     * The name
+     * @param name The name
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     *
-     * @return
-     * The products
+     * @return The products
      */
     public Integer getProducts() {
         return products;
     }
 
     /**
-     *
-     * @param products
-     * The products
+     * @param products The products
      */
     public void setProducts(Integer products) {
         this.products = products;
@@ -127,5 +115,5 @@ public class Allergen {
     public String getEnable() {
         return this.enable;
     }
-    
+
 }
