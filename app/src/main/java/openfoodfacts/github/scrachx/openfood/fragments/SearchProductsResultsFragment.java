@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -55,14 +56,14 @@ public class SearchProductsResultsFragment extends BaseFragment {
     private int mCountProducts = 0;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle state) {
         api = new OpenFoodAPIClient(getActivity());
 
         return createView(inflater, container, R.layout.fragment_search_products_results);
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle state) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle state) {
         super.onViewCreated(view, state);
 
         mProducts = new ArrayList<>();
@@ -94,22 +95,27 @@ public class SearchProductsResultsFragment extends BaseFragment {
 
         // Click listener on a product
         productsRecyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(view.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
-                        if (p != null) {
-                            String barcode = p.getCode();
+                new RecyclerItemClickListener(view.getContext(), (view12, position) -> {
+                    Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
+                    if (p != null) {
+                        String barcode = p.getCode();
+                        if (Utils.isNetworkConnected(getActivity())) {
                             api.getProduct(barcode, getActivity());
                             try {
                                 View view1 = getActivity().getCurrentFocus();
-                                if (view != null) {
+                                if (view12 != null) {
                                     InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                                     imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
                                 }
                             } catch (NullPointerException e) {
                                 e.printStackTrace();
                             }
+                        }
+                        else {
+                            offlineCloudLayout.setVisibility(View.VISIBLE);
+                            swipeRefreshLayout.setVisibility(View.GONE);
+                            noResultsLayout.setVisibility(View.GONE);
+                            countProductsView.setVisibility(View.GONE);
                         }
                     }
                 })
@@ -120,54 +126,48 @@ public class SearchProductsResultsFragment extends BaseFragment {
         progressBar = view.findViewById(R.id.progressBar);
         showProgressBar();
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
+        swipeRefreshLayout.setOnRefreshListener(() -> {
 
-                mProducts.clear();
-                countProductsView.setText(getResources().getString(R.string.number_of_results));
-                searchProduct(view);
+            mProducts.clear();
+            countProductsView.setText(getResources().getString(R.string.number_of_results));
+            searchProduct(view);
 
-                if (swipeRefreshLayout.isRefreshing()) {
-                    swipeRefreshLayout.setRefreshing(false);
-                }
+            if (swipeRefreshLayout.isRefreshing()) {
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }
 
-    @OnClick(R.id.buttonTryAgain)
+    @OnClick(R.id.buttonToRefresh)
     public void searchProduct(View view) {
         api.searchProduct(getArguments().getString("query"), 1, getActivity(),
-                new OpenFoodAPIClient.OnProductsCallback() {
-
-                    @Override
-                    public void onProductsResponse(boolean isResponseOk, List<Product> products, int countProducts) {
-                        hideProgressBar();
-                        if (isResponseOk) {
-                            countProductsView.append(" " + String.valueOf(countProducts));
-                            mCountProducts = countProducts;
-                            mProducts.addAll(products);
-                            if (mProducts.size() < mCountProducts) {
-                                mProducts.add(null);
-                            }
-                            ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
-                            productsRecyclerView.setAdapter(adapter);
-                            countProductsView.setVisibility(View.VISIBLE);
+                (isResponseOk, products, countProducts) -> {
+                    hideProgressBar();
+                    if (isResponseOk) {
+                        countProductsView.append(" " + String.valueOf(countProducts));
+                        mCountProducts = countProducts;
+                        mProducts.addAll(products);
+                        if (mProducts.size() < mCountProducts) {
+                            mProducts.add(null);
+                        }
+                        ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
+                        productsRecyclerView.setAdapter(adapter);
+                        swipeRefreshLayout.setVisibility(View.VISIBLE);
+                        countProductsView.setVisibility(View.VISIBLE);
+                        offlineCloudLayout.setVisibility(View.GONE);
+                        noResultsLayout.setVisibility(View.GONE);
+                        productsRecyclerView.setVisibility(View.VISIBLE);
+                    } else {
+                        if (countProducts == -2) {
+                            productsRecyclerView.setVisibility(View.GONE);
+                            countProductsView.setVisibility(View.INVISIBLE);
                             offlineCloudLayout.setVisibility(View.INVISIBLE);
-                            noResultsLayout.setVisibility(View.INVISIBLE);
-                            productsRecyclerView.setVisibility(View.VISIBLE);
+                            noResultsLayout.setVisibility(View.VISIBLE);
                         } else {
-                            if (countProducts == -2) {
-                                productsRecyclerView.setVisibility(View.GONE);
-                                countProductsView.setVisibility(View.INVISIBLE);
-                                offlineCloudLayout.setVisibility(View.INVISIBLE);
-                                noResultsLayout.setVisibility(View.VISIBLE);
-                            } else {
-                                countProductsView.setVisibility(View.INVISIBLE);
-                                noResultsLayout.setVisibility(View.INVISIBLE);
-                                offlineCloudLayout.setVisibility(View.VISIBLE);
-                                productsRecyclerView.setVisibility(View.GONE);
-                            }
+                            countProductsView.setVisibility(View.INVISIBLE);
+                            noResultsLayout.setVisibility(View.INVISIBLE);
+                            offlineCloudLayout.setVisibility(View.VISIBLE);
+                            productsRecyclerView.setVisibility(View.GONE);
                         }
                     }
                 }
@@ -213,21 +213,18 @@ public class SearchProductsResultsFragment extends BaseFragment {
     // Append the next page of data into the adapter
     public void loadNextDataFromApi(int offset) {
         api.searchProduct(getArguments().getString("query"), offset, getActivity(),
-                new OpenFoodAPIClient.OnProductsCallback() {
-                    @Override
-                    public void onProductsResponse(boolean isResponseOk, List<Product> products, int countProducts) {
-                        final int posStart = mProducts.size();
+                (isResponseOk, products, countProducts) -> {
+                    final int posStart = mProducts.size();
 
-                        if (isResponseOk && mProducts.size() - 1 < mCountProducts + 1) {
-                            mProducts.remove(mProducts.size() - 1);
-                            mProducts.addAll(products);
-                            if (mProducts.size() < mCountProducts) {
-                                mProducts.add(null);
-                            }
-                            productsRecyclerView.getAdapter().notifyItemRangeChanged(posStart - 1, mProducts.size() - 1);
+                    if (isResponseOk && mProducts.size() - 1 < mCountProducts + 1) {
+                        mProducts.remove(mProducts.size() - 1);
+                        mProducts.addAll(products);
+                        if (mProducts.size() < mCountProducts) {
+                            mProducts.add(null);
                         }
-
+                        productsRecyclerView.getAdapter().notifyItemRangeChanged(posStart - 1, mProducts.size() - 1);
                     }
+
                 }
         );
 

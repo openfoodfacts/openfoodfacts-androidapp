@@ -174,7 +174,6 @@ public class OpenFoodAPIClient {
                         })
                         .onNegative((dialog, which) -> activity.onBackPressed())
                         .show();
-                Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
             }
         });
     }
