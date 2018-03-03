@@ -52,8 +52,11 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
         settings = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
+
         final SharedPreferences settings = getActivity().getSharedPreferences("camera", 0);
 
         mScannerView = new ZXingScannerView(getActivity());
@@ -76,7 +79,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
-        setHasOptionsMenu(true);
+
     }
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -96,6 +99,8 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
 
         MenuItem aboutMenuItem = menu.add(Menu.NONE, R.id.menu_about, 0, R.string.action_about);
         MenuItemCompat.setShowAsAction(aboutMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
+
+
     }
 
     @Override

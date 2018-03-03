@@ -16,6 +16,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -48,6 +51,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class OfflineEditFragment extends BaseFragment {
 
+
     public static final String LOG_TAG = "OFFLINE_EDIT";
     @BindView(R.id.listOfflineSave)
     ListView listView;
@@ -61,8 +65,15 @@ public class OfflineEditFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         return createView(inflater, container, R.layout.fragment_offline_edit);
+
     }
+    @Override
+   public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        MenuItem item=menu.findItem(R.id.action_search);
+              item.setVisible(false);
+            }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
