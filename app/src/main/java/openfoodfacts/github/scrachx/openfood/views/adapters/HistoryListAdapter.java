@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.Collections;
@@ -43,6 +44,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
 
     @Override
     public void onBindViewHolder(HistoryScanHolder holder, int position) {
+        holder.historyImageProgressbar.setVisibility(View.VISIBLE);
         HistoryItem item = list.get(position);
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -59,13 +61,26 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         holder.txtBarcode.setText(item.getBarcode());
         holder.txtProductDetails.setText(stringBuilder.toString());
         holder.imgNutritionGrade.setImageDrawable(ContextCompat.getDrawable(mActivity, Utils.getSmallImageGrade(item.getNutritionGrade())));
+        if (item.getUrl() == null) {
+            holder.historyImageProgressbar.setVisibility(View.INVISIBLE);
+        }
         Picasso.with(mActivity)
                 .load(item.getUrl())
                 .placeholder(R.drawable.placeholder_thumb)
                 .error(R.drawable.ic_no_red_24dp)
                 .fit()
                 .centerCrop()
-                .into(holder.imgProduct);
+                .into(holder.imgProduct, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        holder.historyImageProgressbar.setVisibility(View.INVISIBLE);
+                    }
+
+                    @Override
+                    public void onError() {
+                        holder.historyImageProgressbar.setVisibility(View.INVISIBLE);
+                    }
+                });
 
         Date date = list.get(position).getTime();
         calcTime(date, holder);
