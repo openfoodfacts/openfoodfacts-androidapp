@@ -380,4 +380,8 @@
   <string name="please_check_your_connection">Будь ласка, перевірте інтернет.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Розширений Пошук та Графіки</string>
+  <string name="preference_header_general">General</string>
+  <string name="preference_header_network">Network</string>
+  <string name="preference_header_contributing">Contributing</string>
+  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
 </resources>
