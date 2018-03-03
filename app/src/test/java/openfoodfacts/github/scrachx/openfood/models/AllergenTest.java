@@ -17,7 +17,7 @@ public class AllergenTest {
         String url = "https://world.openfoodfacts.org/allergen/milk";
         int products = 11376;
         String id = "en:milk";
-        AllergenRestResponse restResponse = JsonUtils.readFor(AllergenRestResponse.class)
+        AllergensWrapper restResponse = JsonUtils.readFor(AllergensWrapper.class)
                 .readValue("{\"tags\":[" +
                         "{\"url\":\"" + url + "\"," +
                         "\"products\":" + products + ",\"name\":\"" + name + "\",\"id\":\"" + id + "\"}," +
