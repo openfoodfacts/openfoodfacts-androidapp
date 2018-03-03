@@ -19,6 +19,9 @@ import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -51,10 +54,18 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
     AdditiveDao mAdditiveDao;
     private SharedPreferences settings;
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        MenuItem item=menu.findItem(R.id.action_search);
+        item.setVisible(false);
+    }
 
     @Override
     public void onCreatePreferences(Bundle bundle, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
+        setHasOptionsMenu(true);
+
+
         ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
 
         settings = getActivity().getSharedPreferences("prefs", 0);
@@ -80,6 +91,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
 
             FragmentActivity activity = PreferencesFragment.this.getActivity();
             Configuration configuration = activity.getResources().getConfiguration();
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
 
                 configuration.setLocale(LocaleHelper.getLocale((String) locale));
