@@ -118,6 +118,17 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             }
         });
 
+        Preference terms = findPreference("Terms");
+        terms.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+
+                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+                CustomTabActivityHelper.openCustomTab(getActivity(),customTabsIntent,Uri.parse(getString(R.string.terms_url)),new WebViewFallback());
+                return true;
+            }
+        });
+
         Preference langHelp = findPreference(getString(R.string.lang_translate));
 
         langHelp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
