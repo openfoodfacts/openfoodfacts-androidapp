@@ -7,8 +7,6 @@ import java.util.List;
  * Created by Lobster on 03.03.18.
  */
 
-//@JsonAdapter(LabelsWrapperDeserializer.class)
-//@JsonIgnoreProperties(ignoreUnknown = true)
 public class LabelsWrapper {
 
     private List<LabelResponse> labels;

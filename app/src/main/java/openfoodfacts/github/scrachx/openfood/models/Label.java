@@ -21,7 +21,7 @@ import java.util.List;
 })
 public class Label {
 
-    @Id
+    @Id(autoincrement = true)
     private Long id;
 
     @Unique
