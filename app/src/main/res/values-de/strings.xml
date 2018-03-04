@@ -154,7 +154,7 @@
   <string name="txtTakePicture">Foto machen</string>
   <string name="txtSendAll">Alles hochladen</string>
   <string name="txtNoData">Keine Daten</string>
-  <string name="txtPictureNeeded">Bitte machen Sie zuerst ein Foto</string>
+  <string name="txtPictureNeeded">Bitte fotografieren Sie zuerst das Produkt</string>
   <string name="toastSending">Lade hoch...</string>
   <string name="dataSaved">Lokal auf dem Gerät gespeichert</string>
   <string name="txtInfoAddUser">Bitte Benutzername und Passwort eingeben</string>
@@ -167,7 +167,7 @@
   <string name="txtContentDialogUploading">Bitte warten bis der Vorgang abgeschlossen ist...</string>
   <string name="txtAbout">Die von Ihnen eingesandten Bilder werden unter der freien Lizenz Creative Commons Attribution und ShareAlike veröffentlicht.</string>
   <string name="txtAllsent">Produkte hochgeladen</string>
-  <string name="txtPalm">Das Produkt beinhaltet kein Palmöl</string>
+  <string name="txtPalm">Das Produkt enthält kein Palmöl</string>
   <string name="txtBarcodeNotValid">Strichcode ungültig</string>
   <string name="try_it_scan_now">Produkt scannen</string>
   <string name="share">Teilen</string>
@@ -181,7 +181,7 @@
   <string name="category_drawer">Kategorien</string>
   <string name="search_by_category">Kategorie</string>
   <string name="search_by_name_drawer">Nach Name suchen</string>
-  <string name="scan_search">Einscannen</string>
+  <string name="scan_search">Strichcode einlesen</string>
   <string name="user_drawer">Benutzer</string>
   <string name="offline_edit_drawer">Offline bearbeiten</string>
   <string name="txt_anonymous">Anonym</string>
