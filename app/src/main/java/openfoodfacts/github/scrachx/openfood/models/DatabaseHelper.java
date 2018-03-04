@@ -76,6 +76,11 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 CountryNameDao.createTable(db, true);
                 break;
             }
+            case 9: {
+                CategoryDao.createTable(db, true);
+                CategoryNameDao.createTable(db, true);
+                break;
+            }
         }
     }
 }
