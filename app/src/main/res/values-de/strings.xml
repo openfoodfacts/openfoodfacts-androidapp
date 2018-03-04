@@ -96,7 +96,7 @@
   <string name="toast_retrieving">Wird geladen …</string>
   <string name="txtGenericName">Gebräuchlicher Name:</string>
   <string name="txtBarcode">Strichcode:</string>
-  <string name="txtQuantity">Menge:</string>
+  <string name="txtQuantity">Mengenangabe:</string>
   <string name="txtPackaging">Art der Verpackung:</string>
   <string name="txtBrands">Marken:</string>
   <string name="txtCategories">Kategorien:</string>
