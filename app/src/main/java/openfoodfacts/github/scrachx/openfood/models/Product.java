@@ -77,6 +77,8 @@ public class Product implements Serializable {
     @JsonProperty("nutrient_levels")
     private NutrientLevels nutrientLevels;
     private String countries;
+    @JsonProperty("countries_tags")
+    private List<String> countriesTags;
     private String brands;
     private String packaging;
     @JsonProperty("labels_hierarchy")
@@ -399,6 +401,9 @@ public class Product implements Serializable {
         return embTags;
     }
 
+    public List<String> getCountriesTags() {
+        return countriesTags;
+    }
 
     @Override
     public String toString() {
