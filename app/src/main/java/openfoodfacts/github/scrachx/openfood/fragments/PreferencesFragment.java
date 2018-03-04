@@ -1,11 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -13,8 +10,6 @@ import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
@@ -22,7 +17,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -39,13 +33,9 @@ import java.util.Locale;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
-import openfoodfacts.github.scrachx.openfood.views.SplashActivity;
-import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
@@ -56,7 +46,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        MenuItem item=menu.findItem(R.id.action_search);
+        MenuItem item = menu.findItem(R.id.action_search);
         item.setVisible(false);
     }
 
@@ -120,37 +110,28 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
 
 
         Preference faqbutton = findPreference("FAQ");
-        faqbutton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
+        faqbutton.setOnPreferenceClickListener(preference -> {
 
-                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-                CustomTabActivityHelper.openCustomTab(getActivity(),customTabsIntent,Uri.parse(getString(R.string.faq_url)),new WebViewFallback());
-                return true;
-            }
+            CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+            CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.faq_url)), new WebViewFallback());
+            return true;
         });
 
         Preference terms = findPreference("Terms");
-        terms.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
+        terms.setOnPreferenceClickListener(preference -> {
 
-                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-                CustomTabActivityHelper.openCustomTab(getActivity(),customTabsIntent,Uri.parse(getString(R.string.terms_url)),new WebViewFallback());
-                return true;
-            }
+            CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+            CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.terms_url)), new WebViewFallback());
+            return true;
         });
 
         Preference langHelp = findPreference("local_translate_help");
-        langHelp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
+        langHelp.setOnPreferenceClickListener(preference -> {
 
-                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
+            CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+            CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
 
-                return true;
-            }
+            return true;
         });
     }
 
@@ -202,19 +183,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             super.onPostExecute(result);
             lt.hide();
             getActivity().recreate();
-        }
-
-    }
-
-
-    public void onResume() {
-
-        super.onResume();
-
-        try {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.action_preferences));
-        } catch (NullPointerException e) {
-            e.printStackTrace();
         }
 
     }
