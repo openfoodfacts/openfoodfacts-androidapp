@@ -6,10 +6,12 @@ import com.google.gson.GsonBuilder;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
 import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
+import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
 import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
 import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
 import openfoodfacts.github.scrachx.openfood.network.deserializers.AdditivesWrapperDeserializer;
 import openfoodfacts.github.scrachx.openfood.network.deserializers.AllergensWrapperDeserializer;
+import openfoodfacts.github.scrachx.openfood.network.deserializers.CategoriesWrapperDeserializer;
 import openfoodfacts.github.scrachx.openfood.network.deserializers.CountriesWrapperDeserializer;
 import openfoodfacts.github.scrachx.openfood.network.deserializers.LabelsWrapperDeserializer;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -88,6 +90,7 @@ public class CommonApiManager implements ICommonApiManager {
         gsonBuilder.registerTypeAdapter(AllergensWrapper.class, new AllergensWrapperDeserializer());
         gsonBuilder.registerTypeAdapter(CountriesWrapper.class, new CountriesWrapperDeserializer());
         gsonBuilder.registerTypeAdapter(AdditivesWrapper.class, new AdditivesWrapperDeserializer());
+        gsonBuilder.registerTypeAdapter(CategoriesWrapper.class, new CategoriesWrapperDeserializer());
         Gson gson = gsonBuilder.create();
         return GsonConverterFactory.create(gson);
     }
