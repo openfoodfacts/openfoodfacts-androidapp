@@ -171,7 +171,7 @@
   <string name="txtBarcodeNotValid">Strichcode ungültig</string>
   <string name="try_it_scan_now">Produkt erfassen</string>
   <string name="share">Teilen</string>
-  <string name="msg_share">Sehen Sie sich dieses Produkt auf Open Food Facts an:</string>
+  <string name="msg_share">Dieses Produkt auf Open Food Facts anzeigen:</string>
   <string name="create_account">Registrieren</string>
   <string name="home_drawer">Startseite</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
