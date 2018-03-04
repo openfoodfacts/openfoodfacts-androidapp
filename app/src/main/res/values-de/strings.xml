@@ -108,7 +108,7 @@
   <string name="txtManufactureUrl">Link zur Produktseite auf der offiziellen Seite des Herstellers:</string>
   <string name="txtStores">Läden:</string>
   <string name="txtCountries">Vertriebsländer:</string>
-  <string name="txtIngredients">Zutatenliste:</string>
+  <string name="txtIngredients">Liste der Inhaltsstoffe:</string>
   <string name="Donate">Spenden</string>
   <string name="Donation">Hier klicken, um für Open Food Facts zu spenden</string>
   <string name="txtSubstances">Inhaltsstoffe oder Produkte, die zu Allergien oder Überempfindlichkeiten führen:</string>
