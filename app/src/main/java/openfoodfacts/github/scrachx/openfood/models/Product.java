@@ -53,7 +53,8 @@ public class Product implements Serializable {
     @JsonProperty("brands_tags")
     private List<String> brandsTags = new ArrayList<>();
     private String traces;
-    private String categories;
+    @JsonProperty("categories_tags")
+    private List<String> categoriesTags;
     @JsonProperty("ingredients_text")
     @JsonDeserialize(converter = ProductStringConverter.class)
     private String ingredientsText;
@@ -228,12 +229,11 @@ public class Product implements Serializable {
 
 
     /**
-     * @return The categories
+     * @return The categoriesTags
      */
-    public String getCategories() {
-        return categories;
+    public List<String> getCategoriesTags() {
+        return categoriesTags;
     }
-
 
     /**
      * @return The ingredientsText
