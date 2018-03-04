@@ -181,6 +181,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     }
 
                     @Override
+
                     public void onDrawerSlide(View drawerView, float slideOffset) {
                         Utils.hideKeyboard(MainActivity.this);
                     }
@@ -198,7 +199,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(7),
                         new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(8),
                         new DividerDrawerItem(),
-                        new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9).withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700)),
+                        createOfflineEditDrawerItem(),
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ABOUT).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(CONTRIBUTE).withSelectable(false),
@@ -279,10 +280,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             break;
                         case LOGOUT:
                             new MaterialDialog.Builder(MainActivity.this)
-                                    .title("Confirm Logout")
-                                    .content("Are you sure to log out ?")
+                                    .title(R.string.conform_logout)
+                                    .content(R.string.logout_dialog_content)
                                     .positiveText(R.string.txtOk)
-                                    .negativeText("Cancel")
+                                    .negativeText(R.string.dialog_cancel)
                                     .onPositive(new MaterialDialog.SingleButtonCallback() {
                                         @Override
                                         public void onClick(MaterialDialog dialog, DialogAction which) {
@@ -652,6 +653,19 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
         } else {
             Log.e(getClass().getSimpleName(), "Error in creating fragment");
+        }
+    }
+
+    /**
+     * Create the drawer item. This adds a badge if there are items in the offline edit, otherwise
+     * there is no badge present.
+     * @return drawer item.
+     */
+    private PrimaryDrawerItem createOfflineEditDrawerItem(){
+        if (numberOFSavedProducts > 0) {
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9).withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
+        } else {
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9);
         }
     }
 }

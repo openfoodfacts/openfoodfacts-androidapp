@@ -1,6 +1,44 @@
 This is the Changelog. Please list changes here so that we can provide meaningful changelog for the application stores.
 
 Upcoming:
+- Fix for that nasty opening bug. Sorry about that.
+
+To get a pardon, we threw in additional fixes:
+- Better looking profile picture
+- Book detection, using the infamous Bookland barcode prefixes
+- Progess indicator when loading (but honestly, we now load so fast you'll barely see them)
+- Indicator of how many offline products you need to send
+- Disabled search option in offline edit,allergen alert
+- Added Terms Of use
+- Ensure Nutriscore in Search and History are disabled for OBF and OPFF
+- Fix add photo not clickable in no results screen (#1071)
+- Moar translations :)
+
+0.8.3 - Mar 1
+
+- New option in settings to donate to the Open Food Facts association.
+- Updated History and Product search UI
+- Add weight and brand in the offline product list
+- Charts, maps and advanced search in the side menu. Still a bit rough around the edges, but VERY powerful.
+- Fixed bug that prevented loading Serbian
+- We killed a couple of annoying popups to replace them by something less intrusive.
+- You can now crop and rotate product images before sending them.
+- Made the allergen detector more aggressive.
+- The app has a better offline experience.
+- Better first use experience
+- New Lite API: we divided the data downloaded by 10 to 100, according to the scenarii.
+
+
+0.8.1 - 24 Feb
+
+
+
+
+0.8 - 16 Feb
+
+
+
+
 ** Onboarding **
 - Added onboarding screens
 
@@ -36,10 +74,6 @@ Upcoming:
 ** History **
 - You can now delete items from your scan history. Note that your scan history always stays on your device.
 - Your scan history is now timestamped.
-
-0.8.1
-
-0.8
 
 0.7.2 & 0.7.3 & 0.7.4 - 
 - Micro-release to fix 4.0 related bugs.

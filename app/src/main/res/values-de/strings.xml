@@ -110,7 +110,7 @@
   <string name="txtCountries">Vertriebsländer:</string>
   <string name="txtIngredients">Zutatenliste:</string>
   <string name="Donate">Spenden</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donation">Hier klicken, um für Open Food Facts zu spenden</string>
   <string name="txtSubstances">Inhaltsstoffe oder Produkte, die zu Allergien oder Überempfindlichkeiten führen:</string>
   <string name="txtAdditives">Zusatzstoffe:</string>
   <string name="txtTraces">Spuren:</string>
@@ -136,7 +136,7 @@
   <string name="hintPass">Passwort</string>
   <string name="errorLogin">Benutzername oder Passwort stimmen nicht</string>
   <string name="errorWeb">Kein Internetzugang. Netzwerkverbindung überprüfen.</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="uploadLater">Die Grafik wird hochgeladen, wenn das Netzwerk wieder verfügbar ist</string>
   <string name="txtInfoLoginOk">Benutzer gespeichert</string>
   <string name="txtInfoLoginNo">Benutzer nicht gespeichert</string>
   <string name="txtDialogsTitle">Informationen</string>
@@ -160,7 +160,7 @@
   <string name="txtInfoAddUser">Bitte Benutzername und Passwort eingeben</string>
   <string name="txtDataUpdated">Daten wurden aktualisiert</string>
   <string name="txtLoading">Wird geladen …</string>
-  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
+  <string name="txtDialogsContentDelete">Möchten Sie diesen Entwurf wirklich entfernen?</string>
   <string name="txtDialogsContentInfoSave">Produkt wurde lokal gespeichert und kann im Offline Bearbeiten-Menü überarbeitet werden</string>
   <string name="txtBarcodeRequire">Strichcode erforderlich</string>
   <string name="txtOk">OK</string>
@@ -375,9 +375,13 @@
   <string name="FAQ">Häufig gestellte Fragen</string>
   <string name="FrequentlyAskedQuestions">Häufig gestellte Fragen</string>
   <string name="lang_translate">local_translate_help</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="translate_help_title">Mithelfen bei der Übersetzung von Open Food Facts</string>
+  <string name="translate_help_summary">Übersetzen Sie die Open Food Facts Datenbank in Ihre Sprache - technischen Kenntnisse sind nicht erforderlich</string>
   <string name="please_check_your_connection">Bitte überprüfen Sie Ihre Internetverbindung.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Erweiterte Suche &amp; Diagramme</string>
+  <string name="preference_header_general">General</string>
+  <string name="preference_header_network">Network</string>
+  <string name="preference_header_contributing">Contributing</string>
+  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
 </resources>
