@@ -42,8 +42,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
@@ -129,7 +128,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Uri embCodeUri;
     private TagDao mTagDao;
     private SummaryProductFragment mFragment;
-    private AllergenDao mAllergenDao;
     private IProductRepository productRepository;
 
     @Override
@@ -156,8 +154,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         final Product product = state.getProduct();
 
-        mAllergenDao = Utils.getAppDaoSession(getActivity()).getAllergenDao();
-        List<Allergen> mAllergens = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
+        List<AllergenName> mAllergens = productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage());
 
         List<String> allergens = product.getAllergensHierarchy();
         List<String> traces = product.getTracesTags();
@@ -169,7 +166,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         List<String> matchAll = new ArrayList<>();
         for (int a = 0; a < mAllergens.size(); a++) {
             for (int i = 0; i < allergens.size(); i++) {
-                if (allergens.get(i).trim().equals(mAllergens.get(a).getIdAllergen().trim())) {
+
+                if (allergens.get(i).trim().equals(mAllergens.get(a).getAllergenTag().trim())) {
                     matchAll.add(mAllergens.get(a).getName());
                 }
             }
