@@ -43,12 +43,18 @@ import retrofit2.Retrofit;
  */
 public class LoginActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback {
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.editTextLogin) EditText loginView;
-    @BindView(R.id.editTextPass) EditText passwordView;
-    @BindView(R.id.textInfoLogin) TextView infoLogin;
-    @BindView(R.id.buttonSave) Button save;
-    @BindView(R.id.buttonCreateAccount) Button signup;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.editTextLogin)
+    EditText loginView;
+    @BindView(R.id.editTextPass)
+    EditText passwordView;
+    @BindView(R.id.textInfoLogin)
+    TextView infoLogin;
+    @BindView(R.id.buttonSave)
+    Button save;
+    @BindView(R.id.buttonCreateAccount)
+    Button signup;
 
     private OpenFoodAPIService apiClient;
     private CustomTabActivityHelper customTabActivityHelper;
@@ -60,8 +66,10 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        setTitle(getString(R.string.txtSignIn));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
         resetPasswordUri = Uri.parse(getString(R.string.website) + "cgi/reset_password.pl");
@@ -75,7 +83,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         final SharedPreferences settings = getSharedPreferences("login", 0);
         String loginS = settings.getString("user", getResources().getString(R.string.txt_anonymous));
-        if(!loginS.equals(getResources().getString(R.string.txt_anonymous))) {
+        if (!loginS.equals(getResources().getString(R.string.txt_anonymous))) {
             new MaterialDialog.Builder(this)
                     .title("Login")
                     .content("Already logged in!")
@@ -111,8 +119,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         final LoadToast lt = new LoadToast(this);
         save.setClickable(false);
         lt.setText(getString(R.string.toast_retrieving));
-        lt.setBackgroundColor(ContextCompat.getColor(this,R.color.blue));
-        lt.setTextColor(ContextCompat.getColor(this,R.color.white));
+        lt.setBackgroundColor(ContextCompat.getColor(this, R.color.blue));
+        lt.setTextColor(ContextCompat.getColor(this, R.color.white));
         lt.show();
 
         final Activity context = this;
@@ -194,6 +202,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, resetPasswordUri, new WebViewFallback());
     }
+
     @Override
     public void onCustomTabsConnected() {
         signup.setEnabled(true);
