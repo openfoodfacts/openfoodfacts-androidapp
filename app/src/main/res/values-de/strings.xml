@@ -84,7 +84,7 @@
   <string-array name="images_array">
     <item>Standard</item>
     <item>Nährwerte</item>
-    <item>Zutaten</item>
+    <item>Inhaltsstoffe</item>
   </string-array>
   <!-- Content Description -->
   <string name="search_button">Suchen</string>
@@ -114,7 +114,7 @@
   <string name="txtSubstances">Inhaltsstoffe oder Produkte, die zu Allergien oder Überempfindlichkeiten führen:</string>
   <string name="txtAdditives">Zusatzstoffe:</string>
   <string name="txtTraces">Spuren:</string>
-  <string name="txtMayBeFromPalmOilProduct">Zutaten, die aus Palmöl stammen könnten:</string>
+  <string name="txtMayBeFromPalmOilProduct">Inhaltsstoffe, die aus Palmöl stammen könnten:</string>
   <string name="txtPalmOilProduct">Inhaltsstoffe aus Palmöl:</string>
   <string name="txtServingSize">Portionsgröße:</string>
   <string name="txtNutrientLevel100g">Nährwertgehalt pro 100g:</string>
