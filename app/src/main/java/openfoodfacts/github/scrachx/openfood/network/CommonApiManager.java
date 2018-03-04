@@ -4,7 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
 import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
+import openfoodfacts.github.scrachx.openfood.network.deserializers.AllergensWrapperDeserializer;
 import openfoodfacts.github.scrachx.openfood.network.deserializers.LabelsWrapperDeserializer;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Converter;
@@ -79,6 +81,7 @@ public class CommonApiManager implements ICommonApiManager {
     private Converter.Factory createGsonConverter() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(LabelsWrapper.class, new LabelsWrapperDeserializer());
+        gsonBuilder.registerTypeAdapter(AllergensWrapper.class, new AllergensWrapperDeserializer());
         Gson gson = gsonBuilder.create();
         return GsonConverterFactory.create(gson);
     }

@@ -18,7 +18,7 @@ public interface ProductApiService {
     @GET("data/taxonomies/labels.json")
     Single<LabelsWrapper> getLabels();
 
-    @GET("allergens.json")
+    @GET("data/taxonomies/allergens.json")
     Single<AllergensWrapper> getAllergens();
 
 }
