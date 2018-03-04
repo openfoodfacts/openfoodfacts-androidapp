@@ -176,11 +176,21 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+    /**
+     * Load allergens which user selected earlier (i.e user's allergens)
+     */
     @Override
     public List<Allergen> getEnabledAllergens() {
         return allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq("true")).list();
     }
 
+    /**
+     * Load additives from the server or local database
+     *
+     * @param refresh defines the source of data.
+     *                If refresh is true (or local database is empty) than load it from the server,
+     *                else from the local database.
+     */
     @Override
     public Single<List<Additive>> getAdditives(Boolean refresh) {
         if (refresh || tableIsEmpty(additiveDao)) {
@@ -191,6 +201,11 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+    /**
+     * Labels saving to local database
+     * <p>
+     * Label and LabelName has One-To-Many relationship, therefore we need to save them separately.
+     */
     @Override
     public void saveLabels(List<Label> labels) {
         for (Label label : labels) {
@@ -201,11 +216,20 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+    /**
+     * Tags saving to local database
+     */
     @Override
     public void saveTags(List<Tag> tags) {
         tagDao.insertOrReplaceInTx(tags);
     }
 
+
+    /**
+     * Allergens saving to local database
+     * <p>
+     * Allergen and AllergenName has One-To-Many relationship, therefore we need to save them separately.
+     */
     @Override
     public void saveAllergens(List<Allergen> allergens) {
         for (Allergen allergen : allergens) {
@@ -216,6 +240,11 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+    /**
+     * Additives saving to local database
+     * <p>
+     * Additive and AdditiveName has One-To-Many relationship, therefore we need to save them separately.
+     */
     @Override
     public void saveAdditives(List<Additive> additives) {
         for (Additive additive : additives) {
@@ -226,6 +255,11 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+    /**
+     * Countries saving to local database
+     * <p>
+     * Country and CountryName has One-To-Many relationship, therefore we need to save them separately.
+     */
     @Override
     public void saveCountries(List<Country> countries) {
         for (Country country : countries) {
@@ -236,6 +270,11 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+    /**
+     * Categories saving to local database
+     * <p>
+     * Category and CategoryName has One-To-Many relationship, therefore we need to save them separately.
+     */
     @Override
     public void saveCategories(List<Category> categories) {
         for (Category category : categories) {
@@ -246,6 +285,12 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+    /**
+     * Changes enabled field of allergen and updates it.
+     *
+     * @param isEnabled   depends on whether user selected or unselected the allergen
+     * @param allergenTag is unique Id of allergen
+     */
     @Override
     public void setAllergenEnabled(String allergenTag, Boolean isEnabled) {
         Allergen allergen = allergenDao.queryBuilder()
@@ -258,6 +303,12 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+    /**
+     * Loads translated label from the local database by unique tag of label and language code
+     *
+     * @param labelTag     is a unique Id of label
+     * @param languageCode is a 2-digit language code
+     */
     @Override
     public LabelName getLabelByTagAndLanguageCode(String labelTag, String languageCode) {
         return labelNameDao.queryBuilder()
@@ -267,11 +318,22 @@ public class ProductRepository implements IProductRepository {
                 ).unique();
     }
 
+    /**
+     * Loads translated label from the local database by unique tag of label and default language code
+     *
+     * @param labelTag is a unique Id of label
+     */
     @Override
     public LabelName getLabelByTagAndDefaultLanguageCode(String labelTag) {
         return getLabelByTagAndLanguageCode(labelTag, DEFAULT_LANGUAGE);
     }
 
+    /**
+     * Loads translated additive from the local database by unique tag of additive and language code
+     *
+     * @param additiveTag  is a unique Id of additive
+     * @param languageCode is a 2-digit language code
+     */
     @Override
     public AdditiveName getAdditiveByTagAndLanguageCode(String additiveTag, String languageCode) {
         return additiveNameDao.queryBuilder()
@@ -281,25 +343,47 @@ public class ProductRepository implements IProductRepository {
                 ).unique();
     }
 
+    /**
+     * Loads translated additive from the local database by unique tag of additive and default language code
+     *
+     * @param additiveTag is a unique Id of additive
+     */
     @Override
     public AdditiveName getAdditiveByTagAndDefaultLanguageCode(String additiveTag) {
         return getAdditiveByTagAndLanguageCode(additiveTag, DEFAULT_LANGUAGE);
     }
 
+    /**
+     * Loads translated country from the local database by unique tag of country and language code
+     *
+     * @param countryTag   is a unique Id of country
+     * @param languageCode is a 2-digit language code
+     */
     @Override
-    public CountryName getCountryByTagAndLanguageCode(String countryName, String languageCode) {
+    public CountryName getCountryByTagAndLanguageCode(String countryTag, String languageCode) {
         return countryNameDao.queryBuilder()
                 .where(
-                        CountryNameDao.Properties.CountyTag.eq(countryName),
+                        CountryNameDao.Properties.CountyTag.eq(countryTag),
                         CountryNameDao.Properties.LanguageCode.eq(languageCode)
                 ).unique();
     }
 
+    /**
+     * Loads translated country from the local database by unique tag of country and default language code
+     *
+     * @param countryTag is a unique Id of country
+     */
     @Override
-    public CountryName getCountryByTagAndDefaultLanguageCode(String countryName) {
-        return getCountryByTagAndLanguageCode(countryName, DEFAULT_LANGUAGE);
+    public CountryName getCountryByTagAndDefaultLanguageCode(String countryTag) {
+        return getCountryByTagAndLanguageCode(countryTag, DEFAULT_LANGUAGE);
     }
 
+    /**
+     * Loads translated category from the local database by unique tag of category and language code
+     *
+     * @param categoryTag  is a unique Id of category
+     * @param languageCode is a 2-digit language code
+     */
     @Override
     public CategoryName getCategoryByTagAndLanguageCode(String categoryTag, String languageCode) {
         return categoryNameDao.queryBuilder()
@@ -309,11 +393,22 @@ public class ProductRepository implements IProductRepository {
                 ).unique();
     }
 
+    /**
+     * Loads translated category from the local database by unique tag of category and default language code
+     *
+     * @param categoryTag is a unique Id of category
+     */
     @Override
     public CategoryName getCategoryByTagAndDefaultLanguageCode(String categoryTag) {
         return getCategoryByTagAndLanguageCode(categoryTag, DEFAULT_LANGUAGE);
     }
 
+    /**
+     * Loads translated and selected/unselected allergens.
+     *
+     * @param isEnabled    depends on whether allergen was selected or unselected by user
+     * @param languageCode is a 2-digit language code
+     */
     @Override
     public List<AllergenName> getAllergensByEnabledAndLanguageCode(Boolean isEnabled, String languageCode) {
         List<Allergen> allergens = allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq(isEnabled)).list();
@@ -337,6 +432,11 @@ public class ProductRepository implements IProductRepository {
         return null;
     }
 
+    /**
+     * Loads all translated allergens.
+     *
+     * @param languageCode is a 2-digit language code
+     */
     @Override
     public List<AllergenName> getAllergensByLanguageCode(String languageCode) {
         return allergenNameDao.queryBuilder()
@@ -344,14 +444,27 @@ public class ProductRepository implements IProductRepository {
                 .list();
     }
 
+    /**
+     * Checks whether table is empty
+     *
+     * @param dao checks records count of any table
+     */
     private Boolean tableIsEmpty(AbstractDao dao) {
         return dao.count() == 0;
     }
 
+    /**
+     * Checks whether table is not empty
+     *
+     * @param dao checks records count of any table
+     */
     private Boolean tableIsNotEmpty(AbstractDao dao) {
         return dao.count() != 0;
     }
 
+    /**
+     * Checks whether table of additives is empty
+     */
     @Override
     public Boolean additivesIsEmpty() {
         return tableIsEmpty(additiveDao);
