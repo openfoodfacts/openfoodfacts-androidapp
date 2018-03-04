@@ -38,7 +38,7 @@
     <item>ru</item>
     <item>pt</item>
     <item>sv</item>
-    <item>my</item>
+    <item>mein</item>
     <item>kk</item>
     <item>hy</item>
     <item>el</item>
@@ -165,7 +165,7 @@
   <string name="txtBarcodeRequire">Strichcode erforderlich</string>
   <string name="txtOk">OK</string>
   <string name="txtContentDialogUploading">Bitte warten bis der Vorgang abgeschlossen ist...</string>
-  <string name="txtAbout">Die hochgeladenen Fotos werden unter der freien Lizenz Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen veröffentlicht.</string>
+  <string name="txtAbout">Die von Ihnen eingesandten Bilder werden unter der freien Lizenz Creative Commons Attribution und ShareAlike veröffentlicht.</string>
   <string name="txtAllsent">Produkte hochgeladen</string>
   <string name="txtPalm">Das Produkt beinhaltet kein Palmöl</string>
   <string name="txtBarcodeNotValid">Strichcode ungültig</string>
