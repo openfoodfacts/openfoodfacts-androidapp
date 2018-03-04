@@ -104,7 +104,7 @@
   <string name="txtManufacturing">Herstellungs- oder Verarbeitungsorte:</string>
   <string name="txtIngredientsOrigins">Herkunft der Zutaten:</string>
   <string name="txtCity">Stadt, Bundesland und Land des Kaufs:</string>
-  <string name="txtEMB">Produzenten-Code:</string>
+  <string name="txtEMB">Produzenten-Schlüssel:</string>
   <string name="txtManufactureUrl">Link zur Produktseite auf der offiziellen Seite des Herstellers:</string>
   <string name="txtStores">Läden:</string>
   <string name="txtCountries">Vertriebsländer:</string>
@@ -123,7 +123,7 @@
   <string name="txtNutritionLevelHigh">in hoher Menge</string>
   <string name="txtLogin">Benutzername:</string>
   <string name="txtPass">Passwort:</string>
-  <string name="txtTitleHome">Öffnen Sie Ihr Essen und lernen Sie was Sie essen</string>
+  <string name="txtTitleHome">Nahrungsmittel einlesen und erfahren, was Sie essen</string>
   <string name="txtSave">Speichern</string>
   <string name="txtSignIn">Anmelden</string>
   <string name="txtUser">Benutzerprofil</string>
@@ -155,7 +155,7 @@
   <string name="txtSendAll">Alles hochladen</string>
   <string name="txtNoData">Keine Daten</string>
   <string name="txtPictureNeeded">Bitte fotografieren Sie zuerst das Produkt</string>
-  <string name="toastSending">Lade hoch...</string>
+  <string name="toastSending">Wird hochgeladen …</string>
   <string name="dataSaved">Lokal auf dem Gerät gespeichert</string>
   <string name="txtInfoAddUser">Bitte Benutzername und Passwort eingeben</string>
   <string name="txtDataUpdated">Daten wurden aktualisiert</string>
@@ -164,8 +164,8 @@
   <string name="txtDialogsContentInfoSave">Produkt wurde lokal gespeichert und kann im Offline Bearbeiten-Menü überarbeitet werden</string>
   <string name="txtBarcodeRequire">Strichcode erforderlich</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Bitte warten bis der Vorgang abgeschlossen ist...</string>
-  <string name="txtAbout">Die von Ihnen eingesandten Bilder werden unter der freien Lizenz Creative Commons Attribution und ShareAlike veröffentlicht.</string>
+  <string name="txtContentDialogUploading">Bitte warten bis der Vorgang abgeschlossen ist …</string>
+  <string name="txtAbout">Die von Ihnen eingesandten Fotos werden unter der freien Lizenz Creative Commons Attribution und ShareAlike veröffentlicht.</string>
   <string name="txtAllsent">Produkte hochgeladen</string>
   <string name="txtPalm">Das Produkt enthält kein Palmöl</string>
   <string name="txtBarcodeNotValid">Strichcode ungültig</string>
@@ -223,7 +223,7 @@
   <string name="error_invalid_password">Das Passwort muss mindestens 6 Zeichen lang sein.</string>
   <string name="error_field_required">Das Feld ist erforderlich.</string>
   <string name="action_preferences">Einstellungen</string>
-  <string name="prefs_scan_startup">Direkt beim Starten erfassen</string>
+  <string name="prefs_scan_startup">Erfassung direkt beim Start beginnen</string>
   <string name="prefs_scan_startup_summary">Wenn diese Option ausgewählt ist, wird das Erfassen direkt beim Öffnen der Anwendung gestartet.</string>
   <string name="prefs_power_mode">Schnelles Einlesen</string>
   <string name="prefs_power_mode_summary">Produkte in Supermarkt schnell erfassen, um festzustellen, welche noch nicht in der Datenbank enthalten sind.</string>
@@ -234,9 +234,9 @@
   <string name="title_clear_history_dialog">Leeren</string>
   <string name="text_clear_history_dialog">Möchten Sie den gesamten Verlauf der erfassten Produkte leeren?</string>
   <string name="export_csv_history">Als CSV-Datei exportieren</string>
-  <string name="txt_exporting_history">Exportiere Verlauf…</string>
+  <string name="txt_exporting_history">Verlauf exportieren …</string>
   <string name="txt_history_exported">Verlauf exportiert</string>
-  <string name="permision_write_external_storage">Berechtigung zum Schreiben der SD-Karte ist erforderlich, um den Verlauf zu exportieren.</string>
+  <string name="permision_write_external_storage">Berechtigung zum Schreiben der SD-Karte ist erforderlich, um den Verlauf exportieren zu können.</string>
   <string name="txt_nutrition_not_found">k.A.</string>
   <!-- Nutrition info tab -->
   <string name="nutrition_carbohydrate">Kohlenhydrate</string>
