@@ -5,7 +5,9 @@ package openfoodfacts.github.scrachx.openfood.network;
  */
 
 import io.reactivex.Single;
+import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
 import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
+import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
 import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
 import retrofit2.http.GET;
 
@@ -20,5 +22,11 @@ public interface ProductApiService {
 
     @GET("data/taxonomies/allergens.json")
     Single<AllergensWrapper> getAllergens();
+
+    @GET("data/taxonomies/additives.json")
+    Single<AdditivesWrapper> getAdditives();
+
+    @GET("data/taxonomies/countries.json")
+    Single<CountriesWrapper> getCountries();
 
 }
