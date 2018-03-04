@@ -8,11 +8,19 @@ import java.util.List;
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
+import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
 import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
+import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Country;
+import openfoodfacts.github.scrachx.openfood.models.CountryDao;
+import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Label;
 import openfoodfacts.github.scrachx.openfood.models.LabelDao;
@@ -33,6 +41,8 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class ProductRepository implements IProductRepository {
 
+    private static final String DEFAULT_LANGUAGE = "en";
+
     private static IProductRepository instance;
 
     private ProductApiService productApi;
@@ -44,6 +54,9 @@ public class ProductRepository implements IProductRepository {
     private AllergenDao allergenDao;
     private AllergenNameDao allergenNameDao;
     private AdditiveDao additiveDao;
+    private AdditiveNameDao additiveNameDao;
+    private CountryDao countryDao;
+    private CountryNameDao countryNameDao;
 
     public static IProductRepository getInstance() {
         if (instance == null) {
@@ -64,6 +77,9 @@ public class ProductRepository implements IProductRepository {
         allergenDao = daoSession.getAllergenDao();
         allergenNameDao = daoSession.getAllergenNameDao();
         additiveDao = daoSession.getAdditiveDao();
+        additiveNameDao = daoSession.getAdditiveNameDao();
+        countryDao = daoSession.getCountryDao();
+        countryNameDao = daoSession.getCountryNameDao();
     }
 
     /**
@@ -118,13 +134,28 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
+    public Single<List<Country>> getCountries(Boolean refresh) {
+        if (refresh || tableIsEmpty(countryDao)) {
+            return productApi.getCountries()
+                    .map(CountriesWrapper::map);
+        } else {
+            return Single.fromCallable(() -> countryDao.loadAll());
+        }
+    }
+
+    @Override
     public List<Allergen> getEnabledAllergens() {
         return allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq("true")).list();
     }
 
     @Override
-    public Single<List<Additive>> getAdditives() {
-        return Single.fromCallable(() -> additiveDao.loadAll());
+    public Single<List<Additive>> getAdditives(Boolean refresh) {
+        if (refresh || tableIsEmpty(additiveDao)) {
+            return productApi.getAdditives()
+                    .map(AdditivesWrapper::map);
+        } else {
+            return Single.fromCallable(() -> additiveDao.loadAll());
+        }
     }
 
     @Override
@@ -154,7 +185,22 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public void saveAdditives(List<Additive> additives) {
-        additiveDao.insertOrReplaceInTx(additives);
+        for (Additive additive : additives) {
+            additiveDao.insertOrReplaceInTx(additive);
+            for (AdditiveName additiveName : additive.getNames()) {
+                additiveNameDao.insertOrReplace(additiveName);
+            }
+        }
+    }
+
+    @Override
+    public void saveCountries(List<Country> countries) {
+        for (Country country : countries) {
+            countryDao.insertOrReplaceInTx(country);
+            for (CountryName countryName : country.getNames()) {
+                countryNameDao.insertOrReplace(countryName);
+            }
+        }
     }
 
     @Override
@@ -180,7 +226,35 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public LabelName getLabelByTagAndDefaultLanguageCode(String labelTag) {
-        return getLabelByTagAndLanguageCode(labelTag, "en");
+        return getLabelByTagAndLanguageCode(labelTag, DEFAULT_LANGUAGE);
+    }
+
+    @Override
+    public AdditiveName getAdditiveByTagAndLanguageCode(String additiveTag, String languageCode) {
+        return additiveNameDao.queryBuilder()
+                .where(
+                        AdditiveNameDao.Properties.AdditiveTag.eq(additiveTag),
+                        AdditiveNameDao.Properties.LanguageCode.eq(languageCode)
+                ).unique();
+    }
+
+    @Override
+    public AdditiveName getAdditiveByTagAndDefaultLanguageCode(String additiveTag) {
+        return getAdditiveByTagAndLanguageCode(additiveTag, DEFAULT_LANGUAGE);
+    }
+
+    @Override
+    public CountryName getCountryByTagAndLanguageCode(String countryName, String languageCode) {
+        return countryNameDao.queryBuilder()
+                .where(
+                        CountryNameDao.Properties.CountyTag.eq(countryName),
+                        CountryNameDao.Properties.LanguageCode.eq(languageCode)
+                ).unique();
+    }
+
+    @Override
+    public CountryName getCountryByTagAndDefaultLanguageCode(String countryName) {
+        return getCountryByTagAndLanguageCode(countryName, DEFAULT_LANGUAGE);
     }
 
     @Override
