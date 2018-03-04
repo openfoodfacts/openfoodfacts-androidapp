@@ -7,6 +7,8 @@ import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.Category;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.Country;
 import openfoodfacts.github.scrachx.openfood.models.CountryName;
 import openfoodfacts.github.scrachx.openfood.models.Label;
@@ -29,6 +31,8 @@ public interface IProductRepository {
 
     Single<List<Country>> getCountries(Boolean refresh);
 
+    Single<List<Category>> getCategories(Boolean refresh);
+
     void saveLabels(List<Label> labels);
 
     void saveTags(List<Tag> tags);
@@ -38,6 +42,8 @@ public interface IProductRepository {
     void saveCountries(List<Country> countries);
 
     void saveAllergens(List<Allergen> allergens);
+
+    void saveCategories(List<Category> categories);
 
     void setAllergenEnabled(String allergenTag, Boolean isEnabled);
 
@@ -52,6 +58,10 @@ public interface IProductRepository {
     AdditiveName getAdditiveByTagAndLanguageCode(String additiveTag, String languageCode);
 
     AdditiveName getAdditiveByTagAndDefaultLanguageCode(String additiveTag);
+
+    CategoryName getCategoryByTagAndLanguageCode(String categoryTag, String languageCode);
+
+    CategoryName getCategoryByTagAndDefaultLanguageCode(String categoryTag);
 
     List<Allergen> getEnabledAllergens();
 

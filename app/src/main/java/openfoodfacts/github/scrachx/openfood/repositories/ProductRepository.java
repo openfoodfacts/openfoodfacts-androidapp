@@ -16,6 +16,11 @@ import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
 import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
+import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Category;
+import openfoodfacts.github.scrachx.openfood.models.CategoryDao;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
 import openfoodfacts.github.scrachx.openfood.models.Country;
 import openfoodfacts.github.scrachx.openfood.models.CountryDao;
@@ -57,6 +62,8 @@ public class ProductRepository implements IProductRepository {
     private AdditiveNameDao additiveNameDao;
     private CountryDao countryDao;
     private CountryNameDao countryNameDao;
+    private CategoryDao categoryDao;
+    private CategoryNameDao categoryNameDao;
 
     public static IProductRepository getInstance() {
         if (instance == null) {
@@ -80,6 +87,8 @@ public class ProductRepository implements IProductRepository {
         additiveNameDao = daoSession.getAdditiveNameDao();
         countryDao = daoSession.getCountryDao();
         countryNameDao = daoSession.getCountryNameDao();
+        categoryDao = daoSession.getCategoryDao();
+        categoryNameDao = daoSession.getCategoryNameDao();
     }
 
     /**
@@ -133,6 +142,13 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+    /**
+     * Load countries from the server or local database
+     *
+     * @param refresh defines the source of data.
+     *                If refresh is true (or local database is empty) than load it from the server,
+     *                else from the local database.
+     */
     @Override
     public Single<List<Country>> getCountries(Boolean refresh) {
         if (refresh || tableIsEmpty(countryDao)) {
@@ -140,6 +156,23 @@ public class ProductRepository implements IProductRepository {
                     .map(CountriesWrapper::map);
         } else {
             return Single.fromCallable(() -> countryDao.loadAll());
+        }
+    }
+
+    /**
+     * Load categories from the server or local database
+     *
+     * @param refresh defines the source of data.
+     *                If refresh is true (or local database is empty) than load it from the server,
+     *                else from the local database.
+     */
+    @Override
+    public Single<List<Category>> getCategories(Boolean refresh) {
+        if (refresh || tableIsEmpty(countryDao)) {
+            return productApi.getCategories()
+                    .map(CategoriesWrapper::map);
+        } else {
+            return Single.fromCallable(() -> categoryDao.loadAll());
         }
     }
 
@@ -204,6 +237,16 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
+    public void saveCategories(List<Category> categories) {
+        for (Category category : categories) {
+            categoryDao.insertOrReplaceInTx(category);
+            for (CategoryName categoryName : category.getNames()) {
+                categoryNameDao.insertOrReplace(categoryName);
+            }
+        }
+    }
+
+    @Override
     public void setAllergenEnabled(String allergenTag, Boolean isEnabled) {
         Allergen allergen = allergenDao.queryBuilder()
                 .where(AllergenDao.Properties.Tag.eq(allergenTag))
@@ -255,6 +298,20 @@ public class ProductRepository implements IProductRepository {
     @Override
     public CountryName getCountryByTagAndDefaultLanguageCode(String countryName) {
         return getCountryByTagAndLanguageCode(countryName, DEFAULT_LANGUAGE);
+    }
+
+    @Override
+    public CategoryName getCategoryByTagAndLanguageCode(String categoryTag, String languageCode) {
+        return categoryNameDao.queryBuilder()
+                .where(
+                        CategoryNameDao.Properties.CategoryTag.eq(categoryTag),
+                        CategoryNameDao.Properties.LanguageCode.eq(languageCode)
+                ).unique();
+    }
+
+    @Override
+    public CategoryName getCategoryByTagAndDefaultLanguageCode(String categoryTag) {
+        return getCategoryByTagAndLanguageCode(categoryTag, DEFAULT_LANGUAGE);
     }
 
     @Override
