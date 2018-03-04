@@ -12,7 +12,7 @@
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Zusammenfassung</item>
-    <item>Zutaten</item>
+    <item>Inhaltsstoffe</item>
     <item>Nährwertangaben</item>
     <item>Nährwerttabelle</item>
   </string-array>
@@ -90,17 +90,17 @@
   <string name="search_button">Suchen</string>
   <string name="no_products">Keine Produkte gefunden</string>
   <string name="desc_list_item_icon">Produktfoto</string>
-  <string name="alert_dialog_warning_title">Warnung</string>
+  <string name="alert_dialog_warning_title">Warnhinweis</string>
   <string name="alert_dialog_warning_msg_user">Benutzername/Passwort hat sich geändert, bitte Angaben aktualisieren.</string>
   <string name="alert_dialog_product_error_msg">Produkt wurde nicht gefunden. Versuchen Sie es später noch einmal.</string>
   <string name="toast_retrieving">Wird geladen …</string>
-  <string name="txtGenericName">Allgemeiner Name:</string>
+  <string name="txtGenericName">Gebräuchlicher Name:</string>
   <string name="txtBarcode">Strichcode:</string>
   <string name="txtQuantity">Menge:</string>
   <string name="txtPackaging">Verpackung:</string>
   <string name="txtBrands">Marken:</string>
   <string name="txtCategories">Kategorien:</string>
-  <string name="txtLabels">Labels, Zertifizierungen, Preise:</string>
+  <string name="txtLabels">Kategorien, Zertifizierungen, Preise:</string>
   <string name="txtManufacturing">Herstellungs- oder Verarbeitungsorte:</string>
   <string name="txtIngredientsOrigins">Herkunft der Zutaten:</string>
   <string name="txtCity">Stadt, Bundesland und Land des Kaufs:</string>
@@ -140,8 +140,8 @@
   <string name="txtInfoLoginOk">Benutzer gespeichert</string>
   <string name="txtInfoLoginNo">Benutzer nicht gespeichert</string>
   <string name="txtDialogsTitle">Informationen</string>
-  <string name="txtDialogsContent">Das Produkt, das Sie gescannt haben, existiert noch nicht in Open Food Facts. Bitte füge es hinzu.</string>
-  <string name="txtDialogsContentPowerMode">Das gescannte Produkt befindet sich bereits in Open Food Facts.</string>
+  <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in Open Food Facts. Bitte fügen Sie es hinzu.</string>
+  <string name="txtDialogsContentPowerMode">Das eingelesene Produkt befindet sich bereits in Open Food Facts.</string>
   <string name="txtDialogsContentSend">Möchten Sie die gespeicherten Produkte an die Datenbank senden?</string>
   <string name="txtYes">Ja</string>
   <string name="txtNo">Nein</string>
@@ -153,7 +153,7 @@
   <string name="hintBrand">Marke</string>
   <string name="txtTakePicture">Foto machen</string>
   <string name="txtSendAll">Alles hochladen</string>
-  <string name="txtNoData">keine Daten</string>
+  <string name="txtNoData">Keine Daten</string>
   <string name="txtPictureNeeded">Bitte machen Sie zuerst ein Foto</string>
   <string name="toastSending">Lade hoch...</string>
   <string name="dataSaved">Lokal auf dem Gerät gespeichert</string>
