@@ -85,8 +85,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         String loginS = settings.getString("user", getResources().getString(R.string.txt_anonymous));
         if (!loginS.equals(getResources().getString(R.string.txt_anonymous))) {
             new MaterialDialog.Builder(this)
-                    .title("Login")
-                    .content("Already logged in!")
+                    .title(R.string.log_in)
+                    .content(R.string.login_true)
                     .neutralText(R.string.ok_button)
                     .show();
         }
