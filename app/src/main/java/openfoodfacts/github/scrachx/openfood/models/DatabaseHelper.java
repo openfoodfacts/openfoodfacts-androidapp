@@ -67,6 +67,15 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 AllergenNameDao.createTable(db, true);
                 break;
             }
+            case 8: {
+                AdditiveDao.dropTable(db, true);
+                AdditiveDao.createTable(db, true);
+                AdditiveNameDao.createTable(db, true);
+
+                CountryDao.createTable(db, true);
+                CountryNameDao.createTable(db, true);
+                break;
+            }
         }
     }
 }
