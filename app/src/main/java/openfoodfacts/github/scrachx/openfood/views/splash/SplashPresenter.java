@@ -1,25 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.views.splash;
 
 import android.content.SharedPreferences;
-import android.util.Log;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
-import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
  * Created by Lobster on 03.03.18.
@@ -51,18 +40,13 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                         .apply();
             }
 
-            if (productRepository.additivesIsEmpty()) {
-                refreshAdditives()
-                        .subscribeOn(Schedulers.io())
-                        .subscribe(() -> {
-                        }, Throwable::printStackTrace);
-            }
-
             if (isNeedToRefresh()) { //true if data was refreshed more than 1 day ago
                 Single.zip(
                         productRepository.getLabels(true),
                         productRepository.getTags(true),
-                        productRepository.getAllergens(true), (labels, tags, allergens) -> {
+                        productRepository.getAllergens(true),
+                        productRepository.getCountries(true),
+                        productRepository.getAdditives(true), (labels, tags, allergens, countries, additives) -> {
                             Completable.fromAction(() -> productRepository.saveLabels(labels))
                                     .subscribeOn(Schedulers.io())
                                     .subscribe(() -> {
@@ -75,6 +59,16 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                                     }, Throwable::printStackTrace);
 
                             Completable.fromAction(() -> productRepository.saveAllergens(allergens))
+                                    .subscribeOn(Schedulers.io())
+                                    .subscribe(() -> {
+                                    }, Throwable::printStackTrace);
+
+                            Completable.fromAction(() -> productRepository.saveCountries(countries))
+                                    .subscribeOn(Schedulers.io())
+                                    .subscribe(() -> {
+                                    }, Throwable::printStackTrace);
+
+                            Completable.fromAction(() -> productRepository.saveAdditives(additives))
                                     .subscribeOn(Schedulers.io())
                                     .subscribe(() -> {
                                     }, Throwable::printStackTrace);
@@ -101,30 +95,6 @@ public class SplashPresenter implements ISplashPresenter.Actions {
         } else {
             view.navigateToMainActivity();
         }
-    }
-
-    private Completable refreshAdditives() {
-        return Completable.fromAction(() -> {
-            String additivesFile = "additives_" + LocaleHelper.getLanguage(OFFApplication.getInstance()) + ".json";
-            InputStream is = null;
-            try {
-                is = view.getAssetManager().open(additivesFile);
-                List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {
-                }).readValue(is);
-
-                productRepository.saveAdditives(frenchAdditives);
-            } catch (IOException e) {
-                Log.e(ADDITIVE_IMPORT, "Unable to import additives from " + additivesFile);
-            } finally {
-                if (is != null) {
-                    try {
-                        is.close();
-                    } catch (IOException e1) {
-                        Log.e(ADDITIVE_IMPORT, "Unable to close the inputstream of " + additivesFile);
-                    }
-                }
-            }
-        });
     }
 
     /*
