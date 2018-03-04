@@ -5,6 +5,7 @@ import java.util.List;
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.Label;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Tag;
@@ -31,9 +32,17 @@ public interface IProductRepository {
 
     void saveAllergens(List<Allergen> allergens);
 
+    void setAllergenEnabled(String allergenTag, Boolean isEnabled);
+
     LabelName getLabelByTagAndLanguageCode(String labelTag, String languageCode);
 
     LabelName getLabelByTagAndDefaultLanguageCode(String labelTag);
+
+    List<Allergen> getEnabledAllergens();
+
+    List<AllergenName> getAllergensByEnabledAndLanguageCode(Boolean isEnabled, String languageCode);
+
+    List<AllergenName> getAllergensByLanguageCode(String languageCode);
 
     Boolean additivesIsEmpty();
 

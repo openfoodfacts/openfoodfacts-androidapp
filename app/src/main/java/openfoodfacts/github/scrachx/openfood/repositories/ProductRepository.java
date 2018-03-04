@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.repositories;
 
 import org.greenrobot.greendao.AbstractDao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Single;
@@ -9,6 +10,8 @@ import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
 import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Label;
@@ -39,6 +42,7 @@ public class ProductRepository implements IProductRepository {
     private LabelNameDao labelNameDao;
     private TagDao tagDao;
     private AllergenDao allergenDao;
+    private AllergenNameDao allergenNameDao;
     private AdditiveDao additiveDao;
 
     public static IProductRepository getInstance() {
@@ -58,6 +62,7 @@ public class ProductRepository implements IProductRepository {
         labelNameDao = daoSession.getLabelNameDao();
         tagDao = daoSession.getTagDao();
         allergenDao = daoSession.getAllergenDao();
+        allergenNameDao = daoSession.getAllergenNameDao();
         additiveDao = daoSession.getAdditiveDao();
     }
 
@@ -106,10 +111,15 @@ public class ProductRepository implements IProductRepository {
     public Single<List<Allergen>> getAllergens(Boolean refresh) {
         if (refresh || tableIsEmpty(allergenDao)) {
             return productApi.getAllergens()
-                    .map(AllergensWrapper::getAllergens);
+                    .map(AllergensWrapper::map);
         } else {
             return Single.fromCallable(() -> allergenDao.loadAll());
         }
+    }
+
+    @Override
+    public List<Allergen> getEnabledAllergens() {
+        return allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq("true")).list();
     }
 
     @Override
@@ -134,12 +144,29 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public void saveAllergens(List<Allergen> allergens) {
-        allergenDao.insertOrReplaceInTx(allergens);
+        for (Allergen allergen : allergens) {
+            allergenDao.insertOrReplaceInTx(allergen);
+            for (AllergenName allergenName : allergen.getNames()) {
+                allergenNameDao.insertOrReplace(allergenName);
+            }
+        }
     }
 
     @Override
     public void saveAdditives(List<Additive> additives) {
         additiveDao.insertOrReplaceInTx(additives);
+    }
+
+    @Override
+    public void setAllergenEnabled(String allergenTag, Boolean isEnabled) {
+        Allergen allergen = allergenDao.queryBuilder()
+                .where(AllergenDao.Properties.Tag.eq(allergenTag))
+                .unique();
+
+        if (allergen != null) {
+            allergen.setEnabled(isEnabled);
+            allergenDao.update(allergen);
+        }
     }
 
     @Override
@@ -154,6 +181,36 @@ public class ProductRepository implements IProductRepository {
     @Override
     public LabelName getLabelByTagAndDefaultLanguageCode(String labelTag) {
         return getLabelByTagAndLanguageCode(labelTag, "en");
+    }
+
+    @Override
+    public List<AllergenName> getAllergensByEnabledAndLanguageCode(Boolean isEnabled, String languageCode) {
+        List<Allergen> allergens = allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq(isEnabled)).list();
+        if (allergens != null) {
+            List<AllergenName> allergenNames = new ArrayList<>();
+            for (Allergen allergen : allergens) {
+                AllergenName name = allergenNameDao.queryBuilder()
+                        .where(
+                                AllergenNameDao.Properties.AllergenTag.eq(allergen.getTag()),
+                                AllergenNameDao.Properties.LanguageCode.eq(languageCode)
+                        ).unique();
+
+                if (name != null) {
+                    allergenNames.add(name);
+                }
+            }
+
+            return allergenNames;
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<AllergenName> getAllergensByLanguageCode(String languageCode) {
+        return allergenNameDao.queryBuilder()
+                .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
+                .list();
     }
 
     private Boolean tableIsEmpty(AbstractDao dao) {
