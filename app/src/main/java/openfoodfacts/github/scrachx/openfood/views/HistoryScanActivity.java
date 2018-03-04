@@ -305,8 +305,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
     public void setInfo(TextView view) {
 
-        String info = getString(R.string.scan_first_string) +
-                getString(R.string.scan_first_string_continued);
+        String info = getString(R.string.scan_first_string);
 
         view.setText(info);
 
