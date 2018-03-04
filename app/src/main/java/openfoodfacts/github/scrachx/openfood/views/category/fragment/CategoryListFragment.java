@@ -62,6 +62,7 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
                 }
                 else {
                     fastScroller.setVisibility(View.VISIBLE);
+                    // check for an empty item in the start of the list
                     if(viewModel.getCategories().get().get(0).getName().isEmpty()){
                         viewModel.getCategories().get().remove(0);
                         binding.recycler.getAdapter().notifyItemRemoved(0);
