@@ -11,7 +11,7 @@
   <string name="website_product">https://world-de.openbeautyfacts.org/produkt/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
-  <string name="txtHome">Open Beauty Facts ist eine Datebank für Kosmetikprodukte mit Inhaltsstoffen, Allergenen, Zeichen und allen Leckerbissen voll Informationen kannst du hier finden.</string>
+  <string name="txtHome">„Open Beauty Facts” ist eine Datenbank von Kosmetikprodukten mit Inhaltsstoffen, Allergenen, Indizien und allen Informationen, die wir auf den Produktetiketten finden.</string>
   <string name="slide_1_title">Beitrag zur kosmetischen Transparenz leisten</string>
   <string name="slide_1_desc">Produkte erfassen, und diese fotografieren, ermöglichen die Transparenz von kosmetischen Produkten</string>
   <string name="slide_2_title">Holen Sie sich die Fakten</string>
