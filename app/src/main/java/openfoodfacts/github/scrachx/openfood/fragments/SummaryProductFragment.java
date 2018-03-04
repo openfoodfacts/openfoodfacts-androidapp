@@ -33,6 +33,8 @@ import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,7 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.CountryName;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
@@ -338,9 +341,38 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         } else {
             manufactureUlrProduct.setVisibility(View.GONE);
         }
-        if (isNotBlank(product.getCountries())) {
+
+        List<String> countryTags = product.getCountriesTags();
+        if (!countryTags.isEmpty()) {
             countryProduct.setText(bold(getString(R.string.txtCountries)));
-            countryProduct.append(' ' + product.getCountries());
+            countryProduct.append(" ");
+
+            String countryTag;
+            String languageCode = Locale.getDefault().getLanguage();
+            String defaultCountries[] = product.getCountries().split(",");
+            List<String> countries = new ArrayList<>();
+            for (int i = 0; i < countryTags.size(); i++) {
+                countryTag = countryTags.get(i);
+                CountryName countryName = productRepository.getCountryByTagAndLanguageCode(countryTag, languageCode);
+                if (countryName == null) {
+                    countryName = productRepository.getCountryByTagAndDefaultLanguageCode(countryTag);
+                    if (countryName == null) {
+                        if (defaultCountries.length > i) {
+                            countryName = new CountryName(defaultCountries[i]);
+                        }
+                    }
+                }
+
+                if (countryName != null) {
+                    countries.add(countryName.getName());
+                }
+            }
+
+            for (int i = 0; i < countries.size() - 1; i++) {
+                countryProduct.append(StringUtils.capitalize(countries.get(i)) + ", ");
+            }
+
+            countryProduct.append(StringUtils.capitalize(countries.get(countries.size() - 1)));
         } else {
             countryProduct.setVisibility(View.GONE);
         }
