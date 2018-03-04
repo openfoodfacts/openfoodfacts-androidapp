@@ -251,11 +251,18 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             ingredientsOrigin.append(' ' + product.getOrigins());
         }
 
-        String categ;
         if (isNotBlank(product.getCategories())) {
-            categ = product.getCategories().replace(",", ", ");
+
+            categoryProduct.setClickable(true);
+            categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
             categoryProduct.setText(bold(getString(R.string.txtCategories)));
-            categoryProduct.append(' ' + categ);
+            String[] categories = product.getCategories().split(",");
+            for (String category : categories) {
+
+                categoryProduct.append(getCategoriesTag(category));
+
+            }
+
         } else {
             categoryProduct.setVisibility(View.GONE);
         }
@@ -433,6 +440,29 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         return spannableStringBuilder;
     }
 
+
+
+
+    private CharSequence getCategoriesTag(String category) {
+
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(),customTabActivityHelper.getSession());
+                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse("https://world.openfoodfacts.org/category/" + category), new WebViewFallback());
+
+            }
+        };
+
+        spannableStringBuilder.append(category);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.append(" ");
+        return spannableStringBuilder;
+
+
+    }
 
 
     @OnClick(R.id.product_incomplete_message_dismiss_icon)
