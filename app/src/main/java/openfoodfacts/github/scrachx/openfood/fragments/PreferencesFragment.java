@@ -119,7 +119,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
         });
 
 
-        Preference faqbutton = findPreference("FAQ");
+        Preference faqbutton = findPreference(getString(R.string.FAQ));
+
         faqbutton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
