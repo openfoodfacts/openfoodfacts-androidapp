@@ -87,8 +87,6 @@
     <item>crwdns35045:0crwdne35045:0</item>
   </string-array>
   <!-- Content Description -->
-  <string name="fastscroller_track">crwdns37207:0crwdne37207:0</string>
-  <string name="fastscroller_handle">crwdns37208:0crwdne37208:0</string>
   <string name="search_button">crwdns35046:0crwdne35046:0</string>
   <string name="no_products">crwdns35047:0crwdne35047:0</string>
   <string name="desc_list_item_icon">crwdns35048:0crwdne35048:0</string>
@@ -111,6 +109,8 @@
   <string name="txtStores">crwdns35063:0crwdne35063:0</string>
   <string name="txtCountries">crwdns35064:0crwdne35064:0</string>
   <string name="txtIngredients">crwdns35065:0crwdne35065:0</string>
+  <string name="Donate">crwdns37211:0crwdne37211:0</string>
+  <string name="Donation">crwdns37212:0crwdne37212:0</string>
   <string name="txtSubstances">crwdns35066:0crwdne35066:0</string>
   <string name="txtAdditives">crwdns35067:0crwdne35067:0</string>
   <string name="txtTraces">crwdns35068:0crwdne35068:0</string>
@@ -378,4 +378,10 @@
   <string name="translate_help_title">crwdns37199:0crwdne37199:0</string>
   <string name="translate_help_summary">crwdns37200:0crwdne37200:0</string>
   <string name="please_check_your_connection">crwdns37205:0crwdne37205:0</string>
+  <string name="donation_url">crwdns37213:0crwdne37213:0</string>
+  <string name="advanced_search_title">crwdns37210:0crwdne37210:0</string>
+  <string name="preference_header_general">crwdns37215:0crwdne37215:0</string>
+  <string name="preference_header_network">crwdns37216:0crwdne37216:0</string>
+  <string name="preference_header_contributing">crwdns37218:0crwdne37218:0</string>
+  <string name="not_support_books">crwdns37219:0crwdne37219:0</string>
 </resources>

@@ -8,7 +8,7 @@
   <string name="action_find">חיפוש</string>
   <string name="text_barcode">נא להזין את הברקוד:</string>
   <string name="message_in_activity_save_product_offline">נדרשת לפחות תמונה אחת לטובת שליחת מוצר חדש.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+  <string name="product_incomplete_message">המפרט של מוצר זה לוקה בחסר. כתוצאה מכך, לא הצלחנו לבדוק מה הם מעוררי הרגישות.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>תקציר</item>
@@ -109,6 +109,8 @@
   <string name="txtStores">חנויות:</string>
   <string name="txtCountries">מדינות בהן נמכר:</string>
   <string name="txtIngredients">רשימת רכיבים:</string>
+  <string name="Donate">Donate</string>
+  <string name="Donation">Click here to donate to Open Food Facts</string>
   <string name="txtSubstances">חומרים או מוצרים שיכולים לגרום לרגשת או רגישות :</string>
   <string name="txtAdditives">תוספים :</string>
   <string name="txtTraces">עקבות :</string>
@@ -375,5 +377,11 @@
   <string name="lang_translate">local_translate_help</string>
   <string name="translate_help_title">סיוע בתרגום Open Food Facts</string>
   <string name="translate_help_summary">הנגשת מסד הנתונים של Open Food Facts לאנשים שדוברים את אותה השפה כמוך - לא נדרש ידע טכני</string>
-  <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="please_check_your_connection">נא לבדוק את החיבור שלך.</string>
+  <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
+  <string name="advanced_search_title">Advanced Search &amp; Charts</string>
+  <string name="preference_header_general">General</string>
+  <string name="preference_header_network">Network</string>
+  <string name="preference_header_contributing">Contributing</string>
+  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
 </resources>

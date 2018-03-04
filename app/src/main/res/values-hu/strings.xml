@@ -8,7 +8,7 @@
   <string name="action_find">Keres</string>
   <string name="text_barcode">Vonalkód beírása :</string>
   <string name="message_in_activity_save_product_offline">Csak egy fénykép kötelező egy új termék elküldéséhez.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+  <string name="product_incomplete_message">Ez a termékoldal nem teljes. Ennek eredményeként nem tudtuk elvégezni az allergén ellenőrzést.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Összefoglalás</item>
@@ -109,6 +109,8 @@
   <string name="txtStores">Boltok:</string>
   <string name="txtCountries">Országokban kapható:</string>
   <string name="txtIngredients">Összetevők listája :</string>
+  <string name="Donate">Adományoz</string>
+  <string name="Donation">Kattintson ide az Open Food Facts-nek szánt adományozáshoz</string>
   <string name="txtSubstances">Allergén, vagy irritáló termékek, alkotóanyagok:</string>
   <string name="txtAdditives">Adalékanyagok :</string>
   <string name="txtTraces">Nyomokban tartalmazhat:</string>
@@ -152,7 +154,7 @@
   <string name="txtTakePicture">Fotó készítése</string>
   <string name="txtSendAll">Összes feltöltése</string>
   <string name="txtNoData">Nincs adat</string>
-  <string name="txtPictureNeeded">Fotó szükséges</string>
+  <string name="txtPictureNeeded">Kérjük, készítsen egy képet először</string>
   <string name="toastSending">Feltöltés...</string>
   <string name="dataSaved">Elmentve az eszközre</string>
   <string name="txtInfoAddUser">Felhasználónév és jelszó megadása</string>
@@ -361,7 +363,7 @@
   <string name="device_offline_dialog_negative">Elutasít</string>
   <string name="device_offline_dialog_positive">Beállítások</string>
   <string name="saving">Mentés…</string>
-  <string name="scan_first_product">Scan First Product</string>
+  <string name="scan_first_product">Első termék beolvasása</string>
   <string name="preference_enable_mobile_data_title">Feltöltés mobilinterneten</string>
   <string name="preference_enable_mobile_data_summary_on">Új termékek feltöltése mobilinternet &amp; WiFi használatával</string>
   <string name="preference_enable_mobile_data_summary_off">Új termékek feltöltése csak WiFi használatával</string>
@@ -375,5 +377,11 @@
   <string name="lang_translate">local_translate_help</string>
   <string name="translate_help_title">Segítse az Open Food Facts fordítását</string>
   <string name="translate_help_summary">Hozza az Open Food Facts adatbázist az ön nyelvére - nincs szükség műszaki ismeretekre</string>
-  <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="please_check_your_connection">Kérjük, ellenőrizze a hálózati kapcsolatát.</string>
+  <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
+  <string name="advanced_search_title">Részletes Keresés &amp; Diagramok</string>
+  <string name="preference_header_general">General</string>
+  <string name="preference_header_network">Network</string>
+  <string name="preference_header_contributing">Contributing</string>
+  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
 </resources>

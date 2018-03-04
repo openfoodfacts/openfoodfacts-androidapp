@@ -109,6 +109,8 @@
   <string name="txtStores">Mağazalar :</string>
   <string name="txtCountries">Satılan ülkeler:</string>
   <string name="txtIngredients">Malzemelerin listesi:</string>
+  <string name="Donate">Donate</string>
+  <string name="Donation">Click here to donate to Open Food Facts</string>
   <string name="txtSubstances">Alerjiye veya toleranssızlığa neden olan maddeler veya ürünler:</string>
   <string name="txtAdditives">Katkı maddeleri:</string>
   <string name="txtTraces">İzler:</string>
@@ -376,4 +378,10 @@
   <string name="translate_help_title">Help translate Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
   <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
+  <string name="advanced_search_title">Advanced Search &amp; Charts</string>
+  <string name="preference_header_general">General</string>
+  <string name="preference_header_network">Network</string>
+  <string name="preference_header_contributing">Contributing</string>
+  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
 </resources>
