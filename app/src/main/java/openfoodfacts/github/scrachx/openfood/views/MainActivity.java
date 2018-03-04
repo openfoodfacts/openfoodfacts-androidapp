@@ -280,10 +280,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             break;
                         case LOGOUT:
                             new MaterialDialog.Builder(MainActivity.this)
-                                    .title("Confirm Logout")
-                                    .content("Are you sure to log out ?")
+                                    .title(R.string.conform_logout)
+                                    .content(R.string.logout_dialog_content)
                                     .positiveText(R.string.txtOk)
-                                    .negativeText("Cancel")
+                                    .negativeText(R.string.dialog_cancel)
                                     .onPositive(new MaterialDialog.SingleButtonCallback() {
                                         @Override
                                         public void onClick(MaterialDialog dialog, DialogAction which) {
