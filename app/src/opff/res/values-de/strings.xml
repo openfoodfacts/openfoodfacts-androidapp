@@ -19,5 +19,5 @@
   <string name="slide_3_title">Behalten Sie den Überblick über das Produkt, das Sie verwenden</string>
   <string name="slide_3_desc">Alle Kosmetika, die Sie verwenden, in einer handlichen Liste, die Sie exportieren können</string>
   <string name="slide_4_title">Funktioniert offline</string>
-  <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn noch keine Internetverbindung besteht</string>
+  <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
 </resources>
