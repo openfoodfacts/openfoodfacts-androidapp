@@ -391,6 +391,8 @@
   <string name="please_check_your_connection">Veuillez vérifier votre connexion Internet.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget</string>
   <string name="advanced_search_title">Recherche avancée &amp; Graphiques</string>
+  <string name="Terms">Terms</string>
+  <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Général</string>
   <string name="preference_header_network">Réseau</string>
   <string name="preference_header_contributing">Contribuer</string>
