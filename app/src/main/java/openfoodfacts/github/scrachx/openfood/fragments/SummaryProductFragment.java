@@ -433,6 +433,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         return spannableStringBuilder;
     }
 
+
+
+    @OnClick(R.id.product_incomplete_message_dismiss_icon)
+    public void onDismissProductIncompleteMsgClicked() {
+        productIncompleteView.setVisibility(View.GONE);
+    }
+
+
     private CharSequence getCountryTag(String country) {
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
@@ -454,11 +462,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         return spannableStringBuilder;
 
 
-    }
-
-    @OnClick(R.id.product_incomplete_message_dismiss_icon)
-    public void onDismissProductIncompleteMsgClicked() {
-        productIncompleteView.setVisibility(View.GONE);
     }
 
     // Implements CustomTabActivityHelper.ConnectionCallback
