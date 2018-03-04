@@ -97,7 +97,7 @@
   <string name="txtGenericName">Gebräuchlicher Name:</string>
   <string name="txtBarcode">Strichcode:</string>
   <string name="txtQuantity">Menge:</string>
-  <string name="txtPackaging">Verpackung:</string>
+  <string name="txtPackaging">Art der Verpackung:</string>
   <string name="txtBrands">Marken:</string>
   <string name="txtCategories">Kategorien:</string>
   <string name="txtLabels">Kategorien, Zertifizierungen, Preise:</string>
