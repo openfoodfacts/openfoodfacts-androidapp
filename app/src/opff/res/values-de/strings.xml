@@ -12,7 +12,7 @@
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-de.openpetfoodfacts.org/mitwirkender/</string>
   <string name="txtHome">Open Pet Food Facts ist eine freie Tiernahrungsmittelproduktdatenbank mit Zutaten, Allergenen, Nährwertangaben und all den Kleinigkeiten, die sich auf Produkt-Etiketten befinden.</string>
-  <string name="slide_1_title">Contribute to Pet Food transparency</string>
+  <string name="slide_1_title">Beitrag zur Transparent von Tiernahrungsprodukten leisten</string>
   <string name="slide_1_desc">Produkte einlesen, und diese fotografieren, ermöglichen die Transparenz von Tiernahrung</string>
   <string name="slide_2_title">Hol’ dir die Fakten</string>
   <string name="slide_2_desc">Umfassende Informationen über das eingelesene Produkt wurden für Sie entschlüsselt</string>
