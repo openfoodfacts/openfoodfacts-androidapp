@@ -1,19 +1,26 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import com.google.gson.annotations.SerializedName;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class AllergensWrapper {
 
-    @SerializedName("tags")
-    private List<Allergen> allergens;
+    private List<AllergenResponse> allergens;
 
-    public void setAllergens(List<Allergen> allergens) {
+    public List<Allergen> map() {
+        List<Allergen> entityAllergens = new ArrayList<>();
+        for (AllergenResponse allergen : allergens) {
+            entityAllergens.add(allergen.map());
+        }
+
+        return entityAllergens;
+    }
+
+    public void setAllergens(List<AllergenResponse> allergens) {
         this.allergens = allergens;
     }
 
-    public List<Allergen> getAllergens() {
+    public List<AllergenResponse> getAllergens() {
         return allergens;
     }
 }
