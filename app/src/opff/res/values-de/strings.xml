@@ -13,11 +13,11 @@
   <string name="website_contributor">https://world-de.openpetfoodfacts.org/mitwirkender/</string>
   <string name="txtHome">Open Pet Food Facts ist eine freie Tiernahrungsmittelproduktdatenbank mit Zutaten, Allergenen, Nährwertangaben und all den Kleinigkeiten, die sich auf Produkt-Etiketten befinden.</string>
   <string name="slide_1_title">Beitrag zur Transparent von Tiernahrungsprodukten leisten</string>
-  <string name="slide_1_desc">Produkte einlesen, und diese fotografieren, ermöglichen die Transparenz von Tiernahrung</string>
-  <string name="slide_2_title">Hol’ dir die Fakten</string>
+  <string name="slide_1_desc">Produkte erfassen, und diese fotografieren, ermöglichen die Transparenz von Tiernahrung</string>
+  <string name="slide_2_title">Holen Sie sich die Fakten</string>
   <string name="slide_2_desc">Umfassende Informationen über das eingelesene Produkt wurden für Sie entschlüsselt</string>
-  <string name="slide_3_title">Behalten Sie den Überblick über das Produkt, das Sie verwenden</string>
+  <string name="slide_3_title">Behalten Sie den Überblick über das verwendete Produkt</string>
   <string name="slide_3_desc">Alle Kosmetika, die Sie verwenden, in einer handlichen Liste, die Sie exportieren können</string>
-  <string name="slide_4_title">Funktioniert offline</string>
+  <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
   <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
 </resources>
