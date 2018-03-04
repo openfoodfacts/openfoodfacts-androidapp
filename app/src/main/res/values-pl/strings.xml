@@ -191,6 +191,20 @@
   <string name="alert_drawer">Ostrzeżenie o alergensch</string>
   <string name="warning_allergens">Zawiera alergeny</string>
   <string name="title_dialog_alert">Dodaj powiadomienie</string>
+  <string name="toggle_flash">Flash</string>
+  <string name="flash_on">Flash [ON]</string>
+  <string name="flash_off">Flash [OFF]</string>
+  <string name="ring_on">Ring [ON]</string>
+  <string name="ring_off">Ring [OFF]</string>
+  <string name="auto_focus_on">Auto Focus [ON]</string>
+  <string name="auto_focus_off">Auto Focus [OFF]</string>
+  <string name="formats">Formats</string>
+  <string name="choose_formats">Choose Formats</string>
+  <string name="select_camera">Select a Camera</string>
+  <string name="ok_button">Dobrze</string>
+  <string name="cancel_button">Cancel</string>
+  <string name="login_button">Logowanie</string>
+  <string name="create_account_button">Create Account</string>
   <string name="warning_alert_data">Informacja o twoich uczuleniach nie zostanie przesłana na serwer Open Food Facts. Uważaj, dane o produkcie mogą nie być dokładne, a wykrycie ich też nie może być pewne. Zatem, sprawdzaj dwa razy! </string>
   <string name="from_gallery">Z galerii</string>
   <string name="product_sent">Produkt wysłany z powodzeniem</string>
@@ -350,9 +364,7 @@
   <string name="skip">POMIŃ</string>
   <string name="start">ZROZUMIAŁEM</string>
   <string name="contact">Kontakt</string>
-  <string name="contact_key">contact_team</string>
   <string name="contact_summary">Skontaktuj się z zespołem</string>
-  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
   <string name="email_not_found">Nie odnaleziono klienta poczty e-mail</string>
   <string name="airplane_mode_active_dialog_title">Włączono tryb samolotowy</string>
   <string name="airplane_mode_active_dialog_message">Uruchomiony tryb samolotowy, wyłącz go by kontynuować.</string>
@@ -374,7 +386,6 @@
   <string name="preference_choose_language_dialog_title">Wybierz język</string>
   <string name="FAQ">Często zadawane pytania</string>
   <string name="FrequentlyAskedQuestions">Często zadawane pytania</string>
-  <string name="lang_translate">local_translate_help</string>
   <string name="translate_help_title">Wspomóż tłumaczenie Open Food Facts</string>
   <string name="translate_help_summary">Otwórz bazę danych Open Food Facts na swój język - wiedza techniczna nie jest wymagana</string>
   <string name="please_check_your_connection">Sprawdź połączenie.</string>
@@ -384,4 +395,7 @@
   <string name="preference_header_network">Network</string>
   <string name="preference_header_contributing">Contributing</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
+  <string name="conform_logout">Confirm Logout</string>
+  <string name="logout_dialog_content">Are you sure to log out ?</string>
+  <string name="dialog_cancel">Cancel</string>
 </resources>
