@@ -90,6 +90,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
     CardView mContainerView;
     @BindView(R.id.message_dismiss_icon)
     ImageButton mDismissButton;
+    @BindView(R.id.message)
+    TextView messageView;
 
     PhotoViewAttacher mAttacherimgSaveFront;
     PhotoViewAttacher mAttacherimgSaveNutrition;
@@ -133,6 +135,13 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
         api = new OpenFoodAPIClient(this);
         mBarcode = getIntent().getStringExtra("barcode");
+
+        String bookBarcodeTest = mBarcode.substring(0, 3);
+        if (bookBarcodeTest.equals("978") || bookBarcodeTest.equals("979")) {
+            messageView.setText(R.string.not_support_books);
+            mContainerView.setVisibility(View.VISIBLE);
+        }
+
         barcodeText.append(" " + mBarcode);
 
         imgSaveFront.setVisibility(View.GONE);
@@ -383,20 +392,19 @@ public class SaveProductOfflineActivity extends BaseActivity {
             mProduct.setImgupload_front(photoFile.getAbsolutePath());
             imgSaveFront.setVisibility(View.VISIBLE);
             mAttacherimgSaveFront = new PhotoViewAttacher(imgSaveFront);
-                Picasso.with(this)
-                        .load(photoFile)
-                        .into(imgSaveFront, new Callback() {
-                            @Override
-                            public void onSuccess() {
-                                mAttacherimgSaveFront.update();
-                            }
+            Picasso.with(this)
+                    .load(photoFile)
+                    .into(imgSaveFront, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            mAttacherimgSaveFront.update();
+                        }
 
-                            @Override
-                            public void onError() {
-                            }
-                        });
-            }
-         else if (imageTaken.equals("nutrition")) {
+                        @Override
+                        public void onError() {
+                        }
+                    });
+        } else if (imageTaken.equals("nutrition")) {
             mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
             imgSaveNutrition.setVisibility(View.VISIBLE);
             mAttacherimgSaveNutrition = new PhotoViewAttacher(imgSaveNutrition);
@@ -407,6 +415,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                         public void onSuccess() {
                             mAttacherimgSaveNutrition.update();
                         }
+
                         @Override
                         public void onError() {
                         }
@@ -422,6 +431,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                         public void onSuccess() {
                             mAttacherimageSaveIngredients.update();
                         }
+
                         @Override
                         public void onError() {
                         }

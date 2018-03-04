@@ -162,6 +162,7 @@ public class SearchProductsResultsFragment extends BaseFragment {
                                 countProductsView.setVisibility(View.INVISIBLE);
                                 offlineCloudLayout.setVisibility(View.INVISIBLE);
                                 noResultsLayout.setVisibility(View.VISIBLE);
+                                noResultsLayout.bringToFront();
                             } else {
                                 countProductsView.setVisibility(View.INVISIBLE);
                                 noResultsLayout.setVisibility(View.INVISIBLE);
