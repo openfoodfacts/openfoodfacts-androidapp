@@ -19,6 +19,9 @@ import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -46,17 +49,23 @@ import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
-import static android.content.ContentValues.TAG;
-
 public class PreferencesFragment extends PreferenceFragmentCompat {
 
     AdditiveDao mAdditiveDao;
     private SharedPreferences settings;
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        MenuItem item=menu.findItem(R.id.action_search);
+        item.setVisible(false);
+    }
 
     @Override
     public void onCreatePreferences(Bundle bundle, String rootKey) {
-        addPreferencesFromResource(R.xml.preferences);
+        setPreferencesFromResource(R.xml.preferences, rootKey);
+        setHasOptionsMenu(true);
+
+
         ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
 
         settings = getActivity().getSharedPreferences("prefs", 0);
@@ -82,6 +91,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
 
             FragmentActivity activity = PreferencesFragment.this.getActivity();
             Configuration configuration = activity.getResources().getConfiguration();
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
 
                 configuration.setLocale(LocaleHelper.getLocale((String) locale));
@@ -90,7 +100,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             return true;
         });
 
-        Preference contactButton = findPreference(getString(R.string.contact_key));
+        Preference contactButton = findPreference("contact_team");
         contactButton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -108,7 +118,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             }
         });
 
-        Log.d(TAG, "onCreatePreferences: "+getFragmentManager());
+
         Preference faqbutton = findPreference("FAQ");
         faqbutton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
