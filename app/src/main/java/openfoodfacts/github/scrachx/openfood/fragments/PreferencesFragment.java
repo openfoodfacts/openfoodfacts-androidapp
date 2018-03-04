@@ -100,7 +100,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             return true;
         });
 
-        Preference contactButton = findPreference(getString(R.string.contact_key));
+        Preference contactButton = findPreference("contact_team");
         contactButton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -130,7 +130,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             }
         });
 
-        Preference langHelp = findPreference(getString(R.string.lang_translate));
+        Preference langHelp = findPreference("local_translate_help");
 
         langHelp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
 
