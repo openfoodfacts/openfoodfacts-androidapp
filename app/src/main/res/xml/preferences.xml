@@ -62,7 +62,7 @@
         <Preference
             android:key="@string/FAQ"
             android:summary="@string/FrequentlyAskedQuestions"
-                    android:key="@string/FAQ"/>
+                    android:title="@string/FAQ"/>
 
             
            <Preference android:title="@string/translate_help_title"
