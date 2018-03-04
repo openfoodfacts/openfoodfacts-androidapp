@@ -102,7 +102,7 @@
   <string name="txtCategories">Kategorien:</string>
   <string name="txtLabels">Kategorien, Zertifizierungen, Preise:</string>
   <string name="txtManufacturing">Herstellungs- oder Verarbeitungsorte:</string>
-  <string name="txtIngredientsOrigins">Herkunft der Zutaten:</string>
+  <string name="txtIngredientsOrigins">Herkunft der Inhaltsstoffe:</string>
   <string name="txtCity">Stadt, Bundesland und Land des Kaufs:</string>
   <string name="txtEMB">Produzenten-Schlüssel:</string>
   <string name="txtManufactureUrl">Link zur Produktseite auf der offiziellen Seite des Herstellers:</string>
@@ -344,7 +344,7 @@
   <string name="collagen_meat_protein_ratio">Kollagenwert</string>
   <string name="cocoa">Kakao</string>
   <string name="chlorophyl">Chlorophyll</string>
-  <string name="take_picture_ingredients">Foto der Zutaten aufnehmen</string>
+  <string name="take_picture_ingredients">Foto der Inhaltsstoffe aufnehmen</string>
   <string name="take_picture_front">Foto der Vorderseite aufnehmen</string>
   <string name="take_picture_nutrition_table">Foto der Nährwerttabelle aufnehmen</string>
   <string name="take_more_pictures">Weitere Fotos aufnehmen</string>
