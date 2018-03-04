@@ -37,7 +37,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
      * left untouched just fix the code in the version case and push a new
      * release
      *
-     * @param db database
+     * @param db             database
      * @param migrateVersion
      */
     private void upgrade(Database db, int migrateVersion) {
@@ -47,15 +47,25 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 break;
             case 3:
                 ToUploadProductDao.createTable(db, true);
+                break;
             case 4:
                 TagDao.createTable(db, true);
+                break;
             case 5: {
                 db.execSQL("ALTER TABLE history_product ADD COLUMN 'quantity' TEXT NOT NULL DEFAULT '';");
                 db.execSQL("ALTER TABLE history_product ADD COLUMN 'nutrition_grade' TEXT NOT NULL DEFAULT '';");
+                break;
             }
             case 6: {
                 LabelDao.createTable(db, true);
                 LabelNameDao.createTable(db, true);
+                break;
+            }
+            case 7: {
+                AllergenDao.dropTable(db, true);
+                AllergenDao.createTable(db, true);
+                AllergenNameDao.createTable(db, true);
+                break;
             }
         }
     }
