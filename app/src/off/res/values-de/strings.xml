@@ -12,12 +12,12 @@
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-de.openfoodfacts.org/mitwirkender/</string>
   <string name="txtHome">Open Food Facts ist eine freie Nahrungsmittelproduktdatenbank mit Zutaten, Allergenen, Nährwertangaben und all den Kleinigkeiten, die sich auf Produkt-Etiketten befinden.</string>
-  <string name="slide_1_title">Beitrag zur Lebensmitteltransparenz leisten</string>
+  <string name="slide_1_title">Beitrag zur Transparent von Lebensmittelprodukten leisten</string>
   <string name="slide_1_desc">Produkte einlesen, und diese fotografieren, ermöglichen die Transparenz von Lebensmitteln</string>
   <string name="slide_2_title">Hol’ dir die Fakten</string>
   <string name="slide_2_desc">Umfassende Informationen über das eingelesene Produkt wurden für Sie entschlüsselt</string>
   <string name="slide_3_title">Holen Sie sich „Nutri-Score” (franz. Nahrungsmittelampel)</string>
-  <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
+  <string name="slide_3_desc">Eine zusammenfassende Darstellung der ernährungsphysiologischen Eigenschaften Ihrer bevorzugten Lebensmittelprodukte</string>
   <string name="slide_4_title">Funktioniert offline</string>
   <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
 </resources>
