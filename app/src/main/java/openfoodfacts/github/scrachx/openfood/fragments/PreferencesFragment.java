@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
@@ -111,37 +110,28 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
 
 
         Preference faqbutton = findPreference("FAQ");
-        faqbutton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
+        faqbutton.setOnPreferenceClickListener(preference -> {
 
-                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-                CustomTabActivityHelper.openCustomTab(getActivity(),customTabsIntent,Uri.parse(getString(R.string.faq_url)),new WebViewFallback());
-                return true;
-            }
+            CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+            CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.faq_url)), new WebViewFallback());
+            return true;
         });
 
         Preference terms = findPreference("Terms");
-        terms.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
+        terms.setOnPreferenceClickListener(preference -> {
 
-                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-                CustomTabActivityHelper.openCustomTab(getActivity(),customTabsIntent,Uri.parse(getString(R.string.terms_url)),new WebViewFallback());
-                return true;
-            }
+            CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+            CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.terms_url)), new WebViewFallback());
+            return true;
         });
 
         Preference langHelp = findPreference("local_translate_help");
-        langHelp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
+        langHelp.setOnPreferenceClickListener(preference -> {
 
             CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
             CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
 
-                return true;
-            }
+            return true;
         });
     }
 
