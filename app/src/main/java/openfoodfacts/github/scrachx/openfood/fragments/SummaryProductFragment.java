@@ -45,6 +45,7 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.CountryName;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
@@ -258,11 +259,33 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             ingredientsOrigin.append(' ' + product.getOrigins());
         }
 
-        String categ;
-        if (isNotBlank(product.getCategories())) {
-            categ = product.getCategories().replace(",", ", ");
+        if (!product.getCategoriesTags().isEmpty()) {
             categoryProduct.setText(bold(getString(R.string.txtCategories)));
-            categoryProduct.append(' ' + categ);
+            categoryProduct.append(" ");
+
+            CategoryName categoryName;
+            String languageCode = Locale.getDefault().getLanguage();
+            List<String> categories = new ArrayList<>();
+            for (String tag : product.getCategoriesTags()) {
+                categoryName = productRepository.getCategoryByTagAndLanguageCode(tag, languageCode);
+                if (categoryName == null) {
+                    categoryName = productRepository.getCategoryByTagAndDefaultLanguageCode(tag);
+                }
+
+                if (categoryName != null) {
+                    categories.add(categoryName.getName());
+                }
+            }
+
+            if (categories.isEmpty()) {
+                categoryProduct.setVisibility(View.GONE);
+            } else {
+                for (int i = 0; i < categories.size() - 1; i++) {
+                    categoryProduct.append(categories.get(i) + ", ");
+                }
+
+                categoryProduct.append(categories.get(categories.size() - 1));
+            }
         } else {
             categoryProduct.setVisibility(View.GONE);
         }
