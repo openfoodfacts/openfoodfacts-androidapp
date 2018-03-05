@@ -59,24 +59,18 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
             case 6: {
                 LabelDao.createTable(db, true);
                 LabelNameDao.createTable(db, true);
-                break;
-            }
-            case 7: {
+
                 AllergenDao.dropTable(db, true);
                 AllergenDao.createTable(db, true);
                 AllergenNameDao.createTable(db, true);
-                break;
-            }
-            case 8: {
+
                 AdditiveDao.dropTable(db, true);
                 AdditiveDao.createTable(db, true);
                 AdditiveNameDao.createTable(db, true);
 
                 CountryDao.createTable(db, true);
                 CountryNameDao.createTable(db, true);
-                break;
-            }
-            case 9: {
+
                 CategoryDao.createTable(db, true);
                 CategoryNameDao.createTable(db, true);
                 break;
