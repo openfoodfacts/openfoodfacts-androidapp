@@ -30,17 +30,11 @@ public class ProductRepositoryTest {
     private final String TEST_ALLERGEN_NAME = "Altramuces";
 
     private IProductRepository productRepository;
-    private List<Allergen> allergens;
 
     @Before
     public void setup() {
         productRepository = ProductRepository.getInstance();
-        allergens = createAllergens();
-    }
-
-    @Test
-    public void testSaveAllergens() {
-        productRepository.saveAllergens(allergens);
+        productRepository.saveAllergens(createAllergens());
     }
 
     @Test
