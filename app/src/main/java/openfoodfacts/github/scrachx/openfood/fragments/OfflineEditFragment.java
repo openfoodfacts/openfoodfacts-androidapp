@@ -16,6 +16,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -61,9 +64,15 @@ public class OfflineEditFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         return createView(inflater, container, R.layout.fragment_offline_edit);
     }
 
+    @Override
+   public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+                MenuItem item=menu.findItem(R.id.action_search);
+              item.setVisible(false);
+           }
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -260,7 +269,7 @@ public class OfflineEditFragment extends BaseFragment {
                 }
 
                 Bitmap imgUrl = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
-                saveItems.add(new SaveItem(product.getName(), imageIcon, imgUrl, product.getBarcode()));
+                saveItems.add(new SaveItem(product.getName(), imageIcon, imgUrl, product.getBarcode(),product.getWeight()+" "+product.getWeight_unit(),product.getBrands()));
             }
 
             return ctx[0];

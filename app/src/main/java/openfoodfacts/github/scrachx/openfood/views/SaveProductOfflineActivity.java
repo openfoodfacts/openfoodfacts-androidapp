@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -90,6 +91,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
     CardView mContainerView;
     @BindView(R.id.message_dismiss_icon)
     ImageButton mDismissButton;
+    @BindView(R.id.message)
+    TextView messageView;
 
     PhotoViewAttacher mAttacherimgSaveFront;
     PhotoViewAttacher mAttacherimgSaveNutrition;
@@ -105,6 +108,9 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         setContentView(R.layout.activity_save_product_offline);
 
         setSupportActionBar(toolbar);
@@ -133,6 +139,13 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
         api = new OpenFoodAPIClient(this);
         mBarcode = getIntent().getStringExtra("barcode");
+
+        String bookBarcodeTest = mBarcode.substring(0, 3);
+        if (bookBarcodeTest.equals("978") || bookBarcodeTest.equals("979")) {
+            messageView.setText(R.string.not_support_books);
+            mContainerView.setVisibility(View.VISIBLE);
+        }
+
         barcodeText.append(" " + mBarcode);
 
         imgSaveFront.setVisibility(View.GONE);
@@ -383,20 +396,19 @@ public class SaveProductOfflineActivity extends BaseActivity {
             mProduct.setImgupload_front(photoFile.getAbsolutePath());
             imgSaveFront.setVisibility(View.VISIBLE);
             mAttacherimgSaveFront = new PhotoViewAttacher(imgSaveFront);
-                Picasso.with(this)
-                        .load(photoFile)
-                        .into(imgSaveFront, new Callback() {
-                            @Override
-                            public void onSuccess() {
-                                mAttacherimgSaveFront.update();
-                            }
+            Picasso.with(this)
+                    .load(photoFile)
+                    .into(imgSaveFront, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            mAttacherimgSaveFront.update();
+                        }
 
-                            @Override
-                            public void onError() {
-                            }
-                        });
-            }
-         else if (imageTaken.equals("nutrition")) {
+                        @Override
+                        public void onError() {
+                        }
+                    });
+        } else if (imageTaken.equals("nutrition")) {
             mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
             imgSaveNutrition.setVisibility(View.VISIBLE);
             mAttacherimgSaveNutrition = new PhotoViewAttacher(imgSaveNutrition);
@@ -407,6 +419,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                         public void onSuccess() {
                             mAttacherimgSaveNutrition.update();
                         }
+
                         @Override
                         public void onError() {
                         }
@@ -422,6 +435,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                         public void onSuccess() {
                             mAttacherimageSaveIngredients.update();
                         }
+
                         @Override
                         public void onError() {
                         }
