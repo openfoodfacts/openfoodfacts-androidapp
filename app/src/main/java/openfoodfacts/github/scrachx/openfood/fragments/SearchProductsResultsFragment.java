@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -113,9 +114,16 @@ public class SearchProductsResultsFragment extends BaseFragment {
                         }
                         else {
                             new MaterialDialog.Builder(getActivity())
-                                    .title(R.string.action_about)
+                                    .title(R.string.device_offline_dialog_title)
                                     .content(R.string.connectivity_check)
-                                    .neutralText(R.string.txtOk)
+                                    .positiveText(R.string.txt_try_again)
+                                    .negativeText(R.string.dismiss)
+                                    .onPositive((dialog, which) ->{
+                                if(Utils.isNetworkConnected(getActivity()))
+                                    api.getProduct(barcode,getActivity());
+                                else
+                                    Toast.makeText(getActivity(), R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
+                                    })
                                     .show();
                         }
                     }
