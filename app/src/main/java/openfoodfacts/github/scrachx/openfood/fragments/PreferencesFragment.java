@@ -65,7 +65,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
         setPreferencesFromResource(R.xml.preferences, rootKey);
         setHasOptionsMenu(true);
 
-
         ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
 
         settings = getActivity().getSharedPreferences("prefs", 0);
