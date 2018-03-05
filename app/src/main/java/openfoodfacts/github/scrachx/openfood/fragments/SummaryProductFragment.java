@@ -328,7 +328,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
         if (isNotBlank(product.getCountries())) {
             countryProduct.setText(bold(getString(R.string.txtCountries)));
-            countryProduct.append(' ' + product.getCountries());
+            countryProduct.append(" ");
+            countryProduct.setClickable(true);
+            countryProduct.setMovementMethod(LinkMovementMethod.getInstance());
+            String[] countries = product.getCountries().split(",");
+            for (String country : countries) {
+                countryProduct.append(getCountryTag(country));
+            }
         } else {
             countryProduct.setVisibility(View.GONE);
         }
@@ -435,6 +441,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
 
+
+
     private CharSequence getCategoriesTag(String category) {
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
@@ -456,9 +464,34 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     }
 
+
     @OnClick(R.id.product_incomplete_message_dismiss_icon)
     public void onDismissProductIncompleteMsgClicked() {
         productIncompleteView.setVisibility(View.GONE);
+    }
+
+
+    private CharSequence getCountryTag(String country) {
+
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse("https://world.openfoodfacts.org/country/" + country), new WebViewFallback());
+
+            }
+
+        };
+
+        spannableStringBuilder.append(country);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.append(" ");
+        return spannableStringBuilder;
+
+
     }
 
     // Implements CustomTabActivityHelper.ConnectionCallback
