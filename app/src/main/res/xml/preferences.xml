@@ -65,7 +65,7 @@
             android:title="@string/FAQ" />
 
         <Preference
-            android:key="@string/Terms"
+            android:key="Terms"
             android:summary="@string/TermsOfUse"
             android:title="@string/Terms" />
 
