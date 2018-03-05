@@ -101,6 +101,10 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
         });
 
         Preference contactButton = findPreference("contact_team");
+        if (findPreference("contact_team") == null) {
+            return ;
+        }
+
         contactButton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
