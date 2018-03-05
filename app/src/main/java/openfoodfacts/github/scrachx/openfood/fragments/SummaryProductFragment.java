@@ -328,7 +328,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
         if (isNotBlank(product.getCountries())) {
             countryProduct.setText(bold(getString(R.string.txtCountries)));
-            countryProduct.append(' ' + product.getCountries());
+            countryProduct.setClickable(true);
+            countryProduct.setMovementMethod(LinkMovementMethod.getInstance());
+            String[] countries =  product.getCountries().split(",");
+            countryProduct.append(" ");
+            for(String country : countries){
+                countryProduct.append(getCountryTag(country));
+            }
         } else {
             countryProduct.setVisibility(View.GONE);
         }
@@ -416,6 +422,29 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         Tag tag = mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique();
         if (tag != null) return tag.getName();
         return embTag;
+    }
+
+    private CharSequence getCountryTag(String country) {
+
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse("https://world.openfoodfacts.org/country/" + country), new WebViewFallback());
+
+            }
+
+        };
+
+        spannableStringBuilder.append(country);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.append(" ");
+        return spannableStringBuilder;
+
+
     }
 
     private CharSequence getSpanTag(String embCode, String embUrl) {
