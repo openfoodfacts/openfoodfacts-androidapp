@@ -120,6 +120,10 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
 
 
         Preference faqbutton = findPreference("FAQ");
+        if (findPreference("FAQ") == null) {
+            return ;
+        }
+
         faqbutton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -131,6 +135,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
         });
 
         Preference terms = findPreference("Terms");
+        if (findPreference("Terms") == null) {
+            return ;
+        }
         terms.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -142,6 +149,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
         });
 
         Preference langHelp = findPreference("local_translate_help");
+        if (findPreference("local_translate_help") == null) {
+            return ;
+        }
         langHelp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
