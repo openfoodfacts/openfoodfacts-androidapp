@@ -6,12 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-
-import android.graphics.drawable.Drawable;
-
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -31,7 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,9 +36,6 @@ import com.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -75,6 +67,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     Button scanFirst;
     @BindView(R.id.empty_history_info)
     TextView infoView;
+    @BindView(R.id.history_progressbar)
+    ProgressBar historyProgressbar;
 
 
     @Override
@@ -139,7 +133,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                                 .neutralText(R.string.txtOk)
                                 .show();
                     } else {
-                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, Utils
+                                .MY_PERMISSIONS_REQUEST_STORAGE);
                     }
                 } else {
                     exportCSV();
@@ -231,15 +226,15 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         @Override
         protected void onPreExecute() {
+            historyProgressbar.setVisibility(View.VISIBLE);
             List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             if (listHistoryProducts.size() == 0) {
                 emptyHistory = true;
+                historyProgressbar.setVisibility(View.GONE);
                 infoView.setVisibility(View.VISIBLE);
                 scanFirst.setVisibility(View.VISIBLE);
                 invalidateOptionsMenu();
                 cancel(true);
-            } else {
-                Toast.makeText(getApplicationContext(), R.string.txtLoading, Toast.LENGTH_LONG).show();
             }
         }
 
@@ -250,40 +245,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
 
             for (HistoryProduct historyProduct : listHistoryProducts) {
-                Bitmap imgUrl;
-                HttpURLConnection connection = null;
-                InputStream input = null;
-                try {
-                    URL url = new URL(historyProduct.getUrl());
-                    connection = (HttpURLConnection) url.openConnection();
-                    connection.setDoInput(true);
-                    connection.connect();
-                    input = connection.getInputStream();
-                    imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(input), 200, 200, true);
-                } catch (IOException e) {
-                    Log.i("HISTORY", "unable to get the history product image", e);
-                    Drawable drawable = getResources().getDrawable(R.drawable.ic_no_red_24dp);
-                    Canvas canvas = new Canvas();
-                    Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-                    canvas.setBitmap(bitmap);
-                    drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-                    drawable.draw(canvas);
-                    imgUrl = bitmap;
-                } finally {
-                    if (input != null) {
-                        try {
-                            input.close();
-                        } catch (IOException e) {
-                            // no job
-                        }
-                    }
-
-                    if (connection != null) {
-                        connection.disconnect();
-                    }
-                }
-
-                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), imgUrl, historyProduct.getBarcode(), historyProduct.getLastSeen()));
+                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), historyProduct.getUrl(), historyProduct
+                        .getBarcode(), historyProduct.getLastSeen(), historyProduct.getQuantity(), historyProduct.getNutritionGrade()));
             }
 
             return ctx[0];
@@ -298,7 +261,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                     .website_product), activity);
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
-
+            historyProgressbar.setVisibility(View.GONE);
 
             SwipeController swipeController = new SwipeController(ctx, HistoryScanActivity.this);
             ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
@@ -324,10 +287,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                             .title(R.string.action_about)
                             .content(R.string.permission_camera)
                             .neutralText(R.string.txtOk)
-                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(HistoryScanActivity.this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(HistoryScanActivity.this, new String[]{Manifest
+                                    .permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
                             .show();
                 } else {
-                    ActivityCompat.requestPermissions(HistoryScanActivity.this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                    ActivityCompat.requestPermissions(HistoryScanActivity.this, new String[]{Manifest.permission.CAMERA}, Utils
+                            .MY_PERMISSIONS_REQUEST_CAMERA);
                 }
             } else {
                 Intent intent = new Intent(HistoryScanActivity.this, ScannerFragmentActivity.class);
@@ -339,8 +304,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
     public void setInfo(TextView view) {
 
-        String info = "Your viewed product history will be listed here.\n"+
-        "This history is for your eyes only and is stored locally.";
+        String info = "Your viewed product history will be listed here.\n" +
+                "This history is for your eyes only and is stored locally.";
 
         view.setText(info);
 

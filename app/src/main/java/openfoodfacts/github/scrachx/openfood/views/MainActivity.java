@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -34,6 +35,7 @@ import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.holder.BadgeStyle;
 import com.mikepenz.materialdrawer.holder.StringHolder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
@@ -52,6 +54,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsResultsFragment;
+import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
@@ -89,6 +92,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private Uri contributeUri;
     private Uri discoverUri;
     private Uri userContributeUri;
+    private SendProductDao mSendProductDao;
+    private int numberOFSavedProducts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +110,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         Bundle extras = getIntent().getExtras();
         FragmentManager fragmentManager = getSupportFragmentManager();
+        mSendProductDao = Utils.getAppDaoSession(MainActivity.this).getSendProductDao();
+        numberOFSavedProducts = mSendProductDao.loadAll().size();
+
 
         boolean isOpenOfflineEdit = extras != null && extras.getBoolean("openOfflineEdit");
         if (isOpenOfflineEdit) {
@@ -173,6 +181,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     }
 
                     @Override
+
                     public void onDrawerSlide(View drawerView, float slideOffset) {
                         Utils.hideKeyboard(MainActivity.this);
                     }
@@ -183,13 +192,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(2),
                         new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(3).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(4).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.advanced_search_title).withIcon(GoogleMaterial.Icon.gmd_insert_chart).withIdentifier(12).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(5).withSelectable(false),
                         new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
                         new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(CONTRIBUTOR),
                         new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(7),
                         new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(8),
                         new DividerDrawerItem(),
-                        new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9),
+                        createOfflineEditDrawerItem(),
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ABOUT).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(CONTRIBUTE).withSelectable(false),
@@ -257,15 +267,23 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                 }
                             }
                             break;
+
+                        case 12:
+
+                            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                            CustomTabsIntent customTabsIntent = builder.build();
+                            CustomTabActivityHelper.openCustomTab(this,customTabsIntent,Uri.parse(getString(R.string.advanced_search_url)),new WebViewFallback());
+                            break;
+
                         case CONTRIBUTOR:
                             myContributions();
                             break;
                         case LOGOUT:
                             new MaterialDialog.Builder(MainActivity.this)
-                                    .title("Confirm Logout")
-                                    .content("Are you sure to log out ?")
+                                    .title(R.string.conform_logout)
+                                    .content(R.string.logout_dialog_content)
                                     .positiveText(R.string.txtOk)
-                                    .negativeText("Cancel")
+                                    .negativeText(R.string.dialog_cancel)
                                     .onPositive(new MaterialDialog.SingleButtonCallback() {
                                         @Override
                                         public void onClick(MaterialDialog dialog, DialogAction which) {
@@ -514,6 +532,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         return true;
     }
 
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
                                            @NonNull int[] grantResults) {
@@ -625,15 +644,28 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     /**
      * This moves the main activity to the preferences fragment.
      */
-    public void moveToPreferences(){
+    public void moveToPreferences() {
         result.setSelection(8);
         Fragment fragment = new PreferencesFragment();
         getSupportActionBar().setTitle(R.string.action_preferences);
 
-        if (fragment != null){
+        if (fragment != null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
         } else {
             Log.e(getClass().getSimpleName(), "Error in creating fragment");
+        }
+    }
+
+    /**
+     * Create the drawer item. This adds a badge if there are items in the offline edit, otherwise
+     * there is no badge present.
+     * @return drawer item.
+     */
+    private PrimaryDrawerItem createOfflineEditDrawerItem(){
+        if (numberOFSavedProducts > 0) {
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9).withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
+        } else {
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9);
         }
     }
 }
