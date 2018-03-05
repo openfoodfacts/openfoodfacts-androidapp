@@ -62,20 +62,12 @@
         <Preference
             android:key="FAQ"
             android:summary="@string/FrequentlyAskedQuestions"
-                    android:title="@string/FAQ"/>
+            android:title="@string/FAQ" />
 
-            
-           <Preference android:title="@string/translate_help_title"
-        android:key="@string/lang_translate"
-        android:summary="@string/translate_help_summary"/>
-    <Preference
-
-        android:title="@string/Terms"
-        android:summary="@string/TermsOfUse"
-        android:key="@string/Terms"/>
-
-          
-
+        <Preference
+            android:key="@string/Terms"
+            android:summary="@string/TermsOfUse"
+            android:title="@string/Terms" />
 
     </PreferenceCategory>
 </PreferenceScreen>
