@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -28,11 +29,12 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
     private final List<HistoryItem> list;
     private final String productUrl;
     private Activity mActivity;
-
+    private Resources res;
     public HistoryListAdapter(List<HistoryItem> list, String productUrl, Activity activity) {
         this.list = list == null ? Collections.<HistoryItem>emptyList() : list;
         this.productUrl = productUrl;
         this.mActivity = activity;
+        res = activity.getResources();
     }
 
     @Override
@@ -124,33 +126,21 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
 
 
         String secText = String.valueOf(seconds) + " seconds ago";
+        int number = 0;
+        String minText = res.getQuantityString(R.plurals.minutes,number,number);
 
-        String minText = String.valueOf(minutes) + " minutes ago";
-        String OneMinText = String.valueOf(minutes) + " minute ago";
+        String hourText = res.getQuantityString(R.plurals.hours,(int) hours,hours);
 
-        String hourText = String.valueOf(hours) + " hours ago";
-        String OneHourText = String.valueOf(hours) + " hour ago";
-
-        String dayText = String.valueOf(days) + " days ago";
-        String OneDayText = String.valueOf(days) + " day ago";
+        String dayText = res.getQuantityString(R.plurals.days,(int) days,days);
 
         if (seconds < 60) {
             holder.txtDate.setText(secText);
         }
-        else if(minutes==1){
-            holder.txtDate.setText(OneMinText);
-        }
         else if (minutes < 60) {
             holder.txtDate.setText(minText);
         }
-        else if(hours==1){
-            holder.txtDate.setText(OneHourText);
-        }
         else if (hours < 24) {
             holder.txtDate.setText(hourText);
-        }
-        else if(days==1){
-            holder.txtDate.setText(OneDayText);
         }
         else {
             holder.txtDate.setText(dayText);
