@@ -419,5 +419,6 @@
     <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
     <string name="advanced_search_url" translatable="false">https://world.openfoodfacts.org/cgi/search.pl</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
+    <string name="connectivity_check">Please check your internet connection</string>
 
 </resources>

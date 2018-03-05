@@ -112,10 +112,11 @@ public class SearchProductsResultsFragment extends BaseFragment {
                             }
                         }
                         else {
-                            offlineCloudLayout.setVisibility(View.VISIBLE);
-                            swipeRefreshLayout.setVisibility(View.GONE);
-                            noResultsLayout.setVisibility(View.GONE);
-                            countProductsView.setVisibility(View.GONE);
+                            new MaterialDialog.Builder(getActivity())
+                                    .title(R.string.action_about)
+                                    .content(R.string.connectivity_check)
+                                    .neutralText(R.string.txtOk)
+                                    .show();
                         }
                     }
                 })
