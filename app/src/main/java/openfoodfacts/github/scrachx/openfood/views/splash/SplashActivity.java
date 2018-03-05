@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.splash;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -20,6 +21,10 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
         toast = new LoadToast(this);
 
         presenter = new SplashPresenter(getSharedPreferences("prefs", 0), this);

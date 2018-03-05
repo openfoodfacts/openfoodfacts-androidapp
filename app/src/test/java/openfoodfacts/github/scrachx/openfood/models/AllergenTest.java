@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 
 import org.junit.Test;
 
-import java.io.IOException;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.network.deserializers.AllergensWrapperDeserializer;
@@ -16,7 +15,7 @@ import static org.junit.Assert.assertFalse;
 public class AllergenTest {
 
     @Test
-    public void deserialization() throws IOException {
+    public void deserialization() {
         String json = "{\"en:lupin\":" +
                 "{\"name\":" +
                 "{\"es\":\"Altramuces\"," +
@@ -61,7 +60,7 @@ public class AllergenTest {
         assertEquals(allergenName.getName(), "Lupinen");
     }
 
-    private AllergensWrapper deserialize(String json) throws IOException {
+    private AllergensWrapper deserialize(String json) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(AllergensWrapper.class, new AllergensWrapperDeserializer());
         Gson gson = gsonBuilder.create();

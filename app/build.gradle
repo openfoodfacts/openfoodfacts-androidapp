@@ -82,6 +82,7 @@ android {
     testOptions {
         // avoid "Method ... not mocked."
         unitTests.returnDefaultValues = true
+        execution 'ANDROID_TEST_ORCHESTRATOR'
     }
 }
 
@@ -200,6 +201,8 @@ dependencies {
     }
 
     //Testing
+    androidTestUtil 'com.android.support.test:orchestrator:1.0.1'
+
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     testImplementation "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"
