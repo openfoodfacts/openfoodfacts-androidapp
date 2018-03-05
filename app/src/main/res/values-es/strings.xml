@@ -8,7 +8,7 @@
   <string name="action_find">Buscar</string>
   <string name="text_barcode">Escribe el código de barras :</string>
   <string name="message_in_activity_save_product_offline">Solo una foto es obligatoria para poder enviar un nuevo producto.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+  <string name="product_incomplete_message">Este producto no está completo. Como resultado, no pudimos hacer la comprobación de los alérgenos.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Resumen</item>
@@ -104,8 +104,8 @@
   <string name="txtManufacturing">Lugares de manufactura o proceso :</string>
   <string name="txtIngredientsOrigins">Origen de los Ingredientes :</string>
   <string name="txtCity">Ciudad, estado o país donde se compró :</string>
-  <string name="txtEMB">EMB Code:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtEMB">Código EMB:</string>
+  <string name="txtManufactureUrl">Enlace a la página del producto en el sitio oficial del productor:</string>
   <string name="txtStores">Tiendas :</string>
   <string name="txtCountries">Países donde se compra :</string>
   <string name="txtIngredients">Lista de ingredientes :</string>
