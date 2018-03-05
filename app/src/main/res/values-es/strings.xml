@@ -396,8 +396,8 @@
   <string name="preference_header_general">General</string>
   <string name="preference_header_network">Red</string>
   <string name="preference_header_contributing">Contribuir</string>
-  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="conform_logout">Confirm Logout</string>
-  <string name="logout_dialog_content">Are you sure to log out ?</string>
-  <string name="dialog_cancel">Cancel</string>
+  <string name="not_support_books">Los libros no están actualmente soportados por Open Food Facts</string>
+  <string name="conform_logout">Confirmar el cierre de sesión</string>
+  <string name="logout_dialog_content">¿Estás seguro de cerrar la sesión?</string>
+  <string name="dialog_cancel">Cancelar</string>
 </resources>
