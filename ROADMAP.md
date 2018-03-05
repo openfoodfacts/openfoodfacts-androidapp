@@ -5,9 +5,9 @@ Enhancements:
 - Extend the Additives system for all languages using the API instead of the unsourced files we currently use
 - Add nutriscore color dots in search results
 - Timestamp the Scanning history
-- Make information clickable on product page
+- Make information clickable on the product page
 - Add the "Period after Opening" field for Open Beauty Facts
-- Add link to official product website if present
+- Add a link to official product website if present
 - Show last edit date on product
 - Let the user view all unselected images
 - Add ability to rotate and crop images (before sending)

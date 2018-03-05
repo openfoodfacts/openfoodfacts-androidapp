@@ -4,13 +4,13 @@
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/ -->
   <string name="website">https://world-he.openbeautyfacts.org/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
-  <string name="website_contribute">https://world.openbeautyfacts.org/contribute</string>
+  <string name="website_contribute">https://world-he.openbeautyfacts.org/contribute</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
-  <string name="website_discover">https://world.openbeautyfacts.org/discover</string>
+  <string name="website_discover">https://world-he.openbeautyfacts.org/discover</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
-  <string name="website_product">https://world.openbeautyfacts.org/product/</string>
+  <string name="website_product">https://world-he.openbeautyfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
-  <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
+  <string name="website_contributor">https://world-he.openbeautyfacts.org/contributor/</string>
   <string name="txtHome">Open Beauty Facts הוא מסד נתונים של מוצרי קוסמטיקה עם רכיבים, אלרגנים, תסמינים וכל שביב מידע שניתן למצוא על תווית המוצר.</string>
   <string name="slide_1_title">תרומה לשקיפות קוסמטית</string>
   <string name="slide_1_desc">ניתן לסרוק מוצרים, לצלם אותם ולהפוך את השקיפות הקוסמטית למציאות</string>

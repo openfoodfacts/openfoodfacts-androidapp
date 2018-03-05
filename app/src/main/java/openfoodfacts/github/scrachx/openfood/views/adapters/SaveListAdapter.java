@@ -52,6 +52,8 @@ public class SaveListAdapter extends BaseAdapter {
         TextView txtTitle = (TextView) convertView.findViewById(R.id.titleSave);
         TextView txtBarcode = (TextView) convertView.findViewById(R.id.barcodeSave);
         ImageView imgProduct = (ImageView) convertView.findViewById(R.id.imgSaveProduct);
+        TextView txtWeight = (TextView)convertView.findViewById(R.id.offlineWeight);
+        TextView txtBrand = (TextView)convertView.findViewById(R.id.offlineBrand);
 
         SaveItem item = saveItems.get(position);
 
@@ -59,6 +61,8 @@ public class SaveListAdapter extends BaseAdapter {
         txtTitle.setText(item.getTitle());
         imgProduct.setImageBitmap(item.getUrl());
         txtBarcode.setText(item.getBarcode());
+        txtWeight.setText(item.getWeight());
+        txtBrand.setText(item.getBrand());
 
         return convertView;
     }

@@ -26,8 +26,8 @@ To now update your local copy type <br> `git fetch upstream` <br> `git merge ups
 1. Checkout to the master branch `git checkout master`
 2. Sync `git pull`
 3. Start a new branch with a suitable name `git checkout -b branch_name`
-4. Develop a new feature or solve a existing issue 
+4. Develop a new feature or solve an existing issue 
 5. Add the changed files `git add file_name`
 6. Commit with a suitable message `git commit -m " Changes made "`
 7. Push `git push origin branch_name`
-8. Go to the Github Repositoy and create a pull request according to the [PULL_REQUEST_TEMPLATE](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/.github/PULL_REQUEST_TEMPLATE.md).
+8. Go to the Github Repository and create a pull request according to the [PULL_REQUEST_TEMPLATE](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/.github/PULL_REQUEST_TEMPLATE.md).
