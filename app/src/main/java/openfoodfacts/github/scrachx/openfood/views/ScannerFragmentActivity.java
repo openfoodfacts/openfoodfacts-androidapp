@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +13,9 @@ public class ScannerFragmentActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         setContentView(R.layout.fragment_scanner);
         setupToolbar();
     }
