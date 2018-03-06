@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -106,13 +107,16 @@ public class SaveProductOfflineActivity extends BaseActivity {
     private String imageTaken;
     private SendProductDao mSendProductDao;
     private SharedPreferences mSharedPref;
-    int resXFront, resYFront;
-    private int resXIngr, resYIngr;
-    private int resXNut, resYNut;
+    //private int resXFront, resYFront;
+    //private int resXIngr, resYIngr;
+    //private int resXNut, resYNut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         setContentView(R.layout.activity_save_product_offline);
 
         setSupportActionBar(toolbar);
@@ -314,55 +318,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
             imageTaken = "front";
-            if (Utils.isConnectedToMobileData(getApplicationContext())) {
-                showDialogForImageResolution();
-            } else {
-                resXFront = 0;
-                resYFront = 0;
-                EasyImage.openCamera(SaveProductOfflineActivity.this, 0);
-            }
+            EasyImage.openCamera(SaveProductOfflineActivity.this, 0);
         }
-    }
-
-    private void showDialogForImageResolution() {
-        Dialog dialog = new Dialog(SaveProductOfflineActivity.this);
-        dialog.setContentView(R.layout.dialog_save_product_image_size);
-        dialog.setTitle("Pick resolution size for image upload");
-        RadioButton radio640_480 = dialog.findViewById(R.id.radio_640_480);
-        RadioButton radio1024_768 = dialog.findViewById(R.id.radio_1024_768);
-        RadioButton radio1152_864 = dialog.findViewById(R.id.radio_1152_864);
-        RadioButton radio1600_1200 = dialog.findViewById(R.id.radio_1600_1200);
-        Button select = dialog.findViewById(R.id.btn_pick_image_resolution);
-        select.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int resX=0, resY=0;
-                if (radio640_480.isChecked()) {
-                    Log.d("resTag", "onClick: checked");
-                    resX = 640;
-                    resY = 480;
-                } else if (radio1024_768.isChecked()) {
-                    resX = 1024;
-                    resY = 768;
-                } else if (radio1152_864.isChecked()) {
-                    resX = 1152;
-                    resY = 864;
-                } else if (radio1600_1200.isChecked()) {
-                    resX = 1600;
-                    resY = 1200;
-                }
-                if(imageTaken.equals("front")){
-                    resXFront = resX; resYFront = resY;
-                } else if(imageTaken.equals("nutrition")){
-                    resXNut = resX; resYNut = resY;
-                } else {
-                    resXIngr = resX; resYIngr = resY;
-                }
-                dialog.dismiss();
-                EasyImage.openCamera(SaveProductOfflineActivity.this, 0);
-            }
-        });
-        dialog.show();
     }
 
     @OnClick(R.id.buttonTakePictureIngredients)
@@ -371,13 +328,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
             imageTaken = "ingredients";
-            if (Utils.isConnectedToMobileData(getApplicationContext())) {
-                showDialogForImageResolution();
-            } else {
-                resXIngr = 0;
-                resYIngr = 0;
-                EasyImage.openCamera(SaveProductOfflineActivity.this, 0);
-            }
+            EasyImage.openCamera(SaveProductOfflineActivity.this, 0);
         }
     }
 
@@ -387,13 +338,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
             imageTaken = "nutrition";
-            if (Utils.isConnectedToMobileData(getApplicationContext())) {
-                showDialogForImageResolution();
-            } else {
-                resXNut = 0;
-                resYNut = 0;
-                EasyImage.openCamera(SaveProductOfflineActivity.this, 0);
-            }
+            EasyImage.openCamera(SaveProductOfflineActivity.this, 0);
         }
     }
 
@@ -457,8 +402,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
             mProduct.setImgupload_front(photoFile.getAbsolutePath());
             imgSaveFront.setVisibility(View.VISIBLE);
             mAttacherimgSaveFront = new PhotoViewAttacher(imgSaveFront);
-            Log.d("resTag", "onPhotoReturned: " + resXFront + " " + resYFront);
-            if (resXFront == 0 || resYFront == 0) {
+            if (!Utils.isConnectedToMobileData(getApplicationContext())) {
                 Picasso.with(this)
                         .load(photoFile)
                         .into(imgSaveFront, new Callback() {
@@ -472,26 +416,32 @@ public class SaveProductOfflineActivity extends BaseActivity {
                             }
                         });
             } else {
-                Picasso.with(this)
-                        .load(photoFile)
-                        .resize(resXFront, resYFront)
-                        .into(imgSaveFront, new Callback() {
-                            @Override
-                            public void onSuccess() {
-                                mAttacherimgSaveFront.update();
-                            }
+                try {
+                    String resolution = mSharedPref.getString("imageUpload", "640 X 480");
+                    int x = Integer.parseInt(resolution.substring(0, resolution.indexOf(" ")));
+                    int y = Integer.parseInt(resolution.substring(resolution.lastIndexOf(" ") + 1));
+                    Picasso.with(this)
+                            .load(photoFile)
+                            .resize(x, y)
+                            .into(imgSaveFront, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    mAttacherimgSaveFront.update();
+                                }
 
-                            @Override
-                            public void onError() {
-                            }
-                        });
+                                @Override
+                                public void onError() {
+                                }
+                            });
+                } catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Please set Resolution First", Toast.LENGTH_SHORT).show();
+                }
             }
         } else if (imageTaken.equals("nutrition")) {
             mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
             imgSaveNutrition.setVisibility(View.VISIBLE);
             mAttacherimgSaveNutrition = new PhotoViewAttacher(imgSaveNutrition);
-            Log.d("resTag", "onPhotoReturned: nutrition" + resXNut + " " + resYNut);
-            if(resXNut==0 || resYNut==0) {
+            if (!Utils.isConnectedToMobileData(getApplicationContext())) {
                 Picasso.with(this)
                         .load(photoFile)
                         .into(imgSaveNutrition, new Callback() {
@@ -505,26 +455,33 @@ public class SaveProductOfflineActivity extends BaseActivity {
                             }
                         });
             } else {
-                Picasso.with(this)
-                        .load(photoFile)
-                        .resize(resXNut, resYNut)
-                        .into(imgSaveNutrition, new Callback() {
-                            @Override
-                            public void onSuccess() {
-                                mAttacherimgSaveNutrition.update();
-                            }
 
-                            @Override
-                            public void onError() {
-                            }
-                        });
+                try {
+                    String resolution = mSharedPref.getString("imageUpload", "640 X 480");
+                    int x = Integer.parseInt(resolution.substring(0, resolution.indexOf(" ")));
+                    int y = Integer.parseInt(resolution.substring(resolution.lastIndexOf(" ") + 1));
+                    Picasso.with(this)
+                            .load(photoFile)
+                            .resize(x, y)
+                            .into(imgSaveNutrition, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    mAttacherimgSaveNutrition.update();
+                                }
+
+                                @Override
+                                public void onError() {
+                                }
+                            });
+                } catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Please set Resolution first", Toast.LENGTH_SHORT).show();
+                }
             }
         } else if (imageTaken.equals("ingredients")) {
             mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
             imgSaveIngredients.setVisibility(View.VISIBLE);
             mAttacherimageSaveIngredients = new PhotoViewAttacher(imgSaveIngredients);
-            Log.d("resTag", "onPhotoReturned: ingridients" + resXIngr + " " + resYIngr);
-            if(resXIngr==0 || resYIngr==0) {
+            if (!Utils.isConnectedToMobileData(getApplicationContext())) {
                 Picasso.with(this)
                         .load(photoFile)
                         .into(imgSaveIngredients, new Callback() {
@@ -538,19 +495,28 @@ public class SaveProductOfflineActivity extends BaseActivity {
                             }
                         });
             } else {
-                Picasso.with(this)
-                        .load(photoFile)
-                        .resize(resXIngr, resYIngr)
-                        .into(imgSaveIngredients, new Callback() {
-                            @Override
-                            public void onSuccess() {
-                                mAttacherimageSaveIngredients.update();
-                            }
 
-                            @Override
-                            public void onError() {
-                            }
-                        });
+                try {
+                    String resolution = mSharedPref.getString("imageUpload", "640 X 480");
+                    int x = Integer.parseInt(resolution.substring(0, resolution.indexOf(" ")));
+                    int y = Integer.parseInt(resolution.substring(resolution.lastIndexOf(" ") + 1));
+
+                    Picasso.with(this)
+                            .load(photoFile)
+                            .resize(x, y)
+                            .into(imgSaveIngredients, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    mAttacherimageSaveIngredients.update();
+                                }
+
+                                @Override
+                                public void onError() {
+                                }
+                            });
+                } catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Please set Resolution first", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }

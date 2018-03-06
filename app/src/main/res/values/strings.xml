@@ -10,6 +10,14 @@
     <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
 
 
+    <!-- Image Upload -->
+    <string-array name="upload_image">
+        <item>640 X 480</item>
+        <item>1024 X 768</item>
+        <item>1152 X 864</item>
+        <item>1600 X 1200</item>
+    </string-array>
+
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Summary</item>
@@ -236,6 +244,7 @@
     <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
     <string name="prefs_language">Language</string>
     <string name="prefs_language_summary">Change language</string>
+    <string name="prefs_image_upload">Pick a resolution for image upload</string>
 
     <string name="scan_history_drawer">History</string>
     <string name="clear_history">Clear history</string>

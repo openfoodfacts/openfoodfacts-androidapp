@@ -49,6 +49,8 @@ import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
+import static com.mikepenz.iconics.Iconics.TAG;
+
 public class PreferencesFragment extends PreferenceFragmentCompat {
 
     AdditiveDao mAdditiveDao;
@@ -148,6 +150,19 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
                 CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
 
+                return true;
+            }
+        });
+
+        ListPreference imageUploadPref = ((ListPreference) findPreference("ImageUpload"));
+        String[] values = getActivity().getResources().getStringArray(R.array.upload_image);
+        imageUploadPref.setEntries(values);
+        imageUploadPref.setEntryValues(values);
+        imageUploadPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                Log.d("vaishali", "onPreferenceChange: "+newValue);
+                settings.edit().putString("imageUpload", (String)newValue).apply();
                 return true;
             }
         });
