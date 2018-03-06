@@ -277,11 +277,14 @@
   <string name="action_search">検索</string>
   <string name="search_hint">製品を検索します</string>
   <string name="number_of_results">結果の数 :</string>
+  <string name="brand">Brand :</string>
+  <string name="number_of_products">Number of products :</string>
   <string name="txt_no_results">見つかりませんでした</string>
   <string name="txt_extend_search">検索条件を広げてみるか、製品を追加してください</string>
   <string name="txt_no_matching_products">一致する商品が見つかりませんでした。\nお試しください :</string>
   <string name="txt_broaden_search">- 検索範囲を広げる\n- スキャンしてOpen Food Factsに追加する</string>
   <string name="txt_cant_load_search_results">検索結果を読み込むことができません</string>
+  <string name="something_went_wrong">Sorry!! Something went wrong...</string>
   <string name="txt_try_again">もう一度やり直してください</string>
   <string name="nutrition_lactose">乳糖</string>
   <string name="nutrition_casein">カゼイン</string>
@@ -400,4 +403,5 @@
   <string name="conform_logout">ログアウトの確認</string>
   <string name="logout_dialog_content">ログアウトしてもよろしいですか?</string>
   <string name="dialog_cancel">キャンセル</string>
+  <string name="brand_string">ブランド（会社名）</string>
 </resources>
