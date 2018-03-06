@@ -103,6 +103,14 @@ public class OpenFoodAPIClient {
         mToUploadProductDao = daoSession.getToUploadProductDao();
     }
 
+    public OpenFoodAPIClient(Activity activity, String url) {
+        this(url);
+        mAllergenDao = Utils.getAppDaoSession(activity).getAllergenDao();
+        mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
+        mTagDao = Utils.getAppDaoSession(activity).getTagDao();
+        mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
+    }
+
     private OpenFoodAPIClient(String apiUrl) {
 
         apiService = new Retrofit.Builder()
@@ -117,9 +125,6 @@ public class OpenFoodAPIClient {
     /**
      * @return The API service to be able to use directly retrofit API mapping
      */
-    public OpenFoodAPIService getAPIService() {
-        return apiService;
-    }
 
     /**
      * Open the product activity if the barcode exist.
@@ -351,6 +356,30 @@ public class OpenFoodAPIClient {
         });
     }
 
+
+    /**
+     * @return This api service gets products of provided brand.
+     */
+    public OpenFoodAPIService getAPIService() {
+        return apiService;
+    }
+
+    public void getBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
+
+        apiService.getProductByBrands(brand, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+                onBrandCallback.onBrandResponse(true, response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+                onBrandCallback.onBrandResponse(false, null);
+            }
+        });
+
+    }
+
     public void post(final Activity activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
         final LoadToast lt = new LoadToast(activity);
         lt.setText(activity.getString(R.string.toastSending));
@@ -474,6 +503,11 @@ public class OpenFoodAPIClient {
     public interface OnAllergensCallback {
 
         void onAllergensResponse(boolean value);
+    }
+
+    public interface OnBrandCallback {
+
+        void onBrandResponse(boolean value, Search brand);
     }
 
     public interface OnProductSentCallback {
