@@ -45,6 +45,10 @@ android {
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
         }
     }
+    //  Crunch PNG files
+    aaptOptions {
+        cruncherEnabled = false
+    }
 
     dexOptions {
         preDexLibraries = false
