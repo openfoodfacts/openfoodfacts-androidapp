@@ -54,6 +54,7 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.BrandActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -232,8 +233,15 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             packagingProduct.setVisibility(View.GONE);
         }
         if (isNotBlank(product.getBrands())) {
+            brandProduct.setClickable(true);
+            brandProduct.setMovementMethod(LinkMovementMethod.getInstance());
             brandProduct.setText(bold(getString(R.string.txtBrands)));
-            brandProduct.append(' ' + product.getBrands());
+            String[] brands = product.getBrands().split(",");
+            for (String brand : brands) {
+
+                brandProduct.append(getBrandsTag(brand));
+
+            }
         } else {
             brandProduct.setVisibility(View.GONE);
         }
@@ -270,17 +278,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         String labels = product.getLabels();
         if (isNotBlank(labels)) {
             labelProduct.append(bold(getString(R.string.txtLabels)));
+            labelProduct.setClickable(true);
+            labelProduct.setMovementMethod(LinkMovementMethod.getInstance());
             labelProduct.append(" ");
             String[] label = labels.split(",");
             int labelCount = label.length;
             if (labelCount > 1) {
                 for (int i = 0; i < (labelCount - 1); i++) {
-                    labelProduct.append(label[i].trim());
+                    labelProduct.append(getLabelTag(label[i].trim()));
                     labelProduct.append(", ");
                 }
-                labelProduct.append(label[labelCount - 1].trim());
+                labelProduct.append(getLabelTag(label[labelCount - 1].trim()));
             } else {
-                labelProduct.append(label[0].trim());
+                labelProduct.append(getLabelTag(label[0].trim()));
             }
         } else {
             labelProduct.setVisibility(View.GONE);
@@ -434,6 +444,26 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         return spannableStringBuilder;
     }
 
+    private CharSequence getBrandsTag(String brand) {
+
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), BrandActivity.class);
+                intent.putExtra("brand", brand);
+                startActivity(intent);
+            }
+        };
+
+        spannableStringBuilder.append(brand);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.append(" ");
+        return spannableStringBuilder;
+
+
+    }
+
 
     private CharSequence getCategoriesTag(String category) {
 
@@ -442,13 +472,36 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             @Override
             public void onClick(View view) {
 
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(),customTabActivityHelper.getSession());
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
                 CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse("https://world.openfoodfacts.org/category/" + category), new WebViewFallback());
 
             }
         };
 
         spannableStringBuilder.append(category);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.append(" ");
+        return spannableStringBuilder;
+
+
+    }
+
+    private CharSequence getLabelTag(String label) {
+
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse("https://world.openfoodfacts.org/label/" + label), new WebViewFallback());
+
+            }
+
+        };
+
+        spannableStringBuilder.append(label);
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append(" ");
         return spannableStringBuilder;
