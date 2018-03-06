@@ -87,6 +87,7 @@ public class OpenFoodAPIClient {
 
 
     private final OpenFoodAPIService apiService;
+    private Context mActivity;
 
     public OpenFoodAPIClient(Activity activity) {
         this(BuildConfig.HOST);
@@ -94,6 +95,7 @@ public class OpenFoodAPIClient {
         mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
         mTagDao = Utils.getAppDaoSession(activity).getTagDao();
         mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
+        mActivity = activity;
     }
 
     //used to upload in background
@@ -214,7 +216,8 @@ public class OpenFoodAPIClient {
      * @param camera        needed when the function is called by the barcodefragment else null
      * @param resultHandler needed when the function is called by the barcodefragment else null
      */
-    public void getShortProduct(final String barcode, final Activity activity, final ZXingScannerView camera, final ZXingScannerView.ResultHandler resultHandler) {
+    public void getShortProduct(final String barcode, final Activity activity, final ZXingScannerView camera, final ZXingScannerView.ResultHandler
+            resultHandler) {
         apiService.getShortProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
             public void onResponse(Call<State> call, Response<State> response) {
@@ -255,12 +258,14 @@ public class OpenFoodAPIClient {
                     TextView brandProduct = (TextView) dialog.getCustomView().findViewById(R.id.textBrandProduct);
 
                     if (product.getQuantity() != null && !product.getQuantity().trim().isEmpty()) {
-                        quantityProduct.setText(Html.fromHtml("<b>" + activity.getResources().getString(R.string.txtQuantity) + "</b>" + ' ' + product.getQuantity()));
+                        quantityProduct.setText(Html.fromHtml("<b>" + activity.getResources().getString(R.string.txtQuantity) + "</b>" + ' ' +
+                                product.getQuantity()));
                     } else {
                         quantityProduct.setVisibility(View.GONE);
                     }
                     if (product.getBrands() != null && !product.getBrands().trim().isEmpty()) {
-                        brandProduct.setText(Html.fromHtml("<b>" + activity.getResources().getString(R.string.txtBrands) + "</b>" + ' ' + product.getBrands()));
+                        brandProduct.setText(Html.fromHtml("<b>" + activity.getResources().getString(R.string.txtBrands) + "</b>" + ' ' + product
+                                .getBrands()));
                     } else {
                         brandProduct.setVisibility(View.GONE);
                     }
@@ -496,7 +501,8 @@ public class OpenFoodAPIClient {
                 hp = historyProducts.get(0);
                 hp.setLastSeen(new Date());
             } else {
-                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(), product.getCode(), product.getQuantity(), product.getNutritionGradeFr());
+                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(), product.getCode(), product
+                        .getQuantity(), product.getNutritionGradeFr());
             }
             mHistoryProductDao.insertOrReplace(hp);
 
@@ -574,4 +580,57 @@ public class OpenFoodAPIClient {
 
         }
     }
+
+
+    public void syncOldHistory() {
+//        Log.d("syncOldHistory", "task ");
+        new SyncOldHistoryTask().execute();
+    }
+
+
+    public class SyncOldHistoryTask extends AsyncTask<Void, Void, Void> {
+        boolean success = true;
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            List<HistoryProduct> historyProducts = mHistoryProductDao.loadAll();
+            int size = historyProducts.size();
+            for (int i = 0; i < size; i++) {
+                HistoryProduct historyProduct = historyProducts.get(i);
+                apiService.getShortProductByBarcode(historyProduct.getBarcode()).enqueue(new Callback<State>() {
+
+                    @Override
+                    public void onResponse(Call<State> call, Response<State> response) {
+                        final State s = response.body();
+
+                        if (s.getStatus() != 0) {
+                            Product product = s.getProduct();
+                            HistoryProduct hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(),
+                                    product.getCode(), product.getQuantity(), product.getNutritionGradeFr());
+                            Log.d("syncOldHistory", hp.toString());
+
+                            hp.setLastSeen(historyProduct.getLastSeen());
+                            mHistoryProductDao.insertOrReplace(hp);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<State> call, Throwable t) {
+                        success = false;
+                    }
+                });
+            }
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            if (success) {
+                mActivity.getSharedPreferences("prefs", 0).edit().putBoolean("is_old_history_data_synced", true).apply();
+            }
+        }
+    }
+
 }
