@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="wrap_content"
     android:id="@+id/saveRel">
+
 
     <ImageView
         android:id="@+id/imgSaveProduct"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_margin="@dimen/spacing_normal"
         android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/spacing_normal" />
+
+
 
     <TextView
         android:id="@+id/offlineBrand"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@id/titleSave"
         android:layout_below="@+id/titleSave"
         android:layout_toLeftOf="@+id/iconSave"
@@ -32,7 +35,7 @@
     <TextView
         android:id="@+id/offlineWeight"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@id/offlineBrand"
         android:layout_below="@+id/offlineBrand"
         android:layout_toLeftOf="@+id/iconSave"
@@ -49,7 +52,7 @@
 
         android:id="@+id/barcodeSave"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@id/offlineWeight"
         android:layout_below="@+id/offlineWeight"
         android:layout_toLeftOf="@+id/iconSave"
@@ -65,7 +68,7 @@
     <TextView
         android:id="@+id/titleSave"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imgSaveProduct"
         android:layout_alignTop="@+id/imgSaveProduct"
         android:layout_toLeftOf="@+id/iconSave"
