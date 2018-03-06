@@ -277,11 +277,14 @@
   <string name="action_search">Найти</string>
   <string name="search_hint">Поиск продукта</string>
   <string name="number_of_results">Количество результатов:</string>
+  <string name="brand">Brand :</string>
+  <string name="number_of_products">Number of products :</string>
   <string name="txt_no_results">Ничего не найдено</string>
   <string name="txt_extend_search">Попробуйте расширить свой поиск или добавить продукт</string>
   <string name="txt_no_matching_products">Мы не нашли подходящих продуктов.\nВы можете попробовать:</string>
   <string name="txt_broaden_search">- расширение вашего поиска \n- отсканируйте и добавьте его в Open Food Facts</string>
   <string name="txt_cant_load_search_results">Не удается загрузить результаты поиска</string>
+  <string name="something_went_wrong">Sorry!! Something went wrong...</string>
   <string name="txt_try_again">Попробуйте еще раз</string>
   <string name="nutrition_lactose">Лактоза</string>
   <string name="nutrition_casein">Казеин</string>
@@ -400,4 +403,5 @@
   <string name="conform_logout">Confirm Logout</string>
   <string name="logout_dialog_content">Are you sure to log out ?</string>
   <string name="dialog_cancel">Cancel</string>
+  <string name="brand_string">Марка</string>
 </resources>
