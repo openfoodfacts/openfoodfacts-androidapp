@@ -277,11 +277,14 @@
   <string name="action_search">Hanapin</string>
   <string name="search_hint">Maghanap ng isang produkto</string>
   <string name="number_of_results">Bilang ng mga resulta :</string>
+  <string name="brand">Brand :</string>
+  <string name="number_of_products">Number of products :</string>
   <string name="txt_no_results">Walang nahanap na resulta</string>
   <string name="txt_extend_search">Subukang palawakin ng iyong paghahanap o idagdag ang produkto</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
   <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Hindi ma-load ang mga resulta ng paghahanap</string>
+  <string name="something_went_wrong">Sorry!! Something went wrong...</string>
   <string name="txt_try_again">Subukan muli</string>
   <string name="nutrition_lactose">Lactose</string>
   <string name="nutrition_casein">Casein</string>
@@ -400,4 +403,5 @@
   <string name="conform_logout">Confirm Logout</string>
   <string name="logout_dialog_content">Are you sure to log out ?</string>
   <string name="dialog_cancel">Cancel</string>
+  <string name="brand_string">Mga Tatak</string>
 </resources>
