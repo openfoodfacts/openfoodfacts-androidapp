@@ -284,7 +284,7 @@
   <string name="txt_no_matching_products">Não encontrámos nenhum produto correspondente.\nPoderá tentar:</string>
   <string name="txt_broaden_search">- alargar a sua pesquisa \n- digitalizar e adicionar ao Open Food Facts</string>
   <string name="txt_cant_load_search_results">Não foi possível carregar os resultados da pesquisa</string>
-  <string name="something_went_wrong">Sorry!! Something went wrong...</string>
+  <string name="something_went_wrong">Sorry,something went wrong…</string>
   <string name="txt_try_again">Tente novamente</string>
   <string name="nutrition_lactose">Lactose</string>
   <string name="nutrition_casein">Caseína</string>
