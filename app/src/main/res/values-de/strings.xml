@@ -411,4 +411,5 @@
   <string name="logout_dialog_content">Möchten Sie sich wirklich abmelden?</string>
   <string name="dialog_cancel">Abbrechen</string>
   <string name="brand_string">Marke</string>
+  <string name="country_string">Land</string>
 </resources>
