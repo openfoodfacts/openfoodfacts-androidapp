@@ -277,11 +277,14 @@
   <string name="action_search">Rechercher</string>
   <string name="search_hint">Chercher un produit</string>
   <string name="number_of_results">Nombre de résultats:</string>
+  <string name="brand">Marque :</string>
+  <string name="number_of_products">Nombre de produits :</string>
   <string name="txt_no_results">Aucun résultat n\'a été trouvé</string>
   <string name="txt_extend_search">Veuillez élargir vos critères de recherche ou ajoutez le produit</string>
   <string name="txt_no_matching_products">Nous n\'avons trouvé aucun produit correspondant.\nVous pouvez essayer:</string>
   <string name="txt_broaden_search">- élargir votre recherche\n-le scanner et l\'ajouter à Open Food Facts</string>
   <string name="txt_cant_load_search_results">Impossible de charger les résultats</string>
+  <string name="something_went_wrong">Désolé, une erreur s\'est produite…</string>
   <string name="txt_try_again">Veuillez réessayer</string>
   <string name="nutrition_lactose">Lactose</string>
   <string name="nutrition_casein">Caséine</string>
@@ -397,7 +400,15 @@
   <string name="preference_header_network">Réseau</string>
   <string name="preference_header_contributing">Contribuer</string>
   <string name="not_support_books">Les livres ne sont actuellement pas pris en charge par Open Food Facts</string>
-  <string name="conform_logout">Confirmer la déconnexion</string>
+  <string name="seconds_ago">seconds ago</string>
+  <string name="minutes_ago">minutes ago</string>
+  <string name="hours_ago">hours ago</string>
+  <string name="days_ago">days ago</string>
+  <string name="scan_first_string">L\'historique des produits que vous avez consultés sera répertorié ici.\nCet historique est réservé à vos yeux et est stocké localement.</string>
+  <string name="log_in">Connexion</string>
+  <string name="login_true">Déjà connecté!</string>
+  <string name="confirm_logout">Confirm Logout</string>
   <string name="logout_dialog_content">Etes-vous sûr(e) de vouloir vous déconnecter?</string>
   <string name="dialog_cancel">Annuler</string>
+  <string name="brand_string">Marque</string>
 </resources>

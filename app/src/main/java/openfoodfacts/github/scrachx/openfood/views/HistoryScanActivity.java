@@ -79,6 +79,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_history_scan);
+        setTitle(getString(R.string.scan_history_drawer));
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -308,8 +309,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
     public void setInfo(TextView view) {
 
-        String info = "Your viewed product history will be listed here.\n" +
-                "This history is for your eyes only and is stored locally.";
+        String info = getString(R.string.scan_first_string);
 
         view.setText(info);
 
