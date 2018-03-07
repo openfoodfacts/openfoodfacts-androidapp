@@ -514,6 +514,10 @@ public class OpenFoodAPIClient {
         void onProductSentResponse(boolean value);
     }
 
+    public interface onCountryCallback {
+        void onCountryResponse(boolean value, Search country);
+    }
+
     /**
      * Create an history product asynchronously
      */
@@ -607,5 +611,40 @@ public class OpenFoodAPIClient {
             service.get().jobFinished(job, false);
 
         }
+    }
+
+
+    public void getCountryProducts(String country, final int page, final onCountryCallback onCountryCallback) {
+        apiService.byCountry(country).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onCountryCallback.onCountryResponse(false, null);
+                    return;
+                }
+
+                Search search = response.body();
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(search.getCount()) == 0) {
+                        onCountryCallback.onCountryResponse(false, null);
+                        return;
+                    } else {
+                        onCountryCallback.onCountryResponse(true, response.body());
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+
+                onCountryCallback.onCountryResponse(false, null);
+
+            }
+        });
     }
 }
