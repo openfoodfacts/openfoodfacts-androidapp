@@ -18,7 +18,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -48,7 +47,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        MenuItem item=menu.findItem(R.id.action_search);
+        MenuItem item = menu.findItem(R.id.action_search);
         item.setVisible(false);
     }
 
@@ -63,7 +62,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
         settings = getActivity().getSharedPreferences("prefs", 0);
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
 
-        String[] localeValues = getActivity().getResources().getStringArray(R.array.lang_array);
+        String[] localeValues = getActivity().getResources().getStringArray(R.array.languages_array);
         String[] localeLabels = new String[localeValues.length];
 
         for (int i = 0; i < localeValues.length; i++) {
@@ -71,7 +70,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             if (current != null) {
                 localeLabels[i] = String.format("%s - %s",
                         // current.getDisplayName(current), // native form
-                        WordUtils.capitalize(current.getDisplayName()),
+                        WordUtils.capitalize(current.getDisplayName(current)),
                         localeValues[i].toUpperCase(Locale.getDefault())
                 );
             }
@@ -129,7 +128,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             public boolean onPreferenceClick(Preference preference) {
 
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-                CustomTabActivityHelper.openCustomTab(getActivity(),customTabsIntent,Uri.parse(getString(R.string.terms_url)),new WebViewFallback());
+                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.terms_url)), new WebViewFallback());
                 return true;
             }
         });

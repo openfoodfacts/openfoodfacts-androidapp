@@ -31,7 +31,7 @@
     </string-array>
 
     <!-- Text units -->
-    <string-array name="lang_array">
+    <string-array name="languages_array" translatable="false">
         <item>en</item>
         <item>fr</item>
         <item>es</item>
@@ -203,7 +203,7 @@
     <string name="ring_on">Ring [ON]</string>
     <string name="ring_off">Ring [OFF]</string>
     <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off" >Auto Focus [OFF]</string>
+    <string name="auto_focus_off">Auto Focus [OFF]</string>
     <string name="formats">Formats</string>
     <string name="choose_formats">Choose Formats</string>
     <string name="select_camera">Select a Camera</string>
@@ -405,7 +405,7 @@
 
     <string name="preference_choose_language_dialog_title">Choose language</string>
 
-    
+
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
 
