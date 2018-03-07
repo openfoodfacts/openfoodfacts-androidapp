@@ -190,6 +190,7 @@ public class Utils {
             o2.inSampleSize = scale;
             return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
         } catch (FileNotFoundException e) {
+
         }
         return null;
     }
@@ -317,7 +318,7 @@ public class Utils {
 
 
     public static DaoSession getDaoSession(Context context) {
-        String nameDB = "";
+        String nameDB;
         if ((BuildConfig.FLAVOR.equals("off"))) {
             nameDB = "open_food_facts";
         } else if ((BuildConfig.FLAVOR.equals("opff"))) {

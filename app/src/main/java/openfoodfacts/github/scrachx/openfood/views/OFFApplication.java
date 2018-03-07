@@ -13,7 +13,6 @@ import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class OFFApplication extends MultiDexApplication {
 
@@ -33,7 +32,7 @@ public class OFFApplication extends MultiDexApplication {
 
         // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
         // Use only during production: DatabaseHelper (see on Upgrade!)
-        String nameDB = "";
+        String nameDB;
         if((BuildConfig.FLAVOR.equals("off"))) {
             nameDB = "open_food_facts";
         } else

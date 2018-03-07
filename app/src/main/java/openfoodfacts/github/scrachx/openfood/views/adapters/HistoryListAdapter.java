@@ -30,7 +30,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
     private Activity mActivity;
 
     public HistoryListAdapter(List<HistoryItem> list, String productUrl, Activity activity) {
-        this.list = list == null ? Collections.<HistoryItem>emptyList() : list;
+        this.list = list == null ? Collections.emptyList() : list;
         this.productUrl = productUrl;
         this.mActivity = activity;
     }

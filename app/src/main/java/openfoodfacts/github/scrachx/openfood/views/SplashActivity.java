@@ -133,7 +133,10 @@ public class SplashActivity extends BaseActivity {
             final SharedPreferences.Editor editor = settings.edit();
             boolean errorAllergens = settings.getBoolean("errorAllergens", true);
             ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            NetworkInfo activeNetwork = null;
+            if (cm != null) {
+                activeNetwork = cm.getActiveNetworkInfo();
+            }
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
             if (isConnected) {
                 if (errorAllergens) {

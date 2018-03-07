@@ -31,8 +31,8 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
 
         public ViewHolder(View itemView) {
             super(itemView);
-            nameTextView = (TextView) itemView.findViewById(R.id.allergen_name);
-            messageButton = (Button) itemView.findViewById(R.id.delete_button);
+            nameTextView = itemView.findViewById(R.id.allergen_name);
+            messageButton = itemView.findViewById(R.id.delete_button);
         }
     }
 

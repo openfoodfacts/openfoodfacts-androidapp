@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +21,6 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
@@ -30,11 +28,8 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickLi
 
 public class BrandActivity extends BaseActivity {
 
-    private String brand;
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
     @BindView(R.id.products_recycler_view)
     RecyclerView productsRecyclerView;
     @BindView(R.id.textCountProduct)
@@ -42,6 +37,7 @@ public class BrandActivity extends BaseActivity {
     @BindView(R.id.offlineCloudLinearLayout)
     LinearLayout offlineCloudLayout;
     ProgressBar progressBar;
+    private String brand;
     private EndlessRecyclerViewScrollListener scrollListener;
     private List<Product> mProducts;
     private OpenFoodAPIClient api;
@@ -52,8 +48,8 @@ public class BrandActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
-           finish();
+        if (item.getItemId() == android.R.id.home) {
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -64,7 +60,7 @@ public class BrandActivity extends BaseActivity {
         setContentView(R.layout.activity_brand);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        progressBar = findViewById(R.id.progress_bar);
         countProductsView.setVisibility(View.INVISIBLE);
         Bundle extras = getIntent().getExtras();
 
@@ -74,7 +70,7 @@ public class BrandActivity extends BaseActivity {
         getSupportActionBar().setSubtitle(R.string.brand_string);
         apiClient = new OpenFoodAPIClient(BrandActivity.this, BuildConfig.OFWEBSITE);
         api = new OpenFoodAPIClient(BrandActivity.this);
-        productsRecyclerView = (RecyclerView) findViewById(R.id.products_recycler_view);
+        productsRecyclerView = findViewById(R.id.products_recycler_view);
         setup();
     }
 
@@ -87,36 +83,33 @@ public class BrandActivity extends BaseActivity {
     }
 
     public void getDataFromAPI() {
-        apiClient.getBrand(brand, pageAddress, new OpenFoodAPIClient.OnBrandCallback() {
-            @Override
-            public void onBrandResponse(boolean value, Search brandObject) {
-                if (value) {
-                    mCountProducts = Integer.parseInt(brandObject.getCount());
-                    if (pageAddress == 1) {
-                        countProductsView.append(String.valueOf(brandObject.getCount()));
-                        mProducts = new ArrayList<>();
+        apiClient.getBrand(brand, pageAddress, (value, brandObject) -> {
+            if (value) {
+                mCountProducts = Integer.parseInt(brandObject.getCount());
+                if (pageAddress == 1) {
+                    countProductsView.append(String.valueOf(brandObject.getCount()));
+                    mProducts = new ArrayList<>();
+                    mProducts.addAll(brandObject.getProducts());
+                    if (mProducts.size() < mCountProducts) {
+                        mProducts.add(null);
+                    }
+                    setUpRecyclerView();
+                } else {
+                    if (mProducts.size() - 1 < mCountProducts + 1) {
+                        final int posStart = mProducts.size();
+                        mProducts.remove(mProducts.size() - 1);
                         mProducts.addAll(brandObject.getProducts());
                         if (mProducts.size() < mCountProducts) {
                             mProducts.add(null);
                         }
-                        setUpRecyclerView();
-                    } else {
-                        if (mProducts.size() - 1 < mCountProducts + 1) {
-                            final int posStart = mProducts.size();
-                            mProducts.remove(mProducts.size() - 1);
-                            mProducts.addAll(brandObject.getProducts());
-                            if (mProducts.size() < mCountProducts) {
-                                mProducts.add(null);
-                            }
-                            productsRecyclerView.getAdapter().notifyItemRangeChanged(posStart - 1, mProducts.size() - 1);
-                        }
+                        productsRecyclerView.getAdapter().notifyItemRangeChanged(posStart - 1, mProducts.size() - 1);
                     }
-                } else {
-                    progressBar.setVisibility(View.INVISIBLE);
-                    offlineCloudLayout.setVisibility(View.VISIBLE);
                 }
-
+            } else {
+                progressBar.setVisibility(View.INVISIBLE);
+                offlineCloudLayout.setVisibility(View.VISIBLE);
             }
+
         });
     }
 
@@ -155,22 +148,21 @@ public class BrandActivity extends BaseActivity {
 
 
         productsRecyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(BrandActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
-                        if (p != null) {
-                            String barcode = p.getCode();
-                            api.getProduct(barcode, BrandActivity.this);
-                            try {
-                                View view1 = BrandActivity.this.getCurrentFocus();
-                                if (view != null) {
-                                    InputMethodManager imm = (InputMethodManager) BrandActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                new RecyclerItemClickListener(BrandActivity.this, (view, position) -> {
+                    Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
+                    if (p != null) {
+                        String barcode = p.getCode();
+                        api.getProduct(barcode, BrandActivity.this);
+                        try {
+                            View view1 = BrandActivity.this.getCurrentFocus();
+                            if (view != null) {
+                                InputMethodManager imm = (InputMethodManager) BrandActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                if (view1 != null && imm!=null) {
                                     imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
                                 }
-                            } catch (NullPointerException e) {
-                                e.printStackTrace();
                             }
+                        } catch (NullPointerException e) {
+                            e.printStackTrace();
                         }
                     }
                 })

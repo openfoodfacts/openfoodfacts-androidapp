@@ -12,9 +12,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import java.text.AttributedCharacterIterator;
-
-import butterknife.BindView;
 import io.reactivex.annotations.NonNull;
 
 /**
@@ -30,14 +27,11 @@ public class FastScroller extends LinearLayout {
     private static final String SCALE_X = "scaleX";
     private static final String SCALE_Y = "scaleY";
     private static final String ALPHA = "alpha";
-
-    private View bubble;
-    private View handle;
-
-    private RecyclerView recyclerView;
-
     private final HandleHider handleHider = new HandleHider();
     private final ScrollListener scrollListener = new ScrollListener();
+    private View bubble;
+    private View handle;
+    private RecyclerView recyclerView;
     private int height;
 
     private AnimatorSet currentAnimator = null;
@@ -89,7 +83,7 @@ public class FastScroller extends LinearLayout {
 
     public void setRecyclerView(RecyclerView recyclerView) {
         this.recyclerView = recyclerView;
-        recyclerView.setOnScrollListener(scrollListener);
+        recyclerView.addOnScrollListener(scrollListener);
     }
 
     private void setRecyclerViewPosition(float y) {
@@ -170,7 +164,7 @@ public class FastScroller extends LinearLayout {
         @Override
         public void onScrolled(RecyclerView rv, int dx, int dy) {
             View firstVisibleView = recyclerView.getChildAt(0);
-            int firstVisiblePosition = recyclerView.getChildPosition(firstVisibleView);
+            int firstVisiblePosition = recyclerView.getChildAdapterPosition(firstVisibleView);
             int visibleRange = recyclerView.getChildCount();
             int lastVisiblePosition = firstVisiblePosition + visibleRange;
             int itemCount = recyclerView.getAdapter().getItemCount();

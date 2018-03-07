@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -123,10 +124,6 @@ public class OpenFoodAPIClient {
     }
 
     /**
-     * @return The API service to be able to use directly retrofit API mapping
-     */
-
-    /**
      * Open the product activity if the barcode exist.
      * Also add it in the history if the product exist.
      *
@@ -136,7 +133,7 @@ public class OpenFoodAPIClient {
     public void getProduct(final String barcode, final Activity activity) {
         apiService.getFullProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
-            public void onResponse(Call<State> call, Response<State> response) {
+            public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
 
                 final State s = response.body();
 
@@ -165,7 +162,7 @@ public class OpenFoodAPIClient {
             }
 
             @Override
-            public void onFailure(Call<State> call, Throwable t) {
+            public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
                 new MaterialDialog.Builder(activity)
                         .title(R.string.txtDialogsTitle)
                         .content(R.string.txtDialogsContent)
@@ -222,7 +219,7 @@ public class OpenFoodAPIClient {
     public void getShortProduct(final String barcode, final Activity activity, final ZXingScannerView camera, final ZXingScannerView.ResultHandler resultHandler) {
         apiService.getShortProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
-            public void onResponse(Call<State> call, Response<State> response) {
+            public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
                 final State s = response.body();
 
                 if (s.getStatus() == 0) {
@@ -248,16 +245,14 @@ public class OpenFoodAPIClient {
                             .customView(R.layout.alert_powermode_image, true)
                             .neutralText(R.string.txtOk)
                             .positiveText(R.string.txtSeeMore)
-                            .onPositive((materialDialog, which) -> {
-                                getProduct(barcode, activity);
-                            })
+                            .onPositive((materialDialog, which) -> getProduct(barcode, activity))
                             .onNeutral((materialDialog, which) -> camera.resumeCameraPreview(resultHandler))
                             .build();
 
-                    ImageView imgPhoto = (ImageView) dialog.getCustomView().findViewById(R.id.imagePowerModeProduct);
-                    ImageView imgNutriscore = (ImageView) dialog.getCustomView().findViewById(R.id.imageGrade);
-                    TextView quantityProduct = (TextView) dialog.getCustomView().findViewById(R.id.textQuantityProduct);
-                    TextView brandProduct = (TextView) dialog.getCustomView().findViewById(R.id.textBrandProduct);
+                    ImageView imgPhoto = dialog.getCustomView().findViewById(R.id.imagePowerModeProduct);
+                    ImageView imgNutriscore = dialog.getCustomView().findViewById(R.id.imageGrade);
+                    TextView quantityProduct = dialog.getCustomView().findViewById(R.id.textQuantityProduct);
+                    TextView brandProduct = dialog.getCustomView().findViewById(R.id.textBrandProduct);
 
                     if (product.getQuantity() != null && !product.getQuantity().trim().isEmpty()) {
                         quantityProduct.setText(Html.fromHtml("<b>" + activity.getResources().getString(R.string.txtQuantity) + "</b>" + ' ' + product.getQuantity()));
@@ -291,7 +286,7 @@ public class OpenFoodAPIClient {
             }
 
             @Override
-            public void onFailure(Call<State> call, Throwable t) {
+            public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
                 new MaterialDialog.Builder(activity)
                         .title(R.string.txtDialogsTitle)
                         .content(R.string.txtDialogsContent)
@@ -314,7 +309,7 @@ public class OpenFoodAPIClient {
     public void searchProduct(final String name, final int page, final Activity activity, final OnProductsCallback productsCallback) {
         apiService.searchProductByName(name, page).enqueue(new Callback<Search>() {
             @Override
-            public void onResponse(Call<Search> call, Response<Search> response) {
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 if (!response.isSuccessful()) {
                     productsCallback.onProductsResponse(false, null, -1);
                     return;
@@ -329,7 +324,7 @@ public class OpenFoodAPIClient {
             }
 
             @Override
-            public void onFailure(Call<Search> call, Throwable t) {
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 productsCallback.onProductsResponse(false, null, -1);
             }
@@ -339,7 +334,7 @@ public class OpenFoodAPIClient {
     public void getAllergens(final OnAllergensCallback onAllergensCallback) {
         apiService.getAllergens().enqueue(new Callback<AllergenRestResponse>() {
             @Override
-            public void onResponse(Call<AllergenRestResponse> call, Response<AllergenRestResponse> response) {
+            public void onResponse(@NonNull Call<AllergenRestResponse> call, @NonNull Response<AllergenRestResponse> response) {
                 if (!response.isSuccessful()) {
                     onAllergensCallback.onAllergensResponse(false);
                     return;
@@ -350,7 +345,7 @@ public class OpenFoodAPIClient {
             }
 
             @Override
-            public void onFailure(Call<AllergenRestResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<AllergenRestResponse> call, @NonNull Throwable t) {
                 onAllergensCallback.onAllergensResponse(false);
             }
         });
@@ -368,12 +363,12 @@ public class OpenFoodAPIClient {
 
         apiService.getProductByBrands(brand, page).enqueue(new Callback<Search>() {
             @Override
-            public void onResponse(Call<Search> call, Response<Search> response) {
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 onBrandCallback.onBrandResponse(true, response.body());
             }
 
             @Override
-            public void onFailure(Call<Search> call, Throwable t) {
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
                 onBrandCallback.onBrandResponse(false, null);
             }
         });
@@ -390,7 +385,7 @@ public class OpenFoodAPIClient {
         apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product
                 .getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
             @Override
-            public void onResponse(Call<State> call, Response<State> response) {
+            public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
                 if (!response.isSuccessful() || response.body().getStatus() == 0) {
                     lt.error();
                     productSentCallback.onProductSentResponse(false);
@@ -418,7 +413,7 @@ public class OpenFoodAPIClient {
             }
 
             @Override
-            public void onFailure(Call<State> call, Throwable t) {
+            public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
                 lt.error();
                 productSentCallback.onProductSentResponse(false);
             }
@@ -435,7 +430,7 @@ public class OpenFoodAPIClient {
         apiService.saveImage(getUploadableMap(image, context))
                 .enqueue(new Callback<JsonNode>() {
                     @Override
-                    public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
+                    public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
                         Log.d("onResponse", response.toString());
                         if (!response.isSuccessful()) {
                             ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
@@ -447,7 +442,7 @@ public class OpenFoodAPIClient {
 
                         JsonNode body = response.body();
                         Log.d("onResponse", body.toString());
-                        if (body == null || !body.isObject()) {
+                        if (!body.isObject()) {
                             lt.error();
                         } else if (body.get("status").asText().contains("status not ok")) {
                             Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
@@ -458,7 +453,7 @@ public class OpenFoodAPIClient {
                     }
 
                     @Override
-                    public void onFailure(Call<JsonNode> call, Throwable t) {
+                    public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
                         Log.d("onResponse", t.toString());
                         ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                         mToUploadProductDao.insertOrReplace(product);
@@ -542,7 +537,7 @@ public class OpenFoodAPIClient {
         if (!cancel) {
 //            Toast.makeText(context, "called function", Toast.LENGTH_SHORT).show();
             task.job = job;
-            task.service = new WeakReference<SavedProductUploadJob>(service);
+            task.service = new WeakReference<>(service);
             task.execute(context);
         } else {
             task.cancel(true);
@@ -573,7 +568,7 @@ public class OpenFoodAPIClient {
                 apiService.saveImage(getUploadableMap(productImage, context[0]))
                         .enqueue(new Callback<JsonNode>() {
                             @Override
-                            public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
+                            public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
                                 if (!response.isSuccessful()) {
                                     Toast.makeText(context[0], response.toString(), Toast.LENGTH_LONG).show();
                                     return;
@@ -581,7 +576,7 @@ public class OpenFoodAPIClient {
 
                                 JsonNode body = response.body();
                                 Log.d("onResponse", body.toString());
-                                if (body == null || !body.isObject()) {
+                                if (!body.isObject()) {
 
                                 } else if (body.get("status").asText().contains("status not ok")) {
                                     mToUploadProductDao.delete(uploadProduct);
@@ -591,7 +586,7 @@ public class OpenFoodAPIClient {
                             }
 
                             @Override
-                            public void onFailure(Call<JsonNode> call, Throwable t) {
+                            public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
 
                             }
                         });

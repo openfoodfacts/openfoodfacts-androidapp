@@ -19,7 +19,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -28,7 +27,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.fastadapter.commons.utils.RecyclerViewCacheUtil;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -99,7 +97,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getResources().getBoolean(R.bool.portrait_only)){
+        if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_main);
@@ -276,7 +274,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
                             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
                             CustomTabsIntent customTabsIntent = builder.build();
-                            CustomTabActivityHelper.openCustomTab(this,customTabsIntent,Uri.parse(getString(R.string.advanced_search_url)),new WebViewFallback());
+                            CustomTabActivityHelper.openCustomTab(this, customTabsIntent, Uri.parse(getString(R.string.advanced_search_url)), new WebViewFallback());
                             break;
 
                         case CONTRIBUTOR:
@@ -288,19 +286,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                     .content(R.string.logout_dialog_content)
                                     .positiveText(R.string.txtOk)
                                     .negativeText(R.string.dialog_cancel)
-                                    .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                        @Override
-                                        public void onClick(MaterialDialog dialog, DialogAction which) {
-                                            logout();
-                                        }
-                                    })
-                                    .onNegative(new MaterialDialog.SingleButtonCallback() {
-                                        @Override
-                                        public void onClick(MaterialDialog dialog, DialogAction which) {
-                                            Toast.makeText(getApplicationContext(), "Cancelled",
-                                                    Toast.LENGTH_SHORT).show();
-                                        }
-                                    }).show();
+                                    .onPositive((dialog, which) -> logout())
+                                    .onNegative((dialog, which) -> Toast.makeText(getApplicationContext(), "Cancelled",
+                                            Toast.LENGTH_SHORT).show()).show();
                             break;
                         default:
                             // nothing to do
@@ -509,15 +497,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         }
 
-        MenuItemCompat.setOnActionExpandListener(searchMenuItem, new MenuItemCompat
-                .OnActionExpandListener() {
+        searchMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
-            public boolean onMenuItemActionExpand(MenuItem item) {
+            public boolean onMenuItemActionExpand(MenuItem menuItem) {
                 return true;
             }
 
             @Override
-            public boolean onMenuItemActionCollapse(MenuItem item) {
+            public boolean onMenuItemActionCollapse(MenuItem menuItem) {
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 Fragment currentFragment = fragmentManager.findFragmentById(R.id
                         .fragment_container);
@@ -532,6 +519,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 return true;
             }
         });
+
+
 
         return true;
     }
@@ -636,13 +625,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         Fragment fragment = new FindProductFragment();
         getSupportActionBar().setTitle(getResources().getString(R.string.search_by_barcode_drawer));
 
-        if (fragment != null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    fragment).commit();
-        } else {
-            // error in creating fragment
-            Log.e("MainActivity", "Error in creating fragment");
-        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                fragment).commit();
     }
 
     /**
@@ -653,19 +637,16 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         Fragment fragment = new PreferencesFragment();
         getSupportActionBar().setTitle(R.string.action_preferences);
 
-        if (fragment != null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-        } else {
-            Log.e(getClass().getSimpleName(), "Error in creating fragment");
-        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
     }
 
     /**
      * Create the drawer item. This adds a badge if there are items in the offline edit, otherwise
      * there is no badge present.
+     *
      * @return drawer item.
      */
-    private PrimaryDrawerItem createOfflineEditDrawerItem(){
+    private PrimaryDrawerItem createOfflineEditDrawerItem() {
         if (numberOFSavedProducts > 0) {
             return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9).withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
         } else {

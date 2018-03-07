@@ -77,9 +77,9 @@ public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
 
         public NutrimentViewHolder(View v) {
             super(v);
-            vNutrimentName = (TextView) v.findViewById(R.id.nutriment_name);
-            vNutrimentValue = (TextView) v.findViewById(R.id.nutriment_value);
-            vNutrimentServingValue = (TextView) v.findViewById(R.id.nutriment_serving_value);
+            vNutrimentName = v.findViewById(R.id.nutriment_name);
+            vNutrimentValue = v.findViewById(R.id.nutriment_value);
+            vNutrimentServingValue = v.findViewById(R.id.nutriment_serving_value);
         }
     }
 

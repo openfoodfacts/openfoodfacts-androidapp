@@ -22,7 +22,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -400,54 +399,58 @@ public class SaveProductOfflineActivity extends BaseActivity {
     }
 
     private void onPhotoReturned(File photoFile) {
-        if (imageTaken.equals("front")) {
-            mProduct.setImgupload_front(photoFile.getAbsolutePath());
-            imgSaveFront.setVisibility(View.VISIBLE);
-            mAttacherimgSaveFront = new PhotoViewAttacher(imgSaveFront);
-            Picasso.with(this)
-                    .load(photoFile)
-                    .into(imgSaveFront, new Callback() {
-                        @Override
-                        public void onSuccess() {
-                            mAttacherimgSaveFront.update();
-                        }
+        switch (imageTaken) {
+            case "front":
+                mProduct.setImgupload_front(photoFile.getAbsolutePath());
+                imgSaveFront.setVisibility(View.VISIBLE);
+                mAttacherimgSaveFront = new PhotoViewAttacher(imgSaveFront);
+                Picasso.with(this)
+                        .load(photoFile)
+                        .into(imgSaveFront, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                mAttacherimgSaveFront.update();
+                            }
 
-                        @Override
-                        public void onError() {
-                        }
-                    });
-        } else if (imageTaken.equals("nutrition")) {
-            mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
-            imgSaveNutrition.setVisibility(View.VISIBLE);
-            mAttacherimgSaveNutrition = new PhotoViewAttacher(imgSaveNutrition);
-            Picasso.with(this)
-                    .load(photoFile)
-                    .into(imgSaveNutrition, new Callback() {
-                        @Override
-                        public void onSuccess() {
-                            mAttacherimgSaveNutrition.update();
-                        }
+                            @Override
+                            public void onError() {
+                            }
+                        });
+                break;
+            case "nutrition":
+                mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
+                imgSaveNutrition.setVisibility(View.VISIBLE);
+                mAttacherimgSaveNutrition = new PhotoViewAttacher(imgSaveNutrition);
+                Picasso.with(this)
+                        .load(photoFile)
+                        .into(imgSaveNutrition, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                mAttacherimgSaveNutrition.update();
+                            }
 
-                        @Override
-                        public void onError() {
-                        }
-                    });
-        } else if (imageTaken.equals("ingredients")) {
-            mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
-            imgSaveIngredients.setVisibility(View.VISIBLE);
-            mAttacherimageSaveIngredients = new PhotoViewAttacher(imgSaveIngredients);
-            Picasso.with(this)
-                    .load(photoFile)
-                    .into(imgSaveIngredients, new Callback() {
-                        @Override
-                        public void onSuccess() {
-                            mAttacherimageSaveIngredients.update();
-                        }
+                            @Override
+                            public void onError() {
+                            }
+                        });
+                break;
+            case "ingredients":
+                mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
+                imgSaveIngredients.setVisibility(View.VISIBLE);
+                mAttacherimageSaveIngredients = new PhotoViewAttacher(imgSaveIngredients);
+                Picasso.with(this)
+                        .load(photoFile)
+                        .into(imgSaveIngredients, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                mAttacherimageSaveIngredients.update();
+                            }
 
-                        @Override
-                        public void onError() {
-                        }
-                    });
+                            @Override
+                            public void onError() {
+                            }
+                        });
+                break;
         }
     }
 

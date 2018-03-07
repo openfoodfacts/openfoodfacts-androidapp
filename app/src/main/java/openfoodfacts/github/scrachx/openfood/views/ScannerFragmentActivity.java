@@ -21,7 +21,7 @@ public class ScannerFragmentActivity extends BaseActivity {
     }
 
     public void setupToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.try_it_scan_now);
         setSupportActionBar(toolbar);
         final ActionBar ab = getSupportActionBar();

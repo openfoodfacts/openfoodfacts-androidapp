@@ -5,8 +5,8 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,6 +39,8 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 
 public class AlertUserFragment extends BaseFragment {
 
+    @BindView(R.id.fab)
+    android.support.design.widget.FloatingActionButton mFab;
     private OpenFoodAPIClient api;
     private List<Allergen> mAllergensEnabled;
     private AllergenDao mAllergenDao;
@@ -47,22 +49,32 @@ public class AlertUserFragment extends BaseFragment {
     private SharedPreferences mSettings;
     private List<Allergen> mAllergensFromDao;
     private View mView;
-    @BindView(R.id.fab)
-    android.support.design.widget.FloatingActionButton mFab;
+
+    public static Integer getKey(HashMap<Integer, String> map, String value) {
+        Integer key = null;
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            if ((value == null && entry.getValue() == null) || (value != null && value.equals(entry.getValue()))) {
+                key = entry.getKey();
+                break;
+            }
+        }
+        return key;
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         return createView(inflater, container, R.layout.fragment_alert_allergens);
     }
-    @Override
-   public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-               MenuItem item=menu.findItem(R.id.action_search);
-               item.setVisible(false);
-           }
 
     @Override
-    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        MenuItem item = menu.findItem(R.id.action_search);
+        item.setVisible(false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         mAllergenDao = Utils.getAppDaoSession(getActivity()).getAllergenDao();
@@ -83,7 +95,7 @@ public class AlertUserFragment extends BaseFragment {
             editor.apply();
         }
 
-        mRvAllergens = (RecyclerView) view.findViewById(R.id.alergens_recycle);
+        mRvAllergens = view.findViewById(R.id.alergens_recycle);
         mAllergensEnabled = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
         mAdapter = new AllergensAdapter(mAllergensEnabled, getActivity());
         mRvAllergens.setAdapter(mAdapter);
@@ -108,7 +120,7 @@ public class AlertUserFragment extends BaseFragment {
                     .itemsCallback((dialog, view, which, text) -> {
                         boolean canAdd = true;
                         int index1 = -1;
-                        String alergeneStringByPos = new ArrayList<String>(allS.values()).get(which);
+                        String alergeneStringByPos = new ArrayList<>(allS.values()).get(which);
                         for (Allergen a : mAllergensEnabled) {
                             if (a.getName().equals(mAllergensFromDao.get(which).getName()))
                                 canAdd = false;
@@ -160,18 +172,6 @@ public class AlertUserFragment extends BaseFragment {
             }
         }
 
-    }
-
-
-    public static Integer getKey(HashMap<Integer, String> map, String value) {
-        Integer key = null;
-        for (Map.Entry<Integer, String> entry : map.entrySet()) {
-            if ((value == null && entry.getValue() == null) || (value != null && value.equals(entry.getValue()))) {
-                key = entry.getKey();
-                break;
-            }
-        }
-        return key;
     }
 
     public void onResume() {
