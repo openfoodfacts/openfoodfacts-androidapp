@@ -9,8 +9,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 39
-        versionName "0.8.1"
+        versionCode 40
+        versionName "0.8.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -96,7 +96,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 4
+    schemaVersion 5
 }
 
 dependencies {
@@ -195,7 +195,7 @@ dependencies {
     implementation "com.mikepenz:material-design-iconic-typeface:$rootProject.materialFontVersion"
     implementation "com.mikepenz:fontawesome-typeface:$rootProject.awesomeFontVersion"
 
-    implementation ("com.theartofdev.edmodo:android-image-cropper:2.6.0") {
+    implementation("com.theartofdev.edmodo:android-image-cropper:2.6.0") {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
 

@@ -8,7 +8,7 @@
   <string name="action_find">Keres</string>
   <string name="text_barcode">Vonalkód beírása :</string>
   <string name="message_in_activity_save_product_offline">Csak egy fénykép kötelező egy új termék elküldéséhez.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+  <string name="product_incomplete_message">Ez a termékoldal nem teljes. Ennek eredményeként nem tudtuk elvégezni az allergén ellenőrzést.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Összefoglalás</item>
@@ -87,8 +87,6 @@
     <item>Össztevők</item>
   </string-array>
   <!-- Content Description -->
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Keres</string>
   <string name="no_products">Hiányzó termékek</string>
   <string name="desc_list_item_icon">Termék ikon</string>
@@ -111,6 +109,8 @@
   <string name="txtStores">Boltok:</string>
   <string name="txtCountries">Országokban kapható:</string>
   <string name="txtIngredients">Összetevők listája :</string>
+  <string name="Donate">Adományoz</string>
+  <string name="Donation">Kattintson ide az Open Food Facts-nek szánt adományozáshoz</string>
   <string name="txtSubstances">Allergén, vagy irritáló termékek, alkotóanyagok:</string>
   <string name="txtAdditives">Adalékanyagok :</string>
   <string name="txtTraces">Nyomokban tartalmazhat:</string>
@@ -154,7 +154,7 @@
   <string name="txtTakePicture">Fotó készítése</string>
   <string name="txtSendAll">Összes feltöltése</string>
   <string name="txtNoData">Nincs adat</string>
-  <string name="txtPictureNeeded">Fotó szükséges</string>
+  <string name="txtPictureNeeded">Kérjük, készítsen egy képet először</string>
   <string name="toastSending">Feltöltés...</string>
   <string name="dataSaved">Elmentve az eszközre</string>
   <string name="txtInfoAddUser">Felhasználónév és jelszó megadása</string>
@@ -191,6 +191,20 @@
   <string name="alert_drawer">Allergén riasztás</string>
   <string name="warning_allergens">Allergént tartalmaz</string>
   <string name="title_dialog_alert">Figyelmeztetés felvétele</string>
+  <string name="toggle_flash">Flash</string>
+  <string name="flash_on">Flash [ON]</string>
+  <string name="flash_off">Flash [OFF]</string>
+  <string name="ring_on">Ring [ON]</string>
+  <string name="ring_off">Ring [OFF]</string>
+  <string name="auto_focus_on">Auto Focus [ON]</string>
+  <string name="auto_focus_off">Auto Focus [OFF]</string>
+  <string name="formats">Formats</string>
+  <string name="choose_formats">Choose Formats</string>
+  <string name="select_camera">Select a Camera</string>
+  <string name="ok_button">OK</string>
+  <string name="cancel_button">Cancel</string>
+  <string name="login_button">Bejelentkezés</string>
+  <string name="create_account_button">Create Account</string>
   <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
   <string name="from_gallery">Galériából</string>
   <string name="product_sent">Termék sikeresen elküldve</string>
@@ -263,11 +277,14 @@
   <string name="action_search">Keres</string>
   <string name="search_hint">Termék keresése</string>
   <string name="number_of_results">Találatok száma :</string>
+  <string name="brand">Brand :</string>
+  <string name="number_of_products">Number of products :</string>
   <string name="txt_no_results">Nincs találat</string>
   <string name="txt_extend_search">Próbálja meg bővíteni a keresést vagy adja hozzá a terméket</string>
   <string name="txt_no_matching_products">Nem találtunk megfelelő termékeket.\nMegpróbálhatja :</string>
   <string name="txt_broaden_search">- szélesítse a keresést \n- olvassa be és adja hozzá az Open Food Facts-hoz</string>
   <string name="txt_cant_load_search_results">Nem tölthető be a keresés eredménye</string>
+  <string name="something_went_wrong">Sorry!! Something went wrong...</string>
   <string name="txt_try_again">Próbálja újra</string>
   <string name="nutrition_lactose">Laktóz</string>
   <string name="nutrition_casein">Kazein</string>
@@ -350,9 +367,7 @@
   <string name="skip">KIHAGY</string>
   <string name="start">MEGÉRTETTEM</string>
   <string name="contact">Kapcsolat</string>
-  <string name="contact_key">contact_team</string>
   <string name="contact_summary">Lépjen kapcsolatba a csapattal</string>
-  <string name="off_mail">mailto:contact@openfoodfacts.org</string>
   <string name="email_not_found">Nem találhatóak email alkalmazások</string>
   <string name="airplane_mode_active_dialog_title">Repülőgép mód engedélyezve</string>
   <string name="airplane_mode_active_dialog_message">A repülőgép mód engedélyezve van, kérjük, tiltsa le a folytatáshoz.</string>
@@ -363,7 +378,7 @@
   <string name="device_offline_dialog_negative">Elutasít</string>
   <string name="device_offline_dialog_positive">Beállítások</string>
   <string name="saving">Mentés…</string>
-  <string name="scan_first_product">Scan First Product</string>
+  <string name="scan_first_product">Első termék beolvasása</string>
   <string name="preference_enable_mobile_data_title">Feltöltés mobilinterneten</string>
   <string name="preference_enable_mobile_data_summary_on">Új termékek feltöltése mobilinternet &amp; WiFi használatával</string>
   <string name="preference_enable_mobile_data_summary_off">Új termékek feltöltése csak WiFi használatával</string>
@@ -374,8 +389,19 @@
   <string name="preference_choose_language_dialog_title">Válasszon nyelvet</string>
   <string name="FAQ">GYIK</string>
   <string name="FrequentlyAskedQuestions">Gyakran Ismételt Kérdések</string>
-  <string name="lang_translate">local_translate_help</string>
   <string name="translate_help_title">Segítse az Open Food Facts fordítását</string>
   <string name="translate_help_summary">Hozza az Open Food Facts adatbázist az ön nyelvére - nincs szükség műszaki ismeretekre</string>
-  <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="please_check_your_connection">Kérjük, ellenőrizze a hálózati kapcsolatát.</string>
+  <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
+  <string name="advanced_search_title">Részletes Keresés &amp; Diagramok</string>
+  <string name="Terms">Feltételek</string>
+  <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+  <string name="preference_header_general">Általános</string>
+  <string name="preference_header_network">Hálózat</string>
+  <string name="preference_header_contributing">Hozzájárulás</string>
+  <string name="not_support_books">A könyveket jelenleg nem támogatja az Open Food Facts</string>
+  <string name="conform_logout">Kijelentkezés megerősítése</string>
+  <string name="logout_dialog_content">Biztosan kijelentkezik?</string>
+  <string name="dialog_cancel">Mégse</string>
+  <string name="brand_string">Márka</string>
 </resources>

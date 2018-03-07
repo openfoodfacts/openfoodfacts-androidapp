@@ -246,6 +246,37 @@ public class Utils {
         return drawable;
     }
 
+    public static int getSmallImageGrade(String grade) {
+        int drawable;
+
+        if (grade == null) {
+            return R.drawable.ic_error;
+        }
+
+        switch (grade.toLowerCase(Locale.getDefault())) {
+            case "a":
+                drawable = R.drawable.nnc_small_a;
+                break;
+            case "b":
+                drawable = R.drawable.nnc_small_b;
+                break;
+            case "c":
+                drawable = R.drawable.nnc_small_c;
+                break;
+            case "d":
+                drawable = R.drawable.nnc_small_d;
+                break;
+            case "e":
+                drawable = R.drawable.nnc_small_e;
+                break;
+            default:
+                drawable = R.drawable.ic_error;
+                break;
+        }
+
+        return drawable;
+    }
+
     public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
         Drawable drawable = AppCompatResources.getDrawable(context, drawableId);
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable
