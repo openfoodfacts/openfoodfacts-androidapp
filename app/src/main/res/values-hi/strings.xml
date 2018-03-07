@@ -299,8 +299,8 @@
   <string name="nutrition_chlore">क्लोरीन</string>
   <string name="nutrition_magnesium">मैग्नीशियम</string>
   <string name="nutrition_taurine">टौरीन</string>
-  <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-  <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+  <string name="nutrition_monounsaturatedFat">मोनो अनसैचुरेटेड फ़ैट</string>
+  <string name="nutrition_polyunsaturatedFat">पॉलीअनसैचुरेटेड फ़ैट</string>
   <string name="nutrition_omega3">ओमेगा 3</string>
   <string name="nutrition_omega6">ओमेगा 6</string>
   <string name="nutrition_omega9">ओमेगा 9</string>
@@ -340,11 +340,11 @@
   <string name="chromium">क्रोमियम</string>
   <string name="molybdenum">मॉलीब्डेनम</string>
   <string name="iodine">आयोडीन</string>
-  <string name="caffeine">Caffeine</string>
+  <string name="caffeine">कैफ़ीन</string>
   <string name="taurine">टौरीन</string>
-  <string name="ph">pH</string>
+  <string name="ph">पीएच</string>
   <string name="fruits_vegetables_nuts">फल, सब्जियां, दाने</string>
-  <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
+  <string name="collagen_meat_protein_ratio">कोलेजन मांस प्रोटीन अनुपात</string>
   <string name="cocoa">कोकोआ</string>
   <string name="chlorophyl">क्लोरोफिल</string>
   <string name="take_picture_ingredients">सामग्री की एक चित्र लीजिए</string>
