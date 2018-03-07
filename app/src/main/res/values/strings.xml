@@ -439,7 +439,7 @@
     <string name="log_in">Login</string>
     <string name="login_true">Already logged in!</string>
 
-    <string name="conform_logout">Confirm Logout</string>
+    <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Cancel</string>
 
