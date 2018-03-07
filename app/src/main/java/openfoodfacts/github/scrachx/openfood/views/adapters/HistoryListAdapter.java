@@ -111,7 +111,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         list.remove(position);
         notifyItemRemoved(position);
     }
-    
+
 
     public void calcTime(Date date, HistoryScanHolder holder) {
 
