@@ -411,4 +411,5 @@
   <string name="logout_dialog_content">Biztosan kijelentkezik?</string>
   <string name="dialog_cancel">Mégse</string>
   <string name="brand_string">Márka</string>
+  <string name="country_string">Ország</string>
 </resources>
