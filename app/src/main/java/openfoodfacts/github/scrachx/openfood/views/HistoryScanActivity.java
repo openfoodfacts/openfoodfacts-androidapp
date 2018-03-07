@@ -5,13 +5,9 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-
-import android.graphics.drawable.Drawable;
-
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,6 +25,10 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -37,15 +37,13 @@ import com.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
@@ -66,17 +64,29 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     private HistoryProductDao mHistoryProductDao;
     private HistoryListAdapter adapter;
     private List<HistoryProduct> listHistoryProducts;
+    @BindView(R.id.scanFirst)
+    Button scanFirst;
+    @BindView(R.id.empty_history_info)
+    TextView infoView;
+    @BindView(R.id.history_progressbar)
+    ProgressBar historyProgressbar;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         setContentView(R.layout.activity_history_scan);
+        setTitle(getString(R.string.scan_history_drawer));
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
         productItems = new ArrayList<>();
+        setInfo(infoView);
         new HistoryScanActivity.FillAdapter(this).execute(this);
     }
 
@@ -88,6 +98,13 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         adapter.remove(productItems.get(position));
         adapter.notifyItemRemoved(position);
         adapter.notifyItemRangeChanged(position, adapter.getItemCount());
+
+        if (adapter.getItemCount() == 0) {
+
+            infoView.setVisibility(View.VISIBLE);
+            scanFirst.setVisibility(View.VISIBLE);
+
+        }
     }
 
     @Override
@@ -105,6 +122,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                             mHistoryProductDao.deleteAll();
                             productItems.clear();
                             recyclerHistoryScanView.getAdapter().notifyDataSetChanged();
+                            infoView.setVisibility(View.VISIBLE);
+                            scanFirst.setVisibility(View.VISIBLE);
                         })
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
@@ -119,7 +138,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                                 .neutralText(R.string.txtOk)
                                 .show();
                     } else {
-                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, Utils
+                                .MY_PERMISSIONS_REQUEST_STORAGE);
                     }
                 } else {
                     exportCSV();
@@ -146,7 +166,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             } else {
                 writer = new CSVWriter(new FileWriter(filePath));
             }
-           String[]  headers = getResources().getStringArray(R.array.headers);
+            String[] headers = getResources().getStringArray(R.array.headers);
             writer.writeNext(headers);
             List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             for (HistoryProduct hp : listHistoryProducts) {
@@ -200,6 +220,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         }
     }
 
+
     public class FillAdapter extends AsyncTask<Context, Void, Context> {
 
         private Activity activity;
@@ -210,14 +231,15 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         @Override
         protected void onPreExecute() {
+            historyProgressbar.setVisibility(View.VISIBLE);
             List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             if (listHistoryProducts.size() == 0) {
-                Toast.makeText(getApplicationContext(), R.string.txtNoData, Toast.LENGTH_LONG).show();
                 emptyHistory = true;
+                historyProgressbar.setVisibility(View.GONE);
+                infoView.setVisibility(View.VISIBLE);
+                scanFirst.setVisibility(View.VISIBLE);
                 invalidateOptionsMenu();
                 cancel(true);
-            } else {
-                Toast.makeText(getApplicationContext(), R.string.txtLoading, Toast.LENGTH_LONG).show();
             }
         }
 
@@ -228,40 +250,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
 
             for (HistoryProduct historyProduct : listHistoryProducts) {
-                Bitmap imgUrl;
-                HttpURLConnection connection = null;
-                InputStream input = null;
-                try {
-                    URL url = new URL(historyProduct.getUrl());
-                    connection = (HttpURLConnection) url.openConnection();
-                    connection.setDoInput(true);
-                    connection.connect();
-                    input = connection.getInputStream();
-                    imgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(input), 200, 200, true);
-                } catch (IOException e) {
-                    Log.i("HISTORY", "unable to get the history product image", e);
-                    Drawable drawable = getResources().getDrawable(R.drawable.ic_no_red_24dp);
-                    Canvas canvas = new Canvas();
-                    Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-                    canvas.setBitmap(bitmap);
-                    drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-                    drawable.draw(canvas);
-                    imgUrl = bitmap;
-                } finally {
-                    if (input != null) {
-                        try {
-                            input.close();
-                        } catch (IOException e) {
-                            // no job
-                        }
-                    }
-
-                    if (connection != null) {
-                        connection.disconnect();
-                    }
-                }
-
-                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), imgUrl, historyProduct.getBarcode()));
+                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), historyProduct.getUrl(), historyProduct
+                        .getBarcode(), historyProduct.getLastSeen(), historyProduct.getQuantity(), historyProduct.getNutritionGrade()));
             }
 
             return ctx[0];
@@ -276,7 +266,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                     .website_product), activity);
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
-
+            historyProgressbar.setVisibility(View.GONE);
 
             SwipeController swipeController = new SwipeController(ctx, HistoryScanActivity.this);
             ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
@@ -289,5 +279,41 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             });
         }
     }
+
+
+    @OnClick(R.id.scanFirst)
+    protected void onScanFirst() {
+
+
+        if (Utils.isHardwareCameraInstalled(getBaseContext())) {
+            if (ContextCompat.checkSelfPermission(getBaseContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(HistoryScanActivity.this, Manifest.permission.CAMERA)) {
+                    new MaterialDialog.Builder(getBaseContext())
+                            .title(R.string.action_about)
+                            .content(R.string.permission_camera)
+                            .neutralText(R.string.txtOk)
+                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(HistoryScanActivity.this, new String[]{Manifest
+                                    .permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                            .show();
+                } else {
+                    ActivityCompat.requestPermissions(HistoryScanActivity.this, new String[]{Manifest.permission.CAMERA}, Utils
+                            .MY_PERMISSIONS_REQUEST_CAMERA);
+                }
+            } else {
+                Intent intent = new Intent(HistoryScanActivity.this, ScannerFragmentActivity.class);
+                startActivity(intent);
+            }
+        }
+
+    }
+
+    public void setInfo(TextView view) {
+
+        String info = getString(R.string.scan_first_string);
+
+        view.setText(info);
+
+    }
+
 
 }

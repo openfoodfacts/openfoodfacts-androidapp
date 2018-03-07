@@ -4,9 +4,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import java.util.Map;
 
+import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.models.AllergenRestResponse;
+import openfoodfacts.github.scrachx.openfood.models.PackagerCodes;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -29,11 +31,13 @@ public interface OpenFoodAPIService {
 
     String PRODUCT_API_COMMENT = "new android app";
 
+    @GET("api/v0/product/{barcode}.json?fields=image_small_url,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,brands,packaging,labels,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags")
+    Call<State> getFullProductByBarcode(@Path("barcode") String barcode);
 
-    @GET("api/v0/produit/{barcode}.json")
-    Call<State> getProductByBarcode(@Path("barcode") String barcode);
+    @GET("api/v0/product/{barcode}.json?fields=product_name,brands,quantity,image_url,nutrition_grade_fr,code")
+    Call<State> getShortProductByBarcode(@Path("barcode") String barcode);
 
-    @GET("cgi/search.pl?search_simple=1&json=1&action=process")
+    @GET("cgi/search.pl?search_simple=1&json=1&action=process&fields=image_small_url,product_name,brands,quantity,code,nutrition_grade_fr")
     Call<Search> searchProductByName(@Query("search_terms") String name, @Query("page") int page);
 
     @FormUrlEncoded
@@ -61,8 +65,13 @@ public interface OpenFoodAPIService {
     @POST("/cgi/product_image_upload.pl")
     Call<JsonNode> saveImage(@PartMap Map<String, RequestBody> fields);
 
+
     @GET("allergens.json")
     Call<AllergenRestResponse> getAllergens();
+
+    @GET("brand/{brand}/{page}.json")
+    Call<Search> getProductByBrands(@Path("brand") String brand, @Path("page") int page);
+
 
     @GET("language/{language}.json")
     Call<Search> byLanguage(@Path("language") String language);
@@ -96,7 +105,7 @@ public interface OpenFoodAPIService {
 
     @GET("packager-code/{PackagerCode}.json")
     Call<Search> byPackagerCode(@Path("PackagerCode") String PackagerCode);
-    
+
     @GET("city/{City}.json")
     Call<Search> byCity(@Path("City") String City);
 
@@ -105,30 +114,33 @@ public interface OpenFoodAPIService {
 
     @GET("nutrient-level/{NutrientLevel}.json")
     Call<Search> byNutrientLevel(@Path("NutrientLevel") String NutrientLevel);
-   
+
     @GET("contributor/{Contributor}.json")
     Call<Search> byContributor(@Path("Contributor") String Contributor);
-    
+
     @GET("photographer/{Photographer}.json")
     Call<Search> byPhotographer(@Path("Photographer") String Photographer);
-    
+
     @GET("informer/{Informer}.json")
     Call<Search> byInformer(@Path("Informer") String Informer);
 
     @GET("last-edit-date/{LastEditDate}.json")
     Call<Search> byLastEditDate(@Path("LastEditDate") String LastEditDate);
-    
+
     @GET("entry-dates/{EntryDates}.json")
     Call<Search> byEntryDates(@Path("EntryDates") String EntryDates);
-    
+
     @GET("unknown-nutrient/{UnknownNutrient}.json")
     Call<Search> byUnknownNutrient(@Path("UnknownNutrient") String UnknownNutrient);
 
     @GET("additive/{Additive}.json")
     Call<Search> byAdditive(@Path("Additive") String Additive);
-    
+
     @GET("code/{Code}.json")
     Call<Search> byCode(@Path("Code") String Code);
+
+    @GET("packager-codes.json")
+    Observable<PackagerCodes> getPackagerCodes();
 
     /**
      * Open Beauty Facts experimental and specific APIs

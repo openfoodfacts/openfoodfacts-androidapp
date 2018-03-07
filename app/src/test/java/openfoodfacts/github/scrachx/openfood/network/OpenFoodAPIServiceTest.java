@@ -182,7 +182,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     @Test
     public void getProduct_notFound() throws Exception {
         String barcode = "457457457";
-        Response<State> response = serviceRead.getProductByBarcode(barcode).execute();
+        Response<State> response = serviceRead.getFullProductByBarcode(barcode).execute();
 
         assertTrue(response.isSuccessful());
 
@@ -233,7 +233,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
         assertEquals(body.getStatus(), 1);
         assertEquals(body.getStatusVerbose(), "fields saved");
 
-        Response<State> response = serviceWrite.getProductByBarcode(product.getBarcode()).execute();
+        Response<State> response = serviceWrite.getFullProductByBarcode(product.getBarcode()).execute();
         Product savedProduct = response.body().getProduct();
         assertEquals(product.getName(), savedProduct.getProductName());
         assertEquals(product.getBrands(), savedProduct.getBrands());

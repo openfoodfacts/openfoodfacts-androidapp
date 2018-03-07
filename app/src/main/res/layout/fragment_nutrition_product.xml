@@ -68,7 +68,7 @@
             android:textSize="@dimen/font_normal"
             android:textStyle="bold" />
 
-        <ListView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/listNutrientLevels"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

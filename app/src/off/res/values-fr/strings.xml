@@ -12,12 +12,12 @@
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-fr.openfoodfacts.org/contributeur/</string>
   <string name="txtHome">Open Food Facts est une base de données ouverte de produits alimentaires contenant ingrédients, allergènes, informations nutritionnelles et toute information qui se trouve sur les étiquettes.</string>
-  <string name="slide_1_title">Contribute to Food transparency</string>
-  <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
-  <string name="slide_2_title">Get the facts</string>
-  <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Get the Nutriscore</string>
-  <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
-  <string name="slide_4_title">Works offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet Connection right now</string>
+  <string name="slide_1_title">Contribuez à la transparence alimentaire</string>
+  <string name="slide_1_desc">Scannez les produits, prenez-les en photo, devenez un acteur de la transparence alimentaire</string>
+  <string name="slide_2_title">Obtenez les faits</string>
+  <string name="slide_2_desc">Des informations détaillées sur le produit que vous avez scanné, déchiffrées pour vous</string>
+  <string name="slide_3_title">Obtenez le Nutriscore</string>
+  <string name="slide_3_desc">Une vue synthétique des propriétés nutritionnelles de vos produits alimentaires préférés</string>
+  <string name="slide_4_title">Fonctionne hors connexion</string>
+  <string name="slide_4_desc">Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d\'une connexion Internet sur le moment</string>
 </resources>

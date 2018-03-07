@@ -9,8 +9,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 39
-        versionName "0.8.1"
+        versionCode 40
+        versionName "0.8.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -96,7 +96,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 2
+    schemaVersion 5
 }
 
 dependencies {
@@ -130,11 +130,15 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
 
+    //scheduling jobs
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+
     //Serialization/Deserialization
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
     implementation "com.fasterxml.jackson.core:jackson-core:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-databind:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-annotations:$rootProject.jacksonVersion"
+//    compile 'io.rest-assured:json-path:3.0.7'
 
     //CSV Serialization/Deserialization
     implementation "com.opencsv:opencsv:$rootProject.openCsvVersion"
@@ -190,6 +194,10 @@ dependencies {
     implementation "com.mikepenz:google-material-typeface:$rootProject.googleMaterialFontVersion"
     implementation "com.mikepenz:material-design-iconic-typeface:$rootProject.materialFontVersion"
     implementation "com.mikepenz:fontawesome-typeface:$rootProject.awesomeFontVersion"
+
+    implementation("com.theartofdev.edmodo:android-image-cropper:2.6.0") {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    }
 
     //Testing
     testImplementation "junit:junit:$rootProject.jUnitVersion"

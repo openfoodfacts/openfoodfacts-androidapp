@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -23,12 +24,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.github.chrisbanes.photoview.PhotoView;
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
 import java.util.List;
@@ -37,6 +43,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
@@ -62,11 +69,11 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @BindView(R.id.barcodeDoubleCheck)
     TextView barcodeText;
     @BindView(R.id.imageSaveFront)
-    ImageView imgSaveFront;
+    PhotoView imgSaveFront;
     @BindView(R.id.imageSaveNutrition)
-    ImageView imgSaveNutrition;
+    PhotoView imgSaveNutrition;
     @BindView(R.id.imageSaveIngredients)
-    ImageView imgSaveIngredients;
+    PhotoView imgSaveIngredients;
     @BindView(R.id.editTextName)
     EditText name;
     @BindView(R.id.editTextBrand)
@@ -87,6 +94,14 @@ public class SaveProductOfflineActivity extends BaseActivity {
     CardView mContainerView;
     @BindView(R.id.message_dismiss_icon)
     ImageButton mDismissButton;
+    @BindView(R.id.message)
+    TextView messageView;
+    @BindView(R.id.NutritionImageGroup)
+    LinearLayout nutritionGroup;
+
+    PhotoViewAttacher mAttacherimgSaveFront;
+    PhotoViewAttacher mAttacherimgSaveNutrition;
+    PhotoViewAttacher mAttacherimageSaveIngredients;
 
     private SendProduct mProduct;
     private String mBarcode;
@@ -98,7 +113,14 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         setContentView(R.layout.activity_save_product_offline);
+
+        if (BuildConfig.FLAVOR.equals("obf")) {
+            nutritionGroup.setVisibility(View.GONE);
+        }
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -126,6 +148,13 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
         api = new OpenFoodAPIClient(this);
         mBarcode = getIntent().getStringExtra("barcode");
+
+        String bookBarcodeTest = mBarcode.substring(0, 3);
+        if (bookBarcodeTest.equals("978") || bookBarcodeTest.equals("979")) {
+            messageView.setText(R.string.not_support_books);
+            mContainerView.setVisibility(View.VISIBLE);
+        }
+
         barcodeText.append(" " + mBarcode);
 
         imgSaveFront.setVisibility(View.GONE);
@@ -221,10 +250,15 @@ public class SaveProductOfflineActivity extends BaseActivity {
     protected void onSaveProduct() {
         Utils.hideKeyboard(this);
 
+        save.setEnabled(false);
+        save.setText(getString(R.string.saving));
+
         if (isBlank(mProduct.getImgupload_front())) {
             Toast toast = Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER,0,0);
             toast.show();
+            save.setEnabled(true);
+            save.setText(getString(R.string.txtSave));
             return;
         }
 
@@ -340,6 +374,16 @@ public class SaveProductOfflineActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                onPhotoReturned(new File(resultUri.getPath()));
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
+
         EasyImage.handleActivityResult(requestCode, resultCode, data, this, new DefaultCallback() {
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
@@ -348,7 +392,9 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                onPhotoReturned(imageFiles.get(0));
+                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                        .start(SaveProductOfflineActivity.this);
+
             }
 
             @Override
@@ -366,27 +412,51 @@ public class SaveProductOfflineActivity extends BaseActivity {
         if (imageTaken.equals("front")) {
             mProduct.setImgupload_front(photoFile.getAbsolutePath());
             imgSaveFront.setVisibility(View.VISIBLE);
+            mAttacherimgSaveFront = new PhotoViewAttacher(imgSaveFront);
             Picasso.with(this)
                     .load(photoFile)
-                    .fit()
-                    .centerCrop()
-                    .into(imgSaveFront);
+                    .into(imgSaveFront, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            mAttacherimgSaveFront.update();
+                        }
+
+                        @Override
+                        public void onError() {
+                        }
+                    });
         } else if (imageTaken.equals("nutrition")) {
             mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
             imgSaveNutrition.setVisibility(View.VISIBLE);
+            mAttacherimgSaveNutrition = new PhotoViewAttacher(imgSaveNutrition);
             Picasso.with(this)
                     .load(photoFile)
-                    .fit()
-                    .centerCrop()
-                    .into(imgSaveNutrition);
+                    .into(imgSaveNutrition, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            mAttacherimgSaveNutrition.update();
+                        }
+
+                        @Override
+                        public void onError() {
+                        }
+                    });
         } else if (imageTaken.equals("ingredients")) {
             mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
             imgSaveIngredients.setVisibility(View.VISIBLE);
+            mAttacherimageSaveIngredients = new PhotoViewAttacher(imgSaveIngredients);
             Picasso.with(this)
                     .load(photoFile)
-                    .fit()
-                    .centerCrop()
-                    .into(imgSaveIngredients);
+                    .into(imgSaveIngredients, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            mAttacherimageSaveIngredients.update();
+                        }
+
+                        @Override
+                        public void onError() {
+                        }
+                    });
         }
     }
 
