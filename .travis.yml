@@ -1,3 +1,4 @@
+install: travis_wait 90 mvn install
 language: android
 
 jdk: oraclejdk8
