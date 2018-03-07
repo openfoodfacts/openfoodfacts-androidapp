@@ -29,13 +29,13 @@
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
-    <item>अंग्रेज़ी</item>
-    <item>फ़्रेंच</item>
-    <item>स्पेनिश</item>
-    <item>इतालवी</item>
-    <item>जर्मन</item>
-    <item>जापानी</item>
-    <item>रूसी</item>
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
     <item>pt</item>
     <item>sv</item>
     <item>my</item>
