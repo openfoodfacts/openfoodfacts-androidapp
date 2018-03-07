@@ -407,7 +407,7 @@
   <string name="scan_first_string">L\'historique des produits que vous avez consultés sera répertorié ici.\nCet historique est réservé à vos yeux et est stocké localement.</string>
   <string name="log_in">Connexion</string>
   <string name="login_true">Déjà connecté!</string>
-  <string name="conform_logout">Confirmer la déconnexion</string>
+  <string name="confirm_logout">Confirm Logout</string>
   <string name="logout_dialog_content">Etes-vous sûr(e) de vouloir vous déconnecter?</string>
   <string name="dialog_cancel">Annuler</string>
   <string name="brand_string">Marque</string>
