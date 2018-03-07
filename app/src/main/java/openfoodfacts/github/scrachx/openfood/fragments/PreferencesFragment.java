@@ -67,6 +67,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
 
         for (int i = 0; i < localeValues.length; i++) {
             Locale current = LocaleHelper.getLocale(localeValues[i]);
+
             if (current != null) {
                 localeLabels[i] = String.format("%s - %s",
                         // current.getDisplayName(current), // native form
