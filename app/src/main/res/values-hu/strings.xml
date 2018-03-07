@@ -404,7 +404,7 @@
   <string name="minutes_ago">perccel ezelőtt</string>
   <string name="hours_ago">órával ezelőtt</string>
   <string name="days_ago">nappal ezelőtt</string>
-  <string name="scan_first_string">A megtekintett termékek listáját itt találja.\nHelyben tárolt tartalom, ezt csak Ön láthajta.</string>
+  <string name="scan_first_string">A megtekintett termékek listáját itt találja.\nHelyben tárolt tartalom, kizárólag az Ön számára látható.</string>
   <string name="log_in">Bejelentkezés</string>
   <string name="login_true">Már bejelentkezett!</string>
   <string name="confirm_logout">Kijelentkezés megerősítése</string>
