@@ -277,11 +277,14 @@
   <string name="action_search">অনুসন্ধান</string>
   <string name="search_hint">পণ্য অনুসন্ধান করুন</string>
   <string name="number_of_results">ফলাফলের সংখ্যা:</string>
+  <string name="brand">Brand :</string>
+  <string name="number_of_products">Number of products :</string>
   <string name="txt_no_results">কোন ফলাফল খুঁজে পাওয়া যায়নি</string>
   <string name="txt_extend_search">আপনার অনুসন্ধান স্পষ্ট করুন বা পণ্য যোগ করুন</string>
   <string name="txt_no_matching_products">আমরা কোন পণ্য খুঁজে পাইনি ।\nআপনি আরো দেখতে পারেন :</string>
   <string name="txt_broaden_search">- আপনার অনুসন্ধান স্পষ্ট করুন \ n- স্ক্যান করুন এবং ওপেন ফুড ফ্যাক্টসে যোগ করুন </string>
   <string name="txt_cant_load_search_results">অনুসন্ধান ফলাফল লোড করা যায়নি</string>
+  <string name="something_went_wrong">Sorry!! Something went wrong...</string>
   <string name="txt_try_again">আবার চেষ্টা করুন</string>
   <string name="nutrition_lactose">ল্যাকটোজ</string>
   <string name="nutrition_casein">ছানাজাতীয় উপাদান</string>
@@ -401,4 +404,5 @@
   <string name="conform_logout">Confirm Logout</string>
   <string name="logout_dialog_content">Are you sure to log out ?</string>
   <string name="dialog_cancel">Cancel</string>
+  <string name="brand_string">ব্র্যান্ড</string>
 </resources>

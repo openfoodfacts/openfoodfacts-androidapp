@@ -277,11 +277,14 @@
   <string name="action_search">Rechercher</string>
   <string name="search_hint">Chercher un produit</string>
   <string name="number_of_results">Nombre de résultats:</string>
+  <string name="brand">Marque :</string>
+  <string name="number_of_products">Nombre de produits :</string>
   <string name="txt_no_results">Aucun résultat n\'a été trouvé</string>
   <string name="txt_extend_search">Veuillez élargir vos critères de recherche ou ajoutez le produit</string>
   <string name="txt_no_matching_products">Nous n\'avons trouvé aucun produit correspondant.\nVous pouvez essayer:</string>
   <string name="txt_broaden_search">- élargir votre recherche\n-le scanner et l\'ajouter à Open Food Facts</string>
   <string name="txt_cant_load_search_results">Impossible de charger les résultats</string>
+  <string name="something_went_wrong">Désolé, une erreur est survenue...</string>
   <string name="txt_try_again">Veuillez réessayer</string>
   <string name="nutrition_lactose">Lactose</string>
   <string name="nutrition_casein">Caséine</string>
@@ -400,4 +403,5 @@
   <string name="conform_logout">Confirmer la déconnexion</string>
   <string name="logout_dialog_content">Etes-vous sûr(e) de vouloir vous déconnecter?</string>
   <string name="dialog_cancel">Annuler</string>
+  <string name="brand_string">Marque</string>
 </resources>
