@@ -284,7 +284,7 @@
   <string name="txt_no_matching_products">Мы не нашли подходящих продуктов.\nВы можете попробовать:</string>
   <string name="txt_broaden_search">- расширение вашего поиска \n- отсканируйте и добавьте его в Open Food Facts</string>
   <string name="txt_cant_load_search_results">Не удается загрузить результаты поиска</string>
-  <string name="something_went_wrong">Sorry!! Something went wrong...</string>
+  <string name="something_went_wrong">Sorry,something went wrong…</string>
   <string name="txt_try_again">Попробуйте еще раз</string>
   <string name="nutrition_lactose">Лактоза</string>
   <string name="nutrition_casein">Казеин</string>
