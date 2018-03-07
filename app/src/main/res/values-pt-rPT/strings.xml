@@ -411,4 +411,5 @@
   <string name="logout_dialog_content">Are you sure to log out ?</string>
   <string name="dialog_cancel">Cancel</string>
   <string name="brand_string">Marca</string>
+  <string name="country_string">País</string>
 </resources>
