@@ -277,7 +277,7 @@
   <string name="action_search">Keres</string>
   <string name="search_hint">Termék keresése</string>
   <string name="number_of_results">Találatok száma :</string>
-  <string name="brand">Brand :</string>
+  <string name="brand">Márkanév :</string>
   <string name="number_of_products">Number of products :</string>
   <string name="txt_no_results">Nincs találat</string>
   <string name="txt_extend_search">Próbálja meg bővíteni a keresést vagy adja hozzá a terméket</string>
