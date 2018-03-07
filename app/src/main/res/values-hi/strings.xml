@@ -19,23 +19,23 @@
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
+    <item>ग्राम</item>
     <item>मिलीग्राम</item>
     <item>किलोग्राम</item>
-    <item>एल/ लीटर</item>
+    <item>लीटर</item>
     <item>मिलीलीटर</item>
-    <item>मिलीलीटर</item>
-    <item>सेंतीलीटेर</item>
+    <item>सेंटीलीटर</item>
     <item>फ्लूइड आउन्स</item>
   </string-array>
   <!-- Text units -->
   <string-array name="lang_array">
-    <item>अंग्रेज़ी</item>
-    <item>फ़्रेंच</item>
-    <item>स्पेनिश</item>
-    <item>इतालवी</item>
-    <item>जर्मन</item>
-    <item>जापानी</item>
-    <item>रूसी</item>
+    <item>en</item>
+    <item>fr</item>
+    <item>es</item>
+    <item>it</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>ru</item>
     <item>pt</item>
     <item>sv</item>
     <item>my</item>
@@ -403,12 +403,12 @@
   <string name="seconds_ago">seconds ago</string>
   <string name="minutes_ago">minutes ago</string>
   <string name="hours_ago">hours ago</string>
-  <string name="days_ago">days ago</string>
+  <string name="days_ago">दिन पहले</string>
   <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
   <string name="log_in">लॉगिन</string>
-  <string name="login_true">Already logged in!</string>
-  <string name="confirm_logout">Confirm Logout</string>
-  <string name="logout_dialog_content">Are you sure to log out ?</string>
-  <string name="dialog_cancel">Cancel</string>
+  <string name="login_true">पहले से ही लॉगिन हैं!</string>
+  <string name="confirm_logout">लॉगआउट करें?</string>
+  <string name="logout_dialog_content">लॉग आउट करने के लिए निश्चित हैं?</string>
+  <string name="dialog_cancel">रद्द करें</string>
   <string name="brand_string">ब्रांड</string>
 </resources>
