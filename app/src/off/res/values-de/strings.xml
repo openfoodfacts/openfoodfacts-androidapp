@@ -11,13 +11,13 @@
   <string name="website_product">https://world-de.openfoodfacts.org/produkt/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-de.openfoodfacts.org/mitwirkender/</string>
-  <string name="txtHome">Open Food Facts ist eine freie Nahrungsmittelproduktdatenbank mit Zutaten, Allergenen, Nährwertangaben und all den Kleinigkeiten, die sich auf Produkt-Etiketten befinden.</string>
-  <string name="slide_1_title">Contribute to Food transparency</string>
-  <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
-  <string name="slide_2_title">Hol’ dir die Fakten</string>
-  <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Get the Nutriscore</string>
-  <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
-  <string name="slide_4_title">Funktioniert offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet Connection right now</string>
+  <string name="txtHome">„Open Food Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.</string>
+  <string name="slide_1_title">Beitrag zur Transparent von Lebensmittelprodukten leisten</string>
+  <string name="slide_1_desc">Produkte erfassen, und diese fotografieren, ermöglichen die Transparenz von Lebensmitteln</string>
+  <string name="slide_2_title">Holen Sie sich die Fakten</string>
+  <string name="slide_2_desc">Umfassende Informationen über das erfasste Produkt wurden für Sie entschlüsselt</string>
+  <string name="slide_3_title">„Nutri-Score” (franz. Nahrungsmittelampel) abrufen</string>
+  <string name="slide_3_desc">Eine zusammenfassende Darstellung der ernährungsphysiologischen Eigenschaften Ihrer bevorzugten Lebensmittelprodukte</string>
+  <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
+  <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
 </resources>

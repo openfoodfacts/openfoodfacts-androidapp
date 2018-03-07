@@ -103,6 +103,14 @@ public class OpenFoodAPIClient {
         mToUploadProductDao = daoSession.getToUploadProductDao();
     }
 
+    public OpenFoodAPIClient(Activity activity, String url) {
+        this(url);
+        mAllergenDao = Utils.getAppDaoSession(activity).getAllergenDao();
+        mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
+        mTagDao = Utils.getAppDaoSession(activity).getTagDao();
+        mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
+    }
+
     private OpenFoodAPIClient(String apiUrl) {
 
         apiService = new Retrofit.Builder()
@@ -117,9 +125,6 @@ public class OpenFoodAPIClient {
     /**
      * @return The API service to be able to use directly retrofit API mapping
      */
-    public OpenFoodAPIService getAPIService() {
-        return apiService;
-    }
 
     /**
      * Open the product activity if the barcode exist.
@@ -351,6 +356,7 @@ public class OpenFoodAPIClient {
         });
     }
 
+
     public void onResponseCallForPostFunction(Call<State> call, Response<State> response, Activity activity, LoadToast lt, final OnProductSentCallback productSentCallback, SendProduct product) {
         if (!response.isSuccessful() || response.body().getStatus() == 0) {
             lt.error();
@@ -376,6 +382,31 @@ public class OpenFoodAPIClient {
 
         lt.success();
         productSentCallback.onProductSentResponse(true);
+    }
+
+
+    /**
+     * @return This api service gets products of provided brand.
+     */
+    public OpenFoodAPIService getAPIService() {
+        return apiService;
+    }
+
+    public void getBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
+
+        apiService.getProductByBrands(brand, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+                onBrandCallback.onBrandResponse(true, response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+                onBrandCallback.onBrandResponse(false, null);
+            }
+        });
+
+
     }
 
     public void post(final Activity activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
@@ -537,6 +568,11 @@ public class OpenFoodAPIClient {
         void onAllergensResponse(boolean value);
     }
 
+    public interface OnBrandCallback {
+
+        void onBrandResponse(boolean value, Search brand);
+    }
+
     public interface OnProductSentCallback {
         void onProductSentResponse(boolean value);
     }
@@ -557,7 +593,7 @@ public class OpenFoodAPIClient {
                 hp = historyProducts.get(0);
                 hp.setLastSeen(new Date());
             } else {
-                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageFrontUrl(), product.getCode());
+                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(), product.getCode(), product.getQuantity(), product.getNutritionGradeFr());
             }
             mHistoryProductDao.insertOrReplace(hp);
 

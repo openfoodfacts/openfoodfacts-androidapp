@@ -54,6 +54,7 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.BrandActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -138,7 +139,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
-        mFragment=this;
+        mFragment = this;
         return createView(inflater, container, R.layout.fragment_summary_product);
     }
 
@@ -232,8 +233,15 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             packagingProduct.setVisibility(View.GONE);
         }
         if (isNotBlank(product.getBrands())) {
+            brandProduct.setClickable(true);
+            brandProduct.setMovementMethod(LinkMovementMethod.getInstance());
             brandProduct.setText(bold(getString(R.string.txtBrands)));
-            brandProduct.append(' ' + product.getBrands());
+            String[] brands = product.getBrands().split(",");
+            for (String brand : brands) {
+
+                brandProduct.append(getBrandsTag(brand));
+
+            }
         } else {
             brandProduct.setVisibility(View.GONE);
         }
@@ -251,11 +259,18 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             ingredientsOrigin.append(' ' + product.getOrigins());
         }
 
-        String categ;
         if (isNotBlank(product.getCategories())) {
-            categ = product.getCategories().replace(",", ", ");
+
+            categoryProduct.setClickable(true);
+            categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
             categoryProduct.setText(bold(getString(R.string.txtCategories)));
-            categoryProduct.append(' ' + categ);
+            String[] categories = product.getCategories().split(",");
+            for (String category : categories) {
+
+                categoryProduct.append(getCategoriesTag(category));
+
+            }
+
         } else {
             categoryProduct.setVisibility(View.GONE);
         }
@@ -263,17 +278,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         String labels = product.getLabels();
         if (isNotBlank(labels)) {
             labelProduct.append(bold(getString(R.string.txtLabels)));
+            labelProduct.setClickable(true);
+            labelProduct.setMovementMethod(LinkMovementMethod.getInstance());
             labelProduct.append(" ");
             String[] label = labels.split(",");
             int labelCount = label.length;
             if (labelCount > 1) {
                 for (int i = 0; i < (labelCount - 1); i++) {
-                    labelProduct.append(label[i].trim());
+                    labelProduct.append(getLabelTag(label[i].trim()));
                     labelProduct.append(", ");
                 }
-                labelProduct.append(label[labelCount - 1].trim());
+                labelProduct.append(getLabelTag(label[labelCount - 1].trim()));
             } else {
-                labelProduct.append(label[0].trim());
+                labelProduct.append(getLabelTag(label[0].trim()));
             }
         } else {
             labelProduct.setVisibility(View.GONE);
@@ -335,64 +352,66 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             if (BuildConfig.DEBUG) Log.i(getClass().getSimpleName(), e.toString());
         }
 
-        List<NutrientLevelItem> levelItem = new ArrayList<>();
-        Nutriments nutriments = product.getNutriments();
+        if (BuildConfig.FLAVOR.equals("off")) {
+            List<NutrientLevelItem> levelItem = new ArrayList<>();
+            Nutriments nutriments = product.getNutriments();
 
-        NutrientLevels nutrientLevels = product.getNutrientLevels();
-        NutrimentLevel fat = null;
-        NutrimentLevel saturatedFat = null;
-        NutrimentLevel sugars = null;
-        NutrimentLevel salt = null;
-        if (nutrientLevels != null) {
-            fat = nutrientLevels.getFat();
-            saturatedFat = nutrientLevels.getSaturatedFat();
-            sugars = nutrientLevels.getSugars();
-            salt = nutrientLevels.getSalt();
-        }
-
-        if (fat == null && salt == null && saturatedFat == null && sugars == null) {
-            levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), "", "", R.drawable.error_image));
-        } else {
-            // prefetch the uri
-            // currently only available in french translations
-            nutritionScoreUri = Uri.parse("https://fr.openfoodfacts.org/score-nutritionnel-france");
-            customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
-
-            Context context = this.getContext();
-
-            if (fat != null) {
-                String fatNutrimentLevel = fat.getLocalize(context);
-                Nutriments.Nutriment nutriment = nutriments.get(Nutriments.FAT);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtFat), getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit(), fatNutrimentLevel, fat.getImageLevel()));
+            NutrientLevels nutrientLevels = product.getNutrientLevels();
+            NutrimentLevel fat = null;
+            NutrimentLevel saturatedFat = null;
+            NutrimentLevel sugars = null;
+            NutrimentLevel salt = null;
+            if (nutrientLevels != null) {
+                fat = nutrientLevels.getFat();
+                saturatedFat = nutrientLevels.getSaturatedFat();
+                sugars = nutrientLevels.getSugars();
+                salt = nutrientLevels.getSalt();
             }
 
-            if (saturatedFat != null) {
-                String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SATURATED_FAT);
-                String saturatedFatValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatValue, saturatedFatLocalize, saturatedFat.getImageLevel()));
+            if (fat == null && salt == null && saturatedFat == null && sugars == null) {
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), "", "", R.drawable.error_image));
+            } else {
+                // prefetch the uri
+                // currently only available in french translations
+                nutritionScoreUri = Uri.parse("https://fr.openfoodfacts.org/score-nutritionnel-france");
+                customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
+
+                Context context = this.getContext();
+
+                if (fat != null) {
+                    String fatNutrimentLevel = fat.getLocalize(context);
+                    Nutriments.Nutriment nutriment = nutriments.get(Nutriments.FAT);
+                    levelItem.add(new NutrientLevelItem(getString(R.string.txtFat), getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit(), fatNutrimentLevel, fat.getImageLevel()));
+                }
+
+                if (saturatedFat != null) {
+                    String saturatedFatLocalize = saturatedFat.getLocalize(context);
+                    Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SATURATED_FAT);
+                    String saturatedFatValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
+                    levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatValue, saturatedFatLocalize, saturatedFat.getImageLevel()));
+                }
+
+                if (sugars != null) {
+                    String sugarsLocalize = sugars.getLocalize(context);
+                    Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SUGARS);
+                    String sugarsValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
+                    levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars), sugarsValue, sugarsLocalize, sugars.getImageLevel()));
+                }
+
+                if (salt != null) {
+                    String saltLocalize = salt.getLocalize(context);
+                    Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SALT);
+                    String saltValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
+                    levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt), saltValue, saltLocalize, salt.getImageLevel()));
+                }
+
+                img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                img.setOnClickListener(view1 -> {
+                    CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+
+                    CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+                });
             }
-
-            if (sugars != null) {
-                String sugarsLocalize = sugars.getLocalize(context);
-                Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SUGARS);
-                String sugarsValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars), sugarsValue, sugarsLocalize, sugars.getImageLevel()));
-            }
-
-            if (salt != null) {
-                String saltLocalize = salt.getLocalize(context);
-                Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SALT);
-                String saltValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt), saltValue, saltLocalize, salt.getImageLevel()));
-            }
-
-            img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
-            img.setOnClickListener(view1 -> {
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-
-                CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
-            });
         }
 
     }
@@ -423,6 +442,71 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append(" ");
         return spannableStringBuilder;
+    }
+
+    private CharSequence getBrandsTag(String brand) {
+
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), BrandActivity.class);
+                intent.putExtra("brand", brand);
+                startActivity(intent);
+            }
+        };
+
+        spannableStringBuilder.append(brand);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.append(" ");
+        return spannableStringBuilder;
+
+
+    }
+
+
+    private CharSequence getCategoriesTag(String category) {
+
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse("https://world.openfoodfacts.org/category/" + category), new WebViewFallback());
+
+            }
+        };
+
+        spannableStringBuilder.append(category);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.append(" ");
+        return spannableStringBuilder;
+
+
+    }
+
+    private CharSequence getLabelTag(String label) {
+
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse("https://world.openfoodfacts.org/label/" + label), new WebViewFallback());
+
+            }
+
+        };
+
+        spannableStringBuilder.append(label);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.append(" ");
+        return spannableStringBuilder;
+
+
     }
 
     @OnClick(R.id.product_incomplete_message_dismiss_icon)
@@ -545,7 +629,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
                 CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .start(getContext(),mFragment);
+                        .start(getContext(), mFragment);
             }
 
             @Override

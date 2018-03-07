@@ -11,13 +11,13 @@
   <string name="website_product">https://world-de.openbeautyfacts.org/produkt/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
-  <string name="txtHome">Open Beauty Facts ist eine Datebank für Kosmetikprodukte mit Inhaltsstoffen, Allergenen, Zeichen und allen Leckerbissen voll Informationen kannst du hier finden.</string>
-  <string name="slide_1_title">Contribute to Cosmetic transparency</string>
-  <string name="slide_1_desc">Scan products, take them in picture, make cosmetic transparency happen</string>
-  <string name="slide_2_title">Hol’ dir die Fakten</string>
-  <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Keep track of the product you use</string>
-  <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
-  <string name="slide_4_title">Funktioniert offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connexion right now</string>
+  <string name="txtHome">„Open Beauty Facts” ist eine Datenbank von Kosmetikprodukten mit Inhaltsstoffen, Allergenen, Indizien und allen Informationen, die wir auf den Produktetiketten finden.</string>
+  <string name="slide_1_title">Beitrag zur kosmetischen Transparenz leisten</string>
+  <string name="slide_1_desc">Produkte erfassen, und diese fotografieren, ermöglichen die Transparenz von kosmetischen Produkten</string>
+  <string name="slide_2_title">Holen Sie sich die Fakten</string>
+  <string name="slide_2_desc">Umfassende Informationen über das erfasste Produkt wurden für Sie entschlüsselt</string>
+  <string name="slide_3_title">Behalten Sie den Überblick über das Produkt, das Sie verwenden</string>
+  <string name="slide_3_desc">Alle Kosmetika, die Sie verwenden, in einer handlichen Liste, die Sie exportieren können</string>
+  <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
+  <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
 </resources>
