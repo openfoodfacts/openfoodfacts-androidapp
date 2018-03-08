@@ -145,7 +145,7 @@ public class SearchProductsResultsFragment extends BaseFragment {
                     public void onProductsResponse(boolean isResponseOk, List<Product> products, int countProducts) {
                         hideProgressBar();
                         if (isResponseOk) {
-                            countProductsView.append(" " + NumberFormat.getInstance().format(countProducts));
+                            countProductsView.append(" " + NumberFormat.getInstance(getResources().getConfiguration().locale).format(countProducts));
                             mCountProducts = countProducts;
                             mProducts.addAll(products);
                             if (mProducts.size() < mCountProducts) {
