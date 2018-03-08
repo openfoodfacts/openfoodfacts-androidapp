@@ -411,5 +411,4 @@
   <string name="logout_dialog_content">Czy na pewno chcesz wylogować się?</string>
   <string name="dialog_cancel">Anuluj</string>
   <string name="brand_string">Marka</string>
-  <string name="country_string">Kraj</string>
 </resources>

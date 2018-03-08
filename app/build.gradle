@@ -14,11 +14,6 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
-    buildTypes {
-        release {
-            crunchPngs true
-        }
-    }
 
     dataBinding {
         enabled true
@@ -50,7 +45,6 @@ android {
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
         }
     }
-
 
     dexOptions {
         preDexLibraries = false
