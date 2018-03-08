@@ -450,6 +450,7 @@
     <string name="brand_string">Brand</string>
 
     <string name="country_string">Country</string>
+    <string name="label_string">Label</string>
 
 
 </resources>

@@ -571,8 +571,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse("https://world.openfoodfacts.org/label/" + label), new WebViewFallback());
+
+                Intent intent = new Intent(getActivity(), BrandActivity.class);
+                intent.putExtra("label", label);
+                startActivity(intent);
             }
 
         };
