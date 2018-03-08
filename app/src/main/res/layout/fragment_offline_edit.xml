@@ -18,9 +18,10 @@
 
             <ImageView
                 android:id="@+id/noDataImg"
-                android:layout_width="200dp"
-                android:layout_height="300dp"
-                android:layout_margin="@dimen/padding_large"
+                android:layout_width="@dimen/img_width_height"
+                android:layout_height="@dimen/img_width_height"
+                android:layout_margin="@dimen/padding_normal"
+                android:paddingTop="@dimen/padding_large"
                 android:layout_centerHorizontal="true"
                 android:visibility="visible"
                 app:srcCompat="@drawable/ic_clipboards" />

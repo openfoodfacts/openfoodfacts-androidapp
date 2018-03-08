@@ -116,6 +116,9 @@ public class OfflineEditFragment extends BaseFragment {
 
     @OnClick(R.id.buttonSendAll)
     protected void onSendAllProducts() {
+        SharedPreferences.Editor editor = getContext().getSharedPreferences("usage", 0).edit();
+        editor.putBoolean("firstUpload", true);
+        editor.apply();
         new MaterialDialog.Builder(getActivity())
                 .title(R.string.txtDialogsTitle)
                 .content(R.string.txtDialogsContentSend)
@@ -178,12 +181,19 @@ public class OfflineEditFragment extends BaseFragment {
         protected void onPreExecute() {
             saveItems.clear();
             List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
+            SharedPreferences settingsUsage=getContext().getSharedPreferences("usage", 0);
+            boolean firstUpload=settingsUsage.getBoolean("firstUpload", false);
             if (listSaveProduct.size() == 0) {
                 //Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
                 noDataImage.setVisibility(View.VISIBLE);
                 listView.setVisibility(View.GONE);
                 noDataText.setVisibility(View.VISIBLE);
+                noDataText.setText(R.string.no_offline_data);
                 buttonSend.setVisibility(View.GONE);
+                if(!firstUpload) {
+                    noDataImage.setImageResource(R.drawable.ic_cloud_off);
+                    noDataText.setText(R.string.first_offline);
+                }
             } else {
                 noDataImage.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
