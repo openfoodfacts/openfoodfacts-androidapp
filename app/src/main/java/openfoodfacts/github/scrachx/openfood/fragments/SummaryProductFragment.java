@@ -338,7 +338,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
         if (isNotBlank(product.getCountries())) {
             countryProduct.setText(bold(getString(R.string.txtCountries)));
-            countryProduct.append(' ' + product.getCountries());
+            countryProduct.setClickable(true);
+            countryProduct.setMovementMethod(LinkMovementMethod.getInstance());
+            String[] countries = product.getCountries().split(", ");
+            for (String country : countries) {
+                countryProduct.append(getCountryTag(country));
+            }
         } else {
             countryProduct.setVisibility(View.GONE);
         }
@@ -457,6 +462,27 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         };
 
         spannableStringBuilder.append(brand);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.append(" ");
+        return spannableStringBuilder;
+
+
+    }
+
+    private CharSequence getCountryTag(String country) {
+
+
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), BrandActivity.class);
+                intent.putExtra("country", country);
+                startActivity(intent);
+            }
+        };
+
+        spannableStringBuilder.append(country);
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append(" ");
         return spannableStringBuilder;

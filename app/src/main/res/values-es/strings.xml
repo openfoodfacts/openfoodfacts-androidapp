@@ -411,4 +411,5 @@
   <string name="logout_dialog_content">¿Estás seguro de cerrar la sesión?</string>
   <string name="dialog_cancel">Cancelar</string>
   <string name="brand_string">Marca</string>
+  <string name="country_string">País</string>
 </resources>
