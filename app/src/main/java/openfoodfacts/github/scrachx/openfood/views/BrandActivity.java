@@ -71,7 +71,7 @@ public class BrandActivity extends BaseActivity {
         Bundle extras = getIntent().getExtras();
 
         typeStrings = new String[]{
-                "Brand", "Country"
+                "Brand", "Country", "Label"
         };
 
         if (extras.getString("brand") != null) {
@@ -80,6 +80,9 @@ public class BrandActivity extends BaseActivity {
         } else if (extras.getString("country") != null) {
             searchType = extras.getString("country");
             type = typeStrings[1];
+        } else if (extras.get("label") != null) {
+            searchType = extras.getString("label");
+            type = typeStrings[2];
         }
 
         getSupportActionBar().setTitle(searchType);
@@ -87,6 +90,8 @@ public class BrandActivity extends BaseActivity {
             getSupportActionBar().setSubtitle(R.string.brand_string);
         } else if (type.equals(typeStrings[1])) {
             getSupportActionBar().setSubtitle(R.string.country_string);
+        } else if (type.equals(typeStrings[2])) {
+            getSupportActionBar().setSubtitle(getString(R.string.label_string));
         }
         apiClient = new OpenFoodAPIClient(BrandActivity.this, BuildConfig.OFWEBSITE);
         api = new OpenFoodAPIClient(BrandActivity.this);
@@ -120,6 +125,13 @@ public class BrandActivity extends BaseActivity {
                 }
             });
 
+        } else if (type.equals(typeStrings[2])) {
+            apiClient.getProductsByLabel(searchType, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
+                @Override
+                public void onLabelResponse(boolean value, Search label) {
+                    loadData(value, label);
+                }
+            });
         }
     }
 
