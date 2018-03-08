@@ -12,17 +12,14 @@ import android.widget.TextView;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
+import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.ViewHolder> {
 
-    private IProductRepository mProductRepository;
-    private List<AllergenName> mAllergens;
+    private List<Allergen> mAllergens;
     private Activity mActivity;
-
-    public AllergensAdapter(IProductRepository productRepository, List<AllergenName> allergens, Activity activity) {
-        mProductRepository = productRepository;
+    public AllergensAdapter(List<Allergen> allergens, Activity activity) {
         mAllergens = allergens;
         mActivity = activity;
     }
@@ -49,14 +46,15 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        final AllergenName allergen = mAllergens.get(position);
+        final Allergen allergen = mAllergens.get(position);
         TextView textView = holder.nameTextView;
-        textView.setText(allergen.getName().substring(allergen.getName().indexOf(":") + 1));
+        textView.setText(allergen.getName().substring(allergen.getName().indexOf(":")+1));
         Button button = holder.messageButton;
         button.setText(R.string.delete_txt);
         button.setOnClickListener(v -> {
             mAllergens.remove(holder.getAdapterPosition());
-            mProductRepository.setAllergenEnabled(allergen.getAllergenTag(), false);
+            allergen.setEnable("false");
+            Utils.getAppDaoSession(mActivity).getAllergenDao().update(allergen);
             notifyItemRemoved(holder.getAdapterPosition());
         });
     }

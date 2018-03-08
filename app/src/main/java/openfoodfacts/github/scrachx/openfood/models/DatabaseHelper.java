@@ -56,25 +56,6 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 db.execSQL("ALTER TABLE history_product ADD COLUMN 'nutrition_grade' TEXT NOT NULL DEFAULT '';");
                 break;
             }
-            case 6: {
-                LabelDao.createTable(db, true);
-                LabelNameDao.createTable(db, true);
-
-                AllergenDao.dropTable(db, true);
-                AllergenDao.createTable(db, true);
-                AllergenNameDao.createTable(db, true);
-
-                AdditiveDao.dropTable(db, true);
-                AdditiveDao.createTable(db, true);
-                AdditiveNameDao.createTable(db, true);
-
-                CountryDao.createTable(db, true);
-                CountryNameDao.createTable(db, true);
-
-                CategoryDao.createTable(db, true);
-                CategoryNameDao.createTable(db, true);
-                break;
-            }
         }
     }
 }

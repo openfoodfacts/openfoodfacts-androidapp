@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,7 +26,6 @@ import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
@@ -33,9 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
-
-public class HomeFragment extends NavigationBaseFragment {
+public class HomeFragment extends BaseFragment {
 
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
@@ -75,12 +73,6 @@ public class HomeFragment extends NavigationBaseFragment {
         } else {
             ((MainActivity) getContext()).moveToBarcodeEntry();
         }
-    }
-
-    @Override
-    @NavigationDrawerType
-    public int getNavigationDrawerType() {
-        return ITEM_HOME;
     }
 
     private void checkUserCredentials() {

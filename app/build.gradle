@@ -14,11 +14,6 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
-    buildTypes {
-        release {
-            crunchPngs true
-        }
-    }
 
     dataBinding {
         enabled true
@@ -50,7 +45,6 @@ android {
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
         }
     }
-
 
     dexOptions {
         preDexLibraries = false
@@ -88,7 +82,6 @@ android {
     testOptions {
         // avoid "Method ... not mocked."
         unitTests.returnDefaultValues = true
-        execution 'ANDROID_TEST_ORCHESTRATOR'
     }
 }
 
@@ -103,7 +96,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 6
+    schemaVersion 5
 }
 
 dependencies {
@@ -207,8 +200,6 @@ dependencies {
     }
 
     //Testing
-    androidTestUtil 'com.android.support.test:orchestrator:1.0.1'
-
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     testImplementation "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"

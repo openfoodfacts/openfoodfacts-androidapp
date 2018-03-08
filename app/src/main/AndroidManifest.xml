@@ -39,7 +39,7 @@
             android:value="2.1" />
 
         <activity
-            android:name=".views.splash.SplashActivity"
+            android:name=".views.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme">
             <intent-filter>

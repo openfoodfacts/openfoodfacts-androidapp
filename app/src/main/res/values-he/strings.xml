@@ -407,9 +407,8 @@
   <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
   <string name="log_in">שם משתמש</string>
   <string name="login_true">Already logged in!</string>
-  <string name="confirm_logout">Confirm Logout</string>
+  <string name="conform_logout">אישור יציאה</string>
   <string name="logout_dialog_content">לצאת?</string>
   <string name="dialog_cancel">ביטול</string>
   <string name="brand_string">מותג</string>
-  <string name="country_string">מדינה</string>
 </resources>

@@ -1,48 +1,30 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
-import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
-import com.mikepenz.iconics.IconicsDrawable;
-
-import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
 import java.util.Arrays;
 
-import butterknife.OnClick;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
@@ -63,11 +45,6 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     private int mCameraId = -1;
     private OpenFoodAPIClient api;
     private SharedPreferences settings;
-    private EditText mBarcode;
-    private Toast mToast;
-    private Button cancelButton;
-    private Button findButton;
-    private BottomSheetDialog bottomSheetDialog;
 
     @Override
     public void onAttach(Context context) {
@@ -77,7 +54,6 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
-
         final SharedPreferences settings = getActivity().getSharedPreferences("camera", 0);
 
         mScannerView = new ZXingScannerView(getActivity());
@@ -93,10 +69,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
             mAutoFocus = settings.getBoolean("focus", true);
             mCameraId = -1;
         }
-
-
         setupFormats();
-
         return mScannerView;
     }
 

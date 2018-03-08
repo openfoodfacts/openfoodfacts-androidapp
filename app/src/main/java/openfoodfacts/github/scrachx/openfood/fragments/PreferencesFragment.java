@@ -34,26 +34,20 @@ import java.util.Locale;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.utils.INavigationItem;
 import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
-import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_PREFERENCES;
-
-public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem {
+public class PreferencesFragment extends PreferenceFragmentCompat {
 
     AdditiveDao mAdditiveDao;
     private SharedPreferences settings;
-    private NavigationDrawerListener navigationDrawerListener;
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        MenuItem item = menu.findItem(R.id.action_search);
+        MenuItem item=menu.findItem(R.id.action_search);
         item.setVisible(false);
     }
 
@@ -68,19 +62,17 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         settings = getActivity().getSharedPreferences("prefs", 0);
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
 
-        String[] localeValues = getActivity().getResources().getStringArray(R.array.languages_array);
+        String[] localeValues = getActivity().getResources().getStringArray(R.array.lang_array);
         String[] localeLabels = new String[localeValues.length];
 
         for (int i = 0; i < localeValues.length; i++) {
             Locale current = LocaleHelper.getLocale(localeValues[i]);
 
-            if (current != null) {
-                localeLabels[i] = String.format("%s - %s",
-                        // current.getDisplayName(current), // native form
-                        WordUtils.capitalize(current.getDisplayName(current)),
-                        localeValues[i].toUpperCase(Locale.getDefault())
-                );
-            }
+            localeLabels[i] = String.format("%s - %s",
+                    // current.getDisplayName(current), // native form
+                    WordUtils.capitalize(current.getDisplayName(current)),
+                    localeValues[i].toUpperCase(Locale.getDefault())
+            );
         }
 
         languagePreference.setEntries(localeLabels);
@@ -124,7 +116,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             public boolean onPreferenceClick(Preference preference) {
 
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.faq_url)), new WebViewFallback());
+                CustomTabActivityHelper.openCustomTab(getActivity(),customTabsIntent,Uri.parse(getString(R.string.faq_url)),new WebViewFallback());
                 return true;
             }
         });
@@ -135,7 +127,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             public boolean onPreferenceClick(Preference preference) {
 
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.terms_url)), new WebViewFallback());
+                CustomTabActivityHelper.openCustomTab(getActivity(),customTabsIntent,Uri.parse(getString(R.string.terms_url)),new WebViewFallback());
                 return true;
             }
         });
@@ -153,20 +145,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         });
     }
 
-    @Override
-    public NavigationDrawerListener getNavigationDrawerListener() {
-        if (navigationDrawerListener == null && getActivity() instanceof NavigationDrawerListener) {
-            navigationDrawerListener = (NavigationDrawerListener) getActivity();
-        }
-
-        return navigationDrawerListener;
-    }
-
-    @Override
-    @NavigationDrawerType
-    public int getNavigationDrawerType() {
-        return ITEM_PREFERENCES;
-    }
 
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {
 

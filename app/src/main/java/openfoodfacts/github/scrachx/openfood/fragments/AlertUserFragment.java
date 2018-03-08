@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,37 +22,35 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 
-import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_ALERT;
+public class AlertUserFragment extends BaseFragment {
 
-public class AlertUserFragment extends NavigationBaseFragment {
-
-    private List<AllergenName> mAllergensEnabled;
-    private List<AllergenName> mAllergensNotEnabled;
-    private List<AllergenName> mAllergensFromDao;
+    private OpenFoodAPIClient api;
+    private List<Allergen> mAllergensEnabled;
+    private AllergenDao mAllergenDao;
     private AllergensAdapter mAdapter;
     private RecyclerView mRvAllergens;
     private SharedPreferences mSettings;
-    private IProductRepository productRepository;
+    private List<Allergen> mAllergensFromDao;
     private View mView;
+    @BindView(R.id.fab)
+    android.support.design.widget.FloatingActionButton mFab;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,10 +66,17 @@ public class AlertUserFragment extends NavigationBaseFragment {
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        productRepository = ProductRepository.getInstance();
-        mAllergensEnabled = productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage());
-        mAllergensFromDao = productRepository.getAllergensByLanguageCode(Locale.getDefault().getLanguage());
 
+        mAllergenDao = Utils.getAppDaoSession(getActivity()).getAllergenDao();
+        mAllergensFromDao = mAllergenDao.loadAll();
+        Collections.sort(mAllergensFromDao, new Comparator<Allergen>() {
+            @Override
+            public int compare(Allergen a1, Allergen a2) {
+                return a1.getName().compareToIgnoreCase(a2.getName());
+            }
+        });
+
+        api = new OpenFoodAPIClient(getActivity());
         mView = view;
         mSettings = getActivity().getSharedPreferences("prefs", 0);
         boolean firstRunAlert = mSettings.getBoolean("firstRunAlert", true);
@@ -86,7 +92,8 @@ public class AlertUserFragment extends NavigationBaseFragment {
         }
 
         mRvAllergens = (RecyclerView) view.findViewById(R.id.alergens_recycle);
-        mAdapter = new AllergensAdapter(productRepository, mAllergensEnabled, getActivity());
+        mAllergensEnabled = mAllergenDao.queryBuilder().where(AllergenDao.Properties.Enable.eq("true")).list();
+        mAdapter = new AllergensAdapter(mAllergensEnabled, getActivity());
         mRvAllergens.setAdapter(mAdapter);
         mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
         mRvAllergens.setHasFixedSize(true);
@@ -94,27 +101,41 @@ public class AlertUserFragment extends NavigationBaseFragment {
 
     @OnClick(R.id.fab)
     protected void onAddAllergens() {
-        if (mAllergensFromDao != null && mAllergensFromDao.size() > 0) {
-            mAllergensNotEnabled = productRepository.getAllergensByEnabledAndLanguageCode(false, Locale.getDefault().getLanguage());
-
-            List<String> allergensNames = new ArrayList<String>();
-            for (AllergenName allergenName : mAllergensNotEnabled) {
-                allergensNames.add(allergenName.getName());
-            }
-
+        final LinkedHashMap<Integer, String> allS = new LinkedHashMap<>();
+        int index = 0;
+        String language = Locale.getDefault().getLanguage();
+        for (Allergen a : mAllergensFromDao) {
+            if (a.getIdAllergen().contains(language + ":"))
+                allS.put(index, a.getName().substring(a.getName().indexOf(":") + 1));
+            index++;
+        }
+        if (allS.size() > 0) {
             new MaterialDialog.Builder(mView.getContext())
                     .title(R.string.title_dialog_alert)
-                    .items(allergensNames)
-                    .itemsCallback((dialog, view, position, text) -> {
-                        productRepository.setAllergenEnabled(mAllergensNotEnabled.get(position).getAllergenTag(), true);
-                        mAllergensEnabled.add(mAllergensNotEnabled.get(position));
-                        mAdapter.notifyItemInserted(mAllergensEnabled.size() - 1);
-                        mRvAllergens.scrollToPosition(mAdapter.getItemCount() - 1);
+                    .items(allS.values())
+                    .itemsCallback((dialog, view, which, text) -> {
+                        boolean canAdd = true;
+                        int index1 = -1;
+                        String alergeneStringByPos = new ArrayList<String>(allS.values()).get(which);
+                        for (Allergen a : mAllergensEnabled) {
+                            if (a.getName().equals(mAllergensFromDao.get(which).getName()))
+                                canAdd = false;
+                        }
+                        for (Allergen a : mAllergensFromDao) {
+                            if (a.getName().substring(a.getName().indexOf(":") + 1).equalsIgnoreCase(alergeneStringByPos)) {
+                                index1 = getKey(allS, alergeneStringByPos);
+                                mAllergensFromDao.get(index1).setEnable("true");
+                                mAllergenDao.update(mAllergensFromDao.get(index1));
+                            }
+                        }
+                        if (canAdd && index1 != -1) {
+                            mAllergensEnabled.add(mAllergensFromDao.get(index1));
+                            mAdapter.notifyItemInserted(mAllergensEnabled.size() - 1);
+                            mRvAllergens.scrollToPosition(mAdapter.getItemCount() - 1);
+                        }
                     })
                     .show();
-        } else
-
-        {
+        } else {
             ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
@@ -131,17 +152,11 @@ public class AlertUserFragment extends NavigationBaseFragment {
                         .negativeText(R.string.txtNo)
                         .onPositive((dialog, which) -> {
                             final SharedPreferences.Editor editor = mSettings.edit();
-                            ProductRepository.getInstance().getAllergens(true)
-                                    .subscribeOn(Schedulers.io())
-                                    .observeOn(AndroidSchedulers.mainThread())
-                                    .toObservable()
-                                    .subscribe(allergens -> {
-                                        editor.putBoolean("errorAllergens", false).apply();
-                                        lt.success();
-                                    }, e -> {
-                                        editor.putBoolean("errorAllergens", true).apply();
-                                        lt.error();
-                                    }, dialog::hide);
+                            api.getAllergens(value -> {
+                                editor.putBoolean("errorAllergens", !value).apply();
+                                lt.success();
+                                dialog.hide();
+                            });
                         })
                         .show();
             } else {
@@ -153,12 +168,6 @@ public class AlertUserFragment extends NavigationBaseFragment {
             }
         }
 
-    }
-
-    @Override
-    @NavigationDrawerType
-    public int getNavigationDrawerType() {
-        return ITEM_ALERT;
     }
 
 

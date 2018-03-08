@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -23,8 +22,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,15 +35,13 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -85,19 +80,12 @@ public class IngredientsProductFragment extends BaseFragment {
     private State mState;
     private String barcode;
     private AdditiveDao mAdditiveDao;
-    private IProductRepository productRepository;
     private IngredientsProductFragment mFragment;
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        productRepository = ProductRepository.getInstance();
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
-        mFragment = this;
+        mFragment=this;
         return createView(inflater, container, R.layout.fragment_ingredients_product);
     }
 
@@ -167,19 +155,17 @@ public class IngredientsProductFragment extends BaseFragment {
             additiveProduct.append(" ");
             additiveProduct.append("\n");
 
-            AdditiveName additiveName;
-            String languageCode = Locale.getDefault().getLanguage();
             for (String tag : product.getAdditivesTags()) {
-                additiveName = productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode);
-                if (additiveName == null) {
-                    additiveName = productRepository.getAdditiveByTagAndDefaultLanguageCode(tag);
-                    if (additiveName == null) {
-                        additiveName = new AdditiveName(StringUtils.capitalize(tag));
-                    }
+                String tagWithoutLocale = tag.replaceAll("(en:|fr:)", "").toUpperCase(Locale.getDefault());
+                final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tagWithoutLocale.toUpperCase())).list();
+                additiveProduct.append(getSpanTag(tagWithoutLocale, view));
+                //Display additives list with full name
+                if (la.size() >= 1) {
+                    final Additive additive = la.get(0);
+                    additiveProduct.append(" - ");
+                    additiveProduct.append(additive.getName().split(",")[0]);
+                    additiveProduct.append("\n");
                 }
-
-                additiveProduct.append(additiveName.getName());
-                additiveProduct.append("\n");
             }
         } else {
             additiveProduct.setVisibility(View.GONE);
@@ -209,7 +195,7 @@ public class IngredientsProductFragment extends BaseFragment {
     private CharSequence getSpanTag(String tag, final View view) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder();
 
-        final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Tag.eq(tag.toUpperCase(Locale.getDefault()))).list();
+        final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Code.eq(tag.toUpperCase(Locale.getDefault()))).list();
         if (la.size() >= 1) {
             final Additive additive = la.get(0);
             //disabled popup temporarily
@@ -334,7 +320,7 @@ public class IngredientsProductFragment extends BaseFragment {
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
                 CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .start(getContext(), mFragment);
+                        .start(getContext(),mFragment);
             }
 
             @Override
