@@ -61,7 +61,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.BrandActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -522,8 +522,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), BrandActivity.class);
-                intent.putExtra("brand", brand);
+                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
+                intent.putExtra("key", brand);
+                intent.putExtra("search_type","brand");
                 startActivity(intent);
             }
         };
@@ -539,8 +540,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), BrandActivity.class);
-                intent.putExtra("country", country);
+                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
+                intent.putExtra("key", country);
+                intent.putExtra("search_type","country");
                 startActivity(intent);
             }
         };

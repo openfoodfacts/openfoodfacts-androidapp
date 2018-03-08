@@ -34,16 +34,22 @@ import java.util.Locale;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.utils.INavigationItem;
 import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
-public class PreferencesFragment extends PreferenceFragmentCompat {
+import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_PREFERENCES;
+
+public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem {
 
     AdditiveDao mAdditiveDao;
     private SharedPreferences settings;
+    private NavigationDrawerListener navigationDrawerListener;
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -147,6 +153,20 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
         });
     }
 
+    @Override
+    public NavigationDrawerListener getNavigationDrawerListener() {
+        if (navigationDrawerListener == null && getActivity() instanceof NavigationDrawerListener) {
+            navigationDrawerListener = (NavigationDrawerListener) getActivity();
+        }
+
+        return navigationDrawerListener;
+    }
+
+    @Override
+    @NavigationDrawerType
+    public int getNavigationDrawerType() {
+        return ITEM_PREFERENCES;
+    }
 
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {
 

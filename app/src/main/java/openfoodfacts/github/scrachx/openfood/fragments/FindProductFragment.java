@@ -17,9 +17,12 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
-public class FindProductFragment extends BaseFragment {
+import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_SEARCH_BY_CODE;
+
+public class FindProductFragment extends NavigationBaseFragment {
 
     @BindView(R.id.editTextBarcode) EditText mBarCodeText;
     @BindView(R.id.buttonBarcode) Button mLaunchButton;
@@ -50,6 +53,12 @@ public class FindProductFragment extends BaseFragment {
                 displayToast(getResources().getString(R.string.txtBarcodeNotValid));
             }
         }
+    }
+
+    @Override
+    @NavigationDrawerType
+    public int getNavigationDrawerType() {
+        return ITEM_SEARCH_BY_CODE;
     }
 
     public void displayToast(String message) {

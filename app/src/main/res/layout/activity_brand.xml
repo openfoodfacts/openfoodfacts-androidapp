@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="openfoodfacts.github.scrachx.openfood.views.BrandActivity">
-
+    tools:context="openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity">
 
 
     <LinearLayout
@@ -30,13 +29,20 @@
             android:text="@string/number_of_products"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/products_recycler_view"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/materialize_baseline_grid_small">
+            android:layout_below="@id/textCountProduct">
 
-        </android.support.v7.widget.RecyclerView>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/products_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/materialize_baseline_grid_small">
+
+            </android.support.v7.widget.RecyclerView>
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 

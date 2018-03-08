@@ -2,7 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,8 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -28,7 +30,7 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerView
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
-public class BrandActivity extends BaseActivity {
+public class ProductBrowsingListActivity extends BaseActivity {
 
     private String searchType;
 
@@ -42,14 +44,16 @@ public class BrandActivity extends BaseActivity {
     @BindView(R.id.offlineCloudLinearLayout)
     LinearLayout offlineCloudLayout;
     ProgressBar progressBar;
+    @BindView(R.id.swipe_refresh)
+    SwipeRefreshLayout swipeRefreshLayout;
     private EndlessRecyclerViewScrollListener scrollListener;
     private List<Product> mProducts;
     private OpenFoodAPIClient api;
     private OpenFoodAPIClient apiClient;
     private int mCountProducts = 0;
     private int pageAddress = 1;
-    private String type;
     private String[] typeStrings;
+    String key;
 
 
     @Override
@@ -71,25 +75,36 @@ public class BrandActivity extends BaseActivity {
         Bundle extras = getIntent().getExtras();
 
         typeStrings = new String[]{
-                "Brand", "Country"
+                "brand", "country", "additive", "search"
         };
 
-        if (extras.getString("brand") != null) {
-            searchType = extras.getString("brand");
-            type = typeStrings[0];
-        } else if (extras.getString("country") != null) {
-            searchType = extras.getString("country");
-            type = typeStrings[1];
+        searchType = extras.getString("search_type");
+        key = extras.getString("key");
+
+        getSupportActionBar().setTitle(key);
+
+        switch (searchType) {
+            case "brand": {
+                getSupportActionBar().setSubtitle(R.string.brand_string);
+                break;
+            }
+            case "country": {
+                getSupportActionBar().setSubtitle(R.string.country_string);
+                break;
+            }
+            case "additive": {
+                getSupportActionBar().setSubtitle(R.string.additive_string);
+                break;
+            }
+            case "search": {
+                getSupportActionBar().setSubtitle(R.string.search_string);
+                break;
+            }
         }
 
-        getSupportActionBar().setTitle(searchType);
-        if (type.equals(typeStrings[0])) {
-            getSupportActionBar().setSubtitle(R.string.brand_string);
-        } else if (type.equals(typeStrings[1])) {
-            getSupportActionBar().setSubtitle(R.string.country_string);
-        }
-        apiClient = new OpenFoodAPIClient(BrandActivity.this, BuildConfig.OFWEBSITE);
-        api = new OpenFoodAPIClient(BrandActivity.this);
+
+        apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
+        api = new OpenFoodAPIClient(ProductBrowsingListActivity.this);
         productsRecyclerView = (RecyclerView) findViewById(R.id.products_recycler_view);
         setup();
     }
@@ -104,22 +119,43 @@ public class BrandActivity extends BaseActivity {
 
     public void getDataFromAPI() {
 
-        if (type.equals(typeStrings[0])) {
-            apiClient.getBrand(searchType, pageAddress, new OpenFoodAPIClient.OnBrandCallback() {
-                @Override
-                public void onBrandResponse(boolean value, Search brandObject) {
-                    loadData(value, brandObject);
-                }
-            });
-        } else if (type.equals(typeStrings[1])) {
 
-            apiClient.getCountryProducts(searchType, pageAddress, new OpenFoodAPIClient.onCountryCallback() {
-                @Override
-                public void onCountryResponse(boolean value, Search country) {
-                    loadData(value, country);
-                }
-            });
-
+        switch (searchType) {
+            case "brand": {
+                apiClient.getProductsByBrand(key, pageAddress, new OpenFoodAPIClient.OnBrandCallback() {
+                    @Override
+                    public void onBrandResponse(boolean value, Search brandObject) {
+                        loadData(value, brandObject);
+                    }
+                });
+                break;
+            }
+            case "country": {
+                apiClient.getProductsByCountry(key, pageAddress, new OpenFoodAPIClient.onCountryCallback() {
+                    @Override
+                    public void onCountryResponse(boolean value, Search country) {
+                        loadData(value, country);
+                    }
+                });
+                break;
+            }
+            case "additive": {
+                apiClient.getProductsByAdditive(key, pageAddress, new OpenFoodAPIClient.OnAdditiveCallback() {
+                    @Override
+                    public void onAdditiveResponse(boolean value, Search country) {
+                        loadData(value, country);
+                    }
+                });
+                break;
+            }
+            case "search": {
+                api.searchProduct(key, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
+                    @Override
+                    public void onProductsResponse(boolean isOk, Search searchResponse, int countProducts) {
+                        loadData(isOk, searchResponse);
+                    }
+                });
+            }
         }
     }
 
@@ -129,7 +165,8 @@ public class BrandActivity extends BaseActivity {
         if (isResponseOk) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
-                countProductsView.append(String.valueOf(response.getCount()));
+                countProductsView.append(" "+NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount()
+                )));
                 mProducts = new ArrayList<>();
                 mProducts.addAll(response.getProducts());
                 if (mProducts.size() < mCountProducts) {
@@ -148,6 +185,7 @@ public class BrandActivity extends BaseActivity {
                 }
             }
         } else {
+            productsRecyclerView.setVisibility(View.INVISIBLE);
             progressBar.setVisibility(View.INVISIBLE);
             offlineCloudLayout.setVisibility(View.VISIBLE);
         }
@@ -164,7 +202,7 @@ public class BrandActivity extends BaseActivity {
 
         productsRecyclerView.setVisibility(View.VISIBLE);
         productsRecyclerView.setHasFixedSize(true);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(BrandActivity.this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(ProductBrowsingListActivity.this, LinearLayoutManager.VERTICAL, false);
         productsRecyclerView.setLayoutManager(mLayoutManager);
 
         ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
@@ -190,17 +228,17 @@ public class BrandActivity extends BaseActivity {
 
 
         productsRecyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(BrandActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
+                new RecyclerItemClickListener(ProductBrowsingListActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
                         if (p != null) {
                             String barcode = p.getCode();
-                            api.getProduct(barcode, BrandActivity.this);
+                            api.getProduct(barcode, ProductBrowsingListActivity.this);
                             try {
-                                View view1 = BrandActivity.this.getCurrentFocus();
+                                View view1 = ProductBrowsingListActivity.this.getCurrentFocus();
                                 if (view != null) {
-                                    InputMethodManager imm = (InputMethodManager) BrandActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                    InputMethodManager imm = (InputMethodManager) ProductBrowsingListActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
                                     imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
                                 }
                             } catch (NullPointerException e) {
@@ -210,6 +248,20 @@ public class BrandActivity extends BaseActivity {
                     }
                 })
         );
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                mProducts.clear();
+                countProductsView.setText(getResources().getString(R.string.number_of_results));
+                pageAddress = 1;
+                setup();
+                if (swipeRefreshLayout.isRefreshing()) {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            }
+        });
 
     }
 }

@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -166,6 +168,9 @@ public class IngredientsProductFragment extends BaseFragment {
             additiveProduct.append(bold(getString(R.string.txtAdditives)));
             additiveProduct.append(" ");
             additiveProduct.append("\n");
+            additiveProduct.setClickable(true);
+            additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
+            List<String> additives = new ArrayList<>();
 
             AdditiveName additiveName;
             String languageCode = Locale.getDefault().getLanguage();
@@ -177,9 +182,15 @@ public class IngredientsProductFragment extends BaseFragment {
                         additiveName = new AdditiveName(StringUtils.capitalize(tag));
                     }
                 }
+                additives.add(additiveName.getName());
+                // additiveProduct.append(additiveName.getName());
+                //additiveProduct.append("\n");
+                for (int i = 0; i < additives.size() - 1; i++) {
+                    additiveProduct.append(getAdditiveTag(StringUtils.capitalize(additives.get(i))));
+                    additiveProduct.append(", ");
+                }
 
-                additiveProduct.append(additiveName.getName());
-                additiveProduct.append("\n");
+                additiveProduct.append(getAdditiveTag(StringUtils.capitalize(additives.get(additives.size() - 1))));
             }
         } else {
             additiveProduct.setVisibility(View.GONE);
@@ -204,6 +215,26 @@ public class IngredientsProductFragment extends BaseFragment {
                 mayBeFromPalmOilProduct.setVisibility(View.GONE);
             }
         }
+    }
+
+    private CharSequence getAdditiveTag(String additive) {
+
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
+                intent.putExtra("key", additive);
+                intent.putExtra("search_type","additive");
+                startActivity(intent);
+            }
+        };
+
+
+        spannableStringBuilder.append(additive);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        return spannableStringBuilder;
     }
 
     private CharSequence getSpanTag(String tag, final View view) {
