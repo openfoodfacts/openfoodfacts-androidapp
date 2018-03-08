@@ -68,17 +68,19 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         settings = getActivity().getSharedPreferences("prefs", 0);
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
 
-        String[] localeValues = getActivity().getResources().getStringArray(R.array.lang_array);
+        String[] localeValues = getActivity().getResources().getStringArray(R.array.languages_array);
         String[] localeLabels = new String[localeValues.length];
 
         for (int i = 0; i < localeValues.length; i++) {
             Locale current = LocaleHelper.getLocale(localeValues[i]);
 
-            localeLabels[i] = String.format("%s - %s",
-                    // current.getDisplayName(current), // native form
-                    WordUtils.capitalize(current.getDisplayName(current)),
-                    localeValues[i].toUpperCase(Locale.getDefault())
-            );
+            if (current != null) {
+                localeLabels[i] = String.format("%s - %s",
+                        // current.getDisplayName(current), // native form
+                        WordUtils.capitalize(current.getDisplayName(current)),
+                        localeValues[i].toUpperCase(Locale.getDefault())
+                );
+            }
         }
 
         languagePreference.setEntries(localeLabels);

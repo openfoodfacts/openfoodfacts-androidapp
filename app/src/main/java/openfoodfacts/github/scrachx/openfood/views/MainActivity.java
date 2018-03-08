@@ -281,7 +281,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             break;
                         case ITEM_LOGOUT:
                             new MaterialDialog.Builder(MainActivity.this)
-                                    .title(R.string.conform_logout)
+                                    .title(R.string.confirm_logout)
                                     .content(R.string.logout_dialog_content)
                                     .positiveText(R.string.txtOk)
                                     .negativeText(R.string.dialog_cancel)
