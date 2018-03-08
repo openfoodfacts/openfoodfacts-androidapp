@@ -22,6 +22,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -67,6 +69,12 @@ public class AlertUserFragment extends BaseFragment {
 
         mAllergenDao = Utils.getAppDaoSession(getActivity()).getAllergenDao();
         mAllergensFromDao = mAllergenDao.loadAll();
+        Collections.sort(mAllergensFromDao, new Comparator<Allergen>() {
+            @Override
+            public int compare(Allergen a1, Allergen a2) {
+                return a1.getName().compareToIgnoreCase(a2.getName());
+            }
+        });
 
         api = new OpenFoodAPIClient(getActivity());
         mView = view;
