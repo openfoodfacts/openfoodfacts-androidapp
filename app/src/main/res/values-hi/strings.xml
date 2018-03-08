@@ -19,12 +19,12 @@
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
+    <item>ग्राम</item>
     <item>मिलीग्राम</item>
     <item>किलोग्राम</item>
-    <item>एल/ लीटर</item>
+    <item>लीटर</item>
     <item>मिलीलीटर</item>
-    <item>मिलीलीटर</item>
-    <item>सेंतीलीटेर</item>
+    <item>सेंटीलीटर</item>
     <item>फ्लूइड आउन्स</item>
   </string-array>
   <!-- Text units -->
@@ -105,7 +105,7 @@
   <string name="txtIngredientsOrigins">सामग्री की उत्पत्ति:</string>
   <string name="txtCity">शहर, राज्य और देश जहाँ इसे खरीदा गया:</string>
   <string name="txtEMB">ईएमबी कोड:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtManufactureUrl">निर्माता की साइट पे इस उत्पाद की लिंक:</string>
   <string name="txtStores">स्टोर:</string>
   <string name="txtCountries">जिन देशों में बिकता है</string>
   <string name="txtIngredients">सामग्री की सूची:</string>
@@ -136,7 +136,7 @@
   <string name="hintPass">पासवर्ड</string>
   <string name="errorLogin">लॉगिन या पासवर्ड एरर</string>
   <string name="errorWeb">हम इंटरनेट का उपयोग करने में सक्षम नहीं थे| क्या आपके पास कनेक्टिविटी है?</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="uploadLater">नेटवर्क उपलब्ध होने पर चित्र अपलोड किया जायेगा</string>
   <string name="txtInfoLoginOk">उपयोगकर्ता की जानकारी  सेव है</string>
   <string name="txtInfoLoginNo">उपयोगकर्ता की जानकारी  सेव नहीं `है</string>
   <string name="txtDialogsTitle">जानकारी</string>
@@ -205,7 +205,7 @@
   <string name="cancel_button">Cancel</string>
   <string name="login_button">लॉगिन</string>
   <string name="create_account_button">Create Account</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">आपकी एलर्जी जानकारी कभी ओपन फूड फैक्ट्स सर्वर पर नहीं भेजी जाएगी। इसके अलावा सावधान रहें, ज़रूरी नहीं कि उत्पाद डेटा सटीक हो, और पहचान 100% सही हो, इसलिए कृपया स्वयं दोबारा जांच करें!</string>
   <string name="from_gallery">गैलरी से</string>
   <string name="product_sent">उत्पाद की जानकारी सफलतापूर्वक भेजी गई</string>
   <string name="action_edit_product">उत्पाद संपादित करें</string>
@@ -226,7 +226,7 @@
   <string name="prefs_scan_startup">स्टार्टअप पर स्कैन करें</string>
   <string name="prefs_scan_startup_summary">इस विकल्प का चयन किया है, तो जब एप्लिकेशन को खोला जाता है स्कैन शुरू कर देंगे।</string>
   <string name="prefs_power_mode">पावर मोड स्कैन</string>
-  <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
+  <string name="prefs_power_mode_summary">सुपरमार्केट में उत्पादों को झटपट स्कैन करें और देखें कि कौनसे उत्पाद डेटाबेस में उपलब्ध नहीं हैं</string>
   <string name="prefs_language">भाषा</string>
   <string name="prefs_language_summary">भाषा बदले</string>
   <string name="scan_history_drawer">वृत्तांत</string>
@@ -277,57 +277,57 @@
   <string name="action_search">ढूंढें</string>
   <string name="search_hint">उत्पाद खोजें</string>
   <string name="number_of_results">परिणामों की संख्या:</string>
-  <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products :</string>
+  <string name="brand">ब्रांड :</string>
+  <string name="number_of_products">उत्पादों की संख्या :</string>
   <string name="txt_no_results">कोई परिणाम नहीं मिला</string>
   <string name="txt_extend_search">अपनी खोज को विस्तृत करें या उत्पाद ऐड करें</string>
   <string name="txt_no_matching_products">हमें कोई भी मिलते-जुलते उत्पाद नहीं मिले हैं। \n आप यह कोशिश कर सकते हैं:</string>
   <string name="txt_broaden_search">- अपनी खोज को विस्तृत करना \n- स्कैन करें और इसे ओपन फ़ूड फैक्ट्स में ऐड करें</string>
   <string name="txt_cant_load_search_results">खोज परिणामों का लोड करना नामुमकिन है</string>
-  <string name="something_went_wrong">Sorry!! Something went wrong...</string>
+  <string name="something_went_wrong">क्षमा करें, कुछ गलत हो गया…</string>
   <string name="txt_try_again">फिर कोशिश करे</string>
-  <string name="nutrition_lactose">Lactose</string>
-  <string name="nutrition_casein">Casein</string>
-  <string name="nutrition_maltodextrins">Maltodextrins</string>
-  <string name="nutrition_serum_proteins">Serum Proteins</string>
-  <string name="nutrition_nucleotides">Nucleotides</string>
+  <string name="nutrition_lactose">लैक्टोज़</string>
+  <string name="nutrition_casein">केसीन</string>
+  <string name="nutrition_maltodextrins">माल्टोडेक्सट्रिन्स</string>
+  <string name="nutrition_serum_proteins">सीरम प्रोटीन</string>
+  <string name="nutrition_nucleotides">न्यूक्लियोटाइड</string>
   <string name="for_100g">१०० g के लिए</string>
   <string name="serving">प्रत्येक हिस्सा</string>
-  <string name="minerals">Minerals</string>
+  <string name="minerals">मिनरल</string>
   <string name="nutrition_calcium">केल्शियम</string>
   <string name="nutrition_potassium">पोटेशियम</string>
-  <string name="nutrition_chlore">Chlorine</string>
+  <string name="nutrition_chlore">क्लोरीन</string>
   <string name="nutrition_magnesium">मैग्नीशियम</string>
-  <string name="nutrition_taurine">Taurine</string>
-  <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-  <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
-  <string name="nutrition_omega3">Omega 3</string>
-  <string name="nutrition_omega6">Omega 6</string>
-  <string name="nutrition_omega9">Omega 9</string>
-  <string name="nutrition_sucrose">Sucrose</string>
-  <string name="nutrition_glucose">Glucose</string>
-  <string name="nutrition_fructose">Fructose</string>
-  <string name="nutrition_maltose">Maltose</string>
-  <string name="nutrition_alcohol">Alcohol</string>
-  <string name="nutrition_vitamins">Vitamins</string>
-  <string name="vitamin_a">Vitamin A</string>
-  <string name="vitamin_d">Vitamin d</string>
-  <string name="vitamin_e">Vitamin e</string>
-  <string name="vitamin_k">Vitamin k</string>
-  <string name="vitamin_c">Vitamin C</string>
-  <string name="vitamin_b1">Vitamin B1</string>
-  <string name="vitamin_b2">Vitamin B2</string>
-  <string name="vitamin_pp">Vitamin PP</string>
-  <string name="vitamin_b6">Vitamin B6</string>
-  <string name="vitamin_b9">Vitamin B9</string>
-  <string name="vitamin_b12">Vitamin B12</string>
-  <string name="biotin">Biotin</string>
-  <string name="pantothenic_acid">Pantothenic acid</string>
-  <string name="nutrition_minerals">Minerals</string>
-  <string name="silica">Silica</string>
-  <string name="bicarbonate">Bicarbonate</string>
+  <string name="nutrition_taurine">टौरीन</string>
+  <string name="nutrition_monounsaturatedFat">मोनो अनसैचुरेटेड फ़ैट</string>
+  <string name="nutrition_polyunsaturatedFat">पॉलीअनसैचुरेटेड फ़ैट</string>
+  <string name="nutrition_omega3">ओमेगा 3</string>
+  <string name="nutrition_omega6">ओमेगा 6</string>
+  <string name="nutrition_omega9">ओमेगा 9</string>
+  <string name="nutrition_sucrose">सुक्रोज़</string>
+  <string name="nutrition_glucose">ग्लूकोज़</string>
+  <string name="nutrition_fructose">फ्रक्टोज़</string>
+  <string name="nutrition_maltose">माल्टोज़</string>
+  <string name="nutrition_alcohol">अल्कोहॉल</string>
+  <string name="nutrition_vitamins">विटामिन</string>
+  <string name="vitamin_a">विटामिन ए</string>
+  <string name="vitamin_d">विटामिन डी</string>
+  <string name="vitamin_e">विटामिन ई</string>
+  <string name="vitamin_k">विटामिन के</string>
+  <string name="vitamin_c">विटामिन सी</string>
+  <string name="vitamin_b1">विटामिन बी 1</string>
+  <string name="vitamin_b2">विटामिन बी 2</string>
+  <string name="vitamin_pp">विटामिन पीपी</string>
+  <string name="vitamin_b6">विटामिन बी 6</string>
+  <string name="vitamin_b9">विटामिन बी 9</string>
+  <string name="vitamin_b12">विटामिन बी 12</string>
+  <string name="biotin">बायोटिन</string>
+  <string name="pantothenic_acid">पैंटोथैनिक एसिड</string>
+  <string name="nutrition_minerals">मिनरल</string>
+  <string name="silica">सिलिका</string>
+  <string name="bicarbonate">बाईकार्बोनेट</string>
   <string name="potassium">पोटेशियम</string>
-  <string name="chloride">Chloride</string>
+  <string name="chloride">क्लोराइड</string>
   <string name="calcium">केल्शियम</string>
   <string name="phosphorus">फॉस्फोरस</string>
   <string name="iron">लोहा</string>
@@ -335,16 +335,16 @@
   <string name="zinc">ज़िंक</string>
   <string name="copper">तांबा</string>
   <string name="manganese">मैंगनीज़</string>
-  <string name="fluoride">Fluoride</string>
+  <string name="fluoride">फ़्लोराइड</string>
   <string name="selenium">सेलेनियम</string>
-  <string name="chromium">Chromium</string>
+  <string name="chromium">क्रोमियम</string>
   <string name="molybdenum">मॉलीब्डेनम</string>
   <string name="iodine">आयोडीन</string>
-  <string name="caffeine">Caffeine</string>
-  <string name="taurine">Taurine</string>
-  <string name="ph">pH</string>
+  <string name="caffeine">कैफ़ीन</string>
+  <string name="taurine">टौरीन</string>
+  <string name="ph">पीएच</string>
   <string name="fruits_vegetables_nuts">फल, सब्जियां, दाने</string>
-  <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
+  <string name="collagen_meat_protein_ratio">कोलेजन मांस प्रोटीन अनुपात</string>
   <string name="cocoa">कोकोआ</string>
   <string name="chlorophyl">क्लोरोफिल</string>
   <string name="take_picture_ingredients">सामग्री की एक चित्र लीजिए</string>
@@ -394,14 +394,22 @@
   <string name="please_check_your_connection">कृपया अपना कनेक्शन जाँचें</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">उन्नत खोज और चार्ट्स</string>
-  <string name="Terms">Terms</string>
-  <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
-  <string name="preference_header_general">General</string>
-  <string name="preference_header_network">Network</string>
-  <string name="preference_header_contributing">Contributing</string>
-  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="conform_logout">Confirm Logout</string>
-  <string name="logout_dialog_content">Are you sure to log out ?</string>
-  <string name="dialog_cancel">Cancel</string>
+  <string name="Terms">शर्तें</string>
+  <string name="terms_url">https://world-hi.openfoodfacts.org/terms-of-use</string>
+  <string name="preference_header_general">सामान्य</string>
+  <string name="preference_header_network">नेटवर्क</string>
+  <string name="preference_header_contributing">योगदान</string>
+  <string name="not_support_books">ओपन फ़ूड फैक्ट्स पर पुस्तकें उपलब्ध नहीं है</string>
+  <string name="seconds_ago">सेकण्ड्स पहले</string>
+  <string name="minutes_ago">मिनट्स पहले</string>
+  <string name="hours_ago">घंटे पहले</string>
+  <string name="days_ago">दिन पहले</string>
+  <string name="scan_first_string">आपके द्वारा देखे गए उत्पाद यहाँ सूचीबद्ध हैं \n यह केवल आपके लिए है और फ़ोन में संग्रहीत है</string>
+  <string name="log_in">लॉगिन</string>
+  <string name="login_true">पहले से ही लॉगिन हैं!</string>
+  <string name="confirm_logout">लॉगआउट करें?</string>
+  <string name="logout_dialog_content">लॉग आउट करने के लिए निश्चित हैं?</string>
+  <string name="dialog_cancel">रद्द करें</string>
   <string name="brand_string">ब्रांड</string>
+  <string name="country_string">Country</string>
 </resources>

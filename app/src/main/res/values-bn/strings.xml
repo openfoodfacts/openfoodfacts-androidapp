@@ -284,7 +284,7 @@
   <string name="txt_no_matching_products">আমরা কোন পণ্য খুঁজে পাইনি ।\nআপনি আরো দেখতে পারেন :</string>
   <string name="txt_broaden_search">- আপনার অনুসন্ধান স্পষ্ট করুন \ n- স্ক্যান করুন এবং ওপেন ফুড ফ্যাক্টসে যোগ করুন </string>
   <string name="txt_cant_load_search_results">অনুসন্ধান ফলাফল লোড করা যায়নি</string>
-  <string name="something_went_wrong">Sorry!! Something went wrong...</string>
+  <string name="something_went_wrong">Sorry,something went wrong…</string>
   <string name="txt_try_again">আবার চেষ্টা করুন</string>
   <string name="nutrition_lactose">ল্যাকটোজ</string>
   <string name="nutrition_casein">ছানাজাতীয় উপাদান</string>
@@ -401,8 +401,16 @@
   <string name="preference_header_network">Network</string>
   <string name="preference_header_contributing">Contributing</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="conform_logout">Confirm Logout</string>
+  <string name="seconds_ago">seconds ago</string>
+  <string name="minutes_ago">minutes ago</string>
+  <string name="hours_ago">hours ago</string>
+  <string name="days_ago">days ago</string>
+  <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
+  <string name="log_in">লগ ইন</string>
+  <string name="login_true">Already logged in!</string>
+  <string name="confirm_logout">Confirm Logout</string>
   <string name="logout_dialog_content">Are you sure to log out ?</string>
   <string name="dialog_cancel">Cancel</string>
   <string name="brand_string">ব্র্যান্ড</string>
+  <string name="country_string">Country</string>
 </resources>
