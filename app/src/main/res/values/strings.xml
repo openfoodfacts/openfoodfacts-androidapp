@@ -430,4 +430,7 @@
     <string name="conform_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Cancel</string>
+    <string name="txt_detected">Text detected and you can add this image</string>
+    <string name="txt_notdetected">text is not detected ,add other image</string>
+
 </resources>

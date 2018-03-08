@@ -1,14 +1,17 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.res.AssetManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -16,6 +19,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -30,11 +34,20 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
+import com.google.android.gms.vision.text.TextBlock;
+import com.google.android.gms.vision.text.TextRecognizer;
+import com.googlecode.tesseract.android.TessBaseAPI;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
 import java.util.List;
 import java.util.Locale;
 
@@ -57,6 +70,19 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+
+import android.util.SparseArray;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.barcode.Barcode;
+import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 public class SaveProductOfflineActivity extends BaseActivity {
 
@@ -104,6 +130,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
     private String imageTaken;
     private SendProductDao mSendProductDao;
     private SharedPreferences mSharedPref;
+    public static final String LOG_TAG="Log";
+    private TextRecognizer detector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,9 +140,14 @@ public class SaveProductOfflineActivity extends BaseActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_save_product_offline);
+        detector = new TextRecognizer.Builder(getApplicationContext()).build();
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+
 
         mSendProductDao = Utils.getAppDaoSession(this).getSendProductDao();
         mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
@@ -222,8 +255,11 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @OnClick(R.id.buttonFromGalleryFront)
     protected void onChooserWithGalleryFrontClicked() {
         EasyImage.openChooserWithGallery(this, "Images", 0);
+
         imageTaken = "front";
+
     }
+
 
     @OnClick(R.id.buttonFromGalleryIngredients)
     protected void onChooserWithGalleryIngredientsClicked() {
@@ -342,6 +378,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
         mSharedPref.edit().putBoolean("is_msg_only_one_photo_necessary_dismissed", true).apply();
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -352,6 +389,12 @@ public class SaveProductOfflineActivity extends BaseActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
+
+
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -373,11 +416,46 @@ public class SaveProductOfflineActivity extends BaseActivity {
                 //Some error handling
             }
 
+
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .start(SaveProductOfflineActivity.this);
 
+                if(imageTaken!="front")
+                {try {
+                Bitmap bitmap = BitmapFactory.decodeFile(String.valueOf(imageFiles.get(0)));
+                if (detector.isOperational() && bitmap != null) {
+                    Frame frame = new Frame.Builder().setBitmap(bitmap).build();
+                    SparseArray<TextBlock> textBlocks = detector.detect(frame);
+                    String blocks = "";
+                    String lines = "";
+                    String words = "";
+                    for (int index = 0; index < textBlocks.size(); index++) {
+                        //extract scanned text blocks here
+                        TextBlock tBlock = textBlocks.valueAt(index);
+                        blocks = blocks + tBlock.getValue() + "\n" + "\n";
+
+                            }
+                    if (textBlocks.size() == 0) {
+                        Toast.makeText(getApplicationContext(),R.string.txt_not_detected,Toast.LENGTH_LONG).show();
+                    } else {
+                        CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                                    .start(SaveProductOfflineActivity.this);
+
+                            Toast.makeText(getApplicationContext(),R.string.txt_detected, Toast.LENGTH_LONG).show();
+
+
+                    }}
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Failed to load Image", Toast.LENGTH_SHORT)
+                            .show();
+                    Log.e(LOG_TAG, e.toString());
+                }
+                }
+            else
+            { CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                    .start(SaveProductOfflineActivity.this);
+
+               }
             }
 
             @Override
