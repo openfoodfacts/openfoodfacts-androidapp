@@ -236,7 +236,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
         if (isNotBlank(product.getPackaging())) {
             packagingProduct.setText(bold(getString(R.string.txtPackaging)));
-            packagingProduct.append(' ' + product.getPackaging());
+            packagingProduct.setClickable(true);
+            packagingProduct.setMovementMethod(LinkMovementMethod.getInstance());
+            String[] packagings = product.getPackaging().split(",");
+            for (String packaging : packagings){
+                packagingProduct.append(getPackagingTag(packaging));
+            }
         } else {
             packagingProduct.setVisibility(View.GONE);
         }
@@ -500,6 +505,24 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (tag != null) return tag.getName();
         return embTag;
     }
+
+
+    private CharSequence getPackagingTag(String packaging){
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),BrandActivity.class);
+                intent.putExtra("packaging",packaging);
+                startActivity(intent);
+            }
+        };
+        spannableStringBuilder.append(packaging);
+        spannableStringBuilder.setSpan(clickableSpan,0,spannableStringBuilder.length(),SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.append(" ");
+        return spannableStringBuilder;
+    }
+
 
     private CharSequence getSpanTag(String embCode, String embUrl) {
         final SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
