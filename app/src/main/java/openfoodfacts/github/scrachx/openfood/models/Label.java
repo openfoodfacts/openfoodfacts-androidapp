@@ -12,10 +12,14 @@ import org.greenrobot.greendao.annotation.Unique;
 
 import java.util.List;
 
+/**
+ * Created by Lobster on 03.03.18.
+ */
+
 @Entity(indexes = {
         @Index(value = "tag", unique = true)
 })
-public class Allergen {
+public class Label {
 
     @Id(autoincrement = true)
     private Long id;
@@ -23,12 +27,10 @@ public class Allergen {
     @Unique
     private String tag;
 
-    private Boolean enabled;
-
     @ToMany(joinProperties = {
-            @JoinProperty(name = "tag", referencedName = "allergenTag")
+            @JoinProperty(name = "tag", referencedName = "labelTag")
     })
-    private List<AllergenName> names;
+    private List<LabelName> names;
 
     /**
      * Used to resolve relations
@@ -39,25 +41,22 @@ public class Allergen {
     /**
      * Used for active entity operations.
      */
-    @Generated(hash = 2043571450)
-    private transient AllergenDao myDao;
+    @Generated(hash = 40777009)
+    private transient LabelDao myDao;
 
-    @Generated(hash = 314039366)
-    public Allergen(Long id, String tag, Boolean enabled) {
+    public Label() {
+    }
+
+    @Generated(hash = 1601313181)
+    public Label(Long id, String tag) {
         this.id = id;
         this.tag = tag;
-        this.enabled = enabled;
     }
 
     @Keep
-    public Allergen(String tag, List<AllergenName> names) {
-        this.enabled = false;
+    public Label(String tag, List<LabelName> names) {
         this.tag = tag;
         this.names = names;
-    }
-
-    @Generated(hash = 1276564405)
-    public Allergen() {
     }
 
     public Long getId() {
@@ -80,15 +79,15 @@ public class Allergen {
      * To-many relationship, resolved on first access (and after reset).
      * Changes to to-many relations are not persisted, make changes to the target entity.
      */
-    @Generated(hash = 1023494153)
-    public List<AllergenName> getNames() {
+    @Generated(hash = 1212652385)
+    public List<LabelName> getNames() {
         if (names == null) {
             final DaoSession daoSession = this.daoSession;
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
             }
-            AllergenNameDao targetDao = daoSession.getAllergenNameDao();
-            List<AllergenName> namesNew = targetDao._queryAllergen_Names(tag);
+            LabelNameDao targetDao = daoSession.getLabelNameDao();
+            List<LabelName> namesNew = targetDao._queryLabel_Names(tag);
             synchronized (this) {
                 if (names == null) {
                     names = namesNew;
@@ -142,18 +141,10 @@ public class Allergen {
         myDao.update(this);
     }
 
-    public Boolean getEnabled() {
-        return this.enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
     /** called by internal mechanisms, do not call yourself. */
-    @Generated(hash = 1247563218)
+    @Generated(hash = 692607636)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
-        myDao = daoSession != null ? daoSession.getAllergenDao() : null;
+        myDao = daoSession != null ? daoSession.getLabelDao() : null;
     }
 }

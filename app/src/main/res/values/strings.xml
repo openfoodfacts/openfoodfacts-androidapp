@@ -31,7 +31,7 @@
     </string-array>
 
     <!-- Text units -->
-    <string-array name="lang_array">
+    <string-array name="languages_array" translatable="false">
         <item>en</item>
         <item>fr</item>
         <item>es</item>
