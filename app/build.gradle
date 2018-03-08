@@ -14,6 +14,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+    buildTypes {
+        release {
+            crunchPngs true
+        }
+    }
 
     dataBinding {
         enabled true
@@ -45,6 +50,7 @@ android {
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
         }
     }
+
 
     dexOptions {
         preDexLibraries = false
@@ -82,6 +88,7 @@ android {
     testOptions {
         // avoid "Method ... not mocked."
         unitTests.returnDefaultValues = true
+        execution 'ANDROID_TEST_ORCHESTRATOR'
     }
 }
 
@@ -96,7 +103,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 5
+    schemaVersion 6
 }
 
 dependencies {
@@ -200,11 +207,13 @@ dependencies {
     implementation "com.mikepenz:material-design-iconic-typeface:$rootProject.materialFontVersion"
     implementation "com.mikepenz:fontawesome-typeface:$rootProject.awesomeFontVersion"
 
-    implementation ("com.theartofdev.edmodo:android-image-cropper:2.6.0") {
+    implementation("com.theartofdev.edmodo:android-image-cropper:2.6.0") {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
 
     //Testing
+    androidTestUtil 'com.android.support.test:orchestrator:1.0.1'
+
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     testImplementation "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"
