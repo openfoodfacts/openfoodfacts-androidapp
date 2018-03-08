@@ -14,6 +14,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+    buildTypes {
+        release {
+            crunchPngs true
+        }
+    }
 
     dataBinding {
         enabled true
@@ -45,6 +50,7 @@ android {
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
         }
     }
+
 
     dexOptions {
         preDexLibraries = false
@@ -195,7 +201,7 @@ dependencies {
     implementation "com.mikepenz:material-design-iconic-typeface:$rootProject.materialFontVersion"
     implementation "com.mikepenz:fontawesome-typeface:$rootProject.awesomeFontVersion"
 
-    implementation ("com.theartofdev.edmodo:android-image-cropper:2.6.0") {
+    implementation("com.theartofdev.edmodo:android-image-cropper:2.6.0") {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
 

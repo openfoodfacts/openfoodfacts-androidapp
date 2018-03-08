@@ -6,6 +6,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
@@ -100,6 +101,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         setContentView(R.layout.activity_main);
 
         Utils.hideKeyboard(this);
@@ -294,7 +298,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             break;
                         case LOGOUT:
                             new MaterialDialog.Builder(MainActivity.this)
-                                    .title(R.string.conform_logout)
+                                    .title(R.string.confirm_logout)
                                     .content(R.string.logout_dialog_content)
                                     .positiveText(R.string.txtOk)
                                     .negativeText(R.string.dialog_cancel)

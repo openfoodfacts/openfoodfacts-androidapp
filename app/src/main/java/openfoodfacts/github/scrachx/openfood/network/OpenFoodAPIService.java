@@ -65,8 +65,13 @@ public interface OpenFoodAPIService {
     @POST("/cgi/product_image_upload.pl")
     Call<JsonNode> saveImage(@PartMap Map<String, RequestBody> fields);
 
+
     @GET("allergens.json")
     Call<AllergenRestResponse> getAllergens();
+
+    @GET("brand/{brand}/{page}.json")
+    Call<Search> getProductByBrands(@Path("brand") String brand, @Path("page") int page);
+
 
     @GET("language/{language}.json")
     Call<Search> byLanguage(@Path("language") String language);

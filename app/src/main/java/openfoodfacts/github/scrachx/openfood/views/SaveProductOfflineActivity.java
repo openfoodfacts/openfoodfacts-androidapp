@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -22,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +42,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
@@ -92,6 +95,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
     ImageButton mDismissButton;
     @BindView(R.id.message)
     TextView messageView;
+    @BindView(R.id.NutritionImageGroup)
+    LinearLayout nutritionGroup;
 
     PhotoViewAttacher mAttacherimgSaveFront;
     PhotoViewAttacher mAttacherimgSaveNutrition;
@@ -107,7 +112,14 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         setContentView(R.layout.activity_save_product_offline);
+
+        if (BuildConfig.FLAVOR.equals("obf")) {
+            nutritionGroup.setVisibility(View.GONE);
+        }
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
