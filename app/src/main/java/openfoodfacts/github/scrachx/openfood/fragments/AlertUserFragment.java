@@ -1,11 +1,16 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,7 +20,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import net.steamcrafted.loadtoast.LoadToast;
@@ -138,6 +145,20 @@ public class AlertUserFragment extends NavigationBaseFragment {
                                     .subscribe(allergens -> {
                                         editor.putBoolean("errorAllergens", false).apply();
                                         lt.success();
+                                        if(mAllergensFromDao.isEmpty()){
+                                            new MaterialDialog.Builder(mView.getContext())
+                                                    .title(R.string.txt_no_results)
+                                                    .content(R.string.change_language_string)
+                                                    .positiveText(R.string.txtYes)
+                                                    .negativeText(R.string.txtNo)
+                                                    .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                                        @Override
+                                                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                                            getFragmentManager().beginTransaction().replace(R.id.fragment_container,new PreferencesFragment()).addToBackStack(null).commit();
+                                                        }
+                                                    })
+                                            .show();
+                                        }
                                     }, e -> {
                                         editor.putBoolean("errorAllergens", true).apply();
                                         lt.error();

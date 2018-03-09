@@ -445,7 +445,7 @@
 
     <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
 
-
+    <string name="change_language_string">No Allergens found for your language. Would you like to change your language ?</string>
 
     <string name="brand_string">Brand</string>
 
