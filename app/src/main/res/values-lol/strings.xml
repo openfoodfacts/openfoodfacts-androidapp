@@ -400,10 +400,10 @@
   <string name="preference_header_network">crwdns37216:0crwdne37216:0</string>
   <string name="preference_header_contributing">crwdns37218:0crwdne37218:0</string>
   <string name="not_support_books">crwdns37219:0crwdne37219:0</string>
-  <string name="seconds_ago">crwdns37231:0crwdne37231:0</string>
-  <string name="minutes_ago">crwdns37232:0crwdne37232:0</string>
-  <string name="hours_ago">crwdns37233:0crwdne37233:0</string>
-  <string name="days_ago">crwdns37234:0crwdne37234:0</string>
+  <string name="seconds_ago_placeholder">%d crwdns37231:0crwdne37231:0</string>
+  <string name="minutes_ago_placeholder">%d crwdns37232:0crwdne37232:0</string>
+  <string name="hours_ago_placeholder">%d crwdns37233:0crwdne37233:0</string>
+  <string name="days_ago_placeholder">%d crwdns37234:0crwdne37234:0</string>
   <string name="scan_first_string">crwdns37235:0crwdne37235:0</string>
   <string name="log_in">crwdns37236:0crwdne37236:0</string>
   <string name="login_true">crwdns37237:0crwdne37237:0</string>

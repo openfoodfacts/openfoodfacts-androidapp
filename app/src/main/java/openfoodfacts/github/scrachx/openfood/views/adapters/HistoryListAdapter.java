@@ -15,6 +15,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.annotation.Resource;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -122,11 +124,10 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         long hours = TimeUnit.MILLISECONDS.toHours(now.getTime() - date.getTime());
         long days = TimeUnit.MILLISECONDS.toDays(now.getTime() - date.getTime());
 
-
-        String secText = String.valueOf(seconds) +" "+ mActivity.getString(R.string.seconds_ago);
-        String minText = String.valueOf(minutes) +" "+ mActivity.getString(R.string.minutes_ago);
-        String hourText = String.valueOf(hours) +" "+ mActivity.getString(R.string.hours_ago);
-        String dayText = String.valueOf(days) +" "+ mActivity.getString(R.string.days_ago);
+        String secText = mActivity.getString(R.string.seconds_ago_placeholder,seconds);
+        String minText =  mActivity.getString(R.string.minutes_ago_placeholder, minutes);
+        String hourText = mActivity.getString(R.string.hours_ago_placeholder,hours);
+        String dayText = mActivity.getString(R.string.days_ago_placeholder,days);
 
         if (seconds < 60) {
             holder.txtDate.setText(secText);
