@@ -444,7 +444,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
                             }
                     if (textBlocks.size() == 0) {
-                        Toast.makeText(getApplicationContext(),R.string.txt_not_detected,Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),R.string.txt_notdetected,Toast.LENGTH_LONG).show();
                     } else {
                         CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
                                     .start(SaveProductOfflineActivity.this);
