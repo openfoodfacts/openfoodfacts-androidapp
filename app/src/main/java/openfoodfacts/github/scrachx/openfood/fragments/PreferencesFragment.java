@@ -161,7 +161,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
         imageUploadPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                Log.d("vaishali", "onPreferenceChange: "+newValue);
                 settings.edit().putString("imageUpload", (String)newValue).apply();
                 return true;
             }

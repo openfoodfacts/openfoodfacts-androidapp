@@ -35,11 +35,11 @@
 
         <ListPreference
             android:defaultValue="640 X 480"
-            android:dialogTitle="Choose Resolution"
+            android:dialogTitle="@string/choose_resolution"
             android:key="ImageUpload"
             android:selectable="true"
-            android:summary="@string/prefs_image_upload"
-            android:title="Choose resolution" />
+            android:summary="@string/pref_resolution_summary"
+            android:title="@string/image_upload_resolution" />
 
     </PreferenceCategory>
 

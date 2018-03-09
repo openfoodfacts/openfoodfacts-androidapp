@@ -244,7 +244,6 @@
     <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
     <string name="prefs_language">Language</string>
     <string name="prefs_language_summary">Change language</string>
-    <string name="prefs_image_upload">Pick a resolution for image upload</string>
 
     <string name="scan_history_drawer">History</string>
     <string name="clear_history">Clear history</string>
@@ -414,7 +413,6 @@
 
     <string name="preference_choose_language_dialog_title">Choose language</string>
 
-    
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
 
@@ -439,4 +437,7 @@
     <string name="conform_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Cancel</string>
+    <string name="choose_resolution">Choose Resolution</string>
+    <string name="pref_resolution_summary">Pick a resolution for image upload</string>
+    <string name="image_upload_resolution">Image Upload Resolution</string>
 </resources>

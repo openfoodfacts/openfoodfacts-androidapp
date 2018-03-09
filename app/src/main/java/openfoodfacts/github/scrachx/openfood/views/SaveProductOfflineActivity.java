@@ -107,9 +107,6 @@ public class SaveProductOfflineActivity extends BaseActivity {
     private String imageTaken;
     private SendProductDao mSendProductDao;
     private SharedPreferences mSharedPref;
-    //private int resXFront, resYFront;
-    //private int resXIngr, resYIngr;
-    //private int resXNut, resYNut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -434,7 +431,19 @@ public class SaveProductOfflineActivity extends BaseActivity {
                                 }
                             });
                 } catch (Exception e){
-                    Toast.makeText(getApplicationContext(), "Please set Resolution First", Toast.LENGTH_SHORT).show();
+                    Picasso.with(this)
+                            .load(photoFile)
+                            .resize(640, 480)
+                            .into(imgSaveFront, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    mAttacherimgSaveFront.update();
+                                }
+
+                                @Override
+                                public void onError() {
+                                }
+                            });
                 }
             }
         } else if (imageTaken.equals("nutrition")) {
@@ -474,7 +483,19 @@ public class SaveProductOfflineActivity extends BaseActivity {
                                 }
                             });
                 } catch (Exception e){
-                    Toast.makeText(getApplicationContext(), "Please set Resolution first", Toast.LENGTH_SHORT).show();
+                    Picasso.with(this)
+                            .load(photoFile)
+                            .resize(640, 480)
+                            .into(imgSaveNutrition, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    mAttacherimgSaveNutrition.update();
+                                }
+
+                                @Override
+                                public void onError() {
+                                }
+                            });
                 }
             }
         } else if (imageTaken.equals("ingredients")) {
@@ -515,7 +536,19 @@ public class SaveProductOfflineActivity extends BaseActivity {
                                 }
                             });
                 } catch (Exception e){
-                    Toast.makeText(getApplicationContext(), "Please set Resolution first", Toast.LENGTH_SHORT).show();
+                    Picasso.with(this)
+                            .load(photoFile)
+                            .resize(640, 480)
+                            .into(imgSaveIngredients, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    mAttacherimageSaveIngredients.update();
+                                }
+
+                                @Override
+                                public void onError() {
+                                }
+                            });
                 }
             }
         }
