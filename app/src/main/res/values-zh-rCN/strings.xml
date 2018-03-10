@@ -231,7 +231,7 @@
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
   <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">无法载入结果</string>
-  <string name="something_went_wrong">Sorry,something went wrong…</string>
+  <string name="something_went_wrong">Sorry, something went wrong…</string>
   <string name="txt_try_again">重新尝试</string>
   <string name="nutrition_lactose">乳糖</string>
   <string name="nutrition_casein">酪蛋白</string>

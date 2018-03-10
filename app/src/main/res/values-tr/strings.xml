@@ -231,7 +231,7 @@
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
   <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Arama sonuçları yüklenemiyor</string>
-  <string name="something_went_wrong">Sorry,something went wrong…</string>
+  <string name="something_went_wrong">Sorry, something went wrong…</string>
   <string name="txt_try_again">Tekrar deneyin</string>
   <string name="nutrition_lactose">Laktoz</string>
   <string name="nutrition_casein">Sütteki protein</string>
