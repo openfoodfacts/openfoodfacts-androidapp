@@ -348,16 +348,16 @@
   <string name="preference_header_contributing">Contribuer</string>
   <string name="not_support_books">Les livres ne sont actuellement pas pris en charge par Open Food Facts</string>
   <string name="seconds_ago">Il y a %d secondes</string>
-  <string name="minutes_ago">minutes ago</string>
-  <string name="hours_ago">hours ago</string>
-  <string name="days_ago">days ago</string>
+  <string name="minutes_ago">Il y a %d minutes</string>
+  <string name="hours_ago">il y a %d heures</string>
+  <string name="days_ago">Il y a %d jours</string>
   <string name="scan_first_string">L\'historique des produits que vous avez consultés sera répertorié ici.\nCet historique est réservé à vos yeux et est stocké localement.</string>
   <string name="log_in">Connexion</string>
   <string name="login_true">Déjà connecté!</string>
   <string name="confirm_logout">Confirmer la déconnexion</string>
   <string name="logout_dialog_content">Etes-vous sûr(e) de vouloir vous déconnecter?</string>
   <string name="dialog_cancel">Annuler</string>
-  <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+  <string name="can_add_barcode">Vous avez des problèmes de scan ?\nFaites glisser vers le haut pour saisir le code-barre</string>
   <string name="brand_string">Marque</string>
   <string name="country_string">Pays</string>
 </resources>
