@@ -223,7 +223,7 @@
   <string name="txtSeeMore">Zobrazit více</string>
   <string name="action_search">Vyhledat</string>
   <string name="search_hint">Vyhledat produkt</string>
-  <string name="number_of_results">Počet výsledků :</string>
+  <string name="number_of_results">Number of results: </string>
   <string name="brand">Brand :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">Nebyly nalezeny žádné výsledky</string>
