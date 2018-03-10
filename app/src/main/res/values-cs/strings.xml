@@ -278,7 +278,7 @@
   <string name="search_hint">Vyhledat produkt</string>
   <string name="number_of_results">Počet výsledků :</string>
   <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products :</string>
+  <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">Nebyly nalezeny žádné výsledky</string>
   <string name="txt_extend_search">Pokuste se rozšířit vyhledávání nebo produkt přidejte</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>

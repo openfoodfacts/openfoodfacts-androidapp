@@ -279,7 +279,7 @@
   <string name="search_hint">mencari sebuah produk</string>
   <string name="number_of_results">jumlah data</string>
   <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products :</string>
+  <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">tidak menemukan hasil</string>
   <string name="txt_extend_search">coba memperluas pencarian kamu </string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>

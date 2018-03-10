@@ -278,7 +278,7 @@
   <string name="search_hint">Zoek een product</string>
   <string name="number_of_results">Aantal resultaten</string>
   <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products :</string>
+  <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">Geen resultaten gevonden</string>
   <string name="txt_extend_search">Probeer uw zoekopdracht te verbreden of voeg het product toe</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
