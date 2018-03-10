@@ -231,7 +231,7 @@
   <string name="txt_no_matching_products">Wir haben keine passenden Produkte gefunden.\nSie können versuchen:</string>
   <string name="txt_broaden_search">• Erweitern Sie Ihre Suche\n• Erfassen und zu Open Food Facts hinzufügen</string>
   <string name="txt_cant_load_search_results">Die Suchergebnisse konnten nicht geladen werden</string>
-  <string name="something_went_wrong">Es tut uns Leid, aber etwas ist schief gegangen …</string>
+  <string name="something_went_wrong">Es tut uns Leid, aber ein Problem ist aufgetreten …</string>
   <string name="txt_try_again">Wiederholen</string>
   <string name="nutrition_lactose">Laktose</string>
   <string name="nutrition_casein">Casein</string>
