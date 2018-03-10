@@ -1,5 +1,17 @@
 <resources>
 
+    <plurals name="minutes">
+        <item quantity="one"> minute </item>
+        <item quantity="other"> minutes</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one"> hour</item>
+        <item quantity="other"> hours</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one"> day</item>
+        <item quantity="other"> days</item>
+    </plurals>
     <string name="action_settings">Settings</string>
     <string name="action_about">About</string>
     <string name="action_discover">Discover</string>
@@ -450,6 +462,6 @@
     <string name="brand_string">Brand</string>
 
     <string name="country_string">Countries where sold</string>
-
+    <string name="last_seen_string">%1$d %2$s ago</string>
 
 </resources>
