@@ -120,7 +120,7 @@
   <string name="share">공유</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
   <string name="create_account">Sign up</string>
-  <string name="home_drawer">Home</string>
+  <string name="home_drawer">홈</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">수색</string>
@@ -129,7 +129,7 @@
   <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
-  <string name="user_drawer">User</string>
+  <string name="user_drawer">사용자</string>
   <string name="offline_edit_drawer">Offline edit</string>
   <string name="txt_anonymous">Anonymous</string>
   <string name="txt_product_not_found">제품을 찾을 수 없습니다.</string>
@@ -186,21 +186,21 @@
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <!-- Nutrition info tab -->
-  <string name="nutrition_carbohydrate">Carbohydrate</string>
-  <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
-  <string name="nutrition_cholesterol">Cholesterol</string>
-  <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
+  <string name="nutrition_carbohydrate">탄수화물</string>
+  <string name="nutrition_carbohydrate_short_name">탄수화물 (g)</string>
+  <string name="nutrition_cholesterol">콜레스테롤</string>
+  <string name="nutrition_cholesterol_short_name">콜레스테롤 (g)</string>
   <string name="nutrition_energy">Energy</string>
   <string name="nutrition_energy_short_name">Energy</string>
   <string name="nutrition_fat">지방</string>
-  <string name="nutrition_fat_short_name">Fat (g)</string>
+  <string name="nutrition_fat_short_name">지방 (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
   <string name="nutrition_header">영양 성분 표시</string>
   <string name="nutrition_no_data_message">No data is available for this product</string>
   <string name="nutrition_per_quantity">For 100g/100ml</string>
-  <string name="nutrition_proteins">Proteins</string>
-  <string name="nutrition_proteins_short_name">Proteins (g)</string>
+  <string name="nutrition_proteins">단백질</string>
+  <string name="nutrition_proteins_short_name">단백질 (g)</string>
   <string name="nutrition_salt">소금</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Satured fat</string>
