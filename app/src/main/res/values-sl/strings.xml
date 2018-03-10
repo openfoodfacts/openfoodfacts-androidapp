@@ -225,7 +225,7 @@
   <string name="search_hint">Poišči izdelek</string>
   <string name="number_of_results">Število rezulatov :</string>
   <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products :</string>
+  <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">Ni zadetkov</string>
   <string name="txt_extend_search">Poskusite razširiti iskanje ali dodati izdelek</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>

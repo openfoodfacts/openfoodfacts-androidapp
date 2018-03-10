@@ -225,7 +225,7 @@
   <string name="search_hint">Søg efter produkt</string>
   <string name="number_of_results">Antal resultater :</string>
   <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products :</string>
+  <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">Ingen resultater fundet</string>
   <string name="txt_extend_search">Prøv at udvide din søgning eller tilføj produktet</string>
   <string name="txt_no_matching_products">Der blev ikke fundet lignende produkter.\nDu kan prøve at :</string>
