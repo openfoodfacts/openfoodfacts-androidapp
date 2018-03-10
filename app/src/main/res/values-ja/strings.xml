@@ -284,7 +284,7 @@
   <string name="txt_no_matching_products">一致する商品が見つかりませんでした。\nお試しください :</string>
   <string name="txt_broaden_search">- 検索範囲を広げる\n- スキャンしてOpen Food Factsに追加する</string>
   <string name="txt_cant_load_search_results">検索結果を読み込むことができません</string>
-  <string name="something_went_wrong">Sorry,something went wrong…</string>
+  <string name="something_went_wrong">Sorry, something went wrong…</string>
   <string name="txt_try_again">もう一度やり直してください</string>
   <string name="nutrition_lactose">乳糖</string>
   <string name="nutrition_casein">カゼイン</string>

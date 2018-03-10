@@ -284,7 +284,7 @@
   <string name="txt_no_matching_products">Ми не знайшли відповідних продуктів.\nВи можете спробувати:</string>
   <string name="txt_broaden_search">- розширити пошук\n- просканувати та додати товар</string>
   <string name="txt_cant_load_search_results">Не вдалося завантажити результати пошуку</string>
-  <string name="something_went_wrong">Sorry,something went wrong…</string>
+  <string name="something_went_wrong">Sorry, something went wrong…</string>
   <string name="txt_try_again">Спробуйте ще раз</string>
   <string name="nutrition_lactose">Лактоза</string>
   <string name="nutrition_casein">Казеїн</string>

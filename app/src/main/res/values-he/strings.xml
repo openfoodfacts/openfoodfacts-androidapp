@@ -284,7 +284,7 @@
   <string name="txt_no_matching_products">לא מצאנו מוצרים מתאימים.\nניתן לנסות:</string>
   <string name="txt_broaden_search">- להרחיב את החיפוש שלך \n- לסרוק ולהוסיף ל־Open Food Facts</string>
   <string name="txt_cant_load_search_results">לא ניתן לטעון את תוצאות החיפוש</string>
-  <string name="something_went_wrong">Sorry,something went wrong…</string>
+  <string name="something_went_wrong">Sorry, something went wrong…</string>
   <string name="txt_try_again">נא לנסות שוב</string>
   <string name="nutrition_lactose">לקטוז</string>
   <string name="nutrition_casein">קזאין</string>

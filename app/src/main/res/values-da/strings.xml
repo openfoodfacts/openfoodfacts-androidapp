@@ -284,7 +284,7 @@
   <string name="txt_no_matching_products">Der blev ikke fundet lignende produkter.\nDu kan prøve at :</string>
   <string name="txt_broaden_search">- lave en mindre snæver søgning \n- skanne og tilføje det til Open Food Facts</string>
   <string name="txt_cant_load_search_results">Kan ikke indlæse søgeresultater</string>
-  <string name="something_went_wrong">Sorry,something went wrong…</string>
+  <string name="something_went_wrong">Sorry, something went wrong…</string>
   <string name="txt_try_again">Prøv igen</string>
   <string name="nutrition_lactose">Laktose</string>
   <string name="nutrition_casein">Kasein</string>
