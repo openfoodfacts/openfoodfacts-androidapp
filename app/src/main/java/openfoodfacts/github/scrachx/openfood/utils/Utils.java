@@ -11,14 +11,18 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.DrawableRes;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.content.res.AppCompatResources;
 import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
@@ -31,8 +35,6 @@ import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.firebase.jobdispatcher.Job;
 import com.firebase.jobdispatcher.Lifetime;
 import com.firebase.jobdispatcher.Trigger;
-
-import org.greenrobot.greendao.database.Database;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -52,10 +54,10 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
-import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import static android.text.TextUtils.isEmpty;
 
@@ -388,12 +390,13 @@ public class Utils {
 
     /**
      * Check if airplane mode is turned on on the device.
+     *
      * @param context of the application.
      * @return true if airplane mode is active.
      */
     @SuppressWarnings("depreciation")
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public static boolean isAirplaneModeActive(Context context){
+    public static boolean isAirplaneModeActive(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
             return Settings.System.getInt(context.getContentResolver(),
                     Settings.System.AIRPLANE_MODE_ON, 0) != 0;
@@ -405,6 +408,7 @@ public class Utils {
 
     /**
      * Check if the user is connected to a network. This can be any network.
+     *
      * @param context of the application.
      * @return true if connected or connecting. False otherwise.
      */
@@ -417,10 +421,11 @@ public class Utils {
 
     /**
      * Check if the user is connected to a mobile network.
+     *
      * @param context of the application.
      * @return true if connected to mobile data.
      */
-    public static boolean isConnectedToMobileData(Context context){
+    public static boolean isConnectedToMobileData(Context context) {
         return getNetworkType(context).equals("Mobile");
     }
 
@@ -450,5 +455,25 @@ public class Utils {
         }
 
         return "Other";
+    }
+
+    public static CharSequence getClickableText(String text, String urlParameter, @ClickableType int type, Activity activity, CustomTabsIntent customTabsIntent) {
+        String url = ClickableType.URLS.get(type);
+        if (url == null) {
+            throw new IllegalArgumentException(String.format("There is no @ClickableType = %1$d", type));
+        }
+
+        Uri uri = Uri.parse(url + urlParameter);
+        SpannableString spannableText = new SpannableString(text);
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View textView) {
+                CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, uri, new WebViewFallback());
+            }
+        };
+
+        spannableText.setSpan(clickableSpan, 0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return spannableText;
+
     }
 }

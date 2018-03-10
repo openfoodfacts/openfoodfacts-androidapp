@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
@@ -45,8 +46,11 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.ClickableType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -87,11 +91,15 @@ public class IngredientsProductFragment extends BaseFragment {
     private AdditiveDao mAdditiveDao;
     private IProductRepository productRepository;
     private IngredientsProductFragment mFragment;
+    private CustomTabActivityHelper customTabActivityHelper;
+    private CustomTabsIntent customTabsIntent;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         productRepository = ProductRepository.getInstance();
+        customTabActivityHelper = new CustomTabActivityHelper();
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
     }
 
     @Override
@@ -135,30 +143,40 @@ public class IngredientsProductFragment extends BaseFragment {
         }
 
         if (!allergens.isEmpty()) {
+            substanceProduct.setMovementMethod(LinkMovementMethod.getInstance());
             substanceProduct.append(bold(getString(R.string.txtSubstances)));
             substanceProduct.append(" ");
-            String delim = "";
-            for (String allergen : allergens) {
-                substanceProduct.append(delim);
-                substanceProduct.append(allergen);
-                delim = ", ";
+
+            String allergen;
+            for (int i = 0; i < allergens.size() - 1; i++) {
+                allergen = allergens.get(i);
+                substanceProduct.append(Utils.getClickableText(allergen, allergen, ClickableType.ALLERGEN, getActivity(), customTabsIntent));
+                substanceProduct.append(", ");
             }
+
+            allergen = allergens.get(allergens.size() - 1);
+            substanceProduct.append(Utils.getClickableText(allergen, allergen, ClickableType.ALLERGEN, getActivity(), customTabsIntent));
         } else {
             substanceProduct.setVisibility(View.GONE);
         }
 
-        String traces;
         if (product.getTraces() == null) {
             traceProduct.setVisibility(View.GONE);
         } else {
-            traces = product.getTraces().replace(",", ", ");
-            if (traces.isEmpty()) {
-                traceProduct.setVisibility(View.GONE);
-            } else {
-                traceProduct.append(bold(getString(R.string.txtTraces)));
-                traceProduct.append(" ");
-                traceProduct.append(traces);
+            traceProduct.setMovementMethod(LinkMovementMethod.getInstance());
+            traceProduct.append(bold(getString(R.string.txtTraces)));
+            traceProduct.append(" ");
+
+            String trace;
+            String traces[] = product.getTraces().split(",");
+            for (int i = 0; i < traces.length - 1; i++) {
+                trace = traces[i];
+                traceProduct.append(Utils.getClickableText(trace, trace, ClickableType.TRACE, getActivity(), customTabsIntent));
+                traceProduct.append(", ");
             }
+
+            trace = traces[traces.length - 1];
+            traceProduct.append(Utils.getClickableText(trace, trace, ClickableType.TRACE, getActivity(), customTabsIntent));
         }
 
         if (!product.getAdditivesTags().isEmpty()) {
@@ -372,4 +390,6 @@ public class IngredientsProductFragment extends BaseFragment {
             }
         }
     }
+
+
 }
