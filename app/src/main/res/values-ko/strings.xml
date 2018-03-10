@@ -75,11 +75,11 @@
   <string name="txtSignIn">가입하기</string>
   <string name="txtUser">User panel</string>
   <string name="txtToastSaved">User saved</string>
-  <string name="txtSalt">Salt</string>
-  <string name="txtFat">Fat</string>
+  <string name="txtSalt">소금</string>
+  <string name="txtFat">지방</string>
   <string name="txtSugars">Sugars</string>
   <string name="hintBarcode">바코드</string>
-  <string name="hintLogin">Login</string>
+  <string name="hintLogin">로그인</string>
   <string name="hintPass">암호</string>
   <string name="errorLogin">Login or password error</string>
   <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
@@ -90,9 +90,9 @@
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
   <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
-  <string name="txtYes">Yes</string>
-  <string name="txtNo">No</string>
-  <string name="hintNameProduct">Name</string>
+  <string name="txtYes">예</string>
+  <string name="txtNo">아니요</string>
+  <string name="hintNameProduct">이름</string>
   <string name="hintEnergy">Energy in kJ per serving</string>
   <string name="hintEnergyUnit">Energy unit</string>
   <string name="hintWeight">Weight</string>
@@ -100,8 +100,8 @@
   <string name="hintBrand">Brand</string>
   <string name="txtTakePicture">Take picture</string>
   <string name="txtSendAll">Upload all</string>
-  <string name="txtNoData">No data</string>
-  <string name="txtPictureNeeded">Please take a picture first</string>
+  <string name="txtNoData">데이터 없음</string>
+  <string name="txtPictureNeeded">먼저 사진을 찍어주세요.</string>
   <string name="toastSending">Uploading...</string>
   <string name="dataSaved">Saved locally on your device</string>
   <string name="txtInfoAddUser">Please enter your login and password</string>
@@ -115,9 +115,9 @@
   <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Products sent</string>
   <string name="txtPalm">The product does not contain any palm oil</string>
-  <string name="txtBarcodeNotValid">Barcode not valid</string>
+  <string name="txtBarcodeNotValid">바코드가 유효하지 않습니다.</string>
   <string name="try_it_scan_now">Scan product</string>
-  <string name="share">Share</string>
+  <string name="share">공유</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
   <string name="create_account">Sign up</string>
   <string name="home_drawer">Home</string>
@@ -150,7 +150,7 @@
   <string name="select_camera">Select a Camera</string>
   <string name="ok_button">OK</string>
   <string name="cancel_button">Cancel</string>
-  <string name="login_button">Login</string>
+  <string name="login_button">로그인</string>
   <string name="create_account_button">Create Account</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">From gallery</string>
@@ -192,7 +192,7 @@
   <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
   <string name="nutrition_energy">Energy</string>
   <string name="nutrition_energy_short_name">Energy</string>
-  <string name="nutrition_fat">Fat</string>
+  <string name="nutrition_fat">지방</string>
   <string name="nutrition_fat_short_name">Fat (g)</string>
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
@@ -201,7 +201,7 @@
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Proteins</string>
   <string name="nutrition_proteins_short_name">Proteins (g)</string>
-  <string name="nutrition_salt">Salt</string>
+  <string name="nutrition_salt">소금</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Satured fat</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
@@ -352,7 +352,7 @@
   <string name="hours_ago">hours ago</string>
   <string name="days_ago">days ago</string>
   <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-  <string name="log_in">Login</string>
+  <string name="log_in">로그인</string>
   <string name="login_true">Already logged in!</string>
   <string name="confirm_logout">Confirm Logout</string>
   <string name="logout_dialog_content">Are you sure to log out ?</string>
