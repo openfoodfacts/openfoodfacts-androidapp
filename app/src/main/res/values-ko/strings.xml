@@ -28,59 +28,6 @@
     <item>fl oz</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>영어</item>
-    <item>프랑스어</item>
-    <item>스페인어</item>
-    <item>이탈리아어</item>
-    <item>de</item>
-    <item>일본어</item>
-    <item>러시아어</item>
-    <item>포르투갈어</item>
-    <item>스웨덴어</item>
-    <item>말레이시아</item>
-    <item>kk</item>
-    <item>hy</item>
-    <item>el</item>
-    <item>he</item>
-    <item>gl</item>
-    <item>ca</item>
-    <item>cs</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-BR</item>
-    <item>ro</item>
-    <item>스웨덴어</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-CN</item>
-    <item>fa</item>
-    <item>rs</item>
-    <item>af</item>
-    <item>ak</item>
-    <item>am</item>
-    <item>as</item>
-    <item>zh-TW</item>
-    <item>zh-HK</item>
-    <item>hu</item>
-    <item>tr</item>
-    <item>id</item>
-    <item>tl</item>
-    <item>fil</item>
-    <item>nl-BE</item>
-    <item>bn</item>
-    <item>sl</item>
-    <item>ku</item>
-    <item>eo</item>
-    <item>pl</item>
-    <item>b+sr+Cyrl</item>
-  </string-array>
   <string-array name="images_array">
     <item>Default</item>
     <item>영양</item>
@@ -410,6 +357,7 @@
   <string name="confirm_logout">Confirm Logout</string>
   <string name="logout_dialog_content">Are you sure to log out ?</string>
   <string name="dialog_cancel">Cancel</string>
+  <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="brand_string">Brand</string>
   <string name="country_string">국가</string>
 </resources>
