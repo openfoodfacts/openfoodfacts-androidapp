@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Nav Drawer Main Product List Item Icons -->
-    <array name="nav_drawer_icons_product">
-        <item>@drawable/ic_summary_product</item>
-        <item>@drawable/ic_ingredient</item>
-        <item>@drawable/ic_nutrition</item>
-        <item>@drawable/ic_home</item>
-    </array>
-     <string-array name="headers">
+    <string-array name="headers">
         <item>Barcode</item>
         <item>Name</item>
         <item>Brands</item>
-
     </string-array>
 </resources>
