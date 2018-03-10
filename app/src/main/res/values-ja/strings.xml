@@ -347,11 +347,11 @@
   <string name="preference_header_network">ネットワーク</string>
   <string name="preference_header_contributing">貢献</string>
   <string name="not_support_books">現在、書籍は Open Food Facts でサポートされていません</string>
-  <string name="seconds_ago">秒前</string>
-  <string name="minutes_ago">分前</string>
-  <string name="hours_ago">時間前</string>
-  <string name="days_ago">日前</string>
-  <string name="scan_first_string">表示した製品の履歴がここに一覧表示されます。\nこの履歴はあなたにだけ表示され、ローカルに格納されます。</string>
+  <string name="seconds_ago_placeholder">%d seconds ago</string>
+  <string name="minutes_ago_placeholder">%d minutes ago</string>
+  <string name="hours_ago_placeholder">%d hours ago</string>
+  <string name="days_ago_placeholder">%d days ago</string>
+  <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
   <string name="log_in">ログイン</string>
   <string name="login_true">既にログインしています!</string>
   <string name="confirm_logout">ログアウトの確認</string>

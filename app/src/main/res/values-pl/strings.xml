@@ -347,11 +347,11 @@
   <string name="preference_header_network">Połączenie</string>
   <string name="preference_header_contributing">Współpraca</string>
   <string name="not_support_books">Open Food Facts obecnie nie obsługuje książek</string>
-  <string name="seconds_ago">sekund temu</string>
-  <string name="minutes_ago">minut temu</string>
-  <string name="hours_ago">godzin temu</string>
-  <string name="days_ago">dni temu</string>
-  <string name="scan_first_string">Historia produktów, które przeglądałeś zostanie podana tutaj.\n Jest przechowywana lokalnie, tylko dla ciebie.</string>
+  <string name="seconds_ago_placeholder">%d seconds ago</string>
+  <string name="minutes_ago_placeholder">%d minutes ago</string>
+  <string name="hours_ago_placeholder">%d hours ago</string>
+  <string name="days_ago_placeholder">%d days ago</string>
+  <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
   <string name="log_in">Logowanie</string>
   <string name="login_true">Już zalogowany!</string>
   <string name="confirm_logout">Potwierdź wylogowanie się</string>
