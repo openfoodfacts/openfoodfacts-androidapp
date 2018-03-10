@@ -223,7 +223,7 @@
   <string name="txtSeeMore">Se mer</string>
   <string name="action_search">Søk</string>
   <string name="search_hint">Søk etter produkt</string>
-  <string name="number_of_results">Antall resultater :</string>
+  <string name="number_of_results">Number of results: </string>
   <string name="brand">Brand :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">Ingen resultater ble funnet</string>
