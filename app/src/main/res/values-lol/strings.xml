@@ -28,59 +28,6 @@
     <item>crwdns34980:0crwdne34980:0</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>crwdns34981:0crwdne34981:0</item>
-    <item>crwdns34982:0crwdne34982:0</item>
-    <item>crwdns34983:0crwdne34983:0</item>
-    <item>crwdns34984:0crwdne34984:0</item>
-    <item>crwdns34985:0crwdne34985:0</item>
-    <item>crwdns34986:0crwdne34986:0</item>
-    <item>crwdns34987:0crwdne34987:0</item>
-    <item>crwdns34988:0crwdne34988:0</item>
-    <item>crwdns34989:0crwdne34989:0</item>
-    <item>crwdns34990:0crwdne34990:0</item>
-    <item>crwdns34991:0crwdne34991:0</item>
-    <item>crwdns34992:0crwdne34992:0</item>
-    <item>crwdns34993:0crwdne34993:0</item>
-    <item>crwdns34994:0crwdne34994:0</item>
-    <item>crwdns34995:0crwdne34995:0</item>
-    <item>crwdns34996:0crwdne34996:0</item>
-    <item>crwdns34997:0crwdne34997:0</item>
-    <item>crwdns34998:0crwdne34998:0</item>
-    <item>crwdns34999:0crwdne34999:0</item>
-    <item>crwdns35000:0crwdne35000:0</item>
-    <item>crwdns35001:0crwdne35001:0</item>
-    <item>crwdns35002:0crwdne35002:0</item>
-    <item>crwdns35003:0crwdne35003:0</item>
-    <item>crwdns35004:0crwdne35004:0</item>
-    <item>crwdns37099:0crwdne37099:0</item>
-    <item>crwdns35006:0crwdne35006:0</item>
-    <item>crwdns35007:0crwdne35007:0</item>
-    <item>crwdns35008:0crwdne35008:0</item>
-    <item>crwdns35009:0crwdne35009:0</item>
-    <item>crwdns35010:0crwdne35010:0</item>
-    <item>crwdns37100:0crwdne37100:0</item>
-    <item>crwdns35939:0crwdne35939:0</item>
-    <item>crwdns37135:0crwdne37135:0</item>
-    <item>crwdns37101:0crwdne37101:0</item>
-    <item>crwdns37102:0crwdne37102:0</item>
-    <item>crwdns37103:0crwdne37103:0</item>
-    <item>crwdns37104:0crwdne37104:0</item>
-    <item>crwdns37105:0crwdne37105:0</item>
-    <item>crwdns37106:0crwdne37106:0</item>
-    <item>crwdns37107:0crwdne37107:0</item>
-    <item>crwdns37108:0crwdne37108:0</item>
-    <item>crwdns37109:0crwdne37109:0</item>
-    <item>crwdns37110:0crwdne37110:0</item>
-    <item>crwdns37111:0crwdne37111:0</item>
-    <item>crwdns37112:0crwdne37112:0</item>
-    <item>crwdns37113:0crwdne37113:0</item>
-    <item>crwdns37114:0crwdne37114:0</item>
-    <item>crwdns37115:0crwdne37115:0</item>
-    <item>crwdns37116:0crwdne37116:0</item>
-    <item>crwdns37117:0crwdne37117:0</item>
-    <item>crwdns37136:0crwdne37136:0</item>
-  </string-array>
   <string-array name="images_array">
     <item>crwdns35043:0crwdne35043:0</item>
     <item>crwdns35044:0crwdne35044:0</item>
@@ -410,6 +357,7 @@
   <string name="confirm_logout">crwdns37238:0crwdne37238:0</string>
   <string name="logout_dialog_content">crwdns37221:0crwdne37221:0</string>
   <string name="dialog_cancel">crwdns37222:0crwdne37222:0</string>
+  <string name="can_add_barcode">crwdns37291:0crwdne37291:0</string>
   <string name="brand_string">crwdns37229:0crwdne37229:0</string>
-  <string name="country_string">crwdns37239:0crwdne37239:0</string>
+  <string name="country_string">crwdns37292:0crwdne37292:0</string>
 </resources>
