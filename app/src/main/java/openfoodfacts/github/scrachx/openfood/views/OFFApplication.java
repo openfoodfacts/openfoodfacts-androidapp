@@ -13,35 +13,39 @@ import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class OFFApplication extends MultiDexApplication {
 
-    private DaoSession daoSession;
+    public static DaoSession daoSession;
     private boolean DEBUG = false;
 
+    private static OFFApplication application;
     private static AppComponent appComponent;
 
     public static AppComponent getAppComponent() {
         return appComponent;
     }
 
+    public static OFFApplication getInstance() {
+        return application;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+        application = this;
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
         // Use only during production: DatabaseHelper (see on Upgrade!)
         String nameDB = "";
-        if((BuildConfig.FLAVOR.equals("off"))) {
+        if ((BuildConfig.FLAVOR.equals("off"))) {
             nameDB = "open_food_facts";
-        } else
-        if((BuildConfig.FLAVOR.equals("opff"))) {
+        } else if ((BuildConfig.FLAVOR.equals("opff"))) {
             nameDB = "open_pet_food_facts";
         } else
 
-            {
+        {
             nameDB = "open_beauty_facts";
         }
         DatabaseHelper helper = new DatabaseHelper(this, nameDB);
