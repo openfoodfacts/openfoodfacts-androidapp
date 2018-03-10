@@ -223,7 +223,7 @@
   <string name="txtSeeMore">مشاهدة المزيد</string>
   <string name="action_search">بحث</string>
   <string name="search_hint">ابحث عن منتج</string>
-  <string name="number_of_results">عدد النتائج:</string>
+  <string name="number_of_results">Number of results: </string>
   <string name="brand">Brand :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">لم يتم العثور على أي نتائج</string>
