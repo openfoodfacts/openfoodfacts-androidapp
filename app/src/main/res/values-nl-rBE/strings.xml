@@ -223,7 +223,7 @@
   <string name="txtSeeMore">Meer</string>
   <string name="action_search">Zoek</string>
   <string name="search_hint">Zoek een product</string>
-  <string name="number_of_results">Aantal resultaten</string>
+  <string name="number_of_results">Number of results: </string>
   <string name="brand">Brand :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">Geen resultaten gevonden</string>
