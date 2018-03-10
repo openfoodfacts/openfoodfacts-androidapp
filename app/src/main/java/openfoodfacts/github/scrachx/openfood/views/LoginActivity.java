@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.design.widget.Snackbar;
+import android.widget.LinearLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -56,6 +58,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     Button save;
     @BindView(R.id.buttonCreateAccount)
     Button signup;
+    @BindView(R.id.login_linearlayout)  
+    LinearLayout linearLayout;
 
     private OpenFoodAPIService apiClient;
     private CustomTabActivityHelper customTabActivityHelper;
