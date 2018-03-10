@@ -21,6 +21,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -30,12 +32,19 @@ import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 
-public class AlertUserFragment extends BaseFragment {
+import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_ALERT;
+
+public class AlertUserFragment extends NavigationBaseFragment {
 
     private List<AllergenName> mAllergensEnabled;
     private List<AllergenName> mAllergensNotEnabled;
@@ -88,13 +97,18 @@ public class AlertUserFragment extends BaseFragment {
     @OnClick(R.id.fab)
     protected void onAddAllergens() {
         if (mAllergensFromDao != null && mAllergensFromDao.size() > 0) {
-            mAllergensNotEnabled = productRepository.getAllergensByEnabledAndLanguageCode(false, Locale.getDefault().getLanguage());
 
+            mAllergensNotEnabled = productRepository.getAllergensByEnabledAndLanguageCode(false, Locale.getDefault().getLanguage());
+            Collections.sort(mAllergensNotEnabled, new Comparator<AllergenName>() {
+                @Override
+                public int compare(AllergenName a1, AllergenName a2) {
+                    return a1.getName().compareToIgnoreCase(a2.getName());
+                }
+            });
             List<String> allergensNames = new ArrayList<String>();
             for (AllergenName allergenName : mAllergensNotEnabled) {
                 allergensNames.add(allergenName.getName());
             }
-
             new MaterialDialog.Builder(mView.getContext())
                     .title(R.string.title_dialog_alert)
                     .items(allergensNames)
@@ -146,6 +160,12 @@ public class AlertUserFragment extends BaseFragment {
             }
         }
 
+    }
+
+    @Override
+    @NavigationDrawerType
+    public int getNavigationDrawerType() {
+        return ITEM_ALERT;
     }
 
 

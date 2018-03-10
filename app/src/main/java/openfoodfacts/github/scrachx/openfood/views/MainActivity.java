@@ -57,6 +57,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsResultsFragment;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -65,18 +66,10 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
-public class MainActivity extends BaseActivity implements CustomTabActivityHelper
-        .ConnectionCallback {
+public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener {
 
-    public static final int USER_PROFILE = 100;
-    public static final int LOGIN_ID = 6;
     private static final int LOGIN_REQUEST = 1;
-    private static final long PROFILE_SETTING = 200;
-    private static final int CONTRIBUTOR = 300;
-    private static final int LOGOUT = 400;
     private static final long USER_ID = 500;
-    private static final int ABOUT = 600;
-    private static final int CONTRIBUTE = 700;
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
@@ -99,7 +92,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getResources().getBoolean(R.bool.portrait_only)){
+        if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_main);
@@ -117,6 +110,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         mSendProductDao = Utils.getAppDaoSession(MainActivity.this).getSendProductDao();
         numberOFSavedProducts = mSendProductDao.loadAll().size();
 
+        fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+
+            }
+        });
 
         boolean isOpenOfflineEdit = extras != null && extras.getBoolean("openOfflineEdit");
         if (isOpenOfflineEdit) {
@@ -144,7 +143,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .addProfiles(profile)
                 .withOnAccountHeaderListener((view, profile1, current) -> {
                     if (profile1 instanceof IDrawerItem) {
-                        if (profile1.getIdentifier() == PROFILE_SETTING) {
+                        if (profile1.getIdentifier() == ITEM_MANAGE_ACCOUNT) {
                             CustomTabActivityHelper.openCustomTab(MainActivity.this,
                                     customTabsIntent, userAccountUri, new WebViewFallback());
                         }
@@ -191,23 +190,23 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     }
                 })
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(1),
+                        new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(ITEM_HOME),
                         new SectionDrawerItem().withName(R.string.search_drawer),
-                        new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(2),
-                        new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(3).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(4).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.advanced_search_title).withIcon(GoogleMaterial.Icon.gmd_insert_chart).withIdentifier(12).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(5).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(ITEM_SEARCH_BY_CODE),
+                        new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(ITEM_CATEGORIES).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(ITEM_SCAN).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.advanced_search_title).withIcon(GoogleMaterial.Icon.gmd_insert_chart).withIdentifier(ITEM_ADVANCED_SEARCH).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(ITEM_HISTORY).withSelectable(false),
                         new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
-                        new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(CONTRIBUTOR),
-                        new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(7),
-                        new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(8),
+                        new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(ITEM_MY_CONTRIBUTIONS).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
+                        new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
                         new DividerDrawerItem(),
                         createOfflineEditDrawerItem(),
                         new DividerDrawerItem(),
-                        new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ABOUT).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(CONTRIBUTE).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(11).withSelectable(false)
+                        new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF).withSelectable(false)
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
 
@@ -217,44 +216,43 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
                     Fragment fragment = null;
                     switch ((int) drawerItem.getIdentifier()) {
-                        case 1:
+                        case ITEM_HOME:
                             fragment = new HomeFragment();
                             break;
-                        case 2:
+                        case ITEM_SEARCH_BY_CODE:
                             fragment = new FindProductFragment();
                             break;
-                        case 3:
+                        case ITEM_CATEGORIES:
                             startActivity(CategoryActivity.getIntent(this));
                             break;
-                        case 4:
+                        case ITEM_SCAN:
                             scan();
                             break;
-                        case 5:
+                        case ITEM_HISTORY:
                             startActivity(new Intent(MainActivity.this, HistoryScanActivity.class));
                             break;
-                        case LOGIN_ID:
+                        case ITEM_LOGIN:
                             startActivityForResult(new Intent(MainActivity.this, LoginActivity
                                     .class), LOGIN_REQUEST);
                             break;
-                        case 7:
+                        case ITEM_ALERT:
                             fragment = new AlertUserFragment();
                             break;
-                        case 8:
+                        case ITEM_PREFERENCES:
                             fragment = new PreferencesFragment();
                             break;
-                        case 9:
+                        case ITEM_OFFLINE:
                             fragment = new OfflineEditFragment();
-
                             break;
-                        case ABOUT:
+                        case ITEM_ABOUT:
                             CustomTabActivityHelper.openCustomTab(MainActivity.this,
                                     customTabsIntent, discoverUri, new WebViewFallback());
                             break;
-                        case CONTRIBUTE:
+                        case ITEM_CONTRIBUTE:
                             CustomTabActivityHelper.openCustomTab(MainActivity.this,
                                     customTabsIntent, contributeUri, new WebViewFallback());
                             break;
-                        case 11:
+                        case ITEM_OBF:
                             boolean otherOFAppInstalled = Utils.isApplicationInstalled
                                     (MainActivity.this, BuildConfig.OFOTHERLINKAPP);
                             if (otherOFAppInstalled) {
@@ -272,17 +270,16 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             }
                             break;
 
-                        case 12:
-
+                        case ITEM_ADVANCED_SEARCH:
                             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
                             CustomTabsIntent customTabsIntent = builder.build();
-                            CustomTabActivityHelper.openCustomTab(this,customTabsIntent,Uri.parse(getString(R.string.advanced_search_url)),new WebViewFallback());
+                            CustomTabActivityHelper.openCustomTab(this, customTabsIntent, Uri.parse(getString(R.string.advanced_search_url)), new WebViewFallback());
                             break;
 
-                        case CONTRIBUTOR:
+                        case ITEM_MY_CONTRIBUTIONS:
                             myContributions();
                             break;
-                        case LOGOUT:
+                        case ITEM_LOGOUT:
                             new MaterialDialog.Builder(MainActivity.this)
                                     .title(R.string.confirm_logout)
                                     .content(R.string.logout_dialog_content)
@@ -323,22 +320,22 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
 
         // Add Drawer items for the connected user
-        result.addItemsAtPosition(result.getPosition(CONTRIBUTOR), isUserConnected ?
+        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isUserConnected ?
                 getLogoutDrawerItem() : getLoginDrawerItem());
         if (BuildConfig.FLAVOR.equals("obf")) {
-            result.removeItem(7);
-            result.updateName(11, new StringHolder(getString(R.string.open_food_drawer)));
+            result.removeItem(ITEM_ALERT);
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
         }
 
         if (BuildConfig.FLAVOR.equals("opff")) {
-            result.removeItem(7);
-            result.updateName(11, new StringHolder(getString(R.string.open_food_drawer)));
+            result.removeItem(ITEM_ALERT);
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
         }
 
         // Remove scan item if the device does not have a camera, for example, Chromebooks or
         // Fire devices
         if (!Utils.isHardwareCameraInstalled(this)) {
-            result.removeItem(4);
+            result.removeItem(ITEM_SCAN);
         }
 
 
@@ -353,7 +350,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         //only set the active selection or active profile if we do not recreate the activity
         if (savedInstanceState == null) {
             // set the selection to the item with the identifier 1
-            result.setSelection(1, false);
+            result.setSelection(ITEM_HOME, false);
 
             //set the active profile
             headerResult.setActiveProfile(profile);
@@ -442,7 +439,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         return new ProfileSettingDrawerItem()
                 .withName(getString(R.string.action_manage_account))
                 .withIcon(GoogleMaterial.Icon.gmd_settings)
-                .withIdentifier(PROFILE_SETTING);
+                .withIdentifier(ITEM_MANAGE_ACCOUNT)
+                .withSelectable(false);
     }
 
     /**
@@ -453,10 +451,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      */
     private void logout() {
         getSharedPreferences("login", MODE_PRIVATE).edit().clear().commit();
-        headerResult.removeProfileByIdentifier(PROFILE_SETTING);
+        headerResult.removeProfileByIdentifier(ITEM_MANAGE_ACCOUNT);
         headerResult.updateProfile(getUserProfile());
-        result.addItemAtPosition(getLoginDrawerItem(), result.getPosition(CONTRIBUTOR));
-        result.removeItem(LOGOUT);
+        result.addItemAtPosition(getLoginDrawerItem(), result.getPosition(ITEM_MY_CONTRIBUTIONS));
+        result.removeItem(ITEM_LOGOUT);
     }
 
     @Override
@@ -464,8 +462,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         switch (requestCode) {
             case LOGIN_REQUEST:
                 if (resultCode == RESULT_OK) {
-                    result.removeItem(LOGIN_ID);
-                    result.addItemsAtPosition(result.getPosition(CONTRIBUTOR),
+                    result.removeItem(ITEM_LOGIN);
+                    result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS),
                             getLogoutDrawerItem());
                     headerResult.updateProfile(getUserProfile());
                     headerResult.addProfiles(getProfileSettingDrawerItem());
@@ -553,13 +551,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
     }
 
-
     private IDrawerItem<PrimaryDrawerItem, com.mikepenz.materialdrawer.model
             .AbstractBadgeableDrawerItem.ViewHolder> getLogoutDrawerItem() {
         return new PrimaryDrawerItem()
                 .withName(getString(R.string.logout_drawer))
                 .withIcon(GoogleMaterial.Icon.gmd_settings_power)
-                .withIdentifier(LOGOUT)
+                .withIdentifier(ITEM_LOGOUT)
                 .withSelectable(false);
     }
 
@@ -568,7 +565,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         return new PrimaryDrawerItem()
                 .withName(R.string.sign_in_drawer)
                 .withIcon(GoogleMaterial.Icon.gmd_account_circle)
-                .withIdentifier(LOGIN_ID)
+                .withIdentifier(ITEM_LOGIN)
                 .withSelectable(false);
     }
 
@@ -579,7 +576,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         return new ProfileDrawerItem()
                 .withName(userLogin)
                 .withIcon(R.drawable.img_home)
-                .withIdentifier(USER_PROFILE);
+                .withIdentifier(ITEM_USER);
     }
 
     @Override
@@ -632,7 +629,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * This moves the main activity to the barcode entry fragment.
      */
     public void moveToBarcodeEntry() {
-        result.setSelection(2);
+        result.setSelection(ITEM_SEARCH_BY_CODE);
         Fragment fragment = new FindProductFragment();
         getSupportActionBar().setTitle(getResources().getString(R.string.search_by_barcode_drawer));
 
@@ -649,7 +646,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * This moves the main activity to the preferences fragment.
      */
     public void moveToPreferences() {
-        result.setSelection(8);
+        result.setSelection(ITEM_PREFERENCES);
         Fragment fragment = new PreferencesFragment();
         getSupportActionBar().setTitle(R.string.action_preferences);
 
@@ -663,13 +660,19 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     /**
      * Create the drawer item. This adds a badge if there are items in the offline edit, otherwise
      * there is no badge present.
+     *
      * @return drawer item.
      */
-    private PrimaryDrawerItem createOfflineEditDrawerItem(){
+    private PrimaryDrawerItem createOfflineEditDrawerItem() {
         if (numberOFSavedProducts > 0) {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9).withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE).withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
         } else {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9);
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
         }
+    }
+
+    @Override
+    public void setItemSelected(@NavigationDrawerType Integer type) {
+        result.setSelection(type, false);
     }
 }
