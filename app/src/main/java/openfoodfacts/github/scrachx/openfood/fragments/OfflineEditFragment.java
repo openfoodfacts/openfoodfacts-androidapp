@@ -22,6 +22,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Gravity;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -253,10 +254,14 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             saveItems.clear();
             List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
             if (listSaveProduct.size() == 0) {
-                Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
+                Toast toast = Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER,0,0);
+                toast.show();
             } else {
                 mCardView.setVisibility(View.GONE);
-                Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG).show();
+                Toast toast = Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER,0,0);
+                toast.show();
             }
         }
 
