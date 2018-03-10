@@ -357,7 +357,7 @@
   <string name="confirm_logout">Abmeldung bestätigen</string>
   <string name="logout_dialog_content">Möchten Sie sich wirklich abmelden?</string>
   <string name="dialog_cancel">Abbrechen</string>
-  <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+  <string name="can_add_barcode">Probleme beim Einlesen?\nNach oben wischen, um den Strichcode einzugeben</string>
   <string name="brand_string">Marke</string>
-  <string name="country_string">Land</string>
+  <string name="country_string">Vertriebsländer</string>
 </resources>
