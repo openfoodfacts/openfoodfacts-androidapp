@@ -21,6 +21,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -95,13 +97,18 @@ public class AlertUserFragment extends NavigationBaseFragment {
     @OnClick(R.id.fab)
     protected void onAddAllergens() {
         if (mAllergensFromDao != null && mAllergensFromDao.size() > 0) {
-            mAllergensNotEnabled = productRepository.getAllergensByEnabledAndLanguageCode(false, Locale.getDefault().getLanguage());
 
+            mAllergensNotEnabled = productRepository.getAllergensByEnabledAndLanguageCode(false, Locale.getDefault().getLanguage());
+            Collections.sort(mAllergensNotEnabled, new Comparator<AllergenName>() {
+                @Override
+                public int compare(AllergenName a1, AllergenName a2) {
+                    return a1.getName().compareToIgnoreCase(a2.getName());
+                }
+            });
             List<String> allergensNames = new ArrayList<String>();
             for (AllergenName allergenName : mAllergensNotEnabled) {
                 allergensNames.add(allergenName.getName());
             }
-
             new MaterialDialog.Builder(mView.getContext())
                     .title(R.string.title_dialog_alert)
                     .items(allergensNames)
