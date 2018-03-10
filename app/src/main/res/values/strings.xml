@@ -444,10 +444,7 @@
     <string name="dialog_cancel">Cancel</string>
 
     <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
-
-
     <string name="brand_string">Brand</string>
-
     <string name="additive_string">Additive</string>
     <string name="search_string">Search</string>
     <string name="country_string">Countries where sold</string>
