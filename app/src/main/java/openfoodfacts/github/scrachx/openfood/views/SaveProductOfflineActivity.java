@@ -18,6 +18,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Gravity;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -253,7 +254,9 @@ public class SaveProductOfflineActivity extends BaseActivity {
         save.setText(getString(R.string.saving));
 
         if (isBlank(mProduct.getImgupload_front())) {
-            Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
+            Toast toast = Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER,0,0);
+            toast.show();
             save.setEnabled(true);
             save.setText(getString(R.string.txtSave));
             return;
@@ -294,19 +297,25 @@ public class SaveProductOfflineActivity extends BaseActivity {
             api.post(this, mProduct, value -> {
                 if (!value) {
                     mSendProductDao.insert(mProduct);
-                    Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER,0,0);
+                    toast.show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra("openOfflineEdit", true);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER,0,0);
+                    toast.show();
                     api.getProduct(mProduct.getBarcode(), activity);
                 }
                 finish();
             });
         } else {
             mSendProductDao.insertOrReplace(mProduct);
-            Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+            Toast toast = Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER,0,0);
+            toast.show();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.putExtra("openOfflineEdit", true);
             startActivity(intent);

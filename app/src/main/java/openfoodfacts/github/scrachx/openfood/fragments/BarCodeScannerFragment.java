@@ -215,7 +215,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
         }
 
 
-        if (Utils.isNetworkConnected(getContext()) && PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true)) {
+        if (Utils.isNetworkConnected(getContext())) {
             if (settings.getBoolean("powerMode", false) && mScannerView != null) {
                 api.getShortProduct(rawResult.getText(), getActivity(), mScannerView, this);
             } else {

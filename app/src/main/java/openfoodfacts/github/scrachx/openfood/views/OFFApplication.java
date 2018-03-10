@@ -16,7 +16,7 @@ import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
 
 public class OFFApplication extends MultiDexApplication {
 
-    private DaoSession daoSession;
+    public static DaoSession daoSession;
     private boolean DEBUG = false;
 
     private static OFFApplication application;

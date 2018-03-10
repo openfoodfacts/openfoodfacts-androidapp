@@ -317,17 +317,7 @@ public class Utils {
 
 
     public static DaoSession getDaoSession(Context context) {
-        String nameDB = "";
-        if ((BuildConfig.FLAVOR.equals("off"))) {
-            nameDB = "open_food_facts";
-        } else if ((BuildConfig.FLAVOR.equals("opff"))) {
-            nameDB = "open_pet_food_facts";
-        } else {
-            nameDB = "open_beauty_facts";
-        }
-        DatabaseHelper helper = new DatabaseHelper(context, nameDB);
-        Database db = helper.getWritableDb();
-        return new DaoMaster(db).newSession();
+        return OFFApplication.daoSession;
     }
 
     /**
