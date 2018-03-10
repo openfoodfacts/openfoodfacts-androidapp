@@ -44,6 +44,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
@@ -79,6 +80,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_history_scan);
+        setTitle(getString(R.string.scan_history_drawer));
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -150,17 +152,32 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     }
 
     public void exportCSV() {
+        String folder_main = " ";
+        String appname = " ";
+        if ((BuildConfig.FLAVOR.equals("off"))) {
+            folder_main = " Open Food Facts ";
+            appname = "OFF";
+        } else if ((BuildConfig.FLAVOR.equals("opff"))) {
+            folder_main = " Open Pet Food Facts ";
+            appname = "OPFF";
+        } else {
+            folder_main = " Open Beauty Facts ";
+            appname = "OBF";
+        }
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show();
-        String baseDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
-        Log.d("dir", baseDir);
-        String fileName = "exportHistoryOFF" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date()) + ".csv";
+        File baseDir = new File(Environment.getExternalStorageDirectory(), folder_main);
+        if (!baseDir.exists()) {
+            baseDir.mkdirs();
+        }
+        Log.d("dir", String.valueOf(baseDir));
+        String fileName = appname +"-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
         String filePath = baseDir + File.separator + fileName;
         File f = new File(filePath);
         CSVWriter writer;
         FileWriter fileWriter;
         try {
             if (f.exists() && !f.isDirectory()) {
-                fileWriter = new FileWriter(filePath, true);
+                fileWriter = new FileWriter(filePath, false);
                 writer = new CSVWriter(fileWriter);
             } else {
                 writer = new CSVWriter(new FileWriter(filePath));
@@ -308,8 +325,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
     public void setInfo(TextView view) {
 
-        String info = "Your viewed product history will be listed here.\n" +
-                "This history is for your eyes only and is stored locally.";
+        String info = getString(R.string.scan_first_string);
 
         view.setText(info);
 

@@ -53,7 +53,8 @@ public class Product implements Serializable {
     @JsonProperty("brands_tags")
     private List<String> brandsTags = new ArrayList<>();
     private String traces;
-    private String categories;
+    @JsonProperty("categories_tags")
+    private List<String> categoriesTags;
     @JsonProperty("ingredients_text")
     @JsonDeserialize(converter = ProductStringConverter.class)
     private String ingredientsText;
@@ -77,9 +78,14 @@ public class Product implements Serializable {
     @JsonProperty("nutrient_levels")
     private NutrientLevels nutrientLevels;
     private String countries;
+    @JsonProperty("countries_tags")
+    private List<String> countriesTags;
     private String brands;
     private String packaging;
-    private String labels;
+    @JsonProperty("labels_hierarchy")
+    private List<String> labelsHierarchy;
+    @JsonProperty("labels_tags")
+    private List<String> labelsTags;
     @JsonProperty("cities_tags")
     private List<Object> citiesTags = new ArrayList<>();
     private String quantity;
@@ -223,12 +229,11 @@ public class Product implements Serializable {
 
 
     /**
-     * @return The categories
+     * @return The categoriesTags
      */
-    public String getCategories() {
-        return categories;
+    public List<String> getCategoriesTags() {
+        return categoriesTags;
     }
-
 
     /**
      * @return The ingredientsText
@@ -344,12 +349,18 @@ public class Product implements Serializable {
 
 
     /**
-     * @return The labels
+     * @return The labels tags
      */
-    public String getLabels() {
-        return labels;
+    public List<String> getLabelsTags() {
+        return labelsTags;
     }
 
+    /**
+     * @return The labels hierarchy
+     */
+    public List<String> getLabelsHierarchy() {
+        return labelsHierarchy;
+    }
 
     /**
      * @return The citiesTags
@@ -390,6 +401,9 @@ public class Product implements Serializable {
         return embTags;
     }
 
+    public List<String> getCountriesTags() {
+        return countriesTags;
+    }
 
     @Override
     public String toString() {

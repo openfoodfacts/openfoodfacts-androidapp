@@ -28,59 +28,6 @@
     <item>אונקיה</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="lang_array">
-    <item>en</item>
-    <item>fr</item>
-    <item>es</item>
-    <item>it</item>
-    <item>de</item>
-    <item>ja</item>
-    <item>ru</item>
-    <item>pt</item>
-    <item>sv</item>
-    <item>my</item>
-    <item>kk</item>
-    <item>hy</item>
-    <item>el</item>
-    <item>he</item>
-    <item>gl</item>
-    <item>ca</item>
-    <item>cs</item>
-    <item>ar</item>
-    <item>fi</item>
-    <item>hi</item>
-    <item>kab</item>
-    <item>ko</item>
-    <item>lv</item>
-    <item>nl</item>
-    <item>pt-BR</item>
-    <item>ro</item>
-    <item>sv</item>
-    <item>zh</item>
-    <item>nb</item>
-    <item>da</item>
-    <item>zh-CN</item>
-    <item>fa</item>
-    <item>rs</item>
-    <item>af</item>
-    <item>ak</item>
-    <item>am</item>
-    <item>as</item>
-    <item>zh-TW</item>
-    <item>zh-HK</item>
-    <item>hu</item>
-    <item>tr</item>
-    <item>id</item>
-    <item>tl</item>
-    <item>fil</item>
-    <item>nl-BE</item>
-    <item>bn</item>
-    <item>sl</item>
-    <item>ku</item>
-    <item>eo</item>
-    <item>pl</item>
-    <item>b+sr+Cyrl</item>
-  </string-array>
   <string-array name="images_array">
     <item>בררת מחדל</item>
     <item>תזונה</item>
@@ -277,11 +224,14 @@
   <string name="action_search">חיפוש</string>
   <string name="search_hint">חיפוש מוצר</string>
   <string name="number_of_results">מספר התוצאות:</string>
+  <string name="brand">מותג :</string>
+  <string name="number_of_products">מספר המוצרים :</string>
   <string name="txt_no_results">לא נמצאו תוצאות</string>
   <string name="txt_extend_search">כדאי להרחיב את החיפוש שלך או להוסיף את המוצר</string>
   <string name="txt_no_matching_products">לא מצאנו מוצרים מתאימים.\nניתן לנסות:</string>
   <string name="txt_broaden_search">- להרחיב את החיפוש שלך \n- לסרוק ולהוסיף ל־Open Food Facts</string>
   <string name="txt_cant_load_search_results">לא ניתן לטעון את תוצאות החיפוש</string>
+  <string name="something_went_wrong">משהו השתבש, עמך הסליחה…</string>
   <string name="txt_try_again">נא לנסות שוב</string>
   <string name="nutrition_lactose">לקטוז</string>
   <string name="nutrition_casein">קזאין</string>
@@ -391,13 +341,23 @@
   <string name="please_check_your_connection">נא לבדוק את החיבור שלך.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">חיפוש ותרשימים ומתקדמים</string>
-  <string name="Terms">Terms</string>
+  <string name="Terms">תנאים</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">כללי</string>
   <string name="preference_header_network">רשת</string>
   <string name="preference_header_contributing">התנדבות</string>
   <string name="not_support_books">אין כרגע תמיכה בספרים ב־Open Food Facts</string>
-  <string name="conform_logout">אישור יציאה</string>
+  <string name="seconds_ago">seconds ago</string>
+  <string name="minutes_ago">minutes ago</string>
+  <string name="hours_ago">hours ago</string>
+  <string name="days_ago">days ago</string>
+  <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
+  <string name="log_in">שם משתמש</string>
+  <string name="login_true">כבר נכנסת!</string>
+  <string name="confirm_logout">אימות יציאה</string>
   <string name="logout_dialog_content">לצאת?</string>
   <string name="dialog_cancel">ביטול</string>
+  <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+  <string name="brand_string">מותג</string>
+  <string name="country_string">מדינה</string>
 </resources>

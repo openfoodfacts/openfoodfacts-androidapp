@@ -15,7 +15,7 @@ import java.util.Map;
 @JsonPropertyOrder({
         "tags"
 })
-public class PackagerCodes {
+public class TagsWrapper {
 
     @JsonProperty("tags")
     private List<Tag> tags = null;

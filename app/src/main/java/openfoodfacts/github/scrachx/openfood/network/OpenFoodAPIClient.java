@@ -30,8 +30,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import okhttp3.MediaType;
@@ -41,18 +39,14 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
-import openfoodfacts.github.scrachx.openfood.models.AllergenRestResponse;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
-import openfoodfacts.github.scrachx.openfood.models.PackagerCodes;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.models.Tag;
-import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -76,7 +70,6 @@ public class OpenFoodAPIClient {
 
     private AllergenDao mAllergenDao;
     private HistoryProductDao mHistoryProductDao;
-    private TagDao mTagDao;
 
     private ToUploadProductDao mToUploadProductDao;
     private OfflineUploadingTask task = new OfflineUploadingTask();
@@ -92,7 +85,6 @@ public class OpenFoodAPIClient {
         this(BuildConfig.HOST);
         mAllergenDao = Utils.getAppDaoSession(activity).getAllergenDao();
         mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
-        mTagDao = Utils.getAppDaoSession(activity).getTagDao();
         mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
     }
 
@@ -103,8 +95,14 @@ public class OpenFoodAPIClient {
         mToUploadProductDao = daoSession.getToUploadProductDao();
     }
 
-    private OpenFoodAPIClient(String apiUrl) {
+    public OpenFoodAPIClient(Activity activity, String url) {
+        this(url);
+        mAllergenDao = Utils.getAppDaoSession(activity).getAllergenDao();
+        mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
+        mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
+    }
 
+    private OpenFoodAPIClient(String apiUrl) {
         apiService = new Retrofit.Builder()
                 .baseUrl(apiUrl)
                 .client(httpClient)
@@ -117,9 +115,6 @@ public class OpenFoodAPIClient {
     /**
      * @return The API service to be able to use directly retrofit API mapping
      */
-    public OpenFoodAPIService getAPIService() {
-        return apiService;
-    }
 
     /**
      * Open the product activity if the barcode exist.
@@ -177,32 +172,6 @@ public class OpenFoodAPIClient {
                 Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    public void getPackagerCodes() {
-        apiService.getPackagerCodes()
-                .flatMapIterable(PackagerCodes::getTags)
-                .subscribe(new Observer<Tag>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Tag tag) {
-                        mTagDao.insertOrReplace(tag);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e(OpenFoodAPIClient.this.getClass().getSimpleName(), e.toString());
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
     }
 
     /**
@@ -331,24 +300,27 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public void getAllergens(final OnAllergensCallback onAllergensCallback) {
-        apiService.getAllergens().enqueue(new Callback<AllergenRestResponse>() {
-            @Override
-            public void onResponse(Call<AllergenRestResponse> call, Response<AllergenRestResponse> response) {
-                if (!response.isSuccessful()) {
-                    onAllergensCallback.onAllergensResponse(false);
-                    return;
-                }
+    /**
+     * @return This api service gets products of provided brand.
+     */
+    public OpenFoodAPIService getAPIService() {
+        return apiService;
+    }
 
-                mAllergenDao.insertOrReplaceInTx(response.body().getAllergens());
-                onAllergensCallback.onAllergensResponse(true);
+    public void getBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
+
+        apiService.getProductByBrands(brand, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+                onBrandCallback.onBrandResponse(true, response.body());
             }
 
             @Override
-            public void onFailure(Call<AllergenRestResponse> call, Throwable t) {
-                onAllergensCallback.onAllergensResponse(false);
+            public void onFailure(Call<Search> call, Throwable t) {
+                onBrandCallback.onBrandResponse(false, null);
             }
         });
+
     }
 
     public void post(final Activity activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
@@ -476,8 +448,17 @@ public class OpenFoodAPIClient {
         void onAllergensResponse(boolean value);
     }
 
+    public interface OnBrandCallback {
+
+        void onBrandResponse(boolean value, Search brand);
+    }
+
     public interface OnProductSentCallback {
         void onProductSentResponse(boolean value);
+    }
+
+    public interface onCountryCallback {
+        void onCountryResponse(boolean value, Search country);
     }
 
     /**
@@ -489,8 +470,7 @@ public class OpenFoodAPIClient {
         protected Void doInBackground(Product... products) {
             Product product = products[0];
 
-            List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode
-                    ())).list();
+            List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode())).list();
             HistoryProduct hp;
             if (historyProducts.size() == 1) {
                 hp = historyProducts.get(0);
@@ -573,5 +553,40 @@ public class OpenFoodAPIClient {
             service.get().jobFinished(job, false);
 
         }
+    }
+
+
+    public void getCountryProducts(String country, final int page, final onCountryCallback onCountryCallback) {
+        apiService.byCountry(country).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onCountryCallback.onCountryResponse(false, null);
+                    return;
+                }
+
+                Search search = response.body();
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(search.getCount()) == 0) {
+                        onCountryCallback.onCountryResponse(false, null);
+                        return;
+                    } else {
+                        onCountryCallback.onCountryResponse(true, response.body());
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+
+                onCountryCallback.onCountryResponse(false, null);
+
+            }
+        });
     }
 }

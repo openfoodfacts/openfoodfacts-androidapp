@@ -200,7 +200,7 @@
   <string name="txtSeeMore">See more</string>
   <string name="action_search">Search</string>
   <string name="search_hint">Search a product</string>
-  <string name="number_of_results">Number of results :</string>
+  <string name="number_of_results">Number of results: </string>
   <string name="txt_no_results">No results found</string>
   <string name="nutrition_lactose">Lactose</string>
   <string name="nutrition_casein">Casein</string>
