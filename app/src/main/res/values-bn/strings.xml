@@ -223,7 +223,7 @@
   <string name="txtSeeMore">আরও দেখুন</string>
   <string name="action_search">অনুসন্ধান</string>
   <string name="search_hint">পণ্য অনুসন্ধান করুন</string>
-  <string name="number_of_results">ফলাফলের সংখ্যা:</string>
+  <string name="number_of_results">Number of results: </string>
   <string name="brand">Brand :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">কোন ফলাফল খুঁজে পাওয়া যায়নি</string>

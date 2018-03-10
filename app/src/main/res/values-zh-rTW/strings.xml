@@ -223,7 +223,7 @@
   <string name="txtSeeMore">查看更多</string>
   <string name="action_search">搜尋</string>
   <string name="search_hint">搜尋產品</string>
-  <string name="number_of_results">結果數：</string>
+  <string name="number_of_results">Number of results: </string>
   <string name="brand">Brand :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">找不到相符的結果</string>
