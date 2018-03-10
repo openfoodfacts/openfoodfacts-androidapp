@@ -73,7 +73,7 @@ public class BrandActivity extends BaseActivity {
         Bundle extras = getIntent().getExtras();
 
         typeStrings = new String[]{
-                "Brand", "Country"
+                "Brand", "Country","Packaging"
         };
 
         if (extras.getString("brand") != null) {
@@ -82,6 +82,9 @@ public class BrandActivity extends BaseActivity {
         } else if (extras.getString("country") != null) {
             searchType = extras.getString("country");
             type = typeStrings[1];
+        } else if(extras.getString("packaging")!=null){
+            searchType = extras.getString("packaging");
+            type = typeStrings[2];
         }
 
         getSupportActionBar().setTitle(searchType);
@@ -89,7 +92,10 @@ public class BrandActivity extends BaseActivity {
             getSupportActionBar().setSubtitle(R.string.brand_string);
         } else if (type.equals(typeStrings[1])) {
             getSupportActionBar().setSubtitle(R.string.country_string);
+        } else  if(type.equals(typeStrings[2])) {
+            getSupportActionBar().setSubtitle(R.string.packaging_string);
         }
+
         apiClient = new OpenFoodAPIClient(BrandActivity.this, BuildConfig.OFWEBSITE);
         api = new OpenFoodAPIClient(BrandActivity.this);
         productsRecyclerView = (RecyclerView) findViewById(R.id.products_recycler_view);
@@ -121,7 +127,13 @@ public class BrandActivity extends BaseActivity {
                     loadData(value, country);
                 }
             });
-
+        } else if(type.equals(typeStrings[2])){
+            apiClient.getPackagingProducts(searchType, pageAddress, new OpenFoodAPIClient.onPackageCallback() {
+                @Override
+                public void onPackageResponse(boolean value, Search packaging) {
+                    loadData(value, packaging);
+                }
+            });
         }
     }
 

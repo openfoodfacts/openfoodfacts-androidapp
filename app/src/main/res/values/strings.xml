@@ -451,5 +451,7 @@
 
     <string name="country_string">Countries where sold</string>
 
+    <string name="packaging_string">Packaging</string>
+
 
 </resources>
