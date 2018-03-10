@@ -223,7 +223,7 @@
   <string name="txtSeeMore">Daha çoxuna bax</string>
   <string name="action_search">Axtar</string>
   <string name="search_hint">Məhsul axtar</string>
-  <string name="number_of_results">Nəticə sayı:</string>
+  <string name="number_of_results">Number of results: </string>
   <string name="brand">Brand :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">Nəticə tapılmadı</string>
