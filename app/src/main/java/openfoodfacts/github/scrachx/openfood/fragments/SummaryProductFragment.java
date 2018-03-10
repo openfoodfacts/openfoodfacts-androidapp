@@ -365,8 +365,20 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
 
         if (isNotBlank(product.getStores())) {
+            storeProduct.setMovementMethod(LinkMovementMethod.getInstance());
             storeProduct.setText(bold(getString(R.string.txtStores)));
-            storeProduct.append(' ' + product.getStores());
+            storeProduct.append(" ");
+
+            String store;
+            String stores[] = product.getStores().split(",");
+            for (int i = 0; i < stores.length - 1; i++) {
+                store = stores[i];
+                storeProduct.append(Utils.getClickableText(store, store, ClickableType.STORE, getActivity(), customTabsIntent));
+                storeProduct.append(", ");
+            }
+
+            store = stores[stores.length - 1];
+            storeProduct.append(Utils.getClickableText(store, store, ClickableType.STORE, getActivity(), customTabsIntent));
         } else {
             storeProduct.setVisibility(View.GONE);
         }

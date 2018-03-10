@@ -10,6 +10,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.ClickableType.ALLERGEN
 import static openfoodfacts.github.scrachx.openfood.utils.ClickableType.CATEGORY;
 import static openfoodfacts.github.scrachx.openfood.utils.ClickableType.EMB;
 import static openfoodfacts.github.scrachx.openfood.utils.ClickableType.LABEL;
+import static openfoodfacts.github.scrachx.openfood.utils.ClickableType.STORE;
 import static openfoodfacts.github.scrachx.openfood.utils.ClickableType.TRACE;
 
 /**
@@ -23,6 +24,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.ClickableType.TRACE;
         LABEL,
         ALLERGEN,
         TRACE,
+        STORE
 })
 public @interface ClickableType {
 
@@ -31,6 +33,7 @@ public @interface ClickableType {
     int LABEL = 3;
     int ALLERGEN = 4;
     int TRACE = 5;
+    int STORE = 6;
 
     HashMap<Integer, String> URLS = new HashMap<Integer, String>() {{
         put(CATEGORY, "https://world.openfoodfacts.org/category/");
@@ -38,6 +41,7 @@ public @interface ClickableType {
         put(EMB, "https://world.openfoodfacts.org/packager-code/");
         put(ALLERGEN, "https://world.openfoodfacts.org/allergen/");
         put(TRACE, "https://world.openfoodfacts.org/trace/");
+        put(STORE, "https://world.openfoodfacts.org/store/");
     }};
 
 }
