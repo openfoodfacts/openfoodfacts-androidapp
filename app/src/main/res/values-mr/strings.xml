@@ -20,20 +20,20 @@
   <string name="action_find">शोधणे</string>
   <string name="text_barcode">बारकोड टाईप करा:</string>
   <string name="message_in_activity_save_product_offline">नवीन उत्पादन पाठविण्यासाठी केवळ एक छायाचित्र अनिवार्य आहे.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+  <string name="product_incomplete_message">हे उत्पादन पूर्ण नाही. त्यामुळे, आम्ही एलर्जीचे निरीक्षण करू शकलो नाही.</string>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
-    <item>Summary</item>
-    <item>Ingredients</item>
-    <item>Nutrition</item>
-    <item>Nutrition Table</item>
+    <item>सारांश</item>
+    <item>साहित्य</item>
+    <item>पोषण</item>
+    <item>पोषण तक्ता</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
+    <item>ग्रॅ.</item>
+    <item>मिग्रॅ</item>
+    <item>कि.ग्रॅ</item>
     <item>l</item>
     <item>ml</item>
     <item>cl</item>
@@ -41,13 +41,13 @@
   </string-array>
   <!-- Text units -->
   <string-array name="images_array">
-    <item>Default</item>
-    <item>Nutrition</item>
-    <item>Ingredients</item>
+    <item>मूलभूत</item>
+    <item>पोषण</item>
+    <item>साहित्य</item>
   </string-array>
   <!-- Content Description -->
-  <string name="search_button">Search</string>
-  <string name="no_products">Products not found</string>
+  <string name="search_button">शोध</string>
+  <string name="no_products">उत्पादन सापडले नाही</string>
   <string name="desc_list_item_icon">Item Icon</string>
   <string name="alert_dialog_warning_title">Warning</string>
   <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
@@ -67,7 +67,7 @@
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
   <string name="txtCountries">Countries where sold :</string>
-  <string name="txtIngredients">Ingredients list :</string>
+  <string name="txtIngredients">साहित्य सूची:</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
   <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
@@ -135,7 +135,7 @@
   <string name="home_drawer">Home</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
-  <string name="search_drawer">Search</string>
+  <string name="search_drawer">शोध</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="category_drawer">Categories</string>
   <string name="search_by_category">Category</string>
@@ -144,7 +144,7 @@
   <string name="user_drawer">User</string>
   <string name="offline_edit_drawer">Offline edit</string>
   <string name="txt_anonymous">Anonymous</string>
-  <string name="txt_product_not_found">Products not found</string>
+  <string name="txt_product_not_found">उत्पादन सापडले नाही</string>
   <string name="delete_txt">Delete</string>
   <string name="sign_in_drawer">Sign-in</string>
   <string name="alert_drawer">Allergen alert</string>
@@ -233,7 +233,7 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">Search</string>
+  <string name="action_search">शोध</string>
   <string name="search_hint">Search a product</string>
   <string name="number_of_results">Number of results: </string>
   <string name="brand">Brand :</string>
@@ -315,7 +315,7 @@
   <string name="disabled_message">Shortcut Not Available</string>
   <string name="scan_shortcut_short_label">Scan</string>
   <string name="scan_shortcut_long_label">Scan Product</string>
-  <string name="barcode_shortcut_short_label">Search</string>
+  <string name="barcode_shortcut_short_label">शोध</string>
   <string name="barcode_shortcut_long_label">Search By Barcode</string>
   <string name="history_shortcut_short_label">History</string>
   <string name="history_shortcut_long_label">History</string>
