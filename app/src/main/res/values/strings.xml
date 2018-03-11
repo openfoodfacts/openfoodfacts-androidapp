@@ -1,7 +1,7 @@
 <resources>
 
     <plurals name="minutes">
-        <item quantity="one"> minute </item>
+        <item quantity="one"> minute</item>
         <item quantity="other"> minutes</item>
     </plurals>
     <plurals name="hours">
