@@ -21,6 +21,13 @@
   <string name="text_barcode">crwdns34968:0crwdne34968:0</string>
   <string name="message_in_activity_save_product_offline">crwdns37134:0crwdne37134:0</string>
   <string name="product_incomplete_message">crwdns37206:0crwdne37206:0</string>
+  <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>crwdns37301:0crwdne37301:0</item>
+    <item>crwdns37302:0crwdne37302:0</item>
+    <item>crwdns37303:0crwdne37303:0</item>
+    <item>crwdns37304:0crwdne37304:0</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>crwdns34969:0crwdne34969:0</item>
@@ -369,6 +376,9 @@
   <string name="confirm_logout">crwdns37238:0crwdne37238:0</string>
   <string name="logout_dialog_content">crwdns37221:0crwdne37221:0</string>
   <string name="dialog_cancel">crwdns37222:0crwdne37222:0</string>
+  <string name="choose_resolution">crwdns37305:0crwdne37305:0</string>
+  <string name="pref_resolution_summary">crwdns37306:0crwdne37306:0</string>
+  <string name="image_upload_resolution">crwdns37307:0crwdne37307:0</string>
   <string name="can_add_barcode">crwdns37291:0crwdne37291:0</string>
   <string name="brand_string">crwdns37229:0crwdne37229:0</string>
   <string name="country_string">crwdns37292:0crwdne37292:0</string>
