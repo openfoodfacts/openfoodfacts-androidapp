@@ -21,6 +21,13 @@
   <string name="text_barcode">बारकोड</string>
   <string name="message_in_activity_save_product_offline">एक नया उत्पाद भेजने के लिए केवल एक फोटो अनिवार्य है</string>
   <string name="product_incomplete_message">यह उत्पाद पूर्ण नहीं है। नतीजतन, हम एलर्जी की जांच नहीं कर सके</string>
+  <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>संग्रह</item>
@@ -369,6 +376,9 @@
   <string name="confirm_logout">लॉगआउट करें?</string>
   <string name="logout_dialog_content">लॉग आउट करने के लिए निश्चित हैं?</string>
   <string name="dialog_cancel">रद्द करें</string>
+  <string name="choose_resolution">Choose Resolution</string>
+  <string name="pref_resolution_summary">Pick a resolution for image upload</string>
+  <string name="image_upload_resolution">Image Upload Resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="brand_string">ब्रांड</string>
   <string name="country_string">Country</string>

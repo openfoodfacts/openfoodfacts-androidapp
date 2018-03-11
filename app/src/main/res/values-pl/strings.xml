@@ -382,9 +382,9 @@
   <string name="confirm_logout">Potwierdź wylogowanie się</string>
   <string name="logout_dialog_content">Czy na pewno chcesz wylogować się?</string>
   <string name="dialog_cancel">Anuluj</string>
-  <string name="choose_resolution">Choose Resolution</string>
-  <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-  <string name="image_upload_resolution">Image Upload Resolution</string>
+  <string name="choose_resolution">Wybierz rozdzielczość</string>
+  <string name="pref_resolution_summary">Wybierz rozdzielczość do przesyłania obrazów</string>
+  <string name="image_upload_resolution">Rozdzielczość przesyłania zdjęć</string>
   <string name="can_add_barcode">Problem ze skanowaniem? \nPrzeciągnij, by wpisać kod kreskowy</string>
   <string name="brand_string">Marka</string>
   <string name="country_string">Kraj</string>
