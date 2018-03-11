@@ -21,6 +21,13 @@
   <string name="text_barcode">Saisissez le code-barre :</string>
   <string name="message_in_activity_save_product_offline">Une seule photo est obligatoire pour envoyer un nouveau produit.</string>
   <string name="product_incomplete_message">Ce produit n\'est pas complet. En conséquence, nous n\'avons pas pu faire le test d\'allergène.</string>
+  <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Résumé</item>
@@ -369,6 +376,9 @@
   <string name="confirm_logout">Confirmer la déconnexion</string>
   <string name="logout_dialog_content">Etes-vous sûr(e) de vouloir vous déconnecter?</string>
   <string name="dialog_cancel">Annuler</string>
+  <string name="choose_resolution">Choose Resolution</string>
+  <string name="pref_resolution_summary">Pick a resolution for image upload</string>
+  <string name="image_upload_resolution">Image Upload Resolution</string>
   <string name="can_add_barcode">Vous avez des problèmes de scan ?\nFaites glisser vers le haut pour saisir le code-barre</string>
   <string name="brand_string">Marque</string>
   <string name="country_string">Pays</string>
