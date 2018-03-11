@@ -10,10 +10,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.CardView;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -24,7 +24,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -35,8 +34,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import butterknife.OnItemClick;
-import butterknife.OnItemLongClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
@@ -65,7 +62,7 @@ public class OfflineEditFragment extends BaseFragment implements SaveListAdapter
     private SendProductDao mSendProductDao;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         return createView(inflater, container, R.layout.fragment_offline_edit);
     }
@@ -76,7 +73,7 @@ public class OfflineEditFragment extends BaseFragment implements SaveListAdapter
               item.setVisible(false);
            }
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         mSendProductDao = Utils.getAppDaoSession(getActivity()).getSendProductDao();
@@ -193,7 +190,7 @@ public class OfflineEditFragment extends BaseFragment implements SaveListAdapter
                         saveItems.remove(productIndex);
                     }
 
-                    ((SaveListAdapter) mRecyclerView.getAdapter()).notifyDataSetChanged();
+                    mRecyclerView.getAdapter().notifyDataSetChanged();
                     mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
                 }
             });
@@ -216,7 +213,7 @@ public class OfflineEditFragment extends BaseFragment implements SaveListAdapter
     public void onClick(int position) {
 
         Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
-        SaveItem si = (SaveItem) saveItems.get(position);
+        SaveItem si = saveItems.get(position);
         intent.putExtra("barcode", si.getBarcode());
         startActivity(intent);
     }
@@ -235,7 +232,7 @@ public class OfflineEditFragment extends BaseFragment implements SaveListAdapter
                     mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(barcode)).list());
                     final SaveListAdapter sl = (SaveListAdapter) mRecyclerView.getAdapter();
                     saveItems.remove(lapos);
-                    getActivity().runOnUiThread(() -> sl.notifyDataSetChanged());
+                    getActivity().runOnUiThread(sl::notifyDataSetChanged);
                 })
                 .show();
 

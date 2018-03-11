@@ -13,8 +13,8 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
-import android.text.SpannableStringBuilder;
 import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -137,14 +137,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
         mFragment = this;
         return createView(inflater, container, R.layout.fragment_summary_product);
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
         final State state = (State) intent.getExtras().getSerializable("state");
@@ -170,9 +170,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
         }
 
-        /**
-         * shows the dialog if allergen is found.
-         */
         if (matchAll.size() > 0) {
             new MaterialDialog.Builder(getActivity())
                     .title(R.string.warning_allergens)
