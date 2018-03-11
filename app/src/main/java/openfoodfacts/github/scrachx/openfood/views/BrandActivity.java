@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,12 +22,15 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
 public class BrandActivity extends BaseActivity {
+
+    private String searchType;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -44,6 +48,8 @@ public class BrandActivity extends BaseActivity {
     private OpenFoodAPIClient apiClient;
     private int mCountProducts = 0;
     private int pageAddress = 1;
+    private String type;
+    private String[] typeStrings;
 
 
     @Override
@@ -64,10 +70,24 @@ public class BrandActivity extends BaseActivity {
         countProductsView.setVisibility(View.INVISIBLE);
         Bundle extras = getIntent().getExtras();
 
-        brand = extras.getString("brand");
+        typeStrings = new String[]{
+                "Brand", "Country"
+        };
 
-        getSupportActionBar().setTitle(brand);
-        getSupportActionBar().setSubtitle(R.string.brand_string);
+        if (extras.getString("brand") != null) {
+            searchType = extras.getString("brand");
+            type = typeStrings[0];
+        } else if (extras.getString("country") != null) {
+            searchType = extras.getString("country");
+            type = typeStrings[1];
+        }
+
+        getSupportActionBar().setTitle(searchType);
+        if (type.equals(typeStrings[0])) {
+            getSupportActionBar().setSubtitle(R.string.brand_string);
+        } else if (type.equals(typeStrings[1])) {
+            getSupportActionBar().setSubtitle(R.string.country_string);
+        }
         apiClient = new OpenFoodAPIClient(BrandActivity.this, BuildConfig.OFWEBSITE);
         api = new OpenFoodAPIClient(BrandActivity.this);
         productsRecyclerView = findViewById(R.id.products_recycler_view);
@@ -83,34 +103,44 @@ public class BrandActivity extends BaseActivity {
     }
 
     public void getDataFromAPI() {
-        apiClient.getBrand(brand, pageAddress, (value, brandObject) -> {
-            if (value) {
-                mCountProducts = Integer.parseInt(brandObject.getCount());
-                if (pageAddress == 1) {
-                    countProductsView.append(String.valueOf(brandObject.getCount()));
-                    mProducts = new ArrayList<>();
-                    mProducts.addAll(brandObject.getProducts());
+        if (type.equals(typeStrings[0])) {
+            apiClient.getBrand(searchType, pageAddress, (value, brandObject) -> loadData(value, brandObject));
+        } else if (type.equals(typeStrings[1])) {
+
+            apiClient.getCountryProducts(searchType, pageAddress, (value, country) -> loadData(value, country));
+
+        }
+    }
+
+
+    private void loadData(boolean isResponseOk, Search response) {
+
+        if (isResponseOk) {
+            mCountProducts = Integer.parseInt(response.getCount());
+            if (pageAddress == 1) {
+                countProductsView.append(" "+NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount()
+                )));
+                mProducts = new ArrayList<>();
+                mProducts.addAll(response.getProducts());
+                if (mProducts.size() < mCountProducts) {
+                    mProducts.add(null);
+                }
+                setUpRecyclerView();
+            } else {
+                if (mProducts.size() - 1 < mCountProducts + 1) {
+                    final int posStart = mProducts.size();
+                    mProducts.remove(mProducts.size() - 1);
+                    mProducts.addAll(response.getProducts());
                     if (mProducts.size() < mCountProducts) {
                         mProducts.add(null);
                     }
-                    setUpRecyclerView();
-                } else {
-                    if (mProducts.size() - 1 < mCountProducts + 1) {
-                        final int posStart = mProducts.size();
-                        mProducts.remove(mProducts.size() - 1);
-                        mProducts.addAll(brandObject.getProducts());
-                        if (mProducts.size() < mCountProducts) {
-                            mProducts.add(null);
-                        }
-                        productsRecyclerView.getAdapter().notifyItemRangeChanged(posStart - 1, mProducts.size() - 1);
-                    }
+                    productsRecyclerView.getAdapter().notifyItemRangeChanged(posStart - 1, mProducts.size() - 1);
                 }
-            } else {
-                progressBar.setVisibility(View.INVISIBLE);
-                offlineCloudLayout.setVisibility(View.VISIBLE);
             }
-
-        });
+        } else {
+            progressBar.setVisibility(View.INVISIBLE);
+            offlineCloudLayout.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setUpRecyclerView() {

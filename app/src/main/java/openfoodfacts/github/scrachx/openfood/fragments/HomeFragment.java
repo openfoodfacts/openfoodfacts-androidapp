@@ -26,6 +26,7 @@ import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
@@ -33,7 +34,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends BaseFragment {
+import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
+
+public class HomeFragment extends NavigationBaseFragment {
 
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
@@ -73,6 +76,12 @@ public class HomeFragment extends BaseFragment {
         } else {
             ((MainActivity) getContext()).moveToBarcodeEntry();
         }
+    }
+
+    @Override
+    @NavigationDrawerType
+    public int getNavigationDrawerType() {
+        return ITEM_HOME;
     }
 
     private void checkUserCredentials() {

@@ -23,6 +23,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Gravity;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -40,15 +41,17 @@ import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
+import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_OFFLINE;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
-public class OfflineEditFragment extends BaseFragment implements SaveListAdapter.SaveClickInterface {
+public class OfflineEditFragment extends NavigationBaseFragment implements SaveListAdapter.SaveClickInterface {
 
     public static final String LOG_TAG = "OFFLINE_EDIT";
     @BindView(R.id.listOfflineSave)
@@ -154,6 +157,12 @@ public class OfflineEditFragment extends BaseFragment implements SaveListAdapter
         }
     }
 
+    @Override
+    @NavigationDrawerType
+    public int getNavigationDrawerType() {
+        return ITEM_OFFLINE;
+    }
+
     /**
      * Upload the offline products.
      */
@@ -246,10 +255,14 @@ public class OfflineEditFragment extends BaseFragment implements SaveListAdapter
             saveItems.clear();
             List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
             if (listSaveProduct.size() == 0) {
-                Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG).show();
+                Toast toast = Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER,0,0);
+                toast.show();
             } else {
                 mCardView.setVisibility(View.GONE);
-                Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG).show();
+                Toast toast = Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER,0,0);
+                toast.show();
             }
         }
 

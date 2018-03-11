@@ -24,7 +24,7 @@
         <item name="searchViewStyle">@style/customSearchView</item>
     </style>
 
-    <style name="SplashTheme" parent="@style/Theme.AppCompat.Light">
+    <style name="SplashTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/background_splash</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>

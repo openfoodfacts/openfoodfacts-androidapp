@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +64,7 @@ public class SearchProductsResultsFragment extends BaseFragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle state) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle state) {
         super.onViewCreated(view, state);
 
         mProducts = new ArrayList<>();
@@ -136,7 +137,7 @@ public class SearchProductsResultsFragment extends BaseFragment {
                 (isResponseOk, products, countProducts) -> {
                     hideProgressBar();
                     if (isResponseOk) {
-                        countProductsView.append(" " + String.valueOf(countProducts));
+                        countProductsView.append(" " + NumberFormat.getInstance(getResources().getConfiguration().locale).format(countProducts));
                         mCountProducts = countProducts;
                         mProducts.addAll(products);
                         if (mProducts.size() < mCountProducts) {
@@ -146,21 +147,13 @@ public class SearchProductsResultsFragment extends BaseFragment {
                         productsRecyclerView.setAdapter(adapter);
                         countProductsView.setVisibility(View.VISIBLE);
                         offlineCloudLayout.setVisibility(View.INVISIBLE);
-                        noResultsLayout.setVisibility(View.INVISIBLE);
-                        productsRecyclerView.setVisibility(View.VISIBLE);
+                        noResultsLayout.setVisibility(View.VISIBLE);
+                        noResultsLayout.bringToFront();
                     } else {
-                        if (countProducts == -2) {
-                            productsRecyclerView.setVisibility(View.GONE);
-                            countProductsView.setVisibility(View.INVISIBLE);
-                            offlineCloudLayout.setVisibility(View.INVISIBLE);
-                            noResultsLayout.setVisibility(View.VISIBLE);
-                            noResultsLayout.bringToFront();
-                        } else {
-                            countProductsView.setVisibility(View.INVISIBLE);
-                            noResultsLayout.setVisibility(View.INVISIBLE);
-                            offlineCloudLayout.setVisibility(View.VISIBLE);
-                            productsRecyclerView.setVisibility(View.GONE);
-                        }
+                        countProductsView.setVisibility(View.INVISIBLE);
+                        noResultsLayout.setVisibility(View.INVISIBLE);
+                        offlineCloudLayout.setVisibility(View.VISIBLE);
+                        productsRecyclerView.setVisibility(View.GONE);
                     }
                 }
         );

@@ -32,8 +32,6 @@ import com.firebase.jobdispatcher.Job;
 import com.firebase.jobdispatcher.Lifetime;
 import com.firebase.jobdispatcher.Trigger;
 
-import org.greenrobot.greendao.database.Database;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -52,9 +50,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
-import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static android.text.TextUtils.isEmpty;
@@ -190,7 +186,7 @@ public class Utils {
             o2.inSampleSize = scale;
             return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
         } catch (FileNotFoundException e) {
-
+            e.printStackTrace();
         }
         return null;
     }
@@ -318,17 +314,7 @@ public class Utils {
 
 
     public static DaoSession getDaoSession(Context context) {
-        String nameDB;
-        if ((BuildConfig.FLAVOR.equals("off"))) {
-            nameDB = "open_food_facts";
-        } else if ((BuildConfig.FLAVOR.equals("opff"))) {
-            nameDB = "open_pet_food_facts";
-        } else {
-            nameDB = "open_beauty_facts";
-        }
-        DatabaseHelper helper = new DatabaseHelper(context, nameDB);
-        Database db = helper.getWritableDb();
-        return new DaoMaster(db).newSession();
+        return OFFApplication.daoSession;
     }
 
     /**
@@ -399,12 +385,13 @@ public class Utils {
 
     /**
      * Check if airplane mode is turned on on the device.
+     *
      * @param context of the application.
      * @return true if airplane mode is active.
      */
     @SuppressWarnings("depreciation")
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public static boolean isAirplaneModeActive(Context context){
+    public static boolean isAirplaneModeActive(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
             return Settings.System.getInt(context.getContentResolver(),
                     Settings.System.AIRPLANE_MODE_ON, 0) != 0;
@@ -416,6 +403,7 @@ public class Utils {
 
     /**
      * Check if the user is connected to a network. This can be any network.
+     *
      * @param context of the application.
      * @return true if connected or connecting. False otherwise.
      */
@@ -428,10 +416,11 @@ public class Utils {
 
     /**
      * Check if the user is connected to a mobile network.
+     *
      * @param context of the application.
      * @return true if connected to mobile data.
      */
-    public static boolean isConnectedToMobileData(Context context){
+    public static boolean isConnectedToMobileData(Context context) {
         return getNetworkType(context).equals("Mobile");
     }
 
