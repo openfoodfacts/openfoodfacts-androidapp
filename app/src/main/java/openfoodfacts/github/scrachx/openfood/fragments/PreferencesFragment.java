@@ -43,11 +43,9 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
-
-import static com.mikepenz.iconics.Iconics.TAG;
+import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_PREFERENCES;
 
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem {
-
 
     AdditiveDao mAdditiveDao;
     private SharedPreferences settings;
