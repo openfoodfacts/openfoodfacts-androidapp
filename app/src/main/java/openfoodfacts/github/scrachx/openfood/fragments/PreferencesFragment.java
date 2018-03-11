@@ -62,7 +62,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         setPreferencesFromResource(R.xml.preferences, rootKey);
         setHasOptionsMenu(true);
 
-
         ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
 
         settings = getActivity().getSharedPreferences("prefs", 0);
@@ -144,6 +143,18 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
                 CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
 
+                return true;
+            }
+        });
+
+        ListPreference imageUploadPref = ((ListPreference) findPreference("ImageUpload"));
+        String[] values = getActivity().getResources().getStringArray(R.array.upload_image);
+        imageUploadPref.setEntries(values);
+        imageUploadPref.setEntryValues(values);
+        imageUploadPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                settings.edit().putString("imageUpload", (String)newValue).apply();
                 return true;
             }
         });
