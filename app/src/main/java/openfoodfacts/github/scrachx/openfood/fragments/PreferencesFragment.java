@@ -75,11 +75,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Locale current = LocaleHelper.getLocale(localeValues[i]);
 
             if (current != null) {
-                localeLabels[i] = String.format("%s - %s",
-                        // current.getDisplayName(current), // native form
-                        WordUtils.capitalize(current.getDisplayName(current)),
-                        localeValues[i].toUpperCase(Locale.getDefault())
-                );
+                localeLabels[i] = WordUtils.capitalize(current.getDisplayName(current));
             }
         }
 
