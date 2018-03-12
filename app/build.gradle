@@ -3,16 +3,21 @@ apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.0'
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 37
-        versionName "0.7.4"
+        versionCode 40
+        versionName "0.8.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            crunchPngs true
+        }
     }
 
     dataBinding {
@@ -45,6 +50,7 @@ android {
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
         }
     }
+
 
     dexOptions {
         preDexLibraries = false
@@ -82,6 +88,7 @@ android {
     testOptions {
         // avoid "Method ... not mocked."
         unitTests.returnDefaultValues = true
+        execution 'ANDROID_TEST_ORCHESTRATOR'
     }
 }
 
@@ -96,7 +103,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 2
+    schemaVersion 6
 }
 
 dependencies {
@@ -130,11 +137,15 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
 
+    //scheduling jobs
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+
     //Serialization/Deserialization
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
     implementation "com.fasterxml.jackson.core:jackson-core:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-databind:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-annotations:$rootProject.jacksonVersion"
+//    compile 'io.rest-assured:json-path:3.0.7'
 
     //CSV Serialization/Deserialization
     implementation "com.opencsv:opencsv:$rootProject.openCsvVersion"
@@ -191,7 +202,13 @@ dependencies {
     implementation "com.mikepenz:material-design-iconic-typeface:$rootProject.materialFontVersion"
     implementation "com.mikepenz:fontawesome-typeface:$rootProject.awesomeFontVersion"
 
+    implementation("com.theartofdev.edmodo:android-image-cropper:2.6.0") {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    }
+
     //Testing
+    androidTestUtil 'com.android.support.test:orchestrator:1.0.1'
+
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     testImplementation "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"
@@ -201,7 +218,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.1'
-    androidTestImplementation('com.android.support.test.espresso:espresso-contrib:2.2.2') {
+    androidTestImplementation('com.android.support.test.espresso:espresso-contrib:3.0.1') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'com.android.support', module: 'design'

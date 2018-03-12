@@ -5,6 +5,8 @@ import android.content.Context;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+import java.util.Locale;
+
 import openfoodfacts.github.scrachx.openfood.R;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
@@ -21,13 +23,13 @@ public enum NutrimentLevel {
             return null;
         }
 
-        return NutrimentLevel.valueOf(level.toUpperCase());
+        return NutrimentLevel.valueOf(level.toUpperCase(Locale.getDefault()));
     }
 
     @JsonValue
     @Override
     public String toString() {
-        return name().toLowerCase();
+        return name().toLowerCase(Locale.getDefault());
     }
 
     /**

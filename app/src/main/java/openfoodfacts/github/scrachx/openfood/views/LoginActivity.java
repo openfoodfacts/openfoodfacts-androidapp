@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
@@ -43,46 +44,60 @@ import retrofit2.Retrofit;
  */
 public class LoginActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback {
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.editTextLogin) EditText loginView;
-    @BindView(R.id.editTextPass) EditText passwordView;
-    @BindView(R.id.textInfoLogin) TextView infoLogin;
-    @BindView(R.id.buttonSave) Button save;
-    @BindView(R.id.buttonCreateAccount) Button signup;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.editTextLogin)
+    EditText loginView;
+    @BindView(R.id.editTextPass)
+    EditText passwordView;
+    @BindView(R.id.textInfoLogin)
+    TextView infoLogin;
+    @BindView(R.id.buttonSave)
+    Button save;
+    @BindView(R.id.buttonCreateAccount)
+    Button signup;
 
     private OpenFoodAPIService apiClient;
     private CustomTabActivityHelper customTabActivityHelper;
-    private Uri uri;
+    private Uri userLoginUri;
+    private Uri resetPasswordUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         setContentView(R.layout.activity_login);
 
+        setTitle(getString(R.string.txtSignIn));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        uri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
+
+        userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
+        resetPasswordUri = Uri.parse(getString(R.string.website) + "cgi/reset_password.pl");
 
         // prefetch the uri
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
-        customTabActivityHelper.mayLaunchUrl(uri, null, null);
+        customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null);
 
         signup.setEnabled(false);
 
         final SharedPreferences settings = getSharedPreferences("login", 0);
         String loginS = settings.getString("user", getResources().getString(R.string.txt_anonymous));
-        if(!loginS.equals(getResources().getString(R.string.txt_anonymous))) {
+        if (!loginS.equals(getResources().getString(R.string.txt_anonymous))) {
             new MaterialDialog.Builder(this)
-                    .title("Login")
-                    .content("Already logged in!")
+                    .title(R.string.log_in)
+                    .content(R.string.login_true)
                     .neutralText(R.string.ok_button)
                     .show();
         }
 
         apiClient = new Retrofit.Builder()
                 .baseUrl(BuildConfig.HOST)
+                .client(Utils.HttpClientBuilder())
                 .build()
                 .create(OpenFoodAPIService.class);
     }
@@ -92,23 +107,24 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         String login = loginView.getText().toString();
         String password = passwordView.getText().toString();
 
-        if (!(password.length() >= 6)) {
-            passwordView.setError(getString(R.string.error_invalid_password));
-            passwordView.requestFocus();
-            return;
-        }
-
         if (TextUtils.isEmpty(login)) {
             loginView.setError(getString(R.string.error_field_required));
             loginView.requestFocus();
             return;
         }
 
+        if (!(password.length() >= 6)) {
+            passwordView.setError(getString(R.string.error_invalid_password));
+            passwordView.requestFocus();
+            return;
+        }
+
+
         final LoadToast lt = new LoadToast(this);
         save.setClickable(false);
         lt.setText(getString(R.string.toast_retrieving));
-        lt.setBackgroundColor(ContextCompat.getColor(this,R.color.blue));
-        lt.setTextColor(ContextCompat.getColor(this,R.color.white));
+        lt.setBackgroundColor(ContextCompat.getColor(this, R.color.blue));
+        lt.setTextColor(ContextCompat.getColor(this, R.color.white));
         lt.show();
 
         final Activity context = this;
@@ -171,6 +187,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                 Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 lt.error();
                 Utils.hideKeyboard(context);
+                t.printStackTrace();
             }
         });
 
@@ -181,7 +198,13 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     protected void onCreateUser() {
         CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
 
-        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, uri, new WebViewFallback());
+        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, userLoginUri, new WebViewFallback());
+    }
+
+    @OnClick(R.id.forgotpassword)
+    public void forgotpassword() {
+        CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
+        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, resetPasswordUri, new WebViewFallback());
     }
 
     @Override

@@ -1,24 +1,16 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -29,11 +21,10 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertNotNull;
-import static net.javacrumbs.jsonunit.fluent.JsonFluentAssert.assertThatJson;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static org.junit.Assert.assertTrue;
 
-public class OpenFoodAPIServiceTest {
+public class OpenFoodAPIServiceTest implements APIUtils {
 
     private OpenFoodAPIService serviceRead;
     private OpenFoodAPIService serviceWrite;
@@ -43,9 +34,7 @@ public class OpenFoodAPIServiceTest {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY);
 
-        OkHttpClient httpClient = new OkHttpClient.Builder()
-                .addInterceptor(logging)
-                .build();
+        OkHttpClient httpClient = HttpClientBuilder();
 
         serviceRead = new Retrofit.Builder()
                 .baseUrl(APIUtils.GET_API)
@@ -193,7 +182,7 @@ public class OpenFoodAPIServiceTest {
     @Test
     public void getProduct_notFound() throws Exception {
         String barcode = "457457457";
-        Response<State> response = serviceRead.getProductByBarcode(barcode).execute();
+        Response<State> response = serviceRead.getFullProductByBarcode(barcode).execute();
 
         assertTrue(response.isSuccessful());
 
@@ -244,7 +233,7 @@ public class OpenFoodAPIServiceTest {
         assertEquals(body.getStatus(), 1);
         assertEquals(body.getStatusVerbose(), "fields saved");
 
-        Response<State> response = serviceWrite.getProductByBarcode(product.getBarcode()).execute();
+        Response<State> response = serviceWrite.getFullProductByBarcode(product.getBarcode()).execute();
         Product savedProduct = response.body().getProduct();
         assertEquals(product.getName(), savedProduct.getProductName());
         assertEquals(product.getBrands(), savedProduct.getBrands());

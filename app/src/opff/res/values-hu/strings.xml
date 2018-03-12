@@ -12,4 +12,12 @@
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-hu.openpetfoodfacts.org/contributor/</string>
   <string name="txtHome">Az Open Pet Food Facts állateledelek adatbázisa, a termékekhez tartozó összetevők, allergének, jelölések adataival együtt és minden egyéb információval, ami a termék csomagolásán vagy címkéjén szerepel. Vau. Vau.</string>
+  <string name="slide_1_title">Hozzájárulás az Állateledel átláthatósághoz</string>
+  <string name="slide_1_desc">Olvasson be termékeket, készítsen képet, tegye lehetővé az állateledel átláthatóságot</string>
+  <string name="slide_2_title">Kapja meg a tényeket</string>
+  <string name="slide_2_desc">Széleskörű információ az ön által beolvasott termékről, megfejtve az ön számára</string>
+  <string name="slide_3_title">Kövesse nyomon a terméket amit használ</string>
+  <string name="slide_3_desc">Az összes kozmetikai szer amit ön használ, egy könnyen kezelhető listán amit exportálni is tud</string>
+  <string name="slide_4_title">Kapcsolat nélküli módban is működik</string>
+  <string name="slide_4_desc">Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata</string>
 </resources>

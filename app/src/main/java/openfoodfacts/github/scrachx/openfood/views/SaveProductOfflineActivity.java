@@ -1,9 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -15,19 +17,30 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Gravity;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import android.widget.RadioButton;
+
+import android.widget.LinearLayout;
+
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.github.chrisbanes.photoview.PhotoView;
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
 import java.util.List;
@@ -36,6 +49,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
@@ -58,37 +72,73 @@ public class SaveProductOfflineActivity extends BaseActivity {
     private final String[] mUnit = new String[1];
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.barcodeDoubleCheck) TextView barcodeText;
-    @BindView(R.id.imageSaveFront) ImageView imgSaveFront;
-    @BindView(R.id.imageSaveNutrition) ImageView imgSaveNutrition;
-    @BindView(R.id.imageSaveIngredients) ImageView imgSaveIngredients;
-    @BindView(R.id.editTextName) EditText name;
-    @BindView(R.id.editTextBrand) EditText brand;
-    @BindView(R.id.editTextWeight) EditText weight;
-    @BindView(R.id.spinnerUnitWeight) Spinner spinnerW;
-    @BindView(R.id.buttonSaveProduct) Button save;
-    @BindView(R.id.buttonTakePictureFront) ImageButton btnTakeFront;
-    @BindView(R.id.buttonTakePictureIngredients) ImageButton btnTakeIngredients;
-    @BindView(R.id.buttonTakePictureNutrition) ImageButton btnTakeNutrition;
-    @BindView(R.id.message_container_card_view) CardView mContainerView;
-    @BindView(R.id.message_dismiss_icon) ImageButton mDismissButton;
+    @BindView(R.id.barcodeDoubleCheck)
+    TextView barcodeText;
+    @BindView(R.id.imageSaveFront)
+    PhotoView imgSaveFront;
+    @BindView(R.id.imageSaveNutrition)
+    PhotoView imgSaveNutrition;
+    @BindView(R.id.imageSaveIngredients)
+    PhotoView imgSaveIngredients;
+    @BindView(R.id.editTextName)
+    EditText name;
+    @BindView(R.id.editTextBrand)
+    EditText brand;
+    @BindView(R.id.editTextWeight)
+    EditText weight;
+    @BindView(R.id.spinnerUnitWeight)
+    Spinner spinnerW;
+    @BindView(R.id.buttonSaveProduct)
+    Button save;
+    @BindView(R.id.buttonTakePictureFront)
+    ImageButton btnTakeFront;
+    @BindView(R.id.buttonTakePictureIngredients)
+    ImageButton btnTakeIngredients;
+    @BindView(R.id.buttonTakePictureNutrition)
+    ImageButton btnTakeNutrition;
+    @BindView(R.id.message_container_card_view)
+    CardView mContainerView;
+    @BindView(R.id.message_dismiss_icon)
+    ImageButton mDismissButton;
+    @BindView(R.id.message)
+    TextView messageView;
+    @BindView(R.id.NutritionImageGroup)
+    LinearLayout nutritionGroup;
+
+    PhotoViewAttacher mAttacherimgSaveFront;
+    PhotoViewAttacher mAttacherimgSaveNutrition;
+    PhotoViewAttacher mAttacherimageSaveIngredients;
 
     private SendProduct mProduct;
     private String mBarcode;
     private OpenFoodAPIClient api;
     private String imageTaken;
     private SendProductDao mSendProductDao;
+    private SharedPreferences mSharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         setContentView(R.layout.activity_save_product_offline);
+
+        if (BuildConfig.FLAVOR.equals("obf")) {
+            nutritionGroup.setVisibility(View.GONE);
+        }
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mSendProductDao = Utils.getAppDaoSession(this).getSendProductDao();
-
+        mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
+        boolean isMsgOnlyOnePhotoNecessaryDismissed = mSharedPref.getBoolean("is_msg_only_one_photo_necessary_dismissed", false);
+        if (isMsgOnlyOnePhotoNecessaryDismissed) {
+            mContainerView.setVisibility(View.GONE);
+        }
         if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE)
@@ -107,6 +157,14 @@ public class SaveProductOfflineActivity extends BaseActivity {
         api = new OpenFoodAPIClient(this);
         mBarcode = getIntent().getStringExtra("barcode");
 
+        String bookBarcodeTest = mBarcode.substring(0, 3);
+        if (bookBarcodeTest.equals("978") || bookBarcodeTest.equals("979")) {
+            messageView.setText(R.string.not_support_books);
+            mContainerView.setVisibility(View.VISIBLE);
+        }
+
+        barcodeText.append(" " + mBarcode);
+
         imgSaveFront.setVisibility(View.GONE);
         imgSaveIngredients.setVisibility(View.GONE);
         imgSaveNutrition.setVisibility(View.GONE);
@@ -120,16 +178,16 @@ public class SaveProductOfflineActivity extends BaseActivity {
         if (sp.size() > 0) {
             mProduct = sp.get(0);
         }
-        if(mProduct != null) {
-            if(isNotEmpty(mProduct.getImgupload_front())) {
-		imgSaveFront.setVisibility(View.VISIBLE);
+        if (mProduct != null) {
+            if (isNotEmpty(mProduct.getImgupload_front())) {
+                imgSaveFront.setVisibility(View.VISIBLE);
                 Picasso.with(this)
-                        .load(mProduct.getImgupload_front())
+                        .load(new File(mProduct.getImgupload_front()))
                         .fit()
                         .centerCrop()
                         .into(imgSaveFront);
             }
-            if(isNotBlank(mProduct.getImgupload_nutrition())) {
+            if (isNotBlank(mProduct.getImgupload_nutrition())) {
                 imgSaveNutrition.setVisibility(View.VISIBLE);
                 Picasso.with(this)
                         .load(new File(mProduct.getImgupload_nutrition()))
@@ -137,7 +195,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                         .centerCrop()
                         .into(imgSaveNutrition);
             }
-            if(isNotBlank(mProduct.getImgupload_ingredients())) {
+            if (isNotBlank(mProduct.getImgupload_ingredients())) {
                 imgSaveIngredients.setVisibility(View.VISIBLE);
                 Picasso.with(this)
                         .load(new File(mProduct.getImgupload_ingredients()))
@@ -154,7 +212,6 @@ public class SaveProductOfflineActivity extends BaseActivity {
         } else {
             mProduct = new SendProduct();
             mProduct.setBarcode(mBarcode);
-			barcodeText.setText(barcodeText.getText() + " " + mBarcode);
         }
 
         mProduct.setLang(Locale.getDefault().getLanguage());
@@ -166,8 +223,8 @@ public class SaveProductOfflineActivity extends BaseActivity {
      * Check if there is a camera installed on the device. If there is not, then hide the views that
      * allow the user to take a photo.
      */
-    private void checkIfCameraInstalled(){
-        if (!Utils.isHardwareCameraInstalled(this)){
+    private void checkIfCameraInstalled() {
+        if (!Utils.isHardwareCameraInstalled(this)) {
             btnTakeFront.setVisibility(View.GONE);
             btnTakeNutrition.setVisibility(View.GONE);
             btnTakeIngredients.setVisibility(View.GONE);
@@ -201,8 +258,15 @@ public class SaveProductOfflineActivity extends BaseActivity {
     protected void onSaveProduct() {
         Utils.hideKeyboard(this);
 
+        save.setEnabled(false);
+        save.setText(getString(R.string.saving));
+
         if (isBlank(mProduct.getImgupload_front())) {
-            Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
+            Toast toast = Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER,0,0);
+            toast.show();
+            save.setEnabled(true);
+            save.setText(getString(R.string.txtSave));
             return;
         }
 
@@ -221,14 +285,14 @@ public class SaveProductOfflineActivity extends BaseActivity {
         }
 
         if (isNotEmpty(mProduct.getImgupload_front())) {
-        Utils.compressImage(mProduct.getImgupload_front());
+            Utils.compressImage(mProduct.getImgupload_front());
         }
-	    
+
         if (isNotBlank(mProduct.getImgupload_ingredients())) {
             Utils.compressImage(mProduct.getImgupload_ingredients());
         }
 
-        if(isNotBlank(mProduct.getImgupload_nutrition())) {
+        if (isNotBlank(mProduct.getImgupload_nutrition())) {
             Utils.compressImage(mProduct.getImgupload_nutrition());
         }
 
@@ -241,19 +305,25 @@ public class SaveProductOfflineActivity extends BaseActivity {
             api.post(this, mProduct, value -> {
                 if (!value) {
                     mSendProductDao.insert(mProduct);
-                    Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER,0,0);
+                    toast.show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra("openOfflineEdit", true);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER,0,0);
+                    toast.show();
                     api.getProduct(mProduct.getBarcode(), activity);
                 }
                 finish();
             });
         } else {
             mSendProductDao.insertOrReplace(mProduct);
-            Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+            Toast toast = Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER,0,0);
+            toast.show();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.putExtra("openOfflineEdit", true);
             startActivity(intent);
@@ -267,7 +337,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
             imageTaken = "front";
-            EasyImage.openCamera(this, 0);
+            EasyImage.openCamera(SaveProductOfflineActivity.this, 0);
         }
     }
 
@@ -277,7 +347,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
             imageTaken = "ingredients";
-            EasyImage.openCamera(this, 0);
+            EasyImage.openCamera(SaveProductOfflineActivity.this, 0);
         }
     }
 
@@ -287,13 +357,14 @@ public class SaveProductOfflineActivity extends BaseActivity {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
             imageTaken = "nutrition";
-            EasyImage.openCamera(this, 0);
+            EasyImage.openCamera(SaveProductOfflineActivity.this, 0);
         }
     }
 
     @OnClick(R.id.message_dismiss_icon)
-    protected void onMessageDismissClicked(){
+    protected void onMessageDismissClicked() {
         mContainerView.setVisibility(View.GONE);
+        mSharedPref.edit().putBoolean("is_msg_only_one_photo_necessary_dismissed", true).apply();
     }
 
     @Override
@@ -311,6 +382,16 @@ public class SaveProductOfflineActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                onPhotoReturned(new File(resultUri.getPath()));
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
+
         EasyImage.handleActivityResult(requestCode, resultCode, data, this, new DefaultCallback() {
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
@@ -319,7 +400,9 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                onPhotoReturned(imageFiles.get(0));
+                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                        .start(SaveProductOfflineActivity.this);
+
             }
 
             @Override
@@ -334,30 +417,162 @@ public class SaveProductOfflineActivity extends BaseActivity {
     }
 
     private void onPhotoReturned(File photoFile) {
-        if(imageTaken.equals("front")) {
+        if (imageTaken.equals("front")) {
             mProduct.setImgupload_front(photoFile.getAbsolutePath());
             imgSaveFront.setVisibility(View.VISIBLE);
-            Picasso.with(this)
-                    .load(photoFile)
-                    .fit()
-                    .centerCrop()
-                    .into(imgSaveFront);
-        } else if(imageTaken.equals("nutrition")) {
+            mAttacherimgSaveFront = new PhotoViewAttacher(imgSaveFront);
+            if (!Utils.isConnectedToMobileData(getApplicationContext())) {
+                Picasso.with(this)
+                        .load(photoFile)
+                        .into(imgSaveFront, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                mAttacherimgSaveFront.update();
+                            }
+
+                            @Override
+                            public void onError() {
+                            }
+                        });
+            } else {
+                try {
+                    String resolution = mSharedPref.getString("imageUpload", "640 X 480");
+                    int x = Integer.parseInt(resolution.substring(0, resolution.indexOf(" ")));
+                    int y = Integer.parseInt(resolution.substring(resolution.lastIndexOf(" ") + 1));
+                    Picasso.with(this)
+                            .load(photoFile)
+                            .resize(x, y)
+                            .into(imgSaveFront, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    mAttacherimgSaveFront.update();
+                                }
+
+                                @Override
+                                public void onError() {
+                                }
+                            });
+                } catch (Exception e){
+                    Picasso.with(this)
+                            .load(photoFile)
+                            .resize(640, 480)
+                            .into(imgSaveFront, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    mAttacherimgSaveFront.update();
+                                }
+
+                                @Override
+                                public void onError() {
+                                }
+                            });
+                }
+            }
+        } else if (imageTaken.equals("nutrition")) {
             mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
             imgSaveNutrition.setVisibility(View.VISIBLE);
-            Picasso.with(this)
-                    .load(photoFile)
-                    .fit()
-                    .centerCrop()
-                    .into(imgSaveNutrition);
-        } else if(imageTaken.equals("ingredients")) {
+            mAttacherimgSaveNutrition = new PhotoViewAttacher(imgSaveNutrition);
+            if (!Utils.isConnectedToMobileData(getApplicationContext())) {
+                Picasso.with(this)
+                        .load(photoFile)
+                        .into(imgSaveNutrition, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                mAttacherimgSaveNutrition.update();
+                            }
+
+                            @Override
+                            public void onError() {
+                            }
+                        });
+            } else {
+
+                try {
+                    String resolution = mSharedPref.getString("imageUpload", "640 X 480");
+                    int x = Integer.parseInt(resolution.substring(0, resolution.indexOf(" ")));
+                    int y = Integer.parseInt(resolution.substring(resolution.lastIndexOf(" ") + 1));
+                    Picasso.with(this)
+                            .load(photoFile)
+                            .resize(x, y)
+                            .into(imgSaveNutrition, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    mAttacherimgSaveNutrition.update();
+                                }
+
+                                @Override
+                                public void onError() {
+                                }
+                            });
+                } catch (Exception e){
+                    Picasso.with(this)
+                            .load(photoFile)
+                            .resize(640, 480)
+                            .into(imgSaveNutrition, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    mAttacherimgSaveNutrition.update();
+                                }
+
+                                @Override
+                                public void onError() {
+                                }
+                            });
+                }
+            }
+        } else if (imageTaken.equals("ingredients")) {
             mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
             imgSaveIngredients.setVisibility(View.VISIBLE);
-            Picasso.with(this)
-                    .load(photoFile)
-                    .fit()
-                    .centerCrop()
-                    .into(imgSaveIngredients);
+            mAttacherimageSaveIngredients = new PhotoViewAttacher(imgSaveIngredients);
+            if (!Utils.isConnectedToMobileData(getApplicationContext())) {
+                Picasso.with(this)
+                        .load(photoFile)
+                        .into(imgSaveIngredients, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                mAttacherimageSaveIngredients.update();
+                            }
+
+                            @Override
+                            public void onError() {
+                            }
+                        });
+            } else {
+
+                try {
+                    String resolution = mSharedPref.getString("imageUpload", "640 X 480");
+                    int x = Integer.parseInt(resolution.substring(0, resolution.indexOf(" ")));
+                    int y = Integer.parseInt(resolution.substring(resolution.lastIndexOf(" ") + 1));
+
+                    Picasso.with(this)
+                            .load(photoFile)
+                            .resize(x, y)
+                            .into(imgSaveIngredients, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    mAttacherimageSaveIngredients.update();
+                                }
+
+                                @Override
+                                public void onError() {
+                                }
+                            });
+                } catch (Exception e){
+                    Picasso.with(this)
+                            .load(photoFile)
+                            .resize(640, 480)
+                            .into(imgSaveIngredients, new Callback() {
+                                @Override
+                                public void onSuccess() {
+                                    mAttacherimageSaveIngredients.update();
+                                }
+
+                                @Override
+                                public void onError() {
+                                }
+                            });
+                }
+            }
         }
     }
 

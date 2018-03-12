@@ -20,6 +20,12 @@ public class ProductImage {
 
     private final RequestBody imguploadOther;
 
+    private String filePath;
+
+    private String barcode;
+
+    private ProductImageField imageField;
+
     public ProductImage(String code, ProductImageField field, File image) {
         this.code = RequestBody.create(MediaType.parse("text/plain"), code);
         this.field = RequestBody.create(MediaType.parse("text/plain"), field.toString() + '_' + Locale.getDefault().getLanguage());
@@ -56,6 +62,9 @@ public class ProductImage {
                 this.imguploadOther = null;
                 break;
         }
+
+        barcode = code;
+        imageField = field;
     }
 
     public RequestBody getCode() {
@@ -81,4 +90,21 @@ public class ProductImage {
     public RequestBody getImguploadOther() {
         return imguploadOther;
     }
+
+    public void setFilePath(String path) {
+        filePath = path;
+    }
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public ProductImageField getImageField() {
+        return imageField;
+    }
+
 }

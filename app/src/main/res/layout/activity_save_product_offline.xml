@@ -22,7 +22,7 @@
             <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
                 android:id="@+id/barcodeDoubleCheck"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/spacing_normal"
                 android:layout_weight="1"
@@ -31,8 +31,7 @@
                 android:textAlignment="center"
                 android:textIsSelectable="true"
                 android:textSize="@dimen/font_larger"
-                android:textStyle="bold"
-                app:drawableLeftCompat="@drawable/ic_add_a_photo" />
+                android:textStyle="bold" />
 
             <android.support.v7.widget.CardView
                 android:id="@+id/message_container_card_view"
@@ -49,15 +48,14 @@
                     android:layout_gravity="center"
                     android:background="#EEE"
                     android:gravity="center"
-                    android:padding="4dp"
-                   >
+                    android:padding="4dp">
 
                     <ImageView
                         android:id="@+id/message_icon"
                         android:layout_width="@dimen/button_height_normal"
                         android:layout_height="@dimen/button_height_normal"
                         android:padding="@dimen/padding_too_short"
-                        android:src="@drawable/ic_action_name" />
+                        app:srcCompat="@drawable/ic_action_name" />
 
                     <TextView
                         android:id="@+id/message"
@@ -79,7 +77,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_margin="4dp"
                         android:background="#EEE"
-                        android:src="@drawable/ic_action_cross" />
+                        app:srcCompat="@drawable/ic_action_cross" />
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -103,7 +101,7 @@
                     android:textSize="@dimen/font_large"
                     android:textStyle="bold" />
 
-                <ImageView
+                <com.github.chrisbanes.photoview.PhotoView
                     android:id="@+id/imageSaveFront"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
@@ -123,7 +121,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_camera_white" />
 
@@ -135,7 +133,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_photo_library" />
 
@@ -162,7 +160,7 @@
                     android:textSize="@dimen/font_large"
                     android:textStyle="bold" />
 
-                <ImageView
+                <com.github.chrisbanes.photoview.PhotoView
                     android:id="@+id/imageSaveIngredients"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
@@ -182,7 +180,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_camera_white" />
 
@@ -194,7 +192,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_photo_library" />
                 </LinearLayout>
@@ -205,7 +203,8 @@
                 android:id="@+id/NutritionImageGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/textNutrition"
@@ -220,7 +219,7 @@
                     android:textSize="@dimen/font_large"
                     android:textStyle="bold" />
 
-                <ImageView
+                <com.github.chrisbanes.photoview.PhotoView
                     android:id="@+id/imageSaveNutrition"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
@@ -240,7 +239,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_camera_white" />
 
@@ -252,7 +251,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_weight="1"
-                        android:background="@color/blue"
+                        android:background="@drawable/rounded_button"
                         android:gravity="center"
                         app:srcCompat="@drawable/ic_photo_library" />
 
@@ -328,7 +327,7 @@
                 android:layout_height="@dimen/button_height_tall"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/spacing_normal"
-                android:background="@color/blue"
+                android:background="@drawable/rounded_button"
                 android:gravity="center"
                 android:text="@string/txtSave" />
 

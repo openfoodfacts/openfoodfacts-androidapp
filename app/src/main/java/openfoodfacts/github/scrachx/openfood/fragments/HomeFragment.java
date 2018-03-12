@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
@@ -31,7 +33,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends BaseFragment {
+import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
+
+public class HomeFragment extends NavigationBaseFragment {
 
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
@@ -69,8 +73,14 @@ public class HomeFragment extends BaseFragment {
                 startActivity(intent);
             }
         } else {
-            ((MainActivity)getContext()).moveToBarcodeEntry();
+            ((MainActivity) getContext()).moveToBarcodeEntry();
         }
+    }
+
+    @Override
+    @NavigationDrawerType
+    public int getNavigationDrawerType() {
+        return ITEM_HOME;
     }
 
     private void checkUserCredentials() {
@@ -109,5 +119,18 @@ public class HomeFragment extends BaseFragment {
                 }
             });
         }
+    }
+
+
+    public void onResume() {
+
+        super.onResume();
+
+        try {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.home_drawer));
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
     }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/offlineCloudLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <ImageView
+        android:id="@+id/sadCloud"
+        android:layout_width="180dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/ic_cloud_off" />
+
+    <TextView
+        android:id="@+id/txtCannotLoadResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/spacing_normal"
+        android:gravity="center"
+        android:text="@string/please_check_your_connection"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/grey_500"
+        android:textSize="@dimen/font_normal" />
+
+    <Button
+        android:id="@+id/buttonToRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/txt_try_again"
+        android:textColor="@color/light_blue_500" />
+
+</LinearLayout>

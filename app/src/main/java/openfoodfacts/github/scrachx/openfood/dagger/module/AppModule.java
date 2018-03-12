@@ -2,8 +2,6 @@ package openfoodfacts.github.scrachx.openfood.dagger.module;
 
 import android.content.Context;
 
-import java.util.concurrent.TimeUnit;
-
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -15,6 +13,7 @@ import openfoodfacts.github.scrachx.openfood.category.CategoryRepository;
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService;
 import openfoodfacts.github.scrachx.openfood.dagger.Qualifiers;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -41,11 +40,7 @@ public class AppModule {
         return application;
     }
 
-    private final static OkHttpClient httpClient = new OkHttpClient.Builder()
-            .connectTimeout(5000, TimeUnit.MILLISECONDS)
-            .readTimeout(30000, TimeUnit.MILLISECONDS)
-            .writeTimeout(30000, TimeUnit.MILLISECONDS)
-            .build();
+    private final static OkHttpClient httpClient = Utils.HttpClientBuilder();
 
     @Provides
     @Singleton

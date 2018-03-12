@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.preference.PreferenceManager;
 
 import java.util.Locale;
@@ -54,6 +55,7 @@ public class LocaleHelper {
 
     /**
      * Extract language and region from the locale string
+     *
      * @param locale language
      * @return Locale from locale string
      */
@@ -61,7 +63,25 @@ public class LocaleHelper {
         String[] localeParts = locale.split("-");
         String language = localeParts[0];
         String country = localeParts.length == 2 ? localeParts[1] : "";
-        return new Locale(language, country);
+        Locale localeObj=null;
+        if (locale.contains("+")) {
+            localeParts = locale.split("\\+");
+            language = localeParts[1];
+            String script = localeParts[2];
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                for (Locale checkLocale : Locale.getAvailableLocales()) {
+                    if (checkLocale.getISO3Language().equals(language) && checkLocale.getCountry().equals(country) && checkLocale.getVariant().equals("")) {
+                        localeObj = checkLocale;
+                    }
+                }
+            } else {
+                localeObj = new Locale.Builder().setLanguage(language).setRegion(country).setScript(script).build();
+            }
+
+        }else {
+            localeObj = new Locale(language,country);
+        }
+        return localeObj;
     }
 
     private static String getPersistedData(Context context, String defaultLanguage) {

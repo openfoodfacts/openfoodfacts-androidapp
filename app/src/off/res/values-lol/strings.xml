@@ -12,4 +12,12 @@
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">crwdns35302:0crwdne35302:0</string>
   <string name="txtHome">crwdns35957:0crwdne35957:0</string>
+  <string name="slide_1_title">crwdns37154:0crwdne37154:0</string>
+  <string name="slide_1_desc">crwdns37155:0crwdne37155:0</string>
+  <string name="slide_2_title">crwdns37156:0crwdne37156:0</string>
+  <string name="slide_2_desc">crwdns37157:0crwdne37157:0</string>
+  <string name="slide_3_title">crwdns37158:0crwdne37158:0</string>
+  <string name="slide_3_desc">crwdns37159:0crwdne37159:0</string>
+  <string name="slide_4_title">crwdns37160:0crwdne37160:0</string>
+  <string name="slide_4_desc">crwdns37161:0crwdne37161:0</string>
 </resources>

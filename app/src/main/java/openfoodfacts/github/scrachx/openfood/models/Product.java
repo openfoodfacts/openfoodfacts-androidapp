@@ -24,6 +24,7 @@ class ProductStringConverter extends StdConverter<String, String> {
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @JsonProperty("image_small_url")
     private String imageSmallUrl;
     @JsonProperty("image_nutrition_url")
@@ -32,6 +33,8 @@ public class Product implements Serializable {
     private String imageFrontUrl;
     @JsonProperty("image_ingredients_url")
     private String imageIngredientsUrl;
+    @JsonProperty("link")
+    private String manufactureUrl;
     private String url;
     private String code;
     @JsonProperty("traces_tags")
@@ -50,7 +53,8 @@ public class Product implements Serializable {
     @JsonProperty("brands_tags")
     private List<String> brandsTags = new ArrayList<>();
     private String traces;
-    private String categories;
+    @JsonProperty("categories_tags")
+    private List<String> categoriesTags;
     @JsonProperty("ingredients_text")
     @JsonDeserialize(converter = ProductStringConverter.class)
     private String ingredientsText;
@@ -74,9 +78,14 @@ public class Product implements Serializable {
     @JsonProperty("nutrient_levels")
     private NutrientLevels nutrientLevels;
     private String countries;
+    @JsonProperty("countries_tags")
+    private List<String> countriesTags;
     private String brands;
     private String packaging;
-    private String labels;
+    @JsonProperty("labels_hierarchy")
+    private List<String> labelsHierarchy;
+    @JsonProperty("labels_tags")
+    private List<String> labelsTags;
     @JsonProperty("cities_tags")
     private List<Object> citiesTags = new ArrayList<>();
     private String quantity;
@@ -84,6 +93,17 @@ public class Product implements Serializable {
     private long ingredientsFromPalmOilN;
     @JsonProperty("image_url")
     private String imageUrl;
+    @JsonProperty("emb_codes_tags")
+    private List<Object> embTags = new ArrayList<>();
+    @JsonProperty("states_tags")
+    private List<String> statesTags = new ArrayList<>();
+
+    /**
+     * @return The statesTags
+     */
+    public List<String> getStatesTags() {
+        return statesTags;
+    }
 
     public String getLastModifiedBy() {
         return lastModifiedBy;
@@ -115,6 +135,13 @@ public class Product implements Serializable {
      */
     public String getImageNutritionUrl() {
         return imageNutritionUrl;
+    }
+
+    /**
+     * @return The manufactureUrl
+     */
+    public String getManufactureUrl() {
+        return manufactureUrl;
     }
 
     /**
@@ -202,12 +229,11 @@ public class Product implements Serializable {
 
 
     /**
-     * @return The categories
+     * @return The categoriesTags
      */
-    public String getCategories() {
-        return categories;
+    public List<String> getCategoriesTags() {
+        return categoriesTags;
     }
-
 
     /**
      * @return The ingredientsText
@@ -270,9 +296,9 @@ public class Product implements Serializable {
      * @return The stores
      */
     public String getStores() {
-        if(stores==null)
+        if (stores == null)
             return null;
-        return stores.replace(",",", ");
+        return stores.replace(",", ", ");
     }
 
 
@@ -296,9 +322,9 @@ public class Product implements Serializable {
      * @return The countries
      */
     public String getCountries() {
-        if(countries==null)
+        if (countries == null)
             return null;
-        return countries.replace(",",", ");
+        return countries.replace(",", ", ");
     }
 
 
@@ -306,7 +332,7 @@ public class Product implements Serializable {
      * @return The brands
      */
     public String getBrands() {
-        if(brands==null)
+        if (brands == null)
             return null;
         return brands.replace(",", ", ");
     }
@@ -316,19 +342,25 @@ public class Product implements Serializable {
      * @return The packaging
      */
     public String getPackaging() {
-        if(packaging==null)
+        if (packaging == null)
             return null;
-        return packaging.replace(",",", ");
+        return packaging.replace(",", ", ");
     }
 
 
     /**
-     * @return The labels
+     * @return The labels tags
      */
-    public String getLabels() {
-        return labels;
+    public List<String> getLabelsTags() {
+        return labelsTags;
     }
 
+    /**
+     * @return The labels hierarchy
+     */
+    public List<String> getLabelsHierarchy() {
+        return labelsHierarchy;
+    }
 
     /**
      * @return The citiesTags
@@ -361,6 +393,17 @@ public class Product implements Serializable {
         return imageUrl;
     }
 
+
+    /**
+     * @return The Emb_codes
+     */
+    public List<Object> getEmbTags() {
+        return embTags;
+    }
+
+    public List<String> getCountriesTags() {
+        return countriesTags;
+    }
 
     @Override
     public String toString() {

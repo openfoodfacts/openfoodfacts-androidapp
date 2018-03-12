@@ -12,4 +12,12 @@
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">crwdns35312:0crwdne35312:0</string>
   <string name="txtHome">crwdns35313:0crwdne35313:0</string>
+  <string name="slide_1_title">crwdns37162:0crwdne37162:0</string>
+  <string name="slide_1_desc">crwdns37163:0crwdne37163:0</string>
+  <string name="slide_2_title">crwdns37164:0crwdne37164:0</string>
+  <string name="slide_2_desc">crwdns37165:0crwdne37165:0</string>
+  <string name="slide_3_title">crwdns37166:0crwdne37166:0</string>
+  <string name="slide_3_desc">crwdns37167:0crwdne37167:0</string>
+  <string name="slide_4_title">crwdns37168:0crwdne37168:0</string>
+  <string name="slide_4_desc">crwdns37169:0crwdne37169:0</string>
 </resources>

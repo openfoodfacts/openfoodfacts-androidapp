@@ -10,4 +10,4 @@
     android:drawablePadding="@dimen/spacing_normal"
     android:ellipsize="marquee"
     android:textStyle="bold"
-    android:maxLines="1" />
+    android:singleLine="true" />

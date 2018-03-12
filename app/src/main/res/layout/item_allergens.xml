@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:layout_margin="@dimen/spacing_small"
         android:layout_marginLeft="@dimen/spacing_normal"
@@ -24,9 +24,11 @@
         android:id="@+id/delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textSize="10sp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:textSize="13sp"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/white"
         android:layout_margin="@dimen/spacing_normal"
         />
 </LinearLayout>

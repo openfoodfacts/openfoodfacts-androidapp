@@ -18,9 +18,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginEnd="@dimen/spacing_normal"
-        android:layout_marginStart="@dimen/spacing_normal"
-        android:layout_marginTop="@dimen/spacing_normal"
+        android:layout_marginEnd="@dimen/spacing_larger"
+        android:layout_marginStart="@dimen/spacing_larger"
+        android:layout_marginTop="@dimen/spacing_larger"
         app:srcCompat="@drawable/ic_openfacts_logo_no_tagline" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/spacing_normal"
+        android:layout_margin="@dimen/spacing_larger"
         android:gravity="center"
         android:text="@string/txtHome"
         android:textColor="@color/md_black_1000"
