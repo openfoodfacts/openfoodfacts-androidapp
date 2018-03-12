@@ -26,7 +26,7 @@ public class SavedProductUploadJob extends JobService {
 
     @Override
     public boolean onStopJob(JobParameters job) {
-        Toast.makeText(this, "job stopped", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "job stopped", Toast.LENGTH_SHORT).show();
         apiClient.uploadOfflineImages(this, true, job, this);
         return true;
     }

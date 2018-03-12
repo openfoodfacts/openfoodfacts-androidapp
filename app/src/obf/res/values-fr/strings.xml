@@ -12,12 +12,12 @@
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-fr.openbeautyfacts.org/contributeur/</string>
   <string name="txtHome">Open Beauty Facts est une base de données sur les produits cosmétiques avec ingrédients, allergènes et toutes les informations présentes sur les étiquettes.</string>
-  <string name="slide_1_title">Contribute to Cosmetic transparency</string>
-  <string name="slide_1_desc">Scan products, take them in picture, make cosmetic transparency happen</string>
-  <string name="slide_2_title">Get the facts</string>
-  <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Keep track of the product you use</string>
-  <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
-  <string name="slide_4_title">Works offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connexion right now</string>
+  <string name="slide_1_title">Contribuez à la transparence cosmétique</string>
+  <string name="slide_1_desc">Scannez les produits, prenez-les en photo, devenez un acteur de la transparence cosmétique</string>
+  <string name="slide_2_title">Obtenez les faits</string>
+  <string name="slide_2_desc">Des informations détaillées sur le produit que vous avez scanné, déchiffrées pour vous</string>
+  <string name="slide_3_title">Gardez une trace des produits que vous utilisez</string>
+  <string name="slide_3_desc">Tous les cosmétiques que vous utilisez, dans une liste pratique, que vous pouvez exporter</string>
+  <string name="slide_4_title">Fonctionne hors connexion</string>
+  <string name="slide_4_desc">Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d\'une connexion Internet sur le moment</string>
 </resources>

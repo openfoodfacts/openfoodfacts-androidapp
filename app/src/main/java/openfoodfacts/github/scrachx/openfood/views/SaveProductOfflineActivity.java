@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -17,11 +18,13 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Gravity;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +43,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
@@ -90,6 +94,10 @@ public class SaveProductOfflineActivity extends BaseActivity {
     CardView mContainerView;
     @BindView(R.id.message_dismiss_icon)
     ImageButton mDismissButton;
+    @BindView(R.id.message)
+    TextView messageView;
+    @BindView(R.id.NutritionImageGroup)
+    LinearLayout nutritionGroup;
 
     PhotoViewAttacher mAttacherimgSaveFront;
     PhotoViewAttacher mAttacherimgSaveNutrition;
@@ -105,7 +113,14 @@ public class SaveProductOfflineActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         setContentView(R.layout.activity_save_product_offline);
+
+        if (BuildConfig.FLAVOR.equals("obf")) {
+            nutritionGroup.setVisibility(View.GONE);
+        }
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -133,6 +148,13 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
         api = new OpenFoodAPIClient(this);
         mBarcode = getIntent().getStringExtra("barcode");
+
+        String bookBarcodeTest = mBarcode.substring(0, 3);
+        if (bookBarcodeTest.equals("978") || bookBarcodeTest.equals("979")) {
+            messageView.setText(R.string.not_support_books);
+            mContainerView.setVisibility(View.VISIBLE);
+        }
+
         barcodeText.append(" " + mBarcode);
 
         imgSaveFront.setVisibility(View.GONE);
@@ -232,7 +254,9 @@ public class SaveProductOfflineActivity extends BaseActivity {
         save.setText(getString(R.string.saving));
 
         if (isBlank(mProduct.getImgupload_front())) {
-            Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
+            Toast toast = Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER,0,0);
+            toast.show();
             save.setEnabled(true);
             save.setText(getString(R.string.txtSave));
             return;
@@ -273,19 +297,25 @@ public class SaveProductOfflineActivity extends BaseActivity {
             api.post(this, mProduct, value -> {
                 if (!value) {
                     mSendProductDao.insert(mProduct);
-                    Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER,0,0);
+                    toast.show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra("openOfflineEdit", true);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER,0,0);
+                    toast.show();
                     api.getProduct(mProduct.getBarcode(), activity);
                 }
                 finish();
             });
         } else {
             mSendProductDao.insertOrReplace(mProduct);
-            Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+            Toast toast = Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER,0,0);
+            toast.show();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.putExtra("openOfflineEdit", true);
             startActivity(intent);
@@ -383,20 +413,19 @@ public class SaveProductOfflineActivity extends BaseActivity {
             mProduct.setImgupload_front(photoFile.getAbsolutePath());
             imgSaveFront.setVisibility(View.VISIBLE);
             mAttacherimgSaveFront = new PhotoViewAttacher(imgSaveFront);
-                Picasso.with(this)
-                        .load(photoFile)
-                        .into(imgSaveFront, new Callback() {
-                            @Override
-                            public void onSuccess() {
-                                mAttacherimgSaveFront.update();
-                            }
+            Picasso.with(this)
+                    .load(photoFile)
+                    .into(imgSaveFront, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            mAttacherimgSaveFront.update();
+                        }
 
-                            @Override
-                            public void onError() {
-                            }
-                        });
-            }
-         else if (imageTaken.equals("nutrition")) {
+                        @Override
+                        public void onError() {
+                        }
+                    });
+        } else if (imageTaken.equals("nutrition")) {
             mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
             imgSaveNutrition.setVisibility(View.VISIBLE);
             mAttacherimgSaveNutrition = new PhotoViewAttacher(imgSaveNutrition);
@@ -407,6 +436,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                         public void onSuccess() {
                             mAttacherimgSaveNutrition.update();
                         }
+
                         @Override
                         public void onError() {
                         }
@@ -422,6 +452,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                         public void onSuccess() {
                             mAttacherimageSaveIngredients.update();
                         }
+
                         @Override
                         public void onError() {
                         }

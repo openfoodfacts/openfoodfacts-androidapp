@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -14,12 +15,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,6 +102,15 @@ public class SearchProductsResultsFragment extends BaseFragment {
                         if (p != null) {
                             String barcode = p.getCode();
                             api.getProduct(barcode, getActivity());
+                            try {
+                                View view1 = getActivity().getCurrentFocus();
+                                if (view != null) {
+                                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                                    imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                                }
+                            } catch (NullPointerException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 })
@@ -134,7 +145,7 @@ public class SearchProductsResultsFragment extends BaseFragment {
                     public void onProductsResponse(boolean isResponseOk, List<Product> products, int countProducts) {
                         hideProgressBar();
                         if (isResponseOk) {
-                            countProductsView.append(" " + String.valueOf(countProducts));
+                            countProductsView.append(" " + NumberFormat.getInstance(getResources().getConfiguration().locale).format(countProducts));
                             mCountProducts = countProducts;
                             mProducts.addAll(products);
                             if (mProducts.size() < mCountProducts) {
@@ -152,6 +163,7 @@ public class SearchProductsResultsFragment extends BaseFragment {
                                 countProductsView.setVisibility(View.INVISIBLE);
                                 offlineCloudLayout.setVisibility(View.INVISIBLE);
                                 noResultsLayout.setVisibility(View.VISIBLE);
+                                noResultsLayout.bringToFront();
                             } else {
                                 countProductsView.setVisibility(View.INVISIBLE);
                                 noResultsLayout.setVisibility(View.INVISIBLE);
@@ -173,7 +185,8 @@ public class SearchProductsResultsFragment extends BaseFragment {
                             .title(R.string.action_about)
                             .content(R.string.permission_camera)
                             .neutralText(R.string.txtOk)
-                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission
+                                    .CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
                             .show();
                 } else {
                     ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,11 +39,16 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
 public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
 
-    @BindView(R.id.imageGrade) ImageView img;
-    @BindView(R.id.listNutrientLevels) ListView lv;
-    @BindView(R.id.textServingSize) TextView serving;
-    @BindView(R.id.textCarbonFootprint) TextView carbonFootprint;
-    @BindView(R.id.textNutrientTxt) TextView textNutrientTxt;
+    @BindView(R.id.imageGrade)
+    ImageView img;
+    @BindView(R.id.listNutrientLevels)
+    RecyclerView rv;
+    @BindView(R.id.textServingSize)
+    TextView serving;
+    @BindView(R.id.textCarbonFootprint)
+    TextView carbonFootprint;
+    @BindView(R.id.textNutrientTxt)
+    TextView textNutrientTxt;
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri nutritionScoreUri;
 
@@ -67,7 +74,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         NutrimentLevel saturatedFat = null;
         NutrimentLevel sugars = null;
         NutrimentLevel salt = null;
-        if(nutrientLevels != null) {
+        if (nutrientLevels != null) {
             fat = nutrientLevels.getFat();
             saturatedFat = nutrientLevels.getSaturatedFat();
             sugars = nutrientLevels.getSugars();
@@ -75,7 +82,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
 
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
-            textNutrientTxt.append(" "+getString(R.string.txtNoData));
+            textNutrientTxt.append(" " + getString(R.string.txtNoData));
             levelItem.add(new NutrientLevelItem("", "", "", 0));
         } else {
             // prefetch the uri
@@ -116,13 +123,14 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
             img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
             img.setOnClickListener(view1 -> {
-            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-            CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+                CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
             });
         }
 
-        lv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
 
         if (TextUtils.isEmpty(product.getServingSize())) {
             serving.setVisibility(View.GONE);
