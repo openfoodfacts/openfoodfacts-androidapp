@@ -54,7 +54,6 @@ import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.SearchProductsResultsFragment;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
@@ -520,12 +519,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 Fragment currentFragment = fragmentManager.findFragmentById(R.id
                         .fragment_container);
 
-                // Not replace if no search has been done (no switch of fragment)
-                if (currentFragment instanceof SearchProductsResultsFragment) {
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.fragment_container, new HomeFragment())
-                            .commit();
-                }
 
                 return true;
             }
@@ -610,18 +603,13 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     protected void onNewIntent(Intent intent) {
-        setIntent(intent);
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            Fragment newFragment = new SearchProductsResultsFragment();
-            Bundle args = new Bundle();
-            args.putString("query", query);
-            newFragment.setArguments(args);
-            transaction.replace(R.id.fragment_container, newFragment);
-            transaction.commit();
+            Intent mIntent = new Intent(MainActivity.this, ProductBrowsingListActivity.class);
+            mIntent.putExtra("key", query);
+            mIntent.putExtra("search_type", "search");
+            startActivity(mIntent);
         }
     }
 
