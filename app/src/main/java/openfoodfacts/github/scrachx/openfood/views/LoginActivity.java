@@ -76,7 +76,6 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         setTitle(getString(R.string.txtSignIn));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
@@ -110,26 +109,29 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     protected void attemptLogin() {
         String login = loginView.getText().toString();
         String password = passwordView.getText().toString();
-
         if (TextUtils.isEmpty(login)) {
             loginView.setError(getString(R.string.error_field_required));
             loginView.requestFocus();
             return;
         }
-
         if (!(password.length() >= 6)) {
             passwordView.setError(getString(R.string.error_invalid_password));
             passwordView.requestFocus();
             return;
         }
 
-
-
         Snackbar snackbar = Snackbar
                 .make(linearLayout, R.string.toast_retrieving, Snackbar.LENGTH_LONG);
 
         snackbar.show();
 
+        final LoadToast lt = new LoadToast(this);
+        save.setClickable(false);
+        lt.setText(getString(R.string.toast_retrieving));
+        lt.setBackgroundColor(ContextCompat.getColor(this, R.color.blue));
+        lt.setTextColor(ContextCompat.getColor(this, R.color.white));
+        lt.show();
+      
         final Activity context = this;
         apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
             @Override
@@ -162,7 +164,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                 } else {
                     // store the user session id (user_session and user_id)
                     for (HttpCookie httpCookie : HttpCookie.parse(response.headers().get("set-cookie"))) {
-                        if (httpCookie.getDomain().equals(".openfoodfacts.org") && httpCookie.getPath().equals("/")) {
+                        if (httpCookie.getDomain().equals(".openbeautyfacts.org") && httpCookie.getPath().equals("/")) {
                             String[] cookieValues = httpCookie.getValue().split("&");
                             for (int i = 0; i < cookieValues.length; i++) {
                                 editor.putString(cookieValues[i], cookieValues[++i]);
@@ -177,8 +179,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                     snackbar.show();
                     
                     Toast.makeText(context, context.getResources().getText(R.string.txtToastSaved), Toast.LENGTH_LONG).show();
-                    editor.putString("user", loginView.getText().toString());
-                    editor.putString("pass", passwordView.getText().toString());
+                    editor.putString("user", login);
+                    editor.putString("pass", password);
                     editor.apply();
                     infoLogin.setText(R.string.txtInfoLoginOk);
 

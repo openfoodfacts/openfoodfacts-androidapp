@@ -33,6 +33,14 @@
             android:summaryOn="@string/preference_enable_mobile_data_summary_on"
             android:title="@string/preference_enable_mobile_data_title" />
 
+        <ListPreference
+            android:defaultValue="640 X 480"
+            android:dialogTitle="@string/choose_resolution"
+            android:key="ImageUpload"
+            android:selectable="true"
+            android:summary="@string/pref_resolution_summary"
+            android:title="@string/image_upload_resolution" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/preference_header_contributing">
