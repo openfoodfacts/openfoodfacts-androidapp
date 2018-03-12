@@ -183,11 +183,9 @@ public class IngredientsProductFragment extends BaseFragment {
                     }
                 }
                 additives.add(additiveName.getName());
-                // additiveProduct.append(additiveName.getName());
-                //additiveProduct.append("\n");
                 for (int i = 0; i < additives.size() - 1; i++) {
                     additiveProduct.append(getAdditiveTag(StringUtils.capitalize(additives.get(i))));
-                    additiveProduct.append(", ");
+                    additiveProduct.append("\n");
                 }
 
                 additiveProduct.append(getAdditiveTag(StringUtils.capitalize(additives.get(additives.size() - 1))));
