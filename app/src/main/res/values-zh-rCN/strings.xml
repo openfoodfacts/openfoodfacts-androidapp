@@ -378,6 +378,8 @@
   <string name="image_upload_resolution">Image Upload Resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="brand_string">品牌</string>
+  <string name="additive_string">Additive</string>
+  <string name="search_string">搜索</string>
   <string name="country_string">国家</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
 </resources>
