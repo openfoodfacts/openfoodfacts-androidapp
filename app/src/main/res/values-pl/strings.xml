@@ -391,4 +391,8 @@
   <string name="search_string">Szukaj</string>
   <string name="country_string">Kraj</string>
   <string name="last_seen_string">%1$d %2$s temu</string>
+  <string name="store_string">Sklep</string>
+  <string name="packaging_string">Opakowania</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Kategoria</string>
 </resources>
