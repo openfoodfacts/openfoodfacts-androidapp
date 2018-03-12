@@ -438,6 +438,15 @@ public class OpenFoodAPIClient {
         void onBrandResponse(boolean value, Search brand);
     }
 
+    public interface OnStoreCallback{
+        void onStoreResponse(boolean value,Search store);
+    }
+
+    public interface OnPackagingCallback{
+        void onPackagingResponse(boolean value,Search packaging);
+    }
+
+
     public interface OnAdditiveCallback {
 
         void onAdditiveResponse(boolean value, Search brand);
@@ -568,6 +577,64 @@ public class OpenFoodAPIClient {
             @Override
             public void onFailure(Call<Search> call, Throwable t) {
                 onBrandCallback.onBrandResponse(false, null);
+            }
+        });
+
+    }
+
+
+    public void getProductsByPackaging(final String packaging, final int page, final OnPackagingCallback onPackagingCallback) {
+
+        apiService.getProductByPackaging(packaging, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onPackagingCallback.onPackagingResponse(false, null);
+                    return;
+                }
+
+                if (Integer.valueOf(response.body().getCount()) == 0) {
+                    onPackagingCallback.onPackagingResponse(false, null);
+                    return;
+                } else {
+                    onPackagingCallback.onPackagingResponse(true, response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+                onPackagingCallback.onPackagingResponse(false, null);
+            }
+        });
+
+    }
+
+
+    public void getProductsByStore(final String store, final int page, final OnStoreCallback onStoreCallback) {
+
+        apiService.getProductByStores(store, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onStoreCallback.onStoreResponse(false, null);
+                    return;
+                }
+
+                if (Integer.valueOf(response.body().getCount()) == 0) {
+                    onStoreCallback.onStoreResponse(false, null);
+                    return;
+                } else {
+                    onStoreCallback.onStoreResponse(true, response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+                onStoreCallback.onStoreResponse(false, null);
             }
         });
 

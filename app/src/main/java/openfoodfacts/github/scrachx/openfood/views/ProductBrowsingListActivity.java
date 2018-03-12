@@ -75,7 +75,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         Bundle extras = getIntent().getExtras();
 
         typeStrings = new String[]{
-                "brand", "country", "additive", "search"
+                "brand", "country", "additive", "search","store","packaging"
         };
 
         searchType = extras.getString("search_type");
@@ -98,6 +98,15 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
             case "search": {
                 getSupportActionBar().setSubtitle(R.string.search_string);
+                break;
+            }
+            case "store": {
+                getSupportActionBar().setSubtitle("Store");
+                break;
+            }
+
+            case "packaging": {
+                getSupportActionBar().setSubtitle("Packaging");
                 break;
             }
         }
@@ -144,6 +153,26 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     @Override
                     public void onAdditiveResponse(boolean value, Search country) {
                         loadData(value, country);
+                    }
+                });
+                break;
+            }
+
+            case "store": {
+                apiClient.getProductsByStore(key, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
+                    @Override
+                    public void onStoreResponse(boolean value, Search storeObject) {
+                        loadData(value, storeObject);
+                    }
+                });
+                break;
+            }
+
+            case "packaging": {
+                apiClient.getProductsByPackaging(key, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
+                    @Override
+                    public void onPackagingResponse(boolean value, Search packagingObject) {
+                        loadData(value, packagingObject);
                     }
                 });
                 break;
