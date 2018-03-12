@@ -270,8 +270,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         List<String> tags = product.getCategoriesTags();
         if (tags != null && !tags.isEmpty()) {
             categoryProduct.setText(bold(getString(R.string.txtCategories)));
+            categoryProduct.setClickable(true);
+            categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
             categoryProduct.append(" ");
-
             CategoryName categoryName;
             String languageCode = Locale.getDefault().getLanguage();
             List<String> categories = new ArrayList<>();
