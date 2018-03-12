@@ -1,7 +1,7 @@
 <resources>
 
     <plurals name="minutes">
-        <item quantity="one"> minute </item>
+        <item quantity="one"> minute</item>
         <item quantity="other"> minutes</item>
     </plurals>
     <plurals name="hours">
@@ -21,6 +21,14 @@
     <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
     <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
 
+
+    <!-- Image Upload -->
+    <string-array name="upload_image">
+        <item>640 X 480</item>
+        <item>1024 X 768</item>
+        <item>1152 X 864</item>
+        <item>1600 X 1200</item>
+    </string-array>
 
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -455,12 +463,15 @@
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Cancel</string>
 
+    <string name="choose_resolution">Choose Resolution</string>
+    <string name="pref_resolution_summary">Pick a resolution for image upload</string>
+    <string name="image_upload_resolution">Image Upload Resolution</string>
+
+
     <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
-
-
-
     <string name="brand_string">Brand</string>
-
+    <string name="additive_string">Additive</string>
+    <string name="search_string">Search</string>
     <string name="country_string">Countries where sold</string>
     <string name="last_seen_string">%1$d %2$s ago</string>
 
