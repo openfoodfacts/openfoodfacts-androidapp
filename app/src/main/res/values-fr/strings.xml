@@ -385,4 +385,8 @@
   <string name="search_string">Rechercher</string>
   <string name="country_string">Pays</string>
   <string name="last_seen_string">Il y a %1$d %2$s</string>
+  <string name="store_string">Magasin</string>
+  <string name="packaging_string">Conditionnement</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Categorie</string>
 </resources>
