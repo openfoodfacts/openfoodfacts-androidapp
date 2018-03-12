@@ -385,4 +385,8 @@
   <string name="search_string">Ara</string>
   <string name="country_string">Ülke</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">Mağaza</string>
+  <string name="packaging_string">Paketleme</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Kategori</string>
 </resources>
