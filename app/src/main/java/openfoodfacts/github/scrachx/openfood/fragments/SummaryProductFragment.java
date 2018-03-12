@@ -240,7 +240,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             packagingProduct.setText(bold(getString(R.string.txtPackaging)));
             packagingProduct.append(" ");
             String[] packagings = product.getPackaging().split(",");
-            for(String packaging : packagings){
+            for (String packaging : packagings) {
                 packagingProduct.append(getPackagingsTag(packaging));
             }
         } else {
@@ -277,7 +277,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (tags != null && !tags.isEmpty()) {
             categoryProduct.setText(bold(getString(R.string.txtCategories)));
             categoryProduct.append(" ");
-
+            categoryProduct.setClickable(true);
+            categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
             CategoryName categoryName;
             String languageCode = Locale.getDefault().getLanguage();
             List<String> categories = new ArrayList<>();
@@ -362,7 +363,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             storeProduct.setMovementMethod(LinkMovementMethod.getInstance());
             storeProduct.append(" ");
             String[] stores = product.getStores().split(",");
-            for (String store: stores){
+            for (String store : stores) {
                 storeProduct.append(getStoresTag(store));
             }
         } else {
@@ -537,7 +538,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
                 intent.putExtra("key", brand);
-                intent.putExtra("search_type","brand");
+                intent.putExtra("search_type", "brand");
                 startActivity(intent);
             }
         };
@@ -550,38 +551,37 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
 
-    private CharSequence getPackagingsTag(String packaging){
+    private CharSequence getPackagingsTag(String packaging) {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),ProductBrowsingListActivity.class);
-                intent.putExtra("key",packaging);
-                intent.putExtra("search_type","packaging");
+                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
+                intent.putExtra("key", packaging);
+                intent.putExtra("search_type", "packaging");
                 startActivity(intent);
             }
         };
         spannableStringBuilder.append(packaging);
-        spannableStringBuilder.setSpan(clickableSpan,0,spannableStringBuilder.length(),SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append(" ");
         return spannableStringBuilder;
     }
 
 
-
-    private CharSequence getStoresTag(String store){
+    private CharSequence getStoresTag(String store) {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),ProductBrowsingListActivity.class);
-                intent.putExtra("key",store);
-                intent.putExtra("search_type","store");
+                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
+                intent.putExtra("key", store);
+                intent.putExtra("search_type", "store");
                 startActivity(intent);
             }
         };
         spannableStringBuilder.append(store);
-        spannableStringBuilder.setSpan(clickableSpan,0,spannableStringBuilder.length(),SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append(" ");
         return spannableStringBuilder;
     }
@@ -593,7 +593,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
                 intent.putExtra("key", country);
-                intent.putExtra("search_type","country");
+                intent.putExtra("search_type", "country");
                 startActivity(intent);
             }
         };
@@ -609,8 +609,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse("https://world.openfoodfacts.org/category/" + category), new WebViewFallback());
+
+                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
+                intent.putExtra("key", category);
+                intent.putExtra("search_type", "category");
+                startActivity(intent);
             }
         };
 
@@ -624,8 +627,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse("https://world.openfoodfacts.org/label/" + label), new WebViewFallback());
+                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
+                intent.putExtra("key", label);
+                intent.putExtra("search_type", "label");
+                startActivity(intent);
             }
 
         };
