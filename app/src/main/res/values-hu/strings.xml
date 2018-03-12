@@ -250,7 +250,7 @@
   <string name="txt_no_matching_products">Nem találtunk megfelelő termékeket.\nMegpróbálhatja :</string>
   <string name="txt_broaden_search">- szélesítse a keresést \n- olvassa be és adja hozzá az Open Food Facts-hoz</string>
   <string name="txt_cant_load_search_results">Nem tölthető be a keresés eredménye</string>
-  <string name="something_went_wrong">Sorry, something went wrong…</string>
+  <string name="something_went_wrong">Sajnáljuk, valami hiba történt…</string>
   <string name="txt_try_again">Próbálja újra</string>
   <string name="nutrition_lactose">Laktóz</string>
   <string name="nutrition_casein">Kazein</string>
@@ -376,13 +376,13 @@
   <string name="confirm_logout">Kijelentkezés megerősítése</string>
   <string name="logout_dialog_content">Biztosan kijelentkezik?</string>
   <string name="dialog_cancel">Mégse</string>
-  <string name="choose_resolution">Choose Resolution</string>
-  <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-  <string name="image_upload_resolution">Image Upload Resolution</string>
-  <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+  <string name="choose_resolution">Válasszon felbontást</string>
+  <string name="pref_resolution_summary">Válasszon felbontást kép feltöltéshez</string>
+  <string name="image_upload_resolution">Képfeltöltés felbontása</string>
+  <string name="can_add_barcode">Gond adódott a beolvasással?\nGépelje be a vonalkódot</string>
   <string name="brand_string">Márka</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Adalékanyag</string>
   <string name="search_string">Keres</string>
   <string name="country_string">Ország</string>
-  <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="last_seen_string">%1$d %2$s ezelőtt</string>
 </resources>
