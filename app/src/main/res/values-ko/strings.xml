@@ -382,4 +382,8 @@
   <string name="search_string">수색</string>
   <string name="country_string">국가</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">Store</string>
+  <string name="packaging_string">포장</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Category</string>
 </resources>
