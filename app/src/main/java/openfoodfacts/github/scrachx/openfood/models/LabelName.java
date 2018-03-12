@@ -24,22 +24,42 @@ public class LabelName {
 
     private String name;
 
+    private String wikiDataId;
+
+    private Boolean isWikiDataIdPresent;
+
+
     public LabelName() {
     }
 
-    @Generated(hash = 274274142)
-    public LabelName(Long id, String labelTag, String languageCode, String name) {
+    @Generated(hash = 794887766)
+    public LabelName(Long id, String labelTag, String languageCode, String name,
+                     String wikiDataId, Boolean isWikiDataIdPresent) {
         this.id = id;
         this.labelTag = labelTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
+
+    @Keep
+    public LabelName(String labelTag, String languageCode, String name, String wikiDataId) {
+        this.labelTag = labelTag;
+        this.languageCode = languageCode;
+        this.name = name;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = true;
+    }
+
 
     @Keep
     public LabelName(String labelTag, String languageCode, String name) {
         this.labelTag = labelTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.isWikiDataIdPresent = false;
+
     }
 
     @Keep
@@ -75,7 +95,25 @@ public class LabelName {
         return this.id;
     }
 
+    public String getWikiDataId() {
+        int endIndex = this.wikiDataId.lastIndexOf("\"");
+        return this.wikiDataId.substring(7, endIndex);
+    }
+
+
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setWikiDataId(String wikiDataId) {
+        this.wikiDataId = wikiDataId;
+    }
+
+    public Boolean getIsWikiDataIdPresent() {
+        return this.isWikiDataIdPresent;
+    }
+
+    public void setIsWikiDataIdPresent(Boolean isWikiDataIdPresent) {
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 }

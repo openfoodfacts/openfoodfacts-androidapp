@@ -26,10 +26,10 @@ public class CountriesWrapperDeserializer implements JsonDeserializer<CountriesW
     @Override
     public CountriesWrapper deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         List<CountryResponse> countries = new ArrayList<>();
-        JsonObject labelsWrapperJson = json.getAsJsonObject();
+        JsonObject countriesWrapperJson = json.getAsJsonObject();
 
-        for (Map.Entry<String, JsonElement> label : labelsWrapperJson.entrySet()) {
-            JsonElement namesJsonElement = label.getValue().getAsJsonObject().get(NAMES_KEY);
+        for (Map.Entry<String, JsonElement> country : countriesWrapperJson.entrySet()) {
+            JsonElement namesJsonElement = country.getValue().getAsJsonObject().get(NAMES_KEY);
             if (namesJsonElement != null) {
                 JsonObject namesJson = namesJsonElement.getAsJsonObject();
                 Map<String, String> names = new HashMap<String, String>();  /* Entry<Language Code, Product Name> */
@@ -38,7 +38,7 @@ public class CountriesWrapperDeserializer implements JsonDeserializer<CountriesW
                     names.put(name.getKey(), strName.substring(1, strName.length() - 1)); /* Substring removes needless quotes */
                 }
 
-                countries.add(new CountryResponse(label.getKey(), names));
+                countries.add(new CountryResponse(country.getKey(), names));
             }
         }
 

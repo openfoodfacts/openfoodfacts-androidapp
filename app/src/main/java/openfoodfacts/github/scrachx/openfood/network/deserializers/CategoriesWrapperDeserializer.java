@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.network.deserializers;
 
+import android.util.Log;
+
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -14,6 +16,7 @@ import java.util.Map;
 
 import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
 import openfoodfacts.github.scrachx.openfood.models.CategoryResponse;
+import openfoodfacts.github.scrachx.openfood.models.LabelResponse;
 
 /**
  * Created by Lobster on 03.03.18.
@@ -22,6 +25,8 @@ import openfoodfacts.github.scrachx.openfood.models.CategoryResponse;
 public class CategoriesWrapperDeserializer implements JsonDeserializer<CategoriesWrapper> {
 
     private static final String NAMES_KEY = "name";
+    private static final String WIKIDATA_KEY = "wikidata";
+
 
     @Override
     public CategoriesWrapper deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
@@ -29,16 +34,23 @@ public class CategoriesWrapperDeserializer implements JsonDeserializer<Categorie
         JsonObject categoriesWrapperJson = json.getAsJsonObject();
 
         for (Map.Entry<String, JsonElement> category : categoriesWrapperJson.entrySet()) {
-            JsonElement namesJsonElement = category.getValue().getAsJsonObject().get(NAMES_KEY);
+            JsonObject jsonObject = category.getValue().getAsJsonObject();
+            JsonElement namesJsonElement = jsonObject.get(NAMES_KEY);
+            Boolean wikiDataJsonElement = jsonObject.has(WIKIDATA_KEY);
+
             if (namesJsonElement != null) {
                 JsonObject namesJson = namesJsonElement.getAsJsonObject();
+
                 Map<String, String> names = new HashMap<String, String>();  /* Entry<Language Code, Product Name> */
                 for (Map.Entry<String, JsonElement> name : namesJson.entrySet()) {
                     String strName = name.getValue().toString();
                     names.put(name.getKey(), strName.substring(1, strName.length() - 1)); /* Substring removes needless quotes */
                 }
-
-                categories.add(new CategoryResponse(category.getKey(), names));
+                if (wikiDataJsonElement) {
+                    categories.add(new CategoryResponse(category.getKey(), names, jsonObject.get(WIKIDATA_KEY).toString()));
+                } else {
+                    categories.add(new CategoryResponse(category.getKey(), names));
+                }
             }
         }
 

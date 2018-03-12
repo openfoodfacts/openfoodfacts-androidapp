@@ -438,6 +438,15 @@ public class OpenFoodAPIClient {
         void onBrandResponse(boolean value, Search brand);
     }
 
+    public interface OnStoreCallback {
+        void onStoreResponse(boolean value, Search store);
+    }
+
+    public interface OnPackagingCallback {
+        void onPackagingResponse(boolean value, Search packaging);
+    }
+
+
     public interface OnAdditiveCallback {
 
         void onAdditiveResponse(boolean value, Search brand);
@@ -449,6 +458,14 @@ public class OpenFoodAPIClient {
 
     public interface onCountryCallback {
         void onCountryResponse(boolean value, Search country);
+    }
+
+    public interface onLabelCallback {
+        void onLabelResponse(boolean value, Search label);
+    }
+
+    public interface onCategoryCallback {
+        void onCategoryResponse(boolean value, Search category);
     }
 
     /**
@@ -574,6 +591,64 @@ public class OpenFoodAPIClient {
     }
 
 
+    public void getProductsByPackaging(final String packaging, final int page, final OnPackagingCallback onPackagingCallback) {
+
+        apiService.getProductByPackaging(packaging, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onPackagingCallback.onPackagingResponse(false, null);
+                    return;
+                }
+
+                if (Integer.valueOf(response.body().getCount()) == 0) {
+                    onPackagingCallback.onPackagingResponse(false, null);
+                    return;
+                } else {
+                    onPackagingCallback.onPackagingResponse(true, response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+                onPackagingCallback.onPackagingResponse(false, null);
+            }
+        });
+
+    }
+
+
+    public void getProductsByStore(final String store, final int page, final OnStoreCallback onStoreCallback) {
+
+        apiService.getProductByStores(store, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onStoreCallback.onStoreResponse(false, null);
+                    return;
+                }
+
+                if (Integer.valueOf(response.body().getCount()) == 0) {
+                    onStoreCallback.onStoreResponse(false, null);
+                    return;
+                } else {
+                    onStoreCallback.onStoreResponse(true, response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+                onStoreCallback.onStoreResponse(false, null);
+            }
+        });
+
+    }
+
+
     public void getProductsByCountry(String country, final int page, final onCountryCallback onCountryCallback) {
         apiService.getProductsByCountry(country, page).enqueue(new Callback<Search>() {
             @Override
@@ -633,5 +708,71 @@ public class OpenFoodAPIClient {
             }
         });
 
+    }
+
+    public void getProductsByLabel(String label, final int page, final onLabelCallback onLabelCallback) {
+        apiService.getProductByLabel(label, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+
+                if (!response.isSuccessful()) {
+                    onLabelCallback.onLabelResponse(false, null);
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(response.body().getCount()) == 0) {
+                        onLabelCallback.onLabelResponse(false, null);
+                        return;
+                    } else {
+                        onLabelCallback.onLabelResponse(true, response.body());
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+
+                onLabelCallback.onLabelResponse(false, null);
+
+            }
+        });
+    }
+
+
+    public void getProductsByCategory(String category, final int page, final onCategoryCallback onCategoryCallback) {
+        apiService.getProductByCategory(category, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onCategoryCallback.onCategoryResponse(false, null);
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(response.body().getCount()) == 0) {
+                        onCategoryCallback.onCategoryResponse(false, null);
+                        return;
+                    } else {
+                        onCategoryCallback.onCategoryResponse(true, response.body());
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+
+                onCategoryCallback.onCategoryResponse(false, null);
+
+            }
+        });
     }
 }

@@ -46,6 +46,9 @@ import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -54,6 +57,8 @@ import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
@@ -86,6 +91,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private Uri discoverUri;
     private Uri userContributeUri;
     private SendProductDao mSendProductDao;
+    private LabelNameDao labelNameDao;
     private int numberOFSavedProducts;
 
     @Override
@@ -109,6 +115,15 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         mSendProductDao = Utils.getAppDaoSession(MainActivity.this).getSendProductDao();
         numberOFSavedProducts = mSendProductDao.loadAll().size();
 
+        labelNameDao = Utils.getAppDaoSession(MainActivity.this).getLabelNameDao();
+
+        List<LabelName> ln = labelNameDao.loadAll();
+
+        for (LabelName l : ln){
+            if(l.getIsWikiDataIdPresent()){
+                Log.e("aye haye jane man : ", l.getWikiDataId());
+            }
+        }
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {

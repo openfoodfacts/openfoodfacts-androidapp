@@ -26,10 +26,10 @@ public class AllergensWrapperDeserializer implements JsonDeserializer<AllergensW
     @Override
     public AllergensWrapper deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         List<AllergenResponse> allergens = new ArrayList<>();
-        JsonObject labelsWrapperJson = json.getAsJsonObject();
+        JsonObject allergensWrapper = json.getAsJsonObject();
 
-        for (Map.Entry<String, JsonElement> label : labelsWrapperJson.entrySet()) {
-            JsonElement namesJsonElement = label.getValue().getAsJsonObject().get(NAMES_KEY);
+        for (Map.Entry<String, JsonElement> allergen : allergensWrapper.entrySet()) {
+            JsonElement namesJsonElement = allergen.getValue().getAsJsonObject().get(NAMES_KEY);
             if (namesJsonElement != null) {
                 JsonObject namesJson = namesJsonElement.getAsJsonObject();
                 Map<String, String> names = new HashMap<String, String>();  /* Entry<Language Code, Product Name> */
@@ -38,7 +38,7 @@ public class AllergensWrapperDeserializer implements JsonDeserializer<AllergensW
                     names.put(name.getKey(), strName.substring(1, strName.length() - 1)); /* Substring removes needless quotes */
                 }
 
-                allergens.add(new AllergenResponse(label.getKey(), names));
+                allergens.add(new AllergenResponse(allergen.getKey(), names));
             }
         }
 

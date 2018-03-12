@@ -32,6 +32,7 @@ android {
             buildConfigField 'String', 'HOST', '"https://ssl-api.openfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"openfoodfacts.github.scrachx.openbeauty"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
+            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
 
         obf {

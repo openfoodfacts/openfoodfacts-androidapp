@@ -24,14 +24,31 @@ public class AdditiveName {
 
     private String name;
 
-    @Generated(hash = 1645648251)
+    private String wikiDataId;
+
+    private Boolean isWikiDataIdPresent;
+
+    @Generated(hash = 1491450865)
     public AdditiveName(Long id, String additiveTag, String languageCode,
-                        String name) {
+                        String name, String wikiDataId, Boolean isWikiDataIdPresent) {
         this.id = id;
         this.additiveTag = additiveTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
+
+    @Keep
+    public AdditiveName(String additiveTag, String languageCode,
+                        String name, String wikiDataId) {
+        this.additiveTag = additiveTag;
+        this.languageCode = languageCode;
+        this.name = name;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = true;
+    }
+
 
     @Keep
     public AdditiveName(String additiveTag, String languageCode,
@@ -39,6 +56,7 @@ public class AdditiveName {
         this.additiveTag = additiveTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.isWikiDataIdPresent = false;
     }
 
     @Keep
@@ -80,6 +98,23 @@ public class AdditiveName {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getWikiDataId() {
+        int endIndex = this.wikiDataId.lastIndexOf("\"");
+        return this.wikiDataId.substring(7, endIndex);
+    }
+
+    public void setWikiDataId(String wikiDataId) {
+        this.wikiDataId = wikiDataId;
+    }
+
+    public Boolean getIsWikiDataIdPresent() {
+        return this.isWikiDataIdPresent;
+    }
+
+    public void setIsWikiDataIdPresent(Boolean isWikiDataIdPresent) {
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 
 }
