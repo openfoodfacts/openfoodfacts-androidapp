@@ -563,7 +563,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
         };
 
-        spannableStringBuilder.append(category);
+        spannableStringBuilder.append(category); 
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableStringBuilder;
     }
