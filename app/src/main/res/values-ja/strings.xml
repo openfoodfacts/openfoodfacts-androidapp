@@ -374,12 +374,12 @@
   <string name="logout_dialog_content">ログアウトしてもよろしいですか?</string>
   <string name="dialog_cancel">キャンセル</string>
   <string name="choose_resolution">解像度を選択</string>
-  <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-  <string name="image_upload_resolution">Image Upload Resolution</string>
-  <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+  <string name="pref_resolution_summary">画像アップロードの解像度を選択します</string>
+  <string name="image_upload_resolution">画像アップロードの解像度</string>
+  <string name="can_add_barcode">スキャンがうまくいきませんか?\n上にドラッグしてバーコードを入力してください</string>
   <string name="brand_string">ブランド（会社名）</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">添加物</string>
   <string name="search_string">検索</string>
   <string name="country_string">国</string>
-  <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="last_seen_string">%1$d %2$s 前</string>
 </resources>
