@@ -142,6 +142,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.header)
                 .addProfiles(profile)
+                .withSelectionListEnabledForSingleProfile(false)
                 .withOnAccountHeaderListener((view, profile1, current) -> {
                     if (profile1 instanceof IDrawerItem) {
                         if (profile1.getIdentifier() == ITEM_MANAGE_ACCOUNT) {
