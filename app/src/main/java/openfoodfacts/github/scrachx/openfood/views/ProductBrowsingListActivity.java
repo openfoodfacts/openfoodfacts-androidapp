@@ -75,7 +75,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         Bundle extras = getIntent().getExtras();
 
         typeStrings = new String[]{
-                "brand", "country", "additive", "search","store","packaging"
+                "brand", "country", "additive", "search", "store", "packaging", "label" , "category"
         };
 
         searchType = extras.getString("search_type");
@@ -101,12 +101,22 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
             case "store": {
-                getSupportActionBar().setSubtitle("Store");
+                getSupportActionBar().setSubtitle(getString(R.string.store_string));
                 break;
             }
 
             case "packaging": {
-                getSupportActionBar().setSubtitle("Packaging");
+                getSupportActionBar().setSubtitle(getString(R.string.packaging_string));
+                break;
+            }
+
+            case "label": {
+                getSupportActionBar().setSubtitle(getString(R.string.label_string));
+                break;
+            }
+
+            case "category": {
+                getSupportActionBar().setSubtitle(getString(R.string.category_string));
                 break;
             }
         }
@@ -185,6 +195,24 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     }
                 });
             }
+
+            case "label": {
+                api.getProductsByLabel(key, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
+                    @Override
+                    public void onLabelResponse(boolean value, Search label) {
+                        loadData(value, label);
+                    }
+                });
+            }
+
+            case "category": {
+                api.getProductsByCategory(key, pageAddress, new OpenFoodAPIClient.onCategoryCallback() {
+                    @Override
+                    public void onCategoryResponse(boolean value, Search label) {
+                        loadData(value, label);
+                    }
+                });
+            }
         }
     }
 
@@ -194,7 +222,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (isResponseOk) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
-                countProductsView.append(" "+NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount()
+                countProductsView.append(" " + NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount()
                 )));
                 mProducts = new ArrayList<>();
                 mProducts.addAll(response.getProducts());
