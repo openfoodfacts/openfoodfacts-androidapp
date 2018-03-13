@@ -4,11 +4,16 @@ import android.Manifest;
 import android.app.SearchManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,19 +22,31 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.ChecksumException;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.FormatException;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.Reader;
+import com.google.zxing.Result;
+import com.google.zxing.common.HybridBinarizer;
 import com.mikepenz.fastadapter.commons.utils.RecyclerViewCacheUtil;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -46,6 +63,12 @@ import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Hashtable;
+
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -54,7 +77,9 @@ import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
+import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -63,6 +88,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener {
@@ -87,6 +113,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private Uri userContributeUri;
     private SendProductDao mSendProductDao;
     private int numberOFSavedProducts;
+    private String mBarcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -603,13 +630,24 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     protected void onNewIntent(Intent intent) {
-
+        Log.e("Main","action :: "+intent.getAction());
+        String type = intent.getType();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             Intent mIntent = new Intent(MainActivity.this, ProductBrowsingListActivity.class);
             mIntent.putExtra("key", query);
             mIntent.putExtra("search_type", "search");
             startActivity(mIntent);
+        }
+        else if (Intent.ACTION_SEND.equals(intent.getAction()) && type != null) {
+
+            if (type.startsWith("image/")) {
+                handleSendImage(intent); // Handle single image being sent
+            }
+        } else if (Intent.ACTION_SEND_MULTIPLE.equals(intent.getAction()) && type != null) {
+            if (type.startsWith("image/")) {
+                handleSendMultipleImages(intent); // Handle multiple images being sent
+            }
         }
     }
 
@@ -662,5 +700,138 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     public void setItemSelected(@NavigationDrawerType Integer type) {
         result.setSelection(type, false);
+    }
+
+    private void handleSendImage(Intent intent) {
+        Uri selectedImage = null;
+        ArrayList<Uri> selectedImagesArray = new ArrayList<>();
+        selectedImage = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        boolean isBarCodePresent = false;
+        if (selectedImage != null) {
+            selectedImagesArray.add(selectedImage);
+            chooseDialog(selectedImagesArray);
+        }
+    }
+
+    private void handleSendMultipleImages(Intent intent) {
+        ArrayList<Uri> selectedImagesArray = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+        if (selectedImagesArray != null) {
+            chooseDialog(selectedImagesArray);
+        }
+    }
+
+    private void chooseDialog(ArrayList<Uri> selectedImagesArray) {
+        boolean isBarCodePresent = false;
+        isBarCodePresent = isBarCodePresent || detectBarCodeInImage(selectedImagesArray);
+        if (isBarCodePresent) {
+            createAlertDialog(false, mBarcode, selectedImagesArray);
+        } else {
+            createAlertDialog(true, "", selectedImagesArray);
+        }
+    }
+
+    private boolean detectBarCodeInImage(ArrayList<Uri> selectedImages) {
+        InputStream imageStream = null;
+        for (Uri uri : selectedImages) {
+            try {
+                imageStream = getContentResolver().openInputStream(uri);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            //decoding bitmap
+            Bitmap bMap = BitmapFactory.decodeStream(imageStream);
+            int[] intArray = new int[bMap.getWidth() * bMap.getHeight()];
+            bMap.getPixels(intArray, 0, bMap.getWidth(), 0, 0, bMap.getWidth(), bMap.getHeight());
+            LuminanceSource source = new RGBLuminanceSource(bMap.getWidth(), bMap.getHeight(), intArray);
+            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+            Reader reader = new MultiFormatReader();
+            try {
+                Hashtable<DecodeHintType, Object> decodeHints = new Hashtable<DecodeHintType, Object>();
+                decodeHints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
+                decodeHints.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
+                Result result = reader.decode(bitmap, decodeHints);
+                mBarcode = result.getText().toString();
+                if (mBarcode != null) {
+                    return true;
+                }
+            } catch (NotFoundException e) {
+                e.printStackTrace();
+
+            } catch (ChecksumException e) {
+                e.printStackTrace();
+
+            } catch (FormatException e) {
+                Toast.makeText(getApplicationContext(), getString(R.string.format_error), Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+
+            } catch (NullPointerException e) {
+
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    private void createAlertDialog(boolean hasEditText, String barcode, ArrayList<Uri> uri) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        final EditText edittext = new EditText(this);
+
+        if (hasEditText) {
+            alertDialogBuilder.setView(edittext);
+            alertDialogBuilder.setTitle(getString(R.string.no_barcode));
+            alertDialogBuilder.setMessage(getString(R.string.enter_barcode));
+        } else {
+            alertDialogBuilder.setTitle(getString(R.string.code_detected));
+            alertDialogBuilder.setMessage(barcode + "\n" + getString(R.string.do_you_want_to));
+        }
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton(R.string.txtYes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        String temp_barcode = "";
+                        for (Uri selected : uri) {
+                            OpenFoodAPIClient api = new OpenFoodAPIClient(MainActivity.this);
+                            ProductImage image = null;
+                            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+                            if (hasEditText) {
+                                temp_barcode = edittext.getText().toString();
+                            } else {
+                                temp_barcode = barcode;
+                            }
+
+                            if (temp_barcode.length() > 0) {
+                                dialog.cancel();
+                                if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+                                    image = new ProductImage(temp_barcode, OTHER, new File(selected.getPath()));
+                                    api.postImg(MainActivity.this, image);
+                                } else {
+                                    Intent intent = new Intent(MainActivity.this, SaveProductOfflineActivity.class);
+                                    intent.putExtra("barcode", barcode);
+                                    startActivity(intent);
+                                }
+                            } else {
+                                Toast.makeText(MainActivity.this, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                    }
+                })
+
+                .setNegativeButton(R.string.txtNo,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        alertDialog.show();
+
     }
 }

@@ -479,4 +479,12 @@
     <string name="label_string">Label</string>
     <string name="category_string">Category</string>
 
+    <!-- strings related to share images -->
+    <string name="sorry_msg">Sorry we cannot add pictures without barcode from mobile.Please try web</string>
+    <string name="no_barcode">We have not detected any barcode</string>
+    <string name="enter_barcode">Please type barcode below</string>
+    <string name="format_error">Wrong Barcode/QR format</string>
+    <string name="code_detected">We have detected the bar code</string>
+    <string name="do_you_want_to">Do you want to add photos to this bar code?</string>
+
 </resources>
