@@ -238,6 +238,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             packagingProduct.setText(bold(getString(R.string.txtPackaging)));
             packagingProduct.append(" ");
             String[] packagings = product.getPackaging().split(",");
+
             for (int i = 0; i < packagings.length - 1; i++) {
                 packagingProduct.append(Utils.getClickableText(packagings[i], "", SearchType.PACKAGING, getActivity(), customTabsIntent));
                 packagingProduct.append(", ");
@@ -252,11 +253,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             brandProduct.setMovementMethod(LinkMovementMethod.getInstance());
             brandProduct.setText(bold(getString(R.string.txtBrands)));
             brandProduct.append(" ");
-            String[] brands = product.getBrands().split(",");
-            for (String brand : brands) {
-                brandProduct.append(Utils.getClickableText(brand, "", SearchType.BRAND, getActivity(), customTabsIntent));
 
+            String[] brands = product.getBrands().split(",");
+            for (int i = 0; i < brands.length - 1; i++) {
+                brandProduct.append(Utils.getClickableText(brands[i], "", SearchType.BRAND, getActivity(), customTabsIntent));
+                brandProduct.append(", ");
             }
+            brandProduct.append(Utils.getClickableText(brands[brands.length - 1], "", SearchType.BRAND, getActivity(), customTabsIntent));
         } else {
             brandProduct.setVisibility(View.GONE);
         }
@@ -279,7 +282,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
             categoryProduct.setText(bold(getString(R.string.txtCategories)));
             categoryProduct.append(" ");
-
+            categoryProduct.setClickable(true);
+            categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
             CategoryName categoryName;
             String languageCode = Locale.getDefault().getLanguage();
             List<String> categories = new ArrayList<>();
@@ -373,7 +377,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (isNotBlank(product.getStores())) {
             storeProduct.setMovementMethod(LinkMovementMethod.getInstance());
             storeProduct.setText(bold(getString(R.string.txtStores)));
-
             storeProduct.append(" ");
 
             String store;
@@ -671,7 +674,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_CAMERA: {
                 if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {

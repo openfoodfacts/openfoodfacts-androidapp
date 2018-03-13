@@ -6,11 +6,11 @@
     <item quantity="other"> minutes</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one"> hour</item>
+    <item quantity="one"> heure</item>
     <item quantity="other"> heures</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one"> day</item>
+    <item quantity="one"> jour</item>
     <item quantity="other"> jours</item>
   </plurals>
   <string name="action_settings">Paramètres</string>
@@ -381,8 +381,12 @@
   <string name="image_upload_resolution">Résolution de l\'envoi d\'images</string>
   <string name="can_add_barcode">Vous avez des problèmes de scan ?\nFaites glisser vers le haut pour saisir le code-barre</string>
   <string name="brand_string">Marque</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Additif</string>
   <string name="search_string">Rechercher</string>
   <string name="country_string">Pays</string>
   <string name="last_seen_string">Il y a %1$d %2$s</string>
+  <string name="store_string">Magasin</string>
+  <string name="packaging_string">Conditionnement</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Categorie</string>
 </resources>

@@ -385,4 +385,8 @@
   <string name="search_string">Maghanap</string>
   <string name="country_string">Bansa</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">Store</string>
+  <string name="packaging_string">Balot</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Category</string>
 </resources>

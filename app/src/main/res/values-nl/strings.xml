@@ -385,4 +385,8 @@
   <string name="search_string">Zoeken</string>
   <string name="country_string">Land</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">Winkel</string>
+  <string name="packaging_string">Verpakking</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Category</string>
 </resources>

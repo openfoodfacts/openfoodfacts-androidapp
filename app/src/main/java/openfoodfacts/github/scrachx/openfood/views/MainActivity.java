@@ -87,6 +87,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private Uri userContributeUri;
     private SendProductDao mSendProductDao;
     private int numberOFSavedProducts;
+    PrimaryDrawerItem primaryDrawerItem;
+    private int positionOfOfflineBadeItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,7 +167,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
             headerResult.addProfiles(getProfileSettingDrawerItem());
         }
-
+        primaryDrawerItem = createOfflineEditDrawerItem();
         //Create the drawer
         result = new DrawerBuilder()
                 .withActivity(this)
@@ -201,7 +203,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
                         new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
                         new DividerDrawerItem(),
-                        createOfflineEditDrawerItem(),
+                        primaryDrawerItem,
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
@@ -244,12 +246,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             fragment = new OfflineEditFragment();
                             break;
                         case ITEM_ABOUT:
-                            CustomTabActivityHelper.openCustomTab(MainActivity.this,
-                                    customTabsIntent, discoverUri, new WebViewFallback());
+                            openCustomTab(discoverUri);
                             break;
                         case ITEM_CONTRIBUTE:
-                            CustomTabActivityHelper.openCustomTab(MainActivity.this,
-                                    customTabsIntent, contributeUri, new WebViewFallback());
+                            openCustomTab(contributeUri);
                             break;
                         case ITEM_OBF:
                             boolean otherOFAppInstalled = Utils.isApplicationInstalled
@@ -270,9 +270,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             break;
 
                         case ITEM_ADVANCED_SEARCH:
-                            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                            CustomTabsIntent customTabsIntent = builder.build();
-                            CustomTabActivityHelper.openCustomTab(this, customTabsIntent, Uri.parse(getString(R.string.advanced_search_url)), new WebViewFallback());
+
+                            openCustomTab(Uri.parse(getString(R.string.advanced_search_url)));
                             break;
 
                         case ITEM_MY_CONTRIBUTIONS:
@@ -655,6 +654,32 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
         }
     }
+
+    /**
+     * Updates the drawer item. This updates the badge if there are items left in offline edit, otherwise
+     * there is no badge present.
+     * This function is called from OfflineEditFragment only.
+     */
+    public void updateBadgeOfflineEditDrawerITem(int size) {
+        positionOfOfflineBadeItem = result.getPosition(primaryDrawerItem);
+        if (size > 0) {
+            primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE).withBadge(String.valueOf(size)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
+        } else {
+            primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
+        }
+        result.updateItemAtPosition(primaryDrawerItem, positionOfOfflineBadeItem);
+    }
+
+    public void openCustomTab(Uri uri) {
+
+        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+        CustomTabsIntent customTabsIntent = builder.build();
+        customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + this.getPackageName()));
+        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, uri, new WebViewFallback());
+
+
+    }
+
 
     @Override
     public void setItemSelected(@NavigationDrawerType Integer type) {

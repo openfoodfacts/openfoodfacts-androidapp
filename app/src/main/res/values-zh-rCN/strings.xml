@@ -382,4 +382,8 @@
   <string name="search_string">搜索</string>
   <string name="country_string">国家</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">商店</string>
+  <string name="packaging_string">包装</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">类型</string>
 </resources>
