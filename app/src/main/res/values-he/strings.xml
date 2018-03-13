@@ -391,4 +391,8 @@
   <string name="search_string">חיפוש</string>
   <string name="country_string">מדינה</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">חנות</string>
+  <string name="packaging_string">אריזה</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">קטגוריה</string>
 </resources>

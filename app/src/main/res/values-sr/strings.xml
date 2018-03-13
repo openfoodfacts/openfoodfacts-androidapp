@@ -388,4 +388,8 @@
   <string name="search_string">Pretraživanje</string>
   <string name="country_string">Countries where sold</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">Prodavnica</string>
+  <string name="packaging_string">Packaging</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Category</string>
 </resources>

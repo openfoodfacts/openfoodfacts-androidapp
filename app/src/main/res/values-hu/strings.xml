@@ -385,4 +385,8 @@
   <string name="search_string">Keres</string>
   <string name="country_string">Ország</string>
   <string name="last_seen_string">%1$d %2$s ezelőtt</string>
+  <string name="store_string">Bolt</string>
+  <string name="packaging_string">Csomagolás</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Kategória</string>
 </resources>
