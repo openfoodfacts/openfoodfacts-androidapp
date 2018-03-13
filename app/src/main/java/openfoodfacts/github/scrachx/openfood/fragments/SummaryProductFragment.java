@@ -252,10 +252,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             brandProduct.setText(bold(getString(R.string.txtBrands)));
             brandProduct.append(" ");
             String[] brands = product.getBrands().split(",");
-            for (String brand : brands) {
-                brandProduct.append(getBrandsTag(brand));
-
+            for (int i=0; i<brands.length-1;i++) {
+                brandProduct.append(getBrandsTag(brands[i]));
+                brandProduct.append(", ");
             }
+            brandProduct.append(getBrandsTag(brands[brands.length-1]));
         } else {
             brandProduct.setVisibility(View.GONE);
         }
@@ -349,9 +350,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             embCode.setText(bold(getString(R.string.txtEMB)));
             embCode.append(" ");
             String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
-            for (String embTag : embTags) {
-                embCode.append(getSpanTag(getEmbCode(embTag), getEmbUrl(embTag)));
+            for (int i=0; i<embTags.length-1; i++) {
+                embCode.append(getSpanTag(getEmbCode(embTags[i]), getEmbUrl(embTags[i])));
+                embCode.append(", ");
             }
+            embCode.append(getSpanTag(getEmbCode(embTags[embTags.length-1]), getEmbUrl(embTags[embTags.length-1])));
 
         } else {
             embCode.setVisibility(View.GONE);
