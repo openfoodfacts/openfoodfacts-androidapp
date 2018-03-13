@@ -47,16 +47,14 @@ public @interface SearchType {
     String COUNTRY = "country";
     String EMB = "emb";
     String LABEL = "label";
-    String PACKAGING = "packagin";
+    String PACKAGING = "packaging";
     String SEARCH = "search";
     String STORE = "store";
     String TRACE = "trace";
 
     HashMap<String, String> URLS = new HashMap<String, String>() {{
         put(ALLERGEN, BuildConfig.OFWEBSITE + "allergen/");
-        put(CATEGORY, BuildConfig.OFWEBSITE + "category/");
         put(EMB, BuildConfig.OFWEBSITE + "packager-code/");
-        put(LABEL, BuildConfig.OFWEBSITE + "label/");
         put(TRACE, BuildConfig.OFWEBSITE + "trace/");
     }};
 
