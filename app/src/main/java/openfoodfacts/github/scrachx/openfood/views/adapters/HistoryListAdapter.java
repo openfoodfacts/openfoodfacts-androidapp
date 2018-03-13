@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -28,11 +29,13 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
     private final List<HistoryItem> list;
     private final String productUrl;
     private Activity mActivity;
-
+    private Resources res;
     public HistoryListAdapter(List<HistoryItem> list, String productUrl, Activity activity) {
         this.list = list == null ? Collections.<HistoryItem>emptyList() : list;
         this.productUrl = productUrl;
         this.mActivity = activity;
+        res = activity.getResources();
+
     }
 
     @Override
@@ -122,19 +125,20 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         long hours = TimeUnit.MILLISECONDS.toHours(now.getTime() - date.getTime());
         long days = TimeUnit.MILLISECONDS.toDays(now.getTime() - date.getTime());
 
-
-        String secText = String.valueOf(seconds) + mActivity.getString(R.string.seconds_ago);
-        String minText = String.valueOf(minutes) + mActivity.getString(R.string.minutes_ago);
-        String hourText = String.valueOf(hours) + mActivity.getString(R.string.hours_ago);
-        String dayText = String.valueOf(days) + mActivity.getString(R.string.days_ago);
-
+        String secText = String.valueOf(seconds) + " seconds ago";
+        String hourText = res.getString(R.string.last_seen_string,hours,res.getQuantityString(R.plurals.hours,(int)hours));
+        String minText = res.getString(R.string.last_seen_string,minutes,res.getQuantityString(R.plurals.minutes,(int)minutes));
+        String dayText = res.getString(R.string.last_seen_string,days,res.getQuantityString(R.plurals.days,(int)days));
         if (seconds < 60) {
             holder.txtDate.setText(secText);
-        } else if (minutes < 60) {
+        }
+        else if (minutes < 60) {
             holder.txtDate.setText(minText);
-        } else if (hours < 24) {
+        }
+        else if (hours < 24) {
             holder.txtDate.setText(hourText);
-        } else {
+        }
+        else {
             holder.txtDate.setText(dayText);
         }
     }

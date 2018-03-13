@@ -60,7 +60,12 @@ public class CustomEditTextView extends AppCompatEditText {
                 if (drawableTopId != -1)
                     drawableTop = AppCompatResources.getDrawable(context, drawableTopId);
             }
-            setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                setCompoundDrawablesRelativeWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
+            } else {
+                setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
+            }
             attributeArray.recycle();
         }
     }
