@@ -45,6 +45,8 @@ import java.util.Arrays;
 import butterknife.OnClick;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
@@ -223,7 +225,14 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
             }
         } else {
             Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
-            intent.putExtra("barcode", rawResult.getText());
+//            intent.putExtra("barcode", rawResult.getText());
+            State st=new State();
+            Product pd=new Product();
+            pd.setCode(rawResult.getText());
+            st.setProduct(pd);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("state", st);
+            intent.putExtras(bundle);
             getActivity().startActivity(intent);
             getActivity().finish();
         }

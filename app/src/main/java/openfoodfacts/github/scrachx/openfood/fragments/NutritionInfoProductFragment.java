@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -38,8 +39,10 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments.Nutriment;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -78,6 +81,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
     private String barcode;
     private OpenFoodAPIClient api;
     private NutritionInfoProductFragment mFragment;
+    private SendProduct mSendProduct;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -92,6 +96,13 @@ public class NutritionInfoProductFragment extends BaseFragment {
 
         Intent intent = getActivity().getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
+
+        try {
+            mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
 
         final Product product = state.getProduct();
         barcode = product.getCode();
@@ -112,6 +123,14 @@ public class NutritionInfoProductFragment extends BaseFragment {
                     .into(mImageNutrition);
 
             mUrlImage = product.getImageNutritionUrl();
+        }
+
+        //useful when this fragment is used in offline saving
+        if (mSendProduct != null && isNotBlank(mSendProduct.getImgupload_nutrition())) {
+            addPhotoLabel.setVisibility(View.GONE);
+
+            mUrlImage = mSendProduct.getImgupload_nutrition();
+            Picasso.with(getContext()).load("file://"+mUrlImage).config(Bitmap.Config.RGB_565).into(mImageNutrition);
         }
 
         if (nutriments == null) {
@@ -284,7 +303,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false).setOutputUri(Utils.getOutputPicUri(getContext()))
                         .start(getContext(), mFragment);
             }
 
@@ -322,6 +341,10 @@ public class NutritionInfoProductFragment extends BaseFragment {
                 }
             }
         }
+    }
+
+    public String getNutrients(){
+        return mUrlImage;
     }
 
 }

@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:padding="@dimen/activity_vertical_margin">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageViewNutrition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,6 +24,7 @@
             app:srcCompat="@drawable/ic_add_a_photo_black_48dp"
             android:background="?android:selectableItemBackground"
             android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:adjustViewBounds="true"
             android:maxHeight="250dp" />
 
         <TextView

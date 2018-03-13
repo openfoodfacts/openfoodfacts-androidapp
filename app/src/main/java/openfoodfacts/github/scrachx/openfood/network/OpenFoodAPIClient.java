@@ -138,7 +138,13 @@ public class OpenFoodAPIClient {
                             .negativeText(R.string.txtNo)
                             .onPositive((dialog, which) -> {
                                 Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                intent.putExtra("barcode", barcode);
+                                State st=new State();
+                                Product pd=new Product();
+                                pd.setCode(barcode);
+                                st.setProduct(pd);
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("state", st);
+                                intent.putExtras(bundle);
                                 activity.startActivity(intent);
                                 activity.finish();
                             })
@@ -163,7 +169,14 @@ public class OpenFoodAPIClient {
                         .negativeText(R.string.txtNo)
                         .onPositive((dialog, which) -> {
                             Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                            intent.putExtra("barcode", barcode);
+                            State st=new State();
+                            Product pd=new Product();
+                            pd.setCode(barcode);
+                            st.setProduct(pd);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("state", st);
+                            intent.putExtras(bundle);
+//                            intent.putExtra("barcode", barcode);
                             activity.startActivity(intent);
                             activity.finish();
                         })
@@ -197,7 +210,14 @@ public class OpenFoodAPIClient {
                             .negativeText(R.string.txtNo)
                             .onPositive((dialog, which) -> {
                                 Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                intent.putExtra("barcode", barcode);
+//                                intent.putExtra("barcode", barcode);
+                                State st=new State();
+                                Product pd=new Product();
+                                pd.setCode(barcode);
+                                st.setProduct(pd);
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("state", st);
+                                intent.putExtras(bundle);
                                 activity.startActivity(intent);
                                 activity.finish();
                             })
@@ -263,7 +283,14 @@ public class OpenFoodAPIClient {
                         .negativeText(R.string.txtNo)
                         .onPositive((dialog, which) -> {
                                     Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                    intent.putExtra("barcode", barcode);
+//                                    intent.putExtra("barcode", barcode);
+                                    State st=new State();
+                                    Product pd=new Product();
+                                    pd.setCode(barcode);
+                                    st.setProduct(pd);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putSerializable("state", st);
+                                    intent.putExtras(bundle);
                                     activity.startActivity(intent);
                                     activity.finish();
                                 }

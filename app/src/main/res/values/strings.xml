@@ -179,7 +179,9 @@
     <string name="txtTakePicture">Take picture</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtNoData">No data</string>
-    <string name="txtPictureNeeded">Please take a picture first</string>
+    <string name="txtPictureNeededDialogContent">Please take a picture to save changes</string>
+    <string name="txtPictureNeededDialogYes">Stay</string>
+    <string name="txtPictureNeededDialogNo">Discard</string>
     <string name="toastSending">Uploading…</string>
     <string name="dataSaved">Saved locally on your device</string>
     <string name="txtInfoAddUser">Please enter your login and password</string>
@@ -478,5 +480,10 @@
     <string name="packaging_string">Packaging</string>
     <string name="label_string">Label</string>
     <string name="category_string">Category</string>
+
+    <string name="txtCamera">Camera</string>
+    <string name="txtGallery">Gallery</string>
+    <string name="txtOptions">Options</string>
+
 
 </resources>

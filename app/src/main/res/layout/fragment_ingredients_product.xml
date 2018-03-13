@@ -16,13 +16,14 @@
         android:orientation="vertical"
         android:paddingBottom="65dp">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageViewIngredients"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             app:srcCompat="@drawable/ic_add_a_photo_black_48dp"
             android:background="?android:selectableItemBackground"
+            android:adjustViewBounds="true"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:maxHeight="250dp" />
 

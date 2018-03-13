@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -27,6 +26,7 @@ import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
@@ -97,7 +97,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             if (fat != null) {
                 String fatNutrimentLevel = fat.getLocalize(context);
                 Nutriments.Nutriment nutriment = nutriments.get(Nutriments.FAT);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtFat), getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit(), fatNutrimentLevel, fat.getImageLevel()));
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtFat), getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit(),
+                        fatNutrimentLevel, fat.getImageLevel()));
             }
 
             if (saturatedFat != null) {
@@ -139,14 +140,15 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             serving.append(" ");
             serving.append(product.getServingSize());
         }
-
-        if (!nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
-            carbonFootprint.setVisibility(View.GONE);
-        } else {
-            Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
-            carbonFootprint.append(bold(getString(R.string.textCarbonFootprint)));
-            carbonFootprint.append(carbonFootprintNutriment.getFor100g());
-            carbonFootprint.append(carbonFootprintNutriment.getUnit());
+        if (nutriments != null) {
+            if (!nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
+                carbonFootprint.setVisibility(View.GONE);
+            } else {
+                Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
+                carbonFootprint.append(bold(getString(R.string.textCarbonFootprint)));
+                carbonFootprint.append(carbonFootprintNutriment.getFor100g());
+                carbonFootprint.append(carbonFootprintNutriment.getUnit());
+            }
         }
     }
 
