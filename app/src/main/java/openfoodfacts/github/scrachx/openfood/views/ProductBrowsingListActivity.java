@@ -7,6 +7,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -53,6 +54,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private int mCountProducts = 0;
     private int pageAddress = 1;
     private String[] typeStrings;
+    private Boolean setupDone = false;
     String key;
 
 
@@ -75,7 +77,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         Bundle extras = getIntent().getExtras();
 
         typeStrings = new String[]{
-                "brand", "country", "additive", "search", "store", "packaging", "label" , "category"
+                "brand", "country", "additive", "search", "store", "packaging", "label", "category"
         };
 
         searchType = extras.getString("search_type");
@@ -133,6 +135,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         progressBar.setVisibility(View.VISIBLE);
         offlineCloudLayout.setVisibility(View.INVISIBLE);
         countProductsView.setVisibility(View.INVISIBLE);
+        pageAddress = 1;
         getDataFromAPI();
     }
 
@@ -194,6 +197,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                         loadData(isOk, searchResponse);
                     }
                 });
+                break;
             }
 
             case "label": {
@@ -203,6 +207,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                         loadData(value, label);
                     }
                 });
+                break;
             }
 
             case "category": {
@@ -212,6 +217,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                         loadData(value, label);
                     }
                 });
+                break;
             }
         }
     }
@@ -222,12 +228,15 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (isResponseOk) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
-                countProductsView.append(" " + NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount()
+                countProductsView.setText(getResources().getString(R.string.number_of_products) + " " + NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount()
                 )));
                 mProducts = new ArrayList<>();
                 mProducts.addAll(response.getProducts());
                 if (mProducts.size() < mCountProducts) {
                     mProducts.add(null);
+                }
+                if (setupDone) {
+                    productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts));
                 }
                 setUpRecyclerView();
             } else {
@@ -242,7 +251,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 }
             }
         } else {
-            productsRecyclerView.setVisibility(View.INVISIBLE);
+            // productsRecyclerView.setVisibility(View.INVISIBLE);
             progressBar.setVisibility(View.INVISIBLE);
             offlineCloudLayout.setVisibility(View.VISIBLE);
         }
@@ -254,71 +263,76 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
         progressBar.setVisibility(View.INVISIBLE);
         countProductsView.setVisibility(View.VISIBLE);
-
         offlineCloudLayout.setVisibility(View.INVISIBLE);
-
         productsRecyclerView.setVisibility(View.VISIBLE);
-        productsRecyclerView.setHasFixedSize(true);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(ProductBrowsingListActivity.this, LinearLayoutManager.VERTICAL, false);
-        productsRecyclerView.setLayoutManager(mLayoutManager);
 
-        ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
-        productsRecyclerView.setAdapter(adapter);
+        if (!setupDone) {
+            productsRecyclerView.setHasFixedSize(true);
+            LinearLayoutManager mLayoutManager = new LinearLayoutManager(ProductBrowsingListActivity.this, LinearLayoutManager.VERTICAL, false);
+            productsRecyclerView.setLayoutManager(mLayoutManager);
+
+            ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
+            productsRecyclerView.setAdapter(adapter);
 
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(productsRecyclerView.getContext(),
-                DividerItemDecoration.VERTICAL);
-        productsRecyclerView.addItemDecoration(dividerItemDecoration);
+            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(productsRecyclerView.getContext(),
+                    DividerItemDecoration.VERTICAL);
+            productsRecyclerView.addItemDecoration(dividerItemDecoration);
 
-        // Retain an instance so that you can call `resetState()` for fresh searches
-        scrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
-            @Override
-            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                if (mProducts.size() < mCountProducts) {
-                    pageAddress = page;
-                    getDataFromAPI();
+            // Retain an instance so that you can call `resetState()` for fresh searches
+            scrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
+                @Override
+                public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                    if (mProducts.size() < mCountProducts) {
+                        pageAddress = page;
+                        getDataFromAPI();
+                    }
                 }
-            }
-        };
-        // Adds the scroll listener to RecyclerView
-        productsRecyclerView.addOnScrollListener(scrollListener);
+            };
+            // Adds the scroll listener to RecyclerView
+            productsRecyclerView.addOnScrollListener(scrollListener);
 
 
-        productsRecyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(ProductBrowsingListActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
-                        if (p != null) {
-                            String barcode = p.getCode();
-                            api.getProduct(barcode, ProductBrowsingListActivity.this);
-                            try {
-                                View view1 = ProductBrowsingListActivity.this.getCurrentFocus();
-                                if (view != null) {
-                                    InputMethodManager imm = (InputMethodManager) ProductBrowsingListActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
-                                    imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+            productsRecyclerView.addOnItemTouchListener(
+                    new RecyclerItemClickListener(ProductBrowsingListActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(View view, int position) {
+                            Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
+                            if (p != null) {
+                                String barcode = p.getCode();
+                                api.getProduct(barcode, ProductBrowsingListActivity.this);
+                                try {
+                                    View view1 = ProductBrowsingListActivity.this.getCurrentFocus();
+                                    if (view != null) {
+                                        InputMethodManager imm = (InputMethodManager) ProductBrowsingListActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                        imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                                    }
+                                } catch (NullPointerException e) {
+                                    e.printStackTrace();
                                 }
-                            } catch (NullPointerException e) {
-                                e.printStackTrace();
                             }
                         }
+                    })
+            );
+
+            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+
+                    mProducts.clear();
+                    adapter.notifyDataSetChanged();
+                    countProductsView.setText(getResources().getString(R.string.number_of_results));
+                    pageAddress = 1;
+                    setup();
+                    if (swipeRefreshLayout.isRefreshing()) {
+                        swipeRefreshLayout.setRefreshing(false);
                     }
-                })
-        );
-
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-
-                mProducts.clear();
-                countProductsView.setText(getResources().getString(R.string.number_of_results));
-                pageAddress = 1;
-                setup();
-                if (swipeRefreshLayout.isRefreshing()) {
-                    swipeRefreshLayout.setRefreshing(false);
                 }
-            }
-        });
+            });
+
+        }
+
+        setupDone = true;
 
     }
 }
