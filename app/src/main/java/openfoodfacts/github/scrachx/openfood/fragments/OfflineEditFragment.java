@@ -269,9 +269,9 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                 toast.show();
             } else {
                 mCardView.setVisibility(View.GONE);
-                Toast toast = Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER,0,0);
-                toast.show();
+//                Toast toast = Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG);
+//                toast.setGravity(Gravity.CENTER,0,0);
+//                toast.show();
             }
         }
 
