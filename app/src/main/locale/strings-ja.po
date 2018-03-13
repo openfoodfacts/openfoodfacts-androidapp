@@ -1081,7 +1081,7 @@ msgid "Search a product"
 msgstr "製品を検索します"
 
 msgctxt "number_of_results"
-msgid "Number of results :"
+msgid "Number of results: "
 msgstr "結果の数 :"
 
 msgctxt "txt_no_results"

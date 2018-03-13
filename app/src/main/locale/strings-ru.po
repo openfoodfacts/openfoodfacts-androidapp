@@ -1106,7 +1106,7 @@ msgid "Search a product"
 msgstr "Поиск продукта"
 
 msgctxt "number_of_results"
-msgid "Number of results :"
+msgid "Number of results: "
 msgstr "Количество результатов:"
 
 msgctxt "txt_no_results"
