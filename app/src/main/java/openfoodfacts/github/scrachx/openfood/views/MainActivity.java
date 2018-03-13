@@ -246,12 +246,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             fragment = new OfflineEditFragment();
                             break;
                         case ITEM_ABOUT:
-                            CustomTabActivityHelper.openCustomTab(MainActivity.this,
-                                    customTabsIntent, discoverUri, new WebViewFallback());
+                            openCustomTab(discoverUri);
                             break;
                         case ITEM_CONTRIBUTE:
-                            CustomTabActivityHelper.openCustomTab(MainActivity.this,
-                                    customTabsIntent, contributeUri, new WebViewFallback());
+                            openCustomTab(contributeUri);
                             break;
                         case ITEM_OBF:
                             boolean otherOFAppInstalled = Utils.isApplicationInstalled
@@ -272,9 +270,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             break;
 
                         case ITEM_ADVANCED_SEARCH:
-                            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                            CustomTabsIntent customTabsIntent = builder.build();
-                            CustomTabActivityHelper.openCustomTab(this, customTabsIntent, Uri.parse(getString(R.string.advanced_search_url)), new WebViewFallback());
+
+                            openCustomTab(Uri.parse(getString(R.string.advanced_search_url)));
                             break;
 
                         case ITEM_MY_CONTRIBUTIONS:
@@ -674,6 +671,16 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
         }
         result.updateItemAtPosition(primaryDrawerItem, positionOfOfflineBadeItem);
+    }
+
+    public void openCustomTab(Uri uri) {
+
+        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+        CustomTabsIntent customTabsIntent = builder.build();
+        customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + this.getPackageName()));
+        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, uri, new WebViewFallback());
+
+
     }
 
 
