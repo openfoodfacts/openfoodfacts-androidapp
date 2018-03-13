@@ -680,7 +680,6 @@ public class OpenFoodAPIClient {
 
 
     public void getProductsByStore(final String store, final int page, final OnStoreCallback onStoreCallback) {
-information
         apiService.getProductByStores(store, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(Call<Search> call, Response<Search> response) {
