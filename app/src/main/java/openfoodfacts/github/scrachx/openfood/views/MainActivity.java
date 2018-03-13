@@ -17,7 +17,6 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
@@ -57,6 +56,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -603,13 +603,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     protected void onNewIntent(Intent intent) {
-
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            Log.e("INTENT", "start activity");
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Intent mIntent = new Intent(MainActivity.this, ProductBrowsingListActivity.class);
-            mIntent.putExtra("key", query);
-            mIntent.putExtra("search_type", "search");
-            startActivity(mIntent);
+            ProductBrowsingListActivity.startActivity(this, query, SearchType.SEARCH);
         }
     }
 

@@ -13,7 +13,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +37,6 @@ import java.util.regex.Pattern;
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -47,12 +45,11 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
-import openfoodfacts.github.scrachx.openfood.utils.ClickableType;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -64,6 +61,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.ING
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.jsoup.helper.StringUtil.isBlank;
 
 public class IngredientsProductFragment extends BaseFragment {
 
@@ -152,17 +150,17 @@ public class IngredientsProductFragment extends BaseFragment {
             String allergen;
             for (int i = 0; i < allergens.size() - 1; i++) {
                 allergen = allergens.get(i);
-                substanceProduct.append(Utils.getClickableText(allergen, allergen, ClickableType.ALLERGEN, getActivity(), customTabsIntent));
+                substanceProduct.append(Utils.getClickableText(allergen, allergen, SearchType.ALLERGEN, getActivity(), customTabsIntent));
                 substanceProduct.append(", ");
             }
 
             allergen = allergens.get(allergens.size() - 1);
-            substanceProduct.append(Utils.getClickableText(allergen, allergen, ClickableType.ALLERGEN, getActivity(), customTabsIntent));
+            substanceProduct.append(Utils.getClickableText(allergen, allergen, SearchType.ALLERGEN, getActivity(), customTabsIntent));
         } else {
             substanceProduct.setVisibility(View.GONE);
         }
 
-        if (product.getTraces() == null) {
+        if (isBlank(product.getTraces())) {
             traceProduct.setVisibility(View.GONE);
         } else {
             traceProduct.setMovementMethod(LinkMovementMethod.getInstance());
@@ -173,12 +171,12 @@ public class IngredientsProductFragment extends BaseFragment {
             String traces[] = product.getTraces().split(",");
             for (int i = 0; i < traces.length - 1; i++) {
                 trace = traces[i];
-                traceProduct.append(Utils.getClickableText(trace, trace, ClickableType.TRACE, getActivity(), customTabsIntent));
+                traceProduct.append(Utils.getClickableText(trace, trace, SearchType.TRACE, getActivity(), customTabsIntent));
                 traceProduct.append(", ");
             }
 
             trace = traces[traces.length - 1];
-            traceProduct.append(Utils.getClickableText(trace, trace, ClickableType.TRACE, getActivity(), customTabsIntent));
+            traceProduct.append(Utils.getClickableText(trace, trace, SearchType.TRACE, getActivity(), customTabsIntent));
         }
 
         if (!product.getAdditivesTags().isEmpty()) {
@@ -202,11 +200,11 @@ public class IngredientsProductFragment extends BaseFragment {
                 }
                 additives.add(additiveName.getName());
                 for (int i = 0; i < additives.size() - 1; i++) {
-                    additiveProduct.append(getAdditiveTag(StringUtils.capitalize(additives.get(i))));
+                    additiveProduct.append(Utils.getClickableText(StringUtils.capitalize(additives.get(i)), "", SearchType.ADDITIVE, getActivity(), customTabsIntent));
                     additiveProduct.append("\n");
                 }
 
-                additiveProduct.append(getAdditiveTag(StringUtils.capitalize(additives.get(additives.size() - 1))));
+                additiveProduct.append(Utils.getClickableText(StringUtils.capitalize(additives.get(additives.size() - 1)), "", SearchType.ADDITIVE, getActivity(), customTabsIntent));
             }
         } else {
             additiveProduct.setVisibility(View.GONE);
@@ -231,50 +229,6 @@ public class IngredientsProductFragment extends BaseFragment {
                 mayBeFromPalmOilProduct.setVisibility(View.GONE);
             }
         }
-    }
-
-    private CharSequence getAdditiveTag(String additive) {
-
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                intent.putExtra("key", additive);
-                intent.putExtra("search_type","additive");
-                startActivity(intent);
-            }
-        };
-
-
-        spannableStringBuilder.append(additive);
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        return spannableStringBuilder;
-    }
-
-    private CharSequence getSpanTag(String tag, final View view) {
-        final SpannableStringBuilder ssb = new SpannableStringBuilder();
-
-        final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Tag.eq(tag.toUpperCase(Locale.getDefault()))).list();
-        if (la.size() >= 1) {
-            final Additive additive = la.get(0);
-            //disabled popup temporarily
-          /*ClickableSpan clickableSpan = new ClickableSpan() {
-                @Override
-                public void onClick(View v) {
-                    new MaterialDialog.Builder(view.getContext())
-                            .title(additive.getCode() + " : " + additive.getName())
-                            .content(additive.getRisk().toUpperCase(Locale.getDefault()))
-                            .positiveText(R.string.txtOk)
-                            .show();
-                }
-            };*/
-            ssb.append(tag);
-            // ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-            ssb.append(" ");
-        }
-        return ssb;
     }
 
     private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text, List<String> allergens) {
