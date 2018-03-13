@@ -1088,7 +1088,7 @@ msgid "Search a product"
 msgstr "חיפוש מוצר"
 
 msgctxt "number_of_results"
-msgid "Number of results :"
+msgid "Number of results: "
 msgstr "מספר התוצאות:"
 
 msgctxt "txt_no_results"
