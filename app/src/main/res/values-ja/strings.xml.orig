@@ -384,6 +384,9 @@
   <string name="additive_string">添加物</string>
   <string name="search_string">検索</string>
   <string name="country_string">国</string>
+<<<<<<< HEAD
+  <string name="last_seen_string">%1$d %2$s 前</string>
+=======
   <string name="store_subtitle">店舗</string>
   <string name="packaging_subtitle">パッケージング</string>
   <string name="last_seen_string">%1$d %2$s 前</string>
@@ -391,4 +394,5 @@
   <string name="packaging_string">パッケージング</string>
   <string name="label_string">ラベル</string>
   <string name="category_string">カテゴリー</string>
+>>>>>>> openfoodfacts/master
 </resources>

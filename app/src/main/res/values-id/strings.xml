@@ -50,6 +50,9 @@
     <item>bahan</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">Connected</string>
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">mencari </string>
   <string name="no_products">tidak ada produk</string>
   <string name="desc_list_item_icon">Ikon item</string>
@@ -382,5 +385,11 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">mencari </string>
   <string name="country_string">Negara</string>
+  <string name="store_subtitle">toko online</string>
+  <string name="packaging_subtitle">Pengemasan</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">toko online</string>
+  <string name="packaging_string">Pengemasan</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Kategori</string>
 </resources>

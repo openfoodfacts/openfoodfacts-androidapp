@@ -53,6 +53,9 @@
     <item>Inhaltsstoffe</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">Verbunden</string>
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Suchen</string>
   <string name="no_products">Keine Produkte gefunden</string>
   <string name="desc_list_item_icon">Produktfoto</string>
@@ -384,5 +387,11 @@
   <string name="additive_string">Zusatzstoff</string>
   <string name="search_string">Suchen</string>
   <string name="country_string">Vertriebsländer</string>
+  <string name="store_subtitle">Laden</string>
+  <string name="packaging_subtitle">Art der Verpackung</string>
   <string name="last_seen_string">%1$d %2$s her</string>
+  <string name="store_string">Laden</string>
+  <string name="packaging_string">Art der Verpackung</string>
+  <string name="label_string">Kennzeichnung</string>
+  <string name="category_string">Kategorie</string>
 </resources>

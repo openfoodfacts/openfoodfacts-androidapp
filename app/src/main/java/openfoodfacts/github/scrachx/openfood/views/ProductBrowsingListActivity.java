@@ -1,6 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
@@ -17,7 +19,6 @@ import android.widget.TextView;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -26,11 +27,15 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
 public class ProductBrowsingListActivity extends BaseActivity {
+
+    private static String SEARCH_TYPE = "search_type";
+    private static String KEY = "key";
 
     private String searchType;
 
@@ -52,9 +57,14 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private OpenFoodAPIClient apiClient;
     private int mCountProducts = 0;
     private int pageAddress = 1;
-    private String[] typeStrings;
     String key;
 
+    public static void startActivity(Activity activity, String key, @SearchType String type) {
+        Intent intent = new Intent(activity, ProductBrowsingListActivity.class);
+        intent.putExtra(KEY, key);
+        intent.putExtra(SEARCH_TYPE, type);
+        activity.startActivity(intent);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -74,43 +84,45 @@ public class ProductBrowsingListActivity extends BaseActivity {
         countProductsView.setVisibility(View.INVISIBLE);
         Bundle extras = getIntent().getExtras();
 
-        typeStrings = new String[]{
-                "brand", "country", "additive", "search","store","packaging"
-        };
-
-        searchType = extras.getString("search_type");
-        key = extras.getString("key");
+        searchType = extras.getString(SEARCH_TYPE);
+        key = extras.getString(KEY);
 
         getSupportActionBar().setTitle(key);
 
         switch (searchType) {
-            case "brand": {
-                getSupportActionBar().setSubtitle(R.string.brand_string);
+            case SearchType.BRAND: {
+                toolbar.setSubtitle(R.string.brand_string);
                 break;
             }
-            case "country": {
-                getSupportActionBar().setSubtitle(R.string.country_string);
+            case SearchType.COUNTRY: {
+                toolbar.setSubtitle(R.string.country_string);
                 break;
             }
-            case "additive": {
-                getSupportActionBar().setSubtitle(R.string.additive_string);
+            case SearchType.ADDITIVE: {
+                toolbar.setSubtitle(R.string.additive_string);
                 break;
             }
-            case "search": {
-                getSupportActionBar().setSubtitle(R.string.search_string);
+            case SearchType.SEARCH: {
+                toolbar.setSubtitle(R.string.search_string);
                 break;
             }
-            case "store": {
-                getSupportActionBar().setSubtitle("Store");
+            case SearchType.STORE: {
+                toolbar.setSubtitle(R.string.store_subtitle);
                 break;
             }
-
-            case "packaging": {
-                getSupportActionBar().setSubtitle("Packaging");
+            case SearchType.PACKAGING: {
+                toolbar.setSubtitle(R.string.packaging_subtitle);
+                break;
+            }
+            case SearchType.LABEL: {
+                getSupportActionBar().setSubtitle(getString(R.string.label_string));
+                break;
+            }
+            case SearchType.CATEGORY: {
+                getSupportActionBar().setSubtitle(getString(R.string.category_string));
                 break;
             }
         }
-
 
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
         api = new OpenFoodAPIClient(ProductBrowsingListActivity.this);
@@ -130,7 +142,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
 
         switch (searchType) {
-            case "brand": {
+            case SearchType.BRAND: {
                 apiClient.getProductsByBrand(key, pageAddress, new OpenFoodAPIClient.OnBrandCallback() {
                     @Override
                     public void onBrandResponse(boolean value, Search brandObject) {
@@ -139,7 +151,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 });
                 break;
             }
-            case "country": {
+            case SearchType.COUNTRY: {
                 apiClient.getProductsByCountry(key, pageAddress, new OpenFoodAPIClient.onCountryCallback() {
                     @Override
                     public void onCountryResponse(boolean value, Search country) {
@@ -148,7 +160,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 });
                 break;
             }
-            case "additive": {
+            case SearchType.ADDITIVE: {
                 apiClient.getProductsByAdditive(key, pageAddress, new OpenFoodAPIClient.OnAdditiveCallback() {
                     @Override
                     public void onAdditiveResponse(boolean value, Search country) {
@@ -158,7 +170,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
 
-            case "store": {
+            case SearchType.STORE: {
                 apiClient.getProductsByStore(key, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
                     @Override
                     public void onStoreResponse(boolean value, Search storeObject) {
@@ -168,7 +180,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
 
-            case "packaging": {
+            case SearchType.PACKAGING: {
                 apiClient.getProductsByPackaging(key, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
                     @Override
                     public void onPackagingResponse(boolean value, Search packagingObject) {
@@ -177,11 +189,29 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 });
                 break;
             }
-            case "search": {
+            case SearchType.SEARCH: {
                 api.searchProduct(key, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
                     @Override
                     public void onProductsResponse(boolean isOk, Search searchResponse, int countProducts) {
                         loadData(isOk, searchResponse);
+                    }
+                });
+            }
+
+            case "label": {
+                api.getProductsByLabel(key, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
+                    @Override
+                    public void onLabelResponse(boolean value, Search label) {
+                        loadData(value, label);
+                    }
+                });
+            }
+
+            case "category": {
+                api.getProductsByCategory(key, pageAddress, new OpenFoodAPIClient.onCategoryCallback() {
+                    @Override
+                    public void onCategoryResponse(boolean value, Search label) {
+                        loadData(value, label);
                     }
                 });
             }
@@ -194,7 +224,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (isResponseOk) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
-                countProductsView.append(" "+NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount()
+                countProductsView.append(" " + NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount()
                 )));
                 mProducts = new ArrayList<>();
                 mProducts.addAll(response.getProducts());

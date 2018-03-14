@@ -3,9 +3,9 @@
 <resources>
   <plurals name="minutes">
     <item quantity="one"> minute</item>
-    <item quantity="two"> minutes</item>
-    <item quantity="many"> minutes</item>
-    <item quantity="other"> minutes</item>
+    <item quantity="two"> דקות</item>
+    <item quantity="many"> דקות</item>
+    <item quantity="other"> דקות</item>
   </plurals>
   <plurals name="hours">
     <item quantity="one"> hour</item>
@@ -48,8 +48,8 @@
     <item>ק״ג</item>
     <item>ל׳</item>
     <item>מ״ל</item>
-    <item>ml</item>
-    <item>cl</item>
+    <item>מ״ל</item>
+    <item>ס״ל</item>
     <item>אונקיה</item>
   </string-array>
   <!-- Text units -->
@@ -59,6 +59,9 @@
     <item>רכיבים</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">מחובר</string>
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">חיפוש</string>
   <string name="no_products">המוצרים לא נמצאו</string>
   <string name="desc_list_item_icon">סמל הפריט</string>
@@ -248,15 +251,15 @@
   <string name="txtSeeMore">מידע נוסף</string>
   <string name="action_search">חיפוש</string>
   <string name="search_hint">חיפוש מוצר</string>
-  <string name="number_of_results">Number of results: </string>
+  <string name="number_of_results">מספר התוצאות: </string>
   <string name="brand">מותג :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="number_of_products">מספר המוצרים: </string>
   <string name="txt_no_results">לא נמצאו תוצאות</string>
   <string name="txt_extend_search">כדאי להרחיב את החיפוש שלך או להוסיף את המוצר</string>
   <string name="txt_no_matching_products">לא מצאנו מוצרים מתאימים.\nניתן לנסות:</string>
   <string name="txt_broaden_search">- להרחיב את החיפוש שלך \n- לסרוק ולהוסיף ל־Open Food Facts</string>
   <string name="txt_cant_load_search_results">לא ניתן לטעון את תוצאות החיפוש</string>
-  <string name="something_went_wrong">Sorry, something went wrong…</string>
+  <string name="something_went_wrong">משהו השתבש, עמך הסליחה…</string>
   <string name="txt_try_again">נא לנסות שוב</string>
   <string name="nutrition_lactose">לקטוז</string>
   <string name="nutrition_casein">קזאין</string>
@@ -376,19 +379,25 @@
   <string name="minutes_ago">minutes ago</string>
   <string name="hours_ago">hours ago</string>
   <string name="days_ago">days ago</string>
-  <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
+  <string name="scan_first_string">היסטוריית המוצרים בהם צפית תופיע כאן\nההיסטוריה הזאת מיועדת לעיניך בלבד והיא מאוחסנת במחשב שלך.</string>
   <string name="log_in">שם משתמש</string>
   <string name="login_true">כבר נכנסת!</string>
   <string name="confirm_logout">אימות יציאה</string>
   <string name="logout_dialog_content">לצאת?</string>
   <string name="dialog_cancel">ביטול</string>
-  <string name="choose_resolution">Choose Resolution</string>
-  <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-  <string name="image_upload_resolution">Image Upload Resolution</string>
-  <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+  <string name="choose_resolution">נא לבחור ברזולוציה</string>
+  <string name="pref_resolution_summary">נא לבחור רזולוציה להעלאת התמונה</string>
+  <string name="image_upload_resolution">רזולוציית התמונה להעלאה</string>
+  <string name="can_add_barcode">התגלתה בעיה בסריקה?\nיש לגרור כלפי מעלה כדי להקליד את הברקוד</string>
   <string name="brand_string">מותג</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">תוסף</string>
   <string name="search_string">חיפוש</string>
   <string name="country_string">מדינה</string>
-  <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_subtitle">חנות</string>
+  <string name="packaging_subtitle">אריזה</string>
+  <string name="last_seen_string">לפני %1$d %2$s</string>
+  <string name="store_string">חנות</string>
+  <string name="packaging_string">אריזה</string>
+  <string name="label_string">תווית</string>
+  <string name="category_string">קטגוריה</string>
 </resources>

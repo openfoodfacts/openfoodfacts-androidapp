@@ -53,6 +53,9 @@
     <item>উপকরণসমূহ</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">Connected</string>
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">অনুসন্ধান</string>
   <string name="no_products">পণ্যটি খুঁজে পাওয়া যায় নি</string>
   <string name="desc_list_item_icon">আইটেম আইকন</string>
@@ -385,5 +388,11 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">অনুসন্ধান</string>
   <string name="country_string">Country</string>
+  <string name="store_subtitle">দোকান</string>
+  <string name="packaging_subtitle">Packaging</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">দোকান</string>
+  <string name="packaging_string">Packaging</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">বিভাগ</string>
 </resources>

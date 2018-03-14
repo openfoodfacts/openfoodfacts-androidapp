@@ -53,6 +53,9 @@
     <item>Ingredienser</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">Connected</string>
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Sök</string>
   <string name="no_products">Produkterna hittades inte</string>
   <string name="desc_list_item_icon">Item Icon</string>
@@ -384,5 +387,11 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">Sök</string>
   <string name="country_string">Land</string>
+  <string name="store_subtitle">Butik</string>
+  <string name="packaging_subtitle">Förpackning</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">Butik</string>
+  <string name="packaging_string">Förpackning</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Category</string>
 </resources>
