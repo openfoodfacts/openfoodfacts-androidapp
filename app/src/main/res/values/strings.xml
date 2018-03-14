@@ -182,6 +182,7 @@
     <string name="txtTakePicture">Take picture</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtNoData">No data</string>
+    <string name="txtPictureNeeded">Wait…</string>
     <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
     <string name="txtPictureNeededDialogYes">Stay</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
@@ -478,6 +479,8 @@
     <string name="additive_string">Additive</string>
     <string name="search_string">Search</string>
     <string name="country_string">Countries where sold</string>
+    <string name="store_subtitle">Store</string>
+    <string name="packaging_subtitle">Packaging</string>
     <string name="last_seen_string">%1$d %2$s ago</string>
     <string name="store_string">Store</string>
     <string name="packaging_string">Packaging</string>
