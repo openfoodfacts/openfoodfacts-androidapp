@@ -112,9 +112,7 @@
     </string-array>
 
     <!-- Content Description -->
-    <string name="connection" translatable="false">Connected</string>
-    <string name="fastscroller_track" translatable="false">FastScroller track</string>
-    <string name="fastscroller_handle" translatable="false">FastScroller handle</string>
+
     <string name="search_button">Search</string>
     <string name="no_products">Products not found</string>
     <string name="desc_list_item_icon">Item Icon</string>
