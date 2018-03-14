@@ -393,6 +393,8 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">Vyhledat</string>
   <string name="country_string">Země</string>
+  <string name="store_subtitle">Prodejna</string>
+  <string name="packaging_subtitle">Obal</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Prodejna</string>
   <string name="packaging_string">Obal</string>
