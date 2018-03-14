@@ -393,6 +393,8 @@
   <string name="additive_string">תוסף</string>
   <string name="search_string">חיפוש</string>
   <string name="country_string">מדינה</string>
+  <string name="store_subtitle">חנות</string>
+  <string name="packaging_subtitle">אריזה</string>
   <string name="last_seen_string">לפני %1$d %2$s</string>
   <string name="store_string">חנות</string>
   <string name="packaging_string">אריזה</string>
