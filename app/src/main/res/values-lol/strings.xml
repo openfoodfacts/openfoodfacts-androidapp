@@ -53,6 +53,9 @@
     <item>crwdns35045:0crwdne35045:0</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">crwdns37315:0crwdne37315:0</string>
+  <string name="fastscroller_track">crwdns37316:0crwdne37316:0</string>
+  <string name="fastscroller_handle">crwdns37317:0crwdne37317:0</string>
   <string name="search_button">crwdns35046:0crwdne35046:0</string>
   <string name="no_products">crwdns35047:0crwdne35047:0</string>
   <string name="desc_list_item_icon">crwdns35048:0crwdne35048:0</string>
@@ -385,4 +388,8 @@
   <string name="search_string">crwdns37310:0crwdne37310:0</string>
   <string name="country_string">crwdns37292:0crwdne37292:0</string>
   <string name="last_seen_string">crwdns37300:0%1$dcrwdnd37300:0%2$scrwdne37300:0</string>
+  <string name="store_string">crwdns37311:0crwdne37311:0</string>
+  <string name="packaging_string">crwdns37312:0crwdne37312:0</string>
+  <string name="label_string">crwdns37313:0crwdne37313:0</string>
+  <string name="category_string">crwdns37314:0crwdne37314:0</string>
 </resources>

@@ -65,6 +65,9 @@
     <item>المكونات</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">Connected</string>
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">بحث</string>
   <string name="no_products">منتج غير موجود</string>
   <string name="desc_list_item_icon">أيقونة العنصر</string>
@@ -397,4 +400,8 @@
   <string name="search_string">بحث</string>
   <string name="country_string">بلد</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">المتجر</string>
+  <string name="packaging_string">التعبئة والتغليف</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Category</string>
 </resources>

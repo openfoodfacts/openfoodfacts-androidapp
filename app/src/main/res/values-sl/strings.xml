@@ -59,6 +59,9 @@
     <item>Sestavine</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">Connected</string>
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Iskanje</string>
   <string name="no_products">Izdelki niso bili najdeni</string>
   <string name="desc_list_item_icon">Ikona postavke</string>
@@ -391,4 +394,8 @@
   <string name="search_string">Iskanje</string>
   <string name="country_string">Country</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">Trgovina</string>
+  <string name="packaging_string">Packaging</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Category</string>
 </resources>

@@ -53,6 +53,9 @@
     <item>Mga Sangkap</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">Connected</string>
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Maghanap</string>
   <string name="no_products">Hindi natagpuan ang mga produkto</string>
   <string name="desc_list_item_icon">Item Icon</string>
@@ -385,4 +388,8 @@
   <string name="search_string">Maghanap</string>
   <string name="country_string">Bansa</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">Store</string>
+  <string name="packaging_string">Balot</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Category</string>
 </resources>

@@ -53,6 +53,9 @@
     <item>Συστατικά</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">Connected</string>
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Αναζήτηση</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
@@ -385,4 +388,8 @@
   <string name="search_string">Αναζήτηση</string>
   <string name="country_string">Χώρα</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">Κατάστημα</string>
+  <string name="packaging_string">Συσκευασία</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Category</string>
 </resources>

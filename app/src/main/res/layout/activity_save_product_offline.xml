@@ -289,7 +289,7 @@
                     android:background="@drawable/edittext_full"
                     android:ems="10"
                     android:hint="@string/hintWeight"
-                    android:inputType="numberSigned"
+                    android:inputType="numberDecimal|numberSigned"
                     android:maxLines="1"
                     android:paddingLeft="50dp" />
 
