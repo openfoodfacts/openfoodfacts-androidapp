@@ -393,6 +393,8 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">Поиск</string>
   <string name="country_string">Страна</string>
+  <string name="store_subtitle">Магазин</string>
+  <string name="packaging_subtitle">Упаковка</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Магазин</string>
   <string name="packaging_string">Упаковка</string>
