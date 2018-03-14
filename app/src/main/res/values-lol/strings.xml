@@ -387,6 +387,8 @@
   <string name="additive_string">crwdns37309:0crwdne37309:0</string>
   <string name="search_string">crwdns37310:0crwdne37310:0</string>
   <string name="country_string">crwdns37292:0crwdne37292:0</string>
+  <string name="store_subtitle">crwdns37318:0crwdne37318:0</string>
+  <string name="packaging_subtitle">crwdns37319:0crwdne37319:0</string>
   <string name="last_seen_string">crwdns37300:0%1$dcrwdnd37300:0%2$scrwdne37300:0</string>
   <string name="store_string">crwdns37311:0crwdne37311:0</string>
   <string name="packaging_string">crwdns37312:0crwdne37312:0</string>

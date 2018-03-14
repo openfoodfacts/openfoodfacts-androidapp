@@ -384,6 +384,8 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">搜尋</string>
   <string name="country_string">國家</string>
+  <string name="store_subtitle">商店</string>
+  <string name="packaging_subtitle">包裝套件</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">商店</string>
   <string name="packaging_string">包裝套件</string>

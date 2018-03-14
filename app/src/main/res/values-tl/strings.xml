@@ -387,6 +387,8 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">Maghanap</string>
   <string name="country_string">Bansa</string>
+  <string name="store_subtitle">Store</string>
+  <string name="packaging_subtitle">Balot</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Store</string>
   <string name="packaging_string">Balot</string>

@@ -385,6 +385,8 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">mencari </string>
   <string name="country_string">Negara</string>
+  <string name="store_subtitle">toko online</string>
+  <string name="packaging_subtitle">Pengemasan</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">toko online</string>
   <string name="packaging_string">Pengemasan</string>
