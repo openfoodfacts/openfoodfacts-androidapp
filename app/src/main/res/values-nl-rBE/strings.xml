@@ -387,6 +387,8 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">Zoek</string>
   <string name="country_string">Land</string>
+  <string name="store_subtitle">Winkel</string>
+  <string name="packaging_subtitle">Verpakking</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Winkel</string>
   <string name="packaging_string">Verpakking</string>
