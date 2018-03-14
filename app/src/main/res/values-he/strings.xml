@@ -49,7 +49,7 @@
     <item>ל׳</item>
     <item>מ״ל</item>
     <item>מ״ל</item>
-    <item>cl</item>
+    <item>ס״ל</item>
     <item>אונקיה</item>
   </string-array>
   <!-- Text units -->
@@ -59,7 +59,7 @@
     <item>רכיבים</item>
   </string-array>
   <!-- Content Description -->
-  <string name="connection">Connected</string>
+  <string name="connection">מחובר</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">חיפוש</string>
@@ -379,7 +379,7 @@
   <string name="minutes_ago">minutes ago</string>
   <string name="hours_ago">hours ago</string>
   <string name="days_ago">days ago</string>
-  <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
+  <string name="scan_first_string">היסטוריית המוצרים בהם צפית תופיע כאן\nההיסטוריה הזאת מיועדת לעיניך בלבד והיא מאוחסנת במחשב שלך.</string>
   <string name="log_in">שם משתמש</string>
   <string name="login_true">כבר נכנסת!</string>
   <string name="confirm_logout">אימות יציאה</string>
