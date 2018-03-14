@@ -393,6 +393,8 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">Szukaj</string>
   <string name="country_string">Kraj</string>
+  <string name="store_subtitle">Sklep</string>
+  <string name="packaging_subtitle">Opakowania</string>
   <string name="last_seen_string">%1$d %2$s temu</string>
   <string name="store_string">Sklep</string>
   <string name="packaging_string">Opakowania</string>
