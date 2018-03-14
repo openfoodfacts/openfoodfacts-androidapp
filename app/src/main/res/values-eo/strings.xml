@@ -53,6 +53,9 @@
     <item>Ingrediencoj</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">Connected</string>
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Search</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
@@ -384,5 +387,11 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">Search</string>
   <string name="country_string">Lando</string>
+  <string name="store_subtitle">Vendejo</string>
+  <string name="packaging_subtitle">Pakaĵo</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">Vendejo</string>
+  <string name="packaging_string">Pakaĵo</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Category</string>
 </resources>

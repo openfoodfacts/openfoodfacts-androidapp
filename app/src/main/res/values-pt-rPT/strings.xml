@@ -53,6 +53,9 @@
     <item>Ingredientes</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">Connected</string>
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Procurar</string>
   <string name="no_products">Produtos não encontrados</string>
   <string name="desc_list_item_icon">Ícone</string>
@@ -384,5 +387,11 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">Procurar</string>
   <string name="country_string">País</string>
+  <string name="store_subtitle">Loja</string>
+  <string name="packaging_subtitle">Embalagem</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">Loja</string>
+  <string name="packaging_string">Embalagem</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Categoria</string>
 </resources>

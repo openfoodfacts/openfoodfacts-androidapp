@@ -53,6 +53,9 @@
     <item>Össztevők</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">Csatlakozva</string>
+  <string name="fastscroller_track">FastScroller sáv</string>
+  <string name="fastscroller_handle">FastScroller kezelő</string>
   <string name="search_button">Keres</string>
   <string name="no_products">Hiányzó termékek</string>
   <string name="desc_list_item_icon">Termék ikon</string>
@@ -384,5 +387,11 @@
   <string name="additive_string">Adalékanyag</string>
   <string name="search_string">Keres</string>
   <string name="country_string">Ország</string>
+  <string name="store_subtitle">Bolt</string>
+  <string name="packaging_subtitle">Csomagolás</string>
   <string name="last_seen_string">%1$d %2$s ezelőtt</string>
+  <string name="store_string">Bolt</string>
+  <string name="packaging_string">Csomagolás</string>
+  <string name="label_string">Címke</string>
+  <string name="category_string">Kategória</string>
 </resources>

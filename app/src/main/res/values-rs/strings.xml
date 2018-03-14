@@ -56,6 +56,9 @@
     <item>Sastojci</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">Connected</string>
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Pretraživanje</string>
   <string name="no_products">Proizvodi nisu pronađeni</string>
   <string name="desc_list_item_icon">Item Icon</string>
@@ -387,5 +390,11 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">Pretraživanje</string>
   <string name="country_string">Country</string>
+  <string name="store_subtitle">Prodavnica</string>
+  <string name="packaging_subtitle">Packaging</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">Prodavnica</string>
+  <string name="packaging_string">Packaging</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Category</string>
 </resources>
