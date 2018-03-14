@@ -314,7 +314,7 @@
   <string name="txtSaturatedFat">Mättat fett</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
-  <string name="scan_shortcut_short_label">Scan</string>
+  <string name="scan_shortcut_short_label">Skanna</string>
   <string name="scan_shortcut_long_label">Skanna produkt</string>
   <string name="barcode_shortcut_short_label">Sök</string>
   <string name="barcode_shortcut_long_label">Search By Barcode</string>
