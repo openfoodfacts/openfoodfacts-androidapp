@@ -50,6 +50,9 @@
     <item>原材料</item>
   </string-array>
   <!-- Content Description -->
+  <string name="connection">接続されています</string>
+  <string name="fastscroller_track">高速スクローラートラック</string>
+  <string name="fastscroller_handle">高速スクローラーハンドル</string>
   <string name="search_button">検索</string>
   <string name="no_products">製品が見つかりません</string>
   <string name="desc_list_item_icon">アイテムアイコン</string>
@@ -384,6 +387,6 @@
   <string name="last_seen_string">%1$d %2$s 前</string>
   <string name="store_string">店舗</string>
   <string name="packaging_string">パッケージング</string>
-  <string name="label_string">Label</string>
+  <string name="label_string">ラベル</string>
   <string name="category_string">カテゴリー</string>
 </resources>
