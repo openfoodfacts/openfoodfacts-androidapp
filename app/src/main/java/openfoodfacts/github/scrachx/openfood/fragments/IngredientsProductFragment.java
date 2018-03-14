@@ -231,7 +231,6 @@ public class IngredientsProductFragment extends BaseFragment {
         }
     }
 
-                            .title(additive.getUniqueAllergenID() + " : " + additive.getName())
     private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text, List<String> allergens) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);
         Matcher m = INGREDIENT_PATTERN.matcher(ssb);

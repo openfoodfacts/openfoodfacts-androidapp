@@ -232,52 +232,9 @@ public class IngredientsProductFragment extends BaseFragment {
     }
 
 <<<<<<< HEAD
-    private CharSequence getAdditiveTag(String additive) {
-
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                intent.putExtra("key", additive);
-                intent.putExtra("search_type","additive");
-                startActivity(intent);
-            }
-        };
-
-
-        spannableStringBuilder.append(additive);
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        return spannableStringBuilder;
-    }
-
-    private CharSequence getSpanTag(String tag, final View view) {
-        final SpannableStringBuilder ssb = new SpannableStringBuilder();
-
-        final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Tag.eq(tag.toUpperCase(Locale.getDefault()))).list();
-        if (la.size() >= 1) {
-            final Additive additive = la.get(0);
-            //disabled popup temporarily
-          /*ClickableSpan clickableSpan = new ClickableSpan() {
-                @Override
-                public void onClick(View v) {
-                    new MaterialDialog.Builder(view.getContext())
                             .title(additive.getUniqueAllergenID() + " : " + additive.getName())
-                            .content(additive.getRisk().toUpperCase(Locale.getDefault()))
-                            .positiveText(R.string.txtOk)
-                            .show();
-                }
-            };*/
-            ssb.append(tag);
-            // ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-            ssb.append(" ");
-        }
-        return ssb;
-    }
-
 =======
->>>>>>> openfoodfacts/master
+>>>>>>> origin/master
     private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text, List<String> allergens) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);
         Matcher m = INGREDIENT_PATTERN.matcher(ssb);
