@@ -117,7 +117,6 @@ public class NutritionInfoProductFragment extends BaseFragment {
 
         if (isNotBlank(product.getImageNutritionUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
-
             Picasso.with(view.getContext())
                     .load(product.getImageNutritionUrl())
                     .into(mImageNutrition);
@@ -128,7 +127,6 @@ public class NutritionInfoProductFragment extends BaseFragment {
         //useful when this fragment is used in offline saving
         if (mSendProduct != null && isNotBlank(mSendProduct.getImgupload_nutrition())) {
             addPhotoLabel.setVisibility(View.GONE);
-
             mUrlImage = mSendProduct.getImgupload_nutrition();
             Picasso.with(getContext()).load("file://"+mUrlImage).config(Bitmap.Config.RGB_565).into(mImageNutrition);
         }

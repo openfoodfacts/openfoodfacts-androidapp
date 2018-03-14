@@ -60,7 +60,6 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
         holder.imgIcon.setImageDrawable(AppCompatResources.getDrawable(context, item.getIcon()));
         holder.txtTitle.setText(item.getTitle());
         Picasso.with(context).load("file://"+item.getUrl()).config(Bitmap.Config.RGB_565).into(holder.imgProduct);
-//        holder.imgProduct.setImageBitmap(item.getUrl());
         holder.txtBarcode.setText(item.getBarcode());
         holder.txtWeight.setText(item.getWeight());
         holder.txtBrand.setText(item.getBrand());

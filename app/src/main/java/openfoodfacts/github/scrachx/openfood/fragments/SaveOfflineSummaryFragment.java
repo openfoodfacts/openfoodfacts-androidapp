@@ -114,7 +114,6 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         final State state = (State) intent.getExtras().getSerializable("state");
 
-
         try {
             mProduct = (SendProduct) getArguments().getSerializable("sendProduct");
         } catch (NullPointerException e) {
@@ -347,9 +346,6 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
             mProduct.setUserId(login);
             mProduct.setPassword(password);
         }
-
         return mProduct;
     }
-
-
 }

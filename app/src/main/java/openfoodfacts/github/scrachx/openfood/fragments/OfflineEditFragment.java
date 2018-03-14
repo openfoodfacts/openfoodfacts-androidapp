@@ -244,7 +244,6 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         bundle.putSerializable("state", st);
         intent.putExtras(bundle);
         intent.putExtra("offlineEdit",true);
-//        intent.putExtra("barcode", si.getBarcode());
         startActivity(intent);
     }
 
@@ -283,9 +282,6 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                 toast.show();
             } else {
                 mCardView.setVisibility(View.GONE);
-//                Toast toast = Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG);
-//                toast.setGravity(Gravity.CENTER,0,0);
-//                toast.show();
             }
         }
 
@@ -300,16 +296,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         || isEmpty(product.getBrands()) || isEmpty(product.getWeight()) || isEmpty(product.getName())) {
                     imageIcon = R.drawable.ic_no_red_24dp;
                 }
-
-//                Bitmap bitmap = Utils.decodeFile(new File(product.getImgupload_front()));
-//                if (bitmap == null) {
-//                    Log.e(LOG_TAG, "Unable to load the image of the product: " + product.getBarcode());
-//                    continue;
-//                }
-//
-//                Bitmap imgUrl = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
                 saveItems.add(new SaveItem(product.getName(), imageIcon,product.getImgupload_front(), product.getBarcode(),product.getWeight()+" "+product.getWeight_unit(),product.getBrands()));
-
             }
 
             return ctx[0];

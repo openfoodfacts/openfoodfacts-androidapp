@@ -134,7 +134,6 @@ public class IngredientsProductFragment extends BaseFragment {
         //useful when this fragment is used in offline saving
         if (mSendProduct != null && isNotBlank(mSendProduct.getImgupload_ingredients())) {
             addPhotoLabel.setVisibility(View.GONE);
-
             mUrlImage = mSendProduct.getImgupload_ingredients();
             Picasso.with(getContext()).load("file://"+mUrlImage).config(Bitmap.Config.RGB_565).into(mImageIngredients);
 
