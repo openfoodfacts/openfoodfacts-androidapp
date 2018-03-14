@@ -16,13 +16,21 @@ import openfoodfacts.github.scrachx.openfood.models.AllergenResponse;
 import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
 
 /**
- * Created by Lobster on 04.03.18.
+ * Custom deserializer for {@link openfoodfacts.github.scrachx.openfood.models.AllergensWrapper AllergensWrapper}
+ *
+ * @author Lobster 2018-03-04
+ * @author ross-holloway94 2018-03-14
  */
 
 public class AllergensWrapperDeserializer implements JsonDeserializer<AllergensWrapper> {
 
     private static final String NAMES_KEY = "name";
 
+    /**
+     * <p>
+     * Deserialize an AllergensWrapper JSON. </p>
+     * <p>{@inheritDoc}</p>
+     */
     @Override
     public AllergensWrapper deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         List<AllergenResponse> allergens = new ArrayList<>();

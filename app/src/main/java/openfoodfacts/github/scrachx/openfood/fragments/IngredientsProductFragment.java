@@ -246,7 +246,7 @@ public class IngredientsProductFragment extends BaseFragment {
                 @Override
                 public void onClick(View v) {
                     new MaterialDialog.Builder(view.getContext())
-                            .title(additive.getCode() + " : " + additive.getName())
+                            .title(additive.getUniqueAllergenID() + " : " + additive.getName())
                             .content(additive.getRisk().toUpperCase(Locale.getDefault()))
                             .positiveText(R.string.txtOk)
                             .show();
