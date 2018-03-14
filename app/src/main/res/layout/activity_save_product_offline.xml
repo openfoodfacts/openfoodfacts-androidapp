@@ -51,3 +51,4 @@
         app:srcCompat="@drawable/barcode_white_24dp" />
 
 </android.support.design.widget.CoordinatorLayout>
+
