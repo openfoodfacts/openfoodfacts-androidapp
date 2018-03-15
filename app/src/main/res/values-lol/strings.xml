@@ -387,4 +387,6 @@
   <string name="packaging_string">crwdns37312:0crwdne37312:0</string>
   <string name="label_string">crwdns37313:0crwdne37313:0</string>
   <string name="category_string">crwdns37314:0crwdne37314:0</string>
+  <string name="connection">crwdns37746:0crwdne37746:0</string>
+  <string name="contributor_string">crwdns37747:0crwdne37747:0</string>
 </resources>
