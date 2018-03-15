@@ -393,4 +393,6 @@
   <string name="packaging_string">Упаковка</string>
   <string name="label_string">Label</string>
   <string name="category_string">Категория</string>
+  <string name="connection">Connected</string>
+  <string name="contributor_string">Contributor</string>
 </resources>
