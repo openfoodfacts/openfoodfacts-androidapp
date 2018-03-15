@@ -331,7 +331,7 @@
   <string name="contact">Kontakt</string>
   <string name="contact_summary">Kontakta teamet</string>
   <string name="email_not_found">No email applications found</string>
-  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_title">Flygplansläge aktiverat</string>
   <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
   <string name="airplane_mode_active_dialog_negative">Avfärda</string>
   <string name="airplane_mode_active_dialog_positive">Inställningar</string>
