@@ -14,7 +14,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -60,8 +59,8 @@ import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.BrandActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -74,7 +73,6 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
@@ -235,8 +233,18 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             quantityProduct.setVisibility(View.GONE);
         }
         if (isNotBlank(product.getPackaging())) {
+            packagingProduct.setClickable(true);
+            packagingProduct.setMovementMethod(LinkMovementMethod.getInstance());
             packagingProduct.setText(bold(getString(R.string.txtPackaging)));
-            packagingProduct.append(' ' + product.getPackaging());
+            packagingProduct.append(" ");
+            String[] packagings = product.getPackaging().split(",");
+
+            for (int i = 0; i < packagings.length - 1; i++) {
+                packagingProduct.append(Utils.getClickableText(packagings[i], "", SearchType.PACKAGING, getActivity(), customTabsIntent));
+                packagingProduct.append(", ");
+            }
+
+            packagingProduct.append(Utils.getClickableText(packagings[packagings.length - 1], "", SearchType.PACKAGING, getActivity(), customTabsIntent));
         } else {
             packagingProduct.setVisibility(View.GONE);
         }
@@ -245,11 +253,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             brandProduct.setMovementMethod(LinkMovementMethod.getInstance());
             brandProduct.setText(bold(getString(R.string.txtBrands)));
             brandProduct.append(" ");
-            String[] brands = product.getBrands().split(",");
-            for (String brand : brands) {
-                brandProduct.append(getBrandsTag(brand));
 
+            String[] brands = product.getBrands().split(",");
+            for (int i = 0; i < brands.length - 1; i++) {
+                brandProduct.append(Utils.getClickableText(brands[i], "", SearchType.BRAND, getActivity(), customTabsIntent));
+                brandProduct.append(", ");
             }
+            brandProduct.append(Utils.getClickableText(brands[brands.length - 1], "", SearchType.BRAND, getActivity(), customTabsIntent));
         } else {
             brandProduct.setVisibility(View.GONE);
         }
@@ -269,9 +279,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         List<String> tags = product.getCategoriesTags();
         if (tags != null && !tags.isEmpty()) {
+            categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
             categoryProduct.setText(bold(getString(R.string.txtCategories)));
             categoryProduct.append(" ");
-
+            categoryProduct.setClickable(true);
+            categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
             CategoryName categoryName;
             String languageCode = Locale.getDefault().getLanguage();
             List<String> categories = new ArrayList<>();
@@ -289,12 +301,15 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             if (categories.isEmpty()) {
                 categoryProduct.setVisibility(View.GONE);
             } else {
+                String category;
                 for (int i = 0; i < categories.size() - 1; i++) {
-                    categoryProduct.append(getCategoriesTag(categories.get(i)));
+                    category = categories.get(i);
+                    categoryProduct.append(Utils.getClickableText(category, category, SearchType.CATEGORY, getActivity(), customTabsIntent));
                     categoryProduct.append(", ");
                 }
 
-                categoryProduct.append(getCategoriesTag(categories.get(categories.size() - 1)));
+                category = categories.get(categories.size() - 1);
+                categoryProduct.append(Utils.getClickableText(category, category, SearchType.CATEGORY, getActivity(), customTabsIntent));
             }
         } else {
             categoryProduct.setVisibility(View.GONE);
@@ -327,12 +342,15 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 }
             }
 
+            String label;
             for (int i = 0; i < labels.size() - 1; i++) {
-                labelProduct.append(getLabelTag(labels.get(i)));
+                label = labels.get(i);
+                labelProduct.append(Utils.getClickableText(label, label, SearchType.LABEL, getActivity(), customTabsIntent));
                 labelProduct.append(", ");
             }
 
-            labelProduct.append(getLabelTag(labels.get(labels.size() - 1)));
+            label = labels.get(labels.size() - 1);
+            labelProduct.append(Utils.getClickableText(label, label, SearchType.LABEL, getActivity(), customTabsIntent));
         } else {
             labelProduct.setVisibility(View.GONE);
         }
@@ -341,17 +359,36 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             embCode.setMovementMethod(LinkMovementMethod.getInstance());
             embCode.setText(bold(getString(R.string.txtEMB)));
             embCode.append(" ");
+
+            String embTag;
             String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
-            for (String embTag : embTags) {
-                embCode.append(getSpanTag(getEmbCode(embTag), getEmbUrl(embTag)));
+            for (int i = 0; i < embTags.length - 1; i++) {
+                embTag = embTags[i];
+                embCode.append(Utils.getClickableText(getEmbCode(embTag), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
+                embCode.append(", ");
             }
 
+            embTag = embTags[embTags.length - 1];
+            embCode.append(Utils.getClickableText(getEmbCode(embTag), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
         } else {
             embCode.setVisibility(View.GONE);
         }
+
         if (isNotBlank(product.getStores())) {
+            storeProduct.setMovementMethod(LinkMovementMethod.getInstance());
             storeProduct.setText(bold(getString(R.string.txtStores)));
-            storeProduct.append(' ' + product.getStores());
+            storeProduct.append(" ");
+
+            String store;
+            String stores[] = product.getStores().split(",");
+            for (int i = 0; i < stores.length - 1; i++) {
+                store = stores[i];
+                storeProduct.append(Utils.getClickableText(store, store, SearchType.STORE, getActivity(), customTabsIntent));
+                storeProduct.append(", ");
+            }
+
+            store = stores[stores.length - 1];
+            storeProduct.append(Utils.getClickableText(store, store, SearchType.STORE, getActivity(), customTabsIntent));
         } else {
             storeProduct.setVisibility(View.GONE);
         }
@@ -407,11 +444,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
 
             for (int i = 0; i < countries.size() - 1; i++) {
-                countryProduct.append(getCountryTag(StringUtils.capitalize(countries.get(i))));
+                countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(i)), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
                 countryProduct.append(", ");
             }
 
-            countryProduct.append(getCountryTag(StringUtils.capitalize(countries.get(countries.size() - 1))));
+            countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(countries.size() - 1)), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
+            ;
         } else {
             countryProduct.setVisibility(View.GONE);
         }
@@ -499,87 +537,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         Tag tag = mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique();
         if (tag != null) return tag.getName();
         return embTag;
-    }
-
-    private CharSequence getSpanTag(String embCode, String embUrl) {
-        final SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-                embCodeUri = Uri.parse("https://world.openfoodfacts.org/packager-code/" + embUrl);
-                CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, embCodeUri, new WebViewFallback());
-            }
-        };
-        spannableStringBuilder.append(embCode);
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableStringBuilder.append(" ");
-        return spannableStringBuilder;
-    }
-
-    private CharSequence getBrandsTag(String brand) {
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), BrandActivity.class);
-                intent.putExtra("brand", brand);
-                startActivity(intent);
-            }
-        };
-
-        spannableStringBuilder.append(brand);
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableStringBuilder.append(" ");
-        return spannableStringBuilder;
-    }
-
-    private CharSequence getCountryTag(String country) {
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), BrandActivity.class);
-                intent.putExtra("country", country);
-                startActivity(intent);
-            }
-        };
-
-        spannableStringBuilder.append(country);
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        return spannableStringBuilder;
-    }
-
-
-    private CharSequence getCategoriesTag(String category) {
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse("https://world.openfoodfacts.org/category/" + category), new WebViewFallback());
-            }
-        };
-
-        spannableStringBuilder.append(category);
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        return spannableStringBuilder;
-    }
-
-    private CharSequence getLabelTag(String label) {
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse("https://world.openfoodfacts.org/label/" + label), new WebViewFallback());
-            }
-
-        };
-
-        spannableStringBuilder.append(label);
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        return spannableStringBuilder;
     }
 
     @OnClick(R.id.product_incomplete_message_dismiss_icon)
@@ -717,7 +674,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_CAMERA: {
                 if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {

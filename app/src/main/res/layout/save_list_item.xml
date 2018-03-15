@@ -1,95 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/saveRel"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/saveRel">
+    android:orientation="horizontal"
+    android:weightSum="100">
 
 
     <ImageView
         android:id="@+id/imgSaveProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:layout_margin="@dimen/spacing_normal" />
+        android:layout_margin="@dimen/spacing_small"
+        android:layout_weight="20" />
 
-
-
-    <TextView
-        android:id="@+id/offlineBrand"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/titleSave"
-        android:layout_below="@+id/titleSave"
-        android:layout_toLeftOf="@+id/iconSave"
-        android:layout_toRightOf="@id/imgSaveProduct"
-        android:gravity="center_vertical"
-        android:paddingRight="40dp"
-        android:textSize="@dimen/font_normal"
-        android:layout_alignStart="@id/barcodeSave"
-        android:layout_toStartOf="@+id/iconSave"
-        android:layout_toEndOf="@id/imgSaveProduct"
-        android:paddingEnd="40dp" />
+        android:layout_weight="70"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/offlineWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/offlineBrand"
-        android:layout_below="@+id/offlineBrand"
-        android:layout_toLeftOf="@+id/iconSave"
-        android:layout_toRightOf="@id/imgSaveProduct"
-        android:gravity="center_vertical"
-        android:paddingRight="40dp"
-        android:textSize="@dimen/font_normal"
-        android:layout_alignStart="@id/offlineWeight"
-        android:layout_toStartOf="@+id/iconSave"
-        android:layout_toEndOf="@id/imgSaveProduct"
-        android:paddingEnd="40dp" />
+        <TextView
+            android:id="@+id/titleSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/padding_large"
+            android:textSize="@dimen/font_normal" />
 
-    <TextView
 
-        android:id="@+id/barcodeSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/offlineWeight"
-        android:layout_below="@+id/offlineWeight"
-        android:layout_toLeftOf="@+id/iconSave"
-        android:layout_toRightOf="@id/imgSaveProduct"
-        android:gravity="center_vertical"
-        android:paddingRight="40dp"
-        android:textSize="@dimen/font_normal"
-        android:layout_alignStart="@id/titleSave"
-        android:layout_toStartOf="@+id/iconSave"
-        android:layout_toEndOf="@id/imgSaveProduct"
-        android:paddingEnd="40dp" />
+        <TextView
+            android:id="@+id/offlineBrand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/padding_large"
+            android:textSize="@dimen/font_normal" />
 
-    <TextView
-        android:id="@+id/titleSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/imgSaveProduct"
-        android:layout_alignTop="@+id/imgSaveProduct"
-        android:layout_toLeftOf="@+id/iconSave"
-        android:textSize="@dimen/font_normal"
-        android:paddingRight="40dp"
-        android:gravity="center_vertical"
-        android:layout_toEndOf="@id/imgSaveProduct"
-        android:layout_toStartOf="@+id/iconSave"
-        android:paddingEnd="40dp" />
+        <TextView
+            android:id="@+id/offlineWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/padding_large"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/barcodeSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/padding_large"
+            android:textSize="@dimen/font_normal" />
+
+
+    </LinearLayout>
 
 
     <ImageView
         android:id="@+id/iconSave"
-        android:layout_width="25dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+
+        android:layout_gravity="center_vertical"
         android:layout_margin="@dimen/spacing_normal"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginRight="@dimen/spacing_small"
+        android:layout_weight="10" />
 
 
-</RelativeLayout>
+</LinearLayout>

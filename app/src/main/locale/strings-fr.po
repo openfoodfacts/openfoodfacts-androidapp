@@ -1112,7 +1112,7 @@ msgid "Search a product"
 msgstr "Chercher un produit"
 
 msgctxt "number_of_results"
-msgid "Number of results :"
+msgid "Number of results: "
 msgstr "Nombre de résultats:"
 
 msgctxt "txt_no_results"

@@ -131,6 +131,7 @@ public class ProductRepository implements IProductRepository {
      * @param refresh defines the source of data.
      *                If refresh is true (or local database is empty) than load it from the server,
      *                else from the local database.
+     * @return The allergens in the product.
      */
     @Override
     public Single<List<Allergen>> getAllergens(Boolean refresh) {

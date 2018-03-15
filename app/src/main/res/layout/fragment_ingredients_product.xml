@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:isScrollContainer="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="fill_vertical"
     android:clipToPadding="false"
+    android:isScrollContainer="false"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
@@ -18,13 +17,17 @@
 
         <ImageButton
             android:id="@+id/imageViewIngredients"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_add_a_photo_black_48dp"
-            android:background="?android:selectableItemBackground"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:maxHeight="250dp" />
+            android:adjustViewBounds="true"
+            android:background="?android:selectableItemBackground"
+            android:maxHeight="120dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
 
         <TextView
             android:id="@+id/addPhotoLabel"
@@ -32,8 +35,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/take_picture_ingredients"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textIngredientProduct"
@@ -56,6 +58,7 @@
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/spacing_tiny"
+            android:textColorLink="@color/light_blue_A700"
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
             android:textIsSelectable="true"
@@ -69,6 +72,7 @@
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/spacing_tiny"
+            android:textColorLink="@color/light_blue_A700"
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
             android:textIsSelectable="true"
@@ -82,6 +86,7 @@
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/spacing_tiny"
+            android:textColorLink="@color/light_blue_A700"
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
             android:textIsSelectable="true"
@@ -111,8 +116,7 @@
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
             android:textIsSelectable="true"
-            android:textSize="@dimen/font_normal"
-            />
+            android:textSize="@dimen/font_normal" />
 
     </LinearLayout>
 

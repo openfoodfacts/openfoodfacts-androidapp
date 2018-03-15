@@ -62,7 +62,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         setPreferencesFromResource(R.xml.preferences, rootKey);
         setHasOptionsMenu(true);
 
-
         ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
 
         settings = getActivity().getSharedPreferences("prefs", 0);
@@ -75,11 +74,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Locale current = LocaleHelper.getLocale(localeValues[i]);
 
             if (current != null) {
-                localeLabels[i] = String.format("%s - %s",
-                        // current.getDisplayName(current), // native form
-                        WordUtils.capitalize(current.getDisplayName(current)),
-                        localeValues[i].toUpperCase(Locale.getDefault())
-                );
+                localeLabels[i] = WordUtils.capitalize(current.getDisplayName(current));
             }
         }
 
@@ -124,6 +119,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             public boolean onPreferenceClick(Preference preference) {
 
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+                customTabsIntent.intent.putExtra("android.intent.extra.REFERRER",Uri.parse("android-app://"+getContext().getPackageName()));
                 CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.faq_url)), new WebViewFallback());
                 return true;
             }
@@ -135,6 +131,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             public boolean onPreferenceClick(Preference preference) {
 
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+                customTabsIntent.intent.putExtra("android.intent.extra.REFERRER",Uri.parse("android-app://"+getContext().getPackageName()));
                 CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.terms_url)), new WebViewFallback());
                 return true;
             }
@@ -146,8 +143,21 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             public boolean onPreferenceClick(Preference preference) {
 
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+                customTabsIntent.intent.putExtra("android.intent.extra.REFERRER",Uri.parse("android-app://"+getContext().getPackageName()));
                 CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
 
+                return true;
+            }
+        });
+
+        ListPreference imageUploadPref = ((ListPreference) findPreference("ImageUpload"));
+        String[] values = getActivity().getResources().getStringArray(R.array.upload_image);
+        imageUploadPref.setEntries(values);
+        imageUploadPref.setEntryValues(values);
+        imageUploadPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                settings.edit().putString("imageUpload", (String)newValue).apply();
                 return true;
             }
         });

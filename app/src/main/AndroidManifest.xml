@@ -125,7 +125,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".views.BrandActivity"></activity>
+        <activity android:name=".views.ProductBrowsingListActivity"></activity>
     </application>
 
 </manifest>
