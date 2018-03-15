@@ -387,4 +387,6 @@
   <string name="packaging_string">Envases</string>
   <string name="label_string">Etiqueta</string>
   <string name="category_string">Categoría</string>
+  <string name="connection">Connected</string>
+  <string name="contributor_string">Contributor</string>
 </resources>
