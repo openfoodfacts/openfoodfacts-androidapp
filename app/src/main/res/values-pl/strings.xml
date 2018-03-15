@@ -57,8 +57,8 @@ godziny</item>
     <item>Składniki</item>
   </string-array>
   <!-- Content Description -->
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
+  <string name="fastscroller_track">Ślad FastScrollera</string>
+  <string name="fastscroller_handle">Uchwyt FastScrollera</string>
   <string name="search_button">Szukaj</string>
   <string name="no_products">Nie odnaleziono produktów</string>
   <string name="desc_list_item_icon">Ikona przedmiotu</string>
@@ -397,4 +397,6 @@ godziny</item>
   <string name="packaging_string">Opakowania</string>
   <string name="label_string">Etykieta</string>
   <string name="category_string">Kategoria</string>
+  <string name="connection">Connected</string>
+  <string name="contributor_string">Contributor</string>
 </resources>
