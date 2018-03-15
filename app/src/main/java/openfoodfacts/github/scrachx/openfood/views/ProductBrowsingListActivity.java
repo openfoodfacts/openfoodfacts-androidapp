@@ -122,6 +122,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 getSupportActionBar().setSubtitle(getString(R.string.category_string));
                 break;
             }
+
+            case SearchType.CONTRIBUTOR: {
+                getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
+            }
         }
 
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
@@ -196,24 +200,38 @@ public class ProductBrowsingListActivity extends BaseActivity {
                         loadData(isOk, searchResponse);
                     }
                 });
+                break;
             }
 
-            case "label": {
+            case SearchType.LABEL: {
                 api.getProductsByLabel(key, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
                     @Override
                     public void onLabelResponse(boolean value, Search label) {
                         loadData(value, label);
                     }
                 });
+                break;
             }
 
-            case "category": {
+            case SearchType.CATEGORY: {
                 api.getProductsByCategory(key, pageAddress, new OpenFoodAPIClient.onCategoryCallback() {
                     @Override
-                    public void onCategoryResponse(boolean value, Search label) {
-                        loadData(value, label);
+                    public void onCategoryResponse(boolean value, Search category) {
+                        loadData(value, category);
                     }
                 });
+                break;
+            }
+
+            case SearchType.CONTRIBUTOR: {
+
+                api.getProductsByContributor(key, pageAddress, new OpenFoodAPIClient.onContributorCallback() {
+                    @Override
+                    public void onContributorResponse(boolean value, Search contributor) {
+                        loadData(value, contributor);
+                    }
+                });
+                break;
             }
         }
     }
