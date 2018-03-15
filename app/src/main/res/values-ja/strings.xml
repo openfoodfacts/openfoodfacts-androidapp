@@ -384,4 +384,6 @@
   <string name="packaging_string">パッケージング</string>
   <string name="label_string">ラベル</string>
   <string name="category_string">カテゴリー</string>
+  <string name="connection">Connected</string>
+  <string name="contributor_string">Contributor</string>
 </resources>
