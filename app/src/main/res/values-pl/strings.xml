@@ -7,7 +7,7 @@
 minuty</item>
     <item quantity="few"> minutes</item>
     <item quantity="many"> minutes</item>
-    <item quantity="other"> minutes</item>
+    <item quantity="other"> minuty</item>
   </plurals>
   <plurals name="hours">
     <item quantity="one"> godzina 
@@ -397,6 +397,6 @@ godziny</item>
   <string name="packaging_string">Opakowania</string>
   <string name="label_string">Etykieta</string>
   <string name="category_string">Kategoria</string>
-  <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="connection">Połączono</string>
+  <string name="contributor_string">Współtwórca</string>
 </resources>
