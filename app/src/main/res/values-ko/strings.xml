@@ -44,6 +44,8 @@
     <item>성분</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">수색</string>
   <string name="no_products">제품을 찾을 수 없습니다.</string>
   <string name="desc_list_item_icon">Item Icon</string>
