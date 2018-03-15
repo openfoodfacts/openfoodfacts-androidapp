@@ -12,6 +12,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.SearchType.ADDITIVE;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.ALLERGEN;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.BRAND;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.CATEGORY;
+import static openfoodfacts.github.scrachx.openfood.utils.SearchType.CONTRIBUTOR;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.COUNTRY;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.EMB;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.LABEL;
@@ -37,6 +38,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.SearchType.TRACE;
         SEARCH,
         STORE,
         TRACE,
+        CONTRIBUTOR,
 })
 public @interface SearchType {
 
@@ -51,6 +53,8 @@ public @interface SearchType {
     String SEARCH = "search";
     String STORE = "store";
     String TRACE = "trace";
+    String CONTRIBUTOR = "contributor";
+
 
     HashMap<String, String> URLS = new HashMap<String, String>() {{
         put(ALLERGEN, BuildConfig.OFWEBSITE + "allergen/");
