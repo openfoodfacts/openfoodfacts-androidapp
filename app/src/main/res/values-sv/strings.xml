@@ -47,6 +47,8 @@
     <item>Ingredienser</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Sök</string>
   <string name="no_products">Produkterna hittades inte</string>
   <string name="desc_list_item_icon">Item Icon</string>
@@ -68,7 +70,7 @@
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Butiker:</string>
   <string name="txtCountries">Countries where sold :</string>
-  <string name="txtIngredients">Ingredients list :</string>
+  <string name="txtIngredients">Ingredienslista :</string>
   <string name="Donate">Donera</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
   <string name="txtSubstances">Substanser eller produkter som orsaker allergier eller intolerans :</string>
@@ -211,7 +213,7 @@
   <string name="nutrition_fiber_short_name">Kostfiber (g)</string>
   <string name="nutrition_header">Näringsfakta</string>
   <string name="nutrition_no_data_message">Inga data finns tillgängliga för denna produkt</string>
-  <string name="nutrition_per_quantity">For 100g/100ml</string>
+  <string name="nutrition_per_quantity">För 100g/100ml</string>
   <string name="nutrition_proteins">Proteiner</string>
   <string name="nutrition_proteins_short_name">Proteiner (g)</string>
   <string name="nutrition_salt">Salt</string>
@@ -236,9 +238,9 @@
   <string name="txtSeeMore">Visa mer</string>
   <string name="action_search">Sök</string>
   <string name="search_hint">Sök en produkt</string>
-  <string name="number_of_results">Number of results: </string>
+  <string name="number_of_results">Antal resultat: </string>
   <string name="brand">Varumärke :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="number_of_products">Antal produkter: </string>
   <string name="txt_no_results">Inga resultat hittades</string>
   <string name="txt_extend_search">Prova att bredda din sökning eller lägga till produkten</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
@@ -338,18 +340,18 @@
   <string name="device_offline_dialog_negative">Avfärda</string>
   <string name="device_offline_dialog_positive">Inställningar</string>
   <string name="saving">Sparar…</string>
-  <string name="scan_first_product">Scan First Product</string>
+  <string name="scan_first_product">Skanna första produkten</string>
   <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
   <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
   <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
   <string name="device_on_mobile_data_warning_title">Information</string>
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
   <string name="device_on_mobile_data_warning_positive">Inställningar</string>
-  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="device_on_mobile_data_warning_negative">Ladda upp ändå</string>
   <string name="preference_choose_language_dialog_title">Välj språk</string>
   <string name="FAQ">FAQ</string>
-  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="FrequentlyAskedQuestions">Vanliga frågor (FAQ)</string>
+  <string name="translate_help_title">Hjälp översätta Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
   <string name="please_check_your_connection">Kontrollera din anslutning.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
