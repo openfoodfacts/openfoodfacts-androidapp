@@ -393,4 +393,6 @@
   <string name="packaging_string">אריזה</string>
   <string name="label_string">תווית</string>
   <string name="category_string">קטגוריה</string>
+  <string name="connection">Connected</string>
+  <string name="contributor_string">Contributor</string>
 </resources>
