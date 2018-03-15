@@ -22,12 +22,6 @@
   <string name="message_in_activity_save_product_offline">crwdns37134:0crwdne37134:0</string>
   <string name="product_incomplete_message">crwdns37206:0crwdne37206:0</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>crwdns37301:0crwdne37301:0</item>
-    <item>crwdns37302:0crwdne37302:0</item>
-    <item>crwdns37303:0crwdne37303:0</item>
-    <item>crwdns37304:0crwdne37304:0</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>crwdns34969:0crwdne34969:0</item>
@@ -53,9 +47,8 @@
     <item>crwdns35045:0crwdne35045:0</item>
   </string-array>
   <!-- Content Description -->
-  <string name="connection">crwdns37315:0crwdne37315:0</string>
-  <string name="fastscroller_track">crwdns37316:0crwdne37316:0</string>
-  <string name="fastscroller_handle">crwdns37317:0crwdne37317:0</string>
+  <string name="fastscroller_track">crwdns37744:0crwdne37744:0</string>
+  <string name="fastscroller_handle">crwdns37745:0crwdne37745:0</string>
   <string name="search_button">crwdns35046:0crwdne35046:0</string>
   <string name="no_products">crwdns35047:0crwdne35047:0</string>
   <string name="desc_list_item_icon">crwdns35048:0crwdne35048:0</string>

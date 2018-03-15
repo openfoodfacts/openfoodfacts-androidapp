@@ -28,12 +28,6 @@
   <string name="message_in_activity_save_product_offline">Лише одне фото є обов\'язковим для додавання нового продукту.</string>
   <string name="product_incomplete_message">Інформація про продукт не є повною, тому неможливо перейти до заповнення алергенів.</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Загальна інформація</item>
@@ -59,7 +53,6 @@
     <item>Інгредієнти</item>
   </string-array>
   <!-- Content Description -->
-  <string name="connection">Connected</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Пошук</string>
