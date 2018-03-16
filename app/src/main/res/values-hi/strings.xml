@@ -381,12 +381,12 @@
   <string name="search_string">ढूंढें</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">दुकान</string>
-  <string name="packaging_subtitle">Packaging</string>
+  <string name="packaging_subtitle">पैकेजिंग</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">दुकान</string>
-  <string name="packaging_string">Packaging</string>
-  <string name="label_string">Label</string>
+  <string name="packaging_string">पैकेजिंग</string>
+  <string name="label_string">लेबल</string>
   <string name="category_string">श्रेणी</string>
   <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="contributor_string">सहयोगी</string>
 </resources>
