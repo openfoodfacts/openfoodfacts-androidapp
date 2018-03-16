@@ -387,4 +387,6 @@
   <string name="packaging_string">Art der Verpackung</string>
   <string name="label_string">Kennzeichnung</string>
   <string name="category_string">Kategorie</string>
+  <string name="connection">Connected</string>
+  <string name="contributor_string">Contributor</string>
 </resources>
