@@ -388,5 +388,5 @@
   <string name="label_string">Címke</string>
   <string name="category_string">Kategória</string>
   <string name="connection">Csatlakozva</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="contributor_string">Hozzájáruló</string>
 </resources>
