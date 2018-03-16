@@ -468,6 +468,10 @@ public class OpenFoodAPIClient {
         void onCategoryResponse(boolean value, Search category);
     }
 
+    public interface onContributorCallback {
+        void onContributorResponse(boolean value, Search contributor);
+    }
+
     /**
      * Create an history product asynchronously
      */
@@ -776,4 +780,39 @@ public class OpenFoodAPIClient {
             }
         });
     }
+
+
+    public void getProductsByContributor(String contributor, final int page, final onContributorCallback onContributorCallback) {
+        apiService.searchProductsByContributor(contributor, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onContributorCallback.onContributorResponse(false, null);
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(response.body().getCount()) == 0) {
+                        onContributorCallback.onContributorResponse(false, null);
+                        return;
+                    } else {
+                        onContributorCallback.onContributorResponse(true, response.body());
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+
+                onContributorCallback.onContributorResponse(false, null);
+
+            }
+        });
+    }
+
 }

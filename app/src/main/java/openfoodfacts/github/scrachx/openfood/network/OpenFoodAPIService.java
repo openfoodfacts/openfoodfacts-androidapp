@@ -83,7 +83,10 @@ public interface OpenFoodAPIService {
     Call<Search> getProductByLabel(@Path("label") String label, @Path("page") int page);
 
     @GET("category/{category}/{page}.json")
-    Call<Search> getProductByCategory(@Path("category") String category,@Path("page") int page);
+    Call<Search> getProductByCategory(@Path("category") String category, @Path("page") int page);
+
+    @GET("contributor/{Contributor}/{page}.json")
+    Call<Search> searchProductsByContributor(@Path("Contributor") String Contributor, @Path("page") int page);
 
     @GET("language/{language}.json")
     Call<Search> byLanguage(@Path("language") String language);
