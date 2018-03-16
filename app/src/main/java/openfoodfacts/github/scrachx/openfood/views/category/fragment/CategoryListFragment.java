@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -58,10 +59,15 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
             public void onGlobalLayout() {
                 if(binding.getViewModel().getCategories().get().isEmpty()){
                     fastScroller.setVisibility(View.GONE);
-
                 }
                 else {
                     fastScroller.setVisibility(View.VISIBLE);
+                    // check for an empty item in the start of the list
+                    if(viewModel.getCategories().get().get(0).getName().isEmpty()){
+                        viewModel.getCategories().get().remove(0);
+                        binding.recycler.getAdapter().notifyItemRemoved(0);
+                        binding.recycler.getAdapter().notifyItemRangeChanged(0,binding.recycler.getAdapter().getItemCount());
+                    }
                 }
             }
         });

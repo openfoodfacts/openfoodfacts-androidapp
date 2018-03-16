@@ -1,11 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -13,7 +10,6 @@ import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
@@ -22,7 +18,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -39,24 +34,26 @@ import java.util.Locale;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.INavigationItem;
 import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
-import openfoodfacts.github.scrachx.openfood.views.SplashActivity;
-import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
-public class PreferencesFragment extends PreferenceFragmentCompat {
+import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_PREFERENCES;
+
+public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem {
 
     AdditiveDao mAdditiveDao;
     private SharedPreferences settings;
+    private NavigationDrawerListener navigationDrawerListener;
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        MenuItem item=menu.findItem(R.id.action_search);
+        MenuItem item = menu.findItem(R.id.action_search);
         item.setVisible(false);
     }
 
@@ -65,23 +62,20 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
         setPreferencesFromResource(R.xml.preferences, rootKey);
         setHasOptionsMenu(true);
 
-
         ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
 
         settings = getActivity().getSharedPreferences("prefs", 0);
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
 
-        String[] localeValues = getActivity().getResources().getStringArray(R.array.lang_array);
+        String[] localeValues = getActivity().getResources().getStringArray(R.array.languages_array);
         String[] localeLabels = new String[localeValues.length];
 
         for (int i = 0; i < localeValues.length; i++) {
             Locale current = LocaleHelper.getLocale(localeValues[i]);
 
-            localeLabels[i] = String.format("%s - %s",
-                    // current.getDisplayName(current), // native form
-                    WordUtils.capitalize(current.getDisplayName()),
-                    localeValues[i].toUpperCase(Locale.getDefault())
-            );
+            if (current != null) {
+                localeLabels[i] = WordUtils.capitalize(current.getDisplayName(current));
+            }
         }
 
         languagePreference.setEntries(localeLabels);
@@ -125,7 +119,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             public boolean onPreferenceClick(Preference preference) {
 
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-                CustomTabActivityHelper.openCustomTab(getActivity(),customTabsIntent,Uri.parse(getString(R.string.faq_url)),new WebViewFallback());
+                customTabsIntent.intent.putExtra("android.intent.extra.REFERRER",Uri.parse("android-app://"+getContext().getPackageName()));
+                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.faq_url)), new WebViewFallback());
                 return true;
             }
         });
@@ -136,7 +131,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             public boolean onPreferenceClick(Preference preference) {
 
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-                CustomTabActivityHelper.openCustomTab(getActivity(),customTabsIntent,Uri.parse(getString(R.string.terms_url)),new WebViewFallback());
+                customTabsIntent.intent.putExtra("android.intent.extra.REFERRER",Uri.parse("android-app://"+getContext().getPackageName()));
+                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.terms_url)), new WebViewFallback());
                 return true;
             }
         });
@@ -147,13 +143,40 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
             public boolean onPreferenceClick(Preference preference) {
 
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+                customTabsIntent.intent.putExtra("android.intent.extra.REFERRER",Uri.parse("android-app://"+getContext().getPackageName()));
                 CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
 
                 return true;
             }
         });
+
+        ListPreference imageUploadPref = ((ListPreference) findPreference("ImageUpload"));
+        String[] values = getActivity().getResources().getStringArray(R.array.upload_image);
+        imageUploadPref.setEntries(values);
+        imageUploadPref.setEntryValues(values);
+        imageUploadPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                settings.edit().putString("imageUpload", (String)newValue).apply();
+                return true;
+            }
+        });
     }
 
+    @Override
+    public NavigationDrawerListener getNavigationDrawerListener() {
+        if (navigationDrawerListener == null && getActivity() instanceof NavigationDrawerListener) {
+            navigationDrawerListener = (NavigationDrawerListener) getActivity();
+        }
+
+        return navigationDrawerListener;
+    }
+
+    @Override
+    @NavigationDrawerType
+    public int getNavigationDrawerType() {
+        return ITEM_PREFERENCES;
+    }
 
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {
 

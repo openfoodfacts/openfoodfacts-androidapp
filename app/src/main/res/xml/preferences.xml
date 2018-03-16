@@ -33,6 +33,14 @@
             android:summaryOn="@string/preference_enable_mobile_data_summary_on"
             android:title="@string/preference_enable_mobile_data_title" />
 
+        <ListPreference
+            android:defaultValue="640 X 480"
+            android:dialogTitle="@string/choose_resolution"
+            android:key="ImageUpload"
+            android:selectable="true"
+            android:summary="@string/pref_resolution_summary"
+            android:title="@string/image_upload_resolution" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/preference_header_contributing">
@@ -62,20 +70,12 @@
         <Preference
             android:key="FAQ"
             android:summary="@string/FrequentlyAskedQuestions"
-                    android:title="@string/FAQ"/>
+            android:title="@string/FAQ" />
 
-            
-           <Preference android:title="@string/translate_help_title"
-        android:key="@string/lang_translate"
-        android:summary="@string/translate_help_summary"/>
-    <Preference
-
-        android:title="@string/Terms"
-        android:summary="@string/TermsOfUse"
-        android:key="@string/Terms"/>
-
-          
-
+        <Preference
+            android:key="Terms"
+            android:summary="@string/TermsOfUse"
+            android:title="@string/Terms" />
 
     </PreferenceCategory>
 </PreferenceScreen>

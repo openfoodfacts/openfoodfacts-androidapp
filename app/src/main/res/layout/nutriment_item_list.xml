@@ -1,43 +1,48 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:columnCount="5"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/nutriment_name"
-        android:textSize="@dimen/font_normal"
-        android:layout_columnSpan="3"
-        android:layout_gravity="fill_horizontal"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        tools:text="Sucres bla bla bla"
-        />
+        android:layout_marginLeft="@dimen/horizontal_margin"
+        android:layout_marginRight="@dimen/horizontal_margin"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1.6"
+        android:textSize="@dimen/font_normal"
+        tools:text="Sucres bla bla bla" />
 
     <TextView
         android:id="@+id/nutriment_value"
-        android:textSize="@dimen/font_normal"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/horizontal_margin"
+        android:layout_marginRight="@dimen/horizontal_margin"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
         android:gravity="end"
-        tools:text="496 Kcal"
-        android:layout_width="60dp" />
+        android:textSize="@dimen/font_normal"
+        tools:text="496 Kcal" />
 
     <TextView
         android:id="@+id/nutriment_serving_value"
-        android:textSize="@dimen/font_normal"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/horizontal_margin"
+        android:layout_marginRight="@dimen/horizontal_margin"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
         android:gravity="end"
-        tools:text="Per serving"
-        android:layout_width="60dp" />
+        android:textSize="@dimen/font_normal"
+        tools:text="Per serving" />
 
-</GridLayout>
+</LinearLayout>
