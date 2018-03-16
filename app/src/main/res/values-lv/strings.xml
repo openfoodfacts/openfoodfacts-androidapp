@@ -103,7 +103,7 @@
   <string name="errorWeb">Mēs nevarējām piekļūt internetam. Vai jums ir savienojuma problēmas?</string>
   <string name="uploadLater">Attēls tiks augšupielādēts, kad interneta savienojums būs pieejams</string>
   <string name="txtInfoLoginOk">Lietotājs saglabāts</string>
-  <string name="txtInfoLoginNo">User not saved</string>
+  <string name="txtInfoLoginNo">Lietotājs nav saglabāts</string>
   <string name="txtDialogsTitle">Informācija</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
