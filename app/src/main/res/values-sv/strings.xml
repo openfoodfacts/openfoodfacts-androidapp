@@ -387,4 +387,6 @@
   <string name="packaging_string">Förpackning</string>
   <string name="label_string">Etikett</string>
   <string name="category_string">Kategori</string>
+  <string name="connection">Connected</string>
+  <string name="contributor_string">Contributor</string>
 </resources>

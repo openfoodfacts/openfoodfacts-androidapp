@@ -415,8 +415,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userLogin1 = preferences1.getString("user", null);
         userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin1);
         if (isNotEmpty(userLogin1)) {
-            CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent,
-                    userContributeUri, new WebViewFallback());
+
+            ProductBrowsingListActivity.startActivity(this, userLogin1, SearchType.CONTRIBUTOR);
+
+
         } else {
             new MaterialDialog.Builder(MainActivity.this)
                     .title(R.string.contribute)

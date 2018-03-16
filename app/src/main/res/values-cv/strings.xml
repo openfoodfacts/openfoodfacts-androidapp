@@ -384,4 +384,6 @@
   <string name="packaging_string">Packaging</string>
   <string name="label_string">Label</string>
   <string name="category_string">Category</string>
+  <string name="connection">Connected</string>
+  <string name="contributor_string">Contributor</string>
 </resources>
