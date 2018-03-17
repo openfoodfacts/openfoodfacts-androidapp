@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -19,6 +22,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -53,6 +57,7 @@ public class ProductActivity extends BaseActivity {
     private ShareActionProvider mShareActionProvider;
     private State mState;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +76,43 @@ public class ProductActivity extends BaseActivity {
         if (!Utils.isHardwareCameraInstalled(this)) {
             mButtonScan.setVisibility(View.GONE);
         }
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.button_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+
+            switch (item.getItemId()) {
+                case R.id.bookmark:
+                    Toast.makeText(ProductActivity.this,"Bookmark",Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.share:
+                    String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
+                    Intent sharingIntent = new Intent();
+                    sharingIntent.setAction(Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
+                    String shareSub = "\n\n";
+                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                    startActivity(Intent.createChooser(sharingIntent, "Share using"));
+                    break;
+                case R.id.translation:
+                    Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.find:
+                    String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
+                    if (mState.getProduct().getUrl() != null) {
+                        url = " " + mState.getProduct().getUrl();
+                    }
+
+                    CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), null);
+
+                    CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());                    break;
+                default:
+                    return true;
+
+            }
+            return true;
+        });
     }
 
     @OnClick(R.id.buttonScan)
@@ -112,6 +154,16 @@ public class ProductActivity extends BaseActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem share_item = menu.findItem(R.id.menu_item_share);
+        share_item.setVisible(false);
+        MenuItem edit_product = menu.findItem(R.id.action_edit_product);
+        edit_product.setVisible(false);
+        return true;
+    }
+
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
@@ -119,28 +171,6 @@ public class ProductActivity extends BaseActivity {
 //                NavUtils.navigateUpFromSameTask(this);
                 finish();
                 return true;
-
-            case R.id.menu_item_share:
-                String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
-                Intent sharingIntent = new Intent();
-                sharingIntent.setAction(Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
-                String shareSub = "\n\n";
-                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                return true;
-
-            case R.id.action_edit_product:
-                String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
-                if (mState.getProduct().getUrl() != null) {
-                    url = " " + mState.getProduct().getUrl();
-                }
-
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), null);
-
-                CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
             default:
                 return super.onOptionsItemSelected(item);
         }
