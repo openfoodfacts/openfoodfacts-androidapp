@@ -114,7 +114,7 @@
 
     <!-- Content Description -->
     <string name="bookmark">Bookmark</string>
-    <string name="find">Find</string>
+    <string name="product">Product</string>
 
     <string name="fastscroller_track">FastScroller track</string>
     <string name="fastscroller_handle">FastScroller handle</string>

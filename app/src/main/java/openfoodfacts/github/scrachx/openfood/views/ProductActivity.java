@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -83,7 +84,7 @@ public class ProductActivity extends BaseActivity {
             switch (item.getItemId()) {
                 case R.id.bookmark:
                     Toast.makeText(ProductActivity.this,"Bookmark",Toast.LENGTH_SHORT).show();
-                    break;
+                    return true;
                 case R.id.share:
                     String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
                     Intent sharingIntent = new Intent();
@@ -94,11 +95,11 @@ public class ProductActivity extends BaseActivity {
                     sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
                     sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
                     startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                    break;
+                    return true;
                 case R.id.translation:
                     Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.find:
+                    return true;
+                case R.id.find_product:
                     String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
                     if (mState.getProduct().getUrl() != null) {
                         url = " " + mState.getProduct().getUrl();
@@ -113,6 +114,9 @@ public class ProductActivity extends BaseActivity {
             }
             return true;
         });
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams)bottomNavigationView.getLayoutParams();
+        layoutParams.setBehavior(new BottomNavigationBehavior());
+
     }
 
     @OnClick(R.id.buttonScan)
