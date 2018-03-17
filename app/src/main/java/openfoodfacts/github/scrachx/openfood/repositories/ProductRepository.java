@@ -208,7 +208,7 @@ public class ProductRepository implements IProductRepository {
      * Label and LabelName has One-To-Many relationship, therefore we need to save them separately.
      */
     @Override
-    public void saveLabels(List<Label> labels) {
+    synchronized public void saveLabels(List<Label> labels) {
         for (Label label : labels) {
             labelDao.insertOrReplaceInTx(label);
             for (LabelName labelName : label.getNames()) {
@@ -221,7 +221,7 @@ public class ProductRepository implements IProductRepository {
      * Tags saving to local database
      */
     @Override
-    public void saveTags(List<Tag> tags) {
+    synchronized public void saveTags(List<Tag> tags) {
         tagDao.insertOrReplaceInTx(tags);
     }
 
@@ -232,7 +232,7 @@ public class ProductRepository implements IProductRepository {
      * Allergen and AllergenName has One-To-Many relationship, therefore we need to save them separately.
      */
     @Override
-    public void saveAllergens(List<Allergen> allergens) {
+    synchronized public void saveAllergens(List<Allergen> allergens) {
         for (Allergen allergen : allergens) {
             allergenDao.insertOrReplaceInTx(allergen);
             for (AllergenName allergenName : allergen.getNames()) {
@@ -247,7 +247,7 @@ public class ProductRepository implements IProductRepository {
      * Additive and AdditiveName has One-To-Many relationship, therefore we need to save them separately.
      */
     @Override
-    public void saveAdditives(List<Additive> additives) {
+    synchronized public void saveAdditives(List<Additive> additives) {
         for (Additive additive : additives) {
             additiveDao.insertOrReplaceInTx(additive);
             for (AdditiveName additiveName : additive.getNames()) {
@@ -262,7 +262,7 @@ public class ProductRepository implements IProductRepository {
      * Country and CountryName has One-To-Many relationship, therefore we need to save them separately.
      */
     @Override
-    public void saveCountries(List<Country> countries) {
+    synchronized public void saveCountries(List<Country> countries) {
         for (Country country : countries) {
             countryDao.insertOrReplaceInTx(country);
             for (CountryName countryName : country.getNames()) {
@@ -277,7 +277,7 @@ public class ProductRepository implements IProductRepository {
      * Category and CategoryName has One-To-Many relationship, therefore we need to save them separately.
      */
     @Override
-    public void saveCategories(List<Category> categories) {
+    synchronized public void saveCategories(List<Category> categories) {
         for (Category category : categories) {
             categoryDao.insertOrReplaceInTx(category);
             for (CategoryName categoryName : category.getNames()) {
