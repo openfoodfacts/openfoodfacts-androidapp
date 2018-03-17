@@ -72,7 +72,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     private AccountHeader headerResult = null;
@@ -304,7 +303,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     }
 
                     if (fragment != null) {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+                             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
                     } else {
                         // error in creating fragment
                         Log.e("MainActivity", "Error in creating fragment");
@@ -492,7 +491,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         if (result != null && result.isDrawerOpen()) {
             result.closeDrawer();
         } else {
-            super.onBackPressed();
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+            }
+            else {
+                super.onBackPressed();
+            }
         }
     }
 
