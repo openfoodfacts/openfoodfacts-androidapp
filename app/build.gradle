@@ -133,7 +133,6 @@ dependencies {
     //Networking
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-jackson:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
 
@@ -141,7 +140,6 @@ dependencies {
     implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
 
     //Serialization/Deserialization
-    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
     implementation "com.fasterxml.jackson.core:jackson-core:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-databind:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-annotations:$rootProject.jacksonVersion"
