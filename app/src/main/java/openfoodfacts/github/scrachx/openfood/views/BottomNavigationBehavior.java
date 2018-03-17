@@ -1,14 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPager;
-import android.util.AttributeSet;
 import android.view.View;
-import android.widget.FrameLayout;
 
 /**
  * Created by IMLV on 17-03-2018.

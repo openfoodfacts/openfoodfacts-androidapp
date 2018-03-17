@@ -11,6 +11,7 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -57,6 +58,7 @@ public class ProductActivity extends BaseActivity {
     FloatingActionButton mButtonScan;
     private ShareActionProvider mShareActionProvider;
     private State mState;
+    private int height;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -83,6 +85,7 @@ public class ProductActivity extends BaseActivity {
 
             switch (item.getItemId()) {
                 case R.id.bookmark:
+                    // implementation of bookmark here
                     Toast.makeText(ProductActivity.this,"Bookmark",Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.share:
@@ -97,6 +100,7 @@ public class ProductActivity extends BaseActivity {
                     startActivity(Intent.createChooser(sharingIntent, "Share using"));
                     return true;
                 case R.id.translation:
+                    // implementation of Translation here
                     Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.find_product:
@@ -116,7 +120,6 @@ public class ProductActivity extends BaseActivity {
         });
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams)bottomNavigationView.getLayoutParams();
         layoutParams.setBehavior(new BottomNavigationBehavior());
-
     }
 
     @OnClick(R.id.buttonScan)

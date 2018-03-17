@@ -3,15 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:id="@+id/coordinator_layout_product">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Light">
-        <!--android:fitsSystemWindows="true"-->
-
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -37,6 +34,19 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/buttonScan"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="65dp"
+        android:layout_marginRight="5dp"
+        android:contentDescription="@string/try_it_scan_now"
+        app:srcCompat="@drawable/barcode_white_24dp"/>
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/button_navigation"
         android:layout_width="match_parent"
@@ -47,17 +57,6 @@
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/light_blue_50"
         app:menu="@menu/my_navigation_items">
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/buttonScan"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="end|center"
-            android:contentDescription="@string/try_it_scan_now"
-            app:srcCompat="@drawable/barcode_white_24dp"/>
 
     </android.support.design.widget.BottomNavigationView>
 

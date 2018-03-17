@@ -6,7 +6,7 @@
         android:enabled="true"
         android:color="@color/green_A100"
         android:icon="@drawable/ic_bookmark_white_24dp"
-        android:title="@string/bookmark"/>
+        android:title="@string/bookmark" />
     <item
         android:id="@+id/share"
         android:color="@android:color/secondary_text_light_nodisable"
@@ -22,9 +22,4 @@
         android:color="#FF5252"
         android:icon="@drawable/ic_find_in_page_white_24dp"
         android:title="@string/product" />
-    <item
-        android:id="@+id/empty"
-        android:color="#FF5252"
-        android:icon="@drawable/empty"
-        android:title=" " />
 </menu>
