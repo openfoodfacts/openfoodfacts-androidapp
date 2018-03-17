@@ -64,12 +64,12 @@
   <string name="txtIngredientsOrigins">asal kandungan</string>
   <string name="txtCity">kota,bagian negara .dan negara daerahl dibeli</string>
   <string name="txtEMB">EMB Code:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtManufactureUrl">Tautkan ke halaman produk di situs resmi produser:</string>
   <string name="txtStores">penampungan toko</string>
   <string name="txtCountries">negara menjual</string>
   <string name="txtIngredients">daftar kandungan </string>
   <string name="Donate">Donate</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donation">Klik di sini untuk menyumbang pada Open Food Facts</string>
   <string name="txtSubstances">Zat atau produk yang menyebabkan alergi atau intoleransi penyakit</string>
   <string name="txtAdditives">zat adiktif</string>
   <string name="txtTraces">langkah</string>

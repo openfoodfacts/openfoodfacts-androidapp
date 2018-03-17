@@ -47,8 +47,8 @@
     <item>Inhaltsstoffe</item>
   </string-array>
   <!-- Content Description -->
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
+  <string name="fastscroller_track">FastScroller-Spur</string>
+  <string name="fastscroller_handle">FastScroller-Griff</string>
   <string name="search_button">Suchen</string>
   <string name="no_products">Keine Produkte gefunden</string>
   <string name="desc_list_item_icon">Produktfoto</string>
@@ -387,6 +387,6 @@
   <string name="packaging_string">Art der Verpackung</string>
   <string name="label_string">Kennzeichnung</string>
   <string name="category_string">Kategorie</string>
-  <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="connection">Verbunden</string>
+  <string name="contributor_string">Mitwirkende(r)</string>
 </resources>
