@@ -40,7 +40,7 @@
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/button_navigation"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         android:background="@color/gray"
