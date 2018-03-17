@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/black">
+    <item
+        android:id="@+id/bookmark"
+        android:enabled="true"
+        android:color="@color/green_A100"
+        android:icon="@drawable/ic_bookmark_white_24dp"
+        android:title="@string/bookmark"/>
+    <item
+        android:id="@+id/share"
+        android:color="@android:color/secondary_text_light_nodisable"
+        android:icon="@drawable/ic_share_white_24dp"
+        android:title="@string/share" />
+    <item
+        android:id="@+id/translation"
+        android:color="@android:color/holo_orange_dark"
+        android:icon="@drawable/ic_translate_white_24dp"
+        android:title="@string/translate" />
+    <item
+        android:id="@+id/find"
+        android:color="#FF5252"
+        android:icon="@drawable/ic_find_in_page_white_24dp"
+        android:title="@string/find" />
+    <item
+        android:id="@+id/empty"
+        android:color="#FF5252"
+        android:icon="@drawable/empty"
+        android:title=" " />
+</menu>
