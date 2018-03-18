@@ -67,8 +67,8 @@ public class ProductRepositoryTest {
 
     @Test
     public void testGetAllergensByEnabledAndLanguageCode() {
-        List<AllergenName> enabledAllergenNames = productRepository.getAllergensByEnabledAndLanguageCode(true, TEST_LANGUAGE_CODE);
-        List<AllergenName> notEnabledAllergenNames = productRepository.getAllergensByEnabledAndLanguageCode(false, TEST_LANGUAGE_CODE);
+        List<AllergenName> enabledAllergenNames = productRepository.getAllergensByEnabledAndLanguageCode(true, TEST_LANGUAGE_CODE).blockingGet();
+        List<AllergenName> notEnabledAllergenNames = productRepository.getAllergensByEnabledAndLanguageCode(false, TEST_LANGUAGE_CODE).blockingGet();
 
         assertNotNull(enabledAllergenNames);
         assertNotNull(notEnabledAllergenNames);
@@ -82,7 +82,7 @@ public class ProductRepositoryTest {
 
     @Test
     public void testGetAllergensByLanguageCode() {
-        List<AllergenName> allergenNames = productRepository.getAllergensByLanguageCode(TEST_LANGUAGE_CODE);
+        List<AllergenName> allergenNames = productRepository.getAllergensByLanguageCode(TEST_LANGUAGE_CODE).blockingGet();
 
         assertNotNull(allergenNames);
         assertEquals(allergenNames.size(), 2);
