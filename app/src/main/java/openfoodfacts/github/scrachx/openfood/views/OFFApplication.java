@@ -3,7 +3,9 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.support.multidex.MultiDexApplication;
 import android.support.v7.app.AppCompatDelegate;
+import android.widget.Toast;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.QueryBuilder;
 
@@ -49,8 +51,13 @@ public class OFFApplication extends MultiDexApplication {
             nameDB = "open_beauty_facts";
         }
         DatabaseHelper helper = new DatabaseHelper(this, nameDB);
-        Database db = helper.getWritableDb();
-        daoSession = new DaoMaster(db).newSession();
+        Database db;
+        try {
+            db = helper.getWritableDb();
+            daoSession = new DaoMaster(db).newSession();
+        } catch (Exception e) {
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
         // DEBUG
         QueryBuilder.LOG_VALUES = DEBUG;
