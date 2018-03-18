@@ -9,6 +9,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private int[] layouts;
     private Button btnSkip, btnNext;
     private PrefManager prefManager;
+    private int selectedPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +124,8 @@ public class WelcomeActivity extends AppCompatActivity {
         public void onPageSelected(int position) {
             addBottomDots(position);
 
+            selectedPage = position;
+
             if (position == layouts.length - 1) {
                 btnNext.setText(getString(R.string.start));
                 btnSkip.setVisibility(View.GONE);
@@ -129,6 +133,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
             }
+
+
         }
 
         @Override
@@ -138,7 +144,11 @@ public class WelcomeActivity extends AppCompatActivity {
 
         @Override
         public void onPageScrollStateChanged(int arg0) {
-
+            if((selectedPage==viewPager.getAdapter().getCount()-1) && (arg0 == ViewPager.SCROLL_STATE_DRAGGING)){
+                Log.i("last page", "onPageSelected: ");
+                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
         }
     };
 
