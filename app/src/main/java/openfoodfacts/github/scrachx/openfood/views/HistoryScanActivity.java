@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
@@ -70,7 +69,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     TextView infoView;
     @BindView(R.id.history_progressbar)
     ProgressBar historyProgressbar;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
