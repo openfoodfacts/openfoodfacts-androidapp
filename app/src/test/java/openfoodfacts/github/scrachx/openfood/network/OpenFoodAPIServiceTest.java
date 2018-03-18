@@ -198,7 +198,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
 
         ProductImage image = new ProductImage("01010101010101", ProductImageField.FRONT, outputFile);
         Map<String, RequestBody> imgMap = new HashMap<>();
-        imgMap.put("code", image.getCode());
+        imgMap.put("code", image.getUniqueAllergenID());
         imgMap.put("imagefield", image.getField());
         imgMap.put("imgupload_front\"; filename=\"front_fr.png\"", image.getImguploadFront());
         imgMap.put("imgupload_ingredients\"; filename=\"ingredients_fr.png\"", image.getImguploadIngredients());

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
@@ -36,7 +37,6 @@ import java.util.regex.Pattern;
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -45,8 +45,11 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -58,6 +61,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.ING
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.jsoup.helper.StringUtil.isBlank;
 
 public class IngredientsProductFragment extends BaseFragment {
 
@@ -87,11 +91,15 @@ public class IngredientsProductFragment extends BaseFragment {
     private AdditiveDao mAdditiveDao;
     private IProductRepository productRepository;
     private IngredientsProductFragment mFragment;
+    private CustomTabActivityHelper customTabActivityHelper;
+    private CustomTabsIntent customTabsIntent;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         productRepository = ProductRepository.getInstance();
+        customTabActivityHelper = new CustomTabActivityHelper();
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
     }
 
     @Override
@@ -135,30 +143,40 @@ public class IngredientsProductFragment extends BaseFragment {
         }
 
         if (!allergens.isEmpty()) {
+            substanceProduct.setMovementMethod(LinkMovementMethod.getInstance());
             substanceProduct.append(bold(getString(R.string.txtSubstances)));
             substanceProduct.append(" ");
-            String delim = "";
-            for (String allergen : allergens) {
-                substanceProduct.append(delim);
-                substanceProduct.append(allergen);
-                delim = ", ";
+
+            String allergen;
+            for (int i = 0; i < allergens.size() - 1; i++) {
+                allergen = allergens.get(i);
+                substanceProduct.append(Utils.getClickableText(allergen, allergen, SearchType.ALLERGEN, getActivity(), customTabsIntent));
+                substanceProduct.append(", ");
             }
+
+            allergen = allergens.get(allergens.size() - 1);
+            substanceProduct.append(Utils.getClickableText(allergen, allergen, SearchType.ALLERGEN, getActivity(), customTabsIntent));
         } else {
             substanceProduct.setVisibility(View.GONE);
         }
 
-        String traces;
-        if (product.getTraces() == null) {
+        if (isBlank(product.getTraces())) {
             traceProduct.setVisibility(View.GONE);
         } else {
-            traces = product.getTraces().replace(",", ", ");
-            if (traces.isEmpty()) {
-                traceProduct.setVisibility(View.GONE);
-            } else {
-                traceProduct.append(bold(getString(R.string.txtTraces)));
-                traceProduct.append(" ");
-                traceProduct.append(traces);
+            traceProduct.setMovementMethod(LinkMovementMethod.getInstance());
+            traceProduct.append(bold(getString(R.string.txtTraces)));
+            traceProduct.append(" ");
+
+            String trace;
+            String traces[] = product.getTraces().split(",");
+            for (int i = 0; i < traces.length - 1; i++) {
+                trace = traces[i];
+                traceProduct.append(Utils.getClickableText(trace, trace, SearchType.TRACE, getActivity(), customTabsIntent));
+                traceProduct.append(", ");
             }
+
+            trace = traces[traces.length - 1];
+            traceProduct.append(Utils.getClickableText(trace, trace, SearchType.TRACE, getActivity(), customTabsIntent));
         }
 
         if (!product.getAdditivesTags().isEmpty()) {
@@ -166,6 +184,9 @@ public class IngredientsProductFragment extends BaseFragment {
             additiveProduct.append(bold(getString(R.string.txtAdditives)));
             additiveProduct.append(" ");
             additiveProduct.append("\n");
+            additiveProduct.setClickable(true);
+            additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
+            List<String> additives = new ArrayList<>();
 
             AdditiveName additiveName;
             String languageCode = Locale.getDefault().getLanguage();
@@ -177,9 +198,13 @@ public class IngredientsProductFragment extends BaseFragment {
                         additiveName = new AdditiveName(StringUtils.capitalize(tag));
                     }
                 }
+                additives.add(additiveName.getName());
+                for (int i = 0; i < additives.size() - 1; i++) {
+                    additiveProduct.append(Utils.getClickableText(StringUtils.capitalize(additives.get(i)), "", SearchType.ADDITIVE, getActivity(), customTabsIntent));
+                    additiveProduct.append("\n");
+                }
 
-                additiveProduct.append(additiveName.getName());
-                additiveProduct.append("\n");
+                additiveProduct.append(Utils.getClickableText(StringUtils.capitalize(additives.get(additives.size() - 1)), "", SearchType.ADDITIVE, getActivity(), customTabsIntent));
             }
         } else {
             additiveProduct.setVisibility(View.GONE);
@@ -204,30 +229,6 @@ public class IngredientsProductFragment extends BaseFragment {
                 mayBeFromPalmOilProduct.setVisibility(View.GONE);
             }
         }
-    }
-
-    private CharSequence getSpanTag(String tag, final View view) {
-        final SpannableStringBuilder ssb = new SpannableStringBuilder();
-
-        final List<Additive> la = mAdditiveDao.queryBuilder().where(AdditiveDao.Properties.Tag.eq(tag.toUpperCase(Locale.getDefault()))).list();
-        if (la.size() >= 1) {
-            final Additive additive = la.get(0);
-            //disabled popup temporarily
-          /*ClickableSpan clickableSpan = new ClickableSpan() {
-                @Override
-                public void onClick(View v) {
-                    new MaterialDialog.Builder(view.getContext())
-                            .title(additive.getCode() + " : " + additive.getName())
-                            .content(additive.getRisk().toUpperCase(Locale.getDefault()))
-                            .positiveText(R.string.txtOk)
-                            .show();
-                }
-            };*/
-            ssb.append(tag);
-            // ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-            ssb.append(" ");
-        }
-        return ssb;
     }
 
     private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text, List<String> allergens) {
@@ -372,4 +373,6 @@ public class IngredientsProductFragment extends BaseFragment {
             }
         }
     }
+
+
 }

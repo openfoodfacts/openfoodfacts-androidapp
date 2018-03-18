@@ -67,6 +67,27 @@ public interface OpenFoodAPIService {
     @GET("brand/{brand}/{page}.json")
     Call<Search> getProductByBrands(@Path("brand") String brand, @Path("page") int page);
 
+    @GET("additive/{additive}/{page}.json")
+    Call<Search> getProductsByAdditive(@Path("additive") String additive, @Path("page") int page);
+
+    @GET("country/{country}/{page}.json")
+    Call<Search> getProductsByCountry(@Path("country") String country, @Path("page") int page);
+
+    @GET("store/{store}/{page}.json")
+    Call<Search> getProductByStores(@Path("store") String store, @Path("page") int page);
+
+    @GET("packaging/{packaging}/{page}.json")
+    Call<Search> getProductByPackaging(@Path("packaging") String packaging, @Path("page") int page);
+
+    @GET("label/{label}/{page}.json")
+    Call<Search> getProductByLabel(@Path("label") String label, @Path("page") int page);
+
+    @GET("category/{category}/{page}.json")
+    Call<Search> getProductByCategory(@Path("category") String category, @Path("page") int page);
+
+    @GET("contributor/{Contributor}/{page}.json")
+    Call<Search> searchProductsByContributor(@Path("Contributor") String Contributor, @Path("page") int page);
+
     @GET("language/{language}.json")
     Call<Search> byLanguage(@Path("language") String language);
 
