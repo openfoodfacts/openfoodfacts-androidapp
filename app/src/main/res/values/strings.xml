@@ -485,5 +485,7 @@
     <string name="category_string">Category</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
+    <string name="Rate_Us">Show Your Support</string>
+    <string name="Rate_Us_title">Rate our App</string>
 
 </resources>
