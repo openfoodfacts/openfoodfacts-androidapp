@@ -82,4 +82,11 @@ public class AdditiveName {
         this.name = name;
     }
 
+    public Boolean isNull() {
+        return id == null && additiveTag == null && languageCode == null && name == null;
+    }
+
+    public Boolean isNotNull() {
+        return id != null && additiveTag != null && languageCode != null && name != null;
+    }
 }

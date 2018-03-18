@@ -47,27 +47,27 @@ public interface IProductRepository {
 
     void setAllergenEnabled(String allergenTag, Boolean isEnabled);
 
-    LabelName getLabelByTagAndLanguageCode(String labelTag, String languageCode);
+    Single<LabelName> getLabelByTagAndLanguageCode(String labelTag, String languageCode);
 
-    LabelName getLabelByTagAndDefaultLanguageCode(String labelTag);
+    Single<LabelName> getLabelByTagAndDefaultLanguageCode(String labelTag);
 
-    CountryName getCountryByTagAndLanguageCode(String labelTag, String languageCode);
+    Single<CountryName> getCountryByTagAndLanguageCode(String labelTag, String languageCode);
 
-    CountryName getCountryByTagAndDefaultLanguageCode(String labelTag);
+    Single<CountryName> getCountryByTagAndDefaultLanguageCode(String labelTag);
 
-    AdditiveName getAdditiveByTagAndLanguageCode(String additiveTag, String languageCode);
+    Single<AdditiveName> getAdditiveByTagAndLanguageCode(String additiveTag, String languageCode);
 
-    AdditiveName getAdditiveByTagAndDefaultLanguageCode(String additiveTag);
+    Single<AdditiveName> getAdditiveByTagAndDefaultLanguageCode(String additiveTag);
 
-    CategoryName getCategoryByTagAndLanguageCode(String categoryTag, String languageCode);
+    Single<CategoryName> getCategoryByTagAndLanguageCode(String categoryTag, String languageCode);
 
-    CategoryName getCategoryByTagAndDefaultLanguageCode(String categoryTag);
+    Single<CategoryName> getCategoryByTagAndDefaultLanguageCode(String categoryTag);
 
     List<Allergen> getEnabledAllergens();
 
-    List<AllergenName> getAllergensByEnabledAndLanguageCode(Boolean isEnabled, String languageCode);
+    Single<List<AllergenName>> getAllergensByEnabledAndLanguageCode(Boolean isEnabled, String languageCode);
 
-    List<AllergenName> getAllergensByLanguageCode(String languageCode);
+    Single<List<AllergenName>> getAllergensByLanguageCode(String languageCode);
 
     Boolean additivesIsEmpty();
 
