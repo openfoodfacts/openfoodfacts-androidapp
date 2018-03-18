@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -59,11 +58,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private int pageAddress = 1;
     String title;
 
-    public static void startActivity(Activity activity, String title, @SearchType String type) {
-        Intent intent = new Intent(activity, ProductBrowsingListActivity.class);
+    public static void startActivity(Context context, String title, @SearchType String type) {
+        Intent intent = new Intent(context, ProductBrowsingListActivity.class);
         intent.putExtra(SEARCH_TITLE, title);
         intent.putExtra(SEARCH_TYPE, type);
-        activity.startActivity(intent);
+        context.startActivity(intent);
     }
 
     @Override
