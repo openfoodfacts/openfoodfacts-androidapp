@@ -3,9 +3,9 @@
 <resources>
   <plurals name="minutes">
     <item quantity="one"> minute</item>
-    <item quantity="two"> דקות</item>
-    <item quantity="many"> דקות</item>
-    <item quantity="other"> דקות</item>
+    <item quantity="two"> minutes</item>
+    <item quantity="many"> minutes</item>
+    <item quantity="other"> minutes</item>
   </plurals>
   <plurals name="hours">
     <item quantity="one"> hour</item>
@@ -396,5 +396,5 @@
   <string name="label_string">תווית</string>
   <string name="category_string">קטגוריה</string>
   <string name="connection">יש חיבור</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="contributor_string">תרומה</string>
 </resources>
