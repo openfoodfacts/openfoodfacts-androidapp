@@ -35,7 +35,7 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickLi
 public class ProductBrowsingListActivity extends BaseActivity {
 
     private static String SEARCH_TYPE = "search_type";
-    private static String KEY = "key";
+    private static String SEARCH_TITLE = "search_title";
 
     private String searchType;
 
@@ -57,11 +57,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private OpenFoodAPIClient apiClient;
     private int mCountProducts = 0;
     private int pageAddress = 1;
-    String key;
+    String title;
 
-    public static void startActivity(Activity activity, String key, @SearchType String type) {
+    public static void startActivity(Activity activity, String title, @SearchType String type) {
         Intent intent = new Intent(activity, ProductBrowsingListActivity.class);
-        intent.putExtra(KEY, key);
+        intent.putExtra(SEARCH_TITLE, title);
         intent.putExtra(SEARCH_TYPE, type);
         activity.startActivity(intent);
     }
@@ -85,9 +85,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
         Bundle extras = getIntent().getExtras();
 
         searchType = extras.getString(SEARCH_TYPE);
-        key = extras.getString(KEY);
+        title = extras.getString(SEARCH_TITLE);
 
-        getSupportActionBar().setTitle(key);
+        getSupportActionBar().setTitle(title);
 
         switch (searchType) {
             case SearchType.BRAND: {
@@ -147,7 +147,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
         switch (searchType) {
             case SearchType.BRAND: {
-                apiClient.getProductsByBrand(key, pageAddress, new OpenFoodAPIClient.OnBrandCallback() {
+                apiClient.getProductsByBrand(title, pageAddress, new OpenFoodAPIClient.OnBrandCallback() {
                     @Override
                     public void onBrandResponse(boolean value, Search brandObject) {
                         loadData(value, brandObject);
@@ -156,7 +156,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
             case SearchType.COUNTRY: {
-                apiClient.getProductsByCountry(key, pageAddress, new OpenFoodAPIClient.onCountryCallback() {
+                apiClient.getProductsByCountry(title, pageAddress, new OpenFoodAPIClient.onCountryCallback() {
                     @Override
                     public void onCountryResponse(boolean value, Search country) {
                         loadData(value, country);
@@ -165,7 +165,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
             case SearchType.ADDITIVE: {
-                apiClient.getProductsByAdditive(key, pageAddress, new OpenFoodAPIClient.OnAdditiveCallback() {
+                apiClient.getProductsByAdditive(title, pageAddress, new OpenFoodAPIClient.OnAdditiveCallback() {
                     @Override
                     public void onAdditiveResponse(boolean value, Search country) {
                         loadData(value, country);
@@ -175,7 +175,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
 
             case SearchType.STORE: {
-                apiClient.getProductsByStore(key, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
+                apiClient.getProductsByStore(title, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
                     @Override
                     public void onStoreResponse(boolean value, Search storeObject) {
                         loadData(value, storeObject);
@@ -185,7 +185,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
 
             case SearchType.PACKAGING: {
-                apiClient.getProductsByPackaging(key, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
+                apiClient.getProductsByPackaging(title, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
                     @Override
                     public void onPackagingResponse(boolean value, Search packagingObject) {
                         loadData(value, packagingObject);
@@ -194,7 +194,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
             case SearchType.SEARCH: {
-                api.searchProduct(key, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
+                api.searchProduct(title, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
                     @Override
                     public void onProductsResponse(boolean isOk, Search searchResponse, int countProducts) {
                         loadData(isOk, searchResponse);
@@ -204,7 +204,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
 
             case SearchType.LABEL: {
-                api.getProductsByLabel(key, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
+                api.getProductsByLabel(title, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
                     @Override
                     public void onLabelResponse(boolean value, Search label) {
                         loadData(value, label);
@@ -214,7 +214,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
 
             case SearchType.CATEGORY: {
-                api.getProductsByCategory(key, pageAddress, new OpenFoodAPIClient.onCategoryCallback() {
+                api.getProductsByCategory(title, pageAddress, new OpenFoodAPIClient.onCategoryCallback() {
                     @Override
                     public void onCategoryResponse(boolean value, Search category) {
                         loadData(value, category);
@@ -224,8 +224,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
 
             case SearchType.CONTRIBUTOR: {
-
-                api.getProductsByContributor(key, pageAddress, new OpenFoodAPIClient.onContributorCallback() {
+                api.getProductsByContributor(title, pageAddress, new OpenFoodAPIClient.onContributorCallback() {
                     @Override
                     public void onContributorResponse(boolean value, Search contributor) {
                         loadData(value, contributor);
