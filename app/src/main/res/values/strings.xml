@@ -24,14 +24,6 @@
     <string name="first_offline">Products added offline will appear here</string>
 
     <!-- Image Upload -->
-    <string-array name="upload_image" translatable="false">
-        <item>640 X 480</item>
-        <item>1024 X 768</item>
-        <item>1152 X 864</item>
-        <item>1600 X 1200</item>
-    </string-array>
-
-    <!-- Image Upload -->
     <string-array name="upload_image">
         <item>640 X 480</item>
         <item>1024 X 768</item>
