@@ -179,12 +179,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
         api = new OpenFoodAPIClient(ProductBrowsingListActivity.this);
         productsRecyclerView = (RecyclerView) findViewById(R.id.products_recycler_view);
+        progressBar.setVisibility(View.VISIBLE);
         setup();
     }
 
     @OnClick(R.id.buttonTryAgain)
     public void setup() {
-        progressBar.setVisibility(View.VISIBLE);
         offlineCloudLayout.setVisibility(View.INVISIBLE);
         countProductsView.setVisibility(View.INVISIBLE);
         getDataFromAPI();
@@ -310,6 +310,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 }
             }
         } else {
+            swipeRefreshLayout.setRefreshing(false);
             productsRecyclerView.setVisibility(View.INVISIBLE);
             progressBar.setVisibility(View.INVISIBLE);
             offlineCloudLayout.setVisibility(View.VISIBLE);
@@ -321,6 +322,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private void setUpRecyclerView() {
 
         progressBar.setVisibility(View.INVISIBLE);
+        swipeRefreshLayout.setRefreshing(false);
         countProductsView.setVisibility(View.VISIBLE);
 
         offlineCloudLayout.setVisibility(View.INVISIBLE);
@@ -333,7 +335,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
         ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
         productsRecyclerView.setAdapter(adapter);
 
-
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(productsRecyclerView.getContext(),
                 DividerItemDecoration.VERTICAL);
         productsRecyclerView.addItemDecoration(dividerItemDecoration);
@@ -342,7 +343,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         scrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                if (mProducts.size() < mCountProducts) {
+                if (mProducts.size() < mCountProducts && !swipeRefreshLayout.isRefreshing()) {
                     pageAddress = page;
                     getDataFromAPI();
                 }
@@ -377,14 +378,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
-                mProducts.clear();
+                swipeRefreshLayout.setRefreshing(true);
                 countProductsView.setText(getResources().getString(R.string.number_of_results));
                 pageAddress = 1;
                 setup();
-                if (swipeRefreshLayout.isRefreshing()) {
-                    swipeRefreshLayout.setRefreshing(false);
-                }
             }
         });
 
