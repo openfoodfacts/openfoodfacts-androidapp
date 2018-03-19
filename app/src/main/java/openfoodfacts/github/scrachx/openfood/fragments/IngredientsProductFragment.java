@@ -139,7 +139,7 @@ public class IngredientsProductFragment extends BaseFragment {
             for (String vitamins : vitaminTagsList) {
                 vitaminStringBuilder.append(prefix);
                 prefix = ",";
-                vitaminStringBuilder.append(vitamins);
+                vitaminStringBuilder.append(trimLanguagePartFromString(vitamins));
             }
             vitaminTagsTextView.append(vitaminStringBuilder.toString());
         } else {
@@ -153,7 +153,7 @@ public class IngredientsProductFragment extends BaseFragment {
             for (String aminoAcid : aminoAcidTagsList) {
                 aminoAcidStringBuilder.append(aminoPrefix);
                 aminoPrefix = ",";
-                aminoAcidStringBuilder.append(aminoAcid);
+                aminoAcidStringBuilder.append(trimLanguagePartFromString(aminoAcid));
             }
             aminoAcidTagsTextView.append(aminoAcidStringBuilder.toString());
         } else {
@@ -167,9 +167,9 @@ public class IngredientsProductFragment extends BaseFragment {
             for (String mineral : mineralTags) {
                 mineralsStringBuilder.append(mineralPrefix);
                 mineralPrefix = ",";
-                mineralsStringBuilder.append(mineral);
+                mineralsStringBuilder.append(trimLanguagePartFromString(mineral));
             }
-            mineralTagsTextView.append(mineralsStringBuilder.toString());
+            mineralTagsTextView.append(mineralsStringBuilder);
         } else {
             mineralTagsTextView.setVisibility(View.GONE);
         }
@@ -181,7 +181,7 @@ public class IngredientsProductFragment extends BaseFragment {
             for (String otherSubstance : otherNutritionTags) {
                 otherNutritionStringBuilder.append(otherNutritionPrefix);
                 otherNutritionPrefix = ",";
-                otherNutritionStringBuilder.append(otherSubstance);
+                otherNutritionStringBuilder.append(trimLanguagePartFromString(otherSubstance));
             }
             otherNutritionTagTextView.append(otherNutritionStringBuilder.toString());
         } else {
@@ -298,6 +298,10 @@ public class IngredientsProductFragment extends BaseFragment {
                 mayBeFromPalmOilProduct.setVisibility(View.GONE);
             }
         }
+    }
+
+    private String trimLanguagePartFromString(String string) {
+        return string.substring(3);
     }
 
     private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text, List<String> allergens) {
