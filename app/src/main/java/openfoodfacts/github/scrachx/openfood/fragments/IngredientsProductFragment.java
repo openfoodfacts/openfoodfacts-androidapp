@@ -14,6 +14,7 @@ import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,6 +84,14 @@ public class IngredientsProductFragment extends BaseFragment {
     ImageView mImageIngredients;
     @BindView(R.id.addPhotoLabel)
     TextView addPhotoLabel;
+    @BindView(R.id.vitaminsTagsText)
+    TextView vitaminTagsTextView;
+    @BindView(R.id.mineralTagsText)
+    TextView mineralTagsTextView;
+    @BindView(R.id.aminoAcidTagsText)
+    TextView aminoAcidTagsTextView;
+    @BindView(R.id.otherNutritionTags)
+    TextView otherNutritionTagTextView;
 
     private OpenFoodAPIClient api;
     private String mUrlImage;
@@ -118,6 +127,66 @@ public class IngredientsProductFragment extends BaseFragment {
 
         final Product product = mState.getProduct();
         barcode = product.getCode();
+        List<String> vitaminTagsList = product.getVitaminTags();
+        List<String> aminoAcidTagsList = product.getAminoAcidTags();
+        List<String> mineralTags = product.getMineralTags();
+        List<String> otherNutritionTags = product.getOtherNutritionTags();
+        String prefix = " ";
+
+        if (!vitaminTagsList.isEmpty()) {
+            StringBuilder vitaminStringBuilder = new StringBuilder();
+            vitaminTagsTextView.append(bold(getString(R.string.vitamin_tags_text)));
+            for (String vitamins : vitaminTagsList) {
+                vitaminStringBuilder.append(prefix);
+                prefix = ",";
+                vitaminStringBuilder.append(vitamins);
+            }
+            vitaminTagsTextView.append(vitaminStringBuilder.toString());
+        } else {
+            vitaminTagsTextView.setVisibility(View.GONE);
+        }
+
+        if (!aminoAcidTagsList.isEmpty()) {
+            String aminoPrefix = " ";
+            StringBuilder aminoAcidStringBuilder = new StringBuilder();
+            aminoAcidTagsTextView.append(bold(getString(R.string.amino_acid_tags_text)));
+            for (String aminoAcid : aminoAcidTagsList) {
+                aminoAcidStringBuilder.append(aminoPrefix);
+                aminoPrefix = ",";
+                aminoAcidStringBuilder.append(aminoAcid);
+            }
+            aminoAcidTagsTextView.append(aminoAcidStringBuilder.toString());
+        } else {
+            aminoAcidTagsTextView.setVisibility(View.GONE);
+        }
+
+        if (!mineralTags.isEmpty()) {
+            String mineralPrefix = " ";
+            StringBuilder mineralsStringBuilder = new StringBuilder();
+            mineralTagsTextView.append(bold(getString(R.string.mineral_tags_text)));
+            for (String mineral : mineralTags) {
+                mineralsStringBuilder.append(mineralPrefix);
+                mineralPrefix = ",";
+                mineralsStringBuilder.append(mineral);
+            }
+            mineralTagsTextView.append(mineralsStringBuilder.toString());
+        } else {
+            mineralTagsTextView.setVisibility(View.GONE);
+        }
+
+        if (!otherNutritionTags.isEmpty()) {
+            String otherNutritionPrefix = " ";
+            StringBuilder otherNutritionStringBuilder = new StringBuilder();
+            otherNutritionTagTextView.append(bold(getString(R.string.other_tags_text)));
+            for (String otherSubstance : otherNutritionTags) {
+                otherNutritionStringBuilder.append(otherNutritionPrefix);
+                otherNutritionPrefix = ",";
+                otherNutritionStringBuilder.append(otherSubstance);
+            }
+            otherNutritionTagTextView.append(otherNutritionStringBuilder.toString());
+        } else {
+            otherNutritionTagTextView.setVisibility(View.GONE);
+        }
 
         if (isNotBlank(product.getImageIngredientsUrl())) {
             addPhotoLabel.setVisibility(View.GONE);

@@ -486,4 +486,10 @@
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
 
+    <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+    <string name="vitamin_tags_text">Vitamin Categories:</string>
+    <string name="amino_acid_tags_text">Amino Acid Categories:</string>
+    <string name="mineral_tags_text">Minerals Category:</string>
+    <string name="other_tags_text">Other Substance:</string>
+
 </resources>
