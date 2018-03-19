@@ -54,6 +54,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
@@ -72,7 +73,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     private AccountHeader headerResult = null;
@@ -87,6 +87,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private Uri userContributeUri;
     private SendProductDao mSendProductDao;
     private int numberOFSavedProducts;
+    private SharedPreferences mSharedPref;
     PrimaryDrawerItem primaryDrawerItem;
     private int positionOfOfflineBadeItem;
 
@@ -163,7 +164,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userSession = preferences.getString("user_session", null);
         boolean isUserConnected = userLogin != null && userSession != null;
         if (isUserConnected) {
-            userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin + "&user_session=" + userSession);
+            userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
+                    "&user_session=" + userSession);
             customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null);
 
             headerResult.addProfiles(getProfileSettingDrawerItem());
@@ -247,10 +249,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             fragment = new OfflineEditFragment();
                             break;
                         case ITEM_ABOUT:
-                            openCustomTab(discoverUri);
+                            CustomTabActivityHelper.openCustomTab(MainActivity.this,
+                                    customTabsIntent, discoverUri, new WebViewFallback());
                             break;
                         case ITEM_CONTRIBUTE:
-                            openCustomTab(contributeUri);
+                            CustomTabActivityHelper.openCustomTab(MainActivity.this,
+                                    customTabsIntent, contributeUri, new WebViewFallback());
                             break;
                         case ITEM_OBF:
                             boolean otherOFAppInstalled = Utils.isApplicationInstalled
@@ -264,15 +268,18 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse
                                             ("market://details?id=" + BuildConfig.OFOTHERLINKAPP)));
                                 } catch (ActivityNotFoundException anfe) {
-                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + BuildConfig.OFOTHERLINKAPP)));
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" +
+                                            BuildConfig.OFOTHERLINKAPP)));
 
                                 }
                             }
                             break;
 
                         case ITEM_ADVANCED_SEARCH:
-
-                            openCustomTab(Uri.parse(getString(R.string.advanced_search_url)));
+                            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                            CustomTabsIntent customTabsIntent = builder.build();
+                            CustomTabActivityHelper.openCustomTab(this, customTabsIntent, Uri.parse(getString(R.string.advanced_search_url)), new
+                                    WebViewFallback());
                             break;
 
                         case ITEM_MY_CONTRIBUTIONS:
@@ -304,7 +311,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     }
 
                     if (fragment != null) {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+                             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
                     } else {
                         // error in creating fragment
                         Log.e("MainActivity", "Error in creating fragment");
@@ -385,6 +392,15 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         //Scheduling background image upload job
         Utils.scheduleProductUploadJob(this);
+
+        //Adds nutriscore and quantity values in old history for schema 5 update
+        mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
+        boolean isOldHistoryDataSynced = mSharedPref.getBoolean("is_old_history_data_synced", false);
+        if (!isOldHistoryDataSynced && Utils.isNetworkConnected(this)) {
+            OpenFoodAPIClient apiClient = new OpenFoodAPIClient(this);
+            apiClient.syncOldHistory();
+        }
+
     }
 
     private void scan() {
@@ -425,7 +441,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     .content(R.string.contribution_without_account)
                     .positiveText(R.string.create_account_button)
                     .neutralText(R.string.login_button)
-                    .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R.string.website) + "cgi/user.pl"), new WebViewFallback()))
+                    .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R
+                            .string.website) + "cgi/user.pl"), new WebViewFallback()))
                     .onNeutral((dialog, which) -> startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LOGIN_REQUEST))
                     .show();
         }
@@ -435,7 +452,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         SharedPreferences preferences = getSharedPreferences("login", 0);
         String userLogin = preferences.getString("user", null);
         String userSession = preferences.getString("user_session", null);
-        userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin + "&user_session=" + userSession);
+        userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
+                "&user_session=" + userSession);
         customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null);
         return new ProfileSettingDrawerItem()
                 .withName(getString(R.string.action_manage_account))
@@ -492,7 +510,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         if (result != null && result.isDrawerOpen()) {
             result.closeDrawer();
         } else {
-            super.onBackPressed();
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+            }
+            else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -652,7 +675,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      */
     private PrimaryDrawerItem createOfflineEditDrawerItem() {
         if (numberOFSavedProducts > 0) {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE).withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9)
+                    .withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R
+                            .color.md_red_700));
         } else {
             return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
         }
@@ -671,16 +696,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
         }
         result.updateItemAtPosition(primaryDrawerItem, positionOfOfflineBadeItem);
-    }
-
-    public void openCustomTab(Uri uri) {
-
-        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-        CustomTabsIntent customTabsIntent = builder.build();
-        customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + this.getPackageName()));
-        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, uri, new WebViewFallback());
-
-
     }
 
 
