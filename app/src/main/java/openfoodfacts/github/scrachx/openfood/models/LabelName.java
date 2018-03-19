@@ -78,4 +78,12 @@ public class LabelName {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Boolean isNull() {
+        return id == null && labelTag == null && languageCode == null && name == null;
+    }
+
+    public Boolean isNotNull() {
+        return id != null && labelTag != null && languageCode != null && name != null;
+    }
 }

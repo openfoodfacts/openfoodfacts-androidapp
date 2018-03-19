@@ -77,4 +77,11 @@ public class CategoryName {
         this.name = name;
     }
 
+    public Boolean isNull() {
+        return id == null && categoryTag == null && languageCode == null && name == null;
+    }
+
+    public Boolean isNotNull() {
+        return id != null && categoryTag != null && languageCode != null && name != null;
+    }
 }

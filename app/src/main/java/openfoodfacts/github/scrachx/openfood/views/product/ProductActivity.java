@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views;
+package openfoodfacts.github.scrachx.openfood.views.product;
 
 import android.Manifest;
 import android.content.Intent;
@@ -26,16 +26,16 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
+import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
+import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
