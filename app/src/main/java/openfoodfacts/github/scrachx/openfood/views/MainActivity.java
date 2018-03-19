@@ -260,7 +260,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                 if (LaunchIntent != null) {
                                     startActivity(LaunchIntent);
                                 }else{
-                                    Toast.makeText(this, "App Disabled", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(this, R.string.app_disabled_text, Toast.LENGTH_SHORT).show();
                                 }
                             } else {
                                 try {
