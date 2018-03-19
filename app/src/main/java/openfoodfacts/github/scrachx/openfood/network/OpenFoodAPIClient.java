@@ -301,27 +301,6 @@ public class OpenFoodAPIClient {
     }
 
 
-    public void getAllergens(final OnAllergensCallback onAllergensCallback) {
-        apiService.getAllergens().enqueue(new Callback<AllergenRestResponse>() {
-            @Override
-            public void onResponse(Call<AllergenRestResponse> call, Response<AllergenRestResponse> response) {
-                if (!response.isSuccessful()) {
-                    onAllergensCallback.onAllergensResponse(false);
-                    return;
-                }
-
-                mAllergenDao.insertOrReplaceInTx(response.body().getAllergens());
-                onAllergensCallback.onAllergensResponse(true);
-            }
-
-            @Override
-            public void onFailure(Call<AllergenRestResponse> call, Throwable t) {
-                onAllergensCallback.onAllergensResponse(false);
-            }
-        });
-    }
-
-
     public void onResponseCallForPostFunction(Call<State> call, Response<State> response, Activity activity, LoadToast lt, final OnProductSentCallback productSentCallback, SendProduct product) {
         if (!response.isSuccessful() || response.body().getStatus() == 0) {
             lt.error();
@@ -350,7 +329,6 @@ public class OpenFoodAPIClient {
     }
 
 
-
     /**
      * @return This api service gets products of provided brand.
      */
@@ -375,6 +353,12 @@ public class OpenFoodAPIClient {
 
     }
 
+    /**
+     * This method is used to upload products.
+     * Conditional statements in this method ensures that data which is being sent on server is correct
+     * and if the product is already present with more information then the server doesn't assume to delete that
+     * and write new product's data over that.
+     */
     public void post(final Activity activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
         final LoadToast lt = new LoadToast(activity);
         lt.setText(activity.getString(R.string.toastSending));
@@ -383,7 +367,7 @@ public class OpenFoodAPIClient {
         lt.show();
 
 
-        if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity()==null) {
+        if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity() == null) {
             apiService.saveProductWithoutNameBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
                 @Override
                 public void onResponse(Call<State> call, Response<State> response) {
@@ -409,7 +393,7 @@ public class OpenFoodAPIClient {
                     productSentCallback.onProductSentResponse(false);
                 }
             });
-        } else if (product.getName().equals("") && product.getQuantity()==null) {
+        } else if (product.getName().equals("") && product.getQuantity() == null) {
             apiService.saveProductWithoutNameAndQuantity(product.getBarcode(), product.getLang(), product.getBrands(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
                 @Override
                 public void onResponse(Call<State> call, Response<State> response) {
@@ -422,7 +406,7 @@ public class OpenFoodAPIClient {
                     productSentCallback.onProductSentResponse(false);
                 }
             });
-        } else if (product.getBrands().equals("") && product.getQuantity()==null) {
+        } else if (product.getBrands().equals("") && product.getQuantity() == null) {
             apiService.saveProductWithoutBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getName(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
                 @Override
                 public void onResponse(Call<State> call, Response<State> response) {

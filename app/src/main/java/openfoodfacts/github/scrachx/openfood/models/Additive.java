@@ -13,13 +13,6 @@ import org.greenrobot.greendao.annotation.Unique;
 import java.util.List;
 
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-
-@JsonPropertyOrder({
-        "code",
-        "name",
-        "risk"
-})
 
 @Entity(indexes = {
         @Index(value = "tag", unique = true)

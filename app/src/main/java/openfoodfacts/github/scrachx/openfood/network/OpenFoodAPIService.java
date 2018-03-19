@@ -60,6 +60,12 @@ public interface OpenFoodAPIService {
                             @Query("password") String password,
                             @Query("comment") String comment);
 
+    /**
+     * This method is used to upload those products which
+     * does not contain Name of the product.
+     * here name query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
     Call<State> saveProductWithoutName(@Query("code") String code,
@@ -70,6 +76,13 @@ public interface OpenFoodAPIService {
                                        @Query("password") String password,
                                        @Query("comment") String comment);
 
+
+    /**
+     * This method is used to upload those products which
+     * does not contain Brands of the product.
+     * here Brands query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
     Call<State> saveProductWithoutBrands(@Query("code") String code,
@@ -80,6 +93,12 @@ public interface OpenFoodAPIService {
                                          @Query("password") String password,
                                          @Query("comment") String comment);
 
+    /**
+     * This method is used to upload those products which
+     * does not contain Quantity of the product.
+     * here Quantity query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
     Call<State> saveProductWithoutQuantity(@Query("code") String code,
@@ -90,7 +109,12 @@ public interface OpenFoodAPIService {
                                            @Query("password") String password,
                                            @Query("comment") String comment);
 
-
+    /**
+     * This method is used to upload those products which
+     * does not contain Name and Brands of the product.
+     * here Name and Brands query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
     Call<State> saveProductWithoutNameAndBrands(@Query("code") String code,
@@ -99,7 +123,12 @@ public interface OpenFoodAPIService {
                                                 @Query("user_id") String login,
                                                 @Query("password") String password,
                                                 @Query("comment") String comment);
-
+    /**
+     * This method is used to upload those products which
+     * does not contain Name and Quantity of the product.
+     * here Name and Quantity query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
     Call<State> saveProductWithoutNameAndQuantity(@Query("code") String code,
@@ -109,6 +138,12 @@ public interface OpenFoodAPIService {
                                                   @Query("password") String password,
                                                   @Query("comment") String comment);
 
+    /**
+     * This method is used to upload those products which
+     * does not contain Brands and Quantity of the product.
+     * here Brands and Quantity query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
     Call<State> saveProductWithoutBrandsAndQuantity(@Query("code") String code,
@@ -118,6 +153,12 @@ public interface OpenFoodAPIService {
                                                     @Query("password") String password,
                                                     @Query("comment") String comment);
 
+    /**
+     * This method is used to upload those products which
+     * does not contain Brands, Name and Quantity of the product.
+     * here Brands, Name and Quantity query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
     Call<State> saveProductWithoutNameBrandsAndQuantity(@Query("code") String code,
