@@ -257,7 +257,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             if (otherOFAppInstalled) {
                                 Intent LaunchIntent = getPackageManager()
                                         .getLaunchIntentForPackage(BuildConfig.OFOTHERLINKAPP);
-                                startActivity(LaunchIntent);
+                                if (LaunchIntent != null) {
+                                    startActivity(LaunchIntent);
+                                }else{
+                                    Toast.makeText(this, "App Disabled", Toast.LENGTH_SHORT).show();
+                                }
                             } else {
                                 try {
                                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse
@@ -303,7 +307,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     }
 
                     if (fragment != null) {
-                             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
                     } else {
                         // error in creating fragment
                         Log.e("MainActivity", "Error in creating fragment");
@@ -493,8 +497,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         } else {
             if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
                 getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
-            }
-            else {
+            } else {
                 super.onBackPressed();
             }
         }
