@@ -138,7 +138,7 @@ public class IngredientsProductFragment extends BaseFragment {
             vitaminTagsTextView.append(bold(getString(R.string.vitamin_tags_text)));
             for (String vitamins : vitaminTagsList) {
                 vitaminStringBuilder.append(prefix);
-                prefix = ",";
+                prefix = ", ";
                 vitaminStringBuilder.append(trimLanguagePartFromString(vitamins));
             }
             vitaminTagsTextView.append(vitaminStringBuilder.toString());
@@ -152,7 +152,7 @@ public class IngredientsProductFragment extends BaseFragment {
             aminoAcidTagsTextView.append(bold(getString(R.string.amino_acid_tags_text)));
             for (String aminoAcid : aminoAcidTagsList) {
                 aminoAcidStringBuilder.append(aminoPrefix);
-                aminoPrefix = ",";
+                aminoPrefix = ", ";
                 aminoAcidStringBuilder.append(trimLanguagePartFromString(aminoAcid));
             }
             aminoAcidTagsTextView.append(aminoAcidStringBuilder.toString());
@@ -166,7 +166,7 @@ public class IngredientsProductFragment extends BaseFragment {
             mineralTagsTextView.append(bold(getString(R.string.mineral_tags_text)));
             for (String mineral : mineralTags) {
                 mineralsStringBuilder.append(mineralPrefix);
-                mineralPrefix = ",";
+                mineralPrefix = ", ";
                 mineralsStringBuilder.append(trimLanguagePartFromString(mineral));
             }
             mineralTagsTextView.append(mineralsStringBuilder);
@@ -180,7 +180,7 @@ public class IngredientsProductFragment extends BaseFragment {
             otherNutritionTagTextView.append(bold(getString(R.string.other_tags_text)));
             for (String otherSubstance : otherNutritionTags) {
                 otherNutritionStringBuilder.append(otherNutritionPrefix);
-                otherNutritionPrefix = ",";
+                otherNutritionPrefix = ", ";
                 otherNutritionStringBuilder.append(trimLanguagePartFromString(otherSubstance));
             }
             otherNutritionTagTextView.append(otherNutritionStringBuilder.toString());
@@ -300,6 +300,10 @@ public class IngredientsProductFragment extends BaseFragment {
         }
     }
 
+    /**
+     * @return the string after trimming the language code from the tags
+     * like it returns folic-acid for en:folic-acid
+     */
     private String trimLanguagePartFromString(String string) {
         return string.substring(3);
     }
