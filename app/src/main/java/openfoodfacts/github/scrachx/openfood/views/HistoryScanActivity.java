@@ -5,6 +5,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.net.Uri;
@@ -26,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +44,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
@@ -66,12 +69,18 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     Button scanFirst;
     @BindView(R.id.empty_history_info)
     TextView infoView;
+    @BindView(R.id.history_progressbar)
+    ProgressBar historyProgressbar;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         setContentView(R.layout.activity_history_scan);
+        setTitle(getString(R.string.scan_history_drawer));
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -130,7 +139,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                                 .neutralText(R.string.txtOk)
                                 .show();
                     } else {
-                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, Utils
+                                .MY_PERMISSIONS_REQUEST_STORAGE);
                     }
                 } else {
                     exportCSV();
@@ -142,17 +152,32 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     }
 
     public void exportCSV() {
+        String folder_main = " ";
+        String appname = " ";
+        if ((BuildConfig.FLAVOR.equals("off"))) {
+            folder_main = " Open Food Facts ";
+            appname = "OFF";
+        } else if ((BuildConfig.FLAVOR.equals("opff"))) {
+            folder_main = " Open Pet Food Facts ";
+            appname = "OPFF";
+        } else {
+            folder_main = " Open Beauty Facts ";
+            appname = "OBF";
+        }
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show();
-        String baseDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
-        Log.d("dir", baseDir);
-        String fileName = "exportHistoryOFF" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date()) + ".csv";
+        File baseDir = new File(Environment.getExternalStorageDirectory(), folder_main);
+        if (!baseDir.exists()) {
+            baseDir.mkdirs();
+        }
+        Log.d("dir", String.valueOf(baseDir));
+        String fileName = appname +"-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
         String filePath = baseDir + File.separator + fileName;
         File f = new File(filePath);
         CSVWriter writer;
         FileWriter fileWriter;
         try {
             if (f.exists() && !f.isDirectory()) {
-                fileWriter = new FileWriter(filePath, true);
+                fileWriter = new FileWriter(filePath, false);
                 writer = new CSVWriter(fileWriter);
             } else {
                 writer = new CSVWriter(new FileWriter(filePath));
@@ -222,15 +247,15 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         @Override
         protected void onPreExecute() {
+            historyProgressbar.setVisibility(View.VISIBLE);
             List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             if (listHistoryProducts.size() == 0) {
                 emptyHistory = true;
+                historyProgressbar.setVisibility(View.GONE);
                 infoView.setVisibility(View.VISIBLE);
                 scanFirst.setVisibility(View.VISIBLE);
                 invalidateOptionsMenu();
                 cancel(true);
-            } else {
-                Toast.makeText(getApplicationContext(), R.string.txtLoading, Toast.LENGTH_LONG).show();
             }
         }
 
@@ -241,7 +266,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
 
             for (HistoryProduct historyProduct : listHistoryProducts) {
-                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), historyProduct.getUrl(), historyProduct.getBarcode(), historyProduct.getLastSeen(), historyProduct.getQuantity(), historyProduct.getNutritionGrade()));
+                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), historyProduct.getUrl(), historyProduct
+                        .getBarcode(), historyProduct.getLastSeen(), historyProduct.getQuantity(), historyProduct.getNutritionGrade()));
             }
 
             return ctx[0];
@@ -256,7 +282,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                     .website_product), activity);
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
-
+            historyProgressbar.setVisibility(View.GONE);
 
             SwipeController swipeController = new SwipeController(ctx, HistoryScanActivity.this);
             ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
@@ -282,10 +308,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                             .title(R.string.action_about)
                             .content(R.string.permission_camera)
                             .neutralText(R.string.txtOk)
-                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(HistoryScanActivity.this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(HistoryScanActivity.this, new String[]{Manifest
+                                    .permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
                             .show();
                 } else {
-                    ActivityCompat.requestPermissions(HistoryScanActivity.this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                    ActivityCompat.requestPermissions(HistoryScanActivity.this, new String[]{Manifest.permission.CAMERA}, Utils
+                            .MY_PERMISSIONS_REQUEST_CAMERA);
                 }
             } else {
                 Intent intent = new Intent(HistoryScanActivity.this, ScannerFragmentActivity.class);
@@ -297,8 +325,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
     public void setInfo(TextView view) {
 
-        String info = "Your viewed product history will be listed here.\n"+
-        "This history is for your eyes only and is stored locally.";
+        String info = getString(R.string.scan_first_string);
 
         view.setText(info);
 

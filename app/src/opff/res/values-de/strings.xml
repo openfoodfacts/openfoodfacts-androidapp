@@ -11,13 +11,13 @@
   <string name="website_product">https://world-de.openpetfoodfacts.org/produkt/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-de.openpetfoodfacts.org/mitwirkender/</string>
-  <string name="txtHome">Open Pet Food Facts ist eine freie Tiernahrungsmittelproduktdatenbank mit Zutaten, Allergenen, Nährwertangaben und all den Kleinigkeiten, die sich auf Produkt-Etiketten befinden.</string>
-  <string name="slide_1_title">Contribute to Pet Food transparency</string>
-  <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
-  <string name="slide_2_title">Hol’ dir die Fakten</string>
-  <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Keep track of the product you use</string>
-  <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
-  <string name="slide_4_title">Funktioniert offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connexion right now</string>
+  <string name="txtHome">„Open Pet Food Facts” ist eine Datenbank der Nahrungsprodukte für Haustiere mit deren Bestandteilen, Allergenen, Indizien und und all den Kleinigkeiten, die wir auf Produktetiketten für Haustiernahrung finden können. Wau-Wau, Miau.</string>
+  <string name="slide_1_title">Beitrag zur Transparent von Tiernahrungsprodukten leisten</string>
+  <string name="slide_1_desc">Produkte erfassen, und diese fotografieren, ermöglichen die Transparenz von Tiernahrung</string>
+  <string name="slide_2_title">Holen Sie sich die Fakten</string>
+  <string name="slide_2_desc">Umfassende Informationen über das eingelesene Produkt wurden für Sie entschlüsselt</string>
+  <string name="slide_3_title">Behalten Sie den Überblick über das verwendete Produkt</string>
+  <string name="slide_3_desc">Alle Kosmetika, die Sie verwenden, in einer handlichen Liste, die Sie exportieren können</string>
+  <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
+  <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
 </resources>

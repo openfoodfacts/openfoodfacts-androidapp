@@ -16,12 +16,16 @@
 
         <ImageButton
             android:id="@+id/imageViewFront"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:adjustViewBounds="true"
             android:background="?android:selectableItemBackground"
-            android:maxHeight="250dp"
+            android:maxHeight="120dp"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
 
         <TextView
@@ -37,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/spacing_normal"
+            android:layout_margin="@dimen/spacing_small"
             android:gravity="center"
             android:textAlignment="center"
             android:textIsSelectable="true"
@@ -49,10 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/spacing_tiny"
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_normal"
             android:clickable="true"
             android:gravity="center" />
 
@@ -91,7 +93,7 @@
                     android:layout_width="@dimen/button_height_normal"
                     android:layout_height="@dimen/button_height_normal"
                     android:padding="@dimen/padding_too_short"
-                    android:src="@drawable/warning_icon" />
+                    app:srcCompat="@drawable/warning_icon" />
 
                 <TextView
                     android:id="@+id/product_incomplete_message"
@@ -114,7 +116,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_margin="4dp"
                     android:background="#EEE"
-                    android:src="@drawable/ic_action_cross" />
+                    app:srcCompat="@drawable/ic_action_cross" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
@@ -152,6 +154,7 @@
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/spacing_tiny"
+            android:textColorLink="@color/light_blue_A700"
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
             android:textIsSelectable="true"
@@ -165,6 +168,7 @@
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/spacing_tiny"
+            android:textColorLink="@color/light_blue_A700"
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
             android:textIsSelectable="true"
@@ -178,6 +182,7 @@
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/spacing_tiny"
+            android:textColorLink="@color/light_blue_A700"
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
             android:textIsSelectable="true"
@@ -191,6 +196,7 @@
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/spacing_tiny"
+            android:textColorLink="@color/light_blue_A700"
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
             android:textIsSelectable="true"
@@ -231,6 +237,7 @@
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/spacing_tiny"
+            android:textColorLink="@color/light_blue_A700"
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
             android:textIsSelectable="true"
@@ -258,6 +265,7 @@
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/spacing_tiny"
+            android:textColorLink="@color/light_blue_A700"
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
             android:textIsSelectable="true"
@@ -271,6 +279,7 @@
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/spacing_tiny"
+            android:textColorLink="@color/light_blue_A700"
             android:background="@drawable/textview_full"
             android:padding="@dimen/spacing_small"
             android:textIsSelectable="true"

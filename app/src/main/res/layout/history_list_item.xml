@@ -4,10 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/historyRel"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
 
-    <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/imgHistoryProduct"
+    <FrameLayout
+        android:id="@+id/imgHistoryFrame"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentLeft="true"
@@ -16,27 +19,44 @@
         android:layout_margin="@dimen/spacing_small"
         android:paddingBottom="10dp"
         android:paddingEnd="8dp"
-        android:paddingRight="8dp"
-        tools:srcCompat="@drawable/header" />
+        android:paddingRight="8dp">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imgHistoryProduct"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            tools:srcCompat="@drawable/header" />
+
+        <ProgressBar
+            android:id="@+id/historyImageProgressbar"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="4dp"
+            android:visibility="visible" />
+    </FrameLayout>
+
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/nutritionGradeImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/imgHistoryProduct"
-        android:layout_alignEnd="@id/imgHistoryProduct"
-        android:layout_alignRight="@id/imgHistoryProduct"
+        android:layout_alignBottom="@id/imgHistoryFrame"
+        android:layout_alignEnd="@id/imgHistoryFrame"
+        android:layout_alignRight="@id/imgHistoryFrame"
         tools:src="@drawable/nnc_small_a" />
 
     <TextView
         android:id="@+id/titleHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imgHistoryProduct"
+        android:layout_alignTop="@+id/imgHistoryFrame"
         android:layout_marginTop="8dp"
-        android:layout_toEndOf="@id/imgHistoryProduct"
+        android:layout_toEndOf="@id/imgHistoryFrame"
         android:layout_toLeftOf="@id/barcodeHistory"
-        android:layout_toRightOf="@id/imgHistoryProduct"
+        android:layout_toRightOf="@id/imgHistoryFrame"
         android:layout_toStartOf="@id/barcodeHistory"
         android:ellipsize="end"
         android:gravity="center_vertical"
@@ -48,11 +68,11 @@
         android:id="@+id/productDetailsHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imgHistoryProduct"
+        android:layout_alignBottom="@+id/imgHistoryFrame"
         android:layout_marginBottom="12dp"
-        android:layout_toEndOf="@id/imgHistoryProduct"
+        android:layout_toEndOf="@id/imgHistoryFrame"
         android:layout_toLeftOf="@id/dateView"
-        android:layout_toRightOf="@id/imgHistoryProduct"
+        android:layout_toRightOf="@id/imgHistoryFrame"
         android:layout_toStartOf="@id/dateView"
         android:ellipsize="end"
         android:gravity="center_vertical"

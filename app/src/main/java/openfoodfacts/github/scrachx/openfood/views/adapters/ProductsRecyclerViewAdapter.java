@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -61,13 +62,26 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
         // - replace the contents of the view with that element
         if (holder instanceof ProductViewHolder) {
             ProductViewHolder productHolder = (ProductViewHolder) holder;
+            productHolder.vProductImageProgressbar.setVisibility(View.VISIBLE);
+            if (products.get(position).getImageSmallUrl() == null)
+                productHolder.vProductImageProgressbar.setVisibility(View.GONE);
             Picasso.with(context)
                     .load(products.get(position).getImageSmallUrl())
                     .placeholder(R.drawable.placeholder_thumb)
                     .error(R.drawable.error_image)
                     .fit()
                     .centerCrop()
-                    .into(productHolder.vProductImage);
+                    .into(productHolder.vProductImage, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            productHolder.vProductImageProgressbar.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                            productHolder.vProductImageProgressbar.setVisibility(View.GONE);
+                        }
+                    });
 
             Product product = products.get(position);
 
@@ -83,7 +97,8 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
             }
 
             if (isNotEmpty(product.getNutritionGradeFr())) {
-                productHolder.vProductGrade.setImageDrawable(ContextCompat.getDrawable(context, Utils.getSmallImageGrade(product.getNutritionGradeFr())));
+                productHolder.vProductGrade.setImageDrawable(ContextCompat.getDrawable(context, Utils.getSmallImageGrade(product
+                        .getNutritionGradeFr())));
             }
 
             productHolder.vProductDetails.setText(stringBuilder.toString());
@@ -110,6 +125,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
         ImageView vProductGrade;
         TextView vProductName;
         TextView vProductDetails;
+        ProgressBar vProductImageProgressbar;
 
         ProductViewHolder(View v) {
             super(v);
@@ -117,6 +133,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
             vProductGrade = v.findViewById(R.id.imgGrade);
             vProductName = v.findViewById(R.id.nameProduct);
             vProductDetails = v.findViewById(R.id.productDetails);
+            vProductImageProgressbar = v.findViewById(R.id.searchImgProgressbar);
         }
     }
 

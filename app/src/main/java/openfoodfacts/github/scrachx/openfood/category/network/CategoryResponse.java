@@ -42,7 +42,7 @@ public class CategoryResponse {
         }
 
         public Tag() {
-            this("", "", "", 0);
+            this("", "", "",0 );
         }
 
         public String getId() {

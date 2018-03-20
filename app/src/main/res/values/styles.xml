@@ -9,6 +9,10 @@
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
+    <style name="Black_Back_Arrow" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@color/md_black_1000</item>
+    </style>
+
     <style name="customSearchView" parent="Widget.AppCompat.Light.SearchView">
         <item name="submitBackground">@color/md_light_appbar</item>
         <item name="queryBackground">@color/md_light_appbar</item>
@@ -20,7 +24,7 @@
         <item name="searchViewStyle">@style/customSearchView</item>
     </style>
 
-    <style name="SplashTheme" parent="@style/Theme.AppCompat.Light">
+    <style name="SplashTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/background_splash</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>

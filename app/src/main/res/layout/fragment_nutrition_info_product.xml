@@ -2,12 +2,12 @@
 
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:isScrollContainer="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="fill_vertical"
     android:clipToPadding="false"
     android:fillViewport="true"
+    android:isScrollContainer="false"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <RelativeLayout
@@ -17,44 +17,47 @@
 
         <ImageButton
             android:id="@+id/imageViewNutrition"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/ic_add_a_photo_black_48dp"
-            android:background="?android:selectableItemBackground"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:maxHeight="250dp" />
+            android:adjustViewBounds="true"
+            android:background="?android:selectableItemBackground"
+            android:maxHeight="120dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
 
         <TextView
             android:id="@+id/addPhotoLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageViewNutrition"
+            android:layout_marginBottom="@dimen/spacing_normal"
             android:gravity="center"
             android:text="@string/take_picture_nutrition_table"
-            android:textStyle="bold"
-            android:layout_marginBottom="@dimen/spacing_normal"
-            android:layout_below="@+id/imageViewNutrition"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textPerPortion"
-            android:layout_below="@id/addPhotoLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/addPhotoLabel"
             android:layout_centerHorizontal="true"
             android:textIsSelectable="true"
             android:textSize="@dimen/font_large" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/nutriments_recycler_view"
-            android:scrollbars="vertical"
-            android:layout_below="@id/textPerPortion"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/textPerPortion"
             android:paddingBottom="60dp"
-         />
+            android:scrollbars="vertical" />
 
     </RelativeLayout>
 
