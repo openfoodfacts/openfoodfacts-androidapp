@@ -11,13 +11,13 @@
   <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
-  <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
-  <string name="slide_1_title">Contribute to Pet Food transparency</string>
-  <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
+  <string name="txtHome">Open Food Facts ir atvērta datu bāze ar edienu produktiem un to sastāvdaļām, alergēniem, uztura faktiem un informāciju par produktiem, ko varam atrast produktu marķējumos.</string>
+  <string name="slide_1_title">Veicināt dzīvnieku barības pārredzamību</string>
+  <string name="slide_1_desc">Skenējiet produktus, uzņemiet attēlus, veiciet pārredzamību</string>
   <string name="slide_2_title">Iegūstiet faktus</string>
-  <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Keep track of the product you use</string>
+  <string name="slide_2_desc">Plaša informācija par skenēto produktu brīvi pieejama jums</string>
+  <string name="slide_3_title">Sekojiet līdzi produktiem kurus izmantojat</string>
   <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
-  <string name="slide_4_title">Works offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+  <string name="slide_4_title">Darbojas bezsaistē</string>
+  <string name="slide_4_desc">Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma</string>
 </resources>
