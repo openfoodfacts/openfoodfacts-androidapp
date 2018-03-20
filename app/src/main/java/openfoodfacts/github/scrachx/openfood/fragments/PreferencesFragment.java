@@ -62,7 +62,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         setPreferencesFromResource(R.xml.preferences, rootKey);
         setHasOptionsMenu(true);
 
-
         ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
 
         settings = getActivity().getSharedPreferences("prefs", 0);
@@ -75,11 +74,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Locale current = LocaleHelper.getLocale(localeValues[i]);
 
             if (current != null) {
-                localeLabels[i] = String.format("%s - %s",
-                        // current.getDisplayName(current), // native form
-                        WordUtils.capitalize(current.getDisplayName(current)),
-                        localeValues[i].toUpperCase(Locale.getDefault())
-                );
+                localeLabels[i] = WordUtils.capitalize(current.getDisplayName(current));
             }
         }
 
@@ -117,38 +112,41 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
         Preference faqbutton = findPreference("FAQ");
         faqbutton.setOnPreferenceClickListener(preference -> {
+
             CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+            customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getContext().getPackageName()));
             CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.faq_url)), new WebViewFallback());
             return true;
         });
 
         Preference terms = findPreference("Terms");
         terms.setOnPreferenceClickListener(preference -> {
+
             CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+            customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getContext().getPackageName()));
             CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.terms_url)), new WebViewFallback());
             return true;
         });
 
         Preference langHelp = findPreference("local_translate_help");
         langHelp.setOnPreferenceClickListener(preference -> {
+
             CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+            customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getContext().getPackageName()));
             CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
+
+            return true;
+        });
+
+        ListPreference imageUploadPref = ((ListPreference) findPreference("ImageUpload"));
+        String[] values = getActivity().getResources().getStringArray(R.array.upload_image);
+        imageUploadPref.setEntries(values);
+        imageUploadPref.setEntryValues(values);
+        imageUploadPref.setOnPreferenceChangeListener((preference, newValue) -> {
+            settings.edit().putString("imageUpload", (String) newValue).apply();
             return true;
         });
     }
-
-
-    public void onResume() {
-
-        super.onResume();
-
-        try {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.action_preferences));
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     @Override
     public NavigationDrawerListener getNavigationDrawerListener() {
@@ -163,6 +161,18 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     @NavigationDrawerType
     public int getNavigationDrawerType() {
         return ITEM_PREFERENCES;
+    }
+
+    public void onResume() {
+
+        super.onResume();
+
+        try {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.action_preferences));
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {

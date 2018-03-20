@@ -17,14 +17,16 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Gravity;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -60,9 +62,14 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     Button buttonSend;
     @BindView(R.id.message_container_card_view)
     CardView mCardView;
+    @BindView(R.id.noDataImg)
+    ImageView noDataImage;
+    @BindView(R.id.noDataText)
+    TextView noDataText;
     private List<SaveItem> saveItems;
     private String loginS, passS;
     private SendProductDao mSendProductDao;
+    private int size;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,10 +78,11 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     }
 
     @Override
-   public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-                MenuItem item=menu.findItem(R.id.action_search);
-              item.setVisible(false);
-           }
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        MenuItem item = menu.findItem(R.id.action_search);
+        item.setVisible(false);
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -155,6 +163,9 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     .onNegative((dialog, which) -> uploadProducts())
                     .show();
         }
+        SharedPreferences.Editor editor = getContext().getSharedPreferences("usage", 0).edit();
+        editor.putBoolean("firstUpload", true);
+        editor.apply();
     }
 
     @Override
@@ -169,6 +180,8 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     private void uploadProducts() {
         OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getActivity());
         final List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
+        size = saveItems.size();
+
         for (final SendProduct product : listSaveProduct) {
             if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())) {
                 continue;
@@ -190,6 +203,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             if (isNotEmpty(product.getImgupload_front())) {
                 product.compress(ProductImageField.FRONT);
             }
+            size--;
 
             apiClient.post(getActivity(), product, value -> {
                 if (value) {
@@ -198,12 +212,19 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     if (productIndex >= 0 && productIndex < saveItems.size()) {
                         saveItems.remove(productIndex);
                     }
-
+                    updateDrawerBadge();
                     mRecyclerView.getAdapter().notifyDataSetChanged();
                     mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
                 }
             });
         }
+
+    }
+
+    private void updateDrawerBadge() {
+        size--;
+        MainActivity mainActivity = (MainActivity) getActivity();
+        mainActivity.updateBadgeOfflineEditDrawerITem(size);
     }
 
     @Override
@@ -240,7 +261,9 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     String barcode = saveItems.get(lapos).getBarcode();
                     mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(barcode)).list());
                     final SaveListAdapter sl = (SaveListAdapter) mRecyclerView.getAdapter();
+                    size = saveItems.size();
                     saveItems.remove(lapos);
+                    updateDrawerBadge();
                     getActivity().runOnUiThread(sl::notifyDataSetChanged);
                 })
                 .show();
@@ -254,14 +277,34 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         protected void onPreExecute() {
             saveItems.clear();
             List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
+            SharedPreferences settingsUsage = getContext().getSharedPreferences("usage", 0);
+            boolean firstUpload = settingsUsage.getBoolean("firstUpload", false);
+            boolean msgdismissed = settingsUsage.getBoolean("is_offline_msg_dismissed", false);
             if (listSaveProduct.size() == 0) {
-                Toast toast = Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER,0,0);
-                toast.show();
+                if (msgdismissed) {
+
+                    noDataImage.setVisibility(View.VISIBLE);
+                    mRecyclerView.setVisibility(View.GONE);
+                    noDataText.setVisibility(View.VISIBLE);
+                    noDataText.setText(R.string.no_offline_data);
+                    buttonSend.setVisibility(View.GONE);
+                    if (!firstUpload) {
+                        noDataImage.setImageResource(R.drawable.ic_cloud_upload);
+                        noDataText.setText(R.string.first_offline);
+                    }
+                } else {
+                    noDataImage.setVisibility(View.INVISIBLE);
+                    noDataText.setVisibility(View.INVISIBLE);
+                }
             } else {
+
+                noDataImage.setVisibility(View.GONE);
+                mRecyclerView.setVisibility(View.VISIBLE);
+                noDataText.setVisibility(View.GONE);
+                buttonSend.setVisibility(View.VISIBLE);
                 mCardView.setVisibility(View.GONE);
                 Toast toast = Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER,0,0);
+                toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             }
         }
@@ -285,7 +328,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                 }
 
                 Bitmap imgUrl = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
-                saveItems.add(new SaveItem(product.getName(), imageIcon,imgUrl , product.getBarcode(),product.getWeight()+" "+product.getWeight_unit(),product.getBrands()));
+                saveItems.add(new SaveItem(product.getName(), imageIcon, imgUrl, product.getBarcode(), product.getWeight() + " " + product.getWeight_unit(), product.getBrands()));
             }
 
             return ctx[0];

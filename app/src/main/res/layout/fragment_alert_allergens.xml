@@ -2,8 +2,9 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
+    <!--Recycles R.layout#item_allergens.xml-->
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/alergens_recycle"
+        android:id="@+id/allergens_recycle"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -11,9 +12,9 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/alergens_recycle"
-        android:layout_alignEnd="@+id/alergens_recycle"
-        android:layout_alignRight="@+id/alergens_recycle"
+        android:layout_alignBottom="@+id/allergens_recycle"
+        android:layout_alignEnd="@+id/allergens_recycle"
+        android:layout_alignRight="@+id/allergens_recycle"
         android:layout_margin="16dp"
         android:clickable="true"
         android:focusable="true"

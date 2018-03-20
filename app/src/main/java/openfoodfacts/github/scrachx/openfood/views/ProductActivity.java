@@ -154,7 +154,7 @@ public class ProductActivity extends BaseActivity {
 //        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
 //
 //        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-//        String url = " " + getString(R.string.website_product) + mState.getProduct().getCode();
+//        String url = " " + getString(R.string.website_product) + mState.getProduct().getUniqueAllergenID();
 //        if (mState.getProduct().getUrl() != null) {
 //            url = " " + mState.getProduct().getUrl();
 //        }

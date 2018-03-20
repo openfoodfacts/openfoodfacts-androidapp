@@ -65,11 +65,11 @@ public class ProductsListAdapter extends BaseAdapter {
         Product product = products.get(position);
         StringBuilder stringBuilder = new StringBuilder(product.getProductName() + "\n");
 
-        if (!product.getBrands().isEmpty()) {
+        if (product != null && !product.getBrands().isEmpty()) {
             stringBuilder.append(StringUtils.capitalize(product.getBrands().split(",")[0].trim()));
         }
 
-        if (!product.getQuantity().isEmpty()) {
+        if (product != null && !product.getQuantity().isEmpty()) {
             stringBuilder.append(" - ").append(product.getQuantity());
         }
 

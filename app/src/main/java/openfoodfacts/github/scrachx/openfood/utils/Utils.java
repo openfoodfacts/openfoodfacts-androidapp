@@ -11,14 +11,18 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.DrawableRes;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.content.res.AppCompatResources;
 import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
@@ -52,6 +56,9 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import static android.text.TextUtils.isEmpty;
 
@@ -450,5 +457,32 @@ public class Utils {
         }
 
         return "Other";
+    }
+
+    public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {
+        ClickableSpan clickableSpan;
+        String url = SearchType.URLS.get(type);
+
+        if (url == null) {
+            clickableSpan = new ClickableSpan() {
+                @Override
+                public void onClick(View view) {
+                    ProductBrowsingListActivity.startActivity(activity, text, type);
+                }
+            };
+        } else {
+            Uri uri = Uri.parse(url + urlParameter);
+            clickableSpan = new ClickableSpan() {
+                @Override
+                public void onClick(View textView) {
+                    CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, uri, new WebViewFallback());
+                }
+            };
+        }
+
+        SpannableString spannableText = new SpannableString(text);
+        spannableText.setSpan(clickableSpan, 0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return spannableText;
+
     }
 }

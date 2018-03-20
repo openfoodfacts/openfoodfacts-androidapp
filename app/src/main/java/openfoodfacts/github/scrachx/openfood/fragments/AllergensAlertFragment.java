@@ -23,7 +23,6 @@ import net.steamcrafted.loadtoast.LoadToast;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -41,8 +40,10 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_ALERT;
 
-
-public class AlertUserFragment extends NavigationBaseFragment {
+/**
+ * @see R.layout#fragment_alert_allergens
+ */
+public class AllergensAlertFragment extends NavigationBaseFragment {
 
 
     private List<AllergenName> mAllergensEnabled;
@@ -97,22 +98,23 @@ public class AlertUserFragment extends NavigationBaseFragment {
             editor.putBoolean("firstRunAlert", false);
             editor.apply();
         }
-
-
-        mRvAllergens = view.findViewById(R.id.alergens_recycle);
+        mRvAllergens = view.findViewById(R.id.allergens_recycle);
         mAdapter = new AllergensAdapter(productRepository, mAllergensEnabled, getActivity());
         mRvAllergens.setAdapter(mAdapter);
         mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
         mRvAllergens.setHasFixedSize(true);
     }
 
+    /**
+     * Add an allergen to be checked for when browsing products.
+     */
     @OnClick(R.id.fab)
     protected void onAddAllergens() {
         if (mAllergensFromDao != null && mAllergensFromDao.size() > 0) {
 
             mAllergensNotEnabled = productRepository.getAllergensByEnabledAndLanguageCode(false, Locale.getDefault().getLanguage());
             Collections.sort(mAllergensNotEnabled, (a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
-            List<String> allergensNames = new ArrayList<String>();
+            List<String> allergensNames = new ArrayList<>();
             for (AllergenName allergenName : mAllergensNotEnabled) {
                 allergensNames.add(allergenName.getName());
             }
@@ -157,6 +159,7 @@ public class AlertUserFragment extends NavigationBaseFragment {
                                         lt.error();
                                     }, dialog::hide);
                         })
+                        .onNegative((dialog, which) -> lt.hide())
                         .show();
             } else {
                 new MaterialDialog.Builder(mView.getContext())
