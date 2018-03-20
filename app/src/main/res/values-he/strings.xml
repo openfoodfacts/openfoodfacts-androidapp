@@ -3,9 +3,9 @@
 <resources>
   <plurals name="minutes">
     <item quantity="one"> minute</item>
-    <item quantity="two"> דקות</item>
-    <item quantity="many"> דקות</item>
-    <item quantity="other"> דקות</item>
+    <item quantity="two"> minutes</item>
+    <item quantity="many"> minutes</item>
+    <item quantity="other"> minutes</item>
   </plurals>
   <plurals name="hours">
     <item quantity="one"> hour</item>
@@ -27,6 +27,8 @@
   <string name="text_barcode">נא להזין את הברקוד:</string>
   <string name="message_in_activity_save_product_offline">נדרשת לפחות תמונה אחת לטובת שליחת מוצר חדש.</string>
   <string name="product_incomplete_message">המפרט של מוצר זה לוקה בחסר. כתוצאה מכך, לא הצלחנו לבדוק מה הם מעוררי הרגישות.</string>
+  <string name="no_offline_data">סיימת</string>
+  <string name="first_offline">מוצרים שהוספת ללא חיבור לאינטרנט יופיעו כאן</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
@@ -393,6 +395,7 @@
   <string name="packaging_string">אריזה</string>
   <string name="label_string">תווית</string>
   <string name="category_string">קטגוריה</string>
-  <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="connection">יש חיבור</string>
+  <string name="contributor_string">תרומה</string>
+  <!---->
 </resources>

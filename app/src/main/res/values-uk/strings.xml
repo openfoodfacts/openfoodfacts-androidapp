@@ -27,6 +27,8 @@
   <string name="text_barcode">Введіть код продукту:</string>
   <string name="message_in_activity_save_product_offline">Лише одне фото є обов\'язковим для додавання нового продукту.</string>
   <string name="product_incomplete_message">Інформація про продукт не є повною, тому неможливо перейти до заповнення алергенів.</string>
+  <string name="no_offline_data">You\'re all done</string>
+  <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
@@ -395,4 +397,5 @@
   <string name="category_string">Категорія</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
+  <!---->
 </resources>
