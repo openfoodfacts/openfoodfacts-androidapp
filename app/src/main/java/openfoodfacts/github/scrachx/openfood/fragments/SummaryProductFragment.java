@@ -134,6 +134,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private TagDao mTagDao;
     private SummaryProductFragment mFragment;
     private IProductRepository productRepository;
+    private Uri manufactureUri;
 
     @Override
     public void onAttach(Context context) {
@@ -395,7 +396,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             storeProduct.setVisibility(View.GONE);
         }
         if (isNotBlank(product.getManufactureUrl())) {
-            Uri manufactureUri = Uri.parse(product.getManufactureUrl());
+            manufactureUri = Uri.parse(product.getManufactureUrl());
+            if (manufactureUri.getScheme() == null)
+                manufactureUri = Uri.parse("http://" + product.getManufactureUrl());
             customTabActivityHelper.mayLaunchUrl(manufactureUri, null, null);
 
             String manufactureUrlTitle = getString(R.string.txtManufactureUrl);
