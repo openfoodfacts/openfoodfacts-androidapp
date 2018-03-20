@@ -530,6 +530,30 @@ public class Utils {
     }
 
     /**
+     * convert energy from kj to kcal for a product.
+     *
+     * @param value of energy in kj.
+     * @return energy in kcal.
+     */
+    public static String getEnergy(String value) {
+        String defaultValue = "0";
+        if (defaultValue.equals(value) || isEmpty(value)) {
+            return defaultValue;
+        }
+
+        try {
+            int energyKcal = convertKjToKcal(Integer.parseInt(value));
+            return String.valueOf(energyKcal);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
+    }
+
+    private static int convertKjToKcal(int kj) {
+        return kj != 0 ? Double.valueOf(((double) kj) / 4.1868d).intValue() : -1;
+    }
+
+    /**
      * Function to open ScannerFragmentActivity to facilitate scanning
      * @param activity
      */

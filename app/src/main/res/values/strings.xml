@@ -51,6 +51,13 @@
         <item>fl oz</item>
     </string-array>
 
+    <!-- weight units -->
+    <string-array name="weights_array">
+        <item>g</item>
+        <item>mg</item>
+        <item>kg</item>
+    </string-array>
+
     <!-- Text units -->
     <string-array name="languages_array" translatable="false">
         <item>aa</item>
@@ -296,6 +303,8 @@
     <string name="txt_nutrition_not_found">N/A</string>
 
     <!-- Nutrition info tab -->
+    <string name="calculate_calories">Calculate Calories</string>
+    <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Carbohydrate</string>
     <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
