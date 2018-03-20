@@ -488,12 +488,12 @@
     <string name="contributor_string">Contributor</string>
 
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-    <string name="vitamin_tags_text">Vitamin Categories:</string>
-    <string name="amino_acid_tags_text">Amino Acid Categories:</string>
-    <string name="mineral_tags_text">Minerals Category:</string>
-    <string name="other_tags_text">Other Substance:</string>
+    <string name="vitamin_tags_text">Vitamins:</string>
+    <string name="amino_acid_tags_text">Amino Acids:</string>
+    <string name="mineral_tags_text">Minerals:</string>
+    <string name="other_tags_text">Other Substances:</string>
 
-    <!---->
+    <!--shared element transition key-->
     <string name="product_transition" translatable="false">productTransition</string>
 
 
