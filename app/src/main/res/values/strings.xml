@@ -488,6 +488,6 @@
     <string name="contributor_string">Contributor</string>
 
     <!---->
-    <string name="product_transition">productTransition</string>
+    <string name="product_transition" translatable="false">productTransition</string>
 
 </resources>
