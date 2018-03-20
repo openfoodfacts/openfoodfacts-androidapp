@@ -77,8 +77,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                
-                key = query;
+                title = query;
                 newSearchQuery();
 
                 return true;
