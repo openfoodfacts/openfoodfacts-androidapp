@@ -37,7 +37,7 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickLi
 public class ProductBrowsingListActivity extends BaseActivity {
 
     private static String SEARCH_TYPE = "search_type";
-    private static String SEARCH_TITLE = "search_title";
+    private static String SEARCH_QUERY = "search_query";
 
     private String searchType;
 
@@ -59,11 +59,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private OpenFoodAPIClient apiClient;
     private int mCountProducts = 0;
     private int pageAddress = 1;
-    String title;
+    String searchQuery;
 
-    public static void startActivity(Context context, String title, @SearchType String type) {
+    public static void startActivity(Context context, String searchQuery, @SearchType String type) {
         Intent intent = new Intent(context, ProductBrowsingListActivity.class);
-        intent.putExtra(SEARCH_TITLE, title);
+        intent.putExtra(SEARCH_QUERY, searchQuery);
         intent.putExtra(SEARCH_TYPE, type);
         context.startActivity(intent);
     }
@@ -77,7 +77,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                title = query;
+                searchQuery = query;
                 newSearchQuery();
 
                 return true;
@@ -126,12 +126,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
         
         Bundle extras = getIntent().getExtras();
         searchType = extras.getString(SEARCH_TYPE);
-        title = extras.getString(SEARCH_TITLE);
+        searchQuery = extras.getString(SEARCH_QUERY);
         newSearchQuery();
     }
 
     protected void newSearchQuery(){
-        getSupportActionBar().setTitle(title);
+        getSupportActionBar().setTitle(searchQuery);
       
         switch (searchType) {
             case SearchType.BRAND: {
@@ -191,7 +191,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
         switch (searchType) {
             case SearchType.BRAND: {
-                apiClient.getProductsByBrand(title, pageAddress, new OpenFoodAPIClient.OnBrandCallback() {
+                apiClient.getProductsByBrand(searchQuery, pageAddress, new OpenFoodAPIClient.OnBrandCallback() {
                     @Override
                     public void onBrandResponse(boolean value, Search brandObject) {
                         loadData(value, brandObject);
@@ -200,7 +200,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
             case SearchType.COUNTRY: {
-                apiClient.getProductsByCountry(title, pageAddress, new OpenFoodAPIClient.onCountryCallback() {
+                apiClient.getProductsByCountry(searchQuery, pageAddress, new OpenFoodAPIClient.onCountryCallback() {
                     @Override
                     public void onCountryResponse(boolean value, Search country) {
                         loadData(value, country);
@@ -209,7 +209,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
             case SearchType.ADDITIVE: {
-                apiClient.getProductsByAdditive(title, pageAddress, new OpenFoodAPIClient.OnAdditiveCallback() {
+                apiClient.getProductsByAdditive(searchQuery, pageAddress, new OpenFoodAPIClient.OnAdditiveCallback() {
                     @Override
                     public void onAdditiveResponse(boolean value, Search country) {
                         loadData(value, country);
@@ -219,7 +219,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
 
             case SearchType.STORE: {
-                apiClient.getProductsByStore(title, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
+                apiClient.getProductsByStore(searchQuery, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
                     @Override
                     public void onStoreResponse(boolean value, Search storeObject) {
                         loadData(value, storeObject);
@@ -229,7 +229,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
 
             case SearchType.PACKAGING: {
-                apiClient.getProductsByPackaging(title, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
+                apiClient.getProductsByPackaging(searchQuery, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
                     @Override
                     public void onPackagingResponse(boolean value, Search packagingObject) {
                         loadData(value, packagingObject);
@@ -238,7 +238,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
             case SearchType.SEARCH: {
-                api.searchProduct(title, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
+                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
                     @Override
                     public void onProductsResponse(boolean isOk, Search searchResponse, int countProducts) {
                         loadData(isOk, searchResponse);
@@ -248,7 +248,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
 
             case SearchType.LABEL: {
-                api.getProductsByLabel(title, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
+                api.getProductsByLabel(searchQuery, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
                     @Override
                     public void onLabelResponse(boolean value, Search label) {
                         loadData(value, label);
@@ -258,7 +258,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
 
             case SearchType.CATEGORY: {
-                api.getProductsByCategory(title, pageAddress, new OpenFoodAPIClient.onCategoryCallback() {
+                api.getProductsByCategory(searchQuery, pageAddress, new OpenFoodAPIClient.onCategoryCallback() {
                     @Override
                     public void onCategoryResponse(boolean value, Search category) {
                         loadData(value, category);
@@ -268,7 +268,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
 
             case SearchType.CONTRIBUTOR: {
-                api.getProductsByContributor(title, pageAddress, new OpenFoodAPIClient.onContributorCallback() {
+                api.getProductsByContributor(searchQuery, pageAddress, new OpenFoodAPIClient.onContributorCallback() {
                     @Override
                     public void onContributorResponse(boolean value, Search contributor) {
                         loadData(value, contributor);
