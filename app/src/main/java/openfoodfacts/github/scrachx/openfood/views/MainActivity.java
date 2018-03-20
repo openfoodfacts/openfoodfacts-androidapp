@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
@@ -261,6 +262,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                     startActivity(LaunchIntent);
                                 }else{
                                     Toast.makeText(this, R.string.app_disabled_text, Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent();
+                                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                    Uri uri = Uri.fromParts("package", BuildConfig.OFOTHERLINKAPP, null);
+                                    intent.setData(uri);
+                                    startActivity(intent);
                                 }
                             } else {
                                 try {
