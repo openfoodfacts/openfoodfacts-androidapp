@@ -18,6 +18,8 @@
   <string name="text_barcode">Menaip kode bar :</string>
   <string name="message_in_activity_save_product_offline">Hanya satu foto diperlukan untuk menghantar produk baru.</string>
   <string name="product_incomplete_message">Produk ini tidak lengkap. Akibatnya, kita tidak dapat melakukan pemeriksaan alergen.</string>
+  <string name="no_offline_data">You\'re all done</string>
+  <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
