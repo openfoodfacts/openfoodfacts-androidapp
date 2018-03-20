@@ -21,13 +21,9 @@
   <string name="text_barcode">Escribe el código de barras :</string>
   <string name="message_in_activity_save_product_offline">Solo una foto es obligatoria para poder enviar un nuevo producto.</string>
   <string name="product_incomplete_message">Este producto no está completo. Como resultado, no pudimos hacer la comprobación de los alérgenos.</string>
+  <string name="no_offline_data">You\'re all done</string>
+  <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Resumen</item>
@@ -53,7 +49,6 @@
     <item>Ingredientes</item>
   </string-array>
   <!-- Content Description -->
-  <string name="connection">Conectado</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Buscar</string>
@@ -387,9 +382,13 @@
   <string name="additive_string">Aditivo</string>
   <string name="search_string">Buscar</string>
   <string name="country_string">País</string>
+  <string name="store_subtitle">Tienda</string>
+  <string name="packaging_subtitle">Envases</string>
   <string name="last_seen_string">hace %1$d%2$s</string>
   <string name="store_string">Tienda</string>
   <string name="packaging_string">Envases</string>
   <string name="label_string">Etiqueta</string>
   <string name="category_string">Categoría</string>
+  <string name="connection">Connected</string>
+  <string name="contributor_string">Contributor</string>
 </resources>

@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -67,6 +70,46 @@ public class ProductBrowsingListActivity extends BaseActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchMenuItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                
+                key = query;
+                newSearchQuery();
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
+
+        MenuItemCompat.setOnActionExpandListener(searchMenuItem, new MenuItemCompat
+                .OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                getSupportActionBar().setTitle(null);
+                finish();
+                return true;
+            }
+        });
+
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
@@ -86,6 +129,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
         searchType = extras.getString(SEARCH_TYPE);
         key = extras.getString(KEY);
+        newSearchQuery();
+    }
+
+    protected void newSearchQuery(){
 
         getSupportActionBar().setTitle(key);
 
@@ -122,17 +169,21 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 getSupportActionBar().setSubtitle(getString(R.string.category_string));
                 break;
             }
+
+            case SearchType.CONTRIBUTOR: {
+                getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
+            }
         }
 
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
         api = new OpenFoodAPIClient(ProductBrowsingListActivity.this);
         productsRecyclerView = (RecyclerView) findViewById(R.id.products_recycler_view);
+        progressBar.setVisibility(View.VISIBLE);
         setup();
     }
 
     @OnClick(R.id.buttonTryAgain)
     public void setup() {
-        progressBar.setVisibility(View.VISIBLE);
         offlineCloudLayout.setVisibility(View.INVISIBLE);
         countProductsView.setVisibility(View.INVISIBLE);
         getDataFromAPI();
@@ -196,24 +247,38 @@ public class ProductBrowsingListActivity extends BaseActivity {
                         loadData(isOk, searchResponse);
                     }
                 });
+                break;
             }
 
-            case "label": {
+            case SearchType.LABEL: {
                 api.getProductsByLabel(key, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
                     @Override
                     public void onLabelResponse(boolean value, Search label) {
                         loadData(value, label);
                     }
                 });
+                break;
             }
 
-            case "category": {
+            case SearchType.CATEGORY: {
                 api.getProductsByCategory(key, pageAddress, new OpenFoodAPIClient.onCategoryCallback() {
                     @Override
-                    public void onCategoryResponse(boolean value, Search label) {
-                        loadData(value, label);
+                    public void onCategoryResponse(boolean value, Search category) {
+                        loadData(value, category);
                     }
                 });
+                break;
+            }
+
+            case SearchType.CONTRIBUTOR: {
+
+                api.getProductsByContributor(key, pageAddress, new OpenFoodAPIClient.onContributorCallback() {
+                    @Override
+                    public void onContributorResponse(boolean value, Search contributor) {
+                        loadData(value, contributor);
+                    }
+                });
+                break;
             }
         }
     }
@@ -244,6 +309,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 }
             }
         } else {
+            swipeRefreshLayout.setRefreshing(false);
             productsRecyclerView.setVisibility(View.INVISIBLE);
             progressBar.setVisibility(View.INVISIBLE);
             offlineCloudLayout.setVisibility(View.VISIBLE);
@@ -255,6 +321,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private void setUpRecyclerView() {
 
         progressBar.setVisibility(View.INVISIBLE);
+        swipeRefreshLayout.setRefreshing(false);
         countProductsView.setVisibility(View.VISIBLE);
 
         offlineCloudLayout.setVisibility(View.INVISIBLE);
@@ -267,7 +334,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
         ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
         productsRecyclerView.setAdapter(adapter);
 
-
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(productsRecyclerView.getContext(),
                 DividerItemDecoration.VERTICAL);
         productsRecyclerView.addItemDecoration(dividerItemDecoration);
@@ -276,7 +342,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         scrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                if (mProducts.size() < mCountProducts) {
+                if (mProducts.size() < mCountProducts && !swipeRefreshLayout.isRefreshing()) {
                     pageAddress = page;
                     getDataFromAPI();
                 }
@@ -311,14 +377,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
-                mProducts.clear();
+                swipeRefreshLayout.setRefreshing(true);
                 countProductsView.setText(getResources().getString(R.string.number_of_results));
                 pageAddress = 1;
                 setup();
-                if (swipeRefreshLayout.isRefreshing()) {
-                    swipeRefreshLayout.setRefreshing(false);
-                }
             }
         });
 

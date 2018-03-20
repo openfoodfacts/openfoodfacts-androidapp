@@ -4,6 +4,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!-- Margins for nutriment_item_list. -->
+    <dimen name="horizontal_margin">11dp</dimen>
 
     <!-- fast scroller -->
     <dimen name="fastscroller_handle_corner">20dp</dimen>

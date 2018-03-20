@@ -24,6 +24,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -65,6 +67,10 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     private String loginS, passS;
     private SendProductDao mSendProductDao;
     private int size;
+    @BindView(R.id.noDataImg)
+    ImageView noDataImage;
+    @BindView(R.id.noDataText)
+    TextView noDataText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -158,6 +164,9 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     .onNegative((dialog, which) -> uploadProducts())
                     .show();
         }
+        SharedPreferences.Editor editor = getContext().getSharedPreferences("usage", 0).edit();
+        editor.putBoolean("firstUpload", true);
+        editor.apply();
     }
 
     @Override
@@ -276,11 +285,32 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         protected void onPreExecute() {
             saveItems.clear();
             List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
+            SharedPreferences settingsUsage = getContext().getSharedPreferences("usage", 0);
+            boolean firstUpload = settingsUsage.getBoolean("firstUpload", false);
+            boolean msgdismissed= settingsUsage.getBoolean("is_offline_msg_dismissed",false);
             if (listSaveProduct.size() == 0) {
-                Toast toast = Toast.makeText(getActivity(), R.string.txtNoData, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
+                if(msgdismissed) {
+
+                    noDataImage.setVisibility(View.VISIBLE);
+                    mRecyclerView.setVisibility(View.GONE);
+                    noDataText.setVisibility(View.VISIBLE);
+                    noDataText.setText(R.string.no_offline_data);
+                    buttonSend.setVisibility(View.GONE);
+                    if (!firstUpload) {
+                        noDataImage.setImageResource(R.drawable.ic_cloud_upload);
+                        noDataText.setText(R.string.first_offline);
+                    }
+                }
+                else{
+                    noDataImage.setVisibility(View.INVISIBLE);
+                    noDataText.setVisibility(View.INVISIBLE);
+                }
             } else {
+
+                noDataImage.setVisibility(View.GONE);
+                mRecyclerView.setVisibility(View.VISIBLE);
+                noDataText.setVisibility(View.GONE);
+                buttonSend.setVisibility(View.VISIBLE);
                 mCardView.setVisibility(View.GONE);
             }
         }
