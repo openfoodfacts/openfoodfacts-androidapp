@@ -129,6 +129,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
         searchType = extras.getString(SEARCH_TYPE);
         key = extras.getString(KEY);
+        
         newSearchQuery();
     }
 
