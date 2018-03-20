@@ -147,7 +147,7 @@ public class SearchProductsResultsFragment extends BaseFragment {
                         productsRecyclerView.setAdapter(adapter);
                         countProductsView.setVisibility(View.VISIBLE);
                         offlineCloudLayout.setVisibility(View.INVISIBLE);
-                        noResultsLayout.setVisibility(View.VISIBLE);
+                        noResultsLayout.setVisibility(View.INVISIBLE);
                         noResultsLayout.bringToFront();
                     } else {
                         countProductsView.setVisibility(View.INVISIBLE);
