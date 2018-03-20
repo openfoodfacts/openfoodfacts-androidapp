@@ -404,6 +404,19 @@ public class ProductRepository implements IProductRepository {
         return getCategoryByTagAndLanguageCode(categoryTag, DEFAULT_LANGUAGE);
     }
 
+    @Override
+    public Single<List<CategoryName>> getAllCategoriesByLanguageCode(String languageCode) {
+        return Single.fromCallable(() -> categoryNameDao.queryBuilder()
+                .where(CategoryNameDao.Properties.LanguageCode.eq(languageCode))
+                .orderAsc(CategoryNameDao.Properties.Name)
+                .list());
+    }
+
+    @Override
+    public Single<List<CategoryName>> getAllCategoriesByDefaultLanguageCode() {
+        return getAllCategoriesByLanguageCode(DEFAULT_LANGUAGE);
+    }
+
     /**
      * Loads translated and selected/unselected allergens.
      *
