@@ -105,7 +105,17 @@ apply plugin: 'org.greenrobot.greendao'
 greendao {
     schemaVersion 6
 }
+android {
+    // Other settings
 
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
 dependencies {
 
     //Android

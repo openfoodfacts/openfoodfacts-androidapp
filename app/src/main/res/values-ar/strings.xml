@@ -10,12 +10,12 @@
     <item quantity="other"> minutes</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="zero"> hours</item>
-    <item quantity="one"> hour</item>
-    <item quantity="two"> hours</item>
-    <item quantity="few"> hours</item>
-    <item quantity="many"> hours</item>
-    <item quantity="other"> hours</item>
+    <item quantity="zero"> ساعات</item>
+    <item quantity="one"> ساعة</item>
+    <item quantity="two"> ساعتان</item>
+    <item quantity="few"> بضع ساعات</item>
+    <item quantity="many"> ساعات</item>
+    <item quantity="other"> ساعات</item>
   </plurals>
   <plurals name="days">
     <item quantity="zero"> days</item>
@@ -260,7 +260,7 @@
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
   <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">يتعذر تحميل نتائج البحث</string>
-  <string name="something_went_wrong">Sorry, something went wrong…</string>
+  <string name="something_went_wrong">عذراً، حدث خطأ ما…</string>
   <string name="txt_try_again">أعد المحاولة</string>
   <string name="nutrition_lactose">اللاكتوز</string>
   <string name="nutrition_casein">الكازين</string>
@@ -329,29 +329,29 @@
   <string name="take_more_pictures">التقط المزيد من الصور</string>
   <string name="txtSaturatedFat">الدهون المشبعة</string>
   <!-- String related to App Shortcuts -->
-  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="disabled_message">الاختصار غير متاح</string>
   <string name="scan_shortcut_short_label">مسح</string>
-  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="scan_shortcut_long_label">فحص المنتج</string>
   <string name="barcode_shortcut_short_label">بحث</string>
-  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="barcode_shortcut_long_label">البحث عن طريق الباركود</string>
   <string name="history_shortcut_short_label">السجل</string>
   <string name="history_shortcut_long_label">السجل</string>
-  <string name="contributions_shortcut_short_label">Contributions</string>
-  <string name="contributions_shortcut_long_label">My Contributions</string>
-  <string name="forgot_password">Forgot Password</string>
-  <string name="next">NEXT</string>
-  <string name="skip">SKIP</string>
-  <string name="start">GOT IT</string>
-  <string name="contact">Contact</string>
-  <string name="contact_summary">Contact the team</string>
-  <string name="email_not_found">No email applications found</string>
-  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
-  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
-  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="contributions_shortcut_short_label">مساهمات</string>
+  <string name="contributions_shortcut_long_label">مساهماتي</string>
+  <string name="forgot_password">نسيت كلمة المرور</string>
+  <string name="next">التالي</string>
+  <string name="skip">تخطى</string>
+  <string name="start">فهمت ذلك</string>
+  <string name="contact">جهة الاتصال</string>
+  <string name="contact_summary">اتصل بالفريق</string>
+  <string name="email_not_found">لم يتم العثور على تطبيقات البريد الإلكتروني</string>
+  <string name="airplane_mode_active_dialog_title">تم تمكين وضع الطيران</string>
+  <string name="airplane_mode_active_dialog_message">وضع الطيران فعّال ، يرجى تعطيل هذا للمتابعة.</string>
+  <string name="airplane_mode_active_dialog_negative">تجاهل</string>
   <string name="airplane_mode_active_dialog_positive">الإعدادات</string>
   <string name="device_offline_dialog_title">Network unavailable</string>
   <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
-  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_negative">تجاهل</string>
   <string name="device_offline_dialog_positive">الإعدادات</string>
   <string name="saving">Saving…</string>
   <string name="scan_first_product">Scan First Product</string>
@@ -403,4 +403,5 @@
   <string name="category_string">Category</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
+  <!---->
 </resources>

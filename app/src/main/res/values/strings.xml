@@ -487,4 +487,7 @@
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
 
+    <!---->
+    <string name="product_transition" translatable="false">productTransition</string>
+
 </resources>
