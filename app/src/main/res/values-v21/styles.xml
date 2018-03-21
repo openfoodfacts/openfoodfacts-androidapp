@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="floating_action_button">
+        <item name="android:layout_margin">16dp</item>
+    </style>
+</resources>

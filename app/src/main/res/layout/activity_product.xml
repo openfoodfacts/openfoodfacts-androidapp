@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/coordinator_layout_product">
@@ -36,27 +37,28 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/buttonScan"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="end|bottom"
-        android:layout_marginBottom="65dp"
-        android:layout_marginRight="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor ="@id/pager"
+        app:useCompatPadding="true"
+        app:fabSize="normal"
+        app:elevation="10dp"
+        app:layout_anchorGravity = "bottom|right|end"
         android:contentDescription="@string/try_it_scan_now"
-        app:srcCompat="@drawable/barcode_white_24dp"/>
+        app:srcCompat="@drawable/barcode_white_24dp"
+        style="@style/floating_action_button" />
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/button_navigation"
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="64dp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         android:background="@color/gray"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/light_blue_50"
-        app:menu="@menu/my_navigation_items">
+        app:menu="@menu/my_navigation_items"
+        tools:layout_editor_absoluteY="503dp">
 
     </android.support.design.widget.BottomNavigationView>
 

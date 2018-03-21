@@ -37,6 +37,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragm
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.BottomNavigationViewHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -80,14 +81,15 @@ public class ProductActivity extends BaseActivity {
             mButtonScan.setVisibility(View.GONE);
         }
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.button_navigation);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
                 case R.id.bookmark:
-                    // implementation of bookmark here
+                    // implementation of bookmark wii be here
                     Toast.makeText(ProductActivity.this,"Bookmark",Toast.LENGTH_SHORT).show();
-                    return true;
+                    break;
                 case R.id.share:
                     String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
                     Intent sharingIntent = new Intent();
@@ -98,11 +100,11 @@ public class ProductActivity extends BaseActivity {
                     sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
                     sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
                     startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                    return true;
+                    break;
                 case R.id.translation:
-                    // implementation of Translation here
+                    // implementation of Translation will be here
                     Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
-                    return true;
+                    break;
                 case R.id.find_product:
                     String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
                     if (mState.getProduct().getUrl() != null) {
@@ -111,7 +113,10 @@ public class ProductActivity extends BaseActivity {
 
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), null);
 
-                    CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());                    break;
+                    CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
+                    break;
+                case R.id.empty:
+                    break;
                 default:
                     return true;
 

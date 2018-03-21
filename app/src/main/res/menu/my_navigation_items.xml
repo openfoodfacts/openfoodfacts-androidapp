@@ -21,4 +21,9 @@
         android:enabled="true"
         android:icon="@drawable/ic_find_in_page_white_24dp"
         android:title="@string/product" />
+    <item
+        android:id="@+id/empty"
+        android:enabled="true"
+        android:icon="@drawable/empty"
+        android:title="" />
 </menu>
