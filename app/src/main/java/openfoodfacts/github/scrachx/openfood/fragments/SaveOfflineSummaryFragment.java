@@ -330,7 +330,6 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
         });
     }
 
-
     public SendProduct getProduct() {
         Utils.hideKeyboard(getActivity());
 
