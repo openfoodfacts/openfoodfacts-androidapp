@@ -1,24 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
-import openfoodfacts.github.scrachx.openfood.network.deserializers.AdditivesWrapperDeserializer;
-import openfoodfacts.github.scrachx.openfood.network.deserializers.AllergensWrapperDeserializer;
-import openfoodfacts.github.scrachx.openfood.network.deserializers.CategoriesWrapperDeserializer;
-import openfoodfacts.github.scrachx.openfood.network.deserializers.CountriesWrapperDeserializer;
-import openfoodfacts.github.scrachx.openfood.network.deserializers.LabelsWrapperDeserializer;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 /**
  * Created by Lobster on 03.03.18.
@@ -29,6 +16,7 @@ public class CommonApiManager implements ICommonApiManager {
     private static CommonApiManager instance;
     private ProductApiService productApiService;
     private OpenFoodAPIService openFoodApiService;
+    private JacksonConverterFactory jacksonConverterFactory;
 
     public static ICommonApiManager getInstance() {
         if (instance == null) {
@@ -39,7 +27,7 @@ public class CommonApiManager implements ICommonApiManager {
     }
 
     private CommonApiManager() {
-
+            jacksonConverterFactory = JacksonConverterFactory.create();
     }
 
     @Override
@@ -64,7 +52,7 @@ public class CommonApiManager implements ICommonApiManager {
         productApiService = new Retrofit.Builder()
                 .baseUrl(BuildConfig.HOST)
                 .client(Utils.HttpClientBuilder())
-                .addConverterFactory(createGsonConverter())
+                .addConverterFactory(jacksonConverterFactory)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
                 .create(ProductApiService.class);
@@ -76,24 +64,11 @@ public class CommonApiManager implements ICommonApiManager {
         openFoodApiService = new Retrofit.Builder()
                 .baseUrl(BuildConfig.HOST)
                 .client(Utils.HttpClientBuilder())
-                .addConverterFactory(createGsonConverter())
+                .addConverterFactory(jacksonConverterFactory)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
                 .create(OpenFoodAPIService.class);
 
         return openFoodApiService;
     }
-
-    private Converter.Factory createGsonConverter() {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(LabelsWrapper.class, new LabelsWrapperDeserializer());
-        gsonBuilder.registerTypeAdapter(AllergensWrapper.class, new AllergensWrapperDeserializer());
-        gsonBuilder.registerTypeAdapter(CountriesWrapper.class, new CountriesWrapperDeserializer());
-        gsonBuilder.registerTypeAdapter(AdditivesWrapper.class, new AdditivesWrapperDeserializer());
-        gsonBuilder.registerTypeAdapter(CategoriesWrapper.class, new CategoriesWrapperDeserializer());
-        Gson gson = gsonBuilder.create();
-        return GsonConverterFactory.create(gson);
-    }
-
-
 }
