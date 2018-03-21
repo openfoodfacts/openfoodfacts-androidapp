@@ -401,5 +401,10 @@ godziny</item>
   <string name="category_string">Kategoria</string>
   <string name="connection">Połączono</string>
   <string name="contributor_string">Współtwórca</string>
-  <!---->
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="mineral_tags_text">Minerals:</string>
+  <string name="other_tags_text">Other Substances:</string>
+  <!--shared element transition key-->
 </resources>
