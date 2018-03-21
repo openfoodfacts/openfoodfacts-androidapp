@@ -199,13 +199,14 @@ public class IngredientsProductFragment extends BaseFragment {
                     }
                 }
                 additives.add(additiveName.getName());
-                for (int i = 0; i < additives.size() - 1; i++) {
-                    additiveProduct.append(Utils.getClickableText(StringUtils.capitalize(additives.get(i)), "", SearchType.ADDITIVE, getActivity(), customTabsIntent));
-                    additiveProduct.append("\n");
-                }
-
-                additiveProduct.append(Utils.getClickableText(StringUtils.capitalize(additives.get(additives.size() - 1)), "", SearchType.ADDITIVE, getActivity(), customTabsIntent));
             }
+
+            for (int i = 0; i < additives.size() - 1; i++) {
+                additiveProduct.append(Utils.getClickableText(StringUtils.capitalize(additives.get(i)), "", SearchType.ADDITIVE, getActivity(), customTabsIntent));
+                additiveProduct.append("\n");
+            }
+
+            additiveProduct.append(Utils.getClickableText(StringUtils.capitalize(additives.get(additives.size() - 1)), "", SearchType.ADDITIVE, getActivity(), customTabsIntent));
         } else {
             additiveProduct.setVisibility(View.GONE);
         }
