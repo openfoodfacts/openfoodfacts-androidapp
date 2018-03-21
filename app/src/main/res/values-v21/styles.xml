@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="floating_action_button">
+        <item name="android:layout_margin">16dp</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!--<item name="colorPrimary">@color/material_blue_500</item>-->
         <!--<item name="statusBarColor">@color/grey_300</item>-->
