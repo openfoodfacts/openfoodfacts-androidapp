@@ -40,7 +40,6 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -71,6 +70,8 @@ import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.views.product.summary.ISummaryProductPresenter;
+import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductPresenter;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 import retrofit2.http.HEAD;
@@ -83,13 +84,15 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
+import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
+import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
-public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
+public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View {
 
     @BindView(R.id.product_incomplete_warning_view_container)
     CardView productIncompleteView;
@@ -129,6 +132,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     Button addMorePicture;
     @BindView(R.id.imageGrade)
     ImageView img;
+    private Product product;
     private OpenFoodAPIClient api;
     private WikidataApiClient apiClientForWikiData;
     private String mUrlImage;
@@ -140,10 +144,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Uri embCodeUri;
     private TagDao mTagDao;
     private SummaryProductFragment mFragment;
-    private IProductRepository productRepository;
-
-    private Product product;
-
+    private ISummaryProductPresenter.Actions presenter;
     private Uri manufactureUri;
 
     @Override
@@ -152,7 +153,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-        productRepository = ProductRepository.getInstance();
+
+        Intent intent = getActivity().getIntent();
+        State state = (State) intent.getExtras().getSerializable("state");
+        product = state.getProduct();
+
+        presenter = new SummaryProductPresenter(product, this);
     }
 
     @Override
@@ -166,44 +172,15 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Intent intent = getActivity().getIntent();
-        final State state = (State) intent.getExtras().getSerializable("state");
 
-        product = state.getProduct();
+        categoryProduct.setText(bold(getString(R.string.txtCategories)));
+        labelProduct.setText(bold(getString(R.string.txtLabels)));
+        countryProduct.setText(bold(getString(R.string.txtCountries)));
 
-        List<AllergenName> mAllergens = productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage());
-
-        List<String> allergens = product.getAllergensHierarchy();
-        List<String> traces = product.getTracesTags();
-        allergens.addAll(traces);
-        if (!mAllergens.isEmpty() && product.getStatesTags().get(0).contains("to-be-completed")) {
-            productIncompleteView.setVisibility(View.VISIBLE);
-        }
-
-        List<String> matchAll = new ArrayList<>();
-        for (int a = 0; a < mAllergens.size(); a++) {
-            for (int i = 0; i < allergens.size(); i++) {
-
-                if (allergens.get(i).trim().equals(mAllergens.get(a).getAllergenTag().trim())) {
-                    matchAll.add(mAllergens.get(a).getName());
-                }
-            }
-        }
-
-        if (matchAll.size() > 0) {
-            new MaterialDialog.Builder(getActivity())
-                    .title(R.string.warning_allergens)
-                    .items(matchAll)
-                    .neutralText(R.string.txtOk)
-                    .titleColorRes(R.color.red_500)
-                    .dividerColorRes(R.color.indigo_900)
-                    .icon(new IconicsDrawable(getActivity())
-                            .icon(GoogleMaterial.Icon.gmd_warning)
-                            .color(Color.RED)
-                            .sizeDp(24))
-                    .show();
-        }
-
+        presenter.loadAllergens();
+        presenter.loadCategories();
+        presenter.loadLabels();
+        presenter.loadCountries();
 
         mTagDao = Utils.getAppDaoSession(getActivity()).getTagDao();
         barcode = product.getCode();
@@ -256,7 +233,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
 
             packagingProduct.append(Utils.getClickableText(packagings[packagings.length - 1], "", SearchType.PACKAGING, getActivity(), customTabsIntent));
-
         } else {
             packagingProduct.setVisibility(View.GONE);
         }
@@ -289,77 +265,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             ingredientsOrigin.append(' ' + product.getOrigins());
         }
 
-        List<String> tags = product.getCategoriesTags();
-        if (tags != null && !tags.isEmpty()) {
-            categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            categoryProduct.setText(bold(getString(R.string.txtCategories)));
-            categoryProduct.append(" ");
-            categoryProduct.setClickable(true);
-            categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            CategoryName categoryName;
-            String languageCode = Locale.getDefault().getLanguage();
-            List<CategoryName> categories = new ArrayList<>();
-            for (String tag : product.getCategoriesTags()) {
-                categoryName = productRepository.getCategoryByTagAndLanguageCode(tag, languageCode);
-
-                if (categoryName == null) {
-                    categoryName = productRepository.getCategoryByTagAndDefaultLanguageCode(tag);
-                }
-
-                if (categoryName != null) {
-                    categories.add(categoryName);
-                }
-            }
-
-            if (categories.isEmpty()) {
-                categoryProduct.setVisibility(View.GONE);
-            } else {
-                for (int i = 0; i < categories.size() - 1; i++) {
-                    categoryProduct.append(getCategoriesTag(categories.get(i)));
-                    categoryProduct.append(", ");
-                }
-
-                categoryProduct.append(getCategoriesTag(categories.get(categories.size() - 1)));
-            }
-        }
-
-        List<String> labelsTags = product.getLabelsTags();
-        if (labelsTags != null && !labelsTags.isEmpty()) {
-            labelProduct.append(bold(getString(R.string.txtLabels)));
-            labelProduct.setClickable(true);
-            labelProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            labelProduct.append(" ");
-
-            String labelTag;
-            String languageCode = Locale.getDefault().getLanguage();
-            List<LabelName> labels = new ArrayList<>();
-            for (int i = 0; i < labelsTags.size(); i++) {
-                labelTag = labelsTags.get(i);
-                LabelName label = productRepository.getLabelByTagAndLanguageCode(labelTag, languageCode);
-                if (label == null) {
-                    label = productRepository.getLabelByTagAndDefaultLanguageCode(labelTag);
-                    if (label == null) {
-                        if (product.getLabelsHierarchy().size() > i) {
-                            label = new LabelName(product.getLabelsHierarchy().get(i).replaceAll("(en:|fr:)", ""));
-                        }
-                    }
-                }
-
-                if (label != null) {
-                    labels.add(label);
-                }
-            }
-
-            for (int i = 0; i < labels.size() - 1; i++) {
-                labelProduct.append(getLabelTag(labels.get(i)));
-                labelProduct.append(", ");
-            }
-
-            labelProduct.append(getLabelTag(labels.get(labels.size() - 1)));
-        } else {
-            labelProduct.setVisibility(View.GONE);
-        }
-
         if (product.getEmbTags() != null && !product.getEmbTags().toString().trim().equals("[]")) {
             embCode.setMovementMethod(LinkMovementMethod.getInstance());
             embCode.setText(bold(getString(R.string.txtEMB)));
@@ -382,7 +287,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (isNotBlank(product.getStores())) {
             storeProduct.setMovementMethod(LinkMovementMethod.getInstance());
             storeProduct.setText(bold(getString(R.string.txtStores)));
-
             storeProduct.append(" ");
 
             String store;
@@ -421,45 +325,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             manufactureUlrProduct.setMovementMethod(LinkMovementMethod.getInstance());
         } else {
             manufactureUlrProduct.setVisibility(View.GONE);
-        }
-
-        List<String> countryTags = product.getCountriesTags();
-        if (countryTags != null && !countryTags.isEmpty()) {
-            countryProduct.setText(bold(getString(R.string.txtCountries)));
-            countryProduct.setClickable(true);
-            countryProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            countryProduct.append(" ");
-
-            String countryTag;
-            String languageCode = Locale.getDefault().getLanguage();
-            String defaultCountries[] = product.getCountries().replaceAll("(en:|fr:)", "").split(",");
-            List<String> countries = new ArrayList<>();
-            for (int i = 0; i < countryTags.size(); i++) {
-                countryTag = countryTags.get(i);
-                CountryName countryName = productRepository.getCountryByTagAndLanguageCode(countryTag, languageCode);
-                if (countryName == null) {
-                    countryName = productRepository.getCountryByTagAndDefaultLanguageCode(countryTag);
-                    if (countryName == null) {
-                        if (defaultCountries.length > i) {
-                            countryName = new CountryName(defaultCountries[i]);
-                        }
-                    }
-                }
-
-                if (countryName != null) {
-                    countries.add(countryName.getName());
-                }
-            }
-
-            for (int i = 0; i < countries.size() - 1; i++) {
-                countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(i)), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
-                countryProduct.append(", ");
-            }
-
-            countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(countries.size() - 1)), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
-            ;
-        } else {
-            countryProduct.setVisibility(View.GONE);
         }
 
         // if the device does not have a camera, hide the button
@@ -502,6 +367,136 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     }
 
+    @Override
+    public void showAllergens(List<AllergenName> allergens) {
+        List<String> productAllergens = product.getAllergensHierarchy();
+        List<String> traces = product.getTracesTags();
+        productAllergens.addAll(traces);
+        if (!allergens.isEmpty() && product.getStatesTags().get(0).contains("to-be-completed")) {
+            productIncompleteView.setVisibility(View.VISIBLE);
+        }
+
+        List<String> matchAll = new ArrayList<>();
+        for (int a = 0; a < allergens.size(); a++) {
+            for (int i = 0; i < productAllergens.size(); i++) {
+
+                if (productAllergens.get(i).trim().equals(allergens.get(a).getAllergenTag().trim())) {
+                    matchAll.add(allergens.get(a).getName());
+                }
+            }
+        }
+
+        /**
+         * shows the dialog if allergen is found.
+         */
+        if (matchAll.size() > 0) {
+            new MaterialDialog.Builder(getActivity())
+                    .title(R.string.warning_allergens)
+                    .items(matchAll)
+                    .neutralText(R.string.txtOk)
+                    .titleColorRes(R.color.red_500)
+                    .dividerColorRes(R.color.indigo_900)
+                    .icon(new IconicsDrawable(getActivity())
+                            .icon(GoogleMaterial.Icon.gmd_warning)
+                            .color(Color.RED)
+                            .sizeDp(24))
+                    .show();
+        }
+    }
+
+    @Override
+    public void showCategories(List<CategoryName> categories) {
+        categoryProduct.setText(bold(getString(R.string.txtCategories)));
+        categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
+        categoryProduct.append(" ");
+        categoryProduct.setClickable(true);
+        categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
+
+        if (categories.isEmpty()) {
+            categoryProduct.setVisibility(View.GONE);
+        } else {
+            for (int i = 0; i < categories.size() - 1; i++) {
+                categoryProduct.append(getCategoriesTag(categories.get(i)));
+                categoryProduct.append(", ");
+            }
+
+            categoryProduct.append(getCategoriesTag(categories.get(categories.size() - 1)));
+        }
+    }
+
+    @Override
+    public void showLabels(List<LabelName> labels) {
+        labelProduct.setText(bold(getString(R.string.txtLabels)));
+        labelProduct.setClickable(true);
+        labelProduct.setMovementMethod(LinkMovementMethod.getInstance());
+        labelProduct.append(" ");
+
+        for (int i = 0; i < labels.size() - 1; i++) {
+            labelProduct.append(getLabelTag(labels.get(i)));
+            labelProduct.append(", ");
+        }
+
+        labelProduct.append(getLabelTag(labels.get(labels.size() - 1)));
+    }
+
+    @Override
+    public void showCountries(List<CountryName> countries) {
+        countryProduct.setText(bold(getString(R.string.txtCountries)));
+        countryProduct.setClickable(true);
+        countryProduct.setMovementMethod(LinkMovementMethod.getInstance());
+        countryProduct.append(" ");
+
+        for (int i = 0; i < countries.size() - 1; i++) {
+            countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(i).getName()), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
+            countryProduct.append(", ");
+        }
+
+        countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(countries.size() - 1).getName()), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
+
+    }
+
+    @Override
+    public void showCategoriesState(String state) {
+        switch (state) {
+            case LOADING: {
+                categoryProduct.append(getString(R.string.txtLoading));
+                break;
+            }
+            case EMPTY: {
+                categoryProduct.setVisibility(View.GONE);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void showLabelsState(String state) {
+        switch (state) {
+            case LOADING: {
+                labelProduct.append(getString(R.string.txtLoading));
+                break;
+            }
+            case EMPTY: {
+                labelProduct.setVisibility(View.GONE);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void showCountriesState(String state) {
+        switch (state) {
+            case LOADING: {
+                countryProduct.append(getString(R.string.txtLoading));
+                break;
+            }
+            case EMPTY: {
+                countryProduct.setVisibility(View.GONE);
+                break;
+            }
+        }
+    }
+
     private String getEmbUrl(String embTag) {
         Tag tag = mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique();
         if (tag != null) return tag.getName();
@@ -520,7 +515,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-
                 if (category.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(category.getWikiDataId(), new WikidataApiClient.OnWikiResponse() {
                         @Override
@@ -529,18 +523,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                                 ProductActivity productActivity = (ProductActivity) getActivity();
                                 productActivity.showBottomScreen(result, category.getWikiDataId(), 1, category.getName());
                             } else {
-                                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                                intent.putExtra("search_query", category.getName());
-                                intent.putExtra("search_type", "category");
-                                startActivity(intent);
+                                ProductBrowsingListActivity.startActivity(getContext(), category.getName(), SearchType.CATEGORY);
                             }
                         }
                     });
                 } else {
-                    Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                    intent.putExtra("search_query", category.getName());
-                    intent.putExtra("search_type", "category");
-                    startActivity(intent);
+                    ProductBrowsingListActivity.startActivity(getContext(), category.getName(), SearchType.CATEGORY);
                 }
 
             }
@@ -564,19 +552,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                                 ProductActivity productActivity = (ProductActivity) getActivity();
                                 productActivity.showBottomScreen(result, label.getWikiDataId(), 2, label.getName());
                             } else {
-                                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                                intent.putExtra("search_query", label.getName());
-                                intent.putExtra("search_type", "label");
-                                startActivity(intent);
+                                ProductBrowsingListActivity.startActivity(getContext(), label.getName(), SearchType.LABEL);
                             }
                         }
                     });
 
                 } else {
-                    Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                    intent.putExtra("search_query", label.getName());
-                    intent.putExtra("search_type", "label");
-                    startActivity(intent);
+                    ProductBrowsingListActivity.startActivity(getContext(), label.getName(), SearchType.LABEL);
                 }
 
             }
@@ -756,5 +738,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 }
             }
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        presenter.dispose();
+        super.onDestroyView();
     }
 }
