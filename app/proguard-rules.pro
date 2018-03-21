@@ -21,3 +21,5 @@
 -keep class **$$JsonObjectMapper { *; }
 -keep class openfoodfacts.github.scrachx.openfood.models.** { *; }
 -ignorewarnings
+-keepclassmembers class android.support.design.internal.BottomNavigationMenuView { 
+    boolean mShiftingMode; }
