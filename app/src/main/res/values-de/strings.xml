@@ -391,4 +391,10 @@
   <string name="category_string">Kategorie</string>
   <string name="connection">Verbunden</string>
   <string name="contributor_string">Mitwirkende(r)</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitamine:</string>
+  <string name="amino_acid_tags_text">Aminosäuren:</string>
+  <string name="mineral_tags_text">Mineralien:</string>
+  <string name="other_tags_text">Weitere Stoffe:</string>
+  <!--shared element transition key-->
 </resources>

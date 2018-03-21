@@ -97,6 +97,15 @@ public class Product implements Serializable {
     private List<Object> embTags = new ArrayList<>();
     @JsonProperty("states_tags")
     private List<String> statesTags = new ArrayList<>();
+    @JsonProperty("vitamins_tags")
+    private List<String> vitaminTags=new ArrayList<>();
+    @JsonProperty("minerals_tags")
+    private List<String> mineralTags=new ArrayList<>();
+    @JsonProperty("amino_acids_tags")
+    private List<String> aminoAcidTags=new ArrayList<>();
+    @JsonProperty("other_nutritional_substances_tags")
+    private List<String> otherNutritionTags=new ArrayList<>();
+
 
     /**
      * @return The statesTags
@@ -107,6 +116,55 @@ public class Product implements Serializable {
 
     public String getLastModifiedBy() {
         return lastModifiedBy;
+    }
+
+
+    /**
+     * @return The vitaminTags
+     */
+
+    public List<String> getVitaminTags() {
+        return vitaminTags;
+    }
+
+    public void setVitaminTags(List<String> vitaminTags) {
+        this.vitaminTags = vitaminTags;
+    }
+
+    /**
+     * @return The mineralsTags
+     */
+
+    public List<String> getMineralTags() {
+        return mineralTags;
+    }
+
+    public void setMineralTags(List<String> mineralTags) {
+        this.mineralTags = mineralTags;
+    }
+
+    /**
+     * @return The aminoAcidTags
+     */
+
+    public List<String> getAminoAcidTags() {
+        return aminoAcidTags;
+    }
+
+    public void setAminoAcidTags(List<String> aminoAcidTags) {
+        this.aminoAcidTags = aminoAcidTags;
+    }
+
+    /**
+     * @return The otherNutritionTags
+     */
+
+    public List<String> getOtherNutritionTags() {
+        return otherNutritionTags;
+    }
+
+    public void setOtherNutritionTags(List<String> otherNutritionTags) {
+        this.otherNutritionTags = otherNutritionTags;
     }
 
     /**

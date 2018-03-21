@@ -1,13 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.List;
-
-import openfoodfacts.github.scrachx.openfood.network.deserializers.AllergensWrapperDeserializer;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -15,7 +13,7 @@ import static org.junit.Assert.assertFalse;
 public class AllergenTest {
 
     @Test
-    public void deserialization() {
+    public void deserialization() throws IOException {
         String json = "{\"en:lupin\":" +
                 "{\"name\":" +
                 "{\"es\":\"Altramuces\"," +
@@ -60,12 +58,9 @@ public class AllergenTest {
         assertEquals(allergenName.getName(), "Lupinen");
     }
 
-    private AllergensWrapper deserialize(String json) {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(AllergensWrapper.class, new AllergensWrapperDeserializer());
-        Gson gson = gsonBuilder.create();
-
-        return gson.fromJson(json, AllergensWrapper.class);
+    private AllergensWrapper deserialize(String json) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(json, AllergensWrapper.class);
     }
 
 }
