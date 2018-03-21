@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.fragments;
+package openfoodfacts.github.scrachx.openfood.views.product.ingredients;
 
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +31,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
-import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -44,6 +43,7 @@ import java.util.regex.Pattern;
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -57,14 +57,10 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-
-import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IIngredientsProductPresenter;
-import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductPresenter;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 

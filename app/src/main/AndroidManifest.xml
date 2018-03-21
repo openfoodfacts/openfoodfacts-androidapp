@@ -79,7 +79,7 @@
         </activity>
         <activity android:name=".views.ScannerFragmentActivity" />
         <activity
-            android:name=".views.ProductActivity"
+            android:name=".views.product.ProductActivity"
             android:parentActivityName=".views.MainActivity"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
             <meta-data
