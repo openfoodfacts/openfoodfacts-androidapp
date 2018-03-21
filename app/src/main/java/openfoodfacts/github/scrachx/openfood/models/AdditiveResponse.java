@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -34,7 +36,7 @@ public class AdditiveResponse {
         if (isWikiDataIdPresent) {
             additive = new Additive(tag, new ArrayList<>(), wikiDataCode);
             for (Map.Entry<String, String> name : names.entrySet()) {
-                additive.getNames().add(new AdditiveName(additive.getTag(), name.getKey(), name.getValue(),wikiDataCode));
+                additive.getNames().add(new AdditiveName(additive.getTag(), name.getKey(), name.getValue(), wikiDataCode));
             }
 
         } else {
@@ -43,9 +45,6 @@ public class AdditiveResponse {
                 additive.getNames().add(new AdditiveName(additive.getTag(), name.getKey(), name.getValue()));
             }
 
-        }
-        for (Map.Entry<String, String> name : names.entrySet()) {
-            additive.getNames().add(new AdditiveName(additive.getTag(), name.getKey(), name.getValue()));
         }
 
         return additive;

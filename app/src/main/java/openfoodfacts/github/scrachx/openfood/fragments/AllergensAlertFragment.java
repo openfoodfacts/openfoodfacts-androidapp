@@ -34,19 +34,18 @@ import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_ALERT;
 
-public class AlertUserFragment extends NavigationBaseFragment {
+/**
+ * @see R.layout#fragment_alert_allergens
+ */
+public class AllergensAlertFragment extends NavigationBaseFragment {
 
     private List<AllergenName> mAllergensEnabled;
     private List<AllergenName> mAllergensNotEnabled;
@@ -62,11 +61,12 @@ public class AlertUserFragment extends NavigationBaseFragment {
         setHasOptionsMenu(true);
         return createView(inflater, container, R.layout.fragment_alert_allergens);
     }
+
     @Override
-   public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-               MenuItem item=menu.findItem(R.id.action_search);
-               item.setVisible(false);
-           }
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        MenuItem item = menu.findItem(R.id.action_search);
+        item.setVisible(false);
+    }
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
@@ -89,13 +89,16 @@ public class AlertUserFragment extends NavigationBaseFragment {
             editor.apply();
         }
 
-        mRvAllergens = (RecyclerView) view.findViewById(R.id.alergens_recycle);
+        mRvAllergens = (RecyclerView) view.findViewById(R.id.allergens_recycle);
         mAdapter = new AllergensAdapter(productRepository, mAllergensEnabled, getActivity());
         mRvAllergens.setAdapter(mAdapter);
         mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
         mRvAllergens.setHasFixedSize(true);
     }
 
+    /**
+     * Add an allergen to be checked for when browsing products.
+     */
     @OnClick(R.id.fab)
     protected void onAddAllergens() {
         if (mAllergensFromDao != null && mAllergensFromDao.size() > 0) {

@@ -16,15 +16,11 @@
   <string name="contribute">Bagaimana berkontribusi</string>
   <string name="action_find">Menemukan</string>
   <string name="text_barcode">ketik kode batang</string>
-  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+  <string name="message_in_activity_save_product_offline">Hanya satu foto yang wajib mengirim produk baru.</string>
+  <string name="product_incomplete_message">Produk ini tidak lengkap. Akibatnya, kami tidak bisa melakukan pemeriksaan alergen.</string>
+  <string name="no_offline_data">You\'re all done</string>
+  <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>meringkas</item>
@@ -50,6 +46,8 @@
     <item>bahan</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">mencari </string>
   <string name="no_products">tidak ada produk</string>
   <string name="desc_list_item_icon">Ikon item</string>
@@ -68,12 +66,12 @@
   <string name="txtIngredientsOrigins">asal kandungan</string>
   <string name="txtCity">kota,bagian negara .dan negara daerahl dibeli</string>
   <string name="txtEMB">EMB Code:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtManufactureUrl">Tautkan ke halaman produk di situs resmi produser:</string>
   <string name="txtStores">penampungan toko</string>
   <string name="txtCountries">negara menjual</string>
   <string name="txtIngredients">daftar kandungan </string>
   <string name="Donate">Donate</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donation">Klik di sini untuk menyumbang pada Open Food Facts</string>
   <string name="txtSubstances">Zat atau produk yang menyebabkan alergi atau intoleransi penyakit</string>
   <string name="txtAdditives">zat adiktif</string>
   <string name="txtTraces">langkah</string>
@@ -382,5 +380,19 @@
   <string name="additive_string">Additive</string>
   <string name="search_string">mencari </string>
   <string name="country_string">Negara</string>
+  <string name="store_subtitle">toko online</string>
+  <string name="packaging_subtitle">Pengemasan</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="store_string">toko online</string>
+  <string name="packaging_string">Pengemasan</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Kategori</string>
+  <string name="connection">Connected</string>
+  <string name="contributor_string">Contributor</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="mineral_tags_text">Minerals:</string>
+  <string name="other_tags_text">Other Substances:</string>
+  <!--shared element transition key-->
 </resources>

@@ -63,6 +63,10 @@ public interface IProductRepository {
 
     CategoryName getCategoryByTagAndDefaultLanguageCode(String categoryTag);
 
+    Single<List<CategoryName>> getAllCategoriesByLanguageCode(String languageCode);
+
+    Single<List<CategoryName>> getAllCategoriesByDefaultLanguageCode();
+
     List<Allergen> getEnabledAllergens();
 
     List<AllergenName> getAllergensByEnabledAndLanguageCode(Boolean isEnabled, String languageCode);

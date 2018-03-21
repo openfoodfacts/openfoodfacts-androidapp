@@ -21,13 +21,9 @@
   <string name="text_barcode">crwdns34968:0crwdne34968:0</string>
   <string name="message_in_activity_save_product_offline">crwdns37134:0crwdne37134:0</string>
   <string name="product_incomplete_message">crwdns37206:0crwdne37206:0</string>
+  <string name="no_offline_data">crwdns37748:0crwdne37748:0</string>
+  <string name="first_offline">crwdns37749:0crwdne37749:0</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>crwdns37301:0crwdne37301:0</item>
-    <item>crwdns37302:0crwdne37302:0</item>
-    <item>crwdns37303:0crwdne37303:0</item>
-    <item>crwdns37304:0crwdne37304:0</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>crwdns34969:0crwdne34969:0</item>
@@ -53,6 +49,8 @@
     <item>crwdns35045:0crwdne35045:0</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">crwdns37744:0crwdne37744:0</string>
+  <string name="fastscroller_handle">crwdns37745:0crwdne37745:0</string>
   <string name="search_button">crwdns35046:0crwdne35046:0</string>
   <string name="no_products">crwdns35047:0crwdne35047:0</string>
   <string name="desc_list_item_icon">crwdns35048:0crwdne35048:0</string>
@@ -384,5 +382,19 @@
   <string name="additive_string">crwdns37309:0crwdne37309:0</string>
   <string name="search_string">crwdns37310:0crwdne37310:0</string>
   <string name="country_string">crwdns37292:0crwdne37292:0</string>
+  <string name="store_subtitle">crwdns37318:0crwdne37318:0</string>
+  <string name="packaging_subtitle">crwdns37319:0crwdne37319:0</string>
   <string name="last_seen_string">crwdns37300:0%1$dcrwdnd37300:0%2$scrwdne37300:0</string>
+  <string name="store_string">crwdns37311:0crwdne37311:0</string>
+  <string name="packaging_string">crwdns37312:0crwdne37312:0</string>
+  <string name="label_string">crwdns37313:0crwdne37313:0</string>
+  <string name="category_string">crwdns37314:0crwdne37314:0</string>
+  <string name="connection">crwdns37746:0crwdne37746:0</string>
+  <string name="contributor_string">crwdns37747:0crwdne37747:0</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">crwdns37751:0crwdne37751:0</string>
+  <string name="amino_acid_tags_text">crwdns37752:0crwdne37752:0</string>
+  <string name="mineral_tags_text">crwdns37753:0crwdne37753:0</string>
+  <string name="other_tags_text">crwdns37754:0crwdne37754:0</string>
+  <!--shared element transition key-->
 </resources>

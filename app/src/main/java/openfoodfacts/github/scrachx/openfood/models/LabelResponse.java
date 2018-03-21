@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -41,7 +43,6 @@ public class LabelResponse {
                 label.getNames().add(new LabelName(label.getTag(), name.getKey(), name.getValue()));
             }
         }
-
 
         return label;
     }

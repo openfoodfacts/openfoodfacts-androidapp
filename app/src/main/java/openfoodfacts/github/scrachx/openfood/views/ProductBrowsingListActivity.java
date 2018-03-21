@@ -1,12 +1,18 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -17,7 +23,6 @@ import android.widget.TextView;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -26,11 +31,16 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
+
 public class ProductBrowsingListActivity extends BaseActivity {
+
+    private static String SEARCH_TYPE = "search_type";
+    private static String SEARCH_QUERY = "search_query";
 
     private String searchType;
 
@@ -52,9 +62,53 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private OpenFoodAPIClient apiClient;
     private int mCountProducts = 0;
     private int pageAddress = 1;
-    private String[] typeStrings;
-    String key;
+    String searchQuery;
 
+    public static void startActivity(Context context, String searchQuery, @SearchType String type) {
+        Intent intent = new Intent(context, ProductBrowsingListActivity.class);
+        intent.putExtra(SEARCH_QUERY, searchQuery);
+        intent.putExtra(SEARCH_TYPE, type);
+        context.startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchMenuItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchQuery = query;
+                newSearchQuery();
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
+
+        MenuItemCompat.setOnActionExpandListener(searchMenuItem, new MenuItemCompat
+                .OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                getSupportActionBar().setTitle(null);
+                finish();
+                return true;
+            }
+        });
+
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -72,65 +126,68 @@ public class ProductBrowsingListActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         countProductsView.setVisibility(View.INVISIBLE);
+
         Bundle extras = getIntent().getExtras();
+        searchType = extras.getString(SEARCH_TYPE);
+        searchQuery = extras.getString(SEARCH_QUERY);
+        newSearchQuery();
+    }
 
-        typeStrings = new String[]{
-                "brand", "country", "additive", "search", "store", "packaging", "label", "category"
-        };
-
-        searchType = extras.getString("search_type");
-        key = extras.getString("key");
-
-        getSupportActionBar().setTitle(key);
+    protected void newSearchQuery() {
+        getSupportActionBar().setTitle(searchQuery);
 
         switch (searchType) {
-            case "brand": {
-                getSupportActionBar().setSubtitle(R.string.brand_string);
+            case SearchType.BRAND: {
+                toolbar.setSubtitle(R.string.brand_string);
                 break;
             }
-            case "country": {
-                getSupportActionBar().setSubtitle(R.string.country_string);
+            case SearchType.COUNTRY: {
+                toolbar.setSubtitle(R.string.country_string);
                 break;
             }
-            case "additive": {
-                getSupportActionBar().setSubtitle(R.string.additive_string);
+            case SearchType.ADDITIVE: {
+                toolbar.setSubtitle(R.string.additive_string);
                 break;
             }
-            case "search": {
-                getSupportActionBar().setSubtitle(R.string.search_string);
+            case SearchType.SEARCH: {
+                toolbar.setSubtitle(R.string.search_string);
                 break;
             }
-            case "store": {
-                getSupportActionBar().setSubtitle(getString(R.string.store_string));
+            case SearchType.STORE: {
+                toolbar.setSubtitle(R.string.store_subtitle);
                 break;
             }
-
-            case "packaging": {
-                getSupportActionBar().setSubtitle(getString(R.string.packaging_string));
+            case SearchType.PACKAGING: {
+                toolbar.setSubtitle(R.string.packaging_subtitle);
                 break;
             }
-
-            case "label": {
+            case SearchType.LABEL: {
                 getSupportActionBar().setSubtitle(getString(R.string.label_string));
                 break;
             }
-
-            case "category": {
+            case SearchType.CATEGORY: {
                 getSupportActionBar().setSubtitle(getString(R.string.category_string));
                 break;
             }
-        }
+            case SearchType.CONTRIBUTOR: {
+                getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
+                break;
+            }
+            default : {
+                Log.e("Products Browsing","No math case found for "+searchType);
+            }
 
+        }
 
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
         api = new OpenFoodAPIClient(ProductBrowsingListActivity.this);
         productsRecyclerView = (RecyclerView) findViewById(R.id.products_recycler_view);
+        progressBar.setVisibility(View.VISIBLE);
         setup();
     }
 
     @OnClick(R.id.buttonTryAgain)
     public void setup() {
-        progressBar.setVisibility(View.VISIBLE);
         offlineCloudLayout.setVisibility(View.INVISIBLE);
         countProductsView.setVisibility(View.INVISIBLE);
         getDataFromAPI();
@@ -140,8 +197,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
 
         switch (searchType) {
-            case "brand": {
-                apiClient.getProductsByBrand(key, pageAddress, new OpenFoodAPIClient.OnBrandCallback() {
+            case SearchType.BRAND: {
+                apiClient.getProductsByBrand(searchQuery, pageAddress, new OpenFoodAPIClient.OnBrandCallback() {
                     @Override
                     public void onBrandResponse(boolean value, Search brandObject) {
                         loadData(value, brandObject);
@@ -149,8 +206,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 });
                 break;
             }
-            case "country": {
-                apiClient.getProductsByCountry(key, pageAddress, new OpenFoodAPIClient.onCountryCallback() {
+            case SearchType.COUNTRY: {
+                apiClient.getProductsByCountry(searchQuery, pageAddress, new OpenFoodAPIClient.onCountryCallback() {
                     @Override
                     public void onCountryResponse(boolean value, Search country) {
                         loadData(value, country);
@@ -158,8 +215,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 });
                 break;
             }
-            case "additive": {
-                apiClient.getProductsByAdditive(key, pageAddress, new OpenFoodAPIClient.OnAdditiveCallback() {
+            case SearchType.ADDITIVE: {
+                apiClient.getProductsByAdditive(searchQuery, pageAddress, new OpenFoodAPIClient.OnAdditiveCallback() {
                     @Override
                     public void onAdditiveResponse(boolean value, Search country) {
                         loadData(value, country);
@@ -168,8 +225,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
 
-            case "store": {
-                apiClient.getProductsByStore(key, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
+            case SearchType.STORE: {
+                apiClient.getProductsByStore(searchQuery, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
+
                     @Override
                     public void onStoreResponse(boolean value, Search storeObject) {
                         loadData(value, storeObject);
@@ -178,8 +236,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
 
-            case "packaging": {
-                apiClient.getProductsByPackaging(key, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
+            case SearchType.PACKAGING: {
+                apiClient.getProductsByPackaging(searchQuery, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
+
                     @Override
                     public void onPackagingResponse(boolean value, Search packagingObject) {
                         loadData(value, packagingObject);
@@ -187,9 +246,13 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 });
                 break;
             }
-            case "search": {
-                api.searchProduct(key, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
+            case SearchType.SEARCH:
+
+            {
+                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
+
                     @Override
+
                     public void onProductsResponse(boolean isOk, Search searchResponse, int countProducts) {
                         loadData(isOk, searchResponse);
                     }
@@ -197,24 +260,40 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
 
-            case "label": {
-                api.getProductsByLabel(key, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
+            case SearchType.LABEL:
+
+            {
+                api.getProductsByLabel(searchQuery, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
+
                     @Override
+
                     public void onLabelResponse(boolean value, Search label) {
                         loadData(value, label);
                     }
                 });
                 break;
             }
-
-            case "category": {
-                api.getProductsByCategory(key, pageAddress, new OpenFoodAPIClient.onCategoryCallback() {
+            case SearchType.CATEGORY: {
+                api.getProductsByCategory(searchQuery, pageAddress, new OpenFoodAPIClient.onCategoryCallback() {
                     @Override
-                    public void onCategoryResponse(boolean value, Search label) {
-                        loadData(value, label);
+                    public void onCategoryResponse(boolean value, Search category) {
+                        loadData(value, category);
                     }
                 });
                 break;
+            }
+
+            case SearchType.CONTRIBUTOR: {
+                api.getProductsByContributor(searchQuery, pageAddress, new OpenFoodAPIClient.onContributorCallback() {
+                    @Override
+                    public void onContributorResponse(boolean value, Search contributor) {
+
+                    }
+                });
+                break;
+            }
+            default : {
+                Log.e("Products Browsing","No math case found for "+searchType);
             }
         }
     }
@@ -245,7 +324,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 }
             }
         } else {
-           // productsRecyclerView.setVisibility(View.INVISIBLE);
+            // productsRecyclerView.setVisibility(View.INVISIBLE);
+
+            swipeRefreshLayout.setRefreshing(false);
+            productsRecyclerView.setVisibility(View.INVISIBLE);
             progressBar.setVisibility(View.INVISIBLE);
             offlineCloudLayout.setVisibility(View.VISIBLE);
         }
@@ -256,6 +338,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private void setUpRecyclerView() {
 
         progressBar.setVisibility(View.INVISIBLE);
+        swipeRefreshLayout.setRefreshing(false);
         countProductsView.setVisibility(View.VISIBLE);
 
         offlineCloudLayout.setVisibility(View.INVISIBLE);
@@ -268,7 +351,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
         ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
         productsRecyclerView.setAdapter(adapter);
 
-
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(productsRecyclerView.getContext(),
                 DividerItemDecoration.VERTICAL);
         productsRecyclerView.addItemDecoration(dividerItemDecoration);
@@ -277,7 +359,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         scrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                if (mProducts.size() < mCountProducts) {
+                if (mProducts.size() < mCountProducts && !swipeRefreshLayout.isRefreshing()) {
                     pageAddress = page;
                     getDataFromAPI();
                 }
@@ -312,14 +394,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
-                mProducts.clear();
+                swipeRefreshLayout.setRefreshing(true);
                 countProductsView.setText(getResources().getString(R.string.number_of_results));
                 pageAddress = 1;
                 setup();
-                if (swipeRefreshLayout.isRefreshing()) {
-                    swipeRefreshLayout.setRefreshing(false);
-                }
             }
         });
 

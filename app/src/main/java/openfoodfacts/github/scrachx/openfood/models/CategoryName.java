@@ -95,8 +95,10 @@ public class CategoryName {
     }
 
     public String getWikiDataId() {
-        int endIndex = this.wikiDataId.lastIndexOf("\"");
-        return this.wikiDataId.substring(7, endIndex);
+        if(this.wikiDataId==null){
+            return "null";
+        }
+        return this.wikiDataId;
     }
 
     public void setWikiDataId(String wikiDataId) {

@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -14,7 +13,6 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +26,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
 
@@ -46,11 +45,9 @@ import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragmen
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
-import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
-import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
@@ -75,8 +72,8 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     private BottomSheetBehavior bottomSheetBehavior;
     TextView bottomSheetDesciption;
     TextView bottomSheetTitle;
-    TextView bottomSheetWikipedia;
     Button buttonToBrowseProducts;
+    Button wikipediaButton;
     RecyclerView productBrowsingRecyclerView;
     ProductsRecyclerViewAdapter productsRecyclerViewAdapter;
     private CustomTabActivityHelper customTabActivityHelper;
@@ -105,8 +102,8 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
         View v = findViewById(R.id.design_bottom_sheet_product_activity);
         bottomSheetTitle = v.findViewById(R.id.titleBottomSheet);
         bottomSheetDesciption = v.findViewById(R.id.description);
-        bottomSheetWikipedia = v.findViewById(R.id.wikidataTextView);
         buttonToBrowseProducts = v.findViewById(R.id.buttonToBrowseProducts);
+        wikipediaButton = v.findViewById(R.id.wikipediaButton);
 
         bottomSheetBehavior = BottomSheetBehavior.from(v);
 
@@ -118,6 +115,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 
     public void expand() {
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        mButtonScan.setVisibility(View.INVISIBLE);
     }
 
     @OnClick(R.id.buttonScan)
@@ -197,6 +195,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_product, menu);
+
         return true;
     }
 
@@ -239,32 +238,31 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
             String descriptionString = getDescription(description);
             String wikiLink = getWikiLink(sitelinks);
             bottomSheetTitle.setText(title);
-            bottomSheetWikipedia.setText(wikiLink);
             bottomSheetDesciption.setText(descriptionString);
             buttonToBrowseProducts.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     Intent intent = new Intent(ProductActivity.this, ProductBrowsingListActivity.class);
-                    intent.putExtra("key", title);
                     switch (type) {
                         case 1: {
-                            intent.putExtra("search_type", "category");
+                            intent.putExtra("search_type", SearchType.CATEGORY);
                             break;
                         }
                         case 2: {
-                            intent.putExtra("search_type", "label");
+                            intent.putExtra("search_type", SearchType.LABEL);
                             break;
                         }
                         case 3: {
-                            intent.putExtra("search_type", "additive");
+                            intent.putExtra("search_type", SearchType.ADDITIVE);
                             break;
                         }
                     }
+                    intent.putExtra("search_query", title);
                     startActivity(intent);
                 }
             });
-            bottomSheetWikipedia.setOnClickListener(new View.OnClickListener() {
+            wikipediaButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     openInCustomTab(wikiLink);

@@ -17,7 +17,6 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
@@ -52,7 +51,7 @@ import java.util.List;
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.AlertUserFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.AllergensAlertFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
@@ -60,8 +59,10 @@ import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -77,7 +78,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     private AccountHeader headerResult = null;
@@ -93,6 +93,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private SendProductDao mSendProductDao;
     private LabelNameDao labelNameDao;
     private int numberOFSavedProducts;
+    private SharedPreferences mSharedPref;
+    PrimaryDrawerItem primaryDrawerItem;
+    private int positionOfOfflineBadeItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,15 +118,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         mSendProductDao = Utils.getAppDaoSession(MainActivity.this).getSendProductDao();
         numberOFSavedProducts = mSendProductDao.loadAll().size();
 
-        labelNameDao = Utils.getAppDaoSession(MainActivity.this).getLabelNameDao();
 
-        List<LabelName> ln = labelNameDao.loadAll();
-
-        for (LabelName l : ln){
-            if(l.getIsWikiDataIdPresent()){
-                Log.e("aye haye jane man : ", l.getWikiDataId());
-            }
-        }
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
@@ -155,6 +150,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.header)
                 .addProfiles(profile)
+                .withSelectionListEnabledForSingleProfile(false)
                 .withOnAccountHeaderListener((view, profile1, current) -> {
                     if (profile1 instanceof IDrawerItem) {
                         if (profile1.getIdentifier() == ITEM_MANAGE_ACCOUNT) {
@@ -175,12 +171,13 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userSession = preferences.getString("user_session", null);
         boolean isUserConnected = userLogin != null && userSession != null;
         if (isUserConnected) {
-            userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin + "&user_session=" + userSession);
+            userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
+                    "&user_session=" + userSession);
             customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null);
 
             headerResult.addProfiles(getProfileSettingDrawerItem());
         }
-
+        primaryDrawerItem = createOfflineEditDrawerItem();
         //Create the drawer
         result = new DrawerBuilder()
                 .withActivity(this)
@@ -216,7 +213,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
                         new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
                         new DividerDrawerItem(),
-                        createOfflineEditDrawerItem(),
+                        primaryDrawerItem,
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
@@ -250,7 +247,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                     .class), LOGIN_REQUEST);
                             break;
                         case ITEM_ALERT:
-                            fragment = new AlertUserFragment();
+                            fragment = new AllergensAlertFragment();
                             break;
                         case ITEM_PREFERENCES:
                             fragment = new PreferencesFragment();
@@ -278,7 +275,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse
                                             ("market://details?id=" + BuildConfig.OFOTHERLINKAPP)));
                                 } catch (ActivityNotFoundException anfe) {
-                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + BuildConfig.OFOTHERLINKAPP)));
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" +
+                                            BuildConfig.OFOTHERLINKAPP)));
 
                                 }
                             }
@@ -287,7 +285,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         case ITEM_ADVANCED_SEARCH:
                             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
                             CustomTabsIntent customTabsIntent = builder.build();
-                            CustomTabActivityHelper.openCustomTab(this, customTabsIntent, Uri.parse(getString(R.string.advanced_search_url)), new WebViewFallback());
+                            CustomTabActivityHelper.openCustomTab(this, customTabsIntent, Uri.parse(getString(R.string.advanced_search_url)), new
+                                    WebViewFallback());
                             break;
 
                         case ITEM_MY_CONTRIBUTIONS:
@@ -400,6 +399,15 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         //Scheduling background image upload job
         Utils.scheduleProductUploadJob(this);
+
+        //Adds nutriscore and quantity values in old history for schema 5 update
+        mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
+        boolean isOldHistoryDataSynced = mSharedPref.getBoolean("is_old_history_data_synced", false);
+        if (!isOldHistoryDataSynced && Utils.isNetworkConnected(this)) {
+            OpenFoodAPIClient apiClient = new OpenFoodAPIClient(this);
+            apiClient.syncOldHistory();
+        }
+
     }
 
     private void scan() {
@@ -430,15 +438,18 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userLogin1 = preferences1.getString("user", null);
         userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin1);
         if (isNotEmpty(userLogin1)) {
-            CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent,
-                    userContributeUri, new WebViewFallback());
+
+            ProductBrowsingListActivity.startActivity(this, userLogin1, SearchType.CONTRIBUTOR);
+
+
         } else {
             new MaterialDialog.Builder(MainActivity.this)
                     .title(R.string.contribute)
                     .content(R.string.contribution_without_account)
                     .positiveText(R.string.create_account_button)
                     .neutralText(R.string.login_button)
-                    .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R.string.website) + "cgi/user.pl"), new WebViewFallback()))
+                    .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R
+                            .string.website) + "cgi/user.pl"), new WebViewFallback()))
                     .onNeutral((dialog, which) -> startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LOGIN_REQUEST))
                     .show();
         }
@@ -448,7 +459,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         SharedPreferences preferences = getSharedPreferences("login", 0);
         String userLogin = preferences.getString("user", null);
         String userSession = preferences.getString("user_session", null);
-        userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin + "&user_session=" + userSession);
+        userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
+                "&user_session=" + userSession);
         customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null);
         return new ProfileSettingDrawerItem()
                 .withName(getString(R.string.action_manage_account))
@@ -505,7 +517,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         if (result != null && result.isDrawerOpen()) {
             result.closeDrawer();
         } else {
-            super.onBackPressed();
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+            } else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -618,13 +634,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     protected void onNewIntent(Intent intent) {
-
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            Log.e("INTENT", "start activity");
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Intent mIntent = new Intent(MainActivity.this, ProductBrowsingListActivity.class);
-            mIntent.putExtra("key", query);
-            mIntent.putExtra("search_type", "search");
-            startActivity(mIntent);
+            ProductBrowsingListActivity.startActivity(this, query, SearchType.SEARCH);
         }
     }
 
@@ -668,11 +681,29 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      */
     private PrimaryDrawerItem createOfflineEditDrawerItem() {
         if (numberOFSavedProducts > 0) {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE).withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9)
+                    .withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R
+                            .color.md_red_700));
         } else {
             return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
         }
     }
+
+    /**
+     * Updates the drawer item. This updates the badge if there are items left in offline edit, otherwise
+     * there is no badge present.
+     * This function is called from OfflineEditFragment only.
+     */
+    public void updateBadgeOfflineEditDrawerITem(int size) {
+        positionOfOfflineBadeItem = result.getPosition(primaryDrawerItem);
+        if (size > 0) {
+            primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE).withBadge(String.valueOf(size)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
+        } else {
+            primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
+        }
+        result.updateItemAtPosition(primaryDrawerItem, positionOfOfflineBadeItem);
+    }
+
 
     @Override
     public void setItemSelected(@NavigationDrawerType Integer type) {

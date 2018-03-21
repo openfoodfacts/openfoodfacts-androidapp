@@ -42,7 +42,7 @@
         android:id="@+id/design_bottom_sheet_product_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grey_300"
+        android:background="@color/grey_100"
         android:orientation="vertical"
         app:behavior_hideable="true"
         app:behavior_peekHeight="0dp"
@@ -51,23 +51,20 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/green_400"
+            android:background="@color/green_300"
             android:contentDescription="@string/app_name"
             android:gravity="center"
             android:padding="@dimen/padding_short"
             android:scaleType="center"
             android:text="@string/wikidata_information"
             android:textAlignment="center"
-
             android:textColor="@color/white"
             android:textSize="@dimen/font_large"
             android:textStyle="bold" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/spacing_tiny"
-            android:layout_marginRight="@dimen/spacing_tiny">
+            android:layout_height="wrap_content">
 
 
             <LinearLayout
@@ -76,16 +73,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_small"
                 android:background="@color/grey_50"
-                android:gravity="center_vertical"
-                android:padding="@dimen/spacing_tiny">
-
-                <TextView
-                    android:id="@+id/titleHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title"
-                    android:textSize="@dimen/font_normal"
-                    android:textStyle="bold" />
+                android:gravity="center_vertical|center_horizontal"
+                android:padding="@dimen/spacing_small">
 
                 <TextView
                     android:id="@+id/titleBottomSheet"
@@ -94,36 +83,24 @@
                     android:layout_below="@+id/titleHeader"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/spacing_normal"
+                    android:gravity="center"
                     android:text="Title"
-                    android:textSize="@dimen/font_normal" />
+                    android:textAlignment="center"
+                    android:textSize="@dimen/font_large" />
 
             </LinearLayout>
 
-            <View
-                android:id="@+id/titleSeperator"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/titleContainer"
-                android:background="@color/grey_800" />
 
             <LinearLayout
                 android:id="@+id/descriptionContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/titleSeperator"
+                android:layout_below="@+id/titleContainer"
                 android:layout_margin="@dimen/spacing_small"
-                android:background="@color/grey_100"
+                android:background="@color/grey_50"
                 android:gravity="center_vertical"
-                android:padding="@dimen/spacing_tiny">
+                android:padding="@dimen/spacing_small">
 
-                <TextView
-                    android:id="@+id/descriptionHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/titleContainer"
-                    android:text="@string/description"
-                    android:textSize="@dimen/font_normal"
-                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/description"
@@ -131,68 +108,45 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/descriptionHeader"
                     android:layout_marginLeft="@dimen/spacing_small"
+                    android:gravity="center"
                     android:text="description"
+                    android:textAlignment="center"
                     android:textSize="@dimen/font_normal" />
             </LinearLayout>
 
-
-            <View
-                android:id="@+id/descriptionSeperator"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/descriptionContainer"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:background="@color/grey_800" />
 
             <LinearLayout
-                android:id="@+id/wikipediaContainer"
+                android:id="@+id/buttonsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/descriptionSeperator"
-                android:layout_margin="@dimen/spacing_tiny"
-                android:background="@color/grey_100"
-                android:orientation="vertical"
-                android:padding="@dimen/spacing_tiny">
+                android:layout_below="@id/descriptionContainer"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:gravity="center_horizontal"
+                android:weightSum="100">
 
-                <TextView
-                    android:id="@+id/wikipediaHeader"
-                    android:layout_width="wrap_content"
+
+                <Button
+                    android:id="@+id/wikipediaButton"
+                    style="@style/ButtonToBrowseProducts"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/descriptionContainer"
-                    android:padding="@dimen/spacing_tiny"
-                    android:text="@string/Wikipedia"
-                    android:textSize="@dimen/font_normal"
-                    android:textStyle="bold" />
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_weight="50"
+                    android:background="@color/blue"
+                    android:text="@string/Wikipedia" />
 
-                <TextView
-                    android:id="@+id/wikidataTextView"
-                    android:layout_width="match_parent"
+
+                <Button
+                    android:id="@+id/buttonToBrowseProducts"
+                    style="@style/ButtonToBrowseProducts"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/wikipediaHeader"
-                    android:gravity="center"
-                    android:padding="@dimen/spacing_tiny"
-                    android:textColor="@color/blue"
-                    android:textSize="@dimen/font_normal" />
-
+                    android:layout_below="@+id/wikipediaButton"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_weight="50"
+                    android:background="@color/blue"
+                    android:text="@string/Browse_Products" />
             </LinearLayout>
-
-
-            <View
-                android:id="@+id/wikipediaSeperator"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/wikipediaContainer"
-                android:background="@color/grey_800" />
-
-            <Button
-                android:id="@+id/buttonToBrowseProducts"
-                style="@style/ButtonToBrowseProducts"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/wikipediaSeperator"
-                android:layout_margin="@dimen/spacing_normal"
-                android:background="@color/blue"
-                android:text="Browse Products" />
 
 
         </RelativeLayout>

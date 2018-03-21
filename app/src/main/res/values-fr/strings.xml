@@ -6,11 +6,11 @@
     <item quantity="other"> minutes</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one"> hour</item>
+    <item quantity="one"> heure</item>
     <item quantity="other"> heures</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one"> day</item>
+    <item quantity="one"> jour</item>
     <item quantity="other"> jours</item>
   </plurals>
   <string name="action_settings">Paramètres</string>
@@ -21,13 +21,9 @@
   <string name="text_barcode">Saisissez le code-barre :</string>
   <string name="message_in_activity_save_product_offline">Une seule photo est obligatoire pour envoyer un nouveau produit.</string>
   <string name="product_incomplete_message">Ce produit n\'est pas complet. En conséquence, nous n\'avons pas pu faire le test d\'allergène.</string>
+  <string name="no_offline_data">Vous avez terminé</string>
+  <string name="first_offline">Les produits ajoutés hors ligne apparaîtront ici</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Résumé</item>
@@ -53,6 +49,8 @@
     <item>Ingrédients</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Rechercher</string>
   <string name="no_products">Produits non trouvés</string>
   <string name="desc_list_item_icon">Icône</string>
@@ -381,8 +379,22 @@
   <string name="image_upload_resolution">Résolution de l\'envoi d\'images</string>
   <string name="can_add_barcode">Vous avez des problèmes de scan ?\nFaites glisser vers le haut pour saisir le code-barre</string>
   <string name="brand_string">Marque</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Additif</string>
   <string name="search_string">Rechercher</string>
   <string name="country_string">Pays</string>
+  <string name="store_subtitle">Magasin</string>
+  <string name="packaging_subtitle">Conditionnement</string>
   <string name="last_seen_string">Il y a %1$d %2$s</string>
+  <string name="store_string">Magasin</string>
+  <string name="packaging_string">Conditionnement</string>
+  <string name="label_string">Label</string>
+  <string name="category_string">Categorie</string>
+  <string name="connection">Connecté</string>
+  <string name="contributor_string">Contributeur</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="mineral_tags_text">Minerals:</string>
+  <string name="other_tags_text">Other Substances:</string>
+  <!--shared element transition key-->
 </resources>

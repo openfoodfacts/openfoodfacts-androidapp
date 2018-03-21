@@ -25,6 +25,7 @@ public class CategoryResponse {
     public CategoryResponse(String code, Map<String, String> names) {
         this.code = code;
         this.names = names;
+        isWikiDataIdPresent = false;
     }
 
     public Category map() {

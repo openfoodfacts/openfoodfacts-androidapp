@@ -30,6 +30,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private int[] layouts;
     private Button btnSkip, btnNext;
     private PrefManager prefManager;
+    private boolean lastPage = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +130,7 @@ public class WelcomeActivity extends AppCompatActivity {
             if (position == layouts.length - 1) {
                 btnNext.setText(getString(R.string.start));
                 btnSkip.setVisibility(View.GONE);
+                lastPage = true;
             } else {
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
@@ -142,7 +144,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
         @Override
         public void onPageScrollStateChanged(int arg0) {
-
+            if (lastPage && arg0 == ViewPager.SCROLL_STATE_DRAGGING) {
+                startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+            }
         }
     };
 

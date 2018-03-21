@@ -21,13 +21,17 @@
   <string name="text_barcode">Strichcode eingeben:</string>
   <string name="message_in_activity_save_product_offline">Mindestens ein Foto ist erforderlich, um ein neues Produkt einzureichen.</string>
   <string name="product_incomplete_message">Unvollständige Produktinformationen. Deshalb konnten wir die Allergenprüfung nicht durchführen.</string>
+  <string name="no_offline_data">Alles erledigt</string>
+  <string name="first_offline">Offline hinzugefügte Produkte werden hier angezeigt</string>
   <!-- Image Upload -->
+
   <string-array name="upload_image">
     <item>640 ✕ 480</item>
     <item>1024 ✕ 768</item>
     <item>1152 ✕ 864</item>
     <item>1600 ✕ 1200</item>
   </string-array>
+
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Zusammenfassung</item>
@@ -53,6 +57,8 @@
     <item>Inhaltsstoffe</item>
   </string-array>
   <!-- Content Description -->
+  <string name="fastscroller_track">FastScroller-Spur</string>
+  <string name="fastscroller_handle">FastScroller-Griff</string>
   <string name="search_button">Suchen</string>
   <string name="no_products">Keine Produkte gefunden</string>
   <string name="desc_list_item_icon">Produktfoto</string>
@@ -384,5 +390,19 @@
   <string name="additive_string">Zusatzstoff</string>
   <string name="search_string">Suchen</string>
   <string name="country_string">Vertriebsländer</string>
+  <string name="store_subtitle">Laden</string>
+  <string name="packaging_subtitle">Art der Verpackung</string>
   <string name="last_seen_string">%1$d %2$s her</string>
+  <string name="store_string">Laden</string>
+  <string name="packaging_string">Art der Verpackung</string>
+  <string name="label_string">Kennzeichnung</string>
+  <string name="category_string">Kategorie</string>
+  <string name="connection">Verbunden</string>
+  <string name="contributor_string">Mitwirkende(r)</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitamine:</string>
+  <string name="amino_acid_tags_text">Aminosäuren:</string>
+  <string name="mineral_tags_text">Mineralien:</string>
+  <string name="other_tags_text">Weitere Stoffe:</string>
+  <!--shared element transition key-->
 </resources>

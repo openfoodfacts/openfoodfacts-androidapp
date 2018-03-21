@@ -60,7 +60,6 @@ public class Category {
 
     @Keep
     public Category(String tag, List<CategoryName> names, String wikiDataId) {
-        Log.e("I got this : ", wikiDataId);
         this.tag = tag;
         this.names = names;
         this.wikiDataId = wikiDataId;

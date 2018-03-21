@@ -5,17 +5,18 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
-import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
@@ -52,7 +53,6 @@ import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
-import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -62,9 +62,11 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -139,7 +141,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private TagDao mTagDao;
     private SummaryProductFragment mFragment;
     private IProductRepository productRepository;
+
     private Product product;
+
+    private Uri manufactureUri;
 
     @Override
     public void onAttach(Context context) {
@@ -247,9 +252,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             packagingProduct.setText(bold(getString(R.string.txtPackaging)));
             packagingProduct.append(" ");
             String[] packagings = product.getPackaging().split(",");
-            for (String packaging : packagings) {
-                packagingProduct.append(getPackagingsTag(packaging));
+
+            for (int i = 0; i < packagings.length - 1; i++) {
+                packagingProduct.append(Utils.getClickableText(packagings[i], "", SearchType.PACKAGING, getActivity(), customTabsIntent));
+                packagingProduct.append(", ");
             }
+
+            packagingProduct.append(Utils.getClickableText(packagings[packagings.length - 1], "", SearchType.PACKAGING, getActivity(), customTabsIntent));
+
         } else {
             packagingProduct.setVisibility(View.GONE);
         }
@@ -258,11 +268,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             brandProduct.setMovementMethod(LinkMovementMethod.getInstance());
             brandProduct.setText(bold(getString(R.string.txtBrands)));
             brandProduct.append(" ");
-            String[] brands = product.getBrands().split(",");
-            for (String brand : brands) {
-                brandProduct.append(getBrandsTag(brand));
 
+            String[] brands = product.getBrands().split(",");
+            for (int i = 0; i < brands.length - 1; i++) {
+                brandProduct.append(Utils.getClickableText(brands[i], "", SearchType.BRAND, getActivity(), customTabsIntent));
+                brandProduct.append(", ");
             }
+            brandProduct.append(Utils.getClickableText(brands[brands.length - 1], "", SearchType.BRAND, getActivity(), customTabsIntent));
         } else {
             brandProduct.setVisibility(View.GONE);
         }
@@ -282,6 +294,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         List<String> tags = product.getCategoriesTags();
         if (tags != null && !tags.isEmpty()) {
+            categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
             categoryProduct.setText(bold(getString(R.string.txtCategories)));
             categoryProduct.append(" ");
             categoryProduct.setClickable(true);
@@ -305,14 +318,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 categoryProduct.setVisibility(View.GONE);
             } else {
                 for (int i = 0; i < categories.size() - 1; i++) {
-                    categoryProduct.append(getCategoriesTag(categories.get(i)));
-                    categoryProduct.append(", ");
+                    labelProduct.append(getCategoriesTag(categories.get(i)));
+                    labelProduct.append(", ");
                 }
 
-                categoryProduct.append(getCategoriesTag(categories.get(categories.size() - 1)));
+                labelProduct.append(getCategoriesTag(categories.get(categories.size() - 1)));
             }
-        } else {
-            categoryProduct.setVisibility(View.GONE);
         }
 
         List<String> labelsTags = product.getLabelsTags();
@@ -356,29 +367,44 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             embCode.setMovementMethod(LinkMovementMethod.getInstance());
             embCode.setText(bold(getString(R.string.txtEMB)));
             embCode.append(" ");
+
+            String embTag;
             String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
-            for (String embTag : embTags) {
-                embCode.append(getSpanTag(getEmbCode(embTag), getEmbUrl(embTag)));
+            for (int i = 0; i < embTags.length - 1; i++) {
+                embTag = embTags[i];
+                embCode.append(Utils.getClickableText(getEmbCode(embTag), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
+                embCode.append(", ");
             }
 
+            embTag = embTags[embTags.length - 1];
+            embCode.append(Utils.getClickableText(getEmbCode(embTag), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
         } else {
             embCode.setVisibility(View.GONE);
         }
 
         if (isNotBlank(product.getStores())) {
-            storeProduct.setText(bold(getString(R.string.txtStores)));
-            storeProduct.setClickable(true);
             storeProduct.setMovementMethod(LinkMovementMethod.getInstance());
+            storeProduct.setText(bold(getString(R.string.txtStores)));
+
             storeProduct.append(" ");
-            String[] stores = product.getStores().split(",");
-            for (String store : stores) {
-                storeProduct.append(getStoresTag(store));
+
+            String store;
+            String stores[] = product.getStores().split(",");
+            for (int i = 0; i < stores.length - 1; i++) {
+                store = stores[i];
+                storeProduct.append(Utils.getClickableText(store, store, SearchType.STORE, getActivity(), customTabsIntent));
+                storeProduct.append(", ");
             }
+
+            store = stores[stores.length - 1];
+            storeProduct.append(Utils.getClickableText(store, store, SearchType.STORE, getActivity(), customTabsIntent));
         } else {
             storeProduct.setVisibility(View.GONE);
         }
         if (isNotBlank(product.getManufactureUrl())) {
-            Uri manufactureUri = Uri.parse(product.getManufactureUrl());
+            manufactureUri = Uri.parse(product.getManufactureUrl());
+            if (manufactureUri.getScheme() == null)
+                manufactureUri = Uri.parse("http://" + product.getManufactureUrl());
             customTabActivityHelper.mayLaunchUrl(manufactureUri, null, null);
 
             String manufactureUrlTitle = getString(R.string.txtManufactureUrl);
@@ -391,7 +417,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 }
             };
 
-            spannableText.setSpan(clickableSpan, manufactureUrlTitle.length() + 1, spannableText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableText.setSpan(clickableSpan, manufactureUrlTitle.length() + 1, spannableText.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableText.setSpan(new StyleSpan(Typeface.BOLD), 0, manufactureUrlTitle.length(), 0);
 
             manufactureUlrProduct.setText(spannableText);
@@ -429,11 +455,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
 
             for (int i = 0; i < countries.size() - 1; i++) {
-                countryProduct.append(getCountryTag(StringUtils.capitalize(countries.get(i))));
+                countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(i)), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
                 countryProduct.append(", ");
             }
 
-            countryProduct.append(getCountryTag(StringUtils.capitalize(countries.get(countries.size() - 1))));
+            countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(countries.size() - 1)), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
+            ;
         } else {
             countryProduct.setVisibility(View.GONE);
         }
@@ -449,7 +476,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         if (BuildConfig.FLAVOR.equals("off")) {
             List<NutrientLevelItem> levelItem = new ArrayList<>();
-            Nutriments nutriments = product.getNutriments();
 
             NutrientLevels nutrientLevels = product.getNutrientLevels();
             NutrimentLevel fat = null;
@@ -463,43 +489,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 salt = nutrientLevels.getSalt();
             }
 
-            if (fat == null && salt == null && saturatedFat == null && sugars == null) {
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), "", "", R.drawable.error_image));
-            } else {
+            if (!(fat == null && salt == null && saturatedFat == null && sugars == null)) {
                 // prefetch the uri
                 // currently only available in french translations
                 nutritionScoreUri = Uri.parse("https://fr.openfoodfacts.org/score-nutritionnel-france");
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
-
                 Context context = this.getContext();
-
-                if (fat != null) {
-                    String fatNutrimentLevel = fat.getLocalize(context);
-                    Nutriments.Nutriment nutriment = nutriments.get(Nutriments.FAT);
-                    levelItem.add(new NutrientLevelItem(getString(R.string.txtFat), getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit(), fatNutrimentLevel, fat.getImageLevel()));
-                }
-
-                if (saturatedFat != null) {
-                    String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                    Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SATURATED_FAT);
-                    String saturatedFatValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
-                    levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatValue, saturatedFatLocalize, saturatedFat.getImageLevel()));
-                }
-
-                if (sugars != null) {
-                    String sugarsLocalize = sugars.getLocalize(context);
-                    Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SUGARS);
-                    String sugarsValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
-                    levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars), sugarsValue, sugarsLocalize, sugars.getImageLevel()));
-                }
-
-                if (salt != null) {
-                    String saltLocalize = salt.getLocalize(context);
-                    Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SALT);
-                    String saltValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
-                    levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt), saltValue, saltLocalize, salt.getImageLevel()));
-                }
-
                 img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
                 img.setOnClickListener(view1 -> {
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
@@ -522,94 +517,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         return embTag;
     }
 
-    private CharSequence getSpanTag(String embCode, String embUrl) {
-        final SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-                embCodeUri = Uri.parse("https://world.openfoodfacts.org/packager-code/" + embUrl);
-                CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, embCodeUri, new WebViewFallback());
-            }
-        };
-        spannableStringBuilder.append(embCode);
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableStringBuilder.append(" ");
-        return spannableStringBuilder;
-    }
-
-    private CharSequence getBrandsTag(String brand) {
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                intent.putExtra("key", brand);
-                intent.putExtra("search_type", "brand");
-                startActivity(intent);
-            }
-        };
-
-
-        spannableStringBuilder.append(brand);
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableStringBuilder.append(" ");
-        return spannableStringBuilder;
-    }
-
-
-    private CharSequence getPackagingsTag(String packaging) {
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                intent.putExtra("key", packaging);
-                intent.putExtra("search_type", "packaging");
-                startActivity(intent);
-            }
-        };
-        spannableStringBuilder.append(packaging);
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableStringBuilder.append(" ");
-        return spannableStringBuilder;
-    }
-
-
-    private CharSequence getStoresTag(String store) {
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                intent.putExtra("key", store);
-                intent.putExtra("search_type", "store");
-                startActivity(intent);
-            }
-        };
-        spannableStringBuilder.append(store);
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableStringBuilder.append(" ");
-        return spannableStringBuilder;
-    }
-
-    private CharSequence getCountryTag(String country) {
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                intent.putExtra("key", country);
-                intent.putExtra("search_type", "country");
-                startActivity(intent);
-            }
-        };
-
-        spannableStringBuilder.append(country);
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        return spannableStringBuilder;
-    }
-
 
     private CharSequence getCategoriesTag(CategoryName category) {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
@@ -626,7 +533,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                                 productActivity.showBottomScreen(result, category.getWikiDataId(), 1, category.getName());
                             } else {
                                 Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                                intent.putExtra("key", category.getName());
+                                intent.putExtra("search_query", category.getName());
                                 intent.putExtra("search_type", "category");
                                 startActivity(intent);
                             }
@@ -634,7 +541,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     });
                 } else {
                     Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                    intent.putExtra("key", category.getName());
+                    intent.putExtra("search_query", category.getName());
                     intent.putExtra("search_type", "category");
                     startActivity(intent);
                 }
@@ -666,7 +573,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                                 productActivity.showBottomScreen(result, label.getWikiDataId(), 2, label.getName());
                             } else {
                                 Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                                intent.putExtra("key", label.getName());
+                                intent.putExtra("search_query", label.getName());
                                 intent.putExtra("search_type", "label");
                                 startActivity(intent);
                             }
@@ -675,7 +582,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
                 } else {
                     Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
-                    intent.putExtra("key", label.getName());
+                    intent.putExtra("search_query", label.getName());
                     intent.putExtra("search_type", "label");
                     startActivity(intent);
                 }
@@ -756,7 +663,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             Bundle bundle = new Bundle();
             bundle.putString("imageurl", mUrlImage);
             intent.putExtras(bundle);
-            startActivity(intent);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(getActivity(), (View) mImageFront,
+                                getActivity().getString(R.string.product_transition));
+                startActivity(intent, options.toBundle());
+            } else {
+                startActivity(intent);
+            }
         } else {
             // take a picture
             if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
@@ -828,7 +742,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_CAMERA: {
                 if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
