@@ -31,8 +31,8 @@ godziny</item>
   <string name="text_barcode">Wprowadź kod kreskowy:</string>
   <string name="message_in_activity_save_product_offline">Tylko jedno zdjęcie jest obowiązkowe, by wysłać nowy produkt.</string>
   <string name="product_incomplete_message">Produkt jest niekompletny. W wyniku tego nie mogliśmy sprawdzić pod kątem alergenów.</string>
-  <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="no_offline_data">Wszystko gotowe</string>
+  <string name="first_offline">Tu pojawią się produkty dodane w trybie offline</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
@@ -401,4 +401,5 @@ godziny</item>
   <string name="category_string">Kategoria</string>
   <string name="connection">Połączono</string>
   <string name="contributor_string">Współtwórca</string>
+  <!---->
 </resources>

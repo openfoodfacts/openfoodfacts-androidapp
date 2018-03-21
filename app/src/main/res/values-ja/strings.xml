@@ -18,8 +18,8 @@
   <string name="text_barcode">バーコードを入力 :</string>
   <string name="message_in_activity_save_product_offline">新しい製品を送るには、写真1枚だけ義務付けられています。</string>
   <string name="product_incomplete_message">この製品は完全ではありません。その結果、アレルゲンチェックを行うことができませんでした。</string>
-  <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="no_offline_data">すべて完了しました</string>
+  <string name="first_offline">オフラインで追加した製品がここに表示されます</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
@@ -388,4 +388,5 @@
   <string name="category_string">カテゴリー</string>
   <string name="connection">接続されています</string>
   <string name="contributor_string">貢献者</string>
+  <!---->
 </resources>

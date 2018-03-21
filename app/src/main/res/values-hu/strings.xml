@@ -21,8 +21,8 @@
   <string name="text_barcode">Vonalkód beírása :</string>
   <string name="message_in_activity_save_product_offline">Csak egy fénykép kötelező egy új termék elküldéséhez.</string>
   <string name="product_incomplete_message">Ez a termékoldal nem teljes. Ennek eredményeként nem tudtuk elvégezni az allergén ellenőrzést.</string>
-  <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="no_offline_data">Mindennel elkészült</string>
+  <string name="first_offline">A kapcsolat nélküli módban hozzáadott termékek itt fognak megjelenni</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
@@ -391,4 +391,5 @@
   <string name="category_string">Kategória</string>
   <string name="connection">Csatlakozva</string>
   <string name="contributor_string">Hozzájáruló</string>
+  <!---->
 </resources>
