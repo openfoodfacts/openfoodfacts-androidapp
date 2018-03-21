@@ -488,7 +488,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 // currently only available in french translations
                 nutritionScoreUri = Uri.parse("https://fr.openfoodfacts.org/score-nutritionnel-france");
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
-
                 Context context = this.getContext();
                 img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
                 img.setOnClickListener(view1 -> {
