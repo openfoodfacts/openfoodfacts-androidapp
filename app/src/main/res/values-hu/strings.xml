@@ -358,6 +358,8 @@
   <string name="please_check_your_connection">Kérjük, ellenőrizze a hálózati kapcsolatát.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Részletes Keresés &amp; Diagramok</string>
+  <string name="connectivity_check">Please check your internet connection</string>
+  <string name="dismiss">Elutasít</string>
   <string name="Terms">Feltételek</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Általános</string>
@@ -391,5 +393,10 @@
   <string name="category_string">Kategória</string>
   <string name="connection">Csatlakozva</string>
   <string name="contributor_string">Hozzájáruló</string>
-  <!---->
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitaminok:</string>
+  <string name="amino_acid_tags_text">Aminosavak:</string>
+  <string name="mineral_tags_text">Ásványi anyagok:</string>
+  <string name="other_tags_text">Egyéb anyagok:</string>
+  <!--shared element transition key-->
 </resources>

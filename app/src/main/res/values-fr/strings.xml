@@ -21,8 +21,8 @@
   <string name="text_barcode">Saisissez le code-barre :</string>
   <string name="message_in_activity_save_product_offline">Une seule photo est obligatoire pour envoyer un nouveau produit.</string>
   <string name="product_incomplete_message">Ce produit n\'est pas complet. En conséquence, nous n\'avons pas pu faire le test d\'allergène.</string>
-  <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="no_offline_data">Vous avez terminé</string>
+  <string name="first_offline">Les produits ajoutés hors ligne apparaîtront ici</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
@@ -358,6 +358,8 @@
   <string name="please_check_your_connection">Veuillez vérifier votre connexion Internet.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget</string>
   <string name="advanced_search_title">Recherche avancée &amp; Graphiques</string>
+  <string name="connectivity_check">Please check your internet connection</string>
+  <string name="dismiss">Ignorer</string>
   <string name="Terms">Conditions d\'utilisation</string>
   <string name="terms_url">https://world-fr.openfoodfacts.org/conditions-d-utilisation</string>
   <string name="preference_header_general">Général</string>
@@ -389,7 +391,12 @@
   <string name="packaging_string">Conditionnement</string>
   <string name="label_string">Label</string>
   <string name="category_string">Categorie</string>
-  <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
-  <!---->
+  <string name="connection">Connecté</string>
+  <string name="contributor_string">Contributeur</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="mineral_tags_text">Minerals:</string>
+  <string name="other_tags_text">Other Substances:</string>
+  <!--shared element transition key-->
 </resources>

@@ -358,6 +358,8 @@
   <string name="please_check_your_connection">crwdns37205:0crwdne37205:0</string>
   <string name="donation_url">crwdns37213:0crwdne37213:0</string>
   <string name="advanced_search_title">crwdns37210:0crwdne37210:0</string>
+  <string name="connectivity_check">crwdns37758:0crwdne37758:0</string>
+  <string name="dismiss">crwdns37759:0crwdne37759:0</string>
   <string name="Terms">crwdns37223:0crwdne37223:0</string>
   <string name="terms_url">crwdns37225:0crwdne37225:0</string>
   <string name="preference_header_general">crwdns37215:0crwdne37215:0</string>
@@ -391,5 +393,10 @@
   <string name="category_string">crwdns37314:0crwdne37314:0</string>
   <string name="connection">crwdns37746:0crwdne37746:0</string>
   <string name="contributor_string">crwdns37747:0crwdne37747:0</string>
-  <!---->
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">crwdns37751:0crwdne37751:0</string>
+  <string name="amino_acid_tags_text">crwdns37752:0crwdne37752:0</string>
+  <string name="mineral_tags_text">crwdns37753:0crwdne37753:0</string>
+  <string name="other_tags_text">crwdns37754:0crwdne37754:0</string>
+  <!--shared element transition key-->
 </resources>
