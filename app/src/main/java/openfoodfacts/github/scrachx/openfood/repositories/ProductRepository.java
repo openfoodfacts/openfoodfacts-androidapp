@@ -131,6 +131,7 @@ public class ProductRepository implements IProductRepository {
      * @param refresh defines the source of data.
      *                If refresh is true (or local database is empty) than load it from the server,
      *                else from the local database.
+     * @return The allergens in the product.
      */
     @Override
     public Single<List<Allergen>> getAllergens(Boolean refresh) {
@@ -401,6 +402,19 @@ public class ProductRepository implements IProductRepository {
     @Override
     public CategoryName getCategoryByTagAndDefaultLanguageCode(String categoryTag) {
         return getCategoryByTagAndLanguageCode(categoryTag, DEFAULT_LANGUAGE);
+    }
+
+    @Override
+    public Single<List<CategoryName>> getAllCategoriesByLanguageCode(String languageCode) {
+        return Single.fromCallable(() -> categoryNameDao.queryBuilder()
+                .where(CategoryNameDao.Properties.LanguageCode.eq(languageCode))
+                .orderAsc(CategoryNameDao.Properties.Name)
+                .list());
+    }
+
+    @Override
+    public Single<List<CategoryName>> getAllCategoriesByDefaultLanguageCode() {
+        return getAllCategoriesByLanguageCode(DEFAULT_LANGUAGE);
     }
 
     /**

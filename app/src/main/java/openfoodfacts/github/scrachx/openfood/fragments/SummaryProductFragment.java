@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.text.SpannableString;
@@ -132,6 +134,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private TagDao mTagDao;
     private SummaryProductFragment mFragment;
     private IProductRepository productRepository;
+    private Uri manufactureUri;
 
     @Override
     public void onAttach(Context context) {
@@ -393,7 +396,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             storeProduct.setVisibility(View.GONE);
         }
         if (isNotBlank(product.getManufactureUrl())) {
-            Uri manufactureUri = Uri.parse(product.getManufactureUrl());
+            manufactureUri = Uri.parse(product.getManufactureUrl());
+            if (manufactureUri.getScheme() == null)
+                manufactureUri = Uri.parse("http://" + product.getManufactureUrl());
             customTabActivityHelper.mayLaunchUrl(manufactureUri, null, null);
 
             String manufactureUrlTitle = getString(R.string.txtManufactureUrl);
@@ -465,7 +470,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         if (BuildConfig.FLAVOR.equals("off")) {
             List<NutrientLevelItem> levelItem = new ArrayList<>();
-            Nutriments nutriments = product.getNutriments();
 
             NutrientLevels nutrientLevels = product.getNutrientLevels();
             NutrimentLevel fat = null;
@@ -479,43 +483,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 salt = nutrientLevels.getSalt();
             }
 
-            if (fat == null && salt == null && saturatedFat == null && sugars == null) {
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtNoData), "", "", R.drawable.error_image));
-            } else {
+            if (!(fat == null && salt == null && saturatedFat == null && sugars == null)) {
                 // prefetch the uri
                 // currently only available in french translations
                 nutritionScoreUri = Uri.parse("https://fr.openfoodfacts.org/score-nutritionnel-france");
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
-
                 Context context = this.getContext();
-
-                if (fat != null) {
-                    String fatNutrimentLevel = fat.getLocalize(context);
-                    Nutriments.Nutriment nutriment = nutriments.get(Nutriments.FAT);
-                    levelItem.add(new NutrientLevelItem(getString(R.string.txtFat), getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit(), fatNutrimentLevel, fat.getImageLevel()));
-                }
-
-                if (saturatedFat != null) {
-                    String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                    Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SATURATED_FAT);
-                    String saturatedFatValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
-                    levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatValue, saturatedFatLocalize, saturatedFat.getImageLevel()));
-                }
-
-                if (sugars != null) {
-                    String sugarsLocalize = sugars.getLocalize(context);
-                    Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SUGARS);
-                    String sugarsValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
-                    levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars), sugarsValue, sugarsLocalize, sugars.getImageLevel()));
-                }
-
-                if (salt != null) {
-                    String saltLocalize = salt.getLocalize(context);
-                    Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SALT);
-                    String saltValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
-                    levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt), saltValue, saltLocalize, salt.getImageLevel()));
-                }
-
                 img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
                 img.setOnClickListener(view1 -> {
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
@@ -602,7 +575,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             Bundle bundle = new Bundle();
             bundle.putString("imageurl", mUrlImage);
             intent.putExtras(bundle);
-            startActivity(intent);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(getActivity(), (View) mImageFront,
+                                getActivity().getString(R.string.product_transition));
+                startActivity(intent, options.toBundle());
+            } else {
+                startActivity(intent);
+            }
         } else {
             // take a picture
             if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {

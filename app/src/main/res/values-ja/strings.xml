@@ -18,13 +18,9 @@
   <string name="text_barcode">バーコードを入力 :</string>
   <string name="message_in_activity_save_product_offline">新しい製品を送るには、写真1枚だけ義務付けられています。</string>
   <string name="product_incomplete_message">この製品は完全ではありません。その結果、アレルゲンチェックを行うことができませんでした。</string>
+  <string name="no_offline_data">すべて完了しました</string>
+  <string name="first_offline">オフラインで追加した製品がここに表示されます</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>サマリー</item>
@@ -50,7 +46,6 @@
     <item>原材料</item>
   </string-array>
   <!-- Content Description -->
-  <string name="connection">接続されています</string>
   <string name="fastscroller_track">高速スクローラートラック</string>
   <string name="fastscroller_handle">高速スクローラーハンドル</string>
   <string name="search_button">検索</string>
@@ -391,4 +386,12 @@
   <string name="packaging_string">パッケージング</string>
   <string name="label_string">ラベル</string>
   <string name="category_string">カテゴリー</string>
+  <string name="connection">接続されています</string>
+  <string name="contributor_string">貢献者</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">ビタミン:</string>
+  <string name="amino_acid_tags_text">アミノ酸:</string>
+  <string name="mineral_tags_text">ミネラル:</string>
+  <string name="other_tags_text">その他の成分:</string>
+  <!--shared element transition key-->
 </resources>

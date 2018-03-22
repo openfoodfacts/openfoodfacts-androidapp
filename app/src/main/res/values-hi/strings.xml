@@ -21,13 +21,9 @@
   <string name="text_barcode">बारकोड</string>
   <string name="message_in_activity_save_product_offline">एक नया उत्पाद भेजने के लिए केवल एक फोटो अनिवार्य है</string>
   <string name="product_incomplete_message">यह उत्पाद पूर्ण नहीं है। नतीजतन, हम एलर्जी की जांच नहीं कर सके</string>
+  <string name="no_offline_data">You\'re all done</string>
+  <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>संग्रह</item>
@@ -53,7 +49,6 @@
     <item>सामग्री</item>
   </string-array>
   <!-- Content Description -->
-  <string name="connection">Connected</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">ढूंढें</string>
@@ -388,10 +383,18 @@
   <string name="search_string">ढूंढें</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">दुकान</string>
-  <string name="packaging_subtitle">Packaging</string>
+  <string name="packaging_subtitle">पैकेजिंग</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">दुकान</string>
-  <string name="packaging_string">Packaging</string>
-  <string name="label_string">Label</string>
+  <string name="packaging_string">पैकेजिंग</string>
+  <string name="label_string">लेबल</string>
   <string name="category_string">श्रेणी</string>
+  <string name="connection">Connected</string>
+  <string name="contributor_string">सहयोगी</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="mineral_tags_text">Minerals:</string>
+  <string name="other_tags_text">Other Substances:</string>
+  <!--shared element transition key-->
 </resources>

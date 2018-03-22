@@ -20,3 +20,4 @@
 -keep @com.bluelinelabs.logansquare.annotation.JsonObject class *
 -keep class **$$JsonObjectMapper { *; }
 -keep class openfoodfacts.github.scrachx.openfood.models.** { *; }
+-ignorewarnings
