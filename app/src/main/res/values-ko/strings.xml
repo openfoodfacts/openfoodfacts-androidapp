@@ -140,14 +140,14 @@
   <string name="search_drawer">수색</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="category_drawer">카테고리</string>
-  <string name="search_by_category">Category</string>
-  <string name="search_by_name_drawer">Search by name</string>
-  <string name="scan_search">Scan Barcode</string>
+  <string name="search_by_category">카테고리</string>
+  <string name="search_by_name_drawer">이름으로 검색</string>
+  <string name="scan_search">바코드 스캔</string>
   <string name="user_drawer">사용자</string>
   <string name="offline_edit_drawer">Offline edit</string>
-  <string name="txt_anonymous">Anonymous</string>
+  <string name="txt_anonymous">익명</string>
   <string name="txt_product_not_found">제품을 찾을 수 없습니다.</string>
-  <string name="delete_txt">Delete</string>
+  <string name="delete_txt">삭제</string>
   <string name="sign_in_drawer">로그인에</string>
   <string name="alert_drawer">Allergen alert</string>
   <string name="warning_allergens">Contains allergens</string>
@@ -173,7 +173,7 @@
   <string name="title_info_dialog">정보</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
-  <string name="permission_title">Permission information</string>
+  <string name="permission_title">사용 권한 정보</string>
   <string name="permission_denied">Please activate permission in the settings</string>
   <string name="permission_storage">Storage permission is needed to take or select pictures</string>
   <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
@@ -216,15 +216,15 @@
   <string name="nutrition_proteins">단백질</string>
   <string name="nutrition_proteins_short_name">단백질 (g)</string>
   <string name="nutrition_salt">소금</string>
-  <string name="nutrition_salt_short_name">Salt (g)</string>
+  <string name="nutrition_salt_short_name">소금 (g)</string>
   <string name="nutrition_satured_fat">Satured fat</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
   <string name="nutrition_serving">Per serving</string>
   <string name="nutrition_serving_size">Serving size :</string>
-  <string name="nutrition_sodium">Sodium</string>
-  <string name="nutrition_sodium_short_name">Sodium (g)</string>
+  <string name="nutrition_sodium">나트륨</string>
+  <string name="nutrition_sodium_short_name">나트륨 (g)</string>
   <string name="nutrition_sugars">당류</string>
-  <string name="nutrition_sugars_short_name">Sugars (g)</string>
+  <string name="nutrition_sugars_short_name">당류 (g)</string>
   <string name="nutrition_trans_fat">트랜스 지방</string>
   <string name="nutrition_trans_fat_short_name">트랜스 지방 (g)</string>
   <string name="nutriment_serving_size">Per portion : </string>
@@ -234,7 +234,7 @@
   <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
-  <string name="txtSeeMore">See more</string>
+  <string name="txtSeeMore">더 보기</string>
   <string name="action_search">수색</string>
   <string name="search_hint">제품 검색</string>
   <string name="number_of_results">Number of results: </string>
@@ -255,8 +255,8 @@
   <string name="for_100g">For 100 g</string>
   <string name="serving">Per serving</string>
   <string name="minerals">Minerals</string>
-  <string name="nutrition_calcium">Calcium</string>
-  <string name="nutrition_potassium">Potassium</string>
+  <string name="nutrition_calcium">칼슘</string>
+  <string name="nutrition_potassium">칼륨</string>
   <string name="nutrition_chlore">Chlorine</string>
   <string name="nutrition_magnesium">마그네슘</string>
   <string name="nutrition_taurine">Taurine</string>
@@ -274,7 +274,7 @@
   <string name="vitamin_a">비타민 A</string>
   <string name="vitamin_d">비타민 D</string>
   <string name="vitamin_e">비타민 E</string>
-  <string name="vitamin_k">Vitamin k</string>
+  <string name="vitamin_k">비타민 K</string>
   <string name="vitamin_c">비타민 C</string>
   <string name="vitamin_b1">비타민 B1</string>
   <string name="vitamin_b2">비타민 B2</string>
@@ -287,7 +287,7 @@
   <string name="nutrition_minerals">Minerals</string>
   <string name="silica">Silica</string>
   <string name="bicarbonate">Bicarbonate</string>
-  <string name="potassium">Potassium</string>
+  <string name="potassium">칼륨</string>
   <string name="chloride">Chloride</string>
   <string name="calcium">칼슘</string>
   <string name="phosphorus">Phosphorus</string>
@@ -304,15 +304,15 @@
   <string name="caffeine">Caffeine</string>
   <string name="taurine">Taurine</string>
   <string name="ph">pH</string>
-  <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
+  <string name="fruits_vegetables_nuts">과일, 야채, 견과류</string>
   <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
-  <string name="cocoa">Cocoa</string>
+  <string name="cocoa">코코아</string>
   <string name="chlorophyl">Chlorophyl</string>
   <string name="take_picture_ingredients">Take a picture of the ingredients</string>
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
   <string name="take_more_pictures">Take more pictures</string>
-  <string name="txtSaturatedFat">Saturated fat</string>
+  <string name="txtSaturatedFat">포화 지방</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
   <string name="scan_shortcut_short_label">Scan</string>
@@ -324,8 +324,8 @@
   <string name="contributions_shortcut_short_label">Contributions</string>
   <string name="contributions_shortcut_long_label">My Contributions</string>
   <string name="forgot_password">Forgot Password</string>
-  <string name="next">NEXT</string>
-  <string name="skip">SKIP</string>
+  <string name="next">다음</string>
+  <string name="skip">건너뛰기</string>
   <string name="start">GOT IT</string>
   <string name="contact">Contact</string>
   <string name="contact_summary">Contact the team</string>
@@ -387,7 +387,7 @@
   <string name="store_string">Store</string>
   <string name="packaging_string">포장</string>
   <string name="label_string">Label</string>
-  <string name="category_string">Category</string>
+  <string name="category_string">카테고리</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
