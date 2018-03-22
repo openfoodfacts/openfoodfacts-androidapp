@@ -161,6 +161,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                     editor.putString("pass", "");
                     editor.apply();
                     infoLogin.setText(R.string.txtInfoLoginNo);
+                    lt.hide();
                 } else {
                     // store the user session id (user_session and user_id)
                     for (HttpCookie httpCookie : HttpCookie.parse(response.headers().get("set-cookie"))) {
