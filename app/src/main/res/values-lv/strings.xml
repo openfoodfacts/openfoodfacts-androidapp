@@ -24,7 +24,7 @@
   <string name="text_barcode">Ievadi svītrkodu:</string>
   <string name="message_in_activity_save_product_offline">Vismaz viens attēls ir nepieciešams, lai pievienotu jaunu produktu.</string>
   <string name="product_incomplete_message">Visa nepieciešamā informācija par šo produktu nav pieejama, tāpēc nav iespējams veikt alergēnu pārbaudi.</string>
-  <string name="no_offline_data">You\'re all done</string>
+  <string name="no_offline_data">Viss gatavs</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
