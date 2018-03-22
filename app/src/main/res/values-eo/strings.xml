@@ -3,25 +3,25 @@
 <resources>
   <plurals name="minutes">
     <item quantity="one"> minute</item>
-    <item quantity="other"> minutes</item>
+    <item quantity="other"> minutoj</item>
   </plurals>
   <plurals name="hours">
     <item quantity="one"> hour</item>
-    <item quantity="other"> hours</item>
+    <item quantity="other"> horoj</item>
   </plurals>
   <plurals name="days">
     <item quantity="one"> day</item>
-    <item quantity="other"> days</item>
+    <item quantity="other"> tagoj</item>
   </plurals>
   <string name="action_settings">Agordoj</string>
   <string name="action_about">Pri la projekto</string>
   <string name="action_discover">Esploru</string>
-  <string name="contribute">How to contribute</string>
+  <string name="contribute">Kiel kontribui</string>
   <string name="action_find">Trovu</string>
   <string name="text_barcode">Type the barcode :</string>
-  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
-  <string name="no_offline_data">You\'re all done</string>
+  <string name="message_in_activity_save_product_offline">Nur unu foto estas deviga por sendi novan produkton.</string>
+  <string name="product_incomplete_message">Ĉi tiu produkto ne estas kompleta. Tial ni ne povis kontroli la alergenojn.</string>
+  <string name="no_offline_data">Vi finis</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
@@ -54,7 +54,7 @@
   <string name="search_button">Search</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
-  <string name="alert_dialog_warning_title">Warning</string>
+  <string name="alert_dialog_warning_title">Averto</string>
   <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
   <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
   <string name="toast_retrieving">Loading...</string>
