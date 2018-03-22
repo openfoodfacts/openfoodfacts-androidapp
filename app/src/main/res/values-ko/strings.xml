@@ -91,7 +91,7 @@
   <string name="txtToastSaved">User saved</string>
   <string name="txtSalt">소금</string>
   <string name="txtFat">지방</string>
-  <string name="txtSugars">Sugars</string>
+  <string name="txtSugars">당류</string>
   <string name="hintBarcode">바코드</string>
   <string name="hintLogin">로그인</string>
   <string name="hintPass">암호</string>
@@ -100,7 +100,7 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">User saved</string>
   <string name="txtInfoLoginNo">User not saved</string>
-  <string name="txtDialogsTitle">Information</string>
+  <string name="txtDialogsTitle">정보</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
   <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
@@ -109,11 +109,11 @@
   <string name="hintNameProduct">이름</string>
   <string name="hintEnergy">Energy in kJ per serving</string>
   <string name="hintEnergyUnit">Energy unit</string>
-  <string name="hintWeight">Weight</string>
+  <string name="hintWeight">무게</string>
   <string name="hintStores">Store</string>
   <string name="hintBrand">Brand</string>
-  <string name="txtTakePicture">Take picture</string>
-  <string name="txtSendAll">Upload all</string>
+  <string name="txtTakePicture">사진 촬영</string>
+  <string name="txtSendAll">모두 업로드</string>
   <string name="txtNoData">데이터 없음</string>
   <string name="txtPictureNeeded">먼저 사진을 찍어주세요.</string>
   <string name="toastSending">Uploading...</string>
@@ -130,7 +130,7 @@
   <string name="txtAllsent">Products sent</string>
   <string name="txtPalm">The product does not contain any palm oil</string>
   <string name="txtBarcodeNotValid">바코드가 유효하지 않습니다.</string>
-  <string name="try_it_scan_now">Scan product</string>
+  <string name="try_it_scan_now">제품 스캔</string>
   <string name="share">공유</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
   <string name="create_account">Sign up</string>
@@ -170,7 +170,7 @@
   <string name="from_gallery">From gallery</string>
   <string name="product_sent">Product sent successfully</string>
   <string name="action_edit_product">Edit product</string>
-  <string name="title_info_dialog">Information</string>
+  <string name="title_info_dialog">정보</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
   <string name="permission_title">Permission information</string>
@@ -223,7 +223,7 @@
   <string name="nutrition_serving_size">Serving size :</string>
   <string name="nutrition_sodium">Sodium</string>
   <string name="nutrition_sodium_short_name">Sodium (g)</string>
-  <string name="nutrition_sugars">Sugars</string>
+  <string name="nutrition_sugars">당류</string>
   <string name="nutrition_sugars_short_name">Sugars (g)</string>
   <string name="nutrition_trans_fat">트랜스 지방</string>
   <string name="nutrition_trans_fat_short_name">트랜스 지방 (g)</string>
@@ -343,7 +343,7 @@
   <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
   <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
   <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
-  <string name="device_on_mobile_data_warning_title">Information</string>
+  <string name="device_on_mobile_data_warning_title">정보</string>
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
   <string name="device_on_mobile_data_warning_positive">Preferences</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
