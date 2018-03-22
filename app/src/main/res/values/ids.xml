@@ -6,4 +6,5 @@
     <item type="id" name="menu_camera_selector" />
     <item type="id" name="menu_about" />
     <item type="id" name="menu_problem_scanning" />
+    <item name="content_frame" type="id">10000</item>
 </resources>

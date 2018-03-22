@@ -27,7 +27,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.fastadapter.commons.utils.RecyclerViewCacheUtil;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -112,11 +111,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         mSendProductDao = Utils.getAppDaoSession(MainActivity.this).getSendProductDao();
         numberOFSavedProducts = mSendProductDao.loadAll().size();
 
-        fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-            @Override
-            public void onBackStackChanged() {
-
-            }
+        fragmentManager.addOnBackStackChangedListener(() -> {
         });
 
         boolean isOpenOfflineEdit = extras != null && extras.getBoolean("openOfflineEdit");
@@ -138,6 +133,104 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 customTabActivityHelper.getSession());
 
         // Create the AccountHeader
+        createAccountHeader(profile,savedInstanceState);
+
+        // Add Manage Account profile if the user is connected
+        SharedPreferences preferences = getSharedPreferences("login", 0);
+        String userLogin = preferences.getString("user", null);
+        String userSession = preferences.getString("user_session", null);
+        boolean isUserConnected = userLogin != null && userSession != null;
+        if (isUserConnected) {
+            userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
+                    "&user_session=" + userSession);
+            customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null);
+
+            headerResult.addProfiles(getProfileSettingDrawerItem());
+        }
+        primaryDrawerItem = createOfflineEditDrawerItem();
+        //Create the drawer
+        createDrawer(savedInstanceState);
+        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
+
+        // Add Drawer items for the connected user
+        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isUserConnected ?
+                getLogoutDrawerItem() : getLoginDrawerItem());
+        if (BuildConfig.FLAVOR.equals("obf")) {
+            result.removeItem(ITEM_ALERT);
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
+        }
+
+        if (BuildConfig.FLAVOR.equals("opff")) {
+            result.removeItem(ITEM_ALERT);
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
+        }
+
+        // Remove scan item if the device does not have a camera, for example, Chromebooks or
+        // Fire devices
+        if (!Utils.isHardwareCameraInstalled(this)) {
+            result.removeItem(ITEM_SCAN);
+        }
+
+
+        //if you have many different types of DrawerItems you can magically pre-cache those items
+        // to get a better scroll performance
+        //make sure to init the cache after the DrawerBuilder was created as this will first
+        // clear the cache to make sure no old elements are in
+        //RecyclerViewCacheUtil.getInstance().withCacheSize(2).init(result);
+        new RecyclerViewCacheUtil<IDrawerItem>().withCacheSize(2).apply(result.getRecyclerView(),
+                result.getDrawerItems());
+
+        //only set the active selection or active profile if we do not recreate the activity
+        if (savedInstanceState == null) {
+            // set the selection to the item with the identifier 1
+            result.setSelection(ITEM_HOME, false);
+
+            //set the active profile
+            headerResult.setActiveProfile(profile);
+        }
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext
+                ());
+        if (settings.getBoolean("startScan", false)) {
+            Intent cameraIntent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+            startActivity(cameraIntent);
+        }
+
+        // prefetch uris
+        contributeUri = Uri.parse(getString(R.string.website_contribute));
+        discoverUri = Uri.parse(getString(R.string.website_discover));
+        userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin);
+
+        customTabActivityHelper.mayLaunchUrl(contributeUri, null, null);
+        customTabActivityHelper.mayLaunchUrl(discoverUri, null, null);
+        customTabActivityHelper.mayLaunchUrl(userContributeUri, null, null);
+
+        if (CONTRIBUTIONS_SHORTCUT.equals(getIntent().getAction())) {
+            myContributions();
+        }
+
+        if (SCAN_SHORTCUT.equals(getIntent().getAction())) {
+            scan();
+        }
+
+        if (BARCODE_SHORTCUT.equals(getIntent().getAction())) {
+            moveToBarcodeEntry();
+        }
+
+        //Scheduling background image upload job
+        Utils.scheduleProductUploadJob(this);
+
+        //Adds nutriscore and quantity values in old history for schema 5 update
+        mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
+        boolean isOldHistoryDataSynced = mSharedPref.getBoolean("is_old_history_data_synced", false);
+        if (!isOldHistoryDataSynced && Utils.isNetworkConnected(this)) {
+            OpenFoodAPIClient apiClient = new OpenFoodAPIClient(this);
+            apiClient.syncOldHistory();
+        }
+
+    }
+
+    private void createAccountHeader(IProfile<ProfileDrawerItem> profile, Bundle savedInstanceState) {
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
@@ -157,21 +250,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 })
                 .withSavedInstance(savedInstanceState)
                 .build();
+    }
 
-        // Add Manage Account profile if the user is connected
-        SharedPreferences preferences = getSharedPreferences("login", 0);
-        String userLogin = preferences.getString("user", null);
-        String userSession = preferences.getString("user_session", null);
-        boolean isUserConnected = userLogin != null && userSession != null;
-        if (isUserConnected) {
-            userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
-                    "&user_session=" + userSession);
-            customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null);
-
-            headerResult.addProfiles(getProfileSettingDrawerItem());
-        }
-        primaryDrawerItem = createOfflineEditDrawerItem();
-        //Create the drawer
+    private void createDrawer(Bundle savedInstanceState) {
         result = new DrawerBuilder()
                 .withActivity(this)
                 .withToolbar(toolbar)
@@ -291,19 +372,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                     .content(R.string.logout_dialog_content)
                                     .positiveText(R.string.txtOk)
                                     .negativeText(R.string.dialog_cancel)
-                                    .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                        @Override
-                                        public void onClick(MaterialDialog dialog, DialogAction which) {
-                                            logout();
-                                        }
-                                    })
-                                    .onNegative(new MaterialDialog.SingleButtonCallback() {
-                                        @Override
-                                        public void onClick(MaterialDialog dialog, DialogAction which) {
-                                            Toast.makeText(getApplicationContext(), "Cancelled",
-                                                    Toast.LENGTH_SHORT).show();
-                                        }
-                                    }).show();
+                                    .onPositive((dialog, which) -> logout())
+                                    .onNegative((dialog, which) -> Toast.makeText(getApplicationContext(), "Cancelled",
+                                            Toast.LENGTH_SHORT).show()).show();
                             break;
                         default:
                             // nothing to do
@@ -311,7 +382,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     }
 
                     if (fragment != null) {
-                             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
                     } else {
                         // error in creating fragment
                         Log.e("MainActivity", "Error in creating fragment");
@@ -322,84 +393,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .withSavedInstance(savedInstanceState)
                 .withShowDrawerOnFirstLaunch(false)
                 .build();
-
-        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
-
-        // Add Drawer items for the connected user
-        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isUserConnected ?
-                getLogoutDrawerItem() : getLoginDrawerItem());
-        if (BuildConfig.FLAVOR.equals("obf")) {
-            result.removeItem(ITEM_ALERT);
-            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
-        }
-
-        if (BuildConfig.FLAVOR.equals("opff")) {
-            result.removeItem(ITEM_ALERT);
-            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
-        }
-
-        // Remove scan item if the device does not have a camera, for example, Chromebooks or
-        // Fire devices
-        if (!Utils.isHardwareCameraInstalled(this)) {
-            result.removeItem(ITEM_SCAN);
-        }
-
-
-        //if you have many different types of DrawerItems you can magically pre-cache those items
-        // to get a better scroll performance
-        //make sure to init the cache after the DrawerBuilder was created as this will first
-        // clear the cache to make sure no old elements are in
-        //RecyclerViewCacheUtil.getInstance().withCacheSize(2).init(result);
-        new RecyclerViewCacheUtil<IDrawerItem>().withCacheSize(2).apply(result.getRecyclerView(),
-                result.getDrawerItems());
-
-        //only set the active selection or active profile if we do not recreate the activity
-        if (savedInstanceState == null) {
-            // set the selection to the item with the identifier 1
-            result.setSelection(ITEM_HOME, false);
-
-            //set the active profile
-            headerResult.setActiveProfile(profile);
-        }
-
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext
-                ());
-        if (settings.getBoolean("startScan", false)) {
-            Intent cameraIntent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
-            startActivity(cameraIntent);
-        }
-
-        // prefetch uris
-        contributeUri = Uri.parse(getString(R.string.website_contribute));
-        discoverUri = Uri.parse(getString(R.string.website_discover));
-        userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin);
-
-        customTabActivityHelper.mayLaunchUrl(contributeUri, null, null);
-        customTabActivityHelper.mayLaunchUrl(discoverUri, null, null);
-        customTabActivityHelper.mayLaunchUrl(userContributeUri, null, null);
-
-        if (CONTRIBUTIONS_SHORTCUT.equals(getIntent().getAction())) {
-            myContributions();
-        }
-
-        if (SCAN_SHORTCUT.equals(getIntent().getAction())) {
-            scan();
-        }
-
-        if (BARCODE_SHORTCUT.equals(getIntent().getAction())) {
-            moveToBarcodeEntry();
-        }
-
-        //Scheduling background image upload job
-        Utils.scheduleProductUploadJob(this);
-
-        //Adds nutriscore and quantity values in old history for schema 5 update
-        mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
-        boolean isOldHistoryDataSynced = mSharedPref.getBoolean("is_old_history_data_synced", false);
-        if (!isOldHistoryDataSynced && Utils.isNetworkConnected(this)) {
-            OpenFoodAPIClient apiClient = new OpenFoodAPIClient(this);
-            apiClient.syncOldHistory();
-        }
 
     }
 
@@ -543,8 +536,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 Fragment currentFragment = fragmentManager.findFragmentById(R.id
                         .fragment_container);
-
-
                 return true;
             }
         });
