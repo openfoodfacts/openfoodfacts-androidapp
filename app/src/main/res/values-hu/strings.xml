@@ -213,7 +213,7 @@
   <string name="nutrition_fat_short_name">Zsír (g)</string>
   <string name="nutrition_fiber">Élelmi rost</string>
   <string name="nutrition_fiber_short_name">Élelmi rost (g)</string>
-  <string name="nutrition_header">Tápanyag ismertető</string>
+  <string name="nutrition_header">Tápértékadatok</string>
   <string name="nutrition_no_data_message">Nincs elérhető adat a termékről</string>
   <string name="nutrition_per_quantity">100g/100ml-ben</string>
   <string name="nutrition_proteins">Fehérje</string>
