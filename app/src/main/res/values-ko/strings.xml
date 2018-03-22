@@ -330,7 +330,7 @@
   <string name="contact">Contact</string>
   <string name="contact_summary">Contact the team</string>
   <string name="email_not_found">No email applications found</string>
-  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+  <string name="airplane_mode_active_dialog_title">비행기 모드 활성화</string>
   <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
   <string name="airplane_mode_active_dialog_negative">Dismiss</string>
   <string name="airplane_mode_active_dialog_positive">설정</string>
@@ -363,22 +363,22 @@
   <string name="preference_header_network">네트워크</string>
   <string name="preference_header_contributing">Contributing</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="seconds_ago">seconds ago</string>
-  <string name="minutes_ago">minutes ago</string>
-  <string name="hours_ago">hours ago</string>
-  <string name="days_ago">days ago</string>
+  <string name="seconds_ago">초 전</string>
+  <string name="minutes_ago">분 전</string>
+  <string name="hours_ago">시간 전</string>
+  <string name="days_ago">일 전</string>
   <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
   <string name="log_in">로그인</string>
-  <string name="login_true">Already logged in!</string>
+  <string name="login_true">이미 로그인했습니다!</string>
   <string name="confirm_logout">Confirm Logout</string>
-  <string name="logout_dialog_content">Are you sure to log out ?</string>
-  <string name="dialog_cancel">Cancel</string>
-  <string name="choose_resolution">Choose Resolution</string>
+  <string name="logout_dialog_content">로그아웃 하겠습니까?</string>
+  <string name="dialog_cancel">취소</string>
+  <string name="choose_resolution">해상도 선택</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image Upload Resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="brand_string">Brand</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">첨가물</string>
   <string name="search_string">수색</string>
   <string name="country_string">국가</string>
   <string name="store_subtitle">Store</string>
@@ -386,13 +386,13 @@
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Store</string>
   <string name="packaging_string">포장</string>
-  <string name="label_string">Label</string>
+  <string name="label_string">상표</string>
   <string name="category_string">카테고리</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
-  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="vitamin_tags_text">비타민:</string>
+  <string name="amino_acid_tags_text">아미노산:</string>
   <string name="mineral_tags_text">Minerals:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
