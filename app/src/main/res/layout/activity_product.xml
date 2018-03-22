@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:id="@+id/coordinator_layout_product">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Light">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -39,14 +41,13 @@
         android:id="@+id/buttonScan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor ="@id/pager"
-        app:useCompatPadding="true"
+        app:layout_anchor ="@id/bottom_navigation"
+        android:layout_margin="16dp"
         app:fabSize="normal"
         app:elevation="10dp"
-        app:layout_anchorGravity = "bottom|right|end"
+        app:layout_anchorGravity = "top|right"
         android:contentDescription="@string/try_it_scan_now"
-        app:srcCompat="@drawable/barcode_white_24dp"
-        style="@style/floating_action_button" />
+        app:srcCompat="@drawable/barcode_white_24dp" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -58,7 +59,7 @@
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/light_blue_50"
         app:menu="@menu/my_navigation_items"
-        tools:layout_editor_absoluteY="503dp">
+        tools:layout_editor_absoluteY="503dp" >
 
     </android.support.design.widget.BottomNavigationView>
 

@@ -19,6 +19,11 @@ public class BottomNavigationBehavior extends CoordinatorLayout.Behavior<BottomN
         height = child.getHeight();
         return super.onLayoutChild(parent, child, layoutDirection);
     }
+    /**
+     * this class is helper class for ProductActivity.java for enabling hiding bottomnavigation view on scroll
+     * This will hide bottom navigation view on up scroll
+     * will show on down scroll
+     */
 
     @Override
     public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout,

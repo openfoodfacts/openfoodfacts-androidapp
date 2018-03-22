@@ -11,7 +11,6 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.customtabs.CustomTabsIntent;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -24,7 +23,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -37,7 +35,6 @@ import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragm
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.utils.BottomNavigationViewHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -59,7 +56,6 @@ public class ProductActivity extends BaseActivity {
     FloatingActionButton mButtonScan;
     private ShareActionProvider mShareActionProvider;
     private State mState;
-    private int height;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -82,13 +78,12 @@ public class ProductActivity extends BaseActivity {
         }
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
-        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
                 case R.id.bookmark:
-                    // implementation of bookmark wii be here
-                    Toast.makeText(ProductActivity.this,"Bookmark",Toast.LENGTH_SHORT).show();
+//                     Implementation of bookmark will be here
+//                    Toast.makeText(ProductActivity.this,"Bookmark",Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.share:
                     String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
@@ -102,8 +97,8 @@ public class ProductActivity extends BaseActivity {
                     startActivity(Intent.createChooser(sharingIntent, "Share using"));
                     break;
                 case R.id.translation:
-                    // implementation of Translation will be here
-                    Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
+//                     Implementation of Translation will be here
+//                    Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.find_product:
                     String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
@@ -165,6 +160,10 @@ public class ProductActivity extends BaseActivity {
         viewPager.setAdapter(adapterResult);
     }
 
+    /**
+     * This method is used to hide share_item and edit_product in App Bar
+     *
+     */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem share_item = menu.findItem(R.id.menu_item_share);
