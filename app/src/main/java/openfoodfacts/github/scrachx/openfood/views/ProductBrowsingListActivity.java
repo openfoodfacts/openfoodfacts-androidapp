@@ -257,8 +257,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (isResponseOk) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
-                countProductsView.append(" " + NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount()
-                )));
+                countProductsView.setText(getResources().getString(R.string.number_of_results) + " " +
+                        NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount())));
                 mProducts = new ArrayList<>();
                 mProducts.addAll(response.getProducts());
                 if (mProducts.size() < mCountProducts) {
@@ -357,7 +357,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
             swipeRefreshLayout.setRefreshing(true);
-            countProductsView.setText(getResources().getString(R.string.number_of_results));
             pageAddress = 1;
             setup();
         });
