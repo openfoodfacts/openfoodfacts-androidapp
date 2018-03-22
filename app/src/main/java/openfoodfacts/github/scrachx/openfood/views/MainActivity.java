@@ -28,10 +28,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -798,10 +802,18 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     private void createAlertDialog(boolean hasEditText, String barcode, ArrayList<Uri> uri) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        final EditText edittext = new EditText(this);
 
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.alert_barcode, null);
+        alertDialogBuilder.setView(dialogView);
+
+        final EditText barcode_edittext = (EditText) dialogView.findViewById(R.id.barcode);
+        final ImageView product_image = (ImageView) dialogView.findViewById(R.id.product_image);
+
+        product_image.setImageURI(uri.get(0));
         if (hasEditText) {
-            alertDialogBuilder.setView(edittext);
+            barcode_edittext.setVisibility(View.VISIBLE);
+            product_image.setVisibility(View.VISIBLE);
             alertDialogBuilder.setTitle(getString(R.string.no_barcode));
             alertDialogBuilder.setMessage(getString(R.string.enter_barcode));
         } else {
@@ -822,7 +834,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
                             if (hasEditText) {
-                                temp_barcode = edittext.getText().toString();
+
+                                temp_barcode = barcode_edittext.getText().toString();
                             } else {
                                 temp_barcode = barcode;
                             }
