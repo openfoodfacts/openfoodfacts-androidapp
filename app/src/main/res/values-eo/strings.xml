@@ -55,9 +55,9 @@
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
   <string name="alert_dialog_warning_title">Averto</string>
-  <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-  <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
-  <string name="toast_retrieving">Loading...</string>
+  <string name="alert_dialog_warning_msg_user">Uzanto / pasvorto ŝanĝiĝis, bonvolu ĝisdatigi informojn</string>
+  <string name="alert_dialog_product_error_msg">Produkto ne trovita, bonvolu provi denove</string>
+  <string name="toast_retrieving">Ŝarĝante…</string>
   <string name="txtGenericName">Ĝenerala nomo :</string>
   <string name="txtBarcode">Strekokodo :</string>
   <string name="txtQuantity">Kvanto :</string>
@@ -73,11 +73,11 @@
   <string name="txtStores">Vendejoj :</string>
   <string name="txtCountries">Landoj, kie ĝi vendiĝas :</string>
   <string name="txtIngredients">Listo da ingrediencoj :</string>
-  <string name="Donate">Donate</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donate">Donaci</string>
+  <string name="Donation">Klaku ĉi-tien por donaci al Open Food Facts</string>
   <string name="txtSubstances">Substancoj aŭ produktoj kaŭzantaj alergiojn aŭ netolerojn :</string>
   <string name="txtAdditives">Aldonaĵoj :</string>
-  <string name="txtTraces">Traces :</string>
+  <string name="txtTraces">Spuroj:</string>
   <string name="txtMayBeFromPalmOilProduct">Ingrediencoj, kiuj eble enhavas palmoleon :</string>
   <string name="txtPalmOilProduct">Ingrediencoj, kiuj enhavas palmoleon :</string>
   <string name="txtServingSize">Serving size :</string>
