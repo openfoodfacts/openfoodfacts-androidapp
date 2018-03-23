@@ -104,5 +104,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
+    <LinearLayout
+        android:id="@+id/noResultsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textNoResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_no_matching_products"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/grey_500"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/textExtendSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/materialize_typography_subheading"
+            android:text="@string/txt_broaden_search"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/grey_500"
+            android:textSize="@dimen/font_normal" />
+
+        <ImageView
+            android:id="@+id/addProduct"
+            android:layout_width="95dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="25dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>
