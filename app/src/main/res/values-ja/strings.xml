@@ -21,6 +21,12 @@
   <string name="no_offline_data">すべて完了しました</string>
   <string name="first_offline">オフラインで追加した製品がここに表示されます</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>サマリー</item>
