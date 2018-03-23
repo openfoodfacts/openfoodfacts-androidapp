@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,6 +64,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private OpenFoodAPIClient apiClient;
     private int mCountProducts = 0;
     private int pageAddress = 1;
+    private Boolean setupDone = false;
 
 
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
@@ -175,6 +177,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.CONTRIBUTOR: {
                 getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
                 break;
+            }
+            default : {
+                Log.e("Products Browsing","No math case found for "+searchType);
             }
         }
 
@@ -327,12 +332,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
 
             productsRecyclerView.addOnItemTouchListener(
-                    new RecyclerItemClickListener(ProductBrowsingListActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(View view, int position) {
-                            Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
-                            if (p != null) {
-                                String barcode = p.getCode();
+                    new RecyclerItemClickListener(ProductBrowsingListActivity.this, (view, position) -> {
+                        Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
+                        if (p != null) {
+                            String barcode = p.getCode();
+                            if (Utils.isNetworkConnected(ProductBrowsingListActivity.this)) {
                                 api.getProduct(barcode, ProductBrowsingListActivity.this);
                                 try {
                                     View view1 = ProductBrowsingListActivity.this.getCurrentFocus();
@@ -343,20 +347,20 @@ public class ProductBrowsingListActivity extends BaseActivity {
                                 } catch (NullPointerException e) {
                                     e.printStackTrace();
                                 }
+                            } else {
+                                new MaterialDialog.Builder(ProductBrowsingListActivity.this)
+                                        .title(R.string.device_offline_dialog_title)
+                                        .content(R.string.connectivity_check)
+                                        .positiveText(R.string.txt_try_again)
+                                        .negativeText(R.string.dismiss)
+                                        .onPositive((dialog, which) -> {
+                                            if (Utils.isNetworkConnected(ProductBrowsingListActivity.this))
+                                                api.getProduct(barcode, ProductBrowsingListActivity.this);
+                                            else
+                                                Toast.makeText(ProductBrowsingListActivity.this, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
+                                        })
+                                        .show();
                             }
-                        } else {
-                            new MaterialDialog.Builder(ProductBrowsingListActivity.this)
-                                    .title(R.string.device_offline_dialog_title)
-                                    .content(R.string.connectivity_check)
-                                    .positiveText(R.string.txt_try_again)
-                                    .negativeText(R.string.dismiss)
-                                    .onPositive((dialog, which) -> {
-                                        if (Utils.isNetworkConnected(ProductBrowsingListActivity.this))
-                                            api.getProduct(barcode, ProductBrowsingListActivity.this);
-                                        else
-                                            Toast.makeText(ProductBrowsingListActivity.this, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
-                                    })
-                                    .show();
                         }
                     })
             );
