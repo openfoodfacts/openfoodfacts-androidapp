@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -150,6 +151,9 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                                     .subscribe(allergens -> {
                                         editor.putBoolean("errorAllergens", false).apply();
                                         lt.success();
+                                        if(mAllergensFromDao.isEmpty()){
+                                            Toast.makeText(this.getContext(),R.string.no_translation_available,Toast.LENGTH_LONG).show();
+                                        }
                                     }, e -> {
                                         editor.putBoolean("errorAllergens", true).apply();
                                         lt.error();

@@ -497,6 +497,7 @@
 
     <!--shared element transition key-->
     <string name="product_transition" translatable="false">productTransition</string>
+    <string name="no_translation_available">No Allergen Translations Available For Your Language</string>
 
 
 </resources>
