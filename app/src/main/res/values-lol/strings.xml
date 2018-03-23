@@ -24,6 +24,12 @@
   <string name="no_offline_data">crwdns37748:0crwdne37748:0</string>
   <string name="first_offline">crwdns37749:0crwdne37749:0</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>crwdns37301:0crwdne37301:0</item>
+    <item>crwdns37302:0crwdne37302:0</item>
+    <item>crwdns37303:0crwdne37303:0</item>
+    <item>crwdns37304:0crwdne37304:0</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>crwdns34969:0crwdne34969:0</item>
