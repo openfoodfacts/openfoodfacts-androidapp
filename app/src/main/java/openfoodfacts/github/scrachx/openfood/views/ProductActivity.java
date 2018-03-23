@@ -81,10 +81,10 @@ public class ProductActivity extends BaseActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
-                case R.id.bookmark:
+//                case R.id.bookmark:
 //                     Implementation of bookmark will be here
 //                    Toast.makeText(ProductActivity.this,"Bookmark",Toast.LENGTH_SHORT).show();
-                    break;
+//                    break;
                 case R.id.share:
                     String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
                     Intent sharingIntent = new Intent();
@@ -96,10 +96,10 @@ public class ProductActivity extends BaseActivity {
                     sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
                     startActivity(Intent.createChooser(sharingIntent, "Share using"));
                     break;
-                case R.id.translation:
+//                case R.id.translation:
 //                     Implementation of Translation will be here
 //                    Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
-                    break;
+//                    break;
                 case R.id.find_product:
                     String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
                     if (mState.getProduct().getUrl() != null) {
