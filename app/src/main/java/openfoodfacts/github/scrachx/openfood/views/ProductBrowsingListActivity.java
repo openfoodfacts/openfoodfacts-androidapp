@@ -259,8 +259,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (isResponseOk) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
-                countProductsView.setText(getResources().getString(R.string.number_of_products) + " " + NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount()
-                )));
+                countProductsView.setText(getResources().getString(R.string.number_of_results) + " " +
+                        NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount())));
                 mProducts = new ArrayList<>();
                 mProducts.addAll(response.getProducts());
                 if (mProducts.size() < mCountProducts) {
@@ -375,11 +375,13 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     }
                 }
             });
-
         }
 
         setupDone = true;
-
-
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            swipeRefreshLayout.setRefreshing(true);
+            pageAddress = 1;
+            setup();
+        });
     }
 }
