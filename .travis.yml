@@ -59,6 +59,7 @@ install:
 
 script:
   - ./gradlew build connectedCheck --stacktrace
+  - ./gradlew connectedAndroidTest
 
 branches:
   only:
