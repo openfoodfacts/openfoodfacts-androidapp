@@ -60,6 +60,20 @@
             android:gravity="center" />
 
         <TextView
+            android:text="@string/Generate_QR_string"
+            android:id="@+id/generateQrText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/red"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
+
+
+        <TextView
             android:id="@+id/textGenericNameProduct"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
