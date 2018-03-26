@@ -93,31 +93,30 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
 
             Context context = this.getContext();
-
-            if (fat != null) {
+            Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
+            if (fat != null && fatNutriment != null) {
                 String fatNutrimentLevel = fat.getLocalize(context);
-                Nutriments.Nutriment nutriment = nutriments.get(Nutriments.FAT);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtFat), getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit(), fatNutrimentLevel, fat.getImageLevel()));
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtFat), getRoundNumber(fatNutriment.getFor100g()) + " " + fatNutriment.getUnit(), fatNutrimentLevel, fat.getImageLevel()));
             }
 
-            if (saturatedFat != null) {
+            Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
+            if (saturatedFat != null && saturatedFatNutriment != null) {
                 String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SATURATED_FAT);
-                String saturatedFatValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
+                String saturatedFatValue = getRoundNumber(saturatedFatNutriment.getFor100g()) + " " + saturatedFatNutriment.getUnit();
                 levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatValue, saturatedFatLocalize, saturatedFat.getImageLevel()));
             }
 
-            if (sugars != null) {
+            Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
+            if (sugars != null && sugarsNutriment  != null) {
                 String sugarsLocalize = sugars.getLocalize(context);
-                Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SUGARS);
-                String sugarsValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
+                String sugarsValue = getRoundNumber(sugarsNutriment.getFor100g()) + " " + sugarsNutriment.getUnit();
                 levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars), sugarsValue, sugarsLocalize, sugars.getImageLevel()));
             }
 
-            if (salt != null) {
+            Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
+            if (salt != null && saltNutriment != null) {
                 String saltLocalize = salt.getLocalize(context);
-                Nutriments.Nutriment nutriment = nutriments.get(Nutriments.SALT);
-                String saltValue = getRoundNumber(nutriment.getFor100g()) + " " + nutriment.getUnit();
+                String saltValue = getRoundNumber(saltNutriment.getFor100g()) + " " + saltNutriment.getUnit();
                 levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt), saltValue, saltLocalize, salt.getImageLevel()));
             }
 

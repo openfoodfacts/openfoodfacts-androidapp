@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.category.mapper;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import junit.framework.Assert;
 
@@ -21,11 +21,10 @@ public class CategoryMapperTest {
 
     @Test
     public void fromNetwork_FullResponse_CategoryList() throws IOException {
-        CategoryMapper mapper = new CategoryMapper();
-        Gson gson = new Gson();
-        CategoryResponse response = gson.fromJson(FileHelper
+        ObjectMapper mapper = new ObjectMapper();
+        CategoryResponse response = mapper.readValue(FileHelper
                 .readTextFileFromResources("mock_categories.json", this.getClass().getClassLoader()), CategoryResponse.class);
-        List<Category> categories = mapper.fromNetwork(response.getTags());
+        List<Category> categories = new CategoryMapper().fromNetwork(response.getTags());
         Assert.assertEquals(response.getTags().size(), categories.size());
     }
 }
