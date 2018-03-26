@@ -4,9 +4,9 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
@@ -201,12 +201,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.CONTRIBUTOR:
                 getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
                 break;
-            default :
-                Log.e("Products Browsing","No math case found for "+searchType);
-            }
-            default: {
+            default:
                 Log.e("Products Browsing", "No math case found for " + searchType);
-            }
+        }
 
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
         api = new OpenFoodAPIClient(ProductBrowsingListActivity.this);
@@ -251,7 +248,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
     public void getDataFromAPI() {
 
-
         switch (searchType) {
             case SearchType.BRAND:
                 apiClient.getProductsByBrand(searchQuery, pageAddress, this::loadData);
@@ -262,22 +258,16 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.ADDITIVE:
                 apiClient.getProductsByAdditive(searchQuery, pageAddress, this::loadData);
                 break;
-
-            case SearchType.STORE: {
+            case SearchType.STORE:
                 apiClient.getProductsByStore(searchQuery, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
-
                     @Override
                     public void onStoreResponse(boolean value, Search storeObject) {
                         loadData(value, storeObject);
                     }
                 });
                 break;
-            }
-
-            case SearchType.PACKAGING: {
-
+            case SearchType.PACKAGING:
                 apiClient.getProductsByPackaging(searchQuery, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
-
                     @Override
                     public void onPackagingResponse(boolean value, Search packagingObject) {
                         loadData(value, packagingObject);
@@ -285,69 +275,43 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 });
                 break;
             case SearchType.SEARCH:
-                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, (isOk, searchResponse, countProducts) -> {
+                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
+                    @Override
+                    public void onProductsResponse(boolean isOk, Search searchResponse, int countProducts) {
                     /*
                     countProducts is checked, if it is -2 it means that there are no matching products in the
                     database for the query.
                      */
-                    if (countProducts == -2) {
-                        noResultsLayout.setVisibility(View.VISIBLE);
-                        noResultsLayout.bringToFront();
-                        productsRecyclerView.setVisibility(View.INVISIBLE);
-                        progressBar.setVisibility(View.INVISIBLE);
-                        offlineCloudLayout.setVisibility(View.INVISIBLE);
-                        countProductsView.setVisibility(View.GONE);
-                        swipeRefreshLayout.setRefreshing(false);
-                    } else {
-                        loadData(isOk, searchResponse);
-                    }
-                });
-            }
-            case SearchType.SEARCH:
-
-            {
-                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
-
-                    @Override
-
-                    public void onProductsResponse(boolean isOk, Search searchResponse, int countProducts) {
-                        loadData(isOk, searchResponse);
+                        if (countProducts == -2) {
+                            noResultsLayout.setVisibility(View.VISIBLE);
+                            noResultsLayout.bringToFront();
+                            productsRecyclerView.setVisibility(View.INVISIBLE);
+                            progressBar.setVisibility(View.INVISIBLE);
+                            offlineCloudLayout.setVisibility(View.INVISIBLE);
+                            countProductsView.setVisibility(View.GONE);
+                            swipeRefreshLayout.setRefreshing(false);
+                        } else {
+                            loadData(isOk, searchResponse);
+                        }
                     }
                 });
                 break;
-            }
-
             case SearchType.LABEL:
-
-            {
                 api.getProductsByLabel(searchQuery, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
-
                     @Override
-
                     public void onLabelResponse(boolean value, Search label) {
                         loadData(value, label);
                     }
                 });
-
                 break;
-            }
-            case SearchType.CATEGORY: {
-
+            case SearchType.CATEGORY:
                 api.getProductsByCategory(searchQuery, pageAddress, this::loadData);
                 break;
-            }
-
-            case SearchType.CONTRIBUTOR: {
-
-
+            case SearchType.CONTRIBUTOR:
                 api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
                 break;
-            default :
-                Log.e("Products Browsing","No math case found for "+searchType);
-            }
-            default: {
+            default:
                 Log.e("Products Browsing", "No math case found for " + searchType);
-            }
         }
     }
 
