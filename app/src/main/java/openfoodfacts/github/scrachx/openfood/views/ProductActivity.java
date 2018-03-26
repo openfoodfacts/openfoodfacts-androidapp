@@ -9,18 +9,33 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -31,8 +46,11 @@ import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragm
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
+import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -40,7 +58,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
-public class ProductActivity extends BaseActivity {
+public class ProductActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback {
 
     @BindView(R.id.pager)
     ViewPager viewPager;
@@ -51,6 +69,15 @@ public class ProductActivity extends BaseActivity {
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
     private ShareActionProvider mShareActionProvider;
+    private BottomSheetBehavior bottomSheetBehavior;
+    TextView bottomSheetDesciption;
+    TextView bottomSheetTitle;
+    Button buttonToBrowseProducts;
+    Button wikipediaButton;
+    RecyclerView productBrowsingRecyclerView;
+    ProductsRecyclerViewAdapter productsRecyclerViewAdapter;
+    private CustomTabActivityHelper customTabActivityHelper;
+    private CustomTabsIntent customTabsIntent;
     private State mState;
 
     @Override
@@ -67,10 +94,28 @@ public class ProductActivity extends BaseActivity {
         setupViewPager(viewPager);
 
         tabLayout.setupWithViewPager(viewPager);
+
+        customTabActivityHelper = new CustomTabActivityHelper();
+        customTabActivityHelper.setConnectionCallback(this);
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getApplicationContext(), customTabActivityHelper.getSession());
+
+        View v = findViewById(R.id.design_bottom_sheet_product_activity);
+        bottomSheetTitle = v.findViewById(R.id.titleBottomSheet);
+        bottomSheetDesciption = v.findViewById(R.id.description);
+        buttonToBrowseProducts = v.findViewById(R.id.buttonToBrowseProducts);
+        wikipediaButton = v.findViewById(R.id.wikipediaButton);
+
+        bottomSheetBehavior = BottomSheetBehavior.from(v);
+
         mState = (State) getIntent().getExtras().getSerializable("state");
         if (!Utils.isHardwareCameraInstalled(this)) {
             mButtonScan.setVisibility(View.GONE);
         }
+    }
+
+    public void expand() {
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        mButtonScan.setVisibility(View.INVISIBLE);
     }
 
     @OnClick(R.id.buttonScan)
@@ -150,17 +195,6 @@ public class ProductActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_product, menu);
-//        MenuItem item = menu.findItem(R.id.menu_item_share);
-//        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
-//
-//        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-//        String url = " " + getString(R.string.website_product) + mState.getProduct().getUniqueAllergenID();
-//        if (mState.getProduct().getUrl() != null) {
-//            url = " " + mState.getProduct().getUrl();
-//        }
-//        shareIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.msg_share) + url);
-//        shareIntent.setType("text/plain");
-//        setShareIntent(shareIntent);
 
         return true;
     }
@@ -194,5 +228,113 @@ public class ProductActivity extends BaseActivity {
                 }
             }
         }
+    }
+
+    public void showBottomScreen(JSONObject result, String code, int type, String title) {
+        try {
+            result = result.getJSONObject("entities").getJSONObject(code);
+            JSONObject description = result.getJSONObject("descriptions");
+            JSONObject sitelinks = result.getJSONObject("sitelinks");
+            String descriptionString = getDescription(description);
+            String wikiLink = getWikiLink(sitelinks);
+            bottomSheetTitle.setText(title);
+            bottomSheetDesciption.setText(descriptionString);
+            buttonToBrowseProducts.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(ProductActivity.this, ProductBrowsingListActivity.class);
+                    switch (type) {
+                        case 1: {
+                            intent.putExtra("search_type", SearchType.CATEGORY);
+                            break;
+                        }
+                        case 2: {
+                            intent.putExtra("search_type", SearchType.LABEL);
+                            break;
+                        }
+                        case 3: {
+                            intent.putExtra("search_type", SearchType.ADDITIVE);
+                            break;
+                        }
+                    }
+                    intent.putExtra("search_query", title);
+                    startActivity(intent);
+                }
+            });
+            wikipediaButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openInCustomTab(wikiLink);
+                }
+            });
+            expand();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getWikiLink(JSONObject sitelinks) {
+        String link = "";
+        String languageCode = Locale.getDefault().getLanguage();
+        languageCode = languageCode + "wiki";
+        if (sitelinks.has(languageCode)) {
+            try {
+                sitelinks = sitelinks.getJSONObject(languageCode);
+                link = sitelinks.getString("url");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else if (sitelinks.has("enwiki")) {
+            try {
+                sitelinks = sitelinks.getJSONObject("enwiki");
+                link = sitelinks.getString("url");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Log.i("ProductActivity", "Result for wikilink is not found in native or english language.");
+        }
+        return link;
+    }
+
+    private String getDescription(JSONObject description) {
+        String descriptionString = "";
+        String languageCode = Locale.getDefault().getLanguage();
+        if (description.has(languageCode)) {
+            try {
+                description = description.getJSONObject(languageCode);
+                descriptionString = description.getString("value");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else if (description.has("en")) {
+            try {
+                description = description.getJSONObject("en");
+                descriptionString = description.getString("value");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Log.i("ProductActivity", "Result for description is not found in native or english language.");
+        }
+        return descriptionString;
+    }
+
+    private void openInCustomTab(String url) {
+        Uri wikipediaUri = Uri.parse(url);
+        CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, wikipediaUri, new WebViewFallback());
+
+    }
+
+    @Override
+    public void onCustomTabsConnected() {
+
+    }
+
+    @Override
+    public void onCustomTabsDisconnected() {
+
     }
 }

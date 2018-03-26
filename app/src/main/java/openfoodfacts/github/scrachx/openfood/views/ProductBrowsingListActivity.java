@@ -39,6 +39,7 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerView
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
+
 public class ProductBrowsingListActivity extends BaseActivity {
 
     private static String SEARCH_TYPE = "search_type";
@@ -139,8 +140,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
     protected void newSearchQuery() {
         getSupportActionBar().setTitle(searchQuery);
-
-
         switch (searchType) {
             case SearchType.BRAND: {
                 toolbar.setSubtitle(R.string.brand_string);
@@ -181,6 +180,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             default : {
                 Log.e("Products Browsing","No math case found for "+searchType);
             }
+
         }
 
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
@@ -220,30 +220,55 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
 
             case SearchType.STORE: {
+                apiClient.getProductsByStore(searchQuery, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
 
-                apiClient.getProductsByStore(searchQuery, pageAddress, this::loadData);
-
+                    @Override
+                    public void onStoreResponse(boolean value, Search storeObject) {
+                        loadData(value, storeObject);
+                    }
+                });
                 break;
             }
 
             case SearchType.PACKAGING: {
 
-                apiClient.getProductsByPackaging(searchQuery, pageAddress, this::loadData);
+                apiClient.getProductsByPackaging(searchQuery, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
+
+                    @Override
+                    public void onPackagingResponse(boolean value, Search packagingObject) {
+                        loadData(value, packagingObject);
+                    }
+                });
                 break;
             }
-            case SearchType.SEARCH: {
-                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, (isOk, searchResponse, countProducts) -> loadData(isOk, searchResponse));
+            case SearchType.SEARCH:
 
+            {
+                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
+
+                    @Override
+
+                    public void onProductsResponse(boolean isOk, Search searchResponse, int countProducts) {
+                        loadData(isOk, searchResponse);
+                    }
+                });
                 break;
             }
 
-            case SearchType.LABEL: {
+            case SearchType.LABEL:
 
-                api.getProductsByLabel(searchQuery, pageAddress, this::loadData);
+            {
+                api.getProductsByLabel(searchQuery, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
+
+                    @Override
+
+                    public void onLabelResponse(boolean value, Search label) {
+                        loadData(value, label);
+                    }
+                });
 
                 break;
             }
-
             case SearchType.CATEGORY: {
 
                 api.getProductsByCategory(searchQuery, pageAddress, this::loadData);
@@ -252,8 +277,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
             case SearchType.CONTRIBUTOR: {
 
+
                 api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
                 break;
+            }
+            default : {
+                Log.e("Products Browsing","No math case found for "+searchType);
             }
         }
     }
@@ -287,6 +316,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 }
             }
         } else {
+            // productsRecyclerView.setVisibility(View.INVISIBLE);
+
             swipeRefreshLayout.setRefreshing(false);
             productsRecyclerView.setVisibility(View.INVISIBLE);
             progressBar.setVisibility(View.INVISIBLE);
