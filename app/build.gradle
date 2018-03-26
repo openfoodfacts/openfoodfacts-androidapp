@@ -9,8 +9,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 40
-        versionName "0.8.2"
+        versionCode 41
+        versionName "0.8.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -32,6 +32,7 @@ android {
             buildConfigField 'String', 'HOST', '"https://ssl-api.openfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"openfoodfacts.github.scrachx.openbeauty"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
+            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
 
         obf {
@@ -40,6 +41,7 @@ android {
             buildConfigField 'String', 'HOST', '"https://ssl-api.openbeautyfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"openfoodfacts.github.scrachx.openfood"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openbeautyfacts.org/"'
+            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
 
         opff {
@@ -48,6 +50,7 @@ android {
             buildConfigField 'String', 'HOST', '"https://ssl-api.openpetfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
+            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
     }
 

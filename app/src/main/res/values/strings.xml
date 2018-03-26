@@ -474,6 +474,12 @@
     <string name="image_upload_resolution">Image Upload Resolution</string>
     
     <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+    <string name="wikidata_information">Going further</string>
+    <string name="description">Description: </string>
+    <string name="title">Title: </string>
+    <string name="Wikipedia">View on Wikipedia</string>Browse Products
+    <string name="Browse_Products">Browse Products</string>
+    <string name="swipe_down">Swipe down</string>
     <string name="brand_string">Brand</string>
     <string name="additive_string">Additive</string>
     <string name="search_string">Search</string>
@@ -498,6 +504,7 @@
     <!--shared element transition key-->
     <string name="product_transition" translatable="false">productTransition</string>
     <string name="Generate_QR_string">Generate QR code</string>
+    <string name="wikidata">Wikidata data</string>
 
 
 </resources>

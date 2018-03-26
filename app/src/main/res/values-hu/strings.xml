@@ -24,6 +24,12 @@
   <string name="no_offline_data">Mindennel elkészült</string>
   <string name="first_offline">A kapcsolat nélküli módban hozzáadott termékek itt fognak megjelenni</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Összefoglalás</item>
@@ -380,6 +386,12 @@
   <string name="pref_resolution_summary">Válasszon felbontást kép feltöltéshez</string>
   <string name="image_upload_resolution">Képfeltöltés felbontása</string>
   <string name="can_add_barcode">Gond adódott a beolvasással?\nGépelje be a vonalkódot</string>
+  <string name="wikidata_information">Going further</string>
+  <string name="description">Description: </string>
+  <string name="title">Title: </string>
+  <string name="Wikipedia">View on Wikipedia</string>
+  <string name="Browse_Products">Browse Products</string>
+  <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Márka</string>
   <string name="additive_string">Adalékanyag</string>
   <string name="search_string">Keres</string>
@@ -393,10 +405,12 @@
   <string name="category_string">Kategória</string>
   <string name="connection">Csatlakozva</string>
   <string name="contributor_string">Hozzájáruló</string>
+  <string name="app_disabled_text">Az alkalmazás le van tiltva</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitaminok:</string>
   <string name="amino_acid_tags_text">Aminosavak:</string>
   <string name="mineral_tags_text">Ásványi anyagok:</string>
   <string name="other_tags_text">Egyéb anyagok:</string>
   <!--shared element transition key-->
+  <string name="wikidata">Wikidata data</string>
 </resources>
