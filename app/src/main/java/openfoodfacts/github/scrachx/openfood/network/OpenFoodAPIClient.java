@@ -496,9 +496,11 @@ public class OpenFoodAPIClient {
         void onCategoryResponse(boolean value, Search category);
     }
 
+
     public interface onContributorCallback {
         void onContributorResponse(boolean value, Search contributor);
     }
+
 
     /**
      * Create an history product asynchronously
@@ -653,7 +655,6 @@ public class OpenFoodAPIClient {
     }
 
 
-
     public void syncOldHistory() {
 //        Log.d("syncOldHistory", "task ");
         new SyncOldHistoryTask().execute();
@@ -802,7 +803,6 @@ public class OpenFoodAPIClient {
             @Override
             public void onResponse(Call<Search> call, Response<Search> response) {
 
-
                 if (!response.isSuccessful()) {
                     onLabelCallback.onLabelResponse(false, null);
                     return;
@@ -897,5 +897,4 @@ public class OpenFoodAPIClient {
             }
         });
     }
-
 }
