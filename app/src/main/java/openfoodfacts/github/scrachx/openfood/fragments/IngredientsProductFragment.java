@@ -359,6 +359,7 @@ public class IngredientsProductFragment extends BaseFragment {
     /**
      * @return the string after trimming the language code from the tags
      * like it returns folic-acid for en:folic-acid
+     *
      */
     private String trimLanguagePartFromString(String string) {
         return string.substring(3);
