@@ -17,8 +17,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -27,30 +27,24 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
-import com.mikepenz.iconics.IconicsDrawable;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -62,9 +56,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragm
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
-import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -87,14 +79,14 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     TabLayout tabLayout;
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
-    private ShareActionProvider mShareActionProvider;
-    private BottomSheetBehavior bottomSheetBehavior;
     TextView bottomSheetDesciption;
     TextView bottomSheetTitle;
     Button buttonToBrowseProducts;
     Button wikipediaButton;
     RecyclerView productBrowsingRecyclerView;
     ProductsRecyclerViewAdapter productsRecyclerViewAdapter;
+    private ShareActionProvider mShareActionProvider;
+    private BottomSheetBehavior bottomSheetBehavior;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
     private State mState;
