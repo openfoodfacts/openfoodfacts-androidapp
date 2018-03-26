@@ -220,7 +220,6 @@ public class IngredientsProductFragment extends BaseFragment {
             addPhotoLabel.setVisibility(View.GONE);
             mUrlImage = mSendProduct.getImgupload_ingredients();
             Picasso.with(getContext()).load("file://"+mUrlImage).config(Bitmap.Config.RGB_565).into(mImageIngredients);
-
         }
 
         List<String> allergens = getAllergens();
