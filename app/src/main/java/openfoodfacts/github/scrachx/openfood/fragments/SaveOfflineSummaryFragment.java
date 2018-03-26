@@ -92,7 +92,6 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
     private SharedPreferences mSharedPref;
     private String[] items;
 
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
