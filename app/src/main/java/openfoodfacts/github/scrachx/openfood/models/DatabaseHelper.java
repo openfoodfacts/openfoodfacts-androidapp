@@ -28,7 +28,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
     @Override
     public void onUpgrade(Database db, int oldVersion, int newVersion) {
         Log.i("greenDAO", "migrating schema from version " + oldVersion + " to " + newVersion);
-        dropAllTables(db, true);
+        //dropAllTables(db, true);
         for (int migrateVersion = oldVersion + 1; migrateVersion <= newVersion; migrateVersion++) {
             upgrade(db, migrateVersion);
         }
@@ -44,6 +44,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
      * @param migrateVersion
      */
     private void upgrade(Database db, int migrateVersion) {
+        Log.e("MIGRATE VERSION", "" + migrateVersion);
         switch (migrateVersion) {
             case 2:
                 db.execSQL("ALTER TABLE send_product ADD COLUMN 'lang' TEXT NOT NULL DEFAULT 'fr';");
@@ -76,6 +77,29 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
 
                 CategoryDao.createTable(db, true);
                 CategoryNameDao.createTable(db, true);
+                break;
+            }
+            case 7: {
+                //  db.execSQL("ALTER TABLE additive_name ADD COLUMN 'wikiDataId' TEXT NOT NULL DEFAULT '';");
+                //db.execSQL("ALTER TABLE additive_name ADD COLUMN 'isWikiDataIdPresent' INTEGER NOT NULL DEFAULT '';");
+                AdditiveDao.dropTable(db,true);
+                AdditiveDao.createTable(db, true);
+
+                AdditiveNameDao.dropTable(db,true);
+                AdditiveNameDao.createTable(db, true);
+
+                CategoryNameDao.dropTable(db,true);
+                CategoryNameDao.createTable(db, true);
+
+                CategoryDao.dropTable(db,true);
+                CategoryDao.createTable(db, true);
+
+                LabelNameDao.dropTable(db,true);
+                LabelNameDao.createTable(db, true);
+
+                LabelDao.dropTable(db,true);
+                LabelDao.createTable(db, true);
+
                 break;
             }
         }
