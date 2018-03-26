@@ -386,6 +386,12 @@
   <string name="pref_resolution_summary">Selecciona una resolución para la subida de imágenes</string>
   <string name="image_upload_resolution">Resolución de subida de imagen</string>
   <string name="can_add_barcode">¿Tienes problemas para escanear?\nArrastra para escribir el código de barras</string>
+  <string name="wikidata_information">Going further</string>
+  <string name="description">Description: </string>
+  <string name="title">Title: </string>
+  <string name="Wikipedia">View on Wikipedia</string>
+  <string name="Browse_Products">Browse Products</string>
+  <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Marca</string>
   <string name="additive_string">Aditivo</string>
   <string name="search_string">Buscar</string>
@@ -406,4 +412,5 @@
   <string name="mineral_tags_text">Minerals:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
+  <string name="wikidata">Wikidata data</string>
 </resources>
