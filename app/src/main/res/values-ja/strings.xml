@@ -383,6 +383,12 @@
   <string name="pref_resolution_summary">画像アップロードの解像度を選択します</string>
   <string name="image_upload_resolution">画像アップロードの解像度</string>
   <string name="can_add_barcode">スキャンがうまくいきませんか?\n上にドラッグしてバーコードを入力してください</string>
+  <string name="wikidata_information">Going further</string>
+  <string name="description">Description: </string>
+  <string name="title">Title: </string>
+  <string name="Wikipedia">View on Wikipedia</string>
+  <string name="Browse_Products">Browse Products</string>
+  <string name="swipe_down">Swipe down</string>
   <string name="brand_string">ブランド（会社名）</string>
   <string name="additive_string">添加物</string>
   <string name="search_string">検索</string>
@@ -403,4 +409,5 @@
   <string name="mineral_tags_text">ミネラル:</string>
   <string name="other_tags_text">その他の成分:</string>
   <!--shared element transition key-->
+  <string name="wikidata">Wikidata data</string>
 </resources>
