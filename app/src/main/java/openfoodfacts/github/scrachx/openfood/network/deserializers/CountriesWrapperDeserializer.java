@@ -31,6 +31,7 @@ public class CountriesWrapperDeserializer extends StdDeserializer<CountriesWrapp
     @Override
     public CountriesWrapper deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
         List<CountryResponse> countries = new ArrayList<>();
+
         JsonNode mainNode = jp.getCodec().readTree(jp);
         Iterator<Map.Entry<String, JsonNode>> mainNodeIterator = mainNode.fields();
 

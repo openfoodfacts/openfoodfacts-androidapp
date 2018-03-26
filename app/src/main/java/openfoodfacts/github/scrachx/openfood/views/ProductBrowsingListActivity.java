@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +38,7 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
+
 
 public class ProductBrowsingListActivity extends BaseActivity {
 
@@ -136,8 +138,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
     protected void newSearchQuery() {
         getSupportActionBar().setTitle(searchQuery);
-
-
         switch (searchType) {
             case SearchType.BRAND: {
                 toolbar.setSubtitle(R.string.brand_string);
@@ -175,6 +175,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
                 break;
             }
+            default : {
+                Log.e("Products Browsing","No math case found for "+searchType);
+            }
+
         }
 
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
@@ -213,30 +217,55 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
 
             case SearchType.STORE: {
+                apiClient.getProductsByStore(searchQuery, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
 
-                apiClient.getProductsByStore(searchQuery, pageAddress, this::loadData);
-
+                    @Override
+                    public void onStoreResponse(boolean value, Search storeObject) {
+                        loadData(value, storeObject);
+                    }
+                });
                 break;
             }
 
             case SearchType.PACKAGING: {
 
-                apiClient.getProductsByPackaging(searchQuery, pageAddress, this::loadData);
+                apiClient.getProductsByPackaging(searchQuery, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
+
+                    @Override
+                    public void onPackagingResponse(boolean value, Search packagingObject) {
+                        loadData(value, packagingObject);
+                    }
+                });
                 break;
             }
-            case SearchType.SEARCH: {
-                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, (isOk, searchResponse, countProducts) -> loadData(isOk, searchResponse));
+            case SearchType.SEARCH:
 
+            {
+                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
+
+                    @Override
+
+                    public void onProductsResponse(boolean isOk, Search searchResponse, int countProducts) {
+                        loadData(isOk, searchResponse);
+                    }
+                });
                 break;
             }
 
-            case SearchType.LABEL: {
+            case SearchType.LABEL:
 
-                api.getProductsByLabel(searchQuery, pageAddress, this::loadData);
+            {
+                api.getProductsByLabel(searchQuery, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
+
+                    @Override
+
+                    public void onLabelResponse(boolean value, Search label) {
+                        loadData(value, label);
+                    }
+                });
 
                 break;
             }
-
             case SearchType.CATEGORY: {
 
                 api.getProductsByCategory(searchQuery, pageAddress, this::loadData);
@@ -245,8 +274,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
             case SearchType.CONTRIBUTOR: {
 
+
                 api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
                 break;
+            }
+            default : {
+                Log.e("Products Browsing","No math case found for "+searchType);
             }
         }
     }
@@ -257,8 +290,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (isResponseOk) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
-                countProductsView.append(" " + NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount()
-                )));
+                countProductsView.setText(getResources().getString(R.string.number_of_results) + " " +
+                        NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount())));
                 mProducts = new ArrayList<>();
                 mProducts.addAll(response.getProducts());
                 if (mProducts.size() < mCountProducts) {
@@ -277,6 +310,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 }
             }
         } else {
+            // productsRecyclerView.setVisibility(View.INVISIBLE);
+
             swipeRefreshLayout.setRefreshing(false);
             productsRecyclerView.setVisibility(View.INVISIBLE);
             progressBar.setVisibility(View.INVISIBLE);
@@ -357,7 +392,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
             swipeRefreshLayout.setRefreshing(true);
-            countProductsView.setText(getResources().getString(R.string.number_of_results));
             pageAddress = 1;
             setup();
         });
