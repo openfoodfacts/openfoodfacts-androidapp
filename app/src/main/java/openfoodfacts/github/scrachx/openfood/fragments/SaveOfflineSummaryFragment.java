@@ -106,7 +106,6 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
         return createView(inflater, container, R.layout.fragment_offline_summary_product);
     }
 
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
