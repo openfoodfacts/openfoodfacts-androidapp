@@ -386,6 +386,12 @@
   <string name="pref_resolution_summary">Válasszon felbontást kép feltöltéshez</string>
   <string name="image_upload_resolution">Képfeltöltés felbontása</string>
   <string name="can_add_barcode">Gond adódott a beolvasással?\nGépelje be a vonalkódot</string>
+  <string name="wikidata_information">Going further</string>
+  <string name="description">Description: </string>
+  <string name="title">Title: </string>
+  <string name="Wikipedia">View on Wikipedia</string>
+  <string name="Browse_Products">Browse Products</string>
+  <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Márka</string>
   <string name="additive_string">Adalékanyag</string>
   <string name="search_string">Keres</string>
@@ -406,4 +412,5 @@
   <string name="mineral_tags_text">Ásványi anyagok:</string>
   <string name="other_tags_text">Egyéb anyagok:</string>
   <!--shared element transition key-->
+  <string name="wikidata">Wikidata data</string>
 </resources>
