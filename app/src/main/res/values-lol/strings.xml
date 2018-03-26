@@ -386,6 +386,12 @@
   <string name="pref_resolution_summary">crwdns37306:0crwdne37306:0</string>
   <string name="image_upload_resolution">crwdns37307:0crwdne37307:0</string>
   <string name="can_add_barcode">crwdns37291:0crwdne37291:0</string>
+  <string name="wikidata_information">crwdns37770:0crwdne37770:0</string>
+  <string name="description">crwdns37771:0crwdne37771:0</string>
+  <string name="title">crwdns37772:0crwdne37772:0</string>
+  <string name="Wikipedia">crwdns37773:0crwdne37773:0</string>
+  <string name="Browse_Products">crwdns37774:0crwdne37774:0</string>
+  <string name="swipe_down">crwdns37775:0crwdne37775:0</string>
   <string name="brand_string">crwdns37229:0crwdne37229:0</string>
   <string name="additive_string">crwdns37309:0crwdne37309:0</string>
   <string name="search_string">crwdns37310:0crwdne37310:0</string>
@@ -406,4 +412,5 @@
   <string name="mineral_tags_text">crwdns37753:0crwdne37753:0</string>
   <string name="other_tags_text">crwdns37754:0crwdne37754:0</string>
   <!--shared element transition key-->
+  <string name="wikidata">crwdns37776:0crwdne37776:0</string>
 </resources>

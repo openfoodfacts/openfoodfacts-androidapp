@@ -386,6 +386,12 @@
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image Upload Resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+  <string name="wikidata_information">Going further</string>
+  <string name="description">Description: </string>
+  <string name="title">Title: </string>
+  <string name="Wikipedia">View on Wikipedia</string>
+  <string name="Browse_Products">Browse Products</string>
+  <string name="swipe_down">Swipe down</string>
   <string name="brand_string">نام تجاری</string>
   <string name="additive_string">Additive</string>
   <string name="search_string">جستجو</string>
@@ -406,4 +412,5 @@
   <string name="mineral_tags_text">Minerals:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
+  <string name="wikidata">Wikidata data</string>
 </resources>
