@@ -145,6 +145,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     private Uri manufactureUri;
 
+    private Product product;
+
+    private Uri manufactureUri;
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

@@ -630,6 +630,7 @@ public class OpenFoodAPIClient {
 
     }
 
+
     public void syncOldHistory() {
 //        Log.d("syncOldHistory", "task ");
         new SyncOldHistoryTask().execute();

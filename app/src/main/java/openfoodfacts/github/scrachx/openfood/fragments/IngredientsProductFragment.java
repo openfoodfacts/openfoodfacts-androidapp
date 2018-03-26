@@ -289,6 +289,7 @@ public class IngredientsProductFragment extends BaseFragment {
 
                 additiveProduct.append(getAdditiveTag((additives.get(additives.size() - 1))));
             }
+
         } else {
             additiveProduct.setVisibility(View.GONE);
         }
@@ -313,6 +314,7 @@ public class IngredientsProductFragment extends BaseFragment {
             }
         }
     }
+
 
     private CharSequence getAdditiveTag(AdditiveName additive) {
 
@@ -357,11 +359,13 @@ public class IngredientsProductFragment extends BaseFragment {
     /**
      * @return the string after trimming the language code from the tags
      * like it returns folic-acid for en:folic-acid
+     *
      */
     private String trimLanguagePartFromString(String string) {
         return string.substring(3);
     }
 
+  
     private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text, List<String> allergens) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);
         Matcher m = INGREDIENT_PATTERN.matcher(ssb);
