@@ -6,6 +6,8 @@ import android.util.Log;
 
 import org.greenrobot.greendao.database.Database;
 
+import static openfoodfacts.github.scrachx.openfood.models.DaoMaster.dropAllTables;
+
 public class DatabaseHelper extends DaoMaster.OpenHelper {
 
     public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
@@ -26,6 +28,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
     @Override
     public void onUpgrade(Database db, int oldVersion, int newVersion) {
         Log.i("greenDAO", "migrating schema from version " + oldVersion + " to " + newVersion);
+        dropAllTables(db, true);
         for (int migrateVersion = oldVersion + 1; migrateVersion <= newVersion; migrateVersion++) {
             upgrade(db, migrateVersion);
         }

@@ -7,7 +7,7 @@
 minuty</item>
     <item quantity="few"> minutes</item>
     <item quantity="many"> minutes</item>
-    <item quantity="other"> minutes</item>
+    <item quantity="other"> minuty</item>
   </plurals>
   <plurals name="hours">
     <item quantity="one"> godzina 
@@ -31,7 +31,15 @@ godziny</item>
   <string name="text_barcode">Wprowadź kod kreskowy:</string>
   <string name="message_in_activity_save_product_offline">Tylko jedno zdjęcie jest obowiązkowe, by wysłać nowy produkt.</string>
   <string name="product_incomplete_message">Produkt jest niekompletny. W wyniku tego nie mogliśmy sprawdzić pod kątem alergenów.</string>
+  <string name="no_offline_data">Wszystko gotowe</string>
+  <string name="first_offline">Tu pojawią się produkty dodane w trybie offline</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Streszczenie</item>
@@ -57,8 +65,8 @@ godziny</item>
     <item>Składniki</item>
   </string-array>
   <!-- Content Description -->
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
+  <string name="fastscroller_track">Ślad FastScrollera</string>
+  <string name="fastscroller_handle">Uchwyt FastScrollera</string>
   <string name="search_button">Szukaj</string>
   <string name="no_products">Nie odnaleziono produktów</string>
   <string name="desc_list_item_icon">Ikona przedmiotu</string>
@@ -366,6 +374,8 @@ godziny</item>
   <string name="please_check_your_connection">Sprawdź połączenie.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Wyszukiwanie zaawansowane &amp; wykresy</string>
+  <string name="connectivity_check">Sprawdź łączność z Internetem</string>
+  <string name="dismiss">Odrzuć</string>
   <string name="Terms">Warunki</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Ogólne</string>
@@ -386,6 +396,12 @@ godziny</item>
   <string name="pref_resolution_summary">Wybierz rozdzielczość do przesyłania obrazów</string>
   <string name="image_upload_resolution">Rozdzielczość przesyłania zdjęć</string>
   <string name="can_add_barcode">Problem ze skanowaniem? \nPrzeciągnij, by wpisać kod kreskowy</string>
+  <string name="wikidata_information">Going further</string>
+  <string name="description">Description: </string>
+  <string name="title">Title: </string>
+  <string name="Wikipedia">View on Wikipedia</string>
+  <string name="Browse_Products">Browse Products</string>
+  <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Marka</string>
   <string name="additive_string">Dodatek</string>
   <string name="search_string">Szukaj</string>
@@ -397,4 +413,14 @@ godziny</item>
   <string name="packaging_string">Opakowania</string>
   <string name="label_string">Etykieta</string>
   <string name="category_string">Kategoria</string>
+  <string name="connection">Połączono</string>
+  <string name="contributor_string">Współtwórca</string>
+  <string name="app_disabled_text">Wyłączono aplikację</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Witaminy:</string>
+  <string name="amino_acid_tags_text">Aminokwasy:</string>
+  <string name="mineral_tags_text">Minerały:</string>
+  <string name="other_tags_text">Inne substancje:</string>
+  <!--shared element transition key-->
+  <string name="wikidata">Wikidata data</string>
 </resources>

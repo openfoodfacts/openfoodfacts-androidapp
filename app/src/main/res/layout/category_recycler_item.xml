@@ -7,12 +7,15 @@
 
         <variable
             name="category"
-            type="openfoodfacts.github.scrachx.openfood.category.model.Category" />
+            type="openfoodfacts.github.scrachx.openfood.models.CategoryName" />
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
         android:padding="@dimen/spacing_normal">
 
         <TextView
@@ -20,9 +23,9 @@
             android:layout_height="wrap_content"
             android:text="@{category.name}"
             android:textColor="@android:color/black"
+            android:textIsSelectable="true"
             android:textSize="@dimen/font_normal"
             android:textStyle="bold"
-            android:textIsSelectable="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Beverage" />

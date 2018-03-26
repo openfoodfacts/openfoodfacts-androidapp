@@ -304,6 +304,7 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+
     /**
      * Loads translated label from the local database by unique tag of label and language code
      *
@@ -402,6 +403,19 @@ public class ProductRepository implements IProductRepository {
     @Override
     public CategoryName getCategoryByTagAndDefaultLanguageCode(String categoryTag) {
         return getCategoryByTagAndLanguageCode(categoryTag, DEFAULT_LANGUAGE);
+    }
+
+    @Override
+    public Single<List<CategoryName>> getAllCategoriesByLanguageCode(String languageCode) {
+        return Single.fromCallable(() -> categoryNameDao.queryBuilder()
+                .where(CategoryNameDao.Properties.LanguageCode.eq(languageCode))
+                .orderAsc(CategoryNameDao.Properties.Name)
+                .list());
+    }
+
+    @Override
+    public Single<List<CategoryName>> getAllCategoriesByDefaultLanguageCode() {
+        return getAllCategoriesByLanguageCode(DEFAULT_LANGUAGE);
     }
 
     /**
