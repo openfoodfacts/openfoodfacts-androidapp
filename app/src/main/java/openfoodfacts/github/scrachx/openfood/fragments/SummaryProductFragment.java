@@ -548,12 +548,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             }
         };
-
-        if (category.getIsWikiDataIdPresent()) {
-            spannableStringBuilder.append(category.getName() + " : Wiki link present");
-        } else {
-            spannableStringBuilder.append(category.getName());
-        }
+        spannableStringBuilder.append(category.getName());
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableStringBuilder;
     }
@@ -591,11 +586,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         };
 
-        if (label.getIsWikiDataIdPresent()) {
-            spannableStringBuilder.append(label.getName() + " : Wiki link present");
-        } else {
-            spannableStringBuilder.append(label.getName());
-        }
+
+        spannableStringBuilder.append(label.getName());
+
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableStringBuilder;
     }
