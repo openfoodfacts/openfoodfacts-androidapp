@@ -382,7 +382,7 @@
   <string name="minutes_ago">minutes ago</string>
   <string name="hours_ago">hours ago</string>
   <string name="days_ago">days ago</string>
-  <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
+  <string name="scan_first_string">Просмотренные вами продукты будут перечислены здесь.\nЭта история предназначена только для ваших глаз и хранится локально.</string>
   <string name="log_in">Логин</string>
   <string name="login_true">Уже вошли!</string>
   <string name="confirm_logout">Подтвердить выход</string>
@@ -391,12 +391,12 @@
   <string name="choose_resolution">Выберите разрешение</string>
   <string name="pref_resolution_summary">Выберите разрешение для загрузки изображения</string>
   <string name="image_upload_resolution">Разрешение загрузки изображения</string>
-  <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+  <string name="can_add_barcode">Не удалось выполнить сканирование? \nПотяните вверх, чтобы ввести штрих-код</string>
   <string name="wikidata_information">Идем дальше</string>
   <string name="description">Описание: </string>
   <string name="title">Название: </string>
   <string name="Wikipedia">Посмотреть в Википедии</string>
-  <string name="Browse_Products">Browse Products</string>
+  <string name="Browse_Products">Просмотр продуктов</string>
   <string name="swipe_down">Смахните вниз</string>
   <string name="brand_string">Марка</string>
   <string name="additive_string">Добавка</string>
