@@ -318,11 +318,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 categoryProduct.setVisibility(View.GONE);
             } else {
                 for (int i = 0; i < categories.size() - 1; i++) {
-                    labelProduct.append(getCategoriesTag(categories.get(i)));
-                    labelProduct.append(", ");
+                    categoryProduct.append(getCategoriesTag(categories.get(i)));
+                    categoryProduct.append(", ");
                 }
 
-                labelProduct.append(getCategoriesTag(categories.get(categories.size() - 1)));
+                categoryProduct.append(getCategoriesTag(categories.get(categories.size() - 1)));
             }
         }
 
