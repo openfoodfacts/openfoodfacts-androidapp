@@ -354,6 +354,7 @@ public class IngredientsProductFragment extends BaseFragment {
         }
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableStringBuilder;
+
     }
 
     /**
