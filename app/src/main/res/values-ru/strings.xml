@@ -252,9 +252,9 @@
   <string name="txtSeeMore">Подробнее</string>
   <string name="action_search">Найти</string>
   <string name="search_hint">Поиск продукта</string>
-  <string name="number_of_results">Number of results: </string>
+  <string name="number_of_results">Количество результатов: </string>
   <string name="brand">Марка :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="number_of_products">Количество продуктов: </string>
   <string name="txt_no_results">Ничего не найдено</string>
   <string name="txt_extend_search">Попробуйте расширить свой поиск или добавить продукт</string>
   <string name="txt_no_matching_products">Мы не нашли подходящих продуктов.\nВы можете попробовать:</string>
@@ -372,7 +372,7 @@
   <string name="advanced_search_title">Расширенный поиск и графики</string>
   <string name="connectivity_check">Please check your internet connection</string>
   <string name="dismiss">Отменить</string>
-  <string name="Terms">Terms</string>
+  <string name="Terms">Условия использования</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Основныe</string>
   <string name="preference_header_network">Сеть</string>
@@ -411,12 +411,12 @@
   <string name="category_string">Категория</string>
   <string name="connection">Подключено</string>
   <string name="contributor_string">Участник</string>
-  <string name="app_disabled_text">Application is disabled</string>
+  <string name="app_disabled_text">Приложение отключено</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Витамины:</string>
-  <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
-  <string name="other_tags_text">Other Substances:</string>
+  <string name="amino_acid_tags_text">Аминокислоты:</string>
+  <string name="mineral_tags_text">Минералы:</string>
+  <string name="other_tags_text">Другие вещества:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
+  <string name="wikidata">Данные Wikidata</string>
 </resources>
