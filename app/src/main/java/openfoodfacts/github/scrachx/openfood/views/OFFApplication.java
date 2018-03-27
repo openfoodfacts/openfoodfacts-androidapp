@@ -38,8 +38,8 @@ public class OFFApplication extends MultiDexApplication {
 
         // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
         // Use only during production: DatabaseHelper (see on Upgrade!)
-        String nameDB = "";
-        if ((BuildConfig.FLAVOR.equals("off"))) {
+        String nameDB;
+        if((BuildConfig.FLAVOR.equals("off"))) {
             nameDB = "open_food_facts";
         } else if ((BuildConfig.FLAVOR.equals("opff"))) {
             nameDB = "open_pet_food_facts";

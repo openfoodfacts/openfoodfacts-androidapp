@@ -26,12 +26,12 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
 
     public HistoryScanHolder(final View itemView, final String productUrl, Activity activity) {
         super(itemView);
-        txtTitle = (TextView) itemView.findViewById(R.id.titleHistory);
-        txtBarcode = (TextView) itemView.findViewById(R.id.barcodeHistory);
-        txtProductDetails = (TextView) itemView.findViewById(R.id.productDetailsHistory);
-        imgProduct = (ImageView) itemView.findViewById(R.id.imgHistoryProduct);
-        imgNutritionGrade = (ImageView) itemView.findViewById(R.id.nutritionGradeImage);
-        txtDate = (TextView) itemView.findViewById(R.id.dateView);
+        txtTitle = itemView.findViewById(R.id.titleHistory);
+        txtBarcode = itemView.findViewById(R.id.barcodeHistory);
+        txtProductDetails = itemView.findViewById(R.id.productDetailsHistory);
+        imgProduct = itemView.findViewById(R.id.imgHistoryProduct);
+        imgNutritionGrade = itemView.findViewById(R.id.nutritionGradeImage);
+        txtDate = itemView.findViewById(R.id.dateView);
         mActivity = activity;
         historyImageProgressbar = itemView.findViewById(R.id.historyImageProgressbar);
 

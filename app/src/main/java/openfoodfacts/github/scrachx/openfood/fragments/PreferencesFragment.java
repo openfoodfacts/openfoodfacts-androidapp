@@ -95,71 +95,56 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         });
 
         Preference contactButton = findPreference("contact_team");
-        contactButton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
+        contactButton.setOnPreferenceClickListener(preference -> {
 
-                Intent contactIntent = new Intent(Intent.ACTION_SENDTO);
-                contactIntent.setData(Uri.parse(getString(R.string.off_mail)));
-                contactIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                try {
-                    startActivity(contactIntent);
-                } catch (android.content.ActivityNotFoundException e) {
+            Intent contactIntent = new Intent(Intent.ACTION_SENDTO);
+            contactIntent.setData(Uri.parse(getString(R.string.off_mail)));
+            contactIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            try {
+                startActivity(contactIntent);
+            } catch (android.content.ActivityNotFoundException e) {
 
-                    Toast.makeText(getActivity(), R.string.email_not_found, Toast.LENGTH_SHORT).show();
-                }
-                return true;
+                Toast.makeText(getActivity(), R.string.email_not_found, Toast.LENGTH_SHORT).show();
             }
+            return true;
         });
 
 
         Preference faqbutton = findPreference("FAQ");
-        faqbutton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
+        faqbutton.setOnPreferenceClickListener(preference -> {
 
-                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-                customTabsIntent.intent.putExtra("android.intent.extra.REFERRER",Uri.parse("android-app://"+getContext().getPackageName()));
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.faq_url)), new WebViewFallback());
-                return true;
-            }
+            CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+            customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getContext().getPackageName()));
+            CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.faq_url)), new WebViewFallback());
+            return true;
         });
 
         Preference terms = findPreference("Terms");
-        terms.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
+        terms.setOnPreferenceClickListener(preference -> {
 
-                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-                customTabsIntent.intent.putExtra("android.intent.extra.REFERRER",Uri.parse("android-app://"+getContext().getPackageName()));
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.terms_url)), new WebViewFallback());
-                return true;
-            }
+            CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+            customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getContext().getPackageName()));
+            CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.terms_url)), new WebViewFallback());
+            return true;
         });
 
         Preference langHelp = findPreference("local_translate_help");
-        langHelp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
+        langHelp.setOnPreferenceClickListener(preference -> {
 
-                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-                customTabsIntent.intent.putExtra("android.intent.extra.REFERRER",Uri.parse("android-app://"+getContext().getPackageName()));
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
+            CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+            customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getContext().getPackageName()));
+            CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
 
-                return true;
-            }
+            return true;
         });
 
         ListPreference imageUploadPref = ((ListPreference) findPreference("ImageUpload"));
         String[] values = getActivity().getResources().getStringArray(R.array.upload_image);
         imageUploadPref.setEntries(values);
         imageUploadPref.setEntryValues(values);
-        imageUploadPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                settings.edit().putString("imageUpload", (String)newValue).apply();
-                return true;
-            }
+        imageUploadPref.setOnPreferenceChangeListener((preference, newValue) -> {
+            settings.edit().putString("imageUpload", (String) newValue).apply();
+            return true;
         });
     }
 
@@ -176,6 +161,18 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     @NavigationDrawerType
     public int getNavigationDrawerType() {
         return ITEM_PREFERENCES;
+    }
+
+    public void onResume() {
+
+        super.onResume();
+
+        try {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.action_preferences));
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {
@@ -225,19 +222,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             super.onPostExecute(result);
             lt.hide();
             getActivity().recreate();
-        }
-
-    }
-
-
-    public void onResume() {
-
-        super.onResume();
-
-        try {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.action_preferences));
-        } catch (NullPointerException e) {
-            e.printStackTrace();
         }
 
     }

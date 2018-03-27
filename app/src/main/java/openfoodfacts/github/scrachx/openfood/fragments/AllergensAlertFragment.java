@@ -17,14 +17,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -47,6 +45,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
  */
 public class AllergensAlertFragment extends NavigationBaseFragment {
 
+
     private List<AllergenName> mAllergensEnabled;
     private List<AllergenName> mAllergensNotEnabled;
     private List<AllergenName> mAllergensFromDao;
@@ -56,8 +55,19 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     private IProductRepository productRepository;
     private View mView;
 
+    public static Integer getKey(HashMap<Integer, String> map, String value) {
+        Integer key = null;
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            if ((value == null && entry.getValue() == null) || (value != null && value.equals(entry.getValue()))) {
+                key = entry.getKey();
+                break;
+            }
+        }
+        return key;
+    }
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         return createView(inflater, container, R.layout.fragment_alert_allergens);
     }
@@ -69,7 +79,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     }
 
     @Override
-    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         productRepository = ProductRepository.getInstance();
         mAllergensEnabled = productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage());
@@ -88,8 +98,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
             editor.putBoolean("firstRunAlert", false);
             editor.apply();
         }
-
-        mRvAllergens = (RecyclerView) view.findViewById(R.id.allergens_recycle);
+        mRvAllergens = view.findViewById(R.id.allergens_recycle);
         mAdapter = new AllergensAdapter(productRepository, mAllergensEnabled, getActivity());
         mRvAllergens.setAdapter(mAdapter);
         mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
@@ -104,13 +113,8 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         if (mAllergensFromDao != null && mAllergensFromDao.size() > 0) {
 
             mAllergensNotEnabled = productRepository.getAllergensByEnabledAndLanguageCode(false, Locale.getDefault().getLanguage());
-            Collections.sort(mAllergensNotEnabled, new Comparator<AllergenName>() {
-                @Override
-                public int compare(AllergenName a1, AllergenName a2) {
-                    return a1.getName().compareToIgnoreCase(a2.getName());
-                }
-            });
-            List<String> allergensNames = new ArrayList<String>();
+            Collections.sort(mAllergensNotEnabled, (a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
+            List<String> allergensNames = new ArrayList<>();
             for (AllergenName allergenName : mAllergensNotEnabled) {
                 allergensNames.add(allergenName.getName());
             }
@@ -155,12 +159,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                                         lt.error();
                                     }, dialog::hide);
                         })
-                        .onNegative(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                lt.hide();
-                            }
-                        })
+                        .onNegative((dialog, which) -> lt.hide())
                         .show();
             } else {
                 new MaterialDialog.Builder(mView.getContext())
@@ -177,18 +176,6 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     @NavigationDrawerType
     public int getNavigationDrawerType() {
         return ITEM_ALERT;
-    }
-
-
-    public static Integer getKey(HashMap<Integer, String> map, String value) {
-        Integer key = null;
-        for (Map.Entry<Integer, String> entry : map.entrySet()) {
-            if ((value == null && entry.getValue() == null) || (value != null && value.equals(entry.getValue()))) {
-                key = entry.getKey();
-                break;
-            }
-        }
-        return key;
     }
 
     public void onResume() {
