@@ -1,16 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/action_remove_all_history"
-        app:showAsAction="ifRoom"
+    <item
+        android:id="@+id/action_remove_all_history"
+        android:icon="@drawable/ic_delete_black_24dp"
         android:title="@string/clear_history"
-        android:icon="@drawable/ic_delete_black_24dp" />
+        app:showAsAction="ifRoom" />
 
-    <item android:id="@+id/action_export_all_history"
-        app:showAsAction="ifRoom"
+    <item
+        android:id="@+id/action_export_all_history"
+        android:icon="@drawable/ic_file_download_black_24dp"
         android:title="@string/export_csv_history"
-        android:icon="@drawable/ic_file_download_black_24dp" />
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/sort_history"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="@string/sort"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/sort_history_title"
+                android:title="@string/by_title" />
+
+            <item
+                android:id="@+id/sort_history_grade"
+                android:title="@string/by_nutrition_grade" />
+
+            <item
+                android:id="@+id/sort_history_brand"
+                android:title="@string/by_brand" />
+
+            <item
+                android:id="@+id/sort_history_time"
+                android:title="@string/by_time" />
+
+            <item
+                android:id="@+id/sort_history_barcode"
+                android:title="@string/by_barcode" />
+
+
+
+        </menu>
+
+    </item>
 
 </menu>

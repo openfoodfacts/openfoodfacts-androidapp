@@ -38,8 +38,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -70,11 +73,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     TextView infoView;
     @BindView(R.id.history_progressbar)
     ProgressBar historyProgressbar;
+    private static String SORT_TYPE = "none";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getResources().getBoolean(R.bool.portrait_only)){
+        if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_history_scan);
@@ -104,6 +108,65 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             scanFirst.setVisibility(View.VISIBLE);
 
         }
+    }
+
+
+    public void exportCSV() {
+        String folder_main = " ";
+        String appname = " ";
+        if ((BuildConfig.FLAVOR.equals("off"))) {
+            folder_main = " Open Food Facts ";
+            appname = "OFF";
+        } else if ((BuildConfig.FLAVOR.equals("opff"))) {
+            folder_main = " Open Pet Food Facts ";
+            appname = "OPFF";
+        } else {
+            folder_main = " Open Beauty Facts ";
+            appname = "OBF";
+        }
+        Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show();
+        File baseDir = new File(Environment.getExternalStorageDirectory(), folder_main);
+        if (!baseDir.exists()) {
+            baseDir.mkdirs();
+        }
+        Log.d("dir", String.valueOf(baseDir));
+        String fileName = appname + "-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
+        String filePath = baseDir + File.separator + fileName;
+        File f = new File(filePath);
+        CSVWriter writer;
+        FileWriter fileWriter;
+        try {
+            if (f.exists() && !f.isDirectory()) {
+                fileWriter = new FileWriter(filePath, false);
+                writer = new CSVWriter(fileWriter);
+            } else {
+                writer = new CSVWriter(new FileWriter(filePath));
+            }
+            String[] headers = getResources().getStringArray(R.array.headers);
+            writer.writeNext(headers);
+            List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
+            for (HistoryProduct hp : listHistoryProducts) {
+                String[] line = {hp.getBarcode(), hp.getTitle(), hp.getBrands()};
+                writer.writeNext(line);
+            }
+            writer.close();
+            Toast.makeText(this, R.string.txt_history_exported, Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_history, menu);
+
+        menu.findItem(R.id.action_export_all_history)
+                .setVisible(!emptyHistory);
+
+        menu.findItem(R.id.action_remove_all_history)
+                .setVisible(!emptyHistory);
+
+        return true;
     }
 
     @Override
@@ -144,67 +207,35 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                     exportCSV();
                 }
                 return true;
+
+            case R.id.sort_history_title:
+                SORT_TYPE = "title";
+                new HistoryScanActivity.FillAdapter(this).execute(this);
+                return true;
+
+            case R.id.sort_history_brand:
+                SORT_TYPE = "brand";
+                new HistoryScanActivity.FillAdapter(this).execute(this);
+                return true;
+
+            case R.id.sort_history_barcode:
+                SORT_TYPE = "barcode";
+                new HistoryScanActivity.FillAdapter(this).execute(this);
+                return true;
+
+            case R.id.sort_history_time:
+                SORT_TYPE = "time";
+                new HistoryScanActivity.FillAdapter(this).execute(this);
+                return true;
+
+            case R.id.sort_history_grade:
+                SORT_TYPE = "grade";
+                new HistoryScanActivity.FillAdapter(this).execute(this);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    public void exportCSV() {
-        String folder_main = " ";
-        String appname = " ";
-        if ((BuildConfig.FLAVOR.equals("off"))) {
-            folder_main = " Open Food Facts ";
-            appname = "OFF";
-        } else if ((BuildConfig.FLAVOR.equals("opff"))) {
-            folder_main = " Open Pet Food Facts ";
-            appname = "OPFF";
-        } else {
-            folder_main = " Open Beauty Facts ";
-            appname = "OBF";
-        }
-        Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show();
-        File baseDir = new File(Environment.getExternalStorageDirectory(), folder_main);
-        if (!baseDir.exists()) {
-            baseDir.mkdirs();
-        }
-        Log.d("dir", String.valueOf(baseDir));
-        String fileName = appname +"-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
-        String filePath = baseDir + File.separator + fileName;
-        File f = new File(filePath);
-        CSVWriter writer;
-        FileWriter fileWriter;
-        try {
-            if (f.exists() && !f.isDirectory()) {
-                fileWriter = new FileWriter(filePath, false);
-                writer = new CSVWriter(fileWriter);
-            } else {
-                writer = new CSVWriter(new FileWriter(filePath));
-            }
-            String[] headers = getResources().getStringArray(R.array.headers);
-            writer.writeNext(headers);
-            List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
-            for (HistoryProduct hp : listHistoryProducts) {
-                String[] line = {hp.getBarcode(), hp.getTitle(), hp.getBrands()};
-                writer.writeNext(line);
-            }
-            writer.close();
-            Toast.makeText(this, R.string.txt_history_exported, Toast.LENGTH_LONG).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_history, menu);
-
-        menu.findItem(R.id.action_export_all_history)
-                .setVisible(!emptyHistory);
-
-        menu.findItem(R.id.action_remove_all_history)
-                .setVisible(!emptyHistory);
-
-        return true;
     }
 
     @Override
@@ -246,6 +277,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         @Override
         protected void onPreExecute() {
             historyProgressbar.setVisibility(View.VISIBLE);
+            productItems.clear();
             List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             if (listHistoryProducts.size() == 0) {
                 emptyHistory = true;
@@ -260,7 +292,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         @Override
         protected Context doInBackground(Context... ctx) {
             listHistoryProducts = mHistoryProductDao.queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list();
-//            final Bitmap defaultImgUrl = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_no), 200, 200, true);
 
 
             for (HistoryProduct historyProduct : listHistoryProducts) {
@@ -273,9 +304,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         @Override
         protected void onPostExecute(Context ctx) {
-//            HistoryListAdapter adapter = new HistoryListAdapter(productItems, getString(R.string.website_product), activity);
-//            recyclerHistoryScanView.setAdapter(adapter);
-//            recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
+
+            sort(SORT_TYPE, productItems);
             adapter = new HistoryListAdapter(productItems, getString(R.string
                     .website_product), activity);
             recyclerHistoryScanView.setAdapter(adapter);
@@ -326,6 +356,90 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         String info = getString(R.string.scan_first_string);
 
         view.setText(info);
+
+    }
+
+    /**
+     * Function to compare history items based on title, brand, barcode and time
+     *
+     * @param sortType     String to determine type of sorting
+     * @param productItems List of history items
+     */
+
+    private void sort(String sortType, List<HistoryItem> productItems) {
+
+
+        switch (sortType) {
+
+            case "title":
+
+                Collections.sort(productItems, new Comparator<HistoryItem>() {
+                    @Override
+                    public int compare(HistoryItem historyItem, HistoryItem t1) {
+                        return historyItem.getTitle().compareToIgnoreCase(t1.getTitle());
+                    }
+                });
+
+                break;
+
+
+            case "brand":
+
+                Collections.sort(productItems, new Comparator<HistoryItem>() {
+                    @Override
+                    public int compare(HistoryItem historyItem, HistoryItem t1) {
+                        return historyItem.getBrands().compareToIgnoreCase(t1.getBrands());
+                    }
+                });
+
+                break;
+
+            case "barcode":
+
+                Collections.sort(productItems, new Comparator<HistoryItem>() {
+                    @Override
+                    public int compare(HistoryItem historyItem, HistoryItem t1) {
+                        return historyItem.getBarcode().compareTo(t1.getBarcode());
+                    }
+                });
+                break;
+
+            case "grade":
+                Collections.sort(productItems, new Comparator<HistoryItem>() {
+
+                    @Override
+                    public int compare(HistoryItem historyItem, HistoryItem t1) {
+                        String nGrade1;
+                        String nGrade2;
+                        if (historyItem.getNutritionGrade() == null) {
+                            nGrade1 = "E";
+                        } else {
+                            nGrade1 = historyItem.getNutritionGrade();
+                        }
+                        if (t1.getNutritionGrade() == null) {
+                            nGrade2 = "E";
+                        } else {
+                            nGrade2 = t1.getNutritionGrade();
+                        }
+                        return nGrade1.compareToIgnoreCase(nGrade2);
+                    }
+                });
+
+                break;
+
+
+            default:
+
+                Collections.sort(productItems, new Comparator<HistoryItem>() {
+                    @Override
+                    public int compare(HistoryItem historyItem, HistoryItem t1) {
+                        return 0;
+                    }
+                });
+
+
+        }
+
 
     }
 
