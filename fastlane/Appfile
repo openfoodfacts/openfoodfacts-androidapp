@@ -1,0 +1,2 @@
+# json_key_file("/Users/lgzaiti/Documents/Perso/WORK/Dev/Projets/Android/android-mvp-architecture/google-play-android-developer-7b64b53a0b08.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name("org.openfoodfacts.scanner") # e.g. com.krausefx.app
