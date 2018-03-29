@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -208,29 +209,52 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                 }
                 return true;
 
-            case R.id.sort_history_title:
-                SORT_TYPE = "title";
-                new HistoryScanActivity.FillAdapter(this).execute(this);
-                return true;
+            case R.id.sort_history:
+                MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
+                builder.title(R.string.sort_by);
+                String[] sortTypes = {getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_nutrition_grade), getString(R.string.by_barcode), getString(R.string.by_time)};
+                builder.items(sortTypes);
+                builder.itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
 
-            case R.id.sort_history_brand:
-                SORT_TYPE = "brand";
-                new HistoryScanActivity.FillAdapter(this).execute(this);
-                return true;
+                        switch (position) {
 
-            case R.id.sort_history_barcode:
-                SORT_TYPE = "barcode";
-                new HistoryScanActivity.FillAdapter(this).execute(this);
-                return true;
+                            case 0:
+                                SORT_TYPE = "title";
+                                callTask();
+                                break;
 
-            case R.id.sort_history_time:
-                SORT_TYPE = "time";
-                new HistoryScanActivity.FillAdapter(this).execute(this);
-                return true;
+                            case 1:
+                                SORT_TYPE = "brand";
+                                callTask();
+                                break;
 
-            case R.id.sort_history_grade:
-                SORT_TYPE = "grade";
-                new HistoryScanActivity.FillAdapter(this).execute(this);
+
+                            case 2:
+                                SORT_TYPE = "grade";
+                                callTask();
+                                break;
+
+
+                            case 3:
+                                SORT_TYPE = "barcode";
+                                callTask();
+                                break;
+
+
+                            default:
+                                SORT_TYPE = "time";
+                                callTask();
+                                break;
+
+
+                        }
+
+
+                    }
+                });
+                builder.show();
                 return true;
 
             default:
@@ -360,10 +384,10 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     }
 
     /**
-     * Function to compare history items based on title, brand, barcode and time
+     * Function to compare history items based on title, brand, barcode, time and nutrition grade
      *
      * @param sortType     String to determine type of sorting
-     * @param productItems List of history items
+     * @param productItems List of history items to be sorted
      */
 
     private void sort(String sortType, List<HistoryItem> productItems) {
@@ -440,6 +464,11 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         }
 
+
+    }
+
+    private void callTask() {
+        new HistoryScanActivity.FillAdapter(HistoryScanActivity.this).execute(HistoryScanActivity.this);
 
     }
 

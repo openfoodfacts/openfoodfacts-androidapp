@@ -524,12 +524,13 @@
     <!--shared element transition key-->
     <string name="product_transition" translatable="false">productTransition</string>
     <string name="wikidata">Wikidata data</string>
-    <string name="by_title">by Title</string>
-    <string name="by_brand">by Brand</string>
-    <string name="by_barcode">by Barcode</string>
-    <string name="by_time">by Time</string>
+    <string name="by_title">Title</string>
+    <string name="by_brand">Brand</string>
+    <string name="by_barcode">Barcode</string>
+    <string name="by_time">Time</string>
     <string name="sort">Sort</string>
-    <string name="by_nutrition_grade">by Nutrition Grade</string>
+    <string name="by_nutrition_grade">Nutrition Grade</string>
+    <string name="sort_by">Sort By</string>
 
 
 </resources>
