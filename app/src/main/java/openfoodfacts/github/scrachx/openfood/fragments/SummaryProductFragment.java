@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -29,6 +30,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.ceylonlabs.imageviewpopup.ImagePopup;
+import com.github.chrisbanes.photoview.PhotoView;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.picasso.Picasso;
@@ -129,6 +137,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     Button addMorePicture;
     @BindView(R.id.imageGrade)
     ImageView img;
+    @BindView(R.id.generateQrText)
+    TextView mgenerateQr;
+    //@BindView(R.id.photo_view)
+    //PhotoView mPhotoView;
+
+    private PhotoView mPhotoView;
     private OpenFoodAPIClient api;
     private WikidataApiClient apiClientForWikiData;
     private String mUrlImage;
@@ -145,7 +159,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Product product;
 
     private Uri manufactureUri;
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -217,6 +230,35 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             mUrlImage = product.getImageUrl();
         }
+
+        // generate Qr code
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+        try {
+            BitMatrix bitMatrix = multiFormatWriter.encode(barcode, BarcodeFormat.QR_CODE,200,200);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+             mPhotoView = new PhotoView(this.getContext());
+            mPhotoView.setImageBitmap(bitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+
+
+        final ImagePopup imagePopup = new ImagePopup(this.getContext());
+        imagePopup.setWindowHeight(800);
+        imagePopup.setWindowWidth(800);
+        imagePopup.setBackgroundColor(Color.BLACK);
+        imagePopup.setFullScreen(true);
+        imagePopup.setHideCloseIcon(true);
+        imagePopup.setImageOnClickClose(true);
+        imagePopup.initiatePopup(mPhotoView.getDrawable());
+
+        mgenerateQr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imagePopup.viewPopup();
+            }
+        });
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
 

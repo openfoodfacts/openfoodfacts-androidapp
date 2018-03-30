@@ -523,6 +523,7 @@
 
     <!--shared element transition key-->
     <string name="product_transition" translatable="false">productTransition</string>
+    <string name="Generate_QR_string">Generate QR code</string>
     <string name="wikidata">Wikidata data</string>
 
 

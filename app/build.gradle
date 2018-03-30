@@ -161,8 +161,12 @@ dependencies {
     //CSV Serialization/Deserialization
     implementation "com.opencsv:opencsv:$rootProject.openCsvVersion"
 
+
     //Database
     implementation "org.greenrobot:greendao:$rootProject.greenDaoVersion"
+
+    //image popup
+    implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.1'
 
     //Image Loading
     implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
@@ -173,6 +177,10 @@ dependencies {
     //Binding
     implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+
+    //QR code generator
+    implementation 'com.google.zxing:core:3.3.2'
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0@aar'
 
     //Barcode and QR Scanner
     implementation "me.dm7.barcodescanner:zxing:$rootProject.qrScannerVersion"
