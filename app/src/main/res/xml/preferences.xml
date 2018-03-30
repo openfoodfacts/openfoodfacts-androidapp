@@ -43,6 +43,17 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/preference_header_upload">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="enableCropOption"
+            android:summaryOff="@string/preference_enable_crop_feature"
+            android:summaryOn="@string/preference_disable_crop_feature"
+            android:title="@string/preference_crop_feature_title" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/preference_header_contributing">
 
         <Preference

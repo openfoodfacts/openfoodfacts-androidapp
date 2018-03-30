@@ -43,6 +43,7 @@ import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -270,7 +271,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                         .getLaunchIntentForPackage(BuildConfig.OFOTHERLINKAPP);
                                 if (LaunchIntent != null) {
                                     startActivity(LaunchIntent);
-                                }else{
+                                } else {
                                     Toast.makeText(this, R.string.app_disabled_text, Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent();
                                     intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -551,7 +552,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 return true;
             }
         });
-
 
 
         return true;

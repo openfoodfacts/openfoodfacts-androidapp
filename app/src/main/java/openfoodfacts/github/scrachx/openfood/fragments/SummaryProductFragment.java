@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -68,6 +69,7 @@ import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -716,8 +718,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .start(getContext(), mFragment);
+                if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("enableCropOption", true)) {
+                    CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                            .start(getActivity());
+                } else {
+                    onPhotoReturned(imageFiles.get(0));
+                }
             }
 
             @Override

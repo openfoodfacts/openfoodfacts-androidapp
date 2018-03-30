@@ -4,6 +4,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -41,6 +42,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -284,8 +286,12 @@ public class NutritionInfoProductFragment extends BaseFragment {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .start(getContext(), mFragment);
+                if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("enableCropOption", true)) {
+                    CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                            .start(getActivity());
+                } else {
+                    onPhotoReturned(imageFiles.get(0));
+                }
             }
 
             @Override

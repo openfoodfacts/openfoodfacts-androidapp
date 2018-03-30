@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -267,7 +268,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
         if (isBlank(mProduct.getImgupload_front())) {
             Toast toast = Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER,0,0);
+            toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
             save.setEnabled(true);
             save.setText(getString(R.string.txtSave));
@@ -310,14 +311,14 @@ public class SaveProductOfflineActivity extends BaseActivity {
                 if (!value) {
                     mSendProductDao.insert(mProduct);
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.CENTER,0,0);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra("openOfflineEdit", true);
                     startActivity(intent);
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.CENTER,0,0);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                     api.getProduct(mProduct.getBarcode(), activity);
                 }
@@ -326,7 +327,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
         } else {
             mSendProductDao.insertOrReplace(mProduct);
             Toast toast = Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER,0,0);
+            toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.putExtra("openOfflineEdit", true);
@@ -404,8 +405,14 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .start(SaveProductOfflineActivity.this);
+
+                if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("enableCropOption", true)) {
+                    CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                            .start(SaveProductOfflineActivity.this);
+                } else {
+                    onPhotoReturned(imageFiles.get(0));
+                }
+
 
             }
 

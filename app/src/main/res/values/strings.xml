@@ -445,6 +445,10 @@
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
 
+    <string name="preference_crop_feature_title">Crop Feature while uploading products</string>
+    <string name="preference_enable_crop_feature">Enable Crop feature on upload.</string>
+    <string name="preference_disable_crop_feature">Disable Crop feature on upload.</string>
+
     <string name="device_on_mobile_data_warning_title">Information</string>
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Preferences</string>
@@ -473,6 +477,7 @@
 
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Network</string>
+    <string name="preference_header_upload">Upload Settings</string>
     <string name="preference_header_about" translatable="false">@string/action_about</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
