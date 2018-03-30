@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -9,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,6 +42,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -78,6 +81,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
     private String barcode;
     private OpenFoodAPIClient api;
     private NutritionInfoProductFragment mFragment;
+    private boolean disableLoad = false;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -92,6 +96,11 @@ public class NutritionInfoProductFragment extends BaseFragment {
 
         Intent intent = getActivity().getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
+            disableLoad = true;
+        }
 
         final Product product = state.getProduct();
         barcode = product.getCode();
@@ -107,9 +116,15 @@ public class NutritionInfoProductFragment extends BaseFragment {
         if (isNotBlank(product.getImageNutritionUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
 
-            Picasso.with(view.getContext())
-                    .load(product.getImageNutritionUrl())
-                    .into(mImageNutrition);
+            if (!disableLoad) {
+                Picasso.with(view.getContext())
+                        .load(product.getImageNutritionUrl())
+                        .into(mImageNutrition);
+            } else {
+
+                mImageNutrition.setVisibility(View.GONE);
+
+            }
 
             mUrlImage = product.getImageNutritionUrl();
         }
