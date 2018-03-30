@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.util.StdConverter;
 
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.text.StringEscapeUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;

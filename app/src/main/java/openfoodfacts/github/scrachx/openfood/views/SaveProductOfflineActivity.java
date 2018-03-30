@@ -421,31 +421,14 @@ public class SaveProductOfflineActivity extends BaseActivity {
     }
 
     private void onPhotoReturned(File photoFile) {
-        if (imageTaken.equals("front")) {
-            mProduct.setImgupload_front(photoFile.getAbsolutePath());
-            imgSaveFront.setVisibility(View.VISIBLE);
-            mAttacherimgSaveFront = new PhotoViewAttacher(imgSaveFront);
-            if (!Utils.isConnectedToMobileData(getApplicationContext())) {
-                Picasso.with(this)
-                        .load(photoFile)
-                        .into(imgSaveFront, new Callback() {
-                            @Override
-                            public void onSuccess() {
-                                mAttacherimgSaveFront.update();
-                            }
-
-                            @Override
-                            public void onError() {
-                            }
-                        });
-            } else {
-                try {
-                    String resolution = mSharedPref.getString("imageUpload", "640 X 480");
-                    int x = Integer.parseInt(resolution.substring(0, resolution.indexOf(" ")));
-                    int y = Integer.parseInt(resolution.substring(resolution.lastIndexOf(" ") + 1));
+        switch (imageTaken) {
+            case "front":
+                mProduct.setImgupload_front(photoFile.getAbsolutePath());
+                imgSaveFront.setVisibility(View.VISIBLE);
+                mAttacherimgSaveFront = new PhotoViewAttacher(imgSaveFront);
+                if (!Utils.isConnectedToMobileData(getApplicationContext())) {
                     Picasso.with(this)
                             .load(photoFile)
-                            .resize(x, y)
                             .into(imgSaveFront, new Callback() {
                                 @Override
                                 public void onSuccess() {
@@ -456,48 +439,48 @@ public class SaveProductOfflineActivity extends BaseActivity {
                                 public void onError() {
                                 }
                             });
-                } catch (Exception e){
-                    Picasso.with(this)
-                            .load(photoFile)
-                            .resize(640, 480)
-                            .into(imgSaveFront, new Callback() {
-                                @Override
-                                public void onSuccess() {
-                                    mAttacherimgSaveFront.update();
-                                }
+                } else {
+                    try {
+                        String resolution = mSharedPref.getString("imageUpload", "640 X 480");
+                        int x = Integer.parseInt(resolution.substring(0, resolution.indexOf(" ")));
+                        int y = Integer.parseInt(resolution.substring(resolution.lastIndexOf(" ") + 1));
+                        Picasso.with(this)
+                                .load(photoFile)
+                                .resize(x, y)
+                                .into(imgSaveFront, new Callback() {
+                                    @Override
+                                    public void onSuccess() {
+                                        mAttacherimgSaveFront.update();
+                                    }
 
-                                @Override
-                                public void onError() {
-                                }
-                            });
+                                    @Override
+                                    public void onError() {
+                                    }
+                                });
+                    } catch (Exception e) {
+                        Picasso.with(this)
+                                .load(photoFile)
+                                .resize(640, 480)
+                                .into(imgSaveFront, new Callback() {
+                                    @Override
+                                    public void onSuccess() {
+                                        mAttacherimgSaveFront.update();
+                                    }
+
+                                    @Override
+                                    public void onError() {
+                                    }
+                                });
+                    }
                 }
-            }
-        } else if (imageTaken.equals("nutrition")) {
-            mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
-            imgSaveNutrition.setVisibility(View.VISIBLE);
-            mAttacherimgSaveNutrition = new PhotoViewAttacher(imgSaveNutrition);
-            if (!Utils.isConnectedToMobileData(getApplicationContext())) {
-                Picasso.with(this)
-                        .load(photoFile)
-                        .into(imgSaveNutrition, new Callback() {
-                            @Override
-                            public void onSuccess() {
-                                mAttacherimgSaveNutrition.update();
-                            }
-
-                            @Override
-                            public void onError() {
-                            }
-                        });
-            } else {
-
-                try {
-                    String resolution = mSharedPref.getString("imageUpload", "640 X 480");
-                    int x = Integer.parseInt(resolution.substring(0, resolution.indexOf(" ")));
-                    int y = Integer.parseInt(resolution.substring(resolution.lastIndexOf(" ") + 1));
+                break;
+            case "nutrition":
+                mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
+                imgSaveNutrition.setVisibility(View.VISIBLE);
+                mAttacherimgSaveNutrition = new PhotoViewAttacher(imgSaveNutrition);
+                if (!Utils.isConnectedToMobileData(getApplicationContext())) {
                     Picasso.with(this)
                             .load(photoFile)
-                            .resize(x, y)
                             .into(imgSaveNutrition, new Callback() {
                                 @Override
                                 public void onSuccess() {
@@ -508,49 +491,49 @@ public class SaveProductOfflineActivity extends BaseActivity {
                                 public void onError() {
                                 }
                             });
-                } catch (Exception e){
-                    Picasso.with(this)
-                            .load(photoFile)
-                            .resize(640, 480)
-                            .into(imgSaveNutrition, new Callback() {
-                                @Override
-                                public void onSuccess() {
-                                    mAttacherimgSaveNutrition.update();
-                                }
+                } else {
 
-                                @Override
-                                public void onError() {
-                                }
-                            });
+                    try {
+                        String resolution = mSharedPref.getString("imageUpload", "640 X 480");
+                        int x = Integer.parseInt(resolution.substring(0, resolution.indexOf(" ")));
+                        int y = Integer.parseInt(resolution.substring(resolution.lastIndexOf(" ") + 1));
+                        Picasso.with(this)
+                                .load(photoFile)
+                                .resize(x, y)
+                                .into(imgSaveNutrition, new Callback() {
+                                    @Override
+                                    public void onSuccess() {
+                                        mAttacherimgSaveNutrition.update();
+                                    }
+
+                                    @Override
+                                    public void onError() {
+                                    }
+                                });
+                    } catch (Exception e) {
+                        Picasso.with(this)
+                                .load(photoFile)
+                                .resize(640, 480)
+                                .into(imgSaveNutrition, new Callback() {
+                                    @Override
+                                    public void onSuccess() {
+                                        mAttacherimgSaveNutrition.update();
+                                    }
+
+                                    @Override
+                                    public void onError() {
+                                    }
+                                });
+                    }
                 }
-            }
-        } else if (imageTaken.equals("ingredients")) {
-            mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
-            imgSaveIngredients.setVisibility(View.VISIBLE);
-            mAttacherimageSaveIngredients = new PhotoViewAttacher(imgSaveIngredients);
-            if (!Utils.isConnectedToMobileData(getApplicationContext())) {
-                Picasso.with(this)
-                        .load(photoFile)
-                        .into(imgSaveIngredients, new Callback() {
-                            @Override
-                            public void onSuccess() {
-                                mAttacherimageSaveIngredients.update();
-                            }
-
-                            @Override
-                            public void onError() {
-                            }
-                        });
-            } else {
-
-                try {
-                    String resolution = mSharedPref.getString("imageUpload", "640 X 480");
-                    int x = Integer.parseInt(resolution.substring(0, resolution.indexOf(" ")));
-                    int y = Integer.parseInt(resolution.substring(resolution.lastIndexOf(" ") + 1));
-
+                break;
+            case "ingredients":
+                mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
+                imgSaveIngredients.setVisibility(View.VISIBLE);
+                mAttacherimageSaveIngredients = new PhotoViewAttacher(imgSaveIngredients);
+                if (!Utils.isConnectedToMobileData(getApplicationContext())) {
                     Picasso.with(this)
                             .load(photoFile)
-                            .resize(x, y)
                             .into(imgSaveIngredients, new Callback() {
                                 @Override
                                 public void onSuccess() {
@@ -561,22 +544,43 @@ public class SaveProductOfflineActivity extends BaseActivity {
                                 public void onError() {
                                 }
                             });
-                } catch (Exception e){
-                    Picasso.with(this)
-                            .load(photoFile)
-                            .resize(640, 480)
-                            .into(imgSaveIngredients, new Callback() {
-                                @Override
-                                public void onSuccess() {
-                                    mAttacherimageSaveIngredients.update();
-                                }
+                } else {
 
-                                @Override
-                                public void onError() {
-                                }
-                            });
+                    try {
+                        String resolution = mSharedPref.getString("imageUpload", "640 X 480");
+                        int x = Integer.parseInt(resolution.substring(0, resolution.indexOf(" ")));
+                        int y = Integer.parseInt(resolution.substring(resolution.lastIndexOf(" ") + 1));
+
+                        Picasso.with(this)
+                                .load(photoFile)
+                                .resize(x, y)
+                                .into(imgSaveIngredients, new Callback() {
+                                    @Override
+                                    public void onSuccess() {
+                                        mAttacherimageSaveIngredients.update();
+                                    }
+
+                                    @Override
+                                    public void onError() {
+                                    }
+                                });
+                    } catch (Exception e) {
+                        Picasso.with(this)
+                                .load(photoFile)
+                                .resize(640, 480)
+                                .into(imgSaveIngredients, new Callback() {
+                                    @Override
+                                    public void onSuccess() {
+                                        mAttacherimageSaveIngredients.update();
+                                    }
+
+                                    @Override
+                                    public void onError() {
+                                    }
+                                });
+                    }
                 }
-            }
+                break;
         }
     }
 
