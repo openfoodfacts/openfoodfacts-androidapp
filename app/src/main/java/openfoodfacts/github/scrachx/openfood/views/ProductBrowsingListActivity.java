@@ -2,7 +2,9 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
@@ -28,6 +30,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.internal.Util;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -66,6 +69,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private int mCountProducts = 0;
     private int pageAddress = 1;
     private Boolean setupDone = false;
+    private boolean disableLoad;
 
 
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
@@ -136,6 +140,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
         searchType = extras.getString(SEARCH_TYPE);
         searchQuery = extras.getString(SEARCH_QUERY);
         newSearchQuery();
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad",false);
+        if(Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)){
+            disableLoad=true;
+        }
     }
 
     protected void newSearchQuery() {
@@ -301,7 +311,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     mProducts.add(null);
                 }
                 if (setupDone) {
-                    productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts));
+                    productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts, disableLoad));
                 }
                 setUpRecyclerView();
             } else {
@@ -340,7 +350,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             LinearLayoutManager mLayoutManager = new LinearLayoutManager(ProductBrowsingListActivity.this, LinearLayoutManager.VERTICAL, false);
             productsRecyclerView.setLayoutManager(mLayoutManager);
 
-            ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
+            ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts,disableLoad);
             productsRecyclerView.setAdapter(adapter);
 
 
