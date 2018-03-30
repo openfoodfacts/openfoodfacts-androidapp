@@ -5,11 +5,13 @@ import android.app.SearchManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -69,6 +71,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+import static org.apache.commons.lang3.StringUtils.substring;
 
 public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener {
 
@@ -270,7 +273,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                         .getLaunchIntentForPackage(BuildConfig.OFOTHERLINKAPP);
                                 if (LaunchIntent != null) {
                                     startActivity(LaunchIntent);
-                                }else{
+                                } else {
                                     Toast.makeText(this, R.string.app_disabled_text, Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent();
                                     intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -553,7 +556,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         });
 
 
-
         return true;
     }
 
@@ -699,4 +701,5 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     public void setItemSelected(@NavigationDrawerType Integer type) {
         result.setSelection(type, false);
     }
+
 }

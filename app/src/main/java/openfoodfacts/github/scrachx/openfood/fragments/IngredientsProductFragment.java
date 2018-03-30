@@ -2,9 +2,11 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -39,6 +41,7 @@ import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.internal.Util;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
@@ -53,6 +56,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 
@@ -111,6 +115,7 @@ public class IngredientsProductFragment extends BaseFragment {
     private WikidataApiClient apiClientForWikiData;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
+    private boolean disableLoad;
 
     @Override
     public void onAttach(Context context) {
@@ -134,6 +139,12 @@ public class IngredientsProductFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad",false);
+        if(Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())){
+            disableLoad = true;
+        }
 
         final Product product = mState.getProduct();
         barcode = product.getCode();
@@ -201,9 +212,12 @@ public class IngredientsProductFragment extends BaseFragment {
         if (isNotBlank(product.getImageIngredientsUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
 
-            Picasso.with(view.getContext())
-                    .load(product.getImageIngredientsUrl())
-                    .into(mImageIngredients);
+            if(!disableLoad) {
+                Picasso.with(view.getContext())
+                        .load(product.getImageIngredientsUrl())
+                        .into(mImageIngredients);
+            }else{mImageIngredients.setVisibility(View.GONE);
+            }
 
             mUrlImage = product.getImageIngredientsUrl();
         }

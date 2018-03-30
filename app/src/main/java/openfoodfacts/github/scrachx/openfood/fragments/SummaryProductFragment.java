@@ -2,11 +2,13 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -44,6 +46,7 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.internal.Util;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
@@ -64,6 +67,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 
@@ -141,8 +145,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private TagDao mTagDao;
     private SummaryProductFragment mFragment;
     private IProductRepository productRepository;
-
     private Product product;
+    private boolean disableLoad;
 
     private Uri manufactureUri;
 
@@ -168,6 +172,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
         final State state = (State) intent.getExtras().getSerializable("state");
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if(Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())){
+            disableLoad = true;
+        }
 
         product = state.getProduct();
 
@@ -211,9 +221,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (isNotBlank(product.getImageUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
 
-            Picasso.with(view.getContext())
-                    .load(product.getImageUrl())
-                    .into(mImageFront);
+            if (!disableLoad) {
+                Picasso.with(view.getContext())
+                        .load(product.getImageUrl())
+                        .into(mImageFront);
+            } else {
+                mImageFront.setVisibility(View.GONE);
+            }
 
             mUrlImage = product.getImageUrl();
         }

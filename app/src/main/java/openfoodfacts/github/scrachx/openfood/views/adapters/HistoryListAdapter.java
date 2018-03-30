@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.internal.Util;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -30,11 +31,13 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
     private final String productUrl;
     private Activity mActivity;
     private Resources res;
-    public HistoryListAdapter(List<HistoryItem> list, String productUrl, Activity activity) {
+    private boolean disableLoad;
+    public HistoryListAdapter(List<HistoryItem> list, String productUrl, Activity activity, boolean disableLoad) {
         this.list = list == null ? Collections.emptyList() : list;
         this.productUrl = productUrl;
         this.mActivity = activity;
         res = activity.getResources();
+        this.disableLoad = disableLoad;
 
     }
 
@@ -67,23 +70,29 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         if (item.getUrl() == null) {
             holder.historyImageProgressbar.setVisibility(View.GONE);
         }
-        Picasso.with(mActivity)
-                .load(item.getUrl())
-                .placeholder(R.drawable.placeholder_thumb)
-                .error(R.drawable.ic_no_red_24dp)
-                .fit()
-                .centerCrop()
-                .into(holder.imgProduct, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        holder.historyImageProgressbar.setVisibility(View.GONE);
-                    }
 
-                    @Override
-                    public void onError() {
-                        holder.historyImageProgressbar.setVisibility(View.GONE);
-                    }
-                });
+        if(!disableLoad) {
+            Picasso.with(mActivity)
+                    .load(item.getUrl())
+                    .placeholder(R.drawable.placeholder_thumb)
+                    .error(R.drawable.ic_no_red_24dp)
+                    .fit()
+                    .centerCrop()
+                    .into(holder.imgProduct, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            holder.historyImageProgressbar.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                            holder.historyImageProgressbar.setVisibility(View.GONE);
+                        }
+                    });
+        }else{
+            holder.imgProduct.setBackground(mActivity.getResources().getDrawable(R.drawable.placeholder_thumb));
+            holder.historyImageProgressbar.setVisibility(View.INVISIBLE);
+        }
 
         Date date = list.get(position).getTime();
         calcTime(date, holder);
