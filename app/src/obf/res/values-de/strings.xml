@@ -20,6 +20,7 @@
   <string name="slide_3_desc">Alle Kosmetika, die Sie verwenden, in einer handlichen Liste, die Sie exportieren können</string>
   <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
   <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Beauty Facts.</string>
+  <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in „Open Beauty Facts”. Bitte fügen Sie es jetzt hinzu.</string>
+  <string name="txtDialogsContentPowerMode">Das eingelesene Produkt existiert bereits in „Open Beauty Facts”.</string>
+  <string name="msg_share">Dieses Produkt auf Open Beauty Facts anzeigen:</string>
 </resources>
