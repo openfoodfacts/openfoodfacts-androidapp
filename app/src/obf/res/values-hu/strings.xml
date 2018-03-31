@@ -11,7 +11,7 @@
   <string name="website_product">https://world-hu.openbeautyfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-hu.openbeautyfacts.org/contributor/</string>
-  <string name="txtHome">Az Open Beauty Facts kozmetikai termékek adatbázisa, a termékekhez tartozó összetevők, allergének, jelölések adataival együtt és minden egyéb információval, ami a termék csomagolásán vagy címkéjén szerepel.</string>
+  <string name="txtHome">Open Beauty Facts is a database of cosmetic products with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
   <string name="slide_1_title">Hozzájárulás a Kozmetikai szer átláthatósághoz</string>
   <string name="slide_1_desc">Olvasson be termékeket, készítsen képet, tegye lehetővé a kozmetikai szer átláthatóságot</string>
   <string name="slide_2_title">Kapja meg a tényeket</string>
@@ -22,4 +22,5 @@
   <string name="slide_4_desc">Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Beauty Facts.</string>
+  <string name="msg_share">Look at this product on Open Beauty Facts :</string>
 </resources>
