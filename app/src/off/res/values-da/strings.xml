@@ -20,4 +20,6 @@
   <string name="slide_3_desc">Et virtuelt billede af de ernæringsmæssige egenskaber for dine favoritfødevarer</string>
   <string name="slide_4_title">Fungerer uden netværksforbindelse</string>
   <string name="slide_4_desc">Du kan tilføje nye produkter, selv hvis du ikke har internetforbindelse i øjeblikket</string>
+  <string name="txtDialogsContent">Produktet du har skannet eksisterer ikke i Open Food Facts endnu. Vær venlig at tilføje det.</string>
+  <string name="txtDialogsContentPowerMode">Produktet du har skannet eksisterer allerede i Open Food Facts.</string>
 </resources>
