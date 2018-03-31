@@ -16,8 +16,10 @@
   <string name="slide_1_desc">Digitalize produtos, fotografe-os, faça a transparência alimentar acontecer</string>
   <string name="slide_2_title">Get the facts</string>
   <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Obtenha o Nutriscore</string>
-  <string name="slide_3_desc">Uma visão sintética das características nutricionais dos seus produtos alimentares favoritos</string>
+  <string name="slide_3_title">Keep track of the product you use</string>
+  <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
   <string name="slide_4_title">Works offline</string>
   <string name="slide_4_desc">Poderá adicionar novos produtos, mesmo sem ligação à Internet no momento</string>
+  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
+  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
 </resources>
