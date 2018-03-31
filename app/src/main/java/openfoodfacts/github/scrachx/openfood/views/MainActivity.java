@@ -101,6 +101,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
+    private boolean scanOnShake;
 
 
     @Override
@@ -129,12 +130,18 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
 
+        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
+        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
+
+        Log.i("Shake", String.valueOf(scanOnShake));
         mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
             @Override
             public void onShake(int count) {
 
-                scan();
-
+                if (scanOnShake) {
+                    Utils.scan(MainActivity.this);
+                    Toast.makeText(MainActivity.this, "TEXT", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -637,6 +644,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     protected void onStart() {
         super.onStart();
         customTabActivityHelper.bindCustomTabsService(this);
+
     }
 
     @Override
@@ -724,13 +732,25 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     public void onPause() {
         super.onPause();
-        mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
+
+        if (scanOnShake) {
+
+            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
+
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+
+        if (scanOnShake) {
+
+            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+
+
+        }
+
 
     }
 }
