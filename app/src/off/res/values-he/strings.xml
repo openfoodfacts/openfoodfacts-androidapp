@@ -22,4 +22,5 @@
   <string name="slide_4_desc">ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע</string>
   <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts</string>
   <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא במסד נתוני המזון הפתוח.</string>
+  <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
 </resources>

@@ -11,7 +11,7 @@
   <string name="website_product">https://world-ja.openbeautyfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-ja.openbeautyfacts.org/contributor/</string>
-  <string name="txtHome">Open Beauty Facts は、成分、アレルゲン、マーク、および製品ラベルに記載されているすべての情報をもつ化粧品データベースです。</string>
+  <string name="txtHome">Open Beauty Facts is a database of cosmetic products with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
   <string name="slide_1_title">化粧品の透明性に貢献します</string>
   <string name="slide_1_desc">製品をスキャンし、写真に写して、化粧品の透明性を実現します</string>
   <string name="slide_2_title">事実を入手します</string>
@@ -22,4 +22,5 @@
   <string name="slide_4_desc">今インターネットに接続していなくても、新製品を追加できます</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Beauty Facts.</string>
+  <string name="msg_share">Look at this product on Open Beauty Facts :</string>
 </resources>

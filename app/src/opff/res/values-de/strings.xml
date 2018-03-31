@@ -12,7 +12,7 @@
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-de.openpetfoodfacts.org/mitwirkender/</string>
   <string name="txtHome">„Open Pet Food Facts” ist eine Datenbank der Nahrungsprodukte für Haustiere mit deren Bestandteilen, Allergenen, Indizien und und all den Kleinigkeiten, die wir auf Produktetiketten für Haustiernahrung finden können. Wau-Wau, Miau.</string>
-  <string name="slide_1_title">Beitrag zur Transparent von Tiernahrungsprodukten leisten</string>
+  <string name="slide_1_title">Beitrag zur Transparenz von Tiernahrungsprodukten leisten</string>
   <string name="slide_1_desc">Produkte erfassen, und diese fotografieren, ermöglichen die Transparenz von Tiernahrung</string>
   <string name="slide_2_title">Holen Sie sich die Fakten</string>
   <string name="slide_2_desc">Umfassende Informationen über das eingelesene Produkt wurden für Sie entschlüsselt</string>
@@ -20,6 +20,6 @@
   <string name="slide_3_desc">Alle Kosmetika, die Sie verwenden, in einer handlichen Liste, die Sie exportieren können</string>
   <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
   <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
+  <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in Open Pet Facts. Bitte fügen Sie es hinzu.</string>
+  <string name="txtDialogsContentPowerMode">Das eingelesene Produkt existiert bereits in „Open Pet Facts”.</string>
 </resources>

@@ -12,7 +12,7 @@
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-de.openfoodfacts.org/mitwirkender/</string>
   <string name="txtHome">„Open Food Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.</string>
-  <string name="slide_1_title">Beitrag zur Transparent von Lebensmittelprodukten leisten</string>
+  <string name="slide_1_title">Beitrag zur Transparenz von Lebensmittelprodukten leisten</string>
   <string name="slide_1_desc">Produkte erfassen und Fotos hinzufügen, ermöglichen das Verständnis über Lebensmittelprodukte</string>
   <string name="slide_2_title">Holen Sie sich die Fakten</string>
   <string name="slide_2_desc">Umfassende Informationen über das erfasste Produkt wurden für Sie entschlüsselt</string>
@@ -22,4 +22,5 @@
   <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
   <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in Open Food Facts. Bitte fügen Sie es hinzu.</string>
   <string name="txtDialogsContentPowerMode">Das eingelesene Produkt befindet sich bereits in Open Food Facts.</string>
+  <string name="msg_share">Dieses Produkt auf Open Food Facts anzeigen:</string>
 </resources>
