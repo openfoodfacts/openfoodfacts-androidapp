@@ -17,9 +17,9 @@
   <string name="slide_2_title">Holen Sie sich die Fakten</string>
   <string name="slide_2_desc">Umfassende Informationen über das erfasste Produkt wurden für Sie entschlüsselt</string>
   <string name="slide_3_title">Behalten Sie den Überblick über das Produkt, das Sie verwenden</string>
-  <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
+  <string name="slide_3_desc">Alle durch Sie eingelesenen Produkte können in einer praktischen Liste exportiert werden.</string>
   <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
   <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
+  <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in „Open Products Facts”. Bitte fügen Sie es hinzu.</string>
+  <string name="txtDialogsContentPowerMode">Das eingelesene Produkt existiert bereits in „Open Products Facts”.</string>
 </resources>
