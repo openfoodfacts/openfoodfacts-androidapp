@@ -134,6 +134,10 @@ public class SaveProductOfflineActivity extends BaseActivity {
             nutritionGroup.setVisibility(View.GONE);
         }
 
+        if (BuildConfig.FLAVOR.equals("opf")) {
+            nutritionGroup.setVisibility(View.GONE);
+        }
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
