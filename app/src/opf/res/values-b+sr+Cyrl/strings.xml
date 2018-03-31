@@ -11,5 +11,5 @@
   <string name="website_product">https://world.openproductsfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openproductsfacts.org/contributor/</string>
-  <string name="txtHome">Open Products Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
+  <string name="txtHome">Open Products Facts is an open database of all products in the world.</string>
 </resources>
