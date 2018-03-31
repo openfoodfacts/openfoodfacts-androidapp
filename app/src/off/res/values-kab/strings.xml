@@ -19,7 +19,8 @@
   <string name="slide_3_title">Get the Nutriscore</string>
   <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
   <string name="slide_4_title">Works offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet Connection right now</string>
+  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
   <string name="txtDialogsContent">Afaris-nni i d-tegreḍ ur yelli ara ɛad deg Open Food Facts. Di leɛnaya-k rnu-t-id !</string>
   <string name="txtDialogsContentPowerMode">Afaris-nni i d-tegreḍ yella yakkan deg Open Food Facts</string>
+  <string name="msg_share">Look at this product on Open Food Facts :</string>
 </resources>
