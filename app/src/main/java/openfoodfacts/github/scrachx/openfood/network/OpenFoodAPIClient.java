@@ -300,6 +300,34 @@ public class OpenFoodAPIClient {
     }
 
 
+    public void onResponseCallForPostFunction(Call<State> call, Response<State> response, Activity activity, LoadToast lt, final OnProductSentCallback productSentCallback, SendProduct product) {
+        if (!response.isSuccessful() || response.body().getStatus() == 0) {
+            lt.error();
+            productSentCallback.onProductSentResponse(false);
+            return;
+        }
+
+        String imguploadFront = product.getImgupload_front();
+        if (StringUtils.isNotEmpty(imguploadFront)) {
+            ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
+            postImg(activity, image);
+        }
+
+        String imguploadIngredients = product.getImgupload_ingredients();
+        if (StringUtils.isNotEmpty(imguploadIngredients)) {
+            postImg(activity, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)));
+        }
+
+        String imguploadNutrition = product.getImgupload_nutrition();
+        if (StringUtils.isNotBlank(imguploadNutrition)) {
+            postImg(activity, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)));
+        }
+
+        lt.success();
+        productSentCallback.onProductSentResponse(true);
+    }
+
+
     /**
      * @return This api service gets products of provided brand.
      */
@@ -307,13 +335,35 @@ public class OpenFoodAPIClient {
         return apiService;
     }
 
+    public void getBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
+
+        apiService.getProductByBrands(brand, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+                onBrandCallback.onBrandResponse(true, response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+                onBrandCallback.onBrandResponse(false, null);
+            }
+        });
+
+
+    }
+
+    /**
+     * This method is used to upload products.
+     * Conditional statements in this method ensures that data which is being sent on server is correct
+     * and if the product is already present with more information then the server doesn't assume to delete that
+     * and write new product's data over that.
+     */
     public void post(final Activity activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
         final LoadToast lt = new LoadToast(activity);
         lt.setText(activity.getString(R.string.toastSending));
         lt.setBackgroundColor(activity.getResources().getColor(R.color.blue));
         lt.setTextColor(activity.getResources().getColor(R.color.white));
         lt.show();
-
 
         if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity() == null) {
             apiService.saveProductWithoutNameBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
