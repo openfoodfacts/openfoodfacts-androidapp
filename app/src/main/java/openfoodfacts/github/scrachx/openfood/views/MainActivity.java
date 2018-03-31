@@ -9,6 +9,8 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -62,6 +64,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -95,6 +98,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private SharedPreferences mSharedPref;
     PrimaryDrawerItem primaryDrawerItem;
     private int positionOfOfflineBadeItem;
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private ShakeDetector mShakeDetector;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +123,21 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         FragmentManager fragmentManager = getSupportFragmentManager();
         mSendProductDao = Utils.getAppDaoSession(MainActivity.this).getSendProductDao();
         numberOFSavedProducts = mSendProductDao.loadAll().size();
+
+
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mShakeDetector = new ShakeDetector();
+
+        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
+            @Override
+            public void onShake(int count) {
+
+                scan();
+
+
+            }
+        });
 
 
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
@@ -270,7 +292,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                         .getLaunchIntentForPackage(BuildConfig.OFOTHERLINKAPP);
                                 if (LaunchIntent != null) {
                                     startActivity(LaunchIntent);
-                                }else{
+                                } else {
                                     Toast.makeText(this, R.string.app_disabled_text, Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent();
                                     intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -553,7 +575,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         });
 
 
-
         return true;
     }
 
@@ -698,5 +719,18 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     public void setItemSelected(@NavigationDrawerType Integer type) {
         result.setSelection(type, false);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+
     }
 }
