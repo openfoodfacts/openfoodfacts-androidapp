@@ -168,8 +168,15 @@ public class SaveProductOfflineActivity extends BaseActivity {
         String bookBarcodeTest = mBarcode.substring(0, 3);
         if (bookBarcodeTest.equals("978") || bookBarcodeTest.equals("979")) {
             messageView.setText(R.string.not_support_books);
-            mContainerView.setVisibility(View.VISIBLE);
+            if (BuildConfig.FLAVOR.equals("opf")) {
+                mContainerView.setVisibility(View.GONE);
+            } else {
+                mContainerView.setVisibility(View.VISIBLE);
+            }
         }
+
+
+
 
         barcodeText.append(" " + mBarcode);
 
