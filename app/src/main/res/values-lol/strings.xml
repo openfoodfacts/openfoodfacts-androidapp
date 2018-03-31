@@ -420,4 +420,11 @@
   <string name="sort">crwdns46301:0crwdne46301:0</string>
   <string name="by_nutrition_grade">crwdns46302:0crwdne46302:0</string>
   <string name="sort_by">crwdns46303:0crwdne46303:0</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">crwdns46328:0crwdne46328:0</string>
+  <string name="no_barcode">crwdns46329:0crwdne46329:0</string>
+  <string name="enter_barcode">crwdns46330:0crwdne46330:0</string>
+  <string name="format_error">crwdns46331:0crwdne46331:0</string>
+  <string name="code_detected">crwdns46332:0crwdne46332:0</string>
+  <string name="do_you_want_to">crwdns46333:0crwdne46333:0</string>
 </resources>
