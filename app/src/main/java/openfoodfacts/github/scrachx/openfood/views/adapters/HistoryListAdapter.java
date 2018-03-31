@@ -70,6 +70,8 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         if (item.getUrl() == null) {
             holder.historyImageProgressbar.setVisibility(View.GONE);
         }
+
+        // Load Image if disableLoad is false
         if (!disableLoad) {
             Picasso.with(mActivity)
                     .load(item.getUrl())

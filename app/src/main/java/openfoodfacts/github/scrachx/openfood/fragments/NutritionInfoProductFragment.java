@@ -81,6 +81,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
     private String barcode;
     private OpenFoodAPIClient api;
     private NutritionInfoProductFragment mFragment;
+    //boolean to determine if image should be loaded or not
     private boolean disableLoad = false;
 
     @Override
@@ -96,6 +97,8 @@ public class NutritionInfoProductFragment extends BaseFragment {
 
         Intent intent = getActivity().getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
+
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set disableLoad to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
         if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
@@ -116,6 +119,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
         if (isNotBlank(product.getImageNutritionUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
 
+            // Load Image if disableLoad is false
             if (!disableLoad) {
                 Picasso.with(view.getContext())
                         .load(product.getImageNutritionUrl())

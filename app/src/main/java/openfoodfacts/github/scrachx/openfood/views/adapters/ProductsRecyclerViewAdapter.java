@@ -67,6 +67,8 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
             productHolder.vProductImageProgressbar.setVisibility(View.VISIBLE);
             if (products.get(position).getImageSmallUrl() == null)
                 productHolder.vProductImageProgressbar.setVisibility(View.GONE);
+
+            // Load Image if disableLoad is false
             if (!disableLoad) {
                 Picasso.with(context)
                         .load(products.get(position).getImageSmallUrl())

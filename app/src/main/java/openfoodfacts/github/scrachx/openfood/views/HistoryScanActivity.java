@@ -72,6 +72,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     TextView infoView;
     @BindView(R.id.history_progressbar)
     ProgressBar historyProgressbar;
+    //boolean to determine if image should be loaded or not
     private boolean disableLoad = false;
 
     @Override
@@ -86,6 +87,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set disableLoad to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(HistoryScanActivity.this);
         Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
         if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {

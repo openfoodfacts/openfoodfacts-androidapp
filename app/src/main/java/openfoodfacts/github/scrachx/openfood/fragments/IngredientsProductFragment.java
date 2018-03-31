@@ -113,6 +113,7 @@ public class IngredientsProductFragment extends BaseFragment {
     private WikidataApiClient apiClientForWikiData;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
+    //boolean to determine if image should be loaded or not
     private boolean disableLoad = false;
 
     @Override
@@ -138,6 +139,7 @@ public class IngredientsProductFragment extends BaseFragment {
         mState = (State) intent.getExtras().getSerializable("state");
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
 
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set disableLoad to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
         if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
@@ -210,6 +212,7 @@ public class IngredientsProductFragment extends BaseFragment {
         if (isNotBlank(product.getImageIngredientsUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
 
+            // Load Image if disableLoad is false
             if(!disableLoad) {
                 Picasso.with(view.getContext())
                         .load(product.getImageIngredientsUrl())

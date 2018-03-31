@@ -68,6 +68,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private int mCountProducts = 0;
     private int pageAddress = 1;
     private Boolean setupDone = false;
+    //boolean to determine if image should be loaded or not
     private boolean disableLoad = false;
 
 
@@ -140,6 +141,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         searchQuery = extras.getString(SEARCH_QUERY);
         newSearchQuery();
 
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set disableLoad to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
         if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {
