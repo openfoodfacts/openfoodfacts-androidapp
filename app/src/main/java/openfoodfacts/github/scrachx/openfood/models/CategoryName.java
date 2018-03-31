@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
@@ -98,7 +99,15 @@ public class CategoryName {
         if(this.wikiDataId==null){
             return "null";
         }
-        return this.wikiDataId;
+        String res = this.wikiDataId;
+        int startIndex = res.indexOf("en");
+        startIndex= startIndex + 5;
+        int lastIndex = res.lastIndexOf("\"");
+        if(startIndex<3 || lastIndex < 3 ){
+            return res;
+        }
+        res = res.substring(startIndex,lastIndex);
+        return res;
     }
 
     public void setWikiDataId(String wikiDataId) {

@@ -386,12 +386,12 @@
   <string name="pref_resolution_summary">Auflösung für das Hochladen von Fotos auswählen</string>
   <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>
   <string name="can_add_barcode">Probleme beim Einlesen?\nNach oben wischen, um den Strichcode einzugeben</string>
-  <string name="wikidata_information">Going further</string>
-  <string name="description">Description: </string>
-  <string name="title">Title: </string>
-  <string name="Wikipedia">View on Wikipedia</string>
-  <string name="Browse_Products">Browse Products</string>
-  <string name="swipe_down">Swipe down</string>
+  <string name="wikidata_information">Weitergehen</string>
+  <string name="description">Beschreibung: </string>
+  <string name="title">Titel: </string>
+  <string name="Wikipedia">Auf Wikipedia ansehen</string>
+  <string name="Browse_Products">Produkte durchsuchen</string>
+  <string name="swipe_down">Nach unten wischen</string>
   <string name="brand_string">Marke</string>
   <string name="additive_string">Zusatzstoff</string>
   <string name="search_string">Suchen</string>
@@ -412,5 +412,5 @@
   <string name="mineral_tags_text">Mineralien:</string>
   <string name="other_tags_text">Weitere Stoffe:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
+  <string name="wikidata">Wikidata-Informationen</string>
 </resources>
