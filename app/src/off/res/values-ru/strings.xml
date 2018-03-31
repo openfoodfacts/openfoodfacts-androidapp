@@ -20,4 +20,6 @@
   <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
   <string name="slide_4_title">Работать автономно</string>
   <string name="slide_4_desc">Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас</string>
+  <string name="txtDialogsContent">Отсканированного продукта ещё нет в  базе Open Food Facts. Добавьте его, пожалуйста.</string>
+  <string name="txtDialogsContentPowerMode">Просканированный продукт уже внесён в Open Food Facts.</string>
 </resources>
