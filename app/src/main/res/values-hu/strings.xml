@@ -386,12 +386,12 @@
   <string name="pref_resolution_summary">Válasszon felbontást kép feltöltéshez</string>
   <string name="image_upload_resolution">Képfeltöltés felbontása</string>
   <string name="can_add_barcode">Gond adódott a beolvasással?\nGépelje be a vonalkódot</string>
-  <string name="wikidata_information">Going further</string>
-  <string name="description">Description: </string>
-  <string name="title">Title: </string>
-  <string name="Wikipedia">View on Wikipedia</string>
-  <string name="Browse_Products">Browse Products</string>
-  <string name="swipe_down">Swipe down</string>
+  <string name="wikidata_information">Továbblép</string>
+  <string name="description">Leírás: </string>
+  <string name="title">Cím: </string>
+  <string name="Wikipedia">Megtekintés a Wikipedia-n</string>
+  <string name="Browse_Products">Termékek böngészése</string>
+  <string name="swipe_down">Húzás lefelé</string>
   <string name="brand_string">Márka</string>
   <string name="additive_string">Adalékanyag</string>
   <string name="search_string">Keres</string>
@@ -412,5 +412,19 @@
   <string name="mineral_tags_text">Ásványi anyagok:</string>
   <string name="other_tags_text">Egyéb anyagok:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
+  <string name="wikidata">Wikidata adat</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Márka</string>
+  <string name="by_barcode">Vonalkód</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
 </resources>

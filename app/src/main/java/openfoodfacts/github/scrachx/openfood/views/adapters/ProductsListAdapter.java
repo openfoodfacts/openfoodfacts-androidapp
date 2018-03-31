@@ -51,8 +51,8 @@ public class ProductsListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.products_list_item, null);
         }
 
-        ImageView imgIcon = (ImageView) convertView.findViewById(R.id.imgProduct);
-        TextView txtTitle = (TextView) convertView.findViewById(R.id.nameProduct);
+        ImageView imgIcon = convertView.findViewById(R.id.imgProduct);
+        TextView txtTitle = convertView.findViewById(R.id.nameProduct);
 
         Picasso.with(context)
                 .load(products.get(position).getImageSmallUrl())

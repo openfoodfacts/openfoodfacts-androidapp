@@ -20,4 +20,6 @@
   <string name="slide_3_desc">כל מוצרי הקוסמטיקה שלך ברשימה נוחה אחת שניתן לייצא</string>
   <string name="slide_4_title">תמיכה במצב בלתי מקוון</string>
   <string name="slide_4_desc">ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע</string>
+  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
+  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
 </resources>

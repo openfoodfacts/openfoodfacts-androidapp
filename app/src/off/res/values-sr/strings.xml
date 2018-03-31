@@ -20,4 +20,6 @@
   <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
   <string name="slide_4_title">Works offline</string>
   <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet Connection right now</string>
+  <string name="txtDialogsContent">Proizvod koji ste skenirali ne postoji u bazi Open Food Facts. Molimo Vas da ga dodate.</string>
+  <string name="txtDialogsContentPowerMode">Proizvod koji ste skenirali već postoji u bazi Open Food Facts.</string>
 </resources>

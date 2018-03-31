@@ -53,57 +53,77 @@
 
     <!-- Text units -->
     <string-array name="languages_array" translatable="false">
-        <item>en</item>
-        <item>fr</item>
-        <item>es</item>
-        <item>it</item>
-        <item>de</item>
-        <item>ja</item>
-        <item>ru</item>
-        <item>pt</item>
-        <item>sv</item>
-        <item>my</item>
-        <item>kk</item>
-        <item>hy</item>
-        <item>el</item>
-        <item>he</item>
-        <item>gl</item>
-        <item>ca</item>
-        <item>cs</item>
-        <item>ar</item>
-        <item>fi</item>
-        <item>hi</item>
-        <item>kab</item>
-        <item>ko</item>
-        <item>lv</item>
-        <item>nl</item>
-        <item>pt-BR</item>
-        <item>ro</item>
-        <item>sv</item>
-        <item>zh</item>
-        <item>nb</item>
-        <item>da</item>
-        <item>zh-CN</item>
-        <item>fa</item>
-        <item>b+sr+Latn</item>
+        <item>aa</item>
+        <item>ach</item>
         <item>af</item>
         <item>ak</item>
         <item>am</item>
+        <item>ar</item>
         <item>as</item>
-        <item>zh-TW</item>
-        <item>zh-HK</item>
-        <item>hu</item>
-        <item>tr</item>
-        <item>id</item>
-        <item>tl</item>
-        <item>fil</item>
-        <item>nl-BE</item>
-        <item>bn</item>
-        <item>sl</item>
-        <item>ku</item>
-        <item>eo</item>
-        <item>pl</item>
+        <item>ast</item>
+        <item>az</item>
         <item>b+sr+Cyrl</item>
+        <item>b+sr+Latn</item>
+        <item>be</item>
+        <item>bn</item>
+        <item>ca</item>
+        <item>cs</item>
+        <item>da</item>
+        <item>de</item>
+        <item>el</item>
+        <item>en</item>
+        <item>eo</item>
+        <item>es</item>
+        <item>fa</item>
+        <item>fi</item>
+        <item>fil</item>
+        <item>fr</item>
+        <item>ga</item>
+        <item>gl</item>
+        <item>gu</item>
+        <item>he</item>
+        <item>hi</item>
+        <item>hu</item>
+        <item>hr</item>
+        <item>hy</item>
+        <item>id</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>kab</item>
+        <item>kk</item>
+        <item>ko</item>
+        <item>ku</item>
+        <item>lv</item>
+        <item>my</item>
+        <item>no</item>
+        <item>nb</item>
+        <item>nl-BE</item>
+        <item>nl</item>
+        <item>pl</item>
+        <item>pt-BR</item>
+        <item>pt</item>
+        <item>ro</item>
+        <item>ru</item>
+        <item>sl</item>
+        <item>sv</item>
+        <item>te</item>
+        <item>tg</item>
+        <item>th</item>
+        <item>ti</item>
+        <item>tl</item>
+        <item>tr</item>
+        <item>uk</item>
+        <item>vi</item>
+        <item>wa</item>
+        <item>wo</item>
+        <item>xh</item>
+        <item>yi</item>
+        <item>yo</item>
+        <item>zh-CN</item>
+        <item>zh-HK</item>
+        <item>zh-TW</item>
+        <item>zh</item>
+        <item>zu</item>
     </string-array>
 
     <string-array name="images_array">
@@ -512,5 +532,21 @@
     <string name="txtGallery">Gallery</string>
     <string name="txtOptions">Options</string>
 
+    <string name="by_title">Title</string>
+    <string name="by_brand">Brand</string>
+    <string name="by_barcode">Barcode</string>
+    <string name="by_time">Recently Viewed</string>
+    <string name="sort">Sort</string>
+    <string name="by_nutrition_grade">Nutrition Grade</string>
+    <string name="sort_by">Sort By</string>
+
+
+    <!-- strings related to share images -->
+    <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+    <string name="no_barcode">We have not detected any barcode</string>
+    <string name="enter_barcode">Please type the barcode below</string>
+    <string name="format_error">Wrong Barcode/QR format</string>
+    <string name="code_detected">We have detected the barcode</string>
+    <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
 
 </resources>

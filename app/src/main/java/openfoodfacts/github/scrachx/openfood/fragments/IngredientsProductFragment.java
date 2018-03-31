@@ -361,13 +361,12 @@ public class IngredientsProductFragment extends BaseFragment {
             }
         };
 
-        if (additive.getIsWikiDataIdPresent()) {
-            spannableStringBuilder.append(additive.getName() + " : Wiki link present");
-        } else {
-            spannableStringBuilder.append(additive.getName());
-        }
+
+        spannableStringBuilder.append(additive.getName());
+
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableStringBuilder;
+
     }
 
     /**

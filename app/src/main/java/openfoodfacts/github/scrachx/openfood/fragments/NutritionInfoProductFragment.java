@@ -84,7 +84,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
     private SendProduct mSendProduct;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
         mFragment = this;
         return createView(inflater, container, R.layout.fragment_nutrition_info_product);

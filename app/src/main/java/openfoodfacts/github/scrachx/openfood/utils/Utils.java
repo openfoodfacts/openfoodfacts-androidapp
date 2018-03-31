@@ -194,6 +194,7 @@ public class Utils {
             o2.inSampleSize = scale;
             return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
         return null;
     }

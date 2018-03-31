@@ -20,4 +20,6 @@
   <string name="slide_3_desc">Wirtualny podgląd właściwości odżywczych twoich ulubionych produktów</string>
   <string name="slide_4_title">Działa offline</string>
   <string name="slide_4_desc">Możesz dodawać nowe produkty, mimo braku połączenia</string>
+  <string name="txtDialogsContent">Zeskanowany produkt nie figuruje jeszcze w Open Food Facts. Dodaj go.</string>
+  <string name="txtDialogsContentPowerMode">Zeskanowany produkt już widnieje na Open Food Facts.</string>
 </resources>

@@ -17,7 +17,9 @@
   <string name="slide_2_title">Iegūstiet faktus</string>
   <string name="slide_2_desc">Plaša informācija par skenēto produktu brīvi pieejama jums</string>
   <string name="slide_3_title">Sekojiet līdzi produktiem kurus izmantojat</string>
-  <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
+  <string name="slide_3_desc">Visu kosmētikas līdzekļu jūs izmantojat vienā ērtajā sarakstā, kuru varat eksportēt</string>
   <string name="slide_4_title">Darbojas bezsaistē</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+  <string name="slide_4_desc">Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma</string>
+  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
+  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
 </resources>

@@ -25,7 +25,7 @@
   <string name="message_in_activity_save_product_offline">Vismaz viens attēls ir nepieciešams, lai pievienotu jaunu produktu.</string>
   <string name="product_incomplete_message">Visa nepieciešamā informācija par šo produktu nav pieejama, tāpēc nav iespējams veikt alergēnu pārbaudi.</string>
   <string name="no_offline_data">Viss gatavs</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="first_offline">Šeit parādīsies produkti, kuri pievienoti bezsaistē</string>
   <!-- Image Upload -->
   <string-array name="upload_image">
     <item>640 X 480</item>
@@ -46,7 +46,7 @@
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
-    <item>ml</item>
+    <item>l</item>
     <item>ml</item>
     <item>cl</item>
     <item>fl oz</item>
@@ -367,7 +367,7 @@
   <string name="please_check_your_connection">Lūdzu, pārbaudiet savu savienojumu.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Izvērstā meklēšana &amp; Diagrammas</string>
-  <string name="connectivity_check">Please check your internet connection</string>
+  <string name="connectivity_check">Lūdzu, pārbaudiet savu interneta savienojumu</string>
   <string name="dismiss">Atcelt</string>
   <string name="Terms">Noteikumi</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -389,31 +389,45 @@
   <string name="pref_resolution_summary">Izvēlieties izšķirtspēju attēla augšupielādei</string>
   <string name="image_upload_resolution">Attēla augšupielādes izšķirtspēja</string>
   <string name="can_add_barcode">Vai jums ir problēmas ar skenēšanu?, skaties augstāk lai ievadītu svītrkodu manuāli</string>
-  <string name="wikidata_information">Going further</string>
-  <string name="description">Description: </string>
-  <string name="title">Title: </string>
-  <string name="Wikipedia">View on Wikipedia</string>
-  <string name="Browse_Products">Browse Products</string>
-  <string name="swipe_down">Swipe down</string>
+  <string name="wikidata_information">Ejot tālāk</string>
+  <string name="description">Apraksts: </string>
+  <string name="title">Nosaukums: </string>
+  <string name="Wikipedia">Skatīt Wikipēdijā</string>
+  <string name="Browse_Products">Pārlūkot produktus</string>
+  <string name="swipe_down">Velciet uz leju</string>
   <string name="brand_string">Zīmols</string>
   <string name="additive_string">Piedeva</string>
   <string name="search_string">Meklēt</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">Veikals</string>
   <string name="packaging_subtitle">Iepakojums</string>
-  <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="last_seen_string">%1$d %2$s atpakaļ</string>
   <string name="store_string">Veikals</string>
   <string name="packaging_string">Iepakojums</string>
   <string name="label_string">Uzlīme</string>
   <string name="category_string">Kategorija</string>
   <string name="connection">Savienots</string>
   <string name="contributor_string">Atbalstītājs</string>
-  <string name="app_disabled_text">Application is disabled</string>
+  <string name="app_disabled_text">Pieteikums ir atspējots</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
-  <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
-  <string name="other_tags_text">Other Substances:</string>
+  <string name="vitamin_tags_text">Vitamīni:</string>
+  <string name="amino_acid_tags_text">Aminoskābes:</string>
+  <string name="mineral_tags_text">Minerālvielas:</string>
+  <string name="other_tags_text">Citas vielas:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
+  <string name="wikidata">Wikidata dati</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Zīmols</string>
+  <string name="by_barcode">Svītrkods</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
 </resources>

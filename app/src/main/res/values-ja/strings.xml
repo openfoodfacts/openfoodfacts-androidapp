@@ -383,12 +383,12 @@
   <string name="pref_resolution_summary">画像アップロードの解像度を選択します</string>
   <string name="image_upload_resolution">画像アップロードの解像度</string>
   <string name="can_add_barcode">スキャンがうまくいきませんか?\n上にドラッグしてバーコードを入力してください</string>
-  <string name="wikidata_information">Going further</string>
-  <string name="description">Description: </string>
-  <string name="title">Title: </string>
-  <string name="Wikipedia">View on Wikipedia</string>
-  <string name="Browse_Products">Browse Products</string>
-  <string name="swipe_down">Swipe down</string>
+  <string name="wikidata_information">もっと遠くへ</string>
+  <string name="description">説明: </string>
+  <string name="title">タイトル: </string>
+  <string name="Wikipedia">ウィキペディアで見る</string>
+  <string name="Browse_Products">製品を見る</string>
+  <string name="swipe_down">下にスワイプ</string>
   <string name="brand_string">ブランド（会社名）</string>
   <string name="additive_string">添加物</string>
   <string name="search_string">検索</string>
@@ -409,5 +409,19 @@
   <string name="mineral_tags_text">ミネラル:</string>
   <string name="other_tags_text">その他の成分:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
+  <string name="wikidata">ウィキデータのデータ</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">ブランド（会社名）</string>
+  <string name="by_barcode">バーコード</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
 </resources>

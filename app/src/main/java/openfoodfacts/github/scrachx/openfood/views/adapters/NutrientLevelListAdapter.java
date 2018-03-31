@@ -1,13 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -75,8 +73,8 @@ public class NutrientLevelListAdapter extends RecyclerView.Adapter<NutrientLevel
 
         public NutrientViewHolder(View itemView) {
             super(itemView);
-            imgIcon = (ImageView) itemView.findViewById(R.id.imgLevel);
-            txtTitle = (TextView) itemView.findViewById(R.id.descriptionLevel);
+            imgIcon = itemView.findViewById(R.id.imgLevel);
+            txtTitle = itemView.findViewById(R.id.descriptionLevel);
 
 
         }

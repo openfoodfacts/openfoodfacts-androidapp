@@ -52,6 +52,16 @@ android {
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
+
+        opf {
+            applicationId "org.openproductsfacts.scanner"
+            resValue "string", "app_name", "Open Products Facts"
+            buildConfigField 'String', 'HOST', '"https://ssl-api.openproductsfacts.org"'
+            buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
+            buildConfigField 'String', 'OFWEBSITE', '"https://world.openproductsfacts.org/"'
+            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
+        }
+
     }
 
 
@@ -106,7 +116,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 6
+    schemaVersion 7
 }
 android {
     // Other settings

@@ -103,7 +103,6 @@ public class SaveProductOfflineActivity extends BaseActivity {
         fromOfflineEdit = (boolean) getIntent().getBooleanExtra("offlineEdit", false);
 
         preProduct = new SendProduct();
-
         mBarcode = product.getCode();
         api = new OpenFoodAPIClient(this);
         setSupportActionBar(toolbar);
@@ -317,7 +316,6 @@ public class SaveProductOfflineActivity extends BaseActivity {
         if (!isSavingGoingOn)
             saveProduct(true);
     }
-
 
     @Override
     protected void onStop() {
