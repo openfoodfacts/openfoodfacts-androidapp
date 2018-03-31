@@ -38,18 +38,13 @@ public class ScannerFragmentActivity extends BaseActivity {
         bottomSheetBehavior = BottomSheetBehavior.from(v);
 
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            }
-        }, 15000);
+        handler.postDelayed(() -> bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED), 15000);
 
         setupToolbar();
     }
 
     public void setupToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.try_it_scan_now);
         setSupportActionBar(toolbar);
         final ActionBar ab = getSupportActionBar();

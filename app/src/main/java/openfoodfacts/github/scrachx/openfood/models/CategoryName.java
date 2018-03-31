@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
@@ -24,13 +25,29 @@ public class CategoryName {
 
     private String name;
 
-    @Generated(hash = 607384862)
+    private String wikiDataId;
+
+    private Boolean isWikiDataIdPresent;
+
+    @Generated(hash = 1992623652)
     public CategoryName(Long id, String categoryTag, String languageCode,
-                        String name) {
+                        String name, String wikiDataId, Boolean isWikiDataIdPresent) {
         this.id = id;
         this.categoryTag = categoryTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
+    }
+
+    @Keep
+    public CategoryName(String categoryTag, String languageCode,
+                        String name, String wikiDataId) {
+        this.categoryTag = categoryTag;
+        this.languageCode = languageCode;
+        this.name = name;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = true;
     }
 
     @Keep
@@ -39,6 +56,7 @@ public class CategoryName {
         this.categoryTag = categoryTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.isWikiDataIdPresent = false;
     }
 
     @Generated(hash = 2002473108)
@@ -75,6 +93,33 @@ public class CategoryName {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getWikiDataId() {
+        if(this.wikiDataId==null){
+            return "null";
+        }
+        String res = this.wikiDataId;
+        int startIndex = res.indexOf("en");
+        startIndex= startIndex + 5;
+        int lastIndex = res.lastIndexOf("\"");
+        if(startIndex<3 || lastIndex < 3 ){
+            return res;
+        }
+        res = res.substring(startIndex,lastIndex);
+        return res;
+    }
+
+    public void setWikiDataId(String wikiDataId) {
+        this.wikiDataId = wikiDataId;
+    }
+
+    public Boolean getIsWikiDataIdPresent() {
+        return this.isWikiDataIdPresent;
+    }
+
+    public void setIsWikiDataIdPresent(Boolean isWikiDataIdPresent) {
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 
 }

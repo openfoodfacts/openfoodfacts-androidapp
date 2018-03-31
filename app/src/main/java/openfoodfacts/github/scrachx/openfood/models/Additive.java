@@ -25,6 +25,11 @@ public class Additive {
     @Unique
     private String tag;
 
+    @Unique
+    private String wikiDataId;
+
+    private Boolean isWikiDataIdPresent;
+
     @ToMany(joinProperties = {
             @JoinProperty(name = "tag", referencedName = "additiveTag")
     })
@@ -42,10 +47,20 @@ public class Additive {
     @Generated(hash = 1566396314)
     private transient AdditiveDao myDao;
 
-    @Generated(hash = 605457668)
-    public Additive(Long id, String tag) {
+    @Generated(hash = 1235442037)
+    public Additive(Long id, String tag, String wikiDataId, Boolean isWikiDataIdPresent) {
         this.id = id;
         this.tag = tag;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
+    }
+
+    @Keep
+    public Additive(String tag, List<AdditiveName> names, String wikiDataId) {
+        this.names = names;
+        this.tag = tag;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = true;
     }
 
     @Keep
@@ -138,6 +153,22 @@ public class Additive {
             throw new DaoException("Entity is detached from DAO context");
         }
         myDao.update(this);
+    }
+
+    public String getWikiDataId() {
+        return this.wikiDataId;
+    }
+
+    public void setWikiDataId(String wikiDataId) {
+        this.wikiDataId = wikiDataId;
+    }
+
+    public Boolean getIsWikiDataIdPresent() {
+        return this.isWikiDataIdPresent;
+    }
+
+    public void setIsWikiDataIdPresent(Boolean isWikiDataIdPresent) {
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 
     /** called by internal mechanisms, do not call yourself. */

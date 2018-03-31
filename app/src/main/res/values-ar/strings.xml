@@ -10,12 +10,12 @@
     <item quantity="other"> minutes</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="zero"> hours</item>
-    <item quantity="one"> hour</item>
-    <item quantity="two"> hours</item>
-    <item quantity="few"> hours</item>
-    <item quantity="many"> hours</item>
-    <item quantity="other"> hours</item>
+    <item quantity="zero"> ساعات</item>
+    <item quantity="one"> ساعة</item>
+    <item quantity="two"> ساعتان</item>
+    <item quantity="few"> بضع ساعات</item>
+    <item quantity="many"> ساعات</item>
+    <item quantity="other"> ساعات</item>
   </plurals>
   <plurals name="days">
     <item quantity="zero"> days</item>
@@ -36,6 +36,12 @@
   <string name="no_offline_data">You\'re all done</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>الملخص</item>
@@ -260,7 +266,7 @@
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
   <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">يتعذر تحميل نتائج البحث</string>
-  <string name="something_went_wrong">Sorry, something went wrong…</string>
+  <string name="something_went_wrong">عذراً، حدث خطأ ما…</string>
   <string name="txt_try_again">أعد المحاولة</string>
   <string name="nutrition_lactose">اللاكتوز</string>
   <string name="nutrition_casein">الكازين</string>
@@ -329,29 +335,29 @@
   <string name="take_more_pictures">التقط المزيد من الصور</string>
   <string name="txtSaturatedFat">الدهون المشبعة</string>
   <!-- String related to App Shortcuts -->
-  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="disabled_message">الاختصار غير متاح</string>
   <string name="scan_shortcut_short_label">مسح</string>
-  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="scan_shortcut_long_label">فحص المنتج</string>
   <string name="barcode_shortcut_short_label">بحث</string>
-  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="barcode_shortcut_long_label">البحث عن طريق الباركود</string>
   <string name="history_shortcut_short_label">السجل</string>
   <string name="history_shortcut_long_label">السجل</string>
-  <string name="contributions_shortcut_short_label">Contributions</string>
-  <string name="contributions_shortcut_long_label">My Contributions</string>
-  <string name="forgot_password">Forgot Password</string>
-  <string name="next">NEXT</string>
-  <string name="skip">SKIP</string>
-  <string name="start">GOT IT</string>
-  <string name="contact">Contact</string>
-  <string name="contact_summary">Contact the team</string>
-  <string name="email_not_found">No email applications found</string>
-  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
-  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
-  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="contributions_shortcut_short_label">مساهمات</string>
+  <string name="contributions_shortcut_long_label">مساهماتي</string>
+  <string name="forgot_password">نسيت كلمة المرور</string>
+  <string name="next">التالي</string>
+  <string name="skip">تخطى</string>
+  <string name="start">فهمت ذلك</string>
+  <string name="contact">جهة الاتصال</string>
+  <string name="contact_summary">اتصل بالفريق</string>
+  <string name="email_not_found">لم يتم العثور على تطبيقات البريد الإلكتروني</string>
+  <string name="airplane_mode_active_dialog_title">تم تمكين وضع الطيران</string>
+  <string name="airplane_mode_active_dialog_message">وضع الطيران فعّال ، يرجى تعطيل هذا للمتابعة.</string>
+  <string name="airplane_mode_active_dialog_negative">تجاهل</string>
   <string name="airplane_mode_active_dialog_positive">الإعدادات</string>
   <string name="device_offline_dialog_title">Network unavailable</string>
   <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
-  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_negative">تجاهل</string>
   <string name="device_offline_dialog_positive">الإعدادات</string>
   <string name="saving">Saving…</string>
   <string name="scan_first_product">Scan First Product</string>
@@ -370,6 +376,8 @@
   <string name="please_check_your_connection">Please check your connection.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Advanced Search &amp; Charts</string>
+  <string name="connectivity_check">Please check your internet connection</string>
+  <string name="dismiss">تجاهل</string>
   <string name="Terms">Terms</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">General</string>
@@ -390,6 +398,12 @@
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image Upload Resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+  <string name="wikidata_information">Going further</string>
+  <string name="description">Description: </string>
+  <string name="title">Title: </string>
+  <string name="Wikipedia">View on Wikipedia</string>
+  <string name="Browse_Products">Browse Products</string>
+  <string name="swipe_down">Swipe down</string>
   <string name="brand_string">العلامة التجارية</string>
   <string name="additive_string">Additive</string>
   <string name="search_string">بحث</string>
@@ -403,4 +417,12 @@
   <string name="category_string">Category</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
+  <string name="app_disabled_text">Application is disabled</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="mineral_tags_text">Minerals:</string>
+  <string name="other_tags_text">Other Substances:</string>
+  <!--shared element transition key-->
+  <string name="wikidata">Wikidata data</string>
 </resources>

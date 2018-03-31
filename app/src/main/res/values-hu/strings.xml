@@ -21,9 +21,15 @@
   <string name="text_barcode">Vonalkód beírása :</string>
   <string name="message_in_activity_save_product_offline">Csak egy fénykép kötelező egy új termék elküldéséhez.</string>
   <string name="product_incomplete_message">Ez a termékoldal nem teljes. Ennek eredményeként nem tudtuk elvégezni az allergén ellenőrzést.</string>
-  <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="no_offline_data">Mindennel elkészült</string>
+  <string name="first_offline">A kapcsolat nélküli módban hozzáadott termékek itt fognak megjelenni</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Összefoglalás</item>
@@ -213,7 +219,7 @@
   <string name="nutrition_fat_short_name">Zsír (g)</string>
   <string name="nutrition_fiber">Élelmi rost</string>
   <string name="nutrition_fiber_short_name">Élelmi rost (g)</string>
-  <string name="nutrition_header">Tápanyag ismertető</string>
+  <string name="nutrition_header">Tápértékadatok</string>
   <string name="nutrition_no_data_message">Nincs elérhető adat a termékről</string>
   <string name="nutrition_per_quantity">100g/100ml-ben</string>
   <string name="nutrition_proteins">Fehérje</string>
@@ -358,6 +364,8 @@
   <string name="please_check_your_connection">Kérjük, ellenőrizze a hálózati kapcsolatát.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Részletes Keresés &amp; Diagramok</string>
+  <string name="connectivity_check">Kérjük, ellenőrizze az internet kapcsolatát</string>
+  <string name="dismiss">Elutasít</string>
   <string name="Terms">Feltételek</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Általános</string>
@@ -378,6 +386,12 @@
   <string name="pref_resolution_summary">Válasszon felbontást kép feltöltéshez</string>
   <string name="image_upload_resolution">Képfeltöltés felbontása</string>
   <string name="can_add_barcode">Gond adódott a beolvasással?\nGépelje be a vonalkódot</string>
+  <string name="wikidata_information">Továbblép</string>
+  <string name="description">Leírás: </string>
+  <string name="title">Cím: </string>
+  <string name="Wikipedia">Megtekintés a Wikipedia-n</string>
+  <string name="Browse_Products">Termékek böngészése</string>
+  <string name="swipe_down">Húzás lefelé</string>
   <string name="brand_string">Márka</string>
   <string name="additive_string">Adalékanyag</string>
   <string name="search_string">Keres</string>
@@ -391,4 +405,12 @@
   <string name="category_string">Kategória</string>
   <string name="connection">Csatlakozva</string>
   <string name="contributor_string">Hozzájáruló</string>
+  <string name="app_disabled_text">Az alkalmazás le van tiltva</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitaminok:</string>
+  <string name="amino_acid_tags_text">Aminosavak:</string>
+  <string name="mineral_tags_text">Ásványi anyagok:</string>
+  <string name="other_tags_text">Egyéb anyagok:</string>
+  <!--shared element transition key-->
+  <string name="wikidata">Wikidata adat</string>
 </resources>

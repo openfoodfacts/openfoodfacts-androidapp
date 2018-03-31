@@ -21,9 +21,15 @@
   <string name="text_barcode">Saisissez le code-barre :</string>
   <string name="message_in_activity_save_product_offline">Une seule photo est obligatoire pour envoyer un nouveau produit.</string>
   <string name="product_incomplete_message">Ce produit n\'est pas complet. En conséquence, nous n\'avons pas pu faire le test d\'allergène.</string>
-  <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="no_offline_data">Vous avez terminé</string>
+  <string name="first_offline">Les produits ajoutés hors ligne apparaîtront ici</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Résumé</item>
@@ -358,6 +364,8 @@
   <string name="please_check_your_connection">Veuillez vérifier votre connexion Internet.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget</string>
   <string name="advanced_search_title">Recherche avancée &amp; Graphiques</string>
+  <string name="connectivity_check">Veuillez vérifier votre connexion Internet</string>
+  <string name="dismiss">Ignorer</string>
   <string name="Terms">Conditions d\'utilisation</string>
   <string name="terms_url">https://world-fr.openfoodfacts.org/conditions-d-utilisation</string>
   <string name="preference_header_general">Général</string>
@@ -378,6 +386,12 @@
   <string name="pref_resolution_summary">Choisissez une résolution pour l’envoi d’images</string>
   <string name="image_upload_resolution">Résolution de l\'envoi d\'images</string>
   <string name="can_add_barcode">Vous avez des problèmes de scan ?\nFaites glisser vers le haut pour saisir le code-barre</string>
+  <string name="wikidata_information">Aller plus loin</string>
+  <string name="description">Description : </string>
+  <string name="title">Titre: </string>
+  <string name="Wikipedia">Voir sur Wikipedia</string>
+  <string name="Browse_Products">Parcourir les produits</string>
+  <string name="swipe_down">Glisser vers le bas</string>
   <string name="brand_string">Marque</string>
   <string name="additive_string">Additif</string>
   <string name="search_string">Rechercher</string>
@@ -389,6 +403,14 @@
   <string name="packaging_string">Conditionnement</string>
   <string name="label_string">Label</string>
   <string name="category_string">Categorie</string>
-  <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="connection">Connecté</string>
+  <string name="contributor_string">Contributeur</string>
+  <string name="app_disabled_text">L\'application est désactivée</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitamines:</string>
+  <string name="amino_acid_tags_text">Acides aminés:</string>
+  <string name="mineral_tags_text">Minéraux:</string>
+  <string name="other_tags_text">Autres substances :</string>
+  <!--shared element transition key-->
+  <string name="wikidata">Données de Wikidata</string>
 </resources>

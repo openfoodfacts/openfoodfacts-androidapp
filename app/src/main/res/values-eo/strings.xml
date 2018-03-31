@@ -3,27 +3,33 @@
 <resources>
   <plurals name="minutes">
     <item quantity="one"> minute</item>
-    <item quantity="other"> minutes</item>
+    <item quantity="other"> minutoj</item>
   </plurals>
   <plurals name="hours">
     <item quantity="one"> hour</item>
-    <item quantity="other"> hours</item>
+    <item quantity="other"> horoj</item>
   </plurals>
   <plurals name="days">
     <item quantity="one"> day</item>
-    <item quantity="other"> days</item>
+    <item quantity="other"> tagoj</item>
   </plurals>
   <string name="action_settings">Agordoj</string>
   <string name="action_about">Pri la projekto</string>
   <string name="action_discover">Esploru</string>
-  <string name="contribute">How to contribute</string>
+  <string name="contribute">Kiel kontribui</string>
   <string name="action_find">Trovu</string>
   <string name="text_barcode">Type the barcode :</string>
-  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
-  <string name="no_offline_data">You\'re all done</string>
+  <string name="message_in_activity_save_product_offline">Nur unu foto estas deviga por sendi novan produkton.</string>
+  <string name="product_incomplete_message">Ĉi tiu produkto ne estas kompleta. Tial ni ne povis kontroli la alergenojn.</string>
+  <string name="no_offline_data">Vi finis</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Resumo</item>
@@ -54,10 +60,10 @@
   <string name="search_button">Search</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
-  <string name="alert_dialog_warning_title">Warning</string>
-  <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-  <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
-  <string name="toast_retrieving">Loading...</string>
+  <string name="alert_dialog_warning_title">Averto</string>
+  <string name="alert_dialog_warning_msg_user">Uzanto / pasvorto ŝanĝiĝis, bonvolu ĝisdatigi informojn</string>
+  <string name="alert_dialog_product_error_msg">Produkto ne trovita, bonvolu provi denove</string>
+  <string name="toast_retrieving">Ŝarĝante…</string>
   <string name="txtGenericName">Ĝenerala nomo :</string>
   <string name="txtBarcode">Strekokodo :</string>
   <string name="txtQuantity">Kvanto :</string>
@@ -73,11 +79,11 @@
   <string name="txtStores">Vendejoj :</string>
   <string name="txtCountries">Landoj, kie ĝi vendiĝas :</string>
   <string name="txtIngredients">Listo da ingrediencoj :</string>
-  <string name="Donate">Donate</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donate">Donaci</string>
+  <string name="Donation">Klaku ĉi-tien por donaci al Open Food Facts</string>
   <string name="txtSubstances">Substancoj aŭ produktoj kaŭzantaj alergiojn aŭ netolerojn :</string>
   <string name="txtAdditives">Aldonaĵoj :</string>
-  <string name="txtTraces">Traces :</string>
+  <string name="txtTraces">Spuroj:</string>
   <string name="txtMayBeFromPalmOilProduct">Ingrediencoj, kiuj eble enhavas palmoleon :</string>
   <string name="txtPalmOilProduct">Ingrediencoj, kiuj enhavas palmoleon :</string>
   <string name="txtServingSize">Serving size :</string>
@@ -358,6 +364,8 @@
   <string name="please_check_your_connection">Please check your connection.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Advanced Search &amp; Charts</string>
+  <string name="connectivity_check">Please check your internet connection</string>
+  <string name="dismiss">Dismiss</string>
   <string name="Terms">Terms</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">General</string>
@@ -378,6 +386,12 @@
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image Upload Resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+  <string name="wikidata_information">Going further</string>
+  <string name="description">Description: </string>
+  <string name="title">Title: </string>
+  <string name="Wikipedia">View on Wikipedia</string>
+  <string name="Browse_Products">Browse Products</string>
+  <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Varomarko</string>
   <string name="additive_string">Additive</string>
   <string name="search_string">Search</string>
@@ -391,4 +405,12 @@
   <string name="category_string">Category</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
+  <string name="app_disabled_text">Application is disabled</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="mineral_tags_text">Minerals:</string>
+  <string name="other_tags_text">Other Substances:</string>
+  <!--shared element transition key-->
+  <string name="wikidata">Wikidata data</string>
 </resources>

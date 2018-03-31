@@ -1,29 +1,18 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
-
-import java.io.File;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveViewHolder> {
 
@@ -32,18 +21,11 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
     private SaveClickInterface mSaveClickInterface;
 
 
-    public interface SaveClickInterface {
-        void onClick(int position);
-
-        void onLongClick(int position);
-    }
-
     public SaveListAdapter(Context context, List<SaveItem> saveItems, SaveClickInterface saveClickInterface) {
         this.context = context;
         this.saveItems = saveItems;
         this.mSaveClickInterface = saveClickInterface;
     }
-
 
     @Override
     public SaveViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -75,6 +57,11 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
         return saveItems.size();
     }
 
+    public interface SaveClickInterface {
+        void onClick(int position);
+
+        void onLongClick(int position);
+    }
 
     class SaveViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         ImageView imgIcon;
@@ -86,12 +73,12 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
 
         public SaveViewHolder(View itemView) {
             super(itemView);
-            imgIcon = (ImageView) itemView.findViewById(R.id.iconSave);
-            txtTitle = (TextView) itemView.findViewById(R.id.titleSave);
-            txtBarcode = (TextView) itemView.findViewById(R.id.barcodeSave);
-            imgProduct = (ImageView) itemView.findViewById(R.id.imgSaveProduct);
-            txtWeight = (TextView) itemView.findViewById(R.id.offlineWeight);
-            txtBrand = (TextView) itemView.findViewById(R.id.offlineBrand);
+            imgIcon = itemView.findViewById(R.id.iconSave);
+            txtTitle = itemView.findViewById(R.id.titleSave);
+            txtBarcode = itemView.findViewById(R.id.barcodeSave);
+            imgProduct = itemView.findViewById(R.id.imgSaveProduct);
+            txtWeight = itemView.findViewById(R.id.offlineWeight);
+            txtBrand = itemView.findViewById(R.id.offlineBrand);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
         }

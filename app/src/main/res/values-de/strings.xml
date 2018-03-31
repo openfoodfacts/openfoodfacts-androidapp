@@ -24,6 +24,12 @@
   <string name="no_offline_data">Alles erledigt</string>
   <string name="first_offline">Offline hinzugefügte Produkte werden hier angezeigt</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 ✕ 480</item>
+    <item>1024 ✕ 768</item>
+    <item>1152 ✕ 864</item>
+    <item>1600 ✕ 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Zusammenfassung</item>
@@ -358,6 +364,8 @@
   <string name="please_check_your_connection">Bitte überprüfen Sie Ihre Internetverbindung.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Erweiterte Suche &amp; Diagramme</string>
+  <string name="connectivity_check">Bitte überprüfen Sie Ihre internet-Verbindung</string>
+  <string name="dismiss">Verwerfen</string>
   <string name="Terms">Allgemeine Geschäftsbedingungen</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Allgemein</string>
@@ -378,6 +386,12 @@
   <string name="pref_resolution_summary">Auflösung für das Hochladen von Fotos auswählen</string>
   <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>
   <string name="can_add_barcode">Probleme beim Einlesen?\nNach oben wischen, um den Strichcode einzugeben</string>
+  <string name="wikidata_information">Weitergehen</string>
+  <string name="description">Beschreibung: </string>
+  <string name="title">Titel: </string>
+  <string name="Wikipedia">Auf Wikipedia ansehen</string>
+  <string name="Browse_Products">Produkte durchsuchen</string>
+  <string name="swipe_down">Nach unten wischen</string>
   <string name="brand_string">Marke</string>
   <string name="additive_string">Zusatzstoff</string>
   <string name="search_string">Suchen</string>
@@ -391,4 +405,12 @@
   <string name="category_string">Kategorie</string>
   <string name="connection">Verbunden</string>
   <string name="contributor_string">Mitwirkende(r)</string>
+  <string name="app_disabled_text">Anwendung ist deaktiviert</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitamine:</string>
+  <string name="amino_acid_tags_text">Aminosäuren:</string>
+  <string name="mineral_tags_text">Mineralien:</string>
+  <string name="other_tags_text">Weitere Stoffe:</string>
+  <!--shared element transition key-->
+  <string name="wikidata">Wikidata-Informationen</string>
 </resources>

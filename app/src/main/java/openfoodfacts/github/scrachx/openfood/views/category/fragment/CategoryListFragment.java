@@ -10,8 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -41,7 +39,7 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.fragment_category_list, container, false);
-        fastScroller = (FastScroller)rootView.findViewById(R.id.fast_scroller);
+        fastScroller = rootView.findViewById(R.id.fast_scroller);
         return rootView;
     }
 
@@ -54,20 +52,17 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
         binding.recycler.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         binding.setViewModel(getViewModel());
         fastScroller.setRecyclerView(binding.recycler);
-        binding.recycler.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                if(binding.getViewModel().getCategories().get().isEmpty()){
-                    fastScroller.setVisibility(View.GONE);
-                }
-                else {
-                    fastScroller.setVisibility(View.VISIBLE);
-                    // check for an empty item in the start of the list
-                    if(viewModel.getCategories().get().get(0).getName().isEmpty()){
-                        viewModel.getCategories().get().remove(0);
-                        binding.recycler.getAdapter().notifyItemRemoved(0);
-                        binding.recycler.getAdapter().notifyItemRangeChanged(0,binding.recycler.getAdapter().getItemCount());
-                    }
+        binding.recycler.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            if(binding.getViewModel().getCategories().get().isEmpty()){
+                fastScroller.setVisibility(View.GONE);
+            }
+            else {
+                fastScroller.setVisibility(View.VISIBLE);
+                // check for an empty item in the start of the list
+                if(viewModel.getCategories().get().get(0).getName().isEmpty()){
+                    viewModel.getCategories().get().remove(0);
+                    binding.recycler.getAdapter().notifyItemRemoved(0);
+                    binding.recycler.getAdapter().notifyItemRangeChanged(0,binding.recycler.getAdapter().getItemCount());
                 }
             }
         });

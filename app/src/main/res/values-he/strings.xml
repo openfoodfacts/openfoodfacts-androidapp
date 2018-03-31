@@ -30,6 +30,12 @@
   <string name="no_offline_data">סיימת</string>
   <string name="first_offline">מוצרים שהוספת ללא חיבור לאינטרנט יופיעו כאן</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>תקציר</item>
@@ -364,6 +370,8 @@
   <string name="please_check_your_connection">נא לבדוק את החיבור שלך.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">חיפוש ותרשימים ומתקדמים</string>
+  <string name="connectivity_check">Please check your internet connection</string>
+  <string name="dismiss">התעלמות</string>
   <string name="Terms">תנאים</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">כללי</string>
@@ -384,6 +392,12 @@
   <string name="pref_resolution_summary">נא לבחור רזולוציה להעלאת התמונה</string>
   <string name="image_upload_resolution">רזולוציית התמונה להעלאה</string>
   <string name="can_add_barcode">התגלתה בעיה בסריקה?\nיש לגרור כלפי מעלה כדי להקליד את הברקוד</string>
+  <string name="wikidata_information">Going further</string>
+  <string name="description">Description: </string>
+  <string name="title">Title: </string>
+  <string name="Wikipedia">View on Wikipedia</string>
+  <string name="Browse_Products">Browse Products</string>
+  <string name="swipe_down">Swipe down</string>
   <string name="brand_string">מותג</string>
   <string name="additive_string">תוסף</string>
   <string name="search_string">חיפוש</string>
@@ -397,4 +411,12 @@
   <string name="category_string">קטגוריה</string>
   <string name="connection">יש חיבור</string>
   <string name="contributor_string">תרומה</string>
+  <string name="app_disabled_text">Application is disabled</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="mineral_tags_text">Minerals:</string>
+  <string name="other_tags_text">Other Substances:</string>
+  <!--shared element transition key-->
+  <string name="wikidata">Wikidata data</string>
 </resources>
