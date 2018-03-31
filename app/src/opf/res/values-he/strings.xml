@@ -16,8 +16,10 @@
   <string name="slide_1_desc">ניתן לסרוק מוצרים, לצלם אותם ולהפוך את השקיפות בתחום המזון למציאות</string>
   <string name="slide_2_title">קבלת העובדות</string>
   <string name="slide_2_desc">מידע נרחב על המוצר שסרקת, מפוענח עבורך</string>
-  <string name="slide_3_title">מה ה־Nutriscore</string>
-  <string name="slide_3_desc">תצוגה מלאכותית של המאפיינים התזונתיים של מוצרי המזון האהובים עליך</string>
+  <string name="slide_3_title">מעקב אחר המוצרים בהם השתמשת</string>
+  <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
   <string name="slide_4_title">תמיכה במצב בלתי מקוון</string>
   <string name="slide_4_desc">ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע</string>
+  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
+  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
 </resources>
