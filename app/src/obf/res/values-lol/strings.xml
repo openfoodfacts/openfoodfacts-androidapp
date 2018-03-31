@@ -23,4 +23,11 @@
   <string name="txtDialogsContent">crwdns46318:0crwdne46318:0</string>
   <string name="txtDialogsContentPowerMode">crwdns46319:0crwdne46319:0</string>
   <string name="msg_share">crwdns46337:0crwdne46337:0</string>
+  <string name="not_support_books">crwdns46342:0crwdne46342:0</string>
+  <string name="txt_broaden_search">crwdns46343:0crwdne46343:0</string>
+  <string name="Donation">crwdns46344:0crwdne46344:0</string>
+  <string name="translate_help_title">crwdns46345:0crwdne46345:0</string>
+  <string name="translate_help_summary">crwdns46346:0crwdne46346:0</string>
+  <string name="text_offline_info_dialog">crwdns46347:0crwdne46347:0</string>
+  <string name="warning_alert_data">crwdns46348:0crwdne46348:0</string>
 </resources>
