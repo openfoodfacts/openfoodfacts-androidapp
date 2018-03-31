@@ -419,4 +419,11 @@
   <string name="other_tags_text">Другие вещества:</string>
   <!--shared element transition key-->
   <string name="wikidata">Данные Wikidata</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Марка</string>
+  <string name="by_barcode">Штрих-код</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
 </resources>
