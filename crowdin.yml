@@ -60,3 +60,18 @@ files:
         zh-HK: zh-rHK
         sr-CS: sr
         sr: rs
+
+  - source: /app/src/opf/res/values/strings.xml
+    translation: /app/src/opf/res/values-%two_letters_code%/strings.xml
+    languages_mapping:
+      two_letters_code:
+        zh-CN: zh-rCN
+        en-GB: en-rGB
+        en-AU: en-rAU
+        pt-BR: pt-rBR
+        nl-BE: nl-rBE
+        pt-PT: pt-rPT
+        zh-TW: zh-rTW
+        zh-HK: zh-rHK
+        sr-CS: sr
+        sr: rs

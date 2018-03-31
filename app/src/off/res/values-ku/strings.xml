@@ -20,4 +20,6 @@
   <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
   <string name="slide_4_title">Works offline</string>
   <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet Connection right now</string>
+  <string name="txtDialogsContent">Ye Tara ne yet di berhema License de derbasdar hûn Gerçeker xwaringehê servekirî. Ji kerema xwe ve lê zêde bike.</string>
+  <string name="txtDialogsContentPowerMode">Berhemên Scan ku jixwe di Facts Food Open heye.</string>
 </resources>

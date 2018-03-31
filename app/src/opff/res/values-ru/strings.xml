@@ -20,4 +20,6 @@
   <string name="slide_3_desc">Вся косметика, которую вы используете, в одном удобном списке, который можно экспортировать</string>
   <string name="slide_4_title">Работать автономно</string>
   <string name="slide_4_desc">Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас</string>
+  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
+  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
 </resources>

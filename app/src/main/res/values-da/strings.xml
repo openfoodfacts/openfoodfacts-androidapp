@@ -413,4 +413,18 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Mærke</string>
+  <string name="by_barcode">Strekkode</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
 </resources>

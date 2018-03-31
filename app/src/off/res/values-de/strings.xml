@@ -20,4 +20,6 @@
   <string name="slide_3_desc">Eine zusammenfassende Darstellung der ernährungsphysiologischen Eigenschaften Ihrer bevorzugten Lebensmittelprodukte</string>
   <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
   <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
+  <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in Open Food Facts. Bitte fügen Sie es hinzu.</string>
+  <string name="txtDialogsContentPowerMode">Das eingelesene Produkt befindet sich bereits in Open Food Facts.</string>
 </resources>
