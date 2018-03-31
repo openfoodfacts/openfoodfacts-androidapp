@@ -1,0 +1,87 @@
+# This is an example configuration file for android2po, explaining the
+# various options in more detail.
+#
+# Remove the comments for those options that you want to use.
+#
+# You probably want to copy this file as ".android2po" into the directory
+# containing your "AndroidManifest.xml" file, so it'll be picked up
+# automatically.
+
+
+# If you don't like the default location, you can specify where the .po files
+# should be stored. This path is relative to the path of this configuration
+# file.
+#--gettext locale/
+
+
+# By default, android2po will always process strings.xml and arrays.xml files,
+# as well as all files which are found to contain string resources. However,
+# you may often find it necessary to restrict the files used. This option
+# allows to explicitly define the groups being processed.
+--groups strings arrays
+
+
+# Specify a custom gettext domain. A gettext domain is like a namespace for
+# your application, in case mutliple independent gettext enabled domains need
+# to work together. As far is it concerns us here, this only affects the
+# location and filename of the .po files inside the --gettext directory.
+#
+# You do not need to specify a domain. See the --layout option for more
+# information.
+#--domain android
+
+# Determines how the .po files should be stored inside the --gettext directory.
+# If not specified, .po files will be stored in
+#    - {gettext}/{locale}.po - if no domain was given
+#    - {gettext}/{domain}-{locale}.po - if a domain was given
+# If you use the magic keyword "gnu", the standard gnu layout will
+# automatically be used:
+#    {gettext}/{locale}/LC_MESSAGES/{domain}.po
+# You may also customize the path completely using a Python format string with
+# the mandatory variables %(locale)s and %(domain)s. Optionally, you may also
+# include %(group)s. This is really only useful if you want the different
+# Android XML resource files (strings.xml, arrays.xml) to end up in different
+# gettext catalogs (see the XXX option [needs to be implemented]).
+#--layout gnu
+#--layout %(locale)/%(domain).po
+#--layout %(locale)/%(domain)/%(group).po
+
+
+# Customize the name of the .pot template file (basically a .po file without
+# any translations). Similar to --layout, it may contain %(domain)s and
+# %(group)s placeholders.
+#--template template.pot
+#--template %(domain)s-template.pot
+
+# If you don't need the .pot template file, you can tell a2po not to generate
+# it at all.
+#--no-template
+
+
+# You can specify multiple message ids that should be ignored. Those will not
+# be included when generating the .po file. As you can see, you may use regular
+# expressions if you surround the expression using forward slashes.
+#
+# As an alternative, you can also add the attribute translatable="false" to the
+# string that you want to have ignored.
+#--ignore app_name color_names
+#--ignore /^pref/
+#--ignore /^error_level_[0-9]*$/
+
+# This will cause messages that are marked as "fuzzy" in .po files to be
+# ignored on import.
+#--ignore-fuzzy
+
+
+# This will ignore all strings for a language if it's .po file does not have
+# the given minimum percentage of translated strings. This is useful if you
+# don't want to ship your app with an incomplete translation, resulting in a
+# mix of localized and English texts. Set this to 1 if you want to include
+# only a complete translation.
+#
+# If you export into multiple .po files per language, they will be counted
+# as a collective for the purposes of this option.
+#
+# If --ignore-fuzzy is also set, then fuzzy strings will not be counted towards
+# to total.
+#--require-min-complete 0.9

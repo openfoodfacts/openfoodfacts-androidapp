@@ -43,7 +43,10 @@ public class OFFApplication extends MultiDexApplication {
             nameDB = "open_food_facts";
         } else if ((BuildConfig.FLAVOR.equals("opff"))) {
             nameDB = "open_pet_food_facts";
-        } else
+        } else if ((BuildConfig.FLAVOR.equals("opf"))) {
+            nameDB = "open_products_facts";
+        }
+        else
 
         {
             nameDB = "open_beauty_facts";
