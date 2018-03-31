@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
@@ -17,6 +18,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -70,11 +72,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     TextView infoView;
     @BindView(R.id.history_progressbar)
     ProgressBar historyProgressbar;
+    private boolean disableLoad = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getResources().getBoolean(R.bool.portrait_only)){
+        if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_history_scan);
@@ -82,6 +85,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(HistoryScanActivity.this);
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {
+            disableLoad = true;
+        }
 
         mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
         productItems = new ArrayList<>();
@@ -168,7 +177,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             baseDir.mkdirs();
         }
         Log.d("dir", String.valueOf(baseDir));
-        String fileName = appname +"-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
+        String fileName = appname + "-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
         String filePath = baseDir + File.separator + fileName;
         File f = new File(filePath);
         CSVWriter writer;
@@ -277,7 +286,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 //            recyclerHistoryScanView.setAdapter(adapter);
 //            recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
             adapter = new HistoryListAdapter(productItems, getString(R.string
-                    .website_product), activity);
+                    .website_product), activity,disableLoad);
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
             historyProgressbar.setVisibility(View.GONE);
