@@ -12,15 +12,24 @@
   <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-de.openfoodfacts.org/mitwirkender/</string>
   <string name="txtHome">„Open Food Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.</string>
-  <string name="slide_1_title">Contribute to product transparency</string>
+  <string name="slide_1_title">Beitrag zur Transparenz von Produkten leisten</string>
   <string name="slide_1_desc">Produkte erfassen und Fotos hinzufügen, ermöglichen das Verständnis über Lebensmittelprodukte</string>
   <string name="slide_2_title">Holen Sie sich die Fakten</string>
-  <string name="slide_2_desc">Extensive information about the products you\'ve scanned, deciphered for you</string>
+  <string name="slide_2_desc">Umfassende Informationen über Ihre eingelesenen Produkte, die wir für Sie entschlüsselt haben.</string>
   <string name="slide_3_title">Behalten Sie den Überblick über das Produkt, das Sie verwenden</string>
   <string name="slide_3_desc">Alle durch Sie eingelesenen Produkte können in einer praktischen Liste exportiert werden.</string>
   <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
   <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
   <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in „Open Products Facts”. Bitte fügen Sie es hinzu.</string>
   <string name="txtDialogsContentPowerMode">Das eingelesene Produkt existiert bereits in „Open Products Facts”.</string>
-  <string name="msg_share">Look at this product on Open Products Facts :</string>
+  <string name="msg_share">Dieses Produkt auf Open Products Facts anzeigen:</string>
+  <string name="not_support_books">Bücher werden derzeit von „Open Products Facts” nicht unterstützt</string>
+  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
+  <string name="Donation">Click here to donate to Open Products Facts</string>
+  <string name="translate_help_title">Help translate Open Products Facts</string>
+  <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
+  <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Products Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in „Open Products Facts”. Bitte fügen Sie es hinzu.</string>
+  <string name="txtDialogsContentPowerMode">Das eingelesene Produkt existiert bereits in „Open Products Facts”.</string>
 </resources>
