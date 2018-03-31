@@ -413,4 +413,11 @@
   <string name="other_tags_text">Weitere Stoffe:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata-Informationen</string>
+  <string name="by_title">Titel</string>
+  <string name="by_brand">Marke</string>
+  <string name="by_barcode">Strichcode</string>
+  <string name="by_time">Zuletzt angesehen</string>
+  <string name="sort">Sortieren</string>
+  <string name="by_nutrition_grade">Nährwertangaben</string>
+  <string name="sort_by">Sortieren nach</string>
 </resources>

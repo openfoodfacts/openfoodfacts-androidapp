@@ -413,4 +413,11 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">ब्रांड</string>
+  <string name="by_barcode">बारकोड</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
 </resources>

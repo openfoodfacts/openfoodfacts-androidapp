@@ -15,6 +15,7 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -300,7 +301,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                         .getLaunchIntentForPackage(BuildConfig.OFOTHERLINKAPP);
                                 if (LaunchIntent != null) {
                                     startActivity(LaunchIntent);
-                                }else{
+                                } else {
                                     Toast.makeText(this, R.string.app_disabled_text, Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent();
                                     intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -370,6 +371,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         if (BuildConfig.FLAVOR.equals("opff")) {
             result.removeItem(ITEM_ALERT);
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
+        }
+
+        if (BuildConfig.FLAVOR.equals("opf")) {
+            result.removeItem(ITEM_ALERT);
+            result.removeItem(ITEM_ADVANCED_SEARCH);
             result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
         }
 
@@ -581,7 +588,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 return true;
             }
         });
-
 
 
         return true;
