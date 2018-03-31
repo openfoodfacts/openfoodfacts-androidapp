@@ -59,14 +59,21 @@
                 android:paddingLeft="10dip" />
         </android.support.design.widget.TextInputLayout>
 
-        <Button
+        <com.dd.processbutton.iml.ActionProcessButton
             android:id="@+id/buttonSave"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_button"
             android:text="@string/txtSignIn"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            app:pb_colorComplete="@color/green_complete"
+            app:pb_colorNormal="@color/blue"
+            app:pb_colorPressed="@color/blue_pressed"
+            app:pb_colorProgress="@color/purple_progress"
+            app:pb_textComplete="Success"
+            app:pb_textProgress="Loading"
+            app:pb_textError="Error"
+            app:pb_colorError="@color/red_error" />
 
         <Button
             android:id="@+id/buttonCreateAccount"
@@ -77,13 +84,13 @@
             android:text="@string/create_account"
             android:textColor="@android:color/white" />
 
-        <TextView
-            android:id="@+id/textInfoLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textSize="@dimen/font_small" />
-        
+        <!--<TextView-->
+        <!--android:id="@+id/textInfoLogin"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:textSize="@dimen/font_small" />-->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
