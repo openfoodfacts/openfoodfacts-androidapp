@@ -7,7 +7,7 @@
   <string name="website_contribute">https://world-fr.openproductsfacts.org/contribuer</string>
   <!-- For fr, Replace by https://world-fr.openproductsdfacts.org/decouvrir -->
   <string name="website_discover">https://world-fr.openproductsfacts.org/decouvrir</string>
-  <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
+  <!-- For fr, Replace by https://world-fr.openproductsfacts.org/produit/ -->
   <string name="website_product">https://world-fr.openproductsfacts.org/produit/</string>
   <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-fr.openproductsfacts.org/contributeur/</string>
