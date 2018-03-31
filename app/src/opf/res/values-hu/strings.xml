@@ -16,8 +16,10 @@
   <string name="slide_1_desc">Olvasson be termékeket, készítsen képet, tegye lehetővé az élelmiszer átláthatóságot</string>
   <string name="slide_2_title">Kapja meg a tényeket</string>
   <string name="slide_2_desc">Széleskörű információ az ön által beolvasott termékről, megfejtve az ön számára</string>
-  <string name="slide_3_title">Kapja meg a Nutriscore-t</string>
-  <string name="slide_3_desc">A kedvenc élelmiszereinek táplálkozási tulajdonságai összefoglaló nézetben</string>
+  <string name="slide_3_title">Kövesse nyomon a terméket amit használ</string>
+  <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
   <string name="slide_4_title">Kapcsolat nélküli módban is működik</string>
   <string name="slide_4_desc">Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata</string>
+  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
+  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
 </resources>
