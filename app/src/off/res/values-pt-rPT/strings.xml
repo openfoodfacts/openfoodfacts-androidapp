@@ -20,4 +20,6 @@
   <string name="slide_3_desc">Uma visão sintética das características nutricionais dos seus produtos alimentares favoritos</string>
   <string name="slide_4_title">Funciona offline</string>
   <string name="slide_4_desc">Poderá adicionar novos produtos, mesmo sem ligação à Internet no momento</string>
+  <string name="txtDialogsContent">O produto que digitalizou ainda não existe no Open Food Facts. Por favor adicione-o.</string>
+  <string name="txtDialogsContentPowerMode">O produto que digitalizou já existe no Open Food Facts.</string>
 </resources>

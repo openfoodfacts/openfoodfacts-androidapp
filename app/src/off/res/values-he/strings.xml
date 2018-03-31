@@ -20,4 +20,6 @@
   <string name="slide_3_desc">תצוגה מלאכותית של המאפיינים התזונתיים של מוצרי המזון האהובים עליך</string>
   <string name="slide_4_title">תמיכה במצב בלתי מקוון</string>
   <string name="slide_4_desc">ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע</string>
+  <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts</string>
+  <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא במסד נתוני המזון הפתוח.</string>
 </resources>
