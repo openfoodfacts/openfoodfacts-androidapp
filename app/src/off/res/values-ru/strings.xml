@@ -22,4 +22,5 @@
   <string name="slide_4_desc">Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас</string>
   <string name="txtDialogsContent">Отсканированного продукта ещё нет в  базе Open Food Facts. Добавьте его, пожалуйста.</string>
   <string name="txtDialogsContentPowerMode">Просканированный продукт уже внесён в Open Food Facts.</string>
+  <string name="msg_share">Посмотрите на этот продукт на Open Food Facts:</string>
 </resources>
