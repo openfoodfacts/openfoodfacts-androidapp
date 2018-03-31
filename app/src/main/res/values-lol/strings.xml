@@ -413,4 +413,11 @@
   <string name="other_tags_text">crwdns37754:0crwdne37754:0</string>
   <!--shared element transition key-->
   <string name="wikidata">crwdns37776:0crwdne37776:0</string>
+  <string name="by_title">crwdns46297:0crwdne46297:0</string>
+  <string name="by_brand">crwdns46298:0crwdne46298:0</string>
+  <string name="by_barcode">crwdns46299:0crwdne46299:0</string>
+  <string name="by_time">crwdns46300:0crwdne46300:0</string>
+  <string name="sort">crwdns46301:0crwdne46301:0</string>
+  <string name="by_nutrition_grade">crwdns46302:0crwdne46302:0</string>
+  <string name="sort_by">crwdns46303:0crwdne46303:0</string>
 </resources>
