@@ -19,7 +19,8 @@
   <string name="slide_3_title">Zdobądź skalę Nutriscore</string>
   <string name="slide_3_desc">Wirtualny podgląd właściwości odżywczych twoich ulubionych produktów</string>
   <string name="slide_4_title">Działa offline</string>
-  <string name="slide_4_desc">Możesz dodawać nowe produkty, mimo braku połączenia</string>
+  <string name="slide_4_desc">Możesz dodać nowe produkty, nawet nie mając teraz połączenia</string>
   <string name="txtDialogsContent">Zeskanowany produkt nie figuruje jeszcze w Open Food Facts. Dodaj go.</string>
   <string name="txtDialogsContentPowerMode">Zeskanowany produkt już widnieje na Open Food Facts.</string>
+  <string name="msg_share">Spójrz na produkt w Open Food Facts :</string>
 </resources>
