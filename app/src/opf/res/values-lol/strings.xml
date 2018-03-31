@@ -16,8 +16,10 @@
   <string name="slide_1_desc">crwdns46311:0crwdne46311:0</string>
   <string name="slide_2_title">crwdns46312:0crwdne46312:0</string>
   <string name="slide_2_desc">crwdns46313:0crwdne46313:0</string>
-  <string name="slide_3_title">crwdns46314:0crwdne46314:0</string>
-  <string name="slide_3_desc">crwdns46315:0crwdne46315:0</string>
+  <string name="slide_3_title">crwdns46322:0crwdne46322:0</string>
+  <string name="slide_3_desc">crwdns46323:0crwdne46323:0</string>
   <string name="slide_4_title">crwdns46316:0crwdne46316:0</string>
   <string name="slide_4_desc">crwdns46317:0crwdne46317:0</string>
+  <string name="txtDialogsContent">crwdns46324:0crwdne46324:0</string>
+  <string name="txtDialogsContentPowerMode">crwdns46325:0crwdne46325:0</string>
 </resources>
