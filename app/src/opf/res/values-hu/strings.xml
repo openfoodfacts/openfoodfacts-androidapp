@@ -29,7 +29,7 @@
   <string name="translate_help_title">Segítse az Open Products Facts fordítását</string>
   <string name="translate_help_summary">Hozza az Open Products Facts adatbázist az ön nyelvére - nincs szükség műszaki ismeretekre</string>
   <string name="text_offline_info_dialog">Offline beolvasás is lehetséges az Open Products Facts adatbázisba való későbbi feltöltéshez. Minden itt megjelenő termék beküldhető az alábbi gomb megnyomásával.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Products Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
   <string name="txtDialogsContent">A beolvasott termék nem található az Open Products Facts adatbázisában. Adja hozzá.</string>
   <string name="txtDialogsContentPowerMode">A beolvasott termék megtalálható az Open Products Facts adatbázisában.</string>
 </resources>
