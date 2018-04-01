@@ -392,7 +392,7 @@
   <string name="pref_resolution_summary">נא לבחור רזולוציה להעלאת התמונה</string>
   <string name="image_upload_resolution">רזולוציית התמונה להעלאה</string>
   <string name="can_add_barcode">התגלתה בעיה בסריקה?\nיש לגרור כלפי מעלה כדי להקליד את הברקוד</string>
-  <string name="wikidata_information">Going further</string>
+  <string name="wikidata_information">להמשיך מעבר</string>
   <string name="description">תיאור: </string>
   <string name="title">כותרת: </string>
   <string name="Wikipedia">הצגה בוויקיפדיה</string>
@@ -419,18 +419,18 @@
   <string name="other_tags_text">חומרים אחרים:</string>
   <!--shared element transition key-->
   <string name="wikidata">מידע מוויקינתונים</string>
-  <string name="by_title">Title</string>
+  <string name="by_title">כותרת</string>
   <string name="by_brand">מותג</string>
   <string name="by_barcode">ברקוד</string>
-  <string name="by_time">Recently Viewed</string>
-  <string name="sort">Sort</string>
-  <string name="by_nutrition_grade">Nutrition Grade</string>
-  <string name="sort_by">Sort By</string>
+  <string name="by_time">נצפו לאחרונה</string>
+  <string name="sort">מיון</string>
+  <string name="by_nutrition_grade">ציון תזונתי</string>
+  <string name="sort_by">מיון לפי</string>
   <!-- strings related to share images -->
-  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
-  <string name="no_barcode">We have not detected any barcode</string>
-  <string name="enter_barcode">Please type the barcode below</string>
-  <string name="format_error">Wrong Barcode/QR format</string>
-  <string name="code_detected">We have detected the barcode</string>
-  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="sorry_msg">לא ניתן עדיין להוסיף תמונות ללא בר קוד ליישומון. נא לנסות את גרסת האתר לניידים.</string>
+  <string name="no_barcode">לא זוהה כל ברקוד</string>
+  <string name="enter_barcode">נא להקליד את הברקוד להלן</string>
+  <string name="format_error">תסדיר הברקוד/QR שגוי</string>
+  <string name="code_detected">הברקוד זוהה</string>
+  <string name="do_you_want_to">להוסיף תמונות לברקוד הזה?</string>
 </resources>
