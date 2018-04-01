@@ -32,4 +32,5 @@
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
+
 </resources>
