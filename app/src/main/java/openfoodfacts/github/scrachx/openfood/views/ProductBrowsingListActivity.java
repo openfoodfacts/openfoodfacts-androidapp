@@ -2,9 +2,11 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -66,6 +68,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private int mCountProducts = 0;
     private int pageAddress = 1;
     private Boolean setupDone = false;
+    //boolean to determine if image should be loaded or not
+    private boolean disableLoad = false;
 
 
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
@@ -136,6 +140,13 @@ public class ProductBrowsingListActivity extends BaseActivity {
         searchType = extras.getString(SEARCH_TYPE);
         searchQuery = extras.getString(SEARCH_QUERY);
         newSearchQuery();
+
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set disableLoad to true
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {
+            disableLoad = true;
+        }
     }
 
     protected void newSearchQuery() {
@@ -177,8 +188,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
                 break;
             }
-            default : {
-                Log.e("Products Browsing","No math case found for "+searchType);
+            default: {
+                Log.e("Products Browsing", "No math case found for " + searchType);
             }
 
         }
@@ -281,8 +292,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
                 break;
             }
-            default : {
-                Log.e("Products Browsing","No math case found for "+searchType);
+            default: {
+                Log.e("Products Browsing", "No math case found for " + searchType);
             }
         }
     }
@@ -301,7 +312,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     mProducts.add(null);
                 }
                 if (setupDone) {
-                    productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts));
+                    productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts, disableLoad));
                 }
                 setUpRecyclerView();
             } else {
@@ -340,7 +351,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             LinearLayoutManager mLayoutManager = new LinearLayoutManager(ProductBrowsingListActivity.this, LinearLayoutManager.VERTICAL, false);
             productsRecyclerView.setLayoutManager(mLayoutManager);
 
-            ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
+            ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts, disableLoad);
             productsRecyclerView.setAdapter(adapter);
 
 
