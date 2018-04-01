@@ -89,6 +89,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
+    // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
 
 
@@ -124,6 +125,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
             mButtonScan.setVisibility(View.GONE);
         }
 
+        // Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
@@ -373,6 +375,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     public void onPause() {
         super.onPause();
         if (scanOnShake) {
+            //unregister the listener
             mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
         }
     }
@@ -381,6 +384,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     public void onResume() {
         super.onResume();
         if (scanOnShake) {
+            //register the listener
             mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
         }
     }

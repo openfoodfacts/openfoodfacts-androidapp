@@ -47,12 +47,14 @@ public class ShakeDetector implements SensorEventListener {
 
                 nowTime = System.currentTimeMillis();
 
+                // If the time between shakes is less than return
                 if (mShakeTimeStamp + SHAKE_NOT_CONSIDERABLE > nowTime) {
 
                     return;
 
                 }
 
+                // If no shake occurs for 3 seconds then set mShakeCount to zero
                 if (mShakeTimeStamp + SHAKE_COUNT_IGNORE_INTERVAL < nowTime) {
 
                     mShakeCount = 0;

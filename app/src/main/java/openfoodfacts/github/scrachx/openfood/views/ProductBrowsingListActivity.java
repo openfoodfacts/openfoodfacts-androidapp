@@ -74,6 +74,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
+    // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
 
 
@@ -149,6 +150,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
 
+        // Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
@@ -450,6 +452,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     public void onPause() {
         super.onPause();
         if (scanOnShake) {
+            //register the listener
             mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
         }
     }
@@ -458,6 +461,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     public void onResume() {
         super.onResume();
         if (scanOnShake) {
+            //unregister the listener
             mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
         }
     }

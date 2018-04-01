@@ -85,6 +85,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
+    // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
 
     @Override
@@ -104,7 +105,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         setInfo(infoView);
         new HistoryScanActivity.FillAdapter(this).execute(this);
 
-
+        // Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -505,6 +506,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     public void onPause() {
         super.onPause();
         if(scanOnShake) {
+            //register the listener
             mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
 
         }
@@ -514,6 +516,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     public void onResume() {
         super.onResume();
         if(scanOnShake) {
+            //unregister the listener
             mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
         }
     }

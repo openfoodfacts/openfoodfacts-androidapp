@@ -496,6 +496,10 @@ public class Utils {
 
     }
 
+    /**
+     * Function to open ScannerFragmentActivity to facilitate scanning
+     * @param activity
+     */
     public static void scan(Activity activity) {
 
 
