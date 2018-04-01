@@ -22,12 +22,12 @@
   <string name="slide_4_desc">Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Beauty Facts.</string>
-  <string name="msg_share">Look at this product on Open Beauty Facts :</string>
-  <string name="not_support_books">Books are not currently supported by Open Beauty Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
-  <string name="Donation">Click here to donate to Open Beauty Facts</string>
+  <string name="msg_share">Termék keresése az Open Beauty Facts adatbázisában :</string>
+  <string name="not_support_books">A könyveket jelenleg nem támogatja az Open Beauty Facts</string>
+  <string name="txt_broaden_search">- szélesítse a keresést \n- olvassa be és adja hozzá az Open Beauty Facts-hoz</string>
+  <string name="Donation">Kattintson ide az Open Beauty Facts-nek szánt adományozáshoz</string>
   <string name="translate_help_title">Help translate Open Beauty Facts</string>
-  <string name="translate_help_summary">Bring the Open Beauty Facts database to your language - no technical knowledge required</string>
-  <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Beauty Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
+  <string name="translate_help_summary">Hozza az Open Beauty Facts adatbázist az ön nyelvére - nincs szükség műszaki ismeretekre</string>
+  <string name="text_offline_info_dialog">Offline beolvasás is lehetséges az Open Beauty Facts adatbázisba való későbbi feltöltéshez. Minden itt megjelenő termék beküldhető az alábbi gomb megnyomásával.</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
 </resources>
