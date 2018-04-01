@@ -133,6 +133,9 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         } else if ((BuildConfig.FLAVOR.equals("opff"))) {
             folder_main = " Open Pet Food Facts ";
             appname = "OPFF";
+        } else if ((BuildConfig.FLAVOR.equals("opf"))) {
+            folder_main = " Open Products Facts ";
+            appname = "OPF";
         } else {
             folder_main = " Open Beauty Facts ";
             appname = "OBF";
