@@ -257,6 +257,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     switch ((int) drawerItem.getIdentifier()) {
                         case ITEM_HOME:
                             fragment = new HomeFragment();
+                            recreate();
                             break;
                         case ITEM_SEARCH_BY_CODE:
                             fragment = new FindProductFragment();
@@ -546,6 +547,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         } else {
             if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
                 getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+                recreate();
             } else {
                 super.onBackPressed();
             }
@@ -751,6 +753,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         }
 
-
     }
+
+
 }
+
