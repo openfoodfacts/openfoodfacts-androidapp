@@ -525,7 +525,7 @@
     <string name="product_transition" translatable="false">productTransition</string>
     <string name="no_translation_available">There are no allergen translations available in your language</string>
     <string name="wikidata">Wikidata data</string>
-    <string name="translate_allergen_notice">Translate the Allergen taxonomy in your language on the Open Food Facts coordination wiki. \n Note: you need to be logged in on the main Open Food Facts website to be able to edit.</string>
+    <string name="translate_allergen_notice">Translate the Allergen taxonomy in your language on the Open Food Facts coordination wiki.\nNote: You need to be logged in on the main Open Food Facts website to be able to edit.</string>
     <string name="translate_allergen_taxnomy_link">https://en.wiki.openfoodfacts.org/Global_allergens_taxonomy</string>
     <string name="by_title">Title</string>
     <string name="by_brand">Brand</string>
@@ -541,4 +541,5 @@
     <string name="format_error">Wrong Barcode/QR format</string>
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+    <string name="visitLink">Visit Open Food Facts</string>
 </resources>

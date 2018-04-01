@@ -31,35 +31,32 @@
             android:textColor="@color/md_black_1000"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="@dimen/font_larger" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="bottom"
-            android:paddingBottom="80dp"
-            android:layout_gravity="center_horizontal">
         <TextView
             android:id="@+id/translation_notice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:layout_margin="@dimen/spacing_small"
+            android:paddingTop="150dp"
             android:text="@string/translate_allergen_notice"
             android:textColor="@color/md_black_1000"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="@dimen/font_normal" />
 
-    <TextView
-        android:id="@+id/translation_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autoLink="web"
-        android:layout_margin="@dimen/spacing_small"
-        android:text="@string/translate_allergen_taxnomy_link"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="@dimen/font_small" />
-        </LinearLayout>
+            <Button
+                android:id="@+id/link"
+                android:layout_centerHorizontal="true"
+                android:layout_alignBottom="@id/translation_notice"
+                android:layout_marginBottom="100dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:text="@string/visitLink" />
+
 
         </RelativeLayout>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
