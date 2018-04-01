@@ -523,7 +523,10 @@
 
     <!--shared element transition key-->
     <string name="product_transition" translatable="false">productTransition</string>
+    <string name="no_translation_available">There are no allergen translations available in your language</string>
     <string name="wikidata">Wikidata data</string>
+    <string name="translate_allergen_notice">Translate the Allergen taxonomy in your language on the Open Food Facts coordination wiki.\nNote: You need to be logged in on the main Open Food Facts website to be able to edit.</string>
+    <string name="translate_allergen_taxnomy_link">https://en.wiki.openfoodfacts.org/Global_allergens_taxonomy</string>
     <string name="by_title">Title</string>
     <string name="by_brand">Brand</string>
     <string name="by_barcode">Barcode</string>
@@ -531,14 +534,12 @@
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
     <string name="sort_by">Sort By</string>
-
-
-    <!-- strings related to share images -->
+ <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
     <string name="no_barcode">We have not detected any barcode</string>
     <string name="enter_barcode">Please type the barcode below</string>
     <string name="format_error">Wrong Barcode/QR format</string>
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
-
+    <string name="visitLink">Visit Open Food Facts</string>
 </resources>

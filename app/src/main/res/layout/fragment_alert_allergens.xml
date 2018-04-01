@@ -6,9 +6,57 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/allergens_recycle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="100dp"
-        android:clipToPadding="false"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp" />
+
+        <RelativeLayout
+            android:visibility="invisible"
+            android:id="@+id/translate_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/no_translation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/spacing_normal"
+            android:gravity="center"
+            android:paddingBottom="150dp"
+            android:textAlignment="center"
+            android:text="@string/no_translation_available"
+            android:textColor="@color/md_black_1000"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/font_larger" />
+        <TextView
+            android:id="@+id/translation_notice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_margin="@dimen/spacing_small"
+            android:paddingTop="150dp"
+            android:text="@string/translate_allergen_notice"
+            android:textColor="@color/md_black_1000"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/font_normal" />
+
+            <Button
+                android:id="@+id/link"
+                android:layout_centerHorizontal="true"
+                android:layout_alignBottom="@id/translation_notice"
+                android:layout_marginBottom="100dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:text="@string/visitLink" />
+
+
+        </RelativeLayout>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -22,6 +70,7 @@
         android:layout_marginRight="25dp"
         android:clickable="true"
         android:focusable="true"
+        android:paddingTop="10dp"
         android:tint="@android:color/white"
         fab:backgroundTint="@color/blue"
         fab:fabSize="normal"

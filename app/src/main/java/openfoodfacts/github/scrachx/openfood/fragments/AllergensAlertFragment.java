@@ -1,9 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +18,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -28,6 +34,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -45,7 +52,9 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
  */
 public class AllergensAlertFragment extends NavigationBaseFragment {
 
-
+    @BindView(R.id.link)
+    Button linkButton;
+    private RelativeLayout relativeLayout;
     private List<AllergenName> mAllergensEnabled;
     private List<AllergenName> mAllergensNotEnabled;
     private List<AllergenName> mAllergensFromDao;
@@ -84,7 +93,15 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         productRepository = ProductRepository.getInstance();
         mAllergensEnabled = productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage());
         mAllergensFromDao = productRepository.getAllergensByLanguageCode(Locale.getDefault().getLanguage());
-
+        relativeLayout = view.findViewById(R.id.translate_view);
+        linkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://en.wiki.openfoodfacts.org/Global_allergens_taxonomy"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
         mView = view;
         mSettings = getActivity().getSharedPreferences("prefs", 0);
         boolean firstRunAlert = mSettings.getBoolean("firstRunAlert", true);
@@ -154,6 +171,9 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                                     .subscribe(allergens -> {
                                         editor.putBoolean("errorAllergens", false).apply();
                                         lt.success();
+                                        if(mAllergensFromDao.isEmpty()){
+                                            relativeLayout.setVisibility(View.VISIBLE);
+                                        }
                                     }, e -> {
                                         editor.putBoolean("errorAllergens", true).apply();
                                         lt.error();
