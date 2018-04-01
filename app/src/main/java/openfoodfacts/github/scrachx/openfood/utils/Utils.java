@@ -3,6 +3,8 @@ package openfoodfacts.github.scrachx.openfood.utils;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.BatteryManager;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.DrawableRes;
@@ -68,6 +71,7 @@ public class Utils {
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
     public static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
     public static boolean isUploadJobInitialised;
+    public static boolean DISABLE_IMAGE_LOAD = false;
 
     /**
      * Returns a CharSequence that concatenates the specified array of CharSequence
@@ -485,4 +489,24 @@ public class Utils {
         return spannableText;
 
     }
+
+    /**
+     * Function which returns true if the battery level is low
+     * @param context
+     * @return true if battery is low or false if battery in not low
+     */
+    public static boolean getBatteryLevel(Context context) {
+        IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryStatus = context.registerReceiver(null, ifilter);
+        int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+        int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+
+        float batteryPct = (level / (float) scale);
+        Log.i("BATTERYSTATUS", String.valueOf(batteryPct));
+
+        return (int)((batteryPct) * 100) <= 15;
+
+
+    }
+
 }

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
@@ -18,6 +19,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -74,7 +76,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     TextView infoView;
     @BindView(R.id.history_progressbar)
     ProgressBar historyProgressbar;
+
+    //boolean to determine if image should be loaded or not
+    private boolean disableLoad = false;
+
     private static String SORT_TYPE = "none";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,6 +94,13 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set disableLoad to true
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(HistoryScanActivity.this);
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {
+            disableLoad = true;
+        }
 
         mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
         productItems = new ArrayList<>();
@@ -334,7 +348,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
             sort(SORT_TYPE, productItems);
             adapter = new HistoryListAdapter(productItems, getString(R.string
-                    .website_product), activity);
+                    .website_product), activity,disableLoad);
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
             historyProgressbar.setVisibility(View.GONE);

@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.preference.PreferenceManager;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -111,6 +113,8 @@ public class IngredientsProductFragment extends BaseFragment {
     private WikidataApiClient apiClientForWikiData;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
+    //boolean to determine if image should be loaded or not
+    private boolean disableLoad = false;
 
     @Override
     public void onAttach(Context context) {
@@ -134,6 +138,13 @@ public class IngredientsProductFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
+
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set disableLoad to true
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
+            disableLoad = true;
+        }
 
         final Product product = mState.getProduct();
         barcode = product.getCode();
@@ -201,9 +212,14 @@ public class IngredientsProductFragment extends BaseFragment {
         if (isNotBlank(product.getImageIngredientsUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
 
-            Picasso.with(view.getContext())
-                    .load(product.getImageIngredientsUrl())
-                    .into(mImageIngredients);
+            // Load Image if disableLoad is false
+            if(!disableLoad) {
+                Picasso.with(view.getContext())
+                        .load(product.getImageIngredientsUrl())
+                        .into(mImageIngredients);
+            }else{
+                mImageIngredients.setVisibility(View.GONE);
+            }
 
             mUrlImage = product.getImageIngredientsUrl();
         }

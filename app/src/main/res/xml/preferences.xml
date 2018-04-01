@@ -40,6 +40,12 @@
             android:selectable="true"
             android:summary="@string/pref_resolution_summary"
             android:title="@string/image_upload_resolution" />
+<!-- Preference to allow the user to choose whether to enable image loading when battery is low-->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disableImageLoad"
+            android:summary="@string/disable_image_loading"
+            android:title="@string/DisableLoadTitle"/>
 
     </PreferenceCategory>
 
