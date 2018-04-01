@@ -426,5 +426,5 @@
   <string name="enter_barcode">Kérjük, gépelje be a vonalkódot</string>
   <string name="format_error">Helytelen vonalkód/QR formátum</string>
   <string name="code_detected">Vonalkód felismerve</string>
-  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="do_you_want_to">Szeretne fényképeket hozzáadni ehhez a vonalkódhoz?</string>
 </resources>
