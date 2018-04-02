@@ -413,4 +413,18 @@
   <string name="other_tags_text">Egyéb anyagok:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata adat</string>
+  <string name="by_title">Cím</string>
+  <string name="by_brand">Márka</string>
+  <string name="by_barcode">Vonalkód</string>
+  <string name="by_time">Nemrég megtekintve</string>
+  <string name="sort">Rendezés</string>
+  <string name="by_nutrition_grade">Táplálkozási osztályzat</string>
+  <string name="sort_by">Rendezés</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Vonalkód nélküli fényképeket még nem lehet hozzáadni az alkalmazással. Kérjük, próbálja a mobil webes változattal.</string>
+  <string name="no_barcode">Vonalkód nincs felismerve</string>
+  <string name="enter_barcode">Kérjük, gépelje be a vonalkódot</string>
+  <string name="format_error">Helytelen vonalkód/QR formátum</string>
+  <string name="code_detected">Vonalkód felismerve</string>
+  <string name="do_you_want_to">Szeretne fényképeket hozzáadni ehhez a vonalkódhoz?</string>
 </resources>
