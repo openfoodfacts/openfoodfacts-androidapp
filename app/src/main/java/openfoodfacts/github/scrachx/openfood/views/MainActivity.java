@@ -12,6 +12,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -91,6 +93,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -125,6 +128,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private SharedPreferences mSharedPref;
     PrimaryDrawerItem primaryDrawerItem;
     private int positionOfOfflineBadeItem;
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private ShakeDetector mShakeDetector;
+    // boolean to determine if scan on shake feature should be enabled
+    private boolean scanOnShake;
+
     private String mBarcode;
 
     @Override
@@ -147,6 +156,26 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         FragmentManager fragmentManager = getSupportFragmentManager();
         mSendProductDao = Utils.getAppDaoSession(MainActivity.this).getSendProductDao();
         numberOFSavedProducts = mSendProductDao.loadAll().size();
+
+// Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mShakeDetector = new ShakeDetector();
+
+        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
+        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
+
+        Log.i("Shake", String.valueOf(scanOnShake));
+        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
+            @Override
+            public void onShake(int count) {
+
+                if (scanOnShake) {
+                    Utils.scan(MainActivity.this);
+                }
+
+            }
+        });
 
 
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
@@ -259,6 +288,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     switch ((int) drawerItem.getIdentifier()) {
                         case ITEM_HOME:
                             fragment = new HomeFragment();
+                            // recreate when Home is pressed
+                            recreate();
                             break;
                         case ITEM_SEARCH_BY_CODE:
                             fragment = new FindProductFragment();
@@ -555,6 +586,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         } else {
             if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
                 getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+                //recreate the activity onBackPressed
+                recreate();
             } else {
                 super.onBackPressed();
             }
@@ -589,6 +622,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 return true;
             }
         });
+
 
 
         return true;
@@ -653,6 +687,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     protected void onStart() {
         super.onStart();
         customTabActivityHelper.bindCustomTabsService(this);
+
     }
 
     @Override
@@ -889,4 +924,32 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         alertDialog.show();
 
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (scanOnShake) {
+
+            // unregister the listener
+            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
+
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (scanOnShake) {
+
+            //register the listener
+            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+
+
+        }
+
+    }
+
+
 }
