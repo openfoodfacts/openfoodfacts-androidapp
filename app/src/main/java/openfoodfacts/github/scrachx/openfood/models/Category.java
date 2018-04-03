@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import android.util.Log;
+
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
@@ -27,6 +29,10 @@ public class Category {
     @Unique
     private String tag;
 
+    @Unique
+    private String wikiDataId;
+
+    private Boolean isWikiDataIdPresent;
     @ToMany(joinProperties = {
             @JoinProperty(name = "tag", referencedName = "categoryTag")
     })
@@ -44,16 +50,27 @@ public class Category {
     @Generated(hash = 40161530)
     private transient CategoryDao myDao;
 
-    @Generated(hash = 1914604067)
-    public Category(Long id, String tag) {
+    @Generated(hash = 737031366)
+    public Category(Long id, String tag, String wikiDataId, Boolean isWikiDataIdPresent) {
         this.id = id;
         this.tag = tag;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
+    }
+
+    @Keep
+    public Category(String tag, List<CategoryName> names, String wikiDataId) {
+        this.tag = tag;
+        this.names = names;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = true;
     }
 
     @Keep
     public Category(String tag, List<CategoryName> names) {
         this.tag = tag;
         this.names = names;
+        this.isWikiDataIdPresent = false;
     }
 
     @Generated(hash = 1150634039)
@@ -140,6 +157,22 @@ public class Category {
             throw new DaoException("Entity is detached from DAO context");
         }
         myDao.update(this);
+    }
+
+    public String getWikiDataId() {
+        return this.wikiDataId;
+    }
+
+    public void setWikiDataId(String wikiDataId) {
+        this.wikiDataId = wikiDataId;
+    }
+
+    public Boolean getIsWikiDataIdPresent() {
+        return this.isWikiDataIdPresent;
+    }
+
+    public void setIsWikiDataIdPresent(Boolean isWikiDataIdPresent) {
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 
     /** called by internal mechanisms, do not call yourself. */

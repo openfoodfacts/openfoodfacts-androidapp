@@ -67,6 +67,7 @@ branches:
 notifications:
   email: false
   slack: openfoodfacts:mXLLSlWjBKA9e03ELQ83rNvB
+  webhooks: https://www.travisbuddy.com/
 
 sudo: true
 

@@ -48,8 +48,8 @@ public class NavDrawerListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.drawer_list_item, null);
         }
 
-        ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
-        TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
+        ImageView imgIcon = convertView.findViewById(R.id.icon);
+        TextView txtTitle = convertView.findViewById(R.id.title);
 
         imgIcon.setImageDrawable(AppCompatResources.getDrawable(context, navDrawerItems.get(position).getIcon()));
         txtTitle.setText(navDrawerItems.get(position).getTitle());

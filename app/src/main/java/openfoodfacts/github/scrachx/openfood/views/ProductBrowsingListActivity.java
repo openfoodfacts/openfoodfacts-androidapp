@@ -10,7 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +18,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -31,20 +34,20 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
+
 public class ProductBrowsingListActivity extends BaseActivity {
 
     private static String SEARCH_TYPE = "search_type";
-    private static String SEARCH_QUERY = "search_query";
 
-    private String searchType;
+    private static String SEARCH_QUERY = "search_query";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
     @BindView(R.id.products_recycler_view)
     RecyclerView productsRecyclerView;
     @BindView(R.id.textCountProduct)
@@ -54,13 +57,16 @@ public class ProductBrowsingListActivity extends BaseActivity {
     ProgressBar progressBar;
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefreshLayout;
+    String searchQuery;
+    private String searchType;
     private EndlessRecyclerViewScrollListener scrollListener;
     private List<Product> mProducts;
     private OpenFoodAPIClient api;
     private OpenFoodAPIClient apiClient;
     private int mCountProducts = 0;
     private int pageAddress = 1;
-    String searchQuery;
+    private Boolean setupDone = false;
+
 
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
         Intent intent = new Intent(context, ProductBrowsingListActivity.class);
@@ -78,6 +84,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+
                 searchQuery = query;
                 newSearchQuery();
 
@@ -122,18 +129,17 @@ public class ProductBrowsingListActivity extends BaseActivity {
         setContentView(R.layout.activity_brand);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        progressBar = findViewById(R.id.progress_bar);
         countProductsView.setVisibility(View.INVISIBLE);
-        
+
         Bundle extras = getIntent().getExtras();
         searchType = extras.getString(SEARCH_TYPE);
         searchQuery = extras.getString(SEARCH_QUERY);
         newSearchQuery();
     }
 
-    protected void newSearchQuery(){
+    protected void newSearchQuery() {
         getSupportActionBar().setTitle(searchQuery);
-      
         switch (searchType) {
             case SearchType.BRAND: {
                 toolbar.setSubtitle(R.string.brand_string);
@@ -171,12 +177,18 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
                 break;
             }
+            default : {
+                Log.e("Products Browsing","No math case found for "+searchType);
+            }
+
         }
 
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
         api = new OpenFoodAPIClient(ProductBrowsingListActivity.this);
-        productsRecyclerView = (RecyclerView) findViewById(R.id.products_recycler_view);
+
+        productsRecyclerView = findViewById(R.id.products_recycler_view);
         progressBar.setVisibility(View.VISIBLE);
+
         setup();
     }
 
@@ -184,6 +196,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     public void setup() {
         offlineCloudLayout.setVisibility(View.INVISIBLE);
         countProductsView.setVisibility(View.INVISIBLE);
+        pageAddress = 1;
         getDataFromAPI();
     }
 
@@ -192,35 +205,23 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
         switch (searchType) {
             case SearchType.BRAND: {
-                apiClient.getProductsByBrand(searchQuery, pageAddress, new OpenFoodAPIClient.OnBrandCallback() {
-                    @Override
-                    public void onBrandResponse(boolean value, Search brandObject) {
-                        loadData(value, brandObject);
-                    }
-                });
+
+                apiClient.getProductsByBrand(searchQuery, pageAddress, this::loadData);
                 break;
             }
             case SearchType.COUNTRY: {
-                apiClient.getProductsByCountry(searchQuery, pageAddress, new OpenFoodAPIClient.onCountryCallback() {
-                    @Override
-                    public void onCountryResponse(boolean value, Search country) {
-                        loadData(value, country);
-                    }
-                });
+                apiClient.getProductsByCountry(searchQuery, pageAddress, this::loadData);
                 break;
             }
             case SearchType.ADDITIVE: {
-                apiClient.getProductsByAdditive(searchQuery, pageAddress, new OpenFoodAPIClient.OnAdditiveCallback() {
-                    @Override
-                    public void onAdditiveResponse(boolean value, Search country) {
-                        loadData(value, country);
-                    }
-                });
+                apiClient.getProductsByAdditive(searchQuery, pageAddress, this::loadData);
+
                 break;
             }
 
             case SearchType.STORE: {
                 apiClient.getProductsByStore(searchQuery, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
+
                     @Override
                     public void onStoreResponse(boolean value, Search storeObject) {
                         loadData(value, storeObject);
@@ -230,7 +231,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
 
             case SearchType.PACKAGING: {
+
                 apiClient.getProductsByPackaging(searchQuery, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
+
                     @Override
                     public void onPackagingResponse(boolean value, Search packagingObject) {
                         loadData(value, packagingObject);
@@ -238,9 +241,13 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 });
                 break;
             }
-            case SearchType.SEARCH: {
+            case SearchType.SEARCH:
+
+            {
                 api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
+
                     @Override
+
                     public void onProductsResponse(boolean isOk, Search searchResponse, int countProducts) {
                         loadData(isOk, searchResponse);
                     }
@@ -248,34 +255,34 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
 
-            case SearchType.LABEL: {
+            case SearchType.LABEL:
+
+            {
                 api.getProductsByLabel(searchQuery, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
+
                     @Override
+
                     public void onLabelResponse(boolean value, Search label) {
                         loadData(value, label);
                     }
                 });
+
                 break;
             }
-
             case SearchType.CATEGORY: {
-                api.getProductsByCategory(searchQuery, pageAddress, new OpenFoodAPIClient.onCategoryCallback() {
-                    @Override
-                    public void onCategoryResponse(boolean value, Search category) {
-                        loadData(value, category);
-                    }
-                });
+
+                api.getProductsByCategory(searchQuery, pageAddress, this::loadData);
                 break;
             }
 
             case SearchType.CONTRIBUTOR: {
-                api.getProductsByContributor(searchQuery, pageAddress, new OpenFoodAPIClient.onContributorCallback() {
-                    @Override
-                    public void onContributorResponse(boolean value, Search contributor) {
-                        loadData(value, contributor);
-                    }
-                });
+
+
+                api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
                 break;
+            }
+            default : {
+                Log.e("Products Browsing","No math case found for "+searchType);
             }
         }
     }
@@ -286,12 +293,15 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (isResponseOk) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
-                countProductsView.append(" " + NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount()
-                )));
+                countProductsView.setText(getResources().getString(R.string.number_of_results) + " " +
+                        NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount())));
                 mProducts = new ArrayList<>();
                 mProducts.addAll(response.getProducts());
                 if (mProducts.size() < mCountProducts) {
                     mProducts.add(null);
+                }
+                if (setupDone) {
+                    productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts));
                 }
                 setUpRecyclerView();
             } else {
@@ -306,6 +316,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 }
             }
         } else {
+            // productsRecyclerView.setVisibility(View.INVISIBLE);
+
             swipeRefreshLayout.setRefreshing(false);
             productsRecyclerView.setVisibility(View.INVISIBLE);
             progressBar.setVisibility(View.INVISIBLE);
@@ -320,66 +332,91 @@ public class ProductBrowsingListActivity extends BaseActivity {
         progressBar.setVisibility(View.INVISIBLE);
         swipeRefreshLayout.setRefreshing(false);
         countProductsView.setVisibility(View.VISIBLE);
-
         offlineCloudLayout.setVisibility(View.INVISIBLE);
-
         productsRecyclerView.setVisibility(View.VISIBLE);
-        productsRecyclerView.setHasFixedSize(true);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(ProductBrowsingListActivity.this, LinearLayoutManager.VERTICAL, false);
-        productsRecyclerView.setLayoutManager(mLayoutManager);
 
-        ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
-        productsRecyclerView.setAdapter(adapter);
+        if (!setupDone) {
+            productsRecyclerView.setHasFixedSize(true);
+            LinearLayoutManager mLayoutManager = new LinearLayoutManager(ProductBrowsingListActivity.this, LinearLayoutManager.VERTICAL, false);
+            productsRecyclerView.setLayoutManager(mLayoutManager);
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(productsRecyclerView.getContext(),
-                DividerItemDecoration.VERTICAL);
-        productsRecyclerView.addItemDecoration(dividerItemDecoration);
+            ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
+            productsRecyclerView.setAdapter(adapter);
 
-        // Retain an instance so that you can call `resetState()` for fresh searches
-        scrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
-            @Override
-            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                if (mProducts.size() < mCountProducts && !swipeRefreshLayout.isRefreshing()) {
-                    pageAddress = page;
-                    getDataFromAPI();
+
+            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(productsRecyclerView.getContext(),
+                    DividerItemDecoration.VERTICAL);
+            productsRecyclerView.addItemDecoration(dividerItemDecoration);
+
+            // Retain an instance so that you can call `resetState()` for fresh searches
+            scrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
+                @Override
+                public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                    if (mProducts.size() < mCountProducts) {
+                        pageAddress = page;
+                        getDataFromAPI();
+                    }
                 }
-            }
-        };
-        // Adds the scroll listener to RecyclerView
-        productsRecyclerView.addOnScrollListener(scrollListener);
+            };
+            // Adds the scroll listener to RecyclerView
+            productsRecyclerView.addOnScrollListener(scrollListener);
 
 
-        productsRecyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(ProductBrowsingListActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
+            productsRecyclerView.addOnItemTouchListener(
+                    new RecyclerItemClickListener(ProductBrowsingListActivity.this, (view, position) -> {
                         Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
                         if (p != null) {
                             String barcode = p.getCode();
-                            api.getProduct(barcode, ProductBrowsingListActivity.this);
-                            try {
-                                View view1 = ProductBrowsingListActivity.this.getCurrentFocus();
-                                if (view != null) {
-                                    InputMethodManager imm = (InputMethodManager) ProductBrowsingListActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
-                                    imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                            if (Utils.isNetworkConnected(ProductBrowsingListActivity.this)) {
+                                api.getProduct(barcode, ProductBrowsingListActivity.this);
+                                try {
+                                    View view1 = ProductBrowsingListActivity.this.getCurrentFocus();
+                                    if (view != null) {
+                                        InputMethodManager imm = (InputMethodManager) ProductBrowsingListActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                        imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                                    }
+                                } catch (NullPointerException e) {
+                                    e.printStackTrace();
                                 }
-                            } catch (NullPointerException e) {
-                                e.printStackTrace();
+                            } else {
+                                new MaterialDialog.Builder(ProductBrowsingListActivity.this)
+                                        .title(R.string.device_offline_dialog_title)
+                                        .content(R.string.connectivity_check)
+                                        .positiveText(R.string.txt_try_again)
+                                        .negativeText(R.string.dismiss)
+                                        .onPositive((dialog, which) -> {
+                                            if (Utils.isNetworkConnected(ProductBrowsingListActivity.this))
+                                                api.getProduct(barcode, ProductBrowsingListActivity.this);
+                                            else
+                                                Toast.makeText(ProductBrowsingListActivity.this, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
+                                        })
+                                        .show();
                             }
                         }
+                    })
+            );
+
+            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+
+                    mProducts.clear();
+                    adapter.notifyDataSetChanged();
+                    countProductsView.setText(getResources().getString(R.string.number_of_results));
+                    pageAddress = 1;
+                    setup();
+                    if (swipeRefreshLayout.isRefreshing()) {
+                        swipeRefreshLayout.setRefreshing(false);
                     }
-                })
-        );
+                }
+            });
+        }
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeRefreshLayout.setRefreshing(true);
-                countProductsView.setText(getResources().getString(R.string.number_of_results));
-                pageAddress = 1;
-                setup();
-            }
+        setupDone = true;
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            swipeRefreshLayout.setRefreshing(true);
+            pageAddress = 1;
+            setup();
         });
-
     }
 }

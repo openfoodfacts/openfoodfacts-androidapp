@@ -6,6 +6,8 @@ import android.util.Log;
 
 import org.greenrobot.greendao.database.Database;
 
+import static openfoodfacts.github.scrachx.openfood.models.DaoMaster.dropAllTables;
+
 public class DatabaseHelper extends DaoMaster.OpenHelper {
 
     public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
@@ -26,6 +28,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
     @Override
     public void onUpgrade(Database db, int oldVersion, int newVersion) {
         Log.i("greenDAO", "migrating schema from version " + oldVersion + " to " + newVersion);
+        //dropAllTables(db, true);
         for (int migrateVersion = oldVersion + 1; migrateVersion <= newVersion; migrateVersion++) {
             upgrade(db, migrateVersion);
         }
@@ -41,6 +44,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
      * @param migrateVersion
      */
     private void upgrade(Database db, int migrateVersion) {
+        Log.e("MIGRATE VERSION", "" + migrateVersion);
         switch (migrateVersion) {
             case 2:
                 db.execSQL("ALTER TABLE send_product ADD COLUMN 'lang' TEXT NOT NULL DEFAULT 'fr';");
@@ -73,6 +77,27 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
 
                 CategoryDao.createTable(db, true);
                 CategoryNameDao.createTable(db, true);
+                break;
+            }
+            case 7: {
+                db.execSQL("ALTER TABLE additive_name ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
+                db.execSQL("ALTER TABLE additive_name ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+
+                db.execSQL("ALTER TABLE additive ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
+                db.execSQL("ALTER TABLE additive ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+
+                db.execSQL("ALTER TABLE category_name ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
+                db.execSQL("ALTER TABLE category_name ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+
+                db.execSQL("ALTER TABLE category ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
+                db.execSQL("ALTER TABLE category ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+
+                db.execSQL("ALTER TABLE label_name ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
+                db.execSQL("ALTER TABLE label_name ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+
+                db.execSQL("ALTER TABLE label ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
+                db.execSQL("ALTER TABLE label ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+
                 break;
             }
         }

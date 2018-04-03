@@ -304,6 +304,7 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+
     /**
      * Loads translated label from the local database by unique tag of label and language code
      *
