@@ -329,7 +329,6 @@ public class Utils {
         return ((OFFApplication) activity.getApplication()).getDaoSession();
     }
 
-
     public static DaoSession getDaoSession(Context context) {
         return OFFApplication.daoSession;
     }
