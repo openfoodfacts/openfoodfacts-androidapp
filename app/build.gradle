@@ -9,8 +9,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 40
-        versionName "0.8.2"
+        versionCode 42
+        versionName "0.8.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -32,6 +32,7 @@ android {
             buildConfigField 'String', 'HOST', '"https://ssl-api.openfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"openfoodfacts.github.scrachx.openbeauty"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
+            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
 
         obf {
@@ -40,6 +41,7 @@ android {
             buildConfigField 'String', 'HOST', '"https://ssl-api.openbeautyfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"openfoodfacts.github.scrachx.openfood"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openbeautyfacts.org/"'
+            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
 
         opff {
@@ -48,7 +50,18 @@ android {
             buildConfigField 'String', 'HOST', '"https://ssl-api.openpetfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
+            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
+
+        opf {
+            applicationId "org.openproductsfacts.scanner"
+            resValue "string", "app_name", "Open Products Facts"
+            buildConfigField 'String', 'HOST', '"https://ssl-api.openproductsfacts.org"'
+            buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
+            buildConfigField 'String', 'OFWEBSITE', '"https://world.openproductsfacts.org/"'
+            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
+        }
+
     }
 
 
@@ -103,7 +116,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 6
+    schemaVersion 7
 }
 android {
     // Other settings
@@ -128,14 +141,13 @@ dependencies {
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
     implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-
     compile "com.android.support:multidex:$rootProject.multidexVersion"
     compile "com.android.support:design:27.1.0"
 
     //DI
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
-    provided "javax.annotation:jsr250-api:1.0"
+    provided 'javax.annotation:jsr250-api:1.0'
 
     //Rx
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxVersion"
@@ -154,7 +166,8 @@ dependencies {
     implementation "com.fasterxml.jackson.core:jackson-core:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-databind:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-annotations:$rootProject.jacksonVersion"
-//    compile 'io.rest-assured:json-path:3.0.7'
+
+    //    compile 'io.rest-assured:json-path:3.0.7'
 
     //CSV Serialization/Deserialization
     implementation "com.opencsv:opencsv:$rootProject.openCsvVersion"
@@ -199,6 +212,7 @@ dependencies {
     }
 
     //UI Component : Adapters
+
     //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
     implementation 'com.mikepenz:fastadapter-commons:2.1.0@aar'
 
@@ -210,14 +224,12 @@ dependencies {
     implementation "com.mikepenz:google-material-typeface:$rootProject.googleMaterialFontVersion"
     implementation "com.mikepenz:material-design-iconic-typeface:$rootProject.materialFontVersion"
     implementation "com.mikepenz:fontawesome-typeface:$rootProject.awesomeFontVersion"
-
-    implementation("com.theartofdev.edmodo:android-image-cropper:2.6.0") {
+    implementation('com.theartofdev.edmodo:android-image-cropper:2.6.0') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
 
     //Testing
     androidTestUtil 'com.android.support.test:orchestrator:1.0.1'
-
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     testImplementation "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"
@@ -233,7 +245,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'design'
         exclude module: 'recyclerview-v7'
     }
-
     resourcePlaceholders {
         files = ['xml/shortcuts.xml']
     }

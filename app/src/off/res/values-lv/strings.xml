@@ -20,4 +20,14 @@
   <string name="slide_3_desc">Kritisks skatījums uz jūsu iecienītāko pārtikas produktu uzturvērtību</string>
   <string name="slide_4_title">Darbojas bezsaistē</string>
   <string name="slide_4_desc">Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma</string>
+  <string name="txtDialogsContent">Skenētais produkts vēl nav pieejams Open Food Facts sarakstā. Lūdzu, pievienojiet to.</string>
+  <string name="txtDialogsContentPowerMode">Jūsu skenētais produkts jau pastāvOpen Food Facts.</string>
+  <string name="msg_share">Apskatiet šo produktu, izmantojot Open Food Facts:</string>
+  <string name="not_support_books">Open Food Facts pašlaik neatbalsta grāmatas</string>
+  <string name="txt_broaden_search">- paplašināt meklēšanu \ n- skenēt un pievienot to Open Food Facts</string>
+  <string name="Donation">Noklikšķiniet šeit, lai ziedotu Open Food Facts</string>
+  <string name="translate_help_title">Palīdziet tulkot \"open Food Facts\"</string>
+  <string name="translate_help_summary">Iegūstiet Open Food Facts savā valodāaaaaaa a- tehniskās zināšanas nav nepieciešamas</string>
+  <string name="text_offline_info_dialog">Iespējams skenēt produktus bezsaistes režīmā, lai pievienotu tos Open Food Facts vēlāk, kad interneta savienojums ir pieejams. visi produkti kuri tiks noskenēti, būs redzami šeit. Lai nosūtītu produktus, izmantojiet pogu zemāk.</string>
+  <string name="warning_alert_data">Jūsu alerģiju informācija nekad netiks nosūtīta uz Open Food Facts serveri. Uzmanieties jo pieejamie dati par produktu var būt neprecīzi tāpēc pārliecinieties, pirms pieņemiet lēmumus! </string>
 </resources>

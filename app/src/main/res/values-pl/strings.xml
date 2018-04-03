@@ -34,6 +34,12 @@ godziny</item>
   <string name="no_offline_data">Wszystko gotowe</string>
   <string name="first_offline">Tu pojawią się produkty dodane w trybie offline</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Streszczenie</item>
@@ -368,6 +374,8 @@ godziny</item>
   <string name="please_check_your_connection">Sprawdź połączenie.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Wyszukiwanie zaawansowane &amp; wykresy</string>
+  <string name="connectivity_check">Sprawdź łączność z Internetem</string>
+  <string name="dismiss">Odrzuć</string>
   <string name="Terms">Warunki</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Ogólne</string>
@@ -388,6 +396,12 @@ godziny</item>
   <string name="pref_resolution_summary">Wybierz rozdzielczość do przesyłania obrazów</string>
   <string name="image_upload_resolution">Rozdzielczość przesyłania zdjęć</string>
   <string name="can_add_barcode">Problem ze skanowaniem? \nPrzeciągnij, by wpisać kod kreskowy</string>
+  <string name="wikidata_information">Idź dalej</string>
+  <string name="description">Opis: </string>
+  <string name="title">Tytuł: </string>
+  <string name="Wikipedia">Zobacz na Wikipedii</string>
+  <string name="Browse_Products">Wybierz produkty</string>
+  <string name="swipe_down">Przesuń na dół</string>
   <string name="brand_string">Marka</string>
   <string name="additive_string">Dodatek</string>
   <string name="search_string">Szukaj</string>
@@ -401,10 +415,26 @@ godziny</item>
   <string name="category_string">Kategoria</string>
   <string name="connection">Połączono</string>
   <string name="contributor_string">Współtwórca</string>
+  <string name="app_disabled_text">Wyłączono aplikację</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
-  <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
-  <string name="other_tags_text">Other Substances:</string>
+  <string name="vitamin_tags_text">Witaminy:</string>
+  <string name="amino_acid_tags_text">Aminokwasy:</string>
+  <string name="mineral_tags_text">Minerały:</string>
+  <string name="other_tags_text">Inne substancje:</string>
   <!--shared element transition key-->
+  <string name="wikidata">Dane z Wikidata</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Marka</string>
+  <string name="by_barcode">Kod kreskowy</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
 </resources>

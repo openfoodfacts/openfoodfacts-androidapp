@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import android.util.Log;
+
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
@@ -27,6 +29,11 @@ public class Label {
     @Unique
     private String tag;
 
+    @Unique
+    private String wikiDataId;
+
+    private Boolean isWikiDataIdPresent;
+
     @ToMany(joinProperties = {
             @JoinProperty(name = "tag", referencedName = "labelTag")
     })
@@ -47,17 +54,29 @@ public class Label {
     public Label() {
     }
 
-    @Generated(hash = 1601313181)
-    public Label(Long id, String tag) {
-        this.id = id;
+    @Keep
+    public Label(String tag, List<LabelName> names, String wikiDataId) {
+        this.names = names;
         this.tag = tag;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = true;
     }
 
     @Keep
     public Label(String tag, List<LabelName> names) {
         this.tag = tag;
         this.names = names;
+        this.isWikiDataIdPresent = false;
     }
+
+    @Generated(hash = 1849619213)
+    public Label(Long id, String tag, String wikiDataId, Boolean isWikiDataIdPresent) {
+        this.id = id;
+        this.tag = tag;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
+    }
+
 
     public Long getId() {
         return this.id;
@@ -73,6 +92,10 @@ public class Label {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public Boolean getWikiDataIdPresent() {
+        return isWikiDataIdPresent;
     }
 
     /**
@@ -139,6 +162,22 @@ public class Label {
             throw new DaoException("Entity is detached from DAO context");
         }
         myDao.update(this);
+    }
+
+    public String getWikiDataId() {
+        return this.wikiDataId;
+    }
+
+    public void setWikiDataId(String wikiDataId) {
+        this.wikiDataId = wikiDataId;
+    }
+
+    public Boolean getIsWikiDataIdPresent() {
+        return this.isWikiDataIdPresent;
+    }
+
+    public void setIsWikiDataIdPresent(Boolean isWikiDataIdPresent) {
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 
     /** called by internal mechanisms, do not call yourself. */

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -74,45 +75,8 @@
             android:scrollbars="vertical" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <LinearLayout
+    <include layout="@layout/offline_cloud_layout"
         android:id="@+id/offlineCloudLinearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="invisible">
-
-        <ImageView
-            android:id="@+id/sadCloud"
-            android:layout_width="180dp"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_cloud_off" />
-
-        <TextView
-            android:id="@+id/txtCannotLoadResults"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="@dimen/spacing_normal"
-            android:gravity="center"
-            android:text="@string/txt_cant_load_search_results"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grey_500"
-            android:textSize="@dimen/font_normal" />
-
-        <Button
-            android:id="@+id/buttonTryAgain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="@string/txt_try_again"
-            android:textColor="@color/light_blue_500" />
-
-    </LinearLayout>
+        android:visibility="gone"/>
 
 </RelativeLayout>

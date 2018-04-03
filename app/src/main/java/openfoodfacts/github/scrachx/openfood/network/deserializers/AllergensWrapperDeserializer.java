@@ -35,6 +35,7 @@ public class AllergensWrapperDeserializer extends StdDeserializer<AllergensWrapp
     @Override
     public AllergensWrapper deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
         List<AllergenResponse> allergens = new ArrayList<>();
+
         JsonNode mainNode = jp.getCodec().readTree(jp);
         Iterator<Map.Entry<String, JsonNode>> mainNodeIterator = mainNode.fields();
 
