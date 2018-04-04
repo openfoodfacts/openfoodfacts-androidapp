@@ -168,7 +168,6 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
         } catch (NullPointerException e) {
             if (BuildConfig.DEBUG) Log.i(getClass().getSimpleName(), e.toString());
         }
-
         mProduct.setLang(Locale.getDefault().getLanguage());
     }
 
