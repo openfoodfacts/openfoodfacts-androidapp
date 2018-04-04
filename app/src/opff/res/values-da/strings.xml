@@ -25,7 +25,7 @@
   <string name="msg_share">Kig på dette produkt på Open Food Facts :</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
   <string name="txt_broaden_search">- lave en mindre snæver søgning \n- skanne og tilføje det til Open Food Facts</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donation">Klik her for at donere til Open Food Facts</string>
   <string name="translate_help_title">Help translate Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
   <string name="text_offline_info_dialog">Du kan indskanne produkter mens du er offline og tilføje dem til Open Food Facts senere. Alle produkter du har skannet vil fremgå her, og du vil kunne indsende dem ved at bruge knappen nedenfor.</string>
