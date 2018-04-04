@@ -25,9 +25,9 @@
   <string name="msg_share">Zobacz produkt na Open Beauty Facts:</string>
   <string name="not_support_books">Obecnie nie obsługujemy książek</string>
   <string name="txt_broaden_search">poszerz zakres wyszukiwania \n - zeskanuj i dodaj do Open Beauty Facts</string>
-  <string name="Donation">Click here to donate to Open Beauty Facts</string>
-  <string name="translate_help_title">Help translate Open Beauty Facts</string>
-  <string name="translate_help_summary">Bring the Open Beauty Facts database to your language - no technical knowledge required</string>
+  <string name="Donation">Kliknij by wpłacić darowiznę na rzecz Open Beauty Facts</string>
+  <string name="translate_help_title">Wspomóż tłumaczenie Open Beauty Facts</string>
+  <string name="translate_help_summary">Wprowadź bazę danych Open Beauty Facts do twojego języka - nie wymagamy wiedzy technicznej</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Beauty Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
 </resources>
