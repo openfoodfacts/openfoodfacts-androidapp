@@ -329,7 +329,6 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
 
     public SendProduct getProduct() {
         Utils.hideKeyboard(getActivity());
-
         mProduct.setBarcode(barcode);
         mProduct.setName(productName.getText().toString());
         mProduct.setWeight(productQuantity.getText().toString());
