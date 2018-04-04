@@ -13,6 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -44,11 +46,16 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+
+import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -100,6 +107,8 @@ public class IngredientsProductFragment extends BaseFragment {
     private AdditiveDao mAdditiveDao;
     private IProductRepository productRepository;
     private IngredientsProductFragment mFragment;
+
+    private WikidataApiClient apiClientForWikiData;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
 
@@ -114,6 +123,7 @@ public class IngredientsProductFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
+        apiClientForWikiData = new WikidataApiClient();
         mFragment = this;
         return createView(inflater, container, R.layout.fragment_ingredients_product);
     }
@@ -255,7 +265,7 @@ public class IngredientsProductFragment extends BaseFragment {
             additiveProduct.append("\n");
             additiveProduct.setClickable(true);
             additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            List<String> additives = new ArrayList<>();
+            List<AdditiveName> additives = new ArrayList<>();
 
             AdditiveName additiveName;
             String languageCode = Locale.getDefault().getLanguage();
@@ -267,15 +277,19 @@ public class IngredientsProductFragment extends BaseFragment {
                         additiveName = new AdditiveName(StringUtils.capitalize(tag));
                     }
                 }
-                additives.add(additiveName.getName());
+
+                if (additiveName != null) {
+                    additives.add(additiveName);
+                }
+
+                for (int i = 0; i < additives.size() - 1; i++) {
+                    additiveProduct.append(getAdditiveTag((additives.get(i))));
+                    additiveProduct.append("\n");
+                }
+
+                additiveProduct.append(getAdditiveTag((additives.get(additives.size() - 1))));
             }
 
-            for (int i = 0; i < additives.size() - 1; i++) {
-                additiveProduct.append(Utils.getClickableText(StringUtils.capitalize(additives.get(i)), "", SearchType.ADDITIVE, getActivity(), customTabsIntent));
-                additiveProduct.append("\n");
-            }
-
-            additiveProduct.append(Utils.getClickableText(StringUtils.capitalize(additives.get(additives.size() - 1)), "", SearchType.ADDITIVE, getActivity(), customTabsIntent));
         } else {
             additiveProduct.setVisibility(View.GONE);
         }
@@ -301,6 +315,46 @@ public class IngredientsProductFragment extends BaseFragment {
         }
     }
 
+
+    private CharSequence getAdditiveTag(AdditiveName additive) {
+
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                if (additive.getIsWikiDataIdPresent()) {
+                    apiClientForWikiData.doSomeThing(additive.getWikiDataId(), new WikidataApiClient.OnWikiResponse() {
+                        @Override
+                        public void onresponse(boolean value, JSONObject result) {
+                            if (value) {
+                                ProductActivity productActivity = (ProductActivity) getActivity();
+                                productActivity.showBottomScreen(result, additive.getWikiDataId(), 3, additive.getName());
+                            } else {
+                                Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
+                                intent.putExtra("search_query", additive.getName());
+                                intent.putExtra("search_type", "additive");
+                                startActivity(intent);
+                            }
+                        }
+                    });
+                } else {
+                    Intent intent = new Intent(getActivity(), ProductBrowsingListActivity.class);
+                    intent.putExtra("search_query", additive.getName());
+                    intent.putExtra("search_type", "additive");
+                    startActivity(intent);
+                }
+            }
+        };
+
+
+        spannableStringBuilder.append(additive.getName());
+
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        return spannableStringBuilder;
+
+    }
+
     /**
      * @return the string after trimming the language code from the tags
      * like it returns folic-acid for en:folic-acid
@@ -308,6 +362,7 @@ public class IngredientsProductFragment extends BaseFragment {
     private String trimLanguagePartFromString(String string) {
         return string.substring(3);
     }
+
 
     private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text, List<String> allergens) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);

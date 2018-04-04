@@ -24,6 +24,12 @@
   <string name="no_offline_data">Alles erledigt</string>
   <string name="first_offline">Offline hinzugefügte Produkte werden hier angezeigt</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 ✕ 480</item>
+    <item>1024 ✕ 768</item>
+    <item>1152 ✕ 864</item>
+    <item>1600 ✕ 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Zusammenfassung</item>
@@ -129,7 +135,7 @@
   <string name="txtBarcodeRequire">Strichcode erforderlich</string>
   <string name="txtOk">OK</string>
   <string name="txtContentDialogUploading">Bitte warten bis der Vorgang abgeschlossen ist …</string>
-  <string name="txtAbout">Die von Ihnen eingesandten Fotos werden unter der freien Lizenz Creative Commons Attribution und ShareAlike veröffentlicht.</string>
+  <string name="txtAbout">Die von Ihnen eingesandten Fotos werden unter der freien Lizenz „Creative Commons Attribution und ShareAlike” (Weitergabe unter gleichen Bedingungen) veröffentlicht.</string>
   <string name="txtAllsent">Produkte hochgeladen</string>
   <string name="txtPalm">Das Produkt enthält kein Palmöl</string>
   <string name="txtBarcodeNotValid">Strichcode ungültig</string>
@@ -358,6 +364,8 @@
   <string name="please_check_your_connection">Bitte überprüfen Sie Ihre Internetverbindung.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Erweiterte Suche &amp; Diagramme</string>
+  <string name="connectivity_check">Bitte überprüfen Sie Ihre internet-Verbindung</string>
+  <string name="dismiss">Verwerfen</string>
   <string name="Terms">Allgemeine Geschäftsbedingungen</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Allgemein</string>
@@ -378,6 +386,12 @@
   <string name="pref_resolution_summary">Auflösung für das Hochladen von Fotos auswählen</string>
   <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>
   <string name="can_add_barcode">Probleme beim Einlesen?\nNach oben wischen, um den Strichcode einzugeben</string>
+  <string name="wikidata_information">Weitergehen</string>
+  <string name="description">Beschreibung: </string>
+  <string name="title">Titel: </string>
+  <string name="Wikipedia">Auf Wikipedia ansehen</string>
+  <string name="Browse_Products">Produkte durchsuchen</string>
+  <string name="swipe_down">Nach unten wischen</string>
   <string name="brand_string">Marke</string>
   <string name="additive_string">Zusatzstoff</string>
   <string name="search_string">Suchen</string>
@@ -391,10 +405,26 @@
   <string name="category_string">Kategorie</string>
   <string name="connection">Verbunden</string>
   <string name="contributor_string">Mitwirkende(r)</string>
+  <string name="app_disabled_text">Anwendung ist deaktiviert</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitamine:</string>
   <string name="amino_acid_tags_text">Aminosäuren:</string>
   <string name="mineral_tags_text">Mineralien:</string>
   <string name="other_tags_text">Weitere Stoffe:</string>
   <!--shared element transition key-->
+  <string name="wikidata">Wikidata-Informationen</string>
+  <string name="by_title">Titel</string>
+  <string name="by_brand">Marke</string>
+  <string name="by_barcode">Strichcode</string>
+  <string name="by_time">Zuletzt angesehen</string>
+  <string name="sort">Sortieren</string>
+  <string name="by_nutrition_grade">Nährwertangaben</string>
+  <string name="sort_by">Sortieren nach</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Fotos ohne Strichcode können noch nicht mit der App hinzugefügt werden. Bitte probieren Sie die mobile Web-Version aus.</string>
+  <string name="no_barcode">Es konnte kein Barcode gefunden werden.</string>
+  <string name="enter_barcode">Bitte geben Sie den folgenden Strichcode ein</string>
+  <string name="format_error">Fehlerhafte(r/s) Strichcode-/QR-Format</string>
+  <string name="code_detected">Strichcode erkannt</string>
+  <string name="do_you_want_to">Möchten Sie Fotos zu diesem Strichcode hinzufügen?</string>
 </resources>
