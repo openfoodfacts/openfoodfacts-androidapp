@@ -116,8 +116,8 @@
   <string name="txtInfoLoginOk">המשתמש נשמר</string>
   <string name="txtInfoLoginNo">המשתמש לא נשמר</string>
   <string name="txtDialogsTitle">פרטים</string>
-  <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts</string>
-  <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא במסד נתוני המזון הפתוח.</string>
+  <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>
+  <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא ב־Open Food Facts.</string>
   <string name="txtDialogsContentSend">לשלוח את המוצרים שנשמרו אל מסד הנתונים?</string>
   <string name="txtYes">כן</string>
   <string name="txtNo">לא</string>
