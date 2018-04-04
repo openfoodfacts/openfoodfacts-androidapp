@@ -159,7 +159,6 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
             mProduct = new SendProduct();
         }
 
-
         // if the device does not have a camera, hide the button
         try {
             if (!Utils.isHardwareCameraInstalled(getContext())) {
