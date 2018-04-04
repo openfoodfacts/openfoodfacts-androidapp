@@ -300,9 +300,9 @@ public class OpenFoodAPIClient {
     }
 
 
-    public void onResponseCallForPostFunction(Call<State> call, Response<State> response, Activity activity, LoadToast lt, final OnProductSentCallback productSentCallback, SendProduct product) {
+    public void onResponseCallForPostFunction(Call<State> call, Response<State> response, Context activity, final OnProductSentCallback productSentCallback, SendProduct product) {
         if (!response.isSuccessful() || response.body().getStatus() == 0) {
-            lt.error();
+            //lt.error();
             productSentCallback.onProductSentResponse(false);
             return;
         }
@@ -323,7 +323,7 @@ public class OpenFoodAPIClient {
             postImg(activity, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)));
         }
 
-        lt.success();
+        //lt.success();
         productSentCallback.onProductSentResponse(true);
     }
 
@@ -358,23 +358,23 @@ public class OpenFoodAPIClient {
      * and if the product is already present with more information then the server doesn't assume to delete that
      * and write new product's data over that.
      */
-    public void post(final Activity activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
-        final LoadToast lt = new LoadToast(activity);
+    public void post(final Context activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
+       /** final LoadToast lt = new LoadToast(activity);
         lt.setText(activity.getString(R.string.toastSending));
         lt.setBackgroundColor(activity.getResources().getColor(R.color.blue));
         lt.setTextColor(activity.getResources().getColor(R.color.white));
-        lt.show();
+        lt.show();**/
 
         if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity() == null) {
             apiService.saveProductWithoutNameBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
                 @Override
                 public void onResponse(Call<State> call, Response<State> response) {
-                    onResponseCallForPostFunction(call, response, activity, lt, productSentCallback, product);
+                    onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
                 }
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
-                    lt.error();
+                   // lt.error();
                     productSentCallback.onProductSentResponse(false);
                 }
             });
@@ -382,12 +382,12 @@ public class OpenFoodAPIClient {
             apiService.saveProductWithoutNameAndBrands(product.getBarcode(), product.getLang(), product.getQuantity(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
                 @Override
                 public void onResponse(Call<State> call, Response<State> response) {
-                    onResponseCallForPostFunction(call, response, activity, lt, productSentCallback, product);
+                    onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
                 }
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
-                    lt.error();
+                   // lt.error();
                     productSentCallback.onProductSentResponse(false);
                 }
             });
@@ -395,12 +395,12 @@ public class OpenFoodAPIClient {
             apiService.saveProductWithoutNameAndQuantity(product.getBarcode(), product.getLang(), product.getBrands(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
                 @Override
                 public void onResponse(Call<State> call, Response<State> response) {
-                    onResponseCallForPostFunction(call, response, activity, lt, productSentCallback, product);
+                    onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
                 }
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
-                    lt.error();
+                    //lt.error();
                     productSentCallback.onProductSentResponse(false);
                 }
             });
@@ -408,12 +408,12 @@ public class OpenFoodAPIClient {
             apiService.saveProductWithoutBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getName(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
                 @Override
                 public void onResponse(Call<State> call, Response<State> response) {
-                    onResponseCallForPostFunction(call, response, activity, lt, productSentCallback, product);
+                    onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
                 }
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
-                    lt.error();
+                   // lt.error();
                     productSentCallback.onProductSentResponse(false);
                 }
             });
@@ -422,12 +422,12 @@ public class OpenFoodAPIClient {
                     .getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
                 @Override
                 public void onResponse(Call<State> call, Response<State> response) {
-                    onResponseCallForPostFunction(call, response, activity, lt, productSentCallback, product);
+                    onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
                 }
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
-                    lt.error();
+                   // lt.error();
                     productSentCallback.onProductSentResponse(false);
                 }
             });
@@ -436,11 +436,11 @@ public class OpenFoodAPIClient {
     }
 
     public void postImg(final Context context, final ProductImage image) {
-        final LoadToast lt = new LoadToast(context);
+     /**  final LoadToast lt = new LoadToast(context);
         lt.setText(context.getString(R.string.toastSending));
         lt.setBackgroundColor(context.getResources().getColor(R.color.blue));
         lt.setTextColor(context.getResources().getColor(R.color.white));
-        lt.show();
+        lt.show();**/
 
         apiService.saveImage(getUploadableMap(image, context))
                 .enqueue(new Callback<JsonNode>() {
@@ -451,19 +451,19 @@ public class OpenFoodAPIClient {
                             ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                             mToUploadProductDao.insertOrReplace(product);
                             Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
-                            lt.error();
+                            //lt.error();
                             return;
                         }
 
                         JsonNode body = response.body();
                         Log.d("onResponse", body.toString());
                         if (!body.isObject()) {
-                            lt.error();
+                            //lt.error();
                         } else if (body.get("status").asText().contains("status not ok")) {
                             Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
-                            lt.error();
+                           // lt.error();
                         } else {
-                            lt.success();
+                            //lt.success();
                         }
                     }
 
@@ -473,7 +473,7 @@ public class OpenFoodAPIClient {
                         ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                         mToUploadProductDao.insertOrReplace(product);
                         Toast.makeText(context, context.getString(R.string.uploadLater), Toast.LENGTH_LONG).show();
-                        lt.error();
+                       // lt.error();
                     }
                 });
     }
