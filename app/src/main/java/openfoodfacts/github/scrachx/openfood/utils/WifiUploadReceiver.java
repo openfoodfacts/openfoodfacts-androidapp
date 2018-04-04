@@ -59,9 +59,9 @@ public class WifiUploadReceiver extends BroadcastReceiver {
                 public void run() {
 
 
-                   // if (listSaveProduct.size() > 0) {
+                    if (listSaveProduct.size() > 0) {
                         createNotification();
-                   // }
+                    }
 
 
                 }
