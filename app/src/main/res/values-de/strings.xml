@@ -421,10 +421,10 @@
   <string name="by_nutrition_grade">Nährwertangaben</string>
   <string name="sort_by">Sortieren nach</string>
   <!-- strings related to share images -->
-  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
-  <string name="no_barcode">We have not detected any barcode</string>
-  <string name="enter_barcode">Please type the barcode below</string>
-  <string name="format_error">Wrong Barcode/QR format</string>
-  <string name="code_detected">We have detected the barcode</string>
-  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="sorry_msg">Fotos ohne Strichcode können noch nicht mit der App hinzugefügt werden. Bitte probieren Sie die mobile Web-Version aus.</string>
+  <string name="no_barcode">Es konnte kein Barcode gefunden werden.</string>
+  <string name="enter_barcode">Bitte geben Sie den folgenden Strichcode ein</string>
+  <string name="format_error">Fehlerhafte(r/s) Strichcode-/QR-Format</string>
+  <string name="code_detected">Strichcode erkannt</string>
+  <string name="do_you_want_to">Möchten Sie Fotos zu diesem Strichcode hinzufügen?</string>
 </resources>

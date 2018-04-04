@@ -569,7 +569,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchMenuItem.getActionView();
-        if (searchManager != null) {
+        if (searchManager.getSearchableInfo(getComponentName()) != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         }
 
