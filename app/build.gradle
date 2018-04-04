@@ -39,7 +39,7 @@ android {
             applicationId "openfoodfacts.github.scrachx.openbeauty"
             resValue "string", "app_name", "Open Beauty Facts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openbeautyfacts.org"'
-            buildConfigField 'String', 'OFOTHERLINKAPP', '"openfoodfacts.github.scrachx.openfood"'
+            buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openbeautyfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
