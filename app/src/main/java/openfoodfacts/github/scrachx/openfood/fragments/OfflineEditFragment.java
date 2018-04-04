@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -61,17 +62,17 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     Button buttonSend;
     @BindView(R.id.message_container_card_view)
     CardView mCardView;
-    private List<SaveItem> saveItems;
-    private String loginS, passS;
-    private SendProductDao mSendProductDao;
-    private int size;
     @BindView(R.id.noDataImg)
     ImageView noDataImage;
     @BindView(R.id.noDataText)
     TextView noDataText;
+    private List<SaveItem> saveItems;
+    private String loginS, passS;
+    private SendProductDao mSendProductDao;
+    private int size;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         return createView(inflater, container, R.layout.fragment_offline_edit);
     }
@@ -83,7 +84,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         mSendProductDao = Utils.getAppDaoSession(getActivity()).getSendProductDao();
@@ -212,7 +213,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         saveItems.remove(productIndex);
                     }
                     updateDrawerBadge();
-                    ((SaveListAdapter) mRecyclerView.getAdapter()).notifyDataSetChanged();
+                    mRecyclerView.getAdapter().notifyDataSetChanged();
                     mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
                 }
             });
@@ -242,7 +243,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     public void onClick(int position) {
 
         Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
-        SaveItem si = (SaveItem) saveItems.get(position);
+        SaveItem si = saveItems.get(position);
         intent.putExtra("barcode", si.getBarcode());
         startActivity(intent);
     }
@@ -263,7 +264,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     size = saveItems.size();
                     saveItems.remove(lapos);
                     updateDrawerBadge();
-                    getActivity().runOnUiThread(() -> sl.notifyDataSetChanged());
+                    getActivity().runOnUiThread(sl::notifyDataSetChanged);
                 })
                 .show();
 
@@ -278,9 +279,9 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
             SharedPreferences settingsUsage = getContext().getSharedPreferences("usage", 0);
             boolean firstUpload = settingsUsage.getBoolean("firstUpload", false);
-            boolean msgdismissed= settingsUsage.getBoolean("is_offline_msg_dismissed",false);
+            boolean msgdismissed = settingsUsage.getBoolean("is_offline_msg_dismissed", false);
             if (listSaveProduct.size() == 0) {
-                if(msgdismissed) {
+                if (msgdismissed) {
 
                     noDataImage.setVisibility(View.VISIBLE);
                     mRecyclerView.setVisibility(View.GONE);
@@ -291,8 +292,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         noDataImage.setImageResource(R.drawable.ic_cloud_upload);
                         noDataText.setText(R.string.first_offline);
                     }
-                }
-                else{
+                } else {
                     noDataImage.setVisibility(View.INVISIBLE);
                     noDataText.setVisibility(View.INVISIBLE);
                 }

@@ -347,11 +347,9 @@ public class IngredientsProductFragment extends BaseFragment {
             }
         };
 
-        if (additive.getIsWikiDataIdPresent()) {
-            spannableStringBuilder.append(additive.getName() + " : Wiki link present");
-        } else {
-            spannableStringBuilder.append(additive.getName());
-        }
+
+        spannableStringBuilder.append(additive.getName());
+
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableStringBuilder;
 
@@ -360,7 +358,6 @@ public class IngredientsProductFragment extends BaseFragment {
     /**
      * @return the string after trimming the language code from the tags
      * like it returns folic-acid for en:folic-acid
-     *
      */
     private String trimLanguagePartFromString(String string) {
         return string.substring(3);

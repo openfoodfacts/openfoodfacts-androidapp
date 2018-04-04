@@ -366,11 +366,11 @@
   <string name="FAQ">ЧаВО</string>
   <string name="FrequentlyAskedQuestions">Часто задаваемые вопросы</string>
   <string name="translate_help_title">Помогите перевести Open Food Facts</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="translate_help_summary">Перевести базу данных Open Food Facts на ваш родной язык - никаких технических знаний не требуется</string>
   <string name="please_check_your_connection">Проверьте подключение к интернету.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Расширенный поиск и графики</string>
-  <string name="connectivity_check">Please check your internet connection</string>
+  <string name="connectivity_check">Пожалуйста, проверьте подключение к интернету</string>
   <string name="dismiss">Отменить</string>
   <string name="Terms">Условия использования</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -378,10 +378,10 @@
   <string name="preference_header_network">Сеть</string>
   <string name="preference_header_contributing">Помощь проекту</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="seconds_ago">seconds ago</string>
-  <string name="minutes_ago">minutes ago</string>
-  <string name="hours_ago">hours ago</string>
-  <string name="days_ago">days ago</string>
+  <string name="seconds_ago">сек. назад</string>
+  <string name="minutes_ago">мин. назад</string>
+  <string name="hours_ago">часа (-ов) назад</string>
+  <string name="days_ago">дн. назад</string>
   <string name="scan_first_string">Просмотренные вами продукты будут перечислены здесь.\nЭта история предназначена только для ваших глаз и хранится локально.</string>
   <string name="log_in">Логин</string>
   <string name="login_true">Уже вошли!</string>
@@ -419,4 +419,18 @@
   <string name="other_tags_text">Другие вещества:</string>
   <!--shared element transition key-->
   <string name="wikidata">Данные Wikidata</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Марка</string>
+  <string name="by_barcode">Штрих-код</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
 </resources>

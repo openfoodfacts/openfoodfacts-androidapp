@@ -156,7 +156,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
         apiClientForWikiData = new WikidataApiClient();
         mFragment = this;
@@ -164,7 +164,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
         final State state = (State) intent.getExtras().getSerializable("state");
@@ -190,9 +190,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
         }
 
-        /**
-         * shows the dialog if allergen is found.
-         */
         if (matchAll.size() > 0) {
             new MaterialDialog.Builder(getActivity())
                     .title(R.string.warning_allergens)
@@ -548,12 +545,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             }
         };
-
-        if (category.getIsWikiDataIdPresent()) {
-            spannableStringBuilder.append(category.getName() + " : Wiki link present");
-        } else {
-            spannableStringBuilder.append(category.getName());
-        }
+        spannableStringBuilder.append(category.getName());
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableStringBuilder;
     }
@@ -591,11 +583,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         };
 
-        if (label.getIsWikiDataIdPresent()) {
-            spannableStringBuilder.append(label.getName() + " : Wiki link present");
-        } else {
-            spannableStringBuilder.append(label.getName());
-        }
+
+        spannableStringBuilder.append(label.getName());
+
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableStringBuilder;
     }

@@ -52,8 +52,12 @@
     <dimen name="padding_too_short">4dp</dimen>
 
     <!-- Intro Screens -->
-        <dimen name="dots_height">30dp</dimen>
-        <dimen name="dots_margin_bottom">20dp</dimen>
-        <dimen name="img_width_height">250dp</dimen>
-        <dimen name="slide_desc">16sp</dimen>
+    <dimen name="dots_height">30dp</dimen>
+    <dimen name="dots_margin_bottom">20dp</dimen>
+    <dimen name="img_width_height">250dp</dimen>
+    <dimen name="slide_desc">16sp</dimen>
+  
+    <!--- AlertDialog ProductImage -->
+    <dimen name="product_height">200dp</dimen>
+    <dimen name="product_width">250dp</dimen>
 </resources>
