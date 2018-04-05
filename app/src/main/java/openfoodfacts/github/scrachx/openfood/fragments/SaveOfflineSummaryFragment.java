@@ -265,6 +265,7 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
                     break;
             }
         });
+        
         AlertDialog dialog = builder.create();
         dialog.show();
     }
