@@ -32,6 +32,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
+import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class BarCodeScannerFragment extends BaseFragment implements MessageDialogFragment.MessageDialogListener,
         ZXingScannerView.ResultHandler, CameraSelectorDialogFragment.CameraSelectorDialogListener {
@@ -106,6 +107,10 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
         MenuItem cameraMenuItem = menu.add(Menu.NONE, R.id.menu_camera_selector, 0, R.string.select_camera);
         cameraMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 
+
+
+
+
         MenuItem aboutMenuItem = menu.add(Menu.NONE, R.id.menu_about, 0, R.string.action_about);
         aboutMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
     }
@@ -156,6 +161,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
                 DialogFragment cFragment = CameraSelectorDialogFragment.newInstance(this, mCameraId);
                 cFragment.show(getActivity().getSupportFragmentManager(), "camera_selector");
                 return true;
+
             case R.id.menu_about:
                 new MaterialDialog.Builder(this.getActivity())
                         .title(R.string.action_about)

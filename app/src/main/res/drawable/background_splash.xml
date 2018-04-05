@@ -5,8 +5,12 @@
         android:drawable="@color/white"/>
 
     <item
-        android:gravity="center"
-        android:drawable="@drawable/ic_openfacts_logo_no_tagline"
+
+
+            android:drawable="@drawable/ic_openfacts_logo_no_tagline"
+            android:gravity="center"
+
         />
+
 
 </layer-list>
