@@ -371,7 +371,7 @@
   <string name="preference_header_general">Generelt</string>
   <string name="preference_header_network">Netværk</string>
   <string name="preference_header_contributing">Bidrag</string>
-  <string name="not_support_books">Bøger understøttes pt. ikke af Open Food Facts</string>
+  <string name="not_support_books">Bøger understøttes ikke pt. af Open Food Facts</string>
   <string name="seconds_ago">sekunder siden</string>
   <string name="minutes_ago">minutter siden</string>
   <string name="hours_ago">timer siden</string>
@@ -397,28 +397,28 @@
   <string name="search_string">Søg</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">Butik</string>
-  <string name="packaging_subtitle">Packaging</string>
+  <string name="packaging_subtitle">Emballage</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Butik</string>
-  <string name="packaging_string">Packaging</string>
-  <string name="label_string">Label</string>
+  <string name="packaging_string">Emballage</string>
+  <string name="label_string">Etiket</string>
   <string name="category_string">Kategori</string>
-  <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
-  <string name="app_disabled_text">Application is disabled</string>
+  <string name="connection">Tilsluttet</string>
+  <string name="contributor_string">Bidragsyder</string>
+  <string name="app_disabled_text">App er deaktiveret</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
-  <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
-  <string name="other_tags_text">Other Substances:</string>
+  <string name="vitamin_tags_text">Vitaminer:</string>
+  <string name="amino_acid_tags_text">Aminosyrer:</string>
+  <string name="mineral_tags_text">Mineraler:</string>
+  <string name="other_tags_text">Øvrige stoffer:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
+  <string name="wikidata">Wikidata-data</string>
   <string name="by_title">Title</string>
   <string name="by_brand">Mærke</string>
   <string name="by_barcode">Stregkode</string>
-  <string name="by_time">Recently Viewed</string>
-  <string name="sort">Sort</string>
-  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="by_time">Nyligt viste</string>
+  <string name="sort">Sortér</string>
+  <string name="by_nutrition_grade">Ernæringsgrad</string>
   <string name="sort_by">Sort By</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
