@@ -23,7 +23,7 @@
   <string name="txtDialogsContent">Produktet du har skannet eksisterer ikke i Open Food Facts endnu. Vær venlig at tilføje det.</string>
   <string name="txtDialogsContentPowerMode">Produktet du har skannet eksisterer allerede i Open Food Facts.</string>
   <string name="msg_share">Kig på dette produkt på Open Food Facts :</string>
-  <string name="not_support_books">Bøger understøttes pt. ikke af Open Food Facts</string>
+  <string name="not_support_books">Bøger understøttes ikke pt. af Open Food Facts</string>
   <string name="txt_broaden_search">- lave en mindre snæver søgning \n- skanne og tilføje det til Open Food Facts</string>
   <string name="Donation">Klik her for at donere til Open Food Facts</string>
   <string name="translate_help_title">Hjælp med at oversætte Open Food Facts</string>
