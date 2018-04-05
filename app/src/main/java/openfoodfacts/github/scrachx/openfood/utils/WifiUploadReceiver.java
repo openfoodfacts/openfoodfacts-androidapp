@@ -83,8 +83,8 @@ public class WifiUploadReceiver extends BroadcastReceiver {
             intent.setAction("UploadJob");
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                    .setContentTitle("Upload Offline Products")
-                    .setContentText("Please Upload offline products")
+                    .setContentTitle("Offline contributions you need to send")
+                    .setContentText("You have " + listSaveProduct.size() + " offline products waiting to be contributed to Open Food Facts")
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .addAction(R.drawable.ic_cloud_upload, "Upload", PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT));
 
