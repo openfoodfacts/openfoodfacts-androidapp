@@ -65,6 +65,8 @@ godziny</item>
     <item>Składniki</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Produkt</string>
   <string name="fastscroller_track">Ślad FastScrollera</string>
   <string name="fastscroller_handle">Uchwyt FastScrollera</string>
   <string name="search_button">Szukaj</string>
@@ -134,7 +136,10 @@ godziny</item>
   <string name="txtTakePicture">Zrób zdjęcie</string>
   <string name="txtSendAll">Prześlij wszystkie</string>
   <string name="txtNoData">Brak danych</string>
-  <string name="txtPictureNeeded">Proszę dodać na początku obraz</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Wysyłanie...</string>
   <string name="dataSaved">Zapisano lokalnie na urządzeniu</string>
   <string name="txtInfoAddUser">Proszę, wprowadź login i hasło</string>
@@ -151,6 +156,7 @@ godziny</item>
   <string name="txtBarcodeNotValid">Nieważny kod kreskowy</string>
   <string name="try_it_scan_now">Skanuj produkt</string>
   <string name="share">Udostępnij</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Spójrz na produkt w Open Food Facts :</string>
   <string name="create_account">Zarejestruj się</string>
   <string name="home_drawer">Strona główna</string>
@@ -423,6 +429,9 @@ godziny</item>
   <string name="other_tags_text">Inne substancje:</string>
   <!--shared element transition key-->
   <string name="wikidata">Dane z Wikidata</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">Marka</string>
   <string name="by_barcode">Kod kreskowy</string>
