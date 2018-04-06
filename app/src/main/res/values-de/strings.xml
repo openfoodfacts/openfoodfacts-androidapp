@@ -55,7 +55,7 @@
     <item>Inhaltsstoffe</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
+  <string name="bookmark">Lesezeichen</string>
   <string name="product">Produkt</string>
   <string name="fastscroller_track">FastScroller-Spur</string>
   <string name="fastscroller_handle">FastScroller-Griff</string>
@@ -126,10 +126,10 @@
   <string name="txtTakePicture">Foto machen</string>
   <string name="txtSendAll">Alles hochladen</string>
   <string name="txtNoData">Keine Daten</string>
-  <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
-  <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeeded">Warten …</string>
+  <string name="txtPictureNeededDialogContent">Sie sollten mindestens ein Foto hinzufügen, bevor Sie dieses Produkt veröffentlichen</string>
+  <string name="txtPictureNeededDialogYes">Bleiben</string>
+  <string name="txtPictureNeededDialogNo">Verwerfen</string>
   <string name="toastSending">Wird hochgeladen …</string>
   <string name="dataSaved">Lokal auf dem Gerät gespeichert</string>
   <string name="txtInfoAddUser">Bitte Benutzername und Passwort eingeben</string>
@@ -146,7 +146,7 @@
   <string name="txtBarcodeNotValid">Strichcode ungültig</string>
   <string name="try_it_scan_now">Produkt erfassen</string>
   <string name="share">Teilen</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Übersetzen</string>
   <string name="msg_share">Dieses Produkt auf Open Food Facts anzeigen:</string>
   <string name="create_account">Registrieren</string>
   <string name="home_drawer">Startseite</string>
@@ -419,9 +419,9 @@
   <string name="other_tags_text">Weitere Stoffe:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata-Informationen</string>
-  <string name="txtCamera">Camera</string>
-  <string name="txtGallery">Gallery</string>
-  <string name="txtOptions">Options</string>
+  <string name="txtCamera">Kamera</string>
+  <string name="txtGallery">Galerie</string>
+  <string name="txtOptions">Einstellungen</string>
   <string name="by_title">Titel</string>
   <string name="by_brand">Marke</string>
   <string name="by_barcode">Strichcode</string>
