@@ -117,7 +117,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
             mButtonScan.setVisibility(View.GONE);
         }
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
@@ -140,7 +140,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 //                     Implementation of Translation will be here
 //                    Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
 //                    break;
-                case R.id.find_product:
+                case R.id.edit_product:
                     String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
                     if (mState.getProduct().getUrl() != null) {
                         url = " " + mState.getProduct().getUrl();
@@ -150,6 +150,11 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 
                     CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
                     break;
+
+                case R.id.history_bottom_nav:
+                    startActivity(new Intent(this, HistoryScanActivity.class));
+                    break;
+
                 case R.id.empty:
                     break;
                 default:
@@ -158,7 +163,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
             }
             return true;
         });
-        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams)bottomNavigationView.getLayoutParams();
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
         layoutParams.setBehavior(new BottomNavigationBehavior());
     }
 
@@ -207,7 +212,6 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 
     /**
      * This method is used to hide share_item and edit_product in App Bar
-     *
      */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
