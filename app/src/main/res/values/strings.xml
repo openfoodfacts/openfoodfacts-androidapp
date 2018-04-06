@@ -205,7 +205,10 @@
     <string name="txtTakePicture">Take picture</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtNoData">No data</string>
-    <string name="txtPictureNeeded">Please take a picture first</string>
+    <string name="txtPictureNeeded">Wait…</string>
+    <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+    <string name="txtPictureNeededDialogYes">Stay</string>
+    <string name="txtPictureNeededDialogNo">Discard</string>
     <string name="toastSending">Uploading…</string>
     <string name="dataSaved">Saved locally on your device</string>
     <string name="txtInfoAddUser">Please enter your login and password</string>
@@ -527,6 +530,11 @@
     <!--shared element transition key-->
     <string name="product_transition" translatable="false">productTransition</string>
     <string name="wikidata">Wikidata data</string>
+
+    <string name="txtCamera">Camera</string>
+    <string name="txtGallery">Gallery</string>
+    <string name="txtOptions">Options</string>
+
     <string name="by_title">Title</string>
     <string name="by_brand">Brand</string>
     <string name="by_barcode">Barcode</string>
