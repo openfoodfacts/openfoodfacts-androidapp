@@ -21,7 +21,7 @@
   <string name="text_barcode">Saisissez le code-barre :</string>
   <string name="message_in_activity_save_product_offline">Une seule photo est obligatoire pour envoyer un nouveau produit.</string>
   <string name="product_incomplete_message">Ce produit n\'est pas complet. En conséquence, nous n\'avons pas pu faire le test d\'allergène.</string>
-  <string name="no_offline_data">Vous avez terminé</string>
+  <string name="no_offline_data">C\'est bon :)</string>
   <string name="first_offline">Les produits ajoutés hors ligne apparaîtront ici</string>
   <!-- Image Upload -->
   <string-array name="upload_image">
@@ -55,7 +55,7 @@
     <item>Ingrédients</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
+  <string name="bookmark">Favori</string>
   <string name="product">Produit</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
@@ -76,7 +76,7 @@
   <string name="txtManufacturing">Lieux de fabrication ou de transformation :</string>
   <string name="txtIngredientsOrigins">Origine des ingrédients :</string>
   <string name="txtCity">Ville, état et pays d\'achat :</string>
-  <string name="txtEMB">Code EMB:</string>
+  <string name="txtEMB">Code emballeur:</string>
   <string name="txtManufactureUrl">Lien vers la page du produit sur le site officiel du producteur:</string>
   <string name="txtStores">Magasins :</string>
   <string name="txtCountries">Pays de vente :</string>
@@ -126,10 +126,10 @@
   <string name="txtTakePicture">Prendre une photo</string>
   <string name="txtSendAll">Tout envoyer</string>
   <string name="txtNoData">Aucune donnée</string>
-  <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
-  <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeeded">Veuillez patienter…</string>
+  <string name="txtPictureNeededDialogContent">Vous devez ajouter au moins une image avant de soumettre ce produit</string>
+  <string name="txtPictureNeededDialogYes">Rester</string>
+  <string name="txtPictureNeededDialogNo">Annuler</string>
   <string name="toastSending">Envoi en cours...</string>
   <string name="dataSaved">Données enregistrées en local...</string>
   <string name="txtInfoAddUser">Veuillez ajouter un utilisateur</string>
@@ -146,7 +146,7 @@
   <string name="txtBarcodeNotValid">Code barre non valide</string>
   <string name="try_it_scan_now">Scanner un produit</string>
   <string name="share">Partager</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Traduire</string>
   <string name="msg_share">Regarde ce produit sur Open Food Facts :</string>
   <string name="create_account">S\'inscrire</string>
   <string name="home_drawer">Accueil</string>
@@ -419,16 +419,16 @@
   <string name="other_tags_text">Autres substances :</string>
   <!--shared element transition key-->
   <string name="wikidata">Données de Wikidata</string>
-  <string name="txtCamera">Camera</string>
-  <string name="txtGallery">Gallery</string>
+  <string name="txtCamera">Appareil photo</string>
+  <string name="txtGallery">Galerie</string>
   <string name="txtOptions">Options</string>
-  <string name="by_title">Title</string>
+  <string name="by_title">Titre</string>
   <string name="by_brand">Marque</string>
   <string name="by_barcode">Code barre</string>
-  <string name="by_time">Recently Viewed</string>
-  <string name="sort">Sort</string>
-  <string name="by_nutrition_grade">Nutrition Grade</string>
-  <string name="sort_by">Sort By</string>
+  <string name="by_time">Dernières consultations</string>
+  <string name="sort">Trier</string>
+  <string name="by_nutrition_grade">Note nutritionnelle</string>
+  <string name="sort_by">Trier par</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
