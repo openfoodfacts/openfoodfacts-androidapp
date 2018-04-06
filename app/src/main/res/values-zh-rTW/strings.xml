@@ -52,6 +52,8 @@
     <item>成分</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">產品</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">搜尋</string>
@@ -121,7 +123,10 @@
   <string name="txtTakePicture">拍攝照片</string>
   <string name="txtSendAll">全部上傳</string>
   <string name="txtNoData">無資料</string>
-  <string name="txtPictureNeeded">請先拍張照片</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">上傳中...</string>
   <string name="dataSaved">已儲存在您的裝置中</string>
   <string name="txtInfoAddUser">請輸入您的使用者名稱與密碼</string>
@@ -138,6 +143,7 @@
   <string name="txtBarcodeNotValid">條碼無效</string>
   <string name="try_it_scan_now">掃描產品</string>
   <string name="share">分享</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">於 Open Food Facts 上查看此產品：</string>
   <string name="create_account">註冊</string>
   <string name="home_drawer">首頁</string>
@@ -410,4 +416,21 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">品牌</string>
+  <string name="by_barcode">條碼</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
 </resources>

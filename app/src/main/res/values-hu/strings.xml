@@ -55,6 +55,8 @@
     <item>Össztevők</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Termék</string>
   <string name="fastscroller_track">FastScroller sáv</string>
   <string name="fastscroller_handle">FastScroller kezelő</string>
   <string name="search_button">Keres</string>
@@ -124,7 +126,10 @@
   <string name="txtTakePicture">Fotó készítése</string>
   <string name="txtSendAll">Összes feltöltése</string>
   <string name="txtNoData">Nincs adat</string>
-  <string name="txtPictureNeeded">Kérjük, készítsen egy képet először</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Feltöltés...</string>
   <string name="dataSaved">Elmentve az eszközre</string>
   <string name="txtInfoAddUser">Felhasználónév és jelszó megadása</string>
@@ -141,6 +146,7 @@
   <string name="txtBarcodeNotValid">Helytelen vonalkód</string>
   <string name="try_it_scan_now">Termék beolvasása</string>
   <string name="share">Megosztás</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Termék keresése az Open Food Facts adatbázisban:</string>
   <string name="create_account">Regisztráció</string>
   <string name="home_drawer">Kezdőlap</string>
@@ -386,12 +392,12 @@
   <string name="pref_resolution_summary">Válasszon felbontást kép feltöltéshez</string>
   <string name="image_upload_resolution">Képfeltöltés felbontása</string>
   <string name="can_add_barcode">Gond adódott a beolvasással?\nGépelje be a vonalkódot</string>
-  <string name="wikidata_information">Going further</string>
-  <string name="description">Description: </string>
-  <string name="title">Title: </string>
-  <string name="Wikipedia">View on Wikipedia</string>
-  <string name="Browse_Products">Browse Products</string>
-  <string name="swipe_down">Swipe down</string>
+  <string name="wikidata_information">Továbblép</string>
+  <string name="description">Leírás: </string>
+  <string name="title">Cím: </string>
+  <string name="Wikipedia">Megtekintés a Wikipedia-n</string>
+  <string name="Browse_Products">Termékek böngészése</string>
+  <string name="swipe_down">Húzás lefelé</string>
   <string name="brand_string">Márka</string>
   <string name="additive_string">Adalékanyag</string>
   <string name="search_string">Keres</string>
@@ -412,5 +418,22 @@
   <string name="mineral_tags_text">Ásványi anyagok:</string>
   <string name="other_tags_text">Egyéb anyagok:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
+  <string name="wikidata">Wikidata adat</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Cím</string>
+  <string name="by_brand">Márka</string>
+  <string name="by_barcode">Vonalkód</string>
+  <string name="by_time">Nemrég megtekintve</string>
+  <string name="sort">Rendezés</string>
+  <string name="by_nutrition_grade">Táplálkozási osztályzat</string>
+  <string name="sort_by">Rendezés</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Vonalkód nélküli fényképeket még nem lehet hozzáadni az alkalmazással. Kérjük, próbálja a mobil webes változattal.</string>
+  <string name="no_barcode">Vonalkód nincs felismerve</string>
+  <string name="enter_barcode">Kérjük, gépelje be a vonalkódot</string>
+  <string name="format_error">Helytelen vonalkód/QR formátum</string>
+  <string name="code_detected">Vonalkód felismerve</string>
+  <string name="do_you_want_to">Szeretne fényképeket hozzáadni ehhez a vonalkódhoz?</string>
 </resources>

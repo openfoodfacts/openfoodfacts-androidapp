@@ -55,6 +55,8 @@
     <item>Ingredienser</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Product</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Søk</string>
@@ -124,7 +126,10 @@
   <string name="txtTakePicture">Ta bilde</string>
   <string name="txtSendAll">Last opp alt</string>
   <string name="txtNoData">Ingen data</string>
-  <string name="txtPictureNeeded">Vennligst ta et bilde først</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Laster opp...</string>
   <string name="dataSaved">Lagret lokalt på enheten din</string>
   <string name="txtInfoAddUser">Vennligst angi brukernavnet og passordet ditt</string>
@@ -141,6 +146,7 @@
   <string name="txtBarcodeNotValid">Ugyldig strekkode</string>
   <string name="try_it_scan_now">Skann produkt</string>
   <string name="share">Del</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Se på dette produktet i Open Food Facts :</string>
   <string name="create_account">Registrér deg</string>
   <string name="home_drawer">Hjem</string>
@@ -413,4 +419,21 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Kjede</string>
+  <string name="by_barcode">Strekkode</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
 </resources>

@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -37,10 +38,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -61,17 +64,17 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     Button buttonSend;
     @BindView(R.id.message_container_card_view)
     CardView mCardView;
-    private List<SaveItem> saveItems;
-    private String loginS, passS;
-    private SendProductDao mSendProductDao;
-    private int size;
     @BindView(R.id.noDataImg)
     ImageView noDataImage;
     @BindView(R.id.noDataText)
     TextView noDataText;
+    private List<SaveItem> saveItems;
+    private String loginS, passS;
+    private SendProductDao mSendProductDao;
+    private int size;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         return createView(inflater, container, R.layout.fragment_offline_edit);
     }
@@ -83,7 +86,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         mSendProductDao = Utils.getAppDaoSession(getActivity()).getSendProductDao();
@@ -212,7 +215,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         saveItems.remove(productIndex);
                     }
                     updateDrawerBadge();
-                    ((SaveListAdapter) mRecyclerView.getAdapter()).notifyDataSetChanged();
+                    mRecyclerView.getAdapter().notifyDataSetChanged();
                     mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
                 }
             });
@@ -243,7 +246,14 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
 
         Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
         SaveItem si = (SaveItem) saveItems.get(position);
-        intent.putExtra("barcode", si.getBarcode());
+        State st=new State();
+        Product pd=new Product();
+        pd.setCode(si.getBarcode());
+        st.setProduct(pd);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("state", st);
+        intent.putExtras(bundle);
+        intent.putExtra("offlineEdit",true);
         startActivity(intent);
     }
 
@@ -263,7 +273,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     size = saveItems.size();
                     saveItems.remove(lapos);
                     updateDrawerBadge();
-                    getActivity().runOnUiThread(() -> sl.notifyDataSetChanged());
+                    getActivity().runOnUiThread(sl::notifyDataSetChanged);
                 })
                 .show();
 
@@ -278,9 +288,9 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
             SharedPreferences settingsUsage = getContext().getSharedPreferences("usage", 0);
             boolean firstUpload = settingsUsage.getBoolean("firstUpload", false);
-            boolean msgdismissed= settingsUsage.getBoolean("is_offline_msg_dismissed",false);
+            boolean msgdismissed = settingsUsage.getBoolean("is_offline_msg_dismissed", false);
             if (listSaveProduct.size() == 0) {
-                if(msgdismissed) {
+                if (msgdismissed) {
 
                     noDataImage.setVisibility(View.VISIBLE);
                     mRecyclerView.setVisibility(View.GONE);
@@ -291,8 +301,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         noDataImage.setImageResource(R.drawable.ic_cloud_upload);
                         noDataText.setText(R.string.first_offline);
                     }
-                }
-                else{
+                } else {
                     noDataImage.setVisibility(View.INVISIBLE);
                     noDataText.setVisibility(View.INVISIBLE);
                 }
@@ -303,9 +312,6 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                 noDataText.setVisibility(View.GONE);
                 buttonSend.setVisibility(View.VISIBLE);
                 mCardView.setVisibility(View.GONE);
-                Toast toast = Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
             }
         }
 
@@ -320,15 +326,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         || isEmpty(product.getBrands()) || isEmpty(product.getWeight()) || isEmpty(product.getName())) {
                     imageIcon = R.drawable.ic_no_red_24dp;
                 }
-
-                Bitmap bitmap = Utils.decodeFile(new File(product.getImgupload_front()));
-                if (bitmap == null) {
-                    Log.e(LOG_TAG, "Unable to load the image of the product: " + product.getBarcode());
-                    continue;
-                }
-
-                Bitmap imgUrl = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
-                saveItems.add(new SaveItem(product.getName(), imageIcon, imgUrl, product.getBarcode(), product.getWeight() + " " + product.getWeight_unit(), product.getBrands()));
+                saveItems.add(new SaveItem(product.getName(), imageIcon,product.getImgupload_front(), product.getBarcode(),product.getWeight()+" "+product.getWeight_unit(),product.getBrands()));
             }
 
             return ctx[0];

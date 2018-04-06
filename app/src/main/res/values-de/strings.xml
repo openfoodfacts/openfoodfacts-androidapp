@@ -55,6 +55,8 @@
     <item>Inhaltsstoffe</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Produkt</string>
   <string name="fastscroller_track">FastScroller-Spur</string>
   <string name="fastscroller_handle">FastScroller-Griff</string>
   <string name="search_button">Suchen</string>
@@ -124,7 +126,10 @@
   <string name="txtTakePicture">Foto machen</string>
   <string name="txtSendAll">Alles hochladen</string>
   <string name="txtNoData">Keine Daten</string>
-  <string name="txtPictureNeeded">Bitte fotografieren Sie zuerst das Produkt</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Wird hochgeladen …</string>
   <string name="dataSaved">Lokal auf dem Gerät gespeichert</string>
   <string name="txtInfoAddUser">Bitte Benutzername und Passwort eingeben</string>
@@ -135,12 +140,13 @@
   <string name="txtBarcodeRequire">Strichcode erforderlich</string>
   <string name="txtOk">OK</string>
   <string name="txtContentDialogUploading">Bitte warten bis der Vorgang abgeschlossen ist …</string>
-  <string name="txtAbout">Die von Ihnen eingesandten Fotos werden unter der freien Lizenz Creative Commons Attribution und ShareAlike veröffentlicht.</string>
+  <string name="txtAbout">Die von Ihnen eingesandten Fotos werden unter der freien Lizenz „Creative Commons Attribution und ShareAlike” (Weitergabe unter gleichen Bedingungen) veröffentlicht.</string>
   <string name="txtAllsent">Produkte hochgeladen</string>
   <string name="txtPalm">Das Produkt enthält kein Palmöl</string>
   <string name="txtBarcodeNotValid">Strichcode ungültig</string>
   <string name="try_it_scan_now">Produkt erfassen</string>
   <string name="share">Teilen</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Dieses Produkt auf Open Food Facts anzeigen:</string>
   <string name="create_account">Registrieren</string>
   <string name="home_drawer">Startseite</string>
@@ -386,12 +392,12 @@
   <string name="pref_resolution_summary">Auflösung für das Hochladen von Fotos auswählen</string>
   <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>
   <string name="can_add_barcode">Probleme beim Einlesen?\nNach oben wischen, um den Strichcode einzugeben</string>
-  <string name="wikidata_information">Going further</string>
-  <string name="description">Description: </string>
-  <string name="title">Title: </string>
-  <string name="Wikipedia">View on Wikipedia</string>
-  <string name="Browse_Products">Browse Products</string>
-  <string name="swipe_down">Swipe down</string>
+  <string name="wikidata_information">Weitergehen</string>
+  <string name="description">Beschreibung: </string>
+  <string name="title">Titel: </string>
+  <string name="Wikipedia">Auf Wikipedia ansehen</string>
+  <string name="Browse_Products">Produkte durchsuchen</string>
+  <string name="swipe_down">Nach unten wischen</string>
   <string name="brand_string">Marke</string>
   <string name="additive_string">Zusatzstoff</string>
   <string name="search_string">Suchen</string>
@@ -412,5 +418,22 @@
   <string name="mineral_tags_text">Mineralien:</string>
   <string name="other_tags_text">Weitere Stoffe:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
+  <string name="wikidata">Wikidata-Informationen</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Titel</string>
+  <string name="by_brand">Marke</string>
+  <string name="by_barcode">Strichcode</string>
+  <string name="by_time">Zuletzt angesehen</string>
+  <string name="sort">Sortieren</string>
+  <string name="by_nutrition_grade">Nährwertangaben</string>
+  <string name="sort_by">Sortieren nach</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Fotos ohne Strichcode können noch nicht mit der App hinzugefügt werden. Bitte probieren Sie die mobile Web-Version aus.</string>
+  <string name="no_barcode">Es konnte kein Barcode gefunden werden.</string>
+  <string name="enter_barcode">Bitte geben Sie den folgenden Strichcode ein</string>
+  <string name="format_error">Fehlerhafte(r/s) Strichcode-/QR-Format</string>
+  <string name="code_detected">Strichcode erkannt</string>
+  <string name="do_you_want_to">Möchten Sie Fotos zu diesem Strichcode hinzufügen?</string>
 </resources>

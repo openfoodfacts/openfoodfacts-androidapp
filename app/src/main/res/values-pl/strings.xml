@@ -65,6 +65,8 @@ godziny</item>
     <item>Składniki</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Produkt</string>
   <string name="fastscroller_track">Ślad FastScrollera</string>
   <string name="fastscroller_handle">Uchwyt FastScrollera</string>
   <string name="search_button">Szukaj</string>
@@ -134,7 +136,10 @@ godziny</item>
   <string name="txtTakePicture">Zrób zdjęcie</string>
   <string name="txtSendAll">Prześlij wszystkie</string>
   <string name="txtNoData">Brak danych</string>
-  <string name="txtPictureNeeded">Proszę dodać na początku obraz</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Wysyłanie...</string>
   <string name="dataSaved">Zapisano lokalnie na urządzeniu</string>
   <string name="txtInfoAddUser">Proszę, wprowadź login i hasło</string>
@@ -151,6 +156,7 @@ godziny</item>
   <string name="txtBarcodeNotValid">Nieważny kod kreskowy</string>
   <string name="try_it_scan_now">Skanuj produkt</string>
   <string name="share">Udostępnij</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Spójrz na produkt w Open Food Facts :</string>
   <string name="create_account">Zarejestruj się</string>
   <string name="home_drawer">Strona główna</string>
@@ -396,12 +402,12 @@ godziny</item>
   <string name="pref_resolution_summary">Wybierz rozdzielczość do przesyłania obrazów</string>
   <string name="image_upload_resolution">Rozdzielczość przesyłania zdjęć</string>
   <string name="can_add_barcode">Problem ze skanowaniem? \nPrzeciągnij, by wpisać kod kreskowy</string>
-  <string name="wikidata_information">Going further</string>
-  <string name="description">Description: </string>
-  <string name="title">Title: </string>
-  <string name="Wikipedia">View on Wikipedia</string>
-  <string name="Browse_Products">Browse Products</string>
-  <string name="swipe_down">Swipe down</string>
+  <string name="wikidata_information">Idź dalej</string>
+  <string name="description">Opis: </string>
+  <string name="title">Tytuł: </string>
+  <string name="Wikipedia">Zobacz na Wikipedii</string>
+  <string name="Browse_Products">Wybierz produkty</string>
+  <string name="swipe_down">Przesuń na dół</string>
   <string name="brand_string">Marka</string>
   <string name="additive_string">Dodatek</string>
   <string name="search_string">Szukaj</string>
@@ -422,5 +428,22 @@ godziny</item>
   <string name="mineral_tags_text">Minerały:</string>
   <string name="other_tags_text">Inne substancje:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
+  <string name="wikidata">Dane z Wikidata</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Marka</string>
+  <string name="by_barcode">Kod kreskowy</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
 </resources>
