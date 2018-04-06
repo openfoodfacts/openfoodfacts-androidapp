@@ -426,5 +426,5 @@
   <string name="enter_barcode">Angiv nedenstående stregkode</string>
   <string name="format_error">Ugyldig stregkode-/QR-format</string>
   <string name="code_detected">Stregkoden er aflæst</string>
-  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="do_you_want_to">Vil du føje billeder til denne stregkode?</string>
 </resources>
