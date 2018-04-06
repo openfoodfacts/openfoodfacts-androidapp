@@ -210,6 +210,8 @@ dependencies {
         transitive = true
     }
 
+    //UI Component : Expandable Layout
+    implementation 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
     //UI Component : Adapters
 
     //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework

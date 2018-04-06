@@ -133,19 +133,21 @@ public class NutritionInfoProductFragment extends BaseFragment {
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
 
         // Header hack
-        nutrimentItems.add(new NutrimentItem(null, null, null, null));
+        nutrimentItems.add(new NutrimentItem(null, null, null, null, null, null));
 
         // Energy
         Nutriment energy = nutriments.get(ENERGY);
         if (energy != null) {
             nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name), getEnergy(energy.getFor100g()), getEnergy(energy
-                    .getForServing()), "kcal"));
+                    .getForServing()), "kcal", getEnergy(energy.getForPrepared100g()), getEnergy(energy.getForPreparedServing())));
         }
 
         // Fat        
         Nutriment fat = nutriments.get(FAT);
         if (fat != null) {
-            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_fat), fat.getFor100g(), fat.getForServing(), fat.getUnit()));
+            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_fat), fat.getFor100g(), fat.getForServing(), fat.getUnit(), fat
+                    .getForPrepared100g(), fat
+                    .getForPreparedServing()));
 
             nutrimentItems.addAll(getNutrimentItems(nutriments, FAT_MAP));
         }
@@ -156,7 +158,9 @@ public class NutritionInfoProductFragment extends BaseFragment {
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_carbohydrate),
                     carbohydrates.getFor100g(),
                     carbohydrates.getForServing(),
-                    carbohydrates.getUnit()));
+                    carbohydrates.getUnit(),
+                    carbohydrates.getForPrepared100g(),
+                    carbohydrates.getForPreparedServing()));
 
             nutrimentItems.addAll(getNutrimentItems(nutriments, CARBO_MAP));
         }
@@ -170,7 +174,9 @@ public class NutritionInfoProductFragment extends BaseFragment {
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_proteins),
                     proteins.getFor100g(),
                     proteins.getForServing(),
-                    proteins.getUnit()));
+                    proteins.getUnit(),
+                    proteins.getForPrepared100g(),
+                    proteins.getForPreparedServing()));
 
             nutrimentItems.addAll(getNutrimentItems(nutriments, PROT_MAP));
         }
@@ -196,7 +202,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
             nutrimentItems.addAll(getNutrimentItems(nutriments, MINERALS_MAP));
         }
 
-        RecyclerView.Adapter adapter = new NutrimentsRecyclerViewAdapter(nutrimentItems);
+        RecyclerView.Adapter adapter = new NutrimentsRecyclerViewAdapter(nutrimentItems, nutrimentsRecyclerView);
         nutrimentsRecyclerView.setAdapter(adapter);
     }
 
@@ -206,7 +212,8 @@ public class NutritionInfoProductFragment extends BaseFragment {
             Nutriment nutriment = nutriments.get(entry.getKey());
             if (nutriment != null) {
                 items.add(new NutrimentItem(getString(entry.getValue()),
-                        nutriment.getFor100g(), nutriment.getForServing(), nutriment.getUnit()));
+                        nutriment.getFor100g(), nutriment.getForServing(), nutriment.getUnit(), nutriment.getForPrepared100g(), nutriment
+                        .getForPreparedServing()));
             }
         }
 
