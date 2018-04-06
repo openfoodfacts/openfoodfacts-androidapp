@@ -133,6 +133,8 @@
     </string-array>
 
     <!-- Content Description -->
+    <string name="bookmark">Bookmark</string>
+    <string name="product">Product</string>
 
     <string name="fastscroller_track">FastScroller track</string>
     <string name="fastscroller_handle">FastScroller handle</string>
@@ -203,7 +205,10 @@
     <string name="txtTakePicture">Take picture</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtNoData">No data</string>
-    <string name="txtPictureNeeded">Please take a picture first</string>
+    <string name="txtPictureNeeded">Wait…</string>
+    <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+    <string name="txtPictureNeededDialogYes">Stay</string>
+    <string name="txtPictureNeededDialogNo">Discard</string>
     <string name="toastSending">Uploading…</string>
     <string name="dataSaved">Saved locally on your device</string>
     <string name="txtInfoAddUser">Please enter your login and password</string>
@@ -220,6 +225,7 @@
     <string name="txtBarcodeNotValid">Barcode not valid</string>
     <string name="try_it_scan_now">Scan product</string>
     <string name="share">Share</string>
+    <string name="translate">Translate</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">Sign up</string>
     <string name="home_drawer">Home</string>
@@ -526,6 +532,11 @@
     <string name="wikidata">Wikidata data</string>
     <string name="disable_image_loading">Disable Image Loading when battery is low</string>
     <string name="DisableLoadTitle">Disable Image Loading</string>
+
+    <string name="txtCamera">Camera</string>
+    <string name="txtGallery">Gallery</string>
+    <string name="txtOptions">Options</string>
+
     <string name="by_title">Title</string>
     <string name="by_brand">Brand</string>
     <string name="by_barcode">Barcode</string>

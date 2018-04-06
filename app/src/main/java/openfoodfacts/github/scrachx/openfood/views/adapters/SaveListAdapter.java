@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
+import java.util.concurrent.Executors;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
@@ -40,7 +44,7 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
 
         holder.imgIcon.setImageDrawable(AppCompatResources.getDrawable(context, item.getIcon()));
         holder.txtTitle.setText(item.getTitle());
-        holder.imgProduct.setImageBitmap(item.getUrl());
+        Picasso.with(context).load("file://"+item.getUrl()).config(Bitmap.Config.RGB_565).into(holder.imgProduct);
         holder.txtBarcode.setText(item.getBarcode());
         holder.txtWeight.setText(item.getWeight());
         holder.txtBrand.setText(item.getBrand());

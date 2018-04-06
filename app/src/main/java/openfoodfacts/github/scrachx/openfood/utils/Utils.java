@@ -16,6 +16,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
+import android.os.Environment;
 import android.provider.Settings;
 import android.support.annotation.DrawableRes;
 import android.support.customtabs.CustomTabsIntent;
@@ -461,6 +462,38 @@ public class Utils {
         }
 
         return "Other";
+    }
+
+    public static String timeStamp(){
+        Long tsLong = System.currentTimeMillis();
+        return tsLong.toString();
+    }
+
+
+   public static File makeOrGetPictureDirectory(Context context) {
+        // determine the profile directory
+        File dir= context.getFilesDir();
+
+        if (isExternalStorageWritable()) {
+            dir = context.getExternalFilesDir(null);
+        }
+        File picDir= new File(dir, "Pictures");
+        if(picDir.exists()){
+            return picDir;
+        }
+        // creates the directory if not present yet
+        picDir.mkdir();
+
+        return picDir;
+    }
+
+    public static boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED.equals(state);
+    }
+
+    public static Uri getOutputPicUri(Context context){
+        return (Uri.fromFile(new File(Utils.makeOrGetPictureDirectory(context),"/"+Utils.timeStamp()+".jpg")));
     }
 
     public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {

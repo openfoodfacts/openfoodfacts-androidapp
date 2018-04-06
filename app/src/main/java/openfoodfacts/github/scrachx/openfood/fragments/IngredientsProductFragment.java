@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -46,6 +47,7 @@ import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
@@ -109,7 +111,7 @@ public class IngredientsProductFragment extends BaseFragment {
     private AdditiveDao mAdditiveDao;
     private IProductRepository productRepository;
     private IngredientsProductFragment mFragment;
-
+    private SendProduct mSendProduct;
     private WikidataApiClient apiClientForWikiData;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
@@ -137,6 +139,11 @@ public class IngredientsProductFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
+        try {
+            mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set disableLoad to true
@@ -222,6 +229,13 @@ public class IngredientsProductFragment extends BaseFragment {
             }
 
             mUrlImage = product.getImageIngredientsUrl();
+        }
+
+        //useful when this fragment is used in offline saving
+        if (mSendProduct != null && isNotBlank(mSendProduct.getImgupload_ingredients())) {
+            addPhotoLabel.setVisibility(View.GONE);
+            mUrlImage = mSendProduct.getImgupload_ingredients();
+            Picasso.with(getContext()).load("file://"+mUrlImage).config(Bitmap.Config.RGB_565).into(mImageIngredients);
         }
 
         List<String> allergens = getAllergens();
@@ -445,6 +459,7 @@ public class IngredientsProductFragment extends BaseFragment {
                 ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
             } else {
                 EasyImage.openCamera(this, 0);
+//                EasyImage.openGallery(this);
             }
         }
     }
@@ -483,7 +498,7 @@ public class IngredientsProductFragment extends BaseFragment {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false).setOutputUri(Utils.getOutputPicUri(getContext()))
                         .start(getContext(), mFragment);
             }
 
@@ -523,5 +538,8 @@ public class IngredientsProductFragment extends BaseFragment {
         }
     }
 
+    public String getIngredients() {
+        return mUrlImage;
+    }
 
 }
