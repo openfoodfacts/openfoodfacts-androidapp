@@ -11,8 +11,8 @@
   <string name="website_product">https://world-da.openfoodfacts.org/produkt</string>
   <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-da.openfoodfacts.org/bidragsyder</string>
-  <string name="txtHome">Open Food Facts er en åben database af fødevareprodukter indeholdende information om ingredienser, ernæringsindhold og alle de andre detaljer der er at finde på produkters mærkning.</string>
-  <string name="slide_1_title">Contribute to product transparency</string>
+  <string name="txtHome">Open Products Facts er en åben database over alle produkter i verden.</string>
+  <string name="slide_1_title">Bidrag til produktgennemsigtighed</string>
   <string name="slide_1_desc">Skan produkter, tilføj billeder, få fødevaregennemsigtighed til at ske</string>
   <string name="slide_2_title">Få styr på fakta</string>
   <string name="slide_2_desc">Extensive information about the products you\'ve scanned, deciphered for you</string>
