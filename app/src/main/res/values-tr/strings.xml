@@ -55,6 +55,8 @@
     <item>İçindekiler</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Ürün</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Ara</string>
@@ -124,7 +126,10 @@
   <string name="txtTakePicture">Resim çek</string>
   <string name="txtSendAll">Tümünü Yükle</string>
   <string name="txtNoData">Veri yok</string>
-  <string name="txtPictureNeeded">Lütfen önce bir resim çekin</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Yükleniyor...</string>
   <string name="dataSaved">Cihazınıza yerel olarak kaydedildi</string>
   <string name="txtInfoAddUser">Lütfen giriş ve şifrenizi girin</string>
@@ -141,6 +146,7 @@
   <string name="txtBarcodeNotValid">Barkod geçerli değil</string>
   <string name="try_it_scan_now">Ürünü tara</string>
   <string name="share">Paylaş</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Bu ürüne Open Food Facts\'te bak:</string>
   <string name="create_account">Kaydol</string>
   <string name="home_drawer">Ana Sayfa</string>
@@ -413,6 +419,9 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">Marka</string>
   <string name="by_barcode">Barkod</string>
