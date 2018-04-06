@@ -155,6 +155,10 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
                     startActivity(new Intent(this, HistoryScanActivity.class));
                     break;
 
+                case R.id.search_product:
+                    startActivity(new Intent(this, MainActivity.class));
+                    break;
+
                 case R.id.empty:
                     break;
                 default:

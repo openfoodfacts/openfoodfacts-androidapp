@@ -23,6 +23,12 @@
         android:title="@string/product" />
 
     <item
+        android:id="@+id/search_product"
+        android:enabled="true"
+        android:icon="@drawable/ic_search_black"
+        android:title="@string/search_bottomNav" />
+
+    <item
         android:id="@+id/history_bottom_nav"
         android:enabled="true"
         android:icon="@drawable/ic_history_grey_24dp"

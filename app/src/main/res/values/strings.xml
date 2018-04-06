@@ -552,5 +552,6 @@
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
     <string name="bottomNav_history">History</string>
+    <string name="search_bottomNav">Search</string>
 
 </resources>
