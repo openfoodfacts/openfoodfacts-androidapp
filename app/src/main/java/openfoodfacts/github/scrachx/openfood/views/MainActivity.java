@@ -141,7 +141,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
                 if (scanOnShake) {
                     Utils.scan(MainActivity.this);
-                    Toast.makeText(MainActivity.this, "TEXT", Toast.LENGTH_SHORT).show();
                 }
 
             }
