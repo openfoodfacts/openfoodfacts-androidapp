@@ -416,4 +416,18 @@
   <string name="other_tags_text">Citas vielas:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata dati</string>
+  <string name="by_title">Virsraksts</string>
+  <string name="by_brand">Zīmols</string>
+  <string name="by_barcode">Svītrkods</string>
+  <string name="by_time">Nesen skatīts</string>
+  <string name="sort">Kārtot</string>
+  <string name="by_nutrition_grade">Uztura pakāpe</string>
+  <string name="sort_by">Kārtot pēc</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Attēlus bez svītrkoda vēl nevar pievienot lietotnei. Lūdzu, izmēģiniet mobilo tīmekļa versiju.</string>
+  <string name="no_barcode">Mēs neesam atraduši nevienu svītrkodu</string>
+  <string name="enter_barcode">Lūdzu, ierakstiet zemāk esošo svītrkodu</string>
+  <string name="format_error">Nepareizs svītru / QR formāts</string>
+  <string name="code_detected">Mēs neesam atraduši nevienu svītrkodu</string>
+  <string name="do_you_want_to">Vai vēlaties pievienot šo svītrkodu fotogrāfijas?</string>
 </resources>
