@@ -103,7 +103,6 @@ public class NutritionInfoProductFragment extends BaseFragment {
             e.printStackTrace();
         }
 
-
         final Product product = state.getProduct();
         barcode = product.getCode();
         Nutriments nutriments = product.getNutriments();
