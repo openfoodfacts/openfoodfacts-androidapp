@@ -125,7 +125,6 @@ public class NutritionInfoProductFragment extends BaseFragment {
         // use a linear layout manager
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         nutrimentsRecyclerView.setLayoutManager(mLayoutManager);
-
         nutrimentsRecyclerView.setNestedScrollingEnabled(false);
 
         // use VERTICAL divider
