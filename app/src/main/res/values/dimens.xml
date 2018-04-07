@@ -52,6 +52,9 @@
     <dimen name="padding_too_short">4dp</dimen>
 
     <!-- Intro Screens -->
+    <dimen name="splash_right">110dp</dimen>
+    <dimen name="splash_left">110dp</dimen>
+
     <dimen name="dots_height">30dp</dimen>
     <dimen name="dots_margin_bottom">20dp</dimen>
     <dimen name="img_width_height">250dp</dimen>

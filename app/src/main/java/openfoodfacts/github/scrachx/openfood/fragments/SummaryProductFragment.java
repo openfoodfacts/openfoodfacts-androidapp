@@ -141,6 +141,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private TagDao mTagDao;
     private SummaryProductFragment mFragment;
     private IProductRepository productRepository;
+    private Product product;
+
+    private Uri manufactureUri;
 
     private Product product;
 

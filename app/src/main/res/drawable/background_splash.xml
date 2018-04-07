@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:drawable="@color/white"/>
+    <item android:drawable="@color/white" />
 
     <item
+        android:id="@+id/background_image_splash"
+        android:drawable="@drawable/splash_bg"
         android:gravity="center"
-        android:drawable="@drawable/ic_openfacts_logo_no_tagline"
-        />
+        android:left="@dimen/splash_left"
+        android:right="@dimen/splash_right" />
+
 
 </layer-list>

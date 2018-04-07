@@ -8,6 +8,8 @@ import android.support.v4.content.ContextCompat;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
@@ -17,6 +19,7 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
 
     private ISplashPresenter.Actions presenter;
     private LoadToast toast;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

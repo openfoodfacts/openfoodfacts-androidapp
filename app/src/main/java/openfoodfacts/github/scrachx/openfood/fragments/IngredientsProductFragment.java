@@ -377,7 +377,7 @@ public class IngredientsProductFragment extends BaseFragment {
         return string.substring(3);
     }
 
-
+  
     private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text, List<String> allergens) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);
         Matcher m = INGREDIENT_PATTERN.matcher(ssb);
