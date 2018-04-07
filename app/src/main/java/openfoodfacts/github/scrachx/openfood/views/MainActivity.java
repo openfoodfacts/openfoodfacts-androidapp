@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
+import android.app.LoaderManager;
 import android.app.SearchManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -22,6 +23,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -76,6 +78,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Set;
 
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -103,7 +106,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
-public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener {
+public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final int LOGIN_REQUEST = 1;
     private static final long USER_ID = 500;
@@ -134,6 +137,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private ShakeDetector mShakeDetector;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
+    private SharedPreferences shakePreference;
 
 
     @Override
@@ -143,6 +147,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_main);
+
+        shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
+        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
 
         Utils.hideKeyboard(this);
 
@@ -162,8 +169,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
 
-        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
-        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
 
         Log.i("Shake", String.valueOf(scanOnShake));
         mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
@@ -395,6 +400,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         // Add Drawer items for the connected user
         result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isUserConnected ?
                 getLogoutDrawerItem() : getLoginDrawerItem());
+
         if (BuildConfig.FLAVOR.equals("obf")) {
             result.removeItem(ITEM_ALERT);
             result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
@@ -709,8 +715,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             Log.e("INTENT", "start activity");
             String query = intent.getStringExtra(SearchManager.QUERY);
             ProductBrowsingListActivity.startActivity(this, query, SearchType.SEARCH);
-        }
-        else if (Intent.ACTION_SEND.equals(intent.getAction()) && type != null) {
+        } else if (Intent.ACTION_SEND.equals(intent.getAction()) && type != null) {
 
             if (type.startsWith("image/")) {
                 handleSendImage(intent); // Handle single image being sent
@@ -786,6 +791,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     public void onPause() {
         super.onPause();
 
+        shakePreference.unregisterOnSharedPreferenceChangeListener(this);
+
         if (scanOnShake) {
 
             // unregister the listener
@@ -798,6 +805,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     public void onResume() {
         super.onResume();
 
+        shakePreference.registerOnSharedPreferenceChangeListener(this);
         if (scanOnShake) {
 
             //register the listener
@@ -807,7 +815,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
 
     }
-
 
 
     private void handleSendImage(Intent intent) {
@@ -951,5 +958,16 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         alertDialog.show();
 
     }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+
+        // restart activity if scan on shake is chosen
+        if (sharedPreferences.getBoolean("shakeScanMode", false) != scanOnShake) {
+            this.recreate();
+        }
+
+    }
+
 }
 
