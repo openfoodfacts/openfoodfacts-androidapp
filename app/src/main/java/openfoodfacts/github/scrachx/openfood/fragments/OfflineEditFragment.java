@@ -118,13 +118,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     @OnClick(R.id.buttonSendAll)
     protected void onSendAllProducts() {
         if (!Utils.isAirplaneModeActive(getContext()) && Utils.isNetworkConnected(getContext()) && PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true)) {
-            new MaterialDialog.Builder(getActivity())
-                    .title(R.string.txtDialogsTitle)
-                    .content(R.string.txtDialogsContentSend)
-                    .positiveText(R.string.txtYes)
-                    .negativeText(R.string.txtNo)
-                    .onPositive((dialog, which) -> uploadProducts())
-                    .show();
+            uploadProducts();
         } else if (Utils.isAirplaneModeActive(getContext())) {
             new MaterialDialog.Builder(getActivity())
                     .title(R.string.airplane_mode_active_dialog_title)
@@ -246,14 +240,14 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
 
         Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
         SaveItem si = (SaveItem) saveItems.get(position);
-        State st=new State();
-        Product pd=new Product();
+        State st = new State();
+        Product pd = new Product();
         pd.setCode(si.getBarcode());
         st.setProduct(pd);
         Bundle bundle = new Bundle();
         bundle.putSerializable("state", st);
         intent.putExtras(bundle);
-        intent.putExtra("offlineEdit",true);
+        intent.putExtra("offlineEdit", true);
         startActivity(intent);
     }
 
@@ -326,7 +320,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         || isEmpty(product.getBrands()) || isEmpty(product.getWeight()) || isEmpty(product.getName())) {
                     imageIcon = R.drawable.ic_no_red_24dp;
                 }
-                saveItems.add(new SaveItem(product.getName(), imageIcon,product.getImgupload_front(), product.getBarcode(),product.getWeight()+" "+product.getWeight_unit(),product.getBrands()));
+                saveItems.add(new SaveItem(product.getName(), imageIcon, product.getImgupload_front(), product.getBarcode(), product.getWeight() + " " + product.getWeight_unit(), product.getBrands()));
             }
 
             return ctx[0];
