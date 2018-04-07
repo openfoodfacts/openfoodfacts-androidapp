@@ -128,7 +128,7 @@
   <string name="txtNoData">Nincs adat</string>
   <string name="txtPictureNeeded">Várjon…</string>
   <string name="txtPictureNeededDialogContent">Hozzá kell adnia legalább egy képet mielőtt beküldi ezt a terméket</string>
-  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogYes">Marad</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Feltöltés...</string>
   <string name="dataSaved">Elmentve az eszközre</string>
