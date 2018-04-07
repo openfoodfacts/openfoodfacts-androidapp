@@ -176,6 +176,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
                     proteins.getUnit(),
                     proteins.getForPrepared100g(),
                     proteins.getForPreparedServing()));
+            
             nutrimentItems.addAll(getNutrimentItems(nutriments, PROT_MAP));
         }
 
