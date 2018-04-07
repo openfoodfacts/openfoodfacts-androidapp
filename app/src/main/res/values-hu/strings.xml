@@ -129,7 +129,7 @@
   <string name="txtPictureNeeded">Várjon…</string>
   <string name="txtPictureNeededDialogContent">Hozzá kell adnia legalább egy képet mielőtt beküldi ezt a terméket</string>
   <string name="txtPictureNeededDialogYes">Marad</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeededDialogNo">Elvet</string>
   <string name="toastSending">Feltöltés...</string>
   <string name="dataSaved">Elmentve az eszközre</string>
   <string name="txtInfoAddUser">Felhasználónév és jelszó megadása</string>
@@ -419,8 +419,8 @@
   <string name="other_tags_text">Egyéb anyagok:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata adat</string>
-  <string name="txtCamera">Camera</string>
-  <string name="txtGallery">Gallery</string>
+  <string name="txtCamera">Kamera</string>
+  <string name="txtGallery">Galéria</string>
   <string name="txtOptions">Options</string>
   <string name="by_title">Cím</string>
   <string name="by_brand">Márka</string>
