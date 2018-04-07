@@ -75,7 +75,7 @@
   <string name="txtLabels">Címkék, tanúsítványok, díjak:</string>
   <string name="txtManufacturing">Gyártás vagy feldolgozás helyei:</string>
   <string name="txtIngredientsOrigins">Összetevők eredete:</string>
-  <string name="txtCity">Vásárlás helye (város, állam vagy ország):</string>
+  <string name="txtCity">Vásárlás helye (város, állam és ország):</string>
   <string name="txtEMB">EMB vagy EK üzemkód:</string>
   <string name="txtManufactureUrl">A termék weboldalának címe a gyártó hivatalos honlapján:</string>
   <string name="txtStores">Boltok:</string>
