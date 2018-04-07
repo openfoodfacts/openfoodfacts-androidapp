@@ -16,9 +16,9 @@
   <string name="action_settings">Beállítások</string>
   <string name="action_about">Névjegy</string>
   <string name="action_discover">Felfedez</string>
-  <string name="contribute">Hogyan segíthet</string>
+  <string name="contribute">Hogyan járulhat hozzá</string>
   <string name="action_find">Keres</string>
-  <string name="text_barcode">Vonalkód beírása :</string>
+  <string name="text_barcode">Vonalkód begépelése:</string>
   <string name="message_in_activity_save_product_offline">Csak egy fénykép kötelező egy új termék elküldéséhez.</string>
   <string name="product_incomplete_message">Ez a termékoldal nem teljes. Ennek eredményeként nem tudtuk elvégezni az allergén ellenőrzést.</string>
   <string name="no_offline_data">Mindennel elkészült</string>
