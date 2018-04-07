@@ -52,17 +52,17 @@
   <string-array name="images_array">
     <item>Alapértelmezett</item>
     <item>Tápanyag</item>
-    <item>Össztevők</item>
+    <item>Összetevők</item>
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Könyvjelző</string>
   <string name="product">Termék</string>
   <string name="fastscroller_track">FastScroller sáv</string>
   <string name="fastscroller_handle">FastScroller kezelő</string>
-  <string name="search_button">Keres</string>
-  <string name="no_products">Hiányzó termékek</string>
+  <string name="search_button">Keresés</string>
+  <string name="no_products">Nem találhatóak termékek</string>
   <string name="desc_list_item_icon">Termék ikon</string>
-  <string name="alert_dialog_warning_title">Figyelem</string>
+  <string name="alert_dialog_warning_title">Figyelmeztetés</string>
   <string name="alert_dialog_warning_msg_user">Felhasználó/jelszó megváltozott, frissítse az információt</string>
   <string name="alert_dialog_product_error_msg">Termék nem található, próbálja újra</string>
   <string name="toast_retrieving">Betöltés…</string>
@@ -165,7 +165,7 @@
   <string name="delete_txt">Törlés</string>
   <string name="sign_in_drawer">Bejelentkezés</string>
   <string name="alert_drawer">Allergén riasztás</string>
-  <string name="warning_allergens">Allergént tartalmaz</string>
+  <string name="warning_allergens">Allergéneket tartalmaz</string>
   <string name="title_dialog_alert">Figyelmeztetés felvétele</string>
   <string name="toggle_flash">Flash</string>
   <string name="flash_on">Flash [ON]</string>
