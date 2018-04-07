@@ -20,9 +20,9 @@
   <string name="action_find">Buscar</string>
   <string name="text_barcode">Escreva o código de barras:</string>
   <string name="message_in_activity_save_product_offline">É obrigatória apenas uma foto para enviar um novo produto.</string>
-  <string name="product_incomplete_message">Este produto não está completo. Como resultado, não pudemos verificar a presença de alergénios.</string>
+  <string name="product_incomplete_message">Este produto não está completo. Como resultado, não pudemos verificar a presença de alérgenos.</string>
   <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="first_offline">Produtos adicionados offline aparecerão aqui</string>
   <!-- Image Upload -->
   <string-array name="upload_image">
     <item>640 X 480</item>
@@ -81,8 +81,8 @@
   <string name="txtStores">Lojas :</string>
   <string name="txtCountries">Países onde é vendido :</string>
   <string name="txtIngredients">Lista de ingredientes :</string>
-  <string name="Donate">Donate</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donate">Doar</string>
+  <string name="Donation">Clique aqui para doar ao Open Food Facts</string>
   <string name="txtSubstances">Substâncias ou produtos susceptíveis de causar alergias ou intolerâncias :</string>
   <string name="txtAdditives">Aditivos :</string>
   <string name="txtTraces">Vestígios :</string>
@@ -126,10 +126,10 @@
   <string name="txtTakePicture">Tirar foto</string>
   <string name="txtSendAll">Enviar todos</string>
   <string name="txtNoData">Sem dados</string>
-  <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
-  <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeeded">Aguarde…</string>
+  <string name="txtPictureNeededDialogContent">Você deve adicionar pelo menos uma foto antes de enviar este produto</string>
+  <string name="txtPictureNeededDialogYes">Permanecer</string>
+  <string name="txtPictureNeededDialogNo">Descartar</string>
   <string name="toastSending">A enviar...</string>
   <string name="dataSaved">Guardado localmente no seu dispositivo</string>
   <string name="txtInfoAddUser">Por favor, digite o seu nome de utilizador e palavra-passe</string>
@@ -146,7 +146,7 @@
   <string name="txtBarcodeNotValid">Código de barras inválido</string>
   <string name="try_it_scan_now">Digitalizar produto</string>
   <string name="share">Partilhar</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Traduzir</string>
   <string name="msg_share">Veja este produto no Open Food Facts :</string>
   <string name="create_account">Inscrever</string>
   <string name="home_drawer">Início</string>
@@ -252,15 +252,15 @@
   <string name="txtSeeMore">Ver mais</string>
   <string name="action_search">Procurar</string>
   <string name="search_hint">Pesquisar um produto</string>
-  <string name="number_of_results">Number of results: </string>
+  <string name="number_of_results">Número de resultados: </string>
   <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="number_of_products">Número de produtos: </string>
   <string name="txt_no_results">Sem resultados</string>
   <string name="txt_extend_search">Tente alargar a pesquisa ou adicione o produto</string>
   <string name="txt_no_matching_products">Não encontrámos nenhum produto correspondente.\nPoderá tentar:</string>
   <string name="txt_broaden_search">- alargar a sua pesquisa \n- digitalizar e adicionar ao Open Food Facts</string>
   <string name="txt_cant_load_search_results">Não foi possível carregar os resultados da pesquisa</string>
-  <string name="something_went_wrong">Sorry, something went wrong…</string>
+  <string name="something_went_wrong">Sinto muito, algo deu errado…</string>
   <string name="txt_try_again">Tente novamente</string>
   <string name="nutrition_lactose">Lactose</string>
   <string name="nutrition_casein">Caseína</string>
@@ -327,10 +327,10 @@
   <string name="take_picture_front">Tirar foto à parte frontal</string>
   <string name="take_picture_nutrition_table">Tirar foto à tabela nutricional</string>
   <string name="take_more_pictures">Tirar mais fotos</string>
-  <string name="txtSaturatedFat">Saturated fat</string>
+  <string name="txtSaturatedFat">Gordura saturada</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Atalho Indisponível</string>
-  <string name="scan_shortcut_short_label">Scan</string>
+  <string name="scan_shortcut_short_label">Escanear</string>
   <string name="scan_shortcut_long_label">Digitalizar Produto</string>
   <string name="barcode_shortcut_short_label">Procurar</string>
   <string name="barcode_shortcut_long_label">Pesquisa por Código de Barras</string>
