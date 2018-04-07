@@ -55,7 +55,7 @@
     <item>Össztevők</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
+  <string name="bookmark">Könyvjelző</string>
   <string name="product">Termék</string>
   <string name="fastscroller_track">FastScroller sáv</string>
   <string name="fastscroller_handle">FastScroller kezelő</string>
@@ -126,7 +126,7 @@
   <string name="txtTakePicture">Fotó készítése</string>
   <string name="txtSendAll">Összes feltöltése</string>
   <string name="txtNoData">Nincs adat</string>
-  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeeded">Várjon…</string>
   <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
