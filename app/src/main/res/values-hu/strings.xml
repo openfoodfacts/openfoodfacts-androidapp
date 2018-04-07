@@ -15,7 +15,7 @@
   </plurals>
   <string name="action_settings">Beállítások</string>
   <string name="action_about">Névjegy</string>
-  <string name="action_discover">Felfedezés</string>
+  <string name="action_discover">Felfedez</string>
   <string name="contribute">Hogyan segíthet</string>
   <string name="action_find">Keres</string>
   <string name="text_barcode">Vonalkód beírása :</string>
@@ -421,7 +421,7 @@
   <string name="wikidata">Wikidata adat</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galéria</string>
-  <string name="txtOptions">Options</string>
+  <string name="txtOptions">Lehetőségek</string>
   <string name="by_title">Cím</string>
   <string name="by_brand">Márka</string>
   <string name="by_barcode">Vonalkód</string>
