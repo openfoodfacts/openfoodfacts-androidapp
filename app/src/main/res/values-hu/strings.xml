@@ -106,14 +106,14 @@
   <string name="hintBarcode">Vonalkód</string>
   <string name="hintLogin">Bejelentkezés</string>
   <string name="hintPass">Jelszó</string>
-  <string name="errorLogin">Bejelentkezési hiba</string>
+  <string name="errorLogin">Bejelentkezési vagy jelszó hiba</string>
   <string name="errorWeb">Internet csatlakozási problémák.</string>
   <string name="uploadLater">A kép feltöltésre kerül amikor a hálózat elérhető lesz</string>
   <string name="txtInfoLoginOk">Felhasználó mentve</string>
   <string name="txtInfoLoginNo">Felhasználó nem lett mentve</string>
   <string name="txtDialogsTitle">Információ</string>
   <string name="txtDialogsContent">A beolvasott termék nem található az Open Food Facts adatbázisában. Adja hozzá.</string>
-  <string name="txtDialogsContentPowerMode">Ez a termék megtalálható az Open Food Facts adatbázisában.</string>
+  <string name="txtDialogsContentPowerMode">A beolvasott termék megtalálható az Open Food Facts adatbázisában.</string>
   <string name="txtDialogsContentSend">Feltöltjük a mentett terméket az adatbázisba?</string>
   <string name="txtYes">Igen</string>
   <string name="txtNo">Nem</string>
