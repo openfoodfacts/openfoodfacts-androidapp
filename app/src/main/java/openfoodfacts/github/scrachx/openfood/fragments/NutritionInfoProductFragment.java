@@ -110,7 +110,6 @@ public class NutritionInfoProductFragment extends BaseFragment {
             Picasso.with(view.getContext())
                     .load(product.getImageNutritionUrl())
                     .into(mImageNutrition);
-
             mUrlImage = product.getImageNutritionUrl();
         }
 
