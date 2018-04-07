@@ -122,8 +122,8 @@
   <string name="hintEnergyUnit">Energia egység</string>
   <string name="hintWeight">Tömeg</string>
   <string name="hintStores">Bolt</string>
-  <string name="hintBrand">Márka</string>
-  <string name="txtTakePicture">Fotó készítése</string>
+  <string name="hintBrand">Márkanév</string>
+  <string name="txtTakePicture">Kép készítése</string>
   <string name="txtSendAll">Összes feltöltése</string>
   <string name="txtNoData">Nincs adat</string>
   <string name="txtPictureNeeded">Várjon…</string>
@@ -253,7 +253,7 @@
   <string name="action_search">Keres</string>
   <string name="search_hint">Termék keresése</string>
   <string name="number_of_results">Találatok száma: </string>
-  <string name="brand">Márkanév :</string>
+  <string name="brand">Márkanév:</string>
   <string name="number_of_products">Termékek száma: </string>
   <string name="txt_no_results">Nincs találat</string>
   <string name="txt_extend_search">Próbálja meg bővíteni a keresést vagy adja hozzá a terméket</string>
@@ -398,7 +398,7 @@
   <string name="Wikipedia">Megtekintés a Wikipedia-n</string>
   <string name="Browse_Products">Termékek böngészése</string>
   <string name="swipe_down">Húzás lefelé</string>
-  <string name="brand_string">Márka</string>
+  <string name="brand_string">Márkanév</string>
   <string name="additive_string">Adalékanyag</string>
   <string name="search_string">Keres</string>
   <string name="country_string">Országok, ahol árulják</string>
@@ -423,7 +423,7 @@
   <string name="txtGallery">Galéria</string>
   <string name="txtOptions">Lehetőségek</string>
   <string name="by_title">Cím</string>
-  <string name="by_brand">Márka</string>
+  <string name="by_brand">Márkanév</string>
   <string name="by_barcode">Vonalkód</string>
   <string name="by_time">Nemrég megtekintve</string>
   <string name="sort">Rendezés</string>
