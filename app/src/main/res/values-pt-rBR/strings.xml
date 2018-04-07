@@ -63,9 +63,9 @@
   <string name="no_products">Nenhum produto encontrado</string>
   <string name="desc_list_item_icon">Ícone</string>
   <string name="alert_dialog_warning_title">Aviso</string>
-  <string name="alert_dialog_warning_msg_user">Utilizador/palavra-passe mudou, por favor actualize a informação</string>
+  <string name="alert_dialog_warning_msg_user">Usuário/senha mudou, por favor atualize a informação</string>
   <string name="alert_dialog_product_error_msg">Produto não encontrado, por favor tente novamente</string>
-  <string name="toast_retrieving">A carregar...</string>
+  <string name="toast_retrieving">Carregando…</string>
   <string name="txtGenericName">Nome genérico :</string>
   <string name="txtBarcode">Código de barras :</string>
   <string name="txtQuantity">Quantidade :</string>
@@ -73,11 +73,11 @@
   <string name="txtBrands">Marcas :</string>
   <string name="txtCategories">Categorias :</string>
   <string name="txtLabels">Etiquetas, certificações, prémios :</string>
-  <string name="txtManufacturing">Locais de fabrico ou processamento :</string>
+  <string name="txtManufacturing">Locais de fabricação ou processamento :</string>
   <string name="txtIngredientsOrigins">Origem dos ingredientes :</string>
-  <string name="txtCity">Cidade, estado e país onde foi comprado :</string>
+  <string name="txtCity">Cidade, estado e país de compra :</string>
   <string name="txtEMB">Código EMB:</string>
-  <string name="txtManufactureUrl">Ligação para a página do produto no site oficial do fabricante:</string>
+  <string name="txtManufactureUrl">Link para a página do produto no site oficial do fabricante:</string>
   <string name="txtStores">Lojas :</string>
   <string name="txtCountries">Países onde é vendido :</string>
   <string name="txtIngredients">Lista de ingredientes :</string>
