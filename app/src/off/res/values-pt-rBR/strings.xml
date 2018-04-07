@@ -18,8 +18,8 @@
   <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
   <string name="slide_3_title">Obtenha o Nutriscore</string>
   <string name="slide_3_desc">Uma visão sintética das características nutricionais dos seus produtos alimentares favoritos</string>
-  <string name="slide_4_title">Works offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+  <string name="slide_4_title">Funciona offline</string>
+  <string name="slide_4_desc">Você pode adicionar novos produtos, mesmo se você não estiver atualmente conectado à Internet</string>
   <string name="txtDialogsContent">O produto que digitalizou ainda não existe no Open Food Facts. Por favor adicione-o.</string>
   <string name="txtDialogsContentPowerMode">O produto que digitalizou já existe no Open Food Facts.</string>
   <string name="msg_share">Veja este produto no Open Food Facts :</string>
