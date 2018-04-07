@@ -127,7 +127,7 @@
   <string name="txtSendAll">Összes feltöltése</string>
   <string name="txtNoData">Nincs adat</string>
   <string name="txtPictureNeeded">Várjon…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">Hozzá kell adnia legalább egy képet mielőtt beküldi ezt a terméket</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Feltöltés...</string>
@@ -146,7 +146,7 @@
   <string name="txtBarcodeNotValid">Helytelen vonalkód</string>
   <string name="try_it_scan_now">Termék beolvasása</string>
   <string name="share">Megosztás</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Lefordít</string>
   <string name="msg_share">Termék keresése az Open Food Facts adatbázisban:</string>
   <string name="create_account">Regisztráció</string>
   <string name="home_drawer">Kezdőlap</string>
