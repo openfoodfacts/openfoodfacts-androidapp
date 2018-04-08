@@ -113,6 +113,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
             mUrlImage = product.getImageNutritionUrl();
         }
 
+
         if (nutriments == null) {
             return;
         }
