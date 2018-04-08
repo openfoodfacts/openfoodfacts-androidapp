@@ -20,9 +20,10 @@
 -keep @com.bluelinelabs.logansquare.annotation.JsonObject class *
 -keep class **$$JsonObjectMapper { *; }
 -keep class openfoodfacts.github.scrachx.openfood.models.** { *; }
+-keep class openfoodfacts.github.scrachx.openfood.network.deserializers.** { *; }
 -ignorewarnings
 #Keep Jackson classes ( https://sourceforge.net/p/proguard/discussion/182456/thread/e4d73acf/ )
--keepnames class org.codehaus.jackson.** {
-    *;
-}
+-keepnames class org.codehaus.jackson.** { *; }
+-keepnames class com.fasterxml.jackson.** { *; }
+-keepnames interface com.fasterxml.jackson.** { *; }
 
