@@ -428,9 +428,9 @@
   <string name="sort_by">並べ替え順</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">バーコードの付いていない写真はまだアプリで追加できません。モバイルウェブ版をお試しください。</string>
-  <string name="no_barcode">We have not detected any barcode</string>
-  <string name="enter_barcode">Please type the barcode below</string>
-  <string name="format_error">Wrong Barcode/QR format</string>
-  <string name="code_detected">We have detected the barcode</string>
-  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="no_barcode">バーコードを検出していません</string>
+  <string name="enter_barcode">下にバーコードを入力してください</string>
+  <string name="format_error">バーコード/QR 形式が間違っています</string>
+  <string name="code_detected">バーコードを検出しました</string>
+  <string name="do_you_want_to">このバーコードに写真を追加しますか?</string>
 </resources>
