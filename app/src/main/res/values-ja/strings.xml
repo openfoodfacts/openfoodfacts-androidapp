@@ -52,6 +52,8 @@
     <item>原材料</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">製品</string>
   <string name="fastscroller_track">高速スクローラートラック</string>
   <string name="fastscroller_handle">高速スクローラーハンドル</string>
   <string name="search_button">検索</string>
@@ -121,7 +123,10 @@
   <string name="txtTakePicture">写真を撮影</string>
   <string name="txtSendAll">すべてアップロード</string>
   <string name="txtNoData">データはありません</string>
-  <string name="txtPictureNeeded">まず写真を撮ってください</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">アップロードしています...</string>
   <string name="dataSaved">お使いのデバイス内に保存しました</string>
   <string name="txtInfoAddUser">ログインとパスワードを入力してください</string>
@@ -138,6 +143,7 @@
   <string name="txtBarcodeNotValid">バーコードが正しくありません</string>
   <string name="try_it_scan_now">製品をスキャン</string>
   <string name="share">共有</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Open Food Facts でこの製品を参照してください:</string>
   <string name="create_account">サインアップ</string>
   <string name="home_drawer">ホーム</string>
@@ -410,6 +416,9 @@
   <string name="other_tags_text">その他の成分:</string>
   <!--shared element transition key-->
   <string name="wikidata">ウィキデータのデータ</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">ブランド（会社名）</string>
   <string name="by_barcode">バーコード</string>

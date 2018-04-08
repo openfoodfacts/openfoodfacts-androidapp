@@ -21,3 +21,8 @@
 -keep class **$$JsonObjectMapper { *; }
 -keep class openfoodfacts.github.scrachx.openfood.models.** { *; }
 -ignorewarnings
+#Keep Jackson classes ( https://sourceforge.net/p/proguard/discussion/182456/thread/e4d73acf/ )
+-keepnames class org.codehaus.jackson.** {
+    *;
+}
+

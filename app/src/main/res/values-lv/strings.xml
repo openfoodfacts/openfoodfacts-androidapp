@@ -58,6 +58,8 @@
     <item>Sastāvdaļas</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Product</string>
   <string name="fastscroller_track">Ātrās apskates režīms</string>
   <string name="fastscroller_handle">Ātrās apskates pārbaude</string>
   <string name="search_button">Meklēt</string>
@@ -127,7 +129,10 @@
   <string name="txtTakePicture">Uzņemt attēlu</string>
   <string name="txtSendAll">Augšupielādēt visu</string>
   <string name="txtNoData">Nav datu</string>
-  <string name="txtPictureNeeded">Lūdzu, vispirms uzņemiet attēlu</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Augšuplādē…</string>
   <string name="dataSaved">Saglabāts jūsu ierīcē</string>
   <string name="txtInfoAddUser">Lūdzu, ievadiet savu lietotājvārdu un paroli</string>
@@ -144,6 +149,7 @@
   <string name="txtBarcodeNotValid">Svītrkods nav derīgs</string>
   <string name="try_it_scan_now">Skenēt produktu</string>
   <string name="share">Dalīties</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Apskatiet šo produktu, izmantojot Open Food Facts:</string>
   <string name="create_account">Reģistrēties</string>
   <string name="home_drawer">Mājas</string>
@@ -416,18 +422,21 @@
   <string name="other_tags_text">Citas vielas:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata dati</string>
-  <string name="by_title">Title</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Virsraksts</string>
   <string name="by_brand">Zīmols</string>
   <string name="by_barcode">Svītrkods</string>
-  <string name="by_time">Recently Viewed</string>
-  <string name="sort">Sort</string>
-  <string name="by_nutrition_grade">Nutrition Grade</string>
-  <string name="sort_by">Sort By</string>
+  <string name="by_time">Nesen skatīts</string>
+  <string name="sort">Kārtot</string>
+  <string name="by_nutrition_grade">Uztura pakāpe</string>
+  <string name="sort_by">Kārtot pēc</string>
   <!-- strings related to share images -->
-  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
-  <string name="no_barcode">We have not detected any barcode</string>
-  <string name="enter_barcode">Please type the barcode below</string>
-  <string name="format_error">Wrong Barcode/QR format</string>
-  <string name="code_detected">We have detected the barcode</string>
-  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="sorry_msg">Attēlus bez svītrkoda vēl nevar pievienot lietotnei. Lūdzu, izmēģiniet mobilo tīmekļa versiju.</string>
+  <string name="no_barcode">Mēs neesam atraduši nevienu svītrkodu</string>
+  <string name="enter_barcode">Lūdzu, ierakstiet zemāk esošo svītrkodu</string>
+  <string name="format_error">Nepareizs svītru / QR formāts</string>
+  <string name="code_detected">Mēs neesam atraduši nevienu svītrkodu</string>
+  <string name="do_you_want_to">Vai vēlaties pievienot šo svītrkodu fotogrāfijas?</string>
 </resources>

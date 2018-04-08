@@ -55,6 +55,8 @@
     <item>Össztevők</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Termék</string>
   <string name="fastscroller_track">FastScroller sáv</string>
   <string name="fastscroller_handle">FastScroller kezelő</string>
   <string name="search_button">Keres</string>
@@ -124,7 +126,10 @@
   <string name="txtTakePicture">Fotó készítése</string>
   <string name="txtSendAll">Összes feltöltése</string>
   <string name="txtNoData">Nincs adat</string>
-  <string name="txtPictureNeeded">Kérjük, készítsen egy képet először</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Feltöltés...</string>
   <string name="dataSaved">Elmentve az eszközre</string>
   <string name="txtInfoAddUser">Felhasználónév és jelszó megadása</string>
@@ -141,6 +146,7 @@
   <string name="txtBarcodeNotValid">Helytelen vonalkód</string>
   <string name="try_it_scan_now">Termék beolvasása</string>
   <string name="share">Megosztás</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Termék keresése az Open Food Facts adatbázisban:</string>
   <string name="create_account">Regisztráció</string>
   <string name="home_drawer">Kezdőlap</string>
@@ -413,6 +419,9 @@
   <string name="other_tags_text">Egyéb anyagok:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata adat</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Cím</string>
   <string name="by_brand">Márka</string>
   <string name="by_barcode">Vonalkód</string>

@@ -55,6 +55,8 @@
     <item>Բաղադրամասեր</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Product</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Որոնել</string>
@@ -124,7 +126,10 @@
   <string name="txtTakePicture">Լուսանկարել</string>
   <string name="txtSendAll">Վերբեռնել բոլորը</string>
   <string name="txtNoData">Տվյալներ չկան</string>
-  <string name="txtPictureNeeded">Please take a picture first</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Բեռնավորում...</string>
   <string name="dataSaved">Պահպանվել է Ձեր սարքի վրա</string>
   <string name="txtInfoAddUser">Մուտքագրեք մուտքանունը և գաղտնաբառը</string>
@@ -141,6 +146,7 @@
   <string name="txtBarcodeNotValid">Գծակոդն անվավեր է</string>
   <string name="try_it_scan_now">Scan product</string>
   <string name="share">Կիսվել</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Նայեք այս մթերքը «Open Food Facts»-ում՝</string>
   <string name="create_account">Գրանցում</string>
   <string name="home_drawer">Գլխավոր</string>
@@ -413,6 +419,9 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">Brand</string>
   <string name="by_barcode">Գծակոդ</string>
