@@ -111,10 +111,8 @@
   <string name="uploadLater">A imagem será carregada quando a rede estiver disponível</string>
   <string name="txtInfoLoginOk">Utilizador guardado</string>
   <string name="txtInfoLoginNo">Utilizador não foi guardado</string>
-  <string name="txtDialogsTitle">Informação</string>
   <string name="txtDialogsContent">O produto que digitalizou ainda não existe no Open Food Facts. Por favor adicione-o.</string>
   <string name="txtDialogsContentPowerMode">O produto que digitalizou já existe no Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Deseja enviar os produtos guardados para a base de dados?</string>
   <string name="txtYes">Sim</string>
   <string name="txtNo">Não</string>
   <string name="hintNameProduct">Nome</string>
@@ -429,6 +427,8 @@
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
