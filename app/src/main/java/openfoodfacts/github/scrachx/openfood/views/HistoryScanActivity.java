@@ -2,12 +2,16 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,7 +21,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -113,6 +119,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
 
     public void exportCSV() {
+        boolean isDownload = false;
         String folder_main = " ";
         String appname = " ";
         if ((BuildConfig.FLAVOR.equals("off"))) {
@@ -155,8 +162,32 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             }
             writer.close();
             Toast.makeText(this, R.string.txt_history_exported, Toast.LENGTH_LONG).show();
+            isDownload = true;
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Intent downloadIntent = new Intent(Intent.ACTION_VIEW);
+        downloadIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        Uri csvUri = FileProvider.getUriForFile(this, this.getPackageName() + ".provider", f);
+        downloadIntent.setDataAndType(csvUri, "text/csv");
+        downloadIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel notificationChannel = new NotificationChannel("downloadChannel", "ChannelCSV", importance);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "downloadChannel")
+                .setContentTitle(getString(R.string.notify_title))
+                .setContentText(getString(R.string.notify_content))
+                .setContentIntent(PendingIntent.getActivity(this, 4, downloadIntent, 0))
+                .setSmallIcon(R.mipmap.ic_launcher);
+
+        if (isDownload) {
+            notificationManager.notify(7, builder.build());
         }
     }
 
