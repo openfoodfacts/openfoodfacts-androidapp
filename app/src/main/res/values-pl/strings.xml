@@ -131,8 +131,8 @@
   <string name="txtSendAll">Prześlij wszystkie</string>
   <string name="txtNoData">Brak danych</string>
   <string name="txtPictureNeeded">Czekaj…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
-  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogContent">Musisz dodać przynajmniej jeden obrazek przed wysłaniem tego produktu</string>
+  <string name="txtPictureNeededDialogYes">Pozostan</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Wysyłanie...</string>
   <string name="dataSaved">Zapisano lokalnie na urządzeniu</string>
