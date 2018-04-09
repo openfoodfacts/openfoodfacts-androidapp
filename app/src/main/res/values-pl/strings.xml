@@ -117,10 +117,8 @@
   <string name="uploadLater">Obraz zostanie przesłany, gdy połączenie będzie dostępne</string>
   <string name="txtInfoLoginOk">Zapisano użytkownika</string>
   <string name="txtInfoLoginNo">Nie zapisano użytkownika</string>
-  <string name="txtDialogsTitle">Informacja</string>
   <string name="txtDialogsContent">Zeskanowany produkt nie figuruje jeszcze w Open Food Facts. Dodaj go.</string>
   <string name="txtDialogsContentPowerMode">Zeskanowany produkt już widnieje na Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Czy chcesz wysłać zapisane produkty do bazy danych?</string>
   <string name="txtYes">Tak</string>
   <string name="txtNo">Nie</string>
   <string name="hintNameProduct">Nazwa</string>
@@ -435,6 +433,8 @@
   <string name="sort">Sortuj</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
