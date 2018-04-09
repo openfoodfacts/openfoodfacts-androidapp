@@ -55,6 +55,8 @@
     <item>crwdns35045:0crwdne35045:0</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">crwdns46677:0crwdne46677:0</string>
+  <string name="product">crwdns46678:0crwdne46678:0</string>
   <string name="fastscroller_track">crwdns37744:0crwdne37744:0</string>
   <string name="fastscroller_handle">crwdns37745:0crwdne37745:0</string>
   <string name="search_button">crwdns35046:0crwdne35046:0</string>
@@ -124,7 +126,10 @@
   <string name="txtTakePicture">crwdns35106:0crwdne35106:0</string>
   <string name="txtSendAll">crwdns35107:0crwdne35107:0</string>
   <string name="txtNoData">crwdns35108:0crwdne35108:0</string>
-  <string name="txtPictureNeeded">crwdns35109:0crwdne35109:0</string>
+  <string name="txtPictureNeeded">crwdns46679:0crwdne46679:0</string>
+  <string name="txtPictureNeededDialogContent">crwdns46680:0crwdne46680:0</string>
+  <string name="txtPictureNeededDialogYes">crwdns46681:0crwdne46681:0</string>
+  <string name="txtPictureNeededDialogNo">crwdns46682:0crwdne46682:0</string>
   <string name="toastSending">crwdns37139:0crwdne37139:0</string>
   <string name="dataSaved">crwdns35111:0crwdne35111:0</string>
   <string name="txtInfoAddUser">crwdns35112:0crwdne35112:0</string>
@@ -141,6 +146,7 @@
   <string name="txtBarcodeNotValid">crwdns35123:0crwdne35123:0</string>
   <string name="try_it_scan_now">crwdns35124:0crwdne35124:0</string>
   <string name="share">crwdns35125:0crwdne35125:0</string>
+  <string name="translate">crwdns46683:0crwdne46683:0</string>
   <string name="msg_share">crwdns35126:0crwdne35126:0</string>
   <string name="create_account">crwdns35127:0crwdne35127:0</string>
   <string name="home_drawer">crwdns35128:0crwdne35128:0</string>
@@ -413,6 +419,9 @@
   <string name="other_tags_text">crwdns37754:0crwdne37754:0</string>
   <!--shared element transition key-->
   <string name="wikidata">crwdns37776:0crwdne37776:0</string>
+  <string name="txtCamera">crwdns46684:0crwdne46684:0</string>
+  <string name="txtGallery">crwdns46685:0crwdne46685:0</string>
+  <string name="txtOptions">crwdns46686:0crwdne46686:0</string>
   <string name="by_title">crwdns46297:0crwdne46297:0</string>
   <string name="by_brand">crwdns46298:0crwdne46298:0</string>
   <string name="by_barcode">crwdns46299:0crwdne46299:0</string>

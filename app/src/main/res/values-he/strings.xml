@@ -61,6 +61,8 @@
     <item>רכיבים</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">מוצר</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">חיפוש</string>
@@ -116,8 +118,8 @@
   <string name="txtInfoLoginOk">המשתמש נשמר</string>
   <string name="txtInfoLoginNo">המשתמש לא נשמר</string>
   <string name="txtDialogsTitle">פרטים</string>
-  <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts</string>
-  <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא במסד נתוני המזון הפתוח.</string>
+  <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>
+  <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא ב־Open Food Facts.</string>
   <string name="txtDialogsContentSend">לשלוח את המוצרים שנשמרו אל מסד הנתונים?</string>
   <string name="txtYes">כן</string>
   <string name="txtNo">לא</string>
@@ -130,7 +132,10 @@
   <string name="txtTakePicture">צילום תמונה</string>
   <string name="txtSendAll">לשלוח הכול</string>
   <string name="txtNoData">אין נתונים</string>
-  <string name="txtPictureNeeded">נא לצלם תמונה תחילה</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">מתבצעת שליחה…</string>
   <string name="dataSaved">נשמר מקומית בהתקן שלך</string>
   <string name="txtInfoAddUser">נא להזין את שם המשתמש והססמה שלך</string>
@@ -147,6 +152,7 @@
   <string name="txtBarcodeNotValid">הברקוד לא זמין</string>
   <string name="try_it_scan_now">סריקת מוצר</string>
   <string name="share">שיתוף</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
   <string name="create_account">הרשמה</string>
   <string name="home_drawer">ראשי</string>
@@ -419,6 +425,9 @@
   <string name="other_tags_text">חומרים אחרים:</string>
   <!--shared element transition key-->
   <string name="wikidata">מידע מוויקינתונים</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">כותרת</string>
   <string name="by_brand">מותג</string>
   <string name="by_barcode">ברקוד</string>
