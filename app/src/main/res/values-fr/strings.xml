@@ -430,10 +430,10 @@
   <string name="by_nutrition_grade">Note nutritionnelle</string>
   <string name="sort_by">Trier par</string>
   <!-- strings related to share images -->
-  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
-  <string name="no_barcode">We have not detected any barcode</string>
-  <string name="enter_barcode">Please type the barcode below</string>
-  <string name="format_error">Wrong Barcode/QR format</string>
-  <string name="code_detected">We have detected the barcode</string>
-  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="sorry_msg">Les photos sans code-barres ne peuvent pas encore être ajoutées avec l\'application. Il est possible d\'en ajouter un avec la version web mobile.</string>
+  <string name="no_barcode">Nous n\'avons détecté aucun code à barres</string>
+  <string name="enter_barcode">Veuillez saisir le code à barres ci-dessous</string>
+  <string name="format_error">Mauvais format de code-barre ou code QR</string>
+  <string name="code_detected">Nous n\'avons détecté aucun code-barre</string>
+  <string name="do_you_want_to">Voulez-vous ajouter des photos à ce code-barre?</string>
 </resources>

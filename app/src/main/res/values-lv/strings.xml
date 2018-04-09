@@ -58,8 +58,8 @@
     <item>Sastāvdaļas</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
-  <string name="product">Product</string>
+  <string name="bookmark">Grāmatzīme</string>
+  <string name="product">Produkts</string>
   <string name="fastscroller_track">Ātrās apskates režīms</string>
   <string name="fastscroller_handle">Ātrās apskates pārbaude</string>
   <string name="search_button">Meklēt</string>
@@ -129,10 +129,10 @@
   <string name="txtTakePicture">Uzņemt attēlu</string>
   <string name="txtSendAll">Augšupielādēt visu</string>
   <string name="txtNoData">Nav datu</string>
-  <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
-  <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeeded">Pagaidiet …</string>
+  <string name="txtPictureNeededDialogContent">Pirms šī produkta iesniegšanas jums jāpievieno vismaz viens attēls</string>
+  <string name="txtPictureNeededDialogYes">Palikt</string>
+  <string name="txtPictureNeededDialogNo">Atcelt</string>
   <string name="toastSending">Augšuplādē…</string>
   <string name="dataSaved">Saglabāts jūsu ierīcē</string>
   <string name="txtInfoAddUser">Lūdzu, ievadiet savu lietotājvārdu un paroli</string>
@@ -149,7 +149,7 @@
   <string name="txtBarcodeNotValid">Svītrkods nav derīgs</string>
   <string name="try_it_scan_now">Skenēt produktu</string>
   <string name="share">Dalīties</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Tulkot</string>
   <string name="msg_share">Apskatiet šo produktu, izmantojot Open Food Facts:</string>
   <string name="create_account">Reģistrēties</string>
   <string name="home_drawer">Mājas</string>
@@ -422,9 +422,9 @@
   <string name="other_tags_text">Citas vielas:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata dati</string>
-  <string name="txtCamera">Camera</string>
-  <string name="txtGallery">Gallery</string>
-  <string name="txtOptions">Options</string>
+  <string name="txtCamera">Kamera</string>
+  <string name="txtGallery">Galerija</string>
+  <string name="txtOptions">Opcijas</string>
   <string name="by_title">Virsraksts</string>
   <string name="by_brand">Zīmols</string>
   <string name="by_barcode">Svītrkods</string>
