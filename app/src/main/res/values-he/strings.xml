@@ -3,9 +3,9 @@
 <resources>
   <plurals name="minutes">
     <item quantity="one"> minute</item>
-    <item quantity="two"> דקות</item>
-    <item quantity="many"> דקות</item>
-    <item quantity="other"> דקות</item>
+    <item quantity="two"> minutes</item>
+    <item quantity="many"> minutes</item>
+    <item quantity="other"> minutes</item>
   </plurals>
   <plurals name="hours">
     <item quantity="one"> hour</item>
@@ -27,7 +27,15 @@
   <string name="text_barcode">נא להזין את הברקוד:</string>
   <string name="message_in_activity_save_product_offline">נדרשת לפחות תמונה אחת לטובת שליחת מוצר חדש.</string>
   <string name="product_incomplete_message">המפרט של מוצר זה לוקה בחסר. כתוצאה מכך, לא הצלחנו לבדוק מה הם מעוררי הרגישות.</string>
+  <string name="no_offline_data">סיימת</string>
+  <string name="first_offline">מוצרים שהוספת ללא חיבור לאינטרנט יופיעו כאן</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>תקציר</item>
@@ -53,6 +61,8 @@
     <item>רכיבים</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">מוצר</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">חיפוש</string>
@@ -108,8 +118,8 @@
   <string name="txtInfoLoginOk">המשתמש נשמר</string>
   <string name="txtInfoLoginNo">המשתמש לא נשמר</string>
   <string name="txtDialogsTitle">פרטים</string>
-  <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts</string>
-  <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא במסד נתוני המזון הפתוח.</string>
+  <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>
+  <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא ב־Open Food Facts.</string>
   <string name="txtDialogsContentSend">לשלוח את המוצרים שנשמרו אל מסד הנתונים?</string>
   <string name="txtYes">כן</string>
   <string name="txtNo">לא</string>
@@ -122,7 +132,10 @@
   <string name="txtTakePicture">צילום תמונה</string>
   <string name="txtSendAll">לשלוח הכול</string>
   <string name="txtNoData">אין נתונים</string>
-  <string name="txtPictureNeeded">נא לצלם תמונה תחילה</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">מתבצעת שליחה…</string>
   <string name="dataSaved">נשמר מקומית בהתקן שלך</string>
   <string name="txtInfoAddUser">נא להזין את שם המשתמש והססמה שלך</string>
@@ -139,6 +152,7 @@
   <string name="txtBarcodeNotValid">הברקוד לא זמין</string>
   <string name="try_it_scan_now">סריקת מוצר</string>
   <string name="share">שיתוף</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
   <string name="create_account">הרשמה</string>
   <string name="home_drawer">ראשי</string>
@@ -362,8 +376,10 @@
   <string name="please_check_your_connection">נא לבדוק את החיבור שלך.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">חיפוש ותרשימים ומתקדמים</string>
+  <string name="connectivity_check">נא לבדוק את החיבור שלך לאינטרנט</string>
+  <string name="dismiss">התעלמות</string>
   <string name="Terms">תנאים</string>
-  <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+  <string name="terms_url">https://he.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">כללי</string>
   <string name="preference_header_network">רשת</string>
   <string name="preference_header_contributing">התנדבות</string>
@@ -382,6 +398,12 @@
   <string name="pref_resolution_summary">נא לבחור רזולוציה להעלאת התמונה</string>
   <string name="image_upload_resolution">רזולוציית התמונה להעלאה</string>
   <string name="can_add_barcode">התגלתה בעיה בסריקה?\nיש לגרור כלפי מעלה כדי להקליד את הברקוד</string>
+  <string name="wikidata_information">להמשיך מעבר</string>
+  <string name="description">תיאור: </string>
+  <string name="title">כותרת: </string>
+  <string name="Wikipedia">הצגה בוויקיפדיה</string>
+  <string name="Browse_Products">עיון במוצרים</string>
+  <string name="swipe_down">משיכה כלפי מטה</string>
   <string name="brand_string">מותג</string>
   <string name="additive_string">תוסף</string>
   <string name="search_string">חיפוש</string>
@@ -393,6 +415,31 @@
   <string name="packaging_string">אריזה</string>
   <string name="label_string">תווית</string>
   <string name="category_string">קטגוריה</string>
-  <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="connection">יש חיבור</string>
+  <string name="contributor_string">תרומה</string>
+  <string name="app_disabled_text">היישומון מושבת</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">ויטמינים:</string>
+  <string name="amino_acid_tags_text">חומצות אמינו:</string>
+  <string name="mineral_tags_text">מינרלים:</string>
+  <string name="other_tags_text">חומרים אחרים:</string>
+  <!--shared element transition key-->
+  <string name="wikidata">מידע מוויקינתונים</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">כותרת</string>
+  <string name="by_brand">מותג</string>
+  <string name="by_barcode">ברקוד</string>
+  <string name="by_time">נצפו לאחרונה</string>
+  <string name="sort">מיון</string>
+  <string name="by_nutrition_grade">ציון תזונתי</string>
+  <string name="sort_by">מיון לפי</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">לא ניתן עדיין להוסיף תמונות ללא בר קוד ליישומון. נא לנסות את גרסת האתר לניידים.</string>
+  <string name="no_barcode">לא זוהה כל ברקוד</string>
+  <string name="enter_barcode">נא להקליד את הברקוד להלן</string>
+  <string name="format_error">תסדיר הברקוד/QR שגוי</string>
+  <string name="code_detected">הברקוד זוהה</string>
+  <string name="do_you_want_to">להוסיף תמונות לברקוד הזה?</string>
 </resources>

@@ -1,33 +1,22 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -35,16 +24,13 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
-import com.mikepenz.iconics.IconicsDrawable;
-
-import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
 import java.util.Arrays;
 
-import butterknife.OnClick;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
@@ -76,8 +62,8 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
 
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle state) {
         final SharedPreferences settings = getActivity().getSharedPreferences("camera", 0);
 
         mScannerView = new ZXingScannerView(getActivity());
@@ -110,19 +96,20 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
         super.onCreateOptionsMenu(menu, inflater);
 
         MenuItem ringMenuItem = menu.add(Menu.NONE, R.id.menu_ring, 0, mRing ? R.string.ring_on : R.string.ring_off);
-        MenuItemCompat.setShowAsAction(ringMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
+        ringMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 
         MenuItem flashMenuItem = menu.add(Menu.NONE, R.id.menu_flash, 0, mFlash ? R.string.flash_on : R.string.flash_off);
-        MenuItemCompat.setShowAsAction(flashMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
+        flashMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+
 
         MenuItem focusMenuItem = menu.add(Menu.NONE, R.id.menu_auto_focus, 0, mAutoFocus ? R.string.auto_focus_on : R.string.auto_focus_off);
-        MenuItemCompat.setShowAsAction(focusMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
+        focusMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 
         MenuItem cameraMenuItem = menu.add(Menu.NONE, R.id.menu_camera_selector, 0, R.string.select_camera);
-        MenuItemCompat.setShowAsAction(cameraMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
+        cameraMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 
         MenuItem aboutMenuItem = menu.add(Menu.NONE, R.id.menu_about, 0, R.string.action_about);
-        MenuItemCompat.setShowAsAction(aboutMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
+        aboutMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
     }
 
     @Override
@@ -192,7 +179,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(FLASH_STATE, mFlash);
         outState.putBoolean(AUTO_FOCUS_STATE, mAutoFocus);
@@ -223,7 +210,13 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
             }
         } else {
             Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
-            intent.putExtra("barcode", rawResult.getText());
+            State st=new State();
+            Product pd=new Product();
+            pd.setCode(rawResult.getText());
+            st.setProduct(pd);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("state", st);
+            intent.putExtras(bundle);
             getActivity().startActivity(intent);
             getActivity().finish();
         }

@@ -18,7 +18,15 @@
   <string name="text_barcode">バーコードを入力 :</string>
   <string name="message_in_activity_save_product_offline">新しい製品を送るには、写真1枚だけ義務付けられています。</string>
   <string name="product_incomplete_message">この製品は完全ではありません。その結果、アレルゲンチェックを行うことができませんでした。</string>
+  <string name="no_offline_data">すべて完了しました</string>
+  <string name="first_offline">オフラインで追加した製品がここに表示されます</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>サマリー</item>
@@ -44,6 +52,8 @@
     <item>原材料</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">ブックマーク</string>
+  <string name="product">製品</string>
   <string name="fastscroller_track">高速スクローラートラック</string>
   <string name="fastscroller_handle">高速スクローラーハンドル</string>
   <string name="search_button">検索</string>
@@ -113,7 +123,10 @@
   <string name="txtTakePicture">写真を撮影</string>
   <string name="txtSendAll">すべてアップロード</string>
   <string name="txtNoData">データはありません</string>
-  <string name="txtPictureNeeded">まず写真を撮ってください</string>
+  <string name="txtPictureNeeded">お待ちください…</string>
+  <string name="txtPictureNeededDialogContent">この製品を送信する前に、少なくとも1枚の写真を追加する必要があります</string>
+  <string name="txtPictureNeededDialogYes">このまま</string>
+  <string name="txtPictureNeededDialogNo">破棄</string>
   <string name="toastSending">アップロードしています...</string>
   <string name="dataSaved">お使いのデバイス内に保存しました</string>
   <string name="txtInfoAddUser">ログインとパスワードを入力してください</string>
@@ -130,6 +143,7 @@
   <string name="txtBarcodeNotValid">バーコードが正しくありません</string>
   <string name="try_it_scan_now">製品をスキャン</string>
   <string name="share">共有</string>
+  <string name="translate">翻訳</string>
   <string name="msg_share">Open Food Facts でこの製品を参照してください:</string>
   <string name="create_account">サインアップ</string>
   <string name="home_drawer">ホーム</string>
@@ -353,6 +367,8 @@
   <string name="please_check_your_connection">インターネット接続を確認して下さい</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">高度な検索 &amp; グラフ</string>
+  <string name="connectivity_check">インターネット接続を確認してください</string>
+  <string name="dismiss">消去</string>
   <string name="Terms">利用規約</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">全般</string>
@@ -373,6 +389,12 @@
   <string name="pref_resolution_summary">画像アップロードの解像度を選択します</string>
   <string name="image_upload_resolution">画像アップロードの解像度</string>
   <string name="can_add_barcode">スキャンがうまくいきませんか?\n上にドラッグしてバーコードを入力してください</string>
+  <string name="wikidata_information">もっと遠くへ</string>
+  <string name="description">説明: </string>
+  <string name="title">タイトル: </string>
+  <string name="Wikipedia">ウィキペディアで見る</string>
+  <string name="Browse_Products">製品を見る</string>
+  <string name="swipe_down">下にスワイプ</string>
   <string name="brand_string">ブランド（会社名）</string>
   <string name="additive_string">添加物</string>
   <string name="search_string">検索</string>
@@ -386,4 +408,29 @@
   <string name="category_string">カテゴリー</string>
   <string name="connection">接続されています</string>
   <string name="contributor_string">貢献者</string>
+  <string name="app_disabled_text">アプリケーションは無効です</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">ビタミン:</string>
+  <string name="amino_acid_tags_text">アミノ酸:</string>
+  <string name="mineral_tags_text">ミネラル:</string>
+  <string name="other_tags_text">その他の成分:</string>
+  <!--shared element transition key-->
+  <string name="wikidata">ウィキデータのデータ</string>
+  <string name="txtCamera">カメラ</string>
+  <string name="txtGallery">ギャラリー</string>
+  <string name="txtOptions">オプション</string>
+  <string name="by_title">タイトル</string>
+  <string name="by_brand">ブランド（会社名）</string>
+  <string name="by_barcode">バーコード</string>
+  <string name="by_time">最近表示した</string>
+  <string name="sort">並べ替え</string>
+  <string name="by_nutrition_grade">栄養グレード</string>
+  <string name="sort_by">並べ替え順</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">バーコードの付いていない写真はまだアプリで追加できません。モバイルウェブ版をお試しください。</string>
+  <string name="no_barcode">バーコードを検出していません</string>
+  <string name="enter_barcode">下にバーコードを入力してください</string>
+  <string name="format_error">バーコード/QR 形式が間違っています</string>
+  <string name="code_detected">バーコードを検出しました</string>
+  <string name="do_you_want_to">このバーコードに写真を追加しますか?</string>
 </resources>

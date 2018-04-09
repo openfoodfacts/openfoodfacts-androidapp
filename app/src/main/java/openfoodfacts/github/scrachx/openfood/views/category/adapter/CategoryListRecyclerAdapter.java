@@ -6,17 +6,17 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.category.model.Category;
 import openfoodfacts.github.scrachx.openfood.databinding.CategoryRecyclerItemBinding;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 
 /**
  * Created by Abdelali Eramli on 27/12/2017.
  */
 
 public class CategoryListRecyclerAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
-    private final List<Category> categories;
+    private final List<CategoryName> categories;
 
-    public CategoryListRecyclerAdapter(List<Category> categories) {
+    public CategoryListRecyclerAdapter(List<CategoryName> categories) {
         this.categories = categories;
     }
 

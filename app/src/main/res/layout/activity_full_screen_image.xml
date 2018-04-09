@@ -9,7 +9,9 @@
         android:id="@+id/imageViewFullScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:adjustViewBounds="true"
         android:gravity="center"
-        android:scaleType="fitXY" />
+        android:scaleType="fitCenter"
+        android:transitionName="@string/product_transition" />
 
 </LinearLayout>

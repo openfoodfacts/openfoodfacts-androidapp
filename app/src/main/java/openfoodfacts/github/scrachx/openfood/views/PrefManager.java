@@ -22,10 +22,11 @@ public class PrefManager extends AppCompatActivity {
     public PrefManager(Context context) {
         this._context = context;
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
-        editor = pref.edit();
+
     }
 
     public void setFirstTimeLaunch(boolean isFirstTime) {
+        editor = pref.edit();
         editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
         editor.commit();
     }

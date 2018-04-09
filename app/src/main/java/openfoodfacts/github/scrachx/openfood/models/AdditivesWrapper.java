@@ -1,12 +1,17 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import openfoodfacts.github.scrachx.openfood.network.deserializers.AdditivesWrapperDeserializer;
 
 /**
  * Created by Lobster on 04.03.18.
  */
 
+@JsonDeserialize(using = AdditivesWrapperDeserializer.class)
 public class AdditivesWrapper {
 
     private List<AdditiveResponse> additives;

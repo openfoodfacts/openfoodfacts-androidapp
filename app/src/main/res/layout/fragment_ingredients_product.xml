@@ -15,7 +15,7 @@
         android:orientation="vertical"
         android:paddingBottom="65dp">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageViewIngredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -107,6 +107,59 @@
 
         <TextView
             android:id="@+id/textMayBeFromPalmOilProduct"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/vitaminsTagsText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/mineralTagsText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/aminoAcidTagsText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
+
+
+        <TextView
+            android:id="@+id/otherNutritionTags"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_tiny"

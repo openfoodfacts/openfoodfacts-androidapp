@@ -2,20 +2,24 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    <!--Recycles R.layout#item_allergens.xml-->
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/allergens_recycle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:paddingBottom="100dp"
+        android:clipToPadding="false"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/allergens_recycle"
-        android:layout_alignEnd="@+id/allergens_recycle"
-        android:layout_alignRight="@+id/allergens_recycle"
-        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
         android:clickable="true"
         android:focusable="true"
         android:tint="@android:color/white"
@@ -24,3 +28,4 @@
         fab:srcCompat="@drawable/plus" />
 
 </RelativeLayout>
+

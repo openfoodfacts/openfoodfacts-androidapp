@@ -21,7 +21,15 @@
   <string name="text_barcode">बारकोड</string>
   <string name="message_in_activity_save_product_offline">एक नया उत्पाद भेजने के लिए केवल एक फोटो अनिवार्य है</string>
   <string name="product_incomplete_message">यह उत्पाद पूर्ण नहीं है। नतीजतन, हम एलर्जी की जांच नहीं कर सके</string>
+  <string name="no_offline_data">You\'re all done</string>
+  <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
+  <string-array name="upload_image">
+    <item>640 X 480</item>
+    <item>1024 X 768</item>
+    <item>1152 X 864</item>
+    <item>1600 X 1200</item>
+  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>संग्रह</item>
@@ -47,6 +55,8 @@
     <item>सामग्री</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Product</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">ढूंढें</string>
@@ -116,7 +126,10 @@
   <string name="txtTakePicture">तस्वीर ले ले</string>
   <string name="txtSendAll">सभी अपलोड कर दो</string>
   <string name="txtNoData">कोई डेटा नहीं है</string>
-  <string name="txtPictureNeeded">पहले तस्वीर ले</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">अपलोड हो रहा है</string>
   <string name="dataSaved">अपने डिवाइस पर स्थानीय रूप से सेव है</string>
   <string name="txtInfoAddUser">कृप्या अपना पासवर्ड और प्रवेश दर्ज करें</string>
@@ -133,6 +146,7 @@
   <string name="txtBarcodeNotValid">बारकोड मान्य नहीं</string>
   <string name="try_it_scan_now">उत्पाद  स्कैन कीजिए</string>
   <string name="share">शेयर</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Open Food Facts  पर इस उत्पाद को देखो:</string>
   <string name="create_account">साइन अप करें</string>
   <string name="home_drawer">मुख्य पृष्ठ</string>
@@ -356,6 +370,8 @@
   <string name="please_check_your_connection">कृपया अपना कनेक्शन जाँचें</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">उन्नत खोज और चार्ट्स</string>
+  <string name="connectivity_check">Please check your internet connection</string>
+  <string name="dismiss">ख़ारिज करें</string>
   <string name="Terms">शर्तें</string>
   <string name="terms_url">https://world-hi.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">सामान्य</string>
@@ -376,6 +392,12 @@
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image Upload Resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+  <string name="wikidata_information">Going further</string>
+  <string name="description">Description: </string>
+  <string name="title">Title: </string>
+  <string name="Wikipedia">View on Wikipedia</string>
+  <string name="Browse_Products">Browse Products</string>
+  <string name="swipe_down">Swipe down</string>
   <string name="brand_string">ब्रांड</string>
   <string name="additive_string">Additive</string>
   <string name="search_string">ढूंढें</string>
@@ -389,4 +411,29 @@
   <string name="category_string">श्रेणी</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">सहयोगी</string>
+  <string name="app_disabled_text">Application is disabled</string>
+  <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="mineral_tags_text">Minerals:</string>
+  <string name="other_tags_text">Other Substances:</string>
+  <!--shared element transition key-->
+  <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">ब्रांड</string>
+  <string name="by_barcode">बारकोड</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
 </resources>
