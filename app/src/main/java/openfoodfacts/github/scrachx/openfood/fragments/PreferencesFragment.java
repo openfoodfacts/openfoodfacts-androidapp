@@ -123,8 +123,10 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 try {
+                    String installer = context.getPackageManager()
+                            .getInstallerPackageName(context.getPackageName());
                     startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("market://details?id=" + context.getPackageName())));
+                            Uri.parse("market://details?id=" + installer)));
                 } catch (android.content.ActivityNotFoundException e) {
                     startActivity(new Intent(Intent.ACTION_VIEW,
                             Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
