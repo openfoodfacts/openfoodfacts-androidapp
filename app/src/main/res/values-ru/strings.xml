@@ -117,10 +117,8 @@
   <string name="uploadLater">Изображение будет загружено, когда сеть будет доступна</string>
   <string name="txtInfoLoginOk">Пользователь сохранён</string>
   <string name="txtInfoLoginNo">Пользователь не сохранён</string>
-  <string name="txtDialogsTitle">Информация</string>
   <string name="txtDialogsContent">Отсканированного продукта ещё нет в  базе Open Food Facts. Добавьте его, пожалуйста.</string>
   <string name="txtDialogsContentPowerMode">Просканированный продукт уже внесён в Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Хотите отослать сохранённые продукты в базу данных?</string>
   <string name="txtYes">Да</string>
   <string name="txtNo">Нет</string>
   <string name="hintNameProduct">Название</string>
@@ -435,6 +433,8 @@
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
