@@ -117,10 +117,8 @@
   <string name="uploadLater">התמונה תישלח ברגע שהרשת תהיה זמינה</string>
   <string name="txtInfoLoginOk">המשתמש נשמר</string>
   <string name="txtInfoLoginNo">המשתמש לא נשמר</string>
-  <string name="txtDialogsTitle">פרטים</string>
   <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>
   <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא ב־Open Food Facts.</string>
-  <string name="txtDialogsContentSend">לשלוח את המוצרים שנשמרו אל מסד הנתונים?</string>
   <string name="txtYes">כן</string>
   <string name="txtNo">לא</string>
   <string name="hintNameProduct">שם</string>
@@ -435,6 +433,8 @@
   <string name="sort">מיון</string>
   <string name="by_nutrition_grade">ציון תזונתי</string>
   <string name="sort_by">מיון לפי</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">לא ניתן עדיין להוסיף תמונות ללא בר קוד ליישומון. נא לנסות את גרסת האתר לניידים.</string>
   <string name="no_barcode">לא זוהה כל ברקוד</string>
