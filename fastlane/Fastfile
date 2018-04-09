@@ -12,7 +12,7 @@
 default_platform(:android)
 
 lane :screenshots do
-  gradle(task: "clean assembleDebug assembleAndroidTest")
+  gradle(task: " assembleDebug assembleAndroidTest")
   capture_android_screenshots
   # upload_to_play_store
 end
