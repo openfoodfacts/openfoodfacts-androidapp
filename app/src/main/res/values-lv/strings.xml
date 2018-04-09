@@ -114,10 +114,8 @@
   <string name="uploadLater">Attēls tiks augšupielādēts, kad interneta savienojums būs pieejams</string>
   <string name="txtInfoLoginOk">Lietotājs saglabāts</string>
   <string name="txtInfoLoginNo">Lietotājs nav saglabāts</string>
-  <string name="txtDialogsTitle">Informācija</string>
   <string name="txtDialogsContent">Skenētais produkts vēl nav pieejams Open Food Facts sarakstā. Lūdzu, pievienojiet to.</string>
   <string name="txtDialogsContentPowerMode">Jūsu skenētais produkts jau pastāvOpen Food Facts.</string>
-  <string name="txtDialogsContentSend">Vai vēlaties saglabāt saglabātos produktus datubāzē?</string>
   <string name="txtYes">Jā</string>
   <string name="txtNo">Nē</string>
   <string name="hintNameProduct">Nosaukums</string>
@@ -432,6 +430,8 @@
   <string name="sort">Kārtot</string>
   <string name="by_nutrition_grade">Uztura pakāpe</string>
   <string name="sort_by">Kārtot pēc</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Attēlus bez svītrkoda vēl nevar pievienot lietotnei. Lūdzu, izmēģiniet mobilo tīmekļa versiju.</string>
   <string name="no_barcode">Mēs neesam atraduši nevienu svītrkodu</string>
