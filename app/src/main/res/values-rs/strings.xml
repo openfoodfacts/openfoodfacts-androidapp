@@ -114,10 +114,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Korisničko ime sačuvano</string>
   <string name="txtInfoLoginNo">Korisničko ime nije sačuvano</string>
-  <string name="txtDialogsTitle">Informacija</string>
   <string name="txtDialogsContent">Proizvod koji ste skenirali ne postoji u bazi Open Food Facts. Molimo Vas da ga dodate.</string>
   <string name="txtDialogsContentPowerMode">Proizvod koji ste skenirali već postoji u bazi Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Da li želite da pošaljete zapamćene proizvode u bazu?</string>
   <string name="txtYes">Da</string>
   <string name="txtNo">Ne</string>
   <string name="hintNameProduct">Naziv</string>
@@ -432,6 +430,8 @@
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
