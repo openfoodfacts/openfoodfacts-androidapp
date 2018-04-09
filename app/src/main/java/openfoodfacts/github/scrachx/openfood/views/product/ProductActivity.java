@@ -52,6 +52,12 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
@@ -231,14 +237,32 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 
         ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
         adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
-        adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
+        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opff")) {
+            adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
+        }
         if (BuildConfig.FLAVOR.equals("off")) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
+            if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("photoMode", false)) {
+                adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
+            }
         }
         if (BuildConfig.FLAVOR.equals("opff")) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
+            if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("photoMode", false)) {
+                adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
+            }
+        }
+
+        if (BuildConfig.FLAVOR.equals("obf")) {
+            if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("photoMode", false)) {
+                adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
+            }
+        }
+
+        if (BuildConfig.FLAVOR.equals("opf")) {
+            adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
         }
         viewPager.setAdapter(adapterResult);
     }

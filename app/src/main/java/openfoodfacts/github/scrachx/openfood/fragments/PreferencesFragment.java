@@ -11,6 +11,7 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
@@ -151,6 +153,13 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             settings.edit().putString("imageUpload", (String) newValue).apply();
             return true;
         });
+
+
+        CheckBoxPreference photoPreference = (CheckBoxPreference) findPreference("photoMode");
+        if (BuildConfig.FLAVOR.equals("opf")) {
+            photoPreference.setVisible(false);
+        }
+
     }
 
     @Override

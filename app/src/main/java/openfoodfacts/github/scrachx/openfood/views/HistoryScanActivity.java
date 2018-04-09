@@ -293,7 +293,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             case R.id.sort_history:
                 MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
                 builder.title(R.string.sort_by);
-                String[] sortTypes = {getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_nutrition_grade), getString(R.string.by_barcode), getString(R.string.by_time)};
+                String[] sortTypes;
+                if (BuildConfig.FLAVOR.equals("off")) {
+                    sortTypes = new String[]{getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_nutrition_grade), getString(R.string.by_barcode), getString(R.string.by_time)};
+                } else {
+                    sortTypes = new String[]{getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_time), getString(R.string.by_barcode)};
+                }
                 builder.items(sortTypes);
                 builder.itemsCallback(new MaterialDialog.ListCallback() {
                     @Override
@@ -313,7 +318,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
 
                             case 2:
-                                SORT_TYPE = "grade";
+
+                                if (BuildConfig.FLAVOR.equals("off")) {
+                                    SORT_TYPE = "grade";
+                                } else {
+                                    SORT_TYPE = "time";
+                                }
                                 callTask();
                                 break;
 
