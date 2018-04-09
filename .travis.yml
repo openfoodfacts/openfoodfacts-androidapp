@@ -46,7 +46,7 @@ cache:
 
 before_script:
 # Create and start emulator
-  - echo no | android create avd --force -n test -t "android-"$ANDROID_EMULATOR_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
+  - echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a --tag $ANDROID_TAG
   - emulator -avd test -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
@@ -59,6 +59,7 @@ install:
 
 script:
   - ./gradlew build connectedCheck --stacktrace
+  - ./gradlew connectedAndroidTest
 
 branches:
   only:
