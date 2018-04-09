@@ -55,6 +55,8 @@
     <item>Ingredienser</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Produkt</string>
   <string name="fastscroller_track">HurtigRulningsspor</string>
   <string name="fastscroller_handle">HurtigRulningshåndtag</string>
   <string name="search_button">Søg</string>
@@ -124,7 +126,10 @@
   <string name="txtTakePicture">Tag billede</string>
   <string name="txtSendAll">Upload alle</string>
   <string name="txtNoData">Ingen data</string>
-  <string name="txtPictureNeeded">Tag venligst et billede først</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Uploader...</string>
   <string name="dataSaved">Gemt lokalt på din enhed</string>
   <string name="txtInfoAddUser">Indtast venligst dit brugernavn og adgangskode</string>
@@ -141,6 +146,7 @@
   <string name="txtBarcodeNotValid">Stregkode er ikke gyldig</string>
   <string name="try_it_scan_now">Skan produkt</string>
   <string name="share">Del</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Kig på dette produkt på Open Food Facts :</string>
   <string name="create_account">Tilmeld dig</string>
   <string name="home_drawer">Hjem</string>
@@ -413,6 +419,9 @@
   <string name="other_tags_text">Øvrige stoffer:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata-data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">Mærke</string>
   <string name="by_barcode">Stregkode</string>

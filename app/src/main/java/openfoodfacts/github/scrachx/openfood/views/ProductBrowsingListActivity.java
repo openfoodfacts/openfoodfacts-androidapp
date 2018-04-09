@@ -3,7 +3,13 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+
+
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.preference.PreferenceManager;
@@ -36,6 +42,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
@@ -68,8 +75,16 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private int mCountProducts = 0;
     private int pageAddress = 1;
     private Boolean setupDone = false;
+
     //boolean to determine if image should be loaded or not
     private boolean disableLoad = false;
+
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private ShakeDetector mShakeDetector;
+    // boolean to determine if scan on shake feature should be enabled
+    private boolean scanOnShake;
+
 
 
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
@@ -141,12 +156,32 @@ public class ProductBrowsingListActivity extends BaseActivity {
         searchQuery = extras.getString(SEARCH_QUERY);
         newSearchQuery();
 
+
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set disableLoad to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
         if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {
             disableLoad = true;
         }
+
+        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
+        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
+
+        // Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mShakeDetector = new ShakeDetector();
+
+        if (scanOnShake) {
+            mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
+                @Override
+                public void onShake(int count) {
+                    Utils.scan(ProductBrowsingListActivity.this);
+                }
+            });
+        }
+
+
     }
 
     protected void newSearchQuery() {
@@ -429,5 +464,23 @@ public class ProductBrowsingListActivity extends BaseActivity {
             pageAddress = 1;
             setup();
         });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (scanOnShake) {
+            //register the listener
+            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (scanOnShake) {
+            //unregister the listener
+            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+        }
     }
 }

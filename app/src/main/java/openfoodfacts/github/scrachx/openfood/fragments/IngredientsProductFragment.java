@@ -6,12 +6,14 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.PreferenceManager;
 import android.text.SpannableStringBuilder;
@@ -235,7 +237,7 @@ public class IngredientsProductFragment extends BaseFragment {
         if (mSendProduct != null && isNotBlank(mSendProduct.getImgupload_ingredients())) {
             addPhotoLabel.setVisibility(View.GONE);
             mUrlImage = mSendProduct.getImgupload_ingredients();
-            Picasso.with(getContext()).load("file://"+mUrlImage).config(Bitmap.Config.RGB_565).into(mImageIngredients);
+            Picasso.with(getContext()).load("file://" + mUrlImage).config(Bitmap.Config.RGB_565).into(mImageIngredients);
         }
 
         List<String> allergens = getAllergens();
@@ -452,7 +454,15 @@ public class IngredientsProductFragment extends BaseFragment {
             Bundle bundle = new Bundle();
             bundle.putString("imageurl", mUrlImage);
             intent.putExtras(bundle);
-            startActivity(intent);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(getActivity(), (View) mImageIngredients,
+                                getActivity().getString(R.string.product_transition));
+                startActivity(intent, options.toBundle());
+            } else {
+                startActivity(intent);
+            }
+
         } else {
             // take a picture
             if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {

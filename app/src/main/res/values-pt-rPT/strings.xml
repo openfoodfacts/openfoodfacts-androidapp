@@ -55,6 +55,8 @@
     <item>Ingredientes</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Produto</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Procurar</string>
@@ -124,7 +126,10 @@
   <string name="txtTakePicture">Fotografar</string>
   <string name="txtSendAll">Enviar todos</string>
   <string name="txtNoData">Sem dados</string>
-  <string name="txtPictureNeeded">Por favor, tire uma foto primeiro</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">A enviar...</string>
   <string name="dataSaved">Guardado no seu dispositivo</string>
   <string name="txtInfoAddUser">Por favor, digite o nome de utilizador e palavra-passe</string>
@@ -141,6 +146,7 @@
   <string name="txtBarcodeNotValid">Código de barras inválido</string>
   <string name="try_it_scan_now">Digitalizar produto</string>
   <string name="share">Partilhar</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Ver este produto no Open Food Facts :</string>
   <string name="create_account">Inscrever</string>
   <string name="home_drawer">Início</string>
@@ -413,6 +419,9 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">Marca</string>
   <string name="by_barcode">Código de barras</string>
