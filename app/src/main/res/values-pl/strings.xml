@@ -440,6 +440,6 @@
   <string name="no_barcode">Nie odnaleziono kodu kreskowego</string>
   <string name="enter_barcode">Wprowadź poniżej kod kreskowy</string>
   <string name="format_error">Błędny kod kreskowy/QR</string>
-  <string name="code_detected">We have detected the barcode</string>
-  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="code_detected">Wykryliśmy kod kreskowy</string>
+  <string name="do_you_want_to">Czy chcesz dodać zdjęcia do kodu kreskowego?</string>
 </resources>
