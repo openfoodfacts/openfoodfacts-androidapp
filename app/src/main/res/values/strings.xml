@@ -542,6 +542,8 @@
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
     <string name="sort_by">Sort By</string>
+    <string name="shake_summary">Shake phone to scan products</string>
+    <string name="shake_title">Scan on Shake</string>
 
 
     <!-- strings related to share images -->

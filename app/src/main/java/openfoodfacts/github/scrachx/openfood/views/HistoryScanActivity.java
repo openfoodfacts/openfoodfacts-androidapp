@@ -5,13 +5,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -52,10 +56,12 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
+import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
+import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
 
 public class HistoryScanActivity extends BaseActivity implements SwipeControllerActions {
 
@@ -76,6 +82,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     ProgressBar historyProgressbar;
     private static String SORT_TYPE = "none";
 
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private ShakeDetector mShakeDetector;
+    // boolean to determine if scan on shake feature should be enabled
+    private boolean scanOnShake;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +104,24 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         productItems = new ArrayList<>();
         setInfo(infoView);
         new HistoryScanActivity.FillAdapter(this).execute(this);
+
+        // Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
+        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
+        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mShakeDetector = new ShakeDetector();
+
+
+        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
+            @Override
+            public void onShake(int count) {
+                if (scanOnShake) {
+                    Utils.scan(HistoryScanActivity.this);
+                }
+            }
+        });
+
     }
 
     @Override
@@ -473,6 +503,25 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     private void callTask() {
         new HistoryScanActivity.FillAdapter(HistoryScanActivity.this).execute(HistoryScanActivity.this);
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(scanOnShake) {
+            //register the listener
+            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
+
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(scanOnShake) {
+            //unregister the listener
+            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+        }
     }
 
 
