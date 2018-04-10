@@ -7,5 +7,5 @@ Um das Open Food Facts Projekt zu entdecken, besuchen Sie bitte https://openfood
 Was Sie ebenfalls finden können (entsprechend den Angaben auf den Produkten):
 • CO₂-Fußabdruck (CO2-Emissionen) und Verpackung (sowie Verwertungshinweise),
 • Nutri-Score (Nährwertbewertung), Nährstoffe, Fett/Fettgehalt, gesättigte Fettsäuren, Kohlenhydrate, Zucker, Ballaststoffe, Eiweiß und Salz und Natrium.
-• Marken, Allergene, Etiketten (bio, glutenfrei, vegan, vegetarisch, halal, koscher …), Rückverfolgbarkeitsinformationen (Verpackungscodes, Herkunft der Zutaten)
+• Marken, Allergene, Etiketten (Bio, Glutenfrei, Vegan, Vegetarisch, Halal, Koscher …), Rückverfolgbarkeitsinformationen (Verpackungscodes, Herkunft der Zutaten)
 • Auf Weinen und Bieren finden Sie den Alkoholgehalt.
