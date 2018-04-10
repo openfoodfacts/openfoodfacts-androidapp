@@ -1,6 +1,6 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Tierfutter erfassen oder deren Strichcode einlesen, um Daten über Inhaltsstoffe, Zusatzstoffe und Nährwertangaben zu erhalten.
 
-The app allows to view the over 500 pet products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+Die App erlaubt es, die über 500 bereits in der kostenlosen und offenen Datenbank „Open Pet Food Facts” enthaltenen Tiernahrungsprodukte einzusehen und auch Bilder und Daten für fehlende Produkte hinzuzufügen.
 
 To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
 
