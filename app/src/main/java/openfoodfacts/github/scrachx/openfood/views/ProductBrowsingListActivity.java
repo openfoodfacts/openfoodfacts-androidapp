@@ -5,6 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+
+
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
@@ -71,11 +76,15 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private int mCountProducts = 0;
     private int pageAddress = 1;
     private Boolean setupDone = false;
+    //boolean to determine if image should be loaded or not
+    private boolean disableLoad = false;
+
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
+
 
 
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
@@ -146,6 +155,14 @@ public class ProductBrowsingListActivity extends BaseActivity {
         searchType = extras.getString(SEARCH_TYPE);
         searchQuery = extras.getString(SEARCH_QUERY);
         newSearchQuery();
+
+
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set disableLoad to true
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {
+            disableLoad = true;
+        }
 
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
@@ -329,7 +346,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     mProducts.add(null);
                 }
                 if (setupDone) {
-                    productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts));
+                    productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts, disableLoad));
                 }
                 setUpRecyclerView();
             } else {
@@ -368,7 +385,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             LinearLayoutManager mLayoutManager = new LinearLayoutManager(ProductBrowsingListActivity.this, LinearLayoutManager.VERTICAL, false);
             productsRecyclerView.setLayoutManager(mLayoutManager);
 
-            ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
+            ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts, disableLoad);
             productsRecyclerView.setAdapter(adapter);
 
 
