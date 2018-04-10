@@ -88,7 +88,7 @@ public class UploadService extends IntentService {
             }
             size--;
 
-            apiClient.post(getApplicationContext(), product, value -> {
+            apiClient.postForNotification(getApplicationContext(), product, value -> {
                 if (value) {
                     int productIndex = listSaveProduct.indexOf(product);
 
