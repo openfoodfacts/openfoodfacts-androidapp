@@ -38,10 +38,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -116,13 +118,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     @OnClick(R.id.buttonSendAll)
     protected void onSendAllProducts() {
         if (!Utils.isAirplaneModeActive(getContext()) && Utils.isNetworkConnected(getContext()) && PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true)) {
-            new MaterialDialog.Builder(getActivity())
-                    .title(R.string.txtDialogsTitle)
-                    .content(R.string.txtDialogsContentSend)
-                    .positiveText(R.string.txtYes)
-                    .negativeText(R.string.txtNo)
-                    .onPositive((dialog, which) -> uploadProducts())
-                    .show();
+            uploadProducts();
         } else if (Utils.isAirplaneModeActive(getContext())) {
             new MaterialDialog.Builder(getActivity())
                     .title(R.string.airplane_mode_active_dialog_title)
@@ -243,8 +239,15 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     public void onClick(int position) {
 
         Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
-        SaveItem si = saveItems.get(position);
-        intent.putExtra("barcode", si.getBarcode());
+        SaveItem si = (SaveItem) saveItems.get(position);
+        State st = new State();
+        Product pd = new Product();
+        pd.setCode(si.getBarcode());
+        st.setProduct(pd);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("state", st);
+        intent.putExtras(bundle);
+        intent.putExtra("offlineEdit", true);
         startActivity(intent);
     }
 
@@ -303,9 +306,6 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                 noDataText.setVisibility(View.GONE);
                 buttonSend.setVisibility(View.VISIBLE);
                 mCardView.setVisibility(View.GONE);
-                Toast toast = Toast.makeText(getActivity(), R.string.txtLoading, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
             }
         }
 
@@ -320,15 +320,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         || isEmpty(product.getBrands()) || isEmpty(product.getWeight()) || isEmpty(product.getName())) {
                     imageIcon = R.drawable.ic_no_red_24dp;
                 }
-
-                Bitmap bitmap = Utils.decodeFile(new File(product.getImgupload_front()));
-                if (bitmap == null) {
-                    Log.e(LOG_TAG, "Unable to load the image of the product: " + product.getBarcode());
-                    continue;
-                }
-
-                Bitmap imgUrl = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
-                saveItems.add(new SaveItem(product.getName(), imageIcon, imgUrl, product.getBarcode(), product.getWeight() + " " + product.getWeight_unit(), product.getBrands()));
+                saveItems.add(new SaveItem(product.getName(), imageIcon, product.getImgupload_front(), product.getBarcode(), product.getWeight() + " " + product.getWeight_unit(), product.getBrands()));
             }
 
             return ctx[0];

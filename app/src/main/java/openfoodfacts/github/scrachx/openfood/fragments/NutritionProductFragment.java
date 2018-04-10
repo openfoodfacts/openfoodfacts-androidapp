@@ -138,14 +138,15 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             serving.append(" ");
             serving.append(product.getServingSize());
         }
-
-        if (!nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
-            carbonFootprint.setVisibility(View.GONE);
-        } else {
-            Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
-            carbonFootprint.append(bold(getString(R.string.textCarbonFootprint)));
-            carbonFootprint.append(carbonFootprintNutriment.getFor100g());
-            carbonFootprint.append(carbonFootprintNutriment.getUnit());
+        if (nutriments != null) {
+            if (!nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
+                carbonFootprint.setVisibility(View.GONE);
+            } else {
+                Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
+                carbonFootprint.append(bold(getString(R.string.textCarbonFootprint)));
+                carbonFootprint.append(carbonFootprintNutriment.getFor100g());
+                carbonFootprint.append(carbonFootprintNutriment.getUnit());
+            }
         }
     }
 
