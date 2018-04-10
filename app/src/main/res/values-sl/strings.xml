@@ -117,10 +117,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Uporabnik je shranjen</string>
   <string name="txtInfoLoginNo">Uporabnik ni shranjen</string>
-  <string name="txtDialogsTitle">Imformacije</string>
   <string name="txtDialogsContent">Izdelek, ki ste ga optično prebrali, še ne obstaja v podatkih o odprtih živilih. Prosimo, dodajte.</string>
   <string name="txtDialogsContentPowerMode">Izdelek, ki ste ga optično prebrali, že obstaja v podatkih o odprtih živilih.</string>
-  <string name="txtDialogsContentSend">Ali želite poslati shranjene izdelke v bazo podatkov?</string>
   <string name="txtYes">Da</string>
   <string name="txtNo">Ne</string>
   <string name="hintNameProduct">Ime</string>
@@ -435,6 +433,8 @@
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
