@@ -6,6 +6,6 @@ Um das Open Food Facts Projekt zu entdecken, besuchen Sie bitte https://openfood
 
 Was Sie ebenfalls finden können (entsprechend den Angaben auf den Produkten):
 • CO₂-Fußabdruck (CO2-Emissionen) und Verpackung (sowie Verwertungshinweise),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+• Nutri-Score (Nährwertbewertung), Nährstoffe, Fett/Fettgehalt, gesättigte Fettsäuren, Kohlenhydrate, Zucker, Ballaststoffe, Eiweiß und Salz und Natrium.
+• Marken, Allergene, Etiketten (bio, glutenfrei, vegan, vegetarisch, halal, koscher …), Rückverfolgbarkeitsinformationen (Verpackungscodes, Herkunft der Zutaten)
+• Auf Weinen und Bieren finden Sie den Alkoholgehalt.
