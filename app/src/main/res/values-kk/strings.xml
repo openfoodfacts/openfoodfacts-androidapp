@@ -111,10 +111,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Пайдаланушы сақталған</string>
   <string name="txtInfoLoginNo">Пайдаланушы сақталмаған</string>
-  <string name="txtDialogsTitle">Ақпарат</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
   <string name="txtYes">Иә</string>
   <string name="txtNo">Жоқ</string>
   <string name="hintNameProduct">Атауы</string>
@@ -429,6 +427,8 @@
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>

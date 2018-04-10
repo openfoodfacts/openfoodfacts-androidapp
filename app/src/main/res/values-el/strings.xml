@@ -111,10 +111,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">User saved</string>
   <string name="txtInfoLoginNo">Ο χρήστης δεν είναι αποθηκευμένος</string>
-  <string name="txtDialogsTitle">Πληροφορίες</string>
   <string name="txtDialogsContent">Το προϊόν που σαρώσατε δεν υπάρχει ακόμα στο Open Food Facts. Παρακαλούμε προσθέστε το.</string>
   <string name="txtDialogsContentPowerMode">Το προϊόν που σαρώσατε υπάρχει ήδη στο Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Θέλετε να στείλετε τα αποθηκευμένα προϊόντα στη βάση δεδομένων;</string>
   <string name="txtYes">Ναι</string>
   <string name="txtNo">Όχι</string>
   <string name="hintNameProduct">Όνομα</string>
@@ -429,6 +427,8 @@
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>

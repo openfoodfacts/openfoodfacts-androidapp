@@ -111,10 +111,8 @@
   <string name="uploadLater">L\'image sera téléchargée lorsque le réseau sera disponible</string>
   <string name="txtInfoLoginOk">Utilisateur enregistré</string>
   <string name="txtInfoLoginNo">Utilisateur anonyme</string>
-  <string name="txtDialogsTitle">Information</string>
   <string name="txtDialogsContent">Le produit que vous recherchez n\'existe pas dans notre base de données. Voulez-vous l\'ajouter?</string>
   <string name="txtDialogsContentPowerMode">Le produit que vous avez scanné existe déjà dans Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Voulez-vous envoyer les produits enregistrés dans la base de données ?</string>
   <string name="txtYes">Oui</string>
   <string name="txtNo">Non</string>
   <string name="hintNameProduct">Nom</string>
@@ -429,6 +427,8 @@
   <string name="sort">Trier</string>
   <string name="by_nutrition_grade">Note nutritionnelle</string>
   <string name="sort_by">Trier par</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Les photos sans code-barres ne peuvent pas encore être ajoutées avec l\'application. Il est possible d\'en ajouter un avec la version web mobile.</string>
   <string name="no_barcode">Nous n\'avons détecté aucun code à barres</string>
