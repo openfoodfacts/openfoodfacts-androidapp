@@ -61,6 +61,8 @@
     <item>Ингредиенты</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Продукт</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Поиск</string>
@@ -130,7 +132,10 @@
   <string name="txtTakePicture">Сделайте фото</string>
   <string name="txtSendAll">Отправить все</string>
   <string name="txtNoData">Нет данных</string>
-  <string name="txtPictureNeeded">Сначала сделайте фото</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Передача...</string>
   <string name="dataSaved">Сохранено на вашем устройстве</string>
   <string name="txtInfoAddUser">Введите имя и пароль</string>
@@ -147,6 +152,7 @@
   <string name="txtBarcodeNotValid">Недействительный штрих-код</string>
   <string name="try_it_scan_now">Сканировать продукт</string>
   <string name="share">Поделиться</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Посмотрите на этот продукт на Open Food Facts:</string>
   <string name="create_account">Регистрация</string>
   <string name="home_drawer">Главная</string>
@@ -419,6 +425,9 @@
   <string name="other_tags_text">Другие вещества:</string>
   <!--shared element transition key-->
   <string name="wikidata">Данные Wikidata</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">Марка</string>
   <string name="by_barcode">Штрих-код</string>

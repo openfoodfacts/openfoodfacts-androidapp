@@ -67,6 +67,8 @@
     <item>المكونات</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">نتاج</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">بحث</string>
@@ -136,7 +138,10 @@
   <string name="txtTakePicture">إلتقاط صورة</string>
   <string name="txtSendAll">رفع الكل</string>
   <string name="txtNoData">لا توجد بيانات</string>
-  <string name="txtPictureNeeded">يرجى أخذ صورة أولاً</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">جاري الإرسال...</string>
   <string name="dataSaved">تم الحفظ محليا على جهازك</string>
   <string name="txtInfoAddUser">الرجاء إدخال اسم المستخدم وكلمة المرور الخاصة بك</string>
@@ -153,6 +158,7 @@
   <string name="txtBarcodeNotValid">الرمز الشريطي غير صحيح.</string>
   <string name="try_it_scan_now">مسح المنتج</string>
   <string name="share">مشاركة</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">انظر لهذا المنتج على \"الحقائق الغذائية المفتوحة\":</string>
   <string name="create_account">تسجيل</string>
   <string name="home_drawer">الصفحة الرئيسية</string>
@@ -425,6 +431,9 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">العلامة التجارية</string>
   <string name="by_barcode">الرمز الشريطي</string>

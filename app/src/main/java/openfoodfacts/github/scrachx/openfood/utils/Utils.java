@@ -1,21 +1,29 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.preference.PreferenceManager;
+import android.os.Environment;
 import android.provider.Settings;
 import android.support.annotation.DrawableRes;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.content.res.AppCompatResources;
 import android.text.Spannable;
@@ -28,6 +36,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.firebase.jobdispatcher.Constraint;
 import com.firebase.jobdispatcher.Driver;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
@@ -57,6 +66,8 @@ import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
+import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
@@ -459,6 +470,38 @@ public class Utils {
         return "Other";
     }
 
+    public static String timeStamp(){
+        Long tsLong = System.currentTimeMillis();
+        return tsLong.toString();
+    }
+
+
+   public static File makeOrGetPictureDirectory(Context context) {
+        // determine the profile directory
+        File dir= context.getFilesDir();
+
+        if (isExternalStorageWritable()) {
+            dir = context.getExternalFilesDir(null);
+        }
+        File picDir= new File(dir, "Pictures");
+        if(picDir.exists()){
+            return picDir;
+        }
+        // creates the directory if not present yet
+        picDir.mkdir();
+
+        return picDir;
+    }
+
+    public static boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED.equals(state);
+    }
+
+    public static Uri getOutputPicUri(Context context){
+        return (Uri.fromFile(new File(Utils.makeOrGetPictureDirectory(context),"/"+Utils.timeStamp()+".jpg")));
+    }
+
     public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {
         ClickableSpan clickableSpan;
         String url = SearchType.URLS.get(type);
@@ -485,4 +528,38 @@ public class Utils {
         return spannableText;
 
     }
+
+    /**
+     * Function to open ScannerFragmentActivity to facilitate scanning
+     * @param activity
+     */
+    public static void scan(Activity activity) {
+
+
+        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) !=
+                PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest
+                    .permission.CAMERA)) {
+                new MaterialDialog.Builder(activity)
+                        .title(R.string.action_about)
+                        .content(R.string.permission_camera)
+                        .neutralText(R.string.txtOk)
+                        .show().setOnDismissListener(dialogInterface -> ActivityCompat.requestPermissions(activity,
+                        new String[]{Manifest.permission.CAMERA},
+                        Utils.MY_PERMISSIONS_REQUEST_CAMERA));
+
+            } else {
+                ActivityCompat.requestPermissions(activity, new String[]{Manifest
+                        .permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+            }
+        } else {
+            Intent intent = new Intent(activity, ScannerFragmentActivity.class);
+            activity.startActivity(intent);
+        }
+
+
+    }
+
+
+
 }
