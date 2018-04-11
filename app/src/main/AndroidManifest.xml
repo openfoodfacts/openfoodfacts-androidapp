@@ -93,7 +93,7 @@
 
 
             android:screenOrientation="portrait">
-            android:screenOrientation="portrait">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.MainActivity" />
