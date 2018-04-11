@@ -13,6 +13,9 @@
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
 
     <!-- Support for Amazon devices, and devices with no camera -->
     <uses-feature
@@ -85,11 +88,9 @@
         <activity
             android:name=".views.LoginActivity"
 
-            android:screenOrientation="portrait"
+            android:parentActivityName=".views.MainActivity"
 
-
-
-            android:parentActivityName=".views.MainActivity">
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.MainActivity" />

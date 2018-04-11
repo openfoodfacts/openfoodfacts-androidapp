@@ -61,10 +61,10 @@
     <item>רכיבים</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
+  <string name="bookmark">סימניה</string>
   <string name="product">מוצר</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
+  <string name="fastscroller_track">רצועת גלילה מהירה</string>
+  <string name="fastscroller_handle">ידית גלילה מהירה</string>
   <string name="search_button">חיפוש</string>
   <string name="no_products">המוצרים לא נמצאו</string>
   <string name="desc_list_item_icon">סמל הפריט</string>
@@ -117,10 +117,8 @@
   <string name="uploadLater">התמונה תישלח ברגע שהרשת תהיה זמינה</string>
   <string name="txtInfoLoginOk">המשתמש נשמר</string>
   <string name="txtInfoLoginNo">המשתמש לא נשמר</string>
-  <string name="txtDialogsTitle">פרטים</string>
   <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>
   <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא ב־Open Food Facts.</string>
-  <string name="txtDialogsContentSend">לשלוח את המוצרים שנשמרו אל מסד הנתונים?</string>
   <string name="txtYes">כן</string>
   <string name="txtNo">לא</string>
   <string name="hintNameProduct">שם</string>
@@ -132,10 +130,10 @@
   <string name="txtTakePicture">צילום תמונה</string>
   <string name="txtSendAll">לשלוח הכול</string>
   <string name="txtNoData">אין נתונים</string>
-  <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
-  <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeeded">נא להמתין…</string>
+  <string name="txtPictureNeededDialogContent">עליך להוסיף לפחות תמונה אחת בטרם הגשת המוצר הזה</string>
+  <string name="txtPictureNeededDialogYes">להישאר</string>
+  <string name="txtPictureNeededDialogNo">התעלמות</string>
   <string name="toastSending">מתבצעת שליחה…</string>
   <string name="dataSaved">נשמר מקומית בהתקן שלך</string>
   <string name="txtInfoAddUser">נא להזין את שם המשתמש והססמה שלך</string>
@@ -152,7 +150,7 @@
   <string name="txtBarcodeNotValid">הברקוד לא זמין</string>
   <string name="try_it_scan_now">סריקת מוצר</string>
   <string name="share">שיתוף</string>
-  <string name="translate">Translate</string>
+  <string name="translate">תרגום</string>
   <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
   <string name="create_account">הרשמה</string>
   <string name="home_drawer">ראשי</string>
@@ -425,9 +423,9 @@
   <string name="other_tags_text">חומרים אחרים:</string>
   <!--shared element transition key-->
   <string name="wikidata">מידע מוויקינתונים</string>
-  <string name="txtCamera">Camera</string>
-  <string name="txtGallery">Gallery</string>
-  <string name="txtOptions">Options</string>
+  <string name="txtCamera">מצלמה</string>
+  <string name="txtGallery">גלריה</string>
+  <string name="txtOptions">אפשרויות</string>
   <string name="by_title">כותרת</string>
   <string name="by_brand">מותג</string>
   <string name="by_barcode">ברקוד</string>
@@ -435,6 +433,8 @@
   <string name="sort">מיון</string>
   <string name="by_nutrition_grade">ציון תזונתי</string>
   <string name="sort_by">מיון לפי</string>
+  <string name="shake_summary">יש לנער את הטלפון כדי לסרוק מוצרים</string>
+  <string name="shake_title">סריקה בניעור</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">לא ניתן עדיין להוסיף תמונות ללא בר קוד ליישומון. נא לנסות את גרסת האתר לניידים.</string>
   <string name="no_barcode">לא זוהה כל ברקוד</string>

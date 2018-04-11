@@ -111,10 +111,8 @@
   <string name="uploadLater">A kép feltöltésre kerül amikor a hálózat elérhető lesz</string>
   <string name="txtInfoLoginOk">Felhasználó mentve</string>
   <string name="txtInfoLoginNo">Felhasználó nem lett mentve</string>
-  <string name="txtDialogsTitle">Információ</string>
   <string name="txtDialogsContent">A beolvasott termék nem található az Open Food Facts adatbázisában. Adja hozzá.</string>
   <string name="txtDialogsContentPowerMode">A beolvasott termék megtalálható az Open Food Facts adatbázisában.</string>
-  <string name="txtDialogsContentSend">Feltöltjük a mentett terméket az adatbázisba?</string>
   <string name="txtYes">Igen</string>
   <string name="txtNo">Nem</string>
   <string name="hintNameProduct">Név</string>
@@ -429,6 +427,8 @@
   <string name="sort">Rendezés</string>
   <string name="by_nutrition_grade">Táplálkozási osztályzat</string>
   <string name="sort_by">Rendezés</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Vonalkód nélküli fényképeket még nem lehet hozzáadni az alkalmazással. Kérjük, próbálja a mobil webes változattal.</string>
   <string name="no_barcode">Vonalkód nincs felismerve</string>
