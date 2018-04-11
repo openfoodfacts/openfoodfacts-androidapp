@@ -205,12 +205,16 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         downloadIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+            String channelId = "export_channel";
+            CharSequence channelName = getString(R.string.notification_channel_name);
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel notificationChannel = new NotificationChannel("downloadChannel", "ChannelCSV", importance);
+            NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
+            notificationChannel.setDescription(getString(R.string.notify_channel_description));
             notificationManager.createNotificationChannel(notificationChannel);
         }
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "downloadChannel")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "export_channel")
                 .setContentTitle(getString(R.string.notify_title))
                 .setContentText(getString(R.string.notify_content))
                 .setContentIntent(PendingIntent.getActivity(this, 4, downloadIntent, 0))
@@ -539,7 +543,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     @Override
     public void onPause() {
         super.onPause();
-        if(scanOnShake) {
+        if (scanOnShake) {
             //register the listener
             mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
 
@@ -549,7 +553,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     @Override
     public void onResume() {
         super.onResume();
-        if(scanOnShake) {
+        if (scanOnShake) {
             //unregister the listener
             mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
         }
