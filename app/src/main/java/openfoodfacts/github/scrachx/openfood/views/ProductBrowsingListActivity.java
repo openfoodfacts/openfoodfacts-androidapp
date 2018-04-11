@@ -223,7 +223,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             }
             case SearchType.INCOMPLETE_PRODUCT: {
-                getSupportActionBar().setSubtitle(getString(R.string.products_to_be_completed));
+                getSupportActionBar().setTitle(getString(R.string.products_to_be_completed));
                 break;
             }
             default: {
