@@ -41,6 +41,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.annotations.Nullable;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -90,6 +91,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private ShakeDetector mShakeDetector;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
+    private int contributionType;
 
 
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
@@ -136,6 +138,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
         });
 
+        if (SearchType.CONTRIBUTOR.equals(searchType)) {
+            MenuItem contributionItem = menu.findItem(R.id.action_set_type);
+            contributionItem.setVisible(true);
+        }
+
         return true;
     }
 
@@ -143,6 +150,60 @@ public class ProductBrowsingListActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
+        }
+
+        if (item.getItemId() == R.id.action_set_type) {
+
+            MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
+            builder.title("Contributions by");
+            String[] contributionTypes = new String[]{"Products you added or edited",
+                    "Products you added that need to be completed", "Products you took pictures for",
+                    "Products you took pictures for that need to be completed", "Products you added information for",
+                    "Products you added information for that need to be completed"};
+
+            builder.items(contributionTypes);
+            builder.itemsCallback(new MaterialDialog.ListCallback() {
+                @Override
+                public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+
+                    switch (position) {
+
+                        case 0:
+                            contributionType = 0;
+                            newSearchQuery();
+                            break;
+                        case 1:
+                            contributionType = 1;
+                            newSearchQuery();
+                            break;
+                        case 2:
+                            contributionType = 2;
+                            newSearchQuery();
+                            break;
+                        case 3:
+                            contributionType = 3;
+                            newSearchQuery();
+                            break;
+                        case 4:
+                            contributionType = 4;
+                            newSearchQuery();
+                            break;
+                        case 5:
+                            contributionType = 5;
+                            newSearchQuery();
+                            break;
+                        default:
+                            contributionType = 0;
+                            newSearchQuery();
+                            break;
+
+                    }
+
+                }
+            });
+            builder.show();
+
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -330,9 +391,42 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.CATEGORY:
                 api.getProductsByCategory(searchQuery, pageAddress, this::loadData);
                 break;
-            case SearchType.CONTRIBUTOR:
-                api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
+
+            case SearchType.CONTRIBUTOR: {
+
+                switch (contributionType) {
+                    case 0:
+                        api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
+                        break;
+
+                    case 1:
+                        api.getToBeCompletedProductsByContributor(searchQuery, pageAddress, this::loadData);
+                        break;
+
+                    case 2:
+                        api.getPicturesContributedProducts(searchQuery, pageAddress, this::loadData);
+                        break;
+
+                    case 3:
+                        api.getPicturesContributedIncompleteProducts(searchQuery, pageAddress, this::loadData);
+                        break;
+
+                    case 4:
+                        api.getInfoAddedProducts(searchQuery, pageAddress, this::loadData);
+                        break;
+
+                    case 5:
+                        api.getInfoAddedIncompleteProducts(searchQuery, pageAddress, this::loadData);
+                        break;
+
+                    default:
+                        api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
+                        break;
+
+                }
                 break;
+
+            }
 
             case SearchType.STATE:
                 api.getProductsByStates(searchQuery, pageAddress, this::loadData);
