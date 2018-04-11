@@ -111,7 +111,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         }
     }
 
-
     public void exportCSV() {
         String folder_main = " ";
         String appname = " ";
