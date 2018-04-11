@@ -165,7 +165,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         menu.findItem(R.id.action_export_all_history)
                 .setVisible(!emptyHistory);
-
         menu.findItem(R.id.action_remove_all_history)
                 .setVisible(!emptyHistory);
 
