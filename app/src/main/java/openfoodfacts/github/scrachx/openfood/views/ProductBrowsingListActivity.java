@@ -326,7 +326,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                         loadData(value, label);
                     }
                 });
-                break;
+
             case SearchType.CATEGORY:
                 api.getProductsByCategory(searchQuery, pageAddress, this::loadData);
                 break;
@@ -334,13 +334,14 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
                 break;
 
-            case SearchType.STATE: {
+            case SearchType.STATE:
                 api.getProductsByStates(searchQuery, pageAddress, this::loadData);
                 break;
-            }
-            default: {
+
+            default:
                 Log.e("Products Browsing", "No math case found for " + searchType);
-            }
+
+
         }
     }
 
