@@ -173,7 +173,6 @@ public class NutritionInfoProductFragment extends BaseFragment {
                     carbohydrates.getUnit(),
                     carbohydrates.getForPrepared100g(),
                     carbohydrates.getForPreparedServing()));
-
             nutrimentItems.addAll(getNutrimentItems(nutriments, CARBO_MAP));
         }
 
