@@ -203,7 +203,6 @@ public class NutritionInfoProductFragment extends BaseFragment {
         // Vitamins
         if (nutriments.hasVitamins()) {
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_vitamins)));
-
             nutrimentItems.addAll(getNutrimentItems(nutriments, VITAMINS_MAP));
         }
 
