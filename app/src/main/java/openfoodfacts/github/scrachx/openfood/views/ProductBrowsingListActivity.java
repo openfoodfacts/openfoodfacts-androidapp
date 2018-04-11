@@ -222,6 +222,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 getSupportActionBar().setSubtitle("State");
                 break;
             }
+            case SearchType.INCOMPLETE_PRODUCT: {
+                getSupportActionBar().setSubtitle(getString(R.string.products_to_be_completed));
+                break;
+            }
             default: {
                 Log.e("Products Browsing", "No math case found for " + searchType);
             }
@@ -336,6 +340,16 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
             case SearchType.STATE: {
                 api.getProductsByStates(searchQuery, pageAddress, this::loadData);
+                break;
+            }
+            case SearchType.INCOMPLETE_PRODUCT: {
+                // Get Products to be completed data and input it to loadData function
+                api.getIncompleteProducts(pageAddress, new OpenFoodAPIClient.OnIncompleteCallback() {
+                    @Override
+                    public void onIncompleteResponse(boolean value, Search incompleteProducts) {
+                        loadData(value, incompleteProducts);
+                    }
+                });
                 break;
             }
             default: {
