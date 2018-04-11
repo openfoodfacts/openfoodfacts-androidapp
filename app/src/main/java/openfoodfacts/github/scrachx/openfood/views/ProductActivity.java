@@ -183,6 +183,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
                 }
             } else {
                 Intent intent = new Intent(this, ScannerFragmentActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         }

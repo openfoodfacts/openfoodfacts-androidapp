@@ -372,6 +372,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                 }
             } else {
                 Intent intent = new Intent(HistoryScanActivity.this, ScannerFragmentActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         }
