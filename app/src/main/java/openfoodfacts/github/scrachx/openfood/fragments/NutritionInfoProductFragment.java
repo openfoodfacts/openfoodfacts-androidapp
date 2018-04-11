@@ -128,7 +128,6 @@ public class NutritionInfoProductFragment extends BaseFragment {
             mUrlImage = mSendProduct.getImgupload_nutrition();
             Picasso.with(getContext()).load("file://"+mUrlImage).config(Bitmap.Config.RGB_565).into(mImageNutrition);
         }
-
         if (nutriments == null) {
             return;
         }
