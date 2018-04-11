@@ -111,7 +111,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     Toolbar toolbar;
     private AccountHeader headerResult = null;
     private Drawer result = null;
-    private SearchView searchView;
     private MenuItem searchMenuItem;
 
     private CustomTabActivityHelper customTabActivityHelper;
@@ -570,7 +569,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         // Associate searchable configuration with the SearchView
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchMenuItem = menu.findItem(R.id.action_search);
-        searchView = (SearchView) searchMenuItem.getActionView();
+        SearchView searchView = (SearchView) searchMenuItem.getActionView();
         if (searchManager.getSearchableInfo(getComponentName()) != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         }
