@@ -156,10 +156,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
             MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
             builder.title("Contributions by");
-            String[] contributionTypes = new String[]{"Products you added or edited",
-                    "Products you added that need to be completed", "Products you took pictures for",
-                    "Products you took pictures for that need to be completed", "Products you added information for",
-                    "Products you added information for that need to be completed"};
+            String[] contributionTypes = new String[]{getString(R.string.products_added),
+                    getString(R.string.products_incomplete), getString(R.string.product_pictures_contributed),
+                    getString(R.string.picture_contributed_incomplete), getString(R.string.product_info_added),
+                    getString(R.string.product_info_tocomplete)};
 
             builder.items(contributionTypes);
             builder.itemsCallback(new MaterialDialog.ListCallback() {
