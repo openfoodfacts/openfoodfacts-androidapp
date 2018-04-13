@@ -87,7 +87,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     @BindView(R.id.history_progressbar)
     ProgressBar historyProgressbar;
     //boolean to determine if image should be loaded or not
-    private boolean disableLoad = false;
+    private boolean isLowBatteryMode = false;
     private static String SORT_TYPE = "none";
 
     private SensorManager mSensorManager;
@@ -108,11 +108,11 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set disableLoad to true
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(HistoryScanActivity.this);
         Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
         if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {
-            disableLoad = true;
+           isLowBatteryMode = true;
         }
 
         mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
@@ -404,7 +404,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
             sort(SORT_TYPE, productItems);
             adapter = new HistoryListAdapter(productItems, getString(R.string
-                    .website_product), activity,disableLoad);
+                    .website_product), activity,isLowBatteryMode);
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
             historyProgressbar.setVisibility(View.GONE);

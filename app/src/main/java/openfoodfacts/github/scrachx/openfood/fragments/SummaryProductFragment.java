@@ -148,7 +148,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     private Uri manufactureUri;
     //boolean to determine if image should be loaded or not
-    private boolean disableLoad = false;
+    private boolean isLowBatteryMode = false;
 
     @Override
     public void onAttach(Context context) {
@@ -173,11 +173,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         Intent intent = getActivity().getIntent();
         final State state = (State) intent.getExtras().getSerializable("state");
 
-        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set disableLoad to true
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
         if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
-            disableLoad = true;
+            isLowBatteryMode = true;
         }
 
         product = state.getProduct();
@@ -222,8 +222,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (isNotBlank(product.getImageUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
 
-            // Load Image if disableLoad is false
-            if (!disableLoad) {
+            // Load Image if isLowBatteryMode is false
+            if (!isLowBatteryMode) {
                 Picasso.with(view.getContext())
                         .load(product.getImageUrl())
                         .into(mImageFront);

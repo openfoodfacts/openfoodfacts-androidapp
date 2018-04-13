@@ -32,11 +32,11 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
 
     private Context context;
     private final List<Product> products;
-    private boolean disableLoad;
+    private boolean isLowBatteryMode;
 
-    public ProductsRecyclerViewAdapter(List<Product> items, boolean disableLoad) {
+    public ProductsRecyclerViewAdapter(List<Product> items, boolean isLowBatteryMode) {
         this.products = items;
-        this.disableLoad = disableLoad;
+        this.isLowBatteryMode = isLowBatteryMode;
     }
 
     @Override
@@ -68,8 +68,8 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
             if (products.get(position).getImageSmallUrl() == null)
                 productHolder.vProductImageProgressbar.setVisibility(View.GONE);
 
-            // Load Image if disableLoad is false
-            if (!disableLoad) {
+            // Load Image if isLowBatteryMode is false
+            if (!isLowBatteryMode) {
                 Picasso.with(context)
                         .load(products.get(position).getImageSmallUrl())
                         .placeholder(R.drawable.placeholder_thumb)

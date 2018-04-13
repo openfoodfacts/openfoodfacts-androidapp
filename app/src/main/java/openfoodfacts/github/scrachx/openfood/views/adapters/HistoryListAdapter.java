@@ -30,14 +30,14 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
     private final String productUrl;
     private Activity mActivity;
     private Resources res;
-    private boolean disableLoad;
+    private boolean isLowBatteryMode;
 
-    public HistoryListAdapter(List<HistoryItem> list, String productUrl, Activity activity, boolean disableLoad) {
+    public HistoryListAdapter(List<HistoryItem> list, String productUrl, Activity activity, boolean isLowBatteryMode) {
         this.list = list == null ? Collections.emptyList() : list;
         this.productUrl = productUrl;
         this.mActivity = activity;
         res = activity.getResources();
-        this.disableLoad = disableLoad;
+        this.isLowBatteryMode = isLowBatteryMode;
 
     }
 
@@ -71,8 +71,8 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
             holder.historyImageProgressbar.setVisibility(View.GONE);
         }
 
-        // Load Image if disableLoad is false
-        if (!disableLoad) {
+        // Load Image if isBatteryLoad is false
+        if (!isLowBatteryMode) {
             Picasso.with(mActivity)
                     .load(item.getUrl())
                     .placeholder(R.drawable.placeholder_thumb)

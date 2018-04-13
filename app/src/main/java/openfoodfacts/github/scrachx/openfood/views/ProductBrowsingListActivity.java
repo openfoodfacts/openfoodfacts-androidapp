@@ -77,7 +77,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private int pageAddress = 1;
     private Boolean setupDone = false;
     //boolean to determine if image should be loaded or not
-    private boolean disableLoad = false;
+    private boolean isLowBatteryMode = false;
 
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -157,11 +157,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
         newSearchQuery();
 
 
-        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set disableLoad to true
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
         if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {
-            disableLoad = true;
+            isLowBatteryMode = true;
         }
 
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
@@ -346,7 +346,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     mProducts.add(null);
                 }
                 if (setupDone) {
-                    productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts, disableLoad));
+                    productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode));
                 }
                 setUpRecyclerView();
             } else {
@@ -385,7 +385,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             LinearLayoutManager mLayoutManager = new LinearLayoutManager(ProductBrowsingListActivity.this, LinearLayoutManager.VERTICAL, false);
             productsRecyclerView.setLayoutManager(mLayoutManager);
 
-            ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts, disableLoad);
+            ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode);
             productsRecyclerView.setAdapter(adapter);
 
 
