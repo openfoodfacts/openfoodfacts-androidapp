@@ -219,23 +219,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             notificationManager.createNotificationChannel(notificationChannel);
         }
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "downloadChannel")
-                .setContentTitle(getString(R.string.notify_title))
-                .setContentText(getString(R.string.notify_content))
-                .setContentIntent(PendingIntent.getActivity(this, 4, downloadIntent, 0))
-                .setSmallIcon(R.mipmap.ic_launcher);
-
-        if (isDownload) {
-            notificationManager.notify(7, builder.build());
-        }
-
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent downloadIntent = new Intent(Intent.ACTION_VIEW);
-        downloadIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        Uri csvUri = FileProvider.getUriForFile(this, this.getPackageName() + ".provider", f);
-        downloadIntent.setDataAndType(csvUri, "text/csv");
-        downloadIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
 
             String channelId = "export_channel";
