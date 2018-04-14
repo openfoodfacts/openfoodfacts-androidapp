@@ -28,8 +28,14 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 public class ContributorsFragment extends BaseFragment {
 
     private State mState;
-    @BindView(R.id.modify_history)
-    TextView modifyText;
+    @BindView(R.id.creator)
+    TextView creatorText;
+    @BindView(R.id.last_editor)
+    TextView lastEditorText;
+    @BindView(R.id.other_editors)
+    TextView otherEditorsText;
+    @BindView(R.id.states)
+    TextView statesText;
 
 
     @Override
@@ -50,10 +56,18 @@ public class ContributorsFragment extends BaseFragment {
             String[] lastEditDate = getDateTime(product.getLastModifiedTime());
             String editors = getEditors(product.getEditors(), product.getCreator(), product.getLastModifiedBy());
 
-            String modifyTxt = getString(R.string.modified_history, createdDate[0], createdDate[1], product.getCreator(), lastEditDate[0], lastEditDate[1], product.getLastModifiedBy(), editors);
+            String creatorTxt = getString(R.string.creator_history, createdDate[0], createdDate[1], product.getCreator());
+            String editorTxt = getString(R.string.last_editor_history, lastEditDate[0], lastEditDate[1], product.getLastModifiedBy());
+            String otherEditorsTxt = getString(R.string.other_editors, editors);
 
+            creatorText.setText(creatorTxt);
+            lastEditorText.setText(editorTxt);
+            otherEditorsText.setText(otherEditorsTxt);
+        }
 
-            modifyText.setText(modifyTxt);
+        if (!product.getStates().equals("")) {
+
+            statesText.setText(createStatesList(product.getStates()));
         }
 
     }
@@ -66,6 +80,22 @@ public class ContributorsFragment extends BaseFragment {
         sdf2.setTimeZone(java.util.TimeZone.getTimeZone("CET"));
         String[] formattedDates = new String[]{sdf.format(date), sdf2.format(date)};
         return formattedDates;
+    }
+
+    private String createStatesList(List<String> states) {
+
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < states.size(); i++) {
+
+
+            builder.append(states.get(i));
+            builder.append("\n");
+
+        }
+
+        return builder.toString();
+
+
     }
 
     private String getEditors(List<String> editorTags, String creator, String lastEditor) {

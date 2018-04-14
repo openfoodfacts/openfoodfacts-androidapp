@@ -379,43 +379,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
         }
 
-        if (!product.getCreator().equals("")) {
-
-            String[] createdDate = getDateTime(product.getCreatedDateTime());
-            String[] lastEditDate = getDateTime(product.getLastModifiedTime());
-            String editors = getEditors(product.getEditors(), product.getCreator(), product.getLastModifiedBy());
-
-            String modifyText = getString(R.string.modified_history, createdDate[0], createdDate[1], product.getCreator(), lastEditDate[0], lastEditDate[1], product.getLastModifiedBy(), editors);
-
-
-            creatorTxt.setText(modifyText);
-        }
-
-    }
-
-    private String[] getDateTime(String dateTime) {
-        long unixSeconds = Long.valueOf(dateTime);
-        Date date = new java.util.Date(unixSeconds * 1000L);
-        SimpleDateFormat sdf = new java.text.SimpleDateFormat("MMMM dd, yyyy");
-        SimpleDateFormat sdf2 = new java.text.SimpleDateFormat("HH:mm:ss a");
-        sdf2.setTimeZone(java.util.TimeZone.getTimeZone("CET"));
-        String[] formattedDates = new String[]{sdf.format(date), sdf2.format(date)};
-        return formattedDates;
-    }
-
-    private String getEditors(List<String> editorTags, String creator, String lastEditor) {
-
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < editorTags.size() - 2; i++) {
-
-
-            builder.append(editorTags.get(i));
-            builder.append(", ");
-
-        }
-
-
-        return builder.toString();
 
     }
 

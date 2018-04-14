@@ -386,16 +386,6 @@
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-        <TextView
-            android:id="@+id/creator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:layout_marginRight="@dimen/spacing_normal"
-            android:clickable="true"
-            android:gravity="center" />
-
         <Button
             android:id="@+id/buttonMorePictures"
             android:layout_width="250dp"
