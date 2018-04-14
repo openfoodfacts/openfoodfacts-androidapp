@@ -40,7 +40,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -129,6 +131,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     Button addMorePicture;
     @BindView(R.id.imageGrade)
     ImageView img;
+    @BindView(R.id.creator)
+    TextView creatorTxt;
     private Product product;
     private OpenFoodAPIClient api;
     private WikidataApiClient apiClientForWikiData;
@@ -375,6 +379,26 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
         }
 
+        if (!product.getCreator().equals("")) {
+
+            String[] createdDate = getDateTime(product.getCreatedDateTime());
+            String[] lastEditDate = getDateTime(product.getLastModifiedTime());
+
+            String modifyText = "Product added on " + createdDate[0] + " at " + createdDate[1] + " by " + product.getCreator() + "\n" +
+                    "Last edit of product page on " + lastEditDate[0] + " at " + lastEditDate[1] + " by " + product.getLastModifiedBy();
+            creatorTxt.setText(modifyText);
+        }
+
+    }
+
+    private String[] getDateTime(String dateTime) {
+        long unixSeconds = Long.valueOf(dateTime);
+        Date date = new java.util.Date(unixSeconds * 1000L);
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("MMMM dd, yyyy");
+        SimpleDateFormat sdf2 = new java.text.SimpleDateFormat("HH:mm:ss a");
+        sdf2.setTimeZone(java.util.TimeZone.getTimeZone("CET"));
+        String[] formattedDates = new String[]{sdf.format(date), sdf2.format(date)};
+        return formattedDates;
     }
 
     @Override
