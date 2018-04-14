@@ -65,9 +65,9 @@ public class ContributorsFragment extends BaseFragment {
             otherEditorsText.setText(otherEditorsTxt);
         }
 
-        if (!product.getStates().equals("")) {
+        if (!product.getStatesTags().equals("")) {
 
-            statesText.setText(createStatesList(product.getStates()));
+            statesText.setText(createStatesList(product.getStatesTags()));
         }
 
     }

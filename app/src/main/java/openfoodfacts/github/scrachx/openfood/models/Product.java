@@ -489,10 +489,6 @@ public class Product implements Serializable {
         return editorsTags;
     }
 
-    public List<String> getStates() {
-        return states;
-    }
-
 
     public void setCode(String code) {
         this.code = code;
