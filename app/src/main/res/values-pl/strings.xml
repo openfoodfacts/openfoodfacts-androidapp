@@ -442,4 +442,8 @@
   <string name="format_error">Błędny kod kreskowy/QR</string>
   <string name="code_detected">Wykryliśmy kod kreskowy</string>
   <string name="do_you_want_to">Czy chcesz dodać zdjęcia do kodu kreskowego?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>
