@@ -111,6 +111,8 @@ public class Product implements Serializable {
     private String creator;
     @JsonProperty("last_modified_t")
     private String lastModifiedTime;
+    @JsonProperty("editors_tags")
+    private List<String> editorsTags = new ArrayList<>();
 
 
     /**
@@ -481,7 +483,9 @@ public class Product implements Serializable {
         return lastModifiedTime;
     }
 
-
+    public List<String> getEditors() {
+        return editorsTags;
+    }
 
 
     public void setCode(String code) {
