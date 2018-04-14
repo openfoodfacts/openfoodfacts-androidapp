@@ -113,8 +113,6 @@ public class Product implements Serializable {
     private String lastModifiedTime;
     @JsonProperty("editors_tags")
     private List<String> editorsTags = new ArrayList<>();
-    @JsonProperty("states")
-    private List<String> states = new ArrayList<>();
 
 
     /**

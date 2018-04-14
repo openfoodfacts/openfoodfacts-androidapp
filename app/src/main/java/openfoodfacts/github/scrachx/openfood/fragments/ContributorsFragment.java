@@ -65,19 +65,26 @@ public class ContributorsFragment extends BaseFragment {
 
             String[] createdDate = getDateTime(product.getCreatedDateTime());
             String[] lastEditDate = getDateTime(product.getLastModifiedTime());
-            String editors = getEditors(product.getEditors(), product.getCreator(), product.getLastModifiedBy());
 
 
-            //String creatorTxt = getContributorsTag(product.getCreator()).toString();
-            String editorTxt = getString(R.string.last_editor_history, lastEditDate[0], lastEditDate[1], product.getLastModifiedBy());
-            String otherEditorsTxt = getString(R.string.other_editors, editors);
+            String creatorTxt = getString(R.string.creator_history, createdDate[0], createdDate[1]);
+            String editorTxt = getString(R.string.last_editor_history, lastEditDate[0], lastEditDate[1]);
+            String otherEditorsTxt = getString(R.string.other_editors);
 
-            creatorText.setClickable(true);
             creatorText.setMovementMethod(LinkMovementMethod.getInstance());
-            creatorText.setText("Creator");
+            creatorText.setText(creatorTxt + " ");
             creatorText.append(getContributorsTag(product.getCreator()));
-            lastEditorText.setText(editorTxt);
-            otherEditorsText.setText(otherEditorsTxt);
+            lastEditorText.setMovementMethod(LinkMovementMethod.getInstance());
+            lastEditorText.setText(editorTxt + " ");
+            lastEditorText.append(getContributorsTag(product.getLastModifiedBy()));
+            otherEditorsText.setMovementMethod(LinkMovementMethod.getInstance());
+            otherEditorsText.setText(otherEditorsTxt + " ");
+
+            for (int i = 0; i < product.getEditors().size(); i++) {
+                otherEditorsText.append(getContributorsTag(product.getEditors().get(i)));
+                otherEditorsText.append(", ");
+            }
+
         }
 
         if (!product.getStatesTags().equals("")) {
@@ -110,21 +117,6 @@ public class ContributorsFragment extends BaseFragment {
 
         return builder.toString();
 
-
-    }
-
-    private String getEditors(List<String> editorTags, String creator, String lastEditor) {
-
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < editorTags.size() - 2; i++) {
-
-
-            builder.append(editorTags.get(i));
-            builder.append(", ");
-
-        }
-
-        return builder.toString();
 
     }
 

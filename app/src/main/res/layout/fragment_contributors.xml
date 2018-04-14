@@ -24,7 +24,8 @@
             android:background="@drawable/textview_full"
             android:clickable="true"
             android:gravity="center"
-            android:padding="@dimen/spacing_small" />
+            android:padding="@dimen/spacing_small"
+            android:textColorLink="@color/light_blue_A700" />
 
         <TextView
             android:id="@+id/last_editor"
@@ -37,7 +38,8 @@
             android:background="@drawable/textview_full"
             android:clickable="true"
             android:gravity="center"
-            android:padding="@dimen/spacing_small" />
+            android:padding="@dimen/spacing_small"
+            android:textColorLink="@color/light_blue_A700" />
 
 
         <TextView
@@ -51,7 +53,8 @@
             android:background="@drawable/textview_full"
             android:clickable="true"
             android:gravity="center"
-            android:padding="@dimen/spacing_small" />
+            android:padding="@dimen/spacing_small"
+            android:textColorLink="@color/light_blue_A700" />
 
 
         <TextView
@@ -65,7 +68,8 @@
             android:background="@drawable/textview_full"
             android:clickable="true"
             android:gravity="center"
-            android:padding="@dimen/spacing_small" />
+            android:padding="@dimen/spacing_small"
+            android:textColorLink="@color/light_blue_A700" />
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
