@@ -266,6 +266,9 @@ public interface OpenFoodAPIService {
     @GET("packager-codes.json")
     Single<TagsWrapper> getTags();
 
+    @GET("state/{State}/{page}.json")
+    Call<Search> getProductsByState(@Path("State") String state, @Path("page") int page);
+
     /**
      * Open Beauty Facts experimental and specific APIs
      */

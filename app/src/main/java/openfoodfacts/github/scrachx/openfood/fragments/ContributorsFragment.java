@@ -89,7 +89,12 @@ public class ContributorsFragment extends BaseFragment {
 
         if (!product.getStatesTags().equals("")) {
 
-            statesText.setText(createStatesList(product.getStatesTags()));
+            statesText.setMovementMethod(LinkMovementMethod.getInstance());
+            statesText.setText("");
+            for (int i = 0; i < product.getStatesTags().size(); i++) {
+                statesText.append(getStatesTag(product.getStatesTags().get(i).split(":")[1]));
+                statesText.append("\n ");
+            }
         }
 
     }
@@ -104,21 +109,6 @@ public class ContributorsFragment extends BaseFragment {
         return formattedDates;
     }
 
-    private String createStatesList(List<String> states) {
-
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < states.size(); i++) {
-
-
-            builder.append(states.get(i).split(":")[1]);
-            builder.append("\n");
-
-        }
-
-        return builder.toString();
-
-
-    }
 
     private CharSequence getContributorsTag(String contributor) {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
@@ -131,6 +121,23 @@ public class ContributorsFragment extends BaseFragment {
             }
         };
         spannableStringBuilder.append(contributor);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.append(" ");
+        return spannableStringBuilder;
+    }
+
+
+    private CharSequence getStatesTag(String state) {
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+
+                ProductBrowsingListActivity.startActivity(getContext(), state, SearchType.STATE);
+
+            }
+        };
+        spannableStringBuilder.append(state);
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append(" ");
         return spannableStringBuilder;

@@ -219,6 +219,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
                 break;
             default:
+            }
+            case SearchType.STATE: {
+                getSupportActionBar().setSubtitle("State");
+                break;
+            }
+            default: {
                 Log.e("Products Browsing", "No math case found for " + searchType);
         }
 
@@ -328,6 +334,13 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
                 break;
             default:
+            }
+
+            case SearchType.STATE: {
+                api.getProductsByStates(searchQuery, pageAddress, this::loadData);
+                break;
+            }
+            default: {
                 Log.e("Products Browsing", "No math case found for " + searchType);
         }
     }
