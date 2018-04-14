@@ -30,6 +30,8 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 
 /**
@@ -61,22 +63,33 @@ public class ContributorsFragment extends BaseFragment {
         mState = (State) intent.getExtras().getSerializable("state");
         final Product product = mState.getProduct();
 
-        if (!product.getCreator().equals("")) {
+        if (isNotBlank(product.getCreator())) {
 
             String[] createdDate = getDateTime(product.getCreatedDateTime());
-            String[] lastEditDate = getDateTime(product.getLastModifiedTime());
-
-
             String creatorTxt = getString(R.string.creator_history, createdDate[0], createdDate[1]);
-            String editorTxt = getString(R.string.last_editor_history, lastEditDate[0], lastEditDate[1]);
-            String otherEditorsTxt = getString(R.string.other_editors);
-
             creatorText.setMovementMethod(LinkMovementMethod.getInstance());
             creatorText.setText(creatorTxt + " ");
             creatorText.append(getContributorsTag(product.getCreator()));
+
+        } else {
+            creatorText.setVisibility(View.INVISIBLE);
+        }
+
+
+        if (isNotBlank(product.getLastModifiedBy())) {
+            String[] lastEditDate = getDateTime(product.getLastModifiedTime());
+            String editorTxt = getString(R.string.last_editor_history, lastEditDate[0], lastEditDate[1]);
             lastEditorText.setMovementMethod(LinkMovementMethod.getInstance());
             lastEditorText.setText(editorTxt + " ");
             lastEditorText.append(getContributorsTag(product.getLastModifiedBy()));
+
+        } else {
+            lastEditorText.setVisibility(View.INVISIBLE);
+        }
+
+
+        if (product.getStatesTags().size() != 0) {
+            String otherEditorsTxt = getString(R.string.other_editors);
             otherEditorsText.setMovementMethod(LinkMovementMethod.getInstance());
             otherEditorsText.setText(otherEditorsTxt + " ");
 
@@ -84,8 +97,10 @@ public class ContributorsFragment extends BaseFragment {
                 otherEditorsText.append(getContributorsTag(product.getEditors().get(i)));
                 otherEditorsText.append(", ");
             }
-
+        } else {
+            otherEditorsText.setVisibility(View.INVISIBLE);
         }
+
 
         if (!product.getStatesTags().equals("")) {
 
