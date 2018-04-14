@@ -1,22 +1,22 @@
 „Open Food Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Für Lebensmittel können Sie „Open Food Facts”, für Kosmetika „Open Beauty Facts” und für Tiernahrung „Open Pet Food Facts” installieren.
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+Gestern Morgen erwachte das Open Food Facts Team zu einer erstaunlichen Enthüllung. 
 
-Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+Das Sammeln von Lebensmitteln der Welt, Kosmetika und Tiernahrung war so überholt. Mit den unglaublichen Fortschritten, die wir im letzten Jahr gemacht haben, müssen wir unsere Mission, alle Lebensmittel und Kosmetikprodukte der Welt zu sammeln, sicher bald erfüllt haben, richtig?
 
-So we set up to create not 1, but other 77000 separate new databases ! 
+Also haben wir uns darauf eingestellt, nicht 1, sondern weitere 77.000 eigenständige neue Datenbanken zu erstellen! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts wird ein äußerst ehrgeiziges Projekt werden. Hier sind einige davon: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - Die größte offene Datenbank von Farbstiften
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - Die größte offene Datenbank für Miniaturnahrungsmittel
 
-Open ??? Facts - The largest open database of ???
+Open … Facts - Die größte offene Datenbank für … …
 
-Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+Morgen werden wir die 3 erfolgreichsten Datenbanken auswählen und damit beginnen, alle passenden Produkte der Welt zu sammeln.
 
-Will it be trash cans, télécartes, or mobile phones database ? 
+Wird es eine Datenbank für Mülltonnen, Telefonkarten oder Handys sein? 
 
-So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
+Wenn Sie also T-Shirts, Kochbücher, Origami-Papier oder Schneekugeln mögen, können Sie diese mit der Android App „Open Products Facts” auf Google Play einlesen.
