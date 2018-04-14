@@ -88,7 +88,7 @@ public class ContributorsFragment extends BaseFragment {
         for (int i = 0; i < states.size(); i++) {
 
 
-            builder.append(states.get(i));
+            builder.append(states.get(i).split(":")[1]);
             builder.append("\n");
 
         }
