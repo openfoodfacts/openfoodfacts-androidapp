@@ -427,8 +427,8 @@
   <string name="sort">Trier</string>
   <string name="by_nutrition_grade">Note nutritionnelle</string>
   <string name="sort_by">Trier par</string>
-  <string name="shake_summary">Shake phone to scan products</string>
-  <string name="shake_title">Scan on Shake</string>
+  <string name="shake_summary">Secouez le téléphone pour scanner des produits</string>
+  <string name="shake_title">Scanner si le téléphone est secoué</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Les photos sans code-barres ne peuvent pas encore être ajoutées avec l\'application. Il est possible d\'en ajouter un avec la version web mobile.</string>
   <string name="no_barcode">Nous n\'avons détecté aucun code à barres</string>
@@ -436,4 +436,8 @@
   <string name="format_error">Mauvais format de code-barre ou code QR</string>
   <string name="code_detected">Nous n\'avons détecté aucun code-barre</string>
   <string name="do_you_want_to">Voulez-vous ajouter des photos à ce code-barre?</string>
+  <string name="notify_title">L\'export est terminé</string>
+  <string name="notify_content">Cliquez pour afficher les produits exportés</string>
+  <string name="notification_channel_name">Notifications d\'exportation</string>
+  <string name="notify_channel_description">Notification pour afficher l\'emplacement du fichier exporté</string>
 </resources>
