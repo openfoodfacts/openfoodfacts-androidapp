@@ -1,4 +1,3 @@
-install: travis_wait 90 mvn install
 language: android
 
 jdk: oraclejdk8
@@ -39,13 +38,22 @@ android:
     - 'google-gdk-license-.+'
     - '.*intel.+'
 
+  before_cache:
+    # Do not cache a few Gradle files/directories (see https://docs.travis-ci.com/user/languages/java/#Caching)
+    - rm -f  ${TRAVIS_BUILD_DIR}/gradle/caches/modules-2/modules-2.lock
+    - rm -fr ${TRAVIS_BUILD_DIR}/gradle/caches/*/plugin-resolution/
+
 cache:
   directories:
+    # Gradle dependencies
     - ${TRAVIS_BUILD_DIR}/gradle/caches/
     - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
 
+    # Cache maven
+    - $HOME/.m2
+
 before_script:
-# Create and start emulator
+# Create and start emulator.
   - echo no | android create avd --force -n test -t "android-"$ANDROID_EMULATOR_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
   - emulator -avd test -no-window &
   - android-wait-for-emulator
@@ -54,11 +62,23 @@ before_script:
 before_install:
   - yes | sdkmanager "platforms;android-27"
 
-install:
-  - ./gradlew assembleDebug --stacktrace
+jobs:
+ include:
+  - stage: test
+    script:
+      - ./gradlew connectedObfDebugAndroidTest --stacktrace
 
-script:
-  - ./gradlew build connectedCheck --stacktrace
+  - stage: test
+    script:
+      - ./gradlew connectedOffDebugAndroidTest --stacktrace
+
+  - stage: test
+    script:
+      - ./gradlew connectedOpfDebugAndroidTest --stacktrace
+
+  - stage: test
+    script:
+      - ./gradlew connectedOpffDebugAndroidTest --stacktrace
 
 branches:
   only:
@@ -69,7 +89,7 @@ notifications:
   slack: openfoodfacts:mXLLSlWjBKA9e03ELQ83rNvB
   webhooks: https://www.travisbuddy.com/
 
-sudo: true
+sudo: required
 
 addons:
   artifacts: true
