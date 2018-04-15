@@ -219,7 +219,7 @@
   <string name="permision_write_external_storage">Berechtigung zum Schreiben der SD-Karte ist erforderlich, um den Verlauf exportieren zu können.</string>
   <string name="txt_nutrition_not_found">k.A.</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Calculate Calories</string>
+  <string name="calculate_calories">Kalorien berechnen</string>
   <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Kohlenhydrate</string>
   <string name="nutrition_carbohydrate_short_name">Kohlenhydrate (g)</string>
