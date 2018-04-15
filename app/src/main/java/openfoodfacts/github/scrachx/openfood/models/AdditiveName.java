@@ -129,6 +129,11 @@ public class AdditiveName {
         this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 
+    public Boolean isNull() {
+        return id == null && additiveTag == null && languageCode == null && name == null;
+    }
 
-
+    public Boolean isNotNull() {
+        return id != null && additiveTag != null && languageCode != null && name != null;
+    }
 }

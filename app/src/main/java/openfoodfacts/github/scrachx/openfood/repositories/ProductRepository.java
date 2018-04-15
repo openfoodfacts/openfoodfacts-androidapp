@@ -360,12 +360,16 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      */
     @Override
-    public LabelName getLabelByTagAndLanguageCode(String labelTag, String languageCode) {
-        return labelNameDao.queryBuilder()
-                .where(
-                        LabelNameDao.Properties.LabelTag.eq(labelTag),
-                        LabelNameDao.Properties.LanguageCode.eq(languageCode)
-                ).unique();
+    public Single<LabelName> getLabelByTagAndLanguageCode(String labelTag, String languageCode) {
+        return Single.fromCallable(() -> {
+            LabelName labelName = labelNameDao.queryBuilder()
+                    .where(
+                            LabelNameDao.Properties.LabelTag.eq(labelTag),
+                            LabelNameDao.Properties.LanguageCode.eq(languageCode)
+                    ).unique();
+
+            return labelName != null ? labelName : new LabelName();
+        });
     }
 
     /**
@@ -374,7 +378,7 @@ public class ProductRepository implements IProductRepository {
      * @param labelTag is a unique Id of label
      */
     @Override
-    public LabelName getLabelByTagAndDefaultLanguageCode(String labelTag) {
+    public Single<LabelName> getLabelByTagAndDefaultLanguageCode(String labelTag) {
         return getLabelByTagAndLanguageCode(labelTag, DEFAULT_LANGUAGE);
     }
 
@@ -385,12 +389,16 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      */
     @Override
-    public AdditiveName getAdditiveByTagAndLanguageCode(String additiveTag, String languageCode) {
-        return additiveNameDao.queryBuilder()
-                .where(
-                        AdditiveNameDao.Properties.AdditiveTag.eq(additiveTag),
-                        AdditiveNameDao.Properties.LanguageCode.eq(languageCode)
-                ).unique();
+    public Single<AdditiveName> getAdditiveByTagAndLanguageCode(String additiveTag, String languageCode) {
+        return Single.fromCallable(() -> {
+            AdditiveName additiveName = additiveNameDao.queryBuilder()
+                    .where(
+                            AdditiveNameDao.Properties.AdditiveTag.eq(additiveTag),
+                            AdditiveNameDao.Properties.LanguageCode.eq(languageCode)
+                    ).unique();
+
+            return additiveName != null ? additiveName : new AdditiveName();
+        });
     }
 
     /**
@@ -399,7 +407,7 @@ public class ProductRepository implements IProductRepository {
      * @param additiveTag is a unique Id of additive
      */
     @Override
-    public AdditiveName getAdditiveByTagAndDefaultLanguageCode(String additiveTag) {
+    public Single<AdditiveName> getAdditiveByTagAndDefaultLanguageCode(String additiveTag) {
         return getAdditiveByTagAndLanguageCode(additiveTag, DEFAULT_LANGUAGE);
     }
 
@@ -410,12 +418,16 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      */
     @Override
-    public CountryName getCountryByTagAndLanguageCode(String countryTag, String languageCode) {
-        return countryNameDao.queryBuilder()
-                .where(
-                        CountryNameDao.Properties.CountyTag.eq(countryTag),
-                        CountryNameDao.Properties.LanguageCode.eq(languageCode)
-                ).unique();
+    public Single<CountryName> getCountryByTagAndLanguageCode(String countryTag, String languageCode) {
+        return Single.fromCallable(() -> {
+            CountryName countryName = countryNameDao.queryBuilder()
+                    .where(
+                            CountryNameDao.Properties.CountyTag.eq(countryTag),
+                            CountryNameDao.Properties.LanguageCode.eq(languageCode)
+                    ).unique();
+
+            return countryName != null ? countryName : new CountryName();
+        });
     }
 
     /**
@@ -424,7 +436,7 @@ public class ProductRepository implements IProductRepository {
      * @param countryTag is a unique Id of country
      */
     @Override
-    public CountryName getCountryByTagAndDefaultLanguageCode(String countryTag) {
+    public Single<CountryName> getCountryByTagAndDefaultLanguageCode(String countryTag) {
         return getCountryByTagAndLanguageCode(countryTag, DEFAULT_LANGUAGE);
     }
 
@@ -435,12 +447,16 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      */
     @Override
-    public CategoryName getCategoryByTagAndLanguageCode(String categoryTag, String languageCode) {
-        return categoryNameDao.queryBuilder()
-                .where(
-                        CategoryNameDao.Properties.CategoryTag.eq(categoryTag),
-                        CategoryNameDao.Properties.LanguageCode.eq(languageCode)
-                ).unique();
+    public Single<CategoryName> getCategoryByTagAndLanguageCode(String categoryTag, String languageCode) {
+        return Single.fromCallable(() -> {
+            CategoryName categoryName = categoryNameDao.queryBuilder()
+                    .where(
+                            CategoryNameDao.Properties.CategoryTag.eq(categoryTag),
+                            CategoryNameDao.Properties.LanguageCode.eq(languageCode)
+                    ).unique();
+
+            return categoryName != null ? categoryName : new CategoryName();
+        });
     }
 
     /**
@@ -449,7 +465,7 @@ public class ProductRepository implements IProductRepository {
      * @param categoryTag is a unique Id of category
      */
     @Override
-    public CategoryName getCategoryByTagAndDefaultLanguageCode(String categoryTag) {
+    public Single<CategoryName> getCategoryByTagAndDefaultLanguageCode(String categoryTag) {
         return getCategoryByTagAndLanguageCode(categoryTag, DEFAULT_LANGUAGE);
     }
 
@@ -473,26 +489,28 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      */
     @Override
-    public List<AllergenName> getAllergensByEnabledAndLanguageCode(Boolean isEnabled, String languageCode) {
-        List<Allergen> allergens = allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq(isEnabled)).list();
-        if (allergens != null) {
-            List<AllergenName> allergenNames = new ArrayList<>();
-            for (Allergen allergen : allergens) {
-                AllergenName name = allergenNameDao.queryBuilder()
-                        .where(
-                                AllergenNameDao.Properties.AllergenTag.eq(allergen.getTag()),
-                                AllergenNameDao.Properties.LanguageCode.eq(languageCode)
-                        ).unique();
+    public Single<List<AllergenName>> getAllergensByEnabledAndLanguageCode(Boolean isEnabled, String languageCode) {
+        return Single.fromCallable(() -> {
+            List<Allergen> allergens = allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq(isEnabled)).list();
+            if (allergens != null) {
+                List<AllergenName> allergenNames = new ArrayList<>();
+                for (Allergen allergen : allergens) {
+                    AllergenName name = allergenNameDao.queryBuilder()
+                            .where(
+                                    AllergenNameDao.Properties.AllergenTag.eq(allergen.getTag()),
+                                    AllergenNameDao.Properties.LanguageCode.eq(languageCode)
+                            ).unique();
 
-                if (name != null) {
-                    allergenNames.add(name);
+                    if (name != null) {
+                        allergenNames.add(name);
+                    }
                 }
+
+                return allergenNames;
             }
 
-            return allergenNames;
-        }
-
-        return null;
+            return new ArrayList<>();
+        });
     }
 
     /**
@@ -501,10 +519,11 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      */
     @Override
-    public List<AllergenName> getAllergensByLanguageCode(String languageCode) {
-        return allergenNameDao.queryBuilder()
-                .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
-                .list();
+    public Single<List<AllergenName>> getAllergensByLanguageCode(String languageCode) {
+        return Single.fromCallable(() ->
+                allergenNameDao.queryBuilder()
+                        .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
+                        .list());
     }
 
     /**
