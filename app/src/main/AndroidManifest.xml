@@ -93,7 +93,7 @@
 
 
             android:screenOrientation="portrait">
-            android:screenOrientation="portrait">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.MainActivity" />
@@ -136,6 +136,16 @@
         </service>
         <service android:name=".utils.UploadService" />
         <service android:name=".utils.WifiUploadReceiver$WifiService" />
+
+        <provider
+            android:name=".utils.GenericFileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
 
         <activity android:name=".views.ProductBrowsingListActivity"></activity>
 

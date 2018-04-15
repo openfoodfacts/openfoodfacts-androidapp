@@ -427,8 +427,8 @@
   <string name="sort">Rendezés</string>
   <string name="by_nutrition_grade">Táplálkozási osztályzat</string>
   <string name="sort_by">Rendezés</string>
-  <string name="shake_summary">Shake phone to scan products</string>
-  <string name="shake_title">Scan on Shake</string>
+  <string name="shake_summary">Rázza meg a telefont termékek beolvasásához</string>
+  <string name="shake_title">Beolvasás rázásra</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Vonalkód nélküli fényképeket még nem lehet hozzáadni az alkalmazással. Kérjük, próbálja a mobil webes változattal.</string>
   <string name="no_barcode">Vonalkód nincs felismerve</string>
@@ -436,4 +436,8 @@
   <string name="format_error">Helytelen vonalkód/QR formátum</string>
   <string name="code_detected">Vonalkód felismerve</string>
   <string name="do_you_want_to">Szeretne fényképeket hozzáadni ehhez a vonalkódhoz?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>
