@@ -191,31 +191,7 @@
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
 
-        <TextView
-            android:id="@+id/textBrandProduct"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_tiny"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:layout_marginRight="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:background="@drawable/textview_full"
-            android:padding="@dimen/spacing_small"
-            android:textColorLink="@color/light_blue_A700"
-            android:textIsSelectable="true"
-            android:textSize="@dimen/font_normal" />
-                <TextView
-                    android:id="@+id/textBrandProduct"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:padding="@dimen/spacing_small"
-                    android:textColorLink="@color/light_blue_A700"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/font_normal" />
+
 
                 <TextView
                     android:id="@+id/textCategoryProduct"
@@ -231,45 +207,6 @@
                     android:textSize="@dimen/font_normal" />
 
 
-        <TextView
-            android:id="@+id/textCategoryProduct"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_tiny"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:layout_marginRight="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:background="@drawable/textview_full"
-            android:padding="@dimen/spacing_small"
-            android:textColorLink="@color/light_blue_A700"
-            android:textIsSelectable="true"
-            android:textSize="@dimen/font_normal" />
-                <TextView
-                    android:id="@+id/textCategoryProduct"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:padding="@dimen/spacing_small"
-                    android:textColorLink="@color/light_blue_A700"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/font_normal" />
-
-        <TextView
-            android:id="@+id/textLabelProduct"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_tiny"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:layout_marginRight="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:background="@drawable/textview_full"
-            android:padding="@dimen/spacing_small"
-            android:textColorLink="@color/light_blue_A700"
-            android:textIsSelectable="true"
-            android:textSize="@dimen/font_normal" />
                 <TextView
                     android:id="@+id/textLabelProduct"
                     android:layout_width="fill_parent"
@@ -320,31 +257,6 @@
                     android:textColorLink="@color/light_blue_A700"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
-        <TextView
-            android:id="@+id/textEmbCode"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_tiny"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:layout_marginRight="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:background="@drawable/textview_full"
-            android:padding="@dimen/spacing_small"
-            android:textColorLink="@color/light_blue_A700"
-            android:textIsSelectable="true"
-            android:textSize="@dimen/font_normal" />
-                <TextView
-                    android:id="@+id/textEmbCode"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:padding="@dimen/spacing_small"
-                    android:textColorLink="@color/light_blue_A700"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/font_normal" />
 
                 <TextView
                     android:id="@+id/textManufactureUrl"
@@ -359,19 +271,6 @@
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
 
-        <TextView
-            android:id="@+id/textStoreProduct"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_tiny"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:layout_marginRight="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:background="@drawable/textview_full"
-            android:padding="@dimen/spacing_small"
-            android:textColorLink="@color/light_blue_A700"
-            android:textIsSelectable="true"
-            android:textSize="@dimen/font_normal" />
                 <TextView
                     android:id="@+id/textStoreProduct"
                     android:layout_width="fill_parent"
@@ -385,31 +284,6 @@
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
 
-        <TextView
-            android:id="@+id/textCountryProduct"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_tiny"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:layout_marginRight="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:background="@drawable/textview_full"
-            android:padding="@dimen/spacing_small"
-            android:textColorLink="@color/light_blue_A700"
-            android:textIsSelectable="true"
-            android:textSize="@dimen/font_normal" />
-                <TextView
-                    android:id="@+id/textStoreProduct"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:padding="@dimen/spacing_small"
-                    android:textColorLink="@color/light_blue_A700"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/font_normal" />
 
                 <TextView
                     android:id="@+id/textCountryProduct"
