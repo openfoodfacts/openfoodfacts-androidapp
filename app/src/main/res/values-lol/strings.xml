@@ -436,4 +436,8 @@
   <string name="format_error">crwdns46331:0crwdne46331:0</string>
   <string name="code_detected">crwdns46332:0crwdne46332:0</string>
   <string name="do_you_want_to">crwdns46333:0crwdne46333:0</string>
+  <string name="notify_title">crwdns46799:0crwdne46799:0</string>
+  <string name="notify_content">crwdns46800:0crwdne46800:0</string>
+  <string name="notification_channel_name">crwdns46801:0crwdne46801:0</string>
+  <string name="notify_channel_description">crwdns46802:0crwdne46802:0</string>
 </resources>
