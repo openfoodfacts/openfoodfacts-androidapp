@@ -55,7 +55,6 @@ import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
-import static android.text.TextUtils.isEmpty;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBOHYDRATES;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBO_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.ENERGY;
@@ -157,7 +156,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
         // Energy
         Nutriment energy = nutriments.get(ENERGY);
         if (energy != null) {
-            nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name), getEnergy(energy.getFor100g()), getEnergy(energy
+            nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name), Utils.getEnergy(energy.getFor100g()), Utils.getEnergy(energy
                     .getForServing()), "kcal"));
         }
 
@@ -230,24 +229,6 @@ public class NutritionInfoProductFragment extends BaseFragment {
         }
 
         return items;
-    }
-
-    private String getEnergy(String value) {
-        String defaultValue = "0";
-        if (defaultValue.equals(value) || isEmpty(value)) {
-            return defaultValue;
-        }
-
-        try {
-            int energyKcal = convertKjToKcal(Integer.parseInt(value));
-            return String.valueOf(energyKcal);
-        } catch (NumberFormatException e) {
-            return defaultValue;
-        }
-    }
-
-    private int convertKjToKcal(int kj) {
-        return kj != 0 ? Double.valueOf(((double) kj) / 4.1868d).intValue() : -1;
     }
 
     @OnClick(R.id.imageViewNutrition)
