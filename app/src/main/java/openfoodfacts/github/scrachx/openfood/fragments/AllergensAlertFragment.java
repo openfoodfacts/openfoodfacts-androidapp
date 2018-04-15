@@ -163,7 +163,6 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                         .show();
             }
         }
-
     }
 
     private void updateAllergenDao() {
