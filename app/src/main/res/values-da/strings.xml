@@ -436,4 +436,8 @@
   <string name="format_error">Ugyldig stregkode-/QR-format</string>
   <string name="code_detected">Stregkoden er aflæst</string>
   <string name="do_you_want_to">Vil du føje billeder til denne stregkode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>
