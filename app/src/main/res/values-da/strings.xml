@@ -55,6 +55,8 @@
     <item>Ingredienser</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Produkt</string>
   <string name="fastscroller_track">HurtigRulningsspor</string>
   <string name="fastscroller_handle">HurtigRulningshåndtag</string>
   <string name="search_button">Søg</string>
@@ -109,10 +111,8 @@
   <string name="uploadLater">Billede uploades, når netværket er tilgængeligt</string>
   <string name="txtInfoLoginOk">Bruger gemt</string>
   <string name="txtInfoLoginNo">Bruger ikke gemt</string>
-  <string name="txtDialogsTitle">Information</string>
   <string name="txtDialogsContent">Produktet du har skannet eksisterer ikke i Open Food Facts endnu. Vær venlig at tilføje det.</string>
   <string name="txtDialogsContentPowerMode">Produktet du har skannet eksisterer allerede i Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Vil du gemme det skannede produkt i databasen?</string>
   <string name="txtYes">Ja</string>
   <string name="txtNo">Nej</string>
   <string name="hintNameProduct">Navn</string>
@@ -124,7 +124,10 @@
   <string name="txtTakePicture">Tag billede</string>
   <string name="txtSendAll">Upload alle</string>
   <string name="txtNoData">Ingen data</string>
-  <string name="txtPictureNeeded">Tag venligst et billede først</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Uploader...</string>
   <string name="dataSaved">Gemt lokalt på din enhed</string>
   <string name="txtInfoAddUser">Indtast venligst dit brugernavn og adgangskode</string>
@@ -141,6 +144,7 @@
   <string name="txtBarcodeNotValid">Stregkode er ikke gyldig</string>
   <string name="try_it_scan_now">Skan produkt</string>
   <string name="share">Del</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Kig på dette produkt på Open Food Facts :</string>
   <string name="create_account">Tilmeld dig</string>
   <string name="home_drawer">Hjem</string>
@@ -413,6 +417,9 @@
   <string name="other_tags_text">Øvrige stoffer:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata-data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">Mærke</string>
   <string name="by_barcode">Stregkode</string>
@@ -420,6 +427,8 @@
   <string name="sort">Sortér</string>
   <string name="by_nutrition_grade">Ernæringskvalitet</string>
   <string name="sort_by">Sortér efter</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Billeder uden stregkode kan endnu ikke tilføjes med app\'en. Prøv venligst mobil-webversionen.</string>
   <string name="no_barcode">Iogen stregkode fundet</string>
@@ -427,4 +436,8 @@
   <string name="format_error">Ugyldig stregkode-/QR-format</string>
   <string name="code_detected">Stregkoden er aflæst</string>
   <string name="do_you_want_to">Vil du føje billeder til denne stregkode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>

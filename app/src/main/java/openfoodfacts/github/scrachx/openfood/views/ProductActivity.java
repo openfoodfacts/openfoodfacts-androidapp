@@ -1,12 +1,17 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -49,9 +54,11 @@ import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragmen
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
@@ -83,6 +90,12 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
     private State mState;
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private ShakeDetector mShakeDetector;
+    // boolean to determine if scan on shake feature should be enabled
+    private boolean scanOnShake;
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -116,6 +129,26 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
         if (!Utils.isHardwareCameraInstalled(this)) {
             mButtonScan.setVisibility(View.GONE);
         }
+
+        // Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mShakeDetector = new ShakeDetector();
+
+        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
+        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
+
+
+        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
+            @Override
+            public void onShake(int count) {
+
+                if (scanOnShake) {
+                    Utils.scan(ProductActivity.this);
+                }
+            }
+        });
+
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
@@ -377,5 +410,23 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     @Override
     public void onCustomTabsDisconnected() {
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (scanOnShake) {
+            //unregister the listener
+            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (scanOnShake) {
+            //register the listener
+            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+        }
     }
 }
