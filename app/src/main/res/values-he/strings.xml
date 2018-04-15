@@ -54,6 +54,12 @@
     <item>ס״ל</item>
     <item>אונקיה</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>מ״ג</item>
+    <item>ק״ג</item>
+    <item>ל׳</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>בררת מחדל</item>
@@ -219,6 +225,8 @@
   <string name="permision_write_external_storage">נדרשת הרשאת כתיבה לאחסון חיצוני כדי לייצא היסטוריה.</string>
   <string name="txt_nutrition_not_found">לא זמין</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Calculate Calories</string>
+  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">פחמימות</string>
   <string name="nutrition_carbohydrate_short_name">פחמימות (ג׳)</string>
   <string name="nutrition_cholesterol">כולסטרול</string>
