@@ -67,6 +67,8 @@
     <item>المكونات</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">نتاج</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">بحث</string>
@@ -121,10 +123,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">تم حفظ المستخدم</string>
   <string name="txtInfoLoginNo">لم يتم حفظ المستخدم</string>
-  <string name="txtDialogsTitle">معلومات</string>
   <string name="txtDialogsContent">المنتج الذي تم مسحه غير موجود حتى الآن في الحقائق الغذائية المفتوحة. الرجاء إضافته.</string>
   <string name="txtDialogsContentPowerMode">المنتج الذي تم مسحه موجود بالفعل في \"الحقائق الغذائية المفتوحة\".</string>
-  <string name="txtDialogsContentSend">هل تريد أن ترسل المنتجات المحفوظة في قاعدة البيانات؟</string>
   <string name="txtYes">نعم</string>
   <string name="txtNo">لا</string>
   <string name="hintNameProduct">اﻹسم</string>
@@ -136,7 +136,10 @@
   <string name="txtTakePicture">إلتقاط صورة</string>
   <string name="txtSendAll">رفع الكل</string>
   <string name="txtNoData">لا توجد بيانات</string>
-  <string name="txtPictureNeeded">يرجى أخذ صورة أولاً</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">جاري الإرسال...</string>
   <string name="dataSaved">تم الحفظ محليا على جهازك</string>
   <string name="txtInfoAddUser">الرجاء إدخال اسم المستخدم وكلمة المرور الخاصة بك</string>
@@ -153,6 +156,7 @@
   <string name="txtBarcodeNotValid">الرمز الشريطي غير صحيح.</string>
   <string name="try_it_scan_now">مسح المنتج</string>
   <string name="share">مشاركة</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">انظر لهذا المنتج على \"الحقائق الغذائية المفتوحة\":</string>
   <string name="create_account">تسجيل</string>
   <string name="home_drawer">الصفحة الرئيسية</string>
@@ -425,4 +429,27 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">العلامة التجارية</string>
+  <string name="by_barcode">الرمز الشريطي</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>

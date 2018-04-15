@@ -1,14 +1,23 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -45,9 +54,11 @@ import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragmen
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
@@ -79,7 +90,14 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
     private State mState;
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private ShakeDetector mShakeDetector;
+    // boolean to determine if scan on shake feature should be enabled
+    private boolean scanOnShake;
 
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +129,70 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
         if (!Utils.isHardwareCameraInstalled(this)) {
             mButtonScan.setVisibility(View.GONE);
         }
+
+        // Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mShakeDetector = new ShakeDetector();
+
+        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
+        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
+
+
+        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
+            @Override
+            public void onShake(int count) {
+
+                if (scanOnShake) {
+                    Utils.scan(ProductActivity.this);
+                }
+            }
+        });
+
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+
+            switch (item.getItemId()) {
+//                case R.id.bookmark:
+//                     Implementation of bookmark will be here
+//                    Toast.makeText(ProductActivity.this,"Bookmark",Toast.LENGTH_SHORT).show();
+//                    break;
+                case R.id.share:
+                    String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
+                    Intent sharingIntent = new Intent();
+                    sharingIntent.setAction(Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
+                    String shareSub = "\n\n";
+                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                    startActivity(Intent.createChooser(sharingIntent, "Share using"));
+                    break;
+//                case R.id.translation:
+//                     Implementation of Translation will be here
+//                    Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
+//                    break;
+                case R.id.find_product:
+                    String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
+                    if (mState.getProduct().getUrl() != null) {
+                        url = " " + mState.getProduct().getUrl();
+                    }
+
+                    CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), null);
+
+                    CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
+                    break;
+                case R.id.empty:
+                    break;
+                default:
+                    return true;
+
+            }
+            return true;
+        });
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams)bottomNavigationView.getLayoutParams();
+        layoutParams.setBehavior(new BottomNavigationBehavior());
     }
 
     public void expand() {
@@ -156,6 +238,20 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
         viewPager.setAdapter(adapterResult);
     }
 
+    /**
+     * This method is used to hide share_item and edit_product in App Bar
+     *
+     */
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem share_item = menu.findItem(R.id.menu_item_share);
+        share_item.setVisible(false);
+        MenuItem edit_product = menu.findItem(R.id.action_edit_product);
+        edit_product.setVisible(false);
+        return true;
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -164,28 +260,6 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 //                NavUtils.navigateUpFromSameTask(this);
                 finish();
                 return true;
-
-            case R.id.menu_item_share:
-                String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
-                Intent sharingIntent = new Intent();
-                sharingIntent.setAction(Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
-                String shareSub = "\n\n";
-                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                return true;
-
-            case R.id.action_edit_product:
-                String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
-                if (mState.getProduct().getUrl() != null) {
-                    url = " " + mState.getProduct().getUrl();
-                }
-
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), null);
-
-                CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -336,5 +410,23 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     @Override
     public void onCustomTabsDisconnected() {
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (scanOnShake) {
+            //unregister the listener
+            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (scanOnShake) {
+            //register the listener
+            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+        }
     }
 }

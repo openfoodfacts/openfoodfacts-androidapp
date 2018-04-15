@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
 import org.greenrobot.greendao.AbstractDao;
+import org.greenrobot.greendao.database.Database;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,7 @@ public class ProductRepository implements IProductRepository {
     private ProductApiService productApi;
     private OpenFoodAPIService openFooApi;
 
+    private Database db;
     private LabelDao labelDao;
     private LabelNameDao labelNameDao;
     private TagDao tagDao;
@@ -78,6 +80,7 @@ public class ProductRepository implements IProductRepository {
         openFooApi = CommonApiManager.getInstance().getOpenFoodApiService();
 
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        db = daoSession.getDatabase();
         labelDao = daoSession.getLabelDao();
         labelNameDao = daoSession.getLabelNameDao();
         tagDao = daoSession.getTagDao();
@@ -209,11 +212,20 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public void saveLabels(List<Label> labels) {
-        for (Label label : labels) {
-            labelDao.insertOrReplaceInTx(label);
-            for (LabelName labelName : label.getNames()) {
-                labelNameDao.insertOrReplace(labelName);
+        db.beginTransaction();
+        try {
+            for (Label label : labels) {
+                labelDao.insertOrReplace(label);
+                for (LabelName labelName : label.getNames()) {
+                    labelNameDao.insertOrReplace(labelName);
+                }
             }
+
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
         }
     }
 
@@ -233,11 +245,20 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public void saveAllergens(List<Allergen> allergens) {
-        for (Allergen allergen : allergens) {
-            allergenDao.insertOrReplaceInTx(allergen);
-            for (AllergenName allergenName : allergen.getNames()) {
-                allergenNameDao.insertOrReplace(allergenName);
+        db.beginTransaction();
+        try {
+            for (Allergen allergen : allergens) {
+                allergenDao.insertOrReplace(allergen);
+                for (AllergenName allergenName : allergen.getNames()) {
+                    allergenNameDao.insertOrReplace(allergenName);
+                }
             }
+
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
         }
     }
 
@@ -248,11 +269,20 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public void saveAdditives(List<Additive> additives) {
-        for (Additive additive : additives) {
-            additiveDao.insertOrReplaceInTx(additive);
-            for (AdditiveName additiveName : additive.getNames()) {
-                additiveNameDao.insertOrReplace(additiveName);
+        db.beginTransaction();
+        try {
+            for (Additive additive : additives) {
+                additiveDao.insertOrReplace(additive);
+                for (AdditiveName allergenName : additive.getNames()) {
+                    additiveNameDao.insertOrReplace(allergenName);
+                }
             }
+
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
         }
     }
 
@@ -263,11 +293,20 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public void saveCountries(List<Country> countries) {
-        for (Country country : countries) {
-            countryDao.insertOrReplaceInTx(country);
-            for (CountryName countryName : country.getNames()) {
-                countryNameDao.insertOrReplace(countryName);
+        db.beginTransaction();
+        try {
+            for (Country country : countries) {
+                countryDao.insertOrReplace(country);
+                for (CountryName countryName : country.getNames()) {
+                    countryNameDao.insertOrReplace(countryName);
+                }
             }
+
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
         }
     }
 
@@ -278,11 +317,20 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public void saveCategories(List<Category> categories) {
-        for (Category category : categories) {
-            categoryDao.insertOrReplaceInTx(category);
-            for (CategoryName categoryName : category.getNames()) {
-                categoryNameDao.insertOrReplace(categoryName);
+        db.beginTransaction();
+        try {
+            for (Category category : categories) {
+                categoryDao.insertOrReplace(category);
+                for (CategoryName categoryName : category.getNames()) {
+                    categoryNameDao.insertOrReplace(categoryName);
+                }
             }
+
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
         }
     }
 

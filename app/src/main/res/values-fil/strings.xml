@@ -55,6 +55,8 @@
     <item>Mga sangkap</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Produkto</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Hanapin</string>
@@ -109,10 +111,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Na-save ang user</string>
   <string name="txtInfoLoginNo">Hindi nai-save ang user</string>
-  <string name="txtDialogsTitle">Impormasyon</string>
   <string name="txtDialogsContent">Ang produkto na hinahanap mo ay wala pa sa Open Food Facts. Mangyaring idagdag ang mga ito.</string>
   <string name="txtDialogsContentPowerMode">Ang produkto na iyong na-scan ay nasa Open Food Facts na.</string>
-  <string name="txtDialogsContentSend">Nais mo bang ipadala ang mga naka-save na produkto sa database?</string>
   <string name="txtYes">Oo</string>
   <string name="txtNo">Hindi</string>
   <string name="hintNameProduct">Pangalan</string>
@@ -124,7 +124,10 @@
   <string name="txtTakePicture">Kumuha ng larawan</string>
   <string name="txtSendAll">Mag-upload ng lahat</string>
   <string name="txtNoData">Walang data</string>
-  <string name="txtPictureNeeded">Mangyaring kumuha muna ng litrato</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Nag-uupload...</string>
   <string name="dataSaved">Nai-save na sa iyong device</string>
   <string name="txtInfoAddUser">Mangyaring ilagay ang iyong login at password</string>
@@ -141,6 +144,7 @@
   <string name="txtBarcodeNotValid">Hindi wasto ang barcode</string>
   <string name="try_it_scan_now">I-scan ang produkto</string>
   <string name="share">Ibahagi</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Tingnan ang produktong ito sa Open Food Facts :</string>
   <string name="create_account">Mag Sign-up</string>
   <string name="home_drawer">Home</string>
@@ -413,4 +417,27 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Mga Tatak</string>
+  <string name="by_barcode">Barcode</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>

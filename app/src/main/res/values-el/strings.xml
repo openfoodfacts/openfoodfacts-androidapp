@@ -55,6 +55,8 @@
     <item>Συστατικά</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Προϊόν</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Αναζήτηση</string>
@@ -109,10 +111,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">User saved</string>
   <string name="txtInfoLoginNo">Ο χρήστης δεν είναι αποθηκευμένος</string>
-  <string name="txtDialogsTitle">Πληροφορίες</string>
   <string name="txtDialogsContent">Το προϊόν που σαρώσατε δεν υπάρχει ακόμα στο Open Food Facts. Παρακαλούμε προσθέστε το.</string>
   <string name="txtDialogsContentPowerMode">Το προϊόν που σαρώσατε υπάρχει ήδη στο Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Θέλετε να στείλετε τα αποθηκευμένα προϊόντα στη βάση δεδομένων;</string>
   <string name="txtYes">Ναι</string>
   <string name="txtNo">Όχι</string>
   <string name="hintNameProduct">Όνομα</string>
@@ -124,7 +124,10 @@
   <string name="txtTakePicture">Τραβήξτε φωτογραφία</string>
   <string name="txtSendAll">Μεταφορτώστε όλα</string>
   <string name="txtNoData">Δεν υπάρχουν δεδομένα</string>
-  <string name="txtPictureNeeded">Παρακαλούμε τραβήξτε πρώτα μια φωτογραφία</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Μεταφόρτωση...</string>
   <string name="dataSaved">Αποθηκεύτηκε τοπικά στη συσκευή σας</string>
   <string name="txtInfoAddUser">Παρακαλούμε εισάγετε το όνομα χρήστη και κωδικό πρόσβασης</string>
@@ -141,6 +144,7 @@
   <string name="txtBarcodeNotValid">Barcode δεν είναι έγκυρο</string>
   <string name="try_it_scan_now">Σάρωση προϊόντος</string>
   <string name="share">Κοινοποίηση</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Κοιτάξτε αυτό το προϊόν στο Open Food Facts:</string>
   <string name="create_account">Εγγραφείτε</string>
   <string name="home_drawer">Αρχική</string>
@@ -413,4 +417,27 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Μάρκα</string>
+  <string name="by_barcode">Barcode</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>

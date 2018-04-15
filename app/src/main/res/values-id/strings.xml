@@ -52,6 +52,8 @@
     <item>bahan</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Produk</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">mencari </string>
@@ -106,10 +108,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">pengguna menyimpan</string>
   <string name="txtInfoLoginNo">pengguna tidak bisa menyimpan</string>
-  <string name="txtDialogsTitle">informasi</string>
   <string name="txtDialogsContent">produk anda scan belum ada pada daftar open food facts . mohon anda menambahkannya </string>
   <string name="txtDialogsContentPowerMode">Produk yang Anda pindai sudah ada dalam daftar open foof facts</string>
-  <string name="txtDialogsContentSend">apakah kamu mengirim produk untuk disimpan di database?</string>
   <string name="txtYes">iya nih</string>
   <string name="txtNo">enggak</string>
   <string name="hintNameProduct">nama</string>
@@ -122,7 +122,10 @@
   <string name="txtTakePicture">mengambil gambar</string>
   <string name="txtSendAll">mengirimkan semua</string>
   <string name="txtNoData">tidak ada data anda</string>
-  <string name="txtPictureNeeded">mohon ambil gambar</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">mengirim </string>
   <string name="dataSaved">simpan lokasi di perangkat</string>
   <string name="txtInfoAddUser">mohon masukan  kata sandi kamu </string>
@@ -139,6 +142,7 @@
   <string name="txtBarcodeNotValid">kode batang tidak berfungsi</string>
   <string name="try_it_scan_now">memindai produk</string>
   <string name="share">membagikan</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Lihatlah produk ini pada Open Food Facts:</string>
   <string name="create_account">memasuki akun</string>
   <string name="home_drawer">rumah</string>
@@ -411,4 +415,27 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">merek barang</string>
+  <string name="by_barcode">kode batang</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>

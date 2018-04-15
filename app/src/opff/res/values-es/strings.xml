@@ -17,7 +17,17 @@
   <string name="slide_2_title">Get the facts</string>
   <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
   <string name="slide_3_title">Keep track of the product you use</string>
-  <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
+  <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
   <string name="slide_4_title">Works offline</string>
   <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
+  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
+  <string name="msg_share">Mira este producto en Open Food Facts :</string>
+  <string name="not_support_books">Los libros no están actualmente soportados por Open Food Facts</string>
+  <string name="txt_broaden_search">- ampliando tu búsqueda \n- escanea y añádelo a Open Food Facts</string>
+  <string name="Donation">Haz click aquí para donar a Open Food Facts</string>
+  <string name="translate_help_title">Ayuda a traducir Open Food Facts</string>
+  <string name="translate_help_summary">Lleva la base de datos de Open Food Facts a tu idioma - no se requiere conocimiento técnico</string>
+  <string name="text_offline_info_dialog">Puedes escanear productos cuando estas desconectado para agregarlos a Open Food Facts después. Todos los productos que escanees aparecerán aquí, y vas a ser capaz de enviarlos con el botón de abajo.</string>
+  <string name="warning_alert_data">Tu información sobre alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
 </resources>

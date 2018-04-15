@@ -1,16 +1,19 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.CircularProgressDrawable;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -137,7 +140,13 @@ public class OpenFoodAPIClient {
                             .negativeText(R.string.txtNo)
                             .onPositive((dialog, which) -> {
                                 Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                intent.putExtra("barcode", barcode);
+                                State st = new State();
+                                Product pd = new Product();
+                                pd.setCode(barcode);
+                                st.setProduct(pd);
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("state", st);
+                                intent.putExtras(bundle);
                                 activity.startActivity(intent);
                                 activity.finish();
                             })
@@ -162,7 +171,13 @@ public class OpenFoodAPIClient {
                         .negativeText(R.string.txtNo)
                         .onPositive((dialog, which) -> {
                             Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                            intent.putExtra("barcode", barcode);
+                            State st = new State();
+                            Product pd = new Product();
+                            pd.setCode(barcode);
+                            st.setProduct(pd);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("state", st);
+                            intent.putExtras(bundle);
                             activity.startActivity(intent);
                             activity.finish();
                         })
@@ -196,7 +211,13 @@ public class OpenFoodAPIClient {
                             .negativeText(R.string.txtNo)
                             .onPositive((dialog, which) -> {
                                 Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                intent.putExtra("barcode", barcode);
+                                State st = new State();
+                                Product pd = new Product();
+                                pd.setCode(barcode);
+                                st.setProduct(pd);
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("state", st);
+                                intent.putExtras(bundle);
                                 activity.startActivity(intent);
                                 activity.finish();
                             })
@@ -262,7 +283,13 @@ public class OpenFoodAPIClient {
                         .negativeText(R.string.txtNo)
                         .onPositive((dialog, which) -> {
                                     Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                    intent.putExtra("barcode", barcode);
+                                    State st = new State();
+                                    Product pd = new Product();
+                                    pd.setCode(barcode);
+                                    st.setProduct(pd);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putSerializable("state", st);
+                                    intent.putExtras(bundle);
                                     activity.startActivity(intent);
                                     activity.finish();
                                 }
@@ -300,6 +327,33 @@ public class OpenFoodAPIClient {
     }
 
 
+    public void onResponseCallForPostFunction(Call<State> call, Response<State> response, Activity activity, final OnProductSentCallback productSentCallback, SendProduct product) {
+        if (!response.isSuccessful() || response.body().getStatus() == 0) {
+
+            productSentCallback.onProductSentResponse(false);
+            return;
+        }
+
+        String imguploadFront = product.getImgupload_front();
+        if (StringUtils.isNotEmpty(imguploadFront)) {
+            ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
+            postImg(activity, image);
+        }
+
+        String imguploadIngredients = product.getImgupload_ingredients();
+        if (StringUtils.isNotEmpty(imguploadIngredients)) {
+            postImg(activity, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)));
+        }
+
+        String imguploadNutrition = product.getImgupload_nutrition();
+        if (StringUtils.isNotBlank(imguploadNutrition)) {
+            postImg(activity, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)));
+        }
+
+
+        productSentCallback.onProductSentResponse(true);
+    }
+
 
     /**
      * @return This api service gets products of provided brand.
@@ -308,57 +362,117 @@ public class OpenFoodAPIClient {
         return apiService;
     }
 
-    public void post(final Activity activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
-        final LoadToast lt = new LoadToast(activity);
-        lt.setText(activity.getString(R.string.toastSending));
-        lt.setBackgroundColor(activity.getResources().getColor(R.color.blue));
-        lt.setTextColor(activity.getResources().getColor(R.color.white));
-        lt.show();
+    public void getBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
 
-        apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product
-                .getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+        apiService.getProductByBrands(brand, page).enqueue(new Callback<Search>() {
             @Override
-            public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
-                if (!response.isSuccessful() || response.body().getStatus() == 0) {
-                    lt.error();
-                    productSentCallback.onProductSentResponse(false);
-                    return;
-                }
-
-                String imguploadFront = product.getImgupload_front();
-                if (StringUtils.isNotEmpty(imguploadFront)) {
-                    ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
-                    postImg(activity, image);
-                }
-
-                String imguploadIngredients = product.getImgupload_ingredients();
-                if (StringUtils.isNotEmpty(imguploadIngredients)) {
-                    postImg(activity, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)));
-                }
-
-                String imguploadNutrition = product.getImgupload_nutrition();
-                if (StringUtils.isNotBlank(imguploadNutrition)) {
-                    postImg(activity, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)));
-                }
-
-                lt.success();
-                productSentCallback.onProductSentResponse(true);
+            public void onResponse(Call<Search> call, Response<Search> response) {
+                onBrandCallback.onBrandResponse(true, response.body());
             }
 
             @Override
-            public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
-                lt.error();
-                productSentCallback.onProductSentResponse(false);
+            public void onFailure(Call<Search> call, Throwable t) {
+                onBrandCallback.onBrandResponse(false, null);
             }
         });
+
+
+    }
+
+    /**
+     * This method is used to upload products.
+     * Conditional statements in this method ensures that data which is being sent on server is correct
+     * and if the product is already present with more information then the server doesn't assume to delete that
+     * and write new product's data over that.
+     */
+    public void post(final Activity activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
+
+        ProgressDialog dialog = new ProgressDialog(activity, ProgressDialog.STYLE_SPINNER);
+        dialog.setIndeterminate(true);
+        dialog.setMessage(activity.getString(R.string.toastSending));
+        dialog.show();
+
+        if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity() == null) {
+            apiService.saveProductWithoutNameBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+                @Override
+                public void onResponse(Call<State> call, Response<State> response) {
+                    onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
+                    dialog.dismiss();
+                }
+
+                @Override
+                public void onFailure(Call<State> call, Throwable t) {
+
+                    productSentCallback.onProductSentResponse(false);
+                    dialog.dismiss();
+                }
+            });
+        } else if (product.getName().equals("") && product.getBrands().equals("")) {
+            apiService.saveProductWithoutNameAndBrands(product.getBarcode(), product.getLang(), product.getQuantity(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+                @Override
+                public void onResponse(Call<State> call, Response<State> response) {
+                    onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
+                    dialog.dismiss();
+                }
+
+                @Override
+                public void onFailure(Call<State> call, Throwable t) {
+
+                    productSentCallback.onProductSentResponse(false);
+                    dialog.dismiss();
+                }
+            });
+        } else if (product.getName().equals("") && product.getQuantity() == null) {
+            apiService.saveProductWithoutNameAndQuantity(product.getBarcode(), product.getLang(), product.getBrands(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+                @Override
+                public void onResponse(Call<State> call, Response<State> response) {
+                    onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
+                    dialog.dismiss();
+                }
+
+                @Override
+                public void onFailure(Call<State> call, Throwable t) {
+
+                    productSentCallback.onProductSentResponse(false);
+                    dialog.dismiss();
+                }
+            });
+        } else if (product.getBrands().equals("") && product.getQuantity() == null) {
+            apiService.saveProductWithoutBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getName(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+                @Override
+                public void onResponse(Call<State> call, Response<State> response) {
+                    onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
+                    dialog.dismiss();
+                }
+
+                @Override
+                public void onFailure(Call<State> call, Throwable t) {
+
+                    productSentCallback.onProductSentResponse(false);
+                    dialog.dismiss();
+                }
+            });
+        } else {
+            apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product
+                    .getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+                @Override
+                public void onResponse(Call<State> call, Response<State> response) {
+                    onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
+                    dialog.dismiss();
+                }
+
+                @Override
+                public void onFailure(Call<State> call, Throwable t) {
+
+                    productSentCallback.onProductSentResponse(false);
+                    dialog.dismiss();
+                }
+            });
+        }
+
     }
 
     public void postImg(final Context context, final ProductImage image) {
-        final LoadToast lt = new LoadToast(context);
-        lt.setText(context.getString(R.string.toastSending));
-        lt.setBackgroundColor(context.getResources().getColor(R.color.blue));
-        lt.setTextColor(context.getResources().getColor(R.color.white));
-        lt.show();
 
         apiService.saveImage(getUploadableMap(image, context))
                 .enqueue(new Callback<JsonNode>() {
@@ -369,19 +483,19 @@ public class OpenFoodAPIClient {
                             ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                             mToUploadProductDao.insertOrReplace(product);
                             Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
-                            lt.error();
+
                             return;
                         }
 
                         JsonNode body = response.body();
                         Log.d("onResponse", body.toString());
                         if (!body.isObject()) {
-                            lt.error();
+
                         } else if (body.get("status").asText().contains("status not ok")) {
                             Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
-                            lt.error();
+
                         } else {
-                            lt.success();
+
                         }
                     }
 
@@ -391,7 +505,7 @@ public class OpenFoodAPIClient {
                         ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                         mToUploadProductDao.insertOrReplace(product);
                         Toast.makeText(context, context.getString(R.string.uploadLater), Toast.LENGTH_LONG).show();
-                        lt.error();
+
                     }
                 });
     }
