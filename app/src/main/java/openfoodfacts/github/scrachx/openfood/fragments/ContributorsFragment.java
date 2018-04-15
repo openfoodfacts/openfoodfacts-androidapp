@@ -9,7 +9,10 @@ import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -49,6 +52,12 @@ public class ContributorsFragment extends BaseFragment {
     TextView otherEditorsText;
     @BindView(R.id.states)
     TextView statesText;
+    @BindView(R.id.contribute_image_front)
+    ImageView imgFront;
+    @BindView(R.id.contribute_image_ingredients)
+    ImageView imgIngredients;
+    @BindView(R.id.contribute_image_nutrients)
+    ImageView imgNutrients;
 
 
     @Override
@@ -110,6 +119,18 @@ public class ContributorsFragment extends BaseFragment {
                 statesText.append(getStatesTag(product.getStatesTags().get(i).split(":")[1]));
                 statesText.append("\n ");
             }
+        }
+
+        if (isNotBlank(product.getImageFrontUrl())) {
+            Picasso.with(getContext()).load(product.getImageFrontUrl()).into(imgFront);
+        }
+
+        if (isNotBlank(product.getImageIngredientsUrl())) {
+            Picasso.with(getContext()).load(product.getImageIngredientsUrl()).into(imgIngredients);
+        }
+
+        if (isNotBlank(product.getImageNutritionUrl())) {
+            Picasso.with(getContext()).load(product.getImageNutritionUrl()).into(imgNutrients);
         }
 
     }
