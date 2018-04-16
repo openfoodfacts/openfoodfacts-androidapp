@@ -446,6 +446,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 ());
         if (settings.getBoolean("startScan", false)) {
             Intent cameraIntent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+            cameraIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(cameraIntent);
         }
 
@@ -502,6 +503,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             }
         } else {
             Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
     }
@@ -643,6 +645,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 if (grantResults.length > 0 && grantResults[0] == PackageManager
                         .PERMISSION_GRANTED) {
                     Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
             }

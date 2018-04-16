@@ -156,7 +156,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         }
     }
 
-
     public void exportCSV() {
         boolean isDownload = false;
         String folder_main = " ";
@@ -246,7 +245,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         menu.findItem(R.id.action_export_all_history)
                 .setVisible(!emptyHistory);
-
         menu.findItem(R.id.action_remove_all_history)
                 .setVisible(!emptyHistory);
 
@@ -452,6 +450,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                 }
             } else {
                 Intent intent = new Intent(HistoryScanActivity.this, ScannerFragmentActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         }

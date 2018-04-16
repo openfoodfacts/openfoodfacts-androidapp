@@ -13,14 +13,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.os.Environment;
 import android.provider.Settings;
 import android.support.annotation.DrawableRes;
@@ -69,7 +66,6 @@ import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
-import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
@@ -533,11 +529,35 @@ public class Utils {
     }
 
     /**
+     * convert energy from kj to kcal for a product.
+     *
+     * @param value of energy in kj.
+     * @return energy in kcal.
+     */
+    public static String getEnergy(String value) {
+        String defaultValue = "0";
+        if (defaultValue.equals(value) || isEmpty(value)) {
+            return defaultValue;
+        }
+
+        try {
+            int energyKcal = convertKjToKcal(Integer.parseInt(value));
+            return String.valueOf(energyKcal);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
+    }
+
+    private static int convertKjToKcal(int kj) {
+        return kj != 0 ? Double.valueOf(((double) kj) / 4.1868d).intValue() : -1;
+    }
+
+   /**
      * Function which returns true if the battery level is low
      *
      * @param context
      * @return true if battery is low or false if battery in not low
-     */
+      */
     public static boolean getBatteryLevel(Context context) {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
