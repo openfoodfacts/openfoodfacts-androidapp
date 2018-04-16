@@ -9,14 +9,14 @@ So we set up to create not 1, but other 77000 separate new databases !
 
 Open Products Facts will be an extremely ambitious project. Here are a few of them: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - מסד הנתונים הגדול ביותר לעפרונות צביעה
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - מסד הנתונים הגדול ביותר למוצרי מזון מזעריים
 
 Open ??? Facts - The largest open database of ???
 
-Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+מחר, אנו נבחר את 3 מסדי הנתונים המצליחים ביותר ונתחיל לאסוף את כל המוצרים התואמים מכל רחבי העולם.
 
-Will it be trash cans, télécartes, or mobile phones database ? 
+האם יהיה זה מסד נתונים של פחי זבל, כרטיסי חיוג או טלפונים סלולריים? 
 
 So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
