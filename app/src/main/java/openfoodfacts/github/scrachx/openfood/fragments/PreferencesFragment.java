@@ -92,7 +92,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Configuration configuration = activity.getResources().getConfiguration();
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-
                 configuration.setLocale(LocaleHelper.getLocale((String) locale));
                 new GetAdditives().execute();
             }
