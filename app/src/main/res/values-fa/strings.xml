@@ -111,10 +111,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">کاربر ذخیره شد</string>
   <string name="txtInfoLoginNo">کاربر ذخیره نشد</string>
-  <string name="txtDialogsTitle">اطلاعات</string>
   <string name="txtDialogsContent">محصولی که اسکن کرده اید هنوز در پایگاه داده ما وجود ندارد. لطفاً آن را اضافه کنید.</string>
   <string name="txtDialogsContentPowerMode">محصولی که اسکن کردید در Open Food Facts موجود است.</string>
-  <string name="txtDialogsContentSend">آیا میخواهید محصولات ذخیره شده را به پایگاه داده بفرستید؟</string>
   <string name="txtYes">بلی</string>
   <string name="txtNo">خير</string>
   <string name="hintNameProduct">نام</string>
@@ -429,6 +427,8 @@
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
@@ -436,4 +436,8 @@
   <string name="format_error">Wrong Barcode/QR format</string>
   <string name="code_detected">We have detected the barcode</string>
   <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>

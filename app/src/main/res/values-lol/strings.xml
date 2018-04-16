@@ -111,10 +111,8 @@
   <string name="uploadLater">crwdns37175:0crwdne37175:0</string>
   <string name="txtInfoLoginOk">crwdns35092:0crwdne35092:0</string>
   <string name="txtInfoLoginNo">crwdns35093:0crwdne35093:0</string>
-  <string name="txtDialogsTitle">crwdns35094:0crwdne35094:0</string>
   <string name="txtDialogsContent">crwdns35095:0crwdne35095:0</string>
   <string name="txtDialogsContentPowerMode">crwdns35096:0crwdne35096:0</string>
-  <string name="txtDialogsContentSend">crwdns35097:0crwdne35097:0</string>
   <string name="txtYes">crwdns35098:0crwdne35098:0</string>
   <string name="txtNo">crwdns35099:0crwdne35099:0</string>
   <string name="hintNameProduct">crwdns35100:0crwdne35100:0</string>
@@ -429,6 +427,8 @@
   <string name="sort">crwdns46301:0crwdne46301:0</string>
   <string name="by_nutrition_grade">crwdns46302:0crwdne46302:0</string>
   <string name="sort_by">crwdns46303:0crwdne46303:0</string>
+  <string name="shake_summary">crwdns46687:0crwdne46687:0</string>
+  <string name="shake_title">crwdns46688:0crwdne46688:0</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">crwdns46328:0crwdne46328:0</string>
   <string name="no_barcode">crwdns46329:0crwdne46329:0</string>
@@ -436,4 +436,8 @@
   <string name="format_error">crwdns46331:0crwdne46331:0</string>
   <string name="code_detected">crwdns46332:0crwdne46332:0</string>
   <string name="do_you_want_to">crwdns46333:0crwdne46333:0</string>
+  <string name="notify_title">crwdns46799:0crwdne46799:0</string>
+  <string name="notify_content">crwdns46800:0crwdne46800:0</string>
+  <string name="notification_channel_name">crwdns46801:0crwdne46801:0</string>
+  <string name="notify_channel_description">crwdns46802:0crwdne46802:0</string>
 </resources>

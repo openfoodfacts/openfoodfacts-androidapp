@@ -51,6 +51,13 @@
         <item>fl oz</item>
     </string-array>
 
+    <!-- weight units -->
+    <string-array name="weights_array">
+        <item>g</item>
+        <item>mg</item>
+        <item>kg</item>
+    </string-array>
+
     <!-- Text units -->
     <string-array name="languages_array" translatable="false">
         <item>aa</item>
@@ -190,10 +197,8 @@
     <string name="uploadLater">Image will be uploaded when network is available</string>
     <string name="txtInfoLoginOk">User saved</string>
     <string name="txtInfoLoginNo">User not saved</string>
-    <string name="txtDialogsTitle">Information</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
-    <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
     <string name="txtYes">Yes</string>
     <string name="txtNo">No</string>
     <string name="hintNameProduct">Name</string>
@@ -298,6 +303,8 @@
     <string name="txt_nutrition_not_found">N/A</string>
 
     <!-- Nutrition info tab -->
+    <string name="calculate_calories">Calculate Calories</string>
+    <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Carbohydrate</string>
     <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
@@ -498,7 +505,7 @@
     <string name="choose_resolution">Choose Resolution</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
     <string name="image_upload_resolution">Image Upload Resolution</string>
-    
+
     <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
     <string name="wikidata_information">Going further</string>
     <string name="description">Description: </string>
@@ -542,6 +549,8 @@
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
     <string name="sort_by">Sort By</string>
+    <string name="shake_summary">Shake phone to scan products</string>
+    <string name="shake_title">Scan on Shake</string>
 
 
     <!-- strings related to share images -->
@@ -551,6 +560,10 @@
     <string name="format_error">Wrong Barcode/QR format</string>
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+    <string name="notify_title">Export complete</string>
+    <string name="notify_content">Click to view exported products</string>
+    <string name="notification_channel_name">Export Notifications</string>
+    <string name="notify_channel_description">Notification to show exported file\'s location</string>
 
     <string name="prepared_text">Prepared</string>
 

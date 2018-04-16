@@ -4,11 +4,13 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -52,7 +54,6 @@ import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
-import static android.text.TextUtils.isEmpty;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBOHYDRATES;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBO_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.ENERGY;
@@ -232,24 +233,6 @@ public class NutritionInfoProductFragment extends BaseFragment {
         return items;
     }
 
-    private String getEnergy(String value) {
-        String defaultValue = "0";
-        if (defaultValue.equals(value) || isEmpty(value)) {
-            return defaultValue;
-        }
-
-        try {
-            int energyKcal = convertKjToKcal(Integer.parseInt(value));
-            return String.valueOf(energyKcal);
-        } catch (NumberFormatException e) {
-            return defaultValue;
-        }
-    }
-
-    private int convertKjToKcal(int kj) {
-        return kj != 0 ? Double.valueOf(((double) kj) / 4.1868d).intValue() : -1;
-    }
-
     @OnClick(R.id.imageViewNutrition)
     public void openFullScreen(View v) {
         if (mUrlImage != null) {
@@ -257,7 +240,14 @@ public class NutritionInfoProductFragment extends BaseFragment {
             Bundle bundle = new Bundle();
             bundle.putString("imageurl", mUrlImage);
             intent.putExtras(bundle);
-            startActivity(intent);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(getActivity(), (View) mImageNutrition,
+                                getActivity().getString(R.string.product_transition));
+                startActivity(intent, options.toBundle());
+            } else {
+                startActivity(intent);
+            }
         } else {
             // take a picture
             if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {

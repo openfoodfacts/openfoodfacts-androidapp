@@ -111,10 +111,8 @@
   <string name="uploadLater">Die Grafik wird hochgeladen, wenn das Netzwerk wieder verfügbar ist</string>
   <string name="txtInfoLoginOk">Benutzer gespeichert</string>
   <string name="txtInfoLoginNo">Benutzer nicht gespeichert</string>
-  <string name="txtDialogsTitle">Informationen</string>
   <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in Open Food Facts. Bitte fügen Sie es hinzu.</string>
   <string name="txtDialogsContentPowerMode">Das eingelesene Produkt befindet sich bereits in Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Möchten Sie die gespeicherten Produkte an die Datenbank senden?</string>
   <string name="txtYes">Ja</string>
   <string name="txtNo">Nein</string>
   <string name="hintNameProduct">Name</string>
@@ -429,6 +427,8 @@
   <string name="sort">Sortieren</string>
   <string name="by_nutrition_grade">Nährwertangaben</string>
   <string name="sort_by">Sortieren nach</string>
+  <string name="shake_summary">Telefons schütteln, um Produkte einzulesen</string>
+  <string name="shake_title">Einlesen durch Schütteln</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Fotos ohne Strichcode können noch nicht mit der App hinzugefügt werden. Bitte probieren Sie die mobile Web-Version aus.</string>
   <string name="no_barcode">Es konnte kein Barcode gefunden werden.</string>
@@ -436,4 +436,8 @@
   <string name="format_error">Fehlerhafte(r/s) Strichcode-/QR-Format</string>
   <string name="code_detected">Strichcode erkannt</string>
   <string name="do_you_want_to">Möchten Sie Fotos zu diesem Strichcode hinzufügen?</string>
+  <string name="notify_title">Exportieren abgeschlossen</string>
+  <string name="notify_content">Hier klicken, um die exportierten Produkte anzuzeigen</string>
+  <string name="notification_channel_name">Benachrichtigungen exportieren</string>
+  <string name="notify_channel_description">Benachrichtigung, um den Speicherort der exportierten Dateien anzuzeigen</string>
 </resources>

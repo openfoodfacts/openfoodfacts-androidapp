@@ -108,10 +108,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">用户已保存</string>
   <string name="txtInfoLoginNo">用户没有保存</string>
-  <string name="txtDialogsTitle">信息</string>
   <string name="txtDialogsContent">您扫描的产品尚未在公开食物中，请添加它</string>
   <string name="txtDialogsContentPowerMode">您所扫描的产品一经在公开的食物中</string>
-  <string name="txtDialogsContentSend">你想把保存的产品发送到数据库中吗？</string>
   <string name="txtYes">是的</string>
   <string name="txtNo">不</string>
   <string name="hintNameProduct">名称</string>
@@ -426,6 +424,8 @@
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
@@ -433,4 +433,8 @@
   <string name="format_error">Wrong Barcode/QR format</string>
   <string name="code_detected">We have detected the barcode</string>
   <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>

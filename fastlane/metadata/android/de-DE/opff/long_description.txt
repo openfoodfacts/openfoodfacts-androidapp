@@ -1,0 +1,11 @@
+Tierfutter erfassen oder deren Strichcode einlesen, um Daten über Inhaltsstoffe, Zusatzstoffe und Nährwertangaben zu erhalten.
+
+Die App erlaubt es, die über 500 bereits in der kostenlosen und offenen Datenbank „Open Pet Food Facts” enthaltenen Tiernahrungsprodukte einzusehen und auch Bilder und Daten für fehlende Produkte hinzuzufügen.
+
+Um das Projekt „Open Pet Food Facts” zu entdecken, besuchen Sie bitte https://world.openpetfoodfacts.org
+
+Was Sie ebenfalls finden können (entsprechend den Angaben auf den Produkten):
+• Nährwertangaben, Nährwertampeln …
+• Marken, Allergene, Etiketten (Bio, Vegan …)
+
+Sie können Hundefutter (Trockenfutter und Nassfutter), Katzenfutter, Kaninchenfutter, Schlangenfutter, Fischfutter, Vogelfutter oder jedes andere Futter für Ihr Lieblingstier erfassen.
