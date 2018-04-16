@@ -21,7 +21,7 @@
   <string name="text_barcode">Escreva o código de barras:</string>
   <string name="message_in_activity_save_product_offline">É obrigatória apenas uma foto para enviar um novo produto.</string>
   <string name="product_incomplete_message">Este produto não está completo. Como resultado, não pudemos verificar a presença de alérgenos.</string>
-  <string name="no_offline_data">You\'re all done</string>
+  <string name="no_offline_data">Está tudo pronto</string>
   <string name="first_offline">Produtos adicionados offline aparecerão aqui</string>
   <!-- Image Upload -->
   <string-array name="upload_image">
@@ -63,8 +63,8 @@
   <!-- Content Description -->
   <string name="bookmark">Favorito</string>
   <string name="product">Produto</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
+  <string name="fastscroller_track">Rastro FastScroller</string>
+  <string name="fastscroller_handle">Barra FastScroller</string>
   <string name="search_button">Procurar</string>
   <string name="no_products">Nenhum produto encontrado</string>
   <string name="desc_list_item_icon">Ícone</string>
@@ -440,12 +440,12 @@
   <!-- strings related to share images -->
   <string name="sorry_msg">Fotos sem código de barras ainda não podem ser adicionadas ao aplicativo. Por favor, tente a versão mobile do site.</string>
   <string name="no_barcode">Não detectamos nenhum código de barras</string>
-  <string name="enter_barcode">Please type the barcode below</string>
-  <string name="format_error">Wrong Barcode/QR format</string>
-  <string name="code_detected">We have detected the barcode</string>
-  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
-  <string name="notify_title">Export complete</string>
+  <string name="enter_barcode">Digite o código de barras abaixo</string>
+  <string name="format_error">Código de barras errado/formato QR</string>
+  <string name="code_detected">Detectamos o código de barras</string>
+  <string name="do_you_want_to">Você quer adicionar fotos a este código de barras?</string>
+  <string name="notify_title">Exportação concluída</string>
   <string name="notify_content">Click to view exported products</string>
-  <string name="notification_channel_name">Export Notifications</string>
-  <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="notification_channel_name">Exportar Notificações</string>
+  <string name="notify_channel_description">Notificação para mostrar a localização do arquivo exportado</string>
 </resources>
