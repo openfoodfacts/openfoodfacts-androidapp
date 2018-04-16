@@ -2,9 +2,9 @@ Open Beauty Facts הוא מסד נתונים על מוצרי קוסמטיקה ש
 
 ניתן להשתמש בו כדי לקבל החלטות קוסמטיות טובות יותר וכיוון שהנתונים פתוחים, כולם יכולים להשתמש במסד הנתונים לכל מטרה שהיא.
 
-Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. You can start contributing by adding a product from your cosmetic cupboard, and we have lots of exciting projects you can contribute to in many different ways.
+Open Beauty Facts הוא מיזם ללא כוונת רווח שפותח על ידי אלפי מתנדבים מכל רחבי העולם. ניתן להתחיל לתרום על ידי הוספת מוצרים מהמלתחה האישית שלך, לנו יש מגוון מיזמים מלהיבים שניתן לתרום להם במגוון דרכים שונות.
 
-Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature Cosmetic Ingredients) ingredient list, allergens, packaging codes... Open Beauty Facts helps you to make sense of the fine print on products labels.
+Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature Cosmetic Ingredients) ingredient list, allergens, packaging codes... עם Open Beauty Facts ניתן לקבל מושג על הדקויות שעל תוויות המוצרים.
 
 ניתן לסרוק: אפטרשייב, תחליב גוף, קרם, דאודורנט, אייליינר, יסוד, בושם, שפתונים, איפור, מסיכות, שמפו, סבון, ג׳ל רחצה, לק ועוד מוצרים רבים…
 
