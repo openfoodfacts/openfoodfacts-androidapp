@@ -216,8 +216,8 @@
   <string name="permision_write_external_storage">履歴をエクスポートするために、外部ストレージの書き込みアクセス許可が必要です。</string>
   <string name="txt_nutrition_not_found">適用外</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Calculate Calories</string>
-  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
+  <string name="calculate_calories">カロリーを計算する</string>
+  <string name="txt_calories_result">%2$s %3$s の %1$s kcal</string>
   <string name="nutrition_carbohydrate">炭水化物</string>
   <string name="nutrition_carbohydrate_short_name">炭水化物 (g)</string>
   <string name="nutrition_cholesterol">コレステロール</string>
