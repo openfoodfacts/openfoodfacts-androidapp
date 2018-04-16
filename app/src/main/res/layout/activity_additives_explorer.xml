@@ -6,9 +6,30 @@
     android:layout_height="match_parent"
     tools:context="openfoodfacts.github.scrachx.openfood.views.AdditivesExplorer">
 
-    <android.support.v7.widget.RecyclerView
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/additiveRecyclerView"/>
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/additives_progress_bar"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center" />
+
+        <openfoodfacts.github.scrachx.openfood.FastScroller
+            android:id="@+id/additives_fast_scroller"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:visibility="invisible">
+
+        </openfoodfacts.github.scrachx.openfood.FastScroller>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/additiveRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
 
 </LinearLayout>

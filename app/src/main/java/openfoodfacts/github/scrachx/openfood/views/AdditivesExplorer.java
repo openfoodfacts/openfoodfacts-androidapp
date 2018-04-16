@@ -2,14 +2,18 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.mikepenz.materialize.color.Material;
 
@@ -27,16 +31,20 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import openfoodfacts.github.scrachx.openfood.FastScroller;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additives;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AdditivesAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
-public class AdditivesExplorer extends AppCompatActivity implements AdditivesAdapter.ClickListener {
+public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.ClickListener {
 
 
     RecyclerView recyclerView;
+    ProgressBar progressBar;
+    FastScroller fastScroller;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +52,11 @@ public class AdditivesExplorer extends AppCompatActivity implements AdditivesAda
         setContentView(R.layout.activity_additives_explorer);
 
         recyclerView = findViewById(R.id.additiveRecyclerView);
+        progressBar = findViewById(R.id.additives_progress_bar);
+        fastScroller = findViewById(R.id.additives_fast_scroller);
 
+
+        progressBar.setVisibility(View.VISIBLE);
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url("https://world.openfoodfacts.org/additives.json")
@@ -73,9 +85,12 @@ public class AdditivesExplorer extends AppCompatActivity implements AdditivesAda
                     @Override
                     public void run() {
 
+                        progressBar.setVisibility(View.INVISIBLE);
                         recyclerView.setLayoutManager(new LinearLayoutManager(AdditivesExplorer.this));
                         recyclerView.setAdapter(new AdditivesAdapter(additives, AdditivesExplorer.this));
-
+                        recyclerView.addItemDecoration(new DividerItemDecoration(AdditivesExplorer.this, DividerItemDecoration.VERTICAL));
+                        fastScroller.setVisibility(View.VISIBLE);
+                        fastScroller.setRecyclerView(recyclerView);
 
                     }
                 });
@@ -115,7 +130,6 @@ public class AdditivesExplorer extends AppCompatActivity implements AdditivesAda
 
     @Override
     public void onclick(int position, String name) {
-        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
         ProductBrowsingListActivity.startActivity(AdditivesExplorer.this, name, SearchType.ADDITIVE);
     }
 }

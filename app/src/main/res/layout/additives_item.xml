@@ -6,6 +6,7 @@
 
     <TextView
         android:id="@+id/additiveName"
+        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
