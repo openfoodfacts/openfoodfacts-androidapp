@@ -28,6 +28,6 @@
   <string name="Donation">Clique aqui para doar ao Open Products Facts</string>
   <string name="translate_help_title">Ajudar a traduzir Open Products Facts</string>
   <string name="translate_help_summary">Traga a base de dados Open Products Facts ao seu idioma - nenhum conhecimento técnico necessário</string>
-  <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Products Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="text_offline_info_dialog">Você pode escanear produtos quando estiver offline e adicioná-los ao Open Products Facts mais tarde. Todos os produtos escaneados aparecerão aqui, e você poderá enviá-los usando o botão abaixo.</string>
+  <string name="warning_alert_data">Suas alergias nunca serão enviadas ao servidor do Open Products Facts. Além disso, atenção ao fato que os dados dos produtos podem ser imprecisos, e a detecção não é 100% precisa, então por favor verifique! </string>
 </resources>
