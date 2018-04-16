@@ -219,7 +219,7 @@
   <string name="permision_write_external_storage">Tárhelyre írási jogosultság szükséges az előzmény exportálásához.</string>
   <string name="txt_nutrition_not_found">Nincs adat</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Calculate Calories</string>
+  <string name="calculate_calories">Kalória kiszámítása</string>
   <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Szénhidrát</string>
   <string name="nutrition_carbohydrate_short_name">Szénhidrát (g)</string>
