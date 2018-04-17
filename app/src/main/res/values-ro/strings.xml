@@ -51,6 +51,12 @@
     <item>cl</item>
     <item>fl oz</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>Implicită</item>
@@ -216,6 +222,8 @@
   <string name="permision_write_external_storage">Pentru a exporta istoricul este necesară permisiunea de a scrie în dispozitivul de stocare externă.</string>
   <string name="txt_nutrition_not_found">Nu este disponibil</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Calculate Calories</string>
+  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Glucide</string>
   <string name="nutrition_carbohydrate_short_name">Glucide (g)</string>
   <string name="nutrition_cholesterol">Colesterol</string>
@@ -420,6 +428,8 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="disable_image_loading">Disable Image Loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable Image Loading</string>
   <string name="txtCamera">Camera</string>
   <string name="txtGallery">Gallery</string>
   <string name="txtOptions">Options</string>
