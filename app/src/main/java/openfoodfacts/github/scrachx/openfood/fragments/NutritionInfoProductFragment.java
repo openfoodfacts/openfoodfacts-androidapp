@@ -65,6 +65,7 @@ import static openfoodfacts.github.scrachx.openfood.models.Nutriments.PROT_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.VITAMINS_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.getEnergy;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class NutritionInfoProductFragment extends BaseFragment {
