@@ -163,7 +163,6 @@ public class NutritionInfoProductFragment extends BaseFragment {
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_fat), fat.getFor100g(), fat.getForServing(), fat.getUnit(), fat
                     .getForPrepared100g(), fat
                     .getForPreparedServing()));
-            
             nutrimentItems.addAll(getNutrimentItems(nutriments, FAT_MAP));
         }
 
