@@ -212,7 +212,7 @@ dependencies {
     }
 
     //UI Component : Expandable Layout
-    implementation 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
+    implementation "net.cachapa.expandablelayout:expandablelayout:$rootProject.expandableLayoutVersion"
     //UI Component : Adapters
 
     //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework

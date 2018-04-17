@@ -61,6 +61,7 @@ ext {
     zoomingImgVersion = '2.1.3'
     materialDialogVersion = '0.9.6.0'
     fabVersion = '1.6.4'
+    expandableLayoutVersion='2.9.2'
 
     fontIconCoreVersion = '3.0.0@aar'
     googleMaterialFontVersion = '3.0.1.2.original@aar'
