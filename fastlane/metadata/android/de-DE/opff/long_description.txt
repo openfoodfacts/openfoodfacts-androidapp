@@ -27,8 +27,8 @@ Was Sie ebenfalls finden können (entsprechend den Angaben auf den Produkten):
 
 *** Your pet food, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+• Sie können die Anwendung auch anonym verwenden
+• Sie können Ihre Erfassungsverlauf exportieren
 
 
 For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
