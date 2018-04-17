@@ -17,9 +17,9 @@
 - Open ??? Facts - Create your own open database :-)
 
 ★★★ Funktioniert gut in jedem Umfeld ★★★
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+• Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht.
+• Die App lädt nur das absolut Notwendige, um den Daten- und Batterieverbrauch zu reduzieren
+• Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben.
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
