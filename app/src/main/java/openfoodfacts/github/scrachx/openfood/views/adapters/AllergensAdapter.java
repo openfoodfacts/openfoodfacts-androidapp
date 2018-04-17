@@ -26,6 +26,9 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
         mAllergens = allergens;
         mActivity = activity;
     }
+    public void setAllergens(List<AllergenName> allergens){
+        mAllergens = allergens;
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -56,8 +59,8 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
         button.setText(R.string.delete_txt);
         button.setOnClickListener(v -> {
             mAllergens.remove(holder.getAdapterPosition());
-            mProductRepository.setAllergenEnabled(allergen.getAllergenTag(), false);
             notifyItemRemoved(holder.getAdapterPosition());
+            mProductRepository.setAllergenEnabled(allergen.getAllergenTag(), false);
         });
     }
 
