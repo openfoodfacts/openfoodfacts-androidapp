@@ -431,6 +431,8 @@
   <string name="other_tags_text">חומרים אחרים:</string>
   <!--shared element transition key-->
   <string name="wikidata">מידע מוויקינתונים</string>
+  <string name="disable_image_loading">Disable Image Loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable Image Loading</string>
   <string name="txtCamera">מצלמה</string>
   <string name="txtGallery">גלריה</string>
   <string name="txtOptions">אפשרויות</string>
