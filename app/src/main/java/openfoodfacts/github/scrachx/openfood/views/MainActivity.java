@@ -235,6 +235,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userLogin = preferences.getString("user", null);
         String userSession = preferences.getString("user_session", null);
         boolean isUserConnected = userLogin != null && userSession != null;
+        boolean isConnected = userLogin != null;
         if (isUserConnected) {
             userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
                     "&user_session=" + userSession);
@@ -399,7 +400,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
 
         // Add Drawer items for the connected user
-        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isUserConnected ?
+        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isConnected ?
                 getLogoutDrawerItem() : getLoginDrawerItem());
 
         if (BuildConfig.FLAVOR.equals("obf")) {
