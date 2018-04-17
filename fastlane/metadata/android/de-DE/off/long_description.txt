@@ -1,19 +1,19 @@
 Lebensmittel erfassen oder deren Barcode einlesen, um Daten über Inhaltsstoffe, Zusatzstoffe und Nährwertangaben zu erhalten.
 
-The app allows to view the 500.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+Die App erlaubt es, die 500.000 Produkte (davon 175.000 in den USA), die bereits in der freien und offenen Datenbank Open Food Facts enthalten sind, einzusehen und auch Fotos und Daten für fehlende Produkte hinzuzufügen.
 
 Um das Open Food Facts Projekt zu entdecken, besuchen Sie bitte https://openfoodfacts.org
 
 
-***Contribute to Food Transparency***
+★★★ Beitrag zur Transparenz von Lebensmittelprodukten ★★★
 
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können. 
-- You can start contributing today by adding a product from your food cupboard. 
+• Open Food Facts ist eine Lebensmitteldatenbank, die von jedermann für alle erstellt wurde.
+• Sie können sie verwenden, um bessere Lebensmittelauswahlen zu treffen, und da es sich um offene Daten handelt, kann jeder sie für jeden Zweck weiterverwenden.
+• Open Food Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können. 
+• Sie können noch heute einen Beitrag leisten, indem Sie ein Produkt aus Ihrem Vorratsschrank hinzufügen. 
 
 ★★★ Fakten abrufen ★★★
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
+• Open Food Facts hilft Ihnen, das Kleingedruckte auf Produktetiketten zu verstehen. Was Sie ebenfalls finden können (entsprechend den Angaben auf den Produkten):
 • CO₂-Fußabdruck (CO2-Emissionen) und Verpackung (sowie Verwertungshinweise),
 • Nutri-Score (Nährwertbewertung), Nährstoffe, Fett/Fettgehalt, gesättigte Fettsäuren, Kohlenhydrate, Zucker, Ballaststoffe, Eiweiß und Salz und Natrium.
 • Marken, Allergene, Etiketten (Bio, Glutenfrei, Vegan, Vegetarisch, Halal, Koscher …), Rückverfolgbarkeitsinformationen (Verpackungscodes, Herkunft der Zutaten)
@@ -24,7 +24,7 @@ Um das Open Food Facts Projekt zu entdecken, besuchen Sie bitte https://openfood
 • Die App lädt nur das absolut Notwendige, um den Daten- und Batterieverbrauch zu reduzieren
 • Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben.
 
-*** Your food, your data ***
+★★★ Ihre Nahrung — Ihre Daten ★★★
 • Ihre Daten gehören Ihnen und werden niemals online gesendet
 • Sie können die Anwendung auch anonym verwenden
 • Sie können Ihre Erfassungsverlauf exportieren
