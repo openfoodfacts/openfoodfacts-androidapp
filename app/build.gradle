@@ -143,7 +143,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.android.support:support-v4:27.1.0'
     compile "com.android.support:multidex:$rootProject.multidexVersion"
-    compile "com.android.support:design:27.1.0"
+    compile 'com.android.support:design:27.1.0'
 
     //DI
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
@@ -249,4 +249,5 @@ dependencies {
     resourcePlaceholders {
         files = ['xml/shortcuts.xml']
     }
+    implementation files('libs/allergenChecker-1.0-SNAPSHOT.jar')
 }
