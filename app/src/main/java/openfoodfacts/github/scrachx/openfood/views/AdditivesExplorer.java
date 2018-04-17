@@ -23,6 +23,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -123,6 +125,14 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
 
         }
 
+        Collections.sort(additives, new Comparator<Additives>() {
+            @Override
+            public int compare(Additives additives, Additives t1) {
+                String s1 = additives.getName().toLowerCase().replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1];
+                String s2 = t1.getName().toLowerCase().replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1];
+                return Integer.valueOf(s1).compareTo(Integer.valueOf(s2));
+            }
+        });
         return additives;
 
 
