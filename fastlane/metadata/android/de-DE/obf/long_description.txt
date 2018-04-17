@@ -18,7 +18,7 @@
 • Die App lädt nur das absolut Notwendige, um den Daten- und Batterieverbrauch zu reduzieren
 • Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben.
 
-*** Your cosmetics, your data ***
+★★★ Ihre Kosmetik — Ihre Daten ★★★
 • Ihre Daten gehören Ihnen und werden niemals online gesendet
 • Sie können die Anwendung auch anonym verwenden
 • Sie können Ihre Erfassungsverlauf exportieren
