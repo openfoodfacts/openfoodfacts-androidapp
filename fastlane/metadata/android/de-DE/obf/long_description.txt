@@ -1,11 +1,11 @@
-***Contribute to Cosmetic Transparency***
+★★★ Beitrag zur kosmetischen Transparenz leisten ★★★
 
-- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
-- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your cosmetic cupboard. 
+• Open Beauty Facts ist eine Datenbank für Kosmetikprodukte, die von jedermann für alle erstellt wurde.
+• Sie können diese verwenden, um bessere kosmetische Entscheidungen zu treffen, und da es sich um offene Daten handelt, kann jeder sie für jeden Zweck weiterverwenden.
+• Open Beauty Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können. 
+• Sie können noch heute einen Beitrag leisten, indem Sie ein Produkt aus Ihrem Kosmetikschrank hinzufügen. 
 
-*** Get the Facts ***
+★★★ Fakten abrufen ★★★
 
 - Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
 - Open Beauty Facts helps you to make sense of the fine print on products labels.
@@ -13,7 +13,7 @@
 - You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
 - We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
-*** Works well in any condition ***
+★★★ Funktioniert gut in jedem Umfeld ★★★
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
