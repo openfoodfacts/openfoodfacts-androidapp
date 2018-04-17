@@ -68,13 +68,13 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .toCompletable()
-                        .doOnSubscribe(d -> view.showLoading())
+                        //.doOnSubscribe(d -> view.showLoading())
                         .subscribe(() -> {
-                            view.hideLoading(false);
+                            //view.hideLoading(false);
                             view.navigateToMainActivity();
                         }, e -> {
                             e.printStackTrace();
-                            view.hideLoading(true);
+                            //view.hideLoading(true);
                             view.navigateToMainActivity();
                         });
             } else {
