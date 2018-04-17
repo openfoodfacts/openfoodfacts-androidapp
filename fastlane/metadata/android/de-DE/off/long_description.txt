@@ -29,7 +29,7 @@ Um das Open Food Facts Projekt zu entdecken, besuchen Sie bitte https://openfood
 • Sie können die Anwendung auch anonym verwenden
 • Sie können Ihre Erfassungsverlauf exportieren
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Open Food Facts ist auch im Internet verfügbar unter https://world.openfoodfacts.org
 Fragen und Rückmeldungen: contact@openfoodfacts.org
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Für Kosmetik können Sie „Open Beauty Facts”, für Tierfutter „Open Pet Food Facts” und für alle anderen Produkte „Open Products Facts” installieren.
