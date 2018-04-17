@@ -31,4 +31,4 @@ Was Sie ebenfalls finden können (entsprechend den Angaben auf den Produkten):
 • Sie können Ihre Erfassungsverlauf exportieren
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+Für Lebensmittel können Sie „Open Food Facts”, für Kosmetik „Open Beauty Facts” und für alle anderen Produkte „Open Products Facts” installieren.
