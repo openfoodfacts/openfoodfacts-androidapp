@@ -54,6 +54,12 @@
     <item>ס״ל</item>
     <item>אונקיה</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>מ״ג</item>
+    <item>ק״ג</item>
+    <item>ל׳</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>בררת מחדל</item>
@@ -219,6 +225,8 @@
   <string name="permision_write_external_storage">נדרשת הרשאת כתיבה לאחסון חיצוני כדי לייצא היסטוריה.</string>
   <string name="txt_nutrition_not_found">לא זמין</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Calculate Calories</string>
+  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">פחמימות</string>
   <string name="nutrition_carbohydrate_short_name">פחמימות (ג׳)</string>
   <string name="nutrition_cholesterol">כולסטרול</string>
@@ -423,6 +431,8 @@
   <string name="other_tags_text">חומרים אחרים:</string>
   <!--shared element transition key-->
   <string name="wikidata">מידע מוויקינתונים</string>
+  <string name="disable_image_loading">Disable Image Loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable Image Loading</string>
   <string name="txtCamera">מצלמה</string>
   <string name="txtGallery">גלריה</string>
   <string name="txtOptions">אפשרויות</string>
@@ -442,8 +452,8 @@
   <string name="format_error">תסדיר הברקוד/QR שגוי</string>
   <string name="code_detected">הברקוד זוהה</string>
   <string name="do_you_want_to">להוסיף תמונות לברקוד הזה?</string>
-  <string name="notify_title">Export complete</string>
-  <string name="notify_content">Click to view exported products</string>
-  <string name="notification_channel_name">Export Notifications</string>
-  <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="notify_title">הייצוא הושלם</string>
+  <string name="notify_content">יש ללחוץ כדי לצפות במוצרים שייוצאו</string>
+  <string name="notification_channel_name">התרעות ייצוא</string>
+  <string name="notify_channel_description">התרעה להצגת מיקום הקובץ שייוצא</string>
 </resources>
