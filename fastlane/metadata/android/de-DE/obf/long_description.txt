@@ -7,8 +7,8 @@
 
 ★★★ Fakten abrufen ★★★
 
-- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
-- Open Beauty Facts helps you to make sense of the fine print on products labels.
+• Kosmetische Zusätze, F.I.L. -Codes, CI-Nummern, INCI (International Nomenclature of Cosmetic Ingredients) Zutatenliste, Allergene, Verpackungscodes … 
+• Open Beauty Facts hilft Ihnen, das Kleingedruckte auf Produktetiketten zu verstehen.
 - You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
 - You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
 - We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
@@ -19,9 +19,9 @@
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+• Ihre Daten gehören Ihnen und werden niemals online gesendet
+• Sie können die Anwendung auch anonym verwenden
+• Sie können Ihre Erfassungsverlauf exportieren
 
 Hinweis: Open Beauty Facts befindet sich im Aufbau, die Seite und die Anwendung basieren auf Open Food Facts und es werden Änderungen vorgenommen, um den Besonderheiten der Kosmetik Rechnung tragen zu können.
 
