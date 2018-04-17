@@ -1,9 +1,9 @@
 Open Food Facts ir atvērta datu bāze ar edienu produktiem un to sastāvdaļām, alergēniem, uztura faktiem un informāciju par produktiem, ko varam atrast produktu marķējmos.
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Pārtikas jomā jūs varat instalēt Open Food Facts, kosmētikai, Open Beauty Facts un dzīvnieku barībai Pet Food Facts.
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+Vakar no rīta Open Food Facts komanda pamodās ar pārsteidzošu atklāsmi. 
 
-Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+Collecting the world's food, cosmetic and pet food was so passé. Ar pagājušā gada progresu mums noteikti ir jābūt tuvu tam, lai pabeigtu mūsu misiju, lai savāktu visus pārtikas un kosmētikas produktus pasaulē, vai ne?
 
 So we set up to create not 1, but other 77000 separate new databases ! 
 

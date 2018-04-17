@@ -48,6 +48,12 @@
     <item>सेंटीलीटर</item>
     <item>फ्लूइड आउन्स</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>ग्राम</item>
+    <item>मिलीग्राम</item>
+    <item>किलोग्राम</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>चूक</item>
@@ -213,6 +219,8 @@
   <string name="permision_write_external_storage">लिखें बाह्य भंडारण की अनुमति इतिहास को निर्यात करने की जरूरत है।</string>
   <string name="txt_nutrition_not_found">लागू नहीं</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Calculate Calories</string>
+  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">कार्बोहाइड्रेट</string>
   <string name="nutrition_carbohydrate_short_name">कार्बोहाइड्रेट(g)</string>
   <string name="nutrition_cholesterol">कोलेस्ट्रॉल</string>
@@ -417,6 +425,8 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="disable_image_loading">Disable Image Loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable Image Loading</string>
   <string name="txtCamera">Camera</string>
   <string name="txtGallery">Gallery</string>
   <string name="txtOptions">Options</string>

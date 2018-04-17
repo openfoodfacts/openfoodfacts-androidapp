@@ -1,11 +1,16 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+ניתן לסרוק מוצרי מזון לחיות מחמד או את הברקוד שלהם כדי לקבל מידע על הרכיבים, התוספים והעובדות התזונתיות.
 
-The app allows to view the over 500 pet products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+כדי לחקור על מיזם Open Pet Food Facts, ניתן לבקר בכתובת https://world.openpetfoodfacts.org
 
-You will also be able to find (according to the indications present on the products):
-- nutritional info, nutrition traffic lights…
-- brands, allergens, labels (organic, vegan...)
+ניתן גם למצוא (בהתאם לנתונים שמופיעים על המוצרים):
+- list of ingredients (including ash content
+- פרטים תזונתיים, אזהרות תזונתיות…
+- מותגים, חומרים מעוררי רגישות, תוויות (אורגני, טבעוני…)
 
-You can scan dog food (dry dog food and wet dog food), cat food, rabbit food, snake food, fish food, bird food, or any food for your favorite animal.
+
+You can scan dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+
+
+For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.

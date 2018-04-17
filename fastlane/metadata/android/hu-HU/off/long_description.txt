@@ -2,7 +2,7 @@ Olvassa be az élelmiszereket vagy a vonalkódjukat, hogy megszerezze az adatoka
 
 Az alkalmazás lehetővé teszi 340 000 (beleértve 175 000 egyesült államokbeli) termék megtekintését, amelyek már megtalálhatóak az Open Food Facts ingyenes és nyílt adatbázisában, továbbá képek és adatok hozzáadását a hiányzó termékekhez.
 
-Ahhoz, hogy felfedezhesse az Open Food Facts programot, kérjük, látogasson el a https://openfoodfacts.org weboldalra
+Az Open Food Facts program felfedezéséhez, kérjük, látogasson el a https://openfoodfacts.org weboldalra
 
 Megtudhatja még (a termékeken feltüntetett jelölések szerint):
 - szénlábnyom (szén-dioxid-kibocsátás) és csomagolás (valamint újrahasznosítási utasítások),

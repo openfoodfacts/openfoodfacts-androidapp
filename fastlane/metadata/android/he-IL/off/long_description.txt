@@ -1,10 +1,10 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+ניתן לסרוק מוצרי מזון או את הברקוד שלהם כדי לקבל מידע על רכיבים, תוספים ועובדות תזונתיות.
 
-The app allows to view the 340.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+היישומון מאפשר לצפות ב־340,000 מוצרי מזון (לרבות 175,000 בארה״ב) שכבר נמצאים במסד הנתונים החופשי והפתוח Open Food Facts, לרבות הוספת תמונות ונתונים למוצרים שחסר עליהם מידע.
 
-To discover the Open Food Facts project, please visit https://openfoodfacts.org
+כדי לחקור על מיזם Open Food Facts, ניתן לבקר בכתובת https://openfoodfacts.org
 
-You will also be able to find (according to the indications present on the products):
+ניתן גם למצוא (בהתאם לנתונים שמופיעים על המוצרים):
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
