@@ -30,5 +30,6 @@
   <string name="translate_help_summary">Übersetzen Sie die „Open Food Facts”-Datenbank in Ihre Sprache – technischen Kenntnisse sind nicht erforderlich</string>
   <string name="text_offline_info_dialog">Sie können Produkte auch im Offline-Modus erfassen, um sie später zu Open Food Facts hinzuzufügen. Alle Produkte, die Sie erfasst haben, werden hier angezeigt, und Sie können sie über die untenstehende Schaltfläche versenden.</string>
   <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
-  <string name="tagline">Freie Datenbank für Nahrungsmittel</string>
+  <!-- OFF tagline in different languages -->
+  <string name="tagline">the free food products database</string>
 </resources>
