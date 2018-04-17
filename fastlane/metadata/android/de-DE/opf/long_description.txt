@@ -22,16 +22,16 @@
 • Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben.
 
 ★★★ Ihre Produkte — Ihre Daten ★★★
-- Your personal data is yours, and is never sent online
+• Ihre persönlichen Daten gehören Ihnen und werden niemals online gesendet
 • Sie können die Anwendung auch anonym verwenden
 • Sie können Ihre Erfassungsverlauf exportieren
 
 Für Lebensmittel können Sie „Open Food Facts”, für Kosmetika „Open Beauty Facts” und für Tiernahrung „Open Pet Food Facts” installieren.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
+Open Products Facts ist auch im Internet verfügbar unter https://world.openproductsfacts.org
 Fragen und Rückmeldungen: contact@openfoodfacts.org
 
-*** Original April's Fool Listing ***
+★★★ Original Aprilscherz-Liste ★★★
 
 Gestern Morgen erwachte das Open Food Facts Team zu einer erstaunlichen Enthüllung. 
 
