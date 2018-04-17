@@ -32,9 +32,11 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
 
     private Context context;
     private final List<Product> products;
+    private boolean isLowBatteryMode;
 
-    public ProductsRecyclerViewAdapter(List<Product> items) {
+    public ProductsRecyclerViewAdapter(List<Product> items, boolean isLowBatteryMode) {
         this.products = items;
+        this.isLowBatteryMode = isLowBatteryMode;
     }
 
     @Override
@@ -65,23 +67,30 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
             productHolder.vProductImageProgressbar.setVisibility(View.VISIBLE);
             if (products.get(position).getImageSmallUrl() == null)
                 productHolder.vProductImageProgressbar.setVisibility(View.GONE);
-            Picasso.with(context)
-                    .load(products.get(position).getImageSmallUrl())
-                    .placeholder(R.drawable.placeholder_thumb)
-                    .error(R.drawable.error_image)
-                    .fit()
-                    .centerCrop()
-                    .into(productHolder.vProductImage, new Callback() {
-                        @Override
-                        public void onSuccess() {
-                            productHolder.vProductImageProgressbar.setVisibility(View.GONE);
-                        }
 
-                        @Override
-                        public void onError() {
-                            productHolder.vProductImageProgressbar.setVisibility(View.GONE);
-                        }
-                    });
+            // Load Image if isLowBatteryMode is false
+            if (!isLowBatteryMode) {
+                Picasso.with(context)
+                        .load(products.get(position).getImageSmallUrl())
+                        .placeholder(R.drawable.placeholder_thumb)
+                        .error(R.drawable.error_image)
+                        .fit()
+                        .centerCrop()
+                        .into(productHolder.vProductImage, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                productHolder.vProductImageProgressbar.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onError() {
+                                productHolder.vProductImageProgressbar.setVisibility(View.GONE);
+                            }
+                        });
+            } else {
+                Picasso.with(context).load(R.drawable.placeholder_thumb).into(productHolder.vProductImage);
+                productHolder.vProductImageProgressbar.setVisibility(View.INVISIBLE);
+            }
 
             Product product = products.get(position);
 

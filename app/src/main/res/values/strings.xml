@@ -538,6 +538,9 @@
     <string name="product_transition" translatable="false">productTransition</string>
     <string name="wikidata">Wikidata data</string>
 
+    <string name="disable_image_loading">Disable Image Loading when battery is low</string>
+    <string name="DisableLoadTitle">Disable Image Loading</string>
+
     <string name="txtCamera">Camera</string>
     <string name="txtGallery">Gallery</string>
     <string name="txtOptions">Options</string>

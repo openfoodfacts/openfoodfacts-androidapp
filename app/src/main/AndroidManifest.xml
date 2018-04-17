@@ -92,6 +92,8 @@
             android:parentActivityName=".views.MainActivity"
 
 
+
+
             android:screenOrientation="portrait">
 
             <meta-data
