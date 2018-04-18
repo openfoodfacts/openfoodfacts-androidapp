@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Additives;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 
 /**
  * Created by prajwalm on 16/04/18.
@@ -18,14 +18,14 @@ import openfoodfacts.github.scrachx.openfood.models.Additives;
 
 public class AdditivesAdapter extends RecyclerView.Adapter<AdditivesAdapter.ViewHolder> {
 
-    private List<Additives> additives;
+    private List<AdditiveName> additives;
     private ClickListener clickListener;
 
     public interface ClickListener {
         void onclick(int position ,String name);
     }
 
-    public AdditivesAdapter(List<Additives> additives ,ClickListener clickListener) {
+    public AdditivesAdapter(List<AdditiveName> additives ,ClickListener clickListener) {
 
         this.additives = additives;
         this.clickListener = clickListener;
