@@ -31,5 +31,5 @@
   <string name="text_offline_info_dialog">Offline beolvasás is lehetséges az Open Beauty Facts adatbázisba való későbbi feltöltéshez. Minden itt megjelenő termék beküldhető az alábbi gomb megnyomásával.</string>
   <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Beauty Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
   <!-- OBF tagline in different languages -->
-  <string name="tagline">the free cosmetics database</string>
+  <string name="tagline">a szabad kozmetikai adatbázis</string>
 </resources>

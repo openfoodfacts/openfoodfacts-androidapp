@@ -4,10 +4,10 @@ Open Food Facts הוא מסד נתונים של מוצרי מזון עם רכי�
 
 - Open Food Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. יש לנו מגוון מיזמים מרתקים להם ניתן לתרום במגוון דרכים. 
 - You can start contributing today by adding your first product. 
 
-*** Get the Facts ***
+*** קבלת העובדות ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***
@@ -16,15 +16,15 @@ Open Food Facts הוא מסד נתונים של מוצרי מזון עם רכי�
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** פעילות עם כמה שפחות הפרעות ***
+- ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע.
+- היישומון טוען רק את מה שנדרש כדי לצמצם בתקשורת נתונים ובצריכת סוללה
+- אין צורך במצלמה כדי לחפש מוצר. ניתן גם להקליד את הברקוד אם אין לך מצלמה או שהיא אינה תקינה.
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- ניתן להשתמש ביישומון בעילום שם
+- ניתן לייצא את היסטוריית הסריקות שלך
 
 בשביל מזון, ניתן להתקין את Open Food Facts, לקוסמטיקה יש את Open Beauty Facts ולמזון לחיות מחמד יש את Open Pet Food Facts.
 
