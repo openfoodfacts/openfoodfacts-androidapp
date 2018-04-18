@@ -388,9 +388,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     }
                 });
 
+
+                break;
             case SearchType.CATEGORY:
                 api.getProductsByCategory(searchQuery, pageAddress, this::loadData);
                 break;
+
 
             case SearchType.CONTRIBUTOR: {
 
@@ -422,11 +425,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     default:
                         api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
                         break;
-
                 }
-                break;
-
             }
+
 
             case SearchType.STATE:
                 api.getProductsByStates(searchQuery, pageAddress, this::loadData);
