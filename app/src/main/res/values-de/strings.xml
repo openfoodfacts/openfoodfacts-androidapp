@@ -396,7 +396,7 @@
   <string name="dialog_cancel">Abbrechen</string>
   <string name="choose_resolution">Auflösung wählen</string>
   <string name="pref_resolution_summary">Auflösung für das Hochladen von Fotos auswählen</string>
-  <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Probleme beim Einlesen?\nNach oben wischen, um den Strichcode einzugeben</string>
   <string name="wikidata_information">Weitergehen</string>
   <string name="description">Beschreibung: </string>
@@ -425,8 +425,8 @@
   <string name="other_tags_text">Weitere Stoffe:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata-Informationen</string>
-  <string name="disable_image_loading">Das Laden von Grafiken bei geringem Ladezustand der Batterie deaktivieren</string>
-  <string name="DisableLoadTitle">Laden von Grafiken deaktivieren</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galerie</string>
   <string name="txtOptions">Einstellungen</string>
