@@ -219,8 +219,8 @@
   <string name="permision_write_external_storage">Les droits d\'accès en écriture sur le support de stockage externe sont nécessaires pour exporter l\'historique.</string>
   <string name="txt_nutrition_not_found">Non applicable</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Calculate Calories</string>
-  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
+  <string name="calculate_calories">Calculer les calories</string>
+  <string name="txt_calories_result">%1$s kcal dans %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Glucides</string>
   <string name="nutrition_carbohydrate_short_name">Glucides (g)</string>
   <string name="nutrition_cholesterol">Cholestérol</string>
@@ -425,8 +425,8 @@
   <string name="other_tags_text">Autres substances :</string>
   <!--shared element transition key-->
   <string name="wikidata">Données de Wikidata</string>
-  <string name="disable_image_loading">Disable Image Loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable Image Loading</string>
+  <string name="disable_image_loading">Désactiver le chargement des images lorsque la batterie est faible</string>
+  <string name="DisableLoadTitle">Désactiver le chargement des images</string>
   <string name="txtCamera">Appareil photo</string>
   <string name="txtGallery">Galerie</string>
   <string name="txtOptions">Options</string>
