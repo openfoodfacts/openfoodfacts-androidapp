@@ -396,7 +396,7 @@
   <string name="dialog_cancel">Cancelar</string>
   <string name="choose_resolution">Escolher Resolução</string>
   <string name="pref_resolution_summary">Escolha uma resolução para upload da imagem</string>
-  <string name="image_upload_resolution">Resolução de Upload de Imagens</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Problemas com o scanner?\nArraste para cima para digitar o código de barras</string>
   <string name="wikidata_information">Indo além</string>
   <string name="description">Descrição: </string>
@@ -425,8 +425,8 @@
   <string name="other_tags_text">Outras Substâncias:</string>
   <!--shared element transition key-->
   <string name="wikidata">Dados Wikidata</string>
-  <string name="disable_image_loading">Disable Image Loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable Image Loading</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
   <string name="txtCamera">Câmera</string>
   <string name="txtGallery">Galeria</string>
   <string name="txtOptions">Opções</string>
