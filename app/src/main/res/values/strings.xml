@@ -569,6 +569,7 @@
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
     <string name="product_info_added">Products you added information for</string>
     <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
+    <string name="show_by">Show</string>
     <string name="notify_title">Export complete</string>
     <string name="notify_content">Click to view exported products</string>
     <string name="notification_channel_name">Export Notifications</string>

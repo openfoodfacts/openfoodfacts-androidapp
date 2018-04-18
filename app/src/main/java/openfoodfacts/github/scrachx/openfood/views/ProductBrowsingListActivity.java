@@ -155,7 +155,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (item.getItemId() == R.id.action_set_type) {
 
             MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
-            builder.title("Contributions by");
+            builder.title(R.string.show_by);
             String[] contributionTypes = new String[]{getString(R.string.products_added),
                     getString(R.string.products_incomplete), getString(R.string.product_pictures_contributed),
                     getString(R.string.picture_contributed_incomplete), getString(R.string.product_info_added),
