@@ -309,18 +309,16 @@ public class IngredientsProductFragment extends BaseFragment {
                         additiveName = new AdditiveName(StringUtils.capitalize(tag));
                     }
                 }
-
                 if (additiveName != null) {
                     additives.add(additiveName);
                 }
-
-                for (int i = 0; i < additives.size() - 1; i++) {
-                    additiveProduct.append(getAdditiveTag((additives.get(i))));
-                    additiveProduct.append("\n");
-                }
-
-                additiveProduct.append(getAdditiveTag((additives.get(additives.size() - 1))));
             }
+            for (int i = 0; i < additives.size() - 1; i++) {
+                additiveProduct.append(getAdditiveTag((additives.get(i))));
+                additiveProduct.append("\n");
+            }
+
+            additiveProduct.append(getAdditiveTag((additives.get(additives.size() - 1))));
 
         } else {
             additiveProduct.setVisibility(View.GONE);
