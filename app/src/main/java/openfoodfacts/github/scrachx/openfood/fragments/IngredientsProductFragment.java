@@ -309,18 +309,16 @@ public class IngredientsProductFragment extends BaseFragment {
                         additiveName = new AdditiveName(StringUtils.capitalize(tag));
                     }
                 }
-
                 if (additiveName != null) {
                     additives.add(additiveName);
                 }
-
-                for (int i = 0; i < additives.size() - 1; i++) {
-                    additiveProduct.append(getAdditiveTag((additives.get(i))));
-                    additiveProduct.append("\n");
-                }
-
-                additiveProduct.append(getAdditiveTag((additives.get(additives.size() - 1))));
             }
+            for (int i = 0; i < additives.size() - 1; i++) {
+                additiveProduct.append(getAdditiveTag((additives.get(i))));
+                additiveProduct.append("\n");
+            }
+
+            additiveProduct.append(getAdditiveTag((additives.get(additives.size() - 1))));
 
         } else {
             additiveProduct.setVisibility(View.GONE);
@@ -349,9 +347,9 @@ public class IngredientsProductFragment extends BaseFragment {
 
 
     private CharSequence getAdditiveTag(AdditiveName additive) {
-
+        
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-
+        
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
@@ -394,7 +392,6 @@ public class IngredientsProductFragment extends BaseFragment {
     private String trimLanguagePartFromString(String string) {
         return string.substring(3);
     }
-
 
     private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text, List<String> allergens) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);
