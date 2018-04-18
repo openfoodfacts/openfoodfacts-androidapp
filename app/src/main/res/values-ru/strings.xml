@@ -402,7 +402,7 @@
   <string name="dialog_cancel">Отмена</string>
   <string name="choose_resolution">Выберите разрешение</string>
   <string name="pref_resolution_summary">Выберите разрешение для загрузки изображения</string>
-  <string name="image_upload_resolution">Разрешение загрузки изображения</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Не удалось выполнить сканирование? \nПотяните вверх, чтобы ввести штрих-код</string>
   <string name="wikidata_information">Идем дальше</string>
   <string name="description">Описание: </string>
@@ -431,8 +431,8 @@
   <string name="other_tags_text">Другие вещества:</string>
   <!--shared element transition key-->
   <string name="wikidata">Данные Wikidata</string>
-  <string name="disable_image_loading">Disable Image Loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable Image Loading</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
   <string name="txtCamera">Camera</string>
   <string name="txtGallery">Gallery</string>
   <string name="txtOptions">Options</string>
