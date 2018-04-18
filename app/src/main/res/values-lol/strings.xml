@@ -396,7 +396,7 @@
   <string name="dialog_cancel">crwdns37222:0crwdne37222:0</string>
   <string name="choose_resolution">crwdns37305:0crwdne37305:0</string>
   <string name="pref_resolution_summary">crwdns37306:0crwdne37306:0</string>
-  <string name="image_upload_resolution">crwdns37307:0crwdne37307:0</string>
+  <string name="image_upload_resolution">crwdns46928:0crwdne46928:0</string>
   <string name="can_add_barcode">crwdns37291:0crwdne37291:0</string>
   <string name="wikidata_information">crwdns37770:0crwdne37770:0</string>
   <string name="description">crwdns37771:0crwdne37771:0</string>
@@ -425,8 +425,8 @@
   <string name="other_tags_text">crwdns37754:0crwdne37754:0</string>
   <!--shared element transition key-->
   <string name="wikidata">crwdns37776:0crwdne37776:0</string>
-  <string name="disable_image_loading">crwdns46808:0crwdne46808:0</string>
-  <string name="DisableLoadTitle">crwdns46809:0crwdne46809:0</string>
+  <string name="disable_image_loading">crwdns46929:0crwdne46929:0</string>
+  <string name="DisableLoadTitle">crwdns46930:0crwdne46930:0</string>
   <string name="txtCamera">crwdns46684:0crwdne46684:0</string>
   <string name="txtGallery">crwdns46685:0crwdne46685:0</string>
   <string name="txtOptions">crwdns46686:0crwdne46686:0</string>
