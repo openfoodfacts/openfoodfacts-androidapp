@@ -402,7 +402,7 @@
   <string name="dialog_cancel">ביטול</string>
   <string name="choose_resolution">נא לבחור ברזולוציה</string>
   <string name="pref_resolution_summary">נא לבחור רזולוציה להעלאת התמונה</string>
-  <string name="image_upload_resolution">רזולוציית התמונה להעלאה</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">התגלתה בעיה בסריקה?\nיש לגרור כלפי מעלה כדי להקליד את הברקוד</string>
   <string name="wikidata_information">להמשיך מעבר</string>
   <string name="description">תיאור: </string>
@@ -431,8 +431,8 @@
   <string name="other_tags_text">חומרים אחרים:</string>
   <!--shared element transition key-->
   <string name="wikidata">מידע מוויקינתונים</string>
-  <string name="disable_image_loading">השבתת טעינת תמונות כאשר הסוללה חלשה</string>
-  <string name="DisableLoadTitle">השבתת טעינת תמונות</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
   <string name="txtCamera">מצלמה</string>
   <string name="txtGallery">גלריה</string>
   <string name="txtOptions">אפשרויות</string>
