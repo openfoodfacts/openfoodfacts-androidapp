@@ -396,7 +396,7 @@
   <string name="dialog_cancel">Annullér</string>
   <string name="choose_resolution">Vælg opløsning</string>
   <string name="pref_resolution_summary">Vælg en opløsning til billed-upload</string>
-  <string name="image_upload_resolution">Billed-upload-opløsning</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Problemer med at skanne?\nTræk opad for at angive stregkoden</string>
   <string name="wikidata_information">Going further</string>
   <string name="description">Beskrivelse: </string>
@@ -425,8 +425,8 @@
   <string name="other_tags_text">Øvrige stoffer:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata-data</string>
-  <string name="disable_image_loading">Disable Image Loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable Image Loading</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
   <string name="txtCamera">Camera</string>
   <string name="txtGallery">Gallery</string>
   <string name="txtOptions">Options</string>
