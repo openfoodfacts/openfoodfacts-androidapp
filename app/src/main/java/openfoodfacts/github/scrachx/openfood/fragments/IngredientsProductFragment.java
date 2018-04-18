@@ -347,9 +347,9 @@ public class IngredientsProductFragment extends BaseFragment {
 
 
     private CharSequence getAdditiveTag(AdditiveName additive) {
-
+        
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-
+        
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
@@ -392,7 +392,6 @@ public class IngredientsProductFragment extends BaseFragment {
     private String trimLanguagePartFromString(String string) {
         return string.substring(3);
     }
-
 
     private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text, List<String> allergens) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);
