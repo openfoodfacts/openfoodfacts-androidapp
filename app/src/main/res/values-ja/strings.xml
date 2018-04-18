@@ -422,8 +422,8 @@
   <string name="other_tags_text">その他の成分:</string>
   <!--shared element transition key-->
   <string name="wikidata">ウィキデータのデータ</string>
-  <string name="disable_image_loading">Disable Image Loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable Image Loading</string>
+  <string name="disable_image_loading">バッテリの残量が少ないときに画像の読み込みを無効にします</string>
+  <string name="DisableLoadTitle">画像読み込みを無効にする</string>
   <string name="txtCamera">カメラ</string>
   <string name="txtGallery">ギャラリー</string>
   <string name="txtOptions">オプション</string>
