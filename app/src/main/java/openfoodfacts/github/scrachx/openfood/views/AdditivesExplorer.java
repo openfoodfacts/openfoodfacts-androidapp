@@ -25,10 +25,10 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.AdditivesAdapter;
 public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.ClickListener {
 
 
-    RecyclerView recyclerView;
-    FastScroller fastScroller;
-    AdditiveNameDao additiveNameDao;
-    IProductRepository productRepository;
+    private RecyclerView recyclerView;
+    private FastScroller fastScroller;
+    private AdditiveNameDao additiveNameDao;
+    private IProductRepository productRepository;
 
 
     @Override
