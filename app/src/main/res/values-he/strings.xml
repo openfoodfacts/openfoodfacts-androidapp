@@ -225,8 +225,8 @@
   <string name="permision_write_external_storage">נדרשת הרשאת כתיבה לאחסון חיצוני כדי לייצא היסטוריה.</string>
   <string name="txt_nutrition_not_found">לא זמין</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Calculate Calories</string>
-  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
+  <string name="calculate_calories">חישוב קלוריות</string>
+  <string name="txt_calories_result">%1$s קילו קלוריות ב־%2$s %3$s</string>
   <string name="nutrition_carbohydrate">פחמימות</string>
   <string name="nutrition_carbohydrate_short_name">פחמימות (ג׳)</string>
   <string name="nutrition_cholesterol">כולסטרול</string>
@@ -431,8 +431,8 @@
   <string name="other_tags_text">חומרים אחרים:</string>
   <!--shared element transition key-->
   <string name="wikidata">מידע מוויקינתונים</string>
-  <string name="disable_image_loading">Disable Image Loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable Image Loading</string>
+  <string name="disable_image_loading">השבתת טעינת תמונות כאשר הסוללה חלשה</string>
+  <string name="DisableLoadTitle">השבתת טעינת תמונות</string>
   <string name="txtCamera">מצלמה</string>
   <string name="txtGallery">גלריה</string>
   <string name="txtOptions">אפשרויות</string>
