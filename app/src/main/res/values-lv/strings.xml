@@ -399,7 +399,7 @@
   <string name="dialog_cancel">Atcelt</string>
   <string name="choose_resolution">Izvēlieties rezolūciju</string>
   <string name="pref_resolution_summary">Izvēlieties izšķirtspēju attēla augšupielādei</string>
-  <string name="image_upload_resolution">Attēla augšupielādes izšķirtspēja</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Vai jums ir problēmas ar skenēšanu?, skaties augstāk lai ievadītu svītrkodu manuāli</string>
   <string name="wikidata_information">Ejot tālāk</string>
   <string name="description">Apraksts: </string>
@@ -428,8 +428,8 @@
   <string name="other_tags_text">Citas vielas:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata dati</string>
-  <string name="disable_image_loading">Disable Image Loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable Image Loading</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galerija</string>
   <string name="txtOptions">Opcijas</string>
