@@ -425,8 +425,8 @@
   <string name="other_tags_text">Egyéb anyagok:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata adat</string>
-  <string name="disable_image_loading">Disable Image Loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable Image Loading</string>
+  <string name="disable_image_loading">Kép betöltés tiltása alacsony akkumulátor töltöttség esetén</string>
+  <string name="DisableLoadTitle">Kép betöltés tiltása</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galéria</string>
   <string name="txtOptions">Lehetőségek</string>
