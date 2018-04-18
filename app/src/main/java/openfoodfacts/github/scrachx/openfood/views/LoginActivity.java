@@ -153,7 +153,6 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         Snackbar snackbar = Snackbar
                 .make(linearLayout, R.string.toast_retrieving, Snackbar.LENGTH_LONG);
-
         snackbar.show();
 
         final LoadToast lt = new LoadToast(this);
