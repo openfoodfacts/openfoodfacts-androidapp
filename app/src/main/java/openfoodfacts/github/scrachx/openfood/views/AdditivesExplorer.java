@@ -1,10 +1,19 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.app.SearchManager;
+import android.app.SearchableInfo;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,6 +21,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+
 import openfoodfacts.github.scrachx.openfood.FastScroller;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
@@ -26,9 +36,10 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
 
 
     private RecyclerView recyclerView;
-    private FastScroller fastScroller;
     private AdditiveNameDao additiveNameDao;
     private IProductRepository productRepository;
+    private List<AdditiveName> additives;
+    private Toolbar toolbar;
 
 
     @Override
@@ -37,21 +48,26 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
         setContentView(R.layout.activity_additives_explorer);
 
         recyclerView = findViewById(R.id.additiveRecyclerView);
-        fastScroller = findViewById(R.id.additives_fast_scroller);
         productRepository = ProductRepository.getInstance();
+        toolbar = findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Additives");
+
 
         additiveNameDao = Utils.getAppDaoSession(this).getAdditiveNameDao();
         List<AdditiveName> additivesNames = additiveNameDao.loadAll();
         String languageCode = Locale.getDefault().getLanguage();
-        List<AdditiveName> additives = new ArrayList<>();
+        additives = new ArrayList<>();
         Set<AdditiveName> hs = new HashSet<>();
         for (int i = 0; i < additivesNames.size(); i++) {
-            String tag = additivesNames.get(i).getAdditiveTag();
-            hs.add(productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode));
+            if (additivesNames.get(i).getName().startsWith("E")) {
+                String tag = additivesNames.get(i).getAdditiveTag();
+                hs.add(productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode));
+            }
         }
         additives.addAll(hs);
-        //remove Colour - color
-        additives.remove(397);
 
         Collections.sort(additives, new Comparator<AdditiveName>() {
             @Override
@@ -62,16 +78,12 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
             }
         });
 
-        // remove Exxx - Exxx food additive
-        additives.remove(0);
-        // Remove No12-n12
-        additives.remove(0);
+
 
         recyclerView.setLayoutManager(new LinearLayoutManager(AdditivesExplorer.this));
         recyclerView.setAdapter(new AdditivesAdapter(additives, AdditivesExplorer.this));
         recyclerView.addItemDecoration(new DividerItemDecoration(AdditivesExplorer.this, DividerItemDecoration.VERTICAL));
-        fastScroller.setVisibility(View.VISIBLE);
-        fastScroller.setRecyclerView(recyclerView);
+
 
     }
 
@@ -79,6 +91,48 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
     @Override
     public void onclick(int position, String name) {
         ProductBrowsingListActivity.startActivity(AdditivesExplorer.this, name, SearchType.ADDITIVE);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        SearchManager searchManager = (SearchManager) this.getSystemService(Context.SEARCH_SERVICE);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        if (searchManager.getSearchableInfo(this.getComponentName()) != null) {
+
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(this.getComponentName()));
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+
+                    List<AdditiveName> additiveNames = new ArrayList<>();
+
+                    for (int i = 0; i < additives.size(); i++) {
+                        if (additives.get(i).getName().toLowerCase().split("- ")[1].startsWith(newText.toLowerCase())) {
+                            additiveNames.add(additives.get(i));
+                        }
+                    }
+
+                    recyclerView.setAdapter(new AdditivesAdapter(additiveNames, AdditivesExplorer.this));
+                    recyclerView.getAdapter().notifyDataSetChanged();
+
+                    return true;
+                }
+            });
+
+        }
+
+
+        return super.onCreateOptionsMenu(menu);
     }
 }
 
