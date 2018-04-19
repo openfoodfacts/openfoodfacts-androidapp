@@ -28,6 +28,7 @@ import org.apache.commons.text.WordUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -69,17 +70,21 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
         String[] localeValues = getActivity().getResources().getStringArray(R.array.languages_array);
         String[] localeLabels = new String[localeValues.length];
+        List<String> finalLocalValues = new ArrayList<>();
+        List<String> finalLocalLabels = new ArrayList<>();
 
         for (int i = 0; i < localeValues.length; i++) {
             Locale current = LocaleHelper.getLocale(localeValues[i]);
 
             if (current != null) {
                 localeLabels[i] = WordUtils.capitalize(current.getDisplayName(current));
+                finalLocalLabels.add(localeLabels[i]);
+                finalLocalValues.add(localeValues[i]);
             }
         }
 
-        languagePreference.setEntries(localeLabels);
-        languagePreference.setEntryValues(localeValues);
+        languagePreference.setEntries(finalLocalLabels.toArray(new String[finalLocalLabels.size()]));
+        languagePreference.setEntryValues(finalLocalValues.toArray(new String[finalLocalValues.size()]));
 
         languagePreference.setOnPreferenceChangeListener((preference, locale) -> {
 
@@ -87,7 +92,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Configuration configuration = activity.getResources().getConfiguration();
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-
                 configuration.setLocale(LocaleHelper.getLocale((String) locale));
                 new GetAdditives().execute();
             }
@@ -133,7 +137,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
             CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
             customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getContext().getPackageName()));
-            CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
+            CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new
+                    WebViewFallback());
 
             return true;
         });

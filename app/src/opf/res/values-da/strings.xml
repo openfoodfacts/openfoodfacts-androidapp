@@ -30,4 +30,6 @@
   <string name="translate_help_summary">Få Open Products Facts-databasen på dit sprog - ingen teknisk viden kræves</string>
   <string name="text_offline_info_dialog">Du kan indskanne produkter, mens du er offline og tilføje dem til Open Food Facts senere. Alle produkterne, du har skannet, vil fremgå her, og du vil kunne indsende dem ved at benytte knappen nedenfor.</string>
   <string name="warning_alert_data">Dine allergioplysninger vil aldrig blive sendt til Open Products Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
+  <!-- OPF tagline in different languages -->
+  <string name="tagline">the free product database</string>
 </resources>

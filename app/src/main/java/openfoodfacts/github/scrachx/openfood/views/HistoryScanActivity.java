@@ -86,6 +86,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     TextView infoView;
     @BindView(R.id.history_progressbar)
     ProgressBar historyProgressbar;
+    //boolean to determine if image should be loaded or not
+    private boolean isLowBatteryMode = false;
     private static String SORT_TYPE = "none";
 
     private SensorManager mSensorManager;
@@ -105,6 +107,13 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(HistoryScanActivity.this);
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {
+           isLowBatteryMode = true;
+        }
 
         mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
         productItems = new ArrayList<>();
@@ -202,6 +211,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         Uri csvUri = FileProvider.getUriForFile(this, this.getPackageName() + ".provider", f);
         downloadIntent.setDataAndType(csvUri, "text/csv");
         downloadIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel notificationChannel = new NotificationChannel("downloadChannel", "ChannelCSV", importance);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
 
@@ -397,7 +412,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
             sort(SORT_TYPE, productItems);
             adapter = new HistoryListAdapter(productItems, getString(R.string
-                    .website_product), activity);
+                    .website_product), activity,isLowBatteryMode);
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
             historyProgressbar.setVisibility(View.GONE);

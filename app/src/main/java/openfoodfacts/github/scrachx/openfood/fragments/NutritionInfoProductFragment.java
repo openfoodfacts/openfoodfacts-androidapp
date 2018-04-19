@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -12,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -82,6 +84,8 @@ public class NutritionInfoProductFragment extends BaseFragment {
     private String barcode;
     private OpenFoodAPIClient api;
     private NutritionInfoProductFragment mFragment;
+    //boolean to determine if image should be loaded or not
+    private boolean isLowBatteryMode = false;
     private SendProduct mSendProduct;
 
     @Override
@@ -97,6 +101,14 @@ public class NutritionInfoProductFragment extends BaseFragment {
 
         Intent intent = getActivity().getIntent();
         State state = (State) intent.getExtras().getSerializable("state");
+
+
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
+            isLowBatteryMode = true;
+        }
 
         try {
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
@@ -117,6 +129,17 @@ public class NutritionInfoProductFragment extends BaseFragment {
 
         if (isNotBlank(product.getImageNutritionUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
+
+            // Load Image if isLowBatteryMode is false
+            if (!isLowBatteryMode) {
+                Picasso.with(view.getContext())
+                        .load(product.getImageNutritionUrl())
+                        .into(mImageNutrition);
+            } else {
+
+                mImageNutrition.setVisibility(View.GONE);
+
+            }
             Picasso.with(view.getContext())
                     .load(product.getImageNutritionUrl())
                     .into(mImageNutrition);

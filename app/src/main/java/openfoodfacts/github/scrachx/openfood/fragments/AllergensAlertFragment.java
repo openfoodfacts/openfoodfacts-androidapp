@@ -82,14 +82,11 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         productRepository = ProductRepository.getInstance();
-        mAllergensEnabled = productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage());
-        mAllergensFromDao = productRepository.getAllergensByLanguageCode(Locale.getDefault().getLanguage());
-
         mView = view;
         mSettings = getActivity().getSharedPreferences("prefs", 0);
         boolean firstRunAlert = mSettings.getBoolean("firstRunAlert", true);
         if (firstRunAlert) {
-            new MaterialDialog.Builder(getContext())
+            new MaterialDialog.Builder(view.getContext())
                     .title(R.string.alert_dialog_warning_title)
                     .content(R.string.warning_alert_data)
                     .positiveText(R.string.ok_button)
@@ -98,10 +95,11 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
             editor.putBoolean("firstRunAlert", false);
             editor.apply();
         }
-        mRvAllergens = view.findViewById(R.id.allergens_recycle);
+        mRvAllergens = mView.findViewById(R.id.allergens_recycle);
+        updateAllergenDao();
         mAdapter = new AllergensAdapter(productRepository, mAllergensEnabled, getActivity());
         mRvAllergens.setAdapter(mAdapter);
-        mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        mRvAllergens.setLayoutManager(new LinearLayoutManager(mView.getContext()));
         mRvAllergens.setHasFixedSize(true);
     }
 
@@ -140,27 +138,23 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                 lt.setBackgroundColor(getContext().getResources().getColor(R.color.blue));
                 lt.setTextColor(getContext().getResources().getColor(R.color.white));
                 lt.show();
-                new MaterialDialog.Builder(mView.getContext())
-                        .title(R.string.title_dialog_alert)
-                        .content(R.string.info_download_data)
-                        .positiveText(R.string.txtYes)
-                        .negativeText(R.string.txtNo)
-                        .onPositive((dialog, which) -> {
-                            final SharedPreferences.Editor editor = mSettings.edit();
-                            ProductRepository.getInstance().getAllergens(true)
-                                    .subscribeOn(Schedulers.io())
-                                    .observeOn(AndroidSchedulers.mainThread())
-                                    .toObservable()
-                                    .subscribe(allergens -> {
-                                        editor.putBoolean("errorAllergens", false).apply();
-                                        lt.success();
-                                    }, e -> {
-                                        editor.putBoolean("errorAllergens", true).apply();
-                                        lt.error();
-                                    }, dialog::hide);
-                        })
-                        .onNegative((dialog, which) -> lt.hide())
-                        .show();
+                final SharedPreferences.Editor editor = mSettings.edit();
+                productRepository.getAllergens(true)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .toObservable()
+                        .subscribe(allergens -> {
+                            editor.putBoolean("errorAllergens", false).apply();
+                            productRepository.saveAllergens(allergens);
+                            updateAllergenDao();
+                            mAdapter.setAllergens(mAllergensEnabled);
+                            mAdapter.notifyDataSetChanged();
+                            onAddAllergens();
+                            lt.success();
+                        }, e -> {
+                            editor.putBoolean("errorAllergens", true).apply();
+                            lt.error();
+                        });
             } else {
                 new MaterialDialog.Builder(mView.getContext())
                         .title(R.string.title_dialog_alert)
@@ -169,7 +163,11 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                         .show();
             }
         }
+    }
 
+    private void updateAllergenDao() {
+        mAllergensEnabled = productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage());
+        mAllergensFromDao = productRepository.getAllergensByLanguageCode(Locale.getDefault().getLanguage());
     }
 
     @Override

@@ -1,12 +1,21 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+
+
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
@@ -44,7 +53,6 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerView
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
-
 public class ProductBrowsingListActivity extends BaseActivity {
 
     private static String SEARCH_TYPE = "search_type";
@@ -59,7 +67,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
     TextView countProductsView;
     @BindView(R.id.offlineCloudLinearLayout)
     LinearLayout offlineCloudLayout;
+    @BindView(R.id.progress_bar)
     ProgressBar progressBar;
+    @BindView(R.id.noResultsLayout)
+    LinearLayout noResultsLayout;
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefreshLayout;
     String searchQuery;
@@ -71,11 +82,15 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private int mCountProducts = 0;
     private int pageAddress = 1;
     private Boolean setupDone = false;
+    //boolean to determine if image should be loaded or not
+    private boolean isLowBatteryMode = false;
+
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
+
 
 
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
@@ -139,13 +154,20 @@ public class ProductBrowsingListActivity extends BaseActivity {
         setContentView(R.layout.activity_brand);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        progressBar = findViewById(R.id.progress_bar);
         countProductsView.setVisibility(View.INVISIBLE);
 
         Bundle extras = getIntent().getExtras();
         searchType = extras.getString(SEARCH_TYPE);
         searchQuery = extras.getString(SEARCH_QUERY);
         newSearchQuery();
+
+
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {
+            isLowBatteryMode = true;
+        }
 
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
@@ -169,52 +191,40 @@ public class ProductBrowsingListActivity extends BaseActivity {
     protected void newSearchQuery() {
         getSupportActionBar().setTitle(searchQuery);
         switch (searchType) {
-            case SearchType.BRAND: {
+            case SearchType.BRAND:
                 toolbar.setSubtitle(R.string.brand_string);
                 break;
-            }
-            case SearchType.COUNTRY: {
+            case SearchType.COUNTRY:
                 toolbar.setSubtitle(R.string.country_string);
                 break;
-            }
-            case SearchType.ADDITIVE: {
+            case SearchType.ADDITIVE:
                 toolbar.setSubtitle(R.string.additive_string);
                 break;
-            }
-            case SearchType.SEARCH: {
+            case SearchType.SEARCH:
                 toolbar.setSubtitle(R.string.search_string);
                 break;
-            }
-            case SearchType.STORE: {
+            case SearchType.STORE:
                 toolbar.setSubtitle(R.string.store_subtitle);
                 break;
-            }
-            case SearchType.PACKAGING: {
+            case SearchType.PACKAGING:
                 toolbar.setSubtitle(R.string.packaging_subtitle);
                 break;
-            }
-            case SearchType.LABEL: {
+            case SearchType.LABEL:
                 getSupportActionBar().setSubtitle(getString(R.string.label_string));
                 break;
-            }
-            case SearchType.CATEGORY: {
+            case SearchType.CATEGORY:
                 getSupportActionBar().setSubtitle(getString(R.string.category_string));
                 break;
-            }
-            case SearchType.CONTRIBUTOR: {
+            case SearchType.CONTRIBUTOR:
                 getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
                 break;
-            }
-            default: {
+            default:
                 Log.e("Products Browsing", "No math case found for " + searchType);
-            }
-
         }
 
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
         api = new OpenFoodAPIClient(ProductBrowsingListActivity.this);
 
-        productsRecyclerView = findViewById(R.id.products_recycler_view);
         progressBar.setVisibility(View.VISIBLE);
 
         setup();
@@ -225,93 +235,100 @@ public class ProductBrowsingListActivity extends BaseActivity {
         offlineCloudLayout.setVisibility(View.INVISIBLE);
         countProductsView.setVisibility(View.INVISIBLE);
         pageAddress = 1;
+        noResultsLayout.setVisibility(View.INVISIBLE);
         getDataFromAPI();
+    }
+
+    /*
+    when no matching products are found in the database then noResultsLayout is displayed.
+    This method is called when the user clicks on the add photo button in the noResultsLayout.
+     */
+    @OnClick(R.id.addProduct)
+    public void addProduct() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                new MaterialDialog.Builder(this)
+                        .title(R.string.action_about)
+                        .content(R.string.permission_camera)
+                        .neutralText(R.string.txtOk)
+                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission
+                                .CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                        .show();
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+            }
+        } else {
+            Intent intent = new Intent(this, ScannerFragmentActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void getDataFromAPI() {
 
-
         switch (searchType) {
-            case SearchType.BRAND: {
-
+            case SearchType.BRAND:
                 apiClient.getProductsByBrand(searchQuery, pageAddress, this::loadData);
                 break;
-            }
-            case SearchType.COUNTRY: {
+            case SearchType.COUNTRY:
                 apiClient.getProductsByCountry(searchQuery, pageAddress, this::loadData);
                 break;
-            }
-            case SearchType.ADDITIVE: {
+            case SearchType.ADDITIVE:
                 apiClient.getProductsByAdditive(searchQuery, pageAddress, this::loadData);
-
                 break;
-            }
-
-            case SearchType.STORE: {
+            case SearchType.STORE:
                 apiClient.getProductsByStore(searchQuery, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
-
                     @Override
                     public void onStoreResponse(boolean value, Search storeObject) {
                         loadData(value, storeObject);
                     }
                 });
                 break;
-            }
-
-            case SearchType.PACKAGING: {
-
+            case SearchType.PACKAGING:
                 apiClient.getProductsByPackaging(searchQuery, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
-
                     @Override
                     public void onPackagingResponse(boolean value, Search packagingObject) {
                         loadData(value, packagingObject);
                     }
                 });
                 break;
-            }
             case SearchType.SEARCH:
-
-            {
                 api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
-
                     @Override
-
                     public void onProductsResponse(boolean isOk, Search searchResponse, int countProducts) {
-                        loadData(isOk, searchResponse);
+                    /*
+                    countProducts is checked, if it is -2 it means that there are no matching products in the
+                    database for the query.
+                     */
+                        if (countProducts == -2) {
+                            noResultsLayout.setVisibility(View.VISIBLE);
+                            noResultsLayout.bringToFront();
+                            productsRecyclerView.setVisibility(View.INVISIBLE);
+                            progressBar.setVisibility(View.INVISIBLE);
+                            offlineCloudLayout.setVisibility(View.INVISIBLE);
+                            countProductsView.setVisibility(View.GONE);
+                            swipeRefreshLayout.setRefreshing(false);
+                        } else {
+                            loadData(isOk, searchResponse);
+                        }
                     }
                 });
                 break;
-            }
-
             case SearchType.LABEL:
-
-            {
                 api.getProductsByLabel(searchQuery, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
-
                     @Override
-
                     public void onLabelResponse(boolean value, Search label) {
                         loadData(value, label);
                     }
                 });
-
                 break;
-            }
-            case SearchType.CATEGORY: {
-
+            case SearchType.CATEGORY:
                 api.getProductsByCategory(searchQuery, pageAddress, this::loadData);
                 break;
-            }
-
-            case SearchType.CONTRIBUTOR: {
-
-
+            case SearchType.CONTRIBUTOR:
                 api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
                 break;
-            }
-            default: {
+            default:
                 Log.e("Products Browsing", "No math case found for " + searchType);
-            }
         }
     }
 
@@ -329,7 +346,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     mProducts.add(null);
                 }
                 if (setupDone) {
-                    productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts));
+                    productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode));
                 }
                 setUpRecyclerView();
             } else {
@@ -368,7 +385,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             LinearLayoutManager mLayoutManager = new LinearLayoutManager(ProductBrowsingListActivity.this, LinearLayoutManager.VERTICAL, false);
             productsRecyclerView.setLayoutManager(mLayoutManager);
 
-            ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts);
+            ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode);
             productsRecyclerView.setAdapter(adapter);
 
 

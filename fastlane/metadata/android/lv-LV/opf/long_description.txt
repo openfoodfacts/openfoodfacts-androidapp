@@ -1,22 +1,54 @@
 Open Food Facts ir atvērta datu bāze ar edienu produktiem un to sastāvdaļām, alergēniem, uztura faktiem un informāciju par produktiem, ko varam atrast produktu marķējmos.
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+*** Contribute to Product Transparency ***
 
-Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+- Open Food Facts is a products database made by everyone, for everyone.
+- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- You can start contributing today by adding your first product. 
 
-So we set up to create not 1, but other 77000 separate new databases ! 
+*** Get the Facts ***
+- Open Products Facts helps you to make sense of the fine print on products labels.
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+*** Collect AAAALL the things ***
+- You can add all the items from your collections
+- Open Crayons Facts - The largest open database of coloring crayons
+- Open Miniature Food Facts - The largest open database of miniature food products
+- Open ??? Facts - Create your own open database :-)
 
-Open Crayons Facts - The largest open database of coloring crayons
+*** Works well in any condition ***
+- You can add new products, even if you don't have an Internet connection right now.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-Open Miniature Food Facts - The largest open database of miniature food products
+*** Your products, your data ***
+- Your personal data is yours, and is never sent online
+- You can use the app anonymously
+- You can export your scan history
 
-Open ??? Facts - The largest open database of ???
+Pārtikas jomā jūs varat instalēt Open Food Facts, kosmētikai, Open Beauty Facts un dzīvnieku barībai Pet Food Facts.
 
-Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+Open Products Facts is also available on the web at https://world.openproductsfacts.org
+Questions, feedback : contact@openfoodfacts.org
 
-Will it be trash cans, télécartes, or mobile phones database ? 
+*** Original April's Fool Listing ***
 
-So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
+Vakar no rīta Open Food Facts komanda pamodās ar pārsteidzošu atklāsmi. 
+
+Collecting the world's food, cosmetic and pet food was so passé. Ar pagājušā gada progresu mums noteikti ir jābūt tuvu tam, lai pabeigtu mūsu misiju, lai savāktu visus pārtikas un kosmētikas produktus pasaulē, vai ne?
+
+Tāpēc mēs izveidojām ne 1, bet gan 77000 atsevišķas jaunas datubāzes! 
+
+Atvērto produktu fakti būs ļoti vērienīgs projekts. Tālāk ir minēti daži no tiem: 
+
+Open Crayons Facts - lielākā atvērtā kritinu datu bāze
+
+Open Miniature Food Fact - lielākā atvērtā miniatūru pārtikas produktu datu bāze
+
+Open ??? Fakti - lielākā atvērtā datubāze no???
+
+Rīt mēs izvēlēsimies 3 visveiksmīgākās datubāzes, un mēs sāksim apkopot visus atbilstošos produktus pasaulē.
+
+Vai tas būs atkritumu kastes, telekartes vai mobilo telefonu datu bāze? 
+
+Tātad, ja jums patīk t-krekli, ēdienu gatavošanas grāmatas, origami papīrs vai sniega bumbas, sāciet skenēšanu un pievienot produktus, izmantojot Google Play Open Food Facts Android app

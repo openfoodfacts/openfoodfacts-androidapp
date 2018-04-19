@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.preference.PreferenceManager;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -115,6 +117,8 @@ public class IngredientsProductFragment extends BaseFragment {
     private WikidataApiClient apiClientForWikiData;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
+    //boolean to determine if image should be loaded or not
+    private boolean isLowBatteryMode = false;
 
     @Override
     public void onAttach(Context context) {
@@ -143,6 +147,13 @@ public class IngredientsProductFragment extends BaseFragment {
             e.printStackTrace();
         }
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
+
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
+            isLowBatteryMode = true;
+        }
 
         final Product product = mState.getProduct();
         barcode = product.getCode();
@@ -210,9 +221,14 @@ public class IngredientsProductFragment extends BaseFragment {
         if (isNotBlank(product.getImageIngredientsUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
 
-            Picasso.with(view.getContext())
-                    .load(product.getImageIngredientsUrl())
-                    .into(mImageIngredients);
+            // Load Image if isLowBatteryMode is false
+            if(!isLowBatteryMode) {
+                Picasso.with(view.getContext())
+                        .load(product.getImageIngredientsUrl())
+                        .into(mImageIngredients);
+            }else{
+                mImageIngredients.setVisibility(View.GONE);
+            }
 
             mUrlImage = product.getImageIngredientsUrl();
         }
@@ -293,18 +309,16 @@ public class IngredientsProductFragment extends BaseFragment {
                         additiveName = new AdditiveName(StringUtils.capitalize(tag));
                     }
                 }
-
                 if (additiveName != null) {
                     additives.add(additiveName);
                 }
-
-                for (int i = 0; i < additives.size() - 1; i++) {
-                    additiveProduct.append(getAdditiveTag((additives.get(i))));
-                    additiveProduct.append("\n");
-                }
-
-                additiveProduct.append(getAdditiveTag((additives.get(additives.size() - 1))));
             }
+            for (int i = 0; i < additives.size() - 1; i++) {
+                additiveProduct.append(getAdditiveTag((additives.get(i))));
+                additiveProduct.append("\n");
+            }
+
+            additiveProduct.append(getAdditiveTag((additives.get(additives.size() - 1))));
 
         } else {
             additiveProduct.setVisibility(View.GONE);
@@ -333,9 +347,9 @@ public class IngredientsProductFragment extends BaseFragment {
 
 
     private CharSequence getAdditiveTag(AdditiveName additive) {
-
+        
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-
+        
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
@@ -378,7 +392,6 @@ public class IngredientsProductFragment extends BaseFragment {
     private String trimLanguagePartFromString(String string) {
         return string.substring(3);
     }
-
 
     private SpannableStringBuilder setSpanBoldBetweenTokens(CharSequence text, List<String> allergens) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);

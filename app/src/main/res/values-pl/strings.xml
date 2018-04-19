@@ -54,6 +54,12 @@
     <item>cl</item>
     <item>fl oz</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>Domyślny</item>
@@ -219,6 +225,8 @@
   <string name="permision_write_external_storage">Aby uzyskać historię eksportu, konieczne jest zapisanie zewnętrznej pamięci masowej.</string>
   <string name="txt_nutrition_not_found">Nie dotyczy</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Calculate Calories</string>
+  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Węglowodany</string>
   <string name="nutrition_carbohydrate_short_name">Węglowodany (g)</string>
   <string name="nutrition_cholesterol">Cholesterol</string>
@@ -394,7 +402,7 @@
   <string name="dialog_cancel">Anuluj</string>
   <string name="choose_resolution">Wybierz rozdzielczość</string>
   <string name="pref_resolution_summary">Wybierz rozdzielczość do przesyłania obrazów</string>
-  <string name="image_upload_resolution">Rozdzielczość przesyłania zdjęć</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Problem ze skanowaniem? \nPrzeciągnij, by wpisać kod kreskowy</string>
   <string name="wikidata_information">Idź dalej</string>
   <string name="description">Opis: </string>
@@ -423,6 +431,8 @@
   <string name="other_tags_text">Inne substancje:</string>
   <!--shared element transition key-->
   <string name="wikidata">Dane z Wikidata</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galeria</string>
   <string name="txtOptions">Opcje</string>

@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -145,6 +147,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Product product;
 
     private Uri manufactureUri;
+    //boolean to determine if image should be loaded or not
+    private boolean isLowBatteryMode = false;
 
     @Override
     public void onAttach(Context context) {
@@ -168,6 +172,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
         final State state = (State) intent.getExtras().getSerializable("state");
+
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
+            isLowBatteryMode = true;
+        }
 
         product = state.getProduct();
 
@@ -211,9 +222,15 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (isNotBlank(product.getImageUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
 
-            Picasso.with(view.getContext())
-                    .load(product.getImageUrl())
-                    .into(mImageFront);
+            // Load Image if isLowBatteryMode is false
+            if (!isLowBatteryMode) {
+                Picasso.with(view.getContext())
+                        .load(product.getImageUrl())
+                        .into(mImageFront);
+            } else {
+                mImageFront.setVisibility(View.GONE);
+
+            }
 
             mUrlImage = product.getImageUrl();
         }

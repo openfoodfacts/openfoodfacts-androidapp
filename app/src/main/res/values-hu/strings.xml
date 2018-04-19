@@ -48,6 +48,12 @@
     <item>cl</item>
     <item>uncia</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>Alapértelmezett</item>
@@ -213,6 +219,8 @@
   <string name="permision_write_external_storage">Tárhelyre írási jogosultság szükséges az előzmény exportálásához.</string>
   <string name="txt_nutrition_not_found">Nincs adat</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Kalória kiszámítása</string>
+  <string name="txt_calories_result">%1$s kcal %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Szénhidrát</string>
   <string name="nutrition_carbohydrate_short_name">Szénhidrát (g)</string>
   <string name="nutrition_cholesterol">Koleszterin</string>
@@ -388,7 +396,7 @@
   <string name="dialog_cancel">Mégse</string>
   <string name="choose_resolution">Válasszon felbontást</string>
   <string name="pref_resolution_summary">Válasszon felbontást kép feltöltéshez</string>
-  <string name="image_upload_resolution">Képfeltöltés felbontása</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Gond adódott a beolvasással?\nGépelje be a vonalkódot</string>
   <string name="wikidata_information">Továbblép</string>
   <string name="description">Leírás: </string>
@@ -417,6 +425,8 @@
   <string name="other_tags_text">Egyéb anyagok:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata adat</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galéria</string>
   <string name="txtOptions">Lehetőségek</string>
@@ -436,8 +446,8 @@
   <string name="format_error">Helytelen vonalkód/QR formátum</string>
   <string name="code_detected">Vonalkód felismerve</string>
   <string name="do_you_want_to">Szeretne fényképeket hozzáadni ehhez a vonalkódhoz?</string>
-  <string name="notify_title">Export complete</string>
-  <string name="notify_content">Click to view exported products</string>
-  <string name="notification_channel_name">Export Notifications</string>
-  <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="notify_title">Exportálás befejezve</string>
+  <string name="notify_content">Kattintson az exportált termékek megtekintéséhez</string>
+  <string name="notification_channel_name">Export Értesítések</string>
+  <string name="notify_channel_description">Értesítés az exportált fájl helyének megjelenítéséhez</string>
 </resources>

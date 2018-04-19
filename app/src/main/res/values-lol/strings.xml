@@ -48,6 +48,12 @@
     <item>crwdns34979:0crwdne34979:0</item>
     <item>crwdns34980:0crwdne34980:0</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>crwdns46803:0crwdne46803:0</item>
+    <item>crwdns46804:0crwdne46804:0</item>
+    <item>crwdns46805:0crwdne46805:0</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>crwdns35043:0crwdne35043:0</item>
@@ -213,6 +219,8 @@
   <string name="permision_write_external_storage">crwdns35186:0crwdne35186:0</string>
   <string name="txt_nutrition_not_found">crwdns35187:0crwdne35187:0</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">crwdns46806:0crwdne46806:0</string>
+  <string name="txt_calories_result">crwdns46807:0%1$scrwdnd46807:0%2$scrwdnd46807:0%3$scrwdne46807:0</string>
   <string name="nutrition_carbohydrate">crwdns35188:0crwdne35188:0</string>
   <string name="nutrition_carbohydrate_short_name">crwdns35189:0crwdne35189:0</string>
   <string name="nutrition_cholesterol">crwdns35190:0crwdne35190:0</string>
@@ -388,7 +396,7 @@
   <string name="dialog_cancel">crwdns37222:0crwdne37222:0</string>
   <string name="choose_resolution">crwdns37305:0crwdne37305:0</string>
   <string name="pref_resolution_summary">crwdns37306:0crwdne37306:0</string>
-  <string name="image_upload_resolution">crwdns37307:0crwdne37307:0</string>
+  <string name="image_upload_resolution">crwdns46928:0crwdne46928:0</string>
   <string name="can_add_barcode">crwdns37291:0crwdne37291:0</string>
   <string name="wikidata_information">crwdns37770:0crwdne37770:0</string>
   <string name="description">crwdns37771:0crwdne37771:0</string>
@@ -417,6 +425,8 @@
   <string name="other_tags_text">crwdns37754:0crwdne37754:0</string>
   <!--shared element transition key-->
   <string name="wikidata">crwdns37776:0crwdne37776:0</string>
+  <string name="disable_image_loading">crwdns46929:0crwdne46929:0</string>
+  <string name="DisableLoadTitle">crwdns46930:0crwdne46930:0</string>
   <string name="txtCamera">crwdns46684:0crwdne46684:0</string>
   <string name="txtGallery">crwdns46685:0crwdne46685:0</string>
   <string name="txtOptions">crwdns46686:0crwdne46686:0</string>
