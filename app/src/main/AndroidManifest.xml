@@ -80,6 +80,7 @@
         <activity android:name=".views.ScannerFragmentActivity" />
         <activity
             android:name=".views.ProductActivity"
+            android:launchMode="singleTop"
             android:parentActivityName=".views.MainActivity"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
             <meta-data
@@ -90,8 +91,6 @@
             android:name=".views.LoginActivity"
 
             android:parentActivityName=".views.MainActivity"
-
-
 
 
             android:screenOrientation="portrait">

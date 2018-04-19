@@ -8,12 +8,10 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.widget.CircularProgressDrawable;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,8 +19,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.firebase.jobdispatcher.JobParameters;
 import com.squareup.picasso.Picasso;
-
-import net.steamcrafted.loadtoast.LoadToast;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -129,9 +125,11 @@ public class OpenFoodAPIClient {
         apiService.getFullProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
+                if (activity == null || activity.isFinishing()) {
+                    return;
+                }
 
                 final State s = response.body();
-
                 if (s.getStatus() == 0) {
                     new MaterialDialog.Builder(activity)
                             .title(R.string.txtDialogsTitle)

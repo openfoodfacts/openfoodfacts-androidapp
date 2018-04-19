@@ -60,10 +60,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         Intent intent = getActivity().getIntent();
-        State state = (State) intent.getExtras().getSerializable("state");
+        refreshView((State) intent.getExtras().getSerializable("state"));
+    }
 
+    @Override
+    public void refreshView(State state) {
+        super.refreshView(state);
         final Product product = state.getProduct();
         List<NutrientLevelItem> levelItem = new ArrayList<>();
 

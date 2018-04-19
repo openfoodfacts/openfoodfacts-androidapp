@@ -98,11 +98,13 @@ public class NutritionInfoProductFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         Intent intent = getActivity().getIntent();
-        State state = (State) intent.getExtras().getSerializable("state");
+        refreshView((State) intent.getExtras().getSerializable("state"));
+    }
 
-
+    @Override
+    public void refreshView(State state) {
+        super.refreshView(state);
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
@@ -132,7 +134,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Picasso.with(view.getContext())
+                Picasso.with(getContext())
                         .load(product.getImageNutritionUrl())
                         .into(mImageNutrition);
             } else {
@@ -140,7 +142,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
                 mImageNutrition.setVisibility(View.GONE);
 
             }
-            Picasso.with(view.getContext())
+            Picasso.with(getContext())
                     .load(product.getImageNutritionUrl())
                     .into(mImageNutrition);
 
@@ -151,7 +153,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
         if (mSendProduct != null && isNotBlank(mSendProduct.getImgupload_nutrition())) {
             addPhotoLabel.setVisibility(View.GONE);
             mUrlImage = mSendProduct.getImgupload_nutrition();
-            Picasso.with(getContext()).load("file://"+mUrlImage).config(Bitmap.Config.RGB_565).into(mImageNutrition);
+            Picasso.with(getContext()).load("file://" + mUrlImage).config(Bitmap.Config.RGB_565).into(mImageNutrition);
         }
 
         if (nutriments == null) {
@@ -353,7 +355,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
         }
     }
 
-    public String getNutrients(){
+    public String getNutrients() {
         return mUrlImage;
     }
 

@@ -20,7 +20,6 @@ import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,10 +57,8 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-
 import openfoodfacts.github.scrachx.openfood.views.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -141,6 +138,14 @@ public class IngredientsProductFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
+        refreshView(mState);
+    }
+
+    @Override
+    public void refreshView(State state) {
+        super.refreshView(state);
+        mState = state;
+
         try {
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
         } catch (NullPointerException e) {
@@ -222,11 +227,11 @@ public class IngredientsProductFragment extends BaseFragment {
             addPhotoLabel.setVisibility(View.GONE);
 
             // Load Image if isLowBatteryMode is false
-            if(!isLowBatteryMode) {
-                Picasso.with(view.getContext())
+            if (!isLowBatteryMode) {
+                Picasso.with(getContext())
                         .load(product.getImageIngredientsUrl())
                         .into(mImageIngredients);
-            }else{
+            } else {
                 mImageIngredients.setVisibility(View.GONE);
             }
 
@@ -347,9 +352,9 @@ public class IngredientsProductFragment extends BaseFragment {
 
 
     private CharSequence getAdditiveTag(AdditiveName additive) {
-        
+
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        
+
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
