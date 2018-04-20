@@ -33,7 +33,7 @@
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Summary</item>
-    <item>Ingredients</item>
+    <item>අමුද්රව්ය</item>
     <item>Nutrition</item>
     <item>Nutrition Table</item>
   </string-array>
@@ -58,7 +58,7 @@
   <string-array name="images_array">
     <item>Default</item>
     <item>Nutrition</item>
-    <item>Ingredients</item>
+    <item>අමුද්රව්ය</item>
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
