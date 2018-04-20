@@ -229,6 +229,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
 
+    //Allergen Checker
+
     //Testing
     androidTestUtil 'com.android.support.test:orchestrator:1.0.1'
     testImplementation "junit:junit:$rootProject.jUnitVersion"
@@ -249,5 +251,5 @@ dependencies {
     resourcePlaceholders {
         files = ['xml/shortcuts.xml']
     }
-    implementation files('libs/allergenChecker-1.0-SNAPSHOT.jar')
+    implementation files('libs/holloway.allergenChecker.jar')
 }
