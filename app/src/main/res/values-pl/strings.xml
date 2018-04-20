@@ -225,8 +225,8 @@
   <string name="permision_write_external_storage">Aby uzyskać historię eksportu, konieczne jest zapisanie zewnętrznej pamięci masowej.</string>
   <string name="txt_nutrition_not_found">Nie dotyczy</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Calculate Calories</string>
-  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
+  <string name="calculate_calories">Oblicz kalorie</string>
+  <string name="txt_calories_result">%1$s kcal w %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Węglowodany</string>
   <string name="nutrition_carbohydrate_short_name">Węglowodany (g)</string>
   <string name="nutrition_cholesterol">Cholesterol</string>
@@ -402,7 +402,7 @@
   <string name="dialog_cancel">Anuluj</string>
   <string name="choose_resolution">Wybierz rozdzielczość</string>
   <string name="pref_resolution_summary">Wybierz rozdzielczość do przesyłania obrazów</string>
-  <string name="image_upload_resolution">Image upload resolution</string>
+  <string name="image_upload_resolution">Rozdzielczość przesyłania zdjęć</string>
   <string name="can_add_barcode">Problem ze skanowaniem? \nPrzeciągnij, by wpisać kod kreskowy</string>
   <string name="wikidata_information">Idź dalej</string>
   <string name="description">Opis: </string>
@@ -431,8 +431,8 @@
   <string name="other_tags_text">Inne substancje:</string>
   <!--shared element transition key-->
   <string name="wikidata">Dane z Wikidata</string>
-  <string name="disable_image_loading">Disable image loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable image loading</string>
+  <string name="disable_image_loading">Wyłącz ładowanie zdjęć, gdy poziom baterii jest niski</string>
+  <string name="DisableLoadTitle">Wyłącz ładowanie zdjęć</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galeria</string>
   <string name="txtOptions">Opcje</string>
@@ -452,7 +452,7 @@
   <string name="format_error">Błędny kod kreskowy/QR</string>
   <string name="code_detected">Wykryliśmy kod kreskowy</string>
   <string name="do_you_want_to">Czy chcesz dodać zdjęcia do kodu kreskowego?</string>
-  <string name="notify_title">Export complete</string>
+  <string name="notify_title">Zakończono eksport</string>
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
