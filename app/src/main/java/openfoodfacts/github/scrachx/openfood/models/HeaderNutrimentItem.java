@@ -13,8 +13,8 @@ public class HeaderNutrimentItem extends NutrimentItem {
      * @param servingValue
      * @param unit
      */
-    public HeaderNutrimentItem(CharSequence title, CharSequence value, CharSequence servingValue, CharSequence unit) {
-        super(bold(title), bold(value), bold(servingValue), bold(unit));
+    public HeaderNutrimentItem(CharSequence title, CharSequence value, CharSequence servingValue, CharSequence unit, CharSequence forPrepared100g, CharSequence forPreparedServing) {
+        super(bold(title), bold(value), bold(servingValue), bold(unit),bold(forPrepared100g),bold(forPreparedServing));
     }
 
 
@@ -23,6 +23,6 @@ public class HeaderNutrimentItem extends NutrimentItem {
      * @param title
      */
     public HeaderNutrimentItem(CharSequence title) {
-        super(bold(title), "", "", "");
+        super(bold(title), "", "", "","","");
     }
 }

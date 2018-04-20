@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingRight="@dimen/spacing_large">
 
     <TextView
         android:id="@+id/nutriment_name"

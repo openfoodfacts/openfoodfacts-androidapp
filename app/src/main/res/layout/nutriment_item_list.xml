@@ -1,48 +1,124 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="horizontal">
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/nutriment_name"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/expand_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="@dimen/horizontal_margin"
-        android:layout_marginRight="@dimen/horizontal_margin"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1.6"
-        android:textSize="@dimen/font_normal"
-        tools:text="Sucres bla bla bla" />
+        android:background="@drawable/list_item_background"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/nutriment_value"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="@dimen/horizontal_margin"
-        android:layout_marginRight="@dimen/horizontal_margin"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:gravity="end"
-        android:textSize="@dimen/font_normal"
-        tools:text="496 Kcal" />
+        <TextView
+            android:id="@+id/nutriment_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1.6"
+            android:textSize="@dimen/font_normal"
+            tools:text="Sucres bla bla bla" />
 
-    <TextView
-        android:id="@+id/nutriment_serving_value"
-        android:layout_width="0dp"
+        <TextView
+            android:id="@+id/nutriment_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:textSize="@dimen/font_normal"
+            tools:text="496 Kcal" />
+
+        <TextView
+            android:id="@+id/nutriment_serving_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:textSize="@dimen/font_normal"
+            tools:text="Per serving" />
+
+        <ImageView
+            android:id="@+id/dropdown_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/ic_arrow_down_black" />
+
+    </LinearLayout>
+
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/expandable_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="@dimen/horizontal_margin"
-        android:layout_marginRight="@dimen/horizontal_margin"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:gravity="end"
-        android:textSize="@dimen/font_normal"
-        tools:text="Per serving" />
+        android:background="@color/grey_200"
+        android:paddingRight="24dp"
+        app:el_duration="300"
+        app:el_expanded="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/spacing_small">
+
+            <TextView
+                android:id="@+id/prepared_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="@dimen/horizontal_margin"
+                android:layout_marginRight="@dimen/horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1.6"
+                android:text="@string/prepared_text"
+                android:textSize="@dimen/font_small" />
+
+            <TextView
+                android:id="@+id/nutriment_prepared_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="@dimen/horizontal_margin"
+                android:layout_marginRight="@dimen/horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:textSize="@dimen/font_small"
+                tools:text="496 Kcal" />
+
+            <TextView
+                android:id="@+id/nutriment_prepared_serving_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="@dimen/horizontal_margin"
+                android:layout_marginRight="@dimen/horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:textSize="@dimen/font_small"
+                tools:text="Per serving" />
+
+        </LinearLayout>
+
+    </net.cachapa.expandablelayout.ExpandableLayout>
 
 </LinearLayout>

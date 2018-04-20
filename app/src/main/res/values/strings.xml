@@ -568,4 +568,6 @@
     <string name="notification_channel_name">Export Notifications</string>
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
 
+    <string name="prepared_text">Prepared</string>
+
 </resources>

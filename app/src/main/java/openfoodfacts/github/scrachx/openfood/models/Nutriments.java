@@ -23,7 +23,7 @@ public class Nutriments implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final String DEFAULT_UNIT = "g";
 
-    public final static String ENERGY ="energy";
+    public final static String ENERGY = "energy";
     public static final String ENERGY_FROM_FAT = "energy-from-fat";
     public static final String FAT = "fat";
     public static final String SATURATED_FAT = "saturated-fat";
@@ -148,7 +148,7 @@ public class Nutriments implements Serializable {
         put(Nutriments.CHLOROPHYL, R.string.chlorophyl);
     }};
 
-    public static final Map<String, Integer> FAT_MAP = new HashMap<String, Integer>(){{
+    public static final Map<String, Integer> FAT_MAP = new HashMap<String, Integer>() {{
         put(Nutriments.SATURATED_FAT, R.string.nutrition_satured_fat);
         put(Nutriments.MONOUNSATURATED_FAT, R.string.nutrition_monounsaturatedFat);
         put(Nutriments.POLYUNSATURATED_FAT, R.string.nutrition_polyunsaturatedFat);
@@ -159,7 +159,7 @@ public class Nutriments implements Serializable {
         put(Nutriments.CHOLESTEROL, R.string.nutrition_cholesterol);
     }};
 
-    public static final Map<String, Integer> CARBO_MAP = new HashMap<String, Integer>(){{
+    public static final Map<String, Integer> CARBO_MAP = new HashMap<String, Integer>() {{
         put(Nutriments.SUGARS, R.string.nutrition_sugars);
         put(Nutriments.SUCROSE, R.string.nutrition_sucrose);
         put(Nutriments.GLUCOSE, R.string.nutrition_glucose);
@@ -169,13 +169,13 @@ public class Nutriments implements Serializable {
         put(Nutriments.MALTODEXTRINS, R.string.nutrition_maltodextrins);
     }};
 
-    public static final Map<String, Integer> PROT_MAP = new HashMap<String, Integer>(){{
+    public static final Map<String, Integer> PROT_MAP = new HashMap<String, Integer>() {{
         put(Nutriments.CASEIN, R.string.nutrition_casein);
         put(Nutriments.SERUM_PROTEINS, R.string.nutrition_serum_proteins);
         put(Nutriments.NUCLEOTIDES, R.string.nutrition_nucleotides);
     }};
 
-    public static final Map<String, Integer> VITAMINS_MAP = new HashMap<String, Integer>(){{
+    public static final Map<String, Integer> VITAMINS_MAP = new HashMap<String, Integer>() {{
         put(Nutriments.VITAMIN_A, R.string.vitamin_a);
         put(Nutriments.BETA_CAROTENE, R.string.vitamin_a);
         put(Nutriments.VITAMIN_D, R.string.vitamin_d);
@@ -196,32 +196,61 @@ public class Nutriments implements Serializable {
     private boolean containsVitamins;
     private boolean containsMinerals;
 
-    public Nutriment get(String nutrimentName){
-        if (!additionalProperties.containsKey(nutrimentName)) {
+    public Nutriment get(String nutrimentName) {
+        //checking if it doesn't contain both prepared and non-prepared values.
+        if (!additionalProperties.containsKey(nutrimentName) && getPrepared100g(nutrimentName).equals("-")) {
             return null;
         }
 
-        return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName));
+        return new Nutriment(nutrimentName, get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName), getPrepared100g(nutrimentName), getPreparedServing(nutrimentName));
     }
 
-    public String getUnit(String nutrimentName){
+    public String getUnit(String nutrimentName) {
         String unit = ((String) additionalProperties.get(nutrimentName + "_unit"));
         return isEmpty(unit) ? DEFAULT_UNIT : unit;
     }
 
-    public String getServing(String nutrimentName){
-        return additionalProperties.get(nutrimentName + "_serving").toString();
+    public String getServing(String nutrimentName) {
+        Object obj = additionalProperties.get(nutrimentName + "_serving");
+        if (obj==null)
+            return "-";
+        else
+            return obj.toString();
     }
 
-    public String get100g(String nutrimentName){
-        return additionalProperties.get(nutrimentName + "_100g").toString();
+    public String get100g(String nutrimentName) {
+        Object obj = additionalProperties.get(nutrimentName + "_100g");
+        if (obj==null)
+            return "-";
+        else
+            return obj.toString();
     }
 
-    public Double getValue(String nutrimentName){
+    public Double getValue(String nutrimentName) {
         return ((Double) additionalProperties.get(nutrimentName + "_value"));
     }
 
-    public boolean contains(String nutrimentName){
+    public String getPreparedServing(String nutrimentName) {
+        Object obj = additionalProperties.get(nutrimentName + "_prepared_serving");
+        if (obj==null)
+            return "-";
+        else
+            return obj.toString();
+    }
+
+    public String getPrepared100g(String nutrimentName) {
+        Object obj = additionalProperties.get(nutrimentName + "_prepared_100g");
+        if (obj==null)
+            return "-";
+        else
+            return obj.toString();
+    }
+
+    public Double getPreparedValue(String nutrimentName) {
+        return ((Double) additionalProperties.get(nutrimentName + "_value"));
+    }
+
+    public boolean contains(String nutrimentName) {
         return additionalProperties.containsKey(nutrimentName);
     }
 
@@ -254,12 +283,16 @@ public class Nutriments implements Serializable {
         private final String value;
         private final String for100g;
         private final String forServing;
+        private final String forPrepared100g;
+        private final String forPreparedServing;
         private final String unit;
 
-        Nutriment(String name, String for100g, String forServing, String unit) {
+        Nutriment(String name, String for100g, String forServing, String unit, String forPrepared100g, String forPreparedServing) {
             this.value = name;
             this.for100g = for100g;
             this.forServing = forServing;
+            this.forPrepared100g = forPrepared100g;
+            this.forPreparedServing = forPreparedServing;
             this.unit = unit;
         }
 
@@ -273,6 +306,14 @@ public class Nutriments implements Serializable {
 
         public String getForServing() {
             return forServing;
+        }
+
+        public String getForPrepared100g() {
+            return forPrepared100g;
+        }
+
+        public String getForPreparedServing() {
+            return forPreparedServing;
         }
 
         public String getUnit() {
