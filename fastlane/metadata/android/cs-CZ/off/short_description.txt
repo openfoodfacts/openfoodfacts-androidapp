@@ -1,1 +1,1 @@
-Scan food products to decrypt labels: ingredients, additives and nutrition facts
+Naskenujte kódy na potravinách abyste získali informace o složkách, přísadách a výživových hodnotách
