@@ -396,7 +396,7 @@
   <string name="dialog_cancel">Mégse</string>
   <string name="choose_resolution">Válasszon felbontást</string>
   <string name="pref_resolution_summary">Válasszon felbontást kép feltöltéshez</string>
-  <string name="image_upload_resolution">Image upload resolution</string>
+  <string name="image_upload_resolution">Képfeltöltés felbontása</string>
   <string name="can_add_barcode">Gond adódott a beolvasással?\nGépelje be a vonalkódot</string>
   <string name="wikidata_information">Továbblép</string>
   <string name="description">Leírás: </string>
@@ -425,8 +425,8 @@
   <string name="other_tags_text">Egyéb anyagok:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata adat</string>
-  <string name="disable_image_loading">Disable image loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable image loading</string>
+  <string name="disable_image_loading">Kép betöltés tiltása alacsony akkumulátor töltöttség esetén</string>
+  <string name="DisableLoadTitle">Kép betöltés tiltása</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galéria</string>
   <string name="txtOptions">Lehetőségek</string>
