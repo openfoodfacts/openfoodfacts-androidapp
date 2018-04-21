@@ -159,7 +159,7 @@
   <string name="search_drawer">Search</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="category_drawer">Kategorioj</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Kategorio</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
   <string name="user_drawer">Uzanto</string>
@@ -259,8 +259,8 @@
   <string name="action_search">Search</string>
   <string name="search_hint">Search a product</string>
   <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="brand">Varomarko :</string>
+  <string name="number_of_products">Nombro da produktoj: </string>
   <string name="txt_no_results">No results found</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
@@ -405,7 +405,7 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Varomarko</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Aldonaĵo</string>
   <string name="search_string">Search</string>
   <string name="country_string">Lando</string>
   <string name="store_subtitle">Vendejo</string>
@@ -413,15 +413,15 @@
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Vendejo</string>
   <string name="packaging_string">Pakaĵo</string>
-  <string name="label_string">Label</string>
-  <string name="category_string">Category</string>
+  <string name="label_string">Etikedo</string>
+  <string name="category_string">Kategorio</string>
   <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="contributor_string">Kontribuanto</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="vitamin_tags_text">Vitaminoj:</string>
   <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
+  <string name="mineral_tags_text">Mineraloj:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
@@ -450,4 +450,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>
