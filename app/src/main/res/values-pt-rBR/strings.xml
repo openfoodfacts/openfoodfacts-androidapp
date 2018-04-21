@@ -379,7 +379,7 @@
   <string name="connectivity_check">Por favor, verifique sua conexão de internet</string>
   <string name="dismiss">Descartar</string>
   <string name="Terms">Termos e condições</string>
-  <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+  <string name="terms_url">https://world.openfoodfacts.org/terms-of-use&amp;hl=pt-pt</string>
   <string name="preference_header_general">Gerais</string>
   <string name="preference_header_network">Rede</string>
   <string name="preference_header_contributing">Contribuições</string>
@@ -450,4 +450,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Exportar Notificações</string>
   <string name="notify_channel_description">Notificação para mostrar a localização do arquivo exportado</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>
