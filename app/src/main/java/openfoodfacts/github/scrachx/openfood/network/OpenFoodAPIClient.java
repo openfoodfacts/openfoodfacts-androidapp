@@ -8,12 +8,10 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.widget.CircularProgressDrawable;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,8 +19,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.firebase.jobdispatcher.JobParameters;
 import com.squareup.picasso.Picasso;
-
-import net.steamcrafted.loadtoast.LoadToast;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -386,11 +382,11 @@ public class OpenFoodAPIClient {
      * and write new product's data over that.
      */
     public void post(final Context activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
-       /** final LoadToast lt = new LoadToast(activity);
+        // final LoadToast lt = new LoadToast(activity);
         ProgressDialog dialog = new ProgressDialog(activity, ProgressDialog.STYLE_SPINNER);
         dialog.setIndeterminate(true);
         dialog.setMessage(activity.getString(R.string.toastSending));
-        lt.show();**/
+//        lt.show();
 
         if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity() == null) {
             apiService.saveProductWithoutNameBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
