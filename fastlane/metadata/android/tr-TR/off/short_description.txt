@@ -1,1 +1,1 @@
-Scan food products to decrypt labels: ingredients, additives and nutrition facts
+Etiketleri çözmek için gıda ürünlerini tarayın: bileşenleri, katkı maddeleri ve beslenme bilgileri
