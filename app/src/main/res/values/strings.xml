@@ -563,6 +563,8 @@
     <string name="format_error">Wrong Barcode/QR format</string>
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+    <string name="offline_notification_title">Offline contributions you need to send</string>
+    <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
     <string name="notify_title">Export complete</string>
     <string name="notify_content">Click to view exported products</string>
     <string name="notification_channel_name">Export Notifications</string>

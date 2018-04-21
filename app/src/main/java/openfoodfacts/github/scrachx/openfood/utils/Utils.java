@@ -325,8 +325,8 @@ public class Utils {
         return String.format(Locale.getDefault(), "%.2f", Double.valueOf(value));
     }
 
-    public static DaoSession getAppDaoSession(Activity activity) {
-        return ((OFFApplication) activity.getApplication()).getDaoSession();
+    public static DaoSession getAppDaoSession(Context context) {
+        return ((OFFApplication) context.getApplicationContext()).getDaoSession();
     }
 
 

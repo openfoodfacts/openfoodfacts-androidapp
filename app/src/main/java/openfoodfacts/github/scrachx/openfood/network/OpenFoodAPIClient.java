@@ -976,4 +976,120 @@ public class OpenFoodAPIClient {
             }
         });
     }
+
+    /**
+     * OnResponseCall for uploads through notifications
+     */
+    public void onResponseCallForNotificationPostFunction(Call<State> call, Response<State> response, Context context, final OnProductSentCallback productSentCallback, SendProduct product) {
+        if (!response.isSuccessful() || response.body().getStatus() == 0) {
+
+            productSentCallback.onProductSentResponse(false);
+            return;
+        }
+
+        String imguploadFront = product.getImgupload_front();
+        if (StringUtils.isNotEmpty(imguploadFront)) {
+            ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
+            postImg(context, image);
+        }
+
+        String imguploadIngredients = product.getImgupload_ingredients();
+        if (StringUtils.isNotEmpty(imguploadIngredients)) {
+            postImg(context, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)));
+        }
+
+        String imguploadNutrition = product.getImgupload_nutrition();
+        if (StringUtils.isNotBlank(imguploadNutrition)) {
+            postImg(context, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)));
+        }
+
+
+        productSentCallback.onProductSentResponse(true);
+    }
+
+
+    /**
+     * Post method for upload through notification
+     */
+    public void postForNotification(final Context context, final SendProduct product, final OnProductSentCallback productSentCallback) {
+
+        if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity() == null) {
+            apiService.saveProductWithoutNameBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+                @Override
+                public void onResponse(Call<State> call, Response<State> response) {
+                    onResponseCallForNotificationPostFunction(call, response, context, productSentCallback, product);
+
+                }
+
+                @Override
+                public void onFailure(Call<State> call, Throwable t) {
+
+                    productSentCallback.onProductSentResponse(false);
+
+                }
+            });
+        } else if (product.getName().equals("") && product.getBrands().equals("")) {
+            apiService.saveProductWithoutNameAndBrands(product.getBarcode(), product.getLang(), product.getQuantity(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+                @Override
+                public void onResponse(Call<State> call, Response<State> response) {
+                    onResponseCallForNotificationPostFunction(call, response, context, productSentCallback, product);
+
+                }
+
+                @Override
+                public void onFailure(Call<State> call, Throwable t) {
+
+                    productSentCallback.onProductSentResponse(false);
+
+                }
+            });
+        } else if (product.getName().equals("") && product.getQuantity() == null) {
+            apiService.saveProductWithoutNameAndQuantity(product.getBarcode(), product.getLang(), product.getBrands(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+                @Override
+                public void onResponse(Call<State> call, Response<State> response) {
+                    onResponseCallForNotificationPostFunction(call, response, context, productSentCallback, product);
+
+                }
+
+                @Override
+                public void onFailure(Call<State> call, Throwable t) {
+
+                    productSentCallback.onProductSentResponse(false);
+
+                }
+            });
+        } else if (product.getBrands().equals("") && product.getQuantity() == null) {
+            apiService.saveProductWithoutBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getName(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+                @Override
+                public void onResponse(Call<State> call, Response<State> response) {
+                    onResponseCallForNotificationPostFunction(call, response, context, productSentCallback, product);
+
+                }
+
+                @Override
+                public void onFailure(Call<State> call, Throwable t) {
+
+                    productSentCallback.onProductSentResponse(false);
+
+                }
+            });
+        } else {
+            apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product
+                    .getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
+                @Override
+                public void onResponse(Call<State> call, Response<State> response) {
+                    onResponseCallForNotificationPostFunction(call, response, context, productSentCallback, product);
+
+                }
+
+                @Override
+                public void onFailure(Call<State> call, Throwable t) {
+
+                    productSentCallback.onProductSentResponse(false);
+
+                }
+            });
+        }
+
+    }
 }
