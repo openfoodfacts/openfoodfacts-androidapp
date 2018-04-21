@@ -20,7 +20,7 @@ To discover the Open Food Facts project, please visit https://openfoodfacts.org
 - On wines and beers, you will find the alcohol content.
 
 *** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+- Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d'une connexion Internet sur le moment.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
