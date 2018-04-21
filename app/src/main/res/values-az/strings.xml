@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="product">Product</string>
+  <string name="product">Məhsul</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Axtar</string>
@@ -73,7 +73,7 @@
   <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
   <string name="toast_retrieving">Yüklənir...</string>
   <string name="txtGenericName">Common name :</string>
-  <string name="txtBarcode">Barcode :</string>
+  <string name="txtBarcode">Barkod :</string>
   <string name="txtQuantity">Quantity :</string>
   <string name="txtPackaging">Packaging :</string>
   <string name="txtBrands">Brands :</string>
@@ -85,7 +85,7 @@
   <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Countries where sold :</string>
+  <string name="txtCountries">Country :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
@@ -100,7 +100,7 @@
   <string name="txtNutritionLevelModerate">in moderate quantity</string>
   <string name="txtNutritionLevelHigh">in high quantity</string>
   <string name="txtLogin">Login :</string>
-  <string name="txtPass">Password :</string>
+  <string name="txtPass">Şifrə :</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
   <string name="txtSave">Save</string>
   <string name="txtSignIn">Sign in</string>
@@ -259,7 +259,7 @@
   <string name="action_search">Axtar</string>
   <string name="search_hint">Məhsul axtar</string>
   <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
+  <string name="brand">Brend :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">Nəticə tapılmadı</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
@@ -419,7 +419,7 @@
   <string name="contributor_string">Contributor</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="vitamin_tags_text">Vitaminlər:</string>
   <string name="amino_acid_tags_text">Amino Acids:</string>
   <string name="mineral_tags_text">Minerals:</string>
   <string name="other_tags_text">Other Substances:</string>
@@ -450,4 +450,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>
