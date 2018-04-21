@@ -74,7 +74,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="product">Product</string>
+  <string name="product">Gynnyrch</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Search</string>
@@ -85,11 +85,11 @@
   <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
   <string name="toast_retrieving">Loading...</string>
   <string name="txtGenericName">Common name :</string>
-  <string name="txtBarcode">Barcode :</string>
+  <string name="txtBarcode">Côd bar :</string>
   <string name="txtQuantity">Quantity :</string>
   <string name="txtPackaging">Packaging :</string>
-  <string name="txtBrands">Brands :</string>
-  <string name="txtCategories">Categories :</string>
+  <string name="txtBrands">Brandiau :</string>
+  <string name="txtCategories">Categorïau :</string>
   <string name="txtLabels">Labels, certifications, awards :</string>
   <string name="txtManufacturing">Manufacturing or processing places :</string>
   <string name="txtIngredientsOrigins">Origin of ingredients :</string>
@@ -97,12 +97,12 @@
   <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Countries where sold :</string>
+  <string name="txtCountries">Country :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
-  <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
-  <string name="txtAdditives">Additives :</string>
+  <string name="txtSubstances">Sylweddau neu gynhyrchion sy\'n achosi alergeddau neu anoddefiadau :</string>
+  <string name="txtAdditives">Ychwanegion :</string>
   <string name="txtTraces">Traces :</string>
   <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
   <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
@@ -171,7 +171,7 @@
   <string name="search_drawer">Search</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="category_drawer">Categorïau</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Categori</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
   <string name="user_drawer">User</string>
@@ -417,7 +417,7 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Brand</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Ychwanegyn</string>
   <string name="search_string">Search</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">Store</string>
@@ -426,7 +426,7 @@
   <string name="store_string">Store</string>
   <string name="packaging_string">Packaging</string>
   <string name="label_string">Label</string>
-  <string name="category_string">Category</string>
+  <string name="category_string">Categori</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
   <string name="app_disabled_text">Application is disabled</string>
@@ -462,4 +462,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>
