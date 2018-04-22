@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.fragments;
+package openfoodfacts.github.scrachx.openfood.views.product.nutrition_details;
 
 
 import android.content.Intent;
@@ -37,6 +37,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;

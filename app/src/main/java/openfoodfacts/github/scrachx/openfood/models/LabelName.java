@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 
-
 import android.util.Log;
 
 import org.greenrobot.greendao.annotation.Entity;
@@ -106,12 +105,12 @@ public class LabelName {
         }
         String res = this.wikiDataId;
         int startIndex = res.indexOf("en");
-        startIndex= startIndex + 5;
+        startIndex = startIndex + 5;
         int lastIndex = res.lastIndexOf("\"");
-        if(startIndex<3 || lastIndex < 3 ){
+        if (startIndex < 3 || lastIndex < 3) {
             return res;
         }
-        res = res.substring(startIndex,lastIndex);
+        res = res.substring(startIndex, lastIndex);
         return res;
     }
 
@@ -130,5 +129,13 @@ public class LabelName {
 
     public void setIsWikiDataIdPresent(Boolean isWikiDataIdPresent) {
         this.isWikiDataIdPresent = isWikiDataIdPresent;
+    }
+
+    public Boolean isNull() {
+        return id == null && labelTag == null && languageCode == null && name == null;
+    }
+
+    public Boolean isNotNull() {
+        return id != null && labelTag != null && languageCode != null && name != null;
     }
 }

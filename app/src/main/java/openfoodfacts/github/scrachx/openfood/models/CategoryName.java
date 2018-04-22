@@ -122,4 +122,11 @@ public class CategoryName {
         this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 
+    public Boolean isNull() {
+        return id == null && categoryTag == null && languageCode == null && name == null;
+    }
+
+    public Boolean isNotNull() {
+        return id != null && categoryTag != null && languageCode != null && name != null;
+    }
 }
