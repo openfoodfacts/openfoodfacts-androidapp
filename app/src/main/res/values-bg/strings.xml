@@ -217,9 +217,9 @@
   <string name="txt_exporting_history">Exporting history...</string>
   <string name="txt_history_exported">History exported</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
-  <string name="txt_nutrition_not_found">N/A</string>
+  <string name="txt_nutrition_not_found">Неприложимо</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Calculate Calories</string>
+  <string name="calculate_calories">Изчисляване на калориите</string>
   <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Въглехидрати</string>
   <string name="nutrition_carbohydrate_short_name">Въглехидрати (g)</string>
@@ -233,15 +233,15 @@
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
   <string name="nutrition_header">Nutrition facts</string>
   <string name="nutrition_no_data_message">Няма налични данни за този продукт</string>
-  <string name="nutrition_per_quantity">For 100g/100ml</string>
+  <string name="nutrition_per_quantity">За 100g/100ml</string>
   <string name="nutrition_proteins">Протеини</string>
   <string name="nutrition_proteins_short_name">Протеини (g)</string>
   <string name="nutrition_salt">Сол</string>
   <string name="nutrition_salt_short_name">Сол (g)</string>
-  <string name="nutrition_satured_fat">Satured fat</string>
-  <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
+  <string name="nutrition_satured_fat">Наситени мазнини</string>
+  <string name="nutrition_satured_fat_short_name">Наситени мазнини (g)</string>
   <string name="nutrition_serving">Per serving</string>
-  <string name="nutrition_serving_size">Serving size :</string>
+  <string name="nutrition_serving_size">Големина на порцията:</string>
   <string name="nutrition_sodium">Натрий</string>
   <string name="nutrition_sodium_short_name">Натрий (g)</string>
   <string name="nutrition_sugars">Захар</string>
@@ -332,8 +332,8 @@
   <string name="take_picture_ingredients">Снимайте съдържанието</string>
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-  <string name="take_more_pictures">Take more pictures</string>
-  <string name="txtSaturatedFat">Saturated fat</string>
+  <string name="take_more_pictures">Направете още снимки</string>
+  <string name="txtSaturatedFat">Наситени мазнини</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
   <string name="scan_shortcut_short_label">Сканирай</string>
@@ -347,7 +347,7 @@
   <string name="forgot_password">Забравена парола</string>
   <string name="next">NEXT</string>
   <string name="skip">ПРЕСКАЧЕНЕ</string>
-  <string name="start">GOT IT</string>
+  <string name="start">РАЗБРАХ</string>
   <string name="contact">За контакти</string>
   <string name="contact_summary">Contact the team</string>
   <string name="email_not_found">No email applications found</string>
