@@ -38,7 +38,7 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView =  inflater.inflate(R.layout.fragment_category_list, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_category_list, container, false);
         fastScroller = rootView.findViewById(R.id.fast_scroller);
         return rootView;
     }
@@ -53,17 +53,22 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
         binding.setViewModel(getViewModel());
         fastScroller.setRecyclerView(binding.recycler);
         binding.recycler.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-            if(binding.getViewModel().getCategories().get().isEmpty()){
+            if (binding.getViewModel().getCategories().get().isEmpty()) {
                 fastScroller.setVisibility(View.GONE);
-            }
-            else {
+            } else {
                 fastScroller.setVisibility(View.VISIBLE);
                 // check for an empty item in the start of the list
-                if(viewModel.getCategories().get().get(0).getName().isEmpty()){
+                if (viewModel.getCategories().get().get(0).getName().isEmpty()) {
                     viewModel.getCategories().get().remove(0);
                     binding.recycler.getAdapter().notifyItemRemoved(0);
-                    binding.recycler.getAdapter().notifyItemRangeChanged(0,binding.recycler.getAdapter().getItemCount());
+                    binding.recycler.getAdapter().notifyItemRangeChanged(0, binding.recycler.getAdapter().getItemCount());
                 }
+            }
+        });
+        binding.offlineView.findViewById(R.id.buttonToRefresh).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.loadCategories();
             }
         });
     }
@@ -76,7 +81,7 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
     @NonNull
     @Override
     protected FragmentComponent createComponent() {
-        return ((BaseActivity)getActivity()).getActivityComponent().plusFragmentComponent();
+        return ((BaseActivity) getActivity()).getActivityComponent().plusFragmentComponent();
     }
 
     @Override
