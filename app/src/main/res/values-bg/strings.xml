@@ -221,8 +221,8 @@
   <!-- Nutrition info tab -->
   <string name="calculate_calories">Calculate Calories</string>
   <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
-  <string name="nutrition_carbohydrate">Carbohydrate</string>
-  <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
+  <string name="nutrition_carbohydrate">Въглехидрати</string>
+  <string name="nutrition_carbohydrate_short_name">Въглехидрати (g)</string>
   <string name="nutrition_cholesterol">Холестерол</string>
   <string name="nutrition_cholesterol_short_name">Холестерол (g)</string>
   <string name="nutrition_energy">Energy</string>
@@ -232,7 +232,7 @@
   <string name="nutrition_fiber">Dietary fiber</string>
   <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
   <string name="nutrition_header">Nutrition facts</string>
-  <string name="nutrition_no_data_message">No data is available for this product</string>
+  <string name="nutrition_no_data_message">Няма налични данни за този продукт</string>
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Протеини</string>
   <string name="nutrition_proteins_short_name">Протеини (g)</string>
@@ -373,7 +373,7 @@
   <string name="FrequentlyAskedQuestions">Често задавани въпроси</string>
   <string name="translate_help_title">Help translate Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
-  <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="please_check_your_connection">Проверете връзката си с интернет.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Advanced Search &amp; Charts</string>
   <string name="connectivity_check">Проверете връзката си с интернет</string>
@@ -408,11 +408,11 @@
   <string name="additive_string">Добавка</string>
   <string name="search_string">Търсене</string>
   <string name="country_string">Country</string>
-  <string name="store_subtitle">Store</string>
-  <string name="packaging_subtitle">Packaging</string>
-  <string name="last_seen_string">%1$d %2$s ago</string>
-  <string name="store_string">Store</string>
-  <string name="packaging_string">Packaging</string>
+  <string name="store_subtitle">Магазин</string>
+  <string name="packaging_subtitle">Опаковка</string>
+  <string name="last_seen_string">Преди %1$d %2$s</string>
+  <string name="store_string">Магазин</string>
+  <string name="packaging_string">Опаковка</string>
   <string name="label_string">Етикет</string>
   <string name="category_string">Категория</string>
   <string name="connection">Connected</string>
@@ -444,7 +444,7 @@
   <string name="no_barcode">Не открихме никакъв баркод</string>
   <string name="enter_barcode">Въведете баркода по-долу</string>
   <string name="format_error">Грешен баркод/QR формат</string>
-  <string name="code_detected">We have detected the barcode</string>
+  <string name="code_detected">Открихме баркода</string>
   <string name="do_you_want_to">Искате ли да прибавите снимки към този баркод?</string>
   <string name="notify_title">Export complete</string>
   <string name="notify_content">Click to view exported products</string>
