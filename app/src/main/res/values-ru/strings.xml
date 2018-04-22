@@ -5,19 +5,19 @@
     <item quantity="one"> минута</item>
     <item quantity="few"> минуты</item>
     <item quantity="many"> минут</item>
-    <item quantity="other"> минуты</item>
+    <item quantity="other"> минут</item>
   </plurals>
   <plurals name="hours">
     <item quantity="one"> час</item>
     <item quantity="few"> часа</item>
     <item quantity="many"> часов</item>
-    <item quantity="other"> часа</item>
+    <item quantity="other"> часов</item>
   </plurals>
   <plurals name="days">
     <item quantity="one"> день</item>
     <item quantity="few"> дня</item>
     <item quantity="many"> дней</item>
-    <item quantity="other"> дня</item>
+    <item quantity="other"> дней</item>
   </plurals>
   <string name="action_settings">Настройки</string>
   <string name="action_about">О приложении</string>
@@ -136,7 +136,7 @@
   <string name="txtTakePicture">Сделайте фото</string>
   <string name="txtSendAll">Отправить все</string>
   <string name="txtNoData">Нет данных</string>
-  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeeded">Подождите…</string>
   <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
@@ -440,9 +440,9 @@
   <string name="by_brand">Марка</string>
   <string name="by_barcode">Штрих-код</string>
   <string name="by_time">Recently Viewed</string>
-  <string name="sort">Sort</string>
+  <string name="sort">Сортировка</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
-  <string name="sort_by">Sort By</string>
+  <string name="sort_by">Сортировать по</string>
   <string name="shake_summary">Shake phone to scan products</string>
   <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->

@@ -131,6 +131,8 @@
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
+        <service android:name=".utils.UploadService" />
+        <service android:name=".utils.WifiUploadReceiver$WifiService" />
 
         <provider
             android:name=".utils.GenericFileProvider"
@@ -143,6 +145,15 @@
         </provider>
 
         <activity android:name=".views.ProductBrowsingListActivity"></activity>
+
+        <receiver
+            android:name=".utils.WifiUploadReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
