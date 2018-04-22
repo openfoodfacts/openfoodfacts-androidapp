@@ -454,5 +454,5 @@
   <string name="notification_channel_name">Eksportēt paziņojumus</string>
   <string name="notify_channel_description">Paziņojums, lai parādītu eksportēto failu atrašanās vietu</string>
   <string name="offline_notification_title">Nepieciešamie sūtījumi bezsaistē</string>
-  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="offline_notification_context">Jums ir %1$d bezsaistes produkti, kas gaida augšupielādi Open Food Facts</string>
 </resources>
