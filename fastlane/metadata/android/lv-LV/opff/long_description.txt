@@ -8,11 +8,11 @@ Lai aplúkotu projektu par dzīvnieku barības faktiem, lūdzu, apmeklējiet vie
 
 - Open Pet Food Facts is a pet food products database made by everyone, for everyone.
 - You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Mums ir daudz interesantu projektu, kuros tu vari piedalīties dažādos veidos. 
 - You can start contributing today by adding a product from your pet's cupboard. 
 
 
-*** Get the Facts ***
+*** Iegūt faktus ***
 
 Jūs arī varēsit atrast (atbilstoši norādījumiem uz produktiem):
 - list of ingredients (including ash content)
@@ -20,7 +20,7 @@ Jūs arī varēsit atrast (atbilstoši norādījumiem uz produktiem):
 - zīmoli, alergēni, etiķetes (organiskie, vegāni...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
-*** Works well in any condition ***
+*** darbojas labi jebkurā stāvoklī ***
 - Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
