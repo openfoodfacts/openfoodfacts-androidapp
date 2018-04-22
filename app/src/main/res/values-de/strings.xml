@@ -450,6 +450,6 @@
   <string name="notify_content">Hier klicken, um die exportierten Produkte anzuzeigen</string>
   <string name="notification_channel_name">Benachrichtigungen exportieren</string>
   <string name="notify_channel_description">Benachrichtigung, um den Speicherort der exportierten Dateien anzuzeigen</string>
-  <string name="offline_notification_title">Offline contributions you need to send</string>
-  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="offline_notification_title">Noch zu sendende Offline-Beiträge</string>
+  <string name="offline_notification_context">Sie verfügen über %1$d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden.</string>
 </resources>
