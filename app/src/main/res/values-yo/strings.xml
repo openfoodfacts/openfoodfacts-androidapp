@@ -70,11 +70,11 @@
   <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
   <string name="toast_retrieving">Loading...</string>
   <string name="txtGenericName">Common name :</string>
-  <string name="txtBarcode">Barcode :</string>
+  <string name="txtBarcode">Onnka idanimo oja :</string>
   <string name="txtQuantity">Quantity :</string>
   <string name="txtPackaging">Packaging :</string>
-  <string name="txtBrands">Brands :</string>
-  <string name="txtCategories">Categories :</string>
+  <string name="txtBrands">Awon Eya :</string>
+  <string name="txtCategories">Awon eka :</string>
   <string name="txtLabels">Labels, certifications, awards :</string>
   <string name="txtManufacturing">Manufacturing or processing places :</string>
   <string name="txtIngredientsOrigins">Origin of ingredients :</string>
@@ -82,12 +82,12 @@
   <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Countries where sold :</string>
+  <string name="txtCountries">Country :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
-  <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
-  <string name="txtAdditives">Additives :</string>
+  <string name="txtSubstances">Ogun tabi oja to un fa ikoriira :</string>
+  <string name="txtAdditives">Awon afikun :</string>
   <string name="txtTraces">Traces :</string>
   <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
   <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
@@ -106,7 +106,7 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
-  <string name="hintBarcode">Barcode</string>
+  <string name="hintBarcode">Onnka idanimo oja</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Password</string>
   <string name="errorLogin">Login or password error</string>
@@ -123,7 +123,7 @@
   <string name="hintEnergyUnit">Energy unit</string>
   <string name="hintWeight">Weight</string>
   <string name="hintStores">Store</string>
-  <string name="hintBrand">Brand</string>
+  <string name="hintBrand">Eya</string>
   <string name="txtTakePicture">Take picture</string>
   <string name="txtSendAll">Upload all</string>
   <string name="txtNoData">No data</string>
@@ -155,7 +155,7 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Search</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
-  <string name="category_drawer">Categories</string>
+  <string name="category_drawer">Awon eka</string>
   <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
@@ -256,7 +256,7 @@
   <string name="action_search">Search</string>
   <string name="search_hint">Search a product</string>
   <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
+  <string name="brand">Eya :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">No results found</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
@@ -401,8 +401,8 @@
   <string name="Wikipedia">View on Wikipedia</string>
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
-  <string name="brand_string">Brand</string>
-  <string name="additive_string">Additive</string>
+  <string name="brand_string">Eya</string>
+  <string name="additive_string">Afikun</string>
   <string name="search_string">Search</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">Store</string>
@@ -428,8 +428,8 @@
   <string name="txtGallery">Gallery</string>
   <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
-  <string name="by_brand">Brand</string>
-  <string name="by_barcode">Barcode</string>
+  <string name="by_brand">Eya</string>
+  <string name="by_barcode">Onnka idanimo oja</string>
   <string name="by_time">Recently Viewed</string>
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
@@ -447,4 +447,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

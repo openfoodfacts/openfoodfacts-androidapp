@@ -4,10 +4,10 @@ Open Products Facts es una base de datos abierta de todos los productos en el mu
 
 - Open Food Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Tenemos muchos proyectos interesantes a los que puedes contribuir de diferentes maneras. 
 - You can start contributing today by adding your first product. 
 
-*** Get the Facts ***
+*** Obtener los datos ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***
@@ -16,20 +16,20 @@ Open Products Facts es una base de datos abierta de todos los productos en el mu
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Funciona bien en cualquier condición ***
+- Puede agregar nuevos productos, incluso si no tiene una conexión a Internet en este momento.
+- La aplicación solo carga lo estrictamente necesario para reducir el consumo de datos y batería
+- No necesita una cámara para buscar un producto. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Puede usar la aplicación de forma anónima
+- Puede exportar su historial de escaneo
 
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
 Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Preguntas, comentarios: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 

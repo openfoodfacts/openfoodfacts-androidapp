@@ -59,10 +59,10 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="product">Product</string>
+  <string name="product">Produk</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
-  <string name="search_button">Search</string>
+  <string name="search_button">Gelintar</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
   <string name="alert_dialog_warning_title">Warning</string>
@@ -70,7 +70,7 @@
   <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
   <string name="toast_retrieving">Loading...</string>
   <string name="txtGenericName">Common name :</string>
-  <string name="txtBarcode">Barcode :</string>
+  <string name="txtBarcode">Barkod :</string>
   <string name="txtQuantity">Quantity :</string>
   <string name="txtPackaging">Packaging :</string>
   <string name="txtBrands">Brands :</string>
@@ -82,7 +82,7 @@
   <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Countries where sold :</string>
+  <string name="txtCountries">Country :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
@@ -97,7 +97,7 @@
   <string name="txtNutritionLevelModerate">in moderate quantity</string>
   <string name="txtNutritionLevelHigh">in high quantity</string>
   <string name="txtLogin">Login :</string>
-  <string name="txtPass">Password :</string>
+  <string name="txtPass">Kata laluan :</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
   <string name="txtSave">Save</string>
   <string name="txtSignIn">Sign in</string>
@@ -106,9 +106,9 @@
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
-  <string name="hintBarcode">Barcode</string>
+  <string name="hintBarcode">Barkod</string>
   <string name="hintLogin">Login</string>
-  <string name="hintPass">Password</string>
+  <string name="hintPass">Kata laluan</string>
   <string name="errorLogin">Login or password error</string>
   <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
   <string name="uploadLater">Image will be uploaded when network is available</string>
@@ -153,7 +153,7 @@
   <string name="home_drawer">Home</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
-  <string name="search_drawer">Search</string>
+  <string name="search_drawer">Gelintar</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="category_drawer">Categories</string>
   <string name="search_by_category">Category</string>
@@ -164,7 +164,7 @@
   <string name="txt_anonymous">Anonymous</string>
   <string name="txt_product_not_found">Products not found</string>
   <string name="delete_txt">Delete</string>
-  <string name="sign_in_drawer">Sign-in</string>
+  <string name="sign_in_drawer">Daftar masuk</string>
   <string name="alert_drawer">Allergen alert</string>
   <string name="warning_allergens">Contains allergens</string>
   <string name="title_dialog_alert">Add alert</string>
@@ -253,7 +253,7 @@
   <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">Search</string>
+  <string name="action_search">Gelintar</string>
   <string name="search_hint">Search a product</string>
   <string name="number_of_results">Number of results: </string>
   <string name="brand">Brand :</string>
@@ -335,7 +335,7 @@
   <string name="disabled_message">Shortcut Not Available</string>
   <string name="scan_shortcut_short_label">Imbas</string>
   <string name="scan_shortcut_long_label">Scan Product</string>
-  <string name="barcode_shortcut_short_label">Search</string>
+  <string name="barcode_shortcut_short_label">Gelintar</string>
   <string name="barcode_shortcut_long_label">Search By Barcode</string>
   <string name="history_shortcut_short_label">History</string>
   <string name="history_shortcut_long_label">History</string>
@@ -403,7 +403,7 @@
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Brand</string>
   <string name="additive_string">Additive</string>
-  <string name="search_string">Search</string>
+  <string name="search_string">Gelintar</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">Store</string>
   <string name="packaging_subtitle">Packaging</string>
@@ -429,7 +429,7 @@
   <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">Brand</string>
-  <string name="by_barcode">Barcode</string>
+  <string name="by_barcode">Barkod</string>
   <string name="by_time">Recently Viewed</string>
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
@@ -447,4 +447,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

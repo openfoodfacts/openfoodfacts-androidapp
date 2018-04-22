@@ -72,18 +72,18 @@
   <string name="alert_dialog_warning_msg_user">L\'usuari/contrasenya ha canviat, per favor actualitze la informació</string>
   <string name="alert_dialog_product_error_msg">No s\'ha trobat el producte, per favor intente-ho una altra volta</string>
   <string name="toast_retrieving">S\'està carregant...</string>
-  <string name="txtGenericName">Common name :</string>
+  <string name="txtGenericName">Nom comú :</string>
   <string name="txtBarcode">Codi de barres :</string>
   <string name="txtQuantity">Quantitat :</string>
   <string name="txtPackaging">Envasament :</string>
   <string name="txtBrands">Marques :</string>
   <string name="txtCategories">Categories :</string>
-  <string name="txtLabels">Labels, certifications, awards :</string>
+  <string name="txtLabels">Etiquetes, certificacions, premis :</string>
   <string name="txtManufacturing">Llocs de manufactura o processament :</string>
   <string name="txtIngredientsOrigins">Origen dels ingredients :</string>
   <string name="txtCity">Ciutat, estat o país on es va comprar :</string>
   <string name="txtEMB">EMB Code:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtManufactureUrl">Enllaç a la pàgina del producte en el lloc oficial del productor:</string>
   <string name="txtStores">Tendes :</string>
   <string name="txtCountries">Països on es ven :</string>
   <string name="txtIngredients">Llista d\'ingredients :</string>
@@ -108,7 +108,7 @@
   <string name="txtToastSaved">Usuari desat</string>
   <string name="txtSalt">Sal</string>
   <string name="txtFat">Greix</string>
-  <string name="txtSugars">Sugars</string>
+  <string name="txtSugars">Sucres</string>
   <string name="hintBarcode">Codi de barres</string>
   <string name="hintLogin">Usuari</string>
   <string name="hintPass">Contrasenya</string>
@@ -159,7 +159,7 @@
   <string name="search_drawer">Cerca</string>
   <string name="search_by_barcode_drawer">Cerca per codi de barres</string>
   <string name="category_drawer">Categories</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Categoria</string>
   <string name="search_by_name_drawer">Cerca pel nom</string>
   <string name="scan_search">Escàner</string>
   <string name="user_drawer">Usuari</string>
@@ -259,8 +259,8 @@
   <string name="action_search">Cerca</string>
   <string name="search_hint">Cercar un producte</string>
   <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="brand">Marca :</string>
+  <string name="number_of_products">Nombre de productes: </string>
   <string name="txt_no_results">No s\'ha trobat resultats</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
@@ -297,11 +297,11 @@
   <string name="vitamin_e">Vitamin e</string>
   <string name="vitamin_k">Vitamin k</string>
   <string name="vitamin_c">Vitamina C</string>
-  <string name="vitamin_b1">Vitamin B1</string>
-  <string name="vitamin_b2">Vitamin B2</string>
+  <string name="vitamin_b1">Vitamina B1</string>
+  <string name="vitamin_b2">Vitamina B2</string>
   <string name="vitamin_pp">Vitamin PP</string>
   <string name="vitamin_b6">Vitamina B6</string>
-  <string name="vitamin_b9">Vitamin B9</string>
+  <string name="vitamin_b9">Vitamina B9</string>
   <string name="vitamin_b12">Vitamina B12</string>
   <string name="biotin">Biotin</string>
   <string name="pantothenic_acid">Pantothenic acid</string>
@@ -405,7 +405,7 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Marca</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Additiu</string>
   <string name="search_string">Cerca</string>
   <string name="country_string">País</string>
   <string name="store_subtitle">Botiga</string>
@@ -413,10 +413,10 @@
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Botiga</string>
   <string name="packaging_string">Empaquetament</string>
-  <string name="label_string">Label</string>
-  <string name="category_string">Category</string>
+  <string name="label_string">Etiqueta</string>
+  <string name="category_string">Categoria</string>
   <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="contributor_string">Contribuent</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitamins:</string>
@@ -450,4 +450,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

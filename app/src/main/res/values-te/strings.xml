@@ -85,7 +85,7 @@
   <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Countries where sold :</string>
+  <string name="txtCountries">Country :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
@@ -158,7 +158,7 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Search</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
-  <string name="category_drawer">Categories</string>
+  <string name="category_drawer">వర్గాలు</string>
   <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
@@ -450,4 +450,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

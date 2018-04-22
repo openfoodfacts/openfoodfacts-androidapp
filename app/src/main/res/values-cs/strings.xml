@@ -89,7 +89,7 @@
   <string name="txtIngredientsOrigins">Původ přísad :</string>
   <string name="txtCity">Město, stát a země, kde byl zakoupen :</string>
   <string name="txtEMB">EMB Code:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtManufactureUrl">Odkaz na stránku produktu na oficiálních stránkách výrobce:</string>
   <string name="txtStores">Prodejny :</string>
   <string name="txtCountries">Země prodeje :</string>
   <string name="txtIngredients">Složení :</string>
@@ -264,9 +264,9 @@
   <string name="txtSeeMore">Zobrazit více</string>
   <string name="action_search">Vyhledat</string>
   <string name="search_hint">Vyhledat produkt</string>
-  <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="number_of_results">Počet výsledků: </string>
+  <string name="brand">Značka :</string>
+  <string name="number_of_products">Počet výrobků: </string>
   <string name="txt_no_results">Nebyly nalezeny žádné výsledky</string>
   <string name="txt_extend_search">Pokuste se rozšířit vyhledávání nebo produkt přidejte</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
@@ -411,7 +411,7 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Značka</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Přísada</string>
   <string name="search_string">Vyhledat</string>
   <string name="country_string">Země</string>
   <string name="store_subtitle">Prodejna</string>
@@ -425,9 +425,9 @@
   <string name="contributor_string">Contributor</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="vitamin_tags_text">Vitamíny:</string>
   <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
+  <string name="mineral_tags_text">Minerály:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
@@ -456,4 +456,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

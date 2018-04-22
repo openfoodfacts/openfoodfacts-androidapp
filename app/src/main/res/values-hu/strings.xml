@@ -450,4 +450,6 @@
   <string name="notify_content">Kattintson az exportált termékek megtekintéséhez</string>
   <string name="notification_channel_name">Export Értesítések</string>
   <string name="notify_channel_description">Értesítés az exportált fájl helyének megjelenítéséhez</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>
