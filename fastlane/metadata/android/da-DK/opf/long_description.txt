@@ -17,7 +17,7 @@ Open Products Facts er en åben database over alle produkter i verden.
 - Open ??? Facts - Create your own open database :-)
 
 *** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+- Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 

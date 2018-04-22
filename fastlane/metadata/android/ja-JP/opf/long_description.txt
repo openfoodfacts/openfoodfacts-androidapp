@@ -17,7 +17,7 @@ Open Food Facts は、食品の原材料、アレルゲン、栄養成分表、�
 - Open ??? Facts - Create your own open database :-)
 
 *** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+- 今インターネットに接続していなくても、新製品を追加できます.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 

@@ -85,7 +85,7 @@
   <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Countries where sold :</string>
+  <string name="txtCountries">Kintras whaur sauld :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
@@ -94,7 +94,7 @@
   <string name="txtTraces">Traces :</string>
   <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
   <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
-  <string name="txtServingSize">Serving size :</string>
+  <string name="txtServingSize">Servin size :</string>
   <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
   <string name="txtNutritionLevelLow">in low quantity</string>
   <string name="txtNutritionLevelModerate">in moderate quantity</string>
@@ -258,7 +258,7 @@
   <string name="txtSeeMore">See mair</string>
   <string name="action_search">Sairch</string>
   <string name="search_hint">Sairch a product</string>
-  <string name="number_of_results">Number of results: </string>
+  <string name="number_of_results">Nummer o results: </string>
   <string name="brand">Brand :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">No results found</string>
@@ -421,7 +421,7 @@
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitamins:</string>
   <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
+  <string name="mineral_tags_text">Meenerals:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
@@ -450,4 +450,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

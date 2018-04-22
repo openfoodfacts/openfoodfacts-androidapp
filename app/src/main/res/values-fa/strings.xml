@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="product">Product</string>
+  <string name="product">محصول</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">جستجو</string>
@@ -259,7 +259,7 @@
   <string name="action_search">جستجو</string>
   <string name="search_hint">جستجوي يك محصول</string>
   <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
+  <string name="brand">نام تجاری :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">چیزی پیدا نشد</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
@@ -405,7 +405,7 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">نام تجاری</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">افزودنی</string>
   <string name="search_string">جستجو</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">فروشگاه</string>
@@ -419,9 +419,9 @@
   <string name="contributor_string">Contributor</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="vitamin_tags_text">ویتامین ها:</string>
   <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
+  <string name="mineral_tags_text">مواد معدنی:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
@@ -450,4 +450,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

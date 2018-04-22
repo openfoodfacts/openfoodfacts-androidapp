@@ -103,9 +103,9 @@
   <string name="txtSignIn">Sign in</string>
   <string name="txtUser">အသံုးျပဳသူ ပန္နယ္</string>
   <string name="txtToastSaved">အသံုးျပဳသူကိုသိမ္းခဲ့ျပီးျပီ</string>
-  <string name="txtSalt">Salt</string>
-  <string name="txtFat">Fat</string>
-  <string name="txtSugars">Sugars</string>
+  <string name="txtSalt">ဆားဓါတ်</string>
+  <string name="txtFat">အဆီ</string>
+  <string name="txtSugars">သကြားဓာတ်</string>
   <string name="hintBarcode">ဘားကုုဒ္</string>
   <string name="hintLogin">ဝင္ေရာက္ရန္</string>
   <string name="hintPass">စကားဝွက္</string>
@@ -447,4 +447,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

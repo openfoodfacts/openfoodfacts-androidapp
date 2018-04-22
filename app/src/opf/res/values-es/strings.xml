@@ -14,12 +14,12 @@
   <string name="txtHome">Open Products Facts es una base de datos abierta de todos los productos en el mundo.</string>
   <string name="slide_1_title">Contribute to product transparency</string>
   <string name="slide_1_desc">Escanee productos, tómelos en una imagen, haga que la transparencia de los productos suceda</string>
-  <string name="slide_2_title">Get the facts</string>
+  <string name="slide_2_title">Obtener los datos</string>
   <string name="slide_2_desc">Extensive information about the products you\'ve scanned, deciphered for you</string>
   <string name="slide_3_title">Keep track of the product you use</string>
   <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
   <string name="slide_4_title">Funciona sin conexión</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+  <string name="slide_4_desc">Puede agregar nuevos productos, incluso si no tiene una conexión a Internet en este momento</string>
   <string name="txtDialogsContent">El producto que escaneó aún no existe en Open Products Facts. Por favor agrégalo.</string>
   <string name="txtDialogsContentPowerMode">El producto que escaneó ya existe en Open Products Facts.</string>
   <string name="msg_share">Look at this product on Open Products Facts :</string>

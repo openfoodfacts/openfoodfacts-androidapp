@@ -7,7 +7,7 @@ Open Food Facts - открытая база данных продуктов пи
 - Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding your first product. 
 
-*** Get the Facts ***
+*** Узнайте ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***
@@ -17,7 +17,7 @@ Open Food Facts - открытая база данных продуктов пи
 - Open ??? Facts - Create your own open database :-)
 
 *** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+- Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
