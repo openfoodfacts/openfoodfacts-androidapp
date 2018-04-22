@@ -215,6 +215,25 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.header)
                 .addProfiles(profile)
+                .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
+                    @Override
+                    public boolean onProfileImageClick(View view, IProfile profile, boolean current) {
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        return true;
+                    }
+
+                    @Override
+                    public boolean onProfileImageLongClick(View view, IProfile profile, boolean current) {
+                        return false;
+                    }
+                })
+                .withOnAccountHeaderSelectionViewClickListener(new AccountHeader.OnAccountHeaderSelectionViewClickListener() {
+                    @Override
+                    public boolean onClick(View view, IProfile profile) {
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        return true;
+                    }
+                })
                 .withSelectionListEnabledForSingleProfile(false)
                 .withOnAccountHeaderListener((view, profile1, current) -> {
                     if (profile1 instanceof IDrawerItem) {
@@ -720,12 +739,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             Log.e("INTENT", "start activity");
             String query = intent.getStringExtra(SearchManager.QUERY);
             ProductBrowsingListActivity.startActivity(this, query, SearchType.SEARCH);
-            if(searchMenuItem!=null)
-            {
+            if (searchMenuItem != null) {
                 searchMenuItem.collapseActionView();
             }
-        }
-        else if (Intent.ACTION_SEND.equals(intent.getAction()) && type != null) {
+        } else if (Intent.ACTION_SEND.equals(intent.getAction()) && type != null) {
             if (type.startsWith("image/")) {
                 handleSendImage(intent); // Handle single image being sent
             }
