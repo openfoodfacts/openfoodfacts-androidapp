@@ -1,1 +1,1 @@
-Scan food products to decrypt labels: ingredients, additives and nutrition facts
+Skenējiet pārtikas produktus, lai uzzinātu sastāvdaļas, piedevas un uztura faktus, kuri nav minēti uz etiķetes
