@@ -186,7 +186,6 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                 if (htmlNoParsed == null || htmlNoParsed.contains("Incorrect user name or password.") || htmlNoParsed.contains("See you soon!")) {
 
                     Toast.makeText(context, context.getString(R.string.errorLogin), Toast.LENGTH_LONG).show();
-                    loginView.setText("");
                     passwordView.setText("");
                     editor.putString("user", "");
                     editor.putString("pass", "");
