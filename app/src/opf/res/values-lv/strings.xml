@@ -31,5 +31,5 @@
   <string name="text_offline_info_dialog">Iespējams skenēt produktus bezsaistes režīmā, lai pievienotu tos Open Food Facts vēlāk, kad interneta savienojums ir pieejams. visi produkti kuri tiks noskenēti, būs redzami šeit. Lai nosūtītu produktus, izmantojiet pogu zemāk.</string>
   <string name="warning_alert_data">Jūsu alerģiju informācija nekad netiks nosūtīta uz Open Food Facts serveri. Uzmanieties jo pieejamie dati par produktu var būt neprecīzi tāpēc pārliecinieties, pirms pieņemiet lēmumus! </string>
   <!-- OPF tagline in different languages -->
-  <string name="tagline">the free product database</string>
+  <string name="tagline">bezmaksas produktu datu bāze</string>
 </resources>
