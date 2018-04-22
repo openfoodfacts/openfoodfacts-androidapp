@@ -125,7 +125,7 @@
   <string name="hintEnergy">Energy in kJ per serving</string>
   <string name="hintEnergyUnit">Energy unit</string>
   <string name="hintWeight">Тегло</string>
-  <string name="hintStores">Store</string>
+  <string name="hintStores">Магазин</string>
   <string name="hintBrand">Марка</string>
   <string name="txtTakePicture">Take picture</string>
   <string name="txtSendAll">Качване на всичко</string>
@@ -152,7 +152,7 @@
   <string name="share">Споделяне</string>
   <string name="translate">Translate</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
-  <string name="create_account">Sign up</string>
+  <string name="create_account">Регистриране</string>
   <string name="home_drawer">Начало</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
   <string name="open_food_drawer">Open Food Facts</string>
@@ -188,8 +188,8 @@
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <string name="from_gallery">От галерията</string>
   <string name="product_sent">Продуктът е изпратен успешно</string>
-  <string name="action_edit_product">Edit product</string>
-  <string name="title_info_dialog">Information</string>
+  <string name="action_edit_product">Редактиране на продукта</string>
+  <string name="title_info_dialog">Информация</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
   <string name="permission_title">Permission information</string>
@@ -202,17 +202,17 @@
   <!-- Strings related to login -->
   <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
   <string name="error_field_required">This field is required.</string>
-  <string name="action_preferences">Preferences</string>
+  <string name="action_preferences">Предпочитания</string>
   <string name="prefs_scan_startup">Scan on startup</string>
   <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
   <string name="prefs_power_mode">Power mode scan</string>
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
-  <string name="prefs_language">Language</string>
-  <string name="prefs_language_summary">Change language</string>
-  <string name="scan_history_drawer">History</string>
-  <string name="clear_history">Clear history</string>
-  <string name="title_clear_history_dialog">Clear</string>
-  <string name="text_clear_history_dialog">Do you want to clear all scan history?</string>
+  <string name="prefs_language">Език</string>
+  <string name="prefs_language_summary">Промяна на езика</string>
+  <string name="scan_history_drawer">История</string>
+  <string name="clear_history">Изчистване на историята</string>
+  <string name="title_clear_history_dialog">Изчистване</string>
+  <string name="text_clear_history_dialog">Искате ли да изчистите цялата история на сканирането?</string>
   <string name="export_csv_history">Export CSV</string>
   <string name="txt_exporting_history">Exporting history...</string>
   <string name="txt_history_exported">History exported</string>
@@ -229,8 +229,8 @@
   <string name="nutrition_energy_short_name">Energy</string>
   <string name="nutrition_fat">Мазнини</string>
   <string name="nutrition_fat_short_name">Мазнини (g)</string>
-  <string name="nutrition_fiber">Dietary fiber</string>
-  <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
+  <string name="nutrition_fiber">Хранителните влакнини</string>
+  <string name="nutrition_fiber_short_name">Хранителните влакнини (g)</string>
   <string name="nutrition_header">Nutrition facts</string>
   <string name="nutrition_no_data_message">Няма налични данни за този продукт</string>
   <string name="nutrition_per_quantity">За 100g/100ml</string>
@@ -337,7 +337,7 @@
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
   <string name="scan_shortcut_short_label">Сканирай</string>
-  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="scan_shortcut_long_label">Сканиране на продукта</string>
   <string name="barcode_shortcut_short_label">Търсене</string>
   <string name="barcode_shortcut_long_label">Търсене по баркод</string>
   <string name="history_shortcut_short_label">История</string>
@@ -359,7 +359,7 @@
   <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
   <string name="device_offline_dialog_negative">Dismiss</string>
   <string name="device_offline_dialog_positive">Настройки</string>
-  <string name="saving">Saving…</string>
+  <string name="saving">Запазва се…</string>
   <string name="scan_first_product">Scan First Product</string>
   <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
   <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
