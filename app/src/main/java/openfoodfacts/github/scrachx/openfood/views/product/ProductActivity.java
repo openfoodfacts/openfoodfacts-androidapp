@@ -52,11 +52,8 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
-import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.NutritionProductFragment;
+
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.SummaryProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
