@@ -102,10 +102,11 @@ public class ContributorsFragment extends BaseFragment {
             otherEditorsText.setMovementMethod(LinkMovementMethod.getInstance());
             otherEditorsText.setText(otherEditorsTxt + " ");
 
-            for (int i = 0; i < product.getEditors().size(); i++) {
+            for (int i = 0; i < product.getEditors().size() - 1; i++) {
                 otherEditorsText.append(getContributorsTag(product.getEditors().get(i)));
-                otherEditorsText.append(", ");
+                otherEditorsText.append(",");
             }
+            otherEditorsText.append(getContributorsTag(product.getEditors().get(product.getEditors().size() - 1)));
         } else {
             otherEditorsText.setVisibility(View.INVISIBLE);
         }
