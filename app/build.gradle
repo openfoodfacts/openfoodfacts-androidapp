@@ -132,7 +132,7 @@ dependencies {
     implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile "com.android.support:multidex:$rootProject.multidexVersion"
-    compile 'com.github.dmytrodanylyk.android-process-button:library:1.0.4'
+    compile 'com.github.dmytrodanylyk.android-process-button:library:1.0.2'
 
     //DI
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"

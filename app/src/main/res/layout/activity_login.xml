@@ -70,9 +70,9 @@
             app:pb_colorNormal="@color/blue"
             app:pb_colorPressed="@color/blue_pressed"
             app:pb_colorProgress="@color/purple_progress"
-            app:pb_textComplete="Success"
-            app:pb_textProgress="Loading"
-            app:pb_textError="Error"
+            app:pb_textComplete="@string/txtSuccess"
+            app:pb_textProgress="@string/txtLoading"
+            app:pb_textError="@string/txtError"
             app:pb_colorError="@color/red_error" />
 
         <Button
