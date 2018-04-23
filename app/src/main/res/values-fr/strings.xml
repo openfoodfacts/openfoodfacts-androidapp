@@ -450,8 +450,8 @@
   <string name="notify_content">Cliquez pour afficher les produits exportés</string>
   <string name="notification_channel_name">Notifications d\'exportation</string>
   <string name="notify_channel_description">Notification pour afficher l\'emplacement du fichier exporté</string>
-  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
-  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="modified_history">Produit ajouté le %1$s à %2$s par %3$s. Dernière modification de la page du produit le %4$s à %5$s par %6$s. La fiche produit a également été modifiée par %7$s</string>
+  <string name="offline_notification_title">Contributions hors ligne à envoyer</string>
   <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
   <string name="creator_history">Product added on %1$s at %2$s CET by</string>
   <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
