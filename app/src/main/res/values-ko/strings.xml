@@ -52,6 +52,8 @@
     <item>성분</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">생성물</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">수색</string>
@@ -106,10 +108,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">User saved</string>
   <string name="txtInfoLoginNo">User not saved</string>
-  <string name="txtDialogsTitle">정보</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Do you want send the saved products to the database?</string>
   <string name="txtYes">예</string>
   <string name="txtNo">아니요</string>
   <string name="hintNameProduct">이름</string>
@@ -121,7 +121,10 @@
   <string name="txtTakePicture">사진 촬영</string>
   <string name="txtSendAll">모두 업로드</string>
   <string name="txtNoData">데이터 없음</string>
-  <string name="txtPictureNeeded">먼저 사진을 찍어주세요.</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Uploading...</string>
   <string name="dataSaved">Saved locally on your device</string>
   <string name="txtInfoAddUser">Please enter your login and password</string>
@@ -138,6 +141,7 @@
   <string name="txtBarcodeNotValid">바코드가 유효하지 않습니다.</string>
   <string name="try_it_scan_now">제품 스캔</string>
   <string name="share">공유</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
   <string name="create_account">Sign up</string>
   <string name="home_drawer">홈</string>
@@ -410,4 +414,27 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Brand</string>
+  <string name="by_barcode">바코드</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>

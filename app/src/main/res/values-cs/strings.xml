@@ -61,6 +61,8 @@
     <item>Složení</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Produkt</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Vyhledat</string>
@@ -115,10 +117,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Uživatel byl uložen</string>
   <string name="txtInfoLoginNo">Uživatel nebyl uložen</string>
-  <string name="txtDialogsTitle">Informace</string>
   <string name="txtDialogsContent">Produkt, který jste naskenovali, ještě neexistuje v databázi Open Food Facts. Přidejte jej prosím.</string>
   <string name="txtDialogsContentPowerMode">Produkt, který jste naskenovali, již existuje v databázi Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Chcete odeslat uložené produkty do databáze?</string>
   <string name="txtYes">Ano</string>
   <string name="txtNo">Ne</string>
   <string name="hintNameProduct">Jméno</string>
@@ -130,7 +130,10 @@
   <string name="txtTakePicture">Vyfotit</string>
   <string name="txtSendAll">Nahrát vše</string>
   <string name="txtNoData">Žádná data</string>
-  <string name="txtPictureNeeded">Nejdříve vyfoťte obrázek</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Nahrávám...</string>
   <string name="dataSaved">Uloženo lokálně ve vašem zařízení</string>
   <string name="txtInfoAddUser">Prosím, zadejte své uživatelské jméno a heslo</string>
@@ -147,6 +150,7 @@
   <string name="txtBarcodeNotValid">Čárový kód není platný</string>
   <string name="try_it_scan_now">Skenování produktu</string>
   <string name="share">Sdílet</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Podívejte se na tento produkt v Open Food Facts :</string>
   <string name="create_account">Registrovat</string>
   <string name="home_drawer">Titulní stránka</string>
@@ -419,4 +423,27 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Značka</string>
+  <string name="by_barcode">Čárový kód</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>

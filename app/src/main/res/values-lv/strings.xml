@@ -58,6 +58,8 @@
     <item>Sastāvdaļas</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Grāmatzīme</string>
+  <string name="product">Produkts</string>
   <string name="fastscroller_track">Ātrās apskates režīms</string>
   <string name="fastscroller_handle">Ātrās apskates pārbaude</string>
   <string name="search_button">Meklēt</string>
@@ -112,10 +114,8 @@
   <string name="uploadLater">Attēls tiks augšupielādēts, kad interneta savienojums būs pieejams</string>
   <string name="txtInfoLoginOk">Lietotājs saglabāts</string>
   <string name="txtInfoLoginNo">Lietotājs nav saglabāts</string>
-  <string name="txtDialogsTitle">Informācija</string>
   <string name="txtDialogsContent">Skenētais produkts vēl nav pieejams Open Food Facts sarakstā. Lūdzu, pievienojiet to.</string>
   <string name="txtDialogsContentPowerMode">Jūsu skenētais produkts jau pastāvOpen Food Facts.</string>
-  <string name="txtDialogsContentSend">Vai vēlaties saglabāt saglabātos produktus datubāzē?</string>
   <string name="txtYes">Jā</string>
   <string name="txtNo">Nē</string>
   <string name="hintNameProduct">Nosaukums</string>
@@ -127,7 +127,10 @@
   <string name="txtTakePicture">Uzņemt attēlu</string>
   <string name="txtSendAll">Augšupielādēt visu</string>
   <string name="txtNoData">Nav datu</string>
-  <string name="txtPictureNeeded">Lūdzu, vispirms uzņemiet attēlu</string>
+  <string name="txtPictureNeeded">Pagaidiet …</string>
+  <string name="txtPictureNeededDialogContent">Pirms šī produkta iesniegšanas jums jāpievieno vismaz viens attēls</string>
+  <string name="txtPictureNeededDialogYes">Palikt</string>
+  <string name="txtPictureNeededDialogNo">Atcelt</string>
   <string name="toastSending">Augšuplādē…</string>
   <string name="dataSaved">Saglabāts jūsu ierīcē</string>
   <string name="txtInfoAddUser">Lūdzu, ievadiet savu lietotājvārdu un paroli</string>
@@ -144,6 +147,7 @@
   <string name="txtBarcodeNotValid">Svītrkods nav derīgs</string>
   <string name="try_it_scan_now">Skenēt produktu</string>
   <string name="share">Dalīties</string>
+  <string name="translate">Tulkot</string>
   <string name="msg_share">Apskatiet šo produktu, izmantojot Open Food Facts:</string>
   <string name="create_account">Reģistrēties</string>
   <string name="home_drawer">Mājas</string>
@@ -416,4 +420,27 @@
   <string name="other_tags_text">Citas vielas:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata dati</string>
+  <string name="txtCamera">Kamera</string>
+  <string name="txtGallery">Galerija</string>
+  <string name="txtOptions">Opcijas</string>
+  <string name="by_title">Virsraksts</string>
+  <string name="by_brand">Zīmols</string>
+  <string name="by_barcode">Svītrkods</string>
+  <string name="by_time">Nesen skatīts</string>
+  <string name="sort">Kārtot</string>
+  <string name="by_nutrition_grade">Uztura pakāpe</string>
+  <string name="sort_by">Kārtot pēc</string>
+  <string name="shake_summary">Lai produktu skenētu, sakratiet tālruni</string>
+  <string name="shake_title">Iespéjot skenéanu kad talrunis tiek kratits</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Attēlus bez svītrkoda vēl nevar pievienot lietotnei. Lūdzu, izmēģiniet mobilo tīmekļa versiju.</string>
+  <string name="no_barcode">Mēs neesam atraduši nevienu svītrkodu</string>
+  <string name="enter_barcode">Lūdzu, ierakstiet zemāk esošo svītrkodu</string>
+  <string name="format_error">Nepareizs svītru / QR formāts</string>
+  <string name="code_detected">Mēs neesam atraduši nevienu svītrkodu</string>
+  <string name="do_you_want_to">Vai vēlaties pievienot šo svītrkodu fotogrāfijas?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>

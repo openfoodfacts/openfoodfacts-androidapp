@@ -226,8 +226,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             nameProduct.setVisibility(View.GONE);
         }
         if (isNotBlank(product.getGenericName())) {
-            genericNameProduct.setText(bold(getString(R.string.txtGenericName)));
-            genericNameProduct.append(' ' + product.getGenericName());
+            genericNameProduct.setText(product.getGenericName());
         } else {
             genericNameProduct.setVisibility(View.GONE);
         }

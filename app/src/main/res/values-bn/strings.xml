@@ -55,6 +55,8 @@
     <item>উপকরণসমূহ</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Product</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">অনুসন্ধান</string>
@@ -109,10 +111,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">ব্যবহারকারি সংরক্ষিত হয়েছে</string>
   <string name="txtInfoLoginNo">ব্যবহারকারী সংরক্ষিত না</string>
-  <string name="txtDialogsTitle">তথ্য</string>
   <string name="txtDialogsContent">আপনি যে পণ্য স্ক্যান করছেন তা Open Food Facts এ বিদ্যমান নাই। দয়া করে যোগ করুন।</string>
   <string name="txtDialogsContentPowerMode">আপনি স্ক্যানকৃত পণ্য Open Food Facts এ বিদ্যমান ।</string>
-  <string name="txtDialogsContentSend">আপনি কি সংরক্ষিত পণ্য ডাটাবেসে পাঠাতে চান?</string>
   <string name="txtYes">হ্যাঁ</string>
   <string name="txtNo">না</string>
   <string name="hintNameProduct">নাম</string>
@@ -124,7 +124,10 @@
   <string name="txtTakePicture">ছবি তুলুন</string>
   <string name="txtSendAll">সবগুলো আপলোড করুন</string>
   <string name="txtNoData">কোন উপাত্ত নেই</string>
-  <string name="txtPictureNeeded">দয়া করে প্রথমে একটি ছবি তুলুন</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">আপলোড করা হচ্ছে...</string>
   <string name="dataSaved">আপনার ডিভাইসে স্থানীয়ভাবে সংরক্ষিত হয়েছে</string>
   <string name="txtInfoAddUser">দয়া করে আপনার লগইন এবং পাসওয়ার্ড প্রবেশ করুন</string>
@@ -141,6 +144,7 @@
   <string name="txtBarcodeNotValid">বারকোড বৈধ নয়</string>
   <string name="try_it_scan_now">পণ্য স্ক্যান করুন</string>
   <string name="share">শেয়ার</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">পণ্যগুলো দেখুন Open Food Facts এ :</string>
   <string name="create_account">সাইন আপ</string>
   <string name="home_drawer">মূলপাতা</string>
@@ -414,4 +418,27 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">ব্র্যান্ড</string>
+  <string name="by_barcode">বারকোড</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>

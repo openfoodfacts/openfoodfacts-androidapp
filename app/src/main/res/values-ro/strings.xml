@@ -58,6 +58,8 @@
     <item>Ingrediente</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Produs</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Caută</string>
@@ -112,10 +114,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Utilizator salvat</string>
   <string name="txtInfoLoginNo">Utilizatorul nu a fost salvat.</string>
-  <string name="txtDialogsTitle">Informaţii</string>
   <string name="txtDialogsContent">Produsul scanat nu există în baza de date Open Food Facts. Doriți să-l adăugați?</string>
   <string name="txtDialogsContentPowerMode">Produsul scanat există deja în baza de date Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Doriți să trimiteți produsele salvate către baza de date?</string>
   <string name="txtYes">Da</string>
   <string name="txtNo">Nu</string>
   <string name="hintNameProduct">Nume</string>
@@ -127,7 +127,10 @@
   <string name="txtTakePicture">Fotografiați</string>
   <string name="txtSendAll">Trimiteți toate produsele</string>
   <string name="txtNoData">Lipsă date</string>
-  <string name="txtPictureNeeded">Vă rugam fotografiați mai întâi</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Se trimite...</string>
   <string name="dataSaved">Salvat local pe dispozitiv</string>
   <string name="txtInfoAddUser">Introduceți numele de utilizator și parola</string>
@@ -144,6 +147,7 @@
   <string name="txtBarcodeNotValid">Codul de bare este invalid.</string>
   <string name="try_it_scan_now">Scanați produsul</string>
   <string name="share">Distribuiți</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Privește acest produs pe Open Food Facts:</string>
   <string name="create_account">Înregistrare</string>
   <string name="home_drawer">Pagina de start</string>
@@ -416,4 +420,27 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Marca</string>
+  <string name="by_barcode">Cod de bare</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>

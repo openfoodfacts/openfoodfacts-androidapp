@@ -22,6 +22,12 @@
             android:summary="@string/prefs_power_mode_summary"
             android:title="@string/prefs_power_mode" />
 
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="shakeScanMode"
+            android:summary="@string/shake_summary"
+            android:title="@string/shake_title" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/preference_header_network">

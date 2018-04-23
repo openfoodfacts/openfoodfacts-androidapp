@@ -12,6 +12,8 @@ import org.greenrobot.greendao.annotation.Unique;
 
 import java.util.List;
 
+
+
 @Entity(indexes = {
         @Index(value = "tag", unique = true)
 })

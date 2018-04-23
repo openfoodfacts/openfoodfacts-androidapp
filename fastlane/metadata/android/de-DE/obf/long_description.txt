@@ -1,0 +1,16 @@
+Open Beauty Facts ist eine Datenbank für Kosmetikprodukte, die von jedermann für alle erstellt wurde.
+
+Sie können diese verwenden, um bessere kosmetische Entscheidungen zu treffen, und da es sich um offene Daten handelt, kann jeder sie für jeden Zweck weiterverwenden.
+
+Open Beauty Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Sie können einen Beitrag leisten, indem Sie ein Produkt aus Ihrem Kosmetikschrank hinzufügen, und wir haben viele spannende Projekte, an denen Sie auf vielfältige Weise mitwirken können.
+
+Kosmetische Zusätze, F.I.L. -Codes, CI-Nummern, INCI (International Nomenclature Cosmetic Ingredients) Zutatenliste, Allergene, Verpackungscodes … Open Beauty Facts hilft Ihnen, das Kleingedruckte auf Produktetiketten zu verstehen.
+
+Was Sie erfassen können: Rasierwasser, Körperlotionen, Cremes, Deodorant, Kajalstift, Grundierung, Duft, Lippenstift, Make-up, Maske, Parfüm, Shampoo, Seife, Duschgel, Nagellack und vieles mehr …
+
+Wir denken, dass es für Menschen mit Hautkrankheiten wie Akne, Psoriasis (Schuppenflechte), Ekzem usw. nützlich sein kann, um bessere kosmetische Entscheidungen zu treffen.
+
+Hinweis: Open Beauty Facts befindet sich im Aufbau, die Seite und die Anwendung basieren auf Open Food Facts und es werden Änderungen vorgenommen, um den Besonderheiten der Kosmetik Rechnung tragen zu können.
+
+Open Beauty Facts ist auch im Internet verfügbar unter https://world.openbeautyfacts.org
+Fragen und Rückmeldungen: contact@openfoodfacts.org

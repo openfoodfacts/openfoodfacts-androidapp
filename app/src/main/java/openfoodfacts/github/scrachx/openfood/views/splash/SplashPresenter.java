@@ -2,6 +2,8 @@ package openfoodfacts.github.scrachx.openfood.views.splash;
 
 import android.content.SharedPreferences;
 
+import java.util.Arrays;
+
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -47,37 +49,19 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                         productRepository.getCountries(true),
                         productRepository.getAdditives(true),
                         productRepository.getCategories(true), (labels, tags, allergens, countries, additives, categories) -> {
-                            Completable.fromAction(() -> productRepository.saveLabels(labels))
-                                    .subscribeOn(Schedulers.computation())
+                            Completable.merge(
+                                    Arrays.asList(
+                                            Completable.fromAction(() -> productRepository.saveLabels(labels)),
+                                            Completable.fromAction(() -> productRepository.saveTags(tags)),
+                                            Completable.fromAction(() -> productRepository.saveAllergens(allergens)),
+                                            Completable.fromAction(() -> productRepository.saveCountries(countries)),
+                                            Completable.fromAction(() -> productRepository.saveAdditives(additives)),
+                                            Completable.fromAction(() -> productRepository.saveCategories(categories))
+                                    )
+                            ).subscribeOn(Schedulers.computation())
                                     .subscribe(() -> {
+                                        settings.edit().putLong(LAST_REFRESH_DATE, System.currentTimeMillis()).apply();
                                     }, Throwable::printStackTrace);
-
-                            Completable.fromAction(() -> productRepository.saveTags(tags))
-                                    .subscribeOn(Schedulers.computation())
-                                    .subscribe(() -> {
-                                    }, Throwable::printStackTrace);
-
-                            Completable.fromAction(() -> productRepository.saveAllergens(allergens))
-                                    .subscribeOn(Schedulers.computation())
-                                    .subscribe(() -> {
-                                    }, Throwable::printStackTrace);
-
-                            Completable.fromAction(() -> productRepository.saveCountries(countries))
-                                    .subscribeOn(Schedulers.computation())
-                                    .subscribe(() -> {
-                                    }, Throwable::printStackTrace);
-
-                            Completable.fromAction(() -> productRepository.saveAdditives(additives))
-                                    .subscribeOn(Schedulers.computation())
-                                    .subscribe(() -> {
-                                    }, Throwable::printStackTrace);
-
-                            Completable.fromAction(() -> productRepository.saveCategories(categories))
-                                    .subscribeOn(Schedulers.computation())
-                                    .subscribe(() -> {
-                                    }, Throwable::printStackTrace);
-
-                            settings.edit().putLong(LAST_REFRESH_DATE, System.currentTimeMillis()).apply();
 
                             return true;
                         })

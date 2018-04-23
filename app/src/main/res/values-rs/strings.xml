@@ -58,6 +58,8 @@
     <item>Sastojci</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Производ</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Pretraživanje</string>
@@ -112,10 +114,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Korisničko ime sačuvano</string>
   <string name="txtInfoLoginNo">Korisničko ime nije sačuvano</string>
-  <string name="txtDialogsTitle">Informacija</string>
   <string name="txtDialogsContent">Proizvod koji ste skenirali ne postoji u bazi Open Food Facts. Molimo Vas da ga dodate.</string>
   <string name="txtDialogsContentPowerMode">Proizvod koji ste skenirali već postoji u bazi Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Da li želite da pošaljete zapamćene proizvode u bazu?</string>
   <string name="txtYes">Da</string>
   <string name="txtNo">Ne</string>
   <string name="hintNameProduct">Naziv</string>
@@ -127,7 +127,10 @@
   <string name="txtTakePicture">Fotografiši</string>
   <string name="txtSendAll">Upload all</string>
   <string name="txtNoData">Nema podataka</string>
-  <string name="txtPictureNeeded">Molimo vas da pošaljete prvo sliku</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Uploading…</string>
   <string name="dataSaved">Zapaćene lokalno na tvom uređaju</string>
   <string name="txtInfoAddUser">Molimo vas da unesete korisničko ime i lozinku</string>
@@ -144,6 +147,7 @@
   <string name="txtBarcodeNotValid">Barkod nije ispravan</string>
   <string name="try_it_scan_now">Skeniraj proizvod</string>
   <string name="share">Podeli</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
   <string name="create_account">Registruj se</string>
   <string name="home_drawer">Početna</string>
@@ -416,4 +420,27 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Title</string>
+  <string name="by_brand">Brend</string>
+  <string name="by_barcode">Barkod</string>
+  <string name="by_time">Recently Viewed</string>
+  <string name="sort">Sort</string>
+  <string name="by_nutrition_grade">Nutrition Grade</string>
+  <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="no_barcode">We have not detected any barcode</string>
+  <string name="enter_barcode">Please type the barcode below</string>
+  <string name="format_error">Wrong Barcode/QR format</string>
+  <string name="code_detected">We have detected the barcode</string>
+  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
 </resources>

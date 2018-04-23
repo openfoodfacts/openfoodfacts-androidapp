@@ -1,0 +1,22 @@
+Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
+For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+
+Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+
+Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+
+So we set up to create not 1, but other 77000 separate new databases ! 
+
+Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+
+Open Crayons Facts - The largest open database of coloring crayons
+
+Open Miniature Food Facts - The largest open database of miniature food products
+
+Open ??? Facts - The largest open database of ???
+
+Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+
+Will it be trash cans, télécartes, or mobile phones database ? 
+
+So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play

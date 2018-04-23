@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:padding="@dimen/activity_vertical_margin">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageViewNutrition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,6 +29,7 @@
             android:maxHeight="120dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+
 
         <TextView
             android:id="@+id/addPhotoLabel"
