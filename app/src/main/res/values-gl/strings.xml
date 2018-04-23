@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="product">Product</string>
+  <string name="product">Produto</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Buscar</string>
@@ -106,9 +106,9 @@
   <string name="txtSignIn">Iniciar sesión</string>
   <string name="txtUser">Panel do usuario</string>
   <string name="txtToastSaved">Gardouse o usuario</string>
-  <string name="txtSalt">Salt</string>
-  <string name="txtFat">Fat</string>
-  <string name="txtSugars">Sugars</string>
+  <string name="txtSalt">Sal</string>
+  <string name="txtFat">Graxas</string>
+  <string name="txtSugars">Azucres</string>
   <string name="hintBarcode">Código de barras</string>
   <string name="hintLogin">Iniciar sesión</string>
   <string name="hintPass">Contrasinal</string>
@@ -159,7 +159,7 @@
   <string name="search_drawer">Buscar</string>
   <string name="search_by_barcode_drawer">Buscar por código de barras</string>
   <string name="category_drawer">Categorías</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Categoría</string>
   <string name="search_by_name_drawer">Buscar polo nome</string>
   <string name="scan_search">Analizar</string>
   <string name="user_drawer">Usuario</string>
@@ -259,7 +259,7 @@
   <string name="action_search">Buscar</string>
   <string name="search_hint">Buscar un producto</string>
   <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
+  <string name="brand">Marca :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">Sen resultados</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
@@ -405,16 +405,16 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Marca</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Aditivo</string>
   <string name="search_string">Buscar</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">Tenda</string>
-  <string name="packaging_subtitle">Packaging</string>
+  <string name="packaging_subtitle">Empaquetado</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Tenda</string>
-  <string name="packaging_string">Packaging</string>
-  <string name="label_string">Label</string>
-  <string name="category_string">Category</string>
+  <string name="packaging_string">Empaquetado</string>
+  <string name="label_string">Etiqueta</string>
+  <string name="category_string">Categoría</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
   <string name="app_disabled_text">Application is disabled</string>
@@ -450,4 +450,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

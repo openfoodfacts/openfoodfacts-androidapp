@@ -1,11 +1,11 @@
-***Contribute to Cosmetic Transparency***
+***Способствовать косметической прозрачности***
 
-- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
+- Open Beauty Facts - это база данных косметических продуктов, созданная всеми, для всех.
 - You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Beauty Facts - это некоммерческий проект, разработанный тысячами добровольцев со всего мира. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding a product from your cosmetic cupboard. 
 
-*** Get the Facts ***
+*** Узнайте ***
 
 - Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
 - Open Beauty Facts helps you to make sense of the fine print on products labels.
@@ -14,7 +14,7 @@
 - We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
 *** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+- Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 

@@ -72,12 +72,12 @@
   <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
   <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
   <string name="toast_retrieving">Loading...</string>
-  <string name="txtGenericName">Common name :</string>
-  <string name="txtBarcode">Barcode :</string>
-  <string name="txtQuantity">Quantity :</string>
+  <string name="txtGenericName">Nom comun :</string>
+  <string name="txtBarcode">Còdi de barras :</string>
+  <string name="txtQuantity">Quantitat :</string>
   <string name="txtPackaging">Packaging :</string>
   <string name="txtBrands">Brands :</string>
-  <string name="txtCategories">Categories :</string>
+  <string name="txtCategories">Categorias :</string>
   <string name="txtLabels">Labels, certifications, awards :</string>
   <string name="txtManufacturing">Manufacturing or processing places :</string>
   <string name="txtIngredientsOrigins">Origin of ingredients :</string>
@@ -85,13 +85,13 @@
   <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Countries where sold :</string>
+  <string name="txtCountries">País :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
   <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
   <string name="txtAdditives">Additives :</string>
-  <string name="txtTraces">Traces :</string>
+  <string name="txtTraces">Traças :</string>
   <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
   <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
   <string name="txtServingSize">Serving size :</string>
@@ -100,7 +100,7 @@
   <string name="txtNutritionLevelModerate">in moderate quantity</string>
   <string name="txtNutritionLevelHigh">in high quantity</string>
   <string name="txtLogin">Login :</string>
-  <string name="txtPass">Password :</string>
+  <string name="txtPass">Senhal :</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
   <string name="txtSave">Enregistrar</string>
   <string name="txtSignIn">Sign in</string>
@@ -159,7 +159,7 @@
   <string name="search_drawer">Recercar</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="category_drawer">Categorias</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Categoria</string>
   <string name="search_by_name_drawer">Search by name</string>
   <string name="scan_search">Scan Barcode</string>
   <string name="user_drawer">User</string>
@@ -413,8 +413,8 @@
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Store</string>
   <string name="packaging_string">Packaging</string>
-  <string name="label_string">Label</string>
-  <string name="category_string">Category</string>
+  <string name="label_string">Etiqueta</string>
+  <string name="category_string">Categoria</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
   <string name="app_disabled_text">Application is disabled</string>
@@ -450,4 +450,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

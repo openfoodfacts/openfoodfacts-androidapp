@@ -3,10 +3,10 @@
 <resources>
   <plurals name="minutes">
     <item quantity="one"> minute</item>
-    <item quantity="two"> minutes</item>
-    <item quantity="few"> minutes</item>
-    <item quantity="many"> minutes</item>
-    <item quantity="other"> minutes</item>
+    <item quantity="two"> nóiméad</item>
+    <item quantity="few"> nóiméad</item>
+    <item quantity="many"> nóiméad</item>
+    <item quantity="other"> nóiméad</item>
   </plurals>
   <plurals name="hours">
     <item quantity="one"> hour</item>
@@ -94,11 +94,11 @@
   <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Siopaí:</string>
-  <string name="txtCountries">Countries where sold :</string>
+  <string name="txtCountries">Country :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
-  <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
+  <string name="txtSubstances">Substaintí nó táirgí is cúis le hailléirgí nó le héadulaingtí :</string>
   <string name="txtAdditives">Additives :</string>
   <string name="txtTraces">Traces :</string>
   <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
@@ -459,4 +459,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

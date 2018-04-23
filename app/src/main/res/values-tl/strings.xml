@@ -83,7 +83,7 @@
   <string name="txtIngredientsOrigins">Pinanggalingan ng mga sangkap:</string>
   <string name="txtCity">Lungsod, estado at bansa kung saan nabili :</string>
   <string name="txtEMB">EMB Code:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtManufactureUrl">Ang link patungo sa pahina ng produkto sa gumawa ng opisyal site:</string>
   <string name="txtStores">Mga Tindahan :</string>
   <string name="txtCountries">Mga bansa kung saan ibinebenta :</string>
   <string name="txtIngredients">Listahan ng mga sangkap :</string>
@@ -159,7 +159,7 @@
   <string name="search_drawer">Maghanap</string>
   <string name="search_by_barcode_drawer">I-type ang barcode</string>
   <string name="category_drawer">Mga kategorya</string>
-  <string name="search_by_category">Category</string>
+  <string name="search_by_category">Kategorya</string>
   <string name="search_by_name_drawer">Maghanap ayon sa pangalan</string>
   <string name="scan_search">I-scan ang Barcode</string>
   <string name="user_drawer">User</string>
@@ -258,9 +258,9 @@
   <string name="txtSeeMore">Tingnan ang higit pa</string>
   <string name="action_search">Maghanap</string>
   <string name="search_hint">Maghanap ng isang produkto</string>
-  <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="number_of_results">Bilang ng mga resulta: </string>
+  <string name="brand">Tatak :</string>
+  <string name="number_of_products">Bilang ng mga produkto: </string>
   <string name="txt_no_results">Walang nahanap na resulta</string>
   <string name="txt_extend_search">Subukang palawakin ng iyong paghahanap o idagdag ang produkto</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
@@ -405,7 +405,7 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Brand</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Sangkap</string>
   <string name="search_string">Maghanap</string>
   <string name="country_string">Bansa</string>
   <string name="store_subtitle">Store</string>
@@ -413,15 +413,15 @@
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Store</string>
   <string name="packaging_string">Balot</string>
-  <string name="label_string">Label</string>
-  <string name="category_string">Category</string>
+  <string name="label_string">Tanda</string>
+  <string name="category_string">Kategorya</string>
   <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="contributor_string">Taga-ambag</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="vitamin_tags_text">Mga bitamina:</string>
   <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
+  <string name="mineral_tags_text">Mga mineral:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
@@ -450,4 +450,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

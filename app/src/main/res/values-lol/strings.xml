@@ -450,4 +450,6 @@
   <string name="notify_content">crwdns46800:0crwdne46800:0</string>
   <string name="notification_channel_name">crwdns46801:0crwdne46801:0</string>
   <string name="notify_channel_description">crwdns46802:0crwdne46802:0</string>
+  <string name="offline_notification_title">crwdns84803:0crwdne84803:0</string>
+  <string name="offline_notification_context">crwdns84804:0%1$dcrwdne84804:0</string>
 </resources>

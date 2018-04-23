@@ -258,9 +258,9 @@
   <string name="txtSeeMore">Ver mais</string>
   <string name="action_search">Procurar</string>
   <string name="search_hint">Procurar um produto</string>
-  <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="number_of_results">Número de resultados: </string>
+  <string name="brand">Marca :</string>
+  <string name="number_of_products">Número de produtos: </string>
   <string name="txt_no_results">Sem resultados</string>
   <string name="txt_extend_search">Tente alargar a pesquisa ou adicione o produto</string>
   <string name="txt_no_matching_products">Não encontrámos nenhum produto correspondente.\nPoderá tentar:</string>
@@ -405,7 +405,7 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Marca</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Aditivo</string>
   <string name="search_string">Procurar</string>
   <string name="country_string">País</string>
   <string name="store_subtitle">Loja</string>
@@ -413,15 +413,15 @@
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Loja</string>
   <string name="packaging_string">Embalagem</string>
-  <string name="label_string">Label</string>
+  <string name="label_string">Etiqueta</string>
   <string name="category_string">Categoria</string>
   <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="contributor_string">Colaborador</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="vitamin_tags_text">Vitaminas:</string>
   <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
+  <string name="mineral_tags_text">Minerais:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
@@ -450,4 +450,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

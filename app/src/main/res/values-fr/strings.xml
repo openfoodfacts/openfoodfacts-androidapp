@@ -396,7 +396,7 @@
   <string name="dialog_cancel">Annuler</string>
   <string name="choose_resolution">Choisir la résolution</string>
   <string name="pref_resolution_summary">Choisissez une résolution pour l’envoi d’images</string>
-  <string name="image_upload_resolution">Image upload resolution</string>
+  <string name="image_upload_resolution">Résolution de l\'envoi d\'images</string>
   <string name="can_add_barcode">Vous avez des problèmes de scan ?\nFaites glisser vers le haut pour saisir le code-barre</string>
   <string name="wikidata_information">Aller plus loin</string>
   <string name="description">Description : </string>
@@ -425,8 +425,8 @@
   <string name="other_tags_text">Autres substances :</string>
   <!--shared element transition key-->
   <string name="wikidata">Données de Wikidata</string>
-  <string name="disable_image_loading">Disable image loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable image loading</string>
+  <string name="disable_image_loading">Désactiver le chargement des images lorsque la batterie est faible</string>
+  <string name="DisableLoadTitle">Désactiver le chargement des images</string>
   <string name="txtCamera">Appareil photo</string>
   <string name="txtGallery">Galerie</string>
   <string name="txtOptions">Options</string>
@@ -450,4 +450,6 @@
   <string name="notify_content">Cliquez pour afficher les produits exportés</string>
   <string name="notification_channel_name">Notifications d\'exportation</string>
   <string name="notify_channel_description">Notification pour afficher l\'emplacement du fichier exporté</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

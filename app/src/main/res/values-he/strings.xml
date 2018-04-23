@@ -456,4 +456,6 @@
   <string name="notify_content">יש ללחוץ כדי לצפות במוצרים שייוצאו</string>
   <string name="notification_channel_name">התרעות ייצוא</string>
   <string name="notify_channel_description">התרעה להצגת מיקום הקובץ שייוצא</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>

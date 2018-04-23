@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="product">Product</string>
+  <string name="product">Өнім</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Іздеу</string>
@@ -158,7 +158,7 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Іздеу</string>
   <string name="search_by_barcode_drawer">Штрих-код бойынша іздеу</string>
-  <string name="category_drawer">Categories</string>
+  <string name="category_drawer">Санаттар</string>
   <string name="search_by_category">Category</string>
   <string name="search_by_name_drawer">Атауы бойынша іздеу</string>
   <string name="scan_search">Сканерлеу</string>
@@ -409,10 +409,10 @@
   <string name="search_string">Іздеу</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">Дүкен</string>
-  <string name="packaging_subtitle">Packaging</string>
+  <string name="packaging_subtitle">Қаптама</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Дүкен</string>
-  <string name="packaging_string">Packaging</string>
+  <string name="packaging_string">Қаптама</string>
   <string name="label_string">Label</string>
   <string name="category_string">Category</string>
   <string name="connection">Connected</string>
@@ -450,4 +450,6 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
 </resources>
