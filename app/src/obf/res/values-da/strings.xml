@@ -31,5 +31,5 @@
   <string name="text_offline_info_dialog">Du kan indskanne produkter, mens du er offline og tilføje dem til Open Beauty Facts senere. Alle produkterne, du har skannet, vil fremgå her, og du vil kunne indsende dem vha. knappen nedenfor.</string>
   <string name="warning_alert_data">Dine allergioplysninger vil aldrig blive sendt til Open Beauty Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
   <!-- OBF tagline in different languages -->
-  <string name="tagline">the free cosmetics database</string>
+  <string name="tagline">den gratis kosmetikdatabase</string>
 </resources>
