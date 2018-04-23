@@ -450,10 +450,10 @@
   <string name="notify_content">Tryk for at se eksporterede produkter</string>
   <string name="notification_channel_name">Eksportnotifikationer</string>
   <string name="notify_channel_description">Notifikation for at vise eksporterede fils placering</string>
-  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="modified_history">Produkt tilføjet d. %1$s kl. %2$s af %3$s. Senest redigering af produktside d. %4$s kl. %5$s af %6$s. Produktside også redigeret også af %7$s</string>
   <string name="offline_notification_title">Offline-bidrag, du skal sende</string>
   <string name="offline_notification_context">Du har %1$d offlineprodukter, som venter på at blive indsendt til Open Food Facts</string>
-  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
-  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
-  <string name="other_editors">Product page also edited by </string>
+  <string name="creator_history">Produkt tilføjetd. %1$s kl. %2$s CET af</string>
+  <string name="last_editor_history">Seneste redigering af produktside d. %1$s kl. %2$s CEST by </string>
+  <string name="other_editors">Produktside også redigeret af </string>
 </resources>
