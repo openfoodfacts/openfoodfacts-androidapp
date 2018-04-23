@@ -52,6 +52,8 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
@@ -154,7 +156,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
         });
 
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
@@ -195,7 +197,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
             }
             return true;
         });
-        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams)bottomNavigationView.getLayoutParams();
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
         layoutParams.setBehavior(new BottomNavigationBehavior());
     }
 
@@ -232,6 +234,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
         ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
         adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
         adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
+        adapterResult.addFragment(new ContributorsFragment(), "Contributions");
         if (BuildConfig.FLAVOR.equals("off")) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
@@ -245,7 +248,6 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 
     /**
      * This method is used to hide share_item and edit_product in App Bar
-     *
      */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {

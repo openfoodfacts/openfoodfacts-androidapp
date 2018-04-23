@@ -40,7 +40,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -374,6 +376,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 });
             }
         }
+
 
     }
 

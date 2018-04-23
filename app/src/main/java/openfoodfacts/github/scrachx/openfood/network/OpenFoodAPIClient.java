@@ -975,6 +975,43 @@ public class OpenFoodAPIClient {
         });
     }
 
+    public interface onStateCallback {
+        void onStateResponse(boolean value, Search state);
+    }
+
+    public void getProductsByStates(String state, final int page, final onStateCallback onStateCallback) {
+        apiService.getProductsByState(state, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onStateCallback.onStateResponse(false, null);
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(response.body().getCount()) == 0) {
+                        onStateCallback.onStateResponse(false, null);
+                        return;
+                    } else {
+                        onStateCallback.onStateResponse(true, response.body());
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
+
+                onStateCallback.onStateResponse(false, null);
+
+            }
+        });
+    }
+
     /**
      * OnResponseCall for uploads through notifications
      */
