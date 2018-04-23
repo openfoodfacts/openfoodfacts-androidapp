@@ -130,10 +130,10 @@
   <string name="txtTakePicture">Tag billede</string>
   <string name="txtSendAll">Upload alle</string>
   <string name="txtNoData">Ingen data</string>
-  <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeeded">Vent…</string>
+  <string name="txtPictureNeededDialogContent">Du skal tilføje mindst ét foto, inden du indsender dette produkt</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeededDialogNo">Kassér</string>
   <string name="toastSending">Uploader...</string>
   <string name="dataSaved">Gemt lokalt på din enhed</string>
   <string name="txtInfoAddUser">Indtast venligst dit brugernavn og adgangskode</string>
@@ -150,7 +150,7 @@
   <string name="txtBarcodeNotValid">Stregkode er ikke gyldig</string>
   <string name="try_it_scan_now">Skan produkt</string>
   <string name="share">Del</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Oversæt</string>
   <string name="msg_share">Kig på dette produkt på Open Food Facts :</string>
   <string name="create_account">Tilmeld dig</string>
   <string name="home_drawer">Hjem</string>
@@ -219,8 +219,8 @@
   <string name="permision_write_external_storage">Tilladelse til skrivning på eksternt lager er nødvendig for at eksportere historik.</string>
   <string name="txt_nutrition_not_found">Ikke fundet</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Calculate Calories</string>
-  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
+  <string name="calculate_calories">Beregn kalorier</string>
+  <string name="txt_calories_result">%1$s kcal i %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Kulhydrat</string>
   <string name="nutrition_carbohydrate_short_name">Kulhydrat (g)</string>
   <string name="nutrition_cholesterol">Kolesterol</string>
@@ -396,7 +396,7 @@
   <string name="dialog_cancel">Annullér</string>
   <string name="choose_resolution">Vælg opløsning</string>
   <string name="pref_resolution_summary">Vælg en opløsning til billed-upload</string>
-  <string name="image_upload_resolution">Image upload resolution</string>
+  <string name="image_upload_resolution">Upload-fotoopløsning</string>
   <string name="can_add_barcode">Problemer med at skanne?\nTræk opad for at angive stregkoden</string>
   <string name="wikidata_information">Going further</string>
   <string name="description">Beskrivelse: </string>
@@ -425,11 +425,11 @@
   <string name="other_tags_text">Øvrige stoffer:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata-data</string>
-  <string name="disable_image_loading">Disable image loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable image loading</string>
-  <string name="txtCamera">Camera</string>
-  <string name="txtGallery">Gallery</string>
-  <string name="txtOptions">Options</string>
+  <string name="disable_image_loading">Deaktivér fotoindlæsning, når batteriniveauet er lavt</string>
+  <string name="DisableLoadTitle">Deaktivér fotoindlæsning</string>
+  <string name="txtCamera">Kamera</string>
+  <string name="txtGallery">Galleri</string>
+  <string name="txtOptions">Valgmuligheder</string>
   <string name="by_title">Title</string>
   <string name="by_brand">Mærke</string>
   <string name="by_barcode">Stregkode</string>
@@ -437,8 +437,8 @@
   <string name="sort">Sortér</string>
   <string name="by_nutrition_grade">Ernæringskvalitet</string>
   <string name="sort_by">Sortér efter</string>
-  <string name="shake_summary">Shake phone to scan products</string>
-  <string name="shake_title">Scan on Shake</string>
+  <string name="shake_summary">Ryst mobil for at skanne produkter</string>
+  <string name="shake_title">Skan ved Ryst</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Billeder uden stregkode kan endnu ikke tilføjes med app\'en. Prøv venligst mobil-webversionen.</string>
   <string name="no_barcode">Iogen stregkode fundet</string>
@@ -446,10 +446,14 @@
   <string name="format_error">Ugyldig stregkode-/QR-format</string>
   <string name="code_detected">Stregkoden er aflæst</string>
   <string name="do_you_want_to">Vil du føje billeder til denne stregkode?</string>
-  <string name="notify_title">Export complete</string>
-  <string name="notify_content">Click to view exported products</string>
-  <string name="notification_channel_name">Export Notifications</string>
-  <string name="notify_channel_description">Notification to show exported file\'s location</string>
-  <string name="offline_notification_title">Offline contributions you need to send</string>
-  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="notify_title">Eksport fuldfært</string>
+  <string name="notify_content">Tryk for at se eksporterede produkter</string>
+  <string name="notification_channel_name">Eksportnotifikationer</string>
+  <string name="notify_channel_description">Notifikation for at vise eksporterede fils placering</string>
+  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="offline_notification_title">Offline-bidrag, du skal sende</string>
+  <string name="offline_notification_context">Du har %1$d offlineprodukter, som venter på at blive indsendt til Open Food Facts</string>
+  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
+  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="other_editors">Product page also edited by </string>
 </resources>

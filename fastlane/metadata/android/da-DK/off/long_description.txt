@@ -1,35 +1,35 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Skan fødevareprodukter eller deres stregkode for at få data om ingredienser, tilsætningsstoffer og ernæringsfakta.
 
-The app allows to view the 500.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+App'en giver mulighed for at se de 500.000 produkter (herunder 175.000 i USA), som allerede er indeholdt i den gratis og åbne database Open Food Facts samt tillige at tilføje fotos og data for manglende produkter.
 
-To discover the Open Food Facts project, please visit https://openfoodfacts.org
+For at finde projektet Open Food Facts, så besøg https://openfoodfacts.org
 
 
-***Contribute to Food Transparency***
+***Bidrag til fødevaregennemsigtighed***
 
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your food cupboard. 
+- Open Food Facts er en fødevareproduktdatabase udarbejdet af alle, for alle.
+- Du kan benytte den til at foretage bedre fødevarevalg, og da det er åbne data, kan alle genbruge dem til ethvert formål.
+- Open Food Facts er et nonprofit-projekt, der er udviklet af tusindvis af frivillige fra hele verden. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder. 
+- Du kan begynde at bidrage i dag ved at tilføje et produkt fra dit fadebur. 
 
-*** Get the Facts ***
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+*** Få faktaene ***
+- Open Food Facts hjælper dig med at forstå det med småt på produktetiketterne. Du vil kunne finde (i henhold til indikationerne på produkterne):
+- CO2-udslip (CO2-emissioner) og emballage (samt genbrugsanvisninger)
+- Nutriscore (næringsværdi), næringsstoffer, fedt/fedtindhold, mættede fedtsyrer, kulhydrater, sukkerarter, fiber, protein samt salt og natrium.
+- mærker, allergener, etiketter (bio, glutenfri, veganer, vegetarisk, halal, kosher ...), sporbarhedsoplysninger (emballeringskoder, ingrediensers oprindelse)
+- På vin og øl finder du alkoholindholdet.
 
-*** Works well in any condition ***
+*** Fungerer godt i enhver tilstand ***
 - Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- App'en indlæser kun det strengt nødvendige for at reducere data- og batteriforbrug
+- Du behøver ikke et kamera til at slå et produkt op. Du kan også angive stregkoden, hvis du mangler et kamera eller har problemer med det.
 
-*** Your food, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Din fødevarer, dine data ***
+- Dine data er dine, og de sendes aldrig online
+- Du kan benytte app'en anonymt
+- Du kan eksportere din skanningshistorik
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Open Food Facts er også tilgængelig på Internet via https://world.openfoodfacts.org
+Spørgsmål, feedback: contact@openfoodfacts.org
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Til kosmetik kan du installere Open Beauty Facts, til dyrefoder Open Pet Food Facts og for alle øvrige produkter Open Product Facts.
