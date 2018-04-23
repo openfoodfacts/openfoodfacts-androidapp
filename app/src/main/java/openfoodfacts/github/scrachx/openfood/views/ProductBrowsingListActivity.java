@@ -92,7 +92,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private boolean scanOnShake;
 
 
-
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
         Intent intent = new Intent(context, ProductBrowsingListActivity.class);
         intent.putExtra(SEARCH_QUERY, searchQuery);
@@ -218,14 +217,14 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.CONTRIBUTOR:
                 getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
                 break;
-            default:
-            }
+
             case SearchType.STATE: {
                 getSupportActionBar().setSubtitle("State");
                 break;
             }
             default: {
                 Log.e("Products Browsing", "No math case found for " + searchType);
+            }
         }
 
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
@@ -235,6 +234,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
         setup();
     }
+
 
     @OnClick(R.id.buttonTryAgain)
     public void setup() {
@@ -333,8 +333,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.CONTRIBUTOR:
                 api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
                 break;
-            default:
-            }
 
             case SearchType.STATE: {
                 api.getProductsByStates(searchQuery, pageAddress, this::loadData);
@@ -342,6 +340,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
             default: {
                 Log.e("Products Browsing", "No math case found for " + searchType);
+            }
         }
     }
 

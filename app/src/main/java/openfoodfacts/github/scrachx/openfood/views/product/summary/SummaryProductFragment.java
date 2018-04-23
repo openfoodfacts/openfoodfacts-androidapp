@@ -131,8 +131,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     Button addMorePicture;
     @BindView(R.id.imageGrade)
     ImageView img;
-    @BindView(R.id.creator)
-    TextView creatorTxt;
     private Product product;
     private OpenFoodAPIClient api;
     private WikidataApiClient apiClientForWikiData;
