@@ -271,6 +271,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new SectionDrawerItem().withName(R.string.search_drawer),
                         new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(ITEM_SEARCH_BY_CODE),
                         new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(ITEM_CATEGORIES).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.additives).withIcon(getResources().getDrawable(R.drawable.additives)).withIdentifier(ITEM_ADDITIVES).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(ITEM_SCAN).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.advanced_search_title).withIcon(GoogleMaterial.Icon.gmd_insert_chart).withIdentifier(ITEM_ADVANCED_SEARCH).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(ITEM_HISTORY).withSelectable(false),
@@ -303,6 +304,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             break;
                         case ITEM_CATEGORIES:
                             startActivity(CategoryActivity.getIntent(this));
+                            break;
+
+                        case ITEM_ADDITIVES:
+                            startActivity(new Intent(this, AdditivesExplorer.class));
                             break;
                         case ITEM_SCAN:
                             scan();
@@ -405,6 +410,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         if (BuildConfig.FLAVOR.equals("obf")) {
             result.removeItem(ITEM_ALERT);
+            result.removeItem(ITEM_ADDITIVES);
             result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
         }
 
@@ -415,6 +421,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         if (BuildConfig.FLAVOR.equals("opf")) {
             result.removeItem(ITEM_ALERT);
+            result.removeItem(ITEM_ADDITIVES);
             result.removeItem(ITEM_ADVANCED_SEARCH);
             result.removeItem(ITEM_CATEGORIES);
             result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
