@@ -173,8 +173,6 @@
                 android:resource="@xml/searchable" />
 
         </activity>
-        <activity android:name=".views.AdditivesExplorer"></activity>
-        <activity android:name=".views.ProductBrowsingListActivity"></activity>
 
         <receiver
             android:name=".utils.WifiUploadReceiver"
