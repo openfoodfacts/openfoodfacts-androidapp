@@ -1,12 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import org.greenrobot.greendao.database.Database;
-
-import static openfoodfacts.github.scrachx.openfood.models.DaoMaster.dropAllTables;
 
 public class DatabaseHelper extends DaoMaster.OpenHelper {
 
@@ -80,25 +79,95 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 break;
             }
             case 7: {
-                db.execSQL("ALTER TABLE additive_name ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE additive_name ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+                String wikiDataID = "wiki_data_id";
+                String isWikiDataPresent = "is_wiki_data_id_present";
 
-                db.execSQL("ALTER TABLE additive ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE additive ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+                if (columnIsNew(db, "additive_name", wikiDataID)) {
+                    db.execSQL("ALTER TABLE additive_name ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
+                }
 
-                db.execSQL("ALTER TABLE category_name ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE category_name ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+                if (columnIsNew(db, "additive_name", isWikiDataPresent)) {
+                    db.execSQL("ALTER TABLE additive_name ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+                }
 
-                db.execSQL("ALTER TABLE category ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE category ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+                if (columnIsNew(db, "additive", wikiDataID)) {
+                    db.execSQL("ALTER TABLE additive ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
+                }
 
-                db.execSQL("ALTER TABLE label_name ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE label_name ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+                if (columnIsNew(db, "additive", isWikiDataPresent)) {
+                    db.execSQL("ALTER TABLE additive ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+            }
 
-                db.execSQL("ALTER TABLE label ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE label ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+                if (columnIsNew(db, "category_name", wikiDataID)) {
+                    db.execSQL("ALTER TABLE category_name ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
+                }
 
+                if (columnIsNew(db, "category_name", isWikiDataPresent)) {
+                    db.execSQL("ALTER TABLE category_name ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+                }
+
+                if (columnIsNew(db, "category", wikiDataID)) {
+                    db.execSQL("ALTER TABLE category ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
+                }
+
+                if (columnIsNew(db, "category", isWikiDataPresent)) {
+                    db.execSQL("ALTER TABLE category ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+                }
+
+                if (columnIsNew(db, "label_name", wikiDataID)) {
+                    db.execSQL("ALTER TABLE label_name ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
+                }
+
+                if (columnIsNew(db, "label_name", isWikiDataPresent)) {
+                    db.execSQL("ALTER TABLE label_name ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+                }
+
+                if (columnIsNew(db, "label", wikiDataID)) {
+                    db.execSQL("ALTER TABLE label ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
+                }
+
+                if (columnIsNew(db, "label", isWikiDataPresent)) {
+                    db.execSQL("ALTER TABLE label ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+                }
+                
                 break;
+            }
+        }
+    }
+
+    /**
+     * Helper method to prevent SQLite Exception for duplicate columns. {@Link https://stackoverflow.com/questions/18920136/check-if-a-column-exists-in-sqlite/45774056#45774056 }
+     *
+     * @param database     The database to check
+     * @param tableName    The name of the table
+     * @param columnToFind The column to check for
+     * @return false if the column is found in the table already.
+     */
+    private boolean columnIsNew(Database database,
+                                String tableName,
+                                String columnToFind) {
+        Cursor cursor = null;
+
+        try {
+            cursor = database.rawQuery(
+                    "PRAGMA table_info(" + tableName + ")",
+                    null
+            );
+
+            int nameColumnIndex = cursor.getColumnIndexOrThrow("name");
+
+            while (cursor.moveToNext()) {
+                String name = cursor.getString(nameColumnIndex);
+
+                if (name.equals(columnToFind)) {
+                    return false;
+                }
+            }
+
+            return true;
+        } finally {
+            if (cursor != null) {
+                cursor.close();
             }
         }
     }
