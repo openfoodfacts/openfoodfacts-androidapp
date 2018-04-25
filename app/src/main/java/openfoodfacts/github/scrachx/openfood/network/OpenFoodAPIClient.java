@@ -125,9 +125,11 @@ public class OpenFoodAPIClient {
         apiService.getFullProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
+                if (activity == null || activity.isFinishing()) {
+                    return;
+                }
 
                 final State s = response.body();
-
                 if (s.getStatus() == 0) {
                     new MaterialDialog.Builder(activity)
                             .title(R.string.txtDialogsTitle)

@@ -147,6 +147,14 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
+        refreshView(mState);
+    }
+
+    @Override
+    public void refreshView(State state) {
+        super.refreshView(state);
+        mState = state;
+
         try {
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
         } catch (NullPointerException e) {
@@ -172,7 +180,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         if (!vitaminTagsList.isEmpty()) {
             StringBuilder vitaminStringBuilder = new StringBuilder();
-            vitaminTagsTextView.append(bold(getString(R.string.vitamin_tags_text)));
+            vitaminTagsTextView.setText(bold(getString(R.string.vitamin_tags_text)));
             for (String vitamins : vitaminTagsList) {
                 vitaminStringBuilder.append(prefix);
                 prefix = ", ";
@@ -186,7 +194,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (!aminoAcidTagsList.isEmpty()) {
             String aminoPrefix = " ";
             StringBuilder aminoAcidStringBuilder = new StringBuilder();
-            aminoAcidTagsTextView.append(bold(getString(R.string.amino_acid_tags_text)));
+            aminoAcidTagsTextView.setText(bold(getString(R.string.amino_acid_tags_text)));
             for (String aminoAcid : aminoAcidTagsList) {
                 aminoAcidStringBuilder.append(aminoPrefix);
                 aminoPrefix = ", ";
@@ -200,7 +208,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (!mineralTags.isEmpty()) {
             String mineralPrefix = " ";
             StringBuilder mineralsStringBuilder = new StringBuilder();
-            mineralTagsTextView.append(bold(getString(R.string.mineral_tags_text)));
+            mineralTagsTextView.setText(bold(getString(R.string.mineral_tags_text)));
             for (String mineral : mineralTags) {
                 mineralsStringBuilder.append(mineralPrefix);
                 mineralPrefix = ", ";
@@ -214,7 +222,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (!otherNutritionTags.isEmpty()) {
             String otherNutritionPrefix = " ";
             StringBuilder otherNutritionStringBuilder = new StringBuilder();
-            otherNutritionTagTextView.append(bold(getString(R.string.other_tags_text)));
+            otherNutritionTagTextView.setText(bold(getString(R.string.other_tags_text)));
             for (String otherSubstance : otherNutritionTags) {
                 otherNutritionStringBuilder.append(otherNutritionPrefix);
                 otherNutritionPrefix = ", ";
@@ -232,11 +240,11 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             addPhotoLabel.setVisibility(View.GONE);
 
             // Load Image if isLowBatteryMode is false
-            if(!isLowBatteryMode) {
-                Picasso.with(view.getContext())
+            if (!isLowBatteryMode) {
+                Picasso.with(getContext())
                         .load(product.getImageIngredientsUrl())
                         .into(mImageIngredients);
-            }else{
+            } else {
                 mImageIngredients.setVisibility(View.GONE);
             }
 
@@ -265,7 +273,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         if (!allergens.isEmpty()) {
             substanceProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            substanceProduct.append(bold(getString(R.string.txtSubstances)));
+            substanceProduct.setText(bold(getString(R.string.txtSubstances)));
             substanceProduct.append(" ");
 
             String allergen;
@@ -285,7 +293,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             traceProduct.setVisibility(View.GONE);
         } else {
             traceProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            traceProduct.append(bold(getString(R.string.txtTraces)));
+            traceProduct.setText(bold(getString(R.string.txtTraces)));
             traceProduct.append(" ");
 
             String trace;
@@ -305,14 +313,14 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             mayBeFromPalmOilProduct.setVisibility(View.GONE);
         } else {
             if (!product.getIngredientsFromPalmOilTags().isEmpty()) {
-                palmOilProduct.append(bold(getString(R.string.txtPalmOilProduct)));
+                palmOilProduct.setText(bold(getString(R.string.txtPalmOilProduct)));
                 palmOilProduct.append(" ");
                 palmOilProduct.append(product.getIngredientsFromPalmOilTags().toString().replaceAll("[\\[,\\]]", ""));
             } else {
                 palmOilProduct.setVisibility(View.GONE);
             }
             if (!product.getIngredientsThatMayBeFromPalmOilTags().isEmpty()) {
-                mayBeFromPalmOilProduct.append(bold(getString(R.string.txtMayBeFromPalmOilProduct)));
+                mayBeFromPalmOilProduct.setText(bold(getString(R.string.txtMayBeFromPalmOilProduct)));
                 mayBeFromPalmOilProduct.append(" ");
                 mayBeFromPalmOilProduct.append(product.getIngredientsThatMayBeFromPalmOilTags().toString().replaceAll("[\\[,\\]]", ""));
             } else {

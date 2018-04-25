@@ -78,7 +78,6 @@ public class CategoryActivity extends BaseActivity {
     public void onPause() {
         super.onPause();
         if (scanOnShake) {
-
             mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
         }
     }
@@ -87,7 +86,6 @@ public class CategoryActivity extends BaseActivity {
     public void onResume() {
         super.onResume();
         if (scanOnShake) {
-
             mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
         }
     }
