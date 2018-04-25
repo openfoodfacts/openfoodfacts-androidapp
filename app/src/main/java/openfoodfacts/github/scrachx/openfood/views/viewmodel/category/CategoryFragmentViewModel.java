@@ -44,14 +44,6 @@ public class CategoryFragmentViewModel extends ViewModel {
         this.languageCode = Locale.getDefault().getLanguage();
     }
 
-    public ObservableField<List<CategoryName>> getFilteredCategories() {
-        return filteredCategories;
-    }
-
-    public ObservableInt getShowProgress() {
-        return showProgress;
-    }
-  
     @Override
     protected void subscribe(@NonNull CompositeDisposable subscriptions) {
         loadCategories();
@@ -118,8 +110,8 @@ public class CategoryFragmentViewModel extends ViewModel {
         return categoryNames;
     }
 
-    public ObservableField<List<CategoryName>> getCategories() {
-        return categories;
+    public ObservableField<List<CategoryName>> getFilteredCategories() {
+        return filteredCategories;
     }
 
     public ObservableInt getShowProgress() {
