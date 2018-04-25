@@ -526,6 +526,10 @@
     <string name="category_string">Category</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
+
+    <string name="Rate_Us">Show Your Support</string>
+    <string name="Rate_Us_title">Rate our App</string>
+
     <string name="app_disabled_text">Application is disabled</string>
 
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
@@ -574,5 +578,6 @@
     <string name="creator_history">Product added on %1$s at %2$s CET by</string>
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
     <string name="other_editors">Product page also edited by </string>
+
 
 </resources>

@@ -83,6 +83,10 @@
             android:key="FAQ"
             android:summary="@string/FrequentlyAskedQuestions"
             android:title="@string/FAQ" />
+        <Preference
+            android:key="RateUs"
+            android:summary="@string/Rate_Us_title"
+            android:title="@string/Rate_Us" />
 
         <Preference
             android:key="Terms"
