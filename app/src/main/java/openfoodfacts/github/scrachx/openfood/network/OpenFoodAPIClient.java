@@ -125,9 +125,11 @@ public class OpenFoodAPIClient {
         apiService.getFullProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
+                if (activity == null || activity.isFinishing()) {
+                    return;
+                }
 
                 final State s = response.body();
-
                 if (s.getStatus() == 0) {
                     new MaterialDialog.Builder(activity)
                             .title(R.string.txtDialogsTitle)
@@ -971,6 +973,38 @@ public class OpenFoodAPIClient {
 
                 onContributorCallback.onContributorResponse(false, null);
 
+            }
+        });
+    }
+
+    public interface OnIncompleteCallback {
+        void onIncompleteResponse(boolean value, Search incompleteProducts);
+    }
+
+    public void getIncompleteProducts(int page, OnIncompleteCallback onIncompleteCallback) {
+        apiService.getIncompleteProducts(page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+                if (!response.isSuccessful()) {
+                    onIncompleteCallback.onIncompleteResponse(false, null);
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(response.body().getCount()) == 0) {
+                        onIncompleteCallback.onIncompleteResponse(false, null);
+                        return;
+                    } else {
+                        onIncompleteCallback.onIncompleteResponse(true, response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+
+                onIncompleteCallback.onIncompleteResponse(false, null);
             }
         });
     }
