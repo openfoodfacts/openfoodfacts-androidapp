@@ -17,7 +17,19 @@
   <string name="slide_2_title">तथ्य प्राप्त करें</string>
   <string name="slide_2_desc">आपके द्वारा स्कैन किए गए उत्पाद के बारे में विस्तृत जानकारी, आपके लिए गूढ़वाचन</string>
   <string name="slide_3_title">आपके द्वारा उपयोग किए जाने वाले उत्पादों का ट्रैक रखें</string>
-  <string name="slide_3_desc">आपके द्वारा उपयोग किए हुए सभी कॉस्मेटिक को आप एक आसान सूची में निर्यात कर सकते हैं</string>
+  <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
   <string name="slide_4_title">ऑफ़लाइन काम करता है</string>
   <string name="slide_4_desc">आप नए उत्पादों को ऐड कर सकते हैं, भले ही आपके पास अभी कोई इंटरनेट कनेक्शन न हो</string>
+  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
+  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
+  <string name="msg_share">Open Food Facts  पर इस उत्पाद को देखो:</string>
+  <string name="not_support_books">ओपन फ़ूड फैक्ट्स पर पुस्तकें उपलब्ध नहीं है</string>
+  <string name="txt_broaden_search">- अपनी खोज को विस्तृत करना \n- स्कैन करें और इसे ओपन फ़ूड फैक्ट्स में ऐड करें</string>
+  <string name="Donation">ओपन फ़ूड फैक्ट्स को दान करने के लिए यहाँ क्लिक करें</string>
+  <string name="translate_help_title">ओपन फ़ूड फैक्ट्स का अनुवाद करने में मदद करें</string>
+  <string name="translate_help_summary">ओपन फ़ूड फैक्ट्स डेटाबेस को अपनी भाषा में लाएं - कोई तकनीकी की आवश्यकता नहीं है</string>
+  <string name="text_offline_info_dialog">जब आप ऑफ़लाइन हो तब भी आप उत्पादों को स्कैन कर सकते हैं, ताकि उन्हें आप बाद में जोड़ सके। आपके सभी स्कैन कि हुए  उत्पाद यहाँ दिखाई देगी, और आप नीचे दिए गए बटन का उपयोग कर उन्हें भेजने के लिए सक्षम हो जाएगा।</string>
+  <string name="warning_alert_data">आपकी एलर्जी जानकारी कभी ओपन फूड फैक्ट्स सर्वर पर नहीं भेजी जाएगी। इसके अलावा सावधान रहें, ज़रूरी नहीं कि उत्पाद डेटा सटीक हो, और पहचान 100% सही हो, इसलिए कृपया स्वयं दोबारा जांच करें!</string>
+  <!-- OPFF tagline in different languages -->
+  <string name="tagline">free pet food products database</string>
 </resources>

@@ -71,6 +71,7 @@ public class HomeFragment extends NavigationBaseFragment {
                 }
             } else {
                 Intent intent = new Intent(getActivity(), ScannerFragmentActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         } else {

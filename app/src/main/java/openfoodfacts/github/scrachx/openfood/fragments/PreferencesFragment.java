@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -28,6 +29,7 @@ import org.apache.commons.text.WordUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -51,6 +53,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     private SharedPreferences settings;
     private NavigationDrawerListener navigationDrawerListener;
 
+   Context context;
+
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         MenuItem item = menu.findItem(R.id.action_search);
@@ -61,6 +66,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     public void onCreatePreferences(Bundle bundle, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
         setHasOptionsMenu(true);
+        context=getContext();
+
 
         ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
 
@@ -69,17 +76,21 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
         String[] localeValues = getActivity().getResources().getStringArray(R.array.languages_array);
         String[] localeLabels = new String[localeValues.length];
+        List<String> finalLocalValues = new ArrayList<>();
+        List<String> finalLocalLabels = new ArrayList<>();
 
         for (int i = 0; i < localeValues.length; i++) {
             Locale current = LocaleHelper.getLocale(localeValues[i]);
 
             if (current != null) {
                 localeLabels[i] = WordUtils.capitalize(current.getDisplayName(current));
+                finalLocalLabels.add(localeLabels[i]);
+                finalLocalValues.add(localeValues[i]);
             }
         }
 
-        languagePreference.setEntries(localeLabels);
-        languagePreference.setEntryValues(localeValues);
+        languagePreference.setEntries(finalLocalLabels.toArray(new String[finalLocalLabels.size()]));
+        languagePreference.setEntryValues(finalLocalValues.toArray(new String[finalLocalValues.size()]));
 
         languagePreference.setOnPreferenceChangeListener((preference, locale) -> {
 
@@ -87,7 +98,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Configuration configuration = activity.getResources().getConfiguration();
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-
                 configuration.setLocale(LocaleHelper.getLocale((String) locale));
                 new GetAdditives().execute();
             }
@@ -107,6 +117,23 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                 Toast.makeText(getActivity(), R.string.email_not_found, Toast.LENGTH_SHORT).show();
             }
             return true;
+        });
+
+        Preference rateus=findPreference("RateUs");
+        rateus.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                try {
+                    String installer = context.getPackageManager()
+                            .getInstallerPackageName(context.getPackageName());
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=" + installer)));
+                } catch (android.content.ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
+                }
+                return true;
+            }
         });
 
 
@@ -133,7 +160,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
             CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
             customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getContext().getPackageName()));
-            CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new WebViewFallback());
+            CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.translate_url)), new
+                    WebViewFallback());
 
             return true;
         });

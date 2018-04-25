@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_layout_product"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -9,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Light">
-        <!--android:fitsSystemWindows="true"-->
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -30,13 +31,11 @@
 
     </android.support.design.widget.AppBarLayout>
 
-
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/design_bottom_sheet_product_activity"
@@ -156,14 +155,26 @@
         android:id="@+id/buttonScan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="top|center_horizontal"
-        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_margin="16dp"
         android:contentDescription="@string/try_it_scan_now"
-        app:layout_anchor="@+id/pager"
-        app:layout_anchorGravity="bottom|right"
+        app:elevation="10dp"
+        app:fabSize="normal"
+        app:layout_anchor="@id/bottom_navigation"
+        app:layout_anchorGravity="top|right"
         app:srcCompat="@drawable/barcode_white_24dp" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@color/gray"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/light_blue_50"
+        app:menu="@menu/my_navigation_items"
+        tools:layout_editor_absoluteY="503dp">
+
+    </android.support.design.widget.BottomNavigationView>
 
 </android.support.design.widget.CoordinatorLayout>

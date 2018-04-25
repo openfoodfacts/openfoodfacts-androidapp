@@ -30,7 +30,7 @@ public interface OpenFoodAPIService {
 
     String PRODUCT_API_COMMENT = "new android app";
 
-    @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags")
+    @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags")
     Call<State> getFullProductByBarcode(@Path("barcode") String barcode);
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
@@ -59,6 +59,114 @@ public interface OpenFoodAPIService {
                             @Query("user_id") String login,
                             @Query("password") String password,
                             @Query("comment") String comment);
+
+    /**
+     * This method is used to upload those products which
+     * does not contain Name of the product.
+     * here name query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
+    @Deprecated
+    @GET("/cgi/product_jqm2.pl")
+    Call<State> saveProductWithoutName(@Query("code") String code,
+                                       @Query("lang") String lang,
+                                       @Query("brands") String brands,
+                                       @Query("quantity") String quantity,
+                                       @Query("user_id") String login,
+                                       @Query("password") String password,
+                                       @Query("comment") String comment);
+
+
+    /**
+     * This method is used to upload those products which
+     * does not contain Brands of the product.
+     * here Brands query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
+    @Deprecated
+    @GET("/cgi/product_jqm2.pl")
+    Call<State> saveProductWithoutBrands(@Query("code") String code,
+                                         @Query("lang") String lang,
+                                         @Query("product_name") String name,
+                                         @Query("quantity") String quantity,
+                                         @Query("user_id") String login,
+                                         @Query("password") String password,
+                                         @Query("comment") String comment);
+
+    /**
+     * This method is used to upload those products which
+     * does not contain Quantity of the product.
+     * here Quantity query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
+    @Deprecated
+    @GET("/cgi/product_jqm2.pl")
+    Call<State> saveProductWithoutQuantity(@Query("code") String code,
+                                           @Query("lang") String lang,
+                                           @Query("product_name") String name,
+                                           @Query("brands") String brands,
+                                           @Query("user_id") String login,
+                                           @Query("password") String password,
+                                           @Query("comment") String comment);
+
+    /**
+     * This method is used to upload those products which
+     * does not contain Name and Brands of the product.
+     * here Name and Brands query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
+    @Deprecated
+    @GET("/cgi/product_jqm2.pl")
+    Call<State> saveProductWithoutNameAndBrands(@Query("code") String code,
+                                                @Query("lang") String lang,
+                                                @Query("quantity") String quantity,
+                                                @Query("user_id") String login,
+                                                @Query("password") String password,
+                                                @Query("comment") String comment);
+
+    /**
+     * This method is used to upload those products which
+     * does not contain Name and Quantity of the product.
+     * here Name and Quantity query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
+    @Deprecated
+    @GET("/cgi/product_jqm2.pl")
+    Call<State> saveProductWithoutNameAndQuantity(@Query("code") String code,
+                                                  @Query("lang") String lang,
+                                                  @Query("brands") String brands,
+                                                  @Query("user_id") String login,
+                                                  @Query("password") String password,
+                                                  @Query("comment") String comment);
+
+    /**
+     * This method is used to upload those products which
+     * does not contain Brands and Quantity of the product.
+     * here Brands and Quantity query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
+    @Deprecated
+    @GET("/cgi/product_jqm2.pl")
+    Call<State> saveProductWithoutBrandsAndQuantity(@Query("code") String code,
+                                                    @Query("lang") String lang,
+                                                    @Query("product_name") String name,
+                                                    @Query("user_id") String login,
+                                                    @Query("password") String password,
+                                                    @Query("comment") String comment);
+
+    /**
+     * This method is used to upload those products which
+     * does not contain Brands, Name and Quantity of the product.
+     * here Brands, Name and Quantity query is not present to make sure if the product is already present
+     * then the server would not assume to delete it.
+     */
+    @Deprecated
+    @GET("/cgi/product_jqm2.pl")
+    Call<State> saveProductWithoutNameBrandsAndQuantity(@Query("code") String code,
+                                                        @Query("lang") String lang,
+                                                        @Query("user_id") String login,
+                                                        @Query("password") String password,
+                                                        @Query("comment") String comment);
 
     @Multipart
     @POST("/cgi/product_image_upload.pl")
@@ -158,6 +266,9 @@ public interface OpenFoodAPIService {
     @GET("packager-codes.json")
     Single<TagsWrapper> getTags();
 
+    @GET("state/{State}/{page}.json")
+    Call<Search> getProductsByState(@Path("State") String state, @Path("page") int page);
+
     /**
      * Open Beauty Facts experimental and specific APIs
      */
@@ -167,4 +278,11 @@ public interface OpenFoodAPIService {
 
     @GET("ingredient/{ingredient}.json")
     Call<Search> byIngredient(@Path("ingredient") String ingredient);
+
+    /**
+     * This method gives a list of incomplete products
+     */
+    @GET("state/to-be-completed/{page}.json")
+    Call<Search> getIncompleteProducts(@Path("page") int page);
 }
+

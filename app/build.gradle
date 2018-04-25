@@ -9,8 +9,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 41
-        versionName "0.8.5"
+        versionCode 46
+        versionName "0.8.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -30,7 +30,7 @@ android {
             applicationId "openfoodfacts.github.scrachx.openfood"
             resValue "string", "app_name", "Open Food Facts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openfoodfacts.org"'
-            buildConfigField 'String', 'OFOTHERLINKAPP', '"openfoodfacts.github.scrachx.openbeauty"'
+            buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openbeautyfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
@@ -39,7 +39,7 @@ android {
             applicationId "openfoodfacts.github.scrachx.openbeauty"
             resValue "string", "app_name", "Open Beauty Facts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openbeautyfacts.org"'
-            buildConfigField 'String', 'OFOTHERLINKAPP', '"openfoodfacts.github.scrachx.openfood"'
+            buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openbeautyfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
@@ -52,6 +52,16 @@ android {
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
+
+        opf {
+            applicationId "org.openproductsfacts.scanner"
+            resValue "string", "app_name", "Open Products Facts"
+            buildConfigField 'String', 'HOST', '"https://ssl-api.openproductsfacts.org"'
+            buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
+            buildConfigField 'String', 'OFWEBSITE', '"https://world.openproductsfacts.org/"'
+            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
+        }
+
     }
 
 
@@ -132,6 +142,7 @@ dependencies {
     implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile "com.android.support:multidex:$rootProject.multidexVersion"
+    compile "com.android.support:design:27.1.0"
 
     //DI
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"

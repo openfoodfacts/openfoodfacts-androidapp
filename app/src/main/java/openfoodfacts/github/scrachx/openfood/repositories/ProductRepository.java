@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
 import org.greenrobot.greendao.AbstractDao;
+import org.greenrobot.greendao.database.Database;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,7 @@ public class ProductRepository implements IProductRepository {
     private ProductApiService productApi;
     private OpenFoodAPIService openFooApi;
 
+    private Database db;
     private LabelDao labelDao;
     private LabelNameDao labelNameDao;
     private TagDao tagDao;
@@ -78,6 +80,7 @@ public class ProductRepository implements IProductRepository {
         openFooApi = CommonApiManager.getInstance().getOpenFoodApiService();
 
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        db = daoSession.getDatabase();
         labelDao = daoSession.getLabelDao();
         labelNameDao = daoSession.getLabelNameDao();
         tagDao = daoSession.getTagDao();
@@ -209,11 +212,20 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public void saveLabels(List<Label> labels) {
-        for (Label label : labels) {
-            labelDao.insertOrReplaceInTx(label);
-            for (LabelName labelName : label.getNames()) {
-                labelNameDao.insertOrReplace(labelName);
+        db.beginTransaction();
+        try {
+            for (Label label : labels) {
+                labelDao.insertOrReplace(label);
+                for (LabelName labelName : label.getNames()) {
+                    labelNameDao.insertOrReplace(labelName);
+                }
             }
+
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
         }
     }
 
@@ -233,11 +245,20 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public void saveAllergens(List<Allergen> allergens) {
-        for (Allergen allergen : allergens) {
-            allergenDao.insertOrReplaceInTx(allergen);
-            for (AllergenName allergenName : allergen.getNames()) {
-                allergenNameDao.insertOrReplace(allergenName);
+        db.beginTransaction();
+        try {
+            for (Allergen allergen : allergens) {
+                allergenDao.insertOrReplace(allergen);
+                for (AllergenName allergenName : allergen.getNames()) {
+                    allergenNameDao.insertOrReplace(allergenName);
+                }
             }
+
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
         }
     }
 
@@ -248,11 +269,20 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public void saveAdditives(List<Additive> additives) {
-        for (Additive additive : additives) {
-            additiveDao.insertOrReplaceInTx(additive);
-            for (AdditiveName additiveName : additive.getNames()) {
-                additiveNameDao.insertOrReplace(additiveName);
+        db.beginTransaction();
+        try {
+            for (Additive additive : additives) {
+                additiveDao.insertOrReplace(additive);
+                for (AdditiveName allergenName : additive.getNames()) {
+                    additiveNameDao.insertOrReplace(allergenName);
+                }
             }
+
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
         }
     }
 
@@ -263,11 +293,20 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public void saveCountries(List<Country> countries) {
-        for (Country country : countries) {
-            countryDao.insertOrReplaceInTx(country);
-            for (CountryName countryName : country.getNames()) {
-                countryNameDao.insertOrReplace(countryName);
+        db.beginTransaction();
+        try {
+            for (Country country : countries) {
+                countryDao.insertOrReplace(country);
+                for (CountryName countryName : country.getNames()) {
+                    countryNameDao.insertOrReplace(countryName);
+                }
             }
+
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
         }
     }
 
@@ -278,11 +317,20 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public void saveCategories(List<Category> categories) {
-        for (Category category : categories) {
-            categoryDao.insertOrReplaceInTx(category);
-            for (CategoryName categoryName : category.getNames()) {
-                categoryNameDao.insertOrReplace(categoryName);
+        db.beginTransaction();
+        try {
+            for (Category category : categories) {
+                categoryDao.insertOrReplace(category);
+                for (CategoryName categoryName : category.getNames()) {
+                    categoryNameDao.insertOrReplace(categoryName);
+                }
             }
+
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
         }
     }
 
@@ -312,12 +360,16 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      */
     @Override
-    public LabelName getLabelByTagAndLanguageCode(String labelTag, String languageCode) {
-        return labelNameDao.queryBuilder()
-                .where(
-                        LabelNameDao.Properties.LabelTag.eq(labelTag),
-                        LabelNameDao.Properties.LanguageCode.eq(languageCode)
-                ).unique();
+    public Single<LabelName> getLabelByTagAndLanguageCode(String labelTag, String languageCode) {
+        return Single.fromCallable(() -> {
+            LabelName labelName = labelNameDao.queryBuilder()
+                    .where(
+                            LabelNameDao.Properties.LabelTag.eq(labelTag),
+                            LabelNameDao.Properties.LanguageCode.eq(languageCode)
+                    ).unique();
+
+            return labelName != null ? labelName : new LabelName();
+        });
     }
 
     /**
@@ -326,7 +378,7 @@ public class ProductRepository implements IProductRepository {
      * @param labelTag is a unique Id of label
      */
     @Override
-    public LabelName getLabelByTagAndDefaultLanguageCode(String labelTag) {
+    public Single<LabelName> getLabelByTagAndDefaultLanguageCode(String labelTag) {
         return getLabelByTagAndLanguageCode(labelTag, DEFAULT_LANGUAGE);
     }
 
@@ -337,12 +389,16 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      */
     @Override
-    public AdditiveName getAdditiveByTagAndLanguageCode(String additiveTag, String languageCode) {
-        return additiveNameDao.queryBuilder()
-                .where(
-                        AdditiveNameDao.Properties.AdditiveTag.eq(additiveTag),
-                        AdditiveNameDao.Properties.LanguageCode.eq(languageCode)
-                ).unique();
+    public Single<AdditiveName> getAdditiveByTagAndLanguageCode(String additiveTag, String languageCode) {
+        return Single.fromCallable(() -> {
+            AdditiveName additiveName = additiveNameDao.queryBuilder()
+                    .where(
+                            AdditiveNameDao.Properties.AdditiveTag.eq(additiveTag),
+                            AdditiveNameDao.Properties.LanguageCode.eq(languageCode)
+                    ).unique();
+
+            return additiveName != null ? additiveName : new AdditiveName();
+        });
     }
 
     /**
@@ -351,7 +407,7 @@ public class ProductRepository implements IProductRepository {
      * @param additiveTag is a unique Id of additive
      */
     @Override
-    public AdditiveName getAdditiveByTagAndDefaultLanguageCode(String additiveTag) {
+    public Single<AdditiveName> getAdditiveByTagAndDefaultLanguageCode(String additiveTag) {
         return getAdditiveByTagAndLanguageCode(additiveTag, DEFAULT_LANGUAGE);
     }
 
@@ -362,12 +418,16 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      */
     @Override
-    public CountryName getCountryByTagAndLanguageCode(String countryTag, String languageCode) {
-        return countryNameDao.queryBuilder()
-                .where(
-                        CountryNameDao.Properties.CountyTag.eq(countryTag),
-                        CountryNameDao.Properties.LanguageCode.eq(languageCode)
-                ).unique();
+    public Single<CountryName> getCountryByTagAndLanguageCode(String countryTag, String languageCode) {
+        return Single.fromCallable(() -> {
+            CountryName countryName = countryNameDao.queryBuilder()
+                    .where(
+                            CountryNameDao.Properties.CountyTag.eq(countryTag),
+                            CountryNameDao.Properties.LanguageCode.eq(languageCode)
+                    ).unique();
+
+            return countryName != null ? countryName : new CountryName();
+        });
     }
 
     /**
@@ -376,7 +436,7 @@ public class ProductRepository implements IProductRepository {
      * @param countryTag is a unique Id of country
      */
     @Override
-    public CountryName getCountryByTagAndDefaultLanguageCode(String countryTag) {
+    public Single<CountryName> getCountryByTagAndDefaultLanguageCode(String countryTag) {
         return getCountryByTagAndLanguageCode(countryTag, DEFAULT_LANGUAGE);
     }
 
@@ -387,12 +447,16 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      */
     @Override
-    public CategoryName getCategoryByTagAndLanguageCode(String categoryTag, String languageCode) {
-        return categoryNameDao.queryBuilder()
-                .where(
-                        CategoryNameDao.Properties.CategoryTag.eq(categoryTag),
-                        CategoryNameDao.Properties.LanguageCode.eq(languageCode)
-                ).unique();
+    public Single<CategoryName> getCategoryByTagAndLanguageCode(String categoryTag, String languageCode) {
+        return Single.fromCallable(() -> {
+            CategoryName categoryName = categoryNameDao.queryBuilder()
+                    .where(
+                            CategoryNameDao.Properties.CategoryTag.eq(categoryTag),
+                            CategoryNameDao.Properties.LanguageCode.eq(languageCode)
+                    ).unique();
+
+            return categoryName != null ? categoryName : new CategoryName();
+        });
     }
 
     /**
@@ -401,7 +465,7 @@ public class ProductRepository implements IProductRepository {
      * @param categoryTag is a unique Id of category
      */
     @Override
-    public CategoryName getCategoryByTagAndDefaultLanguageCode(String categoryTag) {
+    public Single<CategoryName> getCategoryByTagAndDefaultLanguageCode(String categoryTag) {
         return getCategoryByTagAndLanguageCode(categoryTag, DEFAULT_LANGUAGE);
     }
 
@@ -425,26 +489,28 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      */
     @Override
-    public List<AllergenName> getAllergensByEnabledAndLanguageCode(Boolean isEnabled, String languageCode) {
-        List<Allergen> allergens = allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq(isEnabled)).list();
-        if (allergens != null) {
-            List<AllergenName> allergenNames = new ArrayList<>();
-            for (Allergen allergen : allergens) {
-                AllergenName name = allergenNameDao.queryBuilder()
-                        .where(
-                                AllergenNameDao.Properties.AllergenTag.eq(allergen.getTag()),
-                                AllergenNameDao.Properties.LanguageCode.eq(languageCode)
-                        ).unique();
+    public Single<List<AllergenName>> getAllergensByEnabledAndLanguageCode(Boolean isEnabled, String languageCode) {
+        return Single.fromCallable(() -> {
+            List<Allergen> allergens = allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq(isEnabled)).list();
+            if (allergens != null) {
+                List<AllergenName> allergenNames = new ArrayList<>();
+                for (Allergen allergen : allergens) {
+                    AllergenName name = allergenNameDao.queryBuilder()
+                            .where(
+                                    AllergenNameDao.Properties.AllergenTag.eq(allergen.getTag()),
+                                    AllergenNameDao.Properties.LanguageCode.eq(languageCode)
+                            ).unique();
 
-                if (name != null) {
-                    allergenNames.add(name);
+                    if (name != null) {
+                        allergenNames.add(name);
+                    }
                 }
+
+                return allergenNames;
             }
 
-            return allergenNames;
-        }
-
-        return null;
+            return new ArrayList<>();
+        });
     }
 
     /**
@@ -453,10 +519,11 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      */
     @Override
-    public List<AllergenName> getAllergensByLanguageCode(String languageCode) {
-        return allergenNameDao.queryBuilder()
-                .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
-                .list();
+    public Single<List<AllergenName>> getAllergensByLanguageCode(String languageCode) {
+        return Single.fromCallable(() ->
+                allergenNameDao.queryBuilder()
+                        .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
+                        .list());
     }
 
     /**

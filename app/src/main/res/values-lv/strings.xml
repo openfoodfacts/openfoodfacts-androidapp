@@ -7,12 +7,12 @@
     <item quantity="other"> minūtes</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="zero"> hour</item>
+    <item quantity="zero"> stunda</item>
     <item quantity="one"> stunda</item>
     <item quantity="other"> stundas</item>
   </plurals>
   <plurals name="days">
-    <item quantity="zero"> day</item>
+    <item quantity="zero"> diena</item>
     <item quantity="one"> diena</item>
     <item quantity="other"> dienas</item>
   </plurals>
@@ -51,6 +51,12 @@
     <item>cl</item>
     <item>fl oz</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>Noklusējuma</item>
@@ -58,6 +64,8 @@
     <item>Sastāvdaļas</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Grāmatzīme</string>
+  <string name="product">Produkts</string>
   <string name="fastscroller_track">Ātrās apskates režīms</string>
   <string name="fastscroller_handle">Ātrās apskates pārbaude</string>
   <string name="search_button">Meklēt</string>
@@ -112,10 +120,8 @@
   <string name="uploadLater">Attēls tiks augšupielādēts, kad interneta savienojums būs pieejams</string>
   <string name="txtInfoLoginOk">Lietotājs saglabāts</string>
   <string name="txtInfoLoginNo">Lietotājs nav saglabāts</string>
-  <string name="txtDialogsTitle">Informācija</string>
   <string name="txtDialogsContent">Skenētais produkts vēl nav pieejams Open Food Facts sarakstā. Lūdzu, pievienojiet to.</string>
   <string name="txtDialogsContentPowerMode">Jūsu skenētais produkts jau pastāvOpen Food Facts.</string>
-  <string name="txtDialogsContentSend">Vai vēlaties saglabāt saglabātos produktus datubāzē?</string>
   <string name="txtYes">Jā</string>
   <string name="txtNo">Nē</string>
   <string name="hintNameProduct">Nosaukums</string>
@@ -127,7 +133,10 @@
   <string name="txtTakePicture">Uzņemt attēlu</string>
   <string name="txtSendAll">Augšupielādēt visu</string>
   <string name="txtNoData">Nav datu</string>
-  <string name="txtPictureNeeded">Lūdzu, vispirms uzņemiet attēlu</string>
+  <string name="txtPictureNeeded">Pagaidiet …</string>
+  <string name="txtPictureNeededDialogContent">Pirms šī produkta iesniegšanas jums jāpievieno vismaz viens attēls</string>
+  <string name="txtPictureNeededDialogYes">Palikt</string>
+  <string name="txtPictureNeededDialogNo">Atcelt</string>
   <string name="toastSending">Augšuplādē…</string>
   <string name="dataSaved">Saglabāts jūsu ierīcē</string>
   <string name="txtInfoAddUser">Lūdzu, ievadiet savu lietotājvārdu un paroli</string>
@@ -144,6 +153,7 @@
   <string name="txtBarcodeNotValid">Svītrkods nav derīgs</string>
   <string name="try_it_scan_now">Skenēt produktu</string>
   <string name="share">Dalīties</string>
+  <string name="translate">Tulkot</string>
   <string name="msg_share">Apskatiet šo produktu, izmantojot Open Food Facts:</string>
   <string name="create_account">Reģistrēties</string>
   <string name="home_drawer">Mājas</string>
@@ -212,6 +222,8 @@
   <string name="permision_write_external_storage">Vēstures eksportēšanai ir nepieciešama ārējās atmiņas piekļuves atļauja.</string>
   <string name="txt_nutrition_not_found">Nav datu</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Aprēķināt kalorijas</string>
+  <string name="txt_calories_result">%1$s kcal %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Ogļhidrāti</string>
   <string name="nutrition_carbohydrate_short_name">Ogļhidrāti (g)</string>
   <string name="nutrition_cholesterol">Holesterīns</string>
@@ -408,6 +420,8 @@
   <string name="category_string">Kategorija</string>
   <string name="connection">Savienots</string>
   <string name="contributor_string">Atbalstītājs</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Pieteikums ir atspējots</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitamīni:</string>
@@ -416,4 +430,36 @@
   <string name="other_tags_text">Citas vielas:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata dati</string>
+  <string name="disable_image_loading">Atspējot attēla ielādi, ja baterijas līmenis ir zems</string>
+  <string name="DisableLoadTitle">Atspējot attēla ielādi</string>
+  <string name="txtCamera">Kamera</string>
+  <string name="txtGallery">Galerija</string>
+  <string name="txtOptions">Opcijas</string>
+  <string name="by_title">Virsraksts</string>
+  <string name="by_brand">Zīmols</string>
+  <string name="by_barcode">Svītrkods</string>
+  <string name="by_time">Nesen skatīts</string>
+  <string name="sort">Kārtot</string>
+  <string name="by_nutrition_grade">Uztura pakāpe</string>
+  <string name="sort_by">Kārtot pēc</string>
+  <string name="shake_summary">Lai produktu skenētu, sakratiet tālruni</string>
+  <string name="shake_title">Iespéjot skenéanu kad talrunis tiek kratits</string>
+  <!-- strings related to share images -->
+  <string name="sorry_msg">Attēlus bez svītrkoda vēl nevar pievienot lietotnei. Lūdzu, izmēģiniet mobilo tīmekļa versiju.</string>
+  <string name="no_barcode">Mēs neesam atraduši nevienu svītrkodu</string>
+  <string name="enter_barcode">Lūdzu, ierakstiet zemāk esošo svītrkodu</string>
+  <string name="format_error">Nepareizs svītru / QR formāts</string>
+  <string name="code_detected">Mēs neesam atraduši nevienu svītrkodu</string>
+  <string name="do_you_want_to">Vai vēlaties pievienot šo svītrkodu fotogrāfijas?</string>
+  <string name="notify_title">Eksportēšana pabeigta</string>
+  <string name="notify_content">Noklikšķiniet, lai skatītu eksportētos produktus</string>
+  <string name="notification_channel_name">Eksportēt paziņojumus</string>
+  <string name="notify_channel_description">Paziņojums, lai parādītu eksportēto failu atrašanās vietu</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="offline_notification_title">Nepieciešamie sūtījumi bezsaistē</string>
+  <string name="offline_notification_context">Jums ir %1$d bezsaistes produkti, kas gaida augšupielādi Open Food Facts</string>
+  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
+  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="other_editors">Product page also edited by </string>
 </resources>

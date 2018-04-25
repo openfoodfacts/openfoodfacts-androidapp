@@ -98,13 +98,21 @@ public class Product implements Serializable {
     @JsonProperty("states_tags")
     private List<String> statesTags = new ArrayList<>();
     @JsonProperty("vitamins_tags")
-    private List<String> vitaminTags=new ArrayList<>();
+    private List<String> vitaminTags = new ArrayList<>();
     @JsonProperty("minerals_tags")
-    private List<String> mineralTags=new ArrayList<>();
+    private List<String> mineralTags = new ArrayList<>();
     @JsonProperty("amino_acids_tags")
-    private List<String> aminoAcidTags=new ArrayList<>();
+    private List<String> aminoAcidTags = new ArrayList<>();
     @JsonProperty("other_nutritional_substances_tags")
-    private List<String> otherNutritionTags=new ArrayList<>();
+    private List<String> otherNutritionTags = new ArrayList<>();
+    @JsonProperty("created_t")
+    private String createdDateTime;
+    @JsonProperty("creator")
+    private String creator;
+    @JsonProperty("last_modified_t")
+    private String lastModifiedTime;
+    @JsonProperty("editors_tags")
+    private List<String> editorsTags = new ArrayList<>();
 
 
     /**
@@ -461,6 +469,27 @@ public class Product implements Serializable {
 
     public List<String> getCountriesTags() {
         return countriesTags;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public String getCreatedDateTime() {
+        return createdDateTime;
+    }
+
+    public String getLastModifiedTime() {
+        return lastModifiedTime;
+    }
+
+    public List<String> getEditors() {
+        return editorsTags;
+    }
+
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @Override
