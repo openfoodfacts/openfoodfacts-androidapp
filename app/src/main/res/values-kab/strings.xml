@@ -260,8 +260,8 @@
   <string name="action_search">Nadi</string>
   <string name="search_hint">Nadi afaris</string>
   <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="brand">Tacreḍt :</string>
+  <string name="number_of_products">Amḍan n yifarisen: </string>
   <string name="txt_no_results">Ulac igemmaḍ i d-nufa</string>
   <string name="txt_extend_search">Ssawseɛ anad-k neɣ rnu afaris</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
@@ -406,21 +406,23 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Tacreḍt</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Amernu</string>
   <string name="search_string">Nadi</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">Taḥanutt</string>
-  <string name="packaging_subtitle">Packaging</string>
+  <string name="packaging_subtitle">Asekrud</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Taḥanutt</string>
-  <string name="packaging_string">Packaging</string>
-  <string name="label_string">Label</string>
+  <string name="packaging_string">Asekrud</string>
+  <string name="label_string">Tabzimt</string>
   <string name="category_string">Taggayt</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="vitamin_tags_text">Ivitaminen:</string>
   <string name="amino_acid_tags_text">Amino Acids:</string>
   <string name="mineral_tags_text">Minerals:</string>
   <string name="other_tags_text">Other Substances:</string>
@@ -451,4 +453,11 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
+  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="other_editors">Product page also edited by </string>
 </resources>

@@ -15,9 +15,11 @@ import static openfoodfacts.github.scrachx.openfood.utils.SearchType.CATEGORY;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.CONTRIBUTOR;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.COUNTRY;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.EMB;
+import static openfoodfacts.github.scrachx.openfood.utils.SearchType.INCOMPLETE_PRODUCT;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.LABEL;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.PACKAGING;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.SEARCH;
+import static openfoodfacts.github.scrachx.openfood.utils.SearchType.STATE;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.STORE;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.TRACE;
 
@@ -39,6 +41,8 @@ import static openfoodfacts.github.scrachx.openfood.utils.SearchType.TRACE;
         STORE,
         TRACE,
         CONTRIBUTOR,
+        STATE,
+        INCOMPLETE_PRODUCT
 })
 public @interface SearchType {
 
@@ -54,6 +58,8 @@ public @interface SearchType {
     String STORE = "store";
     String TRACE = "trace";
     String CONTRIBUTOR = "contributor";
+    String INCOMPLETE_PRODUCT = "incomplete_product";
+    String STATE = "state";
 
 
     HashMap<String, String> URLS = new HashMap<String, String>() {{

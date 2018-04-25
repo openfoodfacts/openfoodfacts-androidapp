@@ -1,13 +1,19 @@
 package openfoodfacts.github.scrachx.openfood.views.category.fragment;
 
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -30,11 +36,17 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
     CategoryFragmentViewModel viewModel;
 
     private FragmentCategoryListBinding binding;
+    private MenuItem searchMenuItem;
 
     public CategoryListFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,13 +65,13 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
         binding.setViewModel(getViewModel());
         fastScroller.setRecyclerView(binding.recycler);
         binding.recycler.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-            if (binding.getViewModel().getCategories().get().isEmpty()) {
+            if (binding.getViewModel().getFilteredCategories().get().isEmpty()) {
                 fastScroller.setVisibility(View.GONE);
             } else {
                 fastScroller.setVisibility(View.VISIBLE);
                 // check for an empty item in the start of the list
-                if (viewModel.getCategories().get().get(0).getName().isEmpty()) {
-                    viewModel.getCategories().get().remove(0);
+                if (viewModel.getFilteredCategories().get().get(0).getName().isEmpty()) {
+                    viewModel.getFilteredCategories().get().remove(0);
                     binding.recycler.getAdapter().notifyItemRemoved(0);
                     binding.recycler.getAdapter().notifyItemRangeChanged(0, binding.recycler.getAdapter().getItemCount());
                 }
@@ -71,6 +83,32 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
                 viewModel.loadCategories();
             }
         });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_main, menu);
+
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        searchMenuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchMenuItem.getActionView();
+        if (searchManager.getSearchableInfo(getActivity().getComponentName()) != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    viewModel.searchCategories(newText.toLowerCase());
+                    return false;
+                }
+            });
+        }
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override

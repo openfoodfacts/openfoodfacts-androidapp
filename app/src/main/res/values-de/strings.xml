@@ -396,7 +396,7 @@
   <string name="dialog_cancel">Abbrechen</string>
   <string name="choose_resolution">Auflösung wählen</string>
   <string name="pref_resolution_summary">Auflösung für das Hochladen von Fotos auswählen</string>
-  <string name="image_upload_resolution">Image upload resolution</string>
+  <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>
   <string name="can_add_barcode">Probleme beim Einlesen?\nNach oben wischen, um den Strichcode einzugeben</string>
   <string name="wikidata_information">Weitergehen</string>
   <string name="description">Beschreibung: </string>
@@ -417,6 +417,8 @@
   <string name="category_string">Kategorie</string>
   <string name="connection">Verbunden</string>
   <string name="contributor_string">Mitwirkende(r)</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Anwendung ist deaktiviert</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitamine:</string>
@@ -425,8 +427,8 @@
   <string name="other_tags_text">Weitere Stoffe:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata-Informationen</string>
-  <string name="disable_image_loading">Disable image loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable image loading</string>
+  <string name="disable_image_loading">Das Laden von Grafiken bei geringem Ladezustand der Batterie deaktivieren</string>
+  <string name="DisableLoadTitle">Laden von Grafiken deaktivieren</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galerie</string>
   <string name="txtOptions">Einstellungen</string>
@@ -450,4 +452,11 @@
   <string name="notify_content">Hier klicken, um die exportierten Produkte anzuzeigen</string>
   <string name="notification_channel_name">Benachrichtigungen exportieren</string>
   <string name="notify_channel_description">Benachrichtigung, um den Speicherort der exportierten Dateien anzuzeigen</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">Produkt hinzugefügt am %1$s um %2$s durch %3$s. Letzte Änderung der Produktseite am %4$s um %5$s von %6$s. Produktseite auch von %7$s bearbeitet</string>
+  <string name="offline_notification_title">Noch zu sendende Offline-Beiträge</string>
+  <string name="offline_notification_context">Sie verfügen über %1$d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden.</string>
+  <string name="creator_history">Produkt hinzugefügt am %1$s um %2$s MESZ durch</string>
+  <string name="last_editor_history">Letzte Änderung der Produktseite am %1$s um %2$s MESZ durch </string>
+  <string name="other_editors">Produktseite auch bearbeitet von </string>
 </resources>

@@ -12,7 +12,7 @@ To discover the Open Food Facts project, please visit https://openfoodfacts.org
 - Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding a product from your food cupboard. 
 
-*** Get the Facts ***
+*** Узнайте ***
 - Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
@@ -20,7 +20,7 @@ To discover the Open Food Facts project, please visit https://openfoodfacts.org
 - On wines and beers, you will find the alcohol content.
 
 *** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+- Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 

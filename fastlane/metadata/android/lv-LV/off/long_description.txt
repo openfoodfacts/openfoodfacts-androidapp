@@ -7,20 +7,20 @@ To discover the Open Food Facts project, please visit https://openfoodfacts.org
 
 ***Contribute to Food Transparency***
 
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Atvērtie pārtikas fakti ir pārtikas produktu datubāze, ko izveido visi, ikvienam.
+- Jūs varat to izmantot, lai labāku ēdienu izvēli, un tā kā tie ir atvērti dati, ikviens to var atkārtoti izmantot jebkuram nolūkam.
+- Atvērtie pārtikas fakti ir bezpeļņas projekts, ko izstrādājuši tūkstošiem brīvprātīgo no visas pasaules. Mums ir daudz interesantu projektu, kuros tu vari piedalīties dažādos veidos. 
 - You can start contributing today by adding a product from your food cupboard. 
 
-*** Get the Facts ***
+*** Iegūt faktus ***
 - Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
 - On wines and beers, you will find the alcohol content.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+*** darbojas labi jebkurā stāvoklī ***
+- Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 

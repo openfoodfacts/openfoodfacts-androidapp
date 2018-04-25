@@ -396,7 +396,7 @@
   <string name="dialog_cancel">Mégse</string>
   <string name="choose_resolution">Válasszon felbontást</string>
   <string name="pref_resolution_summary">Válasszon felbontást kép feltöltéshez</string>
-  <string name="image_upload_resolution">Image upload resolution</string>
+  <string name="image_upload_resolution">Képfeltöltés felbontása</string>
   <string name="can_add_barcode">Gond adódott a beolvasással?\nGépelje be a vonalkódot</string>
   <string name="wikidata_information">Továbblép</string>
   <string name="description">Leírás: </string>
@@ -417,6 +417,8 @@
   <string name="category_string">Kategória</string>
   <string name="connection">Csatlakozva</string>
   <string name="contributor_string">Hozzájáruló</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Az alkalmazás le van tiltva</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitaminok:</string>
@@ -425,8 +427,8 @@
   <string name="other_tags_text">Egyéb anyagok:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata adat</string>
-  <string name="disable_image_loading">Disable image loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable image loading</string>
+  <string name="disable_image_loading">Kép betöltés tiltása alacsony akkumulátor töltöttség esetén</string>
+  <string name="DisableLoadTitle">Kép betöltés tiltása</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galéria</string>
   <string name="txtOptions">Lehetőségek</string>
@@ -450,4 +452,11 @@
   <string name="notify_content">Kattintson az exportált termékek megtekintéséhez</string>
   <string name="notification_channel_name">Export Értesítések</string>
   <string name="notify_channel_description">Értesítés az exportált fájl helyének megjelenítéséhez</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">A terméket hozzáadta %3$s a következő időpontban: %1$s, %2$s. A termékoldalt legutóbb szerkesztette %6$s a következő időpontban: %4$s, %5$s. A termékoldalt szerkesztette még %7$s</string>
+  <string name="offline_notification_title">Kapcsolat nélküli módban készült hozzájárulások, amiket el kell küldenie</string>
+  <string name="offline_notification_context">Önnek %1$d kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájáruláshoz</string>
+  <string name="creator_history">A terméket hozzáadta a következő időpontban: %1$s, %2$s CET</string>
+  <string name="last_editor_history">A termékoldalt legutóbb szerkesztette a következő időpontban: %1$s, %2$s CEST </string>
+  <string name="other_editors">A termékoldalt szerkesztette még </string>
 </resources>

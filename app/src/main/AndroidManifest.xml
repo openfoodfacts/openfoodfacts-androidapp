@@ -79,7 +79,8 @@
         </activity>
         <activity android:name=".views.ScannerFragmentActivity" />
         <activity
-            android:name=".views.ProductActivity"
+            android:name=".views.product.ProductActivity"
+            android:launchMode="singleTop"
             android:parentActivityName=".views.MainActivity"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
             <meta-data
@@ -88,14 +89,8 @@
         </activity>
         <activity
             android:name=".views.LoginActivity"
-
             android:parentActivityName=".views.MainActivity"
-
-
-
-
             android:screenOrientation="portrait">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.MainActivity" />
@@ -118,10 +113,18 @@
         </activity>
         <activity
             android:name=".views.category.activity.CategoryActivity"
+            android:launchMode="singleTop"
             android:parentActivityName=".views.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.MainActivity" />
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".views.PrefManager"></activity>
         <activity android:name=".views.WelcomeActivity"></activity>
@@ -136,6 +139,8 @@
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
+        <service android:name=".utils.UploadService" />
+        <service android:name=".utils.WifiUploadReceiver$WifiService" />
 
         <provider
             android:name=".utils.GenericFileProvider"
@@ -148,6 +153,15 @@
         </provider>
 
         <activity android:name=".views.ProductBrowsingListActivity"></activity>
+
+        <receiver
+            android:name=".utils.WifiUploadReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

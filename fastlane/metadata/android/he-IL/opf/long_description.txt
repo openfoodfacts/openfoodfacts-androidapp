@@ -12,8 +12,8 @@ Open Food Facts הוא מסד נתונים של מוצרי מזון עם רכי�
 
 *** Collect AAAALL the things ***
 - You can add all the items from your collections
-- Open Crayons Facts - The largest open database of coloring crayons
-- Open Miniature Food Facts - The largest open database of miniature food products
+- Open Crayons Facts - מסד הנתונים הגדול ביותר לעפרונות צביעה
+- Open Miniature Food Facts - מסד הנתונים הגדול ביותר למוצרי מזון מזעריים
 - Open ??? Facts - Create your own open database :-)
 
 *** פעילות עם כמה שפחות הפרעות ***

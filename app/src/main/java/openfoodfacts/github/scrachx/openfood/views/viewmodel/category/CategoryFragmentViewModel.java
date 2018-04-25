@@ -29,19 +29,29 @@ import openfoodfacts.github.scrachx.openfood.views.viewmodel.ViewModel;
 
 public class CategoryFragmentViewModel extends ViewModel {
     private final IProductRepository repository;
-    private final ObservableField<List<CategoryName>> categories;
+    private final List<CategoryName> categories;
+    private final ObservableField<List<CategoryName>> filteredCategories;
     private final ObservableInt showProgress;
     private final ObservableInt showOffline;
     private final String languageCode;
 
     public CategoryFragmentViewModel() {
         this.repository = ProductRepository.getInstance();
-        this.categories = new ObservableField<>(Collections.emptyList());
+        this.categories = new ArrayList<>();
+        this.filteredCategories = new ObservableField<>(Collections.emptyList());
         this.showProgress = new ObservableInt(View.VISIBLE);
         this.showOffline = new ObservableInt(View.GONE);
         this.languageCode = Locale.getDefault().getLanguage();
     }
 
+    public ObservableField<List<CategoryName>> getFilteredCategories() {
+        return filteredCategories;
+    }
+
+    public ObservableInt getShowProgress() {
+        return showProgress;
+    }
+  
     @Override
     protected void subscribe(@NonNull CompositeDisposable subscriptions) {
         loadCategories();
@@ -74,7 +84,8 @@ public class CategoryFragmentViewModel extends ViewModel {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(categoryList -> {
-                            categories.set(categoryList);
+                            categories.addAll(categoryList);
+                            filteredCategories.set(categoryList);
                             showProgress.set(View.GONE);
                         },
                         throwable -> {
@@ -117,5 +128,16 @@ public class CategoryFragmentViewModel extends ViewModel {
 
     public ObservableInt getShowOffline() {
         return showOffline;
+    }
+  
+    public void searchCategories(String query) {
+        List<CategoryName> newFilteredCategories = new ArrayList<>();
+        for (CategoryName categoryName : categories) {
+            if (categoryName.getName().toLowerCase().startsWith(query)) {
+                newFilteredCategories.add(categoryName);
+            }
+        }
+
+        filteredCategories.set(newFilteredCategories);
     }
 }

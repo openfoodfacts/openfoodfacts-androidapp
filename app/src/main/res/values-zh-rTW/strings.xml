@@ -80,7 +80,7 @@
   <string name="txtIngredientsOrigins">原料產地：</string>
   <string name="txtCity">購入的城市、州以及國家：</string>
   <string name="txtEMB">EMB Code:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtManufactureUrl">連結至產品的官方網頁:</string>
   <string name="txtStores">商店：</string>
   <string name="txtCountries">販售的國家：</string>
   <string name="txtIngredients">成份表：</string>
@@ -256,8 +256,8 @@
   <string name="action_search">搜尋</string>
   <string name="search_hint">搜尋產品</string>
   <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="brand">品牌 :</string>
+  <string name="number_of_products">產品編號: </string>
   <string name="txt_no_results">找不到相符的結果</string>
   <string name="txt_extend_search">請嘗試擴大搜尋範圍或新增產品</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
@@ -402,7 +402,7 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">品牌</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">添加劑</string>
   <string name="search_string">搜尋</string>
   <string name="country_string">國家</string>
   <string name="store_subtitle">商店</string>
@@ -410,15 +410,17 @@
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">商店</string>
   <string name="packaging_string">包裝套件</string>
-  <string name="label_string">Label</string>
+  <string name="label_string">標籤</string>
   <string name="category_string">分類</string>
   <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="contributor_string">貢獻者</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="vitamin_tags_text">維生素:</string>
   <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
+  <string name="mineral_tags_text">礦物質:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
@@ -447,4 +449,11 @@
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
+  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="other_editors">Product page also edited by </string>
 </resources>
