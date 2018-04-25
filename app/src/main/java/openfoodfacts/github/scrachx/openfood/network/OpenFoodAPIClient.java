@@ -975,6 +975,38 @@ public class OpenFoodAPIClient {
         });
     }
 
+    public interface OnIncompleteCallback {
+        void onIncompleteResponse(boolean value, Search incompleteProducts);
+    }
+
+    public void getIncompleteProducts(int page, OnIncompleteCallback onIncompleteCallback) {
+        apiService.getIncompleteProducts(page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+                if (!response.isSuccessful()) {
+                    onIncompleteCallback.onIncompleteResponse(false, null);
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(response.body().getCount()) == 0) {
+                        onIncompleteCallback.onIncompleteResponse(false, null);
+                        return;
+                    } else {
+                        onIncompleteCallback.onIncompleteResponse(true, response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+
+                onIncompleteCallback.onIncompleteResponse(false, null);
+            }
+        });
+    }
+
     public interface onStateCallback {
         void onStateResponse(boolean value, Search state);
     }

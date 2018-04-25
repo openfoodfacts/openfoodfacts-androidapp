@@ -88,6 +88,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
@@ -276,6 +277,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(ITEM_HISTORY).withSelectable(false),
                         new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
                         new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(ITEM_MY_CONTRIBUTIONS).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.products_to_be_completed).withIcon(GoogleMaterial.Icon.gmd_edit).withIdentifier(ITEM_INCOMPLETE_PRODUCTS).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
                         new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
                         new DividerDrawerItem(),
@@ -331,6 +333,18 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             CustomTabActivityHelper.openCustomTab(MainActivity.this,
                                     customTabsIntent, contributeUri, new WebViewFallback());
                             break;
+
+                        case ITEM_INCOMPLETE_PRODUCTS:
+
+                            /**
+                             * Search and display the products to be completed by moving to ProductBrowsingListActivity
+                             */
+                            Intent incompleteIntent = new Intent(this, ProductBrowsingListActivity.class);
+                            incompleteIntent.putExtra("search_query", "");
+                            incompleteIntent.putExtra("search_type", SearchType.INCOMPLETE_PRODUCT);
+                            this.startActivity(incompleteIntent);
+                            break;
+
                         case ITEM_OBF:
                             boolean otherOFAppInstalled = Utils.isApplicationInstalled
                                     (MainActivity.this, BuildConfig.OFOTHERLINKAPP);
