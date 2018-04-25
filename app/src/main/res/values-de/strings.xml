@@ -417,6 +417,8 @@
   <string name="category_string">Kategorie</string>
   <string name="connection">Verbunden</string>
   <string name="contributor_string">Mitwirkende(r)</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Anwendung ist deaktiviert</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitamine:</string>
@@ -450,6 +452,7 @@
   <string name="notify_content">Hier klicken, um die exportierten Produkte anzuzeigen</string>
   <string name="notification_channel_name">Benachrichtigungen exportieren</string>
   <string name="notify_channel_description">Benachrichtigung, um den Speicherort der exportierten Dateien anzuzeigen</string>
+  <string name="products_to_be_completed">Products to be completed</string>
   <string name="modified_history">Produkt hinzugefügt am %1$s um %2$s durch %3$s. Letzte Änderung der Produktseite am %4$s um %5$s von %6$s. Produktseite auch von %7$s bearbeitet</string>
   <string name="offline_notification_title">Noch zu sendende Offline-Beiträge</string>
   <string name="offline_notification_context">Sie verfügen über %1$d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden.</string>

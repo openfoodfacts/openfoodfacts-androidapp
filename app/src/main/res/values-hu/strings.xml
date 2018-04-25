@@ -417,6 +417,8 @@
   <string name="category_string">Kategória</string>
   <string name="connection">Csatlakozva</string>
   <string name="contributor_string">Hozzájáruló</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Az alkalmazás le van tiltva</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitaminok:</string>
@@ -450,6 +452,7 @@
   <string name="notify_content">Kattintson az exportált termékek megtekintéséhez</string>
   <string name="notification_channel_name">Export Értesítések</string>
   <string name="notify_channel_description">Értesítés az exportált fájl helyének megjelenítéséhez</string>
+  <string name="products_to_be_completed">Products to be completed</string>
   <string name="modified_history">A terméket hozzáadta %3$s a következő időpontban: %1$s, %2$s. A termékoldalt legutóbb szerkesztette %6$s a következő időpontban: %4$s, %5$s. A termékoldalt szerkesztette még %7$s</string>
   <string name="offline_notification_title">Kapcsolat nélküli módban készült hozzájárulások, amiket el kell küldenie</string>
   <string name="offline_notification_context">Önnek %1$d kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájáruláshoz</string>

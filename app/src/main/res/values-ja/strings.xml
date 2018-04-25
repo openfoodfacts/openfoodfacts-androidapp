@@ -414,6 +414,8 @@
   <string name="category_string">カテゴリー</string>
   <string name="connection">接続されています</string>
   <string name="contributor_string">貢献者</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">アプリケーションは無効です</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">ビタミン:</string>
@@ -447,6 +449,7 @@
   <string name="notify_content">クリックするとエクスポートした製品を表示します</string>
   <string name="notification_channel_name">エクスポートの通知</string>
   <string name="notify_channel_description">エクスポートされたファイルの場所を示す通知</string>
+  <string name="products_to_be_completed">Products to be completed</string>
   <string name="modified_history">製品は %1$s %2$s に %3$s によって追加されました。 製品ページは %4$s %5$s に %6$s が最後に編集しました。  製品ページは %7$s も編集しました</string>
   <string name="offline_notification_title">オフラインの貢献を送信する必要があります</string>
   <string name="offline_notification_context">%1$d のオフライン製品が Open Food Facts に送信されるのを待っています</string>
