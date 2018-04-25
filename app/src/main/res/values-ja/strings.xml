@@ -393,7 +393,7 @@
   <string name="dialog_cancel">キャンセル</string>
   <string name="choose_resolution">解像度を選択</string>
   <string name="pref_resolution_summary">画像アップロードの解像度を選択します</string>
-  <string name="image_upload_resolution">Image upload resolution</string>
+  <string name="image_upload_resolution">画像アップロードの解像度</string>
   <string name="can_add_barcode">スキャンがうまくいきませんか?\n上にドラッグしてバーコードを入力してください</string>
   <string name="wikidata_information">もっと遠くへ</string>
   <string name="description">説明: </string>
@@ -422,8 +422,8 @@
   <string name="other_tags_text">その他の成分:</string>
   <!--shared element transition key-->
   <string name="wikidata">ウィキデータのデータ</string>
-  <string name="disable_image_loading">Disable image loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable image loading</string>
+  <string name="disable_image_loading">バッテリの残量が少ないときに画像の読み込みを無効にします</string>
+  <string name="DisableLoadTitle">画像読み込みを無効にする</string>
   <string name="txtCamera">カメラ</string>
   <string name="txtGallery">ギャラリー</string>
   <string name="txtOptions">オプション</string>
@@ -447,10 +447,10 @@
   <string name="notify_content">クリックするとエクスポートした製品を表示します</string>
   <string name="notification_channel_name">エクスポートの通知</string>
   <string name="notify_channel_description">エクスポートされたファイルの場所を示す通知</string>
-  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
-  <string name="offline_notification_title">Offline contributions you need to send</string>
-  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
-  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
-  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
-  <string name="other_editors">Product page also edited by </string>
+  <string name="modified_history">製品は %1$s %2$s に %3$s によって追加されました。 製品ページは %4$s %5$s に %6$s が最後に編集しました。  製品ページは %7$s も編集しました</string>
+  <string name="offline_notification_title">オフラインの貢献を送信する必要があります</string>
+  <string name="offline_notification_context">%1$d のオフライン製品が Open Food Facts に送信されるのを待っています</string>
+  <string name="creator_history">%1$s %2$s 中央ヨーロッパ標準時に製品を追加しました</string>
+  <string name="last_editor_history">製品ページの最終編集 %1$s %2$s 中央ヨーロッパ標準時、編集者 </string>
+  <string name="other_editors">製品ページの共同編集者 </string>
 </resources>
