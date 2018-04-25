@@ -423,6 +423,8 @@
   <string name="category_string">Kategoria</string>
   <string name="connection">Połączono</string>
   <string name="contributor_string">Współtwórca</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Wyłączono aplikację</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Witaminy:</string>
