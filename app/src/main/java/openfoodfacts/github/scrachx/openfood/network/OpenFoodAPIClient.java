@@ -11,6 +11,7 @@ import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -79,6 +80,8 @@ public class OpenFoodAPIClient {
 
     private static OkHttpClient httpClient = Utils.HttpClientBuilder();
 
+    ProgressBar progressBar;
+
 
     private final OpenFoodAPIService apiService;
     private Context mActivity;
@@ -123,10 +126,14 @@ public class OpenFoodAPIClient {
      * @param activity
      */
     public void getProduct(final String barcode, final Activity activity) {
+
+        progressBar = (ProgressBar) activity.findViewById(R.id.indeterminateBar);
+        progressBar.setVisibility(View.VISIBLE);
         apiService.getFullProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
-
+                
+                progressBar.setVisibility(View.INVISIBLE);
                 final State s = response.body();
 
                 if (s.getStatus() == 0) {
@@ -170,6 +177,7 @@ public class OpenFoodAPIClient {
                         .show();
             }
         });
+
     }
 
     /**
@@ -183,9 +191,15 @@ public class OpenFoodAPIClient {
      */
     public void getShortProduct(final String barcode, final Activity activity, final ZXingScannerView camera, final ZXingScannerView.ResultHandler
             resultHandler) {
+
+        progressBar = (ProgressBar) activity.findViewById(R.id.indeterminateBar);
+        progressBar.setVisibility(View.VISIBLE);
+
         apiService.getShortProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
+
+                progressBar.setVisibility(View.INVISIBLE);
                 final State s = response.body();
 
                 if (s.getStatus() == 0) {
