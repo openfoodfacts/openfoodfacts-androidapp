@@ -423,6 +423,8 @@
   <string name="category_string">קטגוריה</string>
   <string name="connection">יש חיבור</string>
   <string name="contributor_string">תרומה</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">היישומון מושבת</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">ויטמינים:</string>
