@@ -5,7 +5,7 @@
     <item quantity="other"> 분</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="other"> hours</item>
+    <item quantity="other"> 시간</item>
   </plurals>
   <plurals name="days">
     <item quantity="other"> 일</item>
@@ -45,6 +45,12 @@
     <item>cl</item>
     <item>fl oz</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>기본값</item>
@@ -63,21 +69,21 @@
   <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
   <string name="alert_dialog_product_error_msg">제품을 찾을 수 없습니다. 다시 시도하십시오.</string>
   <string name="toast_retrieving">Loading...</string>
-  <string name="txtGenericName">Common name :</string>
+  <string name="txtGenericName">일반 이름 :</string>
   <string name="txtBarcode">바코드 :</string>
   <string name="txtQuantity">수량 :</string>
-  <string name="txtPackaging">Packaging :</string>
-  <string name="txtBrands">Brands :</string>
+  <string name="txtPackaging">포장 :</string>
+  <string name="txtBrands">브랜드 :</string>
   <string name="txtCategories">카테고리 :</string>
   <string name="txtLabels">Labels, certifications, awards :</string>
   <string name="txtManufacturing">Manufacturing or processing places :</string>
-  <string name="txtIngredientsOrigins">Origin of ingredients :</string>
-  <string name="txtCity">City, state and country where purchased :</string>
+  <string name="txtIngredientsOrigins">성분의 유래 :</string>
+  <string name="txtCity">도시, 주 및 구매의 나라 :</string>
   <string name="txtEMB">EMB Code:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtManufactureUrl">생산자의 공식 사이트의 제품 페이지에 링크:</string>
   <string name="txtStores">Stores :</string>
   <string name="txtCountries">판매 국가 :</string>
-  <string name="txtIngredients">Ingredients list :</string>
+  <string name="txtIngredients">성분 목록 :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
   <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
@@ -85,7 +91,7 @@
   <string name="txtTraces">Traces :</string>
   <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
   <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
-  <string name="txtServingSize">Serving size :</string>
+  <string name="txtServingSize">서빙 사이즈 :</string>
   <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
   <string name="txtNutritionLevelLow">in low quantity</string>
   <string name="txtNutritionLevelModerate">in moderate quantity</string>
@@ -210,6 +216,8 @@
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Calculate Calories</string>
+  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">탄수화물</string>
   <string name="nutrition_carbohydrate_short_name">탄수화물 (g)</string>
   <string name="nutrition_cholesterol">콜레스테롤</string>
@@ -229,8 +237,8 @@
   <string name="nutrition_salt_short_name">소금 (g)</string>
   <string name="nutrition_satured_fat">Satured fat</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
-  <string name="nutrition_serving">Per serving</string>
-  <string name="nutrition_serving_size">Serving size :</string>
+  <string name="nutrition_serving">인분</string>
+  <string name="nutrition_serving_size">서빙 사이즈 :</string>
   <string name="nutrition_sodium">나트륨</string>
   <string name="nutrition_sodium_short_name">나트륨 (g)</string>
   <string name="nutrition_sugars">당류</string>
@@ -249,7 +257,7 @@
   <string name="search_hint">제품 검색</string>
   <string name="number_of_results">Number of results: </string>
   <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="number_of_products">제품 수: </string>
   <string name="txt_no_results">No results found</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
@@ -263,7 +271,7 @@
   <string name="nutrition_serum_proteins">Serum Proteins</string>
   <string name="nutrition_nucleotides">Nucleotides</string>
   <string name="for_100g">For 100 g</string>
-  <string name="serving">Per serving</string>
+  <string name="serving">인분</string>
   <string name="minerals">Minerals</string>
   <string name="nutrition_calcium">칼슘</string>
   <string name="nutrition_potassium">칼륨</string>
@@ -385,7 +393,7 @@
   <string name="dialog_cancel">취소</string>
   <string name="choose_resolution">해상도 선택</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-  <string name="image_upload_resolution">Image Upload Resolution</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">Going further</string>
   <string name="description">Description: </string>
@@ -406,6 +414,8 @@
   <string name="category_string">카테고리</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">비타민:</string>
@@ -414,6 +424,8 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
   <string name="txtCamera">Camera</string>
   <string name="txtGallery">Gallery</string>
   <string name="txtOptions">Options</string>
@@ -433,4 +445,15 @@
   <string name="format_error">Wrong Barcode/QR format</string>
   <string name="code_detected">We have detected the barcode</string>
   <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
+  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="other_editors">Product page also edited by </string>
 </resources>

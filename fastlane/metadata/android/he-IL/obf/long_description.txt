@@ -1,16 +1,31 @@
-Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
+***תרומה לשקיפות קוסמטית***
 
-You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Beauty Facts הוא מסד נתונים על מוצרי טיפול שנוצר על ידי כולם, לטובת כולם.
+- ניתן להשתמש בו כדי לקבל החלטות טובות יותר סביב מוצרי טיפוח וכיוון שהנתונים פתוחים, כולם יכולים להשתמש במסד הנתונים לכל מטרה שהיא.
+- Open Beauty Facts הוא מיזם ללא כוונת רווח שפותח על ידי אלפי מתנדבים מכל רחבי העולם. יש לנו מגוון מיזמים מרתקים להם ניתן לתרום במגוון דרכים. 
+- ניתן להתחיל לתרום עוד היום על ידי הוספת מוצר ממלתחת הטיפוח האישית שלך. 
 
-Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. You can start contributing by adding a product from your cosmetic cupboard, and we have lots of exciting projects you can contribute to in many different ways.
+*** קבלת העובדות ***
 
-Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature Cosmetic Ingredients) ingredient list, allergens, packaging codes... Open Beauty Facts helps you to make sense of the fine print on products labels.
+- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
+- עם Open Beauty Facts ניתן לקבל מושג על הדקויות שעל תוויות המוצרים.
+- אין צורך בתואר בכימיה ובלימודי לטינית כדי לפענח את רשימת הרכיבים : - )
+- ניתן לסרוק: אפטרשייב, תחליב גוף, קרם, דאודורנט, אייליינר, יסוד, בושם, שפתונים, איפור, מסיכות, שמפו, סבון, ג׳ל רחצה, לק ועוד מוצרים רבים…
+- אנו חושבים שהנתונים האלו יכולים להועיל לאנשים עם מחלות עור כגון אקנה, פסוריאזיס, אקזמה… כדי לקבל בחירות טיפוח מושכלות יותר.
 
-You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
+*** פעילות עם כמה שפחות הפרעות ***
+- ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע.
+- היישומון טוען רק את מה שנדרש כדי לצמצם בתקשורת נתונים ובצריכת סוללה
+- אין צורך במצלמה כדי לחפש מוצר. ניתן גם להקליד את הברקוד אם אין לך מצלמה או שהיא אינה תקינה.
 
-We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+*** מוצרי הטיפוח שלך, הנתונים שלך ***
+- הנתונים שלך הם שלך והם לא יישלחו לשום מקום
+- ניתן להשתמש ביישומון בעילום שם
+- ניתן לייצא את היסטוריית הסריקות שלך
 
-Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+לתשומת לבך: Open Beauty Facts כרגע בשלבי בנייה, האתר והיישומון מבוססים על Open Food Facts עם הסבה קלה שנועדה להתחשב בנתונים השונים שקשורים באופן נקודתי במוצרי טיפוח.
 
-Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Open Beauty Facts זמין גם כאתר לדפדפן בכתובת https://world.openbeautyfacts.org
+שאלות, משוב : contact@openfoodfacts.org
+
+למזון אנושי ניתן להתקין את Open Food Facts, למזון לחיות מחמד את Open Pet Food Facts ולכל שאר המוצרים את Open Products Facts.

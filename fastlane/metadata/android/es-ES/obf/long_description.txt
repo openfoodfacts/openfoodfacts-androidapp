@@ -1,16 +1,31 @@
-Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
+***Contribute to Cosmetic Transparency***
 
-You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
+- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Tenemos muchos proyectos interesantes a los que puedes contribuir de diferentes maneras. 
+- You can start contributing today by adding a product from your cosmetic cupboard. 
 
-Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. You can start contributing by adding a product from your cosmetic cupboard, and we have lots of exciting projects you can contribute to in many different ways.
+*** Obtener los datos ***
 
-Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature Cosmetic Ingredients) ingredient list, allergens, packaging codes... Open Beauty Facts helps you to make sense of the fine print on products labels.
+- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
+- Open Beauty Facts helps you to make sense of the fine print on products labels.
+- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
+- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
+- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
-You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
+*** Funciona bien en cualquier condición ***
+- Puede agregar nuevos productos, incluso si no tiene una conexión a Internet en este momento.
+- La aplicación solo carga lo estrictamente necesario para reducir el consumo de datos y batería
+- No necesita una cámara para buscar un producto. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
 
-We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+*** Your cosmetics, your data ***
+- Tus datos son tuyos y nunca se envían en línea
+- Puede usar la aplicación de forma anónima
+- Puede exportar su historial de escaneo
 
 Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
 
 Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Preguntas, comentarios: contact@openfoodfacts.org
+
+For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.

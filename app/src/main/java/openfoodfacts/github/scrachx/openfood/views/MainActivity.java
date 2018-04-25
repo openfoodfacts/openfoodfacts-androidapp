@@ -88,6 +88,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
@@ -117,6 +118,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     Toolbar toolbar;
     private AccountHeader headerResult = null;
     private Drawer result = null;
+    private MenuItem searchMenuItem;
 
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
@@ -234,6 +236,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userLogin = preferences.getString("user", null);
         String userSession = preferences.getString("user_session", null);
         boolean isUserConnected = userLogin != null && userSession != null;
+        boolean isConnected = userLogin != null;
         if (isUserConnected) {
             userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
                     "&user_session=" + userSession);
@@ -274,6 +277,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(ITEM_HISTORY).withSelectable(false),
                         new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
                         new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(ITEM_MY_CONTRIBUTIONS).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.products_to_be_completed).withIcon(GoogleMaterial.Icon.gmd_edit).withIdentifier(ITEM_INCOMPLETE_PRODUCTS).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
                         new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
                         new DividerDrawerItem(),
@@ -293,8 +297,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     switch ((int) drawerItem.getIdentifier()) {
                         case ITEM_HOME:
                             fragment = new HomeFragment();
-                            // recreate when Home is pressed
-                            recreate();
                             break;
                         case ITEM_SEARCH_BY_CODE:
                             fragment = new FindProductFragment();
@@ -329,6 +331,18 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             CustomTabActivityHelper.openCustomTab(MainActivity.this,
                                     customTabsIntent, contributeUri, new WebViewFallback());
                             break;
+
+                        case ITEM_INCOMPLETE_PRODUCTS:
+
+                            /**
+                             * Search and display the products to be completed by moving to ProductBrowsingListActivity
+                             */
+                            Intent incompleteIntent = new Intent(this, ProductBrowsingListActivity.class);
+                            incompleteIntent.putExtra("search_query", "");
+                            incompleteIntent.putExtra("search_type", SearchType.INCOMPLETE_PRODUCT);
+                            this.startActivity(incompleteIntent);
+                            break;
+
                         case ITEM_OBF:
                             boolean otherOFAppInstalled = Utils.isApplicationInstalled
                                     (MainActivity.this, BuildConfig.OFOTHERLINKAPP);
@@ -398,7 +412,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
 
         // Add Drawer items for the connected user
-        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isUserConnected ?
+        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isConnected ?
                 getLogoutDrawerItem() : getLoginDrawerItem());
 
         if (BuildConfig.FLAVOR.equals("obf")) {
@@ -446,6 +460,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 ());
         if (settings.getBoolean("startScan", false)) {
             Intent cameraIntent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+            cameraIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(cameraIntent);
         }
 
@@ -502,6 +517,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             }
         } else {
             Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
     }
@@ -606,7 +622,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         // Associate searchable configuration with the SearchView
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+        searchMenuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchMenuItem.getActionView();
         if (searchManager.getSearchableInfo(getComponentName()) != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
@@ -643,6 +659,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 if (grantResults.length > 0 && grantResults[0] == PackageManager
                         .PERMISSION_GRANTED) {
                     Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
             }
@@ -715,8 +732,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             Log.e("INTENT", "start activity");
             String query = intent.getStringExtra(SearchManager.QUERY);
             ProductBrowsingListActivity.startActivity(this, query, SearchType.SEARCH);
-        } else if (Intent.ACTION_SEND.equals(intent.getAction()) && type != null) {
-
+            if(searchMenuItem!=null)
+            {
+                searchMenuItem.collapseActionView();
+            }
+        }
+        else if (Intent.ACTION_SEND.equals(intent.getAction()) && type != null) {
             if (type.startsWith("image/")) {
                 handleSendImage(intent); // Handle single image being sent
             }

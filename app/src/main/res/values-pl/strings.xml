@@ -3,8 +3,8 @@
 <resources>
   <plurals name="minutes">
     <item quantity="one"> minuta</item>
-    <item quantity="few"> minutes</item>
-    <item quantity="many"> minutes</item>
+    <item quantity="few"> minuty</item>
+    <item quantity="many"> minuty</item>
     <item quantity="other"> minuty</item>
   </plurals>
   <plurals name="hours">
@@ -53,6 +53,12 @@
     <item>ml</item>
     <item>cl</item>
     <item>fl oz</item>
+  </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
   </string-array>
   <!-- Text units -->
   <string-array name="images_array">
@@ -219,6 +225,8 @@
   <string name="permision_write_external_storage">Aby uzyskać historię eksportu, konieczne jest zapisanie zewnętrznej pamięci masowej.</string>
   <string name="txt_nutrition_not_found">Nie dotyczy</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Oblicz kalorie</string>
+  <string name="txt_calories_result">%1$s kcal w %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Węglowodany</string>
   <string name="nutrition_carbohydrate_short_name">Węglowodany (g)</string>
   <string name="nutrition_cholesterol">Cholesterol</string>
@@ -415,6 +423,8 @@
   <string name="category_string">Kategoria</string>
   <string name="connection">Połączono</string>
   <string name="contributor_string">Współtwórca</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Wyłączono aplikację</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Witaminy:</string>
@@ -423,6 +433,8 @@
   <string name="other_tags_text">Inne substancje:</string>
   <!--shared element transition key-->
   <string name="wikidata">Dane z Wikidata</string>
+  <string name="disable_image_loading">Wyłącz ładowanie zdjęć, gdy poziom baterii jest niski</string>
+  <string name="DisableLoadTitle">Wyłącz ładowanie zdjęć</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galeria</string>
   <string name="txtOptions">Opcje</string>
@@ -442,4 +454,15 @@
   <string name="format_error">Błędny kod kreskowy/QR</string>
   <string name="code_detected">Wykryliśmy kod kreskowy</string>
   <string name="do_you_want_to">Czy chcesz dodać zdjęcia do kodu kreskowego?</string>
+  <string name="notify_title">Zakończono eksport</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
+  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="other_editors">Product page also edited by </string>
 </resources>

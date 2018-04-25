@@ -1,1 +1,1 @@
-Scan food products to decrypt labels: ingredients, additives and nutrition facts
+扫描食品解密标签：配料信息、添加剂和营养成分

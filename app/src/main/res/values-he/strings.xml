@@ -54,6 +54,12 @@
     <item>ס״ל</item>
     <item>אונקיה</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>מ״ג</item>
+    <item>ק״ג</item>
+    <item>ל׳</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>בררת מחדל</item>
@@ -219,6 +225,8 @@
   <string name="permision_write_external_storage">נדרשת הרשאת כתיבה לאחסון חיצוני כדי לייצא היסטוריה.</string>
   <string name="txt_nutrition_not_found">לא זמין</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">חישוב קלוריות</string>
+  <string name="txt_calories_result">%1$s קילו קלוריות ב־%2$s %3$s</string>
   <string name="nutrition_carbohydrate">פחמימות</string>
   <string name="nutrition_carbohydrate_short_name">פחמימות (ג׳)</string>
   <string name="nutrition_cholesterol">כולסטרול</string>
@@ -415,6 +423,8 @@
   <string name="category_string">קטגוריה</string>
   <string name="connection">יש חיבור</string>
   <string name="contributor_string">תרומה</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">היישומון מושבת</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">ויטמינים:</string>
@@ -423,6 +433,8 @@
   <string name="other_tags_text">חומרים אחרים:</string>
   <!--shared element transition key-->
   <string name="wikidata">מידע מוויקינתונים</string>
+  <string name="disable_image_loading">השבתת טעינת תמונות כאשר הסוללה חלשה</string>
+  <string name="DisableLoadTitle">השבתת טעינת תמונות</string>
   <string name="txtCamera">מצלמה</string>
   <string name="txtGallery">גלריה</string>
   <string name="txtOptions">אפשרויות</string>
@@ -442,4 +454,15 @@
   <string name="format_error">תסדיר הברקוד/QR שגוי</string>
   <string name="code_detected">הברקוד זוהה</string>
   <string name="do_you_want_to">להוסיף תמונות לברקוד הזה?</string>
+  <string name="notify_title">הייצוא הושלם</string>
+  <string name="notify_content">יש ללחוץ כדי לצפות במוצרים שייוצאו</string>
+  <string name="notification_channel_name">התרעות ייצוא</string>
+  <string name="notify_channel_description">התרעה להצגת מיקום הקובץ שייוצא</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">המוצר נוסף ב־%1$s בשעה %2$s על ידי %3$s. עריכת העמוד האחרונה התבצעה ב־%4$s בשעה %5$s על ידי %6$s. דף המוצר נערך גם על ידי %7$s</string>
+  <string name="offline_notification_title">תרומות בלתי מקוונות שעליך לשלוח</string>
+  <string name="offline_notification_context">יש לך %1$d מוצרים בלתי מקוונים הממתינים לתרומה ל־Open Food Facts</string>
+  <string name="creator_history">המוצר נערך ב־%1$s בשעה %2$s לפי מרכז אירופה על ידי</string>
+  <string name="last_editor_history">עריכת המוצר האחרונה נערכה ב־%1$s בשעה %2$s לפי שעון קיץ מרכז אירופה על ידי </string>
+  <string name="other_editors">עמוד המוצר נערך גם על ידי </string>
 </resources>
