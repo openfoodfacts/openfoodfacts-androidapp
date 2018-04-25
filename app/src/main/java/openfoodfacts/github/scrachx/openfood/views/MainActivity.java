@@ -297,8 +297,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     switch ((int) drawerItem.getIdentifier()) {
                         case ITEM_HOME:
                             fragment = new HomeFragment();
-                            // recreate when Home is pressed
-                            recreate();
                             break;
                         case ITEM_SEARCH_BY_CODE:
                             fragment = new FindProductFragment();
