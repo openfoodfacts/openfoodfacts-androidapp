@@ -414,6 +414,8 @@
   <string name="category_string">カテゴリー</string>
   <string name="connection">接続されています</string>
   <string name="contributor_string">貢献者</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">アプリケーションは無効です</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">ビタミン:</string>
