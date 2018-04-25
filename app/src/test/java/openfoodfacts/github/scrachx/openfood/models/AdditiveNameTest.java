@@ -3,9 +3,7 @@ package openfoodfacts.github.scrachx.openfood.models;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.*;
 
 /**
  * Tests for {@link AdditiveName}
