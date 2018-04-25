@@ -414,6 +414,8 @@
   <string name="category_string">分类</string>
   <string name="connection">已连接</string>
   <string name="contributor_string">贡献者</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">应用程序被禁用</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">维生素：</string>
