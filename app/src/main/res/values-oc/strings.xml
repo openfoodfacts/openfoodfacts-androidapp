@@ -417,6 +417,8 @@
   <string name="category_string">Categoria</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitamins:</string>
