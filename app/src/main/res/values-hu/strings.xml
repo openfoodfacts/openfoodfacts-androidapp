@@ -450,10 +450,10 @@
   <string name="notify_content">Kattintson az exportált termékek megtekintéséhez</string>
   <string name="notification_channel_name">Export Értesítések</string>
   <string name="notify_channel_description">Értesítés az exportált fájl helyének megjelenítéséhez</string>
-  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="modified_history">A terméket hozzáadta %3$s a következő időpontban: %1$s, %2$s. A termékoldalt legutóbb szerkesztette %6$s a következő időpontban: %4$s, %5$s. A termékoldalt szerkesztette még %7$s</string>
   <string name="offline_notification_title">Kapcsolat nélküli módban készült hozzájárulások, amiket el kell küldenie</string>
   <string name="offline_notification_context">Önnek %1$d kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájáruláshoz</string>
-  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
-  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
-  <string name="other_editors">Product page also edited by </string>
+  <string name="creator_history">A terméket hozzáadta a következő időpontban: %1$s, %2$s CET</string>
+  <string name="last_editor_history">A termékoldalt legutóbb szerkesztette a következő időpontban: %1$s, %2$s CEST </string>
+  <string name="other_editors">A termékoldalt szerkesztette még </string>
 </resources>
