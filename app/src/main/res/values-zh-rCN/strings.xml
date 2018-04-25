@@ -13,9 +13,9 @@
   <string name="action_settings">设置</string>
   <string name="action_about">关于</string>
   <string name="action_discover">发现</string>
-  <string name="contribute">如何参与</string>
+  <string name="contribute">如何贡献</string>
   <string name="action_find">查找</string>
-  <string name="text_barcode">输入条形码</string>
+  <string name="text_barcode">输入条形码：</string>
   <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
   <string name="product_incomplete_message">该产品还未完成。因此，我们无法做过敏原检查。</string>
   <string name="no_offline_data">你已经全部完成</string>
@@ -29,27 +29,27 @@
   </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
-    <item>摘要</item>
-    <item>成分</item>
+    <item>概要</item>
+    <item>配料</item>
     <item>营养</item>
-    <item>营养标签</item>
+    <item>营养表</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
+    <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
     <item>ml</item>
-    <item>毫升</item>
-    <item>厘升</item>
-    <item>盎司</item>
+    <item>cl</item>
+    <item>fl oz</item>
   </string-array>
   <!-- weight units -->
   <string-array name="weights_array">
+    <item>g</item>
     <item>mg</item>
     <item>kg</item>
-    <item>l</item>
   </string-array>
   <!-- Text units -->
   <string-array name="images_array">
@@ -261,9 +261,9 @@
   <string name="txt_no_results">没有找到任何结果</string>
   <string name="txt_extend_search">尝试扩大搜索范围或者添加产品</string>
   <string name="txt_no_matching_products">我们还没有找到任何匹配的产品。\n您可以尝试：</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+  <string name="txt_broaden_search">- 扩大您的搜索 \n- 扫描并将其添加到 Open Food Facts</string>
   <string name="txt_cant_load_search_results">无法载入结果</string>
-  <string name="something_went_wrong">Sorry, something went wrong…</string>
+  <string name="something_went_wrong">抱歉，发生了一些问题…</string>
   <string name="txt_try_again">重新尝试</string>
   <string name="nutrition_lactose">乳糖</string>
   <string name="nutrition_casein">酪蛋白</string>
@@ -349,20 +349,20 @@
   <string name="contact_summary">联系团队</string>
   <string name="email_not_found">找不到电子邮件应用</string>
   <string name="airplane_mode_active_dialog_title">飞行模式已开启</string>
-  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_message">飞行模式已启用，请禁用此功能以继续。</string>
   <string name="airplane_mode_active_dialog_negative">忽略</string>
   <string name="airplane_mode_active_dialog_positive">设置</string>
   <string name="device_offline_dialog_title">网络不可用</string>
-  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_message">需要网络连接来做到这一点，你想在设置中改变它吗？</string>
   <string name="device_offline_dialog_negative">忽略</string>
   <string name="device_offline_dialog_positive">设置</string>
   <string name="saving">保存…</string>
   <string name="scan_first_product">扫描第一个产品</string>
   <string name="preference_enable_mobile_data_title">移动数据下上传</string>
   <string name="preference_enable_mobile_data_summary_on">使用移动数据 &amp; WiFi 上传新产品</string>
-  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="preference_enable_mobile_data_summary_off">仅使用 WiFi 上传新产品</string>
   <string name="device_on_mobile_data_warning_title">信息</string>
-  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_message">移动数据上传功能已禁用，请连接至 WiFi 或在偏好设置中更改</string>
   <string name="device_on_mobile_data_warning_positive">偏好</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
   <string name="preference_choose_language_dialog_title">选择语言</string>
@@ -370,9 +370,9 @@
   <string name="FrequentlyAskedQuestions">常见问题</string>
   <string name="translate_help_title">帮助翻译 Open Food Facts</string>
   <string name="translate_help_summary">将 Open Food Facts 数据库带到您的语言 - 没有技术性的知识要求</string>
-  <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="please_check_your_connection">请检查你的网络连接</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
-  <string name="advanced_search_title">Advanced Search &amp; Charts</string>
+  <string name="advanced_search_title">高级搜索和图表</string>
   <string name="connectivity_check">请检查您的互联网连接</string>
   <string name="dismiss">忽略</string>
   <string name="Terms">条款</string>
@@ -455,5 +455,5 @@
   <string name="offline_notification_context">您有 %1$d 个离线产品等待贡献给 Open Food Facts</string>
   <string name="creator_history">Product added on %1$s at %2$s CET by</string>
   <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
-  <string name="other_editors">Product page also edited by </string>
+  <string name="other_editors">产品页面也被修改 </string>
 </resources>
