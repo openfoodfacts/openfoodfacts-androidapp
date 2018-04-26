@@ -423,8 +423,8 @@
   <string name="category_string">Kategoria</string>
   <string name="connection">Połączono</string>
   <string name="contributor_string">Współtwórca</string>
-  <string name="Rate_Us">Show Your Support</string>
-  <string name="Rate_Us_title">Rate our App</string>
+  <string name="Rate_Us">Okaż wsparcie</string>
+  <string name="Rate_Us_title">Oceń aplikację</string>
   <string name="app_disabled_text">Wyłączono aplikację</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Witaminy:</string>
@@ -456,7 +456,7 @@
   <string name="do_you_want_to">Czy chcesz dodać zdjęcia do kodu kreskowego?</string>
   <string name="products_added">Produkty dodane lub edytowane przez ciebie</string>
   <string name="products_incomplete">Dodane przez ciebie produkty wymagają uzupełnienia</string>
-  <string name="product_pictures_contributed">Products you took pictures for</string>
+  <string name="product_pictures_contributed">Produkty, które sfotografowałeś</string>
   <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
   <string name="product_info_added">Products you added information for</string>
   <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
