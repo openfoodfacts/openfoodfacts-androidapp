@@ -210,12 +210,47 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(),
                 customTabActivityHelper.getSession());
 
+
         // Create the AccountHeader
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.header)
                 .addProfiles(profile)
+                .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
+                    @Override
+                    public boolean onProfileImageClick(View view, IProfile profile, boolean current) {
+
+                        SharedPreferences preferences = getSharedPreferences("login", 0);
+                        String userLogin = preferences.getString("user", null);
+                        boolean isConnected = userLogin != null;
+                        if (!isConnected) {
+                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        }
+                        return false;
+
+
+                    }
+
+                    @Override
+                    public boolean onProfileImageLongClick(View view, IProfile profile, boolean current) {
+                        return false;
+                    }
+                })
+                .withOnAccountHeaderSelectionViewClickListener(new AccountHeader.OnAccountHeaderSelectionViewClickListener() {
+                    @Override
+                    public boolean onClick(View view, IProfile profile) {
+                        SharedPreferences preferences = getSharedPreferences("login", 0);
+                        String userLogin = preferences.getString("user", null);
+                        boolean isConnected = userLogin != null;
+                        if (!isConnected) {
+                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+
+                        }
+                        return false;
+
+                    }
+                })
                 .withSelectionListEnabledForSingleProfile(false)
                 .withOnAccountHeaderListener((view, profile1, current) -> {
                     if (profile1 instanceof IDrawerItem) {
@@ -237,6 +272,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userSession = preferences.getString("user_session", null);
         boolean isUserConnected = userLogin != null && userSession != null;
         boolean isConnected = userLogin != null;
+
         if (isUserConnected) {
             userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
                     "&user_session=" + userSession);
@@ -732,12 +768,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             Log.e("INTENT", "start activity");
             String query = intent.getStringExtra(SearchManager.QUERY);
             ProductBrowsingListActivity.startActivity(this, query, SearchType.SEARCH);
-            if(searchMenuItem!=null)
-            {
+            if (searchMenuItem != null) {
                 searchMenuItem.collapseActionView();
             }
-        }
-        else if (Intent.ACTION_SEND.equals(intent.getAction()) && type != null) {
+        } else if (Intent.ACTION_SEND.equals(intent.getAction()) && type != null) {
             if (type.startsWith("image/")) {
                 handleSendImage(intent); // Handle single image being sent
             }
