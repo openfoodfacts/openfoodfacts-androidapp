@@ -242,14 +242,31 @@ public interface OpenFoodAPIService {
     @GET("contributor/{Contributor}.json")
     Call<Search> byContributor(@Path("Contributor") String Contributor);
 
+    @GET("contributor/{Contributor}/state/to-be-completed/{page}.json")
+    Call<Search> getToBeCompletedProductsByContributor(@Path("Contributor") String Contributor, @Path("page") int page);
+
+    @GET("/photographer/{Contributor}/{page}.json")
+    Call<Search> getPicturesContributedProducts(@Path("Contributor") String Contributor, @Path("page") int page);
+
     @GET("photographer/{Photographer}.json")
     Call<Search> byPhotographer(@Path("Photographer") String Photographer);
+
+    @GET("photographer/{Contributor}/state/to-be-completed/{page}.json")
+    Call<Search> getPicturesContributedIncompleteProducts(@Path("Contributor") String Contributor, @Path("page") int page);
 
     @GET("informer/{Informer}.json")
     Call<Search> byInformer(@Path("Informer") String Informer);
 
+    @GET("informer/{Contributor}/{page}.json")
+    Call<Search> getInfoAddedProducts(@Path("Contributor") String Contributor, @Path("page") int page);
+
+    @GET("informer/{Contributor}/state/to-be-completed/{page}.json")
+    Call<Search> getInfoAddedIncompleteProducts(@Path("Contributor") String Contributor, @Path("page") int page);
+
+
     @GET("last-edit-date/{LastEditDate}.json")
     Call<Search> byLastEditDate(@Path("LastEditDate") String LastEditDate);
+
 
     @GET("entry-dates/{EntryDates}.json")
     Call<Search> byEntryDates(@Path("EntryDates") String EntryDates);
