@@ -61,10 +61,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         Intent intent = getActivity().getIntent();
-        State state = (State) intent.getExtras().getSerializable("state");
+        refreshView((State) intent.getExtras().getSerializable("state"));
+    }
 
+    @Override
+    public void refreshView(State state) {
+        super.refreshView(state);
         final Product product = state.getProduct();
         List<NutrientLevelItem> levelItem = new ArrayList<>();
 
@@ -83,7 +86,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
 
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
-            textNutrientTxt.append(" " + getString(R.string.txtNoData));
+            textNutrientTxt.setText(" " + getString(R.string.txtNoData));
             levelItem.add(new NutrientLevelItem("", "", "", 0));
         } else {
             // prefetch the uri
@@ -135,7 +138,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         if (TextUtils.isEmpty(product.getServingSize())) {
             serving.setVisibility(View.GONE);
         } else {
-            serving.append(bold(getString(R.string.txtServingSize)));
+            serving.setText(bold(getString(R.string.txtServingSize)));
             serving.append(" ");
             serving.append(product.getServingSize());
         }

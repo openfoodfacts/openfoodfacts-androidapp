@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -54,6 +55,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     private SharedPreferences settings;
     private NavigationDrawerListener navigationDrawerListener;
 
+   Context context;
+
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         MenuItem item = menu.findItem(R.id.action_search);
@@ -64,6 +68,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     public void onCreatePreferences(Bundle bundle, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
         setHasOptionsMenu(true);
+        context=getContext();
+
 
         ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
 
@@ -113,6 +119,23 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                 Toast.makeText(getActivity(), R.string.email_not_found, Toast.LENGTH_SHORT).show();
             }
             return true;
+        });
+
+        Preference rateus=findPreference("RateUs");
+        rateus.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                try {
+                    String installer = context.getPackageManager()
+                            .getInstallerPackageName(context.getPackageName());
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=" + installer)));
+                } catch (android.content.ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
+                }
+                return true;
+            }
         });
 
 

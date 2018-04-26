@@ -40,7 +40,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -64,6 +66,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
@@ -171,10 +174,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Intent intent = getActivity().getIntent();
+        refreshView((State) intent.getExtras().getSerializable("state"));
+    }
 
+    @Override
+    public void refreshView(State state) {
+        super.refreshView(state);
         categoryProduct.setText(bold(getString(R.string.txtCategories)));
         labelProduct.setText(bold(getString(R.string.txtLabels)));
         countryProduct.setText(bold(getString(R.string.txtCountries)));
+
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
@@ -195,7 +205,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Picasso.with(view.getContext())
+                Picasso.with(getContext())
                         .load(product.getImageUrl())
                         .into(mImageFront);
             } else {
@@ -375,6 +385,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
         }
 
+
     }
 
     @Override
@@ -518,7 +529,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (tag != null) return tag.getName();
         return embTag;
     }
-
 
     private CharSequence getCategoriesTag(CategoryName category) {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();

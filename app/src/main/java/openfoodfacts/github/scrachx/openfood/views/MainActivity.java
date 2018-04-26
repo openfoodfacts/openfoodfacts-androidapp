@@ -88,6 +88,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
@@ -209,12 +210,47 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(),
                 customTabActivityHelper.getSession());
 
+
         // Create the AccountHeader
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.header)
                 .addProfiles(profile)
+                .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
+                    @Override
+                    public boolean onProfileImageClick(View view, IProfile profile, boolean current) {
+
+                        SharedPreferences preferences = getSharedPreferences("login", 0);
+                        String userLogin = preferences.getString("user", null);
+                        boolean isConnected = userLogin != null;
+                        if (!isConnected) {
+                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        }
+                        return false;
+
+
+                    }
+
+                    @Override
+                    public boolean onProfileImageLongClick(View view, IProfile profile, boolean current) {
+                        return false;
+                    }
+                })
+                .withOnAccountHeaderSelectionViewClickListener(new AccountHeader.OnAccountHeaderSelectionViewClickListener() {
+                    @Override
+                    public boolean onClick(View view, IProfile profile) {
+                        SharedPreferences preferences = getSharedPreferences("login", 0);
+                        String userLogin = preferences.getString("user", null);
+                        boolean isConnected = userLogin != null;
+                        if (!isConnected) {
+                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+
+                        }
+                        return false;
+
+                    }
+                })
                 .withSelectionListEnabledForSingleProfile(false)
                 .withOnAccountHeaderListener((view, profile1, current) -> {
                     if (profile1 instanceof IDrawerItem) {
@@ -236,6 +272,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userSession = preferences.getString("user_session", null);
         boolean isUserConnected = userLogin != null && userSession != null;
         boolean isConnected = userLogin != null;
+
         if (isUserConnected) {
             userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
                     "&user_session=" + userSession);
@@ -276,6 +313,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(ITEM_HISTORY).withSelectable(false),
                         new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
                         new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(ITEM_MY_CONTRIBUTIONS).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.products_to_be_completed).withIcon(GoogleMaterial.Icon.gmd_edit).withIdentifier(ITEM_INCOMPLETE_PRODUCTS).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
                         new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
                         new DividerDrawerItem(),
@@ -295,8 +333,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     switch ((int) drawerItem.getIdentifier()) {
                         case ITEM_HOME:
                             fragment = new HomeFragment();
-                            // recreate when Home is pressed
-                            recreate();
                             break;
                         case ITEM_SEARCH_BY_CODE:
                             fragment = new FindProductFragment();
@@ -331,6 +367,18 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             CustomTabActivityHelper.openCustomTab(MainActivity.this,
                                     customTabsIntent, contributeUri, new WebViewFallback());
                             break;
+
+                        case ITEM_INCOMPLETE_PRODUCTS:
+
+                            /**
+                             * Search and display the products to be completed by moving to ProductBrowsingListActivity
+                             */
+                            Intent incompleteIntent = new Intent(this, ProductBrowsingListActivity.class);
+                            incompleteIntent.putExtra("search_query", "");
+                            incompleteIntent.putExtra("search_type", SearchType.INCOMPLETE_PRODUCT);
+                            this.startActivity(incompleteIntent);
+                            break;
+
                         case ITEM_OBF:
                             boolean otherOFAppInstalled = Utils.isApplicationInstalled
                                     (MainActivity.this, BuildConfig.OFOTHERLINKAPP);
@@ -720,12 +768,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             Log.e("INTENT", "start activity");
             String query = intent.getStringExtra(SearchManager.QUERY);
             ProductBrowsingListActivity.startActivity(this, query, SearchType.SEARCH);
-            if(searchMenuItem!=null)
-            {
+            if (searchMenuItem != null) {
                 searchMenuItem.collapseActionView();
             }
-        }
-        else if (Intent.ACTION_SEND.equals(intent.getAction()) && type != null) {
+        } else if (Intent.ACTION_SEND.equals(intent.getAction()) && type != null) {
             if (type.startsWith("image/")) {
                 handleSendImage(intent); // Handle single image being sent
             }

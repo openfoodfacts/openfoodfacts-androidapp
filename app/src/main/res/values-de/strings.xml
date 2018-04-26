@@ -417,6 +417,8 @@
   <string name="category_string">Kategorie</string>
   <string name="connection">Verbunden</string>
   <string name="contributor_string">Mitwirkende(r)</string>
+  <string name="Rate_Us">Zeigen Sie Ihre Unterstützung</string>
+  <string name="Rate_Us_title">Bewerten Sie unsere App</string>
   <string name="app_disabled_text">Anwendung ist deaktiviert</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitamine:</string>
@@ -446,10 +448,25 @@
   <string name="format_error">Fehlerhafte(r/s) Strichcode-/QR-Format</string>
   <string name="code_detected">Strichcode erkannt</string>
   <string name="do_you_want_to">Möchten Sie Fotos zu diesem Strichcode hinzufügen?</string>
+  <string name="products_added">Produkte, die Sie hinzugefügt oder bearbeitet haben</string>
+  <string name="products_incomplete">Von Ihnen hinzugefügte Produkte, die noch abgeschlossen werden müssen</string>
+  <string name="product_pictures_contributed">Produkte, für die Sie Fotos gemacht haben</string>
+  <string name="picture_contributed_incomplete">Produkte, für die Sie Fotos gemacht haben, müssen vervollständigt werden</string>
+  <string name="product_info_added">Produkte, für die Sie Informationen hinzugefügt haben</string>
+  <string name="product_info_tocomplete">Produkte, für die Sie Informationen hinzugefügt haben, müssen vervollständigt werden</string>
+  <string name="show_by">Anzeigen</string>
   <string name="notify_title">Exportieren abgeschlossen</string>
   <string name="notify_content">Hier klicken, um die exportierten Produkte anzuzeigen</string>
   <string name="notification_channel_name">Benachrichtigungen exportieren</string>
   <string name="notify_channel_description">Benachrichtigung, um den Speicherort der exportierten Dateien anzuzeigen</string>
+  <string name="products_to_be_completed">Noch abzuschließende Produkte</string>
+  <string name="modified_history">Produkt hinzugefügt am %1$s um %2$s durch %3$s. Letzte Änderung der Produktseite am %4$s um %5$s von %6$s. Produktseite auch von %7$s bearbeitet</string>
   <string name="offline_notification_title">Noch zu sendende Offline-Beiträge</string>
   <string name="offline_notification_context">Sie verfügen über %1$d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden.</string>
+  <string name="creator_history">Produkt hinzugefügt am %1$s um %2$s MESZ durch</string>
+  <string name="last_editor_history">Letzte Änderung der Produktseite am %1$s um %2$s MESZ durch </string>
+  <string name="other_editors">Produktseite auch bearbeitet von </string>
+  <string name="contribution_tab">Beiträge</string>
+  <string name="contribution_tab_summary">Tab „Benutzerbeiträge” mit Produkten anzeigen</string>
+  <string name="contribution_tab_title">Tab „Benutzerbeiträge” anzeigen</string>
 </resources>

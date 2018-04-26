@@ -30,7 +30,7 @@ public interface OpenFoodAPIService {
 
     String PRODUCT_API_COMMENT = "new android app";
 
-    @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags")
+    @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags")
     Call<State> getFullProductByBarcode(@Path("barcode") String barcode);
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
@@ -123,6 +123,7 @@ public interface OpenFoodAPIService {
                                                 @Query("user_id") String login,
                                                 @Query("password") String password,
                                                 @Query("comment") String comment);
+
     /**
      * This method is used to upload those products which
      * does not contain Name and Quantity of the product.
@@ -241,14 +242,31 @@ public interface OpenFoodAPIService {
     @GET("contributor/{Contributor}.json")
     Call<Search> byContributor(@Path("Contributor") String Contributor);
 
+    @GET("contributor/{Contributor}/state/to-be-completed/{page}.json")
+    Call<Search> getToBeCompletedProductsByContributor(@Path("Contributor") String Contributor, @Path("page") int page);
+
+    @GET("/photographer/{Contributor}/{page}.json")
+    Call<Search> getPicturesContributedProducts(@Path("Contributor") String Contributor, @Path("page") int page);
+
     @GET("photographer/{Photographer}.json")
     Call<Search> byPhotographer(@Path("Photographer") String Photographer);
+
+    @GET("photographer/{Contributor}/state/to-be-completed/{page}.json")
+    Call<Search> getPicturesContributedIncompleteProducts(@Path("Contributor") String Contributor, @Path("page") int page);
 
     @GET("informer/{Informer}.json")
     Call<Search> byInformer(@Path("Informer") String Informer);
 
+    @GET("informer/{Contributor}/{page}.json")
+    Call<Search> getInfoAddedProducts(@Path("Contributor") String Contributor, @Path("page") int page);
+
+    @GET("informer/{Contributor}/state/to-be-completed/{page}.json")
+    Call<Search> getInfoAddedIncompleteProducts(@Path("Contributor") String Contributor, @Path("page") int page);
+
+
     @GET("last-edit-date/{LastEditDate}.json")
     Call<Search> byLastEditDate(@Path("LastEditDate") String LastEditDate);
+
 
     @GET("entry-dates/{EntryDates}.json")
     Call<Search> byEntryDates(@Path("EntryDates") String EntryDates);
@@ -265,6 +283,9 @@ public interface OpenFoodAPIService {
     @GET("packager-codes.json")
     Single<TagsWrapper> getTags();
 
+    @GET("state/{State}/{page}.json")
+    Call<Search> getProductsByState(@Path("State") String state, @Path("page") int page);
+
     /**
      * Open Beauty Facts experimental and specific APIs
      */
@@ -274,4 +295,11 @@ public interface OpenFoodAPIService {
 
     @GET("ingredient/{ingredient}.json")
     Call<Search> byIngredient(@Path("ingredient") String ingredient);
+
+    /**
+     * This method gives a list of incomplete products
+     */
+    @GET("state/to-be-completed/{page}.json")
+    Call<Search> getIncompleteProducts(@Path("page") int page);
 }
+

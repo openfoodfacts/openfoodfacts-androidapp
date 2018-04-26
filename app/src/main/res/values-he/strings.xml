@@ -402,7 +402,7 @@
   <string name="dialog_cancel">ביטול</string>
   <string name="choose_resolution">נא לבחור ברזולוציה</string>
   <string name="pref_resolution_summary">נא לבחור רזולוציה להעלאת התמונה</string>
-  <string name="image_upload_resolution">Image upload resolution</string>
+  <string name="image_upload_resolution">רזולוציית התמונה להעלאה</string>
   <string name="can_add_barcode">התגלתה בעיה בסריקה?\nיש לגרור כלפי מעלה כדי להקליד את הברקוד</string>
   <string name="wikidata_information">להמשיך מעבר</string>
   <string name="description">תיאור: </string>
@@ -423,6 +423,8 @@
   <string name="category_string">קטגוריה</string>
   <string name="connection">יש חיבור</string>
   <string name="contributor_string">תרומה</string>
+  <string name="Rate_Us">הבעת התמיכה שלך</string>
+  <string name="Rate_Us_title">דירוג היישומון שלנו</string>
   <string name="app_disabled_text">היישומון מושבת</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">ויטמינים:</string>
@@ -431,8 +433,8 @@
   <string name="other_tags_text">חומרים אחרים:</string>
   <!--shared element transition key-->
   <string name="wikidata">מידע מוויקינתונים</string>
-  <string name="disable_image_loading">Disable image loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable image loading</string>
+  <string name="disable_image_loading">השבתת טעינת תמונות כאשר הסוללה חלשה</string>
+  <string name="DisableLoadTitle">השבתת טעינת תמונות</string>
   <string name="txtCamera">מצלמה</string>
   <string name="txtGallery">גלריה</string>
   <string name="txtOptions">אפשרויות</string>
@@ -452,10 +454,25 @@
   <string name="format_error">תסדיר הברקוד/QR שגוי</string>
   <string name="code_detected">הברקוד זוהה</string>
   <string name="do_you_want_to">להוסיף תמונות לברקוד הזה?</string>
+  <string name="products_added">משתנים שהוספת או ערכת</string>
+  <string name="products_incomplete">מוצרים שהוספת שדורשים השלמה</string>
+  <string name="product_pictures_contributed">Products you took pictures for</string>
+  <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
+  <string name="product_info_added">Products you added information for</string>
+  <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
+  <string name="show_by">Show</string>
   <string name="notify_title">הייצוא הושלם</string>
   <string name="notify_content">יש ללחוץ כדי לצפות במוצרים שייוצאו</string>
   <string name="notification_channel_name">התרעות ייצוא</string>
   <string name="notify_channel_description">התרעה להצגת מיקום הקובץ שייוצא</string>
-  <string name="offline_notification_title">Offline contributions you need to send</string>
-  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="products_to_be_completed">מוצרים שדורשים השלמה</string>
+  <string name="modified_history">המוצר נוסף ב־%1$s בשעה %2$s על ידי %3$s. עריכת העמוד האחרונה התבצעה ב־%4$s בשעה %5$s על ידי %6$s. דף המוצר נערך גם על ידי %7$s</string>
+  <string name="offline_notification_title">תרומות בלתי מקוונות שעליך לשלוח</string>
+  <string name="offline_notification_context">יש לך %1$d מוצרים בלתי מקוונים הממתינים לתרומה ל־Open Food Facts</string>
+  <string name="creator_history">המוצר נערך ב־%1$s בשעה %2$s לפי מרכז אירופה על ידי</string>
+  <string name="last_editor_history">עריכת המוצר האחרונה נערכה ב־%1$s בשעה %2$s לפי שעון קיץ מרכז אירופה על ידי </string>
+  <string name="other_editors">עמוד המוצר נערך גם על ידי </string>
+  <string name="contribution_tab">תרומות</string>
+  <string name="contribution_tab_summary">Show user contributions tab with products</string>
+  <string name="contribution_tab_title">Show Contribution Tab</string>
 </resources>

@@ -12,6 +12,7 @@ import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,6 +79,8 @@ public class OpenFoodAPIClient {
 
     private static OkHttpClient httpClient = Utils.HttpClientBuilder();
 
+    ProgressBar progressBar;
+
 
     private final OpenFoodAPIService apiService;
     private Context mActivity;
@@ -122,12 +125,16 @@ public class OpenFoodAPIClient {
      * @param activity
      */
     public void getProduct(final String barcode, final Activity activity) {
+
         apiService.getFullProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
 
-                final State s = response.body();
+                if (activity == null || activity.isFinishing()) {
+                    return;
+                }
 
+                final State s = response.body();
                 if (s.getStatus() == 0) {
                     new MaterialDialog.Builder(activity)
                             .title(R.string.txtDialogsTitle)
@@ -181,6 +188,7 @@ public class OpenFoodAPIClient {
                         .show();
             }
         });
+
     }
 
     /**
@@ -194,9 +202,11 @@ public class OpenFoodAPIClient {
      */
     public void getShortProduct(final String barcode, final Activity activity, final ZXingScannerView camera, final ZXingScannerView.ResultHandler
             resultHandler) {
+
         apiService.getShortProductByBarcode(barcode).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
+
                 final State s = response.body();
 
                 if (s.getStatus() == 0) {
@@ -970,6 +980,241 @@ public class OpenFoodAPIClient {
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
 
                 onContributorCallback.onContributorResponse(false, null);
+
+            }
+        });
+    }
+
+    public interface OnIncompleteCallback {
+        void onIncompleteResponse(boolean value, Search incompleteProducts);
+    }
+
+    public void getIncompleteProducts(int page, OnIncompleteCallback onIncompleteCallback) {
+        apiService.getIncompleteProducts(page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+                if (!response.isSuccessful()) {
+                    onIncompleteCallback.onIncompleteResponse(false, null);
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(response.body().getCount()) == 0) {
+                        onIncompleteCallback.onIncompleteResponse(false, null);
+                        return;
+                    } else {
+                        onIncompleteCallback.onIncompleteResponse(true, response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+
+                onIncompleteCallback.onIncompleteResponse(false, null);
+            }
+        });
+    }
+
+    public void getToBeCompletedProductsByContributor(String contributor, final int page, final onContributorCallback onContributorCallback) {
+        apiService.getToBeCompletedProductsByContributor(contributor, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onContributorCallback.onContributorResponse(false, null);
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(response.body().getCount()) == 0) {
+                        onContributorCallback.onContributorResponse(false, null);
+                        return;
+                    } else {
+                        onContributorCallback.onContributorResponse(true, response.body());
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
+
+                onContributorCallback.onContributorResponse(false, null);
+
+            }
+        });
+    }
+
+    public void getPicturesContributedProducts(String contributor, final int page, final onContributorCallback onContributorCallback) {
+        apiService.getPicturesContributedProducts(contributor, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onContributorCallback.onContributorResponse(false, null);
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(response.body().getCount()) == 0) {
+                        onContributorCallback.onContributorResponse(false, null);
+                        return;
+                    } else {
+                        onContributorCallback.onContributorResponse(true, response.body());
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
+
+                onContributorCallback.onContributorResponse(false, null);
+
+            }
+        });
+    }
+
+    public void getPicturesContributedIncompleteProducts(String contributor, final int page, final onContributorCallback onContributorCallback) {
+        apiService.getPicturesContributedIncompleteProducts(contributor, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onContributorCallback.onContributorResponse(false, null);
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(response.body().getCount()) == 0) {
+                        onContributorCallback.onContributorResponse(false, null);
+                        return;
+                    } else {
+                        onContributorCallback.onContributorResponse(true, response.body());
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
+
+                onContributorCallback.onContributorResponse(false, null);
+
+            }
+        });
+    }
+
+    public void getInfoAddedProducts(String contributor, final int page, final onContributorCallback onContributorCallback) {
+        apiService.getInfoAddedProducts(contributor, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onContributorCallback.onContributorResponse(false, null);
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(response.body().getCount()) == 0) {
+                        onContributorCallback.onContributorResponse(false, null);
+                        return;
+                    } else {
+                        onContributorCallback.onContributorResponse(true, response.body());
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
+
+                onContributorCallback.onContributorResponse(false, null);
+
+            }
+        });
+    }
+
+    public void getInfoAddedIncompleteProducts(String contributor, final int page, final onContributorCallback onContributorCallback) {
+        apiService.getInfoAddedIncompleteProducts(contributor, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onContributorCallback.onContributorResponse(false, null);
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(response.body().getCount()) == 0) {
+                        onContributorCallback.onContributorResponse(false, null);
+                        return;
+                    } else {
+                        onContributorCallback.onContributorResponse(true, response.body());
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
+
+                onContributorCallback.onContributorResponse(false, null);
+
+            }
+        });
+    }
+
+
+    public interface onStateCallback {
+        void onStateResponse(boolean value, Search state);
+    }
+
+    public void getProductsByStates(String state, final int page, final onStateCallback onStateCallback) {
+        apiService.getProductsByState(state, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
+
+
+                if (!response.isSuccessful()) {
+                    onStateCallback.onStateResponse(false, null);
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+
+                    if (Integer.valueOf(response.body().getCount()) == 0) {
+                        onStateCallback.onStateResponse(false, null);
+                        return;
+                    } else {
+                        onStateCallback.onStateResponse(true, response.body());
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
+
+                onStateCallback.onStateResponse(false, null);
 
             }
         });

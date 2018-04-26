@@ -9,7 +9,6 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -17,12 +16,10 @@ import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 
 public class CategoryActivity extends BaseActivity {
 
-    private View offlineView, onlineView;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
     private boolean scanOnShake;
-
 
     public static Intent getIntent(Context context) {
         return new Intent(context, CategoryActivity.class);
@@ -38,18 +35,12 @@ public class CategoryActivity extends BaseActivity {
         setSupportActionBar(findViewById(R.id.toolbar));
         setTitle(R.string.category_drawer);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        findViewById(R.id.buttonToRefresh).setOnClickListener(view -> checkNetworkAndShowScreen());
-        offlineView = findViewById(R.id.offline_view);
-        onlineView = findViewById(R.id.fragment);
-        checkNetworkAndShowScreen();
-
 
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
-
 
         mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
             @Override
@@ -59,26 +50,12 @@ public class CategoryActivity extends BaseActivity {
                 }
             }
         });
-
-
-    }
-
-    private void checkNetworkAndShowScreen() {
-        if (Utils.isNetworkConnected(this)) {
-            onlineView.setVisibility(View.VISIBLE);
-            offlineView.setVisibility(View.GONE);
-        } else {
-            offlineView.setVisibility(View.VISIBLE);
-            onlineView.setVisibility(View.GONE);
-
-        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
         if (scanOnShake) {
-
             mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
         }
     }
@@ -87,7 +64,6 @@ public class CategoryActivity extends BaseActivity {
     public void onResume() {
         super.onResume();
         if (scanOnShake) {
-
             mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
         }
     }
