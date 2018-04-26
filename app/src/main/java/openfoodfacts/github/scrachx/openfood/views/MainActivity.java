@@ -209,6 +209,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(),
                 customTabActivityHelper.getSession());
 
+
         // Create the AccountHeader
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -218,8 +219,16 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
                     @Override
                     public boolean onProfileImageClick(View view, IProfile profile, boolean current) {
-                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                        return true;
+
+                        SharedPreferences preferences = getSharedPreferences("login", 0);
+                        String userLogin = preferences.getString("user", null);
+                        boolean isConnected = userLogin != null;
+                        if (!isConnected) {
+                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        }
+                        return false;
+
+
                     }
 
                     @Override
@@ -230,8 +239,15 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .withOnAccountHeaderSelectionViewClickListener(new AccountHeader.OnAccountHeaderSelectionViewClickListener() {
                     @Override
                     public boolean onClick(View view, IProfile profile) {
-                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                        return true;
+                        SharedPreferences preferences = getSharedPreferences("login", 0);
+                        String userLogin = preferences.getString("user", null);
+                        boolean isConnected = userLogin != null;
+                        if (!isConnected) {
+                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+
+                        }
+                        return false;
+
                     }
                 })
                 .withSelectionListEnabledForSingleProfile(false)
@@ -255,6 +271,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userSession = preferences.getString("user_session", null);
         boolean isUserConnected = userLogin != null && userSession != null;
         boolean isConnected = userLogin != null;
+
         if (isUserConnected) {
             userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
                     "&user_session=" + userSession);
