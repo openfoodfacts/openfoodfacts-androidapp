@@ -240,7 +240,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
         adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
         adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        if (!preferences.getBoolean("contributionTab", false)) {
+        if (preferences.getBoolean("contributionTab", false)) {
             adapterResult.addFragment(new ContributorsFragment(), getString(R.string.contribution_tab));
         }
         if (BuildConfig.FLAVOR.equals("off")) {
