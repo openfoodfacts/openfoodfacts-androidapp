@@ -448,6 +448,13 @@
   <string name="format_error">crwdns46331:0crwdne46331:0</string>
   <string name="code_detected">crwdns46332:0crwdne46332:0</string>
   <string name="do_you_want_to">crwdns46333:0crwdne46333:0</string>
+  <string name="products_added">crwdns84813:0crwdne84813:0</string>
+  <string name="products_incomplete">crwdns84814:0crwdne84814:0</string>
+  <string name="product_pictures_contributed">crwdns84815:0crwdne84815:0</string>
+  <string name="picture_contributed_incomplete">crwdns84816:0crwdne84816:0</string>
+  <string name="product_info_added">crwdns84817:0crwdne84817:0</string>
+  <string name="product_info_tocomplete">crwdns84818:0crwdne84818:0</string>
+  <string name="show_by">crwdns84819:0crwdne84819:0</string>
   <string name="notify_title">crwdns46799:0crwdne46799:0</string>
   <string name="notify_content">crwdns46800:0crwdne46800:0</string>
   <string name="notification_channel_name">crwdns46801:0crwdne46801:0</string>
@@ -459,4 +466,7 @@
   <string name="creator_history">crwdns84807:0%1$scrwdnd84807:0%2$scrwdne84807:0</string>
   <string name="last_editor_history">crwdns84808:0%1$scrwdnd84808:0%2$scrwdne84808:0</string>
   <string name="other_editors">crwdns84809:0crwdne84809:0</string>
+  <string name="contribution_tab">crwdns84820:0crwdne84820:0</string>
+  <string name="contribution_tab_summary">crwdns84821:0crwdne84821:0</string>
+  <string name="contribution_tab_title">crwdns84822:0crwdne84822:0</string>
 </resources>
