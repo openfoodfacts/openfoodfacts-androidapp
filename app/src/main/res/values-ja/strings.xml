@@ -445,6 +445,13 @@
   <string name="format_error">バーコード/QR 形式が間違っています</string>
   <string name="code_detected">バーコードを検出しました</string>
   <string name="do_you_want_to">このバーコードに写真を追加しますか?</string>
+  <string name="products_added">あなたが追加または編集した製品</string>
+  <string name="products_incomplete">あなたが追加して、完了が必要な製品</string>
+  <string name="product_pictures_contributed">Products you took pictures for</string>
+  <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
+  <string name="product_info_added">Products you added information for</string>
+  <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
+  <string name="show_by">Show</string>
   <string name="notify_title">エクスポートが完了しました</string>
   <string name="notify_content">クリックするとエクスポートした製品を表示します</string>
   <string name="notification_channel_name">エクスポートの通知</string>
@@ -456,4 +463,7 @@
   <string name="creator_history">%1$s %2$s 中央ヨーロッパ標準時に製品を追加しました</string>
   <string name="last_editor_history">製品ページの最終編集 %1$s %2$s 中央ヨーロッパ標準時、編集者 </string>
   <string name="other_editors">製品ページの共同編集者 </string>
+  <string name="contribution_tab">貢献</string>
+  <string name="contribution_tab_summary">Show user contributions tab with products</string>
+  <string name="contribution_tab_title">Show Contribution Tab</string>
 </resources>
