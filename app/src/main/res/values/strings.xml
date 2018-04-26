@@ -585,6 +585,9 @@
     <string name="creator_history">Product added on %1$s at %2$s CET by</string>
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
     <string name="other_editors">Product page also edited by </string>
+    <string name="contribution_tab">Contributions</string>
+    <string name="contribution_tab_summary">Show user contributions tab with products</string>
+    <string name="contribution_tab_title">Show Contribution Tab</string>
 
 
 </resources>
