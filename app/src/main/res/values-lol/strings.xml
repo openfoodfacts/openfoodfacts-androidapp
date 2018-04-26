@@ -417,6 +417,8 @@
   <string name="category_string">crwdns37314:0crwdne37314:0</string>
   <string name="connection">crwdns37746:0crwdne37746:0</string>
   <string name="contributor_string">crwdns37747:0crwdne37747:0</string>
+  <string name="Rate_Us">crwdns84811:0crwdne84811:0</string>
+  <string name="Rate_Us_title">crwdns84812:0crwdne84812:0</string>
   <string name="app_disabled_text">crwdns37765:0crwdne37765:0</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">crwdns37751:0crwdne37751:0</string>
@@ -450,6 +452,7 @@
   <string name="notify_content">crwdns46800:0crwdne46800:0</string>
   <string name="notification_channel_name">crwdns46801:0crwdne46801:0</string>
   <string name="notify_channel_description">crwdns46802:0crwdne46802:0</string>
+  <string name="products_to_be_completed">crwdns84810:0crwdne84810:0</string>
   <string name="modified_history">crwdns84806:0%1$scrwdnd84806:0%2$scrwdnd84806:0%3$scrwdnd84806:0%4$scrwdnd84806:0%5$scrwdnd84806:0%6$scrwdnd84806:0%7$scrwdne84806:0</string>
   <string name="offline_notification_title">crwdns84803:0crwdne84803:0</string>
   <string name="offline_notification_context">crwdns84804:0%1$dcrwdne84804:0</string>

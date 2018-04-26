@@ -295,4 +295,11 @@ public interface OpenFoodAPIService {
 
     @GET("ingredient/{ingredient}.json")
     Call<Search> byIngredient(@Path("ingredient") String ingredient);
+
+    /**
+     * This method gives a list of incomplete products
+     */
+    @GET("state/to-be-completed/{page}.json")
+    Call<Search> getIncompleteProducts(@Path("page") int page);
 }
+

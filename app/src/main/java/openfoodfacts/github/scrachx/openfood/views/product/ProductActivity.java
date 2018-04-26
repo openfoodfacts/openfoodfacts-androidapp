@@ -55,6 +55,7 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -67,6 +68,7 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerView
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition_details.NutritionInfoProductFragment;
@@ -75,7 +77,7 @@ import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProduc
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
-public class ProductActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback {
+public class ProductActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, OnRefreshListener {
 
     @BindView(R.id.pager)
     ViewPager viewPager;
@@ -90,7 +92,10 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     Button buttonToBrowseProducts;
     Button wikipediaButton;
     RecyclerView productBrowsingRecyclerView;
+    ProductFragmentPagerAdapter adapterResult;
     ProductsRecyclerViewAdapter productsRecyclerViewAdapter;
+
+    private OpenFoodAPIClient api;
     private ShareActionProvider mShareActionProvider;
     private BottomSheetBehavior bottomSheetBehavior;
     private CustomTabActivityHelper customTabActivityHelper;
@@ -101,7 +106,6 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     private ShakeDetector mShakeDetector;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
-
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -119,6 +123,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 
         tabLayout.setupWithViewPager(viewPager);
 
+        api = new OpenFoodAPIClient(this);
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getApplicationContext(), customTabActivityHelper.getSession());
@@ -231,7 +236,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     private void setupViewPager(ViewPager viewPager) {
         String[] menuTitles = getResources().getStringArray(R.array.nav_drawer_items_product);
 
-        ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
+        adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
         adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
         adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
         adapterResult.addFragment(new ContributorsFragment(), "Contributions");
@@ -243,6 +248,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
         }
+
         viewPager.setAdapter(adapterResult);
     }
 
@@ -530,6 +536,18 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
         Uri wikipediaUri = Uri.parse(url);
         CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, wikipediaUri, new WebViewFallback());
 
+    }
+
+    @Override
+    public void onRefresh() {
+        api.getProduct(mState.getProduct().getCode(), this);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        adapterResult.refresh((State) intent.getExtras().getSerializable("state"));
     }
 
     @Override
