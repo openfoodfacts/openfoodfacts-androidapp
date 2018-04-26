@@ -450,11 +450,11 @@
   <string name="do_you_want_to">Möchten Sie Fotos zu diesem Strichcode hinzufügen?</string>
   <string name="products_added">Produkte, die Sie hinzugefügt oder bearbeitet haben</string>
   <string name="products_incomplete">Von Ihnen hinzugefügte Produkte, die noch abgeschlossen werden müssen</string>
-  <string name="product_pictures_contributed">Products you took pictures for</string>
-  <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
-  <string name="product_info_added">Products you added information for</string>
-  <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
-  <string name="show_by">Show</string>
+  <string name="product_pictures_contributed">Produkte, für die Sie Fotos gemacht haben</string>
+  <string name="picture_contributed_incomplete">Produkte, für die Sie Fotos gemacht haben, müssen vervollständigt werden</string>
+  <string name="product_info_added">Produkte, für die Sie Informationen hinzugefügt haben</string>
+  <string name="product_info_tocomplete">Produkte, für die Sie Informationen hinzugefügt haben, müssen vervollständigt werden</string>
+  <string name="show_by">Anzeigen</string>
   <string name="notify_title">Exportieren abgeschlossen</string>
   <string name="notify_content">Hier klicken, um die exportierten Produkte anzuzeigen</string>
   <string name="notification_channel_name">Benachrichtigungen exportieren</string>
@@ -467,6 +467,6 @@
   <string name="last_editor_history">Letzte Änderung der Produktseite am %1$s um %2$s MESZ durch </string>
   <string name="other_editors">Produktseite auch bearbeitet von </string>
   <string name="contribution_tab">Beiträge</string>
-  <string name="contribution_tab_summary">Show user contributions tab with products</string>
-  <string name="contribution_tab_title">Show Contribution Tab</string>
+  <string name="contribution_tab_summary">Tab „Benutzerbeiträge” mit Produkten anzeigen</string>
+  <string name="contribution_tab_title">Tab „Benutzerbeiträge” anzeigen</string>
 </resources>
