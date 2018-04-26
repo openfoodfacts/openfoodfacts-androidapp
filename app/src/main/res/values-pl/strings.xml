@@ -467,9 +467,9 @@
   <string name="notify_channel_description">Powiadomienie wskazujące lokalizację wyeksportowanego pliku</string>
   <string name="products_to_be_completed">Produkty do uzupełnienia</string>
   <string name="modified_history">Produkty dodane dnia %1$s o godzinie %2$s przez %3$s.  Ostatnia zmiana strony produktu w dniu %4$s o %5$s przez %6$s.  Także zmieniona przez %7$s</string>
-  <string name="offline_notification_title">Offline contributions you need to send</string>
-  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
-  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
+  <string name="offline_notification_title">Do wysłania z trybu offline</string>
+  <string name="offline_notification_context">Twoje %1$d produktów offline oczekuje na wysłanie do Open Food Facts</string>
+  <string name="creator_history">Produkt dodano %1$s o %2$s CET przez</string>
   <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
   <string name="other_editors">Product page also edited by </string>
   <string name="contribution_tab">Wkład</string>
