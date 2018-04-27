@@ -25,9 +25,9 @@ Az Open Food Facts program felfedezéséhez, kérjük, látogasson el a https://
 - Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
 
 *** Your food, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Az ön adatainak tulajdonosa ön és soha nem lesznek elküldve online
+- Az alkalmazást névtelenül használhatja
+- Exportálni tudja a beolvasási előzményeket
 
 Az Open Food Facts elérhető az interneten is a következő címen: https://world.openfoodfacts.org
 Kérdések, visszajelzés: contact@openfoodfacts.org
