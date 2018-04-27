@@ -32,4 +32,4 @@ Az Open Food Facts program felfedezéséhez, kérjük, látogasson el a https://
 Az Open Food Facts elérhető az interneten is a következő címen: https://world.openfoodfacts.org
 Kérdések, visszajelzés: contact@openfoodfacts.org
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Kozmetikai termékekhez telepítheti az Open Beauty Facts-ot, állateledelekhez az Open Pet Food Facts-ot és a többi termékhez az Open Products Facts-ot.
