@@ -3,11 +3,11 @@
 <resources>
   <plurals name="minutes">
     <item quantity="zero"> minutes</item>
-    <item quantity="one"> minute</item>
+    <item quantity="one"> دقيقة</item>
     <item quantity="two"> minutes</item>
     <item quantity="few"> minutes</item>
     <item quantity="many"> minutes</item>
-    <item quantity="other"> minutes</item>
+    <item quantity="other"> دقائق</item>
   </plurals>
   <plurals name="hours">
     <item quantity="zero"> ساعات</item>
@@ -19,11 +19,11 @@
   </plurals>
   <plurals name="days">
     <item quantity="zero"> days</item>
-    <item quantity="one"> day</item>
+    <item quantity="one"> يوم</item>
     <item quantity="two"> days</item>
     <item quantity="few"> days</item>
     <item quantity="many"> days</item>
-    <item quantity="other"> days</item>
+    <item quantity="other"> أيام</item>
   </plurals>
   <string name="action_settings">الإعدادات</string>
   <string name="action_about">حول</string>
@@ -31,10 +31,10 @@
   <string name="contribute">كيفية المساهمة</string>
   <string name="action_find">بحث</string>
   <string name="text_barcode">اكتب الرمز الشريطي:</string>
-  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
-  <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="message_in_activity_save_product_offline">صورة واحدة فقط إلزامية لإرسال منتج جديد.</string>
+  <string name="product_incomplete_message">هذا المنتج غير كامل. ونتيجة لذلك، لم نتمكن من القيام بفحص المواد المسببة للحساسية.</string>
+  <string name="no_offline_data">لقد انتهيت</string>
+  <string name="first_offline">ستظهر هنا المنتجات المضافة بلا اتصال بالإنترنت</string>
   <!-- Image Upload -->
   <string-array name="upload_image">
     <item>640 X 480</item>
@@ -73,7 +73,7 @@
     <item>المكونات</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
+  <string name="bookmark">الإشارة المرجعية</string>
   <string name="product">نتاج</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
