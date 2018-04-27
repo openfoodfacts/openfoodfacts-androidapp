@@ -28,7 +28,7 @@ android {
     productFlavors {
         off {
             applicationId "openfoodfacts.github.scrachx.openfood"
-            resValue "string", "app_name", "Open Food Facts"
+            resValue "string", "app_name", "OpenFoodFacts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openbeautyfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
@@ -37,7 +37,7 @@ android {
 
         obf {
             applicationId "openfoodfacts.github.scrachx.openbeauty"
-            resValue "string", "app_name", "Open Beauty Facts"
+            resValue "string", "app_name", "OpenBeautyFacts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openbeautyfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openbeautyfacts.org/"'
@@ -46,7 +46,7 @@ android {
 
         opff {
             applicationId "org.openpetfoodfacts.scanner"
-            resValue "string", "app_name", "Open Pet Food Facts"
+            resValue "string", "app_name", "OpenPetFoodFacts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openpetfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
@@ -55,7 +55,7 @@ android {
 
         opf {
             applicationId "org.openproductsfacts.scanner"
-            resValue "string", "app_name", "Open Products Facts"
+            resValue "string", "app_name", "OpenProductsFacts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openproductsfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openproductsfacts.org/"'
