@@ -19,9 +19,9 @@
 - Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
 
 *** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Az ön adatainak tulajdonosa ön és soha nem lesznek elküldve online
+- Az alkalmazást névtelenül használhatja
+- Exportálni tudja a beolvasási előzményeket
 
 Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
 
