@@ -1,16 +1,16 @@
 Az Open Food Facts élelmiszerek nyílt adatbázisa, a termékekhez tartozó összetevők, allergének, tápanyagok adataival együtt és egyéb információval, ami a termék csomagolásán vagy címkéjén szerepel.
 
-*** Contribute to Product Transparency ***
+*** Hozzájárulás a Termék Átláthatósághoz ***
 
 - Open Food Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
 - Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding your first product. 
 
-*** Get the Facts ***
+*** Kapja meg a Tényeket ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
-*** Collect AAAALL the things ***
+*** Gyűjtse össze az ÖSSZES dolgot ***
 - You can add all the items from your collections
 - Open Crayons Facts - The largest open database of coloring crayons
 - Open Miniature Food Facts - The largest open database of miniature food products
@@ -22,7 +22,7 @@ Az Open Food Facts élelmiszerek nyílt adatbázisa, a termékekhez tartozó ös
 - Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
 
 *** Your products, your data ***
-- Your personal data is yours, and is never sent online
+- Az ön személyes adatainak tulajdonosa ön és soha nem lesznek elküldve online
 - Az alkalmazást névtelenül használhatja
 - Exportálni tudja a beolvasási előzményeket
 
