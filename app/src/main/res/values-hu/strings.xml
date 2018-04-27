@@ -467,6 +467,6 @@
   <string name="last_editor_history">A termékoldalt legutóbb szerkesztette a következő időpontban: %1$s, %2$s CEST </string>
   <string name="other_editors">A termékoldalt szerkesztette még </string>
   <string name="contribution_tab">Hozzájárulások</string>
-  <string name="contribution_tab_summary">Show user contributions tab with products</string>
-  <string name="contribution_tab_title">Show Contribution Tab</string>
+  <string name="contribution_tab_summary">Felhasználói hozzájárulások lap megjelenítése a termékekkel</string>
+  <string name="contribution_tab_title">Hozzájárulási lap megjelenítése</string>
 </resources>
