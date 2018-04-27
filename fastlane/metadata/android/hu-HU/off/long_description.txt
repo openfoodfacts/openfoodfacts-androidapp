@@ -5,15 +5,15 @@ Az alkalmazás lehetővé teszi 500 000 (beleértve 175 000 egyesült államokbe
 Az Open Food Facts program felfedezéséhez, kérjük, látogasson el a https://openfoodfacts.org weboldalra
 
 
-***Contribute to Food Transparency***
+***Hozzájárulás az Élelmiszer Átláthatósághoz***
 
 - Open Food Facts is a food products database made by everyone, for everyone.
 - You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
 - Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding a product from your food cupboard. 
 
-*** Get the Facts ***
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
+*** Kapja meg a Tényeket ***
+- Az Open Food Facts segít önnek a termékek cimkéin található apróbetűs rész értelmezésében. Megtudhatja még (a termékeken feltüntetett jelölések szerint):
 - szénlábnyom (szén-dioxid-kibocsátás) és csomagolás (valamint újrahasznosítási utasítások),
 - Nutriscore (táplálkozási pontszám), tápanyagok, zsír / zsírtartalom, telített zsírsavak, szénhidrátok, cukrok, rost, fehérje, só és nátrium.
 - márkanevek, allergének, címkék (bio, gluténmentes, vegán, vegetáriánus, halal, kóser ...), nyomon követhetőségi információk (csomagolási kódok, összetevők eredete)
