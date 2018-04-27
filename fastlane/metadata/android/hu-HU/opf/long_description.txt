@@ -23,12 +23,12 @@ Az Open Food Facts élelmiszerek nyílt adatbázisa, a termékekhez tartozó ös
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Az alkalmazást névtelenül használhatja
+- Exportálni tudja a beolvasási előzményeket
 
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
+Az Open Products Facts elérhető az interneten is a következő címen: https://world.openproductsfacts.org
 Kérdések, visszajelzés: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
