@@ -26,7 +26,7 @@ Megtudhatja még (a termékeken feltüntetett jelölések szerint):
 - Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
 
 *** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+- Az ön személyes adatainak tulajdonosa ön és soha nem lesznek elküldve online
 - Az alkalmazást névtelenül használhatja
 - Exportálni tudja a beolvasási előzményeket
 
