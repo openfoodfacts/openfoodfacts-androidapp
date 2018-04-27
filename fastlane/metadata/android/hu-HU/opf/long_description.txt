@@ -14,7 +14,7 @@ Az Open Food Facts élelmiszerek nyílt adatbázisa, a termékekhez tartozó ös
 - You can add all the items from your collections
 - Open Crayons Facts - The largest open database of coloring crayons
 - Open Miniature Food Facts - The largest open database of miniature food products
-- Open ??? Facts - Create your own open database :-)
+- Open ??? Facts - Hozza létre a saját nyílt adatbázisát :-)
 
 *** Minden körülmény között jól működik ***
 - Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata.
