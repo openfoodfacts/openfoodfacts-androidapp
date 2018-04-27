@@ -13,10 +13,10 @@
 - You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
 - We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
-*** Works well in any condition ***
+*** Minden körülmény között jól működik ***
 - Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata.
 - The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
 
 *** Your cosmetics, your data ***
 - Your data is yours, and is never sent online
