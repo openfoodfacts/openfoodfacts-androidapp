@@ -20,10 +20,10 @@ Megtudhatja még (a termékeken feltüntetett jelölések szerint):
 - brands, allergens, labels (organic, vegan...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
-*** Works well in any condition ***
+*** Minden körülmény között jól működik ***
 - Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata.
 - The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
 
 *** Your pet food, your data ***
 - Your personal data is yours, and is never sent online
