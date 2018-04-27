@@ -19,17 +19,17 @@ Az Open Food Facts program felfedezéséhez, kérjük, látogasson el a https://
 - márkanevek, allergének, címkék (bio, gluténmentes, vegán, vegetáriánus, halal, kóser ...), nyomon követhetőségi információk (csomagolási kódok, összetevők eredete)
 - A borok és sörök esetén az alkoholtartalom megtalálható.
 
-*** Works well in any condition ***
+*** Minden körülmény között jól működik ***
 - Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata.
 - The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
 
 *** Your food, your data ***
 - Your data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Az Open Food Facts elérhető az interneten is a következő címen: https://world.openfoodfacts.org
 Kérdések, visszajelzés: contact@openfoodfacts.org
 
 For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
