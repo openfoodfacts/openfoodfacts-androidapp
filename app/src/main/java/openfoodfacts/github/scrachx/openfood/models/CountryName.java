@@ -82,4 +82,11 @@ public class CountryName {
         this.name = name;
     }
 
+    public Boolean isNull() {
+        return id == null && countyTag == null && languageCode == null && name == null;
+    }
+
+    public Boolean isNotNull() {
+        return id != null && countyTag != null && languageCode != null && name != null;
+    }
 }

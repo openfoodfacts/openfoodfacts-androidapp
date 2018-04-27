@@ -30,4 +30,6 @@
   <string name="translate_help_summary">crwdns46373:0crwdne46373:0</string>
   <string name="text_offline_info_dialog">crwdns46374:0crwdne46374:0</string>
   <string name="warning_alert_data">crwdns46375:0crwdne46375:0</string>
+  <!-- OPFF tagline in different languages -->
+  <string name="tagline">crwdns46833:0crwdne46833:0</string>
 </resources>

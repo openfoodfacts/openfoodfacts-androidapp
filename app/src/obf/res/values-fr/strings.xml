@@ -24,10 +24,12 @@
   <string name="txtDialogsContentPowerMode">Le produit que vous avez scanné existe déjà dans Open Beauty Facts.</string>
   <string name="msg_share">Regardez ce produit sur Open Beauty Facts:</string>
   <string name="not_support_books">Les livres ne sont actuellement pas pris en charge par Open Beauty Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
+  <string name="txt_broaden_search">- élargir votre recherche\n-le scanner et l\'ajouter à Open Beauty Facts</string>
   <string name="Donation">Cliquez ici pour faire un don à Open Beauty Facts</string>
   <string name="translate_help_title">Aidez à traduire Open Beauty Facts</string>
-  <string name="translate_help_summary">Bring the Open Beauty Facts database to your language - no technical knowledge required</string>
-  <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Beauty Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="translate_help_summary">Rendez la base de données Open Beauty Facts disponible dans votre langue - aucune connaissance technique requise</string>
+  <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Beauty Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
+  <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Beauty Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
+  <!-- OBF tagline in different languages -->
+  <string name="tagline">l\'information cosmétique ouverte</string>
 </resources>

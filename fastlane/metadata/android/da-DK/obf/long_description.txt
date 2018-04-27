@@ -1,0 +1,31 @@
+***Bidrag til kosmetikgennemsigtighed***
+
+- Open Beauty Facts er en kosmetikproduktdatabase udarbejdet af alle, for alle.
+- Du kan benytte den til at foretage bedre kosmetikvalg, og da det er åbne data, kan alle genbruge dem til ethvert formål.
+- Open Beauty Facts er et nonprofit-projekt, der er udviklet af tusindvis af frivillige fra hele verden. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder. 
+- Du kan begynde at bidrage i dag ved at tilføje et produkt fra dit kosmetikskab. 
+
+*** Få faktaene ***
+
+- Kosmetiktilsætningsstoffer, F.I.L. koder, CI-numre, INCI (International Nomenclature of Cosmetic Ingredients), ingrediensliste, allergener, emballagekoder... 
+- Open Beauty Facts hjælper dig med at forstå det med småt på produktetiketterne.
+- Du behøver ikke længere være kemiker og lære latin for at dechifrere en ingrediensliste :-)
+- Du kan skanne: aftershaves, bodylotions, cremer, deodoranter, eyelinere, foundations, dufte, læbestifter, makeuper, masker, parfumer, shampoos, sæber, shower gels, neglelak og meget mere…
+- Vi synes, at det kan være nyttigt for personer med hudproblemer som acne, psoriasis, eksem... at foretage bedre kosmetikvalg.
+
+*** Fungerer godt i enhver tilstand ***
+- Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse.
+- App'en indlæser kun det strengt nødvendige for at reducere data- og batteriforbrug
+- Du behøver ikke et kamera til at slå et produkt op. Du kan også angive stregkoden, hvis du mangler et kamera eller har problemer med det.
+
+*** Din kosmetikprodukter, dine data ***
+- Dine data er dine, og de sendes aldrig online
+- Du kan benytte app'en anonymt
+- Du kan eksportere din skanningshistorik
+
+Bemærk: at Open Beauty Facts er under opførsel. Webstedet og app'en er baseret på Open Food Facts, og der vil blive foretaget ændringer for at tage hensyn til kosmetikkens særlige forhold.
+
+Open Beauty Facts er også tilgængelig på Internet via https://world.openbeautyfacts.org
+Spørgsmål, feedback: contact@openfoodfacts.org
+
+Til fødevare kan du installere Open Food Facts, til dyrefoder Open Pet Food Facts og for alle øvrige produkter Open Product Facts.

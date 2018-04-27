@@ -30,4 +30,6 @@
   <string name="translate_help_summary">crwdns46346:0crwdne46346:0</string>
   <string name="text_offline_info_dialog">crwdns46347:0crwdne46347:0</string>
   <string name="warning_alert_data">crwdns46348:0crwdne46348:0</string>
+  <!-- OBF tagline in different languages -->
+  <string name="tagline">crwdns46815:0crwdne46815:0</string>
 </resources>

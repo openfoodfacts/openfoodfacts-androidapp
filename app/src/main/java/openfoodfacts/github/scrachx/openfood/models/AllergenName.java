@@ -80,4 +80,11 @@ public class AllergenName {
         this.name = name;
     }
 
+    public Boolean isNull() {
+        return id == null && allergenTag == null && languageCode == null && name == null;
+    }
+
+    public Boolean isNotNull() {
+        return id != null && allergenTag != null && languageCode != null && name != null;
+    }
 }

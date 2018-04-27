@@ -2,8 +2,6 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -17,26 +15,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-
 import android.util.Log;
-
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-
-import android.widget.ImageView;
-
-import android.widget.RadioButton;
-
-
-import android.widget.LinearLayout;
-
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -48,8 +29,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.IngredientsProductFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.NutritionInfoProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.SaveOfflineSummaryFragment;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
@@ -58,6 +37,8 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
+import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
+import openfoodfacts.github.scrachx.openfood.views.product.nutrition_details.NutritionInfoProductFragment;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -181,6 +162,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                 }
             } else {
                 Intent intent = new Intent(this, ScannerFragmentActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         }

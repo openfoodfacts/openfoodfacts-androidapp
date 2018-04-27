@@ -45,6 +45,12 @@
     <item>cl</item>
     <item>液量オンス</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>デフォルト</item>
@@ -52,6 +58,8 @@
     <item>原材料</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">ブックマーク</string>
+  <string name="product">製品</string>
   <string name="fastscroller_track">高速スクローラートラック</string>
   <string name="fastscroller_handle">高速スクローラーハンドル</string>
   <string name="search_button">検索</string>
@@ -106,10 +114,8 @@
   <string name="uploadLater">ネットワークが利用可能になると画像がアップロードされます</string>
   <string name="txtInfoLoginOk">ユーザーを保存しました</string>
   <string name="txtInfoLoginNo">ユーザーを保存できませんでした</string>
-  <string name="txtDialogsTitle">情報</string>
   <string name="txtDialogsContent">スキャンした製品はまだ Open Food Facts に存在しません。追加してください。</string>
   <string name="txtDialogsContentPowerMode">スキャンした製品は、すでに Open Food Facts に存在します。</string>
-  <string name="txtDialogsContentSend">データベースに保存された製品を送信しますか?</string>
   <string name="txtYes">はい</string>
   <string name="txtNo">いいえ</string>
   <string name="hintNameProduct">名前</string>
@@ -121,7 +127,10 @@
   <string name="txtTakePicture">写真を撮影</string>
   <string name="txtSendAll">すべてアップロード</string>
   <string name="txtNoData">データはありません</string>
-  <string name="txtPictureNeeded">まず写真を撮ってください</string>
+  <string name="txtPictureNeeded">お待ちください…</string>
+  <string name="txtPictureNeededDialogContent">この製品を送信する前に、少なくとも1枚の写真を追加する必要があります</string>
+  <string name="txtPictureNeededDialogYes">このまま</string>
+  <string name="txtPictureNeededDialogNo">破棄</string>
   <string name="toastSending">アップロードしています...</string>
   <string name="dataSaved">お使いのデバイス内に保存しました</string>
   <string name="txtInfoAddUser">ログインとパスワードを入力してください</string>
@@ -138,6 +147,7 @@
   <string name="txtBarcodeNotValid">バーコードが正しくありません</string>
   <string name="try_it_scan_now">製品をスキャン</string>
   <string name="share">共有</string>
+  <string name="translate">翻訳</string>
   <string name="msg_share">Open Food Facts でこの製品を参照してください:</string>
   <string name="create_account">サインアップ</string>
   <string name="home_drawer">ホーム</string>
@@ -206,6 +216,8 @@
   <string name="permision_write_external_storage">履歴をエクスポートするために、外部ストレージの書き込みアクセス許可が必要です。</string>
   <string name="txt_nutrition_not_found">適用外</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">カロリーを計算する</string>
+  <string name="txt_calories_result">%2$s %3$s の %1$s kcal</string>
   <string name="nutrition_carbohydrate">炭水化物</string>
   <string name="nutrition_carbohydrate_short_name">炭水化物 (g)</string>
   <string name="nutrition_cholesterol">コレステロール</string>
@@ -402,6 +414,8 @@
   <string name="category_string">カテゴリー</string>
   <string name="connection">接続されています</string>
   <string name="contributor_string">貢献者</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">アプリケーションは無効です</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">ビタミン:</string>
@@ -410,18 +424,46 @@
   <string name="other_tags_text">その他の成分:</string>
   <!--shared element transition key-->
   <string name="wikidata">ウィキデータのデータ</string>
-  <string name="by_title">Title</string>
+  <string name="disable_image_loading">バッテリの残量が少ないときに画像の読み込みを無効にします</string>
+  <string name="DisableLoadTitle">画像読み込みを無効にする</string>
+  <string name="txtCamera">カメラ</string>
+  <string name="txtGallery">ギャラリー</string>
+  <string name="txtOptions">オプション</string>
+  <string name="by_title">タイトル</string>
   <string name="by_brand">ブランド（会社名）</string>
   <string name="by_barcode">バーコード</string>
-  <string name="by_time">Recently Viewed</string>
-  <string name="sort">Sort</string>
-  <string name="by_nutrition_grade">Nutrition Grade</string>
-  <string name="sort_by">Sort By</string>
+  <string name="by_time">最近表示した</string>
+  <string name="sort">並べ替え</string>
+  <string name="by_nutrition_grade">栄養グレード</string>
+  <string name="sort_by">並べ替え順</string>
+  <string name="shake_summary">携帯電話を振って製品をスキャンします</string>
+  <string name="shake_title">シェイクでスキャンする</string>
   <!-- strings related to share images -->
-  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
-  <string name="no_barcode">We have not detected any barcode</string>
-  <string name="enter_barcode">Please type the barcode below</string>
-  <string name="format_error">Wrong Barcode/QR format</string>
-  <string name="code_detected">We have detected the barcode</string>
-  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="sorry_msg">バーコードの付いていない写真はまだアプリで追加できません。モバイルウェブ版をお試しください。</string>
+  <string name="no_barcode">バーコードを検出していません</string>
+  <string name="enter_barcode">下にバーコードを入力してください</string>
+  <string name="format_error">バーコード/QR 形式が間違っています</string>
+  <string name="code_detected">バーコードを検出しました</string>
+  <string name="do_you_want_to">このバーコードに写真を追加しますか?</string>
+  <string name="products_added">あなたが追加または編集した製品</string>
+  <string name="products_incomplete">あなたが追加して、完了が必要な製品</string>
+  <string name="product_pictures_contributed">Products you took pictures for</string>
+  <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
+  <string name="product_info_added">Products you added information for</string>
+  <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
+  <string name="show_by">Show</string>
+  <string name="notify_title">エクスポートが完了しました</string>
+  <string name="notify_content">クリックするとエクスポートした製品を表示します</string>
+  <string name="notification_channel_name">エクスポートの通知</string>
+  <string name="notify_channel_description">エクスポートされたファイルの場所を示す通知</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">製品は %1$s %2$s に %3$s によって追加されました。 製品ページは %4$s %5$s に %6$s が最後に編集しました。  製品ページは %7$s も編集しました</string>
+  <string name="offline_notification_title">オフラインの貢献を送信する必要があります</string>
+  <string name="offline_notification_context">%1$d のオフライン製品が Open Food Facts に送信されるのを待っています</string>
+  <string name="creator_history">%1$s %2$s 中央ヨーロッパ標準時に製品を追加しました</string>
+  <string name="last_editor_history">製品ページの最終編集 %1$s %2$s 中央ヨーロッパ標準時、編集者 </string>
+  <string name="other_editors">製品ページの共同編集者 </string>
+  <string name="contribution_tab">貢献</string>
+  <string name="contribution_tab_summary">Show user contributions tab with products</string>
+  <string name="contribution_tab_title">Show Contribution Tab</string>
 </resources>

@@ -16,9 +16,6 @@
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
-    <include layout="@layout/offline_cloud_layout"
-        android:visibility="gone"
-        android:id="@+id/offline_view"/>
 
     <fragment
         android:id="@+id/fragment"

@@ -1,0 +1,35 @@
+ניתן לסרוק מוצרי מזון או את הברקוד שלהם כדי לקבל מידע על רכיבים, תוספים ועובדות תזונתיות.
+
+היישומון מאפשר לצפות ב־500,000 מוצרי המזון (לרבות 175,000 בארה״ב) שכבר נמצאים במסד הנתונים החופשי והפתוח Open Food Facts, לרבות הוספת תמונות ונתונים למוצרים שחסר עליהם מידע.
+
+כדי לחקור על מיזם Open Food Facts, ניתן לבקר בכתובת https://openfoodfacts.org
+
+
+***תרומה לשקיפות המזון***
+
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. יש לנו מגוון מיזמים מרתקים להם ניתן לתרום במגוון דרכים. 
+- You can start contributing today by adding a product from your food cupboard. 
+
+*** קבלת העובדות ***
+- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
+- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- On wines and beers, you will find the alcohol content.
+
+*** פעילות עם כמה שפחות הפרעות ***
+- ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע.
+- היישומון טוען רק את מה שנדרש כדי לצמצם בתקשורת נתונים ובצריכת סוללה
+- אין צורך במצלמה כדי לחפש מוצר. ניתן גם להקליד את הברקוד אם אין לך מצלמה או שהיא אינה תקינה.
+
+*** האוכל שלך, הנתונים שלך ***
+- הנתונים שלך הם שלך והם לא יישלחו לשום מקום
+- ניתן להשתמש ביישומון בעילום שם
+- ניתן לייצא את היסטוריית הסריקות שלך
+
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
+שאלות, משוב : contact@openfoodfacts.org
+
+For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.

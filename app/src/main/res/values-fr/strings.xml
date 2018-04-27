@@ -21,7 +21,7 @@
   <string name="text_barcode">Saisissez le code-barre :</string>
   <string name="message_in_activity_save_product_offline">Une seule photo est obligatoire pour envoyer un nouveau produit.</string>
   <string name="product_incomplete_message">Ce produit n\'est pas complet. En conséquence, nous n\'avons pas pu faire le test d\'allergène.</string>
-  <string name="no_offline_data">Vous avez terminé</string>
+  <string name="no_offline_data">C\'est bon :)</string>
   <string name="first_offline">Les produits ajoutés hors ligne apparaîtront ici</string>
   <!-- Image Upload -->
   <string-array name="upload_image">
@@ -48,6 +48,12 @@
     <item>cl</item>
     <item>fl oz</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>Defaut</item>
@@ -55,6 +61,8 @@
     <item>Ingrédients</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Favori</string>
+  <string name="product">Produit</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Rechercher</string>
@@ -74,7 +82,7 @@
   <string name="txtManufacturing">Lieux de fabrication ou de transformation :</string>
   <string name="txtIngredientsOrigins">Origine des ingrédients :</string>
   <string name="txtCity">Ville, état et pays d\'achat :</string>
-  <string name="txtEMB">Code EMB:</string>
+  <string name="txtEMB">Code emballeur:</string>
   <string name="txtManufactureUrl">Lien vers la page du produit sur le site officiel du producteur:</string>
   <string name="txtStores">Magasins :</string>
   <string name="txtCountries">Pays de vente :</string>
@@ -109,10 +117,8 @@
   <string name="uploadLater">L\'image sera téléchargée lorsque le réseau sera disponible</string>
   <string name="txtInfoLoginOk">Utilisateur enregistré</string>
   <string name="txtInfoLoginNo">Utilisateur anonyme</string>
-  <string name="txtDialogsTitle">Information</string>
   <string name="txtDialogsContent">Le produit que vous recherchez n\'existe pas dans notre base de données. Voulez-vous l\'ajouter?</string>
   <string name="txtDialogsContentPowerMode">Le produit que vous avez scanné existe déjà dans Open Food Facts.</string>
-  <string name="txtDialogsContentSend">Voulez-vous envoyer les produits enregistrés dans la base de données ?</string>
   <string name="txtYes">Oui</string>
   <string name="txtNo">Non</string>
   <string name="hintNameProduct">Nom</string>
@@ -124,7 +130,10 @@
   <string name="txtTakePicture">Prendre une photo</string>
   <string name="txtSendAll">Tout envoyer</string>
   <string name="txtNoData">Aucune donnée</string>
-  <string name="txtPictureNeeded">Veuillez d\'abord prendre une photo</string>
+  <string name="txtPictureNeeded">Veuillez patienter…</string>
+  <string name="txtPictureNeededDialogContent">Vous devez ajouter au moins une image avant de soumettre ce produit</string>
+  <string name="txtPictureNeededDialogYes">Rester</string>
+  <string name="txtPictureNeededDialogNo">Annuler</string>
   <string name="toastSending">Envoi en cours...</string>
   <string name="dataSaved">Données enregistrées en local...</string>
   <string name="txtInfoAddUser">Veuillez ajouter un utilisateur</string>
@@ -141,6 +150,7 @@
   <string name="txtBarcodeNotValid">Code barre non valide</string>
   <string name="try_it_scan_now">Scanner un produit</string>
   <string name="share">Partager</string>
+  <string name="translate">Traduire</string>
   <string name="msg_share">Regarde ce produit sur Open Food Facts :</string>
   <string name="create_account">S\'inscrire</string>
   <string name="home_drawer">Accueil</string>
@@ -209,6 +219,8 @@
   <string name="permision_write_external_storage">Les droits d\'accès en écriture sur le support de stockage externe sont nécessaires pour exporter l\'historique.</string>
   <string name="txt_nutrition_not_found">Non applicable</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Calculer les calories</string>
+  <string name="txt_calories_result">%1$s kcal dans %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Glucides</string>
   <string name="nutrition_carbohydrate_short_name">Glucides (g)</string>
   <string name="nutrition_cholesterol">Cholestérol</string>
@@ -405,6 +417,8 @@
   <string name="category_string">Categorie</string>
   <string name="connection">Connecté</string>
   <string name="contributor_string">Contributeur</string>
+  <string name="Rate_Us">Partage ton soutien</string>
+  <string name="Rate_Us_title">Évaluez notre application</string>
   <string name="app_disabled_text">L\'application est désactivée</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitamines:</string>
@@ -413,18 +427,46 @@
   <string name="other_tags_text">Autres substances :</string>
   <!--shared element transition key-->
   <string name="wikidata">Données de Wikidata</string>
-  <string name="by_title">Title</string>
+  <string name="disable_image_loading">Désactiver le chargement des images lorsque la batterie est faible</string>
+  <string name="DisableLoadTitle">Désactiver le chargement des images</string>
+  <string name="txtCamera">Appareil photo</string>
+  <string name="txtGallery">Galerie</string>
+  <string name="txtOptions">Options</string>
+  <string name="by_title">Titre</string>
   <string name="by_brand">Marque</string>
   <string name="by_barcode">Code barre</string>
-  <string name="by_time">Recently Viewed</string>
-  <string name="sort">Sort</string>
-  <string name="by_nutrition_grade">Nutrition Grade</string>
-  <string name="sort_by">Sort By</string>
+  <string name="by_time">Dernières consultations</string>
+  <string name="sort">Trier</string>
+  <string name="by_nutrition_grade">Note nutritionnelle</string>
+  <string name="sort_by">Trier par</string>
+  <string name="shake_summary">Secouez le téléphone pour scanner des produits</string>
+  <string name="shake_title">Scanner si le téléphone est secoué</string>
   <!-- strings related to share images -->
-  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
-  <string name="no_barcode">We have not detected any barcode</string>
-  <string name="enter_barcode">Please type the barcode below</string>
-  <string name="format_error">Wrong Barcode/QR format</string>
-  <string name="code_detected">We have detected the barcode</string>
-  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="sorry_msg">Les photos sans code-barres ne peuvent pas encore être ajoutées avec l\'application. Il est possible d\'en ajouter un avec la version web mobile.</string>
+  <string name="no_barcode">Nous n\'avons détecté aucun code à barres</string>
+  <string name="enter_barcode">Veuillez saisir le code à barres ci-dessous</string>
+  <string name="format_error">Mauvais format de code-barre ou code QR</string>
+  <string name="code_detected">Nous n\'avons détecté aucun code-barre</string>
+  <string name="do_you_want_to">Voulez-vous ajouter des photos à ce code-barre?</string>
+  <string name="products_added">Les produits que vous avez ajoutés ou modifiés</string>
+  <string name="products_incomplete">Les produits que vous avez ajoutés qui sont à compléter</string>
+  <string name="product_pictures_contributed">Produits pour lesquels vous avez pris des photos</string>
+  <string name="picture_contributed_incomplete">Produits pour lesquels vous avez pris des photos qui doivent être complétés</string>
+  <string name="product_info_added">Produits pour lesquels vous avez ajouté des informations</string>
+  <string name="product_info_tocomplete">Produits pour lesquels vous avez ajouté des informations qui doivent être complétés</string>
+  <string name="show_by">Afficher</string>
+  <string name="notify_title">L\'export est terminé</string>
+  <string name="notify_content">Cliquez pour afficher les produits exportés</string>
+  <string name="notification_channel_name">Notifications d\'exportation</string>
+  <string name="notify_channel_description">Notification pour afficher l\'emplacement du fichier exporté</string>
+  <string name="products_to_be_completed">Produits à compléter</string>
+  <string name="modified_history">Produit ajouté le %1$s à %2$s par %3$s. Dernière modification de la page du produit le %4$s à %5$s par %6$s. La fiche produit a également été modifiée par %7$s</string>
+  <string name="offline_notification_title">Contributions hors ligne à envoyer</string>
+  <string name="offline_notification_context">Vous avez %1$d produits photographié hors connexion en attente d\'être contribué à Open Food Facts</string>
+  <string name="creator_history">Produit ajouté le %1$s à %2$s CET par</string>
+  <string name="last_editor_history">Dernière modification de la page du produit le %1$s à %2$s CEST par </string>
+  <string name="other_editors">Fiche produit également modifiée par </string>
+  <string name="contribution_tab">Contributions</string>
+  <string name="contribution_tab_summary">Afficher l\'onglet des contributions des utilisateurs sur les produits</string>
+  <string name="contribution_tab_title">Afficher l\'onglet Contribution</string>
 </resources>

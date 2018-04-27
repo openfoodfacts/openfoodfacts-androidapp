@@ -45,6 +45,12 @@
     <item>cl</item>
     <item>fl.oz</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>g</item>
+    <item>mili gram</item>
+    <item>kilo gram</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>seperti semula</item>
@@ -52,6 +58,8 @@
     <item>bahan</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Produk</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">mencari </string>
@@ -106,10 +114,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">pengguna menyimpan</string>
   <string name="txtInfoLoginNo">pengguna tidak bisa menyimpan</string>
-  <string name="txtDialogsTitle">informasi</string>
   <string name="txtDialogsContent">produk anda scan belum ada pada daftar open food facts . mohon anda menambahkannya </string>
   <string name="txtDialogsContentPowerMode">Produk yang Anda pindai sudah ada dalam daftar open foof facts</string>
-  <string name="txtDialogsContentSend">apakah kamu mengirim produk untuk disimpan di database?</string>
   <string name="txtYes">iya nih</string>
   <string name="txtNo">enggak</string>
   <string name="hintNameProduct">nama</string>
@@ -122,7 +128,10 @@
   <string name="txtTakePicture">mengambil gambar</string>
   <string name="txtSendAll">mengirimkan semua</string>
   <string name="txtNoData">tidak ada data anda</string>
-  <string name="txtPictureNeeded">mohon ambil gambar</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">mengirim </string>
   <string name="dataSaved">simpan lokasi di perangkat</string>
   <string name="txtInfoAddUser">mohon masukan  kata sandi kamu </string>
@@ -139,6 +148,7 @@
   <string name="txtBarcodeNotValid">kode batang tidak berfungsi</string>
   <string name="try_it_scan_now">memindai produk</string>
   <string name="share">membagikan</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Lihatlah produk ini pada Open Food Facts:</string>
   <string name="create_account">memasuki akun</string>
   <string name="home_drawer">rumah</string>
@@ -207,6 +217,8 @@
   <string name="permision_write_external_storage">tulis pengizinan penyimpanan eksternal sangat diperlukan untuk mengespor riwayat</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Calculate Calories</string>
+  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Karbohidrat</string>
   <string name="nutrition_carbohydrate_short_name">Karbohidrat (g)</string>
   <string name="nutrition_cholesterol">Kolesterol</string>
@@ -245,8 +257,8 @@
   <string name="action_search">mencari </string>
   <string name="search_hint">mencari sebuah produk</string>
   <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="brand">Merek :</string>
+  <string name="number_of_products">Jumlah produk: </string>
   <string name="txt_no_results">tidak menemukan hasil</string>
   <string name="txt_extend_search">coba memperluas pencarian kamu </string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
@@ -382,7 +394,7 @@
   <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Choose Resolution</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-  <string name="image_upload_resolution">Image Upload Resolution</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">Going further</string>
   <string name="description">Description: </string>
@@ -391,7 +403,7 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">merek barang</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Aditif</string>
   <string name="search_string">mencari </string>
   <string name="country_string">Negara</string>
   <string name="store_subtitle">toko online</string>
@@ -402,15 +414,22 @@
   <string name="label_string">Label</string>
   <string name="category_string">Kategori</string>
   <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="contributor_string">Penyumbang</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="vitamin_tags_text">banyak vitamin:</string>
   <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
+  <string name="mineral_tags_text">Meneral:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">merek barang</string>
   <string name="by_barcode">kode batang</string>
@@ -418,6 +437,8 @@
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
@@ -425,4 +446,25 @@
   <string name="format_error">Wrong Barcode/QR format</string>
   <string name="code_detected">We have detected the barcode</string>
   <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="products_added">Produk yang Anda tambahkan atau edit</string>
+  <string name="products_incomplete">Produk yang Anda tambahkan itu perlu diselesaikan</string>
+  <string name="product_pictures_contributed">Products you took pictures for</string>
+  <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
+  <string name="product_info_added">Products you added information for</string>
+  <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
+  <string name="show_by">Show</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
+  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="other_editors">Product page also edited by </string>
+  <string name="contribution_tab">Contributions</string>
+  <string name="contribution_tab_summary">Show user contributions tab with products</string>
+  <string name="contribution_tab_title">Show Contribution Tab</string>
 </resources>

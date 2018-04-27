@@ -12,22 +12,24 @@
   <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-fr.openproductsfacts.org/contributeur/</string>
   <string name="txtHome">Open Products Facts est une base de données ouverte de tous les produits dans le monde.</string>
-  <string name="slide_1_title">Contribute to product transparency</string>
+  <string name="slide_1_title">Contribuer à la transparence des produits</string>
   <string name="slide_1_desc">Scannez les produits, prenez-les en photo, devenez un acteur de la transparence produit</string>
   <string name="slide_2_title">Obtenez les faits</string>
-  <string name="slide_2_desc">Extensive information about the products you\'ve scanned, deciphered for you</string>
+  <string name="slide_2_desc">Des informations détaillées sur le produit que vous avez scanné, déchiffrées pour vous</string>
   <string name="slide_3_title">Gardez une trace des produits que vous utilisez</string>
-  <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
+  <string name="slide_3_desc">Tous les produits que vous avez scannés, dans une liste pratique que vous pouvez exporter</string>
   <string name="slide_4_title">Fonctionne hors connexion</string>
   <string name="slide_4_desc">Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d\'une connexion Internet pour le moment</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
-  <string name="msg_share">Look at this product on Open Products Facts :</string>
-  <string name="not_support_books">Books are not currently supported by Open Products Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
-  <string name="Donation">Click here to donate to Open Products Facts</string>
-  <string name="translate_help_title">Help translate Open Products Facts</string>
-  <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
-  <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Products Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="txtDialogsContent">Le produit que vous avez scanné n\'existe pas encore dans Open Products Facts. Voulez-vous l\'ajouter ?</string>
+  <string name="txtDialogsContentPowerMode">Le produit que vous avez scanné existe déjà dans Open Products Facts.</string>
+  <string name="msg_share">Regarde ce produit sur Open Products Facts:</string>
+  <string name="not_support_books">Les livres ne sont actuellement pas pris en charge par Open Products Facts</string>
+  <string name="txt_broaden_search">- élargir votre recherche\n-le scanner et l\'ajouter à Open Products Facts</string>
+  <string name="Donation">Cliquez ici pour faire un don à Open Products Facts</string>
+  <string name="translate_help_title">Aidez à traduire Open Products Facts</string>
+  <string name="translate_help_summary">Rendez la base de données Open Products Facts disponible dans votre langue - aucune connaissance technique requise</string>
+  <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Products Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
+  <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Products Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
+  <!-- OPF tagline in different languages -->
+  <string name="tagline">l\'information produit ouverte</string>
 </resources>

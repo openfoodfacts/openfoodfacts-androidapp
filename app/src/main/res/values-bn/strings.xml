@@ -48,6 +48,12 @@
     <item>চিলি ভাষায়</item>
     <item>fl oz</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>ডিফল্ট</item>
@@ -55,6 +61,8 @@
     <item>উপকরণসমূহ</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Product</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">অনুসন্ধান</string>
@@ -109,10 +117,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">ব্যবহারকারি সংরক্ষিত হয়েছে</string>
   <string name="txtInfoLoginNo">ব্যবহারকারী সংরক্ষিত না</string>
-  <string name="txtDialogsTitle">তথ্য</string>
   <string name="txtDialogsContent">আপনি যে পণ্য স্ক্যান করছেন তা Open Food Facts এ বিদ্যমান নাই। দয়া করে যোগ করুন।</string>
   <string name="txtDialogsContentPowerMode">আপনি স্ক্যানকৃত পণ্য Open Food Facts এ বিদ্যমান ।</string>
-  <string name="txtDialogsContentSend">আপনি কি সংরক্ষিত পণ্য ডাটাবেসে পাঠাতে চান?</string>
   <string name="txtYes">হ্যাঁ</string>
   <string name="txtNo">না</string>
   <string name="hintNameProduct">নাম</string>
@@ -124,7 +130,10 @@
   <string name="txtTakePicture">ছবি তুলুন</string>
   <string name="txtSendAll">সবগুলো আপলোড করুন</string>
   <string name="txtNoData">কোন উপাত্ত নেই</string>
-  <string name="txtPictureNeeded">দয়া করে প্রথমে একটি ছবি তুলুন</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">আপলোড করা হচ্ছে...</string>
   <string name="dataSaved">আপনার ডিভাইসে স্থানীয়ভাবে সংরক্ষিত হয়েছে</string>
   <string name="txtInfoAddUser">দয়া করে আপনার লগইন এবং পাসওয়ার্ড প্রবেশ করুন</string>
@@ -141,6 +150,7 @@
   <string name="txtBarcodeNotValid">বারকোড বৈধ নয়</string>
   <string name="try_it_scan_now">পণ্য স্ক্যান করুন</string>
   <string name="share">শেয়ার</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">পণ্যগুলো দেখুন Open Food Facts এ :</string>
   <string name="create_account">সাইন আপ</string>
   <string name="home_drawer">মূলপাতা</string>
@@ -209,6 +219,8 @@
   <string name="permision_write_external_storage">ইতিহাস রপ্তানি করতে বাহ্যিক স্টোরেজে সংরক্ষণ অনুমতি প্রয়োজন।</string>
   <string name="txt_nutrition_not_found">প্রযোজ্য নয়</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Calculate Calories</string>
+  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">কার্বোহাইড্রেট</string>
   <string name="nutrition_carbohydrate_short_name">কার্বোহাইড্রেট (গ্রাম)</string>
   <string name="nutrition_cholesterol">কোলেস্টেরল</string>
@@ -247,7 +259,7 @@
   <string name="action_search">অনুসন্ধান</string>
   <string name="search_hint">পণ্য অনুসন্ধান করুন</string>
   <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
+  <string name="brand">ব্র্যান্ড :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">কোন ফলাফল খুঁজে পাওয়া যায়নি</string>
   <string name="txt_extend_search">আপনার অনুসন্ধান স্পষ্ট করুন বা পণ্য যোগ করুন</string>
@@ -385,7 +397,7 @@
   <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Choose Resolution</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-  <string name="image_upload_resolution">Image Upload Resolution</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">Going further</string>
   <string name="description">Description: </string>
@@ -394,7 +406,7 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">ব্র্যান্ড</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">সংযোজন দ্রব্য</string>
   <string name="search_string">অনুসন্ধান</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">দোকান</string>
@@ -406,14 +418,21 @@
   <string name="category_string">বিভাগ</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="vitamin_tags_text">ভিটামিনসমূহ:</string>
   <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
+  <string name="mineral_tags_text">খনিজ পদার্থ:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">ব্র্যান্ড</string>
   <string name="by_barcode">বারকোড</string>
@@ -421,6 +440,8 @@
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
@@ -428,4 +449,25 @@
   <string name="format_error">Wrong Barcode/QR format</string>
   <string name="code_detected">We have detected the barcode</string>
   <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="products_added">Products you added or edited</string>
+  <string name="products_incomplete">Products you added that need to be completed</string>
+  <string name="product_pictures_contributed">Products you took pictures for</string>
+  <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
+  <string name="product_info_added">Products you added information for</string>
+  <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
+  <string name="show_by">Show</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
+  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="other_editors">Product page also edited by </string>
+  <string name="contribution_tab">অবদান</string>
+  <string name="contribution_tab_summary">Show user contributions tab with products</string>
+  <string name="contribution_tab_title">Show Contribution Tab</string>
 </resources>

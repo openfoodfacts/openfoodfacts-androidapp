@@ -12,4 +12,5 @@
   <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openproductsfacts.org/contributor/</string>
   <string name="txtHome">Open Products Facts is an open database of all products in the world.</string>
+  <string name="tagline">免 费 产 品 数 据库</string>
 </resources>

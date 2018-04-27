@@ -45,6 +45,12 @@
     <item>厘升</item>
     <item>液量盎司</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>預設值</item>
@@ -52,6 +58,8 @@
     <item>成分</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">產品</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">搜尋</string>
@@ -65,19 +73,19 @@
   <string name="txtBarcode">條碼：</string>
   <string name="txtQuantity">數量：</string>
   <string name="txtPackaging">包裝：</string>
-  <string name="txtBrands">品牌：</string>
+  <string name="txtBrands">牌子：</string>
   <string name="txtCategories">類別：</string>
   <string name="txtLabels">標籤，認證，獎項：</string>
   <string name="txtManufacturing">製造或加工地：</string>
   <string name="txtIngredientsOrigins">原料產地：</string>
   <string name="txtCity">購入的城市、州以及國家：</string>
   <string name="txtEMB">EMB Code:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtManufactureUrl">連結至產品的官方網頁:</string>
   <string name="txtStores">商店：</string>
   <string name="txtCountries">販售的國家：</string>
   <string name="txtIngredients">成份表：</string>
   <string name="Donate">Donate</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donation">捐款給 Open Food Facts</string>
   <string name="txtSubstances">造成過敏或耐受不良的物質或產品：</string>
   <string name="txtAdditives">添加劑：</string>
   <string name="txtTraces">追蹤：</string>
@@ -106,10 +114,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">使用者已儲存</string>
   <string name="txtInfoLoginNo">使用者未被儲存</string>
-  <string name="txtDialogsTitle">資訊</string>
   <string name="txtDialogsContent">您掃描的產品尚未登錄於 Open Food Facts。請新增它。</string>
   <string name="txtDialogsContentPowerMode">您掃描的產品已存在於 Open Food Facts 中。</string>
-  <string name="txtDialogsContentSend">您想傳送儲存的產品至資料庫嗎？</string>
   <string name="txtYes">是</string>
   <string name="txtNo">否</string>
   <string name="hintNameProduct">名稱</string>
@@ -117,11 +123,14 @@
   <string name="hintEnergyUnit">能量單位</string>
   <string name="hintWeight">重量</string>
   <string name="hintStores">商店</string>
-  <string name="hintBrand">品牌</string>
+  <string name="hintBrand">牌子</string>
   <string name="txtTakePicture">拍攝照片</string>
   <string name="txtSendAll">全部上傳</string>
   <string name="txtNoData">無資料</string>
-  <string name="txtPictureNeeded">請先拍張照片</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">上傳中...</string>
   <string name="dataSaved">已儲存在您的裝置中</string>
   <string name="txtInfoAddUser">請輸入您的使用者名稱與密碼</string>
@@ -138,6 +147,7 @@
   <string name="txtBarcodeNotValid">條碼無效</string>
   <string name="try_it_scan_now">掃描產品</string>
   <string name="share">分享</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">於 Open Food Facts 上查看此產品：</string>
   <string name="create_account">註冊</string>
   <string name="home_drawer">首頁</string>
@@ -206,6 +216,8 @@
   <string name="permision_write_external_storage">匯出歷史紀錄需要寫入外部儲存裝置的權限。</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Calculate Calories</string>
+  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">碳水化合物</string>
   <string name="nutrition_carbohydrate_short_name">碳水化合物（公克）</string>
   <string name="nutrition_cholesterol">膽固醇</string>
@@ -244,8 +256,8 @@
   <string name="action_search">搜尋</string>
   <string name="search_hint">搜尋產品</string>
   <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="brand">牌子:</string>
+  <string name="number_of_products">產品編號: </string>
   <string name="txt_no_results">找不到相符的結果</string>
   <string name="txt_extend_search">請嘗試擴大搜尋範圍或新增產品</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
@@ -353,7 +365,7 @@
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
   <string name="device_on_mobile_data_warning_positive">偏好設定</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
-  <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="preference_choose_language_dialog_title">選擇語言</string>
   <string name="FAQ">FAQ</string>
   <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
   <string name="translate_help_title">Help translate Open Food Facts</string>
@@ -361,7 +373,7 @@
   <string name="please_check_your_connection">Please check your connection.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Advanced Search &amp; Charts</string>
-  <string name="connectivity_check">Please check your internet connection</string>
+  <string name="connectivity_check">請檢查你的網絡連線</string>
   <string name="dismiss">Dismiss</string>
   <string name="Terms">Terms</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -381,7 +393,7 @@
   <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Choose Resolution</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-  <string name="image_upload_resolution">Image Upload Resolution</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">Going further</string>
   <string name="description">Description: </string>
@@ -389,8 +401,8 @@
   <string name="Wikipedia">View on Wikipedia</string>
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
-  <string name="brand_string">品牌</string>
-  <string name="additive_string">Additive</string>
+  <string name="brand_string">牌子</string>
+  <string name="additive_string">添加劑</string>
   <string name="search_string">搜尋</string>
   <string name="country_string">國家</string>
   <string name="store_subtitle">商店</string>
@@ -398,25 +410,34 @@
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">商店</string>
   <string name="packaging_string">包裝套件</string>
-  <string name="label_string">Label</string>
+  <string name="label_string">標籤</string>
   <string name="category_string">分類</string>
   <string name="connection">Connected</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="contributor_string">貢獻者</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="vitamin_tags_text">維生素:</string>
   <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
+  <string name="mineral_tags_text">礦物質:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
-  <string name="by_brand">品牌</string>
+  <string name="by_brand">牌子</string>
   <string name="by_barcode">條碼</string>
   <string name="by_time">Recently Viewed</string>
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
@@ -424,4 +445,25 @@
   <string name="format_error">Wrong Barcode/QR format</string>
   <string name="code_detected">We have detected the barcode</string>
   <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="products_added">您新增或編輯的產品</string>
+  <string name="products_incomplete">您上傳的產品需要更完善。</string>
+  <string name="product_pictures_contributed">Products you took pictures for</string>
+  <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
+  <string name="product_info_added">Products you added information for</string>
+  <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
+  <string name="show_by">Show</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
+  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="other_editors">Product page also edited by </string>
+  <string name="contribution_tab">貢獻</string>
+  <string name="contribution_tab_summary">Show user contributions tab with products</string>
+  <string name="contribution_tab_title">Show Contribution Tab</string>
 </resources>

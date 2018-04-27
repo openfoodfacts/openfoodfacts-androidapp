@@ -54,6 +54,12 @@
     <item>cl</item>
     <item>fl oz</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>Privzeto</item>
@@ -61,6 +67,8 @@
     <item>Sestavine</item>
   </string-array>
   <!-- Content Description -->
+  <string name="bookmark">Bookmark</string>
+  <string name="product">Izdelek</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Iskanje</string>
@@ -115,10 +123,8 @@
   <string name="uploadLater">Image will be uploaded when network is available</string>
   <string name="txtInfoLoginOk">Uporabnik je shranjen</string>
   <string name="txtInfoLoginNo">Uporabnik ni shranjen</string>
-  <string name="txtDialogsTitle">Imformacije</string>
   <string name="txtDialogsContent">Izdelek, ki ste ga optično prebrali, še ne obstaja v podatkih o odprtih živilih. Prosimo, dodajte.</string>
   <string name="txtDialogsContentPowerMode">Izdelek, ki ste ga optično prebrali, že obstaja v podatkih o odprtih živilih.</string>
-  <string name="txtDialogsContentSend">Ali želite poslati shranjene izdelke v bazo podatkov?</string>
   <string name="txtYes">Da</string>
   <string name="txtNo">Ne</string>
   <string name="hintNameProduct">Ime</string>
@@ -130,7 +136,10 @@
   <string name="txtTakePicture">Zajemi sliko</string>
   <string name="txtSendAll">Naložite vse</string>
   <string name="txtNoData">Ni podatkov</string>
-  <string name="txtPictureNeeded">Najprej posnemite sliko</string>
+  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Nalaganje...</string>
   <string name="dataSaved">Lokalno shranjeno v napravi</string>
   <string name="txtInfoAddUser">Vnesite svojo prijavo in geslo</string>
@@ -147,6 +156,7 @@
   <string name="txtBarcodeNotValid">Črtna koda ni veljavna</string>
   <string name="try_it_scan_now">Skeniraj izdelek</string>
   <string name="share">Deli</string>
+  <string name="translate">Translate</string>
   <string name="msg_share">Poglej ta izdelek na dejstvih o odprtih živilih:</string>
   <string name="create_account">Prijava</string>
   <string name="home_drawer">Domov</string>
@@ -154,8 +164,8 @@
   <string name="open_food_drawer">Odpri dejstva o hrani</string>
   <string name="search_drawer">Iskanje</string>
   <string name="search_by_barcode_drawer">Vnesite črtno kodo</string>
-  <string name="category_drawer">Categories</string>
-  <string name="search_by_category">Category</string>
+  <string name="category_drawer">Kategorije</string>
+  <string name="search_by_category">Kategorijo</string>
   <string name="search_by_name_drawer">Iskanje po imenu</string>
   <string name="scan_search">Skeniraj črtno kodo</string>
   <string name="user_drawer">Uporabnik</string>
@@ -215,6 +225,8 @@
   <string name="permision_write_external_storage">Za izvoz zgodovine potrebujete dovoljenje za zunanji pomnilnik.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Calculate Calories</string>
+  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Ogljikovi hidrati</string>
   <string name="nutrition_carbohydrate_short_name">Ogljikovi hidrati (g)</string>
   <string name="nutrition_cholesterol">Holesterol</string>
@@ -252,8 +264,8 @@
   <string name="txtSeeMore">Poglej več</string>
   <string name="action_search">Iskanje</string>
   <string name="search_hint">Poišči izdelek</string>
-  <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
+  <string name="number_of_results">Število rezulatov: </string>
+  <string name="brand">Znamka :</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">Ni zadetkov</string>
   <string name="txt_extend_search">Poskusite razširiti iskanje ali dodati izdelek</string>
@@ -390,7 +402,7 @@
   <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Choose Resolution</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-  <string name="image_upload_resolution">Image Upload Resolution</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">Going further</string>
   <string name="description">Description: </string>
@@ -399,26 +411,33 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Blagovna znamka</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Aditiv</string>
   <string name="search_string">Iskanje</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">Trgovina</string>
-  <string name="packaging_subtitle">Packaging</string>
+  <string name="packaging_subtitle">Pakiranje</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Trgovina</string>
-  <string name="packaging_string">Packaging</string>
+  <string name="packaging_string">Pakiranje</string>
   <string name="label_string">Label</string>
-  <string name="category_string">Category</string>
+  <string name="category_string">Kategorijo</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-  <string name="vitamin_tags_text">Vitamins:</string>
+  <string name="vitamin_tags_text">Vitamini:</string>
   <string name="amino_acid_tags_text">Amino Acids:</string>
-  <string name="mineral_tags_text">Minerals:</string>
+  <string name="mineral_tags_text">Minerali:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
+  <string name="txtCamera">Camera</string>
+  <string name="txtGallery">Gallery</string>
+  <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">Blagovna znamka</string>
   <string name="by_barcode">Črtna koda</string>
@@ -426,6 +445,8 @@
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
+  <string name="shake_summary">Shake phone to scan products</string>
+  <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
@@ -433,4 +454,25 @@
   <string name="format_error">Wrong Barcode/QR format</string>
   <string name="code_detected">We have detected the barcode</string>
   <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="products_added">Products you added or edited</string>
+  <string name="products_incomplete">Products you added that need to be completed</string>
+  <string name="product_pictures_contributed">Products you took pictures for</string>
+  <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
+  <string name="product_info_added">Products you added information for</string>
+  <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
+  <string name="show_by">Show</string>
+  <string name="notify_title">Export complete</string>
+  <string name="notify_content">Click to view exported products</string>
+  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
+  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="other_editors">Product page also edited by </string>
+  <string name="contribution_tab">Contributions</string>
+  <string name="contribution_tab_summary">Show user contributions tab with products</string>
+  <string name="contribution_tab_title">Show Contribution Tab</string>
 </resources>
