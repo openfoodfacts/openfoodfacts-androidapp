@@ -11,7 +11,7 @@
 
     <item
         android:id="@+id/action_set_type"
-        android:icon="@drawable/ic_action_name"
+        android:icon="@drawable/ic_filter_list_black_24dp"
         android:title="Contribution By"
         android:visible="false"
         app:showAsAction="always" />
