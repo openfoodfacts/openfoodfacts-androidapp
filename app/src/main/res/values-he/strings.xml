@@ -456,11 +456,11 @@
   <string name="do_you_want_to">להוסיף תמונות לברקוד הזה?</string>
   <string name="products_added">משתנים שהוספת או ערכת</string>
   <string name="products_incomplete">מוצרים שהוספת שדורשים השלמה</string>
-  <string name="product_pictures_contributed">Products you took pictures for</string>
-  <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
-  <string name="product_info_added">Products you added information for</string>
-  <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
-  <string name="show_by">Show</string>
+  <string name="product_pictures_contributed">מוצרים שצילמת</string>
+  <string name="picture_contributed_incomplete">מוצרים שצילמת שדורשים השלמה</string>
+  <string name="product_info_added">מוצרים עליהם הוספת מידע</string>
+  <string name="product_info_tocomplete">מוצרים עליהם הוספת מידע שדורשים השלמה</string>
+  <string name="show_by">הצגה</string>
   <string name="notify_title">הייצוא הושלם</string>
   <string name="notify_content">יש ללחוץ כדי לצפות במוצרים שייוצאו</string>
   <string name="notification_channel_name">התרעות ייצוא</string>
@@ -473,6 +473,6 @@
   <string name="last_editor_history">עריכת המוצר האחרונה נערכה ב־%1$s בשעה %2$s לפי שעון קיץ מרכז אירופה על ידי </string>
   <string name="other_editors">עמוד המוצר נערך גם על ידי </string>
   <string name="contribution_tab">תרומות</string>
-  <string name="contribution_tab_summary">Show user contributions tab with products</string>
-  <string name="contribution_tab_title">Show Contribution Tab</string>
+  <string name="contribution_tab_summary">הצגת לשונית תרומות משתמשים עם מוצרים</string>
+  <string name="contribution_tab_title">הצגת לשונית תרומות</string>
 </resources>
