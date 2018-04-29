@@ -134,7 +134,7 @@
   <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Uploading...</string>
+  <string name="toastSending">Качва се…</string>
   <string name="dataSaved">Saved locally on your device</string>
   <string name="txtInfoAddUser">Please enter your login and password</string>
   <string name="txtDataUpdated">Data updated</string>
@@ -143,7 +143,7 @@
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
   <string name="txtOk">Добре</string>
-  <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+  <string name="txtContentDialogUploading">Не излизайте по време на процеса…</string>
   <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Products sent</string>
   <string name="txtPalm">The product does not contain any palm oil</string>
@@ -214,7 +214,7 @@
   <string name="title_clear_history_dialog">Изчистване</string>
   <string name="text_clear_history_dialog">Искате ли да изчистите цялата история на сканирането?</string>
   <string name="export_csv_history">Export CSV</string>
-  <string name="txt_exporting_history">Exporting history...</string>
+  <string name="txt_exporting_history">Експортиране на историята…</string>
   <string name="txt_history_exported">History exported</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">Неприложимо</string>
@@ -407,7 +407,7 @@
   <string name="brand_string">Марка</string>
   <string name="additive_string">Добавка</string>
   <string name="search_string">Търсене</string>
-  <string name="country_string">Country</string>
+  <string name="country_string">Държави, в които се продава</string>
   <string name="store_subtitle">Магазин</string>
   <string name="packaging_subtitle">Опаковка</string>
   <string name="last_seen_string">Преди %1$d %2$s</string>
