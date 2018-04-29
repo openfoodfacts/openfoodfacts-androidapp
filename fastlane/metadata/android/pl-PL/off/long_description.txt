@@ -9,7 +9,7 @@ Aby poznać projekt Open Food Facta, odwiedź https://openfoodfacts.org
 
 Open Food Facts to baza danych tworzona przez każdego dla wszystkich.
 Możesz z niej korzystać, by wybierać lepsze jedzenie i tak jak w przypadku otwartych danych, wykorzystać ponownie.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+Open Food Facts to projekt non-profit tworzony przez tysiące wolontariuszy z całego świata. Mamy wiele ciekawych projektów, do których możesz przyłączyć się w różny sposób. 
 - You can start contributing today by adding a product from your food cupboard. 
 
 *** Get the Facts ***
