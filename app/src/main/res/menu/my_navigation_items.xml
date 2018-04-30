@@ -26,7 +26,7 @@
         android:id="@+id/search_product"
         android:enabled="true"
         android:icon="@drawable/ic_search_black"
-        android:title="@string/search_bottomNav" />
+        android:title="@string/bottomNav_search" />
 
     <item
         android:id="@+id/history_bottom_nav"
