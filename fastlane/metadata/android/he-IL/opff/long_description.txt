@@ -1,13 +1,13 @@
 ניתן לסרוק מוצרי מזון לחיות מחמד או את הברקוד שלהם כדי לקבל מידע על הרכיבים, התוספים והעובדות התזונתיות.
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+היישומון מאפשר לך לצפות בלמעלה מ־600 מוצרי מזון לחיות מחמד שכבר נמצאים במסד הנתונים החופשי והפתוח של Open Pet Food Facts וגם להוסיף תמונות ונתונים למוצרים שלוקים בחסר.
 
 כדי לחקור על מיזם Open Pet Food Facts, ניתן לבקר בכתובת https://world.openpetfoodfacts.org
 
-***Contribute to Pet Food Transparency***
+***תרומה לשקיפות המזון לחיות מחמד***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Pet Food Facts הוא מסד נתוני מוצרי מזון לחיות מחמד שנוצר על ידי כולם, למען כולם.
+- ניתן להשתמש במסד הנתונים כדי לקחת החלטות מזון טובות יותר לחיות המחמד שלך וכיוון שמדובר בנתונים פתוחים, כל אחד יכול לגזור את מסד הנתונים לכל מטרה שהיא.
 - Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. יש לנו מגוון מיזמים מרתקים להם ניתן לתרום במגוון דרכים. 
 - You can start contributing today by adding a product from your pet's cupboard. 
 
@@ -26,7 +26,7 @@ The app allows to view the over 600 pet food products already contained in the f
 - אין צורך במצלמה כדי לחפש מוצר. ניתן גם להקליד את הברקוד אם אין לך מצלמה או שהיא אינה תקינה.
 
 *** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+- הנתונים האישיים שלך הם שלך והם לא יישלחו לשום מקום
 - ניתן להשתמש ביישומון בעילום שם
 - ניתן לייצא את היסטוריית הסריקות שלך
 
