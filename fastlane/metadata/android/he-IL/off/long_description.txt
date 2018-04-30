@@ -14,10 +14,10 @@
 
 *** קבלת העובדות ***
 - עם Open Food Facts סוף סוף אפשר להבין את כל הקשקושים שכתובים על תוויות המזון. ניתן למצוא (בהתאם לנתונים שמופיעים על המוצרים):
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- טביעת רגל פחמנית (פליטת CO2) ואריזה (לרבות הנחיות מחזור),
 - דירוג תזונתי, ערכים תזונתיים, שומן / תכולת שומן, חומצות שומן רוויות, פחמימות, סוכרים, סיבים, חלבון, מלח ונתרן.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+- מותגים, מעוררי רגישות, תוויות (אורגני, נטול גלוטן, טבעוני, צמחוני, כשר, חלאל…), נתוני מעקב מקור (קודים של אריזה, מקורות רכיבים)
+- על יינות ועל בירות, ניתן למצוא את הרכב האלכוהול.
 
 *** פעילות עם כמה שפחות הפרעות ***
 - ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע.
