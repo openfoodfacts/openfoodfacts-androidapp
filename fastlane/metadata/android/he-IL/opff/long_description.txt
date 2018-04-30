@@ -26,7 +26,7 @@ The app allows to view the over 600 pet food products already contained in the f
 - אין צורך במצלמה כדי לחפש מוצר. ניתן גם להקליד את הברקוד אם אין לך מצלמה או שהיא אינה תקינה.
 
 *** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+- הנתונים האישיים שלך הם שלך והם לא יישלחו לשום מקום
 - ניתן להשתמש ביישומון בעילום שם
 - ניתן לייצא את היסטוריית הסריקות שלך
 
