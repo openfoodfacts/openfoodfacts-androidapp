@@ -118,6 +118,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_product);
+        setTitle(getString(R.string.app_name_long));
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
