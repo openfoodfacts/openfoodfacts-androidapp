@@ -103,10 +103,9 @@ public class ContributorsFragment extends BaseFragment {
             String otherEditorsTxt = getString(R.string.other_editors);
             otherEditorsText.setMovementMethod(LinkMovementMethod.getInstance());
             otherEditorsText.setText(otherEditorsTxt + " ");
-
             for (int i = 0; i < product.getEditors().size() - 1; i++) {
-                otherEditorsText.append(getContributorsTag(product.getEditors().get(i)));
-                otherEditorsText.append(",");
+                otherEditorsText.append(getContributorsTag(product.getEditors().get(i)).subSequence(0, product.getEditors().get(i).length()));
+                otherEditorsText.append(", ");
             }
             otherEditorsText.append(getContributorsTag(product.getEditors().get(product.getEditors().size() - 1)));
         } else {
