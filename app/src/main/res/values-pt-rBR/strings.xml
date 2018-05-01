@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Favorito</string>
-  <string name="product">Produto</string>
+  <string name="edit">Edit</string>
   <string name="fastscroller_track">Rastro FastScroller</string>
   <string name="fastscroller_handle">Barra FastScroller</string>
   <string name="search_button">Procurar</string>
@@ -448,6 +448,8 @@
   <string name="format_error">Código de barras errado/formato QR</string>
   <string name="code_detected">Detectamos o código de barras</string>
   <string name="do_you_want_to">Você quer adicionar fotos a este código de barras?</string>
+  <string name="bottomNav_history">Histórico</string>
+  <string name="bottomNav_search">Procurar</string>
   <string name="products_added">Produtos que você adicionou ou editou</string>
   <string name="products_incomplete">Produtos que você adicionou que precisam ser completados</string>
   <string name="product_pictures_contributed">Products you took pictures for</string>
