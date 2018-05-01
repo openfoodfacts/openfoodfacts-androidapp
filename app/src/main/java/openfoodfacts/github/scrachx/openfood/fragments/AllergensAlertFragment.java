@@ -132,7 +132,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
             productRepository.getAllergensByEnabledAndLanguageCode(false, Locale.getDefault().getLanguage())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(allergens -> {
+                    .subscribe((List<AllergenName> allergens) -> {
                         Collections.sort(allergens, new Comparator<AllergenName>() {
                             @Override
                             public int compare(AllergenName a1, AllergenName a2) {
