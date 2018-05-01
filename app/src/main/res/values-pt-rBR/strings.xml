@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Favorito</string>
-  <string name="edit">Edit</string>
+  <string name="edit">Editar</string>
   <string name="fastscroller_track">Rastro FastScroller</string>
   <string name="fastscroller_handle">Barra FastScroller</string>
   <string name="search_button">Procurar</string>
@@ -396,7 +396,7 @@
   <string name="dialog_cancel">Cancelar</string>
   <string name="choose_resolution">Escolher Resolução</string>
   <string name="pref_resolution_summary">Escolha uma resolução para upload da imagem</string>
-  <string name="image_upload_resolution">Image upload resolution</string>
+  <string name="image_upload_resolution">Resolução de upload de imagens</string>
   <string name="can_add_barcode">Problemas com o scanner?\nArraste para cima para digitar o código de barras</string>
   <string name="wikidata_information">Indo além</string>
   <string name="description">Descrição: </string>
@@ -417,8 +417,8 @@
   <string name="category_string">Categoria</string>
   <string name="connection">Conectado</string>
   <string name="contributor_string">Colaborador</string>
-  <string name="Rate_Us">Show Your Support</string>
-  <string name="Rate_Us_title">Rate our App</string>
+  <string name="Rate_Us">Compartilhe seu apoio</string>
+  <string name="Rate_Us_title">Avalie nosso aplicativo</string>
   <string name="app_disabled_text">Aplicativo está desativado</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitaminas:</string>
@@ -452,19 +452,19 @@
   <string name="bottomNav_search">Procurar</string>
   <string name="products_added">Produtos que você adicionou ou editou</string>
   <string name="products_incomplete">Produtos que você adicionou que precisam ser completados</string>
-  <string name="product_pictures_contributed">Products you took pictures for</string>
-  <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
-  <string name="product_info_added">Products you added information for</string>
-  <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
-  <string name="show_by">Show</string>
+  <string name="product_pictures_contributed">Produtos que você fotografou</string>
+  <string name="picture_contributed_incomplete">Produtos que você fotografou que precisam ser completados</string>
+  <string name="product_info_added">Produtos para os quais você adicionou informações</string>
+  <string name="product_info_tocomplete">Produtos para os quais você adicionou informações que precisam ser completados</string>
+  <string name="show_by">Exibir</string>
   <string name="notify_title">Exportação concluída</string>
-  <string name="notify_content">Click to view exported products</string>
+  <string name="notify_content">Clique para ver os produtos exportados</string>
   <string name="notification_channel_name">Exportar Notificações</string>
   <string name="notify_channel_description">Notificação para mostrar a localização do arquivo exportado</string>
-  <string name="products_to_be_completed">Products to be completed</string>
-  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
-  <string name="offline_notification_title">Offline contributions you need to send</string>
-  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="products_to_be_completed">Produtos a completar</string>
+  <string name="modified_history">Produto adicionado dia %1$s às %2$s por %3$s. Última edição da página do produto dia %4$s às %5$s por %6$s. Página do produto editada também por %7$s</string>
+  <string name="offline_notification_title">Contribuições offline que precisam ser enviadas</string>
+  <string name="offline_notification_context">Você tem %1$d produtos off-line esperando para serem enviados ao Open Food Facts</string>
   <string name="creator_history">Product added on %1$s at %2$s CET by</string>
   <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
   <string name="other_editors">Product page also edited by </string>
