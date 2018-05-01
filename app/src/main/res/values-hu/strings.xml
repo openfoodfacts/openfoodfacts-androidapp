@@ -471,4 +471,5 @@
   <string name="contribution_tab">Hozzájárulások</string>
   <string name="contribution_tab_summary">Felhasználói hozzájárulások lap megjelenítése a termékekkel</string>
   <string name="contribution_tab_title">Hozzájárulási lap megjelenítése</string>
+  <string name="product">Edit</string>
 </resources>

@@ -468,4 +468,5 @@
   <string name="contribution_tab">贡献</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show Contribution Tab</string>
+  <string name="product">Edit</string>
 </resources>
