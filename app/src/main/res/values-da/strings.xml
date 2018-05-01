@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="product">Produkt</string>
+  <string name="edit">Edit</string>
   <string name="fastscroller_track">HurtigRulningsspor</string>
   <string name="fastscroller_handle">HurtigRulningshåndtag</string>
   <string name="search_button">Søg</string>
@@ -448,6 +448,8 @@
   <string name="format_error">Ugyldig stregkode-/QR-format</string>
   <string name="code_detected">Stregkoden er aflæst</string>
   <string name="do_you_want_to">Vil du føje billeder til denne stregkode?</string>
+  <string name="bottomNav_history">Historik</string>
+  <string name="bottomNav_search">Søg</string>
   <string name="products_added">Produkter, du har tilføjet eller redigeret</string>
   <string name="products_incomplete">Products you added that need to be completed</string>
   <string name="product_pictures_contributed">Products you took pictures for</string>
