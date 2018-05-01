@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Könyvjelző</string>
-  <string name="product">Termék</string>
+  <string name="edit">Edit</string>
   <string name="fastscroller_track">FastScroller sáv</string>
   <string name="fastscroller_handle">FastScroller kezelő</string>
   <string name="search_button">Keresés</string>
@@ -448,6 +448,8 @@
   <string name="format_error">Helytelen vonalkód/QR formátum</string>
   <string name="code_detected">Vonalkód felismerve</string>
   <string name="do_you_want_to">Szeretne fényképeket hozzáadni ehhez a vonalkódhoz?</string>
+  <string name="bottomNav_history">Előzmények</string>
+  <string name="bottomNav_search">Keresés</string>
   <string name="products_added">Termékek, amelyeket hozzáadott vagy szerkesztett</string>
   <string name="products_incomplete">Termékek, amiket hozzáadtál, és befejezésre várnak</string>
   <string name="product_pictures_contributed">Termékek, amelyekről képeket készített</string>

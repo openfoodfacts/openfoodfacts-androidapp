@@ -59,7 +59,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">ブックマーク</string>
-  <string name="product">製品</string>
+  <string name="edit">Edit</string>
   <string name="fastscroller_track">高速スクローラートラック</string>
   <string name="fastscroller_handle">高速スクローラーハンドル</string>
   <string name="search_button">検索</string>
@@ -445,6 +445,8 @@
   <string name="format_error">バーコード/QR 形式が間違っています</string>
   <string name="code_detected">バーコードを検出しました</string>
   <string name="do_you_want_to">このバーコードに写真を追加しますか?</string>
+  <string name="bottomNav_history">履歴</string>
+  <string name="bottomNav_search">検索</string>
   <string name="products_added">あなたが追加または編集した製品</string>
   <string name="products_incomplete">あなたが追加して、完了が必要な製品</string>
   <string name="product_pictures_contributed">Products you took pictures for</string>

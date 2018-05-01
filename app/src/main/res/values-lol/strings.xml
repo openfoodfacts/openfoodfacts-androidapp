@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">crwdns46677:0crwdne46677:0</string>
-  <string name="product">crwdns46678:0crwdne46678:0</string>
+  <string name="edit">crwdns92702:0crwdne92702:0</string>
   <string name="fastscroller_track">crwdns37744:0crwdne37744:0</string>
   <string name="fastscroller_handle">crwdns37745:0crwdne37745:0</string>
   <string name="search_button">crwdns35046:0crwdne35046:0</string>
@@ -448,6 +448,8 @@
   <string name="format_error">crwdns46331:0crwdne46331:0</string>
   <string name="code_detected">crwdns46332:0crwdne46332:0</string>
   <string name="do_you_want_to">crwdns46333:0crwdne46333:0</string>
+  <string name="bottomNav_history">crwdns92703:0crwdne92703:0</string>
+  <string name="bottomNav_search">crwdns92704:0crwdne92704:0</string>
   <string name="products_added">crwdns84813:0crwdne84813:0</string>
   <string name="products_incomplete">crwdns84814:0crwdne84814:0</string>
   <string name="product_pictures_contributed">crwdns84815:0crwdne84815:0</string>

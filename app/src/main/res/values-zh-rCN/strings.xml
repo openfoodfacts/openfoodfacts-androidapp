@@ -59,7 +59,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">书签</string>
-  <string name="product">产品</string>
+  <string name="edit">Edit</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">搜索</string>
@@ -445,6 +445,8 @@
   <string name="format_error">错误的条码/二维码格式</string>
   <string name="code_detected">我们已经检测到条码</string>
   <string name="do_you_want_to">是否要将照片添加到此条码？</string>
+  <string name="bottomNav_history">历史记录</string>
+  <string name="bottomNav_search">搜索</string>
   <string name="products_added">您所编辑和添加的产品</string>
   <string name="products_incomplete">您添加的产品需求已经完成</string>
   <string name="product_pictures_contributed">Products you took pictures for</string>

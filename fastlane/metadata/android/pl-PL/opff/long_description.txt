@@ -1,4 +1,4 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Skanuj etykiety żywności dla zwierząt lub kody kreskowe, by uzyskać dane o składzie, dodatkach i wartościach odżywczych.
 
 The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 

@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Marcador</string>
-  <string name="product">Producto</string>
+  <string name="edit">Edit</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Buscar</string>
@@ -448,6 +448,8 @@
   <string name="format_error">Formato incorrecto de Código de barras/QR</string>
   <string name="code_detected">Hemos detectado el código de barras</string>
   <string name="do_you_want_to">¿Quieres añadir fotos a este código de barras?</string>
+  <string name="bottomNav_history">Historia</string>
+  <string name="bottomNav_search">Buscar</string>
   <string name="products_added">Productos que has añadido o modificado</string>
   <string name="products_incomplete">Productos añadidos por usted que necesitan ser completados</string>
   <string name="product_pictures_contributed">Products you took pictures for</string>

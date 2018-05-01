@@ -68,7 +68,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Zakładka</string>
-  <string name="product">Produkt</string>
+  <string name="edit">Edit</string>
   <string name="fastscroller_track">Ślad FastScrollera</string>
   <string name="fastscroller_handle">Uchwyt FastScrollera</string>
   <string name="search_button">Szukaj</string>
@@ -454,6 +454,8 @@
   <string name="format_error">Błędny kod kreskowy/QR</string>
   <string name="code_detected">Wykryliśmy kod kreskowy</string>
   <string name="do_you_want_to">Czy chcesz dodać zdjęcia do kodu kreskowego?</string>
+  <string name="bottomNav_history">Historia</string>
+  <string name="bottomNav_search">Szukaj</string>
   <string name="products_added">Produkty dodane lub edytowane przez ciebie</string>
   <string name="products_incomplete">Dodane przez ciebie produkty wymagają uzupełnienia</string>
   <string name="product_pictures_contributed">Produkty, które sfotografowałeś</string>

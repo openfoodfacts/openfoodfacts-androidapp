@@ -1,18 +1,18 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Escaneie códigos de barras de produtos alimentares para obter dados sobre ingredients, aditivos e informações nutricionais.
 
-The app allows to view the 500.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+O aplicativo permite ver os 500.000 produtos (incluindo 175.000 dos Estados Unidos) que já estão cadastrados na base de dados livre e aberta Open Food Facts, e permite também adicionar fotos e dados para produtos que faltam.
 
-To discover the Open Food Facts project, please visit https://openfoodfacts.org
+Para descobrir o projeto Open Food Facts, por favor visite https://openfoodfacts.org
 
 
-***Contribute to Food Transparency***
+***Contribua à transparência alimentar***
 
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your food cupboard. 
+- Open Food Facts é uma base de dados de produtos alimentares feita por todos, para todos.
+- Você pode usá-la para melhor escolher seus alimentos, e como os dados são abertos, todo mundo pode reutilizá-la para quaisquer fins.
+- Open Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários do mundo inteiro. Temos vários projetos interessantes com os quais você pode contribuir, de várias maneiras. 
+- Você pode começar a contribuir hoje, adicionando um produto da sua despensa. 
 
-*** Get the Facts ***
+*** Conheça os fatos ***
 - Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.

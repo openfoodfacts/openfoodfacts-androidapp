@@ -31,5 +31,5 @@
   <string name="text_offline_info_dialog">Você pode escanear produtos quando estiver offline e adicioná-los ao Open Products Facts mais tarde. Todos os produtos escaneados aparecerão aqui, e você poderá enviá-los usando o botão abaixo.</string>
   <string name="warning_alert_data">Suas alergias nunca serão enviadas ao servidor do Open Products Facts. Além disso, atenção ao fato que os dados dos produtos podem ser imprecisos, e a detecção não é 100% precisa, então por favor verifique! </string>
   <!-- OPF tagline in different languages -->
-  <string name="tagline">the free product database</string>
+  <string name="tagline">a base de dados de produtos gratuita</string>
 </resources>

@@ -68,7 +68,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Добавить в закладки</string>
-  <string name="product">Продукт</string>
+  <string name="edit">Edit</string>
   <string name="fastscroller_track">След FastScroller</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Поиск</string>
@@ -454,6 +454,8 @@
   <string name="format_error">Неверный формат штрих-кода/​​QR-кода</string>
   <string name="code_detected">Не найден штрих-код</string>
   <string name="do_you_want_to">Вы хотите добавить фотографии к этому штрих-коду?</string>
+  <string name="bottomNav_history">История</string>
+  <string name="bottomNav_search">Поиск</string>
   <string name="products_added">Продукты, которые вы добавили или редактировали</string>
   <string name="products_incomplete">Добавленные вами незавершенные продукты</string>
   <string name="product_pictures_contributed">Products you took pictures for</string>

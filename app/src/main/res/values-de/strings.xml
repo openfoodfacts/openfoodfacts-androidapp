@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Lesezeichen</string>
-  <string name="product">Produkt</string>
+  <string name="edit">Bearbeiten</string>
   <string name="fastscroller_track">FastScroller-Spur</string>
   <string name="fastscroller_handle">FastScroller-Griff</string>
   <string name="search_button">Suchen</string>
@@ -448,6 +448,8 @@
   <string name="format_error">Fehlerhafte(r/s) Strichcode-/QR-Format</string>
   <string name="code_detected">Strichcode erkannt</string>
   <string name="do_you_want_to">Möchten Sie Fotos zu diesem Strichcode hinzufügen?</string>
+  <string name="bottomNav_history">Verlauf</string>
+  <string name="bottomNav_search">Suchen</string>
   <string name="products_added">Produkte, die Sie hinzugefügt oder bearbeitet haben</string>
   <string name="products_incomplete">Von Ihnen hinzugefügte Produkte, die noch abgeschlossen werden müssen</string>
   <string name="product_pictures_contributed">Produkte, für die Sie Fotos gemacht haben</string>
