@@ -59,7 +59,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="product">產品</string>
+  <string name="edit">Edit</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">搜尋</string>
@@ -445,6 +445,8 @@
   <string name="format_error">Wrong Barcode/QR format</string>
   <string name="code_detected">We have detected the barcode</string>
   <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="bottomNav_history">歷史紀錄</string>
+  <string name="bottomNav_search">搜尋</string>
   <string name="products_added">您新增或編輯的產品</string>
   <string name="products_incomplete">您上傳的產品需要更完善。</string>
   <string name="product_pictures_contributed">Products you took pictures for</string>
