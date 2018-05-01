@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="product">Producte</string>
+  <string name="edit">Edit</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Cerca</string>
@@ -448,6 +448,8 @@
   <string name="format_error">Wrong Barcode/QR format</string>
   <string name="code_detected">We have detected the barcode</string>
   <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="bottomNav_history">Historial</string>
+  <string name="bottomNav_search">Cerca</string>
   <string name="products_added">Productes que ha afegit o editat</string>
   <string name="products_incomplete">Productes que ha afegit que han de ser completats</string>
   <string name="product_pictures_contributed">Products you took pictures for</string>
