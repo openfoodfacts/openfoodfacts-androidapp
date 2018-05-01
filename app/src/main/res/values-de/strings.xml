@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Lesezeichen</string>
-  <string name="edit">Edit</string>
+  <string name="edit">Bearbeiten</string>
   <string name="fastscroller_track">FastScroller-Spur</string>
   <string name="fastscroller_handle">FastScroller-Griff</string>
   <string name="search_button">Suchen</string>
