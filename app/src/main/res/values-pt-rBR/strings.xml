@@ -427,8 +427,8 @@
   <string name="other_tags_text">Outras Substâncias:</string>
   <!--shared element transition key-->
   <string name="wikidata">Dados Wikidata</string>
-  <string name="disable_image_loading">Disable image loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable image loading</string>
+  <string name="disable_image_loading">Desativar imagem quando a bateria está fraca</string>
+  <string name="DisableLoadTitle">Desativar imagem</string>
   <string name="txtCamera">Câmera</string>
   <string name="txtGallery">Galeria</string>
   <string name="txtOptions">Opções</string>
@@ -470,5 +470,5 @@
   <string name="other_editors">Página do produto editada também por </string>
   <string name="contribution_tab">Contribuições</string>
   <string name="contribution_tab_summary">Mostrar aba de contribuições dos usuários com produtos</string>
-  <string name="contribution_tab_title">Show Contribution Tab</string>
+  <string name="contribution_tab_title">Mostrar aba de contribuições</string>
 </resources>
