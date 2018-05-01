@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.product;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -64,6 +65,8 @@ import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.BottomNavigationBehavior;
+import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
@@ -187,7 +190,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 //                     Implementation of Translation will be here
 //                    Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
 //                    break;
-                case R.id.find_product:
+                case R.id.edit_product:
                     String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
                     if (mState.getProduct().getUrl() != null) {
                         url = " " + mState.getProduct().getUrl();
@@ -197,6 +200,15 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 
                     CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
                     break;
+
+                case R.id.history_bottom_nav:
+                    startActivity(new Intent(this, HistoryScanActivity.class));
+                    break;
+
+                case R.id.search_product:
+                    startActivity(new Intent(this, MainActivity.class));
+                    break;
+
                 case R.id.empty:
                     break;
                 default:
