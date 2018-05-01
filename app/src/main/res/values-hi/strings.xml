@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="product">Product</string>
+  <string name="edit">Edit</string>
   <string name="fastscroller_track">फास्टस्क्रोलर ट्रैक</string>
   <string name="fastscroller_handle">फास्टस्क्रोलर हैंडल</string>
   <string name="search_button">ढूंढें</string>
@@ -448,6 +448,8 @@
   <string name="format_error">Wrong Barcode/QR format</string>
   <string name="code_detected">We have detected the barcode</string>
   <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="bottomNav_history">वृत्तांत</string>
+  <string name="bottomNav_search">ढूंढें</string>
   <string name="products_added">Products you added or edited</string>
   <string name="products_incomplete">Products you added that need to be completed</string>
   <string name="product_pictures_contributed">Products you took pictures for</string>
