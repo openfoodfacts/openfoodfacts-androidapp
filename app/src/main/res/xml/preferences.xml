@@ -23,6 +23,14 @@
             android:title="@string/prefs_power_mode" />
 
         <CheckBoxPreference
+
+            android:defaultValue="false"
+            android:key="photoMode"
+            android:summary="View all product photos ever taken"
+            android:title="Show Product photos tab" />
+
+
+        <CheckBoxPreference
             android:defaultValue="false"
             android:key="shakeScanMode"
             android:summary="@string/shake_summary"
@@ -47,6 +55,12 @@
             android:summary="@string/pref_resolution_summary"
             android:title="@string/image_upload_resolution" />
 
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disableImageLoad"
+            android:summary="@string/disable_image_loading"
+            android:title="@string/DisableLoadTitle"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/preference_header_contributing">
@@ -64,6 +78,12 @@
             android:summary="@string/translate_help_summary"
             android:title="@string/translate_help_title" />
 
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="contributionTab"
+            android:summary="@string/contribution_tab_summary"
+            android:title="@string/contribution_tab_title"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/preference_header_about">
@@ -77,6 +97,10 @@
             android:key="FAQ"
             android:summary="@string/FrequentlyAskedQuestions"
             android:title="@string/FAQ" />
+        <Preference
+            android:key="RateUs"
+            android:summary="@string/Rate_Us_title"
+            android:title="@string/Rate_Us" />
 
         <Preference
             android:key="Terms"

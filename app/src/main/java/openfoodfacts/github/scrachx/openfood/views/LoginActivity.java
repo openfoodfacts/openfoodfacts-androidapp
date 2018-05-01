@@ -71,7 +71,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
 
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +82,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         setTitle(getString(R.string.txtSignIn));
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
         resetPasswordUri = Uri.parse(getString(R.string.website) + "cgi/reset_password.pl");
@@ -118,7 +118,6 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
 
-
         mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
             @Override
             public void onShake(int count) {
@@ -149,6 +148,17 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
             return;
         }
 
+        Snackbar snackbar = Snackbar
+                .make(linearLayout, R.string.toast_retrieving, Snackbar.LENGTH_LONG);
+        snackbar.show();
+
+        final LoadToast lt = new LoadToast(this);
+        save.setClickable(false);
+        lt.setText(getString(R.string.toast_retrieving));
+        lt.setBackgroundColor(ContextCompat.getColor(this, R.color.blue));
+        lt.setTextColor(ContextCompat.getColor(this, R.color.white));
+        lt.show();
+
         final Activity context = this;
         apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
             @Override
@@ -173,7 +183,6 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                 if (htmlNoParsed == null || htmlNoParsed.contains("Incorrect user name or password.") || htmlNoParsed.contains("See you soon!")) {
                     save.setProgress(-1);
                     Toast.makeText(context, context.getString(R.string.errorLogin), Toast.LENGTH_LONG).show();
-                    loginView.setText("");
                     passwordView.setText("");
                     editor.putString("user", "");
                     editor.putString("pass", "");

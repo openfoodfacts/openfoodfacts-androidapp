@@ -12,22 +12,24 @@
   <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-pt.openfoodfacts.org/colaborador/</string>
   <string name="txtHome">Open Food Facts é uma base de dados de produtos alimentares com ingredientes, alergénios, tabela nutricional e todos os pedacinhos de informação que se encontram nos rótulos dos produtos.</string>
-  <string name="slide_1_title">Contribute to product transparency</string>
+  <string name="slide_1_title">Contribua para a transparência dos produtos</string>
   <string name="slide_1_desc">Digitalize produtos, fotografe-os, faça a transparência alimentar acontecer</string>
-  <string name="slide_2_title">Get the facts</string>
-  <string name="slide_2_desc">Extensive information about the products you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Keep track of the product you use</string>
-  <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
+  <string name="slide_2_title">Conheça os fatos</string>
+  <string name="slide_2_desc">Informações extensivas sobre o produto escaneado, decifradas para você</string>
+  <string name="slide_3_title">Mantenha uma lista dos produtos que você usa</string>
+  <string name="slide_3_desc">Todos os produtos que você escaneou, em uma lista prática que você pode exportar</string>
   <string name="slide_4_title">Funciona offline</string>
   <string name="slide_4_desc">Você pode adicionar novos produtos, mesmo se você não estiver atualmente conectado à Internet</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
-  <string name="msg_share">Look at this product on Open Products Facts :</string>
-  <string name="not_support_books">Books are not currently supported by Open Products Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
-  <string name="Donation">Click here to donate to Open Products Facts</string>
-  <string name="translate_help_title">Help translate Open Products Facts</string>
-  <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
-  <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Products Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="txtDialogsContent">O produto escaneado ainda não existe no Open Products Facts. Por favor adicione-o.</string>
+  <string name="txtDialogsContentPowerMode">O produto escaneado já existe no Open Products Facts.</string>
+  <string name="msg_share">Ver este produto no Open Products Facts:</string>
+  <string name="not_support_books">Livros não são atualmente permitidos no Open Products Facts</string>
+  <string name="txt_broaden_search">- ampliando sua pesquisa \n- escaneie e adicione-o ao Open Products Facts</string>
+  <string name="Donation">Clique aqui para doar ao Open Products Facts</string>
+  <string name="translate_help_title">Ajudar a traduzir Open Products Facts</string>
+  <string name="translate_help_summary">Traga a base de dados Open Products Facts ao seu idioma - nenhum conhecimento técnico necessário</string>
+  <string name="text_offline_info_dialog">Você pode escanear produtos quando estiver offline e adicioná-los ao Open Products Facts mais tarde. Todos os produtos escaneados aparecerão aqui, e você poderá enviá-los usando o botão abaixo.</string>
+  <string name="warning_alert_data">Suas alergias nunca serão enviadas ao servidor do Open Products Facts. Além disso, atenção ao fato que os dados dos produtos podem ser imprecisos, e a detecção não é 100% precisa, então por favor verifique! </string>
+  <!-- OPF tagline in different languages -->
+  <string name="tagline">a base de dados de produtos gratuita</string>
 </resources>

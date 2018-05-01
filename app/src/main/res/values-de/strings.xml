@@ -48,6 +48,12 @@
     <item>cl</item>
     <item>fl.oz.</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>Standard</item>
@@ -56,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Lesezeichen</string>
-  <string name="product">Produkt</string>
+  <string name="edit">Bearbeiten</string>
   <string name="fastscroller_track">FastScroller-Spur</string>
   <string name="fastscroller_handle">FastScroller-Griff</string>
   <string name="search_button">Suchen</string>
@@ -213,6 +219,8 @@
   <string name="permision_write_external_storage">Berechtigung zum Schreiben der SD-Karte ist erforderlich, um den Verlauf exportieren zu können.</string>
   <string name="txt_nutrition_not_found">k.A.</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Kalorien berechnen</string>
+  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Kohlenhydrate</string>
   <string name="nutrition_carbohydrate_short_name">Kohlenhydrate (g)</string>
   <string name="nutrition_cholesterol">Cholesterin</string>
@@ -409,6 +417,8 @@
   <string name="category_string">Kategorie</string>
   <string name="connection">Verbunden</string>
   <string name="contributor_string">Mitwirkende(r)</string>
+  <string name="Rate_Us">Zeigen Sie Ihre Unterstützung</string>
+  <string name="Rate_Us_title">Bewerten Sie unsere App</string>
   <string name="app_disabled_text">Anwendung ist deaktiviert</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitamine:</string>
@@ -417,6 +427,8 @@
   <string name="other_tags_text">Weitere Stoffe:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata-Informationen</string>
+  <string name="disable_image_loading">Das Laden von Grafiken bei geringem Ladezustand der Batterie deaktivieren</string>
+  <string name="DisableLoadTitle">Laden von Grafiken deaktivieren</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galerie</string>
   <string name="txtOptions">Einstellungen</string>
@@ -436,8 +448,28 @@
   <string name="format_error">Fehlerhafte(r/s) Strichcode-/QR-Format</string>
   <string name="code_detected">Strichcode erkannt</string>
   <string name="do_you_want_to">Möchten Sie Fotos zu diesem Strichcode hinzufügen?</string>
-  <string name="notify_title">Export complete</string>
-  <string name="notify_content">Click to view exported products</string>
-  <string name="notification_channel_name">Export Notifications</string>
-  <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="bottomNav_history">Verlauf</string>
+  <string name="bottomNav_search">Suchen</string>
+  <string name="products_added">Produkte, die Sie hinzugefügt oder bearbeitet haben</string>
+  <string name="products_incomplete">Von Ihnen hinzugefügte Produkte, die noch abgeschlossen werden müssen</string>
+  <string name="product_pictures_contributed">Produkte, für die Sie Fotos gemacht haben</string>
+  <string name="picture_contributed_incomplete">Produkte, für die Sie Fotos gemacht haben, müssen vervollständigt werden</string>
+  <string name="product_info_added">Produkte, für die Sie Informationen hinzugefügt haben</string>
+  <string name="product_info_tocomplete">Produkte, für die Sie Informationen hinzugefügt haben, müssen vervollständigt werden</string>
+  <string name="show_by">Anzeigen</string>
+  <string name="notify_title">Exportieren abgeschlossen</string>
+  <string name="notify_content">Hier klicken, um die exportierten Produkte anzuzeigen</string>
+  <string name="notification_channel_name">Benachrichtigungen exportieren</string>
+  <string name="notify_channel_description">Benachrichtigung, um den Speicherort der exportierten Dateien anzuzeigen</string>
+  <string name="products_to_be_completed">Noch abzuschließende Produkte</string>
+  <string name="modified_history">Produkt hinzugefügt am %1$s um %2$s durch %3$s. Letzte Änderung der Produktseite am %4$s um %5$s von %6$s. Produktseite auch von %7$s bearbeitet</string>
+  <string name="offline_notification_title">Noch zu sendende Offline-Beiträge</string>
+  <string name="offline_notification_context">Sie verfügen über %1$d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden.</string>
+  <string name="creator_history">Produkt hinzugefügt am %1$s um %2$s MESZ durch</string>
+  <string name="last_editor_history">Letzte Änderung der Produktseite am %1$s um %2$s MESZ durch </string>
+  <string name="other_editors">Produktseite auch bearbeitet von </string>
+  <string name="contribution_tab">Beiträge</string>
+  <string name="contribution_tab_summary">Tab „Benutzerbeiträge” mit Produkten anzeigen</string>
+  <string name="contribution_tab_title">Tab „Benutzerbeiträge” anzeigen</string>
+  <string name="product">Bearbeiten</string>
 </resources>

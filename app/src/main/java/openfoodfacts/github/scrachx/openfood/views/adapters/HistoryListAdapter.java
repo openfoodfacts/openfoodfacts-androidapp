@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -30,11 +31,14 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
     private final String productUrl;
     private Activity mActivity;
     private Resources res;
-    public HistoryListAdapter(List<HistoryItem> list, String productUrl, Activity activity) {
+    private boolean isLowBatteryMode;
+
+    public HistoryListAdapter(List<HistoryItem> list, String productUrl, Activity activity, boolean isLowBatteryMode) {
         this.list = list == null ? Collections.emptyList() : list;
         this.productUrl = productUrl;
         this.mActivity = activity;
         res = activity.getResources();
+        this.isLowBatteryMode = isLowBatteryMode;
 
     }
 
@@ -63,27 +67,37 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         holder.txtTitle.setText(item.getTitle());
         holder.txtBarcode.setText(item.getBarcode());
         holder.txtProductDetails.setText(stringBuilder.toString());
+        if(BuildConfig.FLAVOR.equals("opf")||BuildConfig.FLAVOR.equals("opff")||BuildConfig.FLAVOR.equals("obf")){
+            holder.imgNutritionGrade.setVisibility(View.GONE);
+        }
         holder.imgNutritionGrade.setImageDrawable(ContextCompat.getDrawable(mActivity, Utils.getSmallImageGrade(item.getNutritionGrade())));
         if (item.getUrl() == null) {
             holder.historyImageProgressbar.setVisibility(View.GONE);
         }
-        Picasso.with(mActivity)
-                .load(item.getUrl())
-                .placeholder(R.drawable.placeholder_thumb)
-                .error(R.drawable.ic_no_red_24dp)
-                .fit()
-                .centerCrop()
-                .into(holder.imgProduct, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        holder.historyImageProgressbar.setVisibility(View.GONE);
-                    }
 
-                    @Override
-                    public void onError() {
-                        holder.historyImageProgressbar.setVisibility(View.GONE);
-                    }
-                });
+        // Load Image if isBatteryLoad is false
+        if (!isLowBatteryMode) {
+            Picasso.with(mActivity)
+                    .load(item.getUrl())
+                    .placeholder(R.drawable.placeholder_thumb)
+                    .error(R.drawable.ic_no_red_24dp)
+                    .fit()
+                    .centerCrop()
+                    .into(holder.imgProduct, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            holder.historyImageProgressbar.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                            holder.historyImageProgressbar.setVisibility(View.GONE);
+                        }
+                    });
+        } else {
+            holder.imgProduct.setBackground(mActivity.getResources().getDrawable(R.drawable.placeholder_thumb));
+            holder.historyImageProgressbar.setVisibility(View.INVISIBLE);
+        }
 
         Date date = list.get(position).getTime();
         calcTime(date, holder);
@@ -126,19 +140,16 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         long days = TimeUnit.MILLISECONDS.toDays(now.getTime() - date.getTime());
 
         String secText = String.valueOf(seconds) + " seconds ago";
-        String hourText = res.getString(R.string.last_seen_string,hours,res.getQuantityString(R.plurals.hours,(int)hours));
-        String minText = res.getString(R.string.last_seen_string,minutes,res.getQuantityString(R.plurals.minutes,(int)minutes));
-        String dayText = res.getString(R.string.last_seen_string,days,res.getQuantityString(R.plurals.days,(int)days));
+        String hourText = res.getString(R.string.last_seen_string, hours, res.getQuantityString(R.plurals.hours, (int) hours));
+        String minText = res.getString(R.string.last_seen_string, minutes, res.getQuantityString(R.plurals.minutes, (int) minutes));
+        String dayText = res.getString(R.string.last_seen_string, days, res.getQuantityString(R.plurals.days, (int) days));
         if (seconds < 60) {
             holder.txtDate.setText(secText);
-        }
-        else if (minutes < 60) {
+        } else if (minutes < 60) {
             holder.txtDate.setText(minText);
-        }
-        else if (hours < 24) {
+        } else if (hours < 24) {
             holder.txtDate.setText(hourText);
-        }
-        else {
+        } else {
             holder.txtDate.setText(dayText);
         }
     }

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
@@ -25,6 +26,10 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
         mProductRepository = productRepository;
         mAllergens = allergens;
         mActivity = activity;
+    }
+
+    public void setAllergens(List<AllergenName> allergens) {
+        mAllergens = allergens;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -56,13 +61,17 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
         button.setText(R.string.delete_txt);
         button.setOnClickListener(v -> {
             mAllergens.remove(holder.getAdapterPosition());
-            mProductRepository.setAllergenEnabled(allergen.getAllergenTag(), false);
             notifyItemRemoved(holder.getAdapterPosition());
+            mProductRepository.setAllergenEnabled(allergen.getAllergenTag(), false);
         });
     }
 
     @Override
     public int getItemCount() {
+        if (mAllergens == null) {
+            mAllergens = new ArrayList<AllergenName>();
+        }
+
         return mAllergens.size();
     }
 }

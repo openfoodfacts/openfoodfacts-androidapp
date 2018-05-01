@@ -1,12 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import org.greenrobot.greendao.database.Database;
-
-import static openfoodfacts.github.scrachx.openfood.models.DaoMaster.dropAllTables;
 
 public class DatabaseHelper extends DaoMaster.OpenHelper {
 
@@ -80,26 +79,33 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 break;
             }
             case 7: {
-                db.execSQL("ALTER TABLE additive_name ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE additive_name ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
-
-                db.execSQL("ALTER TABLE additive ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE additive ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
-
-                db.execSQL("ALTER TABLE category_name ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE category_name ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
-
-                db.execSQL("ALTER TABLE category ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE category ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
-
-                db.execSQL("ALTER TABLE label_name ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE label_name ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
-
-                db.execSQL("ALTER TABLE label ADD COLUMN 'wiki_data_id' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE label ADD COLUMN 'is_wiki_data_id_present' INTEGER NOT NULL DEFAULT '';");
+                String newColumns[] = new String[]{"wiki_data_id", "is_wiki_data_id_present"};
+                String updatedTables[] = new String[]{"additive_name", "additive", "category_name", "category", "label_name", "label"};
+                for (String table : updatedTables) {
+                    for (String column : newColumns) {
+                        if (isFieldExist(db, table, column)) {
+                            db.execSQL(String.format("ALTER TABLE %s ADD COLUMN '%s' TEXT NOT NULL DEFAULT '';", table, column));
+                        }
+                    }
+                }
 
                 break;
             }
         }
+    }
+
+    private boolean isFieldExist(Database db, String tableName, String fieldName) {
+        boolean isExist = false;
+        String query = String.format("PRAGMA table_info(%s)", tableName);
+        Cursor res = db.rawQuery(query, null);
+        res.moveToFirst();
+        do {
+            String currentColumn = res.getString(1);
+            if (currentColumn.equals(fieldName)) {
+                isExist = true;
+            }
+        } while (res.moveToNext());
+
+        return isExist;
     }
 }

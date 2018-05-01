@@ -1,11 +1,35 @@
 Olvassa be az élelmiszereket vagy a vonalkódjukat, hogy megszerezze az adatokat azok összetevőiről, adalékanyagairól és tápértékadatairól.
 
-Az alkalmazás lehetővé teszi 340 000 (beleértve 175 000 egyesült államokbeli) termék megtekintését, amelyek már megtalálhatóak az Open Food Facts ingyenes és nyílt adatbázisában, továbbá képek és adatok hozzáadását a hiányzó termékekhez.
+Az alkalmazás lehetővé teszi 500 000 (beleértve 175 000 egyesült államokbeli) termék megtekintését, amelyek már megtalálhatóak az Open Food Facts ingyenes és nyílt adatbázisában, továbbá képek és adatok hozzáadását a hiányzó termékekhez.
 
-Ahhoz, hogy felfedezhesse az Open Food Facts programot, kérjük, látogasson el a https://openfoodfacts.org weboldalra
+Az Open Food Facts program felfedezéséhez, kérjük, látogasson el a https://openfoodfacts.org weboldalra
 
-Megtudhatja még (a termékeken feltüntetett jelölések szerint):
+
+***Hozzájárulás az Élelmiszer Átláthatósághoz***
+
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- You can start contributing today by adding a product from your food cupboard. 
+
+*** Kapja meg a Tényeket ***
+- Az Open Food Facts segít önnek a termékek cimkéin található apróbetűs rész értelmezésében. Megtudhatja még (a termékeken feltüntetett jelölések szerint):
 - szénlábnyom (szén-dioxid-kibocsátás) és csomagolás (valamint újrahasznosítási utasítások),
 - Nutriscore (táplálkozási pontszám), tápanyagok, zsír / zsírtartalom, telített zsírsavak, szénhidrátok, cukrok, rost, fehérje, só és nátrium.
 - márkanevek, allergének, címkék (bio, gluténmentes, vegán, vegetáriánus, halal, kóser ...), nyomon követhetőségi információk (csomagolási kódok, összetevők eredete)
 - A borok és sörök esetén az alkoholtartalom megtalálható.
+
+*** Minden körülmény között jól működik ***
+- Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata.
+- The app loads only the strict necessary to reduce data and battery consumption
+- Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
+
+*** Your food, your data ***
+- Az ön adatainak tulajdonosa ön és soha nem lesznek elküldve online
+- Az alkalmazást névtelenül használhatja
+- Exportálni tudja a beolvasási előzményeket
+
+Az Open Food Facts elérhető az interneten is a következő címen: https://world.openfoodfacts.org
+Kérdések, visszajelzés: contact@openfoodfacts.org
+
+Kozmetikai termékekhez telepítheti az Open Beauty Facts-ot, állateledelekhez az Open Pet Food Facts-ot és a többi termékhez az Open Products Facts-ot.

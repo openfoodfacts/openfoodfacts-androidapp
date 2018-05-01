@@ -1,1 +1,1 @@
-Scan food products to decrypt labels: ingredients, additives and nutrition facts
+Fai una scansione dei prodotti per decifrarne l'etichetta: ingredienti, additivi e valori nutrizionali

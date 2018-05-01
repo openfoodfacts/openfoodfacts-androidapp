@@ -86,6 +86,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     TextView infoView;
     @BindView(R.id.history_progressbar)
     ProgressBar historyProgressbar;
+    //boolean to determine if image should be loaded or not
+    private boolean isLowBatteryMode = false;
     private static String SORT_TYPE = "none";
 
     private SensorManager mSensorManager;
@@ -105,6 +107,13 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(HistoryScanActivity.this);
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {
+           isLowBatteryMode = true;
+        }
 
         mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
         productItems = new ArrayList<>();
@@ -146,7 +155,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         }
     }
-
 
     public void exportCSV() {
         boolean isDownload = false;
@@ -205,6 +213,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         downloadIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel notificationChannel = new NotificationChannel("downloadChannel", "ChannelCSV", importance);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
 
             String channelId = "export_channel";
             CharSequence channelName = getString(R.string.notification_channel_name);
@@ -231,7 +245,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         menu.findItem(R.id.action_export_all_history)
                 .setVisible(!emptyHistory);
-
         menu.findItem(R.id.action_remove_all_history)
                 .setVisible(!emptyHistory);
 
@@ -280,7 +293,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             case R.id.sort_history:
                 MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
                 builder.title(R.string.sort_by);
-                String[] sortTypes = {getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_nutrition_grade), getString(R.string.by_barcode), getString(R.string.by_time)};
+                String[] sortTypes;
+                if (BuildConfig.FLAVOR.equals("off")) {
+                    sortTypes = new String[]{getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_nutrition_grade), getString(R.string.by_barcode), getString(R.string.by_time)};
+                } else {
+                    sortTypes = new String[]{getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_time), getString(R.string.by_barcode)};
+                }
                 builder.items(sortTypes);
                 builder.itemsCallback(new MaterialDialog.ListCallback() {
                     @Override
@@ -300,7 +318,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
 
                             case 2:
-                                SORT_TYPE = "grade";
+
+                                if (BuildConfig.FLAVOR.equals("off")) {
+                                    SORT_TYPE = "grade";
+                                } else {
+                                    SORT_TYPE = "time";
+                                }
                                 callTask();
                                 break;
 
@@ -399,7 +422,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
             sort(SORT_TYPE, productItems);
             adapter = new HistoryListAdapter(productItems, getString(R.string
-                    .website_product), activity);
+                    .website_product), activity,isLowBatteryMode);
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
             historyProgressbar.setVisibility(View.GONE);
@@ -437,6 +460,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                 }
             } else {
                 Intent intent = new Intent(HistoryScanActivity.this, ScannerFragmentActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         }

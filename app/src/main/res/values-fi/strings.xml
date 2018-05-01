@@ -48,6 +48,12 @@
     <item>cl</item>
     <item>fl oz</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>mg</item>
+    <item>kg</item>
+    <item>I</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>Oletus</item>
@@ -56,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="product">Tuote</string>
+  <string name="edit">Edit</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Etsi</string>
@@ -66,29 +72,29 @@
   <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
   <string name="alert_dialog_product_error_msg">Tuotetta ei löytynyt, yritä uudelleen</string>
   <string name="toast_retrieving">Ladataan...</string>
-  <string name="txtGenericName">Common name :</string>
+  <string name="txtGenericName">Yleisnimi :</string>
   <string name="txtBarcode">Viivakoodi:</string>
   <string name="txtQuantity">Määrä:</string>
   <string name="txtPackaging">Paketointi:</string>
-  <string name="txtBrands">Brands :</string>
-  <string name="txtCategories">Categories :</string>
+  <string name="txtBrands">Tuotemerkit :</string>
+  <string name="txtCategories">Luokat :</string>
   <string name="txtLabels">Labels, certifications, awards :</string>
   <string name="txtManufacturing">Manufacturing or processing places :</string>
-  <string name="txtIngredientsOrigins">Origin of ingredients :</string>
-  <string name="txtCity">City, state and country where purchased :</string>
+  <string name="txtIngredientsOrigins">Alkuperä ainesosien :</string>
+  <string name="txtCity">Kaupungin, valtion ja ostomaassa :</string>
   <string name="txtEMB">EMB Code:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtManufactureUrl">Linkki tuotesivulle virallisella sivustolla tuottajan:</string>
   <string name="txtStores">Stores :</string>
   <string name="txtCountries">Maat joissa myynnissä:</string>
   <string name="txtIngredients">Ainesosaluettelo:</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
-  <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
+  <string name="txtSubstances">Allergioita tai intoleransseja aiheuttavat aineet ja tuotteet :</string>
   <string name="txtAdditives">Additives :</string>
   <string name="txtTraces">Traces :</string>
   <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
   <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
-  <string name="txtServingSize">Serving size :</string>
+  <string name="txtServingSize">Tarjoilukoko:</string>
   <string name="txtNutrientLevel100g">Ravintosisältö per 100 g:</string>
   <string name="txtNutritionLevelLow">in low quantity</string>
   <string name="txtNutritionLevelModerate">in moderate quantity</string>
@@ -100,9 +106,9 @@
   <string name="txtSignIn">Kirjaudu sisään</string>
   <string name="txtUser">Käyttäjäpaneeli</string>
   <string name="txtToastSaved">User saved</string>
-  <string name="txtSalt">Salt</string>
-  <string name="txtFat">Fat</string>
-  <string name="txtSugars">Sugars</string>
+  <string name="txtSalt">Suola</string>
+  <string name="txtFat">Rasva</string>
+  <string name="txtSugars">Sokerit</string>
   <string name="hintBarcode">Viivakoodi</string>
   <string name="hintLogin">Käyttäjätunnus</string>
   <string name="hintPass">Salasana</string>
@@ -213,6 +219,8 @@
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Calculate Calories</string>
+  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Hiilihydraatti</string>
   <string name="nutrition_carbohydrate_short_name">Hiilihydraatti (g)</string>
   <string name="nutrition_cholesterol">Kolesteroli</string>
@@ -232,7 +240,7 @@
   <string name="nutrition_salt_short_name">Suola (g)</string>
   <string name="nutrition_satured_fat">Satured fat</string>
   <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
-  <string name="nutrition_serving">Per serving</string>
+  <string name="nutrition_serving">Annosta kohti</string>
   <string name="nutrition_serving_size">Tarjoilukoko:</string>
   <string name="nutrition_sodium">Sodium</string>
   <string name="nutrition_sodium_short_name">Sodium (g)</string>
@@ -252,7 +260,7 @@
   <string name="search_hint">Etsi tuote</string>
   <string name="number_of_results">Number of results: </string>
   <string name="brand">Brand :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="number_of_products">Tuotteiden määrä: </string>
   <string name="txt_no_results">No results found</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
@@ -266,13 +274,13 @@
   <string name="nutrition_serum_proteins">Serum Proteins</string>
   <string name="nutrition_nucleotides">Nucleotides</string>
   <string name="for_100g">For 100 g</string>
-  <string name="serving">Per serving</string>
+  <string name="serving">Annosta kohti</string>
   <string name="minerals">Minerals</string>
   <string name="nutrition_calcium">Calcium</string>
   <string name="nutrition_potassium">Potassium</string>
   <string name="nutrition_chlore">Chlorine</string>
   <string name="nutrition_magnesium">Magnesium</string>
-  <string name="nutrition_taurine">Taurine</string>
+  <string name="nutrition_taurine">Tauriini</string>
   <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
   <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
   <string name="nutrition_omega3">Omega 3</string>
@@ -388,7 +396,7 @@
   <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Choose Resolution</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-  <string name="image_upload_resolution">Image Upload Resolution</string>
+  <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">Going further</string>
   <string name="description">Description: </string>
@@ -397,7 +405,7 @@
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Brand</string>
-  <string name="additive_string">Additive</string>
+  <string name="additive_string">Lisäaine</string>
   <string name="search_string">Etsi</string>
   <string name="country_string">Maa</string>
   <string name="store_subtitle">Kauppa</string>
@@ -409,6 +417,8 @@
   <string name="category_string">Category</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
+  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitamins:</string>
@@ -417,6 +427,8 @@
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
+  <string name="disable_image_loading">Disable image loading when battery is low</string>
+  <string name="DisableLoadTitle">Disable image loading</string>
   <string name="txtCamera">Camera</string>
   <string name="txtGallery">Gallery</string>
   <string name="txtOptions">Options</string>
@@ -436,8 +448,28 @@
   <string name="format_error">Wrong Barcode/QR format</string>
   <string name="code_detected">We have detected the barcode</string>
   <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="bottomNav_history">Historia</string>
+  <string name="bottomNav_search">Etsi</string>
+  <string name="products_added">Lisäämäsi tai muokkaamasi tuotteet</string>
+  <string name="products_incomplete">Products you added that need to be completed</string>
+  <string name="product_pictures_contributed">Products you took pictures for</string>
+  <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
+  <string name="product_info_added">Products you added information for</string>
+  <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
+  <string name="show_by">Show</string>
   <string name="notify_title">Export complete</string>
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="products_to_be_completed">Products to be completed</string>
+  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="offline_notification_title">Offline contributions you need to send</string>
+  <string name="offline_notification_context">You have %1$d offline products waiting to be contributed to Open Food Facts</string>
+  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
+  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="other_editors">Product page also edited by </string>
+  <string name="contribution_tab">Contributions</string>
+  <string name="contribution_tab_summary">Show user contributions tab with products</string>
+  <string name="contribution_tab_title">Show Contribution Tab</string>
+  <string name="product">Edit</string>
 </resources>

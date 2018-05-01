@@ -48,6 +48,12 @@
     <item>cl</item>
     <item>uncia</item>
   </string-array>
+  <!-- weight units -->
+  <string-array name="weights_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>Alapértelmezett</item>
@@ -56,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Könyvjelző</string>
-  <string name="product">Termék</string>
+  <string name="edit">Edit</string>
   <string name="fastscroller_track">FastScroller sáv</string>
   <string name="fastscroller_handle">FastScroller kezelő</string>
   <string name="search_button">Keresés</string>
@@ -213,6 +219,8 @@
   <string name="permision_write_external_storage">Tárhelyre írási jogosultság szükséges az előzmény exportálásához.</string>
   <string name="txt_nutrition_not_found">Nincs adat</string>
   <!-- Nutrition info tab -->
+  <string name="calculate_calories">Kalória kiszámítása</string>
+  <string name="txt_calories_result">%1$s kcal %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Szénhidrát</string>
   <string name="nutrition_carbohydrate_short_name">Szénhidrát (g)</string>
   <string name="nutrition_cholesterol">Koleszterin</string>
@@ -409,6 +417,8 @@
   <string name="category_string">Kategória</string>
   <string name="connection">Csatlakozva</string>
   <string name="contributor_string">Hozzájáruló</string>
+  <string name="Rate_Us">Támogatás megjelenítése</string>
+  <string name="Rate_Us_title">Értékelje az alkalmazásunkat</string>
   <string name="app_disabled_text">Az alkalmazás le van tiltva</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitaminok:</string>
@@ -417,6 +427,8 @@
   <string name="other_tags_text">Egyéb anyagok:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata adat</string>
+  <string name="disable_image_loading">Kép betöltés tiltása alacsony akkumulátor töltöttség esetén</string>
+  <string name="DisableLoadTitle">Kép betöltés tiltása</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galéria</string>
   <string name="txtOptions">Lehetőségek</string>
@@ -436,8 +448,28 @@
   <string name="format_error">Helytelen vonalkód/QR formátum</string>
   <string name="code_detected">Vonalkód felismerve</string>
   <string name="do_you_want_to">Szeretne fényképeket hozzáadni ehhez a vonalkódhoz?</string>
-  <string name="notify_title">Export complete</string>
-  <string name="notify_content">Click to view exported products</string>
-  <string name="notification_channel_name">Export Notifications</string>
-  <string name="notify_channel_description">Notification to show exported file\'s location</string>
+  <string name="bottomNav_history">Előzmények</string>
+  <string name="bottomNav_search">Keresés</string>
+  <string name="products_added">Termékek, amelyeket hozzáadott vagy szerkesztett</string>
+  <string name="products_incomplete">Termékek, amiket hozzáadtál, és befejezésre várnak</string>
+  <string name="product_pictures_contributed">Termékek, amelyekről képeket készített</string>
+  <string name="picture_contributed_incomplete">Termékek, amelyekről képeket készített és ki kell egészíteni</string>
+  <string name="product_info_added">Termékek, amelyekhez információt adott hozzá</string>
+  <string name="product_info_tocomplete">Termékek, amelyekhez információt adott hozzá és ki kell egészíteni</string>
+  <string name="show_by">Megjelenítés</string>
+  <string name="notify_title">Exportálás befejezve</string>
+  <string name="notify_content">Kattintson az exportált termékek megtekintéséhez</string>
+  <string name="notification_channel_name">Export Értesítések</string>
+  <string name="notify_channel_description">Értesítés az exportált fájl helyének megjelenítéséhez</string>
+  <string name="products_to_be_completed">Kiegészítendő termékek</string>
+  <string name="modified_history">A terméket hozzáadta %3$s a következő időpontban: %1$s, %2$s. A termékoldalt legutóbb szerkesztette %6$s a következő időpontban: %4$s, %5$s. A termékoldalt szerkesztette még %7$s</string>
+  <string name="offline_notification_title">Kapcsolat nélküli módban készült hozzájárulások, amiket el kell küldenie</string>
+  <string name="offline_notification_context">Önnek %1$d kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájáruláshoz</string>
+  <string name="creator_history">A terméket hozzáadta a következő időpontban: %1$s, %2$s CET</string>
+  <string name="last_editor_history">A termékoldalt legutóbb szerkesztette a következő időpontban: %1$s, %2$s CEST </string>
+  <string name="other_editors">A termékoldalt szerkesztette még </string>
+  <string name="contribution_tab">Hozzájárulások</string>
+  <string name="contribution_tab_summary">Felhasználói hozzájárulások lap megjelenítése a termékekkel</string>
+  <string name="contribution_tab_title">Hozzájárulási lap megjelenítése</string>
+  <string name="product">Edit</string>
 </resources>

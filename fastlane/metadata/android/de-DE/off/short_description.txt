@@ -1,1 +1,1 @@
-Lebensmittelprodukte erfassen, um Etiketten zu entschlüsseln: Inhaltsstoffe, Zusatzstoffe und Nährwertangaben
+Lebensmittelprodukte einlesen, um Etiketten zu entschlüsseln: Inhaltsstoffe, Zusatzstoffe und Nährwertangaben

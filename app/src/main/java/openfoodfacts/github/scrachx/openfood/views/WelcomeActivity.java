@@ -32,13 +32,14 @@ public class WelcomeActivity extends AppCompatActivity {
     private Button btnSkip, btnNext;
     private PrefManager prefManager;
     private boolean lastPage = false;
+    private int currentState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-        if(getResources().getBoolean(R.bool.portrait_only)){
+        if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_welcome);
@@ -127,19 +128,30 @@ public class WelcomeActivity extends AppCompatActivity {
             } else {
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
+                lastPage = false;
             }
         }
 
+        /*
+        If user is on the last page and tries to swipe towards the next page on right then the value of
+        positionOffset returned is always 0, on the other hand if the user tries to swipe towards the
+        previous page on the left then the value of positionOffset returned is 0.999 and decreases as the
+        user continues to swipe in the same direction. Also whenever a user tries to swipe in any
+        direction the state is changed from idle to dragging and onPageScrollStateChanged is called.
+        Therefore if the user is on the last page and the value of positionOffset is 0 and state is
+        dragging it means that the user is trying to go to the next page on right from the last page and
+        hence MainActivity is started in this case.
+        */
         @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-
+        public void onPageScrolled(int arg0, float positionOffset, int positionOffsetPixels) {
+            if (lastPage && positionOffset == 0f && currentState == ViewPager.SCROLL_STATE_DRAGGING) {
+                launchHomeScreen();
+            }
         }
 
         @Override
         public void onPageScrollStateChanged(int arg0) {
-            if (lastPage && arg0 == ViewPager.SCROLL_STATE_DRAGGING) {
-                startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
-            }
+            currentState = arg0;
         }
     };
 
