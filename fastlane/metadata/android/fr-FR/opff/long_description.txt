@@ -8,11 +8,11 @@ To discover the Open Pet Food Facts project, please visit https://world.openpetf
 
 - Open Pet Food Facts is a pet food products database made by everyone, for everyone.
 - You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Nous avons beaucoup de projets passionnants auxquels vous pouvez contribuer de différentes façons. 
 - You can start contributing today by adding a product from your pet's cupboard. 
 
 
-*** Get the Facts ***
+*** Obtenez les faits ***
 
 You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
@@ -23,7 +23,7 @@ You will also be able to find (according to the indications present on the produ
 *** Fonctionne bien dans toutes les conditions ***
 - Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d'une connexion Internet sur le moment.
 - L'application ne charge que le strict nécessaire pour réduire la consommation de données et de la batterie
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Vous n'avez pas besoin d'une caméra pour rechercher un produit. Vous pouvez également taper le code à barres si vous n'avez pas d'appareil photo ou si vous avez un problème avec celui-ci.
 
 *** Your pet food, your data ***
 - Vos données personnelles vous appartiennent et ne sont jamais envoyées en ligne
