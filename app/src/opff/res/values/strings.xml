@@ -40,5 +40,6 @@
     </string-array>
 
     <string name="tagline">free pet food products database</string>
+    <string name="app_name_long" translatable="false">Open Pet Food Facts</string>
 
 </resources>

@@ -41,5 +41,6 @@
 
 
     <string name="tagline">the free food products database</string>
+    <string name="app_name_long" translatable="false">Open Food Facts</string>
 
 </resources>

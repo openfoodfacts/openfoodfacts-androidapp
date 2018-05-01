@@ -40,5 +40,6 @@
     </string-array>
 
     <string name="tagline">the free cosmetics database</string>
+    <string name="app_name_long" translatable="false">Open Beauty Facts</string>
 
 </resources>

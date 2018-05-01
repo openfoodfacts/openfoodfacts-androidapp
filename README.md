@@ -50,6 +50,7 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 * If you're running the app for the first time android-studio will ask you to install the Gradle dependencies if you haven't already, Just click install.
 * If you're a new contributor to open-source, We recommend you to read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md)
 
+* Select OFF as the flavor <img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
 
 
 ## Waffle Throughput Graph
