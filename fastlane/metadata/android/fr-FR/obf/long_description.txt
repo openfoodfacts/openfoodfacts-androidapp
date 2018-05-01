@@ -1,7 +1,7 @@
-***Contribute to Cosmetic Transparency***
+***Contribuez à la transparence cosmétique***
 
-- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
-- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Beauty Facts est une base de données de produits cosmétiques faite par tout le monde, pour tout le monde.
+- Vous pouvez l'utiliser pour faire de meilleurs choix cosmétiques, et comme ce sont des données ouvertes, n'importe qui peut les réutiliser pour n'importe quel but.
 - Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding a product from your cosmetic cupboard. 
 
