@@ -20,7 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginRight="@dimen/spacing_small">
+            android:layout_marginRight="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small">
 
             <RelativeLayout
                 android:id="@+id/message_container"
@@ -45,6 +46,7 @@
                     android:layout_toLeftOf="@+id/message_dismiss_icon"
                     android:layout_toRightOf="@+id/message_icon"
                     android:layout_toStartOf="@+id/message_dismiss_icon"
+                    android:paddingTop="@dimen/padding_too_short"
                     android:gravity="center"
                     android:text="@string/message_in_activity_save_product_offline"
                     android:textAlignment="center"
