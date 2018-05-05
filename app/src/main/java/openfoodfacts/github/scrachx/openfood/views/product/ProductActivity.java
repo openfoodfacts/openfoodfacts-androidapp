@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views.product;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -52,12 +51,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Nutriments;
-
-import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
-import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
-import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
@@ -254,7 +250,6 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 
         adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
         adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
-        adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (preferences.getBoolean("contributionTab", false)) {
             adapterResult.addFragment(new ContributorsFragment(), getString(R.string.contribution_tab));
