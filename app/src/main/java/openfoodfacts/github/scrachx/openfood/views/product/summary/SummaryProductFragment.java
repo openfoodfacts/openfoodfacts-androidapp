@@ -245,7 +245,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             for (int i = 0; i < packagings.length - 1; i++) {
                 packagingProduct.append(Utils.getClickableText(packagings[i].trim(), "", SearchType.PACKAGING, getActivity(), customTabsIntent));
-                packagingProduct.append(",");
+                packagingProduct.append(", ");
             }
 
             packagingProduct.append(Utils.getClickableText(packagings[packagings.length - 1].trim(), "", SearchType.PACKAGING, getActivity(), customTabsIntent));
@@ -261,7 +261,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             String[] brands = product.getBrands().split(",");
             for (int i = 0; i < brands.length - 1; i++) {
                 brandProduct.append(Utils.getClickableText(brands[i].trim(), "", SearchType.BRAND, getActivity(), customTabsIntent));
-                brandProduct.append(",");
+                brandProduct.append(", ");
             }
             brandProduct.append(Utils.getClickableText(brands[brands.length - 1].trim(), "", SearchType.BRAND, getActivity(), customTabsIntent));
         } else {
