@@ -88,8 +88,71 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                         }
                     }
                 }
+                }
+                if (columnIsNew(db, "additive", wikiDataID)) {
+                }
 
+                if (columnIsNew(db, "additive", isWikiDataPresent)) {
+            }
+                if (columnIsNew(db, "category_name", wikiDataID)) {
+                }
+
+                if (columnIsNew(db, "category_name", isWikiDataPresent)) {
+                }
+                if (columnIsNew(db, "category", wikiDataID)) {
+                }
+
+                if (columnIsNew(db, "category", isWikiDataPresent)) {
+                }
+                if (columnIsNew(db, "label_name", wikiDataID)) {
+                }
+
+                if (columnIsNew(db, "label_name", isWikiDataPresent)) {
+                }
+                if (columnIsNew(db, "label", wikiDataID)) {
+                }
+
+                if (columnIsNew(db, "label", isWikiDataPresent)) {
+                }
+                
                 break;
+            }
+        }
+    }
+
+    /**
+     * Helper method to prevent SQLite Exception for duplicate columns. {@Link https://stackoverflow.com/questions/18920136/check-if-a-column-exists-in-sqlite/45774056#45774056 }
+     *
+     * @param database     The database to check
+     * @param tableName    The name of the table
+     * @param columnToFind The column to check for
+     * @return false if the column is found in the table already.
+     */
+    private boolean columnIsNew(Database database,
+                                String tableName,
+                                String columnToFind) {
+        Cursor cursor = null;
+
+        try {
+            cursor = database.rawQuery(
+                    "PRAGMA table_info(" + tableName + ")",
+                    null
+            );
+
+            int nameColumnIndex = cursor.getColumnIndexOrThrow("name");
+
+            while (cursor.moveToNext()) {
+                String name = cursor.getString(nameColumnIndex);
+
+                if (name.equals(columnToFind)) {
+                    return false;
+                }
+            }
+
+            return true;
+        } finally {
+            if (cursor != null) {
+                cursor.close();
             }
         }
     }

@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
-import android.app.LoaderManager;
 import android.app.SearchManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
