@@ -155,10 +155,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         super.refreshView(state);
         mState = state;
 
-        try {
+        if(getArguments()!=null){
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
-        } catch (NullPointerException e) {
-            e.printStackTrace();
         }
 
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
