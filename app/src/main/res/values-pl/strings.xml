@@ -68,7 +68,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Zakładka</string>
-  <string name="edit">Edit</string>
+  <string name="edit">Edytuj</string>
   <string name="fastscroller_track">Ślad FastScrollera</string>
   <string name="fastscroller_handle">Uchwyt FastScrollera</string>
   <string name="search_button">Szukaj</string>
@@ -472,10 +472,11 @@
   <string name="offline_notification_title">Do wysłania z trybu offline</string>
   <string name="offline_notification_context">Twoje %1$d produktów offline oczekuje na wysłanie do Open Food Facts</string>
   <string name="creator_history">Produkt dodano %1$s o %2$s CET przez</string>
-  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="last_editor_history">Ostatnia zmiana strony produktu w %1$s o %2$s CEST przez 
+ </string>
   <string name="other_editors">Product page also edited by </string>
   <string name="contribution_tab">Wkład</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show Contribution Tab</string>
-  <string name="product">Edit</string>
+  <string name="product">Edytuj</string>
 </resources>

@@ -25,7 +25,7 @@
   <string name="msg_share">於 Open Food Facts 上查看此產品：</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
   <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donation">點擊此處捐贈 Open Feed Facts</string>
   <string name="translate_help_title">Help translate Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
   <string name="text_offline_info_dialog">在離線狀態下，您可以掃描產品並稍候將它們加到 Open Food Facts。所有您掃描過的產品都會出現在這裡，您可以使用下面的按鈕來傳送它們。</string>
