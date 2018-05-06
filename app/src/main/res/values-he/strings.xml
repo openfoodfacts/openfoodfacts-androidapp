@@ -68,7 +68,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">סימניה</string>
-  <string name="edit">Edit</string>
+  <string name="edit">עריכה</string>
   <string name="fastscroller_track">רצועת גלילה מהירה</string>
   <string name="fastscroller_handle">ידית גלילה מהירה</string>
   <string name="search_button">חיפוש</string>
@@ -477,5 +477,5 @@
   <string name="contribution_tab">תרומות</string>
   <string name="contribution_tab_summary">הצגת לשונית תרומות משתמשים עם מוצרים</string>
   <string name="contribution_tab_title">הצגת לשונית תרומות</string>
-  <string name="product">Edit</string>
+  <string name="product">עריכה</string>
 </resources>
