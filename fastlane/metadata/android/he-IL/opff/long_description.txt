@@ -18,7 +18,7 @@
 - רשימת רכיבים (כולל תכולת אפר)
 - פרטים תזונתיים, אזהרות תזונתיות…
 - מותגים, חומרים מעוררי רגישות, תוויות (אורגני, טבעוני…)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+- היישומון עובד על מזון לכלבים (מזון יבש ורטוב לכלבים), מזון לחתולים, מזון לארנבים, מזון לנחשים, מזון לדגים, מזון לציפורים, מזון לסוסים או כל סוג של מזון של חיית המחמד המועדפת עליך.
 
 *** פעילות עם כמה שפחות הפרעות ***
 - ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע.
@@ -31,4 +31,4 @@
 - ניתן לייצא את היסטוריית הסריקות שלך
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+למזון אנושי ניתן להתקין את Open Food Facts, למוצרי טיפוח את Open Beauty Facts ולכל שאר המוצרים את Open Products Facts.
