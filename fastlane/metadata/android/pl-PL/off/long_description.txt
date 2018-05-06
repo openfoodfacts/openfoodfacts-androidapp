@@ -12,7 +12,7 @@ Możesz z niej korzystać, by wybierać lepsze jedzenie i tak jak w przypadku ot
 Open Food Facts to projekt non-profit tworzony przez tysiące wolontariuszy z całego świata. Mamy wiele ciekawych projektów, do których możesz przyłączyć się w różny sposób. 
 - You can start contributing today by adding a product from your food cupboard. 
 
-*** Get the Facts ***
+*** Poznaj fakty ***
 - Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
@@ -25,11 +25,11 @@ Open Food Facts to projekt non-profit tworzony przez tysiące wolontariuszy z ca
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your food, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+Twoje dany nigdy nie są wysyłane online
+Możesz korzystać anonimowo z aplikacji
+Możesz eksportować historię skanowania
 
 Open Food Facts is also available on the web at https://world.openfoodfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Pytania, opinie: contact@openfoodfacts.org
 
 For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
