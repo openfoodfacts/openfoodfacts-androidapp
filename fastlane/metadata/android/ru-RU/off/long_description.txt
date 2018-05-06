@@ -9,7 +9,7 @@ To discover the Open Food Facts project, please visit https://openfoodfacts.org
 
 - Open Food Facts is a food products database made by everyone, for everyone.
 - You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. У нас есть много интересных проектов, которым вы можете поспособствовать. 
 - You can start contributing today by adding a product from your food cupboard. 
 
 *** Узнайте ***
@@ -21,15 +21,15 @@ To discover the Open Food Facts project, please visit https://openfoodfacts.org
 
 *** Works well in any condition ***
 - Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Приложение загружает только строго необходимое для снижения потребления данных и аккумулятора
+- Вам не нужна камера для обзора продукта. Вы также можете ввести штрих-код, если у вас нет камеры или с ней проблема.
 
 *** Your food, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Ваши данные принадлежат вам и никогда не отправляются онлайн
+- Вы можете использовать приложение анонимно
+- Вы можете экспортировать историю сканирования
 
 Open Food Facts is also available on the web at https://world.openfoodfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Вопросы, отзывы: contact@openfoodfacts.org
 
 For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
