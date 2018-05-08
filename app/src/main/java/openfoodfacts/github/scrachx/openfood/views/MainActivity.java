@@ -151,7 +151,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         setContentView(R.layout.activity_main);
 
         shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
+
+        /*
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
+        */
 
         Utils.hideKeyboard(this);
 
@@ -171,7 +174,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
 
-
+        /*
         Log.i("Shake", String.valueOf(scanOnShake));
         mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
             @Override
@@ -183,7 +186,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
             }
         });
+        */
 
+        setShakePreferences();
 
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
@@ -1016,12 +1021,21 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+        // properly handle scan on shake preferences changes
+        setShakePreferences();
+    }
 
-        // restart activity if scan on shake is chosen
-        if (sharedPreferences.getBoolean("shakeScanMode", false) != scanOnShake) {
-            this.recreate();
-        }
-
+    private void setShakePreferences() {
+        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
+        Log.i("Shake", String.valueOf(scanOnShake));
+        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
+            @Override
+            public void onShake(int count) {
+                if (scanOnShake) {
+                    Utils.scan(MainActivity.this);
+                }
+            }
+        });
     }
 
 }
