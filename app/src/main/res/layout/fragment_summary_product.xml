@@ -154,7 +154,7 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
+                        android:padding="@dimen/padding_too_short"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
 
@@ -166,7 +166,7 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
+                        android:padding="@dimen/padding_too_short"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
 
@@ -178,7 +178,7 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
+                        android:padding="@dimen/padding_too_short"
                         android:textColorLink="@color/light_blue_A700"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
@@ -191,7 +191,7 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
+                        android:padding="@dimen/padding_too_short"
                         android:textColorLink="@color/light_blue_A700"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
@@ -204,7 +204,7 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
+                        android:padding="@dimen/padding_too_short"
                         android:textColorLink="@color/light_blue_A700"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
@@ -217,7 +217,7 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
+                        android:padding="@dimen/padding_too_short"
                         android:textColorLink="@color/light_blue_A700"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
@@ -230,7 +230,7 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
+                        android:padding="@dimen/padding_too_short"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
 
@@ -242,7 +242,7 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
+                        android:padding="@dimen/padding_too_short"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal"
                         android:visibility="gone" />
@@ -255,7 +255,7 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
+                        android:padding="@dimen/padding_too_short"
                         android:textColorLink="@color/light_blue_A700"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
@@ -268,7 +268,7 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
+                        android:padding="@dimen/padding_too_short"
                         android:textColorLink="@color/light_blue_A700"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
@@ -281,7 +281,7 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
+                        android:padding="@dimen/padding_too_short"
                         android:textColorLink="@color/light_blue_A700"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
@@ -294,7 +294,7 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
+                        android:padding="@dimen/padding_too_short"
                         android:textColorLink="@color/light_blue_A700"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />

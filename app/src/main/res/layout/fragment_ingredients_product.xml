@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/swipeRefresh"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                                              xmlns:app="http://schemas.android.com/apk/res-auto"
+                                              android:id="@+id/swipeRefresh"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="match_parent"
+                                              app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -42,7 +42,6 @@
                 android:text="@string/take_picture_ingredients"
                 android:textStyle="bold" />
 
-
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,6 +61,14 @@
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
 
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="4dp">
+
                 <TextView
                     android:id="@+id/textSubstanceProduct"
                     android:layout_width="fill_parent"
@@ -75,6 +82,14 @@
                     android:textColorLink="@color/light_blue_A700"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/textTraceProduct"
@@ -90,6 +105,14 @@
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
 
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="4dp">
+
                 <TextView
                     android:id="@+id/textAdditiveProduct"
                     android:layout_width="fill_parent"
@@ -103,6 +126,14 @@
                     android:textColorLink="@color/light_blue_A700"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/textPalmOilProduct"
@@ -130,6 +161,14 @@
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
 
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="4dp">
+
                 <TextView
                     android:id="@+id/vitaminsTagsText"
                     android:layout_width="fill_parent"
@@ -142,6 +181,14 @@
                     android:padding="@dimen/spacing_small"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/mineralTagsText"
@@ -156,6 +203,14 @@
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
 
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="4dp">
+
                 <TextView
                     android:id="@+id/aminoAcidTagsText"
                     android:layout_width="fill_parent"
@@ -169,6 +224,13 @@
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
 
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/otherNutritionTags"
@@ -188,4 +250,5 @@
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
+
 </android.support.v4.widget.SwipeRefreshLayout>
