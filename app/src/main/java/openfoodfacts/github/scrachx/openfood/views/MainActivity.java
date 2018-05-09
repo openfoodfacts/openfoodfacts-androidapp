@@ -650,7 +650,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchMenuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchMenuItem.getActionView();
-        searchView.setQueryHint("Search for a food category");
         if (searchManager.getSearchableInfo(getComponentName()) != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         }

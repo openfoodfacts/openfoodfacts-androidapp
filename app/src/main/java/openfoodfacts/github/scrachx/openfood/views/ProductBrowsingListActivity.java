@@ -100,7 +100,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchMenuItem.getActionView();
-        searchView.setQueryHint("Search for a food category");
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
