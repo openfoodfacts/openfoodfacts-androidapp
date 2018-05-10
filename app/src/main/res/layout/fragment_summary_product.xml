@@ -129,7 +129,10 @@
                                 android:layout_toRightOf="@+id/message_icon"
                                 android:layout_toStartOf="@+id/message_dismiss_icon"
                                 android:gravity="center"
-                                android:paddingRight="@dimen/padding_normal"
+                                android:paddingRight="24dp"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:paddingLeft="4dp"
                                 android:text="@string/product_incomplete_message"
                                 android:textAlignment="center"
                                 android:textColor="@color/md_black_1000" />
