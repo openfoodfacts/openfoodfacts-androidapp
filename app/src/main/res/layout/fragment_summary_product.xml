@@ -104,6 +104,7 @@
                         android:layout_marginBottom="@dimen/spacing_small"
                         android:layout_marginLeft="@dimen/spacing_small"
                         android:layout_marginRight="@dimen/spacing_small"
+                        android:layout_marginTop="10dp"
                         android:visibility="gone">
 
                         <RelativeLayout
