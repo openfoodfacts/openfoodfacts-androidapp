@@ -25,11 +25,11 @@
   <string name="msg_share">Mira este producto en Open Food Facts :</string>
   <string name="not_support_books">Los libros no están actualmente soportados por Open Food Facts</string>
   <string name="txt_broaden_search">- ampliando tu búsqueda \n- escanea y añádelo a Open Beauty Facts</string>
-  <string name="Donation">Click here to donate to Open Beauty Facts</string>
-  <string name="translate_help_title">Help translate Open Beauty Facts</string>
-  <string name="translate_help_summary">Bring the Open Beauty Facts database to your language - no technical knowledge required</string>
-  <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Beauty Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="Donation">Haz clic aquí para donar a Open Beauty Facts</string>
+  <string name="translate_help_title">Ayuda a traducir Open Beauty Facts</string>
+  <string name="translate_help_summary">Lleva la base de datos de Open Beauty Facts a tu idioma - no se requiere conocimiento técnico</string>
+  <string name="text_offline_info_dialog">Puedes escanear productos cuando estas desconectado para añadirlos a Open Beauty Facts después. Todos los productos que escanees aparecerán aquí, y podrá enviarlos con el botón de abajo.</string>
+  <string name="warning_alert_data">Tu información sobre alergias nunca será enviada al servidor de Open Beauty Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
   <!-- OBF tagline in different languages -->
-  <string name="tagline">the free cosmetics database</string>
+  <string name="tagline">la base de datos gratuita</string>
 </resources>
