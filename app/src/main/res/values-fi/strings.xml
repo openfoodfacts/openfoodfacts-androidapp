@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="edit">Edit</string>
+  <string name="edit">Muokkaa</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Etsi</string>
@@ -130,7 +130,7 @@
   <string name="txtTakePicture">Ota kuva</string>
   <string name="txtSendAll">Upload all</string>
   <string name="txtNoData">No data</string>
-  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeeded">Odota…</string>
   <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
@@ -471,5 +471,5 @@
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show Contribution Tab</string>
-  <string name="product">Edit</string>
+  <string name="product">Muokkaa</string>
 </resources>

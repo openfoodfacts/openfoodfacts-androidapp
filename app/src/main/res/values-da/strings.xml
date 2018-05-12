@@ -470,6 +470,6 @@
   <string name="other_editors">Produktside også redigeret af </string>
   <string name="contribution_tab">Bidrag</string>
   <string name="contribution_tab_summary">Vis brugerbidragsfane med produkter</string>
-  <string name="contribution_tab_title">Show Contribution Tab</string>
+  <string name="contribution_tab_title">Vis Bidrag-faneblad</string>
   <string name="product">Rediger</string>
 </resources>
