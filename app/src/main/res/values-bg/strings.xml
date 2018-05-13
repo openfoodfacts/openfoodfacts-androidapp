@@ -7,7 +7,7 @@
   </plurals>
   <plurals name="hours">
     <item quantity="one"> hour</item>
-    <item quantity="other"> hours</item>
+    <item quantity="other"> часа</item>
   </plurals>
   <plurals name="days">
     <item quantity="one"> ден</item>
@@ -15,8 +15,8 @@
   </plurals>
   <string name="action_settings">Настройки</string>
   <string name="action_about">Относно</string>
-  <string name="action_discover">Discover</string>
-  <string name="contribute">How to contribute</string>
+  <string name="action_discover">Открий</string>
+  <string name="contribute">Как да помогнете</string>
   <string name="action_find">Find</string>
   <string name="text_barcode">Въведете баркода:</string>
   <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
