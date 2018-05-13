@@ -241,9 +241,9 @@
   <string name="nutrition_satured_fat">Наситени мазнини</string>
   <string name="nutrition_satured_fat_short_name">Наситени мазнини (g)</string>
   <string name="nutrition_serving">На порция</string>
-  <string name="nutrition_serving_size">Големина на порцията:</string>
+  <string name="nutrition_serving_size">Големина на порцията :</string>
   <string name="nutrition_sodium">Натрий</string>
-  <string name="nutrition_sodium_short_name">Натрий (г)</string>
+  <string name="nutrition_sodium_short_name">Натрий (g)</string>
   <string name="nutrition_sugars">Захар</string>
   <string name="nutrition_sugars_short_name">Захар (г)</string>
   <string name="nutrition_trans_fat">Транс-мазнини</string>
@@ -263,7 +263,7 @@
   <string name="number_of_products">Брой продукти: </string>
   <string name="txt_no_results">Няма намерени резултати</string>
   <string name="txt_extend_search">Опитайте да разширите търсенето си или да добавите продукта</string>
-  <string name="txt_no_matching_products">Не намерихме съвпадащи продукти. \n Можете да опитате:</string>
+  <string name="txt_no_matching_products">Не намерихме съвпадащи продукти.\n Можете да опитате :</string>
   <string name="txt_broaden_search">- разширяване на търсенето ви \n- сканиране и добавяне към Open Food Facts</string>
   <string name="txt_cant_load_search_results">Резултати от търсенето не могат да се заредят</string>
   <string name="something_went_wrong">Съжаляваме, но нещо се обърка…</string>
