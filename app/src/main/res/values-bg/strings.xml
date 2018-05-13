@@ -427,8 +427,8 @@
   <string name="other_tags_text">Други вещества:</string>
   <!--shared element transition key-->
   <string name="wikidata">Данни от Уикиданни</string>
-  <string name="disable_image_loading">Деактивирайте зареждането на изображения, когато батерията е ниска</string>
-  <string name="DisableLoadTitle">Изключване на зареждането на изображение</string>
+  <string name="disable_image_loading">Деактивирайте зареждането на изображение, когато батерията е ниска</string>
+  <string name="DisableLoadTitle">Забрани зареждането на изображение</string>
   <string name="txtCamera">Камера</string>
   <string name="txtGallery">Галерия</string>
   <string name="txtOptions">Опции</string>
@@ -444,7 +444,7 @@
   <!-- strings related to share images -->
   <string name="sorry_msg">Снимките без баркод все още не могат да се добавят с приложението. Моля, опитайте с мобилната уеб версия.</string>
   <string name="no_barcode">Не открихме никакъв баркод</string>
-  <string name="enter_barcode">Въведете баркода по-долу</string>
+  <string name="enter_barcode">Моля, въведете баркода по-долу</string>
   <string name="format_error">Грешен баркод/QR формат</string>
   <string name="code_detected">Открихме баркода</string>
   <string name="do_you_want_to">Искате ли да прибавите снимки към този баркод?</string>
@@ -453,11 +453,11 @@
   <string name="products_added">Продукти, които сте добавили или редактирали</string>
   <string name="products_incomplete">Продуктите, които сте добавили и трябва да бъдат завършени</string>
   <string name="product_pictures_contributed">Продукти, за които сте направили снимки</string>
-  <string name="picture_contributed_incomplete">Продуктите, които сте направили снимки и трябва да бъдат завършени</string>
+  <string name="picture_contributed_incomplete">Продуктите, за които сте направили снимки и трябва да бъдат завършени</string>
   <string name="product_info_added">Продуктите, за които сте добавили информация</string>
-  <string name="product_info_tocomplete">Продуктите, които сте добавили информация и трябва да бъдат завършени</string>
+  <string name="product_info_tocomplete">Продуктите, за които сте добавили информация и трябва да бъдат завършени</string>
   <string name="show_by">Покажи</string>
-  <string name="notify_title">Износянето завърши</string>
+  <string name="notify_title">Изнасянето завърши</string>
   <string name="notify_content">Щракнете, за да видите изнесените продукти</string>
   <string name="notification_channel_name">Уведомления за изнасяне</string>
   <string name="notify_channel_description">Уведомление за показване на местоположението на изнесения файл</string>
