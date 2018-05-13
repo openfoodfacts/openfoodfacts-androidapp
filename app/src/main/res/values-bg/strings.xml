@@ -406,7 +406,7 @@
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Марка</string>
   <string name="additive_string">Добавка</string>
-  <string name="search_string">Търсене</string>
+  <string name="search_string">Търси</string>
   <string name="country_string">Държави, в които се продава</string>
   <string name="store_subtitle">Магазин</string>
   <string name="packaging_subtitle">Опаковка</string>
@@ -436,10 +436,10 @@
   <string name="by_brand">Марка</string>
   <string name="by_barcode">Баркод</string>
   <string name="by_time">Наскоро разглеждано</string>
-  <string name="sort">Подредба</string>
+  <string name="sort">Сортиране</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
-  <string name="sort_by">Подреждане по</string>
-  <string name="shake_summary">Разклатете телефона, за да се сканират продуктите</string>
+  <string name="sort_by">Сортирай по</string>
+  <string name="shake_summary">Разклатете телефона, за да сканирате продуктите</string>
   <string name="shake_title">Scan on Shake</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
