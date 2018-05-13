@@ -44,8 +44,8 @@
     <item>мг</item>
     <item>кг</item>
     <item>л</item>
-    <item>мл</item>
-    <item>сл</item>
+    <item>ml</item>
+    <item>cl</item>
     <item>fl oz</item>
   </string-array>
   <!-- weight units -->
@@ -69,7 +69,7 @@
   <string name="no_products">Продуктът не е намерен</string>
   <string name="desc_list_item_icon">Икона на елемента</string>
   <string name="alert_dialog_warning_title">Предупреждение</string>
-  <string name="alert_dialog_warning_msg_user">Потребителско име/парола е променена, обновете информацията</string>
+  <string name="alert_dialog_warning_msg_user">Потребителско име/парола е променена, моля обновете информацията</string>
   <string name="alert_dialog_product_error_msg">Продуктът не е намерен, моля опитайте пак</string>
   <string name="toast_retrieving">Зареждане...</string>
   <string name="txtGenericName">Общоприето име:</string>
