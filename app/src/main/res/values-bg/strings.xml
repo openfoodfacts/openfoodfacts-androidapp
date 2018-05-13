@@ -136,7 +136,7 @@
   <string name="txtPictureNeededDialogNo">Отказ</string>
   <string name="toastSending">Качване…</string>
   <string name="dataSaved">Запазено локално на устройството ви</string>
-  <string name="txtInfoAddUser">Моля, въведете данните си за вход и парола</string>
+  <string name="txtInfoAddUser">Моля, въведете вашето потребителско име и парола</string>
   <string name="txtDataUpdated">Данните бяха актуализирани</string>
   <string name="txtLoading">Зареждане...</string>
   <string name="txtDialogsContentDelete">Наистина ли искате да премахнете тази чернова?</string>
