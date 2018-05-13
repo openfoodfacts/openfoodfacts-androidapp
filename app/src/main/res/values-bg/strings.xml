@@ -266,7 +266,7 @@
   <string name="txt_no_matching_products">Не намерихме съвпадащи продукти.\n Можете да опитате :</string>
   <string name="txt_broaden_search">- разширяване на търсенето ви \n- сканиране и добавяне към Open Food Facts</string>
   <string name="txt_cant_load_search_results">Резултати от търсенето не могат да се заредят</string>
-  <string name="something_went_wrong">Съжаляваме, но нещо се обърка…</string>
+  <string name="something_went_wrong">Съжаляваме, нещо се обърка…</string>
   <string name="txt_try_again">Опитайте пак</string>
   <string name="nutrition_lactose">Лактоза</string>
   <string name="nutrition_casein">Казеин</string>
@@ -295,7 +295,7 @@
   <string name="vitamin_a">Витамин А</string>
   <string name="vitamin_d">Витамин d</string>
   <string name="vitamin_e">Витамин e</string>
-  <string name="vitamin_k">Витамин K</string>
+  <string name="vitamin_k">Витамин k</string>
   <string name="vitamin_c">Витамин C</string>
   <string name="vitamin_b1">Витамин В1</string>
   <string name="vitamin_b2">Витамин В2</string>
