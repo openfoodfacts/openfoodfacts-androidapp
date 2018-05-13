@@ -40,10 +40,10 @@
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
+    <item>г</item>
+    <item>мг</item>
+    <item>кг</item>
+    <item>л</item>
     <item>мл</item>
     <item>сл</item>
     <item>fl oz</item>
