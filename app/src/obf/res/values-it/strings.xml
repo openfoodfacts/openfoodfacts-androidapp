@@ -19,16 +19,16 @@
   <string name="slide_3_title">Tieni traccia dei prodotti che usi</string>
   <string name="slide_3_desc">Tutti i cosmetici che usi, in un pratico elenco che puoi esportare</string>
   <string name="slide_4_title">Utilizzabile offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Beauty Facts.</string>
-  <string name="msg_share">Look at this product on Open Beauty Facts :</string>
-  <string name="not_support_books">Books are not currently supported by Open Beauty Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
-  <string name="Donation">Click here to donate to Open Beauty Facts</string>
-  <string name="translate_help_title">Help translate Open Beauty Facts</string>
-  <string name="translate_help_summary">Bring the Open Beauty Facts database to your language - no technical knowledge required</string>
-  <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Beauty Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
+  <string name="slide_4_desc">Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento</string>
+  <string name="txtDialogsContent">Il prodotto che hai scansionato non è ancora presente in Open Beauty Facts. Per favore aggiungilo.</string>
+  <string name="txtDialogsContentPowerMode">Il prodotto che hai scansionato è già presente in Open Beauty Facts.</string>
+  <string name="msg_share">Guarda questo prodotto su Open Beauty Facts:</string>
+  <string name="not_support_books">I libri non sono attualmente supportati da Open Beauty Facts</string>
+  <string name="txt_broaden_search">- amplia la tua ricerca \n- scan e aggiungila su Open Beauty Facts</string>
+  <string name="Donation">Clicca qui per fare una donazione a Open Beauty Facts</string>
+  <string name="translate_help_title">Aiuta a tradurre Open Beauty Facts</string>
+  <string name="translate_help_summary">Porta il database di Open Beauty Facts nella tua lingua - non sono richieste conoscenze tecniche</string>
+  <string name="text_offline_info_dialog">Puoi scansionare prodotti mentre sei offline e aggiungerli a Open Beauty Facts in un secondo momento. Tutti i prodotti che scansioni appariranno qui, e potrai inviarli premendo il tasto qui sotto.</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <!-- OBF tagline in different languages -->
   <string name="tagline">the free cosmetics database</string>
