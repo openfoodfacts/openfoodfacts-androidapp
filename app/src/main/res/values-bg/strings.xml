@@ -61,7 +61,7 @@
     <item>Съставки</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
+  <string name="bookmark">Отметка</string>
   <string name="edit">Редактирай</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
@@ -78,12 +78,12 @@
   <string name="txtPackaging">Опаковка:</string>
   <string name="txtBrands">Търговска марка:</string>
   <string name="txtCategories">Категории:</string>
-  <string name="txtLabels">Labels, certifications, awards :</string>
-  <string name="txtManufacturing">Manufacturing or processing places :</string>
+  <string name="txtLabels">Етикети, сертификации, награди:</string>
+  <string name="txtManufacturing">Места за производство или преработка:</string>
   <string name="txtIngredientsOrigins">Произход на съставките:</string>
-  <string name="txtCity">City, state and country where purchased :</string>
+  <string name="txtCity">Град, държава и страна, от която сте закупили:</string>
   <string name="txtEMB">Код EMB:</string>
-  <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
+  <string name="txtManufactureUrl">Връзка към страницата на продукта на официалния сайт на производителя:</string>
   <string name="txtStores">Магазини :</string>
   <string name="txtCountries">Държави, в които се продава:</string>
   <string name="txtIngredients">Списък на съставките:</string>
@@ -101,11 +101,11 @@
   <string name="txtNutritionLevelHigh">във високо количество</string>
   <string name="txtLogin">Вход:</string>
   <string name="txtPass">Парола :</string>
-  <string name="txtTitleHome">Open your food and know what you eat</string>
+  <string name="txtTitleHome">Отворете храната си и знайте какво ядете</string>
   <string name="txtSave">Запис</string>
   <string name="txtSignIn">Вход</string>
   <string name="txtUser">Потребителски панел</string>
-  <string name="txtToastSaved">User saved</string>
+  <string name="txtToastSaved">Потребителят е запазен</string>
   <string name="txtSalt">Сол</string>
   <string name="txtFat">Мазнини</string>
   <string name="txtSugars">Захар</string>
@@ -113,17 +113,17 @@
   <string name="hintLogin">Вход</string>
   <string name="hintPass">Парола</string>
   <string name="errorLogin">Грешно име или парола</string>
-  <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
-  <string name="txtInfoLoginOk">User saved</string>
-  <string name="txtInfoLoginNo">User not saved</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
+  <string name="errorWeb">Не успяхме да получим достъп до интернет. Имате ли проблеми със свързаността?</string>
+  <string name="uploadLater">Изображението ще бъде качено, когато е налична мрежа</string>
+  <string name="txtInfoLoginOk">Потребителят е запазен</string>
+  <string name="txtInfoLoginNo">Потребителят не е запазен</string>
+  <string name="txtDialogsContent">Продуктът, който сте сканирали, все още не съществува в \"Отворени факти за храните\". Моля, добавете го.</string>
+  <string name="txtDialogsContentPowerMode">Продуктът, който сте сканирали, вече съществува в \"Отворени факти за храните\".</string>
   <string name="txtYes">Да</string>
   <string name="txtNo">Не</string>
   <string name="hintNameProduct">Име</string>
-  <string name="hintEnergy">Energy in kJ per serving</string>
-  <string name="hintEnergyUnit">Energy unit</string>
+  <string name="hintEnergy">Енергия в kJ за порция</string>
+  <string name="hintEnergyUnit">Единица за енергия</string>
   <string name="hintWeight">Тегло</string>
   <string name="hintStores">Магазин</string>
   <string name="hintBrand">Марка</string>
@@ -131,13 +131,13 @@
   <string name="txtSendAll">Качване на всичко</string>
   <string name="txtNoData">Няма данни</string>
   <string name="txtPictureNeeded">Изчакайте…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
-  <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeededDialogContent">Преди да изпратите този продукт, трябва да добавите поне една снимка</string>
+  <string name="txtPictureNeededDialogYes">Остани</string>
+  <string name="txtPictureNeededDialogNo">Отказ</string>
   <string name="toastSending">Качване…</string>
-  <string name="dataSaved">Saved locally on your device</string>
-  <string name="txtInfoAddUser">Please enter your login and password</string>
-  <string name="txtDataUpdated">Data updated</string>
+  <string name="dataSaved">Запазено локално на устройството ви</string>
+  <string name="txtInfoAddUser">Моля, въведете данните си за вход и парола</string>
+  <string name="txtDataUpdated">Данните бяха актуализирани</string>
   <string name="txtLoading">Зареждане...</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
