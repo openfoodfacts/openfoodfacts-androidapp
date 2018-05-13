@@ -469,7 +469,7 @@
   <string name="last_editor_history">Последна редакция на страницата на продукта в %1$s на %2$s CEST от </string>
   <string name="other_editors">Страницата на продукта е редактирана също от </string>
   <string name="contribution_tab">Приноси</string>
-  <string name="contribution_tab_summary">Показване на раздела \"Потребителски приноси\" с продукти</string>
-  <string name="contribution_tab_title">Show Contribution Tab</string>
+  <string name="contribution_tab_summary">Показване на раздела с потребителски приноси с продукти</string>
+  <string name="contribution_tab_title">Показване на раздел \"Принос\"</string>
   <string name="product">Редактирай</string>
 </resources>
