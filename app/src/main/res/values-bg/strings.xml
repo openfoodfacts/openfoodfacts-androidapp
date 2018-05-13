@@ -194,11 +194,11 @@
   <string name="permission_camera">Необходимо е разрешение за камерата за сканиране на баркодове и заснемане на снимки.</string>
   <string name="permission_title">Информация за разрешението</string>
   <string name="permission_denied">Моля, активирайте разрешението в настройките</string>
-  <string name="permission_storage">Необходимо е разрешение за съхранение за правене или избор на снимки</string>
+  <string name="permission_storage">За правене или избиране на снимки е необходимо разрешение за съхранение</string>
   <string name="info_download_data">Трябва да изтеглите някои данни, за да получите тази функционалност, моля, натиснете \"Да\", за изтегляне.</string>
   <string name="info_download_data_connection">Трябва да изтеглите някои данни, за да получите тази функционалност. Моля активирайте интернет връзката.</string>
   <string name="msg_input_empty">Моля, първо попълнете полетата.</string>
-  <string name="new_offline_info">Направете снимка на продукта, съставките, таблицата с факти за хранителните стойности и всяка друга информация на етикета. Благодаря!</string>
+  <string name="new_offline_info">Направете снимка на продукта, съставките, таблицата с факти за хранителните стойности и всяка друга информация на етикета. Благодаря ви!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Паролата трябва да бъде дълга най-малко 6 символа.</string>
   <string name="error_field_required">Това поле е задължително.</string>
@@ -210,14 +210,14 @@
   <string name="prefs_language">Език</string>
   <string name="prefs_language_summary">Промяна на езика</string>
   <string name="scan_history_drawer">История</string>
-  <string name="clear_history">Изчистване на историята</string>
+  <string name="clear_history">Изчисти историята</string>
   <string name="title_clear_history_dialog">Изчистване</string>
   <string name="text_clear_history_dialog">Искате ли да изчистите цялата история на сканирането?</string>
   <string name="export_csv_history">Изнасяне в CSV</string>
-  <string name="txt_exporting_history">Експортиране на историята…</string>
+  <string name="txt_exporting_history">Изнасяне на историята…</string>
   <string name="txt_history_exported">Историята е изнесена</string>
   <string name="permision_write_external_storage">За изнасяне на историята е необходимо разрешение за запис във външното хранилище.</string>
-  <string name="txt_nutrition_not_found">Неприложимо</string>
+  <string name="txt_nutrition_not_found">не е налично</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">Изчисляване на калориите</string>
   <string name="txt_calories_result">%1$s kcal в %2$s %3$s</string>
