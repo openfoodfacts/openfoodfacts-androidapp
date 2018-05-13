@@ -40,9 +40,9 @@
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
-    <item>г</item>
-    <item>мг</item>
-    <item>кг</item>
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
     <item>л</item>
     <item>ml</item>
     <item>cl</item>
@@ -436,7 +436,7 @@
   <string name="by_brand">Марка</string>
   <string name="by_barcode">Баркод</string>
   <string name="by_time">Наскоро разглеждано</string>
-  <string name="sort">Сортиране</string>
+  <string name="sort">Сортирай</string>
   <string name="by_nutrition_grade">Хранителен клас</string>
   <string name="sort_by">Сортирай по</string>
   <string name="shake_summary">Разклатете телефона, за да сканирате продуктите</string>
