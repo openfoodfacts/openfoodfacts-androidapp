@@ -62,7 +62,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Favori</string>
-  <string name="edit">Edit</string>
+  <string name="edit">Éditer</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Rechercher</string>
@@ -103,9 +103,9 @@
   <string name="txtPass">Mot de passe :</string>
   <string name="txtTitleHome">Ouvrez votre nourriture pour savoir ce que vous mangez</string>
   <string name="txtSave">Enregistrer</string>
-  <string name="txtSignIn">Se connecter</string>
+  <string name="txtSignIn">S\'enregistré</string>
   <string name="txtUser">Panneau utilisateur</string>
-  <string name="txtToastSaved">Utilisateur connecté</string>
+  <string name="txtToastSaved">Utilisateur sauvegardé</string>
   <string name="txtSalt">Sel</string>
   <string name="txtFat">Matières grasses</string>
   <string name="txtSugars">Sucres</string>
@@ -136,7 +136,7 @@
   <string name="txtPictureNeededDialogNo">Annuler</string>
   <string name="toastSending">Envoi en cours...</string>
   <string name="dataSaved">Données enregistrées en local...</string>
-  <string name="txtInfoAddUser">Veuillez ajouter un utilisateur</string>
+  <string name="txtInfoAddUser">Veuillez entré votre identifiant et votre mot de passe</string>
   <string name="txtDataUpdated">Données mises à jour</string>
   <string name="txtLoading">Chargement...</string>
   <string name="txtDialogsContentDelete">Etes-vous sûr(e) de vouloir supprimer ce brouillon?</string>
@@ -151,7 +151,7 @@
   <string name="try_it_scan_now">Scanner un produit</string>
   <string name="share">Partager</string>
   <string name="translate">Traduire</string>
-  <string name="msg_share">Regarde ce produit sur Open Food Facts :</string>
+  <string name="msg_share">Regardez ce produit sur Open Beauty Facts:</string>
   <string name="create_account">S\'inscrire</string>
   <string name="home_drawer">Accueil</string>
   <string name="open_beauty_drawer">Open Beauty Facts</string>
@@ -471,5 +471,5 @@
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Afficher l\'onglet des contributions des utilisateurs sur les produits</string>
   <string name="contribution_tab_title">Afficher l\'onglet Contribution</string>
-  <string name="product">Edit</string>
+  <string name="product">Éditer</string>
 </resources>
