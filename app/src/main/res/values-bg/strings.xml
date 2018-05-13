@@ -17,7 +17,7 @@
   <string name="action_about">Относно</string>
   <string name="action_discover">Открий</string>
   <string name="contribute">Как да помогнете</string>
-  <string name="action_find">Find</string>
+  <string name="action_find">Намери</string>
   <string name="text_barcode">Въведете баркода:</string>
   <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
   <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
@@ -44,8 +44,8 @@
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
+    <item>мл</item>
+    <item>сл</item>
     <item>fl oz</item>
   </string-array>
   <!-- weight units -->
@@ -62,12 +62,12 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="edit">Edit</string>
+  <string name="edit">Редактирай</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Търсене</string>
   <string name="no_products">Продуктът не е намерен</string>
-  <string name="desc_list_item_icon">Item Icon</string>
+  <string name="desc_list_item_icon">Икона на елемента</string>
   <string name="alert_dialog_warning_title">Предупреждение</string>
   <string name="alert_dialog_warning_msg_user">Потребителско име/парола е променена, обновете информацията</string>
   <string name="alert_dialog_product_error_msg">Продуктът не е намерен, моля опитайте пак</string>
@@ -91,14 +91,14 @@
   <string name="Donation">Щракнете тук, за да направите дарение на Open Food Facts</string>
   <string name="txtSubstances">вещества или продукти, причиняващи алергии или непоносимост :</string>
   <string name="txtAdditives">Добавки :</string>
-  <string name="txtTraces">Traces :</string>
+  <string name="txtTraces">Следи:</string>
   <string name="txtMayBeFromPalmOilProduct">Съставки, които могат да бъдат от палмово масло:</string>
   <string name="txtPalmOilProduct">Съставки от палмово масло:</string>
   <string name="txtServingSize">Големина на порцията:</string>
-  <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
-  <string name="txtNutritionLevelLow">in low quantity</string>
-  <string name="txtNutritionLevelModerate">in moderate quantity</string>
-  <string name="txtNutritionLevelHigh">in high quantity</string>
+  <string name="txtNutrientLevel100g">Нива на хранителните вещества за 100 г:</string>
+  <string name="txtNutritionLevelLow">в ниско количество</string>
+  <string name="txtNutritionLevelModerate">в умерено количество</string>
+  <string name="txtNutritionLevelHigh">във високо количество</string>
   <string name="txtLogin">Вход:</string>
   <string name="txtPass">Парола :</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
@@ -134,7 +134,7 @@
   <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Качва се…</string>
+  <string name="toastSending">Качване…</string>
   <string name="dataSaved">Saved locally on your device</string>
   <string name="txtInfoAddUser">Please enter your login and password</string>
   <string name="txtDataUpdated">Data updated</string>
@@ -143,14 +143,14 @@
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
   <string name="txtOk">Добре</string>
-  <string name="txtContentDialogUploading">Не излизайте по време на процеса…</string>
+  <string name="txtContentDialogUploading">Моля, не излизайте по време на процеса…</string>
   <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Products sent</string>
   <string name="txtPalm">The product does not contain any palm oil</string>
   <string name="txtBarcodeNotValid">Баркодът не е валиден</string>
   <string name="try_it_scan_now">Сканиране на продукт</string>
   <string name="share">Споделяне</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Превод</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
   <string name="create_account">Регистриране</string>
   <string name="home_drawer">Начало</string>
@@ -449,14 +449,14 @@
   <string name="code_detected">Открихме баркода</string>
   <string name="do_you_want_to">Искате ли да прибавите снимки към този баркод?</string>
   <string name="bottomNav_history">История</string>
-  <string name="bottomNav_search">Търсене</string>
+  <string name="bottomNav_search">Търси</string>
   <string name="products_added">Products you added or edited</string>
   <string name="products_incomplete">Products you added that need to be completed</string>
   <string name="product_pictures_contributed">Products you took pictures for</string>
   <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
   <string name="product_info_added">Products you added information for</string>
   <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
-  <string name="show_by">Показване</string>
+  <string name="show_by">Покажи</string>
   <string name="notify_title">Export complete</string>
   <string name="notify_content">Click to view exported products</string>
   <string name="notification_channel_name">Export Notifications</string>
@@ -471,5 +471,5 @@
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show Contribution Tab</string>
-  <string name="product">Edit</string>
+  <string name="product">Редактирай</string>
 </resources>
