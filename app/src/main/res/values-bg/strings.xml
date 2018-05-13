@@ -15,8 +15,8 @@
   </plurals>
   <string name="action_settings">Настройки</string>
   <string name="action_about">Относно</string>
-  <string name="action_discover">Открий</string>
-  <string name="contribute">Как да помогнете</string>
+  <string name="action_discover">Открийте</string>
+  <string name="contribute">Как да допринесете</string>
   <string name="action_find">Намери</string>
   <string name="text_barcode">Въведете баркода:</string>
   <string name="message_in_activity_save_product_offline">За изпращане на нов продукт е задължителна само една снимка.</string>
@@ -32,7 +32,7 @@
   </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
-    <item>Накратко</item>
+    <item>Обобщение</item>
     <item>Съставки</item>
     <item>Хранене</item>
     <item>Хранителна таблица</item>
