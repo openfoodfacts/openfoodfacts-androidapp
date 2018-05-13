@@ -76,7 +76,7 @@
   <string name="txtBarcode">Баркод:</string>
   <string name="txtQuantity">Количество:</string>
   <string name="txtPackaging">Опаковка:</string>
-  <string name="txtBrands">Търговска марка:</string>
+  <string name="txtBrands">Марки :</string>
   <string name="txtCategories">Категории:</string>
   <string name="txtLabels">Етикети, сертификации, награди:</string>
   <string name="txtManufacturing">Места за производство или преработка:</string>
