@@ -66,7 +66,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="edit">Edit</string>
+  <string name="edit">Editare</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Cerca</string>
@@ -86,13 +86,13 @@
   <string name="txtManufacturing">Luoghi di produzione:</string>
   <string name="txtIngredientsOrigins">Origine degli ingredienti</string>
   <string name="txtCity">Città, regione e nazione di acquisto:</string>
-  <string name="txtEMB">EMB Code:</string>
+  <string name="txtEMB">Codice EMB:</string>
   <string name="txtManufactureUrl">Link alla pagina del prodotto sul sito ufficiale del produttore:</string>
   <string name="txtStores">Negozi:</string>
   <string name="txtCountries">Nazioni dove venduto:</string>
   <string name="txtIngredients">Lista ingredienti:</string>
   <string name="Donate">Effettua una donazione</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donation">Clicca qui per donare a Open Food Facts</string>
   <string name="txtSubstances">Sostanze o prodotti che causano allergie o intolleranze:</string>
   <string name="txtAdditives">Additivi:</string>
   <string name="txtTraces">Tracce:</string>
@@ -474,5 +474,5 @@
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show Contribution Tab</string>
-  <string name="product">Edit</string>
+  <string name="product">Editare</string>
 </resources>
