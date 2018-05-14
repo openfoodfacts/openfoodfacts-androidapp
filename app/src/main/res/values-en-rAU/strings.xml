@@ -45,18 +45,18 @@
   <string-array name="units_array">
     <item> </item>
     <item>g</item>
+    <item>mg</item>
     <item>kg</item>
     <item>l</item>
-    <item>ml</item>
     <item>ml</item>
     <item>cl</item>
     <item>fl oz</item>
   </string-array>
   <!-- weight units -->
   <string-array name="weights_array">
+    <item>g</item>
     <item>mg</item>
     <item>kg</item>
-    <item>l</item>
   </string-array>
   <!-- Text units -->
   <string-array name="images_array">
@@ -135,7 +135,7 @@
   <string name="txtSendAll">Upload all</string>
   <string name="txtNoData">No data</string>
   <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Uploading...</string>
@@ -199,7 +199,7 @@
   <string name="permission_title">Permissions</string>
   <string name="permission_denied">Please activate permission in Settings</string>
   <string name="permission_storage">Storage permission is needed to take or select pictures</string>
-  <string name="info_download_data">You need to download some data to get this function. Please activate Internet connection.</string>
+  <string name="info_download_data">You need to download some data to get this functionality to work. Please activate Internet connection.</string>
   <string name="info_download_data_connection">You need to download some data to get this function. Press yes to download it.</string>
   <string name="msg_input_empty">Please fill in the fields first.</string>
   <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table, and any other information on the label. Thank you!</string>
@@ -263,7 +263,7 @@
   <string name="action_search">Search</string>
   <string name="search_hint">Search for a product</string>
   <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
+  <string name="brand">Brand:</string>
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">No results found</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
