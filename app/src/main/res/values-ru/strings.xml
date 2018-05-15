@@ -468,7 +468,7 @@
   <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
   <string name="product_info_added">Products you added information for</string>
   <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
-  <string name="show_by">Show</string>
+  <string name="show_by">Показать</string>
   <string name="notify_title">Экспорт завершен</string>
   <string name="notify_content">Нажмите, чтобы просмотреть экспортированные продукты</string>
   <string name="notification_channel_name">Export Notifications</string>
