@@ -21,7 +21,7 @@
   <string name="slide_4_title">Работать автономно</string>
   <string name="slide_4_desc">Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
+  <string name="txtDialogsContentPowerMode">Отсканированный продукт уже внесён в Open Pet Facts.</string>
   <string name="msg_share">Посмотрите на этот продукт на Open Food Facts:</string>
   <string name="not_support_books">В настоящее время книги не поддерживаются в Open Food Facts</string>
   <string name="txt_broaden_search">- расширение вашего поиска \n- отсканируйте и добавьте его в Open Food Facts</string>
