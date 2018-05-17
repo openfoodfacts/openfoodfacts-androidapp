@@ -16,10 +16,10 @@
   <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
   <string name="slide_2_title">Get the facts</string>
   <string name="slide_2_desc">Extensive information about the products you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Keep track of the product you use</string>
+  <string name="slide_3_title">Tieni traccia dei prodotti che usi</string>
   <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
-  <string name="slide_4_title">Works offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+  <string name="slide_4_title">Utilizzabile offline</string>
+  <string name="slide_4_desc">Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
   <string name="msg_share">Look at this product on Open Products Facts :</string>
