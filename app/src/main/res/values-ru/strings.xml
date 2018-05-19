@@ -251,7 +251,7 @@
   <string name="nutrition_salt">Соль</string>
   <string name="nutrition_salt_short_name">Соль (г)</string>
   <string name="nutrition_satured_fat">Насыщенные жиры</string>
-  <string name="nutrition_satured_fat_short_name">Насыщенные жиры (г)</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">На порцию</string>
   <string name="nutrition_serving_size">Размер порции:</string>
   <string name="nutrition_sodium">Натрий</string>
