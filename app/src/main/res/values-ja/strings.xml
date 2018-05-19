@@ -239,7 +239,7 @@
   <string name="nutrition_salt">食塩</string>
   <string name="nutrition_salt_short_name">食塩 (g)</string>
   <string name="nutrition_satured_fat">飽和脂肪酸</string>
-  <string name="nutrition_satured_fat_short_name">飽和脂肪酸 (g)</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">一食当たり</string>
   <string name="nutrition_serving_size">一人前の分量 :</string>
   <string name="nutrition_sodium">ナトリウム</string>
