@@ -242,8 +242,8 @@
   <string name="nutrition_proteins_short_name">Proteinoj (g)</string>
   <string name="nutrition_salt">Salo</string>
   <string name="nutrition_salt_short_name">Salo (g)</string>
-  <string name="nutrition_satured_fat">Saturita graso</string>
-  <string name="nutrition_satured_fat_short_name">Saturita graso (g)</string>
+  <string name="nutrition_satured_fat">Saturated fat</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Per serving</string>
   <string name="nutrition_serving_size">Serving size :</string>
   <string name="nutrition_sodium">Natrio</string>
