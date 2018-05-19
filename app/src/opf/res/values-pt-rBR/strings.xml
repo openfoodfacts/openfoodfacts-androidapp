@@ -28,7 +28,7 @@
   <string name="Donation">Clique aqui para doar ao Open Products Facts</string>
   <string name="translate_help_title">Ajudar a traduzir Open Products Facts</string>
   <string name="translate_help_summary">Traga a base de dados Open Products Facts ao seu idioma - nenhum conhecimento técnico necessário</string>
-  <string name="text_offline_info_dialog">Você pode escanear produtos quando estiver offline e adicioná-los ao Open Products Facts mais tarde. Todos os produtos escaneados aparecerão aqui, e você poderá enviá-los usando o botão abaixo.</string>
+  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Suas alergias nunca serão enviadas ao servidor do Open Products Facts. Além disso, atenção ao fato que os dados dos produtos podem ser imprecisos, e a detecção não é 100% precisa, então por favor verifique! </string>
   <!-- OPF tagline in different languages -->
   <string name="tagline">a base de dados de produtos gratuita</string>
