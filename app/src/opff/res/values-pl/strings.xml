@@ -11,6 +11,7 @@
   <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
+  <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
   <string name="txtHome">Open Pet Food to baza danych karmy dla zwierząt oraz składników, alergenów, oznaczeń i powiązanych informacji które znajdujemy na etykietach. Hau. Hau.</string>
   <string name="slide_1_title">Przyczyń się do przezroczystości Pet Food</string>
   <string name="slide_1_desc">Skanuj produkty, rób im zdjęcia, niech przejrzystość karmy dla zwierząt domowych dzieje się</string>
