@@ -11,6 +11,7 @@
   <string name="website_product">https://world-hi.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-hi.openpetfoodfacts.org/contributor/</string>
+  <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
   <string name="txtHome">Open Pet Food Facts तत्वों, एलर्जी, संकेतक और पालतू जानवरों के उत्पाद लेबलों पर पायी जाने वाली सभी जानकारी के साथ पालतू खाद्य उत्पादों का एक डाटाबेस है। Woof। Woof।</string>
   <string name="slide_1_title">पालतू जानवरों के खाद्य पारदर्शिता में योगदान करें</string>
   <string name="slide_1_desc">उत्पादों को स्कैन करें, उनके चित्र लें, खाद्य पारदर्शिता करें</string>
