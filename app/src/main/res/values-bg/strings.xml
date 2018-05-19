@@ -242,8 +242,8 @@
   <string name="nutrition_proteins_short_name">Протеини (g)</string>
   <string name="nutrition_salt">Сол</string>
   <string name="nutrition_salt_short_name">Сол (g)</string>
-  <string name="nutrition_satured_fat">Наситени мазнини</string>
-  <string name="nutrition_satured_fat_short_name">Наситени мазнини (g)</string>
+  <string name="nutrition_satured_fat">Saturated fat</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">На порция</string>
   <string name="nutrition_serving_size">Големина на порцията :</string>
   <string name="nutrition_sodium">Натрий</string>
