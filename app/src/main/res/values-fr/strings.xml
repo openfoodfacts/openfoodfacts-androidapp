@@ -475,4 +475,5 @@
   <string name="contribution_tab_summary">Afficher l\'onglet des contributions des utilisateurs sur les produits</string>
   <string name="contribution_tab_title">Afficher l\'onglet Contribution</string>
   <string name="product">Modifier</string>
+  <string name="txtDialogsTitle">Information</string>
 </resources>

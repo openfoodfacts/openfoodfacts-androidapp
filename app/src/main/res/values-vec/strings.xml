@@ -242,8 +242,8 @@
   <string name="nutrition_proteins_short_name">Proteìne (g)</string>
   <string name="nutrition_salt">Sałe</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
-  <string name="nutrition_satured_fat">Satured fat</string>
-  <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
+  <string name="nutrition_satured_fat">Saturated fat</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Per serving</string>
   <string name="nutrition_serving_size">Serving size :</string>
   <string name="nutrition_sodium">Sodium</string>
@@ -475,4 +475,5 @@
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show Contribution Tab</string>
   <string name="product">Edit</string>
+  <string name="txtDialogsTitle">Informasion</string>
 </resources>
