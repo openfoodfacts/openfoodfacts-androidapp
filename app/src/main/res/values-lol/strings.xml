@@ -242,8 +242,8 @@
   <string name="nutrition_proteins_short_name">crwdns35202:0crwdne35202:0</string>
   <string name="nutrition_salt">crwdns35203:0crwdne35203:0</string>
   <string name="nutrition_salt_short_name">crwdns35204:0crwdne35204:0</string>
-  <string name="nutrition_satured_fat">crwdns35205:0crwdne35205:0</string>
-  <string name="nutrition_satured_fat_short_name">crwdns35206:0crwdne35206:0</string>
+  <string name="nutrition_satured_fat">crwdns92745:0crwdne92745:0</string>
+  <string name="nutrition_satured_fat_short_name">crwdns92746:0crwdne92746:0</string>
   <string name="nutrition_serving">crwdns35207:0crwdne35207:0</string>
   <string name="nutrition_serving_size">crwdns35208:0crwdne35208:0</string>
   <string name="nutrition_sodium">crwdns35209:0crwdne35209:0</string>
