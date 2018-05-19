@@ -243,7 +243,7 @@
   <string name="nutrition_salt">Tuz</string>
   <string name="nutrition_salt_short_name">Tuz (g)</string>
   <string name="nutrition_satured_fat">Doymuş yağ</string>
-  <string name="nutrition_satured_fat_short_name">Doymuş yağ(g)</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Porsiyon başına</string>
   <string name="nutrition_serving_size">Porsiyon ölçüsü:</string>
   <string name="nutrition_sodium">Sodyum</string>
