@@ -243,7 +243,7 @@
   <string name="nutrition_salt">লবন</string>
   <string name="nutrition_salt_short_name">লবণ (গ্রাম)</string>
   <string name="nutrition_satured_fat">সম্পৃক্ত চর্বি</string>
-  <string name="nutrition_satured_fat_short_name">সম্পৃক্ত চর্বি (গ্রাম)</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">প্রতি পরিবেশনে</string>
   <string name="nutrition_serving_size">পরিবেশন পরিমাণ :</string>
   <string name="nutrition_sodium">সোডিয়াম</string>
