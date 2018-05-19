@@ -242,8 +242,8 @@
   <string name="nutrition_proteins_short_name">پروتئین (گرم)</string>
   <string name="nutrition_salt">نمک</string>
   <string name="nutrition_salt_short_name">نمک (گرم)</string>
-  <string name="nutrition_satured_fat">چربی اشباع شده</string>
-  <string name="nutrition_satured_fat_short_name">چربی اشباع شده (g)</string>
+  <string name="nutrition_satured_fat">Saturated fat</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">در هر وعده</string>
   <string name="nutrition_serving_size">اندازه وعده:</string>
   <string name="nutrition_sodium">سدیم</string>

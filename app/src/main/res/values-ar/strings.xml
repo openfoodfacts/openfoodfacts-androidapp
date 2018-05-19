@@ -259,7 +259,7 @@
   <string name="nutrition_salt">ملح</string>
   <string name="nutrition_salt_short_name">ملح (غ)</string>
   <string name="nutrition_satured_fat">الدهون المشبعة</string>
-  <string name="nutrition_satured_fat_short_name">الدهون المشبعة (ج)</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">لكل وجبة</string>
   <string name="nutrition_serving_size">حجم الحصة</string>
   <string name="nutrition_sodium">صوديوم</string>

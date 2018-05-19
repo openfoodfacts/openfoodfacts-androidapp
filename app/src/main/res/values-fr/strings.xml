@@ -243,7 +243,7 @@
   <string name="nutrition_salt">Sel</string>
   <string name="nutrition_salt_short_name">Sel (g)</string>
   <string name="nutrition_satured_fat">Graisses saturées</string>
-  <string name="nutrition_satured_fat_short_name">Graisses saturées (g)</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Par portion</string>
   <string name="nutrition_serving_size">Taille d\'une portion :</string>
   <string name="nutrition_sodium">Sodium</string>

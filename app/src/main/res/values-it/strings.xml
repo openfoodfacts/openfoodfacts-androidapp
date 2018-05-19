@@ -242,8 +242,8 @@
   <string name="nutrition_proteins_short_name">Proteine (g)</string>
   <string name="nutrition_salt">Sale</string>
   <string name="nutrition_salt_short_name">Sale (g)</string>
-  <string name="nutrition_satured_fat">Acidi Grassi saturi</string>
-  <string name="nutrition_satured_fat_short_name">Grassi saturi (g)</string>
+  <string name="nutrition_satured_fat">Saturated fat</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Per porzione</string>
   <string name="nutrition_serving_size">Grandezza porzione:</string>
   <string name="nutrition_sodium">Sodio</string>

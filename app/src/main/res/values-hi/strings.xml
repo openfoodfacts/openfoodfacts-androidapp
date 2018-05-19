@@ -243,7 +243,7 @@
   <string name="nutrition_salt">नमक</string>
   <string name="nutrition_salt_short_name">नमक(g)</string>
   <string name="nutrition_satured_fat">संतृप्त वसा</string>
-  <string name="nutrition_satured_fat_short_name">संतृप्त वसा(g)</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">प्रत्येक हिस्सा</string>
   <string name="nutrition_serving_size">सेवारत माप:</string>
   <string name="nutrition_sodium">सोडियम</string>

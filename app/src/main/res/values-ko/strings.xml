@@ -238,8 +238,8 @@
   <string name="nutrition_proteins_short_name">단백질 (g)</string>
   <string name="nutrition_salt">소금</string>
   <string name="nutrition_salt_short_name">소금 (g)</string>
-  <string name="nutrition_satured_fat">Satured fat</string>
-  <string name="nutrition_satured_fat_short_name">Satured fat (g)</string>
+  <string name="nutrition_satured_fat">포화 지방</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">인분</string>
   <string name="nutrition_serving_size">서빙 사이즈 :</string>
   <string name="nutrition_sodium">나트륨</string>

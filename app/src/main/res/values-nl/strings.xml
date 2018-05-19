@@ -243,7 +243,7 @@
   <string name="nutrition_salt">Zout</string>
   <string name="nutrition_salt_short_name">Zout (g)</string>
   <string name="nutrition_satured_fat">Verzadigd vet</string>
-  <string name="nutrition_satured_fat_short_name">Verzadigd vet (g)</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Per portie</string>
   <string name="nutrition_serving_size">Per portie</string>
   <string name="nutrition_sodium">Natrium</string>

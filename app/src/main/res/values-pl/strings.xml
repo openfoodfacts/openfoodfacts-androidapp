@@ -251,7 +251,7 @@
   <string name="nutrition_salt">Sól</string>
   <string name="nutrition_salt_short_name">Sól (g)</string>
   <string name="nutrition_satured_fat">Tłuszcz nasycony</string>
-  <string name="nutrition_satured_fat_short_name">Tłuszcz nasycony (g)</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Na porcję</string>
   <string name="nutrition_serving_size">Porcja :</string>
   <string name="nutrition_sodium">Sód</string>

@@ -250,8 +250,8 @@
   <string name="nutrition_proteins_short_name">Beljakovine (g)</string>
   <string name="nutrition_salt">Sol</string>
   <string name="nutrition_salt_short_name">Sol (g)</string>
-  <string name="nutrition_satured_fat">Nasičene maščobe</string>
-  <string name="nutrition_satured_fat_short_name">Nasičene maščobe (g)</string>
+  <string name="nutrition_satured_fat">Nasičena maščoba</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Na porcijo</string>
   <string name="nutrition_serving_size">Velikost obroks :</string>
   <string name="nutrition_sodium">Natrij</string>

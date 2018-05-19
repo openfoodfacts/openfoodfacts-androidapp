@@ -239,8 +239,8 @@
   <string name="nutrition_proteins_short_name">Protein (g)</string>
   <string name="nutrition_salt">garam</string>
   <string name="nutrition_salt_short_name">lemax</string>
-  <string name="nutrition_satured_fat">lemak tidak sehat</string>
-  <string name="nutrition_satured_fat_short_name">lemak penyakitt</string>
+  <string name="nutrition_satured_fat">Lemak jenuh</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">porsi</string>
   <string name="nutrition_serving_size">ukuran penyiapan</string>
   <string name="nutrition_sodium">Sodium</string>

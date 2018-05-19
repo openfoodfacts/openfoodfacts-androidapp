@@ -246,8 +246,8 @@
   <string name="nutrition_proteins_short_name">Proteine (g)</string>
   <string name="nutrition_salt">Sare</string>
   <string name="nutrition_salt_short_name">Sare (g)</string>
-  <string name="nutrition_satured_fat">Acizi grași saturați</string>
-  <string name="nutrition_satured_fat_short_name">Acizi grași saturați (g)</string>
+  <string name="nutrition_satured_fat">Saturated fat</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Per porție</string>
   <string name="nutrition_serving_size">Cantitatea unei porții:</string>
   <string name="nutrition_sodium">Sodiu</string>

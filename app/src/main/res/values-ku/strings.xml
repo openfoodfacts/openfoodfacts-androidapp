@@ -242,8 +242,8 @@
   <string name="nutrition_proteins_short_name">Proteîna (g)</string>
   <string name="nutrition_salt">Xwê</string>
   <string name="nutrition_salt_short_name">Xwê (g)</string>
-  <string name="nutrition_satured_fat">Petrolê fatty</string>
-  <string name="nutrition_satured_fat_short_name">Dohnî rün (g)</string>
+  <string name="nutrition_satured_fat">Saturated fat</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Per di xizmeta</string>
   <string name="nutrition_serving_size">Mezın xizmeta:</string>
   <string name="nutrition_sodium">Sodyum</string>

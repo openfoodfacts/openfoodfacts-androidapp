@@ -243,7 +243,7 @@
   <string name="nutrition_salt">Asin</string>
   <string name="nutrition_salt_short_name">Asin (g)</string>
   <string name="nutrition_satured_fat">Saturated na taba</string>
-  <string name="nutrition_satured_fat_short_name">Saturated na taba (g)</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Bawat serving</string>
   <string name="nutrition_serving_size">Sukat ng serving :</string>
   <string name="nutrition_sodium">Sodium</string>
