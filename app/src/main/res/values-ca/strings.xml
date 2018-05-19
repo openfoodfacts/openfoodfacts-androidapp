@@ -242,8 +242,8 @@
   <string name="nutrition_proteins_short_name">Proteïnes (g)</string>
   <string name="nutrition_salt">Sal</string>
   <string name="nutrition_salt_short_name">Sal (g)</string>
-  <string name="nutrition_satured_fat">Greix saturat</string>
-  <string name="nutrition_satured_fat_short_name">Greix saturat (g)</string>
+  <string name="nutrition_satured_fat">Saturated fat</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Per ració</string>
   <string name="nutrition_serving_size">Mida de la ració :</string>
   <string name="nutrition_sodium">Sodi</string>
