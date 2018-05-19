@@ -142,13 +142,13 @@ dependencies {
     implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.android.support:support-v4:27.1.0'
-    compile "com.android.support:multidex:$rootProject.multidexVersion"
-    compile "com.android.support:design:27.1.0"
+    implementation "com.android.support:multidex:$rootProject.multidexVersion"
+    implementation "com.android.support:design:27.1.0"
 
     //DI
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
-    provided 'javax.annotation:jsr250-api:1.0'
+    compileOnly 'javax.annotation:jsr250-api:1.0'
 
     //Rx
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxVersion"
