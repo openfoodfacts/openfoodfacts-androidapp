@@ -239,7 +239,7 @@
   <string name="nutrition_salt">盐</string>
   <string name="nutrition_salt_short_name">盐（g）</string>
   <string name="nutrition_satured_fat">饱和脂肪</string>
-  <string name="nutrition_satured_fat_short_name">饱和脂肪（g）</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">每份</string>
   <string name="nutrition_serving_size">份量：</string>
   <string name="nutrition_sodium">钠</string>
