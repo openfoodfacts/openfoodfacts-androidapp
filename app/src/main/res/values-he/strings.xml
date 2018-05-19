@@ -251,7 +251,7 @@
   <string name="nutrition_salt">מלח</string>
   <string name="nutrition_salt_short_name">מלח (ג׳)</string>
   <string name="nutrition_satured_fat">שומן רווי</string>
-  <string name="nutrition_satured_fat_short_name">שומן רווי (ג׳)</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">להגשה</string>
   <string name="nutrition_serving_size">גודל ההגשה :</string>
   <string name="nutrition_sodium">נתרן</string>
