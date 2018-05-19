@@ -242,8 +242,8 @@
   <string name="nutrition_proteins_short_name">Eiweiß (g)</string>
   <string name="nutrition_salt">Salz</string>
   <string name="nutrition_salt_short_name">Salz (g)</string>
-  <string name="nutrition_satured_fat">Gesättigte Fette</string>
-  <string name="nutrition_satured_fat_short_name">Gesättigte Fette (g)</string>
+  <string name="nutrition_satured_fat">Gesättigte Fettsäuren</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Pro Portion</string>
   <string name="nutrition_serving_size">Portionsgröße:</string>
   <string name="nutrition_sodium">Natrium</string>
