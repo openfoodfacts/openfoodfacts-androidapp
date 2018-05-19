@@ -246,8 +246,8 @@
   <string name="nutrition_proteins_short_name">Olbaltumvielas (g)</string>
   <string name="nutrition_salt">Sāls</string>
   <string name="nutrition_salt_short_name">Sāls (g)</string>
-  <string name="nutrition_satured_fat">Nogatavināti tauki</string>
-  <string name="nutrition_satured_fat_short_name">Nogatavināti tauki (g)</string>
+  <string name="nutrition_satured_fat">Piesātinātie tauki</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Uz porciju</string>
   <string name="nutrition_serving_size">Porcijas lielums :</string>
   <string name="nutrition_sodium">Nātrijs</string>
