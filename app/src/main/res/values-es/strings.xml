@@ -243,7 +243,7 @@
   <string name="nutrition_salt">Sal</string>
   <string name="nutrition_salt_short_name">Sal (g)</string>
   <string name="nutrition_satured_fat">Grasa saturada</string>
-  <string name="nutrition_satured_fat_short_name">Grasa saturada (g)</string>
+  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Por porción</string>
   <string name="nutrition_serving_size">Tamaño de la ración :</string>
   <string name="nutrition_sodium">Sodio</string>
