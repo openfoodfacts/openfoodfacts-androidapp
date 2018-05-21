@@ -102,9 +102,6 @@ files:
         
   - source: /fastlane/metadata/android/en-US/off/title.txt
     translation: /fastlane/metadata/android/%locale%/off/title.txt
-    
-  - source: /fastlane/metadata/android/en-US/off/changelog.txt
-    translation: /fastlane/metadata/android/%locale%/off/changelog.txt
 
   - source: /fastlane/metadata/android/en-US/obf/title.txt
     translation: /fastlane/metadata/android/%locale%/obf/title.txt
