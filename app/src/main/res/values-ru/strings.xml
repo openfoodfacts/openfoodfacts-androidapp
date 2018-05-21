@@ -373,7 +373,7 @@
   <string name="device_offline_dialog_positive">Настройки</string>
   <string name="saving">Сохранение…</string>
   <string name="scan_first_product">Сканировать первый продукт</string>
-  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_title">Загрузка в сотовой сети</string>
   <string name="preference_enable_mobile_data_summary_on">Загрузка новых продуктов с использованием мобильных данных &amp; WiFi</string>
   <string name="preference_enable_mobile_data_summary_off">Загружать новые продукты только с помощью Wi-Fi</string>
   <string name="device_on_mobile_data_warning_title">Информация</string>
@@ -466,7 +466,7 @@
   <string name="products_incomplete">Добавленные вами незавершенные продукты</string>
   <string name="product_pictures_contributed">Продукты, которые вы снимали</string>
   <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
-  <string name="product_info_added">Products you added information for</string>
+  <string name="product_info_added">Продукты, для которых вы добавили информацию</string>
   <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
   <string name="show_by">Показать</string>
   <string name="notify_title">Экспорт завершен</string>
