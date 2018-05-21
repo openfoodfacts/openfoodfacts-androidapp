@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import holloway.allergenChecker.Consumer;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.dummy.DummyContent.DummyItem;
 import openfoodfacts.github.scrachx.openfood.fragments.ConsumerFragment.OnListFragmentInteractionListener;
@@ -19,26 +20,72 @@ import openfoodfacts.github.scrachx.openfood.fragments.ConsumerFragment.OnListFr
  */
 public class ConsumerRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Consumer> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public ConsumerRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+
+    /* Footer view implemention from
+     * https://stackoverflow.com/questions/26448717/android-5-0-add-header-footer-to-a-recyclerview
+     */
+    private static final int FOOTER_VIEW = 1;
+
+    // Define a view holder for Footer view
+
+    public class FooterViewHolder extends ViewHolder {
+        public FooterViewHolder(View itemView) {
+            super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO Do whatever you want on clicking the item
+                }
+            });
+        }
+    }
+
+    // Now define the viewholder for Normal list item
+    public class NormalViewHolder extends ViewHolder {
+        public NormalViewHolder(View itemView) {
+            super(itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO Do whatever you want on clicking the normal items
+                }
+            });
+        }
+    }
+
+
+
+    public ConsumerRecyclerViewAdapter(List<Consumer> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
+        View view;
+
+        if (viewType == FOOTER_VIEW) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.consumer_footer_layout, parent, false);
+
+            FooterViewHolder vh = new FooterViewHolder(view);
+
+            return vh;
+        }
+
+        view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_consumer, parent, false);
-        return new ViewHolder(view);
+
+        return new NormalViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+ /*       holder.mItem = mValues.get(position);
+        holder.mContentView.setText(mValues.get(position).getName());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,25 +96,62 @@ public class ConsumerRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerRe
                     mListener.onListFragmentInteraction(holder.mItem);
                 }
             }
-        });
+        });*/
+
+        try {
+            if (holder instanceof NormalViewHolder) {
+                NormalViewHolder vh = (NormalViewHolder) holder;
+
+                vh.bindView(position);
+            } else if (holder instanceof FooterViewHolder) {
+                FooterViewHolder vh = (FooterViewHolder) holder;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        if (mValues == null) {
+            return 0;
+        }
+
+        if (mValues.size() == 0)
+        {
+            //Return 1 to represent no items
+            return 1;
+        }
+
+        return mValues.size() + 1;
+    }
+
+/**
+ * {@inheritDoc}
+ */
+    @Override
+    public int getItemViewType(int position) {
+        if (position == mValues.size()) {
+            // This is where we'll add footer.
+            return FOOTER_VIEW;
+        }
+
+        return super.getItemViewType(position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Consumer mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
             mContentView = (TextView) view.findViewById(R.id.content);
+        }
+
+        public void bindView(int position) {
+            
         }
 
         @Override

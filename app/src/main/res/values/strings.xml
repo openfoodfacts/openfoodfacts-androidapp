@@ -596,7 +596,7 @@
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show Contribution Tab</string>
     <string name="product">Edit</string>
-    <string name="txtDialogsTitle">Information</string>
+    <string name="addNewConsumer">Add person...</string>
 
 
 </resources>

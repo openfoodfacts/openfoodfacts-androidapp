@@ -73,15 +73,14 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import butterknife.BindView;
+import holloway.allergenChecker.Consumer;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.dummy.DummyContent;
 import openfoodfacts.github.scrachx.openfood.fragments.ConsumerFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
-import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
@@ -1017,7 +1016,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+    public void onListFragmentInteraction(Consumer item) {
 
     }
 }
