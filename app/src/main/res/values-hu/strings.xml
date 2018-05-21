@@ -243,7 +243,7 @@
   <string name="nutrition_salt">Só</string>
   <string name="nutrition_salt_short_name">Só (g)</string>
   <string name="nutrition_satured_fat">Telített zsír</string>
-  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+  <string name="nutrition_satured_fat_short_name">Telített zsír (g)</string>
   <string name="nutrition_serving">Adagonként</string>
   <string name="nutrition_serving_size">Adag:</string>
   <string name="nutrition_sodium">Nátrium</string>
