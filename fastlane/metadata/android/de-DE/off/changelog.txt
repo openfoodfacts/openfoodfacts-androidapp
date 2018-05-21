@@ -11,9 +11,9 @@ Was gibt es Neues?
 3. Zusätzliche Informationen von Wikipedia abrufen. Klicken Sie auf eine Lebensmittelkategorie, einen Zusatzstoff …, um mehr zu erfahren und ähnliche Produkte anzuzeigen.
 4. Sie können Warnhinweise zu Allergenen festlegen (überprüfen Sie aber immer selbst das aktuelle Etikett!).
 5. Sie erhalten nun einen Verlauf der Erfassten Produkte, den Sie exportieren können und der nie Ihr Handy verlässt.
-6. You can shake your phone at any time in the app to start scanning
-7. You can now add new products even when you're offline
-8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
-9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
-10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
-Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
+6. Sie können Ihr Handy jederzeit innerhalb der App schütteln, um mit dem Einlesen zu beginnen.
+7. Sie können jetzt neue Produkte hinzufügen, auch wenn Sie keine Verbindung zum Internet haben.
+8. Sie können jetzt helfen, Ihre Lieblingsspeisen direkt aus der App heraus zu vervollständigen: Fotos aufnehmen, Infos ausfüllen, Lebensmitteltransparenz schaffen
+9. Alles ist jetzt auch um einiges schneller. Die Produkte werden auch bei einer schlechten Mobilfunkverbindung blitzschnell geladen.
+10. Wir sind nicht an Ihren persönlichen Daten interessiert. Sie müssen sich nicht anmelden, um etwas einzulesen und beizutragen.
+Extra! Trotz aller Neuerungen ist die App so schlank wie bisher. Der Speicherplatz auf Ihrem Telefon ist heilig.
