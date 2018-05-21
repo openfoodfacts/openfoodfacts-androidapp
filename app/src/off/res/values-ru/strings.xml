@@ -28,7 +28,7 @@
   <string name="Donation">Нажмите здесь, чтобы поддержать Open Food Facts</string>
   <string name="translate_help_title">Помогите перевести Open Food Facts</string>
   <string name="translate_help_summary">Перевести базу данных Open Food Facts на ваш родной язык - никаких технических знаний не требуется</string>
-  <string name="text_offline_info_dialog">Вы можете сканировать продукты будучи офлайн, и отправить их на Open Food Facts потом.  Все сканируемые продукты будут появляться здесь, и их можно будет отправить кнопкой, которая ниже.</string>
+  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
   <!-- OFF tagline in different languages -->
   <string name="tagline">свободная база данных продуктов питания</string>

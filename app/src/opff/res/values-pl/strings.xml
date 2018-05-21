@@ -11,6 +11,7 @@
   <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
+  <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
   <string name="txtHome">Open Pet Food to baza danych karmy dla zwierząt oraz składników, alergenów, oznaczeń i powiązanych informacji które znajdujemy na etykietach. Hau. Hau.</string>
   <string name="slide_1_title">Przyczyń się do przezroczystości Pet Food</string>
   <string name="slide_1_desc">Skanuj produkty, rób im zdjęcia, niech przejrzystość karmy dla zwierząt domowych dzieje się</string>
@@ -28,8 +29,8 @@
   <string name="Donation">Kliknij tu, by przekazać darowiznę na rzecz Open Food Facts</string>
   <string name="translate_help_title">Wspomóż tłumaczenie Open Food Facts</string>
   <string name="translate_help_summary">Otwórz bazę danych Open Food Facts na swój język - wiedza techniczna nie jest wymagana</string>
-  <string name="text_offline_info_dialog">Możesz skanować produkty gdy jesteś offline by później dodać je do Open Food Facts. Wszystkie zeskanowane produkty pojawią się tu i będziesz mógł wysłać je za pomocą przycisku poniżej.</string>
+  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Informacja o twoich uczuleniach nie zostanie przesłana na serwer Open Food Facts. Uważaj, dane o produkcie mogą nie być dokładne, a wykrycie ich też nie może być pewne. Zatem, sprawdzaj dwa razy! </string>
   <!-- OPFF tagline in different languages -->
-  <string name="tagline">free pet food products database</string>
+  <string name="tagline">darmowa baza karmy dla zwierząt domowych</string>
 </resources>

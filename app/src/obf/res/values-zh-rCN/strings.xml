@@ -11,6 +11,7 @@
   <string name="website_product">https://world-zh.openbeautyfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-zh.openbeautyfacts.org/contributor/</string>
+  <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
   <string name="txtHome">“Open Beauty Facts”是一个化妆品数据库，我们可以在产品标签上找到该商品的成分，过敏原，标记等所有信息。</string>
   <string name="slide_1_title">促进化妆品信息透明化</string>
   <string name="slide_1_desc">扫描产品，给它们拍照，让化妆品信息透明化成为可能</string>
@@ -28,7 +29,7 @@
   <string name="Donation">点击此处捐赠给 Open Beauty Facts</string>
   <string name="translate_help_title">帮助翻译 Open Beauty Facts</string>
   <string name="translate_help_summary">将 Open Beauty Facts 数据库翻译成您的语言 - 没有技术性知识的要求</string>
-  <string name="text_offline_info_dialog">您可以在离线时扫描产品以添加到 Open Beauty Facts 中。您扫描的所有产品都会显示在这里，您可以按以下按钮发送。</string>
+  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">您的过敏信息将永远不会发送到 Open Beauty Facts 服务器。另外，请注意，产品数据可能不准确，检测也可可能不完全准确，请自行仔细检查！ </string>
   <!-- OBF tagline in different languages -->
   <string name="tagline">免费化妆品数据库</string>

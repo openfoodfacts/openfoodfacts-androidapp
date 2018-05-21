@@ -40,9 +40,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -66,8 +64,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -248,11 +244,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             String[] packagings = product.getPackaging().split(",");
 
             for (int i = 0; i < packagings.length - 1; i++) {
-                packagingProduct.append(Utils.getClickableText(packagings[i], "", SearchType.PACKAGING, getActivity(), customTabsIntent));
+                packagingProduct.append(Utils.getClickableText(packagings[i].trim(), "", SearchType.PACKAGING, getActivity(), customTabsIntent));
                 packagingProduct.append(", ");
             }
 
-            packagingProduct.append(Utils.getClickableText(packagings[packagings.length - 1], "", SearchType.PACKAGING, getActivity(), customTabsIntent));
+            packagingProduct.append(Utils.getClickableText(packagings[packagings.length - 1].trim(), "", SearchType.PACKAGING, getActivity(), customTabsIntent));
         } else {
             packagingProduct.setVisibility(View.GONE);
         }
@@ -264,10 +260,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             String[] brands = product.getBrands().split(",");
             for (int i = 0; i < brands.length - 1; i++) {
-                brandProduct.append(Utils.getClickableText(brands[i], "", SearchType.BRAND, getActivity(), customTabsIntent));
+                brandProduct.append(Utils.getClickableText(brands[i].trim(), "", SearchType.BRAND, getActivity(), customTabsIntent));
                 brandProduct.append(", ");
             }
-            brandProduct.append(Utils.getClickableText(brands[brands.length - 1], "", SearchType.BRAND, getActivity(), customTabsIntent));
+            brandProduct.append(Utils.getClickableText(brands[brands.length - 1].trim(), "", SearchType.BRAND, getActivity(), customTabsIntent));
         } else {
             brandProduct.setVisibility(View.GONE);
         }

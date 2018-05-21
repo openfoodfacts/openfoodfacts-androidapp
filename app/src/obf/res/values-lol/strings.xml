@@ -11,6 +11,7 @@
   <string name="website_product">crwdns35295:0crwdne35295:0</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">crwdns35296:0crwdne35296:0</string>
+  <string name="terms_url">crwdns92754:0crwdne92754:0</string>
   <string name="txtHome">crwdns46341:0crwdne46341:0</string>
   <string name="slide_1_title">crwdns37146:0crwdne37146:0</string>
   <string name="slide_1_desc">crwdns37147:0crwdne37147:0</string>
@@ -28,7 +29,7 @@
   <string name="Donation">crwdns46344:0crwdne46344:0</string>
   <string name="translate_help_title">crwdns46345:0crwdne46345:0</string>
   <string name="translate_help_summary">crwdns46346:0crwdne46346:0</string>
-  <string name="text_offline_info_dialog">crwdns46347:0crwdne46347:0</string>
+  <string name="text_offline_info_dialog">crwdns92741:0crwdne92741:0</string>
   <string name="warning_alert_data">crwdns46348:0crwdne46348:0</string>
   <!-- OBF tagline in different languages -->
   <string name="tagline">crwdns46815:0crwdne46815:0</string>

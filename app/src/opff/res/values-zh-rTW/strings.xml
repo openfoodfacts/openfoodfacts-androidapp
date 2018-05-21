@@ -11,6 +11,7 @@
   <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
+  <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
   <string name="txtHome">Open Pet Food Facts 是一個食品的開發資料庫，它提供食品的營養成份、原料、配料、過敏資料、…等資訊。這些資訊的來源全來自於產品外包裝標籤</string>
   <string name="slide_1_title">Contribute to Pet Food transparency</string>
   <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
@@ -24,12 +25,12 @@
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
   <string name="msg_share">於 Open Food Facts 上查看此產品：</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
-  <string name="text_offline_info_dialog">在離線狀態下，您可以掃描產品並稍候將它們加到 Open Food Facts。所有您掃描過的產品都會出現在這裡，您可以使用下面的按鈕來傳送它們。</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="txt_broaden_search">- 擴大您的搜尋\n - 掃描並將其新增到 Open Food Facts</string>
+  <string name="Donation">點擊此處捐贈 Open Feed Facts</string>
+  <string name="translate_help_title">幫助翻譯 Open Food Facts</string>
+  <string name="translate_help_summary">將 Open Food Facts 數據翻釋成您的語言 - 無需任個技術知識</string>
+  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+  <string name="warning_alert_data">您的過敏原資料將不會被傳送到 Open Food Facts 伺服器。另外，請小心數據可能不完全正確，以及過敏原偵測可能不完全正確，請再自行確認。 </string>
   <!-- OPFF tagline in different languages -->
   <string name="tagline">free pet food products database</string>
 </resources>

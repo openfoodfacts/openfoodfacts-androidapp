@@ -11,6 +11,7 @@
   <string name="website_product">https://world-hi.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-hi.openpetfoodfacts.org/contributor/</string>
+  <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
   <string name="txtHome">Open Pet Food Facts तत्वों, एलर्जी, संकेतक और पालतू जानवरों के उत्पाद लेबलों पर पायी जाने वाली सभी जानकारी के साथ पालतू खाद्य उत्पादों का एक डाटाबेस है। Woof। Woof।</string>
   <string name="slide_1_title">पालतू जानवरों के खाद्य पारदर्शिता में योगदान करें</string>
   <string name="slide_1_desc">उत्पादों को स्कैन करें, उनके चित्र लें, खाद्य पारदर्शिता करें</string>
@@ -28,7 +29,7 @@
   <string name="Donation">ओपन फ़ूड फैक्ट्स को दान करने के लिए यहाँ क्लिक करें</string>
   <string name="translate_help_title">ओपन फ़ूड फैक्ट्स का अनुवाद करने में मदद करें</string>
   <string name="translate_help_summary">ओपन फ़ूड फैक्ट्स डेटाबेस को अपनी भाषा में लाएं - कोई तकनीकी की आवश्यकता नहीं है</string>
-  <string name="text_offline_info_dialog">जब आप ऑफ़लाइन हो तब भी आप उत्पादों को स्कैन कर सकते हैं, ताकि उन्हें आप बाद में जोड़ सके। आपके सभी स्कैन कि हुए  उत्पाद यहाँ दिखाई देगी, और आप नीचे दिए गए बटन का उपयोग कर उन्हें भेजने के लिए सक्षम हो जाएगा।</string>
+  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">आपकी एलर्जी जानकारी कभी ओपन फूड फैक्ट्स सर्वर पर नहीं भेजी जाएगी। इसके अलावा सावधान रहें, ज़रूरी नहीं कि उत्पाद डेटा सटीक हो, और पहचान 100% सही हो, इसलिए कृपया स्वयं दोबारा जांच करें!</string>
   <!-- OPFF tagline in different languages -->
   <string name="tagline">free pet food products database</string>

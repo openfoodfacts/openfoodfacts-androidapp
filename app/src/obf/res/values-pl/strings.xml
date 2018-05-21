@@ -11,6 +11,7 @@
   <string name="website_product">https://world.openbeautyfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
+  <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
   <string name="txtHome">Open Beauty Facts jest bazą danych kosmetyków, ich składników, alergenów oraz innych informacji z etykiet.</string>
   <string name="slide_1_title">Przyczyń się do przejrzystości Kosmetyków</string>
   <string name="slide_1_desc">Skanuj produkty, rób ich zdjęcia, niech się dzieje przezroczystość kosmetyczna</string>
@@ -28,7 +29,7 @@
   <string name="Donation">Kliknij by wpłacić darowiznę na rzecz Open Beauty Facts</string>
   <string name="translate_help_title">Wspomóż tłumaczenie Open Beauty Facts</string>
   <string name="translate_help_summary">Wprowadź bazę danych Open Beauty Facts do twojego języka - nie wymagamy wiedzy technicznej</string>
-  <string name="text_offline_info_dialog">Możesz skanować produkty, gdy jesteś w trybie offline w celu ich późniejszego dodania. Wszystkie zeskanowane produkty ukażą się tu i będzie można je wysłać za pomocą poniższego przycisku.</string>
+  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Informacja o twoich uczuleniach nie trafi na serwer Open Beaty Facts. Uważaj na niedokładne dane produktów oraz niedoskonałóśc wykrywania. Sprawdzaj dwa razy! </string>
   <!-- OBF tagline in different languages -->
   <string name="tagline">darmowa baza o kosmetykach</string>

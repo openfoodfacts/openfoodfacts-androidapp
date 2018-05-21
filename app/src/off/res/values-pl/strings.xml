@@ -28,8 +28,8 @@
   <string name="Donation">Kliknij tu, by przekazać darowiznę na rzecz Open Food Facts</string>
   <string name="translate_help_title">Wspomóż tłumaczenie Open Food Facts</string>
   <string name="translate_help_summary">Otwórz bazę danych Open Food Facts na swój język - wiedza techniczna nie jest wymagana</string>
-  <string name="text_offline_info_dialog">Możesz skanować produkty gdy jesteś offline by później dodać je do Open Food Facts. Wszystkie zeskanowane produkty pojawią się tu i będziesz mógł wysłać je za pomocą przycisku poniżej.</string>
+  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Informacja o twoich uczuleniach nie zostanie przesłana na serwer Open Food Facts. Uważaj, dane o produkcie mogą nie być dokładne, a wykrycie ich też nie może być pewne. Zatem, sprawdzaj dwa razy! </string>
   <!-- OFF tagline in different languages -->
-  <string name="tagline">the free food products database</string>
+  <string name="tagline">baza bezpłatnych produktów spożywczych</string>
 </resources>

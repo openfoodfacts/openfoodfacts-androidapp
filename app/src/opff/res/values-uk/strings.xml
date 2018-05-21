@@ -11,6 +11,7 @@
   <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
+  <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
   <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
   <string name="slide_1_title">Contribute to Pet Food transparency</string>
   <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
@@ -28,7 +29,7 @@
   <string name="Donation">Натисніть тут, щоб підтримати Open Food Facts</string>
   <string name="translate_help_title">Допоможіть перекласти Open Food Facts</string>
   <string name="translate_help_summary">Перекладіть базу даних Open Food Facts на свою мову - технічних знань не потрібно</string>
-  <string name="text_offline_info_dialog">Ви можете сканувати товари, коли Ви знаходитесь у автономний режимі, щоб пізніше додати їх до Open Food Facts. Усі скановані товари відображатимуться тут, і ви зможете їх надіслати за допомогою кнопки нижче.</string>
+  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Інформація про вашу алергію ніколи не буде відправлена ​​на сервер Open Food Facts. Крім того, будьте обережні, бо дані продукту можуть бути неточними, а виявлення може бути не на 100% точним, тому подвійно перевіряйте самостійно! </string>
   <!-- OPFF tagline in different languages -->
   <string name="tagline">free pet food products database</string>

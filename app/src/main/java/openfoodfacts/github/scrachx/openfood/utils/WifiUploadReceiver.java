@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -13,12 +12,9 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
-
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 
@@ -81,10 +77,10 @@ public class WifiUploadReceiver extends BroadcastReceiver {
 
             Intent intent = new Intent(this, UploadService.class);
             intent.setAction("UploadJob");
-
+            String contentText = this.getResources().getQuantityString(R.plurals.offline_notification_count, listSaveProduct.size(), listSaveProduct.size());
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                     .setContentTitle(this.getString(R.string.offline_notification_title))
-                    .setContentText(this.getString(R.string.offline_notification_context, listSaveProduct.size()))
+                    .setContentText(contentText)
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .addAction(R.drawable.ic_cloud_upload, "Upload", PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT));
 
@@ -92,11 +88,6 @@ public class WifiUploadReceiver extends BroadcastReceiver {
             NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
             mNotificationManager.notify(9, builder.build());
-
-
         }
-
     }
-
-
 }
