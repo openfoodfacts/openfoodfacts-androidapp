@@ -105,6 +105,9 @@ files:
     
   - source: /fastlane/metadata/android/en-US/off/changelog.txt
     translation: /fastlane/metadata/android/%locale%/off/changelog.txt
+ 
+   - source: /fastlane/metadata/android/en-US/off/changelog-light.txt
+    translation: /fastlane/metadata/android/%locale%/off/changelog-light.txt
 
   - source: /fastlane/metadata/android/en-US/obf/title.txt
     translation: /fastlane/metadata/android/%locale%/obf/title.txt
