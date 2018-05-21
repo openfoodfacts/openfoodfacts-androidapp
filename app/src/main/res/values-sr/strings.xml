@@ -23,7 +23,7 @@
   </plurals>
   <string name="action_settings">Podešavanja</string>
   <string name="action_about">O</string>
-  <string name="action_discover">Otkrij</string>
+  <string name="action_discover">Otkrijte</string>
   <string name="contribute">Kako da doprinesete</string>
   <string name="action_find">Nađi</string>
   <string name="text_barcode">Ukucajte barkod:</string>
@@ -87,7 +87,7 @@
   <string name="txtBrands">Brend :</string>
   <string name="txtCategories">Katergorije :</string>
   <string name="txtLabels">Oznaka, sertifikat, nagrade :</string>
-  <string name="txtManufacturing">Mesto u kojem se proizvodi ili prerađuje :</string>
+  <string name="txtManufacturing">Lokacija proizvodnje ili prerade :</string>
   <string name="txtIngredientsOrigins">Poreklo sastojaka :</string>
   <string name="txtCity">Grad, država gde je proizvod kupljen :</string>
   <string name="txtEMB">EMB Code:</string>
@@ -166,7 +166,7 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Pretraži</string>
   <string name="search_by_barcode_drawer">Pretraži po barkodu</string>
-  <string name="category_drawer">Категорије</string>
+  <string name="category_drawer">Kategorije</string>
   <string name="search_by_category">Kategorija</string>
   <string name="search_by_name_drawer">Pretraži po imenu</string>
   <string name="scan_search">Skeniraj</string>
@@ -340,7 +340,7 @@
   <string name="take_picture_ingredients">Uslikajte sastav proizvoda</string>
   <string name="take_picture_front">Uslikajte prednju stranu proizvoda</string>
   <string name="take_picture_nutrition_table">Uslikajte tablicu nutritivnih vrednosti</string>
-  <string name="take_more_pictures">Uslikaj</string>
+  <string name="take_more_pictures">Dodaj još fotografija</string>
   <string name="txtSaturatedFat">Zasićene masne kiseline</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
@@ -363,7 +363,7 @@
   <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
   <string name="airplane_mode_active_dialog_negative">Dismiss</string>
   <string name="airplane_mode_active_dialog_positive">Podešavanja</string>
-  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_title">Mreža nije dostupna</string>
   <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
   <string name="device_offline_dialog_negative">Dismiss</string>
   <string name="device_offline_dialog_positive">Podešavanja</string>
@@ -383,13 +383,13 @@
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
   <string name="please_check_your_connection">Please check your connection.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
-  <string name="advanced_search_title">Advanced Search &amp; Charts</string>
+  <string name="advanced_search_title">Napredna pretraga i grafikoni</string>
   <string name="connectivity_check">Please check your internet connection</string>
   <string name="dismiss">Dismiss</string>
   <string name="Terms">Terms</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Opšte</string>
-  <string name="preference_header_network">Network</string>
+  <string name="preference_header_network">Mreža</string>
   <string name="preference_header_contributing">Contributing</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
   <string name="seconds_ago">seconds ago</string>
