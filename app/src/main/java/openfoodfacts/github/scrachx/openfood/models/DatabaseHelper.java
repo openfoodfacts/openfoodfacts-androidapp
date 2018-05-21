@@ -88,33 +88,6 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                         }
                     }
                 }
-                }
-                if (columnIsNew(db, "additive", wikiDataID)) {
-                }
-
-                if (columnIsNew(db, "additive", isWikiDataPresent)) {
-            }
-                if (columnIsNew(db, "category_name", wikiDataID)) {
-                }
-
-                if (columnIsNew(db, "category_name", isWikiDataPresent)) {
-                }
-                if (columnIsNew(db, "category", wikiDataID)) {
-                }
-
-                if (columnIsNew(db, "category", isWikiDataPresent)) {
-                }
-                if (columnIsNew(db, "label_name", wikiDataID)) {
-                }
-
-                if (columnIsNew(db, "label_name", isWikiDataPresent)) {
-                }
-                if (columnIsNew(db, "label", wikiDataID)) {
-                }
-
-                if (columnIsNew(db, "label", isWikiDataPresent)) {
-                }
-                
                 break;
             }
         }

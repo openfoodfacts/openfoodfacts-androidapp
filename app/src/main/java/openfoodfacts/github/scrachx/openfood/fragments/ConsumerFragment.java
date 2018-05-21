@@ -6,13 +6,19 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import holloway.allergenChecker.Consumer;
+import holloway.allergenChecker.JSONManager;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.dummy.DummyContent;
-import openfoodfacts.github.scrachx.openfood.dummy.DummyContent.DummyItem;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ConsumerRecyclerViewAdapter;
 
 /**
@@ -58,7 +64,20 @@ public class ConsumerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_consumer_list, container, false);
+        View view = (ListView) inflater.inflate(R.layout.fragment_consumer_list, container, false);
+
+        File folder = new File(getContext().getFilesDir() + "/consumers");
+        if (folder.exists()) {
+            Log.i("ConsumerFragment", "Found existing consumers directory at" + getContext().getFilesDir());
+        }
+        if (!folder.exists()) {
+            folder.mkdir();
+            Log.i("ConsumerFragment", "Attempted to create directory 'consumers'");
+        }
+
+
+        JSONManager.getInstance().setConsumerJSONLocation(folder.toString());
+
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -69,7 +88,13 @@ public class ConsumerFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new ConsumerRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            List<Consumer> consumerList = new ArrayList<>(JSONManager.getInstance().setUpConsumers());
+
+            /* Add a footer to the list */
+
+
+            //TODO E/RecyclerView: No adapter attached; skipping layout
+            recyclerView.setAdapter(new ConsumerRecyclerViewAdapter(consumerList, mListener));
         }
         return view;
     }
@@ -104,6 +129,6 @@ public class ConsumerFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Consumer item);
     }
 }
