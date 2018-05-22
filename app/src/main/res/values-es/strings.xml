@@ -7,15 +7,15 @@
   </plurals>
   <plurals name="minutes">
     <item quantity="one">1 minute ago</item>
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="other">%d minutos atrás</item>
   </plurals>
   <plurals name="hours">
     <item quantity="one">1 hour ago</item>
-    <item quantity="other">%d hours ago</item>
+    <item quantity="other">%d horas atrás</item>
   </plurals>
   <plurals name="days">
     <item quantity="one">1 day ago</item>
-    <item quantity="other">%d days ago</item>
+    <item quantity="other">%d días atrás</item>
   </plurals>
   <string name="action_settings">Configuración</string>
   <string name="action_about">Acerca de</string>
@@ -68,7 +68,7 @@
   <string name="bookmark">Marcador</string>
   <string name="edit">Editar</string>
   <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
+  <string name="fastscroller_handle">Desplazamiento rápido manual</string>
   <string name="search_button">Buscar</string>
   <string name="no_products">No se han encontrado productos</string>
   <string name="desc_list_item_icon">Icono de Objeto</string>
@@ -243,7 +243,7 @@
   <string name="nutrition_salt">Sal</string>
   <string name="nutrition_salt_short_name">Sal (g)</string>
   <string name="nutrition_satured_fat">Grasa saturada</string>
-  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+  <string name="nutrition_satured_fat_short_name">Grasas saturadas (g)</string>
   <string name="nutrition_serving">Por porción</string>
   <string name="nutrition_serving_size">Tamaño de la ración :</string>
   <string name="nutrition_sodium">Sodio</string>
@@ -422,7 +422,7 @@
   <string name="connection">Conectado</string>
   <string name="contributor_string">Colaborador</string>
   <string name="Rate_Us">Muestre su soporte</string>
-  <string name="Rate_Us_title">Rate our App</string>
+  <string name="Rate_Us_title">Valore nuestra aplicación</string>
   <string name="app_disabled_text">La aplicación está desactivada</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitaminas:</string>
