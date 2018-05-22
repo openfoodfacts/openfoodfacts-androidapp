@@ -12,7 +12,7 @@ Nyheder
 4. Du kan opsætte allergenalarmer (dobbelttjek dog altid selv etiketten!)
 5. Du får nu en skanningshistorik, du kan eksportere, og den forlader aldrig din mobil
 6. Du kan altid ryste din mobil fra app'en for at starte skanningen
-7. You can now add new products even when you're offline
+7. Du kan nu tilføje nye produkter, selv når du er offline
 8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
 9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
 10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
