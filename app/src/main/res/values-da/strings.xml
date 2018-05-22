@@ -6,16 +6,16 @@
     <item quantity="other"> Sie haben %d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one"> minut</item>
-    <item quantity="other"> minutter</item>
+    <item quantity="one">1 minute ago</item>
+    <item quantity="other">%d minutes ago</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one"> time</item>
-    <item quantity="other"> timer</item>
+    <item quantity="one">1 hour ago</item>
+    <item quantity="other">%d hours ago</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one"> dag</item>
-    <item quantity="other"> dage</item>
+    <item quantity="one">1 day ago</item>
+    <item quantity="other">%d days ago</item>
   </plurals>
   <string name="action_settings">Indstillinger</string>
   <string name="action_about">Om</string>
