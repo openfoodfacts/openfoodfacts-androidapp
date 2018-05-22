@@ -243,7 +243,7 @@
   <string name="nutrition_salt">Salt</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Mættet fedt</string>
-  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+  <string name="nutrition_satured_fat_short_name">Mættet fedt (g)</string>
   <string name="nutrition_serving">Per portion</string>
   <string name="nutrition_serving_size">Portionsstørrelse :</string>
   <string name="nutrition_sodium">Natrium</string>
