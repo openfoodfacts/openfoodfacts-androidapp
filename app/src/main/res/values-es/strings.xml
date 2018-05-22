@@ -459,7 +459,7 @@
   <string name="product_pictures_contributed">Productos para los que tomaste fotografías</string>
   <string name="picture_contributed_incomplete">Los productos a los que tomaste fotografías para eso deben ser completados</string>
   <string name="product_info_added">Productos de los que ha agregado información</string>
-  <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
+  <string name="product_info_tocomplete">Información de sus productos agregados que necesitan ser completados</string>
   <string name="show_by">Muestre</string>
   <string name="notify_title">Exportación completa</string>
   <string name="notify_content">Haga click para ver los productos exportados</string>
