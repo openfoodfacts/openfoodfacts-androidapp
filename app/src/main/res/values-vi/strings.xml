@@ -5,13 +5,13 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="other"> minutes</item>
+    <item quantity="other">%d minutes ago</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="other"> hours</item>
+    <item quantity="other">%d hours ago</item>
   </plurals>
   <plurals name="days">
-    <item quantity="other"> days</item>
+    <item quantity="other">%d days ago</item>
   </plurals>
   <string name="action_settings">Cài đặt</string>
   <string name="action_about">About</string>
