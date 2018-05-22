@@ -6,16 +6,16 @@
     <item quantity="other">crwdns92740:5%dcrwdne92740:5</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one">crwdns37308:1crwdne37308:1</item>
-    <item quantity="other">crwdns37308:5crwdne37308:5</item>
+    <item quantity="one">crwdns92817:1crwdne92817:1</item>
+    <item quantity="other">crwdns92817:5%dcrwdne92817:5</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one">crwdns37298:1crwdne37298:1</item>
-    <item quantity="other">crwdns37298:5crwdne37298:5</item>
+    <item quantity="one">crwdns92818:1crwdne92818:1</item>
+    <item quantity="other">crwdns92818:5%dcrwdne92818:5</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">crwdns37299:1crwdne37299:1</item>
-    <item quantity="other">crwdns37299:5crwdne37299:5</item>
+    <item quantity="one">crwdns92819:1crwdne92819:1</item>
+    <item quantity="other">crwdns92819:5%dcrwdne92819:5</item>
   </plurals>
   <string name="action_settings">crwdns34963:0crwdne34963:0</string>
   <string name="action_about">crwdns34964:0crwdne34964:0</string>
