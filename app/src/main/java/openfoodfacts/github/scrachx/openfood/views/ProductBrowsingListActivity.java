@@ -428,6 +428,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                         api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
                         break;
                 }
+                break;
             }
 
 
