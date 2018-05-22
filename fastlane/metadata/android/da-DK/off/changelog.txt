@@ -10,8 +10,8 @@ Nyheder
 2. Få "NutriScore"-ernæringsgraden for alle produkter i verden. Sammenlign nemt produkter. Nemmere end at dechiffrere ernæringstabeller.
 3. Få ekstra information fra Wikipedia. Tryk på en fødevarekategori, et tilsætningsstof… for yderligere information og se lignende produkter.
 4. Du kan opsætte allergenalarmer (dobbelttjek dog altid selv etiketten!)
-5. You now get a scan history you can export and that never leaves your phone
-6. You can shake your phone at any time in the app to start scanning
+5. Du får nu en skanningshistorik, du kan eksportere, og den forlader aldrig din mobil
+6. Du kan altid ryste din mobil fra app'en for at starte skanningen
 7. You can now add new products even when you're offline
 8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
 9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
