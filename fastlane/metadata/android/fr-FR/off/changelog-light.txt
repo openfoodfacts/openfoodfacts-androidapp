@@ -1,9 +1,9 @@
-v2 ! All OFF volunteers have worked hard, based on your suggestions. We're a more global movement than ever. 500k products freed, 182 countries, 10K+ contributors, incl. you :-)
-1. The NutriScore for all products in the world
-2. Exportable history, for your eyes only
-3. Allergen alerts
-4. Tap additives to explore with Wikipedia.
-5. Take photos, be part of food transparency
-6. Much faster, even on 2G. You can even contribute with no connection
-7. No sign-up required
-8. As light as before :)
+v2 ! Tous les bénévoles OFF ont travaillé dur, sur la base de vos suggestions. Nous sommes un mouvement plus global que jamais. 500k produits libérés, 182 pays, 10K+ contributeurs, dont vous :)
+1. Le NutriScore pour tous les produits dans le monde
+2. Historique exportable, pour vos yeux seulement
+3. Alertes allergènes
+4. Appuyez sur les additifs pour explorer avec Wikipedia.
+5. Prenez des photos, faites partie de la transparence alimentaire
+6. Beaucoup plus rapide, même sur 2G. Vous pouvez même contribuer sans connexion
+7. Aucune inscription requise
+8. Aussi léger qu'avant :)

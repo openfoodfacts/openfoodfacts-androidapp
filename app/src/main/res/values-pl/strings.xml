@@ -8,22 +8,22 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one"> minuta</item>
-    <item quantity="few"> minuty</item>
-    <item quantity="many"> minuty</item>
-    <item quantity="other"> minuty</item>
+    <item quantity="one">1 minute ago</item>
+    <item quantity="few">%d minutes ago</item>
+    <item quantity="many">%d minutes ago</item>
+    <item quantity="other">%d minutes ago</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one"> godzina</item>
-    <item quantity="few"> hours</item>
-    <item quantity="many"> hours</item>
-    <item quantity="other"> godziny</item>
+    <item quantity="one">1 hour ago</item>
+    <item quantity="few">%d hours ago</item>
+    <item quantity="many">%d hours ago</item>
+    <item quantity="other">%d hours ago</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one"> day</item>
-    <item quantity="few"> days</item>
-    <item quantity="many"> days</item>
-    <item quantity="other"> dni</item>
+    <item quantity="one">1 day ago</item>
+    <item quantity="few">%d days ago</item>
+    <item quantity="many">%d days ago</item>
+    <item quantity="other">%d days ago</item>
   </plurals>
   <string name="action_settings">Opcje</string>
   <string name="action_about">Na temat</string>

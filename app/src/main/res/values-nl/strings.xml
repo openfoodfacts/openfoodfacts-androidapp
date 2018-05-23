@@ -6,16 +6,16 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one"> minute</item>
-    <item quantity="other"> minutes</item>
+    <item quantity="one">1 minute ago</item>
+    <item quantity="other">%d minutes ago</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one"> hour</item>
-    <item quantity="other"> hours</item>
+    <item quantity="one">1 hour ago</item>
+    <item quantity="other">%d hours ago</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one"> day</item>
-    <item quantity="other"> days</item>
+    <item quantity="one">1 day ago</item>
+    <item quantity="other">%d days ago</item>
   </plurals>
   <string name="action_settings">Instellingen</string>
   <string name="action_about">Informatie</string>
@@ -66,7 +66,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
-  <string name="edit">Edit</string>
+  <string name="edit">Bewerken</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Zoeken</string>
@@ -91,8 +91,8 @@
   <string name="txtStores">Winkels</string>
   <string name="txtCountries">Landen verkrijgbaar</string>
   <string name="txtIngredients">Ingrediënten</string>
-  <string name="Donate">Donate</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donate">Doneer</string>
+  <string name="Donation">Klik hier om te doneren aan Open Food Facts</string>
   <string name="txtSubstances">Ingrediënten of producten die allergieën of intoleranties veroorzaken</string>
   <string name="txtAdditives">Additieven</string>
   <string name="txtTraces">Sporen</string>
@@ -118,7 +118,7 @@
   <string name="hintPass">Wachtwoord</string>
   <string name="errorLogin">Verkeerde gebruikersnaam of wachtwoord</string>
   <string name="errorWeb">We krijgen geen verbinding met het internet. Gelieve uw netwerkconnectie te controleren.</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="uploadLater">Afbeelding wordt geüpload wanneer netwerk beschikbaar is</string>
   <string name="txtInfoLoginOk">Gebruiker opgeslagen</string>
   <string name="txtInfoLoginNo">Gebruiker niet opgeslagen</string>
   <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Food Facts. Voeg deze toe.</string>
@@ -134,16 +134,16 @@
   <string name="txtTakePicture">Maak foto</string>
   <string name="txtSendAll">Alles versturen</string>
   <string name="txtNoData">Geen gegevens</string>
-  <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
-  <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeeded">Wacht…</string>
+  <string name="txtPictureNeededDialogContent">U moet ten minste één foto toevoegen voordat u dit product verzendt</string>
+  <string name="txtPictureNeededDialogYes">Blijf</string>
+  <string name="txtPictureNeededDialogNo">Negeren</string>
   <string name="toastSending">Aan het doorsturen...</string>
   <string name="dataSaved">Lokaal opgeslagen</string>
   <string name="txtInfoAddUser">Uw gebruikersnaam en en wachtwoord alstublieft</string>
   <string name="txtDataUpdated">Gegevens bijgewerkt</string>
   <string name="txtLoading">Bezig met laden…</string>
-  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
+  <string name="txtDialogsContentDelete">Weet u zeker dat u deze concept wilt verwijderen?</string>
   <string name="txtDialogsContentInfoSave">Het product is lokaal opgeslagen, u kunt het bewerken in het Offline Edit-menu</string>
   <string name="txtBarcodeRequire">Streepjescode verplicht</string>
   <string name="txtOk">Ok</string>
@@ -154,7 +154,7 @@
   <string name="txtBarcodeNotValid">Streepjescode niet geldig</string>
   <string name="try_it_scan_now">Product scannen</string>
   <string name="share">Delen</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Vertalen</string>
   <string name="msg_share">Bekijk dit product op Open Food Facts</string>
   <string name="create_account">Inschrijven</string>
   <string name="home_drawer">Hoofdmenu</string>
@@ -341,29 +341,29 @@
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
   <string name="scan_shortcut_short_label">Scan</string>
-  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="scan_shortcut_long_label">Scan product</string>
   <string name="barcode_shortcut_short_label">Zoeken</string>
   <string name="barcode_shortcut_long_label">Search By Barcode</string>
   <string name="history_shortcut_short_label">Geschiedenis</string>
   <string name="history_shortcut_long_label">Geschiedenis</string>
   <string name="contributions_shortcut_short_label">Contributions</string>
   <string name="contributions_shortcut_long_label">My Contributions</string>
-  <string name="forgot_password">Forgot Password</string>
-  <string name="next">NEXT</string>
-  <string name="skip">SKIP</string>
-  <string name="start">GOT IT</string>
+  <string name="forgot_password">Wachtwoord vergeten</string>
+  <string name="next">VOLGENDE</string>
+  <string name="skip">OVERSLAAN</string>
+  <string name="start">BEGREPEN</string>
   <string name="contact">Contact</string>
-  <string name="contact_summary">Contact the team</string>
+  <string name="contact_summary">Contact opnemen met het team</string>
   <string name="email_not_found">No email applications found</string>
   <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
   <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
-  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="airplane_mode_active_dialog_negative">Afwijzen</string>
   <string name="airplane_mode_active_dialog_positive">Instellingen</string>
-  <string name="device_offline_dialog_title">Network unavailable</string>
-  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
-  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_title">Netwerk niet beschikbaar</string>
+  <string name="device_offline_dialog_message">Hiervoor is een netwerkverbinding nodig, wilt u dit wijzigen in de instellingen?</string>
+  <string name="device_offline_dialog_negative">Afwijzen</string>
   <string name="device_offline_dialog_positive">Instellingen</string>
-  <string name="saving">Saving…</string>
+  <string name="saving">Opslaan…</string>
   <string name="scan_first_product">Scan First Product</string>
   <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
   <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
@@ -381,7 +381,7 @@
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Advanced Search &amp; Charts</string>
   <string name="connectivity_check">Please check your internet connection</string>
-  <string name="dismiss">Dismiss</string>
+  <string name="dismiss">Afwijzen</string>
   <string name="Terms">Terms</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">General</string>
@@ -396,7 +396,7 @@
   <string name="log_in">Inloggen</string>
   <string name="login_true">Already logged in!</string>
   <string name="confirm_logout">Confirm Logout</string>
-  <string name="logout_dialog_content">Are you sure to log out ?</string>
+  <string name="logout_dialog_content">Weet u zeker dat u wilt uitloggen?</string>
   <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Choose Resolution</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
@@ -474,6 +474,6 @@
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show Contribution Tab</string>
-  <string name="product">Edit</string>
+  <string name="product">Bewerken</string>
   <string name="txtDialogsTitle">Opmerking</string>
 </resources>

@@ -1,6 +1,6 @@
 
 ==================
-Ny lokaliseret version af Open Food Facts. Alle Open Food Facts-frivillige har arbejdet hårdt på den baseret på dine forslag og feedback :-)
+Ny indbygget version af Open Food Facts. Alle Open Food Facts-frivillige har arbejdet hårdt på den baseret på dine forslag og feedback :-)
 ==================
 * Open Food Facts er nu en mere global bevægelse end nogensinde. 500k produkter frigivet, 10k registrerede bidragsydere, 182 lande. Vil du være med?
 ==================

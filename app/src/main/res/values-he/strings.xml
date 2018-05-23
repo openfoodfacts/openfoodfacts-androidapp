@@ -8,22 +8,22 @@
     <item quantity="other">יש %d מוצרים בלתי מקוונים שממתינים להגשה כתרומה ל־Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one"> minute</item>
-    <item quantity="two"> minutes</item>
-    <item quantity="many"> minutes</item>
-    <item quantity="other"> minutes</item>
+    <item quantity="one">1 minute ago</item>
+    <item quantity="two">%d minutes ago</item>
+    <item quantity="many">%d minutes ago</item>
+    <item quantity="other">%d minutes ago</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one"> hour</item>
-    <item quantity="two"> hours</item>
-    <item quantity="many"> hours</item>
-    <item quantity="other"> hours</item>
+    <item quantity="one">1 hour ago</item>
+    <item quantity="two">%d hours ago</item>
+    <item quantity="many">%d hours ago</item>
+    <item quantity="other">%d hours ago</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one"> day</item>
-    <item quantity="two"> days</item>
-    <item quantity="many"> days</item>
-    <item quantity="other"> days</item>
+    <item quantity="one">1 day ago</item>
+    <item quantity="two">%d days ago</item>
+    <item quantity="many">%d days ago</item>
+    <item quantity="other">%d days ago</item>
   </plurals>
   <string name="action_settings">הגדרות</string>
   <string name="action_about">על אודות</string>
