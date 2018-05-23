@@ -8,22 +8,22 @@
     <item quantity="other">יש %d מוצרים בלתי מקוונים שממתינים להגשה כתרומה ל־Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one">1 minute ago</item>
-    <item quantity="two">%d minutes ago</item>
-    <item quantity="many">%d minutes ago</item>
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="one">לפני דקה</item>
+    <item quantity="two">לפני שתי דקות</item>
+    <item quantity="many">לפני %d דקות</item>
+    <item quantity="other">לפני %d דקות</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one">1 hour ago</item>
-    <item quantity="two">%d hours ago</item>
-    <item quantity="many">%d hours ago</item>
-    <item quantity="other">%d hours ago</item>
+    <item quantity="one">לפני שעה</item>
+    <item quantity="two">לפני שעתיים</item>
+    <item quantity="many">לפני %d שעות</item>
+    <item quantity="other">לפני %d שעות</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">1 day ago</item>
-    <item quantity="two">%d days ago</item>
-    <item quantity="many">%d days ago</item>
-    <item quantity="other">%d days ago</item>
+    <item quantity="one">אתמול</item>
+    <item quantity="two">שלשום</item>
+    <item quantity="many">לפני %d ימים</item>
+    <item quantity="other">לפני %d ימים</item>
   </plurals>
   <string name="action_settings">הגדרות</string>
   <string name="action_about">על אודות</string>
@@ -251,7 +251,7 @@
   <string name="nutrition_salt">מלח</string>
   <string name="nutrition_salt_short_name">מלח (ג׳)</string>
   <string name="nutrition_satured_fat">שומן רווי</string>
-  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+  <string name="nutrition_satured_fat_short_name">שומן רווי (ג׳)</string>
   <string name="nutrition_serving">להגשה</string>
   <string name="nutrition_serving_size">גודל ההגשה :</string>
   <string name="nutrition_sodium">נתרן</string>
