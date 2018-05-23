@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -233,7 +232,7 @@ public class Utils {
         int drawable;
 
         if (grade == null) {
-            return R.drawable.ic_error;
+            return R.drawable.ic_help_outline_orange_24dp;
         }
 
         switch (grade.toLowerCase(Locale.getDefault())) {
@@ -253,7 +252,7 @@ public class Utils {
                 drawable = R.drawable.nnc_e;
                 break;
             default:
-                drawable = R.drawable.ic_error;
+                drawable = R.drawable.ic_help_outline_orange_24dp;
                 break;
         }
 
@@ -552,12 +551,12 @@ public class Utils {
         return kj != 0 ? Double.valueOf(((double) kj) / 4.1868d).intValue() : -1;
     }
 
-   /**
+    /**
      * Function which returns true if the battery level is low
      *
      * @param context
      * @return true if battery is low or false if battery in not low
-      */
+     */
     public static boolean getBatteryLevel(Context context) {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
@@ -571,9 +570,9 @@ public class Utils {
     }
 
     /*
-    * Function to open ScannerFragmentActivity to facilitate scanning
-    * @param activity
-    */
+     * Function to open ScannerFragmentActivity to facilitate scanning
+     * @param activity
+     */
     public static void scan(Activity activity) {
 
 

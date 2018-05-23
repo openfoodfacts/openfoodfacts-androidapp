@@ -186,6 +186,10 @@ dependencies {
 
     //Barcode and QR Scanner
     implementation "me.dm7.barcodescanner:zxing:$rootProject.qrScannerVersion"
+    implementation("com.journeyapps:zxing-android-embedded:$rootProject.journeyappsZxingScannerVersion") {
+        transitive = false
+    }
+    implementation "com.google.zxing:core:$rootProject.zxingCoreVersion"
 
     //HTML Dom
     implementation "org.jsoup:jsoup:$rootProject.htmlDomVersion"
