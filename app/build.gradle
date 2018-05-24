@@ -141,9 +141,7 @@ dependencies {
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
     implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    implementation 'com.android.support:support-v4:27.1.0'
     implementation "com.android.support:multidex:$rootProject.multidexVersion"
-    implementation "com.android.support:design:27.1.0"
 
     //DI
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
@@ -230,16 +228,16 @@ dependencies {
     }
 
     //Testing
-    androidTestUtil 'com.android.support.test:orchestrator:1.0.1'
+    androidTestUtil 'com.android.support.test:orchestrator:1.0.2'
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     testImplementation "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"
 
     // Required for instrumented tests
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.2'
     androidTestImplementation('com.android.support.test.espresso:espresso-contrib:3.0.1') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'
