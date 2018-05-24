@@ -4,10 +4,10 @@
 
 - Open Products Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 
 - You can start contributing today by adding your first product. 
 
-*** Get the Facts ***
+***获取信息***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***
@@ -16,15 +16,15 @@
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+在任何情况下都有效
+- 即使没有连接互联网，你也可以添加新的产品。
+- 应用程序仅加载严格必要以减少数据及电量消耗
+- 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- 您可以匿名使用该应用
+- 您可以导出历史记录
 
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 

@@ -7,15 +7,15 @@
   </plurals>
   <plurals name="minutes">
     <item quantity="one">1 minute ago</item>
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="other">%d minutter siden</item>
   </plurals>
   <plurals name="hours">
     <item quantity="one">1 hour ago</item>
-    <item quantity="other">%d hours ago</item>
+    <item quantity="other">%d timer siden</item>
   </plurals>
   <plurals name="days">
     <item quantity="one">1 day ago</item>
-    <item quantity="other">%d days ago</item>
+    <item quantity="other">%d dager siden</item>
   </plurals>
   <string name="action_settings">Innstillinger</string>
   <string name="action_about">Om</string>
@@ -23,9 +23,9 @@
   <string name="contribute">Hvordan bidra</string>
   <string name="action_find">Søk</string>
   <string name="text_barcode">Skriv inn strekkoden :</string>
-  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
-  <string name="no_offline_data">You\'re all done</string>
+  <string name="message_in_activity_save_product_offline">Bare ett bilde er obligatorisk for å sende et nytt produkt.</string>
+  <string name="product_incomplete_message">Dette produktet er ikke fullført. Som følge av dette kunne vi ikke utføre allergenkontrollen.</string>
+  <string name="no_offline_data">Du er ferdig</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
   <string-array name="upload_image">
@@ -44,9 +44,9 @@
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
+    <item>g</item>
     <item>mg</item>
     <item>kg</item>
-    <item>l</item>
     <item>ml</item>
     <item>ml</item>
     <item>cl</item>
@@ -65,7 +65,7 @@
     <item>Ingredienser</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
+  <string name="bookmark">Bokmerke</string>
   <string name="edit">Edit</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
