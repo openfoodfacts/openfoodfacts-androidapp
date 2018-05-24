@@ -6,15 +6,15 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one">1 minute ago</item>
+    <item quantity="one">Il y a 1 minute</item>
     <item quantity="other">%d minutes ago</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one">1 hour ago</item>
+    <item quantity="one">Il y a 1 heure</item>
     <item quantity="other">%d hours ago</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">1 day ago</item>
+    <item quantity="one">il y a 1 jour</item>
     <item quantity="other">%d days ago</item>
   </plurals>
   <string name="action_settings">Paramètres</string>
@@ -243,7 +243,7 @@
   <string name="nutrition_salt">Sel</string>
   <string name="nutrition_salt_short_name">Sel (g)</string>
   <string name="nutrition_satured_fat">Graisses saturées</string>
-  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+  <string name="nutrition_satured_fat_short_name">Graisses saturées (g)</string>
   <string name="nutrition_serving">Par portion</string>
   <string name="nutrition_serving_size">Taille d\'une portion :</string>
   <string name="nutrition_sodium">Sodium</string>
