@@ -117,3 +117,6 @@ files:
         
   - source: /fastlane/metadata/android/en-US/opf/title.txt
     translation: /fastlane/metadata/android/%locale%/opf/title.txt
+
+  - source: /fastlane/metadata/android/en-US/off/screenshot-text.txt
+    translation: /fastlane/metadata/android/%locale%/off/screenshot-text.txt
