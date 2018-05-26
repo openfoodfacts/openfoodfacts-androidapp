@@ -6,16 +6,16 @@
     <item quantity="other"> Önnek %d kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájáruláshoz</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one">1 minute ago</item>
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="one">1 perce</item>
+    <item quantity="other">%d perce</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one">1 hour ago</item>
-    <item quantity="other">%d hours ago</item>
+    <item quantity="one">1 órája</item>
+    <item quantity="other">%d órája</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">1 day ago</item>
-    <item quantity="other">%d days ago</item>
+    <item quantity="one">1 napja</item>
+    <item quantity="other">%d napja</item>
   </plurals>
   <string name="action_settings">Beállítások</string>
   <string name="action_about">Névjegy</string>
