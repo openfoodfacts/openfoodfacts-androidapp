@@ -116,7 +116,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                 .build()
                 .create(OpenFoodAPIService.class);
 
-        // Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
+        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();

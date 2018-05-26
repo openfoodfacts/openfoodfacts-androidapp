@@ -56,53 +56,40 @@ import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 
 public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity {
 
+    private static HistoryProductDao mHistoryProductDao;
     @BindView(R.id.fab_status)
     FloatingActionButton fab_status;
-
     @BindView(R.id.quick_view)
     RelativeLayout quickView;
-
     @BindView(R.id.barcode_scanner)
     DecoratedBarcodeView barcodeView;
-
     @BindView(R.id.toggle_flash)
     ImageView toggleFlash;
-
     @BindView(R.id.toggle_beep)
     ImageView toggleBeep;
-
+    @BindView(R.id.txt_product_not_complete)
+    TextView txtProductIncomplete;
     @BindView(R.id.quickView_progress)
     ProgressBar progressBar;
-
     @BindView(R.id.quickView_productNotFound)
     TextView productNotFound;
-
     @BindView(R.id.quickView_image)
     ImageView productImage;
-
     @BindView(R.id.quickView_brand)
     TextView brand;
-
     @BindView(R.id.quickView_name)
     TextView name;
-
     @BindView(R.id.quickView_quantity)
     TextView quantity;
-
     @BindView(R.id.quickView_nutriScore)
     ImageView nutriScore;
-
     @BindView(R.id.quickView_textNutriScore)
     TextView textNutriScore;
-
     @BindView(R.id.quickView_imageProgress)
     ProgressBar imageProgress;
-
     @Inject
     OpenFoodAPIService client;
-
     private SharedPreferences.Editor editor;
-    private HistoryProductDao mHistoryProductDao;
     private BeepManager beepManager;
     private String lastText;
     private SharedPreferences sp;
@@ -136,6 +123,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         fab_status.setVisibility(View.GONE);
                         imageProgress.setVisibility(View.GONE);
                         textNutriScore.setVisibility(View.GONE);
+                        txtProductIncomplete.setVisibility(View.GONE);
                     })
                     .subscribe(new SingleObserver<State>() {
                         @Override
@@ -157,6 +145,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 nutriScore.setVisibility(View.GONE);
                                 textNutriScore.setVisibility(View.GONE);
                                 imageProgress.setVisibility(View.GONE);
+                                txtProductIncomplete.setVisibility(View.INVISIBLE);
                                 fab_status.setVisibility(View.VISIBLE);
                                 fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
                                 fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_add_a_photo));
@@ -185,6 +174,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 if (product.getImageUrl() == null || product.getQuantity() == null ||
                                         product.getProductName() == null || product.getBrands() == null ||
                                         product.getNutritionGradeFr() == null) {
+                                    txtProductIncomplete.setVisibility(View.VISIBLE);
                                     fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
                                     fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
                                     fab_status.setOnClickListener(v -> {
@@ -196,6 +186,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                         CustomTabActivityHelper.openCustomTab(ContinuousScanActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
                                     });
                                 } else {
+                                    txtProductIncomplete.setVisibility(View.INVISIBLE);
                                     fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.fab_green)));
                                     fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_check_white_24dp));
                                     fab_status.setOnClickListener(null);
@@ -282,7 +273,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (disposable != null) {
+        if (disposable != null && !disposable.isDisposed()) {
             disposable.dispose();
         }
     }
@@ -296,7 +287,13 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     @Override
     protected void onResume() {
         super.onResume();
-        //system bars will remain visible if user presses home and then reopens the activity
+        barcodeView.resume();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        //status bar will remain visible if user presses home and then reopens the activity
         // hence hiding status bar again
         View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
@@ -305,7 +302,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         if (actionBar != null) {
             actionBar.hide();
         }
-        barcodeView.resume();
     }
 
     @Override
@@ -334,6 +330,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                 BarcodeFormat.CODE_128, BarcodeFormat.ITF);
         barcodeView.getBarcodeView().setDecoderFactory(new DefaultDecoderFactory(formats));
         barcodeView.setStatusText(null);
+        CameraSettings settings = barcodeView.getBarcodeView().getCameraSettings();
+        settings.setRequestedCameraId(Camera.CameraInfo.CAMERA_FACING_BACK);
         if (mFlash) {
             barcodeView.setTorchOn();
             toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp);
@@ -392,7 +390,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         editor.apply();
     }
 
-    private class HistoryTask extends AsyncTask<Product, Void, Void> {
+    private static class HistoryTask extends AsyncTask<Product, Void, Void> {
         @Override
         protected Void doInBackground(Product... products) {
             Product product = products[0];

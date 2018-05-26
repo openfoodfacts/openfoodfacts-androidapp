@@ -62,9 +62,9 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
@@ -570,7 +570,7 @@ public class Utils {
     }
 
     /*
-     * Function to open ScannerFragmentActivity to facilitate scanning
+     * Function to open ContinuousScanActivity to facilitate scanning
      * @param activity
      */
     public static void scan(Activity activity) {
@@ -593,7 +593,7 @@ public class Utils {
                         .permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
             }
         } else {
-            Intent intent = new Intent(activity, ScannerFragmentActivity.class);
+            Intent intent = new Intent(activity, ContinuousScanActivity.class);
             activity.startActivity(intent);
         }
 

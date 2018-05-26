@@ -120,7 +120,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         setInfo(infoView);
         new HistoryScanActivity.FillAdapter(this).execute(this);
 
-        // Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
+        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -459,7 +459,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                             .MY_PERMISSIONS_REQUEST_CAMERA);
                 }
             } else {
-                Intent intent = new Intent(HistoryScanActivity.this, ScannerFragmentActivity.class);
+                Intent intent = new Intent(HistoryScanActivity.this, ContinuousScanActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

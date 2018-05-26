@@ -17,7 +17,8 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_mode_edit_black" />
+        app:srcCompat="@drawable/ic_mode_edit_black"
+        tools:visibility="visible" />
 
     <FrameLayout
         android:id="@+id/frame"
@@ -58,6 +59,19 @@
             android:scaleY="1.7"
             app:srcCompat="@drawable/ic_switch_camera" />
 
+        <TextView
+            android:id="@+id/txt_product_not_complete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_margin="@dimen/spacing_small"
+            android:gravity="center_horizontal"
+            android:text="@string/product_not_complete"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
     </FrameLayout>
 
     <RelativeLayout
@@ -77,7 +91,7 @@
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/img_scan" />
+            tools:src="@drawable/img_scan" />
 
         <ProgressBar
             android:id="@+id/quickView_imageProgress"
@@ -99,7 +113,7 @@
             android:singleLine="true"
             android:textSize="18sp"
             android:textStyle="bold"
-            tools:text="Huzaifa Iftikhar" />
+            tools:text="Roasted Dalia" />
 
         <TextView
             android:id="@+id/quickView_brand"

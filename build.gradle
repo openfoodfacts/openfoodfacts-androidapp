@@ -51,7 +51,6 @@ ext {
 
     openCsvVersion = '4.1'
 
-    qrScannerVersion = '1.9.8'
     journeyappsZxingScannerVersion = '3.6.0'
     zxingCoreVersion = '3.3.0' //For Android 14+ support zxing:core should be 3.3.0 or earlier
 
