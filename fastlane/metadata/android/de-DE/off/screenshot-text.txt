@@ -1,6 +1,6 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
----
+Those are the taglines shown above the screenshots in the playstore. Halten Sie sie kurz und attraktiv.
+Dateinamen nicht ändern.
+───
 scan_en.png
 Produkte erfassen
 
@@ -8,13 +8,13 @@ quickview_en.png
 „Nutri-Score” (franz. Nahrungsmittelampel) abrufen
 
 history_en.png
-Your full scan history, fully private & exportable
+Ihr vollständiger Verlauf eingelesener Produkte, vollständig privat und exportierbar
 
 product_view_wikipedia_en.png
 Weiter geht's mit Wikipedia
 
 allergen_alert_en.png
-Set allergen alerts
+Allergenwarnungen festlegen
 
 home_en.png
 product_view_nutrition_summary_en.png
