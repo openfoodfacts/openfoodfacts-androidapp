@@ -1,11 +1,11 @@
-package openfoodfacts.github.scrachx.openfood.dagger.component;
+package org.openfoodfacts.scanner.dagger.component;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
-import openfoodfacts.github.scrachx.openfood.dagger.module.ActivityModule;
-import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import org.openfoodfacts.scanner.dagger.module.ActivityModule;
+import org.openfoodfacts.scanner.dagger.module.AppModule;
+import org.openfoodfacts.scanner.views.OFFApplication;
 
 @Component(modules = {AppModule.class})
 @Singleton

@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import org.openfoodfacts.scanner.models.Allergen;
+import org.openfoodfacts.scanner.models.AllergenName;
+import org.openfoodfacts.scanner.repositories.IProductRepository;
+import org.openfoodfacts.scanner.repositories.ProductRepository;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

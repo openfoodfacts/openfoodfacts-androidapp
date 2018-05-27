@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.product.summary;
+package org.openfoodfacts.scanner.views.product.summary;
 
 import java.util.List;
 import java.util.Locale;
@@ -8,10 +8,10 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
-import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
+import org.openfoodfacts.scanner.models.Product;
+import org.openfoodfacts.scanner.repositories.IProductRepository;
+import org.openfoodfacts.scanner.repositories.ProductRepository;
+import org.openfoodfacts.scanner.utils.ProductInfoState;
 
 /**
  * Created by Lobster on 17.03.18.

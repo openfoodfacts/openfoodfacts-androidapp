@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.category.model;
+package org.openfoodfacts.scanner.category.model;
 
 /**
  * Created by Abdelali Eramli on 27/12/2017.

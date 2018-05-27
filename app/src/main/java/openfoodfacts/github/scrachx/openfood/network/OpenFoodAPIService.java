@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.network;
+package org.openfoodfacts.scanner.network;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -7,10 +7,10 @@ import java.util.Map;
 import io.reactivex.Single;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import openfoodfacts.github.scrachx.openfood.models.Search;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
+import org.openfoodfacts.scanner.models.Search;
+import org.openfoodfacts.scanner.models.SendProduct;
+import org.openfoodfacts.scanner.models.State;
+import org.openfoodfacts.scanner.models.TagsWrapper;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;

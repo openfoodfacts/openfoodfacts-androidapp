@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package org.openfoodfacts.scanner.models;
 
 import org.junit.Test;
 
@@ -9,8 +9,8 @@ import java.util.Map;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
-import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.*;
-import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.*;
+import static org.openfoodfacts.scanner.models.LabelNameTestData.*;
+import static org.openfoodfacts.scanner.models.LanguageCodeTestData.*;
 
 /**
  * Tests for {@link LabelsWrapper}

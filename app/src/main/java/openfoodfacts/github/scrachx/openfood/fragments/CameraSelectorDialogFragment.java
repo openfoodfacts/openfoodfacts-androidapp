@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.fragments;
+package org.openfoodfacts.scanner.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 
-import openfoodfacts.github.scrachx.openfood.R;
+import org.openfoodfacts.scanner.R;
 
 public class CameraSelectorDialogFragment extends DialogFragment {
 

@@ -1,15 +1,15 @@
-package openfoodfacts.github.scrachx.openfood.network;
+package org.openfoodfacts.scanner.network;
 
 /**
  * Created by Lobster on 03.03.18.
  */
 
 import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
+import org.openfoodfacts.scanner.models.AdditivesWrapper;
+import org.openfoodfacts.scanner.models.AllergensWrapper;
+import org.openfoodfacts.scanner.models.CategoriesWrapper;
+import org.openfoodfacts.scanner.models.CountriesWrapper;
+import org.openfoodfacts.scanner.models.LabelsWrapper;
 import retrofit2.http.GET;
 
 /**

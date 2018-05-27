@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.product.nutrition_details;
+package org.openfoodfacts.scanner.views.product.nutrition_details;
 
 
 import android.content.Intent;
@@ -36,20 +36,20 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentItem;
-import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
-import openfoodfacts.github.scrachx.openfood.models.Nutriments;
-import openfoodfacts.github.scrachx.openfood.models.Nutriments.Nutriment;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.fragments.BaseFragment;
+import org.openfoodfacts.scanner.models.HeaderNutrimentItem;
+import org.openfoodfacts.scanner.models.NutrimentItem;
+import org.openfoodfacts.scanner.models.Nutriments;
+import org.openfoodfacts.scanner.models.Nutriments.Nutriment;
+import org.openfoodfacts.scanner.models.Product;
+import org.openfoodfacts.scanner.models.ProductImage;
+import org.openfoodfacts.scanner.models.SendProduct;
+import org.openfoodfacts.scanner.models.State;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.FullScreenImage;
+import org.openfoodfacts.scanner.views.adapters.NutrimentsRecyclerViewAdapter;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -57,17 +57,17 @@ import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
-import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBOHYDRATES;
-import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBO_MAP;
-import static openfoodfacts.github.scrachx.openfood.models.Nutriments.ENERGY;
-import static openfoodfacts.github.scrachx.openfood.models.Nutriments.FAT;
-import static openfoodfacts.github.scrachx.openfood.models.Nutriments.FAT_MAP;
-import static openfoodfacts.github.scrachx.openfood.models.Nutriments.MINERALS_MAP;
-import static openfoodfacts.github.scrachx.openfood.models.Nutriments.PROTEINS;
-import static openfoodfacts.github.scrachx.openfood.models.Nutriments.PROT_MAP;
-import static openfoodfacts.github.scrachx.openfood.models.Nutriments.VITAMINS_MAP;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static org.openfoodfacts.scanner.models.Nutriments.CARBOHYDRATES;
+import static org.openfoodfacts.scanner.models.Nutriments.CARBO_MAP;
+import static org.openfoodfacts.scanner.models.Nutriments.ENERGY;
+import static org.openfoodfacts.scanner.models.Nutriments.FAT;
+import static org.openfoodfacts.scanner.models.Nutriments.FAT_MAP;
+import static org.openfoodfacts.scanner.models.Nutriments.MINERALS_MAP;
+import static org.openfoodfacts.scanner.models.Nutriments.PROTEINS;
+import static org.openfoodfacts.scanner.models.Nutriments.PROT_MAP;
+import static org.openfoodfacts.scanner.models.Nutriments.VITAMINS_MAP;
+import static org.openfoodfacts.scanner.models.ProductImageField.NUTRITION;
+import static org.openfoodfacts.scanner.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class NutritionInfoProductFragment extends BaseFragment {
@@ -265,7 +265,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation(getActivity(), (View) mImageNutrition,
+                        makeSceneTransitionAnimation(getActivity(), mImageNutrition,
                                 getActivity().getString(R.string.product_transition));
                 startActivity(intent, options.toBundle());
             } else {

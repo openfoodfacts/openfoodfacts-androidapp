@@ -1,5 +1,5 @@
 
-package openfoodfacts.github.scrachx.openfood.network.deserializers;
+package org.openfoodfacts.scanner.network.deserializers;
 
 
 import android.util.Log;
@@ -19,8 +19,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import openfoodfacts.github.scrachx.openfood.models.LabelResponse;
-import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
+import org.openfoodfacts.scanner.models.LabelResponse;
+import org.openfoodfacts.scanner.models.LabelsWrapper;
 
 /**
  * Created by Lobster on 03.03.18.

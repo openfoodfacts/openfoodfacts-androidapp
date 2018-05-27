@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.category.mapper;
+package org.openfoodfacts.scanner.category.mapper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -9,9 +9,9 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.category.model.Category;
-import openfoodfacts.github.scrachx.openfood.category.network.CategoryResponse;
-import openfoodfacts.github.scrachx.openfood.utils.FileHelper;
+import org.openfoodfacts.scanner.category.model.Category;
+import org.openfoodfacts.scanner.category.network.CategoryResponse;
+import org.openfoodfacts.scanner.utils.FileHelper;
 
 /**
  * Created by Abdelali Eramli on 01/01/2018.

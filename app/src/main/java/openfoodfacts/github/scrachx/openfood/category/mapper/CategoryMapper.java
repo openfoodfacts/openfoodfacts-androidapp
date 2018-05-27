@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.category.mapper;
+package org.openfoodfacts.scanner.category.mapper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,8 +6,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import openfoodfacts.github.scrachx.openfood.category.model.Category;
-import openfoodfacts.github.scrachx.openfood.category.network.CategoryResponse;
+import org.openfoodfacts.scanner.category.model.Category;
+import org.openfoodfacts.scanner.category.network.CategoryResponse;
 
 /**
  * Created by Abdelali Eramli on 27/12/2017.

@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.adapters;
+package org.openfoodfacts.scanner.views.adapters;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
@@ -15,9 +15,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.Product;
+import org.openfoodfacts.scanner.utils.Utils;
 
 import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;

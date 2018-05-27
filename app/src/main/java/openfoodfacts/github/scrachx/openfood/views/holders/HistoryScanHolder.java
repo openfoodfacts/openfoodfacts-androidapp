@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.holders;
+package org.openfoodfacts.scanner.views.holders;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
 
 public class HistoryScanHolder extends RecyclerView.ViewHolder {
 

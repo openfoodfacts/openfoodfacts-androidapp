@@ -1,27 +1,27 @@
-package openfoodfacts.github.scrachx.openfood.utils;
+package org.openfoodfacts.scanner.utils;
 
 import android.support.annotation.StringDef;
 
 import java.lang.annotation.Retention;
 import java.util.HashMap;
 
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import org.openfoodfacts.scanner.BuildConfig;
 
 import static java.lang.annotation.RetentionPolicy.SOURCE;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.ADDITIVE;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.ALLERGEN;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.BRAND;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.CATEGORY;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.CONTRIBUTOR;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.COUNTRY;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.EMB;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.INCOMPLETE_PRODUCT;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.LABEL;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.PACKAGING;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.SEARCH;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.STATE;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.STORE;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.TRACE;
+import static org.openfoodfacts.scanner.utils.SearchType.ADDITIVE;
+import static org.openfoodfacts.scanner.utils.SearchType.ALLERGEN;
+import static org.openfoodfacts.scanner.utils.SearchType.BRAND;
+import static org.openfoodfacts.scanner.utils.SearchType.CATEGORY;
+import static org.openfoodfacts.scanner.utils.SearchType.CONTRIBUTOR;
+import static org.openfoodfacts.scanner.utils.SearchType.COUNTRY;
+import static org.openfoodfacts.scanner.utils.SearchType.EMB;
+import static org.openfoodfacts.scanner.utils.SearchType.INCOMPLETE_PRODUCT;
+import static org.openfoodfacts.scanner.utils.SearchType.LABEL;
+import static org.openfoodfacts.scanner.utils.SearchType.PACKAGING;
+import static org.openfoodfacts.scanner.utils.SearchType.SEARCH;
+import static org.openfoodfacts.scanner.utils.SearchType.STATE;
+import static org.openfoodfacts.scanner.utils.SearchType.STORE;
+import static org.openfoodfacts.scanner.utils.SearchType.TRACE;
 
 /**
  * Created by Lobster on 10.03.18.

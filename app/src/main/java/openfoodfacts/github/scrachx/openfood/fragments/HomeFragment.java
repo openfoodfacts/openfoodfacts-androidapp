@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.fragments;
+package org.openfoodfacts.scanner.fragments;
 
 import android.Manifest;
 import android.content.Intent;
@@ -23,18 +23,18 @@ import java.io.IOException;
 import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.ResponseBody;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
-import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.network.OpenFoodAPIService;
+import org.openfoodfacts.scanner.utils.NavigationDrawerListener.NavigationDrawerType;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.MainActivity;
+import org.openfoodfacts.scanner.views.ScannerFragmentActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
+import static org.openfoodfacts.scanner.utils.NavigationDrawerListener.ITEM_HOME;
 
 public class HomeFragment extends NavigationBaseFragment {
 

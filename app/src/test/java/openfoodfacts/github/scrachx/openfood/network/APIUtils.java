@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.network;
+package org.openfoodfacts.scanner.network;
 
 import android.os.Build;
 

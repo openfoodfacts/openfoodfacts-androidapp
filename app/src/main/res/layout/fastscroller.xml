@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/fastscroller_handle"
         android:elevation="4dp"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:contentDescription="TODO" />
 
     <ImageView
         android:id="@+id/fastscroller_bubble"
@@ -17,6 +18,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/fastscroller_bubble"
         android:layout_marginStart="@dimen/fastscroller_track_padding"
-        android:layout_marginEnd="@dimen/fastscroller_track_padding" />
+        android:layout_marginEnd="@dimen/fastscroller_track_padding"
+        android:contentDescription="TODO" />
 
 </merge>

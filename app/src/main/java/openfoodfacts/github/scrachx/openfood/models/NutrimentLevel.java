@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package org.openfoodfacts.scanner.models;
 
 import android.content.Context;
 
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.util.Locale;
 
-import openfoodfacts.github.scrachx.openfood.R;
+import org.openfoodfacts.scanner.R;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 

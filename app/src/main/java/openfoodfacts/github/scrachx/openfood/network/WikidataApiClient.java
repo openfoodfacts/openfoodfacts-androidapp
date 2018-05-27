@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.network;
+package org.openfoodfacts.scanner.network;
 
 
 import android.util.Log;
@@ -11,8 +11,8 @@ import org.json.JSONObject;
 
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import org.openfoodfacts.scanner.BuildConfig;
+import org.openfoodfacts.scanner.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,7 +39,7 @@ public class WikidataApiClient {
         wikidataApiService = new Retrofit.Builder()
                 .baseUrl(apiUrl)
                 .client(httpClient)
-                .addConverterFactory(jacksonConverterFactory.create())
+                .addConverterFactory(JacksonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()
                 .create(WikidataApiService.class);

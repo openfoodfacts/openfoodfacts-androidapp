@@ -1,13 +1,13 @@
-package openfoodfacts.github.scrachx.openfood.category;
+package org.openfoodfacts.scanner.category;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
-import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
-import openfoodfacts.github.scrachx.openfood.category.model.Category;
-import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService;
+import org.openfoodfacts.scanner.category.mapper.CategoryMapper;
+import org.openfoodfacts.scanner.category.model.Category;
+import org.openfoodfacts.scanner.category.network.CategoryNetworkService;
 
 public class CategoryRepository {
     private final CategoryNetworkService networkService;

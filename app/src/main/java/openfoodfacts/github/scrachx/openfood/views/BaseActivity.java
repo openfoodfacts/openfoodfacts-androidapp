@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views;
+package org.openfoodfacts.scanner.views;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -8,10 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 
 import butterknife.ButterKnife;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.dagger.component.ActivityComponent;
-import openfoodfacts.github.scrachx.openfood.dagger.module.ActivityModule;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.dagger.component.ActivityComponent;
+import org.openfoodfacts.scanner.dagger.module.ActivityModule;
+import org.openfoodfacts.scanner.utils.LocaleHelper;
 
 public abstract class BaseActivity extends AppCompatActivity {
 

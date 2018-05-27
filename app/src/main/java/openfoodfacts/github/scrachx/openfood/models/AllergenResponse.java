@@ -1,10 +1,10 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package org.openfoodfacts.scanner.models;
 
 import java.util.ArrayList;
 import java.util.Map;
 
 /**
- * Intermediate class between {@link openfoodfacts.github.scrachx.openfood.models.AllergensWrapper} and {@link openfoodfacts.github.scrachx.openfood.models.Allergen}
+ * Intermediate class between {@link org.openfoodfacts.scanner.models.AllergensWrapper} and {@link org.openfoodfacts.scanner.models.Allergen}
  *
  * @author Lobster 2018-03-04
  * @author ross-holloway94 2018-03-14

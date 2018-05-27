@@ -1,13 +1,13 @@
 
-package openfoodfacts.github.scrachx.openfood.utils;
+package org.openfoodfacts.scanner.utils;
 
 import android.support.annotation.StringDef;
 
 import java.lang.annotation.Retention;
 
 import static java.lang.annotation.RetentionPolicy.SOURCE;
-import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
-import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
+import static org.openfoodfacts.scanner.utils.ProductInfoState.EMPTY;
+import static org.openfoodfacts.scanner.utils.ProductInfoState.LOADING;
 
 /**
  * Created by Lobster on 10.03.18.

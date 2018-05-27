@@ -1,5 +1,5 @@
 
-package openfoodfacts.github.scrachx.openfood.network.deserializers;
+package org.openfoodfacts.scanner.network.deserializers;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -13,11 +13,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import openfoodfacts.github.scrachx.openfood.models.AllergenResponse;
-import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
+import org.openfoodfacts.scanner.models.AllergenResponse;
+import org.openfoodfacts.scanner.models.AllergensWrapper;
 
 /**
- * Custom deserializer for {@link openfoodfacts.github.scrachx.openfood.models.AllergensWrapper AllergensWrapper}
+ * Custom deserializer for {@link org.openfoodfacts.scanner.models.AllergensWrapper AllergensWrapper}
  *
  * @author Lobster 2018-03-04
  * @author ross-holloway94 2018-03-14

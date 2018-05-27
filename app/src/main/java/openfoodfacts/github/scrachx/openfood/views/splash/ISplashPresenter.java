@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.splash;
+package org.openfoodfacts.scanner.views.splash;
 
 import android.content.res.AssetManager;
 

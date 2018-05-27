@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.utils;
+package org.openfoodfacts.scanner.utils;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -14,9 +14,9 @@ import android.support.v4.app.NotificationCompat;
 
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.SendProduct;
+import org.openfoodfacts.scanner.models.SendProductDao;
 
 /**
  * Created by prajwalm on 04/04/18.

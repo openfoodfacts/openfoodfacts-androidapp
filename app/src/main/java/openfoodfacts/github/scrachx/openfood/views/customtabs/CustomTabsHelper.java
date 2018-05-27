@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package openfoodfacts.github.scrachx.openfood.views.customtabs;
+package org.openfoodfacts.scanner.views.customtabs;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,8 +29,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.utils.Utils;
 
 /**
  * Helper class for Custom Tabs.

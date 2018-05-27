@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package org.openfoodfacts.scanner.models;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 import static junit.framework.Assert.assertEquals;
-import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.*;
-import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
-import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static org.openfoodfacts.scanner.models.CountryNameTestData.*;
+import static org.openfoodfacts.scanner.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
+import static org.openfoodfacts.scanner.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 
 /**
  * Tests for {@link CountriesWrapper}

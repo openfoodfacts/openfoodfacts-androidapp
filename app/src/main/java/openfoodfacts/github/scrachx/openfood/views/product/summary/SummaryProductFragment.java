@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.product.summary;
+package org.openfoodfacts.scanner.views.product.summary;
 
 import android.content.Context;
 import android.content.Intent;
@@ -45,31 +45,31 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
-import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
-import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
-import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.models.Tag;
-import openfoodfacts.github.scrachx.openfood.models.TagDao;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import org.openfoodfacts.scanner.BuildConfig;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.fragments.BaseFragment;
+import org.openfoodfacts.scanner.models.AllergenName;
+import org.openfoodfacts.scanner.models.CategoryName;
+import org.openfoodfacts.scanner.models.CountryName;
+import org.openfoodfacts.scanner.models.LabelName;
+import org.openfoodfacts.scanner.models.NutrientLevelItem;
+import org.openfoodfacts.scanner.models.NutrientLevels;
+import org.openfoodfacts.scanner.models.NutrimentLevel;
+import org.openfoodfacts.scanner.models.Product;
+import org.openfoodfacts.scanner.models.ProductImage;
+import org.openfoodfacts.scanner.models.State;
+import org.openfoodfacts.scanner.models.Tag;
+import org.openfoodfacts.scanner.models.TagDao;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.network.WikidataApiClient;
+import org.openfoodfacts.scanner.utils.SearchType;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.FullScreenImage;
+import org.openfoodfacts.scanner.views.ProductBrowsingListActivity;
+import org.openfoodfacts.scanner.views.customtabs.CustomTabActivityHelper;
+import org.openfoodfacts.scanner.views.customtabs.CustomTabsHelper;
+import org.openfoodfacts.scanner.views.customtabs.WebViewFallback;
+import org.openfoodfacts.scanner.views.product.ProductActivity;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -79,12 +79,12 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
-import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
-import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static org.openfoodfacts.scanner.models.ProductImageField.FRONT;
+import static org.openfoodfacts.scanner.models.ProductImageField.OTHER;
+import static org.openfoodfacts.scanner.utils.ProductInfoState.EMPTY;
+import static org.openfoodfacts.scanner.utils.ProductInfoState.LOADING;
+import static org.openfoodfacts.scanner.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static org.openfoodfacts.scanner.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -653,7 +653,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation(getActivity(), (View) mImageFront,
+                        makeSceneTransitionAnimation(getActivity(), mImageFront,
                                 getActivity().getString(R.string.product_transition));
                 startActivity(intent, options.toBundle());
             } else {

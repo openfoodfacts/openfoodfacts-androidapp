@@ -1,9 +1,9 @@
-package openfoodfacts.github.scrachx.openfood.views.product.ingredients;
+package org.openfoodfacts.scanner.views.product.ingredients;
 
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
+import org.openfoodfacts.scanner.models.AdditiveName;
+import org.openfoodfacts.scanner.utils.ProductInfoState;
 
 /**
  * Created by Lobster on 17.03.18.

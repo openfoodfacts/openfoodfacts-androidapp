@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package org.openfoodfacts.scanner.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -12,7 +12,7 @@ import org.greenrobot.greendao.annotation.Transient;
 
 import java.io.Serializable;
 
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import org.openfoodfacts.scanner.utils.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Entity(indexes = {

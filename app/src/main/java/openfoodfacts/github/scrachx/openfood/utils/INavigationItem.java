@@ -1,10 +1,10 @@
-package openfoodfacts.github.scrachx.openfood.utils;
+package org.openfoodfacts.scanner.utils;
 
 /**
  * Created by Lobster on 06.03.18.
  */
 
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import org.openfoodfacts.scanner.utils.NavigationDrawerListener.NavigationDrawerType;
 
 public interface INavigationItem {
 

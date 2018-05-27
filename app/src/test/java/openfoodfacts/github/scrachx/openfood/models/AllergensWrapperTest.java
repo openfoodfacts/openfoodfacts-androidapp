@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package org.openfoodfacts.scanner.models;
 
 import org.junit.Test;
 
@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import static junit.framework.Assert.assertEquals;
-import static openfoodfacts.github.scrachx.openfood.models.AllergenResponseTestData.*;
-import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.*;
+import static org.openfoodfacts.scanner.models.AllergenResponseTestData.*;
+import static org.openfoodfacts.scanner.models.LanguageCodeTestData.*;
 
 /**
  * Tests for {@link AllergensWrapper}

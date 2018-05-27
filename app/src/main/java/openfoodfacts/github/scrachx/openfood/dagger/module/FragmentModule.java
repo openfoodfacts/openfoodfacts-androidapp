@@ -1,9 +1,9 @@
-package openfoodfacts.github.scrachx.openfood.dagger.module;
+package org.openfoodfacts.scanner.dagger.module;
 
 import dagger.Module;
 import dagger.Provides;
-import openfoodfacts.github.scrachx.openfood.dagger.FragmentScope;
-import openfoodfacts.github.scrachx.openfood.views.viewmodel.category.CategoryFragmentViewModel;
+import org.openfoodfacts.scanner.dagger.FragmentScope;
+import org.openfoodfacts.scanner.views.viewmodel.category.CategoryFragmentViewModel;
 
 @Module
 public class FragmentModule {

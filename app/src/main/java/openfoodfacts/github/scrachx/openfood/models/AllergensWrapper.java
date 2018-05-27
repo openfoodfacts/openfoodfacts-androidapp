@@ -1,11 +1,11 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package org.openfoodfacts.scanner.models;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.network.deserializers.AllergensWrapperDeserializer;
+import org.openfoodfacts.scanner.network.deserializers.AllergensWrapperDeserializer;
 
 /**
  * JSON from URL https://ssl-api.openfoodfacts.org/data/taxonomies/allergens.json (top 14 allergens and substances)

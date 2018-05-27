@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <openfoodfacts.github.scrachx.openfood.utils.CustomEditTextView
+            <org.openfoodfacts.scanner.utils.CustomEditTextView
                 android:id="@+id/editTextLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <openfoodfacts.github.scrachx.openfood.utils.CustomEditTextView
+            <org.openfoodfacts.scanner.utils.CustomEditTextView
                 android:id="@+id/editTextPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

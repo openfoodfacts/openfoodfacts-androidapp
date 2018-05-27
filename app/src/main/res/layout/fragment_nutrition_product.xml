@@ -31,7 +31,8 @@
                 android:layout_marginRight="@dimen/spacing_normal"
                 android:layout_marginTop="@dimen/spacing_normal"
                 android:clickable="true"
-                android:gravity="center" />
+                android:gravity="center"
+                android:focusable="true" />
 
 
             <TextView

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity">
+    tools:context="org.openfoodfacts.scanner.views.ProductBrowsingListActivity">
 
 
     <LinearLayout
@@ -69,7 +69,8 @@
             android:layout_width="180dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_cloud_off" />
+            app:srcCompat="@drawable/ic_cloud_off"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/txtCannotLoadResults"
@@ -141,7 +142,8 @@
             android:layout_height="90dp"
             android:layout_marginTop="25dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+            app:srcCompat="@drawable/ic_add_a_photo_black_48dp"
+            android:contentDescription="TODO" />
 
     </LinearLayout>
 

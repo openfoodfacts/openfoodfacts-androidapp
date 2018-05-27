@@ -18,7 +18,7 @@
         android:layout_marginStart="@dimen/spacing_normal"
         app:srcCompat="@drawable/img_scan" />
 
-    <openfoodfacts.github.scrachx.openfood.utils.CustomEditTextView
+    <org.openfoodfacts.scanner.utils.CustomEditTextView
         android:id="@+id/editTextBarcode"
         android:layout_width="match_parent"
         android:layout_height="70dp"

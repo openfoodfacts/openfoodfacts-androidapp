@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package org.openfoodfacts.scanner.models;
 
 import org.greenrobot.greendao.DaoException;
 import org.junit.Before;
@@ -12,10 +12,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
-import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.GERMANY_EN;
-import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.GERMANY_FR;
-import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
-import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static org.openfoodfacts.scanner.models.CountryNameTestData.GERMANY_EN;
+import static org.openfoodfacts.scanner.models.CountryNameTestData.GERMANY_FR;
+import static org.openfoodfacts.scanner.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
+import static org.openfoodfacts.scanner.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

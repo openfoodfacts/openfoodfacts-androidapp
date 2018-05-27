@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package org.openfoodfacts.scanner.models;
 
 public class LanguageCodeTestData {
     public static final String LANGUAGE_CODE_ENGLISH = "en";

@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.network.deserializers;
+package org.openfoodfacts.scanner.network.deserializers;
 
 
 import android.util.Log;
@@ -17,9 +17,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import openfoodfacts.github.scrachx.openfood.models.AdditiveResponse;
-import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CategoryResponse;
+import org.openfoodfacts.scanner.models.AdditiveResponse;
+import org.openfoodfacts.scanner.models.AdditivesWrapper;
+import org.openfoodfacts.scanner.models.CategoryResponse;
 
 /**
  * Created by Lobster on 03.03.18.

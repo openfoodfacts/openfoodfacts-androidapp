@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.fragments;
+package org.openfoodfacts.scanner.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
-import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshView;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.State;
+import org.openfoodfacts.scanner.views.listeners.OnRefreshListener;
+import org.openfoodfacts.scanner.views.listeners.OnRefreshView;
 
 public abstract class BaseFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, OnRefreshView {
 

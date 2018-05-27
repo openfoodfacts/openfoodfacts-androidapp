@@ -1,9 +1,9 @@
-package openfoodfacts.github.scrachx.openfood.dagger.component;
+package org.openfoodfacts.scanner.dagger.component;
 
 import dagger.Subcomponent;
-import openfoodfacts.github.scrachx.openfood.dagger.FragmentScope;
-import openfoodfacts.github.scrachx.openfood.dagger.module.FragmentModule;
-import openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment;
+import org.openfoodfacts.scanner.dagger.FragmentScope;
+import org.openfoodfacts.scanner.dagger.module.FragmentModule;
+import org.openfoodfacts.scanner.views.category.fragment.CategoryListFragment;
 
 @Subcomponent(modules = {FragmentModule.class})
 @FragmentScope

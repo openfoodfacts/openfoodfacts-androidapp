@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.category.fragment;
+package org.openfoodfacts.scanner.views.category.fragment;
 
 
 import android.app.SearchManager;
@@ -20,13 +20,13 @@ import android.view.ViewGroup;
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
-import openfoodfacts.github.scrachx.openfood.FastScroller;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.dagger.component.FragmentComponent;
-import openfoodfacts.github.scrachx.openfood.databinding.FragmentCategoryListBinding;
-import openfoodfacts.github.scrachx.openfood.fragments.MvvmFragment;
-import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
-import openfoodfacts.github.scrachx.openfood.views.viewmodel.category.CategoryFragmentViewModel;
+import org.openfoodfacts.scanner.FastScroller;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.dagger.component.FragmentComponent;
+import org.openfoodfacts.scanner.databinding.FragmentCategoryListBinding;
+import org.openfoodfacts.scanner.fragments.MvvmFragment;
+import org.openfoodfacts.scanner.views.BaseActivity;
+import org.openfoodfacts.scanner.views.viewmodel.category.CategoryFragmentViewModel;
 
 public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel, FragmentComponent> {
 
