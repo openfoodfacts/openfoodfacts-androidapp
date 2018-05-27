@@ -1,13 +1,42 @@
-Scan products
-Your full scan history, fully private and exportable
-Go further with Wikipedia
-Allergén riasztás
-Powerful
-Nutrition, simplified
-Get alternatives for your favorite foods
+Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+Ne változtassa meg a fájl nevét.
+---
+scan_en.png
+Termékek beolvasása
+
+quickview_en.png
 Kapja meg a Nutriscore-t
 
+history_en.png
+Your full scan history, fully private & exportable
+
+product_view_wikipedia_en.png
+Továbblépés a Wikipedia-val
+
+allergen_alert_en.png
+Allergén riasztások beállítása
+
+home_en.png
+product_view_nutrition_summary_en.png
+Tápanyag, egyszerűsített
+
+product_view_allergen_alert_en.png
+Allergén riasztás
+
+categories_en.png
+Get alternatives for your favorite foods
+
+product_view_summary_en.png
 Wikipedia for Food
 Wikipedia for Cosmetics
 Wikipedia for Pet Food
 Wikipedia of Products
+
+product_view_ingredients_en.png
+Összetevők
+
+menu_en.png
+Powerful
+
+product_view_nutrition_table_en.png
+Tápértékadatok

@@ -1,13 +1,42 @@
+Das sind die Beschriftungen, die über den Screenshots im Playstore angezeigt werden. Halten Sie sie kurz und attraktiv.
+Dateinamen nicht ändern.
+───
+scan_en.png
 Produkte erfassen
-Ihr vollständiger Verlauf eingelesener Produkte, vollständig privat und exportierbar
-Weiter geht's mit Wikipedia
-Allergen-Warnung
-Leistungsfähig
-Ernährung, vereinfacht
-Alternativen finden für Ihre Lieblingsspeisen
+
+quickview_en.png
 „Nutri-Score” (franz. Nahrungsmittelampel) abrufen
 
+history_en.png
+Ihr vollständiger Verlauf eingelesener Produkte, vollständig privat und exportierbar
+
+product_view_wikipedia_en.png
+Weiter geht's mit Wikipedia
+
+allergen_alert_en.png
+Allergenwarnungen festlegen
+
+home_en.png
+product_view_nutrition_summary_en.png
+Ernährung, vereinfacht
+
+product_view_allergen_alert_en.png
+Allergen-Warnung
+
+categories_en.png
+Alternativen finden für Ihre Lieblingsspeisen
+
+product_view_summary_en.png
 Wikipedia für Lebensmittel
 Wikipedia für Kosmetik
 Wikipedia für Tiernahrung
 Wikipedia für Produkte
+
+product_view_ingredients_en.png
+Inhaltsstoffe
+
+menu_en.png
+Leistungsfähig
+
+product_view_nutrition_table_en.png
+Nährwertangaben
