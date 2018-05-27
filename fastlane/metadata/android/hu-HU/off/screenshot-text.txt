@@ -1,8 +1,8 @@
 Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
+Ne változtassa meg a fájl nevét.
 ---
 scan_en.png
-Scan products
+Termékek beolvasása
 
 quickview_en.png
 Kapja meg a Nutriscore-t
@@ -11,14 +11,14 @@ history_en.png
 Your full scan history, fully private & exportable
 
 product_view_wikipedia_en.png
-Go further with Wikipedia
+Továbblépés a Wikipedia-val
 
 allergen_alert_en.png
-Set allergen alerts
+Allergén riasztások beállítása
 
 home_en.png
 product_view_nutrition_summary_en.png
-Nutrition, simplified
+Tápanyag, egyszerűsített
 
 product_view_allergen_alert_en.png
 Allergén riasztás
