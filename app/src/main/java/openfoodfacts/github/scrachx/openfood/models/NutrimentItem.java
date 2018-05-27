@@ -1,6 +1,8 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
-import static org.openfoodfacts.scanner.utils.Utils.getRoundNumber;
+import android.support.annotation.NonNull;
+
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
 public class NutrimentItem {
 
@@ -23,7 +25,7 @@ public class NutrimentItem {
      * @param servingValue
      * @param unit
      */
-    public NutrimentItem( String title, String value, String servingValue, String unit){
+    public NutrimentItem(@NonNull String title, String value, String servingValue, String unit){
         this.title = title;
         this.value = getRoundNumber(value);
         this.servingValue = getRoundNumber(servingValue);

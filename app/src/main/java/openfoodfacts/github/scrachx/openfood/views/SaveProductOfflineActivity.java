@@ -1,94 +1,84 @@
-package org.openfoodfacts.scanner.views;
+package openfoodfacts.github.scrachx.openfood.views;
 
-import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import org.openfoodfacts.scanner.BuildConfig;
-import org.openfoodfacts.scanner.R;
-import org.openfoodfacts.scanner.fragments.SaveOfflineSummaryFragment;
-import org.openfoodfacts.scanner.models.Product;
-import org.openfoodfacts.scanner.models.SendProduct;
-import org.openfoodfacts.scanner.models.SendProductDao;
-import org.openfoodfacts.scanner.models.State;
-import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
-import org.openfoodfacts.scanner.utils.Utils;
-import org.openfoodfacts.scanner.views.adapters.ProductFragmentPagerAdapter;
-import org.openfoodfacts.scanner.views.product.ingredients.IngredientsProductFragment;
-import org.openfoodfacts.scanner.views.product.nutrition_details.NutritionInfoProductFragment;
+import butterknife.OnItemSelected;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import pl.aprilapps.easyphotopicker.DefaultCallback;
+import pl.aprilapps.easyphotopicker.EasyImage;
 
+import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static org.openfoodfacts.scanner.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class SaveProductOfflineActivity extends BaseActivity {
 
+    private final String[] mUnit = new String[1];
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.pager)
-    ViewPager viewPager;
-    @BindView(R.id.buttonScan)
-    FloatingActionButton mButtonScan;
-    @BindView(R.id.tabs)
-    TabLayout tabLayout;
+    @BindView(R.id.barcodeDoubleCheck) TextView barcodeText;
+    @BindView(R.id.imageSaveFront) ImageView imgSaveFront;
+    @BindView(R.id.imageSaveNutrition) ImageView imgSaveNutrition;
+    @BindView(R.id.imageSaveIngredients) ImageView imgSaveIngredients;
+    @BindView(R.id.editTextName) EditText name;
+    @BindView(R.id.editTextBrand) EditText brand;
+    @BindView(R.id.editTextWeight) EditText weight;
+    @BindView(R.id.spinnerUnitWeight) Spinner spinnerW;
+    @BindView(R.id.buttonSaveProduct) Button save;
 
     private SendProduct mProduct;
     private String mBarcode;
     private OpenFoodAPIClient api;
+    private String imageTaken;
     private SendProductDao mSendProductDao;
-    private SaveOfflineSummaryFragment mSummerAdditionFragment = new SaveOfflineSummaryFragment();
-    private IngredientsProductFragment mIngredientsProductFragment = new IngredientsProductFragment();
-    private NutritionInfoProductFragment mNutritionInfoProductFragment = new NutritionInfoProductFragment();
-    private boolean fromOfflineEdit;
-    private boolean isSavingGoingOn = false;
-    private SendProduct preProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getResources().getBoolean(R.bool.portrait_only)) {
-
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
         setContentView(R.layout.activity_save_product_offline);
 
-        final State state = (State) getIntent().getExtras().getSerializable("state");
-        final Product product = state.getProduct();
-        fromOfflineEdit = getIntent().getBooleanExtra("offlineEdit", false);
-
-        preProduct = new SendProduct();
-        mBarcode = product.getCode();
-        api = new OpenFoodAPIClient(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         mSendProductDao = Utils.getAppDaoSession(this).getSendProductDao();
 
@@ -100,214 +90,249 @@ public class SaveProductOfflineActivity extends BaseActivity {
                         .title(R.string.action_about)
                         .content(R.string.permission_storage)
                         .neutralText(R.string.txtOk)
-                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(SaveProductOfflineActivity.this, new
-                                String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
+                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(SaveProductOfflineActivity.this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
                         .show();
             } else {
-                ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils
-                        .MY_PERMISSIONS_REQUEST_STORAGE);
+                ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
             }
         }
+
+        api = new OpenFoodAPIClient(this);
+        mBarcode = getIntent().getStringExtra("barcode");
+
+        imgSaveFront.setVisibility(View.GONE);
+        imgSaveIngredients.setVisibility(View.GONE);
+        imgSaveNutrition.setVisibility(View.GONE);
+
+        ArrayAdapter<CharSequence> adapterW = ArrayAdapter.createFromResource(this, R.array.units_array, R.layout.custom_spinner_item);
+        adapterW.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        spinnerW.setAdapter(adapterW);
 
         List<SendProduct> sp = mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(mBarcode)).list();
 
         if (sp.size() > 0) {
             mProduct = sp.get(0);
+        }
+        if(mProduct != null) {
+            if(isNotEmpty(mProduct.getImgupload_front())) {
+		imgSaveFront.setVisibility(View.VISIBLE);
+                Picasso.with(this)
+                        .load(mProduct.getImgupload_front())
+                        .fit()
+                        .centerCrop()
+                        .into(imgSaveFront);
+            }
+            if(isNotBlank(mProduct.getImgupload_nutrition())) {
+                imgSaveNutrition.setVisibility(View.VISIBLE);
+                Picasso.with(this)
+                        .load(new File(mProduct.getImgupload_nutrition()))
+                        .fit()
+                        .centerCrop()
+                        .into(imgSaveNutrition);
+            }
+            if(isNotBlank(mProduct.getImgupload_ingredients())) {
+                imgSaveIngredients.setVisibility(View.VISIBLE);
+                Picasso.with(this)
+                        .load(new File(mProduct.getImgupload_ingredients()))
+                        .fit()
+                        .centerCrop()
+                        .into(imgSaveIngredients);
+            }
+            name.setText(mProduct.getName());
+            brand.setText(mProduct.getBrands());
+            weight.setText(mProduct.getWeight());
+            ArrayAdapter unitAdapter = (ArrayAdapter) spinnerW.getAdapter();
+            int spinnerPosition = unitAdapter.getPosition(mProduct.getWeight_unit());
+            spinnerW.setSelection(spinnerPosition);
         } else {
             mProduct = new SendProduct();
+            mProduct.setBarcode(mBarcode);
+			barcodeText.setText(barcodeText.getText() + " " + mBarcode);
         }
-        preProduct.copy(mProduct);
-        setupViewPager(viewPager);
-
-        tabLayout.setupWithViewPager(viewPager);
-
+        mProduct.setLang(Locale.getDefault().getLanguage());
     }
 
-
-    private void setupViewPager(ViewPager viewPager) {
-        String[] menuTitles = getResources().getStringArray(R.array.nav_drawer_items_product);
-
-        ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
-        Bundle bn = new Bundle();
-        bn.putSerializable("sendProduct", mProduct);
-        mSummerAdditionFragment.setArguments(bn);
-        mIngredientsProductFragment.setArguments(bn);
-        mNutritionInfoProductFragment.setArguments(bn);
-        adapterResult.addFragment(mSummerAdditionFragment, menuTitles[0]);
-        adapterResult.addFragment(mIngredientsProductFragment, menuTitles[1]);
-        if (BuildConfig.FLAVOR.equals("off")) {
-            adapterResult.addFragment(mNutritionInfoProductFragment, menuTitles[3]);
-        }
-        if (BuildConfig.FLAVOR.equals("opff")) {
-            adapterResult.addFragment(mNutritionInfoProductFragment, menuTitles[3]);
-        }
-        viewPager.setAdapter(adapterResult);
+    @OnItemSelected(value = R.id.spinnerUnitWeight, callback = OnItemSelected.Callback.ITEM_SELECTED)
+    protected void onUnitSelected(int pos) {
+        mUnit[0] = spinnerW.getItemAtPosition(pos).toString();
     }
 
-
-    @OnClick(R.id.buttonScan)
-    protected void OnScan() {
-        if (Utils.isHardwareCameraInstalled(this)) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
-                    new MaterialDialog.Builder(this)
-                            .title(R.string.action_about)
-                            .content(R.string.permission_camera)
-                            .neutralText(R.string.txtOk)
-                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils
-                                    .MY_PERMISSIONS_REQUEST_CAMERA))
-                            .show();
-                } else {
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
-                }
-            } else {
-                Intent intent = new Intent(this, ScannerFragmentActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        }
+    @OnClick(R.id.buttonFromGalleryFront)
+    protected void onChooserWithGalleryFrontClicked() {
+        EasyImage.openChooserWithGallery(this, "Images", 0);
+        imageTaken = "front";
     }
 
+    @OnClick(R.id.buttonFromGalleryIngredients)
+    protected void onChooserWithGalleryIngredientsClicked() {
+        EasyImage.openChooserWithGallery(this, "Images", 0);
+        imageTaken = "ingredients";
+    }
 
-    protected void saveProduct(boolean isVisible) {
-        isSavingGoingOn = true;
+    @OnClick(R.id.buttonFromGalleryNutrition)
+    protected void onChooserWithGalleryNutritionClicked() {
+        EasyImage.openChooserWithGallery(this, "Images", 0);
+        imageTaken = "nutrition";
+    }
+
+    @OnClick(R.id.buttonSaveProduct)
+    protected void onSaveProduct() {
         Utils.hideKeyboard(this);
 
-        mProduct = mSummerAdditionFragment.getProduct();
-
         if (isBlank(mProduct.getImgupload_front())) {
-
-//            Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
-            if (isVisible)
-                saveAlert();
-            isSavingGoingOn = false;
+            Toast.makeText(getApplicationContext(), R.string.txtPictureNeeded, Toast.LENGTH_LONG).show();
             return;
         }
-        if (isNotBlank(mIngredientsProductFragment.getIngredients()))
-            mProduct.setImgupload_ingredients(mIngredientsProductFragment.getIngredients());
-        if (isNotBlank(mNutritionInfoProductFragment.getNutrients()))
-            mProduct.setImgupload_nutrition(mNutritionInfoProductFragment.getNutrients());
-        mProduct.setLang(Locale.getDefault().getLanguage());
 
-        if (preProduct.isEqual(mProduct)) {
-            isSavingGoingOn = false;
-            if (isVisible)
-                finish();
-            return;
-        } else {
-            preProduct.copy(mProduct);
+        mProduct.setBarcode(mBarcode);
+        mProduct.setName(name.getText().toString());
+        mProduct.setWeight(weight.getText().toString());
+        mProduct.setWeight_unit(mUnit[0]);
+        mProduct.setBrands(brand.getText().toString());
+
+        final SharedPreferences settingsUser = getSharedPreferences("login", 0);
+        String login = settingsUser.getString("user", "");
+        String password = settingsUser.getString("pass", "");
+        if (!login.isEmpty() && !password.isEmpty()) {
+            mProduct.setUserId(login);
+            mProduct.setPassword(password);
         }
 
-//       sending product with out images
-        SendProduct uploadablePdt = new SendProduct();
-        uploadablePdt.setBarcode(mProduct.getBarcode());
-        uploadablePdt.setBarcode(mProduct.getBarcode());
-        uploadablePdt.setBrands(mProduct.getBrands());
-        uploadablePdt.setWeight(mProduct.getWeight());
-        uploadablePdt.setWeight_unit(mProduct.getWeight_unit());
-        uploadablePdt.setName(mProduct.getName());
-        uploadablePdt.setUserId(mProduct.getUserId());
-        uploadablePdt.setPassword(mProduct.getPassword());
-        uploadablePdt.setLang(mProduct.getLang());
+        if (isNotEmpty(mProduct.getImgupload_front())) {
+        Utils.compressImage(mProduct.getImgupload_front());
+        }
+	    
+        if (isNotBlank(mProduct.getImgupload_ingredients())) {
+            Utils.compressImage(mProduct.getImgupload_ingredients());
+        }
 
-        if (Utils.isNetworkConnected(this)) {
+        if(isNotBlank(mProduct.getImgupload_nutrition())) {
+            Utils.compressImage(mProduct.getImgupload_nutrition());
+        }
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+
+        if (isConnected) {
             final Activity activity = this;
-            api.post(this, uploadablePdt, value -> {
+            api.post(this, mProduct, value -> {
                 if (!value) {
-                    mSendProductDao.insertOrReplace(mProduct);
-                    if (isVisible) {
-                        Toast toast = Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();
-                        if (!fromOfflineEdit) {
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            intent.putExtra("openOfflineEdit", true);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            finish();
-                        }
-                    }
-                } else {
-                    if (isVisible) {
-                        Toast toast = Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();
-                        if (!fromOfflineEdit) {
-                            api.getProduct(mProduct.getBarcode(), activity);
-                            finish();
-                        } else {
-                            mSendProductDao.insertOrReplace(mProduct);
-                            finish();
-                        }
-                    }
-                }
-                isSavingGoingOn = false;
-            });
-        } else {
-            mSendProductDao.insertOrReplace(mProduct);
-            if (isVisible) {
-                Toast toast = Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
-                if (!fromOfflineEdit) {
+                    mSendProductDao.insert(mProduct);
+                    Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra("openOfflineEdit", true);
                     startActivity(intent);
-                    finish();
                 } else {
-                    finish();
+                    Toast.makeText(getApplicationContext(), R.string.product_sent, Toast.LENGTH_LONG).show();
+                    api.getProduct(mProduct.getBarcode(), activity);
                 }
-            }
-            isSavingGoingOn = false;
+                finish();
+            });
+        } else {
+            mSendProductDao.insertOrReplace(mProduct);
+            Toast.makeText(getApplicationContext(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.putExtra("openOfflineEdit", true);
+            startActivity(intent);
+            finish();
         }
-
     }
 
-    private void saveAlert() {
-
-        new MaterialDialog.Builder(this)
-                .content(R.string.txtPictureNeededDialogContent)
-                .positiveText(R.string.txtPictureNeededDialogYes)
-                .negativeText(R.string.txtPictureNeededDialogNo)
-                .onPositive((dialog, which) -> dialog.cancel())
-                .onNegative((dialog, which) -> finish())
-                .show();
+    @OnClick(R.id.buttonTakePictureFront)
+    protected void onTakePhotoFrontClicked() {
+        if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            imageTaken = "front";
+            EasyImage.openCamera(this, 0);
+        }
     }
 
+    @OnClick(R.id.buttonTakePictureIngredients)
+    protected void onTakePhotoIngredientsClicked() {
+        if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            imageTaken = "ingredients";
+            EasyImage.openCamera(this, 0);
+        }
+    }
+
+    @OnClick(R.id.buttonTakePictureNutrition)
+    protected void onTakePhotoNutritionClicked() {
+        if (ContextCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            imageTaken = "nutrition";
+            EasyImage.openCamera(this, 0);
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
             case android.R.id.home:
-//                isVisible=true;
-                if (!isSavingGoingOn)
-                    saveProduct(true);
-
+                NavUtils.navigateUpFromSameTask(this);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-
     @Override
-    public void onBackPressed() {
-//        isVisible=true;
-        if (!isSavingGoingOn)
-            saveProduct(true);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        EasyImage.handleActivityResult(requestCode, resultCode, data, this, new DefaultCallback() {
+            @Override
+            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
+                //Some error handling
+            }
+
+            @Override
+            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
+                onPhotoReturned(imageFiles.get(0));
+            }
+
+            @Override
+            public void onCanceled(EasyImage.ImageSource source, int type) {
+                //Cancel handling, you might wanna remove taken photo if it was canceled
+                if (source == EasyImage.ImageSource.CAMERA) {
+                    File photoFile = EasyImage.lastlyTakenButCanceledPhoto(SaveProductOfflineActivity.this);
+                    if (photoFile != null) photoFile.delete();
+                }
+            }
+        });
     }
 
-    @Override
-    protected void onStop() {
-        Log.d("stopOffline", "onStop: ");
-//        isVisible=false;
-        if (!isSavingGoingOn)
-            saveProduct(false);
-        super.onStop();
+    private void onPhotoReturned(File photoFile) {
+        if(imageTaken.equals("front")) {
+            mProduct.setImgupload_front(photoFile.getAbsolutePath());
+            imgSaveFront.setVisibility(View.VISIBLE);
+            Picasso.with(this)
+                    .load(photoFile)
+                    .fit()
+                    .centerCrop()
+                    .into(imgSaveFront);
+        } else if(imageTaken.equals("nutrition")) {
+            mProduct.setImgupload_nutrition(photoFile.getAbsolutePath());
+            imgSaveNutrition.setVisibility(View.VISIBLE);
+            Picasso.with(this)
+                    .load(photoFile)
+                    .fit()
+                    .centerCrop()
+                    .into(imgSaveNutrition);
+        } else if(imageTaken.equals("ingredients")) {
+            mProduct.setImgupload_ingredients(photoFile.getAbsolutePath());
+            imgSaveIngredients.setVisibility(View.VISIBLE);
+            Picasso.with(this)
+                    .load(photoFile)
+                    .fit()
+                    .centerCrop()
+                    .into(imgSaveIngredients);
+        }
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
@@ -347,6 +372,4 @@ public class SaveProductOfflineActivity extends BaseActivity {
             }
         }
     }
-
-
 }

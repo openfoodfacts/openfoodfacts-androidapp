@@ -1,28 +1,21 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
-import java.util.Date;
+import android.graphics.Bitmap;
 
 public class HistoryItem {
 
     private String title;
     private String brands;
-    private String url;
+    private Bitmap url;
     private String barcode;
-    private Date lastSeen;
-    private String quantity;
-    private String nutritionGrade;
 
-    public HistoryItem() {
-    }
+    public HistoryItem(){}
 
-    public HistoryItem(String title, String brands, String url, String barcode, Date lastSeen, String quantity, String nutritionGrade) {
+    public HistoryItem(String title, String brands, Bitmap url, String barcode) {
         this.title = title;
         this.brands = brands;
         this.url = url;
         this.barcode = barcode;
-        this.lastSeen = lastSeen;
-        this.quantity = quantity;
-        this.nutritionGrade = nutritionGrade;
     }
 
     public String getBarcode() {
@@ -33,19 +26,19 @@ public class HistoryItem {
         this.barcode = barcode;
     }
 
-    public String getTitle() {
+    public String getTitle(){
         return this.title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(String title){
         this.title = title;
     }
 
-    public String getUrl() {
+    public Bitmap getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Bitmap url) {
         this.url = url;
     }
 
@@ -55,29 +48,5 @@ public class HistoryItem {
 
     public void setBrands(String brands) {
         this.brands = brands;
-    }
-
-    public void setTime(Date lastSeen) {
-        this.lastSeen = lastSeen;
-    }
-
-    public Date getTime() {
-        return lastSeen;
-    }
-
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getNutritionGrade() {
-        return nutritionGrade;
-    }
-
-    public void setNutritionGrade(String nutritionGrade) {
-        this.nutritionGrade = nutritionGrade;
     }
 }

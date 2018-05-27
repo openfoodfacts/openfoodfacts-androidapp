@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.fragments;
+package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 
-import org.openfoodfacts.scanner.R;
+import openfoodfacts.github.scrachx.openfood.R;
 
 public class CameraSelectorDialogFragment extends DialogFragment {
 
@@ -63,7 +63,9 @@ public class CameraSelectorDialogFragment extends DialogFragment {
                 // Specify the list array, the items to be selected by default (null for none),
                 // and the listener through which to receive callbacks when items are selected
                 .setSingleChoiceItems(cameraNames, checkedIndex,
-                        (dialog, which) -> mCameraId = which)
+                        (dialog, which) -> {
+                            mCameraId = which;
+                        })
                 // Set the action buttons
                 .setPositiveButton(R.string.ok_button, (dialog, id) -> {
                     // User clicked OK, so save the mSelectedIndices results somewhere

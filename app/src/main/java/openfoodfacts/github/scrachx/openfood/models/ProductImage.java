@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
 import java.io.File;
 import java.util.Locale;
@@ -19,12 +19,6 @@ public class ProductImage {
     private final RequestBody imguploadNutrition;
 
     private final RequestBody imguploadOther;
-
-    private String filePath;
-
-    private String barcode;
-
-    private ProductImageField imageField;
 
     public ProductImage(String code, ProductImageField field, File image) {
         this.code = RequestBody.create(MediaType.parse("text/plain"), code);
@@ -62,9 +56,6 @@ public class ProductImage {
                 this.imguploadOther = null;
                 break;
         }
-
-        barcode = code;
-        imageField = field;
     }
 
     public RequestBody getCode() {
@@ -90,21 +81,4 @@ public class ProductImage {
     public RequestBody getImguploadOther() {
         return imguploadOther;
     }
-
-    public void setFilePath(String path) {
-        filePath = path;
-    }
-
-    public String getBarcode() {
-        return barcode;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public ProductImageField getImageField() {
-        return imageField;
-    }
-
 }

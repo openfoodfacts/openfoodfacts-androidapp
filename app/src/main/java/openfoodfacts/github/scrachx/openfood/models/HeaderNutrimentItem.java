@@ -1,6 +1,6 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
-import static org.openfoodfacts.scanner.utils.Utils.bold;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 
 /**
  * Group of NutrimentItem with bold values

@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.openfoodfacts.scanner.R;
+import openfoodfacts.github.scrachx.openfood.R;
 
 import static android.text.TextUtils.isEmpty;
 
@@ -20,7 +20,6 @@ import static android.text.TextUtils.isEmpty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Nutriments implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     private static final String DEFAULT_UNIT = "g";
 
     public final static String ENERGY ="energy";

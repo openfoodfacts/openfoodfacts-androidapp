@@ -1,0 +1,1370 @@
+# Catalan translation for openfoodfacts
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the openfoodfacts
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  openfoodfacts\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2017-03-19 18:47+0100\n"
+"PO-Revision-Date: 2017-02-02 14:18+0000\n"
+"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
+"Language: ca\n"
+"Language-Team: Catalan <ca@li.org>\n"
+"Plural-Forms: nplurals=2; plural=((((n == 1)) && ((0 == 0))) ? 0 : 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.3\n"
+
+msgctxt "hello_world"
+msgid "Hello world!"
+msgstr "Hola món!"
+
+msgctxt "action_settings"
+msgid "Settings"
+msgstr "Preferències"
+
+msgctxt "action_about"
+msgid "About"
+msgstr "Quant a"
+
+msgctxt "action_discover"
+msgid "Discover"
+msgstr "Descobrir"
+
+msgctxt "contribute"
+msgid "How to contribute"
+msgstr ""
+
+msgctxt "action_find"
+msgid "Find"
+msgstr "Cerca"
+
+msgctxt "text_barcode"
+msgid "Type the barcode :"
+msgstr ""
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:0"
+msgid "Summary"
+msgstr "Resum"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:1"
+msgid "Ingredients"
+msgstr "Ingredients"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:2"
+msgid "Nutrition"
+msgstr "Nutrició"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:3"
+msgid "Nutrition Table"
+msgstr ""
+
+#. Text units
+msgctxt "units_array:0"
+msgid "g"
+msgstr "g"
+
+#. Text units
+msgctxt "units_array:1"
+msgid "mg"
+msgstr "mg"
+
+#. Text units
+msgctxt "units_array:2"
+msgid "kg"
+msgstr "kg"
+
+#. Text units
+msgctxt "units_array:3"
+msgid "l"
+msgstr "l"
+
+#. Text units
+msgctxt "units_array:4"
+msgid "ml"
+msgstr "ml"
+
+#. Text units
+msgctxt "units_array:5"
+msgid "cl"
+msgstr ""
+
+#. Text units
+msgctxt "units_array:6"
+msgid "fl oz"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:0"
+msgid "en"
+msgstr "en"
+
+#. Text units
+msgctxt "lang_array:1"
+msgid "fr"
+msgstr "fr"
+
+#. Text units
+msgctxt "lang_array:2"
+msgid "es"
+msgstr "es"
+
+#. Text units
+msgctxt "lang_array:3"
+msgid "it"
+msgstr "it"
+
+#. Text units
+msgctxt "lang_array:4"
+msgid "de"
+msgstr "de"
+
+#. Text units
+msgctxt "lang_array:5"
+msgid "ja"
+msgstr "ja"
+
+#. Text units
+msgctxt "lang_array:6"
+msgid "ru"
+msgstr "ru"
+
+#. Text units
+msgctxt "lang_array:7"
+msgid "pt"
+msgstr "pt"
+
+#. Text units
+msgctxt "lang_array:8"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:9"
+msgid "my"
+msgstr "my"
+
+#. Text units
+msgctxt "lang_array:10"
+msgid "kk"
+msgstr "kk"
+
+#. Text units
+msgctxt "lang_array:11"
+msgid "hy"
+msgstr "hy"
+
+#. Text units
+msgctxt "lang_array:12"
+msgid "el"
+msgstr "el"
+
+#. Text units
+msgctxt "lang_array:13"
+msgid "he"
+msgstr "he"
+
+#. Text units
+msgctxt "lang_array:14"
+msgid "gl"
+msgstr "gl"
+
+#. Text units
+msgctxt "lang_array:15"
+msgid "ca"
+msgstr "ca"
+
+#. Text units
+msgctxt "lang_array:16"
+msgid "cs"
+msgstr "cs"
+
+#. Text units
+msgctxt "lang_array:17"
+msgid "ar"
+msgstr "ar"
+
+#. Text units
+msgctxt "lang_array:18"
+msgid "fi"
+msgstr "fi"
+
+#. Text units
+msgctxt "lang_array:19"
+msgid "hi"
+msgstr "hi"
+
+#. Text units
+msgctxt "lang_array:20"
+msgid "kab"
+msgstr "kab"
+
+#. Text units
+msgctxt "lang_array:21"
+msgid "ko"
+msgstr "ko"
+
+#. Text units
+msgctxt "lang_array:22"
+msgid "lv"
+msgstr "lv"
+
+#. Text units
+msgctxt "lang_array:23"
+msgid "nl"
+msgstr "nl"
+
+#. Text units
+msgctxt "lang_array:24"
+msgid "pt-rBR"
+msgstr "pt-rBR"
+
+#. Text units
+msgctxt "lang_array:25"
+msgid "ro"
+msgstr "ro"
+
+#. Text units
+msgctxt "lang_array:26"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:27"
+msgid "zh"
+msgstr "zh"
+
+#. Text units
+msgctxt "lang_array:28"
+msgid "nb"
+msgstr "nb"
+
+#. Text units
+msgctxt "lang_array:29"
+msgid "da"
+msgstr "da"
+
+#. Text units
+msgctxt "lang_array:30"
+msgid "zh-rCN"
+msgstr "zh-rCN"
+
+msgctxt "lang_label_array:0"
+msgid "English"
+msgstr "Anglès"
+
+msgctxt "lang_label_array:1"
+msgid "French"
+msgstr "Francès"
+
+msgctxt "lang_label_array:2"
+msgid "Spanish"
+msgstr "Espanyol"
+
+msgctxt "lang_label_array:3"
+msgid "Italian"
+msgstr "Italià"
+
+msgctxt "lang_label_array:4"
+msgid "German"
+msgstr "Alemany"
+
+msgctxt "lang_label_array:5"
+msgid "Japanese"
+msgstr "Japonès"
+
+msgctxt "lang_label_array:6"
+msgid "Russian"
+msgstr "Rus"
+
+msgctxt "lang_label_array:7"
+msgid "Portuguese"
+msgstr "Portuguès"
+
+msgctxt "lang_label_array:8"
+msgid "Swedish"
+msgstr "Suec"
+
+msgctxt "lang_label_array:9"
+msgid "Burmese"
+msgstr "Birmà"
+
+msgctxt "lang_label_array:10"
+msgid "Kazakh"
+msgstr "Kazakh"
+
+msgctxt "lang_label_array:11"
+msgid "Armenian"
+msgstr "Armeni"
+
+msgctxt "lang_label_array:12"
+msgid "Greek"
+msgstr "Grec"
+
+msgctxt "lang_label_array:13"
+msgid "Hebrew"
+msgstr "Hebreu"
+
+msgctxt "lang_label_array:14"
+msgid "Galician"
+msgstr "Gallec"
+
+msgctxt "lang_label_array:15"
+msgid "Catalan"
+msgstr "Català"
+
+msgctxt "lang_label_array:16"
+msgid "Czech"
+msgstr "Txec"
+
+msgctxt "lang_label_array:17"
+msgid "Arabic"
+msgstr ""
+
+msgctxt "lang_label_array:18"
+msgid "Finnish"
+msgstr ""
+
+msgctxt "lang_label_array:19"
+msgid "Hindi"
+msgstr ""
+
+msgctxt "lang_label_array:20"
+msgid "Kabyle"
+msgstr ""
+
+msgctxt "lang_label_array:21"
+msgid "Korean"
+msgstr ""
+
+msgctxt "lang_label_array:22"
+msgid "Latvian"
+msgstr ""
+
+msgctxt "lang_label_array:23"
+msgid "Dutch"
+msgstr "Holandès"
+
+msgctxt "lang_label_array:24"
+msgid "Brazilian portuguese"
+msgstr ""
+
+msgctxt "lang_label_array:25"
+msgid "Romanian"
+msgstr "Romanès"
+
+msgctxt "lang_label_array:26"
+msgid "Swedish"
+msgstr "Suec"
+
+msgctxt "lang_label_array:27"
+msgid "Chinese"
+msgstr "Xinès"
+
+msgctxt "lang_label_array:28"
+msgid "Norwegian (Bokmal)"
+msgstr "Noruec (Bokmål)"
+
+msgctxt "lang_label_array:29"
+msgid "Danish"
+msgstr "Danès"
+
+msgctxt "lang_label_array:30"
+msgid "Simplified Chinese"
+msgstr "Xinès simplificat"
+
+msgctxt "images_array:0"
+msgid "Default"
+msgstr "Predeterminat"
+
+msgctxt "images_array:1"
+msgid "Nutrition"
+msgstr "Nutrició"
+
+msgctxt "images_array:2"
+msgid "Ingredients"
+msgstr "Ingredients"
+
+#. Content Description
+msgctxt "search_button"
+msgid "Search"
+msgstr "Cerca"
+
+msgctxt "no_products"
+msgid "Products not found"
+msgstr "No s'han trobat els productes"
+
+msgctxt "desc_list_item_icon"
+msgid "Item Icon"
+msgstr "Icona d'objecte"
+
+msgctxt "alert_dialog_warning_title"
+msgid "Warning"
+msgstr "Avís"
+
+msgctxt "alert_dialog_warning_msg_user"
+msgid "User/password has changed, please update information"
+msgstr "L'usuari/contrasenya ha canviat, per favor actualitze la informació"
+
+msgctxt "alert_dialog_product_error_msg"
+msgid "Product not found, please try again"
+msgstr "No s'ha trobat el producte, per favor intente-ho una altra volta"
+
+msgctxt "toast_retrieving"
+msgid "Loading..."
+msgstr "S'està carregant..."
+
+msgctxt "txtBarcode"
+msgid "Barcode :"
+msgstr "Codi de barres :"
+
+msgctxt "txtQuantity"
+msgid "Quantity :"
+msgstr "Quantitat :"
+
+msgctxt "txtPackaging"
+msgid "Packaging :"
+msgstr "Envasament :"
+
+msgctxt "txtBrands"
+msgid "Brands :"
+msgstr "Marques :"
+
+msgctxt "txtCategories"
+msgid "Categories :"
+msgstr "Categories :"
+
+msgctxt "txtLabels"
+msgid "Labels, certifications, awards :"
+msgstr ""
+
+msgctxt "txtManufacturing"
+msgid "Manufacturing or processing places :"
+msgstr "Llocs de manufactura o processament :"
+
+msgctxt "txtIngredientsOrigins"
+msgid "Origin of ingredients :"
+msgstr "Origen dels ingredients :"
+
+msgctxt "txtCity"
+msgid "City, state and country where purchased :"
+msgstr "Ciutat, estat o país on es va comprar :"
+
+msgctxt "txtStores"
+msgid "Stores :"
+msgstr "Tendes :"
+
+msgctxt "txtCountries"
+msgid "Countries where sold :"
+msgstr "Països on es ven :"
+
+msgctxt "txtIngredients"
+msgid "Ingredients list :"
+msgstr "Llista d'ingredients :"
+
+msgctxt "txtSubstances"
+msgid "Substances or products causing allergies or intolerances :"
+msgstr "Substàncies o productes que causen al·lèrgies o intoleràncies :"
+
+msgctxt "txtAdditives"
+msgid "Additives :"
+msgstr "Additius :"
+
+msgctxt "txtTraces"
+msgid "Traces :"
+msgstr "Rastres :"
+
+msgctxt "txtMayBeFromPalmOilProduct"
+msgid "Ingredients that may be from palm oil :"
+msgstr "Ingredients que potser vinguen de l'oli de palma :"
+
+msgctxt "txtPalmOilProduct"
+msgid "Ingredients from palm oil :"
+msgstr "Ingredients de l'oli de palma :"
+
+msgctxt "txtServingSize"
+msgid "Serving size :"
+msgstr "Mida de la ració :"
+
+msgctxt "txtNutrientLevel100g"
+msgid "Nutrient levels for 100g :"
+msgstr "Nivells de nutrients per cada 100g :"
+
+msgctxt "txtNutritionLevelLow"
+msgid "in low quantity"
+msgstr ""
+
+msgctxt "txtNutritionLevelModerate"
+msgid "in moderate quantity"
+msgstr ""
+
+msgctxt "txtNutritionLevelHigh"
+msgid "in high quantity"
+msgstr ""
+
+msgctxt "txtLogin"
+msgid "Login :"
+msgstr "Usuari :"
+
+msgctxt "txtPass"
+msgid "Password :"
+msgstr "Contrasenya:"
+
+msgctxt "txtTitleHome"
+msgid "Open your food and know what you eat"
+msgstr "Obri el seu menjar i conega què menja"
+
+msgctxt "txtSave"
+msgid "Save"
+msgstr ""
+
+msgctxt "txtSignIn"
+msgid "Sign in"
+msgstr "Inici de sessió"
+
+msgctxt "txtUser"
+msgid "User panel"
+msgstr "Panell d'usuari"
+
+msgctxt "txtToastSaved"
+msgid "User saved"
+msgstr "Usuari desat"
+
+msgctxt "txtSalt"
+msgid "Salt"
+msgstr "Sal"
+
+msgctxt "txtFat"
+msgid "Fat"
+msgstr "Greix"
+
+msgctxt "txtSugars"
+msgid "Sugars"
+msgstr ""
+
+msgctxt "txtSaturatedFat"
+msgid "Satured fat"
+msgstr "Greix saturat"
+
+msgctxt "hintBarcode"
+msgid "Barcode"
+msgstr "Codi de barres"
+
+msgctxt "hintLogin"
+msgid "Login"
+msgstr "Usuari"
+
+msgctxt "hintPass"
+msgid "Password"
+msgstr "Contrasenya"
+
+msgctxt "errorLogin"
+msgid "Login or password error"
+msgstr "Usuari o contrasenya errònia"
+
+msgctxt "errorWeb"
+msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgstr "No s'ha pogut connectar a l'Internet. Té problemes amb la connexió?"
+
+msgctxt "txtInfoLoginOk"
+msgid "User saved"
+msgstr "Usuari desat"
+
+msgctxt "txtInfoLoginNo"
+msgid "User not saved"
+msgstr "Usuari no desat"
+
+msgctxt "txtDialogsTitle"
+msgid "Information"
+msgstr "Informació"
+
+msgctxt "txtDialogsContent"
+msgid ""
+"The product you scanned does not exist yet in Open Food Facts. Please add"
+" it."
+msgstr ""
+
+msgctxt "txtDialogsContentPowerMode"
+msgid "The product you scanned does already exist in Open Food Facts."
+msgstr ""
+
+msgctxt "txtDialogsContentSend"
+msgid "Do you want send the saved products to the database?"
+msgstr "Vol enviar el producte desat a la base de dades?"
+
+msgctxt "txtYes"
+msgid "Yes"
+msgstr "Si"
+
+msgctxt "txtNo"
+msgid "No"
+msgstr "No"
+
+msgctxt "hintNameProduct"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "hintEnergy"
+msgid "Energy in kJ per serving"
+msgstr "Energia en KJ per ració"
+
+msgctxt "hintEnergyUnit"
+msgid "Energy unit"
+msgstr "Unitat d'energia"
+
+msgctxt "hintWeight"
+msgid "Weight"
+msgstr "Pes"
+
+msgctxt "hintStores"
+msgid "Store"
+msgstr "Botiga"
+
+msgctxt "hintBrand"
+msgid "Brand"
+msgstr "Marca"
+
+msgctxt "txtTakePicture"
+msgid "Take picture"
+msgstr "Prenga una foto"
+
+msgctxt "txtSendAll"
+msgid "Upload all"
+msgstr "Puja tot"
+
+msgctxt "txtNoData"
+msgid "No data"
+msgstr "No hi ha dades"
+
+msgctxt "txtPictureNeeded"
+msgid "Please take a picture first"
+msgstr ""
+
+msgctxt "toastSending"
+msgid "Uploading..."
+msgstr "Pujant..."
+
+msgctxt "dataSaved"
+msgid "Saved locally on your device"
+msgstr "Desat localment al seu dispositiu"
+
+msgctxt "txtInfoAddUser"
+msgid "Please enter your login and password"
+msgstr "Per favor pose l'usuari i la contrasenya"
+
+msgctxt "txtDataUpdated"
+msgid "Data updated"
+msgstr "Dades actualitzades"
+
+msgctxt "txtLoading"
+msgid "Loading..."
+msgstr "Carregant ..."
+
+msgctxt "txtDialogsContentDelete"
+msgid "Do you want to delete this draft?"
+msgstr "Vol esborrar este esborrany?"
+
+msgctxt "txtDialogsContentInfoSave"
+msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr ""
+"El producte s'ha desat localment, pot editar-lo amb el menú de l'Editor "
+"Offline"
+
+msgctxt "txtBarcodeRequire"
+msgid "Barcode required"
+msgstr "Es necessita un codi de barres"
+
+msgctxt "txtOk"
+msgid "OK"
+msgstr "D'acord"
+
+msgctxt "txtContentDialogUploading"
+msgid "Please don't exit during the process..."
+msgstr "Per favor no isca en mig del procés..."
+
+msgctxt "txtAbout"
+msgid ""
+"The pictures you send are published under the free licence Creative "
+"Commons Attribution and ShareAlike."
+msgstr ""
+"Les imatges que ha enviat es publiquen amb la llicència lliure Creative "
+"Commons Attribution and ShareAlike"
+
+msgctxt "txtAllsent"
+msgid "Products sent"
+msgstr "Productes enviats"
+
+msgctxt "txtPalm"
+msgid "The product does not contain any palm oil"
+msgstr "El producte no conté res d'oli de palma"
+
+msgctxt "txtBarcodeNotValid"
+msgid "Barcode not valid"
+msgstr "Codi de barres no vàlid"
+
+msgctxt "try_it_scan_now"
+msgid "Scan product"
+msgstr "Escanneja producte"
+
+msgctxt "share"
+msgid "Share"
+msgstr "Comparteix"
+
+msgctxt "msg_share"
+msgid "Look at this product on Open Food Facts :"
+msgstr "Mire este producte a Open Food Facts :"
+
+msgctxt "create_account"
+msgid "Sign up"
+msgstr "Entra"
+
+msgctxt "home_drawer"
+msgid "Home"
+msgstr "Inici"
+
+msgctxt "open_beauty_drawer"
+msgid "Open Beauty Facts"
+msgstr "Open Beauty Facts"
+
+msgctxt "open_food_drawer"
+msgid "Open Food Facts"
+msgstr ""
+
+msgctxt "search_drawer"
+msgid "Search"
+msgstr "Cerca"
+
+#, fuzzy
+msgctxt "search_by_barcode_drawer"
+msgid "Type barcode"
+msgstr "Cerca per codi de barres"
+
+msgctxt "search_by_name_drawer"
+msgid "Search by name"
+msgstr "Cerca pel nom"
+
+#, fuzzy
+msgctxt "scan_search"
+msgid "Scan Barcode"
+msgstr "Escàner"
+
+msgctxt "user_drawer"
+msgid "User"
+msgstr "Usuari"
+
+msgctxt "offline_edit_drawer"
+msgid "Offline edit"
+msgstr "Edició offline"
+
+msgctxt "txt_anonymous"
+msgid "Anonymous"
+msgstr "Anònim"
+
+msgctxt "txt_product_not_found"
+msgid "Products not found"
+msgstr "No s'han trobat els productes"
+
+msgctxt "delete_txt"
+msgid "Delete"
+msgstr "Elimina"
+
+msgctxt "sign_in_drawer"
+msgid "Sign-in"
+msgstr "Obre sessió"
+
+msgctxt "alert_drawer"
+msgid "Allergen alert"
+msgstr ""
+
+msgctxt "warning_allergens"
+msgid "Contains allergens"
+msgstr "Conté al·lèrgens"
+
+msgctxt "title_dialog_alert"
+msgid "Add alert"
+msgstr "Afegir Alerta"
+
+msgctxt "warning_alert_data"
+msgid ""
+"Your allergies info will never be sent to the Open Food Facts server. "
+"Also, be careful that data may not be accurate, please double-check by "
+"yourself!"
+msgstr ""
+"La informació de les seues al·lèrgies no s'enviarà mai al servidor d'Open"
+" Food Facts. També tinga cura que les dades poden no ser massa precises, "
+"per favor estiga alerta!"
+
+msgctxt "from_gallery"
+msgid "From gallery"
+msgstr "Des de la galeria"
+
+msgctxt "product_sent"
+msgid "Product sent successfully"
+msgstr ""
+
+msgctxt "action_edit_product"
+msgid "Edit product"
+msgstr "Edita producte"
+
+msgctxt "title_info_dialog"
+msgid "Information"
+msgstr "Informació"
+
+msgctxt "text_offline_info_dialog"
+msgid ""
+"You can scan products when you're offline to add them to Open Food Facts "
+"later. All the products you scan will appear here, and you'll be able to "
+"send them using the button below."
+msgstr ""
+"Pot escanejar productes fora de línia i afegir-los a Open Food Facts "
+"després. Tots els productes que escaneje apareixeran ací, i podrà enviar-"
+"los amb el botó de baix."
+
+msgctxt "permission_camera"
+msgid "Camera permission is needed to scan barcodes and take pictures."
+msgstr ""
+
+msgctxt "permission_title"
+msgid "Permission information"
+msgstr "Informació de permisos"
+
+msgctxt "permission_denied"
+msgid "Please activate permission in the settings"
+msgstr "Per favor, active el permís a la configuració"
+
+msgctxt "permission_storage"
+msgid "Storage permission is needed to take or select pictures"
+msgstr ""
+
+msgctxt "info_download_data"
+msgid ""
+"You need to download some data to get this functionality working, please "
+"press yes to download it."
+msgstr ""
+"Necessita descarregar dades per tindre esta funcionalitat en marxa, per "
+"favor clique sí per descarregar-la."
+
+msgctxt "info_download_data_connection"
+msgid ""
+"You need to download some data to get this functionality working. Please "
+"activate internet connection."
+msgstr ""
+"Necessita descarregar dades per tindre esta funcionalitat en marxa, per "
+"favor active la connexió  d'Internet."
+
+msgctxt "msg_input_empty"
+msgid "Please fill the fields first."
+msgstr ""
+
+msgctxt "new_offline_info"
+msgid ""
+"Please take a picture of the product, ingredients, nutrition facts table "
+"and any other information on the label. Thank you!"
+msgstr ""
+"Per favor, prenga una foto del producte, ingredients, dades de nutrició i"
+" qualsevol altra informació a l'etiqueta. Gràcies!"
+
+#. Strings related to login
+msgctxt "error_invalid_password"
+msgid "The password needs to be a least 6 characters long."
+msgstr "La contrasenya ha de tenir un mínim de 6 caràcters."
+
+msgctxt "error_field_required"
+msgid "This field is required."
+msgstr "Aquest camp és obligatori."
+
+msgctxt "action_preferences"
+msgid "Preferences"
+msgstr "Preferències"
+
+msgctxt "prefs_scan_startup"
+msgid "Scan on startup"
+msgstr "Escaneja al començament"
+
+msgctxt "prefs_scan_startup_summary"
+msgid "This option if selected will start scan when app is opened."
+msgstr ""
+"Si està seleccionada esta opció l'escaneig començarà quan l'aplicació "
+"s'òbriga."
+
+msgctxt "prefs_power_mode"
+msgid "Power mode scan"
+msgstr "Escaneig en mode power"
+
+msgctxt "prefs_power_mode_summary"
+msgid ""
+"Quickly scan products in a supermarket to see which ones are not in the "
+"database."
+msgstr ""
+
+msgctxt "prefs_language"
+msgid "Language"
+msgstr "Idioma"
+
+msgctxt "prefs_language_summary"
+msgid "Change language"
+msgstr "Canvia idioma"
+
+msgctxt "scan_history_drawer"
+msgid "History"
+msgstr "Historial"
+
+msgctxt "clear_history"
+msgid "Clear history"
+msgstr "Neteja l'historial"
+
+msgctxt "title_clear_history_dialog"
+msgid "Clear"
+msgstr "Esborra"
+
+msgctxt "text_clear_history_dialog"
+msgid "Do you want to clear all scan history?"
+msgstr "Vol esborrar tot l'historial d'escaneig?"
+
+msgctxt "export_csv_history"
+msgid "Export CSV"
+msgstr "Exporta CSV"
+
+msgctxt "txt_exporting_history"
+msgid "Exporting history..."
+msgstr "Exportant historial..."
+
+msgctxt "txt_history_exported"
+msgid "History exported"
+msgstr "Historial exportat"
+
+msgctxt "permision_write_external_storage"
+msgid "Write external storage permission is needed to export history."
+msgstr ""
+"Es necessita el permís d'escriptura a dispositius externs  per exportar "
+"l'historial."
+
+msgctxt "txt_nutrition_not_found"
+msgid "N/A"
+msgstr "N/D"
+
+#. Nutrition info tab
+msgctxt "nutrition_carbohydrate"
+msgid "Carbohydrate"
+msgstr "Carbohidrat"
+
+msgctxt "nutrition_carbohydrate_short_name"
+msgid "Carbohydrate (g)"
+msgstr "Carbohidrat (g)"
+
+msgctxt "nutrition_cholesterol"
+msgid "Cholesterol"
+msgstr "Colesterol"
+
+msgctxt "nutrition_cholesterol_short_name"
+msgid "Cholesterol (g)"
+msgstr "Colesterol (g)"
+
+msgctxt "nutrition_energy"
+msgid "Energy"
+msgstr "Energia"
+
+msgctxt "nutrition_energy_short_name"
+msgid "Energy"
+msgstr "Energia"
+
+msgctxt "nutrition_fat"
+msgid "Fat"
+msgstr "Greix"
+
+msgctxt "nutrition_fat_short_name"
+msgid "Fat (g)"
+msgstr "Greix (g)"
+
+msgctxt "nutrition_fiber"
+msgid "Dietary fiber"
+msgstr "Fibra dietètica"
+
+msgctxt "nutrition_fiber_short_name"
+msgid "Dietary fiber (g)"
+msgstr "Fibra dietètica (g)"
+
+msgctxt "nutrition_header"
+msgid "Nutrition facts"
+msgstr "Informació nutricional"
+
+msgctxt "nutrition_no_data_message"
+msgid "No data is available for this product"
+msgstr "No hi ha dades per este producte"
+
+msgctxt "nutrition_per_quantity"
+msgid "For 100g/100ml"
+msgstr "Per 100g/100ml"
+
+msgctxt "nutrition_proteins"
+msgid "Proteins"
+msgstr "Proteïnes"
+
+msgctxt "nutrition_proteins_short_name"
+msgid "Proteins (g)"
+msgstr "Proteïnes (g)"
+
+msgctxt "nutrition_salt"
+msgid "Salt"
+msgstr "Sal"
+
+msgctxt "nutrition_salt_short_name"
+msgid "Salt (g)"
+msgstr "Sal (g)"
+
+msgctxt "nutrition_satured_fat"
+msgid "Satured fat"
+msgstr "Greix saturat"
+
+msgctxt "nutrition_satured_fat_short_name"
+msgid "Satured fat (g)"
+msgstr "Greix saturat (g)"
+
+msgctxt "nutrition_serving"
+msgid "Per serving"
+msgstr "Per ració"
+
+msgctxt "nutrition_serving_size"
+msgid "Serving size :"
+msgstr "Mida de la ració :"
+
+msgctxt "nutrition_sodium"
+msgid "Sodium"
+msgstr "Sodi"
+
+msgctxt "nutrition_sodium_short_name"
+msgid "Sodium (g)"
+msgstr "Sodi (g)"
+
+msgctxt "nutrition_sugars"
+msgid "Sugars"
+msgstr "Sucres"
+
+msgctxt "nutrition_sugars_short_name"
+msgid "Sugars (g)"
+msgstr "Sucres (g)"
+
+msgctxt "nutrition_trans_fat"
+msgid "Trans fat"
+msgstr "Greix trans"
+
+msgctxt "nutrition_trans_fat_short_name"
+msgid "Trans fat (g)"
+msgstr "Greix trans (g)"
+
+msgctxt "nutriment_serving_size"
+msgid "Per portion :"
+msgstr "Per porció :"
+
+msgctxt "action_manage_account"
+msgid "Manage account"
+msgstr "Gestiona el compte"
+
+msgctxt "action_contributes"
+msgid "Your contributions"
+msgstr "Les seues contribucions"
+
+msgctxt "logout_drawer"
+msgid "Logout"
+msgstr ""
+
+msgctxt "contribution_without_account"
+msgid "You can sign-in or create an account to keep your contributions"
+msgstr ""
+
+msgctxt "textCarbonFootprint"
+msgid "Carbon footprint / CO2 emissions: "
+msgstr ""
+
+msgctxt "txtDialogPowerMode"
+msgid "Quick view"
+msgstr ""
+
+msgctxt "txtSeeMore"
+msgid "See more"
+msgstr ""
+
+msgctxt "action_search"
+msgid "Search"
+msgstr ""
+
+msgctxt "search_hint"
+msgid "Search a product"
+msgstr "Cercar un producte"
+
+msgctxt "number_of_results"
+msgid "Number of results :"
+msgstr ""
+
+msgctxt "txt_no_results"
+msgid "No results found"
+msgstr "No s'ha trobat resultats"
+
+msgctxt "nutrition_lactose"
+msgid "Lactose"
+msgstr ""
+
+msgctxt "nutrition_casein"
+msgid "Casein"
+msgstr ""
+
+msgctxt "nutrition_maltodextrins"
+msgid "Maltodextrins"
+msgstr ""
+
+msgctxt "nutrition_serum_proteins"
+msgid "Serum Proteins"
+msgstr ""
+
+msgctxt "nutrition_nucleotides"
+msgid "Nucleotides"
+msgstr ""
+
+msgctxt "for_100g"
+msgid "For 100 g"
+msgstr ""
+
+msgctxt "serving"
+msgid "Per serving"
+msgstr "Per ració"
+
+msgctxt "minerals"
+msgid "Minerals"
+msgstr ""
+
+msgctxt "nutrition_calcium"
+msgid "Calcium"
+msgstr "Calci"
+
+msgctxt "nutrition_potassium"
+msgid "Potassium"
+msgstr "Potassi"
+
+msgctxt "nutrition_chlore"
+msgid "Chlorine"
+msgstr "Clor"
+
+msgctxt "nutrition_magnesium"
+msgid "Magnesium"
+msgstr "Magnesi"
+
+msgctxt "nutrition_taurine"
+msgid "Taurine"
+msgstr ""
+
+msgctxt "nutrition_monounsaturatedFat"
+msgid "Mono unsaturated fat"
+msgstr ""
+
+msgctxt "nutrition_polyunsaturatedFat"
+msgid "Poly unsaturated fat"
+msgstr ""
+
+msgctxt "nutrition_omega3"
+msgid "Omega 3"
+msgstr ""
+
+msgctxt "nutrition_omega6"
+msgid "Omega 6"
+msgstr ""
+
+msgctxt "nutrition_omega9"
+msgid "Omega 9"
+msgstr ""
+
+msgctxt "nutrition_sucrose"
+msgid "Sucrose"
+msgstr ""
+
+msgctxt "nutrition_glucose"
+msgid "Glucose"
+msgstr ""
+
+msgctxt "nutrition_fructose"
+msgid "Fructose"
+msgstr ""
+
+msgctxt "nutrition_maltose"
+msgid "Maltose"
+msgstr ""
+
+msgctxt "nutrition_alcohol"
+msgid "Alcohol"
+msgstr ""
+
+msgctxt "nutrition_vitamins"
+msgid "Vitamins"
+msgstr ""
+
+msgctxt "vitamin_a"
+msgid "Vitamin A"
+msgstr "Vitamina A"
+
+msgctxt "vitamin_d"
+msgid "Vitamin d"
+msgstr ""
+
+msgctxt "vitamin_e"
+msgid "Vitamin e"
+msgstr ""
+
+msgctxt "vitamin_k"
+msgid "Vitamin k"
+msgstr ""
+
+msgctxt "vitamin_c"
+msgid "Vitamin C"
+msgstr "Vitamina C"
+
+msgctxt "vitamin_b1"
+msgid "Vitamin B1"
+msgstr ""
+
+msgctxt "vitamin_b2"
+msgid "Vitamin B2"
+msgstr ""
+
+msgctxt "vitamin_pp"
+msgid "Vitamin PP"
+msgstr ""
+
+msgctxt "vitamin_b6"
+msgid "Vitamin B6"
+msgstr "Vitamina B6"
+
+msgctxt "vitamin_b9"
+msgid "Vitamin B9"
+msgstr ""
+
+msgctxt "vitamin_b12"
+msgid "Vitamin B12"
+msgstr "Vitamina B12"
+
+msgctxt "biotin"
+msgid "Biotin"
+msgstr ""
+
+msgctxt "pantothenic_acid"
+msgid "Pantothenic acid"
+msgstr ""
+
+msgctxt "nutrition_minerals"
+msgid "Minerals"
+msgstr ""
+
+msgctxt "silica"
+msgid "Silica"
+msgstr ""
+
+msgctxt "bicarbonate"
+msgid "Bicarbonate"
+msgstr ""
+
+msgctxt "potassium"
+msgid "Potassium"
+msgstr "Potassi"
+
+msgctxt "chloride"
+msgid "Chloride"
+msgstr ""
+
+msgctxt "calcium"
+msgid "Calcium"
+msgstr "Calci"
+
+msgctxt "phosphorus"
+msgid "Phosphorus"
+msgstr "Fòsfor"
+
+msgctxt "iron"
+msgid "Iron"
+msgstr "Ferro"
+
+msgctxt "magnesium"
+msgid "Magnesium"
+msgstr "Magnesi"
+
+msgctxt "zinc"
+msgid "Zinc"
+msgstr ""
+
+msgctxt "copper"
+msgid "Copper"
+msgstr ""
+
+msgctxt "manganese"
+msgid "Manganese"
+msgstr ""
+
+msgctxt "fluoride"
+msgid "Fluoride"
+msgstr ""
+
+msgctxt "selenium"
+msgid "Selenium"
+msgstr ""
+
+msgctxt "chromium"
+msgid "Chromium"
+msgstr ""
+
+msgctxt "molybdenum"
+msgid "Molybdenum"
+msgstr ""
+
+msgctxt "iodine"
+msgid "Iodine"
+msgstr ""
+
+msgctxt "caffeine"
+msgid "Caffeine"
+msgstr ""
+
+msgctxt "taurine"
+msgid "Taurine"
+msgstr ""
+
+msgctxt "ph"
+msgid "Ph"
+msgstr ""
+
+msgctxt "fruits_vegetables_nuts"
+msgid "Fruits, vegetables, nuts"
+msgstr ""
+
+msgctxt "collagen_meat_protein_ratio"
+msgid "Collagen meat protein ratio"
+msgstr ""
+
+msgctxt "cocoa"
+msgid "Cocoa"
+msgstr ""
+
+msgctxt "chlorophyl"
+msgid "Chlorophyl"
+msgstr ""
+
+msgctxt "take_picture_ingredients"
+msgid "Take a picture of the ingredients"
+msgstr ""
+
+msgctxt "take_picture_front"
+msgid "Take a picture of the front"
+msgstr ""
+
+msgctxt "take_picture_nutrition_table"
+msgid "Take a picture of the nutrition table"
+msgstr ""
+
+msgctxt "take_more_pictures"
+msgid "Take more pictures"
+msgstr ""
+

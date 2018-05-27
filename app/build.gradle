@@ -1,69 +1,44 @@
 apply plugin: 'com.android.application'
-apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
 
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
-        targetSdkVersion 27
-        versionCode 51
-        versionName "0.9.0.1"
+        targetSdkVersion 25
+        versionCode 37
+        versionName "0.7.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
-    buildTypes {
-        release {
-            crunchPngs true
-        }
-    }
 
-    dataBinding {
-        enabled true
-    }
-
-    flavorDimensions "versionCode"
     productFlavors {
         off {
             applicationId "openfoodfacts.github.scrachx.openfood"
-            resValue "string", "app_name", "OpenFoodFacts"
+            resValue "string", "app_name", "Open Food"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openfoodfacts.org"'
-            buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openbeautyfacts.scanner"'
+            buildConfigField 'String', 'OFOTHERLINKAPP', '"openfoodfacts.github.scrachx.openbeauty"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
-            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
 
         obf {
             applicationId "openfoodfacts.github.scrachx.openbeauty"
-            resValue "string", "app_name", "OpenBeautyFacts"
+            resValue "string", "app_name", "Open Beauty"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openbeautyfacts.org"'
-            buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
+            buildConfigField 'String', 'OFOTHERLINKAPP', '"openfoodfacts.github.scrachx.openfood"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openbeautyfacts.org/"'
-            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
 
         opff {
             applicationId "org.openpetfoodfacts.scanner"
-            resValue "string", "app_name", "OpenPetFoodFacts"
+            resValue "string", "app_name", "Open Pet Food Facts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openpetfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
-            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
-
-        opf {
-            applicationId "org.openproductsfacts.scanner"
-            resValue "string", "app_name", "OpenProductsFacts"
-            buildConfigField 'String', 'HOST', '"https://ssl-api.openproductsfacts.org"'
-            buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
-            buildConfigField 'String', 'OFWEBSITE', '"https://world.openproductsfacts.org/"'
-            buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
-        }
-
     }
-
 
     dexOptions {
         preDexLibraries = false
@@ -72,7 +47,7 @@ android {
 
     defaultConfig {
         multiDexEnabled true
-        // jackOptions.enabled = true
+        jackOptions.enabled = true
     }
 
     compileOptions {
@@ -85,7 +60,7 @@ android {
         disable 'MissingTranslation'
     }
 
-    packagingOptions {
+    packagingOptions{
         exclude 'META-INF/DEPENDENCIES.txt'
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
@@ -101,7 +76,6 @@ android {
     testOptions {
         // avoid "Method ... not mocked."
         unitTests.returnDefaultValues = true
-        execution 'ANDROID_TEST_ORCHESTRATOR'
     }
 }
 
@@ -116,135 +90,86 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 7
+    schemaVersion 2
 }
-android {
-    // Other settings
 
-    buildTypes {
-        release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
 dependencies {
 
-    //Android
-    implementation "com.android.support:customtabs:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:preference-v14:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    implementation "com.android.support:multidex:$rootProject.multidexVersion"
+    compile 'com.android.support:customtabs:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:recyclerview-v7:25.2.0'
+    compile 'com.android.support:cardview-v7:25.2.0'
+    compile 'com.android.support:customtabs:25.2.0'
+    compile 'com.android.support:support-v4:25.2.0'
+    compile 'com.android.support:preference-v14:25.2.0'
+    compile "com.android.support:design:25.2.0"
 
-    //DI
-    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
-    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
-    compileOnly 'javax.annotation:jsr250-api:1.0'
+    compile 'com.android.support:multidex:1.0.1'
 
-    //Rx
-    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxVersion"
-    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
-    //Networking
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-jackson:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
+    compile 'com.opencsv:opencsv:3.8'
 
-    //scheduling jobs
-    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+    compile 'com.squareup.retrofit2:converter-jackson:2.0.0-beta4'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
 
-    //Serialization/Deserialization
-    implementation "com.fasterxml.jackson.core:jackson-core:$rootProject.jacksonVersion"
-    implementation "com.fasterxml.jackson.core:jackson-databind:$rootProject.jacksonVersion"
-    implementation "com.fasterxml.jackson.core:jackson-annotations:$rootProject.jacksonVersion"
+    compile 'com.fasterxml.jackson.core:jackson-core:2.8.3'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.3'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.3'
 
-    //    compile 'io.rest-assured:json-path:3.0.7'
+    compile 'net.steamcrafted:load-toast:1.0.10'
 
-    //CSV Serialization/Deserialization
-    implementation "com.opencsv:opencsv:$rootProject.openCsvVersion"
+    compile 'me.dm7.barcodescanner:zxing:1.9'
 
-    //Database
-    implementation "org.greenrobot:greendao:$rootProject.greenDaoVersion"
+    compile 'com.github.chrisbanes:PhotoView:1.3.1'
 
-    //Image Loading
-    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+    compile 'org.jsoup:jsoup:1.8.3'
 
-    //Image from gallery or camera
-    implementation "com.github.jkwiecien:EasyImage:$rootProject.easyImageVersion"
+    compile 'org.greenrobot:greendao:3.2.0'
 
-    //Binding
-    implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+    compile('com.afollestad.material-dialogs:core:0.9.4.1') {
+        transitive = true
+    }
 
-    //Barcode and QR Scanner
-    implementation "me.dm7.barcodescanner:zxing:$rootProject.qrScannerVersion"
+    compile('com.mikepenz:materialdrawer:5.8.1@aar') {
+        transitive = true
+    }
 
-    //HTML Dom
-    implementation "org.jsoup:jsoup:$rootProject.htmlDomVersion"
+    compile 'com.mikepenz:fastadapter-commons:2.1.0@aar'
+
+    compile 'com.github.clans:fab:1.6.4'
+
+    compile 'com.mikepenz:iconics-core:2.5.11@aar'
+    compile 'com.mikepenz:google-material-typeface:2.2.0.1.original@aar'
+    compile 'com.mikepenz:material-design-iconic-typeface:2.2.0.1@aar'
+    compile 'com.mikepenz:fontawesome-typeface:4.6.0.1@aar'
+
+    compile 'com.github.jkwiecien:EasyImage:1.4.0'
+
+    compile 'com.squareup.picasso:picasso:2.5.2'
 
     //Apache
-    implementation "org.apache.commons:commons-collections4:$rootProject.apacheCollectionsVersion"
-    implementation "commons-validator:commons-validator:$rootProject.apacheValidatorVersion"
+    compile 'org.apache.commons:commons-collections4:4.1'
+    compile 'commons-validator:commons-validator:1.5.1'
 
-    //UI Component : Custom Toast
-    implementation "net.steamcrafted:load-toast:$rootProject.loadToastVersion"
+    // Required for local unit tests (JUnit 4 framework)
+    testCompile 'junit:junit:4.12'
 
-    //UI Component : ImageView with Zooming
-    implementation "com.github.chrisbanes:PhotoView:$rootProject.zoomingImgVersion"
-
-    //UI Component : Material Dialog
-    implementation("com.afollestad.material-dialogs:core:$rootProject.materialDialogVersion") {
-        transitive = true
-    }
-
-    //UI Component : Material Drawer
-    implementation('com.mikepenz:materialdrawer:6.0.2@aar') {
-        transitive = true
-    }
-
-    //UI Component : Adapters
-
-    //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
-    implementation 'com.mikepenz:fastadapter-commons:2.1.0@aar'
-
-    //UI Component : Fab
-    implementation "com.github.clans:fab:$rootProject.fabVersion"
-
-    //UI Component : Font Icons
-    implementation "com.mikepenz:iconics-core:$rootProject.fontIconCoreVersion"
-    implementation "com.mikepenz:google-material-typeface:$rootProject.googleMaterialFontVersion"
-    implementation "com.mikepenz:material-design-iconic-typeface:$rootProject.materialFontVersion"
-    implementation "com.mikepenz:fontawesome-typeface:$rootProject.awesomeFontVersion"
-    implementation('com.theartofdev.edmodo:android-image-cropper:2.6.0') {
-        exclude group: 'com.android.support', module: 'appcompat-v7'
-    }
-
-    //Testing
-    androidTestUtil 'com.android.support.test:orchestrator:1.0.2'
-    testImplementation "junit:junit:$rootProject.jUnitVersion"
-    testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
-    testImplementation "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile 'net.javacrumbs.json-unit:json-unit-fluent:1.15.0'
 
     // Required for instrumented tests
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.2'
-    androidTestImplementation('com.android.support.test.espresso:espresso-contrib:3.0.1') {
+    androidTestCompile 'com.android.support:support-annotations:25.2.0'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-web:2.2.2'
+    androidTestCompile ('com.android.support.test.espresso:espresso-contrib:2.2.2') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'com.android.support', module: 'design'
         exclude module: 'recyclerview-v7'
-    }
-    resourcePlaceholders {
-        files = ['xml/shortcuts.xml']
     }
 }

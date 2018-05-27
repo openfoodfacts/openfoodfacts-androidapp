@@ -1,0 +1,1370 @@
+# Hindi translation for openfoodfacts
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the openfoodfacts
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  openfoodfacts\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2017-03-19 18:47+0100\n"
+"PO-Revision-Date: 2017-02-02 14:13+0000\n"
+"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
+"Language: hi\n"
+"Language-Team: Hindi <hi@li.org>\n"
+"Plural-Forms: nplurals=2; plural=((((n == 0)) || ((n == 1))) ? 0 : 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.3\n"
+
+msgctxt "hello_world"
+msgid "Hello world!"
+msgstr "नमस्कार दुनिया"
+
+msgctxt "action_settings"
+msgid "Settings"
+msgstr "सेटिंग्स"
+
+msgctxt "action_about"
+msgid "About"
+msgstr "जानकारी"
+
+msgctxt "action_discover"
+msgid "Discover"
+msgstr "तलाश करें"
+
+msgctxt "contribute"
+msgid "How to contribute"
+msgstr ""
+
+msgctxt "action_find"
+msgid "Find"
+msgstr "ढूंढें"
+
+msgctxt "text_barcode"
+msgid "Type the barcode :"
+msgstr "बारकोड"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:0"
+msgid "Summary"
+msgstr "संग्रह"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:1"
+msgid "Ingredients"
+msgstr "सामग्री"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:2"
+msgid "Nutrition"
+msgstr "पोषण"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:3"
+msgid "Nutrition Table"
+msgstr "पोषण प्रबंधन/सूची"
+
+#. Text units
+msgctxt "units_array:0"
+msgid "g"
+msgstr "जी"
+
+#. Text units
+msgctxt "units_array:1"
+msgid "mg"
+msgstr "मिलीग्राम"
+
+#. Text units
+msgctxt "units_array:2"
+msgid "kg"
+msgstr "किलोग्राम"
+
+#. Text units
+msgctxt "units_array:3"
+msgid "l"
+msgstr "एल/ लीटर"
+
+#. Text units
+msgctxt "units_array:4"
+msgid "ml"
+msgstr "मिलीलीटर"
+
+#. Text units
+msgctxt "units_array:5"
+msgid "cl"
+msgstr ""
+
+#. Text units
+msgctxt "units_array:6"
+msgid "fl oz"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:0"
+msgid "en"
+msgstr "अंग्रेज़ी"
+
+#. Text units
+msgctxt "lang_array:1"
+msgid "fr"
+msgstr "फ़्रेंच"
+
+#. Text units
+msgctxt "lang_array:2"
+msgid "es"
+msgstr "es"
+
+#. Text units
+msgctxt "lang_array:3"
+msgid "it"
+msgstr "it"
+
+#. Text units
+msgctxt "lang_array:4"
+msgid "de"
+msgstr "de"
+
+#. Text units
+msgctxt "lang_array:5"
+msgid "ja"
+msgstr "ja"
+
+#. Text units
+msgctxt "lang_array:6"
+msgid "ru"
+msgstr "ru"
+
+#. Text units
+msgctxt "lang_array:7"
+msgid "pt"
+msgstr "pt"
+
+#. Text units
+msgctxt "lang_array:8"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:9"
+msgid "my"
+msgstr "my"
+
+#. Text units
+msgctxt "lang_array:10"
+msgid "kk"
+msgstr "kk"
+
+#. Text units
+msgctxt "lang_array:11"
+msgid "hy"
+msgstr "hy"
+
+#. Text units
+msgctxt "lang_array:12"
+msgid "el"
+msgstr "el"
+
+#. Text units
+msgctxt "lang_array:13"
+msgid "he"
+msgstr "he"
+
+#. Text units
+msgctxt "lang_array:14"
+msgid "gl"
+msgstr "gl"
+
+#. Text units
+msgctxt "lang_array:15"
+msgid "ca"
+msgstr "ca"
+
+#. Text units
+msgctxt "lang_array:16"
+msgid "cs"
+msgstr "cs"
+
+#. Text units
+msgctxt "lang_array:17"
+msgid "ar"
+msgstr "ar"
+
+#. Text units
+msgctxt "lang_array:18"
+msgid "fi"
+msgstr "fi"
+
+#. Text units
+msgctxt "lang_array:19"
+msgid "hi"
+msgstr "hi"
+
+#. Text units
+msgctxt "lang_array:20"
+msgid "kab"
+msgstr "kab"
+
+#. Text units
+msgctxt "lang_array:21"
+msgid "ko"
+msgstr "ko"
+
+#. Text units
+msgctxt "lang_array:22"
+msgid "lv"
+msgstr "lv"
+
+#. Text units
+msgctxt "lang_array:23"
+msgid "nl"
+msgstr "nl"
+
+#. Text units
+msgctxt "lang_array:24"
+msgid "pt-rBR"
+msgstr "pt-rBR"
+
+#. Text units
+msgctxt "lang_array:25"
+msgid "ro"
+msgstr "ro"
+
+#. Text units
+msgctxt "lang_array:26"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:27"
+msgid "zh"
+msgstr "zh"
+
+#. Text units
+msgctxt "lang_array:28"
+msgid "nb"
+msgstr "nb"
+
+#. Text units
+msgctxt "lang_array:29"
+msgid "da"
+msgstr "da"
+
+#. Text units
+msgctxt "lang_array:30"
+msgid "zh-rCN"
+msgstr "zh-rCN"
+
+msgctxt "lang_label_array:0"
+msgid "English"
+msgstr "अंग्रेज़ी"
+
+msgctxt "lang_label_array:1"
+msgid "French"
+msgstr "फ्रेंच"
+
+msgctxt "lang_label_array:2"
+msgid "Spanish"
+msgstr "स्पैनिश"
+
+msgctxt "lang_label_array:3"
+msgid "Italian"
+msgstr "इतालवी"
+
+msgctxt "lang_label_array:4"
+msgid "German"
+msgstr "जर्मन"
+
+msgctxt "lang_label_array:5"
+msgid "Japanese"
+msgstr "जापानी"
+
+msgctxt "lang_label_array:6"
+msgid "Russian"
+msgstr "रूसी"
+
+msgctxt "lang_label_array:7"
+msgid "Portuguese"
+msgstr "पुर्तगाली"
+
+msgctxt "lang_label_array:8"
+msgid "Swedish"
+msgstr "स्वीडिश"
+
+msgctxt "lang_label_array:9"
+msgid "Burmese"
+msgstr "बर्मी"
+
+msgctxt "lang_label_array:10"
+msgid "Kazakh"
+msgstr "कज़ाख"
+
+msgctxt "lang_label_array:11"
+msgid "Armenian"
+msgstr "आर्मेनियाई"
+
+msgctxt "lang_label_array:12"
+msgid "Greek"
+msgstr "यूनानी"
+
+msgctxt "lang_label_array:13"
+msgid "Hebrew"
+msgstr "यहूदी"
+
+msgctxt "lang_label_array:14"
+msgid "Galician"
+msgstr "गेलिसियन"
+
+msgctxt "lang_label_array:15"
+msgid "Catalan"
+msgstr "कैटेलन"
+
+msgctxt "lang_label_array:16"
+msgid "Czech"
+msgstr "चेक"
+
+msgctxt "lang_label_array:17"
+msgid "Arabic"
+msgstr "अरबी"
+
+msgctxt "lang_label_array:18"
+msgid "Finnish"
+msgstr "फिनिश"
+
+msgctxt "lang_label_array:19"
+msgid "Hindi"
+msgstr "हिन्दी"
+
+msgctxt "lang_label_array:20"
+msgid "Kabyle"
+msgstr "काब्य्ले"
+
+msgctxt "lang_label_array:21"
+msgid "Korean"
+msgstr "कोरियाई"
+
+msgctxt "lang_label_array:22"
+msgid "Latvian"
+msgstr "लात्वीयावासी"
+
+msgctxt "lang_label_array:23"
+msgid "Dutch"
+msgstr "डच"
+
+msgctxt "lang_label_array:24"
+msgid "Brazilian portuguese"
+msgstr "ब्राजिलियन पुर्तगाली"
+
+msgctxt "lang_label_array:25"
+msgid "Romanian"
+msgstr "रोमानियाई"
+
+msgctxt "lang_label_array:26"
+msgid "Swedish"
+msgstr "स्वीडिश"
+
+msgctxt "lang_label_array:27"
+msgid "Chinese"
+msgstr "चीनी"
+
+msgctxt "lang_label_array:28"
+msgid "Norwegian (Bokmal)"
+msgstr "नॉर्वेजियन (बोकमाल)"
+
+msgctxt "lang_label_array:29"
+msgid "Danish"
+msgstr ""
+
+msgctxt "lang_label_array:30"
+msgid "Simplified Chinese"
+msgstr ""
+
+msgctxt "images_array:0"
+msgid "Default"
+msgstr "चूक"
+
+msgctxt "images_array:1"
+msgid "Nutrition"
+msgstr "पोषण"
+
+msgctxt "images_array:2"
+msgid "Ingredients"
+msgstr "सामग्री"
+
+#. Content Description
+msgctxt "search_button"
+msgid "Search"
+msgstr "ढूंढें"
+
+msgctxt "no_products"
+msgid "Products not found"
+msgstr "उत्पाद नहीं मिला"
+
+msgctxt "desc_list_item_icon"
+msgid "Item Icon"
+msgstr "वस्तु का  आइकन"
+
+msgctxt "alert_dialog_warning_title"
+msgid "Warning"
+msgstr "चेतावनी"
+
+msgctxt "alert_dialog_warning_msg_user"
+msgid "User/password has changed, please update information"
+msgstr "उपयोगकर्ता/ पासवर्ड बदल गया है,  कृप्या  जानकारी अपडेट करें"
+
+msgctxt "alert_dialog_product_error_msg"
+msgid "Product not found, please try again"
+msgstr "उत्पाद नहीं मिला,  फिर प्रयास करें"
+
+msgctxt "toast_retrieving"
+msgid "Loading..."
+msgstr "लोड किया जा रहा है..."
+
+msgctxt "txtBarcode"
+msgid "Barcode :"
+msgstr "बारकोड:"
+
+msgctxt "txtQuantity"
+msgid "Quantity :"
+msgstr "मात्रा:"
+
+msgctxt "txtPackaging"
+msgid "Packaging :"
+msgstr "पैकेजिंग:"
+
+msgctxt "txtBrands"
+msgid "Brands :"
+msgstr "ब्रांड:"
+
+msgctxt "txtCategories"
+msgid "Categories :"
+msgstr "श्रेणी:"
+
+msgctxt "txtLabels"
+msgid "Labels, certifications, awards :"
+msgstr "लेबल, प्रमाणपत्र, पुरस्कार:"
+
+msgctxt "txtManufacturing"
+msgid "Manufacturing or processing places :"
+msgstr "विनिर्माण या प्रसंस्करण की  जगह"
+
+msgctxt "txtIngredientsOrigins"
+msgid "Origin of ingredients :"
+msgstr "सामग्री की उत्पत्ति:"
+
+msgctxt "txtCity"
+msgid "City, state and country where purchased :"
+msgstr "शहर, राज्य और देश जहाँ इसे खरीदा गया:"
+
+msgctxt "txtStores"
+msgid "Stores :"
+msgstr "स्टोर:"
+
+msgctxt "txtCountries"
+msgid "Countries where sold :"
+msgstr "देश जहाँ बेचा गया है"
+
+msgctxt "txtIngredients"
+msgid "Ingredients list :"
+msgstr "सामग्री की सूची:"
+
+msgctxt "txtSubstances"
+msgid "Substances or products causing allergies or intolerances :"
+msgstr "पदार्थ या उत्पादों  के कारण से  एलर्जी या असहिष्णुता  होना:"
+
+msgctxt "txtAdditives"
+msgid "Additives :"
+msgstr "योगशील:"
+
+msgctxt "txtTraces"
+msgid "Traces :"
+msgstr "निशानी:"
+
+msgctxt "txtMayBeFromPalmOilProduct"
+msgid "Ingredients that may be from palm oil :"
+msgstr "सामग्री ताड़ के तेल से हो सकती है:"
+
+msgctxt "txtPalmOilProduct"
+msgid "Ingredients from palm oil :"
+msgstr "ताड़ के तेल से सामग्री:"
+
+msgctxt "txtServingSize"
+msgid "Serving size :"
+msgstr "सेवारत परिमाण:"
+
+msgctxt "txtNutrientLevel100g"
+msgid "Nutrient levels for 100g :"
+msgstr "100 ग्राम के लिए पोषक तत्वों का स्तर"
+
+msgctxt "txtNutritionLevelLow"
+msgid "in low quantity"
+msgstr ""
+
+msgctxt "txtNutritionLevelModerate"
+msgid "in moderate quantity"
+msgstr ""
+
+msgctxt "txtNutritionLevelHigh"
+msgid "in high quantity"
+msgstr ""
+
+msgctxt "txtLogin"
+msgid "Login :"
+msgstr "लॉग इन करें :"
+
+msgctxt "txtPass"
+msgid "Password :"
+msgstr "पासवर्ड :"
+
+msgctxt "txtTitleHome"
+msgid "Open your food and know what you eat"
+msgstr "अपना आहार खोलें और जाने कि आप क्या खाते हैं"
+
+msgctxt "txtSave"
+msgid "Save"
+msgstr ""
+
+msgctxt "txtSignIn"
+msgid "Sign in"
+msgstr "साइन इन करें"
+
+msgctxt "txtUser"
+msgid "User panel"
+msgstr "उपयोगकर्ता पैनल"
+
+msgctxt "txtToastSaved"
+msgid "User saved"
+msgstr "उपयोगकर्ता की जानकारी  सेव है"
+
+msgctxt "txtSalt"
+msgid "Salt"
+msgstr "नमक"
+
+msgctxt "txtFat"
+msgid "Fat"
+msgstr "वसा"
+
+msgctxt "txtSugars"
+msgid "Sugars"
+msgstr "शुगर्स"
+
+msgctxt "txtSaturatedFat"
+msgid "Satured fat"
+msgstr "संतृप्त वसा"
+
+msgctxt "hintBarcode"
+msgid "Barcode"
+msgstr "बारकोड"
+
+msgctxt "hintLogin"
+msgid "Login"
+msgstr "लॉगिन"
+
+msgctxt "hintPass"
+msgid "Password"
+msgstr "पासवर्ड"
+
+msgctxt "errorLogin"
+msgid "Login or password error"
+msgstr "लॉगिन या पासवर्ड एरर"
+
+msgctxt "errorWeb"
+msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgstr "हम इंटरनेट का उपयोग करने में सक्षम नहीं थे| क्या आपके पास कनेक्टिविटी है?"
+
+msgctxt "txtInfoLoginOk"
+msgid "User saved"
+msgstr "उपयोगकर्ता की जानकारी  सेव है"
+
+msgctxt "txtInfoLoginNo"
+msgid "User not saved"
+msgstr "उपयोगकर्ता की जानकारी  सेव नहीं `है"
+
+msgctxt "txtDialogsTitle"
+msgid "Information"
+msgstr "जानकारी"
+
+msgctxt "txtDialogsContent"
+msgid ""
+"The product you scanned does not exist yet in Open Food Facts. Please add"
+" it."
+msgstr ""
+
+msgctxt "txtDialogsContentPowerMode"
+msgid "The product you scanned does already exist in Open Food Facts."
+msgstr ""
+
+msgctxt "txtDialogsContentSend"
+msgid "Do you want send the saved products to the database?"
+msgstr "क्या आप डेटाबेस  में  सेव केोये  उत्पादों को भेजना चाहते हैं?"
+
+msgctxt "txtYes"
+msgid "Yes"
+msgstr "हाँ"
+
+msgctxt "txtNo"
+msgid "No"
+msgstr "नहीं"
+
+msgctxt "hintNameProduct"
+msgid "Name"
+msgstr "नाम"
+
+msgctxt "hintEnergy"
+msgid "Energy in kJ per serving"
+msgstr "किलो जूल ऊर्जा प्रति सेवारत"
+
+msgctxt "hintEnergyUnit"
+msgid "Energy unit"
+msgstr "ऊर्जा इकाई"
+
+msgctxt "hintWeight"
+msgid "Weight"
+msgstr "भार"
+
+msgctxt "hintStores"
+msgid "Store"
+msgstr "दुकान"
+
+msgctxt "hintBrand"
+msgid "Brand"
+msgstr "ब्रांड"
+
+msgctxt "txtTakePicture"
+msgid "Take picture"
+msgstr "तस्वीर ले ले"
+
+msgctxt "txtSendAll"
+msgid "Upload all"
+msgstr "सभी अपलोड कर दो"
+
+msgctxt "txtNoData"
+msgid "No data"
+msgstr "कोई डेटा नहीं है"
+
+msgctxt "txtPictureNeeded"
+msgid "Please take a picture first"
+msgstr "पहले तस्वीर ले"
+
+msgctxt "toastSending"
+msgid "Uploading..."
+msgstr "अपलोड हो रहा है"
+
+msgctxt "dataSaved"
+msgid "Saved locally on your device"
+msgstr "अपने डिवाइस पर स्थानीय रूप से सेव है"
+
+msgctxt "txtInfoAddUser"
+msgid "Please enter your login and password"
+msgstr "कृप्या अपना पासवर्ड और प्रवेश दर्ज करें"
+
+msgctxt "txtDataUpdated"
+msgid "Data updated"
+msgstr "डेटा अपडेट"
+
+msgctxt "txtLoading"
+msgid "Loading..."
+msgstr "लोड हो रहा है..."
+
+msgctxt "txtDialogsContentDelete"
+msgid "Do you want to delete this draft?"
+msgstr "क्या आप  इस ड्राफ्ट कोहटाना चाहते हैं?"
+
+msgctxt "txtDialogsContentInfoSave"
+msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr ""
+"उत्पाद स्थानीय रूप से सेव है, आप ऑफलाइन संपादन मेनू में संपादित कर सकते "
+"हैं"
+
+msgctxt "txtBarcodeRequire"
+msgid "Barcode required"
+msgstr "बारकोड अपेक्षित हैं"
+
+msgctxt "txtOk"
+msgid "OK"
+msgstr "ठीक है"
+
+msgctxt "txtContentDialogUploading"
+msgid "Please don't exit during the process..."
+msgstr "कृपया इस प्रक्रिया के दौरान बाहर नहीं निकलते ..."
+
+msgctxt "txtAbout"
+msgid ""
+"The pictures you send are published under the free licence Creative "
+"Commons Attribution and ShareAlike."
+msgstr ""
+"जो तस्वीरें आपने भेजि वो मुक्त लाइसेंस क्रिएटिव कॉमन्स रोपण और अलाइक के "
+"तहत प्रकाशित कर रहे हैं।"
+
+msgctxt "txtAllsent"
+msgid "Products sent"
+msgstr "उत्पाद भेज दिया"
+
+msgctxt "txtPalm"
+msgid "The product does not contain any palm oil"
+msgstr "उत्पाद में किसी भी तरह  का ताड़ का तेल शामिल नहीं है"
+
+msgctxt "txtBarcodeNotValid"
+msgid "Barcode not valid"
+msgstr "बारकोड मान्य नहीं"
+
+msgctxt "try_it_scan_now"
+msgid "Scan product"
+msgstr "उत्पाद  स्कैन कीजिए"
+
+msgctxt "share"
+msgid "Share"
+msgstr "शेयर"
+
+msgctxt "msg_share"
+msgid "Look at this product on Open Food Facts :"
+msgstr "Open Food Facts  पर इस उत्पाद को देखो:"
+
+msgctxt "create_account"
+msgid "Sign up"
+msgstr "साइन अप करें"
+
+msgctxt "home_drawer"
+msgid "Home"
+msgstr "मुख्य पृष्ठ"
+
+msgctxt "open_beauty_drawer"
+msgid "Open Beauty Facts"
+msgstr "Open Beauty Facts"
+
+msgctxt "open_food_drawer"
+msgid "Open Food Facts"
+msgstr ""
+
+msgctxt "search_drawer"
+msgid "Search"
+msgstr "ढूंढें"
+
+#, fuzzy
+msgctxt "search_by_barcode_drawer"
+msgid "Type barcode"
+msgstr "बारकोड के आधार पर ढूंढें"
+
+msgctxt "search_by_name_drawer"
+msgid "Search by name"
+msgstr "नाम से ढूंढें"
+
+#, fuzzy
+msgctxt "scan_search"
+msgid "Scan Barcode"
+msgstr "स्कैन"
+
+msgctxt "user_drawer"
+msgid "User"
+msgstr "उपयोगकर्ता"
+
+msgctxt "offline_edit_drawer"
+msgid "Offline edit"
+msgstr "ऑफ़लाइन संपादित"
+
+msgctxt "txt_anonymous"
+msgid "Anonymous"
+msgstr "अज्ञात"
+
+msgctxt "txt_product_not_found"
+msgid "Products not found"
+msgstr "उत्पाद नहीं मिला"
+
+msgctxt "delete_txt"
+msgid "Delete"
+msgstr "नष्ट करे"
+
+msgctxt "sign_in_drawer"
+msgid "Sign-in"
+msgstr "साइन इन करें"
+
+msgctxt "alert_drawer"
+msgid "Allergen alert"
+msgstr ""
+
+msgctxt "warning_allergens"
+msgid "Contains allergens"
+msgstr "एलरजेन शामिल है"
+
+msgctxt "title_dialog_alert"
+msgid "Add alert"
+msgstr "अलर्ट जोड़ें"
+
+msgctxt "warning_alert_data"
+msgid ""
+"Your allergies info will never be sent to the Open Food Facts server. "
+"Also, be careful that data may not be accurate, please double-check by "
+"yourself!"
+msgstr ""
+"आपकी एलर्जी की जानकारी Open Food Facts सर्वर के लिए कभी नहीं भेजा जा "
+"सक्ती। इसके अलावा, सावधान रहे  क्योंकि डेटा सही नहीं हो सकताअपने  इसलिये,"
+" आप कृपया दोहरी जांच कीजिए!"
+
+msgctxt "from_gallery"
+msgid "From gallery"
+msgstr "गैलरी से"
+
+msgctxt "product_sent"
+msgid "Product sent successfully"
+msgstr ""
+
+msgctxt "action_edit_product"
+msgid "Edit product"
+msgstr "उत्पाद संपादित करें"
+
+msgctxt "title_info_dialog"
+msgid "Information"
+msgstr "जानकारी"
+
+msgctxt "text_offline_info_dialog"
+msgid ""
+"You can scan products when you're offline to add them to Open Food Facts "
+"later. All the products you scan will appear here, and you'll be able to "
+"send them using the button below."
+msgstr ""
+"जब आप ऑफ़लाइन हो तब भी आप उत्पादों को स्कैन कर सकते हैं, ताकि उन्हें आप "
+"बाद में जोड़ सके। आपके सभी स्कैन कि हुए  उत्पाद यहाँ दिखाई देगी, और आप "
+"नीचे दिए गए बटन का उपयोग कर उन्हें भेजने के लिए सक्षम हो जाएगा।"
+
+msgctxt "permission_camera"
+msgid "Camera permission is needed to scan barcodes and take pictures."
+msgstr "कैमरा अनुमति की जरूरत है बारकोड को स्कैन और तस्वीरें लेने के लिए"
+
+msgctxt "permission_title"
+msgid "Permission information"
+msgstr "अनुमति जानकारी"
+
+msgctxt "permission_denied"
+msgid "Please activate permission in the settings"
+msgstr "सेटिंग्स में अनुमति सक्रिय करें"
+
+msgctxt "permission_storage"
+msgid "Storage permission is needed to take or select pictures"
+msgstr "स्टोरेज अनुमति ति की जरूरत है चित्रों का चयन करने की जरूरत है"
+
+msgctxt "info_download_data"
+msgid ""
+"You need to download some data to get this functionality working, please "
+"press yes to download it."
+msgstr ""
+"आपको इस कार्यक्षमता काम पाने के लिए कुछ डेटा डाउनलोड करने की जरूरत है, "
+"कृपया इसे डाउनलोड करने के लिए हाँ दबाएँ।"
+
+msgctxt "info_download_data_connection"
+msgid ""
+"You need to download some data to get this functionality working. Please "
+"activate internet connection."
+msgstr ""
+"आप इस कार्यक्षमता काम पाने के लिए कुछ डेटा डाउनलोड करने के लिए की जरूरत "
+"है। इंटरनेट कनेक्शन सक्रिय करें।"
+
+msgctxt "msg_input_empty"
+msgid "Please fill the fields first."
+msgstr "कृपया फ़ील्ड पहले भरें।"
+
+msgctxt "new_offline_info"
+msgid ""
+"Please take a picture of the product, ingredients, nutrition facts table "
+"and any other information on the label. Thank you!"
+msgstr ""
+"कृपया उत्पाद, सामग्री, पोषण तथ्यों की सूची और लेबल पर किसी भी अन्य "
+"जानकारी की एक तस्वीर ले लो। धन्यवाद!"
+
+#. Strings related to login
+msgctxt "error_invalid_password"
+msgid "The password needs to be a least 6 characters long."
+msgstr "पासवर्ड कम से कम 6 अक्षर लंबा होने की जरूरत है।"
+
+msgctxt "error_field_required"
+msgid "This field is required."
+msgstr "यह क्षेत्र आवश्यक है"
+
+msgctxt "action_preferences"
+msgid "Preferences"
+msgstr "प्राथमिकताएँ"
+
+msgctxt "prefs_scan_startup"
+msgid "Scan on startup"
+msgstr "स्टार्टअप पर स्कैन करें"
+
+msgctxt "prefs_scan_startup_summary"
+msgid "This option if selected will start scan when app is opened."
+msgstr ""
+"इस विकल्प का चयन किया है, तो जब एप्लिकेशन को खोला जाता है स्कैन शुरू कर "
+"देंगे।"
+
+msgctxt "prefs_power_mode"
+msgid "Power mode scan"
+msgstr "पावर मोड स्कैन"
+
+msgctxt "prefs_power_mode_summary"
+msgid ""
+"Quickly scan products in a supermarket to see which ones are not in the "
+"database."
+msgstr ""
+
+msgctxt "prefs_language"
+msgid "Language"
+msgstr "भाषा"
+
+msgctxt "prefs_language_summary"
+msgid "Change language"
+msgstr "भाषा बदले"
+
+msgctxt "scan_history_drawer"
+msgid "History"
+msgstr "वृत्तांत"
+
+msgctxt "clear_history"
+msgid "Clear history"
+msgstr "इतिहास मिटा दें"
+
+msgctxt "title_clear_history_dialog"
+msgid "Clear"
+msgstr "खाली करें"
+
+msgctxt "text_clear_history_dialog"
+msgid "Do you want to clear all scan history?"
+msgstr "आप सभी स्कैन इतिहास साफ करना चाहते हैं?"
+
+msgctxt "export_csv_history"
+msgid "Export CSV"
+msgstr "CSV  निर्यात करें"
+
+msgctxt "txt_exporting_history"
+msgid "Exporting history..."
+msgstr "इतिहास निर्यात ..."
+
+msgctxt "txt_history_exported"
+msgid "History exported"
+msgstr "इतिहास का निर्यात"
+
+msgctxt "permision_write_external_storage"
+msgid "Write external storage permission is needed to export history."
+msgstr "लिखें बाह्य भंडारण की अनुमति इतिहास को निर्यात करने की जरूरत है।"
+
+msgctxt "txt_nutrition_not_found"
+msgid "N/A"
+msgstr "लागू नहीं"
+
+#. Nutrition info tab
+msgctxt "nutrition_carbohydrate"
+msgid "Carbohydrate"
+msgstr "कार्बोहाइड्रेट"
+
+msgctxt "nutrition_carbohydrate_short_name"
+msgid "Carbohydrate (g)"
+msgstr "कार्बोहाइड्रेट(g)"
+
+msgctxt "nutrition_cholesterol"
+msgid "Cholesterol"
+msgstr "कोलेस्ट्रॉल"
+
+msgctxt "nutrition_cholesterol_short_name"
+msgid "Cholesterol (g)"
+msgstr "कोलेस्ट्रॉल(जी)"
+
+msgctxt "nutrition_energy"
+msgid "Energy"
+msgstr "ऊर्जा"
+
+msgctxt "nutrition_energy_short_name"
+msgid "Energy"
+msgstr "ऊर्जा"
+
+msgctxt "nutrition_fat"
+msgid "Fat"
+msgstr "वसा"
+
+msgctxt "nutrition_fat_short_name"
+msgid "Fat (g)"
+msgstr "वसा(जी)"
+
+msgctxt "nutrition_fiber"
+msgid "Dietary fiber"
+msgstr "फाइबर आहार"
+
+msgctxt "nutrition_fiber_short_name"
+msgid "Dietary fiber (g)"
+msgstr "फाइबर आहार(जी)"
+
+msgctxt "nutrition_header"
+msgid "Nutrition facts"
+msgstr "पोषण तथ्य"
+
+msgctxt "nutrition_no_data_message"
+msgid "No data is available for this product"
+msgstr "इस उत्पाद के लिए कोई डेटा उपलब्ध नहीं है"
+
+msgctxt "nutrition_per_quantity"
+msgid "For 100g/100ml"
+msgstr "100g / 100 एमएल के लिए"
+
+msgctxt "nutrition_proteins"
+msgid "Proteins"
+msgstr "प्रोटीन"
+
+msgctxt "nutrition_proteins_short_name"
+msgid "Proteins (g)"
+msgstr "प्रोटीन(g)"
+
+msgctxt "nutrition_salt"
+msgid "Salt"
+msgstr "नमक"
+
+msgctxt "nutrition_salt_short_name"
+msgid "Salt (g)"
+msgstr "नमक(g)"
+
+msgctxt "nutrition_satured_fat"
+msgid "Satured fat"
+msgstr "संतृप्त वसा"
+
+msgctxt "nutrition_satured_fat_short_name"
+msgid "Satured fat (g)"
+msgstr "संतृप्त वसा(g)"
+
+msgctxt "nutrition_serving"
+msgid "Per serving"
+msgstr "प्रत्येक हिस्सा"
+
+msgctxt "nutrition_serving_size"
+msgid "Serving size :"
+msgstr "सेवारत माप:"
+
+msgctxt "nutrition_sodium"
+msgid "Sodium"
+msgstr "सोडियम"
+
+msgctxt "nutrition_sodium_short_name"
+msgid "Sodium (g)"
+msgstr "सोडियम(g)"
+
+msgctxt "nutrition_sugars"
+msgid "Sugars"
+msgstr "शुगर्स"
+
+msgctxt "nutrition_sugars_short_name"
+msgid "Sugars (g)"
+msgstr "शुगर्स(g)"
+
+msgctxt "nutrition_trans_fat"
+msgid "Trans fat"
+msgstr "ट्रांस वसा"
+
+msgctxt "nutrition_trans_fat_short_name"
+msgid "Trans fat (g)"
+msgstr "ट्रांस वसा (g)"
+
+msgctxt "nutriment_serving_size"
+msgid "Per portion :"
+msgstr "प्रति हिस्से:"
+
+msgctxt "action_manage_account"
+msgid "Manage account"
+msgstr "खाते का प्रबंधन"
+
+msgctxt "action_contributes"
+msgid "Your contributions"
+msgstr "आपका योगदान"
+
+msgctxt "logout_drawer"
+msgid "Logout"
+msgstr "लॉग आउट करें"
+
+msgctxt "contribution_without_account"
+msgid "You can sign-in or create an account to keep your contributions"
+msgstr ""
+"आप साइन-इन कर सकते हैं या अपने योगदान रखने के लिए एक खाता बनाने\r\n"
+"प्रसंग:"
+
+msgctxt "textCarbonFootprint"
+msgid "Carbon footprint / CO2 emissions: "
+msgstr "कार्बन पदचिह्न / CO2 उत्सर्जन: "
+
+msgctxt "txtDialogPowerMode"
+msgid "Quick view"
+msgstr ""
+
+msgctxt "txtSeeMore"
+msgid "See more"
+msgstr ""
+
+msgctxt "action_search"
+msgid "Search"
+msgstr "ढूंढें"
+
+msgctxt "search_hint"
+msgid "Search a product"
+msgstr ""
+
+msgctxt "number_of_results"
+msgid "Number of results :"
+msgstr ""
+
+msgctxt "txt_no_results"
+msgid "No results found"
+msgstr "कोई परिणाम नहीं मिला"
+
+msgctxt "nutrition_lactose"
+msgid "Lactose"
+msgstr ""
+
+msgctxt "nutrition_casein"
+msgid "Casein"
+msgstr ""
+
+msgctxt "nutrition_maltodextrins"
+msgid "Maltodextrins"
+msgstr ""
+
+msgctxt "nutrition_serum_proteins"
+msgid "Serum Proteins"
+msgstr ""
+
+msgctxt "nutrition_nucleotides"
+msgid "Nucleotides"
+msgstr ""
+
+msgctxt "for_100g"
+msgid "For 100 g"
+msgstr ""
+
+msgctxt "serving"
+msgid "Per serving"
+msgstr ""
+
+msgctxt "minerals"
+msgid "Minerals"
+msgstr ""
+
+msgctxt "nutrition_calcium"
+msgid "Calcium"
+msgstr "केल्शियम"
+
+msgctxt "nutrition_potassium"
+msgid "Potassium"
+msgstr "पोटेशियम"
+
+msgctxt "nutrition_chlore"
+msgid "Chlorine"
+msgstr ""
+
+msgctxt "nutrition_magnesium"
+msgid "Magnesium"
+msgstr "मैग्नीशियम"
+
+msgctxt "nutrition_taurine"
+msgid "Taurine"
+msgstr ""
+
+msgctxt "nutrition_monounsaturatedFat"
+msgid "Mono unsaturated fat"
+msgstr ""
+
+msgctxt "nutrition_polyunsaturatedFat"
+msgid "Poly unsaturated fat"
+msgstr ""
+
+msgctxt "nutrition_omega3"
+msgid "Omega 3"
+msgstr ""
+
+msgctxt "nutrition_omega6"
+msgid "Omega 6"
+msgstr ""
+
+msgctxt "nutrition_omega9"
+msgid "Omega 9"
+msgstr ""
+
+msgctxt "nutrition_sucrose"
+msgid "Sucrose"
+msgstr ""
+
+msgctxt "nutrition_glucose"
+msgid "Glucose"
+msgstr ""
+
+msgctxt "nutrition_fructose"
+msgid "Fructose"
+msgstr ""
+
+msgctxt "nutrition_maltose"
+msgid "Maltose"
+msgstr ""
+
+msgctxt "nutrition_alcohol"
+msgid "Alcohol"
+msgstr ""
+
+msgctxt "nutrition_vitamins"
+msgid "Vitamins"
+msgstr ""
+
+msgctxt "vitamin_a"
+msgid "Vitamin A"
+msgstr ""
+
+msgctxt "vitamin_d"
+msgid "Vitamin d"
+msgstr ""
+
+msgctxt "vitamin_e"
+msgid "Vitamin e"
+msgstr ""
+
+msgctxt "vitamin_k"
+msgid "Vitamin k"
+msgstr ""
+
+msgctxt "vitamin_c"
+msgid "Vitamin C"
+msgstr ""
+
+msgctxt "vitamin_b1"
+msgid "Vitamin B1"
+msgstr ""
+
+msgctxt "vitamin_b2"
+msgid "Vitamin B2"
+msgstr ""
+
+msgctxt "vitamin_pp"
+msgid "Vitamin PP"
+msgstr ""
+
+msgctxt "vitamin_b6"
+msgid "Vitamin B6"
+msgstr ""
+
+msgctxt "vitamin_b9"
+msgid "Vitamin B9"
+msgstr ""
+
+msgctxt "vitamin_b12"
+msgid "Vitamin B12"
+msgstr ""
+
+msgctxt "biotin"
+msgid "Biotin"
+msgstr ""
+
+msgctxt "pantothenic_acid"
+msgid "Pantothenic acid"
+msgstr ""
+
+msgctxt "nutrition_minerals"
+msgid "Minerals"
+msgstr ""
+
+msgctxt "silica"
+msgid "Silica"
+msgstr ""
+
+msgctxt "bicarbonate"
+msgid "Bicarbonate"
+msgstr ""
+
+msgctxt "potassium"
+msgid "Potassium"
+msgstr "पोटेशियम"
+
+msgctxt "chloride"
+msgid "Chloride"
+msgstr ""
+
+msgctxt "calcium"
+msgid "Calcium"
+msgstr "केल्शियम"
+
+msgctxt "phosphorus"
+msgid "Phosphorus"
+msgstr "फॉस्फोरस"
+
+msgctxt "iron"
+msgid "Iron"
+msgstr "लोहा"
+
+msgctxt "magnesium"
+msgid "Magnesium"
+msgstr "मैग्नीशियम"
+
+msgctxt "zinc"
+msgid "Zinc"
+msgstr "ज़िंक"
+
+msgctxt "copper"
+msgid "Copper"
+msgstr "तांबा"
+
+msgctxt "manganese"
+msgid "Manganese"
+msgstr "मैंगनीज़"
+
+msgctxt "fluoride"
+msgid "Fluoride"
+msgstr ""
+
+msgctxt "selenium"
+msgid "Selenium"
+msgstr "सेलेनियम"
+
+msgctxt "chromium"
+msgid "Chromium"
+msgstr ""
+
+msgctxt "molybdenum"
+msgid "Molybdenum"
+msgstr "मॉलीब्डेनम"
+
+msgctxt "iodine"
+msgid "Iodine"
+msgstr "आयोडीन"
+
+msgctxt "caffeine"
+msgid "Caffeine"
+msgstr ""
+
+msgctxt "taurine"
+msgid "Taurine"
+msgstr ""
+
+msgctxt "ph"
+msgid "Ph"
+msgstr ""
+
+msgctxt "fruits_vegetables_nuts"
+msgid "Fruits, vegetables, nuts"
+msgstr ""
+
+msgctxt "collagen_meat_protein_ratio"
+msgid "Collagen meat protein ratio"
+msgstr ""
+
+msgctxt "cocoa"
+msgid "Cocoa"
+msgstr ""
+
+msgctxt "chlorophyl"
+msgid "Chlorophyl"
+msgstr ""
+
+msgctxt "take_picture_ingredients"
+msgid "Take a picture of the ingredients"
+msgstr ""
+
+msgctxt "take_picture_front"
+msgid "Take a picture of the front"
+msgstr ""
+
+msgctxt "take_picture_nutrition_table"
+msgid "Take a picture of the nutrition table"
+msgstr ""
+
+msgctxt "take_more_pictures"
+msgid "Take more pictures"
+msgstr ""
+

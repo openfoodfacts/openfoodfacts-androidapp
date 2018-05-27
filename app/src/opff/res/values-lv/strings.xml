@@ -11,26 +11,5 @@
   <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
-  <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-  <string name="txtHome">Open Food Facts ir atvērta datu bāze ar edienu produktiem un to sastāvdaļām, alergēniem, uztura faktiem un informāciju par produktiem, ko varam atrast produktu marķējumos.</string>
-  <string name="slide_1_title">Veicināt dzīvnieku barības pārredzamību</string>
-  <string name="slide_1_desc">Skenējiet produktus, uzņemiet attēlus, veiciet pārredzamību</string>
-  <string name="slide_2_title">Iegūstiet faktus</string>
-  <string name="slide_2_desc">Plaša informācija par skenēto produktu brīvi pieejama jums</string>
-  <string name="slide_3_title">Sekojiet līdzi produktiem kurus izmantojat</string>
-  <string name="slide_3_desc">Visi kosmētikas izmantojat vienu parocīgiem sarakstu var eksportēt</string>
-  <string name="slide_4_title">Darbojas bezsaistē</string>
-  <string name="slide_4_desc">Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma</string>
-  <string name="txtDialogsContent">Skenētais produkts vēl nav pieejams Open Food Facts sarakstā. Lūdzu, pievienojiet to.</string>
-  <string name="txtDialogsContentPowerMode">Jūsu skenētais produkts jau pastāvOpen Food Facts.</string>
-  <string name="msg_share">Apskatiet šo produktu, izmantojot Open Food Facts:</string>
-  <string name="not_support_books">Open Food Facts pašlaik neatbalsta grāmatas</string>
-  <string name="txt_broaden_search">- paplašināt meklēšanu \ n- skenēt un pievienot to Open Food Facts</string>
-  <string name="Donation">Noklikšķiniet šeit, lai ziedotu Open Food Facts</string>
-  <string name="translate_help_title">Palīdziet tulkot \"open Food Facts\"</string>
-  <string name="translate_help_summary">Iegūstiet Open Food Facts savā valodāaaaaaa a- tehniskās zināšanas nav nepieciešamas</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-  <string name="warning_alert_data">Jūsu alerģiju informācija nekad netiks nosūtīta uz Open Food Facts serveri. Uzmanieties jo pieejamie dati par produktu var būt neprecīzi tāpēc pārliecinieties, pirms pieņemiet lēmumus! </string>
-  <!-- OPFF tagline in different languages -->
-  <string name="tagline">bezmaksas dzīvnieku barības produktu datu bāze</string>
+  <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
 </resources>

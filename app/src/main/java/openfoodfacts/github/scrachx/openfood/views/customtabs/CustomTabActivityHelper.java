@@ -11,7 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package org.openfoodfacts.scanner.views.customtabs;
+package openfoodfacts.github.scrachx.openfood.views.customtabs;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -114,8 +114,9 @@ public class CustomTabActivityHelper implements ServiceConnectionCallback {
         if (mClient == null) return false;
 
         CustomTabsSession session = getSession();
-        return session != null && session.mayLaunchUrl(uri, extras, otherLikelyBundles);
+        if (session == null) return false;
 
+        return session.mayLaunchUrl(uri, extras, otherLikelyBundles);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.utils;
+package openfoodfacts.github.scrachx.openfood.utils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

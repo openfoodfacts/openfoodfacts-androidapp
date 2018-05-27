@@ -1,0 +1,1365 @@
+# Hungarian translation for openfoodfacts
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the openfoodfacts
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  openfoodfacts\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2017-03-19 18:47+0100\n"
+"PO-Revision-Date: 2017-01-23 04:54+0000\n"
+"Last-Translator: eaposztrof <e@eaposztrof.com>\n"
+"Language: hu\n"
+"Language-Team: Hungarian <hu@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(((n == 1)) ? 0 : 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.3\n"
+
+msgctxt "hello_world"
+msgid "Hello world!"
+msgstr "Helló világ!"
+
+msgctxt "action_settings"
+msgid "Settings"
+msgstr "Beállítások"
+
+msgctxt "action_about"
+msgid "About"
+msgstr "Névjegy"
+
+msgctxt "action_discover"
+msgid "Discover"
+msgstr "Feltárás"
+
+msgctxt "contribute"
+msgid "How to contribute"
+msgstr "Hogyan segíthet"
+
+msgctxt "action_find"
+msgid "Find"
+msgstr "Keres"
+
+msgctxt "text_barcode"
+msgid "Type the barcode :"
+msgstr "Vonalkód beírása"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:0"
+msgid "Summary"
+msgstr "Áttekintés"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:1"
+msgid "Ingredients"
+msgstr "Össztevők"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:2"
+msgid "Nutrition"
+msgstr "Tápanyag"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:3"
+msgid "Nutrition Table"
+msgstr "Tápanyag táblázat"
+
+#. Text units
+msgctxt "units_array:0"
+msgid "g"
+msgstr "g"
+
+#. Text units
+msgctxt "units_array:1"
+msgid "mg"
+msgstr "mg"
+
+#. Text units
+msgctxt "units_array:2"
+msgid "kg"
+msgstr "kg"
+
+#. Text units
+msgctxt "units_array:3"
+msgid "l"
+msgstr "l"
+
+#. Text units
+msgctxt "units_array:4"
+msgid "ml"
+msgstr "ml"
+
+#. Text units
+msgctxt "units_array:5"
+msgid "cl"
+msgstr ""
+
+#. Text units
+msgctxt "units_array:6"
+msgid "fl oz"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:0"
+msgid "en"
+msgstr "en"
+
+#. Text units
+msgctxt "lang_array:1"
+msgid "fr"
+msgstr "fr"
+
+#. Text units
+msgctxt "lang_array:2"
+msgid "es"
+msgstr "es"
+
+#. Text units
+msgctxt "lang_array:3"
+msgid "it"
+msgstr "it"
+
+#. Text units
+msgctxt "lang_array:4"
+msgid "de"
+msgstr "de"
+
+#. Text units
+msgctxt "lang_array:5"
+msgid "ja"
+msgstr "ja"
+
+#. Text units
+msgctxt "lang_array:6"
+msgid "ru"
+msgstr "ru"
+
+#. Text units
+msgctxt "lang_array:7"
+msgid "pt"
+msgstr "pt"
+
+#. Text units
+msgctxt "lang_array:8"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:9"
+msgid "my"
+msgstr "my"
+
+#. Text units
+msgctxt "lang_array:10"
+msgid "kk"
+msgstr "kk"
+
+#. Text units
+msgctxt "lang_array:11"
+msgid "hy"
+msgstr "hy"
+
+#. Text units
+msgctxt "lang_array:12"
+msgid "el"
+msgstr "el"
+
+#. Text units
+msgctxt "lang_array:13"
+msgid "he"
+msgstr "he"
+
+#. Text units
+msgctxt "lang_array:14"
+msgid "gl"
+msgstr "gl"
+
+#. Text units
+msgctxt "lang_array:15"
+msgid "ca"
+msgstr "ca"
+
+#. Text units
+msgctxt "lang_array:16"
+msgid "cs"
+msgstr "cs"
+
+#. Text units
+msgctxt "lang_array:17"
+msgid "ar"
+msgstr "ar"
+
+#. Text units
+msgctxt "lang_array:18"
+msgid "fi"
+msgstr "fi"
+
+#. Text units
+msgctxt "lang_array:19"
+msgid "hi"
+msgstr "hi"
+
+#. Text units
+msgctxt "lang_array:20"
+msgid "kab"
+msgstr "kab"
+
+#. Text units
+msgctxt "lang_array:21"
+msgid "ko"
+msgstr "ko"
+
+#. Text units
+msgctxt "lang_array:22"
+msgid "lv"
+msgstr "lv"
+
+#. Text units
+msgctxt "lang_array:23"
+msgid "nl"
+msgstr "nl"
+
+#. Text units
+msgctxt "lang_array:24"
+msgid "pt-rBR"
+msgstr "pt-rBR"
+
+#. Text units
+msgctxt "lang_array:25"
+msgid "ro"
+msgstr "ro"
+
+#. Text units
+msgctxt "lang_array:26"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:27"
+msgid "zh"
+msgstr "zh"
+
+#. Text units
+msgctxt "lang_array:28"
+msgid "nb"
+msgstr "nb"
+
+#. Text units
+msgctxt "lang_array:29"
+msgid "da"
+msgstr "da"
+
+#. Text units
+msgctxt "lang_array:30"
+msgid "zh-rCN"
+msgstr "zh-rCN"
+
+msgctxt "lang_label_array:0"
+msgid "English"
+msgstr "Angol"
+
+msgctxt "lang_label_array:1"
+msgid "French"
+msgstr "Francia"
+
+msgctxt "lang_label_array:2"
+msgid "Spanish"
+msgstr "Spanyol"
+
+msgctxt "lang_label_array:3"
+msgid "Italian"
+msgstr "Olasz"
+
+msgctxt "lang_label_array:4"
+msgid "German"
+msgstr "Német"
+
+msgctxt "lang_label_array:5"
+msgid "Japanese"
+msgstr "Japán"
+
+msgctxt "lang_label_array:6"
+msgid "Russian"
+msgstr "Orosz"
+
+msgctxt "lang_label_array:7"
+msgid "Portuguese"
+msgstr "Portugál"
+
+msgctxt "lang_label_array:8"
+msgid "Swedish"
+msgstr "Svéd"
+
+msgctxt "lang_label_array:9"
+msgid "Burmese"
+msgstr "Burmai"
+
+msgctxt "lang_label_array:10"
+msgid "Kazakh"
+msgstr "Kazah"
+
+msgctxt "lang_label_array:11"
+msgid "Armenian"
+msgstr "Örmény"
+
+msgctxt "lang_label_array:12"
+msgid "Greek"
+msgstr "Görög"
+
+msgctxt "lang_label_array:13"
+msgid "Hebrew"
+msgstr "Héber"
+
+msgctxt "lang_label_array:14"
+msgid "Galician"
+msgstr "Galíciai"
+
+msgctxt "lang_label_array:15"
+msgid "Catalan"
+msgstr "Katalán"
+
+msgctxt "lang_label_array:16"
+msgid "Czech"
+msgstr "Cseh"
+
+msgctxt "lang_label_array:17"
+msgid "Arabic"
+msgstr "Arab"
+
+msgctxt "lang_label_array:18"
+msgid "Finnish"
+msgstr "Finn"
+
+msgctxt "lang_label_array:19"
+msgid "Hindi"
+msgstr "Hindi"
+
+msgctxt "lang_label_array:20"
+msgid "Kabyle"
+msgstr "Kabije"
+
+msgctxt "lang_label_array:21"
+msgid "Korean"
+msgstr "Kóreai"
+
+msgctxt "lang_label_array:22"
+msgid "Latvian"
+msgstr "Lett"
+
+msgctxt "lang_label_array:23"
+msgid "Dutch"
+msgstr "Holland"
+
+msgctxt "lang_label_array:24"
+msgid "Brazilian portuguese"
+msgstr "Brazil portugál"
+
+msgctxt "lang_label_array:25"
+msgid "Romanian"
+msgstr "Román"
+
+msgctxt "lang_label_array:26"
+msgid "Swedish"
+msgstr "Svéd"
+
+msgctxt "lang_label_array:27"
+msgid "Chinese"
+msgstr "Kínai"
+
+msgctxt "lang_label_array:28"
+msgid "Norwegian (Bokmal)"
+msgstr "Norvég (Bokmål)"
+
+msgctxt "lang_label_array:29"
+msgid "Danish"
+msgstr "Dán"
+
+msgctxt "lang_label_array:30"
+msgid "Simplified Chinese"
+msgstr "Egyszerűsített kínai"
+
+msgctxt "images_array:0"
+msgid "Default"
+msgstr "Alapértelmezett"
+
+msgctxt "images_array:1"
+msgid "Nutrition"
+msgstr "Tápanyag"
+
+msgctxt "images_array:2"
+msgid "Ingredients"
+msgstr "Össztevők"
+
+#. Content Description
+msgctxt "search_button"
+msgid "Search"
+msgstr "Keres"
+
+msgctxt "no_products"
+msgid "Products not found"
+msgstr "Hiányzó termékek"
+
+msgctxt "desc_list_item_icon"
+msgid "Item Icon"
+msgstr "Termék ikon"
+
+msgctxt "alert_dialog_warning_title"
+msgid "Warning"
+msgstr "Figyelem"
+
+msgctxt "alert_dialog_warning_msg_user"
+msgid "User/password has changed, please update information"
+msgstr "Felhasználó/jelszó megváltozott, frissítse az információt"
+
+msgctxt "alert_dialog_product_error_msg"
+msgid "Product not found, please try again"
+msgstr "Termék nem található, próbálja újra"
+
+msgctxt "toast_retrieving"
+msgid "Loading..."
+msgstr "Betöltés…"
+
+msgctxt "txtBarcode"
+msgid "Barcode :"
+msgstr "Vonalkód:"
+
+msgctxt "txtQuantity"
+msgid "Quantity :"
+msgstr "Mennyiség:"
+
+msgctxt "txtPackaging"
+msgid "Packaging :"
+msgstr "Csomagolás:"
+
+msgctxt "txtBrands"
+msgid "Brands :"
+msgstr "Márkák:"
+
+msgctxt "txtCategories"
+msgid "Categories :"
+msgstr "Kategóriák:"
+
+msgctxt "txtLabels"
+msgid "Labels, certifications, awards :"
+msgstr "Címkék, tanúsítványok, kitüntetések:"
+
+msgctxt "txtManufacturing"
+msgid "Manufacturing or processing places :"
+msgstr "Gyártás, vagy feldolgozás helye:"
+
+msgctxt "txtIngredientsOrigins"
+msgid "Origin of ingredients :"
+msgstr "Összetevők származása:"
+
+msgctxt "txtCity"
+msgid "City, state and country where purchased :"
+msgstr "Vásárlás helye (város, állam vagy ország):"
+
+msgctxt "txtStores"
+msgid "Stores :"
+msgstr "Boltok:"
+
+msgctxt "txtCountries"
+msgid "Countries where sold :"
+msgstr "Országokban kapható:"
+
+msgctxt "txtIngredients"
+msgid "Ingredients list :"
+msgstr "Összetétel listája:"
+
+msgctxt "txtSubstances"
+msgid "Substances or products causing allergies or intolerances :"
+msgstr "Allergén, vagy irritáló termékek, alkotóanyagok:"
+
+msgctxt "txtAdditives"
+msgid "Additives :"
+msgstr "Adalékok:"
+
+msgctxt "txtTraces"
+msgid "Traces :"
+msgstr "Nyomokban tartalmazhat:"
+
+msgctxt "txtMayBeFromPalmOilProduct"
+msgid "Ingredients that may be from palm oil :"
+msgstr "Lehetséges pálmaolaj származék összetevők:"
+
+msgctxt "txtPalmOilProduct"
+msgid "Ingredients from palm oil :"
+msgstr "Pálmaolaj származék összetevők:"
+
+msgctxt "txtServingSize"
+msgid "Serving size :"
+msgstr "Egy adag:"
+
+msgctxt "txtNutrientLevel100g"
+msgid "Nutrient levels for 100g :"
+msgstr "Tápanyagszint 100 grammban:"
+
+msgctxt "txtNutritionLevelLow"
+msgid "in low quantity"
+msgstr ""
+
+msgctxt "txtNutritionLevelModerate"
+msgid "in moderate quantity"
+msgstr ""
+
+msgctxt "txtNutritionLevelHigh"
+msgid "in high quantity"
+msgstr ""
+
+msgctxt "txtLogin"
+msgid "Login :"
+msgstr "Bejelentkezés:"
+
+msgctxt "txtPass"
+msgid "Password :"
+msgstr "Jelszó:"
+
+msgctxt "txtTitleHome"
+msgid "Open your food and know what you eat"
+msgstr "Tedd nyílttá ételed és tudd mit eszel"
+
+msgctxt "txtSave"
+msgid "Save"
+msgstr "Mentés"
+
+msgctxt "txtSignIn"
+msgid "Sign in"
+msgstr "Bejelentkezés"
+
+msgctxt "txtUser"
+msgid "User panel"
+msgstr "Felhasználói felület"
+
+msgctxt "txtToastSaved"
+msgid "User saved"
+msgstr "Felhasználó mentve"
+
+msgctxt "txtSalt"
+msgid "Salt"
+msgstr ""
+
+msgctxt "txtFat"
+msgid "Fat"
+msgstr ""
+
+msgctxt "txtSugars"
+msgid "Sugars"
+msgstr ""
+
+msgctxt "txtSaturatedFat"
+msgid "Satured fat"
+msgstr ""
+
+msgctxt "hintBarcode"
+msgid "Barcode"
+msgstr "Vonalkód"
+
+msgctxt "hintLogin"
+msgid "Login"
+msgstr "Bejelentkezés"
+
+msgctxt "hintPass"
+msgid "Password"
+msgstr "Jelszó"
+
+msgctxt "errorLogin"
+msgid "Login or password error"
+msgstr "Bejelentkezési hiba"
+
+msgctxt "errorWeb"
+msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgstr "Internet csatlakozási problémák."
+
+msgctxt "txtInfoLoginOk"
+msgid "User saved"
+msgstr "Felhasználó mentve"
+
+msgctxt "txtInfoLoginNo"
+msgid "User not saved"
+msgstr "Felhasználó nem lett mentve"
+
+msgctxt "txtDialogsTitle"
+msgid "Information"
+msgstr "Információ"
+
+msgctxt "txtDialogsContent"
+msgid ""
+"The product you scanned does not exist yet in Open Food Facts. Please add"
+" it."
+msgstr ""
+
+msgctxt "txtDialogsContentPowerMode"
+msgid "The product you scanned does already exist in Open Food Facts."
+msgstr "Ez a termék megtalálható az Open Food Facts adatbázisában."
+
+msgctxt "txtDialogsContentSend"
+msgid "Do you want send the saved products to the database?"
+msgstr "Feltöltjük a mentett terméket az adatbázisba?"
+
+msgctxt "txtYes"
+msgid "Yes"
+msgstr "Igen"
+
+msgctxt "txtNo"
+msgid "No"
+msgstr "Nem"
+
+msgctxt "hintNameProduct"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "hintEnergy"
+msgid "Energy in kJ per serving"
+msgstr "Energia kJ-ban adagonként"
+
+msgctxt "hintEnergyUnit"
+msgid "Energy unit"
+msgstr "Energia egység"
+
+msgctxt "hintWeight"
+msgid "Weight"
+msgstr "Tömeg"
+
+msgctxt "hintStores"
+msgid "Store"
+msgstr "Bolt"
+
+msgctxt "hintBrand"
+msgid "Brand"
+msgstr "Márka"
+
+msgctxt "txtTakePicture"
+msgid "Take picture"
+msgstr "Fotó készítése"
+
+msgctxt "txtSendAll"
+msgid "Upload all"
+msgstr "Összes feltöltése"
+
+msgctxt "txtNoData"
+msgid "No data"
+msgstr "Nincs adat"
+
+msgctxt "txtPictureNeeded"
+msgid "Please take a picture first"
+msgstr "Fotó szükséges"
+
+msgctxt "toastSending"
+msgid "Uploading..."
+msgstr "Feltöltés..."
+
+msgctxt "dataSaved"
+msgid "Saved locally on your device"
+msgstr "Elmentve az eszközre"
+
+msgctxt "txtInfoAddUser"
+msgid "Please enter your login and password"
+msgstr "Felhasználónév és jelszó megadása"
+
+msgctxt "txtDataUpdated"
+msgid "Data updated"
+msgstr "Adatok frissítve"
+
+msgctxt "txtLoading"
+msgid "Loading..."
+msgstr "Betöltés…"
+
+msgctxt "txtDialogsContentDelete"
+msgid "Do you want to delete this draft?"
+msgstr "Piszkozat törlése?"
+
+msgctxt "txtDialogsContentInfoSave"
+msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr ""
+"A termék el lett mentve az eszközre, szerkeszthető az Offline Szerkesztés"
+" menüből"
+
+msgctxt "txtBarcodeRequire"
+msgid "Barcode required"
+msgstr "Vonalkód szükséges"
+
+msgctxt "txtOk"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "txtContentDialogUploading"
+msgid "Please don't exit during the process..."
+msgstr "Folyamatban... NE lépjen ki."
+
+msgctxt "txtAbout"
+msgid ""
+"The pictures you send are published under the free licence Creative "
+"Commons Attribution and ShareAlike."
+msgstr ""
+"A képek Creative Commons Nevezd meg és Így add tovább szabad licenc alatt"
+" kerülnek elküldésre"
+
+msgctxt "txtAllsent"
+msgid "Products sent"
+msgstr "Termék elküldve"
+
+msgctxt "txtPalm"
+msgid "The product does not contain any palm oil"
+msgstr "a termék ne tartalmaz pálmaolajat"
+
+msgctxt "txtBarcodeNotValid"
+msgid "Barcode not valid"
+msgstr "Helytelen vonalkód"
+
+msgctxt "try_it_scan_now"
+msgid "Scan product"
+msgstr "Termék beolvasása"
+
+msgctxt "share"
+msgid "Share"
+msgstr "Megosztás"
+
+msgctxt "msg_share"
+msgid "Look at this product on Open Food Facts :"
+msgstr "Termék keresése az Open Food Facts adatbázisban:"
+
+msgctxt "create_account"
+msgid "Sign up"
+msgstr "Regisztráció"
+
+msgctxt "home_drawer"
+msgid "Home"
+msgstr "Kezdőlap"
+
+msgctxt "open_beauty_drawer"
+msgid "Open Beauty Facts"
+msgstr "Open Beauty Facts (Nyílt Szépség Tények)"
+
+msgctxt "open_food_drawer"
+msgid "Open Food Facts"
+msgstr ""
+
+msgctxt "search_drawer"
+msgid "Search"
+msgstr "Keres"
+
+#, fuzzy
+msgctxt "search_by_barcode_drawer"
+msgid "Type barcode"
+msgstr "Keresés vonalkód alapján"
+
+msgctxt "search_by_name_drawer"
+msgid "Search by name"
+msgstr "Keresés név szerint"
+
+#, fuzzy
+msgctxt "scan_search"
+msgid "Scan Barcode"
+msgstr "Beolvasás"
+
+msgctxt "user_drawer"
+msgid "User"
+msgstr "Felhasználó"
+
+msgctxt "offline_edit_drawer"
+msgid "Offline edit"
+msgstr "Offline szerkesztés"
+
+msgctxt "txt_anonymous"
+msgid "Anonymous"
+msgstr "Anonymous"
+
+msgctxt "txt_product_not_found"
+msgid "Products not found"
+msgstr "Hiányzó termékek"
+
+msgctxt "delete_txt"
+msgid "Delete"
+msgstr "Törlés"
+
+msgctxt "sign_in_drawer"
+msgid "Sign-in"
+msgstr "Bejelentkezés"
+
+msgctxt "alert_drawer"
+msgid "Allergen alert"
+msgstr ""
+
+msgctxt "warning_allergens"
+msgid "Contains allergens"
+msgstr "Allergént tartalmaz"
+
+msgctxt "title_dialog_alert"
+msgid "Add alert"
+msgstr "Figyelmeztetés felvétele"
+
+msgctxt "warning_alert_data"
+msgid ""
+"Your allergies info will never be sent to the Open Food Facts server. "
+"Also, be careful that data may not be accurate, please double-check by "
+"yourself!"
+msgstr ""
+"A személyes allergén információk nem kerülnek feltöltésre az Open Food "
+"Facts szerverére. Érdemes ellenőrizni az adatok helytállóságát."
+
+msgctxt "from_gallery"
+msgid "From gallery"
+msgstr "Galériából"
+
+msgctxt "product_sent"
+msgid "Product sent successfully"
+msgstr ""
+
+msgctxt "action_edit_product"
+msgid "Edit product"
+msgstr "Termék szerkesztés"
+
+msgctxt "title_info_dialog"
+msgid "Information"
+msgstr "Információ"
+
+msgctxt "text_offline_info_dialog"
+msgid ""
+"You can scan products when you're offline to add them to Open Food Facts "
+"later. All the products you scan will appear here, and you'll be able to "
+"send them using the button below."
+msgstr ""
+"Offline beolvasás is lehetséges az Open Food Facts adatbázisba való "
+"későbbi feltöltéshez. Minden itt megjelenő termék beküldhető az alábbi "
+"gomb megnyomásával."
+
+msgctxt "permission_camera"
+msgid "Camera permission is needed to scan barcodes and take pictures."
+msgstr "Kamerához jogosultság szükséges a vonalkód-olvasáshoz és termékfotózásoz."
+
+msgctxt "permission_title"
+msgid "Permission information"
+msgstr "Jogosultság információ"
+
+msgctxt "permission_denied"
+msgid "Please activate permission in the settings"
+msgstr "A beállításokan engedélyezni kell a jogosultságot"
+
+msgctxt "permission_storage"
+msgid "Storage permission is needed to take or select pictures"
+msgstr "Tárhely jogosultság szükséges képek készítéséhez és kiválasztásához."
+
+msgctxt "info_download_data"
+msgid ""
+"You need to download some data to get this functionality working, please "
+"press yes to download it."
+msgstr ""
+"További adatok letöltésére van szükség ezen funkció használatához. "
+"Kívánja most letölteni?"
+
+msgctxt "info_download_data_connection"
+msgid ""
+"You need to download some data to get this functionality working. Please "
+"activate internet connection."
+msgstr ""
+"További adatok letöltésére van szükség ezen funkció használatához. Kérjük"
+" tegye lehetővé a kapcsolatot."
+
+msgctxt "msg_input_empty"
+msgid "Please fill the fields first."
+msgstr "Mezők kitöltése szükséges."
+
+msgctxt "new_offline_info"
+msgid ""
+"Please take a picture of the product, ingredients, nutrition facts table "
+"and any other information on the label. Thank you!"
+msgstr ""
+"Kérjük készítsen képet a termékről, összetételről, tápanyagtáblázatról, "
+"és minden címkén található információról. Köszönjük!"
+
+#. Strings related to login
+msgctxt "error_invalid_password"
+msgid "The password needs to be a least 6 characters long."
+msgstr "Legalább 6 karakter hosszúságú jelszó szükséges."
+
+msgctxt "error_field_required"
+msgid "This field is required."
+msgstr "Szükséges mező."
+
+msgctxt "action_preferences"
+msgid "Preferences"
+msgstr "Tulajdonságok"
+
+msgctxt "prefs_scan_startup"
+msgid "Scan on startup"
+msgstr "Beolvasás induláskor."
+
+msgctxt "prefs_scan_startup_summary"
+msgid "This option if selected will start scan when app is opened."
+msgstr "Ez esetben alkalmazásindításkor a beolvasó jelenik meg."
+
+msgctxt "prefs_power_mode"
+msgid "Power mode scan"
+msgstr "Gyors beolvasás"
+
+msgctxt "prefs_power_mode_summary"
+msgid ""
+"Quickly scan products in a supermarket to see which ones are not in the "
+"database."
+msgstr ""
+
+msgctxt "prefs_language"
+msgid "Language"
+msgstr "Nyelv"
+
+msgctxt "prefs_language_summary"
+msgid "Change language"
+msgstr "Nyelv megváltoztatása"
+
+msgctxt "scan_history_drawer"
+msgid "History"
+msgstr "Előzmények"
+
+msgctxt "clear_history"
+msgid "Clear history"
+msgstr "Előzmények törlése"
+
+msgctxt "title_clear_history_dialog"
+msgid "Clear"
+msgstr "Törlés"
+
+msgctxt "text_clear_history_dialog"
+msgid "Do you want to clear all scan history?"
+msgstr "Az összes beolvasási előzmény törlése?"
+
+msgctxt "export_csv_history"
+msgid "Export CSV"
+msgstr "CSV export"
+
+msgctxt "txt_exporting_history"
+msgid "Exporting history..."
+msgstr "Előzmény export..."
+
+msgctxt "txt_history_exported"
+msgid "History exported"
+msgstr "Előzmény exportálva"
+
+msgctxt "permision_write_external_storage"
+msgid "Write external storage permission is needed to export history."
+msgstr "Tárhelyre írási jogosultság szükséges az előzmény exportálásához."
+
+msgctxt "txt_nutrition_not_found"
+msgid "N/A"
+msgstr "Nincs adat"
+
+#. Nutrition info tab
+msgctxt "nutrition_carbohydrate"
+msgid "Carbohydrate"
+msgstr "Szénhidrát"
+
+msgctxt "nutrition_carbohydrate_short_name"
+msgid "Carbohydrate (g)"
+msgstr "Szénhidrát (g)"
+
+msgctxt "nutrition_cholesterol"
+msgid "Cholesterol"
+msgstr "Koleszterin"
+
+msgctxt "nutrition_cholesterol_short_name"
+msgid "Cholesterol (g)"
+msgstr "Koleszterin (g)"
+
+msgctxt "nutrition_energy"
+msgid "Energy"
+msgstr "Energia"
+
+msgctxt "nutrition_energy_short_name"
+msgid "Energy"
+msgstr "Energia"
+
+msgctxt "nutrition_fat"
+msgid "Fat"
+msgstr "Zsír"
+
+msgctxt "nutrition_fat_short_name"
+msgid "Fat (g)"
+msgstr "Zsír (g)"
+
+msgctxt "nutrition_fiber"
+msgid "Dietary fiber"
+msgstr "Élelmi rost"
+
+msgctxt "nutrition_fiber_short_name"
+msgid "Dietary fiber (g)"
+msgstr "Élelmi rost (g)"
+
+msgctxt "nutrition_header"
+msgid "Nutrition facts"
+msgstr "Tápanyag ismertető"
+
+msgctxt "nutrition_no_data_message"
+msgid "No data is available for this product"
+msgstr "Nincs elérhető adat a termékről"
+
+msgctxt "nutrition_per_quantity"
+msgid "For 100g/100ml"
+msgstr "100g/100ml-ben"
+
+msgctxt "nutrition_proteins"
+msgid "Proteins"
+msgstr "Fehérje"
+
+msgctxt "nutrition_proteins_short_name"
+msgid "Proteins (g)"
+msgstr "Fehérje (g)"
+
+msgctxt "nutrition_salt"
+msgid "Salt"
+msgstr "Só"
+
+msgctxt "nutrition_salt_short_name"
+msgid "Salt (g)"
+msgstr "Só (g)"
+
+msgctxt "nutrition_satured_fat"
+msgid "Satured fat"
+msgstr "Telített zsír"
+
+msgctxt "nutrition_satured_fat_short_name"
+msgid "Satured fat (g)"
+msgstr "Telített zsír (g)"
+
+msgctxt "nutrition_serving"
+msgid "Per serving"
+msgstr "Adagonként"
+
+msgctxt "nutrition_serving_size"
+msgid "Serving size :"
+msgstr "Adag:"
+
+msgctxt "nutrition_sodium"
+msgid "Sodium"
+msgstr "Nátrium"
+
+msgctxt "nutrition_sodium_short_name"
+msgid "Sodium (g)"
+msgstr "Nátrium (g)"
+
+msgctxt "nutrition_sugars"
+msgid "Sugars"
+msgstr "Cukrok"
+
+msgctxt "nutrition_sugars_short_name"
+msgid "Sugars (g)"
+msgstr "Cukrok (g)"
+
+msgctxt "nutrition_trans_fat"
+msgid "Trans fat"
+msgstr "Transzzsír"
+
+msgctxt "nutrition_trans_fat_short_name"
+msgid "Trans fat (g)"
+msgstr "Transzzsír (g)"
+
+msgctxt "nutriment_serving_size"
+msgid "Per portion :"
+msgstr "Adagonként"
+
+msgctxt "action_manage_account"
+msgid "Manage account"
+msgstr "Fiók kezelése"
+
+msgctxt "action_contributes"
+msgid "Your contributions"
+msgstr "Saját közreműködések"
+
+msgctxt "logout_drawer"
+msgid "Logout"
+msgstr "Kijelentkezés"
+
+msgctxt "contribution_without_account"
+msgid "You can sign-in or create an account to keep your contributions"
+msgstr "Közreműködések megőrzéséhez bejelentkezés szükséges."
+
+msgctxt "textCarbonFootprint"
+msgid "Carbon footprint / CO2 emissions: "
+msgstr "Ökológiai lábnyom/CO2 kibocsájtás "
+
+msgctxt "txtDialogPowerMode"
+msgid "Quick view"
+msgstr "Gyorsnézet"
+
+msgctxt "txtSeeMore"
+msgid "See more"
+msgstr "Továbbiak"
+
+msgctxt "action_search"
+msgid "Search"
+msgstr "Keres"
+
+msgctxt "search_hint"
+msgid "Search a product"
+msgstr "Termék keresése"
+
+msgctxt "number_of_results"
+msgid "Number of results :"
+msgstr "Találatok száma"
+
+msgctxt "txt_no_results"
+msgid "No results found"
+msgstr "Nincs találat"
+
+msgctxt "nutrition_lactose"
+msgid "Lactose"
+msgstr ""
+
+msgctxt "nutrition_casein"
+msgid "Casein"
+msgstr ""
+
+msgctxt "nutrition_maltodextrins"
+msgid "Maltodextrins"
+msgstr ""
+
+msgctxt "nutrition_serum_proteins"
+msgid "Serum Proteins"
+msgstr ""
+
+msgctxt "nutrition_nucleotides"
+msgid "Nucleotides"
+msgstr ""
+
+msgctxt "for_100g"
+msgid "For 100 g"
+msgstr ""
+
+msgctxt "serving"
+msgid "Per serving"
+msgstr ""
+
+msgctxt "minerals"
+msgid "Minerals"
+msgstr ""
+
+msgctxt "nutrition_calcium"
+msgid "Calcium"
+msgstr ""
+
+msgctxt "nutrition_potassium"
+msgid "Potassium"
+msgstr ""
+
+msgctxt "nutrition_chlore"
+msgid "Chlorine"
+msgstr ""
+
+msgctxt "nutrition_magnesium"
+msgid "Magnesium"
+msgstr ""
+
+msgctxt "nutrition_taurine"
+msgid "Taurine"
+msgstr ""
+
+msgctxt "nutrition_monounsaturatedFat"
+msgid "Mono unsaturated fat"
+msgstr ""
+
+msgctxt "nutrition_polyunsaturatedFat"
+msgid "Poly unsaturated fat"
+msgstr ""
+
+msgctxt "nutrition_omega3"
+msgid "Omega 3"
+msgstr ""
+
+msgctxt "nutrition_omega6"
+msgid "Omega 6"
+msgstr ""
+
+msgctxt "nutrition_omega9"
+msgid "Omega 9"
+msgstr ""
+
+msgctxt "nutrition_sucrose"
+msgid "Sucrose"
+msgstr ""
+
+msgctxt "nutrition_glucose"
+msgid "Glucose"
+msgstr ""
+
+msgctxt "nutrition_fructose"
+msgid "Fructose"
+msgstr ""
+
+msgctxt "nutrition_maltose"
+msgid "Maltose"
+msgstr ""
+
+msgctxt "nutrition_alcohol"
+msgid "Alcohol"
+msgstr ""
+
+msgctxt "nutrition_vitamins"
+msgid "Vitamins"
+msgstr ""
+
+msgctxt "vitamin_a"
+msgid "Vitamin A"
+msgstr ""
+
+msgctxt "vitamin_d"
+msgid "Vitamin d"
+msgstr ""
+
+msgctxt "vitamin_e"
+msgid "Vitamin e"
+msgstr ""
+
+msgctxt "vitamin_k"
+msgid "Vitamin k"
+msgstr ""
+
+msgctxt "vitamin_c"
+msgid "Vitamin C"
+msgstr ""
+
+msgctxt "vitamin_b1"
+msgid "Vitamin B1"
+msgstr ""
+
+msgctxt "vitamin_b2"
+msgid "Vitamin B2"
+msgstr ""
+
+msgctxt "vitamin_pp"
+msgid "Vitamin PP"
+msgstr ""
+
+msgctxt "vitamin_b6"
+msgid "Vitamin B6"
+msgstr ""
+
+msgctxt "vitamin_b9"
+msgid "Vitamin B9"
+msgstr ""
+
+msgctxt "vitamin_b12"
+msgid "Vitamin B12"
+msgstr ""
+
+msgctxt "biotin"
+msgid "Biotin"
+msgstr ""
+
+msgctxt "pantothenic_acid"
+msgid "Pantothenic acid"
+msgstr ""
+
+msgctxt "nutrition_minerals"
+msgid "Minerals"
+msgstr ""
+
+msgctxt "silica"
+msgid "Silica"
+msgstr ""
+
+msgctxt "bicarbonate"
+msgid "Bicarbonate"
+msgstr ""
+
+msgctxt "potassium"
+msgid "Potassium"
+msgstr ""
+
+msgctxt "chloride"
+msgid "Chloride"
+msgstr ""
+
+msgctxt "calcium"
+msgid "Calcium"
+msgstr ""
+
+msgctxt "phosphorus"
+msgid "Phosphorus"
+msgstr ""
+
+msgctxt "iron"
+msgid "Iron"
+msgstr ""
+
+msgctxt "magnesium"
+msgid "Magnesium"
+msgstr ""
+
+msgctxt "zinc"
+msgid "Zinc"
+msgstr ""
+
+msgctxt "copper"
+msgid "Copper"
+msgstr ""
+
+msgctxt "manganese"
+msgid "Manganese"
+msgstr ""
+
+msgctxt "fluoride"
+msgid "Fluoride"
+msgstr ""
+
+msgctxt "selenium"
+msgid "Selenium"
+msgstr ""
+
+msgctxt "chromium"
+msgid "Chromium"
+msgstr ""
+
+msgctxt "molybdenum"
+msgid "Molybdenum"
+msgstr ""
+
+msgctxt "iodine"
+msgid "Iodine"
+msgstr ""
+
+msgctxt "caffeine"
+msgid "Caffeine"
+msgstr ""
+
+msgctxt "taurine"
+msgid "Taurine"
+msgstr ""
+
+msgctxt "ph"
+msgid "Ph"
+msgstr ""
+
+msgctxt "fruits_vegetables_nuts"
+msgid "Fruits, vegetables, nuts"
+msgstr ""
+
+msgctxt "collagen_meat_protein_ratio"
+msgid "Collagen meat protein ratio"
+msgstr ""
+
+msgctxt "cocoa"
+msgid "Cocoa"
+msgstr ""
+
+msgctxt "chlorophyl"
+msgid "Chlorophyl"
+msgstr ""
+
+msgctxt "take_picture_ingredients"
+msgid "Take a picture of the ingredients"
+msgstr ""
+
+msgctxt "take_picture_front"
+msgid "Take a picture of the front"
+msgstr ""
+
+msgctxt "take_picture_nutrition_table"
+msgid "Take a picture of the nutrition table"
+msgstr ""
+
+msgctxt "take_more_pictures"
+msgid "Take more pictures"
+msgstr ""
+

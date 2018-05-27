@@ -1,0 +1,1380 @@
+# German translation for openfoodfacts
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the openfoodfacts
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openfoodfacts\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
+"Language: de\n"
+"Language-Team: German <de@li.org>\n"
+"Plural-Forms: nplurals=2; plural=((((n == 1)) && ((0 == 0))) ? 0 : 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-03-14 08:20+0000\n"
+"X-Generator: Poedit 1.8.12\n"
+"Language: de\n"
+"Generated-By: Babel 2.3.3\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+
+msgctxt "hello_world"
+msgid "Hello world!"
+msgstr "Hallo Welt!"
+
+msgctxt "action_settings"
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgctxt "action_about"
+msgid "About"
+msgstr "Über"
+
+msgctxt "action_discover"
+msgid "Discover"
+msgstr "Entdecken"
+
+msgctxt "contribute"
+msgid "How to contribute"
+msgstr "Wie Sie mithelfen können"
+
+msgctxt "action_find"
+msgid "Find"
+msgstr "Suchen"
+
+msgctxt "text_barcode"
+msgid "Type the barcode :"
+msgstr "Strichcode eingeben:"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:0"
+msgid "Summary"
+msgstr "Zusammenfassung"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:1"
+msgid "Ingredients"
+msgstr "Inhaltsstoffe"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:2"
+msgid "Nutrition"
+msgstr "Nährwertangaben"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:3"
+msgid "Nutrition Table"
+msgstr "Nährwerttabelle"
+
+#. Text units
+msgctxt "units_array:0"
+msgid "g"
+msgstr "g"
+
+#. Text units
+msgctxt "units_array:1"
+msgid "mg"
+msgstr "mg"
+
+#. Text units
+msgctxt "units_array:2"
+msgid "kg"
+msgstr "kg"
+
+#. Text units
+msgctxt "units_array:3"
+msgid "l"
+msgstr "l"
+
+#. Text units
+msgctxt "units_array:4"
+msgid "ml"
+msgstr "ml"
+
+#. Text units
+msgctxt "units_array:5"
+msgid "cl"
+msgstr ""
+
+#. Text units
+msgctxt "units_array:6"
+msgid "fl oz"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:0"
+msgid "en"
+msgstr "en"
+
+#. Text units
+msgctxt "lang_array:1"
+msgid "fr"
+msgstr "fr"
+
+#. Text units
+msgctxt "lang_array:2"
+msgid "es"
+msgstr "es"
+
+#. Text units
+msgctxt "lang_array:3"
+msgid "it"
+msgstr "it"
+
+#. Text units
+msgctxt "lang_array:4"
+msgid "de"
+msgstr "de"
+
+#. Text units
+msgctxt "lang_array:5"
+msgid "ja"
+msgstr "ja"
+
+#. Text units
+msgctxt "lang_array:6"
+msgid "ru"
+msgstr "ru"
+
+#. Text units
+msgctxt "lang_array:7"
+msgid "pt"
+msgstr "pt"
+
+#. Text units
+msgctxt "lang_array:8"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:9"
+msgid "my"
+msgstr "my"
+
+#. Text units
+msgctxt "lang_array:10"
+msgid "kk"
+msgstr "kk"
+
+#. Text units
+msgctxt "lang_array:11"
+msgid "hy"
+msgstr "hy"
+
+#. Text units
+msgctxt "lang_array:12"
+msgid "el"
+msgstr "el"
+
+#. Text units
+msgctxt "lang_array:13"
+msgid "he"
+msgstr "he"
+
+#. Text units
+msgctxt "lang_array:14"
+msgid "gl"
+msgstr "gl"
+
+#. Text units
+msgctxt "lang_array:15"
+msgid "ca"
+msgstr "ca"
+
+#. Text units
+msgctxt "lang_array:16"
+msgid "cs"
+msgstr "cs"
+
+#. Text units
+msgctxt "lang_array:17"
+msgid "ar"
+msgstr "ar"
+
+#. Text units
+msgctxt "lang_array:18"
+msgid "fi"
+msgstr "fi"
+
+#. Text units
+msgctxt "lang_array:19"
+msgid "hi"
+msgstr "hi"
+
+#. Text units
+msgctxt "lang_array:20"
+msgid "kab"
+msgstr "kab"
+
+#. Text units
+msgctxt "lang_array:21"
+msgid "ko"
+msgstr "ko"
+
+#. Text units
+msgctxt "lang_array:22"
+msgid "lv"
+msgstr "lv"
+
+#. Text units
+msgctxt "lang_array:23"
+msgid "nl"
+msgstr "nl"
+
+#. Text units
+msgctxt "lang_array:24"
+msgid "pt-rBR"
+msgstr "pt-rBR"
+
+#. Text units
+msgctxt "lang_array:25"
+msgid "ro"
+msgstr "ro"
+
+#. Text units
+msgctxt "lang_array:26"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:27"
+msgid "zh"
+msgstr "zh"
+
+#. Text units
+msgctxt "lang_array:28"
+msgid "nb"
+msgstr "nb"
+
+#. Text units
+msgctxt "lang_array:29"
+msgid "da"
+msgstr "da"
+
+#. Text units
+msgctxt "lang_array:30"
+msgid "zh-rCN"
+msgstr "zh-rCN"
+
+msgctxt "lang_label_array:0"
+msgid "English"
+msgstr "Englisch"
+
+msgctxt "lang_label_array:1"
+msgid "French"
+msgstr "Französisch"
+
+msgctxt "lang_label_array:2"
+msgid "Spanish"
+msgstr "Spanisch"
+
+msgctxt "lang_label_array:3"
+msgid "Italian"
+msgstr "Italienisch"
+
+msgctxt "lang_label_array:4"
+msgid "German"
+msgstr "Deutsch"
+
+msgctxt "lang_label_array:5"
+msgid "Japanese"
+msgstr "Japanisch"
+
+msgctxt "lang_label_array:6"
+msgid "Russian"
+msgstr "Russisch"
+
+msgctxt "lang_label_array:7"
+msgid "Portuguese"
+msgstr "Portugiesisch"
+
+msgctxt "lang_label_array:8"
+msgid "Swedish"
+msgstr "Schwedisch"
+
+msgctxt "lang_label_array:9"
+msgid "Burmese"
+msgstr "Burmesisch"
+
+msgctxt "lang_label_array:10"
+msgid "Kazakh"
+msgstr "Kasachisch"
+
+msgctxt "lang_label_array:11"
+msgid "Armenian"
+msgstr "Armenisch"
+
+msgctxt "lang_label_array:12"
+msgid "Greek"
+msgstr "Griechisch"
+
+msgctxt "lang_label_array:13"
+msgid "Hebrew"
+msgstr "Hebräisch"
+
+msgctxt "lang_label_array:14"
+msgid "Galician"
+msgstr "Galizisch"
+
+msgctxt "lang_label_array:15"
+msgid "Catalan"
+msgstr "Katalanisch"
+
+msgctxt "lang_label_array:16"
+msgid "Czech"
+msgstr "Tschechisch"
+
+msgctxt "lang_label_array:17"
+msgid "Arabic"
+msgstr "Arabisch"
+
+msgctxt "lang_label_array:18"
+msgid "Finnish"
+msgstr "Finnisch"
+
+msgctxt "lang_label_array:19"
+msgid "Hindi"
+msgstr "Hindi"
+
+msgctxt "lang_label_array:20"
+msgid "Kabyle"
+msgstr "Kabylisch"
+
+msgctxt "lang_label_array:21"
+msgid "Korean"
+msgstr "Koreanisch"
+
+msgctxt "lang_label_array:22"
+msgid "Latvian"
+msgstr "Lettisch"
+
+msgctxt "lang_label_array:23"
+msgid "Dutch"
+msgstr "Niederländisch"
+
+msgctxt "lang_label_array:24"
+msgid "Brazilian portuguese"
+msgstr "Brasilianisches Portugiesisch"
+
+msgctxt "lang_label_array:25"
+msgid "Romanian"
+msgstr "Rumänisch"
+
+msgctxt "lang_label_array:26"
+msgid "Swedish"
+msgstr "Schwedisch"
+
+msgctxt "lang_label_array:27"
+msgid "Chinese"
+msgstr "Chinesisch"
+
+msgctxt "lang_label_array:28"
+msgid "Norwegian (Bokmal)"
+msgstr "Norwegisch (Bokmål)"
+
+msgctxt "lang_label_array:29"
+msgid "Danish"
+msgstr "Dänisch"
+
+msgctxt "lang_label_array:30"
+msgid "Simplified Chinese"
+msgstr "Chinesisch (vereinfacht)"
+
+msgctxt "images_array:0"
+msgid "Default"
+msgstr "Standard"
+
+msgctxt "images_array:1"
+msgid "Nutrition"
+msgstr "Nährwerte"
+
+msgctxt "images_array:2"
+msgid "Ingredients"
+msgstr "Inhaltsstoffe"
+
+#. Content Description
+msgctxt "search_button"
+msgid "Search"
+msgstr "Suchen"
+
+msgctxt "no_products"
+msgid "Products not found"
+msgstr "Keine Produkte gefunden"
+
+msgctxt "desc_list_item_icon"
+msgid "Item Icon"
+msgstr "Produktfoto"
+
+msgctxt "alert_dialog_warning_title"
+msgid "Warning"
+msgstr "Warnung"
+
+msgctxt "alert_dialog_warning_msg_user"
+msgid "User/password has changed, please update information"
+msgstr "Benutzername/Passwort hat sich geändert, bitte Angaben aktualisieren."
+
+msgctxt "alert_dialog_product_error_msg"
+msgid "Product not found, please try again"
+msgstr "Produkt wurde nicht gefunden. Versuchen Sie es später noch einmal."
+
+msgctxt "toast_retrieving"
+msgid "Loading..."
+msgstr "Wird geladen …"
+
+msgctxt "txtBarcode"
+msgid "Barcode :"
+msgstr "Strichcode:"
+
+msgctxt "txtQuantity"
+msgid "Quantity :"
+msgstr "Menge:"
+
+msgctxt "txtPackaging"
+msgid "Packaging :"
+msgstr "Verpackung:"
+
+msgctxt "txtBrands"
+msgid "Brands :"
+msgstr "Marken:"
+
+msgctxt "txtCategories"
+msgid "Categories :"
+msgstr "Kategorien:"
+
+msgctxt "txtLabels"
+msgid "Labels, certifications, awards :"
+msgstr "Labels, Zertifizierungen, Preise:"
+
+msgctxt "txtManufacturing"
+msgid "Manufacturing or processing places :"
+msgstr "Herstellungs- oder Verarbeitungsorte:"
+
+msgctxt "txtIngredientsOrigins"
+msgid "Origin of ingredients :"
+msgstr "Herkunft der Zutaten:"
+
+msgctxt "txtCity"
+msgid "City, state and country where purchased :"
+msgstr "Stadt, Bundesland und Land des Kaufs:"
+
+msgctxt "txtStores"
+msgid "Stores :"
+msgstr "Läden:"
+
+msgctxt "txtCountries"
+msgid "Countries where sold :"
+msgstr "Vertriebsländer:"
+
+msgctxt "txtIngredients"
+msgid "Ingredients list :"
+msgstr "Zutatenliste:"
+
+msgctxt "txtSubstances"
+msgid "Substances or products causing allergies or intolerances :"
+msgstr ""
+"Inhaltsstoffe oder Produkte, die zu Allergien oder Überempfindlichkeiten "
+"führen:"
+
+msgctxt "txtAdditives"
+msgid "Additives :"
+msgstr "Zusatzstoffe:"
+
+msgctxt "txtTraces"
+msgid "Traces :"
+msgstr "Spuren:"
+
+msgctxt "txtMayBeFromPalmOilProduct"
+msgid "Ingredients that may be from palm oil :"
+msgstr "Möglicherweise aus Palmöl hergestellte Zutaten:"
+
+msgctxt "txtPalmOilProduct"
+msgid "Ingredients from palm oil :"
+msgstr "Aus Palmöl hergestellte Zutaten:"
+
+msgctxt "txtServingSize"
+msgid "Serving size :"
+msgstr "Portiongröße:"
+
+msgctxt "txtNutrientLevel100g"
+msgid "Nutrient levels for 100g :"
+msgstr "Nährwertgehalt pro 100g:"
+
+msgctxt "txtNutritionLevelLow"
+msgid "in low quantity"
+msgstr "in geringer Menge"
+
+msgctxt "txtNutritionLevelModerate"
+msgid "in moderate quantity"
+msgstr "in mäßiger Menge"
+
+msgctxt "txtNutritionLevelHigh"
+msgid "in high quantity"
+msgstr "in hoher Menge"
+
+msgctxt "txtLogin"
+msgid "Login :"
+msgstr "Benutzername:"
+
+msgctxt "txtPass"
+msgid "Password :"
+msgstr "Passwort :"
+
+msgctxt "txtTitleHome"
+msgid "Open your food and know what you eat"
+msgstr "Öffnen Sie Ihr Essen und lernen Sie was Sie essen"
+
+msgctxt "txtSave"
+msgid "Save"
+msgstr "Speichern"
+
+msgctxt "txtSignIn"
+msgid "Sign in"
+msgstr "Anmelden"
+
+msgctxt "txtUser"
+msgid "User panel"
+msgstr "Benutzerprofil"
+
+msgctxt "txtToastSaved"
+msgid "User saved"
+msgstr "Benutzer gespeichert"
+
+msgctxt "txtSalt"
+msgid "Salt"
+msgstr "Salz"
+
+msgctxt "txtFat"
+msgid "Fat"
+msgstr "Fett"
+
+msgctxt "txtSugars"
+msgid "Sugars"
+msgstr "Zucker"
+
+msgctxt "txtSaturatedFat"
+msgid "Satured fat"
+msgstr "Gesättigte Fette"
+
+msgctxt "hintBarcode"
+msgid "Barcode"
+msgstr "Strichcode"
+
+msgctxt "hintLogin"
+msgid "Login"
+msgstr "Benutzername"
+
+msgctxt "hintPass"
+msgid "Password"
+msgstr "Passwort"
+
+msgctxt "errorLogin"
+msgid "Login or password error"
+msgstr "Benutzername oder Passwort stimmen nicht"
+
+msgctxt "errorWeb"
+msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgstr "Kein Internetzugang. Netzwerkverbindung überprüfen."
+
+msgctxt "txtInfoLoginOk"
+msgid "User saved"
+msgstr "Benutzer gespeichert"
+
+msgctxt "txtInfoLoginNo"
+msgid "User not saved"
+msgstr "Benutzer nicht gespeichert"
+
+msgctxt "txtDialogsTitle"
+msgid "Information"
+msgstr "Information"
+
+msgctxt "txtDialogsContent"
+msgid ""
+"The product you scanned does not exist yet in Open Food Facts. Please add it."
+msgstr ""
+"Das Produkt das Sie eingescannt haben existiert noch nicht in OpenFoodFacts. "
+"Bitte fügen sie es hinzu. "
+
+msgctxt "txtDialogsContentPowerMode"
+msgid "The product you scanned does already exist in Open Food Facts."
+msgstr "Das gescannte Produkt befindet sich bereits in Open Food Facts."
+
+msgctxt "txtDialogsContentSend"
+msgid "Do you want send the saved products to the database?"
+msgstr "Möchten Sie die gespeicherten Produkte an die Datenbank senden?"
+
+msgctxt "txtYes"
+msgid "Yes"
+msgstr "Ja"
+
+msgctxt "txtNo"
+msgid "No"
+msgstr "Nein"
+
+msgctxt "hintNameProduct"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "hintEnergy"
+msgid "Energy in kJ per serving"
+msgstr "Energie in kJ pro Portion"
+
+msgctxt "hintEnergyUnit"
+msgid "Energy unit"
+msgstr "Energieeinheit"
+
+msgctxt "hintWeight"
+msgid "Weight"
+msgstr "Gewicht"
+
+msgctxt "hintStores"
+msgid "Store"
+msgstr "Laden"
+
+msgctxt "hintBrand"
+msgid "Brand"
+msgstr "Marke"
+
+msgctxt "txtTakePicture"
+msgid "Take picture"
+msgstr "Foto machen"
+
+msgctxt "txtSendAll"
+msgid "Upload all"
+msgstr "Alles hochladen"
+
+msgctxt "txtNoData"
+msgid "No data"
+msgstr "keine Daten"
+
+msgctxt "txtPictureNeeded"
+msgid "Please take a picture first"
+msgstr "Bitte machen Sie zuerst ein Foto"
+
+msgctxt "toastSending"
+msgid "Uploading..."
+msgstr "Lade hoch..."
+
+msgctxt "dataSaved"
+msgid "Saved locally on your device"
+msgstr "Lokal auf dem Gerät gespeichert"
+
+msgctxt "txtInfoAddUser"
+msgid "Please enter your login and password"
+msgstr "Bitte Benutzername und Passwort eingeben"
+
+msgctxt "txtDataUpdated"
+msgid "Data updated"
+msgstr "Daten wurden aktualisiert"
+
+msgctxt "txtLoading"
+msgid "Loading..."
+msgstr "Wird geladen …"
+
+msgctxt "txtDialogsContentDelete"
+msgid "Do you want to delete this draft?"
+msgstr "Möchten Sie diesen Entwurf löschen?"
+
+msgctxt "txtDialogsContentInfoSave"
+msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr ""
+"Produkt wurde lokal gespeichert und kann im Offline Bearbeiten-Menü "
+"überarbeitet werden"
+
+msgctxt "txtBarcodeRequire"
+msgid "Barcode required"
+msgstr "Strichcode erforderlich"
+
+msgctxt "txtOk"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "txtContentDialogUploading"
+msgid "Please don't exit during the process..."
+msgstr "Bitte warten bis der Vorgang abgeschlossen ist..."
+
+msgctxt "txtAbout"
+msgid ""
+"The pictures you send are published under the free licence Creative Commons "
+"Attribution and ShareAlike."
+msgstr ""
+"Die hochgeladenen Fotos werden unter der freien Lizenz Creative Commons "
+"Namensnennung - Weitergabe unter gleichen Bedingungen veröffentlicht."
+
+msgctxt "txtAllsent"
+msgid "Products sent"
+msgstr "Produkte hochgeladen"
+
+msgctxt "txtPalm"
+msgid "The product does not contain any palm oil"
+msgstr "Das Produkt beinhaltet kein Palmöl"
+
+msgctxt "txtBarcodeNotValid"
+msgid "Barcode not valid"
+msgstr "Strichcode ungültig"
+
+msgctxt "try_it_scan_now"
+msgid "Scan product"
+msgstr "Produkt scannen"
+
+msgctxt "share"
+msgid "Share"
+msgstr "Teilen"
+
+msgctxt "msg_share"
+msgid "Look at this product on Open Food Facts :"
+msgstr "Sehen Sie sich dieses Produkt auf Open Food Facts an:"
+
+msgctxt "create_account"
+msgid "Sign up"
+msgstr "Registrieren"
+
+msgctxt "home_drawer"
+msgid "Home"
+msgstr "Startseite"
+
+msgctxt "open_beauty_drawer"
+msgid "Open Beauty Facts"
+msgstr "Open Beauty Facts"
+
+msgctxt "open_food_drawer"
+msgid "Open Food Facts"
+msgstr ""
+
+msgctxt "search_drawer"
+msgid "Search"
+msgstr "Suchen"
+
+#, fuzzy
+msgctxt "search_by_barcode_drawer"
+msgid "Type barcode"
+msgstr "Nach Strichcode suchen"
+
+msgctxt "search_by_name_drawer"
+msgid "Search by name"
+msgstr "Nach Name suchen"
+
+#, fuzzy
+msgctxt "scan_search"
+msgid "Scan Barcode"
+msgstr "Einscannen"
+
+msgctxt "user_drawer"
+msgid "User"
+msgstr "Benutzer"
+
+msgctxt "offline_edit_drawer"
+msgid "Offline edit"
+msgstr "Offline bearbeiten"
+
+msgctxt "txt_anonymous"
+msgid "Anonymous"
+msgstr "Anonym"
+
+msgctxt "txt_product_not_found"
+msgid "Products not found"
+msgstr "Keine Produkte gefunden"
+
+msgctxt "delete_txt"
+msgid "Delete"
+msgstr "Löschen"
+
+msgctxt "sign_in_drawer"
+msgid "Sign-in"
+msgstr "Anmelden"
+
+msgctxt "alert_drawer"
+msgid "Allergen alert"
+msgstr "Allergen-Alarm"
+
+msgctxt "warning_allergens"
+msgid "Contains allergens"
+msgstr "Enthält Allergene"
+
+msgctxt "title_dialog_alert"
+msgid "Add alert"
+msgstr "Alarm hinzufügen"
+
+msgctxt "warning_alert_data"
+msgid ""
+"Your allergies info will never be sent to the Open Food Facts server. Also, be "
+"careful that data may not be accurate, please double-check by yourself!"
+msgstr ""
+"Ihre Allergie-Informationen werden niemals an den Open Food Facts Server "
+"gesendet. Seien Sie vorsichtig! Die Daten sind möglicherweise nicht immer 100% "
+"richtig. Prüfen Sie deshalb bitte selbst noch einmal nach!"
+
+msgctxt "from_gallery"
+msgid "From gallery"
+msgstr "Aus Galerie"
+
+msgctxt "product_sent"
+msgid "Product sent successfully"
+msgstr "Produkt erfolgreich eingesendet."
+
+msgctxt "action_edit_product"
+msgid "Edit product"
+msgstr "Produkt bearbeiten"
+
+msgctxt "title_info_dialog"
+msgid "Information"
+msgstr "Information"
+
+msgctxt "text_offline_info_dialog"
+msgid ""
+"You can scan products when you're offline to add them to Open Food Facts "
+"later. All the products you scan will appear here, and you'll be able to send "
+"them using the button below."
+msgstr ""
+"Sie können Produkte einscannen, wenn Sie offline sind, um sie später zu Open "
+"Food Facts hoch zu laden. Alle Produkte, die Sie scannen werden hier "
+"aufgelistet, damit Sie sie über die unten stehende Schaltfläche hochladen "
+"können."
+
+msgctxt "permission_camera"
+msgid "Camera permission is needed to scan barcodes and take pictures."
+msgstr ""
+"Die Kamera-Berechtigung wird benötigt, um Strichcodes zu scannen und Fotos zu "
+"machen."
+
+msgctxt "permission_title"
+msgid "Permission information"
+msgstr "Berechtigungs-Informationen"
+
+msgctxt "permission_denied"
+msgid "Please activate permission in the settings"
+msgstr "Bitte Berechtigung in den Einstellungen aktivieren"
+
+msgctxt "permission_storage"
+msgid "Storage permission is needed to take or select pictures"
+msgstr ""
+"Die Speicher-Berechtigung wird benötigt, um Fotos zu machen und hochzuladen."
+
+msgctxt "info_download_data"
+msgid ""
+"You need to download some data to get this functionality working, please press "
+"yes to download it."
+msgstr ""
+"Um diese Funktion zu aktivieren, müssen einige Daten heruntergeladen werden. "
+"Bitte drücken Sie Ja, um den Download zu starten."
+
+msgctxt "info_download_data_connection"
+msgid ""
+"You need to download some data to get this functionality working. Please "
+"activate internet connection."
+msgstr ""
+"Um diese Funktion zu aktivieren, müssen einige Daten heruntergeladen werden. "
+"Bitte aktivieren Sie Ihre Internetverbindung."
+
+msgctxt "msg_input_empty"
+msgid "Please fill the fields first."
+msgstr "Bitte zuerst die Felder ausfüllen"
+
+msgctxt "new_offline_info"
+msgid ""
+"Please take a picture of the product, ingredients, nutrition facts table and "
+"any other information on the label. Thank you!"
+msgstr ""
+"Nehmen Sie bitte Bilder vom Produkt, den Zutaten, den Nährwertangaben und "
+"jeder anderen Information auf dem Etikett auf. Danke!"
+
+#. Strings related to login
+msgctxt "error_invalid_password"
+msgid "The password needs to be a least 6 characters long."
+msgstr "Das Passwort muss mindestens 6 Zeichen lang sein."
+
+msgctxt "error_field_required"
+msgid "This field is required."
+msgstr "Das Feld ist erforderlich."
+
+msgctxt "action_preferences"
+msgid "Preferences"
+msgstr "Einstellungen"
+
+msgctxt "prefs_scan_startup"
+msgid "Scan on startup"
+msgstr "Scannen beim Starten"
+
+msgctxt "prefs_scan_startup_summary"
+msgid "This option if selected will start scan when app is opened."
+msgstr ""
+"Wenn diese Option eingeschaltet ist, wird die App beim Öffnen einen Scan "
+"durchführen."
+
+msgctxt "prefs_power_mode"
+msgid "Power mode scan"
+msgstr "Schnelles Scannen"
+
+msgctxt "prefs_power_mode_summary"
+msgid ""
+"Quickly scan products in a supermarket to see which ones are not in the "
+"database."
+msgstr ""
+
+msgctxt "prefs_language"
+msgid "Language"
+msgstr "Sprache"
+
+msgctxt "prefs_language_summary"
+msgid "Change language"
+msgstr "Sprache ändern"
+
+msgctxt "scan_history_drawer"
+msgid "History"
+msgstr "Verlauf"
+
+msgctxt "clear_history"
+msgid "Clear history"
+msgstr "Verlauf löschen"
+
+msgctxt "title_clear_history_dialog"
+msgid "Clear"
+msgstr "Leeren"
+
+msgctxt "text_clear_history_dialog"
+msgid "Do you want to clear all scan history?"
+msgstr "Möchten Sie den gesamten Scan-Verlauf löschen?"
+
+msgctxt "export_csv_history"
+msgid "Export CSV"
+msgstr "Als CSV Exportieren"
+
+msgctxt "txt_exporting_history"
+msgid "Exporting history..."
+msgstr "Exportiere Verlauf…"
+
+msgctxt "txt_history_exported"
+msgid "History exported"
+msgstr "Verlauf exportiert"
+
+msgctxt "permision_write_external_storage"
+msgid "Write external storage permission is needed to export history."
+msgstr ""
+"Berechtigung zum Schreiben der SD-Karte ist erforderlich, um den Verlauf zu "
+"exportieren."
+
+msgctxt "txt_nutrition_not_found"
+msgid "N/A"
+msgstr "k.A."
+
+#. Nutrition info tab
+msgctxt "nutrition_carbohydrate"
+msgid "Carbohydrate"
+msgstr "Kohlenhydrate"
+
+msgctxt "nutrition_carbohydrate_short_name"
+msgid "Carbohydrate (g)"
+msgstr "Kohlenhydrate (g)"
+
+msgctxt "nutrition_cholesterol"
+msgid "Cholesterol"
+msgstr "Cholesterin"
+
+msgctxt "nutrition_cholesterol_short_name"
+msgid "Cholesterol (g)"
+msgstr "Cholesterin (g)"
+
+msgctxt "nutrition_energy"
+msgid "Energy"
+msgstr "Energie"
+
+msgctxt "nutrition_energy_short_name"
+msgid "Energy"
+msgstr "Energie"
+
+msgctxt "nutrition_fat"
+msgid "Fat"
+msgstr "Fett"
+
+msgctxt "nutrition_fat_short_name"
+msgid "Fat (g)"
+msgstr "Fett (g)"
+
+msgctxt "nutrition_fiber"
+msgid "Dietary fiber"
+msgstr "Ballaststoffe"
+
+msgctxt "nutrition_fiber_short_name"
+msgid "Dietary fiber (g)"
+msgstr "Ballaststoffe (g)"
+
+msgctxt "nutrition_header"
+msgid "Nutrition facts"
+msgstr "Nährwertangaben"
+
+msgctxt "nutrition_no_data_message"
+msgid "No data is available for this product"
+msgstr "Zu diesem Produkt sind keine Daten verfügbar."
+
+msgctxt "nutrition_per_quantity"
+msgid "For 100g/100ml"
+msgstr "Für 100g/100ml"
+
+msgctxt "nutrition_proteins"
+msgid "Proteins"
+msgstr "Eiweiß"
+
+msgctxt "nutrition_proteins_short_name"
+msgid "Proteins (g)"
+msgstr "Eiweiß (g)"
+
+msgctxt "nutrition_salt"
+msgid "Salt"
+msgstr "Salz"
+
+msgctxt "nutrition_salt_short_name"
+msgid "Salt (g)"
+msgstr "Salz (g)"
+
+msgctxt "nutrition_satured_fat"
+msgid "Satured fat"
+msgstr "Gesättigte Fette"
+
+msgctxt "nutrition_satured_fat_short_name"
+msgid "Satured fat (g)"
+msgstr "Gesättigte Fette (g)"
+
+msgctxt "nutrition_serving"
+msgid "Per serving"
+msgstr "Pro Portion"
+
+msgctxt "nutrition_serving_size"
+msgid "Serving size :"
+msgstr "Portionsgröße:"
+
+msgctxt "nutrition_sodium"
+msgid "Sodium"
+msgstr "Natrium"
+
+msgctxt "nutrition_sodium_short_name"
+msgid "Sodium (g)"
+msgstr "Natrium (g)"
+
+msgctxt "nutrition_sugars"
+msgid "Sugars"
+msgstr "Zucker"
+
+msgctxt "nutrition_sugars_short_name"
+msgid "Sugars (g)"
+msgstr "Zucker (g)"
+
+msgctxt "nutrition_trans_fat"
+msgid "Trans fat"
+msgstr "Transfette"
+
+msgctxt "nutrition_trans_fat_short_name"
+msgid "Trans fat (g)"
+msgstr "Transfette (g)"
+
+msgctxt "nutriment_serving_size"
+msgid "Per portion :"
+msgstr "Pro Portion:"
+
+msgctxt "action_manage_account"
+msgid "Manage account"
+msgstr "Konto verwalten"
+
+msgctxt "action_contributes"
+msgid "Your contributions"
+msgstr "Ihre Beiträge"
+
+msgctxt "logout_drawer"
+msgid "Logout"
+msgstr "Abmelden"
+
+msgctxt "contribution_without_account"
+msgid "You can sign-in or create an account to keep your contributions"
+msgstr ""
+"Sie können sich anmelden oder ein Konto erstellen, um Ihre Beiträge zu "
+"speichern"
+
+msgctxt "textCarbonFootprint"
+msgid "Carbon footprint / CO2 emissions: "
+msgstr "Ökologischer Fußabdruck / CO2-Emissionen: "
+
+msgctxt "txtDialogPowerMode"
+msgid "Quick view"
+msgstr "Schnellansicht"
+
+msgctxt "txtSeeMore"
+msgid "See more"
+msgstr "Mehr sehen"
+
+msgctxt "action_search"
+msgid "Search"
+msgstr "Suchen"
+
+msgctxt "search_hint"
+msgid "Search a product"
+msgstr "Ein Produkt suchen"
+
+msgctxt "number_of_results"
+msgid "Number of results :"
+msgstr "Anzahl der Ergebnisse:"
+
+msgctxt "txt_no_results"
+msgid "No results found"
+msgstr "Keine Ergebnisse gefunden"
+
+msgctxt "nutrition_lactose"
+msgid "Lactose"
+msgstr "Laktose"
+
+msgctxt "nutrition_casein"
+msgid "Casein"
+msgstr "Casein"
+
+msgctxt "nutrition_maltodextrins"
+msgid "Maltodextrins"
+msgstr "Maltodextrine"
+
+msgctxt "nutrition_serum_proteins"
+msgid "Serum Proteins"
+msgstr "Serumproteine"
+
+msgctxt "nutrition_nucleotides"
+msgid "Nucleotides"
+msgstr "Nukleotide"
+
+msgctxt "for_100g"
+msgid "For 100 g"
+msgstr "Für 100 g"
+
+msgctxt "serving"
+msgid "Per serving"
+msgstr "Pro Portion"
+
+msgctxt "minerals"
+msgid "Minerals"
+msgstr "Mineralien"
+
+msgctxt "nutrition_calcium"
+msgid "Calcium"
+msgstr "Kalzium"
+
+msgctxt "nutrition_potassium"
+msgid "Potassium"
+msgstr "Kalium"
+
+msgctxt "nutrition_chlore"
+msgid "Chlorine"
+msgstr "Chlor"
+
+msgctxt "nutrition_magnesium"
+msgid "Magnesium"
+msgstr "Magnesium"
+
+msgctxt "nutrition_taurine"
+msgid "Taurine"
+msgstr "Taurin"
+
+msgctxt "nutrition_monounsaturatedFat"
+msgid "Mono unsaturated fat"
+msgstr "Einfch ungesättigte Fette"
+
+msgctxt "nutrition_polyunsaturatedFat"
+msgid "Poly unsaturated fat"
+msgstr "Mehrfach ungesättigte Fette"
+
+msgctxt "nutrition_omega3"
+msgid "Omega 3"
+msgstr "Omega 3"
+
+msgctxt "nutrition_omega6"
+msgid "Omega 6"
+msgstr "Omega 6"
+
+msgctxt "nutrition_omega9"
+msgid "Omega 9"
+msgstr "Omega 9"
+
+msgctxt "nutrition_sucrose"
+msgid "Sucrose"
+msgstr "Saccharose"
+
+msgctxt "nutrition_glucose"
+msgid "Glucose"
+msgstr "Glukose"
+
+msgctxt "nutrition_fructose"
+msgid "Fructose"
+msgstr "Fruktose"
+
+msgctxt "nutrition_maltose"
+msgid "Maltose"
+msgstr "Maltose"
+
+msgctxt "nutrition_alcohol"
+msgid "Alcohol"
+msgstr "Alkohol"
+
+msgctxt "nutrition_vitamins"
+msgid "Vitamins"
+msgstr "Vitamine"
+
+msgctxt "vitamin_a"
+msgid "Vitamin A"
+msgstr "Vitamin A"
+
+msgctxt "vitamin_d"
+msgid "Vitamin d"
+msgstr "Vitamin D"
+
+msgctxt "vitamin_e"
+msgid "Vitamin e"
+msgstr "Vitamin E"
+
+msgctxt "vitamin_k"
+msgid "Vitamin k"
+msgstr "Vitamin K"
+
+msgctxt "vitamin_c"
+msgid "Vitamin C"
+msgstr "Vitamin C"
+
+msgctxt "vitamin_b1"
+msgid "Vitamin B1"
+msgstr "Vitamin B1"
+
+msgctxt "vitamin_b2"
+msgid "Vitamin B2"
+msgstr "Vitamin B2"
+
+msgctxt "vitamin_pp"
+msgid "Vitamin PP"
+msgstr "Vitamin PP"
+
+msgctxt "vitamin_b6"
+msgid "Vitamin B6"
+msgstr "Vitamin B6"
+
+msgctxt "vitamin_b9"
+msgid "Vitamin B9"
+msgstr "Vitamin B9"
+
+msgctxt "vitamin_b12"
+msgid "Vitamin B12"
+msgstr "Vitamin B12"
+
+msgctxt "biotin"
+msgid "Biotin"
+msgstr "Biotin"
+
+msgctxt "pantothenic_acid"
+msgid "Pantothenic acid"
+msgstr "Pantothensäure"
+
+msgctxt "nutrition_minerals"
+msgid "Minerals"
+msgstr "Mineralien"
+
+msgctxt "silica"
+msgid "Silica"
+msgstr "Siliziumdioxid"
+
+msgctxt "bicarbonate"
+msgid "Bicarbonate"
+msgstr "Bicarbonate"
+
+msgctxt "potassium"
+msgid "Potassium"
+msgstr "Kalium"
+
+msgctxt "chloride"
+msgid "Chloride"
+msgstr "Chlor"
+
+msgctxt "calcium"
+msgid "Calcium"
+msgstr "Kalzium"
+
+msgctxt "phosphorus"
+msgid "Phosphorus"
+msgstr "Phosphor"
+
+msgctxt "iron"
+msgid "Iron"
+msgstr "Eisen"
+
+msgctxt "magnesium"
+msgid "Magnesium"
+msgstr "Magnesium"
+
+msgctxt "zinc"
+msgid "Zinc"
+msgstr "Zink"
+
+msgctxt "copper"
+msgid "Copper"
+msgstr "Kupfer"
+
+msgctxt "manganese"
+msgid "Manganese"
+msgstr "Mangan"
+
+msgctxt "fluoride"
+msgid "Fluoride"
+msgstr "Fluoride"
+
+msgctxt "selenium"
+msgid "Selenium"
+msgstr "Selen"
+
+msgctxt "chromium"
+msgid "Chromium"
+msgstr "Chrom"
+
+msgctxt "molybdenum"
+msgid "Molybdenum"
+msgstr "Molybdän"
+
+msgctxt "iodine"
+msgid "Iodine"
+msgstr "Jod"
+
+msgctxt "caffeine"
+msgid "Caffeine"
+msgstr "Koffein"
+
+msgctxt "taurine"
+msgid "Taurine"
+msgstr "Taurin"
+
+msgctxt "ph"
+msgid "Ph"
+msgstr "Ph"
+
+msgctxt "fruits_vegetables_nuts"
+msgid "Fruits, vegetables, nuts"
+msgstr "Früchte, Gemüse, Nüsse"
+
+msgctxt "collagen_meat_protein_ratio"
+msgid "Collagen meat protein ratio"
+msgstr "Kollagenwert"
+
+msgctxt "cocoa"
+msgid "Cocoa"
+msgstr "Kakao"
+
+msgctxt "chlorophyl"
+msgid "Chlorophyl"
+msgstr "Chlorophyll"
+
+msgctxt "take_picture_ingredients"
+msgid "Take a picture of the ingredients"
+msgstr "Inhaltsstoffe fotografieren"
+
+msgctxt "take_picture_front"
+msgid "Take a picture of the front"
+msgstr "Vorderseite fotografieren"
+
+msgctxt "take_picture_nutrition_table"
+msgid "Take a picture of the nutrition table"
+msgstr "Nährwertangaben fotografieren"
+
+msgctxt "take_more_pictures"
+msgid "Take more pictures"
+msgstr "Weitere Fotos machen"

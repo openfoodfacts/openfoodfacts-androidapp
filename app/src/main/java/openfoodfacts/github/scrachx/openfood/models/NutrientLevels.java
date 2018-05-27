@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -12,7 +12,7 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class NutrientLevels implements Serializable {
-    private static final long serialVersionUID = 1L;
+
     private NutrimentLevel salt;
     private NutrimentLevel fat;
     private NutrimentLevel sugars;

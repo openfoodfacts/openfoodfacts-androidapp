@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -9,18 +9,17 @@ import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Transient;
+import org.greenrobot.greendao.annotation.Unique;
 
-import java.io.Serializable;
+import java.util.Locale;
 
-import org.openfoodfacts.scanner.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Entity(indexes = {
         @Index(value = "barcode", unique = true)
 })
-public class SendProduct implements Serializable {
-
-    private static final long serialVersionUID = 2L;
+public class SendProduct {
 
     @Id
     private Long id;
@@ -47,11 +46,12 @@ public class SendProduct implements Serializable {
     @Transient
     private String password;
 
-    public SendProduct() {
-    }
+    public SendProduct() {}
 
     @Generated(hash = 994048396)
-    public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight, String weight_unit, String imgupload_front, String imgupload_ingredients, String imgupload_nutrition) {
+    public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight,
+            String weight_unit, String imgupload_front, String imgupload_ingredients,
+            String imgupload_nutrition) {
         this.id = id;
         this.barcode = barcode;
         this.lang = lang;
@@ -155,7 +155,6 @@ public class SendProduct implements Serializable {
     /**
      * Compress the image according to the {@link ProductImageField}.
      * Add a "_small" prefix in the image name after the compression
-     *
      * @param field
      */
     public void compress(ProductImageField field) {
@@ -189,33 +188,5 @@ public class SendProduct implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public void copy(SendProduct sp) {
-        this.barcode = sp.getBarcode();
-        this.name = sp.getName();
-        this.brands = sp.getBrands();
-        this.weight = sp.getWeight();
-        this.weight_unit = sp.getWeight_unit();
-        this.imgupload_front = sp.getImgupload_front();
-        this.imgupload_ingredients = sp.getImgupload_ingredients();
-        this.imgupload_nutrition = sp.getImgupload_nutrition();
-        this.lang = sp.getLang();
-    }
-
-    public boolean isEqual(SendProduct sp) {
-        return (equalityOfString(this.barcode, sp.getBarcode()) && equalityOfString(this.name, sp.getName()) && equalityOfString(this.brands, sp
-                .getBrands()) && equalityOfString(this.weight, sp.getWeight()) && equalityOfString(this.weight_unit, sp.getWeight_unit()) &&
-                equalityOfString(this.imgupload_front, sp.getImgupload_front()) && equalityOfString(this.imgupload_nutrition, sp
-                .getImgupload_nutrition
-                ()) && equalityOfString(this.imgupload_ingredients, sp.getImgupload_ingredients()));
-    }
-
-    private boolean equalityOfString(String a, String b) {
-        if (a != null) {
-            return b != null && a.equals(b);
-        } else {
-            return b == null;
-        }
     }
 }

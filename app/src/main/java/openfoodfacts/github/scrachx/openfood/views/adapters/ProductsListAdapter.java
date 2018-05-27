@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.views.adapters;
+package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,8 +15,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
-import org.openfoodfacts.scanner.R;
-import org.openfoodfacts.scanner.models.Product;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 
 public class ProductsListAdapter extends BaseAdapter {
 
@@ -51,8 +51,8 @@ public class ProductsListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.products_list_item, null);
         }
 
-        ImageView imgIcon = convertView.findViewById(R.id.imgProduct);
-        TextView txtTitle = convertView.findViewById(R.id.nameProduct);
+        ImageView imgIcon = (ImageView) convertView.findViewById(R.id.imgProduct);
+        TextView txtTitle = (TextView) convertView.findViewById(R.id.nameProduct);
 
         Picasso.with(context)
                 .load(products.get(position).getImageSmallUrl())
@@ -65,11 +65,11 @@ public class ProductsListAdapter extends BaseAdapter {
         Product product = products.get(position);
         StringBuilder stringBuilder = new StringBuilder(product.getProductName() + "\n");
 
-        if (product != null && !product.getBrands().isEmpty()) {
+        if (!product.getBrands().isEmpty()) {
             stringBuilder.append(StringUtils.capitalize(product.getBrands().split(",")[0].trim()));
         }
 
-        if (product != null && !product.getQuantity().isEmpty()) {
+        if (!product.getQuantity().isEmpty()) {
             stringBuilder.append(" - ").append(product.getQuantity());
         }
 

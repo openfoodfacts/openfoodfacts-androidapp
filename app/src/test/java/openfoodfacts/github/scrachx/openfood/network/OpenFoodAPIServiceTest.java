@@ -1,19 +1,27 @@
-package org.openfoodfacts.scanner.network;
+package openfoodfacts.github.scrachx.openfood.network;
+
+import com.fasterxml.jackson.databind.JsonNode;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
-import org.openfoodfacts.scanner.models.Product;
-import org.openfoodfacts.scanner.models.Search;
-import org.openfoodfacts.scanner.models.SendProduct;
-import org.openfoodfacts.scanner.models.State;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
+import openfoodfacts.github.scrachx.openfood.models.Search;
+import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -21,20 +29,23 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertNotNull;
-import static org.openfoodfacts.scanner.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
+import static net.javacrumbs.jsonunit.fluent.JsonFluentAssert.assertThatJson;
+import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static org.junit.Assert.assertTrue;
 
-public class OpenFoodAPIServiceTest implements APIUtils {
+public class OpenFoodAPIServiceTest {
 
     private OpenFoodAPIService serviceRead;
     private OpenFoodAPIService serviceWrite;
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY);
 
-        OkHttpClient httpClient = HttpClientBuilder();
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .addInterceptor(logging)
+                .build();
 
         serviceRead = new Retrofit.Builder()
                 .baseUrl(APIUtils.GET_API)
@@ -70,7 +81,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     }
 
     @Test
-    public void byLanguage() {
+    public void byLanguage() throws Exception {
         Response<Search> searchResponse = serviceRead.byLanguage("italian").execute();
 
         assertNotNull(searchResponse);
@@ -80,7 +91,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     }
 
     @Test
-    public void byLabel() {
+    public void byLabel() throws Exception {
         Response<Search> searchResponse = serviceRead.byLabel("utz-certified").execute();
 
         assertNotNull(searchResponse);
@@ -90,7 +101,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     }
 
     @Test
-    public void byCategory() {
+    public void byCategory() throws Exception {
         Response<Search> searchResponse = serviceRead.byCategory("baby-foods").execute();
 
         assertNotNull(searchResponse);
@@ -100,7 +111,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     }
 
     @Test
-    public void byState() {
+    public void byState() throws Exception {
         Response<Search> searchResponse = serviceRead.byState("complete").execute();
 
         assertNotNull(searchResponse);
@@ -110,7 +121,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     }
 
     @Test
-    public void byPackaging() {
+    public void byPackaging() throws Exception {
         Response<Search> searchResponse = serviceRead.byPackaging("cardboard").execute();
 
         assertNotNull(searchResponse);
@@ -120,7 +131,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     }
 
     @Test
-    public void byBrand() {
+    public void byBrand() throws Exception {
         Response<Search> searchResponse = serviceRead.byBrand("monoprix").execute();
 
         assertNotNull(searchResponse);
@@ -130,7 +141,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     }
 
     @Test
-    public void byPurchasePlace() {
+    public void byPurchasePlace() throws Exception {
         Response<Search> searchResponse = serviceRead.byPurchasePlace("marseille-5").execute();
 
         assertNotNull(searchResponse);
@@ -140,7 +151,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     }
 
     @Test
-    public void byStore() {
+    public void byStore() throws Exception {
         Response<Search> searchResponse = serviceRead.byStore("super-u").execute();
 
         assertNotNull(searchResponse);
@@ -150,7 +161,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     }
 
     @Test
-    public void byCountry() {
+    public void byCountry() throws Exception {
         Response<Search> searchResponse = serviceRead.byCountry("france").execute();
 
         assertNotNull(searchResponse);
@@ -160,7 +171,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     }
 
     @Test
-    public void byIngredient() {
+    public void byIngredient() throws Exception {
         Response<Search> searchResponse = serviceRead.byIngredient("sucre").execute();
 
         assertNotNull(searchResponse);
@@ -170,7 +181,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     }
 
     @Test
-    public void byTrace() {
+    public void byTrace() throws Exception {
         Response<Search> searchResponse = serviceRead.byIngredient("eggs").execute();
 
         assertNotNull(searchResponse);
@@ -180,17 +191,17 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     }
 
     @Test
-    public void getProduct_notFound() {
+    public void getProduct_notFound() throws Exception {
         String barcode = "457457457";
-        Response<State> response = serviceRead.getFullProductByBarcode(barcode).execute();
+        Response<State> response = serviceRead.getProductByBarcode(barcode).execute();
 
-        assertTrue(response.isSuccessful());
+        assertTrue(response.isSuccess());
 
         assertEquals(0, response.body().getStatus());
         assertEquals("product not found", response.body().getStatusVerbose());
         assertEquals(barcode, response.body().getCode());
     }
-/*
+
     @Test
     public void saveImage_noImageFile_ko() throws IOException {
 
@@ -198,7 +209,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
 
         ProductImage image = new ProductImage("01010101010101", ProductImageField.FRONT, outputFile);
         Map<String, RequestBody> imgMap = new HashMap<>();
-        imgMap.put("code", image.getUniqueAllergenID());
+        imgMap.put("code", image.getCode());
         imgMap.put("imagefield", image.getField());
         imgMap.put("imgupload_front\"; filename=\"front_fr.png\"", image.getImguploadFront());
         imgMap.put("imgupload_ingredients\"; filename=\"ingredients_fr.png\"", image.getImguploadIngredients());
@@ -213,9 +224,9 @@ public class OpenFoodAPIServiceTest implements APIUtils {
                 .node("status")
                     .isEqualTo("status not ok");
     }
-*/
+
     @Test
-    public void post_product() {
+    public void post_product() throws IOException {
         SendProduct product = new SendProduct();
         product.setBarcode("978020137962");
         product.setName("coca");
@@ -227,13 +238,13 @@ public class OpenFoodAPIServiceTest implements APIUtils {
 //        Response<State> execute = serviceWrite.saveProduct(product).execute();
         Response<State> execute = serviceWrite.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), null, null, PRODUCT_API_COMMENT).execute();
 
-        assertTrue(execute.isSuccessful());
+        assertTrue(execute.isSuccess());
 
         State body = execute.body();
         assertEquals(body.getStatus(), 1);
         assertEquals(body.getStatusVerbose(), "fields saved");
 
-        Response<State> response = serviceWrite.getFullProductByBarcode(product.getBarcode()).execute();
+        Response<State> response = serviceWrite.getProductByBarcode(product.getBarcode()).execute();
         Product savedProduct = response.body().getProduct();
         assertEquals(product.getName(), savedProduct.getProductName());
         assertEquals(product.getBrands(), savedProduct.getBrands());
@@ -242,37 +253,37 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     }
 
     @Test
-    public void getProductByTrace_eggs_productsFound() {
+    public void getProductByTrace_eggs_productsFound() throws Exception {
         Response<Search> response = serviceRead.byTrace("eggs").execute();
         assertProductsFound(response);
     }
 
     @Test
-    public void getProductByPackagerCode_emb35069c_productsFound() {
+    public void getProductByPackagerCode_emb35069c_productsFound() throws Exception {
         Response<Search> response = serviceRead.byPackagerCode("emb-35069c").execute();
         assertProductsFound(response);
     }
 
     @Test
-    public void getProductByNutritionGrade_a_productsFound() {
+    public void getProductByNutritionGrade_a_productsFound() throws Exception {
         Response<Search> res = serviceRead.byNutritionGrade("a").execute();
         assertProductsFound(res);
     }
 
     @Test
-    public void getProductByCity_Paris_noProductFound() {
+    public void getProductByCity_Paris_noProductFound() throws Exception {
         Response<Search> response = serviceRead.byCity("paris").execute();
         assertNoProductsFound(response);
     }
 
     @Test
-    public void getProductByAdditive_e301_productsFound() {
+    public void getProductByAdditive_e301_productsFound() throws Exception {
         Response<Search> response = serviceRead.byAdditive("e301-sodium-ascorbate").execute();
         assertProductsFound(response);
     }
 
     private void assertProductsFound(Response<Search> response) {
-        assertTrue(response.isSuccessful());
+        assertTrue(response.isSuccess());
         Search search = response.body();
         List<Product> products = search.getProducts();
         assertNotNull(products);
@@ -280,7 +291,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
         assertFalse(products.isEmpty());
     }
     private void assertNoProductsFound(Response<Search> response) {
-        assertTrue(response.isSuccessful());
+        assertTrue(response.isSuccess());
         Search search = response.body();
         List<Product> products = search.getProducts();
         assertTrue(products.isEmpty());

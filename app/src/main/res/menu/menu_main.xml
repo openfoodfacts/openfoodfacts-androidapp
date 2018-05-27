@@ -1,18 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/ic_search_black"
         android:title="@string/action_search"
+        android:icon="@drawable/ic_search_black"
+        app:showAsAction="collapseActionView|ifRoom"
         app:actionViewClass="android.support.v7.widget.SearchView"
-        app:showAsAction="collapseActionView|ifRoom" />
-
-    <item
-        android:id="@+id/action_set_type"
-        android:icon="@drawable/ic_filter_list_black_24dp"
-        android:title="Contribution By"
-        android:visible="false"
-        app:showAsAction="always" />
+        />
 </menu>

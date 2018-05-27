@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class NutrientLevelsTest {
 
     @Test
-    public void jsonSerialization_ok() {
+    public void jsonSerialization_ok() throws Exception {
         NutrientLevels nutrientLevels = new NutrientLevels();
 
         nutrientLevels.setFat(NutrimentLevel.LOW);

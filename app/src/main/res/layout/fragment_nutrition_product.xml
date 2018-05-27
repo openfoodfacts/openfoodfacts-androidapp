@@ -1,124 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/swipeRefresh"
+    android:isScrollContainer="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical"
+    android:clipToPadding="false"
+    android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="fill_vertical"
-        android:clipToPadding="false"
-        android:fillViewport="true"
-        android:isScrollContainer="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/imageGrade"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/textServingSize"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/textCarbonFootprint"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/textNutrientTxt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:background="@drawable/textview_full"
+            android:padding="@dimen/spacing_small"
+            android:text="@string/txtNutrientLevel100g"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/font_normal"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/listNutrientLevels"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical">
+            android:scrollbars="vertical"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:background="@drawable/textview_full"
+            android:divider="@color/white"
+            android:dividerHeight="0dp"
+            android:padding="@dimen/spacing_small" />
 
-            <ImageView
-                android:id="@+id/imageGrade"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_normal"
-                android:clickable="true"
-                android:gravity="center"
-                android:focusable="true" />
-
-
-            <TextView
-                android:id="@+id/textCarbonFootprint"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@drawable/textview_full"
-                android:padding="@dimen/spacing_small"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_normal" />
-
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                app:cardElevation="4dp">
-
-                <TextView
-                    android:id="@+id/textServingSize"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
-                    android:padding="@dimen/spacing_small"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/font_normal" />
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
-
-                    <TextView
-                        android:id="@+id/textNutrientTxt"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:background="@drawable/textview_full"
-                        android:padding="@dimen/spacing_small"
-                        android:text="@string/txtNutrientLevel100g"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal"
-                        android:textStyle="bold" />
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/listNutrientLevels"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:background="@drawable/textview_full"
-                        android:divider="@color/white"
-                        tools:listitem="@layout/nutrient_lvl_list_item"
-                        android:dividerHeight="0dp"
-                        android:padding="@dimen/spacing_small"
-                        android:paddingBottom="60dp"
-                        android:scrollbars="vertical" />
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
-    </android.support.v4.widget.NestedScrollView>
-
-</android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

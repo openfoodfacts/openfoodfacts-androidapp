@@ -1,0 +1,1354 @@
+# Japanese translation for openfoodfacts
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the openfoodfacts
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  openfoodfacts\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2017-03-19 18:47+0100\n"
+"PO-Revision-Date: 2017-02-01 02:56+0000\n"
+"Last-Translator: Naofumi Fukue <naofum@gmail.com>\n"
+"Language: ja\n"
+"Language-Team: Japanese <ja@li.org>\n"
+"Plural-Forms: nplurals=1; plural=(0)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.3\n"
+
+msgctxt "hello_world"
+msgid "Hello world!"
+msgstr "Hello world!"
+
+msgctxt "action_settings"
+msgid "Settings"
+msgstr "設定"
+
+msgctxt "action_about"
+msgid "About"
+msgstr "アプリについて"
+
+msgctxt "action_discover"
+msgid "Discover"
+msgstr "見つける"
+
+msgctxt "contribute"
+msgid "How to contribute"
+msgstr "貢献する方法"
+
+msgctxt "action_find"
+msgid "Find"
+msgstr "検索"
+
+msgctxt "text_barcode"
+msgid "Type the barcode :"
+msgstr "バーコードを入力 :"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:0"
+msgid "Summary"
+msgstr "サマリー"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:1"
+msgid "Ingredients"
+msgstr "原材料"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:2"
+msgid "Nutrition"
+msgstr "栄養"
+
+#. Nav Drawer Product Menu Items
+msgctxt "nav_drawer_items_product:3"
+msgid "Nutrition Table"
+msgstr "栄養成分表"
+
+#. Text units
+msgctxt "units_array:0"
+msgid "g"
+msgstr "g"
+
+#. Text units
+msgctxt "units_array:1"
+msgid "mg"
+msgstr "mg"
+
+#. Text units
+msgctxt "units_array:2"
+msgid "kg"
+msgstr "kg"
+
+#. Text units
+msgctxt "units_array:3"
+msgid "l"
+msgstr "l"
+
+#. Text units
+msgctxt "units_array:4"
+msgid "ml"
+msgstr "ml"
+
+#. Text units
+msgctxt "units_array:5"
+msgid "cl"
+msgstr ""
+
+#. Text units
+msgctxt "units_array:6"
+msgid "fl oz"
+msgstr ""
+
+#. Text units
+msgctxt "lang_array:0"
+msgid "en"
+msgstr "en"
+
+#. Text units
+msgctxt "lang_array:1"
+msgid "fr"
+msgstr "fr"
+
+#. Text units
+msgctxt "lang_array:2"
+msgid "es"
+msgstr "es"
+
+#. Text units
+msgctxt "lang_array:3"
+msgid "it"
+msgstr "it"
+
+#. Text units
+msgctxt "lang_array:4"
+msgid "de"
+msgstr "de"
+
+#. Text units
+msgctxt "lang_array:5"
+msgid "ja"
+msgstr "ja"
+
+#. Text units
+msgctxt "lang_array:6"
+msgid "ru"
+msgstr "ru"
+
+#. Text units
+msgctxt "lang_array:7"
+msgid "pt"
+msgstr "pt"
+
+#. Text units
+msgctxt "lang_array:8"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:9"
+msgid "my"
+msgstr "my"
+
+#. Text units
+msgctxt "lang_array:10"
+msgid "kk"
+msgstr "kk"
+
+#. Text units
+msgctxt "lang_array:11"
+msgid "hy"
+msgstr "hy"
+
+#. Text units
+msgctxt "lang_array:12"
+msgid "el"
+msgstr "el"
+
+#. Text units
+msgctxt "lang_array:13"
+msgid "he"
+msgstr "he"
+
+#. Text units
+msgctxt "lang_array:14"
+msgid "gl"
+msgstr "gl"
+
+#. Text units
+msgctxt "lang_array:15"
+msgid "ca"
+msgstr "ca"
+
+#. Text units
+msgctxt "lang_array:16"
+msgid "cs"
+msgstr "cs"
+
+#. Text units
+msgctxt "lang_array:17"
+msgid "ar"
+msgstr "ar"
+
+#. Text units
+msgctxt "lang_array:18"
+msgid "fi"
+msgstr "fi"
+
+#. Text units
+msgctxt "lang_array:19"
+msgid "hi"
+msgstr "hi"
+
+#. Text units
+msgctxt "lang_array:20"
+msgid "kab"
+msgstr "kab"
+
+#. Text units
+msgctxt "lang_array:21"
+msgid "ko"
+msgstr "ko"
+
+#. Text units
+msgctxt "lang_array:22"
+msgid "lv"
+msgstr "lv"
+
+#. Text units
+msgctxt "lang_array:23"
+msgid "nl"
+msgstr "nl"
+
+#. Text units
+msgctxt "lang_array:24"
+msgid "pt-rBR"
+msgstr "pt-rBR"
+
+#. Text units
+msgctxt "lang_array:25"
+msgid "ro"
+msgstr "ro"
+
+#. Text units
+msgctxt "lang_array:26"
+msgid "sv"
+msgstr "sv"
+
+#. Text units
+msgctxt "lang_array:27"
+msgid "zh"
+msgstr "zh"
+
+#. Text units
+msgctxt "lang_array:28"
+msgid "nb"
+msgstr "nb"
+
+#. Text units
+msgctxt "lang_array:29"
+msgid "da"
+msgstr "da"
+
+#. Text units
+msgctxt "lang_array:30"
+msgid "zh-rCN"
+msgstr "zh-rCN"
+
+msgctxt "lang_label_array:0"
+msgid "English"
+msgstr "英語"
+
+msgctxt "lang_label_array:1"
+msgid "French"
+msgstr "フランス語"
+
+msgctxt "lang_label_array:2"
+msgid "Spanish"
+msgstr "スペイン語"
+
+msgctxt "lang_label_array:3"
+msgid "Italian"
+msgstr "イタリア語"
+
+msgctxt "lang_label_array:4"
+msgid "German"
+msgstr "ドイツ語"
+
+msgctxt "lang_label_array:5"
+msgid "Japanese"
+msgstr "日本語"
+
+msgctxt "lang_label_array:6"
+msgid "Russian"
+msgstr "ロシア語"
+
+msgctxt "lang_label_array:7"
+msgid "Portuguese"
+msgstr "ポルトガル語"
+
+msgctxt "lang_label_array:8"
+msgid "Swedish"
+msgstr "スウェーデン語"
+
+msgctxt "lang_label_array:9"
+msgid "Burmese"
+msgstr "ビルマ語"
+
+msgctxt "lang_label_array:10"
+msgid "Kazakh"
+msgstr "カザフ語"
+
+msgctxt "lang_label_array:11"
+msgid "Armenian"
+msgstr "アルメニア語"
+
+msgctxt "lang_label_array:12"
+msgid "Greek"
+msgstr "ギリシャ語"
+
+msgctxt "lang_label_array:13"
+msgid "Hebrew"
+msgstr "ヘブライ語"
+
+msgctxt "lang_label_array:14"
+msgid "Galician"
+msgstr "ガリシア語"
+
+msgctxt "lang_label_array:15"
+msgid "Catalan"
+msgstr "カタロニア語"
+
+msgctxt "lang_label_array:16"
+msgid "Czech"
+msgstr "チェコ語"
+
+msgctxt "lang_label_array:17"
+msgid "Arabic"
+msgstr "アラビア語"
+
+msgctxt "lang_label_array:18"
+msgid "Finnish"
+msgstr "フィンランド語"
+
+msgctxt "lang_label_array:19"
+msgid "Hindi"
+msgstr "ヒンディー語"
+
+msgctxt "lang_label_array:20"
+msgid "Kabyle"
+msgstr "カビル語"
+
+msgctxt "lang_label_array:21"
+msgid "Korean"
+msgstr "朝鮮語"
+
+msgctxt "lang_label_array:22"
+msgid "Latvian"
+msgstr "ラトビア語"
+
+msgctxt "lang_label_array:23"
+msgid "Dutch"
+msgstr "オランダ語"
+
+msgctxt "lang_label_array:24"
+msgid "Brazilian portuguese"
+msgstr "ブラジルポルトガル語"
+
+msgctxt "lang_label_array:25"
+msgid "Romanian"
+msgstr "ルーマニア語"
+
+msgctxt "lang_label_array:26"
+msgid "Swedish"
+msgstr "スウェーデン語"
+
+msgctxt "lang_label_array:27"
+msgid "Chinese"
+msgstr "中国語"
+
+msgctxt "lang_label_array:28"
+msgid "Norwegian (Bokmal)"
+msgstr "ノルウェー語 (ブークモール)"
+
+msgctxt "lang_label_array:29"
+msgid "Danish"
+msgstr "デンマーク語"
+
+msgctxt "lang_label_array:30"
+msgid "Simplified Chinese"
+msgstr "中国語（簡体字）"
+
+msgctxt "images_array:0"
+msgid "Default"
+msgstr "デフォルト"
+
+msgctxt "images_array:1"
+msgid "Nutrition"
+msgstr "栄養"
+
+msgctxt "images_array:2"
+msgid "Ingredients"
+msgstr "原材料"
+
+#. Content Description
+msgctxt "search_button"
+msgid "Search"
+msgstr "検索"
+
+msgctxt "no_products"
+msgid "Products not found"
+msgstr "製品が見つかりません"
+
+msgctxt "desc_list_item_icon"
+msgid "Item Icon"
+msgstr "アイテムアイコン"
+
+msgctxt "alert_dialog_warning_title"
+msgid "Warning"
+msgstr "警告"
+
+msgctxt "alert_dialog_warning_msg_user"
+msgid "User/password has changed, please update information"
+msgstr "ユーザー/パスワードを変更しました。情報を更新してください"
+
+msgctxt "alert_dialog_product_error_msg"
+msgid "Product not found, please try again"
+msgstr "製品が見つかりません。もう一度試してください"
+
+msgctxt "toast_retrieving"
+msgid "Loading..."
+msgstr "読み込んでいます..."
+
+msgctxt "txtBarcode"
+msgid "Barcode :"
+msgstr "バーコード :"
+
+msgctxt "txtQuantity"
+msgid "Quantity :"
+msgstr "量 :"
+
+msgctxt "txtPackaging"
+msgid "Packaging :"
+msgstr "パッケージ :"
+
+msgctxt "txtBrands"
+msgid "Brands :"
+msgstr "ブランド :"
+
+msgctxt "txtCategories"
+msgid "Categories :"
+msgstr "カテゴリー :"
+
+msgctxt "txtLabels"
+msgid "Labels, certifications, awards :"
+msgstr "ラベル、認定、表彰 :"
+
+msgctxt "txtManufacturing"
+msgid "Manufacturing or processing places :"
+msgstr "製造または加工場所 :"
+
+msgctxt "txtIngredientsOrigins"
+msgid "Origin of ingredients :"
+msgstr "原材料の原産地 :"
+
+msgctxt "txtCity"
+msgid "City, state and country where purchased :"
+msgstr "購入した市区町村、都道府県、国 :"
+
+msgctxt "txtStores"
+msgid "Stores :"
+msgstr "店舗 :"
+
+msgctxt "txtCountries"
+msgid "Countries where sold :"
+msgstr "販売国 :"
+
+msgctxt "txtIngredients"
+msgid "Ingredients list :"
+msgstr "原材料一覧 :"
+
+msgctxt "txtSubstances"
+msgid "Substances or products causing allergies or intolerances :"
+msgstr "アレルギーまたは不耐性の原因となる物質または製品 :"
+
+msgctxt "txtAdditives"
+msgid "Additives :"
+msgstr "添加物 :"
+
+msgctxt "txtTraces"
+msgid "Traces :"
+msgstr "追跡 :"
+
+msgctxt "txtMayBeFromPalmOilProduct"
+msgid "Ingredients that may be from palm oil :"
+msgstr "パーム油を原材料とする可能性があるもの :"
+
+msgctxt "txtPalmOilProduct"
+msgid "Ingredients from palm oil :"
+msgstr "パーム油を原材料とするもの :"
+
+msgctxt "txtServingSize"
+msgid "Serving size :"
+msgstr "分量 :"
+
+msgctxt "txtNutrientLevel100g"
+msgid "Nutrient levels for 100g :"
+msgstr "100g 当たりの栄養成分:"
+
+msgctxt "txtNutritionLevelLow"
+msgid "in low quantity"
+msgstr "少量"
+
+msgctxt "txtNutritionLevelModerate"
+msgid "in moderate quantity"
+msgstr "適量"
+
+msgctxt "txtNutritionLevelHigh"
+msgid "in high quantity"
+msgstr "多量"
+
+msgctxt "txtLogin"
+msgid "Login :"
+msgstr "ログイン :"
+
+msgctxt "txtPass"
+msgid "Password :"
+msgstr "パスワード :"
+
+msgctxt "txtTitleHome"
+msgid "Open your food and know what you eat"
+msgstr "食品を開くと何を食べているか分かります"
+
+msgctxt "txtSave"
+msgid "Save"
+msgstr "保存"
+
+msgctxt "txtSignIn"
+msgid "Sign in"
+msgstr "サインイン"
+
+msgctxt "txtUser"
+msgid "User panel"
+msgstr "ユーザーパネル"
+
+msgctxt "txtToastSaved"
+msgid "User saved"
+msgstr "ユーザーを保存しました"
+
+msgctxt "txtSalt"
+msgid "Salt"
+msgstr "食塩"
+
+msgctxt "txtFat"
+msgid "Fat"
+msgstr "脂肪"
+
+msgctxt "txtSugars"
+msgid "Sugars"
+msgstr "砂糖"
+
+msgctxt "txtSaturatedFat"
+msgid "Satured fat"
+msgstr "飽和脂肪酸"
+
+msgctxt "hintBarcode"
+msgid "Barcode"
+msgstr "バーコード"
+
+msgctxt "hintLogin"
+msgid "Login"
+msgstr "ログイン"
+
+msgctxt "hintPass"
+msgid "Password"
+msgstr "パスワード"
+
+msgctxt "errorLogin"
+msgid "Login or password error"
+msgstr "ログインまたはパスワードエラー"
+
+msgctxt "errorWeb"
+msgid "We were not able to access the internet. Do you have connectivity issues?"
+msgstr "インターネットにアクセスできませんでした。接続に問題がありませんか?"
+
+msgctxt "txtInfoLoginOk"
+msgid "User saved"
+msgstr "ユーザーを保存しました"
+
+msgctxt "txtInfoLoginNo"
+msgid "User not saved"
+msgstr "ユーザーを保存できませんでした"
+
+msgctxt "txtDialogsTitle"
+msgid "Information"
+msgstr "情報"
+
+msgctxt "txtDialogsContent"
+msgid ""
+"The product you scanned does not exist yet in Open Food Facts. Please add"
+" it."
+msgstr ""
+
+msgctxt "txtDialogsContentPowerMode"
+msgid "The product you scanned does already exist in Open Food Facts."
+msgstr "スキャンした製品は、すでに Open Food Facts に存在します。"
+
+msgctxt "txtDialogsContentSend"
+msgid "Do you want send the saved products to the database?"
+msgstr "データベースに保存された製品を送信しますか?"
+
+msgctxt "txtYes"
+msgid "Yes"
+msgstr "はい"
+
+msgctxt "txtNo"
+msgid "No"
+msgstr "いいえ"
+
+msgctxt "hintNameProduct"
+msgid "Name"
+msgstr "名前"
+
+msgctxt "hintEnergy"
+msgid "Energy in kJ per serving"
+msgstr "一食当たりのエネルギー (KJ)"
+
+msgctxt "hintEnergyUnit"
+msgid "Energy unit"
+msgstr "エネルギーの単位"
+
+msgctxt "hintWeight"
+msgid "Weight"
+msgstr "重量"
+
+msgctxt "hintStores"
+msgid "Store"
+msgstr "店舗"
+
+msgctxt "hintBrand"
+msgid "Brand"
+msgstr "ブランド（会社名）"
+
+msgctxt "txtTakePicture"
+msgid "Take picture"
+msgstr "写真を撮影"
+
+msgctxt "txtSendAll"
+msgid "Upload all"
+msgstr "すべてアップロード"
+
+msgctxt "txtNoData"
+msgid "No data"
+msgstr "データはありません"
+
+msgctxt "txtPictureNeeded"
+msgid "Please take a picture first"
+msgstr "まず写真を撮ってください"
+
+msgctxt "toastSending"
+msgid "Uploading..."
+msgstr "アップロードしています..."
+
+msgctxt "dataSaved"
+msgid "Saved locally on your device"
+msgstr "お使いのデバイス内に保存しました"
+
+msgctxt "txtInfoAddUser"
+msgid "Please enter your login and password"
+msgstr "ログインとパスワードを入力してください"
+
+msgctxt "txtDataUpdated"
+msgid "Data updated"
+msgstr "データを更新しました"
+
+msgctxt "txtLoading"
+msgid "Loading..."
+msgstr "読み込んでいます..."
+
+msgctxt "txtDialogsContentDelete"
+msgid "Do you want to delete this draft?"
+msgstr "この下書きを削除しますか?"
+
+msgctxt "txtDialogsContentInfoSave"
+msgid "The product is saved locally, you can edit it in the Offline Edit menu"
+msgstr "この製品はローカルに保存されます。オフライン編集 メニューで編集することができます"
+
+msgctxt "txtBarcodeRequire"
+msgid "Barcode required"
+msgstr "バーコードが必要です"
+
+msgctxt "txtOk"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "txtContentDialogUploading"
+msgid "Please don't exit during the process..."
+msgstr "処理中はアプリを終了しないでください..."
+
+msgctxt "txtAbout"
+msgid ""
+"The pictures you send are published under the free licence Creative "
+"Commons Attribution and ShareAlike."
+msgstr "あなたが送信した画像はフリーのライセンスクリエイティブコモンズと同一条件許諾の下で公開されます。"
+
+msgctxt "txtAllsent"
+msgid "Products sent"
+msgstr "製品を送信しました"
+
+msgctxt "txtPalm"
+msgid "The product does not contain any palm oil"
+msgstr "製品にはパーム油は含まれていません"
+
+msgctxt "txtBarcodeNotValid"
+msgid "Barcode not valid"
+msgstr "バーコードが正しくありません"
+
+msgctxt "try_it_scan_now"
+msgid "Scan product"
+msgstr "製品をスキャン"
+
+msgctxt "share"
+msgid "Share"
+msgstr "共有"
+
+msgctxt "msg_share"
+msgid "Look at this product on Open Food Facts :"
+msgstr "Open Food Facts でこの製品を参照してください:"
+
+msgctxt "create_account"
+msgid "Sign up"
+msgstr "サインアップ"
+
+msgctxt "home_drawer"
+msgid "Home"
+msgstr "ホーム"
+
+msgctxt "open_beauty_drawer"
+msgid "Open Beauty Facts"
+msgstr "Open Beauty Facts"
+
+msgctxt "open_food_drawer"
+msgid "Open Food Facts"
+msgstr ""
+
+msgctxt "search_drawer"
+msgid "Search"
+msgstr "検索"
+
+#, fuzzy
+msgctxt "search_by_barcode_drawer"
+msgid "Type barcode"
+msgstr "バーコードで検索"
+
+msgctxt "search_by_name_drawer"
+msgid "Search by name"
+msgstr "名前で検索"
+
+#, fuzzy
+msgctxt "scan_search"
+msgid "Scan Barcode"
+msgstr "スキャン"
+
+msgctxt "user_drawer"
+msgid "User"
+msgstr "ユーザー"
+
+msgctxt "offline_edit_drawer"
+msgid "Offline edit"
+msgstr "オフライン編集"
+
+msgctxt "txt_anonymous"
+msgid "Anonymous"
+msgstr "匿名"
+
+msgctxt "txt_product_not_found"
+msgid "Products not found"
+msgstr "製品が見つかりません"
+
+msgctxt "delete_txt"
+msgid "Delete"
+msgstr "削除"
+
+msgctxt "sign_in_drawer"
+msgid "Sign-in"
+msgstr "サインイン"
+
+msgctxt "alert_drawer"
+msgid "Allergen alert"
+msgstr "アレルゲン警告"
+
+msgctxt "warning_allergens"
+msgid "Contains allergens"
+msgstr "アレルゲンを含んでいます"
+
+msgctxt "title_dialog_alert"
+msgid "Add alert"
+msgstr "警告を追加"
+
+msgctxt "warning_alert_data"
+msgid ""
+"Your allergies info will never be sent to the Open Food Facts server. "
+"Also, be careful that data may not be accurate, please double-check by "
+"yourself!"
+msgstr ""
+"アレルギー情報は、Open Food Facts "
+"サーバーに送信されることはありません。また、データが正確でない可能性があることにご注意ください。ご自分でもう一度ご確認ください!"
+
+msgctxt "from_gallery"
+msgid "From gallery"
+msgstr "ギャラリーから"
+
+msgctxt "product_sent"
+msgid "Product sent successfully"
+msgstr "製品を送信しました"
+
+msgctxt "action_edit_product"
+msgid "Edit product"
+msgstr "製品を編集"
+
+msgctxt "title_info_dialog"
+msgid "Information"
+msgstr "情報"
+
+msgctxt "text_offline_info_dialog"
+msgid ""
+"You can scan products when you're offline to add them to Open Food Facts "
+"later. All the products you scan will appear here, and you'll be able to "
+"send them using the button below."
+msgstr ""
+"オフライン時に製品をスキャンして、後で Open Food Facts "
+"に追加するすることができます。スキャンする製品がすべてここに表示されます。下のボタンを使用してそれらを送信することができます。"
+
+msgctxt "permission_camera"
+msgid "Camera permission is needed to scan barcodes and take pictures."
+msgstr "バーコードのスキャンと写真の撮影には、カメラのアクセス許可が必要です。"
+
+msgctxt "permission_title"
+msgid "Permission information"
+msgstr "アクセス許可情報"
+
+msgctxt "permission_denied"
+msgid "Please activate permission in the settings"
+msgstr "設定でアクセス許可を有効にしてください"
+
+msgctxt "permission_storage"
+msgid "Storage permission is needed to take or select pictures"
+msgstr "写真を撮ったり選択したりするにはストレージのアクセス許可が必要です"
+
+msgctxt "info_download_data"
+msgid ""
+"You need to download some data to get this functionality working, please "
+"press yes to download it."
+msgstr "この機能を動作させるために、いくつかのデータをダウンロードする必要があります。ダウンロードするには、はい を押してください。"
+
+msgctxt "info_download_data_connection"
+msgid ""
+"You need to download some data to get this functionality working. Please "
+"activate internet connection."
+msgstr "この機能を動作させるために、いくつかのデータをダウンロードする必要があります。インターネット接続を有効にしてください。"
+
+msgctxt "msg_input_empty"
+msgid "Please fill the fields first."
+msgstr "まず項目を入力してください。"
+
+msgctxt "new_offline_info"
+msgid ""
+"Please take a picture of the product, ingredients, nutrition facts table "
+"and any other information on the label. Thank you!"
+msgstr "製品、原材料、栄養成分表、およびラベル上の他の情報を撮影してください。 ありがとうございます!"
+
+#. Strings related to login
+msgctxt "error_invalid_password"
+msgid "The password needs to be a least 6 characters long."
+msgstr "パスワードは6文字以上にする必要があります。"
+
+msgctxt "error_field_required"
+msgid "This field is required."
+msgstr "このフィールドは必須入力です。"
+
+msgctxt "action_preferences"
+msgid "Preferences"
+msgstr "プリファレンス"
+
+msgctxt "prefs_scan_startup"
+msgid "Scan on startup"
+msgstr "起動時にスキャン"
+
+msgctxt "prefs_scan_startup_summary"
+msgid "This option if selected will start scan when app is opened."
+msgstr "このオプションを選択した場合、アプリを開いたときにスキャンを開始します。"
+
+msgctxt "prefs_power_mode"
+msgid "Power mode scan"
+msgstr "パワーモードスキャン"
+
+msgctxt "prefs_power_mode_summary"
+msgid ""
+"Quickly scan products in a supermarket to see which ones are not in the "
+"database."
+msgstr "スーパーマーケット内の製品をすばやくスキャンして、データベースに含まれていないものを確認します。"
+
+msgctxt "prefs_language"
+msgid "Language"
+msgstr "言語"
+
+msgctxt "prefs_language_summary"
+msgid "Change language"
+msgstr "言語の変更"
+
+msgctxt "scan_history_drawer"
+msgid "History"
+msgstr "履歴"
+
+msgctxt "clear_history"
+msgid "Clear history"
+msgstr "履歴をクリア"
+
+msgctxt "title_clear_history_dialog"
+msgid "Clear"
+msgstr "クリア"
+
+msgctxt "text_clear_history_dialog"
+msgid "Do you want to clear all scan history?"
+msgstr "すべてのスキャン履歴をクリアしますか?"
+
+msgctxt "export_csv_history"
+msgid "Export CSV"
+msgstr "CSV をエクスポート"
+
+msgctxt "txt_exporting_history"
+msgid "Exporting history..."
+msgstr "履歴のエクスポート中..."
+
+msgctxt "txt_history_exported"
+msgid "History exported"
+msgstr "履歴をエクスポートしました"
+
+msgctxt "permision_write_external_storage"
+msgid "Write external storage permission is needed to export history."
+msgstr "履歴をエクスポートするために、外部ストレージの書き込みアクセス許可が必要です。"
+
+msgctxt "txt_nutrition_not_found"
+msgid "N/A"
+msgstr "適用外"
+
+#. Nutrition info tab
+msgctxt "nutrition_carbohydrate"
+msgid "Carbohydrate"
+msgstr "炭水化物"
+
+msgctxt "nutrition_carbohydrate_short_name"
+msgid "Carbohydrate (g)"
+msgstr "炭水化物 (g)"
+
+msgctxt "nutrition_cholesterol"
+msgid "Cholesterol"
+msgstr "コレステロール"
+
+msgctxt "nutrition_cholesterol_short_name"
+msgid "Cholesterol (g)"
+msgstr "コレステロール (g)"
+
+msgctxt "nutrition_energy"
+msgid "Energy"
+msgstr "エネルギー"
+
+msgctxt "nutrition_energy_short_name"
+msgid "Energy"
+msgstr "エネルギー"
+
+msgctxt "nutrition_fat"
+msgid "Fat"
+msgstr "脂肪"
+
+msgctxt "nutrition_fat_short_name"
+msgid "Fat (g)"
+msgstr "脂肪 (g)"
+
+msgctxt "nutrition_fiber"
+msgid "Dietary fiber"
+msgstr "食物繊維"
+
+msgctxt "nutrition_fiber_short_name"
+msgid "Dietary fiber (g)"
+msgstr "食物繊維"
+
+msgctxt "nutrition_header"
+msgid "Nutrition facts"
+msgstr "栄養成分表"
+
+msgctxt "nutrition_no_data_message"
+msgid "No data is available for this product"
+msgstr "この製品のデータはありません"
+
+msgctxt "nutrition_per_quantity"
+msgid "For 100g/100ml"
+msgstr "100g/100ml 当たり"
+
+msgctxt "nutrition_proteins"
+msgid "Proteins"
+msgstr "タンパク質"
+
+msgctxt "nutrition_proteins_short_name"
+msgid "Proteins (g)"
+msgstr "タンパク質 (g)"
+
+msgctxt "nutrition_salt"
+msgid "Salt"
+msgstr "食塩"
+
+msgctxt "nutrition_salt_short_name"
+msgid "Salt (g)"
+msgstr "食塩 (g)"
+
+msgctxt "nutrition_satured_fat"
+msgid "Satured fat"
+msgstr "飽和脂肪酸"
+
+msgctxt "nutrition_satured_fat_short_name"
+msgid "Satured fat (g)"
+msgstr "飽和脂肪酸 (g)"
+
+msgctxt "nutrition_serving"
+msgid "Per serving"
+msgstr "一食当たり"
+
+msgctxt "nutrition_serving_size"
+msgid "Serving size :"
+msgstr "一人前の分量 :"
+
+msgctxt "nutrition_sodium"
+msgid "Sodium"
+msgstr "ナトリウム"
+
+msgctxt "nutrition_sodium_short_name"
+msgid "Sodium (g)"
+msgstr "ナトリウム (g)"
+
+msgctxt "nutrition_sugars"
+msgid "Sugars"
+msgstr "砂糖"
+
+msgctxt "nutrition_sugars_short_name"
+msgid "Sugars (g)"
+msgstr "砂糖 (g)"
+
+msgctxt "nutrition_trans_fat"
+msgid "Trans fat"
+msgstr "トランス脂肪酸"
+
+msgctxt "nutrition_trans_fat_short_name"
+msgid "Trans fat (g)"
+msgstr "トランス脂肪酸 (g)"
+
+msgctxt "nutriment_serving_size"
+msgid "Per portion :"
+msgstr "品目当たり :"
+
+msgctxt "action_manage_account"
+msgid "Manage account"
+msgstr "アカウントの管理"
+
+msgctxt "action_contributes"
+msgid "Your contributions"
+msgstr "あなたの貢献"
+
+msgctxt "logout_drawer"
+msgid "Logout"
+msgstr "ログアウト"
+
+msgctxt "contribution_without_account"
+msgid "You can sign-in or create an account to keep your contributions"
+msgstr "サインイン、またはアカウントを作成して、貢献を続けることができます"
+
+msgctxt "textCarbonFootprint"
+msgid "Carbon footprint / CO2 emissions: "
+msgstr "カーボンフットプリント / CO2 排出量: "
+
+msgctxt "txtDialogPowerMode"
+msgid "Quick view"
+msgstr "クイックビュー"
+
+msgctxt "txtSeeMore"
+msgid "See more"
+msgstr "さらに表示"
+
+msgctxt "action_search"
+msgid "Search"
+msgstr "検索"
+
+msgctxt "search_hint"
+msgid "Search a product"
+msgstr "製品を検索します"
+
+msgctxt "number_of_results"
+msgid "Number of results :"
+msgstr "結果の数 :"
+
+msgctxt "txt_no_results"
+msgid "No results found"
+msgstr "見つかりませんでした"
+
+msgctxt "nutrition_lactose"
+msgid "Lactose"
+msgstr "乳糖"
+
+msgctxt "nutrition_casein"
+msgid "Casein"
+msgstr "カゼイン"
+
+msgctxt "nutrition_maltodextrins"
+msgid "Maltodextrins"
+msgstr "マルトデキストリン"
+
+msgctxt "nutrition_serum_proteins"
+msgid "Serum Proteins"
+msgstr "血清タンパク質"
+
+msgctxt "nutrition_nucleotides"
+msgid "Nucleotides"
+msgstr "ヌクレオチド"
+
+msgctxt "for_100g"
+msgid "For 100 g"
+msgstr "100 g 当たり"
+
+msgctxt "serving"
+msgid "Per serving"
+msgstr "一食当たり"
+
+msgctxt "minerals"
+msgid "Minerals"
+msgstr "ミネラル"
+
+msgctxt "nutrition_calcium"
+msgid "Calcium"
+msgstr "カルシウム"
+
+msgctxt "nutrition_potassium"
+msgid "Potassium"
+msgstr "カリウム"
+
+msgctxt "nutrition_chlore"
+msgid "Chlorine"
+msgstr "塩素"
+
+msgctxt "nutrition_magnesium"
+msgid "Magnesium"
+msgstr "マグネシウム"
+
+msgctxt "nutrition_taurine"
+msgid "Taurine"
+msgstr "タウリン"
+
+msgctxt "nutrition_monounsaturatedFat"
+msgid "Mono unsaturated fat"
+msgstr "一価不飽和脂肪"
+
+msgctxt "nutrition_polyunsaturatedFat"
+msgid "Poly unsaturated fat"
+msgstr "多価不飽和脂肪"
+
+msgctxt "nutrition_omega3"
+msgid "Omega 3"
+msgstr "オメガ 3"
+
+msgctxt "nutrition_omega6"
+msgid "Omega 6"
+msgstr "オメガ 6"
+
+msgctxt "nutrition_omega9"
+msgid "Omega 9"
+msgstr "オメガ 9"
+
+msgctxt "nutrition_sucrose"
+msgid "Sucrose"
+msgstr "スクロース"
+
+msgctxt "nutrition_glucose"
+msgid "Glucose"
+msgstr "グルコース"
+
+msgctxt "nutrition_fructose"
+msgid "Fructose"
+msgstr "果糖"
+
+msgctxt "nutrition_maltose"
+msgid "Maltose"
+msgstr "麦芽糖"
+
+msgctxt "nutrition_alcohol"
+msgid "Alcohol"
+msgstr "アルコール"
+
+msgctxt "nutrition_vitamins"
+msgid "Vitamins"
+msgstr "ビタミン"
+
+msgctxt "vitamin_a"
+msgid "Vitamin A"
+msgstr "ビタミン A"
+
+msgctxt "vitamin_d"
+msgid "Vitamin d"
+msgstr "ビタミン D"
+
+msgctxt "vitamin_e"
+msgid "Vitamin e"
+msgstr "ビタミン E"
+
+msgctxt "vitamin_k"
+msgid "Vitamin k"
+msgstr "ビタミン K"
+
+msgctxt "vitamin_c"
+msgid "Vitamin C"
+msgstr "ビタミン C"
+
+msgctxt "vitamin_b1"
+msgid "Vitamin B1"
+msgstr "ビタミン B1"
+
+msgctxt "vitamin_b2"
+msgid "Vitamin B2"
+msgstr "ビタミン B2"
+
+msgctxt "vitamin_pp"
+msgid "Vitamin PP"
+msgstr "ビタミン PP"
+
+msgctxt "vitamin_b6"
+msgid "Vitamin B6"
+msgstr "ビタミン B6"
+
+msgctxt "vitamin_b9"
+msgid "Vitamin B9"
+msgstr "ビタミン B9"
+
+msgctxt "vitamin_b12"
+msgid "Vitamin B12"
+msgstr "ビタミン B12"
+
+msgctxt "biotin"
+msgid "Biotin"
+msgstr "ビオチン"
+
+msgctxt "pantothenic_acid"
+msgid "Pantothenic acid"
+msgstr "パントテン酸"
+
+msgctxt "nutrition_minerals"
+msgid "Minerals"
+msgstr "ミネラル"
+
+msgctxt "silica"
+msgid "Silica"
+msgstr "シリカ"
+
+msgctxt "bicarbonate"
+msgid "Bicarbonate"
+msgstr "重炭酸塩"
+
+msgctxt "potassium"
+msgid "Potassium"
+msgstr "カリウム"
+
+msgctxt "chloride"
+msgid "Chloride"
+msgstr "塩化物"
+
+msgctxt "calcium"
+msgid "Calcium"
+msgstr "カルシウム"
+
+msgctxt "phosphorus"
+msgid "Phosphorus"
+msgstr "リン"
+
+msgctxt "iron"
+msgid "Iron"
+msgstr "鉄"
+
+msgctxt "magnesium"
+msgid "Magnesium"
+msgstr "マグネシウム"
+
+msgctxt "zinc"
+msgid "Zinc"
+msgstr "亜鉛"
+
+msgctxt "copper"
+msgid "Copper"
+msgstr "銅"
+
+msgctxt "manganese"
+msgid "Manganese"
+msgstr "マンガン"
+
+msgctxt "fluoride"
+msgid "Fluoride"
+msgstr "フッ化物"
+
+msgctxt "selenium"
+msgid "Selenium"
+msgstr "セレン"
+
+msgctxt "chromium"
+msgid "Chromium"
+msgstr "クロム"
+
+msgctxt "molybdenum"
+msgid "Molybdenum"
+msgstr "モリブデン"
+
+msgctxt "iodine"
+msgid "Iodine"
+msgstr "ヨウ素"
+
+msgctxt "caffeine"
+msgid "Caffeine"
+msgstr "カフェイン"
+
+msgctxt "taurine"
+msgid "Taurine"
+msgstr "タウリン"
+
+msgctxt "ph"
+msgid "Ph"
+msgstr "Ph"
+
+msgctxt "fruits_vegetables_nuts"
+msgid "Fruits, vegetables, nuts"
+msgstr "果物, 野菜, ナッツ"
+
+msgctxt "collagen_meat_protein_ratio"
+msgid "Collagen meat protein ratio"
+msgstr "コラーゲン肉タンパク質比"
+
+msgctxt "cocoa"
+msgid "Cocoa"
+msgstr "ココア"
+
+msgctxt "chlorophyl"
+msgid "Chlorophyl"
+msgstr "クロロフィル"
+
+msgctxt "take_picture_ingredients"
+msgid "Take a picture of the ingredients"
+msgstr ""
+
+msgctxt "take_picture_front"
+msgid "Take a picture of the front"
+msgstr ""
+
+msgctxt "take_picture_nutrition_table"
+msgid "Take a picture of the nutrition table"
+msgstr ""
+
+msgctxt "take_more_pictures"
+msgid "Take more pictures"
+msgstr ""
+

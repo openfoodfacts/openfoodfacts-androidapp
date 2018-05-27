@@ -11,6 +11,5 @@
   <string name="website_product">https://world.openbeautyfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
-  <string name="txtHome">Open Beauty Facts is a database of cosmetic products with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
-  <string name="tagline">化 妆 品 开 放 数 据</string>
+  <string name="txtHome">Open Beauty Facts is a database of cosmetics products with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
 </resources>

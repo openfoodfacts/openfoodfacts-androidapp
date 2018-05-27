@@ -1,54 +1,38 @@
-package org.openfoodfacts.scanner.views.adapters;
+package openfoodfacts.github.scrachx.openfood.views.adapters;
 
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v7.content.res.AppCompatResources;
-import android.support.v7.widget.RecyclerView;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
-import java.util.concurrent.Executors;
 
-import org.openfoodfacts.scanner.R;
-import org.openfoodfacts.scanner.models.SaveItem;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 
-public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveViewHolder> {
+public class SaveListAdapter extends BaseAdapter {
 
     private final Context context;
     private final List<SaveItem> saveItems;
-    private SaveClickInterface mSaveClickInterface;
 
-
-    public SaveListAdapter(Context context, List<SaveItem> saveItems, SaveClickInterface saveClickInterface) {
+    public SaveListAdapter(Context context, List<SaveItem> saveItems){
         this.context = context;
         this.saveItems = saveItems;
-        this.mSaveClickInterface = saveClickInterface;
     }
 
     @Override
-    public SaveViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.save_list_item, parent, false);
-        return new SaveViewHolder(itemView);
+    public int getCount() {
+        return saveItems.size();
     }
 
     @Override
-    public void onBindViewHolder(SaveViewHolder holder, int position) {
-
-        SaveItem item = saveItems.get(position);
-
-        holder.imgIcon.setImageDrawable(AppCompatResources.getDrawable(context, item.getIcon()));
-        holder.txtTitle.setText(item.getTitle());
-        Picasso.with(context).load("file://"+item.getUrl()).config(Bitmap.Config.RGB_565).into(holder.imgProduct);
-        holder.txtBarcode.setText(item.getBarcode());
-        holder.txtWeight.setText(item.getWeight());
-        holder.txtBrand.setText(item.getBrand());
-
+    public Object getItem(int position) {
+        return saveItems.get(position);
     }
 
     @Override
@@ -57,49 +41,26 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
     }
 
     @Override
-    public int getItemCount() {
-        return saveItems.size();
-    }
-
-    public interface SaveClickInterface {
-        void onClick(int position);
-
-        void onLongClick(int position);
-    }
-
-    class SaveViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-        ImageView imgIcon;
-        TextView txtTitle;
-        TextView txtBarcode;
-        ImageView imgProduct;
-        TextView txtWeight;
-        TextView txtBrand;
-
-        public SaveViewHolder(View itemView) {
-            super(itemView);
-            imgIcon = itemView.findViewById(R.id.iconSave);
-            txtTitle = itemView.findViewById(R.id.titleSave);
-            txtBarcode = itemView.findViewById(R.id.barcodeSave);
-            imgProduct = itemView.findViewById(R.id.imgSaveProduct);
-            txtWeight = itemView.findViewById(R.id.offlineWeight);
-            txtBrand = itemView.findViewById(R.id.offlineBrand);
-            itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            LayoutInflater mInflater = (LayoutInflater)
+                    context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+            convertView = mInflater.inflate(R.layout.save_list_item, null);
         }
 
-        @Override
-        public void onClick(View view) {
+        ImageView imgIcon = (ImageView) convertView.findViewById(R.id.iconSave);
+        TextView txtTitle = (TextView) convertView.findViewById(R.id.titleSave);
+        TextView txtBarcode= (TextView) convertView.findViewById(R.id.barcodeSave);
+        ImageView imgProduct = (ImageView) convertView.findViewById(R.id.imgSaveProduct);
 
-            int pos = getAdapterPosition();
-            mSaveClickInterface.onClick(pos);
-        }
+        SaveItem item = saveItems.get(position);
 
-        @Override
-        public boolean onLongClick(View view) {
-            int pos = getAdapterPosition();
-            mSaveClickInterface.onLongClick(pos);
-            return true;
-        }
+        imgIcon.setImageDrawable(VectorDrawableCompat.create(context.getResources(), item.getIcon(), null));
+        txtTitle.setText(item.getTitle());
+        imgProduct.setImageBitmap(item.getUrl());
+        txtBarcode.setText( item.getBarcode());
+
+        return convertView;
     }
 
 }

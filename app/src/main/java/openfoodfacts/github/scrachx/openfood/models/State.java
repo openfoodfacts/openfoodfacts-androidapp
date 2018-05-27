@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -20,7 +20,6 @@ import java.util.Map;
 })
 public class State implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @JsonProperty("status_verbose")
     private String statusVerbose;
     private long status;

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:isScrollContainer="false"
+    android:id="@+id/fragment_product_rating_container"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <RelativeLayout
+        android:id="@+id/ratingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RatingBar
+            android:id="@+id/ratingRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/spacing_normal"
+            android:numStars="5"
+            android:stepSize="1" />
+
+        <EditText
+            android:id="@+id/ratingCommentEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ratingRatingBar"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:background="@color/md_grey_100"
+            android:gravity="center"
+            android:hint="@string/enter_comment"
+            android:inputType="textCapSentences|textMultiLine"
+            android:minLines="5"
+            android:scrollHorizontally="false"
+            android:textSize="@dimen/font_larger"/>
+
+        <LinearLayout
+            android:id="@+id/ratingEditDeleteLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ratingCommentEditText"
+            android:visibility="invisible">
+
+            <Button
+                android:id="@+id/ratingEditButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_normal"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:layout_weight="1"
+                android:background="@color/md_grey_100"
+                android:padding="@dimen/spacing_small"
+                android:text="@string/edit_rating"/>
+
+            <Button
+                android:id="@+id/ratingDeleteButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:layout_weight="1"
+                android:background="@color/md_grey_100"
+                android:padding="@dimen/spacing_small"
+                android:text="@string/delete_rating"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/ratingSaveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ratingCommentEditText"
+            android:layout_centerHorizontal="true"
+            android:background="@color/md_grey_100"
+            android:enabled="false"
+            android:padding="@dimen/spacing_small"
+            android:text="@string/save_rating"/>
+
+        <TextView
+            android:id="@+id/ratingNoteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ratingSaveButton"
+            android:layout_margin="@dimen/spacing_normal"
+            android:text="@string/rating_note"/>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>

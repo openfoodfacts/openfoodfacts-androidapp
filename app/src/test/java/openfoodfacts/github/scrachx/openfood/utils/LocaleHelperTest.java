@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.utils;
+package openfoodfacts.github.scrachx.openfood.utils;
 
 import org.junit.Test;
 
@@ -12,21 +12,21 @@ import static org.junit.Assert.assertEquals;
 public class LocaleHelperTest {
 
     @Test
-    public void getLocale_fr() {
+    public void getLocale_fr() throws Exception {
         Locale locale = LocaleHelper.getLocale("fr");
 
         assertEquals(Locale.FRENCH, locale);
     }
 
     @Test
-    public void getLocale_en() {
+    public void getLocale_en() throws Exception {
         Locale locale = LocaleHelper.getLocale("en");
 
         assertEquals(Locale.ENGLISH, locale);
     }
 
     @Test
-    public void getLocale_en_US() {
+    public void getLocale_en_US() throws Exception {
         Locale locale = LocaleHelper.getLocale("en-US");
 
         assertEquals(Locale.US, locale);

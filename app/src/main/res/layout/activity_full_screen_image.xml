@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
-    android:orientation="vertical">
+    android:background="@android:color/black" >
 
-    <com.github.chrisbanes.photoview.PhotoView
-        android:id="@+id/imageViewFullScreen"
+    <uk.co.senab.photoview.PhotoView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         android:gravity="center"
-        android:scaleType="fitCenter"
-        android:transitionName="@string/product_transition" />
+        android:id="@+id/imageViewFullScreen"
+        />
 
 </LinearLayout>

@@ -1,26 +1,25 @@
-package org.openfoodfacts.scanner.views.adapters;
+package openfoodfacts.github.scrachx.openfood.views.adapters;
+
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v7.content.res.AppCompatResources;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-
-import org.openfoodfacts.scanner.R;
-import org.openfoodfacts.scanner.models.NavDrawerItem;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.NavDrawerItem;
 
 public class NavDrawerListAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<NavDrawerItem> navDrawerItems;
 
-    public NavDrawerListAdapter(Context context, ArrayList<NavDrawerItem> navDrawerItems) {
+    public NavDrawerListAdapter(Context context, ArrayList<NavDrawerItem> navDrawerItems){
         this.context = context;
         this.navDrawerItems = navDrawerItems;
     }
@@ -48,10 +47,10 @@ public class NavDrawerListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.drawer_list_item, null);
         }
 
-        ImageView imgIcon = convertView.findViewById(R.id.icon);
-        TextView txtTitle = convertView.findViewById(R.id.title);
+        ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
+        TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
 
-        imgIcon.setImageDrawable(AppCompatResources.getDrawable(context, navDrawerItems.get(position).getIcon()));
+        imgIcon.setImageDrawable(VectorDrawableCompat.create(context.getResources(), navDrawerItems.get(position).getIcon(), null));
         txtTitle.setText(navDrawerItems.get(position).getTitle());
 
         return convertView;

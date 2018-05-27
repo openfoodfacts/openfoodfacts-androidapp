@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.utils;
+package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,23 +8,20 @@ import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 
-import org.openfoodfacts.scanner.R;
+import openfoodfacts.github.scrachx.openfood.R;
 
 /**
- * Based on
- * <a href="http://stackoverflow.com/questions/35761636/is-it-possible-to-use-vectordrawable-in-buttons-and-textviews-using-androiddraw></a>
+ * Based on <a href="http://stackoverflow.com/questions/35761636/is-it-possible-to-use-vectordrawable-in-buttons-and-textviews-using-androiddraw</a>
  */
 public class CustomEditTextView extends AppCompatEditText {
 
     public CustomEditTextView(Context context) {
         super(context);
     }
-
     public CustomEditTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initAttrs(context, attrs);
     }
-
     public CustomEditTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttrs(context, attrs);
@@ -60,12 +57,7 @@ public class CustomEditTextView extends AppCompatEditText {
                 if (drawableTopId != -1)
                     drawableTop = AppCompatResources.getDrawable(context, drawableTopId);
             }
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                setCompoundDrawablesRelativeWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
-            } else {
-                setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
-            }
+            setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
             attributeArray.recycle();
         }
     }

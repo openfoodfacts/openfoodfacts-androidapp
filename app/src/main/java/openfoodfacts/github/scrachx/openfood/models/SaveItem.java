@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
 import android.graphics.Bitmap;
 
@@ -6,20 +6,16 @@ public class SaveItem {
 
     private String title;
     private int icon;
-    private String url;
+    private Bitmap url;
     private String barcode;
-    private String weight;
-    private String brand;
 
     public SaveItem(){}
 
-    public SaveItem(String title, int icon, String url, String barcode , String weight ,String brand) {
+    public SaveItem(String title, int icon, Bitmap url, String barcode) {
         this.title = title;
         this.icon = icon;
         this.url = url;
         this.barcode = barcode;
-        this.brand = brand;
-        this.weight =weight;
     }
 
     public String getBarcode() {
@@ -46,27 +42,11 @@ public class SaveItem {
         this.icon = icon;
     }
 
-    public String getUrl() {
+    public Bitmap getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Bitmap url) {
         this.url = url;
-    }
-
-    public void setWeight(String weight){
-        this.weight = weight;
-    }
-
-    public String getWeight(){
-        return this.weight;
-    }
-
-    public void setBrand(String brand){
-        this.brand = brand;
-    }
-
-    public String getBrand(){
-        return this.brand;
     }
 }

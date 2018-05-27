@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content_searchable"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="openfoodfacts.github.scrachx.openfood.views.MainActivity">
+
+   <include layout="@layout/loading_icon" />
+
+   <TextView
+      android:id="@+id/textCountProduct"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:layout_margin="@dimen/spacing_normal"
+      android:gravity="center"
+      android:text="@string/number_of_results"
+      android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+   <LinearLayout
+      android:id="@+id/noResultsLayout"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:gravity="center"
+      android:orientation="vertical">
+
+      <TextView
+         android:id="@+id/textNoResults"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/txt_no_results"
+         android:textAppearance="?android:attr/textAppearanceMedium"
+         android:textSize="@dimen/font_normal"
+         android:textColor="@color/grey_500"/>
+      <TextView
+         android:id="@+id/textExtendSearch"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/txt_extend_search"
+         android:textAppearance="?android:attr/textAppearanceMedium"
+         android:textSize="@dimen/font_normal"
+         android:textColor="@color/grey_500"/>
+
+   </LinearLayout>
+
+   <android.support.v7.widget.RecyclerView
+      android:id="@+id/products_recycler_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:layout_below="@+id/textCountProduct"
+      android:scrollbars="vertical" />
+
+   <LinearLayout
+      android:id="@+id/offlineCloudLinearLayout"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:gravity="center"
+      android:orientation="vertical"
+      android:visibility="invisible">
+
+      <ImageView
+         android:id="@+id/sadCloud"
+         android:layout_width="180dp"
+         android:layout_height="150dp"
+         android:scaleType="centerCrop"
+         app:srcCompat="@drawable/ic_cloud_off"
+      />
+
+      <TextView
+         android:id="@+id/txtCannotLoadResults"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center_horizontal"
+         android:layout_margin="@dimen/spacing_normal"
+         android:gravity="center"
+         android:text="@string/txt_cant_load_search_results"
+         android:textAppearance="?android:attr/textAppearanceMedium"
+         android:textSize="@dimen/font_normal"
+         android:textColor="@color/grey_500"/>
+
+      <Button
+         android:id="@+id/buttonTryAgain"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:background="@android:color/transparent"
+         android:text="@string/txt_try_again"
+         android:textColor="@color/light_blue_500"
+         android:clickable="true"/>
+
+   </LinearLayout>
+
+</RelativeLayout>

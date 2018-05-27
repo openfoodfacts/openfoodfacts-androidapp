@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coordinator_layout_product"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -11,15 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Light">
+        <!--android:fitsSystemWindows="true"-->
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/Black_Back_Arrow" />
+            app:layout_scrollFlags="scroll|enterAlways" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
@@ -37,144 +35,18 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/design_bottom_sheet_product_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/grey_100"
-        android:orientation="vertical"
-        app:behavior_hideable="true"
-        app:behavior_peekHeight="0dp"
-        app:layout_behavior="@string/bottom_sheet_behavior">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/green_300"
-            android:contentDescription="@string/app_name"
-            android:gravity="center"
-            android:padding="@dimen/padding_short"
-            android:scaleType="center"
-            android:text="@string/wikidata_information"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_large"
-            android:textStyle="bold" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <LinearLayout
-                android:id="@+id/titleContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_tiny"
-                android:background="@color/grey_50"
-                android:gravity="center_vertical|center_horizontal"
-                android:padding="@dimen/spacing_small">
-
-                <TextView
-                    android:id="@+id/titleBottomSheet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/titleHeader"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    android:text="Title"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/font_large" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/descriptionContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/titleContainer"
-                android:layout_margin="@dimen/spacing_tiny"
-                android:background="@color/grey_50"
-                android:gravity="center_vertical"
-                android:padding="@dimen/spacing_small">
-
-
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/descriptionHeader"
-                    android:gravity="center"
-                    android:text="description"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/buttonsContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/descriptionContainer"
-                android:layout_marginBottom="@dimen/spacing_small"
-                android:gravity="center_horizontal"
-                android:weightSum="100">
-
-
-                <Button
-                    android:id="@+id/wikipediaButton"
-                    style="@style/ButtonToBrowseProducts"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:layout_weight="50"
-                    android:background="@color/blue"
-                    android:text="@string/Wikipedia" />
-
-
-                <Button
-                    android:id="@+id/buttonToBrowseProducts"
-                    style="@style/ButtonToBrowseProducts"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/wikipediaButton"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:layout_weight="50"
-                    android:background="@color/blue"
-                    android:text="@string/Browse_Products" />
-            </LinearLayout>
-
-
-        </RelativeLayout>
-
-
-    </LinearLayout>
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/buttonScan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:contentDescription="@string/try_it_scan_now"
-        app:elevation="10dp"
-        app:fabSize="normal"
-        app:layout_anchor="@id/bottom_navigation"
-        app:layout_anchorGravity="top|right"
-        app:srcCompat="@drawable/barcode_white_24dp" />
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        app:itemBackground="@color/white"
-        app:itemIconTint="@drawable/nav_item_state"
-        app:itemTextColor="@drawable/nav_item_state"
-        app:menu="@menu/my_navigation_items"
-        tools:layout_editor_absoluteY="503dp">
-
-    </android.support.design.widget.BottomNavigationView>
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:contentDescription="@string/try_it_scan_now"
+        app:layout_anchor="@+id/pager"
+        app:layout_anchorGravity="bottom|right"
+        app:srcCompat="@drawable/ic_camera_white" />
 
 </android.support.design.widget.CoordinatorLayout>

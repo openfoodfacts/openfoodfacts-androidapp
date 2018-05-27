@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -23,7 +23,6 @@ import java.util.Map;
 })
 public class Search implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @JsonProperty("page_size")
     private String pageSize;
     private String count;

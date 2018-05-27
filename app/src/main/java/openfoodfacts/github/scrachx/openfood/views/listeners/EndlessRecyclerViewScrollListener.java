@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.views.listeners;
+package openfoodfacts.github.scrachx.openfood.views.listeners;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;

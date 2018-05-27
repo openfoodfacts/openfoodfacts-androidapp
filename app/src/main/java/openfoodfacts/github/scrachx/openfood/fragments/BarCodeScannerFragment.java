@@ -1,15 +1,15 @@
-package org.openfoodfacts.scanner.fragments;
+package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,9 +17,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.BarcodeFormat;
@@ -28,12 +25,9 @@ import com.google.zxing.Result;
 import java.util.Arrays;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
-import org.openfoodfacts.scanner.R;
-import org.openfoodfacts.scanner.models.Product;
-import org.openfoodfacts.scanner.models.State;
-import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
-import org.openfoodfacts.scanner.utils.Utils;
-import org.openfoodfacts.scanner.views.SaveProductOfflineActivity;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
 
 public class BarCodeScannerFragment extends BaseFragment implements MessageDialogFragment.MessageDialogListener,
         ZXingScannerView.ResultHandler, CameraSelectorDialogFragment.CameraSelectorDialogListener {
@@ -48,27 +42,14 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     private boolean mAutoFocus;
     private int mCameraId = -1;
     private OpenFoodAPIClient api;
-    private SharedPreferences settings;
-    private EditText mBarcode;
-    private Toast mToast;
-    private Button cancelButton;
-    private Button findButton;
-    private BottomSheetDialog bottomSheetDialog;
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        settings = PreferenceManager.getDefaultSharedPreferences(context);
-    }
-
-    @Override
-
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle state) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
         final SharedPreferences settings = getActivity().getSharedPreferences("camera", 0);
 
         mScannerView = new ZXingScannerView(getActivity());
         api = new OpenFoodAPIClient(getActivity());
-        if (state != null) {
+        if(state != null) {
             mRing = state.getBoolean(RING_STATE, false);
             mFlash = state.getBoolean(FLASH_STATE, false);
             mAutoFocus = state.getBoolean(AUTO_FOCUS_STATE, true);
@@ -79,10 +60,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
             mAutoFocus = settings.getBoolean("focus", true);
             mCameraId = -1;
         }
-
-
         setupFormats();
-
         return mScannerView;
     }
 
@@ -92,24 +70,23 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
         setHasOptionsMenu(true);
     }
 
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 
         MenuItem ringMenuItem = menu.add(Menu.NONE, R.id.menu_ring, 0, mRing ? R.string.ring_on : R.string.ring_off);
-        ringMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        MenuItemCompat.setShowAsAction(ringMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
 
         MenuItem flashMenuItem = menu.add(Menu.NONE, R.id.menu_flash, 0, mFlash ? R.string.flash_on : R.string.flash_off);
-        flashMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-
+        MenuItemCompat.setShowAsAction(flashMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
 
         MenuItem focusMenuItem = menu.add(Menu.NONE, R.id.menu_auto_focus, 0, mAutoFocus ? R.string.auto_focus_on : R.string.auto_focus_off);
-        focusMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        MenuItemCompat.setShowAsAction(focusMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
 
         MenuItem cameraMenuItem = menu.add(Menu.NONE, R.id.menu_camera_selector, 0, R.string.select_camera);
-        cameraMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        MenuItemCompat.setShowAsAction(cameraMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
 
         MenuItem aboutMenuItem = menu.add(Menu.NONE, R.id.menu_about, 0, R.string.action_about);
-        aboutMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        MenuItemCompat.setShowAsAction(aboutMenuItem, MenuItem.SHOW_AS_ACTION_NEVER);
     }
 
     @Override
@@ -121,7 +98,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
         switch (item.getItemId()) {
             case R.id.menu_ring:
                 mRing = !mRing;
-                if (mRing) {
+                if(mRing) {
                     item.setTitle(R.string.ring_on);
                     editor.putBoolean("ring", true);
                 } else {
@@ -132,7 +109,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
                 return true;
             case R.id.menu_flash:
                 mFlash = !mFlash;
-                if (mFlash) {
+                if(mFlash) {
                     item.setTitle(R.string.flash_on);
                     editor.putBoolean("flash", true);
                 } else {
@@ -144,7 +121,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
                 return true;
             case R.id.menu_auto_focus:
                 mAutoFocus = !mAutoFocus;
-                if (mAutoFocus) {
+                if(mAutoFocus) {
                     item.setTitle(R.string.auto_focus_on);
                     editor.putBoolean("focus", true);
                 } else {
@@ -155,6 +132,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
                 mScannerView.setAutoFocus(mAutoFocus);
                 return true;
             case R.id.menu_camera_selector:
+                mScannerView.stopCamera();
                 DialogFragment cFragment = CameraSelectorDialogFragment.newInstance(this, mCameraId);
                 cFragment.show(getActivity().getSupportFragmentManager(), "camera_selector");
                 return true;
@@ -179,7 +157,7 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
+    public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(FLASH_STATE, mFlash);
         outState.putBoolean(AUTO_FOCUS_STATE, mAutoFocus);
@@ -201,22 +179,14 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
             return;
         }
 
+        ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
-        if (Utils.isNetworkConnected(getContext())) {
-            if (settings.getBoolean("powerMode", false) && mScannerView != null) {
-                api.getShortProduct(rawResult.getText(), getActivity(), mScannerView, this);
-            } else {
-                api.getProduct(rawResult.getText(), getActivity());
-            }
+        if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+            api.getProduct(rawResult.getText(), getActivity(), mScannerView, this);
         } else {
             Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
-            State st=new State();
-            Product pd=new Product();
-            pd.setCode(rawResult.getText());
-            st.setProduct(pd);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("state", st);
-            intent.putExtras(bundle);
+            intent.putExtra("barcode", rawResult.getText());
             getActivity().startActivity(intent);
             getActivity().finish();
         }
@@ -230,13 +200,10 @@ public class BarCodeScannerFragment extends BaseFragment implements MessageDialo
 
     @Override
     public void onCameraSelected(int cameraId) {
-        if (mCameraId != cameraId) {
-            mCameraId = cameraId;
-            mScannerView.stopCamera();
-            mScannerView.startCamera(mCameraId);
-            mScannerView.setFlash(mFlash);
-            mScannerView.setAutoFocus(mAutoFocus);
-        }
+        mCameraId = cameraId;
+        mScannerView.startCamera(mCameraId);
+        mScannerView.setFlash(mFlash);
+        mScannerView.setAutoFocus(mAutoFocus);
     }
 
     public void setupFormats() {

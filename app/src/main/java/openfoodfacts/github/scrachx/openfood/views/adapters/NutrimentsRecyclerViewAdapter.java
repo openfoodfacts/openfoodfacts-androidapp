@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.views.adapters;
+package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import org.openfoodfacts.scanner.R;
-import org.openfoodfacts.scanner.models.NutrimentItem;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
 
 /**
  * @author herau
@@ -77,9 +77,9 @@ public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
 
         public NutrimentViewHolder(View v) {
             super(v);
-            vNutrimentName = v.findViewById(R.id.nutriment_name);
-            vNutrimentValue = v.findViewById(R.id.nutriment_value);
-            vNutrimentServingValue = v.findViewById(R.id.nutriment_serving_value);
+            vNutrimentName = (TextView) v.findViewById(R.id.nutriment_name);
+            vNutrimentValue = (TextView) v.findViewById(R.id.nutriment_value);
+            vNutrimentServingValue = (TextView) v.findViewById(R.id.nutriment_serving_value);
         }
     }
 

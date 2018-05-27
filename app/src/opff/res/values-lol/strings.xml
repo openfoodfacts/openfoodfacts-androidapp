@@ -11,26 +11,5 @@
   <string name="website_product">crwdns35311:0crwdne35311:0</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">crwdns35312:0crwdne35312:0</string>
-  <string name="terms_url">crwdns92748:0crwdne92748:0</string>
   <string name="txtHome">crwdns35313:0crwdne35313:0</string>
-  <string name="slide_1_title">crwdns37162:0crwdne37162:0</string>
-  <string name="slide_1_desc">crwdns37163:0crwdne37163:0</string>
-  <string name="slide_2_title">crwdns37164:0crwdne37164:0</string>
-  <string name="slide_2_desc">crwdns37165:0crwdne37165:0</string>
-  <string name="slide_3_title">crwdns37166:0crwdne37166:0</string>
-  <string name="slide_3_desc">crwdns46367:0crwdne46367:0</string>
-  <string name="slide_4_title">crwdns37168:0crwdne37168:0</string>
-  <string name="slide_4_desc">crwdns37760:0crwdne37760:0</string>
-  <string name="txtDialogsContent">crwdns46326:0crwdne46326:0</string>
-  <string name="txtDialogsContentPowerMode">crwdns46327:0crwdne46327:0</string>
-  <string name="msg_share">crwdns46368:0crwdne46368:0</string>
-  <string name="not_support_books">crwdns46369:0crwdne46369:0</string>
-  <string name="txt_broaden_search">crwdns46370:0crwdne46370:0</string>
-  <string name="Donation">crwdns46371:0crwdne46371:0</string>
-  <string name="translate_help_title">crwdns46372:0crwdne46372:0</string>
-  <string name="translate_help_summary">crwdns46373:0crwdne46373:0</string>
-  <string name="text_offline_info_dialog">crwdns92744:0crwdne92744:0</string>
-  <string name="warning_alert_data">crwdns46375:0crwdne46375:0</string>
-  <!-- OPFF tagline in different languages -->
-  <string name="tagline">crwdns46833:0crwdne46833:0</string>
 </resources>

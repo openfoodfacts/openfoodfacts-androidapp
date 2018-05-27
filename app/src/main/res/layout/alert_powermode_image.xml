@@ -41,7 +41,6 @@
         android:layout_marginLeft="@dimen/spacing_normal"
         android:layout_marginRight="@dimen/spacing_normal"
         android:layout_marginTop="@dimen/spacing_normal"
-        android:gravity="center"
-        android:focusable="true" />
+        android:gravity="center" />
 
 </LinearLayout>

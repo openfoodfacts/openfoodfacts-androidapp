@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.views.customtabs;
+package openfoodfacts.github.scrachx.openfood.views.customtabs;
 
 // Copyright 2015 Google Inc. All Rights Reserved.
 //

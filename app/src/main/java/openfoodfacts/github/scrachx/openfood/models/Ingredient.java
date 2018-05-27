@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -18,7 +18,7 @@ import java.util.Map;
         "percent"
 })
 public class Ingredient implements Serializable {
-    private static final long serialVersionUID = 1L;
+
     private String text;
     private String id;
     private long rank;

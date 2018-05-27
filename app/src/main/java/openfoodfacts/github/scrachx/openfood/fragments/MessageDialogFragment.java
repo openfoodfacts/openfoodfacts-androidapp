@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.fragments;
+package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

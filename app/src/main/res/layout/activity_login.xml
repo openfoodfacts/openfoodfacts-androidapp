@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/login_linearlayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -21,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <org.openfoodfacts.scanner.utils.CustomEditTextView
+            <openfoodfacts.github.scrachx.openfood.utils.CustomEditTextView
                 android:id="@+id/editTextLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,11 +38,10 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            app:passwordToggleEnabled="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <org.openfoodfacts.scanner.utils.CustomEditTextView
+            <openfoodfacts.github.scrachx.openfood.utils.CustomEditTextView
                 android:id="@+id/editTextPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,7 +62,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_button"
+            android:background="@color/blue"
             android:text="@string/txtSignIn"
             android:textColor="@android:color/white" />
 
@@ -73,7 +71,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_button"
+            android:background="@color/blue"
             android:text="@string/create_account"
             android:textColor="@android:color/white" />
 
@@ -83,16 +81,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textSize="@dimen/font_small" />
-        
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/forgot_password"
-            android:id="@+id/forgotpassword"
-            android:textColor="@color/primary"
-            android:layout_gravity="center_horizontal"
-            android:padding="12sp"
-            android:textStyle="bold"/>
 
     </LinearLayout>
 

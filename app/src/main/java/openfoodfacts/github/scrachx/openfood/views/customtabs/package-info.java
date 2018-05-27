@@ -13,4 +13,4 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package org.openfoodfacts.scanner.views.customtabs;
+package openfoodfacts.github.scrachx.openfood.views.customtabs;

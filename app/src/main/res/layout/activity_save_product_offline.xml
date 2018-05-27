@@ -1,54 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Light">
-        <!--android:fitsSystemWindows="true"-->
+    android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:theme = "@style/Black_Back_Arrow"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:layout_scrollFlags="scroll|enterAlways" />
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            app:tabGravity="fill"
-            app:tabMode="scrollable" />
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
-    </android.support.design.widget.AppBarLayout>
+			<TextView
+                android:id="@+id/barcodeDoubleCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_normal"
+                android:gravity="center"
+                android:text="@string/txtBarcode"
+                android:textAlignment="center"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/font_larger"
+                android:textStyle="bold" />
+			
+            <TextView
+                android:id="@+id/textFront"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_normal"
+                android:gravity="center"
+                android:text="Take front image"
+                android:textAlignment="center"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/font_larger"
+                android:textStyle="bold" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            <ImageView
+                android:id="@+id/imageSaveFront"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center_horizontal"
+                app:srcCompat="@drawable/placeholder_thumb" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/buttonScan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="top|center_horizontal"
-        android:layout_margin="@dimen/activity_vertical_margin"
-        android:contentDescription="@string/try_it_scan_now"
-        app:layout_anchor="@+id/pager"
-        app:layout_anchorGravity="bottom|right"
-        app:srcCompat="@drawable/barcode_white_24dp" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-</android.support.design.widget.CoordinatorLayout>
+                <ImageButton
+                    android:id="@+id/buttonTakePictureFront"
+                    style="@style/DefaultButtonText"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    app:srcCompat="@drawable/ic_camera_white"
+                    android:background="@color/blue" />
 
+                <ImageButton
+                    android:id="@+id/buttonFromGalleryFront"
+                    style="@style/DefaultButtonText"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    app:srcCompat="@drawable/ic_photo_library"
+                    android:background="@color/blue" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textNutrition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_normal"
+                android:gravity="center"
+                android:text="Take nutrition image"
+                android:textAlignment="center"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/font_larger"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageSaveNutrition"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center_horizontal"
+                app:srcCompat="@drawable/placeholder_thumb" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/buttonTakePictureNutrition"
+                    style="@style/DefaultButtonText"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_weight="1"
+                    android:background="@color/blue"
+                    android:gravity="center"
+                    app:srcCompat="@drawable/ic_camera_white" />
+
+                <ImageButton
+                    android:id="@+id/buttonFromGalleryNutrition"
+                    style="@style/DefaultButtonText"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_weight="1"
+                    android:background="@color/blue"
+                    android:gravity="center"
+                    app:srcCompat="@drawable/ic_photo_library" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textIngredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_normal"
+                android:gravity="center"
+                android:text="Take ingredients image"
+                android:textAlignment="center"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/font_larger"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageSaveIngredients"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center_horizontal"
+                app:srcCompat="@drawable/placeholder_thumb" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/buttonTakePictureIngredients"
+                    style="@style/DefaultButtonText"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_weight="1"
+                    android:background="@color/blue"
+                    android:gravity="center"
+                    app:srcCompat="@drawable/ic_camera_white" />
+
+                <ImageButton
+                    android:id="@+id/buttonFromGalleryIngredients"
+                    style="@style/DefaultButtonText"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_weight="1"
+                    android:background="@color/blue"
+                    android:gravity="center"
+                    app:srcCompat="@drawable/ic_photo_library"/>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:background="@drawable/edittext_full"
+                android:ems="10"
+                android:hint="@string/hintNameProduct"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingLeft="50dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_tiny"
+                    android:background="@drawable/edittext_full"
+                    android:ems="10"
+                    android:hint="@string/hintWeight"
+                    android:inputType="numberSigned"
+                    android:maxLines="1"
+                    android:paddingLeft="50dp" />
+
+                <Spinner
+                    android:id="@+id/spinnerUnitWeight"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_tiny"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:background="@drawable/spinner_default"
+                    android:spinnerMode="dropdown" />
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/editTextBrand"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:background="@drawable/edittext_full"
+                android:ems="10"
+                android:hint="@string/hintBrand"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingLeft="50dp" />
+
+            <Button
+                android:id="@+id/buttonSaveProduct"
+                style="@style/DefaultButtonText"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_normal"
+                android:background="@color/blue"
+                android:gravity="center"
+                android:text="@string/txtSave" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

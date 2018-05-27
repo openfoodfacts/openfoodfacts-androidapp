@@ -1,0 +1,53 @@
+# German translations for PROJECT.
+# Copyright (C) 2017 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-03-18 22:33+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=((((n == 1)) && ((0 == 0))) ? 0 : 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.3\n"
+
+#. For fr, Replace by https://world-fr.openfoodfacts.org/
+msgctxt "website"
+msgid "https://world.openfoodfacts.org/"
+msgstr ""
+
+#. For fr, Replace by https://world-fr.openfoodfacts.org/contribuer
+msgctxt "website_contribute"
+msgid "https://world.openfoodfacts.org/contribute"
+msgstr ""
+
+#. For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir
+msgctxt "website_discover"
+msgid "https://world.openfoodfacts.org/discover"
+msgstr ""
+
+#. For fr, Replace by https://world-fr.openfoodfacts.org/produit/
+msgctxt "website_product"
+msgid "https://world.openfoodfacts.org/product/"
+msgstr ""
+
+#. For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/
+msgctxt "website_contributor"
+msgid "https://world.openfoodfacts.org/contributor/"
+msgstr ""
+
+msgctxt "txtHome"
+msgid ""
+"Open Food Facts is an open database of food products with ingredients, "
+"allergens, nutrition facts and all the tidbits of information we can find"
+" on product labels."
+msgstr ""
+

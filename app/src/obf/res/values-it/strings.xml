@@ -11,26 +11,5 @@
   <string name="website_product">https://world-it.openbeautyfacts.org/prodotto/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-it.openbeautyfacts.org/contributore/</string>
-  <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
-  <string name="txtHome">Open Beauty Facts è un database di prodotti cosmetici con gli ingredienti, gli allergeni, gli indici e tutti gli altri pezzetti di informazioni che si possono trovare sulle etichette dei prodotti.</string>
-  <string name="slide_1_title">Contribuire alla trasparenza cosmetica</string>
-  <string name="slide_1_desc">Scansiona i prodotti, fotografali, rendi la trasparenza cosmetica una realtà</string>
-  <string name="slide_2_title">Get the facts</string>
-  <string name="slide_2_desc">Informazioni dettagliate sul prodotto che hai scansionato, decifrate per te</string>
-  <string name="slide_3_title">Tieni traccia dei prodotti che usi</string>
-  <string name="slide_3_desc">Tutti i cosmetici che usi, in un pratico elenco che puoi esportare</string>
-  <string name="slide_4_title">Utilizzabile offline</string>
-  <string name="slide_4_desc">Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento</string>
-  <string name="txtDialogsContent">Il prodotto che hai scansionato non è ancora presente in Open Beauty Facts. Per favore aggiungilo.</string>
-  <string name="txtDialogsContentPowerMode">Il prodotto che hai scansionato è già presente in Open Beauty Facts.</string>
-  <string name="msg_share">Guarda questo prodotto su Open Beauty Facts:</string>
-  <string name="not_support_books">I libri non sono attualmente supportati da Open Beauty Facts</string>
-  <string name="txt_broaden_search">- amplia la tua ricerca \n- scan e aggiungila su Open Beauty Facts</string>
-  <string name="Donation">Clicca qui per fare una donazione a Open Beauty Facts</string>
-  <string name="translate_help_title">Aiuta a tradurre Open Beauty Facts</string>
-  <string name="translate_help_summary">Porta il database di Open Beauty Facts nella tua lingua - non sono richieste conoscenze tecniche</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-  <string name="warning_alert_data">Le informazioni sulle tue allergie non saranno mai inviate al server di Oper Beauty Facts. Inoltre, fai attenzione perché le informazioni sui prodotti potrebbero non essere accurate al 100%, quindi ricorda sempre di controllare! </string>
-  <!-- OBF tagline in different languages -->
-  <string name="tagline">the free cosmetics database</string>
+  <string name="txtHome">Open Beauty Facts è un database di prodotti cosmetici con ingredienti, allergeni, indici e tutti i frammenti d\'informazione che si possono trovare sulle etichette dei prodotti.</string>
 </resources>

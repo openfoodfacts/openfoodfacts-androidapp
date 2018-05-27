@@ -1,66 +1,37 @@
-package org.openfoodfacts.scanner.models;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+package openfoodfacts.github.scrachx.openfood.models;
 
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.List;
 
+import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
+
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 public class AllergenTest {
 
     @Test
-    public void deserialization() throws IOException {
-        String json = "{\"en:lupin\":" +
-                "{\"name\":" +
-                "{\"es\":\"Altramuces\"," +
-                "\"nl\":\"Lupine\"," +
-                "\"et\":\"Lupiin\"," +
-                "\"de\":\"Lupinen\"," +
-                "\"fi\":\"Lupiinit\"," +
-                "\"sv\":\"Lupin\"," +
-                "\"lt\":\"Lubinai\"," +
-                "\"mt\":\"Lupina\"," +
-                "\"da\":\"Lupin\"}}," +
-                "\"en:molluscs\":" +
-                "{\"name\":" +
-                "{\"it\":\"Molluschi\"," +
-                "\"fr\":\"Mollusques\"," +
-                "\"lv\":\"Gliemji\"," +
-                "\"pt\":\"Moluscos\"," +
-                "\"nl\":\"Weekdieren\"," +
-                "\"et\":\"Molluskid\"," +
-                "\"de\":\"Weichtiere\"," +
-                "\"es\":\"Moluscos\"," +
-                "\"ga\":\"Moilisc\"," +
-                "\"mt\":\"Molluski\"," +
-                "\"lt\":\"Moliuskai\"," +
-                "\"en\":\"Molluscs\"}}" +
-                "}";
+    public void deserialize_json_rest_response() throws IOException {
+        String name = "Milk";
+        String url = "https://world.openfoodfacts.org/allergen/milk";
+        int products = 11376;
+        String id = "en:milk";
+        AllergenRestResponse restResponse = JsonUtils.readFor(AllergenRestResponse.class)
+                .readValue("{\"tags\":[" +
+                        "{\"url\":\"" + url + "\"," +
+                        "\"products\":" + products + ",\"name\":\"" + name + "\",\"id\":\"" + id + "\"}," +
+                        "{\"url\":\"https://world.openfoodfacts.org/allergen/gluten\"," +
+                        "\"id\":\"en:gluten\",\"products\":9812,\"name\":\"Gluten\"}" +
+                        "]}");
 
-        AllergensWrapper allergensWrapper = deserialize(json);
-        assertEquals(allergensWrapper.getAllergens().size(), 2);
-
-        List<Allergen> allergens = allergensWrapper.map();
+        List<Allergen> allergens = restResponse.getAllergens();
         assertEquals(allergens.size(), 2);
+        assertEquals(allergens.get(0).getName(), name);
+        assertEquals(allergens.get(0).getProducts(), Integer.valueOf(products));
+        assertEquals(allergens.get(0).getUrl(), url);
+        assertEquals(allergens.get(0).getIdAllergen(), id);
 
-        Allergen allergen = allergens.get(0);
-        assertEquals(allergen.getTag(), "en:lupin");
-        assertFalse(allergen.getEnabled());
-        assertEquals(allergen.getNames().size(), 9);
-
-        AllergenName allergenName = allergen.getNames().get(0);
-        assertEquals(allergenName.getAllergenTag(), allergen.getTag());
-        assertEquals(allergenName.getLanguageCode(), "de");
-        assertEquals(allergenName.getName(), "Lupinen");
-    }
-
-    private AllergensWrapper deserialize(String json) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(json, AllergensWrapper.class);
     }
 
 }

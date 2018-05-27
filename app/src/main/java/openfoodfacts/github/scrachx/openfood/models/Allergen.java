@@ -1,162 +1,131 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
-import org.greenrobot.greendao.DaoException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
-import org.greenrobot.greendao.annotation.JoinProperty;
-import org.greenrobot.greendao.annotation.Keep;
-import org.greenrobot.greendao.annotation.ToMany;
-import org.greenrobot.greendao.annotation.Unique;
+import org.greenrobot.greendao.annotation.Generated;
 
-import java.util.List;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "url",
+        "name",
+        "products",
+        "id"
+})
 @Entity(indexes = {
-        @Index(value = "tag", unique = true)
+        @Index(value = "name", unique = true)
 })
 public class Allergen {
 
-    @Id(autoincrement = true)
-    private Long id;
+    private String enable;
+    private String url;
+    private String name;
+    private Integer products;
+    @JsonProperty("id")
+    @Id
+    private String idAllergen;
 
-    @Unique
-    private String tag;
-
-    private Boolean enabled; /*If the allergen is being checked for by the user.*/
-
-    @ToMany(joinProperties = {
-            @JoinProperty(name = "tag", referencedName = "allergenTag")
-    })
-    private List<AllergenName> names;
-
-    /**
-     * Used to resolve relations
-     */
-    @Generated(hash = 2040040024)
-    private transient DaoSession daoSession;
-
-    /**
-     * Used for active entity operations.
-     */
-    @Generated(hash = 2043571450)
-    private transient AllergenDao myDao;
-
-    @Generated(hash = 314039366)
-    public Allergen(Long id, String tag, Boolean enabled) {
-        this.id = id;
-        this.tag = tag;
-        this.enabled = enabled;
-    }
-
-    @Keep
-    public Allergen(String tag, List<AllergenName> names) {
-        this.enabled = false;
-        this.tag = tag;
-        this.names = names;
-    }
-
-    @Generated(hash = 1276564405)
     public Allergen() {
+        this.enable = "false";
     }
 
-    public Long getId() {
-        return this.id;
+    @Generated(hash = 512140330)
+    public Allergen(String enable, String url, String name, Integer products,
+                    String idAllergen) {
+        this.enable = enable;
+        this.url = url;
+        this.name = name;
+        this.products = products;
+        this.idAllergen = idAllergen;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String isEnable() {
+        return enable;
     }
 
-    public String getTag() {
-        return this.tag;
+    public void setEnable(String enable) {
+        this.enable = enable;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public String getIdAllergen() {
+        return idAllergen;
     }
 
-    /**
-     * To-many relationship, resolved on first access (and after reset).
-     * Changes to to-many relations are not persisted, make changes to the target entity.
-     */
-    @Generated(hash = 1023494153)
-    public List<AllergenName> getNames() {
-        if (names == null) {
-            final DaoSession daoSession = this.daoSession;
-            if (daoSession == null) {
-                throw new DaoException("Entity is detached from DAO context");
-            }
-            AllergenNameDao targetDao = daoSession.getAllergenNameDao();
-            List<AllergenName> namesNew = targetDao._queryAllergen_Names(tag);
-            synchronized (this) {
-                if (names == null) {
-                    names = namesNew;
-                }
-            }
-        }
-        return names;
+    public void setIdAllergen(String idAllergen) {
+        this.idAllergen = idAllergen;
     }
 
     /**
-     * Resets a to-many relationship, making the next get call to query for a fresh result.
+     *
+     * @return
+     * The url
      */
-    @Generated(hash = 1832659617)
-    public synchronized void resetNames() {
-        names = null;
+    public String getUrl() {
+        return url;
     }
 
     /**
-     * Convenient call for {@link org.greenrobot.greendao.AbstractDao#delete(Object)}.
-     * Entity must attached to an entity context.
+     *
+     * @param url
+     * The url
      */
-    @Generated(hash = 128553479)
-    public void delete() {
-        if (myDao == null) {
-            throw new DaoException("Entity is detached from DAO context");
-        }
-        myDao.delete(this);
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     /**
-     * Convenient call for {@link org.greenrobot.greendao.AbstractDao#refresh(Object)}.
-     * Entity must attached to an entity context.
+     *
+     * @return
+     * The name
      */
-    @Generated(hash = 1942392019)
-    public void refresh() {
-        if (myDao == null) {
-            throw new DaoException("Entity is detached from DAO context");
-        }
-        myDao.refresh(this);
+    public String getName() {
+        return name;
     }
 
     /**
-     * Convenient call for {@link org.greenrobot.greendao.AbstractDao#update(Object)}.
-     * Entity must attached to an entity context.
+     *
+     * @param name
+     * The name
      */
-    @Generated(hash = 713229351)
-    public void update() {
-        if (myDao == null) {
-            throw new DaoException("Entity is detached from DAO context");
-        }
-        myDao.update(this);
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
-     * @return True if the user is checking for this allergen.
+     *
+     * @return
+     * The products
      */
-    public Boolean getEnabled() {
-        return this.enabled;
+    public Integer getProducts() {
+        return products;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    /**
+     *
+     * @param products
+     * The products
+     */
+    public void setProducts(Integer products) {
+        this.products = products;
     }
 
-    /** called by internal mechanisms, do not call yourself. */
-    @Generated(hash = 1247563218)
-    public void __setDaoSession(DaoSession daoSession) {
-        this.daoSession = daoSession;
-        myDao = daoSession != null ? daoSession.getAllergenDao() : null;
+    @Override
+    public String toString() {
+        return "Allergen{" +
+                "enable=" + enable +
+                ", url='" + url + '\'' +
+                ", name='" + name + '\'' +
+                ", products=" + products +
+                ", idAllergen='" + idAllergen + '\'' +
+                '}';
     }
+
+    public String getEnable() {
+        return this.enable;
+    }
+    
 }

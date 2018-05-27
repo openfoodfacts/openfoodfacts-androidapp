@@ -1,11 +1,11 @@
-package org.openfoodfacts.scanner.models;
+package openfoodfacts.github.scrachx.openfood.models;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import org.greenrobot.greendao.database.Database;
+import org.greenrobot.greendao.database.StandardDatabase;
 
 public class DatabaseHelper extends DaoMaster.OpenHelper {
 
@@ -17,21 +17,18 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
         super(context, name);
     }
 
-
     @Override
     public void onCreate(Database db) {
         Log.i("greenDAO", "Creating tables for schema version " + DaoMaster.SCHEMA_VERSION);
-        DaoMaster.createAllTables(db, true);
+        DaoMaster.createAllTables(db, false);
     }
 
     @Override
-    public void onUpgrade(Database db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.i("greenDAO", "migrating schema from version " + oldVersion + " to " + newVersion);
-        //dropAllTables(db, true);
         for (int migrateVersion = oldVersion + 1; migrateVersion <= newVersion; migrateVersion++) {
             upgrade(db, migrateVersion);
         }
-
     }
 
     /**
@@ -39,73 +36,17 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
      * left untouched just fix the code in the version case and push a new
      * release
      *
-     * @param db             database
+     * @param db
      * @param migrateVersion
      */
-    private void upgrade(Database db, int migrateVersion) {
-        Log.e("MIGRATE VERSION", "" + migrateVersion);
+    private void upgrade(SQLiteDatabase db, int migrateVersion) {
         switch (migrateVersion) {
             case 2:
                 db.execSQL("ALTER TABLE send_product ADD COLUMN 'lang' TEXT NOT NULL DEFAULT 'fr';");
                 break;
             case 3:
-                ToUploadProductDao.createTable(db, true);
+                RatingProductDao.createTable(new StandardDatabase(db), false);
                 break;
-            case 4:
-                TagDao.createTable(db, true);
-                break;
-            case 5: {
-                db.execSQL("ALTER TABLE history_product ADD COLUMN 'quantity' TEXT NOT NULL DEFAULT '';");
-                db.execSQL("ALTER TABLE history_product ADD COLUMN 'nutrition_grade' TEXT NOT NULL DEFAULT '';");
-                break;
-            }
-            case 6: {
-                LabelDao.createTable(db, true);
-                LabelNameDao.createTable(db, true);
-
-                AllergenDao.dropTable(db, true);
-                AllergenDao.createTable(db, true);
-                AllergenNameDao.createTable(db, true);
-
-                AdditiveDao.dropTable(db, true);
-                AdditiveDao.createTable(db, true);
-                AdditiveNameDao.createTable(db, true);
-
-                CountryDao.createTable(db, true);
-                CountryNameDao.createTable(db, true);
-
-                CategoryDao.createTable(db, true);
-                CategoryNameDao.createTable(db, true);
-                break;
-            }
-            case 7: {
-                String newColumns[] = new String[]{"wiki_data_id", "is_wiki_data_id_present"};
-                String updatedTables[] = new String[]{"additive_name", "additive", "category_name", "category", "label_name", "label"};
-                for (String table : updatedTables) {
-                    for (String column : newColumns) {
-                        if (isFieldExist(db, table, column)) {
-                            db.execSQL(String.format("ALTER TABLE %s ADD COLUMN '%s' TEXT NOT NULL DEFAULT '';", table, column));
-                        }
-                    }
-                }
-
-                break;
-            }
         }
-    }
-
-    private boolean isFieldExist(Database db, String tableName, String fieldName) {
-        boolean isExist = false;
-        String query = String.format("PRAGMA table_info(%s)", tableName);
-        Cursor res = db.rawQuery(query, null);
-        res.moveToFirst();
-        do {
-            String currentColumn = res.getString(1);
-            if (currentColumn.equals(fieldName)) {
-                isExist = true;
-            }
-        } while (res.moveToNext());
-
-        return isExist;
     }
 }

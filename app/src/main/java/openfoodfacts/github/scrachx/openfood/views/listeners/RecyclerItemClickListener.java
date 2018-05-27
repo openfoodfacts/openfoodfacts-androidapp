@@ -1,4 +1,4 @@
-package org.openfoodfacts.scanner.views.listeners;
+package openfoodfacts.github.scrachx.openfood.views.listeners;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
