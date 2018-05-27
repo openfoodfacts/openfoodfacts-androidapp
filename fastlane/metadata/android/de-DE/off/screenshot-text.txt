@@ -1,4 +1,4 @@
-Those are the taglines shown above the screenshots in the playstore. Halten Sie sie kurz und attraktiv.
+Das sind die Beschriftungen, die über den Screenshots im Playstore angezeigt werden. Halten Sie sie kurz und attraktiv.
 Dateinamen nicht ändern.
 ───
 scan_en.png
