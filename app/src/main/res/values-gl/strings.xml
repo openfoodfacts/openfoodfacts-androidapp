@@ -366,13 +366,13 @@
   <string name="saving">Gardando…</string>
   <string name="scan_first_product">Escanear o primeiro producto</string>
   <string name="preference_enable_mobile_data_title">Subir con datos móbiles</string>
-  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
-  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="preference_enable_mobile_data_summary_on">Subir novos productos utilizando datos móbiles &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Subir novos producto só utilizando WiFi</string>
   <string name="device_on_mobile_data_warning_title">Información</string>
-  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_message">A subida utilizando datos móbiles está desactivada, conéctese por WiFi ou cambie o axuste</string>
   <string name="device_on_mobile_data_warning_positive">Axustes</string>
-  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
-  <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="device_on_mobile_data_warning_negative">Subir igualmente</string>
+  <string name="preference_choose_language_dialog_title">Escolla idioma</string>
   <string name="FAQ">FAQ</string>
   <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
   <string name="translate_help_title">Help translate Open Food Facts</string>
@@ -439,12 +439,12 @@
   <string name="by_title">Title</string>
   <string name="by_brand">Marca</string>
   <string name="by_barcode">Código de barras</string>
-  <string name="by_time">Recently Viewed</string>
-  <string name="sort">Sort</string>
-  <string name="by_nutrition_grade">Nutrition Grade</string>
-  <string name="sort_by">Sort By</string>
-  <string name="shake_summary">Shake phone to scan products</string>
-  <string name="shake_title">Scan on Shake</string>
+  <string name="by_time">Vistos recentemente</string>
+  <string name="sort">Ordear</string>
+  <string name="by_nutrition_grade">Grado nutricional</string>
+  <string name="sort_by">Orde por</string>
+  <string name="shake_summary">Axite o móbil para escanear productos</string>
+  <string name="shake_title">Escanear ao Axitar</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
