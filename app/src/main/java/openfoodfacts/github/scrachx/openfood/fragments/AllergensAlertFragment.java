@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.fragments;
+package org.openfoodfacts.scanner.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -32,14 +32,14 @@ import java.util.Map;
 import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
-import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.AllergenName;
+import org.openfoodfacts.scanner.repositories.IProductRepository;
+import org.openfoodfacts.scanner.repositories.ProductRepository;
+import org.openfoodfacts.scanner.utils.NavigationDrawerListener.NavigationDrawerType;
+import org.openfoodfacts.scanner.views.adapters.AllergensAdapter;
 
-import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_ALERT;
+import static org.openfoodfacts.scanner.utils.NavigationDrawerListener.ITEM_ALERT;
 
 /**
  * @see R.layout#fragment_alert_allergens
@@ -80,7 +80,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRvAllergens = (RecyclerView) view.findViewById(R.id.allergens_recycle);
+        mRvAllergens = view.findViewById(R.id.allergens_recycle);
 
         productRepository = ProductRepository.getInstance();
         productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage())

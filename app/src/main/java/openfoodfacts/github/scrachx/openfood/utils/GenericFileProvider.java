@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.utils;
+package org.openfoodfacts.scanner.utils;
 
 import android.support.v4.content.FileProvider;
 

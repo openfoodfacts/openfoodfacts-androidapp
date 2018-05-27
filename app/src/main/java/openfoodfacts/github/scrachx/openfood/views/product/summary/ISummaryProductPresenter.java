@@ -1,13 +1,13 @@
 
-package openfoodfacts.github.scrachx.openfood.views.product.summary;
+package org.openfoodfacts.scanner.views.product.summary;
 
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
-import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
+import org.openfoodfacts.scanner.models.AllergenName;
+import org.openfoodfacts.scanner.models.CategoryName;
+import org.openfoodfacts.scanner.models.CountryName;
+import org.openfoodfacts.scanner.models.LabelName;
+import org.openfoodfacts.scanner.utils.ProductInfoState;
 
 /**
  * Created by Lobster on 17.03.18.

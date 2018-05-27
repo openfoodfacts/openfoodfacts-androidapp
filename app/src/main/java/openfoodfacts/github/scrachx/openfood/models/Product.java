@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package org.openfoodfacts.scanner.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.network.deserializers;
+package org.openfoodfacts.scanner.network.deserializers;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -12,8 +12,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CountryResponse;
+import org.openfoodfacts.scanner.models.CountriesWrapper;
+import org.openfoodfacts.scanner.models.CountryResponse;
 
 /**
  * Created by Lobster on 03.03.18.

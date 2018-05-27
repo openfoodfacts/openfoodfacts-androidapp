@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.product;
+package org.openfoodfacts.scanner.views.product;
 
 import android.Manifest;
 import android.content.Context;
@@ -49,35 +49,35 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
-import openfoodfacts.github.scrachx.openfood.models.Nutriments;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
-import openfoodfacts.github.scrachx.openfood.views.BottomNavigationBehavior;
-import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
-import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
-import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
-import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
-import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
-import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
-import openfoodfacts.github.scrachx.openfood.views.product.nutrition_details.NutritionInfoProductFragment;
-import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
+import org.openfoodfacts.scanner.BuildConfig;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.fragments.ContributorsFragment;
+import org.openfoodfacts.scanner.fragments.ProductPhotosFragment;
+import org.openfoodfacts.scanner.models.Nutriments;
+import org.openfoodfacts.scanner.models.State;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.utils.SearchType;
+import org.openfoodfacts.scanner.utils.ShakeDetector;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.BaseActivity;
+import org.openfoodfacts.scanner.views.BottomNavigationBehavior;
+import org.openfoodfacts.scanner.views.HistoryScanActivity;
+import org.openfoodfacts.scanner.views.MainActivity;
+import org.openfoodfacts.scanner.views.ProductBrowsingListActivity;
+import org.openfoodfacts.scanner.views.ScannerFragmentActivity;
+import org.openfoodfacts.scanner.views.adapters.ProductFragmentPagerAdapter;
+import org.openfoodfacts.scanner.views.adapters.ProductsRecyclerViewAdapter;
+import org.openfoodfacts.scanner.views.customtabs.CustomTabActivityHelper;
+import org.openfoodfacts.scanner.views.customtabs.CustomTabsHelper;
+import org.openfoodfacts.scanner.views.customtabs.WebViewFallback;
+import org.openfoodfacts.scanner.views.listeners.OnRefreshListener;
+import org.openfoodfacts.scanner.views.product.ingredients.IngredientsProductFragment;
+import org.openfoodfacts.scanner.views.product.nutrition.NutritionProductFragment;
+import org.openfoodfacts.scanner.views.product.nutrition_details.NutritionInfoProductFragment;
+import org.openfoodfacts.scanner.views.product.summary.SummaryProductFragment;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static org.openfoodfacts.scanner.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
 public class ProductActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, OnRefreshListener {
 
@@ -164,7 +164,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
         });
 
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
             switch (item.getItemId()) {

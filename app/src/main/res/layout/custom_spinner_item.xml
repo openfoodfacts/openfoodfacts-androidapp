@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openfoodfacts.github.scrachx.openfood.utils.CustomTextView xmlns:android="http://schemas.android.com/apk/res/android"
+<org.openfoodfacts.scanner.utils.CustomTextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@android:id/text1"
     style="?android:attr/spinnerItemStyle"

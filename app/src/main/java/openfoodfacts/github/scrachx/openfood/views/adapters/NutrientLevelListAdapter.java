@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.adapters;
+package org.openfoodfacts.scanner.views.adapters;
 
 import android.content.Context;
 import android.support.v7.content.res.AppCompatResources;
@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.NutrientLevelItem;
 
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static org.openfoodfacts.scanner.utils.Utils.bold;
 
 public class NutrientLevelListAdapter extends RecyclerView.Adapter<NutrientLevelListAdapter.NutrientViewHolder> {
 

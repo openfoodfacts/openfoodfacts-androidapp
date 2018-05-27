@@ -1,9 +1,9 @@
-package openfoodfacts.github.scrachx.openfood.dagger.component;
+package org.openfoodfacts.scanner.dagger.component;
 
 import dagger.Subcomponent;
-import openfoodfacts.github.scrachx.openfood.dagger.ActivityScope;
-import openfoodfacts.github.scrachx.openfood.dagger.module.ActivityModule;
-import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
+import org.openfoodfacts.scanner.dagger.ActivityScope;
+import org.openfoodfacts.scanner.dagger.module.ActivityModule;
+import org.openfoodfacts.scanner.views.BaseActivity;
 
 @Subcomponent(modules = {ActivityModule.class})
 @ActivityScope

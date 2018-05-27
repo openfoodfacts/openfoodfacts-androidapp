@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views;
+package org.openfoodfacts.scanner.views;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import android.widget.Toast;
 
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.utils.Utils;
 
 public class ScannerFragmentActivity extends BaseActivity {
 

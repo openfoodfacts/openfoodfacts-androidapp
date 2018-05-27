@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.utils;
+package org.openfoodfacts.scanner.utils;
 
 import android.app.IntentService;
 import android.app.NotificationManager;
@@ -10,11 +10,11 @@ import android.support.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
-import openfoodfacts.github.scrachx.openfood.models.SaveItem;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.models.ProductImageField;
+import org.openfoodfacts.scanner.models.SaveItem;
+import org.openfoodfacts.scanner.models.SendProduct;
+import org.openfoodfacts.scanner.models.SendProductDao;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
 
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;

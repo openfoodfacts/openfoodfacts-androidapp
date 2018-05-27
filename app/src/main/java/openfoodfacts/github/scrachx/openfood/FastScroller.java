@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood;
+package org.openfoodfacts.scanner;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

@@ -1,11 +1,11 @@
-package openfoodfacts.github.scrachx.openfood.jobs;
+package org.openfoodfacts.scanner.jobs;
 
 import android.widget.Toast;
 
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
 
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
 
 /**
  * Created by jayanth on 22/2/18.

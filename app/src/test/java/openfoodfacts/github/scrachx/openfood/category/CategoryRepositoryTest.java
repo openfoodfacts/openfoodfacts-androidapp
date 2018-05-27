@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.category;
+package org.openfoodfacts.scanner.category;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
@@ -15,10 +15,10 @@ import java.util.List;
 
 import io.reactivex.Single;
 import io.reactivex.observers.TestObserver;
-import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
-import openfoodfacts.github.scrachx.openfood.category.model.Category;
-import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService;
-import openfoodfacts.github.scrachx.openfood.category.network.CategoryResponse;
+import org.openfoodfacts.scanner.category.mapper.CategoryMapper;
+import org.openfoodfacts.scanner.category.model.Category;
+import org.openfoodfacts.scanner.category.network.CategoryNetworkService;
+import org.openfoodfacts.scanner.category.network.CategoryResponse;
 
 /**
  * Created by Abdelali Eramli on 01/01/2018.

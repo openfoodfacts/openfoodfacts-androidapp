@@ -13,7 +13,7 @@
 
         <fragment
             android:id="@+id/scanner_fragment"
-            android:name="openfoodfacts.github.scrachx.openfood.fragments.BarCodeScannerFragment"
+            android:name="org.openfoodfacts.scanner.fragments.BarCodeScannerFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

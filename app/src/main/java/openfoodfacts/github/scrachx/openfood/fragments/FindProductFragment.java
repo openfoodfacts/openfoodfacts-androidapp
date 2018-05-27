@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.fragments;
+package org.openfoodfacts.scanner.fragments;
 
 
 import android.os.Bundle;
@@ -16,12 +16,12 @@ import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.utils.NavigationDrawerListener.NavigationDrawerType;
+import org.openfoodfacts.scanner.utils.Utils;
 
-import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_SEARCH_BY_CODE;
+import static org.openfoodfacts.scanner.utils.NavigationDrawerListener.ITEM_SEARCH_BY_CODE;
 
 public class FindProductFragment extends NavigationBaseFragment {
 

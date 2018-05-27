@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.network;
+package org.openfoodfacts.scanner.network;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

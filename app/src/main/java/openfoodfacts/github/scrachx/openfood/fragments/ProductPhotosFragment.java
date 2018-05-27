@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.fragments;
+package org.openfoodfacts.scanner.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,23 +26,23 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-import openfoodfacts.github.scrachx.openfood.views.splash.ISplashPresenter;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.Product;
+import org.openfoodfacts.scanner.models.ProductImage;
+import org.openfoodfacts.scanner.models.State;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.views.FullScreenImage;
+import org.openfoodfacts.scanner.views.splash.ISplashPresenter;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static org.openfoodfacts.scanner.models.ProductImageField.FRONT;
+import static org.openfoodfacts.scanner.models.ProductImageField.INGREDIENTS;
+import static org.openfoodfacts.scanner.models.ProductImageField.NUTRITION;
+import static org.openfoodfacts.scanner.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.prependIfMissing;

@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.category.network;
+package org.openfoodfacts.scanner.category.network;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

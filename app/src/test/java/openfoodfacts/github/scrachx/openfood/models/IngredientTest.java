@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package org.openfoodfacts.scanner.models;
 
 import org.junit.Test;
 

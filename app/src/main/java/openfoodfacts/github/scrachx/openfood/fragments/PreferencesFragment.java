@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.fragments;
+package org.openfoodfacts.scanner.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -34,20 +34,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Additive;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.utils.INavigationItem;
-import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import org.openfoodfacts.scanner.BuildConfig;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.Additive;
+import org.openfoodfacts.scanner.models.AdditiveDao;
+import org.openfoodfacts.scanner.utils.INavigationItem;
+import org.openfoodfacts.scanner.utils.JsonUtils;
+import org.openfoodfacts.scanner.utils.LocaleHelper;
+import org.openfoodfacts.scanner.utils.NavigationDrawerListener;
+import org.openfoodfacts.scanner.utils.NavigationDrawerListener.NavigationDrawerType;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.customtabs.CustomTabActivityHelper;
+import org.openfoodfacts.scanner.views.customtabs.WebViewFallback;
 
-import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_PREFERENCES;
+import static org.openfoodfacts.scanner.utils.NavigationDrawerListener.ITEM_PREFERENCES;
 
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem {
 

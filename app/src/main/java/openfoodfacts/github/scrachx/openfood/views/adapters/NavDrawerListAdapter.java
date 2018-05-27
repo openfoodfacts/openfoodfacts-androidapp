@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.adapters;
+package org.openfoodfacts.scanner.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.NavDrawerItem;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.NavDrawerItem;
 
 public class NavDrawerListAdapter extends BaseAdapter {
 

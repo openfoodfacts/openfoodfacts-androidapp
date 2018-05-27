@@ -1,8 +1,8 @@
-package openfoodfacts.github.scrachx.openfood.network;
+package org.openfoodfacts.scanner.network;
 
 
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import org.openfoodfacts.scanner.BuildConfig;
+import org.openfoodfacts.scanner.utils.Utils;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;

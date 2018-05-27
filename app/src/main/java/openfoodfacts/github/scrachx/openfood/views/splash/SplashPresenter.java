@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.splash;
+package org.openfoodfacts.scanner.views.splash;
 
 import android.content.SharedPreferences;
 
@@ -8,9 +8,9 @@ import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import org.openfoodfacts.scanner.BuildConfig;
+import org.openfoodfacts.scanner.repositories.IProductRepository;
+import org.openfoodfacts.scanner.repositories.ProductRepository;
 
 /**
  * Created by Lobster on 03.03.18.

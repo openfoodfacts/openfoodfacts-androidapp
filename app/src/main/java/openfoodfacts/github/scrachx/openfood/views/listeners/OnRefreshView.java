@@ -1,6 +1,6 @@
-package openfoodfacts.github.scrachx.openfood.views.listeners;
+package org.openfoodfacts.scanner.views.listeners;
 
-import openfoodfacts.github.scrachx.openfood.models.State;
+import org.openfoodfacts.scanner.models.State;
 
 /**
  * Created by Lobster on 19.04.18.

@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.adapters;
+package org.openfoodfacts.scanner.views.adapters;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -16,11 +16,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.holders.HistoryScanHolder;
+import org.openfoodfacts.scanner.BuildConfig;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.HistoryItem;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.holders.HistoryScanHolder;
 
 import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;

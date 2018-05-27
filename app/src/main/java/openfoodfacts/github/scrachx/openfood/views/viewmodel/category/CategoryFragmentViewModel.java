@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.viewmodel.category;
+package org.openfoodfacts.scanner.views.viewmodel.category;
 
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
@@ -17,11 +17,11 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
-import openfoodfacts.github.scrachx.openfood.models.Category;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
-import openfoodfacts.github.scrachx.openfood.views.viewmodel.ViewModel;
+import org.openfoodfacts.scanner.models.Category;
+import org.openfoodfacts.scanner.models.CategoryName;
+import org.openfoodfacts.scanner.repositories.IProductRepository;
+import org.openfoodfacts.scanner.repositories.ProductRepository;
+import org.openfoodfacts.scanner.views.viewmodel.ViewModel;
 
 /**
  * Created by Abdelali Eramli on 27/12/2017.

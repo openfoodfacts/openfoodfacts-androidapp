@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.utils;
+package org.openfoodfacts.scanner.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import openfoodfacts.github.scrachx.openfood.R;
+import org.openfoodfacts.scanner.R;
 
 import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_SWIPE;
 import static android.support.v7.widget.helper.ItemTouchHelper.LEFT;

@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package org.openfoodfacts.scanner.models;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static junit.framework.Assert.*;
-import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.*;
-import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
-import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static org.openfoodfacts.scanner.models.LabelNameTestData.*;
+import static org.openfoodfacts.scanner.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
+import static org.openfoodfacts.scanner.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 
 /**
  * Tests for {@link LabelResponse}

@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views;
+package org.openfoodfacts.scanner.views;
 
 
 import android.support.multidex.MultiDexApplication;
@@ -7,12 +7,12 @@ import android.support.v7.app.AppCompatDelegate;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.QueryBuilder;
 
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.dagger.component.AppComponent;
-import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
-import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
-import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
+import org.openfoodfacts.scanner.BuildConfig;
+import org.openfoodfacts.scanner.dagger.component.AppComponent;
+import org.openfoodfacts.scanner.dagger.module.AppModule;
+import org.openfoodfacts.scanner.models.DaoMaster;
+import org.openfoodfacts.scanner.models.DaoSession;
+import org.openfoodfacts.scanner.models.DatabaseHelper;
 
 public class OFFApplication extends MultiDexApplication {
 

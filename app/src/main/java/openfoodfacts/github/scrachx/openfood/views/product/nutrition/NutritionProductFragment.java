@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.product.nutrition;
+package org.openfoodfacts.scanner.views.product.nutrition;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,22 +21,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
-import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
-import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
-import openfoodfacts.github.scrachx.openfood.models.Nutriments;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.fragments.BaseFragment;
+import org.openfoodfacts.scanner.models.NutrientLevelItem;
+import org.openfoodfacts.scanner.models.NutrientLevels;
+import org.openfoodfacts.scanner.models.NutrimentLevel;
+import org.openfoodfacts.scanner.models.Nutriments;
+import org.openfoodfacts.scanner.models.Product;
+import org.openfoodfacts.scanner.models.State;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.adapters.NutrientLevelListAdapter;
+import org.openfoodfacts.scanner.views.customtabs.CustomTabActivityHelper;
+import org.openfoodfacts.scanner.views.customtabs.CustomTabsHelper;
+import org.openfoodfacts.scanner.views.customtabs.WebViewFallback;
 
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
+import static org.openfoodfacts.scanner.utils.Utils.bold;
+import static org.openfoodfacts.scanner.utils.Utils.getRoundNumber;
 
 public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
 

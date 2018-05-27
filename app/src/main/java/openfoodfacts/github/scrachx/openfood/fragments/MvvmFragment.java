@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.fragments;
+package org.openfoodfacts.scanner.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
 import io.reactivex.disposables.CompositeDisposable;
-import openfoodfacts.github.scrachx.openfood.views.viewmodel.ViewModel;
+import org.openfoodfacts.scanner.views.viewmodel.ViewModel;
 
 public abstract class MvvmFragment<T extends ViewModel, U> extends Fragment {
 

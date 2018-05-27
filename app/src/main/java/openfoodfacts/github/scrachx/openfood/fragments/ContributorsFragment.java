@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.fragments;
+package org.openfoodfacts.scanner.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,16 +22,16 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.CategoryName;
+import org.openfoodfacts.scanner.models.Product;
+import org.openfoodfacts.scanner.models.SendProduct;
+import org.openfoodfacts.scanner.models.State;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.network.WikidataApiClient;
+import org.openfoodfacts.scanner.utils.SearchType;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.ProductBrowsingListActivity;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 

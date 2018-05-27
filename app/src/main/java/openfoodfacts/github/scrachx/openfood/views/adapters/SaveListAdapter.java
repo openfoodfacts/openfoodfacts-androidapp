@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.adapters;
+package org.openfoodfacts.scanner.views.adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -15,8 +15,8 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 import java.util.concurrent.Executors;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.SaveItem;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.SaveItem;
 
 public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveViewHolder> {
 

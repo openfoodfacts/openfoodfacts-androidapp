@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.fragments;
+package org.openfoodfacts.scanner.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,12 +28,12 @@ import com.google.zxing.Result;
 import java.util.Arrays;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.Product;
+import org.openfoodfacts.scanner.models.State;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.SaveProductOfflineActivity;
 
 public class BarCodeScannerFragment extends BaseFragment implements MessageDialogFragment.MessageDialogListener,
         ZXingScannerView.ResultHandler, CameraSelectorDialogFragment.CameraSelectorDialogListener {

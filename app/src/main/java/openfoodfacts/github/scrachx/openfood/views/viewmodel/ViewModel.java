@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.viewmodel;
+package org.openfoodfacts.scanner.views.viewmodel;
 
 import android.support.annotation.NonNull;
 

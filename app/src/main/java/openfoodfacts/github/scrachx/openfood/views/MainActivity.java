@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views;
+package org.openfoodfacts.scanner.views;
 
 import android.Manifest;
 import android.app.SearchManager;
@@ -73,28 +73,28 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import butterknife.BindView;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.AllergensAlertFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
-import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import org.openfoodfacts.scanner.BuildConfig;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.fragments.AllergensAlertFragment;
+import org.openfoodfacts.scanner.fragments.FindProductFragment;
+import org.openfoodfacts.scanner.fragments.HomeFragment;
+import org.openfoodfacts.scanner.fragments.OfflineEditFragment;
+import org.openfoodfacts.scanner.fragments.PreferencesFragment;
+import org.openfoodfacts.scanner.models.LabelNameDao;
+import org.openfoodfacts.scanner.models.ProductImage;
+import org.openfoodfacts.scanner.models.SendProductDao;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.utils.LocaleHelper;
+import org.openfoodfacts.scanner.utils.NavigationDrawerListener;
+import org.openfoodfacts.scanner.utils.SearchType;
+import org.openfoodfacts.scanner.utils.ShakeDetector;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.category.activity.CategoryActivity;
+import org.openfoodfacts.scanner.views.customtabs.CustomTabActivityHelper;
+import org.openfoodfacts.scanner.views.customtabs.CustomTabsHelper;
+import org.openfoodfacts.scanner.views.customtabs.WebViewFallback;
 
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
+import static org.openfoodfacts.scanner.models.ProductImageField.OTHER;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener, SharedPreferences.OnSharedPreferenceChangeListener {
@@ -870,7 +870,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private void handleSendImage(Intent intent) {
         Uri selectedImage = null;
         ArrayList<Uri> selectedImagesArray = new ArrayList<>();
-        selectedImage = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        selectedImage = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         boolean isBarCodePresent = false;
         if (selectedImage != null) {
             selectedImagesArray.add(selectedImage);
@@ -944,8 +944,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         View dialogView = inflater.inflate(R.layout.alert_barcode, null);
         alertDialogBuilder.setView(dialogView);
 
-        final EditText barcode_edittext = (EditText) dialogView.findViewById(R.id.barcode);
-        final ImageView product_image = (ImageView) dialogView.findViewById(R.id.product_image);
+        final EditText barcode_edittext = dialogView.findViewById(R.id.barcode);
+        final ImageView product_image = dialogView.findViewById(R.id.product_image);
 
         product_image.setImageURI(uri.get(0));
         if (hasEditText) {

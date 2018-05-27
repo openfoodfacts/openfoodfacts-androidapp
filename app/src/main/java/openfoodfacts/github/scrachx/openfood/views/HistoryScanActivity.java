@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views;
+package org.openfoodfacts.scanner.views;
 
 import android.Manifest;
 import android.app.Activity;
@@ -57,17 +57,17 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
-import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
-import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
-import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
-import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
-import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
+import org.openfoodfacts.scanner.BuildConfig;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.HistoryItem;
+import org.openfoodfacts.scanner.models.HistoryProduct;
+import org.openfoodfacts.scanner.models.HistoryProductDao;
+import org.openfoodfacts.scanner.utils.ShakeDetector;
+import org.openfoodfacts.scanner.utils.SwipeController;
+import org.openfoodfacts.scanner.utils.SwipeControllerActions;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.adapters.HistoryListAdapter;
+import org.openfoodfacts.scanner.views.category.activity.CategoryActivity;
 
 public class HistoryScanActivity extends BaseActivity implements SwipeControllerActions {
 

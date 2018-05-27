@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.category.activity;
+package org.openfoodfacts.scanner.views.category.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,10 +9,10 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.utils.ShakeDetector;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.BaseActivity;
 
 public class CategoryActivity extends BaseActivity {
 

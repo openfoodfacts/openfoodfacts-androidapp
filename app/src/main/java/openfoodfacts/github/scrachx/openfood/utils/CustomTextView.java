@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.utils;
+package org.openfoodfacts.scanner.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,7 +8,7 @@ import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
-import openfoodfacts.github.scrachx.openfood.R;
+import org.openfoodfacts.scanner.R;
 
 
 public class CustomTextView extends AppCompatTextView {

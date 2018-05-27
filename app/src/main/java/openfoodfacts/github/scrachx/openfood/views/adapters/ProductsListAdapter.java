@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.adapters;
+package org.openfoodfacts.scanner.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,8 +15,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Product;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.Product;
 
 public class ProductsListAdapter extends BaseAdapter {
 

@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.utils;
+package org.openfoodfacts.scanner.utils;
 
 /**
  * Created by Mehrosh.Mehboob on 20-Feb-18.

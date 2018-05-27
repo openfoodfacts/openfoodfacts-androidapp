@@ -23,7 +23,8 @@
             android:layout_marginTop="@dimen/spacing_larger"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_openfacts_logo_no_tagline" />
+            app:srcCompat="@drawable/ic_openfacts_logo_no_tagline"
+            android:contentDescription="TODO" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/taglineHome"

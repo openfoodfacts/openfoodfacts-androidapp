@@ -8,13 +8,13 @@
 
         <variable
             name="viewModel"
-            type="openfoodfacts.github.scrachx.openfood.views.viewmodel.category.CategoryFragmentViewModel" />
+            type="org.openfoodfacts.scanner.views.viewmodel.category.CategoryFragmentViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment">
+        tools:context="org.openfoodfacts.scanner.views.category.fragment.CategoryListFragment">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler"
@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             app:categories="@{viewModel.filteredCategories}" />
 
-        <openfoodfacts.github.scrachx.openfood.FastScroller
+        <org.openfoodfacts.scanner.FastScroller
             android:id="@+id/fast_scroller"
             android:layout_width="24dp"
             android:layout_height="match_parent"

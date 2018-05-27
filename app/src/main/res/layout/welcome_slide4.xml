@@ -11,7 +11,8 @@
         android:layout_width="@dimen/img_width_height"
         android:layout_height="@dimen/img_width_height"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/ic_aeroplane" />
+        app:srcCompat="@drawable/ic_aeroplane"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/slide_4_title"

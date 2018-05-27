@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views;
+package org.openfoodfacts.scanner.views;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;

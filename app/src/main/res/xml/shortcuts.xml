@@ -8,7 +8,7 @@
         android:shortcutShortLabel="@string/scan_shortcut_short_label">
         <intent
             android:action="SCAN"
-            android:targetClass="openfoodfacts.github.scrachx.openfood.views.MainActivity"
+            android:targetClass="org.openfoodfacts.scanner.views.MainActivity"
             android:targetPackage="${applicationId}" />
         <categories android:name="${applicationId}" />
     </shortcut>
@@ -21,7 +21,7 @@
         android:shortcutShortLabel="@string/barcode_shortcut_short_label">
         <intent
             android:action="BARCODE"
-            android:targetClass="openfoodfacts.github.scrachx.openfood.views.MainActivity"
+            android:targetClass="org.openfoodfacts.scanner.views.MainActivity"
             android:targetPackage="${applicationId}" />
         <categories android:name="${applicationId}" />
     </shortcut>
@@ -34,7 +34,7 @@
         android:shortcutShortLabel="@string/history_shortcut_short_label">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity"
+            android:targetClass="org.openfoodfacts.scanner.views.HistoryScanActivity"
             android:targetPackage="${applicationId}" />
         <categories android:name="${applicationId}" />
     </shortcut>
@@ -47,7 +47,7 @@
         android:shortcutShortLabel="@string/contributions_shortcut_short_label">
         <intent
             android:action="CONTRIBUTIONS"
-            android:targetClass="openfoodfacts.github.scrachx.openfood.views.MainActivity"
+            android:targetClass="org.openfoodfacts.scanner.views.MainActivity"
             android:targetPackage="${applicationId}" />
         <categories android:name="${applicationId}" />
     </shortcut>

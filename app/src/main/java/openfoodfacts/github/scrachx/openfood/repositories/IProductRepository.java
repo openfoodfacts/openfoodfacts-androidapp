@@ -1,20 +1,20 @@
 
-package openfoodfacts.github.scrachx.openfood.repositories;
+package org.openfoodfacts.scanner.repositories;
 
 import java.util.List;
 
 import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.Additive;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.Category;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.Country;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.Label;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
-import openfoodfacts.github.scrachx.openfood.models.Tag;
+import org.openfoodfacts.scanner.models.Additive;
+import org.openfoodfacts.scanner.models.AdditiveName;
+import org.openfoodfacts.scanner.models.Allergen;
+import org.openfoodfacts.scanner.models.AllergenName;
+import org.openfoodfacts.scanner.models.Category;
+import org.openfoodfacts.scanner.models.CategoryName;
+import org.openfoodfacts.scanner.models.Country;
+import org.openfoodfacts.scanner.models.CountryName;
+import org.openfoodfacts.scanner.models.Label;
+import org.openfoodfacts.scanner.models.LabelName;
+import org.openfoodfacts.scanner.models.Tag;
 
 /**
  * Created by Lobster on 03.03.18.

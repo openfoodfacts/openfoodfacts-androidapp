@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package org.openfoodfacts.scanner.models;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
@@ -7,7 +7,7 @@ import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Keep;
 
 /**
- * Country code and translated name of an {@link openfoodfacts.github.scrachx.openfood.models.Allergen}
+ * Country code and translated name of an {@link org.openfoodfacts.scanner.models.Allergen}
  *
  * @author Lobster 2018-03-04
  * @author ross-holloway94 2018-03-14

@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.fragments;
+package org.openfoodfacts.scanner.fragments;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -37,21 +37,21 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
-import openfoodfacts.github.scrachx.openfood.models.SaveItem;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
-import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
-import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.Product;
+import org.openfoodfacts.scanner.models.ProductImageField;
+import org.openfoodfacts.scanner.models.SaveItem;
+import org.openfoodfacts.scanner.models.SendProduct;
+import org.openfoodfacts.scanner.models.SendProductDao;
+import org.openfoodfacts.scanner.models.State;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.utils.NavigationDrawerListener.NavigationDrawerType;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.MainActivity;
+import org.openfoodfacts.scanner.views.SaveProductOfflineActivity;
+import org.openfoodfacts.scanner.views.adapters.SaveListAdapter;
 
-import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_OFFLINE;
+import static org.openfoodfacts.scanner.utils.NavigationDrawerListener.ITEM_OFFLINE;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
@@ -239,7 +239,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     public void onClick(int position) {
 
         Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
-        SaveItem si = (SaveItem) saveItems.get(position);
+        SaveItem si = saveItems.get(position);
         State st = new State();
         Product pd = new Product();
         pd.setCode(si.getBarcode());

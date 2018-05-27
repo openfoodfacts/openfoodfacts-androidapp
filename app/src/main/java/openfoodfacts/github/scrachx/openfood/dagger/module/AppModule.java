@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.dagger.module;
+package org.openfoodfacts.scanner.dagger.module;
 
 import android.content.Context;
 
@@ -8,13 +8,13 @@ import dagger.Module;
 import dagger.Provides;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.category.CategoryRepository;
-import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
-import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService;
-import openfoodfacts.github.scrachx.openfood.dagger.Qualifiers;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import org.openfoodfacts.scanner.BuildConfig;
+import org.openfoodfacts.scanner.category.CategoryRepository;
+import org.openfoodfacts.scanner.category.mapper.CategoryMapper;
+import org.openfoodfacts.scanner.category.network.CategoryNetworkService;
+import org.openfoodfacts.scanner.dagger.Qualifiers;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.OFFApplication;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;

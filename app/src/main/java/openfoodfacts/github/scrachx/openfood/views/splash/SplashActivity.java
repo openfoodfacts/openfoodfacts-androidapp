@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.splash;
+package org.openfoodfacts.scanner.views.splash;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -10,9 +10,9 @@ import android.widget.TextView;
 import net.steamcrafted.loadtoast.LoadToast;
 
 import butterknife.BindView;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
-import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.views.BaseActivity;
+import org.openfoodfacts.scanner.views.WelcomeActivity;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class SplashActivity extends BaseActivity implements ISplashPresenter.View {

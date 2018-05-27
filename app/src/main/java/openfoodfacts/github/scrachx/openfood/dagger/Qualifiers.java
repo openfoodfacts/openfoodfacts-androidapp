@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.dagger;
+package org.openfoodfacts.scanner.dagger;
 
 import javax.inject.Qualifier;
 

@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views;
+package org.openfoodfacts.scanner.views;
 
 import android.Manifest;
 import android.content.Context;
@@ -36,17 +36,17 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.Search;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
-import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
+import org.openfoodfacts.scanner.BuildConfig;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.Product;
+import org.openfoodfacts.scanner.models.Search;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.utils.SearchType;
+import org.openfoodfacts.scanner.utils.ShakeDetector;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.adapters.ProductsRecyclerViewAdapter;
+import org.openfoodfacts.scanner.views.listeners.EndlessRecyclerViewScrollListener;
+import org.openfoodfacts.scanner.views.listeners.RecyclerItemClickListener;
 
 public class ProductBrowsingListActivity extends BaseActivity {
 

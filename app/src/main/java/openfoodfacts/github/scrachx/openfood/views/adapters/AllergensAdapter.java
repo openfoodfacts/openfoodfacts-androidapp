@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.adapters;
+package org.openfoodfacts.scanner.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,9 +12,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.models.AllergenName;
+import org.openfoodfacts.scanner.repositories.IProductRepository;
 
 public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.ViewHolder> {
 

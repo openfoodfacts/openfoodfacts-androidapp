@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views;
+package org.openfoodfacts.scanner.views;
 
 import android.Manifest;
 import android.app.Activity;
@@ -27,23 +27,23 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.SaveOfflineSummaryFragment;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
-import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
-import openfoodfacts.github.scrachx.openfood.views.product.nutrition_details.NutritionInfoProductFragment;
+import org.openfoodfacts.scanner.BuildConfig;
+import org.openfoodfacts.scanner.R;
+import org.openfoodfacts.scanner.fragments.SaveOfflineSummaryFragment;
+import org.openfoodfacts.scanner.models.Product;
+import org.openfoodfacts.scanner.models.SendProduct;
+import org.openfoodfacts.scanner.models.SendProductDao;
+import org.openfoodfacts.scanner.models.State;
+import org.openfoodfacts.scanner.network.OpenFoodAPIClient;
+import org.openfoodfacts.scanner.utils.Utils;
+import org.openfoodfacts.scanner.views.adapters.ProductFragmentPagerAdapter;
+import org.openfoodfacts.scanner.views.product.ingredients.IngredientsProductFragment;
+import org.openfoodfacts.scanner.views.product.nutrition_details.NutritionInfoProductFragment;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static org.openfoodfacts.scanner.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -81,7 +81,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
 
         final State state = (State) getIntent().getExtras().getSerializable("state");
         final Product product = state.getProduct();
-        fromOfflineEdit = (boolean) getIntent().getBooleanExtra("offlineEdit", false);
+        fromOfflineEdit = getIntent().getBooleanExtra("offlineEdit", false);
 
         preProduct = new SendProduct();
         mBarcode = product.getCode();

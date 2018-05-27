@@ -1,11 +1,11 @@
-package openfoodfacts.github.scrachx.openfood.views.category.adapter;
+package org.openfoodfacts.scanner.views.category.adapter;
 
 import android.support.v7.widget.RecyclerView;
 
-import openfoodfacts.github.scrachx.openfood.databinding.CategoryRecyclerItemBinding;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
-import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import org.openfoodfacts.scanner.databinding.CategoryRecyclerItemBinding;
+import org.openfoodfacts.scanner.models.CategoryName;
+import org.openfoodfacts.scanner.utils.SearchType;
+import org.openfoodfacts.scanner.views.ProductBrowsingListActivity;
 
 /**
  * Created by Abdelali Eramli on 27/12/2017.
