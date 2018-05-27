@@ -25,12 +25,12 @@
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
   <string name="msg_share">Mire este produto en Open Food Facts :</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+  <string name="txt_broaden_search">- ampliar a busca \n- escanear e engadir a Open Food Facts</string>
   <string name="Donation">Pulse aquí para doar a Open Food Facts</string>
   <string name="translate_help_title">Help translate Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
   <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">A información sobre as súas alerxias nunca se enviará ao servidor de Open Food Facts. Ademáis, teña en conta que os datos poderían non ser precisos e a detección podería non ser 100% precisa, así que compróbeo vostede mesma con atención! </string>
   <!-- OPFF tagline in different languages -->
   <string name="tagline">free pet food products database</string>
 </resources>
