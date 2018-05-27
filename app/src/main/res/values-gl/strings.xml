@@ -23,10 +23,10 @@
   <string name="contribute">Cómo contribuír</string>
   <string name="action_find">Buscar</string>
   <string name="text_barcode">Tipo de código de barras :</string>
-  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
-  <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="message_in_activity_save_product_offline">Só é obligatoria unha foto para enviar un novo producto.</string>
+  <string name="product_incomplete_message">Este producto non está completo. Como resultado, non puidemos facer as comprobacións de alerxenos.</string>
+  <string name="no_offline_data">Remataches</string>
+  <string name="first_offline">Os productos engadidos fora de liña aparecerán aquí</string>
   <!-- Image Upload -->
   <string-array name="upload_image">
     <item>640 X 480</item>
@@ -65,8 +65,8 @@
     <item>Ingredientes</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
-  <string name="edit">Edit</string>
+  <string name="bookmark">Marcar</string>
+  <string name="edit">Editar</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Buscar</string>
@@ -91,8 +91,8 @@
   <string name="txtStores">Tendas :</string>
   <string name="txtCountries">Países de venda :</string>
   <string name="txtIngredients">Lista de ingredientes :</string>
-  <string name="Donate">Donate</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donate">Doar</string>
+  <string name="Donation">Pulse aquí para doar a Open Food Facts</string>
   <string name="txtSubstances">Substancias ou produtos que producen alerxias ou intolerancias :</string>
   <string name="txtAdditives">Aditivos :</string>
   <string name="txtTraces">Trazas :</string>
@@ -100,9 +100,9 @@
   <string name="txtPalmOilProduct">Ingredientes de aceite de palma :</string>
   <string name="txtServingSize">Tamaño da ración :</string>
   <string name="txtNutrientLevel100g">Cantidade de nutrientes por 100g :</string>
-  <string name="txtNutritionLevelLow">in low quantity</string>
-  <string name="txtNutritionLevelModerate">in moderate quantity</string>
-  <string name="txtNutritionLevelHigh">in high quantity</string>
+  <string name="txtNutritionLevelLow">en baixa cantidade</string>
+  <string name="txtNutritionLevelModerate">con moderación</string>
+  <string name="txtNutritionLevelHigh">en alta cantidade</string>
   <string name="txtLogin">Iniciar sesión :</string>
   <string name="txtPass">Contrasinal:</string>
   <string name="txtTitleHome">Abra a súa comida para coñecer o que come</string>
@@ -118,10 +118,10 @@
   <string name="hintPass">Contrasinal</string>
   <string name="errorLogin">Erro de acceso ou do contrasinal</string>
   <string name="errorWeb">Non fomos quen de acceder a internet. Ten problemas de conexión?</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="uploadLater">A imaxe subirase cando a rede esté dispoñible</string>
   <string name="txtInfoLoginOk">Gardouse o usuario</string>
   <string name="txtInfoLoginNo">Non se gardou o usuario</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+  <string name="txtDialogsContent">O producto que escaneou non está en Open Food Facts. Por favor, engádao.</string>
   <string name="txtDialogsContentPowerMode">O produto escaneado xa existe en Open Food Facts.</string>
   <string name="txtYes">Si</string>
   <string name="txtNo">Non</string>
@@ -134,8 +134,8 @@
   <string name="txtTakePicture">Facer foto</string>
   <string name="txtSendAll">Subir todo</string>
   <string name="txtNoData">Non hai datos</string>
-  <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeeded">Agarde…</string>
+  <string name="txtPictureNeededDialogContent">Debe engadir cando menos unha fotografía antes de enviar este producto</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Enviando</string>
@@ -474,6 +474,6 @@
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show Contribution Tab</string>
-  <string name="product">Edit</string>
+  <string name="product">Editar</string>
   <string name="txtDialogsTitle">Información</string>
 </resources>
