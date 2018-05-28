@@ -1,54 +1,54 @@
 Open Products Facts est une base de données ouverte de tous les produits dans le monde.
 
-*** Contribute to Product Transparency ***
+*** Contribuer à la transparence des produits ***
 
-- Open Food Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding your first product. 
+- Open Products Facts est une base de données de produits faite par tout le monde, pour tout le monde.
+- Vous pouvez l'utiliser pour faire de meilleurs choix, et comme ce sont des données ouvertes, n'importe qui peut le réutiliser pour n'importe quel but.
+- Open Products Facts est un projet à but non lucratif développé par des milliers de volontaires du monde entier. Nous avons beaucoup de projets passionnants auxquels vous pouvez contribuer de différentes façons. 
+- Vous pouvez commencer à contribuer aujourd'hui en ajoutant votre premier produit. 
 
-*** Get the Facts ***
-- Open Products Facts helps you to make sense of the fine print on products labels.
+*** Obtenez les faits ***
+- Open Products Facts vous aide à donner un sens aux petits caractères sur les étiquettes des produits.
 
-*** Collect AAAALL the things ***
-- You can add all the items from your collections
-- Open Crayons Facts - The largest open database of coloring crayons
-- Open Miniature Food Facts - The largest open database of miniature food products
-- Open ??? Facts - Create your own open database :-)
+*** Rassemblez TOUUUTES les choses ***
+- Vous pouvez ajouter tous les objets de vos collections
+- Open Crayons Facts - La plus grande base de données ouverte de crayons à colorier
+- Open Miniature Food Facts - La plus grande base de données ouverte de produits alimentaires miniatures
+- Open ??? Facts - Créez votre propre base de données ouverte :-)
 
-*** Works well in any condition ***
+*** Fonctionne bien dans toutes les conditions ***
 - Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d'une connexion Internet sur le moment.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- L'application ne charge que le strict nécessaire pour réduire la consommation de données et de la batterie
+- Vous n'avez pas besoin d'une caméra pour rechercher un produit. Vous pouvez également taper le code à barres si vous n'avez pas d'appareil photo ou si vous avez un problème avec celui-ci.
 
-*** Your products, your data ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Vos produits, vos données ***
+- Vos données personnelles vous appartiennent et ne sont jamais envoyées en ligne
+- Vous pouvez utiliser l'application anonymement
+- Vous pouvez exporter votre historique de scans
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Pour la nourriture, vous pouvez installer Open Food Facts, pour les cosmétiques, Open Beauty Facts, et pour les aliments pour animaux de compagnie, Open Pet Food Facts.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Open Products Facts est également disponible sur le Web à l'adresse https://world-fr.openproductsfacts.org
+Questions, commentaires: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+Hier matin, l'équipe d'Open Food Facts s'est réveillée avec une révélation stupéfiante. 
 
-Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+Collecter la nourriture, la cosmétique et la nourriture pour animaux de compagnie du monde était si Has Been. Avec les progrès insensés réalisés au cours de l'année écoulée, nous devons sûrement être proches de l'accomplissement de notre mission de collecte de tous les produits alimentaires et cosmétiques dans le monde, n'est-ce pas?
 
-So we set up to create not 1, but other 77000 separate new databases ! 
+Nous avons donc décidé de mettre en place non pas une 1, mais pas moins de 77000 nouvelles bases de données distinctes! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts sera un projet extrêmement ambitieux. Voici quelques-uns d'entre elles: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - La plus grande base de données ouverte de crayons à colorier
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - La plus grande base de données ouverte de produits alimentaires miniatures
 
-Open ??? Facts - The largest open database of ???
+Open ??? Facts - La plus grande base de données ouverte de ???
 
-Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+Demain, nous sélectionnerons les 3 bases de données les plus performantes, et nous commencerons à collecter tous les produits correspondants dans le monde.
 
-Will it be trash cans, télécartes, or mobile phones database ? 
+S'agira-t-il de poubelles, de télécartes ou d'une base de données sur les téléphones mobiles? 
 
-So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
+Donc, si vous aimez les t-shirts, les livres de cuisine, le papier origami ou les globes de neige, commencez à scanner en utilisant l'application Android Open Products Facts sur Google Play

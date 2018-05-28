@@ -11,6 +11,7 @@
   <string name="website_product">https://world-hu.openfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-hu.openfoodfacts.org/contributor/</string>
+  <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
   <string name="txtHome">Az Open Food Facts élelmiszerek nyílt adatbázisa, a termékekhez tartozó összetevők, allergének, tápanyagok adataival együtt és egyéb információval, ami a termék csomagolásán vagy címkéjén szerepel.</string>
   <string name="slide_1_title">Hozzájárulás a termék átláthatósághoz</string>
   <string name="slide_1_desc">Olvasson be termékeket, készítsen képet, tegye lehetővé az élelmiszer átláthatóságot</string>
@@ -28,7 +29,7 @@
   <string name="Donation">Kattintson ide az Open Products Facts-nek szánt adományozáshoz</string>
   <string name="translate_help_title">Segítse az Open Products Facts fordítását</string>
   <string name="translate_help_summary">Hozza az Open Products Facts adatbázist az ön nyelvére - nincs szükség műszaki ismeretekre</string>
-  <string name="text_offline_info_dialog">Offline beolvasás is lehetséges az Open Products Facts adatbázisba való későbbi feltöltéshez. Minden itt megjelenő termék beküldhető az alábbi gomb megnyomásával.</string>
+  <string name="text_offline_info_dialog">Olvassa be a termékeket akkor is, amikor kapcsolat nélküli módban van, hogy később hozzáadja azokat az Open Products Facts-hez. A beolvasott termékek itt fognak megjelenni és az alábbi gomb használatával elküldheti őket.</string>
   <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Products Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
   <!-- OPF tagline in different languages -->
   <string name="tagline">a szabad termék adatbázis</string>

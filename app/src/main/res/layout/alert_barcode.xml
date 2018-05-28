@@ -19,7 +19,9 @@
         android:padding="10dp"
         android:visibility="gone"
         android:layout_gravity="center_horizontal"
-        android:textSize="@dimen/font_normal" />
+        android:textSize="@dimen/font_normal"
+        android:inputType="number"
+        />
 
 
 

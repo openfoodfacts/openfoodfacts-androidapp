@@ -11,6 +11,7 @@
   <string name="website_product">https://world-ru.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-ru.openpetfoodfacts.org/contributor/</string>
+  <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
   <string name="txtHome">Open Pet Food Facts - это база данных продуктов для домашних животных с ингредиентами, аллергенами, признаками и всей информацией, которую мы можем найти на этикетках продуктов для домашних животных. Гав. Гав.</string>
   <string name="slide_1_title">Contribute to Pet Food transparency</string>
   <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
@@ -21,14 +22,14 @@
   <string name="slide_4_title">Работать автономно</string>
   <string name="slide_4_desc">Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
+  <string name="txtDialogsContentPowerMode">Отсканированный продукт уже внесён в Open Pet Facts.</string>
   <string name="msg_share">Посмотрите на этот продукт на Open Food Facts:</string>
   <string name="not_support_books">В настоящее время книги не поддерживаются в Open Food Facts</string>
   <string name="txt_broaden_search">- расширение вашего поиска \n- отсканируйте и добавьте его в Open Food Facts</string>
   <string name="Donation">Нажмите здесь, чтобы поддержать Open Food Facts</string>
   <string name="translate_help_title">Помогите перевести Open Food Facts</string>
   <string name="translate_help_summary">Перевести базу данных Open Food Facts на ваш родной язык - никаких технических знаний не требуется</string>
-  <string name="text_offline_info_dialog">Вы можете сканировать продукты будучи офлайн, и отправить их на Open Food Facts потом.  Все сканируемые продукты будут появляться здесь, и их можно будет отправить кнопкой, которая ниже.</string>
+  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
   <!-- OPFF tagline in different languages -->
   <string name="tagline">free pet food products database</string>

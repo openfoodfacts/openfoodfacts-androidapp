@@ -1,41 +1,41 @@
 Open Food Facts הוא מסד נתונים של מוצרי מזון עם רכיבים, מעוררי רגישות, עובדות תזונתיות וכל שביב מידע שניתן למצוא על תווית המוצר.
 
-*** Contribute to Product Transparency ***
+*** תרומה לשקיפות המזון ***
 
-- Open Food Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. יש לנו מגוון מיזמים מרתקים להם ניתן לתרום במגוון דרכים. 
-- You can start contributing today by adding your first product. 
+- Open Products Facts הוא מסד נתוני מוצרים שנוצר על ידי כולם, למען כולם.
+- ניתן להשתמש במסד הנתונים כדי לקחת החלטות טובות יותר וכיוון שמדובר בנתונים פתוחים, כל אחד יכול לגזור את מסד הנתונים לכל מטרה שהיא.
+- Open Products Facts הוא מיזם ללא כוונת רווח שפותח על ידי אלפי מתנדבים מכל רחבי העולם. יש לנו מגוון מיזמים מרתקים להם ניתן לתרום במגוון דרכים. 
+- ניתן להתחיל לתרום עוד היום על ידי הוספת המוצר הראשון שלך. 
 
 *** קבלת העובדות ***
-- Open Products Facts helps you to make sense of the fine print on products labels.
+- עם Open Products Facts סוף סוף אפשר להבין את כל הקשקושים שכתובים על תוויות המוצרים.
 
-*** Collect AAAALL the things ***
-- You can add all the items from your collections
+*** לאסוף את כללללללל הדברים ***
+- ניתן להוסיף את כל הפריטים מהאוספים שלך
 - Open Crayons Facts - מסד הנתונים הגדול ביותר לעפרונות צביעה
 - Open Miniature Food Facts - מסד הנתונים הגדול ביותר למוצרי מזון מזעריים
-- Open ??? Facts - Create your own open database :-)
+- Open ??? Facts - יצירת מסד נתונים משלך :-)
 
 *** פעילות עם כמה שפחות הפרעות ***
 - ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע.
 - היישומון טוען רק את מה שנדרש כדי לצמצם בתקשורת נתונים ובצריכת סוללה
 - אין צורך במצלמה כדי לחפש מוצר. ניתן גם להקליד את הברקוד אם אין לך מצלמה או שהיא אינה תקינה.
 
-*** Your products, your data ***
-- Your personal data is yours, and is never sent online
+*** המוצרים שלך, הנתונים שלך ***
+- הנתונים האישיים שלך הם שלך והם לא יישלחו לשום מקום
 - ניתן להשתמש ביישומון בעילום שם
 - ניתן לייצא את היסטוריית הסריקות שלך
 
 בשביל מזון, ניתן להתקין את Open Food Facts, לקוסמטיקה יש את Open Beauty Facts ולמזון לחיות מחמד יש את Open Pet Food Facts.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
+Open Products Facts זמין גם כאתר לדפדפן בכתובת https://world.openproductsfacts.org
 שאלות, משוב : contact@openfoodfacts.org
 
-*** Original April's Fool Listing ***
+*** הרשומה המקורית מאחד באפריל ***
 
 אתמול בבוקר, התעוררו חברי צוות Open Food Facts להתגלות עוצרת נשימה. 
 
-איסוף נתונים המזון, הקוסמטיקה והמזון לחיות מחמד זה כל כך שנה שעברה. בזכות ההתקדמות המטורפת שהשגנו במהלך השנה החולפת, אנחנו ודאי מתקרבים להשלמת המטרה שלנו לאסוף את נתוני כל מוצרי המזון והקוסמטיקה בכל רחבי העולם, לא כך?
+איסוף נתוני המזון, הקוסמטיקה והמזון לחיות מחמד זה כל כך שנה שעברה. בזכות ההתקדמות המטורפת שהשגנו במהלך השנה החולפת, אנחנו ודאי מתקרבים להשלמת המטרה שלנו לאסוף את נתוני כל מוצרי המזון והקוסמטיקה בכל רחבי העולם, לא כך?
 
 אז התכוננו ליצירת לא 1 אלא 77,000 מסדי נתונים חדשים שונים! 
 

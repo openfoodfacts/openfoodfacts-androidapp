@@ -7,17 +7,17 @@
 
 ***תרומה לשקיפות המזון***
 
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. יש לנו מגוון מיזמים מרתקים להם ניתן לתרום במגוון דרכים. 
-- You can start contributing today by adding a product from your food cupboard. 
+- Open Food Facts הוא מסד נתוני מוצרי מזון שנוצר על ידי כולם, למען כולם.
+- ניתן להשתמש במסד הנתונים כדי לקחת החלטות מזון טובות יותר וכיוון שמדובר בנתונים פתוחים, כל אחד יכול לגזור את מסד הנתונים לכל מטרה שהיא.
+- Open Food Facts הוא מיזם ללא כוונת רווח שפותח על ידי אלפי מתנדבים מכל רחבי העולם. יש לנו מגוון מיזמים מרתקים להם ניתן לתרום במגוון דרכים. 
+- ניתן להתחיל לתרום עוד היום על ידי הוספת מוצר מהמטבח האישי שלך. 
 
 *** קבלת העובדות ***
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+- עם Open Food Facts סוף סוף אפשר להבין את כל הקשקושים שכתובים על תוויות המזון. ניתן למצוא (בהתאם לנתונים שמופיעים על המוצרים):
+- טביעת רגל פחמנית (פליטת CO2) ואריזה (לרבות הנחיות מחזור),
+- דירוג תזונתי, ערכים תזונתיים, שומן / תכולת שומן, חומצות שומן רוויות, פחמימות, סוכרים, סיבים, חלבון, מלח ונתרן.
+- מותגים, מעוררי רגישות, תוויות (אורגני, נטול גלוטן, טבעוני, צמחוני, כשר, חלאל…), נתוני מעקב מקור (קודים של אריזה, מקורות רכיבים)
+- על יינות ועל בירות, ניתן למצוא את הרכב האלכוהול.
 
 *** פעילות עם כמה שפחות הפרעות ***
 - ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע.
@@ -29,7 +29,7 @@
 - ניתן להשתמש ביישומון בעילום שם
 - ניתן לייצא את היסטוריית הסריקות שלך
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Open Food Facts זמין גם כאתר לדפדפן בכתובת https://world.openfoodfacts.org
 שאלות, משוב : contact@openfoodfacts.org
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+לקוסמטיקה ניתן להתקין את Open Beaury Facts, למזון לחיות מחמד את Open Pet Food Facts ולכל שאר המוצרים את Open Products Facts.

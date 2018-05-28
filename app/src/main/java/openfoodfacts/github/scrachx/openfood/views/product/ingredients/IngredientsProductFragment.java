@@ -16,6 +16,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.PreferenceManager;
+import android.support.v7.widget.CardView;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -103,6 +104,24 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     TextView aminoAcidTagsTextView;
     @BindView(R.id.otherNutritionTags)
     TextView otherNutritionTagTextView;
+    @BindView(R.id.cvTextIngredientProduct)
+    CardView textIngredientProductCardView;
+    @BindView(R.id.cvTextSubstanceProduct)
+    CardView textSubstanceProductCardView;
+    @BindView(R.id.cvTextTraceProduct)
+    CardView textTraceProductCardView;
+    @BindView(R.id.cvTextAdditiveProduct)
+    CardView textAdditiveProductCardView;
+    @BindView(R.id.cvTextPalmOilProduct)
+    CardView textPalmOilProductCardView;
+    @BindView(R.id.cvVitaminsTagsText)
+    CardView vitaminsTagsTextCardView;
+    @BindView(R.id.cvAminoAcidTagsText)
+    CardView aminoAcidTagsTextCardView;
+    @BindView(R.id.cvMineralTagsText)
+    CardView mineralTagsTextCardView;
+    @BindView(R.id.cvOtherNutritionTags)
+    CardView otherNutritionTagsCardView;
 
     private Product product;
     private OpenFoodAPIClient api;
@@ -155,10 +174,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         super.refreshView(state);
         mState = state;
 
-        try {
+        if(getArguments()!=null){
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
-        } catch (NullPointerException e) {
-            e.printStackTrace();
         }
 
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
@@ -189,6 +206,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             vitaminTagsTextView.append(vitaminStringBuilder.toString());
         } else {
             vitaminTagsTextView.setVisibility(View.GONE);
+            vitaminsTagsTextCardView.setVisibility(View.GONE);
         }
 
         if (!aminoAcidTagsList.isEmpty()) {
@@ -203,6 +221,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             aminoAcidTagsTextView.append(aminoAcidStringBuilder.toString());
         } else {
             aminoAcidTagsTextView.setVisibility(View.GONE);
+            aminoAcidTagsTextCardView.setVisibility(View.GONE);
         }
 
         if (!mineralTags.isEmpty()) {
@@ -217,6 +236,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             mineralTagsTextView.append(mineralsStringBuilder);
         } else {
             mineralTagsTextView.setVisibility(View.GONE);
+            mineralTagsTextCardView.setVisibility(View.GONE);
         }
 
         if (!otherNutritionTags.isEmpty()) {
@@ -231,6 +251,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             otherNutritionTagTextView.append(otherNutritionStringBuilder.toString());
         } else {
             otherNutritionTagTextView.setVisibility(View.GONE);
+            otherNutritionTagsCardView.setVisibility(View.GONE);
         }
 
         additiveProduct.setText(bold(getString(R.string.txtAdditives)));
@@ -268,6 +289,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 ingredientsProduct.setText(txtIngredients);
             } else {
                 ingredientsProduct.setVisibility(View.GONE);
+                textIngredientProductCardView.setVisibility(View.GONE);
             }
         }
 
@@ -287,10 +309,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             substanceProduct.append(Utils.getClickableText(allergen, allergen, SearchType.ALLERGEN, getActivity(), customTabsIntent));
         } else {
             substanceProduct.setVisibility(View.GONE);
+            textSubstanceProductCardView.setVisibility(View.GONE);
         }
 
         if (isBlank(product.getTraces())) {
             traceProduct.setVisibility(View.GONE);
+            textTraceProductCardView.setVisibility(View.GONE);
         } else {
             traceProduct.setMovementMethod(LinkMovementMethod.getInstance());
             traceProduct.setText(bold(getString(R.string.txtTraces)));
@@ -311,6 +335,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (product.getIngredientsFromPalmOilN() == 0 && product.getIngredientsFromOrThatMayBeFromPalmOilN() == 0) {
             palmOilProduct.setVisibility(View.GONE);
             mayBeFromPalmOilProduct.setVisibility(View.GONE);
+            textPalmOilProductCardView.setVisibility(View.GONE);
         } else {
             if (!product.getIngredientsFromPalmOilTags().isEmpty()) {
                 palmOilProduct.setText(bold(getString(R.string.txtPalmOilProduct)));
@@ -422,6 +447,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             }
             case EMPTY: {
                 additiveProduct.setVisibility(View.GONE);
+                textAdditiveProductCardView.setVisibility(View.GONE);
                 break;
             }
         }

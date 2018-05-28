@@ -11,6 +11,7 @@
   <string name="website_product">https://world.openbeautyfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
+  <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
   <string name="txtHome">Open Beauty Facts ir datu bāze par kosmētikas līdzekļiem ar sastāvdaļām, alergēniem, indikācijām un visiem informācijas tintetiem, kurus mēs varam atrast produktu etiķetēs.</string>
   <string name="slide_1_title">Sekmēt kosmētikas pārredzamība</string>
   <string name="slide_1_desc">Skenēšanas produktiem, ņemt tos attēlu, lai kosmētikas līdzekļu pārskatāmību, notiks</string>
@@ -28,7 +29,7 @@
   <string name="Donation">Noklikšķiniet šeit, lai ziedotu Open Food Facts</string>
   <string name="translate_help_title">Palīdziet tulkot \"open Food Facts\"</string>
   <string name="translate_help_summary">Iegūstiet Open Food Facts savā valodā- tehniskās zināšanas nav nepieciešamas</string>
-  <string name="text_offline_info_dialog">Iespējams skenēt produktus bezsaistes režīmā, lai pievienotu tos Open Food Facts vēlāk, kad interneta savienojums ir pieejams. visi produkti kuri tiks noskenēti, būs redzami šeit. Lai nosūtītu produktus, izmantojiet pogu zemāk.</string>
+  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Jūsu alerģiju informācija nekad netiks nosūtīta uz Open Food Facts serveri. Uzmanieties jo pieejamie dati par produktu var būt neprecīzi tāpēc pārliecinieties, pirms pieņemiet lēmumus! </string>
   <!-- OBF tagline in different languages -->
   <string name="tagline">bezmaksas kosmētikas datu bāze</string>

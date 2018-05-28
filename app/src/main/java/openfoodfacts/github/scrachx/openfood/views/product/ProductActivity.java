@@ -51,12 +51,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Nutriments;
-
-import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
-import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
-import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
@@ -64,6 +61,8 @@ import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.BottomNavigationBehavior;
+import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
@@ -118,6 +117,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_product);
+        setTitle(getString(R.string.app_name_long));
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -187,7 +187,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 //                     Implementation of Translation will be here
 //                    Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
 //                    break;
-                case R.id.find_product:
+                case R.id.edit_product:
                     String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
                     if (mState.getProduct().getUrl() != null) {
                         url = " " + mState.getProduct().getUrl();
@@ -197,6 +197,15 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 
                     CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
                     break;
+
+                case R.id.history_bottom_nav:
+                    startActivity(new Intent(this, HistoryScanActivity.class));
+                    break;
+
+                case R.id.search_product:
+                    startActivity(new Intent(this, MainActivity.class));
+                    break;
+
                 case R.id.empty:
                     break;
                 default:
@@ -241,7 +250,6 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 
         adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
         adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
-        adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (preferences.getBoolean("contributionTab", false)) {
             adapterResult.addFragment(new ContributorsFragment(), getString(R.string.contribution_tab));

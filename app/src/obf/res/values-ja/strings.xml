@@ -11,6 +11,7 @@
   <string name="website_product">https://world-ja.openbeautyfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-ja.openbeautyfacts.org/contributor/</string>
+  <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
   <string name="txtHome">Open Beauty Facts is a database of cosmetic products with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
   <string name="slide_1_title">化粧品の透明性に貢献します</string>
   <string name="slide_1_desc">製品をスキャンし、写真に写して、化粧品の透明性を実現します</string>
@@ -28,7 +29,7 @@
   <string name="Donation">Click here to donate to Open Beauty Facts</string>
   <string name="translate_help_title">Help translate Open Beauty Facts</string>
   <string name="translate_help_summary">Bring the Open Beauty Facts database to your language - no technical knowledge required</string>
-  <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Beauty Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
+  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <!-- OBF tagline in different languages -->
   <string name="tagline">the free cosmetics database</string>

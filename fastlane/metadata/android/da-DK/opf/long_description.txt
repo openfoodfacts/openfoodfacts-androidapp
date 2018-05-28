@@ -2,7 +2,7 @@ Open Products Facts er en åben database over alle produkter i verden.
 
 *** Bidrag til produktgennemsigtighed ***
 
-- Open Food Facts er en produktdatabase udarbejdet af alle, for alle.
+- Open Products Facts er en produktdatabase udarbejdet af alle, for alle.
 - Du kan benytte den til at foretage bedre valg, og da det er åbne data, kan alle genbruge dem til ethvert formål.
 - Open Product Facts er et nonprofit-projekt, der er udviklet af tusindvis af frivillige fra hele verden. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder. 
 - Du kan begynde at bidrage i dag ved at tilføje dit første produkt. 

@@ -1,4 +1,4 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Olvassa be az állateledeleket vagy a vonalkódjukat, hogy megszerezze az adatokat azok összetevőiről, adalékanyagairól és tápértékadatairól.
 
 The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
