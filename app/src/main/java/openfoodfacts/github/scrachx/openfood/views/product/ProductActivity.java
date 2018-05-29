@@ -436,7 +436,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
         Hide the 'Calculate Calories' option from the overflow menu if the product
         doesn't have calories information in nutrition facts.
         */
-        if (mState.getProduct().getNutriments().get(Nutriments.ENERGY) == null) {
+        if (mState.getProduct().getNutriments() == null || mState.getProduct().getNutriments().get(Nutriments.ENERGY) == null) {
             menu.findItem(R.id.action_calculate_calories).setVisible(false);
         }
         return true;
