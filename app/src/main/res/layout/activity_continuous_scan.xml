@@ -10,7 +10,7 @@
         android:id="@+id/fab_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="105dp"
+        android:layout_marginBottom="95dp"
         android:layout_marginEnd="@dimen/spacing_small"
         android:layout_marginRight="@dimen/spacing_small"
         android:tint="@color/white"
@@ -23,9 +23,7 @@
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/quick_view"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
         <com.journeyapps.barcodescanner.DecoratedBarcodeView
             android:id="@+id/barcode_scanner"
@@ -64,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_margin="@dimen/spacing_small"
+            android:layout_marginBottom="125dp"
             android:gravity="center_horizontal"
             android:text="@string/product_not_complete"
             android:textColor="@color/white"
@@ -78,11 +76,19 @@
         android:id="@+id/quick_view"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_quick_view"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frame"
         tools:visibility="visible">
+
+        <View
+            android:id="@+id/quickView_slideUpIndicator"
+            android:layout_width="20dp"
+            android:layout_height="3dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/grey_400" />
 
         <ImageView
             android:id="@+id/quickView_image"
@@ -107,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_large"
             android:layout_toEndOf="@id/quickView_image"
             android:layout_toRightOf="@id/quickView_image"
             android:singleLine="true"
@@ -145,24 +151,12 @@
             android:layout_below="@id/quickView_name"
             android:layout_marginEnd="@dimen/spacing_small"
             android:layout_marginRight="@dimen/spacing_small"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
             android:layout_toEndOf="@id/quickView_brand"
             android:layout_toRightOf="@id/quickView_brand"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:src="@drawable/nnc_a" />
-
-        <TextView
-            android:id="@+id/quickView_textNutriScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/quickView_name"
-            android:layout_toEndOf="@id/quickView_brand"
-            android:layout_toRightOf="@id/quickView_brand"
-            android:text="@string/nutri_score"
-            android:textAllCaps="true"
-            android:textSize="10sp"
-            android:visibility="gone" />
 
         <ProgressBar
             android:id="@+id/quickView_progress"

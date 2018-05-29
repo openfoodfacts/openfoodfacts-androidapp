@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -28,6 +29,7 @@ import com.journeyapps.barcodescanner.camera.CameraSettings;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -69,6 +71,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     ImageView toggleBeep;
     @BindView(R.id.txt_product_not_complete)
     TextView txtProductIncomplete;
+    @BindView(R.id.quickView_slideUpIndicator)
+    View slideUpIndicator;
     @BindView(R.id.quickView_progress)
     ProgressBar progressBar;
     @BindView(R.id.quickView_productNotFound)
@@ -83,8 +87,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     TextView quantity;
     @BindView(R.id.quickView_nutriScore)
     ImageView nutriScore;
-    @BindView(R.id.quickView_textNutriScore)
-    TextView textNutriScore;
     @BindView(R.id.quickView_imageProgress)
     ProgressBar imageProgress;
     @Inject
@@ -112,18 +114,9 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             client.getFullProductByBarcodeSingle(lastText)
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnSubscribe(a -> {
+                        hideAllViews();
                         quickView.setVisibility(View.VISIBLE);
                         progressBar.setVisibility(View.VISIBLE);
-                        productImage.setVisibility(View.GONE);
-                        name.setVisibility(View.GONE);
-                        brand.setVisibility(View.GONE);
-                        quantity.setVisibility(View.GONE);
-                        nutriScore.setVisibility(View.GONE);
-                        productNotFound.setVisibility(View.GONE);
-                        fab_status.setVisibility(View.GONE);
-                        imageProgress.setVisibility(View.GONE);
-                        textNutriScore.setVisibility(View.GONE);
-                        txtProductIncomplete.setVisibility(View.GONE);
                     })
                     .subscribe(new SingleObserver<State>() {
                         @Override
@@ -135,17 +128,11 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         public void onSuccess(State state) {
                             progressBar.setVisibility(View.GONE);
                             if (state.getStatus() == 0) {
+                                hideAllViews();
                                 quickView.setOnClickListener(null);
-                                productNotFound.setText(R.string.txtDialogsContent);
+                                String s = getResources().getString(R.string.product_not_found, lastText);
+                                productNotFound.setText(s);
                                 productNotFound.setVisibility(View.VISIBLE);
-                                productImage.setVisibility(View.GONE);
-                                name.setVisibility(View.GONE);
-                                brand.setVisibility(View.GONE);
-                                quantity.setVisibility(View.GONE);
-                                nutriScore.setVisibility(View.GONE);
-                                textNutriScore.setVisibility(View.GONE);
-                                imageProgress.setVisibility(View.GONE);
-                                txtProductIncomplete.setVisibility(View.INVISIBLE);
                                 fab_status.setVisibility(View.VISIBLE);
                                 fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
                                 fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_add_a_photo));
@@ -163,17 +150,11 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             } else {
                                 Product product = state.getProduct();
                                 new HistoryTask().doInBackground(product);
+                                showAllViews();
                                 productNotFound.setVisibility(View.GONE);
-                                productImage.setVisibility(View.VISIBLE);
-                                name.setVisibility(View.VISIBLE);
-                                brand.setVisibility(View.VISIBLE);
-                                quantity.setVisibility(View.VISIBLE);
-                                nutriScore.setVisibility(View.VISIBLE);
-                                imageProgress.setVisibility(View.VISIBLE);
-                                fab_status.setVisibility(View.VISIBLE);
                                 if (product.getImageUrl() == null || product.getQuantity() == null ||
                                         product.getProductName() == null || product.getBrands() == null ||
-                                        product.getNutritionGradeFr() == null) {
+                                        product.getIngredientsText() == null) {
                                     txtProductIncomplete.setVisibility(View.VISIBLE);
                                     fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
                                     fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
@@ -225,17 +206,11 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                     productImage.setImageResource(R.drawable.placeholder_thumb);
                                     imageProgress.setVisibility(View.GONE);
                                 }
-                                // Hide nutriScore from quickView if app flavour is not OFF
-                                if (BuildConfig.FLAVOR.equals("off")) {
+                                // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
+                                if (BuildConfig.FLAVOR.equals("off") && product.getNutritionGradeFr() != null) {
                                     nutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
-                                    if (product.getNutritionGradeFr() == null) {
-                                        textNutriScore.setVisibility(View.VISIBLE);
-                                    } else {
-                                        textNutriScore.setVisibility(View.GONE);
-                                    }
                                 } else {
                                     nutriScore.setVisibility(View.GONE);
-                                    textNutriScore.setVisibility(View.GONE);
                                 }
                                 quickView.setOnClickListener(v -> {
                                     Intent intent = new Intent(ContinuousScanActivity.this, ProductActivity.class);
@@ -249,17 +224,30 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
                         @Override
                         public void onError(Throwable e) {
-                            productNotFound.setText(R.string.errorWeb);
-                            productNotFound.setVisibility(View.VISIBLE);
-                            productImage.setVisibility(View.GONE);
-                            name.setVisibility(View.GONE);
-                            brand.setVisibility(View.GONE);
-                            quantity.setVisibility(View.GONE);
-                            nutriScore.setVisibility(View.GONE);
-                            textNutriScore.setVisibility(View.GONE);
-                            imageProgress.setVisibility(View.GONE);
-                            fab_status.setVisibility(View.GONE);
-                            progressBar.setVisibility(View.GONE);
+                            try {
+                                // A network error happened
+                                if (e instanceof IOException) {
+                                    hideAllViews();
+                                    productNotFound.setText(R.string.addProductOffline);
+                                    productNotFound.setVisibility(View.VISIBLE);
+                                    fab_status.setVisibility(View.VISIBLE);
+                                    fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+                                    fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_add_a_photo));
+                                    fab_status.setOnClickListener(v -> {
+                                        Intent intent = new Intent(ContinuousScanActivity.this, SaveProductOfflineActivity.class);
+                                        State st = new State();
+                                        Product pd = new Product();
+                                        pd.setCode(lastText);
+                                        st.setProduct(pd);
+                                        Bundle bundle = new Bundle();
+                                        bundle.putSerializable("state", st);
+                                        intent.putExtras(bundle);
+                                        startActivity(intent);
+                                    });
+                                }
+                            } catch (Exception e1) {
+                                Log.i(this.getClass().getSimpleName(), e1.getMessage());
+                            }
                         }
                     });
         }
@@ -269,6 +257,31 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
         }
     };
+
+    private void showAllViews() {
+        slideUpIndicator.setVisibility(View.VISIBLE);
+        productImage.setVisibility(View.VISIBLE);
+        name.setVisibility(View.VISIBLE);
+        brand.setVisibility(View.VISIBLE);
+        quantity.setVisibility(View.VISIBLE);
+        nutriScore.setVisibility(View.VISIBLE);
+        imageProgress.setVisibility(View.VISIBLE);
+        fab_status.setVisibility(View.VISIBLE);
+    }
+
+    private void hideAllViews() {
+        progressBar.setVisibility(View.GONE);
+        slideUpIndicator.setVisibility(View.GONE);
+        productImage.setVisibility(View.GONE);
+        name.setVisibility(View.GONE);
+        brand.setVisibility(View.GONE);
+        quantity.setVisibility(View.GONE);
+        nutriScore.setVisibility(View.GONE);
+        productNotFound.setVisibility(View.GONE);
+        fab_status.setVisibility(View.GONE);
+        imageProgress.setVisibility(View.GONE);
+        txtProductIncomplete.setVisibility(View.GONE);
+    }
 
     @Override
     protected void onDestroy() {
