@@ -427,13 +427,13 @@
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitaminas:</string>
   <string name="amino_acid_tags_text">Aminoácidos:</string>
-  <string name="mineral_tags_text">Minerals:</string>
-  <string name="other_tags_text">Other Substances:</string>
+  <string name="mineral_tags_text">Minerais:</string>
+  <string name="other_tags_text">Outras sustancias:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
-  <string name="disable_image_loading">Disable image loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable image loading</string>
-  <string name="txtCamera">Camera</string>
+  <string name="wikidata">Datos da Wikipedia</string>
+  <string name="disable_image_loading">Desactivar a carga de imaxe si a batería está baixa</string>
+  <string name="DisableLoadTitle">Desactivar carga de imaxes</string>
+  <string name="txtCamera">Cámara</string>
   <string name="txtGallery">Galería</string>
   <string name="txtOptions">Axustes</string>
   <string name="by_title">Título</string>
