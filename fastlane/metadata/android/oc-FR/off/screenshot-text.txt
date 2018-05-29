@@ -39,4 +39,4 @@ menu_en.png
 Powerful
 
 product_view_nutrition_table_en.png
-Nutrition facts
+Informacions nutricionalas
