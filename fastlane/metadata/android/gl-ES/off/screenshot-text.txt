@@ -8,35 +8,35 @@ quickview_en.png
 Obteña o Nutriscore
 
 history_en.png
-Your full scan history, fully private & exportable
+O seu historial completo de escaneos, completamente privado e exportable
 
 product_view_wikipedia_en.png
-Go further with Wikipedia
+Máis info na Wikipedia
 
 allergen_alert_en.png
-Set allergen alerts
+Establecer alertas de alérxenos
 
 home_en.png
 product_view_nutrition_summary_en.png
-Nutrition, simplified
+Nutrición, simplificada
 
 product_view_allergen_alert_en.png
-Alerta de alerxenos
+Alerta de alérxenos
 
 categories_en.png
-Get alternatives for your favorite foods
+Obteña alternativas aos seus alimentos favoritos
 
 product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+Wikipedia para Alimentos
+Wikipedia para Cosméticos
+Wikipedia para Alimento de mascotas
+Wikipedia para Produtos
 
 product_view_ingredients_en.png
 Ingredientes
 
 menu_en.png
-Powerful
+Potente
 
 product_view_nutrition_table_en.png
 Información nutricional
