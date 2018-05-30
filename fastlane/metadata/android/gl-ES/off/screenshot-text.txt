@@ -1,8 +1,8 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
+Esas son as informacións mostradas nas capturas de pantalla na tenda playstore. Manteñaas curtas e atraíntes.
+Non cambie o nome do ficheiro.
 ---
 scan_en.png
-Scan products
+Escanear productos
 
 quickview_en.png
 Obteña o Nutriscore
