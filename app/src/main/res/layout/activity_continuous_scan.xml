@@ -15,6 +15,7 @@
         android:layout_marginRight="@dimen/spacing_small"
         android:tint="@color/white"
         android:visibility="gone"
+        app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_mode_edit_black"
@@ -31,31 +32,19 @@
             android:layout_height="match_parent" />
 
         <ImageView
-            android:id="@+id/toggle_beep"
+            android:id="@+id/button_more"
             android:layout_width="25dp"
             android:layout_height="25dp"
+            android:layout_gravity="end"
             android:layout_margin="@dimen/spacing_small"
-            app:srcCompat="@drawable/ic_volume_off_white_24dp" />
+            app:srcCompat="@drawable/ic_more_vert_white_24dp" />
 
         <ImageView
             android:id="@+id/toggle_flash"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_gravity="end"
             android:layout_margin="@dimen/spacing_small"
             app:srcCompat="@drawable/ic_flash_off_white_24dp" />
-
-        <ImageView
-            android:id="@+id/toggle_camera"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:scaleX="1.7"
-            android:scaleY="1.7"
-            app:srcCompat="@drawable/ic_switch_camera" />
 
         <TextView
             android:id="@+id/txt_product_not_complete"
@@ -88,7 +77,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/spacing_small"
-            android:background="@color/grey_400" />
+            android:background="@drawable/rounded_slide__up_indicator" />
 
         <ImageView
             android:id="@+id/quickView_image"
@@ -123,7 +112,7 @@
 
         <TextView
             android:id="@+id/quickView_brand"
-            android:layout_width="110dp"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/quickView_name"
             android:layout_marginTop="15dp"
@@ -134,7 +123,7 @@
 
         <TextView
             android:id="@+id/quickView_quantity"
-            android:layout_width="110dp"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/quickView_brand"
             android:layout_toEndOf="@id/quickView_image"
@@ -156,7 +145,7 @@
             android:layout_toRightOf="@id/quickView_brand"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/nnc_a" />
+            tools:src="@drawable/nnc_a" />
 
         <ProgressBar
             android:id="@+id/quickView_progress"
@@ -174,6 +163,18 @@
             android:text="@string/txtDialogsContent"
             android:textSize="16sp"
             android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/quickView_searchByBarcode"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:hint="@string/barcode_hint"
+            android:imeOptions="actionSearch"
+            android:inputType="number"
+            android:visibility="gone" />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
