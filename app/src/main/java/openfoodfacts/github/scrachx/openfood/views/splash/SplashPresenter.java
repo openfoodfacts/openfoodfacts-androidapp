@@ -19,7 +19,10 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 public class SplashPresenter implements ISplashPresenter.Actions {
 
     private final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
-    private final Long REFRESH_PERIOD = 24 * 60 * 60 * 1000L;
+    /**
+ * Mutiplied by 6*30* to reduce the issue. TODO: fix https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/1616
+  */
+    private final Long REFRESH_PERIOD = 6 * 30 * 24 * 60 * 60 * 1000L;
 
     private ISplashPresenter.View view;
     private SharedPreferences settings;
