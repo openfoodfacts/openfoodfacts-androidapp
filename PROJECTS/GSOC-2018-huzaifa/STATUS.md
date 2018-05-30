@@ -1,5 +1,27 @@
 # Status updates for the Open Food Facts project
 
+## Week starting May 28th
+
+### Highlights
+
+* Added continuous scan in the app.
+
+### Completed this week
+
+* Added continuous scan feature.
+* Fixed issue #1646
+* Fixed issue #1628
+
+### Working on this week
+
+* Minor UI changes in the new immersive layout for the scan fragment.
+* Add sliding up capabilities.
+
+### To be worked on next week
+
+* Test features added till now.
+* Incorporate any changes suggested in the new UI.
+
 ## Week starting May 21st
 
 ### Highlights
