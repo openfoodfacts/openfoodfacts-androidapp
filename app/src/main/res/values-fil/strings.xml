@@ -25,8 +25,8 @@
   <string name="text_barcode">I-type ang barcode :</string>
   <string name="message_in_activity_save_product_offline">Isang litrato lamang ang sapilitang magpadala ng isang bagong produkto.</string>
   <string name="product_incomplete_message">Ang produktong ito ay hindi kumpleto. ang resulta, hindi namin magagawa ang alerdye check.</string>
-  <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="no_offline_data">Malapit ka nang matapos</string>
+  <string name="first_offline">Ang idinagdag na produktong offline ay lalabas dito</string>
   <!-- Image Upload -->
   <string-array name="upload_image">
     <item>640 X 480</item>
