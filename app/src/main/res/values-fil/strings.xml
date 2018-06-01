@@ -67,8 +67,8 @@
   <!-- Content Description -->
   <string name="bookmark">Librong may tanda</string>
   <string name="edit">Pamatnugutan</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
+  <string name="fastscroller_track">Mabilis na scroller na sumubaybay</string>
+  <string name="fastscroller_handle">Hawakan ng mabilis na scroller</string>
   <string name="search_button">Hanapin</string>
   <string name="no_products">Hindi nakita ang mga produkto</string>
   <string name="desc_list_item_icon">Icon ng mga item</string>
@@ -86,13 +86,13 @@
   <string name="txtManufacturing">Mga lugar ng paggawa o pagproseso :</string>
   <string name="txtIngredientsOrigins">Pinagmulan ng mga sangkap :</string>
   <string name="txtCity">Lungsod, estado at bansa kung saan binili :</string>
-  <string name="txtEMB">EMB Code:</string>
+  <string name="txtEMB">Hudyat EMB:</string>
   <string name="txtManufactureUrl">Ang link patungo sa pahina ng produkto sa gumawa ng opisyal site:</string>
   <string name="txtStores">Mga Tindahan :</string>
   <string name="txtCountries">Mga bansa kung saan ibinebenta :</string>
   <string name="txtIngredients">Listahan ng mga sangkap :</string>
-  <string name="Donate">Donate</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donate">Magkaloob</string>
+  <string name="Donation">Mag-click dito upang maghandog sa Buksan ang mga katotohanan ng pagkain</string>
   <string name="txtSubstances">Mga sangkap o mga produkto na nagiging sanhi ng alerdyi o mga intolerance:</string>
   <string name="txtAdditives">Mga additibo :</string>
   <string name="txtTraces">Mga bakas :</string>
@@ -118,7 +118,7 @@
   <string name="hintPass">Password</string>
   <string name="errorLogin">Error sa login o password</string>
   <string name="errorWeb">Hindi namin ma-access ang internet. Mayroon ka bang mga isyu sa pagkakakonekta?</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="uploadLater">Ang litrato ay maaaring ma-upload kapag mayroon ng network</string>
   <string name="txtInfoLoginOk">Na-save ang user</string>
   <string name="txtInfoLoginNo">Hindi nai-save ang user</string>
   <string name="txtDialogsContent">Ang produkto na hinahanap mo ay wala pa sa Open Food Facts. Mangyaring idagdag ang mga ito.</string>
@@ -134,10 +134,10 @@
   <string name="txtTakePicture">Kumuha ng larawan</string>
   <string name="txtSendAll">Mag-upload ng lahat</string>
   <string name="txtNoData">Walang data</string>
-  <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
-  <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeeded">Sandali…</string>
+  <string name="txtPictureNeededDialogContent">Kailangan kang magdagdag ng kahit isang imahe bago isumite ang produktong ito</string>
+  <string name="txtPictureNeededDialogYes">Manatili</string>
+  <string name="txtPictureNeededDialogNo">Itapon</string>
   <string name="toastSending">Nag-uupload...</string>
   <string name="dataSaved">Nai-save na sa iyong device</string>
   <string name="txtInfoAddUser">Mangyaring ilagay ang iyong login at password</string>
