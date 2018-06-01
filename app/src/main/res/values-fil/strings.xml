@@ -377,7 +377,7 @@
   <string name="FrequentlyAskedQuestions">Mga Madalas na tanong</string>
   <string name="translate_help_title">Tulungang Isalin ang Mga Buksan na mga katotohanan sa pagkain</string>
   <string name="translate_help_summary">Dalhin ang database ng Buksan ang Mga Katotohanan sa Pagkain sa iyong wika - walang kinakailangang kaalaman sa teknikal</string>
-  <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="please_check_your_connection">Pakisuri sa koneksiyon ng iyong internet.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Advanced Search &amp; Charts</string>
   <string name="connectivity_check">Please check your internet connection</string>
