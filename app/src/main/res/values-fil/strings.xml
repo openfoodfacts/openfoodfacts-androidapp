@@ -143,7 +143,7 @@
   <string name="txtInfoAddUser">Mangyaring ilagay ang iyong login at password</string>
   <string name="txtDataUpdated">Na-update na ang data</string>
   <string name="txtLoading">Naglo-load...</string>
-  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
+  <string name="txtDialogsContentDelete">Sigurado ka bang gusto mong tanggalin ang draft na ito?</string>
   <string name="txtDialogsContentInfoSave">Ang produkto ay naka-save na sa device, makakapag-edit ka sa \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Kinakailangan ang barcode</string>
   <string name="txtOk">OK</string>
@@ -154,7 +154,7 @@
   <string name="txtBarcodeNotValid">Hindi wasto ang barcode</string>
   <string name="try_it_scan_now">I-scan ang produkto</string>
   <string name="share">Ibahagi</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Isalin sa</string>
   <string name="msg_share">Tingnan ang produktong ito sa Open Food Facts :</string>
   <string name="create_account">Mag Sign-up</string>
   <string name="home_drawer">Home</string>
@@ -189,7 +189,7 @@
   <string name="cancel_button">Cancel</string>
   <string name="login_button">Mag-login</string>
   <string name="create_account_button">Create Account</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">Ang impormasyon ng iyong alerdyi ay hindi ipapadala sa server ng Mga Buksan na Mga Katotohanan sa Pagkain. Gayundin, mag-ingat na ang data ng produkto ay maaaring hindi tumpak, at ang pagtuklas ay maaaring hindi tumpak na 100%, kaya\'t mangyaring mag-doblwng ingat sa iyong sarili! </string>
   <string name="from_gallery">Mula sa gallery</string>
   <string name="product_sent">Matagumpay na naipadala ang produkto</string>
   <string name="action_edit_product">I-edit ang produkto</string>
@@ -223,8 +223,8 @@
   <string name="permision_write_external_storage">Ang pahintulot upang baguhin ang external storage ay kinakailangan upang mag-export ng kasaysayan.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Calculate Calories</string>
-  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
+  <string name="calculate_calories">Kalkulahin ang Mga Calorie</string>
+  <string name="txt_calories_result">%1$s kcal sa %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Carbohydrate</string>
   <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
   <string name="nutrition_cholesterol">Kolesterol</string>
@@ -243,7 +243,7 @@
   <string name="nutrition_salt">Asin</string>
   <string name="nutrition_salt_short_name">Asin (g)</string>
   <string name="nutrition_satured_fat">Saturated na taba</string>
-  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+  <string name="nutrition_satured_fat_short_name">Purong taba (g)</string>
   <string name="nutrition_serving">Bawat serving</string>
   <string name="nutrition_serving_size">Sukat ng serving :</string>
   <string name="nutrition_sodium">Sodium</string>
@@ -267,10 +267,10 @@
   <string name="number_of_products">Bilang ng mga produkto: </string>
   <string name="txt_no_results">Walang nahanap na resulta</string>
   <string name="txt_extend_search">Subukang palawakin ng iyong paghahanap o idagdag ang produkto</string>
-  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+  <string name="txt_no_matching_products">Hindi pa namin nahanap ang katugmang produkto.\nMaari mong subukan:</string>
+  <string name="txt_broaden_search">-Pagpapalawak ng iyong paghahanap \n- suriin at idagdag ito sa Buksan ang Mga katotohanan ng Pagkain</string>
   <string name="txt_cant_load_search_results">Hindi ma-load ang mga resulta ng paghahanap</string>
-  <string name="something_went_wrong">Sorry, something went wrong…</string>
+  <string name="something_went_wrong">Paumanhin, may kamalian…</string>
   <string name="txt_try_again">Subukan muli</string>
   <string name="nutrition_lactose">Lactose</string>
   <string name="nutrition_casein">Casein</string>
@@ -339,8 +339,8 @@
   <string name="take_more_pictures">Kumuha ng marami pang mga larawan</string>
   <string name="txtSaturatedFat">Saturated na taba</string>
   <!-- String related to App Shortcuts -->
-  <string name="disabled_message">Shortcut Not Available</string>
-  <string name="scan_shortcut_short_label">Scan</string>
+  <string name="disabled_message">Hindi magagamit ang shortcut</string>
+  <string name="scan_shortcut_short_label">Suriin</string>
   <string name="scan_shortcut_long_label">Scan Product</string>
   <string name="barcode_shortcut_short_label">Hanapin</string>
   <string name="barcode_shortcut_long_label">Search By Barcode</string>
