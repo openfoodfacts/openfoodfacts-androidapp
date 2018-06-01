@@ -24,12 +24,12 @@
   <string name="txtDialogsContentPowerMode">Ang produkto na iyong na-scan ay nasa Open Food Facts na.</string>
   <string name="msg_share">Tingnan ang produktong ito sa Open Food Facts :</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+  <string name="txt_broaden_search">-Pagpapalawak ng iyong paghahanap \n- suriin at idagdag ito sa Buksan ang Mga katotohanan ng Pagkain</string>
   <string name="Donation">Mag-click dito upang maghandog sa Buksan ang mga katotohanan ng pagkain</string>
   <string name="translate_help_title">Help translate Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
   <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">Ang impormasyon ng iyong alerdyi ay hindi ipapadala sa server ng Mga Buksan na Mga Katotohanan sa Pagkain. Gayundin, mag-ingat na ang data ng produkto ay maaaring hindi tumpak, at ang pagtuklas ay maaaring hindi tumpak na 100%, kaya\'t mangyaring mag-doblwng ingat sa iyong sarili! </string>
   <!-- OFF tagline in different languages -->
   <string name="tagline">the free food products database</string>
 </resources>
