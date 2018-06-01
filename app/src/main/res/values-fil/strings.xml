@@ -372,11 +372,11 @@
   <string name="device_on_mobile_data_warning_message">Ang pag-upload sa mobile data ay hindi gagana, mangyaring kumonekta sa WiFi o baguhin ito sa mga kagustuhan</string>
   <string name="device_on_mobile_data_warning_positive">Mga preperensiya</string>
   <string name="device_on_mobile_data_warning_negative">Mag-upload pa rin</string>
-  <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="preference_choose_language_dialog_title">Pumili ng lenggwahe</string>
   <string name="FAQ">FAQ</string>
-  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="FrequentlyAskedQuestions">Mga Madalas na tanong</string>
+  <string name="translate_help_title">Tulungang Isalin ang Mga Buksan na mga katotohanan sa pagkain</string>
+  <string name="translate_help_summary">Dalhin ang database ng Buksan ang Mga Katotohanan sa Pagkain sa iyong wika - walang kinakailangang kaalaman sa teknikal</string>
   <string name="please_check_your_connection">Please check your connection.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Advanced Search &amp; Charts</string>
