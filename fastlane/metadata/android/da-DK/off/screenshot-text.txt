@@ -1,42 +1,42 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
+Det er overskrifterne vist ovenover skærmfotoene i Google Play. Hold dem korte og attraktive.
+Ændre ikke på filnavnet.
 ---
 scan_en.png
-Scan products
+Skan produkter
 
 quickview_en.png
-Få ernæringsinformation
+Få næringssoren
 
 history_en.png
-Your full scan history, fully private & exportable
+Din fulde skanningshistorik, helt privat og eksporterbar
 
 product_view_wikipedia_en.png
 Go further with Wikipedia
 
 allergen_alert_en.png
-Set allergen alerts
+Indstil allergenadvarsler
 
 home_en.png
 product_view_nutrition_summary_en.png
-Nutrition, simplified
+Ernæring, forenklet
 
 product_view_allergen_alert_en.png
 Allergenadvarsel
 
 categories_en.png
-Get alternatives for your favorite foods
+Få alternativer til dine yndlingsretter
 
 product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+Wikipedia for Mad
+Wikipedia for Kosmetik
+Wikipedia for Ddrefoder
+Wikipedia over produkter
 
 product_view_ingredients_en.png
 Ingredienser
 
 menu_en.png
-Powerful
+Kraftfuld
 
 product_view_nutrition_table_en.png
-Ernæringsinnhold
+Ernæringsindhold
