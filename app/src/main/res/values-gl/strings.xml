@@ -444,7 +444,7 @@
   <string name="by_nutrition_grade">Grado nutricional</string>
   <string name="sort_by">Orde por</string>
   <string name="shake_summary">Axite o móbil para escanear produtos</string>
-  <string name="shake_title">Escanear ao Axitar</string>
+  <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Polo momento non se poden engadir imaxes sin código de barras. Por favor, probe coa versión web móbil.</string>
   <string name="no_barcode">Non detectamos ningún código de barras</string>
@@ -473,8 +473,10 @@
   <string name="other_editors">Páxina de produto editada tamén por </string>
   <string name="contribution_tab">Aportes</string>
   <string name="contribution_tab_summary">Mostra pestana de contribucións de usuaria con produtos</string>
-  <string name="contribution_tab_title">Mostra pestana de Contribucións</string>
+  <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Editar</string>
   <string name="txtDialogsTitle">Información</string>
+  <string name="preference_show_all_product_photos_title">Show all product photos</string>
+  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
   <string name="offline_product_addition_title">Add new product</string>
 </resources>
