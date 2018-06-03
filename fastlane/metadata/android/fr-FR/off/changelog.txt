@@ -1,10 +1,10 @@
 
 ==================
-New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
+Nouvelle version native Android d'Open Food Facts. Tous les bénévoles de Open Food Facts ont travaillé dur dessus, en fonction de vos suggestions et de vos commentaires :)
 ==================
-* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
+* Open Food Facts est maintenant un mouvement plus global que jamais. 500k products freed, 10K registered contributors, 182 countries. Voulez-vous vous joindre à nous?
 ==================
-What's new ?
+Quoi de neuf ?
 ==================
 1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
 2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
