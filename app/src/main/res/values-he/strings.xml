@@ -484,4 +484,5 @@
   <string name="contribution_tab_title">הצגת לשונית תרומות</string>
   <string name="product">עריכה</string>
   <string name="txtDialogsTitle">פרטים</string>
+  <string name="offline_product_addition_title">Add new product</string>
 </resources>
