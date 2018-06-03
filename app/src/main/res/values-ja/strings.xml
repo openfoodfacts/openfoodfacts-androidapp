@@ -472,4 +472,5 @@
   <string name="contribution_tab_title">貢献タブを表示</string>
   <string name="product">編集</string>
   <string name="txtDialogsTitle">情報</string>
+  <string name="offline_product_addition_title">Add new product</string>
 </resources>
