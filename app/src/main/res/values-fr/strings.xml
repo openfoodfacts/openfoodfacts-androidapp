@@ -476,4 +476,5 @@
   <string name="contribution_tab_title">Afficher l\'onglet Contribution</string>
   <string name="product">Modifier</string>
   <string name="txtDialogsTitle">Information</string>
+  <string name="offline_product_addition_title">Add new product</string>
 </resources>
