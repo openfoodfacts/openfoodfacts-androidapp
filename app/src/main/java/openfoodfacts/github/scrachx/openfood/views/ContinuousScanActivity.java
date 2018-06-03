@@ -10,7 +10,9 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.PopupMenu;
@@ -102,6 +104,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     @Inject
     OpenFoodAPIService client;
 
+    private Product product;
     private SharedPreferences.Editor editor;
     private BeepManager beepManager;
     private String lastText;
@@ -113,7 +116,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     private PopupMenu popup;
     private Handler handler;
     private Runnable runnable;
-
+    private BottomSheetBehavior bottomSheetBehavior;
     private BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
@@ -155,7 +158,10 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         progressBar.setVisibility(View.GONE);
                         if (state.getStatus() == 0) {
                             hideAllViews();
-                            quickView.setOnClickListener(null);
+                            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                            quickView.setOnClickListener(v -> {
+                                navigateToProductAddition(lastText);
+                            });
                             String s = getString(R.string.product_not_found, lastText);
                             productNotFound.setText(s);
                             productNotFound.setVisibility(View.VISIBLE);
@@ -163,24 +169,15 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
                             fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_add_a_photo));
                             fab_status.setOnClickListener(v -> {
-                                Intent intent = new Intent(ContinuousScanActivity.this, SaveProductOfflineActivity.class);
-                                State st = new State();
-                                Product pd = new Product();
-                                pd.setCode(lastText);
-                                st.setProduct(pd);
-                                Bundle bundle = new Bundle();
-                                bundle.putSerializable("state", st);
-                                intent.putExtras(bundle);
-                                startActivity(intent);
+                                navigateToProductAddition(lastText);
                             });
                         } else {
-                            Product product = state.getProduct();
+                            product = state.getProduct();
                             new HistoryTask().doInBackground(product);
                             showAllViews();
+                            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                             productNotFound.setVisibility(View.GONE);
-                            if (product.getImageUrl() == null || product.getQuantity() == null ||
-                                    product.getProductName() == null || product.getBrands() == null ||
-                                    product.getIngredientsText() == null) {
+                            if (isProductIncomplete()) {
                                 txtProductIncomplete.setVisibility(View.VISIBLE);
                                 fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
                                 fab_status.setOnClickListener(v -> {
@@ -273,6 +270,18 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         }
                     }
                 });
+    }
+
+    private void navigateToProductAddition(String lastText) {
+        Intent intent = new Intent(ContinuousScanActivity.this, SaveProductOfflineActivity.class);
+        State st = new State();
+        Product pd = new Product();
+        pd.setCode(lastText);
+        st.setProduct(pd);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("state", st);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     private void showAllViews() {
@@ -371,10 +380,34 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         runnable = () -> {
             hideAllViews();
             quickView.setVisibility(View.VISIBLE);
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
             searchByBarcode.setVisibility(View.VISIBLE);
             searchByBarcode.requestFocus();
         };
         handler.postDelayed(runnable, 15000);
+
+        bottomSheetBehavior = BottomSheetBehavior.from(quickView);
+        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+                if (slideOffset < -0.01f) {
+                    fab_status.setVisibility(View.GONE);
+                    txtProductIncomplete.setVisibility(View.GONE);
+                } else {
+                    if (searchByBarcode.getVisibility() != View.VISIBLE) {
+                        fab_status.setVisibility(View.VISIBLE);
+                        if (isProductIncomplete()) {
+                            txtProductIncomplete.setVisibility(View.VISIBLE);
+                        }
+                    }
+                }
+            }
+        });
 
         mHistoryProductDao = Utils.getAppDaoSession(ContinuousScanActivity.this).getHistoryProductDao();
 
@@ -428,6 +461,12 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             }
             return false;
         });
+    }
+
+    private boolean isProductIncomplete() {
+        return product != null && (product.getImageUrl() == null || product.getQuantity() == null ||
+                product.getProductName() == null || product.getBrands() == null ||
+                product.getIngredientsText() == null);
     }
 
     void toggleCamera() {
@@ -503,6 +542,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     hideAllViews();
                     handler.removeCallbacks(runnable);
                     quickView.setVisibility(View.VISIBLE);
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                     quickView.setOnClickListener(null);
                     searchByBarcode.setText(null);
                     searchByBarcode.setVisibility(View.VISIBLE);
