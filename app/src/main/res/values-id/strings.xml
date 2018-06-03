@@ -473,4 +473,5 @@
   <string name="contribution_tab_title">Show Contribution Tab</string>
   <string name="product">Sunting</string>
   <string name="txtDialogsTitle">informasi</string>
+  <string name="offline_product_addition_title">Add new product</string>
 </resources>
