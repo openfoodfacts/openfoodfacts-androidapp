@@ -28,7 +28,7 @@
   <string name="Donation">Cliquez ici pour faire un don à Open Food Facts</string>
   <string name="translate_help_title">Aidez à traduire Open Food Facts</string>
   <string name="translate_help_summary">Rendez la base de données Open Food Facts disponible dans votre langue - aucune connaissance technique requise</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+  <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
   <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilent sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
   <!-- OFF tagline in different languages -->
   <string name="tagline">l\'information alimentaire ouverte</string>
