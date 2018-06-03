@@ -452,7 +452,7 @@
   <string name="by_nutrition_grade">ציון תזונתי</string>
   <string name="sort_by">מיון לפי</string>
   <string name="shake_summary">יש לנער את הטלפון כדי לסרוק מוצרים</string>
-  <string name="shake_title">סריקה בניעור</string>
+  <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">לא ניתן עדיין להוסיף תמונות ללא בר קוד ליישומון. נא לנסות את גרסת האתר לניידים.</string>
   <string name="no_barcode">לא זוהה כל ברקוד</string>
@@ -481,8 +481,10 @@
   <string name="other_editors">עמוד המוצר נערך גם על ידי </string>
   <string name="contribution_tab">תרומות</string>
   <string name="contribution_tab_summary">הצגת לשונית תרומות משתמשים עם מוצרים</string>
-  <string name="contribution_tab_title">הצגת לשונית תרומות</string>
+  <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">עריכה</string>
   <string name="txtDialogsTitle">פרטים</string>
+  <string name="preference_show_all_product_photos_title">Show all product photos</string>
+  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
   <string name="offline_product_addition_title">Add new product</string>
 </resources>
