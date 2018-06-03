@@ -598,5 +598,5 @@
     <string name="product">Edit</string>
     <string name="txtDialogsTitle">Information</string>
 
-
+    <string name="offline_product_addition_title">Add new product</string>
 </resources>
