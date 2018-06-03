@@ -444,7 +444,7 @@
   <string name="by_nutrition_grade">Marka ng nutrisyon</string>
   <string name="sort_by">Pag-uuri sa pamamagitan ng</string>
   <string name="shake_summary">I-shake ang telepono upang masuri ang mga produkto</string>
-  <string name="shake_title">I-shake para masuri</string>
+  <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Ang mga larawan na walang barcode ay hindi pa maidaragdag sa app. Pakisubukan ang bersyon ng mobile web.</string>
   <string name="no_barcode">Hindi namin nakita ang anumang barcode</string>
@@ -473,8 +473,10 @@
   <string name="other_editors">Product page also edited by </string>
   <string name="contribution_tab">Mga kontribusyon</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
-  <string name="contribution_tab_title">Show Contribution Tab</string>
+  <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Pamatnugutan</string>
   <string name="txtDialogsTitle">Impormasyon</string>
+  <string name="preference_show_all_product_photos_title">Show all product photos</string>
+  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
   <string name="offline_product_addition_title">Add new product</string>
 </resources>
