@@ -476,4 +476,5 @@
   <string name="contribution_tab_title">Hozzájárulási lap megjelenítése</string>
   <string name="product">Szerkesztés</string>
   <string name="txtDialogsTitle">Információ</string>
+  <string name="offline_product_addition_title">Add new product</string>
 </resources>
