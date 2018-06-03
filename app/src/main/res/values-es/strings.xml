@@ -444,7 +444,7 @@
   <string name="by_nutrition_grade">Grado nutricional</string>
   <string name="sort_by">Ordenar por</string>
   <string name="shake_summary">Agitar el teléfono par escanear productos</string>
-  <string name="shake_title">Escanear al agitar</string>
+  <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Fotografías sin código de barras no pueden ser añadidas con la app. Por favor intente la versión web para celular.</string>
   <string name="no_barcode">No hemos detectado ningún código de barras</string>
@@ -473,8 +473,10 @@
   <string name="other_editors">Página de producto también editada por </string>
   <string name="contribution_tab">Contribuciones</string>
   <string name="contribution_tab_summary">Muestra tabla de contribuciones de usuarios con productos</string>
-  <string name="contribution_tab_title">Muestra tabla de Contribuciones</string>
+  <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Editar</string>
   <string name="txtDialogsTitle">Información</string>
+  <string name="preference_show_all_product_photos_title">Show all product photos</string>
+  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
   <string name="offline_product_addition_title">Add new product</string>
 </resources>
