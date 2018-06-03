@@ -484,4 +484,5 @@
   <string name="contribution_tab_title">Показать вкладку Вклад</string>
   <string name="product">Изменить</string>
   <string name="txtDialogsTitle">Информация</string>
+  <string name="offline_product_addition_title">Add new product</string>
 </resources>
