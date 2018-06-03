@@ -476,4 +476,5 @@
   <string name="contribution_tab_title">Mostra pestana de Contribucións</string>
   <string name="product">Editar</string>
   <string name="txtDialogsTitle">Información</string>
+  <string name="offline_product_addition_title">Add new product</string>
 </resources>
