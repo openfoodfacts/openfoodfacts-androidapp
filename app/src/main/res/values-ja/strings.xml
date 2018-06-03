@@ -440,7 +440,7 @@
   <string name="by_nutrition_grade">栄養グレード</string>
   <string name="sort_by">並べ替え順</string>
   <string name="shake_summary">携帯電話を振って製品をスキャンします</string>
-  <string name="shake_title">シェイクでスキャンする</string>
+  <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">バーコードの付いていない写真はまだアプリで追加できません。モバイルウェブ版をお試しください。</string>
   <string name="no_barcode">バーコードを検出していません</string>
@@ -469,8 +469,10 @@
   <string name="other_editors">製品ページの共同編集者 </string>
   <string name="contribution_tab">貢献</string>
   <string name="contribution_tab_summary">製品にユーザーの貢献タブを表示します</string>
-  <string name="contribution_tab_title">貢献タブを表示</string>
+  <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">編集</string>
   <string name="txtDialogsTitle">情報</string>
+  <string name="preference_show_all_product_photos_title">Show all product photos</string>
+  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
   <string name="offline_product_addition_title">Add new product</string>
 </resources>
