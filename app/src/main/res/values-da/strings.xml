@@ -6,16 +6,16 @@
     <item quantity="other"> Sie haben %d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one">1 minute ago</item>
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="one">1 minut siden</item>
+    <item quantity="other">%d minutter siden</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one">1 hour ago</item>
-    <item quantity="other">%d hours ago</item>
+    <item quantity="one">1 time siden</item>
+    <item quantity="other">%d timer siden</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">1 day ago</item>
-    <item quantity="other">%d days ago</item>
+    <item quantity="one">1 dag siden</item>
+    <item quantity="other">%d dage siden</item>
   </plurals>
   <string name="action_settings">Indstillinger</string>
   <string name="action_about">Om</string>
@@ -476,4 +476,5 @@
   <string name="contribution_tab_title">Vis Bidrag-faneblad</string>
   <string name="product">Rediger</string>
   <string name="txtDialogsTitle">Information</string>
+  <string name="offline_product_addition_title">Add new product</string>
 </resources>
