@@ -505,4 +505,5 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="contribution_tab_title">Pokaż kartę wkładu</string>
   <string name="product">Edytuj</string>
   <string name="txtDialogsTitle">Informacja</string>
+  <string name="offline_product_addition_title">Add new product</string>
 </resources>
