@@ -477,6 +477,6 @@
   <string name="product">Bearbeiten</string>
   <string name="txtDialogsTitle">Informationen</string>
   <string name="preference_show_all_product_photos_title">Alle Produktfotos anzeigen</string>
-  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
+  <string name="preference_show_all_product_photos_summary">Alle eingesandten Produktfotos in einem separaten Tab anzeigen</string>
   <string name="offline_product_addition_title">Neues Produkt hinzufügen</string>
 </resources>
