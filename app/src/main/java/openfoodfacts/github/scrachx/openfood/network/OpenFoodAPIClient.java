@@ -53,6 +53,7 @@ import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
+import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -393,9 +394,7 @@ public class OpenFoodAPIClient {
      */
     public void post(final Context activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
         // final LoadToast lt = new LoadToast(activity);
-        ProgressDialog dialog = new ProgressDialog(activity, ProgressDialog.STYLE_SPINNER);
-        dialog.setIndeterminate(true);
-        dialog.setMessage(activity.getString(R.string.toastSending));
+        SaveListAdapter.showProgressDialog();
 //        lt.show();
 
         if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity() == null) {
@@ -403,14 +402,14 @@ public class OpenFoodAPIClient {
                 @Override
                 public void onResponse(Call<State> call, Response<State> response) {
                     onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
-                    dialog.dismiss();
+                    SaveListAdapter.dismissProgressDialog();
                 }
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
                    // lt.error();
                     productSentCallback.onProductSentResponse(false);
-                    dialog.dismiss();
+                    SaveListAdapter.dismissProgressDialog();
                 }
             });
         } else if (product.getName().equals("") && product.getBrands().equals("")) {
@@ -418,14 +417,14 @@ public class OpenFoodAPIClient {
                 @Override
                 public void onResponse(Call<State> call, Response<State> response) {
                     onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
-                    dialog.dismiss();
+                    SaveListAdapter.dismissProgressDialog();
                 }
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
                    // lt.error();
                     productSentCallback.onProductSentResponse(false);
-                    dialog.dismiss();
+                    SaveListAdapter.dismissProgressDialog();
                 }
             });
         } else if (product.getName().equals("") && product.getQuantity() == null) {
@@ -433,14 +432,14 @@ public class OpenFoodAPIClient {
                 @Override
                 public void onResponse(Call<State> call, Response<State> response) {
                     onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
-                    dialog.dismiss();
+                    SaveListAdapter.dismissProgressDialog();
                 }
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
                     //lt.error();
                     productSentCallback.onProductSentResponse(false);
-                    dialog.dismiss();
+                    SaveListAdapter.dismissProgressDialog();
                 }
             });
         } else if (product.getBrands().equals("") && product.getQuantity() == null) {
@@ -448,14 +447,14 @@ public class OpenFoodAPIClient {
                 @Override
                 public void onResponse(Call<State> call, Response<State> response) {
                     onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
-                    dialog.dismiss();
+                    SaveListAdapter.dismissProgressDialog();
                 }
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
                    // lt.error();
                     productSentCallback.onProductSentResponse(false);
-                    dialog.dismiss();
+                    SaveListAdapter.dismissProgressDialog();
                 }
             });
         } else {
@@ -464,14 +463,14 @@ public class OpenFoodAPIClient {
                 @Override
                 public void onResponse(Call<State> call, Response<State> response) {
                     onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
-                    dialog.dismiss();
+                    SaveListAdapter.dismissProgressDialog();
                 }
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
                    // lt.error();
                     productSentCallback.onProductSentResponse(false);
-                    dialog.dismiss();
+                    SaveListAdapter.dismissProgressDialog();
                 }
             });
         }
