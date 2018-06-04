@@ -197,7 +197,7 @@
   <string name="from_gallery">No galerijas</string>
   <string name="product_sent">Produkts nosūtīts veiksmīgi</string>
   <string name="action_edit_product">Labot produktu</string>
-  <string name="title_info_dialog">Informācija</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Iespējams skenēt produktus bezsaistes režīmā, lai pievienotu tos Open Food Facts vēlāk, kad interneta savienojums ir pieejams. visi produkti kuri tiks noskenēti, būs redzami šeit. Lai nosūtītu produktus, izmantojiet pogu zemāk.</string>
   <string name="permission_camera">Piekļuve kamerai ir nepieciešama, lai skenētu svītrkodus un uzņemtu attēlus.</string>
   <string name="permission_title">Informācija par atļaujām</string>
