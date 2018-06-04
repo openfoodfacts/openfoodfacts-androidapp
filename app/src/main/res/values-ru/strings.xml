@@ -484,7 +484,7 @@
   <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Изменить</string>
   <string name="txtDialogsTitle">Информация</string>
-  <string name="preference_show_all_product_photos_title">Show all product photos</string>
+  <string name="preference_show_all_product_photos_title">Показать все фотографии продукта</string>
   <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
-  <string name="offline_product_addition_title">Add new product</string>
+  <string name="offline_product_addition_title">Добавить новый продукт</string>
 </resources>
