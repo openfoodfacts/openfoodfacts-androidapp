@@ -201,7 +201,7 @@
   <string name="from_gallery">Z galerie</string>
   <string name="product_sent">Produkt byl úspěšně odeslán</string>
   <string name="action_edit_product">Upravit produkt</string>
-  <string name="title_info_dialog">Informace</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Pokud jste offline, můžete produkty dále skenovat a do Open Food Facts se přidají později. Všechny naskenované produkty, se zobrazí zde a budete je moci odeslat pomocí tlačítka níže.</string>
   <string name="permission_camera">Přístup k fotoaparátu je zapotřebí ke snímání čárových kódů a pořizování snímků.</string>
   <string name="permission_title">Informace o oprávněních</string>
