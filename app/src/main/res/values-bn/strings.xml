@@ -193,7 +193,7 @@
   <string name="from_gallery">গ্যালারী থেকে</string>
   <string name="product_sent">পণ্যটি পাঠানো সফল হয়েছে</string>
   <string name="action_edit_product">পণ্য সম্পাদনা করুন</string>
-  <string name="title_info_dialog">তথ্য</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">আপনি অফলাইনে পণ্যগুলি স্ক্যান করতে এবং পরে সেগুলি যোগ করতে পারবেন। আপনার স্ক্যানকৃত পণ্য এখানে প্রদর্শিত হবে, এবং আপনি নচের বোতাম ব্যবহার করে সেগুলি পাঠাতে পারবেন।</string>
   <string name="permission_camera">বারকোড স্ক্যান এবং ছবি তুলতে ক্যামেরার অনুমতি প্রয়োজন।</string>
   <string name="permission_title">অনুমতি তথ্য</string>
