@@ -197,7 +197,7 @@
   <string name="from_gallery">Iz galerije</string>
   <string name="product_sent">Proizvod uspešno poslat</string>
   <string name="action_edit_product">Izmenite proizvod</string>
-  <string name="title_info_dialog">Informacija</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Možete skenirati proizvode i kada niste povezani na internet kako biste ih dodali kasnije na Open Food Facts. Svi proizvodi koje skenirate pojaviće se ovde, i bićete u mogućnosti da ih pošaljete pritiskom na dugme ispod.</string>
   <string name="permission_camera">Dozvola za kameru je potrebna za skeniranje barkodova i fotografije.</string>
   <string name="permission_title">Informacije o dozvolama</string>
