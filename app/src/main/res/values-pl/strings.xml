@@ -221,7 +221,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="from_gallery">Z galerii</string>
   <string name="product_sent">Produkt wysłany z powodzeniem</string>
   <string name="action_edit_product">Edytuj produkt</string>
-  <string name="title_info_dialog">Informacja</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Możesz skanować produkty gdy jesteś offline by później dodać je do Open Food Facts. Wszystkie zeskanowane produkty pojawią się tu i będziesz mógł wysłać je za pomocą przycisku poniżej.</string>
   <string name="permission_camera">Potrzebujesz zezwolenia do skanowania kodów kreskowych i fotografowania.</string>
   <string name="permission_title">Informacja o zezwoleniu</string>
