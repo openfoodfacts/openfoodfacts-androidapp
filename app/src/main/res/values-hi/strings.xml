@@ -193,7 +193,7 @@
   <string name="from_gallery">गैलरी से</string>
   <string name="product_sent">उत्पाद की जानकारी सफलतापूर्वक भेजी गई</string>
   <string name="action_edit_product">उत्पाद संपादित करें</string>
-  <string name="title_info_dialog">जानकारी</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">जब आप ऑफ़लाइन हो तब भी आप उत्पादों को स्कैन कर सकते हैं, ताकि उन्हें आप बाद में जोड़ सके। आपके सभी स्कैन कि हुए  उत्पाद यहाँ दिखाई देगी, और आप नीचे दिए गए बटन का उपयोग कर उन्हें भेजने के लिए सक्षम हो जाएगा।</string>
   <string name="permission_camera">कैमरा अनुमति की जरूरत है बारकोड को स्कैन और तस्वीरें लेने के लिए</string>
   <string name="permission_title">अनुमति जानकारी</string>
