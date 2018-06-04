@@ -193,7 +193,7 @@
   <string name="from_gallery">Από τη συλλογή</string>
   <string name="product_sent">Το προϊόν στάλθηκε με επιτυχία</string>
   <string name="action_edit_product">Επεξεργασία προϊόντος</string>
-  <string name="title_info_dialog">Πληροφορίες</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Μπορείτε να σαρώσετε προϊόντα όταν είστε εκτός σύνδεσης για να τα προσθέσετε αργότερα στο Open Food Facts. Όλα τα προϊόντα που σαρώνετε θα εμφανίζονται εδώ και θα μπορείτε να τα στείλετε χρησιμοποιώντας το παρακάτω κουμπί.</string>
   <string name="permission_camera">Χρειάζεται άδεια κάμερας για τη σάρωση των Barcodes και τη λήψη φωτογραφιών.</string>
   <string name="permission_title">Permission information</string>
