@@ -193,7 +193,7 @@
   <string name="from_gallery">Mula sa gallery</string>
   <string name="product_sent">Matagumpay na naipadala ang produkto</string>
   <string name="action_edit_product">I-edit ang produkto</string>
-  <string name="title_info_dialog">Impormasyon</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Maaari mong i-scan ang mga produkto kapag offline ka upang idagdag ang mga ito sa Open Food Fact sa ibang pagkakataon. Ang lahat ng mga produkto na iyong i-scan ay lilitaw dito, at magagawa mong ipadala ang mga ito gamit ang pindutan sa ibaba.</string>
   <string name="permission_camera">Kinakailangan ang pahintulot ng kamera upang i-scan ang mga barcode at kumuha ng mga larawan.</string>
   <string name="permission_title">Impormasyon ng pahintulot</string>
