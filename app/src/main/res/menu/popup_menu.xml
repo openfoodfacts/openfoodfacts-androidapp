@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/toggleBeep"
+        android:checkable="true"
+        android:title="@string/scan_sound" />
+
+    <item
+        android:id="@+id/toggleAutofocus"
+        android:checkable="true"
+        android:title="@string/autofocus" />
+
+    <item
+        android:id="@+id/troubleScanning"
+        android:title="@string/trouble_scanning" />
+
+    <item
+        android:id="@+id/toggleCamera"
+        android:title="@string/switch_camera" />
+
+</menu>

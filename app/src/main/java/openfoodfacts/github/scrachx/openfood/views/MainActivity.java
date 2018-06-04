@@ -159,7 +159,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         mSendProductDao = Utils.getAppDaoSession(MainActivity.this).getSendProductDao();
         numberOFSavedProducts = mSendProductDao.loadAll().size();
 
-// Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
+// Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
@@ -490,7 +490,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext
                 ());
         if (settings.getBoolean("startScan", false)) {
-            Intent cameraIntent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+            Intent cameraIntent = new Intent(MainActivity.this, ContinuousScanActivity.class);
             cameraIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(cameraIntent);
         }
@@ -547,7 +547,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         .permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
             }
         } else {
-            Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+            Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
@@ -689,7 +689,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             case Utils.MY_PERMISSIONS_REQUEST_CAMERA: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager
                         .PERMISSION_GRANTED) {
-                    Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
