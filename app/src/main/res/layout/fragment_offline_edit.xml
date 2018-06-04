@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="@dimen/padding_short"
-                    android:text="@string/title_info_dialog"
+                    android:text="How does it work?"
                     android:textAlignment="center"
                     android:textSize="@dimen/font_large"
                     android:textStyle="bold" />
