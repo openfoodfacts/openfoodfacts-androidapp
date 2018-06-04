@@ -189,7 +189,7 @@
   <string name="from_gallery">從圖庫</string>
   <string name="product_sent">產品已成功傳送</string>
   <string name="action_edit_product">編輯產品</string>
-  <string name="title_info_dialog">資訊</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">在離線狀態下，您可以掃描產品並稍候將它們加到 Open Food Facts。所有您掃描過的產品都會出現在這裡，您可以使用下面的按鈕來傳送它們。</string>
   <string name="permission_camera">需要相機的存取權來掃描條碼以及拍攝照片。</string>
   <string name="permission_title">許可資訊</string>
