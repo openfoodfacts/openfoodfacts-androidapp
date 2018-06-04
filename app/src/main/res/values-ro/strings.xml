@@ -197,7 +197,7 @@
   <string name="from_gallery">Din galerie</string>
   <string name="product_sent">Produsul a fost trimis cu succes</string>
   <string name="action_edit_product">Modificare produs</string>
-  <string name="title_info_dialog">Informaţii</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Puteți scana produse cand sunteți offline pentru a le adăuga la Open Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de dedesubt.</string>
   <string name="permission_camera">Pentru a scana codul de bare și a fotografia produse sunt necesare drepturi de access la camera foto.</string>
   <string name="permission_title">Informații despre permisiuni.</string>
