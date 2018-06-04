@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.content.res.AppCompatResources;
@@ -17,7 +16,6 @@ import java.util.List;
 import java.util.concurrent.Executors;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 
 public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveViewHolder> {
