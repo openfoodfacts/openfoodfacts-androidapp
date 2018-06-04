@@ -193,7 +193,7 @@
   <string name="from_gallery">Aus Galerie</string>
   <string name="product_sent">Produkt wurde erfolgreich gesendet</string>
   <string name="action_edit_product">Produkt bearbeiten</string>
-  <string name="title_info_dialog">How does it work?</string>
+  <string name="title_info_dialog">Wie funktioniert es?</string>
   <string name="text_offline_info_dialog">Sie können Produkte auch im Offline-Modus erfassen, um sie später zu Open Food Facts hinzuzufügen. Alle Produkte, die Sie erfasst haben, werden hier angezeigt, und Sie können sie über die untenstehende Schaltfläche versenden.</string>
   <string name="permission_camera">Die Kamera-Berechtigung wird benötigt, um Strichcodes zu scannen und Fotos zu machen.</string>
   <string name="permission_title">Berechtigungs-Informationen</string>
