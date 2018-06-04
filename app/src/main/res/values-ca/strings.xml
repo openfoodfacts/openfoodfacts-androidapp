@@ -193,7 +193,7 @@
   <string name="from_gallery">Des de la galeria</string>
   <string name="product_sent">Product sent successfully</string>
   <string name="action_edit_product">Edita producte</string>
-  <string name="title_info_dialog">Informació</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Pot escanejar productes fora de línia i afegir-los a Open Food Facts després. Tots els productes que escaneje apareixeran ací, i podrà enviar-los amb el botó de baix.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
   <string name="permission_title">Informació de permisos</string>
