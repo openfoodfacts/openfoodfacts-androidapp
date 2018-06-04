@@ -193,7 +193,7 @@
   <string name="from_gallery">از گالری</string>
   <string name="product_sent">محصولات با موفقیت ارسال شد</string>
   <string name="action_edit_product">ویرایش کالا</string>
-  <string name="title_info_dialog">اطلاعات</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">میتوانید محصولات را به صورت آفلاین اسکن کنید. اطلاعات ذخیره میشوند سپس میتوانید آن ها را با دکمه زیر بفرستید.</string>
   <string name="permission_camera">دسترسی دوربین برای عکس گرفتن و اسکن کردن بارکد نیاز است.</string>
   <string name="permission_title">اطلاعات دسترسی</string>
