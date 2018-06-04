@@ -492,7 +492,7 @@
   <string name="productQuantityNull">כמות בלתי ידועה</string>
   <string name="product_not_complete">מוצר זה טרם הושלם. \nנוכל לבקש ממך להוסיף עוד פרטים?</string>
   <string name="addProductOffline">כנראה שאין לך חיבור לאינטרנט. להוסיף את המוצר %s במצב בלתי מקוון?</string>
-  <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Food Facts. נא להוסיף אותו.</string>
+  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
   <string name="scan_sound">צליל סריקה</string>
   <string name="trouble_scanning">בעיה בסריקה?</string>
   <string name="barcode_hint">בעיה בסריקה? ניתן להקליד ברקוד</string>
