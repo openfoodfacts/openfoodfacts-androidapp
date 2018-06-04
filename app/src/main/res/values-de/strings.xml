@@ -486,8 +486,8 @@
   <string name="addProductOffline">Sie scheinen offline zu sein. Möchten Sie das Produkt „%s” im Offline-Modus hinzufügen?</string>
   <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Food Facts. Bitte fügen Sie es hinzu.</string>
   <string name="scan_sound">Sound beim Einlesen</string>
-  <string name="trouble_scanning">Trouble Scanning?</string>
-  <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
-  <string name="switch_camera">Switch camera</string>
-  <string name="autofocus">Autofocus</string>
+  <string name="trouble_scanning">Probleme beim Einlesen?</string>
+  <string name="barcode_hint">Probleme beim Einlesen? Strichcode eingeben</string>
+  <string name="switch_camera">Kamera wechseln</string>
+  <string name="autofocus">Autofokus</string>
 </resources>
