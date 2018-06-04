@@ -193,7 +193,7 @@
   <string name="from_gallery">Galeria de imagens</string>
   <string name="product_sent">Produto enviado com sucesso</string>
   <string name="action_edit_product">Modificar produto</string>
-  <string name="title_info_dialog">Informação</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Poderá digitalizar produtos enquanto estiver offline para, mais tarde, adicioná-los ao Open Food Facts. Os produtos serão mostrados aqui e poderá enviá-los usando o botão abaixo.</string>
   <string name="permission_camera">A autorização da Câmara é necessária para digitalizar códigos de barras e tirar fotos.</string>
   <string name="permission_title">Informações de autorização</string>
