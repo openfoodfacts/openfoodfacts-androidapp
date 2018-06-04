@@ -201,7 +201,7 @@
   <string name="from_gallery">מהגלריה</string>
   <string name="product_sent">המוצר נשלח בהצלחה</string>
   <string name="action_edit_product">עריכת מוצר</string>
-  <string name="title_info_dialog">פרטים</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">ניתן לסרוק מוצרים ללא חיבור לאינטרנט ולהוסיף אותם למסד נתוני המזון הפתוח מאוחר יותר. כל המוצרים שנסרקים מופיעים כאן, תהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
   <string name="permission_camera">נדרשת הרשאה לשימוש במצלמה כדי לסרוק ברקודים ולצלם תמונות.</string>
   <string name="permission_title">פרטי הרשאה</string>
