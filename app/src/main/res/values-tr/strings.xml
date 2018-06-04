@@ -193,7 +193,7 @@
   <string name="from_gallery">Galeriden</string>
   <string name="product_sent">Ürün başarıyla gönderildi</string>
   <string name="action_edit_product">Ürünü Düzenle</string>
-  <string name="title_info_dialog">Bilgi</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Ürünleri daha sonra Open Food Facts\'e eklemek için çevrimdışı olduğunuzda tarayabilirsiniz. Taradığınız tüm ürünler burada görünecek ve aşağıdaki düğmeyi kullanarak gönderebileceksiniz.</string>
   <string name="permission_camera">Barkodları taramak ve fotoğraf çekmek için kamera izni gerekiyor.</string>
   <string name="permission_title">İzin bilgisi</string>
