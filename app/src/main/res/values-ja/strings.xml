@@ -189,7 +189,7 @@
   <string name="from_gallery">ギャラリーから</string>
   <string name="product_sent">製品を送信しました</string>
   <string name="action_edit_product">製品を編集</string>
-  <string name="title_info_dialog">情報</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">オフライン時に製品をスキャンして、後で Open Food Facts に追加するすることができます。スキャンする製品がすべてここに表示されます。下のボタンを使用してそれらを送信することができます。</string>
   <string name="permission_camera">バーコードのスキャンと写真の撮影には、カメラのアクセス許可が必要です。</string>
   <string name="permission_title">アクセス許可情報</string>
