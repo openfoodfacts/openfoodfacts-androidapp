@@ -8,22 +8,22 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one">1 minute ago</item>
-    <item quantity="few">%d minutes ago</item>
-    <item quantity="many">%d minutes ago</item>
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="one">1 минуту назад</item>
+    <item quantity="few">%d минуты назад</item>
+    <item quantity="many">%d минут назад</item>
+    <item quantity="other">%d минут назад</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one">1 hour ago</item>
-    <item quantity="few">%d hours ago</item>
-    <item quantity="many">%d hours ago</item>
-    <item quantity="other">%d hours ago</item>
+    <item quantity="one">1 час назад</item>
+    <item quantity="few">%d часа назад</item>
+    <item quantity="many">%d часов назад</item>
+    <item quantity="other">%d часов назад</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">1 day ago</item>
-    <item quantity="few">%d days ago</item>
-    <item quantity="many">%d days ago</item>
-    <item quantity="other">%d days ago</item>
+    <item quantity="one">1 день назад</item>
+    <item quantity="few">%d дня назад</item>
+    <item quantity="many">%d дней назад</item>
+    <item quantity="other">%d дней назад</item>
   </plurals>
   <string name="action_settings">Настройки</string>
   <string name="action_about">О приложении</string>
@@ -452,7 +452,7 @@
   <string name="by_nutrition_grade">Уровень питательных веществ</string>
   <string name="sort_by">Сортировать по</string>
   <string name="shake_summary">Встряхните телефон для сканирования продуктов</string>
-  <string name="shake_title">Сканирование при встряхивании</string>
+  <string name="shake_title">Встряхните для сканирования</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Фотографии без штрих-кода невозможно добавить в приложении. Попробуйте мобильную веб-версию.</string>
   <string name="no_barcode">Не найден штрих-код</string>
@@ -481,7 +481,10 @@
   <string name="other_editors">Страницу продукта также редактировали </string>
   <string name="contribution_tab">Вклад</string>
   <string name="contribution_tab_summary">Показать вкладку участия пользователя с продуктами</string>
-  <string name="contribution_tab_title">Показать вкладку Вклад</string>
+  <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Изменить</string>
   <string name="txtDialogsTitle">Информация</string>
+  <string name="preference_show_all_product_photos_title">Показать все фотографии продукта</string>
+  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
+  <string name="offline_product_addition_title">Добавить новый продукт</string>
 </resources>

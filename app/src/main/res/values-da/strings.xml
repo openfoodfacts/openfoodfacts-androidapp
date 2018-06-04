@@ -6,16 +6,16 @@
     <item quantity="other"> Sie haben %d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one">1 minute ago</item>
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="one">1 minut siden</item>
+    <item quantity="other">%d minutter siden</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one">1 hour ago</item>
-    <item quantity="other">%d hours ago</item>
+    <item quantity="one">1 time siden</item>
+    <item quantity="other">%d timer siden</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">1 day ago</item>
-    <item quantity="other">%d days ago</item>
+    <item quantity="one">1 dag siden</item>
+    <item quantity="other">%d dage siden</item>
   </plurals>
   <string name="action_settings">Indstillinger</string>
   <string name="action_about">Om</string>
@@ -444,7 +444,7 @@
   <string name="by_nutrition_grade">Ernæringskvalitet</string>
   <string name="sort_by">Sortér efter</string>
   <string name="shake_summary">Ryst mobil for at skanne produkter</string>
-  <string name="shake_title">Skan ved Ryst</string>
+  <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Billeder uden stregkode kan endnu ikke tilføjes med app\'en. Prøv venligst mobil-webversionen.</string>
   <string name="no_barcode">Iogen stregkode fundet</string>
@@ -473,7 +473,10 @@
   <string name="other_editors">Produktside også redigeret af </string>
   <string name="contribution_tab">Bidrag</string>
   <string name="contribution_tab_summary">Vis brugerbidragsfane med produkter</string>
-  <string name="contribution_tab_title">Vis Bidrag-faneblad</string>
+  <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Rediger</string>
   <string name="txtDialogsTitle">Information</string>
+  <string name="preference_show_all_product_photos_title">Show all product photos</string>
+  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
+  <string name="offline_product_addition_title">Add new product</string>
 </resources>

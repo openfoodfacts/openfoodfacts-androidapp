@@ -26,7 +26,7 @@
   <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
   <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="first_offline">Producten die offline toegevoegd zijn, verschijnen hier</string>
   <!-- Image Upload -->
   <string-array name="upload_image">
     <item>640 X 480</item>
@@ -65,9 +65,9 @@
     <item>Ingrediënten</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
+  <string name="bookmark">Favoriet</string>
   <string name="edit">Bewerken</string>
-  <string name="fastscroller_track">FastScroller track</string>
+  <string name="fastscroller_track">FastScroller spoor</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Zoek</string>
   <string name="no_products">Geen product gevonden</string>
@@ -243,7 +243,7 @@
   <string name="nutrition_salt">Zout</string>
   <string name="nutrition_salt_short_name">Zout (g)</string>
   <string name="nutrition_satured_fat">Verzadigd vet</string>
-  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+  <string name="nutrition_satured_fat_short_name">Verzadigd vet (g)</string>
   <string name="nutrition_serving">Per portie</string>
   <string name="nutrition_serving_size">Portiegrootte:</string>
   <string name="nutrition_sodium">Natrium</string>
@@ -262,7 +262,7 @@
   <string name="txtSeeMore">Meer</string>
   <string name="action_search">Zoek</string>
   <string name="search_hint">Zoek een product</string>
-  <string name="number_of_results">Number of results: </string>
+  <string name="number_of_results">Aantal resultaten: </string>
   <string name="brand">Merk :</string>
   <string name="number_of_products">Aantal producten: </string>
   <string name="txt_no_results">Geen resultaten gevonden</string>
@@ -444,7 +444,7 @@
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
   <string name="shake_summary">Shake phone to scan products</string>
-  <string name="shake_title">Scan on Shake</string>
+  <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
@@ -473,7 +473,10 @@
   <string name="other_editors">Product page also edited by </string>
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
-  <string name="contribution_tab_title">Show Contribution Tab</string>
+  <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Bewerken</string>
   <string name="txtDialogsTitle">Melding</string>
+  <string name="preference_show_all_product_photos_title">Show all product photos</string>
+  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
+  <string name="offline_product_addition_title">Add new product</string>
 </resources>

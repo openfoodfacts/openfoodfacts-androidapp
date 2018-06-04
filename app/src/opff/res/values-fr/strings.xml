@@ -11,7 +11,7 @@
   <string name="website_product">https://world-fr.openpetfoodfacts.org/produit/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-fr.openpetfoodfacts.org/contributeur/</string>
-  <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
+  <string name="terms_url">https://fr.openproductsfacts.org/conditions-d-utilisation</string>
   <string name="txtHome">Open Pet Food Facts est une base de données de produits alimentaires pour animaux de compagnie à 2, 4 et 6 pattes avec les ingrédients, les allergènes et toutes les informations disponibles sur les étiquettes des produits alimentaires pour nos amis à 2, 4 et 6 pattes. Woof. Woof.</string>
   <string name="slide_1_title">Contribuez à la transparence de l\'alimentation animale</string>
   <string name="slide_1_desc">Scannez les produits, prenez-les en photo, devenez un acteur de la transparence de l\'alimentation animale</string>
@@ -29,7 +29,7 @@
   <string name="Donation">Cliquez ici pour faire un don à Open Food Facts</string>
   <string name="translate_help_title">Aidez à traduire Open Food Facts</string>
   <string name="translate_help_summary">Rendez la base de données Open Food Facts disponible dans votre langue - aucune connaissance technique requise</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+  <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Pet Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
   <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilent sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
   <!-- OPFF tagline in different languages -->
   <string name="tagline">l\'information alimentaire ouverte pour les animaux</string>

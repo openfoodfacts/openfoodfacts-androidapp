@@ -444,7 +444,7 @@
   <string name="by_nutrition_grade">crwdns46302:0crwdne46302:0</string>
   <string name="sort_by">crwdns46303:0crwdne46303:0</string>
   <string name="shake_summary">crwdns46687:0crwdne46687:0</string>
-  <string name="shake_title">crwdns46688:0crwdne46688:0</string>
+  <string name="shake_title">crwdns92870:0crwdne92870:0</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">crwdns46328:0crwdne46328:0</string>
   <string name="no_barcode">crwdns46329:0crwdne46329:0</string>
@@ -473,7 +473,10 @@
   <string name="other_editors">crwdns84809:0crwdne84809:0</string>
   <string name="contribution_tab">crwdns84820:0crwdne84820:0</string>
   <string name="contribution_tab_summary">crwdns84821:0crwdne84821:0</string>
-  <string name="contribution_tab_title">crwdns84822:0crwdne84822:0</string>
+  <string name="contribution_tab_title">crwdns92871:0crwdne92871:0</string>
   <string name="product">crwdns92709:0crwdne92709:0</string>
   <string name="txtDialogsTitle">crwdns92747:0crwdne92747:0</string>
+  <string name="preference_show_all_product_photos_title">crwdns92872:0crwdne92872:0</string>
+  <string name="preference_show_all_product_photos_summary">crwdns92873:0crwdne92873:0</string>
+  <string name="offline_product_addition_title">crwdns92869:0crwdne92869:0</string>
 </resources>
