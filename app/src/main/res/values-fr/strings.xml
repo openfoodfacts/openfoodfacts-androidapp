@@ -484,7 +484,7 @@
   <string name="productQuantityNull">Quantité inconnue</string>
   <string name="product_not_complete">Ce produit n\'est pas encore complet.\nPouvez-vous ajouter des détails?</string>
   <string name="addProductOffline">Vous semblez déconnecté. Ajouter le produit %s en utilisant le mode hors ligne?</string>
-  <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Food Facts. Pouvez-vous l\'ajouter ?</string>
+  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
   <string name="scan_sound">Son de scan</string>
   <string name="trouble_scanning">Problèmes de scan?</string>
   <string name="barcode_hint">Problème de scan ? Saisissez le code-barre</string>
