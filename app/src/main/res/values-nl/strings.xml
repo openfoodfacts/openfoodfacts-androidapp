@@ -193,7 +193,7 @@
   <string name="from_gallery">Gallerie</string>
   <string name="product_sent">Product succesvol verzonden</string>
   <string name="action_edit_product">Bewerk product</string>
-  <string name="title_info_dialog">Opmerking</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Je kunt de producten offline scannen en deze later verzenden naar Open Food Facts. Alle producten die je scant zullen hier verschijnen en zijn te verzenden met onderstaande button.</string>
   <string name="permission_camera">Om streepjescodes te scannen en foto\'s te nemen is cameratoestemming vereist.</string>
   <string name="permission_title">Informatie over permissies</string>
