@@ -193,7 +193,7 @@
   <string name="from_gallery">Fra galleri</string>
   <string name="product_sent">Produkt vellykket sendt</string>
   <string name="action_edit_product">Redigér produkt</string>
-  <string name="title_info_dialog">Informasjon</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Du kan skanne produkter uten nett for å legge dem til Open Food Facts senere. Alle produktene du skanner vil vises her, og du vil være i stand til å sende dem ved å bruke knappen under.</string>
   <string name="permission_camera">Kameratillatelse kreves for å skanne strekkoder og ta bilder.</string>
   <string name="permission_title">Tillatelsesinformasjon</string>
