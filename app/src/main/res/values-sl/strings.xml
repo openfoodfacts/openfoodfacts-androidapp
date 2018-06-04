@@ -201,7 +201,7 @@
   <string name="from_gallery">Iz galerije</string>
   <string name="product_sent">Izdelek je uspešno poslan</string>
   <string name="action_edit_product">Uredi izdelek</string>
-  <string name="title_info_dialog">Informacije</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Kadarkoli lahko skenirate izdelke, jih lahko kasneje dodate v Open Food Facts. Tukaj bodo prikazani vsi izdelki, ki jih skenirate, in jih boste lahko poslali z uporabo spodnjega gumba.</string>
   <string name="permission_camera">Za pregledovanje črtnih kod in fotografiranje potrebujete dovoljenje kamere.</string>
   <string name="permission_title">Informacije o dovoljenju</string>
