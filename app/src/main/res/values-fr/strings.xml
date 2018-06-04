@@ -193,7 +193,7 @@
   <string name="from_gallery">Galerie photo</string>
   <string name="product_sent">Produit envoyé avec succès</string>
   <string name="action_edit_product">Modifier le produit</string>
-  <string name="title_info_dialog">Information</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
   <string name="permission_camera">L\'autorisation de l\'appareil photo est nécessaire pour scanner des codes barres et prendre des photos.</string>
   <string name="permission_title">Information sur les permissions</string>
