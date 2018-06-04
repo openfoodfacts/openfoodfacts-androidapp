@@ -189,7 +189,7 @@
   <string name="from_gallery">从相册中选择</string>
   <string name="product_sent">产品发送成功</string>
   <string name="action_edit_product">编辑产品</string>
-  <string name="title_info_dialog">信息</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">您可以在离线时扫描产品，稍后将其添加到 Open Food Facts 中。您扫描的所有产品都会显示在这里，可以按下面的按钮发送它们。</string>
   <string name="permission_camera">需要相机权限才能扫描条形码及拍照。</string>
   <string name="permission_title">权限信息</string>
