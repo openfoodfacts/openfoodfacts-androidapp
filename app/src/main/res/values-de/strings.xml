@@ -193,7 +193,7 @@
   <string name="from_gallery">Aus Galerie</string>
   <string name="product_sent">Produkt wurde erfolgreich gesendet</string>
   <string name="action_edit_product">Produkt bearbeiten</string>
-  <string name="title_info_dialog">Informationen</string>
+  <string name="title_info_dialog">Wie funktioniert es?</string>
   <string name="text_offline_info_dialog">Sie können Produkte auch im Offline-Modus erfassen, um sie später zu Open Food Facts hinzuzufügen. Alle Produkte, die Sie erfasst haben, werden hier angezeigt, und Sie können sie über die untenstehende Schaltfläche versenden.</string>
   <string name="permission_camera">Die Kamera-Berechtigung wird benötigt, um Strichcodes zu scannen und Fotos zu machen.</string>
   <string name="permission_title">Berechtigungs-Informationen</string>
@@ -479,4 +479,15 @@
   <string name="preference_show_all_product_photos_title">Alle Produktfotos anzeigen</string>
   <string name="preference_show_all_product_photos_summary">Alle eingesandten Produktfotos in einem separaten Tab anzeigen</string>
   <string name="offline_product_addition_title">Neues Produkt hinzufügen</string>
+  <string name="productNameNull">Name unbekannt</string>
+  <string name="productBrandNull">Marke unbekannt</string>
+  <string name="productQuantityNull">Menge unbekannt</string>
+  <string name="product_not_complete">Dieses Produkt ist noch nicht vollständig.\nKönnten Sie ein paar Details hinzufügen?</string>
+  <string name="addProductOffline">Sie scheinen offline zu sein. Möchten Sie das Produkt „%s” im Offline-Modus hinzufügen?</string>
+  <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Food Facts. Bitte fügen Sie es hinzu.</string>
+  <string name="scan_sound">Sound beim Einlesen</string>
+  <string name="trouble_scanning">Probleme beim Einlesen?</string>
+  <string name="barcode_hint">Probleme beim Einlesen? Strichcode eingeben</string>
+  <string name="switch_camera">Kamera wechseln</string>
+  <string name="autofocus">Autofokus</string>
 </resources>

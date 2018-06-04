@@ -193,7 +193,7 @@
   <string name="from_gallery">crwdns35157:0crwdne35157:0</string>
   <string name="product_sent">crwdns35158:0crwdne35158:0</string>
   <string name="action_edit_product">crwdns35159:0crwdne35159:0</string>
-  <string name="title_info_dialog">crwdns35160:0crwdne35160:0</string>
+  <string name="title_info_dialog">crwdns92885:0crwdne92885:0</string>
   <string name="text_offline_info_dialog">crwdns35161:0crwdne35161:0</string>
   <string name="permission_camera">crwdns35162:0crwdne35162:0</string>
   <string name="permission_title">crwdns35163:0crwdne35163:0</string>
@@ -479,4 +479,15 @@
   <string name="preference_show_all_product_photos_title">crwdns92872:0crwdne92872:0</string>
   <string name="preference_show_all_product_photos_summary">crwdns92873:0crwdne92873:0</string>
   <string name="offline_product_addition_title">crwdns92869:0crwdne92869:0</string>
+  <string name="productNameNull">crwdns92874:0crwdne92874:0</string>
+  <string name="productBrandNull">crwdns92875:0crwdne92875:0</string>
+  <string name="productQuantityNull">crwdns92876:0crwdne92876:0</string>
+  <string name="product_not_complete">crwdns92877:0crwdne92877:0</string>
+  <string name="addProductOffline">crwdns92878:0%scrwdne92878:0</string>
+  <string name="product_not_found">crwdns92879:0%1$scrwdne92879:0</string>
+  <string name="scan_sound">crwdns92880:0crwdne92880:0</string>
+  <string name="trouble_scanning">crwdns92881:0crwdne92881:0</string>
+  <string name="barcode_hint">crwdns92882:0crwdne92882:0</string>
+  <string name="switch_camera">crwdns92883:0crwdne92883:0</string>
+  <string name="autofocus">crwdns92884:0crwdne92884:0</string>
 </resources>

@@ -89,7 +89,7 @@
   <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Countries where sold :</string>
+  <string name="txtCountries">Country :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
@@ -411,7 +411,7 @@
   <string name="brand_string">Brand</string>
   <string name="additive_string">Additive</string>
   <string name="search_string">Search</string>
-  <string name="country_string">Countries where sold</string>
+  <string name="country_string">Country</string>
   <string name="store_subtitle">Store</string>
   <string name="packaging_subtitle">Packaging</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
@@ -479,4 +479,15 @@
   <string name="preference_show_all_product_photos_title">Show all product photos</string>
   <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
   <string name="offline_product_addition_title">Add new product</string>
+  <string name="productNameNull">Name unknown</string>
+  <string name="productBrandNull">Brand unknown</string>
+  <string name="productQuantityNull">Quantity unknown</string>
+  <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
+  <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
+  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Please add it.</string>
+  <string name="scan_sound">Scan sound</string>
+  <string name="trouble_scanning">Trouble Scanning?</string>
+  <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
+  <string name="switch_camera">Switch camera</string>
+  <string name="autofocus">Autofocus</string>
 </resources>

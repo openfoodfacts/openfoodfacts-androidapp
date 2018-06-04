@@ -193,7 +193,7 @@
   <string name="from_gallery">Galerie photo</string>
   <string name="product_sent">Produit envoyé avec succès</string>
   <string name="action_edit_product">Modifier le produit</string>
-  <string name="title_info_dialog">How does it work?</string>
+  <string name="title_info_dialog">Comment cela fonctionne-t-il ?</string>
   <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
   <string name="permission_camera">L\'autorisation de l\'appareil photo est nécessaire pour scanner des codes barres et prendre des photos.</string>
   <string name="permission_title">Information sur les permissions</string>
@@ -479,4 +479,15 @@
   <string name="preference_show_all_product_photos_title">Afficher toutes les photos de produits</string>
   <string name="preference_show_all_product_photos_summary">Afficher toutes les photos de produits envoyées dans un onglet distinct</string>
   <string name="offline_product_addition_title">Ajouter un nouveau produit</string>
+  <string name="productNameNull">Nom inconnu</string>
+  <string name="productBrandNull">Marque inconnue</string>
+  <string name="productQuantityNull">Quantité inconnue</string>
+  <string name="product_not_complete">Ce produit n\'est pas encore complet.\nPouvez-vous ajouter des détails?</string>
+  <string name="addProductOffline">Vous semblez déconnecté. Ajouter le produit %s en utilisant le mode hors ligne?</string>
+  <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Food Facts. Pouvez-vous l\'ajouter ?</string>
+  <string name="scan_sound">Son de scan</string>
+  <string name="trouble_scanning">Problèmes de scan?</string>
+  <string name="barcode_hint">Problème de scan ? Saisissez le code-barre</string>
+  <string name="switch_camera">Changer d\'appareil photo</string>
+  <string name="autofocus">Autofocus</string>
 </resources>
