@@ -193,7 +193,7 @@
   <string name="from_gallery">Galériából</string>
   <string name="product_sent">Termék sikeresen elküldve</string>
   <string name="action_edit_product">Termék szerkesztés</string>
-  <string name="title_info_dialog">Információ</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Offline beolvasás is lehetséges az Open Food Facts adatbázisba való későbbi feltöltéshez. Minden itt megjelenő termék beküldhető az alábbi gomb megnyomásával.</string>
   <string name="permission_camera">Kamerához jogosultság szükséges a vonalkód-olvasáshoz és termékfotózásoz.</string>
   <string name="permission_title">Jogosultság információ</string>
