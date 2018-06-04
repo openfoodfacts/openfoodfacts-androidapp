@@ -193,7 +193,7 @@
   <string name="from_gallery">Da galería</string>
   <string name="product_sent">Produto enviado correctamente</string>
   <string name="action_edit_product">Editar produto</string>
-  <string name="title_info_dialog">Información</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Pode escanear produtos estando sen conexión e engadilos a Open Food Facts máis tarde. Todos os produtos que escanee aparecerán aquí e poderá envialos usando o botón de debaixo.</string>
   <string name="permission_camera">Precísanse permisos de cámara para escanear códigos de barras e facer fotos.</string>
   <string name="permission_title">Información dos permisos</string>
