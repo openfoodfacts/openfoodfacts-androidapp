@@ -193,7 +193,7 @@
   <string name="from_gallery">От галерията</string>
   <string name="product_sent">Продуктът е изпратен успешно</string>
   <string name="action_edit_product">Редактирай продукт</string>
-  <string name="title_info_dialog">Информация</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Можете да сканирате продукти, когато сте офлайн, за да ги добавите към Open Food Facts по-късно. Всички продукти, които сканирате, ще се показват тук и ще можете да ги изпратите, като използвате бутона по-долу.</string>
   <string name="permission_camera">Необходимо е разрешение за камерата за сканиране на баркодове и заснемане на снимки.</string>
   <string name="permission_title">Информация за разрешението</string>
