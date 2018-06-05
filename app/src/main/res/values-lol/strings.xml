@@ -484,7 +484,7 @@
   <string name="productQuantityNull">crwdns92876:0crwdne92876:0</string>
   <string name="product_not_complete">crwdns92877:0crwdne92877:0</string>
   <string name="addProductOffline">crwdns92878:0%scrwdne92878:0</string>
-  <string name="product_not_found">crwdns92879:0%1$scrwdne92879:0</string>
+  <string name="product_not_found">crwdns92886:0%1$scrwdne92886:0</string>
   <string name="scan_sound">crwdns92880:0crwdne92880:0</string>
   <string name="trouble_scanning">crwdns92881:0crwdne92881:0</string>
   <string name="barcode_hint">crwdns92882:0crwdne92882:0</string>
