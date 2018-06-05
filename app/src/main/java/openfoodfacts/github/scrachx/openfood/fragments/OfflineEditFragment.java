@@ -174,6 +174,8 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
      * Upload the offline products.
      */
     private void uploadProducts() {
+        SaveListAdapter.showProgressDialog();
+        mRecyclerView.getAdapter().notifyDataSetChanged();
         OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getActivity());
         final List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
         size = saveItems.size();
@@ -214,7 +216,8 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                 }
             });
         }
-
+        SaveListAdapter.dismissProgressDialog();
+        mRecyclerView.getAdapter().notifyDataSetChanged();
     }
 
     private void updateDrawerBadge() {

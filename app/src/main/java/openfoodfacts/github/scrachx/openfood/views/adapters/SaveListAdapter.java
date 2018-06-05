@@ -59,6 +59,7 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
 
     public static void showProgressDialog() {
         isUploading = true;
+
     }
 
     public static void dismissProgressDialog() {
