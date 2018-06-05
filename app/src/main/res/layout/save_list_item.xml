@@ -67,19 +67,18 @@
         android:layout_margin="@dimen/spacing_normal"
         android:layout_marginLeft="@dimen/spacing_small"
         android:layout_marginRight="@dimen/spacing_small"
-        android:layout_weight="10" />
+        android:layout_weight="10"/>
 
-    <include
-        layout="@layout/progressbar_endless_list"
-        android:id="@+id/uploadingProgressDialog"
-        android:layout_height="wrap_content"
+    <ProgressBar
+        android:id="@+id/offlineUploadProgressBar"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
         android:layout_gravity="center_vertical"
         android:layout_margin="@dimen/spacing_normal"
         android:layout_marginLeft="@dimen/spacing_small"
         android:layout_marginRight="@dimen/spacing_small"
         android:layout_weight="10"
         android:visibility="gone"/>
-
 
 </LinearLayout>

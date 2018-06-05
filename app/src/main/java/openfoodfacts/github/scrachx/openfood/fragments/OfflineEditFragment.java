@@ -216,8 +216,8 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                 }
             });
         }
-        SaveListAdapter.dismissProgressDialog();
-        mRecyclerView.getAdapter().notifyDataSetChanged();
+       /* SaveListAdapter.dismissProgressDialog();
+        mRecyclerView.getAdapter().notifyDataSetChanged();*/
     }
 
     private void updateDrawerBadge() {
