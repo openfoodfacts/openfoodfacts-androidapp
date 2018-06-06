@@ -1,6 +1,6 @@
 Lebensmittel erfassen oder deren Barcode einlesen, um Daten über Inhaltsstoffe, Zusatzstoffe und Nährwertangaben zu erhalten.
 
-Die App erlaubt es, die 500.000 Produkte (davon 175.000 in den USA), die bereits in der freien und offenen Datenbank Open Food Facts enthalten sind, einzusehen und auch Fotos und Daten für fehlende Produkte hinzuzufügen.
+The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
 
 Um das Open Food Facts Projekt zu entdecken, besuchen Sie bitte https://openfoodfacts.org
 
