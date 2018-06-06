@@ -65,10 +65,10 @@
     <item>İçindekiler</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
-  <string name="edit">Edit</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
+  <string name="bookmark">Yer imi</string>
+  <string name="edit">Düzenle</string>
+  <string name="fastscroller_track">HızlıKaydırma işareti</string>
+  <string name="fastscroller_handle">HızlıKaydırma kolu</string>
   <string name="search_button">Ara</string>
   <string name="no_products">Ürün bulunamadı</string>
   <string name="desc_list_item_icon">Öğe simgesi</string>
@@ -86,13 +86,13 @@
   <string name="txtManufacturing">Üretim veya işleme yerleri:</string>
   <string name="txtIngredientsOrigins">Malzemelerin kaynağı:</string>
   <string name="txtCity">Satın alınan şehir, eyalet ve ülke:</string>
-  <string name="txtEMB">EMB Code:</string>
+  <string name="txtEMB">EMB Kodu:</string>
   <string name="txtManufactureUrl">Üreticinin resmi sitesindeki ürün sayfasına bağlantı sağlayın:</string>
   <string name="txtStores">Mağazalar :</string>
   <string name="txtCountries">Satılan ülkeler:</string>
   <string name="txtIngredients">Malzemelerin listesi:</string>
-  <string name="Donate">Donate</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donate">Bağış Yapın</string>
+  <string name="Donation">Açık Besin Gerçekleri\'ne bağış yapmak için buraya tıklayınız</string>
   <string name="txtSubstances">Alerjiye veya toleranssızlığa neden olan maddeler veya ürünler:</string>
   <string name="txtAdditives">Katkı maddeleri:</string>
   <string name="txtTraces">İzler:</string>
@@ -118,7 +118,7 @@
   <string name="hintPass">Şifre</string>
   <string name="errorLogin">Giriş veya parola hatası</string>
   <string name="errorWeb">İnternet\'e erişemedik. Bağlantı sorununuz var mı?</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="uploadLater">Ağ kullanılabilir olduğunda resim yüklenecek</string>
   <string name="txtInfoLoginOk">Kullanıcı kaydedildi</string>
   <string name="txtInfoLoginNo">Kullanıcı kaydedilemedi</string>
   <string name="txtDialogsContent">Aradığınız ürün Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
@@ -134,8 +134,8 @@
   <string name="txtTakePicture">Resim çek</string>
   <string name="txtSendAll">Tümünü Yükle</string>
   <string name="txtNoData">Veri yok</string>
-  <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeeded">Bekleyin…</string>
+  <string name="txtPictureNeededDialogContent">Ürünü onaylamadan önce en az bir resim eklemelisiniz</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Yükleniyor...</string>
@@ -474,7 +474,7 @@
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show contribution tab</string>
-  <string name="product">Edit</string>
+  <string name="product">Düzenle</string>
   <string name="txtDialogsTitle">Bilgi</string>
   <string name="preference_show_all_product_photos_title">Show all product photos</string>
   <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
