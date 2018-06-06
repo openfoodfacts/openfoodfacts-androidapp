@@ -22,7 +22,7 @@
   <string name="action_discover">Keşfet</string>
   <string name="contribute">Nasıl katkıda bulunulur</string>
   <string name="action_find">Bul</string>
-  <string name="text_barcode">Barkodu yazın:</string>
+  <string name="text_barcode">Barkodu yazın :</string>
   <string name="message_in_activity_save_product_offline">Yeni bir ürün göndermek için sadece bir fotoğraf zorunludur.</string>
   <string name="product_incomplete_message">Ürün tamamlanmadı. Bu yüzden alerji kontrolü yapamadık.</string>
   <string name="no_offline_data">İşleminiz tamamlandı</string>
@@ -44,10 +44,10 @@
   <!-- Text units -->
   <string-array name="units_array">
     <item> </item>
+    <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
-    <item>ml</item>
     <item>ml</item>
     <item>cl</item>
     <item>fl oz</item>
@@ -402,39 +402,39 @@
   <string name="pref_resolution_summary">Resim yükleme için bir çözünürlük seçin</string>
   <string name="image_upload_resolution">Resim yükleme çözünürlüğü</string>
   <string name="can_add_barcode">Taramada sorun mu yaşıyorsunuz?\nBarkod türü için tarayınız</string>
-  <string name="wikidata_information">Going further</string>
-  <string name="description">Description: </string>
-  <string name="title">Title: </string>
-  <string name="Wikipedia">View on Wikipedia</string>
-  <string name="Browse_Products">Browse Products</string>
-  <string name="swipe_down">Swipe down</string>
+  <string name="wikidata_information">Daha fazla ilerliyor</string>
+  <string name="description">Açıklama: </string>
+  <string name="title">Başlık: </string>
+  <string name="Wikipedia">Wikipedia\'da Görüntüle</string>
+  <string name="Browse_Products">Ürünlere Göz At</string>
+  <string name="swipe_down">Aşağı kaydır</string>
   <string name="brand_string">Marka</string>
   <string name="additive_string">Katkı</string>
   <string name="search_string">Ara</string>
   <string name="country_string">Ülke</string>
   <string name="store_subtitle">Mağaza</string>
   <string name="packaging_subtitle">Paketleme</string>
-  <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="last_seen_string">%1$d%2$s önce</string>
   <string name="store_string">Mağaza</string>
   <string name="packaging_string">Paketleme</string>
   <string name="label_string">Etiket</string>
   <string name="category_string">Kategori</string>
-  <string name="connection">Connected</string>
+  <string name="connection">Bağlandı</string>
   <string name="contributor_string">Katkı sağlayan</string>
-  <string name="Rate_Us">Show Your Support</string>
-  <string name="Rate_Us_title">Rate our App</string>
-  <string name="app_disabled_text">Application is disabled</string>
+  <string name="Rate_Us">Desteğini Göster</string>
+  <string name="Rate_Us_title">Uygulamamızı Değerlendir</string>
+  <string name="app_disabled_text">Uygulama devre dışı</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitaminler:</string>
-  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="amino_acid_tags_text">Amino Asitler:</string>
   <string name="mineral_tags_text">Mineraller:</string>
-  <string name="other_tags_text">Other Substances:</string>
+  <string name="other_tags_text">Diğer Maddeler:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
-  <string name="disable_image_loading">Disable image loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable image loading</string>
-  <string name="txtCamera">Camera</string>
-  <string name="txtGallery">Gallery</string>
+  <string name="wikidata">Wikidata verileri</string>
+  <string name="disable_image_loading">Pil azaldığında resim yüklenmesini devre dışı bırak</string>
+  <string name="DisableLoadTitle">Resim yüklemesini devre dışı bırak</string>
+  <string name="txtCamera">Kamera</string>
+  <string name="txtGallery">Galeri</string>
   <string name="txtOptions">Options</string>
   <string name="by_title">Title</string>
   <string name="by_brand">Marka</string>
