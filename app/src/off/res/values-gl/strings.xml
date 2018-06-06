@@ -32,4 +32,5 @@
   <string name="warning_alert_data">A información sobre as súas alerxias nunca se enviará ao servidor de Open Food Facts. Ademáis, teña en conta que os datos poderían non ser precisos e a detección podería non ser 100% precisa, así que compróbeo vostede mesma con atención! </string>
   <!-- OFF tagline in different languages -->
   <string name="tagline">a base de datos gratuíta de alimentos</string>
+  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
 </resources>
