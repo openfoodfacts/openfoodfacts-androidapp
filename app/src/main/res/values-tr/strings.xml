@@ -189,11 +189,11 @@
   <string name="cancel_button">Cancel</string>
   <string name="login_button">Giriş</string>
   <string name="create_account_button">Create Account</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">Alerji bilgileriniz kesinlikle Open Food Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz! </string>
   <string name="from_gallery">Galeriden</string>
   <string name="product_sent">Ürün başarıyla gönderildi</string>
   <string name="action_edit_product">Ürünü Düzenle</string>
-  <string name="title_info_dialog">How does it work?</string>
+  <string name="title_info_dialog">Nasıl çalışır?</string>
   <string name="text_offline_info_dialog">Ürünleri daha sonra Open Food Facts\'e eklemek için çevrimdışı olduğunuzda tarayabilirsiniz. Taradığınız tüm ürünler burada görünecek ve aşağıdaki düğmeyi kullanarak gönderebileceksiniz.</string>
   <string name="permission_camera">Barkodları taramak ve fotoğraf çekmek için kamera izni gerekiyor.</string>
   <string name="permission_title">İzin bilgisi</string>
@@ -223,8 +223,8 @@
   <string name="permision_write_external_storage">Geçmişi dışa aktarmak için harici depolamaya yazma izni gerekli.</string>
   <string name="txt_nutrition_not_found">Mevcut Değil</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Calculate Calories</string>
-  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
+  <string name="calculate_calories">Harcanan Kaloriyi Hesapla</string>
+  <string name="txt_calories_result">%2$s %3$s sürede %1$s kcal</string>
   <string name="nutrition_carbohydrate">Karbonhidrat</string>
   <string name="nutrition_carbohydrate_short_name">Karbonhidrat (g)</string>
   <string name="nutrition_cholesterol">Kollesterol</string>
@@ -243,7 +243,7 @@
   <string name="nutrition_salt">Tuz</string>
   <string name="nutrition_salt_short_name">Tuz (g)</string>
   <string name="nutrition_satured_fat">Doymuş yağ</string>
-  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+  <string name="nutrition_satured_fat_short_name">Doymuş yağ (g)</string>
   <string name="nutrition_serving">Porsiyon başına</string>
   <string name="nutrition_serving_size">Porsiyon ölçüsü:</string>
   <string name="nutrition_sodium">Sodyum</string>
@@ -262,15 +262,15 @@
   <string name="txtSeeMore">Daha fazla göster</string>
   <string name="action_search">Ara</string>
   <string name="search_hint">Ürün ara</string>
-  <string name="number_of_results">Number of results: </string>
+  <string name="number_of_results">Sonuç sayısı: </string>
   <string name="brand">Marka :</string>
   <string name="number_of_products">Ürün sayısı: </string>
   <string name="txt_no_results">Sonuç bulunamadı</string>
   <string name="txt_extend_search">Aramanızı genişletmeyi veya ürünü eklemeyi deneyin</string>
-  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+  <string name="txt_no_matching_products">Eşleşen bir ürün bulamadık. \nŞunu deneyebilirsiniz:</string>
+  <string name="txt_broaden_search">- aramanız genişletiliyor \n- tara ve Open Food Facts\'e ekle</string>
   <string name="txt_cant_load_search_results">Arama sonuçları yüklenemiyor</string>
-  <string name="something_went_wrong">Sorry, something went wrong…</string>
+  <string name="something_went_wrong">Üzgünüm, bir şeyler yanlış gitti…</string>
   <string name="txt_try_again">Tekrar deneyin</string>
   <string name="nutrition_lactose">Laktoz</string>
   <string name="nutrition_casein">Sütteki protein</string>
@@ -339,7 +339,7 @@
   <string name="take_more_pictures">Daha fazla resim çek</string>
   <string name="txtSaturatedFat">Doymuş yağ</string>
   <!-- String related to App Shortcuts -->
-  <string name="disabled_message">Shortcut Not Available</string>
+  <string name="disabled_message">Kısayol Mevcut Değil</string>
   <string name="scan_shortcut_short_label">Tara</string>
   <string name="scan_shortcut_long_label">Scan Product</string>
   <string name="barcode_shortcut_short_label">Ara</string>
