@@ -36,7 +36,7 @@ product_view_ingredients_en.png
 Összetevők
 
 menu_en.png
-Powerful
+Erős
 
 product_view_nutrition_table_en.png
 Tápértékadatok
