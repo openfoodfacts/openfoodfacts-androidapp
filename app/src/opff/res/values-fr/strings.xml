@@ -33,5 +33,5 @@
   <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilent sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
   <!-- OPFF tagline in different languages -->
   <string name="tagline">l\'information alimentaire ouverte pour les animaux</string>
-  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Pet Food Facts. Can you add it?</string>
+  <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Pet Food Facts. Pouvez-vous l\'ajouter ?</string>
 </resources>
