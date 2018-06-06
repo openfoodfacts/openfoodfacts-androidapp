@@ -32,4 +32,5 @@
   <string name="warning_alert_data">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
   <!-- OFF tagline in different languages -->
   <string name="tagline">den gratis fødevarerproduktdatabase</string>
+  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
 </resources>
