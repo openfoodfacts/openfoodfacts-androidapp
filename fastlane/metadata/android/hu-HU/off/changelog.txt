@@ -1,8 +1,8 @@
 
 ==================
-New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
+New native version of Open Food Facts. Minden Open Food Facts önkéntes keményen dolgozott rajta, az ön javaslatai és visszajelzése alapján :)
 ==================
-* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Csatlakozik hozzánk ?
+* Az Open Food Facts most már még inkább globális mozgalom, mint valaha. 500 000 szabad termék, 10 000 regisztrált hozzájáruló, 182 ország. Csatlakozik hozzánk ?
 ==================
 Mik az újdonságok ?
 ==================
