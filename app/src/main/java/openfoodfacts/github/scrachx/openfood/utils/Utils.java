@@ -132,6 +132,9 @@ public class Utils {
     }
 
     public static void hideKeyboard(Activity activity) {
+        if(activity == null)
+            return;
+        
         View view = activity.getCurrentFocus();
 
         if (view != null) {
