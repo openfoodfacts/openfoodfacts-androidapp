@@ -482,8 +482,8 @@
   <string name="productNameNull">Ismeretlen név</string>
   <string name="productBrandNull">Ismeretlen márkanév</string>
   <string name="productQuantityNull">Ismeretlen mennyiség</string>
-  <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
-  <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
+  <string name="product_not_complete">Ez a termékoldal még nem teljes. \nHozzá tudna adni néhány részletet?</string>
+  <string name="addProductOffline">Úgy tűnik, hogy kapcsolat nélküli módban van. Hozzáadja a(z) %s terméket a kapcsolat nélküli mód használatával ?</string>
   <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
   <string name="scan_sound">Beolvasási hang</string>
   <string name="trouble_scanning">Gondja van a beolvasással?</string>
