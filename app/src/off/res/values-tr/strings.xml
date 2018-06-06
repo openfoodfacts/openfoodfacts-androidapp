@@ -23,7 +23,7 @@
   <string name="txtDialogsContent">Aradığınız ürün Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
   <string name="txtDialogsContentPowerMode">Aradığınız ürün Open Food Facts\'de mevcut.</string>
   <string name="msg_share">Bu ürüne Open Food Facts\'te bak:</string>
-  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
+  <string name="not_support_books">Kitaplar şu anda Open Food Facts tarafından desteklenmemektedir</string>
   <string name="txt_broaden_search">- aramanız genişletiliyor \n- tara ve Open Food Facts\'e ekle</string>
   <string name="Donation">Open Food Facts\'e bağış yapmak için buraya tıklayınız</string>
   <string name="translate_help_title">Open Food Facts\'i tercüme etmeye yardımcı olun</string>
