@@ -484,10 +484,10 @@
   <string name="productQuantityNull">Ismeretlen mennyiség</string>
   <string name="product_not_complete">Ez a termékoldal még nem teljes. \nHozzá tudna adni néhány részletet?</string>
   <string name="addProductOffline">Úgy tűnik, hogy kapcsolat nélküli módban van. Hozzáadja a(z) %s terméket a kapcsolat nélküli mód használatával ?</string>
-  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+  <string name="product_not_found">A beolvasott %1$s termék nem található az Open Food Facts adatbázisában. Hozzá tudná adni?</string>
   <string name="scan_sound">Beolvasási hang</string>
   <string name="trouble_scanning">Gondja van a beolvasással?</string>
   <string name="barcode_hint">Gondja van a beolvasással? Írja be a vonalkódot</string>
-  <string name="switch_camera">Switch camera</string>
-  <string name="autofocus">Autofocus</string>
+  <string name="switch_camera">Kamera váltása</string>
+  <string name="autofocus">Autofókusz</string>
 </resources>
