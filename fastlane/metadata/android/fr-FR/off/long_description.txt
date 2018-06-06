@@ -1,6 +1,6 @@
 Scannez les produits alimentaires ou leur code-barres pour obtenir des données sur les ingrédients, les additifs et les données nutritionnelles.
 
-The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+L'application permet de voir les 547.000 produits (dont 175.000 aux États-Unis) déjà contenus dans la base de données libre et ouverte Open Food Facts, et aussi d'ajouter des images et des données pour les produits manquants.
 
 Pour découvrir le projet Open Food Facts, rendez-vous sur https://openfoodfacts.org
 
