@@ -375,7 +375,7 @@
   <string name="preference_choose_language_dialog_title">Choose language</string>
   <string name="FAQ">FAQ</string>
   <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
   <string name="please_check_your_connection">Please check your connection.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
