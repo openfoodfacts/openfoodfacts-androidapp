@@ -16,8 +16,8 @@
   <string name="slide_1_desc">Ürünleri tarayın, fotoğraflarını çekin, kozmetik şeffaflığın olmasını sağlayın</string>
   <string name="slide_2_title">Bilgileri öğren</string>
   <string name="slide_2_desc">Size özel yorumlanan, taradığınız ürün hakkında kapsamlı bilgi</string>
-  <string name="slide_3_title">Get the Nutriscore</string>
-  <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
+  <string name="slide_3_title">Nutriscore\'u al</string>
+  <string name="slide_3_desc">Favori gıda ürünlerinizin besin özelliklerinin sentetik bir görünümü</string>
   <string name="slide_4_title">Çevrimdışı çalışıyor</string>
   <string name="slide_4_desc">Şu anda internet bağlantınız olmasa dahi yeni ürünler ekleyebilirsiniz</string>
   <string name="txtDialogsContent">Aradığınız ürün Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
@@ -28,9 +28,9 @@
   <string name="Donation">Open Food Facts\'e bağış yapmak için buraya tıklayınız</string>
   <string name="translate_help_title">Open Food Facts\'i tercüme etmeye yardımcı olun</string>
   <string name="translate_help_summary">Open Food Facts veritabanını kendi dilinize çevirin - teknik bilgi gerektirmez</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+  <string name="text_offline_info_dialog">Ürünleri Open Beauty Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki düğmeyi kullanarak gönderebileceksiniz.</string>
   <string name="warning_alert_data">Alerji bilgileriniz kesinlikle Open Food Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz! </string>
   <!-- OFF tagline in different languages -->
-  <string name="tagline">the free food products database</string>
+  <string name="tagline">ücretsiz gıda ürünleri veritabanı</string>
   <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Food Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
 </resources>
