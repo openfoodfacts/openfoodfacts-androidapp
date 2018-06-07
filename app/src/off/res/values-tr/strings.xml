@@ -19,7 +19,7 @@
   <string name="slide_3_title">Get the Nutriscore</string>
   <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
   <string name="slide_4_title">Çevrimdışı çalışıyor</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+  <string name="slide_4_desc">Şu anda internet bağlantınız olmasa dahi yeni ürünler ekleyebilirsiniz</string>
   <string name="txtDialogsContent">Aradığınız ürün Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
   <string name="txtDialogsContentPowerMode">Aradığınız ürün Open Food Facts\'de mevcut.</string>
   <string name="msg_share">Bu ürüne Open Food Facts\'te bak:</string>
