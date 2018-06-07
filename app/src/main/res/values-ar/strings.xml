@@ -3,15 +3,15 @@
 <resources>
   <plurals name="offline_notification_count">
     <item quantity="zero"> You have %d offline products waiting to be contributed to Open Food Facts</item>
-    <item quantity="one"> You have 1 offline product waiting to be contributed to Open Food Facts</item>
+    <item quantity="one"> لديك منتج واحد غير متصل بإنتظار أن تُساهم به في حقائق الطعام المفتوحة</item>
     <item quantity="two"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
-    <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+    <item quantity="other"> لديك %d منتج غير متصل ينتظر لتُساهم به في حقائق الطعام المفتوحة</item>
   </plurals>
   <plurals name="minutes">
     <item quantity="zero">%d minutes ago</item>
-    <item quantity="one">1 minute ago</item>
+    <item quantity="one">منذ دقيقة</item>
     <item quantity="two">%d minutes ago</item>
     <item quantity="few">%d minutes ago</item>
     <item quantity="many">%d minutes ago</item>
@@ -23,15 +23,15 @@
     <item quantity="two">%d hours ago</item>
     <item quantity="few">%d hours ago</item>
     <item quantity="many">%d hours ago</item>
-    <item quantity="other">%d hours ago</item>
+    <item quantity="other">%d منذ ساعات</item>
   </plurals>
   <plurals name="days">
     <item quantity="zero">%d days ago</item>
-    <item quantity="one">1 day ago</item>
+    <item quantity="one">منذ يوم</item>
     <item quantity="two">%d days ago</item>
     <item quantity="few">%d days ago</item>
     <item quantity="many">%d days ago</item>
-    <item quantity="other">%d days ago</item>
+    <item quantity="other">%d منذ أيام</item>
   </plurals>
   <string name="action_settings">الإعدادات</string>
   <string name="action_about">حول</string>
@@ -82,7 +82,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">الإشارة المرجعية</string>
-  <string name="edit">Edit</string>
+  <string name="edit">تعديل</string>
   <string name="fastscroller_track">مسار FastScroller</string>
   <string name="fastscroller_handle">مقبض FastScroller</string>
   <string name="search_button">بحث</string>
@@ -205,7 +205,7 @@
   <string name="cancel_button">Cancel</string>
   <string name="login_button">تسجيل الدخول</string>
   <string name="create_account_button">Create Account</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">لن يتم إرسال معلومات الحساسية الخاصة بك إلى خادم حقائق الطعام المفتوح. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
   <string name="from_gallery">من معرض الصور</string>
   <string name="product_sent">تم إرسال المنتج بنجاح</string>
   <string name="action_edit_product">تحرير المنتج</string>
@@ -259,7 +259,7 @@
   <string name="nutrition_salt">ملح</string>
   <string name="nutrition_salt_short_name">ملح (غ)</string>
   <string name="nutrition_satured_fat">الدهون المشبعة</string>
-  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+  <string name="nutrition_satured_fat_short_name">الدهون المشبعة (غ)</string>
   <string name="nutrition_serving">لكل وجبة</string>
   <string name="nutrition_serving_size">حجم الحصة</string>
   <string name="nutrition_sodium">صوديوم</string>
@@ -391,7 +391,7 @@
   <string name="preference_choose_language_dialog_title">اختر اللغة</string>
   <string name="FAQ">الأسئلة المتكررة</string>
   <string name="FrequentlyAskedQuestions">‮الأسئلة المتكررة</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
+  <string name="translate_help_title">المساعدة في ترجمة \"حقائق الطعام المفتوحة\"</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
   <string name="please_check_your_connection">يرجى التحقق من اتصالك.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
@@ -490,9 +490,9 @@
   <string name="contribution_tab">مساهمات</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show contribution tab</string>
-  <string name="product">Edit</string>
+  <string name="product">تعديل</string>
   <string name="txtDialogsTitle">معلومات</string>
-  <string name="preference_show_all_product_photos_title">Show all product photos</string>
+  <string name="preference_show_all_product_photos_title">إظهار جميع صور المنتج</string>
   <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
   <string name="offline_product_addition_title">Add new product</string>
   <string name="productNameNull">Name unknown</string>

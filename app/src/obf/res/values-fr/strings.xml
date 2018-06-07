@@ -33,4 +33,5 @@
   <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Beauty Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
   <!-- OBF tagline in different languages -->
   <string name="tagline">l\'information cosmétique ouverte</string>
+  <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Beauty Facts. Pouvez-vous l\'ajouter ?</string>
 </resources>

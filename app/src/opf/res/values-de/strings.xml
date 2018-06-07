@@ -33,4 +33,5 @@
   <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Products Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
   <!-- OPF tagline in different languages -->
   <string name="tagline">die öffentlich zugängliche Produktdatenbank</string>
+  <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Product Facts. Könnten Sie es bitte hinzufügen?</string>
 </resources>
