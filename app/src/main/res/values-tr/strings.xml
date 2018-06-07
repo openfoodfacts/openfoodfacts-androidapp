@@ -483,11 +483,11 @@
   <string name="productBrandNull">Marka bilinmiyor</string>
   <string name="productQuantityNull">Miktar bilinmiyor</string>
   <string name="product_not_complete">Bu ürün henüz tamamlanmadı. \nBiraz detay ekleyebilir misiniz?</string>
-  <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
-  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
-  <string name="scan_sound">Scan sound</string>
-  <string name="trouble_scanning">Trouble Scanning?</string>
-  <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
-  <string name="switch_camera">Switch camera</string>
-  <string name="autofocus">Autofocus</string>
+  <string name="addProductOffline">Çevrimdışı görünüyorsun. %s ürününü çevrimdışı modda eklemek ister misiniz?</string>
+  <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Food Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
+  <string name="scan_sound">Sesi Tara</string>
+  <string name="trouble_scanning">Tarama sorun mu var?</string>
+  <string name="barcode_hint">Tarama sorun mu var? Barkod Girin</string>
+  <string name="switch_camera">Kamerayı değiştir</string>
+  <string name="autofocus">Otomatik odaklama</string>
 </resources>
