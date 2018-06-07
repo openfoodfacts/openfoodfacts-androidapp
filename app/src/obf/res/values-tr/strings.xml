@@ -19,16 +19,16 @@
   <string name="slide_2_desc">Sizin özel yorumlanan, taradığınız ürün hakkında kapsamlı bilgi</string>
   <string name="slide_3_title">Kullandığınız ürünü takip edin</string>
   <string name="slide_3_desc">Kullandığınız tüm kozmetik ürünleri, tek bir listede dışa aktarabilirsiniz</string>
-  <string name="slide_4_title">Works offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Beauty Facts.</string>
-  <string name="msg_share">Look at this product on Open Beauty Facts :</string>
-  <string name="not_support_books">Books are not currently supported by Open Beauty Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
-  <string name="Donation">Click here to donate to Open Beauty Facts</string>
-  <string name="translate_help_title">Help translate Open Beauty Facts</string>
-  <string name="translate_help_summary">Bring the Open Beauty Facts database to your language - no technical knowledge required</string>
+  <string name="slide_4_title">Çevrimdışı çalışıyor</string>
+  <string name="slide_4_desc">Şu anda internet bağlantınız olmasa dahi yeni ürünler ekleyebilirsiniz</string>
+  <string name="txtDialogsContent">Taradığınız ürün Open Beauty Facts\'te mevcut değil. Lütfen ekleyin.</string>
+  <string name="txtDialogsContentPowerMode">Taradığınız ürün Open Beauty Facts\'te zaten mevcut.</string>
+  <string name="msg_share">Bu ürünü Open Food Facts\'te gör :</string>
+  <string name="not_support_books">Kitaplar şu anda Open Food Facts tarafından desteklenmemektedir</string>
+  <string name="txt_broaden_search">- aramanız genişletiliyor \n- tara ve Open Food Facts\'e ekle</string>
+  <string name="Donation">Open Food Facts\'e katkıda bulunmak için buraya tıklayınız</string>
+  <string name="translate_help_title">Open Food Facts\'i tercüme etmeye yardımcı olun</string>
+  <string name="translate_help_summary">Open Food Facts veritabanını kendi dilinize değiştirin - teknik bilgi gerektirmez</string>
   <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <!-- OBF tagline in different languages -->
