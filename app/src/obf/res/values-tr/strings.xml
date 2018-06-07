@@ -16,7 +16,7 @@
   <string name="slide_1_title">Kozmetik şeffaflığına katkıda bulun</string>
   <string name="slide_1_desc">Ürünleri tarayın, resimlerini çekin, kozmetik şeffaflığın olmasını sağlayın</string>
   <string name="slide_2_title">Bilgileri öğren</string>
-  <string name="slide_2_desc">Sizin özel yorumlanan, taradığınız ürün hakkında kapsamlı bilgi</string>
+  <string name="slide_2_desc">Size özel yorumlanan, taradığınız ürün hakkında kapsamlı bilgi</string>
   <string name="slide_3_title">Kullandığınız ürünü takip edin</string>
   <string name="slide_3_desc">Kullandığınız tüm kozmetik ürünleri, tek bir listede dışa aktarabilirsiniz</string>
   <string name="slide_4_title">Çevrimdışı çalışıyor</string>
@@ -29,9 +29,9 @@
   <string name="Donation">Open Food Facts\'e katkıda bulunmak için buraya tıklayınız</string>
   <string name="translate_help_title">Open Food Facts\'i tercüme etmeye yardımcı olun</string>
   <string name="translate_help_summary">Open Food Facts veritabanını kendi dilinize değiştirin - teknik bilgi gerektirmez</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="text_offline_info_dialog">Ürünleri Open Food Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki düğmeyi kullanarak gönderebileceksiniz.</string>
+  <string name="warning_alert_data">Alerji bilgileriniz kesinlikle Open Food Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz! </string>
   <!-- OBF tagline in different languages -->
-  <string name="tagline">the free cosmetics database</string>
-  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Beauty Facts. Can you add it?</string>
+  <string name="tagline">ücretsiz kozmetik veritabanı</string>
+  <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Food Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
 </resources>
