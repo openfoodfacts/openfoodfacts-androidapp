@@ -16,9 +16,9 @@
   <string name="slide_1_title">Kozmetik şeffaflığına katkıda bulun</string>
   <string name="slide_1_desc">Ürünleri tarayın, resimlerini çekin, kozmetik şeffaflığın olmasını sağlayın</string>
   <string name="slide_2_title">Bilgileri öğren</string>
-  <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Keep track of the product you use</string>
-  <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
+  <string name="slide_2_desc">Sizin özel yorumlanan, taradığınız ürün hakkında kapsamlı bilgi</string>
+  <string name="slide_3_title">Kullandığınız ürünü takip edin</string>
+  <string name="slide_3_desc">Kullandığınız tüm kozmetik ürünleri, tek bir listede dışa aktarabilirsiniz</string>
   <string name="slide_4_title">Works offline</string>
   <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
