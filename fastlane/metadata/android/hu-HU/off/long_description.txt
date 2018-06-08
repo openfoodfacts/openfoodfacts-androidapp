@@ -24,7 +24,7 @@ Az Open Food Facts program felfedezéséhez, kérjük, látogasson el a https://
 - The app loads only the strict necessary to reduce data and battery consumption
 - Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
 
-*** Your food, your data ***
+*** Az ön élelmiszere, az ön adatai ***
 - Az ön adatainak tulajdonosa ön és soha nem lesznek elküldve online
 - Az alkalmazást névtelenül használhatja
 - Exportálni tudja a beolvasási előzményeket
