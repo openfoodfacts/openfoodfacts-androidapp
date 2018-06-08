@@ -1,6 +1,6 @@
 Olvassa be az élelmiszereket vagy a vonalkódjukat, hogy megszerezze az adatokat azok összetevőiről, adalékanyagairól és tápértékadatairól.
 
-The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+Az alkalmazás lehetővé teszi 547 000 (beleértve 175 000 egyesült államokbeli) termék megtekintését, amelyek már megtalálhatóak az Open Food Facts ingyenes és nyílt adatbázisában, továbbá képek és adatok hozzáadását a hiányzó termékekhez.
 
 Az Open Food Facts program felfedezéséhez, kérjük, látogasson el a https://openfoodfacts.org weboldalra
 
