@@ -33,5 +33,5 @@
   <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Products Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
   <!-- OPF tagline in different languages -->
   <string name="tagline">a szabad termék adatbázis</string>
-  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
+  <string name="product_not_found">A beolvasott %1$s termék nem található az Open Products Facts adatbázisában. Hozzá tudná adni?</string>
 </resources>
