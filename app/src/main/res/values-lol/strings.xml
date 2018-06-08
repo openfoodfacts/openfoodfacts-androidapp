@@ -490,4 +490,5 @@
   <string name="barcode_hint">crwdns92882:0crwdne92882:0</string>
   <string name="switch_camera">crwdns92883:0crwdne92883:0</string>
   <string name="autofocus">crwdns92884:0crwdne92884:0</string>
+  <string name="initial_loading">crwdns92892:0crwdne92892:0</string>
 </resources>

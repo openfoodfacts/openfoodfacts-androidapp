@@ -490,4 +490,5 @@
   <string name="barcode_hint">Probleme beim Einlesen? Strichcode eingeben</string>
   <string name="switch_camera">Kamera wechseln</string>
   <string name="autofocus">Autofokus</string>
+  <string name="initial_loading">Initial loading</string>
 </resources>

@@ -490,4 +490,5 @@
   <string name="barcode_hint">Gondja van a beolvasással? Írja be a vonalkódot</string>
   <string name="switch_camera">Kamera váltása</string>
   <string name="autofocus">Autofókusz</string>
+  <string name="initial_loading">Initial loading</string>
 </resources>
