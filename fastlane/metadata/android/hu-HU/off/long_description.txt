@@ -21,7 +21,7 @@ Az Open Food Facts program felfedezéséhez, kérjük, látogasson el a https://
 
 *** Minden körülmény között jól működik ***
 - Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata.
-- The app loads only the strict necessary to reduce data and battery consumption
+- Az alkalmazás csak a legszükségesebb dolgokat tölti be, hogy csökkentse az adat és akkumulátorhasználatot
 - Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
 
 *** Az ön élelmiszere, az ön adatai ***
