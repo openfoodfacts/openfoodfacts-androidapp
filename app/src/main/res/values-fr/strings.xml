@@ -490,5 +490,5 @@
   <string name="barcode_hint">Problème de scan ? Saisissez le code-barre</string>
   <string name="switch_camera">Changer d\'appareil photo</string>
   <string name="autofocus">Autofocus</string>
-  <string name="initial_loading">Initial loading</string>
+  <string name="initial_loading">Chargement initial</string>
 </resources>
