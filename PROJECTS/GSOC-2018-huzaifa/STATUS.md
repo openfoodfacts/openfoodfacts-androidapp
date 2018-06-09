@@ -1,5 +1,23 @@
 # Status updates for the Open Food Facts project
 
+## Week starting June 04th
+
+### Completed this week
+
+* Fixed issue #1680
+* Fixed issue #1676
+* Fixed issue #1670
+* Worked on the sliding up capabilities however it was not smooth and was not approved during the discussion. Tried using this [library](https://github.com/laenger/ViewPagerBottomSheet), however faced issues on scrolling the viewpager's fragments. Also found a nullpointerexception issue when implementing this library and tried communicating with the owner of this library who is still trying to figure out the issue. Also tried implementing different solutions for the sliding part however couldn't find any strong approach which could be of any help in this use case.
+
+### Working on this week
+
+* Discuss and finalize product addition layout.
+* Fix other issues from the issues tracker.
+
+### To be worked on next week
+
+* Implement the product addition UI.
+
 ## Week starting May 28th
 
 ### Highlights
