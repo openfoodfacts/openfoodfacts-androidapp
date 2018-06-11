@@ -378,6 +378,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             public void SwipeEventDetected(View v, SwipeDetector.SwipeTypeEnum swipeType) {
                 if(swipeType==SwipeDetector.SwipeTypeEnum.TOP_TO_BOTTOM) {
                  startActivity(intent);
+                 overridePendingTransition(R.anim.slide_up, R.anim.slide_down);
                 }
             }
         });
