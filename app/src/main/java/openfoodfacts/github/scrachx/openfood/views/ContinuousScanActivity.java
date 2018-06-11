@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -60,6 +61,7 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -103,6 +105,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     EditText searchByBarcode;
     @Inject
     OpenFoodAPIService client;
+    @BindView(R.id.quickView_swipeDetector)
+    View swipeDetectorView;
 
     private Product product;
     private SharedPreferences.Editor editor;
@@ -367,6 +371,17 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             actionBar.hide();
         }
 
+        Intent intent = new Intent(this, MainActivity.class);
+
+        new SwipeDetector(swipeDetectorView).setOnSwipeListener(new SwipeDetector.onSwipeEvent() {
+            @Override
+            public void SwipeEventDetected(View v, SwipeDetector.SwipeTypeEnum swipeType) {
+                if(swipeType==SwipeDetector.SwipeTypeEnum.BOTTOM_TO_TOP) {
+                 startActivity(intent);
+                }
+            }
+        });
+        
         View decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener
                 (visibility -> {
@@ -461,6 +476,10 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             }
             return false;
         });
+    }
+
+    private Activity getActivity() {
+        return this.getActivity();
     }
 
     private boolean isProductIncomplete() {
