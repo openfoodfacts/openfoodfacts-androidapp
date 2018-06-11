@@ -376,12 +376,12 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         new SwipeDetector(swipeDetectorView).setOnSwipeListener(new SwipeDetector.onSwipeEvent() {
             @Override
             public void SwipeEventDetected(View v, SwipeDetector.SwipeTypeEnum swipeType) {
-                if(swipeType==SwipeDetector.SwipeTypeEnum.BOTTOM_TO_TOP) {
+                if(swipeType==SwipeDetector.SwipeTypeEnum.TOP_TO_BOTTOM) {
                  startActivity(intent);
                 }
             }
         });
-        
+
         View decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener
                 (visibility -> {
