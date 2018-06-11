@@ -28,12 +28,13 @@
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/taglineHome"
             android:layout_width="184dp"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:textStyle="bold"
-            app:autoSizeMaxTextSize="28sp"
             android:text="@string/tagline"
+            app:autoSizeMaxTextSize="28sp"
+            android:textSize="14sp"
             app:autoSizeMinTextSize="12sp"
             app:autoSizeStepGranularity="0.1sp"
             app:autoSizeTextType="uniform" />
