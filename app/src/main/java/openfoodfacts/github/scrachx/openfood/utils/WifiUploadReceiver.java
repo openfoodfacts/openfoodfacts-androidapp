@@ -40,13 +40,14 @@ public class WifiUploadReceiver extends BroadcastReceiver {
                 context.startService(new Intent(context, ServedService.class));
             }
             
-            
-            
         }
 
-
     }
-
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        startForeground(1,new Notification());
+    }
     public static class WifiService extends Service {
 
         private SendProductDao mSendProductDao;
