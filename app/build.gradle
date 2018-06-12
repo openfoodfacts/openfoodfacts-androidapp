@@ -209,7 +209,7 @@ dependencies {
     }
 
     //UI Component : Material Drawer
-    implementation('com.mikepenz:materialdrawer:6.0.2@aar') {
+    implementation('com.mikepenz:materialdrawer:6.0.3@aar') {
         transitive = true
     }
 
