@@ -35,9 +35,9 @@ public class WifiUploadReceiver extends BroadcastReceiver {
             //context.startService(new Intent(context, WifiService.class));
             // Quick fix. TODO: Fix it the right way: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/1583
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { 
-                context.startForegroundService(new Intent(context, ServedService.class)); 
+                context.startForegroundService(new Intent(context, WifiService.class)); 
             } else {
-                context.startService(new Intent(context, ServedService.class));
+                context.startService(new Intent(context, WifiService.class));
             }
             
         }
