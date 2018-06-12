@@ -11,6 +11,8 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
+import android.app.Notification;
+import android.os.Build;
 
 import java.util.List;
 
@@ -32,10 +34,15 @@ public class WifiUploadReceiver extends BroadcastReceiver {
         int wifiState = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE, -1);
         if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(intent.getAction()) && WifiManager.WIFI_STATE_ENABLED == wifiState) {
 
-            context.startService(new Intent(context, WifiService.class));
-
+            //context.startService(new Intent(context, WifiService.class));
+            // Quick fix. TODO: Fix it the right way: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/1583
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { 
+                context.startForegroundService(new Intent(context, WifiService.class)); 
+            } else {
+                context.startService(new Intent(context, WifiService.class));
+            }
+            
         }
-
 
     }
 
@@ -43,7 +50,13 @@ public class WifiUploadReceiver extends BroadcastReceiver {
 
         private SendProductDao mSendProductDao;
         private List<SendProduct> listSaveProduct;
-
+        @Override
+            public void onCreate() {
+            super.onCreate();
+            startForeground(1,new Notification());
+        }
+        
+        
         @Override
         public int onStartCommand(Intent intent, int flags, int startId) {
 
