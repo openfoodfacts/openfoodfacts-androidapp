@@ -43,16 +43,18 @@ public class WifiUploadReceiver extends BroadcastReceiver {
         }
 
     }
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        startForeground(1,new Notification());
-    }
+
     public static class WifiService extends Service {
 
         private SendProductDao mSendProductDao;
         private List<SendProduct> listSaveProduct;
-
+        @Override
+            public void onCreate() {
+            super.onCreate();
+            startForeground(1,new Notification());
+        }
+        
+        
         @Override
         public int onStartCommand(Intent intent, int flags, int startId) {
 
