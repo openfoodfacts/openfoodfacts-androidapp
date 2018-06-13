@@ -36,7 +36,7 @@ product_view_ingredients_en.png
 Ingredienser
 
 menu_en.png
-Powerful
+Kraftfull
 
 product_view_nutrition_table_en.png
 Näringsfakta
