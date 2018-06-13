@@ -498,5 +498,5 @@
   <string name="barcode_hint">בעיה בסריקה? ניתן להקליד ברקוד</string>
   <string name="switch_camera">החלפת מצלמה</string>
   <string name="autofocus">מיקוד אוטומטי</string>
-  <string name="initial_loading">Initial loading</string>
+  <string name="initial_loading">טעינה ראשונית</string>
 </resources>
