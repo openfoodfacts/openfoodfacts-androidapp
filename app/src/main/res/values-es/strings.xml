@@ -136,7 +136,7 @@
   <string name="txtNoData">Sin datos</string>
   <string name="txtPictureNeeded">Espere…</string>
   <string name="txtPictureNeededDialogContent">Debe añadir al menos una fotografía antes de enviar este producto</string>
-  <string name="txtPictureNeededDialogYes">Stay</string>
+  <string name="txtPictureNeededDialogYes">Esperar</string>
   <string name="txtPictureNeededDialogNo">Descartar</string>
   <string name="toastSending">Subiendo...</string>
   <string name="dataSaved">Guardado localmente en su dispositivo</string>
@@ -479,10 +479,10 @@
   <string name="preference_show_all_product_photos_title">Mostrar todas las fotos del producto</string>
   <string name="preference_show_all_product_photos_summary">Mostrar todas las fotos del producto enviadas en una pestaña separada</string>
   <string name="offline_product_addition_title">Agregar un nuevo producto</string>
-  <string name="productNameNull">Name unknown</string>
-  <string name="productBrandNull">Brand unknown</string>
-  <string name="productQuantityNull">Quantity unknown</string>
-  <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
+  <string name="productNameNull">Nombre desconocido</string>
+  <string name="productBrandNull">Marca desconocida</string>
+  <string name="productQuantityNull">Cantidad desconocida</string>
+  <string name="product_not_complete">Este producto aún no está completo. \n¿Puedes agregar algunos detalles?</string>
   <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
   <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
   <string name="scan_sound">Scan sound</string>
