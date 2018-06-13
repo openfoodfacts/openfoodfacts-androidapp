@@ -2,7 +2,7 @@ Those are the taglines shown above the screenshots in the playstore. Keep them s
 Don't change the filename.
 ---
 scan_en.png
-Scan products
+Skanna produkter
 
 quickview_en.png
 Få Nutriscore
