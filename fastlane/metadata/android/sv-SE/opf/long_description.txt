@@ -19,12 +19,12 @@ Open Food Facts is an open database of food products with ingredients, allergens
 *** Works well in any condition ***
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Du behöver inte en kamera för att leta upp en produkt. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Du kan använda appen anonymt
+- Du kan exportera din skanningshistorik
 
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
@@ -39,7 +39,7 @@ Collecting the world's food, cosmetic and pet food was so passé. With the insan
 
 So we set up to create not 1, but other 77000 separate new databases ! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts will be an extremely ambitious project. Här är några av dem: 
 
 Open Crayons Facts - The largest open database of coloring crayons
 
