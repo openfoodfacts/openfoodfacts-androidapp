@@ -431,8 +431,8 @@
   <string name="other_tags_text">Weitere Stoffe:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata-Informationen</string>
-  <string name="disable_image_loading">Das Laden von Grafiken bei geringem Ladezustand der Batterie deaktivieren</string>
-  <string name="DisableLoadTitle">Laden von Grafiken deaktivieren</string>
+  <string name="disable_image_loading">Das Laden von Bildern bei geringem Ladezustand der Batterie deaktivieren</string>
+  <string name="DisableLoadTitle">Laden von Bildern deaktivieren</string>
   <string name="txtCamera">Kamera</string>
   <string name="txtGallery">Galerie</string>
   <string name="txtOptions">Einstellungen</string>
