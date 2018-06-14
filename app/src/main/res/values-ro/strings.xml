@@ -70,7 +70,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Semn de carte</string>
-  <string name="edit">Edit</string>
+  <string name="edit">Modificare</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Caută</string>
@@ -90,13 +90,13 @@
   <string name="txtManufacturing">Locuri de fabricare sau procesare:</string>
   <string name="txtIngredientsOrigins">Originea ingredientelor</string>
   <string name="txtCity">Oraș și țara unde produsul a fost cumpărat:</string>
-  <string name="txtEMB">EMB Code:</string>
+  <string name="txtEMB">Codul EMB:</string>
   <string name="txtManufactureUrl">Legătură către pagina produsului de pe site-ul oficial al producătorului:</string>
   <string name="txtStores">Magazine:</string>
   <string name="txtCountries">Țări unde produsul este comercializat:</string>
   <string name="txtIngredients">Ingrediente:</string>
-  <string name="Donate">Donate</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donate">Donează</string>
+  <string name="Donation">Faceți click aici pentru a face o donație către Open Food Facts</string>
   <string name="txtSubstances">Substanțe care provoacă alergii sau intoleranțe:</string>
   <string name="txtAdditives">Aditivi alimentari:</string>
   <string name="txtTraces">Urme de:</string>
@@ -122,7 +122,7 @@
   <string name="hintPass">Parolă</string>
   <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>
   <string name="errorWeb">Conectarea la internet nu e posibilă. Aveți probleme cu conexiunea la internet?</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="uploadLater">Imaginea va fi încărcată când va fi disponibilă o conexiune la internet</string>
   <string name="txtInfoLoginOk">Utilizator salvat</string>
   <string name="txtInfoLoginNo">Utilizatorul nu a fost salvat.</string>
   <string name="txtDialogsContent">Produsul scanat nu există în baza de date Open Food Facts. Doriți să-l adăugați?</string>
@@ -138,10 +138,10 @@
   <string name="txtTakePicture">Fotografiați</string>
   <string name="txtSendAll">Trimiteți toate produsele</string>
   <string name="txtNoData">Lipsă date</string>
-  <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeeded">Așteaptă…</string>
+  <string name="txtPictureNeededDialogContent">Ar trebui să adăugați cel puțin o fotografie înainte de a trimite acest produs</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeededDialogNo">Renunță</string>
   <string name="toastSending">Se trimite...</string>
   <string name="dataSaved">Salvat local pe dispozitiv</string>
   <string name="txtInfoAddUser">Introduceți numele de utilizator și parola</string>
@@ -478,7 +478,7 @@
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show contribution tab</string>
-  <string name="product">Edit</string>
+  <string name="product">Modificare</string>
   <string name="txtDialogsTitle">Informaţii</string>
   <string name="preference_show_all_product_photos_title">Show all product photos</string>
   <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
