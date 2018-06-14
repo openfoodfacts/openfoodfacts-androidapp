@@ -793,8 +793,8 @@ public class OpenFoodAPIClient {
     }
 
 
-    public void getProductsByCategory(String category, final int page, final onCategoryCallback onCategoryCallback) {
-        apiService.getProductByCategory(category, page).enqueue(new Callback<Search>() {
+    public void getProductsByCategory(String category,String locale, final int page, final onCategoryCallback onCategoryCallback) {
+        apiService.getProductByCategory(category, page,locale).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
 

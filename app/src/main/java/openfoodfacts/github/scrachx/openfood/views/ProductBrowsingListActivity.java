@@ -33,6 +33,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -393,7 +394,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
                 break;
             case SearchType.CATEGORY:
-                api.getProductsByCategory(searchQuery, pageAddress, this::loadData);
+                Locale locale = getResources().getConfiguration().locale;
+                api.getProductsByCategory(searchQuery,locale.getLanguage(), pageAddress, this::loadData);
                 break;
 
 
