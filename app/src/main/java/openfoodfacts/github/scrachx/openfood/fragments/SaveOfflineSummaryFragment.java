@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
+//import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,7 +20,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -191,7 +191,14 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
             Bundle bundle = new Bundle();
             bundle.putString("imageurl", mUrlImage);
             intent.putExtras(bundle);
-            startActivity(intent);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(getActivity(), (View) imageButtonFront,
+                                getActivity().getString(R.string.product_transition));
+                startActivity(intent, options.toBundle());
+            } else {
+                startActivity(intent);
+            }
         } else {
             // take a picture
             if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
@@ -199,15 +206,13 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
             } else {
                 sendOther = false;
                 if (Utils.isHardwareCameraInstalled(getContext())) {
-//                    EasyImage.openCamera(this, 0);
-                    openImage();
+                    EasyImage.openCamera(this, 0);
                 } else {
                     EasyImage.openGallery(getActivity(), 0, false);
                 }
             }
         }
     }
-
 
     @OnClick(R.id.buttonMorePicturesProductAddition)
     public void takeMorePicture() {
@@ -217,20 +222,19 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
                     ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
                 } else {
                     sendOther = true;
-//                    EasyImage.openCamera(this, 0);
-                    openImage();
+                    EasyImage.openCamera(this, 0);/*
+                    Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                    startActivity(intent);*/
                 }
             } else {
                 if (ContextCompat.checkSelfPermission(this.getContext(), READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
                         && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils
-                            .MY_PERMISSIONS_REQUEST_STORAGE);
+                    ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
                 } else {
                     sendOther = true;
                     EasyImage.openGallery(this, 0, false);
                 }
             }
-
             if (ContextCompat.checkSelfPermission(this.getContext(), READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
                     && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), READ_EXTERNAL_STORAGE)
@@ -239,12 +243,10 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
                             .title(R.string.action_about)
                             .content(R.string.permission_storage)
                             .neutralText(R.string.txtOk)
-                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE,
-                                    WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
+                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
                             .show();
                 } else {
-                    ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils
-                            .MY_PERMISSIONS_REQUEST_STORAGE);
+                    ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
                 }
             }
         } catch (NullPointerException e) {
@@ -252,6 +254,7 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
         }
     }
 
+/*
     private void openImage() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.txtOptions);
@@ -268,7 +271,7 @@ public class SaveOfflineSummaryFragment extends BaseFragment {
         
         AlertDialog dialog = builder.create();
         dialog.show();
-    }
+    }*/
 
 
     private void onPhotoReturned(File photoFile) {
