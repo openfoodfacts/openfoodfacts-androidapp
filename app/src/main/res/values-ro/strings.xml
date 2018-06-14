@@ -7,7 +7,7 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one">1 minute ago</item>
+    <item quantity="one">Acum un minut</item>
     <item quantity="few">%d minutes ago</item>
     <item quantity="other">%d minutes ago</item>
   </plurals>
