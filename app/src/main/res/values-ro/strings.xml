@@ -158,7 +158,7 @@
   <string name="txtBarcodeNotValid">Codul de bare este invalid.</string>
   <string name="try_it_scan_now">Scanați produsul</string>
   <string name="share">Distribuiți</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Tradu</string>
   <string name="msg_share">Privește acest produs pe Open Food Facts:</string>
   <string name="create_account">Înregistrare</string>
   <string name="home_drawer">Pagina de start</string>
@@ -193,11 +193,11 @@
   <string name="cancel_button">Cancel</string>
   <string name="login_button">Conectați-vă</string>
   <string name="create_account_button">Create Account</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
   <string name="from_gallery">Din galerie</string>
   <string name="product_sent">Produsul a fost trimis cu succes</string>
   <string name="action_edit_product">Modificare produs</string>
-  <string name="title_info_dialog">How does it work?</string>
+  <string name="title_info_dialog">Cum funcționează?</string>
   <string name="text_offline_info_dialog">Puteți scana produse cand sunteți offline pentru a le adăuga la Open Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de dedesubt.</string>
   <string name="permission_camera">Pentru a scana codul de bare și a fotografia produse sunt necesare drepturi de access la camera foto.</string>
   <string name="permission_title">Informații despre permisiuni.</string>
@@ -208,7 +208,7 @@
   <string name="msg_input_empty">Vă rugăm completați câmpurile.</string>
   <string name="new_offline_info">Vă rugăm fotografiați produsul, lista sa de ingrediente, informațiile nutriționale și oricare alte informații prezente pe eticheta. Vă mulțumim!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
+  <string name="error_invalid_password">Parola trebuie să fie de cel puțin 6 caractere.</string>
   <string name="error_field_required">Acest câmp este obligatoriu.</string>
   <string name="action_preferences">Preferinţe</string>
   <string name="prefs_scan_startup">Scanare la pornire</string>
@@ -227,7 +227,7 @@
   <string name="permision_write_external_storage">Pentru a exporta istoricul este necesară permisiunea de a scrie în dispozitivul de stocare externă.</string>
   <string name="txt_nutrition_not_found">Nu este disponibil</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Calculate Calories</string>
+  <string name="calculate_calories">Calculați caloriile</string>
   <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Glucide</string>
   <string name="nutrition_carbohydrate_short_name">Glucide (g)</string>
@@ -337,10 +337,10 @@
   <string name="collagen_meat_protein_ratio">Raport colagen / proteine din carne</string>
   <string name="cocoa">Cacao</string>
   <string name="chlorophyl">Clorofilă</string>
-  <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-  <string name="take_picture_front">Take a picture of the front</string>
-  <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-  <string name="take_more_pictures">Take more pictures</string>
+  <string name="take_picture_ingredients">Faceți o poză ingredientelor</string>
+  <string name="take_picture_front">Faceți o poză frontală produsului</string>
+  <string name="take_picture_nutrition_table">Faceți o poză tabelului cu informații nutriționale</string>
+  <string name="take_more_pictures">Faceți mai multe poze</string>
   <string name="txtSaturatedFat">Saturated fat</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
