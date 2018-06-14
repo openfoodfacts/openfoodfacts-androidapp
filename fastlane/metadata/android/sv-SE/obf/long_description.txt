@@ -16,12 +16,12 @@
 *** Works well in any condition ***
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Du behöver inte en kamera för att leta upp en produkt. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your cosmetics, your data ***
 - Your data is yours, and is never sent online
 - You can use the app anonymously
-- You can export your scan history
+- Du kan exportera din skanningshistorik
 
 Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
 
