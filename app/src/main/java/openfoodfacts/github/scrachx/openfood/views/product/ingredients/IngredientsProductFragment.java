@@ -197,6 +197,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         if (!vitaminTagsList.isEmpty()) {
             StringBuilder vitaminStringBuilder = new StringBuilder();
+            vitaminsTagsTextCardView.setVisibility(View.VISIBLE);
             vitaminTagsTextView.setText(bold(getString(R.string.vitamin_tags_text)));
             for (String vitamins : vitaminTagsList) {
                 vitaminStringBuilder.append(prefix);
@@ -204,14 +205,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 vitaminStringBuilder.append(trimLanguagePartFromString(vitamins));
             }
             vitaminTagsTextView.append(vitaminStringBuilder.toString());
-        } else {
-            vitaminTagsTextView.setVisibility(View.GONE);
-            vitaminsTagsTextCardView.setVisibility(View.GONE);
         }
 
         if (!aminoAcidTagsList.isEmpty()) {
             String aminoPrefix = " ";
             StringBuilder aminoAcidStringBuilder = new StringBuilder();
+            aminoAcidTagsTextCardView.setVisibility(View.VISIBLE);
             aminoAcidTagsTextView.setText(bold(getString(R.string.amino_acid_tags_text)));
             for (String aminoAcid : aminoAcidTagsList) {
                 aminoAcidStringBuilder.append(aminoPrefix);
@@ -219,14 +218,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 aminoAcidStringBuilder.append(trimLanguagePartFromString(aminoAcid));
             }
             aminoAcidTagsTextView.append(aminoAcidStringBuilder.toString());
-        } else {
-            aminoAcidTagsTextView.setVisibility(View.GONE);
-            aminoAcidTagsTextCardView.setVisibility(View.GONE);
         }
 
         if (!mineralTags.isEmpty()) {
             String mineralPrefix = " ";
             StringBuilder mineralsStringBuilder = new StringBuilder();
+            mineralTagsTextCardView.setVisibility(View.VISIBLE);
             mineralTagsTextView.setText(bold(getString(R.string.mineral_tags_text)));
             for (String mineral : mineralTags) {
                 mineralsStringBuilder.append(mineralPrefix);
@@ -234,14 +231,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 mineralsStringBuilder.append(trimLanguagePartFromString(mineral));
             }
             mineralTagsTextView.append(mineralsStringBuilder);
-        } else {
-            mineralTagsTextView.setVisibility(View.GONE);
-            mineralTagsTextCardView.setVisibility(View.GONE);
         }
 
         if (!otherNutritionTags.isEmpty()) {
             String otherNutritionPrefix = " ";
             StringBuilder otherNutritionStringBuilder = new StringBuilder();
+            otherNutritionTagTextView.setVisibility(View.VISIBLE);
             otherNutritionTagTextView.setText(bold(getString(R.string.other_tags_text)));
             for (String otherSubstance : otherNutritionTags) {
                 otherNutritionStringBuilder.append(otherNutritionPrefix);
@@ -249,9 +244,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 otherNutritionStringBuilder.append(trimLanguagePartFromString(otherSubstance));
             }
             otherNutritionTagTextView.append(otherNutritionStringBuilder.toString());
-        } else {
-            otherNutritionTagTextView.setVisibility(View.GONE);
-            otherNutritionTagsCardView.setVisibility(View.GONE);
         }
 
         additiveProduct.setText(bold(getString(R.string.txtAdditives)));
@@ -282,18 +274,17 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         List<String> allergens = getAllergens();
 
         if (mState != null && product.getIngredientsText() != null) {
+            textIngredientProductCardView.setVisibility(View.VISIBLE);
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
             int ingredientsListAt = Math.max(0, txtIngredients.toString().indexOf(":"));
             if (!txtIngredients.toString().substring(ingredientsListAt).trim().isEmpty()) {
                 ingredientsProduct.setText(txtIngredients);
-            } else {
-                ingredientsProduct.setVisibility(View.GONE);
-                textIngredientProductCardView.setVisibility(View.GONE);
             }
         }
 
         if (!allergens.isEmpty()) {
+            textSubstanceProductCardView.setVisibility(View.VISIBLE);
             substanceProduct.setMovementMethod(LinkMovementMethod.getInstance());
             substanceProduct.setText(bold(getString(R.string.txtSubstances)));
             substanceProduct.append(" ");
@@ -307,15 +298,10 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
             allergen = allergens.get(allergens.size() - 1);
             substanceProduct.append(Utils.getClickableText(allergen, allergen, SearchType.ALLERGEN, getActivity(), customTabsIntent));
-        } else {
-            substanceProduct.setVisibility(View.GONE);
-            textSubstanceProductCardView.setVisibility(View.GONE);
         }
 
-        if (isBlank(product.getTraces())) {
-            traceProduct.setVisibility(View.GONE);
-            textTraceProductCardView.setVisibility(View.GONE);
-        } else {
+        if (!isBlank(product.getTraces())) {
+            textTraceProductCardView.setVisibility(View.VISIBLE);
             traceProduct.setMovementMethod(LinkMovementMethod.getInstance());
             traceProduct.setText(bold(getString(R.string.txtTraces)));
             traceProduct.append(" ");
@@ -332,11 +318,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             traceProduct.append(Utils.getClickableText(trace, trace, SearchType.TRACE, getActivity(), customTabsIntent));
         }
 
-        if (product.getIngredientsFromPalmOilN() == 0 && product.getIngredientsFromOrThatMayBeFromPalmOilN() == 0) {
-            palmOilProduct.setVisibility(View.GONE);
-            mayBeFromPalmOilProduct.setVisibility(View.GONE);
-            textPalmOilProductCardView.setVisibility(View.GONE);
-        } else {
+        if (!(product.getIngredientsFromPalmOilN() == 0 && product.getIngredientsFromOrThatMayBeFromPalmOilN() == 0)) {
+            textPalmOilProductCardView.setVisibility(View.VISIBLE);
+            mayBeFromPalmOilProduct.setVisibility(View.VISIBLE);
             if (!product.getIngredientsFromPalmOilTags().isEmpty()) {
                 palmOilProduct.setText(bold(getString(R.string.txtPalmOilProduct)));
                 palmOilProduct.append(" ");
@@ -442,11 +426,11 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void showAdditivesState(String state) {
         switch (state) {
             case LOADING: {
+                textAdditiveProductCardView.setVisibility(View.VISIBLE);
                 additiveProduct.append(getString(R.string.txtLoading));
                 break;
             }
             case EMPTY: {
-                additiveProduct.setVisibility(View.GONE);
                 textAdditiveProductCardView.setVisibility(View.GONE);
                 break;
             }
