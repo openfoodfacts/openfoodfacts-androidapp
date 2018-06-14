@@ -205,6 +205,7 @@ public class Nutriments implements Serializable {
             return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName));
         }catch (NullPointerException e){
         // In case one of the getters was unable to get data as string
+            Log.e("NUTRIMENTS-MODEL",e.printStackTrace());
         }
         return null;
     }
