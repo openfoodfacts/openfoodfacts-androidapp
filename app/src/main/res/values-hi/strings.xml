@@ -6,11 +6,11 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one">1 minute ago</item>
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="one">1 मिनट पहले</item>
+    <item quantity="other">%d मिनट पहले</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one">1 hour ago</item>
+    <item quantity="one">1 घंटे पहले</item>
     <item quantity="other">%d hours ago</item>
   </plurals>
   <plurals name="days">
