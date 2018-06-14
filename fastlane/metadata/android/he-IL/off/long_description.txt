@@ -1,6 +1,6 @@
 ניתן לסרוק מוצרי מזון או את הברקוד שלהם כדי לקבל מידע על רכיבים, תוספים ועובדות תזונתיות.
 
-The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+היישומון מאפשר לצפות ב־547,000 מוצרים (לרבות 175,000 בארה״ב) שכבר נמצאים במסד הנתונים הפתוח והחופשי Open Food Facts וגם להוסיף תמונות ונתונים למוצרים חסרים.
 
 כדי לחקור על מיזם Open Food Facts, ניתן לבקר בכתובת https://openfoodfacts.org
 
