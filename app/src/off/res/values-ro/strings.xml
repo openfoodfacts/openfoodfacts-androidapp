@@ -11,7 +11,7 @@
   <string name="website_product">https://world.openfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-  <string name="txtHome">Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
+  <string name="txtHome">Open Food Facts este o bază de date gratuită a produselor alimentare, ce cuprinde ingredientele, alergenii, declarațiile nutriționale și toate informatiile pe care le găsim pe etichetele produselor.</string>
   <string name="slide_1_title">Contribute to Food transparency</string>
   <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
   <string name="slide_2_title">Get the facts</string>
@@ -24,10 +24,10 @@
   <string name="txtDialogsContentPowerMode">Produsul scanat există deja în baza de date Open Food Facts.</string>
   <string name="msg_share">Privește acest produs pe Open Food Facts:</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+  <string name="txt_broaden_search">- extinderea căutării dvs.\n- scanați și adăugați-l la Open Food Facts</string>
   <string name="Donation">Faceți click aici pentru a face o donație către Open Food Facts</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="translate_help_title">Ajută la traducerea informațiilor din Open Food Facts</string>
+  <string name="translate_help_summary">Aduceți baza de date Open Food Facts în limba dvs. - nu aveți nevoie de cunoștințe tehnice</string>
   <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
   <!-- OFF tagline in different languages -->

@@ -134,7 +134,7 @@
   <string name="txtTakePicture">Fotografar</string>
   <string name="txtSendAll">Enviar todos</string>
   <string name="txtNoData">Sem dados</string>
-  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeeded">Epera…</string>
   <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
@@ -377,7 +377,7 @@
   <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
   <string name="translate_help_title">Help translate Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
-  <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="please_check_your_connection">Por favor, verifique a sua ligação à Internet.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Advanced Search &amp; Charts</string>
   <string name="connectivity_check">Please check your internet connection</string>

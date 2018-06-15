@@ -6,16 +6,16 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one">1 minute ago</item>
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="one">1 मिनट पहले</item>
+    <item quantity="other">%d मिनट पहले</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one">1 hour ago</item>
-    <item quantity="other">%d hours ago</item>
+    <item quantity="one">1 घंटे पहले</item>
+    <item quantity="other">%d घंटे पहले</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">1 day ago</item>
-    <item quantity="other">%d days ago</item>
+    <item quantity="one">1 दिन पहले</item>
+    <item quantity="other">%d दिन पहले</item>
   </plurals>
   <string name="action_settings">सेटिंग्स</string>
   <string name="action_about">जानकारी</string>
@@ -65,8 +65,8 @@
     <item>सामग्री</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
-  <string name="edit">Edit</string>
+  <string name="bookmark">बुकमार्क</string>
+  <string name="edit">संपादित करें</string>
   <string name="fastscroller_track">फास्टस्क्रोलर ट्रैक</string>
   <string name="fastscroller_handle">फास्टस्क्रोलर हैंडल</string>
   <string name="search_button">ढूंढें</string>
@@ -134,7 +134,7 @@
   <string name="txtTakePicture">तस्वीर ले ले</string>
   <string name="txtSendAll">सभी अपलोड कर दो</string>
   <string name="txtNoData">कोई डेटा नहीं है</string>
-  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeeded">रुकिए…</string>
   <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
@@ -264,13 +264,13 @@
   <string name="search_hint">उत्पाद खोजें</string>
   <string name="number_of_results">Number of results: </string>
   <string name="brand">ब्रांड :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="number_of_products">उत्पादों की संख्या: </string>
   <string name="txt_no_results">कोई परिणाम नहीं मिला</string>
   <string name="txt_extend_search">अपनी खोज को विस्तृत करें या उत्पाद ऐड करें</string>
   <string name="txt_no_matching_products">हमें कोई भी मिलते-जुलते उत्पाद नहीं मिले हैं। \n आप यह कोशिश कर सकते हैं:</string>
   <string name="txt_broaden_search">- अपनी खोज को विस्तृत करना \n- स्कैन करें और इसे ओपन फ़ूड फैक्ट्स में ऐड करें</string>
   <string name="txt_cant_load_search_results">खोज परिणामों का लोड करना नामुमकिन है</string>
-  <string name="something_went_wrong">Sorry, something went wrong…</string>
+  <string name="something_went_wrong">क्षमा करें, कुछ गलत हो गया…</string>
   <string name="txt_try_again">फिर कोशिश करे</string>
   <string name="nutrition_lactose">लैक्टोज़</string>
   <string name="nutrition_casein">केसीन</string>
@@ -380,7 +380,7 @@
   <string name="please_check_your_connection">कृपया अपना कनेक्शन जाँचें</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">उन्नत खोज और चार्ट्स</string>
-  <string name="connectivity_check">Please check your internet connection</string>
+  <string name="connectivity_check">कृपया अपना इंटरनेट कनेक्शन जाँचें।</string>
   <string name="dismiss">ख़ारिज करें</string>
   <string name="Terms">शर्तें</string>
   <string name="terms_url">https://world-hi.openfoodfacts.org/terms-of-use</string>
@@ -433,14 +433,14 @@
   <string name="wikidata">Wikidata data</string>
   <string name="disable_image_loading">Disable image loading when battery is low</string>
   <string name="DisableLoadTitle">Disable image loading</string>
-  <string name="txtCamera">Camera</string>
-  <string name="txtGallery">Gallery</string>
-  <string name="txtOptions">Options</string>
-  <string name="by_title">Title</string>
+  <string name="txtCamera">कैमरा</string>
+  <string name="txtGallery">गैलरी</string>
+  <string name="txtOptions">विकल्प</string>
+  <string name="by_title">शीर्षक</string>
   <string name="by_brand">ब्रांड</string>
   <string name="by_barcode">बारकोड</string>
-  <string name="by_time">Recently Viewed</string>
-  <string name="sort">Sort</string>
+  <string name="by_time">हाल ही में देखे गए</string>
+  <string name="sort">क्रम</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
   <string name="shake_summary">Shake phone to scan products</string>
@@ -474,7 +474,7 @@
   <string name="contribution_tab">योगदान</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show contribution tab</string>
-  <string name="product">Edit</string>
+  <string name="product">संपादित करें</string>
   <string name="txtDialogsTitle">जानकारी</string>
   <string name="preference_show_all_product_photos_title">Show all product photos</string>
   <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
