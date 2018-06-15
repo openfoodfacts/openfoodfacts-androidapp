@@ -266,9 +266,9 @@
   <string name="txtSeeMore">Mai mult...</string>
   <string name="action_search">Căutare</string>
   <string name="search_hint">Căutați un produs</string>
-  <string name="number_of_results">Number of results: </string>
+  <string name="number_of_results">Număr de rezultate: </string>
   <string name="brand">Marca :</string>
-  <string name="number_of_products">Numărul produselor: </string>
+  <string name="number_of_products">Număr de produse: </string>
   <string name="txt_no_results">Nici un rezultat</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
@@ -341,7 +341,7 @@
   <string name="take_picture_front">Faceți o poză frontală produsului</string>
   <string name="take_picture_nutrition_table">Faceți o poză tabelului cu informații nutriționale</string>
   <string name="take_more_pictures">Faceți mai multe poze</string>
-  <string name="txtSaturatedFat">Saturated fat</string>
+  <string name="txtSaturatedFat">Acizi grași saturați</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
   <string name="scan_shortcut_short_label">Scanează</string>
