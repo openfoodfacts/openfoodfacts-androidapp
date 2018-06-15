@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -105,8 +104,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     EditText searchByBarcode;
     @Inject
     OpenFoodAPIService client;
-    @BindView(R.id.quickView_swipeDetector)
-    View swipeDetectorView;
+    @BindView(R.id.barcode_scanner)
+    View barcodeScannerView;
 
     private Product product;
     private SharedPreferences.Editor editor;
@@ -373,7 +372,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
         Intent intent = new Intent(this, MainActivity.class);
 
-        new SwipeDetector(swipeDetectorView).setOnSwipeListener(new SwipeDetector.onSwipeEvent() {
+        new SwipeDetector(barcodeScannerView).setOnSwipeListener(new SwipeDetector.onSwipeEvent() {
             @Override
             public void SwipeEventDetected(View v, SwipeDetector.SwipeTypeEnum swipeType) {
                 if(swipeType==SwipeDetector.SwipeTypeEnum.TOP_TO_BOTTOM) {
@@ -477,10 +476,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             }
             return false;
         });
-    }
-
-    private Activity getActivity() {
-        return this.getActivity();
     }
 
     private boolean isProductIncomplete() {

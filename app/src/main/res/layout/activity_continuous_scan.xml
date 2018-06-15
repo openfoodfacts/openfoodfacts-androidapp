@@ -58,22 +58,7 @@
             android:textSize="12sp"
             android:visibility="gone"
             tools:visibility="visible" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="100">
-
-        <View
-            android:id="@+id/quickView_swipeDetector"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="75"
-            android:layout_marginBottom="0dp"
-            />
-        </LinearLayout>
-
+        
     </FrameLayout>
 
     <android.support.design.widget.CoordinatorLayout
