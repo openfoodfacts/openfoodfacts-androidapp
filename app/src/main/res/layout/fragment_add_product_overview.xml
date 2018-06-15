@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="fill_vertical"
+    android:clipToPadding="false"
+    android:isScrollContainer="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".fragments.AddProductOverviewFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/section_product_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="Product Picture"
+            android:textColor="#dd0b16"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/hint_image_front"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="(one photo is compulsary to add a new product)"
+            android:textColor="@color/grey_500"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/name"
+            app:layout_constraintStart_toStartOf="@id/section_product_picture"
+            app:layout_constraintTop_toBottomOf="@id/section_product_picture" />
+
+        <ImageView
+            android:id="@+id/btnAddImageFront"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:background="?android:selectableItemBackground"
+            app:layout_constraintStart_toStartOf="@id/section_product_picture"
+            app:layout_constraintTop_toBottomOf="@id/hint_image_front"
+            app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+
+        <View
+            android:id="@+id/grey_line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/grey_400"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnAddImageFront" />
+
+        <TextView
+            android:id="@+id/section_product_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="Product Details"
+            android:textColor="#dd0b16"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/section_product_picture"
+            app:layout_constraintTop_toBottomOf="@id/grey_line1" />
+
+        <TextView
+            android:id="@+id/barcode"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            android:text="Barcode : 8888888888888"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_product_details" />
+
+        <TextView
+            android:id="@+id/language"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:drawableRight="@drawable/ic_arrow_drop_down"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            android:text="Product language : English"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barcode" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="Name*"
+            android:inputType="text"
+            android:nextFocusDown="@id/quantity"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/language" />
+
+        <EditText
+            android:id="@+id/quantity"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="85dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="85dp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="Quantity*"
+            android:inputType="numberDecimal"
+            android:nextFocusDown="@id/brand"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
+        <Spinner
+            android:id="@+id/spinner_weight_unit"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/padding_short"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/padding_short"
+            android:background="@drawable/spinner_weights_grey"
+            android:entries="@array/units_array"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="@id/quantity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/quantity"
+            app:layout_constraintTop_toTopOf="@id/quantity" />
+
+        <EditText
+            android:id="@+id/brand"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="Brand*"
+            android:inputType="text"
+            android:nextFocusDown="@id/packaging"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quantity" />
+
+        <EditText
+            android:id="@+id/packaging"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="Packaging"
+            android:inputType="text"
+            android:nextFocusDown="@id/categories"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/brand" />
+
+        <EditText
+            android:id="@+id/categories"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="Categories"
+            android:inputType="text"
+            android:nextFocusDown="@id/label"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/packaging" />
+
+        <EditText
+            android:id="@+id/label"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="Labels"
+            android:inputType="text"
+            android:nextFocusDown="@id/origin_of_ingredients"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/categories" />
+
+        <View
+            android:id="@+id/grey_line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/grey_400"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label" />
+
+        <TextView
+            android:id="@+id/section_manufacturing_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
+            android:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp"
+            android:text="Manufacturing Details"
+            android:textColor="#dd0b16"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/grey_line2" />
+
+        <EditText
+            android:id="@+id/origin_of_ingredients"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="Origin of ingredients"
+            android:inputType="text"
+            android:nextFocusDown="@id/manufacturing_place"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_manufacturing_details"
+            tools:visibility="visible" />
+
+        <EditText
+            android:id="@+id/manufacturing_place"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="Manufacturing place"
+            android:inputType="text"
+            android:nextFocusDown="@id/emb_code"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/origin_of_ingredients"
+            tools:visibility="visible" />
+
+        <EditText
+            android:id="@+id/emb_code"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="EMB Code"
+            android:inputType="text"
+            android:nextFocusDown="@id/link"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/manufacturing_place"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/hint_emb_code"
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:tint="@color/grey_600"
+            app:layout_constraintBottom_toBottomOf="@id/emb_code"
+            app:layout_constraintEnd_toEndOf="@id/emb_code"
+            app:layout_constraintTop_toTopOf="@id/emb_code"
+            app:srcCompat="@drawable/ic_help_outline_orange_24dp" />
+
+        <EditText
+            android:id="@+id/link"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="Official link of the product"
+            android:inputType="textUri"
+            android:nextFocusDown="@id/country_where_purchased"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emb_code"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/grey_line3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/grey_400"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/link" />
+
+        <TextView
+            android:id="@+id/section_purchasing_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
+            android:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp"
+            android:text="Purchasing Details"
+            android:textColor="#dd0b16"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/grey_line3" />
+
+        <EditText
+            android:id="@+id/country_where_purchased"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="Country where purchased"
+            android:inputType="text"
+            android:nextFocusDown="@id/stores"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_purchasing_details"
+            tools:visibility="visible" />
+
+        <EditText
+            android:id="@+id/stores"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="Stores"
+            android:inputType="text"
+            android:nextFocusDown="@id/countries_where_sold"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/country_where_purchased"
+            tools:visibility="visible" />
+
+        <EditText
+            android:id="@+id/countries_where_sold"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="Countries where sold"
+            android:inputType="text"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/stores"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="#4389FA"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Next"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/countries_where_sold" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
