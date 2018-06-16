@@ -60,6 +60,7 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -366,6 +367,18 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         if (actionBar != null) {
             actionBar.hide();
         }
+
+        Intent intent = new Intent(this, MainActivity.class);
+
+        new SwipeDetector(barcodeView).setOnSwipeListener(new SwipeDetector.onSwipeEvent() {
+            @Override
+            public void SwipeEventDetected(View v, SwipeDetector.SwipeTypeEnum swipeType) {
+                if(swipeType==SwipeDetector.SwipeTypeEnum.TOP_TO_BOTTOM) {
+                 startActivity(intent);
+                 overridePendingTransition(R.anim.slide_up, R.anim.slide_down);
+                }
+            }
+        });
 
         View decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener
