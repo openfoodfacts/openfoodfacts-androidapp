@@ -4,7 +4,7 @@
 
     <!-- Basic OpenFoodFacts colors -->
     <color name="green">#00D400</color>
-    <color name="blue">#0066FF</color>
+    <color name="blue">#0066ff</color>
     <color name="orange">#FFCC00</color>
     <color name="red">#FF0000</color>
     <color name="white">#FFFFFF</color>

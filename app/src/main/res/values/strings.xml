@@ -597,6 +597,7 @@
     <string name="contribution_tab_title">Show Contribution Tab</string>
     <string name="product">Edit</string>
     <string name="addNewConsumer">Add person...</string>
+    <string name="allergenDetector">Allergen Detector</string>
 
 
 </resources>

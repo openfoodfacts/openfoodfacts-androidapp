@@ -1,12 +1,18 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.support.multidex.MultiDexApplication;
 import android.support.v7.app.AppCompatDelegate;
+import android.util.Log;
 
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.QueryBuilder;
 
+import java.io.File;
+
+import holloway.allergenChecker.JSONManager;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.dagger.component.AppComponent;
 import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
@@ -61,6 +67,33 @@ public class OFFApplication extends MultiDexApplication {
 
         appComponent = AppComponent.Initializer.init(new AppModule(this));
         appComponent.inject(this);
+
+
+
+        /* Initialize the Allergen Detector */
+        File folder = new File(getFilesDir() + "/consumers");
+        if (folder.exists()) {
+            Log.i("ConsumerFragment", "Found existing consumers directory at" + getFilesDir());
+        }
+        if (!folder.exists()) {
+            folder.mkdir();
+            Log.i("ConsumerFragment", "Attempted to create directory 'consumers'");
+        }
+
+        JSONManager.getInstance().setConsumerJSONLocation(folder.toString());
+
+
+        MediaScannerConnection.scanFile(this,
+                new String[]{folder.toString()}, null,
+                new MediaScannerConnection.OnScanCompletedListener() {
+                    public void onScanCompleted(String path, Uri uri) {
+                        Log.i("ExternalStorage", "Scanned " + path + ":");
+                        Log.i("ExternalStorage", "-> uri=" + uri);
+                    }
+                });
+
+
+        /* End of allergen detector setup */
     }
 
     public DaoSession getDaoSession() {

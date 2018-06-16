@@ -71,9 +71,11 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
 import butterknife.BindView;
 import holloway.allergenChecker.Consumer;
+import holloway.allergenChecker.JSONManager;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.ConsumerFragment;
@@ -131,6 +133,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
     private SharedPreferences shakePreference;
+    public static List<Consumer> consumerList;
+
+
 
 
     @Override
@@ -361,7 +366,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
                         case ITEM_INCOMPLETE_PRODUCTS:
 
-                            /**
+                            /*
                              * Search and display the products to be completed by moving to ProductBrowsingListActivity
                              */
                             Intent incompleteIntent = new Intent(this, ProductBrowsingListActivity.class);
@@ -522,6 +527,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             OpenFoodAPIClient apiClient = new OpenFoodAPIClient(this);
             apiClient.syncOldHistory();
         }
+
 
     }
 
@@ -737,6 +743,15 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         super.onStart();
         customTabActivityHelper.bindCustomTabsService(this);
 
+        initializeConsumers();
+
+    }
+
+    private void initializeConsumers() {
+        consumerList = new ArrayList<>();
+        if (consumerList.isEmpty()) {
+            consumerList.addAll(JSONManager.getInstance().setUpConsumers());
+        }
     }
 
     @Override

@@ -8,9 +8,9 @@
         android:id="@+id/allergens_recycle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         android:paddingBottom="100dp"
-        tools:listitem="@layout/item_allergens"
-        android:clipToPadding="false"/>
+        tools:listitem="@layout/item_allergens" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
