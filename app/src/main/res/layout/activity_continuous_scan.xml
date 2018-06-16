@@ -58,7 +58,7 @@
             android:textSize="12sp"
             android:visibility="gone"
             tools:visibility="visible" />
-        
+
     </FrameLayout>
 
     <android.support.design.widget.CoordinatorLayout

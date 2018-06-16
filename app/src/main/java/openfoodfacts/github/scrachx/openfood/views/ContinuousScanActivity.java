@@ -104,8 +104,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     EditText searchByBarcode;
     @Inject
     OpenFoodAPIService client;
-    @BindView(R.id.barcode_scanner)
-    View barcodeScannerView;
 
     private Product product;
     private SharedPreferences.Editor editor;
@@ -372,7 +370,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
         Intent intent = new Intent(this, MainActivity.class);
 
-        new SwipeDetector(barcodeScannerView).setOnSwipeListener(new SwipeDetector.onSwipeEvent() {
+        new SwipeDetector(barcodeView).setOnSwipeListener(new SwipeDetector.onSwipeEvent() {
             @Override
             public void SwipeEventDetected(View v, SwipeDetector.SwipeTypeEnum swipeType) {
                 if(swipeType==SwipeDetector.SwipeTypeEnum.TOP_TO_BOTTOM) {
