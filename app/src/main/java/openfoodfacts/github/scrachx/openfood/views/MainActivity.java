@@ -25,6 +25,7 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
@@ -71,6 +72,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Objects;
 
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -781,23 +783,16 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * This moves the main activity to the barcode entry fragment.
      */
     public void moveToBarcodeEntry() {
-        result.setSelection(ITEM_SEARCH_BY_CODE);
         Fragment fragment = new FindProductFragment();
-        getSupportActionBar().setTitle(getResources().getString(R.string.search_by_barcode_drawer));
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                fragment).commit();
+        changeFragment(fragment, getResources().getString(R.string.search_by_barcode_drawer), ITEM_SEARCH_BY_CODE);
     }
 
     /**
      * This moves the main activity to the preferences fragment.
      */
     public void moveToPreferences() {
-        result.setSelection(ITEM_PREFERENCES);
         Fragment fragment = new PreferencesFragment();
-        getSupportActionBar().setTitle(R.string.action_preferences);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        changeFragment(fragment, getString(R.string.preferences), ITEM_PREFERENCES);
     }
 
     /**
@@ -1027,6 +1022,51 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             }
         });
     }
+
+    /**
+     * Used to navigate Fragments which are children of <code>MainActivity</code>.
+     * Use this method when the <code>Fragment</code> APPEARS in the <code>Drawer</code>.
+     *
+     * @param fragment   The fragment class to display.
+     * @param title      The title that should be displayed on the top toolbar.
+     * @param drawerName The fragment as it appears in the drawer. See {@link NavigationDrawerListener} for the value.
+     * @author ross-holloway94
+     * @see <a href="https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter">Related Stack Overflow article</a>
+     * @since 06/16/18
+     */
+    public void changeFragment(Fragment fragment, String title, long drawerName) {
+        changeFragment(fragment, title);
+        result.setSelection(drawerName);
+    }
+
+    /**
+     * Used to navigate Fragments which are children of <code>MainActivity</code>.
+     * Use this method when the <code>Fragment</code> DOES NOT APPEAR in the <code>Drawer</code>.
+     *
+     * @param fragment The fragment class to display.
+     * @param title    The title that should be displayed on the top toolbar.
+     * @author ross-holloway94
+     * @see <a href="https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter">Related Stack Overflow article</a>
+     * @since 06/16/18
+     */
+    public void changeFragment(Fragment fragment, String title) {
+
+        String backStateName = fragment.getClass().getName();
+        FragmentManager manager = getSupportFragmentManager();
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
+
+        if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null) {
+            FragmentTransaction ft = manager.beginTransaction();
+            ft.replace(R.id.fragment_container, fragment, backStateName);
+            ft.addToBackStack(backStateName);
+            ft.commit();
+        }
+
+
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+
+    }
+
 
 }
 
