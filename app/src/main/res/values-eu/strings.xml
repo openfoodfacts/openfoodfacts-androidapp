@@ -270,7 +270,7 @@
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
   <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Can\'t load search results</string>
-  <string name="something_went_wrong">Sorry, something went wrong…</string>
+  <string name="something_went_wrong">Arazoren bat egon da…</string>
   <string name="txt_try_again">Saiatu berriro</string>
   <string name="nutrition_lactose">Laktosa</string>
   <string name="nutrition_casein">Kaseina</string>
@@ -311,16 +311,16 @@
   <string name="pantothenic_acid">Pantothenic acid</string>
   <string name="nutrition_minerals">Mineralak</string>
   <string name="silica">Silica</string>
-  <string name="bicarbonate">Bicarbonate</string>
+  <string name="bicarbonate">Bikarbonatoa</string>
   <string name="potassium">Potasioa</string>
   <string name="chloride">Chloride</string>
   <string name="calcium">Kaltzioa</string>
-  <string name="phosphorus">Phosphorus</string>
+  <string name="phosphorus">Fosforoa</string>
   <string name="iron">Iron</string>
   <string name="magnesium">Magnesioa</string>
   <string name="zinc">Zinc</string>
   <string name="copper">Copper</string>
-  <string name="manganese">Manganese</string>
+  <string name="manganese">Manganesoa</string>
   <string name="fluoride">Fluoride</string>
   <string name="selenium">Selenium</string>
   <string name="chromium">Chromium</string>
@@ -374,7 +374,7 @@
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
   <string name="preference_choose_language_dialog_title">Aukeratu hizkuntza</string>
   <string name="FAQ">FAQ</string>
-  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+  <string name="FrequentlyAskedQuestions">Ohiko galderak</string>
   <string name="translate_help_title">Lagundu Open Food Facts itzultzen</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
   <string name="please_check_your_connection">Please check your connection.</string>
@@ -413,10 +413,10 @@
   <string name="search_string">Bilatu</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">Denda</string>
-  <string name="packaging_subtitle">Packaging</string>
+  <string name="packaging_subtitle">Ontziratzea</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
   <string name="store_string">Denda</string>
-  <string name="packaging_string">Packaging</string>
+  <string name="packaging_string">Ontziratzea</string>
   <string name="label_string">Etiketa</string>
   <string name="category_string">Kategoria</string>
   <string name="connection">Konektatuta</string>
@@ -427,14 +427,14 @@
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Bitaminak:</string>
   <string name="amino_acid_tags_text">Aminoazidoak:</string>
-  <string name="mineral_tags_text">Minerals:</string>
-  <string name="other_tags_text">Other Substances:</string>
+  <string name="mineral_tags_text">Mineralak:</string>
+  <string name="other_tags_text">Beste substantzia batzuk:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
+  <string name="wikidata">Wikidata datuak</string>
   <string name="disable_image_loading">Disable image loading when battery is low</string>
   <string name="DisableLoadTitle">Disable image loading</string>
-  <string name="txtCamera">Camera</string>
-  <string name="txtGallery">Gallery</string>
+  <string name="txtCamera">Kamera</string>
+  <string name="txtGallery">Galeria</string>
   <string name="txtOptions">Aukerak</string>
   <string name="by_title">Izenburua</string>
   <string name="by_brand">Marka</string>
