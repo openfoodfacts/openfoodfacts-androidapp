@@ -491,4 +491,5 @@
   <string name="switch_camera">Byt kamera</string>
   <string name="autofocus">Autofokus</string>
   <string name="initial_loading">Initial loading</string>
+  <string name="preferences">Inställningar</string>
 </resources>
