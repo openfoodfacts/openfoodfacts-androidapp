@@ -11,10 +11,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+
+import org.apache.commons.text.WordUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 
 public class AddProductOverviewFragment extends BaseFragment {
@@ -54,6 +63,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     EditText stores;
     @BindView(R.id.countries_where_sold)
     EditText countriesWhereSold;
+    String languageCode;
     private Activity activity;
 
     @Override
@@ -66,7 +76,16 @@ public class AddProductOverviewFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_product_overview, container, false);
         ButterKnife.bind(this, view);
+        String currentLang = LocaleHelper.getLanguage(activity);
+        setProductLanguage(currentLang);
         return view;
+    }
+
+    private void setProductLanguage(String lang) {
+        languageCode = lang;
+        Locale current = LocaleHelper.getLocale(lang);
+        language.setText("Product language : ");
+        language.append(WordUtils.capitalize(current.getDisplayName(current)));
     }
 
     @Override
@@ -147,5 +166,34 @@ public class AddProductOverviewFragment extends BaseFragment {
     void toastEmbCodeHint() {
         Toast.makeText(activity, "In Europe, code in an ellipse with the 2 country initials followed by a number and CE.\n" +
                 "Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409", Toast.LENGTH_LONG).show();
+    }
+
+    @OnClick(R.id.language)
+    void selectProductLanguage() {
+        String[] localeValues = activity.getResources().getStringArray(R.array.languages_array);
+        String[] localeLabels = new String[localeValues.length];
+        List<String> finalLocalValues = new ArrayList<>();
+        List<String> finalLocalLabels = new ArrayList<>();
+        int selectedIndex = 0;
+        for (int i = 0; i < localeValues.length; i++) {
+            if (localeValues[i].equals(languageCode)) {
+                selectedIndex = i;
+            }
+            Locale current = LocaleHelper.getLocale(localeValues[i]);
+            if (current != null) {
+                localeLabels[i] = WordUtils.capitalize(current.getDisplayName(current));
+                finalLocalLabels.add(localeLabels[i]);
+                finalLocalValues.add(localeValues[i]);
+            }
+        }
+        new MaterialDialog.Builder(activity)
+                .title(R.string.preference_choose_language_dialog_title)
+                .items(finalLocalLabels)
+                .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
+                    setProductLanguage(finalLocalValues.get(which));
+                    return true;
+                })
+                .positiveText(R.string.ok_button)
+                .show();
     }
 }

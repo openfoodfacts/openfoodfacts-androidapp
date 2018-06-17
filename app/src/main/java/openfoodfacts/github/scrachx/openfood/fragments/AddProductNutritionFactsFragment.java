@@ -29,8 +29,6 @@ import openfoodfacts.github.scrachx.openfood.R;
 
 public class AddProductNutritionFactsFragment extends BaseFragment {
 
-    /*private static final String PARAM_INGREDIENTS = "ingredients_text";
-    private static final String PARAM_TRACES = "traces";*/
     private static final String[] PARAMS_OTHER_NUTRIENTS = {"nutriment_alpha-linolenic-acid",
             "nutriment_arachidic-acid",
             "nutriment_arachidonic-acid",
@@ -134,7 +132,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                     Toast.makeText(activity, "for 100g / 100ml", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.per_serving:
-                    Toast.makeText(activity, String.valueOf(PARAMS_OTHER_NUTRIENTS.length), Toast.LENGTH_SHORT).show();
                     Toast.makeText(activity, "per serving", Toast.LENGTH_SHORT).show();
                     break;
             }
@@ -178,14 +175,11 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         new MaterialDialog.Builder(activity)
                 .title("Choose a nutrient")
                 .items(R.array.nutrients_array)
-                .itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        Toast.makeText(activity, String.valueOf(position) + " : " + text, Toast.LENGTH_SHORT).show();
-                        if (!index.contains(position)) {
-                            index.add(position);
-                            addNutrientRow(position, text);
-                        }
+                .itemsCallback((dialog, itemView, position, text) -> {
+                    Toast.makeText(activity, String.valueOf(position) + " : " + text, Toast.LENGTH_SHORT).show();
+                    if (!index.contains(position)) {
+                        index.add(position);
+                        addNutrientRow(position, text);
                     }
                 })
                 .show();
@@ -195,13 +189,16 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private void addNutrientRow(int position, CharSequence text) {
         TableRow nutrient = new TableRow(activity);
         TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, dpsToPixels(40));
-        lp.setMargins(dpsToPixels(16), dpsToPixels(10), dpsToPixels(69), 0);
+        lp.topMargin = dpsToPixels(10);
         EditText editText = new EditText(activity);
         editText.setBackgroundResource(R.drawable.bg_edittext);
         editText.setHint(text);
+        editText.setId(position);
+        Toast.makeText(activity, PARAMS_OTHER_NUTRIENTS[editText.getId()], Toast.LENGTH_SHORT).show();
         editText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         editText.setPadding(dpsToPixels(10), 0, dpsToPixels(10), 0);
         editText.setGravity(Gravity.CENTER_VERTICAL);
+        editText.requestFocus();
         editText.setLayoutParams(lp);
         nutrient.addView(editText);
 
@@ -211,9 +208,13 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setBackgroundResource(R.drawable.spinner_weights_grey);
         spinner.setAdapter(spinnerArrayAdapter);
-        lp.setMargins(dpsToPixels(16), dpsToPixels(10), dpsToPixels(16), 0);
+        spinner.setPadding(dpsToPixels(1), 0, 0, 0);
+        lp.setMargins(0, dpsToPixels(10), dpsToPixels(8), 0);
         spinner.setLayoutParams(lp);
         nutrient.addView(spinner);
+        if (PARAMS_OTHER_NUTRIENTS[position].equals("nutriment_ph")) {
+            spinner.setVisibility(View.INVISIBLE);
+        }
         tableLayout.addView(nutrient);
     }
 

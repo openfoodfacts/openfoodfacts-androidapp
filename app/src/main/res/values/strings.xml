@@ -85,7 +85,8 @@
     </string-array>
 
     <!-- nutrients list
-    do not change the order of the array-->
+    do not change the order of the array as the items are paired with the String array
+    PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
         <item>Alpha-linolenic-acid</item>
         <item>Arachidic-acid</item>
