@@ -316,10 +316,10 @@
   <string name="chloride">Chloride</string>
   <string name="calcium">Kaltzioa</string>
   <string name="phosphorus">Fosforoa</string>
-  <string name="iron">Iron</string>
+  <string name="iron">Burdina</string>
   <string name="magnesium">Magnesioa</string>
   <string name="zinc">Zinc</string>
-  <string name="copper">Copper</string>
+  <string name="copper">Kobrea</string>
   <string name="manganese">Manganesoa</string>
   <string name="fluoride">Fluoride</string>
   <string name="selenium">Selenium</string>
@@ -336,7 +336,7 @@
   <string name="take_picture_ingredients">Atera osagaien argazki bat</string>
   <string name="take_picture_front">Atera aurrearen argazki bat</string>
   <string name="take_picture_nutrition_table">Atera elikagai-taularen argazki bat</string>
-  <string name="take_more_pictures">Take more pictures</string>
+  <string name="take_more_pictures">Atera argazki gehiago</string>
   <string name="txtSaturatedFat">Gantz saturatua</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
@@ -365,19 +365,19 @@
   <string name="device_offline_dialog_positive">Ezarpenak</string>
   <string name="saving">Gordetzen…</string>
   <string name="scan_first_product">Scan First Product</string>
-  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_title">Igo datu mugikorrekin</string>
   <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
   <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
   <string name="device_on_mobile_data_warning_title">Informazioa</string>
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
   <string name="device_on_mobile_data_warning_positive">Hobespenak</string>
-  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="device_on_mobile_data_warning_negative">Igo hala ere</string>
   <string name="preference_choose_language_dialog_title">Aukeratu hizkuntza</string>
   <string name="FAQ">FAQ</string>
   <string name="FrequentlyAskedQuestions">Ohiko galderak</string>
   <string name="translate_help_title">Lagundu Open Food Facts itzultzen</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
-  <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="please_check_your_connection">Egiaztatu zure konexioa.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Advanced Search &amp; Charts</string>
   <string name="connectivity_check">Please check your internet connection</string>
@@ -478,8 +478,8 @@
   <string name="txtDialogsTitle">Informazioa</string>
   <string name="preference_show_all_product_photos_title">Show all product photos</string>
   <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
-  <string name="offline_product_addition_title">Add new product</string>
-  <string name="productNameNull">Name unknown</string>
+  <string name="offline_product_addition_title">Gehitu produktu berria</string>
+  <string name="productNameNull">Izena ezezaguna</string>
   <string name="productBrandNull">Marka ezezaguna</string>
   <string name="productQuantityNull">Kopuru ezezaguna</string>
   <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
@@ -490,6 +490,6 @@
   <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
   <string name="switch_camera">Switch camera</string>
   <string name="autofocus">Fokatze automatikoa</string>
-  <string name="initial_loading">Initial loading</string>
+  <string name="initial_loading">Hasierako kargatzea</string>
   <string name="preferences">Hobespenak</string>
 </resources>
