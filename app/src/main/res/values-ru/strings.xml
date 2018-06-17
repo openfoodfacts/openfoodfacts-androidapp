@@ -499,4 +499,5 @@
   <string name="switch_camera">Переключить камеру</string>
   <string name="autofocus">Автофокус</string>
   <string name="initial_loading">Начальная загрузка</string>
+  <string name="preferences">Настройки</string>
 </resources>
