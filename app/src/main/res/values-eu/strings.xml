@@ -6,12 +6,12 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one">1 minute ago</item>
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="one">Duela minutu 1</item>
+    <item quantity="other">Duela %d minutu</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one">1 hour ago</item>
-    <item quantity="other">%d hours ago</item>
+    <item quantity="one">Duela ordubete</item>
+    <item quantity="other">Duela %d ordu</item>
   </plurals>
   <plurals name="days">
     <item quantity="one">1 day ago</item>
@@ -66,7 +66,7 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Lastermarka</string>
-  <string name="edit">Edit</string>
+  <string name="edit">Editatu</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Bilatu</string>
@@ -103,13 +103,13 @@
   <string name="txtNutritionLevelLow">in low quantity</string>
   <string name="txtNutritionLevelModerate">in moderate quantity</string>
   <string name="txtNutritionLevelHigh">in high quantity</string>
-  <string name="txtLogin">Login :</string>
-  <string name="txtPass">Password :</string>
+  <string name="txtLogin">Erabiltzaile izena :</string>
+  <string name="txtPass">Pasahitza :</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
-  <string name="txtSave">Save</string>
-  <string name="txtSignIn">Sign in</string>
-  <string name="txtUser">User panel</string>
-  <string name="txtToastSaved">User saved</string>
+  <string name="txtSave">Gorde</string>
+  <string name="txtSignIn">Hasi saioa</string>
+  <string name="txtUser">Erabiltzaile-panela</string>
+  <string name="txtToastSaved">Erabiltzaileak gordea</string>
   <string name="txtSalt">Salt</string>
   <string name="txtFat">Fat</string>
   <string name="txtSugars">Sugars</string>
@@ -119,7 +119,7 @@
   <string name="errorLogin">Login or password error</string>
   <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
   <string name="uploadLater">Image will be uploaded when network is available</string>
-  <string name="txtInfoLoginOk">User saved</string>
+  <string name="txtInfoLoginOk">Erabiltzaileak gordea</string>
   <string name="txtInfoLoginNo">User not saved</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
@@ -474,7 +474,7 @@
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show contribution tab</string>
-  <string name="product">Edit</string>
+  <string name="product">Editatu</string>
   <string name="txtDialogsTitle">Informazioa</string>
   <string name="preference_show_all_product_photos_title">Show all product photos</string>
   <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
