@@ -18,8 +18,8 @@
   <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
   <string name="slide_3_title">Get the Nutriscore</string>
   <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
-  <string name="slide_4_title">Works offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+  <string name="slide_4_title">Lineaz kanpo funtzionatzen du</string>
+  <string name="slide_4_desc">Produktu berriak gehi ditzakezu, unean Interneterako konexioa ez baduzu ere</string>
   <string name="txtDialogsContent">Eskaneatu duzun produktua ez dago Open Food Facts datu-basean oraindik. Gehitu ezazu.</string>
   <string name="txtDialogsContentPowerMode">Eskaneatu duzun produktua badago Open Food Facts datu-basean.</string>
   <string name="msg_share">Ikusi produktu hau Open Food Facts-en:</string>
