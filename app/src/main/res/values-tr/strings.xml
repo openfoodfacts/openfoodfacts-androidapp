@@ -491,4 +491,5 @@
   <string name="switch_camera">Kamerayı değiştir</string>
   <string name="autofocus">Otomatik odaklama</string>
   <string name="initial_loading">Initial loading</string>
+  <string name="preferences">Tercihler</string>
 </resources>
