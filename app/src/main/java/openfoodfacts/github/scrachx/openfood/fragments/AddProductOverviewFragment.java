@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,18 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_NAME = "product_name";
     private static final String PARAM_BARCODE = "code";
     private static final String PARAM_QUANTITY = "quantity";
+    private static final String UNIT[] = {"g", "mg", "kg", "l", "ml", "cl", "fl oz"};
     private static final String PARAM_BRAND = "brands";
+    private static final String PARAM_LANGUAGE = "lang";
+    private static final String PARAM_PACKAGING = "packaging";
+    private static final String PARAM_CATEGORIES = "categories";
+    private static final String PARAM_LABELS = "labels";
+    private static final String PARAM_ORIGIN = "origins";
+    private static final String PARAM_EMB_CODE = "emb_codes_tag";
+    private static final String PARAM_LINK = "link";
+    private static final String PARAM_PURCHASE = "purchase_places";
+    private static final String PARAM_STORE = "stores";
+    private static final String PARAM_COUNTRIES = "countries";
 
     @BindView(R.id.section_manufacturing_details)
     TextView sectionManufacturingDetails;
@@ -45,10 +57,16 @@ public class AddProductOverviewFragment extends BaseFragment {
     EditText name;
     @BindView(R.id.quantity)
     EditText quantity;
+    @BindView(R.id.spinner_weight_unit)
+    Spinner quantityUnit;
     @BindView(R.id.brand)
     EditText brand;
     @BindView(R.id.packaging)
     EditText packaging;
+    @BindView(R.id.categories)
+    EditText categories;
+    @BindView(R.id.label)
+    EditText label;
     @BindView(R.id.origin_of_ingredients)
     EditText originOfIngredients;
     @BindView(R.id.manufacturing_place)
@@ -63,7 +81,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     EditText stores;
     @BindView(R.id.countries_where_sold)
     EditText countriesWhereSold;
-    String languageCode;
+    private String languageCode;
     private Activity activity;
 
     @Override
@@ -116,14 +134,45 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (!barcode.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_BARCODE, barcode.getText().toString());
             }
+            if (!languageCode.isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
+            }
             if (!name.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_NAME, name.getText().toString());
             }
             if (!quantity.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_QUANTITY, quantity.getText().toString());
+                String qty = quantity.getText().toString() + UNIT[quantityUnit.getSelectedItemPosition()];
+                ((AddProductActivity) activity).addToMap(PARAM_QUANTITY, qty);
             }
             if (!brand.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_BRAND, brand.getText().toString());
+            }
+            if (!packaging.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_PACKAGING, packaging.getText().toString());
+            }
+            if (!categories.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_CATEGORIES, categories.getText().toString());
+            }
+            if (!label.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_LABELS, label.getText().toString());
+            }
+            if (!originOfIngredients.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_ORIGIN, originOfIngredients.getText().toString());
+            }
+            if (!embCode.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_EMB_CODE, embCode.getText().toString());
+            }
+            if (!link.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_LINK, link.getText().toString());
+            }
+            if (!countryWherePurchased.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_PURCHASE, countryWherePurchased.getText().toString());
+            }
+            if (!stores.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_STORE, stores.getText().toString());
+            }
+            if (!countriesWhereSold.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_COUNTRIES, countriesWhereSold.getText().toString());
             }
         }
     }

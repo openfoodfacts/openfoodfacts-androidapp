@@ -141,12 +141,12 @@ public class AddProductActivity extends BaseActivity {
         adapterResult.addFragment(addProductNutritionFactsFragment, "Nutrition Facts");
         viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(adapterResult);
-
     }
 
     private void saveProduct() {
         addProductOverviewFragment.getDetails();
         addProductIngredientsFragment.getDetails();
+        addProductNutritionFactsFragment.getDetails();
         for (Map.Entry<String, String> entry : productDetails.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
@@ -162,8 +162,8 @@ public class AddProductActivity extends BaseActivity {
             case 1:
                 viewPager.setCurrentItem(2, true);
                 break;
-            case 3:
-                //saveProduct();
+            case 2:
+                saveProduct();
                 break;
         }
     }
