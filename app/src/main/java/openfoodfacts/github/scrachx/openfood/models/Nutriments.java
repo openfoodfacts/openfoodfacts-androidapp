@@ -94,7 +94,7 @@ public class Nutriments implements Serializable {
     public static final String GLYCEMIC_INDEX = "glycemic-index";
     public static final String NUTRITION_SCORE_UK = "nutrition-score-uk";
     public static final String NUTRITION_SCORE_FR = "nutrition-score-fr";
-    public static final String CARBON_FOOTPRINT = "carbon-footprint";
+    public static final String CARBON_FOOTStac = "carbon-footprint";
     public static final String CHLOROPHYL = "chlorophyl";
     public static final String COCOA = "cocoa";
     public static final String COLLAGEN_MEAT_PROTEIN_RATIO = "collagen-meat-protein-ratio";
@@ -204,8 +204,9 @@ public class Nutriments implements Serializable {
         try{
             return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName));
         }catch (NullPointerException e){
-        // In case one of the getters was unable to get data as string
-            Log.e("NUTRIMENTS-MODEL",e.printStackTrace());
+            // In case one of the getters was unable to get data as string
+            String stacktrace = Log.getStackTraceString(e);
+            Log.e("NUTRIMENTS-MODEL",stacktrace);
         }
         return null;
     }
