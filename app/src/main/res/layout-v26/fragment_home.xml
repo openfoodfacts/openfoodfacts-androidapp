@@ -7,7 +7,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:orientation="vertical">
@@ -30,6 +29,7 @@
             android:layout_width="184dp"
             android:layout_height="32dp"
             android:layout_gravity="center_horizontal"
+            android:autoSizeTextType="uniform"
             android:gravity="center_horizontal"
             android:text="@string/tagline"
             android:textStyle="bold"
@@ -59,7 +59,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:contentDescription="@string/try_it_scan_now"
         app:srcCompat="@drawable/barcode_white_24dp" />
