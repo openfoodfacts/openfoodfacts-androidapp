@@ -83,7 +83,7 @@
   <string name="txtBrands">Markak :</string>
   <string name="txtCategories">Kategoriak :</string>
   <string name="txtLabels">Etiketa, ziurtagiriak, sariak:</string>
-  <string name="txtManufacturing">Fabrikazio edo prezesaketa lekuak:</string>
+  <string name="txtManufacturing">Fabrikazio edo prozesaketa lekuak:</string>
   <string name="txtIngredientsOrigins">Osagaien jatorria:</string>
   <string name="txtCity">Erosi zen hiria, estatua eta herrialdea:</string>
   <string name="txtEMB">EMB kodea:</string>
@@ -189,7 +189,7 @@
   <string name="cancel_button">Cancel</string>
   <string name="login_button">Erabiltzaile-izena</string>
   <string name="create_account_button">Create Account</string>
-  <string name="warning_alert_data">Zure alergien informazioa ez da inoiz Open Food Facts-en zerbitzarira bidaliko. Horrez gain, kontuz ibili agian produktuaren ez baitira zehatzak, eta detekzioa agian ez da %100 zehatza, beraz ber-egiaztatu zure kabuz mesedez! </string>
+  <string name="warning_alert_data">Zure alergien informazioa ez da inoiz Open Food Facts-en zerbitzarira bidaliko. Horrez gain, kontuz ibili agian produktuaren datuak ez baitira zehatzak, eta detekzioa agian ez da %100 zehatza, beraz egiaztatu zure kabuz mesedez! </string>
   <string name="from_gallery">Galeriatik</string>
   <string name="product_sent">Produktua zuzen bidali da</string>
   <string name="action_edit_product">Editatu produktua</string>
@@ -364,7 +364,7 @@
   <string name="device_offline_dialog_negative">Baztertu</string>
   <string name="device_offline_dialog_positive">Ezarpenak</string>
   <string name="saving">Gordetzen…</string>
-  <string name="scan_first_product">Scan First Product</string>
+  <string name="scan_first_product">Eskaneatu lehen produktua</string>
   <string name="preference_enable_mobile_data_title">Igo datu mugikorrekin</string>
   <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
   <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
@@ -386,7 +386,7 @@
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Orokorra</string>
   <string name="preference_header_network">Sarea</string>
-  <string name="preference_header_contributing">Contributing</string>
+  <string name="preference_header_contributing">Parte hartzea</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
   <string name="seconds_ago">segundo duela</string>
   <string name="minutes_ago">minutu duela</string>
