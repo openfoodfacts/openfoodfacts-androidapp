@@ -201,7 +201,7 @@
   <string name="from_gallery">Из галереи</string>
   <string name="product_sent">Данные о продукте успешно отправлены</string>
   <string name="action_edit_product">Редактировать продукт</string>
-  <string name="title_info_dialog">How does it work?</string>
+  <string name="title_info_dialog">Как это работает?</string>
   <string name="text_offline_info_dialog">Вы можете сканировать продукты будучи офлайн, и отправить их на Open Food Facts потом.  Все сканируемые продукты будут появляться здесь, и их можно будет отправить кнопкой, которая ниже.</string>
   <string name="permission_camera">Разрешение на доступ к камере требуется для сканирования штрих-кодов и получения фото.</string>
   <string name="permission_title">Информация о разрешениях</string>
@@ -429,7 +429,7 @@
   <string name="category_string">Категория</string>
   <string name="connection">Подключено</string>
   <string name="contributor_string">Участник</string>
-  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us">Окажите поддержку</string>
   <string name="Rate_Us_title">Оцените наше приложение</string>
   <string name="app_disabled_text">Приложение отключено</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
@@ -489,14 +489,15 @@
   <string name="offline_product_addition_title">Добавить новый продукт</string>
   <string name="productNameNull">Name unknown</string>
   <string name="productBrandNull">Brand unknown</string>
-  <string name="productQuantityNull">Quantity unknown</string>
+  <string name="productQuantityNull">Количество неизвестно</string>
   <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
   <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
   <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
-  <string name="scan_sound">Scan sound</string>
-  <string name="trouble_scanning">Trouble Scanning?</string>
-  <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
-  <string name="switch_camera">Switch camera</string>
-  <string name="autofocus">Autofocus</string>
-  <string name="initial_loading">Initial loading</string>
+  <string name="scan_sound">Звук сканировния</string>
+  <string name="trouble_scanning">Не можете отсканировать?</string>
+  <string name="barcode_hint">Не можете отсканировать? Введите штрих-код</string>
+  <string name="switch_camera">Переключить камеру</string>
+  <string name="autofocus">Автофокус</string>
+  <string name="initial_loading">Начальная загрузка</string>
+  <string name="preferences">Настройки</string>
 </resources>

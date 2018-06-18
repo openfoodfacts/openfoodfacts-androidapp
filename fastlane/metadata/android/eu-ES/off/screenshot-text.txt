@@ -14,14 +14,14 @@ product_view_wikipedia_en.png
 Go further with Wikipedia
 
 allergen_alert_en.png
-Set allergen alerts
+Ezarri alergenoen alertak
 
 home_en.png
 product_view_nutrition_summary_en.png
 Nutrition, simplified
 
 product_view_allergen_alert_en.png
-Kontuz, alergenoak
+Alergenoen alerta
 
 categories_en.png
 Get alternatives for your favorite foods

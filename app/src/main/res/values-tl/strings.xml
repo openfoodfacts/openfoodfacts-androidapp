@@ -491,4 +491,5 @@
   <string name="switch_camera">Switch camera</string>
   <string name="autofocus">Autofocus</string>
   <string name="initial_loading">Initial loading</string>
+  <string name="preferences">Mga preperensiya</string>
 </resources>

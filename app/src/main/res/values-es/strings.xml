@@ -491,4 +491,5 @@
   <string name="switch_camera">Switch camera</string>
   <string name="autofocus">Enfoque automático</string>
   <string name="initial_loading">Carga Inicial</string>
+  <string name="preferences">Preferencias</string>
 </resources>

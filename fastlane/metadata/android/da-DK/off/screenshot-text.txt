@@ -11,7 +11,7 @@ history_en.png
 Din fulde skanningshistorik, helt privat og eksporterbar
 
 product_view_wikipedia_en.png
-Go further with Wikipedia
+Gå videre med Wikipedia
 
 allergen_alert_en.png
 Indstil allergenadvarsler
