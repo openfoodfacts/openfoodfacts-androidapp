@@ -12,14 +12,14 @@
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-ro.openfoodfacts.org/contributor/</string>
   <string name="txtHome">Open Food Facts este o bază de date gratuită a produselor alimentare, ce cuprinde ingredientele, alergenii, declarațiile nutriționale și toate informatiile pe care le găsim pe etichetele produselor.</string>
-  <string name="slide_1_title">Contribute to Food transparency</string>
-  <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
-  <string name="slide_2_title">Get the facts</string>
-  <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Get the Nutriscore</string>
-  <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
-  <string name="slide_4_title">Works offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+  <string name="slide_1_title">Contribuie la transparența alimentelor</string>
+  <string name="slide_1_desc">Scanați produse, fotografiați-le, ajutați la concretizarea transparenței alimentelor</string>
+  <string name="slide_2_title">Obțineți informațiile</string>
+  <string name="slide_2_desc">Informații detaliate despre produsul pe care l-ați scanat, descifrate pentru dvs</string>
+  <string name="slide_3_title">Obțineți NutriScore</string>
+  <string name="slide_3_desc">O vedere de ansamblu asupra proprietăților nutriționale ale produselor dvs alimentare preferate</string>
+  <string name="slide_4_title">Funcționează fără conexiune la Internet</string>
+  <string name="slide_4_desc">Puteți adăuga produse noi, chiar dacă momentan nu aveți o conexiune la internet</string>
   <string name="txtDialogsContent">Produsul scanat nu există în baza de date Open Food Facts. Doriți să-l adăugați?</string>
   <string name="txtDialogsContentPowerMode">Produsul scanat există deja în baza de date Open Food Facts.</string>
   <string name="msg_share">Privește acest produs pe Open Food Facts:</string>
