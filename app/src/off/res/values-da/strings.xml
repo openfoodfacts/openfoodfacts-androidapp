@@ -4,13 +4,13 @@
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
   <string name="website">https://world-da.openfoodfacts.org/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
-  <string name="website_contribute">https://world-da.openfoodfacts.org/bidrag</string>
+  <string name="website_contribute">https://world-da.openfoodfacts.org/contribute</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir -->
-  <string name="website_discover">https://world-da.openfoodfacts.org/opdag</string>
+  <string name="website_discover">https://world-da.openfoodfacts.org/discover</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
-  <string name="website_product">https://world-da.openfoodfacts.org/produkt</string>
+  <string name="website_product">https://world-da.openfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
-  <string name="website_contributor">https://world-da.openfoodfacts.org/bidragsyder</string>
+  <string name="website_contributor">https://world-da.openfoodfacts.org/contributor/</string>
   <string name="txtHome">Open Food Facts er en åben database af fødevareprodukter indeholdende information om ingredienser, ernæringsindhold og alle de andre detaljer der er at finde på produkters mærkning.</string>
   <string name="slide_1_title">Yd dit bidrag til gennemsigtighed i fødevarebranchen</string>
   <string name="slide_1_desc">Skan produkter, tilføj billeder, få fødevaregennemsigtighed til at ske</string>
