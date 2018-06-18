@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import android.util.Log;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -94,7 +96,7 @@ public class Nutriments implements Serializable {
     public static final String GLYCEMIC_INDEX = "glycemic-index";
     public static final String NUTRITION_SCORE_UK = "nutrition-score-uk";
     public static final String NUTRITION_SCORE_FR = "nutrition-score-fr";
-    public static final String CARBON_FOOTStac = "carbon-footprint";
+    public static final String CARBON_FOOTPRINT = "carbon-footprint";
     public static final String CHLOROPHYL = "chlorophyl";
     public static final String COCOA = "cocoa";
     public static final String COLLAGEN_MEAT_PROTEIN_RATIO = "collagen-meat-protein-ratio";
