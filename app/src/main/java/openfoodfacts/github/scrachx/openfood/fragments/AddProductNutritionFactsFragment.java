@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -113,6 +115,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
 
     private static final String ALL_UNIT[] = {"g", "mg", "µg", "% DV", "IU"};
     private static final String UNIT[] = {"g", "mg", "µg"};
+    private static final String PARAM_NO_NUTRITION_DATA = "no_nutrition_data";
     private static final String PARAM_NUTRITION_DATA_PER = "nutrition_data_per";
     private static final String PARAM_SERVING_SIZE = "serving_size";
     private static final String PARAM_ENERGY = "nutriment_energy";
@@ -133,6 +136,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private static final String PARAM_SODIUM_UNIT = "nutriment_sodium_unit";
     private static final String PARAM_ALCOHOL = "nutriment_alcohol";
 
+    @BindView(R.id.checkbox_no_nutrition_data)
+    CheckBox noNutritionData;
+    @BindView(R.id.nutrition_facts_layout)
+    ConstraintLayout nutritionFactsLayout;
     @BindView(R.id.radio_group)
     RadioGroup radioGroup;
     @BindView(R.id.serving_size)
@@ -194,6 +201,13 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_product_nutrition_facts, container, false);
         ButterKnife.bind(this, view);
+        noNutritionData.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                nutritionFactsLayout.setVisibility(View.GONE);
+            } else {
+                nutritionFactsLayout.setVisibility(View.VISIBLE);
+            }
+        });
         salt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -252,90 +266,94 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
 
     public void getDetails() {
         if (activity instanceof AddProductActivity) {
-            if (radioGroup.getCheckedRadioButtonId() == R.id.for100g_100ml) {
-                ((AddProductActivity) activity).addToMap(PARAM_NUTRITION_DATA_PER, "100g");
-            } else if (radioGroup.getCheckedRadioButtonId() == R.id.per_serving) {
-                ((AddProductActivity) activity).addToMap(PARAM_NUTRITION_DATA_PER, "serving");
-            }
-            if (!serving_size.getText().toString().isEmpty()) {
-                String servingSize = serving_size.getText().toString() + UNIT[servingSizeUnit.getSelectedItemPosition()];
-                ((AddProductActivity) activity).addToMap(PARAM_SERVING_SIZE, servingSize);
-            }
-            if (!energy.getText().toString().isEmpty()) {
-                String s = energy.getText().toString();
-                String unit = "kj";
-                if (energyUnit.getSelectedItemPosition() == 0)
-                    unit = "kcal";
-                else if (energyUnit.getSelectedItemPosition() == 1)
-                    unit = "kj";
-                ((AddProductActivity) activity).addToMap(PARAM_ENERGY, s);
-                ((AddProductActivity) activity).addToMap(PARAM_ENERGY_UNIT, unit);
-            }
-            if (!fat.getText().toString().isEmpty()) {
-                String s = fat.getText().toString();
-                String unit = UNIT[fatUnit.getSelectedItemPosition()];
-                ((AddProductActivity) activity).addToMap(PARAM_FAT, s);
-                ((AddProductActivity) activity).addToMap(PARAM_FAT_UNIT, unit);
-            }
-            if (!saturatedFat.getText().toString().isEmpty()) {
-                String s = saturatedFat.getText().toString();
-                String unit = UNIT[saturatedFatUnit.getSelectedItemPosition()];
-                ((AddProductActivity) activity).addToMap(PARAM_SATURATED_FAT, s);
-                ((AddProductActivity) activity).addToMap(PARAM_SATURATED_FAT_UNIT, unit);
-            }
-            if (!carbohydrate.getText().toString().isEmpty()) {
-                String s = carbohydrate.getText().toString();
-                String unit = UNIT[carbohydrateUnit.getSelectedItemPosition()];
-                ((AddProductActivity) activity).addToMap(PARAM_CARBOHYDRATE, s);
-                ((AddProductActivity) activity).addToMap(PARAM_CARBOHYDRATE_UNIT, unit);
-            }
-            if (!sugar.getText().toString().isEmpty()) {
-                String s = sugar.getText().toString();
-                String unit = UNIT[sugarUnit.getSelectedItemPosition()];
-                ((AddProductActivity) activity).addToMap(PARAM_SUGAR, s);
-                ((AddProductActivity) activity).addToMap(PARAM_SUGAR_UNIT, unit);
-            }
-            if (!dietaryFiber.getText().toString().isEmpty()) {
-                String s = dietaryFiber.getText().toString();
-                String unit = UNIT[dietaryFiberUnit.getSelectedItemPosition()];
-                ((AddProductActivity) activity).addToMap(PARAM_DIETARY_FIBER, s);
-                ((AddProductActivity) activity).addToMap(PARAM_DIETARY_FIBER_UNIT, unit);
-            }
-            if (!proteins.getText().toString().isEmpty()) {
-                String s = proteins.getText().toString();
-                String unit = UNIT[proteinsUnit.getSelectedItemPosition()];
-                ((AddProductActivity) activity).addToMap(PARAM_PROTEINS, s);
-                ((AddProductActivity) activity).addToMap(PARAM_PROTEINS_UNIT, unit);
-            }
-            if (!sodium.getText().toString().isEmpty()) {
-                String s = sodium.getText().toString();
-                String unit = UNIT[sodiumUnit.getSelectedItemPosition()];
-                ((AddProductActivity) activity).addToMap(PARAM_SODIUM, s);
-                ((AddProductActivity) activity).addToMap(PARAM_SODIUM_UNIT, unit);
-            }
-            if (!alcohol.getText().toString().isEmpty()) {
-                String s = alcohol.getText().toString();
-                ((AddProductActivity) activity).addToMap(PARAM_ALCOHOL, s);
-            }
+            if (noNutritionData.isChecked()) {
+                ((AddProductActivity) activity).addToMap(PARAM_NO_NUTRITION_DATA, "on");
+            } else {
+                if (radioGroup.getCheckedRadioButtonId() == R.id.for100g_100ml) {
+                    ((AddProductActivity) activity).addToMap(PARAM_NUTRITION_DATA_PER, "100g");
+                } else if (radioGroup.getCheckedRadioButtonId() == R.id.per_serving) {
+                    ((AddProductActivity) activity).addToMap(PARAM_NUTRITION_DATA_PER, "serving");
+                }
+                if (!serving_size.getText().toString().isEmpty()) {
+                    String servingSize = serving_size.getText().toString() + UNIT[servingSizeUnit.getSelectedItemPosition()];
+                    ((AddProductActivity) activity).addToMap(PARAM_SERVING_SIZE, servingSize);
+                }
+                if (!energy.getText().toString().isEmpty()) {
+                    String s = energy.getText().toString();
+                    String unit = "kj";
+                    if (energyUnit.getSelectedItemPosition() == 0)
+                        unit = "kcal";
+                    else if (energyUnit.getSelectedItemPosition() == 1)
+                        unit = "kj";
+                    ((AddProductActivity) activity).addToMap(PARAM_ENERGY, s);
+                    ((AddProductActivity) activity).addToMap(PARAM_ENERGY_UNIT, unit);
+                }
+                if (!fat.getText().toString().isEmpty()) {
+                    String s = fat.getText().toString();
+                    String unit = UNIT[fatUnit.getSelectedItemPosition()];
+                    ((AddProductActivity) activity).addToMap(PARAM_FAT, s);
+                    ((AddProductActivity) activity).addToMap(PARAM_FAT_UNIT, unit);
+                }
+                if (!saturatedFat.getText().toString().isEmpty()) {
+                    String s = saturatedFat.getText().toString();
+                    String unit = UNIT[saturatedFatUnit.getSelectedItemPosition()];
+                    ((AddProductActivity) activity).addToMap(PARAM_SATURATED_FAT, s);
+                    ((AddProductActivity) activity).addToMap(PARAM_SATURATED_FAT_UNIT, unit);
+                }
+                if (!carbohydrate.getText().toString().isEmpty()) {
+                    String s = carbohydrate.getText().toString();
+                    String unit = UNIT[carbohydrateUnit.getSelectedItemPosition()];
+                    ((AddProductActivity) activity).addToMap(PARAM_CARBOHYDRATE, s);
+                    ((AddProductActivity) activity).addToMap(PARAM_CARBOHYDRATE_UNIT, unit);
+                }
+                if (!sugar.getText().toString().isEmpty()) {
+                    String s = sugar.getText().toString();
+                    String unit = UNIT[sugarUnit.getSelectedItemPosition()];
+                    ((AddProductActivity) activity).addToMap(PARAM_SUGAR, s);
+                    ((AddProductActivity) activity).addToMap(PARAM_SUGAR_UNIT, unit);
+                }
+                if (!dietaryFiber.getText().toString().isEmpty()) {
+                    String s = dietaryFiber.getText().toString();
+                    String unit = UNIT[dietaryFiberUnit.getSelectedItemPosition()];
+                    ((AddProductActivity) activity).addToMap(PARAM_DIETARY_FIBER, s);
+                    ((AddProductActivity) activity).addToMap(PARAM_DIETARY_FIBER_UNIT, unit);
+                }
+                if (!proteins.getText().toString().isEmpty()) {
+                    String s = proteins.getText().toString();
+                    String unit = UNIT[proteinsUnit.getSelectedItemPosition()];
+                    ((AddProductActivity) activity).addToMap(PARAM_PROTEINS, s);
+                    ((AddProductActivity) activity).addToMap(PARAM_PROTEINS_UNIT, unit);
+                }
+                if (!sodium.getText().toString().isEmpty()) {
+                    String s = sodium.getText().toString();
+                    String unit = UNIT[sodiumUnit.getSelectedItemPosition()];
+                    ((AddProductActivity) activity).addToMap(PARAM_SODIUM, s);
+                    ((AddProductActivity) activity).addToMap(PARAM_SODIUM_UNIT, unit);
+                }
+                if (!alcohol.getText().toString().isEmpty()) {
+                    String s = alcohol.getText().toString();
+                    ((AddProductActivity) activity).addToMap(PARAM_ALCOHOL, s);
+                }
 
-            //get the values of all the other nutrients from the table
-            for (int i = 0; i < tableLayout.getChildCount(); i++) {
-                View view = tableLayout.getChildAt(i);
-                if (view instanceof TableRow) {
-                    TableRow tableRow = (TableRow) view;
-                    int id = 0;
-                    for (int j = 0; j < tableRow.getChildCount(); j++) {
-                        View v = tableRow.getChildAt(j);
-                        if (v instanceof EditText) {
-                            EditText editText = (EditText) v;
-                            id = editText.getId();
-                            if (!editText.getText().toString().isEmpty()) {
-                                ((AddProductActivity) activity).addToMap(PARAMS_OTHER_NUTRIENTS[id], editText.getText().toString());
+                //get the values of all the other nutrients from the table
+                for (int i = 0; i < tableLayout.getChildCount(); i++) {
+                    View view = tableLayout.getChildAt(i);
+                    if (view instanceof TableRow) {
+                        TableRow tableRow = (TableRow) view;
+                        int id = 0;
+                        for (int j = 0; j < tableRow.getChildCount(); j++) {
+                            View v = tableRow.getChildAt(j);
+                            if (v instanceof EditText) {
+                                EditText editText = (EditText) v;
+                                id = editText.getId();
+                                if (!editText.getText().toString().isEmpty()) {
+                                    ((AddProductActivity) activity).addToMap(PARAMS_OTHER_NUTRIENTS[id], editText.getText().toString());
+                                }
                             }
-                        }
-                        if (v instanceof Spinner) {
-                            Spinner spinner = (Spinner) v;
-                            ((AddProductActivity) activity).addToMap(PARAMS_OTHER_NUTRIENTS[id] + "_unit", ALL_UNIT[spinner.getSelectedItemPosition()]);
+                            if (v instanceof Spinner) {
+                                Spinner spinner = (Spinner) v;
+                                ((AddProductActivity) activity).addToMap(PARAMS_OTHER_NUTRIENTS[id] + "_unit", ALL_UNIT[spinner.getSelectedItemPosition()]);
+                            }
                         }
                     }
                 }
