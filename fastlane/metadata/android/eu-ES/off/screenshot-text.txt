@@ -14,7 +14,7 @@ product_view_wikipedia_en.png
 Go further with Wikipedia
 
 allergen_alert_en.png
-Set allergen alerts
+Ezarri alergenoen alertak
 
 home_en.png
 product_view_nutrition_summary_en.png
