@@ -72,7 +72,7 @@
   <string name="search_button">Bilatu</string>
   <string name="no_products">Ez da aurkitu produktua</string>
   <string name="desc_list_item_icon">Elementu ikonoa</string>
-  <string name="alert_dialog_warning_title">Kontuz</string>
+  <string name="alert_dialog_warning_title">Abisua</string>
   <string name="alert_dialog_warning_msg_user">Erabiltzailea/pasahitza aldatu egin da, eguneratu informazioa mesedez</string>
   <string name="alert_dialog_product_error_msg">Ez da produktua aurkitu, saiatu berriro mesedez</string>
   <string name="toast_retrieving">Loading...</string>
@@ -172,7 +172,7 @@
   <string name="txt_product_not_found">Ez da aurkitu produktua</string>
   <string name="delete_txt">Ezabatu</string>
   <string name="sign_in_drawer">Hasi saioa</string>
-  <string name="alert_drawer">Kontuz, alergenoak</string>
+  <string name="alert_drawer">Alergenoen alerta</string>
   <string name="warning_allergens">Alergenoak ditu</string>
   <string name="title_dialog_alert">Gehitu alerta</string>
   <string name="toggle_flash">Flash</string>
