@@ -329,7 +329,7 @@
   <string name="caffeine">Kafeina</string>
   <string name="taurine">Taurina</string>
   <string name="ph">pH</string>
-  <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
+  <string name="fruits_vegetables_nuts">Fruta, barazkiak, fruitu lehorrak</string>
   <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
   <string name="cocoa">Kokoa</string>
   <string name="chlorophyl">Klorofila</string>
@@ -420,7 +420,7 @@
   <string name="label_string">Etiketa</string>
   <string name="category_string">Kategoria</string>
   <string name="connection">Konektatuta</string>
-  <string name="contributor_string">Contributor</string>
+  <string name="contributor_string">Ekarlea</string>
   <string name="Rate_Us">Show Your Support</string>
   <string name="Rate_Us_title">Baloratu gure aplikazioa</string>
   <string name="app_disabled_text">Aplikazioa desgaituta dago</string>
