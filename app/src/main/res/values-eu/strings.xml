@@ -86,7 +86,7 @@
   <string name="txtManufacturing">Fabrikazio edo prezesaketa lekuak:</string>
   <string name="txtIngredientsOrigins">Osagaien jatorria:</string>
   <string name="txtCity">Erosi zen hiria, estatua eta herrialdea:</string>
-  <string name="txtEMB">EMB Code:</string>
+  <string name="txtEMB">EMB kodea:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Dendak :</string>
   <string name="txtCountries">Country :</string>
@@ -324,8 +324,8 @@
   <string name="fluoride">Fluoride</string>
   <string name="selenium">Selenium</string>
   <string name="chromium">Chromium</string>
-  <string name="molybdenum">Molybdenum</string>
-  <string name="iodine">Iodine</string>
+  <string name="molybdenum">Molibdenoa</string>
+  <string name="iodine">Iodoa</string>
   <string name="caffeine">Kafeina</string>
   <string name="taurine">Taurina</string>
   <string name="ph">pH</string>
