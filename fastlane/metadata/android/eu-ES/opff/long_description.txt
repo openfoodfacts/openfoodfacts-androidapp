@@ -17,7 +17,7 @@ To discover the Open Pet Food Facts project, please visit https://world.openpetf
 You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
 - nutritional info, nutrition traffic lights…
-- brands, allergens, labels (organic, vegan...)
+- markak, alergenoak, etiketak (organikoa, beganoa...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
 *** Works well in any condition ***
