@@ -154,7 +154,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         LocaleHelper.setLocale(this, LocaleHelper.getLanguage(this));
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
         Bundle extras = getIntent().getExtras();
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -163,7 +163,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
 // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        if (mSensorManager != null) {
+            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        }
         mShakeDetector = new ShakeDetector();
 
         /*
@@ -598,7 +600,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * Remove user login info
      */
     private void logout() {
-        getSharedPreferences("login", MODE_PRIVATE).edit().clear().commit();
+        getSharedPreferences("login", MODE_PRIVATE).edit().clear().apply();
         headerResult.removeProfileByIdentifier(ITEM_MANAGE_ACCOUNT);
         headerResult.updateProfile(getUserProfile());
         result.addItemAtPosition(getLoginDrawerItem(), result.getPosition(ITEM_MY_CONTRIBUTIONS));
@@ -865,7 +867,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private void handleSendImage(Intent intent) {
         Uri selectedImage = null;
         ArrayList<Uri> selectedImagesArray = new ArrayList<>();
-        selectedImage = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        selectedImage = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         boolean isBarCodePresent = false;
         if (selectedImage != null) {
             selectedImagesArray.add(selectedImage);
@@ -935,12 +937,13 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private void createAlertDialog(boolean hasEditText, String barcode, ArrayList<Uri> uri) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
+
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.alert_barcode, null);
         alertDialogBuilder.setView(dialogView);
 
-        final EditText barcode_edittext = (EditText) dialogView.findViewById(R.id.barcode);
-        final ImageView product_image = (ImageView) dialogView.findViewById(R.id.product_image);
+        final EditText barcode_edittext = dialogView.findViewById(R.id.barcode);
+        final ImageView product_image = dialogView.findViewById(R.id.product_image);
 
         product_image.setImageURI(uri.get(0));
         if (hasEditText) {
