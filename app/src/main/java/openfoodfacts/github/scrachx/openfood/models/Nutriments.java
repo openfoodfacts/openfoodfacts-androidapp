@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import android.util.Log;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -197,11 +199,18 @@ public class Nutriments implements Serializable {
     private boolean containsMinerals;
 
     public Nutriment get(String nutrimentName){
-        if (!additionalProperties.containsKey(nutrimentName)) {
+        if (nutrimentName.isEmpty() || !additionalProperties.containsKey(nutrimentName)) {
             return null;
         }
 
-        return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName));
+        try{
+            return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName));
+        }catch (NullPointerException e){
+            // In case one of the getters was unable to get data as string
+            String stacktrace = Log.getStackTraceString(e);
+            Log.e("NUTRIMENTS-MODEL",stacktrace);
+        }
+        return null;
     }
 
     public String getUnit(String nutrimentName){
