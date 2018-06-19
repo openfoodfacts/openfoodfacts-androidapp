@@ -31,4 +31,4 @@ Megtudhatja még (a termékeken feltüntetett jelölések szerint):
 - Exportálni tudja a beolvasási előzményeket
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+Emberi élelmiszerekhez telepítheti az Open Food Facts-ot, kozmetikai termékekhez az Open Beauty Facts-ot és a többi termékhez az Open Products Facts-ot.
