@@ -86,6 +86,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     View slideUpIndicator;
     @BindView(R.id.quickView_progress)
     ProgressBar progressBar;
+    @BindView(R.id.quickView_progressText)
+    TextView progressText;
     @BindView(R.id.quickView_productNotFound)
     TextView productNotFound;
     @BindView(R.id.quickView_image)
@@ -147,6 +149,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     hideAllViews();
                     quickView.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.VISIBLE);
+                    progressText.setVisibility(View.VISIBLE);
+                    progressText.setText(getString(R.string.loading_product, lastText));
                 })
                 .subscribe(new SingleObserver<State>() {
                     @Override
@@ -157,21 +161,18 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     @Override
                     public void onSuccess(State state) {
                         progressBar.setVisibility(View.GONE);
+                        progressText.setVisibility(View.GONE);
                         if (state.getStatus() == 0) {
                             hideAllViews();
                             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                            quickView.setOnClickListener(v -> {
-                                navigateToProductAddition(lastText);
-                            });
+                            quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
                             String s = getString(R.string.product_not_found, lastText);
                             productNotFound.setText(s);
                             productNotFound.setVisibility(View.VISIBLE);
                             fab_status.setVisibility(View.VISIBLE);
                             fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
                             fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_add_a_photo));
-                            fab_status.setOnClickListener(v -> {
-                                navigateToProductAddition(lastText);
-                            });
+                            fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
                         } else {
                             product = state.getProduct();
                             new HistoryTask().doInBackground(product);
@@ -299,6 +300,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     private void hideAllViews() {
         searchByBarcode.setVisibility(View.GONE);
         progressBar.setVisibility(View.GONE);
+        progressText.setVisibility(View.GONE);
         slideUpIndicator.setVisibility(View.GONE);
         productImage.setVisibility(View.GONE);
         name.setVisibility(View.GONE);
@@ -370,13 +372,10 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
         Intent intent = new Intent(this, MainActivity.class);
 
-        new SwipeDetector(barcodeView).setOnSwipeListener(new SwipeDetector.onSwipeEvent() {
-            @Override
-            public void SwipeEventDetected(View v, SwipeDetector.SwipeTypeEnum swipeType) {
-                if(swipeType==SwipeDetector.SwipeTypeEnum.TOP_TO_BOTTOM) {
-                 startActivity(intent);
-                 overridePendingTransition(R.anim.slide_up, R.anim.slide_down);
-                }
+        new SwipeDetector(barcodeView).setOnSwipeListener((v, swipeType) -> {
+            if (swipeType == SwipeDetector.SwipeTypeEnum.TOP_TO_BOTTOM) {
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_up, R.anim.slide_down);
             }
         });
 
