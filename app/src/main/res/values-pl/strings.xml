@@ -522,4 +522,5 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="initial_loading">Initial loading</string>
   <string name="preferences">Ustawienia</string>
   <string name="OFFlogo">Open Food Facts logo</string>
+  <string name="loading_product">Loading product %s</string>
 </resources>
