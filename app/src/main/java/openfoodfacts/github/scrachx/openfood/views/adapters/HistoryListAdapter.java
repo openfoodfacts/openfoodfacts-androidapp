@@ -140,9 +140,9 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         long days = TimeUnit.MILLISECONDS.toDays(now.getTime() - date.getTime());
 
         String secText = String.valueOf(seconds) + " seconds ago";
-        String hourText = res.getString(R.string.last_seen_string, hours, res.getQuantityString(R.plurals.hours, (int) hours));
-        String minText = res.getString(R.string.last_seen_string, minutes, res.getQuantityString(R.plurals.minutes, (int) minutes));
-        String dayText = res.getString(R.string.last_seen_string, days, res.getQuantityString(R.plurals.days, (int) days));
+        String hourText = res.getQuantityString(R.plurals.hours, (int) hours, (int) hours);
+        String minText = res.getQuantityString(R.plurals.minutes, (int) minutes,(int) minutes);
+        String dayText = res.getQuantityString(R.plurals.days, (int) days, (int) days);
         if (seconds < 60) {
             holder.txtDate.setText(secText);
         } else if (minutes < 60) {

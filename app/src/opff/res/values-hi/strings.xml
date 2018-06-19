@@ -33,4 +33,5 @@
   <string name="warning_alert_data">आपकी एलर्जी जानकारी कभी ओपन फूड फैक्ट्स सर्वर पर नहीं भेजी जाएगी। इसके अलावा सावधान रहें, ज़रूरी नहीं कि उत्पाद डेटा सटीक हो, और पहचान 100% सही हो, इसलिए कृपया स्वयं दोबारा जांच करें!</string>
   <!-- OPFF tagline in different languages -->
   <string name="tagline">free pet food products database</string>
+  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Pet Food Facts. Can you add it?</string>
 </resources>

@@ -25,6 +25,7 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
@@ -72,6 +73,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import holloway.allergenChecker.Consumer;
@@ -155,16 +157,18 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         LocaleHelper.setLocale(this, LocaleHelper.getLanguage(this));
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
         Bundle extras = getIntent().getExtras();
         FragmentManager fragmentManager = getSupportFragmentManager();
         mSendProductDao = Utils.getAppDaoSession(MainActivity.this).getSendProductDao();
         numberOFSavedProducts = mSendProductDao.loadAll().size();
 
-// Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
+// Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        if (mSensorManager != null) {
+            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        }
         mShakeDetector = new ShakeDetector();
 
 
@@ -491,7 +495,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext
                 ());
         if (settings.getBoolean("startScan", false)) {
-            Intent cameraIntent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+            Intent cameraIntent = new Intent(MainActivity.this, ContinuousScanActivity.class);
             cameraIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(cameraIntent);
         }
@@ -549,7 +553,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         .permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
             }
         } else {
-            Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+            Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
@@ -598,7 +602,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * Remove user login info
      */
     private void logout() {
-        getSharedPreferences("login", MODE_PRIVATE).edit().clear().commit();
+        getSharedPreferences("login", MODE_PRIVATE).edit().clear().apply();
         headerResult.removeProfileByIdentifier(ITEM_MANAGE_ACCOUNT);
         headerResult.updateProfile(getUserProfile());
         result.addItemAtPosition(getLoginDrawerItem(), result.getPosition(ITEM_MY_CONTRIBUTIONS));
@@ -691,7 +695,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             case Utils.MY_PERMISSIONS_REQUEST_CAMERA: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager
                         .PERMISSION_GRANTED) {
-                    Intent intent = new Intent(MainActivity.this, ScannerFragmentActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
@@ -792,23 +796,16 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * This moves the main activity to the barcode entry fragment.
      */
     public void moveToBarcodeEntry() {
-        result.setSelection(ITEM_SEARCH_BY_CODE);
         Fragment fragment = new FindProductFragment();
-        getSupportActionBar().setTitle(getResources().getString(R.string.search_by_barcode_drawer));
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                fragment).commit();
+        changeFragment(fragment, getResources().getString(R.string.search_by_barcode_drawer), ITEM_SEARCH_BY_CODE);
     }
 
     /**
      * This moves the main activity to the preferences fragment.
      */
     public void moveToPreferences() {
-        result.setSelection(ITEM_PREFERENCES);
         Fragment fragment = new PreferencesFragment();
-        getSupportActionBar().setTitle(R.string.action_preferences);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        changeFragment(fragment, getString(R.string.preferences), ITEM_PREFERENCES);
     }
 
     /**
@@ -951,6 +948,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private void createAlertDialog(boolean hasEditText, String barcode, ArrayList<Uri> uri) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
+
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.alert_barcode, null);
         alertDialogBuilder.setView(dialogView);
@@ -1029,6 +1027,51 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
 
     }
+
+    /**
+     * Used to navigate Fragments which are children of <code>MainActivity</code>.
+     * Use this method when the <code>Fragment</code> APPEARS in the <code>Drawer</code>.
+     *
+     * @param fragment   The fragment class to display.
+     * @param title      The title that should be displayed on the top toolbar.
+     * @param drawerName The fragment as it appears in the drawer. See {@link NavigationDrawerListener} for the value.
+     * @author ross-holloway94
+     * @see <a href="https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter">Related Stack Overflow article</a>
+     * @since 06/16/18
+     */
+    public void changeFragment(Fragment fragment, String title, long drawerName) {
+        changeFragment(fragment, title);
+        result.setSelection(drawerName);
+    }
+
+    /**
+     * Used to navigate Fragments which are children of <code>MainActivity</code>.
+     * Use this method when the <code>Fragment</code> DOES NOT APPEAR in the <code>Drawer</code>.
+     *
+     * @param fragment The fragment class to display.
+     * @param title    The title that should be displayed on the top toolbar.
+     * @author ross-holloway94
+     * @see <a href="https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter">Related Stack Overflow article</a>
+     * @since 06/16/18
+     */
+    public void changeFragment(Fragment fragment, String title) {
+
+        String backStateName = fragment.getClass().getName();
+        FragmentManager manager = getSupportFragmentManager();
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
+
+        if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null) {
+            FragmentTransaction ft = manager.beginTransaction();
+            ft.replace(R.id.fragment_container, fragment, backStateName);
+            ft.addToBackStack(backStateName);
+            ft.commit();
+        }
+
+
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+
+    }
+
 
 
     @Override

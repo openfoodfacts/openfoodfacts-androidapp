@@ -1,4 +1,4 @@
-Open Products Facts er en åben database over alle produkter i verden.
+Open Products Facts er en åben database over alle verdena produkter.
 
 *** Bidrag til produktgennemsigtighed ***
 
@@ -12,17 +12,17 @@ Open Products Facts er en åben database over alle produkter i verden.
 
 *** Indsaml ALLE tingene ***
 - Du kan tilføje alle emnerne fra dine samlinger
-- Open Crayon Facts - Den største åbne database over farvekridt
+- Open Crayons Facts - Den største åbne database over farvekridt
 - Open Miniature Food Facts - Den største åbne database over miniaturefødevarer
 - Åben??? Fakta - Opret din egen åbne database :-)
 
-*** Fungerer godt i enhver tilstand ***
-- Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse.
+*** Fungerer godt i alle sammenhænge ***
+- Du kan tilføje nye produkter selv uden en tilgængelig Internetforbindelse.
 - App'en indlæser kun det strengt nødvendige for at reducere data- og batteriforbrug
-- Du behøver ikke et kamera til at slå et produkt op. Du kan også angive stregkoden, hvis du mangler et kamera eller har problemer med det.
+- Du behøver ikke et kamera for at slå et produkt op. Du kan også angive stregkoden, hvis du mangler et kamera eller har problemer med det.
 
 *** Dine produkterer, dine data ***
-- Dine personlige data er dine, og de sendes aldrig online
+- Dine personlige data er dine, og de lægges aldrig online
 - Du kan benytte app'en anonymt
 - Du kan eksportere din skanningshistorik
 
@@ -35,7 +35,7 @@ Spørgsmål, feedback: contact@openfoodfacts.org
 
 I går morges vågnede teamet Open Food Facts op til en fantastisk åbenbaring. 
 
-Indsamling af verdens fødevare-, kosmetik- og kæledyrsfoderprodukter var så passé. Med de vanvittige fremskridt, som er gjort i løbet af det seneste år, må vi helt sikkert være tæt på at fuldføre vores mission om at samle alle fødevare- og kosmetikprodukter i verden, ikke?
+Indsamling af verdens fødevare-, kosmetik- og kæledyrsfoderprodukter var så passé. Med de vanvittige fremskridt, som er sket i løbet af det seneste år, må vi helt sikkert være tæt på at fuldføre vores mission om at indsamle data for alle fødevare- og kosmetikprodukter i verden, ikke?
 
 Så vi satter os for at oprette ikke 1, men yderligere 7.7000 nye, separate databaser! 
 

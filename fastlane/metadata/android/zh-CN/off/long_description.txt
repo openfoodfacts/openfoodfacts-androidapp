@@ -1,6 +1,6 @@
 扫描食品或者食品条形码获取配料信息、添加剂和营养成分。
 
-该应用可查看包含在自由和开放的 Open Food Facts 数据库内 50 万种产品（其中美国有 17.5 万种），并可为缺漏产品添加图片与具体信息。
+The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
 
 想获得更多 Open Food Facts 项目信息，请访问 https://openfoodfacts.org
 

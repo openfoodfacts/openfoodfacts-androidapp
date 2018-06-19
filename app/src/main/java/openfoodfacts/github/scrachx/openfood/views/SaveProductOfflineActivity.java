@@ -161,7 +161,7 @@ public class SaveProductOfflineActivity extends BaseActivity {
                     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
                 }
             } else {
-                Intent intent = new Intent(this, ScannerFragmentActivity.class);
+                Intent intent = new Intent(this, ContinuousScanActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

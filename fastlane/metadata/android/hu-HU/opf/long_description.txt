@@ -18,15 +18,15 @@ Az Open Food Facts élelmiszerek nyílt adatbázisa, a termékekhez tartozó ös
 
 *** Minden körülmény között jól működik ***
 - Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata.
-- The app loads only the strict necessary to reduce data and battery consumption
+- Az alkalmazás csak a legszükségesebb dolgokat tölti be, hogy csökkentse az adat és akkumulátorhasználatot
 - Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
 
-*** Your products, your data ***
+*** Az ön termékei, az ön adatai ***
 - Az ön személyes adatainak tulajdonosa ön és soha nem lesznek elküldve online
 - Az alkalmazást névtelenül használhatja
 - Exportálni tudja a beolvasási előzményeket
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Élelmiszerekhez telepítheti az Open Food Facts-ot, kozmetikai termékekhez az Open Beauty Facts-ot és az állateledelekhez az Open Pet Food Facts-ot.
 
 Az Open Products Facts elérhető az interneten is a következő címen: https://world.openproductsfacts.org
 Kérdések, visszajelzés: contact@openfoodfacts.org

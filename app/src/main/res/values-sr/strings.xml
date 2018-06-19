@@ -7,23 +7,23 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one"> minute</item>
-    <item quantity="few"> minutes</item>
-    <item quantity="other"> minutes</item>
+    <item quantity="one">1 minute ago</item>
+    <item quantity="few">%d minutes ago</item>
+    <item quantity="other">%d minutes ago</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one"> hour</item>
-    <item quantity="few"> hours</item>
-    <item quantity="other"> hours</item>
+    <item quantity="one">1 hour ago</item>
+    <item quantity="few">%d hours ago</item>
+    <item quantity="other">%d hours ago</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one"> day</item>
-    <item quantity="few"> days</item>
-    <item quantity="other"> days</item>
+    <item quantity="one">1 day ago</item>
+    <item quantity="few">%d days ago</item>
+    <item quantity="other">%d days ago</item>
   </plurals>
   <string name="action_settings">Podešavanja</string>
   <string name="action_about">O</string>
-  <string name="action_discover">Otkrij</string>
+  <string name="action_discover">Otkrijte</string>
   <string name="contribute">Kako da doprinesete</string>
   <string name="action_find">Nađi</string>
   <string name="text_barcode">Ukucajte barkod:</string>
@@ -87,7 +87,7 @@
   <string name="txtBrands">Brend :</string>
   <string name="txtCategories">Katergorije :</string>
   <string name="txtLabels">Oznaka, sertifikat, nagrade :</string>
-  <string name="txtManufacturing">Mesto u kojem se proizvodi ili prerađuje :</string>
+  <string name="txtManufacturing">Lokacija proizvodnje ili prerade :</string>
   <string name="txtIngredientsOrigins">Poreklo sastojaka :</string>
   <string name="txtCity">Grad, država gde je proizvod kupljen :</string>
   <string name="txtEMB">EMB Code:</string>
@@ -166,7 +166,7 @@
   <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Pretraži</string>
   <string name="search_by_barcode_drawer">Pretraži po barkodu</string>
-  <string name="category_drawer">Категорије</string>
+  <string name="category_drawer">Kategorije</string>
   <string name="search_by_category">Kategorija</string>
   <string name="search_by_name_drawer">Pretraži po imenu</string>
   <string name="scan_search">Skeniraj</string>
@@ -197,7 +197,7 @@
   <string name="from_gallery">Iz galerije</string>
   <string name="product_sent">Proizvod uspešno poslat</string>
   <string name="action_edit_product">Izmenite proizvod</string>
-  <string name="title_info_dialog">Informacija</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">Možete skenirati proizvode i kada niste povezani na internet kako biste ih dodali kasnije na Open Food Facts. Svi proizvodi koje skenirate pojaviće se ovde, i bićete u mogućnosti da ih pošaljete pritiskom na dugme ispod.</string>
   <string name="permission_camera">Dozvola za kameru je potrebna za skeniranje barkodova i fotografije.</string>
   <string name="permission_title">Informacije o dozvolama</string>
@@ -214,7 +214,7 @@
   <string name="prefs_scan_startup">Skeniraj pri pokretanju</string>
   <string name="prefs_scan_startup_summary">Ako je ova opcija štiklirana, skreniranje će biti započeto pri startovanju aplikacije.</string>
   <string name="prefs_power_mode">Power mode skeniranje</string>
-  <string name="prefs_power_mode_summary">Brzo skeniranje proizvoda u prodavnici da biste videli koji nisu u bazi.</string>
+  <string name="prefs_power_mode_summary">Brzo skeniranje proizvoda u prodavnici da biste videli koji proizvodi nisu u bazi podataka.</string>
   <string name="prefs_language">Jezik</string>
   <string name="prefs_language_summary">Promenite jezik</string>
   <string name="scan_history_drawer">Istorija</string>
@@ -340,7 +340,7 @@
   <string name="take_picture_ingredients">Uslikajte sastav proizvoda</string>
   <string name="take_picture_front">Uslikajte prednju stranu proizvoda</string>
   <string name="take_picture_nutrition_table">Uslikajte tablicu nutritivnih vrednosti</string>
-  <string name="take_more_pictures">Uslikaj</string>
+  <string name="take_more_pictures">Dodaj još fotografija</string>
   <string name="txtSaturatedFat">Zasićene masne kiseline</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
@@ -363,7 +363,7 @@
   <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
   <string name="airplane_mode_active_dialog_negative">Dismiss</string>
   <string name="airplane_mode_active_dialog_positive">Podešavanja</string>
-  <string name="device_offline_dialog_title">Network unavailable</string>
+  <string name="device_offline_dialog_title">Mreža nije dostupna</string>
   <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
   <string name="device_offline_dialog_negative">Dismiss</string>
   <string name="device_offline_dialog_positive">Podešavanja</string>
@@ -383,13 +383,13 @@
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
   <string name="please_check_your_connection">Please check your connection.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
-  <string name="advanced_search_title">Advanced Search &amp; Charts</string>
+  <string name="advanced_search_title">Napredna pretraga i grafikoni</string>
   <string name="connectivity_check">Please check your internet connection</string>
   <string name="dismiss">Dismiss</string>
   <string name="Terms">Terms</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
-  <string name="preference_header_general">General</string>
-  <string name="preference_header_network">Network</string>
+  <string name="preference_header_general">Opšte</string>
+  <string name="preference_header_network">Mreža</string>
   <string name="preference_header_contributing">Contributing</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
   <string name="seconds_ago">seconds ago</string>
@@ -448,7 +448,7 @@
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
   <string name="shake_summary">Shake phone to scan products</string>
-  <string name="shake_title">Scan on Shake</string>
+  <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
@@ -477,7 +477,25 @@
   <string name="other_editors">Product page also edited by </string>
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
-  <string name="contribution_tab_title">Show Contribution Tab</string>
+  <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Edit</string>
   <string name="txtDialogsTitle">Informacija</string>
+  <string name="preference_show_all_product_photos_title">Show all product photos</string>
+  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
+  <string name="offline_product_addition_title">Add new product</string>
+  <string name="productNameNull">Name unknown</string>
+  <string name="productBrandNull">Brand unknown</string>
+  <string name="productQuantityNull">Quantity unknown</string>
+  <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
+  <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
+  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+  <string name="scan_sound">Scan sound</string>
+  <string name="trouble_scanning">Trouble Scanning?</string>
+  <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
+  <string name="switch_camera">Switch camera</string>
+  <string name="autofocus">Autofocus</string>
+  <string name="initial_loading">Initial loading</string>
+  <string name="preferences">Podešavanja</string>
+  <string name="OFFlogo">Open Food Facts logo</string>
+  <string name="loading_product">Loading product %s</string>
 </resources>

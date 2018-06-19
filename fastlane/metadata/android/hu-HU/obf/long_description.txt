@@ -15,10 +15,10 @@
 
 *** Minden körülmény között jól működik ***
 - Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata.
-- The app loads only the strict necessary to reduce data and battery consumption
+- Az alkalmazás csak a legszükségesebb dolgokat tölti be, hogy csökkentse az adat és akkumulátorhasználatot
 - Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
 
-*** Your cosmetics, your data ***
+*** Az ön kozmetikumai, az ön adatai ***
 - Az ön adatainak tulajdonosa ön és soha nem lesznek elküldve online
 - Az alkalmazást névtelenül használhatja
 - Exportálni tudja a beolvasási előzményeket
@@ -28,4 +28,4 @@ Note: Open Beauty Facts is being built, the site and the application are based o
 Az Open Beauty Facts elérhető az interneten is a következő címen: https://world.openbeautyfacts.org
 Kérdések, visszajelzés: contact@openfoodfacts.org
 
-For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Emberi élelmiszerekhez telepítheti az Open Food Facts-ot, állateledelekhez az Open Pet Food Facts-ot és a többi termékhez az Open Products Facts-ot.

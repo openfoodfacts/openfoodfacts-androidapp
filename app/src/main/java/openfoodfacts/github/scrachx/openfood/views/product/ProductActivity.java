@@ -61,10 +61,10 @@ import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.BottomNavigationBehavior;
+import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -144,7 +144,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
             mButtonScan.setVisibility(View.GONE);
         }
 
-        // Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
+        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
@@ -238,7 +238,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
                     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
                 }
             } else {
-                Intent intent = new Intent(this, ScannerFragmentActivity.class);
+                Intent intent = new Intent(this, ContinuousScanActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -436,7 +436,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
         Hide the 'Calculate Calories' option from the overflow menu if the product
         doesn't have calories information in nutrition facts.
         */
-        if (mState.getProduct().getNutriments().get(Nutriments.ENERGY) == null) {
+        if (mState.getProduct().getNutriments() == null || mState.getProduct().getNutriments().get(Nutriments.ENERGY) == null) {
             menu.findItem(R.id.action_calculate_calories).setVisible(false);
         }
         return true;

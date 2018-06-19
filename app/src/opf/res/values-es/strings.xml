@@ -11,9 +11,9 @@
   <string name="website_product">https://world-es.openproductsfacts.org/producto/</string>
   <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-es.openproductsfacts.org/contribuyente/</string>
-  <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
+  <string name="terms_url">https://world-es.openproductsfacts.org/terms-of-use</string>
   <string name="txtHome">Open Products Facts es una base de datos abierta de todos los productos en el mundo.</string>
-  <string name="slide_1_title">Contribute to product transparency</string>
+  <string name="slide_1_title">Contribuir a la transparencia del producto</string>
   <string name="slide_1_desc">Escanee productos, tómelos en una imagen, haga que la transparencia de los productos suceda</string>
   <string name="slide_2_title">Obtener los datos</string>
   <string name="slide_2_desc">Extensive information about the products you\'ve scanned, deciphered for you</string>
@@ -32,5 +32,6 @@
   <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <!-- OPF tagline in different languages -->
-  <string name="tagline">the free product database</string>
+  <string name="tagline">Base de datos libre sobre productos</string>
+  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
 </resources>

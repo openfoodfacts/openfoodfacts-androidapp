@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.content.res.AppCompatResources;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -23,12 +26,14 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
     private final Context context;
     private final List<SaveItem> saveItems;
     private SaveClickInterface mSaveClickInterface;
+    static boolean isUploading;
 
 
     public SaveListAdapter(Context context, List<SaveItem> saveItems, SaveClickInterface saveClickInterface) {
         this.context = context;
         this.saveItems = saveItems;
         this.mSaveClickInterface = saveClickInterface;
+        isUploading = false;
     }
 
     @Override
@@ -43,12 +48,20 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
         SaveItem item = saveItems.get(position);
 
         holder.imgIcon.setImageDrawable(AppCompatResources.getDrawable(context, item.getIcon()));
+        if(isUploading) {
+            holder.imgIcon.setVisibility(View.GONE);
+            holder.progressBar.setVisibility(View.VISIBLE);
+        }
         holder.txtTitle.setText(item.getTitle());
         Picasso.with(context).load("file://"+item.getUrl()).config(Bitmap.Config.RGB_565).into(holder.imgProduct);
         holder.txtBarcode.setText(item.getBarcode());
         holder.txtWeight.setText(item.getWeight());
         holder.txtBrand.setText(item.getBrand());
 
+    }
+
+    public static void showProgressDialog() {
+        isUploading = true;
     }
 
     @Override
@@ -74,6 +87,7 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
         ImageView imgProduct;
         TextView txtWeight;
         TextView txtBrand;
+        ProgressBar progressBar;
 
         public SaveViewHolder(View itemView) {
             super(itemView);
@@ -83,6 +97,7 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
             imgProduct = itemView.findViewById(R.id.imgSaveProduct);
             txtWeight = itemView.findViewById(R.id.offlineWeight);
             txtBrand = itemView.findViewById(R.id.offlineBrand);
+            progressBar = itemView.findViewById(R.id.offlineUploadProgressBar);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
         }

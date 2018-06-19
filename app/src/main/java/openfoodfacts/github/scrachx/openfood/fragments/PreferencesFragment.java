@@ -132,7 +132,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                             Uri.parse("market://details?id=" + installer)));
                 } catch (android.content.ActivityNotFoundException e) {
                     startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
+                            Uri.parse("https://play.google.com/store/apps/details?id=" + context.getPackageName())));
                 }
                 return true;
             }

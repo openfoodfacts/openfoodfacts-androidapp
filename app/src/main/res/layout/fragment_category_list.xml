@@ -24,7 +24,7 @@
 
         <openfoodfacts.github.scrachx.openfood.FastScroller
             android:id="@+id/fast_scroller"
-            android:layout_width="wrap_content"
+            android:layout_width="24dp"
             android:layout_height="match_parent"
             android:layout_gravity="end" />
 

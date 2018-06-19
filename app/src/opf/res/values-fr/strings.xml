@@ -11,7 +11,7 @@
   <string name="website_product">https://world-fr.openproductsfacts.org/produit/</string>
   <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-fr.openproductsfacts.org/contributeur/</string>
-  <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
+  <string name="terms_url">https://fr.openproductsfacts.org/conditions-d-utilisation</string>
   <string name="txtHome">Open Products Facts est une base de données ouverte de tous les produits dans le monde.</string>
   <string name="slide_1_title">Contribuer à la transparence des produits</string>
   <string name="slide_1_desc">Scannez les produits, prenez-les en photo, devenez un acteur de la transparence produit</string>
@@ -29,8 +29,9 @@
   <string name="Donation">Cliquez ici pour faire un don à Open Products Facts</string>
   <string name="translate_help_title">Aidez à traduire Open Products Facts</string>
   <string name="translate_help_summary">Rendez la base de données Open Products Facts disponible dans votre langue - aucune connaissance technique requise</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+  <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
   <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Products Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
   <!-- OPF tagline in different languages -->
   <string name="tagline">l\'information produit ouverte</string>
+  <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Products Facts. Pouvez-vous l\'ajouter ?</string>
 </resources>

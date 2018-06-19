@@ -226,7 +226,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
 
-        // Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
+        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
@@ -327,7 +327,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
             }
         } else {
-            Intent intent = new Intent(this, ScannerFragmentActivity.class);
+            Intent intent = new Intent(this, ContinuousScanActivity.class);
             startActivity(intent);
         }
     }
@@ -428,6 +428,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                         api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
                         break;
                 }
+                break;
             }
 
 

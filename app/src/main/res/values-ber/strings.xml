@@ -6,16 +6,16 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one"> minute</item>
-    <item quantity="other"> minutes</item>
+    <item quantity="one">1 minute ago</item>
+    <item quantity="other">%d minutes ago</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one"> hour</item>
-    <item quantity="other"> hours</item>
+    <item quantity="one">1 hour ago</item>
+    <item quantity="other">%d hours ago</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one"> day</item>
-    <item quantity="other"> days</item>
+    <item quantity="one">1 day ago</item>
+    <item quantity="other">%d days ago</item>
   </plurals>
   <string name="action_settings">Settings</string>
   <string name="action_about">About</string>
@@ -75,7 +75,7 @@
   <string name="alert_dialog_warning_title">Warning</string>
   <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
   <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
-  <string name="toast_retrieving">Loading...</string>
+  <string name="toast_retrieving">Loading…</string>
   <string name="txtGenericName">Common name :</string>
   <string name="txtBarcode">Barcode :</string>
   <string name="txtQuantity">Quantity :</string>
@@ -89,7 +89,7 @@
   <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Country :</string>
+  <string name="txtCountries">Countries where sold :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
@@ -138,16 +138,16 @@
   <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Uploading...</string>
+  <string name="toastSending">Uploading…</string>
   <string name="dataSaved">Saved locally on your device</string>
   <string name="txtInfoAddUser">Please enter your login and password</string>
   <string name="txtDataUpdated">Data updated</string>
-  <string name="txtLoading">Loading...</string>
+  <string name="txtLoading">Loading…</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+  <string name="txtContentDialogUploading">Please don\'t exit during the process…</string>
   <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Products sent</string>
   <string name="txtPalm">The product does not contain any palm oil</string>
@@ -193,7 +193,7 @@
   <string name="from_gallery">From gallery</string>
   <string name="product_sent">Product sent successfully</string>
   <string name="action_edit_product">Edit product</string>
-  <string name="title_info_dialog">Information</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
   <string name="permission_title">Permission information</string>
@@ -218,7 +218,7 @@
   <string name="title_clear_history_dialog">Clear</string>
   <string name="text_clear_history_dialog">Do you want to clear all scan history?</string>
   <string name="export_csv_history">Export CSV</string>
-  <string name="txt_exporting_history">Exporting history...</string>
+  <string name="txt_exporting_history">Exporting history…</string>
   <string name="txt_history_exported">History exported</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>
@@ -411,7 +411,7 @@
   <string name="brand_string">Brand</string>
   <string name="additive_string">Additive</string>
   <string name="search_string">Search</string>
-  <string name="country_string">Country</string>
+  <string name="country_string">Countries where sold</string>
   <string name="store_subtitle">Store</string>
   <string name="packaging_subtitle">Packaging</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
@@ -444,7 +444,7 @@
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
   <string name="shake_summary">Shake phone to scan products</string>
-  <string name="shake_title">Scan on Shake</string>
+  <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
@@ -473,7 +473,25 @@
   <string name="other_editors">Product page also edited by </string>
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
-  <string name="contribution_tab_title">Show Contribution Tab</string>
+  <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Edit</string>
   <string name="txtDialogsTitle">Information</string>
+  <string name="preference_show_all_product_photos_title">Show all product photos</string>
+  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
+  <string name="offline_product_addition_title">Add new product</string>
+  <string name="productNameNull">Name unknown</string>
+  <string name="productBrandNull">Brand unknown</string>
+  <string name="productQuantityNull">Quantity unknown</string>
+  <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
+  <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
+  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+  <string name="scan_sound">Scan sound</string>
+  <string name="trouble_scanning">Trouble Scanning?</string>
+  <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
+  <string name="switch_camera">Switch camera</string>
+  <string name="autofocus">Autofocus</string>
+  <string name="initial_loading">Initial loading</string>
+  <string name="preferences">Preferences</string>
+  <string name="OFFlogo">Open Food Facts logo</string>
+  <string name="loading_product">Loading product %s</string>
 </resources>

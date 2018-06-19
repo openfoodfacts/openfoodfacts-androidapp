@@ -4,13 +4,13 @@
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
   <string name="website">https://world-da.openfoodfacts.org/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
-  <string name="website_contribute">https://world-da.openfoodfacts.org/bidrag</string>
+  <string name="website_contribute">https://world-da.openfoodfacts.org/contribute</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir -->
-  <string name="website_discover">https://world-da.openfoodfacts.org/opdag</string>
+  <string name="website_discover">https://world-da.openfoodfacts.org/discover</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
-  <string name="website_product">https://world-da.openfoodfacts.org/produkt</string>
+  <string name="website_product">https://world-da.openfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
-  <string name="website_contributor">https://world-da.openfoodfacts.org/bidragsyder</string>
+  <string name="website_contributor">https://world-da.openfoodfacts.org/contributor/</string>
   <string name="txtHome">Open Food Facts er en åben database af fødevareprodukter indeholdende information om ingredienser, ernæringsindhold og alle de andre detaljer der er at finde på produkters mærkning.</string>
   <string name="slide_1_title">Yd dit bidrag til gennemsigtighed i fødevarebranchen</string>
   <string name="slide_1_desc">Skan produkter, tilføj billeder, få fødevaregennemsigtighed til at ske</string>
@@ -28,8 +28,9 @@
   <string name="Donation">Klik her for at donere til Open Food Facts</string>
   <string name="translate_help_title">Hjælp med at oversætte Open Food Facts</string>
   <string name="translate_help_summary">Få Open Food Facts-databasen på dit sprog - ingen teknisk viden kræves</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+  <string name="text_offline_info_dialog">Skan produkterne selv når du er offline for at føje dem til Open Food Facts senere. De indskannede produkter vises her, og du vil kunne indsende dem vha. knappen nedenfor.</string>
   <string name="warning_alert_data">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
   <!-- OFF tagline in different languages -->
   <string name="tagline">den gratis fødevarerproduktdatabase</string>
+  <string name="product_not_found">Produktet %1$s, du har skannet, findes endnu ikke i Open Food Facts. Vil du tilføje det?</string>
 </resources>

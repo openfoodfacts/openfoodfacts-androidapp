@@ -16,7 +16,7 @@ For at finde projektet Open Pet Food Facts, så besøg https://world.openpetfood
 
 Du vil kunne finde (i henhold til indikationerne på produkterne):
 - liste over ingredienser (herunder askeindhold)
-- nutritional info, nutrition traffic lights…
+- ernæringsmæssige oplysninger, næringslysregulering…
 - mærker, allergener, etiketter (økologisk, veganer...)
 - Det virker med hundefoder (konserves og tørkost), katte-, kanin-, slange-, fiske-, fuglefoder og hestefoder eller enhver anden type foder til dit yndlingsdyr.
 
@@ -26,7 +26,7 @@ Du vil kunne finde (i henhold til indikationerne på produkterne):
 - Du behøver ikke et kamera til at slå et produkt op. Du kan også angive stregkoden, hvis du mangler et kamera eller har problemer med det.
 
 *** Dit kæledyrsfoder, dine data ***
-- Dine personlige data er dine, og de sendes aldrig online
+- Dine personlige data er dine, og de lægges aldrig online
 - Du kan benytte app'en anonymt
 - Du kan eksportere din skanningshistorik
 

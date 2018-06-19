@@ -6,16 +6,16 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one"> minute</item>
-    <item quantity="other"> minutes</item>
+    <item quantity="one">1 minute ago</item>
+    <item quantity="other">%d minutes ago</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one"> hour</item>
-    <item quantity="other"> hours</item>
+    <item quantity="one">1 hour ago</item>
+    <item quantity="other">%d hours ago</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one"> day</item>
-    <item quantity="other"> days</item>
+    <item quantity="one">1 day ago</item>
+    <item quantity="other">%d days ago</item>
   </plurals>
   <string name="action_settings">Inpostasion</string>
   <string name="action_about">Riguardo</string>
@@ -193,7 +193,7 @@
   <string name="from_gallery">From gallery</string>
   <string name="product_sent">Product sent successfully</string>
   <string name="action_edit_product">Edit product</string>
-  <string name="title_info_dialog">Informasion</string>
+  <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
   <string name="permission_title">Permission information</string>
@@ -444,7 +444,7 @@
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sort By</string>
   <string name="shake_summary">Shake phone to scan products</string>
-  <string name="shake_title">Scan on Shake</string>
+  <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
@@ -473,7 +473,25 @@
   <string name="other_editors">Product page also edited by </string>
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
-  <string name="contribution_tab_title">Show Contribution Tab</string>
+  <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Edit</string>
   <string name="txtDialogsTitle">Informasion</string>
+  <string name="preference_show_all_product_photos_title">Show all product photos</string>
+  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
+  <string name="offline_product_addition_title">Add new product</string>
+  <string name="productNameNull">Name unknown</string>
+  <string name="productBrandNull">Brand unknown</string>
+  <string name="productQuantityNull">Quantity unknown</string>
+  <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
+  <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
+  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+  <string name="scan_sound">Scan sound</string>
+  <string name="trouble_scanning">Trouble Scanning?</string>
+  <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
+  <string name="switch_camera">Switch camera</string>
+  <string name="autofocus">Autofocus</string>
+  <string name="initial_loading">Initial loading</string>
+  <string name="preferences">Preferences</string>
+  <string name="OFFlogo">Open Food Facts logo</string>
+  <string name="loading_product">Loading product %s</string>
 </resources>

@@ -12,24 +12,25 @@
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-gl.openfoodfacts.org/contributor/</string>
   <string name="txtHome">Open Food Facts é unha base de datos aberta de produtos alimentarios cos seus ingredientes, alérxenos, información nutricional e todos os datos que podemos ver nas etiquetas dos produtos.</string>
-  <string name="slide_1_title">Contribute to Food transparency</string>
-  <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
-  <string name="slide_2_title">Get the facts</string>
-  <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Get the Nutriscore</string>
-  <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
-  <string name="slide_4_title">Works offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+  <string name="slide_1_title">Contribúa a transparencia alimentaria</string>
+  <string name="slide_1_desc">Escanee produtos, fágalles unha foto, faga que a transparencia alimentaria sexa real</string>
+  <string name="slide_2_title">Obteña os feitos</string>
+  <string name="slide_2_desc">Información extensa sobre o produto escaneado, descifrado para vostede</string>
+  <string name="slide_3_title">Obteña o Nutriscore</string>
+  <string name="slide_3_desc">Unha vista resumida das propiedades nutricionais dos seus alimentos favoritos</string>
+  <string name="slide_4_title">Funciona sin conexión</string>
+  <string name="slide_4_desc">Pode engadir novos produtos, incluso si vostede non ten nese momento conexión a rede</string>
+  <string name="txtDialogsContent">O produto que escaneou non está en Open Food Facts. Por favor, engádao.</string>
   <string name="txtDialogsContentPowerMode">O produto escaneado xa existe en Open Food Facts.</string>
   <string name="msg_share">Mire este produto en Open Food Facts :</string>
-  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="not_support_books">Polo momento non se admiten libros en Open Food Facts</string>
+  <string name="txt_broaden_search">- ampliar a busca \n- escanear e engadir a Open Food Facts</string>
+  <string name="Donation">Pulse aquí para doar a Open Food Facts</string>
+  <string name="translate_help_title">Axude a traducir Open Food Facts</string>
+  <string name="translate_help_summary">Traduza a base de datos Open Food Facts ao seu idioma - non se requiren habilidades técnicas</string>
+  <string name="text_offline_info_dialog">Escanee os produtos incluso si non ten conexión e engádaos a Open Food Facts máis tarde. Os produtos escaneados aparecerán aquí e poderá envialos utilizando o botón inferior.</string>
+  <string name="warning_alert_data">A información sobre as súas alerxias nunca se enviará ao servidor de Open Food Facts. Ademáis, teña en conta que os datos poderían non ser precisos e a detección podería non ser 100% precisa, así que compróbeo vostede mesma con atención! </string>
   <!-- OFF tagline in different languages -->
-  <string name="tagline">the free food products database</string>
+  <string name="tagline">a base de datos gratuíta de alimentos</string>
+  <string name="product_not_found">O produto %1$s que escaneou aínda non existe en Open Food Facts. Quere engadilo?</string>
 </resources>

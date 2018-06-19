@@ -25,12 +25,13 @@
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
   <string name="msg_share">Privește acest produs pe Open Food Facts:</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="txt_broaden_search">- extinderea căutării dvs.\n- scanați și adăugați-l la Open Food Facts</string>
+  <string name="Donation">Faceți click aici pentru a face o donație către Open Food Facts</string>
+  <string name="translate_help_title">Ajută la traducerea informațiilor din Open Food Facts</string>
+  <string name="translate_help_summary">Aduceți baza de date Open Food Facts în limba dvs. - nu aveți nevoie de cunoștințe tehnice</string>
   <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
   <!-- OPFF tagline in different languages -->
   <string name="tagline">free pet food products database</string>
+  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Pet Food Facts. Can you add it?</string>
 </resources>

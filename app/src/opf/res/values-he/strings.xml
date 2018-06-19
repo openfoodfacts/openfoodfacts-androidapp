@@ -29,8 +29,9 @@
   <string name="Donation">יש ללחוץ כאן כדי לתרום ל־Open Products Facts</string>
   <string name="translate_help_title">סיוע בתרגום Open Products Facts</string>
   <string name="translate_help_summary">הנגשת מסד הנתונים של Open Products Facts לאנשים שדוברים את אותה השפה כמוך - לא נדרש ידע טכני</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+  <string name="text_offline_info_dialog">ניתן לסרוק מוצרים אפילו ללא חיבור לאינטרנט כדי להוסיף אותם ל־Open Products Facts בשלב מאוחר יותר. המוצרים שנסרקו יופיעו כאן ותהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
   <string name="warning_alert_data">נתוני האלרגיות שלך לא יישלחו לשרת של Open Products Facts. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
   <!-- OPF tagline in different languages -->
   <string name="tagline">מסד נתוני המוצרים החופשי</string>
+  <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Products Facts. נוכל לבקש ממך להוסיף אותו?</string>
 </resources>

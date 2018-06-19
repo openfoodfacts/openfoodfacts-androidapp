@@ -6,16 +6,16 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one"> minut</item>
-    <item quantity="other"> minuter</item>
+    <item quantity="one">1 minut sedan</item>
+    <item quantity="other">%d minuter sedan</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one"> timme</item>
-    <item quantity="other"> timmar</item>
+    <item quantity="one">1 timme sedan</item>
+    <item quantity="other">%d timmar sedan</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one"> dag</item>
-    <item quantity="other"> dagar</item>
+    <item quantity="one">1 dag sedan</item>
+    <item quantity="other">%d dagar sedan</item>
   </plurals>
   <string name="action_settings">Inställningar</string>
   <string name="action_about">Om</string>
@@ -65,8 +65,8 @@
     <item>Ingredienser</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
-  <string name="edit">Edit</string>
+  <string name="bookmark">Bokmärke</string>
+  <string name="edit">Redigera</string>
   <string name="fastscroller_track">FastScroller track</string>
   <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Sök</string>
@@ -92,7 +92,7 @@
   <string name="txtCountries">Länder där såld :</string>
   <string name="txtIngredients">Ingredienslista :</string>
   <string name="Donate">Donera</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donation">Klicka här för att donera till Open Food Facts</string>
   <string name="txtSubstances">Substanser eller produkter som orsaker allergier eller intolerans :</string>
   <string name="txtAdditives">Tillsatser :</string>
   <string name="txtTraces">Spår :</string>
@@ -134,10 +134,10 @@
   <string name="txtTakePicture">Ta en bild</string>
   <string name="txtSendAll">Ladda upp allt</string>
   <string name="txtNoData">Ingen data</string>
-  <string name="txtPictureNeeded">Wait…</string>
+  <string name="txtPictureNeeded">Vänta…</string>
   <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
-  <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeededDialogYes">Stanna</string>
+  <string name="txtPictureNeededDialogNo">Avfärda</string>
   <string name="toastSending">Laddar upp...</string>
   <string name="dataSaved">Sparades lokalt i din enhet</string>
   <string name="txtInfoAddUser">Vänligen fyll i ditt användarnamn och lösenord</string>
@@ -154,7 +154,7 @@
   <string name="txtBarcodeNotValid">Streckkoden är inte giltig</string>
   <string name="try_it_scan_now">Skanna produkt</string>
   <string name="share">Dela</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Översätt</string>
   <string name="msg_share">Titta på denna produkt på Open Food Facts:</string>
   <string name="create_account">Registrera</string>
   <string name="home_drawer">Hem</string>
@@ -193,7 +193,7 @@
   <string name="from_gallery">Från galleriet</string>
   <string name="product_sent">Produkt skickad</string>
   <string name="action_edit_product">Redigera produkt</string>
-  <string name="title_info_dialog">Information</string>
+  <string name="title_info_dialog">Hur funkar det?</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
   <string name="permission_title">Behörighetsinformation</string>
@@ -223,8 +223,8 @@
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Calculate Calories</string>
-  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
+  <string name="calculate_calories">Beräkna kalorier</string>
+  <string name="txt_calories_result">%1$s kcal i %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Kolhydrat</string>
   <string name="nutrition_carbohydrate_short_name">Kolhydrat (g)</string>
   <string name="nutrition_cholesterol">Kolesterol</string>
@@ -243,7 +243,7 @@
   <string name="nutrition_salt">Salt</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Mättat fett</string>
-  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+  <string name="nutrition_satured_fat_short_name">Mättat fett (g)</string>
   <string name="nutrition_serving">Per portion</string>
   <string name="nutrition_serving_size">Storlek på portion :</string>
   <string name="nutrition_sodium">Natrium</string>
@@ -343,10 +343,10 @@
   <string name="scan_shortcut_short_label">Skanna</string>
   <string name="scan_shortcut_long_label">Skanna produkt</string>
   <string name="barcode_shortcut_short_label">Sök</string>
-  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="barcode_shortcut_long_label">Sök efter streckkod</string>
   <string name="history_shortcut_short_label">Historik</string>
   <string name="history_shortcut_long_label">Historik</string>
-  <string name="contributions_shortcut_short_label">Contributions</string>
+  <string name="contributions_shortcut_short_label">Bidrag</string>
   <string name="contributions_shortcut_long_label">My Contributions</string>
   <string name="forgot_password">Glömt lösenord</string>
   <string name="next">NÄSTA</string>
@@ -386,7 +386,7 @@
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Allmänt</string>
   <string name="preference_header_network">Nätverk</string>
-  <string name="preference_header_contributing">Contributing</string>
+  <string name="preference_header_contributing">Bidrar</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
   <string name="seconds_ago">sekunder sedan</string>
   <string name="minutes_ago">minuter sedan</string>
@@ -396,17 +396,17 @@
   <string name="log_in">Logga in</string>
   <string name="login_true">Redan inloggad!</string>
   <string name="confirm_logout">Bekräfta utloggning</string>
-  <string name="logout_dialog_content">Are you sure to log out ?</string>
+  <string name="logout_dialog_content">Är du säker på att logga ut?</string>
   <string name="dialog_cancel">Avbryt</string>
   <string name="choose_resolution">Välj upplösning</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">Going further</string>
-  <string name="description">Description: </string>
-  <string name="title">Title: </string>
-  <string name="Wikipedia">View on Wikipedia</string>
-  <string name="Browse_Products">Browse Products</string>
+  <string name="description">Beskrivning: </string>
+  <string name="title">Titel: </string>
+  <string name="Wikipedia">Visa på Wikipedia</string>
+  <string name="Browse_Products">Bläddra produkter</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Varumärke</string>
   <string name="additive_string">Tillsats</string>
@@ -419,32 +419,32 @@
   <string name="packaging_string">Förpackning</string>
   <string name="label_string">Etikett</string>
   <string name="category_string">Kategori</string>
-  <string name="connection">Connected</string>
+  <string name="connection">Ansluten</string>
   <string name="contributor_string">Contributor</string>
-  <string name="Rate_Us">Show Your Support</string>
+  <string name="Rate_Us">Visa din support</string>
   <string name="Rate_Us_title">Rate our App</string>
   <string name="app_disabled_text">Application is disabled</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitaminer:</string>
-  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="amino_acid_tags_text">Aminosyror:</string>
   <string name="mineral_tags_text">Mineraler:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
   <string name="wikidata">Wikidata data</string>
   <string name="disable_image_loading">Disable image loading when battery is low</string>
   <string name="DisableLoadTitle">Disable image loading</string>
-  <string name="txtCamera">Camera</string>
-  <string name="txtGallery">Gallery</string>
-  <string name="txtOptions">Options</string>
-  <string name="by_title">Title</string>
+  <string name="txtCamera">Kamera</string>
+  <string name="txtGallery">Galleri</string>
+  <string name="txtOptions">Alternativ</string>
+  <string name="by_title">Titel</string>
   <string name="by_brand">Varumärke</string>
   <string name="by_barcode">Streckkod</string>
-  <string name="by_time">Recently Viewed</string>
-  <string name="sort">Sort</string>
+  <string name="by_time">Nyligen visade</string>
+  <string name="sort">Sortera</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
-  <string name="sort_by">Sort By</string>
+  <string name="sort_by">Sortera efter</string>
   <string name="shake_summary">Shake phone to scan products</string>
-  <string name="shake_title">Scan on Shake</string>
+  <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
@@ -460,9 +460,9 @@
   <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
   <string name="product_info_added">Products you added information for</string>
   <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
-  <string name="show_by">Show</string>
-  <string name="notify_title">Export complete</string>
-  <string name="notify_content">Click to view exported products</string>
+  <string name="show_by">Visa</string>
+  <string name="notify_title">Export slutförd</string>
+  <string name="notify_content">Klicka för att visa exporterade produkter</string>
   <string name="notification_channel_name">Export Notifications</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
   <string name="products_to_be_completed">Products to be completed</string>
@@ -471,9 +471,27 @@
   <string name="creator_history">Product added on %1$s at %2$s CET by</string>
   <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
   <string name="other_editors">Product page also edited by </string>
-  <string name="contribution_tab">Contributions</string>
+  <string name="contribution_tab">Bidrag</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
-  <string name="contribution_tab_title">Show Contribution Tab</string>
-  <string name="product">Edit</string>
+  <string name="contribution_tab_title">Show contribution tab</string>
+  <string name="product">Redigera</string>
   <string name="txtDialogsTitle">Information</string>
+  <string name="preference_show_all_product_photos_title">Visa alla produktfoton</string>
+  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
+  <string name="offline_product_addition_title">Lägg till ny produkt</string>
+  <string name="productNameNull">Namn okänt</string>
+  <string name="productBrandNull">Märke okänt</string>
+  <string name="productQuantityNull">Quantity unknown</string>
+  <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
+  <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
+  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+  <string name="scan_sound">Scan sound</string>
+  <string name="trouble_scanning">Trouble Scanning?</string>
+  <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
+  <string name="switch_camera">Byt kamera</string>
+  <string name="autofocus">Autofokus</string>
+  <string name="initial_loading">Initial loading</string>
+  <string name="preferences">Inställningar</string>
+  <string name="OFFlogo">Open Food Facts logo</string>
+  <string name="loading_product">Loading product %s</string>
 </resources>
