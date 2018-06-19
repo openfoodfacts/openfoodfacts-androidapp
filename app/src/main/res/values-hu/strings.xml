@@ -493,4 +493,5 @@
   <string name="initial_loading">Kezdeti betöltés</string>
   <string name="preferences">Tulajdonságok</string>
   <string name="OFFlogo">Open Food Facts logo</string>
+  <string name="loading_product">Loading product %s</string>
 </resources>
