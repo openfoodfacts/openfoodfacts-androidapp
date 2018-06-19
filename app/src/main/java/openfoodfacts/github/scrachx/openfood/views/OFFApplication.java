@@ -71,6 +71,7 @@ public class OFFApplication extends MultiDexApplication {
 
 
         /* Initialize the Allergen Detector */
+        //TODO change folder to SDcard if possible
         File folder = new File(getFilesDir() + "/consumers");
         if (folder.exists()) {
             Log.i("ConsumerFragment", "Found existing consumers directory at" + getFilesDir());

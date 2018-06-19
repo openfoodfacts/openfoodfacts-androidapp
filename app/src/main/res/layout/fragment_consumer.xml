@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout3"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/content"
-        android:layout_width="0dp"
+    <android.support.v7.widget.CardView
+        android:id="@+id/contentCard"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:drawableStart="@drawable/ic_person_grey_24dp"
-        android:padding="@dimen/padding_normal"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_default="spread"
-        app:layout_constraintWidth_percent="100"
-        android:drawableLeft="@drawable/ic_person_grey_24dp" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:drawableLeft="@drawable/ic_person_grey_24dp"
+            android:drawableStart="@drawable/ic_person_grey_24dp"
+            android:padding="@dimen/padding_normal"
+            android:text="@tools:sample/first_names"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="spread"
+            app:layout_constraintWidth_percent="100" />
+    </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>

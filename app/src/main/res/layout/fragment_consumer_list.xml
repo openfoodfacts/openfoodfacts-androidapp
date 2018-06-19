@@ -17,7 +17,8 @@
         android:visibility="visible"
         app:layout_constraintHeight_percent="0.75"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/fragment_consumer">
 
     </android.support.v7.widget.RecyclerView>
 

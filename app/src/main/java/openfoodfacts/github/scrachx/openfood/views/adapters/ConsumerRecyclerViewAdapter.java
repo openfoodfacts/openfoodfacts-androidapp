@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,43 +23,35 @@ public class ConsumerRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerRe
     private final OnListFragmentInteractionListener mListener;
 
 
-    public class NormalViewHolder extends ViewHolder {
-        public NormalViewHolder(View itemView) {
-            super(itemView);
-
-            itemView.setOnClickListener(v -> {
-                //TODO Do whatever you want on clicking the normal items - open the edit layout with delete button top right
-            });
-        }
-    }
-
-
     public ConsumerRecyclerViewAdapter(List<Consumer> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
 
 
         view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_consumer, parent, false);
 
-        return new NormalViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ConsumerRecyclerViewAdapter.ViewHolder holder, int position) {
         try {
-            if (holder instanceof NormalViewHolder) {
-                NormalViewHolder vh = (NormalViewHolder) holder;
+            Consumer consumer = mValues.get(position);
 
-                vh.bindView(position);
-            }
+            TextView textView = holder.mContentView;
+            textView.setText(consumer.getName());
+
+
         } catch (Exception e) {
             Log.e("ConsumerRecyclerViewAda", "onBindViewHolder: Error binding view holder");
+            e.printStackTrace();
         }
     }
 
@@ -77,6 +70,7 @@ public class ConsumerRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerRe
         return super.getItemViewType(position);
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mContentView;
@@ -85,7 +79,11 @@ public class ConsumerRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerRe
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mContentView = view.findViewById(R.id.content);
+
+            view.setOnClickListener(v -> {
+                //TODO Set action for clicking on Consumer
+            });
         }
 
         public void bindView(int position) {

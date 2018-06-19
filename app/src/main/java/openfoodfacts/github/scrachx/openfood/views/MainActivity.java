@@ -881,7 +881,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private void handleSendImage(Intent intent) {
         Uri selectedImage = null;
         ArrayList<Uri> selectedImagesArray = new ArrayList<>();
-        selectedImage = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        selectedImage = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         boolean isBarCodePresent = false;
         if (selectedImage != null) {
             selectedImagesArray.add(selectedImage);
@@ -955,8 +955,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         View dialogView = inflater.inflate(R.layout.alert_barcode, null);
         alertDialogBuilder.setView(dialogView);
 
-        final EditText barcode_edittext = (EditText) dialogView.findViewById(R.id.barcode);
-        final ImageView product_image = (ImageView) dialogView.findViewById(R.id.product_image);
+        final EditText barcode_edittext = dialogView.findViewById(R.id.barcode);
+        final ImageView product_image = dialogView.findViewById(R.id.product_image);
 
         product_image.setImageURI(uri.get(0));
         if (hasEditText) {
@@ -1029,6 +1029,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
 
     }
+
 
     @Override
     public void onListFragmentInteraction(Consumer item) {

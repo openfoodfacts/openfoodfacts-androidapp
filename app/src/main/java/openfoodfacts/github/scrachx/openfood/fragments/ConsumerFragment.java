@@ -7,14 +7,17 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.Objects;
 
+import butterknife.OnClick;
 import holloway.allergenChecker.Consumer;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.utils.ConsumerSwipeController;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ConsumerRecyclerViewAdapter;
 
@@ -64,21 +67,28 @@ public class ConsumerFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_consumer_list, container, false);
 
-        Toolbar toolbar = (Toolbar) Objects.requireNonNull(getActivity()).findViewById(R.id.toolbar);
+        //Toolbar changes
+        Toolbar toolbar = Objects.requireNonNull(getActivity()).findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.allergenDetector));
+
 
 
         // Set the adapter
         Context context = view.getContext();
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.consumerRecycleView);
+        RecyclerView recyclerView = view.findViewById(R.id.consumerRecycleView);
         if (mColumnCount <= 1) {
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-
-
         recyclerView.setAdapter(new ConsumerRecyclerViewAdapter(MainActivity.consumerList, mListener));
+
+        // Set swiping actions on consumerRecycleView
+        ConsumerSwipeController consumerSwipeController = new ConsumerSwipeController();
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(consumerSwipeController);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+
+
 
 
         return view;
@@ -115,5 +125,15 @@ public class ConsumerFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Consumer item);
+    }
+
+
+    /**
+     * Open a new fragment to add a new Consumer.
+     */
+    @OnClick(R.id.floatingActionButton)
+    protected void openAddConsumer() {
+        //TODO Set actions for clicking the FAB
+        //Call a method in MainActivity
     }
 }
