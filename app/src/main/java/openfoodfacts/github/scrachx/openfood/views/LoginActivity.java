@@ -162,7 +162,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         lt.show();
 
         final Activity context = this;
-        apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
+        apiClient.signIn(login, password, "Sign-in","Basic b2ZmOm9mZg==").enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (!response.isSuccessful()) {

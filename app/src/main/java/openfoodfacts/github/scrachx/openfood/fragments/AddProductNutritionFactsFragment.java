@@ -2,36 +2,59 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
-import android.text.Editable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.InputType;
-import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
+import butterknife.OnItemSelected;
+import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import pl.aprilapps.easyphotopicker.DefaultCallback;
+import pl.aprilapps.easyphotopicker.EasyImage;
+
+import static android.Manifest.permission.CAMERA;
+import static android.app.Activity.RESULT_OK;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
 public class AddProductNutritionFactsFragment extends BaseFragment {
 
@@ -140,6 +163,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     CheckBox noNutritionData;
     @BindView(R.id.nutrition_facts_layout)
     ConstraintLayout nutritionFactsLayout;
+    @BindView(R.id.btnAddImageNutritionFacts)
+    ImageView imageNutritionFacts;
+    @BindView(R.id.imageProgress)
+    ProgressBar imageProgress;
+    @BindView(R.id.imageProgressText)
+    TextView imageProgressText;
     @BindView(R.id.radio_group)
     RadioGroup radioGroup;
     @BindView(R.id.serving_size)
@@ -190,6 +219,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     //index list stores the index of other nutrients which are used.
     private List<Integer> index = new ArrayList<>();
     private Activity activity;
+    private File photoFile;
+    private String code;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -201,48 +232,22 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_product_nutrition_facts, container, false);
         ButterKnife.bind(this, view);
-        noNutritionData.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                nutritionFactsLayout.setVisibility(View.GONE);
-            } else {
-                nutritionFactsLayout.setVisibility(View.VISIBLE);
-            }
-        });
-        salt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                double sodiumValue = 0;
-                try {
-                    sodiumValue = Double.valueOf(salt.getText().toString()) * 0.39370078740157477;
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
-                }
-                sodium.setText(String.valueOf(sodiumValue));
-                sodiumUnit.setSelection(saltUnit.getSelectedItemPosition());
-            }
-        });
-        saltUnit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                sodiumUnit.setSelection(saltUnit.getSelectedItemPosition());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Bundle b = getArguments();
+        if (b != null) {
+            Product product = (Product) b.getSerializable("product");
+            if (product != null) {
+                code = product.getCode();
+            }
+        } else {
+            Toast.makeText(activity, "Something went wrong", Toast.LENGTH_SHORT).show();
+            activity.finish();
+        }
     }
 
     @Override
@@ -256,11 +261,46 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         super.onDetach();
     }
 
+    @OnClick(R.id.btnAddImageNutritionFacts)
+    void addNutritionFactsImage() {
+        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
+        }
+    }
+
     @OnClick(R.id.btn_add)
     void next() {
         Activity activity = getActivity();
         if (activity instanceof AddProductActivity) {
             ((AddProductActivity) activity).proceed();
+        }
+    }
+
+    @OnTextChanged(value = R.id.salt, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void afterTextChanged() {
+        double sodiumValue = 0;
+        try {
+            sodiumValue = Double.valueOf(salt.getText().toString()) * 0.39370078740157477;
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        sodium.setText(String.valueOf(sodiumValue));
+        sodiumUnit.setSelection(saltUnit.getSelectedItemPosition());
+    }
+
+    @OnItemSelected(value = R.id.spinner_salt_unit, callback = OnItemSelected.Callback.ITEM_SELECTED)
+    void onItemSelected() {
+        sodiumUnit.setSelection(saltUnit.getSelectedItemPosition());
+    }
+
+    @OnCheckedChanged(R.id.checkbox_no_nutrition_data)
+    void onCheckedChanged(boolean isChecked) {
+        if (isChecked) {
+            nutritionFactsLayout.setVisibility(View.GONE);
+        } else {
+            nutritionFactsLayout.setVisibility(View.VISIBLE);
         }
     }
 
@@ -411,5 +451,56 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private int dpsToPixels(int dps) {
         final float scale = activity.getResources().getDisplayMetrics().density;
         return (int) (dps * scale + 0.5f);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                photoFile = new File((resultUri.getPath()));
+                ProductImage image = new ProductImage(code, NUTRITION, photoFile);
+                image.setFilePath(resultUri.getPath());
+                if (activity instanceof AddProductActivity) {
+                    ((AddProductActivity) activity).addToPhotoMap(image, 2);
+                }
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Log.e("Crop image error", result.getError().toString());
+            }
+        }
+        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
+            @Override
+            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
+            }
+
+            @Override
+            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
+                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                        .setOutputUri(Utils.getOutputPicUri(getContext())).start(activity.getApplicationContext(), AddProductNutritionFactsFragment.this);
+            }
+        });
+    }
+
+    public void showImageProgress() {
+        imageProgress.setVisibility(View.VISIBLE);
+        imageProgressText.setVisibility(View.VISIBLE);
+        imageNutritionFacts.setVisibility(View.INVISIBLE);
+    }
+
+    public void hideImageProgress(boolean errorInUploading) {
+        imageProgress.setVisibility(View.GONE);
+        imageProgressText.setVisibility(View.GONE);
+        imageNutritionFacts.setVisibility(View.VISIBLE);
+        if (!errorInUploading) {
+            Picasso.with(activity)
+                    .load(photoFile)
+                    .into(imageNutritionFacts);
+            Toast.makeText(activity, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(activity, "Image uploaded unsuccessful", Toast.LENGTH_SHORT).show();
+        }
     }
 }

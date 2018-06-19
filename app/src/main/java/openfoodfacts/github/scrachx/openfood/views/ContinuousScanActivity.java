@@ -16,6 +16,7 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.PopupMenu;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -40,6 +41,7 @@ import com.squareup.picasso.Picasso;
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -143,7 +145,17 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     };
 
     private void findProduct(String lastText) {
-        client.getFullProductByBarcodeSingle(lastText)
+        String s = "off:off";
+        String auth = "Basic ";
+        try {
+            byte[] data = s.getBytes("UTF-8");
+            String base64 = Base64.encodeToString(data, Base64.NO_WRAP);
+            auth = auth + base64;
+            Log.e(s, auth);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        client.getFullProductByBarcodeSingle(lastText, auth)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(a -> {
                     hideAllViews();
@@ -275,14 +287,14 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     }
 
     private void navigateToProductAddition(String lastText) {
-        Intent intent = new Intent(ContinuousScanActivity.this, SaveProductOfflineActivity.class);
+        Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
         State st = new State();
         Product pd = new Product();
         pd.setCode(lastText);
         st.setProduct(pd);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("state", st);
-        intent.putExtras(bundle);
+        //Bundle bundle = new Bundle();
+        //bundle.putSerializable("state", st);
+        intent.putExtra("state", st);
         startActivity(intent);
     }
 

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import java.util.Map;
 
-import io.reactivex.Observable;
+import io.reactivex.Completable;
 import io.reactivex.Single;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -17,11 +17,13 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PartMap;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 /**
  * Define our Open Food Facts API endpoints.
@@ -35,7 +37,12 @@ public interface OpenFoodAPIService {
     Call<State> getFullProductByBarcode(@Path("barcode") String barcode);
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags")
-    Single<State> getFullProductByBarcodeSingle(@Path("barcode") String barcode);
+    Single<State> getFullProductByBarcodeSingle(@Path("barcode") String barcode, @Header("Authorization") String auth);
+
+    @GET("cgi/product_jqm2.pl")
+    Single<State> saveProductSingle(@Query("code") String code,
+                                    @QueryMap Map<String, String> parameters,
+                                    @Header("Authorization") String auth);
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
     Call<State> getShortProductByBarcode(@Path("barcode") String barcode);
@@ -45,7 +52,8 @@ public interface OpenFoodAPIService {
 
     @FormUrlEncoded
     @POST("/cgi/session.pl")
-    Call<ResponseBody> signIn(@Field("user_id") String login, @Field("password") String password, @Field(".submit") String submit);
+    Call<ResponseBody> signIn(@Field("user_id") String login, @Field("password") String password, @Field(".submit") String submit,
+                              @Header("Authorization") String auth);
 
     @POST("/cgi/product_jqm2.pl")
     Call<State> saveProduct(@Body SendProduct product);
@@ -175,6 +183,11 @@ public interface OpenFoodAPIService {
     @Multipart
     @POST("/cgi/product_image_upload.pl")
     Call<JsonNode> saveImage(@PartMap Map<String, RequestBody> fields);
+
+    @Multipart
+    @POST("/cgi/product_image_upload.pl")
+    Completable saveImageSingle(@PartMap Map<String, RequestBody> fields,
+                                @Header("Authorization") String auth);
 
     @GET("brand/{brand}/{page}.json")
     Call<Search> getProductByBrands(@Path("brand") String brand, @Path("page") int page);

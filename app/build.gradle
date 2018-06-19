@@ -29,7 +29,7 @@ android {
         off {
             applicationId "openfoodfacts.github.scrachx.openfood"
             resValue "string", "app_name", "OpenFoodFacts"
-            buildConfigField 'String', 'HOST', '"https://ssl-api.openfoodfacts.org"'
+            buildConfigField 'String', 'HOST', '"https://ssl-api.openfoodfacts.net"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openbeautyfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'

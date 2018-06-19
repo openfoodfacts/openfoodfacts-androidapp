@@ -91,7 +91,7 @@ public class HomeFragment extends NavigationBaseFragment {
         String password = settings.getString("pass", "");
 
         if (!login.isEmpty() && !password.isEmpty()) {
-            apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
+            apiClient.signIn(login, password, "Sign-in","Basic b2ZmOm9mZg==").enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                     String htmlNoParsed = null;

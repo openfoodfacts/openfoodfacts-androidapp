@@ -2,20 +2,32 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.apache.commons.text.WordUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -24,27 +36,47 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import pl.aprilapps.easyphotopicker.DefaultCallback;
+import pl.aprilapps.easyphotopicker.EasyImage;
+
+import static android.Manifest.permission.CAMERA;
+import static android.app.Activity.RESULT_OK;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
 public class AddProductOverviewFragment extends BaseFragment {
 
     private static final String PARAM_NAME = "product_name";
     private static final String PARAM_BARCODE = "code";
     private static final String PARAM_QUANTITY = "quantity";
-    private static final String UNIT[] = {"g", "mg", "kg", "l", "ml", "cl", "fl oz"};
+    private static final String UNIT[] = {"", "g", "mg", "kg", "l", "ml", "cl", "fl oz"};
     private static final String PARAM_BRAND = "brands";
     private static final String PARAM_LANGUAGE = "lang";
     private static final String PARAM_PACKAGING = "packaging";
     private static final String PARAM_CATEGORIES = "categories";
     private static final String PARAM_LABELS = "labels";
     private static final String PARAM_ORIGIN = "origins";
-    private static final String PARAM_EMB_CODE = "emb_codes_tag";
+    private static final String PARAM_MANUFACTURING_PLACE = "manufacturing_places";
+    private static final String PARAM_EMB_CODE = "emb_codes";
     private static final String PARAM_LINK = "link";
     private static final String PARAM_PURCHASE = "purchase_places";
     private static final String PARAM_STORE = "stores";
     private static final String PARAM_COUNTRIES = "countries";
 
+    @BindView(R.id.scrollView)
+    ScrollView scrollView;
+    @BindView(R.id.btnAddImageFront)
+    ImageView imageFront;
+    @BindView(R.id.imageProgress)
+    ProgressBar imageProgress;
+    @BindView(R.id.imageProgressText)
+    TextView imageProgressText;
     @BindView(R.id.section_manufacturing_details)
     TextView sectionManufacturingDetails;
     @BindView(R.id.section_purchasing_details)
@@ -83,6 +115,10 @@ public class AddProductOverviewFragment extends BaseFragment {
     EditText countriesWhereSold;
     private String languageCode;
     private Activity activity;
+    private Product mProduct;
+    private String code;
+    private String mImageUrl;
+    private File photoFile;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -94,9 +130,24 @@ public class AddProductOverviewFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_product_overview, container, false);
         ButterKnife.bind(this, view);
-        String currentLang = LocaleHelper.getLanguage(activity);
-        setProductLanguage(currentLang);
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Bundle b = getArguments();
+        if (b != null) {
+            mProduct = (Product) b.getSerializable("product");
+            String currentLang = LocaleHelper.getLanguage(activity);
+            setProductLanguage(currentLang);
+            barcode.setText(R.string.txtBarcode);
+            code = mProduct.getCode();
+            barcode.append(" " + code);
+        } else {
+            Toast.makeText(activity, "Something went wrong", Toast.LENGTH_SHORT).show();
+            activity.finish();
+        }
     }
 
     private void setProductLanguage(String lang) {
@@ -119,20 +170,24 @@ public class AddProductOverviewFragment extends BaseFragment {
 
     @OnClick(R.id.btn_next)
     void next() {
-        if (activity instanceof AddProductActivity) {
+        if (!areRequiredFieldsEmpty() && activity instanceof AddProductActivity) {
             ((AddProductActivity) activity).proceed();
         }
     }
 
     @OnClick(R.id.btnAddImageFront)
     void addFrontImage() {
-        Toast.makeText(getContext(), "Perform network call for uploading pic", Toast.LENGTH_SHORT).show();
+        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
+        }
     }
 
     public void getDetails() {
         if (activity instanceof AddProductActivity) {
-            if (!barcode.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_BARCODE, barcode.getText().toString());
+            if (!code.isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_BARCODE, code);
             }
             if (!languageCode.isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
@@ -158,6 +213,9 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             if (!originOfIngredients.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_ORIGIN, originOfIngredients.getText().toString());
+            }
+            if (!manufacturingPlace.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_MANUFACTURING_PLACE, manufacturingPlace.getText().toString());
             }
             if (!embCode.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_EMB_CODE, embCode.getText().toString());
@@ -244,5 +302,77 @@ public class AddProductOverviewFragment extends BaseFragment {
                 })
                 .positiveText(R.string.ok_button)
                 .show();
+    }
+
+    public boolean areRequiredFieldsEmpty() {
+        if (mImageUrl == null || mImageUrl.equals("")) {
+            Toast.makeText(activity, R.string.txtPictureNeededDialogContent, Toast.LENGTH_SHORT).show();
+            scrollView.fullScroll(View.FOCUS_UP);
+        } else if (name.getText().toString().isEmpty()) {
+            name.setError("This field is required");
+            name.requestFocus();
+        } else if (quantity.getText().toString().isEmpty()) {
+            quantity.setError("This field is required");
+            quantity.requestFocus();
+        } else if (brand.getText().toString().isEmpty()) {
+            brand.setError("This field is required");
+            brand.requestFocus();
+        } else {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                photoFile = new File((resultUri.getPath()));
+                ProductImage image = new ProductImage(code, FRONT, photoFile);
+                image.setFilePath(resultUri.getPath());
+                mImageUrl = photoFile.getAbsolutePath();
+                if (activity instanceof AddProductActivity) {
+                    ((AddProductActivity) activity).addToPhotoMap(image, 0);
+                }
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Log.e("Crop image error", result.getError().toString());
+            }
+        }
+        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
+            @Override
+            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
+            }
+
+            @Override
+            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
+                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                        .setOutputUri(Utils.getOutputPicUri(getContext())).start(activity.getApplicationContext(), AddProductOverviewFragment.this);
+            }
+        });
+    }
+
+    public void showImageProgress() {
+        imageProgress.setVisibility(View.VISIBLE);
+        imageProgressText.setVisibility(View.VISIBLE);
+        imageFront.setVisibility(View.INVISIBLE);
+
+    }
+
+    public void hideImageProgress(boolean errorInUploading) {
+        imageProgress.setVisibility(View.GONE);
+        imageProgressText.setVisibility(View.GONE);
+        imageFront.setVisibility(View.VISIBLE);
+        if (!errorInUploading) {
+            Picasso.with(activity)
+                    .load(photoFile)
+                    .into(imageFront);
+            Toast.makeText(activity, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(activity, "Image uploaded unsuccessful", Toast.LENGTH_SHORT).show();
+        }
     }
 }
