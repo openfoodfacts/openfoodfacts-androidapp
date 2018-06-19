@@ -493,5 +493,5 @@
   <string name="initial_loading">Erstes Laden</string>
   <string name="preferences">Einstellungen</string>
   <string name="OFFlogo">Logo von Open Food Fact</string>
-  <string name="loading_product">Produkt wird geladen: %s</string>
+  <string name="loading_product">Produkt „%s” wird geladen</string>
 </resources>
