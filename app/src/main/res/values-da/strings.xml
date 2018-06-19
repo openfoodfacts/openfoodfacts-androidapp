@@ -493,4 +493,5 @@
   <string name="initial_loading">Indledende indlæsning</string>
   <string name="preferences">Præferencer</string>
   <string name="OFFlogo">Open Food Facts logo</string>
+  <string name="loading_product">Loading product %s</string>
 </resources>
