@@ -26,7 +26,7 @@ Az Open Food Facts élelmiszerek nyílt adatbázisa, a termékekhez tartozó ös
 - Az alkalmazást névtelenül használhatja
 - Exportálni tudja a beolvasási előzményeket
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Élelmiszerekhez telepítheti az Open Food Facts-ot, kozmetikai termékekhez az Open Beauty Facts-ot és az állateledelekhez az Open Pet Food Facts-ot.
 
 Az Open Products Facts elérhető az interneten is a következő címen: https://world.openproductsfacts.org
 Kérdések, visszajelzés: contact@openfoodfacts.org

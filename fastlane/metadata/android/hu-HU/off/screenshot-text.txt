@@ -1,4 +1,4 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+Ezek a feliratok a playstore-ban szereplő képernyőképek felett láthatóak. Legyenek rövidek és lényegretörőek.
 Ne változtassa meg a fájl nevét.
 ---
 scan_en.png
@@ -8,7 +8,7 @@ quickview_en.png
 Kapja meg a Nutriscore-t
 
 history_en.png
-Your full scan history, fully private & exportable
+Az ön teljes beolvasási előzményei, teljesen magán és exportálható
 
 product_view_wikipedia_en.png
 Továbblépés a Wikipedia-val
@@ -24,13 +24,13 @@ product_view_allergen_alert_en.png
 Allergén riasztás
 
 categories_en.png
-Get alternatives for your favorite foods
+Kapjon alternatívát a kedvenc élelmiszereire
 
 product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+Wikipedia az Élelmiszerekhez
+Wikipedia a Kozmetikumokhoz
+Wikipedia az Állateledelekhez
+Wikipedia a Termékekhez
 
 product_view_ingredients_en.png
 Összetevők
