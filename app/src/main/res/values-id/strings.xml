@@ -490,4 +490,5 @@
   <string name="initial_loading">Initial loading</string>
   <string name="preferences">pengaturan</string>
   <string name="OFFlogo">Open Food Facts logo</string>
+  <string name="loading_product">Loading product %s</string>
 </resources>
