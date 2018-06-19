@@ -24,13 +24,13 @@ product_view_allergen_alert_en.png
 Allergén riasztás
 
 categories_en.png
-Get alternatives for your favorite foods
+Kapjon alternatívát a kedvenc élelmiszereire
 
 product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+Wikipedia az Élelmiszerekhez
+Wikipedia a Kozmetikumokhoz
+Wikipedia az Állateledelekhez
+Wikipedia a Termékekhez
 
 product_view_ingredients_en.png
 Összetevők
