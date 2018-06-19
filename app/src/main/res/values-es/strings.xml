@@ -488,9 +488,10 @@
   <string name="scan_sound">Sonido de escaneo</string>
   <string name="trouble_scanning">¿Problemas escaneando?</string>
   <string name="barcode_hint">¿Problemas escaneando? Ingresa el código de barras</string>
-  <string name="switch_camera">Switch camera</string>
+  <string name="switch_camera">Cambiar la cámara</string>
   <string name="autofocus">Enfoque automático</string>
   <string name="initial_loading">Carga Inicial</string>
   <string name="preferences">Preferencias</string>
-  <string name="OFFlogo">Open Food Facts logo</string>
+  <string name="OFFlogo">Logotipo de Open Food Facts</string>
+  <string name="loading_product">Cargando producto %s</string>
 </resources>
