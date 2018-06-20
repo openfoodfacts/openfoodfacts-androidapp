@@ -500,6 +500,6 @@
   <string name="autofocus">מיקוד אוטומטי</string>
   <string name="initial_loading">טעינה ראשונית</string>
   <string name="preferences">העדפות</string>
-  <string name="OFFlogo">Open Food Facts logo</string>
-  <string name="loading_product">Loading product %s</string>
+  <string name="OFFlogo">הלוגו של Open Food Facts</string>
+  <string name="loading_product">המוצר %s נטען</string>
 </resources>
