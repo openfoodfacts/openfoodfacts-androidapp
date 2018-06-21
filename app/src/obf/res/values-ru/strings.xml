@@ -29,7 +29,7 @@
   <string name="Donation">Нажмите, чтобы поддержать Open Beauty Facts</string>
   <string name="translate_help_title">Помогите перевести Open Beauty Facts</string>
   <string name="translate_help_summary">Переведите базу данных Open Beauty Facts на ваш родной язык - технических знаний не требуется</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+  <string name="text_offline_info_dialog">Сканируйте продукты, когда вы не подключены к сети, чтобы добавить их в Open Beauty Facts позже. Все продукты, которые вы отсканируете, будут отображаться здесь, и вы сможете отправить их, используя кнопку ниже.</string>
   <string name="warning_alert_data">Ваша информация об аллергиях не будет отправлена на сервер Open Beauty Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
   <!-- OBF tagline in different languages -->
   <string name="tagline">свободная база данных косметики</string>
