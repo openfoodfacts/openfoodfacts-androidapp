@@ -3,7 +3,7 @@ Status updates for the Open Food Facts GSoC 2018 Project.
 
 View the [project board](https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/3)
 
-View [GSoC 2018 Proposal](https://storage.googleapis.com/summerofcode-prod.appspot.com/gsoc/core_project/doc/6326637019791360_1522146049_GSoC_2018_Open_Food_Facts.pdf?Expires=1527015293&GoogleAccessId=summerofcode-prod%40appspot.gserviceaccount.com&Signature=PI2Tzg%2F1MLdo4%2B1hZ6TGugwXSG1SDvEqvBYz9bU0gR2XUxrh6AtDE6qxggkQOrc%2FbkuDWf9qnbpYoskIUyFJ6JZrnU64JfSGC5oOCUNHrGKaK2EVhk52Nl%2FjIyaGX%2B14qOPBvPxQX%2BUoDo%2Bs0Ui2KiuKAQRe246Sbhb7uOktKpvPcKz61%2F7kQACorqPvmrH%2B4CJsIoKA9TV2xodMzuM6f9d%2FIp4lYFPgleHEvmfKYJt8zaWOuVn7VysB0UNzwp6JtsanSzcST%2FDkFALQCnusOu%2FQMd%2BUmrBgPhk0%2BxHS7ST03VssObctB%2BYHFiYbL1Ez7sUoD4S0889%2FPpkQWCgiKw%3D%3D)
+View [GSoC 2018 Proposal](https://docs.google.com/document/d/1eJqjmyjF3zTUcASM9Go1t_w5Z0FIJM7mJeGpSQu-Ft4)
 
 ## Goals
 #### [Add continuous scan feature](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/1551)
