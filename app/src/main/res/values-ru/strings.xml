@@ -501,5 +501,5 @@
   <string name="initial_loading">Начальная загрузка</string>
   <string name="preferences">Настройки</string>
   <string name="OFFlogo">Логотип Open Food Facts</string>
-  <string name="loading_product">Loading product %s</string>
+  <string name="loading_product">Загрузка продукта %s</string>
 </resources>
