@@ -13,12 +13,12 @@
   <string name="website_contributor">https://world-ru.openpetfoodfacts.org/contributor/</string>
   <string name="terms_url">https://world-ru.openpetfoodfacts.org/terms-of-use</string>
   <string name="txtHome">Open Pet Food Facts - это база данных продуктов для домашних животных с ингредиентами, аллергенами, признаками и всей информацией, которую мы можем найти на этикетках продуктов для домашних животных. Гав. Гав.</string>
-  <string name="slide_1_title">Contribute to Pet Food transparency</string>
-  <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
+  <string name="slide_1_title">Способствовать прозрачности кормов для животных</string>
+  <string name="slide_1_desc">Сканируйте продукты, фотографируйте их, способствуйте прозрачности кормов для животных</string>
   <string name="slide_2_title">Узнать</string>
   <string name="slide_2_desc">Обширная информация о продукте, который вы отсканировали, расшифрована для вас</string>
   <string name="slide_3_title">Следите за продуктом, который используете</string>
-  <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
+  <string name="slide_3_desc">Все корма для животных, отсканированные вами, в одном удобном списке, который можно экспортировать</string>
   <string name="slide_4_title">Работать автономно</string>
   <string name="slide_4_desc">Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас</string>
   <string name="txtDialogsContent">Отсканированного продукта ещё нет в базе Open Pet Food Facts. Добавьте его, пожалуйста.</string>
