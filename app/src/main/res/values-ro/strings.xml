@@ -486,16 +486,16 @@
   <string name="productNameNull">Nume necunoscut</string>
   <string name="productBrandNull">Marcă necunoscută</string>
   <string name="productQuantityNull">Catitate necunoscută</string>
-  <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
-  <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
-  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
-  <string name="scan_sound">Scan sound</string>
-  <string name="trouble_scanning">Trouble Scanning?</string>
-  <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
-  <string name="switch_camera">Switch camera</string>
-  <string name="autofocus">Autofocus</string>
-  <string name="initial_loading">Initial loading</string>
+  <string name="product_not_complete">Acest produs încă nu este complet.\nÎi poți adăuga tu câteva detalii?</string>
+  <string name="addProductOffline">Pari a fi deconectat. Adaugi produsul %s folosind modul offline?</string>
+  <string name="product_not_found">Produsul %1$s pe care l-ai scanat încă nu există în Open Food Facts. Îl poți adăuga tu?</string>
+  <string name="scan_sound">Scanează sunetul</string>
+  <string name="trouble_scanning">Probleme cu scanarea?</string>
+  <string name="barcode_hint">Probleme cu scanarea? Introduce manual codul de bare</string>
+  <string name="switch_camera">Schimbă camera foto</string>
+  <string name="autofocus">Autofocalizare</string>
+  <string name="initial_loading">Încărcare inițială</string>
   <string name="preferences">Preferinţe</string>
-  <string name="OFFlogo">Open Food Facts logo</string>
-  <string name="loading_product">Loading product %s</string>
+  <string name="OFFlogo">Sigla Open Food Facts</string>
+  <string name="loading_product">Se încarcă produse%s</string>
 </resources>
