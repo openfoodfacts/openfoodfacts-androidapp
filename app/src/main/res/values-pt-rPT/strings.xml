@@ -402,7 +402,7 @@
   <string name="pref_resolution_summary">Escolha uma resolução para o upload de imagens</string>
   <string name="image_upload_resolution">Resolução de upload de imagem</string>
   <string name="can_add_barcode">Está com problemas ao digitalizar?\nArraste para cima para digitar o código de barras</string>
-  <string name="wikidata_information">Going further</string>
+  <string name="wikidata_information">Mais...</string>
   <string name="description">Descrição: </string>
   <string name="title">Título: </string>
   <string name="Wikipedia">Ver na Wikipedia</string>
