@@ -28,9 +28,9 @@
   <string name="txt_broaden_search">- extinderea căutării tale \n- scanează-l și adaugă-l în Open Products Facts</string>
   <string name="Donation">Apăsă aici pentru a face o donație către Open Products Facts</string>
   <string name="translate_help_title">Ajută la traducerea aplicației Open Products Facts</string>
-  <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="translate_help_summary">Ajută la traducerea bazei de date Open Products Facts în limba ta - nu sunt necesare cunoștințe tehnice</string>
+  <string name="text_offline_info_dialog">Scanează produsele chiar dacă ești deconectat și le poți adăuga mai târziu în baza de date Open Products Facts. Produsele scanate vor apărea aici și le vei putea trimite folosind butonul de mai jos.</string>
+  <string name="warning_alert_data">Informațiile despre alergiile tale nu vor fi trimise niciodată serverului Open Products Facts. Totodată, fi atent pentru că datele despre anumite produse pot fi incorecte, și detecția s-ar putea să nu fie 100% corectă, așa că te rog să verifici și tu personal acele produse! </string>
   <!-- OPF tagline in different languages -->
   <string name="tagline">the free product database</string>
   <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
