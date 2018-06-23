@@ -400,11 +400,11 @@
   <string name="log_in">Conectați-vă</string>
   <string name="login_true">Already logged in!</string>
   <string name="confirm_logout">Confirm Logout</string>
-  <string name="logout_dialog_content">Are you sure to log out ?</string>
-  <string name="dialog_cancel">Cancel</string>
-  <string name="choose_resolution">Choose Resolution</string>
-  <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-  <string name="image_upload_resolution">Image upload resolution</string>
+  <string name="logout_dialog_content">Ești sigur că vrei să te deconectezi?</string>
+  <string name="dialog_cancel">Anulare</string>
+  <string name="choose_resolution">Alege Rezoluție</string>
+  <string name="pref_resolution_summary">Alege o rezoluție pentru încărcare imagini</string>
+  <string name="image_upload_resolution">Rezoluția pentru încărcarea imaginilor</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">Going further</string>
   <string name="description">Description: </string>
@@ -440,13 +440,13 @@
   <string name="txtCamera">Camera</string>
   <string name="txtGallery">Gallery</string>
   <string name="txtOptions">Options</string>
-  <string name="by_title">Title</string>
+  <string name="by_title">Titlu</string>
   <string name="by_brand">Marca</string>
   <string name="by_barcode">Cod de bare</string>
   <string name="by_time">Vizualizat recent</string>
-  <string name="sort">Sort</string>
-  <string name="by_nutrition_grade">Nutrition Grade</string>
-  <string name="sort_by">Sort By</string>
+  <string name="sort">Sortează</string>
+  <string name="by_nutrition_grade">Notă nutrițională</string>
+  <string name="sort_by">Sortează după</string>
   <string name="shake_summary">Shake phone to scan products</string>
   <string name="shake_title">Agitați pentru a scana</string>
   <!-- strings related to share images -->
