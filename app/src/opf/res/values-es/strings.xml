@@ -24,8 +24,8 @@
   <string name="txtDialogsContent">El producto que escaneó aún no existe en Open Products Facts. Por favor agrégalo.</string>
   <string name="txtDialogsContentPowerMode">El producto que escaneó ya existe en Open Products Facts.</string>
   <string name="msg_share">Look at this product on Open Products Facts :</string>
-  <string name="not_support_books">Books are not currently supported by Open Products Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
+  <string name="not_support_books">los libros no son compatibles actualmente con open products facts</string>
+  <string name="txt_broaden_search">ampliando tu búsqueda.. escanea y añádelo a Open Products Facts</string>
   <string name="Donation">Click here to donate to Open Products Facts</string>
   <string name="translate_help_title">Help translate Open Products Facts</string>
   <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
