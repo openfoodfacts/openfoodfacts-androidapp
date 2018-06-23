@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +42,8 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable;
+
 public class AddProductActivity extends AppCompatActivity {
 
     @Inject
@@ -59,6 +63,33 @@ public class AddProductActivity extends AppCompatActivity {
     private Product mProduct;
     private ToUploadProductDao mToUploadProductDao;
     private Disposable disposable;
+
+    public static File getCameraPicLocation(Context context) {
+        File cacheDir = context.getCacheDir();
+        if (isExternalStorageWritable()) {
+            cacheDir = context.getExternalCacheDir();
+        }
+        File dir = new File(cacheDir, "EasyImage");
+        if (!dir.exists()) {
+            if (dir.mkdirs()) {
+                Log.i(AddProductActivity.class.getSimpleName(), "Directory created");
+            } else {
+                Log.i(AddProductActivity.class.getSimpleName(), "Couldn't create directory");
+            }
+        }
+        return dir;
+    }
+
+    public static void clearCachedCameraPic(Context context) {
+        File[] files = getCameraPicLocation(context).listFiles();
+        for (File file : files) {
+            if (file.delete()) {
+                Log.i(AddProductActivity.class.getSimpleName(), "Deleted cached photo");
+            } else {
+                Log.i(AddProductActivity.class.getSimpleName(), "Couldn't delete cached photo");
+            }
+        }
+    }
 
     @OnPageChange(value = R.id.viewpager, callback = OnPageChange.Callback.PAGE_SELECTED)
     void onPageSelected(int position) {
@@ -162,6 +193,7 @@ public class AddProductActivity extends AppCompatActivity {
         if (disposable != null && !disposable.isDisposed()) {
             disposable.dispose();
         }
+        clearCachedCameraPic(this);
     }
 
     private void setupViewPager(ViewPager viewPager) {
