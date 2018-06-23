@@ -24,7 +24,7 @@
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
   <string name="msg_share">Privește acest produs pe Open Food Facts:</string>
-  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
+  <string name="not_support_books">Cărțile momentan nu sunt suportate de către Open Food Facts</string>
   <string name="txt_broaden_search">- extinderea căutării dvs.\n- scanați și adăugați-l la Open Food Facts</string>
   <string name="Donation">Faceți click aici pentru a face o donație către Open Food Facts</string>
   <string name="translate_help_title">Ajută la traducerea informațiilor din Open Food Facts</string>
