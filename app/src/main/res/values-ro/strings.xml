@@ -398,8 +398,8 @@
   <string name="days_ago">zile în urmă</string>
   <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
   <string name="log_in">Conectați-vă</string>
-  <string name="login_true">Already logged in!</string>
-  <string name="confirm_logout">Confirm Logout</string>
+  <string name="login_true">Ești deja conectat!</string>
+  <string name="confirm_logout">Confirmă Deconectarea</string>
   <string name="logout_dialog_content">Ești sigur că vrei să te deconectezi?</string>
   <string name="dialog_cancel">Anulare</string>
   <string name="choose_resolution">Alege Rezoluție</string>
@@ -466,8 +466,8 @@
   <string name="product_info_tocomplete">Produsele cărora le-ai adăugat informații și care trebuie completate</string>
   <string name="show_by">Arată</string>
   <string name="notify_title">Exportare completă</string>
-  <string name="notify_content">Click to view exported products</string>
-  <string name="notification_channel_name">Export Notifications</string>
+  <string name="notify_content">Apasă să vezi produsele exportate</string>
+  <string name="notification_channel_name">Notificări pentru exportare</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
   <string name="products_to_be_completed">Produse ce trebuie să fie finalizate</string>
   <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
