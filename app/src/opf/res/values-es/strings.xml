@@ -23,14 +23,14 @@
   <string name="slide_4_desc">Puede agregar nuevos productos, incluso si no tiene una conexión a Internet en este momento</string>
   <string name="txtDialogsContent">El producto que escaneó aún no existe en Open Products Facts. Por favor agrégalo.</string>
   <string name="txtDialogsContentPowerMode">El producto que escaneó ya existe en Open Products Facts.</string>
-  <string name="msg_share">Look at this product on Open Products Facts :</string>
+  <string name="msg_share">Échale un vistazo a este producto en Open Products Facts :</string>
   <string name="not_support_books">los libros no son compatibles actualmente con open products facts</string>
   <string name="txt_broaden_search">ampliando tu búsqueda.. escanea y añádelo a Open Products Facts</string>
   <string name="Donation">Click aquí para hacer una donación a Open Products Facts</string>
   <string name="translate_help_title">Ayúdanos a traducir open Products Facts</string>
   <string name="translate_help_summary">Traduce la base de taos de Open Products Facts a tu idioma, no es necesario conocimiento técnico</string>
   <string name="text_offline_info_dialog">Escanea tus productos incluso cuando no hay Internet, para añadirlos luego a Open Products Facts. Los productos escaneados aparecerán aquí y podrás enviarlos usando el botón de abajo.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">La información de tus alergias no se enviará al servidor de open products Facts. así que debes ser cuidadoso ya que la información del producto no puede ser fidedigna, y la detección puede que no sea 100% precisa, ¡así que chequea más de una vez por ti mismo! </string>
   <!-- OPF tagline in different languages -->
   <string name="tagline">Base de datos libre sobre productos</string>
   <string name="product_not_found">El producto %1$s que has escaneado aún no esta en el inventario de Open Products Facts, ¿puedes añadirlo?</string>
