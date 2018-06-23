@@ -26,7 +26,7 @@
   <string name="msg_share">Ver este produto no Open Food Facts :</string>
   <string name="not_support_books">Atualmente, livros não são suportados pelo Open Food Facts</string>
   <string name="txt_broaden_search">- alargar a sua pesquisa \n- digitalizar e adicionar ao Open Food Facts</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donation">Clique aqui para doar para Open Food Facts</string>
   <string name="translate_help_title">Ajude a traduzir o Open Food Facts</string>
   <string name="translate_help_summary">Traga o banco de dados do Open Food Facts para o seu idioma - não é necessário conhecimento técnico</string>
   <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
