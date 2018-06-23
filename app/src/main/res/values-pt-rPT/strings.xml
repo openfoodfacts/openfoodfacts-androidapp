@@ -17,11 +17,11 @@
     <item quantity="one">1 day ago</item>
     <item quantity="other">%d dias atrás</item>
   </plurals>
-  <string name="action_settings">Definições</string>
+  <string name="action_settings">Configurações</string>
   <string name="action_about">Acerca</string>
   <string name="action_discover">Descobrir</string>
   <string name="contribute">Como contribuir</string>
-  <string name="action_find">Procurar</string>
+  <string name="action_find">Encontrar</string>
   <string name="text_barcode">Escreva o código de barras:</string>
   <string name="message_in_activity_save_product_offline">É obrigatória apenas uma foto para enviar um novo produto.</string>
   <string name="product_incomplete_message">Este produto não está completo. Em consequência não pudemos fazer a verificação de alérgenos.</string>
@@ -486,12 +486,12 @@
   <string name="addProductOffline">Você parece estar offline. Adicione o produto %s usando o modo offline?</string>
   <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Food Facts. Pode adicioná-lo?</string>
   <string name="scan_sound">Som ao digitalizar</string>
-  <string name="trouble_scanning">Trouble Scanning?</string>
-  <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
-  <string name="switch_camera">Switch camera</string>
-  <string name="autofocus">Autofocus</string>
-  <string name="initial_loading">Initial loading</string>
+  <string name="trouble_scanning">Problemas digitalizando?</string>
+  <string name="barcode_hint">Problemas digitalizando? Digite o código de barras</string>
+  <string name="switch_camera">Mudar de câmara</string>
+  <string name="autofocus">Auto-foco</string>
+  <string name="initial_loading">Carregamento inicial</string>
   <string name="preferences">Configurações</string>
-  <string name="OFFlogo">Open Food Facts logo</string>
-  <string name="loading_product">Loading product %s</string>
+  <string name="OFFlogo">Logotipo da Open Food Facts</string>
+  <string name="loading_product">Carregando produto %s</string>
 </resources>
