@@ -7,10 +7,10 @@ Puedes empezar a contribuir desde ahora añadiendo un producto de tu alacena de 
 
 *** Obtener los datos ***
 
-- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
-- Open Beauty Facts helps you to make sense of the fine print on products labels.
-- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
-- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
+- Cosmetics additives, F.I.L. códigos, número de indice de colores, INCI ( Nomenclatura internacional de ingredientes cosméticos) lista de ingredientes, alérgenos, códigos de empaque... 
+- Open Beauty Facts te ayuda a darle sentido a la letra pequeña en la etiqueta de los productos.
+No tienes que ser químico ni saber Latín para descifrar una lista de ingredientes :-)
+Puedes escanear: lociones para el afeitado, lociones corporales, cremas, desodorantes, delineadores, bases, fragancias, lapices labiales, shampoo, jabones, gel de baño, esmaltes y mucho más…
 - We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
 *** Funciona bien en cualquier condición ***
