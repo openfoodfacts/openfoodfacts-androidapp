@@ -26,12 +26,12 @@
   <string name="msg_share">Look at this product on Open Products Facts :</string>
   <string name="not_support_books">los libros no son compatibles actualmente con open products facts</string>
   <string name="txt_broaden_search">ampliando tu búsqueda.. escanea y añádelo a Open Products Facts</string>
-  <string name="Donation">Click here to donate to Open Products Facts</string>
-  <string name="translate_help_title">Help translate Open Products Facts</string>
-  <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+  <string name="Donation">Click aquí para hacer una donación a Open Products Facts</string>
+  <string name="translate_help_title">Ayúdanos a traducir open Products Facts</string>
+  <string name="translate_help_summary">Traduce la base de taos de Open Products Facts a tu idioma, no es necesario conocimiento técnico</string>
+  <string name="text_offline_info_dialog">Escanea tus productos incluso cuando no hay Internet, para añadirlos luego a Open Products Facts. Los productos escaneados aparecerán aquí y podrás enviarlos usando el botón de abajo.</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <!-- OPF tagline in different languages -->
   <string name="tagline">Base de datos libre sobre productos</string>
-  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
+  <string name="product_not_found">El producto %1$s que has escaneado aún no esta en el inventario de Open Products Facts, ¿puedes añadirlo?</string>
 </resources>
