@@ -1,11 +1,11 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Digitalize produtos alimentares para obter dados sobre ingredientes, aditivos e informação nutricional.
 
-The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+A aplicação permite visualizar os 547.000 produtos (incluindo 175.000 nos EUA) já contidos no banco de dados aberto e gratuito dos Open Food Facts e de adicionar fotos e dados de produtos faltantes.
 
-To discover the Open Food Facts project, please visit https://openfoodfacts.org
+Para descobrir o projeto Open Food Facts, visite https://pt.openfoodfacts.org
 
 
-***Contribute to Food Transparency***
+***Contribua para a Transparência Alimentar***
 
 - Open Food Facts is a food products database made by everyone, for everyone.
 - You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
