@@ -2,18 +2,18 @@
 ==================
 Nova versão nativa do Open Food Facts. Todos os voluntários do Open Food Facts têm trabalhado duro basedo em suas sugestões e comentários :)
 ==================
-* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
+* Open Food Facts é agora um movimento mais global do que nunca. 500k produtos liberados, 10K contribuidores registrados, 182 países. Você vai se juntar a nós ?
 ==================
-What's new ?
+O que há de novo?
 ==================
-1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
-2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
-3. Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
-4. You can set allergens alerts (always double check the actual label yourself though!)
-5. You now get a scan history you can export and that never leaves your phone
-6. You can shake your phone at any time in the app to start scanning
-7. You can now add new products even when you're offline
-8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
-9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
+1. Você obtém a imagem em 360º: nutrição, ingredientes e todos os fatos sobre comida, apresentados com clareza e nitidez.
+2. Obtenha o grau nutricional "NutriScore" para todos os produtos do mundo. Compare facilmente produtos. Mais fácil do que decifrar tabelas de nutrição.
+3. Obter informações extras da Wikipedia. Clique em uma categoria de alimentos, um aditivo… para saber mais e ver produtos similares.
+4. Pode definir alertas de alérgenos (sempre verifique novamente o rótulo real mesmo assim!)
+5. Você agora tem um histórico de escaneamento que pode exportar e que nunca sai do seu telefone
+6. Pode agitar seu telefone a qualquer momento no aplicativo para começar a escanear
+7. Agora pode adicionar novos produtos mesmo quando estiver off-line
+8. Agora pode ajudar a completar suas comidas favoritas diretamente da aplicação: tire fotos, preencha informações, faça a transparência alimentar a realidade
+9. Tudo também é muito mais rápido. Products load blazingly fast, even with a bad mobile connection.
 10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
 Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
