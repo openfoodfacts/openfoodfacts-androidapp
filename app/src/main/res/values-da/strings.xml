@@ -414,7 +414,7 @@
   <string name="country_string">Country</string>
   <string name="store_subtitle">Butik</string>
   <string name="packaging_subtitle">Emballage</string>
-  <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="last_seen_string">%1$d %2$s siden</string>
   <string name="store_string">Butik</string>
   <string name="packaging_string">Emballage</string>
   <string name="label_string">Etiket</string>
@@ -493,5 +493,5 @@
   <string name="initial_loading">Indledende indlæsning</string>
   <string name="preferences">Præferencer</string>
   <string name="OFFlogo">Open Food Facts logo</string>
-  <string name="loading_product">Loading product %s</string>
+  <string name="loading_product">Indlæser produkt %s</string>
 </resources>
