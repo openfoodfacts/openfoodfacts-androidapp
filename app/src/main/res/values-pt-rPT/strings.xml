@@ -24,9 +24,9 @@
   <string name="action_find">Procurar</string>
   <string name="text_barcode">Escreva o código de barras:</string>
   <string name="message_in_activity_save_product_offline">É obrigatória apenas uma foto para enviar um novo produto.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+  <string name="product_incomplete_message">Este produto não está completo. Em consequência não pudemos fazer a verificação de alérgenos.</string>
   <string name="no_offline_data">Está tudo pronto</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="first_offline">Os produtos adicionados offline aparecerão aqui</string>
   <!-- Image Upload -->
   <string-array name="upload_image">
     <item>640 X 480</item>
@@ -65,10 +65,10 @@
     <item>Ingredientes</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
+  <string name="bookmark">Favorito</string>
   <string name="edit">Editar</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
+  <string name="fastscroller_track">Trilha FastScroller</string>
+  <string name="fastscroller_handle">Alça FastScroller</string>
   <string name="search_button">Procurar</string>
   <string name="no_products">Produtos não encontrados</string>
   <string name="desc_list_item_icon">Ícone</string>
@@ -92,7 +92,7 @@
   <string name="txtCountries">País de venda :</string>
   <string name="txtIngredients">Lista dos ingredientes :</string>
   <string name="Donate">Doar</string>
-  <string name="Donation">Click here to donate to Open Food Facts</string>
+  <string name="Donation">Clique aqui para doar para Open Food Facts</string>
   <string name="txtSubstances">Substâncias ou produtos susceptíveis de causar alergias ou intolerâncias :</string>
   <string name="txtAdditives">Aditivos :</string>
   <string name="txtTraces">Vestígios :</string>
@@ -135,7 +135,7 @@
   <string name="txtSendAll">Enviar todos</string>
   <string name="txtNoData">Sem dados</string>
   <string name="txtPictureNeeded">Epera…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">Você deve adicionar pelo menos uma foto antes de enviar este produto</string>
   <string name="txtPictureNeededDialogYes">Ficar</string>
   <string name="txtPictureNeededDialogNo">Descartar</string>
   <string name="toastSending">A enviar...</string>
@@ -394,7 +394,7 @@
   <string name="days_ago">dias atrás</string>
   <string name="scan_first_string">Seu histórico de produtos visualizados será listado aqui.\nEste histórico é somente para seus olhos e é armazenado localmente.</string>
   <string name="log_in">Iniciar sessão</string>
-  <string name="login_true">Already logged in!</string>
+  <string name="login_true">Já logado!</string>
   <string name="confirm_logout">Confirme o logout</string>
   <string name="logout_dialog_content">Você tem certeza de sair?</string>
   <string name="dialog_cancel">Cancelar</string>
@@ -405,48 +405,48 @@
   <string name="wikidata_information">Going further</string>
   <string name="description">Descrição: </string>
   <string name="title">Título: </string>
-  <string name="Wikipedia">View on Wikipedia</string>
-  <string name="Browse_Products">Browse Products</string>
-  <string name="swipe_down">Swipe down</string>
+  <string name="Wikipedia">Ver na Wikipedia</string>
+  <string name="Browse_Products">Explorar produtos</string>
+  <string name="swipe_down">Deslize para baixo</string>
   <string name="brand_string">Marca</string>
   <string name="additive_string">Aditivo</string>
   <string name="search_string">Procurar</string>
   <string name="country_string">País</string>
   <string name="store_subtitle">Loja</string>
   <string name="packaging_subtitle">Embalagem</string>
-  <string name="last_seen_string">%1$d %2$s ago</string>
+  <string name="last_seen_string">Há %1$d %2$s</string>
   <string name="store_string">Loja</string>
   <string name="packaging_string">Embalagem</string>
   <string name="label_string">Etiqueta</string>
   <string name="category_string">Categoria</string>
-  <string name="connection">Connected</string>
+  <string name="connection">Ligado</string>
   <string name="contributor_string">Colaborador</string>
-  <string name="Rate_Us">Show Your Support</string>
-  <string name="Rate_Us_title">Rate our App</string>
-  <string name="app_disabled_text">Application is disabled</string>
+  <string name="Rate_Us">Partilhe o seu apoio</string>
+  <string name="Rate_Us_title">Avalie nossa aplicação</string>
+  <string name="app_disabled_text">A aplicação está desativada</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitaminas:</string>
-  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="amino_acid_tags_text">Aminoácidos:</string>
   <string name="mineral_tags_text">Minerais:</string>
-  <string name="other_tags_text">Other Substances:</string>
+  <string name="other_tags_text">Outras substâncias:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
-  <string name="disable_image_loading">Disable image loading when battery is low</string>
-  <string name="DisableLoadTitle">Disable image loading</string>
-  <string name="txtCamera">Camera</string>
-  <string name="txtGallery">Gallery</string>
-  <string name="txtOptions">Options</string>
-  <string name="by_title">Title</string>
+  <string name="wikidata">Dados Wikidata</string>
+  <string name="disable_image_loading">Desativar o carregamento da imagem quando a bateria está fraca</string>
+  <string name="DisableLoadTitle">Desativar o carregamento de imagens</string>
+  <string name="txtCamera">Câmara</string>
+  <string name="txtGallery">Galeria</string>
+  <string name="txtOptions">Opções</string>
+  <string name="by_title">Título</string>
   <string name="by_brand">Marca</string>
   <string name="by_barcode">Código de barras</string>
-  <string name="by_time">Recently Viewed</string>
-  <string name="sort">Sort</string>
-  <string name="by_nutrition_grade">Nutrition Grade</string>
-  <string name="sort_by">Sort By</string>
-  <string name="shake_summary">Shake phone to scan products</string>
-  <string name="shake_title">Shake to scan</string>
+  <string name="by_time">Recentemente visto</string>
+  <string name="sort">Ordenar</string>
+  <string name="by_nutrition_grade">Classificação nutricional</string>
+  <string name="sort_by">Ordenar por</string>
+  <string name="shake_summary">Agite o telefone para digitalizar produtos</string>
+  <string name="shake_title">Agite para digitalizar</string>
   <!-- strings related to share images -->
-  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+  <string name="sorry_msg">Fotos sem código de barras ainda não podem ser adicionadas á aplicação. Por favor, tente a versão web móvel.</string>
   <string name="no_barcode">We have not detected any barcode</string>
   <string name="enter_barcode">Please type the barcode below</string>
   <string name="format_error">Wrong Barcode/QR format</string>
