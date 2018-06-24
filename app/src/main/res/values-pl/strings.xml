@@ -221,7 +221,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="from_gallery">Z galerii</string>
   <string name="product_sent">Produkt wysłany z powodzeniem</string>
   <string name="action_edit_product">Edytuj produkt</string>
-  <string name="title_info_dialog">How does it work?</string>
+  <string name="title_info_dialog">Jak to działa?</string>
   <string name="text_offline_info_dialog">Możesz skanować produkty gdy jesteś offline by później dodać je do Open Food Facts. Wszystkie zeskanowane produkty pojawią się tu i będziesz mógł wysłać je za pomocą przycisku poniżej.</string>
   <string name="permission_camera">Potrzebujesz zezwolenia do skanowania kodów kreskowych i fotografowania.</string>
   <string name="permission_title">Informacja o zezwoleniu</string>
@@ -472,7 +472,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="by_nutrition_grade">Stopień odżywienia</string>
   <string name="sort_by">Ułóż według</string>
   <string name="shake_summary">Potrząśnij telefonem, by zeskanować produkt</string>
-  <string name="shake_title">Shake to scan</string>
+  <string name="shake_title">Potrząśnij aby zeskanować</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Aplikacje nie dodaje obrazów bez kodu kreskowego. Spróbuj w wersji mobilnej.</string>
   <string name="no_barcode">Nie odnaleziono kodu kreskowego</string>
@@ -505,12 +505,12 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Edytuj</string>
   <string name="txtDialogsTitle">Informacja</string>
-  <string name="preference_show_all_product_photos_title">Show all product photos</string>
+  <string name="preference_show_all_product_photos_title">Pokaż wszystkie zdjęcia produktu</string>
   <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
-  <string name="offline_product_addition_title">Add new product</string>
-  <string name="productNameNull">Name unknown</string>
-  <string name="productBrandNull">Brand unknown</string>
-  <string name="productQuantityNull">Quantity unknown</string>
+  <string name="offline_product_addition_title">Dodaj nowy produkt</string>
+  <string name="productNameNull">Nazwa nieznana</string>
+  <string name="productBrandNull">Marka nieznana</string>
+  <string name="productQuantityNull">Ilość nieznana</string>
   <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
   <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
   <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
