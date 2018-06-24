@@ -1,0 +1,14 @@
+# remove the leading '#' to uncomment lines
+
+clear_previous_screenshots(true)
+
+app_package_name("openfoodfacts.github.scrachx.openfood")
+tests_package_name("openfoodfacts.github.scrachx.openfood.test")
+use_tests_in_packages(["openfoodfacts.github.scrachx.openfood.views"])
+
+app_apk_path("app/build/outputs/apk/off/debug/app-off-debug.apk")
+tests_apk_path("app/build/outputs/apk/androidTest/off/debug/app-off-debug-androidTest.apk")
+
+# To screenshot in those locales
+locales(['en-US', 'fr-FR', 'it-IT'])
+

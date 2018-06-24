@@ -238,6 +238,7 @@ dependencies {
 
     // Required for instrumented tests
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.2'
@@ -247,6 +248,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'design'
         exclude module: 'recyclerview-v7'
     }
+    androidTestImplementation 'tools.fastlane:screengrab:1.0.0'
+
     resourcePlaceholders {
         files = ['xml/shortcuts.xml']
     }
