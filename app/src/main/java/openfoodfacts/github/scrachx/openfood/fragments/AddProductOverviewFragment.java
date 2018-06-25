@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -26,6 +28,7 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.apache.commons.text.WordUtils;
+import org.greenrobot.greendao.async.AsyncSession;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -36,11 +39,19 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -96,11 +107,11 @@ public class AddProductOverviewFragment extends BaseFragment {
     @BindView(R.id.packaging)
     EditText packaging;
     @BindView(R.id.categories)
-    EditText categories;
+    AutoCompleteTextView categories;
     @BindView(R.id.label)
-    EditText label;
+    AutoCompleteTextView label;
     @BindView(R.id.origin_of_ingredients)
-    EditText originOfIngredients;
+    AutoCompleteTextView originOfIngredients;
     @BindView(R.id.manufacturing_place)
     EditText manufacturingPlace;
     @BindView(R.id.emb_code)
@@ -108,17 +119,20 @@ public class AddProductOverviewFragment extends BaseFragment {
     @BindView(R.id.link)
     EditText link;
     @BindView(R.id.country_where_purchased)
-    EditText countryWherePurchased;
+    AutoCompleteTextView countryWherePurchased;
     @BindView(R.id.stores)
     EditText stores;
     @BindView(R.id.countries_where_sold)
-    EditText countriesWhereSold;
+    AutoCompleteTextView countriesWhereSold;
     private String languageCode;
     private Activity activity;
     private Product mProduct;
     private String code;
     private String mImageUrl;
     private File photoFile;
+    private List<String> countries = new ArrayList<>();
+    private List<String> labels = new ArrayList<>();
+    private List<String> category = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -148,6 +162,63 @@ public class AddProductOverviewFragment extends BaseFragment {
             Toast.makeText(activity, "Something went wrong", Toast.LENGTH_SHORT).show();
             activity.finish();
         }
+        loadAutoSuggestions();
+    }
+
+    private void loadAutoSuggestions() {
+        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        AsyncSession asyncSessionCountries = daoSession.startAsyncSession();
+        AsyncSession asyncSessionLabels = daoSession.startAsyncSession();
+        AsyncSession asyncSessionCategories = daoSession.startAsyncSession();
+        LabelNameDao labelNameDao = daoSession.getLabelNameDao();
+        CountryNameDao countryNameDao = daoSession.getCountryNameDao();
+        CategoryNameDao categoryNameDao = daoSession.getCategoryNameDao();
+
+        asyncSessionCountries.queryList(countryNameDao.queryBuilder()
+                .where(CountryNameDao.Properties.LanguageCode.eq(languageCode))
+                .orderDesc(CountryNameDao.Properties.Name).build());
+        asyncSessionLabels.queryList(labelNameDao.queryBuilder()
+                .where(LabelNameDao.Properties.LanguageCode.eq(languageCode))
+                .orderDesc(LabelNameDao.Properties.Name).build());
+        asyncSessionCategories.queryList(categoryNameDao.queryBuilder()
+                .where(CategoryNameDao.Properties.LanguageCode.eq(languageCode))
+                .orderDesc(CategoryNameDao.Properties.Name).build());
+
+        asyncSessionCountries.setListenerMainThread(operation -> {
+            @SuppressWarnings("unchecked")
+            List<CountryName> countryNames = (List<CountryName>) operation.getResult();
+            countries.clear();
+            for (int i = 0; i < countryNames.size(); i++) {
+                countries.add(countryNames.get(i).getName());
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
+                    android.R.layout.simple_dropdown_item_1line, countries);
+            originOfIngredients.setAdapter(adapter);
+            countryWherePurchased.setAdapter(adapter);
+            countriesWhereSold.setAdapter(adapter);
+        });
+        asyncSessionLabels.setListenerMainThread(operation -> {
+            @SuppressWarnings("unchecked")
+            List<LabelName> labelNames = (List<LabelName>) operation.getResult();
+            labels.clear();
+            for (int i = 0; i < labelNames.size(); i++) {
+                labels.add(labelNames.get(i).getName());
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
+                    android.R.layout.simple_dropdown_item_1line, labels);
+            label.setAdapter(adapter);
+        });
+        asyncSessionCategories.setListenerMainThread(operation -> {
+            @SuppressWarnings("unchecked")
+            List<CategoryName> categoryNames = (List<CategoryName>) operation.getResult();
+            category.clear();
+            for (int i = 0; i < categoryNames.size(); i++) {
+                category.add(categoryNames.get(i).getName());
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
+                    android.R.layout.simple_dropdown_item_1line, category);
+            categories.setAdapter(adapter);
+        });
     }
 
     private void setProductLanguage(String lang) {
@@ -298,6 +369,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 .items(finalLocalLabels)
                 .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
                     setProductLanguage(finalLocalValues.get(which));
+                    loadAutoSuggestions();
                     return true;
                 })
                 .positiveText(R.string.ok_button)

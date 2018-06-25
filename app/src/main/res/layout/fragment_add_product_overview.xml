@@ -219,7 +219,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/brand" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/categories"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -229,6 +229,7 @@
             android:background="@drawable/bg_edittext"
             android:gravity="center_vertical"
             android:hint="Categories"
+            android:imeOptions="actionNext"
             android:inputType="text"
             android:nextFocusDown="@id/label"
             android:paddingLeft="@dimen/spacing_small"
@@ -237,7 +238,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/packaging" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/label"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -247,6 +248,7 @@
             android:background="@drawable/bg_edittext"
             android:gravity="center_vertical"
             android:hint="Labels"
+            android:imeOptions="actionNext"
             android:inputType="text"
             android:nextFocusDown="@id/origin_of_ingredients"
             android:paddingLeft="@dimen/spacing_small"
@@ -280,7 +282,7 @@
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/grey_line2" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/origin_of_ingredients"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -290,6 +292,7 @@
             android:background="@drawable/bg_edittext"
             android:gravity="center_vertical"
             android:hint="Origin of ingredients"
+            android:imeOptions="actionNext"
             android:inputType="text"
             android:nextFocusDown="@id/manufacturing_place"
             android:paddingLeft="@dimen/spacing_small"
@@ -397,7 +400,7 @@
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/grey_line3" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/country_where_purchased"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -407,6 +410,7 @@
             android:background="@drawable/bg_edittext"
             android:gravity="center_vertical"
             android:hint="Country where purchased"
+            android:imeOptions="actionNext"
             android:inputType="text"
             android:nextFocusDown="@id/stores"
             android:paddingLeft="@dimen/spacing_small"
@@ -437,7 +441,7 @@
             app:layout_constraintTop_toBottomOf="@id/country_where_purchased"
             tools:visibility="visible" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/countries_where_sold"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -447,6 +451,7 @@
             android:background="@drawable/bg_edittext"
             android:gravity="center_vertical"
             android:hint="Countries where sold"
+            android:imeOptions="actionDone"
             android:inputType="text"
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
