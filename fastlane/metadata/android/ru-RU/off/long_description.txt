@@ -19,7 +19,7 @@ To discover the Open Food Facts project, please visit https://openfoodfacts.org
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
 - On wines and beers, you will find the alcohol content.
 
-*** Works well in any condition ***
+*** Хорошо работает в любых условиях ***
 - Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас.
 - Приложение загружает только строго необходимое для снижения потребления данных и аккумулятора
 - Вам не нужна камера для обзора продукта. Вы также можете ввести штрих-код, если у вас нет камеры или с ней проблема.
