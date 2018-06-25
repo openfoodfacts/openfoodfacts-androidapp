@@ -20,7 +20,7 @@ You will also be able to find (according to the indications present on the produ
 - brands, allergens, labels (organic, vegan...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
-*** Works well in any condition ***
+*** Хорошо работает в любых условиях ***
 - Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас.
 - Приложение загружает только строго необходимое для снижения потребления данных и аккумулятора
 - Вам не нужна камера для обзора продукта. Вы также можете ввести штрих-код, если у вас нет камеры или с ней проблема.
