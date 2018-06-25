@@ -490,8 +490,8 @@
   <string name="barcode_hint">Tarama sorun mu var? Barkod Girin</string>
   <string name="switch_camera">Kamerayı değiştir</string>
   <string name="autofocus">Otomatik odaklama</string>
-  <string name="initial_loading">Initial loading</string>
+  <string name="initial_loading">Açılış yükleniyor</string>
   <string name="preferences">Tercihler</string>
   <string name="OFFlogo">Open Food Facts logo</string>
-  <string name="loading_product">Loading product %s</string>
+  <string name="loading_product">Ürün yükleniyor %s</string>
 </resources>

@@ -1,5 +1,37 @@
 # Status updates for the Open Food Facts project
 
+## Week starting June 18th
+
+### Completed this week
+
+* Added thorough product addition on the test server.
+* Quicker feedback if scan was successful. #1735
+
+### Working on this week
+
+* Fix other issues from the issues tracker.
+
+### To be worked on next week
+
+* Enable offline mode in the thorough product addition.
+
+## Week starting June 11th
+
+### Completed this week
+
+* Added new product addition UI.
+* Fixed travis CI failing issue #1699
+* Fixed issue #1658
+
+### Working on this week
+
+* Implement the added product addition UI.
+* Fix other issues from the issues tracker.
+
+### To be worked on next week
+
+* Add thorough product addition on test server using the newly designed UI.
+
 ## Week starting June 04th
 
 ### Completed this week

@@ -491,7 +491,7 @@
   <string name="productBrandNull">Бренд неизвестен</string>
   <string name="productQuantityNull">Количество неизвестно</string>
   <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
-  <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
+  <string name="addProductOffline">Кажется, нет подключения к сети. Добавить продукт %s в автономном режиме?</string>
   <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
   <string name="scan_sound">Звук сканировния</string>
   <string name="trouble_scanning">Не можете отсканировать?</string>
@@ -501,5 +501,5 @@
   <string name="initial_loading">Начальная загрузка</string>
   <string name="preferences">Настройки</string>
   <string name="OFFlogo">Логотип Open Food Facts</string>
-  <string name="loading_product">Loading product %s</string>
+  <string name="loading_product">Загрузка продукта %s</string>
 </resources>
