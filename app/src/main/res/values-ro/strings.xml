@@ -131,7 +131,7 @@
   <string name="txtSendAll">Trimiteți toate produsele</string>
   <string name="txtNoData">Lipsă date</string>
   <string name="txtPictureNeeded">Așteaptă…</string>
-  <string name="txtPictureNeededDialogContent">Ar trebui să adăugați cel puțin o fotografie înainte de a trimite acest produs</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Oprire</string>
   <string name="txtPictureNeededDialogNo">Renunță</string>
   <string name="toastSending">Se trimite...</string>
