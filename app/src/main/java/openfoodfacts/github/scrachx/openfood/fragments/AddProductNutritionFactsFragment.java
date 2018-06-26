@@ -127,13 +127,13 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             "nutriment_vitamin-b1",
             "nutriment_vitamin-b12",
             "nutriment_vitamin-b2",
+            "nutriment_vitamin-pp",
             "nutriment_vitamin-b6",
             "nutriment_vitamin-b9",
             "nutriment_vitamin-c",
             "nutriment_vitamin-d",
             "nutriment_vitamin-e",
             "nutriment_vitamin-k",
-            "nutriment_vitamin-pp",
             "nutriment_zinc"};
 
     private static final String ALL_UNIT[] = {"g", "mg", "µg", "% DV", "IU"};

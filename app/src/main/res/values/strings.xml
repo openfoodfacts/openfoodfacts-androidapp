@@ -88,82 +88,82 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
-        <item>Alpha-linolenic-acid</item>
-        <item>Arachidic-acid</item>
-        <item>Arachidonic-acid</item>
-        <item>Behenic-acid</item>
+        <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
+        <item>Arachidic acid (20:0)</item>
+        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
+        <item>Behenic acid (22:0)</item>
         <item>Bicarbonate</item>
         <item>Biotin</item>
-        <item>Butyric-acid</item>
+        <item>Butyric acid (4:0)</item>
         <item>Caffeine</item>
         <item>Calcium</item>
-        <item>Capric-acid</item>
-        <item>Caproic-acid</item>
-        <item>Caprylic-acid</item>
+        <item>Capric acid (10:0)</item>
+        <item>Caproic acid (6:0)</item>
+        <item>Caprylic acid (8:0)</item>
         <item>Casein</item>
-        <item>Cerotic-acid</item>
+        <item>Cerotic acid (26:0)</item>
         <item>Chloride</item>
         <item>Cholesterol</item>
         <item>Chromium</item>
         <item>Copper</item>
-        <item>Dihomo-gamma-linolenic-acid</item>
-        <item>Docosahexaenoic-acid</item>
-        <item>Eicosapentaenoic-acid</item>
-        <item>Elaidic-acid</item>
-        <item>Erucic-acid</item>
+        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
+        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
+        <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
+        <item>Elaidic acid (18:1 n-9)</item>
+        <item>Erucic acid (22:1 n-9)</item>
         <item>Fluoride</item>
         <item>Fructose</item>
-        <item>Gamma-linolenic-acid</item>
+        <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
         <item>Glucose</item>
-        <item>Gondoic-acid</item>
+        <item>Gondoic acid (20:1 n-9)</item>
         <item>Iodine</item>
         <item>Iron</item>
         <item>Lactose</item>
-        <item>Lauric-acid</item>
-        <item>Lignoceric-acid</item>
-        <item>Linoleic-acid</item>
+        <item>Lauric acid (12:0)</item>
+        <item>Lignoceric acid (24:0)</item>
+        <item>Linoleic acid / LA (18:2 n-6)</item>
         <item>Magnesium</item>
         <item>Maltodextrins</item>
         <item>Maltose</item>
         <item>Manganese</item>
-        <item>Mead-acid</item>
-        <item>Melissic-acid</item>
+        <item>Mead acid (20:3 n-9)</item>
+        <item>Melissic acid (30:0)</item>
         <item>Molybdenum</item>
-        <item>Monounsaturated-fat</item>
-        <item>Montanic-acid</item>
-        <item>Myristic-acid</item>
-        <item>Nervonic-acid</item>
+        <item>Monounsaturated fat</item>
+        <item>Montanic acid (28:0)</item>
+        <item>Myristic acid (14:0)</item>
+        <item>Nervonic acid (24:1 n-9)</item>
         <item>Nucleotides</item>
-        <item>Oleic-acid</item>
-        <item>Omega-3-fat</item>
-        <item>Omega-6-fat</item>
-        <item>Omega-9-fat</item>
-        <item>Palmitic-acid</item>
-        <item>Pantothenic-acid</item>
+        <item>Oleic acid (18:1 n-9)</item>
+        <item>Omega 3 fatty acids</item>
+        <item>Omega 6 fatty acids</item>
+        <item>Omega 9 fatty acids</item>
+        <item>Palmitic acid (16:0)</item>
+        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
         <item>pH</item>
         <item>Phosphorus</item>
-        <item>Polyols</item>
-        <item>Polyunsaturated-fat</item>
+        <item>Sugar alcohols (Polyols)</item>
+        <item>Polyunsaturated fat</item>
         <item>Potassium</item>
         <item>Selenium</item>
-        <item>Serum-proteins</item>
+        <item>Serum proteins</item>
         <item>Silica</item>
         <item>Starch</item>
-        <item>Stearic-acid</item>
+        <item>Stearic acid (18:0)</item>
         <item>Sucrose</item>
         <item>Taurine</item>
-        <item>Trans-fat</item>
+        <item>Trans fat</item>
         <item>Vitamin A</item>
-        <item>Vitamin B1</item>
-        <item>Vitamin B12</item>
-        <item>Vitamin B2</item>
-        <item>Vitamin B6</item>
-        <item>Vitamin B9</item>
-        <item>Vitamin C</item>
+        <item>Vitamin B1 (Thiamin)</item>
+        <item>Vitamin B12 (cobalamin)</item>
+        <item>Vitamin B2 (Riboflavin)</item>
+        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
+        <item>Vitamin B6 (Pyridoxin)</item>
+        <item>Vitamin B9 (Folic acid)</item>
+        <item>Vitamin C (ascorbic acid)</item>
         <item>Vitamin D</item>
         <item>Vitamin E</item>
         <item>Vitamin K</item>
-        <item>Vitamin PP</item>
         <item>Zinc</item>
     </string-array>
 
