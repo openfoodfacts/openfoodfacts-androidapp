@@ -131,7 +131,7 @@
   <string name="txtSendAll">Augšupielādēt visu</string>
   <string name="txtNoData">Nav datu</string>
   <string name="txtPictureNeeded">Pagaidiet …</string>
-  <string name="txtPictureNeededDialogContent">Pirms šī produkta iesniegšanas jums jāpievieno vismaz viens attēls</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Palikt</string>
   <string name="txtPictureNeededDialogNo">Atcelt</string>
   <string name="toastSending">Augšuplādē…</string>
