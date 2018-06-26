@@ -127,7 +127,7 @@
   <string name="txtSendAll">Качване на всичко</string>
   <string name="txtNoData">Няма данни</string>
   <string name="txtPictureNeeded">Изчакайте…</string>
-  <string name="txtPictureNeededDialogContent">Преди да изпратите този продукт, трябва да добавите поне една снимка</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Остани</string>
   <string name="txtPictureNeededDialogNo">Отказ</string>
   <string name="toastSending">Качване…</string>
