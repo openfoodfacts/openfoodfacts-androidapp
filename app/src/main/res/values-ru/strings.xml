@@ -36,12 +36,6 @@
   <string name="no_offline_data">Вы закончили</string>
   <string name="first_offline">Продукты, добавленные в автономном режиме, появятся здесь</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Резюме</item>
@@ -75,8 +69,6 @@
   <!-- Content Description -->
   <string name="bookmark">Добавить в закладки</string>
   <string name="edit">Изменить</string>
-  <string name="fastscroller_track">След FastScroller</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Поиск</string>
   <string name="no_products">Продукты не найдены</string>
   <string name="desc_list_item_icon">Значок пункта</string>
@@ -143,7 +135,7 @@
   <string name="txtSendAll">Отправить все</string>
   <string name="txtNoData">Нет данных</string>
   <string name="txtPictureNeeded">Подождите…</string>
-  <string name="txtPictureNeededDialogContent">Перед отправкой этого продукта вы должны добавить по крайней мере одну фотографию</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Оставаться</string>
   <string name="txtPictureNeededDialogNo">Отменить</string>
   <string name="toastSending">Передача...</string>
@@ -166,8 +158,6 @@
   <string name="msg_share">Посмотрите на этот продукт на Open Food Facts:</string>
   <string name="create_account">Регистрация</string>
   <string name="home_drawer">Главная</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Поиск</string>
   <string name="search_by_barcode_drawer">Поиск по штрих-коду</string>
   <string name="category_drawer">Категории</string>
@@ -221,6 +211,7 @@
   <string name="prefs_power_mode_summary">Быстрое сканирование продуктов в супермаркете для проверки их наличия в базе данных.</string>
   <string name="prefs_language">Язык</string>
   <string name="prefs_language_summary">Сменить язык</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">История</string>
   <string name="clear_history">Очистить историю</string>
   <string name="title_clear_history_dialog">Очистить</string>
@@ -265,7 +256,7 @@
   <string name="action_contributes">Ваш вклад</string>
   <string name="logout_drawer">Выйти</string>
   <string name="contribution_without_account">Вы можете войти или создать учётную запись, чтобы сохранить ваш вклад</string>
-  <string name="textCarbonFootprint">"Углеродный след / выбросы CO2: "</string>
+  <string name="textCarbonFootprint">Углеродный след / выбросы CO2: </string>
   <string name="txtDialogPowerMode">Быстрый просмотр</string>
   <string name="txtSeeMore">Подробнее</string>
   <string name="action_search">Найти</string>
