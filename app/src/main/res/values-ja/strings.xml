@@ -24,12 +24,6 @@
   <string name="no_offline_data">すべて完了しました</string>
   <string name="first_offline">オフラインで追加した製品がここに表示されます</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>サマリー</item>
@@ -152,8 +146,6 @@
   <string name="msg_share">Open Food Facts でこの製品を参照してください:</string>
   <string name="create_account">サインアップ</string>
   <string name="home_drawer">ホーム</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">検索</string>
   <string name="search_by_barcode_drawer">バーコードで検索</string>
   <string name="category_drawer">カテゴリー</string>
@@ -207,6 +199,7 @@
   <string name="prefs_power_mode_summary">スーパーマーケット内の製品をすばやくスキャンして、データベースに含まれていないものを確認します。</string>
   <string name="prefs_language">言語</string>
   <string name="prefs_language_summary">言語の変更</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">履歴</string>
   <string name="clear_history">履歴をクリア</string>
   <string name="title_clear_history_dialog">クリア</string>
@@ -251,7 +244,7 @@
   <string name="action_contributes">あなたの貢献</string>
   <string name="logout_drawer">ログアウト</string>
   <string name="contribution_without_account">サインイン、またはアカウントを作成して、貢献を続けることができます</string>
-  <string name="textCarbonFootprint">"カーボンフットプリント / CO2 排出量: "</string>
+  <string name="textCarbonFootprint">カーボンフットプリント / CO2 排出量: </string>
   <string name="txtDialogPowerMode">クイックビュー</string>
   <string name="txtSeeMore">さらに表示</string>
   <string name="action_search">検索</string>
