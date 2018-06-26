@@ -123,7 +123,7 @@
   <string name="txtSendAll">全部上傳</string>
   <string name="txtNoData">無資料</string>
   <string name="txtPictureNeeded">請稍候...</string>
-  <string name="txtPictureNeededDialogContent">您在提交產品之前至少需要上傳一張照片</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">停留在此</string>
   <string name="txtPictureNeededDialogNo">捨棄</string>
   <string name="toastSending">上傳中...</string>
