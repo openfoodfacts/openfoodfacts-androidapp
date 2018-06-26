@@ -67,8 +67,6 @@
   <!-- Content Description -->
   <string name="bookmark">Bogmærke</string>
   <string name="edit">Rediger</string>
-  <string name="fastscroller_track">HurtigRulningsspor</string>
-  <string name="fastscroller_handle">HurtigRulningshåndtag</string>
   <string name="search_button">Søg</string>
   <string name="no_products">Produkter blev ikke fundet</string>
   <string name="desc_list_item_icon">Vareikon</string>
