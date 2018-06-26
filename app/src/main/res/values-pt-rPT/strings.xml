@@ -67,8 +67,6 @@
   <!-- Content Description -->
   <string name="bookmark">Favorito</string>
   <string name="edit">Editar</string>
-  <string name="fastscroller_track">Trilha FastScroller</string>
-  <string name="fastscroller_handle">Alça FastScroller</string>
   <string name="search_button">Procurar</string>
   <string name="no_products">Produtos não encontrados</string>
   <string name="desc_list_item_icon">Ícone</string>
