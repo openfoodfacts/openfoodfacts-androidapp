@@ -36,12 +36,6 @@
   <string name="no_offline_data">You\'re all done</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Povzetek</item>
@@ -164,8 +158,6 @@
   <string name="msg_share">Poglej ta izdelek na dejstvih o odprtih živilih:</string>
   <string name="create_account">Prijava</string>
   <string name="home_drawer">Domov</string>
-  <string name="open_beauty_drawer">Odpri dejstva lepote</string>
-  <string name="open_food_drawer">Odpri dejstva o hrani</string>
   <string name="search_drawer">Iskanje</string>
   <string name="search_by_barcode_drawer">Vnesite črtno kodo</string>
   <string name="category_drawer">Kategorije</string>
@@ -219,6 +211,7 @@
   <string name="prefs_power_mode_summary">Hitro skeniranje izdelkov v supermarketu, da vidite, katere niso v bazi podatkov.</string>
   <string name="prefs_language">Jezik</string>
   <string name="prefs_language_summary">Spremeni jezik</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Zgodovina</string>
   <string name="clear_history">Izbriši zgodovino</string>
   <string name="title_clear_history_dialog">Počisti</string>
@@ -263,7 +256,7 @@
   <string name="action_contributes">Vaši prispevki</string>
   <string name="logout_drawer">Odjava</string>
   <string name="contribution_without_account">Prijavite se lahko ali ustvarite račun, s katerim boste ohranili svoje prispevke</string>
-  <string name="textCarbonFootprint">"Ogljični odtis / emisije CO2: "</string>
+  <string name="textCarbonFootprint">Ogljični odtis / emisije CO2: </string>
   <string name="txtDialogPowerMode">Hitri pogled</string>
   <string name="txtSeeMore">Poglej več</string>
   <string name="action_search">Iskanje</string>
