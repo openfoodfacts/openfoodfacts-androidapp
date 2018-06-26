@@ -83,8 +83,6 @@
   <!-- Content Description -->
   <string name="bookmark">الإشارة المرجعية</string>
   <string name="edit">تعديل</string>
-  <string name="fastscroller_track">مسار FastScroller</string>
-  <string name="fastscroller_handle">مقبض FastScroller</string>
   <string name="search_button">بحث</string>
   <string name="no_products">منتج غير موجود</string>
   <string name="desc_list_item_icon">أيقونة العنصر</string>
