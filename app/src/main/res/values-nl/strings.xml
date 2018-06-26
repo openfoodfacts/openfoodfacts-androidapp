@@ -67,8 +67,6 @@
   <!-- Content Description -->
   <string name="bookmark">Favoriet</string>
   <string name="edit">Bewerken</string>
-  <string name="fastscroller_track">FastScroller spoor</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Zoeken</string>
   <string name="no_products">Geen product gevonden</string>
   <string name="desc_list_item_icon">Pictogram</string>
