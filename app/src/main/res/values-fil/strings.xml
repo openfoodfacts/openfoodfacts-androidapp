@@ -127,7 +127,7 @@
   <string name="txtSendAll">Mag-upload ng lahat</string>
   <string name="txtNoData">Walang data</string>
   <string name="txtPictureNeeded">Sandali…</string>
-  <string name="txtPictureNeededDialogContent">Kailangan kang magdagdag ng kahit isang imahe bago isumite ang produktong ito</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Manatili</string>
   <string name="txtPictureNeededDialogNo">Itapon</string>
   <string name="toastSending">Nag-uupload...</string>
