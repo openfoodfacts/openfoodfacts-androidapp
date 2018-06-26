@@ -63,8 +63,6 @@
   <!-- Content Description -->
   <string name="bookmark">书签</string>
   <string name="edit">Edit</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">搜索</string>
   <string name="no_products">产品未找到</string>
   <string name="desc_list_item_icon">条目图标</string>
