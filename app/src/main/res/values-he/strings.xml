@@ -75,8 +75,6 @@
   <!-- Content Description -->
   <string name="bookmark">סימניה</string>
   <string name="edit">עריכה</string>
-  <string name="fastscroller_track">רצועת גלילה מהירה</string>
-  <string name="fastscroller_handle">ידית גלילה מהירה</string>
   <string name="search_button">חיפוש</string>
   <string name="no_products">המוצרים לא נמצאו</string>
   <string name="desc_list_item_icon">סמל הפריט</string>
