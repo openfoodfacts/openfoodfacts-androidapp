@@ -28,12 +28,6 @@
   <string name="no_offline_data">Hai quasi finito</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Sommario</item>
@@ -156,8 +150,6 @@
   <string name="msg_share">Guarda questo prodotto su Open Food Facts</string>
   <string name="create_account">Registrati</string>
   <string name="home_drawer">Homepage</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Cerca</string>
   <string name="search_by_barcode_drawer">Cerca per codice a barre</string>
   <string name="category_drawer">Categorie</string>
@@ -211,6 +203,7 @@
   <string name="prefs_power_mode_summary">Scansiona velocemente i prodotti in un supermercato per vedere quali non sono presenti nel database.</string>
   <string name="prefs_language">Lingua</string>
   <string name="prefs_language_summary">Cambia lingua</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Cronologia</string>
   <string name="clear_history">Cancella cronologia</string>
   <string name="title_clear_history_dialog">Cancella</string>
@@ -255,7 +248,7 @@
   <string name="action_contributes">I tuoi contributi</string>
   <string name="logout_drawer">Termina sessione</string>
   <string name="contribution_without_account">Puoi accedere o creare un account per salvare il tuo contributo</string>
-  <string name="textCarbonFootprint">"Emissioni di CO2 (impronta climatica): "</string>
+  <string name="textCarbonFootprint">Emissioni di CO2 (impronta climatica): </string>
   <string name="txtDialogPowerMode">Visualizzazione rapida</string>
   <string name="txtSeeMore">Altro</string>
   <string name="action_search">Cerca</string>
@@ -295,9 +288,9 @@
   <string name="nutrition_alcohol">Alcol</string>
   <string name="nutrition_vitamins">Vitamine</string>
   <string name="vitamin_a">Vitamina A</string>
-  <string name="vitamin_d">Vitamina D</string>
-  <string name="vitamin_e">Vitamina E</string>
-  <string name="vitamin_k">Vitamina K</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">Vitamina C</string>
   <string name="vitamin_b1">Vitamina B1</string>
   <string name="vitamin_b2">Vitamina B2</string>
