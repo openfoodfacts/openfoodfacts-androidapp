@@ -67,8 +67,6 @@
   <!-- Content Description -->
   <string name="bookmark">Отметка</string>
   <string name="edit">Редактирай</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Търсене</string>
   <string name="no_products">Продуктът не е намерен</string>
   <string name="desc_list_item_icon">Икона на елемента</string>
