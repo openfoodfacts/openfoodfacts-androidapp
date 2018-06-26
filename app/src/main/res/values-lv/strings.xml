@@ -71,8 +71,6 @@
   <!-- Content Description -->
   <string name="bookmark">Grāmatzīme</string>
   <string name="edit">Rediģēt</string>
-  <string name="fastscroller_track">Ātrās apskates režīms</string>
-  <string name="fastscroller_handle">Ātrās apskates pārbaude</string>
   <string name="search_button">Meklēt</string>
   <string name="no_products">Produkti nav atrasti</string>
   <string name="desc_list_item_icon">Produkta sīkbilde</string>
