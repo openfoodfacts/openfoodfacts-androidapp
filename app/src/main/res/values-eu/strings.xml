@@ -67,8 +67,6 @@
   <!-- Content Description -->
   <string name="bookmark">Lastermarka</string>
   <string name="edit">Editatu</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Bilatu</string>
   <string name="no_products">Ez da aurkitu produktua</string>
   <string name="desc_list_item_icon">Elementu ikonoa</string>
