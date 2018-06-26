@@ -32,12 +32,6 @@
   <string name="no_offline_data">Aţi terminat tot</string>
   <string name="first_offline">Produsele adăugate offline vor apărea aici</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Conținut</item>
@@ -71,8 +65,6 @@
   <!-- Content Description -->
   <string name="bookmark">Semn de carte</string>
   <string name="edit">Modificare</string>
-  <string name="fastscroller_track">Urmărirea derulării rapide</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Caută</string>
   <string name="no_products">Nici un produs nu a fost găsit</string>
   <string name="desc_list_item_icon">Iconița</string>
@@ -162,8 +154,6 @@
   <string name="msg_share">Privește acest produs pe Open Food Facts:</string>
   <string name="create_account">Înregistrare</string>
   <string name="home_drawer">Pagina de start</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Căutare</string>
   <string name="search_by_barcode_drawer">Căutare după codul de bare</string>
   <string name="category_drawer">Categorii</string>
@@ -217,6 +207,7 @@
   <string name="prefs_power_mode_summary">Scanare rapidă a produselor într-un supermarket pentru a verifica prezența lor în baza de date.</string>
   <string name="prefs_language">Limbă</string>
   <string name="prefs_language_summary">Modificați limba</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Istoric</string>
   <string name="clear_history">Stergere istoric</string>
   <string name="title_clear_history_dialog">Ștergeți</string>
@@ -261,7 +252,7 @@
   <string name="action_contributes">Contribuțiile dumneavoastră</string>
   <string name="logout_drawer">Deconectare</string>
   <string name="contribution_without_account">Conectați-vă sau creați un cont pentru a păstra contribuțiile.</string>
-  <string name="textCarbonFootprint">"Amprenta carbon / Emisii CO2 "</string>
+  <string name="textCarbonFootprint">Amprenta carbon / Emisii CO2 </string>
   <string name="txtDialogPowerMode">Vizualizare rapidă</string>
   <string name="txtSeeMore">Mai mult...</string>
   <string name="action_search">Căutare</string>
@@ -301,9 +292,9 @@
   <string name="nutrition_alcohol">Alcool</string>
   <string name="nutrition_vitamins">Vitamine</string>
   <string name="vitamin_a">Vitamina A</string>
-  <string name="vitamin_d">Vitamina D</string>
-  <string name="vitamin_e">Vitamina E</string>
-  <string name="vitamin_k">Vitamina K</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">Vitamina C</string>
   <string name="vitamin_b1">Vitamina B1</string>
   <string name="vitamin_b2">Vitamina B2</string>
