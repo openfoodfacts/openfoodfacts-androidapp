@@ -127,7 +127,7 @@
   <string name="txtSendAll">सबै अपलोड गर्नुहोस्</string>
   <string name="txtNoData">डाटा छैन</string>
   <string name="txtPictureNeeded">पर्खनुहोस्…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Uploading...</string>
