@@ -75,8 +75,6 @@
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
   <string name="edit">Edit</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Iskanje</string>
   <string name="no_products">Izdelki niso bili najdeni</string>
   <string name="desc_list_item_icon">Ikona postavke</string>
