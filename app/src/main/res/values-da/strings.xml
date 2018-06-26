@@ -127,7 +127,7 @@
   <string name="txtSendAll">Upload alle</string>
   <string name="txtNoData">Ingen data</string>
   <string name="txtPictureNeeded">Vent…</string>
-  <string name="txtPictureNeededDialogContent">Du skal tilføje mindst ét foto, inden du indsender dette produkt</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Tilføj foto</string>
   <string name="txtPictureNeededDialogNo">Kassér</string>
   <string name="toastSending">Uploader...</string>
