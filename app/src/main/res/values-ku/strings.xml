@@ -28,12 +28,6 @@
   <string name="no_offline_data">You\'re all done</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Kurtayîf</item>
@@ -156,8 +150,6 @@
   <string name="msg_share">Binêre, ev berhemên ku di Facts Food Outdoor:</string>
   <string name="create_account">Qaybe</string>
   <string name="home_drawer">Xanî</string>
-  <string name="open_beauty_drawer">Vekirî rindî rastin</string>
-  <string name="open_food_drawer">Vegirin xwarin rasti</string>
   <string name="search_drawer">Lêgerîn</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="category_drawer">Vebir</string>
@@ -211,6 +203,7 @@
   <string name="prefs_power_mode_summary">Zû tomar lêgerîneke di marketi bibînin ku yên ku di nav Htmlê da heye berdest in.</string>
   <string name="prefs_language">Ziman</string>
   <string name="prefs_language_summary">Ziman degişmişke</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Dîrok</string>
   <string name="clear_history">Dîrok silmişke</string>
   <string name="title_clear_history_dialog">Vekirî</string>
@@ -255,7 +248,7 @@
   <string name="action_contributes">Beşdariyên xwe</string>
   <string name="logout_drawer">Deqeve</string>
   <string name="contribution_without_account">Hûn dikarin kiryarê li an hesabekî ji bo depokirina beşdariyên xwe yên di</string>
-  <string name="textCarbonFootprint">"Gazên Rêçên / CO2 Carbon: "</string>
+  <string name="textCarbonFootprint">Gazên Rêçên / CO2 Carbon: </string>
   <string name="txtDialogPowerMode">View Quick</string>
   <string name="txtSeeMore">See More</string>
   <string name="action_search">Lêgerîn</string>
@@ -295,9 +288,9 @@
   <string name="nutrition_alcohol">Alcohol</string>
   <string name="nutrition_vitamins">Vitamins</string>
   <string name="vitamin_a">Vitamin A</string>
-  <string name="vitamin_d">Vitamin d</string>
-  <string name="vitamin_e">Vitamin e</string>
-  <string name="vitamin_k">Vitamin k</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">Vitamin C</string>
   <string name="vitamin_b1">Vitamin B1</string>
   <string name="vitamin_b2">Vitamin B2</string>
