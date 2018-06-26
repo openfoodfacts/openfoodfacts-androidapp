@@ -127,7 +127,7 @@
   <string name="txtSendAll">Alles versturen</string>
   <string name="txtNoData">Geen gegevens</string>
   <string name="txtPictureNeeded">Wacht…</string>
-  <string name="txtPictureNeededDialogContent">U moet ten minste één foto toevoegen voordat u dit product verzendt</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Blijf</string>
   <string name="txtPictureNeededDialogNo">Negeren</string>
   <string name="toastSending">Aan het doorsturen...</string>
