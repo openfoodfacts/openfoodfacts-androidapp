@@ -143,7 +143,7 @@
   <string name="txtSendAll">رفع الكل</string>
   <string name="txtNoData">لا توجد بيانات</string>
   <string name="txtPictureNeeded">انتظر…</string>
-  <string name="txtPictureNeededDialogContent">يجب عليك إضافة صورة واحدة على الأقل قبل إرسال هذا المنتج</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">ابق</string>
   <string name="txtPictureNeededDialogNo">تجاهل</string>
   <string name="toastSending">جاري الإرسال...</string>
