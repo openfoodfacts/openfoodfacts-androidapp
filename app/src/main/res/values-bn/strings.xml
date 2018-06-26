@@ -127,7 +127,7 @@
   <string name="txtSendAll">সবগুলো আপলোড করুন</string>
   <string name="txtNoData">কোন উপাত্ত নেই</string>
   <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">আপলোড করা হচ্ছে...</string>
