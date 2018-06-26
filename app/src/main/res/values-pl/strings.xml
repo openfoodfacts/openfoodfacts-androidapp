@@ -56,12 +56,6 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="no_offline_data">Wszystko gotowe</string>
   <string name="first_offline">Tu pojawią się produkty dodane w trybie offline</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Streszczenie</item>
@@ -184,8 +178,6 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="msg_share">Spójrz na produkt w Open Food Facts :</string>
   <string name="create_account">Zarejestruj się</string>
   <string name="home_drawer">Strona główna</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Szukaj</string>
   <string name="search_by_barcode_drawer">Wpisz kod kreskowy</string>
   <string name="category_drawer">Kategorie</string>
@@ -239,6 +231,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="prefs_power_mode_summary">Szybko skanuj produkty w supermarkecie by sprawdzić które z nich nie znajdują siew bazie danych.</string>
   <string name="prefs_language">Język</string>
   <string name="prefs_language_summary">Zmiana języka</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Historia</string>
   <string name="clear_history">Usuń historię</string>
   <string name="title_clear_history_dialog">Wyczyść</string>
@@ -283,7 +276,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="action_contributes">Twój wkład</string>
   <string name="logout_drawer">Wyloguj</string>
   <string name="contribution_without_account">Możesz zalogować się lub utworzyć konto by zachować swój wkład</string>
-  <string name="textCarbonFootprint">"Ślad węglowy / emisji dwutlenku węgla: "</string>
+  <string name="textCarbonFootprint">Ślad węglowy / emisji dwutlenku węgla: </string>
   <string name="txtDialogPowerMode">Szybki podgląd</string>
   <string name="txtSeeMore">Więcej</string>
   <string name="action_search">Poszukiwanie</string>
