@@ -28,12 +28,6 @@
   <string name="no_offline_data">You\'re all done</string>
   <string name="first_offline">Producten die offline toegevoegd zijn, verschijnen hier</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Samenvatting</item>
@@ -156,8 +150,6 @@
   <string name="msg_share">Bekijk dit product op Open Food Facts</string>
   <string name="create_account">Inschrijven</string>
   <string name="home_drawer">Hoofdmenu</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Zoeken</string>
   <string name="search_by_barcode_drawer">Zoek met streepjescode</string>
   <string name="category_drawer">Categorieën</string>
@@ -211,6 +203,7 @@
   <string name="prefs_power_mode_summary">Scan snel producten in een supermarkt om te zien welke niet in de database staan.</string>
   <string name="prefs_language">Taal</string>
   <string name="prefs_language_summary">Een andere taal kiezen</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Geschiedenis</string>
   <string name="clear_history">Geschiedenis wissen</string>
   <string name="title_clear_history_dialog">Wissen</string>
@@ -255,7 +248,7 @@
   <string name="action_contributes">Uw bijdragen</string>
   <string name="logout_drawer">Afmelden</string>
   <string name="contribution_without_account">U kunt zich aanmelden of een account aanmaken om uw bijdragen te bewaren</string>
-  <string name="textCarbonFootprint">"Carbon footprint / CO2-uitstoot: "</string>
+  <string name="textCarbonFootprint">Carbon footprint / CO2-uitstoot: </string>
   <string name="txtDialogPowerMode">Bekijk</string>
   <string name="txtSeeMore">Meer</string>
   <string name="action_search">Zoek</string>
