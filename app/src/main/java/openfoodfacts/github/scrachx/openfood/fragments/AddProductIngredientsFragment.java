@@ -174,7 +174,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
                     .into(imageIngredients);
             Toast.makeText(activity, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(activity, "Image uploaded unsuccessful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "You seem offline, images will be uploaded when network is available", Toast.LENGTH_SHORT).show();
         }
     }
 }

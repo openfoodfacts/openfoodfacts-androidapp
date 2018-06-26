@@ -7,13 +7,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -243,7 +246,14 @@ public class AddProductActivity extends AppCompatActivity {
 
                     @Override
                     public void onSuccess(State state) {
-                        Toast.makeText(AddProductActivity.this, state.getStatusVerbose(), Toast.LENGTH_SHORT).show();
+                        Toast toast = Toast.makeText(getApplicationContext(), "Product uploaded successfully", Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        View view = toast.getView();
+                        TextView textView = view.findViewById(android.R.id.message);
+                        textView.setTextSize(18);
+                        view.setBackgroundColor(getResources().getColor(R.color.green_500));
+                        toast.setDuration(Toast.LENGTH_SHORT);
+                        toast.show();
                         finish();
                     }
 
@@ -267,6 +277,8 @@ public class AddProductActivity extends AppCompatActivity {
             case 2:
                 if (addProductOverviewFragment.areRequiredFieldsEmpty()) {
                     viewPager.setCurrentItem(0, true);
+                } else if (!addProductNutritionFactsFragment.isCheckPassed()) {
+                    viewPager.setCurrentItem(2, true);
                 } else {
                     saveProduct();
                 }
@@ -335,11 +347,17 @@ public class AddProductActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        hideImageProgress(position, true);
-                        Log.e(AddProductActivity.class.getSimpleName(), e.getMessage());
-                        ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
-                        mToUploadProductDao.insertOrReplace(product);
-                        Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        // A network error happened
+                        if (e instanceof IOException) {
+                            hideImageProgress(position, true);
+                            Log.e(AddProductActivity.class.getSimpleName(), e.getMessage());
+                            ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
+                            mToUploadProductDao.insertOrReplace(product);
+
+                        } else {
+                            Log.i(this.getClass().getSimpleName(), e.getMessage());
+                            Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
     }

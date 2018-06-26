@@ -10,12 +10,15 @@ import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -221,6 +224,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private Activity activity;
     private File photoFile;
     private String code;
+    private double starchValue = 0.0;
+    private int starchUnit;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -302,6 +307,69 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         } else {
             nutritionFactsLayout.setVisibility(View.VISIBLE);
         }
+    }
+
+    // checks alcohol % value and ensures it is not greater than 100%
+    @OnTextChanged(value = R.id.alcohol, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void checkValue() {
+        try {
+            double alcoholValue = Double.valueOf(alcohol.getText().toString());
+            if (alcoholValue > 100) {
+                alcoholValue = 100.0;
+                alcohol.setText(String.valueOf(alcoholValue));
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isCheckPassed() {
+        // check that value of (sugar + starch) is not greater than value of carbohydrates
+        if (!carbohydrate.getText().toString().isEmpty()) {
+            Double carbsValue, sugarValue = 0.0;
+            int carbsUnit, sugar_Unit;
+            try {
+                carbsValue = Double.valueOf(carbohydrate.getText().toString());
+                if (!sugar.getText().toString().isEmpty())
+                    sugarValue = Double.valueOf(sugar.getText().toString());
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                return false;
+            }
+            carbsUnit = carbohydrateUnit.getSelectedItemPosition();
+            sugar_Unit = sugarUnit.getSelectedItemPosition();
+            //convert all the values to grams
+            switch (carbsUnit) {
+                case 1:
+                    carbsValue /= 1000;
+                    break;
+                case 2:
+                    carbsValue /= 1000000;
+                    break;
+            }
+            switch (sugar_Unit) {
+                case 1:
+                    sugarValue /= 1000;
+                    break;
+                case 2:
+                    sugarValue /= 1000000;
+                    break;
+            }
+            switch (starchUnit) {
+                case 1:
+                    starchValue /= 1000;
+                    break;
+                case 2:
+                    starchValue /= 1000000;
+            }
+            if ((sugarValue + starchValue) > carbsValue) {
+                carbohydrate.requestFocus();
+                carbohydrate.setError("Carbohydrate can't be less than the sum of sugar and starch");
+                return false;
+            } else
+                return true;
+        }
+        return true;
     }
 
     public void getDetails() {
@@ -444,6 +512,69 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         nutrient.addView(spinner);
         if (PARAMS_OTHER_NUTRIENTS[position].equals("nutriment_ph")) {
             spinner.setVisibility(View.INVISIBLE);
+            // checks pH value and ensures it is not greater than 14.0
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    try {
+                        double pHValue = Double.valueOf(editText.getText().toString());
+                        if (pHValue > 14) {
+                            pHValue = 14;
+                            editText.setText(String.valueOf(pHValue));
+                        }
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } else if (PARAMS_OTHER_NUTRIENTS[position].equals("nutriment_starch")) {
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>
+                    (activity, android.R.layout.simple_spinner_item, activity.getResources().getStringArray(R.array.weights_array));
+            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(arrayAdapter);
+
+            // save value of starch for checking later.
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    try {
+                        starchValue = Double.valueOf(editText.getText().toString());
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    starchUnit = spinner.getSelectedItemPosition();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
         }
         tableLayout.addView(nutrient);
     }
@@ -500,7 +631,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                     .into(imageNutritionFacts);
             Toast.makeText(activity, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(activity, "Image uploaded unsuccessful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "You seem offline, images will be uploaded when network is available", Toast.LENGTH_SHORT).show();
         }
     }
 }
