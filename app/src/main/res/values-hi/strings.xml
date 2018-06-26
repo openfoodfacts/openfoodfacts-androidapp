@@ -67,8 +67,6 @@
   <!-- Content Description -->
   <string name="bookmark">बुकमार्क</string>
   <string name="edit">संपादित करें</string>
-  <string name="fastscroller_track">फास्टस्क्रोलर ट्रैक</string>
-  <string name="fastscroller_handle">फास्टस्क्रोलर हैंडल</string>
   <string name="search_button">ढूंढें</string>
   <string name="no_products">उत्पाद नहीं मिला</string>
   <string name="desc_list_item_icon">वस्तु का  आइकन</string>
