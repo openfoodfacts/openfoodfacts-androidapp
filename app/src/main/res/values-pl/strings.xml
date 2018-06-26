@@ -155,7 +155,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="txtSendAll">Prześlij wszystkie</string>
   <string name="txtNoData">Brak danych</string>
   <string name="txtPictureNeeded">Czekaj…</string>
-  <string name="txtPictureNeededDialogContent">Musisz dodać przynajmniej jeden obrazek przed wysłaniem tego produktu</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Pozostań</string>
   <string name="txtPictureNeededDialogNo">Odrzuć</string>
   <string name="toastSending">Wysyłanie...</string>
