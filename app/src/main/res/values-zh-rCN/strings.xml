@@ -24,12 +24,6 @@
   <string name="no_offline_data">你已经全部完成</string>
   <string name="first_offline">离线添加的产品将显示在此处</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>概要</item>
@@ -152,8 +146,6 @@
   <string name="msg_share">在 Open Food Facts 中查看这个产品：</string>
   <string name="create_account">登录</string>
   <string name="home_drawer">主页</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">搜索</string>
   <string name="search_by_barcode_drawer">输入条形码</string>
   <string name="category_drawer">分类</string>
@@ -207,6 +199,7 @@
   <string name="prefs_power_mode_summary">快速扫描超市中的商品，查看哪些产品不在数据库中。</string>
   <string name="prefs_language">语言</string>
   <string name="prefs_language_summary">更改语言</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">历史记录</string>
   <string name="clear_history">清除历史记录</string>
   <string name="title_clear_history_dialog">清除</string>
@@ -251,7 +244,7 @@
   <string name="action_contributes">您的贡献</string>
   <string name="logout_drawer">注销</string>
   <string name="contribution_without_account">尽可以登录或者创建一个账号来保存您的贡献</string>
-  <string name="textCarbonFootprint">"碳足迹 / CO2 排放："</string>
+  <string name="textCarbonFootprint">碳足迹 / CO2 排放：</string>
   <string name="txtDialogPowerMode">快速查看</string>
   <string name="txtSeeMore">查看更多</string>
   <string name="action_search">搜索</string>
