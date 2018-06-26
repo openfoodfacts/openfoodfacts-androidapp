@@ -28,12 +28,6 @@
   <string name="no_offline_data">İşleminiz tamamlandı</string>
   <string name="first_offline">Çevrimdışı eklenen ürünler burada görünecek</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Özet</item>
@@ -67,8 +61,6 @@
   <!-- Content Description -->
   <string name="bookmark">Yer imi</string>
   <string name="edit">Düzenle</string>
-  <string name="fastscroller_track">HızlıKaydırma işareti</string>
-  <string name="fastscroller_handle">HızlıKaydırma kolu</string>
   <string name="search_button">Ara</string>
   <string name="no_products">Ürün bulunamadı</string>
   <string name="desc_list_item_icon">Öğe simgesi</string>
@@ -135,7 +127,7 @@
   <string name="txtSendAll">Tümünü Yükle</string>
   <string name="txtNoData">Veri yok</string>
   <string name="txtPictureNeeded">Bekleyin…</string>
-  <string name="txtPictureNeededDialogContent">Ürünü onaylamadan önce en az bir resim eklemelisiniz</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Burada kal</string>
   <string name="txtPictureNeededDialogNo">Çıkar</string>
   <string name="toastSending">Yükleniyor...</string>
@@ -158,8 +150,6 @@
   <string name="msg_share">Bu ürüne Open Food Facts\'te bak:</string>
   <string name="create_account">Kaydol</string>
   <string name="home_drawer">Ana Sayfa</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Ara</string>
   <string name="search_by_barcode_drawer">Barkod türü</string>
   <string name="category_drawer">Kategoriler</string>
@@ -213,6 +203,7 @@
   <string name="prefs_power_mode_summary">Veritabanında hangilerinin olmadığını görmek için bir süpermarkette bulunan ürünleri çabucak tarayın.</string>
   <string name="prefs_language">Dil</string>
   <string name="prefs_language_summary">Dili Değiştir</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Geçmiş</string>
   <string name="clear_history">Geçmişi Temizle</string>
   <string name="title_clear_history_dialog">Temizle</string>
@@ -257,7 +248,7 @@
   <string name="action_contributes">Katkılarınız</string>
   <string name="logout_drawer">Çıkış Yap</string>
   <string name="contribution_without_account">Katkılarınızı devam ettirmek için giriş yapabilir veya hesap oluşturabilirsiniz</string>
-  <string name="textCarbonFootprint">"Carbon izi / CO2 emisyonu: "</string>
+  <string name="textCarbonFootprint">Carbon izi / CO2 emisyonu: </string>
   <string name="txtDialogPowerMode">Hızlı Görünüm</string>
   <string name="txtSeeMore">Daha fazla göster</string>
   <string name="action_search">Ara</string>
