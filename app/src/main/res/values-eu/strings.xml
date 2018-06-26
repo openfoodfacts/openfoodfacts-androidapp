@@ -127,7 +127,7 @@
   <string name="txtSendAll">Igo guztiak</string>
   <string name="txtNoData">Datu gabe</string>
   <string name="txtPictureNeeded">Itxaron…</string>
-  <string name="txtPictureNeededDialogContent">Gutxienez irudi bat gehitu beharko zenuke produktu hau bidali aurretik</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Egon</string>
   <string name="txtPictureNeededDialogNo">Baztertu</string>
   <string name="toastSending">Uploading...</string>
