@@ -95,8 +95,6 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <!-- Content Description -->
   <string name="bookmark">Zakładka</string>
   <string name="edit">Edytuj</string>
-  <string name="fastscroller_track">Ślad FastScrollera</string>
-  <string name="fastscroller_handle">Uchwyt FastScrollera</string>
   <string name="search_button">Szukaj</string>
   <string name="no_products">Nie odnaleziono produktów</string>
   <string name="desc_list_item_icon">Ikona przedmiotu</string>
