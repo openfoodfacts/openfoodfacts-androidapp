@@ -67,8 +67,6 @@
   <!-- Content Description -->
   <string name="bookmark">पुस्तकचिनोहरू</string>
   <string name="edit">Edit</string>
-  <string name="fastscroller_track">फास्टस्क्रलर ट्र्याक</string>
-  <string name="fastscroller_handle">फास्टस्क्रोलर ह्यान्डल</string>
   <string name="search_button">खोज्नुहोस्</string>
   <string name="no_products">उत्पादनहरू फेला परेनन्</string>
   <string name="desc_list_item_icon">वस्तु प्रतिमा</string>
