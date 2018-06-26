@@ -123,7 +123,7 @@
   <string name="txtSendAll">すべてアップロード</string>
   <string name="txtNoData">データはありません</string>
   <string name="txtPictureNeeded">お待ちください…</string>
-  <string name="txtPictureNeededDialogContent">この製品を送信する前に、少なくとも1枚の写真を追加する必要があります</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">このまま</string>
   <string name="txtPictureNeededDialogNo">破棄</string>
   <string name="toastSending">アップロードしています...</string>
