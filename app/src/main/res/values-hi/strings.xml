@@ -28,12 +28,6 @@
   <string name="no_offline_data">You\'re all done</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>संग्रह</item>
@@ -156,8 +150,6 @@
   <string name="msg_share">Open Food Facts  पर इस उत्पाद को देखो:</string>
   <string name="create_account">साइन अप करें</string>
   <string name="home_drawer">मुख्य पृष्ठ</string>
-  <string name="open_beauty_drawer">ओपन ब्यूटी फैक्ट्स</string>
-  <string name="open_food_drawer">ओपन फ़ूड फैक्ट्स</string>
   <string name="search_drawer">ढूंढें</string>
   <string name="search_by_barcode_drawer">बारकोड के आधार पर ढूंढें</string>
   <string name="category_drawer">श्रेणियाँ</string>
@@ -211,6 +203,7 @@
   <string name="prefs_power_mode_summary">सुपरमार्केट में उत्पादों को झटपट स्कैन करें और देखें कि कौनसे उत्पाद डेटाबेस में उपलब्ध नहीं हैं</string>
   <string name="prefs_language">भाषा</string>
   <string name="prefs_language_summary">भाषा बदले</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">वृत्तांत</string>
   <string name="clear_history">इतिहास मिटा दें</string>
   <string name="title_clear_history_dialog">खाली करें</string>
@@ -255,7 +248,7 @@
   <string name="action_contributes">आपका योगदान</string>
   <string name="logout_drawer">लॉग आउट करें</string>
   <string name="contribution_without_account">आप साइन-इन कर सकते हैं या अपने योगदान रखने के लिए एक खाता बनाने\nप्रसंग:</string>
-  <string name="textCarbonFootprint">"कार्बन पदचिह्न / CO2 उत्सर्जन: "</string>
+  <string name="textCarbonFootprint">कार्बन पदचिह्न / CO2 उत्सर्जन: </string>
   <string name="txtDialogPowerMode">क्विक व्यू</string>
   <string name="txtSeeMore">और देखें</string>
   <string name="action_search">ढूंढें</string>
