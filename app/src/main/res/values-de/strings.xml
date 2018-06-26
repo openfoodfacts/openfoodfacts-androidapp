@@ -28,12 +28,6 @@
   <string name="no_offline_data">Alles erledigt</string>
   <string name="first_offline">Offline hinzugefügte Produkte werden hier angezeigt</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 ✕ 480</item>
-    <item>1024 ✕ 768</item>
-    <item>1152 ✕ 864</item>
-    <item>1600 ✕ 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Zusammenfassung</item>
@@ -156,8 +150,6 @@
   <string name="msg_share">Dieses Produkt auf Open Food Facts anzeigen:</string>
   <string name="create_account">Registrieren</string>
   <string name="home_drawer">Startseite</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Suchen</string>
   <string name="search_by_barcode_drawer">Nach Strichcode suchen</string>
   <string name="category_drawer">Kategorien</string>
@@ -211,6 +203,7 @@
   <string name="prefs_power_mode_summary">Produkte in Supermarkt schnell erfassen, um festzustellen, welche noch nicht in der Datenbank enthalten sind.</string>
   <string name="prefs_language">Sprache</string>
   <string name="prefs_language_summary">Sprache ändern</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Verlauf</string>
   <string name="clear_history">Verlauf leeren</string>
   <string name="title_clear_history_dialog">Leeren</string>
@@ -255,7 +248,7 @@
   <string name="action_contributes">Ihre Beiträge</string>
   <string name="logout_drawer">Abmelden</string>
   <string name="contribution_without_account">Sie können sich anmelden oder ein Konto erstellen, um Ihre Beiträge zu speichern</string>
-  <string name="textCarbonFootprint">"Ökologischer Fußabdruck / CO₂-Emissionen: "</string>
+  <string name="textCarbonFootprint">Ökologischer Fußabdruck / CO₂-Emissionen: </string>
   <string name="txtDialogPowerMode">Schnellansicht</string>
   <string name="txtSeeMore">Mehr anzeigen</string>
   <string name="action_search">Suchen</string>
