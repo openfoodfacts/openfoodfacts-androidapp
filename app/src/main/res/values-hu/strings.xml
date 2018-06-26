@@ -28,12 +28,6 @@
   <string name="no_offline_data">Mindennel elkészült</string>
   <string name="first_offline">A kapcsolat nélküli módban hozzáadott termékek itt fognak megjelenni</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Összefoglalás</item>
@@ -156,8 +150,6 @@
   <string name="msg_share">Termék keresése az Open Food Facts adatbázisban:</string>
   <string name="create_account">Regisztráció</string>
   <string name="home_drawer">Kezdőlap</string>
-  <string name="open_beauty_drawer">Open Beauty Facts (Nyílt Szépség Tények)</string>
-  <string name="open_food_drawer">Open Food Facts (Nyílt Élelmiszer Tények)</string>
   <string name="search_drawer">Keres</string>
   <string name="search_by_barcode_drawer">Keresés vonalkód alapján</string>
   <string name="category_drawer">Kategóriák</string>
@@ -211,6 +203,7 @@
   <string name="prefs_power_mode_summary">Termékek gyors beolvasása vásárlás közben annak ellenőrzéséhez, hogy megtalálható-e az adatbázisban.</string>
   <string name="prefs_language">Nyelv</string>
   <string name="prefs_language_summary">Nyelv módosítása</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Előzmények</string>
   <string name="clear_history">Előzmények törlése</string>
   <string name="title_clear_history_dialog">Törlés</string>
@@ -255,7 +248,7 @@
   <string name="action_contributes">Saját közreműködések</string>
   <string name="logout_drawer">Kijelentkezés</string>
   <string name="contribution_without_account">Közreműködések megőrzéséhez bejelentkezés szükséges.</string>
-  <string name="textCarbonFootprint">"Szénlábnyom / szén-dioxid-kibocsátás: "</string>
+  <string name="textCarbonFootprint">Szénlábnyom / szén-dioxid-kibocsátás: </string>
   <string name="txtDialogPowerMode">Gyorsnézet</string>
   <string name="txtSeeMore">Továbbiak</string>
   <string name="action_search">Keres</string>
