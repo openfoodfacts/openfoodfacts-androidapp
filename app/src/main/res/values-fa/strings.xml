@@ -28,12 +28,6 @@
   <string name="no_offline_data">You\'re all done</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>چکیده</item>
@@ -156,8 +150,6 @@
   <string name="msg_share">نگاهی به این محصول در Open Food Facts:</string>
   <string name="create_account">ثبت نام</string>
   <string name="home_drawer">صفحه اصلی</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">جستجو</string>
   <string name="search_by_barcode_drawer">بارکد را وارد کنید</string>
   <string name="category_drawer">Categories</string>
@@ -211,6 +203,7 @@
   <string name="prefs_power_mode_summary">به سرعت محصولات یک فروشگاه را اسکن کنید تا ببینید کدام یک در پایگاه داده نیستند.</string>
   <string name="prefs_language">زبان</string>
   <string name="prefs_language_summary">تغییر زبان</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">تاریخچه</string>
   <string name="clear_history">پاكسازی تاريخچه</string>
   <string name="title_clear_history_dialog">پاک سازی</string>
@@ -255,7 +248,7 @@
   <string name="action_contributes">مشارکتهای شما</string>
   <string name="logout_drawer">خروج</string>
   <string name="contribution_without_account">برای ذخیره کمک های گسترش های خود میتوانید وارد شوید و یا حساب کاربری بسازید</string>
-  <string name="textCarbonFootprint">"انتشار CO2: "</string>
+  <string name="textCarbonFootprint">انتشار CO2: </string>
   <string name="txtDialogPowerMode">نمایش سریع</string>
   <string name="txtSeeMore">بیشتر</string>
   <string name="action_search">جستجو</string>
@@ -295,9 +288,9 @@
   <string name="nutrition_alcohol">الکل</string>
   <string name="nutrition_vitamins">ویتامین ها</string>
   <string name="vitamin_a">ویتامین A</string>
-  <string name="vitamin_d">ویتامین d</string>
-  <string name="vitamin_e">ویتامین e</string>
-  <string name="vitamin_k">ویتامین K</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">ویتامین C</string>
   <string name="vitamin_b1">ویتامین B1</string>
   <string name="vitamin_b2">ویتامین B2</string>
