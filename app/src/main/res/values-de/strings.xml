@@ -67,8 +67,6 @@
   <!-- Content Description -->
   <string name="bookmark">Lesezeichen</string>
   <string name="edit">Bearbeiten</string>
-  <string name="fastscroller_track">FastScroller-Spur</string>
-  <string name="fastscroller_handle">FastScroller-Griff</string>
   <string name="search_button">Suchen</string>
   <string name="no_products">Keine Produkte gefunden</string>
   <string name="desc_list_item_icon">Produktfoto</string>
