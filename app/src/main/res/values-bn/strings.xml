@@ -67,8 +67,6 @@
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
   <string name="edit">Edit</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">অনুসন্ধান</string>
   <string name="no_products">পণ্যটি খুঁজে পাওয়া যায় নি</string>
   <string name="desc_list_item_icon">আইটেম আইকন</string>
