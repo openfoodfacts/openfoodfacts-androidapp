@@ -63,8 +63,6 @@
   <!-- Content Description -->
   <string name="bookmark">Markah</string>
   <string name="edit">Sunting</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">mencari </string>
   <string name="no_products">tidak ada produk</string>
   <string name="desc_list_item_icon">Ikon item</string>
