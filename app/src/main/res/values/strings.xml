@@ -148,8 +148,8 @@
     <string name="bookmark">Bookmark</string>
     <string name="edit">Edit</string>
 
-    <string name="fastscroller_track">FastScroller track</string>
-    <string name="fastscroller_handle">FastScroller handle</string>
+    <string name="fastscroller_track" translatable="false">FastScroller track</string>
+    <string name="fastscroller_handle" translatable="false">FastScroller handle</string>
     <string name="search_button">Search</string>
     <string name="no_products">Products not found</string>
     <string name="desc_list_item_icon">Item Icon</string>
