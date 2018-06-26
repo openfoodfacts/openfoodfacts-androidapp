@@ -44,12 +44,6 @@
   <string name="no_offline_data">لقد انتهيت</string>
   <string name="first_offline">ستظهر هنا المنتجات المضافة بلا اتصال بالإنترنت</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>الملخص</item>
@@ -172,8 +166,6 @@
   <string name="msg_share">انظر لهذا المنتج على \"الحقائق الغذائية المفتوحة\":</string>
   <string name="create_account">تسجيل</string>
   <string name="home_drawer">الصفحة الرئيسية</string>
-  <string name="open_beauty_drawer">حقائق الجمال مفتوحة</string>
-  <string name="open_food_drawer">الحقائق الغذائية مفتوحة</string>
   <string name="search_drawer">بحث</string>
   <string name="search_by_barcode_drawer">البحث عن طريق الرمز الشريطي</string>
   <string name="category_drawer">الفئات</string>
@@ -227,6 +219,7 @@
   <string name="prefs_power_mode_summary">مسح المنتجات بسرعة في متجر التسوق لمعرفة أي منها ليست في قاعدة البيانات.</string>
   <string name="prefs_language">اللغة</string>
   <string name="prefs_language_summary">تغيير اللغة</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">السجل</string>
   <string name="clear_history">محو السجل</string>
   <string name="title_clear_history_dialog">محو</string>
@@ -271,7 +264,7 @@
   <string name="action_contributes">مساهماتكم</string>
   <string name="logout_drawer">تسجيل خروج</string>
   <string name="contribution_without_account">يمكنك تسجيل الدخول أو إنشاء حساب للحفاظ على مساهماتك</string>
-  <string name="textCarbonFootprint">"انبعاثات الكربون/انبعاثات CO2: "</string>
+  <string name="textCarbonFootprint">انبعاثات الكربون/انبعاثات CO2: </string>
   <string name="txtDialogPowerMode">نظرة سريعة</string>
   <string name="txtSeeMore">مشاهدة المزيد</string>
   <string name="action_search">بحث</string>
@@ -312,7 +305,7 @@
   <string name="nutrition_vitamins">الفيتامينات</string>
   <string name="vitamin_a">فيتامين أ</string>
   <string name="vitamin_d">فيتامين د</string>
-  <string name="vitamin_e">فيتامين ه</string>
+  <string name="vitamin_e">فيتامين هـ</string>
   <string name="vitamin_k">فيتامين ك</string>
   <string name="vitamin_c">فيتامين سي</string>
   <string name="vitamin_b1">فيتامين ب 1</string>
