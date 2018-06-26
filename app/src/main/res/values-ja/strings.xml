@@ -63,8 +63,6 @@
   <!-- Content Description -->
   <string name="bookmark">ブックマーク</string>
   <string name="edit">編集</string>
-  <string name="fastscroller_track">高速スクローラートラック</string>
-  <string name="fastscroller_handle">高速スクローラーハンドル</string>
   <string name="search_button">検索</string>
   <string name="no_products">製品が見つかりません</string>
   <string name="desc_list_item_icon">アイテムアイコン</string>
