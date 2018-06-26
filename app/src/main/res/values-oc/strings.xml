@@ -67,8 +67,6 @@
   <!-- Content Description -->
   <string name="bookmark">Marcapagina</string>
   <string name="edit">Modificar</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Recercar</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
