@@ -127,7 +127,7 @@
   <string name="txtSendAll">Tout envoyer</string>
   <string name="txtNoData">Aucune donnée</string>
   <string name="txtPictureNeeded">Veuillez patienter…</string>
-  <string name="txtPictureNeededDialogContent">Vous devez ajouter au moins une image avant de soumettre ce produit</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Rester</string>
   <string name="txtPictureNeededDialogNo">Annuler</string>
   <string name="toastSending">Envoi en cours...</string>
