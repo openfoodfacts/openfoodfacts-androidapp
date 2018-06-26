@@ -67,8 +67,6 @@
   <!-- Content Description -->
   <string name="bookmark">Könyvjelző</string>
   <string name="edit">Szerkesztés</string>
-  <string name="fastscroller_track">FastScroller sáv</string>
-  <string name="fastscroller_handle">FastScroller kezelő</string>
   <string name="search_button">Keresés</string>
   <string name="no_products">Nem találhatóak termékek</string>
   <string name="desc_list_item_icon">Termék ikon</string>
