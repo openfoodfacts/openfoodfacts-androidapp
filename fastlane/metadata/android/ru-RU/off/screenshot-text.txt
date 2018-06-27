@@ -18,7 +18,7 @@ Set allergen alerts
 
 home_en.png
 product_view_nutrition_summary_en.png
-Nutrition, simplified
+Питательность, кратко
 
 product_view_allergen_alert_en.png
 Предупреждение об аллергенах
@@ -27,10 +27,10 @@ categories_en.png
 Get alternatives for your favorite foods
 
 product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+Википедия продуктов питания
+Википедия косметики
+Википедия корма для домашних животных
+Википедия продуктов
 
 product_view_ingredients_en.png
 Ингредиенты
