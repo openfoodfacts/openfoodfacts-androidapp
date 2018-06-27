@@ -85,7 +85,7 @@
   <string name="txtIngredients">Összetevők:</string>
   <string name="Donate">Adományoz</string>
   <string name="Donation">Kattintson ide az Open Food Facts-nek szánt adományozáshoz</string>
-  <string name="txtSubstances">Allergén, vagy irritáló termékek, alkotóanyagok:</string>
+  <string name="txtSubstances">Allergiát vagy intoleranciát okozó anyagok vagy termékek:</string>
   <string name="txtAdditives">Adalékanyagok:</string>
   <string name="txtTraces">Nyomokban tartalmazhat:</string>
   <string name="txtMayBeFromPalmOilProduct">Összetevők, amelyek pálmaolajat tartalmazhatnak:</string>
@@ -97,7 +97,7 @@
   <string name="txtNutritionLevelHigh">nagy mennyiségben</string>
   <string name="txtLogin">Bejelentkezés:</string>
   <string name="txtPass">Jelszó:</string>
-  <string name="txtTitleHome">Tedd nyílttá ételed és tudd mit eszel</string>
+  <string name="txtTitleHome">Tegye nyilvánossá az élelmiszerét és tudja, hogy mit eszik</string>
   <string name="txtSave">Mentés</string>
   <string name="txtSignIn">Bejelentkezés</string>
   <string name="txtUser">Felhasználói felület</string>
