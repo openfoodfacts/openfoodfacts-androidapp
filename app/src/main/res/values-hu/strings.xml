@@ -189,9 +189,9 @@
   <string name="permission_title">Engedély információk</string>
   <string name="permission_denied">Kérem, aktiválja az engedélyt a beállításokban</string>
   <string name="permission_storage">Tárhely használati engedély szükséges képek készítéséhez vagy kiválasztásához</string>
-  <string name="info_download_data">További adatok letöltésére van szükség ezen funkció használatához. Kívánja most letölteni?</string>
-  <string name="info_download_data_connection">További adatok letöltésére van szükség ezen funkció használatához. Kérjük tegye lehetővé a kapcsolatot.</string>
-  <string name="msg_input_empty">Mezők kitöltése szükséges.</string>
+  <string name="info_download_data">Bizonyos adatokat le kell töltenie, hogy ez a funkció működjön. Kérem, nyomja meg az \"igen\"-t a letöltéshez.</string>
+  <string name="info_download_data_connection">Bizonyos adatokat le kell töltenie, hogy ez a funkció működjön. Kérem, aktiválja az internet kapcsolatot.</string>
+  <string name="msg_input_empty">Kérem, először töltse ki a mezőket.</string>
   <string name="new_offline_info">Kérjük készítsen képet a termékről, összetételről, tápanyagtáblázatról, és minden címkén található információról. Köszönjük!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">A jelszó legalább 6 karakter hosszú legyen.</string>
