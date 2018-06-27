@@ -140,10 +140,10 @@
   <string name="txtBarcodeRequire">Vonalkód szükséges</string>
   <string name="txtOk">OK</string>
   <string name="txtContentDialogUploading">Kérem, ne lépjen ki a folyamat közben…</string>
-  <string name="txtAbout">A képek Creative Commons Nevezd meg és Így add tovább szabad licenc alatt kerülnek elküldésre</string>
-  <string name="txtAllsent">Termék elküldve</string>
+  <string name="txtAbout">A képek amelyeket elküld a Creative Commons Attribution-ShareAlike (CC BY-SA) szabad licenc alatt lesznek közzétéve.</string>
+  <string name="txtAllsent">Termékek elküldve</string>
   <string name="txtPalm">A termék nem tartalmaz pálmaolajat</string>
-  <string name="txtBarcodeNotValid">Helytelen vonalkód</string>
+  <string name="txtBarcodeNotValid">Érvénytelen vonalkód</string>
   <string name="try_it_scan_now">Termék beolvasása</string>
   <string name="share">Megosztás</string>
   <string name="translate">Lefordít</string>
