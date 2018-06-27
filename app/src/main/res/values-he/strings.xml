@@ -135,7 +135,7 @@
   <string name="txtSendAll">לשלוח הכול</string>
   <string name="txtNoData">אין נתונים</string>
   <string name="txtPictureNeeded">נא להמתין…</string>
-  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">עליך להוסיף לפחות תמונה אחת בטרם הגשת המוצר הזה</string>
   <string name="txtPictureNeededDialogYes">להישאר</string>
   <string name="txtPictureNeededDialogNo">התעלמות</string>
   <string name="toastSending">מתבצעת שליחה…</string>
