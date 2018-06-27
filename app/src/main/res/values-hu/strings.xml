@@ -101,7 +101,7 @@
   <string name="txtSave">Mentés</string>
   <string name="txtSignIn">Bejelentkezés</string>
   <string name="txtUser">Felhasználói felület</string>
-  <string name="txtToastSaved">Felhasználó mentve</string>
+  <string name="txtToastSaved">Felhasználó elmentve</string>
   <string name="txtSalt">Só</string>
   <string name="txtFat">Zsír</string>
   <string name="txtSugars">Cukrok</string>
@@ -109,7 +109,7 @@
   <string name="hintLogin">Bejelentkezés</string>
   <string name="hintPass">Jelszó</string>
   <string name="errorLogin">Bejelentkezési vagy jelszó hiba</string>
-  <string name="errorWeb">Internet csatlakozási problémák.</string>
+  <string name="errorWeb">Internet elérési hiba. Kapcsolódási problémája van?</string>
   <string name="uploadLater">A kép feltöltésre kerül amikor a hálózat elérhető lesz</string>
   <string name="txtInfoLoginOk">Felhasználó mentve</string>
   <string name="txtInfoLoginNo">Felhasználó nem lett mentve</string>
