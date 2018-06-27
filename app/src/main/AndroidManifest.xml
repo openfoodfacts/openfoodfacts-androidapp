@@ -173,7 +173,8 @@
         <activity
             android:name=".views.AddProductActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>

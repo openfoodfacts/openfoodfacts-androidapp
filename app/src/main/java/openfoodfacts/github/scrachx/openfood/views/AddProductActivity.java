@@ -183,7 +183,7 @@ public class AddProductActivity extends AppCompatActivity {
         if (state != null) {
             mProduct = state.getProduct();
         } else {
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Something went wrong when adding product", Toast.LENGTH_SHORT).show();
             finish();
         }
         mToUploadProductDao = Utils.getAppDaoSession(this).getToUploadProductDao();

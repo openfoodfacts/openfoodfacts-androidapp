@@ -83,7 +83,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
                 code = product.getCode();
             }
         } else {
-            Toast.makeText(activity, "Something went wrong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Something went wrong while trying to add product ingredients", Toast.LENGTH_SHORT).show();
             activity.finish();
         }
     }
