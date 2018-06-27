@@ -186,9 +186,9 @@
   <string name="title_info_dialog">Hogyan működik?</string>
   <string name="text_offline_info_dialog">Kapcsolat nélküli módban is beolvashat termékeket, hogy később hozzáadja azokat az Open Food Facts-hez. Az összes beolvasott termék itt fog megjelenni és az alábbi gomb használatával elküdheti őket.</string>
   <string name="permission_camera">Kamera használati engedély szükséges a vonalkódok beolvasásához és képek készítéséhez.</string>
-  <string name="permission_title">Jogosultság információ</string>
-  <string name="permission_denied">A beállításokan engedélyezni kell a jogosultságot</string>
-  <string name="permission_storage">Tárhely jogosultság szükséges képek készítéséhez és kiválasztásához.</string>
+  <string name="permission_title">Engedély információk</string>
+  <string name="permission_denied">Kérem, aktiválja az engedélyt a beállításokban</string>
+  <string name="permission_storage">Tárhely használati engedély szükséges képek készítéséhez vagy kiválasztásához</string>
   <string name="info_download_data">További adatok letöltésére van szükség ezen funkció használatához. Kívánja most letölteni?</string>
   <string name="info_download_data_connection">További adatok letöltésére van szükség ezen funkció használatához. Kérjük tegye lehetővé a kapcsolatot.</string>
   <string name="msg_input_empty">Mezők kitöltése szükséges.</string>
