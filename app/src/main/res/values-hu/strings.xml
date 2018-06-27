@@ -184,8 +184,8 @@
   <string name="product_sent">Termék sikeresen elküldve</string>
   <string name="action_edit_product">Termék szerkesztése</string>
   <string name="title_info_dialog">Hogyan működik?</string>
-  <string name="text_offline_info_dialog">Offline beolvasás is lehetséges az Open Food Facts adatbázisba való későbbi feltöltéshez. Minden itt megjelenő termék beküldhető az alábbi gomb megnyomásával.</string>
-  <string name="permission_camera">Kamerához jogosultság szükséges a vonalkód-olvasáshoz és termékfotózásoz.</string>
+  <string name="text_offline_info_dialog">Kapcsolat nélküli módban is beolvashat termékeket, hogy később hozzáadja azokat az Open Food Facts-hez. Az összes beolvasott termék itt fog megjelenni és az alábbi gomb használatával elküdheti őket.</string>
+  <string name="permission_camera">Kamera használati engedély szükséges a vonalkódok beolvasásához és képek készítéséhez.</string>
   <string name="permission_title">Jogosultság információ</string>
   <string name="permission_denied">A beállításokan engedélyezni kell a jogosultságot</string>
   <string name="permission_storage">Tárhely jogosultság szükséges képek készítéséhez és kiválasztásához.</string>
