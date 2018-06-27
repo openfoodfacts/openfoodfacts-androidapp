@@ -197,7 +197,7 @@
   <string name="error_invalid_password">A jelszó legalább 6 karakter hosszú legyen.</string>
   <string name="error_field_required">Szükséges mező.</string>
   <string name="action_preferences">Tulajdonságok</string>
-  <string name="prefs_scan_startup">Beolvasás induláskor.</string>
+  <string name="prefs_scan_startup">Beolvasás indításkor</string>
   <string name="prefs_scan_startup_summary">Ez esetben alkalmazásindításkor a beolvasó jelenik meg.</string>
   <string name="prefs_power_mode">Gyors beolvasás</string>
   <string name="prefs_power_mode_summary">Termékek gyors beolvasása vásárlás közben annak ellenőrzéséhez, hogy megtalálható-e az adatbázisban.</string>
