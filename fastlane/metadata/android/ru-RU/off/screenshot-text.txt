@@ -24,7 +24,7 @@ product_view_allergen_alert_en.png
 Предупреждение об аллергенах
 
 categories_en.png
-Get alternatives for your favorite foods
+Найдите альтернативу для ваших любимых блюд
 
 product_view_summary_en.png
 Википедия продуктов питания
