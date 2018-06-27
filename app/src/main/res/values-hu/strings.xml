@@ -127,7 +127,7 @@
   <string name="txtSendAll">Összes feltöltése</string>
   <string name="txtNoData">Nincs adat</string>
   <string name="txtPictureNeeded">Várjon…</string>
-  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">Hozzá kell adnia legalább egy képet mielőtt beküldi ezt a terméket</string>
   <string name="txtPictureNeededDialogYes">Marad</string>
   <string name="txtPictureNeededDialogNo">Elvet</string>
   <string name="toastSending">Feltöltés...</string>
