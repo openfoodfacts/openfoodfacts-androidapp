@@ -219,7 +219,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/brand" />
 
-        <AutoCompleteTextView
+        <MultiAutoCompleteTextView
             android:id="@+id/categories"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -227,6 +227,7 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
+            android:completionThreshold="1"
             android:gravity="center_vertical"
             android:hint="Categories"
             android:imeOptions="actionNext"
@@ -238,7 +239,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/packaging" />
 
-        <AutoCompleteTextView
+        <MultiAutoCompleteTextView
             android:id="@+id/label"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -246,6 +247,7 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
+            android:completionThreshold="1"
             android:gravity="center_vertical"
             android:hint="Labels"
             android:imeOptions="actionNext"
@@ -290,6 +292,7 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
+            android:completionThreshold="1"
             android:gravity="center_vertical"
             android:hint="Origin of ingredients"
             android:imeOptions="actionNext"
@@ -408,6 +411,7 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
+            android:completionThreshold="1"
             android:gravity="center_vertical"
             android:hint="Country where purchased"
             android:imeOptions="actionNext"
@@ -449,6 +453,7 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
+            android:completionThreshold="1"
             android:gravity="center_vertical"
             android:hint="Countries where sold"
             android:imeOptions="actionDone"

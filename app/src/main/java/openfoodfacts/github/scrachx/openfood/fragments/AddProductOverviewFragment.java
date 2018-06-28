@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -107,9 +108,9 @@ public class AddProductOverviewFragment extends BaseFragment {
     @BindView(R.id.packaging)
     EditText packaging;
     @BindView(R.id.categories)
-    AutoCompleteTextView categories;
+    MultiAutoCompleteTextView categories;
     @BindView(R.id.label)
-    AutoCompleteTextView label;
+    MultiAutoCompleteTextView label;
     @BindView(R.id.origin_of_ingredients)
     AutoCompleteTextView originOfIngredients;
     @BindView(R.id.manufacturing_place)
@@ -206,6 +207,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                     android.R.layout.simple_dropdown_item_1line, labels);
+            label.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
             label.setAdapter(adapter);
         });
         asyncSessionCategories.setListenerMainThread(operation -> {
@@ -217,6 +219,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                     android.R.layout.simple_dropdown_item_1line, category);
+            categories.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
             categories.setAdapter(adapter);
         });
     }
