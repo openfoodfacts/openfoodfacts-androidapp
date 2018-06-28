@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -54,6 +55,16 @@ public class AddProductIngredientsFragment extends BaseFragment {
     TextView imageProgressText;
     @BindView(R.id.ingredients_list)
     EditText ingredients;
+    @BindView(R.id.ocr_progress)
+    ProgressBar ocrProgress;
+    @BindView(R.id.ocr_progress_text)
+    TextView ocrProgressText;
+    @BindView(R.id.ingredients_list_verified)
+    ImageView ingredientsVerifiedTick;
+    @BindView(R.id.btn_looks_good)
+    Button btnLooksGood;
+    @BindView(R.id.btn_skip_ingredients)
+    Button btnSkipIngredients;
     @BindView(R.id.traces)
     EditText traces;
     private Activity activity;
@@ -116,6 +127,21 @@ public class AddProductIngredientsFragment extends BaseFragment {
         }
     }
 
+    @OnClick(R.id.btn_looks_good)
+    void ingredientsVerified() {
+        ingredientsVerifiedTick.setVisibility(View.VISIBLE);
+        traces.requestFocus();
+        btnLooksGood.setVisibility(View.GONE);
+        btnSkipIngredients.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.btn_skip_ingredients)
+    void skipIngredients() {
+        ingredients.setText(null);
+        btnSkipIngredients.setVisibility(View.GONE);
+        btnLooksGood.setVisibility(View.GONE);
+    }
+
     public void getDetails() {
         if (activity instanceof AddProductActivity) {
             if (!ingredients.getText().toString().isEmpty()) {
@@ -165,16 +191,38 @@ public class AddProductIngredientsFragment extends BaseFragment {
     }
 
     public void hideImageProgress(boolean errorInUploading) {
-        imageProgress.setVisibility(View.GONE);
+        imageProgress.setVisibility(View.INVISIBLE);
         imageProgressText.setVisibility(View.GONE);
         imageIngredients.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
             Picasso.with(activity)
                     .load(photoFile)
                     .into(imageIngredients);
-            Toast.makeText(activity, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+            imageProgressText.setText("Image uploaded successfully");
+            imageProgressText.setVisibility(View.VISIBLE);
         } else {
             Toast.makeText(activity, "You seem offline, images will be uploaded when network is available", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void setIngredients(String status, String ocrResult) {
+        if (status.equals("0")) {
+            ingredients.setText(ocrResult);
+            btnLooksGood.setVisibility(View.VISIBLE);
+            btnSkipIngredients.setVisibility(View.VISIBLE);
+        } else {
+            Toast.makeText(activity, "Unable to extract ingredients from image", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void showOCRProgress() {
+        ocrProgress.setVisibility(View.VISIBLE);
+        ocrProgressText.setVisibility(View.VISIBLE);
+    }
+
+    public void hideOCRProgress() {
+        ocrProgress.setVisibility(View.GONE);
+        ocrProgressText.setVisibility(View.GONE);
     }
 }

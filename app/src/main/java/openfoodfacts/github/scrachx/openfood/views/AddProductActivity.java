@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import java.io.File;
 import java.io.IOException;
@@ -308,13 +310,16 @@ public class AddProductActivity extends AppCompatActivity {
 
     public void addToPhotoMap(ProductImage image, int position) {
         String lang = productDetails.get("lang");
+        boolean ocr = false;
         Map<String, RequestBody> imgMap = new HashMap<>();
         imgMap.put("code", image.getCode());
         imgMap.put("imagefield", image.getField());
         if (image.getImguploadFront() != null)
             imgMap.put("imgupload_front\"; filename=\"front_" + lang + ".png\"", image.getImguploadFront());
-        if (image.getImguploadIngredients() != null)
+        if (image.getImguploadIngredients() != null) {
             imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + lang + ".png\"", image.getImguploadIngredients());
+            ocr = true;
+        }
         if (image.getImguploadNutrition() != null)
             imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + lang + ".png\"", image.getImguploadNutrition());
         if (image.getImguploadOther() != null)
@@ -327,10 +332,10 @@ public class AddProductActivity extends AppCompatActivity {
             imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
             imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
         }
-        savePhoto(imgMap, image, position);
+        savePhoto(imgMap, image, position, ocr);
     }
 
-    private void savePhoto(Map<String, RequestBody> imgMap, ProductImage image, int position) {
+    private void savePhoto(Map<String, RequestBody> imgMap, ProductImage image, int position, boolean ocr) {
         client.saveImageSingle(imgMap, "Basic b2ZmOm9mZg==")
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(disposable -> showImageProgress(position))
@@ -343,6 +348,9 @@ public class AddProductActivity extends AppCompatActivity {
                     @Override
                     public void onComplete() {
                         hideImageProgress(position, false);
+                        if (ocr) {
+                            performOCR(image);
+                        }
                     }
 
                     @Override
@@ -354,6 +362,43 @@ public class AddProductActivity extends AppCompatActivity {
                             ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                             mToUploadProductDao.insertOrReplace(product);
 
+                        } else {
+                            Log.i(this.getClass().getSimpleName(), e.getMessage());
+                            Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void performOCR(ProductImage image) {
+        client.getIngredients(image.getBarcode(), "ingredients_" + productDetails.get("lang"), "Basic b2ZmOm9mZg==")
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> addProductIngredientsFragment.showOCRProgress())
+                .subscribe(new SingleObserver<JsonNode>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(JsonNode jsonNode) {
+                        addProductIngredientsFragment.hideOCRProgress();
+                        String status = jsonNode.get("status").toString();
+                        if (status.equals("0")) {
+                            String ocrResult = jsonNode.get("ingredients_text_from_image").toString();
+                            addProductIngredientsFragment.setIngredients(status, ocrResult);
+                        } else {
+                            addProductIngredientsFragment.setIngredients(status, null);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        addProductIngredientsFragment.hideOCRProgress();
+                        if (e instanceof IOException) {
+                            View view = findViewById(android.R.id.content);
+                            Snackbar.make(view, "No internet connection. Unable to extract ingredients", Snackbar.LENGTH_INDEFINITE)
+                                    .setAction(R.string.txt_try_again, v -> performOCR(image)).show();
                         } else {
                             Log.i(this.getClass().getSimpleName(), e.getMessage());
                             Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();

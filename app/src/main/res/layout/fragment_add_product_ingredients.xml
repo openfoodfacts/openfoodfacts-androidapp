@@ -95,18 +95,91 @@
         <EditText
             android:id="@+id/ingredients_list"
             android:layout_width="0dp"
-            android:layout_height="120dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
             android:gravity="center_vertical"
+            android:minHeight="150dp"
             android:nextFocusDown="@id/traces"
-            android:paddingLeft="@dimen/spacing_small"
-            android:paddingRight="@dimen/spacing_small"
+            android:padding="@dimen/spacing_small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/hint_ingredients_list" />
+
+        <ImageView
+            android:id="@+id/ingredients_list_verified"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_small"
+            android:tint="#3C950E"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
+            app:layout_constraintEnd_toEndOf="@id/ingredients_list"
+            app:srcCompat="@drawable/ic_check_white_24dp"
+            tools:visibility="visible" />
+
+        <ProgressBar
+            android:id="@+id/ocr_progress"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
+            app:layout_constraintEnd_toEndOf="@id/ingredients_list"
+            app:layout_constraintStart_toStartOf="@id/ingredients_list"
+            app:layout_constraintTop_toTopOf="@id/ingredients_list"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/ocr_progress_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_small"
+            android:text="Extracting ingredients"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/ocr_progress"
+            app:layout_constraintStart_toStartOf="@id/ocr_progress"
+            app:layout_constraintTop_toBottomOf="@id/ocr_progress"
+            tools:visibility="visible" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <Button
+            android:id="@+id/btn_looks_good"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:background="#3C950E"
+            android:text="Looks Good"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="@id/ingredients_list"
+            app:layout_constraintTop_toBottomOf="@id/ingredients_list"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_skip_ingredients"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:background="@color/red_500"
+            android:text="Too Bad \n Skip Ingredients"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/ingredients_list"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/ingredients_list"
+            tools:visibility="visible" />
 
         <View
             android:id="@+id/grey_line2"
@@ -117,7 +190,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@color/grey_400"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ingredients_list" />
+            app:layout_constraintTop_toBottomOf="@id/btn_looks_good" />
 
         <TextView
             android:id="@+id/section_traces"

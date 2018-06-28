@@ -189,6 +189,11 @@ public interface OpenFoodAPIService {
     Completable saveImageSingle(@PartMap Map<String, RequestBody> fields,
                                 @Header("Authorization") String auth);
 
+    @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
+    Single<JsonNode> getIngredients(@Query("code") String code,
+                                    @Query("id") String id,
+                                    @Header("Authorization") String auth);
+
     @GET("brand/{brand}/{page}.json")
     Call<Search> getProductByBrands(@Path("brand") String brand, @Path("page") int page);
 

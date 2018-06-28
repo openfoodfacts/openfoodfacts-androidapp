@@ -229,6 +229,9 @@ public class AddProductOverviewFragment extends BaseFragment {
         Locale current = LocaleHelper.getLocale(lang);
         language.setText("Product language : ");
         language.append(WordUtils.capitalize(current.getDisplayName(current)));
+        if (activity instanceof AddProductActivity) {
+            ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
+        }
     }
 
     @Override
