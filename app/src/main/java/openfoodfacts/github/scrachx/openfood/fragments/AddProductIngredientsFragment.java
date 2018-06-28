@@ -13,9 +13,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,17 +25,24 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import org.greenrobot.greendao.async.AsyncSession;
+
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -66,10 +75,11 @@ public class AddProductIngredientsFragment extends BaseFragment {
     @BindView(R.id.btn_skip_ingredients)
     Button btnSkipIngredients;
     @BindView(R.id.traces)
-    EditText traces;
+    MultiAutoCompleteTextView traces;
     private Activity activity;
     private File photoFile;
     private String code;
+    private List<String> allergens = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,6 +106,34 @@ public class AddProductIngredientsFragment extends BaseFragment {
         } else {
             Toast.makeText(activity, "Something went wrong while trying to add product ingredients", Toast.LENGTH_SHORT).show();
             activity.finish();
+        }
+        loadAutoSuggestions();
+    }
+
+    public void loadAutoSuggestions() {
+        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        AsyncSession asyncSessionAllergens = daoSession.startAsyncSession();
+        AllergenNameDao allergenNameDao = daoSession.getAllergenNameDao();
+
+        if (activity instanceof AddProductActivity) {
+            String languageCode = ((AddProductActivity) activity).getProductLanguage();
+
+            asyncSessionAllergens.queryList(allergenNameDao.queryBuilder()
+                    .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
+                    .orderDesc(AllergenNameDao.Properties.Name).build());
+
+            asyncSessionAllergens.setListenerMainThread(operation -> {
+                @SuppressWarnings("unchecked")
+                List<AllergenName> allergenNames = (List<AllergenName>) operation.getResult();
+                allergens.clear();
+                for (int i = 0; i < allergenNames.size(); i++) {
+                    allergens.add(allergenNames.get(i).getName());
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
+                        android.R.layout.simple_dropdown_item_1line, allergens);
+                traces.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+                traces.setAdapter(adapter);
+            });
         }
     }
 

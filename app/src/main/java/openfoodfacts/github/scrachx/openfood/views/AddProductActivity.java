@@ -432,4 +432,12 @@ public class AddProductActivity extends AppCompatActivity {
                 addProductNutritionFactsFragment.showImageProgress();
         }
     }
+
+    public String getProductLanguage() {
+        return productDetails.get("lang");
+    }
+
+    public void loadAutoSuggestion() {
+        addProductIngredientsFragment.loadAutoSuggestions();
+    }
 }

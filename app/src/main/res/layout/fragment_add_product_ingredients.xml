@@ -214,7 +214,7 @@
             app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
             app:layout_constraintTop_toBottomOf="@id/section_traces" />
 
-        <EditText
+        <MultiAutoCompleteTextView
             android:id="@+id/traces"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -222,6 +222,7 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
+            android:completionThreshold="1"
             android:gravity="center_vertical"
             android:inputType="text"
             android:paddingLeft="@dimen/spacing_small"

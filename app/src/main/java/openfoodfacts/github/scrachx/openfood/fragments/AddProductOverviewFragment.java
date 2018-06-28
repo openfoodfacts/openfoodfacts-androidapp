@@ -378,6 +378,9 @@ public class AddProductOverviewFragment extends BaseFragment {
                 .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
                     setProductLanguage(finalLocalValues.get(which));
                     loadAutoSuggestions();
+                    if (activity instanceof AddProductActivity) {
+                        ((AddProductActivity) activity).loadAutoSuggestion();
+                    }
                     return true;
                 })
                 .positiveText(R.string.ok_button)
