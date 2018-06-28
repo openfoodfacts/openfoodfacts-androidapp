@@ -449,7 +449,7 @@
   <string name="products_incomplete">I prodotti aggiunti devono essere completati</string>
   <string name="product_pictures_contributed">Products you took pictures for</string>
   <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
-  <string name="product_info_added">Products you added information for</string>
+  <string name="product_info_added">Prodotti per i quali hai aggiunto informazioni</string>
   <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
   <string name="show_by">Mostrare</string>
   <string name="notify_title">Esportazione completata</string>
@@ -483,6 +483,6 @@
   <string name="autofocus">Autofocus</string>
   <string name="initial_loading">Caricamento iniziale</string>
   <string name="preferences">Impostazioni</string>
-  <string name="OFFlogo">Open Food Facts logo</string>
+  <string name="OFFlogo">Logo di Open Food Facts</string>
   <string name="loading_product">Caricamento del prodotto %s</string>
 </resources>
