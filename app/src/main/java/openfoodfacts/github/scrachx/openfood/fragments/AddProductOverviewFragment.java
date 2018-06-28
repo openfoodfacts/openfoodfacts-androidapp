@@ -342,8 +342,10 @@ public class AddProductOverviewFragment extends BaseFragment {
 
     @OnClick(R.id.hint_emb_code)
     void toastEmbCodeHint() {
-        Toast.makeText(activity, "In Europe, code in an ellipse with the 2 country initials followed by a number and CE.\n" +
-                "Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409", Toast.LENGTH_LONG).show();
+        new MaterialDialog.Builder(activity)
+                .content("Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409")
+                .positiveText(R.string.ok_button)
+                .show();
     }
 
     @OnClick(R.id.language)
