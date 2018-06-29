@@ -259,7 +259,7 @@
   <string name="txt_no_results">Nincs találat</string>
   <string name="txt_extend_search">Próbálja meg bővíteni a keresést vagy adja hozzá a terméket</string>
   <string name="txt_no_matching_products">Nem találtunk megfelelő termékeket.\nMegpróbálhatja :</string>
-  <string name="txt_broaden_search">- szélesítse a keresést \n- olvassa be és adja hozzá az Open Food Facts-hoz</string>
+  <string name="txt_broaden_search">- szélesítse a keresést \n- olvassa be és adja hozzá az Open Food Facts-hez</string>
   <string name="txt_cant_load_search_results">Nem tölthető be a keresés eredménye</string>
   <string name="something_went_wrong">Sajnáljuk, valami hiba történt…</string>
   <string name="txt_try_again">Próbálja újra</string>
