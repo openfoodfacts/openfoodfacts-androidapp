@@ -198,7 +198,7 @@
   <string name="error_field_required">Szükséges mező.</string>
   <string name="action_preferences">Tulajdonságok</string>
   <string name="prefs_scan_startup">Beolvasás indításkor</string>
-  <string name="prefs_scan_startup_summary">Ez esetben alkalmazásindításkor a beolvasó jelenik meg.</string>
+  <string name="prefs_scan_startup_summary">Amennyiben ez az opció ki van választva, akkor az alkalmazás megnyitásakor megkezdi a beolvasást.</string>
   <string name="prefs_power_mode">Gyors beolvasás</string>
   <string name="prefs_power_mode_summary">Termékek gyors beolvasása vásárlás közben annak ellenőrzéséhez, hogy megtalálható-e az adatbázisban.</string>
   <string name="prefs_language">Nyelv</string>
@@ -207,11 +207,11 @@
   <string name="scan_history_drawer">Előzmények</string>
   <string name="clear_history">Előzmények törlése</string>
   <string name="title_clear_history_dialog">Törlés</string>
-  <string name="text_clear_history_dialog">Az összes beolvasási előzmény törlése?</string>
+  <string name="text_clear_history_dialog">Szeretné törölni az összes beolvasási előzményt?</string>
   <string name="export_csv_history">CSV export</string>
-  <string name="txt_exporting_history">Előzmény export...</string>
-  <string name="txt_history_exported">Előzmény exportálva</string>
-  <string name="permision_write_external_storage">Tárhelyre írási jogosultság szükséges az előzmény exportálásához.</string>
+  <string name="txt_exporting_history">Előzmények exportálása…</string>
+  <string name="txt_history_exported">Előzmények exportálva</string>
+  <string name="permision_write_external_storage">Külső tárhelyre való írási engedély szükséges az előzmények exportálásához.</string>
   <string name="txt_nutrition_not_found">Nincs adat</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">Kalória kiszámítása</string>
@@ -243,7 +243,7 @@
   <string name="nutrition_sugars_short_name">Cukrok (g)</string>
   <string name="nutrition_trans_fat">Transzzsír</string>
   <string name="nutrition_trans_fat_short_name">Transzzsír (g)</string>
-  <string name="nutriment_serving_size">Adagonként : </string>
+  <string name="nutriment_serving_size">Adagonként: </string>
   <string name="action_manage_account">Fiók kezelése</string>
   <string name="action_contributes">Saját közreműködések</string>
   <string name="logout_drawer">Kijelentkezés</string>
