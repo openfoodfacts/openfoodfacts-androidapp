@@ -24,12 +24,13 @@ To discover the Open Food Facts project, please visit https://openfoodfacts.org
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Your food, your data ***
+*** Il tuo cibo, i tuoi dati ***
 - Your data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Open Food Facts è anche disponibile sul web all'indirizzo 
+https://world-it.openfoodfacts.org/
 Domande e feedback a: contact@openfoodfacts.org
 
 For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
