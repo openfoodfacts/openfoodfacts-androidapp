@@ -245,9 +245,9 @@
   <string name="nutrition_trans_fat_short_name">Transzzsír (g)</string>
   <string name="nutriment_serving_size">Adagonként: </string>
   <string name="action_manage_account">Fiók kezelése</string>
-  <string name="action_contributes">Saját közreműködések</string>
+  <string name="action_contributes">Az ön hozzájárulásai</string>
   <string name="logout_drawer">Kijelentkezés</string>
-  <string name="contribution_without_account">Közreműködések megőrzéséhez bejelentkezés szükséges.</string>
+  <string name="contribution_without_account">Jelentkezzen be vagy hozzon létre egy fiókot a hozzájárulásainak megtartásához</string>
   <string name="textCarbonFootprint">Szénlábnyom / szén-dioxid-kibocsátás: </string>
   <string name="txtDialogPowerMode">Gyorsnézet</string>
   <string name="txtSeeMore">Továbbiak</string>
