@@ -445,7 +445,7 @@ public class AddProductOverviewFragment extends BaseFragment {
 
     }
 
-    public void hideImageProgress(boolean errorInUploading) {
+    public void hideImageProgress(boolean errorInUploading, String message) {
         imageProgress.setVisibility(View.GONE);
         imageProgressText.setVisibility(View.GONE);
         imageFront.setVisibility(View.VISIBLE);
@@ -455,7 +455,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                     .into(imageFront);
             Toast.makeText(activity, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(activity, "You seem offline, images will be uploaded when network is available", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         }
     }
 }

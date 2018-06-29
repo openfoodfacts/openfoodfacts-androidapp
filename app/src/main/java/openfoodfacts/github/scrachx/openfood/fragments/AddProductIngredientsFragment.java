@@ -225,10 +225,11 @@ public class AddProductIngredientsFragment extends BaseFragment {
     public void showImageProgress() {
         imageProgress.setVisibility(View.VISIBLE);
         imageProgressText.setVisibility(View.VISIBLE);
+        imageProgressText.setText(R.string.toastSending);
         imageIngredients.setVisibility(View.INVISIBLE);
     }
 
-    public void hideImageProgress(boolean errorInUploading) {
+    public void hideImageProgress(boolean errorInUploading, String message) {
         imageProgress.setVisibility(View.INVISIBLE);
         imageProgressText.setVisibility(View.GONE);
         imageIngredients.setVisibility(View.VISIBLE);
@@ -239,7 +240,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
             imageProgressText.setText("Image uploaded successfully");
             imageProgressText.setVisibility(View.VISIBLE);
         } else {
-            Toast.makeText(activity, "You seem offline, images will be uploaded when network is available", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -255,6 +256,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     }
 
     public void showOCRProgress() {
+        ingredients.setText(null);
         ocrProgress.setVisibility(View.VISIBLE);
         ocrProgressText.setVisibility(View.VISIBLE);
     }

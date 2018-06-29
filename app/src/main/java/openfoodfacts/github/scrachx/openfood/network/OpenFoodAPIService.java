@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import java.util.Map;
 
-import io.reactivex.Completable;
 import io.reactivex.Single;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -186,8 +185,13 @@ public interface OpenFoodAPIService {
 
     @Multipart
     @POST("/cgi/product_image_upload.pl")
-    Completable saveImageSingle(@PartMap Map<String, RequestBody> fields,
-                                @Header("Authorization") String auth);
+    Single<JsonNode> saveImageSingle(@PartMap Map<String, RequestBody> fields,
+                                     @Header("Authorization") String auth);
+
+    @GET("/cgi/product_image_crop.pl")
+    Single<JsonNode> editImageSingle(@Query("code") String code,
+                                     @QueryMap Map<String, String> fields,
+                                     @Header("Authorization") String auth);
 
     @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
     Single<JsonNode> getIngredients(@Query("code") String code,

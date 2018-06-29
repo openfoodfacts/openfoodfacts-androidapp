@@ -28,7 +28,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnPageChange;
-import io.reactivex.CompletableObserver;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -230,7 +229,7 @@ public class AddProductActivity extends AppCompatActivity {
         for (Map.Entry<String, String> entry : productDetails.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
-            Log.e(key, value);
+            Log.d(key, value);
         }
 
         client.saveProductSingle(code, productDetails, "Basic b2ZmOm9mZg==")
@@ -309,11 +308,12 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     public void addToPhotoMap(ProductImage image, int position) {
-        String lang = productDetails.get("lang");
+        String lang = getProductLanguage();
         boolean ocr = false;
         Map<String, RequestBody> imgMap = new HashMap<>();
         imgMap.put("code", image.getCode());
-        imgMap.put("imagefield", image.getField());
+        RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), image.getImageField().toString() + '_' + lang);
+        imgMap.put("imagefield", imageField);
         if (image.getImguploadFront() != null)
             imgMap.put("imgupload_front\"; filename=\"front_" + lang + ".png\"", image.getImguploadFront());
         if (image.getImguploadIngredients() != null) {
@@ -339,17 +339,23 @@ public class AddProductActivity extends AppCompatActivity {
         client.saveImageSingle(imgMap, "Basic b2ZmOm9mZg==")
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(disposable -> showImageProgress(position))
-                .subscribe(new CompletableObserver() {
+                .subscribe(new SingleObserver<JsonNode>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposable = d;
                     }
 
                     @Override
-                    public void onComplete() {
-                        hideImageProgress(position, false);
-                        if (ocr) {
-                            performOCR(image);
+                    public void onSuccess(JsonNode jsonNode) {
+                        String status = jsonNode.get("status").asText();
+                        if (status.equals("status not ok")) {
+                            String error = jsonNode.get("error").asText();
+                            hideImageProgress(position, true, error);
+                        } else {
+                            hideImageProgress(position, false, null);
+                            String imagefield = jsonNode.get("imagefield").asText();
+                            String imgid = jsonNode.get("image").get("imgid").asText();
+                            setPhoto(image, imagefield, imgid, ocr);
                         }
                     }
 
@@ -357,7 +363,7 @@ public class AddProductActivity extends AppCompatActivity {
                     public void onError(Throwable e) {
                         // A network error happened
                         if (e instanceof IOException) {
-                            hideImageProgress(position, true);
+                            hideImageProgress(position, true, "You seem offline, images will be uploaded when network is available");
                             Log.e(AddProductActivity.class.getSimpleName(), e.getMessage());
                             ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                             mToUploadProductDao.insertOrReplace(product);
@@ -370,8 +376,46 @@ public class AddProductActivity extends AppCompatActivity {
                 });
     }
 
-    private void performOCR(ProductImage image) {
-        client.getIngredients(image.getBarcode(), "ingredients_" + productDetails.get("lang"), "Basic b2ZmOm9mZg==")
+    private void setPhoto(ProductImage image, String imagefield, String imgid, boolean ocr) {
+        Map<String, String> queryMap = new HashMap<>();
+        queryMap.put("imgid", imgid);
+        queryMap.put("id", imagefield);
+        client.editImageSingle(image.getBarcode(), queryMap, "Basic b2ZmOm9mZg==")
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<JsonNode>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(JsonNode jsonNode) {
+                        String status = jsonNode.get("status").asText();
+                        if (status.equals("status ok")) {
+                            if (ocr) {
+                                performOCR(image, imagefield);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (e instanceof IOException) {
+                            if (ocr) {
+                                View view = findViewById(android.R.id.content);
+                                Snackbar.make(view, "No internet connection. Unable to extract ingredients", Snackbar.LENGTH_INDEFINITE)
+                                        .setAction(R.string.txt_try_again, v -> setPhoto(image, imagefield, imgid, true)).show();
+                            }
+                        } else {
+                            Log.i(this.getClass().getSimpleName(), e.getMessage());
+                            Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void performOCR(ProductImage image, String imageField) {
+        client.getIngredients(image.getBarcode(), imageField, "Basic b2ZmOm9mZg==")
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(disposable -> addProductIngredientsFragment.showOCRProgress())
                 .subscribe(new SingleObserver<JsonNode>() {
@@ -385,7 +429,7 @@ public class AddProductActivity extends AppCompatActivity {
                         addProductIngredientsFragment.hideOCRProgress();
                         String status = jsonNode.get("status").toString();
                         if (status.equals("0")) {
-                            String ocrResult = jsonNode.get("ingredients_text_from_image").toString();
+                            String ocrResult = jsonNode.get("ingredients_text_from_image").asText();
                             addProductIngredientsFragment.setIngredients(status, ocrResult);
                         } else {
                             addProductIngredientsFragment.setIngredients(status, null);
@@ -398,7 +442,7 @@ public class AddProductActivity extends AppCompatActivity {
                         if (e instanceof IOException) {
                             View view = findViewById(android.R.id.content);
                             Snackbar.make(view, "No internet connection. Unable to extract ingredients", Snackbar.LENGTH_INDEFINITE)
-                                    .setAction(R.string.txt_try_again, v -> performOCR(image)).show();
+                                    .setAction(R.string.txt_try_again, v -> performOCR(image, imageField)).show();
                         } else {
                             Log.i(this.getClass().getSimpleName(), e.getMessage());
                             Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -407,16 +451,16 @@ public class AddProductActivity extends AppCompatActivity {
                 });
     }
 
-    private void hideImageProgress(int position, boolean errorUploading) {
+    private void hideImageProgress(int position, boolean errorUploading, String message) {
         switch (position) {
             case 0:
-                addProductOverviewFragment.hideImageProgress(errorUploading);
+                addProductOverviewFragment.hideImageProgress(errorUploading, message);
                 break;
             case 1:
-                addProductIngredientsFragment.hideImageProgress(errorUploading);
+                addProductIngredientsFragment.hideImageProgress(errorUploading, message);
                 break;
             case 2:
-                addProductNutritionFactsFragment.hideImageProgress(errorUploading);
+                addProductNutritionFactsFragment.hideImageProgress(errorUploading, message);
         }
     }
 

@@ -26,6 +26,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/hint_image_ingredients"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="(Please take a picture of the ingredients to automatically extract them)"
+            android:textColor="@color/grey_500"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/ingredients_list"
+            app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
+            app:layout_constraintTop_toBottomOf="@id/section_ingredients_picture" />
+
         <ImageView
             android:id="@+id/btnAddImageIngredients"
             android:layout_width="50dp"
@@ -33,7 +44,7 @@
             android:layout_margin="@dimen/spacing_small"
             android:background="?android:selectableItemBackground"
             app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
-            app:layout_constraintTop_toBottomOf="@id/section_ingredients_picture"
+            app:layout_constraintTop_toBottomOf="@id/hint_image_ingredients"
             app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
 
         <ProgressBar
@@ -43,7 +54,7 @@
             android:layout_margin="@dimen/spacing_small"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
-            app:layout_constraintTop_toBottomOf="@id/section_ingredients_picture"
+            app:layout_constraintTop_toBottomOf="@id/hint_image_ingredients"
             tools:visibility="visible" />
 
         <TextView
