@@ -28,12 +28,6 @@
   <string name="no_offline_data">You\'re all done</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Sammendrag</item>
@@ -67,8 +61,6 @@
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
   <string name="edit">Edit</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Søk</string>
   <string name="no_products">Produkter ikke funnet</string>
   <string name="desc_list_item_icon">Vareikon</string>
@@ -135,7 +127,7 @@
   <string name="txtSendAll">Last opp alt</string>
   <string name="txtNoData">Ingen data</string>
   <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Laster opp...</string>
@@ -158,8 +150,6 @@
   <string name="msg_share">Se på dette produktet i Open Food Facts :</string>
   <string name="create_account">Registrér deg</string>
   <string name="home_drawer">Hjem</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Søk</string>
   <string name="search_by_barcode_drawer">Skriv inn strekkode</string>
   <string name="category_drawer">Kategorier</string>
@@ -213,6 +203,7 @@
   <string name="prefs_power_mode_summary">Skann produkter raskt i en dagligvarebutikk for å se hvilke som ikke er i databasen.</string>
   <string name="prefs_language">Språk</string>
   <string name="prefs_language_summary">Bytt språk</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Logg</string>
   <string name="clear_history">Tøm logg</string>
   <string name="title_clear_history_dialog">Tøm</string>
@@ -257,7 +248,7 @@
   <string name="action_contributes">Bidragene dine</string>
   <string name="logout_drawer">Logg ut</string>
   <string name="contribution_without_account">Du kan logge inn eller lage en konto for å beholde bidragene dine</string>
-  <string name="textCarbonFootprint">"Karbonutslipp / CO2-utslipp: "</string>
+  <string name="textCarbonFootprint">Karbonutslipp / CO2-utslipp: </string>
   <string name="txtDialogPowerMode">Hurtigvisning</string>
   <string name="txtSeeMore">Se mer</string>
   <string name="action_search">Søk</string>

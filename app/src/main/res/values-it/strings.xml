@@ -28,12 +28,6 @@
   <string name="no_offline_data">Hai quasi finito</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Sommario</item>
@@ -67,8 +61,6 @@
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
   <string name="edit">Editare</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Cerca</string>
   <string name="no_products">Prodotti non trovati</string>
   <string name="desc_list_item_icon">Icona Elemento</string>
@@ -135,7 +127,7 @@
   <string name="txtSendAll">Carica tutto</string>
   <string name="txtNoData">Nessun dato</string>
   <string name="txtPictureNeeded">Aspettare…</string>
-  <string name="txtPictureNeededDialogContent">Dovresti aggiungere almeno una foto prima di inviare questo prodotto</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Rimani</string>
   <string name="txtPictureNeededDialogNo">Annulla</string>
   <string name="toastSending">Caricamento...</string>
@@ -158,8 +150,6 @@
   <string name="msg_share">Guarda questo prodotto su Open Food Facts</string>
   <string name="create_account">Registrati</string>
   <string name="home_drawer">Homepage</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Cerca</string>
   <string name="search_by_barcode_drawer">Cerca per codice a barre</string>
   <string name="category_drawer">Categorie</string>
@@ -213,6 +203,7 @@
   <string name="prefs_power_mode_summary">Scansiona velocemente i prodotti in un supermercato per vedere quali non sono presenti nel database.</string>
   <string name="prefs_language">Lingua</string>
   <string name="prefs_language_summary">Cambia lingua</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Cronologia</string>
   <string name="clear_history">Cancella cronologia</string>
   <string name="title_clear_history_dialog">Cancella</string>
@@ -257,7 +248,7 @@
   <string name="action_contributes">I tuoi contributi</string>
   <string name="logout_drawer">Termina sessione</string>
   <string name="contribution_without_account">Puoi accedere o creare un account per salvare il tuo contributo</string>
-  <string name="textCarbonFootprint">"Emissioni di CO2 (impronta climatica): "</string>
+  <string name="textCarbonFootprint">Emissioni di CO2 (impronta climatica): </string>
   <string name="txtDialogPowerMode">Visualizzazione rapida</string>
   <string name="txtSeeMore">Altro</string>
   <string name="action_search">Cerca</string>
@@ -458,7 +449,7 @@
   <string name="products_incomplete">I prodotti aggiunti devono essere completati</string>
   <string name="product_pictures_contributed">Products you took pictures for</string>
   <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
-  <string name="product_info_added">Products you added information for</string>
+  <string name="product_info_added">Prodotti per i quali hai aggiunto informazioni</string>
   <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
   <string name="show_by">Mostrare</string>
   <string name="notify_title">Esportazione completata</string>
@@ -492,6 +483,6 @@
   <string name="autofocus">Autofocus</string>
   <string name="initial_loading">Caricamento iniziale</string>
   <string name="preferences">Impostazioni</string>
-  <string name="OFFlogo">Open Food Facts logo</string>
+  <string name="OFFlogo">Logo di Open Food Facts</string>
   <string name="loading_product">Caricamento del prodotto %s</string>
 </resources>

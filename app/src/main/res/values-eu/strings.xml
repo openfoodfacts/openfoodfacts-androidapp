@@ -28,12 +28,6 @@
   <string name="no_offline_data">Bukatu duzu</string>
   <string name="first_offline">Offline gehitutako produktuak hemen agertuko dira</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Laburpena</item>
@@ -67,8 +61,6 @@
   <!-- Content Description -->
   <string name="bookmark">Lastermarka</string>
   <string name="edit">Editatu</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Bilatu</string>
   <string name="no_products">Ez da aurkitu produktua</string>
   <string name="desc_list_item_icon">Elementu ikonoa</string>
@@ -135,7 +127,7 @@
   <string name="txtSendAll">Igo guztiak</string>
   <string name="txtNoData">Datu gabe</string>
   <string name="txtPictureNeeded">Itxaron…</string>
-  <string name="txtPictureNeededDialogContent">Gutxienez irudi bat gehitu beharko zenuke produktu hau bidali aurretik</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Egon</string>
   <string name="txtPictureNeededDialogNo">Baztertu</string>
   <string name="toastSending">Uploading...</string>
@@ -158,8 +150,6 @@
   <string name="msg_share">Ikusi produktu hau Open Food Facts-en:</string>
   <string name="create_account">Eman izena</string>
   <string name="home_drawer">Hasiera</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Bilatu</string>
   <string name="search_by_barcode_drawer">Idatzi barra-kodea</string>
   <string name="category_drawer">Kategoriak</string>
@@ -213,6 +203,7 @@
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
   <string name="prefs_language">Hizkuntza</string>
   <string name="prefs_language_summary">Aldatu hizkuntza</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Historiala</string>
   <string name="clear_history">Garbitu historiala</string>
   <string name="title_clear_history_dialog">Garbitu</string>
@@ -257,7 +248,7 @@
   <string name="action_contributes">Zure ekarpenak</string>
   <string name="logout_drawer">Amaitu saioa</string>
   <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
-  <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
+  <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
   <string name="txtDialogPowerMode">Bista azkarra</string>
   <string name="txtSeeMore">Ikusi gehiago</string>
   <string name="action_search">Bilatu</string>
@@ -297,9 +288,9 @@
   <string name="nutrition_alcohol">Alkohola</string>
   <string name="nutrition_vitamins">Bitaminak</string>
   <string name="vitamin_a">A bitamina</string>
-  <string name="vitamin_d">D bitamina</string>
-  <string name="vitamin_e">E bitamina</string>
-  <string name="vitamin_k">K bitamina</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">C bitamina</string>
   <string name="vitamin_b1">B1 bitamina</string>
   <string name="vitamin_b2">B2 bitamina</string>
