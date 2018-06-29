@@ -8,7 +8,7 @@ quickview_en.png
 Получить Nutriscore
 
 history_en.png
-Your full scan history, fully private & exportable
+Полная история сканирования, полностью приватная и экспортируемая
 
 product_view_wikipedia_en.png
 Go further with Wikipedia
