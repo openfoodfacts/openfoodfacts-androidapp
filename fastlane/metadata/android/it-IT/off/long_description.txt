@@ -30,6 +30,6 @@ To discover the Open Food Facts project, please visit https://openfoodfacts.org
 - You can export your scan history
 
 Open Food Facts is also available on the web at https://world.openfoodfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Domande e feedback a: contact@openfoodfacts.org
 
 For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
