@@ -28,12 +28,6 @@
   <string name="no_offline_data">You\'re all done</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Buod</item>
@@ -67,8 +61,6 @@
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
   <string name="edit">Edit</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Maghanap</string>
   <string name="no_products">Hindi natagpuan ang mga produkto</string>
   <string name="desc_list_item_icon">Item Icon</string>
@@ -135,7 +127,7 @@
   <string name="txtSendAll">I-upload lahat</string>
   <string name="txtNoData">Walang data</string>
   <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Nag uupload...</string>
@@ -158,8 +150,6 @@
   <string name="msg_share">Tingnan ang produktong ito sa Open Food Facts :</string>
   <string name="create_account">Mag Sign-up</string>
   <string name="home_drawer">Home</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Maghanap</string>
   <string name="search_by_barcode_drawer">I-type ang barcode</string>
   <string name="category_drawer">Mga kategorya</string>
@@ -213,6 +203,7 @@
   <string name="prefs_power_mode_summary">Mabilisang i-scan ang mga produkto sa isang supermarket upang makita kung alin ang wala sa database.</string>
   <string name="prefs_language">Wika</string>
   <string name="prefs_language_summary">Palitan ang Wika</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Kasaysayan</string>
   <string name="clear_history">Burahin ang kasaysayan</string>
   <string name="title_clear_history_dialog">Burahin</string>
@@ -257,7 +248,7 @@
   <string name="action_contributes">Ang iyong mga kontribusyon</string>
   <string name="logout_drawer">Logout</string>
   <string name="contribution_without_account">Pwede kang mag sign-in o gumawa ng account para mapanatili ang iyong mga kontribusyon</string>
-  <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
+  <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
   <string name="txtDialogPowerMode">Mabilisang tanaw</string>
   <string name="txtSeeMore">Tingnan ang higit pa</string>
   <string name="action_search">Maghanap</string>
@@ -297,9 +288,9 @@
   <string name="nutrition_alcohol">Alkohol</string>
   <string name="nutrition_vitamins">Mga bitamina</string>
   <string name="vitamin_a">Bitamina A</string>
-  <string name="vitamin_d">Bitamina d</string>
-  <string name="vitamin_e">Bitamina e</string>
-  <string name="vitamin_k">Bitamina k</string>
+  <string name="vitamin_d">Bitamina D</string>
+  <string name="vitamin_e">Bitamina E</string>
+  <string name="vitamin_k">Bitamina K</string>
   <string name="vitamin_c">Bitamina C</string>
   <string name="vitamin_b1">Bitamina B1</string>
   <string name="vitamin_b2">Bitamina B2</string>

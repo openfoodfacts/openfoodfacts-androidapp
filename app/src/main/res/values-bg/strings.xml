@@ -28,12 +28,6 @@
   <string name="no_offline_data">Всичко е готово</string>
   <string name="first_offline">Продуктите добавени офлайн ще се показват тук</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Обобщение</item>
@@ -67,8 +61,6 @@
   <!-- Content Description -->
   <string name="bookmark">Отметка</string>
   <string name="edit">Редактирай</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Търсене</string>
   <string name="no_products">Продуктът не е намерен</string>
   <string name="desc_list_item_icon">Икона на елемента</string>
@@ -135,7 +127,7 @@
   <string name="txtSendAll">Качване на всичко</string>
   <string name="txtNoData">Няма данни</string>
   <string name="txtPictureNeeded">Изчакайте…</string>
-  <string name="txtPictureNeededDialogContent">Преди да изпратите този продукт, трябва да добавите поне една снимка</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Остани</string>
   <string name="txtPictureNeededDialogNo">Отказ</string>
   <string name="toastSending">Качване…</string>
@@ -158,8 +150,6 @@
   <string name="msg_share">Погледнете този продукт в Open Food Facts:</string>
   <string name="create_account">Регистрирай се</string>
   <string name="home_drawer">Начало</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Търсене</string>
   <string name="search_by_barcode_drawer">Въведете баркод</string>
   <string name="category_drawer">Категории</string>
@@ -213,6 +203,7 @@
   <string name="prefs_power_mode_summary">Бързо сканирайте продукти в супермаркета, за да видите кои не са в базата данни.</string>
   <string name="prefs_language">Език</string>
   <string name="prefs_language_summary">Промяна на езика</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">История</string>
   <string name="clear_history">Изчисти историята</string>
   <string name="title_clear_history_dialog">Изчистване</string>
@@ -257,7 +248,7 @@
   <string name="action_contributes">Вашите приноси</string>
   <string name="logout_drawer">Изход</string>
   <string name="contribution_without_account">Можете да влезете или да създадете профил, за да запазите приносите си</string>
-  <string name="textCarbonFootprint">"Въглероден отпечатък / емисии на СО2: "</string>
+  <string name="textCarbonFootprint">Въглероден отпечатък / емисии на СО2: </string>
   <string name="txtDialogPowerMode">Бърз преглед</string>
   <string name="txtSeeMore">Вижте още</string>
   <string name="action_search">Търсене</string>
@@ -297,9 +288,9 @@
   <string name="nutrition_alcohol">Алкохол</string>
   <string name="nutrition_vitamins">Витамини</string>
   <string name="vitamin_a">Витамин А</string>
-  <string name="vitamin_d">Витамин d</string>
-  <string name="vitamin_e">Витамин e</string>
-  <string name="vitamin_k">Витамин k</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">Витамин C</string>
   <string name="vitamin_b1">Витамин В1</string>
   <string name="vitamin_b2">Витамин В2</string>

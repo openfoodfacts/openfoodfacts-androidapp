@@ -28,12 +28,6 @@
   <string name="no_offline_data">O avètz tot acabat</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Summary</item>
@@ -67,8 +61,6 @@
   <!-- Content Description -->
   <string name="bookmark">Marcapagina</string>
   <string name="edit">Modificar</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Recercar</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
@@ -135,7 +127,7 @@
   <string name="txtSendAll">Upload all</string>
   <string name="txtNoData">No data</string>
   <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Demorar</string>
   <string name="txtPictureNeededDialogNo">Anullar</string>
   <string name="toastSending">Uploading...</string>
@@ -158,8 +150,6 @@
   <string name="msg_share">Look at this product on Open Food Facts :</string>
   <string name="create_account">Sign up</string>
   <string name="home_drawer">Acuèlh</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Recercar</string>
   <string name="search_by_barcode_drawer">Recèrca per còdi barra</string>
   <string name="category_drawer">Categorias</string>
@@ -213,6 +203,7 @@
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
   <string name="prefs_language">Lenga</string>
   <string name="prefs_language_summary">Change language</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">History</string>
   <string name="clear_history">Clear history</string>
   <string name="title_clear_history_dialog">Clear</string>
@@ -257,7 +248,7 @@
   <string name="action_contributes">Vòstras contribucions</string>
   <string name="logout_drawer">Desconnexion</string>
   <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
-  <string name="textCarbonFootprint">"Carbon footprint / CO2 emissions: "</string>
+  <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">Ne veire mai</string>
   <string name="action_search">Recercar</string>
@@ -297,9 +288,9 @@
   <string name="nutrition_alcohol">Alcohol</string>
   <string name="nutrition_vitamins">Vitamins</string>
   <string name="vitamin_a">Vitamin A</string>
-  <string name="vitamin_d">Vitamin d</string>
-  <string name="vitamin_e">Vitamin e</string>
-  <string name="vitamin_k">Vitamin k</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">Vitamin C</string>
   <string name="vitamin_b1">Vitamin B1</string>
   <string name="vitamin_b2">Vitamin B2</string>

@@ -28,12 +28,6 @@
   <string name="no_offline_data">You\'re all done</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>সারাংশ</item>
@@ -67,8 +61,6 @@
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
   <string name="edit">Edit</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">অনুসন্ধান</string>
   <string name="no_products">পণ্যটি খুঁজে পাওয়া যায় নি</string>
   <string name="desc_list_item_icon">আইটেম আইকন</string>
@@ -135,7 +127,7 @@
   <string name="txtSendAll">সবগুলো আপলোড করুন</string>
   <string name="txtNoData">কোন উপাত্ত নেই</string>
   <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">আপলোড করা হচ্ছে...</string>
@@ -158,8 +150,6 @@
   <string name="msg_share">পণ্যগুলো দেখুন Open Food Facts এ :</string>
   <string name="create_account">সাইন আপ</string>
   <string name="home_drawer">মূলপাতা</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">অনুসন্ধান</string>
   <string name="search_by_barcode_drawer">বারকোড টাইপ করুন</string>
   <string name="category_drawer">শ্রেণীসমূহ</string>
@@ -213,6 +203,7 @@
   <string name="prefs_power_mode_summary">ডাটাবেসে আছে কিনা তা দেখার জন্য সুপারমার্কেট এ থাকা পণ্য দ্রুত স্ক্যান করুন।</string>
   <string name="prefs_language">ভাষা</string>
   <string name="prefs_language_summary">ভাষা পরিবর্তন করুন</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">ইতিহাস</string>
   <string name="clear_history">ইতিহাস মুছে ফেলুন</string>
   <string name="title_clear_history_dialog">মুছে ফেলুন</string>
@@ -257,7 +248,7 @@
   <string name="action_contributes">আপনার অবদানসমূহ</string>
   <string name="logout_drawer">লগআউট</string>
   <string name="contribution_without_account">অবদান রাখতে সাইন-ইন করুন  বা নতুন অ্যাকাউন্ট খুলুন</string>
-  <string name="textCarbonFootprint">"কার্বন পদচিহ্ন / CO2 নির্গমন: "</string>
+  <string name="textCarbonFootprint">কার্বন পদচিহ্ন / CO2 নির্গমন: </string>
   <string name="txtDialogPowerMode">দ্রুত দেখুন</string>
   <string name="txtSeeMore">আরও দেখুন</string>
   <string name="action_search">অনুসন্ধান</string>
@@ -298,9 +289,9 @@
 অ্যালকোহল</string>
   <string name="nutrition_vitamins">ভিটামিনসমূহ</string>
   <string name="vitamin_a">ভিটামিন এ</string>
-  <string name="vitamin_d">ভিটামিন ডি</string>
-  <string name="vitamin_e">ভিটামিন ই</string>
-  <string name="vitamin_k">ভিটামিন কে</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">ভিটামিন সি</string>
   <string name="vitamin_b1">ভিটামিন বি 1</string>
   <string name="vitamin_b2">ভিটামিন B2</string>

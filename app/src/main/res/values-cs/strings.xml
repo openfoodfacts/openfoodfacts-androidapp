@@ -36,12 +36,6 @@
   <string name="no_offline_data">You\'re all done</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Shrnutí</item>
@@ -75,8 +69,6 @@
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
   <string name="edit">Edit</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Vyhledat</string>
   <string name="no_products">Produkty nebyly nalezeny</string>
   <string name="desc_list_item_icon">Ikona položky</string>
@@ -143,7 +135,7 @@
   <string name="txtSendAll">Nahrát vše</string>
   <string name="txtNoData">Žádná data</string>
   <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Nahrávám...</string>
@@ -166,8 +158,6 @@
   <string name="msg_share">Podívejte se na tento produkt v Open Food Facts :</string>
   <string name="create_account">Registrovat</string>
   <string name="home_drawer">Titulní stránka</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Vyhledat</string>
   <string name="search_by_barcode_drawer">Zadejte čárový kód</string>
   <string name="category_drawer">Kategorie</string>
@@ -221,6 +211,7 @@
   <string name="prefs_power_mode_summary">Rychle skenujete jeden produkt za druhým (např. v supermarketu), abyste zjistili, které z nich nejsou v databázi.</string>
   <string name="prefs_language">Jazyk</string>
   <string name="prefs_language_summary">Změnit jazyk</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Historie</string>
   <string name="clear_history">Smazat historii</string>
   <string name="title_clear_history_dialog">Vymazat</string>
@@ -265,7 +256,7 @@
   <string name="action_contributes">Vaše příspěvky</string>
   <string name="logout_drawer">Odhlásit se</string>
   <string name="contribution_without_account">Můžete se přihlásit nebo vytvořit účet pro zachování vašich příspěvků</string>
-  <string name="textCarbonFootprint">"Uhlíková stopa / emise CO2: "</string>
+  <string name="textCarbonFootprint">Uhlíková stopa / emise CO2: </string>
   <string name="txtDialogPowerMode">Náhled</string>
   <string name="txtSeeMore">Zobrazit více</string>
   <string name="action_search">Vyhledat</string>
@@ -305,9 +296,9 @@
   <string name="nutrition_alcohol">Alkohol</string>
   <string name="nutrition_vitamins">Vitamíny</string>
   <string name="vitamin_a">Vitamín A</string>
-  <string name="vitamin_d">Vitamín D</string>
-  <string name="vitamin_e">Vitamín E</string>
-  <string name="vitamin_k">Vitamín K</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">Vitamín C</string>
   <string name="vitamin_b1">Vitamín B1</string>
   <string name="vitamin_b2">Vitamín B2</string>

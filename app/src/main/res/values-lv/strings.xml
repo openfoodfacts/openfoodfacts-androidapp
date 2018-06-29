@@ -32,12 +32,6 @@
   <string name="no_offline_data">Viss gatavs</string>
   <string name="first_offline">Šeit parādīsies produkti, kuri pievienoti bezsaistē</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Kopsavilkums</item>
@@ -71,8 +65,6 @@
   <!-- Content Description -->
   <string name="bookmark">Grāmatzīme</string>
   <string name="edit">Rediģēt</string>
-  <string name="fastscroller_track">Ātrās apskates režīms</string>
-  <string name="fastscroller_handle">Ātrās apskates pārbaude</string>
   <string name="search_button">Meklēt</string>
   <string name="no_products">Produkti nav atrasti</string>
   <string name="desc_list_item_icon">Produkta sīkbilde</string>
@@ -139,7 +131,7 @@
   <string name="txtSendAll">Augšupielādēt visu</string>
   <string name="txtNoData">Nav datu</string>
   <string name="txtPictureNeeded">Pagaidiet …</string>
-  <string name="txtPictureNeededDialogContent">Pirms šī produkta iesniegšanas jums jāpievieno vismaz viens attēls</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Palikt</string>
   <string name="txtPictureNeededDialogNo">Atcelt</string>
   <string name="toastSending">Augšuplādē…</string>
@@ -162,8 +154,6 @@
   <string name="msg_share">Apskatiet šo produktu, izmantojot Open Food Facts:</string>
   <string name="create_account">Reģistrēties</string>
   <string name="home_drawer">Mājas</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Meklēt</string>
   <string name="search_by_barcode_drawer">Veidojiet svītrkodu</string>
   <string name="category_drawer">Kategorijas</string>
@@ -217,6 +207,7 @@
   <string name="prefs_power_mode_summary">Skenēt lielveikala produktu, lai noskaidrotu vai tas ir iekļauts datubāzē.</string>
   <string name="prefs_language">Valoda</string>
   <string name="prefs_language_summary">Pāriet uz citu valodu</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Vēsture</string>
   <string name="clear_history">Notīrīt vēsturi</string>
   <string name="title_clear_history_dialog">Notīrīt</string>
@@ -261,7 +252,7 @@
   <string name="action_contributes">Jūsu ieguldījums</string>
   <string name="logout_drawer">Izlogoties</string>
   <string name="contribution_without_account">Varat ielogoties vai izveidot kontu, lai saglabātu savu ieguldījumu</string>
-  <string name="textCarbonFootprint">"Oglekļa dioksīda emisijas / CO2 emisijas: "</string>
+  <string name="textCarbonFootprint">Oglekļa dioksīda emisijas / CO2 emisijas: </string>
   <string name="txtDialogPowerMode">Ātrs pārskats</string>
   <string name="txtSeeMore">Skatīt vairāk</string>
   <string name="action_search">Meklēt</string>
@@ -301,9 +292,9 @@
   <string name="nutrition_alcohol">Alkohols</string>
   <string name="nutrition_vitamins">Vitamīni</string>
   <string name="vitamin_a">Vitamīns A</string>
-  <string name="vitamin_d">D vitamīns</string>
-  <string name="vitamin_e">E vitamīns</string>
-  <string name="vitamin_k">K vitamīns</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">C vitamīns</string>
   <string name="vitamin_b1">Vitamīns B1</string>
   <string name="vitamin_b2">B2 vitamīns</string>

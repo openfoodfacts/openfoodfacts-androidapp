@@ -36,12 +36,6 @@
   <string name="no_offline_data">Усе готово</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Загальна інформація</item>
@@ -75,8 +69,6 @@
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
   <string name="edit">Edit</string>
-  <string name="fastscroller_track">Швидкісна прокрутка</string>
-  <string name="fastscroller_handle">Швидкісна прокрутка</string>
   <string name="search_button">Пошук</string>
   <string name="no_products">Товари не знайдено</string>
   <string name="desc_list_item_icon">Іконка елемента</string>
@@ -143,7 +135,7 @@
   <string name="txtSendAll">Завантажити все</string>
   <string name="txtNoData">Даних немає</string>
   <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Uploading...</string>
@@ -166,8 +158,6 @@
   <string name="msg_share">Подивіться на цей товар на \"Open Food Facts\":</string>
   <string name="create_account">Зареєструватися</string>
   <string name="home_drawer">Головна</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Пошук</string>
   <string name="search_by_barcode_drawer">Введіть код товару</string>
   <string name="category_drawer">Категорії</string>
@@ -221,6 +211,7 @@
   <string name="prefs_power_mode_summary">Швидке сканування товарів в супермаркеті, щоб побачити, які з них не знаходяться в базі даних.</string>
   <string name="prefs_language">Мова</string>
   <string name="prefs_language_summary">Змінити мову</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Історія</string>
   <string name="clear_history">Очистити історію</string>
   <string name="title_clear_history_dialog">Очистити</string>
@@ -265,7 +256,7 @@
   <string name="action_contributes">Ваш внесок</string>
   <string name="logout_drawer">Вийти</string>
   <string name="contribution_without_account">Вам потрібно увійти або створити обліковий запис, щоб побачити свої внески</string>
-  <string name="textCarbonFootprint">"Викиди вуглецю / CO2: "</string>
+  <string name="textCarbonFootprint">Викиди вуглецю / CO2: </string>
   <string name="txtDialogPowerMode">Швидкий перегляд</string>
   <string name="txtSeeMore">Показати детальніше</string>
   <string name="action_search">Пошук</string>
@@ -305,9 +296,9 @@
   <string name="nutrition_alcohol">Алкоголь</string>
   <string name="nutrition_vitamins">Вітаміни</string>
   <string name="vitamin_a">Вітамін А</string>
-  <string name="vitamin_d">Вітамін d</string>
-  <string name="vitamin_e">Вітамін е</string>
-  <string name="vitamin_k">Вітамін k</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">Вітамін С</string>
   <string name="vitamin_b1">Вітамін В1</string>
   <string name="vitamin_b2">Вітамін В2</string>

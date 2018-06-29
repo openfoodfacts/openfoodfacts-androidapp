@@ -24,12 +24,6 @@
   <string name="no_offline_data">Anda selesai</string>
   <string name="first_offline">Produk yang ditambahkan luring akan tampil disini</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>meringkas</item>
@@ -63,8 +57,6 @@
   <!-- Content Description -->
   <string name="bookmark">Markah</string>
   <string name="edit">Sunting</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">mencari </string>
   <string name="no_products">tidak ada produk</string>
   <string name="desc_list_item_icon">Ikon item</string>
@@ -132,7 +124,7 @@
   <string name="txtSendAll">mengirimkan semua</string>
   <string name="txtNoData">tidak ada data anda</string>
   <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">mengirim </string>
@@ -155,8 +147,6 @@
   <string name="msg_share">Lihatlah produk ini pada Open Food Facts:</string>
   <string name="create_account">memasuki akun</string>
   <string name="home_drawer">rumah</string>
-  <string name="open_beauty_drawer">membuka fakta kecantikan</string>
-  <string name="open_food_drawer">membuka fakta makanan</string>
   <string name="search_drawer">mencari </string>
   <string name="search_by_barcode_drawer">tipe kode batang</string>
   <string name="category_drawer">Kategori</string>
@@ -210,6 +200,7 @@
   <string name="prefs_power_mode_summary">Cepat memindai produk di supermarket untuk melihat mana yang tidak ada dalam database.</string>
   <string name="prefs_language">bahasa</string>
   <string name="prefs_language_summary">ubah bahasa</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">riwayat/kenangan</string>
   <string name="clear_history">menghapus riwayat</string>
   <string name="title_clear_history_dialog">hapus</string>
@@ -254,7 +245,7 @@
   <string name="action_contributes">hasil anda</string>
   <string name="logout_drawer">keluar dari akun</string>
   <string name="contribution_without_account">kamu bisa masuk atau membuat akun untuk menyimpan kontribusi kamu</string>
-  <string name="textCarbonFootprint">"langkah karbon/co2 emissions"</string>
+  <string name="textCarbonFootprint">langkah karbon/co2 emissions</string>
   <string name="txtDialogPowerMode">sekilas cepat</string>
   <string name="txtSeeMore">melihat kembali</string>
   <string name="action_search">mencari </string>
@@ -294,9 +285,9 @@
   <string name="nutrition_alcohol">Alkoholo</string>
   <string name="nutrition_vitamins">banyak vitamin</string>
   <string name="vitamin_a">Vitamin A</string>
-  <string name="vitamin_d">Vitamind</string>
-  <string name="vitamin_e">banyak vitamin e</string>
-  <string name="vitamin_k">Vitamink</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">Vitaminc</string>
   <string name="vitamin_b1">Vitamin .B1</string>
   <string name="vitamin_b2">Vitamin.B2</string>

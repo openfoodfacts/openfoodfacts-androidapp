@@ -36,12 +36,6 @@
   <string name="no_offline_data">סיימת</string>
   <string name="first_offline">מוצרים שהוספת ללא חיבור לאינטרנט יופיעו כאן</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>תקציר</item>
@@ -75,8 +69,6 @@
   <!-- Content Description -->
   <string name="bookmark">סימניה</string>
   <string name="edit">עריכה</string>
-  <string name="fastscroller_track">רצועת גלילה מהירה</string>
-  <string name="fastscroller_handle">ידית גלילה מהירה</string>
   <string name="search_button">חיפוש</string>
   <string name="no_products">המוצרים לא נמצאו</string>
   <string name="desc_list_item_icon">סמל הפריט</string>
@@ -166,8 +158,6 @@
   <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
   <string name="create_account">הרשמה</string>
   <string name="home_drawer">ראשי</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">חיפוש</string>
   <string name="search_by_barcode_drawer">חיפוש לפי ברקוד</string>
   <string name="category_drawer">קטגוריות</string>
@@ -221,6 +211,7 @@
   <string name="prefs_power_mode_summary">ניתן לסרוק מוצרים במהירות בסופר כדי לראות אילו מהם לא נמצאים במסד הנתונים.</string>
   <string name="prefs_language">שפה</string>
   <string name="prefs_language_summary">החלפת שפה</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">היסטוריה</string>
   <string name="clear_history">פינוי ההיסטוריה</string>
   <string name="title_clear_history_dialog">פינוי</string>
@@ -265,7 +256,7 @@
   <string name="action_contributes">התרומות שלך</string>
   <string name="logout_drawer">יציאה</string>
   <string name="contribution_without_account">ניתן להיכנס או ליצור חשבון כדי לשמור על התרומות שלך</string>
-  <string name="textCarbonFootprint">"טביעה פחמנית / פליטת פחמן דו חמצני: "</string>
+  <string name="textCarbonFootprint">טביעה פחמנית / פליטת פחמן דו חמצני: </string>
   <string name="txtDialogPowerMode">תצוגה מהירה</string>
   <string name="txtSeeMore">מידע נוסף</string>
   <string name="action_search">חיפוש</string>

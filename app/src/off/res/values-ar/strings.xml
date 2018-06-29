@@ -18,8 +18,8 @@
   <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
   <string name="slide_3_title">Get the Nutriscore</string>
   <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
-  <string name="slide_4_title">Works offline</string>
-  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+  <string name="slide_4_title">يعمل بدون اتصال</string>
+  <string name="slide_4_desc">يمكنك إضافة منتجات جديدة ، حتى إذا لم يكن لديك اتصال بالإنترنت في الوقت الحالي</string>
   <string name="txtDialogsContent">المنتج الذي تم مسحه غير موجود حتى الآن في الحقائق الغذائية المفتوحة. الرجاء إضافته.</string>
   <string name="txtDialogsContentPowerMode">المنتج الذي تم مسحه موجود بالفعل في \"الحقائق الغذائية المفتوحة\".</string>
   <string name="msg_share">انظر لهذا المنتج على \"الحقائق الغذائية المفتوحة\":</string>

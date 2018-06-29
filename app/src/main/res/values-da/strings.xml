@@ -28,12 +28,6 @@
   <string name="no_offline_data">Du er helt færdig</string>
   <string name="first_offline">Produkter tilføjet offline vil fremgå her</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Oversigt</item>
@@ -67,8 +61,6 @@
   <!-- Content Description -->
   <string name="bookmark">Bogmærke</string>
   <string name="edit">Rediger</string>
-  <string name="fastscroller_track">HurtigRulningsspor</string>
-  <string name="fastscroller_handle">HurtigRulningshåndtag</string>
   <string name="search_button">Søg</string>
   <string name="no_products">Produkter blev ikke fundet</string>
   <string name="desc_list_item_icon">Vareikon</string>
@@ -135,7 +127,7 @@
   <string name="txtSendAll">Upload alle</string>
   <string name="txtNoData">Ingen data</string>
   <string name="txtPictureNeeded">Vent…</string>
-  <string name="txtPictureNeededDialogContent">Du skal tilføje mindst ét foto, inden du indsender dette produkt</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Tilføj foto</string>
   <string name="txtPictureNeededDialogNo">Kassér</string>
   <string name="toastSending">Uploader...</string>
@@ -158,8 +150,6 @@
   <string name="msg_share">Kig på dette produkt på Open Food Facts :</string>
   <string name="create_account">Tilmeld dig</string>
   <string name="home_drawer">Hjem</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Søg</string>
   <string name="search_by_barcode_drawer">Indtast stregkode</string>
   <string name="category_drawer">Kategorier</string>
@@ -213,6 +203,7 @@
   <string name="prefs_power_mode_summary">Skan hurtigt mange produkter i et supermarked for at afgøre hvilke der ikke er i databasen.</string>
   <string name="prefs_language">Sprog</string>
   <string name="prefs_language_summary">Skift sprog</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Historik</string>
   <string name="clear_history">Ryd historik</string>
   <string name="title_clear_history_dialog">Ryd</string>
@@ -257,7 +248,7 @@
   <string name="action_contributes">Dine bidrag</string>
   <string name="logout_drawer">Log ud</string>
   <string name="contribution_without_account">Du kan logge ind eller oprette en konto for at gemme bidrag</string>
-  <string name="textCarbonFootprint">"CO2-regnskab / emissioner: "</string>
+  <string name="textCarbonFootprint">CO2-regnskab / emissioner: </string>
   <string name="txtDialogPowerMode">Hurtigvisning</string>
   <string name="txtSeeMore">Se mere</string>
   <string name="action_search">Søg</string>
@@ -299,7 +290,7 @@
   <string name="vitamin_a">Vitamin A</string>
   <string name="vitamin_d">D-vitamin</string>
   <string name="vitamin_e">E-vitamin</string>
-  <string name="vitamin_k">Vitamin k</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">C-vitamin</string>
   <string name="vitamin_b1">Vitamin B1</string>
   <string name="vitamin_b2">Vitamin B2</string>

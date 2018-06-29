@@ -24,12 +24,6 @@
   <string name="no_offline_data">您已經大功告成了。</string>
   <string name="first_offline">離職的產品將會顯示於此</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>總覽</item>
@@ -63,8 +57,6 @@
   <!-- Content Description -->
   <string name="bookmark">書籤</string>
   <string name="edit">編輯</string>
-  <string name="fastscroller_track">FastScroller 軌道</string>
-  <string name="fastscroller_handle">FastScroller 手柄</string>
   <string name="search_button">搜尋</string>
   <string name="no_products">產品未找到</string>
   <string name="desc_list_item_icon">物品圖示</string>
@@ -131,7 +123,7 @@
   <string name="txtSendAll">全部上傳</string>
   <string name="txtNoData">無資料</string>
   <string name="txtPictureNeeded">請稍候...</string>
-  <string name="txtPictureNeededDialogContent">您在提交產品之前至少需要上傳一張照片</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">停留在此</string>
   <string name="txtPictureNeededDialogNo">捨棄</string>
   <string name="toastSending">上傳中...</string>
@@ -154,8 +146,6 @@
   <string name="msg_share">於 Open Food Facts 上查看此產品：</string>
   <string name="create_account">註冊</string>
   <string name="home_drawer">首頁</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">搜尋</string>
   <string name="search_by_barcode_drawer">輸入條碼</string>
   <string name="category_drawer">類別</string>
@@ -209,6 +199,7 @@
   <string name="prefs_power_mode_summary">在超市中快速掃描產品，來看哪一項不在資料庫中。</string>
   <string name="prefs_language">語言</string>
   <string name="prefs_language_summary">更改語言</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">歷史紀錄</string>
   <string name="clear_history">清除歷史記錄</string>
   <string name="title_clear_history_dialog">清除</string>
@@ -253,7 +244,7 @@
   <string name="action_contributes">您的貢獻</string>
   <string name="logout_drawer">登出</string>
   <string name="contribution_without_account">您可以登入或建立一個帳號來紀錄您的貢獻</string>
-  <string name="textCarbonFootprint">"碳足跡 / CO2 排放量︰"</string>
+  <string name="textCarbonFootprint">碳足跡 / CO2 排放量︰</string>
   <string name="txtDialogPowerMode">快速檢視</string>
   <string name="txtSeeMore">查看更多</string>
   <string name="action_search">搜尋</string>

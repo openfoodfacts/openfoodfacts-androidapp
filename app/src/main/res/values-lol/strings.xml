@@ -28,12 +28,6 @@
   <string name="no_offline_data">crwdns37748:0crwdne37748:0</string>
   <string name="first_offline">crwdns37749:0crwdne37749:0</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>crwdns37301:0crwdne37301:0</item>
-    <item>crwdns37302:0crwdne37302:0</item>
-    <item>crwdns37303:0crwdne37303:0</item>
-    <item>crwdns37304:0crwdne37304:0</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>crwdns34969:0crwdne34969:0</item>
@@ -67,8 +61,6 @@
   <!-- Content Description -->
   <string name="bookmark">crwdns46677:0crwdne46677:0</string>
   <string name="edit">crwdns92702:0crwdne92702:0</string>
-  <string name="fastscroller_track">crwdns37744:0crwdne37744:0</string>
-  <string name="fastscroller_handle">crwdns37745:0crwdne37745:0</string>
   <string name="search_button">crwdns35046:0crwdne35046:0</string>
   <string name="no_products">crwdns35047:0crwdne35047:0</string>
   <string name="desc_list_item_icon">crwdns35048:0crwdne35048:0</string>
@@ -135,7 +127,7 @@
   <string name="txtSendAll">crwdns35107:0crwdne35107:0</string>
   <string name="txtNoData">crwdns35108:0crwdne35108:0</string>
   <string name="txtPictureNeeded">crwdns46679:0crwdne46679:0</string>
-  <string name="txtPictureNeededDialogContent">crwdns46680:0crwdne46680:0</string>
+  <string name="txtPictureNeededDialogContent">crwdns92899:0crwdne92899:0</string>
   <string name="txtPictureNeededDialogYes">crwdns46681:0crwdne46681:0</string>
   <string name="txtPictureNeededDialogNo">crwdns46682:0crwdne46682:0</string>
   <string name="toastSending">crwdns37139:0crwdne37139:0</string>
@@ -158,8 +150,6 @@
   <string name="msg_share">crwdns35126:0crwdne35126:0</string>
   <string name="create_account">crwdns35127:0crwdne35127:0</string>
   <string name="home_drawer">crwdns35128:0crwdne35128:0</string>
-  <string name="open_beauty_drawer">crwdns35129:0crwdne35129:0</string>
-  <string name="open_food_drawer">crwdns35130:0crwdne35130:0</string>
   <string name="search_drawer">crwdns35131:0crwdne35131:0</string>
   <string name="search_by_barcode_drawer">crwdns35132:0crwdne35132:0</string>
   <string name="category_drawer">crwdns37118:0crwdne37118:0</string>
@@ -213,6 +203,7 @@
   <string name="prefs_power_mode_summary">crwdns35176:0crwdne35176:0</string>
   <string name="prefs_language">crwdns35177:0crwdne35177:0</string>
   <string name="prefs_language_summary">crwdns35178:0crwdne35178:0</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">crwdns35179:0crwdne35179:0</string>
   <string name="clear_history">crwdns35180:0crwdne35180:0</string>
   <string name="title_clear_history_dialog">crwdns35181:0crwdne35181:0</string>
@@ -257,7 +248,7 @@
   <string name="action_contributes">crwdns35217:0crwdne35217:0</string>
   <string name="logout_drawer">crwdns35218:0crwdne35218:0</string>
   <string name="contribution_without_account">crwdns35219:0crwdne35219:0</string>
-  <string name="textCarbonFootprint">"crwdns35220:0crwdne35220:0"</string>
+  <string name="textCarbonFootprint">crwdns35220:0crwdne35220:0</string>
   <string name="txtDialogPowerMode">crwdns35221:0crwdne35221:0</string>
   <string name="txtSeeMore">crwdns35222:0crwdne35222:0</string>
   <string name="action_search">crwdns35223:0crwdne35223:0</string>
@@ -297,9 +288,9 @@
   <string name="nutrition_alcohol">crwdns35249:0crwdne35249:0</string>
   <string name="nutrition_vitamins">crwdns35250:0crwdne35250:0</string>
   <string name="vitamin_a">crwdns35251:0crwdne35251:0</string>
-  <string name="vitamin_d">crwdns35252:0crwdne35252:0</string>
-  <string name="vitamin_e">crwdns35253:0crwdne35253:0</string>
-  <string name="vitamin_k">crwdns35254:0crwdne35254:0</string>
+  <string name="vitamin_d">crwdns92896:0crwdne92896:0</string>
+  <string name="vitamin_e">crwdns92897:0crwdne92897:0</string>
+  <string name="vitamin_k">crwdns92898:0crwdne92898:0</string>
   <string name="vitamin_c">crwdns35255:0crwdne35255:0</string>
   <string name="vitamin_b1">crwdns35256:0crwdne35256:0</string>
   <string name="vitamin_b2">crwdns35257:0crwdne35257:0</string>

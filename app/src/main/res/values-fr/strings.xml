@@ -28,12 +28,6 @@
   <string name="no_offline_data">C\'est bon :)</string>
   <string name="first_offline">Les produits ajoutés hors ligne apparaîtront ici</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Résumé</item>
@@ -67,8 +61,6 @@
   <!-- Content Description -->
   <string name="bookmark">Favori</string>
   <string name="edit">Modifier</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Rechercher</string>
   <string name="no_products">Produits non trouvés</string>
   <string name="desc_list_item_icon">Icône</string>
@@ -135,7 +127,7 @@
   <string name="txtSendAll">Tout envoyer</string>
   <string name="txtNoData">Aucune donnée</string>
   <string name="txtPictureNeeded">Veuillez patienter…</string>
-  <string name="txtPictureNeededDialogContent">Vous devez ajouter au moins une image avant de soumettre ce produit</string>
+  <string name="txtPictureNeededDialogContent">Ajoutez au moins une image avant de présenter ce produit</string>
   <string name="txtPictureNeededDialogYes">Rester</string>
   <string name="txtPictureNeededDialogNo">Annuler</string>
   <string name="toastSending">Envoi en cours...</string>
@@ -158,8 +150,6 @@
   <string name="msg_share">Regardez ce produit sur Open Beauty Facts:</string>
   <string name="create_account">S\'inscrire</string>
   <string name="home_drawer">Accueil</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Recherche</string>
   <string name="search_by_barcode_drawer">Rechercher par code-barre</string>
   <string name="category_drawer">Catégories</string>
@@ -213,6 +203,7 @@
   <string name="prefs_power_mode_summary">Scanner rapidement des produits dans un supermarché pour voir ceux qui ne sont pas dans la base de données.</string>
   <string name="prefs_language">Langue</string>
   <string name="prefs_language_summary">Changer la langue</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Historique</string>
   <string name="clear_history">Effacer l\'historique</string>
   <string name="title_clear_history_dialog">Effacer</string>
@@ -257,7 +248,7 @@
   <string name="action_contributes">Vos contributions</string>
   <string name="logout_drawer">Se déconnecter</string>
   <string name="contribution_without_account">Vous pouvez vous connecter ou créer un compte pour conserver vos contributions</string>
-  <string name="textCarbonFootprint">"Empreinte carbone / émissions de CO2: "</string>
+  <string name="textCarbonFootprint">Empreinte carbone / émissions de CO2: </string>
   <string name="txtDialogPowerMode">Aperçu rapide</string>
   <string name="txtSeeMore">En voir plus</string>
   <string name="action_search">Rechercher</string>

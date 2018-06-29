@@ -32,12 +32,6 @@
   <string name="no_offline_data">You\'re all done</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Pregled</item>
@@ -71,8 +65,6 @@
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
   <string name="edit">Edit</string>
-  <string name="fastscroller_track">FastScroller track</string>
-  <string name="fastscroller_handle">FastScroller handle</string>
   <string name="search_button">Pretraživanje</string>
   <string name="no_products">Proizvodi nisu pronađeni</string>
   <string name="desc_list_item_icon">Ikona</string>
@@ -139,7 +131,7 @@
   <string name="txtSendAll">Pošaljite sve</string>
   <string name="txtNoData">Nema podataka</string>
   <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add atleast one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">Otpremanje...</string>
@@ -162,8 +154,6 @@
   <string name="msg_share">Pogledaj ovaj proizvod na Open Food Facts :</string>
   <string name="create_account">Registruj se</string>
   <string name="home_drawer">Početna</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Pretraži</string>
   <string name="search_by_barcode_drawer">Pretraži po barkodu</string>
   <string name="category_drawer">Kategorije</string>
@@ -217,6 +207,7 @@
   <string name="prefs_power_mode_summary">Brzo skeniranje proizvoda u prodavnici da biste videli koji proizvodi nisu u bazi podataka.</string>
   <string name="prefs_language">Jezik</string>
   <string name="prefs_language_summary">Promenite jezik</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">Istorija</string>
   <string name="clear_history">Obriši istoriju</string>
   <string name="title_clear_history_dialog">Obriši</string>
@@ -261,7 +252,7 @@
   <string name="action_contributes">Vaši doprinosi</string>
   <string name="logout_drawer">Odjavite se</string>
   <string name="contribution_without_account">Prijavi se ili registruj nalog da bi sačuvao doprinose</string>
-  <string name="textCarbonFootprint">"Ugljenični otisak / emisija CO2: "</string>
+  <string name="textCarbonFootprint">Ugljenični otisak / emisija CO2: </string>
   <string name="txtDialogPowerMode">Brzi pregled</string>
   <string name="txtSeeMore">Pogledaj više</string>
   <string name="action_search">Pretraživanje</string>
