@@ -388,7 +388,8 @@
   <string name="minutes_ago">分种之前</string>
   <string name="hours_ago">小时之前</string>
   <string name="days_ago">天之前</string>
-  <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
+  <string name="scan_first_string">
+您查看的產品歷史記錄將在此處列出。\ n此歷史記錄僅供您使用，並存儲在本地。</string>
   <string name="log_in">登录</string>
   <string name="login_true">已经登录！</string>
   <string name="confirm_logout">确认注销</string>

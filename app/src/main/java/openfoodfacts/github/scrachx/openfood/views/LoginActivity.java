@@ -88,8 +88,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         setTitle(getString(R.string.txtSignIn));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
         resetPasswordUri = Uri.parse(getString(R.string.website) + "cgi/reset_password.pl");
 
