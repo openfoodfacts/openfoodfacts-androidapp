@@ -4,7 +4,7 @@ New native version of Open Food Facts. All the Open Food Facts volunteers been w
 ==================
 * Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
 ==================
-What's new ?
+Novità?
 ==================
 1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
 2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
@@ -16,4 +16,4 @@ What's new ?
 8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
 9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
 10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
-Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
+Fantastico! Nonostante tutte le novità, l'app è leggera come prima. Lo spazio sul tuo telefono è sacro.
