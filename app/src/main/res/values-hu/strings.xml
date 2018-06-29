@@ -446,7 +446,7 @@
   <string name="bottomNav_history">Előzmények</string>
   <string name="bottomNav_search">Keresés</string>
   <string name="products_added">Termékek, amelyeket hozzáadott vagy szerkesztett</string>
-  <string name="products_incomplete">Termékek, amiket hozzáadtál, és befejezésre várnak</string>
+  <string name="products_incomplete">Termékek, amelyeket hozzáadott és ki kell egészíteni</string>
   <string name="product_pictures_contributed">Termékek, amelyekről képeket készített</string>
   <string name="picture_contributed_incomplete">Termékek, amelyekről képeket készített és ki kell egészíteni</string>
   <string name="product_info_added">Termékek, amelyekhez információt adott hozzá</string>
