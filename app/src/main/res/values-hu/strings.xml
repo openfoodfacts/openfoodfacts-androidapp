@@ -120,7 +120,7 @@
   <string name="hintNameProduct">Név</string>
   <string name="hintEnergy">Energia kJ-ban adagonként</string>
   <string name="hintEnergyUnit">Energia egység</string>
-  <string name="hintWeight">Tömeg</string>
+  <string name="hintWeight">Súly</string>
   <string name="hintStores">Bolt</string>
   <string name="hintBrand">Márkanév</string>
   <string name="txtTakePicture">Kép készítése</string>
