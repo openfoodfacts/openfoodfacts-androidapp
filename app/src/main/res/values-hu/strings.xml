@@ -192,7 +192,7 @@
   <string name="info_download_data">Bizonyos adatokat le kell töltenie, hogy ez a funkció működjön. Kérem, nyomja meg az \"igen\"-t a letöltéshez.</string>
   <string name="info_download_data_connection">Bizonyos adatokat le kell töltenie, hogy ez a funkció működjön. Kérem, aktiválja az internet kapcsolatot.</string>
   <string name="msg_input_empty">Kérem, először töltse ki a mezőket.</string>
-  <string name="new_offline_info">Kérjük készítsen képet a termékről, összetételről, tápanyagtáblázatról, és minden címkén található információról. Köszönjük!</string>
+  <string name="new_offline_info">Kérjük, készítsen képet a termékről, összetevőiről, tápértékadatairól és bármilyen egyéb információról ami a címkén található. Köszönjük!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">A jelszó legalább 6 karakter hosszú legyen.</string>
   <string name="error_field_required">Szükséges mező.</string>
