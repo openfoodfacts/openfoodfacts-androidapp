@@ -135,7 +135,7 @@
   <string name="txtSendAll">Отправить все</string>
   <string name="txtNoData">Нет данных</string>
   <string name="txtPictureNeeded">Подождите…</string>
-  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">Перед отправкой этого продукта вы должны добавить по крайней мере одну фотографию</string>
   <string name="txtPictureNeededDialogYes">Оставаться</string>
   <string name="txtPictureNeededDialogNo">Отменить</string>
   <string name="toastSending">Передача...</string>
