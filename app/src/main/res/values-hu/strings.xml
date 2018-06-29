@@ -312,7 +312,7 @@
   <string name="zinc">Cink</string>
   <string name="copper">Réz</string>
   <string name="manganese">Mangán</string>
-  <string name="fluoride">Fluor</string>
+  <string name="fluoride">Fluorid</string>
   <string name="selenium">Szelén</string>
   <string name="chromium">Króm</string>
   <string name="molybdenum">Molibdén</string>
@@ -321,13 +321,13 @@
   <string name="taurine">Taurin</string>
   <string name="ph">pH</string>
   <string name="fruits_vegetables_nuts">Gyümölcsök, zöldségek, diófélék</string>
-  <string name="collagen_meat_protein_ratio">Kollagén húsfehérje aránya</string>
+  <string name="collagen_meat_protein_ratio">Kollagén húsfehérje arány</string>
   <string name="cocoa">Kakaó</string>
   <string name="chlorophyl">Klorofill</string>
-  <string name="take_picture_ingredients">Kép készítése az összetevőkről</string>
-  <string name="take_picture_front">Kép készítése a termék csomagolásáról</string>
-  <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
-  <string name="take_more_pictures">További képek készítése</string>
+  <string name="take_picture_ingredients">Készítsen képet az összetevőkről</string>
+  <string name="take_picture_front">Készítsen képet a termék csomagolásáról</string>
+  <string name="take_picture_nutrition_table">Készítsen képet a tápanyagtáblázatról</string>
+  <string name="take_more_pictures">Készítsen további képeket</string>
   <string name="txtSaturatedFat">Telített zsír</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Parancsikon nem elérhető</string>
