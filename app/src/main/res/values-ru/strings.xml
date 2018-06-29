@@ -476,12 +476,12 @@
   <string name="product">Изменить</string>
   <string name="txtDialogsTitle">Информация</string>
   <string name="preference_show_all_product_photos_title">Показать все фотографии продукта</string>
-  <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
+  <string name="preference_show_all_product_photos_summary">Показать все отправленные фотографии продуктов на отдельной вкладке</string>
   <string name="offline_product_addition_title">Добавить новый продукт</string>
   <string name="productNameNull">Название неизвестно</string>
   <string name="productBrandNull">Бренд неизвестен</string>
   <string name="productQuantityNull">Количество неизвестно</string>
-  <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
+  <string name="product_not_complete">Этот продукт еще не завершен. \nМожете вы добавить некоторые детали?</string>
   <string name="addProductOffline">Кажется, нет подключения к сети. Добавить продукт %s в автономном режиме?</string>
   <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
   <string name="scan_sound">Звук сканировния</string>
