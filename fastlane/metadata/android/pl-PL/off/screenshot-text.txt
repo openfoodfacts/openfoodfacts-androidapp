@@ -1,4 +1,4 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+Oto slogany nad screenshotami w playstore. Niech będą krótkie i atrakcyjne.
 Don't change the filename.
 ---
 scan_en.png
