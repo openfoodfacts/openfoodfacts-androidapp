@@ -98,7 +98,6 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null);
-
         signup.setEnabled(true);
 
         final SharedPreferences settings = getSharedPreferences("login", 0);
