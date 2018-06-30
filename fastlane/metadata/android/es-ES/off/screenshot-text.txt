@@ -1,5 +1,5 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
+Esos son los eslóganes que se muestran arriba de las capturas de pantalla en la playstore. Mantenlos cortos y atractivos.
+No cambie el nombre del archivo.
 ---
 scan_en.png
 Escanea productos
@@ -30,7 +30,7 @@ product_view_summary_en.png
 Wikipedia para Comida
 Wikipedia para Cosméticos
 Wikipedia para Comida para mascotas
-Wikipedia of Products
+Wikipedia de Productos
 
 product_view_ingredients_en.png
 Ingredientes
