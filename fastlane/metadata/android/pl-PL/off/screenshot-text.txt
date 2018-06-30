@@ -1,8 +1,8 @@
 Oto slogany nad screenshotami w playstore. Niech będą krótkie i atrakcyjne.
-Don't change the filename.
+Nie zmieniaj nazwy pliku.
 ---
-scan_en.png
-Scan products
+scan-eng.png
+Skanuj produkty
 
 quickview_en.png
 Zdobądź skalę Nutriscore
