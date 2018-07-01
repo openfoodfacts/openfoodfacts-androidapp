@@ -219,10 +219,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/brand" />
 
-        <MultiAutoCompleteTextView
+        <com.hootsuite.nachos.NachoTextView
             android:id="@+id/categories"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
@@ -231,10 +231,13 @@
             android:gravity="center_vertical"
             android:hint="Categories"
             android:imeOptions="actionNext"
-            android:inputType="text"
+            android:minHeight="40dp"
             android:nextFocusDown="@id/label"
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
+            app:chipBackground="#4389FA"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/packaging" />

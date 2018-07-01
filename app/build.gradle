@@ -230,6 +230,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
 
+    //UI Component : Chips Input
+    implementation "com.hootsuite.android:nachos:1.1.1"
+
     //Testing
     androidTestUtil 'com.android.support.test:orchestrator:1.0.2'
     testImplementation "junit:junit:$rootProject.jUnitVersion"

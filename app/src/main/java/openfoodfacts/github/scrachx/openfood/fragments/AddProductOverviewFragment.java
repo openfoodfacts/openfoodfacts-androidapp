@@ -25,9 +25,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.hootsuite.nachos.NachoTextView;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 import org.greenrobot.greendao.async.AsyncSession;
 
@@ -59,6 +61,7 @@ import pl.aprilapps.easyphotopicker.EasyImage;
 import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
@@ -108,7 +111,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     @BindView(R.id.packaging)
     EditText packaging;
     @BindView(R.id.categories)
-    MultiAutoCompleteTextView categories;
+    NachoTextView categories;
     @BindView(R.id.label)
     MultiAutoCompleteTextView label;
     @BindView(R.id.origin_of_ingredients)
@@ -219,7 +222,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                     android.R.layout.simple_dropdown_item_1line, category);
-            categories.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+            categories.addChipTerminator(',', BEHAVIOR_CHIPIFY_CURRENT_TOKEN);
             categories.setAdapter(adapter);
         });
     }
@@ -282,8 +285,10 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (!packaging.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_PACKAGING, packaging.getText().toString());
             }
-            if (!categories.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_CATEGORIES, categories.getText().toString());
+            if (!categories.getChipValues().isEmpty()) {
+                List<String> list = categories.getChipValues();
+                String string = StringUtils.join(list, ',');
+                ((AddProductActivity) activity).addToMap(PARAM_CATEGORIES, string);
             }
             if (!label.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_LABELS, label.getText().toString());
