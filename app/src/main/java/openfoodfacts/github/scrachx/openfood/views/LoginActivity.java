@@ -102,7 +102,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         final SharedPreferences settings = getSharedPreferences("login", 0);
         String loginS = settings.getString("user", getResources().getString(R.string.txt_anonymous));
-        if (!loginS.equals(getResources().getString(R.string.txt_anonymous))) {
+        if (loginS.equals("user")) {
             new MaterialDialog.Builder(this)
                     .title(R.string.log_in)
                     .content(R.string.login_true)
