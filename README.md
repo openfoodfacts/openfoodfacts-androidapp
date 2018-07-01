@@ -14,13 +14,20 @@ Open Food Facts Android Application
 
 <a href="https://f-droid.org/app/openfoodfacts.github.scrachx.openfood"><img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="70"></a><a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner"><img src="https://play.google.com/intl/en_us/badges/images/badge_new.png" alt="Get it on the Google Play Store" height="70"></a><br>
 <<<<<<< HEAD
+<<<<<<< HEAD
 (These are beta versions, <a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner">this is the stable version</a>)
 =======
+=======
+
+>>>>>>> bac47391e36208358d3f6382c3ade0f6871ab3f5
 <img src="https://lh3.googleusercontent.com/PYEw9fMLJ5ETPqB2mxeekfVTTNOkJHscs4MRHo546GJzwgIoj3SiJFsZDx4_D-EAUA=w720-h310-rw" height="300">
 <img src="https://lh3.googleusercontent.com/q7NWz-hc4x39q8N7EW0cz5GZDHN5-F0ttZPHFPvf8-cTG2RImWi_C2J7zCY1Wtc_qZw=w1280-h636-rw" height="300">
 <img src="https://lh3.googleusercontent.com/HXGodB99lZDp3lusX4ZdnkKJxcKiFv5ohfvaiMB7iX-i_QrcvWzUXPxmlSp8nq8SkBc=w1280-h636-rw" height="300">
 <img src="https://lh3.googleusercontent.com/t_AWYLEzr2O4n7KVli8GV_gpT_N1FKhq5EwReUvJjXdJNoPTBTwD-3cKTfZUrkyQAMM=w1280-h636-rw" height="300">
+<<<<<<< HEAD
 >>>>>>> 96bd41f6cc92a74f984e8569edf815dc6df86415
+=======
+>>>>>>> bac47391e36208358d3f6382c3ade0f6871ab3f5
 
 
 ### A food products database
