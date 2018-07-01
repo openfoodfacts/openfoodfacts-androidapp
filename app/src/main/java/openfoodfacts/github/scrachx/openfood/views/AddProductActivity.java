@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -255,6 +256,8 @@ public class AddProductActivity extends AppCompatActivity {
                         view.setBackgroundColor(getResources().getColor(R.color.green_500));
                         toast.setDuration(Toast.LENGTH_SHORT);
                         toast.show();
+                        Intent intent = new Intent();
+                        setResult(RESULT_OK, intent);
                         finish();
                     }
 

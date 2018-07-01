@@ -391,19 +391,10 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (mImageUrl == null || mImageUrl.equals("")) {
             Toast.makeText(activity, R.string.txtPictureNeededDialogContent, Toast.LENGTH_SHORT).show();
             scrollView.fullScroll(View.FOCUS_UP);
-        } else if (name.getText().toString().isEmpty()) {
-            name.setError("This field is required");
-            name.requestFocus();
-        } else if (quantity.getText().toString().isEmpty()) {
-            quantity.setError("This field is required");
-            quantity.requestFocus();
-        } else if (brand.getText().toString().isEmpty()) {
-            brand.setError("This field is required");
-            brand.requestFocus();
+            return true;
         } else {
             return false;
         }
-        return true;
     }
 
     @Override

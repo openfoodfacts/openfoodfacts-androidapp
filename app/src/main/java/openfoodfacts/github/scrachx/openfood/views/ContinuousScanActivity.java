@@ -71,6 +71,7 @@ import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 
 public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity {
 
+    private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     private static HistoryProductDao mHistoryProductDao;
     @BindView(R.id.fab_status)
     FloatingActionButton fab_status;
@@ -135,7 +136,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             }
 
             lastText = result.getText();
-            findProduct(lastText);
+            findProduct(lastText, false);
         }
 
         @Override
@@ -144,7 +145,13 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         }
     };
 
-    private void findProduct(String lastText) {
+    /**
+     * Makes network call and search for the product in the database
+     *
+     * @param lastText   Barcode to be searched
+     * @param newlyAdded true if the product is added using the product addition just now
+     */
+    private void findProduct(String lastText, boolean newlyAdded) {
         String s = "off:off";
         String auth = "Basic ";
         try {
@@ -191,7 +198,12 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             showAllViews();
                             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                             productNotFound.setVisibility(View.GONE);
-                            if (isProductIncomplete()) {
+                            if (newlyAdded) {
+                                txtProductIncomplete.setVisibility(View.INVISIBLE);
+                                fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_thumb_up_white_24dp));
+                                fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_500)));
+                                fab_status.setOnClickListener(null);
+                            } else if (isProductIncomplete()) {
                                 txtProductIncomplete.setVisibility(View.VISIBLE);
                                 fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
                                 fab_status.setOnClickListener(v -> {
@@ -295,7 +307,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         //Bundle bundle = new Bundle();
         //bundle.putSerializable("state", st);
         intent.putExtra("state", st);
-        startActivity(intent);
+        startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
     }
 
     private void showAllViews() {
@@ -475,7 +487,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
                 } else {
                     if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(searchByBarcode.getText().toString()) && (!searchByBarcode.getText().toString().substring(0, 3).contains("977") || !searchByBarcode.getText().toString().substring(0, 3).contains("978") || !searchByBarcode.getText().toString().substring(0, 3).contains("979"))) {
-                        findProduct(searchByBarcode.getText().toString());
+                        findProduct(searchByBarcode.getText().toString(), false);
                     } else {
                         searchByBarcode.requestFocus();
                         Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
@@ -579,6 +591,14 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             return true;
         });
         popup.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            findProduct(lastText, true);
+        }
     }
 
     private static class HistoryTask extends AsyncTask<Product, Void, Void> {
