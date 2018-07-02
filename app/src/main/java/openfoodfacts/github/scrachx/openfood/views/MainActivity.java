@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -72,15 +73,11 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
-import holloway.allergenChecker.Consumer;
-import holloway.allergenChecker.JSONManager;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.ConsumerFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
@@ -102,13 +99,14 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
-public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener, SharedPreferences.OnSharedPreferenceChangeListener, ConsumerFragment.OnListFragmentInteractionListener {
+public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final int LOGIN_REQUEST = 1;
     private static final long USER_ID = 500;
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
+    @Nullable
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     private AccountHeader headerResult = null;
@@ -135,7 +133,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
     private SharedPreferences shakePreference;
-    public static List<Consumer> consumerList;
 
 
 
@@ -351,7 +348,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                     .class), LOGIN_REQUEST);
                             break;
                         case ITEM_ALERT:
-                            fragment = ConsumerFragment.newInstance(1);
+                            startActivity(new Intent(MainActivity.this, AllergenDetectorActivity.class));
                             break;
                         case ITEM_PREFERENCES:
                             fragment = new PreferencesFragment();
@@ -747,16 +744,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         super.onStart();
         customTabActivityHelper.bindCustomTabsService(this);
 
-        initializeConsumers();
-
     }
 
-    private void initializeConsumers() {
-        consumerList = new ArrayList<>();
-        if (consumerList.isEmpty()) {
-            consumerList.addAll(JSONManager.getInstance().setUpConsumers());
-        }
-    }
 
     @Override
     protected void onStop() {
@@ -1074,9 +1063,5 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
 
 
-    @Override
-    public void onListFragmentInteraction(Consumer item) {
-
-    }
 }
 

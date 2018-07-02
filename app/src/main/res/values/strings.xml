@@ -615,5 +615,6 @@
     <string name="preferences">Preferences</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
+    <string name="title_activity_allergen_detector">AllergenDetector</string>
 
 </resources>

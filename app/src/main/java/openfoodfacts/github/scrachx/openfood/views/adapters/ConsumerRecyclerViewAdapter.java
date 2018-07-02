@@ -57,7 +57,6 @@ public class ConsumerRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerRe
 
     @Override
     public int getItemCount() {
-
         return mValues.size();
     }
 
@@ -66,24 +65,18 @@ public class ConsumerRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerRe
      */
     @Override
     public int getItemViewType(int position) {
-
         return super.getItemViewType(position);
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final TextView mContentView;
-        public Consumer mItem;
+        final View mView;
+        final TextView mContentView;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mContentView = view.findViewById(R.id.content);
-
-            view.setOnClickListener(v -> {
-                //TODO Set action for clicking on Consumer
-            });
         }
 
         public void bindView(int position) {

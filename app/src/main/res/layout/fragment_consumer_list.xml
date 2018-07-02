@@ -36,12 +36,13 @@
         app:layout_constraintTop_toBottomOf="@+id/consumerRecycleView" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/consumerFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="onFABClick"
         android:tint="@android:color/white"
         app:backgroundTint="@color/blue"
         app:fab_size="normal"

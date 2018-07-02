@@ -2,23 +2,17 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.Objects;
-
-import butterknife.OnClick;
-import holloway.allergenChecker.Consumer;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.utils.ConsumerSwipeController;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
+import openfoodfacts.github.scrachx.openfood.views.AllergenDetectorActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ConsumerRecyclerViewAdapter;
 
 /**
@@ -34,6 +28,7 @@ public class ConsumerFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -63,14 +58,13 @@ public class ConsumerFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_consumer_list, container, false);
 
-        //Toolbar changes
+/*        //Toolbar changes
         Toolbar toolbar = Objects.requireNonNull(getActivity()).findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.allergenDetector));
-
+        toolbar.setTitle(getString(R.string.allergenDetector));*/
 
 
         // Set the adapter
@@ -81,15 +75,7 @@ public class ConsumerFragment extends Fragment {
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        recyclerView.setAdapter(new ConsumerRecyclerViewAdapter(MainActivity.consumerList, mListener));
-
-        // Set swiping actions on consumerRecycleView
-        ConsumerSwipeController consumerSwipeController = new ConsumerSwipeController();
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(consumerSwipeController);
-        itemTouchHelper.attachToRecyclerView(recyclerView);
-
-
-
+        recyclerView.setAdapter(new ConsumerRecyclerViewAdapter(AllergenDetectorActivity.consumerList, mListener));
 
         return view;
     }
@@ -102,7 +88,7 @@ public class ConsumerFragment extends Fragment {
             mListener = (OnListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+                    + " must implement OnListFragmentInteractionListener interface");
         }
     }
 
@@ -111,6 +97,7 @@ public class ConsumerFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
 
     /**
      * This interface must be implemented by activities that contain this
@@ -121,19 +108,16 @@ public class ConsumerFragment extends Fragment {
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
+     *
+     *
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(Consumer item);
+        void onFABClick(View view);
+
+        void onConsumerItemSwipeLeft();
+
+        void onConsumerItemSwipeRight();
     }
 
 
-    /**
-     * Open a new fragment to add a new Consumer.
-     */
-    @OnClick(R.id.floatingActionButton)
-    protected void openAddConsumer() {
-        //TODO Set actions for clicking the FAB
-        //Call a method in MainActivity
-    }
 }

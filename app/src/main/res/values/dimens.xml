@@ -61,4 +61,5 @@
     <dimen name="product_height">200dp</dimen>
     <dimen name="product_width">250dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>
