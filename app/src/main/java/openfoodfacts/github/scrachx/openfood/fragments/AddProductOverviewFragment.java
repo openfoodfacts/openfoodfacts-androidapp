@@ -55,6 +55,7 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.adapters.EmbCodeAutoCompleteAdapter;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -119,7 +120,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     @BindView(R.id.manufacturing_place)
     EditText manufacturingPlace;
     @BindView(R.id.emb_code)
-    EditText embCode;
+    AutoCompleteTextView embCode;
     @BindView(R.id.link)
     EditText link;
     @BindView(R.id.country_where_purchased)
@@ -197,9 +198,11 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                     android.R.layout.simple_dropdown_item_1line, countries);
+            EmbCodeAutoCompleteAdapter customAdapter = new EmbCodeAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line);
             originOfIngredients.setAdapter(adapter);
             countryWherePurchased.setAdapter(adapter);
             countriesWhereSold.setAdapter(adapter);
+            embCode.setAdapter(customAdapter);
         });
         asyncSessionLabels.setListenerMainThread(operation -> {
             @SuppressWarnings("unchecked")

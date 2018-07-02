@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.network;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import io.reactivex.Single;
@@ -197,6 +198,10 @@ public interface OpenFoodAPIService {
     Single<JsonNode> getIngredients(@Query("code") String code,
                                     @Query("id") String id,
                                     @Header("Authorization") String auth);
+
+    @GET("cgi/suggest.pl?tagtype=emb_codes")
+    Single<ArrayList<String>> getEMBCodeSuggestions(@Query("term") String term,
+                                                    @Header("Authorization") String auth);
 
     @GET("brand/{brand}/{page}.json")
     Call<Search> getProductByBrands(@Path("brand") String brand, @Path("page") int page);
