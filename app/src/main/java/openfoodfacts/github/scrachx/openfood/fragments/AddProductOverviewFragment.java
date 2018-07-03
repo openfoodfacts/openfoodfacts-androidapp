@@ -64,6 +64,7 @@ import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
 public class AddProductOverviewFragment extends BaseFragment {
@@ -129,11 +130,16 @@ public class AddProductOverviewFragment extends BaseFragment {
     EditText stores;
     @BindView(R.id.countries_where_sold)
     AutoCompleteTextView countriesWhereSold;
+    @BindView(R.id.other_image_progress)
+    ProgressBar otherImageProgress;
+    @BindView(R.id.other_image_progress_text)
+    TextView otherImageProgressText;
     private String languageCode;
     private Activity activity;
     private Product mProduct;
     private String code;
     private String mImageUrl;
+    private boolean frontImage;
     private File photoFile;
     private List<String> countries = new ArrayList<>();
     private List<String> labels = new ArrayList<>();
@@ -260,6 +266,17 @@ public class AddProductOverviewFragment extends BaseFragment {
 
     @OnClick(R.id.btnAddImageFront)
     void addFrontImage() {
+        frontImage = true;
+        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
+        }
+    }
+
+    @OnClick(R.id.btn_other_pictures)
+    void addOtherImage() {
+        frontImage = false;
         if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
@@ -413,11 +430,19 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
                 photoFile = new File((resultUri.getPath()));
-                ProductImage image = new ProductImage(code, FRONT, photoFile);
+                ProductImage image;
+                int position;
+                if (frontImage) {
+                    image = new ProductImage(code, FRONT, photoFile);
+                    mImageUrl = photoFile.getAbsolutePath();
+                    position = 0;
+                } else {
+                    image = new ProductImage(code, OTHER, photoFile);
+                    position = 3;
+                }
                 image.setFilePath(resultUri.getPath());
-                mImageUrl = photoFile.getAbsolutePath();
                 if (activity instanceof AddProductActivity) {
-                    ((AddProductActivity) activity).addToPhotoMap(image, 0);
+                    ((AddProductActivity) activity).addToPhotoMap(image, position);
                 }
 
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
@@ -455,6 +480,22 @@ public class AddProductOverviewFragment extends BaseFragment {
             Toast.makeText(activity, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void showOtherImageProgress() {
+        otherImageProgress.setVisibility(View.VISIBLE);
+        otherImageProgressText.setVisibility(View.VISIBLE);
+        otherImageProgressText.setText(R.string.toastSending);
+    }
+
+    public void hideOtherImageProgress(boolean errorUploading, String message) {
+        otherImageProgress.setVisibility(View.GONE);
+        if (errorUploading) {
+            otherImageProgressText.setVisibility(View.GONE);
+            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+        } else {
+            otherImageProgressText.setText("Image uploaded successfully");
         }
     }
 }

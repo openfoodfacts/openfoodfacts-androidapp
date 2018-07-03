@@ -358,7 +358,10 @@ public class AddProductActivity extends AppCompatActivity {
                             hideImageProgress(position, false, null);
                             String imagefield = jsonNode.get("imagefield").asText();
                             String imgid = jsonNode.get("image").get("imgid").asText();
-                            setPhoto(image, imagefield, imgid, ocr);
+                            if (position != 3) {
+                                // Not OTHER image
+                                setPhoto(image, imagefield, imgid, ocr);
+                            }
                         }
                     }
 
@@ -464,6 +467,8 @@ public class AddProductActivity extends AppCompatActivity {
                 break;
             case 2:
                 addProductNutritionFactsFragment.hideImageProgress(errorUploading, message);
+            case 3:
+                addProductOverviewFragment.hideOtherImageProgress(errorUploading, message);
         }
     }
 
@@ -477,6 +482,9 @@ public class AddProductActivity extends AppCompatActivity {
                 break;
             case 2:
                 addProductNutritionFactsFragment.showImageProgress();
+                break;
+            case 3:
+                addProductOverviewFragment.showOtherImageProgress();
         }
     }
 
