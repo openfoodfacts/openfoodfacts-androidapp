@@ -168,9 +168,26 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        new MaterialDialog.Builder(this)
+                .content("Discard product addition?")
+                .positiveText(R.string.txtPictureNeededDialogNo)
+                .negativeText(R.string.cancel_button)
+                .onPositive((dialog, which) -> super.onBackPressed())
+                .onNegative((dialog, which) -> dialog.dismiss())
+                .show();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            finish();
+            new MaterialDialog.Builder(this)
+                    .content("Discard product addition?")
+                    .positiveText(R.string.txtPictureNeededDialogNo)
+                    .negativeText(R.string.cancel_button)
+                    .onPositive((dialog, which) -> finish())
+                    .onNegative((dialog, which) -> dialog.dismiss())
+                    .show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -388,6 +405,7 @@ public class AddProductActivity extends AppCompatActivity {
                             mToUploadProductDao.insertOrReplace(product);
 
                         } else {
+                            hideImageProgress(position, true, e.getMessage());
                             Log.i(this.getClass().getSimpleName(), e.getMessage());
                             Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
