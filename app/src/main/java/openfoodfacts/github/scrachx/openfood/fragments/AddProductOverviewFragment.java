@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.MultiAutoCompleteTextView;
@@ -41,6 +42,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
@@ -130,6 +132,8 @@ public class AddProductOverviewFragment extends BaseFragment {
     EditText stores;
     @BindView(R.id.countries_where_sold)
     AutoCompleteTextView countriesWhereSold;
+    @BindView(R.id.btn_other_pictures)
+    Button otherImage;
     @BindView(R.id.other_image_progress)
     ProgressBar otherImageProgress;
     @BindView(R.id.other_image_progress_text)
@@ -169,6 +173,9 @@ public class AddProductOverviewFragment extends BaseFragment {
             barcode.setText(R.string.txtBarcode);
             code = mProduct.getCode();
             barcode.append(" " + code);
+            if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
+                otherImage.setVisibility(View.GONE);
+            }
         } else {
             Toast.makeText(activity, "Something went wrong while trying to add product details", Toast.LENGTH_SHORT).show();
             activity.finish();

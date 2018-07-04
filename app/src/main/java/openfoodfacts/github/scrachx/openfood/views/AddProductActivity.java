@@ -34,10 +34,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductIngredientsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductNutritionFactsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductOverviewFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.AddProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -59,12 +61,15 @@ public class AddProductActivity extends AppCompatActivity {
     View ingredientsIndicator;
     @BindView(R.id.nutrition_facts_indicator)
     View nutritionFactsIndicator;
+    @BindView(R.id.text_nutrition_facts_indicator)
+    TextView nutritionFactsIndicatorText;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
     Map<String, String> productDetails = new HashMap<>();
     AddProductOverviewFragment addProductOverviewFragment = new AddProductOverviewFragment();
     AddProductIngredientsFragment addProductIngredientsFragment = new AddProductIngredientsFragment();
     AddProductNutritionFactsFragment addProductNutritionFactsFragment = new AddProductNutritionFactsFragment();
+    AddProductPhotosFragment addProductPhotosFragment = new AddProductPhotosFragment();
     private Product mProduct;
     private ToUploadProductDao mToUploadProductDao;
     private Disposable disposable;
@@ -207,10 +212,16 @@ public class AddProductActivity extends AppCompatActivity {
         bundle.putSerializable("product", mProduct);
         addProductOverviewFragment.setArguments(bundle);
         addProductIngredientsFragment.setArguments(bundle);
-        addProductNutritionFactsFragment.setArguments(bundle);
         adapterResult.addFragment(addProductOverviewFragment, "Overview");
         adapterResult.addFragment(addProductIngredientsFragment, "Ingredients");
-        adapterResult.addFragment(addProductNutritionFactsFragment, "Nutrition Facts");
+        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) {
+            addProductNutritionFactsFragment.setArguments(bundle);
+            adapterResult.addFragment(addProductNutritionFactsFragment, "Nutrition Facts");
+        } else if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
+            nutritionFactsIndicatorText.setText("Photos");
+            addProductPhotosFragment.setArguments(bundle);
+            adapterResult.addFragment(addProductPhotosFragment, "Photos");
+        }
         viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(adapterResult);
     }
@@ -218,7 +229,9 @@ public class AddProductActivity extends AppCompatActivity {
     private void saveProduct() {
         addProductOverviewFragment.getDetails();
         addProductIngredientsFragment.getDetails();
-        addProductNutritionFactsFragment.getDetails();
+        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) {
+            addProductNutritionFactsFragment.getDetails();
+        }
         final SharedPreferences settings = getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         final String password = settings.getString("pass", "");
@@ -281,7 +294,7 @@ public class AddProductActivity extends AppCompatActivity {
             case 2:
                 if (addProductOverviewFragment.areRequiredFieldsEmpty()) {
                     viewPager.setCurrentItem(0, true);
-                } else if (!addProductNutritionFactsFragment.isCheckPassed()) {
+                } else if ((BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) && !addProductNutritionFactsFragment.isCheckPassed()) {
                     viewPager.setCurrentItem(2, true);
                 } else {
                     saveProduct();
@@ -358,7 +371,7 @@ public class AddProductActivity extends AppCompatActivity {
                             hideImageProgress(position, false, null);
                             String imagefield = jsonNode.get("imagefield").asText();
                             String imgid = jsonNode.get("image").get("imgid").asText();
-                            if (position != 3) {
+                            if (position != 3 && position != 4) {
                                 // Not OTHER image
                                 setPhoto(image, imagefield, imgid, ocr);
                             }
@@ -467,8 +480,12 @@ public class AddProductActivity extends AppCompatActivity {
                 break;
             case 2:
                 addProductNutritionFactsFragment.hideImageProgress(errorUploading, message);
+                break;
             case 3:
                 addProductOverviewFragment.hideOtherImageProgress(errorUploading, message);
+                break;
+            case 4:
+                addProductPhotosFragment.hideImageProgress(errorUploading, message);
         }
     }
 
@@ -485,6 +502,9 @@ public class AddProductActivity extends AppCompatActivity {
                 break;
             case 3:
                 addProductOverviewFragment.showOtherImageProgress();
+                break;
+            case 4:
+                addProductPhotosFragment.showImageProgress();
         }
     }
 
