@@ -1,5 +1,45 @@
 # Status updates for the Open Food Facts project
 
+## Week starting July 02nd
+
+### Completed this week
+
+* Incorporated changes suggested by mentor.
+* Added OCR for ingredients.
+* Added autocomplete for traces (allergens).
+* Overwrite the most recently uploaded image as the display image.
+* Set the language of the image uploaded as the product language chosen and not as the default phone language or the app language.
+* When a product is added successfully the quickView is filled with the product data and the FAB is turned green with a thumb up icon.
+* Add chip input for categories.
+
+### Working on this week
+
+* Modify product addition to work for all the flavors of the app.
+
+### To be worked on next week
+
+* Continue the development of product addition and incorporate the changes suggested by mentor.
+
+## Week starting June 25th
+
+### Completed this week
+
+* Changes done in the WIP PR #1712
+* Cleared cached images after product was uploaded.
+* Added autocomplete suggestions for categories, labels and countries.
+* Added basic checks in the product addition such as:
+ * pH shouldn't exceed 14.
+ * Alcohol % shouldn't exceed 100%.
+ * Sum of sugar and starch should be less than carbohydrate.
+
+### Working on this week
+
+* Add OCR for ingredients.
+
+### To be worked on next week
+
+* Continue the development of product addition and incorporate the changes suggested by mentor.
+
 ## Week starting June 18th
 
 ### Completed this week
@@ -89,12 +129,12 @@
 ### Working on this week
 
 * Create a new immersive layout for the scan fragment.
-* Add continous scan feature.
+* Add continuous scan feature.
 
 ### To be worked on next week
 
 * Test features added till now.
-* Add sliding up capabilites.
+* Add sliding up capabilities.
 
 ## Week starting May 14th
 
