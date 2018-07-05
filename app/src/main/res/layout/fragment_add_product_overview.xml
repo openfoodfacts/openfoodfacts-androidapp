@@ -242,7 +242,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/packaging" />
 
-        <MultiAutoCompleteTextView
+        <com.hootsuite.nachos.NachoTextView
             android:id="@+id/label"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -258,6 +258,9 @@
             android:nextFocusDown="@id/origin_of_ingredients"
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
+            app:chipBackground="#4389FA"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/categories" />
@@ -372,7 +375,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
             android:gravity="center_vertical"
-            android:hint="Official link of the product"
+            android:hint="Link of the official page of the product"
             android:inputType="textUri"
             android:nextFocusDown="@id/country_where_purchased"
             android:paddingLeft="@dimen/spacing_small"
@@ -382,6 +385,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/emb_code"
             tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/hint_link"
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:tint="@color/grey_600"
+            app:layout_constraintBottom_toBottomOf="@id/link"
+            app:layout_constraintEnd_toEndOf="@id/link"
+            app:layout_constraintTop_toTopOf="@id/link"
+            app:srcCompat="@drawable/ic_search_black" />
 
         <View
             android:id="@+id/grey_line3"

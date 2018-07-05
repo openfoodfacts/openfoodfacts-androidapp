@@ -7,8 +7,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +20,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.MultiAutoCompleteTextView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -58,6 +59,9 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.EmbCodeAutoCompleteAdapter;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -117,7 +121,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     @BindView(R.id.categories)
     NachoTextView categories;
     @BindView(R.id.label)
-    MultiAutoCompleteTextView label;
+    NachoTextView label;
     @BindView(R.id.origin_of_ingredients)
     AutoCompleteTextView originOfIngredients;
     @BindView(R.id.manufacturing_place)
@@ -180,6 +184,8 @@ public class AddProductOverviewFragment extends BaseFragment {
             Toast.makeText(activity, "Something went wrong while trying to add product details", Toast.LENGTH_SHORT).show();
             activity.finish();
         }
+        link.setHint(Html.fromHtml("<small>" +
+                "Link of the official page of the product" + "</small>"));
         loadAutoSuggestions();
     }
 
@@ -226,7 +232,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                     android.R.layout.simple_dropdown_item_1line, labels);
-            label.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+            label.addChipTerminator(',', BEHAVIOR_CHIPIFY_CURRENT_TOKEN);
             label.setAdapter(adapter);
         });
         asyncSessionCategories.setListenerMainThread(operation -> {
@@ -318,7 +324,9 @@ public class AddProductOverviewFragment extends BaseFragment {
                 ((AddProductActivity) activity).addToMap(PARAM_CATEGORIES, string);
             }
             if (!label.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_LABELS, label.getText().toString());
+                List<String> list = label.getChipValues();
+                String string = StringUtils.join(list, ',');
+                ((AddProductActivity) activity).addToMap(PARAM_LABELS, string);
             }
             if (!originOfIngredients.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_ORIGIN, originOfIngredients.getText().toString());
@@ -384,6 +392,20 @@ public class AddProductOverviewFragment extends BaseFragment {
                 .content("Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409")
                 .positiveText(R.string.ok_button)
                 .show();
+    }
+
+    @OnClick(R.id.hint_link)
+    void searchProductLink() {
+        String url = "https://www.google.com/search?q=" + code;
+        if (!brand.getText().toString().isEmpty()) {
+            url = url + " " + brand.getText().toString();
+        }
+        if (!name.getText().toString().isEmpty()) {
+            url = url + " " + name.getText().toString();
+        }
+        url = url + " " + "official website";
+        CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(activity.getBaseContext(), null);
+        CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, Uri.parse(url), new WebViewFallback());
     }
 
     @OnClick(R.id.language)

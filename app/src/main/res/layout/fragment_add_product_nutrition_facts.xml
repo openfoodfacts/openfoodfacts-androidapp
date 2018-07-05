@@ -549,7 +549,7 @@
             android:background="#3C950E"
             android:clickable="true"
             android:focusable="true"
-            android:text="Add Product"
+            android:text="Add this product"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/nutrition_facts_layout" />
     </android.support.constraint.ConstraintLayout>
