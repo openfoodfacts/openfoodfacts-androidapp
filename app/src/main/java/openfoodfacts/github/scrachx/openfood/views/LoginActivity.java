@@ -88,8 +88,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         setTitle(getString(R.string.txtSignIn));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
         resetPasswordUri = Uri.parse(getString(R.string.website) + "cgi/reset_password.pl");
 
@@ -97,12 +98,11 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null);
-
-        signup.setEnabled(false);
+        signup.setEnabled(true);
 
         final SharedPreferences settings = getSharedPreferences("login", 0);
-        String loginS = settings.getString("user", getResources().getString(R.string.txt_anonymous));
-        if (!loginS.equals(getResources().getString(R.string.txt_anonymous))) {
+        String loginS = settings.getString(getResources().getString(R.string.user), getResources().getString(R.string.txt_anonymous));
+        if (loginS.equals(getResources().getString(R.string.user))) {
             new MaterialDialog.Builder(this)
                     .title(R.string.log_in)
                     .content(R.string.login_true)
@@ -185,9 +185,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
                     Toast.makeText(context, context.getString(R.string.errorLogin), Toast.LENGTH_LONG).show();
                     passwordView.setText("");
-                    editor.putString("user", "");
-                    editor.putString("pass", "");
-                    editor.apply();
+                    loginView.setText("");
                     infoLogin.setText(R.string.txtInfoLoginNo);
                     lt.hide();
                 } else {

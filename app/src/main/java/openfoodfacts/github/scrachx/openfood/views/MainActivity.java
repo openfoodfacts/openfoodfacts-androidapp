@@ -106,6 +106,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
+    private static final String IS_USER_LOGIN = "user";
+    private static final String IS_USER_SESSION = "user_session";
+    boolean isConnected;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     private AccountHeader headerResult = null;
@@ -129,6 +132,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
+    String userLogin;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
     private SharedPreferences shakePreference;
@@ -207,7 +211,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         customTabActivityHelper.setConnectionCallback(this);
 
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(),
-                customTabActivityHelper.getSession());
+        customTabActivityHelper.getSession());
 
 
         // Create the AccountHeader
@@ -267,10 +271,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         // Add Manage Account profile if the user is connected
         SharedPreferences preferences = getSharedPreferences("login", 0);
-        String userLogin = preferences.getString("user", null);
+        String userLogin = preferences.getString(getResources().getString(R.string.user), null);
         String userSession = preferences.getString("user_session", null);
         boolean isUserConnected = userLogin != null && userSession != null;
-        boolean isConnected = userLogin != null;
+        isConnected = userLogin != null;
 
         if (isUserConnected) {
             userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
@@ -416,16 +420,17 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         case ITEM_MY_CONTRIBUTIONS:
                             myContributions();
                             break;
-                        case ITEM_LOGOUT:
-                            new MaterialDialog.Builder(MainActivity.this)
-                                    .title(R.string.confirm_logout)
-                                    .content(R.string.logout_dialog_content)
-                                    .positiveText(R.string.txtOk)
-                                    .negativeText(R.string.dialog_cancel)
-                                    .onPositive((dialog, which) -> logout())
-                                    .onNegative((dialog, which) -> Toast.makeText(getApplicationContext(), "Cancelled",
-                                            Toast.LENGTH_SHORT).show()).show();
-                            break;
+
+                         case ITEM_LOGOUT:
+                             new MaterialDialog.Builder(MainActivity.this)
+                                     .title(R.string.confirm_logout)
+                                     .content(R.string.logout_dialog_content)
+                                     .positiveText(R.string.txtOk)
+                                     .negativeText(R.string.dialog_cancel)
+                                     .onPositive((dialog, which) -> logout())
+                                     .onNegative((dialog, which) -> Toast.makeText(getApplicationContext(), "Cancelled",
+                                             Toast.LENGTH_SHORT).show()).show();
+                             break;
                         default:
                             // nothing to do
                             break;
@@ -759,6 +764,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         super.onDestroy();
 
     }
+
 
     @Override
     protected void onNewIntent(Intent intent) {
