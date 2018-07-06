@@ -225,7 +225,7 @@
             app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
             app:layout_constraintTop_toBottomOf="@id/section_traces" />
 
-        <MultiAutoCompleteTextView
+        <com.hootsuite.nachos.NachoTextView
             android:id="@+id/traces"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -238,6 +238,9 @@
             android:inputType="text"
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
+            app:chipBackground="#4389FA"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/hint_traces" />

@@ -17,14 +17,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.MultiAutoCompleteTextView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hootsuite.nachos.NachoTextView;
+import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import org.apache.commons.lang3.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
 
 import java.io.File;
@@ -49,6 +51,7 @@ import pl.aprilapps.easyphotopicker.EasyImage;
 import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
@@ -75,7 +78,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     @BindView(R.id.btn_skip_ingredients)
     Button btnSkipIngredients;
     @BindView(R.id.traces)
-    MultiAutoCompleteTextView traces;
+    NachoTextView traces;
     private Activity activity;
     private File photoFile;
     private String code;
@@ -131,7 +134,9 @@ public class AddProductIngredientsFragment extends BaseFragment {
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                         android.R.layout.simple_dropdown_item_1line, allergens);
-                traces.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+                traces.addChipTerminator(',', BEHAVIOR_CHIPIFY_CURRENT_TOKEN);
+                traces.setNachoValidator(new ChipifyingNachoValidator());
+                traces.enableEditChipOnTouch(false, true);
                 traces.setAdapter(adapter);
             });
         }
@@ -185,8 +190,10 @@ public class AddProductIngredientsFragment extends BaseFragment {
             if (!ingredients.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_INGREDIENTS, ingredients.getText().toString());
             }
-            if (!traces.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_TRACES, traces.getText().toString());
+            if (!traces.getChipValues().isEmpty()) {
+                List<String> list = traces.getChipValues();
+                String string = StringUtils.join(list, ',');
+                ((AddProductActivity) activity).addToMap(PARAM_TRACES, string);
             }
         }
     }

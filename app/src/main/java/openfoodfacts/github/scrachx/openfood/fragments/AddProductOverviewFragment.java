@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.hootsuite.nachos.NachoTextView;
+import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -117,9 +118,9 @@ public class AddProductOverviewFragment extends BaseFragment {
     @BindView(R.id.spinner_weight_unit)
     Spinner quantityUnit;
     @BindView(R.id.brand)
-    EditText brand;
+    NachoTextView brand;
     @BindView(R.id.packaging)
-    EditText packaging;
+    NachoTextView packaging;
     @BindView(R.id.categories)
     NachoTextView categories;
     @BindView(R.id.label)
@@ -127,19 +128,19 @@ public class AddProductOverviewFragment extends BaseFragment {
     @BindView(R.id.period_of_time_after_opening)
     AutoCompleteTextView periodsAfterOpening;
     @BindView(R.id.origin_of_ingredients)
-    AutoCompleteTextView originOfIngredients;
+    NachoTextView originOfIngredients;
     @BindView(R.id.manufacturing_place)
     EditText manufacturingPlace;
     @BindView(R.id.emb_code)
-    AutoCompleteTextView embCode;
+    NachoTextView embCode;
     @BindView(R.id.link)
     EditText link;
     @BindView(R.id.country_where_purchased)
-    AutoCompleteTextView countryWherePurchased;
+    NachoTextView countryWherePurchased;
     @BindView(R.id.stores)
-    EditText stores;
+    NachoTextView stores;
     @BindView(R.id.countries_where_sold)
-    AutoCompleteTextView countriesWhereSold;
+    NachoTextView countriesWhereSold;
     @BindView(R.id.btn_other_pictures)
     Button otherImage;
     @BindView(R.id.other_image_progress)
@@ -190,7 +191,17 @@ public class AddProductOverviewFragment extends BaseFragment {
         }
         link.setHint(Html.fromHtml("<small>" +
                 "Link of the official page of the product" + "</small>"));
+        initializeChips();
         loadAutoSuggestions();
+    }
+
+    private void initializeChips() {
+        NachoTextView nachoTextViews[] = {brand, packaging, categories, label, originOfIngredients, embCode, countryWherePurchased, stores, countriesWhereSold};
+        for (NachoTextView nachoTextView : nachoTextViews) {
+            nachoTextView.addChipTerminator(',', BEHAVIOR_CHIPIFY_CURRENT_TOKEN);
+            nachoTextView.setNachoValidator(new ChipifyingNachoValidator());
+            nachoTextView.enableEditChipOnTouch(false, true);
+        }
     }
 
     private void loadAutoSuggestions() {
@@ -236,7 +247,6 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                     android.R.layout.simple_dropdown_item_1line, labels);
-            label.addChipTerminator(',', BEHAVIOR_CHIPIFY_CURRENT_TOKEN);
             label.setAdapter(adapter);
         });
         asyncSessionCategories.setListenerMainThread(operation -> {
@@ -248,7 +258,6 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                     android.R.layout.simple_dropdown_item_1line, category);
-            categories.addChipTerminator(',', BEHAVIOR_CHIPIFY_CURRENT_TOKEN);
             categories.setAdapter(adapter);
         });
         if (BuildConfig.FLAVOR.equals("obf")) {
@@ -321,47 +330,48 @@ public class AddProductOverviewFragment extends BaseFragment {
                 String qty = quantity.getText().toString() + UNIT[quantityUnit.getSelectedItemPosition()];
                 ((AddProductActivity) activity).addToMap(PARAM_QUANTITY, qty);
             }
-            if (!brand.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_BRAND, brand.getText().toString());
+            if (!brand.getChipValues().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_BRAND, getValues(brand));
             }
-            if (!packaging.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_PACKAGING, packaging.getText().toString());
+            if (!packaging.getChipValues().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_PACKAGING, getValues(packaging));
             }
             if (!categories.getChipValues().isEmpty()) {
-                List<String> list = categories.getChipValues();
-                String string = StringUtils.join(list, ',');
-                ((AddProductActivity) activity).addToMap(PARAM_CATEGORIES, string);
+                ((AddProductActivity) activity).addToMap(PARAM_CATEGORIES, getValues(categories));
             }
-            if (!label.getText().toString().isEmpty()) {
-                List<String> list = label.getChipValues();
-                String string = StringUtils.join(list, ',');
-                ((AddProductActivity) activity).addToMap(PARAM_LABELS, string);
+            if (!label.getChipValues().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_LABELS, getValues(label));
             }
             if (!periodsAfterOpening.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_PERIODS_AFTER_OPENING, periodsAfterOpening.getText().toString());
             }
-            if (!originOfIngredients.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_ORIGIN, originOfIngredients.getText().toString());
+            if (!originOfIngredients.getChipValues().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_ORIGIN, getValues(originOfIngredients));
             }
             if (!manufacturingPlace.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_MANUFACTURING_PLACE, manufacturingPlace.getText().toString());
             }
-            if (!embCode.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_EMB_CODE, embCode.getText().toString());
+            if (!embCode.getChipValues().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_EMB_CODE, getValues(embCode));
             }
             if (!link.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_LINK, link.getText().toString());
             }
-            if (!countryWherePurchased.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_PURCHASE, countryWherePurchased.getText().toString());
+            if (!countryWherePurchased.getChipValues().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_PURCHASE, getValues(countryWherePurchased));
             }
-            if (!stores.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_STORE, stores.getText().toString());
+            if (!stores.getChipValues().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_STORE, getValues(stores));
             }
-            if (!countriesWhereSold.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_COUNTRIES, countriesWhereSold.getText().toString());
+            if (!countriesWhereSold.getChipValues().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_COUNTRIES, getValues(countriesWhereSold));
             }
         }
+    }
+
+    private String getValues(NachoTextView nachoTextView) {
+        List<String> list = nachoTextView.getChipValues();
+        return StringUtils.join(list, ',');
     }
 
     @OnClick(R.id.section_manufacturing_details)

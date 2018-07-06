@@ -183,7 +183,7 @@
             app:layout_constraintStart_toEndOf="@id/quantity"
             app:layout_constraintTop_toTopOf="@id/quantity" />
 
-        <EditText
+        <com.hootsuite.nachos.NachoTextView
             android:id="@+id/brand"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -197,11 +197,14 @@
             android:nextFocusDown="@id/packaging"
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
+            app:chipBackground="#4389FA"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/quantity" />
 
-        <EditText
+        <com.hootsuite.nachos.NachoTextView
             android:id="@+id/packaging"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -215,6 +218,9 @@
             android:nextFocusDown="@id/categories"
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
+            app:chipBackground="#4389FA"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/brand" />
@@ -312,7 +318,7 @@
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/grey_line2" />
 
-        <AutoCompleteTextView
+        <com.hootsuite.nachos.NachoTextView
             android:id="@+id/origin_of_ingredients"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -329,6 +335,9 @@
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
             android:visibility="gone"
+            app:chipBackground="#4389FA"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/section_manufacturing_details"
@@ -354,7 +363,7 @@
             app:layout_constraintTop_toBottomOf="@id/origin_of_ingredients"
             tools:visibility="visible" />
 
-        <AutoCompleteTextView
+        <com.hootsuite.nachos.NachoTextView
             android:id="@+id/emb_code"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -371,6 +380,9 @@
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
             android:visibility="gone"
+            app:chipBackground="#4389FA"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/manufacturing_place"
@@ -445,7 +457,7 @@
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/grey_line3" />
 
-        <AutoCompleteTextView
+        <com.hootsuite.nachos.NachoTextView
             android:id="@+id/country_where_purchased"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -462,12 +474,15 @@
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
             android:visibility="gone"
+            app:chipBackground="#4389FA"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/section_purchasing_details"
             tools:visibility="visible" />
 
-        <EditText
+        <com.hootsuite.nachos.NachoTextView
             android:id="@+id/stores"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -482,12 +497,15 @@
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
             android:visibility="gone"
+            app:chipBackground="#4389FA"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/country_where_purchased"
             tools:visibility="visible" />
 
-        <AutoCompleteTextView
+        <com.hootsuite.nachos.NachoTextView
             android:id="@+id/countries_where_sold"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -503,6 +521,9 @@
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
             android:visibility="gone"
+            app:chipBackground="#4389FA"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/stores"
