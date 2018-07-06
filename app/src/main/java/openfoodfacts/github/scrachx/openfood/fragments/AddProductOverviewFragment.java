@@ -59,6 +59,7 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.EmbCodeAutoCompleteAdapter;
+import openfoodfacts.github.scrachx.openfood.views.adapters.PeriodAfterOpeningAutoCompleteAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -84,6 +85,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_PACKAGING = "packaging";
     private static final String PARAM_CATEGORIES = "categories";
     private static final String PARAM_LABELS = "labels";
+    private static final String PARAM_PERIODS_AFTER_OPENING = "periods_after_opening";
     private static final String PARAM_ORIGIN = "origins";
     private static final String PARAM_MANUFACTURING_PLACE = "manufacturing_places";
     private static final String PARAM_EMB_CODE = "emb_codes";
@@ -122,6 +124,8 @@ public class AddProductOverviewFragment extends BaseFragment {
     NachoTextView categories;
     @BindView(R.id.label)
     NachoTextView label;
+    @BindView(R.id.period_of_time_after_opening)
+    AutoCompleteTextView periodsAfterOpening;
     @BindView(R.id.origin_of_ingredients)
     AutoCompleteTextView originOfIngredients;
     @BindView(R.id.manufacturing_place)
@@ -247,6 +251,11 @@ public class AddProductOverviewFragment extends BaseFragment {
             categories.addChipTerminator(',', BEHAVIOR_CHIPIFY_CURRENT_TOKEN);
             categories.setAdapter(adapter);
         });
+        if (BuildConfig.FLAVOR.equals("obf")) {
+            periodsAfterOpening.setVisibility(View.VISIBLE);
+            PeriodAfterOpeningAutoCompleteAdapter customAdapter = new PeriodAfterOpeningAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line);
+            periodsAfterOpening.setAdapter(customAdapter);
+        }
     }
 
     private void setProductLanguage(String lang) {
@@ -327,6 +336,9 @@ public class AddProductOverviewFragment extends BaseFragment {
                 List<String> list = label.getChipValues();
                 String string = StringUtils.join(list, ',');
                 ((AddProductActivity) activity).addToMap(PARAM_LABELS, string);
+            }
+            if (!periodsAfterOpening.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_PERIODS_AFTER_OPENING, periodsAfterOpening.getText().toString());
             }
             if (!originOfIngredients.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_ORIGIN, originOfIngredients.getText().toString());

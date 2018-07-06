@@ -255,7 +255,7 @@
             android:hint="Labels"
             android:imeOptions="actionNext"
             android:inputType="text"
-            android:nextFocusDown="@id/origin_of_ingredients"
+            android:nextFocusDown="@id/period_of_time_after_opening"
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
             app:chipBackground="#4389FA"
@@ -264,6 +264,28 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/categories" />
+
+        <AutoCompleteTextView
+            android:id="@+id/period_of_time_after_opening"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/bg_edittext"
+            android:completionThreshold="1"
+            android:gravity="center_vertical"
+            android:hint="Period of time after opening"
+            android:imeOptions="actionNext"
+            android:inputType="textVisiblePassword"
+            android:nextFocusDown="@id/origin_of_ingredients"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label"
+            tools:visibility="visible" />
 
         <View
             android:id="@+id/grey_line2"
@@ -274,7 +296,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@color/grey_400"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label" />
+            app:layout_constraintTop_toBottomOf="@id/period_of_time_after_opening" />
 
         <TextView
             android:id="@+id/section_manufacturing_details"

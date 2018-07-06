@@ -203,6 +203,9 @@ public interface OpenFoodAPIService {
     Single<ArrayList<String>> getEMBCodeSuggestions(@Query("term") String term,
                                                     @Header("Authorization") String auth);
 
+    @GET("/cgi/suggest.pl?tagtype=periods_after_opening")
+    Single<ArrayList<String>> getPeriodAfterOpeningSuggestions(@Query("term") String term);
+
     @GET("brand/{brand}/{page}.json")
     Call<Search> getProductByBrands(@Path("brand") String brand, @Path("page") int page);
 
