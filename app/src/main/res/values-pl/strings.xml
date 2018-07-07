@@ -223,6 +223,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="new_offline_info">Proszę zrobić zdjęcie produktu, składników, tabeli wartości odżywczych oraz innych danych na etykiecie. Dziękujemy!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Hasło powinno liczyć co najmniej 6 znaków.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Wypełnienie tego pola jest wymagane.</string>
   <string name="action_preferences">Ustawienia</string>
   <string name="prefs_scan_startup">Skanuj przy uruchomieniu</string>
