@@ -195,6 +195,7 @@
   <string name="new_offline_info">Kérjük, készítsen képet a termékről, összetevőiről, tápértékadatairól és bármilyen egyéb információról ami a címkén található. Köszönjük!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">A jelszó legalább 6 karakter hosszú legyen.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Szükséges mező.</string>
   <string name="action_preferences">Tulajdonságok</string>
   <string name="prefs_scan_startup">Beolvasás indításkor</string>
@@ -228,7 +229,7 @@
   <string name="nutrition_fiber_short_name">Élelmi rost (g)</string>
   <string name="nutrition_header">Tápértékadatok</string>
   <string name="nutrition_no_data_message">Nincs elérhető adat a termékről</string>
-  <string name="nutrition_per_quantity">100g/100ml-ben</string>
+  <string name="nutrition_per_quantity">100 g/100 ml-ben</string>
   <string name="nutrition_proteins">Fehérje</string>
   <string name="nutrition_proteins_short_name">Fehérje (g)</string>
   <string name="nutrition_salt">Só</string>
