@@ -195,6 +195,7 @@
   <string name="new_offline_info">Vennlist ta et bilde av produktet, ingredienser, ernæringsinnhold og eventuell annen informasjon som finnes på etiketten. Tusen takk!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Passordet må minst være 6 karakterer langt.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Dette feltet er obligatorisk.</string>
   <string name="action_preferences">Brukervalg</string>
   <string name="prefs_scan_startup">Skann ved oppstart</string>
