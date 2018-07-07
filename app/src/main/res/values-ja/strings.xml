@@ -191,6 +191,7 @@
   <string name="new_offline_info">製品、原材料、栄養成分表、およびラベル上の他の情報を撮影してください。 ありがとうございます!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">パスワードは6文字以上にする必要があります。</string>
+  <string name="user">user</string>
   <string name="error_field_required">このフィールドは必須入力です。</string>
   <string name="action_preferences">プリファレンス</string>
   <string name="prefs_scan_startup">起動時にスキャン</string>
