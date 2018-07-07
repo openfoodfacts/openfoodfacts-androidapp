@@ -195,6 +195,7 @@
   <string name="new_offline_info">Gelieve een foto te maken van het product, ingrediënten, voedingswaardetabel en overige informatie op het etiket. Dank!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Het wachtwoord moet minstens 6 karakters bevatten.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Dit veld is verplicht.</string>
   <string name="action_preferences">Voorkeuren</string>
   <string name="prefs_scan_startup">Bij opstarten scannen</string>
