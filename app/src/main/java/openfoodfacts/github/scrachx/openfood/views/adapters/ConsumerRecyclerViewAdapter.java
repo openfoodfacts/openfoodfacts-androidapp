@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import holloway.allergenChecker.Consumer;
@@ -19,14 +21,18 @@ import openfoodfacts.github.scrachx.openfood.fragments.ConsumerFragment.OnListFr
  */
 public class ConsumerRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Consumer> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private List<Consumer> mValues;
+    private OnListFragmentInteractionListener mListener;
 
 
-    public ConsumerRecyclerViewAdapter(List<Consumer> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
+    public ConsumerRecyclerViewAdapter(@NonNull HashSet<Consumer> items, OnListFragmentInteractionListener listener) {
+        mValues = new ArrayList<>();
+        if (!items.isEmpty()) {
+            mValues.addAll(items);
+        }
         mListener = listener;
     }
+
 
     @NonNull
     @Override

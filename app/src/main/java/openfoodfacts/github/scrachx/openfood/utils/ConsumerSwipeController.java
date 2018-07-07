@@ -5,6 +5,9 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 
 
 /**
+ * Created for Consumer recycler view swipe actions.
+ *
+ * @see <a href="https://codeburst.io/android-swipe-menu-with-recyclerview-8f28a235ff28#ed30">Android swipe menu with Recycler view - CodeBurst</a>
  * @author <a href="https://github.com/ross-holloway94"> Ross Holloway </a>
  * @version 19 June 2018
  */
@@ -31,6 +34,6 @@ public class ConsumerSwipeController extends ItemTouchHelper.Callback {
      */
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-        //TODO Set actions for left and right
+
     }
 }

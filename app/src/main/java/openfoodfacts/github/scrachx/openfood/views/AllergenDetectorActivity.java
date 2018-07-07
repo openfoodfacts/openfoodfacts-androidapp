@@ -7,48 +7,53 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import holloway.allergenChecker.Consumer;
 import holloway.allergenChecker.JSONManager;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.ConsumerFragment;
 import openfoodfacts.github.scrachx.openfood.utils.ConsumerSwipeController;
 
-public class AllergenDetectorActivity extends MainActivity implements ConsumerFragment.OnListFragmentInteractionListener {
+public class AllergenDetectorActivity extends BaseActivity implements ConsumerFragment.OnListFragmentInteractionListener {
 
-    public static List<Consumer> consumerList = new ArrayList<Consumer>();
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     @Nullable
     @BindView(R.id.consumerFAB)
     FloatingActionButton consumerFAB;
     ConsumerSwipeController consumerSwipeController = new ConsumerSwipeController();
+    private JSONManager jsonManager = JSONManager.getInstance();
+
+    public HashSet<Consumer> getConsumerList() {
+        return jsonManager.getConsumers();
+    }
+
+    /**
+     * Check if the activity is already running
+     */
+    static boolean active = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getConsumerList().clear();
+            if (getConsumerList() != null) {
+                jsonManager.setUpConsumers();
+            }
+
+
         setContentView(R.layout.activity_allergen_detector);
-        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle(R.string.allergenDetector);
-
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        setTitle(R.string.allergenDetector);
 
-        initializeConsumers();
-    }
-
-
-    /**
-     * Loads Consumer objects from local JSON files.
-     *
-     * @author ross-holloway94
-     */
-    private void initializeConsumers() {
-        if (consumerList.isEmpty()) {
-            consumerList.addAll(JSONManager.getInstance().setUpConsumers());
-        }
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(consumerSwipeController);
+        itemTouchhelper.attachToRecyclerView(findViewById(R.id.consumerRecycleView));
     }
 
     @Override
@@ -60,20 +65,16 @@ public class AllergenDetectorActivity extends MainActivity implements ConsumerFr
     /**
      * Allow the user to create a new Consumer by loading a new layout.
      */
+    @OnClick(R.id.consumerFAB)
     @Override
     public void onFABClick(View view) {
         //TODO create a new layout to add Consumer
     }
 
-    /**
-     * Allow the user to delete a Consumer by swiping item to the left.
-     */
     @Override
-    public void onConsumerItemSwipeLeft() {
-        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(consumerSwipeController);
-        itemTouchhelper.attachToRecyclerView(findViewById(R.id.consumerRecycleView));
+    protected void onDestroy() {
+        super.onDestroy();
 
-        //TODO Figure out how to get the item from the recyclerView
     }
 
     /**
@@ -82,5 +83,27 @@ public class AllergenDetectorActivity extends MainActivity implements ConsumerFr
     @Override
     public void onConsumerItemSwipeRight() {
         //TODO create a new layout to edit Consumer
+    }
+
+    /**
+     * Allow the user to delete a Consumer by swiping item to the left.
+     */
+    @Override
+    public void onConsumerItemSwipeLeft() {
+
+
+        //TODO Figure out how to get the item from the recyclerView
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        active = true;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        active = false;
     }
 }

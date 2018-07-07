@@ -11,6 +11,7 @@ import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.io.File;
+import java.util.Objects;
 
 import holloway.allergenChecker.JSONManager;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -51,8 +52,7 @@ public class OFFApplication extends MultiDexApplication {
             nameDB = "open_pet_food_facts";
         } else if ((BuildConfig.FLAVOR.equals("opf"))) {
             nameDB = "open_products_facts";
-        }
-        else
+        } else
 
         {
             nameDB = "open_beauty_facts";
@@ -71,27 +71,33 @@ public class OFFApplication extends MultiDexApplication {
 
 
         /* Initialize the Allergen Detector */
-        //TODO change folder to SDcard if possible
-        File folder = new File(getFilesDir() + "/consumers");
-        if (folder.exists()) {
-            Log.i("ConsumerFragment", "Found existing consumers directory at" + getFilesDir());
-        }
+        File folder = new File(Objects.requireNonNull(getExternalFilesDir(null)).getAbsolutePath(), "/consumers");
+
+
         if (!folder.exists()) {
-            folder.mkdir();
-            Log.i("ConsumerFragment", "Attempted to create directory 'consumers'");
+            if (folder.mkdirs()) {
+                Log.i("OFFApp/allergenD", "Successfully created directory for Consumers at " + folder.toString());
+            } else {
+                Log.e("OFFApp/allergenD", "Error trying to create non-existing directory at " + folder.toString());
+            }
+        }
+        if (folder.exists()) {
+            JSONManager.getInstance().setConsumerJSONLocation(folder.toString());
+            Log.i("ConsumerFragment", "Consumer folder set to " + folder.toString());
+
+            MediaScannerConnection.scanFile(this,
+                    new String[]{folder.toString()}, null,
+                    new MediaScannerConnection.OnScanCompletedListener() {
+                        public void onScanCompleted(String path, Uri uri) {
+                            Log.i("ExternalStorage", "Scanned " + path + ":");
+                            Log.i("ExternalStorage", "-> uri=" + uri);
+                        }
+                    });
         }
 
-        JSONManager.getInstance().setConsumerJSONLocation(folder.toString());
 
 
-        MediaScannerConnection.scanFile(this,
-                new String[]{folder.toString()}, null,
-                new MediaScannerConnection.OnScanCompletedListener() {
-                    public void onScanCompleted(String path, Uri uri) {
-                        Log.i("ExternalStorage", "Scanned " + path + ":");
-                        Log.i("ExternalStorage", "-> uri=" + uri);
-                    }
-                });
+
 
 
         /* End of allergen detector setup */

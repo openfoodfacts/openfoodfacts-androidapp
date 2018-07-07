@@ -29,6 +29,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         activityComponent = OFFApplication.getAppComponent().plusActivityComponent(new ActivityModule(this));
         activityComponent.inject(this);
+
+
     }
 
     @Override

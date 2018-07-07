@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,9 +24,7 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ConsumerRecyclerView
  */
 public class ConsumerFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
@@ -37,7 +36,6 @@ public class ConsumerFragment extends Fragment {
     public ConsumerFragment() {
     }
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static ConsumerFragment newInstance(int columnCount) {
         ConsumerFragment fragment = new ConsumerFragment();
@@ -62,9 +60,7 @@ public class ConsumerFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_consumer_list, container, false);
 
-/*        //Toolbar changes
-        Toolbar toolbar = Objects.requireNonNull(getActivity()).findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.allergenDetector));*/
+
 
 
         // Set the adapter
@@ -75,8 +71,11 @@ public class ConsumerFragment extends Fragment {
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        recyclerView.setAdapter(new ConsumerRecyclerViewAdapter(AllergenDetectorActivity.consumerList, mListener));
-
+        Activity act = getActivity();
+        if (act instanceof AllergenDetectorActivity) {
+            ConsumerRecyclerViewAdapter consumerRecyclerViewAdapter = new ConsumerRecyclerViewAdapter((((AllergenDetectorActivity) getActivity()).getConsumerList()), mListener);
+            recyclerView.setAdapter(consumerRecyclerViewAdapter);
+        }
         return view;
     }
 

@@ -145,6 +145,7 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     compile "com.android.support:multidex:$rootProject.multidexVersion"
     compile 'com.android.support:design:27.1.0'
+
     //DI
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
