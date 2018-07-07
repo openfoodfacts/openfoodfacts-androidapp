@@ -195,6 +195,7 @@
   <string name="new_offline_info">Tikaye naveroka berhemê de, di daxuyaniyên agahî bi tam û agahiyên din li ser label n ibgianrç avkirin. Spas dikim!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Şîfre divê herî kêm 6 kerekter dirêj be.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Ev der pêwîst e.</string>
   <string name="action_preferences">Tercîh</string>
   <string name="prefs_scan_startup">Di destpêkê de bigerim</string>
