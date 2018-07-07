@@ -199,6 +199,7 @@
   <string name="new_offline_info">Lūdzu, uzņemiet attēlu par produktu, sastāvdaļām, uztura faktu tabulu un jebkuru citu informāciju uz etiķetes. Paldies!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Parolei jābūt vismaz 6 rakstzīmēm.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Šis lauks ir obligāts.</string>
   <string name="action_preferences">Iestatījumi</string>
   <string name="prefs_scan_startup">Skenēt startēšanas laikā</string>
