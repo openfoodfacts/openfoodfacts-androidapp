@@ -195,6 +195,7 @@
   <string name="new_offline_info">Mangyaring kumuha ng larawan ng produkto, mga sangkap, talahanayan ng nutrisyon at anumang iba pang impormasyon sa etiketa. Salamat!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Dapat hindi bumaba sa 6 na mga karakter ang haba ng iyong password.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Kailangan ang patlang na ito.</string>
   <string name="action_preferences">Mga preperensiya</string>
   <string name="prefs_scan_startup">I-scan sa startup</string>
