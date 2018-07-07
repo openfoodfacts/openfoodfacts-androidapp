@@ -203,6 +203,7 @@
   <string name="new_offline_info">Prosimo, vzemite si sliko o izdelku, sestavinah, tabeli o prehrani in drugih informacijah na etiketi. Hvala vam!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Geslo mora biti dolgo najmanj 6 znakov.</string>
+  <string name="user">user</string>
   <string name="error_field_required">To polje je obvezno.</string>
   <string name="action_preferences">Nastavitve</string>
   <string name="prefs_scan_startup">Skenirajte ob zagonu</string>
