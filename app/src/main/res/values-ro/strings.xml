@@ -199,6 +199,7 @@
   <string name="new_offline_info">Vă rugăm fotografiați produsul, lista sa de ingrediente, informațiile nutriționale și oricare alte informații prezente pe eticheta. Vă mulțumim!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Parola trebuie să fie de cel puțin 6 caractere.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Acest câmp este obligatoriu.</string>
   <string name="action_preferences">Preferinţe</string>
   <string name="prefs_scan_startup">Scanare la pornire</string>
