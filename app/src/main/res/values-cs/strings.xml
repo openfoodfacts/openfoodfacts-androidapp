@@ -203,6 +203,7 @@
   <string name="new_offline_info">Vyfoťte prosím celý produkt, jeho složení, nutriční tabulku a jakékoli další informace na obalu. Děkujeme!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Heslo musí mít délku alespoň 6 znaků.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Toto pole je povinné.</string>
   <string name="action_preferences">Předvolby</string>
   <string name="prefs_scan_startup">Skenovat při spuštění</string>
