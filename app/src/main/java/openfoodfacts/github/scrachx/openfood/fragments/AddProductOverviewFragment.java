@@ -27,6 +27,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.hootsuite.nachos.NachoTextView;
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Picasso;
@@ -94,6 +96,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_PURCHASE = "purchase_places";
     private static final String PARAM_STORE = "stores";
     private static final String PARAM_COUNTRIES = "countries";
+    private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
 
     @BindView(R.id.scrollView)
     ScrollView scrollView;
@@ -189,8 +192,8 @@ public class AddProductOverviewFragment extends BaseFragment {
             Toast.makeText(activity, "Something went wrong while trying to add product details", Toast.LENGTH_SHORT).show();
             activity.finish();
         }
-        link.setHint(Html.fromHtml("<small>" +
-                "Link of the official page of the product" + "</small>"));
+        link.setHint(Html.fromHtml("<small><small>" +
+                "Link of the official page of the product" + "</small></small>"));
         initializeChips();
         loadAutoSuggestions();
     }
@@ -430,6 +433,15 @@ public class AddProductOverviewFragment extends BaseFragment {
         CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, Uri.parse(url), new WebViewFallback());
     }
 
+    @OnClick(R.id.hint_link_2)
+    void scanProductLink() {
+        IntentIntegrator integrator = IntentIntegrator.forSupportFragment(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+        integrator.setRequestCode(INTENT_INTEGRATOR_REQUEST_CODE);
+        integrator.setPrompt("Scan QR Code for product website");
+        integrator.initiateScan();
+    }
+
     @OnClick(R.id.language)
     void selectProductLanguage() {
         String[] localeValues = activity.getResources().getStringArray(R.array.languages_array);
@@ -498,6 +510,12 @@ public class AddProductOverviewFragment extends BaseFragment {
 
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Log.e("Crop image error", result.getError().toString());
+            }
+        } else if (requestCode == INTENT_INTEGRATOR_REQUEST_CODE) {
+            IntentResult result = IntentIntegrator.parseActivityResult(resultCode, data);
+            if (result.getContents() != null) {
+                link.setText(result.getContents());
+                link.requestFocus();
             }
         }
         EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {

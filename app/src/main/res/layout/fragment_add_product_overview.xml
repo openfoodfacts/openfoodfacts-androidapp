@@ -138,7 +138,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
             android:gravity="center_vertical"
-            android:hint="Name"
+            android:hint="Product name"
             android:inputType="text"
             android:nextFocusDown="@id/quantity"
             android:paddingLeft="@dimen/spacing_small"
@@ -431,6 +431,18 @@
             app:layout_constraintEnd_toEndOf="@id/link"
             app:layout_constraintTop_toTopOf="@id/link"
             app:srcCompat="@drawable/ic_search_black" />
+
+        <ImageView
+            android:id="@+id/hint_link_2"
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:tint="@color/grey_600"
+            app:layout_constraintBottom_toBottomOf="@id/link"
+            app:layout_constraintEnd_toStartOf="@id/hint_link"
+            app:layout_constraintTop_toTopOf="@id/link"
+            app:srcCompat="@drawable/barcode_grey_24dp" />
 
         <View
             android:id="@+id/grey_line3"
