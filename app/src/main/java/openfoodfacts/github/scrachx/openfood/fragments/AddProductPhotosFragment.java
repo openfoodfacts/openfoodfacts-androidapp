@@ -56,7 +56,6 @@ public class AddProductPhotosFragment extends BaseFragment {
 
     private String code;
     private Activity activity;
-    private File photoFile;
     private Uri resultUri;
 
     @Override
@@ -122,7 +121,7 @@ public class AddProductPhotosFragment extends BaseFragment {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 resultUri = result.getUri();
-                photoFile = new File((resultUri.getPath()));
+                File photoFile = new File((resultUri.getPath()));
                 ProductImage image = new ProductImage(code, OTHER, photoFile);
                 image.setFilePath(resultUri.getPath());
                 if (activity instanceof AddProductActivity) {
@@ -150,18 +149,17 @@ public class AddProductPhotosFragment extends BaseFragment {
         imageProgress.setVisibility(View.VISIBLE);
         imageProgressText.setVisibility(View.VISIBLE);
         imageProgressText.setText(R.string.toastSending);
-        imageOther.setVisibility(View.INVISIBLE);
+        addImageRow();
     }
 
     public void hideImageProgress(boolean errorUploading, String message) {
-        imageProgress.setVisibility(View.INVISIBLE);
+        imageProgress.setVisibility(View.GONE);
         imageOther.setVisibility(View.VISIBLE);
         if (errorUploading) {
             imageProgressText.setVisibility(View.GONE);
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         } else {
             imageProgressText.setText("Image uploaded successfully");
-            addImageRow();
         }
     }
 

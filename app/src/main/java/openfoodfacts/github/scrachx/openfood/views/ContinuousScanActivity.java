@@ -190,7 +190,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             productNotFound.setVisibility(View.VISIBLE);
                             fab_status.setVisibility(View.VISIBLE);
                             fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                            fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_add_a_photo));
+                            fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.plus));
                             fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
                         } else {
                             product = state.getProduct();

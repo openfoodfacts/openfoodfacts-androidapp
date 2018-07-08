@@ -31,7 +31,7 @@
             android:id="@+id/hint_image_front"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="(one photo is compulsary to add a new product)"
+            android:text="(one photo is compulsory to add a new product)"
             android:textColor="@color/grey_500"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@id/name"

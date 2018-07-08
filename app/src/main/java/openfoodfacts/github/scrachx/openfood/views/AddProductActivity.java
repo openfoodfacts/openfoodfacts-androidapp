@@ -439,7 +439,7 @@ public class AddProductActivity extends AppCompatActivity {
                     public void onError(Throwable e) {
                         if (e instanceof IOException) {
                             if (ocr) {
-                                View view = findViewById(android.R.id.content);
+                                View view = findViewById(R.id.coordinator_layout);
                                 Snackbar.make(view, "No internet connection. Unable to extract ingredients", Snackbar.LENGTH_INDEFINITE)
                                         .setAction(R.string.txt_try_again, v -> setPhoto(image, imagefield, imgid, true)).show();
                             }
@@ -477,7 +477,7 @@ public class AddProductActivity extends AppCompatActivity {
                     public void onError(Throwable e) {
                         addProductIngredientsFragment.hideOCRProgress();
                         if (e instanceof IOException) {
-                            View view = findViewById(android.R.id.content);
+                            View view = findViewById(R.id.coordinator_layout);
                             Snackbar.make(view, "No internet connection. Unable to extract ingredients", Snackbar.LENGTH_INDEFINITE)
                                     .setAction(R.string.txt_try_again, v -> performOCR(image, imageField)).show();
                         } else {
