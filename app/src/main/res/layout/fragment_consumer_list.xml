@@ -42,12 +42,10 @@
         android:layout_margin="10dp"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="onFABClick"
-        android:tint="@android:color/white"
         app:backgroundTint="@color/blue"
         app:fab_size="normal"
         app:layout_constraintBottom_toBottomOf="@+id/consumerRecycleView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/plus" />
+        app:srcCompat="@drawable/ic_person_add_holo_dark" />
 
 </android.support.constraint.ConstraintLayout>

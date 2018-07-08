@@ -9,8 +9,10 @@
         android:id="@+id/contentCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_short"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/content"
@@ -18,8 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:drawableLeft="@drawable/ic_person_grey_24dp"
-            android:drawableStart="@drawable/ic_person_grey_24dp"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawableStart="@drawable/ic_person"
+            android:gravity="center_vertical|center_horizontal"
             android:padding="@dimen/spacing_large"
             android:text="@tools:sample/first_names"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault"
