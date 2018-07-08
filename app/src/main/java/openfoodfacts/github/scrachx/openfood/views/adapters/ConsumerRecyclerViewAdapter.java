@@ -37,13 +37,22 @@ public class ConsumerRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerRe
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view;
-
-
-        view = LayoutInflater.from(parent.getContext())
+        View mView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_consumer, parent, false);
+        final ViewHolder mViewHolder = new ViewHolder(mView);
+        mView.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when a view has been clicked.
+             *
+             * @param v The view that was clicked.
+             */
+            @Override
+            public void onClick(View v) {
+                mListener.onConsumerItemTouch(v, mViewHolder.getAdapterPosition());
+            }
+        });
 
-        return new ViewHolder(view);
+        return new ViewHolder(mView);
     }
 
     @Override
@@ -52,7 +61,9 @@ public class ConsumerRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerRe
             Consumer consumer = mValues.get(position);
 
             TextView textView = holder.mContentView;
-            textView.setText(consumer.getName());
+            //ref: https://stackoverflow.com/questions/5725892/how-to-capitalize-the-first-letter-of-word-in-a-string-using-java
+            String capitalizedName = consumer.getName().substring(0, 1).toUpperCase() + consumer.getName().substring(1).toLowerCase();
+            textView.setText(capitalizedName);
 
 
         } catch (Exception e) {

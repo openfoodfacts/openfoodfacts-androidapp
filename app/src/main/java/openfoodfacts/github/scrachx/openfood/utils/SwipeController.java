@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -36,7 +37,7 @@ public class SwipeController extends Callback {
 
     private RecyclerView.ViewHolder currentItemViewHolder = null;
 
-    private SwipeControllerActions buttonsActions = null;
+    private SwipeControllerActions buttonsActions;
 
     private static final float buttonWidth = 150;
 
@@ -90,6 +91,7 @@ public class SwipeController extends Callback {
         currentItemViewHolder = viewHolder;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void setTouchListener(final Canvas c, final RecyclerView recyclerView, final RecyclerView.ViewHolder viewHolder, final float dX, final float dY, final int actionState, final boolean isCurrentlyActive) {
         recyclerView.setOnTouchListener((v, event) -> {
             swipeBack = event.getAction() == MotionEvent.ACTION_CANCEL || event.getAction() == MotionEvent.ACTION_UP;
@@ -107,6 +109,7 @@ public class SwipeController extends Callback {
         });
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void setTouchDownListener(final Canvas c, final RecyclerView recyclerView, final RecyclerView.ViewHolder viewHolder, final float dX, final float dY, final int actionState, final boolean isCurrentlyActive) {
         recyclerView.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -116,6 +119,7 @@ public class SwipeController extends Callback {
         });
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void setTouchUpListener(final Canvas c, final RecyclerView recyclerView, final RecyclerView.ViewHolder viewHolder, final float dX, final float dY, final int actionState, final boolean isCurrentlyActive) {
         recyclerView.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -153,6 +157,7 @@ public class SwipeController extends Callback {
         p.setColor(Color.TRANSPARENT);
         c.drawRoundRect(rightButton, corners, corners, p);
 
+        //TODO replace with vector
         Bitmap bmp = Utils.getBitmapFromDrawable(context, R.drawable.ic_delete_black_24dp);
         bmp = Bitmap.createScaledBitmap(bmp, 100, 100, false);
         buttonInstance = null;

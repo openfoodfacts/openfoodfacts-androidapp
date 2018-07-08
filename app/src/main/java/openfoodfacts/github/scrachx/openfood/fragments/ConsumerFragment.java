@@ -113,9 +113,7 @@ public class ConsumerFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         void onFABClick(View view);
 
-        void onConsumerItemSwipeLeft();
-
-        void onConsumerItemSwipeRight();
+        void onConsumerItemTouch(View view, int position);
     }
 
 
