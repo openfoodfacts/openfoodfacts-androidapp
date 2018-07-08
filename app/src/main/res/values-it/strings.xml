@@ -195,6 +195,7 @@
   <string name="new_offline_info">Scatta una foto del prodotto, degli ingredienti, delle informazioni nutrizionali e qualsiasi altra informazione dell\'etichetta. Grazie!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">La password deve contenere almeno 6 caratteri.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Questo campo è obbligatorio.</string>
   <string name="action_preferences">Impostazioni</string>
   <string name="prefs_scan_startup">scansiona all\'avvio</string>

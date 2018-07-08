@@ -195,6 +195,7 @@
   <string name="new_offline_info">Per favor, prenga una foto del producte, ingredients, dades de nutrició i qualsevol altra informació a l\'etiqueta. Gràcies!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Aquest camp és obligatori.</string>
   <string name="action_preferences">Preferències</string>
   <string name="prefs_scan_startup">Escaneja al començament</string>

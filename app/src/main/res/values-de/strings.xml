@@ -195,6 +195,7 @@
   <string name="new_offline_info">Bitte fotografieren Sie das Produkt, die Inhaltsstoffe, die Nährwerttabelle und alle anderen Informationen auf dem Etikett. Vielen Dank!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Das Passwort muss mindestens 6 Zeichen lang sein.</string>
+  <string name="user">Benutzer</string>
   <string name="error_field_required">Das Feld ist erforderlich.</string>
   <string name="action_preferences">Einstellungen</string>
   <string name="prefs_scan_startup">Erfassung direkt beim Start beginnen</string>

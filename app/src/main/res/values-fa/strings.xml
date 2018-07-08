@@ -195,6 +195,7 @@
   <string name="new_offline_info">لطفاً از محصول، مواد تشکیل دهنده،جدول ارزش غذایی و هر گونه اطلاعات مفید دیگر عکس بگیرید. متشکریم!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
+  <string name="user">user</string>
   <string name="error_field_required">این جای خالی اجباری است.</string>
   <string name="action_preferences">تنظیمات</string>
   <string name="prefs_scan_startup">اسکن در هنگام راه اندازی</string>

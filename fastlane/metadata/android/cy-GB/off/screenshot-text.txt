@@ -33,7 +33,7 @@ Wikipedia for Pet Food
 Wikipedia of Products
 
 product_view_ingredients_en.png
-Ingredients
+Cynhwysion
 
 menu_en.png
 Powerful

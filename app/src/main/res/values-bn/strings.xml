@@ -195,6 +195,7 @@
   <string name="new_offline_info">অনুগ্রহ করে পণ্য, উপাদান, পুষ্টিতথ্য সারণি এবং লেবেলের অন্যান্য তথ্যের ছবি তুলুন । ধন্যবাদ !</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">পাসওয়ার্ড অন্তত ৬ অক্ষরের দীর্ঘ হতে হবে।</string>
+  <string name="user">user</string>
   <string name="error_field_required">এই ঘরটি পূরণ করা আবশ্যক ।</string>
   <string name="action_preferences">অগ্রাধিকারসমূহ</string>
   <string name="prefs_scan_startup">শুরুতেই স্ক্যান করুন</string>

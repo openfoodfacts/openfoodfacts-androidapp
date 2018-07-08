@@ -195,6 +195,7 @@
   <string name="new_offline_info">Tag venligst et billede af produktet, ingredienslisten, ernæringsinformation og andre informationer på pakken. Tak!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Adgangskoden skal være mindst 6 tegn langt.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Dette felt er påkrævet.</string>
   <string name="action_preferences">Præferencer</string>
   <string name="prefs_scan_startup">Gå til skanning ved opstart</string>

@@ -195,6 +195,7 @@
   <string name="new_offline_info">कृपया उत्पाद, सामग्री, पोषण तथ्यों की सूची और लेबल पर किसी भी अन्य जानकारी की एक तस्वीर ले लो। धन्यवाद!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">पासवर्ड कम से कम 6 अक्षर लंबा होने की जरूरत है।</string>
+  <string name="user">user</string>
   <string name="error_field_required">यह क्षेत्र आवश्यक है</string>
   <string name="action_preferences">प्राथमिकताएँ</string>
   <string name="prefs_scan_startup">स्टार्टअप पर स्कैन करें</string>

@@ -5,13 +5,13 @@
     <item quantity="other"> Anda memiliki 1 produk luring menunggu untuk dikontribusikan ke Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="other">%d menit yang lalu</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="other">%d hours ago</item>
+    <item quantity="other">%d jam yang lalu</item>
   </plurals>
   <plurals name="days">
-    <item quantity="other">%d days ago</item>
+    <item quantity="other">%d hari yang lalu</item>
   </plurals>
   <string name="action_settings">Pengaturan</string>
   <string name="action_about">Tentang,</string>
@@ -74,12 +74,12 @@
   <string name="txtManufacturing">tempat pembuatan atau tempat diolah</string>
   <string name="txtIngredientsOrigins">asal kandungan</string>
   <string name="txtCity">kota,bagian negara .dan negara daerahl dibeli</string>
-  <string name="txtEMB">EMB Code:</string>
+  <string name="txtEMB">Kode EMB:</string>
   <string name="txtManufactureUrl">Tautkan ke halaman produk di situs resmi produser:</string>
   <string name="txtStores">penampungan toko</string>
   <string name="txtCountries">negara menjual</string>
   <string name="txtIngredients">daftar kandungan </string>
-  <string name="Donate">Donate</string>
+  <string name="Donate">Donasi</string>
   <string name="Donation">Klik di sini untuk menyumbang pada Open Food Facts</string>
   <string name="txtSubstances">Zat atau produk yang menyebabkan alergi atau intoleransi penyakit</string>
   <string name="txtAdditives">zat adiktif</string>
@@ -106,7 +106,7 @@
   <string name="hintPass">kata sandi anda</string>
   <string name="errorLogin">Kesalahan masuk atau kata sandi anda salah</string>
   <string name="errorWeb">kami tidak bisa memasukin kedalam jaringan internet , apakah anda sedang dalam masalah konektivitas ?</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="uploadLater">Gambar akan diunggah ketika jaringan tersedia</string>
   <string name="txtInfoLoginOk">pengguna menyimpan</string>
   <string name="txtInfoLoginNo">pengguna tidak bisa menyimpan</string>
   <string name="txtDialogsContent">produk anda scan belum ada pada daftar open food facts . mohon anda menambahkannya </string>
@@ -123,8 +123,8 @@
   <string name="txtTakePicture">mengambil gambar</string>
   <string name="txtSendAll">mengirimkan semua</string>
   <string name="txtNoData">tidak ada data anda</string>
-  <string name="txtPictureNeeded">Wait…</string>
-  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
+  <string name="txtPictureNeeded">Tunggu…</string>
+  <string name="txtPictureNeededDialogContent">Anda harus menambahkan setidaknya satu gambar sebelum mengirimkan produk ini</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
   <string name="toastSending">mengirim </string>
@@ -143,7 +143,7 @@
   <string name="txtBarcodeNotValid">kode batang tidak berfungsi</string>
   <string name="try_it_scan_now">memindai produk</string>
   <string name="share">membagikan</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Terjemahkan</string>
   <string name="msg_share">Lihatlah produk ini pada Open Food Facts:</string>
   <string name="create_account">memasuki akun</string>
   <string name="home_drawer">rumah</string>
@@ -192,6 +192,7 @@
   <string name="new_offline_info">mohon ambil gambar produk , , bahan, tabel fakta nutrisi dan infromasi bisa dilihat dilabel Terima kasih!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Panjang password minimum %s karakter.</string>
+  <string name="user">user</string>
   <string name="error_field_required">ruang ini dipakai</string>
   <string name="action_preferences">pengaturan</string>
   <string name="prefs_scan_startup">memindai dan menjalankan</string>

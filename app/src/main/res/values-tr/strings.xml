@@ -195,6 +195,7 @@
   <string name="new_offline_info">Lütfen ürünü, içerikleri, beslenme bilgileri tablosunu ve etiket üzerindeki diğer bilgilerin resmini çekin. Teşekkürler!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Şifre en az 6 karakter uzunluğunda olmalıdır.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Bu alan gereklidir.</string>
   <string name="action_preferences">Tercihler</string>
   <string name="prefs_scan_startup">Başlangıçta tara</string>

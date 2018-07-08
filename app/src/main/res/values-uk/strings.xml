@@ -203,6 +203,7 @@
   <string name="new_offline_info">Будь ласка, сфотографуйте товар, склад, харчову цінність та іншу інформацію на етикетці. Дякуємо!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Пароль має містити принаймні 6 символів.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Це поле є обов\'язковим.</string>
   <string name="action_preferences">Налаштування</string>
   <string name="prefs_scan_startup">Відкривати при запуску</string>

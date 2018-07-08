@@ -191,6 +191,7 @@
   <string name="new_offline_info">請拍攝產品、成份、營養標示表以及其他標籤上的資訊。謝謝！</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">密碼至少要有6個字元。</string>
+  <string name="user">user</string>
   <string name="error_field_required">此欄位為必填。</string>
   <string name="action_preferences">偏好設定</string>
   <string name="prefs_scan_startup">在啟動時掃描</string>

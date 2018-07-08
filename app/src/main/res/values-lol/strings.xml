@@ -195,6 +195,7 @@
   <string name="new_offline_info">crwdns35169:0crwdne35169:0</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">crwdns35943:0crwdne35943:0</string>
+  <string name="user">crwdns93082:0crwdne93082:0</string>
   <string name="error_field_required">crwdns35171:0crwdne35171:0</string>
   <string name="action_preferences">crwdns35172:0crwdne35172:0</string>
   <string name="prefs_scan_startup">crwdns35173:0crwdne35173:0</string>

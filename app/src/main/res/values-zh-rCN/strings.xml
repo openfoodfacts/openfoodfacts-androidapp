@@ -191,6 +191,7 @@
   <string name="new_offline_info">请拍摄产品、配料、营养表和标签上的其它信息，谢谢！</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">密码至少需要 6 位。</string>
+  <string name="user">user</string>
   <string name="error_field_required">此处必填。</string>
   <string name="action_preferences">偏好</string>
   <string name="prefs_scan_startup">启动扫描</string>

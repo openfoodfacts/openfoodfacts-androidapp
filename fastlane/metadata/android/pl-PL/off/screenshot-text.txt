@@ -8,35 +8,35 @@ quickview_en.png
 Zdobądź skalę Nutriscore
 
 history_en.png
-Your full scan history, fully private & exportable
+Pełna historia skanowania, w pełni prywatna i eksportowalna
 
 product_view_wikipedia_en.png
-Go further with Wikipedia
+Dalej z Wikipedią
 
 allergen_alert_en.png
-Set allergen alerts
+Ustawy ostrzeżenia o alergenach
 
 home_en.png
 product_view_nutrition_summary_en.png
-Nutrition, simplified
+Odżywianie, uproszczone
 
 product_view_allergen_alert_en.png
-Ostrzeżenie o alergensch
+Ostrzeżenie o alergenach
 
 categories_en.png
-Get alternatives for your favorite foods
+Znajdź alternatywę dla ulubionych potraw
 
 product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+Wikipedia dla żywności
+Wikipedia kosmetyków
+Wikipedia karmy dla zwierząt domowych
+Wikipedia produktów
 
 product_view_ingredients_en.png
 Składniki
 
 menu_en.png
-Powerful
+Mocny
 
 product_view_nutrition_table_en.png
 Wartości odżywcze

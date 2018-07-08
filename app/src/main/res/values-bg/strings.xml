@@ -195,6 +195,7 @@
   <string name="new_offline_info">Направете снимка на продукта, съставките, таблицата с факти за хранителните стойности и всяка друга информация на етикета. Благодаря ви!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Паролата трябва да бъде дълга най-малко 6 символа.</string>
+  <string name="user">user</string>
   <string name="error_field_required">Това поле е задължително.</string>
   <string name="action_preferences">Предпочитания</string>
   <string name="prefs_scan_startup">Сканиране при стартиране</string>
