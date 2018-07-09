@@ -26,6 +26,9 @@ Ostrzeżenie o alergenach
 categories_en.png
 Znajdź alternatywę dla ulubionych potraw
 
+foodtransparency_en.png
+Become an actor of food transparency
+
 product_view_summary_en.png
 Wikipedia dla żywności
 Wikipedia kosmetyków
