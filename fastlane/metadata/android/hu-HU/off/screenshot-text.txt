@@ -26,6 +26,9 @@ Allergén riasztás
 categories_en.png
 Kapjon alternatívát a kedvenc élelmiszereire
 
+foodtransparency_en.png
+Become an actor of food transparency
+
 product_view_summary_en.png
 Wikipedia az Élelmiszerekhez
 Wikipedia a Kozmetikumokhoz
