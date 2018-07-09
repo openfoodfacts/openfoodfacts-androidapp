@@ -26,6 +26,9 @@ product_view_allergen_alert_en.png
 categories_en.png
 קבלת חלופות למוצרי המזון האהובים עליך
 
+foodtransparency_en.png
+Become an actor of food transparency
+
 product_view_summary_en.png
 הוויקיפדיה של האוכל
 הוויקיפדיה של מוצרי הטיפוח
