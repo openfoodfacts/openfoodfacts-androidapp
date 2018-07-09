@@ -105,7 +105,7 @@
   <string name="txtSalt">Sel</string>
   <string name="txtFat">Matières grasses</string>
   <string name="txtSugars">Sucres</string>
-  <string name="hintBarcode">Code barre</string>
+  <string name="hintBarcode">Code à barres</string>
   <string name="hintLogin">Connexion</string>
   <string name="hintPass">Mot de passe</string>
   <string name="errorLogin">Identifiant ou mot de passe incorrect</string>
