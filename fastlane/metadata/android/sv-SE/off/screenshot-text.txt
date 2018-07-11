@@ -26,6 +26,9 @@ Allergenvarning
 categories_en.png
 Get alternatives for your favorite foods
 
+foodtransparency_en.png
+Become an actor of food transparency
+
 product_view_summary_en.png
 Wikipedia for Food
 Wikipedia for Cosmetics

@@ -1,8 +1,8 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
+Those are the taglines shown above the screenshots in the playstore. Tienili corti e attraenti.
+Non cambiare il nome del file.
 ---
 scan_en.png
-Scan products
+Scansiona prodotti
 
 quickview_en.png
 Ottenere il Nutriscore
@@ -26,6 +26,9 @@ Allarme allergeni
 categories_en.png
 Get alternatives for your favorite foods
 
+foodtransparency_en.png
+Become an actor of food transparency
+
 product_view_summary_en.png
 Wikipedia for Food
 Wikipedia for Cosmetics
@@ -36,7 +39,7 @@ product_view_ingredients_en.png
 Ingredienti
 
 menu_en.png
-Powerful
+Potente
 
 product_view_nutrition_table_en.png
 Informazioni nutrizionali

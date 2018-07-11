@@ -4,34 +4,34 @@
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/ -->
   <string name="website">https://world-it.openpetfoodfacts.org/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
-  <string name="website_contribute">https://world.openpetfoodfacts.org/contribute</string>
+  <string name="website_contribute">https://it.openpetfoodfacts.org/contribute</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/decouvrir -->
-  <string name="website_discover">https://world.openpetfoodfacts.org/discover</string>
+  <string name="website_discover">https://it.openpetfoodfacts.org/discover</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/produit/ -->
-  <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
+  <string name="website_product">https://it.openpetfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
-  <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
-  <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
+  <string name="website_contributor">https://it.openpetfoodfacts.org/contributor/</string>
+  <string name="terms_url">https://it.openpetfoodfacts.org/terms-of-use</string>
   <string name="txtHome">Open Pet Food Facts è un database di prodotti di cibo per animali con ingredienti, allergeni, indici e tutti i frammenti d\'informazione che si possono trovare sulle etichette dei prodotti alimentari per animali domestici. Woof. Woof.</string>
-  <string name="slide_1_title">Contribute to Pet Food transparency</string>
-  <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
+  <string name="slide_1_title">Contribuire alla trasparenza del cibo per animali</string>
+  <string name="slide_1_desc">Scansiona i prodotti, fotografali, rendi la trasparenza alimentare animale una realtà</string>
   <string name="slide_2_title">Get the facts</string>
   <string name="slide_2_desc">Informazioni dettagliate sul prodotto che hai scansionato, decifrate per te</string>
   <string name="slide_3_title">Tieni traccia dei prodotti che usi</string>
   <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
   <string name="slide_4_title">Utilizzabile offline</string>
   <string name="slide_4_desc">Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento</string>
-  <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
-  <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
+  <string name="txtDialogsContent">Il prodotto scansionato non esiste ancora in Open Pet Food Facts. Aggiungerlo per favore.</string>
+  <string name="txtDialogsContentPowerMode">Il prodotto scannerizzato esiste già in Open Pet Food Facts.</string>
   <string name="msg_share">Guarda questo prodotto su Open Food Facts</string>
-  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+  <string name="not_support_books">I libri non sono attualmente supportati da Open Food Facts</string>
+  <string name="txt_broaden_search">- ampliare la tua ricerca \n- scan e aggiungerla a Open Food Facts</string>
   <string name="Donation">Clicca qui per donare a Open Food Facts</string>
   <string name="translate_help_title">Aiuta a tradurre Open Food Facts</string>
   <string name="translate_help_summary">Porta il database di Open Food Facts nella tua lingua - non è richiesta alcuna conoscenza tecnica</string>
   <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data">Le tue informazioni sulle allergie non saranno mai inviate al server di Open Food Facts. Inoltre, fai attenzione che i dati del prodotto potrebbero non essere precisi e il rilevamento potrebbe non essere accurato al 100%, quindi ti preghiamo di ricontrollare da solo! </string>
   <!-- OPFF tagline in different languages -->
-  <string name="tagline">free pet food products database</string>
-  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Pet Food Facts. Can you add it?</string>
+  <string name="tagline">il database libero per i prodotti alimentari animali</string>
+  <string name="product_not_found">Il prodotto %1$s scansionato non esiste ancora in Open Pet Food Facts. Puoi aggiungerlo?</string>
 </resources>

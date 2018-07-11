@@ -26,6 +26,9 @@ product_view_allergen_alert_en.png
 categories_en.png
 Найдите альтернативу для ваших любимых блюд
 
+foodtransparency_en.png
+Become an actor of food transparency
+
 product_view_summary_en.png
 Википедия продуктов питания
 Википедия косметики

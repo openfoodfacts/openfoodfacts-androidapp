@@ -105,7 +105,7 @@
   <string name="txtSalt">Sel</string>
   <string name="txtFat">Matières grasses</string>
   <string name="txtSugars">Sucres</string>
-  <string name="hintBarcode">Code barre</string>
+  <string name="hintBarcode">Code à barres</string>
   <string name="hintLogin">Connexion</string>
   <string name="hintPass">Mot de passe</string>
   <string name="errorLogin">Identifiant ou mot de passe incorrect</string>
@@ -127,7 +127,7 @@
   <string name="txtSendAll">Tout envoyer</string>
   <string name="txtNoData">Aucune donnée</string>
   <string name="txtPictureNeeded">Veuillez patienter…</string>
-  <string name="txtPictureNeededDialogContent">Ajoutez au moins une image avant de présenter ce produit</string>
+  <string name="txtPictureNeededDialogContent">Ajoutez au moins une image avant de le soumettre ce produit</string>
   <string name="txtPictureNeededDialogYes">Rester</string>
   <string name="txtPictureNeededDialogNo">Annuler</string>
   <string name="toastSending">Envoi en cours...</string>
@@ -135,8 +135,8 @@
   <string name="txtInfoAddUser">Veuillez saisir votre identifiant et mot de passe</string>
   <string name="txtDataUpdated">Données mises à jour</string>
   <string name="txtLoading">Chargement...</string>
-  <string name="txtDialogsContentDelete">Etes-vous sûr(e) de vouloir supprimer ce brouillon?</string>
-  <string name="txtDialogsContentInfoSave">Le produit a été sauvegardé localement, vous pouvez l\'éditer dans le menu Edition hors ligne</string>
+  <string name="txtDialogsContentDelete">Êtes-vous sûr(e) de vouloir supprimer ce brouillon?</string>
+  <string name="txtDialogsContentInfoSave">Le produit a été sauvegardé localement, vous pouvez l\'éditer dans le menu Édition en hors ligne</string>
   <string name="txtBarcodeRequire">Code-barre requis</string>
   <string name="txtOk">OK</string>
   <string name="txtContentDialogUploading">Ne quittez pas durant l\'envoi...</string>
@@ -147,7 +147,7 @@
   <string name="try_it_scan_now">Scanner un produit</string>
   <string name="share">Partager</string>
   <string name="translate">Traduire</string>
-  <string name="msg_share">Regardez ce produit sur Open Beauty Facts:</string>
+  <string name="msg_share">Regardez ce produit sur Open Food Facts :</string>
   <string name="create_account">S\'inscrire</string>
   <string name="home_drawer">Accueil</string>
   <string name="search_drawer">Recherche</string>
@@ -157,7 +157,7 @@
   <string name="search_by_name_drawer">Rechercher par nom</string>
   <string name="scan_search">Scanner</string>
   <string name="user_drawer">Utilisateur</string>
-  <string name="offline_edit_drawer">Edition hors-ligne</string>
+  <string name="offline_edit_drawer">Édition hors-ligne</string>
   <string name="txt_anonymous">Anonyme</string>
   <string name="txt_product_not_found">Pas de produits</string>
   <string name="delete_txt">Supprimer</string>
@@ -195,7 +195,7 @@
   <string name="new_offline_info">Veuillez prendre une photo du produit, des ingrédients, des valeurs nutritionnelles et de toutes les autres informations sur l\'étiquette. Merci !</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Le mot de passe doit comporter au moins 6 caractères.</string>
-  <string name="user">user</string>
+  <string name="user">utilisateur</string>
   <string name="error_field_required">Ce champ est obligatoire.</string>
   <string name="action_preferences">Préférences</string>
   <string name="prefs_scan_startup">Scanner au démarrage</string>

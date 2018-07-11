@@ -203,7 +203,7 @@
   <string name="new_offline_info">Сделайте фото продукта, состава, пищевой ценности и другой информации на этикетке. Спасибо!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Длина пароля должна быть не менее 6 символов.</string>
-  <string name="user">user</string>
+  <string name="user">пользователь</string>
   <string name="error_field_required">Это поле обязательно.</string>
   <string name="action_preferences">Настройки</string>
   <string name="prefs_scan_startup">Сканировать при запуске</string>

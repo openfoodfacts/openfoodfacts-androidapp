@@ -195,7 +195,7 @@
   <string name="new_offline_info">Por favor, tire uma foto ao produto, aos ingredientes, à tabela nutricional e a qualquer outra informação relevante na embalagem. Obrigado!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">A palavra-passe deve conter pelo menos 6 caracteres.</string>
-  <string name="user">user</string>
+  <string name="user">usuário</string>
   <string name="error_field_required">Este campo é necessário.</string>
   <string name="action_preferences">Configurações</string>
   <string name="prefs_scan_startup">Digitalizar ao iniciar</string>

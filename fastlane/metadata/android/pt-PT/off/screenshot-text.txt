@@ -26,6 +26,9 @@ Alerta de alergénio
 categories_pt.png
 Obtenha alternativas para seus alimentos favoritos
 
+foodtransparency_en.png
+Torne-se um ator da transparência alimentar
+
 product_view_summary_pt.png
 Wikipedia para comida
 Wikipedia para Cosméticos

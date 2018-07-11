@@ -1,6 +1,6 @@
-***Contribute to Cosmetic Transparency***
+***Contribuire alla trasparenza cosmetica***
 
-- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
+- Open Beauty Facts è un database di cosmetici realizzato da tutti, per tutti.
 - You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
 - Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding a product from your cosmetic cupboard. 
@@ -13,20 +13,20 @@
 - You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
 - We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Funziona bene in qualsiasi condizione ***
+- Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento.
+- L'app carica solo il minimo indispensabile per ridurre i dati e il consumo della batteria
+- Non hai bisogno di una fotocamera per cercare un prodotto. Puoi anche digitare il codice a barre se ti manca una fotocamera o hai un problema con questa.
 
-*** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** I tuoi cosmetici, i tuoi dati ***
+- I tuoi dati personali sono tuoi e non vengono mai inviati online
+- Puoi usare l'app in modo anonimo
+- Puoi esportare la cronologia di scansione
 
-Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+Nota: Open Beauty Facts è in costruzione, il sito e l'applicazione sono basati su Open Food Facts e verranno apportate modifiche per tenere conto delle specificità dei cosmetici.
 
 Open Beauty Facts è anche disponibile sul web all'indirizzo 
 https://world-it.openbeautyfacts.org/
 Domande e feedback a: contact@openfoodfacts.org
 
-For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Per il cibo, è possibile installare Open Food Facts, per alimenti per animali domestici, Open Pet Food Facts e per tutti gli altri prodotti, Open Products Facts.
