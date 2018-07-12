@@ -13,33 +13,33 @@ Open Products Facts es una base de datos abierta de todos los productos en el mu
 *** Recoge TOOODAS las cosas ***
 - Puedes agregar todos los artículos de tus colecciones
 - Open Crayons Facts - La base de datos abierta más grande de lápices de colores
-- Open Miniature Food Facts - The largest open database of miniature food products
-- Open ??? Facts - Create your own open database :-)
+- Datos de alimentos en miniatura abiertos - La base de datos abierta más grande de productos alimenticios en miniatura
+- Abierto ??? Hechos - Crea tu propia base de datos abierta :-)
 
 *** Funciona bien en cualquier condición ***
 - Puede agregar nuevos productos, incluso si no tiene una conexión a Internet en este momento.
 - La aplicación solo carga lo estrictamente necesario para reducir el consumo de datos y batería
 - No necesita una cámara para buscar un producto. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
 
-*** Your products, your data ***
-- Your personal data is yours, and is never sent online
+*** Sus productos, sus datos ***
+- Tus datos son tuyos y nunca se envían en línea
 - Puede usar la aplicación de forma anónima
 - Puede exportar su historial de escaneo
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Para alimentos, puede instalar Open Food Facts, para cosméticos, Open Beauty Facts, y para alimentos para mascotas, Open Pet Food Facts.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
+Open Products Facts también está disponible en la web en https://world.openproductsfacts.org
 Preguntas, comentarios: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+Ayer por la mañana, el equipo de Open Food Facts se despertó con una asombrosa revelación. 
 
-Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+Recolectar la comida, los cosméticos y la comida para mascotas del mundo fue tan pasajera. Con el progreso insano del último año, seguramente debemos estar cerca de completar nuestra misión de recolectar todos los productos alimenticios y cosméticos del mundo, ¿verdad?
 
-So we set up to create not 1, but other 77000 separate new databases ! 
+¡Así que nos preparamos para crear no 1, sino otras 77000 bases de datos nuevas! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts será un proyecto extremadamente ambicioso. Éstos son algunos de ellos: 
 
 Open Crayons Facts - The largest open database of coloring crayons
 
