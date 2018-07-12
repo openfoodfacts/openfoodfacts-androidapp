@@ -1,18 +1,18 @@
 Open Products Facts es una base de datos abierta de todos los productos en el mundo.
 
-*** Contribute to Product Transparency ***
+*** Contribuya a la Transparencia del Producto ***
 
-- Open Products Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Tenemos muchos proyectos interesantes a los que puedes contribuir de diferentes maneras. 
-- You can start contributing today by adding your first product. 
+- Open Products Facts es una base de datos de productos hecha por todos, para todos.
+- Puede usarlo para tomar mejores decisiones, y como son datos abiertos, cualquiera puede volver a usarlos para cualquier propósito.
+- Open Products Facts es un proyecto sin fines de lucro desarrollado por miles de voluntarios de todo el mundo. Tenemos muchos proyectos interesantes a los que puedes contribuir de diferentes maneras. 
+-Puedes empezar a contribuir hoy agregando su primer producto. 
 
 *** Obtener los datos ***
-- Open Products Facts helps you to make sense of the fine print on products labels.
+- Open Products Facts lo ayuda a comprender la letra pequeña de las etiquetas de los productos.
 
-*** Collect AAAALL the things ***
-- You can add all the items from your collections
-- Open Crayons Facts - The largest open database of coloring crayons
+*** Recoge TOOODAS las cosas ***
+- Puedes agregar todos los artículos de tus colecciones
+- Open Crayons Facts - La base de datos abierta más grande de lápices de colores
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
