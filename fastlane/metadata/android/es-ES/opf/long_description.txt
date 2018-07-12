@@ -41,7 +41,7 @@ Recolectar la comida, los cosméticos y la comida para mascotas del mundo fue ta
 
 Open Products Facts será un proyecto extremadamente ambicioso. Éstos son algunos de ellos: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Datos de Crayones abiertos: la base de datos abierta más grande de lápices de colores
 
 Open Miniature Food Facts - The largest open database of miniature food products
 
