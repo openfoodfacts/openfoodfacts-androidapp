@@ -308,6 +308,8 @@
     <string name="txt_history_exported">History exported</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
     <string name="txt_nutrition_not_found">N/A</string>
+    <string name="zzzzz">ZZZZZ</string>
+    <string name="zzzz">ZZZZ</string>
 
     <!-- Nutrition info tab -->
     <string name="calculate_calories">Calculate Calories</string>
