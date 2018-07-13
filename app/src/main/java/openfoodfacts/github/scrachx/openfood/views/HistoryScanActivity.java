@@ -493,7 +493,25 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                 Collections.sort(productItems, new Comparator<HistoryItem>() {
                     @Override
                     public int compare(HistoryItem historyItem, HistoryItem t1) {
-                        return historyItem.getTitle().compareToIgnoreCase(t1.getTitle());
+                        int y;
+                        if(TextUtils.isEmpty(historyItem.getTitle()))
+                        {
+                            historyItem.setTitle(getResources().getString(R.string.zzzzz));
+                        }
+                        if(TextUtils.isEmpty(t1.getTitle()))
+                        {
+                            t1.setTitle(getResources().getString(R.string.zzzz));
+                        }
+                        y = historyItem.getTitle().compareToIgnoreCase(t1.getTitle());
+                        if(historyItem.getTitle().equals(getResources().getString(R.string.zzzzz)))
+                        {
+                            historyItem.setTitle("");
+                        }
+                        if(t1.getTitle().equals(getResources().getString(R.string.zzzz)))
+                        {
+                            t1.setTitle("");
+                        }
+                        return y;
                     }
                 });
 
@@ -505,6 +523,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                 Collections.sort(productItems, new Comparator<HistoryItem>() {
                     @Override
                     public int compare(HistoryItem historyItem, HistoryItem t1) {
+
                         int x;
                         if(TextUtils.isEmpty(historyItem.getBrands()))
                         {
@@ -524,7 +543,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                             t1.setBrands("");
                         }
                         return x;
-
                     }
                 });
 
