@@ -55,6 +55,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.annotation.Resource;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -500,13 +502,18 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
 
             case "brand":
-
-                Collections.sort(productItems, new Comparator<HistoryItem>() {
-                    @Override
-                    public int compare(HistoryItem historyItem, HistoryItem t1) {
-                        return historyItem.getBrands().compareToIgnoreCase(t1.getBrands());
-                    }
-                });
+                try {
+                    Collections.sort(productItems, new Comparator<HistoryItem>() {
+                        @Override
+                        public int compare(HistoryItem historyItem, HistoryItem t1) {
+                            return historyItem.getBrands().compareToIgnoreCase(t1.getBrands());
+                        }
+                    });
+                }
+                catch (NullPointerException e)
+                {
+                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.cannot_sort_without_brand_name) ,Toast.LENGTH_LONG).show();
+                }
 
                 break;
 
