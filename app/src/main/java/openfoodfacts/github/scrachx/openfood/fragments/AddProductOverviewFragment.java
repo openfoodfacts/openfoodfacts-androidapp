@@ -40,6 +40,8 @@ import org.greenrobot.greendao.async.AsyncSession;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -55,6 +57,7 @@ import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
@@ -83,19 +86,19 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_BARCODE = "code";
     private static final String PARAM_QUANTITY = "quantity";
     private static final String UNIT[] = {"", "g", "mg", "kg", "l", "ml", "cl", "fl oz"};
-    private static final String PARAM_BRAND = "brands";
+    private static final String PARAM_BRAND = "add_brands";
     private static final String PARAM_LANGUAGE = "lang";
-    private static final String PARAM_PACKAGING = "packaging";
-    private static final String PARAM_CATEGORIES = "categories";
-    private static final String PARAM_LABELS = "labels";
+    private static final String PARAM_PACKAGING = "add_packaging";
+    private static final String PARAM_CATEGORIES = "add_categories";
+    private static final String PARAM_LABELS = "add_labels";
     private static final String PARAM_PERIODS_AFTER_OPENING = "periods_after_opening";
-    private static final String PARAM_ORIGIN = "origins";
-    private static final String PARAM_MANUFACTURING_PLACE = "manufacturing_places";
-    private static final String PARAM_EMB_CODE = "emb_codes";
+    private static final String PARAM_ORIGIN = "add_origins";
+    private static final String PARAM_MANUFACTURING_PLACE = "add_manufacturing_places";
+    private static final String PARAM_EMB_CODE = "add_emb_codes";
     private static final String PARAM_LINK = "link";
-    private static final String PARAM_PURCHASE = "purchase_places";
-    private static final String PARAM_STORE = "stores";
-    private static final String PARAM_COUNTRIES = "countries";
+    private static final String PARAM_PURCHASE = "add_purchase_places";
+    private static final String PARAM_STORE = "add_stores";
+    private static final String PARAM_COUNTRIES = "add_countries";
     private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
 
     @BindView(R.id.scrollView)
@@ -152,7 +155,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     TextView otherImageProgressText;
     private String languageCode;
     private Activity activity;
-    private Product mProduct;
+    private OfflineSavedProduct mOfflineSavedProduct;
     private String code;
     private String mImageUrl;
     private boolean frontImage;
@@ -179,11 +182,18 @@ public class AddProductOverviewFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle b = getArguments();
         if (b != null) {
-            mProduct = (Product) b.getSerializable("product");
+            Product product = (Product) b.getSerializable("product");
+            mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             String currentLang = LocaleHelper.getLanguage(activity);
             setProductLanguage(currentLang);
             barcode.setText(R.string.txtBarcode);
-            code = mProduct.getCode();
+            if (product != null) {
+                code = product.getCode();
+            }
+            if (mOfflineSavedProduct != null) {
+                code = mOfflineSavedProduct.getBarcode();
+                preFillValues();
+            }
             barcode.append(" " + code);
             if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
                 otherImage.setVisibility(View.GONE);
@@ -196,6 +206,82 @@ public class AddProductOverviewFragment extends BaseFragment {
                 "Link of the official page of the product" + "</small></small>"));
         initializeChips();
         loadAutoSuggestions();
+    }
+
+    /**
+     * Pre fill the fields if the product is already present in SavedProductOffline db.
+     */
+    private void preFillValues() {
+        HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
+        if (productDetails.get("image_front") != null) {
+            mImageUrl = productDetails.get("image_front");
+            Picasso.with(getContext())
+                    .load("file://" + mImageUrl)
+                    .into(imageFront);
+        }
+        if (productDetails.get(PARAM_LANGUAGE) != null) {
+            setProductLanguage(productDetails.get(PARAM_LANGUAGE));
+        }
+        if (productDetails.get(PARAM_NAME) != null) {
+            name.setText(productDetails.get(PARAM_NAME));
+        }
+        if (productDetails.get(PARAM_QUANTITY) != null) {
+            String qty = productDetails.get(PARAM_QUANTITY);
+            // Splits the quantity into value and unit. Example: "250g" into "250" and "g"
+            String part[] = qty.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+            quantity.setText(part[0]);
+            if (part.length > 1) {
+                // quantity has the unit part
+                for (int i = 0; i < UNIT.length; i++) {
+                    // find index where the UNIT array has the identified unit
+                    if (UNIT[i].equals(part[1])) {
+                        quantityUnit.setSelection(i);
+                    }
+                }
+            }
+        }
+        if (productDetails.get(PARAM_BRAND) != null) {
+            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_BRAND).split("\\s*,\\s*"));
+            brand.setText(chipValues);
+        }
+        if (productDetails.get(PARAM_PACKAGING) != null) {
+            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_PACKAGING).split("\\s*,\\s*"));
+            packaging.setText(chipValues);
+        }
+        if (productDetails.get(PARAM_CATEGORIES) != null) {
+            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_CATEGORIES).split("\\s*,\\s*"));
+            categories.setText(chipValues);
+        }
+        if (productDetails.get(PARAM_LABELS) != null) {
+            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_LABELS).split("\\s*,\\s*"));
+            label.setText(chipValues);
+        }
+        if (productDetails.get(PARAM_ORIGIN) != null) {
+            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_ORIGIN).split("\\s*,\\s*"));
+            originOfIngredients.setText(chipValues);
+        }
+        if (productDetails.get(PARAM_MANUFACTURING_PLACE) != null) {
+            manufacturingPlace.setText(productDetails.get(PARAM_MANUFACTURING_PLACE));
+        }
+        if (productDetails.get(PARAM_EMB_CODE) != null) {
+            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_EMB_CODE).split("\\s*,\\s*"));
+            embCode.setText(chipValues);
+        }
+        if (productDetails.get(PARAM_LINK) != null) {
+            link.setText(productDetails.get(PARAM_LINK));
+        }
+        if (productDetails.get(PARAM_PURCHASE) != null) {
+            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_PURCHASE).split("\\s*,\\s*"));
+            countryWherePurchased.setText(chipValues);
+        }
+        if (productDetails.get(PARAM_STORE) != null) {
+            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_STORE).split("\\s*,\\s*"));
+            stores.setText(chipValues);
+        }
+        if (productDetails.get(PARAM_COUNTRIES) != null) {
+            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_COUNTRIES).split("\\s*,\\s*"));
+            countriesWhereSold.setText(chipValues);
+        }
     }
 
     private void initializeChips() {
@@ -525,8 +611,11 @@ public class AddProductOverviewFragment extends BaseFragment {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .setOutputUri(Utils.getOutputPicUri(getContext())).start(activity.getApplicationContext(), AddProductOverviewFragment.this);
+                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
+                        .setAllowFlipping(false)
+                        .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+                        .setOutputUri(Utils.getOutputPicUri(getContext()))
+                        .start(activity.getApplicationContext(), AddProductOverviewFragment.this);
             }
         });
     }

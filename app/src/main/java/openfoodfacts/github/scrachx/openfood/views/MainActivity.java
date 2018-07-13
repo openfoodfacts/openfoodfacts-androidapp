@@ -83,8 +83,10 @@ import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
@@ -111,22 +113,20 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     boolean isConnected;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    PrimaryDrawerItem primaryDrawerItem;
     private AccountHeader headerResult = null;
     private Drawer result = null;
     private MenuItem searchMenuItem;
-
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
-
     private Uri userAccountUri;
     private Uri contributeUri;
     private Uri discoverUri;
     private Uri userContributeUri;
-    private SendProductDao mSendProductDao;
+    private OfflineSavedProductDao mOfflineSavedProductDao;
     private LabelNameDao labelNameDao;
     private int numberOFSavedProducts;
     private SharedPreferences mSharedPref;
-    PrimaryDrawerItem primaryDrawerItem;
     private int positionOfOfflineBadeItem;
     private String mBarcode;
     private SensorManager mSensorManager;
@@ -162,8 +162,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         Bundle extras = getIntent().getExtras();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        mSendProductDao = Utils.getAppDaoSession(MainActivity.this).getSendProductDao();
-        numberOFSavedProducts = mSendProductDao.loadAll().size();
+        mOfflineSavedProductDao = Utils.getAppDaoSession(MainActivity.this).getOfflineSavedProductDao();
+        numberOFSavedProducts = mOfflineSavedProductDao.loadAll().size();
 
 // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -987,8 +987,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                     image = new ProductImage(temp_barcode, OTHER, new File(selected.getPath()));
                                     api.postImg(MainActivity.this, image);
                                 } else {
-                                    Intent intent = new Intent(MainActivity.this, SaveProductOfflineActivity.class);
-                                    intent.putExtra("barcode", barcode);
+                                    Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
+                                    State st = new State();
+                                    Product pd = new Product();
+                                    pd.setCode(barcode);
+                                    st.setProduct(pd);
+                                    intent.putExtra("state", st);
                                     startActivity(intent);
                                 }
                             } else {

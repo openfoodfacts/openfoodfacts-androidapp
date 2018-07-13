@@ -278,18 +278,9 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 productNotFound.setText(getString(R.string.addProductOffline, lastText));
                                 productNotFound.setVisibility(View.VISIBLE);
                                 fab_status.setVisibility(View.VISIBLE);
-                                fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_add_a_photo));
-                                fab_status.setOnClickListener(v -> {
-                                    Intent intent = new Intent(ContinuousScanActivity.this, SaveProductOfflineActivity.class);
-                                    State st = new State();
-                                    Product pd = new Product();
-                                    pd.setCode(lastText);
-                                    st.setProduct(pd);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putSerializable("state", st);
-                                    intent.putExtras(bundle);
-                                    startActivity(intent);
-                                });
+                                quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
+                                fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.fab_add));
+                                fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
                             }
                         } catch (Exception e1) {
                             Log.i(this.getClass().getSimpleName(), e1.getMessage());
@@ -304,8 +295,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         Product pd = new Product();
         pd.setCode(lastText);
         st.setProduct(pd);
-        //Bundle bundle = new Bundle();
-        //bundle.putSerializable("state", st);
         intent.putExtra("state", st);
         startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
     }
@@ -597,7 +586,16 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            findProduct(lastText, true);
+            boolean uploadedToServer = data.getBooleanExtra("uploadedToServer", true);
+            if (uploadedToServer) {
+                findProduct(lastText, true);
+            } else {
+                // Not uploaded to server, saved locally, open OfflineEdit fragment.
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("openOfflineEdit", true);
+                startActivity(intent);
+                finish();
+            }
         }
     }
 

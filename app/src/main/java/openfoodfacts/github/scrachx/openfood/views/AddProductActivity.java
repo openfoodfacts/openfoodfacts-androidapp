@@ -40,6 +40,8 @@ import openfoodfacts.github.scrachx.openfood.fragments.AddProductIngredientsFrag
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductNutritionFactsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductOverviewFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductPhotosFragment;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -72,7 +74,11 @@ public class AddProductActivity extends AppCompatActivity {
     AddProductPhotosFragment addProductPhotosFragment = new AddProductPhotosFragment();
     private Product mProduct;
     private ToUploadProductDao mToUploadProductDao;
+    private OfflineSavedProductDao mOfflineSavedProductDao;
     private Disposable disposable;
+    private String[] imagesFilePath = new String[3];
+    private OfflineSavedProduct offlineSavedProduct;
+    private Bundle bundle = new Bundle();
 
     public static File getCameraPicLocation(Context context) {
         File cacheDir = context.getCacheDir();
@@ -203,14 +209,26 @@ public class AddProductActivity extends AppCompatActivity {
         if (actionBar != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        mToUploadProductDao = Utils.getAppDaoSession(this).getToUploadProductDao();
+        mOfflineSavedProductDao = Utils.getAppDaoSession(this).getOfflineSavedProductDao();
         final State state = (State) getIntent().getSerializableExtra("state");
+        offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra("edit_offline_product");
         if (state != null) {
             mProduct = state.getProduct();
-        } else {
+            // Search if the barcode already exists in the OfflineSavedProducts db
+            offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(mProduct.getCode())).unique();
+        }
+        if (offlineSavedProduct != null) {
+            bundle.putSerializable("edit_offline_product", offlineSavedProduct);
+            // Save the already existing images in productDetails for UI
+            imagesFilePath[0] = offlineSavedProduct.getProductDetailsMap().get("image_front");
+            imagesFilePath[1] = offlineSavedProduct.getProductDetailsMap().get("image_ingredients");
+            imagesFilePath[2] = offlineSavedProduct.getProductDetailsMap().get("images_nutrition_facts");
+        }
+        if (state == null && offlineSavedProduct == null) {
             Toast.makeText(this, "Something went wrong when adding product", Toast.LENGTH_SHORT).show();
             finish();
         }
-        mToUploadProductDao = Utils.getAppDaoSession(this).getToUploadProductDao();
         setupViewPager(viewPager);
     }
 
@@ -225,7 +243,6 @@ public class AddProductActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
-        Bundle bundle = new Bundle();
         bundle.putSerializable("product", mProduct);
         addProductOverviewFragment.setArguments(bundle);
         addProductIngredientsFragment.setArguments(bundle);
@@ -287,17 +304,28 @@ public class AddProductActivity extends AppCompatActivity {
                         toast.setDuration(Toast.LENGTH_SHORT);
                         toast.show();
                         Intent intent = new Intent();
+                        intent.putExtra("uploadedToServer", true);
                         setResult(RESULT_OK, intent);
                         finish();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Toast.makeText(AddProductActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                        // Add the images to the productDetails to display them in UI later.
+                        productDetails.put("image_front", imagesFilePath[0]);
+                        productDetails.put("image_ingredients", imagesFilePath[1]);
+                        productDetails.put("image_nutrition_facts", imagesFilePath[2]);
+                        OfflineSavedProduct offlineSavedProduct = new OfflineSavedProduct();
+                        offlineSavedProduct.setBarcode(code);
+                        offlineSavedProduct.setProductDetailsMap(productDetails);
+                        mOfflineSavedProductDao.insertOrReplace(offlineSavedProduct);
+                        Toast.makeText(AddProductActivity.this, R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent();
+                        intent.putExtra("uploadedToServer", false);
+                        setResult(RESULT_OK, intent);
                         finish();
                     }
                 });
-
     }
 
     public void proceed() {
@@ -347,14 +375,19 @@ public class AddProductActivity extends AppCompatActivity {
         imgMap.put("code", image.getCode());
         RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), image.getImageField().toString() + '_' + lang);
         imgMap.put("imagefield", imageField);
-        if (image.getImguploadFront() != null)
+        if (image.getImguploadFront() != null) {
+            imagesFilePath[0] = image.getFilePath();
             imgMap.put("imgupload_front\"; filename=\"front_" + lang + ".png\"", image.getImguploadFront());
+        }
         if (image.getImguploadIngredients() != null) {
             imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + lang + ".png\"", image.getImguploadIngredients());
             ocr = true;
+            imagesFilePath[1] = image.getFilePath();
         }
-        if (image.getImguploadNutrition() != null)
+        if (image.getImguploadNutrition() != null) {
             imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + lang + ".png\"", image.getImguploadNutrition());
+            imagesFilePath[2] = image.getFilePath();
+        }
         if (image.getImguploadOther() != null)
             imgMap.put("imgupload_other\"; filename=\"other_" + lang + ".png\"", image.getImguploadOther());
         // Attribute the upload to the connected user

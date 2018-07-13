@@ -37,6 +37,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -46,6 +47,7 @@ import butterknife.OnClick;
 import butterknife.OnItemSelected;
 import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -226,6 +228,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private String code;
     private double starchValue = 0.0;
     private int starchUnit;
+    private OfflineSavedProduct mOfflineSavedProduct;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -246,13 +249,153 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         Bundle b = getArguments();
         if (b != null) {
             Product product = (Product) b.getSerializable("product");
+            mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             if (product != null) {
                 code = product.getCode();
+            }
+            if (mOfflineSavedProduct != null) {
+                code = mOfflineSavedProduct.getBarcode();
+                preFillValues();
             }
         } else {
             Toast.makeText(activity, "Something went wrong while trying to add product nutrition facts", Toast.LENGTH_SHORT).show();
             activity.finish();
         }
+    }
+
+    /**
+     * Pre fill the fields if the product is already present in SavedProductOffline db.
+     */
+    private void preFillValues() {
+        HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
+        if (productDetails.get("image_nutrition_facts") != null) {
+            Picasso.with(getContext())
+                    .load("file://" + productDetails.get("image_nutrition_facts"))
+                    .into(imageNutritionFacts);
+        }
+        if (productDetails.get(PARAM_NO_NUTRITION_DATA) != null) {
+            noNutritionData.setChecked(true);
+            nutritionFactsLayout.setVisibility(View.GONE);
+        }
+        if (productDetails.get(PARAM_NUTRITION_DATA_PER) != null) {
+            String s = productDetails.get(PARAM_NUTRITION_DATA_PER);
+            if (s.equals("100g")) {
+                radioGroup.clearCheck();
+                radioGroup.check(R.id.for100g_100ml);
+            } else {
+                radioGroup.clearCheck();
+                radioGroup.check(R.id.per_serving);
+            }
+        }
+        if (productDetails.get(PARAM_SERVING_SIZE) != null) {
+            String servingSize = productDetails.get(PARAM_SERVING_SIZE);
+            // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
+            String part[] = servingSize.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+            serving_size.setText(part[0]);
+            if (part.length > 1) {
+                // serving size has the unit part
+                for (int i = 0; i < UNIT.length; i++) {
+                    // find index where the UNIT array has the identified unit
+                    if (UNIT[i].equals(part[1])) {
+                        servingSizeUnit.setSelection(i);
+                    }
+                }
+            }
+        }
+        if (productDetails.get(PARAM_ENERGY) != null) {
+            energy.setText(productDetails.get(PARAM_ENERGY));
+        }
+        if (productDetails.get(PARAM_ENERGY_UNIT) != null) {
+            if (productDetails.get(PARAM_ENERGY_UNIT).equals("kcal")) {
+                energyUnit.setSelection(0);
+            } else {
+                energyUnit.setSelection(1);
+            }
+        }
+        if (productDetails.get(PARAM_FAT) != null) {
+            fat.setText(productDetails.get(PARAM_FAT));
+        }
+        if (productDetails.get(PARAM_FAT_UNIT) != null) {
+            fatUnit.setSelection(getPosition(productDetails.get(PARAM_FAT_UNIT)));
+        }
+        if (productDetails.get(PARAM_SATURATED_FAT) != null) {
+            saturatedFat.setText(productDetails.get(PARAM_SATURATED_FAT));
+        }
+        if (productDetails.get(PARAM_SATURATED_FAT_UNIT) != null) {
+            saturatedFatUnit.setSelection(getPosition(productDetails.get(PARAM_SATURATED_FAT_UNIT)));
+        }
+        if (productDetails.get(PARAM_CARBOHYDRATE) != null) {
+            carbohydrate.setText(productDetails.get(PARAM_CARBOHYDRATE));
+        }
+        if (productDetails.get(PARAM_CARBOHYDRATE_UNIT) != null) {
+            carbohydrateUnit.setSelection(getPosition(productDetails.get(PARAM_CARBOHYDRATE_UNIT)));
+        }
+        if (productDetails.get(PARAM_SUGAR) != null) {
+            sugar.setText(productDetails.get(PARAM_SUGAR));
+        }
+        if (productDetails.get(PARAM_SUGAR_UNIT) != null) {
+            sugarUnit.setSelection(getPosition(productDetails.get(PARAM_SUGAR_UNIT)));
+        }
+        if (productDetails.get(PARAM_DIETARY_FIBER) != null) {
+            dietaryFiber.setText(productDetails.get(PARAM_DIETARY_FIBER));
+        }
+        if (productDetails.get(PARAM_DIETARY_FIBER) != null) {
+            dietaryFiberUnit.setSelection(getPosition(productDetails.get(PARAM_DIETARY_FIBER_UNIT)));
+        }
+        if (productDetails.get(PARAM_PROTEINS) != null) {
+            proteins.setText(productDetails.get(PARAM_PROTEINS));
+        }
+        if (productDetails.get(PARAM_PROTEINS_UNIT) != null) {
+            proteinsUnit.setSelection(getPosition(productDetails.get(PARAM_PROTEINS_UNIT)));
+        }
+        if (productDetails.get(PARAM_SODIUM) != null) {
+            sodium.setText(productDetails.get(PARAM_SODIUM));
+        }
+        if (productDetails.get(PARAM_SUGAR_UNIT) != null) {
+            sodiumUnit.setSelection(getPosition(productDetails.get(PARAM_SODIUM_UNIT)));
+        }
+        if (productDetails.get(PARAM_ALCOHOL) != null) {
+            alcohol.setText(productDetails.get(PARAM_ALCOHOL));
+        }
+        //set the values of all the other nutrients if defined and create new row in the tableLayout.
+        for (int i = 0; i < PARAMS_OTHER_NUTRIENTS.length; i++) {
+            String PARAMS_OTHER_NUTRIENT = PARAMS_OTHER_NUTRIENTS[i];
+            if (productDetails.get(PARAMS_OTHER_NUTRIENT) != null) {
+                int position = 0;
+                String value = productDetails.get(PARAMS_OTHER_NUTRIENT);
+                if (productDetails.get(PARAMS_OTHER_NUTRIENT + "_unit") != null) {
+                    position = getPosition(productDetails.get(PARAMS_OTHER_NUTRIENT + "_unit"));
+                }
+                String nutrients[] = getResources().getStringArray(R.array.nutrients_array);
+                addNutrientRow(i, nutrients[i], true, value, position);
+            }
+        }
+    }
+
+    /**
+     * @param unit The unit corresponding to which the index is to be returned.
+     * @return returns the index to be set to the spinner.
+     */
+    private int getPosition(String unit) {
+        int position = 0;
+        switch (unit) {
+            case "g":
+                position = 0;
+                break;
+            case "mg":
+                position = 1;
+                break;
+            case "µg":
+                position = 2;
+                break;
+            case "% DV":
+                position = 3;
+                break;
+            case "IU":
+                position = 4;
+                break;
+        }
+        return position;
     }
 
     @Override
@@ -475,16 +618,24 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                 .title("Choose a nutrient")
                 .items(R.array.nutrients_array)
                 .itemsCallback((dialog, itemView, position, text) -> {
-                    Toast.makeText(activity, String.valueOf(position) + " : " + text, Toast.LENGTH_SHORT).show();
                     if (!index.contains(position)) {
                         index.add(position);
-                        addNutrientRow(position, text);
+                        addNutrientRow(position, text, false, null, 0);
                     }
                 })
                 .show();
     }
 
-    private void addNutrientRow(int position, CharSequence text) {
+    /**
+     * Adds a new row in the tableLayout.
+     *
+     * @param position      The index of the additional nutrient to add in the "PARAM_OTHER_NUTRIENTS" array.
+     * @param text          The hint text to be displayed in the EditText.
+     * @param preFillValues true if the created row needs to be filled by a predefined value.
+     * @param value         This value will be set to the EditText. Required if 'preFillValues' is true.
+     * @param unit_position This spinner will be set to this position. Required if 'preFillValues' is true.
+     */
+    private void addNutrientRow(int position, CharSequence text, boolean preFillValues, String value, int unit_position) {
         TableRow nutrient = new TableRow(activity);
         TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, dpsToPixels(40));
         lp.topMargin = dpsToPixels(10);
@@ -492,12 +643,14 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         editText.setBackgroundResource(R.drawable.bg_edittext);
         editText.setHint(text);
         editText.setId(position);
-        Toast.makeText(activity, PARAMS_OTHER_NUTRIENTS[editText.getId()], Toast.LENGTH_SHORT).show();
         editText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         editText.setPadding(dpsToPixels(10), 0, dpsToPixels(10), 0);
         editText.setGravity(Gravity.CENTER_VERTICAL);
         editText.requestFocus();
         editText.setLayoutParams(lp);
+        if (preFillValues) {
+            editText.setText(value);
+        }
         nutrient.addView(editText);
 
         Spinner spinner = new Spinner(activity);
@@ -509,6 +662,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         spinner.setPadding(dpsToPixels(1), 0, 0, 0);
         lp.setMargins(0, dpsToPixels(10), dpsToPixels(8), 0);
         spinner.setLayoutParams(lp);
+        if (preFillValues) {
+            spinner.setSelection(unit_position);
+        }
         nutrient.addView(spinner);
         if (PARAMS_OTHER_NUTRIENTS[position].equals("nutriment_ph")) {
             spinner.setVisibility(View.INVISIBLE);
@@ -609,8 +765,11 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .setOutputUri(Utils.getOutputPicUri(getContext())).start(activity.getApplicationContext(), AddProductNutritionFactsFragment.this);
+                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
+                        .setAllowFlipping(false)
+                        .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+                        .setOutputUri(Utils.getOutputPicUri(getContext()))
+                        .start(activity.getApplicationContext(), AddProductNutritionFactsFragment.this);
             }
         });
     }

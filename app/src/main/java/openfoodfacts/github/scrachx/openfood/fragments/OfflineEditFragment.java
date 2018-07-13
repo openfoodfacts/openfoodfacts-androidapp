@@ -1,23 +1,22 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,33 +26,39 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
-import java.io.File;
+import org.greenrobot.greendao.async.AsyncSession;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
-import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_OFFLINE;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class OfflineEditFragment extends NavigationBaseFragment implements SaveListAdapter.SaveClickInterface {
 
@@ -70,8 +75,9 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     TextView noDataText;
     private List<SaveItem> saveItems;
     private String loginS, passS;
-    private SendProductDao mSendProductDao;
+    private OfflineSavedProductDao mOfflineSavedProductDao;
     private int size;
+    private Activity activity;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -89,10 +95,8 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mSendProductDao = Utils.getAppDaoSession(getActivity()).getSendProductDao();
-
-        final SharedPreferences settingsLogin = getContext().getSharedPreferences("login", 0);
-        final SharedPreferences settingsUsage = getContext().getSharedPreferences("usage", 0);
+        final SharedPreferences settingsLogin = activity.getBaseContext().getSharedPreferences("login", 0);
+        final SharedPreferences settingsUsage = activity.getBaseContext().getSharedPreferences("usage", 0);
         saveItems = new ArrayList<>();
         loginS = settingsLogin.getString("user", "");
         passS = settingsLogin.getString("pass", "");
@@ -107,7 +111,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     @OnClick(R.id.message_dismiss_icon)
     protected void OnClickMessageDismissalIcon() {
         mCardView.setVisibility(View.GONE);
-        final SharedPreferences settingsUsage = getContext().getSharedPreferences("usage", 0);
+        final SharedPreferences settingsUsage = activity.getBaseContext().getSharedPreferences("usage", 0);
         settingsUsage.edit().putBoolean("is_offline_msg_dismissed", true).apply();
 
     }
@@ -117,10 +121,10 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
      */
     @OnClick(R.id.buttonSendAll)
     protected void onSendAllProducts() {
-        if (!Utils.isAirplaneModeActive(getContext()) && Utils.isNetworkConnected(getContext()) && PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true)) {
+        if (!Utils.isAirplaneModeActive(getContext()) && Utils.isNetworkConnected(activity.getApplicationContext()) && PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true)) {
             uploadProducts();
         } else if (Utils.isAirplaneModeActive(getContext())) {
-            new MaterialDialog.Builder(getActivity())
+            new MaterialDialog.Builder(activity)
                     .title(R.string.airplane_mode_active_dialog_title)
                     .content(R.string.airplane_mode_active_dialog_message)
                     .positiveText(R.string.airplane_mode_active_dialog_positive)
@@ -141,8 +145,8 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         }
                     })
                     .show();
-        } else if (!Utils.isNetworkConnected(getContext())) {
-            new MaterialDialog.Builder(getActivity())
+        } else if (!Utils.isNetworkConnected(activity.getBaseContext())) {
+            new MaterialDialog.Builder(activity)
                     .title(R.string.device_offline_dialog_title)
                     .content(R.string.device_offline_dialog_message)
                     .positiveText(R.string.device_offline_dialog_positive)
@@ -150,16 +154,20 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     .onPositive((dialog, which) -> startActivity(new Intent(Settings.ACTION_SETTINGS)))
                     .show();
         } else if (!PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true) && Utils.isConnectedToMobileData(getContext())) {
-            new MaterialDialog.Builder(getActivity())
+            new MaterialDialog.Builder(activity)
                     .title(R.string.device_on_mobile_data_warning_title)
                     .content(R.string.device_on_mobile_data_warning_message)
                     .positiveText(R.string.device_on_mobile_data_warning_positive)
                     .negativeText(R.string.device_on_mobile_data_warning_negative)
-                    .onPositive((dialog, which) -> ((MainActivity) getActivity()).moveToPreferences())
+                    .onPositive((dialog, which) -> {
+                        if (activity instanceof MainActivity) {
+                            ((MainActivity) activity).moveToPreferences();
+                        }
+                    })
                     .onNegative((dialog, which) -> uploadProducts())
                     .show();
         }
-        SharedPreferences.Editor editor = getContext().getSharedPreferences("usage", 0).edit();
+        SharedPreferences.Editor editor = activity.getBaseContext().getSharedPreferences("usage", 0).edit();
         editor.putBoolean("firstUpload", true);
         editor.apply();
     }
@@ -176,119 +184,115 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     private void uploadProducts() {
         SaveListAdapter.showProgressDialog();
         mRecyclerView.getAdapter().notifyDataSetChanged();
-        OpenFoodAPIClient apiClient = new OpenFoodAPIClient(getActivity());
-        final List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
+        OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
+        final List<OfflineSavedProduct> listSaveProduct = mOfflineSavedProductDao.loadAll();
         size = saveItems.size();
 
-        for (final SendProduct product : listSaveProduct) {
-            if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())) {
+        for (final OfflineSavedProduct product : listSaveProduct) {
+            HashMap<String, String> productDetails = product.getProductDetailsMap();
+            if (isEmpty(product.getBarcode()) || isEmpty(productDetails.get("image_front"))) {
                 continue;
             }
 
             if (!loginS.isEmpty() && !passS.isEmpty()) {
-                product.setUserId(loginS);
-                product.setPassword(passS);
-            }
-
-            if (isNotEmpty(product.getImgupload_ingredients())) {
-                product.compress(ProductImageField.INGREDIENTS);
-            }
-
-            if (isNotEmpty(product.getImgupload_nutrition())) {
-                product.compress(ProductImageField.NUTRITION);
-            }
-
-            if (isNotEmpty(product.getImgupload_front())) {
-                product.compress(ProductImageField.FRONT);
+                productDetails.put("user_id", loginS);
+                productDetails.put("password", passS);
             }
             size--;
 
-            apiClient.post(getActivity(), product, value -> {
-                if (value) {
-                    int productIndex = listSaveProduct.indexOf(product);
+            // Remove the images from the HashMap before uploading the product details
+            productDetails.remove("image_front");
+            productDetails.remove("image_ingredients");
+            productDetails.remove("image_nutrition_facts");
+            client.saveProductSingle(product.getBarcode(), productDetails, "Basic b2ZmOm9mZg==")
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(new SingleObserver<State>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+                        }
 
-                    if (productIndex >= 0 && productIndex < saveItems.size()) {
-                        saveItems.remove(productIndex);
-                    }
-                    updateDrawerBadge();
-                    mRecyclerView.getAdapter().notifyDataSetChanged();
-                    mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(product.getBarcode())).list());
-                }
-            });
+                        @Override
+                        public void onSuccess(State state) {
+                            Iterator<SaveItem> iterator = saveItems.iterator();
+                            while (iterator.hasNext()) {
+                                SaveItem s = iterator.next();
+                                if (s.getBarcode().equals(product.getBarcode())) {
+                                    iterator.remove();
+                                }
+                            }
+                            updateDrawerBadge();
+                            mRecyclerView.getAdapter().notifyDataSetChanged();
+                            mOfflineSavedProductDao.deleteInTx(mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(product.getBarcode())).list());
+                            // Show done when all the products are uploaded.
+                            if (saveItems.isEmpty()) {
+                                SharedPreferences settingsUsage = activity.getBaseContext().getSharedPreferences("usage", 0);
+                                boolean firstUpload = settingsUsage.getBoolean("firstUpload", false);
+                                boolean msgdismissed = settingsUsage.getBoolean("is_offline_msg_dismissed", false);
+                                if (msgdismissed) {
+                                    noDataImage.setVisibility(View.VISIBLE);
+                                    mRecyclerView.setVisibility(View.GONE);
+                                    noDataText.setVisibility(View.VISIBLE);
+                                    noDataText.setText(R.string.no_offline_data);
+                                    buttonSend.setVisibility(View.GONE);
+                                    if (!firstUpload) {
+                                        noDataImage.setImageResource(R.drawable.ic_cloud_upload);
+                                        noDataText.setText(R.string.first_offline);
+                                    }
+                                } else {
+                                    noDataImage.setVisibility(View.INVISIBLE);
+                                    noDataText.setVisibility(View.INVISIBLE);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Log.e(LOG_TAG, e.getMessage());
+                        }
+                    });
         }
-       /* SaveListAdapter.dismissProgressDialog();
-        mRecyclerView.getAdapter().notifyDataSetChanged();*/
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        activity = getActivity();
     }
 
     private void updateDrawerBadge() {
         size--;
-        MainActivity mainActivity = (MainActivity) getActivity();
-        mainActivity.updateBadgeOfflineEditDrawerITem(size);
+        if (activity instanceof MainActivity) {
+            ((MainActivity) activity).updateBadgeOfflineEditDrawerITem(size);
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        new FillAdapter().execute(getActivity());
-
-        try {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.offline_edit_drawer));
-        } catch (NullPointerException e) {
-            e.printStackTrace();
+        fillAdapter();
+        if (activity instanceof AppCompatActivity) {
+            ActionBar actionBar = ((AppCompatActivity) activity).getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setTitle(R.string.offline_edit_drawer);
+            }
         }
     }
 
-    @Override
-    public void onClick(int position) {
-
-        Intent intent = new Intent(getActivity(), SaveProductOfflineActivity.class);
-        SaveItem si = (SaveItem) saveItems.get(position);
-        State st = new State();
-        Product pd = new Product();
-        pd.setCode(si.getBarcode());
-        st.setProduct(pd);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("state", st);
-        intent.putExtras(bundle);
-        intent.putExtra("offlineEdit", true);
-        startActivity(intent);
-    }
-
-    @Override
-    public void onLongClick(int position) {
-
-        final int lapos = position;
-        new MaterialDialog.Builder(getActivity())
-                .title(R.string.txtDialogsTitle)
-                .content(R.string.txtDialogsContentDelete)
-                .positiveText(R.string.txtYes)
-                .negativeText(R.string.txtNo)
-                .onPositive((dialog, which) -> {
-                    String barcode = saveItems.get(lapos).getBarcode();
-                    mSendProductDao.deleteInTx(mSendProductDao.queryBuilder().where(SendProductDao.Properties.Barcode.eq(barcode)).list());
-                    final SaveListAdapter sl = (SaveListAdapter) mRecyclerView.getAdapter();
-                    size = saveItems.size();
-                    saveItems.remove(lapos);
-                    updateDrawerBadge();
-                    getActivity().runOnUiThread(sl::notifyDataSetChanged);
-                })
-                .show();
-
-
-    }
-
-    public class FillAdapter extends AsyncTask<Context, Void, Context> {
-
-        @Override
-        protected void onPreExecute() {
-            saveItems.clear();
-            List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
-            SharedPreferences settingsUsage = getContext().getSharedPreferences("usage", 0);
+    private void fillAdapter() {
+        saveItems.clear();
+        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        AsyncSession asyncSessionOfflineSavedProduct = daoSession.startAsyncSession();
+        mOfflineSavedProductDao = daoSession.getOfflineSavedProductDao();
+        asyncSessionOfflineSavedProduct.loadAll(OfflineSavedProduct.class);
+        asyncSessionOfflineSavedProduct.setListenerMainThread(operation -> {
+            @SuppressWarnings("unchecked")
+            List<OfflineSavedProduct> offlineSavedProducts = (List<OfflineSavedProduct>) operation.getResult();
+            SharedPreferences settingsUsage = activity.getBaseContext().getSharedPreferences("usage", 0);
             boolean firstUpload = settingsUsage.getBoolean("firstUpload", false);
             boolean msgdismissed = settingsUsage.getBoolean("is_offline_msg_dismissed", false);
-            if (listSaveProduct.size() == 0) {
+            if (offlineSavedProducts.size() == 0) {
                 if (msgdismissed) {
-
                     noDataImage.setVisibility(View.VISIBLE);
                     mRecyclerView.setVisibility(View.GONE);
                     noDataText.setVisibility(View.VISIBLE);
@@ -303,51 +307,64 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     noDataText.setVisibility(View.INVISIBLE);
                 }
             } else {
-
                 noDataImage.setVisibility(View.GONE);
                 mRecyclerView.setVisibility(View.VISIBLE);
                 noDataText.setVisibility(View.GONE);
                 buttonSend.setVisibility(View.VISIBLE);
                 mCardView.setVisibility(View.GONE);
             }
-        }
 
-        @Override
-        protected Context doInBackground(Context... ctx) {
-            List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
-
-            int imageIcon = R.drawable.ic_done_green_24dp;
-
-            for (SendProduct product : listSaveProduct) {
-                if (isEmpty(product.getBarcode()) || isEmpty(product.getImgupload_front())
-                        || isEmpty(product.getBrands()) || isEmpty(product.getWeight()) || isEmpty(product.getName())) {
+            for (OfflineSavedProduct product : offlineSavedProducts) {
+                int imageIcon = R.drawable.ic_done_green_24dp;
+                HashMap<String, String> productDetails = product.getProductDetailsMap();
+                if (isEmpty(product.getBarcode()) || isEmpty(productDetails.get("image_front"))
+                        || isEmpty(productDetails.get("add_brands")) || isEmpty(productDetails.get("quantity")) || isEmpty(productDetails.get("product_name"))) {
                     imageIcon = R.drawable.ic_no_red_24dp;
                 }
-                saveItems.add(new SaveItem(product.getName(), imageIcon, product.getImgupload_front(), product.getBarcode(), product.getWeight() + " " + product.getWeight_unit(), product.getBrands()));
+                saveItems.add(new SaveItem(productDetails.get("product_name"), imageIcon, productDetails.get("image_front"), product.getBarcode(), productDetails.get("quantity"), productDetails.get("add_brands")));
             }
-
-            return ctx[0];
-        }
-
-        @Override
-        protected void onPostExecute(Context ctx) {
-            List<SendProduct> listSaveProduct = mSendProductDao.loadAll();
-            if (listSaveProduct.isEmpty()) {
-                return;
-            }
-
-            SaveListAdapter adapter = new SaveListAdapter(ctx, saveItems, OfflineEditFragment.this);
-            mRecyclerView.setAdapter(adapter);
-
-            boolean canSend = true;
-            for (SendProduct sp : listSaveProduct) {
-                if (isEmpty(sp.getBarcode()) || isEmpty(sp.getImgupload_front())) {
-                    canSend = false;
-                    break;
+            if (!offlineSavedProducts.isEmpty()) {
+                SaveListAdapter adapter = new SaveListAdapter(activity.getBaseContext(), saveItems, OfflineEditFragment.this);
+                mRecyclerView.setAdapter(adapter);
+                boolean canSend = true;
+                for (OfflineSavedProduct sp : offlineSavedProducts) {
+                    HashMap<String, String> productDetails = sp.getProductDetailsMap();
+                    if (isEmpty(sp.getBarcode()) || isEmpty(productDetails.get("image_front"))) {
+                        canSend = false;
+                        break;
+                    }
                 }
+                buttonSend.setEnabled(canSend);
             }
+        });
+    }
 
-            buttonSend.setEnabled(canSend);
-        }
+    @Override
+    public void onClick(int position) {
+        Intent intent = new Intent(getActivity(), AddProductActivity.class);
+        SaveItem si = saveItems.get(position);
+        OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(si.getBarcode())).unique();
+        intent.putExtra("edit_offline_product", offlineSavedProduct);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onLongClick(int position) {
+        final int lapos = position;
+        new MaterialDialog.Builder(activity)
+                .title(R.string.txtDialogsTitle)
+                .content(R.string.txtDialogsContentDelete)
+                .positiveText(R.string.txtYes)
+                .negativeText(R.string.txtNo)
+                .onPositive((dialog, which) -> {
+                    String barcode = saveItems.get(lapos).getBarcode();
+                    mOfflineSavedProductDao.deleteInTx(mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(barcode)).list());
+                    final SaveListAdapter sl = (SaveListAdapter) mRecyclerView.getAdapter();
+                    size = saveItems.size();
+                    saveItems.remove(lapos);
+                    updateDrawerBadge();
+                    activity.runOnUiThread(sl::notifyDataSetChanged);
+                })
+                .show();
     }
 }

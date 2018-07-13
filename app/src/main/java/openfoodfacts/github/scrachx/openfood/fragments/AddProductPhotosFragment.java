@@ -30,6 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -77,8 +78,13 @@ public class AddProductPhotosFragment extends BaseFragment {
         Bundle b = getArguments();
         if (b != null) {
             Product product = (Product) b.getSerializable("product");
+            OfflineSavedProduct offlineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
+
             if (product != null) {
                 code = product.getCode();
+            }
+            if (offlineSavedProduct != null) {
+                code = offlineSavedProduct.getBarcode();
             }
         } else {
             Toast.makeText(activity, "Something went wrong while trying to add product photos", Toast.LENGTH_SHORT).show();
@@ -139,8 +145,11 @@ public class AddProductPhotosFragment extends BaseFragment {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .setOutputUri(Utils.getOutputPicUri(getContext())).start(activity.getApplicationContext(), AddProductPhotosFragment.this);
+                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
+                        .setAllowFlipping(false)
+                        .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+                        .setOutputUri(Utils.getOutputPicUri(getContext()))
+                        .start(activity.getApplicationContext(), AddProductPhotosFragment.this);
             }
         });
     }

@@ -91,6 +91,9 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
 
                 break;
             }
+            case 8:
+                OfflineSavedProductDao.createTable(db, true);
+                break;
         }
     }
 

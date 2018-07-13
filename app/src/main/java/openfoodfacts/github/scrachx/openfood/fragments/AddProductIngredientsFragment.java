@@ -31,6 +31,8 @@ import org.greenrobot.greendao.async.AsyncSession;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -40,6 +42,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -58,7 +61,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 public class AddProductIngredientsFragment extends BaseFragment {
 
     private static final String PARAM_INGREDIENTS = "ingredients_text";
-    private static final String PARAM_TRACES = "traces";
+    private static final String PARAM_TRACES = "add_traces";
     @BindView(R.id.btnAddImageIngredients)
     ImageView imageIngredients;
     @BindView(R.id.imageProgress)
@@ -83,6 +86,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     private File photoFile;
     private String code;
     private List<String> allergens = new ArrayList<>();
+    private OfflineSavedProduct mOfflineSavedProduct;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -103,14 +107,38 @@ public class AddProductIngredientsFragment extends BaseFragment {
         Bundle b = getArguments();
         if (b != null) {
             Product product = (Product) b.getSerializable("product");
+            mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             if (product != null) {
                 code = product.getCode();
+            }
+            if (mOfflineSavedProduct != null) {
+                code = mOfflineSavedProduct.getBarcode();
+                preFillValues();
             }
         } else {
             Toast.makeText(activity, "Something went wrong while trying to add product ingredients", Toast.LENGTH_SHORT).show();
             activity.finish();
         }
         loadAutoSuggestions();
+    }
+
+    /**
+     * Pre fill the fields if the product is already present in SavedProductOffline db.
+     */
+    private void preFillValues() {
+        HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
+        if (productDetails.get("image_ingredients") != null) {
+            Picasso.with(getContext())
+                    .load("file://" + productDetails.get("image_ingredients"))
+                    .into(imageIngredients);
+        }
+        if (productDetails.get(PARAM_INGREDIENTS) != null) {
+            ingredients.setText(productDetails.get(PARAM_INGREDIENTS));
+        }
+        if (productDetails.get(PARAM_TRACES) != null) {
+            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_TRACES).split("\\s*,\\s*"));
+            traces.setText(chipValues);
+        }
     }
 
     public void loadAutoSuggestions() {
@@ -223,8 +251,11 @@ public class AddProductIngredientsFragment extends BaseFragment {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
-                        .setOutputUri(Utils.getOutputPicUri(getContext())).start(activity.getApplicationContext(), AddProductIngredientsFragment.this);
+                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
+                        .setAllowFlipping(false)
+                        .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+                        .setOutputUri(Utils.getOutputPicUri(getContext()))
+                        .start(activity.getApplicationContext(), AddProductIngredientsFragment.this);
             }
         });
     }
