@@ -221,7 +221,9 @@ public class ProductPhotosFragment extends BaseFragment {
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false)
+                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
+                        .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+                        .setAllowFlipping(false)
                         .start(getContext(), mFragment);
             }
 
