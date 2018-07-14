@@ -18,4 +18,295 @@
         android:title="@string/calculate_calories"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/fat"
+        android:title="@string/calculate_fat"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/carbohydrate"
+        android:title="@string/calculate_carbohydrate"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/cholesterol"
+        android:title="@string/calculate_cholesterol"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/df"
+        android:title="@string/calculate_fiber"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/protein"
+        android:title="@string/calculate_protein"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/salt"
+        android:title="@string/calculate_salt"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/satfat"
+        android:title="@string/calculate_satfat"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sodium"
+        android:title="@string/calculate_sodium"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sugar"
+        android:title="@string/calculate_sugar"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/transfat"
+        android:title="@string/calculate_trans_fat"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/lactose"
+        android:title="@string/calculate_lactose"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/casein"
+        android:title="@string/calculate_casein"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/maltodextrins"
+        android:title="@string/calculate_maltodextrins"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sp"
+        android:title="@string/calculate_serum_proteins"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/nucleotides"
+        android:title="@string/calculate_nucleotides"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/calcium"
+        android:title="@string/calculate_calcium"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/potassium"
+        android:title="@string/calculate_potassium"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/chlorine"
+        android:title="@string/calculate_chlorine"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/magnesium"
+        android:title="@string/calculate_magnesium"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/taurine"
+        android:title="@string/calculate_taurine"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/muf"
+        android:title="@string/calculate_muf"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/puf"
+        android:title="@string/calculate_puf"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/omega3"
+        android:title="@string/calculate_omega3"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/omega6"
+        android:title="@string/calculate_omega6"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/omega9"
+        android:title="@string/calculate_omega9"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sucrose"
+        android:title="@string/calculate_sucrose"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/glucose"
+        android:title="@string/calculate_glucose"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/fructose"
+        android:title="@string/calculate_fructose"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/maltose"
+        android:title="@string/calculate_maltose"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/alcohol"
+        android:title="@string/calculate_alcohol"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/vitA"
+        android:title="@string/calculate_vitamin_a"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/vitD"
+        android:title="@string/calculate_vitamin_d"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/vitE"
+        android:title="@string/calculate_vitamin_e"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/vitK"
+        android:title="@string/calculate_vitamin_k"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/vitC"
+        android:title="@string/calculate_vitamin_c"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/vitB1"
+        android:title="@string/calculate_vitamin_b1"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/vitB2"
+        android:title="@string/calculate_vitamin_b2"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/vitPP"
+        android:title="@string/calculate_vitamin_pp"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/vitB6"
+        android:title="@string/calculate_vitamin_b6"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/vitB9"
+        android:title="@string/calculate_vitamin_b9"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/vitB12"
+        android:title="@string/calculate_vitamin_b12"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/biotin"
+        android:title="@string/calculate_biotin"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/pa"
+        android:title="@string/calculate_pa"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/silica"
+        android:title="@string/calculate_silica"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/bicarb"
+        android:title="@string/calculate_bicarbonate"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/phos"
+        android:title="@string/calculate_phosphorus"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/zinc"
+        android:title="@string/calculate_zinc"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/iron"
+        android:title="@string/calculate_iron"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/copper"
+        android:title="@string/calculate_copper"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/manganese"
+        android:title="@string/calculate_manganese"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/fluoride"
+        android:title="@string/calculate_fluoride"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/selenium"
+        android:title="@string/calculate_selenium"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/chromium"
+        android:title="@string/calculate_chromium"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/molybdenum"
+        android:title="@string/calculate_molybdenum"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/iodine"
+        android:title="@string/calculate_iodine"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/caffeine"
+        android:title="@string/calculate_caffeine"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/cocoa"
+        android:title="@string/calculate_cocoa"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/chlorophyl"
+        android:title="@string/calculate_chlorophyl"
+        app:showAsAction="never" />
+
 </menu>
+
