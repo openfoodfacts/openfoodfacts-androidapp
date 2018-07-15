@@ -493,25 +493,15 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                 Collections.sort(productItems, new Comparator<HistoryItem>() {
                     @Override
                     public int compare(HistoryItem historyItem, HistoryItem t1) {
-                        int y;
                         if(TextUtils.isEmpty(historyItem.getTitle()))
                         {
-                            historyItem.setTitle(getResources().getString(R.string.zzzzz));
+                            historyItem.setTitle(getResources().getString(R.string.no_title));
                         }
                         if(TextUtils.isEmpty(t1.getTitle()))
                         {
-                            t1.setTitle(getResources().getString(R.string.zzzz));
+                            t1.setTitle(getResources().getString(R.string.no_title));
                         }
-                        y = historyItem.getTitle().compareToIgnoreCase(t1.getTitle());
-                        if(historyItem.getTitle().equals(getResources().getString(R.string.zzzzz)))
-                        {
-                            historyItem.setTitle("");
-                        }
-                        if(t1.getTitle().equals(getResources().getString(R.string.zzzz)))
-                        {
-                            t1.setTitle("");
-                        }
-                        return y;
+                        return historyItem.getTitle().compareToIgnoreCase(t1.getTitle());
                     }
                 });
 
@@ -523,26 +513,15 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                 Collections.sort(productItems, new Comparator<HistoryItem>() {
                     @Override
                     public int compare(HistoryItem historyItem, HistoryItem t1) {
-
-                        int x;
                         if(TextUtils.isEmpty(historyItem.getBrands()))
                         {
-                            historyItem.setBrands(getResources().getString(R.string.zzzzz));
+                            historyItem.setBrands(getResources().getString(R.string.no_brand));
                         }
                         if(TextUtils.isEmpty(t1.getBrands()))
                         {
-                            t1.setBrands(getResources().getString(R.string.zzzz));
+                            t1.setBrands(getResources().getString(R.string.no_brand));
                         }
-                        x = historyItem.getBrands().compareToIgnoreCase(t1.getBrands());
-                        if(historyItem.getBrands().equals(getResources().getString(R.string.zzzzz)))
-                        {
-                            historyItem.setBrands("");
-                        }
-                        if(t1.getBrands().equals(getResources().getString(R.string.zzzz)))
-                        {
-                            t1.setBrands("");
-                        }
-                        return x;
+                        return historyItem.getBrands().compareToIgnoreCase(t1.getBrands());
                     }
                 });
 
