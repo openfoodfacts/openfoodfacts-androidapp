@@ -31,7 +31,7 @@
   <string name="contribute">Как принять участие</string>
   <string name="action_find">Найти</string>
   <string name="text_barcode">Введите штрихкод:</string>
-  <string name="message_in_activity_save_product_offline">Только одна фотография необходима для отправки нового продукта.</string>
+  <string name="message_in_activity_save_product_offline">Для отправки продукта обязательна только одна фотография.</string>
   <string name="product_incomplete_message">Этот продукт не является полным. В результате мы не смогли выполнить проверку аллергена.</string>
   <string name="no_offline_data">Вы закончили</string>
   <string name="first_offline">Продукты, добавленные в автономном режиме, появятся здесь</string>
