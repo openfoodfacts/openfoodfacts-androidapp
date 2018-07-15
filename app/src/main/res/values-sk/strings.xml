@@ -34,7 +34,7 @@
   <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
   <string name="product_incomplete_message">Tento produkt nie je kompletný. následkom bolo, že sme nemohli urobiť kontrolu alergénov.</string>
   <string name="no_offline_data">Ste hotový</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="first_offline">Produkty, ktoré boli pridané offline sa objavia tu</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
