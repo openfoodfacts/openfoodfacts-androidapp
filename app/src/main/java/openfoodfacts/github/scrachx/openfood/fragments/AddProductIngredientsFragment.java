@@ -70,6 +70,8 @@ public class AddProductIngredientsFragment extends BaseFragment {
     TextView imageProgressText;
     @BindView(R.id.ingredients_list)
     EditText ingredients;
+    @BindView(R.id.btn_extract_ingredients)
+    Button extractIngredients;
     @BindView(R.id.ocr_progress)
     ProgressBar ocrProgress;
     @BindView(R.id.ocr_progress_text)
@@ -87,6 +89,8 @@ public class AddProductIngredientsFragment extends BaseFragment {
     private String code;
     private List<String> allergens = new ArrayList<>();
     private OfflineSavedProduct mOfflineSavedProduct;
+    private HashMap<String, String> productDetails = new HashMap<>();
+    private String imagePath;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -119,6 +123,10 @@ public class AddProductIngredientsFragment extends BaseFragment {
             Toast.makeText(activity, "Something went wrong while trying to add product ingredients", Toast.LENGTH_SHORT).show();
             activity.finish();
         }
+        if (ingredients.getText().toString().isEmpty() && productDetails.get("image_ingredients") != null && !productDetails.get("image_ingredients").isEmpty()) {
+            extractIngredients.setVisibility(View.VISIBLE);
+            imagePath = productDetails.get("image_ingredients");
+        }
         loadAutoSuggestions();
     }
 
@@ -126,18 +134,20 @@ public class AddProductIngredientsFragment extends BaseFragment {
      * Pre fill the fields if the product is already present in SavedProductOffline db.
      */
     private void preFillValues() {
-        HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
-        if (productDetails.get("image_ingredients") != null) {
-            Picasso.with(getContext())
-                    .load("file://" + productDetails.get("image_ingredients"))
-                    .into(imageIngredients);
-        }
-        if (productDetails.get(PARAM_INGREDIENTS) != null) {
-            ingredients.setText(productDetails.get(PARAM_INGREDIENTS));
-        }
-        if (productDetails.get(PARAM_TRACES) != null) {
-            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_TRACES).split("\\s*,\\s*"));
-            traces.setText(chipValues);
+        productDetails = mOfflineSavedProduct.getProductDetailsMap();
+        if (productDetails != null) {
+            if (productDetails.get("image_ingredients") != null) {
+                Picasso.with(getContext())
+                        .load("file://" + productDetails.get("image_ingredients"))
+                        .into(imageIngredients);
+            }
+            if (productDetails.get(PARAM_INGREDIENTS) != null) {
+                ingredients.setText(productDetails.get(PARAM_INGREDIENTS));
+            }
+            if (productDetails.get(PARAM_TRACES) != null) {
+                List<String> chipValues = Arrays.asList(productDetails.get(PARAM_TRACES).split("\\s*,\\s*"));
+                traces.setText(chipValues);
+            }
         }
     }
 
@@ -213,6 +223,18 @@ public class AddProductIngredientsFragment extends BaseFragment {
         btnLooksGood.setVisibility(View.GONE);
     }
 
+    @OnClick(R.id.btn_extract_ingredients)
+    void extractIngredients() {
+        if (activity instanceof AddProductActivity) {
+            if (imagePath != null) {
+                photoFile = new File(imagePath);
+                ProductImage image = new ProductImage(code, INGREDIENTS, photoFile);
+                image.setFilePath(imagePath);
+                ((AddProductActivity) activity).addToPhotoMap(image, 1);
+            }
+        }
+    }
+
     public void getDetails() {
         if (activity instanceof AddProductActivity) {
             if (!ingredients.getText().toString().isEmpty()) {
@@ -233,6 +255,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
+                imagePath = resultUri.getPath();
                 photoFile = new File((resultUri.getPath()));
                 ProductImage image = new ProductImage(code, INGREDIENTS, photoFile);
                 image.setFilePath(resultUri.getPath());
@@ -275,7 +298,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
             Picasso.with(activity)
                     .load(photoFile)
                     .into(imageIngredients);
-            imageProgressText.setText("Image uploaded successfully");
+            imageProgressText.setText(message);
             imageProgressText.setVisibility(View.VISIBLE);
         } else {
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
@@ -294,6 +317,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     }
 
     public void showOCRProgress() {
+        extractIngredients.setVisibility(View.GONE);
         ingredients.setText(null);
         ocrProgress.setVisibility(View.VISIBLE);
         ocrProgressText.setVisibility(View.VISIBLE);

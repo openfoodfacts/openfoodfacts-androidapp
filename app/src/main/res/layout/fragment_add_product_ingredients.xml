@@ -59,12 +59,13 @@
 
         <TextView
             android:id="@+id/imageProgressText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_small"
             android:text="@string/toastSending"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/imageProgress"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/imageProgress"
             app:layout_constraintTop_toTopOf="@id/imageProgress"
             tools:visibility="visible" />
@@ -118,6 +119,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/hint_ingredients_list" />
+
+        <Button
+            android:id="@+id/btn_extract_ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Extract ingredients"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
+            app:layout_constraintEnd_toEndOf="@id/ingredients_list"
+            app:layout_constraintStart_toStartOf="@id/ingredients_list"
+            app:layout_constraintTop_toBottomOf="@id/traces"
+            app:layout_constraintTop_toTopOf="@id/ingredients_list"
+            tools:visibility="visible" />
 
         <ImageView
             android:id="@+id/ingredients_list_verified"

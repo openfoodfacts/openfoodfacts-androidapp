@@ -79,6 +79,7 @@ public class AddProductActivity extends AppCompatActivity {
     private String[] imagesFilePath = new String[3];
     private OfflineSavedProduct offlineSavedProduct;
     private Bundle bundle = new Bundle();
+    private MaterialDialog dialog;
 
     public static File getCameraPicLocation(Context context) {
         File cacheDir = context.getCacheDir();
@@ -175,25 +176,33 @@ public class AddProductActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        new MaterialDialog.Builder(this)
-                .content("Discard product addition?")
-                .positiveText(R.string.txtPictureNeededDialogNo)
-                .negativeText(R.string.cancel_button)
-                .onPositive((dialog, which) -> super.onBackPressed())
-                .onNegative((dialog, which) -> dialog.dismiss())
-                .show();
+        if (offlineSavedProduct != null) {
+            saveProduct();
+        } else {
+            new MaterialDialog.Builder(this)
+                    .content("Discard product addition?")
+                    .positiveText(R.string.txtPictureNeededDialogNo)
+                    .negativeText(R.string.cancel_button)
+                    .onPositive((dialog, which) -> super.onBackPressed())
+                    .onNegative((dialog, which) -> dialog.dismiss())
+                    .show();
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            new MaterialDialog.Builder(this)
-                    .content("Discard product addition?")
-                    .positiveText(R.string.txtPictureNeededDialogNo)
-                    .negativeText(R.string.cancel_button)
-                    .onPositive((dialog, which) -> finish())
-                    .onNegative((dialog, which) -> dialog.dismiss())
-                    .show();
+            if (offlineSavedProduct != null) {
+                saveProduct();
+            } else {
+                new MaterialDialog.Builder(this)
+                        .content("Discard product addition?")
+                        .positiveText(R.string.txtPictureNeededDialogNo)
+                        .negativeText(R.string.cancel_button)
+                        .onPositive((dialog, which) -> finish())
+                        .onNegative((dialog, which) -> dialog.dismiss())
+                        .show();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -235,6 +244,9 @@ public class AddProductActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+        }
         if (disposable != null && !disposable.isDisposed()) {
             disposable.dispose();
         }
@@ -286,11 +298,12 @@ public class AddProductActivity extends AppCompatActivity {
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposable = d;
-                        new MaterialDialog.Builder(AddProductActivity.this)
+                        MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
                                 .title(R.string.toastSending)
                                 .content("Please wait")
-                                .progress(true, 0)
-                                .show();
+                                .progress(true, 0);
+                        dialog = builder.build();
+                        dialog.show();
                     }
 
                     @Override
@@ -303,6 +316,7 @@ public class AddProductActivity extends AppCompatActivity {
                         view.setBackgroundColor(getResources().getColor(R.color.green_500));
                         toast.setDuration(Toast.LENGTH_SHORT);
                         toast.show();
+                        mOfflineSavedProductDao.deleteInTx(mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(code)).list());
                         Intent intent = new Intent();
                         intent.putExtra("uploadedToServer", true);
                         setResult(RESULT_OK, intent);
@@ -418,7 +432,7 @@ public class AddProductActivity extends AppCompatActivity {
                             String error = jsonNode.get("error").asText();
                             hideImageProgress(position, true, error);
                         } else {
-                            hideImageProgress(position, false, null);
+                            hideImageProgress(position, false, "Image uploaded successfully");
                             String imagefield = jsonNode.get("imagefield").asText();
                             String imgid = jsonNode.get("image").get("imgid").asText();
                             if (position != 3 && position != 4) {
@@ -432,7 +446,7 @@ public class AddProductActivity extends AppCompatActivity {
                     public void onError(Throwable e) {
                         // A network error happened
                         if (e instanceof IOException) {
-                            hideImageProgress(position, true, "You seem offline, images will be uploaded when network is available");
+                            hideImageProgress(position, false, "You appear to have no internet connection, images will be uploaded when network is available");
                             Log.e(AddProductActivity.class.getSimpleName(), e.getMessage());
                             ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                             mToUploadProductDao.insertOrReplace(product);

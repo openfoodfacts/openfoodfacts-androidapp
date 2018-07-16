@@ -918,7 +918,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 decodeHints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
                 decodeHints.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
                 Result result = reader.decode(bitmap, decodeHints);
-                mBarcode = result.getText().toString();
+                if (result != null) {
+                    mBarcode = result.getText();
+                }
                 if (mBarcode != null) {
                     return true;
                 }
@@ -990,7 +992,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                     Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
                                     State st = new State();
                                     Product pd = new Product();
-                                    pd.setCode(barcode);
+                                    pd.setCode(temp_barcode);
                                     st.setProduct(pd);
                                     intent.putExtra("state", st);
                                     startActivity(intent);

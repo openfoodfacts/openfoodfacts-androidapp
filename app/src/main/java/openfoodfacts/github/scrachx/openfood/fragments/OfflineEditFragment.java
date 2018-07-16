@@ -14,6 +14,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -106,6 +107,9 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         }
         buttonSend.setEnabled(false);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
+                DividerItemDecoration.VERTICAL);
+        mRecyclerView.addItemDecoration(dividerItemDecoration);
     }
 
     @OnClick(R.id.message_dismiss_icon)

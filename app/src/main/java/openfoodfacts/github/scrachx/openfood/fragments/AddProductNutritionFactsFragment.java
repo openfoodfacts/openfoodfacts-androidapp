@@ -268,106 +268,108 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
      */
     private void preFillValues() {
         HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
-        if (productDetails.get("image_nutrition_facts") != null) {
-            Picasso.with(getContext())
-                    .load("file://" + productDetails.get("image_nutrition_facts"))
-                    .into(imageNutritionFacts);
-        }
-        if (productDetails.get(PARAM_NO_NUTRITION_DATA) != null) {
-            noNutritionData.setChecked(true);
-            nutritionFactsLayout.setVisibility(View.GONE);
-        }
-        if (productDetails.get(PARAM_NUTRITION_DATA_PER) != null) {
-            String s = productDetails.get(PARAM_NUTRITION_DATA_PER);
-            if (s.equals("100g")) {
-                radioGroup.clearCheck();
-                radioGroup.check(R.id.for100g_100ml);
-            } else {
-                radioGroup.clearCheck();
-                radioGroup.check(R.id.per_serving);
+        if (productDetails != null) {
+            if (productDetails.get("image_nutrition_facts") != null) {
+                Picasso.with(getContext())
+                        .load("file://" + productDetails.get("image_nutrition_facts"))
+                        .into(imageNutritionFacts);
             }
-        }
-        if (productDetails.get(PARAM_SERVING_SIZE) != null) {
-            String servingSize = productDetails.get(PARAM_SERVING_SIZE);
-            // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
-            String part[] = servingSize.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
-            serving_size.setText(part[0]);
-            if (part.length > 1) {
-                // serving size has the unit part
-                for (int i = 0; i < UNIT.length; i++) {
-                    // find index where the UNIT array has the identified unit
-                    if (UNIT[i].equals(part[1])) {
-                        servingSizeUnit.setSelection(i);
+            if (productDetails.get(PARAM_NO_NUTRITION_DATA) != null) {
+                noNutritionData.setChecked(true);
+                nutritionFactsLayout.setVisibility(View.GONE);
+            }
+            if (productDetails.get(PARAM_NUTRITION_DATA_PER) != null) {
+                String s = productDetails.get(PARAM_NUTRITION_DATA_PER);
+                if (s.equals("100g")) {
+                    radioGroup.clearCheck();
+                    radioGroup.check(R.id.for100g_100ml);
+                } else {
+                    radioGroup.clearCheck();
+                    radioGroup.check(R.id.per_serving);
+                }
+            }
+            if (productDetails.get(PARAM_SERVING_SIZE) != null) {
+                String servingSize = productDetails.get(PARAM_SERVING_SIZE);
+                // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
+                String part[] = servingSize.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+                serving_size.setText(part[0]);
+                if (part.length > 1) {
+                    // serving size has the unit part
+                    for (int i = 0; i < UNIT.length; i++) {
+                        // find index where the UNIT array has the identified unit
+                        if (UNIT[i].equals(part[1])) {
+                            servingSizeUnit.setSelection(i);
+                        }
                     }
                 }
             }
-        }
-        if (productDetails.get(PARAM_ENERGY) != null) {
-            energy.setText(productDetails.get(PARAM_ENERGY));
-        }
-        if (productDetails.get(PARAM_ENERGY_UNIT) != null) {
-            if (productDetails.get(PARAM_ENERGY_UNIT).equals("kcal")) {
-                energyUnit.setSelection(0);
-            } else {
-                energyUnit.setSelection(1);
+            if (productDetails.get(PARAM_ENERGY) != null) {
+                energy.setText(productDetails.get(PARAM_ENERGY));
             }
-        }
-        if (productDetails.get(PARAM_FAT) != null) {
-            fat.setText(productDetails.get(PARAM_FAT));
-        }
-        if (productDetails.get(PARAM_FAT_UNIT) != null) {
-            fatUnit.setSelection(getPosition(productDetails.get(PARAM_FAT_UNIT)));
-        }
-        if (productDetails.get(PARAM_SATURATED_FAT) != null) {
-            saturatedFat.setText(productDetails.get(PARAM_SATURATED_FAT));
-        }
-        if (productDetails.get(PARAM_SATURATED_FAT_UNIT) != null) {
-            saturatedFatUnit.setSelection(getPosition(productDetails.get(PARAM_SATURATED_FAT_UNIT)));
-        }
-        if (productDetails.get(PARAM_CARBOHYDRATE) != null) {
-            carbohydrate.setText(productDetails.get(PARAM_CARBOHYDRATE));
-        }
-        if (productDetails.get(PARAM_CARBOHYDRATE_UNIT) != null) {
-            carbohydrateUnit.setSelection(getPosition(productDetails.get(PARAM_CARBOHYDRATE_UNIT)));
-        }
-        if (productDetails.get(PARAM_SUGAR) != null) {
-            sugar.setText(productDetails.get(PARAM_SUGAR));
-        }
-        if (productDetails.get(PARAM_SUGAR_UNIT) != null) {
-            sugarUnit.setSelection(getPosition(productDetails.get(PARAM_SUGAR_UNIT)));
-        }
-        if (productDetails.get(PARAM_DIETARY_FIBER) != null) {
-            dietaryFiber.setText(productDetails.get(PARAM_DIETARY_FIBER));
-        }
-        if (productDetails.get(PARAM_DIETARY_FIBER) != null) {
-            dietaryFiberUnit.setSelection(getPosition(productDetails.get(PARAM_DIETARY_FIBER_UNIT)));
-        }
-        if (productDetails.get(PARAM_PROTEINS) != null) {
-            proteins.setText(productDetails.get(PARAM_PROTEINS));
-        }
-        if (productDetails.get(PARAM_PROTEINS_UNIT) != null) {
-            proteinsUnit.setSelection(getPosition(productDetails.get(PARAM_PROTEINS_UNIT)));
-        }
-        if (productDetails.get(PARAM_SODIUM) != null) {
-            sodium.setText(productDetails.get(PARAM_SODIUM));
-        }
-        if (productDetails.get(PARAM_SUGAR_UNIT) != null) {
-            sodiumUnit.setSelection(getPosition(productDetails.get(PARAM_SODIUM_UNIT)));
-        }
-        if (productDetails.get(PARAM_ALCOHOL) != null) {
-            alcohol.setText(productDetails.get(PARAM_ALCOHOL));
-        }
-        //set the values of all the other nutrients if defined and create new row in the tableLayout.
-        for (int i = 0; i < PARAMS_OTHER_NUTRIENTS.length; i++) {
-            String PARAMS_OTHER_NUTRIENT = PARAMS_OTHER_NUTRIENTS[i];
-            if (productDetails.get(PARAMS_OTHER_NUTRIENT) != null) {
-                int position = 0;
-                String value = productDetails.get(PARAMS_OTHER_NUTRIENT);
-                if (productDetails.get(PARAMS_OTHER_NUTRIENT + "_unit") != null) {
-                    position = getPosition(productDetails.get(PARAMS_OTHER_NUTRIENT + "_unit"));
+            if (productDetails.get(PARAM_ENERGY_UNIT) != null) {
+                if (productDetails.get(PARAM_ENERGY_UNIT).equals("kcal")) {
+                    energyUnit.setSelection(0);
+                } else {
+                    energyUnit.setSelection(1);
                 }
-                String nutrients[] = getResources().getStringArray(R.array.nutrients_array);
-                addNutrientRow(i, nutrients[i], true, value, position);
+            }
+            if (productDetails.get(PARAM_FAT) != null) {
+                fat.setText(productDetails.get(PARAM_FAT));
+            }
+            if (productDetails.get(PARAM_FAT_UNIT) != null) {
+                fatUnit.setSelection(getPosition(productDetails.get(PARAM_FAT_UNIT)));
+            }
+            if (productDetails.get(PARAM_SATURATED_FAT) != null) {
+                saturatedFat.setText(productDetails.get(PARAM_SATURATED_FAT));
+            }
+            if (productDetails.get(PARAM_SATURATED_FAT_UNIT) != null) {
+                saturatedFatUnit.setSelection(getPosition(productDetails.get(PARAM_SATURATED_FAT_UNIT)));
+            }
+            if (productDetails.get(PARAM_CARBOHYDRATE) != null) {
+                carbohydrate.setText(productDetails.get(PARAM_CARBOHYDRATE));
+            }
+            if (productDetails.get(PARAM_CARBOHYDRATE_UNIT) != null) {
+                carbohydrateUnit.setSelection(getPosition(productDetails.get(PARAM_CARBOHYDRATE_UNIT)));
+            }
+            if (productDetails.get(PARAM_SUGAR) != null) {
+                sugar.setText(productDetails.get(PARAM_SUGAR));
+            }
+            if (productDetails.get(PARAM_SUGAR_UNIT) != null) {
+                sugarUnit.setSelection(getPosition(productDetails.get(PARAM_SUGAR_UNIT)));
+            }
+            if (productDetails.get(PARAM_DIETARY_FIBER) != null) {
+                dietaryFiber.setText(productDetails.get(PARAM_DIETARY_FIBER));
+            }
+            if (productDetails.get(PARAM_DIETARY_FIBER) != null) {
+                dietaryFiberUnit.setSelection(getPosition(productDetails.get(PARAM_DIETARY_FIBER_UNIT)));
+            }
+            if (productDetails.get(PARAM_PROTEINS) != null) {
+                proteins.setText(productDetails.get(PARAM_PROTEINS));
+            }
+            if (productDetails.get(PARAM_PROTEINS_UNIT) != null) {
+                proteinsUnit.setSelection(getPosition(productDetails.get(PARAM_PROTEINS_UNIT)));
+            }
+            if (productDetails.get(PARAM_SODIUM) != null) {
+                sodium.setText(productDetails.get(PARAM_SODIUM));
+            }
+            if (productDetails.get(PARAM_SUGAR_UNIT) != null) {
+                sodiumUnit.setSelection(getPosition(productDetails.get(PARAM_SODIUM_UNIT)));
+            }
+            if (productDetails.get(PARAM_ALCOHOL) != null) {
+                alcohol.setText(productDetails.get(PARAM_ALCOHOL));
+            }
+            //set the values of all the other nutrients if defined and create new row in the tableLayout.
+            for (int i = 0; i < PARAMS_OTHER_NUTRIENTS.length; i++) {
+                String PARAMS_OTHER_NUTRIENT = PARAMS_OTHER_NUTRIENTS[i];
+                if (productDetails.get(PARAMS_OTHER_NUTRIENT) != null) {
+                    int position = 0;
+                    String value = productDetails.get(PARAMS_OTHER_NUTRIENT);
+                    if (productDetails.get(PARAMS_OTHER_NUTRIENT + "_unit") != null) {
+                        position = getPosition(productDetails.get(PARAMS_OTHER_NUTRIENT + "_unit"));
+                    }
+                    String nutrients[] = getResources().getStringArray(R.array.nutrients_array);
+                    addNutrientRow(i, nutrients[i], true, value, position);
+                }
             }
         }
     }
@@ -788,7 +790,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             Picasso.with(activity)
                     .load(photoFile)
                     .into(imageNutritionFacts);
-            Toast.makeText(activity, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         }

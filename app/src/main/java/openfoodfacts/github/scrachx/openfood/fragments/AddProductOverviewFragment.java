@@ -213,74 +213,76 @@ public class AddProductOverviewFragment extends BaseFragment {
      */
     private void preFillValues() {
         HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
-        if (productDetails.get("image_front") != null) {
-            mImageUrl = productDetails.get("image_front");
-            Picasso.with(getContext())
-                    .load("file://" + mImageUrl)
-                    .into(imageFront);
-        }
-        if (productDetails.get(PARAM_LANGUAGE) != null) {
-            setProductLanguage(productDetails.get(PARAM_LANGUAGE));
-        }
-        if (productDetails.get(PARAM_NAME) != null) {
-            name.setText(productDetails.get(PARAM_NAME));
-        }
-        if (productDetails.get(PARAM_QUANTITY) != null) {
-            String qty = productDetails.get(PARAM_QUANTITY);
-            // Splits the quantity into value and unit. Example: "250g" into "250" and "g"
-            String part[] = qty.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
-            quantity.setText(part[0]);
-            if (part.length > 1) {
-                // quantity has the unit part
-                for (int i = 0; i < UNIT.length; i++) {
-                    // find index where the UNIT array has the identified unit
-                    if (UNIT[i].equals(part[1])) {
-                        quantityUnit.setSelection(i);
+        if (productDetails != null) {
+            if (productDetails.get("image_front") != null) {
+                mImageUrl = productDetails.get("image_front");
+                Picasso.with(getContext())
+                        .load("file://" + mImageUrl)
+                        .into(imageFront);
+            }
+            if (productDetails.get(PARAM_LANGUAGE) != null) {
+                setProductLanguage(productDetails.get(PARAM_LANGUAGE));
+            }
+            if (productDetails.get(PARAM_NAME) != null) {
+                name.setText(productDetails.get(PARAM_NAME));
+            }
+            if (productDetails.get(PARAM_QUANTITY) != null) {
+                String qty = productDetails.get(PARAM_QUANTITY);
+                // Splits the quantity into value and unit. Example: "250g" into "250" and "g"
+                String part[] = qty.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+                quantity.setText(part[0]);
+                if (part.length > 1) {
+                    // quantity has the unit part
+                    for (int i = 0; i < UNIT.length; i++) {
+                        // find index where the UNIT array has the identified unit
+                        if (UNIT[i].equals(part[1])) {
+                            quantityUnit.setSelection(i);
+                        }
                     }
                 }
             }
-        }
-        if (productDetails.get(PARAM_BRAND) != null) {
-            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_BRAND).split("\\s*,\\s*"));
-            brand.setText(chipValues);
-        }
-        if (productDetails.get(PARAM_PACKAGING) != null) {
-            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_PACKAGING).split("\\s*,\\s*"));
-            packaging.setText(chipValues);
-        }
-        if (productDetails.get(PARAM_CATEGORIES) != null) {
-            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_CATEGORIES).split("\\s*,\\s*"));
-            categories.setText(chipValues);
-        }
-        if (productDetails.get(PARAM_LABELS) != null) {
-            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_LABELS).split("\\s*,\\s*"));
-            label.setText(chipValues);
-        }
-        if (productDetails.get(PARAM_ORIGIN) != null) {
-            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_ORIGIN).split("\\s*,\\s*"));
-            originOfIngredients.setText(chipValues);
-        }
-        if (productDetails.get(PARAM_MANUFACTURING_PLACE) != null) {
-            manufacturingPlace.setText(productDetails.get(PARAM_MANUFACTURING_PLACE));
-        }
-        if (productDetails.get(PARAM_EMB_CODE) != null) {
-            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_EMB_CODE).split("\\s*,\\s*"));
-            embCode.setText(chipValues);
-        }
-        if (productDetails.get(PARAM_LINK) != null) {
-            link.setText(productDetails.get(PARAM_LINK));
-        }
-        if (productDetails.get(PARAM_PURCHASE) != null) {
-            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_PURCHASE).split("\\s*,\\s*"));
-            countryWherePurchased.setText(chipValues);
-        }
-        if (productDetails.get(PARAM_STORE) != null) {
-            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_STORE).split("\\s*,\\s*"));
-            stores.setText(chipValues);
-        }
-        if (productDetails.get(PARAM_COUNTRIES) != null) {
-            List<String> chipValues = Arrays.asList(productDetails.get(PARAM_COUNTRIES).split("\\s*,\\s*"));
-            countriesWhereSold.setText(chipValues);
+            if (productDetails.get(PARAM_BRAND) != null) {
+                List<String> chipValues = Arrays.asList(productDetails.get(PARAM_BRAND).split("\\s*,\\s*"));
+                brand.setText(chipValues);
+            }
+            if (productDetails.get(PARAM_PACKAGING) != null) {
+                List<String> chipValues = Arrays.asList(productDetails.get(PARAM_PACKAGING).split("\\s*,\\s*"));
+                packaging.setText(chipValues);
+            }
+            if (productDetails.get(PARAM_CATEGORIES) != null) {
+                List<String> chipValues = Arrays.asList(productDetails.get(PARAM_CATEGORIES).split("\\s*,\\s*"));
+                categories.setText(chipValues);
+            }
+            if (productDetails.get(PARAM_LABELS) != null) {
+                List<String> chipValues = Arrays.asList(productDetails.get(PARAM_LABELS).split("\\s*,\\s*"));
+                label.setText(chipValues);
+            }
+            if (productDetails.get(PARAM_ORIGIN) != null) {
+                List<String> chipValues = Arrays.asList(productDetails.get(PARAM_ORIGIN).split("\\s*,\\s*"));
+                originOfIngredients.setText(chipValues);
+            }
+            if (productDetails.get(PARAM_MANUFACTURING_PLACE) != null) {
+                manufacturingPlace.setText(productDetails.get(PARAM_MANUFACTURING_PLACE));
+            }
+            if (productDetails.get(PARAM_EMB_CODE) != null) {
+                List<String> chipValues = Arrays.asList(productDetails.get(PARAM_EMB_CODE).split("\\s*,\\s*"));
+                embCode.setText(chipValues);
+            }
+            if (productDetails.get(PARAM_LINK) != null) {
+                link.setText(productDetails.get(PARAM_LINK));
+            }
+            if (productDetails.get(PARAM_PURCHASE) != null) {
+                List<String> chipValues = Arrays.asList(productDetails.get(PARAM_PURCHASE).split("\\s*,\\s*"));
+                countryWherePurchased.setText(chipValues);
+            }
+            if (productDetails.get(PARAM_STORE) != null) {
+                List<String> chipValues = Arrays.asList(productDetails.get(PARAM_STORE).split("\\s*,\\s*"));
+                stores.setText(chipValues);
+            }
+            if (productDetails.get(PARAM_COUNTRIES) != null) {
+                List<String> chipValues = Arrays.asList(productDetails.get(PARAM_COUNTRIES).split("\\s*,\\s*"));
+                countriesWhereSold.setText(chipValues);
+            }
         }
     }
 
@@ -635,7 +637,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             Picasso.with(activity)
                     .load(photoFile)
                     .into(imageFront);
-            Toast.makeText(activity, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         }
