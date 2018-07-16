@@ -1,5 +1,25 @@
 # Status updates for the Open Food Facts project
 
+## Week starting July 09th
+
+### Completed this week
+
+* Replace nutrition facts tab with a tab to add additional pictures for Open Beauty Facts and Open Products Facts.
+* Added button to upload more photos.
+* Added autocomplete for EMB code by getting suggestions from the server.
+* Added confirmation dialog before discarding the product addition.
+* Added search button for the product link field.
+* Added field "Period of time after opening" for OBF with autocomplete suggestions from the server.
+* Added QR code scanner to scan product URLs for the product link field.
+
+### Working on this week
+
+* Add offline mode in the product addition.
+
+### To be worked on next week
+
+* Continue the development of product addition specifically the offline mode and incorporate the changes suggested by mentor.
+
 ## Week starting July 02nd
 
 ### Completed this week
@@ -28,9 +48,9 @@
 * Cleared cached images after product was uploaded.
 * Added autocomplete suggestions for categories, labels and countries.
 * Added basic checks in the product addition such as:
- * pH shouldn't exceed 14.
- * Alcohol % shouldn't exceed 100%.
- * Sum of sugar and starch should be less than carbohydrate.
+  * pH shouldn't exceed 14.
+  * Alcohol % shouldn't exceed 100%.
+  * Sum of sugar and starch should be less than carbohydrate.
 
 ### Working on this week
 
