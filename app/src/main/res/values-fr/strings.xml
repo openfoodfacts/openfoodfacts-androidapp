@@ -214,6 +214,8 @@
   <string name="txt_history_exported">Historique exporté</string>
   <string name="permision_write_external_storage">Les droits d\'accès en écriture sur le support de stockage externe sont nécessaires pour exporter l\'historique.</string>
   <string name="txt_nutrition_not_found">Non applicable</string>
+  <string name="no_brand">No Brand</string>
+  <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">Calculer les calories</string>
   <string name="txt_calories_result">%1$s kcal dans %2$s %3$s</string>
