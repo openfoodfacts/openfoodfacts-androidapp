@@ -214,6 +214,8 @@
   <string name="txt_history_exported">ইতিহাস রপ্তানি করা হয়েছে</string>
   <string name="permision_write_external_storage">ইতিহাস রপ্তানি করতে বাহ্যিক স্টোরেজে সংরক্ষণ অনুমতি প্রয়োজন।</string>
   <string name="txt_nutrition_not_found">প্রযোজ্য নয়</string>
+  <string name="no_brand">No Brand</string>
+  <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">Calculate Calories</string>
   <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
