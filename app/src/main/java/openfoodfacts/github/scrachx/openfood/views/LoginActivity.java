@@ -77,7 +77,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
 
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -162,7 +162,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         lt.show();
 
         final Activity context = this;
-        apiClient.signIn(login, password, "Sign-in","Basic b2ZmOm9mZg==").enqueue(new Callback<ResponseBody>() {
+        apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (!response.isSuccessful()) {

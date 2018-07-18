@@ -17,7 +17,6 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PartMap;
@@ -37,12 +36,11 @@ public interface OpenFoodAPIService {
     Call<State> getFullProductByBarcode(@Path("barcode") String barcode);
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags")
-    Single<State> getFullProductByBarcodeSingle(@Path("barcode") String barcode, @Header("Authorization") String auth);
+    Single<State> getFullProductByBarcodeSingle(@Path("barcode") String barcode);
 
     @GET("cgi/product_jqm2.pl")
     Single<State> saveProductSingle(@Query("code") String code,
-                                    @QueryMap Map<String, String> parameters,
-                                    @Header("Authorization") String auth);
+                                    @QueryMap Map<String, String> parameters);
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
     Call<State> getShortProductByBarcode(@Path("barcode") String barcode);
@@ -52,8 +50,7 @@ public interface OpenFoodAPIService {
 
     @FormUrlEncoded
     @POST("/cgi/session.pl")
-    Call<ResponseBody> signIn(@Field("user_id") String login, @Field("password") String password, @Field(".submit") String submit,
-                              @Header("Authorization") String auth);
+    Call<ResponseBody> signIn(@Field("user_id") String login, @Field("password") String password, @Field(".submit") String submit);
 
     @POST("/cgi/product_jqm2.pl")
     Call<State> saveProduct(@Body SendProduct product);
@@ -186,22 +183,18 @@ public interface OpenFoodAPIService {
 
     @Multipart
     @POST("/cgi/product_image_upload.pl")
-    Single<JsonNode> saveImageSingle(@PartMap Map<String, RequestBody> fields,
-                                     @Header("Authorization") String auth);
+    Single<JsonNode> saveImageSingle(@PartMap Map<String, RequestBody> fields);
 
     @GET("/cgi/product_image_crop.pl")
     Single<JsonNode> editImageSingle(@Query("code") String code,
-                                     @QueryMap Map<String, String> fields,
-                                     @Header("Authorization") String auth);
+                                     @QueryMap Map<String, String> fields);
 
     @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
     Single<JsonNode> getIngredients(@Query("code") String code,
-                                    @Query("id") String id,
-                                    @Header("Authorization") String auth);
+                                    @Query("id") String id);
 
     @GET("cgi/suggest.pl?tagtype=emb_codes")
-    Single<ArrayList<String>> getEMBCodeSuggestions(@Query("term") String term,
-                                                    @Header("Authorization") String auth);
+    Single<ArrayList<String>> getEMBCodeSuggestions(@Query("term") String term);
 
     @GET("/cgi/suggest.pl?tagtype=periods_after_opening")
     Single<ArrayList<String>> getPeriodAfterOpeningSuggestions(@Query("term") String term);

@@ -208,7 +208,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             productDetails.remove("image_front");
             productDetails.remove("image_ingredients");
             productDetails.remove("image_nutrition_facts");
-            client.saveProductSingle(product.getBarcode(), productDetails, "Basic b2ZmOm9mZg==")
+            client.saveProductSingle(product.getBarcode(), productDetails)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
                     .subscribe(new SingleObserver<State>() {

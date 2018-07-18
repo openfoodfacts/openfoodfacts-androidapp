@@ -183,7 +183,7 @@ public class AddProductActivity extends AppCompatActivity {
                     .content("Do you want to save the product?")
                     .positiveText(R.string.txtSave)
                     .negativeText(R.string.txtPictureNeededDialogNo)
-                    .onPositive((dialog, which) -> saveProduct())
+                    .onPositive((dialog, which) -> checkFields())
                     .onNegative((dialog, which) -> super.onBackPressed())
                     .show();
         }
@@ -199,7 +199,7 @@ public class AddProductActivity extends AppCompatActivity {
                         .content("Do you want to save the product?")
                         .positiveText(R.string.txtSave)
                         .negativeText(R.string.txtPictureNeededDialogNo)
-                        .onPositive((dialog, which) -> saveProduct())
+                        .onPositive((dialog, which) -> checkFields())
                         .onNegative((dialog, which) -> finish())
                         .show();
             }
@@ -292,7 +292,7 @@ public class AddProductActivity extends AppCompatActivity {
             Log.d(key, value);
         }
 
-        client.saveProductSingle(code, productDetails, "Basic b2ZmOm9mZg==")
+        client.saveProductSingle(code, productDetails)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
                     @Override
@@ -351,14 +351,18 @@ public class AddProductActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(2, true);
                 break;
             case 2:
-                if (addProductOverviewFragment.areRequiredFieldsEmpty()) {
-                    viewPager.setCurrentItem(0, true);
-                } else if ((BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) && !addProductNutritionFactsFragment.isCheckPassed()) {
-                    viewPager.setCurrentItem(2, true);
-                } else {
-                    saveProduct();
-                }
+                checkFields();
                 break;
+        }
+    }
+
+    private void checkFields() {
+        if (addProductOverviewFragment.areRequiredFieldsEmpty()) {
+            viewPager.setCurrentItem(0, true);
+        } else if ((BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) && !addProductNutritionFactsFragment.isCheckPassed()) {
+            viewPager.setCurrentItem(2, true);
+        } else {
+            saveProduct();
         }
     }
 
@@ -416,7 +420,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void savePhoto(Map<String, RequestBody> imgMap, ProductImage image, int position, boolean ocr) {
-        client.saveImageSingle(imgMap, "Basic b2ZmOm9mZg==")
+        client.saveImageSingle(imgMap)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(disposable -> showImageProgress(position))
                 .subscribe(new SingleObserver<JsonNode>() {
@@ -464,7 +468,7 @@ public class AddProductActivity extends AppCompatActivity {
         Map<String, String> queryMap = new HashMap<>();
         queryMap.put("imgid", imgid);
         queryMap.put("id", imagefield);
-        client.editImageSingle(image.getBarcode(), queryMap, "Basic b2ZmOm9mZg==")
+        client.editImageSingle(image.getBarcode(), queryMap)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<JsonNode>() {
                     @Override
@@ -499,7 +503,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void performOCR(ProductImage image, String imageField) {
-        client.getIngredients(image.getBarcode(), imageField, "Basic b2ZmOm9mZg==")
+        client.getIngredients(image.getBarcode(), imageField)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(disposable -> addProductIngredientsFragment.showOCRProgress())
                 .subscribe(new SingleObserver<JsonNode>() {

@@ -45,7 +45,7 @@ public class EmbCodeAutoCompleteAdapter extends ArrayAdapter<String> implements 
                 if (constraint != null) {
                     // Retrieve the autocomplete results from server.
                     client = CommonApiManager.getInstance().getOpenFoodApiService();
-                    client.getEMBCodeSuggestions(constraint.toString(), "Basic b2ZmOm9mZg==")
+                    client.getEMBCodeSuggestions(constraint.toString())
                             .subscribe(new SingleObserver<ArrayList<String>>() {
                                 @Override
                                 public void onSubscribe(Disposable d) {
