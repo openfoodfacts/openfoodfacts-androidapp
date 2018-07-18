@@ -127,7 +127,7 @@
   <string name="txtSendAll">Upload alle</string>
   <string name="txtNoData">Ingen data</string>
   <string name="txtPictureNeeded">Vent…</string>
-  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">Du bør tilføje mindst ét foto, inden du indsender dette produkt</string>
   <string name="txtPictureNeededDialogYes">Tilføj foto</string>
   <string name="txtPictureNeededDialogNo">Kassér</string>
   <string name="toastSending">Uploader...</string>
@@ -195,7 +195,7 @@
   <string name="new_offline_info">Tag venligst et billede af produktet, ingredienslisten, ernæringsinformation og andre informationer på pakken. Tak!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Adgangskoden skal være mindst 6 tegn langt.</string>
-  <string name="user">user</string>
+  <string name="user">bruger</string>
   <string name="error_field_required">Dette felt er påkrævet.</string>
   <string name="action_preferences">Præferencer</string>
   <string name="prefs_scan_startup">Gå til skanning ved opstart</string>
@@ -214,6 +214,8 @@
   <string name="txt_history_exported">Historik eksporteret</string>
   <string name="permision_write_external_storage">Tilladelse til skrivning på eksternt lager er nødvendig for at eksportere historik.</string>
   <string name="txt_nutrition_not_found">Ikke fundet</string>
+  <string name="no_brand">No Brand</string>
+  <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">Beregn kalorier</string>
   <string name="txt_calories_result">%1$s kcal i %2$s %3$s</string>
