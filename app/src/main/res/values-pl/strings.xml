@@ -242,6 +242,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="txt_history_exported">Eksportowano historię</string>
   <string name="permision_write_external_storage">Aby uzyskać historię eksportu, konieczne jest zapisanie zewnętrznej pamięci masowej.</string>
   <string name="txt_nutrition_not_found">Nie dotyczy</string>
+  <string name="no_brand">No Brand</string>
+  <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">Oblicz kalorie</string>
   <string name="txt_calories_result">%1$s kcal w %2$s %3$s</string>
