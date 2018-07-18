@@ -230,6 +230,8 @@
   <string name="txt_history_exported">تم تصدير السجل</string>
   <string name="permision_write_external_storage">إعطاء التصريح للتخزين الخارجي مطلوبة لتصدير التاريخ.</string>
   <string name="txt_nutrition_not_found">غير متوفر</string>
+  <string name="no_brand">No Brand</string>
+  <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">حساب السعرات الحرارية</string>
   <string name="txt_calories_result">%1$s سعرة حرارية في %2$s %3$s</string>
