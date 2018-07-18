@@ -10,7 +10,7 @@
         android:layout_height="@dimen/button_height_short"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:hint="@string/hintWeight"
+        android:hint="@string/enter_weight"
         android:inputType="numberDecimal"
         android:padding="@dimen/padding_too_short"
         android:textSize="@dimen/font_normal"
@@ -33,7 +33,7 @@
         app:layout_constraintStart_toEndOf="@id/edit_text_weight"
         app:layout_constraintTop_toTopOf="@id/edit_text_weight" />
 
-    <TextView
+    <Button
         android:id="@+id/txt_calories_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,8 +41,10 @@
         android:paddingEnd="@dimen/activity_horizontal_margin"
         android:paddingStart="@dimen/activity_horizontal_margin"
         android:textSize="@dimen/font_normal"
+        android:hint="@string/check_facts"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_text_weight" />
 
 </android.support.constraint.ConstraintLayout>
+
