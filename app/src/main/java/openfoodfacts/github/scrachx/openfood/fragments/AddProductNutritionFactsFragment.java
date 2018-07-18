@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.InputType;
@@ -52,6 +54,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -229,6 +232,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private double starchValue = 0.0;
     private int starchUnit;
     private OfflineSavedProduct mOfflineSavedProduct;
+    private String imagePath;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -270,8 +274,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
         if (productDetails != null) {
             if (productDetails.get("image_nutrition_facts") != null) {
+                imagePath = productDetails.get("image_nutrition_facts");
                 Picasso.with(getContext())
-                        .load("file://" + productDetails.get("image_nutrition_facts"))
+                        .load("file://" + imagePath)
                         .into(imageNutritionFacts);
             }
             if (productDetails.get(PARAM_NO_NUTRITION_DATA) != null) {
@@ -413,10 +418,27 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
 
     @OnClick(R.id.btnAddImageNutritionFacts)
     void addNutritionFactsImage() {
-        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        if (imagePath != null) {
+            // nutrition facts image is already added. Open full screen image.
+            Intent intent = new Intent(getActivity(), FullScreenImage.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("imageurl", "file://" + imagePath);
+            intent.putExtras(bundle);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(activity, imageNutritionFacts,
+                                activity.getString(R.string.product_transition));
+                startActivity(intent, options.toBundle());
+            } else {
+                startActivity(intent);
+            }
         } else {
-            EasyImage.openCamera(this, 0);
+            // add nutrition facts image.
+            if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+            } else {
+                EasyImage.openCamera(this, 0);
+            }
         }
     }
 
@@ -749,6 +771,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
+                imagePath = resultUri.getPath();
                 photoFile = new File((resultUri.getPath()));
                 ProductImage image = new ProductImage(code, NUTRITION, photoFile);
                 image.setFilePath(resultUri.getPath());

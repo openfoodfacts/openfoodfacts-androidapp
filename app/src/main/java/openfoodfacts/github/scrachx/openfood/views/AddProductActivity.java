@@ -180,11 +180,11 @@ public class AddProductActivity extends AppCompatActivity {
             saveProduct();
         } else {
             new MaterialDialog.Builder(this)
-                    .content("Discard product addition?")
-                    .positiveText(R.string.txtPictureNeededDialogNo)
-                    .negativeText(R.string.cancel_button)
-                    .onPositive((dialog, which) -> super.onBackPressed())
-                    .onNegative((dialog, which) -> dialog.dismiss())
+                    .content("Do you want to save the product?")
+                    .positiveText(R.string.txtSave)
+                    .negativeText(R.string.txtPictureNeededDialogNo)
+                    .onPositive((dialog, which) -> saveProduct())
+                    .onNegative((dialog, which) -> super.onBackPressed())
                     .show();
         }
     }
@@ -196,11 +196,11 @@ public class AddProductActivity extends AppCompatActivity {
                 saveProduct();
             } else {
                 new MaterialDialog.Builder(this)
-                        .content("Discard product addition?")
-                        .positiveText(R.string.txtPictureNeededDialogNo)
-                        .negativeText(R.string.cancel_button)
-                        .onPositive((dialog, which) -> finish())
-                        .onNegative((dialog, which) -> dialog.dismiss())
+                        .content("Do you want to save the product?")
+                        .positiveText(R.string.txtSave)
+                        .negativeText(R.string.txtPictureNeededDialogNo)
+                        .onPositive((dialog, which) -> saveProduct())
+                        .onNegative((dialog, which) -> finish())
                         .show();
             }
         }

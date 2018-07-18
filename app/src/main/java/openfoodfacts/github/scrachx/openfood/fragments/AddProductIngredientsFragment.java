@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -47,6 +49,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -193,10 +196,27 @@ public class AddProductIngredientsFragment extends BaseFragment {
 
     @OnClick(R.id.btnAddImageIngredients)
     void addIngredientsImage() {
-        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        if (imagePath != null) {
+            // ingredients image is already added. Open full screen image.
+            Intent intent = new Intent(getActivity(), FullScreenImage.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("imageurl", "file://" + imagePath);
+            intent.putExtras(bundle);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(activity, imageIngredients,
+                                activity.getString(R.string.product_transition));
+                startActivity(intent, options.toBundle());
+            } else {
+                startActivity(intent);
+            }
         } else {
-            EasyImage.openCamera(this, 0);
+            // add ingredients image.
+            if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+            } else {
+                EasyImage.openCamera(this, 0);
+            }
         }
     }
 
@@ -236,6 +256,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     }
 
     public void getDetails() {
+        traces.chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
             if (!ingredients.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_INGREDIENTS, ingredients.getText().toString());

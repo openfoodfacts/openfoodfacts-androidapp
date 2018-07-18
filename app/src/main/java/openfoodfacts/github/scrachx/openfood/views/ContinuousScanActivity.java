@@ -45,6 +45,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -59,6 +60,8 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
@@ -110,6 +113,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     @Inject
     OpenFoodAPIService client;
 
+    private OfflineSavedProductDao mOfflineSavedProductDao;
     private Product product;
     private SharedPreferences.Editor editor;
     private BeepManager beepManager;
@@ -275,11 +279,17 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             // A network error happened
                             if (e instanceof IOException) {
                                 hideAllViews();
-                                productNotFound.setText(getString(R.string.addProductOffline, lastText));
-                                productNotFound.setVisibility(View.VISIBLE);
+                                OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(lastText)).unique();
+                                if (offlineSavedProduct != null) {
+                                    showOfflineSavedDetails(offlineSavedProduct);
+                                    fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
+                                } else {
+                                    productNotFound.setText(getString(R.string.addProductOffline, lastText));
+                                    productNotFound.setVisibility(View.VISIBLE);
+                                    fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.fab_add));
+                                }
                                 fab_status.setVisibility(View.VISIBLE);
                                 quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
-                                fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.fab_add));
                                 fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
                             }
                         } catch (Exception e1) {
@@ -287,6 +297,45 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         }
                     }
                 });
+    }
+
+    private void showOfflineSavedDetails(OfflineSavedProduct offlineSavedProduct) {
+        showAllViews();
+        HashMap<String, String> productDetails = offlineSavedProduct.getProductDetailsMap();
+        if (productDetails.get("product_name") == null || productDetails.get("product_name").equals("")) {
+            name.setText(R.string.productNameNull);
+        } else {
+            name.setText(productDetails.get("product_name"));
+        }
+        if (productDetails.get("add_brands") == null || productDetails.get("add_brands").equals("")) {
+            brand.setText(R.string.productBrandNull);
+        } else {
+            brand.setText(productDetails.get("add_brands"));
+        }
+        if (productDetails.get("quantity") == null || productDetails.get("quantity").equals("")) {
+            quantity.setText(R.string.productQuantityNull);
+        } else {
+            quantity.setText(productDetails.get("quantity"));
+        }
+        if (productDetails.get("image_front") != null) {
+            Picasso.with(ContinuousScanActivity.this)
+                    .load("file://" + productDetails.get("image_front"))
+                    .error(R.drawable.placeholder_thumb)
+                    .into(productImage, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+                    });
+        } else {
+            productImage.setImageResource(R.drawable.placeholder_thumb);
+            imageProgress.setVisibility(View.GONE);
+        }
     }
 
     private void navigateToProductAddition(String lastText) {
@@ -435,6 +484,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         });
 
         mHistoryProductDao = Utils.getAppDaoSession(ContinuousScanActivity.this).getHistoryProductDao();
+        mOfflineSavedProductDao = Utils.getAppDaoSession(ContinuousScanActivity.this).getOfflineSavedProductDao();
 
         sp = getSharedPreferences("camera", 0);
         mRing = sp.getBoolean("ring", false);
