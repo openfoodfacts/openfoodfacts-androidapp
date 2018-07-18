@@ -218,6 +218,8 @@
   <string name="txt_history_exported">Vēsture eksportēta</string>
   <string name="permision_write_external_storage">Vēstures eksportēšanai ir nepieciešama ārējās atmiņas piekļuves atļauja.</string>
   <string name="txt_nutrition_not_found">Nav datu</string>
+  <string name="no_brand">No Brand</string>
+  <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">Aprēķināt kalorijas</string>
   <string name="txt_calories_result">%1$s kcal %2$s %3$s</string>
