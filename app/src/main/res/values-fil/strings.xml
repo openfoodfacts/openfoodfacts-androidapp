@@ -214,6 +214,8 @@
   <string name="txt_history_exported">Na-export na ang kasaysayan</string>
   <string name="permision_write_external_storage">Ang pahintulot upang baguhin ang external storage ay kinakailangan upang mag-export ng kasaysayan.</string>
   <string name="txt_nutrition_not_found">N/A</string>
+  <string name="no_brand">No Brand</string>
+  <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">Kalkulahin ang Mga Calorie</string>
   <string name="txt_calories_result">%1$s kcal sa %2$s %3$s</string>
