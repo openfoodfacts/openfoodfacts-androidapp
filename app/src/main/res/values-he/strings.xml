@@ -203,7 +203,7 @@
   <string name="new_offline_info">נא לצלם תמונות של המוצר, רכיביו, טבלת ערכיו התזונתיים וכל מידע נוסף שעל התווית. תודה!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">הססמה חייבת להיות באורך של 6 תווים לפחות.</string>
-  <string name="user">user</string>
+  <string name="user">משתמש</string>
   <string name="error_field_required">זהו שדה חובה.</string>
   <string name="action_preferences">העדפות</string>
   <string name="prefs_scan_startup">סריקה עם ההפעלה</string>
