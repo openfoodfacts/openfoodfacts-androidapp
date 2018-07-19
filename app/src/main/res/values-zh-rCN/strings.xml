@@ -210,6 +210,8 @@
   <string name="txt_history_exported">历史记录已经导出</string>
   <string name="permision_write_external_storage">需要外部存储权限才能导出历史记录。</string>
   <string name="txt_nutrition_not_found">N/A</string>
+  <string name="no_brand">No Brand</string>
+  <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">计算卡路里</string>
   <string name="txt_calories_result">在 %2$s %3$s 中含有 %1$s 卡路里</string>

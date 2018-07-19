@@ -210,6 +210,8 @@
   <string name="txt_history_exported">履歴をエクスポートしました</string>
   <string name="permision_write_external_storage">履歴をエクスポートするために、外部ストレージの書き込みアクセス許可が必要です。</string>
   <string name="txt_nutrition_not_found">適用外</string>
+  <string name="no_brand">No Brand</string>
+  <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">カロリーを計算する</string>
   <string name="txt_calories_result">%2$s %3$s の %1$s kcal</string>

@@ -214,6 +214,8 @@
   <string name="txt_history_exported">crwdns35185:0crwdne35185:0</string>
   <string name="permision_write_external_storage">crwdns35186:0crwdne35186:0</string>
   <string name="txt_nutrition_not_found">crwdns35187:0crwdne35187:0</string>
+  <string name="no_brand">crwdns93485:0crwdne93485:0</string>
+  <string name="no_title">crwdns93486:0crwdne93486:0</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">crwdns46806:0crwdne46806:0</string>
   <string name="txt_calories_result">crwdns46807:0%1$scrwdnd46807:0%2$scrwdnd46807:0%3$scrwdne46807:0</string>

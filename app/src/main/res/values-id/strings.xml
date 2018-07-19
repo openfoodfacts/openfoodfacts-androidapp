@@ -211,6 +211,8 @@
   <string name="txt_history_exported">sejarah sukses di ekspor</string>
   <string name="permision_write_external_storage">tulis pengizinan penyimpanan eksternal sangat diperlukan untuk mengespor riwayat</string>
   <string name="txt_nutrition_not_found">N/A</string>
+  <string name="no_brand">No Brand</string>
+  <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">Calculate Calories</string>
   <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>

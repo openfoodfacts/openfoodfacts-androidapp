@@ -214,6 +214,8 @@
   <string name="txt_history_exported">Geçmiş dışa aktarıldı</string>
   <string name="permision_write_external_storage">Geçmişi dışa aktarmak için harici depolamaya yazma izni gerekli.</string>
   <string name="txt_nutrition_not_found">Mevcut Değil</string>
+  <string name="no_brand">No Brand</string>
+  <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">Harcanan Kaloriyi Hesapla</string>
   <string name="txt_calories_result">%2$s %3$s sürede %1$s kcal</string>
