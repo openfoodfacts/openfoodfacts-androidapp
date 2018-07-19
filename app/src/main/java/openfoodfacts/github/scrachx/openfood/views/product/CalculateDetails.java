@@ -2,11 +2,25 @@ package openfoodfacts.github.scrachx.openfood.views.product;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +37,9 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.CalculateAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBOHYDRATES;
@@ -40,10 +57,11 @@ public class CalculateDetails extends BaseActivity {
     RecyclerView nutrimentsRecyclerView;
     Nutriments nutriments;
     List<NutrimentItem> nutrimentItems;
-    String spinnervalue,weight,pname;
+    String spinnervalue, weight, pname;
     float value;
     Product p;
     TextView result;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +70,11 @@ public class CalculateDetails extends BaseActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.calculate_details);
+        setTitle(getString(R.string.app_name_long));
+        toolbar = findViewById(R.id.toolbar1);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         result = findViewById(R.id.result_text_view);
         Intent i = getIntent();
         p = (Product) i.getSerializableExtra("sampleObject");
@@ -62,7 +85,7 @@ public class CalculateDetails extends BaseActivity {
         nutriments = p.getNutriments();
         nutrimentItems = new ArrayList<>();
         nutrimentsRecyclerView = findViewById(R.id.nutriments_recycler_view_calc);
-        result.setText(String.format("Table for nutrition facts of %1$s of %2$s",weight+" "+spinnervalue,pname));
+        result.setText(getString(R.string.display_fact, weight + " " + spinnervalue,pname));
         nutrimentsRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
@@ -81,13 +104,13 @@ public class CalculateDetails extends BaseActivity {
         // Energy
         Nutriments.Nutriment energy = nutriments.get(ENERGY);
         if (energy != null) {
-            nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name), calculateCalories(value,spinnervalue), Utils.getEnergy(energy.getForServing()), "kcal"));
+            nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name), calculateCalories(value, spinnervalue), Utils.getEnergy(energy.getForServing()), "kcal"));
         }
 
         // Fat
         Nutriments.Nutriment fat = nutriments.get(FAT);
         if (fat != null) {
-            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_fat), fat.getforanyvalue(value,spinnervalue), fat.getForServing(), fat.getUnit()));
+            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_fat), fat.getforanyvalue(value, spinnervalue), fat.getForServing(), fat.getUnit()));
 
             nutrimentItems.addAll(getNutrimentItems(nutriments, FAT_MAP));
         }
@@ -96,7 +119,7 @@ public class CalculateDetails extends BaseActivity {
         Nutriments.Nutriment carbohydrates = nutriments.get(CARBOHYDRATES);
         if (carbohydrates != null) {
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_carbohydrate),
-                    carbohydrates.getforanyvalue(value,spinnervalue),
+                    carbohydrates.getforanyvalue(value, spinnervalue),
                     carbohydrates.getForServing(),
                     carbohydrates.getUnit()));
 
@@ -110,7 +133,7 @@ public class CalculateDetails extends BaseActivity {
         Nutriments.Nutriment proteins = nutriments.get(PROTEINS);
         if (proteins != null) {
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_proteins),
-                    proteins.getforanyvalue(value,spinnervalue),
+                    proteins.getforanyvalue(value, spinnervalue),
                     proteins.getForServing(),
                     proteins.getUnit()));
 
@@ -139,7 +162,9 @@ public class CalculateDetails extends BaseActivity {
         }
         RecyclerView.Adapter adapter = new CalculateAdapter(nutrimentItems);
         nutrimentsRecyclerView.setAdapter(adapter);
+
     }
+
 
     private List<NutrimentItem> getNutrimentItems(Nutriments nutriments, Map<String, Integer> nutrimentMap) {
         List<NutrimentItem> items = new ArrayList<>();
@@ -147,7 +172,7 @@ public class CalculateDetails extends BaseActivity {
             Nutriments.Nutriment nutriment = nutriments.get(entry.getKey());
             if (nutriment != null) {
                 items.add(new NutrimentItem(getString(entry.getValue()),
-                        nutriment.getforanyvalue(value,spinnervalue), nutriment.getForServing(), nutriment.getUnit()));
+                        nutriment.getforanyvalue(value, spinnervalue), nutriment.getForServing(), nutriment.getUnit()));
             }
         }
 
@@ -170,6 +195,38 @@ public class CalculateDetails extends BaseActivity {
         }
         String snew = Float.toString(((caloriePer100g / 100) * weightInG));
         return snew;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem share_item = menu.findItem(R.id.menu_item_share);
+        share_item.setVisible(false);
+        MenuItem edit_product = menu.findItem(R.id.action_edit_product);
+        edit_product.setVisible(false);
+        MenuItem calculate = menu.findItem(R.id.action_facts);
+        calculate.setVisible(false);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+//                NavUtils.navigateUpFromSameTask(this);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_product, menu);
+        return true;
     }
 }
 
