@@ -131,7 +131,7 @@
   <string name="txtSendAll">Trimiteți toate produsele</string>
   <string name="txtNoData">Lipsă date</string>
   <string name="txtPictureNeeded">Așteaptă…</string>
-  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">Trebuie să adăugați cel puțin o fotografie înainte de a trimite acest produs</string>
   <string name="txtPictureNeededDialogYes">Oprire</string>
   <string name="txtPictureNeededDialogNo">Renunță</string>
   <string name="toastSending">Se trimite...</string>
@@ -199,7 +199,7 @@
   <string name="new_offline_info">Vă rugăm fotografiați produsul, lista sa de ingrediente, informațiile nutriționale și oricare alte informații prezente pe eticheta. Vă mulțumim!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Parola trebuie să fie de cel puțin 6 caractere.</string>
-  <string name="user">user</string>
+  <string name="user">utilizator</string>
   <string name="error_field_required">Acest câmp este obligatoriu.</string>
   <string name="action_preferences">Preferinţe</string>
   <string name="prefs_scan_startup">Scanare la pornire</string>
@@ -218,6 +218,8 @@
   <string name="txt_history_exported">Istoricul a fost exportat</string>
   <string name="permision_write_external_storage">Pentru a exporta istoricul este necesară permisiunea de a scrie în dispozitivul de stocare externă.</string>
   <string name="txt_nutrition_not_found">Nu este disponibil</string>
+  <string name="no_brand">No Brand</string>
+  <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">Calculați caloriile</string>
   <string name="txt_calories_result">%1$s kcal în %2$s %3$s</string>
@@ -293,9 +295,9 @@
   <string name="nutrition_alcohol">Alcool</string>
   <string name="nutrition_vitamins">Vitamine</string>
   <string name="vitamin_a">Vitamina A</string>
-  <string name="vitamin_d">Vitamin D</string>
-  <string name="vitamin_e">Vitamin E</string>
-  <string name="vitamin_k">Vitamin K</string>
+  <string name="vitamin_d">Vitamina D</string>
+  <string name="vitamin_e">Vitamina E</string>
+  <string name="vitamin_k">Vitamina K</string>
   <string name="vitamin_c">Vitamina C</string>
   <string name="vitamin_b1">Vitamina B1</string>
   <string name="vitamin_b2">Vitamina B2</string>

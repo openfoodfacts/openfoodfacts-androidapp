@@ -27,7 +27,7 @@ categories_en.png
 Få alternativer til dine yndlingsretter
 
 foodtransparency_en.png
-Become an actor of food transparency
+Bliv medspilleri fødevarergennemsigtighed
 
 product_view_summary_en.png
 Wikipedia for Mad

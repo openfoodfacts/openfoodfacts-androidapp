@@ -214,6 +214,8 @@
   <string name="txt_history_exported">Историята е изнесена</string>
   <string name="permision_write_external_storage">За изнасяне на историята е необходимо разрешение за запис във външното хранилище.</string>
   <string name="txt_nutrition_not_found">не е налично</string>
+  <string name="no_brand">No Brand</string>
+  <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">Изчисляване на калориите</string>
   <string name="txt_calories_result">%1$s kcal в %2$s %3$s</string>
