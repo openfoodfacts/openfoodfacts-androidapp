@@ -222,8 +222,8 @@
   <string name="txt_history_exported">ההיסטוריה יוצאה</string>
   <string name="permision_write_external_storage">נדרשת הרשאת כתיבה לאחסון חיצוני כדי לייצא היסטוריה.</string>
   <string name="txt_nutrition_not_found">לא זמין</string>
-  <string name="no_brand">No Brand</string>
-  <string name="no_title">No Title</string>
+  <string name="no_brand">אין מותג</string>
+  <string name="no_title">אין כותרת</string>
   <!-- Nutrition info tab -->
   <string name="calculate_calories">חישוב קלוריות</string>
   <string name="txt_calories_result">%1$s קילו קלוריות ב־%2$s %3$s</string>
