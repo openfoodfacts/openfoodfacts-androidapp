@@ -49,18 +49,20 @@ public class OfflineSavedProduct implements Serializable {
     }
 
     public HashMap<String, String> getProductDetailsMap() {
-        ByteArrayInputStream bis = new ByteArrayInputStream(Base64.decode(this.productDetails, Base64.DEFAULT));
-        try {
-            ObjectInputStream in = new ObjectInputStream(bis);
+        if (this.getProductDetails() != null) {
+            ByteArrayInputStream bis = new ByteArrayInputStream(Base64.decode(this.productDetails, Base64.DEFAULT));
             try {
-                @SuppressWarnings("unchecked")
-                HashMap<String, String> hashMap = (HashMap<String, String>) in.readObject();
-                return hashMap;
-            } catch (ClassNotFoundException e) {
+                ObjectInputStream in = new ObjectInputStream(bis);
+                try {
+                    @SuppressWarnings("unchecked")
+                    HashMap<String, String> hashMap = (HashMap<String, String>) in.readObject();
+                    return hashMap;
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return null;
     }
