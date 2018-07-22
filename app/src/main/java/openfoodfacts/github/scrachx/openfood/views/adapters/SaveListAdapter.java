@@ -1,33 +1,31 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v7.content.res.AppCompatResources;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-import java.util.concurrent.Executors;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 
 public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveViewHolder> {
 
+    private static boolean isUploading;
     private final Context context;
     private final List<SaveItem> saveItems;
     private SaveClickInterface mSaveClickInterface;
-    static boolean isUploading;
-
 
     public SaveListAdapter(Context context, List<SaveItem> saveItems, SaveClickInterface saveClickInterface) {
         this.context = context;
@@ -36,32 +34,46 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
         isUploading = false;
     }
 
+    public static void showProgressDialog() {
+        isUploading = true;
+    }
+
+    @NonNull
     @Override
-    public SaveViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SaveViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.save_list_item, parent, false);
         return new SaveViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(SaveViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull SaveViewHolder holder, int position) {
         SaveItem item = saveItems.get(position);
-
-        holder.imgIcon.setImageDrawable(AppCompatResources.getDrawable(context, item.getIcon()));
-        if(isUploading) {
-            holder.imgIcon.setVisibility(View.GONE);
+        if (item.getFieldsCompleted() < 9) {
+            holder.percentageCompleted.getProgressDrawable().setColorFilter(
+                    Color.RED, PorterDuff.Mode.MULTIPLY);
+        } else if (item.getFieldsCompleted() >= 9 && item.getFieldsCompleted() < 17) {
+            holder.percentageCompleted.getProgressDrawable().setColorFilter(
+                    Color.YELLOW, PorterDuff.Mode.MULTIPLY);
+        } else {
+            holder.percentageCompleted.getProgressDrawable().setColorFilter(
+                    Color.GREEN, PorterDuff.Mode.MULTIPLY);
+        }
+        holder.percentageCompleted.setProgress(item.getFieldsCompleted());
+        int percentageValue = (item.getFieldsCompleted() * 100) / 22;
+        if (percentageValue > 100) {
+            percentageValue = 100;
+        }
+        holder.txtPercentage.setText(String.valueOf(percentageValue) + "%");
+        if (isUploading) {
+            holder.percentageCompleted.setVisibility(View.GONE);
             holder.progressBar.setVisibility(View.VISIBLE);
         }
         holder.txtTitle.setText(item.getTitle());
-        Picasso.with(context).load("file://"+item.getUrl()).config(Bitmap.Config.RGB_565).into(holder.imgProduct);
+        Picasso.with(context).load("file://" + item.getUrl()).config(Bitmap.Config.RGB_565).into(holder.imgProduct);
         holder.txtBarcode.setText(item.getBarcode());
         holder.txtWeight.setText(item.getWeight());
         holder.txtBrand.setText(item.getBrand());
 
-    }
-
-    public static void showProgressDialog() {
-        isUploading = true;
     }
 
     @Override
@@ -81,7 +93,8 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
     }
 
     class SaveViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-        ImageView imgIcon;
+        ProgressBar percentageCompleted;
+        TextView txtPercentage;
         TextView txtTitle;
         TextView txtBarcode;
         ImageView imgProduct;
@@ -89,9 +102,10 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
         TextView txtBrand;
         ProgressBar progressBar;
 
-        public SaveViewHolder(View itemView) {
+        SaveViewHolder(View itemView) {
             super(itemView);
-            imgIcon = itemView.findViewById(R.id.iconSave);
+            percentageCompleted = itemView.findViewById(R.id.percentage_completed);
+            txtPercentage = itemView.findViewById(R.id.txt_percentage);
             txtTitle = itemView.findViewById(R.id.titleSave);
             txtBarcode = itemView.findViewById(R.id.barcodeSave);
             imgProduct = itemView.findViewById(R.id.imgSaveProduct);
@@ -104,7 +118,6 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
 
         @Override
         public void onClick(View view) {
-
             int pos = getAdapterPosition();
             mSaveClickInterface.onClick(pos);
         }
@@ -116,5 +129,4 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
             return true;
         }
     }
-
 }

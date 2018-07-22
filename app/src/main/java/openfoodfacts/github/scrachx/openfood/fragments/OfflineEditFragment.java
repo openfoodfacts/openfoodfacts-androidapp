@@ -319,13 +319,18 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             }
 
             for (OfflineSavedProduct product : offlineSavedProducts) {
-                int imageIcon = R.drawable.ic_done_green_24dp;
                 HashMap<String, String> productDetails = product.getProductDetailsMap();
-                if (isEmpty(product.getBarcode()) || isEmpty(productDetails.get("image_front"))
-                        || isEmpty(productDetails.get("add_brands")) || isEmpty(productDetails.get("quantity")) || isEmpty(productDetails.get("product_name"))) {
-                    imageIcon = R.drawable.ic_no_red_24dp;
+                int fieldsCompleted = productDetails.size();
+                if (productDetails.get("image_front") == null) {
+                    fieldsCompleted--;
                 }
-                saveItems.add(new SaveItem(productDetails.get("product_name"), imageIcon, productDetails.get("image_front"), product.getBarcode(), productDetails.get("quantity"), productDetails.get("add_brands")));
+                if (productDetails.get("image_ingredients") == null) {
+                    fieldsCompleted--;
+                }
+                if (productDetails.get("image_nutrition_facts") == null) {
+                    fieldsCompleted--;
+                }
+                saveItems.add(new SaveItem(productDetails.get("product_name"), fieldsCompleted, productDetails.get("image_front"), product.getBarcode(), productDetails.get("quantity"), productDetails.get("add_brands")));
             }
             if (!offlineSavedProducts.isEmpty()) {
                 SaveListAdapter adapter = new SaveListAdapter(activity.getBaseContext(), saveItems, OfflineEditFragment.this);
@@ -339,6 +344,10 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     }
                 }
                 buttonSend.setEnabled(canSend);
+            } else if (mRecyclerView.getAdapter() != null) {
+                // last product uploaded, offlineSavedProducts is empty, refresh adapter.
+                updateDrawerBadge();
+                mRecyclerView.getAdapter().notifyDataSetChanged();
             }
         });
     }
