@@ -11,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -26,9 +27,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import org.greenrobot.greendao.async.AsyncSession;
 
@@ -54,6 +58,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
@@ -64,6 +69,11 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
 public class OfflineEditFragment extends NavigationBaseFragment implements SaveListAdapter.SaveClickInterface {
 
     public static final String LOG_TAG = "OFFLINE_EDIT";
+    private static final String INGREDIENTS_ON_SERVER = "ingredientsTextOnServer";
+    private static final String INGREDIENTS_IMAGE_ON_SERVER = "ingredientsImageOnServer";
+    private static final String QUANTITY_ON_SERVER = "quantityOnServer";
+    private static final String PRODUCT_NAME_ON_SERVER = "productNameOnServer";
+    private static final String LINK_ON_SERVER = "linkOnServer";
     @BindView(R.id.listOfflineSave)
     RecyclerView mRecyclerView;
     @BindView(R.id.buttonSendAll)
@@ -79,6 +89,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     private OfflineSavedProductDao mOfflineSavedProductDao;
     private int size;
     private Activity activity;
+    private OpenFoodAPIService client;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -188,7 +199,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     private void uploadProducts() {
         SaveListAdapter.showProgressDialog();
         mRecyclerView.getAdapter().notifyDataSetChanged();
-        OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
+        client = CommonApiManager.getInstance().getOpenFoodApiService();
         final List<OfflineSavedProduct> listSaveProduct = mOfflineSavedProductDao.loadAll();
         size = saveItems.size();
 
@@ -204,13 +215,9 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             }
             size--;
 
-            // Remove the images from the HashMap before uploading the product details
-            productDetails.remove("image_front");
-            productDetails.remove("image_ingredients");
-            productDetails.remove("image_nutrition_facts");
-            client.saveProductSingle(product.getBarcode(), productDetails)
-                    .observeOn(AndroidSchedulers.mainThread())
+            client.getExistingProductDetails(product.getBarcode())
                     .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new SingleObserver<State>() {
                         @Override
                         public void onSubscribe(Disposable d) {
@@ -218,35 +225,18 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
 
                         @Override
                         public void onSuccess(State state) {
-                            Iterator<SaveItem> iterator = saveItems.iterator();
-                            while (iterator.hasNext()) {
-                                SaveItem s = iterator.next();
-                                if (s.getBarcode().equals(product.getBarcode())) {
-                                    iterator.remove();
-                                }
-                            }
-                            updateDrawerBadge();
-                            mRecyclerView.getAdapter().notifyDataSetChanged();
-                            mOfflineSavedProductDao.deleteInTx(mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(product.getBarcode())).list());
-                            // Show done when all the products are uploaded.
-                            if (saveItems.isEmpty()) {
-                                SharedPreferences settingsUsage = activity.getBaseContext().getSharedPreferences("usage", 0);
-                                boolean firstUpload = settingsUsage.getBoolean("firstUpload", false);
-                                boolean msgdismissed = settingsUsage.getBoolean("is_offline_msg_dismissed", false);
-                                if (msgdismissed) {
-                                    noDataImage.setVisibility(View.VISIBLE);
-                                    mRecyclerView.setVisibility(View.GONE);
-                                    noDataText.setVisibility(View.VISIBLE);
-                                    noDataText.setText(R.string.no_offline_data);
-                                    buttonSend.setVisibility(View.GONE);
-                                    if (!firstUpload) {
-                                        noDataImage.setImageResource(R.drawable.ic_cloud_upload);
-                                        noDataText.setText(R.string.first_offline);
-                                    }
-                                } else {
-                                    noDataImage.setVisibility(View.INVISIBLE);
-                                    noDataText.setVisibility(View.INVISIBLE);
-                                }
+                            if (state.getStatus() == 0) {
+                                // Product doesn't exist yet on the server. Add as it is.
+                                addProductToServer(product);
+                            } else {
+                                // Product already exists on the server. Compare values saved locally with the values existing on server.
+                                HashMap<String, String> existingValuesMap = new HashMap<>();
+                                existingValuesMap.put(INGREDIENTS_ON_SERVER, state.getProduct().getIngredientsText());
+                                existingValuesMap.put(INGREDIENTS_IMAGE_ON_SERVER, state.getProduct().getImageIngredientsUrl());
+                                existingValuesMap.put(PRODUCT_NAME_ON_SERVER, state.getProduct().getProductName());
+                                existingValuesMap.put(QUANTITY_ON_SERVER, state.getProduct().getQuantity());
+                                existingValuesMap.put(LINK_ON_SERVER, state.getProduct().getManufactureUrl());
+                                checkForExistingIngredients(product, existingValuesMap);
                             }
                         }
 
@@ -256,6 +246,255 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         }
                     });
         }
+    }
+
+    /**
+     * Checks if ingredients already exist on server and compare it with the ingredients stored locally.
+     */
+    private void checkForExistingIngredients(OfflineSavedProduct product, HashMap<String, String> existingValuesOnServer) {
+        HashMap<String, String> productDetails = product.getProductDetailsMap();
+        String ingredientsTextOnServer = existingValuesOnServer.get(INGREDIENTS_ON_SERVER);
+        if (ingredientsTextOnServer != null && !ingredientsTextOnServer.isEmpty() && productDetails.get("ingredients_text") != null) {
+            MaterialDialog.Builder builder = new MaterialDialog.Builder(activity)
+                    .title("Ingredients overwrite")
+                    .customView(R.layout.dialog_compare_ingredients, true)
+                    .positiveText("Choose mine")
+                    .negativeText("Keep previous version")
+                    .onPositive((dialog, which) -> {
+                        dialog.dismiss();
+                        checkForExistingProductName(product, existingValuesOnServer);
+                    })
+                    .onNegative((dialog, which) -> {
+                        dialog.dismiss();
+                        productDetails.remove("ingredients_text");
+                        product.setProductDetailsMap(productDetails);
+                        checkForExistingProductName(product, existingValuesOnServer);
+                    })
+                    .cancelable(false);
+            MaterialDialog dialog = builder.build();
+            dialog.show();
+            View view = dialog.getCustomView();
+            if (view != null) {
+                ImageView imageLocal = view.findViewById(R.id.image_ingredients_local);
+                ImageView imageServer = view.findViewById(R.id.image_ingredients_server);
+                TextView ingredientsLocal = view.findViewById(R.id.txt_ingredients_local);
+                TextView ingredientsServer = view.findViewById(R.id.txt_ingredients_server);
+                ProgressBar imageProgressServer = view.findViewById(R.id.image_progress_server);
+                ProgressBar imageProgressLocal = view.findViewById(R.id.image_progress_local);
+                ingredientsLocal.setText(productDetails.get("ingredients_text"));
+                ingredientsServer.setText(existingValuesOnServer.get(INGREDIENTS_ON_SERVER));
+                Picasso.with(getContext())
+                        .load(existingValuesOnServer.get(INGREDIENTS_IMAGE_ON_SERVER))
+                        .error(R.drawable.placeholder_thumb)
+                        .into(imageServer, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                imageProgressServer.setVisibility(View.GONE);
+                                // Add option to zoom image.
+                                imageServer.setOnClickListener(v -> {
+                                    Intent intent = new Intent(getContext(), FullScreenImage.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("imageurl", existingValuesOnServer.get(INGREDIENTS_IMAGE_ON_SERVER));
+                                    intent.putExtras(bundle);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                        ActivityOptionsCompat options = ActivityOptionsCompat.
+                                                makeSceneTransitionAnimation(activity, imageServer,
+                                                        getString(R.string.product_transition));
+                                        startActivity(intent, options.toBundle());
+                                    } else {
+                                        startActivity(intent);
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onError() {
+                                imageProgressServer.setVisibility(View.GONE);
+                            }
+                        });
+                Picasso.with(getContext())
+                        .load("file://" + productDetails.get("image_ingredients"))
+                        .error(R.drawable.placeholder_thumb)
+                        .into(imageLocal, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                imageProgressLocal.setVisibility(View.GONE);
+                                // Add option to zoom image.
+                                imageLocal.setOnClickListener(v -> {
+                                    Intent intent = new Intent(getContext(), FullScreenImage.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("imageurl", "file://" + productDetails.get("image_ingredients"));
+                                    intent.putExtras(bundle);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                        ActivityOptionsCompat options = ActivityOptionsCompat.
+                                                makeSceneTransitionAnimation(activity, imageLocal,
+                                                        getString(R.string.product_transition));
+                                        startActivity(intent, options.toBundle());
+                                    } else {
+                                        startActivity(intent);
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onError() {
+                                imageProgressLocal.setVisibility(View.GONE);
+                            }
+                        });
+            }
+        } else {
+            checkForExistingProductName(product, existingValuesOnServer);
+        }
+    }
+
+    /**
+     * Checks if product name already exist on server and compare it with the product name stored locally.
+     */
+    private void checkForExistingProductName(OfflineSavedProduct product, HashMap<String, String> existingValuesOnServer) {
+        HashMap<String, String> productDetails = product.getProductDetailsMap();
+        String productNameOnServer = existingValuesOnServer.get(PRODUCT_NAME_ON_SERVER);
+        if (productNameOnServer != null && !productNameOnServer.isEmpty() && productDetails.get("product_name") != null) {
+            new MaterialDialog.Builder(activity)
+                    .title("Product name overwrite")
+                    .content("Yours: " + productDetails.get("product_name") + "\n" + "Currently on " + getString(R.string.app_name_long) + ": " + productNameOnServer)
+                    .positiveText("Choose mine")
+                    .negativeText("Keep previous version")
+                    .onPositive((dialog, which) -> {
+                        dialog.dismiss();
+                        checkForExistingQuantity(product, existingValuesOnServer);
+
+                    })
+                    .onNegative((dialog, which) -> {
+                        dialog.dismiss();
+                        productDetails.remove("product_name");
+                        product.setProductDetailsMap(productDetails);
+                        checkForExistingQuantity(product, existingValuesOnServer);
+                    })
+                    .cancelable(false)
+                    .build()
+                    .show();
+        } else {
+            checkForExistingQuantity(product, existingValuesOnServer);
+        }
+    }
+
+    /**
+     * Checks if quantity already exist on server and compare it with the quantity stored locally.
+     */
+    private void checkForExistingQuantity(OfflineSavedProduct product, HashMap<String, String> existingValuesOnServer) {
+        HashMap<String, String> productDetails = product.getProductDetailsMap();
+        String quantityOnServer = existingValuesOnServer.get(QUANTITY_ON_SERVER);
+        if (quantityOnServer != null && !quantityOnServer.isEmpty() && productDetails.get("quantity") != null) {
+            new MaterialDialog.Builder(activity)
+                    .title("Quantity overwrite")
+                    .content("Yours: " + productDetails.get("quantity") + "\n" + "Currently on " + getString(R.string.app_name_long) + ": " + quantityOnServer)
+                    .positiveText("Choose mine")
+                    .negativeText("Keep previous version")
+                    .onPositive((dialog, which) -> {
+                        dialog.dismiss();
+                        checkForExistingLink(product, existingValuesOnServer);
+                    })
+                    .onNegative((dialog, which) -> {
+                        dialog.dismiss();
+                        productDetails.remove("quantity");
+                        product.setProductDetailsMap(productDetails);
+                        checkForExistingLink(product, existingValuesOnServer);
+                    })
+                    .cancelable(false)
+                    .build()
+                    .show();
+        } else {
+            checkForExistingLink(product, existingValuesOnServer);
+        }
+    }
+
+    /**
+     * Checks if link already exist on server and compare it with the link stored locally.
+     */
+    private void checkForExistingLink(OfflineSavedProduct product, HashMap<String, String> existingValuesOnServer) {
+        HashMap<String, String> productDetails = product.getProductDetailsMap();
+        String linkOnServer = existingValuesOnServer.get(LINK_ON_SERVER);
+        if (linkOnServer != null && !linkOnServer.isEmpty() && productDetails.get("link") != null) {
+            new MaterialDialog.Builder(activity)
+                    .title("Link overwrite")
+                    .content("Yours: " + productDetails.get("link") + "\n" + "Currently on " + getString(R.string.app_name_long) + ": " + linkOnServer)
+                    .positiveText("Choose mine")
+                    .negativeText("Keep previous version")
+                    .onPositive((dialog, which) -> {
+                        dialog.dismiss();
+                        addProductToServer(product);
+                    })
+                    .onNegative((dialog, which) -> {
+                        dialog.dismiss();
+                        productDetails.remove("link");
+                        addProductToServer(product);
+                    })
+                    .cancelable(false)
+                    .build()
+                    .show();
+        } else {
+            addProductToServer(product);
+        }
+    }
+
+    /**
+     * Performs network call and uploads the product to the server.
+     *
+     * @param product The offline product to be uploaded to the server.
+     */
+    private void addProductToServer(OfflineSavedProduct product) {
+        HashMap<String, String> productDetails = product.getProductDetailsMap();
+        // Remove the images from the HashMap before uploading the product details
+        productDetails.remove("image_front");
+        productDetails.remove("image_ingredients");
+        productDetails.remove("image_nutrition_facts");
+        client.saveProductSingle(product.getBarcode(), productDetails)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new SingleObserver<State>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onSuccess(State state) {
+                        Iterator<SaveItem> iterator = saveItems.iterator();
+                        while (iterator.hasNext()) {
+                            SaveItem s = iterator.next();
+                            if (s.getBarcode().equals(product.getBarcode())) {
+                                iterator.remove();
+                            }
+                        }
+                        updateDrawerBadge();
+                        mRecyclerView.getAdapter().notifyDataSetChanged();
+                        mOfflineSavedProductDao.deleteInTx(mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(product.getBarcode())).list());
+                        // Show done when all the products are uploaded.
+                        if (saveItems.isEmpty()) {
+                            SharedPreferences settingsUsage = activity.getBaseContext().getSharedPreferences("usage", 0);
+                            boolean firstUpload = settingsUsage.getBoolean("firstUpload", false);
+                            boolean msgdismissed = settingsUsage.getBoolean("is_offline_msg_dismissed", false);
+                            if (msgdismissed) {
+                                noDataImage.setVisibility(View.VISIBLE);
+                                mRecyclerView.setVisibility(View.GONE);
+                                noDataText.setVisibility(View.VISIBLE);
+                                noDataText.setText(R.string.no_offline_data);
+                                buttonSend.setVisibility(View.GONE);
+                                if (!firstUpload) {
+                                    noDataImage.setImageResource(R.drawable.ic_cloud_upload);
+                                    noDataText.setText(R.string.first_offline);
+                                }
+                            } else {
+                                noDataImage.setVisibility(View.INVISIBLE);
+                                noDataText.setVisibility(View.INVISIBLE);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(LOG_TAG, e.getMessage());
+                    }
+                });
     }
 
     @Override

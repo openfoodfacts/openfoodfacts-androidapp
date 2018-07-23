@@ -3,8 +3,10 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +14,15 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,6 +38,7 @@ import butterknife.OnPageChange;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -80,6 +87,13 @@ public class AddProductActivity extends AppCompatActivity {
     private OfflineSavedProduct offlineSavedProduct;
     private Bundle bundle = new Bundle();
     private MaterialDialog dialog;
+
+    // These fields are used to compare the existing values of a product already present on the server with the product which was saved offline and is being uploaded.
+    private String ingredientsTextOnServer;
+    private String productNameOnServer;
+    private String quantityOnServer;
+    private String linkOnServer;
+    private String ingredientsImageOnServer;
 
     public static File getCameraPicLocation(Context context) {
         File cacheDir = context.getCacheDir();
@@ -286,6 +300,241 @@ public class AddProductActivity extends AppCompatActivity {
             productDetails.put("password", password);
         }
         String code = productDetails.get("code");
+        client.getExistingProductDetails(code)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<State>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
+                                .title(R.string.toastSending)
+                                .content("Please wait")
+                                .cancelable(false)
+                                .progress(true, 0);
+                        dialog = builder.build();
+                        dialog.show();
+                    }
+
+                    @Override
+                    public void onSuccess(State state) {
+                        dialog.dismiss();
+                        if (state.getStatus() == 0) {
+                            // Product doesn't exist yet on the server. Add as it is.
+                            addProductToServer();
+                        } else {
+                            // Product already exists on the server. Compare values saved locally with the values existing on server.
+                            ingredientsTextOnServer = state.getProduct().getIngredientsText();
+                            productNameOnServer = state.getProduct().getProductName();
+                            quantityOnServer = state.getProduct().getQuantity();
+                            linkOnServer = state.getProduct().getManufactureUrl();
+                            ingredientsImageOnServer = state.getProduct().getImageIngredientsUrl();
+                            checkForExistingIngredients();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        dialog.dismiss();
+                        // Add the images to the productDetails to display them in UI later.
+                        productDetails.put("image_front", imagesFilePath[0]);
+                        productDetails.put("image_ingredients", imagesFilePath[1]);
+                        productDetails.put("image_nutrition_facts", imagesFilePath[2]);
+                        OfflineSavedProduct offlineSavedProduct = new OfflineSavedProduct();
+                        offlineSavedProduct.setBarcode(code);
+                        offlineSavedProduct.setProductDetailsMap(productDetails);
+                        mOfflineSavedProductDao.insertOrReplace(offlineSavedProduct);
+                        Toast.makeText(AddProductActivity.this, R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent();
+                        intent.putExtra("uploadedToServer", false);
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }
+                });
+    }
+
+    /**
+     * Checks if ingredients already exist on server and compare it with the ingredients stored locally.
+     */
+    private void checkForExistingIngredients() {
+        if (ingredientsTextOnServer != null && !ingredientsTextOnServer.isEmpty() && productDetails.get("ingredients_text") != null) {
+            MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
+                    .title("Ingredients overwrite")
+                    .customView(R.layout.dialog_compare_ingredients, true)
+                    .positiveText("Choose mine")
+                    .negativeText("Keep previous version")
+                    .onPositive((dialog, which) -> {
+                        dialog.dismiss();
+                        checkForExistingProductName();
+                    })
+                    .onNegative((dialog, which) -> {
+                        dialog.dismiss();
+                        productDetails.remove("ingredients_text");
+                        checkForExistingProductName();
+                    })
+                    .cancelable(false);
+            MaterialDialog dialog = builder.build();
+            dialog.show();
+            View view = dialog.getCustomView();
+            if (view != null) {
+                ImageView imageLocal = view.findViewById(R.id.image_ingredients_local);
+                ImageView imageServer = view.findViewById(R.id.image_ingredients_server);
+                TextView ingredientsLocal = view.findViewById(R.id.txt_ingredients_local);
+                TextView ingredientsServer = view.findViewById(R.id.txt_ingredients_server);
+                ProgressBar imageProgressServer = view.findViewById(R.id.image_progress_server);
+                ProgressBar imageProgressLocal = view.findViewById(R.id.image_progress_local);
+                ingredientsLocal.setText(productDetails.get("ingredients_text"));
+                ingredientsServer.setText(ingredientsTextOnServer);
+                Picasso.with(this)
+                        .load(ingredientsImageOnServer)
+                        .error(R.drawable.placeholder_thumb)
+                        .into(imageServer, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                imageProgressServer.setVisibility(View.GONE);
+                                // Add option to zoom image.
+                                imageServer.setOnClickListener(v -> {
+                                    Intent intent = new Intent(AddProductActivity.this, FullScreenImage.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("imageurl", ingredientsImageOnServer);
+                                    intent.putExtras(bundle);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                        ActivityOptionsCompat options = ActivityOptionsCompat.
+                                                makeSceneTransitionAnimation(AddProductActivity.this, imageServer,
+                                                        getString(R.string.product_transition));
+                                        startActivity(intent, options.toBundle());
+                                    } else {
+                                        startActivity(intent);
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onError() {
+                                imageProgressServer.setVisibility(View.GONE);
+                            }
+                        });
+                Picasso.with(this)
+                        .load("file://" + imagesFilePath[1])
+                        .error(R.drawable.placeholder_thumb)
+                        .into(imageLocal, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                imageProgressLocal.setVisibility(View.GONE);
+                                // Add option to zoom image.
+                                imageLocal.setOnClickListener(v -> {
+                                    Intent intent = new Intent(AddProductActivity.this, FullScreenImage.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("imageurl", "file://" + imagesFilePath[1]);
+                                    intent.putExtras(bundle);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                        ActivityOptionsCompat options = ActivityOptionsCompat.
+                                                makeSceneTransitionAnimation(AddProductActivity.this, imageLocal,
+                                                        getString(R.string.product_transition));
+                                        startActivity(intent, options.toBundle());
+                                    } else {
+                                        startActivity(intent);
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onError() {
+                                imageProgressLocal.setVisibility(View.GONE);
+                            }
+                        });
+            }
+        } else {
+            checkForExistingProductName();
+        }
+    }
+
+    /**
+     * Checks if product name already exist on server and compare it with the product name stored locally.
+     */
+    private void checkForExistingProductName() {
+        if (productNameOnServer != null && !productNameOnServer.isEmpty() && productDetails.get("product_name") != null) {
+            new MaterialDialog.Builder(AddProductActivity.this)
+                    .title("Product name overwrite")
+                    .content("Yours: " + productDetails.get("product_name") + "\n" + "Currently on " + getString(R.string.app_name_long) + ": " + productNameOnServer)
+                    .positiveText("Choose mine")
+                    .negativeText("Keep previous version")
+                    .onPositive((dialog, which) -> {
+                        dialog.dismiss();
+                        checkForExistingQuantity();
+
+                    })
+                    .onNegative((dialog, which) -> {
+                        dialog.dismiss();
+                        productDetails.remove("product_name");
+                        checkForExistingQuantity();
+                    })
+                    .cancelable(false)
+                    .build()
+                    .show();
+        } else {
+            checkForExistingQuantity();
+        }
+    }
+
+    /**
+     * Checks if quantity already exist on server and compare it with the quantity stored locally.
+     */
+    private void checkForExistingQuantity() {
+        if (quantityOnServer != null && !quantityOnServer.isEmpty() && productDetails.get("quantity") != null) {
+            new MaterialDialog.Builder(AddProductActivity.this)
+                    .title("Quantity overwrite")
+                    .content("Yours: " + productDetails.get("quantity") + "\n" + "Currently on " + getString(R.string.app_name_long) + ": " + quantityOnServer)
+                    .positiveText("Choose mine")
+                    .negativeText("Keep previous version")
+                    .onPositive((dialog, which) -> {
+                        dialog.dismiss();
+                        checkForExistingLink();
+                    })
+                    .onNegative((dialog, which) -> {
+                        dialog.dismiss();
+                        productDetails.remove("quantity");
+                        checkForExistingLink();
+                    })
+                    .cancelable(false)
+                    .build()
+                    .show();
+        } else {
+            checkForExistingLink();
+        }
+    }
+
+    /**
+     * Checks if link already exist on server and compare it with the link stored locally.
+     */
+    private void checkForExistingLink() {
+        if (linkOnServer != null && !linkOnServer.isEmpty() && productDetails.get("link") != null) {
+            new MaterialDialog.Builder(AddProductActivity.this)
+                    .title("Link overwrite")
+                    .content("Yours: " + productDetails.get("link") + "\n" + "Currently on " + getString(R.string.app_name_long) + ": " + linkOnServer)
+                    .positiveText("Choose mine")
+                    .negativeText("Keep previous version")
+                    .onPositive((dialog, which) -> {
+                        dialog.dismiss();
+                        addProductToServer();
+                    })
+                    .onNegative((dialog, which) -> {
+                        dialog.dismiss();
+                        productDetails.remove("link");
+                        addProductToServer();
+                    })
+                    .cancelable(false)
+                    .build()
+                    .show();
+        } else {
+            addProductToServer();
+        }
+    }
+
+    /**
+     * Performs network call and uploads the product to the server or stores it locally if there is no internet connection.
+     */
+    private void addProductToServer() {
+        String code = productDetails.get("code");
         for (Map.Entry<String, String> entry : productDetails.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
@@ -301,13 +550,15 @@ public class AddProductActivity extends AppCompatActivity {
                         MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
                                 .title(R.string.toastSending)
                                 .content("Please wait")
-                                .progress(true, 0);
+                                .progress(true, 0)
+                                .cancelable(false);
                         dialog = builder.build();
                         dialog.show();
                     }
 
                     @Override
                     public void onSuccess(State state) {
+                        dialog.dismiss();
                         Toast toast = Toast.makeText(getApplicationContext(), "Product uploaded successfully", Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         View view = toast.getView();
@@ -325,6 +576,7 @@ public class AddProductActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
+                        dialog.dismiss();
                         // Add the images to the productDetails to display them in UI later.
                         productDetails.put("image_front", imagesFilePath[0]);
                         productDetails.put("image_ingredients", imagesFilePath[1]);
