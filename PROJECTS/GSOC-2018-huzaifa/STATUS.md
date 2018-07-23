@@ -1,5 +1,25 @@
 # Status updates for the Open Food Facts project
 
+## Week starting July 16th
+
+### Completed this week
+
+* Added offline product addition.
+* Auto save entered details if the product exists in the offline mode on pressing back button.
+* Added "extract ingredients" button if ingredients image is selected and ingredients text is empty when opening an offline saved product.
+* Display the product in the quickView when offline, and the product is already stored in the OfflineSavedProduct db.
+* Added option to zoom the preview image.
+* Modified the Open Food Facts Base URL to production server.
+* Fix bugs and incorporated changes suggested by mentor.
+
+### Working on this week
+
+* Fix bugs and make improvements in the product addition taking suggestions and feedback from the OFF community.
+
+### To be worked on next week
+
+* Continue the development of product addition.
+
 ## Week starting July 09th
 
 ### Completed this week
