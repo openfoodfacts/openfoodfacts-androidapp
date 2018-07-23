@@ -40,6 +40,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
@@ -252,6 +253,15 @@ public class AddProductIngredientsFragment extends BaseFragment {
                 image.setFilePath(imagePath);
                 ((AddProductActivity) activity).addToPhotoMap(image, 1);
             }
+        }
+    }
+
+    @OnTextChanged(value = R.id.ingredients_list, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void toggleExtractIngredientsButtonVisibility() {
+        if (ingredients.getText().toString().isEmpty()) {
+            extractIngredients.setVisibility(View.VISIBLE);
+        } else {
+            extractIngredients.setVisibility(View.GONE);
         }
     }
 

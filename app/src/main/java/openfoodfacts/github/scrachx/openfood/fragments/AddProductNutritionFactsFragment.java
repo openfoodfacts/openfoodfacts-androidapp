@@ -357,7 +357,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             if (productDetails.get(PARAM_SODIUM) != null) {
                 sodium.setText(productDetails.get(PARAM_SODIUM));
             }
-            if (productDetails.get(PARAM_SUGAR_UNIT) != null) {
+            if (productDetails.get(PARAM_SODIUM_UNIT) != null) {
                 sodiumUnit.setSelection(getPosition(productDetails.get(PARAM_SODIUM_UNIT)));
             }
             if (productDetails.get(PARAM_ALCOHOL) != null) {

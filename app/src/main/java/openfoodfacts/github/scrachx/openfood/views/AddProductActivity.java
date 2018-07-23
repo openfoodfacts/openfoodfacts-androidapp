@@ -686,7 +686,12 @@ public class AddProductActivity extends AppCompatActivity {
                         String status = jsonNode.get("status").asText();
                         if (status.equals("status not ok")) {
                             String error = jsonNode.get("error").asText();
-                            hideImageProgress(position, true, error);
+                            if (error.equals("This picture has already been sent.") && ocr) {
+                                hideImageProgress(position, false, "Image uploaded successfully");
+                                performOCR(image, "ingredients_" + getProductLanguage());
+                            } else {
+                                hideImageProgress(position, true, error);
+                            }
                         } else {
                             hideImageProgress(position, false, "Image uploaded successfully");
                             String imagefield = jsonNode.get("imagefield").asText();
