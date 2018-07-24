@@ -63,7 +63,7 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
         if (percentageValue > 100) {
             percentageValue = 100;
         }
-        holder.txtPercentage.setText(String.valueOf(percentageValue) + "%");
+        holder.txtPercentage.setText(context.getString(R.string.percent, percentageValue));
         if (isUploading) {
             holder.percentageCompleted.setVisibility(View.GONE);
             holder.progressBar.setVisibility(View.VISIBLE);

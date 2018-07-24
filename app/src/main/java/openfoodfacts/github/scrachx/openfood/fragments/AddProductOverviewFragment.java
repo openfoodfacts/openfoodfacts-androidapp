@@ -88,7 +88,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_NAME = "product_name";
     private static final String PARAM_BARCODE = "code";
     private static final String PARAM_QUANTITY = "quantity";
-    private static final String UNIT[] = {"", "g", "mg", "kg", "l", "ml", "cl", "fl oz"};
+    private static final String UNIT[] = {"g", "mg", "kg", "l", "ml", "cl", "fl oz"};
     private static final String PARAM_BRAND = "add_brands";
     private static final String PARAM_LANGUAGE = "lang";
     private static final String PARAM_PACKAGING = "add_packaging";
@@ -202,11 +202,11 @@ public class AddProductOverviewFragment extends BaseFragment {
                 otherImage.setVisibility(View.GONE);
             }
         } else {
-            Toast.makeText(activity, "Something went wrong while trying to add product details", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show();
             activity.finish();
         }
         link.setHint(Html.fromHtml("<small><small>" +
-                "Link of the official page of the product" + "</small></small>"));
+                getString(R.string.hint_product_URL) + "</small></small>"));
         initializeChips();
         loadAutoSuggestions();
     }
@@ -364,7 +364,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     private void setProductLanguage(String lang) {
         languageCode = lang;
         Locale current = LocaleHelper.getLocale(lang);
-        language.setText("Product language : ");
+        language.setText(R.string.product_language);
         language.append(WordUtils.capitalize(current.getDisplayName(current)));
         if (activity instanceof AddProductActivity) {
             ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
@@ -533,7 +533,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     @OnClick(R.id.hint_emb_code)
     void toastEmbCodeHint() {
         new MaterialDialog.Builder(activity)
-                .content("Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409")
+                .content(R.string.hint_emb_codes)
                 .positiveText(R.string.ok_button)
                 .show();
     }
@@ -547,7 +547,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (!name.getText().toString().isEmpty()) {
             url = url + " " + name.getText().toString();
         }
-        url = url + " " + "official website";
+        url = url + " " + getString(R.string.official_website);
         CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(activity.getBaseContext(), null);
         CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, Uri.parse(url), new WebViewFallback());
     }
@@ -557,7 +557,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         IntentIntegrator integrator = IntentIntegrator.forSupportFragment(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
         integrator.setRequestCode(INTENT_INTEGRATOR_REQUEST_CODE);
-        integrator.setPrompt("Scan QR Code for product website");
+        integrator.setPrompt(getString(R.string.scan_QR_code));
         integrator.initiateScan();
     }
 
@@ -596,7 +596,7 @@ public class AddProductOverviewFragment extends BaseFragment {
 
     public boolean areRequiredFieldsEmpty() {
         if (mImageUrl == null || mImageUrl.equals("")) {
-            Toast.makeText(activity, "Please add at least one picture of this product before proceeding", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.add_at_least_one_picture, Toast.LENGTH_SHORT).show();
             scrollView.fullScroll(View.FOCUS_UP);
             return true;
         } else {
@@ -686,7 +686,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             otherImageProgressText.setVisibility(View.GONE);
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         } else {
-            otherImageProgressText.setText("Image uploaded successfully");
+            otherImageProgressText.setText(R.string.image_uploaded_successfully);
         }
     }
 }

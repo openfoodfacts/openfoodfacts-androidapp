@@ -262,7 +262,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                 preFillValues();
             }
         } else {
-            Toast.makeText(activity, "Something went wrong while trying to add product nutrition facts", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.error_adding_nutrition_facts, Toast.LENGTH_SHORT).show();
             activity.finish();
         }
     }
@@ -531,7 +531,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             }
             if ((sugarValue + starchValue) > carbsValue) {
                 carbohydrate.requestFocus();
-                carbohydrate.setError("Carbohydrate can't be less than the sum of sugar and starch");
+                carbohydrate.setError(getString(R.string.error_in_carbohydrate_value));
                 return false;
             } else
                 return true;
@@ -639,7 +639,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     @OnClick(R.id.btn_add_a_nutrient)
     void addNutrient() {
         new MaterialDialog.Builder(activity)
-                .title("Choose a nutrient")
+                .title(R.string.choose_nutrient)
                 .items(R.array.nutrients_array)
                 .itemsCallback((dialog, itemView, position, text) -> {
                     if (!index.contains(position)) {

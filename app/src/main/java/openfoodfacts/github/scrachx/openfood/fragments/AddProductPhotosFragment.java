@@ -87,7 +87,7 @@ public class AddProductPhotosFragment extends BaseFragment {
                 code = offlineSavedProduct.getBarcode();
             }
         } else {
-            Toast.makeText(activity, "Something went wrong while trying to add product photos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.error_adding_product_photos, Toast.LENGTH_SHORT).show();
             activity.finish();
         }
     }
@@ -168,7 +168,7 @@ public class AddProductPhotosFragment extends BaseFragment {
             imageProgressText.setVisibility(View.GONE);
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         } else {
-            imageProgressText.setText("Image uploaded successfully");
+            imageProgressText.setText(R.string.image_uploaded_successfully);
         }
     }
 

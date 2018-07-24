@@ -194,7 +194,7 @@ public class AddProductActivity extends AppCompatActivity {
             saveProduct();
         } else {
             new MaterialDialog.Builder(this)
-                    .content("Do you want to save the product?")
+                    .content(R.string.save_product)
                     .positiveText(R.string.txtSave)
                     .negativeText(R.string.txtPictureNeededDialogNo)
                     .onPositive((dialog, which) -> checkFields())
@@ -210,7 +210,7 @@ public class AddProductActivity extends AppCompatActivity {
                 saveProduct();
             } else {
                 new MaterialDialog.Builder(this)
-                        .content("Do you want to save the product?")
+                        .content(R.string.save_product)
                         .positiveText(R.string.txtSave)
                         .negativeText(R.string.txtPictureNeededDialogNo)
                         .onPositive((dialog, which) -> checkFields())
@@ -249,7 +249,7 @@ public class AddProductActivity extends AppCompatActivity {
             imagesFilePath[2] = offlineSavedProduct.getProductDetailsMap().get("images_nutrition_facts");
         }
         if (state == null && offlineSavedProduct == null) {
-            Toast.makeText(this, "Something went wrong when adding product", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show();
             finish();
         }
         setupViewPager(viewPager);
@@ -278,7 +278,7 @@ public class AddProductActivity extends AppCompatActivity {
             addProductNutritionFactsFragment.setArguments(bundle);
             adapterResult.addFragment(addProductNutritionFactsFragment, "Nutrition Facts");
         } else if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
-            nutritionFactsIndicatorText.setText("Photos");
+            nutritionFactsIndicatorText.setText(R.string.photos);
             addProductPhotosFragment.setArguments(bundle);
             adapterResult.addFragment(addProductPhotosFragment, "Photos");
         }
@@ -308,7 +308,7 @@ public class AddProductActivity extends AppCompatActivity {
                     public void onSubscribe(Disposable d) {
                         MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
                                 .title(R.string.toastSending)
-                                .content("Please wait")
+                                .content(R.string.please_wait)
                                 .cancelable(false)
                                 .progress(true, 0);
                         dialog = builder.build();
@@ -358,10 +358,10 @@ public class AddProductActivity extends AppCompatActivity {
     private void checkForExistingIngredients() {
         if (ingredientsTextOnServer != null && !ingredientsTextOnServer.isEmpty() && productDetails.get("ingredients_text") != null) {
             MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
-                    .title("Ingredients overwrite")
+                    .title(R.string.ingredients_overwrite)
                     .customView(R.layout.dialog_compare_ingredients, true)
-                    .positiveText("Choose mine")
-                    .negativeText("Keep previous version")
+                    .positiveText(R.string.choose_mine)
+                    .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
                         dialog.dismiss();
                         checkForExistingProductName();
@@ -454,10 +454,10 @@ public class AddProductActivity extends AppCompatActivity {
     private void checkForExistingProductName() {
         if (productNameOnServer != null && !productNameOnServer.isEmpty() && productDetails.get("product_name") != null) {
             new MaterialDialog.Builder(AddProductActivity.this)
-                    .title("Product name overwrite")
-                    .content("Yours: " + productDetails.get("product_name") + "\n" + "Currently on " + getString(R.string.app_name_long) + ": " + productNameOnServer)
-                    .positiveText("Choose mine")
-                    .negativeText("Keep previous version")
+                    .title(R.string.product_name_overwrite)
+                    .content(getString(R.string.yours) + productDetails.get("product_name") + "\n" + getString(R.string.currently_on) + getString(R.string.app_name_long) + ": " + productNameOnServer)
+                    .positiveText(R.string.choose_mine)
+                    .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
                         dialog.dismiss();
                         checkForExistingQuantity();
@@ -482,10 +482,10 @@ public class AddProductActivity extends AppCompatActivity {
     private void checkForExistingQuantity() {
         if (quantityOnServer != null && !quantityOnServer.isEmpty() && productDetails.get("quantity") != null) {
             new MaterialDialog.Builder(AddProductActivity.this)
-                    .title("Quantity overwrite")
-                    .content("Yours: " + productDetails.get("quantity") + "\n" + "Currently on " + getString(R.string.app_name_long) + ": " + quantityOnServer)
-                    .positiveText("Choose mine")
-                    .negativeText("Keep previous version")
+                    .title(R.string.quantity_overwrite)
+                    .content(getString(R.string.yours) + productDetails.get("quantity") + "\n" + getString(R.string.currently_on) + getString(R.string.app_name_long) + ": " + quantityOnServer)
+                    .positiveText(R.string.choose_mine)
+                    .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
                         dialog.dismiss();
                         checkForExistingLink();
@@ -509,10 +509,10 @@ public class AddProductActivity extends AppCompatActivity {
     private void checkForExistingLink() {
         if (linkOnServer != null && !linkOnServer.isEmpty() && productDetails.get("link") != null) {
             new MaterialDialog.Builder(AddProductActivity.this)
-                    .title("Link overwrite")
-                    .content("Yours: " + productDetails.get("link") + "\n" + "Currently on " + getString(R.string.app_name_long) + ": " + linkOnServer)
-                    .positiveText("Choose mine")
-                    .negativeText("Keep previous version")
+                    .title(R.string.link_overwrite)
+                    .content(getString(R.string.yours) + productDetails.get("link") + "\n" + getString(R.string.currently_on) + getString(R.string.app_name_long) + ": " + linkOnServer)
+                    .positiveText(R.string.choose_mine)
+                    .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
                         dialog.dismiss();
                         addProductToServer();
@@ -549,7 +549,7 @@ public class AddProductActivity extends AppCompatActivity {
                         disposable = d;
                         MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
                                 .title(R.string.toastSending)
-                                .content("Please wait")
+                                .content(R.string.please_wait)
                                 .progress(true, 0)
                                 .cancelable(false);
                         dialog = builder.build();
@@ -559,7 +559,7 @@ public class AddProductActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(State state) {
                         dialog.dismiss();
-                        Toast toast = Toast.makeText(getApplicationContext(), "Product uploaded successfully", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), R.string.product_uploaded_successfully, Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         View view = toast.getView();
                         TextView textView = view.findViewById(android.R.id.message);
@@ -687,13 +687,13 @@ public class AddProductActivity extends AppCompatActivity {
                         if (status.equals("status not ok")) {
                             String error = jsonNode.get("error").asText();
                             if (error.equals("This picture has already been sent.") && ocr) {
-                                hideImageProgress(position, false, "Image uploaded successfully");
+                                hideImageProgress(position, false, getString(R.string.image_uploaded_successfully));
                                 performOCR(image, "ingredients_" + getProductLanguage());
                             } else {
                                 hideImageProgress(position, true, error);
                             }
                         } else {
-                            hideImageProgress(position, false, "Image uploaded successfully");
+                            hideImageProgress(position, false, getString(R.string.image_uploaded_successfully));
                             String imagefield = jsonNode.get("imagefield").asText();
                             String imgid = jsonNode.get("image").get("imgid").asText();
                             if (position != 3 && position != 4) {
@@ -707,7 +707,7 @@ public class AddProductActivity extends AppCompatActivity {
                     public void onError(Throwable e) {
                         // A network error happened
                         if (e instanceof IOException) {
-                            hideImageProgress(position, false, "You appear to have no internet connection, images will be uploaded when network is available");
+                            hideImageProgress(position, false, getString(R.string.no_internet_connection));
                             Log.e(AddProductActivity.class.getSimpleName(), e.getMessage());
                             ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                             mToUploadProductDao.insertOrReplace(product);
@@ -748,7 +748,7 @@ public class AddProductActivity extends AppCompatActivity {
                         if (e instanceof IOException) {
                             if (ocr) {
                                 View view = findViewById(R.id.coordinator_layout);
-                                Snackbar.make(view, "No internet connection. Unable to extract ingredients", Snackbar.LENGTH_INDEFINITE)
+                                Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
                                         .setAction(R.string.txt_try_again, v -> setPhoto(image, imagefield, imgid, true)).show();
                             }
                         } else {
@@ -786,7 +786,7 @@ public class AddProductActivity extends AppCompatActivity {
                         addProductIngredientsFragment.hideOCRProgress();
                         if (e instanceof IOException) {
                             View view = findViewById(R.id.coordinator_layout);
-                            Snackbar.make(view, "No internet connection. Unable to extract ingredients", Snackbar.LENGTH_INDEFINITE)
+                            Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
                                     .setAction(R.string.txt_try_again, v -> performOCR(image, imageField)).show();
                         } else {
                             Log.i(this.getClass().getSimpleName(), e.getMessage());

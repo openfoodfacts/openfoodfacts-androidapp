@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:text="Additional Pictures"
+            android:text="@string/additional_pictures"
             android:textColor="#dd0b16"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:text="(Add more pictures of the product. eg: recycling instructions, labels etc.)"
+            android:text="@string/hint_product_pictures"
             android:textColor="@color/grey_500"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +101,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="#3C950E"
-            android:text="Add this product"
+            android:text="@string/add_this_product"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/table_layout" />
 

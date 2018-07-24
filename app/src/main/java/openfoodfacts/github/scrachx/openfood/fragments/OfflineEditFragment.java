@@ -256,10 +256,10 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         String ingredientsTextOnServer = existingValuesOnServer.get(INGREDIENTS_ON_SERVER);
         if (ingredientsTextOnServer != null && !ingredientsTextOnServer.isEmpty() && productDetails.get("ingredients_text") != null) {
             MaterialDialog.Builder builder = new MaterialDialog.Builder(activity)
-                    .title("Ingredients overwrite")
+                    .title(R.string.ingredients_overwrite)
                     .customView(R.layout.dialog_compare_ingredients, true)
-                    .positiveText("Choose mine")
-                    .negativeText("Keep previous version")
+                    .positiveText(R.string.choose_mine)
+                    .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
                         dialog.dismiss();
                         checkForExistingProductName(product, existingValuesOnServer);
@@ -355,10 +355,10 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         String productNameOnServer = existingValuesOnServer.get(PRODUCT_NAME_ON_SERVER);
         if (productNameOnServer != null && !productNameOnServer.isEmpty() && productDetails.get("product_name") != null) {
             new MaterialDialog.Builder(activity)
-                    .title("Product name overwrite")
-                    .content("Yours: " + productDetails.get("product_name") + "\n" + "Currently on " + getString(R.string.app_name_long) + ": " + productNameOnServer)
-                    .positiveText("Choose mine")
-                    .negativeText("Keep previous version")
+                    .title(R.string.product_name_overwrite)
+                    .content(getString(R.string.yours) + productDetails.get("product_name") + "\n" + getString(R.string.currently_on) + getString(R.string.app_name_long) + ": " + productNameOnServer)
+                    .positiveText(R.string.choose_mine)
+                    .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
                         dialog.dismiss();
                         checkForExistingQuantity(product, existingValuesOnServer);
@@ -386,10 +386,10 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         String quantityOnServer = existingValuesOnServer.get(QUANTITY_ON_SERVER);
         if (quantityOnServer != null && !quantityOnServer.isEmpty() && productDetails.get("quantity") != null) {
             new MaterialDialog.Builder(activity)
-                    .title("Quantity overwrite")
-                    .content("Yours: " + productDetails.get("quantity") + "\n" + "Currently on " + getString(R.string.app_name_long) + ": " + quantityOnServer)
-                    .positiveText("Choose mine")
-                    .negativeText("Keep previous version")
+                    .title(R.string.quantity_overwrite)
+                    .content(getString(R.string.yours) + productDetails.get("quantity") + "\n" + getString(R.string.currently_on) + getString(R.string.app_name_long) + ": " + quantityOnServer)
+                    .positiveText(R.string.choose_mine)
+                    .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
                         dialog.dismiss();
                         checkForExistingLink(product, existingValuesOnServer);
@@ -416,10 +416,10 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         String linkOnServer = existingValuesOnServer.get(LINK_ON_SERVER);
         if (linkOnServer != null && !linkOnServer.isEmpty() && productDetails.get("link") != null) {
             new MaterialDialog.Builder(activity)
-                    .title("Link overwrite")
-                    .content("Yours: " + productDetails.get("link") + "\n" + "Currently on " + getString(R.string.app_name_long) + ": " + linkOnServer)
-                    .positiveText("Choose mine")
-                    .negativeText("Keep previous version")
+                    .title(R.string.link_overwrite)
+                    .content(getString(R.string.yours) + productDetails.get("link") + "\n" + getString(R.string.currently_on) + getString(R.string.app_name_long) + ": " + linkOnServer)
+                    .positiveText(R.string.choose_mine)
+                    .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
                         dialog.dismiss();
                         addProductToServer(product);

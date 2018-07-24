@@ -33,7 +33,6 @@
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item> </item>
     <item>公克</item>
     <item>毫克</item>
     <item>公斤</item>

@@ -37,11 +37,10 @@
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item> </item>
+    <item>g</item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
-    <item>ml</item>
     <item>ml</item>
     <item>cl</item>
     <item>fl oz</item>

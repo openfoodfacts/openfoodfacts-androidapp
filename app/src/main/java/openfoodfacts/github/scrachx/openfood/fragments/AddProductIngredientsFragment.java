@@ -124,7 +124,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
                 preFillValues();
             }
         } else {
-            Toast.makeText(activity, "Something went wrong while trying to add product ingredients", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.error_adding_ingredients, Toast.LENGTH_SHORT).show();
             activity.finish();
         }
         if (ingredients.getText().toString().isEmpty() && productDetails.get("image_ingredients") != null && !productDetails.get("image_ingredients").isEmpty()) {
@@ -342,7 +342,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
             btnLooksGood.setVisibility(View.VISIBLE);
             btnSkipIngredients.setVisibility(View.VISIBLE);
         } else {
-            Toast.makeText(activity, "Unable to extract ingredients from image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.unable_to_extract_ingredients, Toast.LENGTH_SHORT).show();
         }
 
     }

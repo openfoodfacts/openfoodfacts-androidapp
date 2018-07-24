@@ -45,7 +45,6 @@
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item> </item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
