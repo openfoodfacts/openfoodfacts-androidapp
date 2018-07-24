@@ -356,7 +356,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         if (productNameOnServer != null && !productNameOnServer.isEmpty() && productDetails.get("product_name") != null) {
             new MaterialDialog.Builder(activity)
                     .title(R.string.product_name_overwrite)
-                    .content(getString(R.string.yours) + productDetails.get("product_name") + "\n" + getString(R.string.currently_on) + getString(R.string.app_name_long) + ": " + productNameOnServer)
+                    .content(getString(R.string.yours) + productDetails.get("product_name") + "\n" + getString(R.string.currently_on, getString(R.string.app_name_long)) + productNameOnServer)
                     .positiveText(R.string.choose_mine)
                     .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
@@ -387,7 +387,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         if (quantityOnServer != null && !quantityOnServer.isEmpty() && productDetails.get("quantity") != null) {
             new MaterialDialog.Builder(activity)
                     .title(R.string.quantity_overwrite)
-                    .content(getString(R.string.yours) + productDetails.get("quantity") + "\n" + getString(R.string.currently_on) + getString(R.string.app_name_long) + ": " + quantityOnServer)
+                    .content(getString(R.string.yours) + productDetails.get("quantity") + "\n" + getString(R.string.currently_on, getString(R.string.app_name_long)) + quantityOnServer)
                     .positiveText(R.string.choose_mine)
                     .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
@@ -417,7 +417,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         if (linkOnServer != null && !linkOnServer.isEmpty() && productDetails.get("link") != null) {
             new MaterialDialog.Builder(activity)
                     .title(R.string.link_overwrite)
-                    .content(getString(R.string.yours) + productDetails.get("link") + "\n" + getString(R.string.currently_on) + getString(R.string.app_name_long) + ": " + linkOnServer)
+                    .content(getString(R.string.yours) + productDetails.get("link") + "\n" + getString(R.string.currently_on, getString(R.string.app_name_long)) + linkOnServer)
                     .positiveText(R.string.choose_mine)
                     .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
