@@ -217,7 +217,13 @@
   <string name="no_brand">crwdns93485:0crwdne93485:0</string>
   <string name="no_title">crwdns93486:0crwdne93486:0</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">crwdns46806:0crwdne46806:0</string>
+  <string name="display_fact">crwdns93488:0%1$scrwdnd93488:0%2$scrwdne93488:0</string>
+  <string name="check_facts">crwdns93489:0crwdne93489:0</string>
+  <string name="nutrition">crwdns93490:0crwdne93490:0</string>
+  <string name="calculated_nutrition">crwdns93491:0crwdne93491:0</string>
+  <string name="please_enter_weight">crwdns93492:0crwdne93492:0</string>
+  <string name="enter_weight">crwdns93493:0crwdne93493:0</string>
+  <string name="calculate_nutrition_facts">crwdns93494:0crwdne93494:0</string>
   <string name="txt_calories_result">crwdns46807:0%1$scrwdnd46807:0%2$scrwdnd46807:0%3$scrwdne46807:0</string>
   <string name="nutrition_carbohydrate">crwdns35188:0crwdne35188:0</string>
   <string name="nutrition_carbohydrate_short_name">crwdns35189:0crwdne35189:0</string>

@@ -217,7 +217,13 @@
   <string name="no_brand">Ohne Handelsmarke</string>
   <string name="no_title">Ohne Titel</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Kalorien berechnen</string>
+  <string name="display_fact">Tabelle für Nährwertangaben von %1$s von %2$s</string>
+  <string name="check_facts">Prüfen</string>
+  <string name="nutrition">Nährwertangaben</string>
+  <string name="calculated_nutrition">Berechnete Nährwerte</string>
+  <string name="please_enter_weight">Bitte das Gewicht eingeben</string>
+  <string name="enter_weight">Gewicht eingeben</string>
+  <string name="calculate_nutrition_facts">Nährwertangaben berechnen</string>
   <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Kohlenhydrate</string>
   <string name="nutrition_carbohydrate_short_name">Kohlenhydrate (g)</string>
