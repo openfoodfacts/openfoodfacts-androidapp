@@ -178,7 +178,7 @@
   <string name="warning_alert_data">Informasi mengenai alergi anda tidak akan dikirim ke server Open Food Facts. Juga, berhati-hatilah terhadap data produk yang mungkin tidak akurat, dan hasil deteksi mungkin tidak 100% akurat, mohon cek kembali! </string>
   <string name="from_gallery">Dari Galeri</string>
   <string name="product_sent">produk berhasil dikirimkan</string>
-  <string name="action_edit_product">mengedit produkk</string>
+  <string name="action_edit_product">Ubah produk</string>
   <string name="title_info_dialog">Bagaimana ini bekerja?</string>
   <string name="text_offline_info_dialog">kamu bisa  memindai produk saat kamu sedang tidak aktif  untuk menambah ke fakta-fakta makanan terbuka kemudian. Semua produk yang kamu memindai akan tampil  di sini, dan kamu dapat mengirimkan mereka dengan tombol yang ada di bawah ini</string>
   <string name="permission_camera">kamera membutuhkan izin untuk memindah kode batang dan mengambil gambar</string>
