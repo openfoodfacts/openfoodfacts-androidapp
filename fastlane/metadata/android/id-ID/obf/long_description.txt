@@ -1,16 +1,16 @@
-***Contribute to Cosmetic Transparency***
+***Kontribusi untuk Transparansi Industri Kosmetik***
 
-- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
-- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your cosmetic cupboard. 
+- Open Beauty Facts adalah basis data produk kosmetik dibuat oleh semua orang untuk semua orang.
+- Dapat digunakan untuk membuat pilihan kosmetik yang lebih baik dan dapat digunakan oleh siapa saja untuk tujuan apa saja karena merupakan data terbuka.
+- Open Beauty Facts adalah proyek nirlaba yang dikembangkan oleh ribuan sukarelawan dari seluruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara. 
+- Untuk memulai kontribusi, tambahkan sebuah produk di lemari kosmetik anda. 
 
-*** Get the Facts ***
+*** Dapatkan faktanya ***
 
-- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
-- Open Beauty Facts helps you to make sense of the fine print on products labels.
-- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
-- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
+- Bahan tambahan kosmetik F.I.L. kode, angka, INCI (International Nomenclature of Cosmetics Ingredients/Tata Nama Kosmetik Internasional), komposisi bahan, alergen, kode kemasan... 
+- Open Beauty Facts membantu anda untuk memahami label kemasan produk.
+- Tidak harus menjadi analis kimia dan mempelajari bahasa latin lagi untuk memahami komposisi kosmetik :-)
+- Yang dapat dipindai: Aftershave, lotion tubuh, krim, deodoran, eyeliner, foundation, wewangian, lipstick, masker, parfum, sampo, sabun, gel mandi, cat kuku, dan banyak lagi…
 - We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
 *** Works well in any condition ***
