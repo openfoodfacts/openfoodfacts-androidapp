@@ -24,11 +24,11 @@
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
   <string name="msg_share">Lihatlah produk ini pada Open Food Facts:</string>
-  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
+  <string name="not_support_books">Buku tidak didukung Open Food Facts saat ini</string>
   <string name="txt_broaden_search">- memperluas pencarian anda \n- pindai dan tambahkan ke Open Food Facts</string>
   <string name="Donation">Klik di sini untuk menyumbang pada Open Food Facts</string>
-  <string name="translate_help_title">Help translate Open Food Facts</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="translate_help_title">Bantu terjemahkan Open Food Facts</string>
+  <string name="translate_help_summary">Bawa database Open Food Facts ke bahasa anda - tidak memerlukan pengetahuan teknis</string>
   <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Informasi mengenai alergi anda tidak akan dikirim ke server Open Food Facts. Juga, berhati-hatilah terhadap data produk yang mungkin tidak akurat, dan hasil deteksi mungkin tidak 100% akurat, mohon cek kembali! </string>
   <!-- OPFF tagline in different languages -->
