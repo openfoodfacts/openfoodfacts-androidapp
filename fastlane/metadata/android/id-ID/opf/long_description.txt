@@ -16,20 +16,20 @@ hal hal manakan buka adalah  sistem data  terbuka dari produk makanan dengan bah
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Bekerja dengan baik di segala kondisi ***
+- Bisa menambahkan produk, bahkan tanpa koneksi internet.
+- Aplikasi hanya membuat hal yang diperlukan untuk mengurangi konsumsi data dan baterai
+- Tidak memerlukan kamera untuk mencari produk. Jika bermasalah dengan kamera, mengetik angka kode batang bisa dilakukan.
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Bisa menggunakan aplikasi secara anonim
+- Bisa mengekspor riwayat pemindaian
 
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
 Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Pertanyaan, umpan balik: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 
