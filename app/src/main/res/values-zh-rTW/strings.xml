@@ -212,7 +212,13 @@
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">計算卡路里</string>
+  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+  <string name="check_facts">Check</string>
+  <string name="nutrition">營養成分</string>
+  <string name="calculated_nutrition">Calculated Nutrition</string>
+  <string name="please_enter_weight">Please enter the weight</string>
+  <string name="enter_weight">Enter the weight</string>
+  <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
   <string name="txt_calories_result">在 %2$s %3$s 有 %1$s 千卡</string>
   <string name="nutrition_carbohydrate">碳水化合物</string>
   <string name="nutrition_carbohydrate_short_name">碳水化合物（公克）</string>

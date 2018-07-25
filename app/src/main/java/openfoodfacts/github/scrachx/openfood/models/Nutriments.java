@@ -13,6 +13,7 @@ import java.util.Map;
 import openfoodfacts.github.scrachx.openfood.R;
 
 import static android.text.TextUtils.isEmpty;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
 /**
  * JSON representation of the product nutriments entry
@@ -287,6 +288,44 @@ public class Nutriments implements Serializable {
         public String getUnit() {
             return unit;
         }
+
+        public String getforanyvalue(float x,String spinnervalue){
+            String s = for100g;
+            if(s.isEmpty() || s.contains("%"))
+            {
+                return for100g;
+            }
+            else if(spinnervalue.equals("g"))
+            {
+                float value = Float.valueOf(s);
+                value = (x/100)*value;
+                String snew = Float.toString(value);
+                snew = getRoundNumber(snew);
+                return(snew);
+            }
+            else if(spinnervalue.equals("kg"))
+            {
+                float value = Float.valueOf(s);
+                value = (x*10)*value;
+                String snew = Float.toString(value);
+                snew = getRoundNumber(snew);
+                return(snew);
+            }
+            else if(spinnervalue.equals("mg"))
+            {
+                float value = Float.valueOf(s);
+                value = (x/10000)*value;
+                String snew = Float.toString(value);
+                snew = getRoundNumber(snew);
+                return(snew);
+            }
+            else
+            {
+                return s;
+            }
+        }
+
+
     }
 
 }

@@ -224,7 +224,13 @@
   <string name="no_brand">Нет бренда</string>
   <string name="no_title">Нет названия</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Подсчет калорий</string>
+  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+  <string name="check_facts">Check</string>
+  <string name="nutrition">Пищевая ценность</string>
+  <string name="calculated_nutrition">Calculated Nutrition</string>
+  <string name="please_enter_weight">Please enter the weight</string>
+  <string name="enter_weight">Enter the weight</string>
+  <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
   <string name="txt_calories_result">%1$s ккал в %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Углеводы</string>
   <string name="nutrition_carbohydrate_short_name">Углеводы (г)</string>

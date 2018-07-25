@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.product;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -39,6 +40,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -54,6 +56,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
@@ -330,14 +333,10 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
                 CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
                 return true;
 
-            case R.id.action_calculate_calories:
-                /*
-                creates dialog for calculating total calories for the entered weight.
-                Result is displayed instantaneously by listening to the changes in input
-                as well as the spinner.
-                 */
+            case R.id.action_facts:
+
                 MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
-                        .title(R.string.calculate_calories)
+                        .title(R.string.calculate_nutrition_facts)
                         .customView(R.layout.dialog_calculate_calories, false)
                         .dismissListener(dialogInterface -> Utils.hideKeyboard(ProductActivity.this));
                 MaterialDialog dialog = builder.build();
@@ -346,11 +345,30 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
                 if (view != null) {
                     EditText etWeight = view.findViewById(R.id.edit_text_weight);
                     Spinner spinner = view.findViewById(R.id.spinner_weight);
-                    TextView caloriesResult = view.findViewById(R.id.txt_calories_result);
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            showCalories(etWeight, spinner, caloriesResult);
+                            Button btn = (Button) dialog.findViewById(R.id.txt_calories_result);
+                            btn.setOnClickListener(new View.OnClickListener() {
+
+                                @Override
+                                public void onClick(View v) {
+                                    if (!TextUtils.isEmpty(etWeight.getText().toString())) {
+
+                                        String SpinnerValue = (String) spinner.getSelectedItem();
+                                        String weight = etWeight.getText().toString();
+                                        Product p = mState.getProduct();
+                                        Intent intent = new Intent(getApplicationContext(), CalculateDetails.class);
+                                        intent.putExtra("sampleObject", p);
+                                        intent.putExtra("spinnervalue", SpinnerValue);
+                                        intent.putExtra("weight", weight);
+                                        startActivity(intent);
+                                        dialog.dismiss();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.please_enter_weight), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                         }
 
                         @Override
@@ -358,89 +376,31 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 
                         }
                     });
-                    etWeight.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                        }
-
-                        @Override
-                        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                        }
-
-                        @Override
-                        public void afterTextChanged(Editable editable) {
-                            showCalories(etWeight, spinner, caloriesResult);
-                        }
-                    });
                 }
                 return true;
-            default:
+
+                default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    /**
-     * Displays the calculated calorie in the dialog.
-     *
-     * @param etWeight       editText for inputting weight.
-     * @param spinner        indicating the unit (mg, g or kg).
-     * @param caloriesResult textView in which the result is displayed.
-     */
-    private void showCalories(EditText etWeight, Spinner spinner, TextView caloriesResult) {
-        if (!TextUtils.isEmpty(etWeight.getText())) {
-            float weight;
-            try {
-                weight = Float.valueOf(etWeight.getText().toString());
-            } catch (NumberFormatException e) {
-                return;
-            }
-            String unit = spinner.getSelectedItem().toString();
-            float calories = calculateCalories(weight, unit);
-            caloriesResult.setText(getString(R.string.txt_calories_result, Utils.getRoundNumber(String.valueOf(calories)),
-                    Utils.getRoundNumber(String.valueOf(weight)), unit));
-        }
-    }
-
-    /**
-     * Given a weight of food, calculate the number of calories for that portion.
-     *
-     * @param weight for which calories need to be calculated.
-     * @param unit   from spinner either mg, g or kg.
-     * @return total calories in the provided weight.
-     */
-    private float calculateCalories(float weight, String unit) {
-        float caloriePer100g, weightInG;
-        caloriePer100g = Float.valueOf(Utils.getEnergy(mState.getProduct().getNutriments().get(Nutriments.ENERGY).getFor100g()));
-        switch (unit) {
-            case "mg":
-                weightInG = weight / 1000;
-                break;
-            case "kg":
-                weightInG = weight * 1000;
-                break;
-            default:
-                weightInG = weight;
-                break;
-        }
-        return ((caloriePer100g / 100) * weightInG);
-    }
-
-
-    @Override
+            @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_product, menu);
 
-        /*
-        Hide the 'Calculate Calories' option from the overflow menu if the product
-        doesn't have calories information in nutrition facts.
-        */
+/*
+Hide the 'Calculate Calories' option from the overflow menu if the product
+doesn't have calories information in nutrition facts.
+*/
         if (mState.getProduct().getNutriments() == null || mState.getProduct().getNutriments().get(Nutriments.ENERGY) == null) {
-            menu.findItem(R.id.action_calculate_calories).setVisible(false);
+            menu.findItem(R.id.action_facts).setVisible(false);
         }
+
         return true;
     }
+
+
 
     // Call to update the share intent
     private void setShareIntent(Intent shareIntent) {

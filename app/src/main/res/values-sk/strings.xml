@@ -224,7 +224,13 @@
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">Calculate Calories</string>
+  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+  <string name="check_facts">Check</string>
+  <string name="nutrition">Nutrition</string>
+  <string name="calculated_nutrition">Calculated Nutrition</string>
+  <string name="please_enter_weight">Please enter the weight</string>
+  <string name="enter_weight">Enter the weight</string>
+  <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
   <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Carbohydrate</string>
   <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
