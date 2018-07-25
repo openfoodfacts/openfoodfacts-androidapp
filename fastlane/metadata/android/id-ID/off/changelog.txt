@@ -14,6 +14,6 @@ Apa yang baru?
 6. Goyang ponsel kapan saja untuk memulai pemindaian
 7. Tambahkan produk bahkan tanpa koneksi internet
 8. Ambil foto, isi informasi, dan buat transparansi makanan kesukaan anda terjadi
-9. Semuanya jauh lebih cepat. Products load blazingly fast, even with a bad mobile connection.
-10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
-Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
+9. Semuanya jauh lebih cepat. Produk dimuat lebih cepat, bahkan dengan koneksi internet yang buruk.
+10. Kami tidak tertarik dengan data pribadi anda. Tidak perlu daftar untuk memindai dan berkontribusi.
+Lebihnya! Meskipun banyak yang baru, aplikasi masih sama ringannya dengan sebelumnya. Ruang yang tersisa di ponsel anda adalah suci.
