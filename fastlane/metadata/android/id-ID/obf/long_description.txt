@@ -11,21 +11,23 @@
 - Open Beauty Facts membantu anda untuk memahami label kemasan produk.
 - Tidak harus menjadi analis kimia dan mempelajari bahasa latin lagi untuk memahami komposisi kosmetik :-)
 - Yang dapat dipindai: Aftershave, lotion tubuh, krim, deodoran, eyeliner, foundation, wewangian, lipstick, masker, parfum, sampo, sabun, gel mandi, cat kuku, dan banyak lagi…
-- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+-Akan sangat berguna untuk membuat pilihan kosmetik yang lebih baik bagi orang dengan kondisi kulit seperti jerawat, psoriasis, dan eksim.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Bekerja dengan baik di segala kondisi ***
+- Bisa menambahkan produk, bahkan tanpa koneksi internet.
+- Aplikasi hanya membuat hal yang diperlukan untuk mengurangi konsumsi data dan baterai
+- Tidak memerlukan kamera untuk mencari produk. Jika bermasalah dengan kamera, mengetik angka kode batang bisa dilakukan.
 
-*** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Kosmetikmu, Datamu ***
+- Datamu adalah milikmu, tidak akan diunggah
+- Bisa menggunakan aplikasi secara anonim
+- Bisa mengekspor riwayat pemindaian
 
-Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+Catatan: Open Beauty Facts sedang dibangun, situs dan aplikasi didasarkan pada Open Food Facts dan perubahan akan dibuat untuk mempertimbangkan kekhususan kosmetik.
 
-Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Open Beauty Facts juga tersedia di situs web https://world.openbeautyfacts.org
+Pertanyaan, umpan balik: contact@openfoodfacts.org
 
-For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Pasang Open Food Facts untuk info makanan manusia.
+Pasang Open Pet Food Facts untuk info makanan hewan.
+Pasang Open Product Facst untuk info produk lainnya.
