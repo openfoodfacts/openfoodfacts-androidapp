@@ -158,7 +158,9 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(a -> {
                     hideAllViews();
-                    quickView.setVisibility(View.VISIBLE);
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                    fab_status.setVisibility(View.GONE);
+                    quickView.setOnClickListener(null);
                     progressBar.setVisibility(View.VISIBLE);
                     progressText.setVisibility(View.VISIBLE);
                     progressText.setText(getString(R.string.loading_product, lastText));
@@ -197,6 +199,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 fab_status.setOnClickListener(null);
                             } else if (isProductIncomplete()) {
                                 txtProductIncomplete.setVisibility(View.VISIBLE);
+                                fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
                                 fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
                                 fab_status.setOnClickListener(v -> {
                                     String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + product.getCode();
@@ -208,6 +211,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 });
                             } else {
                                 txtProductIncomplete.setVisibility(View.INVISIBLE);
+                                fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
                                 fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_check_white_24dp));
                                 fab_status.setOnClickListener(null);
                             }
@@ -270,10 +274,12 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(lastText)).unique();
                                 if (offlineSavedProduct != null) {
                                     showOfflineSavedDetails(offlineSavedProduct);
+                                    fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
                                     fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
                                 } else {
                                     productNotFound.setText(getString(R.string.addProductOffline, lastText));
                                     productNotFound.setVisibility(View.VISIBLE);
+                                    fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
                                     fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.fab_add));
                                 }
                                 fab_status.setVisibility(View.VISIBLE);
@@ -441,7 +447,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         handler = new Handler();
         runnable = () -> {
             hideAllViews();
-            quickView.setVisibility(View.VISIBLE);
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
             searchByBarcode.setVisibility(View.VISIBLE);
             searchByBarcode.requestFocus();
@@ -449,10 +454,13 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         handler.postDelayed(runnable, 15000);
 
         bottomSheetBehavior = BottomSheetBehavior.from(quickView);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
-
+                if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+                    lastText = null;
+                }
             }
 
             @Override
@@ -461,7 +469,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     fab_status.setVisibility(View.GONE);
                     txtProductIncomplete.setVisibility(View.GONE);
                 } else {
-                    if (searchByBarcode.getVisibility() != View.VISIBLE) {
+                    if (searchByBarcode.getVisibility() != View.VISIBLE && progressBar.getVisibility() != View.VISIBLE) {
                         fab_status.setVisibility(View.VISIBLE);
                         if (isProductIncomplete()) {
                             txtProductIncomplete.setVisibility(View.VISIBLE);
@@ -514,6 +522,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
                 } else {
                     if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(searchByBarcode.getText().toString()) && (!searchByBarcode.getText().toString().substring(0, 3).contains("977") || !searchByBarcode.getText().toString().substring(0, 3).contains("978") || !searchByBarcode.getText().toString().substring(0, 3).contains("979"))) {
+                        lastText = searchByBarcode.getText().toString();
                         findProduct(searchByBarcode.getText().toString(), false);
                     } else {
                         searchByBarcode.requestFocus();
@@ -604,7 +613,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                 case R.id.troubleScanning:
                     hideAllViews();
                     handler.removeCallbacks(runnable);
-                    quickView.setVisibility(View.VISIBLE);
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                     quickView.setOnClickListener(null);
                     searchByBarcode.setText(null);

@@ -772,7 +772,7 @@
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
     <string name="traces">Traces</string>
-    <string name="traces_hint">Indicate ingredients from mentions like \\\'May contain traces of\\\', \\\'Made in a factory that also uses\\\', etc. \\nExamples: Milk, Gluten, Nuts</string>
+    <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>

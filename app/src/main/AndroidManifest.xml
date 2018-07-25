@@ -162,14 +162,14 @@
             android:name=".views.ContinuousScanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-      
+
         <activity
             android:name=".views.AddProductActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-      
-        <activity android:name=".views.product.CalculateDetails"/>
+
+        <activity android:name=".views.product.CalculateDetails" />
     </application>
 
 </manifest>
