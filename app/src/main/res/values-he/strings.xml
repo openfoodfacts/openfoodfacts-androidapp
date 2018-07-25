@@ -225,13 +225,13 @@
   <string name="no_brand">אין מותג</string>
   <string name="no_title">אין כותרת</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="display_fact">טבלת הערכים התזונתיים של %1$s מתוך %2$s</string>
+  <string name="check_facts">בדיקה</string>
   <string name="nutrition">תזונה</string>
-  <string name="calculated_nutrition">Calculated Nutrition</string>
-  <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
-  <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+  <string name="calculated_nutrition">תזונה מחושבת</string>
+  <string name="please_enter_weight">נא להקליד את המשקל</string>
+  <string name="enter_weight">להקליד משקל</string>
+  <string name="calculate_nutrition_facts">חישוב עובדות תזונתיות</string>
   <string name="txt_calories_result">%1$s קילו קלוריות ב־%2$s %3$s</string>
   <string name="nutrition_carbohydrate">פחמימות</string>
   <string name="nutrition_carbohydrate_short_name">פחמימות (ג׳)</string>
