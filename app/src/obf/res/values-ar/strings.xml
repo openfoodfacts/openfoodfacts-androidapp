@@ -15,7 +15,7 @@
   <string name="txtHome">Open Beauty Facts is a database of cosmetic products with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
   <string name="slide_1_title">ساهم في شفافية مستحضرات التجميل</string>
   <string name="slide_1_desc">Scan products, take them in picture, make cosmetic transparency happen</string>
-  <string name="slide_2_title">Get the facts</string>
+  <string name="slide_2_title">احصل على الحقائق</string>
   <string name="slide_2_desc">معلومات شاملة حول المنتج الذي تم مسحه ضوئيًا وفك شفرته لك</string>
   <string name="slide_3_title">تتبع المنتج الذي تستخدمه</string>
   <string name="slide_3_desc">كل مستحضرات التجميل التي تستخدمها ، في قائمة واحدة يدوية يمكنك إخراجها</string>
@@ -29,7 +29,7 @@
   <string name="Donation">انقر هنا للتبرع الى \"حقائق الجمال المفتوحة\"</string>
   <string name="translate_help_title">ساعد في ترجمة \"حقائق الجمال المفتوحة\"</string>
   <string name="translate_help_summary">ترجم قاعدة بيانات حقائق الجمال المفتوحة إلى لغتك - لن تحتاج إلى معرفة تقنية</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+  <string name="text_offline_info_dialog">يمكنك فحص المنتجات حتى عندما تكون في وضع عدم الاتصال لإضافتها إلى حقائق الجمال المفتوحة لاحقًا. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <!-- OBF tagline in different languages -->
   <string name="tagline">the free cosmetics database</string>
