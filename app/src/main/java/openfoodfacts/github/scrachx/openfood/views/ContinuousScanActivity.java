@@ -632,16 +632,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            boolean uploadedToServer = data.getBooleanExtra("uploadedToServer", true);
-            if (uploadedToServer) {
-                findProduct(lastText, true);
-            } else {
-                // Not uploaded to server, saved locally, open OfflineEdit fragment.
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("openOfflineEdit", true);
-                startActivity(intent);
-                finish();
-            }
+            findProduct(lastText, true);
         }
     }
 

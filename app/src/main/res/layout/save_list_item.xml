@@ -72,7 +72,7 @@
         android:layout_width="50dp"
         android:layout_height="15dp"
         android:layout_margin="@dimen/spacing_normal"
-        android:max="22"
+        android:max="25"
         android:progress="12"
         app:layout_constraintBottom_toBottomOf="@id/imgSaveProduct"
         app:layout_constraintEnd_toEndOf="parent"

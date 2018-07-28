@@ -48,10 +48,10 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
     @Override
     public void onBindViewHolder(@NonNull SaveViewHolder holder, int position) {
         SaveItem item = saveItems.get(position);
-        if (item.getFieldsCompleted() < 9) {
+        if (item.getFieldsCompleted() < 10) {
             holder.percentageCompleted.getProgressDrawable().setColorFilter(
                     Color.RED, PorterDuff.Mode.MULTIPLY);
-        } else if (item.getFieldsCompleted() >= 9 && item.getFieldsCompleted() < 17) {
+        } else if (item.getFieldsCompleted() >= 10 && item.getFieldsCompleted() < 19) {
             holder.percentageCompleted.getProgressDrawable().setColorFilter(
                     Color.YELLOW, PorterDuff.Mode.MULTIPLY);
         } else {
@@ -59,7 +59,7 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
                     Color.GREEN, PorterDuff.Mode.MULTIPLY);
         }
         holder.percentageCompleted.setProgress(item.getFieldsCompleted());
-        int percentageValue = (item.getFieldsCompleted() * 100) / 22;
+        int percentageValue = (item.getFieldsCompleted() * 100) / 25;
         if (percentageValue > 100) {
             percentageValue = 100;
         }

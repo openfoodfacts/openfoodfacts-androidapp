@@ -797,5 +797,8 @@
     <string name="stores">Stores</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
+    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
+    <string name="uploading_ingredients_image">Uploading ingredients image</string>
+    <string name="uploading_front_image">Uploading front image</string>
 
 </resources>

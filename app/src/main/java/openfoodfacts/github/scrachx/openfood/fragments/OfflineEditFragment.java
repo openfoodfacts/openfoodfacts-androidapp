@@ -31,15 +31,18 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import org.greenrobot.greendao.async.AsyncSession;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -47,10 +50,13 @@ import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
@@ -227,7 +233,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         public void onSuccess(State state) {
                             if (state.getStatus() == 0) {
                                 // Product doesn't exist yet on the server. Add as it is.
-                                addProductToServer(product);
+                                checkFrontImageUploadStatus(product);
                             } else {
                                 // Product already exists on the server. Compare values saved locally with the values existing on server.
                                 HashMap<String, String> existingValuesMap = new HashMap<>();
@@ -267,6 +273,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     .onNegative((dialog, which) -> {
                         dialog.dismiss();
                         productDetails.remove("ingredients_text");
+                        productDetails.remove("image_ingredients");
                         product.setProductDetailsMap(productDetails);
                         checkForExistingProductName(product, existingValuesOnServer);
                     })
@@ -422,17 +429,282 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
                         dialog.dismiss();
-                        addProductToServer(product);
+                        checkFrontImageUploadStatus(product);
                     })
                     .onNegative((dialog, which) -> {
                         dialog.dismiss();
                         productDetails.remove("link");
-                        addProductToServer(product);
+                        product.setProductDetailsMap(productDetails);
+                        checkFrontImageUploadStatus(product);
                     })
                     .cancelable(false)
                     .build()
                     .show();
         } else {
+            checkFrontImageUploadStatus(product);
+        }
+    }
+
+    /**
+     * Upload and set the front image if it is not uploaded already.
+     */
+    private void checkFrontImageUploadStatus(OfflineSavedProduct product) {
+        String code = product.getBarcode();
+        HashMap<String, String> productDetails = product.getProductDetailsMap();
+        String image_front_status = productDetails.get("image_front_uploaded");
+        String imageFrontFilePath = productDetails.get("image_front");
+        boolean image_front_uploaded = image_front_status != null && image_front_status.equals("true");
+        if (!image_front_uploaded && imageFrontFilePath != null && !imageFrontFilePath.isEmpty()) {
+            // front image is not yet uploaded.
+            File photoFile = new File(imageFrontFilePath);
+            Map<String, RequestBody> imgMap = new HashMap<>();
+            RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), code);
+            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.FRONT.toString() + '_' + productDetails.get("lang"));
+            RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
+            imgMap.put("code", barcode);
+            imgMap.put("imagefield", imageField);
+            imgMap.put("imgupload_front\"; filename=\"front_" + productDetails.get("lang") + ".png\"", image);
+
+            // Attribute the upload to the connected user
+            final SharedPreferences settings = activity.getBaseContext().getSharedPreferences("login", 0);
+            final String login = settings.getString("user", "");
+            final String password = settings.getString("pass", "");
+            if (!login.isEmpty() && !password.isEmpty()) {
+                imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
+                imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
+            }
+
+            client.saveImageSingle(imgMap)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new SingleObserver<JsonNode>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+                        }
+
+                        @Override
+                        public void onSuccess(JsonNode jsonNode) {
+                            String status = jsonNode.get("status").asText();
+                            if (status.equals("status not ok")) {
+                                String error = jsonNode.get("error").asText();
+                                if (error.equals("This picture has already been sent.")) {
+                                    productDetails.put("image_front_uploaded", "true");
+                                    product.setProductDetailsMap(productDetails);
+                                    checkIngredientsImageUploadStatus(product);
+                                }
+                            } else {
+                                productDetails.put("image_front_uploaded", "true");
+                                product.setProductDetailsMap(productDetails);
+                                String imagefield = jsonNode.get("imagefield").asText();
+                                String imgid = jsonNode.get("image").get("imgid").asText();
+                                Map<String, String> queryMap = new HashMap<>();
+                                queryMap.put("imgid", imgid);
+                                queryMap.put("id", imagefield);
+                                client.editImageSingle(code, queryMap)
+                                        .subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe(new SingleObserver<JsonNode>() {
+                                            @Override
+                                            public void onSubscribe(Disposable d) {
+
+                                            }
+
+                                            @Override
+                                            public void onSuccess(JsonNode jsonNode) {
+                                                checkIngredientsImageUploadStatus(product);
+                                            }
+
+                                            @Override
+                                            public void onError(Throwable e) {
+                                                Log.e(LOG_TAG, e.getMessage());
+                                            }
+                                        });
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Log.e(LOG_TAG, e.getMessage());
+                        }
+                    });
+        } else {
+            // front image is uploaded, check the status of ingredients image.
+            checkIngredientsImageUploadStatus(product);
+        }
+    }
+
+    /**
+     * Upload and set the ingredients image if it is not uploaded already.
+     */
+    private void checkIngredientsImageUploadStatus(OfflineSavedProduct product) {
+        String code = product.getBarcode();
+        HashMap<String, String> productDetails = product.getProductDetailsMap();
+        String image_ingredients_status = productDetails.get("image_ingredients_uploaded");
+        String imageIngredientsFilePath = productDetails.get("image_ingredients");
+        boolean image_ingredients_uploaded = image_ingredients_status != null && image_ingredients_status.equals("true");
+        if (!image_ingredients_uploaded && imageIngredientsFilePath != null && !imageIngredientsFilePath.isEmpty()) {
+            // ingredients image is not yet uploaded.
+            File photoFile = new File(imageIngredientsFilePath);
+            Map<String, RequestBody> imgMap = new HashMap<>();
+            RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), code);
+            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.INGREDIENTS.toString() + '_' + productDetails.get("lang"));
+            RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
+            imgMap.put("code", barcode);
+            imgMap.put("imagefield", imageField);
+            imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + productDetails.get("lang") + ".png\"", image);
+
+            // Attribute the upload to the connected user
+            final SharedPreferences settings = activity.getBaseContext().getSharedPreferences("login", 0);
+            final String login = settings.getString("user", "");
+            final String password = settings.getString("pass", "");
+            if (!login.isEmpty() && !password.isEmpty()) {
+                imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
+                imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
+            }
+
+            client.saveImageSingle(imgMap)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new SingleObserver<JsonNode>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+                        }
+
+                        @Override
+                        public void onSuccess(JsonNode jsonNode) {
+                            String status = jsonNode.get("status").asText();
+                            if (status.equals("status not ok")) {
+                                String error = jsonNode.get("error").asText();
+                                if (error.equals("This picture has already been sent.")) {
+                                    productDetails.put("image_ingredients_uploaded", "true");
+                                    product.setProductDetailsMap(productDetails);
+                                    checkNutritionFactsImageUploadStatus(product);
+                                }
+                            } else {
+                                productDetails.put("image_ingredients_uploaded", "true");
+                                product.setProductDetailsMap(productDetails);
+                                String imagefield = jsonNode.get("imagefield").asText();
+                                String imgid = jsonNode.get("image").get("imgid").asText();
+                                Map<String, String> queryMap = new HashMap<>();
+                                queryMap.put("imgid", imgid);
+                                queryMap.put("id", imagefield);
+                                client.editImageSingle(code, queryMap)
+                                        .subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe(new SingleObserver<JsonNode>() {
+                                            @Override
+                                            public void onSubscribe(Disposable d) {
+
+                                            }
+
+                                            @Override
+                                            public void onSuccess(JsonNode jsonNode) {
+                                                checkNutritionFactsImageUploadStatus(product);
+                                            }
+
+                                            @Override
+                                            public void onError(Throwable e) {
+                                                Log.e(LOG_TAG, e.getMessage());
+                                            }
+                                        });
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Log.e(LOG_TAG, e.getMessage());
+                        }
+                    });
+        } else {
+            // ingredients image is uploaded, check the status of nutrition facts image.
+            checkNutritionFactsImageUploadStatus(product);
+        }
+    }
+
+    /**
+     * Upload and set the nutrition facts image if it is not uploaded already.
+     */
+    private void checkNutritionFactsImageUploadStatus(OfflineSavedProduct product) {
+        String code = product.getBarcode();
+        HashMap<String, String> productDetails = product.getProductDetailsMap();
+        String image_nutrition_facts_status = productDetails.get("image_nutrition_facts_uploaded");
+        String imageNutritionFactsFilePath = productDetails.get("image_nutrition_facts");
+        boolean image_nutrition_facts_uploaded = image_nutrition_facts_status != null && image_nutrition_facts_status.equals("true");
+        if (!image_nutrition_facts_uploaded && imageNutritionFactsFilePath != null && !imageNutritionFactsFilePath.isEmpty()) {
+            // nutrition facts image is not yet uploaded.
+            File photoFile = new File(imageNutritionFactsFilePath);
+            Map<String, RequestBody> imgMap = new HashMap<>();
+            RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), code);
+            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.NUTRITION.toString() + '_' + productDetails.get("lang"));
+            RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
+            imgMap.put("code", barcode);
+            imgMap.put("imagefield", imageField);
+            imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + productDetails.get("lang") + ".png\"", image);
+
+            // Attribute the upload to the connected user
+            final SharedPreferences settings = activity.getBaseContext().getSharedPreferences("login", 0);
+            final String login = settings.getString("user", "");
+            final String password = settings.getString("pass", "");
+            if (!login.isEmpty() && !password.isEmpty()) {
+                imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
+                imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
+            }
+
+            client.saveImageSingle(imgMap)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new SingleObserver<JsonNode>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+                        }
+
+                        @Override
+                        public void onSuccess(JsonNode jsonNode) {
+                            String status = jsonNode.get("status").asText();
+                            if (status.equals("status not ok")) {
+                                String error = jsonNode.get("error").asText();
+                                if (error.equals("This picture has already been sent.")) {
+                                    productDetails.put("image_nutrition_facts_uploaded", "true");
+                                    product.setProductDetailsMap(productDetails);
+                                    addProductToServer(product);
+                                }
+                            } else {
+                                productDetails.put("image_nutrition_facts_uploaded", "true");
+                                product.setProductDetailsMap(productDetails);
+                                String imagefield = jsonNode.get("imagefield").asText();
+                                String imgid = jsonNode.get("image").get("imgid").asText();
+                                Map<String, String> queryMap = new HashMap<>();
+                                queryMap.put("imgid", imgid);
+                                queryMap.put("id", imagefield);
+                                client.editImageSingle(code, queryMap)
+                                        .subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe(new SingleObserver<JsonNode>() {
+                                            @Override
+                                            public void onSubscribe(Disposable d) {
+
+                                            }
+
+                                            @Override
+                                            public void onSuccess(JsonNode jsonNode) {
+                                                addProductToServer(product);
+                                            }
+
+                                            @Override
+                                            public void onError(Throwable e) {
+                                                Log.e(LOG_TAG, e.getMessage());
+                                            }
+                                        });
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Log.e(LOG_TAG, e.getMessage());
+                        }
+                    });
+        } else {
+            // nutrition facts image is uploaded, upload the product to server.
             addProductToServer(product);
         }
     }
@@ -448,6 +720,10 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         productDetails.remove("image_front");
         productDetails.remove("image_ingredients");
         productDetails.remove("image_nutrition_facts");
+        // Remove the status of the images from the HashMap before uploading the product details
+        productDetails.remove("image_front_uploaded");
+        productDetails.remove("image_ingredients_uploaded");
+        productDetails.remove("image_nutrition_facts_uploaded");
         client.saveProductSingle(product.getBarcode(), productDetails)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
