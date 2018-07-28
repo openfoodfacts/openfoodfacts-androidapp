@@ -6,16 +6,16 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one">1 minute ago</item>
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="one">1 minuut geleden</item>
+    <item quantity="other">%d minuten geleden</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one">1 hour ago</item>
-    <item quantity="other">%d hours ago</item>
+    <item quantity="one">1 uur geleden</item>
+    <item quantity="other">%d uur geleden</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">1 day ago</item>
-    <item quantity="other">%d days ago</item>
+    <item quantity="one">1 dag geleden</item>
+    <item quantity="other">%d dagen geleden</item>
   </plurals>
   <string name="action_settings">Instellingen</string>
   <string name="action_about">Informatie</string>
@@ -25,7 +25,7 @@
   <string name="text_barcode">Streepjescode invoeren:</string>
   <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
   <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
-  <string name="no_offline_data">You\'re all done</string>
+  <string name="no_offline_data">Je bent helemaal klaar</string>
   <string name="first_offline">Producten die offline toegevoegd zijn, verschijnen hier</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
@@ -78,7 +78,7 @@
   <string name="txtManufacturing">Productie- of verwerkingslocaties</string>
   <string name="txtIngredientsOrigins">Herkomst van de ingrediënten</string>
   <string name="txtCity">Stad, provincie of land van aankoop</string>
-  <string name="txtEMB">EMB Code:</string>
+  <string name="txtEMB">EMB code:</string>
   <string name="txtManufactureUrl">Link naar de pagina van het product op de officiële site van de producent:</string>
   <string name="txtStores">Winkels</string>
   <string name="txtCountries">Landen verkrijgbaar</string>
@@ -183,7 +183,7 @@
   <string name="from_gallery">Gallerie</string>
   <string name="product_sent">Product succesvol verzonden</string>
   <string name="action_edit_product">Bewerk product</string>
-  <string name="title_info_dialog">How does it work?</string>
+  <string name="title_info_dialog">Hoe werkt het?</string>
   <string name="text_offline_info_dialog">Je kunt de producten offline scannen en deze later verzenden naar Open Food Facts. Alle producten die je scant zullen hier verschijnen en zijn te verzenden met onderstaande button.</string>
   <string name="permission_camera">Om streepjescodes te scannen en foto\'s te nemen is cameratoestemming vereist.</string>
   <string name="permission_title">Informatie over permissies</string>
@@ -195,7 +195,7 @@
   <string name="new_offline_info">Gelieve een foto te maken van het product, ingrediënten, voedingswaardetabel en overige informatie op het etiket. Dank!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Het wachtwoord moet minstens 6 karakters bevatten.</string>
-  <string name="user">user</string>
+  <string name="user">gebruiker</string>
   <string name="error_field_required">Dit veld is verplicht.</string>
   <string name="action_preferences">Voorkeuren</string>
   <string name="prefs_scan_startup">Bij opstarten scannen</string>
@@ -214,15 +214,15 @@
   <string name="txt_history_exported">Geschiedenis geëxporteerd</string>
   <string name="permision_write_external_storage">Toestemming om te schrijven naar extern opslagmedium is vereist om geschiedenis te exporteren.</string>
   <string name="txt_nutrition_not_found">N.v.t.</string>
-  <string name="no_brand">No Brand</string>
-  <string name="no_title">No Title</string>
+  <string name="no_brand">Geen merk</string>
+  <string name="no_title">Geen titel</string>
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="check_facts">Controleer</string>
   <string name="nutrition">Voedingswaarde</string>
-  <string name="calculated_nutrition">Calculated Nutrition</string>
-  <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
+  <string name="calculated_nutrition">Berekende voedingswaarde</string>
+  <string name="please_enter_weight">Voer alstublieft het gewicht in</string>
+  <string name="enter_weight">Voer het gewicht in</string>
   <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
   <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Koolhydraten</string>
@@ -343,11 +343,11 @@
   <string name="scan_shortcut_short_label">Scan</string>
   <string name="scan_shortcut_long_label">Scan product</string>
   <string name="barcode_shortcut_short_label">Zoek</string>
-  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="barcode_shortcut_long_label">Zoeken op barcode</string>
   <string name="history_shortcut_short_label">Geschiedenis</string>
   <string name="history_shortcut_long_label">Geschiedenis</string>
-  <string name="contributions_shortcut_short_label">Contributions</string>
-  <string name="contributions_shortcut_long_label">My Contributions</string>
+  <string name="contributions_shortcut_short_label">Bijdragen</string>
+  <string name="contributions_shortcut_long_label">Mijn bijdragen</string>
   <string name="forgot_password">Wachtwoord vergeten</string>
   <string name="next">VOLGENDE</string>
   <string name="skip">OVERSLAAN</string>
@@ -355,8 +355,8 @@
   <string name="contact">Contact</string>
   <string name="contact_summary">Contact opnemen met het team</string>
   <string name="email_not_found">No email applications found</string>
-  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
-  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_title">Vliegtuigmodus ingeschakeld</string>
+  <string name="airplane_mode_active_dialog_message">Vliegtuigmodus is ingeschakeld, schakel dit uit om door te gaan.</string>
   <string name="airplane_mode_active_dialog_negative">Afwijzen</string>
   <string name="airplane_mode_active_dialog_positive">Instellingen</string>
   <string name="device_offline_dialog_title">Netwerk niet beschikbaar</string>
@@ -364,7 +364,7 @@
   <string name="device_offline_dialog_negative">Afwijzen</string>
   <string name="device_offline_dialog_positive">Instellingen</string>
   <string name="saving">Opslaan…</string>
-  <string name="scan_first_product">Scan First Product</string>
+  <string name="scan_first_product">Scan je eerste product</string>
   <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
   <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
   <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
@@ -372,7 +372,7 @@
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
   <string name="device_on_mobile_data_warning_positive">Voorkeuren</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
-  <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="preference_choose_language_dialog_title">Kies taal</string>
   <string name="FAQ">FAQ</string>
   <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
   <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
@@ -384,11 +384,11 @@
   <string name="dismiss">Afwijzen</string>
   <string name="Terms">Terms</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
-  <string name="preference_header_general">General</string>
-  <string name="preference_header_network">Network</string>
-  <string name="preference_header_contributing">Contributing</string>
+  <string name="preference_header_general">Algemeen</string>
+  <string name="preference_header_network">Netwerk</string>
+  <string name="preference_header_contributing">Bijdragen</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="seconds_ago">seconds ago</string>
+  <string name="seconds_ago">seconden geleden</string>
   <string name="minutes_ago">minutes ago</string>
   <string name="hours_ago">hours ago</string>
   <string name="days_ago">days ago</string>
@@ -398,14 +398,14 @@
   <string name="confirm_logout">Confirm Logout</string>
   <string name="logout_dialog_content">Weet u zeker dat u wilt uitloggen?</string>
   <string name="dialog_cancel">Cancel</string>
-  <string name="choose_resolution">Choose Resolution</string>
+  <string name="choose_resolution">Kies resolutie</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">Going further</string>
-  <string name="description">Description: </string>
+  <string name="description">Beschrijving: </string>
   <string name="title">Title: </string>
-  <string name="Wikipedia">View on Wikipedia</string>
+  <string name="Wikipedia">Bekijk op Wikipedia</string>
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Merk</string>
@@ -419,30 +419,30 @@
   <string name="packaging_string">Verpakking</string>
   <string name="label_string">Keurmerk</string>
   <string name="category_string">Categorie</string>
-  <string name="connection">Connected</string>
+  <string name="connection">Verbonden</string>
   <string name="contributor_string">Gebruiker</string>
-  <string name="Rate_Us">Show Your Support</string>
-  <string name="Rate_Us_title">Rate our App</string>
-  <string name="app_disabled_text">Application is disabled</string>
+  <string name="Rate_Us">Toon je steun</string>
+  <string name="Rate_Us_title">Beoordeel onze app</string>
+  <string name="app_disabled_text">Applicatie is uitgeschakeld</string>
   <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
   <string name="vitamin_tags_text">Vitaminen:</string>
-  <string name="amino_acid_tags_text">Amino Acids:</string>
+  <string name="amino_acid_tags_text">Aminozuren:</string>
   <string name="mineral_tags_text">Mineralen:</string>
   <string name="other_tags_text">Other Substances:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
+  <string name="wikidata">Wikidata-gegevens</string>
   <string name="disable_image_loading">Disable image loading when battery is low</string>
   <string name="DisableLoadTitle">Disable image loading</string>
   <string name="txtCamera">Camera</string>
-  <string name="txtGallery">Gallery</string>
-  <string name="txtOptions">Options</string>
-  <string name="by_title">Title</string>
+  <string name="txtGallery">Galerij</string>
+  <string name="txtOptions">Opties</string>
+  <string name="by_title">Titel</string>
   <string name="by_brand">Merk</string>
   <string name="by_barcode">Streepjescode</string>
-  <string name="by_time">Recently Viewed</string>
-  <string name="sort">Sort</string>
+  <string name="by_time">Recent bekeken</string>
+  <string name="sort">Sorteer</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
-  <string name="sort_by">Sort By</string>
+  <string name="sort_by">Sorteer op</string>
   <string name="shake_summary">Shake phone to scan products</string>
   <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
@@ -471,23 +471,23 @@
   <string name="creator_history">Product added on %1$s at %2$s CET by</string>
   <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
   <string name="other_editors">Product page also edited by </string>
-  <string name="contribution_tab">Contributions</string>
+  <string name="contribution_tab">Bijdragen</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Bewerken</string>
   <string name="txtDialogsTitle">Melding</string>
   <string name="preference_show_all_product_photos_title">Show all product photos</string>
   <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
-  <string name="offline_product_addition_title">Add new product</string>
+  <string name="offline_product_addition_title">Nieuw product toevoegen</string>
   <string name="productNameNull">Name unknown</string>
   <string name="productBrandNull">Brand unknown</string>
   <string name="productQuantityNull">Quantity unknown</string>
   <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
   <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
   <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
-  <string name="scan_sound">Scan sound</string>
-  <string name="trouble_scanning">Trouble Scanning?</string>
-  <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
+  <string name="scan_sound">Scangeluid</string>
+  <string name="trouble_scanning">Problemen met scannen?</string>
+  <string name="barcode_hint">Problemen met scannen? Voer de barcode in</string>
   <string name="switch_camera">Switch camera</string>
   <string name="autofocus">Autofocus</string>
   <string name="initial_loading">Initial loading</string>
