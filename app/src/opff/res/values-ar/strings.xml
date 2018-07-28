@@ -15,9 +15,9 @@
   <string name="txtHome">Open Beauty Facts هو قاعدة بيانات لمنتجات مستحضرات التجميل مع المكونات، والمواد المسببة للحساسية، والمؤشرات وجميع المعلومات التي يمكن أن نجدها على ملصقات المنتج.</string>
   <string name="slide_1_title">Contribute to Pet Food transparency</string>
   <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
-  <string name="slide_2_title">Get the facts</string>
-  <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-  <string name="slide_3_title">Keep track of the product you use</string>
+  <string name="slide_2_title">احصل على الحقائق</string>
+  <string name="slide_2_desc">معلومات شاملة حول المنتج الذي تم مسحه ضوئيًا وفك شفرته لك</string>
+  <string name="slide_3_title">تتبع المنتج الذي تستخدمه</string>
   <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
   <string name="slide_4_title">يعمل بدون اتصال</string>
   <string name="slide_4_desc">يمكنك إضافة منتجات جديدة ، حتى إذا لم يكن لديك اتصال بالإنترنت في الوقت الحالي</string>
