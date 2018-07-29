@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -128,6 +129,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     Button addMorePicture;
     @BindView(R.id.imageGrade)
     ImageView img;
+    @BindView(R.id.nova_group)
+    ImageView novaGroup;
+    @BindView(R.id.scores_layout)
+    ConstraintLayout scoresLayout;
     private Product product;
     private OpenFoodAPIClient api;
     private WikidataApiClient apiClientForWikiData;
@@ -379,6 +384,21 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
                 });
             }
+
+            if (product.getNovaGroups() != null) {
+                novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+                novaGroup.setOnClickListener(view1 -> {
+                    Uri uri = Uri.parse(getString(R.string.url_nova_groups));
+                    CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                    CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
+                });
+            }
+            if (product.getNovaGroups() == null && product.getNutritionGradeFr() == null) {
+                scoresLayout.setVisibility(View.GONE);
+            }
+
+        } else {
+            scoresLayout.setVisibility(View.GONE);
         }
 
 
