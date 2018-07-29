@@ -34,4 +34,5 @@
   <!-- OPFF tagline in different languages -->
   <string name="tagline">ücretsiz hayvan besinleri veritabanı</string>
   <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Pet Food Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
+  <string name="currently_on_version">Currently on Open Pet Food Facts</string>
 </resources>
