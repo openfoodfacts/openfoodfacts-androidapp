@@ -34,4 +34,5 @@
   <!-- OPF tagline in different languages -->
   <string name="tagline">a szabad termék adatbázis</string>
   <string name="product_not_found">A beolvasott %1$s termék nem található az Open Products Facts adatbázisában. Hozzá tudná adni?</string>
+  <string name="currently_on_version">Currently on Open Products Facts</string>
 </resources>
