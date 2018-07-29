@@ -34,4 +34,5 @@
   <!-- OPFF tagline in different languages -->
   <string name="tagline">a base de dados de alimentos para animais de estimação gratuita</string>
   <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Pet Food Facts. Can you add it?</string>
+  <string name="currently_on_version">Currently on Open Pet Food Facts</string>
 </resources>
