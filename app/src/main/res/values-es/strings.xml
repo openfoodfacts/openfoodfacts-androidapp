@@ -112,13 +112,13 @@
     <item>Maltodextrínas</item>
     <item>Maltosa</item>
     <item>Manganeso</item>
-    <item>Mead acid (20:3 n-9)</item>
-    <item>Melissic acid (30:0)</item>
+    <item>Ácido de Mead (20:3 n-9)</item>
+    <item>Ácido melissico (30:0)</item>
     <item>Molibdeno</item>
-    <item>Monounsaturated fat</item>
-    <item>Montanic acid (28:0)</item>
-    <item>Myristic acid (14:0)</item>
-    <item>Nervonic acid (24:1 n-9)</item>
+    <item>Grasas monoinsaturada</item>
+    <item>Acido montánico (28:0)</item>
+    <item>Ácido mirístico (14:0)</item>
+    <item>Ácido nervónico (24:1 n-9)</item>
     <item>Nuclotidos</item>
     <item>Ácido oleico (18:1 n-9)</item>
     <item>Ácidos grasos Omega 3</item>
@@ -138,7 +138,7 @@
     <item>Ácido esteárico (18: 0)</item>
     <item>Sucrosa</item>
     <item>Taurina</item>
-    <item>Grasa trans</item>
+    <item>Grasas trans</item>
     <item>Vitamina A</item>
     <item>Vitamina B1 (tiamina)</item>
     <item>Vitamina B12 (Cobalamina)</item>
@@ -332,7 +332,7 @@
   <string name="nutrition_energy">Valor energético</string>
   <string name="nutrition_energy_short_name">Valor energético</string>
   <string name="nutrition_fat">Grasas</string>
-  <string name="nutrition_fat_short_name">Grasa (g)</string>
+  <string name="nutrition_fat_short_name">Grasas (g)</string>
   <string name="nutrition_fiber">Fibra dietética</string>
   <string name="nutrition_fiber_short_name">Fibra dietética (g)</string>
   <string name="nutrition_header">Información nutricional</string>
@@ -342,7 +342,7 @@
   <string name="nutrition_proteins_short_name">Proteínas (g)</string>
   <string name="nutrition_salt">Sal</string>
   <string name="nutrition_salt_short_name">Sal (g)</string>
-  <string name="nutrition_satured_fat">Grasa saturada</string>
+  <string name="nutrition_satured_fat">Grasas saturadas</string>
   <string name="nutrition_satured_fat_short_name">Grasas saturadas (g)</string>
   <string name="nutrition_serving">Por porción</string>
   <string name="nutrition_serving_size">Tamaño de la ración :</string>
@@ -350,8 +350,8 @@
   <string name="nutrition_sodium_short_name">Sodio (g)</string>
   <string name="nutrition_sugars">Azúcares</string>
   <string name="nutrition_sugars_short_name">Azúcares (g)</string>
-  <string name="nutrition_trans_fat">Grasa trans</string>
-  <string name="nutrition_trans_fat_short_name">Grasa trans (g)</string>
+  <string name="nutrition_trans_fat">Grasas trans</string>
+  <string name="nutrition_trans_fat_short_name">Grasas trans (g)</string>
   <string name="nutriment_serving_size">Por porción :</string>
   <string name="action_manage_account">Gestionar cuenta</string>
   <string name="action_contributes">Sus contribuciones</string>
@@ -386,7 +386,7 @@
   <string name="nutrition_magnesium">Magnesio</string>
   <string name="nutrition_taurine">Taurina</string>
   <string name="nutrition_monounsaturatedFat">Grasas mono insaturadas</string>
-  <string name="nutrition_polyunsaturatedFat">Grasas polisaturadas</string>
+  <string name="nutrition_polyunsaturatedFat">Grasas poliinsaturada</string>
   <string name="nutrition_omega3">Omega 3</string>
   <string name="nutrition_omega6">Omega 6</string>
   <string name="nutrition_omega9">Omega 9</string>
@@ -601,12 +601,12 @@
   <string name="choose_nutrient">Elija un nutriente</string>
   <string name="error_adding_product_details">Algo salió mal al tratar de agregar detalles del producto</string>
   <string name="hint_product_URL">Enlace de la página oficial del producto</string>
-  <string name="product_language">Product language : </string>
-  <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-  <string name="official_website">official website</string>
-  <string name="scan_QR_code">Scan QR Code for product website</string>
-  <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
-  <string name="image_uploaded_successfully">Image uploaded successfully</string>
+  <string name="product_language">Idioma del producto: </string>
+  <string name="hint_emb_codes">Ejemplos: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+  <string name="official_website">página web oficial</string>
+  <string name="scan_QR_code">Escanee el código QR para el sitio web del producto</string>
+  <string name="add_at_least_one_picture">Por favor agregue al menos una imagen de este producto antes de proceder</string>
+  <string name="image_uploaded_successfully">Imagen subida con éxito</string>
   <string name="error_adding_product_photos">Algo salió mal al tratar de agregar fotos de productos</string>
   <string name="ingredients_overwrite">Sobrescritura de ingredientes</string>
   <string name="choose_mine">Elige el mio</string>
