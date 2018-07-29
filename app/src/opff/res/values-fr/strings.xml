@@ -34,4 +34,5 @@
   <!-- OPFF tagline in different languages -->
   <string name="tagline">l\'information alimentaire ouverte pour les animaux</string>
   <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Pet Food Facts. Pouvez-vous l\'ajouter ?</string>
+  <string name="currently_on_version">Actuellement sur Open Pet Food Facts</string>
 </resources>

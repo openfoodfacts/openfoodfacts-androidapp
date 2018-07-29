@@ -34,4 +34,5 @@
   <!-- OPFF tagline in different languages -->
   <string name="tagline">il database libero per i prodotti alimentari animali</string>
   <string name="product_not_found">Il prodotto %1$s scansionato non esiste ancora in Open Pet Food Facts. Puoi aggiungerlo?</string>
+  <string name="currently_on_version">Currently on Open Pet Food Facts</string>
 </resources>

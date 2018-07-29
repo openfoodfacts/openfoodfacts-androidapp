@@ -34,4 +34,5 @@
   <!-- OBF tagline in different languages -->
   <string name="tagline">den gratis kosmetikdatabase</string>
   <string name="product_not_found">Produktet %1$s, du har skannet, findes endnu ikke i Open Beauty Facts. Vil du tilføje det?</string>
+  <string name="currently_on_version">Currently on Open Beauty Facts</string>
 </resources>

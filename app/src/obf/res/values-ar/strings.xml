@@ -34,4 +34,5 @@
   <!-- OBF tagline in different languages -->
   <string name="tagline">قاعدة بيانات مستحضرات التجميل المجانية</string>
   <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في \"حقائق الجمال المفتوحة\". الرجاء إضافته إن امكن.</string>
+  <string name="currently_on_version">Currently on Open Beauty Facts</string>
 </resources>
