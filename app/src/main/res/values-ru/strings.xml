@@ -48,9 +48,9 @@
     <item>мг</item>
     <item>кг</item>
     <item>кг</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
+    <item>л</item>
+    <item>мл</item>
+    <item>сл</item>
     <item>fl oz</item>
   </string-array>
   <!-- weight units -->
@@ -61,8 +61,8 @@
   </string-array>
   <!-- nutrition energy units -->
   <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kj</item>
+    <item>ккал</item>
+    <item>кДж</item>
   </string-array>
   <!-- nutrition weight units -->
   <string-array name="nutrition_weight_units">
@@ -82,26 +82,26 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-    <item>Arachidic acid (20:0)</item>
-    <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-    <item>Behenic acid (22:0)</item>
+    <item>Альфа-линоленовая кислота / ALA (18: 3 н-3)</item>
+    <item>Арахиновая кислота (20:0)</item>
+    <item>Арахидоновая кислота / АА / АРА (20: 4 н-6)</item>
+    <item>Бегеновая кислота (22:0)</item>
     <item>Гидрокарбонаты</item>
     <item>Биотин</item>
-    <item>Butyric acid (4:0)</item>
+    <item>Масляная кислота (4:0)</item>
     <item>Кофеин</item>
     <item>Кальций</item>
-    <item>Capric acid (10:0)</item>
-    <item>Caproic acid (6:0)</item>
-    <item>Caprylic acid (8:0)</item>
+    <item>Каприновая кислота (10:0)</item>
+    <item>Капроновая кислота (6:0)</item>
+    <item>Каприловая кислота (8:0)</item>
     <item>Казеин</item>
-    <item>Cerotic acid (26:0)</item>
+    <item>Церотиновая кислота (26:0)</item>
     <item>Хлориды</item>
     <item>Холестерин</item>
     <item>Хром</item>
     <item>Медь</item>
-    <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-    <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
+    <item>Дигомо-гамма-линоленовая кислота / DGLA (20: 3 н-6)</item>
+    <item>Докозагексаеновая кислота / DHA (22:6 н-3)</item>
     <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
     <item>Elaidic acid (18:1 n-9)</item>
     <item>Erucic acid (22:1 n-9)</item>
@@ -129,9 +129,9 @@
     <item>Nervonic acid (24:1 n-9)</item>
     <item>Нуклеотиды</item>
     <item>Oleic acid (18:1 n-9)</item>
-    <item>Omega 3 fatty acids</item>
-    <item>Omega 6 fatty acids</item>
-    <item>Omega 9 fatty acids</item>
+    <item>Омега-3 жирные кислоты</item>
+    <item>Омега-6 жирные кислоты</item>
+    <item>Омега-9 жирные кислоты</item>
     <item>Palmitic acid (16:0)</item>
     <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
     <item>pH</item>
@@ -142,19 +142,19 @@
     <item>Селен</item>
     <item>Serum proteins</item>
     <item>Диоксид кремния</item>
-    <item>Starch</item>
-    <item>Stearic acid (18:0)</item>
+    <item>Крахмал</item>
+    <item>Стеариновая кислота (18:0)</item>
     <item>Сахароза</item>
     <item>Таурин</item>
     <item>Трансжиры</item>
     <item>Витамин А</item>
-    <item>Vitamin B1 (Thiamin)</item>
-    <item>Vitamin B12 (Cobalamin)</item>
-    <item>Vitamin B2 (Riboflavin)</item>
-    <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-    <item>Vitamin B6 (Pyridoxin)</item>
-    <item>Vitamin B9 (Folic acid)</item>
-    <item>Vitamin C (Ascorbic acid)</item>
+    <item>Витамин B1 (тиамин)</item>
+    <item>Витамин B12 (кобаламин)</item>
+    <item>Витамин B2 (рибофлавин)</item>
+    <item>Витамин B3 / витамин РР (никотиновая кислота)</item>
+    <item>Витамин B6 (пиридоксин)</item>
+    <item>Витамин B9 (Фолиевая кислота)</item>
+    <item>Витамин C (аскорбиновая кислота)</item>
     <item>Витамин D</item>
     <item>Витамин E</item>
     <item>Витамин K</item>
@@ -326,11 +326,11 @@
   <string name="no_title">Нет названия</string>
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="check_facts">Проверить</string>
   <string name="nutrition">Пищевая ценность</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
-  <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
+  <string name="please_enter_weight">Пожалуйста, введите вес</string>
+  <string name="enter_weight">Введите вес</string>
   <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
   <string name="txt_calories_result">%1$s ккал в %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Углеводы</string>
@@ -586,7 +586,7 @@
   <string name="txtDialogsTitle">Информация</string>
   <string name="preference_show_all_product_photos_title">Показать все фотографии продукта</string>
   <string name="preference_show_all_product_photos_summary">Показать все отправленные фотографии продуктов на отдельной вкладке</string>
-  <string name="offline_product_addition_title">Add a new product</string>
+  <string name="offline_product_addition_title">Добавить новый продукт</string>
   <string name="productNameNull">Название неизвестно</string>
   <string name="productBrandNull">Бренд неизвестен</string>
   <string name="productQuantityNull">Количество неизвестно</string>
@@ -602,20 +602,20 @@
   <string name="preferences">Настройки</string>
   <string name="OFFlogo">Логотип Open Food Facts</string>
   <string name="loading_product">Загрузка продукта %s</string>
-  <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
+  <string name="error_adding_ingredients">Что-то пошло не так при попытке добавления ингредиентов продукта</string>
   <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
   <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
   <string name="error_in_carbohydrate_value">Carbohydrate can\'t be less than the sum of sugar and starch</string>
-  <string name="choose_nutrient">Choose a nutrient</string>
-  <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
+  <string name="choose_nutrient">Выберите питательное вещество</string>
+  <string name="error_adding_product_details">Что-то пошло не так, когда вы пытались добавить сведения о продукте</string>
   <string name="hint_product_URL">Link of the official page of the product</string>
   <string name="product_language">Product language : </string>
   <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-  <string name="official_website">Official website</string>
-  <string name="scan_QR_code">Scan QR Code for product website</string>
-  <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
-  <string name="image_uploaded_successfully">Image uploaded successfully</string>
-  <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
+  <string name="official_website">Официальный сайт</string>
+  <string name="scan_QR_code">Сканировать QR-код для веб-сайта продукта</string>
+  <string name="add_at_least_one_picture">Пожалуйста, добавьте по крайней мере одну фотографию этого продукта, прежде чем продолжить</string>
+  <string name="image_uploaded_successfully">Изображение успешно загружено</string>
+  <string name="error_adding_product_photos">Что-то пошло не так, при попытке добавить фотографии продукта</string>
   <string name="ingredients_overwrite">Ingredients overwrite</string>
   <string name="choose_mine">Choose mine</string>
   <string name="keep_previous_version">Keep previous version</string>
