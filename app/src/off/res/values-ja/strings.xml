@@ -33,4 +33,5 @@
   <!-- OFF tagline in different languages -->
   <string name="tagline">フリーの食品データベース</string>
   <string name="product_not_found">スキャンした製品 %1$s はまだ Open Food Facts に存在しません。追加できますか?</string>
+  <string name="currently_on_version">Currently on Open Food Facts</string>
 </resources>
