@@ -1,23 +1,23 @@
-Nova Score
+Pontuação Nova
 
-Nova group
+Grupo Nova
 
-Nova groups
+Grupos Nova
 
-Nova group:
+Grupo Nova:
 
-Group 1
-Group 1 - Unprocessed or minimally processed foods
-Unprocessed or minimally processed foods
+Grupo 1
+Grupo 1 - Alimentos não processados ​​ou minimamente processados
+Alimentos não processados ​​ou minimamente processados
 
-Group 2
-Group 2 - Processed culinary ingredients
-Processed culinary ingredients
+Grupo 2
+Grupo 2 - Ingredientes culinários processados
+Ingredientes culinários processados
 
-Group 3
-Group 3 - Processed foods
-Processed foods
+Grupo 3
+Grupo 3 - Alimentos processados
+Alimentos processados
 
-Group 4
-Group 4 - Ultra-processed food and drink products
-Ultra-processed food and drink products
+Grupo 4
+Grupo 4 - Produtos de bebidas e alimentos ultraprocessados
+Produtos de alimentos e bebidas ultraprocessados

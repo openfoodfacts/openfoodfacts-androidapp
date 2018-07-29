@@ -74,40 +74,40 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-    <item>Arachidic acid (20:0)</item>
-    <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-    <item>Behenic acid (22:0)</item>
+    <item>Alfa-linolensyre/ALA (18: 3 n-3)</item>
+    <item>Arachidsyre (20: 0)</item>
+    <item>Arachidonsyre/AA/ARA (20: 4 n-6)</item>
+    <item>Beheninsyre (22: 0)</item>
     <item>Bikarbonat</item>
     <item>Biotin</item>
-    <item>Butyric acid (4:0)</item>
+    <item>Smørsyre (4: 0)</item>
     <item>Koffein</item>
     <item>Calcium</item>
-    <item>Capric acid (10:0)</item>
-    <item>Caproic acid (6:0)</item>
-    <item>Caprylic acid (8:0)</item>
+    <item>Caprinsyre (10: 0)</item>
+    <item>Caproinsyre (6: 0)</item>
+    <item>Caprylsyre (8: 0)</item>
     <item>Kasein</item>
-    <item>Cerotic acid (26:0)</item>
+    <item>-Cerotinsyre (26:0)</item>
     <item>Klorid</item>
     <item>Kolesterol</item>
     <item>Krom</item>
     <item>Kobber</item>
-    <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-    <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-    <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-    <item>Elaidic acid (18:1 n-9)</item>
-    <item>Erucic acid (22:1 n-9)</item>
+    <item>Dihomo-gamma-linolensyre/DGLA (20:3 n-6)</item>
+    <item>Docosahexaensyre/DHA (22:6 n-3)</item>
+    <item>Eicosapentaensyre/EPA (20:5 n-3)</item>
+    <item>Elaidsyre (18:1 n-9)</item>
+    <item>Erucinsyre (22:1 n-9)</item>
     <item>Fluor</item>
     <item>Fruktose</item>
-    <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+    <item>Gamma-linolensyre/GLA (18:3 n-6)</item>
     <item>Glukose</item>
-    <item>Gondoic acid (20:1 n-9)</item>
+    <item>Gondonsyre (20:1 n-9)</item>
     <item>Jod</item>
     <item>Jern</item>
     <item>Laktose</item>
-    <item>Lauric acid (12:0)</item>
-    <item>Lignoceric acid (24:0)</item>
-    <item>Linoleic acid / LA (18:2 n-6)</item>
+    <item>Laurinsyre (12:0)</item>
+    <item>Lignocersyre (24:0)</item>
+    <item>Linolsyre/LA (18:2 n-6)</item>
     <item>Magnesium</item>
     <item>Maltodextrin</item>
     <item>Maltose</item>
@@ -603,7 +603,7 @@
   <string name="hint_product_URL">Link of the official page of the product</string>
   <string name="product_language">Product language : </string>
   <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-  <string name="official_website">official website</string>
+  <string name="official_website">Official website</string>
   <string name="scan_QR_code">Scan QR Code for product website</string>
   <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
   <string name="image_uploaded_successfully">Image uploaded successfully</string>
@@ -665,4 +665,5 @@
   <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
   <string name="uploading_ingredients_image">Uploading ingredients image</string>
   <string name="uploading_front_image">Uploading front image</string>
+  <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
 </resources>

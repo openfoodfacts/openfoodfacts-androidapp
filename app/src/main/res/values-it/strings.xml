@@ -134,7 +134,7 @@
     <item>Selenio</item>
     <item>Serum proteins</item>
     <item>Silice</item>
-    <item>Starch</item>
+    <item>Amido</item>
     <item>Stearic acid (18:0)</item>
     <item>Saccarosio</item>
     <item>Taurina</item>
@@ -318,7 +318,7 @@
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="check_facts">Verifica</string>
   <string name="nutrition">Nutrizione</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>
@@ -471,7 +471,7 @@
   <string name="device_on_mobile_data_warning_title">Informazioni</string>
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
   <string name="device_on_mobile_data_warning_positive">Impostazioni</string>
-  <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+  <string name="device_on_mobile_data_warning_negative">Carica comunque</string>
   <string name="preference_choose_language_dialog_title">Scegli la lingua</string>
   <string name="FAQ">FAQ</string>
   <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
@@ -482,7 +482,7 @@
   <string name="advanced_search_title">Ricerca avanzata &amp; grafici</string>
   <string name="connectivity_check">Per favore controlla la tua connessione Internet</string>
   <string name="dismiss">Chiudi</string>
-  <string name="Terms">Terms</string>
+  <string name="Terms">Termini</string>
   <string name="terms_url">https://it.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Generale</string>
   <string name="preference_header_network">Network</string>
@@ -540,7 +540,7 @@
   <string name="by_brand">Marche</string>
   <string name="by_barcode">Codice a Barre</string>
   <string name="by_time">Visualizzato di recente</string>
-  <string name="sort">Sort</string>
+  <string name="sort">Ordine</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Ordina per</string>
   <string name="shake_summary">Agitare il telefono per scansionare i prodotti</string>
@@ -603,7 +603,7 @@
   <string name="hint_product_URL">Link of the official page of the product</string>
   <string name="product_language">Product language : </string>
   <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-  <string name="official_website">official website</string>
+  <string name="official_website">Official website</string>
   <string name="scan_QR_code">Scan QR Code for product website</string>
   <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
   <string name="image_uploaded_successfully">Image uploaded successfully</string>
@@ -618,13 +618,13 @@
   <string name="link_overwrite">Link overwrite</string>
   <string name="save_product">Do you want to save the product?</string>
   <string name="error_adding_product">Something went wrong when adding product</string>
-  <string name="photos">Photos</string>
+  <string name="photos">Foto</string>
   <string name="please_wait">Please wait</string>
   <string name="product_uploaded_successfully">Product uploaded successfully</string>
   <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
   <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
   <string name="percent">%1$d%%</string>
-  <string name="overview">Overview</string>
+  <string name="overview">Panoramica</string>
   <string name="ingredients">Ingredienti</string>
   <string name="nutrition_facts">Nutrition Facts</string>
   <string name="your_version">Yours</string>
@@ -636,11 +636,11 @@
   <string name="extracting_ingredients">Extracting ingredients</string>
   <string name="looksGood">Looks Good</string>
   <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
-  <string name="traces">Traces</string>
+  <string name="traces">Tracce</string>
   <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
   <string name="nutrition_facts_not_specified">I valori nutrizionali non sono specificati sul prodotto.</string>
   <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
-  <string name="for_100g_100ml">For 100g / 100ml</string>
+  <string name="for_100g_100ml">Per 100g / 100ml</string>
   <string name="per_serving">Per Serving</string>
   <string name="serving_size">Porzioni</string>
   <string name="alcohol_unit" formatted="false">% vol / °</string>
@@ -659,10 +659,11 @@
   <string name="emb_code">EMB Code</string>
   <string name="purchasing_details">Purchasing Details</string>
   <string name="country_where_purchased">Country where purchased</string>
-  <string name="stores">Stores</string>
+  <string name="stores">Negozi</string>
   <string name="additional_pictures">Additional Pictures</string>
   <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
   <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
   <string name="uploading_ingredients_image">Uploading ingredients image</string>
   <string name="uploading_front_image">Uploading front image</string>
+  <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
 </resources>

@@ -121,5 +121,5 @@ files:
   - source: /fastlane/metadata/android/en-US/off/screenshot-text.txt
     translation: /fastlane/metadata/android/%locale%/off/screenshot-text.txt
 
-  - source: /fastlane/metadata/android/en-US/off/novascore.txt
-    translation: /fastlane/metadata/android/%locale%/off/novascore.txt
+  - source: /fastlane/metadata/android/en-US/off/novagroups.txt
+    translation: /fastlane/metadata/android/%locale%/off/novagroups.txt

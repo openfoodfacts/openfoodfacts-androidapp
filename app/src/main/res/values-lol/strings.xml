@@ -603,7 +603,7 @@
   <string name="hint_product_URL">crwdns93613:0crwdne93613:0</string>
   <string name="product_language">crwdns93614:0crwdne93614:0</string>
   <string name="hint_emb_codes">crwdns93615:0crwdne93615:0</string>
-  <string name="official_website">crwdns93616:0crwdne93616:0</string>
+  <string name="official_website">crwdns93682:0crwdne93682:0</string>
   <string name="scan_QR_code">crwdns93617:0crwdne93617:0</string>
   <string name="add_at_least_one_picture">crwdns93618:0crwdne93618:0</string>
   <string name="image_uploaded_successfully">crwdns93619:0crwdne93619:0</string>
@@ -665,4 +665,5 @@
   <string name="uploading_nutrition_image">crwdns93675:0crwdne93675:0</string>
   <string name="uploading_ingredients_image">crwdns93676:0crwdne93676:0</string>
   <string name="uploading_front_image">crwdns93677:0crwdne93677:0</string>
+  <string name="url_nova_groups">crwdns93683:0crwdne93683:0</string>
 </resources>
