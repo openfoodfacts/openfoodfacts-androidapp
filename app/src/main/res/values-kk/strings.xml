@@ -40,7 +40,7 @@
     <item>мг</item>
     <item>кг</item>
     <item>л</item>
-    <item>мл</item>
+    <item>l</item>
     <item>ml</item>
     <item>cl</item>
     <item>fl oz</item>
@@ -50,6 +50,107 @@
     <item>мг</item>
     <item>кг</item>
     <item>л</item>
+  </string-array>
+  <!-- nutrition energy units -->
+  <string-array name="energy_units">
+    <item>kcal</item>
+    <item>kj</item>
+  </string-array>
+  <!-- nutrition weight units -->
+  <string-array name="nutrition_weight_units">
+    <item>мг</item>
+    <item>кг</item>
+    <item>µg</item>
+  </string-array>
+  <!-- all weight units -->
+  <string-array name="weight_all_units">
+    <item>мг</item>
+    <item>кг</item>
+    <item>µg</item>
+    <item>% DV</item>
+    <item>IU</item>
+  </string-array>
+  <!-- nutrients list
+    do not change the order of the array as the items are paired with the String array
+    PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
+  <string-array name="nutrients_array">
+    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
+    <item>Arachidic acid (20:0)</item>
+    <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
+    <item>Behenic acid (22:0)</item>
+    <item>Bicarbonate</item>
+    <item>Biotin</item>
+    <item>Butyric acid (4:0)</item>
+    <item>Caffeine</item>
+    <item>Calcium</item>
+    <item>Capric acid (10:0)</item>
+    <item>Caproic acid (6:0)</item>
+    <item>Caprylic acid (8:0)</item>
+    <item>Casein</item>
+    <item>Cerotic acid (26:0)</item>
+    <item>Chloride</item>
+    <item>Cholesterol</item>
+    <item>Chromium</item>
+    <item>Copper</item>
+    <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
+    <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
+    <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
+    <item>Elaidic acid (18:1 n-9)</item>
+    <item>Erucic acid (22:1 n-9)</item>
+    <item>Fluoride</item>
+    <item>Fructose</item>
+    <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+    <item>Glucose</item>
+    <item>Gondoic acid (20:1 n-9)</item>
+    <item>Iodine</item>
+    <item>Iron</item>
+    <item>Lactose</item>
+    <item>Lauric acid (12:0)</item>
+    <item>Lignoceric acid (24:0)</item>
+    <item>Linoleic acid / LA (18:2 n-6)</item>
+    <item>Magnesium</item>
+    <item>Maltodextrins</item>
+    <item>Maltose</item>
+    <item>Manganese</item>
+    <item>Mead acid (20:3 n-9)</item>
+    <item>Melissic acid (30:0)</item>
+    <item>Molybdenum</item>
+    <item>Monounsaturated fat</item>
+    <item>Montanic acid (28:0)</item>
+    <item>Myristic acid (14:0)</item>
+    <item>Nervonic acid (24:1 n-9)</item>
+    <item>Nucleotides</item>
+    <item>Oleic acid (18:1 n-9)</item>
+    <item>Omega 3 fatty acids</item>
+    <item>Omega 6 fatty acids</item>
+    <item>Omega 9 fatty acids</item>
+    <item>Palmitic acid (16:0)</item>
+    <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+    <item>pH</item>
+    <item>Phosphorus</item>
+    <item>Sugar alcohols (Polyols)</item>
+    <item>Polyunsaturated fat</item>
+    <item>Potassium</item>
+    <item>Selenium</item>
+    <item>Serum proteins</item>
+    <item>Silica</item>
+    <item>Starch</item>
+    <item>Stearic acid (18:0)</item>
+    <item>Sucrose</item>
+    <item>Taurine</item>
+    <item>Trans fat</item>
+    <item>Vitamin A</item>
+    <item>Vitamin B1 (Thiamin)</item>
+    <item>Vitamin B12 (Cobalamin)</item>
+    <item>Vitamin B2 (Riboflavin)</item>
+    <item>Vitamin B3 / Vitamin PP (Niacin)</item>
+    <item>Vitamin B6 (Pyridoxin)</item>
+    <item>Vitamin B9 (Folic acid)</item>
+    <item>Vitamin C (Ascorbic acid)</item>
+    <item>Vitamin D</item>
+    <item>Vitamin E</item>
+    <item>Vitamin K</item>
+    <item>Zinc</item>
   </string-array>
   <!-- Text units -->
   <string-array name="images_array">
@@ -477,7 +578,7 @@
   <string name="txtDialogsTitle">Ақпарат</string>
   <string name="preference_show_all_product_photos_title">Show all product photos</string>
   <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
-  <string name="offline_product_addition_title">Add new product</string>
+  <string name="offline_product_addition_title">Add a new product</string>
   <string name="productNameNull">Name unknown</string>
   <string name="productBrandNull">Brand unknown</string>
   <string name="productQuantityNull">Quantity unknown</string>
@@ -493,4 +594,75 @@
   <string name="preferences">Preferences</string>
   <string name="OFFlogo">Open Food Facts logo</string>
   <string name="loading_product">Loading product %s</string>
+  <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
+  <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
+  <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
+  <string name="error_in_carbohydrate_value">Carbohydrate can\'t be less than the sum of sugar and starch</string>
+  <string name="choose_nutrient">Choose a nutrient</string>
+  <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
+  <string name="hint_product_URL">Link of the official page of the product</string>
+  <string name="product_language">Product language : </string>
+  <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+  <string name="official_website">official website</string>
+  <string name="scan_QR_code">Scan QR Code for product website</string>
+  <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
+  <string name="image_uploaded_successfully">Image uploaded successfully</string>
+  <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
+  <string name="ingredients_overwrite">Ingredients overwrite</string>
+  <string name="choose_mine">Choose mine</string>
+  <string name="keep_previous_version">Keep previous version</string>
+  <string name="product_name_overwrite">Product name overwrite</string>
+  <string name="yours">Yours: </string>
+  <string name="currently_on">Currently on %s: </string>
+  <string name="quantity_overwrite">Quantity overwrite</string>
+  <string name="link_overwrite">Link overwrite</string>
+  <string name="save_product">Do you want to save the product?</string>
+  <string name="error_adding_product">Something went wrong when adding product</string>
+  <string name="photos">Photos</string>
+  <string name="please_wait">Please wait</string>
+  <string name="product_uploaded_successfully">Product uploaded successfully</string>
+  <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
+  <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
+  <string name="percent">%1$d%%</string>
+  <string name="overview">Overview</string>
+  <string name="ingredients">Ингредиенттер</string>
+  <string name="nutrition_facts">Nutrition Facts</string>
+  <string name="your_version">Yours</string>
+  <string name="ingredients_picture">Ingredients Picture</string>
+  <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
+  <string name="ingredients_list">Ingredients List</string>
+  <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+  <string name="extract_ingredients">Extract ingredients</string>
+  <string name="extracting_ingredients">Extracting ingredients</string>
+  <string name="looksGood">Looks Good</string>
+  <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
+  <string name="traces">Қамтуы мүмкін</string>
+  <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
+  <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
+  <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+  <string name="for_100g_100ml">For 100g / 100ml</string>
+  <string name="per_serving">Per Serving</string>
+  <string name="serving_size">Порция мөлшері</string>
+  <string name="alcohol_unit" formatted="false">% vol / °</string>
+  <string name="add_a_nutrient">Add a nutrient</string>
+  <string name="add_this_product">Add this product</string>
+  <string name="product_picture">Product Picture</string>
+  <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
+  <string name="product_details">Product Details</string>
+  <string name="product_name">Product name</string>
+  <string name="quantity">Сан</string>
+  <string name="labels">Labels</string>
+  <string name="period_of_time_after_opening">Period of time after opening</string>
+  <string name="manufacturing_details">Manufacturing Details</string>
+  <string name="origin_of_ingredients">Origin of ingredients</string>
+  <string name="manufacturing_place">Manufacturing place</string>
+  <string name="emb_code">EMB Code</string>
+  <string name="purchasing_details">Purchasing Details</string>
+  <string name="country_where_purchased">Country where purchased</string>
+  <string name="stores">Дүкендер</string>
+  <string name="additional_pictures">Additional Pictures</string>
+  <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
+  <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
+  <string name="uploading_ingredients_image">Uploading ingredients image</string>
+  <string name="uploading_front_image">Uploading front image</string>
 </resources>
