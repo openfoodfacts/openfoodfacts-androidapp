@@ -33,4 +33,5 @@
   <!-- OFF tagline in different languages -->
   <string name="tagline">a base de datos gratuíta de alimentos</string>
   <string name="product_not_found">O produto %1$s que escaneou aínda non existe en Open Food Facts. Quere engadilo?</string>
+  <string name="currently_on_version">Currently on Open Food Facts</string>
 </resources>
