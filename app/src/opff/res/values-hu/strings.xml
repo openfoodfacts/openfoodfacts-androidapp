@@ -34,4 +34,5 @@
   <!-- OPFF tagline in different languages -->
   <string name="tagline">szabad állateledel adatbázis</string>
   <string name="product_not_found">A beolvasott %1$s termék nem található az Open Pet Food Facts adatbázisában. Hozzá tudná adni?</string>
+  <string name="currently_on_version">Currently on Open Pet Food Facts</string>
 </resources>
