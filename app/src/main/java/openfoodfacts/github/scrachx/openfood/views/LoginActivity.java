@@ -77,7 +77,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
 
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -33,7 +33,6 @@
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item> </item>
     <item>g</item>
     <item>mili gram</item>
     <item>kilo gram</item>

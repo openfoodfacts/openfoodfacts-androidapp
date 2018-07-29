@@ -113,6 +113,8 @@ public class Product implements Serializable {
     private String lastModifiedTime;
     @JsonProperty("editors_tags")
     private List<String> editorsTags = new ArrayList<>();
+    @JsonProperty("nova_groups")
+    private String novaGroups;
 
 
     /**
@@ -487,6 +489,9 @@ public class Product implements Serializable {
         return editorsTags;
     }
 
+    public String getNovaGroups(){
+        return novaGroups;
+    }
 
     public void setCode(String code) {
         this.code = code;

@@ -65,7 +65,6 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item> </item>
     <item>g</item>
     <item>mg</item>
     <item>kg</item>

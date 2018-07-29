@@ -44,7 +44,7 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -132,14 +132,12 @@ public class OpenFoodAPIClient {
                             .positiveText(R.string.txtYes)
                             .negativeText(R.string.txtNo)
                             .onPositive((dialog, which) -> {
-                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                                Intent intent = new Intent(activity, AddProductActivity.class);
                                 State st = new State();
                                 Product pd = new Product();
                                 pd.setCode(barcode);
                                 st.setProduct(pd);
-                                Bundle bundle = new Bundle();
-                                bundle.putSerializable("state", st);
-                                intent.putExtras(bundle);
+                                intent.putExtra("state", st);
                                 activity.startActivity(intent);
                                 activity.finish();
                             })
@@ -163,14 +161,12 @@ public class OpenFoodAPIClient {
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
                         .onPositive((dialog, which) -> {
-                            Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
+                            Intent intent = new Intent(activity, AddProductActivity.class);
                             State st = new State();
                             Product pd = new Product();
                             pd.setCode(barcode);
                             st.setProduct(pd);
-                            Bundle bundle = new Bundle();
-                            bundle.putSerializable("state", st);
-                            intent.putExtras(bundle);
+                            intent.putExtra("state", st);
                             activity.startActivity(intent);
                             activity.finish();
                         })

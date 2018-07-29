@@ -12,6 +12,8 @@
     <item>kg</item>
     <item>l</item>
     <item>ml</item>
+    <item>cl</item>
+    <item>fl oz</item>
   </string-array>
   <string-array name="images_array">
     <item>Default</item>

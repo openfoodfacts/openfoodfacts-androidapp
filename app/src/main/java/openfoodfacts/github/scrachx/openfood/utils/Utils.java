@@ -132,9 +132,9 @@ public class Utils {
     }
 
     public static void hideKeyboard(Activity activity) {
-        if(activity == null)
+        if (activity == null)
             return;
-        
+
         View view = activity.getCurrentFocus();
 
         if (view != null) {
@@ -259,6 +259,33 @@ public class Utils {
                 break;
         }
 
+        return drawable;
+    }
+
+    public static int getNovaGroupDrawable(String novaGroup) {
+        int drawable;
+
+        if (novaGroup == null) {
+            return R.drawable.ic_help_outline_orange_24dp;
+        }
+
+        switch (novaGroup) {
+            case "1":
+                drawable = R.drawable.ic_nova_group_1;
+                break;
+            case "2":
+                drawable = R.drawable.ic_nova_group_2;
+                break;
+            case "3":
+                drawable = R.drawable.ic_nova_group_3;
+                break;
+            case "4":
+                drawable = R.drawable.ic_nova_group_4;
+                break;
+            default:
+                drawable = R.drawable.ic_help_outline_orange_24dp;
+                break;
+        }
         return drawable;
     }
 
