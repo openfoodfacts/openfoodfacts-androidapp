@@ -157,12 +157,12 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <item>ph</item>
     <item>Fosfor</item>
     <item>Sugar alcohols (Polyols)</item>
-    <item>Polyunsaturated fat</item>
+    <item>Tłuszcze wielonienasycone</item>
     <item>Potas</item>
     <item>Selen</item>
-    <item>Serum proteins</item>
+    <item>Białka surowicy</item>
     <item>Krzemionka</item>
-    <item>Starch</item>
+    <item>Skrobia</item>
     <item>Stearic acid (18:0)</item>
     <item>Sacharoza</item>
     <item>Tauryna</item>
@@ -255,7 +255,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="txtSendAll">Prześlij wszystkie</string>
   <string name="txtNoData">Brak danych</string>
   <string name="txtPictureNeeded">Czekaj…</string>
-  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">Przed wysłaniem produktu należy dodać co najmniej jedno zdjęcie</string>
   <string name="txtPictureNeededDialogYes">Pozostań</string>
   <string name="txtPictureNeededDialogNo">Odrzuć</string>
   <string name="toastSending">Wysyłanie...</string>
@@ -607,7 +607,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="txtDialogsTitle">Informacja</string>
   <string name="preference_show_all_product_photos_title">Pokaż wszystkie zdjęcia produktu</string>
   <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
-  <string name="offline_product_addition_title">Add a new product</string>
+  <string name="offline_product_addition_title">Dodać nowy produkt</string>
   <string name="productNameNull">Nazwa nieznana</string>
   <string name="productBrandNull">Marka nieznana</string>
   <string name="productQuantityNull">Ilość nieznana</string>
@@ -651,14 +651,14 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="please_wait">Please wait</string>
   <string name="product_uploaded_successfully">Product uploaded successfully</string>
   <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
-  <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
+  <string name="no_internet_unable_to_extract_ingredients">Brak połączenia z Internetem. Niemożliwe do ekstrakcji składniki</string>
   <string name="percent">%1$d%%</string>
-  <string name="overview">Overview</string>
+  <string name="overview">Przegląd</string>
   <string name="ingredients">Składniki</string>
   <string name="nutrition_facts">Nutrition Facts</string>
   <string name="your_version">Yours</string>
   <string name="ingredients_picture">Ingredients Picture</string>
-  <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
+  <string name="take_ingredients_picture_to_extract">(Zrób zdjęcie składników, aby automatycznie je wyodrębnić)</string>
   <string name="ingredients_list">Ingredients List</string>
   <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
   <string name="extract_ingredients">Extract ingredients</string>
@@ -684,7 +684,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="period_of_time_after_opening">Ważność po otwarciu</string>
   <string name="manufacturing_details">Manufacturing Details</string>
   <string name="origin_of_ingredients">Pochodzenie składników</string>
-  <string name="manufacturing_place">Manufacturing place</string>
+  <string name="manufacturing_place">Miejsce produkcji</string>
   <string name="emb_code">EMB Code</string>
   <string name="purchasing_details">Purchasing Details</string>
   <string name="country_where_purchased">Country where purchased</string>
