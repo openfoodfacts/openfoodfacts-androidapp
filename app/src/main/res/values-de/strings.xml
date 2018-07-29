@@ -43,7 +43,7 @@
     <item>l</item>
     <item>ml</item>
     <item>cl</item>
-    <item>fl oz</item>
+    <item>fl. Unzen</item>
   </string-array>
   <!-- weight units -->
   <string-array name="weights_array">
@@ -60,39 +60,39 @@
   <string-array name="nutrition_weight_units">
     <item>g</item>
     <item>mg</item>
-    <item>µg</item>
+    <item>μg</item>
   </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>g</item>
     <item>mg</item>
-    <item>µg</item>
+    <item>μg</item>
     <item>% DV</item>
-    <item>IU</item>
+    <item>IE</item>
   </string-array>
   <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-    <item>Arachidic acid (20:0)</item>
-    <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-    <item>Behenic acid (22:0)</item>
+    <item>Alpha-Linolensäure / ALA (18:3 n-3)</item>
+    <item>Arachinsäure (20:0)</item>
+    <item>Arachidonsäure / AA / ARA (20:4 n-6)</item>
+    <item>Behensäure (22:0)</item>
     <item>Bikarbonat</item>
     <item>Biotin</item>
-    <item>Butyric acid (4:0)</item>
+    <item>Buttersäure (4:0)</item>
     <item>Koffein</item>
     <item>Kalzium</item>
-    <item>Capric acid (10:0)</item>
-    <item>Caproic acid (6:0)</item>
-    <item>Caprylic acid (8:0)</item>
+    <item>Caprinsäure (10:0)</item>
+    <item>Capronsäure (6:0)</item>
+    <item>Caprylsäure (8:0)</item>
     <item>Casein</item>
-    <item>Cerotic acid (26:0)</item>
+    <item>Cerotsäure (26:0)</item>
     <item>Chlorid</item>
     <item>Cholesterin</item>
     <item>Chrom</item>
     <item>Kupfer</item>
-    <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
+    <item>Dihomo-Gamma-Linolensäure / DGLA (20:3 n-6)</item>
     <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
     <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
     <item>Elaidic acid (18:1 n-9)</item>
