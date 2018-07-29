@@ -144,9 +144,9 @@
     <item>Vitamina B12 (Cobalamina)</item>
     <item>Vitamina B2 (riboflavina)</item>
     <item>Vitamina B3 / Vitamina PP (Niacina)</item>
-    <item>Vitamin B6 (Pyridoxin)</item>
-    <item>Vitamin B9 (Folic acid)</item>
-    <item>Vitamin C (Ascorbic acid)</item>
+    <item>Vitamina B6 (piridoxina)</item>
+    <item>Vitamina B9 (ácido fólico)</item>
+    <item>Vitamina C (ácido ascórbico)</item>
     <item>Vitamina D</item>
     <item>Vitamina E</item>
     <item>Vitamina K</item>
@@ -314,16 +314,16 @@
   <string name="txt_history_exported">Histórico exportado</string>
   <string name="permision_write_external_storage">Para exportar o histórico é necessária a autorização de escrita em armazenamento externo.</string>
   <string name="txt_nutrition_not_found">N/D</string>
-  <string name="no_brand">No Brand</string>
-  <string name="no_title">No Title</string>
+  <string name="no_brand">Sem Marca</string>
+  <string name="no_title">Sem Título</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="display_fact">Tabela para fatos de nutrição de %1$s de %2$s</string>
+  <string name="check_facts">Verifique</string>
   <string name="nutrition">Nutrição</string>
-  <string name="calculated_nutrition">Calculated Nutrition</string>
-  <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
-  <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+  <string name="calculated_nutrition">Nutrição Calculada</string>
+  <string name="please_enter_weight">Por favor insira o peso</string>
+  <string name="enter_weight">Digite o peso</string>
+  <string name="calculate_nutrition_facts">Calcular Fatos Nutricionais</string>
   <string name="txt_calories_result">%1$s kcal em %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Carboidratos</string>
   <string name="nutrition_carbohydrate_short_name">Carboidratos (g)</string>
@@ -661,8 +661,8 @@
   <string name="country_where_purchased">País onde comprou</string>
   <string name="stores">Lojas</string>
   <string name="additional_pictures">Imagens Adicionais</string>
-  <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
-  <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-  <string name="uploading_ingredients_image">Uploading ingredients image</string>
-  <string name="uploading_front_image">Uploading front image</string>
+  <string name="hint_product_pictures">(Adicione mais fotos do produto, por exemplo: instruções de reciclagem, etiquetas etc.)</string>
+  <string name="uploading_nutrition_image">Fazendo upload da imagem dos fatos nutricionais</string>
+  <string name="uploading_ingredients_image">Fazendo upload da imagem de ingredientes</string>
+  <string name="uploading_front_image">Fazendo upload da imagem da frente</string>
 </resources>
