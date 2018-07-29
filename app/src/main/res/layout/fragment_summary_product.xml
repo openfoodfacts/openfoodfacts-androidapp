@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeRefresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -44,17 +45,49 @@
                 android:text="@string/take_picture_front"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/imageGrade"
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/scores_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="16dp"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:clickable="true"
-                android:gravity="center" />
+                android:layout_height="100dp">
 
+                <ImageView
+                    android:id="@+id/imageGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:adjustViewBounds="true"
+                    android:clickable="true"
+                    android:maxWidth="180dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/nnc_a" />
+
+                <ImageView
+                    android:id="@+id/nova_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/horizontal_margin"
+                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    android:layout_marginRight="@dimen/horizontal_margin"
+                    android:layout_marginTop="@dimen/horizontal_margin"
+                    android:maxWidth="20dp"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="@dimen/activity_horizontal_margin"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingStart="0dp"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imageGrade"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_nova_group_1" />
+
+            </android.support.constraint.ConstraintLayout>
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -130,10 +163,10 @@
                                 android:layout_toRightOf="@+id/message_icon"
                                 android:layout_toStartOf="@+id/message_dismiss_icon"
                                 android:gravity="center"
-                                android:paddingRight="24dp"
-                                android:paddingTop="4dp"
                                 android:paddingBottom="4dp"
                                 android:paddingLeft="4dp"
+                                android:paddingRight="24dp"
+                                android:paddingTop="4dp"
                                 android:text="@string/product_incomplete_message"
                                 android:textAlignment="center"
                                 android:textColor="@color/md_black_1000" />
