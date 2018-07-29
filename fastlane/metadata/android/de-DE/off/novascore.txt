@@ -1,16 +1,16 @@
 Nova Score
 
-Nova group
+Nova-Gruppe
 
-Nova groups
+Nova-Gruppen
 
-Nova group:
+Nova-Gruppe:
 
 Gruppe 1
 Gruppe 1 • Unverarbeitete oder minimal verarbeitete Lebensmittel
 Unverarbeitete oder minimal verarbeitete Lebensmittel
 
-Group 2
+Gruppe 2
 Gruppe 2 • Verarbeitete kulinarische Zutaten
 Verarbeitete kulinarische Zutaten
 
