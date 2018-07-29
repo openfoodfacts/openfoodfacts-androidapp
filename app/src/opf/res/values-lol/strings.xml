@@ -34,4 +34,5 @@
   <!-- OPF tagline in different languages -->
   <string name="tagline">crwdns46827:0crwdne46827:0</string>
   <string name="product_not_found">crwdns92890:0%1$scrwdne92890:0</string>
+  <string name="currently_on_version">crwdns93680:0crwdne93680:0</string>
 </resources>
