@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
@@ -22,7 +23,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,7 +77,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     @BindView(R.id.fab_status)
     FloatingActionButton fab_status;
     @BindView(R.id.quick_view)
-    RelativeLayout quickView;
+    ConstraintLayout quickView;
     @BindView(R.id.barcode_scanner)
     DecoratedBarcodeView barcodeView;
     @BindView(R.id.toggle_flash)
@@ -104,6 +104,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     TextView quantity;
     @BindView(R.id.quickView_nutriScore)
     ImageView nutriScore;
+    @BindView(R.id.quickView_novaGroup)
+    ImageView novaGroup;
     @BindView(R.id.quickView_imageProgress)
     ProgressBar imageProgress;
     @BindView(R.id.quickView_searchByBarcode)
@@ -255,6 +257,12 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             } else {
                                 nutriScore.setVisibility(View.GONE);
                             }
+                            // Hide nova group from quickView if app flavour is not OFF or there is no nova group
+                            if (BuildConfig.FLAVOR.equals("off") && product.getNovaGroups() != null) {
+                                novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+                            } else {
+                                novaGroup.setVisibility(View.GONE);
+                            }
                             quickView.setOnClickListener(v -> {
                                 Intent intent = new Intent(ContinuousScanActivity.this, ProductActivity.class);
                                 Bundle bundle = new Bundle();
@@ -349,6 +357,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         brand.setVisibility(View.VISIBLE);
         quantity.setVisibility(View.VISIBLE);
         nutriScore.setVisibility(View.VISIBLE);
+        novaGroup.setVisibility(View.VISIBLE);
         imageProgress.setVisibility(View.VISIBLE);
         fab_status.setVisibility(View.VISIBLE);
     }
@@ -363,6 +372,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         brand.setVisibility(View.GONE);
         quantity.setVisibility(View.GONE);
         nutriScore.setVisibility(View.GONE);
+        novaGroup.setVisibility(View.GONE);
         productNotFound.setVisibility(View.GONE);
         fab_status.setVisibility(View.GONE);
         imageProgress.setVisibility(View.GONE);
