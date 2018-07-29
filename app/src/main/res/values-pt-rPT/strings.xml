@@ -67,8 +67,8 @@
     <item>g</item>
     <item>mg</item>
     <item>µg</item>
-    <item>% DV</item>
-    <item>IU</item>
+    <item>% VD</item>
+    <item>UI</item>
   </string-array>
   <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
