@@ -1,8 +1,16 @@
+Nova Score
+
+Nova group
+
+Nova groups
+
+Nova group:
+
 Groupe 1
 Groupe 1 - Aliments non transformés ou transformés minimalement
 Aliments non transformés ou minimalement transformés
 
-Groupe 3
+Group 2
 Groupe 2 - Ingrédients culinaires transformés
 Ingrédients culinaires transformés
 
