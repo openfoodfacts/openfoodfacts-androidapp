@@ -33,4 +33,5 @@
   <!-- OFF tagline in different languages -->
   <string name="tagline">den öppna livsmedelsdatabasen</string>
   <string name="product_not_found">Produkten %1$s du skannat finns ännu inte i Open Food Facts. Kan du lägga till den?</string>
+  <string name="currently_on_version">Currently on Open Food Facts</string>
 </resources>
