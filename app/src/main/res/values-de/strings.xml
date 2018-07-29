@@ -145,8 +145,8 @@
     <item>Vitamin B2 (Riboflavin)</item>
     <item>Vitamin B3 / Vitamin PP (Niacin)</item>
     <item>Vitamin B6 (Pyridoxin)</item>
-    <item>Vitamin B9 (Folic acid)</item>
-    <item>Vitamin C (Ascorbic acid)</item>
+    <item>Vitamin B9 (Folsäure)</item>
+    <item>Vitamin C (Ascorbinsäure)</item>
     <item>Vitamin D</item>
     <item>Vitamin E</item>
     <item>Vitamin K</item>
@@ -578,7 +578,7 @@
   <string name="txtDialogsTitle">Informationen</string>
   <string name="preference_show_all_product_photos_title">Alle Produktfotos anzeigen</string>
   <string name="preference_show_all_product_photos_summary">Alle eingesandten Produktfotos in einem separaten Tab anzeigen</string>
-  <string name="offline_product_addition_title">Add a new product</string>
+  <string name="offline_product_addition_title">Ein neues Produkt hinzufügen</string>
   <string name="productNameNull">Name unbekannt</string>
   <string name="productBrandNull">Marke unbekannt</string>
   <string name="productQuantityNull">Menge unbekannt</string>
@@ -594,15 +594,15 @@
   <string name="preferences">Einstellungen</string>
   <string name="OFFlogo">Logo von Open Food Fact</string>
   <string name="loading_product">Produkt „%s” wird geladen</string>
-  <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
-  <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
-  <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-  <string name="error_in_carbohydrate_value">Carbohydrate can\'t be less than the sum of sugar and starch</string>
-  <string name="choose_nutrient">Choose a nutrient</string>
-  <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
-  <string name="hint_product_URL">Link of the official page of the product</string>
-  <string name="product_language">Product language : </string>
-  <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+  <string name="error_adding_ingredients">Beim Versuch, Produktzutaten hinzuzufügen, ist ein Fehler aufgetreten</string>
+  <string name="unable_to_extract_ingredients">Die Zutaten können nicht aus dem Bild extrahiert werden</string>
+  <string name="error_adding_nutrition_facts">Beim Versuch, Nährwertangaben für Produkte hinzuzufügen, ist ein Fehler aufgetreten</string>
+  <string name="error_in_carbohydrate_value">Kohlenhydrate können nicht weniger als die Summe von Zucker und Stärke sein</string>
+  <string name="choose_nutrient">Wählen Sie einen Nährstoff</string>
+  <string name="error_adding_product_details">Beim Versuch, Produktdetails hinzuzufügen, ist ein Fehler aufgetreten</string>
+  <string name="hint_product_URL">Link der offiziellen Seite des Produkts</string>
+  <string name="product_language">Produktsprache: </string>
+  <string name="hint_emb_codes">Beispiele: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
   <string name="official_website">official website</string>
   <string name="scan_QR_code">Scan QR Code for product website</string>
   <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
@@ -658,11 +658,11 @@
   <string name="manufacturing_place">Herstellungsort</string>
   <string name="emb_code">Produzenten-Schlüssel</string>
   <string name="purchasing_details">Bezahlinformationen</string>
-  <string name="country_where_purchased">Country where purchased</string>
+  <string name="country_where_purchased">Vertriebsland</string>
   <string name="stores">Läden</string>
-  <string name="additional_pictures">Additional Pictures</string>
-  <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
-  <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-  <string name="uploading_ingredients_image">Uploading ingredients image</string>
-  <string name="uploading_front_image">Uploading front image</string>
+  <string name="additional_pictures">Zusätzliche Bilder</string>
+  <string name="hint_product_pictures">(Fügen Sie weitere Bilder des Produkts hinzu. Z.B.: Recyclinganweisungen, Etiketten, etc.)</string>
+  <string name="uploading_nutrition_image">Hochladen des Nährwertangabenbilds</string>
+  <string name="uploading_ingredients_image">Zutatenbild wird hochgeladen</string>
+  <string name="uploading_front_image">Bild der Vorderseite wird hochgeladen</string>
 </resources>
