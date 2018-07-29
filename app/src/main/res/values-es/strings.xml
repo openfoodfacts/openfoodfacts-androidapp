@@ -603,7 +603,7 @@
   <string name="hint_product_URL">Enlace de la página oficial del producto</string>
   <string name="product_language">Idioma del producto: </string>
   <string name="hint_emb_codes">Ejemplos: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-  <string name="official_website">página web oficial</string>
+  <string name="official_website">Official website</string>
   <string name="scan_QR_code">Escanee el código QR para el sitio web del producto</string>
   <string name="add_at_least_one_picture">Por favor agregue al menos una imagen de este producto antes de proceder</string>
   <string name="image_uploaded_successfully">Imagen subida con éxito</string>
@@ -665,4 +665,5 @@
   <string name="uploading_nutrition_image">Subiendo imagen de la información nutricional</string>
   <string name="uploading_ingredients_image">Subiendo la imagen de los ingredientes</string>
   <string name="uploading_front_image">Subiendo la imagen del frente</string>
+  <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
 </resources>
