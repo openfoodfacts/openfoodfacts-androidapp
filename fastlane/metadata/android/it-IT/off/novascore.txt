@@ -1,15 +1,23 @@
-Group 1
-Group 1 - Unprocessed or minimally processed foods
-Unprocessed or minimally processed foods
+Punteggio Nova
 
-Group 3
-Group 2 - Processed culinary ingredients
-Processed culinary ingredients
+Gruppo Nova
 
-Group 3
-Group 3 - Processed foods
-Processed foods
+Gruppi Nova
 
-Group 4
-Group 4 - Ultra-processed food and drink products
-Ultra-processed food and drink products
+Gruppo Nova:
+
+Gruppo 1
+Gruppo 1 - Alimenti non trasformati o minimamente trasformati
+Alimenti non trasformati o minimamente trasformati
+
+Group 2
+Gruppo 2 - Ingredienti culinari elaborati
+Ingredienti culinari elaborati
+
+Gruppo 2
+Gruppo 3 - Alimenti trasformati
+Alimenti trasformati
+
+Gruppo 4
+Gruppo 4 - Prodotti alimentari e bevande ultra-elaborati
+Prodotti alimentari e bevande ultra-elaborati
