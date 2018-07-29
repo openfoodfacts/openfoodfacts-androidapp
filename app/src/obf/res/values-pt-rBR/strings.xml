@@ -34,4 +34,5 @@
   <!-- OBF tagline in different languages -->
   <string name="tagline">a base de dados cosméticos gratuita</string>
   <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Food Facts. Pode adicioná-lo?</string>
+  <string name="currently_on_version">Currently on Open Beauty Facts</string>
 </resources>
