@@ -43,7 +43,7 @@
     <item>l</item>
     <item>ml</item>
     <item>cl</item>
-    <item>fl oz</item>
+    <item>fl. Unzen</item>
   </string-array>
   <!-- weight units -->
   <string-array name="weights_array">
@@ -54,7 +54,7 @@
   <!-- nutrition energy units -->
   <string-array name="energy_units">
     <item>kcal</item>
-    <item>kj</item>
+    <item>kJ</item>
   </string-array>
   <!-- nutrition weight units -->
   <string-array name="nutrition_weight_units">
@@ -67,86 +67,86 @@
     <item>g</item>
     <item>mg</item>
     <item>µg</item>
-    <item>% DV</item>
-    <item>IU</item>
+    <item>% VD</item>
+    <item>UI</item>
   </string-array>
   <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-    <item>Arachidic acid (20:0)</item>
-    <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-    <item>Behenic acid (22:0)</item>
+    <item>Ácido alfa-linolênico / ALA (18:3 n-3)</item>
+    <item>Ácido araquídico (20:0)</item>
+    <item>Ácido araquidônico / AA / ARA (20:4 n-6)</item>
+    <item>Ácido Beénico (22:0)</item>
     <item>Bicarbonato</item>
     <item>Biotina</item>
-    <item>Butyric acid (4:0)</item>
+    <item>Ácido butírico (4:0)</item>
     <item>Cafeína</item>
     <item>Cálcio</item>
-    <item>Capric acid (10:0)</item>
-    <item>Caproic acid (6:0)</item>
-    <item>Caprylic acid (8:0)</item>
+    <item>Ácido caprico (10:0)</item>
+    <item>Ácido caproico (6:0)</item>
+    <item>Ácido caprílico (8:0)</item>
     <item>Caseína</item>
-    <item>Cerotic acid (26:0)</item>
+    <item>Ácido Cerótico (26:0)</item>
     <item>Cloreto</item>
     <item>Colesterol</item>
     <item>Crómio</item>
     <item>Cobre</item>
-    <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-    <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-    <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-    <item>Elaidic acid (18:1 n-9)</item>
-    <item>Erucic acid (22:1 n-9)</item>
+    <item>Ácido dihomo-gama-linolênico / DGLA (20:3 n-6)</item>
+    <item>Ácido docosahexaenóico / DHA (22:6 n-3)</item>
+    <item>Ácido eicosapentaenóico / EPA (20:5 n-3)</item>
+    <item>Ácido Elaidico (18:1 n-9)</item>
+    <item>Ácido erúcico (22:1 n-9)</item>
     <item>Fluoreto</item>
     <item>Frutose</item>
-    <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+    <item>Ácido gama-linolênico / GLA (18:3 n-6)</item>
     <item>Glicose</item>
-    <item>Gondoic acid (20:1 n-9)</item>
+    <item>Ácido gondóico (20:1 n-9)</item>
     <item>Iodo</item>
     <item>Ferro</item>
     <item>Lactose</item>
-    <item>Lauric acid (12:0)</item>
-    <item>Lignoceric acid (24:0)</item>
-    <item>Linoleic acid / LA (18:2 n-6)</item>
+    <item>Ácido láurico (12:0)</item>
+    <item>Ácido Lignocerico (24:0)</item>
+    <item>Ácido linoleico / LA (18:2 n-6)</item>
     <item>Magnésio</item>
     <item>Maltodextrinas</item>
     <item>Maltose</item>
     <item>Manganésio</item>
-    <item>Mead acid (20:3 n-9)</item>
-    <item>Melissic acid (30:0)</item>
+    <item>Ácido Mead (20:3 n-9)</item>
+    <item>Ácido Melissico (30:0)</item>
     <item>Molibdénio</item>
-    <item>Monounsaturated fat</item>
-    <item>Montanic acid (28:0)</item>
-    <item>Myristic acid (14:0)</item>
-    <item>Nervonic acid (24:1 n-9)</item>
+    <item>Gordura monoinsaturada</item>
+    <item>Ácido montânico (28:0)</item>
+    <item>Ácido mirístico (14:0)</item>
+    <item>Ácido Nervônico (24:1 n-9)</item>
     <item>Nucleótidos</item>
-    <item>Oleic acid (18:1 n-9)</item>
-    <item>Omega 3 fatty acids</item>
-    <item>Omega 6 fatty acids</item>
-    <item>Omega 9 fatty acids</item>
-    <item>Palmitic acid (16:0)</item>
-    <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+    <item>Ácido oleico (18:1 n-9)</item>
+    <item>Ácidos gordurosos de omega-3</item>
+    <item>Ácidos gordurosos de omega-6</item>
+    <item>Ácidos gordurosos de omega-9</item>
+    <item>Ácido palmitico (16:0)</item>
+    <item>Ácido Pantotênico / Pantotenato (Vitamina B5)</item>
     <item>pH</item>
     <item>Fósforo</item>
-    <item>Sugar alcohols (Polyols)</item>
-    <item>Polyunsaturated fat</item>
+    <item>Álcoois de Açúcar (Polióis)</item>
+    <item>Gordura poliinsaturada</item>
     <item>Potássio</item>
     <item>Selénio</item>
-    <item>Serum proteins</item>
+    <item>Proteínas séricas</item>
     <item>Sílica</item>
-    <item>Starch</item>
-    <item>Stearic acid (18:0)</item>
+    <item>Hidratos de carbono</item>
+    <item>Ácido esteárico (18:0)</item>
     <item>Sacarose</item>
     <item>Taurina</item>
     <item>Gorduras trans</item>
     <item>Vitamina A</item>
-    <item>Vitamin B1 (Thiamin)</item>
-    <item>Vitamin B12 (Cobalamin)</item>
-    <item>Vitamin B2 (Riboflavin)</item>
-    <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-    <item>Vitamin B6 (Pyridoxin)</item>
-    <item>Vitamin B9 (Folic acid)</item>
-    <item>Vitamin C (Ascorbic acid)</item>
+    <item>Vitamina B1 (tiamina)</item>
+    <item>Vitamina B12 (Cobalamina)</item>
+    <item>Vitamina B2 (riboflavina)</item>
+    <item>Vitamina B3 / Vitamina PP (Niacina)</item>
+    <item>Vitamina B6 (piridoxina)</item>
+    <item>Vitamina B9 (ácido fólico)</item>
+    <item>Vitamina C (ácido ascórbico)</item>
     <item>Vitamina D</item>
     <item>Vitamina E</item>
     <item>Vitamina K</item>
@@ -314,16 +314,16 @@
   <string name="txt_history_exported">Histórico exportado</string>
   <string name="permision_write_external_storage">A permissão de escrita em armazenamento externo é necessária para exportar o histórico.</string>
   <string name="txt_nutrition_not_found">N/D</string>
-  <string name="no_brand">No Brand</string>
-  <string name="no_title">No Title</string>
+  <string name="no_brand">Sem Marca</string>
+  <string name="no_title">Sem Título</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="display_fact">Tabela para fatos de nutrição de %1$s de %2$s</string>
+  <string name="check_facts">Verifique</string>
   <string name="nutrition">Nutrição</string>
-  <string name="calculated_nutrition">Calculated Nutrition</string>
-  <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
-  <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+  <string name="calculated_nutrition">Nutrição Calculada</string>
+  <string name="please_enter_weight">Por favor insira o peso</string>
+  <string name="enter_weight">Digite o peso</string>
+  <string name="calculate_nutrition_facts">Calcular Fatos Nutricionais</string>
   <string name="txt_calories_result">%1$s kcal em %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Carboidrato</string>
   <string name="nutrition_carbohydrate_short_name">Carboidrato (g)</string>
@@ -578,7 +578,7 @@
   <string name="txtDialogsTitle">Informação</string>
   <string name="preference_show_all_product_photos_title">Mostrar todas as fotos do produto</string>
   <string name="preference_show_all_product_photos_summary">Mostrar todas as fotos do produto enviadas em uma guia separada</string>
-  <string name="offline_product_addition_title">Add a new product</string>
+  <string name="offline_product_addition_title">Adicionar um novo produto</string>
   <string name="productNameNull">Nome desconhecido</string>
   <string name="productBrandNull">Marca desconhecida</string>
   <string name="productQuantityNull">Quantidade desconhecida</string>
@@ -594,75 +594,76 @@
   <string name="preferences">Preferências</string>
   <string name="OFFlogo">Logotipo da Open Food Facts</string>
   <string name="loading_product">Carregando produto %s</string>
-  <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
-  <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
-  <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-  <string name="error_in_carbohydrate_value">Carbohydrate can\'t be less than the sum of sugar and starch</string>
-  <string name="choose_nutrient">Choose a nutrient</string>
-  <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
-  <string name="hint_product_URL">Link of the official page of the product</string>
-  <string name="product_language">Product language : </string>
-  <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-  <string name="official_website">official website</string>
-  <string name="scan_QR_code">Scan QR Code for product website</string>
-  <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
-  <string name="image_uploaded_successfully">Image uploaded successfully</string>
-  <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
-  <string name="ingredients_overwrite">Ingredients overwrite</string>
-  <string name="choose_mine">Choose mine</string>
-  <string name="keep_previous_version">Keep previous version</string>
-  <string name="product_name_overwrite">Product name overwrite</string>
-  <string name="yours">Yours: </string>
-  <string name="currently_on">Currently on %s: </string>
-  <string name="quantity_overwrite">Quantity overwrite</string>
-  <string name="link_overwrite">Link overwrite</string>
-  <string name="save_product">Do you want to save the product?</string>
-  <string name="error_adding_product">Something went wrong when adding product</string>
-  <string name="photos">Photos</string>
-  <string name="please_wait">Please wait</string>
-  <string name="product_uploaded_successfully">Product uploaded successfully</string>
-  <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
-  <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
+  <string name="error_adding_ingredients">Algo errou ao tentar adicionar ingredientes do produto</string>
+  <string name="unable_to_extract_ingredients">Não é possível extrair ingredientes da imagem</string>
+  <string name="error_adding_nutrition_facts">Algo errou ao tentar adicionar fatos de nutrição do produto</string>
+  <string name="error_in_carbohydrate_value">Carboidrato não pode ser menor que a soma de açúcar e amido</string>
+  <string name="choose_nutrient">Escolha um nutriente</string>
+  <string name="error_adding_product_details">Algo errou ao tentar adicionar detalhes do produto</string>
+  <string name="hint_product_URL">Link da página oficial do produto</string>
+  <string name="product_language">Idioma do produto: </string>
+  <string name="hint_emb_codes">Exemplos: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLANTANT 522, FSSL 10013011001409</string>
+  <string name="official_website">Official website</string>
+  <string name="scan_QR_code">Digitalize o código QR para o site do produto</string>
+  <string name="add_at_least_one_picture">Por favor adicione pelo menos uma foto deste produto antes de prosseguir</string>
+  <string name="image_uploaded_successfully">Imagem enviada com sucesso</string>
+  <string name="error_adding_product_photos">Algo errou ao tentar adicionar fotos do produto</string>
+  <string name="ingredients_overwrite">Sobrescrever os ingredientes</string>
+  <string name="choose_mine">Escolha o meu</string>
+  <string name="keep_previous_version">Manter a versão anterior</string>
+  <string name="product_name_overwrite">Sobrescrever o nome do produto</string>
+  <string name="yours">Sua: </string>
+  <string name="currently_on">Atualmente em %s: </string>
+  <string name="quantity_overwrite">Sobrescrever quantidade</string>
+  <string name="link_overwrite">Sobrescrever link</string>
+  <string name="save_product">Quer gravar as alterações?</string>
+  <string name="error_adding_product">Algo errou ao adicionar produto</string>
+  <string name="photos">Fotos</string>
+  <string name="please_wait">Aguarde</string>
+  <string name="product_uploaded_successfully">Produto enviado com sucesso</string>
+  <string name="no_internet_connection">Você parece não ter conexão com a internet, as imagens serão carregadas quando a rede estiver disponível</string>
+  <string name="no_internet_unable_to_extract_ingredients">Nenhuma conexão com a internet. Não é possível extrair ingredientes</string>
   <string name="percent">%1$d%%</string>
-  <string name="overview">Overview</string>
+  <string name="overview">Visão geral</string>
   <string name="ingredients">Ingredientes</string>
-  <string name="nutrition_facts">Nutrition Facts</string>
-  <string name="your_version">Yours</string>
-  <string name="ingredients_picture">Ingredients Picture</string>
-  <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
-  <string name="ingredients_list">Ingredients List</string>
-  <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
-  <string name="extract_ingredients">Extract ingredients</string>
+  <string name="nutrition_facts">Fatos Nutricionais</string>
+  <string name="your_version">Sua</string>
+  <string name="ingredients_picture">Imagen de ingredientes</string>
+  <string name="take_ingredients_picture_to_extract">(Por favor tire uma foto dos ingredientes para extraí-los automaticamente)</string>
+  <string name="ingredients_list">Lista de Ingredientes</string>
+  <string name="ingredients_hint">Mantenha a ordem de listagem, indique os % quando especificado, separe com uma vírgula \",\" ou hífen \"-\", use parênteses \"()\" para ingredientes compostos de outros ingredientes, envolva os alergénios em dois \'underscore\' (traço inferior) \"_\"</string>
+  <string name="extract_ingredients">Extrair ingredientes</string>
   <string name="extracting_ingredients">Extraindo ingredientes</string>
-  <string name="looksGood">Looks Good</string>
-  <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
+  <string name="looksGood">Parece bem</string>
+  <string name="skip_ingredients">Demasiado mau \n Ignorar Ingredientes</string>
   <string name="traces">Traços</string>
-  <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
+  <string name="traces_hint">Indique ingredientes que sejam mencionados como \'Pode conter vestígios de\', \'Feito em uma fábrica que também usa\', etc. \nExemplos: Leite, Glúten, Nozes</string>
   <string name="nutrition_facts_not_specified">Os fatores nutricionais não são especificados no produto.</string>
-  <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
-  <string name="for_100g_100ml">For 100g / 100ml</string>
-  <string name="per_serving">Per Serving</string>
+  <string name="nutrition_facts_picture">Imagens de fatos nutricionais</string>
+  <string name="for_100g_100ml">Por 100g / 100ml</string>
+  <string name="per_serving">Por Porção</string>
   <string name="serving_size">Porção</string>
   <string name="alcohol_unit" formatted="false">% vol / °</string>
   <string name="add_a_nutrient">Adicionar um nutriente</string>
-  <string name="add_this_product">Add this product</string>
-  <string name="product_picture">Product Picture</string>
-  <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
-  <string name="product_details">Product Details</string>
+  <string name="add_this_product">Adicione este produto</string>
+  <string name="product_picture">Imagem do Produto</string>
+  <string name="one_photo_compulsory">(uma foto é obrigatória para adicionar um novo produto)</string>
+  <string name="product_details">Detalhes do Produto</string>
   <string name="product_name">Nome do produto</string>
   <string name="quantity">Quantidade</string>
-  <string name="labels">Labels</string>
+  <string name="labels">Rótulos</string>
   <string name="period_of_time_after_opening">Período de tempo após a abertura</string>
-  <string name="manufacturing_details">Manufacturing Details</string>
+  <string name="manufacturing_details">Detalhes de Fabricação</string>
   <string name="origin_of_ingredients">Origem dos ingredientes</string>
-  <string name="manufacturing_place">Manufacturing place</string>
-  <string name="emb_code">EMB Code</string>
-  <string name="purchasing_details">Purchasing Details</string>
-  <string name="country_where_purchased">Country where purchased</string>
+  <string name="manufacturing_place">Local de Fabricação</string>
+  <string name="emb_code">Código EMB</string>
+  <string name="purchasing_details">Detalhes de Compra</string>
+  <string name="country_where_purchased">País onde comprou</string>
   <string name="stores">Lojas</string>
-  <string name="additional_pictures">Additional Pictures</string>
-  <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
-  <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-  <string name="uploading_ingredients_image">Uploading ingredients image</string>
-  <string name="uploading_front_image">Uploading front image</string>
+  <string name="additional_pictures">Imagens Adicionais</string>
+  <string name="hint_product_pictures">(Adicione mais fotos do produto, por exemplo: instruções de reciclagem, etiquetas etc.)</string>
+  <string name="uploading_nutrition_image">Fazendo upload da imagem dos fatos nutricionais</string>
+  <string name="uploading_ingredients_image">Fazendo upload da imagem de ingredientes</string>
+  <string name="uploading_front_image">Fazendo upload da imagem da frente</string>
+  <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
 </resources>
