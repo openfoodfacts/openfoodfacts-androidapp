@@ -10,7 +10,7 @@ Group 1
 Group 1 - Unprocessed or minimally processed foods
 Unprocessed or minimally processed foods
 
-Group 3
+Group 2
 Group 2 - Processed culinary ingredients
 Processed culinary ingredients
 
