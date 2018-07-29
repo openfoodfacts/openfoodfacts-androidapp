@@ -74,9 +74,9 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-    <item>Arachidic acid (20:0)</item>
-    <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
+    <item>Ácido alfa-linolénico / ALA (18: 3 n-3)</item>
+    <item>Ácido Araquídico (20: 0)</item>
+    <item>Ácido araquidónico / AA / ARA (20: 4 n-6)</item>
     <item>Behenic acid (22:0)</item>
     <item>Bicarbonato</item>
     <item>Biotina</item>
@@ -121,29 +121,29 @@
     <item>Nervonic acid (24:1 n-9)</item>
     <item>Nuclotidos</item>
     <item>Oleic acid (18:1 n-9)</item>
-    <item>Omega 3 fatty acids</item>
-    <item>Omega 6 fatty acids</item>
-    <item>Omega 9 fatty acids</item>
-    <item>Palmitic acid (16:0)</item>
+    <item>Ácidos grasos Omega 3</item>
+    <item>Ácidos grasos Omega 6</item>
+    <item>Ácidos grasos Omega 9</item>
+    <item>Ácido palmítico (16: 0)</item>
     <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
     <item>pH</item>
     <item>Fósforo</item>
     <item>Sugar alcohols (Polyols)</item>
-    <item>Polyunsaturated fat</item>
+    <item>Grasas poliinsaturada</item>
     <item>Potasio</item>
     <item>Selenio</item>
     <item>Serum proteins</item>
     <item>Sílica</item>
-    <item>Starch</item>
-    <item>Stearic acid (18:0)</item>
+    <item>Almidón</item>
+    <item>Ácido esteárico (18: 0)</item>
     <item>Sucrosa</item>
     <item>Taurina</item>
     <item>Grasa trans</item>
     <item>Vitamina A</item>
-    <item>Vitamin B1 (Thiamin)</item>
-    <item>Vitamin B12 (Cobalamin)</item>
-    <item>Vitamin B2 (Riboflavin)</item>
-    <item>Vitamin B3 / Vitamin PP (Niacin)</item>
+    <item>Vitamina B1 (tiamina)</item>
+    <item>Vitamina B12 (Cobalamina)</item>
+    <item>Vitamina B2 (Riboflavina)</item>
+    <item>Vitamina B3 / Vitamina PP (Niacina)</item>
     <item>Vitamin B6 (Pyridoxin)</item>
     <item>Vitamin B9 (Folic acid)</item>
     <item>Vitamin C (Ascorbic acid)</item>
@@ -607,31 +607,31 @@
   <string name="scan_QR_code">Scan QR Code for product website</string>
   <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
   <string name="image_uploaded_successfully">Image uploaded successfully</string>
-  <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
-  <string name="ingredients_overwrite">Ingredients overwrite</string>
-  <string name="choose_mine">Choose mine</string>
-  <string name="keep_previous_version">Keep previous version</string>
-  <string name="product_name_overwrite">Product name overwrite</string>
-  <string name="yours">Yours: </string>
-  <string name="currently_on">Currently on %s: </string>
-  <string name="quantity_overwrite">Quantity overwrite</string>
-  <string name="link_overwrite">Link overwrite</string>
-  <string name="save_product">Do you want to save the product?</string>
-  <string name="error_adding_product">Something went wrong when adding product</string>
-  <string name="photos">Photos</string>
-  <string name="please_wait">Please wait</string>
-  <string name="product_uploaded_successfully">Product uploaded successfully</string>
-  <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
-  <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
+  <string name="error_adding_product_photos">Algo salió mal al tratar de agregar fotos de productos</string>
+  <string name="ingredients_overwrite">Sobrescritura de ingredientes</string>
+  <string name="choose_mine">Elige el mio</string>
+  <string name="keep_previous_version">Mantener la versión anterior</string>
+  <string name="product_name_overwrite">Sobreescritura del nombre del producto</string>
+  <string name="yours">Suyo: </string>
+  <string name="currently_on">Actualmente en %s: </string>
+  <string name="quantity_overwrite">Sobrescribir cantidad</string>
+  <string name="link_overwrite">Sobreescribir enlace</string>
+  <string name="save_product">¿Desea guardar el producto?</string>
+  <string name="error_adding_product">Algo salió mal al añadir el producto</string>
+  <string name="photos">Fotos</string>
+  <string name="please_wait">Por favor, espere</string>
+  <string name="product_uploaded_successfully">El documento se ha subido correctamente</string>
+  <string name="no_internet_connection">Parece que no tiene conexión a Internet, las imágenes se subirán cuando la red esté disponible</string>
+  <string name="no_internet_unable_to_extract_ingredients">Sin conexión a Internet. No se pueden extraer los ingredientes</string>
   <string name="percent">%1$d%%</string>
-  <string name="overview">Overview</string>
+  <string name="overview">Sobreescribir</string>
   <string name="ingredients">Ingredientes</string>
-  <string name="nutrition_facts">Nutrition Facts</string>
-  <string name="your_version">Yours</string>
-  <string name="ingredients_picture">Ingredients Picture</string>
-  <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
-  <string name="ingredients_list">Ingredients List</string>
-  <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+  <string name="nutrition_facts">Información nutricional</string>
+  <string name="your_version">Suyo</string>
+  <string name="ingredients_picture">Imagen con los ingredientes del producto</string>
+  <string name="take_ingredients_picture_to_extract">(Por favor, tome una foto de los ingredientes para extraerlos automáticamente)</string>
+  <string name="ingredients_list">Lista de ingredientes</string>
+  <string name="ingredients_hint">Conservar el orden, indicar el % cuando se especifique, separar por una coma o use -, utilice () para ingredientes de otro ingrediente, utilice _ al inicio y final de los alérgenos</string>
   <string name="extract_ingredients">Extract ingredients</string>
   <string name="extracting_ingredients">Extrayendo los ingredientes</string>
   <string name="looksGood">Looks Good</string>
