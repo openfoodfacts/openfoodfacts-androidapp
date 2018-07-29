@@ -93,49 +93,49 @@
     <item>Chrom</item>
     <item>Kupfer</item>
     <item>Dihomo-Gamma-Linolensäure / DGLA (20:3 n-6)</item>
-    <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-    <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-    <item>Elaidic acid (18:1 n-9)</item>
-    <item>Erucic acid (22:1 n-9)</item>
+    <item>Docosahexaensäure / DHA (22:6 n-3)</item>
+    <item>Eicosapentaensäure / EPA (20:5 n-3)</item>
+    <item>Elaidinsäure (18:1 n-9)</item>
+    <item>Erucasäure (22:1 n-9)</item>
     <item>Fluorid</item>
     <item>Fruktose</item>
-    <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+    <item>Gamma-Linolensäure / GLA (18:3 n-6)</item>
     <item>Glukose</item>
-    <item>Gondoic acid (20:1 n-9)</item>
+    <item>Gondolensäure (20:1 n-9)</item>
     <item>Jod</item>
     <item>Eisen</item>
     <item>Laktose</item>
-    <item>Lauric acid (12:0)</item>
-    <item>Lignoceric acid (24:0)</item>
-    <item>Linoleic acid / LA (18:2 n-6)</item>
+    <item>Laurinsäure (12:0)</item>
+    <item>Lignocerinsäure (24:0)</item>
+    <item>Linolsäure / LA (18:2 n-6)</item>
     <item>Magnesium</item>
     <item>Maltodextrine</item>
     <item>Maltose</item>
     <item>Mangan</item>
-    <item>Mead acid (20:3 n-9)</item>
-    <item>Melissic acid (30:0)</item>
+    <item>Mead-Säure (20:3 n-9)</item>
+    <item>Melissinsäure (30:0)</item>
     <item>Molybdän</item>
-    <item>Monounsaturated fat</item>
-    <item>Montanic acid (28:0)</item>
-    <item>Myristic acid (14:0)</item>
-    <item>Nervonic acid (24:1 n-9)</item>
+    <item>Einfach ungesättigte Fettsäuren</item>
+    <item>Montansäure (28:0)</item>
+    <item>Myristinsäure (14:0)</item>
+    <item>Nervonsäure (24:1 n-9)</item>
     <item>Nukleotide</item>
-    <item>Oleic acid (18:1 n-9)</item>
-    <item>Omega 3 fatty acids</item>
-    <item>Omega 6 fatty acids</item>
-    <item>Omega 9 fatty acids</item>
-    <item>Palmitic acid (16:0)</item>
-    <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+    <item>Ölsäure (18:1 n-9)</item>
+    <item>Omega-3-Fettsäuren</item>
+    <item>Omega-6-Fettsäuren</item>
+    <item>Omega-9-Fettsäuren</item>
+    <item>Palmitinsäure (16:0)</item>
+    <item>Pantothensäure / Pantothenat (Vitamin B5)</item>
     <item>pH</item>
     <item>Phosphor</item>
-    <item>Sugar alcohols (Polyols)</item>
-    <item>Polyunsaturated fat</item>
+    <item>Zuckeralkohole (Polyole)</item>
+    <item>Mehrfach ungesättigte Fettsäuren</item>
     <item>Kalium</item>
     <item>Selen</item>
-    <item>Serum proteins</item>
+    <item>Serumproteine</item>
     <item>Siliziumdioxid</item>
-    <item>Starch</item>
-    <item>Stearic acid (18:0)</item>
+    <item>Stärke</item>
+    <item>Stearinsäure (18:0)</item>
     <item>Saccharose</item>
     <item>Taurin</item>
     <item>Transfette</item>
@@ -645,19 +645,19 @@
   <string name="serving_size">Portionsgröße</string>
   <string name="alcohol_unit" formatted="false">% vol / °</string>
   <string name="add_a_nutrient">Nährstoff hinzufügen</string>
-  <string name="add_this_product">Add this product</string>
-  <string name="product_picture">Product Picture</string>
-  <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
-  <string name="product_details">Product Details</string>
+  <string name="add_this_product">Diesen Artikel hinzufügen</string>
+  <string name="product_picture">Produktbild</string>
+  <string name="one_photo_compulsory">(Mindestens ein Foto ist erforderlich, um ein neues Produkt einzureichen)</string>
+  <string name="product_details">Produktdetails</string>
   <string name="product_name">Produktname</string>
   <string name="quantity">Mengenangabe</string>
-  <string name="labels">Labels</string>
+  <string name="labels">Etiketten</string>
   <string name="period_of_time_after_opening">Nach dem Öffnen zu verbrauchen bis</string>
-  <string name="manufacturing_details">Manufacturing Details</string>
+  <string name="manufacturing_details">Herstellungsdetails</string>
   <string name="origin_of_ingredients">Herkunft der Inhaltsstoffe</string>
-  <string name="manufacturing_place">Manufacturing place</string>
-  <string name="emb_code">EMB Code</string>
-  <string name="purchasing_details">Purchasing Details</string>
+  <string name="manufacturing_place">Herstellungsort</string>
+  <string name="emb_code">Produzenten-Schlüssel</string>
+  <string name="purchasing_details">Bezahlinformationen</string>
   <string name="country_where_purchased">Country where purchased</string>
   <string name="stores">Läden</string>
   <string name="additional_pictures">Additional Pictures</string>
