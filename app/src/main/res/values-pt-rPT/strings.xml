@@ -43,7 +43,7 @@
     <item>l</item>
     <item>ml</item>
     <item>cl</item>
-    <item>fl oz</item>
+    <item>fl. Unzen</item>
   </string-array>
   <!-- weight units -->
   <string-array name="weights_array">
@@ -54,7 +54,7 @@
   <!-- nutrition energy units -->
   <string-array name="energy_units">
     <item>kcal</item>
-    <item>kj</item>
+    <item>kJ</item>
   </string-array>
   <!-- nutrition weight units -->
   <string-array name="nutrition_weight_units">
@@ -74,26 +74,26 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-    <item>Arachidic acid (20:0)</item>
-    <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-    <item>Behenic acid (22:0)</item>
+    <item>Ácido alfa-linolênico / ALA (18:3 n-3)</item>
+    <item>Ácido araquídico (20:0)</item>
+    <item>Ácido araquidônico / AA / ARA (20:4 n-6)</item>
+    <item>Ácido Beénico (22:0)</item>
     <item>Bicarbonato</item>
     <item>Biotina</item>
-    <item>Butyric acid (4:0)</item>
+    <item>Ácido butírico (4:0)</item>
     <item>Cafeína</item>
     <item>Cálcio</item>
-    <item>Capric acid (10:0)</item>
-    <item>Caproic acid (6:0)</item>
-    <item>Caprylic acid (8:0)</item>
+    <item>Ácido caprico (10:0)</item>
+    <item>Ácido caproico (6:0)</item>
+    <item>Ácido caprílico (8:0)</item>
     <item>Caseína</item>
-    <item>Cerotic acid (26:0)</item>
+    <item>Ácido Cerótico (26:0)</item>
     <item>Cloreto</item>
     <item>Colesterol</item>
     <item>Crómio</item>
     <item>Cobre</item>
-    <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-    <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
+    <item>Ácido dihomo-gama-linolênico / DGLA (20:3 n-6)</item>
+    <item>Ácido docosahexaenóico / DHA (22:6 n-3)</item>
     <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
     <item>Elaidic acid (18:1 n-9)</item>
     <item>Erucic acid (22:1 n-9)</item>
