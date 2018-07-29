@@ -112,42 +112,42 @@
     <item>Maltodextrin</item>
     <item>Maltose</item>
     <item>Mangan</item>
-    <item>Mead acid (20:3 n-9)</item>
-    <item>Melissic acid (30:0)</item>
+    <item>Myresyre (20:3 n-9)</item>
+    <item>Melissyre (30:0)</item>
     <item>Molybdæn</item>
-    <item>Monounsaturated fat</item>
-    <item>Montanic acid (28:0)</item>
-    <item>Myristic acid (14:0)</item>
-    <item>Nervonic acid (24:1 n-9)</item>
+    <item>Monoumættet fedt</item>
+    <item>Montansyre (28:0)</item>
+    <item>Myristinsyre (14:0)</item>
+    <item>Nervonsyre (24:1 n-9)</item>
     <item>Nukleotider</item>
-    <item>Oleic acid (18:1 n-9)</item>
-    <item>Omega 3 fatty acids</item>
-    <item>Omega 6 fatty acids</item>
-    <item>Omega 9 fatty acids</item>
-    <item>Palmitic acid (16:0)</item>
-    <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+    <item>Oliesyre (18:1 n-9)</item>
+    <item>Omega 3 fedtsyrer</item>
+    <item>Omega 6 fedtsyrer</item>
+    <item>Omega 9 fedtsyrer</item>
+    <item>Palmitinsyre (16:0)</item>
+    <item>Pantothensyre/Pantothenat (vitamin B5)</item>
     <item>pH</item>
     <item>Fosfor</item>
-    <item>Sugar alcohols (Polyols)</item>
-    <item>Polyunsaturated fat</item>
+    <item>Sukkeralkoholer (Polyoler)</item>
+    <item>Flerumættet fedt</item>
     <item>Kalium</item>
     <item>Selen</item>
-    <item>Serum proteins</item>
+    <item>Serumproteiner</item>
     <item>Silica</item>
-    <item>Starch</item>
-    <item>Stearic acid (18:0)</item>
+    <item>Stivelse</item>
+    <item>Stearinsyre (18:0)</item>
     <item>Saccharose</item>
     <item>Taurin</item>
     <item>Transfedt</item>
     <item>Vitamin A</item>
     <item>Vitamin B1 (Thiamin)</item>
-    <item>Vitamin B12 (Cobalamin)</item>
-    <item>Vitamin B2 (Riboflavin)</item>
-    <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-    <item>Vitamin B6 (Pyridoxin)</item>
-    <item>Vitamin B9 (Folic acid)</item>
-    <item>Vitamin C (Ascorbic acid)</item>
-    <item>D-vitamin</item>
+    <item>Vitamin B12 (cobalamin)</item>
+    <item>Vitamin B2 (riboflavin)</item>
+    <item>Vitamin B3/vitamin PP (niacin)</item>
+    <item>Vitamin B6 (pyridoxin)</item>
+    <item>Vitamin B9 (folsyre)</item>
+    <item>Vitamin C (ascorbinsyre)</item>
+    <item>Vitamin D</item>
     <item>E-vitamin</item>
     <item>Vitamin K</item>
     <item>Zink</item>
@@ -314,16 +314,16 @@
   <string name="txt_history_exported">Historik eksporteret</string>
   <string name="permision_write_external_storage">Tilladelse til skrivning på eksternt lager er nødvendig for at eksportere historik.</string>
   <string name="txt_nutrition_not_found">Ikke fundet</string>
-  <string name="no_brand">No Brand</string>
-  <string name="no_title">No Title</string>
+  <string name="no_brand">Intet mærke</string>
+  <string name="no_title">Uden titel</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="display_fact">Tabel til ernæringsfakta for %1$s af %2$s</string>
+  <string name="check_facts">Tjek</string>
   <string name="nutrition">Ernæring</string>
-  <string name="calculated_nutrition">Calculated Nutrition</string>
-  <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
-  <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+  <string name="calculated_nutrition">Beregnet ernæring</string>
+  <string name="please_enter_weight">Angiv vægten</string>
+  <string name="enter_weight">Angiv vægten</string>
+  <string name="calculate_nutrition_facts">Beregn ernæringfakta</string>
   <string name="txt_calories_result">%1$s kcal i %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Kulhydrat</string>
   <string name="nutrition_carbohydrate_short_name">Kulhydrat (g)</string>
