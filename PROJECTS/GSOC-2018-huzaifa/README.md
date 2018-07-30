@@ -1,6 +1,8 @@
 # openfoodfacts-android
 Status updates for the Open Food Facts GSoC 2018 Project.
 
+[Weekly status updates](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/PROJECTS/GSOC-2018-huzaifa/STATUS.md)
+
 View the [project board](https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/3)
 
 View [GSoC 2018 Proposal](https://docs.google.com/document/d/1eJqjmyjF3zTUcASM9Go1t_w5Z0FIJM7mJeGpSQu-Ft4)
