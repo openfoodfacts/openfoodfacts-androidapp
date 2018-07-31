@@ -9,8 +9,8 @@ v2! Alle OFF-Freiwilligen haben hart gearbeitet, basierend auf Ihren Vorschläge
 8. So schlank wie bisher 🙂
 
 v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
-1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
-2. You can now get nutrition facts for the portion you're eating (Rutvik)
+1. Wir haben das gesamte Produkterlebnis überarbeitet (und es funktioniert sogar Offline). (Danke Huzaifa)
+2. Sie können jetzt Nährwertangaben für die verzehrte Portion abrufen (Rutvik)
 3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
 4. Housecleaning (by Rutvik & Salfai)
 5. 🌎 Korean & Indonesian
