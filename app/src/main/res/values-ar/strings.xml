@@ -655,7 +655,7 @@
   <string name="traces">آثار</string>
   <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
   <string name="nutrition_facts_not_specified">لم يتم تحديد الحقائق الغذائية على المنتج.</string>
-  <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+  <string name="nutrition_facts_picture">صورة للحقائق الغذائية</string>
   <string name="for_100g_100ml">100 جرام / 100 مل</string>
   <string name="per_serving">Per Serving</string>
   <string name="serving_size">حجم الحصة</string>
