@@ -8,9 +8,9 @@ v2! Todos os voluntários da OFF trabalharam duro, basedo nas suas sugestões. S
 7. Não é necessário registar-se
 8. Leve como antes :)
 
-v2.8! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
-1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
-2. You can now get nutrition facts for the portion you're eating (Rutvik)
-3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
-4. Housecleaning (by Rutvik & Salfai)
-5. 🌎 Korean & Indonesian
+v2.8! Depois do grande V2, todos os voluntários da OFF continuaram trabalhando duro, basendo nas suas sugestões. Agora temos 570.000 produtos liberados de 182 países por 10K + contribuidores, incl. você 🙂
+1. Reconstruímos toda a experiência de adição de produtos (e até funciona offline). (obrigado Huzaifa)
+2. Agora pode obter informações nutricionais para a porção que está comendo (Rutvik)
+3. Agora computamos grupos NOVA além do Nutriscore (Huzaifa)
+4. Limpeza (por Rutvik & Salfai)
+5. 🌎 Coreano e indonésio
