@@ -56,10 +56,10 @@
     <item>غ</item>
     <item>مغ</item>
     <item>كغ</item>
-    <item>l</item>
-    <item>ml</item>
+    <item>لتر</item>
+    <item>مل</item>
     <item>cl</item>
-    <item>fl oz</item>
+    <item>أوقية</item>
   </string-array>
   <!-- weight units -->
   <string-array name="weights_array">
@@ -70,19 +70,19 @@
   <!-- nutrition energy units -->
   <string-array name="energy_units">
     <item>kcal</item>
-    <item>kj</item>
+    <item>كيلوجول</item>
   </string-array>
   <!-- nutrition weight units -->
   <string-array name="nutrition_weight_units">
     <item>غ</item>
     <item>مغ</item>
-    <item>µg</item>
+    <item>ميكروجرام</item>
   </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>غ</item>
     <item>مغ</item>
-    <item>µg</item>
+    <item>ميكروجرام</item>
     <item>% DV</item>
     <item>IU</item>
   </string-array>
