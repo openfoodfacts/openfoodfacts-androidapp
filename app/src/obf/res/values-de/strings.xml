@@ -34,5 +34,5 @@
   <!-- OBF tagline in different languages -->
   <string name="tagline">die kostenlose Kosmetik-Datenbank</string>
   <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Beauty Facts. Könnten Sie es bitte hinzufügen?</string>
-  <string name="currently_on_version">Currently on Open Beauty Facts</string>
+  <string name="currently_on_version">Aktuell auf Open Beauty Facts</string>
 </resources>
