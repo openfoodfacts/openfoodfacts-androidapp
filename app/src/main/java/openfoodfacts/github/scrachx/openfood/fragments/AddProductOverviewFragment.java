@@ -50,6 +50,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
@@ -62,6 +63,8 @@ import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.models.Tag;
+import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -159,13 +162,19 @@ public class AddProductOverviewFragment extends BaseFragment {
     private String languageCode;
     private Activity activity;
     private OfflineSavedProduct mOfflineSavedProduct;
+    private TagDao mTagDao;
+    private CategoryNameDao mCategoryNameDao;
+    private LabelNameDao mLabelNameDao;
+    private Product product;
     private String code;
     private String mImageUrl;
     private boolean frontImage;
+    private boolean edit_product;
     private File photoFile;
     private List<String> countries = new ArrayList<>();
     private List<String> labels = new ArrayList<>();
     private List<String> category = new ArrayList<>();
+    private boolean newImageSelected;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -185,15 +194,19 @@ public class AddProductOverviewFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle b = getArguments();
         if (b != null) {
-            Product product = (Product) b.getSerializable("product");
+            product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
+            edit_product = b.getBoolean("edit_product");
             String currentLang = LocaleHelper.getLanguage(activity);
             setProductLanguage(currentLang);
             barcode.setText(R.string.txtBarcode);
             if (product != null) {
                 code = product.getCode();
             }
-            if (mOfflineSavedProduct != null) {
+            if (edit_product && product != null) {
+                code = product.getCode();
+                preFillProductValues();
+            } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
                 preFillValues();
             }
@@ -209,6 +222,127 @@ public class AddProductOverviewFragment extends BaseFragment {
                 getString(R.string.hint_product_URL) + "</small></small>"));
         initializeChips();
         loadAutoSuggestions();
+    }
+
+    /**
+     * Pre fill the fields of the product which are already present on the server.
+     */
+    private void preFillProductValues() {
+        mTagDao = Utils.getAppDaoSession(activity).getTagDao();
+        mCategoryNameDao = Utils.getAppDaoSession(activity).getCategoryNameDao();
+        mLabelNameDao = Utils.getAppDaoSession(activity).getLabelNameDao();
+        if (product.getImageFrontUrl() != null && !product.getImageFrontUrl().isEmpty()) {
+            mImageUrl = product.getImageFrontUrl();
+            Picasso.with(getContext())
+                    .load(product.getImageFrontUrl())
+                    .into(imageFront);
+        }
+        if (product.getLang() != null && !product.getLang().isEmpty()) {
+            setProductLanguage(product.getLang());
+        }
+        if (product.getProductName() != null && !product.getProductName().isEmpty()) {
+            name.setText(product.getProductName());
+        }
+        if (product.getQuantity() != null && !product.getQuantity().isEmpty()) {
+            // Remove the space between the value and the unit.
+            String qty = product.getQuantity().replace(" ", "");
+            // Splits the quantity into value and unit. Example: "250g" into "250" and "g"
+            String part[] = qty.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+            quantity.setText(part[0]);
+            if (part.length > 1) {
+                // quantity has the unit part convert it to lowercase.
+                part[1] = part[1].toLowerCase();
+                for (int i = 0; i < UNIT.length; i++) {
+                    // find index where the UNIT array has the identified unit
+                    if (UNIT[i].equals(part[1])) {
+                        quantityUnit.setSelection(i);
+                    }
+                }
+            }
+        }
+        if (product.getBrands() != null && !product.getBrands().isEmpty()) {
+            List<String> chipValues = Arrays.asList(product.getBrands().split("\\s*,\\s*"));
+            brand.setText(chipValues);
+        }
+        if (product.getPackaging() != null && !product.getPackaging().isEmpty()) {
+            List<String> chipValues = Arrays.asList(product.getPackaging().split("\\s*,\\s*"));
+            packaging.setText(chipValues);
+        }
+        if (product.getCategoriesTags() != null && !product.getCategoriesTags().isEmpty()) {
+            List<String> categoriesTags = product.getCategoriesTags();
+            final List<String> chipValues = new ArrayList<>();
+            for (String tag : categoriesTags) {
+                chipValues.add(getCategoryName(tag.substring(0, 2), tag));
+            }
+            categories.setText(chipValues);
+        }
+        if (product.getLabelsTags() != null && !product.getLabelsTags().isEmpty()) {
+            List<String> labelsTags = product.getLabelsTags();
+            final List<String> chipValues = new ArrayList<>();
+            for (String tag : labelsTags) {
+                chipValues.add(getLabelName(tag.substring(0, 2), tag));
+            }
+            label.setText(chipValues);
+        }
+        if (product.getOrigins() != null && !product.getOrigins().isEmpty()) {
+            List<String> chipValues = Arrays.asList(product.getOrigins().split("\\s*,\\s*"));
+            originOfIngredients.setText(chipValues);
+        }
+        if (product.getManufacturingPlaces() != null && !product.getManufacturingPlaces().isEmpty()) {
+            manufacturingPlace.setText(product.getManufacturingPlaces());
+        }
+        if (product.getEmbTags() != null && !product.getEmbTags().toString().trim().equals("[]")) {
+            String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
+            final List<String> chipValues = new ArrayList<>();
+            for (String embTag : embTags) {
+                chipValues.add(getEmbCode(embTag));
+            }
+            embCode.setText(chipValues);
+        }
+        if (product.getManufactureUrl() != null && !product.getManufactureUrl().isEmpty()) {
+            link.setText(product.getManufactureUrl());
+        }
+        if (product.getPurchasePlaces() != null && !product.getPurchasePlaces().isEmpty()) {
+            List<String> chipValues = Arrays.asList(product.getPurchasePlaces().split("\\s*,\\s*"));
+            countryWherePurchased.setText(chipValues);
+        }
+        if (product.getStores() != null && !product.getStores().isEmpty()) {
+            List<String> chipValues = Arrays.asList(product.getStores().split("\\s*,\\s*"));
+            stores.setText(chipValues);
+        }
+        if (product.getCountries() != null && !product.getCountries().isEmpty()) {
+            List<String> chipValues = Arrays.asList(product.getCountries().split("\\s*,\\s*"));
+            countriesWhereSold.setText(chipValues);
+        }
+
+    }
+
+    /**
+     * @param languageCode 2 letter language code. example de, en etc.
+     * @param tag          the complete tag. example de:hoher-omega-3-gehalt
+     * @return returns the name of the category if found in the db or else returns the tag itself.
+     */
+    private String getLabelName(String languageCode, String tag) {
+        LabelName labelName = mLabelNameDao.queryBuilder().where(LabelNameDao.Properties.LabelTag.eq(tag), LabelNameDao.Properties.LanguageCode.eq(languageCode)).unique();
+        if (labelName != null) return labelName.getName();
+        return tag;
+    }
+
+    /**
+     * @param languageCode 2 letter language code. example en, fr etc.
+     * @param tag          the complete tag. example en:plant-based-foods-and-beverages
+     * @return returns the name of the category (example Plant-based foods and beverages) if found in the db or else returns the tag itself.
+     */
+    private String getCategoryName(String languageCode, String tag) {
+        CategoryName categoryName = mCategoryNameDao.queryBuilder().where(CategoryNameDao.Properties.CategoryTag.eq(tag), CategoryNameDao.Properties.LanguageCode.eq(languageCode)).unique();
+        if (categoryName != null) return categoryName.getName();
+        return tag;
+    }
+
+    private String getEmbCode(String embTag) {
+        Tag tag = mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique();
+        if (tag != null) return tag.getName();
+        return embTag;
     }
 
     /**
@@ -395,7 +529,11 @@ public class AddProductOverviewFragment extends BaseFragment {
             // front image is already added. Open full screen image.
             Intent intent = new Intent(getActivity(), FullScreenImage.class);
             Bundle bundle = new Bundle();
-            bundle.putString("imageurl", "file://" + mImageUrl);
+            if (edit_product && !newImageSelected) {
+                bundle.putString("imageurl", mImageUrl);
+            } else {
+                bundle.putString("imageurl", "file://" + mImageUrl);
+            }
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
@@ -414,6 +552,18 @@ public class AddProductOverviewFragment extends BaseFragment {
                 EasyImage.openCamera(this, 0);
             }
         }
+    }
+
+    @OnLongClick(R.id.btnAddImageFront)
+    boolean newFrontImage() {
+        // add front image.
+        frontImage = true;
+        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
+        }
+        return true;
     }
 
     @OnClick(R.id.btn_other_pictures)
@@ -617,6 +767,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 if (frontImage) {
                     image = new ProductImage(code, FRONT, photoFile);
                     mImageUrl = photoFile.getAbsolutePath();
+                    newImageSelected = true;
                     position = 0;
                 } else {
                     image = new ProductImage(code, OTHER, photoFile);

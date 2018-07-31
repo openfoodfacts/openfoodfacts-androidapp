@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.hardware.Camera;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
-import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
@@ -26,6 +24,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.ResultPoint;
 import com.google.zxing.client.android.BeepManager;
@@ -65,14 +64,12 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 
 public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity {
 
     private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
+    private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
     private static HistoryProductDao mHistoryProductDao;
     @BindView(R.id.fab_status)
     FloatingActionButton fab_status;
@@ -204,12 +201,25 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
                                 fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
                                 fab_status.setOnClickListener(v -> {
-                                    String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + product.getCode();
-                                    if (product.getUrl() != null) {
-                                        url = " " + product.getUrl();
+                                    final SharedPreferences settings = getSharedPreferences("login", 0);
+                                    final String login = settings.getString("user", "");
+                                    if (login.isEmpty()) {
+                                        new MaterialDialog.Builder(ContinuousScanActivity.this)
+                                                .title(R.string.sign_in_to_edit)
+                                                .positiveText(R.string.txtSignIn)
+                                                .negativeText(R.string.dialog_cancel)
+                                                .onPositive((dialog, which) -> {
+                                                    Intent intent = new Intent(ContinuousScanActivity.this, LoginActivity.class);
+                                                    startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
+                                                    dialog.dismiss();
+                                                })
+                                                .onNegative((dialog, which) -> dialog.dismiss())
+                                                .build().show();
+                                    } else {
+                                        Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
+                                        intent.putExtra("edit_product", product);
+                                        startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
                                     }
-                                    CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), null);
-                                    CustomTabActivityHelper.openCustomTab(ContinuousScanActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
                                 });
                             } else {
                                 txtProductIncomplete.setVisibility(View.INVISIBLE);
@@ -643,6 +653,10 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             findProduct(lastText, true);
+        } else if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
+            intent.putExtra("edit_product", product);
+            startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
         }
     }
 

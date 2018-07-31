@@ -115,6 +115,10 @@ public class Product implements Serializable {
     private List<String> editorsTags = new ArrayList<>();
     @JsonProperty("nova_groups")
     private String novaGroups;
+    @JsonProperty("lang")
+    private String lang;
+    @JsonProperty("purchase_places")
+    private String purchasePlaces;
 
 
     /**
@@ -492,6 +496,10 @@ public class Product implements Serializable {
     public String getNovaGroups(){
         return novaGroups;
     }
+
+    public String getLang(){return lang;}
+
+    public String getPurchasePlaces(){return purchasePlaces;}
 
     public void setCode(String code) {
         this.code = code;

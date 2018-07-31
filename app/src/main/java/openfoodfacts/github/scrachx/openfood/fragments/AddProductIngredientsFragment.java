@@ -40,6 +40,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
@@ -88,6 +89,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     Button btnSkipIngredients;
     @BindView(R.id.traces)
     NachoTextView traces;
+    AllergenNameDao mAllergenNameDao;
     private Activity activity;
     private File photoFile;
     private String code;
@@ -95,6 +97,9 @@ public class AddProductIngredientsFragment extends BaseFragment {
     private OfflineSavedProduct mOfflineSavedProduct;
     private HashMap<String, String> productDetails = new HashMap<>();
     private String imagePath;
+    private boolean edit_product;
+    private Product product;
+    private boolean newImageSelected;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -114,12 +119,16 @@ public class AddProductIngredientsFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle b = getArguments();
         if (b != null) {
-            Product product = (Product) b.getSerializable("product");
+            product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
+            edit_product = b.getBoolean("edit_product");
             if (product != null) {
                 code = product.getCode();
             }
-            if (mOfflineSavedProduct != null) {
+            if (edit_product && product != null) {
+                code = product.getCode();
+                preFillProductValues();
+            } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
                 preFillValues();
             }
@@ -132,6 +141,33 @@ public class AddProductIngredientsFragment extends BaseFragment {
             imagePath = productDetails.get("image_ingredients");
         }
         loadAutoSuggestions();
+    }
+
+    private void preFillProductValues() {
+        mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
+        if (product.getImageIngredientsUrl() != null && !product.getImageIngredientsUrl().isEmpty()) {
+            imagePath = product.getImageIngredientsUrl();
+            Picasso.with(getContext())
+                    .load(product.getImageIngredientsUrl())
+                    .into(imageIngredients);
+        }
+        if (product.getIngredientsText() != null && !product.getIngredientsText().isEmpty()) {
+            ingredients.setText(product.getIngredientsText());
+        }
+        if (product.getTracesTags() != null) {
+            List<String> tracesTags = product.getTracesTags();
+            final List<String> chipValues = new ArrayList<>();
+            for (String tag : tracesTags) {
+                chipValues.add(getTracesName(tag.substring(0, 2), tag));
+            }
+            traces.setText(chipValues);
+        }
+    }
+
+    private String getTracesName(String languageCode, String tag) {
+        AllergenName allergenName = mAllergenNameDao.queryBuilder().where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode)).unique();
+        if (allergenName != null) return allergenName.getName();
+        return tag;
     }
 
     /**
@@ -201,7 +237,11 @@ public class AddProductIngredientsFragment extends BaseFragment {
             // ingredients image is already added. Open full screen image.
             Intent intent = new Intent(getActivity(), FullScreenImage.class);
             Bundle bundle = new Bundle();
-            bundle.putString("imageurl", "file://" + imagePath);
+            if (edit_product && !newImageSelected) {
+                bundle.putString("imageurl", imagePath);
+            } else {
+                bundle.putString("imageurl", "file://" + imagePath);
+            }
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
@@ -219,6 +259,16 @@ public class AddProductIngredientsFragment extends BaseFragment {
                 EasyImage.openCamera(this, 0);
             }
         }
+    }
+
+    @OnLongClick(R.id.btnAddImageIngredients)
+    boolean newIngredientsImage() {
+        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
+        }
+        return true;
     }
 
     @OnClick(R.id.btn_next)
@@ -287,6 +337,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
                 imagePath = resultUri.getPath();
+                newImageSelected = true;
                 photoFile = new File((resultUri.getPath()));
                 ProductImage image = new ProductImage(code, INGREDIENTS, photoFile);
                 image.setFilePath(resultUri.getPath());

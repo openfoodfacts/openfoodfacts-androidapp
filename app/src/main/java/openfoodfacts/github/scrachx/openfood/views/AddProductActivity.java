@@ -240,12 +240,16 @@ public class AddProductActivity extends AppCompatActivity {
         mOfflineSavedProductDao = Utils.getAppDaoSession(this).getOfflineSavedProductDao();
         final State state = (State) getIntent().getSerializableExtra("state");
         offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra("edit_offline_product");
+        Product mEditProduct = (Product) getIntent().getSerializableExtra("edit_product");
         if (state != null) {
             mProduct = state.getProduct();
             // Search if the barcode already exists in the OfflineSavedProducts db
             offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(mProduct.getCode())).unique();
         }
-        if (offlineSavedProduct != null) {
+        if (mEditProduct != null) {
+            mProduct = mEditProduct;
+            bundle.putBoolean("edit_product", true);
+        } else if (offlineSavedProduct != null) {
             bundle.putSerializable("edit_offline_product", offlineSavedProduct);
             // Save the already existing images in productDetails for UI
             imagesFilePath[0] = offlineSavedProduct.getProductDetailsMap().get("image_front");
@@ -259,7 +263,7 @@ public class AddProductActivity extends AppCompatActivity {
             image_ingredients_uploaded = image_ingredients_status != null && image_ingredients_status.equals("true");
             image_nutrition_facts_uploaded = image_nutrition_facts_status != null && image_nutrition_facts_status.equals("true");
         }
-        if (state == null && offlineSavedProduct == null) {
+        if (state == null && offlineSavedProduct == null && mEditProduct == null) {
             Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show();
             finish();
         }
