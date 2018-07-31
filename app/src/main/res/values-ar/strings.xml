@@ -69,7 +69,7 @@
   </string-array>
   <!-- nutrition energy units -->
   <string-array name="energy_units">
-    <item>kcal</item>
+    <item>سعرات حرارية</item>
     <item>كيلوجول</item>
   </string-array>
   <!-- nutrition weight units -->
@@ -84,7 +84,7 @@
     <item>مغ</item>
     <item>ميكروجرام</item>
     <item>% DV</item>
-    <item>IU</item>
+    <item>وحدة دولية</item>
   </string-array>
   <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
