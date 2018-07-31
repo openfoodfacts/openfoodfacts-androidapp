@@ -34,5 +34,5 @@
   <!-- OBF tagline in different languages -->
   <string name="tagline">la base de datos gratuita</string>
   <string name="product_not_found">El producto %1$s que escaneaste aún no existe en Open Beauty Facts. ¿Puedes agregarla?</string>
-  <string name="currently_on_version">Currently on Open Beauty Facts</string>
+  <string name="currently_on_version">Actualmente en Open Beauty Facts</string>
 </resources>
