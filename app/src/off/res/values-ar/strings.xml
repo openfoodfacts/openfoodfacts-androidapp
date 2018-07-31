@@ -23,7 +23,7 @@
   <string name="txtDialogsContent">المنتج الذي تم مسحه غير موجود حتى الآن في الحقائق الغذائية المفتوحة. الرجاء إضافته.</string>
   <string name="txtDialogsContentPowerMode">المنتج الذي تم مسحه موجود بالفعل في \"الحقائق الغذائية المفتوحة\".</string>
   <string name="msg_share">انظر لهذا المنتج على \"الحقائق الغذائية المفتوحة\":</string>
-  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
+  <string name="not_support_books">الكتب ليست مدعومة في الوقت الحالي من قبل \"حقائق الغذاء المفتوحة\"</string>
   <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="Donation">انقر هنا للتبرع لـ Open Food Facts</string>
   <string name="translate_help_title">المساعدة في ترجمة \"حقائق الطعام المفتوحة\"</string>
