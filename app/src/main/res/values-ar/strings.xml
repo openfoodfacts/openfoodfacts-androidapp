@@ -334,12 +334,12 @@
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="check_facts">تحقق</string>
   <string name="nutrition">التغذية</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
-  <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
-  <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+  <string name="please_enter_weight">الرجاء إدخال الوزن</string>
+  <string name="enter_weight">أدخل الوزن</string>
+  <string name="calculate_nutrition_facts">احسب حقائق التغذية</string>
   <string name="txt_calories_result">%1$s سعرة حرارية في %2$s %3$s</string>
   <string name="nutrition_carbohydrate">كربوهيدرات</string>
   <string name="nutrition_carbohydrate_short_name">الكربوهيدرات (ج)</string>
@@ -508,14 +508,14 @@
   <string name="minutes_ago">قبل دقائق</string>
   <string name="hours_ago">منذ ساعات مضت</string>
   <string name="days_ago">منذ أيام</string>
-  <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
+  <string name="scan_first_string">سيتم سرد سجل المنتجات الذي تم عرضه سابقاً هنا. \n هذا السجل مخصص لك فقط ويتم تخزينه محليًا فى هاتفك الجوال.</string>
   <string name="log_in">تسجيل الدخول</string>
   <string name="login_true">مسجل مسبقاً!</string>
   <string name="confirm_logout">تأكيد تسجيل الخروج</string>
   <string name="logout_dialog_content">هل أنت متأكد من تسجيل الخروج؟</string>
   <string name="dialog_cancel">إلغاء</string>
-  <string name="choose_resolution">Choose Resolution</string>
-  <string name="pref_resolution_summary">Pick a resolution for image upload</string>
+  <string name="choose_resolution">اختر دقة الوضوح</string>
+  <string name="pref_resolution_summary">اختر الدقة لتحميل الصورة</string>
   <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">الذهاب إلى أبعد من ذلك</string>
