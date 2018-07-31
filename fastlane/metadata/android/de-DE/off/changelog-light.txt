@@ -12,5 +12,5 @@ v2.8! Nach der umfangreichen V2 haben alle OFF-Freiwilligen hart gearbeitet, bas
 1. Wir haben das gesamte Produkterlebnis überarbeitet (und es funktioniert sogar Offline). (Danke Huzaifa)
 2. Sie können jetzt Nährwertangaben für die verzehrte Portion abrufen (Rutvik)
 3. Wir berechnen jetzt NOVA-Gruppen zusätzlich zum NutriScore (Huzaifa)
-4. Housecleaning (by Rutvik & Salfai)
-5. 🌎 Korean & Indonesian
+4. Hausputz (durch Rutvik & Salfai)
+5. 🌎 Koreanisch und Indonesisch
