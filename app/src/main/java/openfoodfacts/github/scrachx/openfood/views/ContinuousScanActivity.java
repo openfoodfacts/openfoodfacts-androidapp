@@ -556,9 +556,11 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     }
 
     private boolean isProductIncomplete() {
-        return product != null && (product.getImageUrl() == null || product.getQuantity() == null ||
-                product.getProductName() == null || product.getBrands() == null ||
-                product.getIngredientsText() == null);
+        return product != null && (product.getImageFrontUrl() == null || product.getImageFrontUrl().equals("") ||
+                product.getQuantity() == null || product.getQuantity().equals("") ||
+                product.getProductName() == null || product.getProductName().equals("") ||
+                product.getBrands() == null || product.getBrands().equals("") ||
+                product.getIngredientsText() == null || product.getIngredientsText().equals(""));
     }
 
     void toggleCamera() {

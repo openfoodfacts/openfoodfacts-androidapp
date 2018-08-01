@@ -315,6 +315,22 @@ public class AddProductIngredientsFragment extends BaseFragment {
         }
     }
 
+    /**
+     * adds all the fields to the query map even those which are null or empty.
+     */
+    public void getAllDetails() {
+        traces.chipifyAllUnterminatedTokens();
+        if (activity instanceof AddProductActivity) {
+            ((AddProductActivity) activity).addToMap(PARAM_INGREDIENTS, ingredients.getText().toString());
+            List<String> list = traces.getChipValues();
+            String string = StringUtils.join(list, ',');
+            ((AddProductActivity) activity).addToMap(PARAM_TRACES.substring(4), string);
+        }
+    }
+
+    /**
+     * adds only those fields to the query map which are not empty.
+     */
     public void getDetails() {
         traces.chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {

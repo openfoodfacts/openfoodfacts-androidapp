@@ -24,7 +24,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -91,7 +90,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_NAME = "product_name";
     private static final String PARAM_BARCODE = "code";
     private static final String PARAM_QUANTITY = "quantity";
-    private static final String UNIT[] = {"g", "mg", "kg", "l", "ml", "cl", "fl oz"};
     private static final String PARAM_BRAND = "add_brands";
     private static final String PARAM_LANGUAGE = "lang";
     private static final String PARAM_PACKAGING = "add_packaging";
@@ -127,8 +125,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     EditText name;
     @BindView(R.id.quantity)
     EditText quantity;
-    @BindView(R.id.spinner_weight_unit)
-    Spinner quantityUnit;
     @BindView(R.id.brand)
     NachoTextView brand;
     @BindView(R.id.packaging)
@@ -244,21 +240,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             name.setText(product.getProductName());
         }
         if (product.getQuantity() != null && !product.getQuantity().isEmpty()) {
-            // Remove the space between the value and the unit.
-            String qty = product.getQuantity().replace(" ", "");
-            // Splits the quantity into value and unit. Example: "250g" into "250" and "g"
-            String part[] = qty.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
-            quantity.setText(part[0]);
-            if (part.length > 1) {
-                // quantity has the unit part convert it to lowercase.
-                part[1] = part[1].toLowerCase();
-                for (int i = 0; i < UNIT.length; i++) {
-                    // find index where the UNIT array has the identified unit
-                    if (UNIT[i].equals(part[1])) {
-                        quantityUnit.setSelection(i);
-                    }
-                }
-            }
+            quantity.setText(product.getQuantity());
         }
         if (product.getBrands() != null && !product.getBrands().isEmpty()) {
             List<String> chipValues = Arrays.asList(product.getBrands().split("\\s*,\\s*"));
@@ -364,19 +346,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 name.setText(productDetails.get(PARAM_NAME));
             }
             if (productDetails.get(PARAM_QUANTITY) != null) {
-                String qty = productDetails.get(PARAM_QUANTITY);
-                // Splits the quantity into value and unit. Example: "250g" into "250" and "g"
-                String part[] = qty.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
-                quantity.setText(part[0]);
-                if (part.length > 1) {
-                    // quantity has the unit part
-                    for (int i = 0; i < UNIT.length; i++) {
-                        // find index where the UNIT array has the identified unit
-                        if (UNIT[i].equals(part[1])) {
-                            quantityUnit.setSelection(i);
-                        }
-                    }
-                }
+                quantity.setText(product.getQuantity());
             }
             if (productDetails.get(PARAM_BRAND) != null) {
                 List<String> chipValues = Arrays.asList(productDetails.get(PARAM_BRAND).split("\\s*,\\s*"));
@@ -576,6 +546,37 @@ public class AddProductOverviewFragment extends BaseFragment {
         }
     }
 
+    /**
+     * adds all the fields to the query map even those which are null or empty.
+     */
+    public void getAllDetails() {
+        chipifyAllUnterminatedTokens();
+        if (activity instanceof AddProductActivity) {
+            ((AddProductActivity) activity).addToMap(PARAM_BARCODE, code);
+            ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
+            ((AddProductActivity) activity).addToMap(PARAM_NAME, name.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_QUANTITY, quantity.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_BRAND.substring(4), getValues(brand));
+            ((AddProductActivity) activity).addToMap(PARAM_PACKAGING.substring(4), getValues(packaging));
+            ((AddProductActivity) activity).addToMap(PARAM_CATEGORIES.substring(4), getValues(categories));
+            ((AddProductActivity) activity).addToMap(PARAM_LABELS.substring(4), getValues(label));
+            if (BuildConfig.FLAVOR.equals("obf")) {
+                ((AddProductActivity) activity).addToMap(PARAM_PERIODS_AFTER_OPENING, periodsAfterOpening.getText().toString());
+            }
+            ((AddProductActivity) activity).addToMap(PARAM_ORIGIN.substring(4), getValues(originOfIngredients));
+            ((AddProductActivity) activity).addToMap(PARAM_MANUFACTURING_PLACE.substring(4), manufacturingPlace.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_EMB_CODE.substring(4), getValues(embCode));
+            ((AddProductActivity) activity).addToMap(PARAM_LINK, link.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_PURCHASE.substring(4), getValues(countryWherePurchased));
+            ((AddProductActivity) activity).addToMap(PARAM_STORE.substring(4), getValues(stores));
+            ((AddProductActivity) activity).addToMap(PARAM_COUNTRIES.substring(4), getValues(countriesWhereSold));
+        }
+
+    }
+
+    /**
+     * adds only those fields to the query map which are not empty.
+     */
     public void getDetails() {
         chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
@@ -589,8 +590,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 ((AddProductActivity) activity).addToMap(PARAM_NAME, name.getText().toString());
             }
             if (!quantity.getText().toString().isEmpty()) {
-                String qty = quantity.getText().toString() + UNIT[quantityUnit.getSelectedItemPosition()];
-                ((AddProductActivity) activity).addToMap(PARAM_QUANTITY, qty);
+                ((AddProductActivity) activity).addToMap(PARAM_QUANTITY, quantity.getText().toString());
             }
             if (!brand.getChipValues().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_BRAND, getValues(brand));
