@@ -1,5 +1,30 @@
 # Status updates for the Open Food Facts project
 
+## Week starting July 23rd
+
+### Highlights
+
+* Added thorough product addition and implemented OCR for ingredients. Product addition works offline too.
+
+### Completed this week
+
+* Added tests for `OfflineSavedProduct` class.
+* New UI for the list of products saved offline.
+* Added checks when uploading products saved offline
+  * Checks for existing values of product name, ingredients, quantity and link on the server for the barcode being uploaded.
+  * If any of these value exists locally as well as on server then the user is shown a comparison dialog to choose between his version or the version present on the server.
+* During the addition of a product saved offline, check and reupload the images if not uploaded previously.
+* Improvements in scanning.
+* Added nova group image in the quickView as well as the product view.
+
+### Working on this week
+
+* Fix issues faced by users (if any) related to product addition.
+
+### To be worked on next week
+
+* Add native editing in the app.
+
 ## Week starting July 16th
 
 ### Completed this week
