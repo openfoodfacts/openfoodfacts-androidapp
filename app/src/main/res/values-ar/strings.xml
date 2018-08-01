@@ -28,9 +28,9 @@
   <plurals name="days">
     <item quantity="zero">%d days ago</item>
     <item quantity="one">منذ يوم</item>
-    <item quantity="two">%d days ago</item>
-    <item quantity="few">%d days ago</item>
-    <item quantity="many">%d days ago</item>
+    <item quantity="two">منذ يومان</item>
+    <item quantity="few">منذ بضع ايام</item>
+    <item quantity="many">منذ عدة ايام</item>
     <item quantity="other">%d منذ أيام</item>
   </plurals>
   <string name="action_settings">الإعدادات</string>
@@ -661,11 +661,11 @@
   <string name="for_100g_100ml">100 جرام / 100 مل</string>
   <string name="per_serving">لكل وجبة</string>
   <string name="serving_size">حجم الحصة</string>
-  <string name="alcohol_unit" formatted="false">% vol / °</string>
+  <string name="alcohol_unit" formatted="false">٪ الحجم / °</string>
   <string name="add_a_nutrient">إضافة مادة غذائية</string>
   <string name="add_this_product">إضافة منتج</string>
   <string name="product_picture">صورة المنتج</string>
-  <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
+  <string name="one_photo_compulsory">(صورة واحدة فقط إلزامية لإضافة منتج جديد)</string>
   <string name="product_details">تفاصيل المنتج</string>
   <string name="product_name">اسم المنتج</string>
   <string name="quantity">كمية</string>
@@ -674,14 +674,14 @@
   <string name="manufacturing_details">تفاصيل التصنيع</string>
   <string name="origin_of_ingredients">أصل المكونات</string>
   <string name="manufacturing_place">مكان التصنيع</string>
-  <string name="emb_code">EMB Code</string>
+  <string name="emb_code">رمز EMB</string>
   <string name="purchasing_details">تفاصيل الشراء</string>
   <string name="country_where_purchased">البلد حيث تم شراؤها منها</string>
   <string name="stores">المتاجر</string>
   <string name="additional_pictures">صور إضافية</string>
-  <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
-  <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-  <string name="uploading_ingredients_image">Uploading ingredients image</string>
-  <string name="uploading_front_image">Uploading front image</string>
+  <string name="hint_product_pictures">(أضف المزيد من الصور للمنتج ، على سبيل المثال: تعليمات إعادة التدوير والملصقات وغير ذلك)</string>
+  <string name="uploading_nutrition_image">تحميل صورة حقائق التغذية</string>
+  <string name="uploading_ingredients_image">تحميل صورة المكونات</string>
+  <string name="uploading_front_image">تحميل الصورة الأمامية</string>
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
 </resources>
