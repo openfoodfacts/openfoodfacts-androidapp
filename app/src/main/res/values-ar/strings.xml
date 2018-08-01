@@ -386,7 +386,7 @@
   <string name="txt_no_results">لم يتم العثور على أي نتائج</string>
   <string name="txt_extend_search">حاول توسيع نطاق البحث أو إضافة المنتج</string>
   <string name="txt_no_matching_products">لم نعثر على أي منتجات مطابقة. \n يمكنك تجربة:</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+  <string name="txt_broaden_search">-توسيع نطاق \n-البحث الخاص بك امسح و إضفه إلى \"الحقائق الغذائية مفتوحة\"</string>
   <string name="txt_cant_load_search_results">يتعذر تحميل نتائج البحث</string>
   <string name="something_went_wrong">عذراً، حدث خطأ ما…</string>
   <string name="txt_try_again">أعد المحاولة</string>
@@ -494,10 +494,10 @@
   <string name="FAQ">الأسئلة المتكررة</string>
   <string name="FrequentlyAskedQuestions">‮الأسئلة المتكررة</string>
   <string name="translate_help_title">المساعدة في ترجمة \"حقائق الطعام المفتوحة\"</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="translate_help_summary">قم بإحضار قاعدة بيانات حقائق الأغذية المفتوحة إلى لغتك - دون الحاجة إلى معرفة فنية</string>
   <string name="please_check_your_connection">يرجى التحقق من اتصالك.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
-  <string name="advanced_search_title">Advanced Search &amp; Charts</string>
+  <string name="advanced_search_title">بحث متقدم &amp;</string>
   <string name="connectivity_check">الرجاء التحقق من اتصالك بالإنترنت</string>
   <string name="dismiss">تجاهل</string>
   <string name="Terms">الشروط</string>
@@ -519,7 +519,7 @@
   <string name="choose_resolution">اختر دقة الوضوح</string>
   <string name="pref_resolution_summary">اختر الدقة لتحميل الصورة</string>
   <string name="image_upload_resolution">نقاء الصورة</string>
-  <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+  <string name="can_add_barcode">هل تواجه مشكلة في المسح؟ \n اسحب لأعلى لكتابة الرمز الشريطي</string>
   <string name="wikidata_information">الذهاب إلى أبعد من ذلك</string>
   <string name="description">الوصف: </string>
   <string name="title">العنوان: </string>
@@ -587,7 +587,7 @@
   <string name="modified_history">تمت إضافة المنتج على %1$s في %2$s من %3$s. آخر تعديل لصفحة المنتج في %4$s في %5$s من قبل %6$s. صفحة المنتج أيضا تم تعديلها من قبل %7$s</string>
   <string name="offline_notification_title">المساهمات دون اتصال التي تحتاج إلى إرسالها</string>
   <string name="creator_history">تمت إضافة المنتج بتاريخ %1$s فى %2$s من قبل</string>
-  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="last_editor_history">التعديل الأخير من صفحة المنتج على %1$s في %2$s CEST بواسطة </string>
   <string name="other_editors">تم تعديل المنتج أيضاً بواسطة </string>
   <string name="contribution_tab">مساهمات</string>
   <string name="contribution_tab_summary">عرض تابه مساهمات المستخدم مع المنتجات</string>
@@ -649,17 +649,17 @@
   <string name="ingredients_picture">صورة لقائمة المكونات</string>
   <string name="take_ingredients_picture_to_extract">(يرجى التقاط صورة للمكونات ليتم إستخراجها تلقائيًا)</string>
   <string name="ingredients_list">قائمة المكونات</string>
-  <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+  <string name="ingredients_hint">حافظ على الترتيب ، أو حدد النسبة المئوية عند تحديدها ، أو افصلها باستخدام فاصلة أو استخدام \"-\" أو استخدم \"()\" لمكون أحد المكونات ، أو احاطة المواد المسببة للحساسية مع _</string>
   <string name="extract_ingredients">استخراج المكونات</string>
   <string name="extracting_ingredients">يتم استخراج المكونات</string>
   <string name="looksGood">يبدو جيداً</string>
   <string name="skip_ingredients">سيئ جدًا \n تخطي المكونات</string>
   <string name="traces">آثار</string>
-  <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
+  <string name="traces_hint">أشر إلى المكونات تشير الى مثلاً \"قد تحتوي على آثار\" ، \"صنع في مصنع يستخدم أيضًا\" ، إلخ. \n أمثلة: الحليب ، الغلوتين ، المكسرات</string>
   <string name="nutrition_facts_not_specified">لم يتم تحديد الحقائق الغذائية على المنتج.</string>
   <string name="nutrition_facts_picture">صورة للحقائق الغذائية</string>
   <string name="for_100g_100ml">100 جرام / 100 مل</string>
-  <string name="per_serving">Per Serving</string>
+  <string name="per_serving">لكل وجبة</string>
   <string name="serving_size">حجم الحصة</string>
   <string name="alcohol_unit" formatted="false">% vol / °</string>
   <string name="add_a_nutrient">إضافة مادة غذائية</string>
