@@ -147,24 +147,24 @@
     <item>الرقم الهيدروجيني</item>
     <item>الفوسفور</item>
     <item>كحول سكري (البوليولات)</item>
-    <item>Polyunsaturated fat</item>
+    <item>دهون عديد اللاتشَبُّع</item>
     <item>بوتاسيوم</item>
     <item>السيلينيوم</item>
     <item>بروتينات المصل</item>
     <item>السيليكا</item>
     <item>نشاء</item>
-    <item>Stearic acid (18:0)</item>
+    <item>حمض الشمع (١٨: ٠)</item>
     <item>السكروز</item>
     <item>توراين</item>
     <item>الدهون غير المشبعة</item>
     <item>فيتامين أ</item>
-    <item>Vitamin B1 (Thiamin)</item>
-    <item>Vitamin B12 (Cobalamin)</item>
-    <item>Vitamin B2 (Riboflavin)</item>
-    <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-    <item>Vitamin B6 (Pyridoxin)</item>
-    <item>Vitamin B9 (Folic acid)</item>
-    <item>Vitamin C (Ascorbic acid)</item>
+    <item>فيتامين ب ١ (الثيامين)</item>
+    <item>فيتامين ب ١٢ (كوبالامين)</item>
+    <item>فيتامين ب ٢ (ريبوفلافين)</item>
+    <item>فيتامين ب ٣ / فيتامين PP (النياسين)</item>
+    <item>فيتامين ب ٦ (البيريدوكسين)</item>
+    <item>فيتامين ب ٩ (حمض الفوليك)</item>
+    <item>فيتامين ج (حمض الأسكوربيك)</item>
     <item>فيتامين د</item>
     <item>فيتامين هـ</item>
     <item>فيتامين ك</item>
@@ -245,7 +245,7 @@
   <string name="txtSendAll">تحميل الكل</string>
   <string name="txtNoData">لا توجد بيانات</string>
   <string name="txtPictureNeeded">انتظر…</string>
-  <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
+  <string name="txtPictureNeededDialogContent">عليك إضافة صورة واحدة على الأقل قبل إرسال هذا المنتج</string>
   <string name="txtPictureNeededDialogYes">ابق</string>
   <string name="txtPictureNeededDialogNo">تجاهل</string>
   <string name="toastSending">جاري الإرسال...</string>
@@ -301,7 +301,7 @@
   <string name="from_gallery">من معرض الصور</string>
   <string name="product_sent">تم إرسال المنتج بنجاح</string>
   <string name="action_edit_product">تحرير المنتج</string>
-  <string name="title_info_dialog">How does it work?</string>
+  <string name="title_info_dialog">كيف يعمل؟</string>
   <string name="text_offline_info_dialog">يمكنك مسح المنتجات ضوئيا عندما كنت تكون غير متصل بالإنترنت لإضافتها لاحقا إلى Open Food Facts. ستظهر جميع المنتجات التي فحصتها هنا، وستتمكن من إرسالها باستخدام الزر أدناه.</string>
   <string name="permission_camera">تصريح الكاميرا مطلوب لمسح شفرة المنتجات والتقاط الصور.</string>
   <string name="permission_title">معلومات التصريح</string>
@@ -335,7 +335,7 @@
   <string name="no_brand">لا علامة تجارية</string>
   <string name="no_title">لا يوجد عنوان</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+  <string name="display_fact">جدول الحقائق الغذائية الى %1$s له %2$s</string>
   <string name="check_facts">تحقق</string>
   <string name="nutrition">التغذية</string>
   <string name="calculated_nutrition">التغذية المحسوبة</string>
