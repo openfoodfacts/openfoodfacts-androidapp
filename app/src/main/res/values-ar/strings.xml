@@ -53,9 +53,9 @@
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item>غ</item>
-    <item>مغ</item>
-    <item>كغ</item>
+    <item>ج</item>
+    <item>مج</item>
+    <item>كج</item>
     <item>لتر</item>
     <item>مل</item>
     <item>cl</item>
@@ -114,7 +114,7 @@
     <item>Elaidic acid (18:1 n-9)</item>
     <item>Erucic acid (22:1 n-9)</item>
     <item>الفلوريد</item>
-    <item>سكر الفاكهة</item>
+    <item>فركتوز</item>
     <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
     <item>الجلوكوز</item>
     <item>Gondoic acid (20:1 n-9)</item>
@@ -125,9 +125,9 @@
     <item>Lignoceric acid (24:0)</item>
     <item>Linoleic acid / LA (18:2 n-6)</item>
     <item>المغنيسيوم</item>
-    <item>مالتوديكسترينس</item>
+    <item>مالتوديكسترين</item>
     <item>مالتوس</item>
-    <item>المنغنيز</item>
+    <item>المنجنيز</item>
     <item>Mead acid (20:3 n-9)</item>
     <item>Melissic acid (30:0)</item>
     <item>الموليبدينوم</item>
@@ -166,7 +166,7 @@
     <item>فيتامين د</item>
     <item>فيتامين هـ</item>
     <item>فيتامين ك</item>
-    <item>الزنك</item>
+    <item>زنك</item>
   </string-array>
   <!-- Text units -->
   <string-array name="images_array">
@@ -185,7 +185,7 @@
   <string name="alert_dialog_product_error_msg">تعذر العثور على المنتج، يرجى المحاولة مرة أخرى</string>
   <string name="toast_retrieving">جاري التحميل...</string>
   <string name="txtGenericName">الاسم الشائع:</string>
-  <string name="txtBarcode">الرمز الشريطي</string>
+  <string name="txtBarcode">الرمز الشريطي:</string>
   <string name="txtQuantity">الكمية :</string>
   <string name="txtPackaging">التغليف :</string>
   <string name="txtBrands">العلامات التجارية :</string>
