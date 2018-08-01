@@ -43,7 +43,7 @@
     <item>l</item>
     <item>ml</item>
     <item>cl</item>
-    <item>fl oz</item>
+    <item>uncia</item>
   </string-array>
   <!-- weight units -->
   <string-array name="weights_array">
@@ -68,85 +68,85 @@
     <item>mg</item>
     <item>µg</item>
     <item>% DV</item>
-    <item>IU</item>
+    <item>NE</item>
   </string-array>
   <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-    <item>Arachidic acid (20:0)</item>
-    <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-    <item>Behenic acid (22:0)</item>
+    <item>Alfa-linolénsav / ALA (18:3 n-3)</item>
+    <item>Arachinsav (20:0)</item>
+    <item>Arachidonsav / AA / ARA (20:4 n-6)</item>
+    <item>Behénsav (22:0)</item>
     <item>Bikarbonát</item>
     <item>Biotin</item>
-    <item>Butyric acid (4:0)</item>
+    <item>Vajsav (4:0)</item>
     <item>Koffein</item>
     <item>Kalcium</item>
-    <item>Capric acid (10:0)</item>
-    <item>Caproic acid (6:0)</item>
-    <item>Caprylic acid (8:0)</item>
+    <item>Kaprinsav (10:0)</item>
+    <item>Kapronsav (6:0)</item>
+    <item>Kaprilsav (8:0)</item>
     <item>Kazein</item>
-    <item>Cerotic acid (26:0)</item>
+    <item>Cerotinsav (26:0)</item>
     <item>Klorid</item>
     <item>Koleszterin</item>
     <item>Króm</item>
     <item>Réz</item>
-    <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-    <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-    <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
+    <item>Dihomo-gamma-linolénsav / DGLA (20:3 n-6)</item>
+    <item>Dokozahexaénsav / DHA (22:6 n-3)</item>
+    <item>Eikozapentaénsav / EPA (20:5 n-3)</item>
     <item>Elaidic acid (18:1 n-9)</item>
-    <item>Erucic acid (22:1 n-9)</item>
+    <item>Erukasav (22:1 n-9)</item>
     <item>Fluorid</item>
     <item>Fruktóz</item>
-    <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+    <item>Gamma-linolénsav / GLA (18:3 n-6)</item>
     <item>Glükóz</item>
     <item>Gondoic acid (20:1 n-9)</item>
     <item>Jód</item>
     <item>Vas</item>
     <item>Laktóz</item>
-    <item>Lauric acid (12:0)</item>
-    <item>Lignoceric acid (24:0)</item>
-    <item>Linoleic acid / LA (18:2 n-6)</item>
+    <item>Laurinsav (12:0)</item>
+    <item>Lignocerinsav (24:0)</item>
+    <item>Linolsav / LA (18:2 n-6)</item>
     <item>Magnézium</item>
     <item>Maltodextrin</item>
     <item>Maltóz</item>
     <item>Mangán</item>
-    <item>Mead acid (20:3 n-9)</item>
+    <item>Mead-sav (20:3 n-9)</item>
     <item>Melissic acid (30:0)</item>
     <item>Molibdén</item>
-    <item>Monounsaturated fat</item>
+    <item>Egyszeresen telítetlen zsírsavak</item>
     <item>Montanic acid (28:0)</item>
-    <item>Myristic acid (14:0)</item>
-    <item>Nervonic acid (24:1 n-9)</item>
+    <item>Mirisztinsav (14:0)</item>
+    <item>Nervonsav (24:1 n-9)</item>
     <item>Nukleotidok</item>
-    <item>Oleic acid (18:1 n-9)</item>
-    <item>Omega 3 fatty acids</item>
-    <item>Omega 6 fatty acids</item>
-    <item>Omega 9 fatty acids</item>
-    <item>Palmitic acid (16:0)</item>
-    <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+    <item>Olajsav (18:1 n-9)</item>
+    <item>Omega-3 zsírsavak</item>
+    <item>Omega-6 zsírsavak</item>
+    <item>Omega-9 zsírsavak</item>
+    <item>Palmitinsav (16:0)</item>
+    <item>Pantoténsav / Pantotenát (B5-vitamin)</item>
     <item>pH</item>
     <item>Foszfor</item>
-    <item>Sugar alcohols (Polyols)</item>
-    <item>Polyunsaturated fat</item>
+    <item>Cukoralkoholok (Poliolok)</item>
+    <item>Többszörösen telítetlen zsírsavak</item>
     <item>Kálium</item>
     <item>Szelén</item>
-    <item>Serum proteins</item>
+    <item>Szérum fehérje</item>
     <item>Szilícium-dioxid</item>
-    <item>Starch</item>
-    <item>Stearic acid (18:0)</item>
+    <item>Keményítő</item>
+    <item>Sztearinsav (18:0)</item>
     <item>Szacharóz</item>
     <item>Taurin</item>
     <item>Transzzsír</item>
     <item>A-vitamin</item>
-    <item>Vitamin B1 (Thiamin)</item>
-    <item>Vitamin B12 (Cobalamin)</item>
-    <item>Vitamin B2 (Riboflavin)</item>
-    <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-    <item>Vitamin B6 (Pyridoxin)</item>
-    <item>Vitamin B9 (Folic acid)</item>
-    <item>Vitamin C (Ascorbic acid)</item>
+    <item>B1-vitamin (Tiamin)</item>
+    <item>B12-vitamin (Kobalamin)</item>
+    <item>B2-vitamin (Riboflavin)</item>
+    <item>B3-vitamin / PP-vitamin (Niacin)</item>
+    <item>B6-vitamin (Piridoxin)</item>
+    <item>B9-vitamin (Folsav)</item>
+    <item>C-vitamin (Aszkorbinsav)</item>
     <item>D-vitamin</item>
     <item>E-vitamin</item>
     <item>K-vitamin</item>
@@ -314,16 +314,16 @@
   <string name="txt_history_exported">Előzmények exportálva</string>
   <string name="permision_write_external_storage">Külső tárhelyre való írási engedély szükséges az előzmények exportálásához.</string>
   <string name="txt_nutrition_not_found">Nincs adat</string>
-  <string name="no_brand">No Brand</string>
-  <string name="no_title">No Title</string>
+  <string name="no_brand">Nincs márka</string>
+  <string name="no_title">Nincs cím</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="display_fact">%1$s %2$s tápértékadatainak táblázata</string>
+  <string name="check_facts">Ellenőrzés</string>
   <string name="nutrition">Tápanyag</string>
-  <string name="calculated_nutrition">Calculated Nutrition</string>
-  <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
-  <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+  <string name="calculated_nutrition">Kiszámított tápanyag</string>
+  <string name="please_enter_weight">Kérem, írja be a súlyt</string>
+  <string name="enter_weight">Írja be a súlyt</string>
+  <string name="calculate_nutrition_facts">Tápértékadatok kiszámítása</string>
   <string name="txt_calories_result">%1$s kcal %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Szénhidrát</string>
   <string name="nutrition_carbohydrate_short_name">Szénhidrát (g)</string>
@@ -578,7 +578,7 @@
   <string name="txtDialogsTitle">Információ</string>
   <string name="preference_show_all_product_photos_title">Az összes termékfénykép megjelenítése</string>
   <string name="preference_show_all_product_photos_summary">Az összes beküldött termékfénykép megjelenítése külön lapon</string>
-  <string name="offline_product_addition_title">Add a new product</string>
+  <string name="offline_product_addition_title">Új termék hozzáadása</string>
   <string name="productNameNull">Ismeretlen név</string>
   <string name="productBrandNull">Ismeretlen márkanév</string>
   <string name="productQuantityNull">Ismeretlen mennyiség</string>
@@ -594,69 +594,69 @@
   <string name="preferences">Tulajdonságok</string>
   <string name="OFFlogo">Open Food Facts embléma</string>
   <string name="loading_product">%s termék betöltése</string>
-  <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
-  <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
-  <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-  <string name="error_in_carbohydrate_value">Carbohydrate can\'t be less than the sum of sugar and starch</string>
-  <string name="choose_nutrient">Choose a nutrient</string>
-  <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
+  <string name="error_adding_ingredients">Valami hiba történt a termékösszetevők hozzáadása közben</string>
+  <string name="unable_to_extract_ingredients">Nem sikerült az összetevők kiolvasása képből</string>
+  <string name="error_adding_nutrition_facts">Valami hiba történt a tápértékadatok hozzáadása közben</string>
+  <string name="error_in_carbohydrate_value">A szénhidrát nem lehet kevesebb, mint a cukor és keményítő összege</string>
+  <string name="choose_nutrient">Válasszon egy tápanyagot</string>
+  <string name="error_adding_product_details">Valami hiba történt a termék részletek hozzáadása közben</string>
   <string name="hint_product_URL">Link of the official page of the product</string>
-  <string name="product_language">Product language : </string>
-  <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-  <string name="official_website">Official website</string>
+  <string name="product_language">A termék nyelve: </string>
+  <string name="hint_emb_codes">Például: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+  <string name="official_website">Hivatalos weboldal</string>
   <string name="scan_QR_code">Scan QR Code for product website</string>
   <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
   <string name="image_uploaded_successfully">Image uploaded successfully</string>
-  <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
-  <string name="ingredients_overwrite">Ingredients overwrite</string>
-  <string name="choose_mine">Choose mine</string>
-  <string name="keep_previous_version">Keep previous version</string>
-  <string name="product_name_overwrite">Product name overwrite</string>
+  <string name="error_adding_product_photos">Valami hiba történt a termékfényképek hozzáadása közben</string>
+  <string name="ingredients_overwrite">Összetevők felülírása</string>
+  <string name="choose_mine">Válassza az enyémet</string>
+  <string name="keep_previous_version">Tartsa meg az előző változatot</string>
+  <string name="product_name_overwrite">Termék nevének felülírása</string>
   <string name="yours">Yours: </string>
   <string name="currently_on">Currently on %s: </string>
-  <string name="quantity_overwrite">Quantity overwrite</string>
+  <string name="quantity_overwrite">Mennyiség felülírása</string>
   <string name="link_overwrite">Link overwrite</string>
   <string name="save_product">Do you want to save the product?</string>
   <string name="error_adding_product">Something went wrong when adding product</string>
-  <string name="photos">Photos</string>
-  <string name="please_wait">Please wait</string>
-  <string name="product_uploaded_successfully">Product uploaded successfully</string>
+  <string name="photos">Fényképek</string>
+  <string name="please_wait">Kérem, várjon</string>
+  <string name="product_uploaded_successfully">Termék sikeresen feltöltve</string>
   <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
   <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
   <string name="percent">%1$d%%</string>
-  <string name="overview">Overview</string>
+  <string name="overview">Áttekintés</string>
   <string name="ingredients">Összetevők</string>
-  <string name="nutrition_facts">Nutrition Facts</string>
+  <string name="nutrition_facts">Tápértékadatok</string>
   <string name="your_version">Yours</string>
-  <string name="ingredients_picture">Ingredients Picture</string>
+  <string name="ingredients_picture">Összetevők képe</string>
   <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
-  <string name="ingredients_list">Ingredients List</string>
+  <string name="ingredients_list">Összetevők</string>
   <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
-  <string name="extract_ingredients">Extract ingredients</string>
+  <string name="extract_ingredients">Összetevők kiolvasása</string>
   <string name="extracting_ingredients">Összetevők kiolvasása</string>
-  <string name="looksGood">Looks Good</string>
+  <string name="looksGood">Jónak tűnik</string>
   <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
   <string name="traces">Nyomokban</string>
   <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
   <string name="nutrition_facts_not_specified">Nincsenek megadva tápértékadatok a termékhez.</string>
   <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
-  <string name="for_100g_100ml">For 100g / 100ml</string>
-  <string name="per_serving">Per Serving</string>
+  <string name="for_100g_100ml">100 g / 100 ml-ben</string>
+  <string name="per_serving">Adagonként</string>
   <string name="serving_size">Adag</string>
   <string name="alcohol_unit" formatted="false">% vol / °</string>
   <string name="add_a_nutrient">Tápanyag hozzáadása</string>
   <string name="add_this_product">Add this product</string>
-  <string name="product_picture">Product Picture</string>
-  <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
+  <string name="product_picture">Termék kép</string>
+  <string name="one_photo_compulsory">(egy fénykép kötelező egy új termék hozzáadásához)</string>
   <string name="product_details">Product Details</string>
   <string name="product_name">Termék neve</string>
   <string name="quantity">Mennyiség</string>
-  <string name="labels">Labels</string>
+  <string name="labels">Címkék</string>
   <string name="period_of_time_after_opening">Felbontás utáni időtartam</string>
   <string name="manufacturing_details">Manufacturing Details</string>
   <string name="origin_of_ingredients">Összetevők eredete</string>
   <string name="manufacturing_place">Manufacturing place</string>
-  <string name="emb_code">EMB Code</string>
+  <string name="emb_code">EMB vagy EK üzemkód</string>
   <string name="purchasing_details">Purchasing Details</string>
   <string name="country_where_purchased">Country where purchased</string>
   <string name="stores">Boltok</string>
@@ -665,5 +665,5 @@
   <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
   <string name="uploading_ingredients_image">Uploading ingredients image</string>
   <string name="uploading_front_image">Uploading front image</string>
-  <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+  <string name="url_nova_groups">https://hu.openfoodfacts.org/nova-groups-for-food-processing</string>
 </resources>
