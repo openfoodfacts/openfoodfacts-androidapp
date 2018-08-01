@@ -58,7 +58,7 @@
     <item>كج</item>
     <item>لتر</item>
     <item>مل</item>
-    <item>cl</item>
+    <item>سنتيليتر</item>
     <item>أوقية</item>
   </string-array>
   <!-- weight units -->
@@ -83,17 +83,17 @@
     <item>غ</item>
     <item>مغ</item>
     <item>ميكروجرام</item>
-    <item>% DV</item>
+    <item>القيمة اليومية</item>
     <item>وحدة دولية</item>
   </string-array>
   <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-    <item>Arachidic acid (20:0)</item>
-    <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-    <item>Behenic acid (22:0)</item>
+    <item>حمض اللينولينيك / ALA (١٨: ٣ n-٣)</item>
+    <item>حمض الأراشيديك (٠:٢٠)</item>
+    <item>حمض الأراشيديك / AA / ARA (٢٠: ٤ n-٦)</item>
+    <item>حمض البان (٢٢: ٠)</item>
     <item>بيكربونات</item>
     <item>البيوتين</item>
     <item>Butyric acid (4:0)</item>
