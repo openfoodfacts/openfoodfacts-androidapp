@@ -148,9 +148,9 @@
     <item>Polyunsaturated fat</item>
     <item>بوتاسيوم</item>
     <item>السيلينيوم</item>
-    <item>Serum proteins</item>
+    <item>بروتينات المصل</item>
     <item>السيليكا</item>
-    <item>Starch</item>
+    <item>نشاء</item>
     <item>Stearic acid (18:0)</item>
     <item>السكروز</item>
     <item>توراين</item>
@@ -311,7 +311,7 @@
   <string name="new_offline_info">يرجى التقاط صورة للمنتج، والمكونات، وجدول الحقائق الغذائية، وأي معلومات أخرى على الملصق. شكرا!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.</string>
-  <string name="user">user</string>
+  <string name="user">المستخدم</string>
   <string name="error_field_required">هذا الحقل ضروري.</string>
   <string name="action_preferences">الخيارات</string>
   <string name="prefs_scan_startup">فحص عند بدء التشغيل</string>
