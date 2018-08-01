@@ -7,7 +7,7 @@
     <item quantity="two"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
-    <item quantity="other"> لديك %d منتج غير متصل ينتظر لتُساهم به في حقائق الطعام المفتوحة</item>
+    <item quantity="other"> لديك %d منتجات في وضع عدم الاتصال بإنتظار أن تُساهم به في حقائق الطعام المفتوح</item>
   </plurals>
   <plurals name="minutes">
     <item quantity="zero">%d minutes ago</item>
@@ -264,7 +264,7 @@
   <string name="share">مشاركة</string>
   <string name="translate">ترجم</string>
   <string name="msg_share">انظر لهذا المنتج على \"الحقائق الغذائية المفتوحة\":</string>
-  <string name="create_account">تسجيل</string>
+  <string name="create_account">تسجيل الدخول</string>
   <string name="home_drawer">الصفحة الرئيسية</string>
   <string name="search_drawer">بحث</string>
   <string name="search_by_barcode_drawer">البحث عن طريق الرمز الشريطي</string>
