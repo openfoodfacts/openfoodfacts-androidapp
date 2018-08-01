@@ -330,8 +330,8 @@
   <string name="txt_history_exported">تم تصدير السجل</string>
   <string name="permision_write_external_storage">إعطاء التصريح للتخزين الخارجي مطلوبة لتصدير التاريخ.</string>
   <string name="txt_nutrition_not_found">غير متوفر</string>
-  <string name="no_brand">No Brand</string>
-  <string name="no_title">No Title</string>
+  <string name="no_brand">لا علامة تجارية</string>
+  <string name="no_title">لا يوجد عنوان</string>
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
   <string name="check_facts">تحقق</string>
@@ -544,9 +544,9 @@
   <string name="vitamin_tags_text">الفيتامينات:</string>
   <string name="amino_acid_tags_text">أحماض أمينية:</string>
   <string name="mineral_tags_text">المعادن:</string>
-  <string name="other_tags_text">Other Substances:</string>
+  <string name="other_tags_text">مواد أخرى:</string>
   <!--shared element transition key-->
-  <string name="wikidata">Wikidata data</string>
+  <string name="wikidata">بيانات ويكيبيديا</string>
   <string name="disable_image_loading">تعطيل تحميل الصورة عندما تكون البطارية منخفضة</string>
   <string name="DisableLoadTitle">تعطيل تحميل الصور</string>
   <string name="txtCamera">الكاميرا</string>
@@ -562,19 +562,19 @@
   <string name="shake_summary">قم بهز الهاتف لمسح المنتجات</string>
   <string name="shake_title">هز الهاتف للفحص</string>
   <!-- strings related to share images -->
-  <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
-  <string name="no_barcode">We have not detected any barcode</string>
-  <string name="enter_barcode">Please type the barcode below</string>
-  <string name="format_error">Wrong Barcode/QR format</string>
-  <string name="code_detected">We have detected the barcode</string>
-  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="sorry_msg">لا يمكن بعد إضافة الصور بدون الباركود فى التطبيق. يرجى تجربة نسخة الويب للهاتف المحمولة.</string>
+  <string name="no_barcode">البرنامج لم يكتشف أي باركود</string>
+  <string name="enter_barcode">يرجى كتابة الرمز الشريطي أدناه</string>
+  <string name="format_error">خطأ الباركود / رمز الاستجابة السريعة</string>
+  <string name="code_detected">تم إكتشف الباركود</string>
+  <string name="do_you_want_to">هل تريد إضافة صور لهذا الباركود؟</string>
   <string name="bottomNav_history">السجل</string>
   <string name="bottomNav_search">بحث</string>
-  <string name="products_added">Products you added or edited</string>
+  <string name="products_added">المنتجات التي قمت بإضافتها أو تعديلها</string>
   <string name="products_incomplete">المنتجات التي أضفتها وتحتاج إلى إكمالها</string>
-  <string name="product_pictures_contributed">Products you took pictures for</string>
-  <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
-  <string name="product_info_added">Products you added information for</string>
+  <string name="product_pictures_contributed">المنتجات التي التقطت صور لها</string>
+  <string name="picture_contributed_incomplete">المنتجات التي إلتقط صور لها تحتاج إلى إكمالها</string>
+  <string name="product_info_added">المنتجات التي أضفت لها معلومات</string>
   <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
   <string name="show_by">أعرض</string>
   <string name="notify_title">تم الانتهاء من إخراج المنتجات</string>
