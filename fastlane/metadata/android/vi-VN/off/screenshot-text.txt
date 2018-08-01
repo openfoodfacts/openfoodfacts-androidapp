@@ -5,7 +5,7 @@ scan_en.png
 Scan products
 
 quickview_en.png
-Get the Nutriscore
+Lấy điểm Nutriscore
 
 history_en.png
 Your full scan history, fully private & exportable
