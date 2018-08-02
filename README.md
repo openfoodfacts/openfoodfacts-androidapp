@@ -87,6 +87,8 @@ Here's a few list of bugs:
 - Very high impact: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/very%20high%20impact
 - Priority: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/priority
 
+If you don't have time to contribute code, you're welcome to scan new products, or make a donation to [_help pay for the hosting and general costs_](https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en) 
+
 ## Copyright and License
 
     Copyright 2016-2018 Open Food Facts
