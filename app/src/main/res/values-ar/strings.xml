@@ -7,7 +7,7 @@
     <item quantity="two"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
-    <item quantity="other"> لديك %d منتجات في وضع عدم الاتصال بإنتظار أن تُساهم به في حقائق الطعام المفتوح</item>
+    <item quantity="other"> لديك %d منتجات في وضع عدم الاتصال بإنتظار أن تُساهم به في Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
     <item quantity="zero">%d minutes ago</item>
@@ -26,7 +26,7 @@
     <item quantity="other">%d منذ ساعات</item>
   </plurals>
   <plurals name="days">
-    <item quantity="zero">%d days ago</item>
+    <item quantity="zero">منذ %d يوم</item>
     <item quantity="one">منذ يوم</item>
     <item quantity="two">منذ يومان</item>
     <item quantity="few">منذ بضع ايام</item>
@@ -231,8 +231,8 @@
   <string name="uploadLater">سيتم تحميل الصورة عندما تكون الشبكة متاحة</string>
   <string name="txtInfoLoginOk">تم حفظ المستخدم</string>
   <string name="txtInfoLoginNo">لم يتم حفظ المستخدم</string>
-  <string name="txtDialogsContent">المنتج الذي تم مسحه غير موجود حتى الآن في الحقائق الغذائية المفتوحة. الرجاء إضافته.</string>
-  <string name="txtDialogsContentPowerMode">المنتج الذي تم مسحه موجود بالفعل في \"الحقائق الغذائية المفتوحة\".</string>
+  <string name="txtDialogsContent">المنتج الذي تم مسحه غير موجود حتى الآن في Open Food Facts. الرجاء إضافته.</string>
+  <string name="txtDialogsContentPowerMode">المنتج الذي تم مسحه موجود بالفعل في Open Food Facts.</string>
   <string name="txtYes">نعم</string>
   <string name="txtNo">لا</string>
   <string name="hintNameProduct">اﻹسم</string>
@@ -265,7 +265,7 @@
   <string name="try_it_scan_now">مسح المنتج</string>
   <string name="share">مشاركة</string>
   <string name="translate">ترجم</string>
-  <string name="msg_share">انظر لهذا المنتج على \"الحقائق الغذائية المفتوحة\":</string>
+  <string name="msg_share">انظر لهذا المنتج على Open Food Facts:</string>
   <string name="create_account">تسجيل الدخول</string>
   <string name="home_drawer">الصفحة الرئيسية</string>
   <string name="search_drawer">بحث</string>
@@ -297,7 +297,7 @@
   <string name="cancel_button">Cancel</string>
   <string name="login_button">تسجيل الدخول</string>
   <string name="create_account_button">Create Account</string>
-  <string name="warning_alert_data">لن يتم إرسال معلومات الحساسية الخاصة بك إلى خادم حقائق الطعام المفتوح. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
+  <string name="warning_alert_data">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
   <string name="from_gallery">من معرض الصور</string>
   <string name="product_sent">تم إرسال المنتج بنجاح</string>
   <string name="action_edit_product">تحرير المنتج</string>
@@ -386,7 +386,7 @@
   <string name="txt_no_results">لم يتم العثور على أي نتائج</string>
   <string name="txt_extend_search">حاول توسيع نطاق البحث أو إضافة المنتج</string>
   <string name="txt_no_matching_products">لم نعثر على أي منتجات مطابقة. \n يمكنك تجربة:</string>
-  <string name="txt_broaden_search">-توسيع نطاق \n-البحث الخاص بك امسح و إضفه إلى \"الحقائق الغذائية مفتوحة\"</string>
+  <string name="txt_broaden_search">-توسيع نطاق \n-البحث الخاص بك امسح و إضفه إلى Open Food Facts</string>
   <string name="txt_cant_load_search_results">يتعذر تحميل نتائج البحث</string>
   <string name="something_went_wrong">عذراً، حدث خطأ ما…</string>
   <string name="txt_try_again">أعد المحاولة</string>
@@ -493,8 +493,8 @@
   <string name="preference_choose_language_dialog_title">اختر اللغة</string>
   <string name="FAQ">الأسئلة المتكررة</string>
   <string name="FrequentlyAskedQuestions">‮الأسئلة المتكررة</string>
-  <string name="translate_help_title">المساعدة في ترجمة \"حقائق الطعام المفتوحة\"</string>
-  <string name="translate_help_summary">قم بإحضار قاعدة بيانات حقائق الأغذية المفتوحة إلى لغتك - دون الحاجة إلى معرفة فنية</string>
+  <string name="translate_help_title">المساعدة في ترجمة Open Food Facts</string>
+  <string name="translate_help_summary">قم تحويل قاعدة بيانات Open Food Facts إلى لغتك - دون الحاجة إلى معرفة فنية</string>
   <string name="please_check_your_connection">يرجى التحقق من اتصالك.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">بحث متقدم &amp;</string>
@@ -509,7 +509,7 @@
   <string name="seconds_ago">d% ثواني مضت</string>
   <string name="minutes_ago">قبل دقائق</string>
   <string name="hours_ago">منذ ساعات مضت</string>
-  <string name="days_ago">منذ أيام</string>
+  <string name="days_ago">منذ %d أيام</string>
   <string name="scan_first_string">سيتم سرد سجل المنتجات الذي تم عرضه سابقاً هنا. \n هذا السجل مخصص لك فقط ويتم تخزينه محليًا فى هاتفك الجوال.</string>
   <string name="log_in">تسجيل الدخول</string>
   <string name="login_true">مسجل مسبقاً!</string>
