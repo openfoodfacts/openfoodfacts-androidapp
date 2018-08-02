@@ -1088,7 +1088,7 @@ public class AddProductActivity extends AppCompatActivity {
                             String error = jsonNode.get("error").asText();
                             if (error.equals("This picture has already been sent.") && ocr) {
                                 hideImageProgress(position, false, getString(R.string.image_uploaded_successfully));
-                                performOCR(image, "ingredients_" + getProductLanguage());
+                                performOCR(image.getBarcode(), "ingredients_" + getProductLanguage());
                             } else {
                                 hideImageProgress(position, true, error);
                             }
@@ -1147,7 +1147,7 @@ public class AddProductActivity extends AppCompatActivity {
                         String status = jsonNode.get("status").asText();
                         if (status.equals("status ok")) {
                             if (ocr) {
-                                performOCR(image, imagefield);
+                                performOCR(image.getBarcode(), imagefield);
                             }
                         }
                     }
@@ -1168,8 +1168,8 @@ public class AddProductActivity extends AppCompatActivity {
                 });
     }
 
-    private void performOCR(ProductImage image, String imageField) {
-        client.getIngredients(image.getBarcode(), imageField)
+    public void performOCR(String code, String imageField) {
+        client.getIngredients(code, imageField)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(disposable -> addProductIngredientsFragment.showOCRProgress())
                 .subscribe(new SingleObserver<JsonNode>() {
@@ -1196,7 +1196,7 @@ public class AddProductActivity extends AppCompatActivity {
                         if (e instanceof IOException) {
                             View view = findViewById(R.id.coordinator_layout);
                             Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
-                                    .setAction(R.string.txt_try_again, v -> performOCR(image, imageField)).show();
+                                    .setAction(R.string.txt_try_again, v -> performOCR(code, imageField)).show();
                         } else {
                             Log.i(this.getClass().getSimpleName(), e.getMessage());
                             Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();

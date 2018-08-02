@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,6 +35,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -225,6 +227,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     EditText alcohol;
     @BindView(R.id.table_layout)
     TableLayout tableLayout;
+    @BindView(R.id.btn_add)
+    Button buttonAdd;
 
     //index list stores the index of other nutrients which are used.
     private List<Integer> index = new ArrayList<>();
@@ -265,6 +269,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             }
             if (edit_product && product != null) {
                 code = product.getCode();
+                buttonAdd.setText(R.string.save_edits);
                 preFillProductValues();
             } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
@@ -281,10 +286,23 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
      */
     private void preFillProductValues() {
         if (product.getImageNutritionUrl() != null && !product.getImageNutritionUrl().isEmpty()) {
+            imageProgress.setVisibility(View.VISIBLE);
             imagePath = product.getImageNutritionUrl();
             Picasso.with(getContext())
                     .load(product.getImageNutritionUrl())
-                    .into(imageNutritionFacts);
+                    .resize(dpsToPixels(50), dpsToPixels(50))
+                    .centerInside()
+                    .into(imageNutritionFacts, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+                    });
         }
         if (product.getNutritionDataPer() != null && !product.getNutritionDataPer().isEmpty()) {
             String s = product.getNutritionDataPer();
@@ -394,9 +412,22 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         if (productDetails != null) {
             if (productDetails.get("image_nutrition_facts") != null) {
                 imagePath = productDetails.get("image_nutrition_facts");
+                imageProgress.setVisibility(View.VISIBLE);
                 Picasso.with(getContext())
                         .load("file://" + imagePath)
-                        .into(imageNutritionFacts);
+                        .resize(dpsToPixels(50), dpsToPixels(50))
+                        .centerInside()
+                        .into(imageNutritionFacts, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                imageProgress.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onError() {
+                                imageProgress.setVisibility(View.GONE);
+                            }
+                        });
             }
             if (productDetails.get(PARAM_NO_NUTRITION_DATA) != null) {
                 noNutritionData.setChecked(true);
@@ -1045,6 +1076,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         if (!errorInUploading) {
             Picasso.with(activity)
                     .load(photoFile)
+                    .resize(dpsToPixels(50), dpsToPixels(50))
+                    .centerInside()
                     .into(imageNutritionFacts);
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         } else {

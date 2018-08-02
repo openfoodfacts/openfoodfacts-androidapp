@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.hootsuite.nachos.NachoTextView;
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -139,17 +140,35 @@ public class AddProductIngredientsFragment extends BaseFragment {
         if (ingredients.getText().toString().isEmpty() && productDetails.get("image_ingredients") != null && !productDetails.get("image_ingredients").isEmpty()) {
             extractIngredients.setVisibility(View.VISIBLE);
             imagePath = productDetails.get("image_ingredients");
+        } else if (edit_product && ingredients.getText().toString().isEmpty() && product.getImageIngredientsUrl() != null && !product.getImageIngredientsUrl().isEmpty()) {
+            extractIngredients.setVisibility(View.VISIBLE);
         }
         loadAutoSuggestions();
     }
 
+    /**
+     * Pre fill the fields of the product which are already present on the server.
+     */
     private void preFillProductValues() {
         mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
         if (product.getImageIngredientsUrl() != null && !product.getImageIngredientsUrl().isEmpty()) {
+            imageProgress.setVisibility(View.VISIBLE);
             imagePath = product.getImageIngredientsUrl();
             Picasso.with(getContext())
                     .load(product.getImageIngredientsUrl())
-                    .into(imageIngredients);
+                    .resize(dpsToPixels(), dpsToPixels())
+                    .centerInside()
+                    .into(imageIngredients, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+                    });
         }
         if (product.getIngredientsText() != null && !product.getIngredientsText().isEmpty()) {
             ingredients.setText(product.getIngredientsText());
@@ -177,9 +196,22 @@ public class AddProductIngredientsFragment extends BaseFragment {
         productDetails = mOfflineSavedProduct.getProductDetailsMap();
         if (productDetails != null) {
             if (productDetails.get("image_ingredients") != null) {
+                imageProgress.setVisibility(View.GONE);
                 Picasso.with(getContext())
                         .load("file://" + productDetails.get("image_ingredients"))
-                        .into(imageIngredients);
+                        .resize(dpsToPixels(), dpsToPixels())
+                        .centerInside()
+                        .into(imageIngredients, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                imageProgress.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onError() {
+                                imageProgress.setVisibility(View.GONE);
+                            }
+                        });
             }
             if (productDetails.get(PARAM_INGREDIENTS) != null) {
                 ingredients.setText(productDetails.get(PARAM_INGREDIENTS));
@@ -297,11 +329,13 @@ public class AddProductIngredientsFragment extends BaseFragment {
     @OnClick(R.id.btn_extract_ingredients)
     void extractIngredients() {
         if (activity instanceof AddProductActivity) {
-            if (imagePath != null) {
+            if (imagePath != null && (!edit_product || newImageSelected)) {
                 photoFile = new File(imagePath);
                 ProductImage image = new ProductImage(code, INGREDIENTS, photoFile);
                 image.setFilePath(imagePath);
                 ((AddProductActivity) activity).addToPhotoMap(image, 1);
+            } else if (imagePath != null) {
+                ((AddProductActivity) activity).performOCR(code, "ingredients_" + ((AddProductActivity) activity).getProductLanguage());
             }
         }
     }
@@ -395,6 +429,8 @@ public class AddProductIngredientsFragment extends BaseFragment {
         if (!errorInUploading) {
             Picasso.with(activity)
                     .load(photoFile)
+                    .resize(dpsToPixels(), dpsToPixels())
+                    .centerInside()
                     .into(imageIngredients);
             imageProgressText.setText(message);
             imageProgressText.setVisibility(View.VISIBLE);
@@ -424,5 +460,11 @@ public class AddProductIngredientsFragment extends BaseFragment {
     public void hideOCRProgress() {
         ocrProgress.setVisibility(View.GONE);
         ocrProgressText.setVisibility(View.GONE);
+    }
+
+    private int dpsToPixels() {
+        // converts 50dp to equivalent pixels.
+        final float scale = activity.getResources().getDisplayMetrics().density;
+        return (int) (50 * scale + 0.5f);
     }
 }

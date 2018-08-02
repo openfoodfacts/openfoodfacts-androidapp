@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
@@ -54,6 +55,8 @@ public class AddProductPhotosFragment extends BaseFragment {
     TextView imageProgressText;
     @BindView(R.id.table_layout)
     TableLayout tableLayout;
+    @BindView(R.id.btn_add)
+    Button buttonAdd;
 
     private String code;
     private Activity activity;
@@ -79,11 +82,13 @@ public class AddProductPhotosFragment extends BaseFragment {
         if (b != null) {
             Product product = (Product) b.getSerializable("product");
             OfflineSavedProduct offlineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
-
+            boolean edit_product = b.getBoolean("edit_product");
             if (product != null) {
                 code = product.getCode();
             }
-            if (offlineSavedProduct != null) {
+            if (edit_product && product != null) {
+                buttonAdd.setText(R.string.save_edits);
+            } else if (offlineSavedProduct != null) {
                 code = offlineSavedProduct.getBarcode();
             }
         } else {
@@ -179,6 +184,8 @@ public class AddProductPhotosFragment extends BaseFragment {
         ImageView imageView = new ImageView(activity);
         Picasso.with(activity)
                 .load(resultUri)
+                .resize(dpsToPixels(100), dpsToPixels(100))
+                .centerInside()
                 .into(imageView);
         imageView.setAdjustViewBounds(true);
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);

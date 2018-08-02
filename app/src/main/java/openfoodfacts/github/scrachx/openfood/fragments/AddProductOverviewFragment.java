@@ -32,6 +32,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.hootsuite.nachos.NachoTextView;
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -229,9 +230,22 @@ public class AddProductOverviewFragment extends BaseFragment {
         mLabelNameDao = Utils.getAppDaoSession(activity).getLabelNameDao();
         if (product.getImageFrontUrl() != null && !product.getImageFrontUrl().isEmpty()) {
             mImageUrl = product.getImageFrontUrl();
+            imageProgress.setVisibility(View.VISIBLE);
             Picasso.with(getContext())
                     .load(product.getImageFrontUrl())
-                    .into(imageFront);
+                    .resize(dpsToPixels(), dpsToPixels())
+                    .centerInside()
+                    .into(imageFront, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+                    });
         }
         if (product.getLang() != null && !product.getLang().isEmpty()) {
             setProductLanguage(product.getLang());
@@ -334,10 +348,23 @@ public class AddProductOverviewFragment extends BaseFragment {
         HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
         if (productDetails != null) {
             if (productDetails.get("image_front") != null) {
+                imageProgress.setVisibility(View.VISIBLE);
                 mImageUrl = productDetails.get("image_front");
                 Picasso.with(getContext())
                         .load("file://" + mImageUrl)
-                        .into(imageFront);
+                        .resize(dpsToPixels(), dpsToPixels())
+                        .centerInside()
+                        .into(imageFront, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                imageProgress.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onError() {
+                                imageProgress.setVisibility(View.GONE);
+                            }
+                        });
             }
             if (productDetails.get(PARAM_LANGUAGE) != null) {
                 setProductLanguage(productDetails.get(PARAM_LANGUAGE));
@@ -346,7 +373,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 name.setText(productDetails.get(PARAM_NAME));
             }
             if (productDetails.get(PARAM_QUANTITY) != null) {
-                quantity.setText(product.getQuantity());
+                quantity.setText(productDetails.get(PARAM_QUANTITY));
             }
             if (productDetails.get(PARAM_BRAND) != null) {
                 List<String> chipValues = Arrays.asList(productDetails.get(PARAM_BRAND).split("\\s*,\\s*"));
@@ -818,6 +845,8 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (!errorInUploading) {
             Picasso.with(activity)
                     .load(photoFile)
+                    .resize(dpsToPixels(), dpsToPixels())
+                    .centerInside()
                     .into(imageFront);
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         } else {
@@ -839,5 +868,11 @@ public class AddProductOverviewFragment extends BaseFragment {
         } else {
             otherImageProgressText.setText(R.string.image_uploaded_successfully);
         }
+    }
+
+    private int dpsToPixels() {
+        // converts 50dp to equivalent pixels.
+        final float scale = activity.getResources().getDisplayMetrics().density;
+        return (int) (50 * scale + 0.5f);
     }
 }
