@@ -355,7 +355,8 @@ public class AddProductActivity extends AppCompatActivity {
      * Checks if ingredients already exist on server and compare it with the ingredients stored locally.
      */
     private void checkForExistingIngredients() {
-        if (ingredientsTextOnServer != null && !ingredientsTextOnServer.isEmpty() && productDetails.get("ingredients_text") != null) {
+        String lc = productDetails.get("lang") != null ? productDetails.get("lang") : "en";
+        if (ingredientsTextOnServer != null && !ingredientsTextOnServer.isEmpty() && productDetails.get("ingredients_text" + "_" + lc) != null) {
             MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
                     .title(R.string.ingredients_overwrite)
                     .customView(R.layout.dialog_compare_ingredients, true)
@@ -367,7 +368,7 @@ public class AddProductActivity extends AppCompatActivity {
                     })
                     .onNegative((dialog, which) -> {
                         dialog.dismiss();
-                        productDetails.remove("ingredients_text");
+                        productDetails.remove("ingredients_text" + "_" + lc);
                         productDetails.remove("image_ingredients");
                         imagesFilePath[1] = null;
                         checkForExistingProductName();
@@ -382,7 +383,7 @@ public class AddProductActivity extends AppCompatActivity {
                 TextView ingredientsServer = view.findViewById(R.id.txt_ingredients_server);
                 ProgressBar imageProgressServer = view.findViewById(R.id.image_progress_server);
                 ProgressBar imageProgressLocal = view.findViewById(R.id.image_progress_local);
-                ingredientsLocal.setText(productDetails.get("ingredients_text"));
+                ingredientsLocal.setText(productDetails.get("ingredients_text" + "_" + lc));
                 ingredientsServer.setText(ingredientsTextOnServer);
                 Picasso.with(this)
                         .load(ingredientsImageOnServer)
@@ -452,10 +453,11 @@ public class AddProductActivity extends AppCompatActivity {
      * Checks if product name already exist on server and compare it with the product name stored locally.
      */
     private void checkForExistingProductName() {
-        if (productNameOnServer != null && !productNameOnServer.isEmpty() && productDetails.get("product_name") != null) {
+        String lc = productDetails.get("lang") != null ? productDetails.get("lang") : "en";
+        if (productNameOnServer != null && !productNameOnServer.isEmpty() && productDetails.get("product_name" + "_" + lc) != null) {
             new MaterialDialog.Builder(AddProductActivity.this)
                     .title(R.string.product_name_overwrite)
-                    .content(getString(R.string.yours) + productDetails.get("product_name") + "\n" + getString(R.string.currently_on, getString(R.string.app_name_long)) + productNameOnServer)
+                    .content(getString(R.string.yours) + productDetails.get("product_name" + "_" + lc) + "\n" + getString(R.string.currently_on, getString(R.string.app_name_long)) + productNameOnServer)
                     .positiveText(R.string.choose_mine)
                     .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
@@ -465,7 +467,7 @@ public class AddProductActivity extends AppCompatActivity {
                     })
                     .onNegative((dialog, which) -> {
                         dialog.dismiss();
-                        productDetails.remove("product_name");
+                        productDetails.remove("product_name" + "_" + lc);
                         checkForExistingQuantity();
                     })
                     .build()
@@ -845,6 +847,7 @@ public class AddProductActivity extends AppCompatActivity {
                         toast.show();
                         mOfflineSavedProductDao.deleteInTx(mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(code)).list());
                         Intent intent = new Intent();
+                        intent.putExtra("uploadedToServer", true);
                         setResult(RESULT_OK, intent);
                         finish();
                     }
@@ -881,6 +884,7 @@ public class AddProductActivity extends AppCompatActivity {
         mOfflineSavedProductDao.insertOrReplace(offlineSavedProduct);
         Toast.makeText(AddProductActivity.this, R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
         Intent intent = new Intent();
+        intent.putExtra("uploadedToServer", false);
         setResult(RESULT_OK, intent);
         finish();
     }
@@ -926,7 +930,6 @@ public class AddProductActivity extends AppCompatActivity {
 
     public void addToMap(String key, String value) {
         productDetails.put(key, value);
-
     }
 
     public void addToPhotoMap(ProductImage image, int position) {

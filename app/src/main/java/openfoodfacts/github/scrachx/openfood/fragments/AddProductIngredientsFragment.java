@@ -66,6 +66,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
 
     private static final String PARAM_INGREDIENTS = "ingredients_text";
     private static final String PARAM_TRACES = "add_traces";
+    private static final String PARAM_LANGUAGE = "lang";
     @BindView(R.id.btnAddImageIngredients)
     ImageView imageIngredients;
     @BindView(R.id.imageProgress)
@@ -95,6 +96,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     private OfflineSavedProduct mOfflineSavedProduct;
     private HashMap<String, String> productDetails = new HashMap<>();
     private String imagePath;
+    private String languageCode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -145,8 +147,11 @@ public class AddProductIngredientsFragment extends BaseFragment {
                         .load("file://" + productDetails.get("image_ingredients"))
                         .into(imageIngredients);
             }
-            if (productDetails.get(PARAM_INGREDIENTS) != null) {
-                ingredients.setText(productDetails.get(PARAM_INGREDIENTS));
+            String lc = productDetails.get(PARAM_LANGUAGE) != null ? productDetails.get(PARAM_LANGUAGE) : "en";
+            if (productDetails.get(PARAM_INGREDIENTS + "_" + lc) != null) {
+                ingredients.setText(productDetails.get(PARAM_INGREDIENTS + "_" + lc));
+            } else if (productDetails.get(PARAM_INGREDIENTS + "_" + "en") != null) {
+                ingredients.setText(productDetails.get(PARAM_INGREDIENTS + "_" + "en"));
             }
             if (productDetails.get(PARAM_TRACES) != null) {
                 List<String> chipValues = Arrays.asList(productDetails.get(PARAM_TRACES).split("\\s*,\\s*"));
@@ -161,7 +166,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
         AllergenNameDao allergenNameDao = daoSession.getAllergenNameDao();
 
         if (activity instanceof AddProductActivity) {
-            String languageCode = ((AddProductActivity) activity).getProductLanguage();
+            languageCode = ((AddProductActivity) activity).getProductLanguage();
 
             asyncSessionAllergens.queryList(allergenNameDao.queryBuilder()
                     .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
@@ -269,7 +274,8 @@ public class AddProductIngredientsFragment extends BaseFragment {
         traces.chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
             if (!ingredients.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_INGREDIENTS, ingredients.getText().toString());
+                String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+                ((AddProductActivity) activity).addToMap(PARAM_INGREDIENTS + "_" + lc, ingredients.getText().toString());
             }
             if (!traces.getChipValues().isEmpty()) {
                 List<String> list = traces.getChipValues();
