@@ -118,8 +118,6 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
-            android:drawableEnd="@drawable/ic_arrow_drop_down"
-            android:drawableRight="@drawable/ic_arrow_drop_down"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
@@ -127,6 +125,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/barcode"
+            tools:drawableEnd="@drawable/ic_arrow_drop_down"
+            tools:drawableRight="@drawable/ic_arrow_drop_down"
             tools:text="Product language : English" />
 
         <EditText
@@ -311,12 +311,12 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
-            android:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
-            android:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp"
             android:text="@string/manufacturing_details"
             android:textColor="#dd0b16"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/grey_line2" />
+            app:layout_constraintTop_toBottomOf="@id/grey_line2"
+            tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
+            tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp" />
 
         <com.hootsuite.nachos.NachoTextView
             android:id="@+id/origin_of_ingredients"
@@ -462,12 +462,12 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
-            android:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
-            android:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp"
             android:text="@string/purchasing_details"
             android:textColor="#dd0b16"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/grey_line3" />
+            app:layout_constraintTop_toBottomOf="@id/grey_line3"
+            tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
+            tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp" />
 
         <com.hootsuite.nachos.NachoTextView
             android:id="@+id/country_where_purchased"
