@@ -7,3 +7,10 @@ v2! Todos os voluntários da OFF trabalharam duro, basedo nas suas sugestões. S
 6. Muito mais rápido, mesmo em 2G. Você pode até contribuir sem conexão
 7. Não é necessário registar-se
 8. Leve como antes :)
+
+v2.8! Depois do grande V2, todos os voluntários da OFF continuaram trabalhando duro, basendo nas suas sugestões. Agora temos 570.000 produtos liberados de 182 países por 10K + contribuidores, incl. você 🙂
+1. Reconstruímos toda a experiência de adição de produtos (e até funciona offline). (obrigado Huzaifa)
+2. Agora pode obter informações nutricionais para a porção que está comendo (Rutvik)
+3. Agora computamos grupos NOVA além do Nutriscore (Huzaifa)
+4. Limpeza (por Rutvik & Salfai)
+5. 🌎 Coreano e indonésio

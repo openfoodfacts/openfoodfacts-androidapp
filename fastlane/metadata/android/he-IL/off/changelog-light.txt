@@ -7,3 +7,10 @@
 6. הרבה יותר מהיר, אפילו ברשת דור שני. אפשר לתרום גם ללא חיבור לאינטרנט
 7. לא נדרשת הרשמה
 8. נשאר קליל כשהיה :)
+
+v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
+1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
+2. You can now get nutrition facts for the portion you're eating (Rutvik)
+3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
+4. Housecleaning (by Rutvik & Salfai)
+5. 🌎 Korean & Indonesian

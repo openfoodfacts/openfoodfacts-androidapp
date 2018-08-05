@@ -654,7 +654,19 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            findProduct(lastText, true);
+            boolean uploadedToServer = data.getBooleanExtra("uploadedToServer", true);
+            if (uploadedToServer) {
+                findProduct(lastText, true);
+            } else {
+                // Not uploaded to server, saved locally
+                OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(lastText)).unique();
+                if (offlineSavedProduct != null) {
+                    hideAllViews();
+                    showOfflineSavedDetails(offlineSavedProduct);
+                    fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+                    fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
+                }
+            }
         } else if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
             intent.putExtra("edit_product", product);

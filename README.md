@@ -1,6 +1,8 @@
 Open Food Facts Android Application
 ===================================
 
+Status
+------------------
 [![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
 [![Build Status](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp.svg?branch=master)](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp)
 [![Stories in Ready](https://badge.waffle.io/openfoodfacts/openfoodfacts-androidapp.svg?label=ready&title=Ready)](https://waffle.io/openfoodfacts/openfoodfacts-androidapp)
@@ -12,7 +14,20 @@ Open Food Facts Android Application
 <img src="https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png">
 ## What is Open Food Facts?
 
-<a href="https://f-droid.org/app/openfoodfacts.github.scrachx.openfood"><img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="70"></a><a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner"><img src="https://play.google.com/intl/en_us/badges/images/badge_new.png" alt="Get it on the Google Play Store" height="70"></a><br>
+Open Food Facts on Google Play
+------------------
+
+<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="80"></a>
+
+Open Food Facts on [F-Droid](https://f-droid.org/)
+------------------
+
+<a href="https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/" alt="Get it on F-Droid" target="_blank"><img src="https://f-droid.org/badge/get-it-on.png" height="80"></a>
+
+
+Screenshots
+------------------
+
 <img src="https://lh3.googleusercontent.com/PYEw9fMLJ5ETPqB2mxeekfVTTNOkJHscs4MRHo546GJzwgIoj3SiJFsZDx4_D-EAUA=w720-h310" height="300">
 <img src="https://lh3.googleusercontent.com/q7NWz-hc4x39q8N7EW0cz5GZDHN5-F0ttZPHFPvf8-cTG2RImWi_C2J7zCY1Wtc_qZw=w1280-h636" height="300">
 <img src="https://lh3.googleusercontent.com/HXGodB99lZDp3lusX4ZdnkKJxcKiFv5ohfvaiMB7iX-i_QrcvWzUXPxmlSp8nq8SkBc=w1280-h636" height="300">
@@ -86,6 +101,8 @@ If you're new to open-source, we recommend you to checkout our [_Contributing Gu
 Here's a few list of bugs:
 - Very high impact: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/very%20high%20impact
 - Priority: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/priority
+
+If you don't have time to contribute code, you're welcome to scan new products, or make a donation to [_help pay for the hosting and general costs_](https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en) 
 
 ## Copyright and License
 

@@ -24,11 +24,11 @@
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
   <string name="msg_share">انظر لهذا المنتج على \"الحقائق الغذائية المفتوحة\":</string>
-  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+  <string name="not_support_books">الكتب ليست مدعومة في الوقت الحالي من قبل \"حقائق الغذاء المفتوحة\"</string>
+  <string name="txt_broaden_search">-توسيع نطاق \n-البحث الخاص بك امسح و إضفه إلى Open Food Facts</string>
   <string name="Donation">انقر هنا للتبرع لـ Open Food Facts</string>
   <string name="translate_help_title">المساعدة في ترجمة \"حقائق الطعام المفتوحة\"</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="translate_help_summary">قم تحويل قاعدة بيانات Open Food Facts إلى لغتك - دون الحاجة إلى معرفة فنية</string>
   <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">لن يتم إرسال معلومات الحساسية الخاصة بك إلى خادم حقائق الطعام المفتوح. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
   <!-- OPFF tagline in different languages -->

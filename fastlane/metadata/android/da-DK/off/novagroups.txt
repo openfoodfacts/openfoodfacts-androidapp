@@ -4,18 +4,18 @@ Nova-grupper
 
 Nova-gruppe:
 
-Grupper 1
+Gruppe 1
 Gruppe 1 - Ubehandlede eller minimalt forarbejdede fødevarer
 Ubehandlede eller minimalt forarbejdede fødevarer
 
-Grupper 2
+Gruppe 2
 Gruppe 2 - Forarbejdede kulinariske ingredienser
 Forarbejdede kulinariske ingredienser
 
-Grupper 3
+Gruppe 3
 Gruppe 3 - Forarbejdede fødevarer
 Forarbejdede fødevarer
 
-Grupper 4
+Gruppe 4
 Gruppe 4 - Ultraforarbejdede føde- og drikkevarer
 Ultraforarbejdede føde- og drikkevarer

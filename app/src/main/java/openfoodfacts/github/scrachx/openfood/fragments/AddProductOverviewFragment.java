@@ -387,8 +387,11 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (productDetails.get(PARAM_LANGUAGE) != null) {
                 setProductLanguage(productDetails.get(PARAM_LANGUAGE));
             }
-            if (productDetails.get(PARAM_NAME) != null) {
-                name.setText(productDetails.get(PARAM_NAME));
+            String lc = productDetails.get(PARAM_LANGUAGE) != null ? productDetails.get(PARAM_LANGUAGE) : "en";
+            if (productDetails.get(PARAM_NAME + "_" + lc) != null) {
+                name.setText(productDetails.get(PARAM_NAME + "_" + lc));
+            } else if (productDetails.get(PARAM_NAME + "_" + "en") != null) {
+                name.setText(productDetails.get(PARAM_NAME + "_" + "en"));
             }
             if (productDetails.get(PARAM_QUANTITY) != null) {
                 quantity.setText(productDetails.get(PARAM_QUANTITY));
@@ -637,7 +640,8 @@ public class AddProductOverviewFragment extends BaseFragment {
                 ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
             }
             if (!name.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_NAME, name.getText().toString());
+                String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+                ((AddProductActivity) activity).addToMap(PARAM_NAME + "_" + lc, name.getText().toString());
             }
             if (!quantity.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_QUANTITY, quantity.getText().toString());

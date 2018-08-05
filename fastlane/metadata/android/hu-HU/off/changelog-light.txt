@@ -7,3 +7,10 @@ v2 ! Minden OFF önkéntes keményen dolgozott, az ön javaslatai alapján. Még
 6. Sokkal gyorsabb, még 2G-s hálózaton is. Akár kapcsolat nélküli módban is hozzájárulhat
 7. Nincs szükség regisztrációra
 8. Erőforráskímélő, mint ezelőtt :)
+
+v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
+1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
+2. You can now get nutrition facts for the portion you're eating (Rutvik)
+3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
+4. Housecleaning (by Rutvik & Salfai)
+5. 🌎 Korean & Indonesian

@@ -1,1 +1,1 @@
-Scan food products to decrypt labels: ingredients, additives and nutrition facts
+مسح باركود المنتجات الغذائية للحصول على بيانات عن المكونات والمواد المضافة والحقائق الغذائية للمنتج

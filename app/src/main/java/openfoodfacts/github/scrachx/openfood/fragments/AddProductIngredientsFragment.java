@@ -69,6 +69,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
 
     private static final String PARAM_INGREDIENTS = "ingredients_text";
     private static final String PARAM_TRACES = "add_traces";
+    private static final String PARAM_LANGUAGE = "lang";
     @BindView(R.id.btnAddImageIngredients)
     ImageView imageIngredients;
     @BindView(R.id.imageProgress)
@@ -199,7 +200,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
         productDetails = mOfflineSavedProduct.getProductDetailsMap();
         if (productDetails != null) {
             if (productDetails.get("image_ingredients") != null) {
-                imageProgress.setVisibility(View.GONE);
+                imageProgress.setVisibility(View.VISIBLE);
                 Picasso.with(getContext())
                         .load("file://" + productDetails.get("image_ingredients"))
                         .resize(dpsToPixels(), dpsToPixels())
@@ -216,8 +217,11 @@ public class AddProductIngredientsFragment extends BaseFragment {
                             }
                         });
             }
-            if (productDetails.get(PARAM_INGREDIENTS) != null) {
-                ingredients.setText(productDetails.get(PARAM_INGREDIENTS));
+            String lc = productDetails.get(PARAM_LANGUAGE) != null ? productDetails.get(PARAM_LANGUAGE) : "en";
+            if (productDetails.get(PARAM_INGREDIENTS + "_" + lc) != null) {
+                ingredients.setText(productDetails.get(PARAM_INGREDIENTS + "_" + lc));
+            } else if (productDetails.get(PARAM_INGREDIENTS + "_" + "en") != null) {
+                ingredients.setText(productDetails.get(PARAM_INGREDIENTS + "_" + "en"));
             }
             if (productDetails.get(PARAM_TRACES) != null) {
                 List<String> chipValues = Arrays.asList(productDetails.get(PARAM_TRACES).split("\\s*,\\s*"));
@@ -354,7 +358,9 @@ public class AddProductIngredientsFragment extends BaseFragment {
     public void getAllDetails() {
         traces.chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
-            ((AddProductActivity) activity).addToMap(PARAM_INGREDIENTS, ingredients.getText().toString());
+            String languageCode = ((AddProductActivity) activity).getProductLanguage();
+            String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+            ((AddProductActivity) activity).addToMap(PARAM_INGREDIENTS + "_" + lc, ingredients.getText().toString());
             List<String> list = traces.getChipValues();
             String string = StringUtils.join(list, ',');
             ((AddProductActivity) activity).addToMap(PARAM_TRACES.substring(4), string);
@@ -368,7 +374,9 @@ public class AddProductIngredientsFragment extends BaseFragment {
         traces.chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
             if (!ingredients.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_INGREDIENTS, ingredients.getText().toString());
+                String languageCode = ((AddProductActivity) activity).getProductLanguage();
+                String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+                ((AddProductActivity) activity).addToMap(PARAM_INGREDIENTS + "_" + lc, ingredients.getText().toString());
             }
             if (!traces.getChipValues().isEmpty()) {
                 List<String> list = traces.getChipValues();
