@@ -123,7 +123,7 @@
     <item>Мидовая кислота (20:3 n-9)</item>
     <item>Мелиссовая кислота (30:0)</item>
     <item>Молибден</item>
-    <item>Monounsaturated fat</item>
+    <item>Мононенасыщенные жирные кислоты</item>
     <item>Монтановая кислота (28:0)</item>
     <item>Миристиновая кислота (14:0)</item>
     <item>Нервоновая кислота (24:1 n-9)</item>
@@ -137,7 +137,7 @@
     <item>pH</item>
     <item>Фосфор</item>
     <item>Многоатомные спирты (полиолы)</item>
-    <item>Polyunsaturated fat</item>
+    <item>Полиненасыщенные жирные кислоты</item>
     <item>Калий</item>
     <item>Селен</item>
     <item>Сывороточные белки</item>
@@ -640,7 +640,7 @@
   <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
   <string name="ingredients_list">Список ингредиентов</string>
   <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
-  <string name="extract_ingredients">Extract ingredients</string>
+  <string name="extract_ingredients">Распознать ингредиенты</string>
   <string name="extracting_ingredients">Распознавание ингредиентов</string>
   <string name="looksGood">Выглядит хорошо</string>
   <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
@@ -665,7 +665,7 @@
   <string name="origin_of_ingredients">Происхождение ингредиентов</string>
   <string name="manufacturing_place">Место производства</string>
   <string name="emb_code">Код EMB</string>
-  <string name="purchasing_details">Purchasing Details</string>
+  <string name="purchasing_details">Подробности покупки</string>
   <string name="country_where_purchased">Страна приобретения</string>
   <string name="stores">Магазины</string>
   <string name="additional_pictures">Дополнительные фотографии</string>

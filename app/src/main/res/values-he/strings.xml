@@ -48,10 +48,10 @@
     <item>מ״ג</item>
     <item>ק״ג</item>
     <item>ל׳</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
+    <item>ל</item>
+    <item>מ״ל</item>
+    <item>ס״ל</item>
+    <item>אונקיה</item>
   </string-array>
   <!-- weight units -->
   <string-array name="weights_array">
@@ -61,7 +61,7 @@
   </string-array>
   <!-- nutrition energy units -->
   <string-array name="energy_units">
-    <item>kcal</item>
+    <item>קק״ל</item>
     <item>kj</item>
   </string-array>
   <!-- nutrition weight units -->
@@ -104,7 +104,7 @@
     <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
     <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
     <item>Elaidic acid (18:1 n-9)</item>
-    <item>Erucic acid (22:1 n-9)</item>
+    <item>חומצה ארוסית (22:1 n-9)</item>
     <item>פלואוריד</item>
     <item>פרוקטוז</item>
     <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
@@ -129,9 +129,9 @@
     <item>Nervonic acid (24:1 n-9)</item>
     <item>נוקלאוטידים</item>
     <item>Oleic acid (18:1 n-9)</item>
-    <item>Omega 3 fatty acids</item>
-    <item>Omega 6 fatty acids</item>
-    <item>Omega 9 fatty acids</item>
+    <item>חומצות שומן אומגה 3</item>
+    <item>חומצות שומן אומגה 6</item>
+    <item>חומצות שומן אומגה 9</item>
     <item>Palmitic acid (16:0)</item>
     <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
     <item>pH</item>
@@ -142,19 +142,19 @@
     <item>סלניום</item>
     <item>Serum proteins</item>
     <item>צורן דו חמצני</item>
-    <item>Starch</item>
+    <item>עמילן</item>
     <item>Stearic acid (18:0)</item>
     <item>סוכרוז</item>
     <item>טאורין</item>
     <item>שומן טרנס</item>
     <item>ויטמין A</item>
-    <item>Vitamin B1 (Thiamin)</item>
-    <item>Vitamin B12 (Cobalamin)</item>
-    <item>Vitamin B2 (Riboflavin)</item>
+    <item>ויטמין B1 (תיאמין)</item>
+    <item>ויטמין B12 (קובלאמין)</item>
+    <item>ויטמין B2 (ריבופלבין)</item>
     <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-    <item>Vitamin B6 (Pyridoxin)</item>
-    <item>Vitamin B9 (Folic acid)</item>
-    <item>Vitamin C (Ascorbic acid)</item>
+    <item>ויטמין B6 (פירידוקסין)</item>
+    <item>ויטמין B9 (חומצה פולית)</item>
+    <item>ויטמין C (חומצה אסקורבית)</item>
     <item>ויטמין D</item>
     <item>ויטמין E</item>
     <item>ויטמין K</item>

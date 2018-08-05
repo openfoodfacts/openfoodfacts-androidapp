@@ -4,10 +4,10 @@ Open Beauty Facts, içerdikleri maddeler, allerjenler, işaretler ve ürün etik
 
 - Open Products Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta. 
 - You can start contributing today by adding your first product. 
 
-*** Get the Facts ***
+***Gerçekleri Öğrenin***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***

@@ -25,8 +25,8 @@
   <string name="text_barcode">Escribe el código de barras :</string>
   <string name="message_in_activity_save_product_offline">Solo una foto es obligatoria para poder enviar un nuevo producto.</string>
   <string name="product_incomplete_message">Este producto no está completo. Como resultado, no pudimos hacer la comprobación de los alérgenos.</string>
-  <string name="no_offline_data">Has terminado</string>
-  <string name="first_offline">Los productos añadidos fuera de línea aparecerán aquí</string>
+  <string name="no_offline_data">Ya has terminado</string>
+  <string name="first_offline">Los productos añadidos sin conexion a internet aparecerán aquí</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
@@ -162,7 +162,7 @@
   <string name="bookmark">Marcador</string>
   <string name="edit">Editar</string>
   <string name="search_button">Buscar</string>
-  <string name="no_products">No se han encontrado productos</string>
+  <string name="no_products">Productos no encontrados</string>
   <string name="desc_list_item_icon">Icono de Objeto</string>
   <string name="alert_dialog_warning_title">Aviso</string>
   <string name="alert_dialog_warning_msg_user">El usuario/contraseña ha cambiado, por favor actualice la información</string>
@@ -179,7 +179,7 @@
   <string name="txtIngredientsOrigins">Origen de los Ingredientes :</string>
   <string name="txtCity">Ciudad, estado o país donde se compró :</string>
   <string name="txtEMB">Código EMB:</string>
-  <string name="txtManufactureUrl">Enlace a la página del producto en el sitio oficial del productor:</string>
+  <string name="txtManufactureUrl">Enlace a la página del producto en el sitio oficial del fabricante:</string>
   <string name="txtStores">Tiendas :</string>
   <string name="txtCountries">Países donde se compra :</string>
   <string name="txtIngredients">Lista de ingredientes :</string>
@@ -603,7 +603,7 @@
   <string name="hint_product_URL">Enlace de la página oficial del producto</string>
   <string name="product_language">Idioma del producto: </string>
   <string name="hint_emb_codes">Ejemplos: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-  <string name="official_website">Official website</string>
+  <string name="official_website">Página web oficial</string>
   <string name="scan_QR_code">Escanee el código QR para el sitio web del producto</string>
   <string name="add_at_least_one_picture">Por favor agregue al menos una imagen de este producto antes de proceder</string>
   <string name="image_uploaded_successfully">Imagen subida con éxito</string>
