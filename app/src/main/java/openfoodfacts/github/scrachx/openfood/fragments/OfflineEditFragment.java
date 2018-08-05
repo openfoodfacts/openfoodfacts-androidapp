@@ -69,6 +69,7 @@ import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
+import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_OFFLINE;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 
@@ -724,7 +725,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         productDetails.remove("image_front_uploaded");
         productDetails.remove("image_ingredients_uploaded");
         productDetails.remove("image_nutrition_facts_uploaded");
-        client.saveProductSingle(product.getBarcode(), productDetails)
+        client.saveProductSingle(product.getBarcode(), productDetails, PRODUCT_API_COMMENT + " " + Utils.getVersionName(activity))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<State>() {

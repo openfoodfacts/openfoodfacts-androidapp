@@ -59,6 +59,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 
+import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable;
 
 public class AddProductActivity extends AppCompatActivity {
@@ -892,7 +893,7 @@ public class AddProductActivity extends AppCompatActivity {
             Log.d(key, value);
         }
 
-        client.saveProductSingle(code, productDetails)
+        client.saveProductSingle(code, productDetails, PRODUCT_API_COMMENT + " " + Utils.getVersionName(this))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
                     @Override
