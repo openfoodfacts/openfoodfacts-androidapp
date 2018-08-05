@@ -167,6 +167,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private static final String PARAM_DIETARY_FIBER_UNIT = "nutriment_fiber_unit";
     private static final String PARAM_PROTEINS = "nutriment_proteins";
     private static final String PARAM_PROTEINS_UNIT = "nutriment_proteins_unit";
+    private static final String PARAM_SALT = "nutriment_salt";
+    private static final String PARAM_SALT_UNIT = "nutriment_salt_unit";
     private static final String PARAM_SODIUM = "nutriment_sodium";
     private static final String PARAM_SODIUM_UNIT = "nutriment_sodium_unit";
     private static final String PARAM_ALCOHOL = "nutriment_alcohol";
@@ -378,7 +380,15 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             if (nutriments.getUnit(Nutriments.PROTEINS) != null) {
                 proteinsUnit.setSelection(getPosition(nutriments.getUnit(Nutriments.PROTEINS)));
             }
+            if (nutriments.getValue(Nutriments.SALT) != null) {
+                salt.clearFocus();
+                salt.setText(nutriments.getValue(Nutriments.SALT));
+            }
+            if (nutriments.getUnit(Nutriments.SALT) != null) {
+                saltUnit.setSelection(getPosition(nutriments.getUnit(Nutriments.SALT)));
+            }
             if (nutriments.getValue(Nutriments.SODIUM) != null) {
+                sodium.clearFocus();
                 sodium.setText(nutriments.getValue(Nutriments.SODIUM));
             }
             if (nutriments.getUnit(Nutriments.SODIUM) != null) {
@@ -504,7 +514,15 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             if (productDetails.get(PARAM_PROTEINS_UNIT) != null) {
                 proteinsUnit.setSelection(getPosition(productDetails.get(PARAM_PROTEINS_UNIT)));
             }
+            if (productDetails.get(PARAM_SALT) != null) {
+                salt.clearFocus();
+                salt.setText(productDetails.get(PARAM_SALT));
+            }
+            if (productDetails.get(PARAM_SALT_UNIT) != null) {
+                saltUnit.setSelection(getPosition(productDetails.get(PARAM_SALT_UNIT)));
+            }
             if (productDetails.get(PARAM_SODIUM) != null) {
+                sodium.clearFocus();
                 sodium.setText(productDetails.get(PARAM_SODIUM));
             }
             if (productDetails.get(PARAM_SODIUM_UNIT) != null) {
@@ -616,20 +634,43 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     }
 
     @OnTextChanged(value = R.id.salt, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
-    void afterTextChanged() {
-        double sodiumValue = 0;
-        try {
-            sodiumValue = Double.valueOf(salt.getText().toString()) * 0.39370078740157477;
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
+    void autoCalculateSodiumValue() {
+        if (activity.getCurrentFocus() == salt) {
+            double sodiumValue = 0;
+            try {
+                sodiumValue = Double.valueOf(salt.getText().toString()) * 0.39370078740157477;
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+            sodium.clearFocus();
+            sodium.setText(String.valueOf(sodiumValue));
+            sodiumUnit.setSelection(saltUnit.getSelectedItemPosition());
         }
-        sodium.setText(String.valueOf(sodiumValue));
-        sodiumUnit.setSelection(saltUnit.getSelectedItemPosition());
+    }
+
+    @OnTextChanged(value = R.id.sodium, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void autoCalculateSaltValue() {
+        if (activity.getCurrentFocus() == sodium) {
+            double saltValue = 0;
+            try {
+                saltValue = Double.valueOf(sodium.getText().toString()) * 2.54;
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+            salt.clearFocus();
+            salt.setText(String.valueOf(saltValue));
+            saltUnit.setSelection(sodiumUnit.getSelectedItemPosition());
+        }
     }
 
     @OnItemSelected(value = R.id.spinner_salt_unit, callback = OnItemSelected.Callback.ITEM_SELECTED)
-    void onItemSelected() {
+    void autoSelectSodiumSpinner() {
         sodiumUnit.setSelection(saltUnit.getSelectedItemPosition());
+    }
+
+    @OnItemSelected(value = R.id.spinner_sodium_unit, callback = OnItemSelected.Callback.ITEM_SELECTED)
+    void autoSelectSaltSpinner() {
+        saltUnit.setSelection(sodiumUnit.getSelectedItemPosition());
     }
 
     @OnCheckedChanged(R.id.checkbox_no_nutrition_data)
@@ -763,6 +804,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                 ((AddProductActivity) activity).addToMap(PARAM_PROTEINS, s);
                 ((AddProductActivity) activity).addToMap(PARAM_PROTEINS_UNIT, unit);
 
+                s = salt.getText().toString();
+                unit = UNIT[saltUnit.getSelectedItemPosition()];
+                ((AddProductActivity) activity).addToMap(PARAM_SALT, s);
+                ((AddProductActivity) activity).addToMap(PARAM_SALT_UNIT, unit);
 
                 s = sodium.getText().toString();
                 unit = UNIT[sodiumUnit.getSelectedItemPosition()];
@@ -858,6 +903,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                     String unit = UNIT[proteinsUnit.getSelectedItemPosition()];
                     ((AddProductActivity) activity).addToMap(PARAM_PROTEINS, s);
                     ((AddProductActivity) activity).addToMap(PARAM_PROTEINS_UNIT, unit);
+                }
+                if (!salt.getText().toString().isEmpty()) {
+                    String s = salt.getText().toString();
+                    String unit = UNIT[saltUnit.getSelectedItemPosition()];
+                    ((AddProductActivity) activity).addToMap(PARAM_SALT, s);
+                    ((AddProductActivity) activity).addToMap(PARAM_SALT_UNIT, unit);
                 }
                 if (!sodium.getText().toString().isEmpty()) {
                     String s = sodium.getText().toString();

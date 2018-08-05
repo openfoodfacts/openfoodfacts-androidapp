@@ -447,12 +447,18 @@ public class AddProductIngredientsFragment extends BaseFragment {
     }
 
     public void setIngredients(String status, String ocrResult) {
-        if (status.equals("0")) {
-            ingredients.setText(ocrResult);
-            btnLooksGood.setVisibility(View.VISIBLE);
-            btnSkipIngredients.setVisibility(View.VISIBLE);
-        } else {
-            Toast.makeText(activity, R.string.unable_to_extract_ingredients, Toast.LENGTH_SHORT).show();
+        switch (status) {
+            case "clear":
+                ingredients.setText(null);
+                break;
+            case "0":
+                ingredients.setText(ocrResult);
+                btnLooksGood.setVisibility(View.VISIBLE);
+                btnSkipIngredients.setVisibility(View.VISIBLE);
+                break;
+            default:
+                Toast.makeText(activity, R.string.unable_to_extract_ingredients, Toast.LENGTH_SHORT).show();
+                break;
         }
 
     }

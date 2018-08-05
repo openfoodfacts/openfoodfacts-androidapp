@@ -1249,4 +1249,8 @@ public class AddProductActivity extends AppCompatActivity {
     public String getProductLanguage() {
         return productDetails.get("lang");
     }
+
+    public void setIngredients(String status, String ingredients) {
+        addProductIngredientsFragment.setIngredients(status, ingredients);
+    }
 }

@@ -788,6 +788,10 @@ public class AddProductOverviewFragment extends BaseFragment {
                 .items(finalLocalLabels)
                 .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
                     setProductLanguage(finalLocalValues.get(which));
+                    name.setText(null);
+                    if (activity instanceof AddProductActivity) {
+                        ((AddProductActivity) activity).setIngredients("clear", null);
+                    }
                     return true;
                 })
                 .positiveText(R.string.ok_button)
