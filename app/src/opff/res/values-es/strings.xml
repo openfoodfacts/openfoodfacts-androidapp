@@ -14,7 +14,7 @@
   <string name="terms_url">https://world.openpetfoodfacts.org/términos-de-uso</string>
   <string name="txtHome">Open Pet Food Facts es una base de datos de productos alimenticios para mascotas con ingredientes, alérgenos, indicios y toda la información que podemos encontrar en las etiquetas de los alimentos para mascotas. Guau. Guau.</string>
   <string name="slide_1_title">Contribuye a la transparencia en la alimentación de las mascotas</string>
-  <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
+  <string name="slide_1_desc">Escanea productos, capturalos en foto y has que la transparencia de la comida suceda</string>
   <string name="slide_2_title">Obtener los datos</string>
   <string name="slide_2_desc">Información extensiva acerca del producto que has escaneado, descifrada para ti</string>
   <string name="slide_3_title">Guarda registro del producto o vídeo que uses o te guste</string>
@@ -34,5 +34,5 @@
   <!-- OPFF tagline in different languages -->
   <string name="tagline">base de datos libre para comida para mascotas</string>
   <string name="product_not_found">El producto %1$s que has escaneado no existe en Open Pet Food Facts. ¿puedes añadirlo?</string>
-  <string name="currently_on_version">Currently on Open Pet Food Facts</string>
+  <string name="currently_on_version">Actualmente en Open Food Facts</string>
 </resources>
