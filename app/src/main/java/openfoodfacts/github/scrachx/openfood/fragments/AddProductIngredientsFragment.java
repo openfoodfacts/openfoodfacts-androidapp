@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -101,6 +102,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     private boolean edit_product;
     private Product product;
     private boolean newImageSelected;
+    private String appLanguageCode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,6 +122,8 @@ public class AddProductIngredientsFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle b = getArguments();
         if (b != null) {
+            mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
+            appLanguageCode = Locale.getDefault().getLanguage();
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             edit_product = b.getBoolean("edit_product");
@@ -150,7 +154,6 @@ public class AddProductIngredientsFragment extends BaseFragment {
      * Pre fill the fields of the product which are already present on the server.
      */
     private void preFillProductValues() {
-        mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
         if (product.getImageIngredientsUrl() != null && !product.getImageIngredientsUrl().isEmpty()) {
             imageProgress.setVisibility(View.VISIBLE);
             imagePath = product.getImageIngredientsUrl();
@@ -173,11 +176,11 @@ public class AddProductIngredientsFragment extends BaseFragment {
         if (product.getIngredientsText() != null && !product.getIngredientsText().isEmpty()) {
             ingredients.setText(product.getIngredientsText());
         }
-        if (product.getTracesTags() != null) {
+        if (product.getTracesTags() != null && !product.getTracesTags().isEmpty()) {
             List<String> tracesTags = product.getTracesTags();
             final List<String> chipValues = new ArrayList<>();
             for (String tag : tracesTags) {
-                chipValues.add(getTracesName(tag.substring(0, 2), tag));
+                chipValues.add(getTracesName(appLanguageCode, tag));
             }
             traces.setText(chipValues);
         }
@@ -223,33 +226,29 @@ public class AddProductIngredientsFragment extends BaseFragment {
         }
     }
 
-    public void loadAutoSuggestions() {
+    private void loadAutoSuggestions() {
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         AsyncSession asyncSessionAllergens = daoSession.startAsyncSession();
         AllergenNameDao allergenNameDao = daoSession.getAllergenNameDao();
 
-        if (activity instanceof AddProductActivity) {
-            String languageCode = ((AddProductActivity) activity).getProductLanguage();
+        asyncSessionAllergens.queryList(allergenNameDao.queryBuilder()
+                .where(AllergenNameDao.Properties.LanguageCode.eq(appLanguageCode))
+                .orderDesc(AllergenNameDao.Properties.Name).build());
 
-            asyncSessionAllergens.queryList(allergenNameDao.queryBuilder()
-                    .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
-                    .orderDesc(AllergenNameDao.Properties.Name).build());
-
-            asyncSessionAllergens.setListenerMainThread(operation -> {
-                @SuppressWarnings("unchecked")
-                List<AllergenName> allergenNames = (List<AllergenName>) operation.getResult();
-                allergens.clear();
-                for (int i = 0; i < allergenNames.size(); i++) {
-                    allergens.add(allergenNames.get(i).getName());
-                }
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
-                        android.R.layout.simple_dropdown_item_1line, allergens);
-                traces.addChipTerminator(',', BEHAVIOR_CHIPIFY_CURRENT_TOKEN);
-                traces.setNachoValidator(new ChipifyingNachoValidator());
-                traces.enableEditChipOnTouch(false, true);
-                traces.setAdapter(adapter);
-            });
-        }
+        asyncSessionAllergens.setListenerMainThread(operation -> {
+            @SuppressWarnings("unchecked")
+            List<AllergenName> allergenNames = (List<AllergenName>) operation.getResult();
+            allergens.clear();
+            for (int i = 0; i < allergenNames.size(); i++) {
+                allergens.add(allergenNames.get(i).getName());
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
+                    android.R.layout.simple_dropdown_item_1line, allergens);
+            traces.addChipTerminator(',', BEHAVIOR_CHIPIFY_CURRENT_TOKEN);
+            traces.setNachoValidator(new ChipifyingNachoValidator());
+            traces.enableEditChipOnTouch(false, true);
+            traces.setAdapter(adapter);
+        });
     }
 
     @Override

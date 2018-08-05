@@ -93,6 +93,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_QUANTITY = "quantity";
     private static final String PARAM_BRAND = "add_brands";
     private static final String PARAM_LANGUAGE = "lang";
+    private static final String PARAM_INTERFACE_LANGUAGE = "lc";
     private static final String PARAM_PACKAGING = "add_packaging";
     private static final String PARAM_CATEGORIES = "add_categories";
     private static final String PARAM_LABELS = "add_labels";
@@ -157,11 +158,13 @@ public class AddProductOverviewFragment extends BaseFragment {
     @BindView(R.id.other_image_progress_text)
     TextView otherImageProgressText;
     private String languageCode;
+    private String appLanguageCode;
     private Activity activity;
     private OfflineSavedProduct mOfflineSavedProduct;
     private TagDao mTagDao;
     private CategoryNameDao mCategoryNameDao;
     private LabelNameDao mLabelNameDao;
+    private CountryNameDao mCountryNameDao;
     private Product product;
     private String code;
     private String mImageUrl;
@@ -194,8 +197,8 @@ public class AddProductOverviewFragment extends BaseFragment {
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             edit_product = b.getBoolean("edit_product");
-            String currentLang = LocaleHelper.getLanguage(activity);
-            setProductLanguage(currentLang);
+            appLanguageCode = LocaleHelper.getLanguage(activity);
+            setProductLanguage(appLanguageCode);
             barcode.setText(R.string.txtBarcode);
             if (product != null) {
                 code = product.getCode();
@@ -228,6 +231,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         mTagDao = Utils.getAppDaoSession(activity).getTagDao();
         mCategoryNameDao = Utils.getAppDaoSession(activity).getCategoryNameDao();
         mLabelNameDao = Utils.getAppDaoSession(activity).getLabelNameDao();
+        mCountryNameDao = Utils.getAppDaoSession(activity).getCountryNameDao();
         if (product.getImageFrontUrl() != null && !product.getImageFrontUrl().isEmpty()) {
             mImageUrl = product.getImageFrontUrl();
             imageProgress.setVisibility(View.VISIBLE);
@@ -268,7 +272,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             List<String> categoriesTags = product.getCategoriesTags();
             final List<String> chipValues = new ArrayList<>();
             for (String tag : categoriesTags) {
-                chipValues.add(getCategoryName(tag.substring(0, 2), tag));
+                chipValues.add(getCategoryName(appLanguageCode, tag));
             }
             categories.setText(chipValues);
         }
@@ -276,7 +280,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             List<String> labelsTags = product.getLabelsTags();
             final List<String> chipValues = new ArrayList<>();
             for (String tag : labelsTags) {
-                chipValues.add(getLabelName(tag.substring(0, 2), tag));
+                chipValues.add(getLabelName(appLanguageCode, tag));
             }
             label.setText(chipValues);
         }
@@ -306,17 +310,31 @@ public class AddProductOverviewFragment extends BaseFragment {
             List<String> chipValues = Arrays.asList(product.getStores().split("\\s*,\\s*"));
             stores.setText(chipValues);
         }
-        if (product.getCountries() != null && !product.getCountries().isEmpty()) {
-            List<String> chipValues = Arrays.asList(product.getCountries().split("\\s*,\\s*"));
+        if (product.getCountriesTags() != null && !product.getCountriesTags().isEmpty()) {
+            List<String> countriesTags = product.getCountriesTags();
+            final List<String> chipValues = new ArrayList<>();
+            for (String tag : countriesTags) {
+                chipValues.add(getCountryName(appLanguageCode, tag));
+            }
             countriesWhereSold.setText(chipValues);
         }
+    }
 
+    /**
+     * @param languageCode 2 letter language code. example hi, en etc.
+     * @param tag          the complete tag. example en:india
+     * @return returns the name of the country if found in the db or else returns the tag itself.
+     */
+    private String getCountryName(String languageCode, String tag) {
+        CountryName countryName = mCountryNameDao.queryBuilder().where(CountryNameDao.Properties.CountyTag.eq(tag), CountryNameDao.Properties.LanguageCode.eq(languageCode)).unique();
+        if (countryName != null) return countryName.getName();
+        return tag;
     }
 
     /**
      * @param languageCode 2 letter language code. example de, en etc.
      * @param tag          the complete tag. example de:hoher-omega-3-gehalt
-     * @return returns the name of the category if found in the db or else returns the tag itself.
+     * @return returns the name of the label if found in the db or else returns the tag itself.
      */
     private String getLabelName(String languageCode, String tag) {
         LabelName labelName = mLabelNameDao.queryBuilder().where(LabelNameDao.Properties.LabelTag.eq(tag), LabelNameDao.Properties.LanguageCode.eq(languageCode)).unique();
@@ -439,13 +457,13 @@ public class AddProductOverviewFragment extends BaseFragment {
         CategoryNameDao categoryNameDao = daoSession.getCategoryNameDao();
 
         asyncSessionCountries.queryList(countryNameDao.queryBuilder()
-                .where(CountryNameDao.Properties.LanguageCode.eq(languageCode))
+                .where(CountryNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(CountryNameDao.Properties.Name).build());
         asyncSessionLabels.queryList(labelNameDao.queryBuilder()
-                .where(LabelNameDao.Properties.LanguageCode.eq(languageCode))
+                .where(LabelNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(LabelNameDao.Properties.Name).build());
         asyncSessionCategories.queryList(categoryNameDao.queryBuilder()
-                .where(CategoryNameDao.Properties.LanguageCode.eq(languageCode))
+                .where(CategoryNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(CategoryNameDao.Properties.Name).build());
 
         asyncSessionCountries.setListenerMainThread(operation -> {
@@ -581,7 +599,9 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (activity instanceof AddProductActivity) {
             ((AddProductActivity) activity).addToMap(PARAM_BARCODE, code);
             ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
-            ((AddProductActivity) activity).addToMap(PARAM_NAME, name.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_INTERFACE_LANGUAGE, appLanguageCode);
+            String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+            ((AddProductActivity) activity).addToMap(PARAM_NAME + "_" + lc, name.getText().toString());
             ((AddProductActivity) activity).addToMap(PARAM_QUANTITY, quantity.getText().toString());
             ((AddProductActivity) activity).addToMap(PARAM_BRAND.substring(4), getValues(brand));
             ((AddProductActivity) activity).addToMap(PARAM_PACKAGING.substring(4), getValues(packaging));
@@ -609,6 +629,9 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (activity instanceof AddProductActivity) {
             if (!code.isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_BARCODE, code);
+            }
+            if (!appLanguageCode.isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_INTERFACE_LANGUAGE, appLanguageCode);
             }
             if (!languageCode.isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
@@ -761,10 +784,6 @@ public class AddProductOverviewFragment extends BaseFragment {
                 .items(finalLocalLabels)
                 .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
                     setProductLanguage(finalLocalValues.get(which));
-                    loadAutoSuggestions();
-                    if (activity instanceof AddProductActivity) {
-                        ((AddProductActivity) activity).loadAutoSuggestion();
-                    }
                     return true;
                 })
                 .positiveText(R.string.ok_button)
