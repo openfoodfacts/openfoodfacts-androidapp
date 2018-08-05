@@ -1,4 +1,4 @@
-v2 ! TODOS los voluntarios han trabajado fuerte, según sus sugerencias. Somos un movimiento más global que nunca. 500k productos liberados, 182 países, 10K+ contribuyentes, incluido usted :-)
+version 2! TODOS los voluntarios han trabajado fuerte, según sus sugerencias. Somos un movimiento más global que nunca. 500k productos liberados, 182 países, 10K+ contribuyentes, incluido usted :-)
 1. NutriScore para todos los productos en el mundo
 2. Historia exportable, solo para tus ojos
 3. Alerta de alérgenos
@@ -8,7 +8,7 @@ v2 ! TODOS los voluntarios han trabajado fuerte, según sus sugerencias. Somos u
 7. No requiere registro
 8. Tan ligero como antes :)
 
-v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
+version 2.8! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
 1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
 2. You can now get nutrition facts for the portion you're eating (Rutvik)
 3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
