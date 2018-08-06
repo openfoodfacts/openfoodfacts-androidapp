@@ -34,5 +34,5 @@
   <!-- OPFF tagline in different languages -->
   <string name="tagline">מסד הנתונים החופשי למוצרי מזון לחיות מחמד</string>
   <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Pet Food Facts. נוכל לבקש ממך להוסיף אותו?</string>
-  <string name="currently_on_version">Currently on Open Pet Food Facts</string>
+  <string name="currently_on_version">כרגע ב־Open Pet Food Facts</string>
 </resources>
