@@ -1,5 +1,25 @@
 # Status updates for the Open Food Facts project
 
+## Week starting July 30th
+
+### Completed this week
+
+* Instead of opening a custom tab, modified the edit button in the app to open product addition layout with all the non empty fields of the product already filled.
+* Added option to take new images for the product by long pressing the the preview image.
+* Fixed few bugs, enhancing the overall performance of the product addition layout.
+* Display auto-suggestions in the app's language.
+* Suffix the language code for `product_name` and `ingredients_text` fields. #1806
+
+
+### Working on this week
+
+* Fix bugs and make improvements in the native editing feature.
+* Incorporate changes suggested by the mentor.
+
+### To be worked on next week
+
+* Continue the development of native editing.
+
 ## Week starting July 23rd
 
 ### Highlights
