@@ -78,14 +78,13 @@ public class CalculateDetails extends BaseActivity {
         result = findViewById(R.id.result_text_view);
         Intent i = getIntent();
         p = (Product) i.getSerializableExtra("sampleObject");
-        pname = p.getProductName();
         spinnervalue = i.getStringExtra("spinnervalue");
         weight = i.getStringExtra("weight");
         value = Float.valueOf(weight);
         nutriments = p.getNutriments();
         nutrimentItems = new ArrayList<>();
         nutrimentsRecyclerView = findViewById(R.id.nutriments_recycler_view_calc);
-        result.setText(getString(R.string.display_fact, weight + " " + spinnervalue,pname));
+        result.setText(getString(R.string.display_fact, weight + " " + spinnervalue));
         nutrimentsRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
