@@ -142,6 +142,7 @@ dependencies {
     implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation "com.android.support:multidex:$rootProject.multidexVersion"
+    implementation 'com.google.android.gms:play-services-auth:15.0.1'
 
     //DI
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
