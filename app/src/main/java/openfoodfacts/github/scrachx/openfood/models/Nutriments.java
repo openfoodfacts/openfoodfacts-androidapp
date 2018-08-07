@@ -234,6 +234,13 @@ public class Nutriments implements Serializable {
         return null;
     }
 
+    public String getModifier(String nutrimentName) {
+        if (additionalProperties.get(nutrimentName + "_modifier") != null) {
+            return additionalProperties.get(nutrimentName + "_modifier").toString();
+        }
+        return null;
+    }
+
     public boolean contains(String nutrimentName){
         return additionalProperties.containsKey(nutrimentName);
     }

@@ -197,7 +197,7 @@ public class AddProductActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (offlineSavedProduct != null) {
-            saveProduct();
+            checkFields();
         } else {
             new MaterialDialog.Builder(this)
                     .content(R.string.save_product)
@@ -213,7 +213,7 @@ public class AddProductActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             if (offlineSavedProduct != null) {
-                saveProduct();
+                checkFields();
             } else {
                 new MaterialDialog.Builder(this)
                         .content(R.string.save_product)
