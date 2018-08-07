@@ -190,6 +190,9 @@ public class AddProductOverviewFragment extends BaseFragment {
             String currentLang = LocaleHelper.getLanguage(activity);
             setProductLanguage(currentLang);
             barcode.setText(R.string.txtBarcode);
+            language.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0);
+            sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
+            sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
             if (product != null) {
                 code = product.getCode();
             }
