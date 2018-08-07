@@ -645,7 +645,7 @@
   <string name="looksGood">Выглядит хорошо</string>
   <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
   <string name="traces">Следы</string>
-  <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
+  <string name="traces_hint">Укажите ингредиенты, упоминаемые как \"Может содержать следы...\", \"Сделано на фабрике, которая также использует...\" и т. д. \nПримеры: молоко, глютен, орехи</string>
   <string name="nutrition_facts_not_specified">Пищевая ценность не указана на продукте.</string>
   <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
   <string name="for_100g_100ml">В 100 г/100 мл</string>

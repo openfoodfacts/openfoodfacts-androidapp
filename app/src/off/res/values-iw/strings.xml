@@ -33,5 +33,5 @@
   <!-- OFF tagline in different languages -->
   <string name="tagline">מסד נתוני מוצרי המזון החופשי</string>
   <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Food Facts. נוכל לבקש ממך להוסיף אותו?</string>
-  <string name="currently_on_version">Currently on Open Food Facts</string>
+  <string name="currently_on_version">כרגע ב־Open Food Facts</string>
 </resources>

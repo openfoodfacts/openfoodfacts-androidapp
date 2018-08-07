@@ -279,7 +279,7 @@
   <string name="cancel_button">Annuler</string>
   <string name="login_button">Connexion</string>
   <string name="create_account_button">Créer un Compte</string>
-  <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilent sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
+  <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
   <string name="from_gallery">Galerie photo</string>
   <string name="product_sent">Produit envoyé avec succès</string>
   <string name="action_edit_product">Modifier le produit</string>

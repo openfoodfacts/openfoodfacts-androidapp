@@ -125,10 +125,10 @@
     <item>מוליבדן</item>
     <item>Monounsaturated fat</item>
     <item>Montanic acid (28:0)</item>
-    <item>Myristic acid (14:0)</item>
+    <item>חומצה מיריסטית (14:0)</item>
     <item>Nervonic acid (24:1 n-9)</item>
     <item>נוקלאוטידים</item>
-    <item>Oleic acid (18:1 n-9)</item>
+    <item>חומצה אולאית (18:1 n-9)</item>
     <item>חומצות שומן אומגה 3</item>
     <item>חומצות שומן אומגה 6</item>
     <item>חומצות שומן אומגה 9</item>
@@ -143,7 +143,7 @@
     <item>Serum proteins</item>
     <item>צורן דו חמצני</item>
     <item>עמילן</item>
-    <item>Stearic acid (18:0)</item>
+    <item>חומצה סטארית (18:0)</item>
     <item>סוכרוז</item>
     <item>טאורין</item>
     <item>שומן טרנס</item>
@@ -151,7 +151,7 @@
     <item>ויטמין B1 (תיאמין)</item>
     <item>ויטמין B12 (קובלאמין)</item>
     <item>ויטמין B2 (ריבופלבין)</item>
-    <item>Vitamin B3 / Vitamin PP (Niacin)</item>
+    <item>ויטמין B3 / ויטמין PP (ניאצין)</item>
     <item>ויטמין B6 (פירידוקסין)</item>
     <item>ויטמין B9 (חומצה פולית)</item>
     <item>ויטמין C (חומצה אסקורבית)</item>
@@ -608,13 +608,13 @@
   <string name="error_in_carbohydrate_value">תכולת הפחמימות לא יכול להיות פחותה מסכום הסוכר והעמילן</string>
   <string name="choose_nutrient">נא לבחור מרכיב תזונתי</string>
   <string name="error_adding_product_details">משהו השתבש במהלך הניסיון להוסיף פרטים למוצר</string>
-  <string name="hint_product_URL">Link of the official page of the product</string>
-  <string name="product_language">Product language : </string>
-  <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-  <string name="official_website">Official website</string>
-  <string name="scan_QR_code">Scan QR Code for product website</string>
-  <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
-  <string name="image_uploaded_successfully">Image uploaded successfully</string>
+  <string name="hint_product_URL">קישור לעמוד הרשמי של המוצר</string>
+  <string name="product_language">שפת המוצר: </string>
+  <string name="hint_emb_codes">דוגמאות: EMB 53062,‏ FR 62.448.034 CE,‏ 84 R 20,‏ 33 RECOLTANT 522,‏ FSSL 10013011001409</string>
+  <string name="official_website">אתר רשמי</string>
+  <string name="scan_QR_code">סריקת קוד QR לאתר המוצר</string>
+  <string name="add_at_least_one_picture">נא להוסיף לפחות תמונה אחת של המוצר בטרם המשך התהליך</string>
+  <string name="image_uploaded_successfully">התמונה הועלתה בהצלחה</string>
   <string name="error_adding_product_photos">משהו השתבש במהלך הניסיון להוסיף תמונות למוצר</string>
   <string name="ingredients_overwrite">שכתוב רכיבים</string>
   <string name="choose_mine">לבחור את שלי</string>
@@ -672,6 +672,6 @@
   <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
   <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
   <string name="uploading_ingredients_image">Uploading ingredients image</string>
-  <string name="uploading_front_image">Uploading front image</string>
+  <string name="uploading_front_image">התמונה הראשית נשלחת</string>
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
 </resources>
