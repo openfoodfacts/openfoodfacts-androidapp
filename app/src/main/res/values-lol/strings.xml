@@ -317,7 +317,7 @@
   <string name="no_brand">crwdns93485:0crwdne93485:0</string>
   <string name="no_title">crwdns93486:0crwdne93486:0</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">crwdns93488:0%1$scrwdnd93488:0%2$scrwdne93488:0</string>
+  <string name="display_fact">crwdns94281:0%1$scrwdne94281:0</string>
   <string name="check_facts">crwdns93489:0crwdne93489:0</string>
   <string name="nutrition">crwdns93490:0crwdne93490:0</string>
   <string name="calculated_nutrition">crwdns93491:0crwdne93491:0</string>
