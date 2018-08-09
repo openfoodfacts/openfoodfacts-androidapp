@@ -647,7 +647,7 @@
   <string name="traces">Следы</string>
   <string name="traces_hint">Укажите ингредиенты, упоминаемые как \"Может содержать следы...\", \"Сделано на фабрике, которая также использует...\" и т. д. \nПримеры: молоко, глютен, орехи</string>
   <string name="nutrition_facts_not_specified">Пищевая ценность не указана на продукте.</string>
-  <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+  <string name="nutrition_facts_picture">Фото пищевой ценности</string>
   <string name="for_100g_100ml">В 100 г/100 мл</string>
   <string name="per_serving">На порцию</string>
   <string name="serving_size">Размер порции</string>
@@ -655,13 +655,13 @@
   <string name="add_a_nutrient">Добавить питательное вещество</string>
   <string name="add_this_product">Добавить этот продукт</string>
   <string name="product_picture">Фото продукта</string>
-  <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
-  <string name="product_details">Product Details</string>
+  <string name="one_photo_compulsory">(одна фотография обязательна для добавления нового продукта)</string>
+  <string name="product_details">Информация о товаре</string>
   <string name="product_name">Название продукта</string>
   <string name="quantity">Количество</string>
-  <string name="labels">Labels</string>
+  <string name="labels">Маркировки</string>
   <string name="period_of_time_after_opening">Период времени после открытия</string>
-  <string name="manufacturing_details">Manufacturing Details</string>
+  <string name="manufacturing_details">Информация о производстве</string>
   <string name="origin_of_ingredients">Происхождение ингредиентов</string>
   <string name="manufacturing_place">Место производства</string>
   <string name="emb_code">Код EMB</string>
