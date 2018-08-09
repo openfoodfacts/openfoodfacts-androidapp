@@ -322,15 +322,15 @@
   <string name="txt_history_exported">História bola exportovaná</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>
-  <string name="no_brand">No Brand</string>
-  <string name="no_title">No Title</string>
+  <string name="no_brand">Žiadna značka</string>
+  <string name="no_title">Žiadny názov</string>
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="check_facts">Overiť</string>
   <string name="nutrition">Nutričné hodnoty</string>
-  <string name="calculated_nutrition">Calculated Nutrition</string>
-  <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
+  <string name="calculated_nutrition">Vypočítaná výživa</string>
+  <string name="please_enter_weight">Prosím zadajte hmotnosť</string>
+  <string name="enter_weight">Zadajte hmotnosť</string>
   <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
   <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Carbohydrate</string>
