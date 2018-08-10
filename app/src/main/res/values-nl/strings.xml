@@ -473,21 +473,21 @@
   <string name="device_on_mobile_data_warning_positive">Voorkeuren</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
   <string name="preference_choose_language_dialog_title">Kies taal</string>
-  <string name="FAQ">FAQ</string>
-  <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+  <string name="FAQ">Veelgestelde vragen (FAQ)</string>
+  <string name="FrequentlyAskedQuestions">Veelgestelde Vragen</string>
   <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="translate_help_summary">Breng de Open Food Fact database naar jouw taal - geen technische kennis vereist</string>
   <string name="please_check_your_connection">Controleer uw verbinding.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Advanced Search &amp; Charts</string>
-  <string name="connectivity_check">Please check your internet connection</string>
+  <string name="connectivity_check">Controleer je internetverbinding</string>
   <string name="dismiss">Afwijzen</string>
   <string name="Terms">Terms</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Algemeen</string>
   <string name="preference_header_network">Netwerk</string>
   <string name="preference_header_contributing">Bijdragen</string>
-  <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
+  <string name="not_support_books">Boeken worden momenteel niet ondersteund door Open Food Facts</string>
   <string name="seconds_ago">seconden geleden</string>
   <string name="minutes_ago">minuten geleden</string>
   <string name="hours_ago">uur geleden</string>
@@ -543,8 +543,8 @@
   <string name="sort">Sorteer</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
   <string name="sort_by">Sorteer op</string>
-  <string name="shake_summary">Shake phone to scan products</string>
-  <string name="shake_title">Shake to scan</string>
+  <string name="shake_summary">Schud telefoon om producten te scannen</string>
+  <string name="shake_title">Schud om te scannen</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
   <string name="no_barcode">We have not detected any barcode</string>
@@ -578,7 +578,7 @@
   <string name="txtDialogsTitle">Opmerking</string>
   <string name="preference_show_all_product_photos_title">Weergeef alle productfoto\'s</string>
   <string name="preference_show_all_product_photos_summary">Weergeef alle productfoto\'s in een apart tabblad</string>
-  <string name="offline_product_addition_title">Add a new product</string>
+  <string name="offline_product_addition_title">Voeg een nieuw product toe</string>
   <string name="productNameNull">Naam onbekend</string>
   <string name="productBrandNull">Merk onbekend</string>
   <string name="productQuantityNull">Hoeveelheid onbekend</string>
@@ -593,7 +593,7 @@
   <string name="initial_loading">Initial loading</string>
   <string name="preferences">Voorkeuren</string>
   <string name="OFFlogo">Open Food Facts logo</string>
-  <string name="loading_product">Loading product %s</string>
+  <string name="loading_product">Product %s wordt geladen</string>
   <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
   <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
   <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
