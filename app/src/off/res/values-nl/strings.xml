@@ -27,7 +27,7 @@
   <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="Donation">Klik hier om te doneren aan Open Food Facts</string>
   <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
-  <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+  <string name="translate_help_summary">Breng de Open Food Fact database naar jouw taal - geen technische kennis vereist</string>
   <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Informatie over je allergieën wordt nooit naar de Open Food Facts server verzonden. Wees er ook bewust van dat productgegevens mogelijk niet 100% accuraat zijn, dubbelcheck deze zelf! </string>
   <!-- OFF tagline in different languages -->
