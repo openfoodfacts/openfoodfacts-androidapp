@@ -465,11 +465,11 @@
   <string name="device_offline_dialog_positive">Instellingen</string>
   <string name="saving">Opslaan…</string>
   <string name="scan_first_product">Scan je eerste product</string>
-  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
-  <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
-  <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+  <string name="preference_enable_mobile_data_title">Upload via mobiele data</string>
+  <string name="preference_enable_mobile_data_summary_on">Upload nieuwe producten via mobiele data &amp; WiFi</string>
+  <string name="preference_enable_mobile_data_summary_off">Upload nieuwe producten alleen via WiFi</string>
   <string name="device_on_mobile_data_warning_title">Opmerking</string>
-  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_message">Upload via mobiele data is uitgeschakeld, verbind met WiFi of verander dit in de instellingen</string>
   <string name="device_on_mobile_data_warning_positive">Voorkeuren</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
   <string name="preference_choose_language_dialog_title">Kies taal</string>
@@ -477,7 +477,7 @@
   <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
   <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
   <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
-  <string name="please_check_your_connection">Please check your connection.</string>
+  <string name="please_check_your_connection">Controleer uw verbinding.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Advanced Search &amp; Charts</string>
   <string name="connectivity_check">Please check your internet connection</string>
@@ -504,7 +504,7 @@
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">Going further</string>
   <string name="description">Beschrijving: </string>
-  <string name="title">Title: </string>
+  <string name="title">Titel: </string>
   <string name="Wikipedia">Bekijk op Wikipedia</string>
   <string name="Browse_Products">Browse Products</string>
   <string name="swipe_down">Swipe down</string>
