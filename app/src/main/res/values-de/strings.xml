@@ -317,7 +317,7 @@
   <string name="no_brand">Ohne Handelsmarke</string>
   <string name="no_title">Ohne Titel</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Tabelle für Nährwertangaben von %1$s von %2$s</string>
+  <string name="display_fact">Nährwerttabelle für %1$s dieses Produktes</string>
   <string name="check_facts">Prüfen</string>
   <string name="nutrition">Nährwertangaben</string>
   <string name="calculated_nutrition">Berechnete Nährwerte</string>
