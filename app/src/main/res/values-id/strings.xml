@@ -662,4 +662,10 @@
   <string name="uploading_ingredients_image">Uploading ingredients image</string>
   <string name="uploading_front_image">Uploading front image</string>
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+  <string name="sign_in_to_edit">Please sign in to edit a product.</string>
+  <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
+  <string name="edit_product_title">Edit produk</string>
+  <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
+  <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
+  <string name="save_edits">Save edits</string>
 </resources>
