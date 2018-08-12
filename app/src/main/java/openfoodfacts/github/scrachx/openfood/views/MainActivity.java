@@ -468,7 +468,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         if (BuildConfig.FLAVOR.equals("opf")) {
             result.removeItem(ITEM_ALERT);
             result.removeItem(ITEM_ADVANCED_SEARCH);
-            result.removeItem(ITEM_CATEGORIES);
             result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
         }
 
