@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views.product;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,9 +27,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -62,10 +59,12 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.BottomNavigationBehavior;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
@@ -84,6 +83,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 
 public class ProductActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, OnRefreshListener {
 
+    private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
     @BindView(R.id.pager)
     ViewPager viewPager;
     @BindView(R.id.toolbar)
@@ -191,14 +191,25 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 //                    Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
 //                    break;
                 case R.id.edit_product:
-                    String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
-                    if (mState.getProduct().getUrl() != null) {
-                        url = " " + mState.getProduct().getUrl();
+                    final SharedPreferences settings = getSharedPreferences("login", 0);
+                    final String login = settings.getString("user", "");
+                    if (login.isEmpty()) {
+                        new MaterialDialog.Builder(ProductActivity.this)
+                                .title(R.string.sign_in_to_edit)
+                                .positiveText(R.string.txtSignIn)
+                                .negativeText(R.string.dialog_cancel)
+                                .onPositive((dialog, which) -> {
+                                    Intent intent = new Intent(ProductActivity.this, LoginActivity.class);
+                                    startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
+                                    dialog.dismiss();
+                                })
+                                .onNegative((dialog, which) -> dialog.dismiss())
+                                .build().show();
+                    } else {
+                        Intent intent = new Intent(ProductActivity.this, AddProductActivity.class);
+                        intent.putExtra("edit_product", mState.getProduct());
+                        startActivity(intent);
                     }
-
-                    CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), null);
-
-                    CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
                     break;
 
                 case R.id.history_bottom_nav:
@@ -224,6 +235,16 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
     public void expand() {
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         mButtonScan.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            Intent intent = new Intent(ProductActivity.this, AddProductActivity.class);
+            intent.putExtra("edit_product", mState.getProduct());
+            startActivity(intent);
+        }
     }
 
     @OnClick(R.id.buttonScan)
@@ -380,12 +401,12 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
                 }
                 return true;
 
-                default:
+            default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-            @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_product, menu);
 
@@ -399,7 +420,6 @@ doesn't have calories information in nutrition facts.
 
         return true;
     }
-
 
 
     // Call to update the share intent

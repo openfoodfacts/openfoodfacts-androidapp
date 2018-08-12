@@ -227,8 +227,18 @@ public class Nutriments implements Serializable {
         return additionalProperties.get(nutrimentName + "_100g").toString();
     }
 
-    public Double getValue(String nutrimentName){
-        return ((Double) additionalProperties.get(nutrimentName + "_value"));
+    public String getValue(String nutrimentName) {
+        if (additionalProperties.get(nutrimentName + "_value") != null) {
+            return additionalProperties.get(nutrimentName + "_value").toString();
+        }
+        return null;
+    }
+
+    public String getModifier(String nutrimentName) {
+        if (additionalProperties.get(nutrimentName + "_modifier") != null) {
+            return additionalProperties.get(nutrimentName + "_modifier").toString();
+        }
+        return null;
     }
 
     public boolean contains(String nutrimentName){

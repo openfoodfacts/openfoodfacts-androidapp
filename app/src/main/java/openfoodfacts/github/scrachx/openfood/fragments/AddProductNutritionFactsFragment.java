@@ -15,6 +15,7 @@ import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.text.method.NumberKeyListener;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,6 +36,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -47,8 +50,10 @@ import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
+import butterknife.OnLongClick;
 import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
@@ -163,9 +168,23 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private static final String PARAM_DIETARY_FIBER_UNIT = "nutriment_fiber_unit";
     private static final String PARAM_PROTEINS = "nutriment_proteins";
     private static final String PARAM_PROTEINS_UNIT = "nutriment_proteins_unit";
+    private static final String PARAM_SALT = "nutriment_salt";
+    private static final String PARAM_SALT_UNIT = "nutriment_salt_unit";
     private static final String PARAM_SODIUM = "nutriment_sodium";
     private static final String PARAM_SODIUM_UNIT = "nutriment_sodium_unit";
     private static final String PARAM_ALCOHOL = "nutriment_alcohol";
+
+    NumberKeyListener keyListener = new NumberKeyListener() {
+
+        public int getInputType() {
+            return InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD;
+        }
+
+        @Override
+        protected char[] getAcceptedChars() {
+            return new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '~', '<', '>'};
+        }
+    };
 
     @BindView(R.id.checkbox_no_nutrition_data)
     CheckBox noNutritionData;
@@ -223,6 +242,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     EditText alcohol;
     @BindView(R.id.table_layout)
     TableLayout tableLayout;
+    @BindView(R.id.btn_add)
+    Button buttonAdd;
 
     //index list stores the index of other nutrients which are used.
     private List<Integer> index = new ArrayList<>();
@@ -233,6 +254,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private int starchUnit;
     private OfflineSavedProduct mOfflineSavedProduct;
     private String imagePath;
+    private boolean edit_product;
+    private Product product;
+    private boolean newImageSelected;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -252,18 +276,174 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle b = getArguments();
         if (b != null) {
-            Product product = (Product) b.getSerializable("product");
+            product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
+            edit_product = b.getBoolean("edit_product");
             if (product != null) {
                 code = product.getCode();
             }
-            if (mOfflineSavedProduct != null) {
+            if (edit_product && product != null) {
+                code = product.getCode();
+                buttonAdd.setText(R.string.save_edits);
+                preFillProductValues();
+            } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
                 preFillValues();
             }
         } else {
             Toast.makeText(activity, R.string.error_adding_nutrition_facts, Toast.LENGTH_SHORT).show();
             activity.finish();
+        }
+    }
+
+    /**
+     * Pre fill the fields of the product which are already present on the server.
+     */
+    private void preFillProductValues() {
+        if (product.getImageNutritionUrl() != null && !product.getImageNutritionUrl().isEmpty()) {
+            imageProgress.setVisibility(View.VISIBLE);
+            imagePath = product.getImageNutritionUrl();
+            Picasso.with(getContext())
+                    .load(product.getImageNutritionUrl())
+                    .resize(dpsToPixels(50), dpsToPixels(50))
+                    .centerInside()
+                    .into(imageNutritionFacts, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+                    });
+        }
+        if (product.getNoNutritionData() != null && product.getNoNutritionData().equalsIgnoreCase("on")) {
+            noNutritionData.setChecked(true);
+            nutritionFactsLayout.setVisibility(View.GONE);
+        }
+        if (product.getNutritionDataPer() != null && !product.getNutritionDataPer().isEmpty()) {
+            String s = product.getNutritionDataPer();
+            if (s.equals("100g")) {
+                radioGroup.clearCheck();
+                radioGroup.check(R.id.for100g_100ml);
+            } else {
+                radioGroup.clearCheck();
+                radioGroup.check(R.id.per_serving);
+            }
+        }
+        if (product.getServingSize() != null && !product.getServingSize().isEmpty()) {
+            String servingSize = product.getServingSize();
+            // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
+            String part[] = servingSize.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+            serving_size.setText(part[0]);
+            if (part.length > 1) {
+                // serving size has the unit part
+                for (int i = 0; i < UNIT.length; i++) {
+                    // find index where the UNIT array has the identified unit
+                    if (UNIT[i].equalsIgnoreCase(part[1].trim())) {
+                        servingSizeUnit.setSelection(i);
+                        break;
+                    }
+                }
+            }
+        }
+        Nutriments nutriments = product.getNutriments();
+        if (nutriments != null) {
+            if (nutriments.getValue(Nutriments.ENERGY) != null) {
+                energy.setText(nutriments.getModifier(Nutriments.ENERGY));
+                energy.append(nutriments.getValue(Nutriments.ENERGY));
+            }
+            if (nutriments.getUnit(Nutriments.ENERGY) != null) {
+                if (nutriments.getUnit(Nutriments.ENERGY).equalsIgnoreCase("kcal")) {
+                    energyUnit.setSelection(0);
+                } else {
+                    energyUnit.setSelection(1);
+                }
+            }
+            if (nutriments.getValue(Nutriments.FAT) != null) {
+                fat.setText(nutriments.getModifier(Nutriments.FAT));
+                fat.append(nutriments.getValue(Nutriments.FAT));
+            }
+            if (nutriments.getUnit(Nutriments.FAT) != null) {
+                fatUnit.setSelection(getPosition(nutriments.getUnit(Nutriments.FAT)));
+            }
+            if (nutriments.getValue(Nutriments.SATURATED_FAT) != null) {
+                saturatedFat.setText(nutriments.getModifier(Nutriments.SATURATED_FAT));
+                saturatedFat.append(nutriments.getValue(Nutriments.SATURATED_FAT));
+            }
+            if (nutriments.getUnit(Nutriments.SATURATED_FAT) != null) {
+                saturatedFatUnit.setSelection(getPosition(nutriments.getUnit(Nutriments.SATURATED_FAT)));
+            }
+            if (nutriments.getValue(Nutriments.CARBOHYDRATES) != null) {
+                carbohydrate.setText(nutriments.getModifier(Nutriments.CARBOHYDRATES));
+                carbohydrate.append(nutriments.getValue(Nutriments.CARBOHYDRATES));
+            }
+            if (nutriments.getUnit(Nutriments.CARBOHYDRATES) != null) {
+                carbohydrateUnit.setSelection(getPosition(nutriments.getUnit(Nutriments.CARBOHYDRATES)));
+            }
+            if (nutriments.getValue(Nutriments.SUGARS) != null) {
+                sugar.setText(nutriments.getModifier(Nutriments.SUGARS));
+                sugar.append(nutriments.getValue(Nutriments.SUGARS));
+            }
+            if (nutriments.getUnit(Nutriments.SUGARS) != null) {
+                sugarUnit.setSelection(getPosition(nutriments.getUnit(Nutriments.SUGARS)));
+            }
+            if (nutriments.getValue(Nutriments.FIBER) != null) {
+                dietaryFiber.setText(nutriments.getModifier(Nutriments.FIBER));
+                dietaryFiber.append(nutriments.getValue(Nutriments.FIBER));
+            }
+            if (nutriments.getUnit(Nutriments.FIBER) != null) {
+                dietaryFiberUnit.setSelection(getPosition(nutriments.getUnit(Nutriments.FIBER)));
+            }
+            if (nutriments.getValue(Nutriments.PROTEINS) != null) {
+                proteins.setText(nutriments.getModifier(Nutriments.PROTEINS));
+                proteins.append(nutriments.getValue(Nutriments.PROTEINS));
+            }
+            if (nutriments.getUnit(Nutriments.PROTEINS) != null) {
+                proteinsUnit.setSelection(getPosition(nutriments.getUnit(Nutriments.PROTEINS)));
+            }
+            if (nutriments.getValue(Nutriments.SALT) != null) {
+                salt.clearFocus();
+                salt.setText(nutriments.getModifier(Nutriments.SALT));
+                salt.append(nutriments.getValue(Nutriments.SALT));
+            }
+            if (nutriments.getUnit(Nutriments.SALT) != null) {
+                saltUnit.setSelection(getPosition(nutriments.getUnit(Nutriments.SALT)));
+            }
+            if (nutriments.getValue(Nutriments.SODIUM) != null) {
+                sodium.clearFocus();
+                sodium.setText(nutriments.getModifier(Nutriments.SODIUM));
+                sodium.append(nutriments.getValue(Nutriments.SODIUM));
+            }
+            if (nutriments.getUnit(Nutriments.SODIUM) != null) {
+                sodiumUnit.setSelection(getPosition(nutriments.getUnit(Nutriments.SODIUM)));
+            }
+            if (nutriments.getValue(Nutriments.ALCOHOL) != null) {
+                alcohol.setText(nutriments.getModifier(Nutriments.ALCOHOL));
+                alcohol.append(nutriments.getValue(Nutriments.ALCOHOL));
+            }
+            //set the values of all the other nutrients if defined and create new row in the tableLayout.
+            for (int i = 0; i < PARAMS_OTHER_NUTRIENTS.length; i++) {
+                String PARAMS_OTHER_NUTRIENT = PARAMS_OTHER_NUTRIENTS[i].substring(10);
+                if (nutriments.getValue(PARAMS_OTHER_NUTRIENT) != null) {
+                    int position = 0;
+                    String value;
+                    if (nutriments.getModifier(PARAMS_OTHER_NUTRIENT) != null) {
+                        value = nutriments.getModifier(PARAMS_OTHER_NUTRIENT) + nutriments.getValue(PARAMS_OTHER_NUTRIENT);
+                    } else {
+                        value = nutriments.getValue(PARAMS_OTHER_NUTRIENT);
+                    }
+
+                    if (nutriments.getUnit(PARAMS_OTHER_NUTRIENT) != null) {
+                        position = getPosition(nutriments.getUnit(PARAMS_OTHER_NUTRIENT));
+                    }
+                    index.add(i);
+                    String nutrients[] = getResources().getStringArray(R.array.nutrients_array);
+                    addNutrientRow(i, nutrients[i], true, value, position);
+                }
+            }
         }
     }
 
@@ -275,9 +455,22 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         if (productDetails != null) {
             if (productDetails.get("image_nutrition_facts") != null) {
                 imagePath = productDetails.get("image_nutrition_facts");
+                imageProgress.setVisibility(View.VISIBLE);
                 Picasso.with(getContext())
                         .load("file://" + imagePath)
-                        .into(imageNutritionFacts);
+                        .resize(dpsToPixels(50), dpsToPixels(50))
+                        .centerInside()
+                        .into(imageNutritionFacts, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                imageProgress.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onError() {
+                                imageProgress.setVisibility(View.GONE);
+                            }
+                        });
             }
             if (productDetails.get(PARAM_NO_NUTRITION_DATA) != null) {
                 noNutritionData.setChecked(true);
@@ -354,7 +547,15 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             if (productDetails.get(PARAM_PROTEINS_UNIT) != null) {
                 proteinsUnit.setSelection(getPosition(productDetails.get(PARAM_PROTEINS_UNIT)));
             }
+            if (productDetails.get(PARAM_SALT) != null) {
+                salt.clearFocus();
+                salt.setText(productDetails.get(PARAM_SALT));
+            }
+            if (productDetails.get(PARAM_SALT_UNIT) != null) {
+                saltUnit.setSelection(getPosition(productDetails.get(PARAM_SALT_UNIT)));
+            }
             if (productDetails.get(PARAM_SODIUM) != null) {
+                sodium.clearFocus();
                 sodium.setText(productDetails.get(PARAM_SODIUM));
             }
             if (productDetails.get(PARAM_SODIUM_UNIT) != null) {
@@ -372,6 +573,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                     if (productDetails.get(PARAMS_OTHER_NUTRIENT + "_unit") != null) {
                         position = getPosition(productDetails.get(PARAMS_OTHER_NUTRIENT + "_unit"));
                     }
+                    index.add(i);
                     String nutrients[] = getResources().getStringArray(R.array.nutrients_array);
                     addNutrientRow(i, nutrients[i], true, value, position);
                 }
@@ -422,7 +624,11 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             // nutrition facts image is already added. Open full screen image.
             Intent intent = new Intent(getActivity(), FullScreenImage.class);
             Bundle bundle = new Bundle();
-            bundle.putString("imageurl", "file://" + imagePath);
+            if (edit_product && !newImageSelected) {
+                bundle.putString("imageurl", imagePath);
+            } else {
+                bundle.putString("imageurl", "file://" + imagePath);
+            }
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
@@ -442,6 +648,16 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         }
     }
 
+    @OnLongClick(R.id.btnAddImageNutritionFacts)
+    boolean newNutritionFactsImage() {
+        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
+        }
+        return true;
+    }
+
     @OnClick(R.id.btn_add)
     void next() {
         Activity activity = getActivity();
@@ -451,20 +667,75 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     }
 
     @OnTextChanged(value = R.id.salt, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
-    void afterTextChanged() {
-        double sodiumValue = 0;
-        try {
-            sodiumValue = Double.valueOf(salt.getText().toString()) * 0.39370078740157477;
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
+    void autoCalculateSodiumValue() {
+        if (activity.getCurrentFocus() == salt) {
+            double sodiumValue = 0;
+            double saltValue = 0;
+            String saltModifier = null;
+            try {
+                if (salt.getText().toString().length() != 0 && (salt.getText().toString().substring(0, 1).equals(">") ||
+                        salt.getText().toString().substring(0, 1).equals("<") ||
+                        salt.getText().toString().substring(0, 1).equals("~"))) {
+                    saltModifier = salt.getText().toString().substring(0, 1);
+                    if (!salt.getText().toString().substring(1).isEmpty() && !salt.getText().toString().substring(1).equals(".")) {
+                        saltValue = Double.valueOf(salt.getText().toString().substring(1));
+                    }
+                } else if (salt.getText().toString().length() == 1 && !salt.getText().toString().trim().equals(".")) {
+                    saltValue = Double.valueOf(salt.getText().toString());
+                } else if (salt.getText().toString().length() > 1) {
+                    saltValue = Double.valueOf(salt.getText().toString());
+                }
+                sodiumValue = saltValue * 0.39370078740157477;
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                salt.setText(null);
+            }
+            sodium.clearFocus();
+            sodium.setText(saltModifier);
+            sodium.append(String.valueOf(sodiumValue));
+            sodiumUnit.setSelection(saltUnit.getSelectedItemPosition());
         }
-        sodium.setText(String.valueOf(sodiumValue));
-        sodiumUnit.setSelection(saltUnit.getSelectedItemPosition());
+    }
+
+    @OnTextChanged(value = R.id.sodium, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void autoCalculateSaltValue() {
+        if (activity.getCurrentFocus() == sodium) {
+            double saltValue = 0;
+            double sodiumValue = 0;
+            String sodiumModifier = null;
+            try {
+                if (sodium.getText().toString().length() != 0 && (sodium.getText().toString().substring(0, 1).equals(">") ||
+                        sodium.getText().toString().substring(0, 1).equals("<") ||
+                        sodium.getText().toString().substring(0, 1).equals("~"))) {
+                    sodiumModifier = sodium.getText().toString().substring(0, 1);
+                    if (!sodium.getText().toString().substring(1).isEmpty() && !sodium.getText().toString().substring(1).equals(".")) {
+                        sodiumValue = Double.valueOf(sodium.getText().toString().substring(1));
+                    }
+                } else if (sodium.getText().toString().length() == 1 && !sodium.getText().toString().trim().equals(".")) {
+                    sodiumValue = Double.valueOf(sodium.getText().toString());
+                } else if (sodium.getText().toString().length() > 1) {
+                    sodiumValue = Double.valueOf(sodium.getText().toString());
+                }
+                saltValue = sodiumValue * 2.54;
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                sodium.setText(null);
+            }
+            salt.clearFocus();
+            salt.setText(sodiumModifier);
+            salt.append(String.valueOf(saltValue));
+            saltUnit.setSelection(sodiumUnit.getSelectedItemPosition());
+        }
     }
 
     @OnItemSelected(value = R.id.spinner_salt_unit, callback = OnItemSelected.Callback.ITEM_SELECTED)
-    void onItemSelected() {
+    void autoSelectSodiumSpinner() {
         sodiumUnit.setSelection(saltUnit.getSelectedItemPosition());
+    }
+
+    @OnItemSelected(value = R.id.spinner_sodium_unit, callback = OnItemSelected.Callback.ITEM_SELECTED)
+    void autoSelectSaltSpinner() {
+        saltUnit.setSelection(sodiumUnit.getSelectedItemPosition());
     }
 
     @OnCheckedChanged(R.id.checkbox_no_nutrition_data)
@@ -490,18 +761,41 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         }
     }
 
-    public boolean isCheckPassed() {
+    public boolean nutritionCheckFailed() {
         // check that value of (sugar + starch) is not greater than value of carbohydrates
         if (!carbohydrate.getText().toString().isEmpty()) {
-            Double carbsValue, sugarValue = 0.0;
+            Double carbsValue = 0.0, sugarValue = 0.0;
             int carbsUnit, sugar_Unit;
             try {
-                carbsValue = Double.valueOf(carbohydrate.getText().toString());
-                if (!sugar.getText().toString().isEmpty())
-                    sugarValue = Double.valueOf(sugar.getText().toString());
+                if (carbohydrate.getText().toString().length() != 0 && (carbohydrate.getText().toString().substring(0, 1).equals(">") ||
+                        carbohydrate.getText().toString().substring(0, 1).equals("<") ||
+                        carbohydrate.getText().toString().substring(0, 1).equals("~"))) {
+                    if (!carbohydrate.getText().toString().substring(1).isEmpty() && !carbohydrate.getText().toString().substring(1).equals(".")) {
+                        carbsValue = Double.valueOf(carbohydrate.getText().toString().substring(1));
+                    }
+                } else if (carbohydrate.getText().toString().length() == 1 && !carbohydrate.getText().toString().trim().equals(".")) {
+                    carbsValue = Double.valueOf(carbohydrate.getText().toString());
+                } else if (carbohydrate.getText().toString().length() > 1) {
+                    carbsValue = Double.valueOf(carbohydrate.getText().toString());
+                }
+                if (!sugar.getText().toString().isEmpty()) {
+                    if (sugar.getText().toString().length() != 0 && (sugar.getText().toString().substring(0, 1).equals(">") ||
+                            sugar.getText().toString().substring(0, 1).equals("<") ||
+                            sugar.getText().toString().substring(0, 1).equals("~"))) {
+                        if (!sugar.getText().toString().substring(1).isEmpty() && !sugar.getText().toString().substring(1).equals(".")) {
+                            sugarValue = Double.valueOf(sugar.getText().toString().substring(1));
+                        }
+                    } else if (sugar.getText().toString().length() == 1 && !sugar.getText().toString().trim().equals(".")) {
+                        sugarValue = Double.valueOf(sugar.getText().toString());
+                    } else if (sugar.getText().toString().length() > 1) {
+                        sugarValue = Double.valueOf(sugar.getText().toString());
+                    }
+                }
             } catch (NumberFormatException e) {
                 e.printStackTrace();
-                return false;
+                carbohydrate.requestFocus();
+                carbohydrate.setError(getString(R.string.error_in_carbohydrate_value));
+                return true;
             }
             carbsUnit = carbohydrateUnit.getSelectedItemPosition();
             sugar_Unit = sugarUnit.getSelectedItemPosition();
@@ -532,13 +826,112 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             if ((sugarValue + starchValue) > carbsValue) {
                 carbohydrate.requestFocus();
                 carbohydrate.setError(getString(R.string.error_in_carbohydrate_value));
-                return false;
-            } else
                 return true;
+            } else
+                return false;
         }
-        return true;
+        return false;
     }
 
+    /**
+     * adds all the fields to the query map even those which are null or empty.
+     */
+    public void getAllDetails() {
+        if (activity instanceof AddProductActivity) {
+            if (noNutritionData.isChecked()) {
+                ((AddProductActivity) activity).addToMap(PARAM_NO_NUTRITION_DATA, "on");
+            } else {
+                if (radioGroup.getCheckedRadioButtonId() == R.id.for100g_100ml) {
+                    ((AddProductActivity) activity).addToMap(PARAM_NUTRITION_DATA_PER, "100g");
+                } else if (radioGroup.getCheckedRadioButtonId() == R.id.per_serving) {
+                    ((AddProductActivity) activity).addToMap(PARAM_NUTRITION_DATA_PER, "serving");
+                }
+                if (serving_size.getText().toString().isEmpty()) {
+                    ((AddProductActivity) activity).addToMap(PARAM_SERVING_SIZE, "");
+                } else {
+                    String servingSize = serving_size.getText().toString() + UNIT[servingSizeUnit.getSelectedItemPosition()];
+                    ((AddProductActivity) activity).addToMap(PARAM_SERVING_SIZE, servingSize);
+                }
+
+                String s = energy.getText().toString();
+                String unit = "kj";
+                if (energyUnit.getSelectedItemPosition() == 0)
+                    unit = "kcal";
+                else if (energyUnit.getSelectedItemPosition() == 1)
+                    unit = "kj";
+                ((AddProductActivity) activity).addToMap(PARAM_ENERGY, s);
+                ((AddProductActivity) activity).addToMap(PARAM_ENERGY_UNIT, unit);
+
+                s = fat.getText().toString();
+                unit = UNIT[fatUnit.getSelectedItemPosition()];
+                ((AddProductActivity) activity).addToMap(PARAM_FAT, s);
+                ((AddProductActivity) activity).addToMap(PARAM_FAT_UNIT, unit);
+
+                s = saturatedFat.getText().toString();
+                unit = UNIT[saturatedFatUnit.getSelectedItemPosition()];
+                ((AddProductActivity) activity).addToMap(PARAM_SATURATED_FAT, s);
+                ((AddProductActivity) activity).addToMap(PARAM_SATURATED_FAT_UNIT, unit);
+
+                s = carbohydrate.getText().toString();
+                unit = UNIT[carbohydrateUnit.getSelectedItemPosition()];
+                ((AddProductActivity) activity).addToMap(PARAM_CARBOHYDRATE, s);
+                ((AddProductActivity) activity).addToMap(PARAM_CARBOHYDRATE_UNIT, unit);
+
+                s = sugar.getText().toString();
+                unit = UNIT[sugarUnit.getSelectedItemPosition()];
+                ((AddProductActivity) activity).addToMap(PARAM_SUGAR, s);
+                ((AddProductActivity) activity).addToMap(PARAM_SUGAR_UNIT, unit);
+
+                s = dietaryFiber.getText().toString();
+                unit = UNIT[dietaryFiberUnit.getSelectedItemPosition()];
+                ((AddProductActivity) activity).addToMap(PARAM_DIETARY_FIBER, s);
+                ((AddProductActivity) activity).addToMap(PARAM_DIETARY_FIBER_UNIT, unit);
+
+                s = proteins.getText().toString();
+                unit = UNIT[proteinsUnit.getSelectedItemPosition()];
+                ((AddProductActivity) activity).addToMap(PARAM_PROTEINS, s);
+                ((AddProductActivity) activity).addToMap(PARAM_PROTEINS_UNIT, unit);
+
+                s = salt.getText().toString();
+                unit = UNIT[saltUnit.getSelectedItemPosition()];
+                ((AddProductActivity) activity).addToMap(PARAM_SALT, s);
+                ((AddProductActivity) activity).addToMap(PARAM_SALT_UNIT, unit);
+
+                s = sodium.getText().toString();
+                unit = UNIT[sodiumUnit.getSelectedItemPosition()];
+                ((AddProductActivity) activity).addToMap(PARAM_SODIUM, s);
+                ((AddProductActivity) activity).addToMap(PARAM_SODIUM_UNIT, unit);
+
+                s = alcohol.getText().toString();
+                ((AddProductActivity) activity).addToMap(PARAM_ALCOHOL, s);
+
+                //get the values of all the other nutrients from the table
+                for (int i = 0; i < tableLayout.getChildCount(); i++) {
+                    View view = tableLayout.getChildAt(i);
+                    if (view instanceof TableRow) {
+                        TableRow tableRow = (TableRow) view;
+                        int id = 0;
+                        for (int j = 0; j < tableRow.getChildCount(); j++) {
+                            View v = tableRow.getChildAt(j);
+                            if (v instanceof EditText) {
+                                EditText editText = (EditText) v;
+                                id = editText.getId();
+                                ((AddProductActivity) activity).addToMap(PARAMS_OTHER_NUTRIENTS[id], editText.getText().toString());
+                            }
+                            if (v instanceof Spinner) {
+                                Spinner spinner = (Spinner) v;
+                                ((AddProductActivity) activity).addToMap(PARAMS_OTHER_NUTRIENTS[id] + "_unit", ALL_UNIT[spinner.getSelectedItemPosition()]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * adds only those fields to the query map which are not empty.
+     */
     public void getDetails() {
         if (activity instanceof AddProductActivity) {
             if (noNutritionData.isChecked()) {
@@ -599,6 +992,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                     ((AddProductActivity) activity).addToMap(PARAM_PROTEINS, s);
                     ((AddProductActivity) activity).addToMap(PARAM_PROTEINS_UNIT, unit);
                 }
+                if (!salt.getText().toString().isEmpty()) {
+                    String s = salt.getText().toString();
+                    String unit = UNIT[saltUnit.getSelectedItemPosition()];
+                    ((AddProductActivity) activity).addToMap(PARAM_SALT, s);
+                    ((AddProductActivity) activity).addToMap(PARAM_SALT_UNIT, unit);
+                }
                 if (!sodium.getText().toString().isEmpty()) {
                     String s = sodium.getText().toString();
                     String unit = UNIT[sodiumUnit.getSelectedItemPosition()];
@@ -645,6 +1044,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                     if (!index.contains(position)) {
                         index.add(position);
                         addNutrientRow(position, text, false, null, 0);
+                    } else {
+                        String nutrients[] = getResources().getStringArray(R.array.nutrients_array);
+                        Toast.makeText(activity, getString(R.string.nutrient_already_added, nutrients[position]), Toast.LENGTH_SHORT).show();
                     }
                 })
                 .show();
@@ -667,7 +1069,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         editText.setBackgroundResource(R.drawable.bg_edittext);
         editText.setHint(text);
         editText.setId(position);
-        editText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        editText.setKeyListener(keyListener);
+        editText.setSingleLine();
         editText.setPadding(dpsToPixels(10), 0, dpsToPixels(10), 0);
         editText.setGravity(Gravity.CENTER_VERTICAL);
         editText.requestFocus();
@@ -707,13 +1110,25 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                 @Override
                 public void afterTextChanged(Editable s) {
                     try {
-                        double pHValue = Double.valueOf(editText.getText().toString());
-                        if (pHValue > 14) {
+                        double pHValue = 0;
+                        if (editText.getText().toString().length() != 0 && (editText.getText().toString().substring(0, 1).equals(">") ||
+                                editText.getText().toString().substring(0, 1).equals("<") ||
+                                editText.getText().toString().substring(0, 1).equals("~"))) {
+                            if (!editText.getText().toString().substring(1).isEmpty() && !editText.getText().toString().substring(1).equals(".")) {
+                                pHValue = Double.valueOf(editText.getText().toString().substring(1));
+                            }
+                        } else if (editText.getText().toString().length() == 1 && !editText.getText().toString().trim().equals(".")) {
+                            pHValue = Double.valueOf(editText.getText().toString());
+                        } else if (editText.getText().toString().length() > 1) {
+                            pHValue = Double.valueOf(editText.getText().toString());
+                        }
+                        if (pHValue > 14 || (pHValue >= 14 && editText.getText().toString().substring(0, 1).equals(">"))) {
                             pHValue = 14;
                             editText.setText(String.valueOf(pHValue));
                         }
                     } catch (NumberFormatException e) {
                         e.printStackTrace();
+                        editText.setText(null);
                     }
                 }
             });
@@ -722,8 +1137,27 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                     (activity, android.R.layout.simple_spinner_item, activity.getResources().getStringArray(R.array.weights_array));
             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(arrayAdapter);
+            if (preFillValues) {
+                spinner.setSelection(unit_position);
+            }
 
             // save value of starch for checking later.
+            try {
+                if (editText.getText().toString().length() != 0 && (editText.getText().toString().substring(0, 1).equals(">") ||
+                        editText.getText().toString().substring(0, 1).equals("<") ||
+                        editText.getText().toString().substring(0, 1).equals("~"))) {
+                    if (!editText.getText().toString().substring(1).isEmpty() && !editText.getText().toString().substring(1).equals(".")) {
+                        starchValue = Double.valueOf(editText.getText().toString().substring(1));
+                    }
+                } else if (editText.getText().toString().length() == 1 && !editText.getText().toString().trim().equals(".")) {
+                    starchValue = Double.valueOf(editText.getText().toString());
+                } else if (editText.getText().toString().length() > 1) {
+                    starchValue = Double.valueOf(editText.getText().toString());
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                editText.setText(null);
+            }
             editText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -738,9 +1172,20 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                 @Override
                 public void afterTextChanged(Editable s) {
                     try {
-                        starchValue = Double.valueOf(editText.getText().toString());
+                        if (editText.getText().toString().length() != 0 && (editText.getText().toString().substring(0, 1).equals(">") ||
+                                editText.getText().toString().substring(0, 1).equals("<") ||
+                                editText.getText().toString().substring(0, 1).equals("~"))) {
+                            if (!editText.getText().toString().substring(1).isEmpty() && !editText.getText().toString().substring(1).equals(".")) {
+                                starchValue = Double.valueOf(editText.getText().toString().substring(1));
+                            }
+                        } else if (editText.getText().toString().length() == 1 && !editText.getText().toString().trim().equals(".")) {
+                            starchValue = Double.valueOf(editText.getText().toString());
+                        } else if (editText.getText().toString().length() > 1) {
+                            starchValue = Double.valueOf(editText.getText().toString());
+                        }
                     } catch (NumberFormatException e) {
                         e.printStackTrace();
+                        editText.setText(null);
                     }
                 }
             });
@@ -772,6 +1217,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
                 imagePath = resultUri.getPath();
+                newImageSelected = true;
                 photoFile = new File((resultUri.getPath()));
                 ProductImage image = new ProductImage(code, NUTRITION, photoFile);
                 image.setFilePath(resultUri.getPath());
@@ -812,6 +1258,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         if (!errorInUploading) {
             Picasso.with(activity)
                     .load(photoFile)
+                    .resize(dpsToPixels(50), dpsToPixels(50))
+                    .centerInside()
                     .into(imageNutritionFacts);
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         } else {

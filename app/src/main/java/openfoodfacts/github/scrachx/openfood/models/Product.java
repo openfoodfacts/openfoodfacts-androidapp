@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,7 +13,9 @@ import org.apache.commons.text.StringEscapeUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class ProductStringConverter extends StdConverter<String, String> {
     public String convert(String value) {
@@ -115,7 +119,40 @@ public class Product implements Serializable {
     private List<String> editorsTags = new ArrayList<>();
     @JsonProperty("nova_groups")
     private String novaGroups;
+    @JsonProperty("lang")
+    private String lang;
+    @JsonProperty("purchase_places")
+    private String purchasePlaces;
+    @JsonProperty("nutrition_data_per")
+    private String nutritionDataPer;
+    @JsonProperty("no_nutrition_data")
+    private String noNutritionData;
 
+    private Map<String, Object> additionalProperties = new HashMap<>();
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    public String getProductName(String languageCode) {
+        if (additionalProperties.get("product_name_" + languageCode) != null) {
+            return additionalProperties.get("product_name_" + languageCode).toString();
+        }
+        return null;
+    }
+
+    public String getIngredientsText(String languageCode) {
+        if (additionalProperties.get("ingredients_text_" + languageCode) != null) {
+            return additionalProperties.get("ingredients_text_" + languageCode).toString();
+        }
+        return null;
+    }
 
     /**
      * @return The statesTags
@@ -226,6 +263,10 @@ public class Product implements Serializable {
         return code;
     }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     /**
      * @return The tracesTags
      */
@@ -247,14 +288,12 @@ public class Product implements Serializable {
         return additivesTags;
     }
 
-
     /**
      * @return The allergensHierarchy
      */
     public List<String> getAllergensHierarchy() {
         return allergensHierarchy;
     }
-
 
     /**
      * @return The manufacturingPlaces
@@ -263,14 +302,12 @@ public class Product implements Serializable {
         return manufacturingPlaces;
     }
 
-
     /**
      * @return The nutriments
      */
     public Nutriments getNutriments() {
         return nutriments;
     }
-
 
     /**
      * @return The ingredientsFromPalmOilTags
@@ -279,7 +316,6 @@ public class Product implements Serializable {
         return ingredientsFromPalmOilTags;
     }
 
-
     /**
      * @return The brandsTags
      */
@@ -287,14 +323,12 @@ public class Product implements Serializable {
         return brandsTags;
     }
 
-
     /**
      * @return The traces
      */
     public String getTraces() {
         return traces;
     }
-
 
     /**
      * @return The categoriesTags
@@ -310,14 +344,12 @@ public class Product implements Serializable {
         return ingredientsText;
     }
 
-
     /**
      * @return The productName
      */
     public String getProductName() {
         return productName;
     }
-
 
     /**
      * @return The genericName
@@ -333,7 +365,6 @@ public class Product implements Serializable {
         return ingredientsFromOrThatMayBeFromPalmOilN;
     }
 
-
     /**
      * @return The servingSize
      */
@@ -343,7 +374,6 @@ public class Product implements Serializable {
         return servingSize;
     }
 
-
     /**
      * @return The allergens
      */
@@ -351,14 +381,12 @@ public class Product implements Serializable {
         return allergens;
     }
 
-
     /**
      * @return The origins
      */
     public String getOrigins() {
         return origins;
     }
-
 
     /**
      * @return The stores
@@ -369,7 +397,6 @@ public class Product implements Serializable {
         return stores.replace(",", ", ");
     }
 
-
     /**
      * @return The nutritionGradeFr
      */
@@ -377,14 +404,12 @@ public class Product implements Serializable {
         return nutritionGradeFr;
     }
 
-
     /**
      * @return The nutrientLevels
      */
     public NutrientLevels getNutrientLevels() {
         return nutrientLevels;
     }
-
 
     /**
      * @return The countries
@@ -395,7 +420,6 @@ public class Product implements Serializable {
         return countries.replace(",", ", ");
     }
 
-
     /**
      * @return The brands
      */
@@ -405,7 +429,6 @@ public class Product implements Serializable {
         return brands.replace(",", ", ");
     }
 
-
     /**
      * @return The packaging
      */
@@ -414,7 +437,6 @@ public class Product implements Serializable {
             return null;
         return packaging.replace(",", ", ");
     }
-
 
     /**
      * @return The labels tags
@@ -437,14 +459,12 @@ public class Product implements Serializable {
         return citiesTags;
     }
 
-
     /**
      * @return The quantity
      */
     public String getQuantity() {
         return quantity;
     }
-
 
     /**
      * @return The ingredientsFromPalmOilN
@@ -453,14 +473,12 @@ public class Product implements Serializable {
         return ingredientsFromPalmOilN;
     }
 
-
     /**
      * @return The imageUrl
      */
     public String getImageUrl() {
         return imageUrl;
     }
-
 
     /**
      * @return The Emb_codes
@@ -489,12 +507,24 @@ public class Product implements Serializable {
         return editorsTags;
     }
 
-    public String getNovaGroups(){
+    public String getNovaGroups() {
         return novaGroups;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public String getLang() {
+        return lang;
+    }
+
+    public String getPurchasePlaces() {
+        return purchasePlaces;
+    }
+
+    public String getNutritionDataPer() {
+        return nutritionDataPer;
+    }
+
+    public String getNoNutritionData() {
+        return noNutritionData;
     }
 
     @Override

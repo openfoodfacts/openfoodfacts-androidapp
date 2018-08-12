@@ -151,15 +151,13 @@
             android:id="@+id/quantity"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="85dp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="85dp"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
             android:gravity="center_vertical"
             android:hint="@string/quantity"
-            android:inputType="numberDecimal"
+            android:inputType="text"
             android:nextFocusDown="@id/brand"
             android:paddingLeft="@dimen/spacing_small"
             android:paddingRight="@dimen/spacing_small"
@@ -167,21 +165,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/name" />
 
-        <Spinner
-            android:id="@+id/spinner_weight_unit"
+        <TextView
+            android:id="@+id/quantity_hint"
             android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/padding_short"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="@dimen/padding_short"
-            android:background="@drawable/spinner_weights_grey"
-            android:entries="@array/units_array"
-            android:spinnerMode="dropdown"
-            app:layout_constraintBottom_toBottomOf="@id/quantity"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/quantity"
-            app:layout_constraintTop_toTopOf="@id/quantity" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/hint_quantity"
+            android:textColor="@color/grey_500"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/quantity"
+            app:layout_constraintStart_toStartOf="@id/quantity"
+            app:layout_constraintTop_toBottomOf="@id/quantity" />
 
         <com.hootsuite.nachos.NachoTextView
             android:id="@+id/brand"
@@ -202,7 +196,7 @@
             app:chipTextColor="@color/grey_50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/quantity" />
+            app:layout_constraintTop_toBottomOf="@id/quantity_hint" />
 
         <com.hootsuite.nachos.NachoTextView
             android:id="@+id/packaging"

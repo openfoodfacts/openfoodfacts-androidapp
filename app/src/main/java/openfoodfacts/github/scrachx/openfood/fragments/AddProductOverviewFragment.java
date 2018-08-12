@@ -24,7 +24,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +32,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.hootsuite.nachos.NachoTextView;
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -50,6 +50,11 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
@@ -62,6 +67,11 @@ import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.Tag;
+import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -88,9 +98,9 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_NAME = "product_name";
     private static final String PARAM_BARCODE = "code";
     private static final String PARAM_QUANTITY = "quantity";
-    private static final String UNIT[] = {"g", "mg", "kg", "l", "ml", "cl", "fl oz"};
     private static final String PARAM_BRAND = "add_brands";
     private static final String PARAM_LANGUAGE = "lang";
+    private static final String PARAM_INTERFACE_LANGUAGE = "lc";
     private static final String PARAM_PACKAGING = "add_packaging";
     private static final String PARAM_CATEGORIES = "add_categories";
     private static final String PARAM_LABELS = "add_labels";
@@ -124,8 +134,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     EditText name;
     @BindView(R.id.quantity)
     EditText quantity;
-    @BindView(R.id.spinner_weight_unit)
-    Spinner quantityUnit;
     @BindView(R.id.brand)
     NachoTextView brand;
     @BindView(R.id.packaging)
@@ -157,15 +165,23 @@ public class AddProductOverviewFragment extends BaseFragment {
     @BindView(R.id.other_image_progress_text)
     TextView otherImageProgressText;
     private String languageCode;
+    private String appLanguageCode;
     private Activity activity;
     private OfflineSavedProduct mOfflineSavedProduct;
+    private TagDao mTagDao;
+    private CategoryNameDao mCategoryNameDao;
+    private LabelNameDao mLabelNameDao;
+    private CountryNameDao mCountryNameDao;
+    private Product product;
     private String code;
     private String mImageUrl;
     private boolean frontImage;
+    private boolean edit_product;
     private File photoFile;
     private List<String> countries = new ArrayList<>();
     private List<String> labels = new ArrayList<>();
     private List<String> category = new ArrayList<>();
+    private boolean newImageSelected;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -185,10 +201,11 @@ public class AddProductOverviewFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle b = getArguments();
         if (b != null) {
-            Product product = (Product) b.getSerializable("product");
+            product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
-            String currentLang = LocaleHelper.getLanguage(activity);
-            setProductLanguage(currentLang);
+            edit_product = b.getBoolean("edit_product");
+            appLanguageCode = LocaleHelper.getLanguage(activity);
+            setProductLanguage(appLanguageCode);
             barcode.setText(R.string.txtBarcode);
             language.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0);
             sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
@@ -196,7 +213,10 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (product != null) {
                 code = product.getCode();
             }
-            if (mOfflineSavedProduct != null) {
+            if (edit_product && product != null) {
+                code = product.getCode();
+                preFillProductValues();
+            } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
                 preFillValues();
             }
@@ -215,16 +235,164 @@ public class AddProductOverviewFragment extends BaseFragment {
     }
 
     /**
+     * Pre fill the fields of the product which are already present on the server.
+     */
+    private void preFillProductValues() {
+        mTagDao = Utils.getAppDaoSession(activity).getTagDao();
+        mCategoryNameDao = Utils.getAppDaoSession(activity).getCategoryNameDao();
+        mLabelNameDao = Utils.getAppDaoSession(activity).getLabelNameDao();
+        mCountryNameDao = Utils.getAppDaoSession(activity).getCountryNameDao();
+        if (product.getImageFrontUrl() != null && !product.getImageFrontUrl().isEmpty()) {
+            mImageUrl = product.getImageFrontUrl();
+            imageProgress.setVisibility(View.VISIBLE);
+            Picasso.with(getContext())
+                    .load(product.getImageFrontUrl())
+                    .resize(dpsToPixels(), dpsToPixels())
+                    .centerInside()
+                    .into(imageFront, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+                    });
+        }
+        if (product.getLang() != null && !product.getLang().isEmpty()) {
+            setProductLanguage(product.getLang());
+        }
+        if (product.getProductName() != null && !product.getProductName().isEmpty()) {
+            name.setText(product.getProductName());
+        }
+        if (product.getQuantity() != null && !product.getQuantity().isEmpty()) {
+            quantity.setText(product.getQuantity());
+        }
+        if (product.getBrands() != null && !product.getBrands().isEmpty()) {
+            List<String> chipValues = Arrays.asList(product.getBrands().split("\\s*,\\s*"));
+            brand.setText(chipValues);
+        }
+        if (product.getPackaging() != null && !product.getPackaging().isEmpty()) {
+            List<String> chipValues = Arrays.asList(product.getPackaging().split("\\s*,\\s*"));
+            packaging.setText(chipValues);
+        }
+        if (product.getCategoriesTags() != null && !product.getCategoriesTags().isEmpty()) {
+            List<String> categoriesTags = product.getCategoriesTags();
+            final List<String> chipValues = new ArrayList<>();
+            for (String tag : categoriesTags) {
+                chipValues.add(getCategoryName(appLanguageCode, tag));
+            }
+            categories.setText(chipValues);
+        }
+        if (product.getLabelsTags() != null && !product.getLabelsTags().isEmpty()) {
+            List<String> labelsTags = product.getLabelsTags();
+            final List<String> chipValues = new ArrayList<>();
+            for (String tag : labelsTags) {
+                chipValues.add(getLabelName(appLanguageCode, tag));
+            }
+            label.setText(chipValues);
+        }
+        if (product.getOrigins() != null && !product.getOrigins().isEmpty()) {
+            List<String> chipValues = Arrays.asList(product.getOrigins().split("\\s*,\\s*"));
+            originOfIngredients.setText(chipValues);
+        }
+        if (product.getManufacturingPlaces() != null && !product.getManufacturingPlaces().isEmpty()) {
+            manufacturingPlace.setText(product.getManufacturingPlaces());
+        }
+        if (product.getEmbTags() != null && !product.getEmbTags().toString().trim().equals("[]")) {
+            String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
+            final List<String> chipValues = new ArrayList<>();
+            for (String embTag : embTags) {
+                chipValues.add(getEmbCode(embTag));
+            }
+            embCode.setText(chipValues);
+        }
+        if (product.getManufactureUrl() != null && !product.getManufactureUrl().isEmpty()) {
+            link.setText(product.getManufactureUrl());
+        }
+        if (product.getPurchasePlaces() != null && !product.getPurchasePlaces().isEmpty()) {
+            List<String> chipValues = Arrays.asList(product.getPurchasePlaces().split("\\s*,\\s*"));
+            countryWherePurchased.setText(chipValues);
+        }
+        if (product.getStores() != null && !product.getStores().isEmpty()) {
+            List<String> chipValues = Arrays.asList(product.getStores().split("\\s*,\\s*"));
+            stores.setText(chipValues);
+        }
+        if (product.getCountriesTags() != null && !product.getCountriesTags().isEmpty()) {
+            List<String> countriesTags = product.getCountriesTags();
+            final List<String> chipValues = new ArrayList<>();
+            for (String tag : countriesTags) {
+                chipValues.add(getCountryName(appLanguageCode, tag));
+            }
+            countriesWhereSold.setText(chipValues);
+        }
+    }
+
+    /**
+     * @param languageCode 2 letter language code. example hi, en etc.
+     * @param tag          the complete tag. example en:india
+     * @return returns the name of the country if found in the db or else returns the tag itself.
+     */
+    private String getCountryName(String languageCode, String tag) {
+        CountryName countryName = mCountryNameDao.queryBuilder().where(CountryNameDao.Properties.CountyTag.eq(tag), CountryNameDao.Properties.LanguageCode.eq(languageCode)).unique();
+        if (countryName != null) return countryName.getName();
+        return tag;
+    }
+
+    /**
+     * @param languageCode 2 letter language code. example de, en etc.
+     * @param tag          the complete tag. example de:hoher-omega-3-gehalt
+     * @return returns the name of the label if found in the db or else returns the tag itself.
+     */
+    private String getLabelName(String languageCode, String tag) {
+        LabelName labelName = mLabelNameDao.queryBuilder().where(LabelNameDao.Properties.LabelTag.eq(tag), LabelNameDao.Properties.LanguageCode.eq(languageCode)).unique();
+        if (labelName != null) return labelName.getName();
+        return tag;
+    }
+
+    /**
+     * @param languageCode 2 letter language code. example en, fr etc.
+     * @param tag          the complete tag. example en:plant-based-foods-and-beverages
+     * @return returns the name of the category (example Plant-based foods and beverages) if found in the db or else returns the tag itself.
+     */
+    private String getCategoryName(String languageCode, String tag) {
+        CategoryName categoryName = mCategoryNameDao.queryBuilder().where(CategoryNameDao.Properties.CategoryTag.eq(tag), CategoryNameDao.Properties.LanguageCode.eq(languageCode)).unique();
+        if (categoryName != null) return categoryName.getName();
+        return tag;
+    }
+
+    private String getEmbCode(String embTag) {
+        Tag tag = mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique();
+        if (tag != null) return tag.getName();
+        return embTag;
+    }
+
+    /**
      * Pre fill the fields if the product is already present in SavedProductOffline db.
      */
     private void preFillValues() {
         HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
         if (productDetails != null) {
             if (productDetails.get("image_front") != null) {
+                imageProgress.setVisibility(View.VISIBLE);
                 mImageUrl = productDetails.get("image_front");
                 Picasso.with(getContext())
                         .load("file://" + mImageUrl)
-                        .into(imageFront);
+                        .resize(dpsToPixels(), dpsToPixels())
+                        .centerInside()
+                        .into(imageFront, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                imageProgress.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onError() {
+                                imageProgress.setVisibility(View.GONE);
+                            }
+                        });
             }
             if (productDetails.get(PARAM_LANGUAGE) != null) {
                 setProductLanguage(productDetails.get(PARAM_LANGUAGE));
@@ -236,19 +404,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 name.setText(productDetails.get(PARAM_NAME + "_" + "en"));
             }
             if (productDetails.get(PARAM_QUANTITY) != null) {
-                String qty = productDetails.get(PARAM_QUANTITY);
-                // Splits the quantity into value and unit. Example: "250g" into "250" and "g"
-                String part[] = qty.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
-                quantity.setText(part[0]);
-                if (part.length > 1) {
-                    // quantity has the unit part
-                    for (int i = 0; i < UNIT.length; i++) {
-                        // find index where the UNIT array has the identified unit
-                        if (UNIT[i].equals(part[1])) {
-                            quantityUnit.setSelection(i);
-                        }
-                    }
-                }
+                quantity.setText(productDetails.get(PARAM_QUANTITY));
             }
             if (productDetails.get(PARAM_BRAND) != null) {
                 List<String> chipValues = Arrays.asList(productDetails.get(PARAM_BRAND).split("\\s*,\\s*"));
@@ -314,13 +470,13 @@ public class AddProductOverviewFragment extends BaseFragment {
         CategoryNameDao categoryNameDao = daoSession.getCategoryNameDao();
 
         asyncSessionCountries.queryList(countryNameDao.queryBuilder()
-                .where(CountryNameDao.Properties.LanguageCode.eq(languageCode))
+                .where(CountryNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(CountryNameDao.Properties.Name).build());
         asyncSessionLabels.queryList(labelNameDao.queryBuilder()
-                .where(LabelNameDao.Properties.LanguageCode.eq(languageCode))
+                .where(LabelNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(LabelNameDao.Properties.Name).build());
         asyncSessionCategories.queryList(categoryNameDao.queryBuilder()
-                .where(CategoryNameDao.Properties.LanguageCode.eq(languageCode))
+                .where(CategoryNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(CategoryNameDao.Properties.Name).build());
 
         asyncSessionCountries.setListenerMainThread(operation -> {
@@ -375,6 +531,43 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (activity instanceof AddProductActivity) {
             ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
         }
+        if (edit_product) {
+            OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
+            String fields = "ingredients_text_" + lang + ",product_name_" + lang;
+            client.getExistingProductDetails(product.getCode(), fields)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new SingleObserver<State>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+                            name.setText(getString(R.string.txtLoading));
+                        }
+
+                        @Override
+                        public void onSuccess(State state) {
+                            if (state.getStatus() == 1) {
+                                if (state.getProduct().getProductName(lang) != null) {
+                                    if (languageCode.equals(lang)) {
+                                        name.setText(state.getProduct().getProductName(lang));
+                                        if (activity instanceof AddProductActivity) {
+                                            ((AddProductActivity) activity).setIngredients("set", state.getProduct().getIngredientsText(lang));
+                                        }
+                                    }
+                                } else {
+                                    name.setText(null);
+                                    if (activity instanceof AddProductActivity) {
+                                        ((AddProductActivity) activity).setIngredients("set", null);
+                                    }
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            name.setText(null);
+                        }
+                    });
+        }
     }
 
     @Override
@@ -401,7 +594,11 @@ public class AddProductOverviewFragment extends BaseFragment {
             // front image is already added. Open full screen image.
             Intent intent = new Intent(getActivity(), FullScreenImage.class);
             Bundle bundle = new Bundle();
-            bundle.putString("imageurl", "file://" + mImageUrl);
+            if (edit_product && !newImageSelected) {
+                bundle.putString("imageurl", mImageUrl);
+            } else {
+                bundle.putString("imageurl", "file://" + mImageUrl);
+            }
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
@@ -422,6 +619,18 @@ public class AddProductOverviewFragment extends BaseFragment {
         }
     }
 
+    @OnLongClick(R.id.btnAddImageFront)
+    boolean newFrontImage() {
+        // add front image.
+        frontImage = true;
+        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
+        }
+        return true;
+    }
+
     @OnClick(R.id.btn_other_pictures)
     void addOtherImage() {
         frontImage = false;
@@ -432,11 +641,47 @@ public class AddProductOverviewFragment extends BaseFragment {
         }
     }
 
+    /**
+     * adds all the fields to the query map even those which are null or empty.
+     */
+    public void getAllDetails() {
+        chipifyAllUnterminatedTokens();
+        if (activity instanceof AddProductActivity) {
+            ((AddProductActivity) activity).addToMap(PARAM_BARCODE, code);
+            ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
+            ((AddProductActivity) activity).addToMap(PARAM_INTERFACE_LANGUAGE, appLanguageCode);
+            String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+            ((AddProductActivity) activity).addToMap(PARAM_NAME + "_" + lc, name.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_QUANTITY, quantity.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_BRAND.substring(4), getValues(brand));
+            ((AddProductActivity) activity).addToMap(PARAM_PACKAGING.substring(4), getValues(packaging));
+            ((AddProductActivity) activity).addToMap(PARAM_CATEGORIES.substring(4), getValues(categories));
+            ((AddProductActivity) activity).addToMap(PARAM_LABELS.substring(4), getValues(label));
+            if (BuildConfig.FLAVOR.equals("obf")) {
+                ((AddProductActivity) activity).addToMap(PARAM_PERIODS_AFTER_OPENING, periodsAfterOpening.getText().toString());
+            }
+            ((AddProductActivity) activity).addToMap(PARAM_ORIGIN.substring(4), getValues(originOfIngredients));
+            ((AddProductActivity) activity).addToMap(PARAM_MANUFACTURING_PLACE.substring(4), manufacturingPlace.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_EMB_CODE.substring(4), getValues(embCode));
+            ((AddProductActivity) activity).addToMap(PARAM_LINK, link.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_PURCHASE.substring(4), getValues(countryWherePurchased));
+            ((AddProductActivity) activity).addToMap(PARAM_STORE.substring(4), getValues(stores));
+            ((AddProductActivity) activity).addToMap(PARAM_COUNTRIES.substring(4), getValues(countriesWhereSold));
+        }
+
+    }
+
+    /**
+     * adds only those fields to the query map which are not empty.
+     */
     public void getDetails() {
         chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
             if (!code.isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_BARCODE, code);
+            }
+            if (!appLanguageCode.isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_INTERFACE_LANGUAGE, appLanguageCode);
             }
             if (!languageCode.isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
@@ -446,8 +691,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 ((AddProductActivity) activity).addToMap(PARAM_NAME + "_" + lc, name.getText().toString());
             }
             if (!quantity.getText().toString().isEmpty()) {
-                String qty = quantity.getText().toString() + UNIT[quantityUnit.getSelectedItemPosition()];
-                ((AddProductActivity) activity).addToMap(PARAM_QUANTITY, qty);
+                ((AddProductActivity) activity).addToMap(PARAM_QUANTITY, quantity.getText().toString());
             }
             if (!brand.getChipValues().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_BRAND, getValues(brand));
@@ -590,11 +834,11 @@ public class AddProductOverviewFragment extends BaseFragment {
                 .title(R.string.preference_choose_language_dialog_title)
                 .items(finalLocalLabels)
                 .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
-                    setProductLanguage(finalLocalValues.get(which));
-                    loadAutoSuggestions();
+                    name.setText(null);
                     if (activity instanceof AddProductActivity) {
-                        ((AddProductActivity) activity).loadAutoSuggestion();
+                        ((AddProductActivity) activity).setIngredients("set", null);
                     }
+                    setProductLanguage(finalLocalValues.get(which));
                     return true;
                 })
                 .positiveText(R.string.ok_button)
@@ -624,6 +868,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 if (frontImage) {
                     image = new ProductImage(code, FRONT, photoFile);
                     mImageUrl = photoFile.getAbsolutePath();
+                    newImageSelected = true;
                     position = 0;
                 } else {
                     image = new ProductImage(code, OTHER, photoFile);
@@ -674,6 +919,8 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (!errorInUploading) {
             Picasso.with(activity)
                     .load(photoFile)
+                    .resize(dpsToPixels(), dpsToPixels())
+                    .centerInside()
                     .into(imageFront);
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         } else {
@@ -695,5 +942,11 @@ public class AddProductOverviewFragment extends BaseFragment {
         } else {
             otherImageProgressText.setText(R.string.image_uploaded_successfully);
         }
+    }
+
+    private int dpsToPixels() {
+        // converts 50dp to equivalent pixels.
+        final float scale = activity.getResources().getDisplayMetrics().density;
+        return (int) (50 * scale + 0.5f);
     }
 }

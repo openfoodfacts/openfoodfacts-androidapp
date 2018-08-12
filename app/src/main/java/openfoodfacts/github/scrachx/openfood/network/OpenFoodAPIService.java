@@ -30,20 +30,22 @@ import retrofit2.http.QueryMap;
  */
 public interface OpenFoodAPIService {
 
-    String PRODUCT_API_COMMENT = "new android app";
+    String PRODUCT_API_COMMENT = "Official Android app";
 
-    @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags,nova_groups")
+    @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags,nova_groups,lang,purchase_places,nutrition_data_per,no_nutrition_data")
     Call<State> getFullProductByBarcode(@Path("barcode") String barcode);
 
-    @GET("api/v0/product/{barcode}.json?fields=ingredients_text,product_name,link,quantity,image_ingredients_url")
-    Single<State> getExistingProductDetails(@Path("barcode") String barcode);
+    @GET("api/v0/product/{barcode}.json")
+    Single<State> getExistingProductDetails(@Path("barcode") String barcode,
+                                            @Query("fields") String fields);
 
-    @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags,nova_groups")
+    @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags,nova_groups,lang,purchase_places,nutrition_data_per,no_nutrition_data")
     Single<State> getFullProductByBarcodeSingle(@Path("barcode") String barcode);
 
     @GET("cgi/product_jqm2.pl")
     Single<State> saveProductSingle(@Query("code") String code,
-                                    @QueryMap Map<String, String> parameters);
+                                    @QueryMap Map<String, String> parameters,
+                                    @Query("comment") String comment);
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
     Call<State> getShortProductByBarcode(@Path("barcode") String barcode);

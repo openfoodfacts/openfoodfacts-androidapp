@@ -17,6 +17,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -79,6 +80,15 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            super.onBackPressed();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getResources().getBoolean(R.bool.portrait_only)) {
@@ -88,7 +98,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         setTitle(getString(R.string.txtSignIn));
         setSupportActionBar(toolbar);
-        if(getSupportActionBar()!=null) {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl");

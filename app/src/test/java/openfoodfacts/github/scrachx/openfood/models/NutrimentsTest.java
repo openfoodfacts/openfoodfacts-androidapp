@@ -13,7 +13,7 @@ public class NutrimentsTest {
     private static final String NUTRIMENT_NAME_KEY = "a nutriment";
     private static final String NUTRIMENT_NAME = "a nutriment";
     private static final String NUTRIMENT_VALUE_KEY = NUTRIMENT_NAME_KEY + "_value";
-    private static final Double NUTRIMENT_VALUE = 100.0;
+    private static final String NUTRIMENT_VALUE = "100.0";
     private static final String NUTRIMENT_100G_KEY = NUTRIMENT_NAME_KEY + "_100g";
     private static final String NUTRIMENT_100G = "50%";
     private static final String NUTRIMENT_SERVING_KEY = NUTRIMENT_NAME_KEY + "_serving";
@@ -29,7 +29,7 @@ public class NutrimentsTest {
     }
 
     @Test
-    public void getValue_returnsDoubleValue() {
+    public void getValue_returnsStringValue() {
         nutriments.setAdditionalProperty(NUTRIMENT_VALUE_KEY, NUTRIMENT_VALUE);
         assertEquals(NUTRIMENT_VALUE, nutriments.getValue(NUTRIMENT_NAME_KEY));
     }

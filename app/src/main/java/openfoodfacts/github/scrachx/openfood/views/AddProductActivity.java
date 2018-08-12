@@ -59,10 +59,12 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 
+import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable;
 
 public class AddProductActivity extends AppCompatActivity {
 
+    private final Map<String, String> productDetails = new HashMap<>();
     @Inject
     OpenFoodAPIService client;
     @BindView(R.id.overview_indicator)
@@ -75,7 +77,6 @@ public class AddProductActivity extends AppCompatActivity {
     TextView nutritionFactsIndicatorText;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
-    Map<String, String> productDetails = new HashMap<>();
     AddProductOverviewFragment addProductOverviewFragment = new AddProductOverviewFragment();
     AddProductIngredientsFragment addProductIngredientsFragment = new AddProductIngredientsFragment();
     AddProductNutritionFactsFragment addProductNutritionFactsFragment = new AddProductNutritionFactsFragment();
@@ -91,6 +92,7 @@ public class AddProductActivity extends AppCompatActivity {
     private boolean image_front_uploaded;
     private boolean image_ingredients_uploaded;
     private boolean image_nutrition_facts_uploaded;
+    private boolean edit_product;
 
     // These fields are used to compare the existing values of a product already present on the server with the product which was saved offline and is being uploaded.
     private String ingredientsTextOnServer;
@@ -195,7 +197,7 @@ public class AddProductActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (offlineSavedProduct != null) {
-            saveProduct();
+            checkFields();
         } else {
             new MaterialDialog.Builder(this)
                     .content(R.string.save_product)
@@ -211,7 +213,7 @@ public class AddProductActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             if (offlineSavedProduct != null) {
-                saveProduct();
+                checkFields();
             } else {
                 new MaterialDialog.Builder(this)
                         .content(R.string.save_product)
@@ -240,12 +242,18 @@ public class AddProductActivity extends AppCompatActivity {
         mOfflineSavedProductDao = Utils.getAppDaoSession(this).getOfflineSavedProductDao();
         final State state = (State) getIntent().getSerializableExtra("state");
         offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra("edit_offline_product");
+        Product mEditProduct = (Product) getIntent().getSerializableExtra("edit_product");
         if (state != null) {
             mProduct = state.getProduct();
             // Search if the barcode already exists in the OfflineSavedProducts db
             offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(mProduct.getCode())).unique();
         }
-        if (offlineSavedProduct != null) {
+        if (mEditProduct != null) {
+            setTitle(R.string.edit_product_title);
+            mProduct = mEditProduct;
+            edit_product = true;
+            bundle.putBoolean("edit_product", true);
+        } else if (offlineSavedProduct != null) {
             bundle.putSerializable("edit_offline_product", offlineSavedProduct);
             // Save the already existing images in productDetails for UI
             imagesFilePath[0] = offlineSavedProduct.getProductDetailsMap().get("image_front");
@@ -259,7 +267,7 @@ public class AddProductActivity extends AppCompatActivity {
             image_ingredients_uploaded = image_ingredients_status != null && image_ingredients_status.equals("true");
             image_nutrition_facts_uploaded = image_nutrition_facts_status != null && image_nutrition_facts_status.equals("true");
         }
-        if (state == null && offlineSavedProduct == null) {
+        if (state == null && offlineSavedProduct == null && mEditProduct == null) {
             Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show();
             finish();
         }
@@ -311,7 +319,8 @@ public class AddProductActivity extends AppCompatActivity {
             productDetails.put("password", password);
         }
         String code = productDetails.get("code");
-        client.getExistingProductDetails(code)
+        String fields = "link,quantity,image_ingredients_url,ingredients_text_" + getProductLanguage() + ",product_name_" + getProductLanguage();
+        client.getExistingProductDetails(code, fields)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
@@ -334,8 +343,8 @@ public class AddProductActivity extends AppCompatActivity {
                             checkFrontImageUploadStatus();
                         } else {
                             // Product already exists on the server. Compare values saved locally with the values existing on server.
-                            ingredientsTextOnServer = state.getProduct().getIngredientsText();
-                            productNameOnServer = state.getProduct().getProductName();
+                            ingredientsTextOnServer = state.getProduct().getIngredientsText(getProductLanguage());
+                            productNameOnServer = state.getProduct().getProductName(getProductLanguage());
                             quantityOnServer = state.getProduct().getQuantity();
                             linkOnServer = state.getProduct().getManufactureUrl();
                             ingredientsImageOnServer = state.getProduct().getImageIngredientsUrl();
@@ -604,7 +613,18 @@ public class AddProductActivity extends AppCompatActivity {
                                             @Override
                                             public void onError(Throwable e) {
                                                 dialog.dismiss();
-                                                saveProductOffline();
+                                                if (!edit_product) {
+                                                    saveProductOffline();
+                                                } else {
+                                                    MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
+                                                            .title(R.string.device_offline_dialog_title)
+                                                            .positiveText(R.string.txt_try_again)
+                                                            .negativeText(R.string.dialog_cancel)
+                                                            .onPositive((dialog, which) -> checkFrontImageUploadStatus())
+                                                            .onNegative((dialog, which) -> dialog.dismiss());
+                                                    dialog = builder.build();
+                                                    dialog.show();
+                                                }
                                             }
                                         });
                             }
@@ -613,7 +633,18 @@ public class AddProductActivity extends AppCompatActivity {
                         @Override
                         public void onError(Throwable e) {
                             dialog.dismiss();
-                            saveProductOffline();
+                            if (!edit_product) {
+                                saveProductOffline();
+                            } else {
+                                MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
+                                        .title(R.string.device_offline_dialog_title)
+                                        .positiveText(R.string.txt_try_again)
+                                        .negativeText(R.string.dialog_cancel)
+                                        .onPositive((dialog, which) -> checkFrontImageUploadStatus())
+                                        .onNegative((dialog, which) -> dialog.dismiss());
+                                dialog = builder.build();
+                                dialog.show();
+                            }
                         }
                     });
         } else {
@@ -697,7 +728,18 @@ public class AddProductActivity extends AppCompatActivity {
                                             @Override
                                             public void onError(Throwable e) {
                                                 dialog.dismiss();
-                                                saveProductOffline();
+                                                if (!edit_product) {
+                                                    saveProductOffline();
+                                                } else {
+                                                    MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
+                                                            .title(R.string.device_offline_dialog_title)
+                                                            .positiveText(R.string.txt_try_again)
+                                                            .negativeText(R.string.dialog_cancel)
+                                                            .onPositive((dialog, which) -> checkFrontImageUploadStatus())
+                                                            .onNegative((dialog, which) -> dialog.dismiss());
+                                                    dialog = builder.build();
+                                                    dialog.show();
+                                                }
                                             }
                                         });
                             }
@@ -706,7 +748,18 @@ public class AddProductActivity extends AppCompatActivity {
                         @Override
                         public void onError(Throwable e) {
                             dialog.dismiss();
-                            saveProductOffline();
+                            if (!edit_product) {
+                                saveProductOffline();
+                            } else {
+                                MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
+                                        .title(R.string.device_offline_dialog_title)
+                                        .positiveText(R.string.txt_try_again)
+                                        .negativeText(R.string.dialog_cancel)
+                                        .onPositive((dialog, which) -> checkFrontImageUploadStatus())
+                                        .onNegative((dialog, which) -> dialog.dismiss());
+                                dialog = builder.build();
+                                dialog.show();
+                            }
                         }
                     });
         } else {
@@ -790,7 +843,18 @@ public class AddProductActivity extends AppCompatActivity {
                                             @Override
                                             public void onError(Throwable e) {
                                                 dialog.dismiss();
-                                                saveProductOffline();
+                                                if (!edit_product) {
+                                                    saveProductOffline();
+                                                } else {
+                                                    MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
+                                                            .title(R.string.device_offline_dialog_title)
+                                                            .positiveText(R.string.txt_try_again)
+                                                            .negativeText(R.string.dialog_cancel)
+                                                            .onPositive((dialog, which) -> checkFrontImageUploadStatus())
+                                                            .onNegative((dialog, which) -> dialog.dismiss());
+                                                    dialog = builder.build();
+                                                    dialog.show();
+                                                }
                                             }
                                         });
                             }
@@ -799,7 +863,18 @@ public class AddProductActivity extends AppCompatActivity {
                         @Override
                         public void onError(Throwable e) {
                             dialog.dismiss();
-                            saveProductOffline();
+                            if (!edit_product) {
+                                saveProductOffline();
+                            } else {
+                                MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
+                                        .title(R.string.device_offline_dialog_title)
+                                        .positiveText(R.string.txt_try_again)
+                                        .negativeText(R.string.dialog_cancel)
+                                        .onPositive((dialog, which) -> checkFrontImageUploadStatus())
+                                        .onNegative((dialog, which) -> dialog.dismiss());
+                                dialog = builder.build();
+                                dialog.show();
+                            }
                         }
                     });
         } else {
@@ -819,7 +894,7 @@ public class AddProductActivity extends AppCompatActivity {
             Log.d(key, value);
         }
 
-        client.saveProductSingle(code, productDetails)
+        client.saveProductSingle(code, productDetails, PRODUCT_API_COMMENT + " " + Utils.getVersionName(this))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
                     @Override
@@ -855,7 +930,18 @@ public class AddProductActivity extends AppCompatActivity {
                     @Override
                     public void onError(Throwable e) {
                         dialog.dismiss();
-                        saveProductOffline();
+                        if (!edit_product) {
+                            saveProductOffline();
+                        } else {
+                            MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
+                                    .title(R.string.device_offline_dialog_title)
+                                    .positiveText(R.string.txt_try_again)
+                                    .negativeText(R.string.dialog_cancel)
+                                    .onPositive((dialog, which) -> checkFrontImageUploadStatus())
+                                    .onNegative((dialog, which) -> dialog.dismiss());
+                            dialog = builder.build();
+                            dialog.show();
+                        }
                     }
                 });
     }
@@ -904,13 +990,38 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void checkFields() {
-        if (addProductOverviewFragment.areRequiredFieldsEmpty()) {
-            viewPager.setCurrentItem(0, true);
-        } else if ((BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) && !addProductNutritionFactsFragment.isCheckPassed()) {
-            viewPager.setCurrentItem(2, true);
+        if (!edit_product) {
+            if (addProductOverviewFragment.areRequiredFieldsEmpty()) {
+                viewPager.setCurrentItem(0, true);
+            } else if ((BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) && addProductNutritionFactsFragment.nutritionCheckFailed()) {
+                viewPager.setCurrentItem(2, true);
+            } else {
+                saveProduct();
+            }
         } else {
-            saveProduct();
+            // edit mode, therefore do not check whether front image is empty or not however do check the nutrition facts values.
+            if ((BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) && addProductNutritionFactsFragment.nutritionCheckFailed()) {
+                viewPager.setCurrentItem(2, true);
+            } else {
+                saveEditedProduct();
+            }
         }
+    }
+
+    private void saveEditedProduct() {
+        addProductOverviewFragment.getAllDetails();
+        addProductIngredientsFragment.getAllDetails();
+        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) {
+            addProductNutritionFactsFragment.getAllDetails();
+        }
+        final SharedPreferences settings = getSharedPreferences("login", 0);
+        final String login = settings.getString("user", "");
+        final String password = settings.getString("pass", "");
+        if (!login.isEmpty() && !password.isEmpty()) {
+            productDetails.put("user_id", login);
+            productDetails.put("password", password);
+        }
+        checkFrontImageUploadStatus();
     }
 
     @OnClick(R.id.overview_indicator)
@@ -982,7 +1093,7 @@ public class AddProductActivity extends AppCompatActivity {
                             String error = jsonNode.get("error").asText();
                             if (error.equals("This picture has already been sent.") && ocr) {
                                 hideImageProgress(position, false, getString(R.string.image_uploaded_successfully));
-                                performOCR(image, "ingredients_" + getProductLanguage());
+                                performOCR(image.getBarcode(), "ingredients_" + getProductLanguage());
                             } else {
                                 hideImageProgress(position, true, error);
                             }
@@ -1041,7 +1152,7 @@ public class AddProductActivity extends AppCompatActivity {
                         String status = jsonNode.get("status").asText();
                         if (status.equals("status ok")) {
                             if (ocr) {
-                                performOCR(image, imagefield);
+                                performOCR(image.getBarcode(), imagefield);
                             }
                         }
                     }
@@ -1062,8 +1173,8 @@ public class AddProductActivity extends AppCompatActivity {
                 });
     }
 
-    private void performOCR(ProductImage image, String imageField) {
-        client.getIngredients(image.getBarcode(), imageField)
+    public void performOCR(String code, String imageField) {
+        client.getIngredients(code, imageField)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(disposable -> addProductIngredientsFragment.showOCRProgress())
                 .subscribe(new SingleObserver<JsonNode>() {
@@ -1090,7 +1201,7 @@ public class AddProductActivity extends AppCompatActivity {
                         if (e instanceof IOException) {
                             View view = findViewById(R.id.coordinator_layout);
                             Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
-                                    .setAction(R.string.txt_try_again, v -> performOCR(image, imageField)).show();
+                                    .setAction(R.string.txt_try_again, v -> performOCR(code, imageField)).show();
                         } else {
                             Log.i(this.getClass().getSimpleName(), e.getMessage());
                             Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -1141,7 +1252,7 @@ public class AddProductActivity extends AppCompatActivity {
         return productDetails.get("lang");
     }
 
-    public void loadAutoSuggestion() {
-        addProductIngredientsFragment.loadAutoSuggestions();
+    public void setIngredients(String status, String ingredients) {
+        addProductIngredientsFragment.setIngredients(status, ingredients);
     }
 }
