@@ -666,4 +666,10 @@
   <string name="uploading_ingredients_image">crwdns93676:0crwdne93676:0</string>
   <string name="uploading_front_image">crwdns93677:0crwdne93677:0</string>
   <string name="url_nova_groups">crwdns93683:0crwdne93683:0</string>
+  <string name="sign_in_to_edit">crwdns94366:0crwdne94366:0</string>
+  <string name="hint_quantity">crwdns94367:0crwdne94367:0</string>
+  <string name="edit_product_title">crwdns94368:0crwdne94368:0</string>
+  <string name="hint_serving_size">crwdns94369:0crwdne94369:0</string>
+  <string name="nutrient_already_added">crwdns94370:0%scrwdne94370:0</string>
+  <string name="save_edits">crwdns94371:0crwdne94371:0</string>
 </resources>
