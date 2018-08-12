@@ -9,8 +9,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 287
-        versionName "2.8.7"
+        versionCode 288
+        versionName "2.8.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
