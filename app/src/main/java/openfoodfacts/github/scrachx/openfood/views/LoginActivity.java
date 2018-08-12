@@ -33,6 +33,7 @@ import com.google.android.gms.auth.api.credentials.Credentials;
 import com.google.android.gms.auth.api.credentials.CredentialsClient;
 import com.google.android.gms.auth.api.credentials.CredentialsOptions;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -133,7 +134,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                     .show();
         }
 
-        requestCredentials();
+        if(isGooglePlayServicesAvailable(this)){
+            requestCredentials();
+        }
 
         apiClient = new Retrofit.Builder()
                 .baseUrl(BuildConfig.HOST)
@@ -221,7 +224,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                             for (int i = 0; i < cookieValues.length; i++) {
                                 editor.putString(cookieValues[i], cookieValues[++i]);
                             }
-                            storeCredentials();
+                            if(isGooglePlayServicesAvailable(context)){
+                                storeCredentials();
+                            }
                             break;
                         }
                     }
@@ -438,5 +443,17 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
             }
         }
 
+    }
+
+    public boolean isGooglePlayServicesAvailable(Activity activity) {
+        GoogleApiAvailability googleApiAvailability = GoogleApiAvailability.getInstance();
+        int status = googleApiAvailability.isGooglePlayServicesAvailable(activity);
+        if(status != ConnectionResult.SUCCESS) {
+            if(googleApiAvailability.isUserResolvableError(status)) {
+                googleApiAvailability.getErrorDialog(activity, status, 2404).show();
+            }
+            return false;
+        }
+        return true;
     }
 }
