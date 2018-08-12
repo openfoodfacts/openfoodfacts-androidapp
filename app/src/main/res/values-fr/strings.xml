@@ -666,10 +666,10 @@
   <string name="uploading_ingredients_image">Envoi de l\'image des ingrédients</string>
   <string name="uploading_front_image">Envoi de l\'image principale</string>
   <string name="url_nova_groups">https://fr.openfoodfacts.org/classification-nova-pour-la-transformation-des-aliments</string>
-  <string name="sign_in_to_edit">Please sign in to edit a product.</string>
-  <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
+  <string name="sign_in_to_edit">Veuillez vous connecter pour modifier un produit.</string>
+  <string name="hint_quantity">Exemples: 2 l, 250 g, 1 kg, 25 cl, 6 onces liquides, 1 livre</string>
   <string name="edit_product_title">Modifier un produit</string>
-  <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
-  <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
-  <string name="save_edits">Save edits</string>
+  <string name="hint_serving_size">Exemples: 60 g, 12 oz, 20 cl, 2 oz liq</string>
+  <string name="nutrient_already_added">%s est déjà présent dans les informations nutritionnelles</string>
+  <string name="save_edits">Enregistrer les modifications</string>
 </resources>
