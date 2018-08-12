@@ -222,7 +222,8 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             }
             size--;
 
-            client.getExistingProductDetails(product.getBarcode())
+            String fields = "link,quantity,image_ingredients_url,ingredients_text_" + productDetails.get("lang") + ",product_name_" + productDetails.get("lang");
+            client.getExistingProductDetails(product.getBarcode(), fields)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new SingleObserver<State>() {
@@ -238,9 +239,9 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                             } else {
                                 // Product already exists on the server. Compare values saved locally with the values existing on server.
                                 HashMap<String, String> existingValuesMap = new HashMap<>();
-                                existingValuesMap.put(INGREDIENTS_ON_SERVER, state.getProduct().getIngredientsText());
+                                existingValuesMap.put(INGREDIENTS_ON_SERVER, state.getProduct().getIngredientsText(productDetails.get("lang")));
                                 existingValuesMap.put(INGREDIENTS_IMAGE_ON_SERVER, state.getProduct().getImageIngredientsUrl());
-                                existingValuesMap.put(PRODUCT_NAME_ON_SERVER, state.getProduct().getProductName());
+                                existingValuesMap.put(PRODUCT_NAME_ON_SERVER, state.getProduct().getProductName(productDetails.get("lang")));
                                 existingValuesMap.put(QUANTITY_ON_SERVER, state.getProduct().getQuantity());
                                 existingValuesMap.put(LINK_ON_SERVER, state.getProduct().getManufactureUrl());
                                 checkForExistingIngredients(product, existingValuesMap);
@@ -261,7 +262,8 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     private void checkForExistingIngredients(OfflineSavedProduct product, HashMap<String, String> existingValuesOnServer) {
         HashMap<String, String> productDetails = product.getProductDetailsMap();
         String ingredientsTextOnServer = existingValuesOnServer.get(INGREDIENTS_ON_SERVER);
-        if (ingredientsTextOnServer != null && !ingredientsTextOnServer.isEmpty() && productDetails.get("ingredients_text") != null) {
+        String lc = productDetails.get("lang") != null ? productDetails.get("lang") : "en";
+        if (ingredientsTextOnServer != null && !ingredientsTextOnServer.isEmpty() && productDetails.get("ingredients_text_" + lc) != null) {
             MaterialDialog.Builder builder = new MaterialDialog.Builder(activity)
                     .title(R.string.ingredients_overwrite)
                     .customView(R.layout.dialog_compare_ingredients, true)
@@ -273,12 +275,11 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     })
                     .onNegative((dialog, which) -> {
                         dialog.dismiss();
-                        productDetails.remove("ingredients_text");
+                        productDetails.remove("ingredients_text_" + lc);
                         productDetails.remove("image_ingredients");
                         product.setProductDetailsMap(productDetails);
                         checkForExistingProductName(product, existingValuesOnServer);
-                    })
-                    .cancelable(false);
+                    });
             MaterialDialog dialog = builder.build();
             dialog.show();
             View view = dialog.getCustomView();
@@ -289,7 +290,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                 TextView ingredientsServer = view.findViewById(R.id.txt_ingredients_server);
                 ProgressBar imageProgressServer = view.findViewById(R.id.image_progress_server);
                 ProgressBar imageProgressLocal = view.findViewById(R.id.image_progress_local);
-                ingredientsLocal.setText(productDetails.get("ingredients_text"));
+                ingredientsLocal.setText(productDetails.get("ingredients_text_" + lc));
                 ingredientsServer.setText(existingValuesOnServer.get(INGREDIENTS_ON_SERVER));
                 Picasso.with(getContext())
                         .load(existingValuesOnServer.get(INGREDIENTS_IMAGE_ON_SERVER))
@@ -361,10 +362,11 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     private void checkForExistingProductName(OfflineSavedProduct product, HashMap<String, String> existingValuesOnServer) {
         HashMap<String, String> productDetails = product.getProductDetailsMap();
         String productNameOnServer = existingValuesOnServer.get(PRODUCT_NAME_ON_SERVER);
-        if (productNameOnServer != null && !productNameOnServer.isEmpty() && productDetails.get("product_name") != null) {
+        String lc = productDetails.get("lang") != null ? productDetails.get("lang") : "en";
+        if (productNameOnServer != null && !productNameOnServer.isEmpty() && productDetails.get("product_name_" + lc) != null) {
             new MaterialDialog.Builder(activity)
                     .title(R.string.product_name_overwrite)
-                    .content(getString(R.string.yours) + productDetails.get("product_name") + "\n" + getString(R.string.currently_on, getString(R.string.app_name_long)) + productNameOnServer)
+                    .content(getString(R.string.yours) + productDetails.get("product_name_" + lc) + "\n" + getString(R.string.currently_on, getString(R.string.app_name_long)) + productNameOnServer)
                     .positiveText(R.string.choose_mine)
                     .negativeText(R.string.keep_previous_version)
                     .onPositive((dialog, which) -> {
@@ -374,11 +376,10 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     })
                     .onNegative((dialog, which) -> {
                         dialog.dismiss();
-                        productDetails.remove("product_name");
+                        productDetails.remove("product_name_" + lc);
                         product.setProductDetailsMap(productDetails);
                         checkForExistingQuantity(product, existingValuesOnServer);
                     })
-                    .cancelable(false)
                     .build()
                     .show();
         } else {
@@ -408,7 +409,6 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         product.setProductDetailsMap(productDetails);
                         checkForExistingLink(product, existingValuesOnServer);
                     })
-                    .cancelable(false)
                     .build()
                     .show();
         } else {

@@ -51,6 +51,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
@@ -63,8 +67,11 @@ import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -521,6 +528,43 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (activity instanceof AddProductActivity) {
             ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
         }
+        if (edit_product) {
+            OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
+            String fields = "ingredients_text_" + lang + ",product_name_" + lang;
+            client.getExistingProductDetails(product.getCode(), fields)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new SingleObserver<State>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+                            name.setText(getString(R.string.txtLoading));
+                        }
+
+                        @Override
+                        public void onSuccess(State state) {
+                            if (state.getStatus() == 1) {
+                                if (state.getProduct().getProductName(lang) != null) {
+                                    if (languageCode.equals(lang)) {
+                                        name.setText(state.getProduct().getProductName(lang));
+                                        if (activity instanceof AddProductActivity) {
+                                            ((AddProductActivity) activity).setIngredients("set", state.getProduct().getIngredientsText(lang));
+                                        }
+                                    }
+                                } else {
+                                    name.setText(null);
+                                    if (activity instanceof AddProductActivity) {
+                                        ((AddProductActivity) activity).setIngredients("set", null);
+                                    }
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            name.setText(null);
+                        }
+                    });
+        }
     }
 
     @Override
@@ -787,11 +831,11 @@ public class AddProductOverviewFragment extends BaseFragment {
                 .title(R.string.preference_choose_language_dialog_title)
                 .items(finalLocalLabels)
                 .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
-                    setProductLanguage(finalLocalValues.get(which));
                     name.setText(null);
                     if (activity instanceof AddProductActivity) {
-                        ((AddProductActivity) activity).setIngredients("clear", null);
+                        ((AddProductActivity) activity).setIngredients("set", null);
                     }
+                    setProductLanguage(finalLocalValues.get(which));
                     return true;
                 })
                 .positiveText(R.string.ok_button)

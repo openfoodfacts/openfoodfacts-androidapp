@@ -319,7 +319,8 @@ public class AddProductActivity extends AppCompatActivity {
             productDetails.put("password", password);
         }
         String code = productDetails.get("code");
-        client.getExistingProductDetails(code)
+        String fields = "link,quantity,image_ingredients_url,ingredients_text_" + getProductLanguage() + ",product_name_" + getProductLanguage();
+        client.getExistingProductDetails(code, fields)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
@@ -342,8 +343,8 @@ public class AddProductActivity extends AppCompatActivity {
                             checkFrontImageUploadStatus();
                         } else {
                             // Product already exists on the server. Compare values saved locally with the values existing on server.
-                            ingredientsTextOnServer = state.getProduct().getIngredientsText();
-                            productNameOnServer = state.getProduct().getProductName();
+                            ingredientsTextOnServer = state.getProduct().getIngredientsText(getProductLanguage());
+                            productNameOnServer = state.getProduct().getProductName(getProductLanguage());
                             quantityOnServer = state.getProduct().getQuantity();
                             linkOnServer = state.getProduct().getManufactureUrl();
                             ingredientsImageOnServer = state.getProduct().getImageIngredientsUrl();

@@ -175,6 +175,7 @@
                 android:nextFocusDown="@id/fat"
                 android:paddingLeft="@dimen/spacing_small"
                 android:paddingRight="@dimen/spacing_small"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/serving_size" />
@@ -212,6 +213,7 @@
                 android:nextFocusDown="@id/saturated_fat"
                 android:paddingLeft="@dimen/spacing_small"
                 android:paddingRight="@dimen/spacing_small"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/energy" />
@@ -249,6 +251,7 @@
                 android:nextFocusDown="@id/carbohydrate"
                 android:paddingLeft="@dimen/spacing_small"
                 android:paddingRight="@dimen/spacing_small"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fat" />
@@ -286,6 +289,7 @@
                 android:nextFocusDown="@id/sugar"
                 android:paddingLeft="@dimen/spacing_small"
                 android:paddingRight="@dimen/spacing_small"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/saturated_fat" />
@@ -323,6 +327,7 @@
                 android:nextFocusDown="@id/dietary_fibre"
                 android:paddingLeft="@dimen/spacing_small"
                 android:paddingRight="@dimen/spacing_small"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/carbohydrate" />
@@ -360,6 +365,7 @@
                 android:nextFocusDown="@id/proteins"
                 android:paddingLeft="@dimen/spacing_small"
                 android:paddingRight="@dimen/spacing_small"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/sugar" />
@@ -397,6 +403,7 @@
                 android:nextFocusDown="@id/salt"
                 android:paddingLeft="@dimen/spacing_small"
                 android:paddingRight="@dimen/spacing_small"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/dietary_fibre" />
@@ -434,6 +441,7 @@
                 android:nextFocusDown="@id/sodium"
                 android:paddingLeft="@dimen/spacing_small"
                 android:paddingRight="@dimen/spacing_small"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/proteins" />
@@ -471,6 +479,7 @@
                 android:nextFocusDown="@id/alcohol"
                 android:paddingLeft="@dimen/spacing_small"
                 android:paddingRight="@dimen/spacing_small"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/salt" />
@@ -507,6 +516,7 @@
                 android:inputType="textVisiblePassword"
                 android:paddingLeft="@dimen/spacing_small"
                 android:paddingRight="@dimen/spacing_small"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/sodium" />

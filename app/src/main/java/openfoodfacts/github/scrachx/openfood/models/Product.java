@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,7 +13,9 @@ import org.apache.commons.text.StringEscapeUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class ProductStringConverter extends StdConverter<String, String> {
     public String convert(String value) {
@@ -121,7 +125,34 @@ public class Product implements Serializable {
     private String purchasePlaces;
     @JsonProperty("nutrition_data_per")
     private String nutritionDataPer;
+    @JsonProperty("no_nutrition_data")
+    private String noNutritionData;
 
+    private Map<String, Object> additionalProperties = new HashMap<>();
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    public String getProductName(String languageCode) {
+        if (additionalProperties.get("product_name_" + languageCode) != null) {
+            return additionalProperties.get("product_name_" + languageCode).toString();
+        }
+        return null;
+    }
+
+    public String getIngredientsText(String languageCode) {
+        if (additionalProperties.get("ingredients_text_" + languageCode) != null) {
+            return additionalProperties.get("ingredients_text_" + languageCode).toString();
+        }
+        return null;
+    }
 
     /**
      * @return The statesTags
@@ -490,6 +521,10 @@ public class Product implements Serializable {
 
     public String getNutritionDataPer() {
         return nutritionDataPer;
+    }
+
+    public String getNoNutritionData() {
+        return noNutritionData;
     }
 
     @Override

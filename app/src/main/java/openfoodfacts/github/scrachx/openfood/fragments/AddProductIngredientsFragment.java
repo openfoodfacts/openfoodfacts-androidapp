@@ -448,8 +448,8 @@ public class AddProductIngredientsFragment extends BaseFragment {
 
     public void setIngredients(String status, String ocrResult) {
         switch (status) {
-            case "clear":
-                ingredients.setText(null);
+            case "set":
+                ingredients.setText(ocrResult);
                 break;
             case "0":
                 ingredients.setText(ocrResult);

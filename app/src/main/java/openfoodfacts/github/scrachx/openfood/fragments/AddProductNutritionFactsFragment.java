@@ -319,6 +319,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                         }
                     });
         }
+        if (product.getNoNutritionData() != null && product.getNoNutritionData().equalsIgnoreCase("on")) {
+            noNutritionData.setChecked(true);
+            nutritionFactsLayout.setVisibility(View.GONE);
+        }
         if (product.getNutritionDataPer() != null && !product.getNutritionDataPer().isEmpty()) {
             String s = product.getNutritionDataPer();
             if (s.equals("100g")) {
@@ -1066,6 +1070,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         editText.setHint(text);
         editText.setId(position);
         editText.setKeyListener(keyListener);
+        editText.setSingleLine();
         editText.setPadding(dpsToPixels(10), 0, dpsToPixels(10), 0);
         editText.setGravity(Gravity.CENTER_VERTICAL);
         editText.requestFocus();
