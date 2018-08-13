@@ -68,23 +68,23 @@
   <string-array name="nutrition_weight_units">
     <item>מ״ג</item>
     <item>ק״ג</item>
-    <item>µg</item>
+    <item>מיקרוגרם</item>
   </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>מ״ג</item>
     <item>ק״ג</item>
-    <item>µg</item>
-    <item>% DV</item>
-    <item>IU</item>
+    <item>מיקרוגרם</item>
+    <item>% מהערך היומי</item>
+    <item>יחידה בינלאומית</item>
   </string-array>
   <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-    <item>Arachidic acid (20:0)</item>
-    <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
+    <item>חומצה אלפא-לינולאית / ALA ‏(18:3 n-3)</item>
+    <item>חומצה אראכידית (20:0)</item>
+    <item>חומצה ארכידונית / AA / ARA ‏(20:4 n-6)</item>
     <item>Behenic acid (22:0)</item>
     <item>ביקרבונט</item>
     <item>ביוטין</item>
@@ -639,13 +639,13 @@
   <string name="ingredients_picture">תמונת הרכיבים</string>
   <string name="take_ingredients_picture_to_extract">(נא לצלם את רשימת הרכיבים כדי לחלץ אותם אוטומטית)</string>
   <string name="ingredients_list">רשימת רכיבים</string>
-  <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+  <string name="ingredients_hint">יש לשמור על הסדר, לציין את ה־% איפה שצוין, להפריד בפסיק או להשתמש ב־-, להשתמש ב־() לציון רכיבים של רכיבים ולתחום אלרגנים ב־_</string>
   <string name="extract_ingredients">חילוץ רכיבים</string>
   <string name="extracting_ingredients">הרכיבים מחולצים</string>
   <string name="looksGood">נראה טוב</string>
   <string name="skip_ingredients">לא טוב \n לדלג על הרכיבים</string>
   <string name="traces">עקבות</string>
-  <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
+  <string name="traces_hint">יש לציין רכיבים מאזכורים כגון ‚עשוי להכיל עקבות של’, ‚נוצר במפעל שמשתמש גם ב־’.\nדוגמאות: חלב, גלוטן, אגוזים</string>
   <string name="nutrition_facts_not_specified">המפרט התזונתי אינו מצוין על המוצר.</string>
   <string name="nutrition_facts_picture">תמונת הפירוט התזונתי</string>
   <string name="for_100g_100ml">ל־100 ג׳ / 100 מ״ל</string>
