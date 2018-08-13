@@ -88,11 +88,11 @@
     <item>Behenic acid (22:0)</item>
     <item>ביקרבונט</item>
     <item>ביוטין</item>
-    <item>Butyric acid (4:0)</item>
+    <item>חומצה בוטירית (4:0)</item>
     <item>קפאין</item>
     <item>סידן</item>
     <item>Capric acid (10:0)</item>
-    <item>Caproic acid (6:0)</item>
+    <item>חומצה קפרילית (6:0)</item>
     <item>חומצה קפרילית (8:0)</item>
     <item>קזאין</item>
     <item>חומצה קרוטית (26:0)</item>
@@ -113,9 +113,9 @@
     <item>יוד</item>
     <item>ברזל</item>
     <item>לקטוז</item>
-    <item>Lauric acid (12:0)</item>
+    <item>חומצה לאורית (12:0)</item>
     <item>Lignoceric acid (24:0)</item>
-    <item>Linoleic acid / LA (18:2 n-6)</item>
+    <item>חומצה לינולאית / LA ‏(18:2 n-6)</item>
     <item>מגנזיום</item>
     <item>מלטודקסטרין</item>
     <item>מלטוז</item>
@@ -123,10 +123,10 @@
     <item>Mead acid (20:3 n-9)</item>
     <item>Melissic acid (30:0)</item>
     <item>מוליבדן</item>
-    <item>Monounsaturated fat</item>
+    <item>שומן חד בלתי רווי</item>
     <item>Montanic acid (28:0)</item>
     <item>חומצה מיריסטית (14:0)</item>
-    <item>Nervonic acid (24:1 n-9)</item>
+    <item>חומצה נרוונית (24:1 n-9)</item>
     <item>נוקלאוטידים</item>
     <item>חומצה אולאית (18:1 n-9)</item>
     <item>חומצות שומן אומגה 3</item>
@@ -678,6 +678,6 @@
   <string name="hint_quantity">למשל: 2 ל׳, 250 ג׳, 1 ק״ג, 25 סנטיליטרים, 6 אונקיות נוזלים, 1 פאונד</string>
   <string name="edit_product_title">עריכת מוצר</string>
   <string name="hint_serving_size">למשל: 60 ג״, 12 אונקיות, 20 סנטיליטרים, 2 אונקיות נוזלים</string>
-  <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
-  <string name="save_edits">Save edits</string>
+  <string name="nutrient_already_added">%s כבר קיים בעובדות התזונתיות</string>
+  <string name="save_edits">שמירת העריכות</string>
 </resources>
