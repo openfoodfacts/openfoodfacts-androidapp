@@ -93,21 +93,21 @@
     <item>סידן</item>
     <item>Capric acid (10:0)</item>
     <item>Caproic acid (6:0)</item>
-    <item>Caprylic acid (8:0)</item>
+    <item>חומצה קפרילית (8:0)</item>
     <item>קזאין</item>
-    <item>Cerotic acid (26:0)</item>
+    <item>חומצה קרוטית (26:0)</item>
     <item>כלוריד</item>
     <item>כולסטרול</item>
     <item>כרומיום</item>
     <item>נחושת</item>
     <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-    <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-    <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-    <item>Elaidic acid (18:1 n-9)</item>
+    <item>חומצה דוקוסהקסנואית / DHA ‏(22:6 n-3)</item>
+    <item>חומצה איקוסאפנטאנואית / EPA ‏(20:5 n-3)</item>
+    <item>חוןמצה אלאידית (18:1 n-9)</item>
     <item>חומצה ארוסית (22:1 n-9)</item>
     <item>פלואוריד</item>
     <item>פרוקטוז</item>
-    <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+    <item>חומצה גמא לינולאית / GLA ‏(18:3 n-6)</item>
     <item>גלוקוז</item>
     <item>Gondoic acid (20:1 n-9)</item>
     <item>יוד</item>
@@ -661,23 +661,23 @@
   <string name="quantity">כמות</string>
   <string name="labels">תוויות</string>
   <string name="period_of_time_after_opening">משך הזמן לאחר הפתיחה</string>
-  <string name="manufacturing_details">Manufacturing Details</string>
+  <string name="manufacturing_details">פרטי ייצור</string>
   <string name="origin_of_ingredients">מקור הרכיבים</string>
-  <string name="manufacturing_place">Manufacturing place</string>
+  <string name="manufacturing_place">מקום ייצור</string>
   <string name="emb_code">EMB Code</string>
   <string name="purchasing_details">פרטי רכישה</string>
   <string name="country_where_purchased">מדינת הרכישה</string>
   <string name="stores">חנויות</string>
   <string name="additional_pictures">תמונות נוספות</string>
-  <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
-  <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-  <string name="uploading_ingredients_image">Uploading ingredients image</string>
+  <string name="hint_product_pictures">(כדאי להוסיף תמונות נוספות של המוצר, למשל: הנחיות מחזור, תוויות וכו׳)</string>
+  <string name="uploading_nutrition_image">נשלחת תמונה של העובדות התזונתיות</string>
+  <string name="uploading_ingredients_image">נשלחת תמונת רכיבים</string>
   <string name="uploading_front_image">התמונה הראשית נשלחת</string>
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-  <string name="sign_in_to_edit">Please sign in to edit a product.</string>
-  <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
+  <string name="sign_in_to_edit">נא להיכנס כדי לערוך מוצר.</string>
+  <string name="hint_quantity">למשל: 2 ל׳, 250 ג׳, 1 ק״ג, 25 סנטיליטרים, 6 אונקיות נוזלים, 1 פאונד</string>
   <string name="edit_product_title">עריכת מוצר</string>
-  <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
+  <string name="hint_serving_size">למשל: 60 ג״, 12 אונקיות, 20 סנטיליטרים, 2 אונקיות נוזלים</string>
   <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
   <string name="save_edits">Save edits</string>
 </resources>
