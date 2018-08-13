@@ -1,5 +1,18 @@
 # Status updates for the Open Food Facts project
 
+## Week starting August 06th
+
+### Highlights
+
+* Added native editing.
+
+### Completed this week
+
+* Added salt field and auto compute salt value from sodium.
+* Added the app's version number in the comment field when adding or editing a product.
+* Added nutrient's modifier.
+* Get the language specific name and ingredients on changing the product language while editing.
+
 ## Week starting July 30th
 
 ### Completed this week
