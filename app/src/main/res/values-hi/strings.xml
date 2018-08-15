@@ -229,7 +229,7 @@
   <string name="txtPictureNeeded">रुकिए…</string>
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeededDialogNo">रद्द करें</string>
   <string name="toastSending">अपलोड हो रहा है</string>
   <string name="dataSaved">अपने डिवाइस पर स्थानीय रूप से सेव है</string>
   <string name="txtInfoAddUser">कृप्या अपना पासवर्ड और प्रवेश दर्ज करें</string>
