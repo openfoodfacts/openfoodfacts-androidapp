@@ -602,7 +602,7 @@
   <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
   <string name="hint_product_URL">Link of the official page of the product</string>
   <string name="product_language">उत्पाद भाषा: </string>
-  <string name="hint_emb_codes">उदाहरण: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+  <string name="hint_emb_codes">उदाहरण: FSSL 10013011001409</string>
   <string name="official_website">Official website</string>
   <string name="scan_QR_code">Scan QR Code for product website</string>
   <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
