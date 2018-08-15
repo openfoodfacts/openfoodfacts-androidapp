@@ -498,11 +498,11 @@
   <string name="confirm_logout">लॉगआउट करें?</string>
   <string name="logout_dialog_content">लॉग आउट करने के लिए निश्चित हैं?</string>
   <string name="dialog_cancel">रद्द करें</string>
-  <string name="choose_resolution">Choose Resolution</string>
+  <string name="choose_resolution">संकल्प चुनें</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
-  <string name="wikidata_information">Going further</string>
+  <string name="wikidata_information">अधिक जानकारी</string>
   <string name="description">विवरण: </string>
   <string name="title">शीर्षक: </string>
   <string name="Wikipedia">विकिपीडिया पर देखें</string>
@@ -602,13 +602,13 @@
   <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
   <string name="hint_product_URL">Link of the official page of the product</string>
   <string name="product_language">उत्पाद भाषा: </string>
-  <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+  <string name="hint_emb_codes">उदाहरण: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
   <string name="official_website">Official website</string>
   <string name="scan_QR_code">Scan QR Code for product website</string>
   <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
   <string name="image_uploaded_successfully">Image uploaded successfully</string>
   <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
-  <string name="ingredients_overwrite">Ingredients overwrite</string>
+  <string name="ingredients_overwrite">सामग्री ओवरराइट</string>
   <string name="choose_mine">मेरा चुनें</string>
   <string name="keep_previous_version">पिछला संस्करण रखें</string>
   <string name="product_name_overwrite">उत्पाद का नाम ओवरराइट करें</string>
@@ -618,9 +618,9 @@
   <string name="link_overwrite">लिंक ओवरराइट करें</string>
   <string name="save_product">क्या आप परिवर्तनों को सहेजना चाहते हैं?</string>
   <string name="error_adding_product">Something went wrong when adding product</string>
-  <string name="photos">Photos</string>
+  <string name="photos">तस्वीरें</string>
   <string name="please_wait">प्रतीक्षा करें</string>
-  <string name="product_uploaded_successfully">Product uploaded successfully</string>
+  <string name="product_uploaded_successfully">उत्पाद सफलतापूर्वक अपलोड किया गया</string>
   <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
   <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
   <string name="percent">%1$d%%</string>
@@ -666,10 +666,10 @@
   <string name="uploading_ingredients_image">सामग्री की तस्वीर अपलोड हो रही है</string>
   <string name="uploading_front_image">उत्पाद की तस्वीर अपलोड हो रही है</string>
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-  <string name="sign_in_to_edit">Please sign in to edit a product.</string>
+  <string name="sign_in_to_edit">किसी उत्पाद को संपादित करने के लिए कृपया साइन इन करें।</string>
   <string name="hint_quantity">उदाहरण: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
-  <string name="edit_product_title">Edit a product</string>
-  <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
-  <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
-  <string name="save_edits">Save edits</string>
+  <string name="edit_product_title">उत्पाद को संपादित करें</string>
+  <string name="hint_serving_size">उदाहरण: 60 g, 12 oz, 20cl, 2 fl oz</string>
+  <string name="nutrient_already_added">पोषण तथ्यों में %s पहले से मौजूद है</string>
+  <string name="save_edits">संपादन सहेजें</string>
 </resources>
