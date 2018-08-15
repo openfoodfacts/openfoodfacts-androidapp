@@ -514,6 +514,7 @@
                 android:gravity="center_vertical"
                 android:hint="@string/nutrition_alcohol"
                 android:inputType="textVisiblePassword"
+                android:imeOptions="actionDone"
                 android:paddingLeft="@dimen/spacing_small"
                 android:paddingRight="@dimen/spacing_small"
                 android:singleLine="true"
