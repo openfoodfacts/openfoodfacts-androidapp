@@ -30,10 +30,10 @@
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
-    <item>Summary</item>
+    <item>සාරාංශය</item>
     <item>අමුද්රව්ය</item>
     <item>Nutrition</item>
-    <item>Nutrition Table</item>
+    <item>පෝෂණ වගුව</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
