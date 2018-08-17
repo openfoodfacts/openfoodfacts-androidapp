@@ -182,6 +182,7 @@
         <item>b+sr+Latn</item>
         <item>be</item>
         <item>bn</item>
+        <item>bg</item>
         <item>ca</item>
         <item>cs</item>
         <item>da</item>
@@ -190,6 +191,8 @@
         <item>en</item>
         <item>eo</item>
         <item>es</item>
+        <item>et</item>
+        <item>eu</item>
         <item>fa</item>
         <item>fi</item>
         <item>fil</item>
@@ -204,13 +207,23 @@
         <item>hy</item>
         <item>id</item>
         <item>it</item>
+        <item>is</item>
         <item>ja</item>
         <item>kab</item>
         <item>kk</item>
+        <item>km</item>
         <item>ko</item>
         <item>ku</item>
+        <item>lo</item>
+        <item>lt</item>
         <item>lv</item>
+        <item>mg</item>
+        <item>ml</item>
+        <item>mn</item>
+        <item>ms</item
+        <item>mt</item>
         <item>my</item>
+        <item>ne</item>
         <item>no</item>
         <item>nb</item>
         <item>nl-BE</item>
@@ -220,15 +233,20 @@
         <item>pt</item>
         <item>ro</item>
         <item>ru</item>
+        <item>si</item>
         <item>sl</item>
+        <item>sk</item>
         <item>sv</item>
+        <item>ta</item>
         <item>te</item>
         <item>tg</item>
         <item>th</item>
         <item>ti</item>
         <item>tl</item>
         <item>tr</item>
+        <item>ug</item>
         <item>uk</item>
+        <item>uz</item>
         <item>vi</item>
         <item>wa</item>
         <item>wo</item>
