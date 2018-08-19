@@ -21,7 +21,7 @@ product_view_nutrition_summary_fr.png
 La nutrition, simplifiée
 
 product_view_allergen_alert_fr.png
-Alerte Allergène
+Alerte allergènes
 
 categories_fr.png
 Trouvez des alternatives pour vos aliments préférés
