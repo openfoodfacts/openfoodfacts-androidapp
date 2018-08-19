@@ -201,7 +201,7 @@
   <string name="txtSave">Enregistrer</string>
   <string name="txtSignIn">Se connecter</string>
   <string name="txtUser">Panneau utilisateur</string>
-  <string name="txtToastSaved">Utilisateur sauvegardé</string>
+  <string name="txtToastSaved">Utilisateur connecté</string>
   <string name="txtSalt">Sel</string>
   <string name="txtFat">Matières grasses</string>
   <string name="txtSugars">Sucres</string>
