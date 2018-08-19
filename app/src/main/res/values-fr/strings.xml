@@ -262,7 +262,7 @@
   <string name="txt_product_not_found">Pas de produits</string>
   <string name="delete_txt">Supprimer</string>
   <string name="sign_in_drawer">Se connecter</string>
-  <string name="alert_drawer">Alerte Allergène</string>
+  <string name="alert_drawer">Alerte allergènes</string>
   <string name="warning_allergens">Contient des allergènes</string>
   <string name="title_dialog_alert">Ajouter une alerte</string>
   <string name="toggle_flash">Flash</string>
@@ -279,14 +279,14 @@
   <string name="cancel_button">Annuler</string>
   <string name="login_button">Connexion</string>
   <string name="create_account_button">Créer un Compte</string>
-  <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
+  <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez à vérifier également par vous-même ! </string>
   <string name="from_gallery">Galerie photo</string>
   <string name="product_sent">Produit envoyé avec succès</string>
   <string name="action_edit_product">Modifier le produit</string>
   <string name="title_info_dialog">Comment cela fonctionne-t-il ?</string>
   <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
-  <string name="permission_camera">L\'autorisation de l\'appareil photo est nécessaire pour scanner des codes barres et prendre des photos.</string>
-  <string name="permission_title">Information sur les permissions</string>
+  <string name="permission_camera">L\'autorisation d\'utiliser l\'appareil photo est nécessaire pour scanner des code-barres et prendre des photos.</string>
+  <string name="permission_title">Informations sur les permissions</string>
   <string name="permission_denied">Veuillez activer la permission dans les paramètres</string>
   <string name="permission_storage">L\'autorisation de stockage est nécessaire pour prendre ou sélectionner des photos</string>
   <string name="info_download_data">Vous devez télécharger des données pour que cette fonctionnalité marche, veuillez appuyer sur « Oui » pour les télécharger.</string>
