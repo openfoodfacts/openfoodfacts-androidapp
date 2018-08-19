@@ -143,10 +143,10 @@
     <item>Vitamine B1 (Thiamine)</item>
     <item>Vitamine B12 (Cobalamine)</item>
     <item>Vitamine B2 (Riboflavine)</item>
-    <item>Vitamine B3 / Vitamine PP (niacine)</item>
-    <item>Vitamine B6 (pyridoxine)</item>
-    <item>Vitamine B9 (acide folique)</item>
-    <item>Vitamine C (acide ascorbique)</item>
+    <item>Vitamine B3 / Vitamine PP (Niacine)</item>
+    <item>Vitamine B6 (Pyridoxine)</item>
+    <item>Vitamine B9 (Acide folique)</item>
+    <item>Vitamine C (Acide ascorbique)</item>
     <item>Vitamine D</item>
     <item>Vitamine E</item>
     <item>Vitamine K</item>
@@ -197,7 +197,7 @@
   <string name="txtNutritionLevelHigh">en quantité élevée</string>
   <string name="txtLogin">Identifiant :</string>
   <string name="txtPass">Mot de passe :</string>
-  <string name="txtTitleHome">Ouvrez votre nourriture pour savoir ce que vous mangez</string>
+  <string name="txtTitleHome">Ouvrez votre nourriture et sachez ce que vous mangez</string>
   <string name="txtSave">Enregistrer</string>
   <string name="txtSignIn">Se connecter</string>
   <string name="txtUser">Panneau utilisateur</string>
@@ -205,7 +205,7 @@
   <string name="txtSalt">Sel</string>
   <string name="txtFat">Matières grasses</string>
   <string name="txtSugars">Sucres</string>
-  <string name="hintBarcode">Code à barres</string>
+  <string name="hintBarcode">Code-barres</string>
   <string name="hintLogin">Connexion</string>
   <string name="hintPass">Mot de passe</string>
   <string name="errorLogin">Identifiant ou mot de passe incorrect</string>
@@ -227,23 +227,23 @@
   <string name="txtSendAll">Tout envoyer</string>
   <string name="txtNoData">Aucune donnée</string>
   <string name="txtPictureNeeded">Veuillez patienter…</string>
-  <string name="txtPictureNeededDialogContent">Ajoutez au moins une image avant de le soumettre ce produit</string>
+  <string name="txtPictureNeededDialogContent">Ajoutez au moins une image avant de soumettre ce produit</string>
   <string name="txtPictureNeededDialogYes">Rester</string>
   <string name="txtPictureNeededDialogNo">Annuler</string>
   <string name="toastSending">Envoi en cours...</string>
-  <string name="dataSaved">Données enregistrées en local...</string>
+  <string name="dataSaved">Enregistré localement sur votre appareil</string>
   <string name="txtInfoAddUser">Veuillez saisir votre identifiant et mot de passe</string>
   <string name="txtDataUpdated">Données mises à jour</string>
   <string name="txtLoading">Chargement...</string>
-  <string name="txtDialogsContentDelete">Êtes-vous sûr(e) de vouloir supprimer ce brouillon?</string>
-  <string name="txtDialogsContentInfoSave">Le produit a été sauvegardé localement, vous pouvez l\'éditer dans le menu Édition en hors ligne</string>
+  <string name="txtDialogsContentDelete">Êtes-vous sûr(e) de vouloir supprimer ce brouillon ?</string>
+  <string name="txtDialogsContentInfoSave">Le produit a été sauvegardé localement, vous pouvez l\'éditer dans le menu « Édition hors-ligne »</string>
   <string name="txtBarcodeRequire">Code-barre requis</string>
   <string name="txtOk">OK</string>
   <string name="txtContentDialogUploading">Ne quittez pas durant l\'envoi...</string>
   <string name="txtAbout">Les photos que vous envoyez sont publiées sous la licence libre Creative Commons Attribution et partage à l\'identique.</string>
   <string name="txtAllsent">Produits envoyés</string>
   <string name="txtPalm">Le produit ne contient pas d\'huile de palme</string>
-  <string name="txtBarcodeNotValid">Code barre non valide</string>
+  <string name="txtBarcodeNotValid">Code-barres non valide</string>
   <string name="try_it_scan_now">Scanner un produit</string>
   <string name="share">Partager</string>
   <string name="translate">Traduire</string>
