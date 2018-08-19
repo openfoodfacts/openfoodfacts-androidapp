@@ -74,7 +74,7 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Acide alpha-linolénique / ALA (18: 3 n-3)</item>
+    <item>Acide alpha-linolénique / ALA (18:3 n-3)</item>
     <item>Acide arachidique (20:0)</item>
     <item>Acide arachidonique / AA / ARA (20:4 n-6)</item>
     <item>Acide béhénique (22:0)</item>
@@ -109,7 +109,7 @@
     <item>Acide lignocérique (24:0)</item>
     <item>Acide linoléique / LA (18:2 n-6)</item>
     <item>Magnésium</item>
-    <item>Maltodextrine</item>
+    <item>Maltodextrines</item>
     <item>Maltose</item>
     <item>Manganèse</item>
     <item>Acide de Mead (20:3 n-9)</item>
@@ -125,10 +125,10 @@
     <item>Acides gras oméga-6</item>
     <item>Acides gras oméga 9</item>
     <item>Acide palmitique (16:0)</item>
-    <item>Acide pantothénique / pantothénate (vitamine B5)</item>
+    <item>Acide pantothénique / Pantothénate (Vitamine B5)</item>
     <item>pH</item>
     <item>Phosphore</item>
-    <item>Alcools de sucre (Polyols)</item>
+    <item>Glycol (Polyols)</item>
     <item>Graisse polyinsaturée</item>
     <item>Potassium</item>
     <item>Sélénium</item>
