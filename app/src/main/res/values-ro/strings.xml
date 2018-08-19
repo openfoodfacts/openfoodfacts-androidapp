@@ -171,7 +171,7 @@
   <string name="alert_dialog_warning_title">Atenţie</string>
   <string name="alert_dialog_warning_msg_user">Numele de utilizator sau parola au fost modificate, vă rugăm actualizați datele de conectare.</string>
   <string name="alert_dialog_product_error_msg">Produsul nu a fost găsit, vă rugam încercați din nou.</string>
-  <string name="toast_retrieving">Se încarcă...</string>
+  <string name="toast_retrieving">Se încarcă…</string>
   <string name="txtGenericName">Numele general :</string>
   <string name="txtBarcode">Cod de bare:</string>
   <string name="txtQuantity">Cantitate:</string>
@@ -234,16 +234,16 @@
   <string name="txtPictureNeededDialogContent">Trebuie să adăugați cel puțin o fotografie înainte de a trimite acest produs</string>
   <string name="txtPictureNeededDialogYes">Oprire</string>
   <string name="txtPictureNeededDialogNo">Renunță</string>
-  <string name="toastSending">Se trimite...</string>
+  <string name="toastSending">Se trimite…</string>
   <string name="dataSaved">Salvat local pe dispozitiv</string>
   <string name="txtInfoAddUser">Introduceți numele de utilizator și parola</string>
   <string name="txtDataUpdated">Datele au fost actualizate</string>
-  <string name="txtLoading">Se încarcă...</string>
+  <string name="txtLoading">Se încarcă…</string>
   <string name="txtDialogsContentDelete">Sunteţi sigur(ă) că doriţi să ştergeţi această ciornă?</string>
   <string name="txtDialogsContentInfoSave">Produsul a fost salvat local, puteți să il modificați din meniul \"Editare offline\".</string>
   <string name="txtBarcodeRequire">Codul de bare este obligatoriu</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Vă rugăm nu opriți aplicația în cursul acestei operații...</string>
+  <string name="txtContentDialogUploading">Vă rugăm nu opriți aplicația în cursul acestei operații…</string>
   <string name="txtAbout">Fotografiile trimise sunt publicate sub licența Creative Commons Attribution and ShareAlike .</string>
   <string name="txtAllsent">Produsele au fost trimise</string>
   <string name="txtPalm">Produsul nu conține ulei de palmier</string>
@@ -314,7 +314,7 @@
   <string name="title_clear_history_dialog">Ștergeți</string>
   <string name="text_clear_history_dialog">Doriți să ștergeți tot istoricul scanărilor?</string>
   <string name="export_csv_history">Export în format CSV</string>
-  <string name="txt_exporting_history">Istoricul se exportă...</string>
+  <string name="txt_exporting_history">Istoricul se exportă…</string>
   <string name="txt_history_exported">Istoricul a fost exportat</string>
   <string name="permision_write_external_storage">Pentru a exporta istoricul este necesară permisiunea de a scrie în dispozitivul de stocare externă.</string>
   <string name="txt_nutrition_not_found">Nu este disponibil</string>
@@ -362,7 +362,7 @@
   <string name="contribution_without_account">Conectați-vă sau creați un cont pentru a păstra contribuțiile.</string>
   <string name="textCarbonFootprint">Amprenta carbon / Emisii CO2 </string>
   <string name="txtDialogPowerMode">Vizualizare rapidă</string>
-  <string name="txtSeeMore">Mai mult...</string>
+  <string name="txtSeeMore">Mai mult…</string>
   <string name="action_search">Căutare</string>
   <string name="search_hint">Căutați un produs</string>
   <string name="number_of_results">Număr de rezultate: </string>

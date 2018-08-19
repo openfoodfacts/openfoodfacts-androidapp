@@ -163,7 +163,7 @@
   <string name="alert_dialog_warning_title">警告</string>
   <string name="alert_dialog_warning_msg_user">ユーザー/パスワードを変更しました。情報を更新してください</string>
   <string name="alert_dialog_product_error_msg">製品が見つかりません。もう一度試してください</string>
-  <string name="toast_retrieving">読み込んでいます...</string>
+  <string name="toast_retrieving">読み込んでいます…</string>
   <string name="txtGenericName">一般名 :</string>
   <string name="txtBarcode">バーコード :</string>
   <string name="txtQuantity">量 :</string>
@@ -226,16 +226,16 @@
   <string name="txtPictureNeededDialogContent">この製品を送信する前に、少なくとも1枚の写真を追加する必要があります</string>
   <string name="txtPictureNeededDialogYes">このまま</string>
   <string name="txtPictureNeededDialogNo">破棄</string>
-  <string name="toastSending">アップロードしています...</string>
+  <string name="toastSending">アップロードしています…</string>
   <string name="dataSaved">お使いのデバイス内に保存しました</string>
   <string name="txtInfoAddUser">ログインとパスワードを入力してください</string>
   <string name="txtDataUpdated">データを更新しました</string>
-  <string name="txtLoading">読み込んでいます...</string>
+  <string name="txtLoading">読み込んでいます…</string>
   <string name="txtDialogsContentDelete">このドラフトを削除してもよろしいですか?</string>
   <string name="txtDialogsContentInfoSave">この製品はローカルに保存されます。オフライン編集 メニューで編集することができます</string>
   <string name="txtBarcodeRequire">バーコードが必要です</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">処理中はアプリを終了しないでください...</string>
+  <string name="txtContentDialogUploading">処理中はアプリを終了しないでください…</string>
   <string name="txtAbout">あなたが送信した画像はフリーのライセンスクリエイティブコモンズと同一条件許諾の下で公開されます。</string>
   <string name="txtAllsent">製品を送信しました</string>
   <string name="txtPalm">製品にはパーム油は含まれていません</string>
@@ -306,7 +306,7 @@
   <string name="title_clear_history_dialog">クリア</string>
   <string name="text_clear_history_dialog">すべてのスキャン履歴をクリアしますか?</string>
   <string name="export_csv_history">CSV をエクスポート</string>
-  <string name="txt_exporting_history">履歴のエクスポート中...</string>
+  <string name="txt_exporting_history">履歴のエクスポート中…</string>
   <string name="txt_history_exported">履歴をエクスポートしました</string>
   <string name="permision_write_external_storage">履歴をエクスポートするために、外部ストレージの書き込みアクセス許可が必要です。</string>
   <string name="txt_nutrition_not_found">適用外</string>

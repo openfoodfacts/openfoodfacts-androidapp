@@ -175,7 +175,7 @@
   <string name="alert_dialog_warning_title">Upozornenie</string>
   <string name="alert_dialog_warning_msg_user">Užívateľské meno/heslo bolo zmenené, prosím upravte informácie</string>
   <string name="alert_dialog_product_error_msg">Produkt nebol nájdený, vyskúšajte znova prosím</string>
-  <string name="toast_retrieving">Loading...</string>
+  <string name="toast_retrieving">Loading…</string>
   <string name="txtGenericName">Všeobecný názov :</string>
   <string name="txtBarcode">Čiarový kód :</string>
   <string name="txtQuantity">Množstvo :</string>
@@ -238,16 +238,16 @@
   <string name="txtPictureNeededDialogContent">Pred odoslaním tohto produktu by ste mali pridať aspoň jednu fotku</string>
   <string name="txtPictureNeededDialogYes">Zostať</string>
   <string name="txtPictureNeededDialogNo">Odstrániť</string>
-  <string name="toastSending">Uploading...</string>
+  <string name="toastSending">Uploading…</string>
   <string name="dataSaved">Uložené lokálne na vašom zariadení</string>
   <string name="txtInfoAddUser">Prosím zadajte užívateľské meno a heslo</string>
   <string name="txtDataUpdated">Dáta boli aktualizované</string>
-  <string name="txtLoading">Loading...</string>
+  <string name="txtLoading">Loading…</string>
   <string name="txtDialogsContentDelete">Ste si istý, že chcete odstrániť tento koncept?</string>
   <string name="txtDialogsContentInfoSave">Produkt je uložený lokálne, môžete ho upravovať použitím \"Upravovanie offline\" menu</string>
   <string name="txtBarcodeRequire">Je potrebný čiarový kód</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+  <string name="txtContentDialogUploading">Please don\'t exit during the process…</string>
   <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Products sent</string>
   <string name="txtPalm">The product does not contain any palm oil</string>
@@ -318,7 +318,7 @@
   <string name="title_clear_history_dialog">Vymazať</string>
   <string name="text_clear_history_dialog">Naozaj chcete vymazať celú históriu skenovania?</string>
   <string name="export_csv_history">Exportovať ako CSV</string>
-  <string name="txt_exporting_history">Exporting history...</string>
+  <string name="txt_exporting_history">Exporting history…</string>
   <string name="txt_history_exported">História bola exportovaná</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns="">
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/ -->
     <string name="website">https://world.openbeautyfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->

@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Ескерту</string>
   <string name="alert_dialog_warning_msg_user">Пайдаланушы/құпиясөз өзгертілген, ақпаратты жаңартыңыз</string>
   <string name="alert_dialog_product_error_msg">Өнім табылмады, тағы да көріңіз</string>
-  <string name="toast_retrieving">Жүктелуде...</string>
+  <string name="toast_retrieving">Жүктелуде…</string>
   <string name="txtGenericName">Common name :</string>
   <string name="txtBarcode">Штрих-код :</string>
   <string name="txtQuantity">Сан :</string>
@@ -230,16 +230,16 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Берілісте...</string>
+  <string name="toastSending">Берілісте…</string>
   <string name="dataSaved">Сіздің құрылғыңызда сақталған</string>
   <string name="txtInfoAddUser">Аты және құпиясөзді енгізіңіз</string>
   <string name="txtDataUpdated">Мәліметтер жаңартылды</string>
-  <string name="txtLoading">Жүктелуде...</string>
+  <string name="txtLoading">Жүктелуде…</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Өнім жергілікті сақталған, сіз оның мәзір Автономды Түзетуде түзете аласыз</string>
   <string name="txtBarcodeRequire">Штрих-код талап етеді</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">... үдірісінде шықпаңыз</string>
+  <string name="txtContentDialogUploading">… үдірісінде шықпаңыз</string>
   <string name="txtAbout">Сіз жолдаған фотосуреттер Creative Commons Attribution және ShareAlike лицензияға сай жарияланды.</string>
   <string name="txtAllsent">Өнім жіберілді</string>
   <string name="txtPalm">Өнім пальма майын құрамайды</string>
@@ -310,7 +310,7 @@
   <string name="title_clear_history_dialog">Clear</string>
   <string name="text_clear_history_dialog">Do you want to clear all scan history?</string>
   <string name="export_csv_history">Export CSV</string>
-  <string name="txt_exporting_history">Exporting history...</string>
+  <string name="txt_exporting_history">Exporting history…</string>
   <string name="txt_history_exported">History exported</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>

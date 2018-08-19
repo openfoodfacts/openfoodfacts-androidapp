@@ -175,7 +175,7 @@
   <string name="alert_dialog_warning_title">Увага</string>
   <string name="alert_dialog_warning_msg_user">Ім\'я користувача/Пароль було змінено. Будь ласка, оновіть інформацію.</string>
   <string name="alert_dialog_product_error_msg">Товар не знайдено. Будь ласка, спробуйте ще раз</string>
-  <string name="toast_retrieving">Loading...</string>
+  <string name="toast_retrieving">Loading…</string>
   <string name="txtGenericName">Загальне ім’я:</string>
   <string name="txtBarcode">Код товару:</string>
   <string name="txtQuantity">Вага/Об\'єм:</string>
@@ -238,16 +238,16 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Uploading...</string>
+  <string name="toastSending">Uploading…</string>
   <string name="dataSaved">Збережено на твоєму девайсі</string>
   <string name="txtInfoAddUser">Будь ласка, введіть логін та пароль</string>
   <string name="txtDataUpdated">Дані оновлено</string>
-  <string name="txtLoading">Loading...</string>
+  <string name="txtLoading">Loading…</string>
   <string name="txtDialogsContentDelete">Ви дійсно бажаєте видалити цей товар?</string>
   <string name="txtDialogsContentInfoSave">Товар збережено на Вашому пристрої, Ви можете редагувати його в меню \"Автономний режим\"</string>
   <string name="txtBarcodeRequire">Необхіден код товару</string>
   <string name="txtOk">Добре</string>
-  <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+  <string name="txtContentDialogUploading">Please don\'t exit during the process…</string>
   <string name="txtAbout">Зображення, які ви надсилаєте, публікуються під вільною ліцензією \"Creative Commons Attribution and ShareAlike\".</string>
   <string name="txtAllsent">Товари відправлено</string>
   <string name="txtPalm">Продукт не містить пальмової олії</string>
@@ -318,7 +318,7 @@
   <string name="title_clear_history_dialog">Очистити</string>
   <string name="text_clear_history_dialog">Ви дійсно бажаєте очистити історію пошуку?</string>
   <string name="export_csv_history">Зберегти у файл CSV</string>
-  <string name="txt_exporting_history">Exporting history...</string>
+  <string name="txt_exporting_history">Exporting history…</string>
   <string name="txt_history_exported">Історію збережено</string>
   <string name="permision_write_external_storage">Щоб зберегти історію, необхідно дати дозвіл на збереження.</string>
   <string name="txt_nutrition_not_found">N/A</string>

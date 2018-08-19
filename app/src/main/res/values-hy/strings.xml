@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Զգուշացում</string>
   <string name="alert_dialog_warning_msg_user">Օգտվողը/ գաղտնաբառը փոխվել է, խնդրում ենք թարմացնել տեղեկատվությունը</string>
   <string name="alert_dialog_product_error_msg">Մթերքը չի գտնվել, խնդրում ենք կրկին փորձել</string>
-  <string name="toast_retrieving">Բեռնում...</string>
+  <string name="toast_retrieving">Բեռնում…</string>
   <string name="txtGenericName">Ընդունված անվանում ՝</string>
   <string name="txtBarcode">Գծակոդ՝</string>
   <string name="txtQuantity">Քանակը`</string>
@@ -230,7 +230,7 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Բեռնավորում...</string>
+  <string name="toastSending">Բեռնավորում…</string>
   <string name="dataSaved">Պահպանվել է Ձեր սարքի վրա</string>
   <string name="txtInfoAddUser">Մուտքագրեք մուտքանունը և գաղտնաբառը</string>
   <string name="txtDataUpdated">Տվյալները թարմացվել են</string>
@@ -239,7 +239,7 @@
   <string name="txtDialogsContentInfoSave">Մթերքը պահպանվել է տեղում, Դուք կարող եք փոփոխել այդ «Անցանց խմբագրում» բաժնում</string>
   <string name="txtBarcodeRequire">Պահանջվում է գծակոդ</string>
   <string name="txtOk">Լավ</string>
-  <string name="txtContentDialogUploading">Խնդրում ենք,  դուրս մի՛ եկեք գործընթացի ժամանակ...</string>
+  <string name="txtContentDialogUploading">Խնդրում ենք,  դուրս մի՛ եկեք գործընթացի ժամանակ…</string>
   <string name="txtAbout">Ձեր ուղարկվող լուսանկարները հրապարակվում են Creative Commons Attribution-ի և ShareAlike-ի ազատ լիցենզիայով։</string>
   <string name="txtAllsent">Մթերքներն ուղարկվել են</string>
   <string name="txtPalm">Մթերքը չի պարունակում արմավենու յուղ</string>
@@ -310,7 +310,7 @@
   <string name="title_clear_history_dialog">Clear</string>
   <string name="text_clear_history_dialog">Do you want to clear all scan history?</string>
   <string name="export_csv_history">Export CSV</string>
-  <string name="txt_exporting_history">Exporting history...</string>
+  <string name="txt_exporting_history">Exporting history…</string>
   <string name="txt_history_exported">History exported</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>

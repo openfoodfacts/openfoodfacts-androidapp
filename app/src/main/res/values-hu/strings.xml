@@ -230,7 +230,7 @@
   <string name="txtPictureNeededDialogContent">Hozzá kell adnia legalább egy képet mielőtt beküldi ezt a terméket</string>
   <string name="txtPictureNeededDialogYes">Marad</string>
   <string name="txtPictureNeededDialogNo">Elvet</string>
-  <string name="toastSending">Feltöltés...</string>
+  <string name="toastSending">Feltöltés…</string>
   <string name="dataSaved">Elmentve az ön készülékére</string>
   <string name="txtInfoAddUser">Kérem, írja be a bejelentkezési adatait és jelszavát</string>
   <string name="txtDataUpdated">Adatok frissítve</string>

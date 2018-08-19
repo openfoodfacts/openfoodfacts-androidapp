@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Aviso</string>
   <string name="alert_dialog_warning_msg_user">O utilizador/palavra-passe mudou, por favor actualize a informação</string>
   <string name="alert_dialog_product_error_msg">Produto não encontrado, por favor tente novamente</string>
-  <string name="toast_retrieving">A carregar...</string>
+  <string name="toast_retrieving">A carregar…</string>
   <string name="txtGenericName">Nome genérico :</string>
   <string name="txtBarcode">Código de barras</string>
   <string name="txtQuantity">Quantidade :</string>
@@ -230,16 +230,16 @@
   <string name="txtPictureNeededDialogContent">Você deve adicionar pelo menos uma foto antes de enviar este produto</string>
   <string name="txtPictureNeededDialogYes">Ficar</string>
   <string name="txtPictureNeededDialogNo">Descartar</string>
-  <string name="toastSending">A enviar...</string>
+  <string name="toastSending">A enviar…</string>
   <string name="dataSaved">Guardado no seu dispositivo</string>
   <string name="txtInfoAddUser">Por favor, digite o nome de utilizador e palavra-passe</string>
   <string name="txtDataUpdated">Dados actualizados</string>
-  <string name="txtLoading">A carregar...</string>
+  <string name="txtLoading">A carregar…</string>
   <string name="txtDialogsContentDelete">Tem a certeza que deseja eliminar este rascunho?</string>
   <string name="txtDialogsContentInfoSave">O produto está guardado localmente, poderá editá-lo no menu \"Editar Offline\"</string>
   <string name="txtBarcodeRequire">Código de barras necessário</string>
   <string name="txtOk">Ok</string>
-  <string name="txtContentDialogUploading">Por favor não saia durante o procedimento...</string>
+  <string name="txtContentDialogUploading">Por favor não saia durante o procedimento…</string>
   <string name="txtAbout">As fotos que enviar ficam publicadas sob a licença livre Creative Commons Atribuição-CompartilhaIgual.</string>
   <string name="txtAllsent">Produtos enviados</string>
   <string name="txtPalm">O produto não contém óleo de palma</string>
@@ -310,7 +310,7 @@
   <string name="title_clear_history_dialog">Limpar</string>
   <string name="text_clear_history_dialog">Deseja limpar completamente o histórico de digitalizações?</string>
   <string name="export_csv_history">Exportar para CSV</string>
-  <string name="txt_exporting_history">A exportar o histórico...</string>
+  <string name="txt_exporting_history">A exportar o histórico…</string>
   <string name="txt_history_exported">Histórico exportado</string>
   <string name="permision_write_external_storage">Para exportar o histórico é necessária a autorização de escrita em armazenamento externo.</string>
   <string name="txt_nutrition_not_found">N/D</string>
@@ -501,7 +501,7 @@
   <string name="pref_resolution_summary">Escolha uma resolução para o upload de imagens</string>
   <string name="image_upload_resolution">Resolução de upload de imagem</string>
   <string name="can_add_barcode">Está com problemas ao digitalizar?\nArraste para cima para digitar o código de barras</string>
-  <string name="wikidata_information">Mais...</string>
+  <string name="wikidata_information">Mais…</string>
   <string name="description">Descrição: </string>
   <string name="title">Título: </string>
   <string name="Wikipedia">Ver na Wikipedia</string>

@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Abisua</string>
   <string name="alert_dialog_warning_msg_user">Erabiltzailea/pasahitza aldatu egin da, eguneratu informazioa mesedez</string>
   <string name="alert_dialog_product_error_msg">Ez da produktua aurkitu, saiatu berriro mesedez</string>
-  <string name="toast_retrieving">Loading...</string>
+  <string name="toast_retrieving">Loading…</string>
   <string name="txtGenericName">Izen arrunta :</string>
   <string name="txtBarcode">Barra kodea :</string>
   <string name="txtQuantity">Kopurua :</string>
@@ -230,16 +230,16 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Egon</string>
   <string name="txtPictureNeededDialogNo">Baztertu</string>
-  <string name="toastSending">Uploading...</string>
+  <string name="toastSending">Uploading…</string>
   <string name="dataSaved">Zure gailuan gordeta</string>
   <string name="txtInfoAddUser">Sartu erabiltzaile eta pasahitza mesedez</string>
   <string name="txtDataUpdated">Datuak egunaratu dira</string>
-  <string name="txtLoading">Loading...</string>
+  <string name="txtLoading">Loading…</string>
   <string name="txtDialogsContentDelete">Ziur zaude zirriborro hau ezabatu nahi duzula?</string>
   <string name="txtDialogsContentInfoSave">Produktu hau lokalki gordea dago, \"Offline edizioa\" menuan edita dezakezu</string>
   <string name="txtBarcodeRequire">Barra kodea beharrezkoa da</string>
   <string name="txtOk">Ados</string>
-  <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+  <string name="txtContentDialogUploading">Please don\'t exit during the process…</string>
   <string name="txtAbout">Bidalitako irudiak Creative Commons Attribution and ShareAlike lizentzia librean argitaratzen dira.</string>
   <string name="txtAllsent">Bidali dira produktuak</string>
   <string name="txtPalm">Produktuak ez du palmako oliorik</string>
@@ -310,7 +310,7 @@
   <string name="title_clear_history_dialog">Garbitu</string>
   <string name="text_clear_history_dialog">Eskaneatze historia guztia garbitu nahi al duzu?</string>
   <string name="export_csv_history">Esportatu CSVa</string>
-  <string name="txt_exporting_history">Exporting history...</string>
+  <string name="txt_exporting_history">Exporting history…</string>
   <string name="txt_history_exported">Historiala esportatu da</string>
   <string name="permision_write_external_storage">Kanpo biltegiratzean idazteko baimena behar da historiala esportatzeko.</string>
   <string name="txt_nutrition_not_found">E/E</string>

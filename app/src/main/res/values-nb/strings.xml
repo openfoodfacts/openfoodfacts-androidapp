@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Advarsel</string>
   <string name="alert_dialog_warning_msg_user">Brukernavn/passord er endret, vennligst oppdater dine innloggingsdetaljer</string>
   <string name="alert_dialog_product_error_msg">Produktet ble ikke funnet, vennligst prøv igjen</string>
-  <string name="toast_retrieving">Laster...</string>
+  <string name="toast_retrieving">Laster…</string>
   <string name="txtGenericName">Vanlig navn :</string>
   <string name="txtBarcode">Strekkode :</string>
   <string name="txtQuantity">Størrelse (vekt/volum):</string>
@@ -234,12 +234,12 @@
   <string name="dataSaved">Lagret lokalt på din enhet</string>
   <string name="txtInfoAddUser">Vennligst fyll inn ditt brukernavn og passord</string>
   <string name="txtDataUpdated">Data lastet opp</string>
-  <string name="txtLoading">Laster...</string>
+  <string name="txtLoading">Laster…</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">P</string>
   <string name="txtBarcodeRequire">Strekkode behøves</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Ikke logg av eller lukk siden mens prosessen pågår...</string>
+  <string name="txtContentDialogUploading">Ikke logg av eller lukk siden mens prosessen pågår…</string>
   <string name="txtAbout">Bildene du laster opp blir publisert i henhold til The Free Licence Creative Commons Attribution og ShareAlike.</string>
   <string name="txtAllsent">Produkter sendt</string>
   <string name="txtPalm">Produktet inneholder ikke palmeolje</string>
@@ -310,7 +310,7 @@
   <string name="title_clear_history_dialog">Tøm</string>
   <string name="text_clear_history_dialog">Ønsker du å tømme din skanne-historikk?</string>
   <string name="export_csv_history">Eksporter CSV</string>
-  <string name="txt_exporting_history">Eksporterer historikk...</string>
+  <string name="txt_exporting_history">Eksporterer historikk…</string>
   <string name="txt_history_exported">Historikk eksportert</string>
   <string name="permision_write_external_storage">Tilgang til ekstern lagring er nødvendig for å eksportere historikken</string>
   <string name="txt_nutrition_not_found">N/A</string>

@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">اخطار</string>
   <string name="alert_dialog_warning_msg_user">نام کاربری / رمز عبور تغییر کرده است، لطفا اطلاعات را به روز رسانی کنید</string>
   <string name="alert_dialog_product_error_msg">محصول یافت نشد، لطفا دوباره امتحان کنید</string>
-  <string name="toast_retrieving">درحال بارگذاری...</string>
+  <string name="toast_retrieving">درحال بارگذاری…</string>
   <string name="txtGenericName">نام های رایج:</string>
   <string name="txtBarcode">بارکد :</string>
   <string name="txtQuantity">تعداد:</string>
@@ -230,16 +230,16 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">درحال بارگذاری...</string>
+  <string name="toastSending">درحال بارگذاری…</string>
   <string name="dataSaved">به صورت محلی بر روی دستگاه شما ذخیره شد</string>
   <string name="txtInfoAddUser">لطفا نام کاربری و رمز عبور خود را وارد کنید</string>
   <string name="txtDataUpdated">داده ها بروز شدند</string>
-  <string name="txtLoading">درحال بارگذاری...</string>
+  <string name="txtLoading">درحال بارگذاری…</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">محصول به صورت محلی ذخیره می شود، شما می توانید آن را در منوی \"ویرایش آفلاین\" ویرایش کنید</string>
   <string name="txtBarcodeRequire">بارکد مورد نیاز است</string>
   <string name="txtOk">تأیید</string>
-  <string name="txtContentDialogUploading">لطفاً در طول فرآیند خارج نشوید ...</string>
+  <string name="txtContentDialogUploading">لطفاً در طول فرآیند خارج نشوید …</string>
   <string name="txtAbout">عکس هایی که میفرستید تحت لیسانس Creative Commons Attribution و ShareAlike منتشر میشوند.</string>
   <string name="txtAllsent">محصولات ارسال شدند</string>
   <string name="txtPalm">این محصول حاوی روغن پالم نیست</string>
@@ -310,7 +310,7 @@
   <string name="title_clear_history_dialog">پاک سازی</string>
   <string name="text_clear_history_dialog">آیا می خواهید تمام تاریخچه اسکن را پاک کنید؟</string>
   <string name="export_csv_history">خروجی گرفتن در قالب CSV</string>
-  <string name="txt_exporting_history">در حال خروجی گرفتن از تاریخچه...</string>
+  <string name="txt_exporting_history">در حال خروجی گرفتن از تاریخچه…</string>
   <string name="txt_history_exported">خروجی تاریخچه ذخیره شد</string>
   <string name="permision_write_external_storage">دسترسی حافظه خارجی برای خروجی گرفتن از تاریخچه لازم است.</string>
   <string name="txt_nutrition_not_found">ناموجود</string>

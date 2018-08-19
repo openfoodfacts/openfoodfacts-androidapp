@@ -230,7 +230,7 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Blijf</string>
   <string name="txtPictureNeededDialogNo">Negeren</string>
-  <string name="toastSending">Aan het doorsturen...</string>
+  <string name="toastSending">Aan het doorsturen…</string>
   <string name="dataSaved">Lokaal opgeslagen</string>
   <string name="txtInfoAddUser">Uw gebruikersnaam en en wachtwoord alstublieft</string>
   <string name="txtDataUpdated">Gegevens bijgewerkt</string>
@@ -239,7 +239,7 @@
   <string name="txtDialogsContentInfoSave">Het product is lokaal opgeslagen, u kunt het bewerken in het Offline Edit-menu</string>
   <string name="txtBarcodeRequire">Streepjescode verplicht</string>
   <string name="txtOk">Ok</string>
-  <string name="txtContentDialogUploading">Tijdens de bewerking niet afsluiten alstublieft...</string>
+  <string name="txtContentDialogUploading">Tijdens de bewerking niet afsluiten alstublieft…</string>
   <string name="txtAbout">De foto\'s die u instuurt vallen onder de vrije licentie Creative Commons Attribution and ShareAlike (Naamsvermelding-GelijkDelen).</string>
   <string name="txtAllsent">Producten verzonden</string>
   <string name="txtPalm">Product bevat geen palmolie</string>

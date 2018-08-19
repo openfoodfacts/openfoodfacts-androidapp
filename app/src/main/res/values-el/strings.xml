@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Warning</string>
   <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
   <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
-  <string name="toast_retrieving">Loading...</string>
+  <string name="toast_retrieving">Loading…</string>
   <string name="txtGenericName">Κοινό/Γενικό όνομα :</string>
   <string name="txtBarcode">Barcode :</string>
   <string name="txtQuantity">Ποσότητα :</string>
@@ -230,16 +230,16 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Μεταφόρτωση...</string>
+  <string name="toastSending">Μεταφόρτωση…</string>
   <string name="dataSaved">Αποθηκεύτηκε τοπικά στη συσκευή σας</string>
   <string name="txtInfoAddUser">Παρακαλούμε εισάγετε το όνομα χρήστη και κωδικό πρόσβασης</string>
   <string name="txtDataUpdated">Τα δεδομένα ενημερώθηκαν</string>
-  <string name="txtLoading">Loading...</string>
+  <string name="txtLoading">Loading…</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Το προϊόν είναι αποθηκευμένο τοπικά, μπορείτε να το επεξεργαστείτε στο μενού «Επεξεργασία χωρίς σύνδεση»</string>
   <string name="txtBarcodeRequire">Απαιτείται Barcode</string>
   <string name="txtOk">Εντάξει</string>
-  <string name="txtContentDialogUploading">Παρακαλούμε μην βγείτε κατά την διάρκεια της διαδικασίας...</string>
+  <string name="txtContentDialogUploading">Παρακαλούμε μην βγείτε κατά την διάρκεια της διαδικασίας…</string>
   <string name="txtAbout">Οι φωτογραφίες που στέλνετε δημοσιεύονται με την άδεια Creative Commons Attribution και ShareAlike.</string>
   <string name="txtAllsent">Τα προϊόντα αποστάλθηκαν</string>
   <string name="txtPalm">Το προϊόν δεν περιέχει φοινικέλαιο</string>
@@ -310,7 +310,7 @@
   <string name="title_clear_history_dialog">Clear</string>
   <string name="text_clear_history_dialog">Do you want to clear all scan history?</string>
   <string name="export_csv_history">Export CSV</string>
-  <string name="txt_exporting_history">Exporting history...</string>
+  <string name="txt_exporting_history">Exporting history…</string>
   <string name="txt_history_exported">History exported</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>

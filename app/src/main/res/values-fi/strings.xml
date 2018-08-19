@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Varoitus</string>
   <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
   <string name="alert_dialog_product_error_msg">Tuotetta ei löytynyt, yritä uudelleen</string>
-  <string name="toast_retrieving">Ladataan...</string>
+  <string name="toast_retrieving">Ladataan…</string>
   <string name="txtGenericName">Yleisnimi :</string>
   <string name="txtBarcode">Viivakoodi:</string>
   <string name="txtQuantity">Määrä:</string>
@@ -230,16 +230,16 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Lähetetään...</string>
+  <string name="toastSending">Lähetetään…</string>
   <string name="dataSaved">Tallennettu paikallisesti laitteellesi</string>
   <string name="txtInfoAddUser">Anna käyttäjätunnuksesi ja salasanasi</string>
   <string name="txtDataUpdated">Data updated</string>
-  <string name="txtLoading">Ladataan...</string>
+  <string name="txtLoading">Ladataan…</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Viivakoodi vaaditaan</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+  <string name="txtContentDialogUploading">Please don\'t exit during the process…</string>
   <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Tuotteet lähetetty</string>
   <string name="txtPalm">The product does not contain any palm oil</string>
@@ -310,7 +310,7 @@
   <string name="title_clear_history_dialog">Tyhjennä</string>
   <string name="text_clear_history_dialog">Haluatko tyhjentää koko skannaushistorian?</string>
   <string name="export_csv_history">Vie CSV:nä</string>
-  <string name="txt_exporting_history">Viedään historiaa...</string>
+  <string name="txt_exporting_history">Viedään historiaa…</string>
   <string name="txt_history_exported">Historia viety</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>

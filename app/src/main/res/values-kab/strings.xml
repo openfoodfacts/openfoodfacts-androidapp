@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">ɣuṛ-k</string>
   <string name="alert_dialog_warning_msg_user">Milk</string>
   <string name="alert_dialog_product_error_msg">Ulac afaris,ttxil-k ɛreḍ tikelt nniḍen</string>
-  <string name="toast_retrieving">Asali...</string>
+  <string name="toast_retrieving">Asali…</string>
   <string name="txtGenericName">Isem amezdi :</string>
   <string name="txtBarcode">Tangalt s ifeggagen:</string>
   <string name="txtQuantity">Tasmendna</string>
@@ -231,11 +231,11 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Asider...</string>
+  <string name="toastSending">Asider…</string>
   <string name="dataSaved">Sekles deg kra n wadeg deg tmacint-ik</string>
   <string name="txtInfoAddUser">Ma ulac aɣilif, ssekcem isem-ik d tsarutt</string>
   <string name="txtDataUpdated">Ttwasidren-d yisefka</string>
-  <string name="txtLoading">Asali...</string>
+  <string name="txtLoading">Asali…</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
@@ -311,7 +311,7 @@
   <string name="title_clear_history_dialog">Sfeḍ</string>
   <string name="text_clear_history_dialog">Tebɣiḍ ad tsefḍeḍ akk amazray n uḍummu?</string>
   <string name="export_csv_history">Export CSV</string>
-  <string name="txt_exporting_history">Exporting history...</string>
+  <string name="txt_exporting_history">Exporting history…</string>
   <string name="txt_history_exported">History exported</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">N/A</string>

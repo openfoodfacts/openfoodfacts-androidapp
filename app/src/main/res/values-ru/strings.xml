@@ -238,7 +238,7 @@
   <string name="txtPictureNeededDialogContent">Перед отправкой этого продукта вы должны добавить по крайней мере одну фотографию</string>
   <string name="txtPictureNeededDialogYes">Оставаться</string>
   <string name="txtPictureNeededDialogNo">Отменить</string>
-  <string name="toastSending">Передача...</string>
+  <string name="toastSending">Передача…</string>
   <string name="dataSaved">Сохранено на вашем устройстве</string>
   <string name="txtInfoAddUser">Введите имя и пароль</string>
   <string name="txtDataUpdated">Данные обновлены</string>
@@ -247,7 +247,7 @@
   <string name="txtDialogsContentInfoSave">Продукт сохранён локально, вы можете редактировать его в меню Автономное редактирование</string>
   <string name="txtBarcodeRequire">Требуется штрих-код</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Не выходите в процессе...</string>
+  <string name="txtContentDialogUploading">Не выходите в процессе…</string>
   <string name="txtAbout">Фотографии, которые вы отправляете, опубликованы под свободной лицензией Creative Commons Attribution и ShareAlike.</string>
   <string name="txtAllsent">Продукты отправлены</string>
   <string name="txtPalm">Продукт не содержит пальмовое масло</string>
@@ -318,7 +318,7 @@
   <string name="title_clear_history_dialog">Очистить</string>
   <string name="text_clear_history_dialog">Действительно очистить историю сканирования?</string>
   <string name="export_csv_history">Экспорт в CSV</string>
-  <string name="txt_exporting_history">Экспорт истории...</string>
+  <string name="txt_exporting_history">Экспорт истории…</string>
   <string name="txt_history_exported">История экспортирована</string>
   <string name="permision_write_external_storage">Разрешение записи на SD карту требуется для экспорта истории.</string>
   <string name="txt_nutrition_not_found">Нет данных</string>
@@ -644,7 +644,7 @@
   <string name="looksGood">Выглядит хорошо</string>
   <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
   <string name="traces">Следы</string>
-  <string name="traces_hint">Укажите ингредиенты, упоминаемые как \"Может содержать следы...\", \"Сделано на фабрике, которая также использует...\" и т. д. \nПримеры: молоко, глютен, орехи</string>
+  <string name="traces_hint">Укажите ингредиенты, упоминаемые как \"Может содержать следы…\", \"Сделано на фабрике, которая также использует...\" и т. д. \nПримеры: молоко, глютен, орехи</string>
   <string name="nutrition_facts_not_specified">Пищевая ценность не указана на продукте.</string>
   <string name="nutrition_facts_picture">Фото пищевой ценности</string>
   <string name="for_100g_100ml">В 100 г/100 мл</string>

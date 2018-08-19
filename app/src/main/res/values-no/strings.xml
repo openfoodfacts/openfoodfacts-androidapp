@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Advarsel</string>
   <string name="alert_dialog_warning_msg_user">Brukeren/passordet har blitt endret, vennligst oppdatér innloggingsdetaljene</string>
   <string name="alert_dialog_product_error_msg">Produkt ikke funnet, vennligst prøv igjen</string>
-  <string name="toast_retrieving">Laster inn...</string>
+  <string name="toast_retrieving">Laster inn…</string>
   <string name="txtGenericName">Vanlig navn :</string>
   <string name="txtBarcode">Strekkode :</string>
   <string name="txtQuantity">Mengde :</string>
@@ -230,16 +230,16 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Laster opp...</string>
+  <string name="toastSending">Laster opp…</string>
   <string name="dataSaved">Lagret lokalt på enheten din</string>
   <string name="txtInfoAddUser">Vennligst angi brukernavnet og passordet ditt</string>
   <string name="txtDataUpdated">Data oppdatert</string>
-  <string name="txtLoading">Laster inn...</string>
+  <string name="txtLoading">Laster inn…</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Dette produktet er lagret lokalt, du kan redigere det uten nettverkstilkobling</string>
   <string name="txtBarcodeRequire">Strekkode kreves</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Vennligst ikke avslutt under prosessen...</string>
+  <string name="txtContentDialogUploading">Vennligst ikke avslutt under prosessen…</string>
   <string name="txtAbout">Bildene du sender inn blir publisert under den frie lisensen Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Produkter sendt</string>
   <string name="txtPalm">Produktet inneholder ingen palmeolje</string>
@@ -310,7 +310,7 @@
   <string name="title_clear_history_dialog">Tøm</string>
   <string name="text_clear_history_dialog">Vil du tømme hele skanneloggen din?</string>
   <string name="export_csv_history">Eksportér CSV</string>
-  <string name="txt_exporting_history">Eksporterer logg...</string>
+  <string name="txt_exporting_history">Eksporterer logg…</string>
   <string name="txt_history_exported">Logg eksportert</string>
   <string name="permision_write_external_storage">Tillatelse til å skrive ekstern lagring er nødvendig for å eksportere logg.</string>
   <string name="txt_nutrition_not_found">N/A</string>

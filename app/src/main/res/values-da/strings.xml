@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Advarsel</string>
   <string name="alert_dialog_warning_msg_user">Brugernavn/adgangskode er blevet ændret. Opdatér venligst information</string>
   <string name="alert_dialog_product_error_msg">Produkt ikke fundet, prøv igen</string>
-  <string name="toast_retrieving">Indlæser...</string>
+  <string name="toast_retrieving">Indlæser…</string>
   <string name="txtGenericName">Almindeligt navn :</string>
   <string name="txtBarcode">Stregkode :</string>
   <string name="txtQuantity">Mængde :</string>
@@ -230,16 +230,16 @@
   <string name="txtPictureNeededDialogContent">Du bør tilføje mindst ét foto, inden du indsender dette produkt</string>
   <string name="txtPictureNeededDialogYes">Tilføj foto</string>
   <string name="txtPictureNeededDialogNo">Kassér</string>
-  <string name="toastSending">Uploader...</string>
+  <string name="toastSending">Uploader…</string>
   <string name="dataSaved">Gemt lokalt på din enhed</string>
   <string name="txtInfoAddUser">Indtast venligst dit brugernavn og adgangskode</string>
   <string name="txtDataUpdated">Data opdateret</string>
-  <string name="txtLoading">Indlæser...</string>
+  <string name="txtLoading">Indlæser…</string>
   <string name="txtDialogsContentDelete">Sikker på, at du vil fjerne dette udkast?</string>
   <string name="txtDialogsContentInfoSave">Produktet er gemt på enheden. Du kan redigere det via menuen \"Offline-redigering\"</string>
   <string name="txtBarcodeRequire">Stregkode kræves</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Afslut venligst ikke under processen...</string>
+  <string name="txtContentDialogUploading">Afslut venligst ikke under processen…</string>
   <string name="txtAbout">Fotoene, du indsender, udgives under den gratis licens Creative Commons Kreditering og ShareAlike.</string>
   <string name="txtAllsent">Produkter sendt</string>
   <string name="txtPalm">Dette produkt indeholder ingen palmeolie</string>
@@ -310,7 +310,7 @@
   <string name="title_clear_history_dialog">Ryd</string>
   <string name="text_clear_history_dialog">Vil du slette al scanningshistorik?</string>
   <string name="export_csv_history">Eksport CSV</string>
-  <string name="txt_exporting_history">Exporting history...</string>
+  <string name="txt_exporting_history">Exporting history…</string>
   <string name="txt_history_exported">Historik eksporteret</string>
   <string name="permision_write_external_storage">Tilladelse til skrivning på eksternt lager er nødvendig for at eksportere historik.</string>
   <string name="txt_nutrition_not_found">Ikke fundet</string>

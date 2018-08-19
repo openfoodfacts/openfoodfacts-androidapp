@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Aviso</string>
   <string name="alert_dialog_warning_msg_user">O usuario/contrasinal cambiou, actualice a información</string>
   <string name="alert_dialog_product_error_msg">Produto non atopado, ténteo de novo</string>
-  <string name="toast_retrieving">Cargando...</string>
+  <string name="toast_retrieving">Cargando…</string>
   <string name="txtGenericName">Nome común :</string>
   <string name="txtBarcode">Código de barras :</string>
   <string name="txtQuantity">Cantidade :</string>
@@ -234,12 +234,12 @@
   <string name="dataSaved">Gardado localmente no seu dispositivo</string>
   <string name="txtInfoAddUser">Introduza o usuario e o contrasinal</string>
   <string name="txtDataUpdated">Actualizáronse os datos</string>
-  <string name="txtLoading">Cargando...</string>
+  <string name="txtLoading">Cargando…</string>
   <string name="txtDialogsContentDelete">Seguro que quere eliminar este borrador?</string>
   <string name="txtDialogsContentInfoSave">O produto gárdase localmente, pode editalo no menú «Editar sen conexión».</string>
   <string name="txtBarcodeRequire">Precísase código de barras</string>
   <string name="txtOk">Aceptar</string>
-  <string name="txtContentDialogUploading">Por favor, non saia durante o proceso...</string>
+  <string name="txtContentDialogUploading">Por favor, non saia durante o proceso…</string>
   <string name="txtAbout">As imaxes que envía publícanse baixo a licenza libre Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Enviáronse os produtos</string>
   <string name="txtPalm">O produto non contén aceite de palma</string>
@@ -310,7 +310,7 @@
   <string name="title_clear_history_dialog">Limpar</string>
   <string name="text_clear_history_dialog">Desexa borrar o historial de escaneos?</string>
   <string name="export_csv_history">Exportar CSV</string>
-  <string name="txt_exporting_history">Exportando o historial...</string>
+  <string name="txt_exporting_history">Exportando o historial…</string>
   <string name="txt_history_exported">Historial exportado</string>
   <string name="permision_write_external_storage">Precísanse permisos de escritura para o almacenamento externo co fin de exportar o historial.</string>
   <string name="txt_nutrition_not_found">N/D</string>
