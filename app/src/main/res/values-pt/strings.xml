@@ -113,8 +113,8 @@
   <string name="msg_share">Ver este produto no Open Food Facts :</string>
   <string name="create_account">Inscrever</string>
   <string name="home_drawer">Início</string>
-  <string name="open_beauty_drawer">Open Beauty Facts - Portugal</string>
-  <string name="open_food_drawer">Open Food Facts - Portugal</string>
+  <string name="open_beauty_drawer">Open Beauty Facts</string>
+  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">Procurar</string>
   <string name="search_by_barcode_drawer">Escreva o código de barras</string>
   <string name="search_by_name_drawer">Pesquisar pelo nome</string>

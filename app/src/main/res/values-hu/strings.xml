@@ -317,8 +317,7 @@
   <string name="no_brand">Nincs márka</string>
   <string name="no_title">Nincs cím</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">%1$s %2$s tápértékadatainak táblázata</string>
-  <string name="check_facts">Ellenőrzés</string>
+    <string name="check_facts">Ellenőrzés</string>
   <string name="nutrition">Tápanyag</string>
   <string name="calculated_nutrition">Kiszámított tápanyag</string>
   <string name="please_enter_weight">Kérem, írja be a súlyt</string>

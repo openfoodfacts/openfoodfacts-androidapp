@@ -325,8 +325,7 @@
   <string name="no_brand">Žiadna značka</string>
   <string name="no_title">Žiadny názov</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Overiť</string>
+    <string name="check_facts">Overiť</string>
   <string name="nutrition">Nutričné hodnoty</string>
   <string name="calculated_nutrition">Vypočítaná výživa</string>
   <string name="please_enter_weight">Prosím zadajte hmotnosť</string>

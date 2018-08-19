@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">चेतावनी</string>
   <string name="alert_dialog_warning_msg_user">उपयोगकर्ता/ पासवर्ड बदल गया है,  कृप्या  जानकारी अपडेट करें</string>
   <string name="alert_dialog_product_error_msg">उत्पाद नहीं मिला,  फिर प्रयास करें</string>
-  <string name="toast_retrieving">लोड किया जा रहा है...</string>
+  <string name="toast_retrieving">लोड किया जा रहा है…</string>
   <string name="txtGenericName">सामान्य नाम</string>
   <string name="txtBarcode">बारकोड:</string>
   <string name="txtQuantity">मात्रा:</string>
@@ -234,12 +234,12 @@
   <string name="dataSaved">अपने डिवाइस पर स्थानीय रूप से सेव है</string>
   <string name="txtInfoAddUser">कृप्या अपना पासवर्ड और प्रवेश दर्ज करें</string>
   <string name="txtDataUpdated">डेटा अपडेट</string>
-  <string name="txtLoading">लोड हो रहा है...</string>
+  <string name="txtLoading">लोड हो रहा है…</string>
   <string name="txtDialogsContentDelete">क्या आप वाकई इस प्रारूप को हटाना चाहते हैं?</string>
   <string name="txtDialogsContentInfoSave">उत्पाद स्थानीय रूप से सेव है, आप ऑफलाइन संपादन मेनू में संपादित कर सकते हैं</string>
   <string name="txtBarcodeRequire">बारकोड अपेक्षित हैं</string>
   <string name="txtOk">ठीक है</string>
-  <string name="txtContentDialogUploading">कृपया इस प्रक्रिया के दौरान बाहर नहीं निकलते ...</string>
+  <string name="txtContentDialogUploading">कृपया इस प्रक्रिया के दौरान बाहर नहीं निकलते …</string>
   <string name="txtAbout">जो तस्वीरें आपने भेजि वो मुक्त लाइसेंस क्रिएटिव कॉमन्स रोपण और अलाइक के तहत प्रकाशित कर रहे हैं।</string>
   <string name="txtAllsent">उत्पाद भेज दिया</string>
   <string name="txtPalm">उत्पाद में किसी भी तरह  का ताड़ का तेल शामिल नहीं है</string>
@@ -310,7 +310,7 @@
   <string name="title_clear_history_dialog">खाली करें</string>
   <string name="text_clear_history_dialog">आप सभी स्कैन इतिहास साफ करना चाहते हैं?</string>
   <string name="export_csv_history">CSV  निर्यात करें</string>
-  <string name="txt_exporting_history">इतिहास निर्यात ...</string>
+  <string name="txt_exporting_history">इतिहास निर्यात …</string>
   <string name="txt_history_exported">इतिहास का निर्यात</string>
   <string name="permision_write_external_storage">लिखें बाह्य भंडारण की अनुमति इतिहास को निर्यात करने की जरूरत है।</string>
   <string name="txt_nutrition_not_found">लागू नहीं</string>
@@ -463,7 +463,7 @@
   <string name="device_offline_dialog_message">ऐसा करने के लिए नेटवर्क कनेक्शन की आवश्यकता है, क्या आप इसे सेटिंग्स में बदलना चाहेंगे?</string>
   <string name="device_offline_dialog_negative">ख़ारिज करें</string>
   <string name="device_offline_dialog_positive">सेटिंग्स</string>
-  <string name="saving">सेविंग...</string>
+  <string name="saving">सेविंग…</string>
   <string name="scan_first_product">पहला उत्पाद स्कैन करें</string>
   <string name="preference_enable_mobile_data_title">मोबाइल डेटा पर अपलोड करें</string>
   <string name="preference_enable_mobile_data_summary_on">मोबाइल डेटा और WiFi का उपयोग करके नए उत्पाद अपलोड करें</string>

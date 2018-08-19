@@ -82,7 +82,7 @@
                     android:layout_below="@+id/titleHeader"
                     android:layout_gravity="center_vertical"
                     android:gravity="center"
-                    android:text="Title"
+                    android:text="@string/title_activity_product"
                     android:textAlignment="center"
                     android:textSize="@dimen/font_large" />
 
@@ -106,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/descriptionHeader"
                     android:gravity="center"
-                    android:text="description"
+                    android:text="@string/description_activity_product"
                     android:textAlignment="center"
                     android:textSize="@dimen/font_normal" />
             </LinearLayout>

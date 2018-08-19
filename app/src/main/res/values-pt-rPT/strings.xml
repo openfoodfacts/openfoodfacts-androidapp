@@ -317,8 +317,7 @@
   <string name="no_brand">Sem Marca</string>
   <string name="no_title">Sem Título</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Tabela para fatos de nutrição de %1$s de %2$s</string>
-  <string name="check_facts">Verifique</string>
+    <string name="check_facts">Verifique</string>
   <string name="nutrition">Nutrição</string>
   <string name="calculated_nutrition">Nutrição Calculada</string>
   <string name="please_enter_weight">Por favor insira o peso</string>

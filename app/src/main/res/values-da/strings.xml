@@ -317,7 +317,6 @@
   <string name="no_brand">Intet mærke</string>
   <string name="no_title">Uden titel</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Tabel til ernæringsfakta for %1$s af %2$s</string>
   <string name="check_facts">Tjek</string>
   <string name="nutrition">Ernæring</string>
   <string name="calculated_nutrition">Beregnet ernæring</string>

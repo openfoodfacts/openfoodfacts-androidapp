@@ -325,8 +325,7 @@
   <string name="no_brand">Нет бренда</string>
   <string name="no_title">Нет названия</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Проверить</string>
+    <string name="check_facts">Проверить</string>
   <string name="nutrition">Пищевая ценность</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Пожалуйста, введите вес</string>

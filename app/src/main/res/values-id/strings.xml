@@ -313,8 +313,7 @@
   <string name="no_brand">Tanpa merek</string>
   <string name="no_title">Tanpa judul</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Memeriksa</string>
+    <string name="check_facts">Memeriksa</string>
   <string name="nutrition">kandungan nutrisi</string>
   <string name="calculated_nutrition">Nutrisi terhitung</string>
   <string name="please_enter_weight">Masukkan berat</string>
