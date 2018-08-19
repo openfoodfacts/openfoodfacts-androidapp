@@ -290,7 +290,7 @@
   <string name="msg_input_empty">silahkan mengisikan kolom pertama</string>
   <string name="new_offline_info">mohon ambil gambar produk , , bahan, tabel fakta nutrisi dan infromasi bisa dilihat dilabel Terima kasih!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">Panjang password minimum %s karakter.</string>
+  <string name="error_invalid_password">Panjang password minimum 6 karakter.</string>
   <string name="user">pengguna</string>
   <string name="error_field_required">ruang ini dipakai</string>
   <string name="action_preferences">pengaturan</string>
